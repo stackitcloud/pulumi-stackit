@@ -1,0 +1,1088 @@
+{
+    "auto-aliasing": {
+        "resources": {
+            "stackit_affinity_group": {
+                "current": "stackit:index/affinityGroup:AffinityGroup",
+                "fields": {
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_authorization_organization_role_assignment": {
+                "current": "stackit:index/authorizationOrganizationRoleAssignment:AuthorizationOrganizationRoleAssignment"
+            },
+            "stackit_authorization_project_role_assignment": {
+                "current": "stackit:index/authorizationProjectRoleAssignment:AuthorizationProjectRoleAssignment"
+            },
+            "stackit_cdn_custom_domain": {
+                "current": "stackit:index/cdnCustomDomain:CdnCustomDomain",
+                "fields": {
+                    "errors": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_cdn_distribution": {
+                "current": "stackit:index/cdnDistribution:CdnDistribution",
+                "fields": {
+                    "config": {
+                        "fields": {
+                            "regions": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "domains": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "errors": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "errors": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_dns_record_set": {
+                "current": "stackit:index/dnsRecordSet:DnsRecordSet",
+                "fields": {
+                    "records": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_dns_zone": {
+                "current": "stackit:index/dnsZone:DnsZone",
+                "fields": {
+                    "primaries": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_git": {
+                "current": "stackit:index/git:Git"
+            },
+            "stackit_image": {
+                "current": "stackit:index/image:Image"
+            },
+            "stackit_key_pair": {
+                "current": "stackit:index/keyPair:KeyPair"
+            },
+            "stackit_loadbalancer": {
+                "current": "stackit:index/loadbalancer:Loadbalancer",
+                "fields": {
+                    "listeners": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "server_name_indicators": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "networks": {
+                        "maxItemsOne": false
+                    },
+                    "options": {
+                        "fields": {
+                            "acl": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "target_pools": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "targets": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "stackit_loadbalancer_observability_credential": {
+                "current": "stackit:index/loadbalancerObservabilityCredential:LoadbalancerObservabilityCredential"
+            },
+            "stackit_logme_credential": {
+                "current": "stackit:index/logmeCredential:LogmeCredential"
+            },
+            "stackit_logme_instance": {
+                "current": "stackit:index/logmeInstance:LogmeInstance",
+                "fields": {
+                    "parameters": {
+                        "fields": {
+                            "opensearch_tls_ciphers": {
+                                "maxItemsOne": false
+                            },
+                            "opensearch_tls_protocols": {
+                                "maxItemsOne": false
+                            },
+                            "syslog": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "stackit_mariadb_credential": {
+                "current": "stackit:index/mariadbCredential:MariadbCredential",
+                "fields": {
+                    "hosts": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_mariadb_instance": {
+                "current": "stackit:index/mariadbInstance:MariadbInstance",
+                "fields": {
+                    "parameters": {
+                        "fields": {
+                            "syslog": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "stackit_modelserving_token": {
+                "current": "stackit:index/modelservingToken:ModelservingToken"
+            },
+            "stackit_mongodbflex_instance": {
+                "current": "stackit:index/mongodbflexInstance:MongodbflexInstance",
+                "fields": {
+                    "acl": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_mongodbflex_user": {
+                "current": "stackit:index/mongodbflexUser:MongodbflexUser",
+                "fields": {
+                    "roles": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_network": {
+                "current": "stackit:index/network:Network",
+                "fields": {
+                    "ipv4_nameservers": {
+                        "maxItemsOne": false
+                    },
+                    "ipv4_prefixes": {
+                        "maxItemsOne": false
+                    },
+                    "ipv6_nameservers": {
+                        "maxItemsOne": false
+                    },
+                    "ipv6_prefixes": {
+                        "maxItemsOne": false
+                    },
+                    "nameservers": {
+                        "maxItemsOne": false
+                    },
+                    "prefixes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_network_area": {
+                "current": "stackit:index/networkArea:NetworkArea",
+                "fields": {
+                    "default_nameservers": {
+                        "maxItemsOne": false
+                    },
+                    "network_ranges": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_network_area_route": {
+                "current": "stackit:index/networkAreaRoute:NetworkAreaRoute"
+            },
+            "stackit_network_interface": {
+                "current": "stackit:index/networkInterface:NetworkInterface",
+                "fields": {
+                    "allowed_addresses": {
+                        "maxItemsOne": false
+                    },
+                    "security_group_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_objectstorage_bucket": {
+                "current": "stackit:index/objectstorageBucket:ObjectstorageBucket"
+            },
+            "stackit_objectstorage_credential": {
+                "current": "stackit:index/objectstorageCredential:ObjectstorageCredential"
+            },
+            "stackit_objectstorage_credentials_group": {
+                "current": "stackit:index/objectstorageCredentialsGroup:ObjectstorageCredentialsGroup"
+            },
+            "stackit_observability_alertgroup": {
+                "current": "stackit:index/observabilityAlertgroup:ObservabilityAlertgroup",
+                "fields": {
+                    "rules": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_observability_credential": {
+                "current": "stackit:index/observabilityCredential:ObservabilityCredential"
+            },
+            "stackit_observability_instance": {
+                "current": "stackit:index/observabilityInstance:ObservabilityInstance",
+                "fields": {
+                    "acl": {
+                        "maxItemsOne": false
+                    },
+                    "alert_config": {
+                        "fields": {
+                            "receivers": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "email_configs": {
+                                            "maxItemsOne": false
+                                        },
+                                        "opsgenie_configs": {
+                                            "maxItemsOne": false
+                                        },
+                                        "webhooks_configs": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            },
+                            "route": {
+                                "fields": {
+                                    "group_by": {
+                                        "maxItemsOne": false
+                                    },
+                                    "routes": {
+                                        "maxItemsOne": false,
+                                        "elem": {
+                                            "fields": {
+                                                "group_by": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "stackit_observability_logalertgroup": {
+                "current": "stackit:index/observabilityLogalertgroup:ObservabilityLogalertgroup",
+                "fields": {
+                    "rules": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_observability_scrapeconfig": {
+                "current": "stackit:index/observabilityScrapeconfig:ObservabilityScrapeconfig",
+                "fields": {
+                    "targets": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "urls": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "stackit_opensearch_credential": {
+                "current": "stackit:index/opensearchCredential:OpensearchCredential",
+                "fields": {
+                    "hosts": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_opensearch_instance": {
+                "current": "stackit:index/opensearchInstance:OpensearchInstance",
+                "fields": {
+                    "parameters": {
+                        "fields": {
+                            "plugins": {
+                                "maxItemsOne": false
+                            },
+                            "syslog": {
+                                "maxItemsOne": false
+                            },
+                            "tls_ciphers": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "stackit_postgresflex_database": {
+                "current": "stackit:index/postgresflexDatabase:PostgresflexDatabase"
+            },
+            "stackit_postgresflex_instance": {
+                "current": "stackit:index/postgresflexInstance:PostgresflexInstance",
+                "fields": {
+                    "acl": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_postgresflex_user": {
+                "current": "stackit:index/postgresflexUser:PostgresflexUser",
+                "fields": {
+                    "roles": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_public_ip": {
+                "current": "stackit:index/publicIp:PublicIp"
+            },
+            "stackit_public_ip_associate": {
+                "current": "stackit:index/publicIpAssociate:PublicIpAssociate"
+            },
+            "stackit_rabbitmq_credential": {
+                "current": "stackit:index/rabbitmqCredential:RabbitmqCredential",
+                "fields": {
+                    "hosts": {
+                        "maxItemsOne": false
+                    },
+                    "http_api_uris": {
+                        "maxItemsOne": false
+                    },
+                    "uris": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_rabbitmq_instance": {
+                "current": "stackit:index/rabbitmqInstance:RabbitmqInstance",
+                "fields": {
+                    "parameters": {
+                        "fields": {
+                            "plugins": {
+                                "maxItemsOne": false
+                            },
+                            "roles": {
+                                "maxItemsOne": false
+                            },
+                            "syslog": {
+                                "maxItemsOne": false
+                            },
+                            "tls_ciphers": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "stackit_redis_credential": {
+                "current": "stackit:index/redisCredential:RedisCredential",
+                "fields": {
+                    "hosts": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_redis_instance": {
+                "current": "stackit:index/redisInstance:RedisInstance",
+                "fields": {
+                    "parameters": {
+                        "fields": {
+                            "syslog": {
+                                "maxItemsOne": false
+                            },
+                            "tls_ciphers": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "stackit_resourcemanager_project": {
+                "current": "stackit:index/resourcemanagerProject:ResourcemanagerProject"
+            },
+            "stackit_secretsmanager_instance": {
+                "current": "stackit:index/secretsmanagerInstance:SecretsmanagerInstance",
+                "fields": {
+                    "acls": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_secretsmanager_user": {
+                "current": "stackit:index/secretsmanagerUser:SecretsmanagerUser"
+            },
+            "stackit_security_group": {
+                "current": "stackit:index/securityGroup:SecurityGroup"
+            },
+            "stackit_security_group_rule": {
+                "current": "stackit:index/securityGroupRule:SecurityGroupRule"
+            },
+            "stackit_server": {
+                "current": "stackit:index/server:Server",
+                "fields": {
+                    "network_interfaces": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_server_backup_schedule": {
+                "current": "stackit:index/serverBackupSchedule:ServerBackupSchedule",
+                "fields": {
+                    "backup_properties": {
+                        "fields": {
+                            "volume_ids": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "stackit_server_network_interface_attach": {
+                "current": "stackit:index/serverNetworkInterfaceAttach:ServerNetworkInterfaceAttach"
+            },
+            "stackit_server_service_account_attach": {
+                "current": "stackit:index/serverServiceAccountAttach:ServerServiceAccountAttach"
+            },
+            "stackit_server_update_schedule": {
+                "current": "stackit:index/serverUpdateSchedule:ServerUpdateSchedule"
+            },
+            "stackit_server_volume_attach": {
+                "current": "stackit:index/serverVolumeAttach:ServerVolumeAttach"
+            },
+            "stackit_service_account": {
+                "current": "stackit:index/serviceAccount:ServiceAccount"
+            },
+            "stackit_service_account_access_token": {
+                "current": "stackit:index/serviceAccountAccessToken:ServiceAccountAccessToken"
+            },
+            "stackit_service_account_key": {
+                "current": "stackit:index/serviceAccountKey:ServiceAccountKey"
+            },
+            "stackit_ske_cluster": {
+                "current": "stackit:index/skeCluster:SkeCluster",
+                "fields": {
+                    "egress_address_ranges": {
+                        "maxItemsOne": false
+                    },
+                    "extensions": {
+                        "fields": {
+                            "acl": {
+                                "fields": {
+                                    "allowed_cidrs": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
+                            "dns": {
+                                "fields": {
+                                    "zones": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "hibernations": {
+                        "maxItemsOne": false
+                    },
+                    "node_pools": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "availability_zones": {
+                                    "maxItemsOne": false
+                                },
+                                "taints": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "stackit_ske_kubeconfig": {
+                "current": "stackit:index/skeKubeconfig:SkeKubeconfig"
+            },
+            "stackit_sqlserverflex_instance": {
+                "current": "stackit:index/sqlserverflexInstance:SqlserverflexInstance",
+                "fields": {
+                    "acl": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_sqlserverflex_user": {
+                "current": "stackit:index/sqlserverflexUser:SqlserverflexUser",
+                "fields": {
+                    "roles": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_volume": {
+                "current": "stackit:index/volume:Volume"
+            }
+        },
+        "datasources": {
+            "stackit_affinity_group": {
+                "current": "stackit:index/getAffinityGroup:getAffinityGroup",
+                "fields": {
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_cdn_custom_domain": {
+                "current": "stackit:index/getCdnCustomDomain:getCdnCustomDomain",
+                "fields": {
+                    "errors": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_cdn_distribution": {
+                "current": "stackit:index/getCdnDistribution:getCdnDistribution",
+                "fields": {
+                    "config": {
+                        "fields": {
+                            "regions": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "domains": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "errors": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "errors": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_dns_record_set": {
+                "current": "stackit:index/getDnsRecordSet:getDnsRecordSet",
+                "fields": {
+                    "records": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_dns_zone": {
+                "current": "stackit:index/getDnsZone:getDnsZone",
+                "fields": {
+                    "primaries": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_git": {
+                "current": "stackit:index/getGit:getGit"
+            },
+            "stackit_image": {
+                "current": "stackit:index/getImage:getImage"
+            },
+            "stackit_key_pair": {
+                "current": "stackit:index/getKeyPair:getKeyPair"
+            },
+            "stackit_loadbalancer": {
+                "current": "stackit:index/getLoadbalancer:getLoadbalancer",
+                "fields": {
+                    "listeners": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "server_name_indicators": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "networks": {
+                        "maxItemsOne": false
+                    },
+                    "options": {
+                        "fields": {
+                            "acl": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    },
+                    "target_pools": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "targets": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "stackit_logme_credential": {
+                "current": "stackit:index/getLogmeCredential:getLogmeCredential"
+            },
+            "stackit_logme_instance": {
+                "current": "stackit:index/getLogmeInstance:getLogmeInstance",
+                "fields": {
+                    "parameters": {
+                        "fields": {
+                            "opensearch_tls_ciphers": {
+                                "maxItemsOne": false
+                            },
+                            "opensearch_tls_protocols": {
+                                "maxItemsOne": false
+                            },
+                            "syslog": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "stackit_mariadb_credential": {
+                "current": "stackit:index/getMariadbCredential:getMariadbCredential",
+                "fields": {
+                    "hosts": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_mariadb_instance": {
+                "current": "stackit:index/getMariadbInstance:getMariadbInstance",
+                "fields": {
+                    "parameters": {
+                        "fields": {
+                            "syslog": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "stackit_mongodbflex_instance": {
+                "current": "stackit:index/getMongodbflexInstance:getMongodbflexInstance",
+                "fields": {
+                    "acl": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_mongodbflex_user": {
+                "current": "stackit:index/getMongodbflexUser:getMongodbflexUser",
+                "fields": {
+                    "roles": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_network": {
+                "current": "stackit:index/getNetwork:getNetwork",
+                "fields": {
+                    "ipv4_nameservers": {
+                        "maxItemsOne": false
+                    },
+                    "ipv4_prefixes": {
+                        "maxItemsOne": false
+                    },
+                    "ipv6_nameservers": {
+                        "maxItemsOne": false
+                    },
+                    "ipv6_prefixes": {
+                        "maxItemsOne": false
+                    },
+                    "nameservers": {
+                        "maxItemsOne": false
+                    },
+                    "prefixes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_network_area": {
+                "current": "stackit:index/getNetworkArea:getNetworkArea",
+                "fields": {
+                    "default_nameservers": {
+                        "maxItemsOne": false
+                    },
+                    "network_ranges": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_network_area_route": {
+                "current": "stackit:index/getNetworkAreaRoute:getNetworkAreaRoute"
+            },
+            "stackit_network_interface": {
+                "current": "stackit:index/getNetworkInterface:getNetworkInterface",
+                "fields": {
+                    "allowed_addresses": {
+                        "maxItemsOne": false
+                    },
+                    "security_group_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_objectstorage_bucket": {
+                "current": "stackit:index/getObjectstorageBucket:getObjectstorageBucket"
+            },
+            "stackit_objectstorage_credential": {
+                "current": "stackit:index/getObjectstorageCredential:getObjectstorageCredential"
+            },
+            "stackit_objectstorage_credentials_group": {
+                "current": "stackit:index/getObjectstorageCredentialsGroup:getObjectstorageCredentialsGroup"
+            },
+            "stackit_observability_alertgroup": {
+                "current": "stackit:index/getObservabilityAlertgroup:getObservabilityAlertgroup",
+                "fields": {
+                    "rules": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_observability_instance": {
+                "current": "stackit:index/getObservabilityInstance:getObservabilityInstance",
+                "fields": {
+                    "acl": {
+                        "maxItemsOne": false
+                    },
+                    "alert_config": {
+                        "fields": {
+                            "receivers": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "email_configs": {
+                                            "maxItemsOne": false
+                                        },
+                                        "opsgenie_configs": {
+                                            "maxItemsOne": false
+                                        },
+                                        "webhooks_configs": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            },
+                            "route": {
+                                "fields": {
+                                    "group_by": {
+                                        "maxItemsOne": false
+                                    },
+                                    "routes": {
+                                        "maxItemsOne": false,
+                                        "elem": {
+                                            "fields": {
+                                                "group_by": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "stackit_observability_logalertgroup": {
+                "current": "stackit:index/getObservabilityLogalertgroup:getObservabilityLogalertgroup",
+                "fields": {
+                    "rules": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_observability_scrapeconfig": {
+                "current": "stackit:index/getObservabilityScrapeconfig:getObservabilityScrapeconfig",
+                "fields": {
+                    "targets": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "urls": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "stackit_opensearch_credential": {
+                "current": "stackit:index/getOpensearchCredential:getOpensearchCredential",
+                "fields": {
+                    "hosts": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_opensearch_instance": {
+                "current": "stackit:index/getOpensearchInstance:getOpensearchInstance",
+                "fields": {
+                    "parameters": {
+                        "fields": {
+                            "plugins": {
+                                "maxItemsOne": false
+                            },
+                            "syslog": {
+                                "maxItemsOne": false
+                            },
+                            "tls_ciphers": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "stackit_postgresflex_database": {
+                "current": "stackit:index/getPostgresflexDatabase:getPostgresflexDatabase"
+            },
+            "stackit_postgresflex_instance": {
+                "current": "stackit:index/getPostgresflexInstance:getPostgresflexInstance",
+                "fields": {
+                    "acl": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_postgresflex_user": {
+                "current": "stackit:index/getPostgresflexUser:getPostgresflexUser",
+                "fields": {
+                    "roles": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_public_ip": {
+                "current": "stackit:index/getPublicIp:getPublicIp"
+            },
+            "stackit_public_ip_ranges": {
+                "current": "stackit:index/getPublicIpRanges:getPublicIpRanges",
+                "fields": {
+                    "public_ip_ranges": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_rabbitmq_credential": {
+                "current": "stackit:index/getRabbitmqCredential:getRabbitmqCredential",
+                "fields": {
+                    "hosts": {
+                        "maxItemsOne": false
+                    },
+                    "http_api_uris": {
+                        "maxItemsOne": false
+                    },
+                    "uris": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_rabbitmq_instance": {
+                "current": "stackit:index/getRabbitmqInstance:getRabbitmqInstance",
+                "fields": {
+                    "parameters": {
+                        "fields": {
+                            "plugins": {
+                                "maxItemsOne": false
+                            },
+                            "roles": {
+                                "maxItemsOne": false
+                            },
+                            "syslog": {
+                                "maxItemsOne": false
+                            },
+                            "tls_ciphers": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "stackit_redis_credential": {
+                "current": "stackit:index/getRedisCredential:getRedisCredential",
+                "fields": {
+                    "hosts": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_redis_instance": {
+                "current": "stackit:index/getRedisInstance:getRedisInstance",
+                "fields": {
+                    "parameters": {
+                        "fields": {
+                            "syslog": {
+                                "maxItemsOne": false
+                            },
+                            "tls_ciphers": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "stackit_resourcemanager_project": {
+                "current": "stackit:index/getResourcemanagerProject:getResourcemanagerProject"
+            },
+            "stackit_secretsmanager_instance": {
+                "current": "stackit:index/getSecretsmanagerInstance:getSecretsmanagerInstance",
+                "fields": {
+                    "acls": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_secretsmanager_user": {
+                "current": "stackit:index/getSecretsmanagerUser:getSecretsmanagerUser"
+            },
+            "stackit_security_group": {
+                "current": "stackit:index/getSecurityGroup:getSecurityGroup"
+            },
+            "stackit_security_group_rule": {
+                "current": "stackit:index/getSecurityGroupRule:getSecurityGroupRule"
+            },
+            "stackit_server": {
+                "current": "stackit:index/getServer:getServer",
+                "fields": {
+                    "network_interfaces": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_server_backup_schedule": {
+                "current": "stackit:index/getServerBackupSchedule:getServerBackupSchedule",
+                "fields": {
+                    "backup_properties": {
+                        "fields": {
+                            "volume_ids": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
+            "stackit_server_backup_schedules": {
+                "current": "stackit:index/getServerBackupSchedules:getServerBackupSchedules",
+                "fields": {
+                    "items": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "backup_properties": {
+                                    "fields": {
+                                        "volume_ids": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "stackit_server_update_schedule": {
+                "current": "stackit:index/getServerUpdateSchedule:getServerUpdateSchedule"
+            },
+            "stackit_server_update_schedules": {
+                "current": "stackit:index/getServerUpdateSchedules:getServerUpdateSchedules",
+                "fields": {
+                    "items": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_service_account": {
+                "current": "stackit:index/getServiceAccount:getServiceAccount"
+            },
+            "stackit_ske_cluster": {
+                "current": "stackit:index/getSkeCluster:getSkeCluster",
+                "fields": {
+                    "egress_address_ranges": {
+                        "maxItemsOne": false
+                    },
+                    "extensions": {
+                        "fields": {
+                            "acl": {
+                                "fields": {
+                                    "allowed_cidrs": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
+                            "dns": {
+                                "fields": {
+                                    "zones": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "hibernations": {
+                        "maxItemsOne": false
+                    },
+                    "node_pools": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "availability_zones": {
+                                    "maxItemsOne": false
+                                },
+                                "taints": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "stackit_sqlserverflex_instance": {
+                "current": "stackit:index/getSqlserverflexInstance:getSqlserverflexInstance",
+                "fields": {
+                    "acl": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_sqlserverflex_user": {
+                "current": "stackit:index/getSqlserverflexUser:getSqlserverflexUser",
+                "fields": {
+                    "roles": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_volume": {
+                "current": "stackit:index/getVolume:getVolume"
+            }
+        }
+    },
+    "auto-settings": {}
+}
