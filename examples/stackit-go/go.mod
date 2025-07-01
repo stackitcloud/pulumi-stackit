@@ -1,13 +1,15 @@
-module github.com/dirien/pulumi-stackit/sdk
+module stackit-go
 
 go 1.23.0
 
-toolchain go1.23.10
+toolchain go1.24.2
 
 require (
-	github.com/blang/semver v3.5.1+incompatible
+	github.com/dirien/pulumi-stackit/sdk v0.1.0
 	github.com/pulumi/pulumi/sdk/v3 v3.181.0
 )
+
+replace github.com/dirien/pulumi-stackit/sdk => ../../sdk
 
 require (
 	dario.cat/mergo v1.0.0 // indirect
@@ -20,6 +22,7 @@ require (
 	github.com/apparentlymart/go-textseg/v15 v15.0.0 // indirect
 	github.com/atotto/clipboard v0.1.4 // indirect
 	github.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect
+	github.com/blang/semver v3.5.1+incompatible // indirect
 	github.com/charmbracelet/bubbles v0.16.1 // indirect
 	github.com/charmbracelet/bubbletea v0.25.0 // indirect
 	github.com/charmbracelet/lipgloss v0.7.1 // indirect
@@ -67,7 +70,6 @@ require (
 	github.com/santhosh-tekuri/jsonschema/v5 v5.0.0 // indirect
 	github.com/sergi/go-diff v1.3.2-0.20230802210424-5b0b94c5c0d3 // indirect
 	github.com/skeema/knownhosts v1.3.0 // indirect
-	github.com/spf13/cast v1.4.1 // indirect
 	github.com/spf13/cobra v1.8.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/texttheater/golang-levenshtein v1.0.1 // indirect

@@ -16,11 +16,10 @@ package main
 
 import (
 	stackit "github.com/dirien/pulumi-stackit/provider"
-	"github.com/dirien/pulumi-stackit/provider/pkg/version"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfgen"
 )
 
 func main() {
 	// Modify the path to point to the new provider
-	tfgen.Main("stackit", version.Version, stackit.Provider())
+	tfgen.Main("stackit", stackit.Provider())
 }

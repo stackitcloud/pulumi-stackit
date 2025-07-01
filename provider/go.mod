@@ -10,6 +10,7 @@ replace (
 )
 
 require (
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.49.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.110.0
 	github.com/pulumi/pulumi/sdk/v3 v3.181.0
 	github.com/stackitcloud/terraform-provider-stackit/shim v0.0.0
@@ -182,7 +183,6 @@ require (
 	github.com/stackitcloud/stackit-sdk-go/services/ske v0.27.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/sqlserverflex v1.2.0 // indirect
 	github.com/stackitcloud/terraform-provider-stackit v0.56.0 // indirect
-	github.com/stretchr/objx v0.5.2 // indirect
 	github.com/teambition/rrule-go v1.8.2 // indirect
 	github.com/teekennedy/goldmark-markdown v0.3.0 // indirect
 	github.com/texttheater/golang-levenshtein v1.0.1 // indirect

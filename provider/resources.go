@@ -17,15 +17,14 @@ package stackit
 import (
 	_ "embed"
 	"fmt"
-	"path/filepath"
-	"unicode"
-
 	"github.com/dirien/pulumi-stackit/provider/pkg/version"
-	pf "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
+	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"github.com/stackitcloud/terraform-provider-stackit/shim"
+	"path/filepath"
+	"unicode"
 )
 
 // all of the token components used below.
@@ -67,12 +66,13 @@ var metadata []byte
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	// Instantiate the Terraform provider
-	p := pf.ShimProvider(shim.NewProvider())
+	p := pfbridge.ShimProvider(shim.NewProvider())
 
 	// Create a Pulumi provider mapping
 	prov := tfbridge.ProviderInfo{
-		P:    p,
-		Name: "stackit",
+		P:       p,
+		Version: version.Version,
+		Name:    "stackit",
 		// DisplayName is a way to be able to change the casing of the provider
 		// name when being displayed on the Pulumi registry
 		DisplayName: "stackit",
