@@ -1,4 +1,4 @@
-module github.com/pulumiverse/pulumi-stackit/examples/v3
+module github.com/dirien/pulumi-stackit/examples
 
 go 1.23.0
 

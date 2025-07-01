@@ -20,7 +20,7 @@ builds:
       - linux
     ldflags:
       # The line below MUST align with the module in current provider/go.mod
-      - -X github.com/pulumiverse/pulumi-stackit/provider/v3/pkg/version.Version={{.Tag }}
+      - -X github.com/dirien/pulumi-stackit/provider/pkg/version.Version={{.Tag }}
     main: ./cmd/pulumi-resource-stackit/
 
 signs:
