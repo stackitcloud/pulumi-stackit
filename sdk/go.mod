@@ -1,4 +1,4 @@
-module github.com/pulumiverse/pulumi-stackit/sdk/v3
+module github.com/pulumiverse/pulumi-stackit/sdk
 
 go 1.23.0
 
