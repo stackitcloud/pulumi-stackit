@@ -1,5 +1,0 @@
-{
-  "resource": true,
-  "name": "stackit",
-  "server": "github://api.github.com/dirien/pulumi-stackit"
-}

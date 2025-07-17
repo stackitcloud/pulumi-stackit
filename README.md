@@ -13,13 +13,13 @@ This package is available for several languages/platforms:
 To use from JavaScript or TypeScript in Node.js, install using either `npm`:
 
 ```bash
-npm install @ediri/stackit
+npm install @stackitcloud/pulumi-stackit
 ```
 
 or `yarn`:
 
 ```bash
-yarn add @ediri/stackit
+yarn add @stackitcloud/pulumi-stackit
 ```
 
 ### Python
@@ -27,7 +27,7 @@ yarn add @ediri/stackit
 To use from Python, install using `pip`:
 
 ```bash
-pip install ediri_stackit
+pip install pulumi_stackit
 ```
 
 ### Go
@@ -43,7 +43,7 @@ go get github.com/stackitcloud/pulumi-stackit/sdk
 To use from .NET, install using `dotnet add package`:
 
 ```bash
-dotnet add package ediri.stackit
+dotnet add package Pulumi.stackit
 ```
 
 ## Configuration

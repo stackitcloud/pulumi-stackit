@@ -7,6 +7,6 @@
     },
     "dependencies": {
         "@pulumi/pulumi": "^3.113.0",
-        "@ediri/pulumi-stackit": "^0.1.2"
+        "@stackitcloud/pulumi-stackit": "^0.1.2"
     }
 }

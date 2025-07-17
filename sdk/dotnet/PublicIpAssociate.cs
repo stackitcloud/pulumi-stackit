@@ -6,9 +6,8 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi;
 
-namespace ediri.Stackit
+namespace Pulumi.Stackit
 {
     /// <summary>
     /// Associates an existing public IP to a network interface. This is useful for situations where you have a pre-allocated public IP or unable to use the `stackit.PublicIp` resource to create a new public IP. Must have a `region` specified in the provider configuration.
@@ -68,7 +67,7 @@ namespace ediri.Stackit
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "github://api.github.com/dirien/pulumi-stackit",
+                PluginDownloadURL = "github://api.github.com/stackitcloud/pulumi-stackit",
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

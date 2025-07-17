@@ -125,10 +125,10 @@ from . import outputs
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
-    import ediri_stackit.config as __config
+    import pulumi_stackit.config as __config
     config = __config
 else:
-    config = _utilities.lazy_import('ediri_stackit.config')
+    config = _utilities.lazy_import('pulumi_stackit.config')
 
 _utilities.register(
     resource_modules="""
@@ -136,7 +136,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/affinityGroup",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/affinityGroup:AffinityGroup": "AffinityGroup"
   }
@@ -144,7 +144,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/authorizationOrganizationRoleAssignment",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/authorizationOrganizationRoleAssignment:AuthorizationOrganizationRoleAssignment": "AuthorizationOrganizationRoleAssignment"
   }
@@ -152,7 +152,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/authorizationProjectRoleAssignment",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/authorizationProjectRoleAssignment:AuthorizationProjectRoleAssignment": "AuthorizationProjectRoleAssignment"
   }
@@ -160,7 +160,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/cdnCustomDomain",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/cdnCustomDomain:CdnCustomDomain": "CdnCustomDomain"
   }
@@ -168,7 +168,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/cdnDistribution",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/cdnDistribution:CdnDistribution": "CdnDistribution"
   }
@@ -176,7 +176,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/dnsRecordSet",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/dnsRecordSet:DnsRecordSet": "DnsRecordSet"
   }
@@ -184,7 +184,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/dnsZone",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/dnsZone:DnsZone": "DnsZone"
   }
@@ -192,7 +192,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/git",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/git:Git": "Git"
   }
@@ -200,7 +200,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/image",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/image:Image": "Image"
   }
@@ -208,7 +208,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/keyPair",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/keyPair:KeyPair": "KeyPair"
   }
@@ -216,7 +216,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/loadbalancer",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/loadbalancer:Loadbalancer": "Loadbalancer"
   }
@@ -224,7 +224,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/loadbalancerObservabilityCredential",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/loadbalancerObservabilityCredential:LoadbalancerObservabilityCredential": "LoadbalancerObservabilityCredential"
   }
@@ -232,7 +232,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/logmeCredential",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/logmeCredential:LogmeCredential": "LogmeCredential"
   }
@@ -240,7 +240,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/logmeInstance",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/logmeInstance:LogmeInstance": "LogmeInstance"
   }
@@ -248,7 +248,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/mariadbCredential",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/mariadbCredential:MariadbCredential": "MariadbCredential"
   }
@@ -256,7 +256,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/mariadbInstance",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/mariadbInstance:MariadbInstance": "MariadbInstance"
   }
@@ -264,7 +264,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/modelservingToken",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/modelservingToken:ModelservingToken": "ModelservingToken"
   }
@@ -272,7 +272,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/mongodbflexInstance",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/mongodbflexInstance:MongodbflexInstance": "MongodbflexInstance"
   }
@@ -280,7 +280,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/mongodbflexUser",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/mongodbflexUser:MongodbflexUser": "MongodbflexUser"
   }
@@ -288,7 +288,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/network",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/network:Network": "Network"
   }
@@ -296,7 +296,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/networkArea",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/networkArea:NetworkArea": "NetworkArea"
   }
@@ -304,7 +304,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/networkAreaRoute",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/networkAreaRoute:NetworkAreaRoute": "NetworkAreaRoute"
   }
@@ -312,7 +312,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/networkInterface",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/networkInterface:NetworkInterface": "NetworkInterface"
   }
@@ -320,7 +320,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/objectstorageBucket",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/objectstorageBucket:ObjectstorageBucket": "ObjectstorageBucket"
   }
@@ -328,7 +328,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/objectstorageCredential",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/objectstorageCredential:ObjectstorageCredential": "ObjectstorageCredential"
   }
@@ -336,7 +336,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/objectstorageCredentialsGroup",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/objectstorageCredentialsGroup:ObjectstorageCredentialsGroup": "ObjectstorageCredentialsGroup"
   }
@@ -344,7 +344,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/observabilityAlertgroup",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/observabilityAlertgroup:ObservabilityAlertgroup": "ObservabilityAlertgroup"
   }
@@ -352,7 +352,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/observabilityCredential",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/observabilityCredential:ObservabilityCredential": "ObservabilityCredential"
   }
@@ -360,7 +360,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/observabilityInstance",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/observabilityInstance:ObservabilityInstance": "ObservabilityInstance"
   }
@@ -368,7 +368,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/observabilityLogalertgroup",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/observabilityLogalertgroup:ObservabilityLogalertgroup": "ObservabilityLogalertgroup"
   }
@@ -376,7 +376,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/observabilityScrapeconfig",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/observabilityScrapeconfig:ObservabilityScrapeconfig": "ObservabilityScrapeconfig"
   }
@@ -384,7 +384,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/opensearchCredential",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/opensearchCredential:OpensearchCredential": "OpensearchCredential"
   }
@@ -392,7 +392,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/opensearchInstance",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/opensearchInstance:OpensearchInstance": "OpensearchInstance"
   }
@@ -400,7 +400,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/postgresflexDatabase",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/postgresflexDatabase:PostgresflexDatabase": "PostgresflexDatabase"
   }
@@ -408,7 +408,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/postgresflexInstance",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/postgresflexInstance:PostgresflexInstance": "PostgresflexInstance"
   }
@@ -416,7 +416,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/postgresflexUser",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/postgresflexUser:PostgresflexUser": "PostgresflexUser"
   }
@@ -424,7 +424,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/publicIp",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/publicIp:PublicIp": "PublicIp"
   }
@@ -432,7 +432,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/publicIpAssociate",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/publicIpAssociate:PublicIpAssociate": "PublicIpAssociate"
   }
@@ -440,7 +440,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/rabbitmqCredential",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/rabbitmqCredential:RabbitmqCredential": "RabbitmqCredential"
   }
@@ -448,7 +448,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/rabbitmqInstance",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/rabbitmqInstance:RabbitmqInstance": "RabbitmqInstance"
   }
@@ -456,7 +456,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/redisCredential",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/redisCredential:RedisCredential": "RedisCredential"
   }
@@ -464,7 +464,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/redisInstance",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/redisInstance:RedisInstance": "RedisInstance"
   }
@@ -472,7 +472,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/resourcemanagerProject",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/resourcemanagerProject:ResourcemanagerProject": "ResourcemanagerProject"
   }
@@ -480,7 +480,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/secretsmanagerInstance",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/secretsmanagerInstance:SecretsmanagerInstance": "SecretsmanagerInstance"
   }
@@ -488,7 +488,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/secretsmanagerUser",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/secretsmanagerUser:SecretsmanagerUser": "SecretsmanagerUser"
   }
@@ -496,7 +496,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/securityGroup",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/securityGroup:SecurityGroup": "SecurityGroup"
   }
@@ -504,7 +504,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/securityGroupRule",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/securityGroupRule:SecurityGroupRule": "SecurityGroupRule"
   }
@@ -512,7 +512,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/server",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/server:Server": "Server"
   }
@@ -520,7 +520,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/serverBackupSchedule",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/serverBackupSchedule:ServerBackupSchedule": "ServerBackupSchedule"
   }
@@ -528,7 +528,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/serverNetworkInterfaceAttach",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/serverNetworkInterfaceAttach:ServerNetworkInterfaceAttach": "ServerNetworkInterfaceAttach"
   }
@@ -536,7 +536,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/serverServiceAccountAttach",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/serverServiceAccountAttach:ServerServiceAccountAttach": "ServerServiceAccountAttach"
   }
@@ -544,7 +544,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/serverUpdateSchedule",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/serverUpdateSchedule:ServerUpdateSchedule": "ServerUpdateSchedule"
   }
@@ -552,7 +552,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/serverVolumeAttach",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/serverVolumeAttach:ServerVolumeAttach": "ServerVolumeAttach"
   }
@@ -560,7 +560,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/serviceAccount",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/serviceAccount:ServiceAccount": "ServiceAccount"
   }
@@ -568,7 +568,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/serviceAccountAccessToken",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/serviceAccountAccessToken:ServiceAccountAccessToken": "ServiceAccountAccessToken"
   }
@@ -576,7 +576,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/serviceAccountKey",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/serviceAccountKey:ServiceAccountKey": "ServiceAccountKey"
   }
@@ -584,7 +584,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/skeCluster",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/skeCluster:SkeCluster": "SkeCluster"
   }
@@ -592,7 +592,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/skeKubeconfig",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/skeKubeconfig:SkeKubeconfig": "SkeKubeconfig"
   }
@@ -600,7 +600,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/sqlserverflexInstance",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/sqlserverflexInstance:SqlserverflexInstance": "SqlserverflexInstance"
   }
@@ -608,7 +608,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/sqlserverflexUser",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/sqlserverflexUser:SqlserverflexUser": "SqlserverflexUser"
   }
@@ -616,7 +616,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "mod": "index/volume",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/volume:Volume": "Volume"
   }
@@ -628,7 +628,7 @@ _utilities.register(
  {
   "pkg": "stackit",
   "token": "pulumi:providers:stackit",
-  "fqn": "ediri_stackit",
+  "fqn": "pulumi_stackit",
   "class": "Provider"
  }
 ]

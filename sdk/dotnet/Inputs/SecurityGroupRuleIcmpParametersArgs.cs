@@ -6,9 +6,8 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi;
 
-namespace ediri.Stackit.Inputs
+namespace Pulumi.Stackit.Inputs
 {
 
     public sealed class SecurityGroupRuleIcmpParametersArgs : global::Pulumi.ResourceArgs

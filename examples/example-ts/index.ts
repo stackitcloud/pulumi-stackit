@@ -1,4 +1,4 @@
-import * as stackit from "@ediri/pulumi-stackit";
+import * as stackit from "@stackitcloud/pulumi-stackit";
 
 const distribution = new stackit.CdnDistribution("cdn-distribution", {
     config: {
