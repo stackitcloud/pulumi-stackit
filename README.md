@@ -35,7 +35,7 @@ pip install ediri_stackit
 To use from Go, use `go get` to grab the latest version of the library:
 
 ```bash
-go get github.com/dirien/pulumi-stackit/sdk
+go get github.com/stackitcloud/pulumi-stackit/sdk
 ```
 
 ### .NET

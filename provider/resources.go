@@ -17,7 +17,7 @@ package stackit
 import (
 	_ "embed"
 	"fmt"
-	"github.com/dirien/pulumi-stackit/provider/pkg/version"
+	"github.com/stackitcloud/pulumi-stackit/provider/pkg/version"
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
@@ -80,7 +80,7 @@ func Provider() tfbridge.ProviderInfo {
 		// Change this to your personal name (or a company name) that you
 		// would like to be shown in the Pulumi Registry if this package is published
 		// there.
-		Publisher: "dirien",
+		Publisher: "stackitcloud",
 		// LogoURL is optional but useful to help identify your package in the Pulumi Registry
 		// if this package is published there.
 		//
@@ -90,7 +90,7 @@ func Provider() tfbridge.ProviderInfo {
 		// PluginDownloadURL is an optional URL used to download the Provider
 		// for use in Pulumi programs
 		// e.g https://github.com/org/pulumi-provider-name/releases/
-		PluginDownloadURL: "github://api.github.com/dirien/pulumi-stackit",
+		PluginDownloadURL: "github://api.github.com/stackitcloud/pulumi-stackit",
 		Description:       "A Pulumi package for creating and managing stackit resources.",
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
@@ -98,7 +98,7 @@ func Provider() tfbridge.ProviderInfo {
 		Keywords:   []string{"pulumi", "stackit", "category/utility"},
 		License:    "Apache-2.0",
 		Homepage:   "https://www.pulumi.com",
-		Repository: "https://github.com/dirien/pulumi-stackit",
+		Repository: "https://github.com/stackitcloud/pulumi-stackit",
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this
 		// should match the TF provider module's require directive, not any replace directives.
 		GitHubOrg:    "stackitcloud",
@@ -138,7 +138,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Golang: &tfbridge.GolangInfo{
 			ImportBasePath: filepath.Join(
-				fmt.Sprintf("github.com/dirien/pulumi-%[1]s/sdk/", mainPkg),
+				fmt.Sprintf("github.com/stackitcloud/pulumi-%[1]s/sdk/", mainPkg),
 				tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
 				mainPkg,

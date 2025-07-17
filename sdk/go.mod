@@ -1,4 +1,4 @@
-module github.com/dirien/pulumi-stackit/sdk
+module github.com/stackitcloud/pulumi-stackit/sdk
 
 go 1.23.0
 
