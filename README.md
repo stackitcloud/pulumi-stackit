@@ -1,8 +1,10 @@
-# STACKIT Resource Provider
+# STACKIT Pulumi Provider (BETA)
 
 ![logo.svg](docs/logo.svg)
 
-The STACKIT Resource Provider lets you manage [STACKIT](https://www.stackit.de/en/) resources.
+The STACKIT Pulumi Provider lets you manage [STACKIT](https://www.stackit.de/en/) resources.
+
+This STACKIT Pulumi Provider is in a BETA state. More functionality will be supported soon. Your feedback is appreciated! Feel free to open GitHub issues to provide feature requests and bug reports.
 
 ## Installing
 
@@ -52,7 +54,6 @@ The following configuration points are available for the `stackit` provider:
 
 | Configuration Variable | Environment Variable | Description |
 |------------------------|---------------------|-------------|
-| `stackit:argusCustomEndpoint` | `STACKIT_ARGUS_CUSTOM_ENDPOINT` | Custom endpoint for the Argus service ⚠️ **Deprecated**: Argus service has been deprecated and integration will be removed after February 26th 2025. Please use `observability_custom_endpoint` and `observability` resources instead |
 | `stackit:authorizationCustomEndpoint` | `STACKIT_AUTHORIZATION_CUSTOM_ENDPOINT` | Custom endpoint for the Membership service |
 | `stackit:cdnCustomEndpoint` | `STACKIT_CDN_CUSTOM_ENDPOINT` | Custom endpoint for the CDN service |
 | `stackit:credentialsPath` | `STACKIT_CREDENTIALS_PATH` | Path of JSON from where the credentials are read. Default value is `~/.stackit/credentials.json` |
