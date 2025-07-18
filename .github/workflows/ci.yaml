@@ -7,8 +7,13 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+  id-token: write
+
 env:
   GO_VERSION: "1.23"
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   main:
@@ -17,6 +22,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Unshallow clone for tags
+        run: git fetch --prune --unshallow --tags
 
       - name: Install Go ${{ env.GO_VERSION }}
         uses: actions/setup-go@v5
@@ -28,11 +35,52 @@ jobs:
         with:
           repo: pulumi/pulumictl
       
-      - name: Build sdks
-        run: make build
+      - name: Install pulumi
+        uses: pulumi/actions@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # tag=v4.4.0
+        with:
+          node-version: ${{matrix.nodeversion}}
+          registry-url: ${{env.NPM_REGISTRY_URL}}
+      - name: Setup DotNet
+        uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # tag=v2.1.0
+        with:
+          dotnet-version: ${{matrix.dotnetverson}}
+      - name: Setup Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # tag=v5.6.0
+        with:
+          python-version: ${{matrix.pythonversion}}
+
+      - name: Debugging
+        run: |
+          which pulumictl
+          pulumictl version
+          make build
+       #   make tfgen
+       #   pulumictl get version --language generic --debug
       
-      - name: Lint
-        run: make lint_provider
+      #- name: Build sdks
+      #  run: make build
+      
+      #- name: Lint
+      #  run: make lint_provider
+    strategy:
+      fail-fast: true
+      matrix:
+        dotnetversion:
+          - 3.1.301
+        goversion:
+          - 1.23.x
+        language:
+          - nodejs
+          - python
+          - dotnet
+          - go
+        nodeversion:
+          - 20.x
+        pythonversion:
+          - "3.9"
 
   config:
     name: Check GoReleaser config
