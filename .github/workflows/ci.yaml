@@ -22,6 +22,11 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: ${{ env.GO_VERSION }}
+
+      - name: Install pulumictl
+        uses: jaxxstorm/action-install-gh-release@6096f2a2bbfee498ced520b6922ac2c06e990ed2 # tag=v2.1.0
+        with:
+          repo: pulumi/pulumictl
       
       - name: Build sdks
         run: make build
