@@ -1,0 +1,22 @@
+env:
+  GH_TOKEN: ${{ secrets.GH_TOKEN }}
+jobs:
+  upgrade_provider:
+    if: ${{ (contains(github.event.issue.title, 'Upgrade terraform-provider-')) || github.event_name == 'workflow_dispatch' }}
+    name: upgrade-provider
+    runs-on: ubuntu-latest
+    steps:
+    - name: Call upgrade provider action
+      uses: pulumi/pulumi-upgrade-provider-action@3c670a7cb92732324c8ccc17f7f9ef9dfca126d0 # v0.0.17
+      with:
+        kind: all
+name: Upgrade provider
+
+permissions:
+  contents: write
+
+on:
+  issues:
+    types:
+    - opened
+  workflow_dispatch: {}

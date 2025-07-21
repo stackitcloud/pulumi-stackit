@@ -1,0 +1,12 @@
+{
+    "name": "example-ts",
+    "main": "index.ts",
+    "devDependencies": {
+        "@types/node": "^18",
+        "typescript": "^5.0.0"
+    },
+    "dependencies": {
+        "@pulumi/pulumi": "^3.113.0",
+        "@stackitcloud/pulumi-stackit": "^0.1.2"
+    }
+}
