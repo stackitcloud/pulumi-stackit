@@ -8,6 +8,8 @@ NODE_MODULE_NAME := @pulumi/${PACK}
 TF_NAME          := ${PACK}
 PROVIDER_PATH    := provider
 VERSION_PATH     := ${PROVIDER_PATH}/pkg/version.Version
+ROOT_DIR         ?= $(shell git rev-parse --show-toplevel)
+SCRIPTS_BASE     ?= $(ROOT_DIR)/scripts
 
 JAVA_GEN 		 := pulumi-java-gen
 JAVA_GEN_VERSION := v0.8.0
@@ -142,3 +144,10 @@ test::
 
 fmt:
 	@gofmt -s -w .
+
+# SETUP AND TOOL INITIALIZATION TASKS
+project-help:
+	@$(SCRIPTS_BASE)/project.sh help
+
+project-tools:
+	@$(SCRIPTS_BASE)/project.sh tools

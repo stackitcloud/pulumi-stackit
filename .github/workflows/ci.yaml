@@ -12,7 +12,7 @@ permissions:
   id-token: write
 
 env:
-  GO_VERSION: "1.23"
+  GO_VERSION: "1.24"
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
@@ -26,11 +26,6 @@ jobs:
       - name: Unshallow clone for tags
         run: git fetch --prune --unshallow --tags
 
-      - name: Install Go ${{ env.GO_VERSION }}
-        uses: actions/setup-go@v5
-        with:
-          go-version: ${{ env.GO_VERSION }}
-
       - name: Install pulumictl
         uses: jaxxstorm/action-install-gh-release@6096f2a2bbfee498ced520b6922ac2c06e990ed2 # tag=v2.1.0
         with:
@@ -38,6 +33,11 @@ jobs:
       
       - name: Install pulumi
         uses: pulumi/actions@v4
+
+      - name: Install Go Tools
+        uses: ./.github/actions/gotools
+        with:
+          go-version: ${{ env.GO_VERSION }}
       
       - name: Build sdks
         run: make build
