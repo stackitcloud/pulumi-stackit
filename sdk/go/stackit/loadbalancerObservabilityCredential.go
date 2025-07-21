@@ -8,8 +8,8 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/dirien/pulumi-stackit/sdk/go/stackit/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/stackitcloud/pulumi-stackit/sdk/go/stackit/internal"
 )
 
 // Load balancer observability credential resource schema. Must have a `region` specified in the provider configuration. These contain the username and password for the observability service (e.g. Argus) where the load balancer logs/metrics will be pushed into

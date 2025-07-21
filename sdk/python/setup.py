@@ -18,7 +18,7 @@ def readme():
         return "stackit Pulumi Package - Development Version"
 
 
-setup(name='ediri_stackit',
+setup(name='pulumi_stackit',
       python_requires='>=3.9',
       version=VERSION,
       description="A Pulumi package for creating and managing stackit resources.",
@@ -27,12 +27,12 @@ setup(name='ediri_stackit',
       keywords='pulumi stackit category/utility',
       url='https://www.pulumi.com',
       project_urls={
-          'Repository': 'https://github.com/dirien/pulumi-stackit'
+          'Repository': 'https://github.com/stackitcloud/pulumi-stackit'
       },
       license='Apache-2.0',
       packages=find_packages(),
       package_data={
-          'ediri_stackit': [
+          'pulumi_stackit': [
               'py.typed',
               'pulumi-plugin.json',
           ]

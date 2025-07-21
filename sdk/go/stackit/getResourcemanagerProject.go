@@ -7,8 +7,8 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/dirien/pulumi-stackit/sdk/go/stackit/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/stackitcloud/pulumi-stackit/sdk/go/stackit/internal"
 )
 
 // Resource Manager project data source schema. To identify the project, you need to provider either projectId or container_id. If you provide both, projectId will be used.

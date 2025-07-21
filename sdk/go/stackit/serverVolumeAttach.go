@@ -8,8 +8,8 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/dirien/pulumi-stackit/sdk/go/stackit/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/stackitcloud/pulumi-stackit/sdk/go/stackit/internal"
 )
 
 // Volume attachment resource schema. Attaches a volume to a server. Must have a `region` specified in the provider configuration.

@@ -1,4 +1,4 @@
-module github.com/dirien/pulumi-stackit/provider
+module github.com/stackitcloud/pulumi-stackit/provider
 
 go 1.24
 

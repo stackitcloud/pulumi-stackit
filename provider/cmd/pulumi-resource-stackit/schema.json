@@ -10,9 +10,9 @@
     "homepage": "https://www.pulumi.com",
     "license": "Apache-2.0",
     "attribution": "This Pulumi package is based on the [`stackit` Terraform Provider](https://github.com/stackitcloud/terraform-provider-stackit).",
-    "repository": "https://github.com/dirien/pulumi-stackit",
-    "pluginDownloadURL": "github://api.github.com/dirien/pulumi-stackit",
-    "publisher": "dirien",
+    "repository": "https://github.com/stackitcloud/pulumi-stackit",
+    "pluginDownloadURL": "github://api.github.com/stackitcloud/pulumi-stackit",
+    "publisher": "stackitcloud",
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
     },
@@ -21,18 +21,17 @@
             "packageReferences": {
                 "Pulumi": "3.*"
             },
-            "compatibility": "tfbridge20",
-            "rootNamespace": "ediri"
+            "compatibility": "tfbridge20"
         },
         "go": {
-            "importBasePath": "github.com/dirien/pulumi-stackit/sdk/go/stackit",
+            "importBasePath": "github.com/stackitcloud/pulumi-stackit/sdk/go/stackit",
             "generateResourceContainerTypes": true,
             "generateExtraInputTypes": true
         },
         "nodejs": {
-            "packageName": "@ediri/pulumi-stackit",
+            "packageName": "@stackitcloud/pulumi-stackit",
             "packageDescription": "A Pulumi package for creating and managing stackit resources.",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/stackitcloud/terraform-provider-stackit)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-stackit` repo](https://github.com/dirien/pulumi-stackit/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-stackit` repo](https://github.com/stackitcloud/terraform-provider-stackit/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/stackitcloud/terraform-provider-stackit)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-stackit` repo](https://github.com/stackitcloud/pulumi-stackit/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-stackit` repo](https://github.com/stackitcloud/terraform-provider-stackit/issues).",
             "dependencies": {
                 "@pulumi/pulumi": "^3.0.0"
             },
@@ -44,11 +43,11 @@
             "disableUnionOutputTypes": true
         },
         "python": {
-            "packageName": "ediri_stackit",
+            "packageName": "pulumi_stackit",
             "requires": {
                 "pulumi": "\u003e=3.0.0,\u003c4.0.0"
             },
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/stackitcloud/terraform-provider-stackit)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-stackit` repo](https://github.com/dirien/pulumi-stackit/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-stackit` repo](https://github.com/stackitcloud/terraform-provider-stackit/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/stackitcloud/terraform-provider-stackit)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-stackit` repo](https://github.com/stackitcloud/pulumi-stackit/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-stackit` repo](https://github.com/stackitcloud/terraform-provider-stackit/issues).",
             "compatibility": "tfbridge20",
             "pyproject": {}
         }

@@ -2,7 +2,7 @@ PROJECT_NAME := stackit Package
 
 SHELL            := /bin/bash
 PACK             := stackit
-ORG              := dirien
+ORG              := stackitcloud
 PROJECT          := github.com/${ORG}/pulumi-${PACK}
 NODE_MODULE_NAME := @pulumi/${PACK}
 TF_NAME          := ${PACK}

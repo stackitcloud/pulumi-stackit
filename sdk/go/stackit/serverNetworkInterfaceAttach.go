@@ -8,8 +8,8 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/dirien/pulumi-stackit/sdk/go/stackit/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/stackitcloud/pulumi-stackit/sdk/go/stackit/internal"
 )
 
 // Network interface attachment resource schema. Attaches a network interface to a server. Must have a `region` specified in the provider configuration. The attachment only takes full effect after server reboot.

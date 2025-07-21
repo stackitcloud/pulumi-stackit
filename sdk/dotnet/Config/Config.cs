@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Immutable;
 
-namespace ediri.Stackit
+namespace Pulumi.Stackit
 {
     public static class Config
     {

@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/dirien/pulumi-stackit/sdk/go/stackit"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/stackitcloud/pulumi-stackit/sdk/go/stackit"
 )
 
 func main() {

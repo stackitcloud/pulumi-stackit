@@ -325,7 +325,7 @@ def deprecated(message: str) -> typing.Callable[[C], C]:
     return decorator
 
 def get_plugin_download_url():
-	return "github://api.github.com/dirien/pulumi-stackit"
+	return "github://api.github.com/stackitcloud/pulumi-stackit"
 
 def get_version():
      return _version_str

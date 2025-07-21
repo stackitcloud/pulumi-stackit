@@ -6,9 +6,8 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi;
 
-namespace ediri.Stackit
+namespace Pulumi.Stackit
 {
     /// <summary>
     /// ObjectStorage bucket resource schema. Must have a `region` specified in the provider configuration. If you are creating `credentialsgroup` and `bucket` resources simultaneously, please include the `depends_on` field so that they are created sequentially. This prevents errors from concurrent calls to the service enablement that is done in the background.
@@ -65,7 +64,7 @@ namespace ediri.Stackit
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "github://api.github.com/dirien/pulumi-stackit",
+                PluginDownloadURL = "github://api.github.com/stackitcloud/pulumi-stackit",
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

@@ -6,9 +6,8 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi;
 
-namespace ediri.Stackit
+namespace Pulumi.Stackit
 {
     public static class GetRedisCredential
     {

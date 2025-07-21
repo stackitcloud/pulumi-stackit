@@ -6,9 +6,8 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
-using Pulumi;
 
-namespace ediri.Stackit
+namespace Pulumi.Stackit
 {
     /// <summary>
     /// Service account access token schema.
@@ -96,7 +95,7 @@ namespace ediri.Stackit
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
-                PluginDownloadURL = "github://api.github.com/dirien/pulumi-stackit",
+                PluginDownloadURL = "github://api.github.com/stackitcloud/pulumi-stackit",
                 AdditionalSecretOutputs =
                 {
                     "token",
