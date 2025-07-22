@@ -16,7 +16,10 @@ Prerequisites:
 
 - [`Pulumi`](https://www.pulumi.com/docs/iac/download-install/)
 - [`pulumictl`](https://github.com/pulumi/pulumictl)
-- [`Go`](https://go.dev/doc/install) 1.23+
+- [`Go`](https://go.dev/doc/install) 1.24+
+- [`dotnet`](https://dotnet.microsoft.com/en-us/download) 9.0.x
+- [`node`](https://nodejs.org/en/download) 20.x
+- [`python`](https://www.python.org/downloads) 3.9
 
 ### Useful Make commands
 

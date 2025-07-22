@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge.ShimProvide
 package stackit
 
 import (
