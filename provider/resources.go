@@ -12,19 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge.ShimProvide
 package stackit
 
 import (
 	_ "embed"
 	"fmt"
-	"github.com/stackitcloud/pulumi-stackit/provider/pkg/version"
-	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
+	"path/filepath"
+
+	pfbridge "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+	"github.com/stackitcloud/pulumi-stackit/provider/pkg/version"
 	"github.com/stackitcloud/terraform-provider-stackit/shim"
-	"path/filepath"
-	"unicode"
 )
 
 // all of the token components used below.
@@ -35,30 +35,6 @@ const (
 	// modules:
 	mainMod = "index" // the stackit module
 )
-
-// stackitMember manufactures a type token for the random package and the given module and type.
-func stackitMember(mod string, mem string) tokens.ModuleMember {
-	return tokens.ModuleMember(mainPkg + ":" + mod + ":" + mem)
-}
-
-// stackitType manufactures a type token for the random package and the given module and type.
-func stackitType(mod string, typ string) tokens.Type {
-	return tokens.Type(stackitMember(mod, typ))
-}
-
-// stackitResource manufactures a standard resource token given a module and resource name.  It automatically uses the
-// stackit package and names the file by simply lower casing the resource's first character.
-func stackitResource(mod string, res string) tokens.Type {
-	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
-	return stackitType(mod+"/"+fn, res)
-}
-
-// stackitDataSource manufactures a standard resource token given a module and resource name.  It automatically uses the
-// stackit package and names the file by simply lower casing the resource's first character.
-func stackitDataSource(mod string, res string) tokens.ModuleMember {
-	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
-	return stackitMember(mod+"/"+fn, res)
-}
 
 //go:embed cmd/pulumi-resource-stackit/bridge-metadata.json
 var metadata []byte

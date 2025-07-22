@@ -19,8 +19,9 @@ package main
 import (
 	"context"
 	_ "embed"
-	stackit "github.com/stackitcloud/pulumi-stackit/provider"
+
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
+	stackit "github.com/stackitcloud/pulumi-stackit/provider"
 )
 
 //go:embed schema-embed.json
