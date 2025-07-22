@@ -1,0 +1,7 @@
+name: createCdnDistributionGo
+description: A minimal Go Pulumi program
+runtime: go
+plugins:
+  providers:
+  - name: stackit
+    path: ../../../bin

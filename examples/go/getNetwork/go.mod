@@ -1,15 +1,15 @@
-module stackit-go
+module getNetworkGo
 
 go 1.23.0
 
-toolchain go1.24.2
+toolchain go1.24.1
 
 require (
-	github.com/stackitcloud/pulumi-stackit/sdk v0.1.0
 	github.com/pulumi/pulumi/sdk/v3 v3.181.0
+	github.com/stackitcloud/pulumi-stackit/sdk v0.0.0-20250721122841-df33187d65a0
 )
 
-replace github.com/stackitcloud/pulumi-stackit/sdk => ../../sdk
+replace github.com/stackitcloud/pulumi-stackit/sdk => ../../../sdk
 
 require (
 	dario.cat/mergo v1.0.0 // indirect

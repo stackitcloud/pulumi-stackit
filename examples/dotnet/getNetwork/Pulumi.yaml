@@ -1,4 +1,4 @@
-name: getNetworkExample
+name: getNetworkDotnet
 description: A minimal C# Pulumi program
 runtime: dotnet
 config:
