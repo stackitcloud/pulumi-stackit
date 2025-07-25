@@ -10,7 +10,8 @@
     a. Check existing nuget sources via `dotnet nuget list source`
     b. If there is no local nuget repository present you can add it to the list via 
        `dotnet nuget add source <PATH-TO-NUGET-FOLDER>`
-7. Move to a example folder like `getNetwork` and add the package via `dotnet add package Pulumi.Stackit --prerelease`
-8. Adjust the example e.g. modifiy the project id
-9. Run the example via `pulumi up`
-10. Remove the created resources with `pulumi down`
+8. Ensure that the `pulumi-resource-stackit` provider is in your GOPATH (located under pulumi-stackit/bin)
+9. Move to a example folder like `getNetwork` and add the package via `dotnet add package Pulumi.Stackit --prerelease`
+10. Adjust the example e.g. modifiy the project id
+11. Run the example via `pulumi up`
+12. Remove the created resources with `pulumi down`

@@ -23,16 +23,18 @@ import (
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	"github.com/stackitcloud/pulumi-stackit/provider/pkg/version"
-	"github.com/stackitcloud/terraform-provider-stackit/shim"
+	"github.com/stackitcloud/pulumi-stackit/provider/shim"
 )
 
 // all of the token components used below.
 const (
 	// This variable controls the default name of the package in the package
-	// registries for nodejs and python:
+	// registries for nodejs and python.
 	mainPkg = "stackit"
 	// modules:
 	mainMod = "index" // the stackit module
+	// maxAutonaming length.
+	maxAutonamingLength = 255
 )
 
 //go:embed cmd/pulumi-resource-stackit/bridge-metadata.json
@@ -102,7 +104,7 @@ func Provider() tfbridge.ProviderInfo {
 			// See the documentation for tfbridge.OverlayInfo for how to lay out this
 			// section, or refer to the AWS provider. Delete this section if there are
 			// no overlay files.
-			//Overlay: &tfbridge.OverlayInfo{},
+			// Overlay: &tfbridge.OverlayInfo{},
 		},
 		Python: &tfbridge.PythonInfo{
 			PackageName: "pulumi_stackit",
@@ -132,7 +134,7 @@ func Provider() tfbridge.ProviderInfo {
 
 	prov.MustApplyAutoAliases()
 
-	prov.SetAutonaming(255, "-")
+	prov.SetAutonaming(maxAutonamingLength, "-")
 
 	return prov
 }
