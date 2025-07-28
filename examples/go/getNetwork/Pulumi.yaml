@@ -1,7 +1,7 @@
-name: stackit-go
+name: getNetworkGo
 description: A minimal Go Pulumi program
 runtime: go
 plugins:
   providers:
   - name: stackit
-    path: ../../bin
+    path: ../../../bin

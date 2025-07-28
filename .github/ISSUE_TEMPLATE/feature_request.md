@@ -1,6 +1,6 @@
 ---
 name: Feature request
-about: Suggest an idea for the STACKIT pulumi provider
+about: Suggest an idea for the STACKIT Pulumi Provider
 title: ''
 labels: enhancement
 assignees: ''

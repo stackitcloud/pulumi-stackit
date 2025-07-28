@@ -17,48 +17,25 @@ package stackit
 import (
 	_ "embed"
 	"fmt"
-	"github.com/stackitcloud/pulumi-stackit/provider/pkg/version"
-	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
+	"path/filepath"
+
+	pfbridge "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
-	"github.com/stackitcloud/terraform-provider-stackit/shim"
-	"path/filepath"
-	"unicode"
+	"github.com/stackitcloud/pulumi-stackit/provider/pkg/version"
+	"github.com/stackitcloud/pulumi-stackit/provider/shim"
 )
 
 // all of the token components used below.
 const (
 	// This variable controls the default name of the package in the package
-	// registries for nodejs and python:
+	// registries for nodejs and python.
 	mainPkg = "stackit"
 	// modules:
 	mainMod = "index" // the stackit module
+	// maxAutonaming length.
+	maxAutonamingLength = 255
 )
-
-// stackitMember manufactures a type token for the random package and the given module and type.
-func stackitMember(mod string, mem string) tokens.ModuleMember {
-	return tokens.ModuleMember(mainPkg + ":" + mod + ":" + mem)
-}
-
-// stackitType manufactures a type token for the random package and the given module and type.
-func stackitType(mod string, typ string) tokens.Type {
-	return tokens.Type(stackitMember(mod, typ))
-}
-
-// stackitResource manufactures a standard resource token given a module and resource name.  It automatically uses the
-// stackit package and names the file by simply lower casing the resource's first character.
-func stackitResource(mod string, res string) tokens.Type {
-	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
-	return stackitType(mod+"/"+fn, res)
-}
-
-// stackitDataSource manufactures a standard resource token given a module and resource name.  It automatically uses the
-// stackit package and names the file by simply lower casing the resource's first character.
-func stackitDataSource(mod string, res string) tokens.ModuleMember {
-	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
-	return stackitMember(mod+"/"+fn, res)
-}
 
 //go:embed cmd/pulumi-resource-stackit/bridge-metadata.json
 var metadata []byte
@@ -127,7 +104,7 @@ func Provider() tfbridge.ProviderInfo {
 			// See the documentation for tfbridge.OverlayInfo for how to lay out this
 			// section, or refer to the AWS provider. Delete this section if there are
 			// no overlay files.
-			//Overlay: &tfbridge.OverlayInfo{},
+			// Overlay: &tfbridge.OverlayInfo{},
 		},
 		Python: &tfbridge.PythonInfo{
 			PackageName: "pulumi_stackit",
@@ -157,7 +134,7 @@ func Provider() tfbridge.ProviderInfo {
 
 	prov.MustApplyAutoAliases()
 
-	prov.SetAutonaming(255, "-")
+	prov.SetAutonaming(maxAutonamingLength, "-")
 
 	return prov
 }

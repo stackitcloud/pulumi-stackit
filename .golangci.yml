@@ -1,24 +1,269 @@
+linters-settings:
+  errcheck:
+    # report about not checking of errors in type assetions: `a := b.(MyStruct)`;
+    # default is false: such cases aren't reported by default.
+    check-type-assertions: true
+
+    # report about assignment of errors to blank identifier: `num, _ := strconv.Atoi(numStr)`;
+    # default is false: such cases aren't reported by default.
+    check-blank: true
+  exhaustive:
+    # Presence of "default" case in switch statements satisfies exhaustiveness,
+    # even if all enum members are not listed.
+    default-signifies-exhaustive: true
+  funlen:
+    lines: 100
+    statements: 50
+  gci:
+    custom-order: true
+    sections:
+      - standard
+      - default
+      - prefix(dev.azure.com/schwarzit)
+  goimports:
+    local-prefixes: dev.azure.com/schwarzit
+  gofmt:
+    # simplify code: gofmt with `-s` option, true by default
+    simplify: true
+  gocyclo:
+    min-complexity: 30
+  gocognit:
+    min-complexity: 30
+  dupl:
+    threshold: 150
+  goconst:
+    min-len: 3
+    min-occurrences: 2
+  govet:
+    enable-all: true
+    disable:
+    - fieldalignment
+  depguard:
+    rules:
+      all:
+        deny:
+          - pkg: github.com/sirupsen/logrus
+            desc: logging is done using the internal/log and log/slog package
+          - pkg: log$
+            desc: logging is done using the internal/log and log/slog package
+          - pkg: go.uber.org/zap
+            desc: logging is done using the internal/log and log/slog package
+  misspell:
+    locale: US
+  lll:
+    line-length: 140
+    tab-width: 1
+  cyclop:
+    # the maximal code complexity to report
+    max-complexity: 20
+    # the maximal average package complexity. If it's higher than 0.0 (float) the check is enabled (default 0.0)
+    package-average: 0.0
+  unparam:
+    # Inspect exported functions, default is false. Set to true if no external program/library imports your code.
+    # XXX: if you enable this setting, unparam will report a lot of false-positives in text editors:
+    # if it's called for subdir of a project it can't find external interfaces. All text editor integrations
+    # with golangci-lint call it on a directory with the changed file.
+    check-exported: false
+  nakedret:
+    # make an issue if func has more lines of code than this setting and it has naked returns; default is 30
+    max-func-lines: 5
+  prealloc:
+    # XXX: we don't recommend using this linter before doing performance profiling.
+    # For most programs usage of prealloc will be a premature optimization.
+
+    # Report preallocation suggestions only on simple loops that have no returns/breaks/continues/gotos in them.
+    # True by default.
+    simple: true
+    range-loops: true # Report preallocation suggestions on range loops, true by default
+    for-loops: true # Report preallocation suggestions on for loops, false by default
+  gocritic:
+    enabled-tags:
+      - diagnostic
+      - experimental
+      - opinionated
+      - performance
+      - style
+    disabled-checks:
+      - dupImport # https://github.com/go-critic/go-critic/issues/845
+      - octalLiteral
+      - unnamedResult
+    # Settings passed to gocritic.
+    # The settings key is the name of a supported gocritic checker.
+    # The list of supported checkers can be find in https://go-critic.github.io/overview.
+    settings:
+      hugeParam:
+        # Size in bytes that makes the warning trigger.
+        # Default: 80
+        sizeThreshold: 80
+  dogsled:
+    # checks assignments with too many blank identifiers; default is 2
+    max-blank-identifiers: 2
+  whitespace:
+    multi-if: false # Enforces newlines (or comments) after every multi-line if statement
+    multi-func: false # Enforces newlines (or comments) after every multi-line function signature
+  gomoddirectives:
+    # List of allowed `replace` directives. Default is empty.
+    # Add your allowed `replace` targets here, this rule is so you don't accidentally commit replacements you added for testing
+    replace-allow-list: [github.com/hashicorp/terraform-plugin-sdk/v2]
+  mnd:
+    # don't include the "operation" and "assign"
+    checks:
+      - argument
+      - case
+      - condition
+      - return
+      - operation
+      - assign
+  nolintlint:
+    allow-unused: false # report any unused nolint directives
+    require-explanation: true # require an explanation for nolint directives
+    require-specific: true # require nolint directives to be specific about which linter is being skipped
+  nlreturn:
+    # Size of the block (including return statement that is still "OK")
+    # so no return split required.
+    block-size: 5
+  stylecheck:
+    initialisms: ["ACL", "API", "ASCII", "CPU", "CSS", "DNS", "EOF", "GUID", "HTML", "HTTP", "HTTPS", "ID", "IP", "JSON", "QPS", "RAM", "RPC", "SLA", "SMTP", "SQL", "SSH", "TCP", "TLS", "TTL", "UDP", "UI", "GID", "UID", "UUID", "URI", "URL", "UTF8", "VM", "XML", "XMPP", "XSRF", "XSS", "SIP", "RTP", "AMQP", "DB", "TS"]
+  revive:
+    rules:
+      - name: context-keys-type
+        disabled: false
+      - name: time-naming
+        disabled: false
+      - name: var-declaration
+        disabled: false
+      - name: unexported-return
+        disabled: false
+      - name: errorf
+        disabled: false
+      - name: blank-imports
+        disabled: false
+      - name: context-as-argument
+        disabled: false
+      - name: dot-imports
+        disabled: false
+      - name: error-return
+        disabled: false
+      - name: error-strings
+        disabled: false
+      - name: error-naming
+        disabled: false
+      - name: exported
+        disabled: false
+      - name: increment-decrement
+        disabled: false
+      - name: var-naming
+        disabled: false
+      - name: package-comments
+        disabled: false
+      - name: range
+        disabled: false
+      - name: receiver-naming
+        disabled: false
+      - name: indent-error-flow
+        disabled: false
+
 linters:
+  # please, do not use `enable-all`: it's deprecated and will be removed soon.
+  # inverted configuration with `enable-all` and `disable` is not scalable during updates of golangci-lint
+  disable-all: true
   enable:
-    - deadcode
-    - errcheck
+    - depguard
+    - dogsled
+    - dupl
+    - copyloopvar
+    - exhaustive
+    - funlen
+    - gochecknoinits
     - goconst
+    - gocritic
+    - gocyclo
+    - godot
     - gofmt
-    - golint
+    - goimports
+    - mnd
+    - goprintffuncname
     - gosec
+    - gosimple
     - govet
     - ineffassign
-    - interfacer
     - lll
-    - megacheck
+    - gosimple
+    - staticcheck
+    - unused
     - misspell
     - nakedret
-    - structcheck
+    - nolintlint
+    - revive
+    - staticcheck
+    - stylecheck
+    - typecheck
     - unconvert
-    - varcheck
-  enable-all: false
+    - unused
+    - whitespace
+    - gochecknoglobals
+    - err113
+    - prealloc
+    - asciicheck
+    - nestif
+    - bodyclose
+    - cyclop
+    - durationcheck
+    - errcheck
+    - errorlint
+    - forbidigo
+    - forcetypeassert
+    - gci
+    - gocognit
+    - gofumpt
+    - gomoddirectives
+    - gomodguard
+    - importas
+    - makezero
+    - nilerr
+    - nlreturn
+    - noctx
+    - predeclared
+    - promlinter
+    - rowserrcheck
+    - sqlclosecheck
+    - tparallel
+    - unparam
+    - wastedassign
+    - wsl
+
+  # don't enable:
+  # - tagliatelle # have a different naming schema
+  # - golint # deprecated
+  # - scopelint # deprecated
+  # - interfacer # deprecated
+  # - testpackage # this is not best practice in go
+  # - godox # we want to use keywords like TODO or FIX in the code
+
+
+issues:
+  # Excluding configuration per-path, per-linter, per-text and per-source
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - gochecknoglobals
+        - noctx
+        - funlen
+        - err113
+        - mnd
+        - forcetypeassert
+        - dogsled
+        - goconst
+        - unparam
+        - dupl
+    - text: 'declaration of "err" shadows declaration'
+      linters:
+        - govet
+  max-same-issues: 0
+  max-issues-per-linter: 0
 run:
-  skip-files:
-    - schema.go
-    - pulumiManifest.go
-  timeout: 20m
+  timeout: 10m
+  issues-exit-code: 1
+  tests: true
+  build-tags:
+    - integration
