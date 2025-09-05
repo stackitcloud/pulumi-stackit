@@ -1057,8 +1057,8 @@ github.com/hashicorp/terraform-plugin-log v0.9.0/go.mod h1:rKL8egZQ/eXSyDqzLUuwU
 github.com/hashicorp/terraform-plugin-sdk v1.8.0 h1:HE1p52nzcgz88hIJmapUnkmM9noEjV3QhTOLaua5XUA=
 github.com/hashicorp/terraform-plugin-sdk v1.8.0/go.mod h1:OjgQmey5VxnPej/buEhe+YqKm0KNvV3QqU4hkqHqPCY=
 github.com/hashicorp/terraform-plugin-test v1.2.0/go.mod h1:QIJHYz8j+xJtdtLrFTlzQVC0ocr3rf/OjIpgZLK56Hs=
-github.com/hashicorp/terraform-plugin-testing v1.13.2 h1:mSotG4Odl020vRjIenA3rggwo6Kg6XCKIwtRhYgp+/M=
-github.com/hashicorp/terraform-plugin-testing v1.13.2/go.mod h1:WHQ9FDdiLoneey2/QHpGM/6SAYf4A7AZazVg7230pLE=
+github.com/hashicorp/terraform-plugin-testing v1.13.3 h1:QLi/khB8Z0a5L54AfPrHukFpnwsGL8cwwswj4RZduCo=
+github.com/hashicorp/terraform-plugin-testing v1.13.3/go.mod h1:WHQ9FDdiLoneey2/QHpGM/6SAYf4A7AZazVg7230pLE=
 github.com/hashicorp/terraform-registry-address v0.2.5 h1:2GTftHqmUhVOeuu9CW3kwDkRe4pcBDq0uuK5VJngU1M=
 github.com/hashicorp/terraform-registry-address v0.2.5/go.mod h1:PpzXWINwB5kuVS5CA7m1+eO2f1jKb5ZDIxrOPfpnGkg=
 github.com/hashicorp/terraform-svchost v0.0.0-20191011084731-65d371908596/go.mod h1:kNDNcF7sN4DocDLBkQYz73HGKwN1ANB1blq4lIYLYvg=
@@ -1344,8 +1344,8 @@ github.com/stackitcloud/stackit-sdk-go/services/dns v0.17.1 h1:CnhAMLql0MNmAeq4r
 github.com/stackitcloud/stackit-sdk-go/services/dns v0.17.1/go.mod h1:7Bx85knfNSBxulPdJUFuBePXNee3cO+sOTYnUG6M+iQ=
 github.com/stackitcloud/stackit-sdk-go/services/git v0.7.1 h1:hkFixFnBcQzU4BSIZFITc8N0gK0pUYk7mk0wdUu5Ki8=
 github.com/stackitcloud/stackit-sdk-go/services/git v0.7.1/go.mod h1:Ng1EzrRndG3iGXGH90AZJz//wfK+2YOyDwTnTLwX3a4=
-github.com/stackitcloud/stackit-sdk-go/services/iaas v0.29.1 h1:GfE+FaeIKSVaKvgzh8Eacum+bQVyRS6ngltkh0qNGtM=
-github.com/stackitcloud/stackit-sdk-go/services/iaas v0.29.1/go.mod h1:b/jgJf7QHdRzU2fmZeJJtu5j0TAevDRghzcn5MyRmOI=
+github.com/stackitcloud/stackit-sdk-go/services/iaas v0.29.2 h1:BvrbqLi9u0943TTkflPDLGbXgqgVzv7oy8tZHD3q3lg=
+github.com/stackitcloud/stackit-sdk-go/services/iaas v0.29.2/go.mod h1:b/jgJf7QHdRzU2fmZeJJtu5j0TAevDRghzcn5MyRmOI=
 github.com/stackitcloud/stackit-sdk-go/services/iaasalpha v0.1.21-alpha h1:m1jq6a8dbUe+suFuUNdHmM/cSehpGLUtDbK1CqLqydg=
 github.com/stackitcloud/stackit-sdk-go/services/iaasalpha v0.1.21-alpha/go.mod h1:Nu1b5Phsv8plgZ51+fkxPVsU91ZJ5Ayz+cthilxdmQ8=
 github.com/stackitcloud/stackit-sdk-go/services/loadbalancer v1.5.1 h1:OdJEs8eOfrzn9tCBDLxIyP8hX50zPfcXNYnRoQX+chs=
@@ -1360,8 +1360,8 @@ github.com/stackitcloud/stackit-sdk-go/services/mongodbflex v1.5.2 h1:BQ+qAkVS/a
 github.com/stackitcloud/stackit-sdk-go/services/mongodbflex v1.5.2/go.mod h1:oc8Mpwl7O6EZwG0YxfhOzNCJwNQBWK5rFh764OtxoMY=
 github.com/stackitcloud/stackit-sdk-go/services/objectstorage v1.3.1 h1:4jsFLbDVEosYTgQz6lPds1E9KDOiHwjuhWqcG+lo5B4=
 github.com/stackitcloud/stackit-sdk-go/services/objectstorage v1.3.1/go.mod h1:j1SHAS5lN8F9b/iPUOfjAl9QAA9tOT7NKOiDEzcM2zc=
-github.com/stackitcloud/stackit-sdk-go/services/observability v0.10.0 h1:SIctDqGprEoZArWaTds7hzQyh8Pqaz95Nmuj/1QuDEQ=
-github.com/stackitcloud/stackit-sdk-go/services/observability v0.10.0/go.mod h1:tJEOi6L0le4yQZPGwalup/PZ13gqs1aCQDqlUs2cYW0=
+github.com/stackitcloud/stackit-sdk-go/services/observability v0.11.1 h1:y4CfGRNRGdAV3i6+ATIHsr+n6+As5kL9GBXO7FK6gy8=
+github.com/stackitcloud/stackit-sdk-go/services/observability v0.11.1/go.mod h1:tJEOi6L0le4yQZPGwalup/PZ13gqs1aCQDqlUs2cYW0=
 github.com/stackitcloud/stackit-sdk-go/services/opensearch v0.24.1 h1:50n87uZn0EvSP9hJGLqd3Wm2hfqbyh7BMGGCk7axgqA=
 github.com/stackitcloud/stackit-sdk-go/services/opensearch v0.24.1/go.mod h1:jfguuSPa56Z5Bzs/Xg/CI37XzPo5Zn5lzC5LhfuT8Qc=
 github.com/stackitcloud/stackit-sdk-go/services/postgresflex v1.2.1 h1:K8vXele3U6b5urcSIpq21EkVblWfPDY3eMPSuQ48TkI=
@@ -1386,8 +1386,8 @@ github.com/stackitcloud/stackit-sdk-go/services/ske v1.3.0 h1:hPCpRcWEzwzGONZJsK
 github.com/stackitcloud/stackit-sdk-go/services/ske v1.3.0/go.mod h1:jDYRbagjOwKEVsvkxdUErXIvvTOLw9WdBVjaXr5YOD8=
 github.com/stackitcloud/stackit-sdk-go/services/sqlserverflex v1.3.1 h1:r5808lRhtY8l5anft/UwgJEaef1XsoYObmwd3FVai48=
 github.com/stackitcloud/stackit-sdk-go/services/sqlserverflex v1.3.1/go.mod h1:+LYy2pB+tpF0lkkmCf524wvv2Sa49REgEaNh7JGzN6Y=
-github.com/stackitcloud/terraform-provider-stackit v0.61.0 h1:j/s7f7yAGspNGfyS54MICr6E7SbKSZsJyh8wPbdZhwA=
-github.com/stackitcloud/terraform-provider-stackit v0.61.0/go.mod h1:Q2jbrYUq44FiUXjCUfA+wGpCdMPo6wkpZ0Wpu5l/r1A=
+github.com/stackitcloud/terraform-provider-stackit v0.63.0 h1:VBvnTUII2XsD7C/jGYXtCmTFnVCnDG2QFDiDjd8eAo0=
+github.com/stackitcloud/terraform-provider-stackit v0.63.0/go.mod h1:HoT7HnS6PfJqpu6A87xQ+mTIlYIi5Se2uY/qmexPSRA=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/objx v0.4.0/go.mod h1:YvHI0jy2hoMjB+UWwv71VJQ9isScKT/TqJzVSSt89Yw=
 github.com/stretchr/objx v0.5.0/go.mod h1:Yh+to48EsGEfYuaHDzXPcE3xhTkx73EhmCGUpEOglKo=
