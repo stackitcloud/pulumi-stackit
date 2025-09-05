@@ -9,7 +9,7 @@ replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraf
 require (
 	github.com/hashicorp/terraform-plugin-framework v1.15.1
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.113.0
-	github.com/stackitcloud/terraform-provider-stackit v0.61.0
+	github.com/stackitcloud/terraform-provider-stackit v0.63.0
 )
 
 require (
@@ -158,7 +158,7 @@ require (
 	github.com/stackitcloud/stackit-sdk-go/services/cdn v1.4.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/dns v0.17.1 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/git v0.7.1 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/iaas v0.29.1 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/iaas v0.29.2 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/iaasalpha v0.1.21-alpha // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/loadbalancer v1.5.1 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/logme v0.25.1 // indirect
@@ -166,7 +166,7 @@ require (
 	github.com/stackitcloud/stackit-sdk-go/services/modelserving v0.5.1 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/mongodbflex v1.5.2 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/objectstorage v1.3.1 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/observability v0.10.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/observability v0.11.1 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/opensearch v0.24.1 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/postgresflex v1.2.1 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/rabbitmq v0.25.1 // indirect
