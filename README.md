@@ -1,10 +1,27 @@
+<div align="center">
+<br>
+<img src=".github/images/stackit-logo.svg" alt="STACKIT logo" width="50%"/>
+<br>
+<br>
+</div>
+
 # STACKIT Pulumi Provider (BETA)
 
-![logo.svg](docs/logo.svg)
+[![GitHub License](https://img.shields.io/github/license/stackitcloud/pulumi-stackit)](https://www.apache.org/licenses/LICENSE-2.0)
+
+This repository contains the STACKIT Pulumi Provider.
 
 The STACKIT Pulumi Provider lets you manage [STACKIT](https://www.stackit.de/en/) resources.
 
 This STACKIT Pulumi Provider is in a BETA state. More functionality will be supported soon. Your feedback is appreciated! Feel free to open GitHub issues to provide feature requests and bug reports.
+
+## Reporting issues
+
+If you encounter any issues or have suggestions for improvements, please open an issue in the repository or create a ticket in the [STACKIT Help Center](https://support.stackit.cloud/).
+
+## License
+
+Apache 2.0
 
 ## Installing
 
