@@ -1049,8 +1049,8 @@ github.com/hashicorp/terraform-json v0.25.0 h1:rmNqc/CIfcWawGiwXmRuiXJKEiJu1ntGo
 github.com/hashicorp/terraform-json v0.25.0/go.mod h1:sMKS8fiRDX4rVlR6EJUMudg1WcanxCMoWwTLkgZP/vc=
 github.com/hashicorp/terraform-plugin-framework v1.16.1 h1:1+zwFm3MEqd/0K3YBB2v9u9DtyYHyEuhVOfeIXbteWA=
 github.com/hashicorp/terraform-plugin-framework v1.16.1/go.mod h1:0xFOxLy5lRzDTayc4dzK/FakIgBhNf/lC4499R9cV4Y=
-github.com/hashicorp/terraform-plugin-framework-validators v0.18.0 h1:OQnlOt98ua//rCw+QhBbSqfW3QbwtVrcdWeQN5gI3Hw=
-github.com/hashicorp/terraform-plugin-framework-validators v0.18.0/go.mod h1:lZvZvagw5hsJwuY7mAY6KUz45/U6fiDR0CzQAwWD0CA=
+github.com/hashicorp/terraform-plugin-framework-validators v0.19.0 h1:Zz3iGgzxe/1XBkooZCewS0nJAaCFPFPHdNJd8FgE4Ow=
+github.com/hashicorp/terraform-plugin-framework-validators v0.19.0/go.mod h1:GBKTNGbGVJohU03dZ7U8wHqc2zYnMUawgCN+gC0itLc=
 github.com/hashicorp/terraform-plugin-go v0.29.0 h1:1nXKl/nSpaYIUBU1IG/EsDOX0vv+9JxAltQyDMpq5mU=
 github.com/hashicorp/terraform-plugin-go v0.29.0/go.mod h1:vYZbIyvxyy0FWSmDHChCqKvI40cFTDGSb3D8D70i9GM=
 github.com/hashicorp/terraform-plugin-log v0.9.0 h1:i7hOA+vdAItN1/7UrfBqBwvYPQ9TFvymaRGZED3FCV0=
@@ -1374,6 +1374,8 @@ github.com/stackitcloud/stackit-sdk-go/services/redis v0.25.1 h1:8uPt82Ez34OYMOi
 github.com/stackitcloud/stackit-sdk-go/services/redis v0.25.1/go.mod h1:1Y2GEICmZDt+kr8aGnBx/sjYVAIYHmtfC8xYi9oxNEE=
 github.com/stackitcloud/stackit-sdk-go/services/resourcemanager v0.17.1 h1:r7oaINTwLmIG31AaqKTuQHHFF8YNuYGzi+46DOuSjw4=
 github.com/stackitcloud/stackit-sdk-go/services/resourcemanager v0.17.1/go.mod h1:ipcrPRbwfQXHH18dJVfY7K5ujHF5dTT6isoXgmA7YwQ=
+github.com/stackitcloud/stackit-sdk-go/services/scf v0.2.1 h1:OdofRB6uj6lwN/TXLVHVrEOwNMG34MlFNwkiHD+eOts=
+github.com/stackitcloud/stackit-sdk-go/services/scf v0.2.1/go.mod h1:5p7Xi8jadpJNDYr0t+07DXS104/RJLfhhA1r6P7PlGs=
 github.com/stackitcloud/stackit-sdk-go/services/secretsmanager v0.13.1 h1:WKFzlHllql3JsVcAq+Y1m5pSMkvwp1qH3Vf2N7i8CPg=
 github.com/stackitcloud/stackit-sdk-go/services/secretsmanager v0.13.1/go.mod h1:WGMFtGugBmUxI+nibI7eUZIQk4AGlDvwqX+m17W1y5w=
 github.com/stackitcloud/stackit-sdk-go/services/serverbackup v1.3.2 h1:tfKC4Z6Uah9AQZrtCn/ytqOgc//ChQRfJ6ozxovgads=
@@ -1388,8 +1390,8 @@ github.com/stackitcloud/stackit-sdk-go/services/ske v1.4.0 h1:V6RFvybDeJvvmT3g7/
 github.com/stackitcloud/stackit-sdk-go/services/ske v1.4.0/go.mod h1:xRBgpJ8P5Nf1T5tD0tGAeNg1FNQzx5VF7qqOXt2Fp3s=
 github.com/stackitcloud/stackit-sdk-go/services/sqlserverflex v1.3.1 h1:r5808lRhtY8l5anft/UwgJEaef1XsoYObmwd3FVai48=
 github.com/stackitcloud/stackit-sdk-go/services/sqlserverflex v1.3.1/go.mod h1:+LYy2pB+tpF0lkkmCf524wvv2Sa49REgEaNh7JGzN6Y=
-github.com/stackitcloud/terraform-provider-stackit v0.67.0 h1:uTnM5iMM3RAx7aVzEc+dz3RsFSeerX4QSuIWzZbrVQ4=
-github.com/stackitcloud/terraform-provider-stackit v0.67.0/go.mod h1:8L6NyuLOF+kA0IVqjzyVr92PmTdh4pt0A4Pw16iiCHQ=
+github.com/stackitcloud/terraform-provider-stackit v0.68.0 h1:DloxGtfCBfsdGQMgvv/0hhdIkqxuJRDZYKE0bgpqwk4=
+github.com/stackitcloud/terraform-provider-stackit v0.68.0/go.mod h1:4e5Li3xS+XpWCX0b6pmGDD7blAA1C4ajzH9OEReKyrA=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/objx v0.4.0/go.mod h1:YvHI0jy2hoMjB+UWwv71VJQ9isScKT/TqJzVSSt89Yw=
 github.com/stretchr/objx v0.5.0/go.mod h1:Yh+to48EsGEfYuaHDzXPcE3xhTkx73EhmCGUpEOglKo=

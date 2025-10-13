@@ -9,7 +9,7 @@ replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraf
 require (
 	github.com/hashicorp/terraform-plugin-framework v1.16.1
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.114.0
-	github.com/stackitcloud/terraform-provider-stackit v0.67.0
+	github.com/stackitcloud/terraform-provider-stackit v0.68.0
 )
 
 require (
@@ -82,7 +82,7 @@ require (
 	github.com/hashicorp/hcl/v2 v2.23.0 // indirect
 	github.com/hashicorp/hil v0.0.0-20190212132231-97b3a9cdfa93 // indirect
 	github.com/hashicorp/logutils v1.0.0 // indirect
-	github.com/hashicorp/terraform-plugin-framework-validators v0.18.0 // indirect
+	github.com/hashicorp/terraform-plugin-framework-validators v0.19.0 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.29.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
 	github.com/hashicorp/terraform-plugin-sdk v1.8.0 // indirect
@@ -172,6 +172,7 @@ require (
 	github.com/stackitcloud/stackit-sdk-go/services/rabbitmq v0.25.1 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/redis v0.25.1 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/resourcemanager v0.17.1 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/scf v0.2.1 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/secretsmanager v0.13.1 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/serverbackup v1.3.2 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/serverupdate v1.2.1 // indirect
