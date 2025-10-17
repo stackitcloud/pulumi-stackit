@@ -26,156 +26,151 @@ export class Provider extends pulumi.ProviderResource {
     }
 
     /**
-     * Custom endpoint for the Argus service
-     *
-     * @deprecated Argus service has been deprecated and integration will be removed after February 26th 2025. Please use `observabilityCustomEndpoint` and `observability` resources instead, which offer the exact same functionality.
-     */
-    public readonly argusCustomEndpoint!: pulumi.Output<string | undefined>;
-    /**
      * Custom endpoint for the Membership service
      */
-    public readonly authorizationCustomEndpoint!: pulumi.Output<string | undefined>;
+    declare public readonly authorizationCustomEndpoint: pulumi.Output<string | undefined>;
     /**
      * Custom endpoint for the CDN service
      */
-    public readonly cdnCustomEndpoint!: pulumi.Output<string | undefined>;
+    declare public readonly cdnCustomEndpoint: pulumi.Output<string | undefined>;
     /**
-     * Path of JSON from where the credentials are read. Takes precedence over the env var `STACKIT_CREDENTIALS_PATH`. Default
-     * value is `~/.stackit/credentials.json`.
+     * Path of JSON from where the credentials are read. Takes precedence over the env var `STACKIT_CREDENTIALS_PATH`. Default value is `~/.stackit/credentials.json`.
      */
-    public readonly credentialsPath!: pulumi.Output<string | undefined>;
+    declare public readonly credentialsPath: pulumi.Output<string | undefined>;
     /**
      * Region will be used as the default location for regional services. Not all services require a region, some are global
      */
-    public readonly defaultRegion!: pulumi.Output<string | undefined>;
+    declare public readonly defaultRegion: pulumi.Output<string | undefined>;
     /**
      * Custom endpoint for the DNS service
      */
-    public readonly dnsCustomEndpoint!: pulumi.Output<string | undefined>;
+    declare public readonly dnsCustomEndpoint: pulumi.Output<string | undefined>;
     /**
      * Custom endpoint for the Git service
      */
-    public readonly gitCustomEndpoint!: pulumi.Output<string | undefined>;
+    declare public readonly gitCustomEndpoint: pulumi.Output<string | undefined>;
     /**
      * Custom endpoint for the IaaS service
      */
-    public readonly iaasCustomEndpoint!: pulumi.Output<string | undefined>;
+    declare public readonly iaasCustomEndpoint: pulumi.Output<string | undefined>;
     /**
      * Custom endpoint for the Load Balancer service
      */
-    public readonly loadbalancerCustomEndpoint!: pulumi.Output<string | undefined>;
+    declare public readonly loadbalancerCustomEndpoint: pulumi.Output<string | undefined>;
     /**
      * Custom endpoint for the LogMe service
      */
-    public readonly logmeCustomEndpoint!: pulumi.Output<string | undefined>;
+    declare public readonly logmeCustomEndpoint: pulumi.Output<string | undefined>;
     /**
      * Custom endpoint for the MariaDB service
      */
-    public readonly mariadbCustomEndpoint!: pulumi.Output<string | undefined>;
+    declare public readonly mariadbCustomEndpoint: pulumi.Output<string | undefined>;
     /**
      * Custom endpoint for the AI Model Serving service
      */
-    public readonly modelservingCustomEndpoint!: pulumi.Output<string | undefined>;
+    declare public readonly modelservingCustomEndpoint: pulumi.Output<string | undefined>;
     /**
      * Custom endpoint for the MongoDB Flex service
      */
-    public readonly mongodbflexCustomEndpoint!: pulumi.Output<string | undefined>;
+    declare public readonly mongodbflexCustomEndpoint: pulumi.Output<string | undefined>;
     /**
      * Custom endpoint for the Object Storage service
      */
-    public readonly objectstorageCustomEndpoint!: pulumi.Output<string | undefined>;
+    declare public readonly objectstorageCustomEndpoint: pulumi.Output<string | undefined>;
     /**
      * Custom endpoint for the Observability service
      */
-    public readonly observabilityCustomEndpoint!: pulumi.Output<string | undefined>;
+    declare public readonly observabilityCustomEndpoint: pulumi.Output<string | undefined>;
     /**
      * Custom endpoint for the OpenSearch service
      */
-    public readonly opensearchCustomEndpoint!: pulumi.Output<string | undefined>;
+    declare public readonly opensearchCustomEndpoint: pulumi.Output<string | undefined>;
     /**
      * Custom endpoint for the PostgresFlex service
      */
-    public readonly postgresflexCustomEndpoint!: pulumi.Output<string | undefined>;
+    declare public readonly postgresflexCustomEndpoint: pulumi.Output<string | undefined>;
     /**
-     * Private RSA key used for authentication, relevant for the key flow. It takes precedence over the private key that is
-     * included in the service account key.
+     * Private RSA key used for authentication, relevant for the key flow. It takes precedence over the private key that is included in the service account key.
      */
-    public readonly privateKey!: pulumi.Output<string | undefined>;
+    declare public readonly privateKey: pulumi.Output<string | undefined>;
     /**
-     * Path for the private RSA key used for authentication, relevant for the key flow. It takes precedence over the private
-     * key that is included in the service account key.
+     * Path for the private RSA key used for authentication, relevant for the key flow. It takes precedence over the private key that is included in the service account key.
      */
-    public readonly privateKeyPath!: pulumi.Output<string | undefined>;
+    declare public readonly privateKeyPath: pulumi.Output<string | undefined>;
     /**
      * Custom endpoint for the RabbitMQ service
      */
-    public readonly rabbitmqCustomEndpoint!: pulumi.Output<string | undefined>;
+    declare public readonly rabbitmqCustomEndpoint: pulumi.Output<string | undefined>;
     /**
      * Custom endpoint for the Redis service
      */
-    public readonly redisCustomEndpoint!: pulumi.Output<string | undefined>;
+    declare public readonly redisCustomEndpoint: pulumi.Output<string | undefined>;
     /**
      * Region will be used as the default location for regional services. Not all services require a region, some are global
      *
      * @deprecated This attribute is deprecated. Use 'default_region' instead
      */
-    public readonly region!: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string | undefined>;
     /**
      * Custom endpoint for the Resource Manager service
      */
-    public readonly resourcemanagerCustomEndpoint!: pulumi.Output<string | undefined>;
+    declare public readonly resourcemanagerCustomEndpoint: pulumi.Output<string | undefined>;
+    /**
+     * Custom endpoint for the Cloud Foundry (SCF) service
+     */
+    declare public readonly scfCustomEndpoint: pulumi.Output<string | undefined>;
     /**
      * Custom endpoint for the Secrets Manager service
      */
-    public readonly secretsmanagerCustomEndpoint!: pulumi.Output<string | undefined>;
+    declare public readonly secretsmanagerCustomEndpoint: pulumi.Output<string | undefined>;
     /**
      * Custom endpoint for the Server Backup service
      */
-    public readonly serverBackupCustomEndpoint!: pulumi.Output<string | undefined>;
+    declare public readonly serverBackupCustomEndpoint: pulumi.Output<string | undefined>;
     /**
      * Custom endpoint for the Server Update service
      */
-    public readonly serverUpdateCustomEndpoint!: pulumi.Output<string | undefined>;
+    declare public readonly serverUpdateCustomEndpoint: pulumi.Output<string | undefined>;
     /**
      * Custom endpoint for the Service Account service
      */
-    public readonly serviceAccountCustomEndpoint!: pulumi.Output<string | undefined>;
+    declare public readonly serviceAccountCustomEndpoint: pulumi.Output<string | undefined>;
     /**
-     * Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required
-     * if you want to use the resource manager project resource.
+     * Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource.
      *
      * @deprecated The `serviceAccountEmail` field has been deprecated because it is not required. Will be removed after June 12th 2025.
      */
-    public readonly serviceAccountEmail!: pulumi.Output<string | undefined>;
+    declare public readonly serviceAccountEmail: pulumi.Output<string | undefined>;
     /**
      * Service account key used for authentication. If set, the key flow will be used to authenticate all operations.
      */
-    public readonly serviceAccountKey!: pulumi.Output<string | undefined>;
+    declare public readonly serviceAccountKey: pulumi.Output<string | undefined>;
     /**
-     * Path for the service account key used for authentication. If set, the key flow will be used to authenticate all
-     * operations.
+     * Path for the service account key used for authentication. If set, the key flow will be used to authenticate all operations.
      */
-    public readonly serviceAccountKeyPath!: pulumi.Output<string | undefined>;
+    declare public readonly serviceAccountKeyPath: pulumi.Output<string | undefined>;
     /**
      * Token used for authentication. If set, the token flow will be used to authenticate all operations.
+     *
+     * @deprecated Authentication via Service Account Token is deprecated and will be removed on December 17, 2025. Please use `serviceAccountKey` or `serviceAccountKeyPath` instead. For a smooth transition, refer to our migration guide: https://docs.stackit.cloud/stackit/en/deprecation-plan-for-service-account-access-tokens-and-migration-guide-373293307.html
      */
-    public readonly serviceAccountToken!: pulumi.Output<string | undefined>;
+    declare public readonly serviceAccountToken: pulumi.Output<string | undefined>;
     /**
      * Custom endpoint for the Service Enablement API
      */
-    public readonly serviceEnablementCustomEndpoint!: pulumi.Output<string | undefined>;
+    declare public readonly serviceEnablementCustomEndpoint: pulumi.Output<string | undefined>;
     /**
      * Custom endpoint for the Kubernetes Engine (SKE) service
      */
-    public readonly skeCustomEndpoint!: pulumi.Output<string | undefined>;
+    declare public readonly skeCustomEndpoint: pulumi.Output<string | undefined>;
     /**
      * Custom endpoint for the SQL Server Flex service
      */
-    public readonly sqlserverflexCustomEndpoint!: pulumi.Output<string | undefined>;
+    declare public readonly sqlserverflexCustomEndpoint: pulumi.Output<string | undefined>;
     /**
      * Custom endpoint for the token API, which is used to request access tokens when using the key flow
      */
-    public readonly tokenCustomEndpoint!: pulumi.Output<string | undefined>;
+    declare public readonly tokenCustomEndpoint: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -188,43 +183,43 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["argusCustomEndpoint"] = args ? args.argusCustomEndpoint : undefined;
-            resourceInputs["authorizationCustomEndpoint"] = args ? args.authorizationCustomEndpoint : undefined;
-            resourceInputs["cdnCustomEndpoint"] = args ? args.cdnCustomEndpoint : undefined;
-            resourceInputs["credentialsPath"] = args ? args.credentialsPath : undefined;
-            resourceInputs["defaultRegion"] = args ? args.defaultRegion : undefined;
-            resourceInputs["dnsCustomEndpoint"] = args ? args.dnsCustomEndpoint : undefined;
-            resourceInputs["enableBetaResources"] = pulumi.output(args ? args.enableBetaResources : undefined).apply(JSON.stringify);
-            resourceInputs["experiments"] = pulumi.output(args ? args.experiments : undefined).apply(JSON.stringify);
-            resourceInputs["gitCustomEndpoint"] = args ? args.gitCustomEndpoint : undefined;
-            resourceInputs["iaasCustomEndpoint"] = args ? args.iaasCustomEndpoint : undefined;
-            resourceInputs["loadbalancerCustomEndpoint"] = args ? args.loadbalancerCustomEndpoint : undefined;
-            resourceInputs["logmeCustomEndpoint"] = args ? args.logmeCustomEndpoint : undefined;
-            resourceInputs["mariadbCustomEndpoint"] = args ? args.mariadbCustomEndpoint : undefined;
-            resourceInputs["modelservingCustomEndpoint"] = args ? args.modelservingCustomEndpoint : undefined;
-            resourceInputs["mongodbflexCustomEndpoint"] = args ? args.mongodbflexCustomEndpoint : undefined;
-            resourceInputs["objectstorageCustomEndpoint"] = args ? args.objectstorageCustomEndpoint : undefined;
-            resourceInputs["observabilityCustomEndpoint"] = args ? args.observabilityCustomEndpoint : undefined;
-            resourceInputs["opensearchCustomEndpoint"] = args ? args.opensearchCustomEndpoint : undefined;
-            resourceInputs["postgresflexCustomEndpoint"] = args ? args.postgresflexCustomEndpoint : undefined;
-            resourceInputs["privateKey"] = args ? args.privateKey : undefined;
-            resourceInputs["privateKeyPath"] = args ? args.privateKeyPath : undefined;
-            resourceInputs["rabbitmqCustomEndpoint"] = args ? args.rabbitmqCustomEndpoint : undefined;
-            resourceInputs["redisCustomEndpoint"] = args ? args.redisCustomEndpoint : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["resourcemanagerCustomEndpoint"] = args ? args.resourcemanagerCustomEndpoint : undefined;
-            resourceInputs["secretsmanagerCustomEndpoint"] = args ? args.secretsmanagerCustomEndpoint : undefined;
-            resourceInputs["serverBackupCustomEndpoint"] = args ? args.serverBackupCustomEndpoint : undefined;
-            resourceInputs["serverUpdateCustomEndpoint"] = args ? args.serverUpdateCustomEndpoint : undefined;
-            resourceInputs["serviceAccountCustomEndpoint"] = args ? args.serviceAccountCustomEndpoint : undefined;
-            resourceInputs["serviceAccountEmail"] = args ? args.serviceAccountEmail : undefined;
-            resourceInputs["serviceAccountKey"] = args ? args.serviceAccountKey : undefined;
-            resourceInputs["serviceAccountKeyPath"] = args ? args.serviceAccountKeyPath : undefined;
-            resourceInputs["serviceAccountToken"] = args ? args.serviceAccountToken : undefined;
-            resourceInputs["serviceEnablementCustomEndpoint"] = args ? args.serviceEnablementCustomEndpoint : undefined;
-            resourceInputs["skeCustomEndpoint"] = args ? args.skeCustomEndpoint : undefined;
-            resourceInputs["sqlserverflexCustomEndpoint"] = args ? args.sqlserverflexCustomEndpoint : undefined;
-            resourceInputs["tokenCustomEndpoint"] = args ? args.tokenCustomEndpoint : undefined;
+            resourceInputs["authorizationCustomEndpoint"] = args?.authorizationCustomEndpoint;
+            resourceInputs["cdnCustomEndpoint"] = args?.cdnCustomEndpoint;
+            resourceInputs["credentialsPath"] = args?.credentialsPath;
+            resourceInputs["defaultRegion"] = args?.defaultRegion;
+            resourceInputs["dnsCustomEndpoint"] = args?.dnsCustomEndpoint;
+            resourceInputs["enableBetaResources"] = pulumi.output(args?.enableBetaResources).apply(JSON.stringify);
+            resourceInputs["experiments"] = pulumi.output(args?.experiments).apply(JSON.stringify);
+            resourceInputs["gitCustomEndpoint"] = args?.gitCustomEndpoint;
+            resourceInputs["iaasCustomEndpoint"] = args?.iaasCustomEndpoint;
+            resourceInputs["loadbalancerCustomEndpoint"] = args?.loadbalancerCustomEndpoint;
+            resourceInputs["logmeCustomEndpoint"] = args?.logmeCustomEndpoint;
+            resourceInputs["mariadbCustomEndpoint"] = args?.mariadbCustomEndpoint;
+            resourceInputs["modelservingCustomEndpoint"] = args?.modelservingCustomEndpoint;
+            resourceInputs["mongodbflexCustomEndpoint"] = args?.mongodbflexCustomEndpoint;
+            resourceInputs["objectstorageCustomEndpoint"] = args?.objectstorageCustomEndpoint;
+            resourceInputs["observabilityCustomEndpoint"] = args?.observabilityCustomEndpoint;
+            resourceInputs["opensearchCustomEndpoint"] = args?.opensearchCustomEndpoint;
+            resourceInputs["postgresflexCustomEndpoint"] = args?.postgresflexCustomEndpoint;
+            resourceInputs["privateKey"] = args?.privateKey;
+            resourceInputs["privateKeyPath"] = args?.privateKeyPath;
+            resourceInputs["rabbitmqCustomEndpoint"] = args?.rabbitmqCustomEndpoint;
+            resourceInputs["redisCustomEndpoint"] = args?.redisCustomEndpoint;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["resourcemanagerCustomEndpoint"] = args?.resourcemanagerCustomEndpoint;
+            resourceInputs["scfCustomEndpoint"] = args?.scfCustomEndpoint;
+            resourceInputs["secretsmanagerCustomEndpoint"] = args?.secretsmanagerCustomEndpoint;
+            resourceInputs["serverBackupCustomEndpoint"] = args?.serverBackupCustomEndpoint;
+            resourceInputs["serverUpdateCustomEndpoint"] = args?.serverUpdateCustomEndpoint;
+            resourceInputs["serviceAccountCustomEndpoint"] = args?.serviceAccountCustomEndpoint;
+            resourceInputs["serviceAccountEmail"] = args?.serviceAccountEmail;
+            resourceInputs["serviceAccountKey"] = args?.serviceAccountKey;
+            resourceInputs["serviceAccountKeyPath"] = args?.serviceAccountKeyPath;
+            resourceInputs["serviceAccountToken"] = args?.serviceAccountToken;
+            resourceInputs["serviceEnablementCustomEndpoint"] = args?.serviceEnablementCustomEndpoint;
+            resourceInputs["skeCustomEndpoint"] = args?.skeCustomEndpoint;
+            resourceInputs["sqlserverflexCustomEndpoint"] = args?.sqlserverflexCustomEndpoint;
+            resourceInputs["tokenCustomEndpoint"] = args?.tokenCustomEndpoint;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
@@ -245,12 +240,6 @@ export class Provider extends pulumi.ProviderResource {
  */
 export interface ProviderArgs {
     /**
-     * Custom endpoint for the Argus service
-     *
-     * @deprecated Argus service has been deprecated and integration will be removed after February 26th 2025. Please use `observabilityCustomEndpoint` and `observability` resources instead, which offer the exact same functionality.
-     */
-    argusCustomEndpoint?: pulumi.Input<string>;
-    /**
      * Custom endpoint for the Membership service
      */
     authorizationCustomEndpoint?: pulumi.Input<string>;
@@ -259,8 +248,7 @@ export interface ProviderArgs {
      */
     cdnCustomEndpoint?: pulumi.Input<string>;
     /**
-     * Path of JSON from where the credentials are read. Takes precedence over the env var `STACKIT_CREDENTIALS_PATH`. Default
-     * value is `~/.stackit/credentials.json`.
+     * Path of JSON from where the credentials are read. Takes precedence over the env var `STACKIT_CREDENTIALS_PATH`. Default value is `~/.stackit/credentials.json`.
      */
     credentialsPath?: pulumi.Input<string>;
     /**
@@ -276,8 +264,7 @@ export interface ProviderArgs {
      */
     enableBetaResources?: pulumi.Input<boolean>;
     /**
-     * Enables experiments. These are unstable features without official support. More information can be found in the README.
-     * Available Experiments: [iam]
+     * Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: iam, routing-tables, network
      */
     experiments?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -325,13 +312,11 @@ export interface ProviderArgs {
      */
     postgresflexCustomEndpoint?: pulumi.Input<string>;
     /**
-     * Private RSA key used for authentication, relevant for the key flow. It takes precedence over the private key that is
-     * included in the service account key.
+     * Private RSA key used for authentication, relevant for the key flow. It takes precedence over the private key that is included in the service account key.
      */
     privateKey?: pulumi.Input<string>;
     /**
-     * Path for the private RSA key used for authentication, relevant for the key flow. It takes precedence over the private
-     * key that is included in the service account key.
+     * Path for the private RSA key used for authentication, relevant for the key flow. It takes precedence over the private key that is included in the service account key.
      */
     privateKeyPath?: pulumi.Input<string>;
     /**
@@ -353,6 +338,10 @@ export interface ProviderArgs {
      */
     resourcemanagerCustomEndpoint?: pulumi.Input<string>;
     /**
+     * Custom endpoint for the Cloud Foundry (SCF) service
+     */
+    scfCustomEndpoint?: pulumi.Input<string>;
+    /**
      * Custom endpoint for the Secrets Manager service
      */
     secretsmanagerCustomEndpoint?: pulumi.Input<string>;
@@ -369,8 +358,7 @@ export interface ProviderArgs {
      */
     serviceAccountCustomEndpoint?: pulumi.Input<string>;
     /**
-     * Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required
-     * if you want to use the resource manager project resource.
+     * Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource.
      *
      * @deprecated The `serviceAccountEmail` field has been deprecated because it is not required. Will be removed after June 12th 2025.
      */
@@ -380,12 +368,13 @@ export interface ProviderArgs {
      */
     serviceAccountKey?: pulumi.Input<string>;
     /**
-     * Path for the service account key used for authentication. If set, the key flow will be used to authenticate all
-     * operations.
+     * Path for the service account key used for authentication. If set, the key flow will be used to authenticate all operations.
      */
     serviceAccountKeyPath?: pulumi.Input<string>;
     /**
      * Token used for authentication. If set, the token flow will be used to authenticate all operations.
+     *
+     * @deprecated Authentication via Service Account Token is deprecated and will be removed on December 17, 2025. Please use `serviceAccountKey` or `serviceAccountKeyPath` instead. For a smooth transition, refer to our migration guide: https://docs.stackit.cloud/stackit/en/deprecation-plan-for-service-account-access-tokens-and-migration-guide-373293307.html
      */
     serviceAccountToken?: pulumi.Input<string>;
     /**

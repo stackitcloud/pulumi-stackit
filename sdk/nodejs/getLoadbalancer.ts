@@ -43,6 +43,10 @@ export interface GetLoadbalancerArgs {
  */
 export interface GetLoadbalancerResult {
     /**
+     * If set to true, this will disable the automatic assignment of a security group to the load balancer's targets. This option is primarily used to allow targets that are not within the load balancer's own network or SNA (STACKIT Network area). When this is enabled, you are fully responsible for ensuring network connectivity to the targets, including managing all routing and security group rules manually. This setting cannot be changed after the load balancer is created.
+     */
+    readonly disableSecurityGroupAssignment: boolean;
+    /**
      * External Load Balancer IP address where this Load Balancer is exposed.
      */
     readonly externalAddress: string;
@@ -64,6 +68,10 @@ export interface GetLoadbalancerResult {
      */
     readonly options: outputs.GetLoadbalancerOptions;
     /**
+     * The service plan ID. If not defined, the default service plan is `p10`. Possible values are: `p10`, `p50`, `p250`, `p750`.
+     */
+    readonly planId: string;
+    /**
      * Transient private Load Balancer IP address. It can change any time.
      */
     readonly privateAddress: string;
@@ -75,6 +83,10 @@ export interface GetLoadbalancerResult {
      * The resource region. If not defined, the provider region is used.
      */
     readonly region?: string;
+    /**
+     * The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT Network areas (SNA). To enable this, create a security group rule for your target VMs and set the `remoteSecurityGroupId` of that rule to this value. This is typically used when `disableSecurityGroupAssignment` is set to `true`.
+     */
+    readonly securityGroupId: string;
     /**
      * List of all target pools which will be used in the Load Balancer. Limited to 20.
      */

@@ -11,13 +11,6 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
-// Custom endpoint for the Argus service
-//
-// Deprecated: Argus service has been deprecated and integration will be removed after February 26th 2025. Please use `observabilityCustomEndpoint` and `observability` resources instead, which offer the exact same functionality.
-func GetArgusCustomEndpoint(ctx *pulumi.Context) string {
-	return config.Get(ctx, "stackit:argusCustomEndpoint")
-}
-
 // Custom endpoint for the Membership service
 func GetAuthorizationCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:authorizationCustomEndpoint")
@@ -28,8 +21,7 @@ func GetCdnCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:cdnCustomEndpoint")
 }
 
-// Path of JSON from where the credentials are read. Takes precedence over the env var `STACKIT_CREDENTIALS_PATH`. Default
-// value is `~/.stackit/credentials.json`.
+// Path of JSON from where the credentials are read. Takes precedence over the env var `STACKIT_CREDENTIALS_PATH`. Default value is `~/.stackit/credentials.json`.
 func GetCredentialsPath(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:credentialsPath")
 }
@@ -49,8 +41,7 @@ func GetEnableBetaResources(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "stackit:enableBetaResources")
 }
 
-// Enables experiments. These are unstable features without official support. More information can be found in the README.
-// Available Experiments: [iam]
+// Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: iam, routing-tables, network
 func GetExperiments(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:experiments")
 }
@@ -110,14 +101,12 @@ func GetPostgresflexCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:postgresflexCustomEndpoint")
 }
 
-// Private RSA key used for authentication, relevant for the key flow. It takes precedence over the private key that is
-// included in the service account key.
+// Private RSA key used for authentication, relevant for the key flow. It takes precedence over the private key that is included in the service account key.
 func GetPrivateKey(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:privateKey")
 }
 
-// Path for the private RSA key used for authentication, relevant for the key flow. It takes precedence over the private
-// key that is included in the service account key.
+// Path for the private RSA key used for authentication, relevant for the key flow. It takes precedence over the private key that is included in the service account key.
 func GetPrivateKeyPath(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:privateKeyPath")
 }
@@ -144,6 +133,11 @@ func GetResourcemanagerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:resourcemanagerCustomEndpoint")
 }
 
+// Custom endpoint for the Cloud Foundry (SCF) service
+func GetScfCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "stackit:scfCustomEndpoint")
+}
+
 // Custom endpoint for the Secrets Manager service
 func GetSecretsmanagerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:secretsmanagerCustomEndpoint")
@@ -164,8 +158,7 @@ func GetServiceAccountCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:serviceAccountCustomEndpoint")
 }
 
-// Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required
-// if you want to use the resource manager project resource.
+// Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource.
 //
 // Deprecated: The `serviceAccountEmail` field has been deprecated because it is not required. Will be removed after June 12th 2025.
 func GetServiceAccountEmail(ctx *pulumi.Context) string {
@@ -177,13 +170,14 @@ func GetServiceAccountKey(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:serviceAccountKey")
 }
 
-// Path for the service account key used for authentication. If set, the key flow will be used to authenticate all
-// operations.
+// Path for the service account key used for authentication. If set, the key flow will be used to authenticate all operations.
 func GetServiceAccountKeyPath(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:serviceAccountKeyPath")
 }
 
 // Token used for authentication. If set, the token flow will be used to authenticate all operations.
+//
+// Deprecated: Authentication via Service Account Token is deprecated and will be removed on December 17, 2025. Please use `serviceAccountKey` or `serviceAccountKeyPath` instead. For a smooth transition, refer to our migration guide: https://docs.stackit.cloud/stackit/en/deprecation-plan-for-service-account-access-tokens-and-migration-guide-373293307.html
 func GetServiceAccountToken(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:serviceAccountToken")
 }

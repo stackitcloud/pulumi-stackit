@@ -63,11 +63,11 @@ type LookupObservabilityInstanceResult struct {
 	LogsUrl string `pulumi:"logsUrl"`
 	// Specifies URL for pushing metrics.
 	MetricsPushUrl string `pulumi:"metricsPushUrl"`
-	// Specifies for how many days the raw metrics are kept.
+	// Specifies for how many days the raw metrics are kept. Default is set to `90`.
 	MetricsRetentionDays int `pulumi:"metricsRetentionDays"`
-	// Specifies for how many days the 1h downsampled metrics are kept. must be less than the value of the 5m downsampling retention. Default is set to `0` (disabled).
+	// Specifies for how many days the 1h downsampled metrics are kept. must be less than the value of the 5m downsampling retention. Default is set to `90`.
 	MetricsRetentionDays1hDownsampling int `pulumi:"metricsRetentionDays1hDownsampling"`
-	// Specifies for how many days the 5m downsampled metrics are kept. must be less than the value of the general retention. Default is set to `0` (disabled).
+	// Specifies for how many days the 5m downsampled metrics are kept. must be less than the value of the general retention. Default is set to `90`.
 	MetricsRetentionDays5mDownsampling int `pulumi:"metricsRetentionDays5mDownsampling"`
 	// Specifies metrics URL.
 	MetricsUrl string `pulumi:"metricsUrl"`
@@ -200,17 +200,17 @@ func (o LookupObservabilityInstanceResultOutput) MetricsPushUrl() pulumi.StringO
 	return o.ApplyT(func(v LookupObservabilityInstanceResult) string { return v.MetricsPushUrl }).(pulumi.StringOutput)
 }
 
-// Specifies for how many days the raw metrics are kept.
+// Specifies for how many days the raw metrics are kept. Default is set to `90`.
 func (o LookupObservabilityInstanceResultOutput) MetricsRetentionDays() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupObservabilityInstanceResult) int { return v.MetricsRetentionDays }).(pulumi.IntOutput)
 }
 
-// Specifies for how many days the 1h downsampled metrics are kept. must be less than the value of the 5m downsampling retention. Default is set to `0` (disabled).
+// Specifies for how many days the 1h downsampled metrics are kept. must be less than the value of the 5m downsampling retention. Default is set to `90`.
 func (o LookupObservabilityInstanceResultOutput) MetricsRetentionDays1hDownsampling() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupObservabilityInstanceResult) int { return v.MetricsRetentionDays1hDownsampling }).(pulumi.IntOutput)
 }
 
-// Specifies for how many days the 5m downsampled metrics are kept. must be less than the value of the general retention. Default is set to `0` (disabled).
+// Specifies for how many days the 5m downsampled metrics are kept. must be less than the value of the general retention. Default is set to `90`.
 func (o LookupObservabilityInstanceResultOutput) MetricsRetentionDays5mDownsampling() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupObservabilityInstanceResult) int { return v.MetricsRetentionDays5mDownsampling }).(pulumi.IntOutput)
 }

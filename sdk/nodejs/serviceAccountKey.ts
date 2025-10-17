@@ -41,31 +41,31 @@ export class ServiceAccountKey extends pulumi.CustomResource {
     /**
      * The raw JSON representation of the service account key json, available for direct use.
      */
-    public /*out*/ readonly json!: pulumi.Output<string>;
+    declare public /*out*/ readonly json: pulumi.Output<string>;
     /**
      * The unique identifier for the key associated with the service account.
      */
-    public /*out*/ readonly keyId!: pulumi.Output<string>;
+    declare public /*out*/ readonly keyId: pulumi.Output<string>;
     /**
      * The STACKIT project ID associated with the service account key.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * Specifies the public*key (RSA2048 key-pair). If not provided, a certificate from STACKIT will be used to generate a private*key.
      */
-    public readonly publicKey!: pulumi.Output<string | undefined>;
+    declare public readonly publicKey: pulumi.Output<string | undefined>;
     /**
      * A map of arbitrary key/value pairs designed to force key recreation when they change, facilitating key rotation based on external factors such as a changing timestamp. Modifying this map triggers the creation of a new resource.
      */
-    public readonly rotateWhenChanged!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly rotateWhenChanged: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The email address associated with the service account, used for account identification and communication.
      */
-    public readonly serviceAccountEmail!: pulumi.Output<string>;
+    declare public readonly serviceAccountEmail: pulumi.Output<string>;
     /**
      * Specifies the key's validity duration in days. If left unspecified, the key is considered valid until it is deleted
      */
-    public readonly ttlDays!: pulumi.Output<number | undefined>;
+    declare public readonly ttlDays: pulumi.Output<number | undefined>;
 
     /**
      * Create a ServiceAccountKey resource with the given unique name, arguments, and options.
@@ -80,26 +80,26 @@ export class ServiceAccountKey extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceAccountKeyState | undefined;
-            resourceInputs["json"] = state ? state.json : undefined;
-            resourceInputs["keyId"] = state ? state.keyId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["publicKey"] = state ? state.publicKey : undefined;
-            resourceInputs["rotateWhenChanged"] = state ? state.rotateWhenChanged : undefined;
-            resourceInputs["serviceAccountEmail"] = state ? state.serviceAccountEmail : undefined;
-            resourceInputs["ttlDays"] = state ? state.ttlDays : undefined;
+            resourceInputs["json"] = state?.json;
+            resourceInputs["keyId"] = state?.keyId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["publicKey"] = state?.publicKey;
+            resourceInputs["rotateWhenChanged"] = state?.rotateWhenChanged;
+            resourceInputs["serviceAccountEmail"] = state?.serviceAccountEmail;
+            resourceInputs["ttlDays"] = state?.ttlDays;
         } else {
             const args = argsOrState as ServiceAccountKeyArgs | undefined;
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.serviceAccountEmail === undefined) && !opts.urn) {
+            if (args?.serviceAccountEmail === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceAccountEmail'");
             }
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["publicKey"] = args ? args.publicKey : undefined;
-            resourceInputs["rotateWhenChanged"] = args ? args.rotateWhenChanged : undefined;
-            resourceInputs["serviceAccountEmail"] = args ? args.serviceAccountEmail : undefined;
-            resourceInputs["ttlDays"] = args ? args.ttlDays : undefined;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["publicKey"] = args?.publicKey;
+            resourceInputs["rotateWhenChanged"] = args?.rotateWhenChanged;
+            resourceInputs["serviceAccountEmail"] = args?.serviceAccountEmail;
+            resourceInputs["ttlDays"] = args?.ttlDays;
             resourceInputs["json"] = undefined /*out*/;
             resourceInputs["keyId"] = undefined /*out*/;
         }

@@ -36,6 +36,8 @@ type LookupLoadbalancerArgs struct {
 
 // A collection of values returned by getLoadbalancer.
 type LookupLoadbalancerResult struct {
+	// If set to true, this will disable the automatic assignment of a security group to the load balancer's targets. This option is primarily used to allow targets that are not within the load balancer's own network or SNA (STACKIT Network area). When this is enabled, you are fully responsible for ensuring network connectivity to the targets, including managing all routing and security group rules manually. This setting cannot be changed after the load balancer is created.
+	DisableSecurityGroupAssignment bool `pulumi:"disableSecurityGroupAssignment"`
 	// External Load Balancer IP address where this Load Balancer is exposed.
 	ExternalAddress string `pulumi:"externalAddress"`
 	Id              string `pulumi:"id"`
@@ -47,12 +49,16 @@ type LookupLoadbalancerResult struct {
 	Networks []GetLoadbalancerNetwork `pulumi:"networks"`
 	// Defines any optional functionality you want to have enabled on your load balancer.
 	Options GetLoadbalancerOptions `pulumi:"options"`
+	// The service plan ID. If not defined, the default service plan is `p10`. Possible values are: `p10`, `p50`, `p250`, `p750`.
+	PlanId string `pulumi:"planId"`
 	// Transient private Load Balancer IP address. It can change any time.
 	PrivateAddress string `pulumi:"privateAddress"`
 	// STACKIT project ID to which the Load Balancer is associated.
 	ProjectId string `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
 	Region *string `pulumi:"region"`
+	// The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT Network areas (SNA). To enable this, create a security group rule for your target VMs and set the `remoteSecurityGroupId` of that rule to this value. This is typically used when `disableSecurityGroupAssignment` is set to `true`.
+	SecurityGroupId string `pulumi:"securityGroupId"`
 	// List of all target pools which will be used in the Load Balancer. Limited to 20.
 	TargetPools []GetLoadbalancerTargetPool `pulumi:"targetPools"`
 }
@@ -95,6 +101,11 @@ func (o LookupLoadbalancerResultOutput) ToLookupLoadbalancerResultOutputWithCont
 	return o
 }
 
+// If set to true, this will disable the automatic assignment of a security group to the load balancer's targets. This option is primarily used to allow targets that are not within the load balancer's own network or SNA (STACKIT Network area). When this is enabled, you are fully responsible for ensuring network connectivity to the targets, including managing all routing and security group rules manually. This setting cannot be changed after the load balancer is created.
+func (o LookupLoadbalancerResultOutput) DisableSecurityGroupAssignment() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupLoadbalancerResult) bool { return v.DisableSecurityGroupAssignment }).(pulumi.BoolOutput)
+}
+
 // External Load Balancer IP address where this Load Balancer is exposed.
 func (o LookupLoadbalancerResultOutput) ExternalAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLoadbalancerResult) string { return v.ExternalAddress }).(pulumi.StringOutput)
@@ -124,6 +135,11 @@ func (o LookupLoadbalancerResultOutput) Options() GetLoadbalancerOptionsOutput {
 	return o.ApplyT(func(v LookupLoadbalancerResult) GetLoadbalancerOptions { return v.Options }).(GetLoadbalancerOptionsOutput)
 }
 
+// The service plan ID. If not defined, the default service plan is `p10`. Possible values are: `p10`, `p50`, `p250`, `p750`.
+func (o LookupLoadbalancerResultOutput) PlanId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadbalancerResult) string { return v.PlanId }).(pulumi.StringOutput)
+}
+
 // Transient private Load Balancer IP address. It can change any time.
 func (o LookupLoadbalancerResultOutput) PrivateAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLoadbalancerResult) string { return v.PrivateAddress }).(pulumi.StringOutput)
@@ -137,6 +153,11 @@ func (o LookupLoadbalancerResultOutput) ProjectId() pulumi.StringOutput {
 // The resource region. If not defined, the provider region is used.
 func (o LookupLoadbalancerResultOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLoadbalancerResult) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT Network areas (SNA). To enable this, create a security group rule for your target VMs and set the `remoteSecurityGroupId` of that rule to this value. This is typically used when `disableSecurityGroupAssignment` is set to `true`.
+func (o LookupLoadbalancerResultOutput) SecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadbalancerResult) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
 // List of all target pools which will be used in the Load Balancer. Limited to 20.

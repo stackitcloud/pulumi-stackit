@@ -42,47 +42,47 @@ export class NetworkArea extends pulumi.CustomResource {
     /**
      * List of DNS Servers/Nameservers.
      */
-    public readonly defaultNameservers!: pulumi.Output<string[] | undefined>;
+    declare public readonly defaultNameservers: pulumi.Output<string[] | undefined>;
     /**
      * The default prefix length for networks in the network area.
      */
-    public readonly defaultPrefixLength!: pulumi.Output<number>;
+    declare public readonly defaultPrefixLength: pulumi.Output<number>;
     /**
      * Labels are key-value string pairs which can be attached to a resource container
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The maximal prefix length for networks in the network area.
      */
-    public readonly maxPrefixLength!: pulumi.Output<number>;
+    declare public readonly maxPrefixLength: pulumi.Output<number>;
     /**
      * The minimal prefix length for networks in the network area.
      */
-    public readonly minPrefixLength!: pulumi.Output<number>;
+    declare public readonly minPrefixLength: pulumi.Output<number>;
     /**
      * The name of the network area.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The network area ID.
      */
-    public /*out*/ readonly networkAreaId!: pulumi.Output<string>;
+    declare public /*out*/ readonly networkAreaId: pulumi.Output<string>;
     /**
      * List of Network ranges.
      */
-    public readonly networkRanges!: pulumi.Output<outputs.NetworkAreaNetworkRange[]>;
+    declare public readonly networkRanges: pulumi.Output<outputs.NetworkAreaNetworkRange[]>;
     /**
      * STACKIT organization ID to which the network area is associated.
      */
-    public readonly organizationId!: pulumi.Output<string>;
+    declare public readonly organizationId: pulumi.Output<string>;
     /**
      * The amount of projects currently referencing this area.
      */
-    public /*out*/ readonly projectCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly projectCount: pulumi.Output<number>;
     /**
      * Classless Inter-Domain Routing (CIDR).
      */
-    public readonly transferNetwork!: pulumi.Output<string>;
+    declare public readonly transferNetwork: pulumi.Output<string>;
 
     /**
      * Create a NetworkArea resource with the given unique name, arguments, and options.
@@ -97,37 +97,37 @@ export class NetworkArea extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkAreaState | undefined;
-            resourceInputs["defaultNameservers"] = state ? state.defaultNameservers : undefined;
-            resourceInputs["defaultPrefixLength"] = state ? state.defaultPrefixLength : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["maxPrefixLength"] = state ? state.maxPrefixLength : undefined;
-            resourceInputs["minPrefixLength"] = state ? state.minPrefixLength : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkAreaId"] = state ? state.networkAreaId : undefined;
-            resourceInputs["networkRanges"] = state ? state.networkRanges : undefined;
-            resourceInputs["organizationId"] = state ? state.organizationId : undefined;
-            resourceInputs["projectCount"] = state ? state.projectCount : undefined;
-            resourceInputs["transferNetwork"] = state ? state.transferNetwork : undefined;
+            resourceInputs["defaultNameservers"] = state?.defaultNameservers;
+            resourceInputs["defaultPrefixLength"] = state?.defaultPrefixLength;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["maxPrefixLength"] = state?.maxPrefixLength;
+            resourceInputs["minPrefixLength"] = state?.minPrefixLength;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkAreaId"] = state?.networkAreaId;
+            resourceInputs["networkRanges"] = state?.networkRanges;
+            resourceInputs["organizationId"] = state?.organizationId;
+            resourceInputs["projectCount"] = state?.projectCount;
+            resourceInputs["transferNetwork"] = state?.transferNetwork;
         } else {
             const args = argsOrState as NetworkAreaArgs | undefined;
-            if ((!args || args.networkRanges === undefined) && !opts.urn) {
+            if (args?.networkRanges === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkRanges'");
             }
-            if ((!args || args.organizationId === undefined) && !opts.urn) {
+            if (args?.organizationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.transferNetwork === undefined) && !opts.urn) {
+            if (args?.transferNetwork === undefined && !opts.urn) {
                 throw new Error("Missing required property 'transferNetwork'");
             }
-            resourceInputs["defaultNameservers"] = args ? args.defaultNameservers : undefined;
-            resourceInputs["defaultPrefixLength"] = args ? args.defaultPrefixLength : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["maxPrefixLength"] = args ? args.maxPrefixLength : undefined;
-            resourceInputs["minPrefixLength"] = args ? args.minPrefixLength : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networkRanges"] = args ? args.networkRanges : undefined;
-            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
-            resourceInputs["transferNetwork"] = args ? args.transferNetwork : undefined;
+            resourceInputs["defaultNameservers"] = args?.defaultNameservers;
+            resourceInputs["defaultPrefixLength"] = args?.defaultPrefixLength;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["maxPrefixLength"] = args?.maxPrefixLength;
+            resourceInputs["minPrefixLength"] = args?.minPrefixLength;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networkRanges"] = args?.networkRanges;
+            resourceInputs["organizationId"] = args?.organizationId;
+            resourceInputs["transferNetwork"] = args?.transferNetwork;
             resourceInputs["networkAreaId"] = undefined /*out*/;
             resourceInputs["projectCount"] = undefined /*out*/;
         }

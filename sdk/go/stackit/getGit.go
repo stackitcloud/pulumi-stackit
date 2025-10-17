@@ -13,7 +13,7 @@ import (
 
 // Git Instance datasource schema.
 //
-// > This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
+// > This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
 //
 // ## Example Usage
 func LookupGit(ctx *pulumi.Context, args *LookupGitArgs, opts ...pulumi.InvokeOption) (*LookupGitResult, error) {
@@ -36,7 +36,17 @@ type LookupGitArgs struct {
 
 // A collection of values returned by getGit.
 type LookupGitResult struct {
-	Id string `pulumi:"id"`
+	// Restricted ACL for instance access.
+	Acls []string `pulumi:"acls"`
+	// How many bytes of disk space is consumed.
+	ConsumedDisk string `pulumi:"consumedDisk"`
+	// How many bytes of Object Storage is consumed.
+	ConsumedObjectStorage string `pulumi:"consumedObjectStorage"`
+	// Instance creation timestamp in RFC3339 format.
+	Created string `pulumi:"created"`
+	// Instance flavor. If not provided, defaults to git-100. For a list of available flavors, refer to our API documentation: `https://docs.api.stackit.cloud/documentation/git/version/v1beta`
+	Flavor string `pulumi:"flavor"`
+	Id     string `pulumi:"id"`
 	// ID linked to the git instance.
 	InstanceId string `pulumi:"instanceId"`
 	// Unique name linked to the git instance.
@@ -83,6 +93,31 @@ func (o LookupGitResultOutput) ToLookupGitResultOutput() LookupGitResultOutput {
 
 func (o LookupGitResultOutput) ToLookupGitResultOutputWithContext(ctx context.Context) LookupGitResultOutput {
 	return o
+}
+
+// Restricted ACL for instance access.
+func (o LookupGitResultOutput) Acls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupGitResult) []string { return v.Acls }).(pulumi.StringArrayOutput)
+}
+
+// How many bytes of disk space is consumed.
+func (o LookupGitResultOutput) ConsumedDisk() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGitResult) string { return v.ConsumedDisk }).(pulumi.StringOutput)
+}
+
+// How many bytes of Object Storage is consumed.
+func (o LookupGitResultOutput) ConsumedObjectStorage() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGitResult) string { return v.ConsumedObjectStorage }).(pulumi.StringOutput)
+}
+
+// Instance creation timestamp in RFC3339 format.
+func (o LookupGitResultOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGitResult) string { return v.Created }).(pulumi.StringOutput)
+}
+
+// Instance flavor. If not provided, defaults to git-100. For a list of available flavors, refer to our API documentation: `https://docs.api.stackit.cloud/documentation/git/version/v1beta`
+func (o LookupGitResultOutput) Flavor() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGitResult) string { return v.Flavor }).(pulumi.StringOutput)
 }
 
 func (o LookupGitResultOutput) Id() pulumi.StringOutput {

@@ -42,35 +42,35 @@ export class ServerUpdateSchedule extends pulumi.CustomResource {
     /**
      * Is the update schedule enabled or disabled.
      */
-    public readonly enabled!: pulumi.Output<boolean>;
+    declare public readonly enabled: pulumi.Output<boolean>;
     /**
      * Maintenance window [1..24].
      */
-    public readonly maintenanceWindow!: pulumi.Output<number>;
+    declare public readonly maintenanceWindow: pulumi.Output<number>;
     /**
      * The schedule name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * STACKIT Project ID to which the server is associated.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Update schedule described in `rrule` (recurrence rule) format.
      */
-    public readonly rrule!: pulumi.Output<string>;
+    declare public readonly rrule: pulumi.Output<string>;
     /**
      * Server ID for the update schedule.
      */
-    public readonly serverId!: pulumi.Output<string>;
+    declare public readonly serverId: pulumi.Output<string>;
     /**
      * Update schedule ID.
      */
-    public /*out*/ readonly updateScheduleId!: pulumi.Output<number>;
+    declare public /*out*/ readonly updateScheduleId: pulumi.Output<number>;
 
     /**
      * Create a ServerUpdateSchedule resource with the given unique name, arguments, and options.
@@ -85,38 +85,38 @@ export class ServerUpdateSchedule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServerUpdateScheduleState | undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["maintenanceWindow"] = state ? state.maintenanceWindow : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["rrule"] = state ? state.rrule : undefined;
-            resourceInputs["serverId"] = state ? state.serverId : undefined;
-            resourceInputs["updateScheduleId"] = state ? state.updateScheduleId : undefined;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["maintenanceWindow"] = state?.maintenanceWindow;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["rrule"] = state?.rrule;
+            resourceInputs["serverId"] = state?.serverId;
+            resourceInputs["updateScheduleId"] = state?.updateScheduleId;
         } else {
             const args = argsOrState as ServerUpdateScheduleArgs | undefined;
-            if ((!args || args.enabled === undefined) && !opts.urn) {
+            if (args?.enabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'enabled'");
             }
-            if ((!args || args.maintenanceWindow === undefined) && !opts.urn) {
+            if (args?.maintenanceWindow === undefined && !opts.urn) {
                 throw new Error("Missing required property 'maintenanceWindow'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.rrule === undefined) && !opts.urn) {
+            if (args?.rrule === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rrule'");
             }
-            if ((!args || args.serverId === undefined) && !opts.urn) {
+            if (args?.serverId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serverId'");
             }
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["maintenanceWindow"] = args ? args.maintenanceWindow : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["rrule"] = args ? args.rrule : undefined;
-            resourceInputs["serverId"] = args ? args.serverId : undefined;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["maintenanceWindow"] = args?.maintenanceWindow;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["rrule"] = args?.rrule;
+            resourceInputs["serverId"] = args?.serverId;
             resourceInputs["updateScheduleId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

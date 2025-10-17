@@ -37,28 +37,32 @@ export class MongodbflexUser extends pulumi.CustomResource {
         return obj['__pulumiType'] === MongodbflexUser.__pulumiType;
     }
 
-    public readonly database!: pulumi.Output<string>;
-    public /*out*/ readonly host!: pulumi.Output<string>;
+    declare public readonly database: pulumi.Output<string>;
+    declare public /*out*/ readonly host: pulumi.Output<string>;
     /**
      * ID of the MongoDB Flex instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
-    public /*out*/ readonly password!: pulumi.Output<string>;
-    public /*out*/ readonly port!: pulumi.Output<number>;
+    declare public readonly instanceId: pulumi.Output<string>;
+    declare public /*out*/ readonly password: pulumi.Output<string>;
+    declare public /*out*/ readonly port: pulumi.Output<number>;
     /**
      * STACKIT project ID to which the instance is associated.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Database access levels for the user. Some of the possible values are: [`read`, `readWrite`, `readWriteAnyDatabase`]
      */
-    public readonly roles!: pulumi.Output<string[]>;
-    public /*out*/ readonly uri!: pulumi.Output<string>;
+    declare public readonly roles: pulumi.Output<string[]>;
+    declare public /*out*/ readonly uri: pulumi.Output<string>;
     /**
      * User ID.
      */
-    public /*out*/ readonly userId!: pulumi.Output<string>;
-    public readonly username!: pulumi.Output<string>;
+    declare public /*out*/ readonly userId: pulumi.Output<string>;
+    declare public readonly username: pulumi.Output<string>;
 
     /**
      * Create a MongodbflexUser resource with the given unique name, arguments, and options.
@@ -73,35 +77,37 @@ export class MongodbflexUser extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MongodbflexUserState | undefined;
-            resourceInputs["database"] = state ? state.database : undefined;
-            resourceInputs["host"] = state ? state.host : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["roles"] = state ? state.roles : undefined;
-            resourceInputs["uri"] = state ? state.uri : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["database"] = state?.database;
+            resourceInputs["host"] = state?.host;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["roles"] = state?.roles;
+            resourceInputs["uri"] = state?.uri;
+            resourceInputs["userId"] = state?.userId;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as MongodbflexUserArgs | undefined;
-            if ((!args || args.database === undefined) && !opts.urn) {
+            if (args?.database === undefined && !opts.urn) {
                 throw new Error("Missing required property 'database'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.roles === undefined) && !opts.urn) {
+            if (args?.roles === undefined && !opts.urn) {
                 throw new Error("Missing required property 'roles'");
             }
-            resourceInputs["database"] = args ? args.database : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["roles"] = args ? args.roles : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["database"] = args?.database;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["roles"] = args?.roles;
+            resourceInputs["username"] = args?.username;
             resourceInputs["host"] = undefined /*out*/;
             resourceInputs["password"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;
@@ -132,6 +138,10 @@ export interface MongodbflexUserState {
      */
     projectId?: pulumi.Input<string>;
     /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string>;
+    /**
      * Database access levels for the user. Some of the possible values are: [`read`, `readWrite`, `readWriteAnyDatabase`]
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
@@ -156,6 +166,10 @@ export interface MongodbflexUserArgs {
      * STACKIT project ID to which the instance is associated.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string>;
     /**
      * Database access levels for the user. Some of the possible values are: [`read`, `readWrite`, `readWriteAnyDatabase`]
      */

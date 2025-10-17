@@ -14,6 +14,10 @@ namespace Pulumi.Stackit.Outputs
     public sealed class ObservabilityInstanceAlertConfigRouteRoute
     {
         /// <summary>
+        /// Whether an alert should continue matching subsequent sibling nodes.
+        /// </summary>
+        public readonly bool? Continue;
+        /// <summary>
         /// The labels by which incoming alerts are grouped together. For example, multiple alerts coming in for cluster=A and alertname=LatencyHigh would be batched into a single group. To aggregate by all possible labels use the special value '...' as the sole label name, for example: group_by: ['...']. This effectively disables aggregation entirely, passing through all alerts as-is. This is unlikely to be what you want, unless you have a very low alert volume or your upstream notification system performs its own grouping.
         /// </summary>
         public readonly ImmutableArray<string> GroupBies;
@@ -26,13 +30,17 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly string? GroupWait;
         /// <summary>
-        /// A set of equality matchers an alert has to fulfill to match the node.
+        /// A set of equality matchers an alert has to fulfill to match the node. This field is deprecated and will be removed after 10th March 2026, use `matchers` in the `routes` instead
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Match;
         /// <summary>
-        /// A set of regex-matchers an alert has to fulfill to match the node.
+        /// A set of regex-matchers an alert has to fulfill to match the node. This field is deprecated and will be removed after 10th March 2026, use `matchers` in the `routes` instead
         /// </summary>
         public readonly ImmutableDictionary<string, string>? MatchRegex;
+        /// <summary>
+        /// A list of matchers that an alert has to fulfill to match the node. A matcher is a string with a syntax inspired by PromQL and OpenMetrics.
+        /// </summary>
+        public readonly ImmutableArray<string> Matchers;
         /// <summary>
         /// The name of the receiver to route the alerts to.
         /// </summary>
@@ -44,6 +52,8 @@ namespace Pulumi.Stackit.Outputs
 
         [OutputConstructor]
         private ObservabilityInstanceAlertConfigRouteRoute(
+            bool? @continue,
+
             ImmutableArray<string> groupBies,
 
             string? groupInterval,
@@ -54,15 +64,19 @@ namespace Pulumi.Stackit.Outputs
 
             ImmutableDictionary<string, string>? matchRegex,
 
+            ImmutableArray<string> matchers,
+
             string receiver,
 
             string? repeatInterval)
         {
+            Continue = @continue;
             GroupBies = groupBies;
             GroupInterval = groupInterval;
             GroupWait = groupWait;
             Match = match;
             MatchRegex = matchRegex;
+            Matchers = matchers;
             Receiver = receiver;
             RepeatInterval = repeatInterval;
         }

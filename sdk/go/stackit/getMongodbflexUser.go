@@ -30,6 +30,8 @@ type LookupMongodbflexUserArgs struct {
 	InstanceId string `pulumi:"instanceId"`
 	// STACKIT project ID to which the instance is associated.
 	ProjectId string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 	// User ID.
 	UserId string `pulumi:"userId"`
 }
@@ -43,8 +45,10 @@ type LookupMongodbflexUserResult struct {
 	InstanceId string `pulumi:"instanceId"`
 	Port       int    `pulumi:"port"`
 	// STACKIT project ID to which the instance is associated.
-	ProjectId string   `pulumi:"projectId"`
-	Roles     []string `pulumi:"roles"`
+	ProjectId string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region string   `pulumi:"region"`
+	Roles  []string `pulumi:"roles"`
 	// User ID.
 	UserId   string `pulumi:"userId"`
 	Username string `pulumi:"username"`
@@ -65,6 +69,8 @@ type LookupMongodbflexUserOutputArgs struct {
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// STACKIT project ID to which the instance is associated.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 	// User ID.
 	UserId pulumi.StringInput `pulumi:"userId"`
 }
@@ -112,6 +118,11 @@ func (o LookupMongodbflexUserResultOutput) Port() pulumi.IntOutput {
 // STACKIT project ID to which the instance is associated.
 func (o LookupMongodbflexUserResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMongodbflexUserResult) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The resource region. If not defined, the provider region is used.
+func (o LookupMongodbflexUserResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMongodbflexUserResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
 func (o LookupMongodbflexUserResultOutput) Roles() pulumi.StringArrayOutput {

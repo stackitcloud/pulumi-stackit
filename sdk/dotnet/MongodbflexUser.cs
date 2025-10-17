@@ -42,6 +42,12 @@ namespace Pulumi.Stackit
         public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Output("region")]
+        public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
         /// Database access levels for the user. Some of the possible values are: [`read`, `readWrite`, `readWriteAnyDatabase`]
         /// </summary>
         [Output("roles")]
@@ -126,6 +132,12 @@ namespace Pulumi.Stackit
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
         [Input("roles", required: true)]
         private InputList<string>? _roles;
 
@@ -181,6 +193,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         [Input("roles")]
         private InputList<string>? _roles;

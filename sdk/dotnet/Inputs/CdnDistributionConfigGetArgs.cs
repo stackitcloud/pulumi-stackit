@@ -18,6 +18,24 @@ namespace Pulumi.Stackit.Inputs
         [Input("backend", required: true)]
         public Input<Inputs.CdnDistributionConfigBackendGetArgs> Backend { get; set; } = null!;
 
+        [Input("blockedCountries")]
+        private InputList<string>? _blockedCountries;
+
+        /// <summary>
+        /// The configured countries where distribution of content is blocked
+        /// </summary>
+        public InputList<string> BlockedCountries
+        {
+            get => _blockedCountries ?? (_blockedCountries = new InputList<string>());
+            set => _blockedCountries = value;
+        }
+
+        /// <summary>
+        /// Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
+        /// </summary>
+        [Input("optimizer")]
+        public Input<Inputs.CdnDistributionConfigOptimizerGetArgs>? Optimizer { get; set; }
+
         [Input("regions", required: true)]
         private InputList<string>? _regions;
 

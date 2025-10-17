@@ -22,6 +22,14 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly string? ApiUrl;
         /// <summary>
+        /// Priority of the alert. Possible values are: `P1`, `P2`, `P3`, `P4`, `P5`.
+        /// </summary>
+        public readonly string? Priority;
+        /// <summary>
+        /// Whether to notify about resolved alerts.
+        /// </summary>
+        public readonly bool? SendResolved;
+        /// <summary>
         /// Comma separated list of tags attached to the notifications.
         /// </summary>
         public readonly string? Tags;
@@ -32,10 +40,16 @@ namespace Pulumi.Stackit.Outputs
 
             string? apiUrl,
 
+            string? priority,
+
+            bool? sendResolved,
+
             string? tags)
         {
             ApiKey = apiKey;
             ApiUrl = apiUrl;
+            Priority = priority;
+            SendResolved = sendResolved;
             Tags = tags;
         }
     }

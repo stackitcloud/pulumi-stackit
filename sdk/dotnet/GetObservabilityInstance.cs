@@ -158,15 +158,15 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string MetricsPushUrl;
         /// <summary>
-        /// Specifies for how many days the raw metrics are kept.
+        /// Specifies for how many days the raw metrics are kept. Default is set to `90`.
         /// </summary>
         public readonly int MetricsRetentionDays;
         /// <summary>
-        /// Specifies for how many days the 1h downsampled metrics are kept. must be less than the value of the 5m downsampling retention. Default is set to `0` (disabled).
+        /// Specifies for how many days the 1h downsampled metrics are kept. must be less than the value of the 5m downsampling retention. Default is set to `90`.
         /// </summary>
         public readonly int MetricsRetentionDays1hDownsampling;
         /// <summary>
-        /// Specifies for how many days the 5m downsampled metrics are kept. must be less than the value of the general retention. Default is set to `0` (disabled).
+        /// Specifies for how many days the 5m downsampled metrics are kept. must be less than the value of the general retention. Default is set to `90`.
         /// </summary>
         public readonly int MetricsRetentionDays5mDownsampling;
         /// <summary>

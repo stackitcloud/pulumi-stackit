@@ -40,31 +40,31 @@ export class SecretsmanagerUser extends pulumi.CustomResource {
     /**
      * A user chosen description to differentiate between multiple users. Can't be changed after creation.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * ID of the Secrets Manager instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * An auto-generated password.
      */
-    public /*out*/ readonly password!: pulumi.Output<string>;
+    declare public /*out*/ readonly password: pulumi.Output<string>;
     /**
      * STACKIT Project ID to which the instance is associated.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The user's ID.
      */
-    public /*out*/ readonly userId!: pulumi.Output<string>;
+    declare public /*out*/ readonly userId: pulumi.Output<string>;
     /**
      * An auto-generated user name.
      */
-    public /*out*/ readonly username!: pulumi.Output<string>;
+    declare public /*out*/ readonly username: pulumi.Output<string>;
     /**
      * If true, the user has writeaccess to the secrets engine.
      */
-    public readonly writeEnabled!: pulumi.Output<boolean>;
+    declare public readonly writeEnabled: pulumi.Output<boolean>;
 
     /**
      * Create a SecretsmanagerUser resource with the given unique name, arguments, and options.
@@ -79,31 +79,31 @@ export class SecretsmanagerUser extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecretsmanagerUserState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
-            resourceInputs["writeEnabled"] = state ? state.writeEnabled : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["userId"] = state?.userId;
+            resourceInputs["username"] = state?.username;
+            resourceInputs["writeEnabled"] = state?.writeEnabled;
         } else {
             const args = argsOrState as SecretsmanagerUserArgs | undefined;
-            if ((!args || args.description === undefined) && !opts.urn) {
+            if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.writeEnabled === undefined) && !opts.urn) {
+            if (args?.writeEnabled === undefined && !opts.urn) {
                 throw new Error("Missing required property 'writeEnabled'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["writeEnabled"] = args ? args.writeEnabled : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["writeEnabled"] = args?.writeEnabled;
             resourceInputs["password"] = undefined /*out*/;
             resourceInputs["userId"] = undefined /*out*/;
             resourceInputs["username"] = undefined /*out*/;

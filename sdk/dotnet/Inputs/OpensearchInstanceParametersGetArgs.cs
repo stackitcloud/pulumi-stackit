@@ -108,11 +108,17 @@ namespace Pulumi.Stackit.Inputs
             set => _tlsCiphers = value;
         }
 
+        [Input("tlsProtocols")]
+        private InputList<string>? _tlsProtocols;
+
         /// <summary>
         /// The TLS protocol to use.
         /// </summary>
-        [Input("tlsProtocols")]
-        public Input<string>? TlsProtocols { get; set; }
+        public InputList<string> TlsProtocols
+        {
+            get => _tlsProtocols ?? (_tlsProtocols = new InputList<string>());
+            set => _tlsProtocols = value;
+        }
 
         public OpensearchInstanceParametersGetArgs()
         {

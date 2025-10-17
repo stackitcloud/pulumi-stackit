@@ -44,35 +44,35 @@ export class CdnDistribution extends pulumi.CustomResource {
     /**
      * The distribution configuration
      */
-    public readonly config!: pulumi.Output<outputs.CdnDistributionConfig>;
+    declare public readonly config: pulumi.Output<outputs.CdnDistributionConfig>;
     /**
      * Time when the distribution was created
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * CDN distribution ID
      */
-    public /*out*/ readonly distributionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly distributionId: pulumi.Output<string>;
     /**
      * List of configured domains for the distribution
      */
-    public /*out*/ readonly domains!: pulumi.Output<outputs.CdnDistributionDomain[]>;
+    declare public /*out*/ readonly domains: pulumi.Output<outputs.CdnDistributionDomain[]>;
     /**
      * List of distribution errors
      */
-    public /*out*/ readonly errors!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly errors: pulumi.Output<string[]>;
     /**
      * STACKIT project ID associated with the distribution
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * Status of the distribution
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Time when the distribution was last updated
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a CdnDistribution resource with the given unique name, arguments, and options.
@@ -87,24 +87,24 @@ export class CdnDistribution extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CdnDistributionState | undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["distributionId"] = state ? state.distributionId : undefined;
-            resourceInputs["domains"] = state ? state.domains : undefined;
-            resourceInputs["errors"] = state ? state.errors : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["distributionId"] = state?.distributionId;
+            resourceInputs["domains"] = state?.domains;
+            resourceInputs["errors"] = state?.errors;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as CdnDistributionArgs | undefined;
-            if ((!args || args.config === undefined) && !opts.urn) {
+            if (args?.config === undefined && !opts.urn) {
                 throw new Error("Missing required property 'config'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["projectId"] = args?.projectId;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["distributionId"] = undefined /*out*/;
             resourceInputs["domains"] = undefined /*out*/;

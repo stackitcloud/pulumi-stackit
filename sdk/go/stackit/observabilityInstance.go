@@ -46,11 +46,11 @@ type ObservabilityInstance struct {
 	LogsUrl pulumi.StringOutput `pulumi:"logsUrl"`
 	// Specifies URL for pushing metrics.
 	MetricsPushUrl pulumi.StringOutput `pulumi:"metricsPushUrl"`
-	// Specifies for how many days the raw metrics are kept.
+	// Specifies for how many days the raw metrics are kept. Default is set to `90`.
 	MetricsRetentionDays pulumi.IntOutput `pulumi:"metricsRetentionDays"`
-	// Specifies for how many days the 1h downsampled metrics are kept. must be less than the value of the 5m downsampling retention. Default is set to `0` (disabled).
+	// Specifies for how many days the 1h downsampled metrics are kept. must be less than the value of the 5m downsampling retention. Default is set to `90`.
 	MetricsRetentionDays1hDownsampling pulumi.IntOutput `pulumi:"metricsRetentionDays1hDownsampling"`
-	// Specifies for how many days the 5m downsampled metrics are kept. must be less than the value of the general retention. Default is set to `0` (disabled).
+	// Specifies for how many days the 5m downsampled metrics are kept. must be less than the value of the general retention. Default is set to `90`.
 	MetricsRetentionDays5mDownsampling pulumi.IntOutput `pulumi:"metricsRetentionDays5mDownsampling"`
 	// Specifies metrics URL.
 	MetricsUrl pulumi.StringOutput `pulumi:"metricsUrl"`
@@ -138,11 +138,11 @@ type observabilityInstanceState struct {
 	LogsUrl *string `pulumi:"logsUrl"`
 	// Specifies URL for pushing metrics.
 	MetricsPushUrl *string `pulumi:"metricsPushUrl"`
-	// Specifies for how many days the raw metrics are kept.
+	// Specifies for how many days the raw metrics are kept. Default is set to `90`.
 	MetricsRetentionDays *int `pulumi:"metricsRetentionDays"`
-	// Specifies for how many days the 1h downsampled metrics are kept. must be less than the value of the 5m downsampling retention. Default is set to `0` (disabled).
+	// Specifies for how many days the 1h downsampled metrics are kept. must be less than the value of the 5m downsampling retention. Default is set to `90`.
 	MetricsRetentionDays1hDownsampling *int `pulumi:"metricsRetentionDays1hDownsampling"`
-	// Specifies for how many days the 5m downsampled metrics are kept. must be less than the value of the general retention. Default is set to `0` (disabled).
+	// Specifies for how many days the 5m downsampled metrics are kept. must be less than the value of the general retention. Default is set to `90`.
 	MetricsRetentionDays5mDownsampling *int `pulumi:"metricsRetentionDays5mDownsampling"`
 	// Specifies metrics URL.
 	MetricsUrl *string `pulumi:"metricsUrl"`
@@ -191,11 +191,11 @@ type ObservabilityInstanceState struct {
 	LogsUrl pulumi.StringPtrInput
 	// Specifies URL for pushing metrics.
 	MetricsPushUrl pulumi.StringPtrInput
-	// Specifies for how many days the raw metrics are kept.
+	// Specifies for how many days the raw metrics are kept. Default is set to `90`.
 	MetricsRetentionDays pulumi.IntPtrInput
-	// Specifies for how many days the 1h downsampled metrics are kept. must be less than the value of the 5m downsampling retention. Default is set to `0` (disabled).
+	// Specifies for how many days the 1h downsampled metrics are kept. must be less than the value of the 5m downsampling retention. Default is set to `90`.
 	MetricsRetentionDays1hDownsampling pulumi.IntPtrInput
-	// Specifies for how many days the 5m downsampled metrics are kept. must be less than the value of the general retention. Default is set to `0` (disabled).
+	// Specifies for how many days the 5m downsampled metrics are kept. must be less than the value of the general retention. Default is set to `90`.
 	MetricsRetentionDays5mDownsampling pulumi.IntPtrInput
 	// Specifies metrics URL.
 	MetricsUrl pulumi.StringPtrInput
@@ -224,11 +224,11 @@ type observabilityInstanceArgs struct {
 	Acls []string `pulumi:"acls"`
 	// Alert configuration for the instance.
 	AlertConfig *ObservabilityInstanceAlertConfig `pulumi:"alertConfig"`
-	// Specifies for how many days the raw metrics are kept.
+	// Specifies for how many days the raw metrics are kept. Default is set to `90`.
 	MetricsRetentionDays *int `pulumi:"metricsRetentionDays"`
-	// Specifies for how many days the 1h downsampled metrics are kept. must be less than the value of the 5m downsampling retention. Default is set to `0` (disabled).
+	// Specifies for how many days the 1h downsampled metrics are kept. must be less than the value of the 5m downsampling retention. Default is set to `90`.
 	MetricsRetentionDays1hDownsampling *int `pulumi:"metricsRetentionDays1hDownsampling"`
-	// Specifies for how many days the 5m downsampled metrics are kept. must be less than the value of the general retention. Default is set to `0` (disabled).
+	// Specifies for how many days the 5m downsampled metrics are kept. must be less than the value of the general retention. Default is set to `90`.
 	MetricsRetentionDays5mDownsampling *int `pulumi:"metricsRetentionDays5mDownsampling"`
 	// The name of the Observability instance.
 	Name *string `pulumi:"name"`
@@ -246,11 +246,11 @@ type ObservabilityInstanceArgs struct {
 	Acls pulumi.StringArrayInput
 	// Alert configuration for the instance.
 	AlertConfig ObservabilityInstanceAlertConfigPtrInput
-	// Specifies for how many days the raw metrics are kept.
+	// Specifies for how many days the raw metrics are kept. Default is set to `90`.
 	MetricsRetentionDays pulumi.IntPtrInput
-	// Specifies for how many days the 1h downsampled metrics are kept. must be less than the value of the 5m downsampling retention. Default is set to `0` (disabled).
+	// Specifies for how many days the 1h downsampled metrics are kept. must be less than the value of the 5m downsampling retention. Default is set to `90`.
 	MetricsRetentionDays1hDownsampling pulumi.IntPtrInput
-	// Specifies for how many days the 5m downsampled metrics are kept. must be less than the value of the general retention. Default is set to `0` (disabled).
+	// Specifies for how many days the 5m downsampled metrics are kept. must be less than the value of the general retention. Default is set to `90`.
 	MetricsRetentionDays5mDownsampling pulumi.IntPtrInput
 	// The name of the Observability instance.
 	Name pulumi.StringPtrInput
@@ -422,17 +422,17 @@ func (o ObservabilityInstanceOutput) MetricsPushUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObservabilityInstance) pulumi.StringOutput { return v.MetricsPushUrl }).(pulumi.StringOutput)
 }
 
-// Specifies for how many days the raw metrics are kept.
+// Specifies for how many days the raw metrics are kept. Default is set to `90`.
 func (o ObservabilityInstanceOutput) MetricsRetentionDays() pulumi.IntOutput {
 	return o.ApplyT(func(v *ObservabilityInstance) pulumi.IntOutput { return v.MetricsRetentionDays }).(pulumi.IntOutput)
 }
 
-// Specifies for how many days the 1h downsampled metrics are kept. must be less than the value of the 5m downsampling retention. Default is set to `0` (disabled).
+// Specifies for how many days the 1h downsampled metrics are kept. must be less than the value of the 5m downsampling retention. Default is set to `90`.
 func (o ObservabilityInstanceOutput) MetricsRetentionDays1hDownsampling() pulumi.IntOutput {
 	return o.ApplyT(func(v *ObservabilityInstance) pulumi.IntOutput { return v.MetricsRetentionDays1hDownsampling }).(pulumi.IntOutput)
 }
 
-// Specifies for how many days the 5m downsampled metrics are kept. must be less than the value of the general retention. Default is set to `0` (disabled).
+// Specifies for how many days the 5m downsampled metrics are kept. must be less than the value of the general retention. Default is set to `90`.
 func (o ObservabilityInstanceOutput) MetricsRetentionDays5mDownsampling() pulumi.IntOutput {
 	return o.ApplyT(func(v *ObservabilityInstance) pulumi.IntOutput { return v.MetricsRetentionDays5mDownsampling }).(pulumi.IntOutput)
 }

@@ -22,7 +22,14 @@ namespace Pulumi.Stackit
         public Output<string> ContainerId { get; private set; } = null!;
 
         /// <summary>
-        /// Labels are key-value string pairs which can be attached to a resource container. A label key must match the regex [A-ZÄÜÖa-zäüöß0-9*-]{1,64}. A label value must match the regex ^$|[A-ZÄÜÖa-zäüöß0-9*-]{1,64}. To add a project to a STACKIT Network Area, setting the label `networkArea=&lt;networkAreaID&gt;` is required.
+        /// Date-time at which the project was created.
+        /// </summary>
+        [Output("creationTime")]
+        public Output<string> CreationTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Labels are key-value string pairs which can be attached to a resource container. A label key must match the regex [A-ZÄÜÖa-zäüöß0-9_-]{1,64}. A label value must match the regex ^$|[A-ZÄÜÖa-zäüöß0-9_-]{1,64}.  
+        /// To create a project within a STACKIT Network Area, setting the label `networkArea=&lt;networkAreaID&gt;` is required. This can not be changed after project creation.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
@@ -50,6 +57,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
+
+        /// <summary>
+        /// Date-time at which the project was last modified.
+        /// </summary>
+        [Output("updateTime")]
+        public Output<string> UpdateTime { get; private set; } = null!;
 
 
         /// <summary>
@@ -102,7 +115,8 @@ namespace Pulumi.Stackit
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Labels are key-value string pairs which can be attached to a resource container. A label key must match the regex [A-ZÄÜÖa-zäüöß0-9*-]{1,64}. A label value must match the regex ^$|[A-ZÄÜÖa-zäüöß0-9*-]{1,64}. To add a project to a STACKIT Network Area, setting the label `networkArea=&lt;networkAreaID&gt;` is required.
+        /// Labels are key-value string pairs which can be attached to a resource container. A label key must match the regex [A-ZÄÜÖa-zäüöß0-9_-]{1,64}. A label value must match the regex ^$|[A-ZÄÜÖa-zäüöß0-9_-]{1,64}.  
+        /// To create a project within a STACKIT Network Area, setting the label `networkArea=&lt;networkAreaID&gt;` is required. This can not be changed after project creation.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -142,11 +156,18 @@ namespace Pulumi.Stackit
         [Input("containerId")]
         public Input<string>? ContainerId { get; set; }
 
+        /// <summary>
+        /// Date-time at which the project was created.
+        /// </summary>
+        [Input("creationTime")]
+        public Input<string>? CreationTime { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Labels are key-value string pairs which can be attached to a resource container. A label key must match the regex [A-ZÄÜÖa-zäüöß0-9*-]{1,64}. A label value must match the regex ^$|[A-ZÄÜÖa-zäüöß0-9*-]{1,64}. To add a project to a STACKIT Network Area, setting the label `networkArea=&lt;networkAreaID&gt;` is required.
+        /// Labels are key-value string pairs which can be attached to a resource container. A label key must match the regex [A-ZÄÜÖa-zäüöß0-9_-]{1,64}. A label value must match the regex ^$|[A-ZÄÜÖa-zäüöß0-9_-]{1,64}.  
+        /// To create a project within a STACKIT Network Area, setting the label `networkArea=&lt;networkAreaID&gt;` is required. This can not be changed after project creation.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -177,6 +198,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
+        /// Date-time at which the project was last modified.
+        /// </summary>
+        [Input("updateTime")]
+        public Input<string>? UpdateTime { get; set; }
 
         public ResourcemanagerProjectState()
         {

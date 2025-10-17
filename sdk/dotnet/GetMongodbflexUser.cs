@@ -76,6 +76,12 @@ namespace Pulumi.Stackit
         public string ProjectId { get; set; } = null!;
 
         /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public string? Region { get; set; }
+
+        /// <summary>
         /// User ID.
         /// </summary>
         [Input("userId", required: true)]
@@ -100,6 +106,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
+
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// User ID.
@@ -129,6 +141,10 @@ namespace Pulumi.Stackit
         /// STACKIT project ID to which the instance is associated.
         /// </summary>
         public readonly string ProjectId;
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        public readonly string Region;
         public readonly ImmutableArray<string> Roles;
         /// <summary>
         /// User ID.
@@ -150,6 +166,8 @@ namespace Pulumi.Stackit
 
             string projectId,
 
+            string region,
+
             ImmutableArray<string> roles,
 
             string userId,
@@ -162,6 +180,7 @@ namespace Pulumi.Stackit
             InstanceId = instanceId;
             Port = port;
             ProjectId = projectId;
+            Region = region;
             Roles = roles;
             UserId = userId;
             Username = username;

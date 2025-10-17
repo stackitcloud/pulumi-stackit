@@ -62,6 +62,18 @@ namespace Pulumi.Stackit
         [Output("refresh")]
         public Output<bool?> Refresh { get; private set; } = null!;
 
+        /// <summary>
+        /// Number of seconds before expiration to trigger refresh of the kubeconfig at. Only used if refresh is set to true.
+        /// </summary>
+        [Output("refreshBefore")]
+        public Output<int?> RefreshBefore { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Output("region")]
+        public Output<string> Region { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a SkeKubeconfig resource with the given unique name, arguments, and options.
@@ -137,6 +149,18 @@ namespace Pulumi.Stackit
         [Input("refresh")]
         public Input<bool>? Refresh { get; set; }
 
+        /// <summary>
+        /// Number of seconds before expiration to trigger refresh of the kubeconfig at. Only used if refresh is set to true.
+        /// </summary>
+        [Input("refreshBefore")]
+        public Input<int>? RefreshBefore { get; set; }
+
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
         public SkeKubeconfigArgs()
         {
         }
@@ -199,6 +223,18 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("refresh")]
         public Input<bool>? Refresh { get; set; }
+
+        /// <summary>
+        /// Number of seconds before expiration to trigger refresh of the kubeconfig at. Only used if refresh is set to true.
+        /// </summary>
+        [Input("refreshBefore")]
+        public Input<int>? RefreshBefore { get; set; }
+
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         public SkeKubeconfigState()
         {

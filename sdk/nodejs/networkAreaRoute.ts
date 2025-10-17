@@ -40,27 +40,27 @@ export class NetworkAreaRoute extends pulumi.CustomResource {
     /**
      * Labels are key-value string pairs which can be attached to a resource container
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The network area ID to which the network area route is associated.
      */
-    public readonly networkAreaId!: pulumi.Output<string>;
+    declare public readonly networkAreaId: pulumi.Output<string>;
     /**
      * The network area route ID.
      */
-    public /*out*/ readonly networkAreaRouteId!: pulumi.Output<string>;
+    declare public /*out*/ readonly networkAreaRouteId: pulumi.Output<string>;
     /**
      * The IP address of the routing system, that will route the prefix configured. Should be a valid IPv4 address.
      */
-    public readonly nextHop!: pulumi.Output<string>;
+    declare public readonly nextHop: pulumi.Output<string>;
     /**
      * STACKIT organization ID to which the network area is associated.
      */
-    public readonly organizationId!: pulumi.Output<string>;
+    declare public readonly organizationId: pulumi.Output<string>;
     /**
      * The network, that is reachable though the Next Hop. Should use CIDR notation.
      */
-    public readonly prefix!: pulumi.Output<string>;
+    declare public readonly prefix: pulumi.Output<string>;
 
     /**
      * Create a NetworkAreaRoute resource with the given unique name, arguments, and options.
@@ -75,31 +75,31 @@ export class NetworkAreaRoute extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkAreaRouteState | undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["networkAreaId"] = state ? state.networkAreaId : undefined;
-            resourceInputs["networkAreaRouteId"] = state ? state.networkAreaRouteId : undefined;
-            resourceInputs["nextHop"] = state ? state.nextHop : undefined;
-            resourceInputs["organizationId"] = state ? state.organizationId : undefined;
-            resourceInputs["prefix"] = state ? state.prefix : undefined;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["networkAreaId"] = state?.networkAreaId;
+            resourceInputs["networkAreaRouteId"] = state?.networkAreaRouteId;
+            resourceInputs["nextHop"] = state?.nextHop;
+            resourceInputs["organizationId"] = state?.organizationId;
+            resourceInputs["prefix"] = state?.prefix;
         } else {
             const args = argsOrState as NetworkAreaRouteArgs | undefined;
-            if ((!args || args.networkAreaId === undefined) && !opts.urn) {
+            if (args?.networkAreaId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkAreaId'");
             }
-            if ((!args || args.nextHop === undefined) && !opts.urn) {
+            if (args?.nextHop === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nextHop'");
             }
-            if ((!args || args.organizationId === undefined) && !opts.urn) {
+            if (args?.organizationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            if ((!args || args.prefix === undefined) && !opts.urn) {
+            if (args?.prefix === undefined && !opts.urn) {
                 throw new Error("Missing required property 'prefix'");
             }
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["networkAreaId"] = args ? args.networkAreaId : undefined;
-            resourceInputs["nextHop"] = args ? args.nextHop : undefined;
-            resourceInputs["organizationId"] = args ? args.organizationId : undefined;
-            resourceInputs["prefix"] = args ? args.prefix : undefined;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["networkAreaId"] = args?.networkAreaId;
+            resourceInputs["nextHop"] = args?.nextHop;
+            resourceInputs["organizationId"] = args?.organizationId;
+            resourceInputs["prefix"] = args?.prefix;
             resourceInputs["networkAreaRouteId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

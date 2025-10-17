@@ -30,6 +30,8 @@ type LookupMongodbflexInstanceArgs struct {
 	InstanceId string `pulumi:"instanceId"`
 	// STACKIT project ID to which the instance is associated.
 	ProjectId string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 }
 
 // A collection of values returned by getMongodbflexInstance.
@@ -47,10 +49,12 @@ type LookupMongodbflexInstanceResult struct {
 	// Custom parameters for the MongoDB Flex instance.
 	Options GetMongodbflexInstanceOptions `pulumi:"options"`
 	// STACKIT project ID to which the instance is associated.
-	ProjectId string                        `pulumi:"projectId"`
-	Replicas  int                           `pulumi:"replicas"`
-	Storage   GetMongodbflexInstanceStorage `pulumi:"storage"`
-	Version   string                        `pulumi:"version"`
+	ProjectId string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region   string                        `pulumi:"region"`
+	Replicas int                           `pulumi:"replicas"`
+	Storage  GetMongodbflexInstanceStorage `pulumi:"storage"`
+	Version  string                        `pulumi:"version"`
 }
 
 func LookupMongodbflexInstanceOutput(ctx *pulumi.Context, args LookupMongodbflexInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupMongodbflexInstanceResultOutput {
@@ -68,6 +72,8 @@ type LookupMongodbflexInstanceOutputArgs struct {
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// STACKIT project ID to which the instance is associated.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (LookupMongodbflexInstanceOutputArgs) ElementType() reflect.Type {
@@ -125,6 +131,11 @@ func (o LookupMongodbflexInstanceResultOutput) Options() GetMongodbflexInstanceO
 // STACKIT project ID to which the instance is associated.
 func (o LookupMongodbflexInstanceResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMongodbflexInstanceResult) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The resource region. If not defined, the provider region is used.
+func (o LookupMongodbflexInstanceResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupMongodbflexInstanceResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
 func (o LookupMongodbflexInstanceResultOutput) Replicas() pulumi.IntOutput {

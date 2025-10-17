@@ -40,15 +40,15 @@ export class ServerServiceAccountAttach extends pulumi.CustomResource {
     /**
      * STACKIT project ID to which the service account attachment is associated.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The server ID.
      */
-    public readonly serverId!: pulumi.Output<string>;
+    declare public readonly serverId: pulumi.Output<string>;
     /**
      * The service account email.
      */
-    public readonly serviceAccountEmail!: pulumi.Output<string>;
+    declare public readonly serviceAccountEmail: pulumi.Output<string>;
 
     /**
      * Create a ServerServiceAccountAttach resource with the given unique name, arguments, and options.
@@ -63,23 +63,23 @@ export class ServerServiceAccountAttach extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServerServiceAccountAttachState | undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["serverId"] = state ? state.serverId : undefined;
-            resourceInputs["serviceAccountEmail"] = state ? state.serviceAccountEmail : undefined;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["serverId"] = state?.serverId;
+            resourceInputs["serviceAccountEmail"] = state?.serviceAccountEmail;
         } else {
             const args = argsOrState as ServerServiceAccountAttachArgs | undefined;
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.serverId === undefined) && !opts.urn) {
+            if (args?.serverId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serverId'");
             }
-            if ((!args || args.serviceAccountEmail === undefined) && !opts.urn) {
+            if (args?.serviceAccountEmail === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceAccountEmail'");
             }
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["serverId"] = args ? args.serverId : undefined;
-            resourceInputs["serviceAccountEmail"] = args ? args.serviceAccountEmail : undefined;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["serverId"] = args?.serverId;
+            resourceInputs["serviceAccountEmail"] = args?.serviceAccountEmail;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServerServiceAccountAttach.__pulumiType, name, resourceInputs, opts);

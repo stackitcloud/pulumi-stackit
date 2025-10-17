@@ -36,12 +36,6 @@ type LookupSkeClusterArgs struct {
 
 // A collection of values returned by getSkeCluster.
 type LookupSkeClusterResult struct {
-	// DEPRECATED as of Kubernetes 1.25+
-	// Flag to specify if privileged mode for containers is enabled or not.
-	// This should be used with care since it also disables a couple of other features like the use of some volume type (e.g. PVCs).
-	//
-	// Deprecated: Please remove this flag from your configuration when using Kubernetes version 1.25+.
-	AllowPrivilegedContainers bool `pulumi:"allowPrivilegedContainers"`
 	// The outgoing network ranges (in CIDR notation) of traffic originating from workload on the cluster.
 	EgressAddressRanges []string `pulumi:"egressAddressRanges"`
 	// A single extensions block as defined below
@@ -49,10 +43,6 @@ type LookupSkeClusterResult struct {
 	// One or more hibernation block as defined below.
 	Hibernations []GetSkeClusterHibernation `pulumi:"hibernations"`
 	Id           string                     `pulumi:"id"`
-	// Kubernetes version. This field is deprecated, use `kubernetesVersionUsed` instead
-	//
-	// Deprecated: This field is always nil, use `kubernetesVersionUsed` to get the cluster kubernetes version. This field would cause errors when the cluster got a kubernetes version minor upgrade, either triggered by automatic or forceful updates.
-	KubernetesVersion string `pulumi:"kubernetesVersion"`
 	// The minimum Kubernetes version, this field is always nil. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current kubernetes version being used for your cluster, use the `kubernetesVersionUsed` field.
 	KubernetesVersionMin string `pulumi:"kubernetesVersionMin"`
 	// Full Kubernetes version used. For example, if `1.22` was selected, this value may result to `1.22.15`
@@ -65,6 +55,8 @@ type LookupSkeClusterResult struct {
 	Network GetSkeClusterNetwork `pulumi:"network"`
 	// One or more `nodePool` block as defined below.
 	NodePools []GetSkeClusterNodePool `pulumi:"nodePools"`
+	// The network ranges (in CIDR notation) used by pods of the cluster.
+	PodAddressRanges []string `pulumi:"podAddressRanges"`
 	// STACKIT project ID to which the cluster is associated.
 	ProjectId string `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
@@ -109,15 +101,6 @@ func (o LookupSkeClusterResultOutput) ToLookupSkeClusterResultOutputWithContext(
 	return o
 }
 
-// DEPRECATED as of Kubernetes 1.25+
-// Flag to specify if privileged mode for containers is enabled or not.
-// This should be used with care since it also disables a couple of other features like the use of some volume type (e.g. PVCs).
-//
-// Deprecated: Please remove this flag from your configuration when using Kubernetes version 1.25+.
-func (o LookupSkeClusterResultOutput) AllowPrivilegedContainers() pulumi.BoolOutput {
-	return o.ApplyT(func(v LookupSkeClusterResult) bool { return v.AllowPrivilegedContainers }).(pulumi.BoolOutput)
-}
-
 // The outgoing network ranges (in CIDR notation) of traffic originating from workload on the cluster.
 func (o LookupSkeClusterResultOutput) EgressAddressRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupSkeClusterResult) []string { return v.EgressAddressRanges }).(pulumi.StringArrayOutput)
@@ -135,13 +118,6 @@ func (o LookupSkeClusterResultOutput) Hibernations() GetSkeClusterHibernationArr
 
 func (o LookupSkeClusterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSkeClusterResult) string { return v.Id }).(pulumi.StringOutput)
-}
-
-// Kubernetes version. This field is deprecated, use `kubernetesVersionUsed` instead
-//
-// Deprecated: This field is always nil, use `kubernetesVersionUsed` to get the cluster kubernetes version. This field would cause errors when the cluster got a kubernetes version minor upgrade, either triggered by automatic or forceful updates.
-func (o LookupSkeClusterResultOutput) KubernetesVersion() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupSkeClusterResult) string { return v.KubernetesVersion }).(pulumi.StringOutput)
 }
 
 // The minimum Kubernetes version, this field is always nil. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current kubernetes version being used for your cluster, use the `kubernetesVersionUsed` field.
@@ -172,6 +148,11 @@ func (o LookupSkeClusterResultOutput) Network() GetSkeClusterNetworkOutput {
 // One or more `nodePool` block as defined below.
 func (o LookupSkeClusterResultOutput) NodePools() GetSkeClusterNodePoolArrayOutput {
 	return o.ApplyT(func(v LookupSkeClusterResult) []GetSkeClusterNodePool { return v.NodePools }).(GetSkeClusterNodePoolArrayOutput)
+}
+
+// The network ranges (in CIDR notation) used by pods of the cluster.
+func (o LookupSkeClusterResultOutput) PodAddressRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupSkeClusterResult) []string { return v.PodAddressRanges }).(pulumi.StringArrayOutput)
 }
 
 // STACKIT project ID to which the cluster is associated.

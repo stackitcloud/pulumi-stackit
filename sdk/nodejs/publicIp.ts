@@ -40,20 +40,20 @@ export class PublicIp extends pulumi.CustomResource {
     /**
      * The IP address.
      */
-    public /*out*/ readonly ip!: pulumi.Output<string>;
+    declare public /*out*/ readonly ip: pulumi.Output<string>;
     /**
      * Labels are key-value string pairs which can be attached to a resource container
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
-    public readonly networkInterfaceId!: pulumi.Output<string>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly networkInterfaceId: pulumi.Output<string>;
     /**
      * STACKIT project ID to which the public IP is associated.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The public IP ID.
      */
-    public /*out*/ readonly publicIpId!: pulumi.Output<string>;
+    declare public /*out*/ readonly publicIpId: pulumi.Output<string>;
 
     /**
      * Create a PublicIp resource with the given unique name, arguments, and options.
@@ -68,19 +68,19 @@ export class PublicIp extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PublicIpState | undefined;
-            resourceInputs["ip"] = state ? state.ip : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["networkInterfaceId"] = state ? state.networkInterfaceId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["publicIpId"] = state ? state.publicIpId : undefined;
+            resourceInputs["ip"] = state?.ip;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["networkInterfaceId"] = state?.networkInterfaceId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["publicIpId"] = state?.publicIpId;
         } else {
             const args = argsOrState as PublicIpArgs | undefined;
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["networkInterfaceId"] = args ? args.networkInterfaceId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["networkInterfaceId"] = args?.networkInterfaceId;
+            resourceInputs["projectId"] = args?.projectId;
             resourceInputs["ip"] = undefined /*out*/;
             resourceInputs["publicIpId"] = undefined /*out*/;
         }

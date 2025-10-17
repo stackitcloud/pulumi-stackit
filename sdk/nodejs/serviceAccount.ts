@@ -40,15 +40,15 @@ export class ServiceAccount extends pulumi.CustomResource {
     /**
      * Email of the service account.
      */
-    public /*out*/ readonly email!: pulumi.Output<string>;
+    declare public /*out*/ readonly email: pulumi.Output<string>;
     /**
      * Name of the service account.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * STACKIT project ID to which the service account is associated.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
 
     /**
      * Create a ServiceAccount resource with the given unique name, arguments, and options.
@@ -63,16 +63,16 @@ export class ServiceAccount extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceAccountState | undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["projectId"] = state?.projectId;
         } else {
             const args = argsOrState as ServiceAccountArgs | undefined;
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["projectId"] = args?.projectId;
             resourceInputs["email"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

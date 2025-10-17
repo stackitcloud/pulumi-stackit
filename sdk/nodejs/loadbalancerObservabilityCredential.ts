@@ -40,27 +40,27 @@ export class LoadbalancerObservabilityCredential extends pulumi.CustomResource {
     /**
      * The credentials reference is used by the Load Balancer to define which credentials it will use.
      */
-    public /*out*/ readonly credentialsRef!: pulumi.Output<string>;
+    declare public /*out*/ readonly credentialsRef: pulumi.Output<string>;
     /**
      * Observability credential name.
      */
-    public readonly displayName!: pulumi.Output<string>;
+    declare public readonly displayName: pulumi.Output<string>;
     /**
      * The username for the observability service (e.g. Argus) where the logs/metrics will be pushed into.
      */
-    public readonly password!: pulumi.Output<string>;
+    declare public readonly password: pulumi.Output<string>;
     /**
      * STACKIT project ID to which the load balancer observability credential is associated.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The password for the observability service (e.g. Argus) where the logs/metrics will be pushed into.
      */
-    public readonly username!: pulumi.Output<string>;
+    declare public readonly username: pulumi.Output<string>;
 
     /**
      * Create a LoadbalancerObservabilityCredential resource with the given unique name, arguments, and options.
@@ -75,31 +75,31 @@ export class LoadbalancerObservabilityCredential extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadbalancerObservabilityCredentialState | undefined;
-            resourceInputs["credentialsRef"] = state ? state.credentialsRef : undefined;
-            resourceInputs["displayName"] = state ? state.displayName : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["credentialsRef"] = state?.credentialsRef;
+            resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as LoadbalancerObservabilityCredentialArgs | undefined;
-            if ((!args || args.displayName === undefined) && !opts.urn) {
+            if (args?.displayName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
-            if ((!args || args.password === undefined) && !opts.urn) {
+            if (args?.password === undefined && !opts.urn) {
                 throw new Error("Missing required property 'password'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.username === undefined) && !opts.urn) {
+            if (args?.username === undefined && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            resourceInputs["displayName"] = args ? args.displayName : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["password"] = args?.password;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["username"] = args?.username;
             resourceInputs["credentialsRef"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

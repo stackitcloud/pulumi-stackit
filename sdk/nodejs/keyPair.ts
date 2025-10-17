@@ -6,6 +6,8 @@ import * as utilities from "./utilities";
 
 /**
  * Key pair resource schema. Must have a `region` specified in the provider configuration. Allows uploading an SSH public key to be used for server authentication.
+ *
+ * ## Example Usage
  */
 export class KeyPair extends pulumi.CustomResource {
     /**
@@ -38,19 +40,19 @@ export class KeyPair extends pulumi.CustomResource {
     /**
      * The fingerprint of the public SSH key.
      */
-    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
+    declare public /*out*/ readonly fingerprint: pulumi.Output<string>;
     /**
      * Labels are key-value string pairs which can be attached to a resource container.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the SSH key pair.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * A string representation of the public SSH key. E.g., `ssh-rsa <key_data>` or `ssh-ed25519 <key-data>`.
      */
-    public readonly publicKey!: pulumi.Output<string>;
+    declare public readonly publicKey: pulumi.Output<string>;
 
     /**
      * Create a KeyPair resource with the given unique name, arguments, and options.
@@ -65,18 +67,18 @@ export class KeyPair extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KeyPairState | undefined;
-            resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["publicKey"] = state ? state.publicKey : undefined;
+            resourceInputs["fingerprint"] = state?.fingerprint;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["publicKey"] = state?.publicKey;
         } else {
             const args = argsOrState as KeyPairArgs | undefined;
-            if ((!args || args.publicKey === undefined) && !opts.urn) {
+            if (args?.publicKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'publicKey'");
             }
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["publicKey"] = args ? args.publicKey : undefined;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["publicKey"] = args?.publicKey;
             resourceInputs["fingerprint"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

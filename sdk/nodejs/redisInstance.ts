@@ -39,36 +39,36 @@ export class RedisInstance extends pulumi.CustomResource {
         return obj['__pulumiType'] === RedisInstance.__pulumiType;
     }
 
-    public /*out*/ readonly cfGuid!: pulumi.Output<string>;
-    public /*out*/ readonly cfOrganizationGuid!: pulumi.Output<string>;
-    public /*out*/ readonly cfSpaceGuid!: pulumi.Output<string>;
-    public /*out*/ readonly dashboardUrl!: pulumi.Output<string>;
-    public /*out*/ readonly imageUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly cfGuid: pulumi.Output<string>;
+    declare public /*out*/ readonly cfOrganizationGuid: pulumi.Output<string>;
+    declare public /*out*/ readonly cfSpaceGuid: pulumi.Output<string>;
+    declare public /*out*/ readonly dashboardUrl: pulumi.Output<string>;
+    declare public /*out*/ readonly imageUrl: pulumi.Output<string>;
     /**
      * ID of the Redis instance.
      */
-    public /*out*/ readonly instanceId!: pulumi.Output<string>;
+    declare public /*out*/ readonly instanceId: pulumi.Output<string>;
     /**
      * Instance name.
      */
-    public readonly name!: pulumi.Output<string>;
-    public readonly parameters!: pulumi.Output<outputs.RedisInstanceParameters>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public readonly parameters: pulumi.Output<outputs.RedisInstanceParameters>;
     /**
      * The selected plan ID.
      */
-    public /*out*/ readonly planId!: pulumi.Output<string>;
+    declare public /*out*/ readonly planId: pulumi.Output<string>;
     /**
      * The selected plan name.
      */
-    public readonly planName!: pulumi.Output<string>;
+    declare public readonly planName: pulumi.Output<string>;
     /**
      * STACKIT project ID to which the instance is associated.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The service version.
      */
-    public readonly version!: pulumi.Output<string>;
+    declare public readonly version: pulumi.Output<string>;
 
     /**
      * Create a RedisInstance resource with the given unique name, arguments, and options.
@@ -83,34 +83,34 @@ export class RedisInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RedisInstanceState | undefined;
-            resourceInputs["cfGuid"] = state ? state.cfGuid : undefined;
-            resourceInputs["cfOrganizationGuid"] = state ? state.cfOrganizationGuid : undefined;
-            resourceInputs["cfSpaceGuid"] = state ? state.cfSpaceGuid : undefined;
-            resourceInputs["dashboardUrl"] = state ? state.dashboardUrl : undefined;
-            resourceInputs["imageUrl"] = state ? state.imageUrl : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parameters"] = state ? state.parameters : undefined;
-            resourceInputs["planId"] = state ? state.planId : undefined;
-            resourceInputs["planName"] = state ? state.planName : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["cfGuid"] = state?.cfGuid;
+            resourceInputs["cfOrganizationGuid"] = state?.cfOrganizationGuid;
+            resourceInputs["cfSpaceGuid"] = state?.cfSpaceGuid;
+            resourceInputs["dashboardUrl"] = state?.dashboardUrl;
+            resourceInputs["imageUrl"] = state?.imageUrl;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parameters"] = state?.parameters;
+            resourceInputs["planId"] = state?.planId;
+            resourceInputs["planName"] = state?.planName;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as RedisInstanceArgs | undefined;
-            if ((!args || args.planName === undefined) && !opts.urn) {
+            if (args?.planName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'planName'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.version === undefined) && !opts.urn) {
+            if (args?.version === undefined && !opts.urn) {
                 throw new Error("Missing required property 'version'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["parameters"] = args ? args.parameters : undefined;
-            resourceInputs["planName"] = args ? args.planName : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["parameters"] = args?.parameters;
+            resourceInputs["planName"] = args?.planName;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["version"] = args?.version;
             resourceInputs["cfGuid"] = undefined /*out*/;
             resourceInputs["cfOrganizationGuid"] = undefined /*out*/;
             resourceInputs["cfSpaceGuid"] = undefined /*out*/;

@@ -40,23 +40,23 @@ export class ObjectstorageCredentialsGroup extends pulumi.CustomResource {
     /**
      * The credentials group ID
      */
-    public /*out*/ readonly credentialsGroupId!: pulumi.Output<string>;
+    declare public /*out*/ readonly credentialsGroupId: pulumi.Output<string>;
     /**
      * The credentials group's display name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Project ID to which the credentials group is associated.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Credentials group uniform resource name (URN)
      */
-    public /*out*/ readonly urn!: pulumi.Output<string>;
+    declare public /*out*/ readonly urn: pulumi.Output<string>;
 
     /**
      * Create a ObjectstorageCredentialsGroup resource with the given unique name, arguments, and options.
@@ -71,19 +71,19 @@ export class ObjectstorageCredentialsGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ObjectstorageCredentialsGroupState | undefined;
-            resourceInputs["credentialsGroupId"] = state ? state.credentialsGroupId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["urn"] = state ? state.urn : undefined;
+            resourceInputs["credentialsGroupId"] = state?.credentialsGroupId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["urn"] = state?.urn;
         } else {
             const args = argsOrState as ObjectstorageCredentialsGroupArgs | undefined;
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
             resourceInputs["credentialsGroupId"] = undefined /*out*/;
             resourceInputs["urn"] = undefined /*out*/;
         }

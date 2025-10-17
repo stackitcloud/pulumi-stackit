@@ -36,7 +36,9 @@ type LookupResourcemanagerProjectArgs struct {
 type LookupResourcemanagerProjectResult struct {
 	// Project container ID. Globally unique, user-friendly identifier.
 	ContainerId *string `pulumi:"containerId"`
-	Id          string  `pulumi:"id"`
+	// Date-time at which the project was created.
+	CreationTime string `pulumi:"creationTime"`
+	Id           string `pulumi:"id"`
 	// Labels are key-value string pairs which can be attached to a resource container. A label key must match the regex [A-ZÄÜÖa-zäüöß0-9*-]{1,64}. A label value must match the regex ^$|[A-ZÄÜÖa-zäüöß0-9*-]{1,64}
 	Labels map[string]string `pulumi:"labels"`
 	// Project name.
@@ -45,6 +47,8 @@ type LookupResourcemanagerProjectResult struct {
 	ParentContainerId string `pulumi:"parentContainerId"`
 	// Project UUID identifier. This is the ID that can be used in most of the other resources to identify the project.
 	ProjectId *string `pulumi:"projectId"`
+	// Date-time at which the project was last modified.
+	UpdateTime string `pulumi:"updateTime"`
 }
 
 func LookupResourcemanagerProjectOutput(ctx *pulumi.Context, args LookupResourcemanagerProjectOutputArgs, opts ...pulumi.InvokeOption) LookupResourcemanagerProjectResultOutput {
@@ -88,6 +92,11 @@ func (o LookupResourcemanagerProjectResultOutput) ContainerId() pulumi.StringPtr
 	return o.ApplyT(func(v LookupResourcemanagerProjectResult) *string { return v.ContainerId }).(pulumi.StringPtrOutput)
 }
 
+// Date-time at which the project was created.
+func (o LookupResourcemanagerProjectResultOutput) CreationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourcemanagerProjectResult) string { return v.CreationTime }).(pulumi.StringOutput)
+}
+
 func (o LookupResourcemanagerProjectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupResourcemanagerProjectResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -110,6 +119,11 @@ func (o LookupResourcemanagerProjectResultOutput) ParentContainerId() pulumi.Str
 // Project UUID identifier. This is the ID that can be used in most of the other resources to identify the project.
 func (o LookupResourcemanagerProjectResultOutput) ProjectId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupResourcemanagerProjectResult) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
+// Date-time at which the project was last modified.
+func (o LookupResourcemanagerProjectResultOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupResourcemanagerProjectResult) string { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
 func init() {

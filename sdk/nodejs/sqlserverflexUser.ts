@@ -37,33 +37,33 @@ export class SqlserverflexUser extends pulumi.CustomResource {
         return obj['__pulumiType'] === SqlserverflexUser.__pulumiType;
     }
 
-    public /*out*/ readonly host!: pulumi.Output<string>;
+    declare public /*out*/ readonly host: pulumi.Output<string>;
     /**
      * ID of the SQLServer Flex instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Password of the user account.
      */
-    public /*out*/ readonly password!: pulumi.Output<string>;
-    public /*out*/ readonly port!: pulumi.Output<number>;
+    declare public /*out*/ readonly password: pulumi.Output<string>;
+    declare public /*out*/ readonly port: pulumi.Output<number>;
     /**
      * STACKIT project ID to which the instance is associated.
      */
-    public readonly projectId!: pulumi.Output<string>;
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Database access levels for the user. The values for the default roles are: `##STACKIT_DatabaseManager##`, `##STACKIT_LoginManager##`, `##STACKIT_ProcessManager##`, `##STACKIT_ServerManager##`, `##STACKIT_SQLAgentManager##`, `##STACKIT_SQLAgentUser##`
      */
-    public readonly roles!: pulumi.Output<string[] | undefined>;
+    declare public readonly roles: pulumi.Output<string[]>;
     /**
      * User ID.
      */
-    public /*out*/ readonly userId!: pulumi.Output<string>;
+    declare public /*out*/ readonly userId: pulumi.Output<string>;
     /**
      * Username of the SQLServer Flex instance.
      */
-    public readonly username!: pulumi.Output<string>;
+    declare public readonly username: pulumi.Output<string>;
 
     /**
      * Create a SqlserverflexUser resource with the given unique name, arguments, and options.
@@ -78,31 +78,34 @@ export class SqlserverflexUser extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SqlserverflexUserState | undefined;
-            resourceInputs["host"] = state ? state.host : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["roles"] = state ? state.roles : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["host"] = state?.host;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["roles"] = state?.roles;
+            resourceInputs["userId"] = state?.userId;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as SqlserverflexUserArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.username === undefined) && !opts.urn) {
+            if (args?.roles === undefined && !opts.urn) {
+                throw new Error("Missing required property 'roles'");
+            }
+            if (args?.username === undefined && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["roles"] = args ? args.roles : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["roles"] = args?.roles;
+            resourceInputs["username"] = args?.username;
             resourceInputs["host"] = undefined /*out*/;
             resourceInputs["password"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;
@@ -164,7 +167,7 @@ export interface SqlserverflexUserArgs {
     /**
      * Database access levels for the user. The values for the default roles are: `##STACKIT_DatabaseManager##`, `##STACKIT_LoginManager##`, `##STACKIT_ProcessManager##`, `##STACKIT_ServerManager##`, `##STACKIT_SQLAgentManager##`, `##STACKIT_SQLAgentUser##`
      */
-    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    roles: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Username of the SQLServer Flex instance.
      */

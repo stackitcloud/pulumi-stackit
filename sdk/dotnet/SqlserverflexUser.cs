@@ -128,7 +128,7 @@ namespace Pulumi.Stackit
         [Input("region")]
         public Input<string>? Region { get; set; }
 
-        [Input("roles")]
+        [Input("roles", required: true)]
         private InputList<string>? _roles;
 
         /// <summary>

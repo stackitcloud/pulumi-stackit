@@ -40,27 +40,27 @@ export class SecurityGroup extends pulumi.CustomResource {
     /**
      * The description of the security group.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * Labels are key-value string pairs which can be attached to a resource container
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the security group.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * STACKIT project ID to which the security group is associated.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The security group ID.
      */
-    public /*out*/ readonly securityGroupId!: pulumi.Output<string>;
+    declare public /*out*/ readonly securityGroupId: pulumi.Output<string>;
     /**
      * Configures if a security group is stateful or stateless. There can only be one type of security groups per network interface/server.
      */
-    public readonly stateful!: pulumi.Output<boolean>;
+    declare public readonly stateful: pulumi.Output<boolean>;
 
     /**
      * Create a SecurityGroup resource with the given unique name, arguments, and options.
@@ -75,22 +75,22 @@ export class SecurityGroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecurityGroupState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["stateful"] = state ? state.stateful : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["stateful"] = state?.stateful;
         } else {
             const args = argsOrState as SecurityGroupArgs | undefined;
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["stateful"] = args ? args.stateful : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["stateful"] = args?.stateful;
             resourceInputs["securityGroupId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

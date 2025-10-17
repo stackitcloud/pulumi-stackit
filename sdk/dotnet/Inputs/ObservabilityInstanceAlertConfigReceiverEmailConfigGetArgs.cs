@@ -18,11 +18,21 @@ namespace Pulumi.Stackit.Inputs
         [Input("authIdentity")]
         public Input<string>? AuthIdentity { get; set; }
 
+        [Input("authPassword")]
+        private Input<string>? _authPassword;
+
         /// <summary>
         /// SMTP authentication password.
         /// </summary>
-        [Input("authPassword")]
-        public Input<string>? AuthPassword { get; set; }
+        public Input<string>? AuthPassword
+        {
+            get => _authPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _authPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// SMTP authentication username.
@@ -35,6 +45,12 @@ namespace Pulumi.Stackit.Inputs
         /// </summary>
         [Input("from")]
         public Input<string>? From { get; set; }
+
+        /// <summary>
+        /// Whether to notify about resolved alerts.
+        /// </summary>
+        [Input("sendResolved")]
+        public Input<bool>? SendResolved { get; set; }
 
         /// <summary>
         /// The SMTP host through which emails are sent.

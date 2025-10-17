@@ -5,11 +5,34 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface CdnCustomDomainCertificate {
+    /**
+     * The PEM-encoded TLS certificate. Required for custom certificates.
+     */
+    certificate?: string;
+    /**
+     * The PEM-encoded private key for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.
+     */
+    privateKey?: string;
+    /**
+     * A version identifier for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.
+     */
+    version: number;
+}
+
 export interface CdnDistributionConfig {
     /**
      * The configured backend for the distribution
      */
     backend: outputs.CdnDistributionConfigBackend;
+    /**
+     * The configured countries where distribution of content is blocked
+     */
+    blockedCountries?: string[];
+    /**
+     * Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
+     */
+    optimizer: outputs.CdnDistributionConfigOptimizer;
     /**
      * The configured regions where content will be hosted
      */
@@ -31,6 +54,10 @@ export interface CdnDistributionConfigBackend {
     type: string;
 }
 
+export interface CdnDistributionConfigOptimizer {
+    enabled: boolean;
+}
+
 export interface CdnDistributionDomain {
     /**
      * List of domain errors
@@ -50,11 +77,26 @@ export interface CdnDistributionDomain {
     type: string;
 }
 
+export interface GetCdnCustomDomainCertificate {
+    /**
+     * A version identifier for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.
+     */
+    version: number;
+}
+
 export interface GetCdnDistributionConfig {
     /**
      * The configured backend for the distribution
      */
     backend: outputs.GetCdnDistributionConfigBackend;
+    /**
+     * The configured countries where distribution of content is blocked
+     */
+    blockedCountries?: string[];
+    /**
+     * Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
+     */
+    optimizer: outputs.GetCdnDistributionConfigOptimizer;
     /**
      * The configured regions where content will be hosted
      */
@@ -74,6 +116,10 @@ export interface GetCdnDistributionConfigBackend {
      * The configured backend type. Supported values are: `http`.
      */
     type: string;
+}
+
+export interface GetCdnDistributionConfigOptimizer {
+    enabled: boolean;
 }
 
 export interface GetCdnDistributionDomain {
@@ -159,6 +205,95 @@ export interface GetImageConfig {
      * Enables the use of VirtIO SCSI to provide block device access. By default instances use VirtIO Block.
      */
     virtioScsi: boolean;
+}
+
+export interface GetImageV2Checksum {
+    /**
+     * Algorithm for the checksum of the image data.
+     */
+    algorithm: string;
+    /**
+     * Hexdigest of the checksum of the image data.
+     */
+    digest: string;
+}
+
+export interface GetImageV2Config {
+    /**
+     * Enables the BIOS bootmenu.
+     */
+    bootMenu: boolean;
+    /**
+     * Sets CDROM bus controller type.
+     */
+    cdromBus: string;
+    /**
+     * Sets Disk bus controller type.
+     */
+    diskBus: string;
+    /**
+     * Sets virtual network interface model.
+     */
+    nicModel: string;
+    /**
+     * Enables operating system specific optimizations.
+     */
+    operatingSystem: string;
+    /**
+     * Operating system distribution.
+     */
+    operatingSystemDistro: string;
+    /**
+     * Version of the operating system.
+     */
+    operatingSystemVersion: string;
+    /**
+     * Sets the device bus when the image is used as a rescue image.
+     */
+    rescueBus: string;
+    /**
+     * Sets the device when the image is used as a rescue image.
+     */
+    rescueDevice: string;
+    /**
+     * Enables Secure Boot.
+     */
+    secureBoot: boolean;
+    /**
+     * Enables UEFI boot.
+     */
+    uefi: boolean;
+    /**
+     * Sets Graphic device model.
+     */
+    videoModel: string;
+    /**
+     * Enables the use of VirtIO SCSI to provide block device access. By default instances use VirtIO Block.
+     */
+    virtioScsi: boolean;
+}
+
+export interface GetImageV2Filter {
+    /**
+     * Filter images by operating system distribution. For example: `ubuntu`, `ubuntu-arm64`, `debian`, `rhel`, etc.
+     */
+    distro?: string;
+    /**
+     * Filter images by operating system type, such as `linux` or `windows`.
+     */
+    os?: string;
+    /**
+     * Filter images with Secure Boot support. Set to `true` to match images that support Secure Boot.
+     */
+    secureBoot?: boolean;
+    /**
+     * Filter images based on UEFI support. Set to `true` to match images that support UEFI.
+     */
+    uefi?: boolean;
+    /**
+     * Filter images by OS distribution version, such as `22.04`, `11`, or `9.1`.
+     */
+    version?: string;
 }
 
 export interface GetLoadbalancerListener {
@@ -555,6 +690,10 @@ export interface GetObservabilityInstanceAlertConfigReceiverEmailConfig {
      */
     from: string;
     /**
+     * Whether to notify about resolved alerts.
+     */
+    sendResolved: boolean;
+    /**
      * The SMTP host through which emails are sent.
      */
     smartHost: string;
@@ -574,6 +713,14 @@ export interface GetObservabilityInstanceAlertConfigReceiverOpsgenieConfig {
      */
     apiUrl: string;
     /**
+     * Priority of the alert. Possible values are: `P1`, `P2`, `P3`, `P4`, `P5`.
+     */
+    priority: string;
+    /**
+     * Whether to notify about resolved alerts.
+     */
+    sendResolved: boolean;
+    /**
      * Comma separated list of tags attached to the notifications.
      */
     tags: string;
@@ -581,9 +728,17 @@ export interface GetObservabilityInstanceAlertConfigReceiverOpsgenieConfig {
 
 export interface GetObservabilityInstanceAlertConfigReceiverWebhooksConfig {
     /**
+     * Google Chat webhooks require special handling, set this to true if the webhook is for Google Chat.
+     */
+    googleChat: boolean;
+    /**
      * Microsoft Teams webhooks require special handling, set this to true if the webhook is for Microsoft Teams.
      */
     msTeams: boolean;
+    /**
+     * Whether to notify about resolved alerts.
+     */
+    sendResolved: boolean;
     /**
      * The endpoint to send HTTP POST requests to. Must be a valid URL
      */
@@ -604,14 +759,6 @@ export interface GetObservabilityInstanceAlertConfigRoute {
      */
     groupWait: string;
     /**
-     * A set of equality matchers an alert has to fulfill to match the node.
-     */
-    match: {[key: string]: string};
-    /**
-     * A set of regex-matchers an alert has to fulfill to match the node.
-     */
-    matchRegex: {[key: string]: string};
-    /**
      * The name of the receiver to route the alerts to.
      */
     receiver: string;
@@ -627,6 +774,10 @@ export interface GetObservabilityInstanceAlertConfigRoute {
 
 export interface GetObservabilityInstanceAlertConfigRouteRoute {
     /**
+     * Whether an alert should continue matching subsequent sibling nodes.
+     */
+    continue: boolean;
+    /**
      * The labels by which incoming alerts are grouped together. For example, multiple alerts coming in for cluster=A and alertname=LatencyHigh would be batched into a single group. To aggregate by all possible labels use the special value '...' as the sole label name, for example: group_by: ['...']. This effectively disables aggregation entirely, passing through all alerts as-is. This is unlikely to be what you want, unless you have a very low alert volume or your upstream notification system performs its own grouping.
      */
     groupBies: string[];
@@ -639,13 +790,21 @@ export interface GetObservabilityInstanceAlertConfigRouteRoute {
      */
     groupWait: string;
     /**
-     * A set of equality matchers an alert has to fulfill to match the node.
+     * A set of equality matchers an alert has to fulfill to match the node. This field is deprecated and will be removed after 10th March 2026, use `matchers` in the `routes` instead
+     *
+     * @deprecated Use `matchers` in the `routes` instead.
      */
     match: {[key: string]: string};
     /**
-     * A set of regex-matchers an alert has to fulfill to match the node.
+     * A set of regex-matchers an alert has to fulfill to match the node. This field is deprecated and will be removed after 10th March 2026, use `matchers` in the `routes` instead
+     *
+     * @deprecated Use `matchers` in the `routes` instead.
      */
     matchRegex: {[key: string]: string};
+    /**
+     * A list of matchers that an alert has to fulfill to match the node. A matcher is a string with a syntax inspired by PromQL and OpenMetrics.
+     */
+    matchers: string[];
     /**
      * The name of the receiver to route the alerts to.
      */
@@ -932,6 +1091,112 @@ export interface GetRedisInstanceParameters {
     tlsProtocols: string;
 }
 
+export interface GetRoutingTableRouteDestination {
+    /**
+     * CIDRV type. Possible values are: `cidrv4`, `cidrv6`. Only `cidrv4` is supported during experimental stage.
+     */
+    type: string;
+    /**
+     * An CIDR string.
+     */
+    value: string;
+}
+
+export interface GetRoutingTableRouteNextHop {
+    /**
+     * Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Only `cidrv4` is supported during experimental stage..
+     */
+    type: string;
+    /**
+     * Either IPv4 or IPv6 (not set for blackhole and internet). Only IPv4 supported during experimental stage.
+     */
+    value: string;
+}
+
+export interface GetRoutingTableRoutesRoute {
+    /**
+     * Date-time when the route was created
+     */
+    createdAt: string;
+    /**
+     * Destination of the route.
+     */
+    destination: outputs.GetRoutingTableRoutesRouteDestination;
+    /**
+     * Labels are key-value string pairs which can be attached to a resource container
+     */
+    labels: {[key: string]: string};
+    /**
+     * Next hop destination.
+     */
+    nextHop: outputs.GetRoutingTableRoutesRouteNextHop;
+    /**
+     * Route ID.
+     */
+    routeId: string;
+    /**
+     * Date-time when the route was updated
+     */
+    updatedAt: string;
+}
+
+export interface GetRoutingTableRoutesRouteDestination {
+    /**
+     * CIDRV type. Possible values are: `cidrv4`, `cidrv6`. Only `cidrv4` is supported during experimental stage.
+     */
+    type: string;
+    /**
+     * An CIDR string.
+     */
+    value: string;
+}
+
+export interface GetRoutingTableRoutesRouteNextHop {
+    /**
+     * Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Only `cidrv4` is supported during experimental stage..
+     */
+    type: string;
+    /**
+     * Either IPv4 or IPv6 (not set for blackhole and internet). Only IPv4 supported during experimental stage.
+     */
+    value: string;
+}
+
+export interface GetRoutingTablesItem {
+    /**
+     * Date-time when the routing table was created
+     */
+    createdAt: string;
+    /**
+     * When true this is the default routing table for this network area. It can't be deleted and is used if the user does not specify it otherwise.
+     */
+    default: boolean;
+    /**
+     * Description of the routing table.
+     */
+    description: string;
+    /**
+     * Labels are key-value string pairs which can be attached to a resource container
+     */
+    labels: {[key: string]: string};
+    /**
+     * The name of the routing table.
+     */
+    name: string;
+    /**
+     * The routing tables ID.
+     */
+    routingTableId: string;
+    /**
+     * This controls whether the routes for project-to-project communication are created automatically or not.
+     */
+    systemRoutes: boolean;
+    /**
+     * Date-time when the routing table was updated
+     */
+    updatedAt: string;
+}
+
 export interface GetSecurityGroupRuleIcmpParameters {
     /**
      * ICMP code. Can be set if the protocol is ICMP.
@@ -1034,13 +1299,19 @@ export interface GetSkeClusterExtensions {
      */
     acl: outputs.GetSkeClusterExtensionsAcl;
     /**
-     * A single argus block as defined below
+     * A single argus block as defined below. This field is deprecated and will be removed 06 January 2026.
+     *
+     * @deprecated Use observability instead.
      */
     argus: outputs.GetSkeClusterExtensionsArgus;
     /**
      * DNS extension configuration
      */
     dns: outputs.GetSkeClusterExtensionsDns;
+    /**
+     * A single observability block as defined below.
+     */
+    observability: outputs.GetSkeClusterExtensionsObservability;
 }
 
 export interface GetSkeClusterExtensionsAcl {
@@ -1074,6 +1345,17 @@ export interface GetSkeClusterExtensionsDns {
      * Specify a list of domain filters for externalDNS (e.g., `foo.runs.onstackit.cloud`)
      */
     zones: string[];
+}
+
+export interface GetSkeClusterExtensionsObservability {
+    /**
+     * Flag to enable/disable Observability extensions.
+     */
+    enabled: boolean;
+    /**
+     * Observability instance ID to choose which Observability instance is used. Required when enabled is set to `true`.
+     */
+    instanceId: string;
 }
 
 export interface GetSkeClusterHibernation {
@@ -1612,7 +1894,7 @@ export interface ObservabilityAlertgroupRule {
 
 export interface ObservabilityInstanceAlertConfig {
     /**
-     * Global configuration for the alerts.
+     * Global configuration for the alerts. If nothing passed the default argus config will be used. It is only possible to update the entire global part, not individual attributes.
      */
     global: outputs.ObservabilityInstanceAlertConfigGlobal;
     /**
@@ -1697,6 +1979,10 @@ export interface ObservabilityInstanceAlertConfigReceiverEmailConfig {
      */
     from?: string;
     /**
+     * Whether to notify about resolved alerts.
+     */
+    sendResolved?: boolean;
+    /**
      * The SMTP host through which emails are sent.
      */
     smartHost?: string;
@@ -1716,6 +2002,14 @@ export interface ObservabilityInstanceAlertConfigReceiverOpsgenieConfig {
      */
     apiUrl?: string;
     /**
+     * Priority of the alert. Possible values are: `P1`, `P2`, `P3`, `P4`, `P5`.
+     */
+    priority?: string;
+    /**
+     * Whether to notify about resolved alerts.
+     */
+    sendResolved?: boolean;
+    /**
      * Comma separated list of tags attached to the notifications.
      */
     tags?: string;
@@ -1723,9 +2017,17 @@ export interface ObservabilityInstanceAlertConfigReceiverOpsgenieConfig {
 
 export interface ObservabilityInstanceAlertConfigReceiverWebhooksConfig {
     /**
+     * Google Chat webhooks require special handling, set this to true if the webhook is for Google Chat.
+     */
+    googleChat: boolean;
+    /**
      * Microsoft Teams webhooks require special handling, set this to true if the webhook is for Microsoft Teams.
      */
-    msTeams?: boolean;
+    msTeams: boolean;
+    /**
+     * Whether to notify about resolved alerts.
+     */
+    sendResolved?: boolean;
     /**
      * The endpoint to send HTTP POST requests to. Must be a valid URL
      */
@@ -1746,14 +2048,6 @@ export interface ObservabilityInstanceAlertConfigRoute {
      */
     groupWait: string;
     /**
-     * A set of equality matchers an alert has to fulfill to match the node.
-     */
-    match?: {[key: string]: string};
-    /**
-     * A set of regex-matchers an alert has to fulfill to match the node.
-     */
-    matchRegex?: {[key: string]: string};
-    /**
      * The name of the receiver to route the alerts to.
      */
     receiver: string;
@@ -1769,6 +2063,10 @@ export interface ObservabilityInstanceAlertConfigRoute {
 
 export interface ObservabilityInstanceAlertConfigRouteRoute {
     /**
+     * Whether an alert should continue matching subsequent sibling nodes.
+     */
+    continue?: boolean;
+    /**
      * The labels by which incoming alerts are grouped together. For example, multiple alerts coming in for cluster=A and alertname=LatencyHigh would be batched into a single group. To aggregate by all possible labels use the special value '...' as the sole label name, for example: group_by: ['...']. This effectively disables aggregation entirely, passing through all alerts as-is. This is unlikely to be what you want, unless you have a very low alert volume or your upstream notification system performs its own grouping.
      */
     groupBies?: string[];
@@ -1781,13 +2079,21 @@ export interface ObservabilityInstanceAlertConfigRouteRoute {
      */
     groupWait: string;
     /**
-     * A set of equality matchers an alert has to fulfill to match the node.
+     * A set of equality matchers an alert has to fulfill to match the node. This field is deprecated and will be removed after 10th March 2026, use `matchers` in the `routes` instead
+     *
+     * @deprecated Use `matchers` in the `routes` instead.
      */
     match?: {[key: string]: string};
     /**
-     * A set of regex-matchers an alert has to fulfill to match the node.
+     * A set of regex-matchers an alert has to fulfill to match the node. This field is deprecated and will be removed after 10th March 2026, use `matchers` in the `routes` instead
+     *
+     * @deprecated Use `matchers` in the `routes` instead.
      */
     matchRegex?: {[key: string]: string};
+    /**
+     * A list of matchers that an alert has to fulfill to match the node. A matcher is a string with a syntax inspired by PromQL and OpenMetrics.
+     */
+    matchers?: string[];
     /**
      * The name of the receiver to route the alerts to.
      */
@@ -1906,7 +2212,7 @@ export interface OpensearchInstanceParameters {
     /**
      * The TLS protocol to use.
      */
-    tlsProtocols: string;
+    tlsProtocols: string[];
 }
 
 export interface PostgresflexInstanceFlavor {
@@ -2067,6 +2373,28 @@ export interface RedisInstanceParameters {
     tlsProtocols: string;
 }
 
+export interface RoutingTableRouteDestination {
+    /**
+     * CIDRV type. Possible values are: `cidrv4`, `cidrv6`. Only `cidrv4` is supported during experimental stage.
+     */
+    type: string;
+    /**
+     * An CIDR string.
+     */
+    value: string;
+}
+
+export interface RoutingTableRouteNextHop {
+    /**
+     * Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Only `cidrv4` is supported during experimental stage..
+     */
+    type: string;
+    /**
+     * Either IPv4 or IPv6 (not set for blackhole and internet). Only IPv4 supported during experimental stage.
+     */
+    value?: string;
+}
+
 export interface SecurityGroupRuleIcmpParameters {
     /**
      * ICMP code. Can be set if the protocol is ICMP.
@@ -2139,13 +2467,19 @@ export interface SkeClusterExtensions {
      */
     acl?: outputs.SkeClusterExtensionsAcl;
     /**
-     * A single argus block as defined below.
+     * A single argus block as defined below. This field is deprecated and will be removed 06 January 2026.
+     *
+     * @deprecated Use observability instead.
      */
     argus?: outputs.SkeClusterExtensionsArgus;
     /**
      * DNS extension configuration
      */
     dns?: outputs.SkeClusterExtensionsDns;
+    /**
+     * A single observability block as defined below.
+     */
+    observability?: outputs.SkeClusterExtensionsObservability;
 }
 
 export interface SkeClusterExtensionsAcl {
@@ -2179,6 +2513,17 @@ export interface SkeClusterExtensionsDns {
      * Specify a list of domain filters for externalDNS (e.g., `foo.runs.onstackit.cloud`)
      */
     zones: string[];
+}
+
+export interface SkeClusterExtensionsObservability {
+    /**
+     * Flag to enable/disable Observability extensions.
+     */
+    enabled: boolean;
+    /**
+     * Observability instance ID to choose which Observability instance is used. Required when enabled is set to `true`.
+     */
+    instanceId?: string;
 }
 
 export interface SkeClusterHibernation {

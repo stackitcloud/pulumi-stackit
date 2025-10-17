@@ -11,6 +11,9 @@ namespace Pulumi.Stackit
 {
     /// <summary>
     /// Service account access token schema.
+    /// 
+    /// !&gt; This resource is scheduled for deprecation and will be removed on December 17, 2025. To ensure a smooth transition, please refer to our migration guide at https://docs.stackit.cloud/stackit/en/deprecation-plan-for-service-account-access-tokens-and-migration-guide-373293307.html for detailed instructions and recommendations.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Automatically rotate access tokens

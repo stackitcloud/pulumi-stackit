@@ -42,28 +42,28 @@ export class PostgresflexInstance extends pulumi.CustomResource {
     /**
      * The Access Control List (ACL) for the PostgresFlex instance.
      */
-    public readonly acls!: pulumi.Output<string[]>;
-    public readonly backupSchedule!: pulumi.Output<string>;
-    public readonly flavor!: pulumi.Output<outputs.PostgresflexInstanceFlavor>;
+    declare public readonly acls: pulumi.Output<string[]>;
+    declare public readonly backupSchedule: pulumi.Output<string>;
+    declare public readonly flavor: pulumi.Output<outputs.PostgresflexInstanceFlavor>;
     /**
      * ID of the PostgresFlex instance.
      */
-    public /*out*/ readonly instanceId!: pulumi.Output<string>;
+    declare public /*out*/ readonly instanceId: pulumi.Output<string>;
     /**
      * Instance name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * STACKIT project ID to which the instance is associated.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    public readonly region!: pulumi.Output<string>;
-    public readonly replicas!: pulumi.Output<number>;
-    public readonly storage!: pulumi.Output<outputs.PostgresflexInstanceStorage>;
-    public readonly version!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
+    declare public readonly replicas: pulumi.Output<number>;
+    declare public readonly storage: pulumi.Output<outputs.PostgresflexInstanceStorage>;
+    declare public readonly version: pulumi.Output<string>;
 
     /**
      * Create a PostgresflexInstance resource with the given unique name, arguments, and options.
@@ -78,48 +78,48 @@ export class PostgresflexInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PostgresflexInstanceState | undefined;
-            resourceInputs["acls"] = state ? state.acls : undefined;
-            resourceInputs["backupSchedule"] = state ? state.backupSchedule : undefined;
-            resourceInputs["flavor"] = state ? state.flavor : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["replicas"] = state ? state.replicas : undefined;
-            resourceInputs["storage"] = state ? state.storage : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["acls"] = state?.acls;
+            resourceInputs["backupSchedule"] = state?.backupSchedule;
+            resourceInputs["flavor"] = state?.flavor;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["replicas"] = state?.replicas;
+            resourceInputs["storage"] = state?.storage;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as PostgresflexInstanceArgs | undefined;
-            if ((!args || args.acls === undefined) && !opts.urn) {
+            if (args?.acls === undefined && !opts.urn) {
                 throw new Error("Missing required property 'acls'");
             }
-            if ((!args || args.backupSchedule === undefined) && !opts.urn) {
+            if (args?.backupSchedule === undefined && !opts.urn) {
                 throw new Error("Missing required property 'backupSchedule'");
             }
-            if ((!args || args.flavor === undefined) && !opts.urn) {
+            if (args?.flavor === undefined && !opts.urn) {
                 throw new Error("Missing required property 'flavor'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.replicas === undefined) && !opts.urn) {
+            if (args?.replicas === undefined && !opts.urn) {
                 throw new Error("Missing required property 'replicas'");
             }
-            if ((!args || args.storage === undefined) && !opts.urn) {
+            if (args?.storage === undefined && !opts.urn) {
                 throw new Error("Missing required property 'storage'");
             }
-            if ((!args || args.version === undefined) && !opts.urn) {
+            if (args?.version === undefined && !opts.urn) {
                 throw new Error("Missing required property 'version'");
             }
-            resourceInputs["acls"] = args ? args.acls : undefined;
-            resourceInputs["backupSchedule"] = args ? args.backupSchedule : undefined;
-            resourceInputs["flavor"] = args ? args.flavor : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["replicas"] = args ? args.replicas : undefined;
-            resourceInputs["storage"] = args ? args.storage : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["acls"] = args?.acls;
+            resourceInputs["backupSchedule"] = args?.backupSchedule;
+            resourceInputs["flavor"] = args?.flavor;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["replicas"] = args?.replicas;
+            resourceInputs["storage"] = args?.storage;
+            resourceInputs["version"] = args?.version;
             resourceInputs["instanceId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

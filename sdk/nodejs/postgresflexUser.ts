@@ -37,31 +37,31 @@ export class PostgresflexUser extends pulumi.CustomResource {
         return obj['__pulumiType'] === PostgresflexUser.__pulumiType;
     }
 
-    public /*out*/ readonly host!: pulumi.Output<string>;
+    declare public /*out*/ readonly host: pulumi.Output<string>;
     /**
      * ID of the PostgresFlex instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
-    public /*out*/ readonly password!: pulumi.Output<string>;
-    public /*out*/ readonly port!: pulumi.Output<number>;
+    declare public readonly instanceId: pulumi.Output<string>;
+    declare public /*out*/ readonly password: pulumi.Output<string>;
+    declare public /*out*/ readonly port: pulumi.Output<number>;
     /**
      * STACKIT project ID to which the instance is associated.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Database access levels for the user. Supported values are: `login`, `createdb`.
      */
-    public readonly roles!: pulumi.Output<string[]>;
-    public /*out*/ readonly uri!: pulumi.Output<string>;
+    declare public readonly roles: pulumi.Output<string[]>;
+    declare public /*out*/ readonly uri: pulumi.Output<string>;
     /**
      * User ID.
      */
-    public /*out*/ readonly userId!: pulumi.Output<string>;
-    public readonly username!: pulumi.Output<string>;
+    declare public /*out*/ readonly userId: pulumi.Output<string>;
+    declare public readonly username: pulumi.Output<string>;
 
     /**
      * Create a PostgresflexUser resource with the given unique name, arguments, and options.
@@ -76,35 +76,35 @@ export class PostgresflexUser extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PostgresflexUserState | undefined;
-            resourceInputs["host"] = state ? state.host : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["roles"] = state ? state.roles : undefined;
-            resourceInputs["uri"] = state ? state.uri : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["host"] = state?.host;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["roles"] = state?.roles;
+            resourceInputs["uri"] = state?.uri;
+            resourceInputs["userId"] = state?.userId;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as PostgresflexUserArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.roles === undefined) && !opts.urn) {
+            if (args?.roles === undefined && !opts.urn) {
                 throw new Error("Missing required property 'roles'");
             }
-            if ((!args || args.username === undefined) && !opts.urn) {
+            if (args?.username === undefined && !opts.urn) {
                 throw new Error("Missing required property 'username'");
             }
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["roles"] = args ? args.roles : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["roles"] = args?.roles;
+            resourceInputs["username"] = args?.username;
             resourceInputs["host"] = undefined /*out*/;
             resourceInputs["password"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;

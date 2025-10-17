@@ -37,29 +37,29 @@ export class ObjectstorageCredential extends pulumi.CustomResource {
         return obj['__pulumiType'] === ObjectstorageCredential.__pulumiType;
     }
 
-    public /*out*/ readonly accessKey!: pulumi.Output<string>;
+    declare public /*out*/ readonly accessKey: pulumi.Output<string>;
     /**
      * The credential ID.
      */
-    public /*out*/ readonly credentialId!: pulumi.Output<string>;
+    declare public /*out*/ readonly credentialId: pulumi.Output<string>;
     /**
      * The credential group ID.
      */
-    public readonly credentialsGroupId!: pulumi.Output<string>;
+    declare public readonly credentialsGroupId: pulumi.Output<string>;
     /**
      * Expiration timestamp, in RFC339 format without fractional seconds. Example: "2025-01-01T00:00:00Z". If not set, the credential never expires.
      */
-    public readonly expirationTimestamp!: pulumi.Output<string>;
-    public /*out*/ readonly name!: pulumi.Output<string>;
+    declare public readonly expirationTimestamp: pulumi.Output<string>;
+    declare public /*out*/ readonly name: pulumi.Output<string>;
     /**
      * STACKIT Project ID to which the credential group is associated.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    public readonly region!: pulumi.Output<string>;
-    public /*out*/ readonly secretAccessKey!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
+    declare public /*out*/ readonly secretAccessKey: pulumi.Output<string>;
 
     /**
      * Create a ObjectstorageCredential resource with the given unique name, arguments, and options.
@@ -74,26 +74,26 @@ export class ObjectstorageCredential extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ObjectstorageCredentialState | undefined;
-            resourceInputs["accessKey"] = state ? state.accessKey : undefined;
-            resourceInputs["credentialId"] = state ? state.credentialId : undefined;
-            resourceInputs["credentialsGroupId"] = state ? state.credentialsGroupId : undefined;
-            resourceInputs["expirationTimestamp"] = state ? state.expirationTimestamp : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["secretAccessKey"] = state ? state.secretAccessKey : undefined;
+            resourceInputs["accessKey"] = state?.accessKey;
+            resourceInputs["credentialId"] = state?.credentialId;
+            resourceInputs["credentialsGroupId"] = state?.credentialsGroupId;
+            resourceInputs["expirationTimestamp"] = state?.expirationTimestamp;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["secretAccessKey"] = state?.secretAccessKey;
         } else {
             const args = argsOrState as ObjectstorageCredentialArgs | undefined;
-            if ((!args || args.credentialsGroupId === undefined) && !opts.urn) {
+            if (args?.credentialsGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'credentialsGroupId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["credentialsGroupId"] = args ? args.credentialsGroupId : undefined;
-            resourceInputs["expirationTimestamp"] = args ? args.expirationTimestamp : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["credentialsGroupId"] = args?.credentialsGroupId;
+            resourceInputs["expirationTimestamp"] = args?.expirationTimestamp;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
             resourceInputs["accessKey"] = undefined /*out*/;
             resourceInputs["credentialId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;

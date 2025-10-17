@@ -38,21 +38,25 @@ export class ObservabilityCredential extends pulumi.CustomResource {
     }
 
     /**
+     * A description of the credential.
+     */
+    declare public readonly description: pulumi.Output<string | undefined>;
+    /**
      * The Observability Instance ID the credential belongs to.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Credential password
      */
-    public /*out*/ readonly password!: pulumi.Output<string>;
+    declare public /*out*/ readonly password: pulumi.Output<string>;
     /**
      * STACKIT project ID to which the credential is associated.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * Credential username
      */
-    public /*out*/ readonly username!: pulumi.Output<string>;
+    declare public /*out*/ readonly username: pulumi.Output<string>;
 
     /**
      * Create a ObservabilityCredential resource with the given unique name, arguments, and options.
@@ -67,20 +71,22 @@ export class ObservabilityCredential extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ObservabilityCredentialState | undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as ObservabilityCredentialArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["projectId"] = args?.projectId;
             resourceInputs["password"] = undefined /*out*/;
             resourceInputs["username"] = undefined /*out*/;
         }
@@ -95,6 +101,10 @@ export class ObservabilityCredential extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ObservabilityCredential resources.
  */
 export interface ObservabilityCredentialState {
+    /**
+     * A description of the credential.
+     */
+    description?: pulumi.Input<string>;
     /**
      * The Observability Instance ID the credential belongs to.
      */
@@ -117,6 +127,10 @@ export interface ObservabilityCredentialState {
  * The set of arguments for constructing a ObservabilityCredential resource.
  */
 export interface ObservabilityCredentialArgs {
+    /**
+     * A description of the credential.
+     */
+    description?: pulumi.Input<string>;
     /**
      * The Observability Instance ID the credential belongs to.
      */
