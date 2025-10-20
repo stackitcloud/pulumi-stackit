@@ -12,6 +12,12 @@ namespace Pulumi.Stackit.Inputs
 
     public sealed class ObservabilityInstanceAlertConfigRouteRouteArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether an alert should continue matching subsequent sibling nodes.
+        /// </summary>
+        [Input("continue")]
+        public Input<bool>? Continue { get; set; }
+
         [Input("groupBies")]
         private InputList<string>? _groupBies;
 
@@ -40,8 +46,9 @@ namespace Pulumi.Stackit.Inputs
         private InputMap<string>? _match;
 
         /// <summary>
-        /// A set of equality matchers an alert has to fulfill to match the node.
+        /// A set of equality matchers an alert has to fulfill to match the node. This field is deprecated and will be removed after 10th March 2026, use `matchers` in the `routes` instead
         /// </summary>
+        [Obsolete(@"Use `matchers` in the `routes` instead.")]
         public InputMap<string> Match
         {
             get => _match ?? (_match = new InputMap<string>());
@@ -52,12 +59,25 @@ namespace Pulumi.Stackit.Inputs
         private InputMap<string>? _matchRegex;
 
         /// <summary>
-        /// A set of regex-matchers an alert has to fulfill to match the node.
+        /// A set of regex-matchers an alert has to fulfill to match the node. This field is deprecated and will be removed after 10th March 2026, use `matchers` in the `routes` instead
         /// </summary>
+        [Obsolete(@"Use `matchers` in the `routes` instead.")]
         public InputMap<string> MatchRegex
         {
             get => _matchRegex ?? (_matchRegex = new InputMap<string>());
             set => _matchRegex = value;
+        }
+
+        [Input("matchers")]
+        private InputList<string>? _matchers;
+
+        /// <summary>
+        /// A list of matchers that an alert has to fulfill to match the node. A matcher is a string with a syntax inspired by PromQL and OpenMetrics.
+        /// </summary>
+        public InputList<string> Matchers
+        {
+            get => _matchers ?? (_matchers = new InputList<string>());
+            set => _matchers = value;
         }
 
         /// <summary>

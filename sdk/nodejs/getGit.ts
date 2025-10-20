@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * Git Instance datasource schema.
  *
- * > This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
+ * > This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
  *
  * ## Example Usage
  */
@@ -37,6 +37,26 @@ export interface GetGitArgs {
  * A collection of values returned by getGit.
  */
 export interface GetGitResult {
+    /**
+     * Restricted ACL for instance access.
+     */
+    readonly acls: string[];
+    /**
+     * How many bytes of disk space is consumed.
+     */
+    readonly consumedDisk: string;
+    /**
+     * How many bytes of Object Storage is consumed.
+     */
+    readonly consumedObjectStorage: string;
+    /**
+     * Instance creation timestamp in RFC3339 format.
+     */
+    readonly created: string;
+    /**
+     * Instance flavor. If not provided, defaults to git-100. For a list of available flavors, refer to our API documentation: `https://docs.api.stackit.cloud/documentation/git/version/v1beta`
+     */
+    readonly flavor: string;
     readonly id: string;
     /**
      * ID linked to the git instance.
@@ -62,7 +82,7 @@ export interface GetGitResult {
 /**
  * Git Instance datasource schema.
  *
- * > This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
+ * > This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
  *
  * ## Example Usage
  */

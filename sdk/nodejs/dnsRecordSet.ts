@@ -40,51 +40,51 @@ export class DnsRecordSet extends pulumi.CustomResource {
     /**
      * Specifies if the record set is active or not. Defaults to `true`
      */
-    public readonly active!: pulumi.Output<boolean>;
+    declare public readonly active: pulumi.Output<boolean>;
     /**
      * Comment.
      */
-    public readonly comment!: pulumi.Output<string>;
+    declare public readonly comment: pulumi.Output<string>;
     /**
      * Error shows error in case create/update/delete failed.
      */
-    public /*out*/ readonly error!: pulumi.Output<string>;
+    declare public /*out*/ readonly error: pulumi.Output<string>;
     /**
      * Fully qualified domain name (FQDN) of the record set.
      */
-    public /*out*/ readonly fqdn!: pulumi.Output<string>;
+    declare public /*out*/ readonly fqdn: pulumi.Output<string>;
     /**
      * Name of the record which should be a valid domain according to rfc1035 Section 2.3.4. E.g. `example.com`
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * STACKIT project ID to which the dns record set is associated.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The rr set id.
      */
-    public /*out*/ readonly recordSetId!: pulumi.Output<string>;
+    declare public /*out*/ readonly recordSetId: pulumi.Output<string>;
     /**
      * Records.
      */
-    public readonly records!: pulumi.Output<string[]>;
+    declare public readonly records: pulumi.Output<string[]>;
     /**
      * Record set state.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Time to live. E.g. 3600
      */
-    public readonly ttl!: pulumi.Output<number>;
+    declare public readonly ttl: pulumi.Output<number>;
     /**
      * The record set type. E.g. `A` or `CNAME`
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The zone ID to which is dns record set is associated.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    declare public readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a DnsRecordSet resource with the given unique name, arguments, and options.
@@ -99,40 +99,40 @@ export class DnsRecordSet extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DnsRecordSetState | undefined;
-            resourceInputs["active"] = state ? state.active : undefined;
-            resourceInputs["comment"] = state ? state.comment : undefined;
-            resourceInputs["error"] = state ? state.error : undefined;
-            resourceInputs["fqdn"] = state ? state.fqdn : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["recordSetId"] = state ? state.recordSetId : undefined;
-            resourceInputs["records"] = state ? state.records : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["ttl"] = state ? state.ttl : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["active"] = state?.active;
+            resourceInputs["comment"] = state?.comment;
+            resourceInputs["error"] = state?.error;
+            resourceInputs["fqdn"] = state?.fqdn;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["recordSetId"] = state?.recordSetId;
+            resourceInputs["records"] = state?.records;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["ttl"] = state?.ttl;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as DnsRecordSetArgs | undefined;
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.records === undefined) && !opts.urn) {
+            if (args?.records === undefined && !opts.urn) {
                 throw new Error("Missing required property 'records'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            if ((!args || args.zoneId === undefined) && !opts.urn) {
+            if (args?.zoneId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneId'");
             }
-            resourceInputs["active"] = args ? args.active : undefined;
-            resourceInputs["comment"] = args ? args.comment : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["records"] = args ? args.records : undefined;
-            resourceInputs["ttl"] = args ? args.ttl : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["zoneId"] = args ? args.zoneId : undefined;
+            resourceInputs["active"] = args?.active;
+            resourceInputs["comment"] = args?.comment;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["records"] = args?.records;
+            resourceInputs["ttl"] = args?.ttl;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["zoneId"] = args?.zoneId;
             resourceInputs["error"] = undefined /*out*/;
             resourceInputs["fqdn"] = undefined /*out*/;
             resourceInputs["recordSetId"] = undefined /*out*/;

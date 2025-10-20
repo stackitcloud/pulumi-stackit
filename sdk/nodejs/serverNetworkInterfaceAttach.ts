@@ -40,15 +40,15 @@ export class ServerNetworkInterfaceAttach extends pulumi.CustomResource {
     /**
      * The network interface ID.
      */
-    public readonly networkInterfaceId!: pulumi.Output<string>;
+    declare public readonly networkInterfaceId: pulumi.Output<string>;
     /**
      * STACKIT project ID to which the network interface attachment is associated.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The server ID.
      */
-    public readonly serverId!: pulumi.Output<string>;
+    declare public readonly serverId: pulumi.Output<string>;
 
     /**
      * Create a ServerNetworkInterfaceAttach resource with the given unique name, arguments, and options.
@@ -63,23 +63,23 @@ export class ServerNetworkInterfaceAttach extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServerNetworkInterfaceAttachState | undefined;
-            resourceInputs["networkInterfaceId"] = state ? state.networkInterfaceId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["serverId"] = state ? state.serverId : undefined;
+            resourceInputs["networkInterfaceId"] = state?.networkInterfaceId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["serverId"] = state?.serverId;
         } else {
             const args = argsOrState as ServerNetworkInterfaceAttachArgs | undefined;
-            if ((!args || args.networkInterfaceId === undefined) && !opts.urn) {
+            if (args?.networkInterfaceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkInterfaceId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.serverId === undefined) && !opts.urn) {
+            if (args?.serverId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serverId'");
             }
-            resourceInputs["networkInterfaceId"] = args ? args.networkInterfaceId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["serverId"] = args ? args.serverId : undefined;
+            resourceInputs["networkInterfaceId"] = args?.networkInterfaceId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["serverId"] = args?.serverId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServerNetworkInterfaceAttach.__pulumiType, name, resourceInputs, opts);

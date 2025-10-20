@@ -26,7 +26,9 @@ func GetPublicIpRanges(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetPu
 
 // A collection of values returned by getPublicIpRanges.
 type GetPublicIpRangesResult struct {
-	Id string `pulumi:"id"`
+	// A list of IP range strings (CIDRs) extracted from the public*ip*ranges for easy consumption.
+	CidrLists []string `pulumi:"cidrLists"`
+	Id        string   `pulumi:"id"`
 	// A list of all public IP ranges.
 	PublicIpRanges []GetPublicIpRangesPublicIpRange `pulumi:"publicIpRanges"`
 }
@@ -51,6 +53,11 @@ func (o GetPublicIpRangesResultOutput) ToGetPublicIpRangesResultOutput() GetPubl
 
 func (o GetPublicIpRangesResultOutput) ToGetPublicIpRangesResultOutputWithContext(ctx context.Context) GetPublicIpRangesResultOutput {
 	return o
+}
+
+// A list of IP range strings (CIDRs) extracted from the public*ip*ranges for easy consumption.
+func (o GetPublicIpRangesResultOutput) CidrLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPublicIpRangesResult) []string { return v.CidrLists }).(pulumi.StringArrayOutput)
 }
 
 func (o GetPublicIpRangesResultOutput) Id() pulumi.StringOutput {

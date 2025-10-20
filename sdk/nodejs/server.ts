@@ -22,6 +22,8 @@ import * as utilities from "./utilities";
  * ### Server with attached volume
  *
  * ### Server with user data (cloud-init)
+ *
+ * ### Additional Examples
  */
 export class Server extends pulumi.CustomResource {
     /**
@@ -54,67 +56,67 @@ export class Server extends pulumi.CustomResource {
     /**
      * The affinity group the server is assigned to.
      */
-    public readonly affinityGroup!: pulumi.Output<string | undefined>;
+    declare public readonly affinityGroup: pulumi.Output<string | undefined>;
     /**
      * The availability zone of the server.
      */
-    public readonly availabilityZone!: pulumi.Output<string>;
+    declare public readonly availabilityZone: pulumi.Output<string>;
     /**
      * The boot volume for the server
      */
-    public readonly bootVolume!: pulumi.Output<outputs.ServerBootVolume | undefined>;
+    declare public readonly bootVolume: pulumi.Output<outputs.ServerBootVolume | undefined>;
     /**
      * Date-time when the server was created
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The desired status of the server resource. Supported values are: `active`, `inactive`, `deallocated`.
      */
-    public readonly desiredStatus!: pulumi.Output<string | undefined>;
+    declare public readonly desiredStatus: pulumi.Output<string | undefined>;
     /**
      * The image ID to be used for an ephemeral disk on the server.
      */
-    public readonly imageId!: pulumi.Output<string | undefined>;
+    declare public readonly imageId: pulumi.Output<string | undefined>;
     /**
      * The name of the keypair used during server creation.
      */
-    public readonly keypairName!: pulumi.Output<string | undefined>;
+    declare public readonly keypairName: pulumi.Output<string | undefined>;
     /**
      * Labels are key-value string pairs which can be attached to a resource container
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Date-time when the server was launched
      */
-    public /*out*/ readonly launchedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly launchedAt: pulumi.Output<string>;
     /**
      * Name of the type of the machine for the server. Possible values are documented in [Virtual machine flavors](https://docs.stackit.cloud/stackit/en/virtual-machine-flavors-75137231.html)
      */
-    public readonly machineType!: pulumi.Output<string>;
+    declare public readonly machineType: pulumi.Output<string>;
     /**
      * The name of the server.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The IDs of network interfaces which should be attached to the server. Updating it will recreate the server.
      */
-    public readonly networkInterfaces!: pulumi.Output<string[] | undefined>;
+    declare public readonly networkInterfaces: pulumi.Output<string[] | undefined>;
     /**
      * STACKIT project ID to which the server is associated.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The server ID.
      */
-    public /*out*/ readonly serverId!: pulumi.Output<string>;
+    declare public /*out*/ readonly serverId: pulumi.Output<string>;
     /**
      * Date-time when the server was updated
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
      * User data that is passed via cloud-init to the server.
      */
-    public readonly userData!: pulumi.Output<string | undefined>;
+    declare public readonly userData: pulumi.Output<string | undefined>;
 
     /**
      * Create a Server resource with the given unique name, arguments, and options.
@@ -129,42 +131,42 @@ export class Server extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServerState | undefined;
-            resourceInputs["affinityGroup"] = state ? state.affinityGroup : undefined;
-            resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
-            resourceInputs["bootVolume"] = state ? state.bootVolume : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["desiredStatus"] = state ? state.desiredStatus : undefined;
-            resourceInputs["imageId"] = state ? state.imageId : undefined;
-            resourceInputs["keypairName"] = state ? state.keypairName : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["launchedAt"] = state ? state.launchedAt : undefined;
-            resourceInputs["machineType"] = state ? state.machineType : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkInterfaces"] = state ? state.networkInterfaces : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["serverId"] = state ? state.serverId : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["userData"] = state ? state.userData : undefined;
+            resourceInputs["affinityGroup"] = state?.affinityGroup;
+            resourceInputs["availabilityZone"] = state?.availabilityZone;
+            resourceInputs["bootVolume"] = state?.bootVolume;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["desiredStatus"] = state?.desiredStatus;
+            resourceInputs["imageId"] = state?.imageId;
+            resourceInputs["keypairName"] = state?.keypairName;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["launchedAt"] = state?.launchedAt;
+            resourceInputs["machineType"] = state?.machineType;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkInterfaces"] = state?.networkInterfaces;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["serverId"] = state?.serverId;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["userData"] = state?.userData;
         } else {
             const args = argsOrState as ServerArgs | undefined;
-            if ((!args || args.machineType === undefined) && !opts.urn) {
+            if (args?.machineType === undefined && !opts.urn) {
                 throw new Error("Missing required property 'machineType'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["affinityGroup"] = args ? args.affinityGroup : undefined;
-            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
-            resourceInputs["bootVolume"] = args ? args.bootVolume : undefined;
-            resourceInputs["desiredStatus"] = args ? args.desiredStatus : undefined;
-            resourceInputs["imageId"] = args ? args.imageId : undefined;
-            resourceInputs["keypairName"] = args ? args.keypairName : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["machineType"] = args ? args.machineType : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networkInterfaces"] = args ? args.networkInterfaces : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["userData"] = args ? args.userData : undefined;
+            resourceInputs["affinityGroup"] = args?.affinityGroup;
+            resourceInputs["availabilityZone"] = args?.availabilityZone;
+            resourceInputs["bootVolume"] = args?.bootVolume;
+            resourceInputs["desiredStatus"] = args?.desiredStatus;
+            resourceInputs["imageId"] = args?.imageId;
+            resourceInputs["keypairName"] = args?.keypairName;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["machineType"] = args?.machineType;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networkInterfaces"] = args?.networkInterfaces;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["userData"] = args?.userData;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["launchedAt"] = undefined /*out*/;
             resourceInputs["serverId"] = undefined /*out*/;

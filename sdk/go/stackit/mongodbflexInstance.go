@@ -29,10 +29,12 @@ type MongodbflexInstance struct {
 	Name    pulumi.StringOutput              `pulumi:"name"`
 	Options MongodbflexInstanceOptionsOutput `pulumi:"options"`
 	// STACKIT project ID to which the instance is associated.
-	ProjectId pulumi.StringOutput              `pulumi:"projectId"`
-	Replicas  pulumi.IntOutput                 `pulumi:"replicas"`
-	Storage   MongodbflexInstanceStorageOutput `pulumi:"storage"`
-	Version   pulumi.StringOutput              `pulumi:"version"`
+	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region   pulumi.StringOutput              `pulumi:"region"`
+	Replicas pulumi.IntOutput                 `pulumi:"replicas"`
+	Storage  MongodbflexInstanceStorageOutput `pulumi:"storage"`
+	Version  pulumi.StringOutput              `pulumi:"version"`
 }
 
 // NewMongodbflexInstance registers a new resource with the given unique name, arguments, and options.
@@ -100,10 +102,12 @@ type mongodbflexInstanceState struct {
 	Name    *string                     `pulumi:"name"`
 	Options *MongodbflexInstanceOptions `pulumi:"options"`
 	// STACKIT project ID to which the instance is associated.
-	ProjectId *string                     `pulumi:"projectId"`
-	Replicas  *int                        `pulumi:"replicas"`
-	Storage   *MongodbflexInstanceStorage `pulumi:"storage"`
-	Version   *string                     `pulumi:"version"`
+	ProjectId *string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region   *string                     `pulumi:"region"`
+	Replicas *int                        `pulumi:"replicas"`
+	Storage  *MongodbflexInstanceStorage `pulumi:"storage"`
+	Version  *string                     `pulumi:"version"`
 }
 
 type MongodbflexInstanceState struct {
@@ -119,9 +123,11 @@ type MongodbflexInstanceState struct {
 	Options MongodbflexInstanceOptionsPtrInput
 	// STACKIT project ID to which the instance is associated.
 	ProjectId pulumi.StringPtrInput
-	Replicas  pulumi.IntPtrInput
-	Storage   MongodbflexInstanceStoragePtrInput
-	Version   pulumi.StringPtrInput
+	// The resource region. If not defined, the provider region is used.
+	Region   pulumi.StringPtrInput
+	Replicas pulumi.IntPtrInput
+	Storage  MongodbflexInstanceStoragePtrInput
+	Version  pulumi.StringPtrInput
 }
 
 func (MongodbflexInstanceState) ElementType() reflect.Type {
@@ -138,10 +144,12 @@ type mongodbflexInstanceArgs struct {
 	Name    *string                    `pulumi:"name"`
 	Options MongodbflexInstanceOptions `pulumi:"options"`
 	// STACKIT project ID to which the instance is associated.
-	ProjectId string                     `pulumi:"projectId"`
-	Replicas  int                        `pulumi:"replicas"`
-	Storage   MongodbflexInstanceStorage `pulumi:"storage"`
-	Version   string                     `pulumi:"version"`
+	ProjectId string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region   *string                    `pulumi:"region"`
+	Replicas int                        `pulumi:"replicas"`
+	Storage  MongodbflexInstanceStorage `pulumi:"storage"`
+	Version  string                     `pulumi:"version"`
 }
 
 // The set of arguments for constructing a MongodbflexInstance resource.
@@ -156,9 +164,11 @@ type MongodbflexInstanceArgs struct {
 	Options MongodbflexInstanceOptionsInput
 	// STACKIT project ID to which the instance is associated.
 	ProjectId pulumi.StringInput
-	Replicas  pulumi.IntInput
-	Storage   MongodbflexInstanceStorageInput
-	Version   pulumi.StringInput
+	// The resource region. If not defined, the provider region is used.
+	Region   pulumi.StringPtrInput
+	Replicas pulumi.IntInput
+	Storage  MongodbflexInstanceStorageInput
+	Version  pulumi.StringInput
 }
 
 func (MongodbflexInstanceArgs) ElementType() reflect.Type {
@@ -279,6 +289,11 @@ func (o MongodbflexInstanceOutput) Options() MongodbflexInstanceOptionsOutput {
 // STACKIT project ID to which the instance is associated.
 func (o MongodbflexInstanceOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MongodbflexInstance) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The resource region. If not defined, the provider region is used.
+func (o MongodbflexInstanceOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *MongodbflexInstance) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 func (o MongodbflexInstanceOutput) Replicas() pulumi.IntOutput {

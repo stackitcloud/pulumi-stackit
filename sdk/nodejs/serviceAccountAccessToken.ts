@@ -6,6 +6,9 @@ import * as utilities from "./utilities";
 
 /**
  * Service account access token schema.
+ *
+ * !> This resource is scheduled for deprecation and will be removed on December 17, 2025. To ensure a smooth transition, please refer to our migration guide at https://docs.stackit.cloud/stackit/en/deprecation-plan-for-service-account-access-tokens-and-migration-guide-373293307.html for detailed instructions and recommendations.
+ *
  * ## Example Usage
  *
  * ### Automatically rotate access tokens
@@ -41,39 +44,39 @@ export class ServiceAccountAccessToken extends pulumi.CustomResource {
     /**
      * Identifier for the access token linked to the service account.
      */
-    public /*out*/ readonly accessTokenId!: pulumi.Output<string>;
+    declare public /*out*/ readonly accessTokenId: pulumi.Output<string>;
     /**
      * Indicate whether the token is currently active or inactive
      */
-    public /*out*/ readonly active!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly active: pulumi.Output<boolean>;
     /**
      * Timestamp indicating when the access token was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * STACKIT project ID associated with the service account token.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * A map of arbitrary key/value pairs that will force recreation of the token when they change, enabling token rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
      */
-    public readonly rotateWhenChanged!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly rotateWhenChanged: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * Email address linked to the service account.
      */
-    public readonly serviceAccountEmail!: pulumi.Output<string>;
+    declare public readonly serviceAccountEmail: pulumi.Output<string>;
     /**
      * JWT access token for API authentication. Prefixed by 'Bearer' and should be stored securely as it is irretrievable once lost.
      */
-    public /*out*/ readonly token!: pulumi.Output<string>;
+    declare public /*out*/ readonly token: pulumi.Output<string>;
     /**
      * Specifies the token's validity duration in days. If unspecified, defaults to 90 days.
      */
-    public readonly ttlDays!: pulumi.Output<number>;
+    declare public readonly ttlDays: pulumi.Output<number>;
     /**
      * Estimated expiration timestamp of the access token. For precise validity, check the JWT details.
      */
-    public /*out*/ readonly validUntil!: pulumi.Output<string>;
+    declare public /*out*/ readonly validUntil: pulumi.Output<string>;
 
     /**
      * Create a ServiceAccountAccessToken resource with the given unique name, arguments, and options.
@@ -88,27 +91,27 @@ export class ServiceAccountAccessToken extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServiceAccountAccessTokenState | undefined;
-            resourceInputs["accessTokenId"] = state ? state.accessTokenId : undefined;
-            resourceInputs["active"] = state ? state.active : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["rotateWhenChanged"] = state ? state.rotateWhenChanged : undefined;
-            resourceInputs["serviceAccountEmail"] = state ? state.serviceAccountEmail : undefined;
-            resourceInputs["token"] = state ? state.token : undefined;
-            resourceInputs["ttlDays"] = state ? state.ttlDays : undefined;
-            resourceInputs["validUntil"] = state ? state.validUntil : undefined;
+            resourceInputs["accessTokenId"] = state?.accessTokenId;
+            resourceInputs["active"] = state?.active;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["rotateWhenChanged"] = state?.rotateWhenChanged;
+            resourceInputs["serviceAccountEmail"] = state?.serviceAccountEmail;
+            resourceInputs["token"] = state?.token;
+            resourceInputs["ttlDays"] = state?.ttlDays;
+            resourceInputs["validUntil"] = state?.validUntil;
         } else {
             const args = argsOrState as ServiceAccountAccessTokenArgs | undefined;
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.serviceAccountEmail === undefined) && !opts.urn) {
+            if (args?.serviceAccountEmail === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serviceAccountEmail'");
             }
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["rotateWhenChanged"] = args ? args.rotateWhenChanged : undefined;
-            resourceInputs["serviceAccountEmail"] = args ? args.serviceAccountEmail : undefined;
-            resourceInputs["ttlDays"] = args ? args.ttlDays : undefined;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["rotateWhenChanged"] = args?.rotateWhenChanged;
+            resourceInputs["serviceAccountEmail"] = args?.serviceAccountEmail;
+            resourceInputs["ttlDays"] = args?.ttlDays;
             resourceInputs["accessTokenId"] = undefined /*out*/;
             resourceInputs["active"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;

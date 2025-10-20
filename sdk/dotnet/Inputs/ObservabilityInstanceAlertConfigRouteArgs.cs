@@ -36,30 +36,6 @@ namespace Pulumi.Stackit.Inputs
         [Input("groupWait")]
         public Input<string>? GroupWait { get; set; }
 
-        [Input("match")]
-        private InputMap<string>? _match;
-
-        /// <summary>
-        /// A set of equality matchers an alert has to fulfill to match the node.
-        /// </summary>
-        public InputMap<string> Match
-        {
-            get => _match ?? (_match = new InputMap<string>());
-            set => _match = value;
-        }
-
-        [Input("matchRegex")]
-        private InputMap<string>? _matchRegex;
-
-        /// <summary>
-        /// A set of regex-matchers an alert has to fulfill to match the node.
-        /// </summary>
-        public InputMap<string> MatchRegex
-        {
-            get => _matchRegex ?? (_matchRegex = new InputMap<string>());
-            set => _matchRegex = value;
-        }
-
         /// <summary>
         /// The name of the receiver to route the alerts to.
         /// </summary>

@@ -43,14 +43,6 @@ export interface GetSkeClusterArgs {
  */
 export interface GetSkeClusterResult {
     /**
-     * DEPRECATED as of Kubernetes 1.25+
-     * Flag to specify if privileged mode for containers is enabled or not.
-     * This should be used with care since it also disables a couple of other features like the use of some volume type (e.g. PVCs).
-     *
-     * @deprecated Please remove this flag from your configuration when using Kubernetes version 1.25+.
-     */
-    readonly allowPrivilegedContainers: boolean;
-    /**
      * The outgoing network ranges (in CIDR notation) of traffic originating from workload on the cluster.
      */
     readonly egressAddressRanges: string[];
@@ -63,12 +55,6 @@ export interface GetSkeClusterResult {
      */
     readonly hibernations: outputs.GetSkeClusterHibernation[];
     readonly id: string;
-    /**
-     * Kubernetes version. This field is deprecated, use `kubernetesVersionUsed` instead
-     *
-     * @deprecated This field is always nil, use `kubernetesVersionUsed` to get the cluster kubernetes version. This field would cause errors when the cluster got a kubernetes version minor upgrade, either triggered by automatic or forceful updates.
-     */
-    readonly kubernetesVersion: string;
     /**
      * The minimum Kubernetes version, this field is always nil. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current kubernetes version being used for your cluster, use the `kubernetesVersionUsed` field.
      */
@@ -93,6 +79,10 @@ export interface GetSkeClusterResult {
      * One or more `nodePool` block as defined below.
      */
     readonly nodePools: outputs.GetSkeClusterNodePool[];
+    /**
+     * The network ranges (in CIDR notation) used by pods of the cluster.
+     */
+    readonly podAddressRanges: string[];
     /**
      * STACKIT project ID to which the cluster is associated.
      */

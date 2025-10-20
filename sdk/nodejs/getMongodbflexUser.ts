@@ -14,6 +14,7 @@ export function getMongodbflexUser(args: GetMongodbflexUserArgs, opts?: pulumi.I
     return pulumi.runtime.invoke("stackit:index/getMongodbflexUser:getMongodbflexUser", {
         "instanceId": args.instanceId,
         "projectId": args.projectId,
+        "region": args.region,
         "userId": args.userId,
     }, opts);
 }
@@ -30,6 +31,10 @@ export interface GetMongodbflexUserArgs {
      * STACKIT project ID to which the instance is associated.
      */
     projectId: string;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: string;
     /**
      * User ID.
      */
@@ -52,6 +57,10 @@ export interface GetMongodbflexUserResult {
      * STACKIT project ID to which the instance is associated.
      */
     readonly projectId: string;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    readonly region: string;
     readonly roles: string[];
     /**
      * User ID.
@@ -69,6 +78,7 @@ export function getMongodbflexUserOutput(args: GetMongodbflexUserOutputArgs, opt
     return pulumi.runtime.invokeOutput("stackit:index/getMongodbflexUser:getMongodbflexUser", {
         "instanceId": args.instanceId,
         "projectId": args.projectId,
+        "region": args.region,
         "userId": args.userId,
     }, opts);
 }
@@ -85,6 +95,10 @@ export interface GetMongodbflexUserOutputArgs {
      * STACKIT project ID to which the instance is associated.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string>;
     /**
      * User ID.
      */

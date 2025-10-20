@@ -40,15 +40,15 @@ export class ServerVolumeAttach extends pulumi.CustomResource {
     /**
      * STACKIT project ID to which the volume attachment is associated.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The server ID.
      */
-    public readonly serverId!: pulumi.Output<string>;
+    declare public readonly serverId: pulumi.Output<string>;
     /**
      * The volume ID.
      */
-    public readonly volumeId!: pulumi.Output<string>;
+    declare public readonly volumeId: pulumi.Output<string>;
 
     /**
      * Create a ServerVolumeAttach resource with the given unique name, arguments, and options.
@@ -63,23 +63,23 @@ export class ServerVolumeAttach extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServerVolumeAttachState | undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["serverId"] = state ? state.serverId : undefined;
-            resourceInputs["volumeId"] = state ? state.volumeId : undefined;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["serverId"] = state?.serverId;
+            resourceInputs["volumeId"] = state?.volumeId;
         } else {
             const args = argsOrState as ServerVolumeAttachArgs | undefined;
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.serverId === undefined) && !opts.urn) {
+            if (args?.serverId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'serverId'");
             }
-            if ((!args || args.volumeId === undefined) && !opts.urn) {
+            if (args?.volumeId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'volumeId'");
             }
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["serverId"] = args ? args.serverId : undefined;
-            resourceInputs["volumeId"] = args ? args.volumeId : undefined;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["serverId"] = args?.serverId;
+            resourceInputs["volumeId"] = args?.volumeId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServerVolumeAttach.__pulumiType, name, resourceInputs, opts);

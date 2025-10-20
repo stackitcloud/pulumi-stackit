@@ -13,7 +13,7 @@ namespace Pulumi.Stackit.Inputs
     public sealed class ObservabilityInstanceAlertConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Global configuration for the alerts.
+        /// Global configuration for the alerts. If nothing passed the default argus config will be used. It is only possible to update the entire global part, not individual attributes.
         /// </summary>
         [Input("global")]
         public Input<Inputs.ObservabilityInstanceAlertConfigGlobalArgs>? Global { get; set; }

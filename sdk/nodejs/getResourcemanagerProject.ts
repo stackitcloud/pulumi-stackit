@@ -40,6 +40,10 @@ export interface GetResourcemanagerProjectResult {
      * Project container ID. Globally unique, user-friendly identifier.
      */
     readonly containerId?: string;
+    /**
+     * Date-time at which the project was created.
+     */
+    readonly creationTime: string;
     readonly id: string;
     /**
      * Labels are key-value string pairs which can be attached to a resource container. A label key must match the regex [A-ZÄÜÖa-zäüöß0-9*-]{1,64}. A label value must match the regex ^$|[A-ZÄÜÖa-zäüöß0-9*-]{1,64}
@@ -57,6 +61,10 @@ export interface GetResourcemanagerProjectResult {
      * Project UUID identifier. This is the ID that can be used in most of the other resources to identify the project.
      */
     readonly projectId?: string;
+    /**
+     * Date-time at which the project was last modified.
+     */
+    readonly updateTime: string;
 }
 /**
  * Resource Manager project data source schema. To identify the project, you need to provider either projectId or container_id. If you provide both, projectId will be used.

@@ -14,7 +14,7 @@ namespace Pulumi.Stackit.Outputs
     public sealed class ObservabilityInstanceAlertConfig
     {
         /// <summary>
-        /// Global configuration for the alerts.
+        /// Global configuration for the alerts. If nothing passed the default argus config will be used. It is only possible to update the entire global part, not individual attributes.
         /// </summary>
         public readonly Outputs.ObservabilityInstanceAlertConfigGlobal? Global;
         /// <summary>

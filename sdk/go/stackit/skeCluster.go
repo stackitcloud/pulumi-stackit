@@ -20,20 +20,12 @@ import (
 type SkeCluster struct {
 	pulumi.CustomResourceState
 
-	// Flag to specify if privileged mode for containers is enabled or not.
-	// This should be used with care since it also disables a couple of other features like the use of some volume type (e.g. PVCs).
-	// Deprecated as of Kubernetes 1.25 and later
-	AllowPrivilegedContainers pulumi.BoolPtrOutput `pulumi:"allowPrivilegedContainers"`
 	// The outgoing network ranges (in CIDR notation) of traffic originating from workload on the cluster.
 	EgressAddressRanges pulumi.StringArrayOutput `pulumi:"egressAddressRanges"`
 	// A single extensions block as defined below.
 	Extensions SkeClusterExtensionsPtrOutput `pulumi:"extensions"`
 	// One or more hibernation block as defined below.
 	Hibernations SkeClusterHibernationArrayOutput `pulumi:"hibernations"`
-	// Kubernetes version. Must only contain major and minor version (e.g. 1.22). This field is deprecated, use `kubernetesVersionMin instead`
-	//
-	// Deprecated: Use `kubernetesVersionMin instead`. Setting a specific kubernetes version would cause errors during minor version upgrades due to forced updates. In those cases, this field might not represent the actual kubernetes version used in the cluster.
-	KubernetesVersion pulumi.StringPtrOutput `pulumi:"kubernetesVersion"`
 	// The minimum Kubernetes version. This field will be used to set the minimum kubernetes version on creation/update of the cluster. If unset, the latest supported Kubernetes version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current kubernetes version being used for your cluster, use the read-only `kubernetesVersionUsed` field.
 	KubernetesVersionMin pulumi.StringPtrOutput `pulumi:"kubernetesVersionMin"`
 	// Full Kubernetes version used. For example, if 1.22 was set in `kubernetesVersionMin`, this value may result to 1.22.15. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
@@ -46,6 +38,8 @@ type SkeCluster struct {
 	Network SkeClusterNetworkPtrOutput `pulumi:"network"`
 	// One or more `nodePool` block as defined below.
 	NodePools SkeClusterNodePoolArrayOutput `pulumi:"nodePools"`
+	// The network ranges (in CIDR notation) used by pods of the cluster.
+	PodAddressRanges pulumi.StringArrayOutput `pulumi:"podAddressRanges"`
 	// STACKIT project ID to which the cluster is associated.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
@@ -88,20 +82,12 @@ func GetSkeCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SkeCluster resources.
 type skeClusterState struct {
-	// Flag to specify if privileged mode for containers is enabled or not.
-	// This should be used with care since it also disables a couple of other features like the use of some volume type (e.g. PVCs).
-	// Deprecated as of Kubernetes 1.25 and later
-	AllowPrivilegedContainers *bool `pulumi:"allowPrivilegedContainers"`
 	// The outgoing network ranges (in CIDR notation) of traffic originating from workload on the cluster.
 	EgressAddressRanges []string `pulumi:"egressAddressRanges"`
 	// A single extensions block as defined below.
 	Extensions *SkeClusterExtensions `pulumi:"extensions"`
 	// One or more hibernation block as defined below.
 	Hibernations []SkeClusterHibernation `pulumi:"hibernations"`
-	// Kubernetes version. Must only contain major and minor version (e.g. 1.22). This field is deprecated, use `kubernetesVersionMin instead`
-	//
-	// Deprecated: Use `kubernetesVersionMin instead`. Setting a specific kubernetes version would cause errors during minor version upgrades due to forced updates. In those cases, this field might not represent the actual kubernetes version used in the cluster.
-	KubernetesVersion *string `pulumi:"kubernetesVersion"`
 	// The minimum Kubernetes version. This field will be used to set the minimum kubernetes version on creation/update of the cluster. If unset, the latest supported Kubernetes version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current kubernetes version being used for your cluster, use the read-only `kubernetesVersionUsed` field.
 	KubernetesVersionMin *string `pulumi:"kubernetesVersionMin"`
 	// Full Kubernetes version used. For example, if 1.22 was set in `kubernetesVersionMin`, this value may result to 1.22.15. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
@@ -114,6 +100,8 @@ type skeClusterState struct {
 	Network *SkeClusterNetwork `pulumi:"network"`
 	// One or more `nodePool` block as defined below.
 	NodePools []SkeClusterNodePool `pulumi:"nodePools"`
+	// The network ranges (in CIDR notation) used by pods of the cluster.
+	PodAddressRanges []string `pulumi:"podAddressRanges"`
 	// STACKIT project ID to which the cluster is associated.
 	ProjectId *string `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
@@ -121,20 +109,12 @@ type skeClusterState struct {
 }
 
 type SkeClusterState struct {
-	// Flag to specify if privileged mode for containers is enabled or not.
-	// This should be used with care since it also disables a couple of other features like the use of some volume type (e.g. PVCs).
-	// Deprecated as of Kubernetes 1.25 and later
-	AllowPrivilegedContainers pulumi.BoolPtrInput
 	// The outgoing network ranges (in CIDR notation) of traffic originating from workload on the cluster.
 	EgressAddressRanges pulumi.StringArrayInput
 	// A single extensions block as defined below.
 	Extensions SkeClusterExtensionsPtrInput
 	// One or more hibernation block as defined below.
 	Hibernations SkeClusterHibernationArrayInput
-	// Kubernetes version. Must only contain major and minor version (e.g. 1.22). This field is deprecated, use `kubernetesVersionMin instead`
-	//
-	// Deprecated: Use `kubernetesVersionMin instead`. Setting a specific kubernetes version would cause errors during minor version upgrades due to forced updates. In those cases, this field might not represent the actual kubernetes version used in the cluster.
-	KubernetesVersion pulumi.StringPtrInput
 	// The minimum Kubernetes version. This field will be used to set the minimum kubernetes version on creation/update of the cluster. If unset, the latest supported Kubernetes version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current kubernetes version being used for your cluster, use the read-only `kubernetesVersionUsed` field.
 	KubernetesVersionMin pulumi.StringPtrInput
 	// Full Kubernetes version used. For example, if 1.22 was set in `kubernetesVersionMin`, this value may result to 1.22.15. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
@@ -147,6 +127,8 @@ type SkeClusterState struct {
 	Network SkeClusterNetworkPtrInput
 	// One or more `nodePool` block as defined below.
 	NodePools SkeClusterNodePoolArrayInput
+	// The network ranges (in CIDR notation) used by pods of the cluster.
+	PodAddressRanges pulumi.StringArrayInput
 	// STACKIT project ID to which the cluster is associated.
 	ProjectId pulumi.StringPtrInput
 	// The resource region. If not defined, the provider region is used.
@@ -158,18 +140,10 @@ func (SkeClusterState) ElementType() reflect.Type {
 }
 
 type skeClusterArgs struct {
-	// Flag to specify if privileged mode for containers is enabled or not.
-	// This should be used with care since it also disables a couple of other features like the use of some volume type (e.g. PVCs).
-	// Deprecated as of Kubernetes 1.25 and later
-	AllowPrivilegedContainers *bool `pulumi:"allowPrivilegedContainers"`
 	// A single extensions block as defined below.
 	Extensions *SkeClusterExtensions `pulumi:"extensions"`
 	// One or more hibernation block as defined below.
 	Hibernations []SkeClusterHibernation `pulumi:"hibernations"`
-	// Kubernetes version. Must only contain major and minor version (e.g. 1.22). This field is deprecated, use `kubernetesVersionMin instead`
-	//
-	// Deprecated: Use `kubernetesVersionMin instead`. Setting a specific kubernetes version would cause errors during minor version upgrades due to forced updates. In those cases, this field might not represent the actual kubernetes version used in the cluster.
-	KubernetesVersion *string `pulumi:"kubernetesVersion"`
 	// The minimum Kubernetes version. This field will be used to set the minimum kubernetes version on creation/update of the cluster. If unset, the latest supported Kubernetes version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current kubernetes version being used for your cluster, use the read-only `kubernetesVersionUsed` field.
 	KubernetesVersionMin *string `pulumi:"kubernetesVersionMin"`
 	// A single maintenance block as defined below.
@@ -188,18 +162,10 @@ type skeClusterArgs struct {
 
 // The set of arguments for constructing a SkeCluster resource.
 type SkeClusterArgs struct {
-	// Flag to specify if privileged mode for containers is enabled or not.
-	// This should be used with care since it also disables a couple of other features like the use of some volume type (e.g. PVCs).
-	// Deprecated as of Kubernetes 1.25 and later
-	AllowPrivilegedContainers pulumi.BoolPtrInput
 	// A single extensions block as defined below.
 	Extensions SkeClusterExtensionsPtrInput
 	// One or more hibernation block as defined below.
 	Hibernations SkeClusterHibernationArrayInput
-	// Kubernetes version. Must only contain major and minor version (e.g. 1.22). This field is deprecated, use `kubernetesVersionMin instead`
-	//
-	// Deprecated: Use `kubernetesVersionMin instead`. Setting a specific kubernetes version would cause errors during minor version upgrades due to forced updates. In those cases, this field might not represent the actual kubernetes version used in the cluster.
-	KubernetesVersion pulumi.StringPtrInput
 	// The minimum Kubernetes version. This field will be used to set the minimum kubernetes version on creation/update of the cluster. If unset, the latest supported Kubernetes version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current kubernetes version being used for your cluster, use the read-only `kubernetesVersionUsed` field.
 	KubernetesVersionMin pulumi.StringPtrInput
 	// A single maintenance block as defined below.
@@ -303,13 +269,6 @@ func (o SkeClusterOutput) ToSkeClusterOutputWithContext(ctx context.Context) Ske
 	return o
 }
 
-// Flag to specify if privileged mode for containers is enabled or not.
-// This should be used with care since it also disables a couple of other features like the use of some volume type (e.g. PVCs).
-// Deprecated as of Kubernetes 1.25 and later
-func (o SkeClusterOutput) AllowPrivilegedContainers() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *SkeCluster) pulumi.BoolPtrOutput { return v.AllowPrivilegedContainers }).(pulumi.BoolPtrOutput)
-}
-
 // The outgoing network ranges (in CIDR notation) of traffic originating from workload on the cluster.
 func (o SkeClusterOutput) EgressAddressRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SkeCluster) pulumi.StringArrayOutput { return v.EgressAddressRanges }).(pulumi.StringArrayOutput)
@@ -323,13 +282,6 @@ func (o SkeClusterOutput) Extensions() SkeClusterExtensionsPtrOutput {
 // One or more hibernation block as defined below.
 func (o SkeClusterOutput) Hibernations() SkeClusterHibernationArrayOutput {
 	return o.ApplyT(func(v *SkeCluster) SkeClusterHibernationArrayOutput { return v.Hibernations }).(SkeClusterHibernationArrayOutput)
-}
-
-// Kubernetes version. Must only contain major and minor version (e.g. 1.22). This field is deprecated, use `kubernetesVersionMin instead`
-//
-// Deprecated: Use `kubernetesVersionMin instead`. Setting a specific kubernetes version would cause errors during minor version upgrades due to forced updates. In those cases, this field might not represent the actual kubernetes version used in the cluster.
-func (o SkeClusterOutput) KubernetesVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SkeCluster) pulumi.StringPtrOutput { return v.KubernetesVersion }).(pulumi.StringPtrOutput)
 }
 
 // The minimum Kubernetes version. This field will be used to set the minimum kubernetes version on creation/update of the cluster. If unset, the latest supported Kubernetes version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current kubernetes version being used for your cluster, use the read-only `kubernetesVersionUsed` field.
@@ -360,6 +312,11 @@ func (o SkeClusterOutput) Network() SkeClusterNetworkPtrOutput {
 // One or more `nodePool` block as defined below.
 func (o SkeClusterOutput) NodePools() SkeClusterNodePoolArrayOutput {
 	return o.ApplyT(func(v *SkeCluster) SkeClusterNodePoolArrayOutput { return v.NodePools }).(SkeClusterNodePoolArrayOutput)
+}
+
+// The network ranges (in CIDR notation) used by pods of the cluster.
+func (o SkeClusterOutput) PodAddressRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SkeCluster) pulumi.StringArrayOutput { return v.PodAddressRanges }).(pulumi.StringArrayOutput)
 }
 
 // STACKIT project ID to which the cluster is associated.

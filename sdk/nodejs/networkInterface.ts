@@ -40,51 +40,51 @@ export class NetworkInterface extends pulumi.CustomResource {
     /**
      * The list of CIDR (Classless Inter-Domain Routing) notations.
      */
-    public readonly allowedAddresses!: pulumi.Output<string[]>;
+    declare public readonly allowedAddresses: pulumi.Output<string[]>;
     /**
      * The device UUID of the network interface.
      */
-    public /*out*/ readonly device!: pulumi.Output<string>;
+    declare public /*out*/ readonly device: pulumi.Output<string>;
     /**
      * The IPv4 address.
      */
-    public readonly ipv4!: pulumi.Output<string>;
+    declare public readonly ipv4: pulumi.Output<string>;
     /**
      * Labels are key-value string pairs which can be attached to a network interface.
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The MAC address of network interface.
      */
-    public /*out*/ readonly mac!: pulumi.Output<string>;
+    declare public /*out*/ readonly mac: pulumi.Output<string>;
     /**
      * The name of the network interface.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The network ID to which the network interface is associated.
      */
-    public readonly networkId!: pulumi.Output<string>;
+    declare public readonly networkId: pulumi.Output<string>;
     /**
      * The network interface ID.
      */
-    public /*out*/ readonly networkInterfaceId!: pulumi.Output<string>;
+    declare public /*out*/ readonly networkInterfaceId: pulumi.Output<string>;
     /**
      * STACKIT project ID to which the network is associated.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The Network Interface Security. If set to false, then no security groups will apply to this network interface.
      */
-    public readonly security!: pulumi.Output<boolean>;
+    declare public readonly security: pulumi.Output<boolean>;
     /**
      * The list of security group UUIDs. If security is set to false, setting this field will lead to an error.
      */
-    public readonly securityGroupIds!: pulumi.Output<string[]>;
+    declare public readonly securityGroupIds: pulumi.Output<string[]>;
     /**
      * Type of network interface. Some of the possible values are: Supported values are: `server`, `metadata`, `gateway`.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
 
     /**
      * Create a NetworkInterface resource with the given unique name, arguments, and options.
@@ -99,34 +99,34 @@ export class NetworkInterface extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkInterfaceState | undefined;
-            resourceInputs["allowedAddresses"] = state ? state.allowedAddresses : undefined;
-            resourceInputs["device"] = state ? state.device : undefined;
-            resourceInputs["ipv4"] = state ? state.ipv4 : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["mac"] = state ? state.mac : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["networkId"] = state ? state.networkId : undefined;
-            resourceInputs["networkInterfaceId"] = state ? state.networkInterfaceId : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["security"] = state ? state.security : undefined;
-            resourceInputs["securityGroupIds"] = state ? state.securityGroupIds : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["allowedAddresses"] = state?.allowedAddresses;
+            resourceInputs["device"] = state?.device;
+            resourceInputs["ipv4"] = state?.ipv4;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["mac"] = state?.mac;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["networkId"] = state?.networkId;
+            resourceInputs["networkInterfaceId"] = state?.networkInterfaceId;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["security"] = state?.security;
+            resourceInputs["securityGroupIds"] = state?.securityGroupIds;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as NetworkInterfaceArgs | undefined;
-            if ((!args || args.networkId === undefined) && !opts.urn) {
+            if (args?.networkId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["allowedAddresses"] = args ? args.allowedAddresses : undefined;
-            resourceInputs["ipv4"] = args ? args.ipv4 : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["networkId"] = args ? args.networkId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["security"] = args ? args.security : undefined;
-            resourceInputs["securityGroupIds"] = args ? args.securityGroupIds : undefined;
+            resourceInputs["allowedAddresses"] = args?.allowedAddresses;
+            resourceInputs["ipv4"] = args?.ipv4;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["networkId"] = args?.networkId;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["security"] = args?.security;
+            resourceInputs["securityGroupIds"] = args?.securityGroupIds;
             resourceInputs["device"] = undefined /*out*/;
             resourceInputs["mac"] = undefined /*out*/;
             resourceInputs["networkInterfaceId"] = undefined /*out*/;

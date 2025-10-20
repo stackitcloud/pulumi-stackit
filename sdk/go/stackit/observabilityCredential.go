@@ -18,6 +18,8 @@ import (
 type ObservabilityCredential struct {
 	pulumi.CustomResourceState
 
+	// A description of the credential.
+	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The Observability Instance ID the credential belongs to.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// Credential password
@@ -68,6 +70,8 @@ func GetObservabilityCredential(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ObservabilityCredential resources.
 type observabilityCredentialState struct {
+	// A description of the credential.
+	Description *string `pulumi:"description"`
 	// The Observability Instance ID the credential belongs to.
 	InstanceId *string `pulumi:"instanceId"`
 	// Credential password
@@ -79,6 +83,8 @@ type observabilityCredentialState struct {
 }
 
 type ObservabilityCredentialState struct {
+	// A description of the credential.
+	Description pulumi.StringPtrInput
 	// The Observability Instance ID the credential belongs to.
 	InstanceId pulumi.StringPtrInput
 	// Credential password
@@ -94,6 +100,8 @@ func (ObservabilityCredentialState) ElementType() reflect.Type {
 }
 
 type observabilityCredentialArgs struct {
+	// A description of the credential.
+	Description *string `pulumi:"description"`
 	// The Observability Instance ID the credential belongs to.
 	InstanceId string `pulumi:"instanceId"`
 	// STACKIT project ID to which the credential is associated.
@@ -102,6 +110,8 @@ type observabilityCredentialArgs struct {
 
 // The set of arguments for constructing a ObservabilityCredential resource.
 type ObservabilityCredentialArgs struct {
+	// A description of the credential.
+	Description pulumi.StringPtrInput
 	// The Observability Instance ID the credential belongs to.
 	InstanceId pulumi.StringInput
 	// STACKIT project ID to which the credential is associated.
@@ -193,6 +203,11 @@ func (o ObservabilityCredentialOutput) ToObservabilityCredentialOutput() Observa
 
 func (o ObservabilityCredentialOutput) ToObservabilityCredentialOutputWithContext(ctx context.Context) ObservabilityCredentialOutput {
 	return o
+}
+
+// A description of the credential.
+func (o ObservabilityCredentialOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ObservabilityCredential) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // The Observability Instance ID the credential belongs to.

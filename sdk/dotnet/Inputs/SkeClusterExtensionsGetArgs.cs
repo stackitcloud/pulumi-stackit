@@ -19,7 +19,7 @@ namespace Pulumi.Stackit.Inputs
         public Input<Inputs.SkeClusterExtensionsAclGetArgs>? Acl { get; set; }
 
         /// <summary>
-        /// A single argus block as defined below.
+        /// A single argus block as defined below. This field is deprecated and will be removed 06 January 2026.
         /// </summary>
         [Input("argus")]
         public Input<Inputs.SkeClusterExtensionsArgusGetArgs>? Argus { get; set; }
@@ -29,6 +29,12 @@ namespace Pulumi.Stackit.Inputs
         /// </summary>
         [Input("dns")]
         public Input<Inputs.SkeClusterExtensionsDnsGetArgs>? Dns { get; set; }
+
+        /// <summary>
+        /// A single observability block as defined below.
+        /// </summary>
+        [Input("observability")]
+        public Input<Inputs.SkeClusterExtensionsObservabilityGetArgs>? Observability { get; set; }
 
         public SkeClusterExtensionsGetArgs()
         {

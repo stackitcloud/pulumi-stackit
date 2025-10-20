@@ -42,47 +42,47 @@ export class ObservabilityScrapeconfig extends pulumi.CustomResource {
     /**
      * A basic authentication block.
      */
-    public readonly basicAuth!: pulumi.Output<outputs.ObservabilityScrapeconfigBasicAuth>;
+    declare public readonly basicAuth: pulumi.Output<outputs.ObservabilityScrapeconfigBasicAuth>;
     /**
      * Observability instance ID to which the scraping job is associated.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Specifies the job scraping url path. E.g. `/metrics`.
      */
-    public readonly metricsPath!: pulumi.Output<string>;
+    declare public readonly metricsPath: pulumi.Output<string>;
     /**
      * Specifies the name of the scraping job.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * STACKIT project ID to which the scraping job is associated.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * A SAML2 configuration block.
      */
-    public readonly saml2!: pulumi.Output<outputs.ObservabilityScrapeconfigSaml2>;
+    declare public readonly saml2: pulumi.Output<outputs.ObservabilityScrapeconfigSaml2>;
     /**
      * Specifies the scrape sample limit. Upper limit depends on the service plan. Defaults to `5000`.
      */
-    public readonly sampleLimit!: pulumi.Output<number>;
+    declare public readonly sampleLimit: pulumi.Output<number>;
     /**
      * Specifies the http scheme. Defaults to `https`.
      */
-    public readonly scheme!: pulumi.Output<string>;
+    declare public readonly scheme: pulumi.Output<string>;
     /**
      * Specifies the scrape interval as duration string. Defaults to `5m`.
      */
-    public readonly scrapeInterval!: pulumi.Output<string>;
+    declare public readonly scrapeInterval: pulumi.Output<string>;
     /**
      * Specifies the scrape timeout as duration string. Defaults to `2m`.
      */
-    public readonly scrapeTimeout!: pulumi.Output<string>;
+    declare public readonly scrapeTimeout: pulumi.Output<string>;
     /**
      * The targets list (specified by the static config).
      */
-    public readonly targets!: pulumi.Output<outputs.ObservabilityScrapeconfigTarget[]>;
+    declare public readonly targets: pulumi.Output<outputs.ObservabilityScrapeconfigTarget[]>;
 
     /**
      * Create a ObservabilityScrapeconfig resource with the given unique name, arguments, and options.
@@ -97,42 +97,42 @@ export class ObservabilityScrapeconfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ObservabilityScrapeconfigState | undefined;
-            resourceInputs["basicAuth"] = state ? state.basicAuth : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["metricsPath"] = state ? state.metricsPath : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["saml2"] = state ? state.saml2 : undefined;
-            resourceInputs["sampleLimit"] = state ? state.sampleLimit : undefined;
-            resourceInputs["scheme"] = state ? state.scheme : undefined;
-            resourceInputs["scrapeInterval"] = state ? state.scrapeInterval : undefined;
-            resourceInputs["scrapeTimeout"] = state ? state.scrapeTimeout : undefined;
-            resourceInputs["targets"] = state ? state.targets : undefined;
+            resourceInputs["basicAuth"] = state?.basicAuth;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["metricsPath"] = state?.metricsPath;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["saml2"] = state?.saml2;
+            resourceInputs["sampleLimit"] = state?.sampleLimit;
+            resourceInputs["scheme"] = state?.scheme;
+            resourceInputs["scrapeInterval"] = state?.scrapeInterval;
+            resourceInputs["scrapeTimeout"] = state?.scrapeTimeout;
+            resourceInputs["targets"] = state?.targets;
         } else {
             const args = argsOrState as ObservabilityScrapeconfigArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.metricsPath === undefined) && !opts.urn) {
+            if (args?.metricsPath === undefined && !opts.urn) {
                 throw new Error("Missing required property 'metricsPath'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.targets === undefined) && !opts.urn) {
+            if (args?.targets === undefined && !opts.urn) {
                 throw new Error("Missing required property 'targets'");
             }
-            resourceInputs["basicAuth"] = args ? args.basicAuth : undefined;
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["metricsPath"] = args ? args.metricsPath : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["saml2"] = args ? args.saml2 : undefined;
-            resourceInputs["sampleLimit"] = args ? args.sampleLimit : undefined;
-            resourceInputs["scheme"] = args ? args.scheme : undefined;
-            resourceInputs["scrapeInterval"] = args ? args.scrapeInterval : undefined;
-            resourceInputs["scrapeTimeout"] = args ? args.scrapeTimeout : undefined;
-            resourceInputs["targets"] = args ? args.targets : undefined;
+            resourceInputs["basicAuth"] = args?.basicAuth;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["metricsPath"] = args?.metricsPath;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["saml2"] = args?.saml2;
+            resourceInputs["sampleLimit"] = args?.sampleLimit;
+            resourceInputs["scheme"] = args?.scheme;
+            resourceInputs["scrapeInterval"] = args?.scrapeInterval;
+            resourceInputs["scrapeTimeout"] = args?.scrapeTimeout;
+            resourceInputs["targets"] = args?.targets;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ObservabilityScrapeconfig.__pulumiType, name, resourceInputs, opts);

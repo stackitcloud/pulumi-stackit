@@ -27,6 +27,8 @@ import (
 // ### Server with attached volume
 //
 // ### Server with user data (cloud-init)
+//
+// ### Additional Examples
 type Server struct {
 	pulumi.CustomResourceState
 

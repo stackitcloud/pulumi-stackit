@@ -12,13 +12,43 @@ namespace Pulumi.Stackit
     /// <summary>
     /// Git Instance resource schema.
     /// 
-    /// &gt; This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
+    /// &gt; This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources. This resource currently does not support updates. Changing the ACLs, flavor, or name will trigger resource recreation. Update functionality will be added soon. In the meantime, please proceed with caution. To update these attributes, please open a support ticket.
     /// 
     /// ## Example Usage
     /// </summary>
     [StackitResourceType("stackit:index/git:Git")]
     public partial class Git : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Restricted ACL for instance access.
+        /// </summary>
+        [Output("acls")]
+        public Output<ImmutableArray<string>> Acls { get; private set; } = null!;
+
+        /// <summary>
+        /// How many bytes of disk space is consumed.
+        /// </summary>
+        [Output("consumedDisk")]
+        public Output<string> ConsumedDisk { get; private set; } = null!;
+
+        /// <summary>
+        /// How many bytes of Object Storage is consumed.
+        /// </summary>
+        [Output("consumedObjectStorage")]
+        public Output<string> ConsumedObjectStorage { get; private set; } = null!;
+
+        /// <summary>
+        /// Instance creation timestamp in RFC3339 format.
+        /// </summary>
+        [Output("created")]
+        public Output<string> Created { get; private set; } = null!;
+
+        /// <summary>
+        /// Instance flavor. If not provided, defaults to git-100. For a list of available flavors, refer to our API documentation: `https://docs.api.stackit.cloud/documentation/git/version/v1beta`
+        /// </summary>
+        [Output("flavor")]
+        public Output<string> Flavor { get; private set; } = null!;
+
         /// <summary>
         /// ID linked to the git instance.
         /// </summary>
@@ -96,6 +126,24 @@ namespace Pulumi.Stackit
 
     public sealed class GitArgs : global::Pulumi.ResourceArgs
     {
+        [Input("acls")]
+        private InputList<string>? _acls;
+
+        /// <summary>
+        /// Restricted ACL for instance access.
+        /// </summary>
+        public InputList<string> Acls
+        {
+            get => _acls ?? (_acls = new InputList<string>());
+            set => _acls = value;
+        }
+
+        /// <summary>
+        /// Instance flavor. If not provided, defaults to git-100. For a list of available flavors, refer to our API documentation: `https://docs.api.stackit.cloud/documentation/git/version/v1beta`
+        /// </summary>
+        [Input("flavor")]
+        public Input<string>? Flavor { get; set; }
+
         /// <summary>
         /// Unique name linked to the git instance.
         /// </summary>
@@ -116,6 +164,42 @@ namespace Pulumi.Stackit
 
     public sealed class GitState : global::Pulumi.ResourceArgs
     {
+        [Input("acls")]
+        private InputList<string>? _acls;
+
+        /// <summary>
+        /// Restricted ACL for instance access.
+        /// </summary>
+        public InputList<string> Acls
+        {
+            get => _acls ?? (_acls = new InputList<string>());
+            set => _acls = value;
+        }
+
+        /// <summary>
+        /// How many bytes of disk space is consumed.
+        /// </summary>
+        [Input("consumedDisk")]
+        public Input<string>? ConsumedDisk { get; set; }
+
+        /// <summary>
+        /// How many bytes of Object Storage is consumed.
+        /// </summary>
+        [Input("consumedObjectStorage")]
+        public Input<string>? ConsumedObjectStorage { get; set; }
+
+        /// <summary>
+        /// Instance creation timestamp in RFC3339 format.
+        /// </summary>
+        [Input("created")]
+        public Input<string>? Created { get; set; }
+
+        /// <summary>
+        /// Instance flavor. If not provided, defaults to git-100. For a list of available flavors, refer to our API documentation: `https://docs.api.stackit.cloud/documentation/git/version/v1beta`
+        /// </summary>
+        [Input("flavor")]
+        public Input<string>? Flavor { get; set; }
+
         /// <summary>
         /// ID linked to the git instance.
         /// </summary>

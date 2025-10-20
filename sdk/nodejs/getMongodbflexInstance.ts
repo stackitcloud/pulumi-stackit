@@ -16,6 +16,7 @@ export function getMongodbflexInstance(args: GetMongodbflexInstanceArgs, opts?: 
     return pulumi.runtime.invoke("stackit:index/getMongodbflexInstance:getMongodbflexInstance", {
         "instanceId": args.instanceId,
         "projectId": args.projectId,
+        "region": args.region,
     }, opts);
 }
 
@@ -31,6 +32,10 @@ export interface GetMongodbflexInstanceArgs {
      * STACKIT project ID to which the instance is associated.
      */
     projectId: string;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: string;
 }
 
 /**
@@ -63,6 +68,10 @@ export interface GetMongodbflexInstanceResult {
      * STACKIT project ID to which the instance is associated.
      */
     readonly projectId: string;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    readonly region: string;
     readonly replicas: number;
     readonly storage: outputs.GetMongodbflexInstanceStorage;
     readonly version: string;
@@ -77,6 +86,7 @@ export function getMongodbflexInstanceOutput(args: GetMongodbflexInstanceOutputA
     return pulumi.runtime.invokeOutput("stackit:index/getMongodbflexInstance:getMongodbflexInstance", {
         "instanceId": args.instanceId,
         "projectId": args.projectId,
+        "region": args.region,
     }, opts);
 }
 
@@ -92,4 +102,8 @@ export interface GetMongodbflexInstanceOutputArgs {
      * STACKIT project ID to which the instance is associated.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string>;
 }

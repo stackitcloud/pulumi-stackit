@@ -13,6 +13,8 @@ import (
 )
 
 // Key pair resource schema. Must have a `region` specified in the provider configuration. Allows uploading an SSH public key to be used for server authentication.
+//
+// ## Example Usage
 type KeyPair struct {
 	pulumi.CustomResourceState
 

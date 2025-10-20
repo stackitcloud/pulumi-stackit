@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -40,22 +42,26 @@ export class CdnCustomDomain extends pulumi.CustomResource {
     }
 
     /**
+     * The TLS certificate for the custom domain. If omitted, a managed certificate will be used. If the block is specified, a custom certificate is used.
+     */
+    declare public readonly certificate: pulumi.Output<outputs.CdnCustomDomainCertificate | undefined>;
+    /**
      * CDN distribution ID
      */
-    public readonly distributionId!: pulumi.Output<string>;
+    declare public readonly distributionId: pulumi.Output<string>;
     /**
      * List of distribution errors
      */
-    public /*out*/ readonly errors!: pulumi.Output<string[]>;
-    public readonly name!: pulumi.Output<string>;
+    declare public /*out*/ readonly errors: pulumi.Output<string[]>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * STACKIT project ID associated with the distribution
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * Status of the distribution
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a CdnCustomDomain resource with the given unique name, arguments, and options.
@@ -70,22 +76,24 @@ export class CdnCustomDomain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CdnCustomDomainState | undefined;
-            resourceInputs["distributionId"] = state ? state.distributionId : undefined;
-            resourceInputs["errors"] = state ? state.errors : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["certificate"] = state?.certificate;
+            resourceInputs["distributionId"] = state?.distributionId;
+            resourceInputs["errors"] = state?.errors;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as CdnCustomDomainArgs | undefined;
-            if ((!args || args.distributionId === undefined) && !opts.urn) {
+            if (args?.distributionId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'distributionId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["distributionId"] = args ? args.distributionId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["certificate"] = args?.certificate;
+            resourceInputs["distributionId"] = args?.distributionId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["projectId"] = args?.projectId;
             resourceInputs["errors"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
@@ -98,6 +106,10 @@ export class CdnCustomDomain extends pulumi.CustomResource {
  * Input properties used for looking up and filtering CdnCustomDomain resources.
  */
 export interface CdnCustomDomainState {
+    /**
+     * The TLS certificate for the custom domain. If omitted, a managed certificate will be used. If the block is specified, a custom certificate is used.
+     */
+    certificate?: pulumi.Input<inputs.CdnCustomDomainCertificate>;
     /**
      * CDN distribution ID
      */
@@ -121,6 +133,10 @@ export interface CdnCustomDomainState {
  * The set of arguments for constructing a CdnCustomDomain resource.
  */
 export interface CdnCustomDomainArgs {
+    /**
+     * The TLS certificate for the custom domain. If omitted, a managed certificate will be used. If the block is specified, a custom certificate is used.
+     */
+    certificate?: pulumi.Input<inputs.CdnCustomDomainCertificate>;
     /**
      * CDN distribution ID
      */

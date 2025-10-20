@@ -42,23 +42,23 @@ export class ObservabilityAlertgroup extends pulumi.CustomResource {
     /**
      * Observability instance ID to which the alert group is associated.
      */
-    public readonly instanceId!: pulumi.Output<string>;
+    declare public readonly instanceId: pulumi.Output<string>;
     /**
      * Specifies the frequency at which rules within the group are evaluated. The interval must be at least 60 seconds and defaults to 60 seconds if not set. Supported formats include hours, minutes, and seconds, either singly or in combination. Examples of valid formats are: '5h30m40s', '5h', '5h30m', '60m', and '60s'.
      */
-    public readonly interval!: pulumi.Output<string>;
+    declare public readonly interval: pulumi.Output<string>;
     /**
      * The name of the alert group. Is the identifier and must be unique in the group.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * STACKIT project ID to which the alert group is associated.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * Rules for the alert group
      */
-    public readonly rules!: pulumi.Output<outputs.ObservabilityAlertgroupRule[]>;
+    declare public readonly rules: pulumi.Output<outputs.ObservabilityAlertgroupRule[]>;
 
     /**
      * Create a ObservabilityAlertgroup resource with the given unique name, arguments, and options.
@@ -73,27 +73,27 @@ export class ObservabilityAlertgroup extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ObservabilityAlertgroupState | undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["interval"] = state ? state.interval : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["interval"] = state?.interval;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["rules"] = state?.rules;
         } else {
             const args = argsOrState as ObservabilityAlertgroupArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.rules === undefined) && !opts.urn) {
+            if (args?.rules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rules'");
             }
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["interval"] = args ? args.interval : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["rules"] = args ? args.rules : undefined;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["interval"] = args?.interval;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["rules"] = args?.rules;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ObservabilityAlertgroup.__pulumiType, name, resourceInputs, opts);

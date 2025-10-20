@@ -20,6 +20,12 @@ namespace Pulumi.Stackit
     public partial class CdnCustomDomain : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The TLS certificate for the custom domain. If omitted, a managed certificate will be used. If the block is specified, a custom certificate is used.
+        /// </summary>
+        [Output("certificate")]
+        public Output<Outputs.CdnCustomDomainCertificate?> Certificate { get; private set; } = null!;
+
+        /// <summary>
         /// CDN distribution ID
         /// </summary>
         [Output("distributionId")]
@@ -94,6 +100,12 @@ namespace Pulumi.Stackit
     public sealed class CdnCustomDomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The TLS certificate for the custom domain. If omitted, a managed certificate will be used. If the block is specified, a custom certificate is used.
+        /// </summary>
+        [Input("certificate")]
+        public Input<Inputs.CdnCustomDomainCertificateArgs>? Certificate { get; set; }
+
+        /// <summary>
         /// CDN distribution ID
         /// </summary>
         [Input("distributionId", required: true)]
@@ -116,6 +128,12 @@ namespace Pulumi.Stackit
 
     public sealed class CdnCustomDomainState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The TLS certificate for the custom domain. If omitted, a managed certificate will be used. If the block is specified, a custom certificate is used.
+        /// </summary>
+        [Input("certificate")]
+        public Input<Inputs.CdnCustomDomainCertificateGetArgs>? Certificate { get; set; }
+
         /// <summary>
         /// CDN distribution ID
         /// </summary>

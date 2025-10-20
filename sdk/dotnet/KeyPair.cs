@@ -11,6 +11,8 @@ namespace Pulumi.Stackit
 {
     /// <summary>
     /// Key pair resource schema. Must have a `region` specified in the provider configuration. Allows uploading an SSH public key to be used for server authentication.
+    /// 
+    /// ## Example Usage
     /// </summary>
     [StackitResourceType("stackit:index/keyPair:KeyPair")]
     public partial class KeyPair : global::Pulumi.CustomResource

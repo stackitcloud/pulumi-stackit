@@ -40,84 +40,84 @@ export class DnsZone extends pulumi.CustomResource {
     /**
      * The access control list. E.g. `0.0.0.0/0,::/0`
      */
-    public readonly acl!: pulumi.Output<string>;
-    public readonly active!: pulumi.Output<boolean>;
+    declare public readonly acl: pulumi.Output<string>;
+    declare public readonly active: pulumi.Output<boolean>;
     /**
      * A contact e-mail for the zone.
      */
-    public readonly contactEmail!: pulumi.Output<string>;
+    declare public readonly contactEmail: pulumi.Output<string>;
     /**
      * Default time to live. E.g. 3600.
      */
-    public readonly defaultTtl!: pulumi.Output<number>;
+    declare public readonly defaultTtl: pulumi.Output<number>;
     /**
      * Description of the zone.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The zone name. E.g. `example.com`
      */
-    public readonly dnsName!: pulumi.Output<string>;
+    declare public readonly dnsName: pulumi.Output<string>;
     /**
      * Expire time. E.g. 1209600.
      */
-    public readonly expireTime!: pulumi.Output<number>;
+    declare public readonly expireTime: pulumi.Output<number>;
     /**
      * Specifies, if the zone is a reverse zone or not. Defaults to `false`
      */
-    public readonly isReverseZone!: pulumi.Output<boolean>;
+    declare public readonly isReverseZone: pulumi.Output<boolean>;
     /**
      * The user given name of the zone.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Negative caching. E.g. 60
      */
-    public readonly negativeCache!: pulumi.Output<number>;
+    declare public readonly negativeCache: pulumi.Output<number>;
     /**
      * Primary name server for secondary zone. E.g. ["1.2.3.4"]
      */
-    public readonly primaries!: pulumi.Output<string[]>;
+    declare public readonly primaries: pulumi.Output<string[]>;
     /**
      * Primary name server. FQDN.
      */
-    public /*out*/ readonly primaryNameServer!: pulumi.Output<string>;
+    declare public /*out*/ readonly primaryNameServer: pulumi.Output<string>;
     /**
      * STACKIT project ID to which the dns zone is associated.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * Record count how many records are in the zone.
      */
-    public /*out*/ readonly recordCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly recordCount: pulumi.Output<number>;
     /**
      * Refresh time. E.g. 3600
      */
-    public readonly refreshTime!: pulumi.Output<number>;
+    declare public readonly refreshTime: pulumi.Output<number>;
     /**
      * Retry time. E.g. 600
      */
-    public readonly retryTime!: pulumi.Output<number>;
+    declare public readonly retryTime: pulumi.Output<number>;
     /**
      * Serial number. E.g. `2022111400`.
      */
-    public /*out*/ readonly serialNumber!: pulumi.Output<number>;
+    declare public /*out*/ readonly serialNumber: pulumi.Output<number>;
     /**
      * Zone state. E.g. `CREATE_SUCCEEDED`.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Zone type. Defaults to `primary`. Supported values are: `primary`, `secondary`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * Visibility of the zone. E.g. `public`.
      */
-    public /*out*/ readonly visibility!: pulumi.Output<string>;
+    declare public /*out*/ readonly visibility: pulumi.Output<string>;
     /**
      * The zone ID.
      */
-    public /*out*/ readonly zoneId!: pulumi.Output<string>;
+    declare public /*out*/ readonly zoneId: pulumi.Output<string>;
 
     /**
      * Create a DnsZone resource with the given unique name, arguments, and options.
@@ -132,50 +132,50 @@ export class DnsZone extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DnsZoneState | undefined;
-            resourceInputs["acl"] = state ? state.acl : undefined;
-            resourceInputs["active"] = state ? state.active : undefined;
-            resourceInputs["contactEmail"] = state ? state.contactEmail : undefined;
-            resourceInputs["defaultTtl"] = state ? state.defaultTtl : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dnsName"] = state ? state.dnsName : undefined;
-            resourceInputs["expireTime"] = state ? state.expireTime : undefined;
-            resourceInputs["isReverseZone"] = state ? state.isReverseZone : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["negativeCache"] = state ? state.negativeCache : undefined;
-            resourceInputs["primaries"] = state ? state.primaries : undefined;
-            resourceInputs["primaryNameServer"] = state ? state.primaryNameServer : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["recordCount"] = state ? state.recordCount : undefined;
-            resourceInputs["refreshTime"] = state ? state.refreshTime : undefined;
-            resourceInputs["retryTime"] = state ? state.retryTime : undefined;
-            resourceInputs["serialNumber"] = state ? state.serialNumber : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["visibility"] = state ? state.visibility : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["acl"] = state?.acl;
+            resourceInputs["active"] = state?.active;
+            resourceInputs["contactEmail"] = state?.contactEmail;
+            resourceInputs["defaultTtl"] = state?.defaultTtl;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dnsName"] = state?.dnsName;
+            resourceInputs["expireTime"] = state?.expireTime;
+            resourceInputs["isReverseZone"] = state?.isReverseZone;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["negativeCache"] = state?.negativeCache;
+            resourceInputs["primaries"] = state?.primaries;
+            resourceInputs["primaryNameServer"] = state?.primaryNameServer;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["recordCount"] = state?.recordCount;
+            resourceInputs["refreshTime"] = state?.refreshTime;
+            resourceInputs["retryTime"] = state?.retryTime;
+            resourceInputs["serialNumber"] = state?.serialNumber;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["visibility"] = state?.visibility;
+            resourceInputs["zoneId"] = state?.zoneId;
         } else {
             const args = argsOrState as DnsZoneArgs | undefined;
-            if ((!args || args.dnsName === undefined) && !opts.urn) {
+            if (args?.dnsName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dnsName'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["acl"] = args ? args.acl : undefined;
-            resourceInputs["active"] = args ? args.active : undefined;
-            resourceInputs["contactEmail"] = args ? args.contactEmail : undefined;
-            resourceInputs["defaultTtl"] = args ? args.defaultTtl : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["dnsName"] = args ? args.dnsName : undefined;
-            resourceInputs["expireTime"] = args ? args.expireTime : undefined;
-            resourceInputs["isReverseZone"] = args ? args.isReverseZone : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["negativeCache"] = args ? args.negativeCache : undefined;
-            resourceInputs["primaries"] = args ? args.primaries : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["refreshTime"] = args ? args.refreshTime : undefined;
-            resourceInputs["retryTime"] = args ? args.retryTime : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["acl"] = args?.acl;
+            resourceInputs["active"] = args?.active;
+            resourceInputs["contactEmail"] = args?.contactEmail;
+            resourceInputs["defaultTtl"] = args?.defaultTtl;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["dnsName"] = args?.dnsName;
+            resourceInputs["expireTime"] = args?.expireTime;
+            resourceInputs["isReverseZone"] = args?.isReverseZone;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["negativeCache"] = args?.negativeCache;
+            resourceInputs["primaries"] = args?.primaries;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["refreshTime"] = args?.refreshTime;
+            resourceInputs["retryTime"] = args?.retryTime;
+            resourceInputs["type"] = args?.type;
             resourceInputs["primaryNameServer"] = undefined /*out*/;
             resourceInputs["recordCount"] = undefined /*out*/;
             resourceInputs["serialNumber"] = undefined /*out*/;

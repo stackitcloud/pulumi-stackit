@@ -72,6 +72,13 @@ namespace Pulumi.Stackit
         [Input("projectId", required: true)]
         public string ProjectId { get; set; } = null!;
 
+        /// <summary>
+        /// Can only be used when experimental "network" is set. This is likely going to undergo significant changes or be removed in the future.
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public string? Region { get; set; }
+
         public GetNetworkArgs()
         {
         }
@@ -91,6 +98,13 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
+
+        /// <summary>
+        /// Can only be used when experimental "network" is set. This is likely going to undergo significant changes or be removed in the future.
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         public GetNetworkInvokeArgs()
         {
@@ -172,9 +186,19 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string PublicIp;
         /// <summary>
+        /// Can only be used when experimental "network" is set. This is likely going to undergo significant changes or be removed in the future.
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        public readonly string? Region;
+        /// <summary>
         /// Shows if the network is routed and therefore accessible from other networks.
         /// </summary>
         public readonly bool Routed;
+        /// <summary>
+        /// Can only be used when experimental "network" is set. This is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
+        /// The ID of the routing table associated with the network.
+        /// </summary>
+        public readonly string RoutingTableId;
 
         [OutputConstructor]
         private GetNetworkResult(
@@ -214,7 +238,11 @@ namespace Pulumi.Stackit
 
             string publicIp,
 
-            bool routed)
+            string? region,
+
+            bool routed,
+
+            string routingTableId)
         {
             Id = id;
             Ipv4Gateway = ipv4Gateway;
@@ -234,7 +262,9 @@ namespace Pulumi.Stackit
             Prefixes = prefixes;
             ProjectId = projectId;
             PublicIp = publicIp;
+            Region = region;
             Routed = routed;
+            RoutingTableId = routingTableId;
         }
     }
 }

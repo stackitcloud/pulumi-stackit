@@ -42,43 +42,43 @@ export class ModelservingToken extends pulumi.CustomResource {
     /**
      * The description of the AI model serving auth token.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * Name of the AI model serving auth token.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * STACKIT project ID to which the AI model serving auth token is associated.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * Region to which the AI model serving auth token is associated. If not defined, the provider region is used
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * A map of arbitrary key/value pairs that will force recreation of the token when they change, enabling token rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
      */
-    public readonly rotateWhenChanged!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly rotateWhenChanged: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * State of the AI model serving auth token.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * Content of the AI model serving auth token.
      */
-    public /*out*/ readonly token!: pulumi.Output<string>;
+    declare public /*out*/ readonly token: pulumi.Output<string>;
     /**
      * The AI model serving auth token ID.
      */
-    public /*out*/ readonly tokenId!: pulumi.Output<string>;
+    declare public /*out*/ readonly tokenId: pulumi.Output<string>;
     /**
      * The TTL duration of the AI model serving auth token. E.g. 5h30m40s,5h,5h30m,30m,30s
      */
-    public readonly ttlDuration!: pulumi.Output<string | undefined>;
+    declare public readonly ttlDuration: pulumi.Output<string | undefined>;
     /**
      * The time until the AI model serving auth token is valid.
      */
-    public /*out*/ readonly validUntil!: pulumi.Output<string>;
+    declare public /*out*/ readonly validUntil: pulumi.Output<string>;
 
     /**
      * Create a ModelservingToken resource with the given unique name, arguments, and options.
@@ -93,27 +93,27 @@ export class ModelservingToken extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ModelservingTokenState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["rotateWhenChanged"] = state ? state.rotateWhenChanged : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["token"] = state ? state.token : undefined;
-            resourceInputs["tokenId"] = state ? state.tokenId : undefined;
-            resourceInputs["ttlDuration"] = state ? state.ttlDuration : undefined;
-            resourceInputs["validUntil"] = state ? state.validUntil : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["rotateWhenChanged"] = state?.rotateWhenChanged;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["token"] = state?.token;
+            resourceInputs["tokenId"] = state?.tokenId;
+            resourceInputs["ttlDuration"] = state?.ttlDuration;
+            resourceInputs["validUntil"] = state?.validUntil;
         } else {
             const args = argsOrState as ModelservingTokenArgs | undefined;
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["rotateWhenChanged"] = args ? args.rotateWhenChanged : undefined;
-            resourceInputs["ttlDuration"] = args ? args.ttlDuration : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["rotateWhenChanged"] = args?.rotateWhenChanged;
+            resourceInputs["ttlDuration"] = args?.ttlDuration;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["token"] = undefined /*out*/;
             resourceInputs["tokenId"] = undefined /*out*/;

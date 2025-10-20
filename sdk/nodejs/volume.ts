@@ -42,43 +42,43 @@ export class Volume extends pulumi.CustomResource {
     /**
      * The availability zone of the volume.
      */
-    public readonly availabilityZone!: pulumi.Output<string>;
+    declare public readonly availabilityZone: pulumi.Output<string>;
     /**
      * The description of the volume.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * Labels are key-value string pairs which can be attached to a resource container
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The name of the volume.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/stackit/en/service-plans-blockstorage-75137974.html#ServiceplansBlockStorage-CurrentlyavailableServicePlans%28performanceclasses%29)
      */
-    public readonly performanceClass!: pulumi.Output<string>;
+    declare public readonly performanceClass: pulumi.Output<string>;
     /**
      * STACKIT project ID to which the volume is associated.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The server ID of the server to which the volume is attached to.
      */
-    public /*out*/ readonly serverId!: pulumi.Output<string>;
+    declare public /*out*/ readonly serverId: pulumi.Output<string>;
     /**
      * The size of the volume in GB. It can only be updated to a larger value than the current size. Either `size` or `source` must be provided
      */
-    public readonly size!: pulumi.Output<number>;
+    declare public readonly size: pulumi.Output<number>;
     /**
      * The source of the volume. It can be either a volume, an image, a snapshot or a backup. Either `size` or `source` must be provided
      */
-    public readonly source!: pulumi.Output<outputs.VolumeSource | undefined>;
+    declare public readonly source: pulumi.Output<outputs.VolumeSource | undefined>;
     /**
      * The volume ID.
      */
-    public /*out*/ readonly volumeId!: pulumi.Output<string>;
+    declare public /*out*/ readonly volumeId: pulumi.Output<string>;
 
     /**
      * Create a Volume resource with the given unique name, arguments, and options.
@@ -93,32 +93,32 @@ export class Volume extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VolumeState | undefined;
-            resourceInputs["availabilityZone"] = state ? state.availabilityZone : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["performanceClass"] = state ? state.performanceClass : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["serverId"] = state ? state.serverId : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
-            resourceInputs["volumeId"] = state ? state.volumeId : undefined;
+            resourceInputs["availabilityZone"] = state?.availabilityZone;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["performanceClass"] = state?.performanceClass;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["serverId"] = state?.serverId;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["source"] = state?.source;
+            resourceInputs["volumeId"] = state?.volumeId;
         } else {
             const args = argsOrState as VolumeArgs | undefined;
-            if ((!args || args.availabilityZone === undefined) && !opts.urn) {
+            if (args?.availabilityZone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'availabilityZone'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["availabilityZone"] = args ? args.availabilityZone : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["performanceClass"] = args ? args.performanceClass : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["size"] = args ? args.size : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["availabilityZone"] = args?.availabilityZone;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["performanceClass"] = args?.performanceClass;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["size"] = args?.size;
+            resourceInputs["source"] = args?.source;
             resourceInputs["serverId"] = undefined /*out*/;
             resourceInputs["volumeId"] = undefined /*out*/;
         }

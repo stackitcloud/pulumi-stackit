@@ -14,6 +14,7 @@ export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): P
     return pulumi.runtime.invoke("stackit:index/getNetwork:getNetwork", {
         "networkId": args.networkId,
         "projectId": args.projectId,
+        "region": args.region,
     }, opts);
 }
 
@@ -29,6 +30,11 @@ export interface GetNetworkArgs {
      * STACKIT project ID to which the network is associated.
      */
     projectId: string;
+    /**
+     * Can only be used when experimental "network" is set. This is likely going to undergo significant changes or be removed in the future.
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: string;
 }
 
 /**
@@ -113,9 +119,19 @@ export interface GetNetworkResult {
      */
     readonly publicIp: string;
     /**
+     * Can only be used when experimental "network" is set. This is likely going to undergo significant changes or be removed in the future.
+     * The resource region. If not defined, the provider region is used.
+     */
+    readonly region?: string;
+    /**
      * Shows if the network is routed and therefore accessible from other networks.
      */
     readonly routed: boolean;
+    /**
+     * Can only be used when experimental "network" is set. This is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
+     * The ID of the routing table associated with the network.
+     */
+    readonly routingTableId: string;
 }
 /**
  * Network resource schema. Must have a `region` specified in the provider configuration.
@@ -127,6 +143,7 @@ export function getNetworkOutput(args: GetNetworkOutputArgs, opts?: pulumi.Invok
     return pulumi.runtime.invokeOutput("stackit:index/getNetwork:getNetwork", {
         "networkId": args.networkId,
         "projectId": args.projectId,
+        "region": args.region,
     }, opts);
 }
 
@@ -142,4 +159,9 @@ export interface GetNetworkOutputArgs {
      * STACKIT project ID to which the network is associated.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * Can only be used when experimental "network" is set. This is likely going to undergo significant changes or be removed in the future.
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string>;
 }

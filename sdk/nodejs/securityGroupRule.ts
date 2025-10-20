@@ -42,47 +42,47 @@ export class SecurityGroupRule extends pulumi.CustomResource {
     /**
      * The rule description.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The direction of the traffic which the rule should match. Some of the possible values are: Supported values are: `ingress`, `egress`.
      */
-    public readonly direction!: pulumi.Output<string>;
+    declare public readonly direction: pulumi.Output<string>;
     /**
      * The ethertype which the rule should match.
      */
-    public readonly etherType!: pulumi.Output<string>;
+    declare public readonly etherType: pulumi.Output<string>;
     /**
      * ICMP Parameters. These parameters should only be provided if the protocol is ICMP.
      */
-    public readonly icmpParameters!: pulumi.Output<outputs.SecurityGroupRuleIcmpParameters>;
+    declare public readonly icmpParameters: pulumi.Output<outputs.SecurityGroupRuleIcmpParameters>;
     /**
      * The remote IP range which the rule should match.
      */
-    public readonly ipRange!: pulumi.Output<string | undefined>;
+    declare public readonly ipRange: pulumi.Output<string | undefined>;
     /**
      * The range of ports. This should only be provided if the protocol is not ICMP.
      */
-    public readonly portRange!: pulumi.Output<outputs.SecurityGroupRulePortRange>;
+    declare public readonly portRange: pulumi.Output<outputs.SecurityGroupRulePortRange>;
     /**
      * STACKIT project ID to which the security group rule is associated.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The internet protocol which the rule should match.
      */
-    public readonly protocol!: pulumi.Output<outputs.SecurityGroupRuleProtocol>;
+    declare public readonly protocol: pulumi.Output<outputs.SecurityGroupRuleProtocol>;
     /**
      * The remote security group which the rule should match.
      */
-    public readonly remoteSecurityGroupId!: pulumi.Output<string | undefined>;
+    declare public readonly remoteSecurityGroupId: pulumi.Output<string | undefined>;
     /**
      * The security group ID.
      */
-    public readonly securityGroupId!: pulumi.Output<string>;
+    declare public readonly securityGroupId: pulumi.Output<string>;
     /**
      * The security group rule ID.
      */
-    public /*out*/ readonly securityGroupRuleId!: pulumi.Output<string>;
+    declare public /*out*/ readonly securityGroupRuleId: pulumi.Output<string>;
 
     /**
      * Create a SecurityGroupRule resource with the given unique name, arguments, and options.
@@ -97,38 +97,38 @@ export class SecurityGroupRule extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SecurityGroupRuleState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["direction"] = state ? state.direction : undefined;
-            resourceInputs["etherType"] = state ? state.etherType : undefined;
-            resourceInputs["icmpParameters"] = state ? state.icmpParameters : undefined;
-            resourceInputs["ipRange"] = state ? state.ipRange : undefined;
-            resourceInputs["portRange"] = state ? state.portRange : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["protocol"] = state ? state.protocol : undefined;
-            resourceInputs["remoteSecurityGroupId"] = state ? state.remoteSecurityGroupId : undefined;
-            resourceInputs["securityGroupId"] = state ? state.securityGroupId : undefined;
-            resourceInputs["securityGroupRuleId"] = state ? state.securityGroupRuleId : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["direction"] = state?.direction;
+            resourceInputs["etherType"] = state?.etherType;
+            resourceInputs["icmpParameters"] = state?.icmpParameters;
+            resourceInputs["ipRange"] = state?.ipRange;
+            resourceInputs["portRange"] = state?.portRange;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["protocol"] = state?.protocol;
+            resourceInputs["remoteSecurityGroupId"] = state?.remoteSecurityGroupId;
+            resourceInputs["securityGroupId"] = state?.securityGroupId;
+            resourceInputs["securityGroupRuleId"] = state?.securityGroupRuleId;
         } else {
             const args = argsOrState as SecurityGroupRuleArgs | undefined;
-            if ((!args || args.direction === undefined) && !opts.urn) {
+            if (args?.direction === undefined && !opts.urn) {
                 throw new Error("Missing required property 'direction'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.securityGroupId === undefined) && !opts.urn) {
+            if (args?.securityGroupId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'securityGroupId'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["direction"] = args ? args.direction : undefined;
-            resourceInputs["etherType"] = args ? args.etherType : undefined;
-            resourceInputs["icmpParameters"] = args ? args.icmpParameters : undefined;
-            resourceInputs["ipRange"] = args ? args.ipRange : undefined;
-            resourceInputs["portRange"] = args ? args.portRange : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["protocol"] = args ? args.protocol : undefined;
-            resourceInputs["remoteSecurityGroupId"] = args ? args.remoteSecurityGroupId : undefined;
-            resourceInputs["securityGroupId"] = args ? args.securityGroupId : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["direction"] = args?.direction;
+            resourceInputs["etherType"] = args?.etherType;
+            resourceInputs["icmpParameters"] = args?.icmpParameters;
+            resourceInputs["ipRange"] = args?.ipRange;
+            resourceInputs["portRange"] = args?.portRange;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["remoteSecurityGroupId"] = args?.remoteSecurityGroupId;
+            resourceInputs["securityGroupId"] = args?.securityGroupId;
             resourceInputs["securityGroupRuleId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

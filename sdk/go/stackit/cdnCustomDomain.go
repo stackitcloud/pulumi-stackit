@@ -20,6 +20,8 @@ import (
 type CdnCustomDomain struct {
 	pulumi.CustomResourceState
 
+	// The TLS certificate for the custom domain. If omitted, a managed certificate will be used. If the block is specified, a custom certificate is used.
+	Certificate CdnCustomDomainCertificatePtrOutput `pulumi:"certificate"`
 	// CDN distribution ID
 	DistributionId pulumi.StringOutput `pulumi:"distributionId"`
 	// List of distribution errors
@@ -67,6 +69,8 @@ func GetCdnCustomDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CdnCustomDomain resources.
 type cdnCustomDomainState struct {
+	// The TLS certificate for the custom domain. If omitted, a managed certificate will be used. If the block is specified, a custom certificate is used.
+	Certificate *CdnCustomDomainCertificate `pulumi:"certificate"`
 	// CDN distribution ID
 	DistributionId *string `pulumi:"distributionId"`
 	// List of distribution errors
@@ -79,6 +83,8 @@ type cdnCustomDomainState struct {
 }
 
 type CdnCustomDomainState struct {
+	// The TLS certificate for the custom domain. If omitted, a managed certificate will be used. If the block is specified, a custom certificate is used.
+	Certificate CdnCustomDomainCertificatePtrInput
 	// CDN distribution ID
 	DistributionId pulumi.StringPtrInput
 	// List of distribution errors
@@ -95,6 +101,8 @@ func (CdnCustomDomainState) ElementType() reflect.Type {
 }
 
 type cdnCustomDomainArgs struct {
+	// The TLS certificate for the custom domain. If omitted, a managed certificate will be used. If the block is specified, a custom certificate is used.
+	Certificate *CdnCustomDomainCertificate `pulumi:"certificate"`
 	// CDN distribution ID
 	DistributionId string  `pulumi:"distributionId"`
 	Name           *string `pulumi:"name"`
@@ -104,6 +112,8 @@ type cdnCustomDomainArgs struct {
 
 // The set of arguments for constructing a CdnCustomDomain resource.
 type CdnCustomDomainArgs struct {
+	// The TLS certificate for the custom domain. If omitted, a managed certificate will be used. If the block is specified, a custom certificate is used.
+	Certificate CdnCustomDomainCertificatePtrInput
 	// CDN distribution ID
 	DistributionId pulumi.StringInput
 	Name           pulumi.StringPtrInput
@@ -196,6 +206,11 @@ func (o CdnCustomDomainOutput) ToCdnCustomDomainOutput() CdnCustomDomainOutput {
 
 func (o CdnCustomDomainOutput) ToCdnCustomDomainOutputWithContext(ctx context.Context) CdnCustomDomainOutput {
 	return o
+}
+
+// The TLS certificate for the custom domain. If omitted, a managed certificate will be used. If the block is specified, a custom certificate is used.
+func (o CdnCustomDomainOutput) Certificate() CdnCustomDomainCertificatePtrOutput {
+	return o.ApplyT(func(v *CdnCustomDomain) CdnCustomDomainCertificatePtrOutput { return v.Certificate }).(CdnCustomDomainCertificatePtrOutput)
 }
 
 // CDN distribution ID

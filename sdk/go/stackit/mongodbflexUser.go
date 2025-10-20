@@ -26,6 +26,8 @@ type MongodbflexUser struct {
 	Port       pulumi.IntOutput    `pulumi:"port"`
 	// STACKIT project ID to which the instance is associated.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringOutput `pulumi:"region"`
 	// Database access levels for the user. Some of the possible values are: [`read`, `readWrite`, `readWriteAnyDatabase`]
 	Roles pulumi.StringArrayOutput `pulumi:"roles"`
 	Uri   pulumi.StringOutput      `pulumi:"uri"`
@@ -89,6 +91,8 @@ type mongodbflexUserState struct {
 	Port       *int    `pulumi:"port"`
 	// STACKIT project ID to which the instance is associated.
 	ProjectId *string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 	// Database access levels for the user. Some of the possible values are: [`read`, `readWrite`, `readWriteAnyDatabase`]
 	Roles []string `pulumi:"roles"`
 	Uri   *string  `pulumi:"uri"`
@@ -106,6 +110,8 @@ type MongodbflexUserState struct {
 	Port       pulumi.IntPtrInput
 	// STACKIT project ID to which the instance is associated.
 	ProjectId pulumi.StringPtrInput
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput
 	// Database access levels for the user. Some of the possible values are: [`read`, `readWrite`, `readWriteAnyDatabase`]
 	Roles pulumi.StringArrayInput
 	Uri   pulumi.StringPtrInput
@@ -124,6 +130,8 @@ type mongodbflexUserArgs struct {
 	InstanceId string `pulumi:"instanceId"`
 	// STACKIT project ID to which the instance is associated.
 	ProjectId string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 	// Database access levels for the user. Some of the possible values are: [`read`, `readWrite`, `readWriteAnyDatabase`]
 	Roles    []string `pulumi:"roles"`
 	Username *string  `pulumi:"username"`
@@ -136,6 +144,8 @@ type MongodbflexUserArgs struct {
 	InstanceId pulumi.StringInput
 	// STACKIT project ID to which the instance is associated.
 	ProjectId pulumi.StringInput
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput
 	// Database access levels for the user. Some of the possible values are: [`read`, `readWrite`, `readWriteAnyDatabase`]
 	Roles    pulumi.StringArrayInput
 	Username pulumi.StringPtrInput
@@ -252,6 +262,11 @@ func (o MongodbflexUserOutput) Port() pulumi.IntOutput {
 // STACKIT project ID to which the instance is associated.
 func (o MongodbflexUserOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MongodbflexUser) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The resource region. If not defined, the provider region is used.
+func (o MongodbflexUserOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *MongodbflexUser) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // Database access levels for the user. Some of the possible values are: [`read`, `readWrite`, `readWriteAnyDatabase`]

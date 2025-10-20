@@ -14,12 +14,22 @@ import (
 
 // Git Instance resource schema.
 //
-// > This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
+// > This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources. This resource currently does not support updates. Changing the ACLs, flavor, or name will trigger resource recreation. Update functionality will be added soon. In the meantime, please proceed with caution. To update these attributes, please open a support ticket.
 //
 // ## Example Usage
 type Git struct {
 	pulumi.CustomResourceState
 
+	// Restricted ACL for instance access.
+	Acls pulumi.StringArrayOutput `pulumi:"acls"`
+	// How many bytes of disk space is consumed.
+	ConsumedDisk pulumi.StringOutput `pulumi:"consumedDisk"`
+	// How many bytes of Object Storage is consumed.
+	ConsumedObjectStorage pulumi.StringOutput `pulumi:"consumedObjectStorage"`
+	// Instance creation timestamp in RFC3339 format.
+	Created pulumi.StringOutput `pulumi:"created"`
+	// Instance flavor. If not provided, defaults to git-100. For a list of available flavors, refer to our API documentation: `https://docs.api.stackit.cloud/documentation/git/version/v1beta`
+	Flavor pulumi.StringOutput `pulumi:"flavor"`
 	// ID linked to the git instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// Unique name linked to the git instance.
@@ -65,6 +75,16 @@ func GetGit(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Git resources.
 type gitState struct {
+	// Restricted ACL for instance access.
+	Acls []string `pulumi:"acls"`
+	// How many bytes of disk space is consumed.
+	ConsumedDisk *string `pulumi:"consumedDisk"`
+	// How many bytes of Object Storage is consumed.
+	ConsumedObjectStorage *string `pulumi:"consumedObjectStorage"`
+	// Instance creation timestamp in RFC3339 format.
+	Created *string `pulumi:"created"`
+	// Instance flavor. If not provided, defaults to git-100. For a list of available flavors, refer to our API documentation: `https://docs.api.stackit.cloud/documentation/git/version/v1beta`
+	Flavor *string `pulumi:"flavor"`
 	// ID linked to the git instance.
 	InstanceId *string `pulumi:"instanceId"`
 	// Unique name linked to the git instance.
@@ -78,6 +98,16 @@ type gitState struct {
 }
 
 type GitState struct {
+	// Restricted ACL for instance access.
+	Acls pulumi.StringArrayInput
+	// How many bytes of disk space is consumed.
+	ConsumedDisk pulumi.StringPtrInput
+	// How many bytes of Object Storage is consumed.
+	ConsumedObjectStorage pulumi.StringPtrInput
+	// Instance creation timestamp in RFC3339 format.
+	Created pulumi.StringPtrInput
+	// Instance flavor. If not provided, defaults to git-100. For a list of available flavors, refer to our API documentation: `https://docs.api.stackit.cloud/documentation/git/version/v1beta`
+	Flavor pulumi.StringPtrInput
 	// ID linked to the git instance.
 	InstanceId pulumi.StringPtrInput
 	// Unique name linked to the git instance.
@@ -95,6 +125,10 @@ func (GitState) ElementType() reflect.Type {
 }
 
 type gitArgs struct {
+	// Restricted ACL for instance access.
+	Acls []string `pulumi:"acls"`
+	// Instance flavor. If not provided, defaults to git-100. For a list of available flavors, refer to our API documentation: `https://docs.api.stackit.cloud/documentation/git/version/v1beta`
+	Flavor *string `pulumi:"flavor"`
 	// Unique name linked to the git instance.
 	Name *string `pulumi:"name"`
 	// STACKIT project ID to which the git instance is associated.
@@ -103,6 +137,10 @@ type gitArgs struct {
 
 // The set of arguments for constructing a Git resource.
 type GitArgs struct {
+	// Restricted ACL for instance access.
+	Acls pulumi.StringArrayInput
+	// Instance flavor. If not provided, defaults to git-100. For a list of available flavors, refer to our API documentation: `https://docs.api.stackit.cloud/documentation/git/version/v1beta`
+	Flavor pulumi.StringPtrInput
 	// Unique name linked to the git instance.
 	Name pulumi.StringPtrInput
 	// STACKIT project ID to which the git instance is associated.
@@ -194,6 +232,31 @@ func (o GitOutput) ToGitOutput() GitOutput {
 
 func (o GitOutput) ToGitOutputWithContext(ctx context.Context) GitOutput {
 	return o
+}
+
+// Restricted ACL for instance access.
+func (o GitOutput) Acls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Git) pulumi.StringArrayOutput { return v.Acls }).(pulumi.StringArrayOutput)
+}
+
+// How many bytes of disk space is consumed.
+func (o GitOutput) ConsumedDisk() pulumi.StringOutput {
+	return o.ApplyT(func(v *Git) pulumi.StringOutput { return v.ConsumedDisk }).(pulumi.StringOutput)
+}
+
+// How many bytes of Object Storage is consumed.
+func (o GitOutput) ConsumedObjectStorage() pulumi.StringOutput {
+	return o.ApplyT(func(v *Git) pulumi.StringOutput { return v.ConsumedObjectStorage }).(pulumi.StringOutput)
+}
+
+// Instance creation timestamp in RFC3339 format.
+func (o GitOutput) Created() pulumi.StringOutput {
+	return o.ApplyT(func(v *Git) pulumi.StringOutput { return v.Created }).(pulumi.StringOutput)
+}
+
+// Instance flavor. If not provided, defaults to git-100. For a list of available flavors, refer to our API documentation: `https://docs.api.stackit.cloud/documentation/git/version/v1beta`
+func (o GitOutput) Flavor() pulumi.StringOutput {
+	return o.ApplyT(func(v *Git) pulumi.StringOutput { return v.Flavor }).(pulumi.StringOutput)
 }
 
 // ID linked to the git instance.

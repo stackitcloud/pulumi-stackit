@@ -25,6 +25,18 @@ namespace Pulumi.Stackit.Inputs
         public Input<string>? ApiUrl { get; set; }
 
         /// <summary>
+        /// Priority of the alert. Possible values are: `P1`, `P2`, `P3`, `P4`, `P5`.
+        /// </summary>
+        [Input("priority")]
+        public Input<string>? Priority { get; set; }
+
+        /// <summary>
+        /// Whether to notify about resolved alerts.
+        /// </summary>
+        [Input("sendResolved")]
+        public Input<bool>? SendResolved { get; set; }
+
+        /// <summary>
         /// Comma separated list of tags attached to the notifications.
         /// </summary>
         [Input("tags")]

@@ -102,19 +102,19 @@ namespace Pulumi.Stackit
         public Output<string> MetricsPushUrl { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies for how many days the raw metrics are kept.
+        /// Specifies for how many days the raw metrics are kept. Default is set to `90`.
         /// </summary>
         [Output("metricsRetentionDays")]
         public Output<int> MetricsRetentionDays { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies for how many days the 1h downsampled metrics are kept. must be less than the value of the 5m downsampling retention. Default is set to `0` (disabled).
+        /// Specifies for how many days the 1h downsampled metrics are kept. must be less than the value of the 5m downsampling retention. Default is set to `90`.
         /// </summary>
         [Output("metricsRetentionDays1hDownsampling")]
         public Output<int> MetricsRetentionDays1hDownsampling { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies for how many days the 5m downsampled metrics are kept. must be less than the value of the general retention. Default is set to `0` (disabled).
+        /// Specifies for how many days the 5m downsampled metrics are kept. must be less than the value of the general retention. Default is set to `90`.
         /// </summary>
         [Output("metricsRetentionDays5mDownsampling")]
         public Output<int> MetricsRetentionDays5mDownsampling { get; private set; } = null!;
@@ -237,19 +237,19 @@ namespace Pulumi.Stackit
         public Input<Inputs.ObservabilityInstanceAlertConfigArgs>? AlertConfig { get; set; }
 
         /// <summary>
-        /// Specifies for how many days the raw metrics are kept.
+        /// Specifies for how many days the raw metrics are kept. Default is set to `90`.
         /// </summary>
         [Input("metricsRetentionDays")]
         public Input<int>? MetricsRetentionDays { get; set; }
 
         /// <summary>
-        /// Specifies for how many days the 1h downsampled metrics are kept. must be less than the value of the 5m downsampling retention. Default is set to `0` (disabled).
+        /// Specifies for how many days the 1h downsampled metrics are kept. must be less than the value of the 5m downsampling retention. Default is set to `90`.
         /// </summary>
         [Input("metricsRetentionDays1hDownsampling")]
         public Input<int>? MetricsRetentionDays1hDownsampling { get; set; }
 
         /// <summary>
-        /// Specifies for how many days the 5m downsampled metrics are kept. must be less than the value of the general retention. Default is set to `0` (disabled).
+        /// Specifies for how many days the 5m downsampled metrics are kept. must be less than the value of the general retention. Default is set to `90`.
         /// </summary>
         [Input("metricsRetentionDays5mDownsampling")]
         public Input<int>? MetricsRetentionDays5mDownsampling { get; set; }
@@ -393,19 +393,19 @@ namespace Pulumi.Stackit
         public Input<string>? MetricsPushUrl { get; set; }
 
         /// <summary>
-        /// Specifies for how many days the raw metrics are kept.
+        /// Specifies for how many days the raw metrics are kept. Default is set to `90`.
         /// </summary>
         [Input("metricsRetentionDays")]
         public Input<int>? MetricsRetentionDays { get; set; }
 
         /// <summary>
-        /// Specifies for how many days the 1h downsampled metrics are kept. must be less than the value of the 5m downsampling retention. Default is set to `0` (disabled).
+        /// Specifies for how many days the 1h downsampled metrics are kept. must be less than the value of the 5m downsampling retention. Default is set to `90`.
         /// </summary>
         [Input("metricsRetentionDays1hDownsampling")]
         public Input<int>? MetricsRetentionDays1hDownsampling { get; set; }
 
         /// <summary>
-        /// Specifies for how many days the 5m downsampled metrics are kept. must be less than the value of the general retention. Default is set to `0` (disabled).
+        /// Specifies for how many days the 5m downsampled metrics are kept. must be less than the value of the general retention. Default is set to `90`.
         /// </summary>
         [Input("metricsRetentionDays5mDownsampling")]
         public Input<int>? MetricsRetentionDays5mDownsampling { get; set; }

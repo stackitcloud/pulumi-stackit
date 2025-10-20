@@ -106,6 +106,10 @@ namespace Pulumi.Stackit
         /// Project container ID. Globally unique, user-friendly identifier.
         /// </summary>
         public readonly string? ContainerId;
+        /// <summary>
+        /// Date-time at which the project was created.
+        /// </summary>
+        public readonly string CreationTime;
         public readonly string Id;
         /// <summary>
         /// Labels are key-value string pairs which can be attached to a resource container. A label key must match the regex [A-ZÄÜÖa-zäüöß0-9*-]{1,64}. A label value must match the regex ^$|[A-ZÄÜÖa-zäüöß0-9*-]{1,64}
@@ -123,10 +127,16 @@ namespace Pulumi.Stackit
         /// Project UUID identifier. This is the ID that can be used in most of the other resources to identify the project.
         /// </summary>
         public readonly string? ProjectId;
+        /// <summary>
+        /// Date-time at which the project was last modified.
+        /// </summary>
+        public readonly string UpdateTime;
 
         [OutputConstructor]
         private GetResourcemanagerProjectResult(
             string? containerId,
+
+            string creationTime,
 
             string id,
 
@@ -136,14 +146,18 @@ namespace Pulumi.Stackit
 
             string parentContainerId,
 
-            string? projectId)
+            string? projectId,
+
+            string updateTime)
         {
             ContainerId = containerId;
+            CreationTime = creationTime;
             Id = id;
             Labels = labels;
             Name = name;
             ParentContainerId = parentContainerId;
             ProjectId = projectId;
+            UpdateTime = updateTime;
         }
     }
 }

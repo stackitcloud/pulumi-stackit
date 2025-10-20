@@ -40,25 +40,25 @@ export class RabbitmqCredential extends pulumi.CustomResource {
     /**
      * The credential's ID.
      */
-    public /*out*/ readonly credentialId!: pulumi.Output<string>;
-    public /*out*/ readonly host!: pulumi.Output<string>;
-    public /*out*/ readonly hosts!: pulumi.Output<string[]>;
-    public /*out*/ readonly httpApiUri!: pulumi.Output<string>;
-    public /*out*/ readonly httpApiUris!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly credentialId: pulumi.Output<string>;
+    declare public /*out*/ readonly host: pulumi.Output<string>;
+    declare public /*out*/ readonly hosts: pulumi.Output<string[]>;
+    declare public /*out*/ readonly httpApiUri: pulumi.Output<string>;
+    declare public /*out*/ readonly httpApiUris: pulumi.Output<string[]>;
     /**
      * ID of the RabbitMQ instance.
      */
-    public readonly instanceId!: pulumi.Output<string>;
-    public /*out*/ readonly management!: pulumi.Output<string>;
-    public /*out*/ readonly password!: pulumi.Output<string>;
-    public /*out*/ readonly port!: pulumi.Output<number>;
+    declare public readonly instanceId: pulumi.Output<string>;
+    declare public /*out*/ readonly management: pulumi.Output<string>;
+    declare public /*out*/ readonly password: pulumi.Output<string>;
+    declare public /*out*/ readonly port: pulumi.Output<number>;
     /**
      * STACKIT Project ID to which the instance is associated.
      */
-    public readonly projectId!: pulumi.Output<string>;
-    public /*out*/ readonly uri!: pulumi.Output<string>;
-    public /*out*/ readonly uris!: pulumi.Output<string[]>;
-    public /*out*/ readonly username!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
+    declare public /*out*/ readonly uri: pulumi.Output<string>;
+    declare public /*out*/ readonly uris: pulumi.Output<string[]>;
+    declare public /*out*/ readonly username: pulumi.Output<string>;
 
     /**
      * Create a RabbitmqCredential resource with the given unique name, arguments, and options.
@@ -73,29 +73,29 @@ export class RabbitmqCredential extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RabbitmqCredentialState | undefined;
-            resourceInputs["credentialId"] = state ? state.credentialId : undefined;
-            resourceInputs["host"] = state ? state.host : undefined;
-            resourceInputs["hosts"] = state ? state.hosts : undefined;
-            resourceInputs["httpApiUri"] = state ? state.httpApiUri : undefined;
-            resourceInputs["httpApiUris"] = state ? state.httpApiUris : undefined;
-            resourceInputs["instanceId"] = state ? state.instanceId : undefined;
-            resourceInputs["management"] = state ? state.management : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["uri"] = state ? state.uri : undefined;
-            resourceInputs["uris"] = state ? state.uris : undefined;
-            resourceInputs["username"] = state ? state.username : undefined;
+            resourceInputs["credentialId"] = state?.credentialId;
+            resourceInputs["host"] = state?.host;
+            resourceInputs["hosts"] = state?.hosts;
+            resourceInputs["httpApiUri"] = state?.httpApiUri;
+            resourceInputs["httpApiUris"] = state?.httpApiUris;
+            resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["management"] = state?.management;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["uri"] = state?.uri;
+            resourceInputs["uris"] = state?.uris;
+            resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as RabbitmqCredentialArgs | undefined;
-            if ((!args || args.instanceId === undefined) && !opts.urn) {
+            if (args?.instanceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["instanceId"] = args ? args.instanceId : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
+            resourceInputs["instanceId"] = args?.instanceId;
+            resourceInputs["projectId"] = args?.projectId;
             resourceInputs["credentialId"] = undefined /*out*/;
             resourceInputs["host"] = undefined /*out*/;
             resourceInputs["hosts"] = undefined /*out*/;

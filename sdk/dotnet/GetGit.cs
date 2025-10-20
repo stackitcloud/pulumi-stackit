@@ -14,7 +14,7 @@ namespace Pulumi.Stackit
         /// <summary>
         /// Git Instance datasource schema.
         /// 
-        /// &gt; This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
+        /// &gt; This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
         /// 
         /// ## Example Usage
         /// 
@@ -31,7 +31,7 @@ namespace Pulumi.Stackit
         /// <summary>
         /// Git Instance datasource schema.
         /// 
-        /// &gt; This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
+        /// &gt; This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
         /// 
         /// ## Example Usage
         /// 
@@ -48,7 +48,7 @@ namespace Pulumi.Stackit
         /// <summary>
         /// Git Instance datasource schema.
         /// 
-        /// &gt; This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
+        /// &gt; This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
         /// 
         /// ## Example Usage
         /// 
@@ -108,6 +108,26 @@ namespace Pulumi.Stackit
     [OutputType]
     public sealed class GetGitResult
     {
+        /// <summary>
+        /// Restricted ACL for instance access.
+        /// </summary>
+        public readonly ImmutableArray<string> Acls;
+        /// <summary>
+        /// How many bytes of disk space is consumed.
+        /// </summary>
+        public readonly string ConsumedDisk;
+        /// <summary>
+        /// How many bytes of Object Storage is consumed.
+        /// </summary>
+        public readonly string ConsumedObjectStorage;
+        /// <summary>
+        /// Instance creation timestamp in RFC3339 format.
+        /// </summary>
+        public readonly string Created;
+        /// <summary>
+        /// Instance flavor. If not provided, defaults to git-100. For a list of available flavors, refer to our API documentation: `https://docs.api.stackit.cloud/documentation/git/version/v1beta`
+        /// </summary>
+        public readonly string Flavor;
         public readonly string Id;
         /// <summary>
         /// ID linked to the git instance.
@@ -132,6 +152,16 @@ namespace Pulumi.Stackit
 
         [OutputConstructor]
         private GetGitResult(
+            ImmutableArray<string> acls,
+
+            string consumedDisk,
+
+            string consumedObjectStorage,
+
+            string created,
+
+            string flavor,
+
             string id,
 
             string instanceId,
@@ -144,6 +174,11 @@ namespace Pulumi.Stackit
 
             string version)
         {
+            Acls = acls;
+            ConsumedDisk = consumedDisk;
+            ConsumedObjectStorage = consumedObjectStorage;
+            Created = created;
+            Flavor = flavor;
             Id = id;
             InstanceId = instanceId;
             Name = name;

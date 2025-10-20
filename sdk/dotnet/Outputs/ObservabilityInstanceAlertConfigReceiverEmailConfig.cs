@@ -30,6 +30,10 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly string? From;
         /// <summary>
+        /// Whether to notify about resolved alerts.
+        /// </summary>
+        public readonly bool? SendResolved;
+        /// <summary>
         /// The SMTP host through which emails are sent.
         /// </summary>
         public readonly string? SmartHost;
@@ -48,6 +52,8 @@ namespace Pulumi.Stackit.Outputs
 
             string? from,
 
+            bool? sendResolved,
+
             string? smartHost,
 
             string? to)
@@ -56,6 +62,7 @@ namespace Pulumi.Stackit.Outputs
             AuthPassword = authPassword;
             AuthUsername = authUsername;
             From = from;
+            SendResolved = sendResolved;
             SmartHost = smartHost;
             To = to;
         }

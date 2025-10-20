@@ -13,16 +13,38 @@ namespace Pulumi.Stackit.Inputs
     public sealed class ObservabilityInstanceAlertConfigReceiverWebhooksConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Google Chat webhooks require special handling, set this to true if the webhook is for Google Chat.
+        /// </summary>
+        [Input("googleChat")]
+        public Input<bool>? GoogleChat { get; set; }
+
+        /// <summary>
         /// Microsoft Teams webhooks require special handling, set this to true if the webhook is for Microsoft Teams.
         /// </summary>
         [Input("msTeams")]
         public Input<bool>? MsTeams { get; set; }
 
         /// <summary>
+        /// Whether to notify about resolved alerts.
+        /// </summary>
+        [Input("sendResolved")]
+        public Input<bool>? SendResolved { get; set; }
+
+        [Input("url")]
+        private Input<string>? _url;
+
+        /// <summary>
         /// The endpoint to send HTTP POST requests to. Must be a valid URL
         /// </summary>
-        [Input("url")]
-        public Input<string>? Url { get; set; }
+        public Input<string>? Url
+        {
+            get => _url;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _url = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public ObservabilityInstanceAlertConfigReceiverWebhooksConfigArgs()
         {

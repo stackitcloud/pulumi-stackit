@@ -14,7 +14,7 @@ namespace Pulumi.Stackit
         /// <summary>
         /// CDN distribution data source schema.
         /// 
-        /// &gt; This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
+        /// &gt; This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
         /// 
         /// ## Example Usage
         /// 
@@ -32,7 +32,7 @@ namespace Pulumi.Stackit
         /// <summary>
         /// CDN distribution data source schema.
         /// 
-        /// &gt; This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
+        /// &gt; This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
         /// 
         /// ## Example Usage
         /// 
@@ -50,7 +50,7 @@ namespace Pulumi.Stackit
         /// <summary>
         /// CDN distribution data source schema.
         /// 
-        /// &gt; This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
+        /// &gt; This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
         /// 
         /// ## Example Usage
         /// 
@@ -69,6 +69,12 @@ namespace Pulumi.Stackit
 
     public sealed class GetCdnCustomDomainArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The TLS certificate for the custom domain. If omitted, a managed certificate will be used. If the block is specified, a custom certificate is used.
+        /// </summary>
+        [Input("certificate")]
+        public Inputs.GetCdnCustomDomainCertificateArgs? Certificate { get; set; }
+
         /// <summary>
         /// CDN distribution ID
         /// </summary>
@@ -92,6 +98,12 @@ namespace Pulumi.Stackit
 
     public sealed class GetCdnCustomDomainInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The TLS certificate for the custom domain. If omitted, a managed certificate will be used. If the block is specified, a custom certificate is used.
+        /// </summary>
+        [Input("certificate")]
+        public Input<Inputs.GetCdnCustomDomainCertificateInputArgs>? Certificate { get; set; }
+
         /// <summary>
         /// CDN distribution ID
         /// </summary>
@@ -118,6 +130,10 @@ namespace Pulumi.Stackit
     public sealed class GetCdnCustomDomainResult
     {
         /// <summary>
+        /// The TLS certificate for the custom domain. If omitted, a managed certificate will be used. If the block is specified, a custom certificate is used.
+        /// </summary>
+        public readonly Outputs.GetCdnCustomDomainCertificateResult? Certificate;
+        /// <summary>
         /// CDN distribution ID
         /// </summary>
         public readonly string DistributionId;
@@ -138,6 +154,8 @@ namespace Pulumi.Stackit
 
         [OutputConstructor]
         private GetCdnCustomDomainResult(
+            Outputs.GetCdnCustomDomainCertificateResult? certificate,
+
             string distributionId,
 
             ImmutableArray<string> errors,
@@ -150,6 +168,7 @@ namespace Pulumi.Stackit
 
             string status)
         {
+            Certificate = certificate;
             DistributionId = distributionId;
             Errors = errors;
             Id = id;

@@ -42,61 +42,53 @@ export class SkeCluster extends pulumi.CustomResource {
     }
 
     /**
-     * Flag to specify if privileged mode for containers is enabled or not.
-     * This should be used with care since it also disables a couple of other features like the use of some volume type (e.g. PVCs).
-     * Deprecated as of Kubernetes 1.25 and later
-     */
-    public readonly allowPrivilegedContainers!: pulumi.Output<boolean | undefined>;
-    /**
      * The outgoing network ranges (in CIDR notation) of traffic originating from workload on the cluster.
      */
-    public /*out*/ readonly egressAddressRanges!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly egressAddressRanges: pulumi.Output<string[]>;
     /**
      * A single extensions block as defined below.
      */
-    public readonly extensions!: pulumi.Output<outputs.SkeClusterExtensions | undefined>;
+    declare public readonly extensions: pulumi.Output<outputs.SkeClusterExtensions | undefined>;
     /**
      * One or more hibernation block as defined below.
      */
-    public readonly hibernations!: pulumi.Output<outputs.SkeClusterHibernation[] | undefined>;
-    /**
-     * Kubernetes version. Must only contain major and minor version (e.g. 1.22). This field is deprecated, use `kubernetesVersionMin instead`
-     *
-     * @deprecated Use `kubernetesVersionMin instead`. Setting a specific kubernetes version would cause errors during minor version upgrades due to forced updates. In those cases, this field might not represent the actual kubernetes version used in the cluster.
-     */
-    public readonly kubernetesVersion!: pulumi.Output<string | undefined>;
+    declare public readonly hibernations: pulumi.Output<outputs.SkeClusterHibernation[] | undefined>;
     /**
      * The minimum Kubernetes version. This field will be used to set the minimum kubernetes version on creation/update of the cluster. If unset, the latest supported Kubernetes version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current kubernetes version being used for your cluster, use the read-only `kubernetesVersionUsed` field.
      */
-    public readonly kubernetesVersionMin!: pulumi.Output<string | undefined>;
+    declare public readonly kubernetesVersionMin: pulumi.Output<string | undefined>;
     /**
      * Full Kubernetes version used. For example, if 1.22 was set in `kubernetesVersionMin`, this value may result to 1.22.15. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
      */
-    public /*out*/ readonly kubernetesVersionUsed!: pulumi.Output<string>;
+    declare public /*out*/ readonly kubernetesVersionUsed: pulumi.Output<string>;
     /**
      * A single maintenance block as defined below.
      */
-    public readonly maintenance!: pulumi.Output<outputs.SkeClusterMaintenance>;
+    declare public readonly maintenance: pulumi.Output<outputs.SkeClusterMaintenance>;
     /**
      * The cluster name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Network block as defined below.
      */
-    public readonly network!: pulumi.Output<outputs.SkeClusterNetwork | undefined>;
+    declare public readonly network: pulumi.Output<outputs.SkeClusterNetwork | undefined>;
     /**
      * One or more `nodePool` block as defined below.
      */
-    public readonly nodePools!: pulumi.Output<outputs.SkeClusterNodePool[]>;
+    declare public readonly nodePools: pulumi.Output<outputs.SkeClusterNodePool[]>;
+    /**
+     * The network ranges (in CIDR notation) used by pods of the cluster.
+     */
+    declare public /*out*/ readonly podAddressRanges: pulumi.Output<string[]>;
     /**
      * STACKIT project ID to which the cluster is associated.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a SkeCluster resource with the given unique name, arguments, and options.
@@ -111,40 +103,38 @@ export class SkeCluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SkeClusterState | undefined;
-            resourceInputs["allowPrivilegedContainers"] = state ? state.allowPrivilegedContainers : undefined;
-            resourceInputs["egressAddressRanges"] = state ? state.egressAddressRanges : undefined;
-            resourceInputs["extensions"] = state ? state.extensions : undefined;
-            resourceInputs["hibernations"] = state ? state.hibernations : undefined;
-            resourceInputs["kubernetesVersion"] = state ? state.kubernetesVersion : undefined;
-            resourceInputs["kubernetesVersionMin"] = state ? state.kubernetesVersionMin : undefined;
-            resourceInputs["kubernetesVersionUsed"] = state ? state.kubernetesVersionUsed : undefined;
-            resourceInputs["maintenance"] = state ? state.maintenance : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["nodePools"] = state ? state.nodePools : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["egressAddressRanges"] = state?.egressAddressRanges;
+            resourceInputs["extensions"] = state?.extensions;
+            resourceInputs["hibernations"] = state?.hibernations;
+            resourceInputs["kubernetesVersionMin"] = state?.kubernetesVersionMin;
+            resourceInputs["kubernetesVersionUsed"] = state?.kubernetesVersionUsed;
+            resourceInputs["maintenance"] = state?.maintenance;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["nodePools"] = state?.nodePools;
+            resourceInputs["podAddressRanges"] = state?.podAddressRanges;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as SkeClusterArgs | undefined;
-            if ((!args || args.nodePools === undefined) && !opts.urn) {
+            if (args?.nodePools === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodePools'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            resourceInputs["allowPrivilegedContainers"] = args ? args.allowPrivilegedContainers : undefined;
-            resourceInputs["extensions"] = args ? args.extensions : undefined;
-            resourceInputs["hibernations"] = args ? args.hibernations : undefined;
-            resourceInputs["kubernetesVersion"] = args ? args.kubernetesVersion : undefined;
-            resourceInputs["kubernetesVersionMin"] = args ? args.kubernetesVersionMin : undefined;
-            resourceInputs["maintenance"] = args ? args.maintenance : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["nodePools"] = args ? args.nodePools : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["extensions"] = args?.extensions;
+            resourceInputs["hibernations"] = args?.hibernations;
+            resourceInputs["kubernetesVersionMin"] = args?.kubernetesVersionMin;
+            resourceInputs["maintenance"] = args?.maintenance;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["nodePools"] = args?.nodePools;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
             resourceInputs["egressAddressRanges"] = undefined /*out*/;
             resourceInputs["kubernetesVersionUsed"] = undefined /*out*/;
+            resourceInputs["podAddressRanges"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SkeCluster.__pulumiType, name, resourceInputs, opts);
@@ -155,12 +145,6 @@ export class SkeCluster extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SkeCluster resources.
  */
 export interface SkeClusterState {
-    /**
-     * Flag to specify if privileged mode for containers is enabled or not.
-     * This should be used with care since it also disables a couple of other features like the use of some volume type (e.g. PVCs).
-     * Deprecated as of Kubernetes 1.25 and later
-     */
-    allowPrivilegedContainers?: pulumi.Input<boolean>;
     /**
      * The outgoing network ranges (in CIDR notation) of traffic originating from workload on the cluster.
      */
@@ -173,12 +157,6 @@ export interface SkeClusterState {
      * One or more hibernation block as defined below.
      */
     hibernations?: pulumi.Input<pulumi.Input<inputs.SkeClusterHibernation>[]>;
-    /**
-     * Kubernetes version. Must only contain major and minor version (e.g. 1.22). This field is deprecated, use `kubernetesVersionMin instead`
-     *
-     * @deprecated Use `kubernetesVersionMin instead`. Setting a specific kubernetes version would cause errors during minor version upgrades due to forced updates. In those cases, this field might not represent the actual kubernetes version used in the cluster.
-     */
-    kubernetesVersion?: pulumi.Input<string>;
     /**
      * The minimum Kubernetes version. This field will be used to set the minimum kubernetes version on creation/update of the cluster. If unset, the latest supported Kubernetes version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current kubernetes version being used for your cluster, use the read-only `kubernetesVersionUsed` field.
      */
@@ -204,6 +182,10 @@ export interface SkeClusterState {
      */
     nodePools?: pulumi.Input<pulumi.Input<inputs.SkeClusterNodePool>[]>;
     /**
+     * The network ranges (in CIDR notation) used by pods of the cluster.
+     */
+    podAddressRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * STACKIT project ID to which the cluster is associated.
      */
     projectId?: pulumi.Input<string>;
@@ -218,12 +200,6 @@ export interface SkeClusterState {
  */
 export interface SkeClusterArgs {
     /**
-     * Flag to specify if privileged mode for containers is enabled or not.
-     * This should be used with care since it also disables a couple of other features like the use of some volume type (e.g. PVCs).
-     * Deprecated as of Kubernetes 1.25 and later
-     */
-    allowPrivilegedContainers?: pulumi.Input<boolean>;
-    /**
      * A single extensions block as defined below.
      */
     extensions?: pulumi.Input<inputs.SkeClusterExtensions>;
@@ -231,12 +207,6 @@ export interface SkeClusterArgs {
      * One or more hibernation block as defined below.
      */
     hibernations?: pulumi.Input<pulumi.Input<inputs.SkeClusterHibernation>[]>;
-    /**
-     * Kubernetes version. Must only contain major and minor version (e.g. 1.22). This field is deprecated, use `kubernetesVersionMin instead`
-     *
-     * @deprecated Use `kubernetesVersionMin instead`. Setting a specific kubernetes version would cause errors during minor version upgrades due to forced updates. In those cases, this field might not represent the actual kubernetes version used in the cluster.
-     */
-    kubernetesVersion?: pulumi.Input<string>;
     /**
      * The minimum Kubernetes version. This field will be used to set the minimum kubernetes version on creation/update of the cluster. If unset, the latest supported Kubernetes version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current kubernetes version being used for your cluster, use the read-only `kubernetesVersionUsed` field.
      */

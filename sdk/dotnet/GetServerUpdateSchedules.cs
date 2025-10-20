@@ -14,7 +14,7 @@ namespace Pulumi.Stackit
         /// <summary>
         /// Server update schedules datasource schema. Must have a `region` specified in the provider configuration.
         /// 
-        /// &gt; This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
+        /// &gt; This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
         /// 
         /// ## Example Usage
         /// 
@@ -31,7 +31,7 @@ namespace Pulumi.Stackit
         /// <summary>
         /// Server update schedules datasource schema. Must have a `region` specified in the provider configuration.
         /// 
-        /// &gt; This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
+        /// &gt; This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
         /// 
         /// ## Example Usage
         /// 
@@ -48,7 +48,7 @@ namespace Pulumi.Stackit
         /// <summary>
         /// Server update schedules datasource schema. Must have a `region` specified in the provider configuration.
         /// 
-        /// &gt; This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
+        /// &gt; This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
         /// 
         /// ## Example Usage
         /// 
