@@ -51,6 +51,8 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
       - name: Build sdks
         run: make generate_sdks
+      - name: Test git status
+        run: git status
       - name: Lint
         run: make lint_provider
 
