@@ -25,7 +25,7 @@ OS := $(shell uname)
 EMPTY_TO_AVOID_SED := ""
 
 ensure::
-	cd provider && go mod tidy
+	go work sync
 	cd sdk && go mod tidy
 	cd examples && go mod tidy
 
