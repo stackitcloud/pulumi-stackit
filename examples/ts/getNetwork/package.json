@@ -1,5 +1,5 @@
 {
-    "name": "example-ts",
+    "name": "getNetworkTs",
     "main": "index.ts",
     "devDependencies": {
         "@types/node": "^18",
@@ -7,6 +7,6 @@
     },
     "dependencies": {
         "@pulumi/pulumi": "^3.113.0",
-        "@stackitcloud/pulumi-stackit": "^0.1.2"
+        "@stackitcloud/pulumi-stackit": "file:../../../sdk/nodejs/bin"
     }
 }

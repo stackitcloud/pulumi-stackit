@@ -1,4 +1,4 @@
-name: example-ts
+name: getNetworkTs
 description: A minimal TypeScript Pulumi program
 runtime:
   name: nodejs
