@@ -6,11 +6,7 @@ toolchain go1.24.4
 
 replace github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20250530111747-935112552988
 
-require (
-	github.com/hashicorp/terraform-plugin-framework v1.16.1
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.114.0
-	github.com/stackitcloud/terraform-provider-stackit v0.68.0
-)
+require github.com/pulumi/pulumi-terraform-bridge/v3 v3.115.0
 
 require (
 	cloud.google.com/go v0.112.1 // indirect
@@ -67,6 +63,7 @@ require (
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/googleapis/enterprise-certificate-proxy v0.3.2 // indirect
 	github.com/googleapis/gax-go/v2 v2.12.2 // indirect
+	github.com/gorilla/mux v1.8.1 // indirect
 	github.com/grpc-ecosystem/grpc-opentracing v0.0.0-20180507213350-8e809c8a8645 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
@@ -79,9 +76,10 @@ require (
 	github.com/hashicorp/go-uuid v1.0.3 // indirect
 	github.com/hashicorp/go-version v1.7.0 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
-	github.com/hashicorp/hcl/v2 v2.23.0 // indirect
+	github.com/hashicorp/hcl/v2 v2.24.0 // indirect
 	github.com/hashicorp/hil v0.0.0-20190212132231-97b3a9cdfa93 // indirect
 	github.com/hashicorp/logutils v1.0.0 // indirect
+	github.com/hashicorp/terraform-plugin-framework v1.16.1 // indirect
 	github.com/hashicorp/terraform-plugin-framework-validators v0.19.0 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.29.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
@@ -153,35 +151,7 @@ require (
 	github.com/spf13/cast v1.5.0 // indirect
 	github.com/spf13/cobra v1.9.1 // indirect
 	github.com/spf13/pflag v1.0.6 // indirect
-	github.com/stackitcloud/stackit-sdk-go/core v0.17.3 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/authorization v0.9.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/cdn v1.5.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/dns v0.17.1 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/git v0.8.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/iaas v0.31.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/iaasalpha v0.1.21-alpha // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/loadbalancer v1.6.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/logme v0.25.1 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/mariadb v0.25.1 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/modelserving v0.6.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/mongodbflex v1.5.2 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/objectstorage v1.4.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/observability v0.14.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/opensearch v0.24.1 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/postgresflex v1.2.1 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/rabbitmq v0.25.1 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/redis v0.25.1 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/resourcemanager v0.17.1 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/scf v0.2.1 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/secretsmanager v0.13.1 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/serverbackup v1.3.2 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/serverupdate v1.2.1 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/serviceaccount v0.11.1 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/serviceenablement v1.2.2 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/ske v1.4.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/sqlserverflex v1.3.1 // indirect
 	github.com/stretchr/objx v0.5.2 // indirect
-	github.com/teambition/rrule-go v1.8.2 // indirect
 	github.com/teekennedy/goldmark-markdown v0.3.0 // indirect
 	github.com/texttheater/golang-levenshtein v1.0.1 // indirect
 	github.com/uber/jaeger-client-go v2.30.0+incompatible // indirect
@@ -192,7 +162,7 @@ require (
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
 	github.com/xanzy/ssh-agent v0.3.3 // indirect
 	github.com/yuin/goldmark v1.7.4 // indirect
-	github.com/zclconf/go-cty v1.16.3 // indirect
+	github.com/zclconf/go-cty v1.17.0 // indirect
 	go.opencensus.io v0.24.0 // indirect
 	go.opentelemetry.io/auto/sdk v1.1.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.49.0 // indirect
@@ -202,7 +172,7 @@ require (
 	go.opentelemetry.io/otel/trace v1.37.0 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
 	golang.org/x/crypto v0.42.0 // indirect
-	golang.org/x/exp v0.0.0-20240719175910-8a7402abbf56 // indirect
+	golang.org/x/exp v0.0.0-20241009180824-f66d83c29e7c // indirect
 	golang.org/x/mod v0.28.0 // indirect
 	golang.org/x/net v0.44.0 // indirect
 	golang.org/x/oauth2 v0.30.0 // indirect
