@@ -25,6 +25,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+      # TODO: remove when this repo is made public
+      - name: Configure Git for Private Modules
+        run: |
+          git config --global url."https://oauth2:${GITHUB_TOKEN}@github.com".insteadOf "https://github.com"
+      # TODO: remove end
       - name: Unshallow clone for tags
         run: git fetch --prune --unshallow --tags
       - name: Install pulumictl
