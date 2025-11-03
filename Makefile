@@ -26,6 +26,7 @@ EMPTY_TO_AVOID_SED := ""
 
 ensure::
 	go work sync
+	cd provider && go mod tidy
 	cd sdk && go mod tidy
 	cd examples && go mod tidy
 
