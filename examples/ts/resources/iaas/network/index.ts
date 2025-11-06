@@ -20,10 +20,14 @@ const exampleNonRoutedNetwork = new stackit.Network("example_non_routed_network"
         "1.2.3.4",
         "5.6.7.8",
     ],
-    ipv4Gateway: "10.1.2.3",
-    ipv4Prefix: "10.1.2.0/24",
+    ipv4Gateway: "10.1.22.3",
+    ipv4Prefix: "10.1.22.0/24",
     labels: {
         key: "value",
     },
     routed: false,
 });
+
+export const networkWithNameIdString = pulumi.interpolate`${exampleWithName.networkId}`;
+export const networkRoutedIdString = pulumi.interpolate`${exampleRoutedNetwork.networkId}`;
+export const networkNonRoutedIdString = pulumi.interpolate`${exampleNonRoutedNetwork.networkId}`;

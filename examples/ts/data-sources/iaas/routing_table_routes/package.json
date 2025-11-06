@@ -1,5 +1,5 @@
 {
-	"name": "stackit_server_backup_schedule",
+	"name": "stackit_routing_table_routes",
 	"devDependencies": {
 		"@types/node": "^18"
 	},

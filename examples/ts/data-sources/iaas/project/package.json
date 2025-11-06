@@ -1,5 +1,5 @@
 {
-	"name": "stackit_server_backup_schedules",
+	"name": "stackit_iaas_project",
 	"devDependencies": {
 		"@types/node": "^18"
 	},

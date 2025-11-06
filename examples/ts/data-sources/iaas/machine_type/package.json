@@ -1,5 +1,5 @@
 {
-	"name": "stackit_server_update_schedule",
+	"name": "stackit_machine_type",
 	"devDependencies": {
 		"@types/node": "^18"
 	},

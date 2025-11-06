@@ -12,3 +12,5 @@ const example = new stackit.NetworkArea("example", {
         key: "value",
     },
 });
+
+export const networkAreaIdString = pulumi.interpolate`${example.networkAreaId}`;
