@@ -1,4 +1,4 @@
-name: proofofconcept
+name: affinitygroup_unit_test
 description: A minimal TypeScript Pulumi program
 runtime:
   name: nodejs

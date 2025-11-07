@@ -1,5 +1,5 @@
 {
-    "name": "proofofconcept",
+    "name": "affinitygroup_unit_test",
     "main": "index.ts",
     "devDependencies": {
         "@types/mocha": "^10.0.10",
