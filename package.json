@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "postinstall": "find tests/ts -maxdepth 2 -mindepth 2 -type d -not -path './.*' | xargs npm install",
+    "test": "mocha --require ts-node/register \"tests/ts/**/test.ts\" --ignore '**/node_modules/**'"
+  },
+  "devDependencies": {
+    "mocha": "^10.0.0",
+    "ts-node": "^10.0.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "affinitygroup_unit_test": "file:tests/ts/iaas/affinityGroups",
+    "image_unit_test": "file:tests/ts/iaas/image"
+  }
+}

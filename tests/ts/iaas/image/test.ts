@@ -203,7 +203,7 @@ describe("exampleImageMax", () => {
 });   
 
 // datasource
-describe("Datasource test", () => {
+describe("image datasource test", () => {
     let infra: typeof import("./index");
     
     // It's important to import the program _after_ the mocks are defined.

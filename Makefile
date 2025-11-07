@@ -17,8 +17,6 @@ TFGEN           := pulumi-tfgen-${PACK}
 PROVIDER        := pulumi-resource-${PACK}
 VERSION         := $(shell pulumictl get version)
 
-TESTPARALLELISM := 4
-
 WORKING_DIR     := $(shell pwd)
 
 OS := $(shell uname)
@@ -140,8 +138,12 @@ install_nodejs_sdk::
 
 install_sdks:: install_dotnet_sdk install_python_sdk install_nodejs_sdk
 
-test::
-	cd examples && go test -v -tags=all -parallel ${TESTPARALLELISM} -timeout 2h
+test_ts::
+	@echo "--- Run Pulumi TypeScript Unit Tests ---"
+	npm install
+	npm test
+
+test:: test_ts
 
 fmt:
 	@gofmt -s -w .
