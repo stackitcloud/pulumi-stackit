@@ -1,0 +1,12 @@
+{
+	"name": "stackit_public_ip_ranges",
+	"devDependencies": {
+		"@types/node": "^18"
+	},
+	"dependencies": {
+		"@pulumi/pulumi": "^3.0.0",
+		"@pulumi/std": "2.2.0",
+		"@stackitcloud/pulumi-stackit": "file:../../../../../sdk/nodejs/bin",
+		"typescript": "^4.0.0"
+	}
+}

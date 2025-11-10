@@ -1,0 +1,11 @@
+{
+	"name": "stackit_server_network_interface_attach",
+	"devDependencies": {
+		"@types/node": "^18"
+	},
+	"dependencies": {
+		"@pulumi/pulumi": "^3.0.0",
+		"@stackitcloud/pulumi-stackit": "file:../../../../../sdk/nodejs/bin",
+		"typescript": "^4.0.0"
+	}
+}
