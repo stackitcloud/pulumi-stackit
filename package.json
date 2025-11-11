@@ -11,6 +11,7 @@
   "dependencies": {
     "affinitygroup_unit_test": "file:tests/ts/iaas/affinityGroups",
     "image_unit_test": "file:tests/ts/iaas/image",
-    "key_pair_unit_test": "file:tests/ts/iaas/key-pair"
+    "key_pair_unit_test": "file:tests/ts/iaas/key-pair",
+    "network_area_unit_test": "file:tests/ts/iaas/network-area"
   }
 }
