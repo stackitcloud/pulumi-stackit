@@ -15,6 +15,7 @@
     "network_area_route_unit_test": "file:tests/ts/iaas/network-area-route",
     "network_area_unit_test": "file:tests/ts/iaas/network-area",
     "network_interface_unit_test": "file:tests/ts/iaas/network-interface",
-    "network_unit_test": "file:tests/ts/iaas/network"
+    "network_unit_test": "file:tests/ts/iaas/network",
+    "public_ip_unit_test": "file:tests/ts/iaas/public_ip"
   }
 }
