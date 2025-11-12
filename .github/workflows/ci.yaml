@@ -58,6 +58,8 @@ jobs:
         run: make generate_sdks
       - name: Lint
         run: make lint_provider
+      - name: Execute tests
+        run: make test
 
   config:
     name: Check GoReleaser config
