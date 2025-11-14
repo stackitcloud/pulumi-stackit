@@ -1,0 +1,18 @@
+{
+    "name": "routing_table_unit_test",
+    "main": "index.ts",
+    "devDependencies": {
+        "@types/mocha": "^10.0.10",
+        "@types/node": "^18",
+        "mocha": "^11.7.5",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.0.0"
+    },
+    "dependencies": {
+        "@pulumi/pulumi": "^3.113.0",
+        "@stackitcloud/pulumi-stackit": "file:../../../../sdk/nodejs/bin"
+    },
+    "scripts": {
+        "test": "mocha -r ts-node/register test.ts"
+    }
+}
