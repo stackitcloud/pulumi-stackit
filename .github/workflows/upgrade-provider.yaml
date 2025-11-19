@@ -1,15 +1,3 @@
-env:
-  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-jobs:
-  upgrade_provider:
-    if: ${{ (contains(github.event.issue.title, 'Upgrade terraform-provider-')) || github.event_name == 'workflow_dispatch' }}
-    name: upgrade-provider
-    runs-on: ubuntu-latest
-    steps:
-    - name: Call upgrade provider action
-      uses: pulumi/pulumi-upgrade-provider-action@e247104aede3eb4641f48c8ad0ea9de9346f2457 # v0.0.18
-      with:
-        kind: all
 name: Upgrade provider
 
 permissions:
@@ -21,3 +9,97 @@ on:
     types:
     - opened
   workflow_dispatch: {}
+
+env:
+  GH_TOKEN: ${{ secrets.PR_TOKEN }}
+  GO_VERSION: "1.24"
+  DOTNET_VERSION: 9.0.x
+  NODE_VERSION: 20.x
+  PYTHON_VERSION: "3.9"
+
+jobs:
+  upgrade_provider:
+    if: ${{ (contains(github.event.issue.title, 'Upgrade terraform-provider-')) || github.event_name == 'workflow_dispatch' }}
+    name: upgrade-provider
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v6
+    # TODO: remove when this repo is made public
+    - name: Configure Git for Private Modules
+      run: |
+        git config --global url."https://oauth2:${{ secrets.PR_TOKEN }}@github.com".insteadOf "https://github.com"
+        # Sets GOPRIVATE and GONOSUMDB in order to use the git authetnication for go mod.
+        echo "GOPRIVATE=github.com/${{ github.repository }}/*,github.com/stackitcloud/*" >> $GITHUB_ENV
+        echo "GONOSUMDB=github.com/${{ github.repository }}/*,github.com/stackitcloud/*" >> $GITHUB_ENV
+    # TODO: remove end
+    - name: Unshallow clone for tags
+      run: git fetch --prune --unshallow --tags
+    - name: Install pulumictl
+      uses: jaxxstorm/action-install-gh-release@6096f2a2bbfee498ced520b6922ac2c06e990ed2 # tag=v2.1.0
+      with:
+        repo: pulumi/pulumictl
+    - name: Install pulumi
+      uses: pulumi/actions@v6
+    - name: Install Go Tools
+      uses: ./.github/actions/gotools
+      with:
+        go-version: ${{ env.GO_VERSION }}
+    - name: Setup Node
+      uses: actions/setup-node@2028fbc5c25fe9cf00d9f06a71cc4710d4507903 # tag=v6.0.0
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+    - name: Setup DotNet
+      uses: actions/setup-dotnet@d4c94342e560b34958eacfc5d055d21461ed1c5d # tag=v5.0.0
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+    - name: Setup Python
+      uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c # tag=v6.0.0
+      with:
+        python-version: ${{ env.PYTHON_VERSION }}
+    - name: Test update provider and bridge and create a PR
+      run: |
+        git config user.name "Pulumi Generator Bot"
+        git config user.email "noreply@stackit.de"
+        LATEST_TAG=$(git ls-remote --tags https://github.com/stackitcloud/terraform-provider-stackit | grep -oP 'refs/tags/v\d+\.\d+\.\d+$' |sed 's/refs\/tags\///' | sort -V | tail -n 1)
+        echo "$LATEST_TAG"
+        BRANCH_NAME="upgrade-terraform-provider-stackit-to-$LATEST_TAG"
+        echo "$BRANCH_NAME"
+        git checkout -b "$BRANCH_NAME"
+        (cd provider && go get github.com/stackitcloud/terraform-provider-stackit@"$LATEST_TAG")
+        (cd provider/shim && go get github.com/stackitcloud/terraform-provider-stackit@"$LATEST_TAG")
+        git status
+        make ensure
+        make tfgen
+        git add --all
+        git commit -m "make tfgen"
+        make generate_sdks
+        git add --all
+        git commit -m "make generate_sdks"
+        git push --set-upstream origin "$BRANCH_NAME"
+        gh pr create --title "Upgrade terraform-provider-stackit to $LATEST_TAG" --base main --head "$BRANCH_NAME"
+
+
+
+
+    # remove code below is not needed anymore since the upgrade-provider action is not working correctly
+    # - name: Install misc
+    #   run: |
+    #     sudo apt update -y && sudo apt install -y curl
+    #     sudo install -dm 755 /etc/apt/keyrings
+    #     curl -fSs https://mise.jdx.dev/gpg-key.pub | sudo tee /etc/apt/keyrings/mise-archive-keyring.pub 1> /dev/null
+    #     echo "deb [signed-by=/etc/apt/keyrings/mise-archive-keyring.pub arch=amd64] https://mise.jdx.dev/deb stable main" | sudo tee /etc/apt/sources.list.d/mise.list
+    #     sudo apt update
+    #     sudo apt install -y mise
+    # - name: Call upgrade provider action
+    #   uses: pulumi/pulumi-upgrade-provider-action@e247104aede3eb4641f48c8ad0ea9de9346f2457 # v0.0.18
+    #   with:
+    #     kind: all
+    # - name: Test if all was added
+    #   run: git status
+    # - name: Run make generate_sdks again
+    #   run: make generate_sdks
+    # - name: Test git status afterwards
+    #   run: git status
+
+
