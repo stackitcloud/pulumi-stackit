@@ -21,7 +21,7 @@
     "public_ip_unit_test": "file:tests/ts/iaas/public_ip",
     "routing_table_unit_test": "file:tests/ts/iaas/routingTable",
     "securitygroup_unit_test": "file:tests/ts/iaas/securityGroup",
-    "volume_unit_test": "file:tests/ts/iaas/volume",
-    "server_unit_test": "file:tests/ts/iaas/server"
+    "server_unit_test": "file:tests/ts/iaas/server",
+    "volume_unit_test": "file:tests/ts/iaas/volume"
   }
 }

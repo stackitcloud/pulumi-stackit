@@ -1,7 +1,7 @@
 import * as assert from "assert";
 import * as pulumi from "@pulumi/pulumi";
 import "mocha";
-import { serverProjectId, serverName, serverLabelKey, serverLabelValue, serverId, exampleServerMax, serverDatasource, serverMachineType, serverAvailabilityZone, serverKeypairName, serverDesiredStatus, serverNetworkInterface, serverUserData, serverBootVolumeSourceId, serverBootVolumeSourceType } from "./index";
+import { serverProjectId, serverName, serverLabelKey, serverLabelValue, serverId, exampleServerMax, serverDatasource, serverMachineType, serverAvailabilityZone, serverKeypairName, serverDesiredStatus, serverNetworkInterfaceId, serverUserData, serverBootVolumeSourceId, serverBootVolumeSourceType } from "./index";
 
 pulumi.runtime.setMocks({
     newResource: function(args: pulumi.runtime.MockResourceArgs): {id: string, state: any} {
@@ -213,7 +213,7 @@ describe("exampleServerMax", () => {
                 return done(new Error(`networkInterfaces is missing on exampleServerMax ${urn}`));
             }
             const actualReference = networkInterfaces[0];
-            if (actualReference === serverNetworkInterface) {
+            if (actualReference === serverNetworkInterfaceId) {
                 done();
             } else {
                 done(new Error(`Provided networkInterfaces ${networkInterfaces} was not set correctly on exampleServerMax ${urn}`));
@@ -259,7 +259,7 @@ describe("exampleServerMax", () => {
 
     it("check if the 'labels' map contains the correct key and value", function(done) {
         pulumi.all([infra.exampleServerMax.urn, infra.exampleServerMax.labels]).apply(([urn, labels]) => {
-            const actualValue = labels ? labels[serverLabelKey] : undefined;
+            const actualValue = labels?.[serverLabelKey];
             if (actualValue === serverLabelValue) {
                 done();
             } else {
@@ -307,4 +307,124 @@ describe("server datasource test", () => {
             }
         });
     });    
+});
+
+// server network interface attach
+describe("serverNetworkInterfaceAttach", () => {
+    let infra: typeof import("./index");
+    
+    // It's important to import the program _after_ the mocks are defined.
+    before(async function() {
+        infra = await import("./index");
+    })
+
+    it("check if projectId was correctly set", function(done) {
+        pulumi.all([infra.serverNetworkInterfaceAttach, infra.serverNetworkInterfaceAttach.projectId]).apply(([urn, projectId]) => {
+            if (projectId === serverProjectId) {
+                done();
+            } else {
+                done(new Error(`Provided projectId ${projectId} was not set correctly on resource ${urn}`));
+            }
+        });
+    });
+
+    it("check if serverId was correctly set", function(done) {
+        pulumi.all([infra.serverNetworkInterfaceAttach, infra.serverNetworkInterfaceAttach.serverId]).apply(([urn, serverId]) => {
+            if (serverId === infra.serverId) {
+                done();
+            } else {
+                done(new Error(`Provided serverId ${serverId} was not set correctly on resource ${urn}`));
+            }
+        });
+    });
+
+    it("check if networkInterfaceId was correctly set", function(done) {
+        pulumi.all([infra.serverNetworkInterfaceAttach, infra.serverNetworkInterfaceAttach.networkInterfaceId]).apply(([urn, networkInterfaceId]) => {
+            if (networkInterfaceId === infra.serverNetworkInterfaceId) {
+                done();
+            } else {
+                done(new Error(`Provided networkInterfaceId ${networkInterfaceId} was not set correctly on resource ${urn}`));
+            }
+        });
+    });
+});
+
+// server service account attach
+describe("serverServiceAccountAttach", () => {
+    let infra: typeof import("./index");
+    
+    // It's important to import the program _after_ the mocks are defined.
+    before(async function() {
+        infra = await import("./index");
+    })
+
+    it("check if projectId was correctly set", function(done) {
+        pulumi.all([infra.serverServiceAccountAttach, infra.serverServiceAccountAttach.projectId]).apply(([urn, projectId]) => {
+            if (projectId === serverProjectId) {
+                done();
+            } else {
+                done(new Error(`Provided projectId ${projectId} was not set correctly on resource ${urn}`));
+            }
+        });
+    });
+
+    it("check if serverId was correctly set", function(done) {
+        pulumi.all([infra.serverServiceAccountAttach, infra.serverServiceAccountAttach.serverId]).apply(([urn, serverId]) => {
+            if (serverId === infra.serverId) {
+                done();
+            } else {
+                done(new Error(`Provided serverId ${serverId} was not set correctly on resource ${urn}`));
+            }
+        });
+    });
+
+    it("check if serviceAccountEmail was correctly set", function(done) {
+        pulumi.all([infra.serverServiceAccountAttach, infra.serverServiceAccountAttach.serviceAccountEmail]).apply(([urn, serviceAccountEmail]) => {
+            if (serviceAccountEmail === infra.serverAttachedServiceAccount) {
+                done();
+            } else {
+                done(new Error(`Provided serviceAccountEmail ${serviceAccountEmail} was not set correctly on resource ${urn}`));
+            }
+        });
+    });
+});
+
+// server service volume attach
+describe("serverVolumeAttach", () => {
+    let infra: typeof import("./index");
+    
+    // It's important to import the program _after_ the mocks are defined.
+    before(async function() {
+        infra = await import("./index");
+    })
+
+    it("check if projectId was correctly set", function(done) {
+        pulumi.all([infra.serverVolumeAttach, infra.serverVolumeAttach.projectId]).apply(([urn, projectId]) => {
+            if (projectId === serverProjectId) {
+                done();
+            } else {
+                done(new Error(`Provided projectId ${projectId} was not set correctly on resource ${urn}`));
+            }
+        });
+    });
+
+    it("check if serverId was correctly set", function(done) {
+        pulumi.all([infra.serverVolumeAttach, infra.serverVolumeAttach.serverId]).apply(([urn, serverId]) => {
+            if (serverId === infra.serverId) {
+                done();
+            } else {
+                done(new Error(`Provided serverId ${serverId} was not set correctly on resource ${urn}`));
+            }
+        });
+    });
+
+    it("check if volumeId was correctly set", function(done) {
+        pulumi.all([infra.serverVolumeAttach, infra.serverVolumeAttach.volumeId]).apply(([urn, volumeId]) => {
+            if (volumeId === infra.serverAttachedVolumeId) {
+                done();
+            } else {
+                done(new Error(`Provided volumeId ${volumeId} was not set correctly on resource ${urn}`));
+            }
+        });
+    });
 });

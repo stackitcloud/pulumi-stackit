@@ -8,10 +8,14 @@ export const serverAvailabilityZone = "eu01-1";
 export const serverAffinityGroupId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx1";
 export const serverKeypairName = "keypairName";
 export const serverDesiredStatus = "active";
-export const serverNetworkInterface = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx2";
+export const serverNetworkInterfaceId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx2";
 export const serverUserData = "#!/bin/bash";
 export const serverBootVolumeSourceType = "image";
 export const serverBootVolumeSourceId = "59838a89-51b1-4892-b57f-b3caf598ee2f";
+
+export const serverAttachedVolumeId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx3";
+export const serverAttachedServiceAccount = "service-account@stackit.cloud";
+
 
 export const serverLabelKey = "unit-test";
 export const serverLabelValue = "test-label-value";
@@ -36,7 +40,7 @@ export const exampleServerMax = new stackit.Server("example_server_max", {
     availabilityZone: serverAvailabilityZone,
     keypairName: serverKeypairName,
     desiredStatus: serverDesiredStatus,
-    networkInterfaces: [serverNetworkInterface],
+    networkInterfaces: [serverNetworkInterfaceId],
     userData: serverUserData,
     bootVolume: {
         sourceId: serverBootVolumeSourceId, 
@@ -49,4 +53,25 @@ export const exampleServerMax = new stackit.Server("example_server_max", {
 export const serverDatasource = stackit.getServerOutput({
     projectId: serverProjectId,
     serverId: serverId,
+});
+
+// server network interface attach
+export const serverNetworkInterfaceAttach = new stackit.ServerNetworkInterfaceAttach("attached_network_interface", {
+    projectId: serverProjectId,
+    serverId: serverId,
+    networkInterfaceId: serverNetworkInterfaceId,
+});
+
+// server service account attach
+export const serverServiceAccountAttach = new stackit.ServerServiceAccountAttach("attached_service_account", {
+    projectId: serverProjectId,
+    serverId: serverId,
+    serviceAccountEmail: serverAttachedServiceAccount,
+});
+
+// server volume attach
+export const serverVolumeAttach = new stackit.ServerVolumeAttach("attached_volume", {
+    projectId: serverProjectId,
+    serverId: serverId,
+    volumeId: serverAttachedVolumeId,
 });
