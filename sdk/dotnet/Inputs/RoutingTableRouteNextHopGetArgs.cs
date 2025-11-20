@@ -13,7 +13,7 @@ namespace Pulumi.Stackit.Inputs
     public sealed class RoutingTableRouteNextHopGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Only `cidrv4` is supported during experimental stage..
+        /// Possible values are: `Blackhole`, `Internet`, `Ipv4`, `Ipv6`. Only `Cidrv4` is supported during experimental stage..
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

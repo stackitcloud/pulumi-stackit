@@ -12,7 +12,7 @@ namespace Pulumi.Stackit
     public static class GetPostgresflexInstance
     {
         /// <summary>
-        /// Postgres Flex instance data source schema. Must have a `region` specified in the provider configuration.
+        /// Postgres Flex instance data source schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -27,7 +27,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPostgresflexInstanceResult>("stackit:index/getPostgresflexInstance:getPostgresflexInstance", args ?? new GetPostgresflexInstanceArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Postgres Flex instance data source schema. Must have a `region` specified in the provider configuration.
+        /// Postgres Flex instance data source schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.Invoke<GetPostgresflexInstanceResult>("stackit:index/getPostgresflexInstance:getPostgresflexInstance", args ?? new GetPostgresflexInstanceInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Postgres Flex instance data source schema. Must have a `region` specified in the provider configuration.
+        /// Postgres Flex instance data source schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 

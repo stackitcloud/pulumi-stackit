@@ -12,7 +12,7 @@ namespace Pulumi.Stackit
     public static class GetResourcemanagerProject
     {
         /// <summary>
-        /// Resource Manager project data source schema. To identify the project, you need to provider either project_id or container_id. If you provide both, project_id will be used.
+        /// Resource Manager project data source schema. To identify the project, you need to provider either ProjectId or container_id. If you provide both, ProjectId will be used.
         /// 
         /// ## Example Usage
         /// 
@@ -27,7 +27,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetResourcemanagerProjectResult>("stackit:index/getResourcemanagerProject:getResourcemanagerProject", args ?? new GetResourcemanagerProjectArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Resource Manager project data source schema. To identify the project, you need to provider either project_id or container_id. If you provide both, project_id will be used.
+        /// Resource Manager project data source schema. To identify the project, you need to provider either ProjectId or container_id. If you provide both, ProjectId will be used.
         /// 
         /// ## Example Usage
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.Invoke<GetResourcemanagerProjectResult>("stackit:index/getResourcemanagerProject:getResourcemanagerProject", args ?? new GetResourcemanagerProjectInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Resource Manager project data source schema. To identify the project, you need to provider either project_id or container_id. If you provide both, project_id will be used.
+        /// Resource Manager project data source schema. To identify the project, you need to provider either ProjectId or container_id. If you provide both, ProjectId will be used.
         /// 
         /// ## Example Usage
         /// 
