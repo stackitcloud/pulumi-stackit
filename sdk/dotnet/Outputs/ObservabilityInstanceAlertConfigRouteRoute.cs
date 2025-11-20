@@ -30,11 +30,11 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly string? GroupWait;
         /// <summary>
-        /// A set of equality matchers an alert has to fulfill to match the node. This field is deprecated and will be removed after 10th March 2026, use `matchers` in the `routes` instead
+        /// A set of equality matchers an alert has to fulfill to match the node. This field is deprecated and will be removed after 10th March 2026, use `Matchers` in the `Routes` instead
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Match;
         /// <summary>
-        /// A set of regex-matchers an alert has to fulfill to match the node. This field is deprecated and will be removed after 10th March 2026, use `matchers` in the `routes` instead
+        /// A set of regex-matchers an alert has to fulfill to match the node. This field is deprecated and will be removed after 10th March 2026, use `Matchers` in the `Routes` instead
         /// </summary>
         public readonly ImmutableDictionary<string, string>? MatchRegex;
         /// <summary>

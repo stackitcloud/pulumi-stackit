@@ -12,7 +12,7 @@ namespace Pulumi.Stackit
     public static class GetNetworkAreaRoute
     {
         /// <summary>
-        /// Network area route data resource schema. Must have a `region` specified in the provider configuration.
+        /// Network area route data resource schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -28,7 +28,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworkAreaRouteResult>("stackit:index/getNetworkAreaRoute:getNetworkAreaRoute", args ?? new GetNetworkAreaRouteArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Network area route data resource schema. Must have a `region` specified in the provider configuration.
+        /// Network area route data resource schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -44,7 +44,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworkAreaRouteResult>("stackit:index/getNetworkAreaRoute:getNetworkAreaRoute", args ?? new GetNetworkAreaRouteInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Network area route data resource schema. Must have a `region` specified in the provider configuration.
+        /// Network area route data resource schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 

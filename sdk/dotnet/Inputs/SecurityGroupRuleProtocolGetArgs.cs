@@ -13,13 +13,13 @@ namespace Pulumi.Stackit.Inputs
     public sealed class SecurityGroupRuleProtocolGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The protocol name which the rule should match. Either `name` or `number` must be provided. Possible values are: `ah`, `dccp`, `egp`, `esp`, `gre`, `icmp`, `igmp`, `ipip`, `ipv6-encap`, `ipv6-frag`, `ipv6-icmp`, `ipv6-nonxt`, `ipv6-opts`, `ipv6-route`, `ospf`, `pgm`, `rsvp`, `sctp`, `tcp`, `udp`, `udplite`, `vrrp`.
+        /// The protocol name which the rule should match. Either `Name` or `Number` must be provided. Possible values are: `Ah`, `Dccp`, `Egp`, `Esp`, `Gre`, `Icmp`, `Igmp`, `Ipip`, `ipv6-encap`, `ipv6-frag`, `ipv6-icmp`, `ipv6-nonxt`, `ipv6-opts`, `ipv6-route`, `Ospf`, `Pgm`, `Rsvp`, `Sctp`, `Tcp`, `Udp`, `Udplite`, `Vrrp`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The protocol number which the rule should match. Either `name` or `number` must be provided.
+        /// The protocol number which the rule should match. Either `Name` or `Number` must be provided.
         /// </summary>
         [Input("number")]
         public Input<int>? Number { get; set; }

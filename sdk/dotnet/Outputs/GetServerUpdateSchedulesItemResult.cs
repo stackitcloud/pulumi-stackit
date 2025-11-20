@@ -26,7 +26,7 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Update schedule described in `rrule` (recurrence rule) format.
+        /// Update schedule described in `Rrule` (recurrence rule) format.
         /// </summary>
         public readonly string Rrule;
         public readonly int UpdateScheduleId;

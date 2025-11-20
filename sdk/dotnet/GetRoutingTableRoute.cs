@@ -12,7 +12,7 @@ namespace Pulumi.Stackit
     public static class GetRoutingTableRoute
     {
         /// <summary>
-        /// Routing table route datasource schema. Must have a `region` specified in the provider configuration.
+        /// Routing table route datasource schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// &gt; This datasource is part of the routing-tables experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
         /// 
@@ -31,7 +31,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRoutingTableRouteResult>("stackit:index/getRoutingTableRoute:getRoutingTableRoute", args ?? new GetRoutingTableRouteArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Routing table route datasource schema. Must have a `region` specified in the provider configuration.
+        /// Routing table route datasource schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// &gt; This datasource is part of the routing-tables experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
         /// 
@@ -50,7 +50,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.Invoke<GetRoutingTableRouteResult>("stackit:index/getRoutingTableRoute:getRoutingTableRoute", args ?? new GetRoutingTableRouteInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Routing table route datasource schema. Must have a `region` specified in the provider configuration.
+        /// Routing table route datasource schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// &gt; This datasource is part of the routing-tables experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
         /// 

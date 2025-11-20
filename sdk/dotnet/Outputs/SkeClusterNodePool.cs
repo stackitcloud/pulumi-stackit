@@ -22,7 +22,7 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AvailabilityZones;
         /// <summary>
-        /// Specifies the container runtime. Defaults to `containerd`
+        /// Specifies the container runtime. Defaults to `Containerd`
         /// </summary>
         public readonly string? Cri;
         /// <summary>
@@ -34,11 +34,11 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly string MachineType;
         /// <summary>
-        /// Maximum number of additional VMs that are created during an update. If set (larger than 0), then it must be at least the amount of zones configured for the nodepool. The `max_surge` and `max_unavailable` fields cannot both be unset at the same time.
+        /// Maximum number of additional VMs that are created during an update. If set (larger than 0), then it must be at least the amount of zones configured for the nodepool. The `MaxSurge` and `MaxUnavailable` fields cannot both be unset at the same time.
         /// </summary>
         public readonly int? MaxSurge;
         /// <summary>
-        /// Maximum number of VMs that that can be unavailable during an update. If set (larger than 0), then it must be at least the amount of zones configured for the nodepool. The `max_surge` and `max_unavailable` fields cannot both be unset at the same time.
+        /// Maximum number of VMs that that can be unavailable during an update. If set (larger than 0), then it must be at least the amount of zones configured for the nodepool. The `MaxSurge` and `MaxUnavailable` fields cannot both be unset at the same time.
         /// </summary>
         public readonly int? MaxUnavailable;
         /// <summary>
@@ -54,19 +54,19 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The name of the OS image. Defaults to `flatcar`.
+        /// The name of the OS image. Defaults to `Flatcar`.
         /// </summary>
         public readonly string? OsName;
         /// <summary>
-        /// This field is deprecated, use `os_version_min` to configure the version and `os_version_used` to get the currently used version instead.
+        /// This field is deprecated, use `OsVersionMin` to configure the version and `OsVersionUsed` to get the currently used version instead.
         /// </summary>
         public readonly string? OsVersion;
         /// <summary>
-        /// The minimum OS image version. This field will be used to set the minimum OS image version on creation/update of the cluster. If unset, the latest supported OS image version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current OS image version being used for the node pool, use the read-only `os_version_used` field.
+        /// The minimum OS image version. This field will be used to set the minimum OS image version on creation/update of the cluster. If unset, the latest supported OS image version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current OS image version being used for the node pool, use the read-only `OsVersionUsed` field.
         /// </summary>
         public readonly string? OsVersionMin;
         /// <summary>
-        /// Full OS image version used. For example, if 3815.2 was set in `os_version_min`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+        /// Full OS image version used. For example, if 3815.2 was set in `OsVersionMin`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
         /// </summary>
         public readonly string? OsVersionUsed;
         /// <summary>
@@ -78,7 +78,7 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly int? VolumeSize;
         /// <summary>
-        /// Specifies the volume type. Defaults to `storage_premium_perf1`.
+        /// Specifies the volume type. Defaults to `StoragePremiumPerf1`.
         /// </summary>
         public readonly string? VolumeType;
 

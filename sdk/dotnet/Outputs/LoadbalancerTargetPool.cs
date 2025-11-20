@@ -19,7 +19,7 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Here you can setup various session persistence options, so far only "`use_source_ip_address`" is supported.
+        /// Here you can setup various session persistence options, so far only "`UseSourceIpAddress`" is supported.
         /// </summary>
         public readonly Outputs.LoadbalancerTargetPoolSessionPersistence? SessionPersistence;
         /// <summary>

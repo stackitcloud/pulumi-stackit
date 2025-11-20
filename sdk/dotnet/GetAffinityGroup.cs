@@ -12,7 +12,7 @@ namespace Pulumi.Stackit
     public static class GetAffinityGroup
     {
         /// <summary>
-        /// Affinity Group schema. Must have a `region` specified in the provider configuration.
+        /// Affinity Group schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -27,7 +27,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAffinityGroupResult>("stackit:index/getAffinityGroup:getAffinityGroup", args ?? new GetAffinityGroupArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Affinity Group schema. Must have a `region` specified in the provider configuration.
+        /// Affinity Group schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.Invoke<GetAffinityGroupResult>("stackit:index/getAffinityGroup:getAffinityGroup", args ?? new GetAffinityGroupInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Affinity Group schema. Must have a `region` specified in the provider configuration.
+        /// Affinity Group schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -108,7 +108,7 @@ namespace Pulumi.Stackit
         public readonly string AffinityGroupId;
         public readonly string Id;
         /// <summary>
-        /// Affinity Group schema. Must have a `region` specified in the provider configuration.
+        /// Affinity Group schema. Must have a `Region` specified in the provider configuration.
         /// </summary>
         public readonly ImmutableArray<string> Members;
         /// <summary>

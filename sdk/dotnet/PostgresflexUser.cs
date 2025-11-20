@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Stackit
 {
     /// <summary>
-    /// Postgres Flex user resource schema. Must have a `region` specified in the provider configuration.
+    /// Postgres Flex user resource schema. Must have a `Region` specified in the provider configuration.
     /// 
     /// ## Example Usage
     /// </summary>
@@ -45,7 +45,7 @@ namespace Pulumi.Stackit
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// Database access levels for the user. Supported values are: `login`, `createdb`.
+        /// Database access levels for the user. Supported values are: `Login`, `Createdb`.
         /// </summary>
         [Output("roles")]
         public Output<ImmutableArray<string>> Roles { get; private set; } = null!;
@@ -136,7 +136,7 @@ namespace Pulumi.Stackit
         private InputList<string>? _roles;
 
         /// <summary>
-        /// Database access levels for the user. Supported values are: `login`, `createdb`.
+        /// Database access levels for the user. Supported values are: `Login`, `Createdb`.
         /// </summary>
         public InputList<string> Roles
         {
@@ -195,7 +195,7 @@ namespace Pulumi.Stackit
         private InputList<string>? _roles;
 
         /// <summary>
-        /// Database access levels for the user. Supported values are: `login`, `createdb`.
+        /// Database access levels for the user. Supported values are: `Login`, `Createdb`.
         /// </summary>
         public InputList<string> Roles
         {

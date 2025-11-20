@@ -13,7 +13,7 @@ namespace Pulumi.Stackit.Inputs
     public sealed class SkeClusterExtensionsArgusGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Argus instance ID to choose which Argus instance is used. Required when enabled is set to `true`.
+        /// Argus instance ID to choose which Argus instance is used. Required when enabled is set to `True`.
         /// </summary>
         [Input("argusInstanceId")]
         public Input<string>? ArgusInstanceId { get; set; }

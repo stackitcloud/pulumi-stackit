@@ -12,7 +12,7 @@ namespace Pulumi.Stackit
     public static class GetOpensearchInstance
     {
         /// <summary>
-        /// OpenSearch instance data source schema. Must have a `region` specified in the provider configuration.
+        /// OpenSearch instance data source schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -27,7 +27,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOpensearchInstanceResult>("stackit:index/getOpensearchInstance:getOpensearchInstance", args ?? new GetOpensearchInstanceArgs(), options.WithDefaults());
 
         /// <summary>
-        /// OpenSearch instance data source schema. Must have a `region` specified in the provider configuration.
+        /// OpenSearch instance data source schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.Invoke<GetOpensearchInstanceResult>("stackit:index/getOpensearchInstance:getOpensearchInstance", args ?? new GetOpensearchInstanceInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// OpenSearch instance data source schema. Must have a `region` specified in the provider configuration.
+        /// OpenSearch instance data source schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 

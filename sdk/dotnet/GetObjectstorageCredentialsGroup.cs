@@ -12,7 +12,7 @@ namespace Pulumi.Stackit
     public static class GetObjectstorageCredentialsGroup
     {
         /// <summary>
-        /// ObjectStorage credentials group data source schema. Must have a `region` specified in the provider configuration.
+        /// ObjectStorage credentials group data source schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -27,7 +27,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetObjectstorageCredentialsGroupResult>("stackit:index/getObjectstorageCredentialsGroup:getObjectstorageCredentialsGroup", args ?? new GetObjectstorageCredentialsGroupArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ObjectStorage credentials group data source schema. Must have a `region` specified in the provider configuration.
+        /// ObjectStorage credentials group data source schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.Invoke<GetObjectstorageCredentialsGroupResult>("stackit:index/getObjectstorageCredentialsGroup:getObjectstorageCredentialsGroup", args ?? new GetObjectstorageCredentialsGroupInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ObjectStorage credentials group data source schema. Must have a `region` specified in the provider configuration.
+        /// ObjectStorage credentials group data source schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 

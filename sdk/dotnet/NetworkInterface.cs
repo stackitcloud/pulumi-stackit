@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Stackit
 {
     /// <summary>
-    /// Network interface resource schema. Must have a `region` specified in the provider configuration.
+    /// Network interface resource schema. Must have a `Region` specified in the provider configuration.
     /// 
     /// ## Example Usage
     /// </summary>
@@ -84,7 +84,7 @@ namespace Pulumi.Stackit
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
         /// <summary>
-        /// Type of network interface. Some of the possible values are: Supported values are: `server`, `metadata`, `gateway`.
+        /// Type of network interface. Some of the possible values are: Supported values are: `Server`, `Metadata`, `Gateway`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -295,7 +295,7 @@ namespace Pulumi.Stackit
         }
 
         /// <summary>
-        /// Type of network interface. Some of the possible values are: Supported values are: `server`, `metadata`, `gateway`.
+        /// Type of network interface. Some of the possible values are: Supported values are: `Server`, `Metadata`, `Gateway`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

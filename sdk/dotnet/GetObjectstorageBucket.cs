@@ -12,7 +12,7 @@ namespace Pulumi.Stackit
     public static class GetObjectstorageBucket
     {
         /// <summary>
-        /// ObjectStorage bucket data source schema. Must have a `region` specified in the provider configuration.
+        /// ObjectStorage bucket data source schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -27,7 +27,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetObjectstorageBucketResult>("stackit:index/getObjectstorageBucket:getObjectstorageBucket", args ?? new GetObjectstorageBucketArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ObjectStorage bucket data source schema. Must have a `region` specified in the provider configuration.
+        /// ObjectStorage bucket data source schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.Invoke<GetObjectstorageBucketResult>("stackit:index/getObjectstorageBucket:getObjectstorageBucket", args ?? new GetObjectstorageBucketInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// ObjectStorage bucket data source schema. Must have a `region` specified in the provider configuration.
+        /// ObjectStorage bucket data source schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 

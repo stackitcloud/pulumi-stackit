@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Stackit
 {
     /// <summary>
-    /// Network resource schema. Must have a `region` specified in the provider configuration.
+    /// Network resource schema. Must have a `Region` specified in the provider configuration.
     /// 
     /// ## Example Usage
     /// </summary>
@@ -90,7 +90,7 @@ namespace Pulumi.Stackit
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The nameservers of the network. This field is deprecated and will be removed soon, use `ipv4_nameservers` to configure the nameservers for IPv4.
+        /// The nameservers of the network. This field is deprecated and will be removed soon, use `Ipv4Nameservers` to configure the nameservers for IPv4.
         /// </summary>
         [Output("nameservers")]
         public Output<ImmutableArray<string>> Nameservers { get; private set; } = null!;
@@ -102,19 +102,19 @@ namespace Pulumi.Stackit
         public Output<string> NetworkId { get; private set; } = null!;
 
         /// <summary>
-        /// If set to `true`, the network doesn't have a gateway.
+        /// If set to `True`, the network doesn't have a gateway.
         /// </summary>
         [Output("noIpv4Gateway")]
         public Output<bool?> NoIpv4Gateway { get; private set; } = null!;
 
         /// <summary>
-        /// If set to `true`, the network doesn't have a gateway.
+        /// If set to `True`, the network doesn't have a gateway.
         /// </summary>
         [Output("noIpv6Gateway")]
         public Output<bool?> NoIpv6Gateway { get; private set; } = null!;
 
         /// <summary>
-        /// The prefixes of the network. This field is deprecated and will be removed soon, use `ipv4_prefixes` to read the prefixes of the IPv4 networks.
+        /// The prefixes of the network. This field is deprecated and will be removed soon, use `Ipv4Prefixes` to read the prefixes of the IPv4 networks.
         /// </summary>
         [Output("prefixes")]
         public Output<ImmutableArray<string>> Prefixes { get; private set; } = null!;
@@ -139,7 +139,7 @@ namespace Pulumi.Stackit
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// If set to `true`, the network is routed and therefore accessible from other networks.
+        /// If set to `True`, the network is routed and therefore accessible from other networks.
         /// </summary>
         [Output("routed")]
         public Output<bool> Routed { get; private set; } = null!;
@@ -280,9 +280,9 @@ namespace Pulumi.Stackit
         private InputList<string>? _nameservers;
 
         /// <summary>
-        /// The nameservers of the network. This field is deprecated and will be removed soon, use `ipv4_nameservers` to configure the nameservers for IPv4.
+        /// The nameservers of the network. This field is deprecated and will be removed soon, use `Ipv4Nameservers` to configure the nameservers for IPv4.
         /// </summary>
-        [Obsolete(@"Use `ipv4_nameservers` to configure the nameservers for IPv4.")]
+        [Obsolete(@"Use `Ipv4Nameservers` to configure the nameservers for IPv4.")]
         public InputList<string> Nameservers
         {
             get => _nameservers ?? (_nameservers = new InputList<string>());
@@ -290,13 +290,13 @@ namespace Pulumi.Stackit
         }
 
         /// <summary>
-        /// If set to `true`, the network doesn't have a gateway.
+        /// If set to `True`, the network doesn't have a gateway.
         /// </summary>
         [Input("noIpv4Gateway")]
         public Input<bool>? NoIpv4Gateway { get; set; }
 
         /// <summary>
-        /// If set to `true`, the network doesn't have a gateway.
+        /// If set to `True`, the network doesn't have a gateway.
         /// </summary>
         [Input("noIpv6Gateway")]
         public Input<bool>? NoIpv6Gateway { get; set; }
@@ -315,7 +315,7 @@ namespace Pulumi.Stackit
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// If set to `true`, the network is routed and therefore accessible from other networks.
+        /// If set to `True`, the network is routed and therefore accessible from other networks.
         /// </summary>
         [Input("routed")]
         public Input<bool>? Routed { get; set; }
@@ -441,9 +441,9 @@ namespace Pulumi.Stackit
         private InputList<string>? _nameservers;
 
         /// <summary>
-        /// The nameservers of the network. This field is deprecated and will be removed soon, use `ipv4_nameservers` to configure the nameservers for IPv4.
+        /// The nameservers of the network. This field is deprecated and will be removed soon, use `Ipv4Nameservers` to configure the nameservers for IPv4.
         /// </summary>
-        [Obsolete(@"Use `ipv4_nameservers` to configure the nameservers for IPv4.")]
+        [Obsolete(@"Use `Ipv4Nameservers` to configure the nameservers for IPv4.")]
         public InputList<string> Nameservers
         {
             get => _nameservers ?? (_nameservers = new InputList<string>());
@@ -457,13 +457,13 @@ namespace Pulumi.Stackit
         public Input<string>? NetworkId { get; set; }
 
         /// <summary>
-        /// If set to `true`, the network doesn't have a gateway.
+        /// If set to `True`, the network doesn't have a gateway.
         /// </summary>
         [Input("noIpv4Gateway")]
         public Input<bool>? NoIpv4Gateway { get; set; }
 
         /// <summary>
-        /// If set to `true`, the network doesn't have a gateway.
+        /// If set to `True`, the network doesn't have a gateway.
         /// </summary>
         [Input("noIpv6Gateway")]
         public Input<bool>? NoIpv6Gateway { get; set; }
@@ -472,9 +472,9 @@ namespace Pulumi.Stackit
         private InputList<string>? _prefixes;
 
         /// <summary>
-        /// The prefixes of the network. This field is deprecated and will be removed soon, use `ipv4_prefixes` to read the prefixes of the IPv4 networks.
+        /// The prefixes of the network. This field is deprecated and will be removed soon, use `Ipv4Prefixes` to read the prefixes of the IPv4 networks.
         /// </summary>
-        [Obsolete(@"Use `ipv4_prefixes` to read the prefixes of the IPv4 networks.")]
+        [Obsolete(@"Use `Ipv4Prefixes` to read the prefixes of the IPv4 networks.")]
         public InputList<string> Prefixes
         {
             get => _prefixes ?? (_prefixes = new InputList<string>());
@@ -501,7 +501,7 @@ namespace Pulumi.Stackit
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// If set to `true`, the network is routed and therefore accessible from other networks.
+        /// If set to `True`, the network is routed and therefore accessible from other networks.
         /// </summary>
         [Input("routed")]
         public Input<bool>? Routed { get; set; }
