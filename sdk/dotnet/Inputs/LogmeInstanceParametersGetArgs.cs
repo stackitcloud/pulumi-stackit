@@ -46,7 +46,7 @@ namespace Pulumi.Stackit.Inputs
         public Input<string>? Graphite { get; set; }
 
         /// <summary>
-        /// Combination of an integer and a timerange when an index will be considered "old" and can be deleted. Possible values for the timerange are `s`, `m`, `h` and `d`.
+        /// Combination of an integer and a timerange when an index will be considered "old" and can be deleted. Possible values for the timerange are `S`, `M`, `H` and `D`.
         /// </summary>
         [Input("ismDeletionAfter")]
         public Input<string>? IsmDeletionAfter { get; set; }

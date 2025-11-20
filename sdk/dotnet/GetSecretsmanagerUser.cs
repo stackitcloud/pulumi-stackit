@@ -12,7 +12,7 @@ namespace Pulumi.Stackit
     public static class GetSecretsmanagerUser
     {
         /// <summary>
-        /// Secrets Manager user data source schema. Must have a `region` specified in the provider configuration.
+        /// Secrets Manager user data source schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -28,7 +28,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecretsmanagerUserResult>("stackit:index/getSecretsmanagerUser:getSecretsmanagerUser", args ?? new GetSecretsmanagerUserArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Secrets Manager user data source schema. Must have a `region` specified in the provider configuration.
+        /// Secrets Manager user data source schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -44,7 +44,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.Invoke<GetSecretsmanagerUserResult>("stackit:index/getSecretsmanagerUser:getSecretsmanagerUser", args ?? new GetSecretsmanagerUserInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Secrets Manager user data source schema. Must have a `region` specified in the provider configuration.
+        /// Secrets Manager user data source schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 

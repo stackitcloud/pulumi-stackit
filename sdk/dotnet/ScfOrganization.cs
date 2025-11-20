@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Stackit
 {
     /// <summary>
-    /// STACKIT Cloud Foundry organization resource schema. Must have a `region` specified in the provider configuration.
+    /// STACKIT Cloud Foundry organization resource schema. Must have a `Region` specified in the provider configuration.
     /// 
     /// ## Example Usage
     /// </summary>

@@ -127,7 +127,7 @@ namespace Pulumi.Stackit
     public sealed class GetImageV2Args : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Additional filtering options based on image properties. Can be used independently or in conjunction with `name` or `name_regex`.
+        /// Additional filtering options based on image properties. Can be used independently or in conjunction with `Name` or `NameRegex`.
         /// </summary>
         [Input("filter")]
         public Inputs.GetImageV2FilterArgs? Filter { get; set; }
@@ -139,13 +139,13 @@ namespace Pulumi.Stackit
         public string? ImageId { get; set; }
 
         /// <summary>
-        /// Exact image name to match. Optionally applies a `filter` block to further refine results in case multiple images share the same name. The first match is returned, optionally sorted by name in ascending order. Cannot be used together with `name_regex`.
+        /// Exact image name to match. Optionally applies a `Filter` block to further refine results in case multiple images share the same name. The first match is returned, optionally sorted by name in ascending order. Cannot be used together with `NameRegex`.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
         /// <summary>
-        /// Regular expression to match against image names. Optionally applies a `filter` block to narrow down results when multiple image names match the regex. The first match is returned, optionally sorted by name in ascending order. Cannot be used together with `name`.
+        /// Regular expression to match against image names. Optionally applies a `Filter` block to narrow down results when multiple image names match the regex. The first match is returned, optionally sorted by name in ascending order. Cannot be used together with `Name`.
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
@@ -157,7 +157,7 @@ namespace Pulumi.Stackit
         public string ProjectId { get; set; } = null!;
 
         /// <summary>
-        /// If set to `true`, images are sorted in ascending lexicographical order by image name (such as `Ubuntu 18.04`, `Ubuntu 20.04`, `Ubuntu 22.04`) before selecting the first match. Defaults to `false` (descending such as `Ubuntu 22.04`, `Ubuntu 20.04`, `Ubuntu 18.04`).
+        /// If set to `True`, images are sorted in ascending lexicographical order by image name (such as `Ubuntu 18.04`, `Ubuntu 20.04`, `Ubuntu 22.04`) before selecting the first match. Defaults to `False` (descending such as `Ubuntu 22.04`, `Ubuntu 20.04`, `Ubuntu 18.04`).
         /// </summary>
         [Input("sortAscending")]
         public bool? SortAscending { get; set; }
@@ -171,7 +171,7 @@ namespace Pulumi.Stackit
     public sealed class GetImageV2InvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Additional filtering options based on image properties. Can be used independently or in conjunction with `name` or `name_regex`.
+        /// Additional filtering options based on image properties. Can be used independently or in conjunction with `Name` or `NameRegex`.
         /// </summary>
         [Input("filter")]
         public Input<Inputs.GetImageV2FilterInputArgs>? Filter { get; set; }
@@ -183,13 +183,13 @@ namespace Pulumi.Stackit
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// Exact image name to match. Optionally applies a `filter` block to further refine results in case multiple images share the same name. The first match is returned, optionally sorted by name in ascending order. Cannot be used together with `name_regex`.
+        /// Exact image name to match. Optionally applies a `Filter` block to further refine results in case multiple images share the same name. The first match is returned, optionally sorted by name in ascending order. Cannot be used together with `NameRegex`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Regular expression to match against image names. Optionally applies a `filter` block to narrow down results when multiple image names match the regex. The first match is returned, optionally sorted by name in ascending order. Cannot be used together with `name`.
+        /// Regular expression to match against image names. Optionally applies a `Filter` block to narrow down results when multiple image names match the regex. The first match is returned, optionally sorted by name in ascending order. Cannot be used together with `Name`.
         /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
@@ -201,7 +201,7 @@ namespace Pulumi.Stackit
         public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
-        /// If set to `true`, images are sorted in ascending lexicographical order by image name (such as `Ubuntu 18.04`, `Ubuntu 20.04`, `Ubuntu 22.04`) before selecting the first match. Defaults to `false` (descending such as `Ubuntu 22.04`, `Ubuntu 20.04`, `Ubuntu 18.04`).
+        /// If set to `True`, images are sorted in ascending lexicographical order by image name (such as `Ubuntu 18.04`, `Ubuntu 20.04`, `Ubuntu 22.04`) before selecting the first match. Defaults to `False` (descending such as `Ubuntu 22.04`, `Ubuntu 20.04`, `Ubuntu 18.04`).
         /// </summary>
         [Input("sortAscending")]
         public Input<bool>? SortAscending { get; set; }
@@ -229,7 +229,7 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string DiskFormat;
         /// <summary>
-        /// Additional filtering options based on image properties. Can be used independently or in conjunction with `name` or `name_regex`.
+        /// Additional filtering options based on image properties. Can be used independently or in conjunction with `Name` or `NameRegex`.
         /// </summary>
         public readonly Outputs.GetImageV2FilterResult? Filter;
         public readonly string Id;
@@ -250,11 +250,11 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly int MinRam;
         /// <summary>
-        /// Exact image name to match. Optionally applies a `filter` block to further refine results in case multiple images share the same name. The first match is returned, optionally sorted by name in ascending order. Cannot be used together with `name_regex`.
+        /// Exact image name to match. Optionally applies a `Filter` block to further refine results in case multiple images share the same name. The first match is returned, optionally sorted by name in ascending order. Cannot be used together with `NameRegex`.
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// Regular expression to match against image names. Optionally applies a `filter` block to narrow down results when multiple image names match the regex. The first match is returned, optionally sorted by name in ascending order. Cannot be used together with `name`.
+        /// Regular expression to match against image names. Optionally applies a `Filter` block to narrow down results when multiple image names match the regex. The first match is returned, optionally sorted by name in ascending order. Cannot be used together with `Name`.
         /// </summary>
         public readonly string? NameRegex;
         /// <summary>
@@ -270,7 +270,7 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string Scope;
         /// <summary>
-        /// If set to `true`, images are sorted in ascending lexicographical order by image name (such as `Ubuntu 18.04`, `Ubuntu 20.04`, `Ubuntu 22.04`) before selecting the first match. Defaults to `false` (descending such as `Ubuntu 22.04`, `Ubuntu 20.04`, `Ubuntu 18.04`).
+        /// If set to `True`, images are sorted in ascending lexicographical order by image name (such as `Ubuntu 18.04`, `Ubuntu 20.04`, `Ubuntu 22.04`) before selecting the first match. Defaults to `False` (descending such as `Ubuntu 22.04`, `Ubuntu 20.04`, `Ubuntu 18.04`).
         /// </summary>
         public readonly bool? SortAscending;
 

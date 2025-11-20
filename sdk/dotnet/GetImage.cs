@@ -12,7 +12,7 @@ namespace Pulumi.Stackit
     public static class GetImage
     {
         /// <summary>
-        /// Image datasource schema. Must have a `region` specified in the provider configuration.
+        /// Image datasource schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -27,7 +27,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetImageResult>("stackit:index/getImage:getImage", args ?? new GetImageArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Image datasource schema. Must have a `region` specified in the provider configuration.
+        /// Image datasource schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.Invoke<GetImageResult>("stackit:index/getImage:getImage", args ?? new GetImageInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Image datasource schema. Must have a `region` specified in the provider configuration.
+        /// Image datasource schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 

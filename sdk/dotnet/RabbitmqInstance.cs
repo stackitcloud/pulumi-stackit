@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Stackit
 {
     /// <summary>
-    /// RabbitMQ instance resource schema. Must have a `region` specified in the provider configuration.
+    /// RabbitMQ instance resource schema. Must have a `Region` specified in the provider configuration.
     /// 
     /// ## Example Usage
     /// </summary>

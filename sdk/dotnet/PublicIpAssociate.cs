@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Stackit
 {
     /// <summary>
-    /// Associates an existing public IP to a network interface. This is useful for situations where you have a pre-allocated public IP or unable to use the `stackit.PublicIp` resource to create a new public IP. Must have a `region` specified in the provider configuration.
+    /// Associates an existing public IP to a network interface. This is useful for situations where you have a pre-allocated public IP or unable to use the `stackit.PublicIp` resource to create a new public IP. Must have a `Region` specified in the provider configuration.
     /// 
     /// !&gt; The `stackit.PublicIpAssociate` resource should not be used together with the `stackit.PublicIp` resource for the same public IP or for the same network interface.
     /// Using both resources together for the same public IP or network interface WILL lead to conflicts, as they both have control of the public IP and network interface association.

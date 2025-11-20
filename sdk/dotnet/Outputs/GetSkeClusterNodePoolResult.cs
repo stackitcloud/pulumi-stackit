@@ -62,11 +62,11 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly string OsVersion;
         /// <summary>
-        /// The minimum OS image version, this field is always nil. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current OS image version being used for the node pool, use the read-only `os_version_used` field.
+        /// The minimum OS image version, this field is always nil. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current OS image version being used for the node pool, use the read-only `OsVersionUsed` field.
         /// </summary>
         public readonly string OsVersionMin;
         /// <summary>
-        /// Full OS image version used. For example, if 3815.2 was set in `os_version_min`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+        /// Full OS image version used. For example, if 3815.2 was set in `OsVersionMin`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
         /// </summary>
         public readonly string OsVersionUsed;
         /// <summary>

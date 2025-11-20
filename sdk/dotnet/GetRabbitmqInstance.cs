@@ -12,7 +12,7 @@ namespace Pulumi.Stackit
     public static class GetRabbitmqInstance
     {
         /// <summary>
-        /// RabbitMQ instance data source schema. Must have a `region` specified in the provider configuration.
+        /// RabbitMQ instance data source schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -27,7 +27,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRabbitmqInstanceResult>("stackit:index/getRabbitmqInstance:getRabbitmqInstance", args ?? new GetRabbitmqInstanceArgs(), options.WithDefaults());
 
         /// <summary>
-        /// RabbitMQ instance data source schema. Must have a `region` specified in the provider configuration.
+        /// RabbitMQ instance data source schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.Invoke<GetRabbitmqInstanceResult>("stackit:index/getRabbitmqInstance:getRabbitmqInstance", args ?? new GetRabbitmqInstanceInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// RabbitMQ instance data source schema. Must have a `region` specified in the provider configuration.
+        /// RabbitMQ instance data source schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
