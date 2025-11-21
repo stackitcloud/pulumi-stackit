@@ -12,7 +12,7 @@ namespace Pulumi.Stackit
     public static class GetLoadbalancer
     {
         /// <summary>
-        /// Load Balancer data source schema. Must have a `region` specified in the provider configuration.
+        /// Load Balancer data source schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -27,7 +27,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLoadbalancerResult>("stackit:index/getLoadbalancer:getLoadbalancer", args ?? new GetLoadbalancerArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Load Balancer data source schema. Must have a `region` specified in the provider configuration.
+        /// Load Balancer data source schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.Invoke<GetLoadbalancerResult>("stackit:index/getLoadbalancer:getLoadbalancer", args ?? new GetLoadbalancerInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Load Balancer data source schema. Must have a `region` specified in the provider configuration.
+        /// Load Balancer data source schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -140,7 +140,7 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly Outputs.GetLoadbalancerOptionsResult Options;
         /// <summary>
-        /// The service plan ID. If not defined, the default service plan is `p10`. Possible values are: `p10`, `p50`, `p250`, `p750`.
+        /// The service plan ID. If not defined, the default service plan is `P10`. Possible values are: `P10`, `P50`, `P250`, `P750`.
         /// </summary>
         public readonly string PlanId;
         /// <summary>
@@ -156,7 +156,7 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string? Region;
         /// <summary>
-        /// The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT Network areas (SNA). To enable this, create a security group rule for your target VMs and set the `remote_security_group_id` of that rule to this value. This is typically used when `disable_security_group_assignment` is set to `true`.
+        /// The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT Network areas (SNA). To enable this, create a security group rule for your target VMs and set the `RemoteSecurityGroupId` of that rule to this value. This is typically used when `DisableSecurityGroupAssignment` is set to `True`.
         /// </summary>
         public readonly string SecurityGroupId;
         /// <summary>

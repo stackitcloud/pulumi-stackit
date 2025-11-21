@@ -22,7 +22,7 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly string OriginUrl;
         /// <summary>
-        /// The configured backend type. Supported values are: `http`.
+        /// The configured backend type. Supported values are: `Http`.
         /// </summary>
         public readonly string Type;
 

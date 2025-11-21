@@ -14,7 +14,7 @@ namespace Pulumi.Stackit.Outputs
     public sealed class SkeClusterExtensionsArgus
     {
         /// <summary>
-        /// Argus instance ID to choose which Argus instance is used. Required when enabled is set to `true`.
+        /// Argus instance ID to choose which Argus instance is used. Required when enabled is set to `True`.
         /// </summary>
         public readonly string? ArgusInstanceId;
         /// <summary>

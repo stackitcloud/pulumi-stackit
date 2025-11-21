@@ -12,7 +12,7 @@ namespace Pulumi.Stackit
     public static class GetServer
     {
         /// <summary>
-        /// Server datasource schema. Must have a `region` specified in the provider configuration.
+        /// Server datasource schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -27,7 +27,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerResult>("stackit:index/getServer:getServer", args ?? new GetServerArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Server datasource schema. Must have a `region` specified in the provider configuration.
+        /// Server datasource schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.Invoke<GetServerResult>("stackit:index/getServer:getServer", args ?? new GetServerInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Server datasource schema. Must have a `region` specified in the provider configuration.
+        /// Server datasource schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 

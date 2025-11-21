@@ -12,7 +12,7 @@ namespace Pulumi.Stackit
     public static class GetRabbitmqCredential
     {
         /// <summary>
-        /// RabbitMQ credential data source schema. Must have a `region` specified in the provider configuration.
+        /// RabbitMQ credential data source schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -28,7 +28,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRabbitmqCredentialResult>("stackit:index/getRabbitmqCredential:getRabbitmqCredential", args ?? new GetRabbitmqCredentialArgs(), options.WithDefaults());
 
         /// <summary>
-        /// RabbitMQ credential data source schema. Must have a `region` specified in the provider configuration.
+        /// RabbitMQ credential data source schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -44,7 +44,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.Invoke<GetRabbitmqCredentialResult>("stackit:index/getRabbitmqCredential:getRabbitmqCredential", args ?? new GetRabbitmqCredentialInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// RabbitMQ credential data source schema. Must have a `region` specified in the provider configuration.
+        /// RabbitMQ credential data source schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 

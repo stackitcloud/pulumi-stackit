@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Stackit
 {
     /// <summary>
-    /// Security group rule resource schema. Must have a `region` specified in the provider configuration.
+    /// Security group rule resource schema. Must have a `Region` specified in the provider configuration.
     /// 
     /// ## Example Usage
     /// </summary>
@@ -24,7 +24,7 @@ namespace Pulumi.Stackit
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The direction of the traffic which the rule should match. Some of the possible values are: Supported values are: `ingress`, `egress`.
+        /// The direction of the traffic which the rule should match. Some of the possible values are: Supported values are: `Ingress`, `Egress`.
         /// </summary>
         [Output("direction")]
         public Output<string> Direction { get; private set; } = null!;
@@ -137,7 +137,7 @@ namespace Pulumi.Stackit
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The direction of the traffic which the rule should match. Some of the possible values are: Supported values are: `ingress`, `egress`.
+        /// The direction of the traffic which the rule should match. Some of the possible values are: Supported values are: `Ingress`, `Egress`.
         /// </summary>
         [Input("direction", required: true)]
         public Input<string> Direction { get; set; } = null!;
@@ -205,7 +205,7 @@ namespace Pulumi.Stackit
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The direction of the traffic which the rule should match. Some of the possible values are: Supported values are: `ingress`, `egress`.
+        /// The direction of the traffic which the rule should match. Some of the possible values are: Supported values are: `Ingress`, `Egress`.
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
