@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Stackit
 {
     /// <summary>
-    /// Key pair resource schema. Must have a `region` specified in the provider configuration. Allows uploading an SSH public key to be used for server authentication.
+    /// Key pair resource schema. Must have a `Region` specified in the provider configuration. Allows uploading an SSH public key to be used for server authentication.
     /// 
     /// ## Example Usage
     /// </summary>

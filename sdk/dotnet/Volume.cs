@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Stackit
 {
     /// <summary>
-    /// Volume resource schema. Must have a `region` specified in the provider configuration.
+    /// Volume resource schema. Must have a `Region` specified in the provider configuration.
     /// 
     /// ## Example Usage
     /// </summary>
@@ -60,13 +60,13 @@ namespace Pulumi.Stackit
         public Output<string> ServerId { get; private set; } = null!;
 
         /// <summary>
-        /// The size of the volume in GB. It can only be updated to a larger value than the current size. Either `size` or `source` must be provided
+        /// The size of the volume in GB. It can only be updated to a larger value than the current size. Either `Size` or `Source` must be provided
         /// </summary>
         [Output("size")]
         public Output<int> Size { get; private set; } = null!;
 
         /// <summary>
-        /// The source of the volume. It can be either a volume, an image, a snapshot or a backup. Either `size` or `source` must be provided
+        /// The source of the volume. It can be either a volume, an image, a snapshot or a backup. Either `Size` or `Source` must be provided
         /// </summary>
         [Output("source")]
         public Output<Outputs.VolumeSource?> Source { get; private set; } = null!;
@@ -167,13 +167,13 @@ namespace Pulumi.Stackit
         public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
-        /// The size of the volume in GB. It can only be updated to a larger value than the current size. Either `size` or `source` must be provided
+        /// The size of the volume in GB. It can only be updated to a larger value than the current size. Either `Size` or `Source` must be provided
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
 
         /// <summary>
-        /// The source of the volume. It can be either a volume, an image, a snapshot or a backup. Either `size` or `source` must be provided
+        /// The source of the volume. It can be either a volume, an image, a snapshot or a backup. Either `Size` or `Source` must be provided
         /// </summary>
         [Input("source")]
         public Input<Inputs.VolumeSourceArgs>? Source { get; set; }
@@ -235,13 +235,13 @@ namespace Pulumi.Stackit
         public Input<string>? ServerId { get; set; }
 
         /// <summary>
-        /// The size of the volume in GB. It can only be updated to a larger value than the current size. Either `size` or `source` must be provided
+        /// The size of the volume in GB. It can only be updated to a larger value than the current size. Either `Size` or `Source` must be provided
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
 
         /// <summary>
-        /// The source of the volume. It can be either a volume, an image, a snapshot or a backup. Either `size` or `source` must be provided
+        /// The source of the volume. It can be either a volume, an image, a snapshot or a backup. Either `Size` or `Source` must be provided
         /// </summary>
         [Input("source")]
         public Input<Inputs.VolumeSourceGetArgs>? Source { get; set; }

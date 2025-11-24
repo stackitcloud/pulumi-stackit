@@ -13,25 +13,25 @@ namespace Pulumi.Stackit.Inputs
     public sealed class GetImageV2FilterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Filter images by operating system distribution. For example: `ubuntu`, `ubuntu-arm64`, `debian`, `rhel`, etc.
+        /// Filter images by operating system distribution. For example: `Ubuntu`, `ubuntu-arm64`, `Debian`, `Rhel`, etc.
         /// </summary>
         [Input("distro")]
         public string? Distro { get; set; }
 
         /// <summary>
-        /// Filter images by operating system type, such as `linux` or `windows`.
+        /// Filter images by operating system type, such as `Linux` or `Windows`.
         /// </summary>
         [Input("os")]
         public string? Os { get; set; }
 
         /// <summary>
-        /// Filter images with Secure Boot support. Set to `true` to match images that support Secure Boot.
+        /// Filter images with Secure Boot support. Set to `True` to match images that support Secure Boot.
         /// </summary>
         [Input("secureBoot")]
         public bool? SecureBoot { get; set; }
 
         /// <summary>
-        /// Filter images based on UEFI support. Set to `true` to match images that support UEFI.
+        /// Filter images based on UEFI support. Set to `True` to match images that support UEFI.
         /// </summary>
         [Input("uefi")]
         public bool? Uefi { get; set; }

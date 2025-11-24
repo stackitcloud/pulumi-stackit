@@ -46,9 +46,9 @@ namespace Pulumi.Stackit.Inputs
         private InputMap<string>? _match;
 
         /// <summary>
-        /// A set of equality matchers an alert has to fulfill to match the node. This field is deprecated and will be removed after 10th March 2026, use `matchers` in the `routes` instead
+        /// A set of equality matchers an alert has to fulfill to match the node. This field is deprecated and will be removed after 10th March 2026, use `Matchers` in the `Routes` instead
         /// </summary>
-        [Obsolete(@"Use `matchers` in the `routes` instead.")]
+        [Obsolete(@"Use `Matchers` in the `Routes` instead.")]
         public InputMap<string> Match
         {
             get => _match ?? (_match = new InputMap<string>());
@@ -59,9 +59,9 @@ namespace Pulumi.Stackit.Inputs
         private InputMap<string>? _matchRegex;
 
         /// <summary>
-        /// A set of regex-matchers an alert has to fulfill to match the node. This field is deprecated and will be removed after 10th March 2026, use `matchers` in the `routes` instead
+        /// A set of regex-matchers an alert has to fulfill to match the node. This field is deprecated and will be removed after 10th March 2026, use `Matchers` in the `Routes` instead
         /// </summary>
-        [Obsolete(@"Use `matchers` in the `routes` instead.")]
+        [Obsolete(@"Use `Matchers` in the `Routes` instead.")]
         public InputMap<string> MatchRegex
         {
             get => _matchRegex ?? (_matchRegex = new InputMap<string>());

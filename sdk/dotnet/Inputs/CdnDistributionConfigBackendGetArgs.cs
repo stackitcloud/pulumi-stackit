@@ -31,7 +31,7 @@ namespace Pulumi.Stackit.Inputs
         public Input<string> OriginUrl { get; set; } = null!;
 
         /// <summary>
-        /// The configured backend type. Supported values are: `http`.
+        /// The configured backend type. Supported values are: `Http`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

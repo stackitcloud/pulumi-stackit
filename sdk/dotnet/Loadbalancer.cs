@@ -52,7 +52,7 @@ namespace Pulumi.Stackit
         public Output<Outputs.LoadbalancerOptions> Options { get; private set; } = null!;
 
         /// <summary>
-        /// The service plan ID. If not defined, the default service plan is `p10`. Possible values are: `p10`, `p50`, `p250`, `p750`.
+        /// The service plan ID. If not defined, the default service plan is `P10`. Possible values are: `P10`, `P50`, `P250`, `P750`.
         /// </summary>
         [Output("planId")]
         public Output<string> PlanId { get; private set; } = null!;
@@ -76,7 +76,7 @@ namespace Pulumi.Stackit
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT network areas (SNA). To enable this, create a security group rule for your target VMs and set the `remote_security_group_id` of that rule to this value. This is typically used when `disable_security_group_assignment` is set to `true`.
+        /// The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT network areas (SNA). To enable this, create a security group rule for your target VMs and set the `RemoteSecurityGroupId` of that rule to this value. This is typically used when `DisableSecurityGroupAssignment` is set to `True`.
         /// </summary>
         [Output("securityGroupId")]
         public Output<string> SecurityGroupId { get; private set; } = null!;
@@ -183,7 +183,7 @@ namespace Pulumi.Stackit
         public Input<Inputs.LoadbalancerOptionsArgs>? Options { get; set; }
 
         /// <summary>
-        /// The service plan ID. If not defined, the default service plan is `p10`. Possible values are: `p10`, `p50`, `p250`, `p750`.
+        /// The service plan ID. If not defined, the default service plan is `P10`. Possible values are: `P10`, `P50`, `P250`, `P750`.
         /// </summary>
         [Input("planId")]
         public Input<string>? PlanId { get; set; }
@@ -269,7 +269,7 @@ namespace Pulumi.Stackit
         public Input<Inputs.LoadbalancerOptionsGetArgs>? Options { get; set; }
 
         /// <summary>
-        /// The service plan ID. If not defined, the default service plan is `p10`. Possible values are: `p10`, `p50`, `p250`, `p750`.
+        /// The service plan ID. If not defined, the default service plan is `P10`. Possible values are: `P10`, `P50`, `P250`, `P750`.
         /// </summary>
         [Input("planId")]
         public Input<string>? PlanId { get; set; }
@@ -293,7 +293,7 @@ namespace Pulumi.Stackit
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT network areas (SNA). To enable this, create a security group rule for your target VMs and set the `remote_security_group_id` of that rule to this value. This is typically used when `disable_security_group_assignment` is set to `true`.
+        /// The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT network areas (SNA). To enable this, create a security group rule for your target VMs and set the `RemoteSecurityGroupId` of that rule to this value. This is typically used when `DisableSecurityGroupAssignment` is set to `True`.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }

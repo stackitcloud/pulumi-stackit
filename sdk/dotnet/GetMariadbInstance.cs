@@ -12,7 +12,7 @@ namespace Pulumi.Stackit
     public static class GetMariadbInstance
     {
         /// <summary>
-        /// MariaDB instance data source schema. Must have a `region` specified in the provider configuration.
+        /// MariaDB instance data source schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -27,7 +27,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMariadbInstanceResult>("stackit:index/getMariadbInstance:getMariadbInstance", args ?? new GetMariadbInstanceArgs(), options.WithDefaults());
 
         /// <summary>
-        /// MariaDB instance data source schema. Must have a `region` specified in the provider configuration.
+        /// MariaDB instance data source schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.Invoke<GetMariadbInstanceResult>("stackit:index/getMariadbInstance:getMariadbInstance", args ?? new GetMariadbInstanceInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// MariaDB instance data source schema. Must have a `region` specified in the provider configuration.
+        /// MariaDB instance data source schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 

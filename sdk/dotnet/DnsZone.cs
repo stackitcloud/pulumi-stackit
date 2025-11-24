@@ -57,7 +57,7 @@ namespace Pulumi.Stackit
         public Output<int> ExpireTime { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies, if the zone is a reverse zone or not. Defaults to `false`
+        /// Specifies, if the zone is a reverse zone or not. Defaults to `False`
         /// </summary>
         [Output("isReverseZone")]
         public Output<bool> IsReverseZone { get; private set; } = null!;
@@ -123,13 +123,13 @@ namespace Pulumi.Stackit
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Zone type. Defaults to `primary`. Supported values are: `primary`, `secondary`.
+        /// Zone type. Defaults to `Primary`. Supported values are: `Primary`, `Secondary`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// Visibility of the zone. E.g. `public`.
+        /// Visibility of the zone. E.g. `Public`.
         /// </summary>
         [Output("visibility")]
         public Output<string> Visibility { get; private set; } = null!;
@@ -227,7 +227,7 @@ namespace Pulumi.Stackit
         public Input<int>? ExpireTime { get; set; }
 
         /// <summary>
-        /// Specifies, if the zone is a reverse zone or not. Defaults to `false`
+        /// Specifies, if the zone is a reverse zone or not. Defaults to `False`
         /// </summary>
         [Input("isReverseZone")]
         public Input<bool>? IsReverseZone { get; set; }
@@ -275,7 +275,7 @@ namespace Pulumi.Stackit
         public Input<int>? RetryTime { get; set; }
 
         /// <summary>
-        /// Zone type. Defaults to `primary`. Supported values are: `primary`, `secondary`.
+        /// Zone type. Defaults to `Primary`. Supported values are: `Primary`, `Secondary`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -328,7 +328,7 @@ namespace Pulumi.Stackit
         public Input<int>? ExpireTime { get; set; }
 
         /// <summary>
-        /// Specifies, if the zone is a reverse zone or not. Defaults to `false`
+        /// Specifies, if the zone is a reverse zone or not. Defaults to `False`
         /// </summary>
         [Input("isReverseZone")]
         public Input<bool>? IsReverseZone { get; set; }
@@ -400,13 +400,13 @@ namespace Pulumi.Stackit
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Zone type. Defaults to `primary`. Supported values are: `primary`, `secondary`.
+        /// Zone type. Defaults to `Primary`. Supported values are: `Primary`, `Secondary`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// Visibility of the zone. E.g. `public`.
+        /// Visibility of the zone. E.g. `Public`.
         /// </summary>
         [Input("visibility")]
         public Input<string>? Visibility { get; set; }

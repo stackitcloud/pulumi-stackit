@@ -12,7 +12,7 @@ namespace Pulumi.Stackit
     public static class GetSecurityGroupRule
     {
         /// <summary>
-        /// Security group datasource schema. Must have a `region` specified in the provider configuration.
+        /// Security group datasource schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -28,7 +28,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecurityGroupRuleResult>("stackit:index/getSecurityGroupRule:getSecurityGroupRule", args ?? new GetSecurityGroupRuleArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Security group datasource schema. Must have a `region` specified in the provider configuration.
+        /// Security group datasource schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -44,7 +44,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.Invoke<GetSecurityGroupRuleResult>("stackit:index/getSecurityGroupRule:getSecurityGroupRule", args ?? new GetSecurityGroupRuleInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Security group datasource schema. Must have a `region` specified in the provider configuration.
+        /// Security group datasource schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -122,7 +122,7 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The direction of the traffic which the rule should match. Some of the possible values are: Supported values are: `ingress`, `egress`.
+        /// The direction of the traffic which the rule should match. Some of the possible values are: Supported values are: `Ingress`, `Egress`.
         /// </summary>
         public readonly string Direction;
         /// <summary>
