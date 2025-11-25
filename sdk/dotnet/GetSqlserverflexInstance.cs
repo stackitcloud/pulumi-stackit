@@ -12,7 +12,7 @@ namespace Pulumi.Stackit
     public static class GetSqlserverflexInstance
     {
         /// <summary>
-        /// SQLServer Flex instance data source schema. Must have a `region` specified in the provider configuration.
+        /// SQLServer Flex instance data source schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -27,7 +27,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSqlserverflexInstanceResult>("stackit:index/getSqlserverflexInstance:getSqlserverflexInstance", args ?? new GetSqlserverflexInstanceArgs(), options.WithDefaults());
 
         /// <summary>
-        /// SQLServer Flex instance data source schema. Must have a `region` specified in the provider configuration.
+        /// SQLServer Flex instance data source schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.Invoke<GetSqlserverflexInstanceResult>("stackit:index/getSqlserverflexInstance:getSqlserverflexInstance", args ?? new GetSqlserverflexInstanceInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// SQLServer Flex instance data source schema. Must have a `region` specified in the provider configuration.
+        /// SQLServer Flex instance data source schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 

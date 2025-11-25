@@ -12,7 +12,7 @@ namespace Pulumi.Stackit
     public static class GetKeyPair
     {
         /// <summary>
-        /// Key pair resource schema. Must have a `region` specified in the provider configuration.
+        /// Key pair resource schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -26,7 +26,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKeyPairResult>("stackit:index/getKeyPair:getKeyPair", args ?? new GetKeyPairArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Key pair resource schema. Must have a `region` specified in the provider configuration.
+        /// Key pair resource schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -40,7 +40,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.Invoke<GetKeyPairResult>("stackit:index/getKeyPair:getKeyPair", args ?? new GetKeyPairInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Key pair resource schema. Must have a `region` specified in the provider configuration.
+        /// Key pair resource schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 

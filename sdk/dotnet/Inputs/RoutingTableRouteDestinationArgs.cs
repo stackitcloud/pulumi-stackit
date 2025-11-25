@@ -13,7 +13,7 @@ namespace Pulumi.Stackit.Inputs
     public sealed class RoutingTableRouteDestinationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// CIDRV type. Possible values are: `cidrv4`, `cidrv6`. Only `cidrv4` is supported during experimental stage.
+        /// CIDRV type. Possible values are: `Cidrv4`, `Cidrv6`. Only `Cidrv4` is supported during experimental stage.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

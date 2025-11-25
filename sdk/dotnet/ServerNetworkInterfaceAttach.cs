@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Stackit
 {
     /// <summary>
-    /// Network interface attachment resource schema. Attaches a network interface to a server. Must have a `region` specified in the provider configuration. The attachment only takes full effect after server reboot.
+    /// Network interface attachment resource schema. Attaches a network interface to a server. Must have a `Region` specified in the provider configuration. The attachment only takes full effect after server reboot.
     /// 
     /// ## Example Usage
     /// </summary>

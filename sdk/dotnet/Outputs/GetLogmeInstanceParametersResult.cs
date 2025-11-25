@@ -29,7 +29,7 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly string Graphite;
         /// <summary>
-        /// Combination of an integer and a timerange when an index will be considered "old" and can be deleted. Possible values for the timerange are `s`, `m`, `h` and `d`.
+        /// Combination of an integer and a timerange when an index will be considered "old" and can be deleted. Possible values for the timerange are `S`, `M`, `H` and `D`.
         /// </summary>
         public readonly string IsmDeletionAfter;
         public readonly double IsmJitter;

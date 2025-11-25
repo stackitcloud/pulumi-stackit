@@ -12,7 +12,7 @@ namespace Pulumi.Stackit
     public static class GetServerUpdateSchedules
     {
         /// <summary>
-        /// Server update schedules datasource schema. Must have a `region` specified in the provider configuration.
+        /// Server update schedules datasource schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// &gt; This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
         /// 
@@ -29,7 +29,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerUpdateSchedulesResult>("stackit:index/getServerUpdateSchedules:getServerUpdateSchedules", args ?? new GetServerUpdateSchedulesArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Server update schedules datasource schema. Must have a `region` specified in the provider configuration.
+        /// Server update schedules datasource schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// &gt; This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
         /// 
@@ -46,7 +46,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.Invoke<GetServerUpdateSchedulesResult>("stackit:index/getServerUpdateSchedules:getServerUpdateSchedules", args ?? new GetServerUpdateSchedulesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Server update schedules datasource schema. Must have a `region` specified in the provider configuration.
+        /// Server update schedules datasource schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// &gt; This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
         /// 

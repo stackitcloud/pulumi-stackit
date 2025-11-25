@@ -12,7 +12,7 @@ namespace Pulumi.Stackit
     public static class GetVolume
     {
         /// <summary>
-        /// Volume resource schema. Must have a `region` specified in the provider configuration.
+        /// Volume resource schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -27,7 +27,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVolumeResult>("stackit:index/getVolume:getVolume", args ?? new GetVolumeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Volume resource schema. Must have a `region` specified in the provider configuration.
+        /// Volume resource schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.Invoke<GetVolumeResult>("stackit:index/getVolume:getVolume", args ?? new GetVolumeInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Volume resource schema. Must have a `region` specified in the provider configuration.
+        /// Volume resource schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 

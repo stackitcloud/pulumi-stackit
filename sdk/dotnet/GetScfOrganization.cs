@@ -12,7 +12,7 @@ namespace Pulumi.Stackit
     public static class GetScfOrganization
     {
         /// <summary>
-        /// STACKIT Cloud Foundry organization datasource schema. Must have a `region` specified in the provider configuration.
+        /// STACKIT Cloud Foundry organization datasource schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -27,7 +27,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetScfOrganizationResult>("stackit:index/getScfOrganization:getScfOrganization", args ?? new GetScfOrganizationArgs(), options.WithDefaults());
 
         /// <summary>
-        /// STACKIT Cloud Foundry organization datasource schema. Must have a `region` specified in the provider configuration.
+        /// STACKIT Cloud Foundry organization datasource schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.Invoke<GetScfOrganizationResult>("stackit:index/getScfOrganization:getScfOrganization", args ?? new GetScfOrganizationInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// STACKIT Cloud Foundry organization datasource schema. Must have a `region` specified in the provider configuration.
+        /// STACKIT Cloud Foundry organization datasource schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 

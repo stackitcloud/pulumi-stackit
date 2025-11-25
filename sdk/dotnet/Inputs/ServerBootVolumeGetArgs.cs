@@ -13,7 +13,7 @@ namespace Pulumi.Stackit.Inputs
     public sealed class ServerBootVolumeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Delete the volume during the termination of the server. Only allowed when `source_type` is `image`.
+        /// Delete the volume during the termination of the server. Only allowed when `SourceType` is `Image`.
         /// </summary>
         [Input("deleteOnTermination")]
         public Input<bool>? DeleteOnTermination { get; set; }
@@ -31,7 +31,7 @@ namespace Pulumi.Stackit.Inputs
         public Input<string>? PerformanceClass { get; set; }
 
         /// <summary>
-        /// The size of the boot volume in GB. Must be provided when `source_type` is `image`.
+        /// The size of the boot volume in GB. Must be provided when `SourceType` is `Image`.
         /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
@@ -43,7 +43,7 @@ namespace Pulumi.Stackit.Inputs
         public Input<string> SourceId { get; set; } = null!;
 
         /// <summary>
-        /// The type of the source. Supported values are: `volume`, `image`.
+        /// The type of the source. Supported values are: `Volume`, `Image`.
         /// </summary>
         [Input("sourceType", required: true)]
         public Input<string> SourceType { get; set; } = null!;

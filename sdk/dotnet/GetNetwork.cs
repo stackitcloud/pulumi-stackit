@@ -12,7 +12,7 @@ namespace Pulumi.Stackit
     public static class GetNetwork
     {
         /// <summary>
-        /// Network resource schema. Must have a `region` specified in the provider configuration.
+        /// Network resource schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -27,7 +27,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworkResult>("stackit:index/getNetwork:getNetwork", args ?? new GetNetworkArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Network resource schema. Must have a `region` specified in the provider configuration.
+        /// Network resource schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworkResult>("stackit:index/getNetwork:getNetwork", args ?? new GetNetworkInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Network resource schema. Must have a `region` specified in the provider configuration.
+        /// Network resource schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -166,7 +166,7 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The nameservers of the network. This field is deprecated and will be removed soon, use `ipv4_nameservers` to configure the nameservers for IPv4.
+        /// The nameservers of the network. This field is deprecated and will be removed soon, use `Ipv4Nameservers` to configure the nameservers for IPv4.
         /// </summary>
         public readonly ImmutableArray<string> Nameservers;
         /// <summary>
@@ -174,7 +174,7 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string NetworkId;
         /// <summary>
-        /// The prefixes of the network. This field is deprecated and will be removed soon, use `ipv4_prefixes` to read the prefixes of the IPv4 networks.
+        /// The prefixes of the network. This field is deprecated and will be removed soon, use `Ipv4Prefixes` to read the prefixes of the IPv4 networks.
         /// </summary>
         public readonly ImmutableArray<string> Prefixes;
         /// <summary>

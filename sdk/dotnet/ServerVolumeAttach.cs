@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Stackit
 {
     /// <summary>
-    /// Volume attachment resource schema. Attaches a volume to a server. Must have a `region` specified in the provider configuration.
+    /// Volume attachment resource schema. Attaches a volume to a server. Must have a `Region` specified in the provider configuration.
     /// 
     /// ## Example Usage
     /// </summary>
