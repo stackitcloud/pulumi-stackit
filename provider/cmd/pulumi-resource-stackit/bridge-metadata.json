@@ -28,6 +28,15 @@
                 "fields": {
                     "config": {
                         "fields": {
+                            "backend": {
+                                "fields": {
+                                    "geofencing": {
+                                        "elem": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            },
                             "blocked_countries": {
                                 "maxItemsOne": false
                             },
@@ -80,6 +89,15 @@
             },
             "stackit_key_pair": {
                 "current": "stackit:index/keyPair:KeyPair"
+            },
+            "stackit_kms_key": {
+                "current": "stackit:index/kmsKey:KmsKey"
+            },
+            "stackit_kms_keyring": {
+                "current": "stackit:index/kmsKeyring:KmsKeyring"
+            },
+            "stackit_kms_wrapping_key": {
+                "current": "stackit:index/kmsWrappingKey:KmsWrappingKey"
             },
             "stackit_loadbalancer": {
                 "current": "stackit:index/loadbalancer:Loadbalancer",
@@ -596,6 +614,15 @@
                 "fields": {
                     "config": {
                         "fields": {
+                            "backend": {
+                                "fields": {
+                                    "geofencing": {
+                                        "elem": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            },
                             "blocked_countries": {
                                 "maxItemsOne": false
                             },
@@ -654,6 +681,15 @@
             },
             "stackit_key_pair": {
                 "current": "stackit:index/getKeyPair:getKeyPair"
+            },
+            "stackit_kms_key": {
+                "current": "stackit:index/getKmsKey:getKmsKey"
+            },
+            "stackit_kms_keyring": {
+                "current": "stackit:index/getKmsKeyring:getKmsKeyring"
+            },
+            "stackit_kms_wrapping_key": {
+                "current": "stackit:index/getKmsWrappingKey:getKmsWrappingKey"
             },
             "stackit_loadbalancer": {
                 "current": "stackit:index/getLoadbalancer:getLoadbalancer",
