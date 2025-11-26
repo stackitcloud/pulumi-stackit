@@ -19,7 +19,7 @@ namespace Pulumi.Stackit.Inputs
         public Input<string> NetworkId { get; set; } = null!;
 
         /// <summary>
-        /// The role defines how the load balancer is using the network. Supported values are: `ROLE_UNSPECIFIED`, `ROLE_LISTENERS_AND_TARGETS`, `ROLE_LISTENERS`, `ROLE_TARGETS`.
+        /// The role defines how the load balancer is using the network. Possible values are: `ROLE_UNSPECIFIED`, `ROLE_LISTENERS_AND_TARGETS`, `ROLE_LISTENERS`, `ROLE_TARGETS`.
         /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;

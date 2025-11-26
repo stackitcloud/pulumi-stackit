@@ -70,7 +70,7 @@ export class Server extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
-     * The desired status of the server resource. Supported values are: `active`, `inactive`, `deallocated`.
+     * The desired status of the server resource. Possible values are: `active`, `inactive`, `deallocated`.
      */
     declare public readonly desiredStatus: pulumi.Output<string | undefined>;
     /**
@@ -198,7 +198,7 @@ export interface ServerState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * The desired status of the server resource. Supported values are: `active`, `inactive`, `deallocated`.
+     * The desired status of the server resource. Possible values are: `active`, `inactive`, `deallocated`.
      */
     desiredStatus?: pulumi.Input<string>;
     /**
@@ -264,7 +264,7 @@ export interface ServerArgs {
      */
     bootVolume?: pulumi.Input<inputs.ServerBootVolume>;
     /**
-     * The desired status of the server resource. Supported values are: `active`, `inactive`, `deallocated`.
+     * The desired status of the server resource. Possible values are: `active`, `inactive`, `deallocated`.
      */
     desiredStatus?: pulumi.Input<string>;
     /**

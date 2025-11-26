@@ -383,11 +383,13 @@ func (o CdnDistributionConfigPtrOutput) Regions() pulumi.StringArrayOutput {
 }
 
 type CdnDistributionConfigBackend struct {
+	// A map of URLs to a list of countries where content is allowed.
+	Geofencing map[string][]string `pulumi:"geofencing"`
 	// The configured origin request headers for the backend
 	OriginRequestHeaders map[string]string `pulumi:"originRequestHeaders"`
 	// The configured backend type for the distribution
 	OriginUrl string `pulumi:"originUrl"`
-	// The configured backend type. Supported values are: `http`.
+	// The configured backend type. Possible values are: `http`.
 	Type string `pulumi:"type"`
 }
 
@@ -403,11 +405,13 @@ type CdnDistributionConfigBackendInput interface {
 }
 
 type CdnDistributionConfigBackendArgs struct {
+	// A map of URLs to a list of countries where content is allowed.
+	Geofencing pulumi.StringArrayMapInput `pulumi:"geofencing"`
 	// The configured origin request headers for the backend
 	OriginRequestHeaders pulumi.StringMapInput `pulumi:"originRequestHeaders"`
 	// The configured backend type for the distribution
 	OriginUrl pulumi.StringInput `pulumi:"originUrl"`
-	// The configured backend type. Supported values are: `http`.
+	// The configured backend type. Possible values are: `http`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -488,6 +492,11 @@ func (o CdnDistributionConfigBackendOutput) ToCdnDistributionConfigBackendPtrOut
 	}).(CdnDistributionConfigBackendPtrOutput)
 }
 
+// A map of URLs to a list of countries where content is allowed.
+func (o CdnDistributionConfigBackendOutput) Geofencing() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v CdnDistributionConfigBackend) map[string][]string { return v.Geofencing }).(pulumi.StringArrayMapOutput)
+}
+
 // The configured origin request headers for the backend
 func (o CdnDistributionConfigBackendOutput) OriginRequestHeaders() pulumi.StringMapOutput {
 	return o.ApplyT(func(v CdnDistributionConfigBackend) map[string]string { return v.OriginRequestHeaders }).(pulumi.StringMapOutput)
@@ -498,7 +507,7 @@ func (o CdnDistributionConfigBackendOutput) OriginUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v CdnDistributionConfigBackend) string { return v.OriginUrl }).(pulumi.StringOutput)
 }
 
-// The configured backend type. Supported values are: `http`.
+// The configured backend type. Possible values are: `http`.
 func (o CdnDistributionConfigBackendOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v CdnDistributionConfigBackend) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -527,6 +536,16 @@ func (o CdnDistributionConfigBackendPtrOutput) Elem() CdnDistributionConfigBacke
 	}).(CdnDistributionConfigBackendOutput)
 }
 
+// A map of URLs to a list of countries where content is allowed.
+func (o CdnDistributionConfigBackendPtrOutput) Geofencing() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigBackend) map[string][]string {
+		if v == nil {
+			return nil
+		}
+		return v.Geofencing
+	}).(pulumi.StringArrayMapOutput)
+}
+
 // The configured origin request headers for the backend
 func (o CdnDistributionConfigBackendPtrOutput) OriginRequestHeaders() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CdnDistributionConfigBackend) map[string]string {
@@ -547,7 +566,7 @@ func (o CdnDistributionConfigBackendPtrOutput) OriginUrl() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The configured backend type. Supported values are: `http`.
+// The configured backend type. Possible values are: `http`.
 func (o CdnDistributionConfigBackendPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CdnDistributionConfigBackend) *string {
 		if v == nil {
@@ -1339,12 +1358,16 @@ type LoadbalancerListener struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Port number where we listen for traffic.
 	Port int `pulumi:"port"`
-	// Protocol is the highest network protocol we understand to load balance. Supported values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_TCP`, `PROTOCOL_UDP`, `PROTOCOL_TCP_PROXY`, `PROTOCOL_TLS_PASSTHROUGH`.
+	// Protocol is the highest network protocol we understand to load balance. Possible values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_TCP`, `PROTOCOL_UDP`, `PROTOCOL_TCP_PROXY`, `PROTOCOL_TLS_PASSTHROUGH`.
 	Protocol string `pulumi:"protocol"`
 	// A list of domain names to match in order to pass TLS traffic to the target pool in the current listener
 	ServerNameIndicators []LoadbalancerListenerServerNameIndicator `pulumi:"serverNameIndicators"`
 	// Reference target pool by target pool name.
 	TargetPool string `pulumi:"targetPool"`
+	// Options that are specific to the TCP protocol.
+	Tcp *LoadbalancerListenerTcp `pulumi:"tcp"`
+	// Options that are specific to the UDP protocol.
+	Udp *LoadbalancerListenerUdp `pulumi:"udp"`
 }
 
 // LoadbalancerListenerInput is an input type that accepts LoadbalancerListenerArgs and LoadbalancerListenerOutput values.
@@ -1362,12 +1385,16 @@ type LoadbalancerListenerArgs struct {
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// Port number where we listen for traffic.
 	Port pulumi.IntInput `pulumi:"port"`
-	// Protocol is the highest network protocol we understand to load balance. Supported values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_TCP`, `PROTOCOL_UDP`, `PROTOCOL_TCP_PROXY`, `PROTOCOL_TLS_PASSTHROUGH`.
+	// Protocol is the highest network protocol we understand to load balance. Possible values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_TCP`, `PROTOCOL_UDP`, `PROTOCOL_TCP_PROXY`, `PROTOCOL_TLS_PASSTHROUGH`.
 	Protocol pulumi.StringInput `pulumi:"protocol"`
 	// A list of domain names to match in order to pass TLS traffic to the target pool in the current listener
 	ServerNameIndicators LoadbalancerListenerServerNameIndicatorArrayInput `pulumi:"serverNameIndicators"`
 	// Reference target pool by target pool name.
 	TargetPool pulumi.StringInput `pulumi:"targetPool"`
+	// Options that are specific to the TCP protocol.
+	Tcp LoadbalancerListenerTcpPtrInput `pulumi:"tcp"`
+	// Options that are specific to the UDP protocol.
+	Udp LoadbalancerListenerUdpPtrInput `pulumi:"udp"`
 }
 
 func (LoadbalancerListenerArgs) ElementType() reflect.Type {
@@ -1430,7 +1457,7 @@ func (o LoadbalancerListenerOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v LoadbalancerListener) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// Protocol is the highest network protocol we understand to load balance. Supported values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_TCP`, `PROTOCOL_UDP`, `PROTOCOL_TCP_PROXY`, `PROTOCOL_TLS_PASSTHROUGH`.
+// Protocol is the highest network protocol we understand to load balance. Possible values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_TCP`, `PROTOCOL_UDP`, `PROTOCOL_TCP_PROXY`, `PROTOCOL_TLS_PASSTHROUGH`.
 func (o LoadbalancerListenerOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadbalancerListener) string { return v.Protocol }).(pulumi.StringOutput)
 }
@@ -1443,6 +1470,16 @@ func (o LoadbalancerListenerOutput) ServerNameIndicators() LoadbalancerListenerS
 // Reference target pool by target pool name.
 func (o LoadbalancerListenerOutput) TargetPool() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadbalancerListener) string { return v.TargetPool }).(pulumi.StringOutput)
+}
+
+// Options that are specific to the TCP protocol.
+func (o LoadbalancerListenerOutput) Tcp() LoadbalancerListenerTcpPtrOutput {
+	return o.ApplyT(func(v LoadbalancerListener) *LoadbalancerListenerTcp { return v.Tcp }).(LoadbalancerListenerTcpPtrOutput)
+}
+
+// Options that are specific to the UDP protocol.
+func (o LoadbalancerListenerOutput) Udp() LoadbalancerListenerUdpPtrOutput {
+	return o.ApplyT(func(v LoadbalancerListener) *LoadbalancerListenerUdp { return v.Udp }).(LoadbalancerListenerUdpPtrOutput)
 }
 
 type LoadbalancerListenerArrayOutput struct{ *pulumi.OutputState }
@@ -1562,10 +1599,284 @@ func (o LoadbalancerListenerServerNameIndicatorArrayOutput) Index(i pulumi.IntIn
 	}).(LoadbalancerListenerServerNameIndicatorOutput)
 }
 
+type LoadbalancerListenerTcp struct {
+	// Time after which an idle connection is closed. The default value is set to 300 seconds, and the maximum value is 3600 seconds. The format is a duration and the unit must be seconds. Example: 30s
+	IdleTimeout *string `pulumi:"idleTimeout"`
+}
+
+// LoadbalancerListenerTcpInput is an input type that accepts LoadbalancerListenerTcpArgs and LoadbalancerListenerTcpOutput values.
+// You can construct a concrete instance of `LoadbalancerListenerTcpInput` via:
+//
+//	LoadbalancerListenerTcpArgs{...}
+type LoadbalancerListenerTcpInput interface {
+	pulumi.Input
+
+	ToLoadbalancerListenerTcpOutput() LoadbalancerListenerTcpOutput
+	ToLoadbalancerListenerTcpOutputWithContext(context.Context) LoadbalancerListenerTcpOutput
+}
+
+type LoadbalancerListenerTcpArgs struct {
+	// Time after which an idle connection is closed. The default value is set to 300 seconds, and the maximum value is 3600 seconds. The format is a duration and the unit must be seconds. Example: 30s
+	IdleTimeout pulumi.StringPtrInput `pulumi:"idleTimeout"`
+}
+
+func (LoadbalancerListenerTcpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadbalancerListenerTcp)(nil)).Elem()
+}
+
+func (i LoadbalancerListenerTcpArgs) ToLoadbalancerListenerTcpOutput() LoadbalancerListenerTcpOutput {
+	return i.ToLoadbalancerListenerTcpOutputWithContext(context.Background())
+}
+
+func (i LoadbalancerListenerTcpArgs) ToLoadbalancerListenerTcpOutputWithContext(ctx context.Context) LoadbalancerListenerTcpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerTcpOutput)
+}
+
+func (i LoadbalancerListenerTcpArgs) ToLoadbalancerListenerTcpPtrOutput() LoadbalancerListenerTcpPtrOutput {
+	return i.ToLoadbalancerListenerTcpPtrOutputWithContext(context.Background())
+}
+
+func (i LoadbalancerListenerTcpArgs) ToLoadbalancerListenerTcpPtrOutputWithContext(ctx context.Context) LoadbalancerListenerTcpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerTcpOutput).ToLoadbalancerListenerTcpPtrOutputWithContext(ctx)
+}
+
+// LoadbalancerListenerTcpPtrInput is an input type that accepts LoadbalancerListenerTcpArgs, LoadbalancerListenerTcpPtr and LoadbalancerListenerTcpPtrOutput values.
+// You can construct a concrete instance of `LoadbalancerListenerTcpPtrInput` via:
+//
+//	        LoadbalancerListenerTcpArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoadbalancerListenerTcpPtrInput interface {
+	pulumi.Input
+
+	ToLoadbalancerListenerTcpPtrOutput() LoadbalancerListenerTcpPtrOutput
+	ToLoadbalancerListenerTcpPtrOutputWithContext(context.Context) LoadbalancerListenerTcpPtrOutput
+}
+
+type loadbalancerListenerTcpPtrType LoadbalancerListenerTcpArgs
+
+func LoadbalancerListenerTcpPtr(v *LoadbalancerListenerTcpArgs) LoadbalancerListenerTcpPtrInput {
+	return (*loadbalancerListenerTcpPtrType)(v)
+}
+
+func (*loadbalancerListenerTcpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadbalancerListenerTcp)(nil)).Elem()
+}
+
+func (i *loadbalancerListenerTcpPtrType) ToLoadbalancerListenerTcpPtrOutput() LoadbalancerListenerTcpPtrOutput {
+	return i.ToLoadbalancerListenerTcpPtrOutputWithContext(context.Background())
+}
+
+func (i *loadbalancerListenerTcpPtrType) ToLoadbalancerListenerTcpPtrOutputWithContext(ctx context.Context) LoadbalancerListenerTcpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerTcpPtrOutput)
+}
+
+type LoadbalancerListenerTcpOutput struct{ *pulumi.OutputState }
+
+func (LoadbalancerListenerTcpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadbalancerListenerTcp)(nil)).Elem()
+}
+
+func (o LoadbalancerListenerTcpOutput) ToLoadbalancerListenerTcpOutput() LoadbalancerListenerTcpOutput {
+	return o
+}
+
+func (o LoadbalancerListenerTcpOutput) ToLoadbalancerListenerTcpOutputWithContext(ctx context.Context) LoadbalancerListenerTcpOutput {
+	return o
+}
+
+func (o LoadbalancerListenerTcpOutput) ToLoadbalancerListenerTcpPtrOutput() LoadbalancerListenerTcpPtrOutput {
+	return o.ToLoadbalancerListenerTcpPtrOutputWithContext(context.Background())
+}
+
+func (o LoadbalancerListenerTcpOutput) ToLoadbalancerListenerTcpPtrOutputWithContext(ctx context.Context) LoadbalancerListenerTcpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadbalancerListenerTcp) *LoadbalancerListenerTcp {
+		return &v
+	}).(LoadbalancerListenerTcpPtrOutput)
+}
+
+// Time after which an idle connection is closed. The default value is set to 300 seconds, and the maximum value is 3600 seconds. The format is a duration and the unit must be seconds. Example: 30s
+func (o LoadbalancerListenerTcpOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadbalancerListenerTcp) *string { return v.IdleTimeout }).(pulumi.StringPtrOutput)
+}
+
+type LoadbalancerListenerTcpPtrOutput struct{ *pulumi.OutputState }
+
+func (LoadbalancerListenerTcpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadbalancerListenerTcp)(nil)).Elem()
+}
+
+func (o LoadbalancerListenerTcpPtrOutput) ToLoadbalancerListenerTcpPtrOutput() LoadbalancerListenerTcpPtrOutput {
+	return o
+}
+
+func (o LoadbalancerListenerTcpPtrOutput) ToLoadbalancerListenerTcpPtrOutputWithContext(ctx context.Context) LoadbalancerListenerTcpPtrOutput {
+	return o
+}
+
+func (o LoadbalancerListenerTcpPtrOutput) Elem() LoadbalancerListenerTcpOutput {
+	return o.ApplyT(func(v *LoadbalancerListenerTcp) LoadbalancerListenerTcp {
+		if v != nil {
+			return *v
+		}
+		var ret LoadbalancerListenerTcp
+		return ret
+	}).(LoadbalancerListenerTcpOutput)
+}
+
+// Time after which an idle connection is closed. The default value is set to 300 seconds, and the maximum value is 3600 seconds. The format is a duration and the unit must be seconds. Example: 30s
+func (o LoadbalancerListenerTcpPtrOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadbalancerListenerTcp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdleTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
+type LoadbalancerListenerUdp struct {
+	// Time after which an idle session is closed. The default value is set to 1 minute, and the maximum value is 2 minutes. The format is a duration and the unit must be seconds. Example: 30s
+	IdleTimeout *string `pulumi:"idleTimeout"`
+}
+
+// LoadbalancerListenerUdpInput is an input type that accepts LoadbalancerListenerUdpArgs and LoadbalancerListenerUdpOutput values.
+// You can construct a concrete instance of `LoadbalancerListenerUdpInput` via:
+//
+//	LoadbalancerListenerUdpArgs{...}
+type LoadbalancerListenerUdpInput interface {
+	pulumi.Input
+
+	ToLoadbalancerListenerUdpOutput() LoadbalancerListenerUdpOutput
+	ToLoadbalancerListenerUdpOutputWithContext(context.Context) LoadbalancerListenerUdpOutput
+}
+
+type LoadbalancerListenerUdpArgs struct {
+	// Time after which an idle session is closed. The default value is set to 1 minute, and the maximum value is 2 minutes. The format is a duration and the unit must be seconds. Example: 30s
+	IdleTimeout pulumi.StringPtrInput `pulumi:"idleTimeout"`
+}
+
+func (LoadbalancerListenerUdpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadbalancerListenerUdp)(nil)).Elem()
+}
+
+func (i LoadbalancerListenerUdpArgs) ToLoadbalancerListenerUdpOutput() LoadbalancerListenerUdpOutput {
+	return i.ToLoadbalancerListenerUdpOutputWithContext(context.Background())
+}
+
+func (i LoadbalancerListenerUdpArgs) ToLoadbalancerListenerUdpOutputWithContext(ctx context.Context) LoadbalancerListenerUdpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerUdpOutput)
+}
+
+func (i LoadbalancerListenerUdpArgs) ToLoadbalancerListenerUdpPtrOutput() LoadbalancerListenerUdpPtrOutput {
+	return i.ToLoadbalancerListenerUdpPtrOutputWithContext(context.Background())
+}
+
+func (i LoadbalancerListenerUdpArgs) ToLoadbalancerListenerUdpPtrOutputWithContext(ctx context.Context) LoadbalancerListenerUdpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerUdpOutput).ToLoadbalancerListenerUdpPtrOutputWithContext(ctx)
+}
+
+// LoadbalancerListenerUdpPtrInput is an input type that accepts LoadbalancerListenerUdpArgs, LoadbalancerListenerUdpPtr and LoadbalancerListenerUdpPtrOutput values.
+// You can construct a concrete instance of `LoadbalancerListenerUdpPtrInput` via:
+//
+//	        LoadbalancerListenerUdpArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoadbalancerListenerUdpPtrInput interface {
+	pulumi.Input
+
+	ToLoadbalancerListenerUdpPtrOutput() LoadbalancerListenerUdpPtrOutput
+	ToLoadbalancerListenerUdpPtrOutputWithContext(context.Context) LoadbalancerListenerUdpPtrOutput
+}
+
+type loadbalancerListenerUdpPtrType LoadbalancerListenerUdpArgs
+
+func LoadbalancerListenerUdpPtr(v *LoadbalancerListenerUdpArgs) LoadbalancerListenerUdpPtrInput {
+	return (*loadbalancerListenerUdpPtrType)(v)
+}
+
+func (*loadbalancerListenerUdpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadbalancerListenerUdp)(nil)).Elem()
+}
+
+func (i *loadbalancerListenerUdpPtrType) ToLoadbalancerListenerUdpPtrOutput() LoadbalancerListenerUdpPtrOutput {
+	return i.ToLoadbalancerListenerUdpPtrOutputWithContext(context.Background())
+}
+
+func (i *loadbalancerListenerUdpPtrType) ToLoadbalancerListenerUdpPtrOutputWithContext(ctx context.Context) LoadbalancerListenerUdpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoadbalancerListenerUdpPtrOutput)
+}
+
+type LoadbalancerListenerUdpOutput struct{ *pulumi.OutputState }
+
+func (LoadbalancerListenerUdpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoadbalancerListenerUdp)(nil)).Elem()
+}
+
+func (o LoadbalancerListenerUdpOutput) ToLoadbalancerListenerUdpOutput() LoadbalancerListenerUdpOutput {
+	return o
+}
+
+func (o LoadbalancerListenerUdpOutput) ToLoadbalancerListenerUdpOutputWithContext(ctx context.Context) LoadbalancerListenerUdpOutput {
+	return o
+}
+
+func (o LoadbalancerListenerUdpOutput) ToLoadbalancerListenerUdpPtrOutput() LoadbalancerListenerUdpPtrOutput {
+	return o.ToLoadbalancerListenerUdpPtrOutputWithContext(context.Background())
+}
+
+func (o LoadbalancerListenerUdpOutput) ToLoadbalancerListenerUdpPtrOutputWithContext(ctx context.Context) LoadbalancerListenerUdpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoadbalancerListenerUdp) *LoadbalancerListenerUdp {
+		return &v
+	}).(LoadbalancerListenerUdpPtrOutput)
+}
+
+// Time after which an idle session is closed. The default value is set to 1 minute, and the maximum value is 2 minutes. The format is a duration and the unit must be seconds. Example: 30s
+func (o LoadbalancerListenerUdpOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadbalancerListenerUdp) *string { return v.IdleTimeout }).(pulumi.StringPtrOutput)
+}
+
+type LoadbalancerListenerUdpPtrOutput struct{ *pulumi.OutputState }
+
+func (LoadbalancerListenerUdpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoadbalancerListenerUdp)(nil)).Elem()
+}
+
+func (o LoadbalancerListenerUdpPtrOutput) ToLoadbalancerListenerUdpPtrOutput() LoadbalancerListenerUdpPtrOutput {
+	return o
+}
+
+func (o LoadbalancerListenerUdpPtrOutput) ToLoadbalancerListenerUdpPtrOutputWithContext(ctx context.Context) LoadbalancerListenerUdpPtrOutput {
+	return o
+}
+
+func (o LoadbalancerListenerUdpPtrOutput) Elem() LoadbalancerListenerUdpOutput {
+	return o.ApplyT(func(v *LoadbalancerListenerUdp) LoadbalancerListenerUdp {
+		if v != nil {
+			return *v
+		}
+		var ret LoadbalancerListenerUdp
+		return ret
+	}).(LoadbalancerListenerUdpOutput)
+}
+
+// Time after which an idle session is closed. The default value is set to 1 minute, and the maximum value is 2 minutes. The format is a duration and the unit must be seconds. Example: 30s
+func (o LoadbalancerListenerUdpPtrOutput) IdleTimeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadbalancerListenerUdp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IdleTimeout
+	}).(pulumi.StringPtrOutput)
+}
+
 type LoadbalancerNetwork struct {
 	// Openstack network ID.
 	NetworkId string `pulumi:"networkId"`
-	// The role defines how the load balancer is using the network. Supported values are: `ROLE_UNSPECIFIED`, `ROLE_LISTENERS_AND_TARGETS`, `ROLE_LISTENERS`, `ROLE_TARGETS`.
+	// The role defines how the load balancer is using the network. Possible values are: `ROLE_UNSPECIFIED`, `ROLE_LISTENERS_AND_TARGETS`, `ROLE_LISTENERS`, `ROLE_TARGETS`.
 	Role string `pulumi:"role"`
 }
 
@@ -1583,7 +1894,7 @@ type LoadbalancerNetworkInput interface {
 type LoadbalancerNetworkArgs struct {
 	// Openstack network ID.
 	NetworkId pulumi.StringInput `pulumi:"networkId"`
-	// The role defines how the load balancer is using the network. Supported values are: `ROLE_UNSPECIFIED`, `ROLE_LISTENERS_AND_TARGETS`, `ROLE_LISTENERS`, `ROLE_TARGETS`.
+	// The role defines how the load balancer is using the network. Possible values are: `ROLE_UNSPECIFIED`, `ROLE_LISTENERS_AND_TARGETS`, `ROLE_LISTENERS`, `ROLE_TARGETS`.
 	Role pulumi.StringInput `pulumi:"role"`
 }
 
@@ -1643,7 +1954,7 @@ func (o LoadbalancerNetworkOutput) NetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadbalancerNetwork) string { return v.NetworkId }).(pulumi.StringOutput)
 }
 
-// The role defines how the load balancer is using the network. Supported values are: `ROLE_UNSPECIFIED`, `ROLE_LISTENERS_AND_TARGETS`, `ROLE_LISTENERS`, `ROLE_TARGETS`.
+// The role defines how the load balancer is using the network. Possible values are: `ROLE_UNSPECIFIED`, `ROLE_LISTENERS_AND_TARGETS`, `ROLE_LISTENERS`, `ROLE_TARGETS`.
 func (o LoadbalancerNetworkOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v LoadbalancerNetwork) string { return v.Role }).(pulumi.StringOutput)
 }
@@ -3850,7 +4161,7 @@ type MongodbflexInstanceOptions struct {
 	PointInTimeWindowHours int `pulumi:"pointInTimeWindowHours"`
 	// The number of days that continuous backups (controlled via the `backupSchedule`) will be retained.
 	SnapshotRetentionDays *int `pulumi:"snapshotRetentionDays"`
-	// Type of the MongoDB Flex instance. Supported values are: `Replica`, `Sharded`, `Single`.
+	// Type of the MongoDB Flex instance. Possible values are: `Replica`, `Sharded`, `Single`.
 	Type string `pulumi:"type"`
 	// The number of weeks that weekly backups will be retained.
 	WeeklySnapshotRetentionWeeks *int `pulumi:"weeklySnapshotRetentionWeeks"`
@@ -3876,7 +4187,7 @@ type MongodbflexInstanceOptionsArgs struct {
 	PointInTimeWindowHours pulumi.IntInput `pulumi:"pointInTimeWindowHours"`
 	// The number of days that continuous backups (controlled via the `backupSchedule`) will be retained.
 	SnapshotRetentionDays pulumi.IntPtrInput `pulumi:"snapshotRetentionDays"`
-	// Type of the MongoDB Flex instance. Supported values are: `Replica`, `Sharded`, `Single`.
+	// Type of the MongoDB Flex instance. Possible values are: `Replica`, `Sharded`, `Single`.
 	Type pulumi.StringInput `pulumi:"type"`
 	// The number of weeks that weekly backups will be retained.
 	WeeklySnapshotRetentionWeeks pulumi.IntPtrInput `pulumi:"weeklySnapshotRetentionWeeks"`
@@ -3979,7 +4290,7 @@ func (o MongodbflexInstanceOptionsOutput) SnapshotRetentionDays() pulumi.IntPtrO
 	return o.ApplyT(func(v MongodbflexInstanceOptions) *int { return v.SnapshotRetentionDays }).(pulumi.IntPtrOutput)
 }
 
-// Type of the MongoDB Flex instance. Supported values are: `Replica`, `Sharded`, `Single`.
+// Type of the MongoDB Flex instance. Possible values are: `Replica`, `Sharded`, `Single`.
 func (o MongodbflexInstanceOptionsOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v MongodbflexInstanceOptions) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -4053,7 +4364,7 @@ func (o MongodbflexInstanceOptionsPtrOutput) SnapshotRetentionDays() pulumi.IntP
 	}).(pulumi.IntPtrOutput)
 }
 
-// Type of the MongoDB Flex instance. Supported values are: `Replica`, `Sharded`, `Single`.
+// Type of the MongoDB Flex instance. Possible values are: `Replica`, `Sharded`, `Single`.
 func (o MongodbflexInstanceOptionsPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MongodbflexInstanceOptions) *string {
 		if v == nil {
@@ -8157,7 +8468,7 @@ func (o RoutingTableRouteDestinationPtrOutput) Value() pulumi.StringPtrOutput {
 }
 
 type RoutingTableRouteNextHop struct {
-	// Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Only `cidrv4` is supported during experimental stage..
+	// Type of the next hop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`.
 	Type string `pulumi:"type"`
 	// Either IPv4 or IPv6 (not set for blackhole and internet). Only IPv4 supported during experimental stage.
 	Value *string `pulumi:"value"`
@@ -8175,7 +8486,7 @@ type RoutingTableRouteNextHopInput interface {
 }
 
 type RoutingTableRouteNextHopArgs struct {
-	// Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Only `cidrv4` is supported during experimental stage..
+	// Type of the next hop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`.
 	Type pulumi.StringInput `pulumi:"type"`
 	// Either IPv4 or IPv6 (not set for blackhole and internet). Only IPv4 supported during experimental stage.
 	Value pulumi.StringPtrInput `pulumi:"value"`
@@ -8258,7 +8569,7 @@ func (o RoutingTableRouteNextHopOutput) ToRoutingTableRouteNextHopPtrOutputWithC
 	}).(RoutingTableRouteNextHopPtrOutput)
 }
 
-// Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Only `cidrv4` is supported during experimental stage..
+// Type of the next hop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`.
 func (o RoutingTableRouteNextHopOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v RoutingTableRouteNextHop) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -8292,7 +8603,7 @@ func (o RoutingTableRouteNextHopPtrOutput) Elem() RoutingTableRouteNextHopOutput
 	}).(RoutingTableRouteNextHopOutput)
 }
 
-// Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Only `cidrv4` is supported during experimental stage..
+// Type of the next hop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`.
 func (o RoutingTableRouteNextHopPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RoutingTableRouteNextHop) *string {
 		if v == nil {
@@ -8954,7 +9265,7 @@ type ServerBootVolume struct {
 	Size *int `pulumi:"size"`
 	// The ID of the source, either image ID or volume ID
 	SourceId string `pulumi:"sourceId"`
-	// The type of the source. Supported values are: `volume`, `image`.
+	// The type of the source. Possible values are: `volume`, `image`.
 	SourceType string `pulumi:"sourceType"`
 }
 
@@ -8980,7 +9291,7 @@ type ServerBootVolumeArgs struct {
 	Size pulumi.IntPtrInput `pulumi:"size"`
 	// The ID of the source, either image ID or volume ID
 	SourceId pulumi.StringInput `pulumi:"sourceId"`
-	// The type of the source. Supported values are: `volume`, `image`.
+	// The type of the source. Possible values are: `volume`, `image`.
 	SourceType pulumi.StringInput `pulumi:"sourceType"`
 }
 
@@ -9086,7 +9397,7 @@ func (o ServerBootVolumeOutput) SourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v ServerBootVolume) string { return v.SourceId }).(pulumi.StringOutput)
 }
 
-// The type of the source. Supported values are: `volume`, `image`.
+// The type of the source. Possible values are: `volume`, `image`.
 func (o ServerBootVolumeOutput) SourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v ServerBootVolume) string { return v.SourceType }).(pulumi.StringOutput)
 }
@@ -9165,7 +9476,7 @@ func (o ServerBootVolumePtrOutput) SourceId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The type of the source. Supported values are: `volume`, `image`.
+// The type of the source. Possible values are: `volume`, `image`.
 func (o ServerBootVolumePtrOutput) SourceType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerBootVolume) *string {
 		if v == nil {
@@ -11286,7 +11597,7 @@ func (o SqlserverflexInstanceStoragePtrOutput) Size() pulumi.IntPtrOutput {
 type VolumeSource struct {
 	// The ID of the source, e.g. image ID
 	Id string `pulumi:"id"`
-	// The type of the source. Supported values are: `volume`, `image`, `snapshot`, `backup`.
+	// The type of the source. Possible values are: `volume`, `image`, `snapshot`, `backup`.
 	Type string `pulumi:"type"`
 }
 
@@ -11304,7 +11615,7 @@ type VolumeSourceInput interface {
 type VolumeSourceArgs struct {
 	// The ID of the source, e.g. image ID
 	Id pulumi.StringInput `pulumi:"id"`
-	// The type of the source. Supported values are: `volume`, `image`, `snapshot`, `backup`.
+	// The type of the source. Possible values are: `volume`, `image`, `snapshot`, `backup`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -11390,7 +11701,7 @@ func (o VolumeSourceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v VolumeSource) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The type of the source. Supported values are: `volume`, `image`, `snapshot`, `backup`.
+// The type of the source. Possible values are: `volume`, `image`, `snapshot`, `backup`.
 func (o VolumeSourceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v VolumeSource) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -11429,7 +11740,7 @@ func (o VolumeSourcePtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The type of the source. Supported values are: `volume`, `image`, `snapshot`, `backup`.
+// The type of the source. Possible values are: `volume`, `image`, `snapshot`, `backup`.
 func (o VolumeSourcePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VolumeSource) *string {
 		if v == nil {
@@ -11656,11 +11967,13 @@ func (o GetCdnDistributionConfigOutput) Regions() pulumi.StringArrayOutput {
 }
 
 type GetCdnDistributionConfigBackend struct {
+	// A map of URLs to a list of countries where content is allowed.
+	Geofencing map[string][]string `pulumi:"geofencing"`
 	// The configured origin request headers for the backend
 	OriginRequestHeaders map[string]string `pulumi:"originRequestHeaders"`
 	// The configured backend type for the distribution
 	OriginUrl string `pulumi:"originUrl"`
-	// The configured backend type. Supported values are: `http`.
+	// The configured backend type. Possible values are: `http`.
 	Type string `pulumi:"type"`
 }
 
@@ -11676,11 +11989,13 @@ type GetCdnDistributionConfigBackendInput interface {
 }
 
 type GetCdnDistributionConfigBackendArgs struct {
+	// A map of URLs to a list of countries where content is allowed.
+	Geofencing pulumi.StringArrayMapInput `pulumi:"geofencing"`
 	// The configured origin request headers for the backend
 	OriginRequestHeaders pulumi.StringMapInput `pulumi:"originRequestHeaders"`
 	// The configured backend type for the distribution
 	OriginUrl pulumi.StringInput `pulumi:"originUrl"`
-	// The configured backend type. Supported values are: `http`.
+	// The configured backend type. Possible values are: `http`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -11710,6 +12025,11 @@ func (o GetCdnDistributionConfigBackendOutput) ToGetCdnDistributionConfigBackend
 	return o
 }
 
+// A map of URLs to a list of countries where content is allowed.
+func (o GetCdnDistributionConfigBackendOutput) Geofencing() pulumi.StringArrayMapOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfigBackend) map[string][]string { return v.Geofencing }).(pulumi.StringArrayMapOutput)
+}
+
 // The configured origin request headers for the backend
 func (o GetCdnDistributionConfigBackendOutput) OriginRequestHeaders() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetCdnDistributionConfigBackend) map[string]string { return v.OriginRequestHeaders }).(pulumi.StringMapOutput)
@@ -11720,7 +12040,7 @@ func (o GetCdnDistributionConfigBackendOutput) OriginUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCdnDistributionConfigBackend) string { return v.OriginUrl }).(pulumi.StringOutput)
 }
 
-// The configured backend type. Supported values are: `http`.
+// The configured backend type. Possible values are: `http`.
 func (o GetCdnDistributionConfigBackendOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCdnDistributionConfigBackend) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -12563,6 +12883,10 @@ type GetLoadbalancerListener struct {
 	ServerNameIndicators []GetLoadbalancerListenerServerNameIndicator `pulumi:"serverNameIndicators"`
 	// Reference target pool by target pool name.
 	TargetPool string `pulumi:"targetPool"`
+	// Options that are specific to the TCP protocol.
+	Tcp GetLoadbalancerListenerTcp `pulumi:"tcp"`
+	// Options that are specific to the UDP protocol.
+	Udp GetLoadbalancerListenerUdp `pulumi:"udp"`
 }
 
 // GetLoadbalancerListenerInput is an input type that accepts GetLoadbalancerListenerArgs and GetLoadbalancerListenerOutput values.
@@ -12586,6 +12910,10 @@ type GetLoadbalancerListenerArgs struct {
 	ServerNameIndicators GetLoadbalancerListenerServerNameIndicatorArrayInput `pulumi:"serverNameIndicators"`
 	// Reference target pool by target pool name.
 	TargetPool pulumi.StringInput `pulumi:"targetPool"`
+	// Options that are specific to the TCP protocol.
+	Tcp GetLoadbalancerListenerTcpInput `pulumi:"tcp"`
+	// Options that are specific to the UDP protocol.
+	Udp GetLoadbalancerListenerUdpInput `pulumi:"udp"`
 }
 
 func (GetLoadbalancerListenerArgs) ElementType() reflect.Type {
@@ -12663,6 +12991,16 @@ func (o GetLoadbalancerListenerOutput) ServerNameIndicators() GetLoadbalancerLis
 // Reference target pool by target pool name.
 func (o GetLoadbalancerListenerOutput) TargetPool() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadbalancerListener) string { return v.TargetPool }).(pulumi.StringOutput)
+}
+
+// Options that are specific to the TCP protocol.
+func (o GetLoadbalancerListenerOutput) Tcp() GetLoadbalancerListenerTcpOutput {
+	return o.ApplyT(func(v GetLoadbalancerListener) GetLoadbalancerListenerTcp { return v.Tcp }).(GetLoadbalancerListenerTcpOutput)
+}
+
+// Options that are specific to the UDP protocol.
+func (o GetLoadbalancerListenerOutput) Udp() GetLoadbalancerListenerUdpOutput {
+	return o.ApplyT(func(v GetLoadbalancerListener) GetLoadbalancerListenerUdp { return v.Udp }).(GetLoadbalancerListenerUdpOutput)
 }
 
 type GetLoadbalancerListenerArrayOutput struct{ *pulumi.OutputState }
@@ -12780,6 +13118,110 @@ func (o GetLoadbalancerListenerServerNameIndicatorArrayOutput) Index(i pulumi.In
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetLoadbalancerListenerServerNameIndicator {
 		return vs[0].([]GetLoadbalancerListenerServerNameIndicator)[vs[1].(int)]
 	}).(GetLoadbalancerListenerServerNameIndicatorOutput)
+}
+
+type GetLoadbalancerListenerTcp struct {
+	// Time after which an idle connection is closed. The default value is set to 5 minutes, and the maximum value is one hour.
+	IdleTimeout string `pulumi:"idleTimeout"`
+}
+
+// GetLoadbalancerListenerTcpInput is an input type that accepts GetLoadbalancerListenerTcpArgs and GetLoadbalancerListenerTcpOutput values.
+// You can construct a concrete instance of `GetLoadbalancerListenerTcpInput` via:
+//
+//	GetLoadbalancerListenerTcpArgs{...}
+type GetLoadbalancerListenerTcpInput interface {
+	pulumi.Input
+
+	ToGetLoadbalancerListenerTcpOutput() GetLoadbalancerListenerTcpOutput
+	ToGetLoadbalancerListenerTcpOutputWithContext(context.Context) GetLoadbalancerListenerTcpOutput
+}
+
+type GetLoadbalancerListenerTcpArgs struct {
+	// Time after which an idle connection is closed. The default value is set to 5 minutes, and the maximum value is one hour.
+	IdleTimeout pulumi.StringInput `pulumi:"idleTimeout"`
+}
+
+func (GetLoadbalancerListenerTcpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadbalancerListenerTcp)(nil)).Elem()
+}
+
+func (i GetLoadbalancerListenerTcpArgs) ToGetLoadbalancerListenerTcpOutput() GetLoadbalancerListenerTcpOutput {
+	return i.ToGetLoadbalancerListenerTcpOutputWithContext(context.Background())
+}
+
+func (i GetLoadbalancerListenerTcpArgs) ToGetLoadbalancerListenerTcpOutputWithContext(ctx context.Context) GetLoadbalancerListenerTcpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadbalancerListenerTcpOutput)
+}
+
+type GetLoadbalancerListenerTcpOutput struct{ *pulumi.OutputState }
+
+func (GetLoadbalancerListenerTcpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadbalancerListenerTcp)(nil)).Elem()
+}
+
+func (o GetLoadbalancerListenerTcpOutput) ToGetLoadbalancerListenerTcpOutput() GetLoadbalancerListenerTcpOutput {
+	return o
+}
+
+func (o GetLoadbalancerListenerTcpOutput) ToGetLoadbalancerListenerTcpOutputWithContext(ctx context.Context) GetLoadbalancerListenerTcpOutput {
+	return o
+}
+
+// Time after which an idle connection is closed. The default value is set to 5 minutes, and the maximum value is one hour.
+func (o GetLoadbalancerListenerTcpOutput) IdleTimeout() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadbalancerListenerTcp) string { return v.IdleTimeout }).(pulumi.StringOutput)
+}
+
+type GetLoadbalancerListenerUdp struct {
+	// Time after which an idle session is closed. The default value is set to 1 minute, and the maximum value is 2 minutes.
+	IdleTimeout string `pulumi:"idleTimeout"`
+}
+
+// GetLoadbalancerListenerUdpInput is an input type that accepts GetLoadbalancerListenerUdpArgs and GetLoadbalancerListenerUdpOutput values.
+// You can construct a concrete instance of `GetLoadbalancerListenerUdpInput` via:
+//
+//	GetLoadbalancerListenerUdpArgs{...}
+type GetLoadbalancerListenerUdpInput interface {
+	pulumi.Input
+
+	ToGetLoadbalancerListenerUdpOutput() GetLoadbalancerListenerUdpOutput
+	ToGetLoadbalancerListenerUdpOutputWithContext(context.Context) GetLoadbalancerListenerUdpOutput
+}
+
+type GetLoadbalancerListenerUdpArgs struct {
+	// Time after which an idle session is closed. The default value is set to 1 minute, and the maximum value is 2 minutes.
+	IdleTimeout pulumi.StringInput `pulumi:"idleTimeout"`
+}
+
+func (GetLoadbalancerListenerUdpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadbalancerListenerUdp)(nil)).Elem()
+}
+
+func (i GetLoadbalancerListenerUdpArgs) ToGetLoadbalancerListenerUdpOutput() GetLoadbalancerListenerUdpOutput {
+	return i.ToGetLoadbalancerListenerUdpOutputWithContext(context.Background())
+}
+
+func (i GetLoadbalancerListenerUdpArgs) ToGetLoadbalancerListenerUdpOutputWithContext(ctx context.Context) GetLoadbalancerListenerUdpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetLoadbalancerListenerUdpOutput)
+}
+
+type GetLoadbalancerListenerUdpOutput struct{ *pulumi.OutputState }
+
+func (GetLoadbalancerListenerUdpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetLoadbalancerListenerUdp)(nil)).Elem()
+}
+
+func (o GetLoadbalancerListenerUdpOutput) ToGetLoadbalancerListenerUdpOutput() GetLoadbalancerListenerUdpOutput {
+	return o
+}
+
+func (o GetLoadbalancerListenerUdpOutput) ToGetLoadbalancerListenerUdpOutputWithContext(ctx context.Context) GetLoadbalancerListenerUdpOutput {
+	return o
+}
+
+// Time after which an idle session is closed. The default value is set to 1 minute, and the maximum value is 2 minutes.
+func (o GetLoadbalancerListenerUdpOutput) IdleTimeout() pulumi.StringOutput {
+	return o.ApplyT(func(v GetLoadbalancerListenerUdp) string { return v.IdleTimeout }).(pulumi.StringOutput)
 }
 
 type GetLoadbalancerNetwork struct {
@@ -16591,7 +17033,7 @@ func (o GetRoutingTableRouteDestinationOutput) Value() pulumi.StringOutput {
 }
 
 type GetRoutingTableRouteNextHop struct {
-	// Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Only `cidrv4` is supported during experimental stage..
+	// Type of the next hop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`.
 	Type string `pulumi:"type"`
 	// Either IPv4 or IPv6 (not set for blackhole and internet). Only IPv4 supported during experimental stage.
 	Value string `pulumi:"value"`
@@ -16609,7 +17051,7 @@ type GetRoutingTableRouteNextHopInput interface {
 }
 
 type GetRoutingTableRouteNextHopArgs struct {
-	// Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Only `cidrv4` is supported during experimental stage..
+	// Type of the next hop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`.
 	Type pulumi.StringInput `pulumi:"type"`
 	// Either IPv4 or IPv6 (not set for blackhole and internet). Only IPv4 supported during experimental stage.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -16641,7 +17083,7 @@ func (o GetRoutingTableRouteNextHopOutput) ToGetRoutingTableRouteNextHopOutputWi
 	return o
 }
 
-// Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Only `cidrv4` is supported during experimental stage..
+// Type of the next hop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`.
 func (o GetRoutingTableRouteNextHopOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRoutingTableRouteNextHop) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -16855,7 +17297,7 @@ func (o GetRoutingTableRoutesRouteDestinationOutput) Value() pulumi.StringOutput
 }
 
 type GetRoutingTableRoutesRouteNextHop struct {
-	// Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Only `cidrv4` is supported during experimental stage..
+	// Type of the next hop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`.
 	Type string `pulumi:"type"`
 	// Either IPv4 or IPv6 (not set for blackhole and internet). Only IPv4 supported during experimental stage.
 	Value string `pulumi:"value"`
@@ -16873,7 +17315,7 @@ type GetRoutingTableRoutesRouteNextHopInput interface {
 }
 
 type GetRoutingTableRoutesRouteNextHopArgs struct {
-	// Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Only `cidrv4` is supported during experimental stage..
+	// Type of the next hop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`.
 	Type pulumi.StringInput `pulumi:"type"`
 	// Either IPv4 or IPv6 (not set for blackhole and internet). Only IPv4 supported during experimental stage.
 	Value pulumi.StringInput `pulumi:"value"`
@@ -16905,7 +17347,7 @@ func (o GetRoutingTableRoutesRouteNextHopOutput) ToGetRoutingTableRoutesRouteNex
 	return o
 }
 
-// Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Only `cidrv4` is supported during experimental stage..
+// Type of the next hop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`.
 func (o GetRoutingTableRoutesRouteNextHopOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRoutingTableRoutesRouteNextHop) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -18814,7 +19256,7 @@ func (o GetSqlserverflexInstanceStorageOutput) Size() pulumi.IntOutput {
 type GetVolumeSource struct {
 	// The ID of the source, e.g. image ID
 	Id string `pulumi:"id"`
-	// The type of the source. Supported values are: `volume`, `image`, `snapshot`, `backup`.
+	// The type of the source. Possible values are: `volume`, `image`, `snapshot`, `backup`.
 	Type string `pulumi:"type"`
 }
 
@@ -18832,7 +19274,7 @@ type GetVolumeSourceInput interface {
 type GetVolumeSourceArgs struct {
 	// The ID of the source, e.g. image ID
 	Id pulumi.StringInput `pulumi:"id"`
-	// The type of the source. Supported values are: `volume`, `image`, `snapshot`, `backup`.
+	// The type of the source. Possible values are: `volume`, `image`, `snapshot`, `backup`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -18867,7 +19309,7 @@ func (o GetVolumeSourceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumeSource) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The type of the source. Supported values are: `volume`, `image`, `snapshot`, `backup`.
+// The type of the source. Possible values are: `volume`, `image`, `snapshot`, `backup`.
 func (o GetVolumeSourceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumeSource) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -18891,6 +19333,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerListenerArrayInput)(nil)).Elem(), LoadbalancerListenerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerListenerServerNameIndicatorInput)(nil)).Elem(), LoadbalancerListenerServerNameIndicatorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerListenerServerNameIndicatorArrayInput)(nil)).Elem(), LoadbalancerListenerServerNameIndicatorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerListenerTcpInput)(nil)).Elem(), LoadbalancerListenerTcpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerListenerTcpPtrInput)(nil)).Elem(), LoadbalancerListenerTcpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerListenerUdpInput)(nil)).Elem(), LoadbalancerListenerUdpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerListenerUdpPtrInput)(nil)).Elem(), LoadbalancerListenerUdpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerNetworkInput)(nil)).Elem(), LoadbalancerNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerNetworkArrayInput)(nil)).Elem(), LoadbalancerNetworkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoadbalancerOptionsInput)(nil)).Elem(), LoadbalancerOptionsArgs{})
@@ -19016,6 +19462,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadbalancerListenerArrayInput)(nil)).Elem(), GetLoadbalancerListenerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadbalancerListenerServerNameIndicatorInput)(nil)).Elem(), GetLoadbalancerListenerServerNameIndicatorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadbalancerListenerServerNameIndicatorArrayInput)(nil)).Elem(), GetLoadbalancerListenerServerNameIndicatorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadbalancerListenerTcpInput)(nil)).Elem(), GetLoadbalancerListenerTcpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadbalancerListenerUdpInput)(nil)).Elem(), GetLoadbalancerListenerUdpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadbalancerNetworkInput)(nil)).Elem(), GetLoadbalancerNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadbalancerNetworkArrayInput)(nil)).Elem(), GetLoadbalancerNetworkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadbalancerOptionsInput)(nil)).Elem(), GetLoadbalancerOptionsArgs{})
@@ -19117,6 +19565,10 @@ func init() {
 	pulumi.RegisterOutputType(LoadbalancerListenerArrayOutput{})
 	pulumi.RegisterOutputType(LoadbalancerListenerServerNameIndicatorOutput{})
 	pulumi.RegisterOutputType(LoadbalancerListenerServerNameIndicatorArrayOutput{})
+	pulumi.RegisterOutputType(LoadbalancerListenerTcpOutput{})
+	pulumi.RegisterOutputType(LoadbalancerListenerTcpPtrOutput{})
+	pulumi.RegisterOutputType(LoadbalancerListenerUdpOutput{})
+	pulumi.RegisterOutputType(LoadbalancerListenerUdpPtrOutput{})
 	pulumi.RegisterOutputType(LoadbalancerNetworkOutput{})
 	pulumi.RegisterOutputType(LoadbalancerNetworkArrayOutput{})
 	pulumi.RegisterOutputType(LoadbalancerOptionsOutput{})
@@ -19242,6 +19694,8 @@ func init() {
 	pulumi.RegisterOutputType(GetLoadbalancerListenerArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadbalancerListenerServerNameIndicatorOutput{})
 	pulumi.RegisterOutputType(GetLoadbalancerListenerServerNameIndicatorArrayOutput{})
+	pulumi.RegisterOutputType(GetLoadbalancerListenerTcpOutput{})
+	pulumi.RegisterOutputType(GetLoadbalancerListenerUdpOutput{})
 	pulumi.RegisterOutputType(GetLoadbalancerNetworkOutput{})
 	pulumi.RegisterOutputType(GetLoadbalancerNetworkArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadbalancerOptionsOutput{})

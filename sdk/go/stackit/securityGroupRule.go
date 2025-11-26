@@ -20,7 +20,7 @@ type SecurityGroupRule struct {
 
 	// The rule description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The direction of the traffic which the rule should match. Some of the possible values are: Supported values are: `ingress`, `egress`.
+	// The direction of the traffic which the rule should match. Some of the possible values are: Possible values are: `ingress`, `egress`.
 	Direction pulumi.StringOutput `pulumi:"direction"`
 	// The ethertype which the rule should match.
 	EtherType pulumi.StringOutput `pulumi:"etherType"`
@@ -83,7 +83,7 @@ func GetSecurityGroupRule(ctx *pulumi.Context,
 type securityGroupRuleState struct {
 	// The rule description.
 	Description *string `pulumi:"description"`
-	// The direction of the traffic which the rule should match. Some of the possible values are: Supported values are: `ingress`, `egress`.
+	// The direction of the traffic which the rule should match. Some of the possible values are: Possible values are: `ingress`, `egress`.
 	Direction *string `pulumi:"direction"`
 	// The ethertype which the rule should match.
 	EtherType *string `pulumi:"etherType"`
@@ -108,7 +108,7 @@ type securityGroupRuleState struct {
 type SecurityGroupRuleState struct {
 	// The rule description.
 	Description pulumi.StringPtrInput
-	// The direction of the traffic which the rule should match. Some of the possible values are: Supported values are: `ingress`, `egress`.
+	// The direction of the traffic which the rule should match. Some of the possible values are: Possible values are: `ingress`, `egress`.
 	Direction pulumi.StringPtrInput
 	// The ethertype which the rule should match.
 	EtherType pulumi.StringPtrInput
@@ -137,7 +137,7 @@ func (SecurityGroupRuleState) ElementType() reflect.Type {
 type securityGroupRuleArgs struct {
 	// The rule description.
 	Description *string `pulumi:"description"`
-	// The direction of the traffic which the rule should match. Some of the possible values are: Supported values are: `ingress`, `egress`.
+	// The direction of the traffic which the rule should match. Some of the possible values are: Possible values are: `ingress`, `egress`.
 	Direction string `pulumi:"direction"`
 	// The ethertype which the rule should match.
 	EtherType *string `pulumi:"etherType"`
@@ -161,7 +161,7 @@ type securityGroupRuleArgs struct {
 type SecurityGroupRuleArgs struct {
 	// The rule description.
 	Description pulumi.StringPtrInput
-	// The direction of the traffic which the rule should match. Some of the possible values are: Supported values are: `ingress`, `egress`.
+	// The direction of the traffic which the rule should match. Some of the possible values are: Possible values are: `ingress`, `egress`.
 	Direction pulumi.StringInput
 	// The ethertype which the rule should match.
 	EtherType pulumi.StringPtrInput
@@ -273,7 +273,7 @@ func (o SecurityGroupRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The direction of the traffic which the rule should match. Some of the possible values are: Supported values are: `ingress`, `egress`.
+// The direction of the traffic which the rule should match. Some of the possible values are: Possible values are: `ingress`, `egress`.
 func (o SecurityGroupRuleOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringOutput { return v.Direction }).(pulumi.StringOutput)
 }

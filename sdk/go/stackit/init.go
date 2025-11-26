@@ -41,6 +41,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Image{}
 	case "stackit:index/keyPair:KeyPair":
 		r = &KeyPair{}
+	case "stackit:index/kmsKey:KmsKey":
+		r = &KmsKey{}
+	case "stackit:index/kmsKeyring:KmsKeyring":
+		r = &KmsKeyring{}
+	case "stackit:index/kmsWrappingKey:KmsWrappingKey":
+		r = &KmsWrappingKey{}
 	case "stackit:index/loadbalancer:Loadbalancer":
 		r = &Loadbalancer{}
 	case "stackit:index/loadbalancerObservabilityCredential:LoadbalancerObservabilityCredential":
@@ -232,6 +238,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"stackit",
 		"index/keyPair",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/kmsKey",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/kmsKeyring",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/kmsWrappingKey",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -41,6 +41,10 @@ export interface CdnDistributionConfig {
 
 export interface CdnDistributionConfigBackend {
     /**
+     * A map of URLs to a list of countries where content is allowed.
+     */
+    geofencing?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
+    /**
      * The configured origin request headers for the backend
      */
     originRequestHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -49,7 +53,7 @@ export interface CdnDistributionConfigBackend {
      */
     originUrl: pulumi.Input<string>;
     /**
-     * The configured backend type. Supported values are: `http`.
+     * The configured backend type. Possible values are: `http`.
      */
     type: pulumi.Input<string>;
 }
@@ -210,7 +214,7 @@ export interface LoadbalancerListener {
      */
     port: pulumi.Input<number>;
     /**
-     * Protocol is the highest network protocol we understand to load balance. Supported values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_TCP`, `PROTOCOL_UDP`, `PROTOCOL_TCP_PROXY`, `PROTOCOL_TLS_PASSTHROUGH`.
+     * Protocol is the highest network protocol we understand to load balance. Possible values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_TCP`, `PROTOCOL_UDP`, `PROTOCOL_TCP_PROXY`, `PROTOCOL_TLS_PASSTHROUGH`.
      */
     protocol: pulumi.Input<string>;
     /**
@@ -221,6 +225,14 @@ export interface LoadbalancerListener {
      * Reference target pool by target pool name.
      */
     targetPool: pulumi.Input<string>;
+    /**
+     * Options that are specific to the TCP protocol.
+     */
+    tcp?: pulumi.Input<inputs.LoadbalancerListenerTcp>;
+    /**
+     * Options that are specific to the UDP protocol.
+     */
+    udp?: pulumi.Input<inputs.LoadbalancerListenerUdp>;
 }
 
 export interface LoadbalancerListenerServerNameIndicator {
@@ -230,13 +242,27 @@ export interface LoadbalancerListenerServerNameIndicator {
     name?: pulumi.Input<string>;
 }
 
+export interface LoadbalancerListenerTcp {
+    /**
+     * Time after which an idle connection is closed. The default value is set to 300 seconds, and the maximum value is 3600 seconds. The format is a duration and the unit must be seconds. Example: 30s
+     */
+    idleTimeout?: pulumi.Input<string>;
+}
+
+export interface LoadbalancerListenerUdp {
+    /**
+     * Time after which an idle session is closed. The default value is set to 1 minute, and the maximum value is 2 minutes. The format is a duration and the unit must be seconds. Example: 30s
+     */
+    idleTimeout?: pulumi.Input<string>;
+}
+
 export interface LoadbalancerNetwork {
     /**
      * Openstack network ID.
      */
     networkId: pulumi.Input<string>;
     /**
-     * The role defines how the load balancer is using the network. Supported values are: `ROLE_UNSPECIFIED`, `ROLE_LISTENERS_AND_TARGETS`, `ROLE_LISTENERS`, `ROLE_TARGETS`.
+     * The role defines how the load balancer is using the network. Possible values are: `ROLE_UNSPECIFIED`, `ROLE_LISTENERS_AND_TARGETS`, `ROLE_LISTENERS`, `ROLE_TARGETS`.
      */
     role: pulumi.Input<string>;
 }
@@ -471,7 +497,7 @@ export interface MongodbflexInstanceOptions {
      */
     snapshotRetentionDays?: pulumi.Input<number>;
     /**
-     * Type of the MongoDB Flex instance. Supported values are: `Replica`, `Sharded`, `Single`.
+     * Type of the MongoDB Flex instance. Possible values are: `Replica`, `Sharded`, `Single`.
      */
     type: pulumi.Input<string>;
     /**
@@ -1010,7 +1036,7 @@ export interface RoutingTableRouteDestination {
 
 export interface RoutingTableRouteNextHop {
     /**
-     * Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Only `cidrv4` is supported during experimental stage..
+     * Type of the next hop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`.
      */
     type: pulumi.Input<string>;
     /**
@@ -1080,7 +1106,7 @@ export interface ServerBootVolume {
      */
     sourceId: pulumi.Input<string>;
     /**
-     * The type of the source. Supported values are: `volume`, `image`.
+     * The type of the source. Possible values are: `volume`, `image`.
      */
     sourceType: pulumi.Input<string>;
 }
@@ -1302,7 +1328,7 @@ export interface VolumeSource {
      */
     id: pulumi.Input<string>;
     /**
-     * The type of the source. Supported values are: `volume`, `image`, `snapshot`, `backup`.
+     * The type of the source. Possible values are: `volume`, `image`, `snapshot`, `backup`.
      */
     type: pulumi.Input<string>;
 }

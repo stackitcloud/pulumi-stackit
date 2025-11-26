@@ -41,6 +41,10 @@ export interface CdnDistributionConfig {
 
 export interface CdnDistributionConfigBackend {
     /**
+     * A map of URLs to a list of countries where content is allowed.
+     */
+    geofencing?: {[key: string]: string[]};
+    /**
      * The configured origin request headers for the backend
      */
     originRequestHeaders?: {[key: string]: string};
@@ -49,7 +53,7 @@ export interface CdnDistributionConfigBackend {
      */
     originUrl: string;
     /**
-     * The configured backend type. Supported values are: `http`.
+     * The configured backend type. Possible values are: `http`.
      */
     type: string;
 }
@@ -105,6 +109,10 @@ export interface GetCdnDistributionConfig {
 
 export interface GetCdnDistributionConfigBackend {
     /**
+     * A map of URLs to a list of countries where content is allowed.
+     */
+    geofencing: {[key: string]: string[]};
+    /**
      * The configured origin request headers for the backend
      */
     originRequestHeaders: {[key: string]: string};
@@ -113,7 +121,7 @@ export interface GetCdnDistributionConfigBackend {
      */
     originUrl: string;
     /**
-     * The configured backend type. Supported values are: `http`.
+     * The configured backend type. Possible values are: `http`.
      */
     type: string;
 }
@@ -314,6 +322,14 @@ export interface GetLoadbalancerListener {
      * Reference target pool by target pool name.
      */
     targetPool: string;
+    /**
+     * Options that are specific to the TCP protocol.
+     */
+    tcp: outputs.GetLoadbalancerListenerTcp;
+    /**
+     * Options that are specific to the UDP protocol.
+     */
+    udp: outputs.GetLoadbalancerListenerUdp;
 }
 
 export interface GetLoadbalancerListenerServerNameIndicator {
@@ -321,6 +337,20 @@ export interface GetLoadbalancerListenerServerNameIndicator {
      * A domain name to match in order to pass TLS traffic to the target pool in the current listener
      */
     name?: string;
+}
+
+export interface GetLoadbalancerListenerTcp {
+    /**
+     * Time after which an idle connection is closed. The default value is set to 5 minutes, and the maximum value is one hour.
+     */
+    idleTimeout: string;
+}
+
+export interface GetLoadbalancerListenerUdp {
+    /**
+     * Time after which an idle session is closed. The default value is set to 1 minute, and the maximum value is 2 minutes.
+     */
+    idleTimeout: string;
 }
 
 export interface GetLoadbalancerNetwork {
@@ -1104,7 +1134,7 @@ export interface GetRoutingTableRouteDestination {
 
 export interface GetRoutingTableRouteNextHop {
     /**
-     * Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Only `cidrv4` is supported during experimental stage..
+     * Type of the next hop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`.
      */
     type: string;
     /**
@@ -1153,7 +1183,7 @@ export interface GetRoutingTableRoutesRouteDestination {
 
 export interface GetRoutingTableRoutesRouteNextHop {
     /**
-     * Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Only `cidrv4` is supported during experimental stage..
+     * Type of the next hop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`.
      */
     type: string;
     /**
@@ -1508,7 +1538,7 @@ export interface GetVolumeSource {
      */
     id: string;
     /**
-     * The type of the source. Supported values are: `volume`, `image`, `snapshot`, `backup`.
+     * The type of the source. Possible values are: `volume`, `image`, `snapshot`, `backup`.
      */
     type: string;
 }
@@ -1586,7 +1616,7 @@ export interface LoadbalancerListener {
      */
     port: number;
     /**
-     * Protocol is the highest network protocol we understand to load balance. Supported values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_TCP`, `PROTOCOL_UDP`, `PROTOCOL_TCP_PROXY`, `PROTOCOL_TLS_PASSTHROUGH`.
+     * Protocol is the highest network protocol we understand to load balance. Possible values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_TCP`, `PROTOCOL_UDP`, `PROTOCOL_TCP_PROXY`, `PROTOCOL_TLS_PASSTHROUGH`.
      */
     protocol: string;
     /**
@@ -1597,6 +1627,14 @@ export interface LoadbalancerListener {
      * Reference target pool by target pool name.
      */
     targetPool: string;
+    /**
+     * Options that are specific to the TCP protocol.
+     */
+    tcp?: outputs.LoadbalancerListenerTcp;
+    /**
+     * Options that are specific to the UDP protocol.
+     */
+    udp?: outputs.LoadbalancerListenerUdp;
 }
 
 export interface LoadbalancerListenerServerNameIndicator {
@@ -1606,13 +1644,27 @@ export interface LoadbalancerListenerServerNameIndicator {
     name?: string;
 }
 
+export interface LoadbalancerListenerTcp {
+    /**
+     * Time after which an idle connection is closed. The default value is set to 300 seconds, and the maximum value is 3600 seconds. The format is a duration and the unit must be seconds. Example: 30s
+     */
+    idleTimeout?: string;
+}
+
+export interface LoadbalancerListenerUdp {
+    /**
+     * Time after which an idle session is closed. The default value is set to 1 minute, and the maximum value is 2 minutes. The format is a duration and the unit must be seconds. Example: 30s
+     */
+    idleTimeout?: string;
+}
+
 export interface LoadbalancerNetwork {
     /**
      * Openstack network ID.
      */
     networkId: string;
     /**
-     * The role defines how the load balancer is using the network. Supported values are: `ROLE_UNSPECIFIED`, `ROLE_LISTENERS_AND_TARGETS`, `ROLE_LISTENERS`, `ROLE_TARGETS`.
+     * The role defines how the load balancer is using the network. Possible values are: `ROLE_UNSPECIFIED`, `ROLE_LISTENERS_AND_TARGETS`, `ROLE_LISTENERS`, `ROLE_TARGETS`.
      */
     role: string;
 }
@@ -1847,7 +1899,7 @@ export interface MongodbflexInstanceOptions {
      */
     snapshotRetentionDays: number;
     /**
-     * Type of the MongoDB Flex instance. Supported values are: `Replica`, `Sharded`, `Single`.
+     * Type of the MongoDB Flex instance. Possible values are: `Replica`, `Sharded`, `Single`.
      */
     type: string;
     /**
@@ -2386,7 +2438,7 @@ export interface RoutingTableRouteDestination {
 
 export interface RoutingTableRouteNextHop {
     /**
-     * Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Only `cidrv4` is supported during experimental stage..
+     * Type of the next hop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`.
      */
     type: string;
     /**
@@ -2456,7 +2508,7 @@ export interface ServerBootVolume {
      */
     sourceId: string;
     /**
-     * The type of the source. Supported values are: `volume`, `image`.
+     * The type of the source. Possible values are: `volume`, `image`.
      */
     sourceType: string;
 }
@@ -2678,7 +2730,7 @@ export interface VolumeSource {
      */
     id: string;
     /**
-     * The type of the source. Supported values are: `volume`, `image`, `snapshot`, `backup`.
+     * The type of the source. Possible values are: `volume`, `image`, `snapshot`, `backup`.
      */
     type: string;
 }

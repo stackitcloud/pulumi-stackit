@@ -107,7 +107,7 @@ export class DnsZone extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
-     * Zone type. Defaults to `primary`. Supported values are: `primary`, `secondary`.
+     * Zone type. Defaults to `primary`. Possible values are: `primary`, `secondary`.
      */
     declare public readonly type: pulumi.Output<string>;
     /**
@@ -262,7 +262,7 @@ export interface DnsZoneState {
      */
     state?: pulumi.Input<string>;
     /**
-     * Zone type. Defaults to `primary`. Supported values are: `primary`, `secondary`.
+     * Zone type. Defaults to `primary`. Possible values are: `primary`, `secondary`.
      */
     type?: pulumi.Input<string>;
     /**
@@ -333,7 +333,7 @@ export interface DnsZoneArgs {
      */
     retryTime?: pulumi.Input<number>;
     /**
-     * Zone type. Defaults to `primary`. Supported values are: `primary`, `secondary`.
+     * Zone type. Defaults to `primary`. Possible values are: `primary`, `secondary`.
      */
     type?: pulumi.Input<string>;
 }

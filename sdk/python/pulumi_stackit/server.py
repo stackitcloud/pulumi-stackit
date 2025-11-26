@@ -40,7 +40,7 @@ class ServerArgs:
         :param pulumi.Input[_builtins.str] affinity_group: The affinity group the server is assigned to.
         :param pulumi.Input[_builtins.str] availability_zone: The availability zone of the server.
         :param pulumi.Input['ServerBootVolumeArgs'] boot_volume: The boot volume for the server
-        :param pulumi.Input[_builtins.str] desired_status: The desired status of the server resource. Supported values are: `active`, `inactive`, `deallocated`.
+        :param pulumi.Input[_builtins.str] desired_status: The desired status of the server resource. Possible values are: `active`, `inactive`, `deallocated`.
         :param pulumi.Input[_builtins.str] image_id: The image ID to be used for an ephemeral disk on the server.
         :param pulumi.Input[_builtins.str] keypair_name: The name of the keypair used during server creation.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
@@ -135,7 +135,7 @@ class ServerArgs:
     @pulumi.getter(name="desiredStatus")
     def desired_status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The desired status of the server resource. Supported values are: `active`, `inactive`, `deallocated`.
+        The desired status of the server resource. Possible values are: `active`, `inactive`, `deallocated`.
         """
         return pulumi.get(self, "desired_status")
 
@@ -241,7 +241,7 @@ class _ServerState:
         :param pulumi.Input[_builtins.str] availability_zone: The availability zone of the server.
         :param pulumi.Input['ServerBootVolumeArgs'] boot_volume: The boot volume for the server
         :param pulumi.Input[_builtins.str] created_at: Date-time when the server was created
-        :param pulumi.Input[_builtins.str] desired_status: The desired status of the server resource. Supported values are: `active`, `inactive`, `deallocated`.
+        :param pulumi.Input[_builtins.str] desired_status: The desired status of the server resource. Possible values are: `active`, `inactive`, `deallocated`.
         :param pulumi.Input[_builtins.str] image_id: The image ID to be used for an ephemeral disk on the server.
         :param pulumi.Input[_builtins.str] keypair_name: The name of the keypair used during server creation.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
@@ -339,7 +339,7 @@ class _ServerState:
     @pulumi.getter(name="desiredStatus")
     def desired_status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The desired status of the server resource. Supported values are: `active`, `inactive`, `deallocated`.
+        The desired status of the server resource. Possible values are: `active`, `inactive`, `deallocated`.
         """
         return pulumi.get(self, "desired_status")
 
@@ -523,7 +523,7 @@ class Server(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] affinity_group: The affinity group the server is assigned to.
         :param pulumi.Input[_builtins.str] availability_zone: The availability zone of the server.
         :param pulumi.Input[Union['ServerBootVolumeArgs', 'ServerBootVolumeArgsDict']] boot_volume: The boot volume for the server
-        :param pulumi.Input[_builtins.str] desired_status: The desired status of the server resource. Supported values are: `active`, `inactive`, `deallocated`.
+        :param pulumi.Input[_builtins.str] desired_status: The desired status of the server resource. Possible values are: `active`, `inactive`, `deallocated`.
         :param pulumi.Input[_builtins.str] image_id: The image ID to be used for an ephemeral disk on the server.
         :param pulumi.Input[_builtins.str] keypair_name: The name of the keypair used during server creation.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
@@ -651,7 +651,7 @@ class Server(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] availability_zone: The availability zone of the server.
         :param pulumi.Input[Union['ServerBootVolumeArgs', 'ServerBootVolumeArgsDict']] boot_volume: The boot volume for the server
         :param pulumi.Input[_builtins.str] created_at: Date-time when the server was created
-        :param pulumi.Input[_builtins.str] desired_status: The desired status of the server resource. Supported values are: `active`, `inactive`, `deallocated`.
+        :param pulumi.Input[_builtins.str] desired_status: The desired status of the server resource. Possible values are: `active`, `inactive`, `deallocated`.
         :param pulumi.Input[_builtins.str] image_id: The image ID to be used for an ephemeral disk on the server.
         :param pulumi.Input[_builtins.str] keypair_name: The name of the keypair used during server creation.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
@@ -722,7 +722,7 @@ class Server(pulumi.CustomResource):
     @pulumi.getter(name="desiredStatus")
     def desired_status(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The desired status of the server resource. Supported values are: `active`, `inactive`, `deallocated`.
+        The desired status of the server resource. Possible values are: `active`, `inactive`, `deallocated`.
         """
         return pulumi.get(self, "desired_status")
 

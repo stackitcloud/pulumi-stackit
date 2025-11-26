@@ -236,8 +236,6 @@ class ResourcemanagerFolder(pulumi.CustomResource):
         """
         Resource Manager folder resource schema.
 
-        > This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
-
         ## Example Usage
 
         :param str resource_name: The name of the resource.
@@ -255,8 +253,6 @@ class ResourcemanagerFolder(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Resource Manager folder resource schema.
-
-        > This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
 
         ## Example Usage
 
