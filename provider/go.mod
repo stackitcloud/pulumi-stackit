@@ -83,7 +83,7 @@ require (
 	github.com/hashicorp/terraform-plugin-framework v1.16.1 // indirect
 	github.com/hashicorp/terraform-plugin-framework-validators v0.19.0 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.29.0 // indirect
-	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
+	github.com/hashicorp/terraform-plugin-log v0.10.0 // indirect
 	github.com/hashicorp/terraform-plugin-sdk v1.8.0 // indirect
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.37.0 // indirect
 	github.com/hashicorp/terraform-registry-address v0.4.0 // indirect
@@ -119,7 +119,7 @@ require (
 	github.com/muesli/reflow v0.3.0 // indirect
 	github.com/muesli/termenv v0.15.2 // indirect
 	github.com/natefinch/atomic v1.0.1 // indirect
-	github.com/oklog/run v1.1.0 // indirect
+	github.com/oklog/run v1.2.0 // indirect
 	github.com/olekukonko/tablewriter v0.0.5 // indirect
 	github.com/opentofu/registry-address v0.0.0-20230922120653-901b9ae4061a // indirect
 	github.com/opentracing/basictracer-go v1.1.0 // indirect
@@ -152,20 +152,21 @@ require (
 	github.com/spf13/cast v1.5.0 // indirect
 	github.com/spf13/cobra v1.10.1 // indirect
 	github.com/spf13/pflag v1.0.9 // indirect
-	github.com/stackitcloud/stackit-sdk-go/core v0.17.3 // indirect
+	github.com/stackitcloud/stackit-sdk-go/core v0.19.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/authorization v0.9.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/cdn v1.5.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/cdn v1.6.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/dns v0.17.1 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/git v0.8.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/iaas v0.31.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/iaasalpha v0.1.21-alpha // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/kms v1.0.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/loadbalancer v1.6.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/logme v0.25.1 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/mariadb v0.25.1 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/modelserving v0.6.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/mongodbflex v1.5.2 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/objectstorage v1.4.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/observability v0.14.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/observability v0.15.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/opensearch v0.24.1 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/postgresflex v1.2.1 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/rabbitmq v0.25.1 // indirect
@@ -179,7 +180,7 @@ require (
 	github.com/stackitcloud/stackit-sdk-go/services/serviceenablement v1.2.2 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/ske v1.4.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/sqlserverflex v1.3.1 // indirect
-	github.com/stackitcloud/terraform-provider-stackit v0.68.0 // indirect
+	github.com/stackitcloud/terraform-provider-stackit v0.71.0 // indirect
 	github.com/stretchr/objx v0.5.2 // indirect
 	github.com/teambition/rrule-go v1.8.2 // indirect
 	github.com/teekennedy/goldmark-markdown v0.3.0 // indirect
@@ -203,7 +204,7 @@ require (
 	go.uber.org/atomic v1.9.0 // indirect
 	golang.org/x/crypto v0.45.0 // indirect
 	golang.org/x/exp v0.0.0-20241009180824-f66d83c29e7c // indirect
-	golang.org/x/mod v0.29.0 // indirect
+	golang.org/x/mod v0.30.0 // indirect
 	golang.org/x/net v0.47.0 // indirect
 	golang.org/x/oauth2 v0.30.0 // indirect
 	golang.org/x/sync v0.18.0 // indirect
@@ -211,7 +212,7 @@ require (
 	golang.org/x/term v0.37.0 // indirect
 	golang.org/x/text v0.31.0 // indirect
 	golang.org/x/time v0.5.0 // indirect
-	golang.org/x/tools v0.38.0 // indirect
+	golang.org/x/tools v0.39.0 // indirect
 	google.golang.org/api v0.169.0 // indirect
 	google.golang.org/appengine v1.6.8 // indirect
 	google.golang.org/genproto v0.0.0-20240311173647-c811ad7063a7 // indirect
