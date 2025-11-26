@@ -163,7 +163,7 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly ImmutableArray<string> SecurityGroupIds;
         /// <summary>
-        /// Type of network interface. Some of the possible values are: Supported values are: `Server`, `Metadata`, `Gateway`.
+        /// Type of network interface. Some of the possible values are: Possible values are: `Server`, `Metadata`, `Gateway`.
         /// </summary>
         public readonly string Type;
 

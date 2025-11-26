@@ -37,7 +37,7 @@ namespace Pulumi.Stackit.Inputs
         public Input<int>? SnapshotRetentionDays { get; set; }
 
         /// <summary>
-        /// Type of the MongoDB Flex instance. Supported values are: `Replica`, `Sharded`, `Single`.
+        /// Type of the MongoDB Flex instance. Possible values are: `Replica`, `Sharded`, `Single`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

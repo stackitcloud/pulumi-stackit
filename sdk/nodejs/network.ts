@@ -6,6 +6,9 @@ import * as utilities from "./utilities";
 
 /**
  * Network resource schema. Must have a `region` specified in the provider configuration.
+ * > Behavior of not configured `ipv4Nameservers` will change from January 2026. When `ipv4Nameservers` is not set, it will be set to the network area's `defaultNameservers`.
+ * To prevent any nameserver configuration, the `ipv4Nameservers` attribute should be explicitly set to an empty list `[]`.
+ * In cases where `ipv4Nameservers` are defined within the resource, the existing behavior will remain unchanged.
  *
  * ## Example Usage
  */
@@ -68,11 +71,11 @@ export class Network extends pulumi.CustomResource {
     /**
      * The IPv6 prefix of the network (CIDR).
      */
-    declare public readonly ipv6Prefix: pulumi.Output<string | undefined>;
+    declare public readonly ipv6Prefix: pulumi.Output<string>;
     /**
      * The IPv6 prefix length of the network.
      */
-    declare public readonly ipv6PrefixLength: pulumi.Output<number | undefined>;
+    declare public readonly ipv6PrefixLength: pulumi.Output<number>;
     /**
      * The IPv6 prefixes of the network.
      */
@@ -86,7 +89,7 @@ export class Network extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The nameservers of the network. This field is deprecated and will be removed soon, use `ipv4Nameservers` to configure the nameservers for IPv4.
+     * The nameservers of the network. This field is deprecated and will be removed in January 2026, use `ipv4Nameservers` to configure the nameservers for IPv4.
      *
      * @deprecated Use `ipv4Nameservers` to configure the nameservers for IPv4.
      */
@@ -104,7 +107,7 @@ export class Network extends pulumi.CustomResource {
      */
     declare public readonly noIpv6Gateway: pulumi.Output<boolean | undefined>;
     /**
-     * The prefixes of the network. This field is deprecated and will be removed soon, use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
+     * The prefixes of the network. This field is deprecated and will be removed in January 2026, use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
      *
      * @deprecated Use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
      */
@@ -253,7 +256,7 @@ export interface NetworkState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The nameservers of the network. This field is deprecated and will be removed soon, use `ipv4Nameservers` to configure the nameservers for IPv4.
+     * The nameservers of the network. This field is deprecated and will be removed in January 2026, use `ipv4Nameservers` to configure the nameservers for IPv4.
      *
      * @deprecated Use `ipv4Nameservers` to configure the nameservers for IPv4.
      */
@@ -271,7 +274,7 @@ export interface NetworkState {
      */
     noIpv6Gateway?: pulumi.Input<boolean>;
     /**
-     * The prefixes of the network. This field is deprecated and will be removed soon, use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
+     * The prefixes of the network. This field is deprecated and will be removed in January 2026, use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
      *
      * @deprecated Use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
      */
@@ -345,7 +348,7 @@ export interface NetworkArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The nameservers of the network. This field is deprecated and will be removed soon, use `ipv4Nameservers` to configure the nameservers for IPv4.
+     * The nameservers of the network. This field is deprecated and will be removed in January 2026, use `ipv4Nameservers` to configure the nameservers for IPv4.
      *
      * @deprecated Use `ipv4Nameservers` to configure the nameservers for IPv4.
      */

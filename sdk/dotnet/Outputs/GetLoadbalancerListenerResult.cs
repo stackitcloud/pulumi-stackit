@@ -30,6 +30,14 @@ namespace Pulumi.Stackit.Outputs
         /// Reference target pool by target pool name.
         /// </summary>
         public readonly string TargetPool;
+        /// <summary>
+        /// Options that are specific to the TCP protocol.
+        /// </summary>
+        public readonly Outputs.GetLoadbalancerListenerTcpResult Tcp;
+        /// <summary>
+        /// Options that are specific to the UDP protocol.
+        /// </summary>
+        public readonly Outputs.GetLoadbalancerListenerUdpResult Udp;
 
         [OutputConstructor]
         private GetLoadbalancerListenerResult(
@@ -41,13 +49,19 @@ namespace Pulumi.Stackit.Outputs
 
             ImmutableArray<Outputs.GetLoadbalancerListenerServerNameIndicatorResult> serverNameIndicators,
 
-            string targetPool)
+            string targetPool,
+
+            Outputs.GetLoadbalancerListenerTcpResult tcp,
+
+            Outputs.GetLoadbalancerListenerUdpResult udp)
         {
             DisplayName = displayName;
             Port = port;
             Protocol = protocol;
             ServerNameIndicators = serverNameIndicators;
             TargetPool = targetPool;
+            Tcp = tcp;
+            Udp = udp;
         }
     }
 }

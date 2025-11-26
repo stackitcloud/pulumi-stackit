@@ -32,6 +32,8 @@ type Provider struct {
 	GitCustomEndpoint pulumi.StringPtrOutput `pulumi:"gitCustomEndpoint"`
 	// Custom endpoint for the IaaS service
 	IaasCustomEndpoint pulumi.StringPtrOutput `pulumi:"iaasCustomEndpoint"`
+	// Custom endpoint for the KMS service
+	KmsCustomEndpoint pulumi.StringPtrOutput `pulumi:"kmsCustomEndpoint"`
 	// Custom endpoint for the Load Balancer service
 	LoadbalancerCustomEndpoint pulumi.StringPtrOutput `pulumi:"loadbalancerCustomEndpoint"`
 	// Custom endpoint for the LogMe service
@@ -131,6 +133,8 @@ type providerArgs struct {
 	GitCustomEndpoint *string `pulumi:"gitCustomEndpoint"`
 	// Custom endpoint for the IaaS service
 	IaasCustomEndpoint *string `pulumi:"iaasCustomEndpoint"`
+	// Custom endpoint for the KMS service
+	KmsCustomEndpoint *string `pulumi:"kmsCustomEndpoint"`
 	// Custom endpoint for the Load Balancer service
 	LoadbalancerCustomEndpoint *string `pulumi:"loadbalancerCustomEndpoint"`
 	// Custom endpoint for the LogMe service
@@ -215,6 +219,8 @@ type ProviderArgs struct {
 	GitCustomEndpoint pulumi.StringPtrInput
 	// Custom endpoint for the IaaS service
 	IaasCustomEndpoint pulumi.StringPtrInput
+	// Custom endpoint for the KMS service
+	KmsCustomEndpoint pulumi.StringPtrInput
 	// Custom endpoint for the Load Balancer service
 	LoadbalancerCustomEndpoint pulumi.StringPtrInput
 	// Custom endpoint for the LogMe service
@@ -372,6 +378,11 @@ func (o ProviderOutput) GitCustomEndpoint() pulumi.StringPtrOutput {
 // Custom endpoint for the IaaS service
 func (o ProviderOutput) IaasCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.IaasCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// Custom endpoint for the KMS service
+func (o ProviderOutput) KmsCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.KmsCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 // Custom endpoint for the Load Balancer service

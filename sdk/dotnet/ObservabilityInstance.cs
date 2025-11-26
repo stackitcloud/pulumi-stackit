@@ -90,6 +90,12 @@ namespace Pulumi.Stackit
         public Output<string> LogsPushUrl { get; private set; } = null!;
 
         /// <summary>
+        /// Specifies for how many days the logs are kept. Default is set to `7`.
+        /// </summary>
+        [Output("logsRetentionDays")]
+        public Output<int> LogsRetentionDays { get; private set; } = null!;
+
+        /// <summary>
         /// Specifies Logs URL.
         /// </summary>
         [Output("logsUrl")]
@@ -164,6 +170,12 @@ namespace Pulumi.Stackit
         [Output("targetsUrl")]
         public Output<string> TargetsUrl { get; private set; } = null!;
 
+        /// <summary>
+        /// Specifies for how many days the traces are kept. Default is set to `7`.
+        /// </summary>
+        [Output("tracesRetentionDays")]
+        public Output<int> TracesRetentionDays { get; private set; } = null!;
+
         [Output("zipkinSpansUrl")]
         public Output<string> ZipkinSpansUrl { get; private set; } = null!;
 
@@ -237,6 +249,12 @@ namespace Pulumi.Stackit
         public Input<Inputs.ObservabilityInstanceAlertConfigArgs>? AlertConfig { get; set; }
 
         /// <summary>
+        /// Specifies for how many days the logs are kept. Default is set to `7`.
+        /// </summary>
+        [Input("logsRetentionDays")]
+        public Input<int>? LogsRetentionDays { get; set; }
+
+        /// <summary>
         /// Specifies for how many days the raw metrics are kept. Default is set to `90`.
         /// </summary>
         [Input("metricsRetentionDays")]
@@ -283,6 +301,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
+
+        /// <summary>
+        /// Specifies for how many days the traces are kept. Default is set to `7`.
+        /// </summary>
+        [Input("tracesRetentionDays")]
+        public Input<int>? TracesRetentionDays { get; set; }
 
         public ObservabilityInstanceArgs()
         {
@@ -381,6 +405,12 @@ namespace Pulumi.Stackit
         public Input<string>? LogsPushUrl { get; set; }
 
         /// <summary>
+        /// Specifies for how many days the logs are kept. Default is set to `7`.
+        /// </summary>
+        [Input("logsRetentionDays")]
+        public Input<int>? LogsRetentionDays { get; set; }
+
+        /// <summary>
         /// Specifies Logs URL.
         /// </summary>
         [Input("logsUrl")]
@@ -460,6 +490,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("targetsUrl")]
         public Input<string>? TargetsUrl { get; set; }
+
+        /// <summary>
+        /// Specifies for how many days the traces are kept. Default is set to `7`.
+        /// </summary>
+        [Input("tracesRetentionDays")]
+        public Input<int>? TracesRetentionDays { get; set; }
 
         [Input("zipkinSpansUrl")]
         public Input<string>? ZipkinSpansUrl { get; set; }

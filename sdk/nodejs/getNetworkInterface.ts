@@ -86,7 +86,7 @@ export interface GetNetworkInterfaceResult {
      */
     readonly securityGroupIds: string[];
     /**
-     * Type of network interface. Some of the possible values are: Supported values are: `server`, `metadata`, `gateway`.
+     * Type of network interface. Some of the possible values are: Possible values are: `server`, `metadata`, `gateway`.
      */
     readonly type: string;
 }

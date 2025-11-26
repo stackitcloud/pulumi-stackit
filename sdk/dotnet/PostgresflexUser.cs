@@ -45,7 +45,7 @@ namespace Pulumi.Stackit
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// Database access levels for the user. Supported values are: `Login`, `Createdb`.
+        /// Database access levels for the user. Possible values are: `Login`, `Createdb`.
         /// </summary>
         [Output("roles")]
         public Output<ImmutableArray<string>> Roles { get; private set; } = null!;
@@ -136,7 +136,7 @@ namespace Pulumi.Stackit
         private InputList<string>? _roles;
 
         /// <summary>
-        /// Database access levels for the user. Supported values are: `Login`, `Createdb`.
+        /// Database access levels for the user. Possible values are: `Login`, `Createdb`.
         /// </summary>
         public InputList<string> Roles
         {
@@ -195,7 +195,7 @@ namespace Pulumi.Stackit
         private InputList<string>? _roles;
 
         /// <summary>
-        /// Database access levels for the user. Supported values are: `Login`, `Createdb`.
+        /// Database access levels for the user. Possible values are: `Login`, `Createdb`.
         /// </summary>
         public InputList<string> Roles
         {

@@ -13,6 +13,9 @@ import (
 )
 
 // Network resource schema. Must have a `region` specified in the provider configuration.
+// > Behavior of not configured `ipv4Nameservers` will change from January 2026. When `ipv4Nameservers` is not set, it will be set to the network area's `defaultNameservers`.
+// To prevent any nameserver configuration, the `ipv4Nameservers` attribute should be explicitly set to an empty list `[]`.
+// In cases where `ipv4Nameservers` are defined within the resource, the existing behavior will remain unchanged.
 //
 // ## Example Usage
 type Network struct {
@@ -33,16 +36,16 @@ type Network struct {
 	// The IPv6 nameservers of the network.
 	Ipv6Nameservers pulumi.StringArrayOutput `pulumi:"ipv6Nameservers"`
 	// The IPv6 prefix of the network (CIDR).
-	Ipv6Prefix pulumi.StringPtrOutput `pulumi:"ipv6Prefix"`
+	Ipv6Prefix pulumi.StringOutput `pulumi:"ipv6Prefix"`
 	// The IPv6 prefix length of the network.
-	Ipv6PrefixLength pulumi.IntPtrOutput `pulumi:"ipv6PrefixLength"`
+	Ipv6PrefixLength pulumi.IntOutput `pulumi:"ipv6PrefixLength"`
 	// The IPv6 prefixes of the network.
 	Ipv6Prefixes pulumi.StringArrayOutput `pulumi:"ipv6Prefixes"`
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the network.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The nameservers of the network. This field is deprecated and will be removed soon, use `ipv4Nameservers` to configure the nameservers for IPv4.
+	// The nameservers of the network. This field is deprecated and will be removed in January 2026, use `ipv4Nameservers` to configure the nameservers for IPv4.
 	//
 	// Deprecated: Use `ipv4Nameservers` to configure the nameservers for IPv4.
 	Nameservers pulumi.StringArrayOutput `pulumi:"nameservers"`
@@ -52,7 +55,7 @@ type Network struct {
 	NoIpv4Gateway pulumi.BoolPtrOutput `pulumi:"noIpv4Gateway"`
 	// If set to `true`, the network doesn't have a gateway.
 	NoIpv6Gateway pulumi.BoolPtrOutput `pulumi:"noIpv6Gateway"`
-	// The prefixes of the network. This field is deprecated and will be removed soon, use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
+	// The prefixes of the network. This field is deprecated and will be removed in January 2026, use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
 	//
 	// Deprecated: Use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
 	Prefixes pulumi.StringArrayOutput `pulumi:"prefixes"`
@@ -127,7 +130,7 @@ type networkState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the network.
 	Name *string `pulumi:"name"`
-	// The nameservers of the network. This field is deprecated and will be removed soon, use `ipv4Nameservers` to configure the nameservers for IPv4.
+	// The nameservers of the network. This field is deprecated and will be removed in January 2026, use `ipv4Nameservers` to configure the nameservers for IPv4.
 	//
 	// Deprecated: Use `ipv4Nameservers` to configure the nameservers for IPv4.
 	Nameservers []string `pulumi:"nameservers"`
@@ -137,7 +140,7 @@ type networkState struct {
 	NoIpv4Gateway *bool `pulumi:"noIpv4Gateway"`
 	// If set to `true`, the network doesn't have a gateway.
 	NoIpv6Gateway *bool `pulumi:"noIpv6Gateway"`
-	// The prefixes of the network. This field is deprecated and will be removed soon, use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
+	// The prefixes of the network. This field is deprecated and will be removed in January 2026, use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
 	//
 	// Deprecated: Use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
 	Prefixes []string `pulumi:"prefixes"`
@@ -180,7 +183,7 @@ type NetworkState struct {
 	Labels pulumi.StringMapInput
 	// The name of the network.
 	Name pulumi.StringPtrInput
-	// The nameservers of the network. This field is deprecated and will be removed soon, use `ipv4Nameservers` to configure the nameservers for IPv4.
+	// The nameservers of the network. This field is deprecated and will be removed in January 2026, use `ipv4Nameservers` to configure the nameservers for IPv4.
 	//
 	// Deprecated: Use `ipv4Nameservers` to configure the nameservers for IPv4.
 	Nameservers pulumi.StringArrayInput
@@ -190,7 +193,7 @@ type NetworkState struct {
 	NoIpv4Gateway pulumi.BoolPtrInput
 	// If set to `true`, the network doesn't have a gateway.
 	NoIpv6Gateway pulumi.BoolPtrInput
-	// The prefixes of the network. This field is deprecated and will be removed soon, use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
+	// The prefixes of the network. This field is deprecated and will be removed in January 2026, use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
 	//
 	// Deprecated: Use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
 	Prefixes pulumi.StringArrayInput
@@ -233,7 +236,7 @@ type networkArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the network.
 	Name *string `pulumi:"name"`
-	// The nameservers of the network. This field is deprecated and will be removed soon, use `ipv4Nameservers` to configure the nameservers for IPv4.
+	// The nameservers of the network. This field is deprecated and will be removed in January 2026, use `ipv4Nameservers` to configure the nameservers for IPv4.
 	//
 	// Deprecated: Use `ipv4Nameservers` to configure the nameservers for IPv4.
 	Nameservers []string `pulumi:"nameservers"`
@@ -275,7 +278,7 @@ type NetworkArgs struct {
 	Labels pulumi.StringMapInput
 	// The name of the network.
 	Name pulumi.StringPtrInput
-	// The nameservers of the network. This field is deprecated and will be removed soon, use `ipv4Nameservers` to configure the nameservers for IPv4.
+	// The nameservers of the network. This field is deprecated and will be removed in January 2026, use `ipv4Nameservers` to configure the nameservers for IPv4.
 	//
 	// Deprecated: Use `ipv4Nameservers` to configure the nameservers for IPv4.
 	Nameservers pulumi.StringArrayInput
@@ -418,13 +421,13 @@ func (o NetworkOutput) Ipv6Nameservers() pulumi.StringArrayOutput {
 }
 
 // The IPv6 prefix of the network (CIDR).
-func (o NetworkOutput) Ipv6Prefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.Ipv6Prefix }).(pulumi.StringPtrOutput)
+func (o NetworkOutput) Ipv6Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Ipv6Prefix }).(pulumi.StringOutput)
 }
 
 // The IPv6 prefix length of the network.
-func (o NetworkOutput) Ipv6PrefixLength() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *Network) pulumi.IntPtrOutput { return v.Ipv6PrefixLength }).(pulumi.IntPtrOutput)
+func (o NetworkOutput) Ipv6PrefixLength() pulumi.IntOutput {
+	return o.ApplyT(func(v *Network) pulumi.IntOutput { return v.Ipv6PrefixLength }).(pulumi.IntOutput)
 }
 
 // The IPv6 prefixes of the network.
@@ -442,7 +445,7 @@ func (o NetworkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The nameservers of the network. This field is deprecated and will be removed soon, use `ipv4Nameservers` to configure the nameservers for IPv4.
+// The nameservers of the network. This field is deprecated and will be removed in January 2026, use `ipv4Nameservers` to configure the nameservers for IPv4.
 //
 // Deprecated: Use `ipv4Nameservers` to configure the nameservers for IPv4.
 func (o NetworkOutput) Nameservers() pulumi.StringArrayOutput {
@@ -464,7 +467,7 @@ func (o NetworkOutput) NoIpv6Gateway() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.BoolPtrOutput { return v.NoIpv6Gateway }).(pulumi.BoolPtrOutput)
 }
 
-// The prefixes of the network. This field is deprecated and will be removed soon, use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
+// The prefixes of the network. This field is deprecated and will be removed in January 2026, use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
 //
 // Deprecated: Use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
 func (o NetworkOutput) Prefixes() pulumi.StringArrayOutput {

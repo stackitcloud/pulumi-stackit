@@ -44,7 +44,7 @@ export class SecurityGroupRule extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string | undefined>;
     /**
-     * The direction of the traffic which the rule should match. Some of the possible values are: Supported values are: `ingress`, `egress`.
+     * The direction of the traffic which the rule should match. Some of the possible values are: Possible values are: `ingress`, `egress`.
      */
     declare public readonly direction: pulumi.Output<string>;
     /**
@@ -145,7 +145,7 @@ export interface SecurityGroupRuleState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The direction of the traffic which the rule should match. Some of the possible values are: Supported values are: `ingress`, `egress`.
+     * The direction of the traffic which the rule should match. Some of the possible values are: Possible values are: `ingress`, `egress`.
      */
     direction?: pulumi.Input<string>;
     /**
@@ -195,7 +195,7 @@ export interface SecurityGroupRuleArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The direction of the traffic which the rule should match. Some of the possible values are: Supported values are: `ingress`, `egress`.
+     * The direction of the traffic which the rule should match. Some of the possible values are: Possible values are: `ingress`, `egress`.
      */
     direction: pulumi.Input<string>;
     /**

@@ -85,6 +85,10 @@ export interface GetObservabilityInstanceResult {
      */
     readonly logsPushUrl: string;
     /**
+     * Specifies for how many days the logs are kept. Default is set to `7`.
+     */
+    readonly logsRetentionDays: number;
+    /**
      * Specifies Logs URL.
      */
     readonly logsUrl: string;
@@ -133,6 +137,10 @@ export interface GetObservabilityInstanceResult {
      * Specifies Targets URL.
      */
     readonly targetsUrl: string;
+    /**
+     * Specifies for how many days the traces are kept. Default is set to `7`.
+     */
+    readonly tracesRetentionDays: number;
     readonly zipkinSpansUrl: string;
 }
 /**

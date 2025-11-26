@@ -56,7 +56,7 @@ namespace Pulumi.Stackit
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// The desired status of the server resource. Supported values are: `Active`, `Inactive`, `Deallocated`.
+        /// The desired status of the server resource. Possible values are: `Active`, `Inactive`, `Deallocated`.
         /// </summary>
         [Output("desiredStatus")]
         public Output<string?> DesiredStatus { get; private set; } = null!;
@@ -193,7 +193,7 @@ namespace Pulumi.Stackit
         public Input<Inputs.ServerBootVolumeArgs>? BootVolume { get; set; }
 
         /// <summary>
-        /// The desired status of the server resource. Supported values are: `Active`, `Inactive`, `Deallocated`.
+        /// The desired status of the server resource. Possible values are: `Active`, `Inactive`, `Deallocated`.
         /// </summary>
         [Input("desiredStatus")]
         public Input<string>? DesiredStatus { get; set; }
@@ -291,7 +291,7 @@ namespace Pulumi.Stackit
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// The desired status of the server resource. Supported values are: `Active`, `Inactive`, `Deallocated`.
+        /// The desired status of the server resource. Possible values are: `Active`, `Inactive`, `Deallocated`.
         /// </summary>
         [Input("desiredStatus")]
         public Input<string>? DesiredStatus { get; set; }

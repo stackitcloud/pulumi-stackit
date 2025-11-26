@@ -27,7 +27,7 @@ class GetObservabilityInstanceResult:
     """
     A collection of values returned by getObservabilityInstance.
     """
-    def __init__(__self__, acls=None, alert_config=None, alerting_url=None, dashboard_url=None, grafana_initial_admin_password=None, grafana_initial_admin_user=None, grafana_public_read_access=None, grafana_url=None, id=None, instance_id=None, is_updatable=None, jaeger_traces_url=None, jaeger_ui_url=None, logs_push_url=None, logs_url=None, metrics_push_url=None, metrics_retention_days=None, metrics_retention_days1h_downsampling=None, metrics_retention_days5m_downsampling=None, metrics_url=None, name=None, otlp_traces_url=None, parameters=None, plan_id=None, plan_name=None, project_id=None, targets_url=None, zipkin_spans_url=None):
+    def __init__(__self__, acls=None, alert_config=None, alerting_url=None, dashboard_url=None, grafana_initial_admin_password=None, grafana_initial_admin_user=None, grafana_public_read_access=None, grafana_url=None, id=None, instance_id=None, is_updatable=None, jaeger_traces_url=None, jaeger_ui_url=None, logs_push_url=None, logs_retention_days=None, logs_url=None, metrics_push_url=None, metrics_retention_days=None, metrics_retention_days1h_downsampling=None, metrics_retention_days5m_downsampling=None, metrics_url=None, name=None, otlp_traces_url=None, parameters=None, plan_id=None, plan_name=None, project_id=None, targets_url=None, traces_retention_days=None, zipkin_spans_url=None):
         if acls and not isinstance(acls, list):
             raise TypeError("Expected argument 'acls' to be a list")
         pulumi.set(__self__, "acls", acls)
@@ -70,6 +70,9 @@ class GetObservabilityInstanceResult:
         if logs_push_url and not isinstance(logs_push_url, str):
             raise TypeError("Expected argument 'logs_push_url' to be a str")
         pulumi.set(__self__, "logs_push_url", logs_push_url)
+        if logs_retention_days and not isinstance(logs_retention_days, int):
+            raise TypeError("Expected argument 'logs_retention_days' to be a int")
+        pulumi.set(__self__, "logs_retention_days", logs_retention_days)
         if logs_url and not isinstance(logs_url, str):
             raise TypeError("Expected argument 'logs_url' to be a str")
         pulumi.set(__self__, "logs_url", logs_url)
@@ -109,6 +112,9 @@ class GetObservabilityInstanceResult:
         if targets_url and not isinstance(targets_url, str):
             raise TypeError("Expected argument 'targets_url' to be a str")
         pulumi.set(__self__, "targets_url", targets_url)
+        if traces_retention_days and not isinstance(traces_retention_days, int):
+            raise TypeError("Expected argument 'traces_retention_days' to be a int")
+        pulumi.set(__self__, "traces_retention_days", traces_retention_days)
         if zipkin_spans_url and not isinstance(zipkin_spans_url, str):
             raise TypeError("Expected argument 'zipkin_spans_url' to be a str")
         pulumi.set(__self__, "zipkin_spans_url", zipkin_spans_url)
@@ -217,6 +223,14 @@ class GetObservabilityInstanceResult:
         return pulumi.get(self, "logs_push_url")
 
     @_builtins.property
+    @pulumi.getter(name="logsRetentionDays")
+    def logs_retention_days(self) -> _builtins.int:
+        """
+        Specifies for how many days the logs are kept. Default is set to `7`.
+        """
+        return pulumi.get(self, "logs_retention_days")
+
+    @_builtins.property
     @pulumi.getter(name="logsUrl")
     def logs_url(self) -> _builtins.str:
         """
@@ -318,6 +332,14 @@ class GetObservabilityInstanceResult:
         return pulumi.get(self, "targets_url")
 
     @_builtins.property
+    @pulumi.getter(name="tracesRetentionDays")
+    def traces_retention_days(self) -> _builtins.int:
+        """
+        Specifies for how many days the traces are kept. Default is set to `7`.
+        """
+        return pulumi.get(self, "traces_retention_days")
+
+    @_builtins.property
     @pulumi.getter(name="zipkinSpansUrl")
     def zipkin_spans_url(self) -> _builtins.str:
         return pulumi.get(self, "zipkin_spans_url")
@@ -343,6 +365,7 @@ class AwaitableGetObservabilityInstanceResult(GetObservabilityInstanceResult):
             jaeger_traces_url=self.jaeger_traces_url,
             jaeger_ui_url=self.jaeger_ui_url,
             logs_push_url=self.logs_push_url,
+            logs_retention_days=self.logs_retention_days,
             logs_url=self.logs_url,
             metrics_push_url=self.metrics_push_url,
             metrics_retention_days=self.metrics_retention_days,
@@ -356,6 +379,7 @@ class AwaitableGetObservabilityInstanceResult(GetObservabilityInstanceResult):
             plan_name=self.plan_name,
             project_id=self.project_id,
             targets_url=self.targets_url,
+            traces_retention_days=self.traces_retention_days,
             zipkin_spans_url=self.zipkin_spans_url)
 
 
@@ -392,6 +416,7 @@ def get_observability_instance(instance_id: Optional[_builtins.str] = None,
         jaeger_traces_url=pulumi.get(__ret__, 'jaeger_traces_url'),
         jaeger_ui_url=pulumi.get(__ret__, 'jaeger_ui_url'),
         logs_push_url=pulumi.get(__ret__, 'logs_push_url'),
+        logs_retention_days=pulumi.get(__ret__, 'logs_retention_days'),
         logs_url=pulumi.get(__ret__, 'logs_url'),
         metrics_push_url=pulumi.get(__ret__, 'metrics_push_url'),
         metrics_retention_days=pulumi.get(__ret__, 'metrics_retention_days'),
@@ -405,6 +430,7 @@ def get_observability_instance(instance_id: Optional[_builtins.str] = None,
         plan_name=pulumi.get(__ret__, 'plan_name'),
         project_id=pulumi.get(__ret__, 'project_id'),
         targets_url=pulumi.get(__ret__, 'targets_url'),
+        traces_retention_days=pulumi.get(__ret__, 'traces_retention_days'),
         zipkin_spans_url=pulumi.get(__ret__, 'zipkin_spans_url'))
 def get_observability_instance_output(instance_id: Optional[pulumi.Input[_builtins.str]] = None,
                                       project_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -438,6 +464,7 @@ def get_observability_instance_output(instance_id: Optional[pulumi.Input[_builti
         jaeger_traces_url=pulumi.get(__response__, 'jaeger_traces_url'),
         jaeger_ui_url=pulumi.get(__response__, 'jaeger_ui_url'),
         logs_push_url=pulumi.get(__response__, 'logs_push_url'),
+        logs_retention_days=pulumi.get(__response__, 'logs_retention_days'),
         logs_url=pulumi.get(__response__, 'logs_url'),
         metrics_push_url=pulumi.get(__response__, 'metrics_push_url'),
         metrics_retention_days=pulumi.get(__response__, 'metrics_retention_days'),
@@ -451,4 +478,5 @@ def get_observability_instance_output(instance_id: Optional[pulumi.Input[_builti
         plan_name=pulumi.get(__response__, 'plan_name'),
         project_id=pulumi.get(__response__, 'project_id'),
         targets_url=pulumi.get(__response__, 'targets_url'),
+        traces_retention_days=pulumi.get(__response__, 'traces_retention_days'),
         zipkin_spans_url=pulumi.get(__response__, 'zipkin_spans_url')))

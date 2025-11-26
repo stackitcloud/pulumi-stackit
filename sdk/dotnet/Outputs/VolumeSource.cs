@@ -18,7 +18,7 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The type of the source. Supported values are: `Volume`, `Image`, `Snapshot`, `Backup`.
+        /// The type of the source. Possible values are: `Volume`, `Image`, `Snapshot`, `Backup`.
         /// </summary>
         public readonly string Type;
 
