@@ -27,7 +27,7 @@ type PostgresflexUser struct {
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// Database access levels for the user. Supported values are: `login`, `createdb`.
+	// Database access levels for the user. Possible values are: `login`, `createdb`.
 	Roles pulumi.StringArrayOutput `pulumi:"roles"`
 	Uri   pulumi.StringOutput      `pulumi:"uri"`
 	// User ID.
@@ -91,7 +91,7 @@ type postgresflexUserState struct {
 	ProjectId *string `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
 	Region *string `pulumi:"region"`
-	// Database access levels for the user. Supported values are: `login`, `createdb`.
+	// Database access levels for the user. Possible values are: `login`, `createdb`.
 	Roles []string `pulumi:"roles"`
 	Uri   *string  `pulumi:"uri"`
 	// User ID.
@@ -109,7 +109,7 @@ type PostgresflexUserState struct {
 	ProjectId pulumi.StringPtrInput
 	// The resource region. If not defined, the provider region is used.
 	Region pulumi.StringPtrInput
-	// Database access levels for the user. Supported values are: `login`, `createdb`.
+	// Database access levels for the user. Possible values are: `login`, `createdb`.
 	Roles pulumi.StringArrayInput
 	Uri   pulumi.StringPtrInput
 	// User ID.
@@ -128,7 +128,7 @@ type postgresflexUserArgs struct {
 	ProjectId string `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
 	Region *string `pulumi:"region"`
-	// Database access levels for the user. Supported values are: `login`, `createdb`.
+	// Database access levels for the user. Possible values are: `login`, `createdb`.
 	Roles    []string `pulumi:"roles"`
 	Username string   `pulumi:"username"`
 }
@@ -141,7 +141,7 @@ type PostgresflexUserArgs struct {
 	ProjectId pulumi.StringInput
 	// The resource region. If not defined, the provider region is used.
 	Region pulumi.StringPtrInput
-	// Database access levels for the user. Supported values are: `login`, `createdb`.
+	// Database access levels for the user. Possible values are: `login`, `createdb`.
 	Roles    pulumi.StringArrayInput
 	Username pulumi.StringInput
 }
@@ -260,7 +260,7 @@ func (o PostgresflexUserOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresflexUser) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Database access levels for the user. Supported values are: `login`, `createdb`.
+// Database access levels for the user. Possible values are: `login`, `createdb`.
 func (o PostgresflexUserOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PostgresflexUser) pulumi.StringArrayOutput { return v.Roles }).(pulumi.StringArrayOutput)
 }

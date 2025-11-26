@@ -123,7 +123,7 @@ namespace Pulumi.Stackit
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Zone type. Defaults to `Primary`. Supported values are: `Primary`, `Secondary`.
+        /// Zone type. Defaults to `Primary`. Possible values are: `Primary`, `Secondary`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -275,7 +275,7 @@ namespace Pulumi.Stackit
         public Input<int>? RetryTime { get; set; }
 
         /// <summary>
-        /// Zone type. Defaults to `Primary`. Supported values are: `Primary`, `Secondary`.
+        /// Zone type. Defaults to `Primary`. Possible values are: `Primary`, `Secondary`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -400,7 +400,7 @@ namespace Pulumi.Stackit
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// Zone type. Defaults to `Primary`. Supported values are: `Primary`, `Secondary`.
+        /// Zone type. Defaults to `Primary`. Possible values are: `Primary`, `Secondary`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -33,7 +33,7 @@ class SecurityGroupRuleArgs:
                  remote_security_group_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecurityGroupRule resource.
-        :param pulumi.Input[_builtins.str] direction: The direction of the traffic which the rule should match. Some of the possible values are: Supported values are: `ingress`, `egress`.
+        :param pulumi.Input[_builtins.str] direction: The direction of the traffic which the rule should match. Some of the possible values are: Possible values are: `ingress`, `egress`.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the security group rule is associated.
         :param pulumi.Input[_builtins.str] security_group_id: The security group ID.
         :param pulumi.Input[_builtins.str] description: The rule description.
@@ -66,7 +66,7 @@ class SecurityGroupRuleArgs:
     @pulumi.getter
     def direction(self) -> pulumi.Input[_builtins.str]:
         """
-        The direction of the traffic which the rule should match. Some of the possible values are: Supported values are: `ingress`, `egress`.
+        The direction of the traffic which the rule should match. Some of the possible values are: Possible values are: `ingress`, `egress`.
         """
         return pulumi.get(self, "direction")
 
@@ -200,7 +200,7 @@ class _SecurityGroupRuleState:
         """
         Input properties used for looking up and filtering SecurityGroupRule resources.
         :param pulumi.Input[_builtins.str] description: The rule description.
-        :param pulumi.Input[_builtins.str] direction: The direction of the traffic which the rule should match. Some of the possible values are: Supported values are: `ingress`, `egress`.
+        :param pulumi.Input[_builtins.str] direction: The direction of the traffic which the rule should match. Some of the possible values are: Possible values are: `ingress`, `egress`.
         :param pulumi.Input[_builtins.str] ether_type: The ethertype which the rule should match.
         :param pulumi.Input['SecurityGroupRuleIcmpParametersArgs'] icmp_parameters: ICMP Parameters. These parameters should only be provided if the protocol is ICMP.
         :param pulumi.Input[_builtins.str] ip_range: The remote IP range which the rule should match.
@@ -250,7 +250,7 @@ class _SecurityGroupRuleState:
     @pulumi.getter
     def direction(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The direction of the traffic which the rule should match. Some of the possible values are: Supported values are: `ingress`, `egress`.
+        The direction of the traffic which the rule should match. Some of the possible values are: Possible values are: `ingress`, `egress`.
         """
         return pulumi.get(self, "direction")
 
@@ -392,7 +392,7 @@ class SecurityGroupRule(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The rule description.
-        :param pulumi.Input[_builtins.str] direction: The direction of the traffic which the rule should match. Some of the possible values are: Supported values are: `ingress`, `egress`.
+        :param pulumi.Input[_builtins.str] direction: The direction of the traffic which the rule should match. Some of the possible values are: Possible values are: `ingress`, `egress`.
         :param pulumi.Input[_builtins.str] ether_type: The ethertype which the rule should match.
         :param pulumi.Input[Union['SecurityGroupRuleIcmpParametersArgs', 'SecurityGroupRuleIcmpParametersArgsDict']] icmp_parameters: ICMP Parameters. These parameters should only be provided if the protocol is ICMP.
         :param pulumi.Input[_builtins.str] ip_range: The remote IP range which the rule should match.
@@ -493,7 +493,7 @@ class SecurityGroupRule(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The rule description.
-        :param pulumi.Input[_builtins.str] direction: The direction of the traffic which the rule should match. Some of the possible values are: Supported values are: `ingress`, `egress`.
+        :param pulumi.Input[_builtins.str] direction: The direction of the traffic which the rule should match. Some of the possible values are: Possible values are: `ingress`, `egress`.
         :param pulumi.Input[_builtins.str] ether_type: The ethertype which the rule should match.
         :param pulumi.Input[Union['SecurityGroupRuleIcmpParametersArgs', 'SecurityGroupRuleIcmpParametersArgsDict']] icmp_parameters: ICMP Parameters. These parameters should only be provided if the protocol is ICMP.
         :param pulumi.Input[_builtins.str] ip_range: The remote IP range which the rule should match.
@@ -533,7 +533,7 @@ class SecurityGroupRule(pulumi.CustomResource):
     @pulumi.getter
     def direction(self) -> pulumi.Output[_builtins.str]:
         """
-        The direction of the traffic which the rule should match. Some of the possible values are: Supported values are: `ingress`, `egress`.
+        The direction of the traffic which the rule should match. Some of the possible values are: Possible values are: `ingress`, `egress`.
         """
         return pulumi.get(self, "direction")
 

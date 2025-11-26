@@ -84,6 +84,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('iaasCustomEndpoint')
 
     @_builtins.property
+    def kms_custom_endpoint(self) -> Optional[str]:
+        """
+        Custom endpoint for the KMS service
+        """
+        return __config__.get('kmsCustomEndpoint')
+
+    @_builtins.property
     def loadbalancer_custom_endpoint(self) -> Optional[str]:
         """
         Custom endpoint for the Load Balancer service

@@ -47,7 +47,7 @@ export interface GetSecurityGroupRuleResult {
      */
     readonly description: string;
     /**
-     * The direction of the traffic which the rule should match. Some of the possible values are: Supported values are: `ingress`, `egress`.
+     * The direction of the traffic which the rule should match. Some of the possible values are: Possible values are: `ingress`, `egress`.
      */
     readonly direction: string;
     /**

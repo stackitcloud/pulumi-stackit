@@ -14,7 +14,7 @@ namespace Pulumi.Stackit.Outputs
     public sealed class RoutingTableRouteNextHop
     {
         /// <summary>
-        /// Possible values are: `Blackhole`, `Internet`, `Ipv4`, `Ipv6`. Only `Cidrv4` is supported during experimental stage..
+        /// Type of the next hop. Possible values are: `Blackhole`, `Internet`, `Ipv4`, `Ipv6`.
         /// </summary>
         public readonly string Type;
         /// <summary>

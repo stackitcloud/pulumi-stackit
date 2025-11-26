@@ -53,7 +53,7 @@ export class PostgresflexUser extends pulumi.CustomResource {
      */
     declare public readonly region: pulumi.Output<string>;
     /**
-     * Database access levels for the user. Supported values are: `login`, `createdb`.
+     * Database access levels for the user. Possible values are: `login`, `createdb`.
      */
     declare public readonly roles: pulumi.Output<string[]>;
     declare public /*out*/ readonly uri: pulumi.Output<string>;
@@ -138,7 +138,7 @@ export interface PostgresflexUserState {
      */
     region?: pulumi.Input<string>;
     /**
-     * Database access levels for the user. Supported values are: `login`, `createdb`.
+     * Database access levels for the user. Possible values are: `login`, `createdb`.
      */
     roles?: pulumi.Input<pulumi.Input<string>[]>;
     uri?: pulumi.Input<string>;
@@ -166,7 +166,7 @@ export interface PostgresflexUserArgs {
      */
     region?: pulumi.Input<string>;
     /**
-     * Database access levels for the user. Supported values are: `login`, `createdb`.
+     * Database access levels for the user. Possible values are: `login`, `createdb`.
      */
     roles: pulumi.Input<pulumi.Input<string>[]>;
     username: pulumi.Input<string>;

@@ -84,7 +84,7 @@ namespace Pulumi.Stackit
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
         /// <summary>
-        /// Type of network interface. Some of the possible values are: Supported values are: `Server`, `Metadata`, `Gateway`.
+        /// Type of network interface. Some of the possible values are: Possible values are: `Server`, `Metadata`, `Gateway`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -295,7 +295,7 @@ namespace Pulumi.Stackit
         }
 
         /// <summary>
-        /// Type of network interface. Some of the possible values are: Supported values are: `Server`, `Metadata`, `Gateway`.
+        /// Type of network interface. Some of the possible values are: Possible values are: `Server`, `Metadata`, `Gateway`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

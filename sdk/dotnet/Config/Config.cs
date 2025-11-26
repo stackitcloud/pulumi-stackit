@@ -122,6 +122,16 @@ namespace Pulumi.Stackit
             set => _iaasCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _kmsCustomEndpoint = new __Value<string?>(() => __config.Get("kmsCustomEndpoint"));
+        /// <summary>
+        /// Custom endpoint for the KMS service
+        /// </summary>
+        public static string? KmsCustomEndpoint
+        {
+            get => _kmsCustomEndpoint.Get();
+            set => _kmsCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _loadbalancerCustomEndpoint = new __Value<string?>(() => __config.Get("loadbalancerCustomEndpoint"));
         /// <summary>
         /// Custom endpoint for the Load Balancer service

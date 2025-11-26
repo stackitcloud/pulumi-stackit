@@ -122,7 +122,7 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The direction of the traffic which the rule should match. Some of the possible values are: Supported values are: `Ingress`, `Egress`.
+        /// The direction of the traffic which the rule should match. Some of the possible values are: Possible values are: `Ingress`, `Egress`.
         /// </summary>
         public readonly string Direction;
         /// <summary>

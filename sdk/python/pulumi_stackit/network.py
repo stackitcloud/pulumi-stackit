@@ -49,7 +49,7 @@ class NetworkArgs:
         :param pulumi.Input[_builtins.int] ipv6_prefix_length: The IPv6 prefix length of the network.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
         :param pulumi.Input[_builtins.str] name: The name of the network.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nameservers: The nameservers of the network. This field is deprecated and will be removed soon, use `ipv4_nameservers` to configure the nameservers for IPv4.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nameservers: The nameservers of the network. This field is deprecated and will be removed in January 2026, use `ipv4_nameservers` to configure the nameservers for IPv4.
         :param pulumi.Input[_builtins.bool] no_ipv4_gateway: If set to `true`, the network doesn't have a gateway.
         :param pulumi.Input[_builtins.bool] no_ipv6_gateway: If set to `true`, the network doesn't have a gateway.
         :param pulumi.Input[_builtins.str] region: Can only be used when experimental "network" is set.
@@ -232,7 +232,7 @@ class NetworkArgs:
     @_utilities.deprecated("""Use `ipv4_nameservers` to configure the nameservers for IPv4.""")
     def nameservers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The nameservers of the network. This field is deprecated and will be removed soon, use `ipv4_nameservers` to configure the nameservers for IPv4.
+        The nameservers of the network. This field is deprecated and will be removed in January 2026, use `ipv4_nameservers` to configure the nameservers for IPv4.
         """
         return pulumi.get(self, "nameservers")
 
@@ -342,11 +342,11 @@ class _NetworkState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv6_prefixes: The IPv6 prefixes of the network.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
         :param pulumi.Input[_builtins.str] name: The name of the network.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nameservers: The nameservers of the network. This field is deprecated and will be removed soon, use `ipv4_nameservers` to configure the nameservers for IPv4.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nameservers: The nameservers of the network. This field is deprecated and will be removed in January 2026, use `ipv4_nameservers` to configure the nameservers for IPv4.
         :param pulumi.Input[_builtins.str] network_id: The network ID.
         :param pulumi.Input[_builtins.bool] no_ipv4_gateway: If set to `true`, the network doesn't have a gateway.
         :param pulumi.Input[_builtins.bool] no_ipv6_gateway: If set to `true`, the network doesn't have a gateway.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] prefixes: The prefixes of the network. This field is deprecated and will be removed soon, use `ipv4_prefixes` to read the prefixes of the IPv4 networks.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] prefixes: The prefixes of the network. This field is deprecated and will be removed in January 2026, use `ipv4_prefixes` to read the prefixes of the IPv4 networks.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the network is associated.
         :param pulumi.Input[_builtins.str] public_ip: The public IP of the network.
         :param pulumi.Input[_builtins.str] region: Can only be used when experimental "network" is set.
@@ -555,7 +555,7 @@ class _NetworkState:
     @_utilities.deprecated("""Use `ipv4_nameservers` to configure the nameservers for IPv4.""")
     def nameservers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The nameservers of the network. This field is deprecated and will be removed soon, use `ipv4_nameservers` to configure the nameservers for IPv4.
+        The nameservers of the network. This field is deprecated and will be removed in January 2026, use `ipv4_nameservers` to configure the nameservers for IPv4.
         """
         return pulumi.get(self, "nameservers")
 
@@ -604,7 +604,7 @@ class _NetworkState:
     @_utilities.deprecated("""Use `ipv4_prefixes` to read the prefixes of the IPv4 networks.""")
     def prefixes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The prefixes of the network. This field is deprecated and will be removed soon, use `ipv4_prefixes` to read the prefixes of the IPv4 networks.
+        The prefixes of the network. This field is deprecated and will be removed in January 2026, use `ipv4_prefixes` to read the prefixes of the IPv4 networks.
         """
         return pulumi.get(self, "prefixes")
 
@@ -701,6 +701,9 @@ class Network(pulumi.CustomResource):
                  __props__=None):
         """
         Network resource schema. Must have a `region` specified in the provider configuration.
+        > Behavior of not configured `ipv4_nameservers` will change from January 2026. When `ipv4_nameservers` is not set, it will be set to the network area's `default_nameservers`.
+        To prevent any nameserver configuration, the `ipv4_nameservers` attribute should be explicitly set to an empty list `[]`.
+        In cases where `ipv4_nameservers` are defined within the resource, the existing behavior will remain unchanged.
 
         ## Example Usage
 
@@ -716,7 +719,7 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] ipv6_prefix_length: The IPv6 prefix length of the network.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
         :param pulumi.Input[_builtins.str] name: The name of the network.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nameservers: The nameservers of the network. This field is deprecated and will be removed soon, use `ipv4_nameservers` to configure the nameservers for IPv4.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nameservers: The nameservers of the network. This field is deprecated and will be removed in January 2026, use `ipv4_nameservers` to configure the nameservers for IPv4.
         :param pulumi.Input[_builtins.bool] no_ipv4_gateway: If set to `true`, the network doesn't have a gateway.
         :param pulumi.Input[_builtins.bool] no_ipv6_gateway: If set to `true`, the network doesn't have a gateway.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the network is associated.
@@ -734,6 +737,9 @@ class Network(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Network resource schema. Must have a `region` specified in the provider configuration.
+        > Behavior of not configured `ipv4_nameservers` will change from January 2026. When `ipv4_nameservers` is not set, it will be set to the network area's `default_nameservers`.
+        To prevent any nameserver configuration, the `ipv4_nameservers` attribute should be explicitly set to an empty list `[]`.
+        In cases where `ipv4_nameservers` are defined within the resource, the existing behavior will remain unchanged.
 
         ## Example Usage
 
@@ -853,11 +859,11 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv6_prefixes: The IPv6 prefixes of the network.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
         :param pulumi.Input[_builtins.str] name: The name of the network.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nameservers: The nameservers of the network. This field is deprecated and will be removed soon, use `ipv4_nameservers` to configure the nameservers for IPv4.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nameservers: The nameservers of the network. This field is deprecated and will be removed in January 2026, use `ipv4_nameservers` to configure the nameservers for IPv4.
         :param pulumi.Input[_builtins.str] network_id: The network ID.
         :param pulumi.Input[_builtins.bool] no_ipv4_gateway: If set to `true`, the network doesn't have a gateway.
         :param pulumi.Input[_builtins.bool] no_ipv6_gateway: If set to `true`, the network doesn't have a gateway.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] prefixes: The prefixes of the network. This field is deprecated and will be removed soon, use `ipv4_prefixes` to read the prefixes of the IPv4 networks.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] prefixes: The prefixes of the network. This field is deprecated and will be removed in January 2026, use `ipv4_prefixes` to read the prefixes of the IPv4 networks.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the network is associated.
         :param pulumi.Input[_builtins.str] public_ip: The public IP of the network.
         :param pulumi.Input[_builtins.str] region: Can only be used when experimental "network" is set.
@@ -952,7 +958,7 @@ class Network(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="ipv6Prefix")
-    def ipv6_prefix(self) -> pulumi.Output[Optional[_builtins.str]]:
+    def ipv6_prefix(self) -> pulumi.Output[_builtins.str]:
         """
         The IPv6 prefix of the network (CIDR).
         """
@@ -960,7 +966,7 @@ class Network(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="ipv6PrefixLength")
-    def ipv6_prefix_length(self) -> pulumi.Output[Optional[_builtins.int]]:
+    def ipv6_prefix_length(self) -> pulumi.Output[_builtins.int]:
         """
         The IPv6 prefix length of the network.
         """
@@ -995,7 +1001,7 @@ class Network(pulumi.CustomResource):
     @_utilities.deprecated("""Use `ipv4_nameservers` to configure the nameservers for IPv4.""")
     def nameservers(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        The nameservers of the network. This field is deprecated and will be removed soon, use `ipv4_nameservers` to configure the nameservers for IPv4.
+        The nameservers of the network. This field is deprecated and will be removed in January 2026, use `ipv4_nameservers` to configure the nameservers for IPv4.
         """
         return pulumi.get(self, "nameservers")
 
@@ -1028,7 +1034,7 @@ class Network(pulumi.CustomResource):
     @_utilities.deprecated("""Use `ipv4_prefixes` to read the prefixes of the IPv4 networks.""")
     def prefixes(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        The prefixes of the network. This field is deprecated and will be removed soon, use `ipv4_prefixes` to read the prefixes of the IPv4 networks.
+        The prefixes of the network. This field is deprecated and will be removed in January 2026, use `ipv4_prefixes` to read the prefixes of the IPv4 networks.
         """
         return pulumi.get(self, "prefixes")
 

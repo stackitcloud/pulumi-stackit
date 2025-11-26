@@ -22,7 +22,7 @@ namespace Pulumi.Stackit.Inputs
         public Input<int> Port { get; set; } = null!;
 
         /// <summary>
-        /// Protocol is the highest network protocol we understand to load balance. Supported values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_TCP`, `PROTOCOL_UDP`, `PROTOCOL_TCP_PROXY`, `PROTOCOL_TLS_PASSTHROUGH`.
+        /// Protocol is the highest network protocol we understand to load balance. Possible values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_TCP`, `PROTOCOL_UDP`, `PROTOCOL_TCP_PROXY`, `PROTOCOL_TLS_PASSTHROUGH`.
         /// </summary>
         [Input("protocol", required: true)]
         public Input<string> Protocol { get; set; } = null!;
@@ -44,6 +44,18 @@ namespace Pulumi.Stackit.Inputs
         /// </summary>
         [Input("targetPool", required: true)]
         public Input<string> TargetPool { get; set; } = null!;
+
+        /// <summary>
+        /// Options that are specific to the TCP protocol.
+        /// </summary>
+        [Input("tcp")]
+        public Input<Inputs.LoadbalancerListenerTcpArgs>? Tcp { get; set; }
+
+        /// <summary>
+        /// Options that are specific to the UDP protocol.
+        /// </summary>
+        [Input("udp")]
+        public Input<Inputs.LoadbalancerListenerUdpArgs>? Udp { get; set; }
 
         public LoadbalancerListenerArgs()
         {

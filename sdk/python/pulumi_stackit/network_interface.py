@@ -178,7 +178,7 @@ class _NetworkInterfaceState:
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the network is associated.
         :param pulumi.Input[_builtins.bool] security: The Network Interface Security. If set to false, then no security groups will apply to this network interface.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: The list of security group UUIDs. If security is set to false, setting this field will lead to an error.
-        :param pulumi.Input[_builtins.str] type: Type of network interface. Some of the possible values are: Supported values are: `server`, `metadata`, `gateway`.
+        :param pulumi.Input[_builtins.str] type: Type of network interface. Some of the possible values are: Possible values are: `server`, `metadata`, `gateway`.
         """
         if allowed_addresses is not None:
             pulumi.set(__self__, "allowed_addresses", allowed_addresses)
@@ -341,7 +341,7 @@ class _NetworkInterfaceState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Type of network interface. Some of the possible values are: Supported values are: `server`, `metadata`, `gateway`.
+        Type of network interface. Some of the possible values are: Possible values are: `server`, `metadata`, `gateway`.
         """
         return pulumi.get(self, "type")
 
@@ -480,7 +480,7 @@ class NetworkInterface(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the network is associated.
         :param pulumi.Input[_builtins.bool] security: The Network Interface Security. If set to false, then no security groups will apply to this network interface.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] security_group_ids: The list of security group UUIDs. If security is set to false, setting this field will lead to an error.
-        :param pulumi.Input[_builtins.str] type: Type of network interface. Some of the possible values are: Supported values are: `server`, `metadata`, `gateway`.
+        :param pulumi.Input[_builtins.str] type: Type of network interface. Some of the possible values are: Possible values are: `server`, `metadata`, `gateway`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -592,7 +592,7 @@ class NetworkInterface(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        Type of network interface. Some of the possible values are: Supported values are: `server`, `metadata`, `gateway`.
+        Type of network interface. Some of the possible values are: Possible values are: `server`, `metadata`, `gateway`.
         """
         return pulumi.get(self, "type")
 

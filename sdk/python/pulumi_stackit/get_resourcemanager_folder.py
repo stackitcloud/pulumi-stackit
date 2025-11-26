@@ -135,8 +135,6 @@ def get_resourcemanager_folder(container_id: Optional[_builtins.str] = None,
     """
     Resource Manager folder data source schema. To identify the folder, you need to provide the container_id.
 
-    > This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
-
     ## Example Usage
 
 
@@ -160,8 +158,6 @@ def get_resourcemanager_folder_output(container_id: Optional[pulumi.Input[_built
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetResourcemanagerFolderResult]:
     """
     Resource Manager folder data source schema. To identify the folder, you need to provide the container_id.
-
-    > This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
 
     ## Example Usage
 

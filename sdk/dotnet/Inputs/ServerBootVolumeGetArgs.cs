@@ -43,7 +43,7 @@ namespace Pulumi.Stackit.Inputs
         public Input<string> SourceId { get; set; } = null!;
 
         /// <summary>
-        /// The type of the source. Supported values are: `Volume`, `Image`.
+        /// The type of the source. Possible values are: `Volume`, `Image`.
         /// </summary>
         [Input("sourceType", required: true)]
         public Input<string> SourceType { get; set; } = null!;

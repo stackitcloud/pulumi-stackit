@@ -12,6 +12,18 @@ namespace Pulumi.Stackit.Inputs
 
     public sealed class CdnDistributionConfigBackendArgs : global::Pulumi.ResourceArgs
     {
+        [Input("geofencing")]
+        private InputMap<ImmutableArray<string>>? _geofencing;
+
+        /// <summary>
+        /// A map of URLs to a list of countries where content is allowed.
+        /// </summary>
+        public InputMap<ImmutableArray<string>> Geofencing
+        {
+            get => _geofencing ?? (_geofencing = new InputMap<ImmutableArray<string>>());
+            set => _geofencing = value;
+        }
+
         [Input("originRequestHeaders")]
         private InputMap<string>? _originRequestHeaders;
 
@@ -31,7 +43,7 @@ namespace Pulumi.Stackit.Inputs
         public Input<string> OriginUrl { get; set; } = null!;
 
         /// <summary>
-        /// The configured backend type. Supported values are: `Http`.
+        /// The configured backend type. Possible values are: `Http`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
