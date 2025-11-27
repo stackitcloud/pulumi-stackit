@@ -40,7 +40,7 @@ type Server struct {
 	BootVolume ServerBootVolumePtrOutput `pulumi:"bootVolume"`
 	// Date-time when the server was created
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// The desired status of the server resource. Supported values are: `active`, `inactive`, `deallocated`.
+	// The desired status of the server resource. Possible values are: `active`, `inactive`, `deallocated`.
 	DesiredStatus pulumi.StringPtrOutput `pulumi:"desiredStatus"`
 	// The image ID to be used for an ephemeral disk on the server.
 	ImageId pulumi.StringPtrOutput `pulumi:"imageId"`
@@ -110,7 +110,7 @@ type serverState struct {
 	BootVolume *ServerBootVolume `pulumi:"bootVolume"`
 	// Date-time when the server was created
 	CreatedAt *string `pulumi:"createdAt"`
-	// The desired status of the server resource. Supported values are: `active`, `inactive`, `deallocated`.
+	// The desired status of the server resource. Possible values are: `active`, `inactive`, `deallocated`.
 	DesiredStatus *string `pulumi:"desiredStatus"`
 	// The image ID to be used for an ephemeral disk on the server.
 	ImageId *string `pulumi:"imageId"`
@@ -145,7 +145,7 @@ type ServerState struct {
 	BootVolume ServerBootVolumePtrInput
 	// Date-time when the server was created
 	CreatedAt pulumi.StringPtrInput
-	// The desired status of the server resource. Supported values are: `active`, `inactive`, `deallocated`.
+	// The desired status of the server resource. Possible values are: `active`, `inactive`, `deallocated`.
 	DesiredStatus pulumi.StringPtrInput
 	// The image ID to be used for an ephemeral disk on the server.
 	ImageId pulumi.StringPtrInput
@@ -182,7 +182,7 @@ type serverArgs struct {
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// The boot volume for the server
 	BootVolume *ServerBootVolume `pulumi:"bootVolume"`
-	// The desired status of the server resource. Supported values are: `active`, `inactive`, `deallocated`.
+	// The desired status of the server resource. Possible values are: `active`, `inactive`, `deallocated`.
 	DesiredStatus *string `pulumi:"desiredStatus"`
 	// The image ID to be used for an ephemeral disk on the server.
 	ImageId *string `pulumi:"imageId"`
@@ -210,7 +210,7 @@ type ServerArgs struct {
 	AvailabilityZone pulumi.StringPtrInput
 	// The boot volume for the server
 	BootVolume ServerBootVolumePtrInput
-	// The desired status of the server resource. Supported values are: `active`, `inactive`, `deallocated`.
+	// The desired status of the server resource. Possible values are: `active`, `inactive`, `deallocated`.
 	DesiredStatus pulumi.StringPtrInput
 	// The image ID to be used for an ephemeral disk on the server.
 	ImageId pulumi.StringPtrInput
@@ -337,7 +337,7 @@ func (o ServerOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// The desired status of the server resource. Supported values are: `active`, `inactive`, `deallocated`.
+// The desired status of the server resource. Possible values are: `active`, `inactive`, `deallocated`.
 func (o ServerOutput) DesiredStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringPtrOutput { return v.DesiredStatus }).(pulumi.StringPtrOutput)
 }

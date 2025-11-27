@@ -40,7 +40,7 @@ type NetworkInterface struct {
 	Security pulumi.BoolOutput `pulumi:"security"`
 	// The list of security group UUIDs. If security is set to false, setting this field will lead to an error.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
-	// Type of network interface. Some of the possible values are: Supported values are: `server`, `metadata`, `gateway`.
+	// Type of network interface. Some of the possible values are: Possible values are: `server`, `metadata`, `gateway`.
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -102,7 +102,7 @@ type networkInterfaceState struct {
 	Security *bool `pulumi:"security"`
 	// The list of security group UUIDs. If security is set to false, setting this field will lead to an error.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// Type of network interface. Some of the possible values are: Supported values are: `server`, `metadata`, `gateway`.
+	// Type of network interface. Some of the possible values are: Possible values are: `server`, `metadata`, `gateway`.
 	Type *string `pulumi:"type"`
 }
 
@@ -129,7 +129,7 @@ type NetworkInterfaceState struct {
 	Security pulumi.BoolPtrInput
 	// The list of security group UUIDs. If security is set to false, setting this field will lead to an error.
 	SecurityGroupIds pulumi.StringArrayInput
-	// Type of network interface. Some of the possible values are: Supported values are: `server`, `metadata`, `gateway`.
+	// Type of network interface. Some of the possible values are: Possible values are: `server`, `metadata`, `gateway`.
 	Type pulumi.StringPtrInput
 }
 
@@ -318,7 +318,7 @@ func (o NetworkInterfaceOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NetworkInterface) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// Type of network interface. Some of the possible values are: Supported values are: `server`, `metadata`, `gateway`.
+// Type of network interface. Some of the possible values are: Possible values are: `server`, `metadata`, `gateway`.
 func (o NetworkInterfaceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkInterface) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

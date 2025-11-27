@@ -49,7 +49,7 @@ class DnsZoneArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] primaries: Primary name server for secondary zone. E.g. ["1.2.3.4"]
         :param pulumi.Input[_builtins.int] refresh_time: Refresh time. E.g. 3600
         :param pulumi.Input[_builtins.int] retry_time: Retry time. E.g. 600
-        :param pulumi.Input[_builtins.str] type: Zone type. Defaults to `primary`. Supported values are: `primary`, `secondary`.
+        :param pulumi.Input[_builtins.str] type: Zone type. Defaults to `primary`. Possible values are: `primary`, `secondary`.
         """
         pulumi.set(__self__, "dns_name", dns_name)
         pulumi.set(__self__, "project_id", project_id)
@@ -249,7 +249,7 @@ class DnsZoneArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Zone type. Defaults to `primary`. Supported values are: `primary`, `secondary`.
+        Zone type. Defaults to `primary`. Possible values are: `primary`, `secondary`.
         """
         return pulumi.get(self, "type")
 
@@ -301,7 +301,7 @@ class _DnsZoneState:
         :param pulumi.Input[_builtins.int] retry_time: Retry time. E.g. 600
         :param pulumi.Input[_builtins.int] serial_number: Serial number. E.g. `2022111400`.
         :param pulumi.Input[_builtins.str] state: Zone state. E.g. `CREATE_SUCCEEDED`.
-        :param pulumi.Input[_builtins.str] type: Zone type. Defaults to `primary`. Supported values are: `primary`, `secondary`.
+        :param pulumi.Input[_builtins.str] type: Zone type. Defaults to `primary`. Possible values are: `primary`, `secondary`.
         :param pulumi.Input[_builtins.str] visibility: Visibility of the zone. E.g. `public`.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID.
         """
@@ -565,7 +565,7 @@ class _DnsZoneState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Zone type. Defaults to `primary`. Supported values are: `primary`, `secondary`.
+        Zone type. Defaults to `primary`. Possible values are: `primary`, `secondary`.
         """
         return pulumi.get(self, "type")
 
@@ -640,7 +640,7 @@ class DnsZone(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the dns zone is associated.
         :param pulumi.Input[_builtins.int] refresh_time: Refresh time. E.g. 3600
         :param pulumi.Input[_builtins.int] retry_time: Retry time. E.g. 600
-        :param pulumi.Input[_builtins.str] type: Zone type. Defaults to `primary`. Supported values are: `primary`, `secondary`.
+        :param pulumi.Input[_builtins.str] type: Zone type. Defaults to `primary`. Possible values are: `primary`, `secondary`.
         """
         ...
     @overload
@@ -772,7 +772,7 @@ class DnsZone(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] retry_time: Retry time. E.g. 600
         :param pulumi.Input[_builtins.int] serial_number: Serial number. E.g. `2022111400`.
         :param pulumi.Input[_builtins.str] state: Zone state. E.g. `CREATE_SUCCEEDED`.
-        :param pulumi.Input[_builtins.str] type: Zone type. Defaults to `primary`. Supported values are: `primary`, `secondary`.
+        :param pulumi.Input[_builtins.str] type: Zone type. Defaults to `primary`. Possible values are: `primary`, `secondary`.
         :param pulumi.Input[_builtins.str] visibility: Visibility of the zone. E.g. `public`.
         :param pulumi.Input[_builtins.str] zone_id: The zone ID.
         """
@@ -948,7 +948,7 @@ class DnsZone(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        Zone type. Defaults to `primary`. Supported values are: `primary`, `secondary`.
+        Zone type. Defaults to `primary`. Possible values are: `primary`, `secondary`.
         """
         return pulumi.get(self, "type")
 

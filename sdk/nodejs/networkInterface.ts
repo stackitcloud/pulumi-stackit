@@ -82,7 +82,7 @@ export class NetworkInterface extends pulumi.CustomResource {
      */
     declare public readonly securityGroupIds: pulumi.Output<string[]>;
     /**
-     * Type of network interface. Some of the possible values are: Supported values are: `server`, `metadata`, `gateway`.
+     * Type of network interface. Some of the possible values are: Possible values are: `server`, `metadata`, `gateway`.
      */
     declare public /*out*/ readonly type: pulumi.Output<string>;
 
@@ -186,7 +186,7 @@ export interface NetworkInterfaceState {
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Type of network interface. Some of the possible values are: Supported values are: `server`, `metadata`, `gateway`.
+     * Type of network interface. Some of the possible values are: Possible values are: `server`, `metadata`, `gateway`.
      */
     type?: pulumi.Input<string>;
 }

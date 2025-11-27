@@ -90,6 +90,21 @@ export const getKeyPair: typeof import("./getKeyPair").getKeyPair = null as any;
 export const getKeyPairOutput: typeof import("./getKeyPair").getKeyPairOutput = null as any;
 utilities.lazyLoad(exports, ["getKeyPair","getKeyPairOutput"], () => require("./getKeyPair"));
 
+export { GetKmsKeyArgs, GetKmsKeyResult, GetKmsKeyOutputArgs } from "./getKmsKey";
+export const getKmsKey: typeof import("./getKmsKey").getKmsKey = null as any;
+export const getKmsKeyOutput: typeof import("./getKmsKey").getKmsKeyOutput = null as any;
+utilities.lazyLoad(exports, ["getKmsKey","getKmsKeyOutput"], () => require("./getKmsKey"));
+
+export { GetKmsKeyringArgs, GetKmsKeyringResult, GetKmsKeyringOutputArgs } from "./getKmsKeyring";
+export const getKmsKeyring: typeof import("./getKmsKeyring").getKmsKeyring = null as any;
+export const getKmsKeyringOutput: typeof import("./getKmsKeyring").getKmsKeyringOutput = null as any;
+utilities.lazyLoad(exports, ["getKmsKeyring","getKmsKeyringOutput"], () => require("./getKmsKeyring"));
+
+export { GetKmsWrappingKeyArgs, GetKmsWrappingKeyResult, GetKmsWrappingKeyOutputArgs } from "./getKmsWrappingKey";
+export const getKmsWrappingKey: typeof import("./getKmsWrappingKey").getKmsWrappingKey = null as any;
+export const getKmsWrappingKeyOutput: typeof import("./getKmsWrappingKey").getKmsWrappingKeyOutput = null as any;
+utilities.lazyLoad(exports, ["getKmsWrappingKey","getKmsWrappingKeyOutput"], () => require("./getKmsWrappingKey"));
+
 export { GetLoadbalancerArgs, GetLoadbalancerResult, GetLoadbalancerOutputArgs } from "./getLoadbalancer";
 export const getLoadbalancer: typeof import("./getLoadbalancer").getLoadbalancer = null as any;
 export const getLoadbalancerOutput: typeof import("./getLoadbalancer").getLoadbalancerOutput = null as any;
@@ -369,6 +384,21 @@ export { KeyPairArgs, KeyPairState } from "./keyPair";
 export type KeyPair = import("./keyPair").KeyPair;
 export const KeyPair: typeof import("./keyPair").KeyPair = null as any;
 utilities.lazyLoad(exports, ["KeyPair"], () => require("./keyPair"));
+
+export { KmsKeyArgs, KmsKeyState } from "./kmsKey";
+export type KmsKey = import("./kmsKey").KmsKey;
+export const KmsKey: typeof import("./kmsKey").KmsKey = null as any;
+utilities.lazyLoad(exports, ["KmsKey"], () => require("./kmsKey"));
+
+export { KmsKeyringArgs, KmsKeyringState } from "./kmsKeyring";
+export type KmsKeyring = import("./kmsKeyring").KmsKeyring;
+export const KmsKeyring: typeof import("./kmsKeyring").KmsKeyring = null as any;
+utilities.lazyLoad(exports, ["KmsKeyring"], () => require("./kmsKeyring"));
+
+export { KmsWrappingKeyArgs, KmsWrappingKeyState } from "./kmsWrappingKey";
+export type KmsWrappingKey = import("./kmsWrappingKey").KmsWrappingKey;
+export const KmsWrappingKey: typeof import("./kmsWrappingKey").KmsWrappingKey = null as any;
+utilities.lazyLoad(exports, ["KmsWrappingKey"], () => require("./kmsWrappingKey"));
 
 export { LoadbalancerArgs, LoadbalancerState } from "./loadbalancer";
 export type Loadbalancer = import("./loadbalancer").Loadbalancer;
@@ -687,6 +717,12 @@ const _module = {
                 return new Image(name, <any>undefined, { urn })
             case "stackit:index/keyPair:KeyPair":
                 return new KeyPair(name, <any>undefined, { urn })
+            case "stackit:index/kmsKey:KmsKey":
+                return new KmsKey(name, <any>undefined, { urn })
+            case "stackit:index/kmsKeyring:KmsKeyring":
+                return new KmsKeyring(name, <any>undefined, { urn })
+            case "stackit:index/kmsWrappingKey:KmsWrappingKey":
+                return new KmsWrappingKey(name, <any>undefined, { urn })
             case "stackit:index/loadbalancer:Loadbalancer":
                 return new Loadbalancer(name, <any>undefined, { urn })
             case "stackit:index/loadbalancerObservabilityCredential:LoadbalancerObservabilityCredential":
@@ -814,6 +850,9 @@ pulumi.runtime.registerResourceModule("stackit", "index/dnsZone", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/git", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/image", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/keyPair", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/kmsKey", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/kmsKeyring", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/kmsWrappingKey", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/loadbalancer", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/loadbalancerObservabilityCredential", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/logmeCredential", _module)

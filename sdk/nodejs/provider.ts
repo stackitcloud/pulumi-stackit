@@ -54,6 +54,10 @@ export class Provider extends pulumi.ProviderResource {
      */
     declare public readonly iaasCustomEndpoint: pulumi.Output<string | undefined>;
     /**
+     * Custom endpoint for the KMS service
+     */
+    declare public readonly kmsCustomEndpoint: pulumi.Output<string | undefined>;
+    /**
      * Custom endpoint for the Load Balancer service
      */
     declare public readonly loadbalancerCustomEndpoint: pulumi.Output<string | undefined>;
@@ -192,6 +196,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["experiments"] = pulumi.output(args?.experiments).apply(JSON.stringify);
             resourceInputs["gitCustomEndpoint"] = args?.gitCustomEndpoint;
             resourceInputs["iaasCustomEndpoint"] = args?.iaasCustomEndpoint;
+            resourceInputs["kmsCustomEndpoint"] = args?.kmsCustomEndpoint;
             resourceInputs["loadbalancerCustomEndpoint"] = args?.loadbalancerCustomEndpoint;
             resourceInputs["logmeCustomEndpoint"] = args?.logmeCustomEndpoint;
             resourceInputs["mariadbCustomEndpoint"] = args?.mariadbCustomEndpoint;
@@ -275,6 +280,10 @@ export interface ProviderArgs {
      * Custom endpoint for the IaaS service
      */
     iaasCustomEndpoint?: pulumi.Input<string>;
+    /**
+     * Custom endpoint for the KMS service
+     */
+    kmsCustomEndpoint?: pulumi.Input<string>;
     /**
      * Custom endpoint for the Load Balancer service
      */

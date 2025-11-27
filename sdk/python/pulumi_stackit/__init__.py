@@ -23,6 +23,9 @@ from .get_iaas_project import *
 from .get_image import *
 from .get_image_v2 import *
 from .get_key_pair import *
+from .get_kms_key import *
+from .get_kms_keyring import *
+from .get_kms_wrapping_key import *
 from .get_loadbalancer import *
 from .get_logme_credential import *
 from .get_logme_instance import *
@@ -79,6 +82,9 @@ from .get_volume import *
 from .git import *
 from .image import *
 from .key_pair import *
+from .kms_key import *
+from .kms_keyring import *
+from .kms_wrapping_key import *
 from .loadbalancer import *
 from .loadbalancer_observability_credential import *
 from .logme_credential import *
@@ -227,6 +233,30 @@ _utilities.register(
   "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/keyPair:KeyPair": "KeyPair"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/kmsKey",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/kmsKey:KmsKey": "KmsKey"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/kmsKeyring",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/kmsKeyring:KmsKeyring": "KmsKeyring"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/kmsWrappingKey",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/kmsWrappingKey:KmsWrappingKey": "KmsWrappingKey"
   }
  },
  {

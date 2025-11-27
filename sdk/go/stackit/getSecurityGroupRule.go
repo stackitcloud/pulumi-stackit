@@ -38,7 +38,7 @@ type LookupSecurityGroupRuleArgs struct {
 type LookupSecurityGroupRuleResult struct {
 	// The description of the security group rule.
 	Description string `pulumi:"description"`
-	// The direction of the traffic which the rule should match. Some of the possible values are: Supported values are: `ingress`, `egress`.
+	// The direction of the traffic which the rule should match. Some of the possible values are: Possible values are: `ingress`, `egress`.
 	Direction string `pulumi:"direction"`
 	// The ethertype which the rule should match.
 	EtherType string `pulumi:"etherType"`
@@ -104,7 +104,7 @@ func (o LookupSecurityGroupRuleResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityGroupRuleResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The direction of the traffic which the rule should match. Some of the possible values are: Supported values are: `ingress`, `egress`.
+// The direction of the traffic which the rule should match. Some of the possible values are: Possible values are: `ingress`, `egress`.
 func (o LookupSecurityGroupRuleResultOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityGroupRuleResult) string { return v.Direction }).(pulumi.StringOutput)
 }

@@ -7,8 +7,6 @@ import * as utilities from "./utilities";
 /**
  * Resource Manager folder resource schema.
  *
- * > This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
- *
  * ## Example Usage
  */
 export class ResourcemanagerFolder extends pulumi.CustomResource {

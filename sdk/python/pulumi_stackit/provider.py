@@ -28,6 +28,7 @@ class ProviderArgs:
                  experiments: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  git_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  iaas_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 kms_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  loadbalancer_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  logme_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  mariadb_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -67,6 +68,7 @@ class ProviderArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] experiments: Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: iam, routing-tables, network
         :param pulumi.Input[_builtins.str] git_custom_endpoint: Custom endpoint for the Git service
         :param pulumi.Input[_builtins.str] iaas_custom_endpoint: Custom endpoint for the IaaS service
+        :param pulumi.Input[_builtins.str] kms_custom_endpoint: Custom endpoint for the KMS service
         :param pulumi.Input[_builtins.str] loadbalancer_custom_endpoint: Custom endpoint for the Load Balancer service
         :param pulumi.Input[_builtins.str] logme_custom_endpoint: Custom endpoint for the LogMe service
         :param pulumi.Input[_builtins.str] mariadb_custom_endpoint: Custom endpoint for the MariaDB service
@@ -114,6 +116,8 @@ class ProviderArgs:
             pulumi.set(__self__, "git_custom_endpoint", git_custom_endpoint)
         if iaas_custom_endpoint is not None:
             pulumi.set(__self__, "iaas_custom_endpoint", iaas_custom_endpoint)
+        if kms_custom_endpoint is not None:
+            pulumi.set(__self__, "kms_custom_endpoint", kms_custom_endpoint)
         if loadbalancer_custom_endpoint is not None:
             pulumi.set(__self__, "loadbalancer_custom_endpoint", loadbalancer_custom_endpoint)
         if logme_custom_endpoint is not None:
@@ -287,6 +291,18 @@ class ProviderArgs:
     @iaas_custom_endpoint.setter
     def iaas_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "iaas_custom_endpoint", value)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsCustomEndpoint")
+    def kms_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Custom endpoint for the KMS service
+        """
+        return pulumi.get(self, "kms_custom_endpoint")
+
+    @kms_custom_endpoint.setter
+    def kms_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "kms_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="loadbalancerCustomEndpoint")
@@ -643,6 +659,7 @@ class Provider(pulumi.ProviderResource):
                  experiments: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  git_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  iaas_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 kms_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  loadbalancer_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  logme_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  mariadb_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -689,6 +706,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] experiments: Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: iam, routing-tables, network
         :param pulumi.Input[_builtins.str] git_custom_endpoint: Custom endpoint for the Git service
         :param pulumi.Input[_builtins.str] iaas_custom_endpoint: Custom endpoint for the IaaS service
+        :param pulumi.Input[_builtins.str] kms_custom_endpoint: Custom endpoint for the KMS service
         :param pulumi.Input[_builtins.str] loadbalancer_custom_endpoint: Custom endpoint for the Load Balancer service
         :param pulumi.Input[_builtins.str] logme_custom_endpoint: Custom endpoint for the LogMe service
         :param pulumi.Input[_builtins.str] mariadb_custom_endpoint: Custom endpoint for the MariaDB service
@@ -754,6 +772,7 @@ class Provider(pulumi.ProviderResource):
                  experiments: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  git_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  iaas_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 kms_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  loadbalancer_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  logme_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  mariadb_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -800,6 +819,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["experiments"] = pulumi.Output.from_input(experiments).apply(pulumi.runtime.to_json) if experiments is not None else None
             __props__.__dict__["git_custom_endpoint"] = git_custom_endpoint
             __props__.__dict__["iaas_custom_endpoint"] = iaas_custom_endpoint
+            __props__.__dict__["kms_custom_endpoint"] = kms_custom_endpoint
             __props__.__dict__["loadbalancer_custom_endpoint"] = loadbalancer_custom_endpoint
             __props__.__dict__["logme_custom_endpoint"] = logme_custom_endpoint
             __props__.__dict__["mariadb_custom_endpoint"] = mariadb_custom_endpoint
@@ -889,6 +909,14 @@ class Provider(pulumi.ProviderResource):
         Custom endpoint for the IaaS service
         """
         return pulumi.get(self, "iaas_custom_endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="kmsCustomEndpoint")
+    def kms_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Custom endpoint for the KMS service
+        """
+        return pulumi.get(self, "kms_custom_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="loadbalancerCustomEndpoint")
