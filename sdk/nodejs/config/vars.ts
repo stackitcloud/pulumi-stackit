@@ -107,6 +107,17 @@ Object.defineProperty(exports, "iaasCustomEndpoint", {
 });
 
 /**
+ * Custom endpoint for the KMS service
+ */
+export declare const kmsCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "kmsCustomEndpoint", {
+    get() {
+        return __config.get("kmsCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+/**
  * Custom endpoint for the Load Balancer service
  */
 export declare const loadbalancerCustomEndpoint: string | undefined;

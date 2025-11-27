@@ -11,6 +11,9 @@ namespace Pulumi.Stackit
 {
     /// <summary>
     /// Network resource schema. Must have a `Region` specified in the provider configuration.
+    /// &gt; Behavior of not configured `Ipv4Nameservers` will change from January 2026. When `Ipv4Nameservers` is not set, it will be set to the network area's `DefaultNameservers`.
+    /// To prevent any nameserver configuration, the `Ipv4Nameservers` attribute should be explicitly set to an empty list `[]`.
+    /// In cases where `Ipv4Nameservers` are defined within the resource, the existing behavior will remain unchanged.
     /// 
     /// ## Example Usage
     /// </summary>
@@ -63,13 +66,13 @@ namespace Pulumi.Stackit
         /// The IPv6 prefix of the network (CIDR).
         /// </summary>
         [Output("ipv6Prefix")]
-        public Output<string?> Ipv6Prefix { get; private set; } = null!;
+        public Output<string> Ipv6Prefix { get; private set; } = null!;
 
         /// <summary>
         /// The IPv6 prefix length of the network.
         /// </summary>
         [Output("ipv6PrefixLength")]
-        public Output<int?> Ipv6PrefixLength { get; private set; } = null!;
+        public Output<int> Ipv6PrefixLength { get; private set; } = null!;
 
         /// <summary>
         /// The IPv6 prefixes of the network.
@@ -90,7 +93,7 @@ namespace Pulumi.Stackit
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The nameservers of the network. This field is deprecated and will be removed soon, use `Ipv4Nameservers` to configure the nameservers for IPv4.
+        /// The nameservers of the network. This field is deprecated and will be removed in January 2026, use `Ipv4Nameservers` to configure the nameservers for IPv4.
         /// </summary>
         [Output("nameservers")]
         public Output<ImmutableArray<string>> Nameservers { get; private set; } = null!;
@@ -114,7 +117,7 @@ namespace Pulumi.Stackit
         public Output<bool?> NoIpv6Gateway { get; private set; } = null!;
 
         /// <summary>
-        /// The prefixes of the network. This field is deprecated and will be removed soon, use `Ipv4Prefixes` to read the prefixes of the IPv4 networks.
+        /// The prefixes of the network. This field is deprecated and will be removed in January 2026, use `Ipv4Prefixes` to read the prefixes of the IPv4 networks.
         /// </summary>
         [Output("prefixes")]
         public Output<ImmutableArray<string>> Prefixes { get; private set; } = null!;
@@ -280,7 +283,7 @@ namespace Pulumi.Stackit
         private InputList<string>? _nameservers;
 
         /// <summary>
-        /// The nameservers of the network. This field is deprecated and will be removed soon, use `Ipv4Nameservers` to configure the nameservers for IPv4.
+        /// The nameservers of the network. This field is deprecated and will be removed in January 2026, use `Ipv4Nameservers` to configure the nameservers for IPv4.
         /// </summary>
         [Obsolete(@"Use `Ipv4Nameservers` to configure the nameservers for IPv4.")]
         public InputList<string> Nameservers
@@ -441,7 +444,7 @@ namespace Pulumi.Stackit
         private InputList<string>? _nameservers;
 
         /// <summary>
-        /// The nameservers of the network. This field is deprecated and will be removed soon, use `Ipv4Nameservers` to configure the nameservers for IPv4.
+        /// The nameservers of the network. This field is deprecated and will be removed in January 2026, use `Ipv4Nameservers` to configure the nameservers for IPv4.
         /// </summary>
         [Obsolete(@"Use `Ipv4Nameservers` to configure the nameservers for IPv4.")]
         public InputList<string> Nameservers
@@ -472,7 +475,7 @@ namespace Pulumi.Stackit
         private InputList<string>? _prefixes;
 
         /// <summary>
-        /// The prefixes of the network. This field is deprecated and will be removed soon, use `Ipv4Prefixes` to read the prefixes of the IPv4 networks.
+        /// The prefixes of the network. This field is deprecated and will be removed in January 2026, use `Ipv4Prefixes` to read the prefixes of the IPv4 networks.
         /// </summary>
         [Obsolete(@"Use `Ipv4Prefixes` to read the prefixes of the IPv4 networks.")]
         public InputList<string> Prefixes

@@ -164,7 +164,7 @@ class GetNetworkInterfaceResult:
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        Type of network interface. Some of the possible values are: Supported values are: `server`, `metadata`, `gateway`.
+        Type of network interface. Some of the possible values are: Possible values are: `server`, `metadata`, `gateway`.
         """
         return pulumi.get(self, "type")
 

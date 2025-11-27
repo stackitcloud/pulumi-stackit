@@ -33,6 +33,10 @@ __all__ = [
     'LoadbalancerListenerArgsDict',
     'LoadbalancerListenerServerNameIndicatorArgs',
     'LoadbalancerListenerServerNameIndicatorArgsDict',
+    'LoadbalancerListenerTcpArgs',
+    'LoadbalancerListenerTcpArgsDict',
+    'LoadbalancerListenerUdpArgs',
+    'LoadbalancerListenerUdpArgsDict',
     'LoadbalancerNetworkArgs',
     'LoadbalancerNetworkArgsDict',
     'LoadbalancerOptionsArgs',
@@ -319,7 +323,11 @@ if not MYPY:
         """
         type: pulumi.Input[_builtins.str]
         """
-        The configured backend type. Supported values are: `http`.
+        The configured backend type. Possible values are: `http`.
+        """
+        geofencing: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]
+        """
+        A map of URLs to a list of countries where content is allowed.
         """
         origin_request_headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -333,14 +341,18 @@ class CdnDistributionConfigBackendArgs:
     def __init__(__self__, *,
                  origin_url: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
+                 geofencing: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
                  origin_request_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.str] origin_url: The configured backend type for the distribution
-        :param pulumi.Input[_builtins.str] type: The configured backend type. Supported values are: `http`.
+        :param pulumi.Input[_builtins.str] type: The configured backend type. Possible values are: `http`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] geofencing: A map of URLs to a list of countries where content is allowed.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] origin_request_headers: The configured origin request headers for the backend
         """
         pulumi.set(__self__, "origin_url", origin_url)
         pulumi.set(__self__, "type", type)
+        if geofencing is not None:
+            pulumi.set(__self__, "geofencing", geofencing)
         if origin_request_headers is not None:
             pulumi.set(__self__, "origin_request_headers", origin_request_headers)
 
@@ -360,13 +372,25 @@ class CdnDistributionConfigBackendArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
         """
-        The configured backend type. Supported values are: `http`.
+        The configured backend type. Possible values are: `http`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
     def type(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def geofencing(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]:
+        """
+        A map of URLs to a list of countries where content is allowed.
+        """
+        return pulumi.get(self, "geofencing")
+
+    @geofencing.setter
+    def geofencing(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]):
+        pulumi.set(self, "geofencing", value)
 
     @_builtins.property
     @pulumi.getter(name="originRequestHeaders")
@@ -828,7 +852,7 @@ if not MYPY:
         """
         protocol: pulumi.Input[_builtins.str]
         """
-        Protocol is the highest network protocol we understand to load balance. Supported values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_TCP`, `PROTOCOL_UDP`, `PROTOCOL_TCP_PROXY`, `PROTOCOL_TLS_PASSTHROUGH`.
+        Protocol is the highest network protocol we understand to load balance. Possible values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_TCP`, `PROTOCOL_UDP`, `PROTOCOL_TCP_PROXY`, `PROTOCOL_TLS_PASSTHROUGH`.
         """
         target_pool: pulumi.Input[_builtins.str]
         """
@@ -838,6 +862,14 @@ if not MYPY:
         server_name_indicators: NotRequired[pulumi.Input[Sequence[pulumi.Input['LoadbalancerListenerServerNameIndicatorArgsDict']]]]
         """
         A list of domain names to match in order to pass TLS traffic to the target pool in the current listener
+        """
+        tcp: NotRequired[pulumi.Input['LoadbalancerListenerTcpArgsDict']]
+        """
+        Options that are specific to the TCP protocol.
+        """
+        udp: NotRequired[pulumi.Input['LoadbalancerListenerUdpArgsDict']]
+        """
+        Options that are specific to the UDP protocol.
         """
 elif False:
     LoadbalancerListenerArgsDict: TypeAlias = Mapping[str, Any]
@@ -849,12 +881,16 @@ class LoadbalancerListenerArgs:
                  protocol: pulumi.Input[_builtins.str],
                  target_pool: pulumi.Input[_builtins.str],
                  display_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_name_indicators: Optional[pulumi.Input[Sequence[pulumi.Input['LoadbalancerListenerServerNameIndicatorArgs']]]] = None):
+                 server_name_indicators: Optional[pulumi.Input[Sequence[pulumi.Input['LoadbalancerListenerServerNameIndicatorArgs']]]] = None,
+                 tcp: Optional[pulumi.Input['LoadbalancerListenerTcpArgs']] = None,
+                 udp: Optional[pulumi.Input['LoadbalancerListenerUdpArgs']] = None):
         """
         :param pulumi.Input[_builtins.int] port: Port number where we listen for traffic.
-        :param pulumi.Input[_builtins.str] protocol: Protocol is the highest network protocol we understand to load balance. Supported values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_TCP`, `PROTOCOL_UDP`, `PROTOCOL_TCP_PROXY`, `PROTOCOL_TLS_PASSTHROUGH`.
+        :param pulumi.Input[_builtins.str] protocol: Protocol is the highest network protocol we understand to load balance. Possible values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_TCP`, `PROTOCOL_UDP`, `PROTOCOL_TCP_PROXY`, `PROTOCOL_TLS_PASSTHROUGH`.
         :param pulumi.Input[_builtins.str] target_pool: Reference target pool by target pool name.
         :param pulumi.Input[Sequence[pulumi.Input['LoadbalancerListenerServerNameIndicatorArgs']]] server_name_indicators: A list of domain names to match in order to pass TLS traffic to the target pool in the current listener
+        :param pulumi.Input['LoadbalancerListenerTcpArgs'] tcp: Options that are specific to the TCP protocol.
+        :param pulumi.Input['LoadbalancerListenerUdpArgs'] udp: Options that are specific to the UDP protocol.
         """
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "protocol", protocol)
@@ -863,6 +899,10 @@ class LoadbalancerListenerArgs:
             pulumi.set(__self__, "display_name", display_name)
         if server_name_indicators is not None:
             pulumi.set(__self__, "server_name_indicators", server_name_indicators)
+        if tcp is not None:
+            pulumi.set(__self__, "tcp", tcp)
+        if udp is not None:
+            pulumi.set(__self__, "udp", udp)
 
     @_builtins.property
     @pulumi.getter
@@ -880,7 +920,7 @@ class LoadbalancerListenerArgs:
     @pulumi.getter
     def protocol(self) -> pulumi.Input[_builtins.str]:
         """
-        Protocol is the highest network protocol we understand to load balance. Supported values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_TCP`, `PROTOCOL_UDP`, `PROTOCOL_TCP_PROXY`, `PROTOCOL_TLS_PASSTHROUGH`.
+        Protocol is the highest network protocol we understand to load balance. Possible values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_TCP`, `PROTOCOL_UDP`, `PROTOCOL_TCP_PROXY`, `PROTOCOL_TLS_PASSTHROUGH`.
         """
         return pulumi.get(self, "protocol")
 
@@ -921,6 +961,30 @@ class LoadbalancerListenerArgs:
     def server_name_indicators(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadbalancerListenerServerNameIndicatorArgs']]]]):
         pulumi.set(self, "server_name_indicators", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def tcp(self) -> Optional[pulumi.Input['LoadbalancerListenerTcpArgs']]:
+        """
+        Options that are specific to the TCP protocol.
+        """
+        return pulumi.get(self, "tcp")
+
+    @tcp.setter
+    def tcp(self, value: Optional[pulumi.Input['LoadbalancerListenerTcpArgs']]):
+        pulumi.set(self, "tcp", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def udp(self) -> Optional[pulumi.Input['LoadbalancerListenerUdpArgs']]:
+        """
+        Options that are specific to the UDP protocol.
+        """
+        return pulumi.get(self, "udp")
+
+    @udp.setter
+    def udp(self, value: Optional[pulumi.Input['LoadbalancerListenerUdpArgs']]):
+        pulumi.set(self, "udp", value)
+
 
 if not MYPY:
     class LoadbalancerListenerServerNameIndicatorArgsDict(TypedDict):
@@ -955,6 +1019,70 @@ class LoadbalancerListenerServerNameIndicatorArgs:
 
 
 if not MYPY:
+    class LoadbalancerListenerTcpArgsDict(TypedDict):
+        idle_timeout: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Time after which an idle connection is closed. The default value is set to 300 seconds, and the maximum value is 3600 seconds. The format is a duration and the unit must be seconds. Example: 30s
+        """
+elif False:
+    LoadbalancerListenerTcpArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class LoadbalancerListenerTcpArgs:
+    def __init__(__self__, *,
+                 idle_timeout: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] idle_timeout: Time after which an idle connection is closed. The default value is set to 300 seconds, and the maximum value is 3600 seconds. The format is a duration and the unit must be seconds. Example: 30s
+        """
+        if idle_timeout is not None:
+            pulumi.set(__self__, "idle_timeout", idle_timeout)
+
+    @_builtins.property
+    @pulumi.getter(name="idleTimeout")
+    def idle_timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Time after which an idle connection is closed. The default value is set to 300 seconds, and the maximum value is 3600 seconds. The format is a duration and the unit must be seconds. Example: 30s
+        """
+        return pulumi.get(self, "idle_timeout")
+
+    @idle_timeout.setter
+    def idle_timeout(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "idle_timeout", value)
+
+
+if not MYPY:
+    class LoadbalancerListenerUdpArgsDict(TypedDict):
+        idle_timeout: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Time after which an idle session is closed. The default value is set to 1 minute, and the maximum value is 2 minutes. The format is a duration and the unit must be seconds. Example: 30s
+        """
+elif False:
+    LoadbalancerListenerUdpArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class LoadbalancerListenerUdpArgs:
+    def __init__(__self__, *,
+                 idle_timeout: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] idle_timeout: Time after which an idle session is closed. The default value is set to 1 minute, and the maximum value is 2 minutes. The format is a duration and the unit must be seconds. Example: 30s
+        """
+        if idle_timeout is not None:
+            pulumi.set(__self__, "idle_timeout", idle_timeout)
+
+    @_builtins.property
+    @pulumi.getter(name="idleTimeout")
+    def idle_timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Time after which an idle session is closed. The default value is set to 1 minute, and the maximum value is 2 minutes. The format is a duration and the unit must be seconds. Example: 30s
+        """
+        return pulumi.get(self, "idle_timeout")
+
+    @idle_timeout.setter
+    def idle_timeout(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "idle_timeout", value)
+
+
+if not MYPY:
     class LoadbalancerNetworkArgsDict(TypedDict):
         network_id: pulumi.Input[_builtins.str]
         """
@@ -962,7 +1090,7 @@ if not MYPY:
         """
         role: pulumi.Input[_builtins.str]
         """
-        The role defines how the load balancer is using the network. Supported values are: `ROLE_UNSPECIFIED`, `ROLE_LISTENERS_AND_TARGETS`, `ROLE_LISTENERS`, `ROLE_TARGETS`.
+        The role defines how the load balancer is using the network. Possible values are: `ROLE_UNSPECIFIED`, `ROLE_LISTENERS_AND_TARGETS`, `ROLE_LISTENERS`, `ROLE_TARGETS`.
         """
 elif False:
     LoadbalancerNetworkArgsDict: TypeAlias = Mapping[str, Any]
@@ -974,7 +1102,7 @@ class LoadbalancerNetworkArgs:
                  role: pulumi.Input[_builtins.str]):
         """
         :param pulumi.Input[_builtins.str] network_id: Openstack network ID.
-        :param pulumi.Input[_builtins.str] role: The role defines how the load balancer is using the network. Supported values are: `ROLE_UNSPECIFIED`, `ROLE_LISTENERS_AND_TARGETS`, `ROLE_LISTENERS`, `ROLE_TARGETS`.
+        :param pulumi.Input[_builtins.str] role: The role defines how the load balancer is using the network. Possible values are: `ROLE_UNSPECIFIED`, `ROLE_LISTENERS_AND_TARGETS`, `ROLE_LISTENERS`, `ROLE_TARGETS`.
         """
         pulumi.set(__self__, "network_id", network_id)
         pulumi.set(__self__, "role", role)
@@ -995,7 +1123,7 @@ class LoadbalancerNetworkArgs:
     @pulumi.getter
     def role(self) -> pulumi.Input[_builtins.str]:
         """
-        The role defines how the load balancer is using the network. Supported values are: `ROLE_UNSPECIFIED`, `ROLE_LISTENERS_AND_TARGETS`, `ROLE_LISTENERS`, `ROLE_TARGETS`.
+        The role defines how the load balancer is using the network. Possible values are: `ROLE_UNSPECIFIED`, `ROLE_LISTENERS_AND_TARGETS`, `ROLE_LISTENERS`, `ROLE_TARGETS`.
         """
         return pulumi.get(self, "role")
 
@@ -2150,7 +2278,7 @@ if not MYPY:
         """
         type: pulumi.Input[_builtins.str]
         """
-        Type of the MongoDB Flex instance. Supported values are: `Replica`, `Sharded`, `Single`.
+        Type of the MongoDB Flex instance. Possible values are: `Replica`, `Sharded`, `Single`.
         """
         daily_snapshot_retention_days: NotRequired[pulumi.Input[_builtins.int]]
         """
@@ -2182,7 +2310,7 @@ class MongodbflexInstanceOptionsArgs:
                  weekly_snapshot_retention_weeks: Optional[pulumi.Input[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.int] point_in_time_window_hours: The number of hours back in time the point-in-time recovery feature will be able to recover.
-        :param pulumi.Input[_builtins.str] type: Type of the MongoDB Flex instance. Supported values are: `Replica`, `Sharded`, `Single`.
+        :param pulumi.Input[_builtins.str] type: Type of the MongoDB Flex instance. Possible values are: `Replica`, `Sharded`, `Single`.
         :param pulumi.Input[_builtins.int] daily_snapshot_retention_days: The number of days that daily backups will be retained.
         :param pulumi.Input[_builtins.int] monthly_snapshot_retention_months: The number of months that monthly backups will be retained.
         :param pulumi.Input[_builtins.int] snapshot_retention_days: The number of days that continuous backups (controlled via the `backup_schedule`) will be retained.
@@ -2215,7 +2343,7 @@ class MongodbflexInstanceOptionsArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
         """
-        Type of the MongoDB Flex instance. Supported values are: `Replica`, `Sharded`, `Single`.
+        Type of the MongoDB Flex instance. Possible values are: `Replica`, `Sharded`, `Single`.
         """
         return pulumi.get(self, "type")
 
@@ -4886,7 +5014,7 @@ if not MYPY:
     class RoutingTableRouteNextHopArgsDict(TypedDict):
         type: pulumi.Input[_builtins.str]
         """
-        Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Only `cidrv4` is supported during experimental stage..
+        Type of the next hop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`.
         """
         value: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -4901,7 +5029,7 @@ class RoutingTableRouteNextHopArgs:
                  type: pulumi.Input[_builtins.str],
                  value: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] type: Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Only `cidrv4` is supported during experimental stage..
+        :param pulumi.Input[_builtins.str] type: Type of the next hop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`.
         :param pulumi.Input[_builtins.str] value: Either IPv4 or IPv6 (not set for blackhole and internet). Only IPv4 supported during experimental stage.
         """
         pulumi.set(__self__, "type", type)
@@ -4912,7 +5040,7 @@ class RoutingTableRouteNextHopArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
         """
-        Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Only `cidrv4` is supported during experimental stage..
+        Type of the next hop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`.
         """
         return pulumi.get(self, "type")
 
@@ -5140,7 +5268,7 @@ if not MYPY:
         """
         source_type: pulumi.Input[_builtins.str]
         """
-        The type of the source. Supported values are: `volume`, `image`.
+        The type of the source. Possible values are: `volume`, `image`.
         """
         delete_on_termination: NotRequired[pulumi.Input[_builtins.bool]]
         """
@@ -5172,7 +5300,7 @@ class ServerBootVolumeArgs:
                  size: Optional[pulumi.Input[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] source_id: The ID of the source, either image ID or volume ID
-        :param pulumi.Input[_builtins.str] source_type: The type of the source. Supported values are: `volume`, `image`.
+        :param pulumi.Input[_builtins.str] source_type: The type of the source. Possible values are: `volume`, `image`.
         :param pulumi.Input[_builtins.bool] delete_on_termination: Delete the volume during the termination of the server. Only allowed when `source_type` is `image`.
         :param pulumi.Input[_builtins.str] id: The ID of the boot volume
         :param pulumi.Input[_builtins.str] performance_class: The performance class of the server.
@@ -5205,7 +5333,7 @@ class ServerBootVolumeArgs:
     @pulumi.getter(name="sourceType")
     def source_type(self) -> pulumi.Input[_builtins.str]:
         """
-        The type of the source. Supported values are: `volume`, `image`.
+        The type of the source. Possible values are: `volume`, `image`.
         """
         return pulumi.get(self, "source_type")
 
@@ -6314,7 +6442,7 @@ if not MYPY:
         """
         type: pulumi.Input[_builtins.str]
         """
-        The type of the source. Supported values are: `volume`, `image`, `snapshot`, `backup`.
+        The type of the source. Possible values are: `volume`, `image`, `snapshot`, `backup`.
         """
 elif False:
     VolumeSourceArgsDict: TypeAlias = Mapping[str, Any]
@@ -6326,7 +6454,7 @@ class VolumeSourceArgs:
                  type: pulumi.Input[_builtins.str]):
         """
         :param pulumi.Input[_builtins.str] id: The ID of the source, e.g. image ID
-        :param pulumi.Input[_builtins.str] type: The type of the source. Supported values are: `volume`, `image`, `snapshot`, `backup`.
+        :param pulumi.Input[_builtins.str] type: The type of the source. Possible values are: `volume`, `image`, `snapshot`, `backup`.
         """
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "type", type)
@@ -6347,7 +6475,7 @@ class VolumeSourceArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
         """
-        The type of the source. Supported values are: `volume`, `image`, `snapshot`, `backup`.
+        The type of the source. Possible values are: `volume`, `image`, `snapshot`, `backup`.
         """
         return pulumi.get(self, "type")
 

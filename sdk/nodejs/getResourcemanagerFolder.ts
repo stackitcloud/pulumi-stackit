@@ -7,8 +7,6 @@ import * as utilities from "./utilities";
 /**
  * Resource Manager folder data source schema. To identify the folder, you need to provide the container_id.
  *
- * > This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
- *
  * ## Example Usage
  */
 export function getResourcemanagerFolder(args: GetResourcemanagerFolderArgs, opts?: pulumi.InvokeOptions): Promise<GetResourcemanagerFolderResult> {
@@ -64,8 +62,6 @@ export interface GetResourcemanagerFolderResult {
 }
 /**
  * Resource Manager folder data source schema. To identify the folder, you need to provide the container_id.
- *
- * > This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
  *
  * ## Example Usage
  */

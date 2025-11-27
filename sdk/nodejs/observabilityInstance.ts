@@ -86,6 +86,10 @@ export class ObservabilityInstance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly logsPushUrl: pulumi.Output<string>;
     /**
+     * Specifies for how many days the logs are kept. Default is set to `7`.
+     */
+    declare public readonly logsRetentionDays: pulumi.Output<number>;
+    /**
      * Specifies Logs URL.
      */
     declare public /*out*/ readonly logsUrl: pulumi.Output<string>;
@@ -134,6 +138,10 @@ export class ObservabilityInstance extends pulumi.CustomResource {
      * Specifies Targets URL.
      */
     declare public /*out*/ readonly targetsUrl: pulumi.Output<string>;
+    /**
+     * Specifies for how many days the traces are kept. Default is set to `7`.
+     */
+    declare public readonly tracesRetentionDays: pulumi.Output<number>;
     declare public /*out*/ readonly zipkinSpansUrl: pulumi.Output<string>;
 
     /**
@@ -162,6 +170,7 @@ export class ObservabilityInstance extends pulumi.CustomResource {
             resourceInputs["jaegerTracesUrl"] = state?.jaegerTracesUrl;
             resourceInputs["jaegerUiUrl"] = state?.jaegerUiUrl;
             resourceInputs["logsPushUrl"] = state?.logsPushUrl;
+            resourceInputs["logsRetentionDays"] = state?.logsRetentionDays;
             resourceInputs["logsUrl"] = state?.logsUrl;
             resourceInputs["metricsPushUrl"] = state?.metricsPushUrl;
             resourceInputs["metricsRetentionDays"] = state?.metricsRetentionDays;
@@ -175,6 +184,7 @@ export class ObservabilityInstance extends pulumi.CustomResource {
             resourceInputs["planName"] = state?.planName;
             resourceInputs["projectId"] = state?.projectId;
             resourceInputs["targetsUrl"] = state?.targetsUrl;
+            resourceInputs["tracesRetentionDays"] = state?.tracesRetentionDays;
             resourceInputs["zipkinSpansUrl"] = state?.zipkinSpansUrl;
         } else {
             const args = argsOrState as ObservabilityInstanceArgs | undefined;
@@ -186,6 +196,7 @@ export class ObservabilityInstance extends pulumi.CustomResource {
             }
             resourceInputs["acls"] = args?.acls;
             resourceInputs["alertConfig"] = args?.alertConfig;
+            resourceInputs["logsRetentionDays"] = args?.logsRetentionDays;
             resourceInputs["metricsRetentionDays"] = args?.metricsRetentionDays;
             resourceInputs["metricsRetentionDays1hDownsampling"] = args?.metricsRetentionDays1hDownsampling;
             resourceInputs["metricsRetentionDays5mDownsampling"] = args?.metricsRetentionDays5mDownsampling;
@@ -193,6 +204,7 @@ export class ObservabilityInstance extends pulumi.CustomResource {
             resourceInputs["parameters"] = args?.parameters;
             resourceInputs["planName"] = args?.planName;
             resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["tracesRetentionDays"] = args?.tracesRetentionDays;
             resourceInputs["alertingUrl"] = undefined /*out*/;
             resourceInputs["dashboardUrl"] = undefined /*out*/;
             resourceInputs["grafanaInitialAdminPassword"] = undefined /*out*/;
@@ -270,6 +282,10 @@ export interface ObservabilityInstanceState {
      */
     logsPushUrl?: pulumi.Input<string>;
     /**
+     * Specifies for how many days the logs are kept. Default is set to `7`.
+     */
+    logsRetentionDays?: pulumi.Input<number>;
+    /**
      * Specifies Logs URL.
      */
     logsUrl?: pulumi.Input<string>;
@@ -318,6 +334,10 @@ export interface ObservabilityInstanceState {
      * Specifies Targets URL.
      */
     targetsUrl?: pulumi.Input<string>;
+    /**
+     * Specifies for how many days the traces are kept. Default is set to `7`.
+     */
+    tracesRetentionDays?: pulumi.Input<number>;
     zipkinSpansUrl?: pulumi.Input<string>;
 }
 
@@ -333,6 +353,10 @@ export interface ObservabilityInstanceArgs {
      * Alert configuration for the instance.
      */
     alertConfig?: pulumi.Input<inputs.ObservabilityInstanceAlertConfig>;
+    /**
+     * Specifies for how many days the logs are kept. Default is set to `7`.
+     */
+    logsRetentionDays?: pulumi.Input<number>;
     /**
      * Specifies for how many days the raw metrics are kept. Default is set to `90`.
      */
@@ -361,4 +385,8 @@ export interface ObservabilityInstanceArgs {
      * STACKIT project ID to which the instance is associated.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * Specifies for how many days the traces are kept. Default is set to `7`.
+     */
+    tracesRetentionDays?: pulumi.Input<number>;
 }

@@ -150,6 +150,10 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string LogsPushUrl;
         /// <summary>
+        /// Specifies for how many days the logs are kept. Default is set to `7`.
+        /// </summary>
+        public readonly int LogsRetentionDays;
+        /// <summary>
         /// Specifies Logs URL.
         /// </summary>
         public readonly string LogsUrl;
@@ -198,6 +202,10 @@ namespace Pulumi.Stackit
         /// Specifies Targets URL.
         /// </summary>
         public readonly string TargetsUrl;
+        /// <summary>
+        /// Specifies for how many days the traces are kept. Default is set to `7`.
+        /// </summary>
+        public readonly int TracesRetentionDays;
         public readonly string ZipkinSpansUrl;
 
         [OutputConstructor]
@@ -230,6 +238,8 @@ namespace Pulumi.Stackit
 
             string logsPushUrl,
 
+            int logsRetentionDays,
+
             string logsUrl,
 
             string metricsPushUrl,
@@ -256,6 +266,8 @@ namespace Pulumi.Stackit
 
             string targetsUrl,
 
+            int tracesRetentionDays,
+
             string zipkinSpansUrl)
         {
             Acls = acls;
@@ -272,6 +284,7 @@ namespace Pulumi.Stackit
             JaegerTracesUrl = jaegerTracesUrl;
             JaegerUiUrl = jaegerUiUrl;
             LogsPushUrl = logsPushUrl;
+            LogsRetentionDays = logsRetentionDays;
             LogsUrl = logsUrl;
             MetricsPushUrl = metricsPushUrl;
             MetricsRetentionDays = metricsRetentionDays;
@@ -285,6 +298,7 @@ namespace Pulumi.Stackit
             PlanName = planName;
             ProjectId = projectId;
             TargetsUrl = targetsUrl;
+            TracesRetentionDays = tracesRetentionDays;
             ZipkinSpansUrl = zipkinSpansUrl;
         }
     }

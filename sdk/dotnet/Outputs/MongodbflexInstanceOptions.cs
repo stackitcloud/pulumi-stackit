@@ -30,7 +30,7 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly int? SnapshotRetentionDays;
         /// <summary>
-        /// Type of the MongoDB Flex instance. Supported values are: `Replica`, `Sharded`, `Single`.
+        /// Type of the MongoDB Flex instance. Possible values are: `Replica`, `Sharded`, `Single`.
         /// </summary>
         public readonly string Type;
         /// <summary>

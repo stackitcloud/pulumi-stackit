@@ -59,6 +59,11 @@ iaasCustomEndpoint: Optional[str]
 Custom endpoint for the IaaS service
 """
 
+kmsCustomEndpoint: Optional[str]
+"""
+Custom endpoint for the KMS service
+"""
+
 loadbalancerCustomEndpoint: Optional[str]
 """
 Custom endpoint for the Load Balancer service
