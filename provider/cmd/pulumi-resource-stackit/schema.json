@@ -93,6 +93,10 @@
                 "type": "string",
                 "description": "Custom endpoint for the IaaS service"
             },
+            "kmsCustomEndpoint": {
+                "type": "string",
+                "description": "Custom endpoint for the KMS service"
+            },
             "loadbalancerCustomEndpoint": {
                 "type": "string",
                 "description": "Custom endpoint for the Load Balancer service"
@@ -279,6 +283,16 @@
         },
         "stackit:index/CdnDistributionConfigBackend:CdnDistributionConfigBackend": {
             "properties": {
+                "geofencing": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "description": "A map of URLs to a list of countries where content is allowed.\n"
+                },
                 "originRequestHeaders": {
                     "type": "object",
                     "additionalProperties": {
@@ -292,7 +306,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The configured backend type. Supported values are: \u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\"\u003e`http`\u003c/span\u003e.\n"
+                    "description": "The configured backend type. Possible values are: \u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\"\u003e`http`\u003c/span\u003e.\n"
                 }
             },
             "type": "object",
@@ -458,7 +472,7 @@
                 },
                 "protocol": {
                     "type": "string",
-                    "description": "Protocol is the highest network protocol we understand to load balance. Supported values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_TCP`, `PROTOCOL_UDP`, `PROTOCOL_TCP_PROXY`, `PROTOCOL_TLS_PASSTHROUGH`.\n"
+                    "description": "Protocol is the highest network protocol we understand to load balance. Possible values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_TCP`, `PROTOCOL_UDP`, `PROTOCOL_TCP_PROXY`, `PROTOCOL_TLS_PASSTHROUGH`.\n"
                 },
                 "serverNameIndicators": {
                     "type": "array",
@@ -470,6 +484,14 @@
                 "targetPool": {
                     "type": "string",
                     "description": "Reference target pool by target pool name.\n"
+                },
+                "tcp": {
+                    "$ref": "#/types/stackit:index/LoadbalancerListenerTcp:LoadbalancerListenerTcp",
+                    "description": "Options that are specific to the TCP protocol.\n"
+                },
+                "udp": {
+                    "$ref": "#/types/stackit:index/LoadbalancerListenerUdp:LoadbalancerListenerUdp",
+                    "description": "Options that are specific to the UDP protocol.\n"
                 }
             },
             "type": "object",
@@ -498,6 +520,24 @@
             },
             "type": "object"
         },
+        "stackit:index/LoadbalancerListenerTcp:LoadbalancerListenerTcp": {
+            "properties": {
+                "idleTimeout": {
+                    "type": "string",
+                    "description": "Time after which an idle connection is closed. The default value is set to 300 seconds, and the maximum value is 3600 seconds. The format is a duration and the unit must be seconds. Example: 30s\n"
+                }
+            },
+            "type": "object"
+        },
+        "stackit:index/LoadbalancerListenerUdp:LoadbalancerListenerUdp": {
+            "properties": {
+                "idleTimeout": {
+                    "type": "string",
+                    "description": "Time after which an idle session is closed. The default value is set to 1 minute, and the maximum value is 2 minutes. The format is a duration and the unit must be seconds. Example: 30s\n"
+                }
+            },
+            "type": "object"
+        },
         "stackit:index/LoadbalancerNetwork:LoadbalancerNetwork": {
             "properties": {
                 "networkId": {
@@ -506,7 +546,7 @@
                 },
                 "role": {
                     "type": "string",
-                    "description": "The role defines how the load balancer is using the network. Supported values are: `ROLE_UNSPECIFIED`, `ROLE_LISTENERS_AND_TARGETS`, `ROLE_LISTENERS`, `ROLE_TARGETS`.\n"
+                    "description": "The role defines how the load balancer is using the network. Possible values are: `ROLE_UNSPECIFIED`, `ROLE_LISTENERS_AND_TARGETS`, `ROLE_LISTENERS`, `ROLE_TARGETS`.\n"
                 }
             },
             "type": "object",
@@ -936,7 +976,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Type of the MongoDB Flex instance. Supported values are: `Replica`, `Sharded`, `Single`.\n"
+                    "description": "Type of the MongoDB Flex instance. Possible values are: `Replica`, `Sharded`, `Single`.\n"
                 },
                 "weeklySnapshotRetentionWeeks": {
                     "type": "integer",
@@ -1818,7 +1858,7 @@
             "properties": {
                 "type": {
                     "type": "string",
-                    "description": "Possible values are: \u003cspan pulumi-lang-nodejs=\"`blackhole`\" pulumi-lang-dotnet=\"`Blackhole`\" pulumi-lang-go=\"`blackhole`\" pulumi-lang-python=\"`blackhole`\" pulumi-lang-yaml=\"`blackhole`\" pulumi-lang-java=\"`blackhole`\"\u003e`blackhole`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`internet`\" pulumi-lang-dotnet=\"`Internet`\" pulumi-lang-go=\"`internet`\" pulumi-lang-python=\"`internet`\" pulumi-lang-yaml=\"`internet`\" pulumi-lang-java=\"`internet`\"\u003e`internet`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ipv4`\" pulumi-lang-dotnet=\"`Ipv4`\" pulumi-lang-go=\"`ipv4`\" pulumi-lang-python=\"`ipv4`\" pulumi-lang-yaml=\"`ipv4`\" pulumi-lang-java=\"`ipv4`\"\u003e`ipv4`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ipv6`\" pulumi-lang-dotnet=\"`Ipv6`\" pulumi-lang-go=\"`ipv6`\" pulumi-lang-python=\"`ipv6`\" pulumi-lang-yaml=\"`ipv6`\" pulumi-lang-java=\"`ipv6`\"\u003e`ipv6`\u003c/span\u003e. Only \u003cspan pulumi-lang-nodejs=\"`cidrv4`\" pulumi-lang-dotnet=\"`Cidrv4`\" pulumi-lang-go=\"`cidrv4`\" pulumi-lang-python=\"`cidrv4`\" pulumi-lang-yaml=\"`cidrv4`\" pulumi-lang-java=\"`cidrv4`\"\u003e`cidrv4`\u003c/span\u003e is supported during experimental stage..\n"
+                    "description": "Type of the next hop. Possible values are: \u003cspan pulumi-lang-nodejs=\"`blackhole`\" pulumi-lang-dotnet=\"`Blackhole`\" pulumi-lang-go=\"`blackhole`\" pulumi-lang-python=\"`blackhole`\" pulumi-lang-yaml=\"`blackhole`\" pulumi-lang-java=\"`blackhole`\"\u003e`blackhole`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`internet`\" pulumi-lang-dotnet=\"`Internet`\" pulumi-lang-go=\"`internet`\" pulumi-lang-python=\"`internet`\" pulumi-lang-yaml=\"`internet`\" pulumi-lang-java=\"`internet`\"\u003e`internet`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ipv4`\" pulumi-lang-dotnet=\"`Ipv4`\" pulumi-lang-go=\"`ipv4`\" pulumi-lang-python=\"`ipv4`\" pulumi-lang-yaml=\"`ipv4`\" pulumi-lang-java=\"`ipv4`\"\u003e`ipv4`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ipv6`\" pulumi-lang-dotnet=\"`Ipv6`\" pulumi-lang-go=\"`ipv6`\" pulumi-lang-python=\"`ipv6`\" pulumi-lang-yaml=\"`ipv6`\" pulumi-lang-java=\"`ipv6`\"\u003e`ipv6`\u003c/span\u003e.\n"
                 },
                 "value": {
                     "type": "string",
@@ -1930,7 +1970,7 @@
                 },
                 "sourceType": {
                     "type": "string",
-                    "description": "The type of the source. Supported values are: \u003cspan pulumi-lang-nodejs=\"`volume`\" pulumi-lang-dotnet=\"`Volume`\" pulumi-lang-go=\"`volume`\" pulumi-lang-python=\"`volume`\" pulumi-lang-yaml=\"`volume`\" pulumi-lang-java=\"`volume`\"\u003e`volume`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`image`\" pulumi-lang-dotnet=\"`Image`\" pulumi-lang-go=\"`image`\" pulumi-lang-python=\"`image`\" pulumi-lang-yaml=\"`image`\" pulumi-lang-java=\"`image`\"\u003e`image`\u003c/span\u003e.\n"
+                    "description": "The type of the source. Possible values are: \u003cspan pulumi-lang-nodejs=\"`volume`\" pulumi-lang-dotnet=\"`Volume`\" pulumi-lang-go=\"`volume`\" pulumi-lang-python=\"`volume`\" pulumi-lang-yaml=\"`volume`\" pulumi-lang-java=\"`volume`\"\u003e`volume`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`image`\" pulumi-lang-dotnet=\"`Image`\" pulumi-lang-go=\"`image`\" pulumi-lang-python=\"`image`\" pulumi-lang-yaml=\"`image`\" pulumi-lang-java=\"`image`\"\u003e`image`\u003c/span\u003e.\n"
                 }
             },
             "type": "object",
@@ -2341,7 +2381,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of the source. Supported values are: \u003cspan pulumi-lang-nodejs=\"`volume`\" pulumi-lang-dotnet=\"`Volume`\" pulumi-lang-go=\"`volume`\" pulumi-lang-python=\"`volume`\" pulumi-lang-yaml=\"`volume`\" pulumi-lang-java=\"`volume`\"\u003e`volume`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`image`\" pulumi-lang-dotnet=\"`Image`\" pulumi-lang-go=\"`image`\" pulumi-lang-python=\"`image`\" pulumi-lang-yaml=\"`image`\" pulumi-lang-java=\"`image`\"\u003e`image`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`snapshot`\" pulumi-lang-dotnet=\"`Snapshot`\" pulumi-lang-go=\"`snapshot`\" pulumi-lang-python=\"`snapshot`\" pulumi-lang-yaml=\"`snapshot`\" pulumi-lang-java=\"`snapshot`\"\u003e`snapshot`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`backup`\" pulumi-lang-dotnet=\"`Backup`\" pulumi-lang-go=\"`backup`\" pulumi-lang-python=\"`backup`\" pulumi-lang-yaml=\"`backup`\" pulumi-lang-java=\"`backup`\"\u003e`backup`\u003c/span\u003e.\n"
+                    "description": "The type of the source. Possible values are: \u003cspan pulumi-lang-nodejs=\"`volume`\" pulumi-lang-dotnet=\"`Volume`\" pulumi-lang-go=\"`volume`\" pulumi-lang-python=\"`volume`\" pulumi-lang-yaml=\"`volume`\" pulumi-lang-java=\"`volume`\"\u003e`volume`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`image`\" pulumi-lang-dotnet=\"`Image`\" pulumi-lang-go=\"`image`\" pulumi-lang-python=\"`image`\" pulumi-lang-yaml=\"`image`\" pulumi-lang-java=\"`image`\"\u003e`image`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`snapshot`\" pulumi-lang-dotnet=\"`Snapshot`\" pulumi-lang-go=\"`snapshot`\" pulumi-lang-python=\"`snapshot`\" pulumi-lang-yaml=\"`snapshot`\" pulumi-lang-java=\"`snapshot`\"\u003e`snapshot`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`backup`\" pulumi-lang-dotnet=\"`Backup`\" pulumi-lang-go=\"`backup`\" pulumi-lang-python=\"`backup`\" pulumi-lang-yaml=\"`backup`\" pulumi-lang-java=\"`backup`\"\u003e`backup`\u003c/span\u003e.\n"
                 }
             },
             "type": "object",
@@ -2406,6 +2446,16 @@
         },
         "stackit:index/getCdnDistributionConfigBackend:getCdnDistributionConfigBackend": {
             "properties": {
+                "geofencing": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "description": "A map of URLs to a list of countries where content is allowed.\n"
+                },
                 "originRequestHeaders": {
                     "type": "object",
                     "additionalProperties": {
@@ -2419,11 +2469,12 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The configured backend type. Supported values are: \u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\"\u003e`http`\u003c/span\u003e.\n"
+                    "description": "The configured backend type. Possible values are: \u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\"\u003e`http`\u003c/span\u003e.\n"
                 }
             },
             "type": "object",
             "required": [
+                "geofencing",
                 "originRequestHeaders",
                 "originUrl",
                 "type"
@@ -2731,6 +2782,14 @@
                 "targetPool": {
                     "type": "string",
                     "description": "Reference target pool by target pool name.\n"
+                },
+                "tcp": {
+                    "$ref": "#/types/stackit:index/getLoadbalancerListenerTcp:getLoadbalancerListenerTcp",
+                    "description": "Options that are specific to the TCP protocol.\n"
+                },
+                "udp": {
+                    "$ref": "#/types/stackit:index/getLoadbalancerListenerUdp:getLoadbalancerListenerUdp",
+                    "description": "Options that are specific to the UDP protocol.\n"
                 }
             },
             "type": "object",
@@ -2738,7 +2797,9 @@
                 "displayName",
                 "port",
                 "protocol",
-                "targetPool"
+                "targetPool",
+                "tcp",
+                "udp"
             ],
             "language": {
                 "nodejs": {
@@ -2754,6 +2815,40 @@
                 }
             },
             "type": "object"
+        },
+        "stackit:index/getLoadbalancerListenerTcp:getLoadbalancerListenerTcp": {
+            "properties": {
+                "idleTimeout": {
+                    "type": "string",
+                    "description": "Time after which an idle connection is closed. The default value is set to 5 minutes, and the maximum value is one hour.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "idleTimeout"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getLoadbalancerListenerUdp:getLoadbalancerListenerUdp": {
+            "properties": {
+                "idleTimeout": {
+                    "type": "string",
+                    "description": "Time after which an idle session is closed. The default value is set to 1 minute, and the maximum value is 2 minutes.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "idleTimeout"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "stackit:index/getLoadbalancerNetwork:getLoadbalancerNetwork": {
             "properties": {
@@ -4179,7 +4274,7 @@
             "properties": {
                 "type": {
                     "type": "string",
-                    "description": "Possible values are: \u003cspan pulumi-lang-nodejs=\"`blackhole`\" pulumi-lang-dotnet=\"`Blackhole`\" pulumi-lang-go=\"`blackhole`\" pulumi-lang-python=\"`blackhole`\" pulumi-lang-yaml=\"`blackhole`\" pulumi-lang-java=\"`blackhole`\"\u003e`blackhole`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`internet`\" pulumi-lang-dotnet=\"`Internet`\" pulumi-lang-go=\"`internet`\" pulumi-lang-python=\"`internet`\" pulumi-lang-yaml=\"`internet`\" pulumi-lang-java=\"`internet`\"\u003e`internet`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ipv4`\" pulumi-lang-dotnet=\"`Ipv4`\" pulumi-lang-go=\"`ipv4`\" pulumi-lang-python=\"`ipv4`\" pulumi-lang-yaml=\"`ipv4`\" pulumi-lang-java=\"`ipv4`\"\u003e`ipv4`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ipv6`\" pulumi-lang-dotnet=\"`Ipv6`\" pulumi-lang-go=\"`ipv6`\" pulumi-lang-python=\"`ipv6`\" pulumi-lang-yaml=\"`ipv6`\" pulumi-lang-java=\"`ipv6`\"\u003e`ipv6`\u003c/span\u003e. Only \u003cspan pulumi-lang-nodejs=\"`cidrv4`\" pulumi-lang-dotnet=\"`Cidrv4`\" pulumi-lang-go=\"`cidrv4`\" pulumi-lang-python=\"`cidrv4`\" pulumi-lang-yaml=\"`cidrv4`\" pulumi-lang-java=\"`cidrv4`\"\u003e`cidrv4`\u003c/span\u003e is supported during experimental stage..\n"
+                    "description": "Type of the next hop. Possible values are: \u003cspan pulumi-lang-nodejs=\"`blackhole`\" pulumi-lang-dotnet=\"`Blackhole`\" pulumi-lang-go=\"`blackhole`\" pulumi-lang-python=\"`blackhole`\" pulumi-lang-yaml=\"`blackhole`\" pulumi-lang-java=\"`blackhole`\"\u003e`blackhole`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`internet`\" pulumi-lang-dotnet=\"`Internet`\" pulumi-lang-go=\"`internet`\" pulumi-lang-python=\"`internet`\" pulumi-lang-yaml=\"`internet`\" pulumi-lang-java=\"`internet`\"\u003e`internet`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ipv4`\" pulumi-lang-dotnet=\"`Ipv4`\" pulumi-lang-go=\"`ipv4`\" pulumi-lang-python=\"`ipv4`\" pulumi-lang-yaml=\"`ipv4`\" pulumi-lang-java=\"`ipv4`\"\u003e`ipv4`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ipv6`\" pulumi-lang-dotnet=\"`Ipv6`\" pulumi-lang-go=\"`ipv6`\" pulumi-lang-python=\"`ipv6`\" pulumi-lang-yaml=\"`ipv6`\" pulumi-lang-java=\"`ipv6`\"\u003e`ipv6`\u003c/span\u003e.\n"
                 },
                 "value": {
                     "type": "string",
@@ -4268,7 +4363,7 @@
             "properties": {
                 "type": {
                     "type": "string",
-                    "description": "Possible values are: \u003cspan pulumi-lang-nodejs=\"`blackhole`\" pulumi-lang-dotnet=\"`Blackhole`\" pulumi-lang-go=\"`blackhole`\" pulumi-lang-python=\"`blackhole`\" pulumi-lang-yaml=\"`blackhole`\" pulumi-lang-java=\"`blackhole`\"\u003e`blackhole`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`internet`\" pulumi-lang-dotnet=\"`Internet`\" pulumi-lang-go=\"`internet`\" pulumi-lang-python=\"`internet`\" pulumi-lang-yaml=\"`internet`\" pulumi-lang-java=\"`internet`\"\u003e`internet`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ipv4`\" pulumi-lang-dotnet=\"`Ipv4`\" pulumi-lang-go=\"`ipv4`\" pulumi-lang-python=\"`ipv4`\" pulumi-lang-yaml=\"`ipv4`\" pulumi-lang-java=\"`ipv4`\"\u003e`ipv4`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ipv6`\" pulumi-lang-dotnet=\"`Ipv6`\" pulumi-lang-go=\"`ipv6`\" pulumi-lang-python=\"`ipv6`\" pulumi-lang-yaml=\"`ipv6`\" pulumi-lang-java=\"`ipv6`\"\u003e`ipv6`\u003c/span\u003e. Only \u003cspan pulumi-lang-nodejs=\"`cidrv4`\" pulumi-lang-dotnet=\"`Cidrv4`\" pulumi-lang-go=\"`cidrv4`\" pulumi-lang-python=\"`cidrv4`\" pulumi-lang-yaml=\"`cidrv4`\" pulumi-lang-java=\"`cidrv4`\"\u003e`cidrv4`\u003c/span\u003e is supported during experimental stage..\n"
+                    "description": "Type of the next hop. Possible values are: \u003cspan pulumi-lang-nodejs=\"`blackhole`\" pulumi-lang-dotnet=\"`Blackhole`\" pulumi-lang-go=\"`blackhole`\" pulumi-lang-python=\"`blackhole`\" pulumi-lang-yaml=\"`blackhole`\" pulumi-lang-java=\"`blackhole`\"\u003e`blackhole`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`internet`\" pulumi-lang-dotnet=\"`Internet`\" pulumi-lang-go=\"`internet`\" pulumi-lang-python=\"`internet`\" pulumi-lang-yaml=\"`internet`\" pulumi-lang-java=\"`internet`\"\u003e`internet`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ipv4`\" pulumi-lang-dotnet=\"`Ipv4`\" pulumi-lang-go=\"`ipv4`\" pulumi-lang-python=\"`ipv4`\" pulumi-lang-yaml=\"`ipv4`\" pulumi-lang-java=\"`ipv4`\"\u003e`ipv4`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ipv6`\" pulumi-lang-dotnet=\"`Ipv6`\" pulumi-lang-go=\"`ipv6`\" pulumi-lang-python=\"`ipv6`\" pulumi-lang-yaml=\"`ipv6`\" pulumi-lang-java=\"`ipv6`\"\u003e`ipv6`\u003c/span\u003e.\n"
                 },
                 "value": {
                     "type": "string",
@@ -4967,7 +5062,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of the source. Supported values are: \u003cspan pulumi-lang-nodejs=\"`volume`\" pulumi-lang-dotnet=\"`Volume`\" pulumi-lang-go=\"`volume`\" pulumi-lang-python=\"`volume`\" pulumi-lang-yaml=\"`volume`\" pulumi-lang-java=\"`volume`\"\u003e`volume`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`image`\" pulumi-lang-dotnet=\"`Image`\" pulumi-lang-go=\"`image`\" pulumi-lang-python=\"`image`\" pulumi-lang-yaml=\"`image`\" pulumi-lang-java=\"`image`\"\u003e`image`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`snapshot`\" pulumi-lang-dotnet=\"`Snapshot`\" pulumi-lang-go=\"`snapshot`\" pulumi-lang-python=\"`snapshot`\" pulumi-lang-yaml=\"`snapshot`\" pulumi-lang-java=\"`snapshot`\"\u003e`snapshot`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`backup`\" pulumi-lang-dotnet=\"`Backup`\" pulumi-lang-go=\"`backup`\" pulumi-lang-python=\"`backup`\" pulumi-lang-yaml=\"`backup`\" pulumi-lang-java=\"`backup`\"\u003e`backup`\u003c/span\u003e.\n"
+                    "description": "The type of the source. Possible values are: \u003cspan pulumi-lang-nodejs=\"`volume`\" pulumi-lang-dotnet=\"`Volume`\" pulumi-lang-go=\"`volume`\" pulumi-lang-python=\"`volume`\" pulumi-lang-yaml=\"`volume`\" pulumi-lang-java=\"`volume`\"\u003e`volume`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`image`\" pulumi-lang-dotnet=\"`Image`\" pulumi-lang-go=\"`image`\" pulumi-lang-python=\"`image`\" pulumi-lang-yaml=\"`image`\" pulumi-lang-java=\"`image`\"\u003e`image`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`snapshot`\" pulumi-lang-dotnet=\"`Snapshot`\" pulumi-lang-go=\"`snapshot`\" pulumi-lang-python=\"`snapshot`\" pulumi-lang-yaml=\"`snapshot`\" pulumi-lang-java=\"`snapshot`\"\u003e`snapshot`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`backup`\" pulumi-lang-dotnet=\"`Backup`\" pulumi-lang-go=\"`backup`\" pulumi-lang-python=\"`backup`\" pulumi-lang-yaml=\"`backup`\" pulumi-lang-java=\"`backup`\"\u003e`backup`\u003c/span\u003e.\n"
                 }
             },
             "type": "object",
@@ -5023,6 +5118,10 @@
             "iaasCustomEndpoint": {
                 "type": "string",
                 "description": "Custom endpoint for the IaaS service"
+            },
+            "kmsCustomEndpoint": {
+                "type": "string",
+                "description": "Custom endpoint for the KMS service"
             },
             "loadbalancerCustomEndpoint": {
                 "type": "string",
@@ -5179,6 +5278,10 @@
             "iaasCustomEndpoint": {
                 "type": "string",
                 "description": "Custom endpoint for the IaaS service"
+            },
+            "kmsCustomEndpoint": {
+                "type": "string",
+                "description": "Custom endpoint for the KMS service"
             },
             "loadbalancerCustomEndpoint": {
                 "type": "string",
@@ -5593,7 +5696,7 @@
             }
         },
         "stackit:index/cdnDistribution:CdnDistribution": {
-            "description": "CDN distribution data source schema.\n\n\u003e This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\nresource \"stackit_cdn_distribution\" \"example_distribution\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  config = {\n    backend = {\n      type       = \"http\"\n      origin_url = \"https://mybackend.onstackit.cloud\"\n    }\n    regions           = [\"EU\", \"US\", \"ASIA\", \"AF\", \"SA\"]\n    blocked_countries = [\"DE\", \"AT\", \"CH\"]\n\n    optimizer = {\n      enabled = true\n    }\n  }\n}\n\n# Only use the import statement, if you want to import an existing cdn distribution\nimport {\n  to = stackit_cdn_distribution.import-example\n  id = \"${var.project_id},${var.distribution_id}\"\n}\n```\n",
+            "description": "CDN distribution data source schema.\n\n\u003e This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\nresource \"stackit_cdn_distribution\" \"example_distribution\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  config = {\n    backend = {\n      type       = \"http\"\n      origin_url = \"https://mybackend.onstackit.cloud\"\n      geofencing = {\n        \"https://mybackend.onstackit.cloud\" = [\"DE\"]\n      }\n    }\n    regions           = [\"EU\", \"US\", \"ASIA\", \"AF\", \"SA\"]\n    blocked_countries = [\"DE\", \"AT\", \"CH\"]\n\n    optimizer = {\n      enabled = true\n    }\n  }\n}\n\n# Only use the import statement, if you want to import an existing cdn distribution\nimport {\n  to = stackit_cdn_distribution.import-example\n  id = \"${var.project_id},${var.distribution_id}\"\n}\n```\n",
             "properties": {
                 "config": {
                     "$ref": "#/types/stackit:index/CdnDistributionConfig:CdnDistributionConfig",
@@ -5952,7 +6055,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Zone type. Defaults to \u003cspan pulumi-lang-nodejs=\"`primary`\" pulumi-lang-dotnet=\"`Primary`\" pulumi-lang-go=\"`primary`\" pulumi-lang-python=\"`primary`\" pulumi-lang-yaml=\"`primary`\" pulumi-lang-java=\"`primary`\"\u003e`primary`\u003c/span\u003e. Supported values are: \u003cspan pulumi-lang-nodejs=\"`primary`\" pulumi-lang-dotnet=\"`Primary`\" pulumi-lang-go=\"`primary`\" pulumi-lang-python=\"`primary`\" pulumi-lang-yaml=\"`primary`\" pulumi-lang-java=\"`primary`\"\u003e`primary`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`secondary`\" pulumi-lang-dotnet=\"`Secondary`\" pulumi-lang-go=\"`secondary`\" pulumi-lang-python=\"`secondary`\" pulumi-lang-yaml=\"`secondary`\" pulumi-lang-java=\"`secondary`\"\u003e`secondary`\u003c/span\u003e.\n"
+                    "description": "Zone type. Defaults to \u003cspan pulumi-lang-nodejs=\"`primary`\" pulumi-lang-dotnet=\"`Primary`\" pulumi-lang-go=\"`primary`\" pulumi-lang-python=\"`primary`\" pulumi-lang-yaml=\"`primary`\" pulumi-lang-java=\"`primary`\"\u003e`primary`\u003c/span\u003e. Possible values are: \u003cspan pulumi-lang-nodejs=\"`primary`\" pulumi-lang-dotnet=\"`Primary`\" pulumi-lang-go=\"`primary`\" pulumi-lang-python=\"`primary`\" pulumi-lang-yaml=\"`primary`\" pulumi-lang-java=\"`primary`\"\u003e`primary`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`secondary`\" pulumi-lang-dotnet=\"`Secondary`\" pulumi-lang-go=\"`secondary`\" pulumi-lang-python=\"`secondary`\" pulumi-lang-yaml=\"`secondary`\" pulumi-lang-java=\"`secondary`\"\u003e`secondary`\u003c/span\u003e.\n"
                 },
                 "visibility": {
                     "type": "string",
@@ -6047,7 +6150,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Zone type. Defaults to \u003cspan pulumi-lang-nodejs=\"`primary`\" pulumi-lang-dotnet=\"`Primary`\" pulumi-lang-go=\"`primary`\" pulumi-lang-python=\"`primary`\" pulumi-lang-yaml=\"`primary`\" pulumi-lang-java=\"`primary`\"\u003e`primary`\u003c/span\u003e. Supported values are: \u003cspan pulumi-lang-nodejs=\"`primary`\" pulumi-lang-dotnet=\"`Primary`\" pulumi-lang-go=\"`primary`\" pulumi-lang-python=\"`primary`\" pulumi-lang-yaml=\"`primary`\" pulumi-lang-java=\"`primary`\"\u003e`primary`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`secondary`\" pulumi-lang-dotnet=\"`Secondary`\" pulumi-lang-go=\"`secondary`\" pulumi-lang-python=\"`secondary`\" pulumi-lang-yaml=\"`secondary`\" pulumi-lang-java=\"`secondary`\"\u003e`secondary`\u003c/span\u003e.\n"
+                    "description": "Zone type. Defaults to \u003cspan pulumi-lang-nodejs=\"`primary`\" pulumi-lang-dotnet=\"`Primary`\" pulumi-lang-go=\"`primary`\" pulumi-lang-python=\"`primary`\" pulumi-lang-yaml=\"`primary`\" pulumi-lang-java=\"`primary`\"\u003e`primary`\u003c/span\u003e. Possible values are: \u003cspan pulumi-lang-nodejs=\"`primary`\" pulumi-lang-dotnet=\"`Primary`\" pulumi-lang-go=\"`primary`\" pulumi-lang-python=\"`primary`\" pulumi-lang-yaml=\"`primary`\" pulumi-lang-java=\"`primary`\"\u003e`primary`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`secondary`\" pulumi-lang-dotnet=\"`Secondary`\" pulumi-lang-go=\"`secondary`\" pulumi-lang-python=\"`secondary`\" pulumi-lang-yaml=\"`secondary`\" pulumi-lang-java=\"`secondary`\"\u003e`secondary`\u003c/span\u003e.\n"
                 }
             },
             "requiredInputs": [
@@ -6133,7 +6236,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "Zone type. Defaults to \u003cspan pulumi-lang-nodejs=\"`primary`\" pulumi-lang-dotnet=\"`Primary`\" pulumi-lang-go=\"`primary`\" pulumi-lang-python=\"`primary`\" pulumi-lang-yaml=\"`primary`\" pulumi-lang-java=\"`primary`\"\u003e`primary`\u003c/span\u003e. Supported values are: \u003cspan pulumi-lang-nodejs=\"`primary`\" pulumi-lang-dotnet=\"`Primary`\" pulumi-lang-go=\"`primary`\" pulumi-lang-python=\"`primary`\" pulumi-lang-yaml=\"`primary`\" pulumi-lang-java=\"`primary`\"\u003e`primary`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`secondary`\" pulumi-lang-dotnet=\"`Secondary`\" pulumi-lang-go=\"`secondary`\" pulumi-lang-python=\"`secondary`\" pulumi-lang-yaml=\"`secondary`\" pulumi-lang-java=\"`secondary`\"\u003e`secondary`\u003c/span\u003e.\n"
+                        "description": "Zone type. Defaults to \u003cspan pulumi-lang-nodejs=\"`primary`\" pulumi-lang-dotnet=\"`Primary`\" pulumi-lang-go=\"`primary`\" pulumi-lang-python=\"`primary`\" pulumi-lang-yaml=\"`primary`\" pulumi-lang-java=\"`primary`\"\u003e`primary`\u003c/span\u003e. Possible values are: \u003cspan pulumi-lang-nodejs=\"`primary`\" pulumi-lang-dotnet=\"`Primary`\" pulumi-lang-go=\"`primary`\" pulumi-lang-python=\"`primary`\" pulumi-lang-yaml=\"`primary`\" pulumi-lang-java=\"`primary`\"\u003e`primary`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`secondary`\" pulumi-lang-dotnet=\"`Secondary`\" pulumi-lang-go=\"`secondary`\" pulumi-lang-python=\"`secondary`\" pulumi-lang-yaml=\"`secondary`\" pulumi-lang-java=\"`secondary`\"\u003e`secondary`\u003c/span\u003e.\n"
                     },
                     "visibility": {
                         "type": "string",
@@ -6522,8 +6625,423 @@
                 "type": "object"
             }
         },
+        "stackit:index/kmsKey:KmsKey": {
+            "description": "## Example Usage\n\n```terraform\nresource \"stackit_kms_key\" \"key\" {\n  project_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  keyring_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  display_name = \"key-01\"\n  protection   = \"software\"\n  algorithm    = \"aes_256_gcm\"\n  purpose      = \"symmetric_encrypt_decrypt\"\n}\n```\n",
+            "properties": {
+                "accessScope": {
+                    "type": "string",
+                    "description": "The access scope of the key. Default is `PUBLIC`. Possible values are: `PUBLIC`, `SNA`.\n"
+                },
+                "algorithm": {
+                    "type": "string",
+                    "description": "The encryption algorithm that the key will use to encrypt data. Possible values are: \u003cspan pulumi-lang-nodejs=\"`aes256Gcm`\" pulumi-lang-dotnet=\"`Aes256Gcm`\" pulumi-lang-go=\"`aes256Gcm`\" pulumi-lang-python=\"`aes_256_gcm`\" pulumi-lang-yaml=\"`aes256Gcm`\" pulumi-lang-java=\"`aes256Gcm`\"\u003e`aes_256_gcm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa2048OaepSha256`\" pulumi-lang-dotnet=\"`Rsa2048OaepSha256`\" pulumi-lang-go=\"`rsa2048OaepSha256`\" pulumi-lang-python=\"`rsa_2048_oaep_sha256`\" pulumi-lang-yaml=\"`rsa2048OaepSha256`\" pulumi-lang-java=\"`rsa2048OaepSha256`\"\u003e`rsa_2048_oaep_sha256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa3072OaepSha256`\" pulumi-lang-dotnet=\"`Rsa3072OaepSha256`\" pulumi-lang-go=\"`rsa3072OaepSha256`\" pulumi-lang-python=\"`rsa_3072_oaep_sha256`\" pulumi-lang-yaml=\"`rsa3072OaepSha256`\" pulumi-lang-java=\"`rsa3072OaepSha256`\"\u003e`rsa_3072_oaep_sha256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa4096OaepSha256`\" pulumi-lang-dotnet=\"`Rsa4096OaepSha256`\" pulumi-lang-go=\"`rsa4096OaepSha256`\" pulumi-lang-python=\"`rsa_4096_oaep_sha256`\" pulumi-lang-yaml=\"`rsa4096OaepSha256`\" pulumi-lang-java=\"`rsa4096OaepSha256`\"\u003e`rsa_4096_oaep_sha256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa4096OaepSha512`\" pulumi-lang-dotnet=\"`Rsa4096OaepSha512`\" pulumi-lang-go=\"`rsa4096OaepSha512`\" pulumi-lang-python=\"`rsa_4096_oaep_sha512`\" pulumi-lang-yaml=\"`rsa4096OaepSha512`\" pulumi-lang-java=\"`rsa4096OaepSha512`\"\u003e`rsa_4096_oaep_sha512`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`hmacSha256`\" pulumi-lang-dotnet=\"`HmacSha256`\" pulumi-lang-go=\"`hmacSha256`\" pulumi-lang-python=\"`hmac_sha256`\" pulumi-lang-yaml=\"`hmacSha256`\" pulumi-lang-java=\"`hmacSha256`\"\u003e`hmac_sha256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`hmacSha384`\" pulumi-lang-dotnet=\"`HmacSha384`\" pulumi-lang-go=\"`hmacSha384`\" pulumi-lang-python=\"`hmac_sha384`\" pulumi-lang-yaml=\"`hmacSha384`\" pulumi-lang-java=\"`hmacSha384`\"\u003e`hmac_sha384`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`hmacSha512`\" pulumi-lang-dotnet=\"`HmacSha512`\" pulumi-lang-go=\"`hmacSha512`\" pulumi-lang-python=\"`hmac_sha512`\" pulumi-lang-yaml=\"`hmacSha512`\" pulumi-lang-java=\"`hmacSha512`\"\u003e`hmac_sha512`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ecdsaP256Sha256`\" pulumi-lang-dotnet=\"`EcdsaP256Sha256`\" pulumi-lang-go=\"`ecdsaP256Sha256`\" pulumi-lang-python=\"`ecdsa_p256_sha256`\" pulumi-lang-yaml=\"`ecdsaP256Sha256`\" pulumi-lang-java=\"`ecdsaP256Sha256`\"\u003e`ecdsa_p256_sha256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ecdsaP384Sha384`\" pulumi-lang-dotnet=\"`EcdsaP384Sha384`\" pulumi-lang-go=\"`ecdsaP384Sha384`\" pulumi-lang-python=\"`ecdsa_p384_sha384`\" pulumi-lang-yaml=\"`ecdsaP384Sha384`\" pulumi-lang-java=\"`ecdsaP384Sha384`\"\u003e`ecdsa_p384_sha384`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ecdsaP521Sha512`\" pulumi-lang-dotnet=\"`EcdsaP521Sha512`\" pulumi-lang-go=\"`ecdsaP521Sha512`\" pulumi-lang-python=\"`ecdsa_p521_sha512`\" pulumi-lang-yaml=\"`ecdsaP521Sha512`\" pulumi-lang-java=\"`ecdsaP521Sha512`\"\u003e`ecdsa_p521_sha512`\u003c/span\u003e.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A user chosen description to distinguish multiple keys\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The display name to distinguish multiple keys\n"
+                },
+                "importOnly": {
+                    "type": "boolean",
+                    "description": "States whether versions can be created or only imported.\n"
+                },
+                "keyId": {
+                    "type": "string",
+                    "description": "The ID of the key\n"
+                },
+                "keyringId": {
+                    "type": "string",
+                    "description": "The ID of the associated keyring\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT project ID to which the key is associated.\n"
+                },
+                "protection": {
+                    "type": "string",
+                    "description": "The underlying system that is responsible for protecting the key material. Possible values are: \u003cspan pulumi-lang-nodejs=\"`software`\" pulumi-lang-dotnet=\"`Software`\" pulumi-lang-go=\"`software`\" pulumi-lang-python=\"`software`\" pulumi-lang-yaml=\"`software`\" pulumi-lang-java=\"`software`\"\u003e`software`\u003c/span\u003e.\n"
+                },
+                "purpose": {
+                    "type": "string",
+                    "description": "The purpose for which the key will be used. Possible values are: \u003cspan pulumi-lang-nodejs=\"`symmetricEncryptDecrypt`\" pulumi-lang-dotnet=\"`SymmetricEncryptDecrypt`\" pulumi-lang-go=\"`symmetricEncryptDecrypt`\" pulumi-lang-python=\"`symmetric_encrypt_decrypt`\" pulumi-lang-yaml=\"`symmetricEncryptDecrypt`\" pulumi-lang-java=\"`symmetricEncryptDecrypt`\"\u003e`symmetric_encrypt_decrypt`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`asymmetricEncryptDecrypt`\" pulumi-lang-dotnet=\"`AsymmetricEncryptDecrypt`\" pulumi-lang-go=\"`asymmetricEncryptDecrypt`\" pulumi-lang-python=\"`asymmetric_encrypt_decrypt`\" pulumi-lang-yaml=\"`asymmetricEncryptDecrypt`\" pulumi-lang-java=\"`asymmetricEncryptDecrypt`\"\u003e`asymmetric_encrypt_decrypt`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`messageAuthenticationCode`\" pulumi-lang-dotnet=\"`MessageAuthenticationCode`\" pulumi-lang-go=\"`messageAuthenticationCode`\" pulumi-lang-python=\"`message_authentication_code`\" pulumi-lang-yaml=\"`messageAuthenticationCode`\" pulumi-lang-java=\"`messageAuthenticationCode`\"\u003e`message_authentication_code`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`asymmetricSignVerify`\" pulumi-lang-dotnet=\"`AsymmetricSignVerify`\" pulumi-lang-go=\"`asymmetricSignVerify`\" pulumi-lang-python=\"`asymmetric_sign_verify`\" pulumi-lang-yaml=\"`asymmetricSignVerify`\" pulumi-lang-java=\"`asymmetricSignVerify`\"\u003e`asymmetric_sign_verify`\u003c/span\u003e.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The resource region. If not defined, the provider region is used.\n"
+                }
+            },
+            "required": [
+                "accessScope",
+                "algorithm",
+                "displayName",
+                "importOnly",
+                "keyId",
+                "keyringId",
+                "projectId",
+                "protection",
+                "purpose",
+                "region"
+            ],
+            "inputProperties": {
+                "accessScope": {
+                    "type": "string",
+                    "description": "The access scope of the key. Default is `PUBLIC`. Possible values are: `PUBLIC`, `SNA`.\n"
+                },
+                "algorithm": {
+                    "type": "string",
+                    "description": "The encryption algorithm that the key will use to encrypt data. Possible values are: \u003cspan pulumi-lang-nodejs=\"`aes256Gcm`\" pulumi-lang-dotnet=\"`Aes256Gcm`\" pulumi-lang-go=\"`aes256Gcm`\" pulumi-lang-python=\"`aes_256_gcm`\" pulumi-lang-yaml=\"`aes256Gcm`\" pulumi-lang-java=\"`aes256Gcm`\"\u003e`aes_256_gcm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa2048OaepSha256`\" pulumi-lang-dotnet=\"`Rsa2048OaepSha256`\" pulumi-lang-go=\"`rsa2048OaepSha256`\" pulumi-lang-python=\"`rsa_2048_oaep_sha256`\" pulumi-lang-yaml=\"`rsa2048OaepSha256`\" pulumi-lang-java=\"`rsa2048OaepSha256`\"\u003e`rsa_2048_oaep_sha256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa3072OaepSha256`\" pulumi-lang-dotnet=\"`Rsa3072OaepSha256`\" pulumi-lang-go=\"`rsa3072OaepSha256`\" pulumi-lang-python=\"`rsa_3072_oaep_sha256`\" pulumi-lang-yaml=\"`rsa3072OaepSha256`\" pulumi-lang-java=\"`rsa3072OaepSha256`\"\u003e`rsa_3072_oaep_sha256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa4096OaepSha256`\" pulumi-lang-dotnet=\"`Rsa4096OaepSha256`\" pulumi-lang-go=\"`rsa4096OaepSha256`\" pulumi-lang-python=\"`rsa_4096_oaep_sha256`\" pulumi-lang-yaml=\"`rsa4096OaepSha256`\" pulumi-lang-java=\"`rsa4096OaepSha256`\"\u003e`rsa_4096_oaep_sha256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa4096OaepSha512`\" pulumi-lang-dotnet=\"`Rsa4096OaepSha512`\" pulumi-lang-go=\"`rsa4096OaepSha512`\" pulumi-lang-python=\"`rsa_4096_oaep_sha512`\" pulumi-lang-yaml=\"`rsa4096OaepSha512`\" pulumi-lang-java=\"`rsa4096OaepSha512`\"\u003e`rsa_4096_oaep_sha512`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`hmacSha256`\" pulumi-lang-dotnet=\"`HmacSha256`\" pulumi-lang-go=\"`hmacSha256`\" pulumi-lang-python=\"`hmac_sha256`\" pulumi-lang-yaml=\"`hmacSha256`\" pulumi-lang-java=\"`hmacSha256`\"\u003e`hmac_sha256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`hmacSha384`\" pulumi-lang-dotnet=\"`HmacSha384`\" pulumi-lang-go=\"`hmacSha384`\" pulumi-lang-python=\"`hmac_sha384`\" pulumi-lang-yaml=\"`hmacSha384`\" pulumi-lang-java=\"`hmacSha384`\"\u003e`hmac_sha384`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`hmacSha512`\" pulumi-lang-dotnet=\"`HmacSha512`\" pulumi-lang-go=\"`hmacSha512`\" pulumi-lang-python=\"`hmac_sha512`\" pulumi-lang-yaml=\"`hmacSha512`\" pulumi-lang-java=\"`hmacSha512`\"\u003e`hmac_sha512`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ecdsaP256Sha256`\" pulumi-lang-dotnet=\"`EcdsaP256Sha256`\" pulumi-lang-go=\"`ecdsaP256Sha256`\" pulumi-lang-python=\"`ecdsa_p256_sha256`\" pulumi-lang-yaml=\"`ecdsaP256Sha256`\" pulumi-lang-java=\"`ecdsaP256Sha256`\"\u003e`ecdsa_p256_sha256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ecdsaP384Sha384`\" pulumi-lang-dotnet=\"`EcdsaP384Sha384`\" pulumi-lang-go=\"`ecdsaP384Sha384`\" pulumi-lang-python=\"`ecdsa_p384_sha384`\" pulumi-lang-yaml=\"`ecdsaP384Sha384`\" pulumi-lang-java=\"`ecdsaP384Sha384`\"\u003e`ecdsa_p384_sha384`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ecdsaP521Sha512`\" pulumi-lang-dotnet=\"`EcdsaP521Sha512`\" pulumi-lang-go=\"`ecdsaP521Sha512`\" pulumi-lang-python=\"`ecdsa_p521_sha512`\" pulumi-lang-yaml=\"`ecdsaP521Sha512`\" pulumi-lang-java=\"`ecdsaP521Sha512`\"\u003e`ecdsa_p521_sha512`\u003c/span\u003e.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A user chosen description to distinguish multiple keys\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The display name to distinguish multiple keys\n"
+                },
+                "importOnly": {
+                    "type": "boolean",
+                    "description": "States whether versions can be created or only imported.\n"
+                },
+                "keyringId": {
+                    "type": "string",
+                    "description": "The ID of the associated keyring\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT project ID to which the key is associated.\n"
+                },
+                "protection": {
+                    "type": "string",
+                    "description": "The underlying system that is responsible for protecting the key material. Possible values are: \u003cspan pulumi-lang-nodejs=\"`software`\" pulumi-lang-dotnet=\"`Software`\" pulumi-lang-go=\"`software`\" pulumi-lang-python=\"`software`\" pulumi-lang-yaml=\"`software`\" pulumi-lang-java=\"`software`\"\u003e`software`\u003c/span\u003e.\n"
+                },
+                "purpose": {
+                    "type": "string",
+                    "description": "The purpose for which the key will be used. Possible values are: \u003cspan pulumi-lang-nodejs=\"`symmetricEncryptDecrypt`\" pulumi-lang-dotnet=\"`SymmetricEncryptDecrypt`\" pulumi-lang-go=\"`symmetricEncryptDecrypt`\" pulumi-lang-python=\"`symmetric_encrypt_decrypt`\" pulumi-lang-yaml=\"`symmetricEncryptDecrypt`\" pulumi-lang-java=\"`symmetricEncryptDecrypt`\"\u003e`symmetric_encrypt_decrypt`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`asymmetricEncryptDecrypt`\" pulumi-lang-dotnet=\"`AsymmetricEncryptDecrypt`\" pulumi-lang-go=\"`asymmetricEncryptDecrypt`\" pulumi-lang-python=\"`asymmetric_encrypt_decrypt`\" pulumi-lang-yaml=\"`asymmetricEncryptDecrypt`\" pulumi-lang-java=\"`asymmetricEncryptDecrypt`\"\u003e`asymmetric_encrypt_decrypt`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`messageAuthenticationCode`\" pulumi-lang-dotnet=\"`MessageAuthenticationCode`\" pulumi-lang-go=\"`messageAuthenticationCode`\" pulumi-lang-python=\"`message_authentication_code`\" pulumi-lang-yaml=\"`messageAuthenticationCode`\" pulumi-lang-java=\"`messageAuthenticationCode`\"\u003e`message_authentication_code`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`asymmetricSignVerify`\" pulumi-lang-dotnet=\"`AsymmetricSignVerify`\" pulumi-lang-go=\"`asymmetricSignVerify`\" pulumi-lang-python=\"`asymmetric_sign_verify`\" pulumi-lang-yaml=\"`asymmetricSignVerify`\" pulumi-lang-java=\"`asymmetricSignVerify`\"\u003e`asymmetric_sign_verify`\u003c/span\u003e.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The resource region. If not defined, the provider region is used.\n"
+                }
+            },
+            "requiredInputs": [
+                "algorithm",
+                "displayName",
+                "keyringId",
+                "projectId",
+                "protection",
+                "purpose"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering KmsKey resources.\n",
+                "properties": {
+                    "accessScope": {
+                        "type": "string",
+                        "description": "The access scope of the key. Default is `PUBLIC`. Possible values are: `PUBLIC`, `SNA`.\n"
+                    },
+                    "algorithm": {
+                        "type": "string",
+                        "description": "The encryption algorithm that the key will use to encrypt data. Possible values are: \u003cspan pulumi-lang-nodejs=\"`aes256Gcm`\" pulumi-lang-dotnet=\"`Aes256Gcm`\" pulumi-lang-go=\"`aes256Gcm`\" pulumi-lang-python=\"`aes_256_gcm`\" pulumi-lang-yaml=\"`aes256Gcm`\" pulumi-lang-java=\"`aes256Gcm`\"\u003e`aes_256_gcm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa2048OaepSha256`\" pulumi-lang-dotnet=\"`Rsa2048OaepSha256`\" pulumi-lang-go=\"`rsa2048OaepSha256`\" pulumi-lang-python=\"`rsa_2048_oaep_sha256`\" pulumi-lang-yaml=\"`rsa2048OaepSha256`\" pulumi-lang-java=\"`rsa2048OaepSha256`\"\u003e`rsa_2048_oaep_sha256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa3072OaepSha256`\" pulumi-lang-dotnet=\"`Rsa3072OaepSha256`\" pulumi-lang-go=\"`rsa3072OaepSha256`\" pulumi-lang-python=\"`rsa_3072_oaep_sha256`\" pulumi-lang-yaml=\"`rsa3072OaepSha256`\" pulumi-lang-java=\"`rsa3072OaepSha256`\"\u003e`rsa_3072_oaep_sha256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa4096OaepSha256`\" pulumi-lang-dotnet=\"`Rsa4096OaepSha256`\" pulumi-lang-go=\"`rsa4096OaepSha256`\" pulumi-lang-python=\"`rsa_4096_oaep_sha256`\" pulumi-lang-yaml=\"`rsa4096OaepSha256`\" pulumi-lang-java=\"`rsa4096OaepSha256`\"\u003e`rsa_4096_oaep_sha256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa4096OaepSha512`\" pulumi-lang-dotnet=\"`Rsa4096OaepSha512`\" pulumi-lang-go=\"`rsa4096OaepSha512`\" pulumi-lang-python=\"`rsa_4096_oaep_sha512`\" pulumi-lang-yaml=\"`rsa4096OaepSha512`\" pulumi-lang-java=\"`rsa4096OaepSha512`\"\u003e`rsa_4096_oaep_sha512`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`hmacSha256`\" pulumi-lang-dotnet=\"`HmacSha256`\" pulumi-lang-go=\"`hmacSha256`\" pulumi-lang-python=\"`hmac_sha256`\" pulumi-lang-yaml=\"`hmacSha256`\" pulumi-lang-java=\"`hmacSha256`\"\u003e`hmac_sha256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`hmacSha384`\" pulumi-lang-dotnet=\"`HmacSha384`\" pulumi-lang-go=\"`hmacSha384`\" pulumi-lang-python=\"`hmac_sha384`\" pulumi-lang-yaml=\"`hmacSha384`\" pulumi-lang-java=\"`hmacSha384`\"\u003e`hmac_sha384`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`hmacSha512`\" pulumi-lang-dotnet=\"`HmacSha512`\" pulumi-lang-go=\"`hmacSha512`\" pulumi-lang-python=\"`hmac_sha512`\" pulumi-lang-yaml=\"`hmacSha512`\" pulumi-lang-java=\"`hmacSha512`\"\u003e`hmac_sha512`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ecdsaP256Sha256`\" pulumi-lang-dotnet=\"`EcdsaP256Sha256`\" pulumi-lang-go=\"`ecdsaP256Sha256`\" pulumi-lang-python=\"`ecdsa_p256_sha256`\" pulumi-lang-yaml=\"`ecdsaP256Sha256`\" pulumi-lang-java=\"`ecdsaP256Sha256`\"\u003e`ecdsa_p256_sha256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ecdsaP384Sha384`\" pulumi-lang-dotnet=\"`EcdsaP384Sha384`\" pulumi-lang-go=\"`ecdsaP384Sha384`\" pulumi-lang-python=\"`ecdsa_p384_sha384`\" pulumi-lang-yaml=\"`ecdsaP384Sha384`\" pulumi-lang-java=\"`ecdsaP384Sha384`\"\u003e`ecdsa_p384_sha384`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ecdsaP521Sha512`\" pulumi-lang-dotnet=\"`EcdsaP521Sha512`\" pulumi-lang-go=\"`ecdsaP521Sha512`\" pulumi-lang-python=\"`ecdsa_p521_sha512`\" pulumi-lang-yaml=\"`ecdsaP521Sha512`\" pulumi-lang-java=\"`ecdsaP521Sha512`\"\u003e`ecdsa_p521_sha512`\u003c/span\u003e.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "A user chosen description to distinguish multiple keys\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The display name to distinguish multiple keys\n"
+                    },
+                    "importOnly": {
+                        "type": "boolean",
+                        "description": "States whether versions can be created or only imported.\n"
+                    },
+                    "keyId": {
+                        "type": "string",
+                        "description": "The ID of the key\n"
+                    },
+                    "keyringId": {
+                        "type": "string",
+                        "description": "The ID of the associated keyring\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID to which the key is associated.\n"
+                    },
+                    "protection": {
+                        "type": "string",
+                        "description": "The underlying system that is responsible for protecting the key material. Possible values are: \u003cspan pulumi-lang-nodejs=\"`software`\" pulumi-lang-dotnet=\"`Software`\" pulumi-lang-go=\"`software`\" pulumi-lang-python=\"`software`\" pulumi-lang-yaml=\"`software`\" pulumi-lang-java=\"`software`\"\u003e`software`\u003c/span\u003e.\n"
+                    },
+                    "purpose": {
+                        "type": "string",
+                        "description": "The purpose for which the key will be used. Possible values are: \u003cspan pulumi-lang-nodejs=\"`symmetricEncryptDecrypt`\" pulumi-lang-dotnet=\"`SymmetricEncryptDecrypt`\" pulumi-lang-go=\"`symmetricEncryptDecrypt`\" pulumi-lang-python=\"`symmetric_encrypt_decrypt`\" pulumi-lang-yaml=\"`symmetricEncryptDecrypt`\" pulumi-lang-java=\"`symmetricEncryptDecrypt`\"\u003e`symmetric_encrypt_decrypt`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`asymmetricEncryptDecrypt`\" pulumi-lang-dotnet=\"`AsymmetricEncryptDecrypt`\" pulumi-lang-go=\"`asymmetricEncryptDecrypt`\" pulumi-lang-python=\"`asymmetric_encrypt_decrypt`\" pulumi-lang-yaml=\"`asymmetricEncryptDecrypt`\" pulumi-lang-java=\"`asymmetricEncryptDecrypt`\"\u003e`asymmetric_encrypt_decrypt`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`messageAuthenticationCode`\" pulumi-lang-dotnet=\"`MessageAuthenticationCode`\" pulumi-lang-go=\"`messageAuthenticationCode`\" pulumi-lang-python=\"`message_authentication_code`\" pulumi-lang-yaml=\"`messageAuthenticationCode`\" pulumi-lang-java=\"`messageAuthenticationCode`\"\u003e`message_authentication_code`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`asymmetricSignVerify`\" pulumi-lang-dotnet=\"`AsymmetricSignVerify`\" pulumi-lang-go=\"`asymmetricSignVerify`\" pulumi-lang-python=\"`asymmetric_sign_verify`\" pulumi-lang-yaml=\"`asymmetricSignVerify`\" pulumi-lang-java=\"`asymmetricSignVerify`\"\u003e`asymmetric_sign_verify`\u003c/span\u003e.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "stackit:index/kmsKeyring:KmsKeyring": {
+            "description": "## Example Usage\n\n```terraform\nresource \"stackit_kms_keyring\" \"example\" {\n  project_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  display_name = \"example-name\"\n  description  = \"example description\"\n}\n```\n",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "A user chosen description to distinguish multiple keyrings.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The display name to distinguish multiple keyrings.\n"
+                },
+                "keyringId": {
+                    "type": "string",
+                    "description": "An auto generated unique id which identifies the keyring.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT project ID to which the keyring is associated.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The resource region. If not defined, the provider region is used.\n"
+                }
+            },
+            "required": [
+                "displayName",
+                "keyringId",
+                "projectId",
+                "region"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "A user chosen description to distinguish multiple keyrings.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The display name to distinguish multiple keyrings.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT project ID to which the keyring is associated.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The resource region. If not defined, the provider region is used.\n"
+                }
+            },
+            "requiredInputs": [
+                "displayName",
+                "projectId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering KmsKeyring resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "A user chosen description to distinguish multiple keyrings.\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The display name to distinguish multiple keyrings.\n"
+                    },
+                    "keyringId": {
+                        "type": "string",
+                        "description": "An auto generated unique id which identifies the keyring.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID to which the keyring is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "stackit:index/kmsWrappingKey:KmsWrappingKey": {
+            "description": "KMS wrapping key resource schema.\n\n## Example Usage\n\n```terraform\nresource \"stackit_kms_wrapping_key\" \"example\" {\n  project_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  keyring_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  display_name = \"example-name\"\n  protection   = \"software\"\n  algorithm    = \"rsa_2048_oaep_sha256\"\n  purpose      = \"wrap_symmetric_key\"\n}\n```\n",
+            "properties": {
+                "accessScope": {
+                    "type": "string",
+                    "description": "The access scope of the key. Default is `PUBLIC`. Possible values are: `PUBLIC`, `SNA`.\n"
+                },
+                "algorithm": {
+                    "type": "string",
+                    "description": "The wrapping algorithm used to wrap the key to import. Possible values are: \u003cspan pulumi-lang-nodejs=\"`rsa2048OaepSha256`\" pulumi-lang-dotnet=\"`Rsa2048OaepSha256`\" pulumi-lang-go=\"`rsa2048OaepSha256`\" pulumi-lang-python=\"`rsa_2048_oaep_sha256`\" pulumi-lang-yaml=\"`rsa2048OaepSha256`\" pulumi-lang-java=\"`rsa2048OaepSha256`\"\u003e`rsa_2048_oaep_sha256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa3072OaepSha256`\" pulumi-lang-dotnet=\"`Rsa3072OaepSha256`\" pulumi-lang-go=\"`rsa3072OaepSha256`\" pulumi-lang-python=\"`rsa_3072_oaep_sha256`\" pulumi-lang-yaml=\"`rsa3072OaepSha256`\" pulumi-lang-java=\"`rsa3072OaepSha256`\"\u003e`rsa_3072_oaep_sha256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa4096OaepSha256`\" pulumi-lang-dotnet=\"`Rsa4096OaepSha256`\" pulumi-lang-go=\"`rsa4096OaepSha256`\" pulumi-lang-python=\"`rsa_4096_oaep_sha256`\" pulumi-lang-yaml=\"`rsa4096OaepSha256`\" pulumi-lang-java=\"`rsa4096OaepSha256`\"\u003e`rsa_4096_oaep_sha256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa4096OaepSha512`\" pulumi-lang-dotnet=\"`Rsa4096OaepSha512`\" pulumi-lang-go=\"`rsa4096OaepSha512`\" pulumi-lang-python=\"`rsa_4096_oaep_sha512`\" pulumi-lang-yaml=\"`rsa4096OaepSha512`\" pulumi-lang-java=\"`rsa4096OaepSha512`\"\u003e`rsa_4096_oaep_sha512`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa2048OaepSha256Aes256KeyWrap`\" pulumi-lang-dotnet=\"`Rsa2048OaepSha256Aes256KeyWrap`\" pulumi-lang-go=\"`rsa2048OaepSha256Aes256KeyWrap`\" pulumi-lang-python=\"`rsa_2048_oaep_sha256_aes_256_key_wrap`\" pulumi-lang-yaml=\"`rsa2048OaepSha256Aes256KeyWrap`\" pulumi-lang-java=\"`rsa2048OaepSha256Aes256KeyWrap`\"\u003e`rsa_2048_oaep_sha256_aes_256_key_wrap`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa3072OaepSha256Aes256KeyWrap`\" pulumi-lang-dotnet=\"`Rsa3072OaepSha256Aes256KeyWrap`\" pulumi-lang-go=\"`rsa3072OaepSha256Aes256KeyWrap`\" pulumi-lang-python=\"`rsa_3072_oaep_sha256_aes_256_key_wrap`\" pulumi-lang-yaml=\"`rsa3072OaepSha256Aes256KeyWrap`\" pulumi-lang-java=\"`rsa3072OaepSha256Aes256KeyWrap`\"\u003e`rsa_3072_oaep_sha256_aes_256_key_wrap`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa4096OaepSha256Aes256KeyWrap`\" pulumi-lang-dotnet=\"`Rsa4096OaepSha256Aes256KeyWrap`\" pulumi-lang-go=\"`rsa4096OaepSha256Aes256KeyWrap`\" pulumi-lang-python=\"`rsa_4096_oaep_sha256_aes_256_key_wrap`\" pulumi-lang-yaml=\"`rsa4096OaepSha256Aes256KeyWrap`\" pulumi-lang-java=\"`rsa4096OaepSha256Aes256KeyWrap`\"\u003e`rsa_4096_oaep_sha256_aes_256_key_wrap`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa4096OaepSha512Aes256KeyWrap`\" pulumi-lang-dotnet=\"`Rsa4096OaepSha512Aes256KeyWrap`\" pulumi-lang-go=\"`rsa4096OaepSha512Aes256KeyWrap`\" pulumi-lang-python=\"`rsa_4096_oaep_sha512_aes_256_key_wrap`\" pulumi-lang-yaml=\"`rsa4096OaepSha512Aes256KeyWrap`\" pulumi-lang-java=\"`rsa4096OaepSha512Aes256KeyWrap`\"\u003e`rsa_4096_oaep_sha512_aes_256_key_wrap`\u003c/span\u003e.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The date and time the creation of the wrapping key was triggered.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A user chosen description to distinguish multiple wrapping keys.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The display name to distinguish multiple wrapping keys.\n"
+                },
+                "expiresAt": {
+                    "type": "string",
+                    "description": "The date and time the wrapping key will expire.\n"
+                },
+                "keyringId": {
+                    "type": "string",
+                    "description": "The ID of the associated keyring\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT project ID to which the keyring is associated.\n"
+                },
+                "protection": {
+                    "type": "string",
+                    "description": "The underlying system that is responsible for protecting the key material. Possible values are: \u003cspan pulumi-lang-nodejs=\"`software`\" pulumi-lang-dotnet=\"`Software`\" pulumi-lang-go=\"`software`\" pulumi-lang-python=\"`software`\" pulumi-lang-yaml=\"`software`\" pulumi-lang-java=\"`software`\"\u003e`software`\u003c/span\u003e.\n"
+                },
+                "publicKey": {
+                    "type": "string",
+                    "description": "The public key of the wrapping key.\n"
+                },
+                "purpose": {
+                    "type": "string",
+                    "description": "The purpose for which the key will be used. Possible values are: \u003cspan pulumi-lang-nodejs=\"`wrapSymmetricKey`\" pulumi-lang-dotnet=\"`WrapSymmetricKey`\" pulumi-lang-go=\"`wrapSymmetricKey`\" pulumi-lang-python=\"`wrap_symmetric_key`\" pulumi-lang-yaml=\"`wrapSymmetricKey`\" pulumi-lang-java=\"`wrapSymmetricKey`\"\u003e`wrap_symmetric_key`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`wrapAsymmetricKey`\" pulumi-lang-dotnet=\"`WrapAsymmetricKey`\" pulumi-lang-go=\"`wrapAsymmetricKey`\" pulumi-lang-python=\"`wrap_asymmetric_key`\" pulumi-lang-yaml=\"`wrapAsymmetricKey`\" pulumi-lang-java=\"`wrapAsymmetricKey`\"\u003e`wrap_asymmetric_key`\u003c/span\u003e.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The resource region. If not defined, the provider region is used.\n"
+                },
+                "wrappingKeyId": {
+                    "type": "string",
+                    "description": "The ID of the wrapping key\n"
+                }
+            },
+            "required": [
+                "accessScope",
+                "algorithm",
+                "createdAt",
+                "displayName",
+                "expiresAt",
+                "keyringId",
+                "projectId",
+                "protection",
+                "publicKey",
+                "purpose",
+                "region",
+                "wrappingKeyId"
+            ],
+            "inputProperties": {
+                "accessScope": {
+                    "type": "string",
+                    "description": "The access scope of the key. Default is `PUBLIC`. Possible values are: `PUBLIC`, `SNA`.\n"
+                },
+                "algorithm": {
+                    "type": "string",
+                    "description": "The wrapping algorithm used to wrap the key to import. Possible values are: \u003cspan pulumi-lang-nodejs=\"`rsa2048OaepSha256`\" pulumi-lang-dotnet=\"`Rsa2048OaepSha256`\" pulumi-lang-go=\"`rsa2048OaepSha256`\" pulumi-lang-python=\"`rsa_2048_oaep_sha256`\" pulumi-lang-yaml=\"`rsa2048OaepSha256`\" pulumi-lang-java=\"`rsa2048OaepSha256`\"\u003e`rsa_2048_oaep_sha256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa3072OaepSha256`\" pulumi-lang-dotnet=\"`Rsa3072OaepSha256`\" pulumi-lang-go=\"`rsa3072OaepSha256`\" pulumi-lang-python=\"`rsa_3072_oaep_sha256`\" pulumi-lang-yaml=\"`rsa3072OaepSha256`\" pulumi-lang-java=\"`rsa3072OaepSha256`\"\u003e`rsa_3072_oaep_sha256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa4096OaepSha256`\" pulumi-lang-dotnet=\"`Rsa4096OaepSha256`\" pulumi-lang-go=\"`rsa4096OaepSha256`\" pulumi-lang-python=\"`rsa_4096_oaep_sha256`\" pulumi-lang-yaml=\"`rsa4096OaepSha256`\" pulumi-lang-java=\"`rsa4096OaepSha256`\"\u003e`rsa_4096_oaep_sha256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa4096OaepSha512`\" pulumi-lang-dotnet=\"`Rsa4096OaepSha512`\" pulumi-lang-go=\"`rsa4096OaepSha512`\" pulumi-lang-python=\"`rsa_4096_oaep_sha512`\" pulumi-lang-yaml=\"`rsa4096OaepSha512`\" pulumi-lang-java=\"`rsa4096OaepSha512`\"\u003e`rsa_4096_oaep_sha512`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa2048OaepSha256Aes256KeyWrap`\" pulumi-lang-dotnet=\"`Rsa2048OaepSha256Aes256KeyWrap`\" pulumi-lang-go=\"`rsa2048OaepSha256Aes256KeyWrap`\" pulumi-lang-python=\"`rsa_2048_oaep_sha256_aes_256_key_wrap`\" pulumi-lang-yaml=\"`rsa2048OaepSha256Aes256KeyWrap`\" pulumi-lang-java=\"`rsa2048OaepSha256Aes256KeyWrap`\"\u003e`rsa_2048_oaep_sha256_aes_256_key_wrap`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa3072OaepSha256Aes256KeyWrap`\" pulumi-lang-dotnet=\"`Rsa3072OaepSha256Aes256KeyWrap`\" pulumi-lang-go=\"`rsa3072OaepSha256Aes256KeyWrap`\" pulumi-lang-python=\"`rsa_3072_oaep_sha256_aes_256_key_wrap`\" pulumi-lang-yaml=\"`rsa3072OaepSha256Aes256KeyWrap`\" pulumi-lang-java=\"`rsa3072OaepSha256Aes256KeyWrap`\"\u003e`rsa_3072_oaep_sha256_aes_256_key_wrap`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa4096OaepSha256Aes256KeyWrap`\" pulumi-lang-dotnet=\"`Rsa4096OaepSha256Aes256KeyWrap`\" pulumi-lang-go=\"`rsa4096OaepSha256Aes256KeyWrap`\" pulumi-lang-python=\"`rsa_4096_oaep_sha256_aes_256_key_wrap`\" pulumi-lang-yaml=\"`rsa4096OaepSha256Aes256KeyWrap`\" pulumi-lang-java=\"`rsa4096OaepSha256Aes256KeyWrap`\"\u003e`rsa_4096_oaep_sha256_aes_256_key_wrap`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa4096OaepSha512Aes256KeyWrap`\" pulumi-lang-dotnet=\"`Rsa4096OaepSha512Aes256KeyWrap`\" pulumi-lang-go=\"`rsa4096OaepSha512Aes256KeyWrap`\" pulumi-lang-python=\"`rsa_4096_oaep_sha512_aes_256_key_wrap`\" pulumi-lang-yaml=\"`rsa4096OaepSha512Aes256KeyWrap`\" pulumi-lang-java=\"`rsa4096OaepSha512Aes256KeyWrap`\"\u003e`rsa_4096_oaep_sha512_aes_256_key_wrap`\u003c/span\u003e.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "A user chosen description to distinguish multiple wrapping keys.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The display name to distinguish multiple wrapping keys.\n"
+                },
+                "keyringId": {
+                    "type": "string",
+                    "description": "The ID of the associated keyring\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT project ID to which the keyring is associated.\n"
+                },
+                "protection": {
+                    "type": "string",
+                    "description": "The underlying system that is responsible for protecting the key material. Possible values are: \u003cspan pulumi-lang-nodejs=\"`software`\" pulumi-lang-dotnet=\"`Software`\" pulumi-lang-go=\"`software`\" pulumi-lang-python=\"`software`\" pulumi-lang-yaml=\"`software`\" pulumi-lang-java=\"`software`\"\u003e`software`\u003c/span\u003e.\n"
+                },
+                "purpose": {
+                    "type": "string",
+                    "description": "The purpose for which the key will be used. Possible values are: \u003cspan pulumi-lang-nodejs=\"`wrapSymmetricKey`\" pulumi-lang-dotnet=\"`WrapSymmetricKey`\" pulumi-lang-go=\"`wrapSymmetricKey`\" pulumi-lang-python=\"`wrap_symmetric_key`\" pulumi-lang-yaml=\"`wrapSymmetricKey`\" pulumi-lang-java=\"`wrapSymmetricKey`\"\u003e`wrap_symmetric_key`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`wrapAsymmetricKey`\" pulumi-lang-dotnet=\"`WrapAsymmetricKey`\" pulumi-lang-go=\"`wrapAsymmetricKey`\" pulumi-lang-python=\"`wrap_asymmetric_key`\" pulumi-lang-yaml=\"`wrapAsymmetricKey`\" pulumi-lang-java=\"`wrapAsymmetricKey`\"\u003e`wrap_asymmetric_key`\u003c/span\u003e.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The resource region. If not defined, the provider region is used.\n"
+                }
+            },
+            "requiredInputs": [
+                "algorithm",
+                "displayName",
+                "keyringId",
+                "projectId",
+                "protection",
+                "purpose"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering KmsWrappingKey resources.\n",
+                "properties": {
+                    "accessScope": {
+                        "type": "string",
+                        "description": "The access scope of the key. Default is `PUBLIC`. Possible values are: `PUBLIC`, `SNA`.\n"
+                    },
+                    "algorithm": {
+                        "type": "string",
+                        "description": "The wrapping algorithm used to wrap the key to import. Possible values are: \u003cspan pulumi-lang-nodejs=\"`rsa2048OaepSha256`\" pulumi-lang-dotnet=\"`Rsa2048OaepSha256`\" pulumi-lang-go=\"`rsa2048OaepSha256`\" pulumi-lang-python=\"`rsa_2048_oaep_sha256`\" pulumi-lang-yaml=\"`rsa2048OaepSha256`\" pulumi-lang-java=\"`rsa2048OaepSha256`\"\u003e`rsa_2048_oaep_sha256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa3072OaepSha256`\" pulumi-lang-dotnet=\"`Rsa3072OaepSha256`\" pulumi-lang-go=\"`rsa3072OaepSha256`\" pulumi-lang-python=\"`rsa_3072_oaep_sha256`\" pulumi-lang-yaml=\"`rsa3072OaepSha256`\" pulumi-lang-java=\"`rsa3072OaepSha256`\"\u003e`rsa_3072_oaep_sha256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa4096OaepSha256`\" pulumi-lang-dotnet=\"`Rsa4096OaepSha256`\" pulumi-lang-go=\"`rsa4096OaepSha256`\" pulumi-lang-python=\"`rsa_4096_oaep_sha256`\" pulumi-lang-yaml=\"`rsa4096OaepSha256`\" pulumi-lang-java=\"`rsa4096OaepSha256`\"\u003e`rsa_4096_oaep_sha256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa4096OaepSha512`\" pulumi-lang-dotnet=\"`Rsa4096OaepSha512`\" pulumi-lang-go=\"`rsa4096OaepSha512`\" pulumi-lang-python=\"`rsa_4096_oaep_sha512`\" pulumi-lang-yaml=\"`rsa4096OaepSha512`\" pulumi-lang-java=\"`rsa4096OaepSha512`\"\u003e`rsa_4096_oaep_sha512`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa2048OaepSha256Aes256KeyWrap`\" pulumi-lang-dotnet=\"`Rsa2048OaepSha256Aes256KeyWrap`\" pulumi-lang-go=\"`rsa2048OaepSha256Aes256KeyWrap`\" pulumi-lang-python=\"`rsa_2048_oaep_sha256_aes_256_key_wrap`\" pulumi-lang-yaml=\"`rsa2048OaepSha256Aes256KeyWrap`\" pulumi-lang-java=\"`rsa2048OaepSha256Aes256KeyWrap`\"\u003e`rsa_2048_oaep_sha256_aes_256_key_wrap`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa3072OaepSha256Aes256KeyWrap`\" pulumi-lang-dotnet=\"`Rsa3072OaepSha256Aes256KeyWrap`\" pulumi-lang-go=\"`rsa3072OaepSha256Aes256KeyWrap`\" pulumi-lang-python=\"`rsa_3072_oaep_sha256_aes_256_key_wrap`\" pulumi-lang-yaml=\"`rsa3072OaepSha256Aes256KeyWrap`\" pulumi-lang-java=\"`rsa3072OaepSha256Aes256KeyWrap`\"\u003e`rsa_3072_oaep_sha256_aes_256_key_wrap`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa4096OaepSha256Aes256KeyWrap`\" pulumi-lang-dotnet=\"`Rsa4096OaepSha256Aes256KeyWrap`\" pulumi-lang-go=\"`rsa4096OaepSha256Aes256KeyWrap`\" pulumi-lang-python=\"`rsa_4096_oaep_sha256_aes_256_key_wrap`\" pulumi-lang-yaml=\"`rsa4096OaepSha256Aes256KeyWrap`\" pulumi-lang-java=\"`rsa4096OaepSha256Aes256KeyWrap`\"\u003e`rsa_4096_oaep_sha256_aes_256_key_wrap`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa4096OaepSha512Aes256KeyWrap`\" pulumi-lang-dotnet=\"`Rsa4096OaepSha512Aes256KeyWrap`\" pulumi-lang-go=\"`rsa4096OaepSha512Aes256KeyWrap`\" pulumi-lang-python=\"`rsa_4096_oaep_sha512_aes_256_key_wrap`\" pulumi-lang-yaml=\"`rsa4096OaepSha512Aes256KeyWrap`\" pulumi-lang-java=\"`rsa4096OaepSha512Aes256KeyWrap`\"\u003e`rsa_4096_oaep_sha512_aes_256_key_wrap`\u003c/span\u003e.\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The date and time the creation of the wrapping key was triggered.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "A user chosen description to distinguish multiple wrapping keys.\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The display name to distinguish multiple wrapping keys.\n"
+                    },
+                    "expiresAt": {
+                        "type": "string",
+                        "description": "The date and time the wrapping key will expire.\n"
+                    },
+                    "keyringId": {
+                        "type": "string",
+                        "description": "The ID of the associated keyring\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID to which the keyring is associated.\n"
+                    },
+                    "protection": {
+                        "type": "string",
+                        "description": "The underlying system that is responsible for protecting the key material. Possible values are: \u003cspan pulumi-lang-nodejs=\"`software`\" pulumi-lang-dotnet=\"`Software`\" pulumi-lang-go=\"`software`\" pulumi-lang-python=\"`software`\" pulumi-lang-yaml=\"`software`\" pulumi-lang-java=\"`software`\"\u003e`software`\u003c/span\u003e.\n"
+                    },
+                    "publicKey": {
+                        "type": "string",
+                        "description": "The public key of the wrapping key.\n"
+                    },
+                    "purpose": {
+                        "type": "string",
+                        "description": "The purpose for which the key will be used. Possible values are: \u003cspan pulumi-lang-nodejs=\"`wrapSymmetricKey`\" pulumi-lang-dotnet=\"`WrapSymmetricKey`\" pulumi-lang-go=\"`wrapSymmetricKey`\" pulumi-lang-python=\"`wrap_symmetric_key`\" pulumi-lang-yaml=\"`wrapSymmetricKey`\" pulumi-lang-java=\"`wrapSymmetricKey`\"\u003e`wrap_symmetric_key`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`wrapAsymmetricKey`\" pulumi-lang-dotnet=\"`WrapAsymmetricKey`\" pulumi-lang-go=\"`wrapAsymmetricKey`\" pulumi-lang-python=\"`wrap_asymmetric_key`\" pulumi-lang-yaml=\"`wrapAsymmetricKey`\" pulumi-lang-java=\"`wrapAsymmetricKey`\"\u003e`wrap_asymmetric_key`\u003c/span\u003e.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    },
+                    "wrappingKeyId": {
+                        "type": "string",
+                        "description": "The ID of the wrapping key\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "stackit:index/loadbalancer:Loadbalancer": {
-            "description": "## Example Usage\n\n```terraform\n# Create a network\nresource \"stackit_network\" \"example_network\" {\n  project_id       = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name             = \"example-network\"\n  ipv4_nameservers = [\"8.8.8.8\"]\n  ipv4_prefix      = \"192.168.0.0/25\"\n  labels = {\n    \"key\" = \"value\"\n  }\n  routed = true\n}\n\n# Create a network interface\nresource \"stackit_network_interface\" \"nic\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  network_id = stackit_network.example_network.network_id\n}\n\n# Create a public IP for the load balancer\nresource \"stackit_public_ip\" \"public-ip\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  lifecycle {\n    ignore_changes = [network_interface_id]\n  }\n}\n\n# Create a key pair for accessing the server instance\nresource \"stackit_key_pair\" \"keypair\" {\n  name       = \"example-key-pair\"\n  public_key = chomp(file(\"path/to/id_rsa.pub\"))\n}\n\n# Create a server instance\nresource \"stackit_server\" \"boot-from-image\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-server\"\n  boot_volume = {\n    size        = 64\n    source_type = \"image\"\n    source_id   = \"59838a89-51b1-4892-b57f-b3caf598ee2f\" // Ubuntu 24.04\n  }\n  availability_zone = \"xxxx-x\"\n  machine_type      = \"g2i.1\"\n  keypair_name      = stackit_key_pair.keypair.name\n  network_interfaces = [\n    stackit_network_interface.nic.network_interface_id\n  ]\n}\n\n# Create a load balancer\nresource \"stackit_loadbalancer\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-load-balancer\"\n  plan_id    = \"p10\"\n  target_pools = [\n    {\n      name        = \"example-target-pool\"\n      target_port = 80\n      targets = [\n        {\n          display_name = stackit_server.boot-from-image.name\n          ip           = stackit_network_interface.nic.ipv4\n        }\n      ]\n      active_health_check = {\n        healthy_threshold   = 10\n        interval            = \"3s\"\n        interval_jitter     = \"3s\"\n        timeout             = \"3s\"\n        unhealthy_threshold = 10\n      }\n    }\n  ]\n  listeners = [\n    {\n      display_name = \"example-listener\"\n      port         = 80\n      protocol     = \"PROTOCOL_TCP\"\n      target_pool  = \"example-target-pool\"\n    }\n  ]\n  networks = [\n    {\n      network_id = stackit_network.example_network.network_id\n      role       = \"ROLE_LISTENERS_AND_TARGETS\"\n    }\n  ]\n  external_address = stackit_public_ip.public-ip.ip\n  options = {\n    private_network_only = false\n  }\n}\n\n# This example demonstrates an advanced setup where the Load Balancer is in one\n# network and the target server is in another. This requires manual\n# security group configuration using the `disable_security_group_assignment`\n# and `security_group_id` attributes.\n\n# We create two separate networks: one for the load balancer and one for the target.\nresource \"stackit_network\" \"lb_network\" {\n  project_id       = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name             = \"lb-network-example\"\n  ipv4_prefix      = \"192.168.10.0/25\"\n  ipv4_nameservers = [\"8.8.8.8\"]\n}\n\nresource \"stackit_network\" \"target_network\" {\n  project_id       = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name             = \"target-network-example\"\n  ipv4_prefix      = \"192.168.10.0/25\"\n  ipv4_nameservers = [\"8.8.8.8\"]\n}\n\nresource \"stackit_public_ip\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\nresource \"stackit_loadbalancer\" \"example\" {\n  project_id       = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name             = \"example-advanced-lb\"\n  external_address = stackit_public_ip.example.ip\n\n  # Key setting for manual mode: disables automatic security group handling.\n  disable_security_group_assignment = true\n\n  networks = [{\n    network_id = stackit_network.lb_network.network_id\n    role       = \"ROLE_LISTENERS_AND_TARGETS\"\n  }]\n\n  listeners = [{\n    port        = 80\n    protocol    = \"PROTOCOL_TCP\"\n    target_pool = \"cross-network-pool\"\n  }]\n\n  target_pools = [{\n    name        = \"cross-network-pool\"\n    target_port = 80\n    targets = [{\n      display_name = stackit_server.example.name\n      ip           = stackit_network_interface.nic.ipv4\n    }]\n  }]\n}\n\n# Create a new security group to be assigned to the target server.\nresource \"stackit_security_group\" \"target_sg\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name        = \"target-sg-for-lb-access\"\n  description = \"Allows ingress traffic from the example load balancer.\"\n}\n\n# Create a rule to allow traffic FROM the load balancer.\n# This rule uses the computed `security_group_id` of the load balancer.\nresource \"stackit_security_group_rule\" \"allow_lb_ingress\" {\n  project_id        = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  security_group_id = stackit_security_group.target_sg.security_group_id\n  direction         = \"ingress\"\n  protocol = {\n    name = \"tcp\"\n  }\n\n  # This is the crucial link: it allows traffic from the LB's security group.\n  remote_security_group_id = stackit_loadbalancer.example.security_group_id\n\n  port_range = {\n    min = 80\n    max = 80\n  }\n}\n\nresource \"stackit_server\" \"example\" {\n  project_id        = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name              = \"example-remote-target\"\n  machine_type      = \"g2i.2\"\n  availability_zone = \"eu01-1\"\n\n  boot_volume = {\n    source_type = \"image\"\n    source_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n    size        = 10\n  }\n\n  network_interfaces = [\n    stackit_network_interface.nic.network_interface_id\n  ]\n}\n\nresource \"stackit_network_interface\" \"nic\" {\n  project_id         = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  network_id         = stackit_network.target_network.network_id\n  security_group_ids = [stackit_security_group.target_sg.security_group_id]\n}\n# End of advanced example\n\n# Only use the import statement, if you want to import an existing loadbalancer\nimport {\n  to = stackit_loadbalancer.import-example\n  id = \"${var.project_id},${var.region},${var.loadbalancer_name}\"\n}\n```\n",
+            "description": "## Example Usage\n\n```terraform\n# Create a network\nresource \"stackit_network\" \"example_network\" {\n  project_id       = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name             = \"example-network\"\n  ipv4_nameservers = [\"8.8.8.8\"]\n  ipv4_prefix      = \"192.168.0.0/25\"\n  labels = {\n    \"key\" = \"value\"\n  }\n  routed = true\n}\n\n# Create a network interface\nresource \"stackit_network_interface\" \"nic\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  network_id = stackit_network.example_network.network_id\n}\n\n# Create a public IP for the load balancer\nresource \"stackit_public_ip\" \"public-ip\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  lifecycle {\n    ignore_changes = [network_interface_id]\n  }\n}\n\n# Create a key pair for accessing the server instance\nresource \"stackit_key_pair\" \"keypair\" {\n  name       = \"example-key-pair\"\n  public_key = chomp(file(\"path/to/id_rsa.pub\"))\n}\n\n# Create a server instance\nresource \"stackit_server\" \"boot-from-image\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-server\"\n  boot_volume = {\n    size        = 64\n    source_type = \"image\"\n    source_id   = \"59838a89-51b1-4892-b57f-b3caf598ee2f\" // Ubuntu 24.04\n  }\n  availability_zone = \"xxxx-x\"\n  machine_type      = \"g2i.1\"\n  keypair_name      = stackit_key_pair.keypair.name\n  network_interfaces = [\n    stackit_network_interface.nic.network_interface_id\n  ]\n}\n\n# Create a load balancer\nresource \"stackit_loadbalancer\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-load-balancer\"\n  plan_id    = \"p10\"\n  target_pools = [\n    {\n      name        = \"example-target-pool\"\n      target_port = 80\n      targets = [\n        {\n          display_name = stackit_server.boot-from-image.name\n          ip           = stackit_network_interface.nic.ipv4\n        }\n      ]\n      active_health_check = {\n        healthy_threshold   = 10\n        interval            = \"3s\"\n        interval_jitter     = \"3s\"\n        timeout             = \"3s\"\n        unhealthy_threshold = 10\n      }\n    }\n  ]\n  listeners = [\n    {\n      display_name = \"example-listener\"\n      port         = 80\n      protocol     = \"PROTOCOL_TCP\"\n      target_pool  = \"example-target-pool\"\n      tcp = {\n        idle_timeout = \"90s\"\n      }\n    }\n  ]\n  networks = [\n    {\n      network_id = stackit_network.example_network.network_id\n      role       = \"ROLE_LISTENERS_AND_TARGETS\"\n    }\n  ]\n  external_address = stackit_public_ip.public-ip.ip\n  options = {\n    private_network_only = false\n  }\n}\n\n# This example demonstrates an advanced setup where the Load Balancer is in one\n# network and the target server is in another. This requires manual\n# security group configuration using the `disable_security_group_assignment`\n# and `security_group_id` attributes.\n\n# We create two separate networks: one for the load balancer and one for the target.\nresource \"stackit_network\" \"lb_network\" {\n  project_id       = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name             = \"lb-network-example\"\n  ipv4_prefix      = \"192.168.10.0/25\"\n  ipv4_nameservers = [\"8.8.8.8\"]\n}\n\nresource \"stackit_network\" \"target_network\" {\n  project_id       = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name             = \"target-network-example\"\n  ipv4_prefix      = \"192.168.10.0/25\"\n  ipv4_nameservers = [\"8.8.8.8\"]\n}\n\nresource \"stackit_public_ip\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\nresource \"stackit_loadbalancer\" \"example\" {\n  project_id       = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name             = \"example-advanced-lb\"\n  external_address = stackit_public_ip.example.ip\n\n  # Key setting for manual mode: disables automatic security group handling.\n  disable_security_group_assignment = true\n\n  networks = [{\n    network_id = stackit_network.lb_network.network_id\n    role       = \"ROLE_LISTENERS_AND_TARGETS\"\n  }]\n\n  listeners = [{\n    port        = 80\n    protocol    = \"PROTOCOL_TCP\"\n    target_pool = \"cross-network-pool\"\n  }]\n\n  target_pools = [{\n    name        = \"cross-network-pool\"\n    target_port = 80\n    targets = [{\n      display_name = stackit_server.example.name\n      ip           = stackit_network_interface.nic.ipv4\n    }]\n  }]\n}\n\n# Create a new security group to be assigned to the target server.\nresource \"stackit_security_group\" \"target_sg\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name        = \"target-sg-for-lb-access\"\n  description = \"Allows ingress traffic from the example load balancer.\"\n}\n\n# Create a rule to allow traffic FROM the load balancer.\n# This rule uses the computed `security_group_id` of the load balancer.\nresource \"stackit_security_group_rule\" \"allow_lb_ingress\" {\n  project_id        = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  security_group_id = stackit_security_group.target_sg.security_group_id\n  direction         = \"ingress\"\n  protocol = {\n    name = \"tcp\"\n  }\n\n  # This is the crucial link: it allows traffic from the LB's security group.\n  remote_security_group_id = stackit_loadbalancer.example.security_group_id\n\n  port_range = {\n    min = 80\n    max = 80\n  }\n}\n\nresource \"stackit_server\" \"example\" {\n  project_id        = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name              = \"example-remote-target\"\n  machine_type      = \"g2i.2\"\n  availability_zone = \"eu01-1\"\n\n  boot_volume = {\n    source_type = \"image\"\n    source_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n    size        = 10\n  }\n\n  network_interfaces = [\n    stackit_network_interface.nic.network_interface_id\n  ]\n}\n\nresource \"stackit_network_interface\" \"nic\" {\n  project_id         = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  network_id         = stackit_network.target_network.network_id\n  security_group_ids = [stackit_security_group.target_sg.security_group_id]\n}\n# End of advanced example\n\n# Only use the import statement, if you want to import an existing loadbalancer\nimport {\n  to = stackit_loadbalancer.import-example\n  id = \"${var.project_id},${var.region},${var.loadbalancer_name}\"\n}\n```\n",
             "properties": {
                 "disableSecurityGroupAssignment": {
                     "type": "boolean",
@@ -7730,7 +8248,7 @@
             }
         },
         "stackit:index/network:Network": {
-            "description": "Network resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\nresource \"stackit_network\" \"example_with_name\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-with-name\"\n}\n\nresource \"stackit_network\" \"example_routed_network\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-routed-network\"\n  labels = {\n    \"key\" = \"value\"\n  }\n  routed = true\n}\n\nresource \"stackit_network\" \"example_non_routed_network\" {\n  project_id         = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name               = \"example-non-routed-network\"\n  ipv4_nameservers   = [\"1.2.3.4\", \"5.6.7.8\"]\n  ipv4_prefix_length = 24\n  ipv4_gateway       = \"10.1.2.3\"\n  ipv4_prefix        = \"10.1.2.0/24\"\n  labels = {\n    \"key\" = \"value\"\n  }\n  routed = false\n}\n\n# Only use the import statement, if you want to import an existing network\n# Note: There will be a conflict which needs to be resolved manually.\n# These attributes cannot be configured together: [ipv4_prefix,ipv4_prefix_length,ipv4_gateway]\nimport {\n  to = stackit_network.import-example\n  id = \"${var.project_id},${var.network_id}\"\n}\n```\n",
+            "description": "Network resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\u003e Behavior of not configured \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4_nameservers`\u003c/span\u003e will change from January 2026. When \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4_nameservers`\u003c/span\u003e is not set, it will be set to the network area's \u003cspan pulumi-lang-nodejs=\"`defaultNameservers`\" pulumi-lang-dotnet=\"`DefaultNameservers`\" pulumi-lang-go=\"`defaultNameservers`\" pulumi-lang-python=\"`default_nameservers`\" pulumi-lang-yaml=\"`defaultNameservers`\" pulumi-lang-java=\"`defaultNameservers`\"\u003e`default_nameservers`\u003c/span\u003e.\nTo prevent any nameserver configuration, the \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4_nameservers`\u003c/span\u003e attribute should be explicitly set to an empty list `[]`.\nIn cases where \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4_nameservers`\u003c/span\u003e are defined within the resource, the existing behavior will remain unchanged.\n\n## Example Usage\n\n```terraform\nresource \"stackit_network\" \"example_with_name\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-with-name\"\n}\n\nresource \"stackit_network\" \"example_routed_network\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-routed-network\"\n  labels = {\n    \"key\" = \"value\"\n  }\n  routed = true\n}\n\nresource \"stackit_network\" \"example_non_routed_network\" {\n  project_id         = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name               = \"example-non-routed-network\"\n  ipv4_nameservers   = [\"1.2.3.4\", \"5.6.7.8\"]\n  ipv4_prefix_length = 24\n  ipv4_gateway       = \"10.1.2.3\"\n  ipv4_prefix        = \"10.1.2.0/24\"\n  labels = {\n    \"key\" = \"value\"\n  }\n  routed = false\n}\n\n# Only use the import statement, if you want to import an existing network\n# Note: There will be a conflict which needs to be resolved manually.\n# These attributes cannot be configured together: [ipv4_prefix,ipv4_prefix_length,ipv4_gateway]\nimport {\n  to = stackit_network.import-example\n  id = \"${var.project_id},${var.network_id}\"\n}\n```\n",
             "properties": {
                 "ipv4Gateway": {
                     "type": "string",
@@ -7800,7 +8318,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The nameservers of the network. This field is deprecated and will be removed soon, use \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4_nameservers`\u003c/span\u003e to configure the nameservers for IPv4.\n",
+                    "description": "The nameservers of the network. This field is deprecated and will be removed in January 2026, use \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4_nameservers`\u003c/span\u003e to configure the nameservers for IPv4.\n",
                     "deprecationMessage": "Use \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4_nameservers`\u003c/span\u003e to configure the nameservers for IPv4."
                 },
                 "networkId": {
@@ -7820,7 +8338,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The prefixes of the network. This field is deprecated and will be removed soon, use \u003cspan pulumi-lang-nodejs=\"`ipv4Prefixes`\" pulumi-lang-dotnet=\"`Ipv4Prefixes`\" pulumi-lang-go=\"`ipv4Prefixes`\" pulumi-lang-python=\"`ipv4_prefixes`\" pulumi-lang-yaml=\"`ipv4Prefixes`\" pulumi-lang-java=\"`ipv4Prefixes`\"\u003e`ipv4_prefixes`\u003c/span\u003e to read the prefixes of the IPv4 networks.\n",
+                    "description": "The prefixes of the network. This field is deprecated and will be removed in January 2026, use \u003cspan pulumi-lang-nodejs=\"`ipv4Prefixes`\" pulumi-lang-dotnet=\"`Ipv4Prefixes`\" pulumi-lang-go=\"`ipv4Prefixes`\" pulumi-lang-python=\"`ipv4_prefixes`\" pulumi-lang-yaml=\"`ipv4Prefixes`\" pulumi-lang-java=\"`ipv4Prefixes`\"\u003e`ipv4_prefixes`\u003c/span\u003e to read the prefixes of the IPv4 networks.\n",
                     "deprecationMessage": "Use \u003cspan pulumi-lang-nodejs=\"`ipv4Prefixes`\" pulumi-lang-dotnet=\"`Ipv4Prefixes`\" pulumi-lang-go=\"`ipv4Prefixes`\" pulumi-lang-python=\"`ipv4_prefixes`\" pulumi-lang-yaml=\"`ipv4Prefixes`\" pulumi-lang-java=\"`ipv4Prefixes`\"\u003e`ipv4_prefixes`\u003c/span\u003e to read the prefixes of the IPv4 networks."
                 },
                 "projectId": {
@@ -7852,6 +8370,8 @@
                 "ipv4Prefixes",
                 "ipv6Gateway",
                 "ipv6Nameservers",
+                "ipv6Prefix",
+                "ipv6PrefixLength",
                 "ipv6Prefixes",
                 "name",
                 "nameservers",
@@ -7918,7 +8438,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The nameservers of the network. This field is deprecated and will be removed soon, use \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4_nameservers`\u003c/span\u003e to configure the nameservers for IPv4.\n",
+                    "description": "The nameservers of the network. This field is deprecated and will be removed in January 2026, use \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4_nameservers`\u003c/span\u003e to configure the nameservers for IPv4.\n",
                     "deprecationMessage": "Use \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4_nameservers`\u003c/span\u003e to configure the nameservers for IPv4."
                 },
                 "noIpv4Gateway": {
@@ -8020,7 +8540,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The nameservers of the network. This field is deprecated and will be removed soon, use \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4_nameservers`\u003c/span\u003e to configure the nameservers for IPv4.\n",
+                        "description": "The nameservers of the network. This field is deprecated and will be removed in January 2026, use \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4_nameservers`\u003c/span\u003e to configure the nameservers for IPv4.\n",
                         "deprecationMessage": "Use \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4_nameservers`\u003c/span\u003e to configure the nameservers for IPv4."
                     },
                     "networkId": {
@@ -8040,7 +8560,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The prefixes of the network. This field is deprecated and will be removed soon, use \u003cspan pulumi-lang-nodejs=\"`ipv4Prefixes`\" pulumi-lang-dotnet=\"`Ipv4Prefixes`\" pulumi-lang-go=\"`ipv4Prefixes`\" pulumi-lang-python=\"`ipv4_prefixes`\" pulumi-lang-yaml=\"`ipv4Prefixes`\" pulumi-lang-java=\"`ipv4Prefixes`\"\u003e`ipv4_prefixes`\u003c/span\u003e to read the prefixes of the IPv4 networks.\n",
+                        "description": "The prefixes of the network. This field is deprecated and will be removed in January 2026, use \u003cspan pulumi-lang-nodejs=\"`ipv4Prefixes`\" pulumi-lang-dotnet=\"`Ipv4Prefixes`\" pulumi-lang-go=\"`ipv4Prefixes`\" pulumi-lang-python=\"`ipv4_prefixes`\" pulumi-lang-yaml=\"`ipv4Prefixes`\" pulumi-lang-java=\"`ipv4Prefixes`\"\u003e`ipv4_prefixes`\u003c/span\u003e to read the prefixes of the IPv4 networks.\n",
                         "deprecationMessage": "Use \u003cspan pulumi-lang-nodejs=\"`ipv4Prefixes`\" pulumi-lang-dotnet=\"`Ipv4Prefixes`\" pulumi-lang-go=\"`ipv4Prefixes`\" pulumi-lang-python=\"`ipv4_prefixes`\" pulumi-lang-yaml=\"`ipv4Prefixes`\" pulumi-lang-java=\"`ipv4Prefixes`\"\u003e`ipv4_prefixes`\u003c/span\u003e to read the prefixes of the IPv4 networks."
                     },
                     "projectId": {
@@ -8408,7 +8928,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "Type of network interface. Some of the possible values are: Supported values are: \u003cspan pulumi-lang-nodejs=\"`server`\" pulumi-lang-dotnet=\"`Server`\" pulumi-lang-go=\"`server`\" pulumi-lang-python=\"`server`\" pulumi-lang-yaml=\"`server`\" pulumi-lang-java=\"`server`\"\u003e`server`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`metadata`\" pulumi-lang-dotnet=\"`Metadata`\" pulumi-lang-go=\"`metadata`\" pulumi-lang-python=\"`metadata`\" pulumi-lang-yaml=\"`metadata`\" pulumi-lang-java=\"`metadata`\"\u003e`metadata`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`gateway`\" pulumi-lang-dotnet=\"`Gateway`\" pulumi-lang-go=\"`gateway`\" pulumi-lang-python=\"`gateway`\" pulumi-lang-yaml=\"`gateway`\" pulumi-lang-java=\"`gateway`\"\u003e`gateway`\u003c/span\u003e.\n"
+                    "description": "Type of network interface. Some of the possible values are: Possible values are: \u003cspan pulumi-lang-nodejs=\"`server`\" pulumi-lang-dotnet=\"`Server`\" pulumi-lang-go=\"`server`\" pulumi-lang-python=\"`server`\" pulumi-lang-yaml=\"`server`\" pulumi-lang-java=\"`server`\"\u003e`server`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`metadata`\" pulumi-lang-dotnet=\"`Metadata`\" pulumi-lang-go=\"`metadata`\" pulumi-lang-python=\"`metadata`\" pulumi-lang-yaml=\"`metadata`\" pulumi-lang-java=\"`metadata`\"\u003e`metadata`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`gateway`\" pulumi-lang-dotnet=\"`Gateway`\" pulumi-lang-go=\"`gateway`\" pulumi-lang-python=\"`gateway`\" pulumi-lang-yaml=\"`gateway`\" pulumi-lang-java=\"`gateway`\"\u003e`gateway`\u003c/span\u003e.\n"
                 }
             },
             "required": [
@@ -8529,7 +9049,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "Type of network interface. Some of the possible values are: Supported values are: \u003cspan pulumi-lang-nodejs=\"`server`\" pulumi-lang-dotnet=\"`Server`\" pulumi-lang-go=\"`server`\" pulumi-lang-python=\"`server`\" pulumi-lang-yaml=\"`server`\" pulumi-lang-java=\"`server`\"\u003e`server`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`metadata`\" pulumi-lang-dotnet=\"`Metadata`\" pulumi-lang-go=\"`metadata`\" pulumi-lang-python=\"`metadata`\" pulumi-lang-yaml=\"`metadata`\" pulumi-lang-java=\"`metadata`\"\u003e`metadata`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`gateway`\" pulumi-lang-dotnet=\"`Gateway`\" pulumi-lang-go=\"`gateway`\" pulumi-lang-python=\"`gateway`\" pulumi-lang-yaml=\"`gateway`\" pulumi-lang-java=\"`gateway`\"\u003e`gateway`\u003c/span\u003e.\n"
+                        "description": "Type of network interface. Some of the possible values are: Possible values are: \u003cspan pulumi-lang-nodejs=\"`server`\" pulumi-lang-dotnet=\"`Server`\" pulumi-lang-go=\"`server`\" pulumi-lang-python=\"`server`\" pulumi-lang-yaml=\"`server`\" pulumi-lang-java=\"`server`\"\u003e`server`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`metadata`\" pulumi-lang-dotnet=\"`Metadata`\" pulumi-lang-go=\"`metadata`\" pulumi-lang-python=\"`metadata`\" pulumi-lang-yaml=\"`metadata`\" pulumi-lang-java=\"`metadata`\"\u003e`metadata`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`gateway`\" pulumi-lang-dotnet=\"`Gateway`\" pulumi-lang-go=\"`gateway`\" pulumi-lang-python=\"`gateway`\" pulumi-lang-yaml=\"`gateway`\" pulumi-lang-java=\"`gateway`\"\u003e`gateway`\u003c/span\u003e.\n"
                     }
                 },
                 "type": "object"
@@ -8956,7 +9476,7 @@
             }
         },
         "stackit:index/observabilityInstance:ObservabilityInstance": {
-            "description": "Observability instance resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\nresource \"stackit_observability_instance\" \"example\" {\n  project_id                             = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name                                   = \"example-instance\"\n  plan_name                              = \"Observability-Monitoring-Medium-EU01\"\n  acl                                    = [\"1.1.1.1/32\", \"2.2.2.2/32\"]\n  metrics_retention_days                 = 90\n  metrics_retention_days_5m_downsampling = 90\n  metrics_retention_days_1h_downsampling = 90\n}\n\n# Only use the import statement, if you want to import an existing observability instance\nimport {\n  to = stackit_observability_instance.import-example\n  id = \"${var.project_id},${var.observability_instance_id}\"\n}\n```\n",
+            "description": "Observability instance resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\nresource \"stackit_observability_instance\" \"example\" {\n  project_id                             = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name                                   = \"example-instance\"\n  plan_name                              = \"Observability-Starter-EU01\"\n  acl                                    = [\"1.1.1.1/32\", \"2.2.2.2/32\"]\n  logs_retention_days                    = 30\n  traces_retention_days                  = 30\n  metrics_retention_days                 = 90\n  metrics_retention_days_5m_downsampling = 90\n  metrics_retention_days_1h_downsampling = 90\n}\n\n# Only use the import statement, if you want to import an existing observability instance\nimport {\n  to = stackit_observability_instance.import-example\n  id = \"${var.project_id},${var.observability_instance_id}\"\n}\n```\n",
             "properties": {
                 "acls": {
                     "type": "array",
@@ -9012,6 +9532,10 @@
                     "type": "string",
                     "description": "Specifies URL for pushing logs.\n"
                 },
+                "logsRetentionDays": {
+                    "type": "integer",
+                    "description": "Specifies for how many days the logs are kept. Default is set to \u003cspan pulumi-lang-nodejs=\"`7`\" pulumi-lang-dotnet=\"`7`\" pulumi-lang-go=\"`7`\" pulumi-lang-python=\"`7`\" pulumi-lang-yaml=\"`7`\" pulumi-lang-java=\"`7`\"\u003e`7`\u003c/span\u003e.\n"
+                },
                 "logsUrl": {
                     "type": "string",
                     "description": "Specifies Logs URL.\n"
@@ -9066,6 +9590,10 @@
                     "type": "string",
                     "description": "Specifies Targets URL.\n"
                 },
+                "tracesRetentionDays": {
+                    "type": "integer",
+                    "description": "Specifies for how many days the traces are kept. Default is set to \u003cspan pulumi-lang-nodejs=\"`7`\" pulumi-lang-dotnet=\"`7`\" pulumi-lang-go=\"`7`\" pulumi-lang-python=\"`7`\" pulumi-lang-yaml=\"`7`\" pulumi-lang-java=\"`7`\"\u003e`7`\u003c/span\u003e.\n"
+                },
                 "zipkinSpansUrl": {
                     "type": "string"
                 }
@@ -9082,6 +9610,7 @@
                 "jaegerTracesUrl",
                 "jaegerUiUrl",
                 "logsPushUrl",
+                "logsRetentionDays",
                 "logsUrl",
                 "metricsPushUrl",
                 "metricsRetentionDays",
@@ -9095,6 +9624,7 @@
                 "planName",
                 "projectId",
                 "targetsUrl",
+                "tracesRetentionDays",
                 "zipkinSpansUrl"
             ],
             "inputProperties": {
@@ -9108,6 +9638,10 @@
                 "alertConfig": {
                     "$ref": "#/types/stackit:index/ObservabilityInstanceAlertConfig:ObservabilityInstanceAlertConfig",
                     "description": "Alert configuration for the instance.\n"
+                },
+                "logsRetentionDays": {
+                    "type": "integer",
+                    "description": "Specifies for how many days the logs are kept. Default is set to \u003cspan pulumi-lang-nodejs=\"`7`\" pulumi-lang-dotnet=\"`7`\" pulumi-lang-go=\"`7`\" pulumi-lang-python=\"`7`\" pulumi-lang-yaml=\"`7`\" pulumi-lang-java=\"`7`\"\u003e`7`\u003c/span\u003e.\n"
                 },
                 "metricsRetentionDays": {
                     "type": "integer",
@@ -9139,6 +9673,10 @@
                 "projectId": {
                     "type": "string",
                     "description": "STACKIT project ID to which the instance is associated.\n"
+                },
+                "tracesRetentionDays": {
+                    "type": "integer",
+                    "description": "Specifies for how many days the traces are kept. Default is set to \u003cspan pulumi-lang-nodejs=\"`7`\" pulumi-lang-dotnet=\"`7`\" pulumi-lang-go=\"`7`\" pulumi-lang-python=\"`7`\" pulumi-lang-yaml=\"`7`\" pulumi-lang-java=\"`7`\"\u003e`7`\u003c/span\u003e.\n"
                 }
             },
             "requiredInputs": [
@@ -9202,6 +9740,10 @@
                         "type": "string",
                         "description": "Specifies URL for pushing logs.\n"
                     },
+                    "logsRetentionDays": {
+                        "type": "integer",
+                        "description": "Specifies for how many days the logs are kept. Default is set to \u003cspan pulumi-lang-nodejs=\"`7`\" pulumi-lang-dotnet=\"`7`\" pulumi-lang-go=\"`7`\" pulumi-lang-python=\"`7`\" pulumi-lang-yaml=\"`7`\" pulumi-lang-java=\"`7`\"\u003e`7`\u003c/span\u003e.\n"
+                    },
                     "logsUrl": {
                         "type": "string",
                         "description": "Specifies Logs URL.\n"
@@ -9255,6 +9797,10 @@
                     "targetsUrl": {
                         "type": "string",
                         "description": "Specifies Targets URL.\n"
+                    },
+                    "tracesRetentionDays": {
+                        "type": "integer",
+                        "description": "Specifies for how many days the traces are kept. Default is set to \u003cspan pulumi-lang-nodejs=\"`7`\" pulumi-lang-dotnet=\"`7`\" pulumi-lang-go=\"`7`\" pulumi-lang-python=\"`7`\" pulumi-lang-yaml=\"`7`\" pulumi-lang-java=\"`7`\"\u003e`7`\u003c/span\u003e.\n"
                     },
                     "zipkinSpansUrl": {
                         "type": "string"
@@ -10046,7 +10592,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Database access levels for the user. Supported values are: \u003cspan pulumi-lang-nodejs=\"`login`\" pulumi-lang-dotnet=\"`Login`\" pulumi-lang-go=\"`login`\" pulumi-lang-python=\"`login`\" pulumi-lang-yaml=\"`login`\" pulumi-lang-java=\"`login`\"\u003e`login`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`createdb`\" pulumi-lang-dotnet=\"`Createdb`\" pulumi-lang-go=\"`createdb`\" pulumi-lang-python=\"`createdb`\" pulumi-lang-yaml=\"`createdb`\" pulumi-lang-java=\"`createdb`\"\u003e`createdb`\u003c/span\u003e.\n"
+                    "description": "Database access levels for the user. Possible values are: \u003cspan pulumi-lang-nodejs=\"`login`\" pulumi-lang-dotnet=\"`Login`\" pulumi-lang-go=\"`login`\" pulumi-lang-python=\"`login`\" pulumi-lang-yaml=\"`login`\" pulumi-lang-java=\"`login`\"\u003e`login`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`createdb`\" pulumi-lang-dotnet=\"`Createdb`\" pulumi-lang-go=\"`createdb`\" pulumi-lang-python=\"`createdb`\" pulumi-lang-yaml=\"`createdb`\" pulumi-lang-java=\"`createdb`\"\u003e`createdb`\u003c/span\u003e.\n"
                 },
                 "uri": {
                     "type": "string",
@@ -10090,7 +10636,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Database access levels for the user. Supported values are: \u003cspan pulumi-lang-nodejs=\"`login`\" pulumi-lang-dotnet=\"`Login`\" pulumi-lang-go=\"`login`\" pulumi-lang-python=\"`login`\" pulumi-lang-yaml=\"`login`\" pulumi-lang-java=\"`login`\"\u003e`login`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`createdb`\" pulumi-lang-dotnet=\"`Createdb`\" pulumi-lang-go=\"`createdb`\" pulumi-lang-python=\"`createdb`\" pulumi-lang-yaml=\"`createdb`\" pulumi-lang-java=\"`createdb`\"\u003e`createdb`\u003c/span\u003e.\n"
+                    "description": "Database access levels for the user. Possible values are: \u003cspan pulumi-lang-nodejs=\"`login`\" pulumi-lang-dotnet=\"`Login`\" pulumi-lang-go=\"`login`\" pulumi-lang-python=\"`login`\" pulumi-lang-yaml=\"`login`\" pulumi-lang-java=\"`login`\"\u003e`login`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`createdb`\" pulumi-lang-dotnet=\"`Createdb`\" pulumi-lang-go=\"`createdb`\" pulumi-lang-python=\"`createdb`\" pulumi-lang-yaml=\"`createdb`\" pulumi-lang-java=\"`createdb`\"\u003e`createdb`\u003c/span\u003e.\n"
                 },
                 "username": {
                     "type": "string"
@@ -10132,7 +10678,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "Database access levels for the user. Supported values are: \u003cspan pulumi-lang-nodejs=\"`login`\" pulumi-lang-dotnet=\"`Login`\" pulumi-lang-go=\"`login`\" pulumi-lang-python=\"`login`\" pulumi-lang-yaml=\"`login`\" pulumi-lang-java=\"`login`\"\u003e`login`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`createdb`\" pulumi-lang-dotnet=\"`Createdb`\" pulumi-lang-go=\"`createdb`\" pulumi-lang-python=\"`createdb`\" pulumi-lang-yaml=\"`createdb`\" pulumi-lang-java=\"`createdb`\"\u003e`createdb`\u003c/span\u003e.\n"
+                        "description": "Database access levels for the user. Possible values are: \u003cspan pulumi-lang-nodejs=\"`login`\" pulumi-lang-dotnet=\"`Login`\" pulumi-lang-go=\"`login`\" pulumi-lang-python=\"`login`\" pulumi-lang-yaml=\"`login`\" pulumi-lang-java=\"`login`\"\u003e`login`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`createdb`\" pulumi-lang-dotnet=\"`Createdb`\" pulumi-lang-go=\"`createdb`\" pulumi-lang-python=\"`createdb`\" pulumi-lang-yaml=\"`createdb`\" pulumi-lang-java=\"`createdb`\"\u003e`createdb`\u003c/span\u003e.\n"
                     },
                     "uri": {
                         "type": "string",
@@ -10829,7 +11375,7 @@
             }
         },
         "stackit:index/resourcemanagerFolder:ResourcemanagerFolder": {
-            "description": "Resource Manager folder resource schema.\n\n\u003e This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\nresource \"stackit_resourcemanager_folder\" \"example\" {\n  name                = \"example-folder\"\n  owner_email         = \"foo.bar@stackit.cloud\"\n  parent_container_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\n# Note:\n# You can add projects under folders.\n# However, when deleting a project, be aware:\n#   - Projects may remain \"invisible\" for up to 7 days after deletion\n#   - During this time, deleting the parent folder may fail because the project is still technically linked\nresource \"stackit_resourcemanager_project\" \"example_project\" {\n  name                = \"example-project\"\n  owner_email         = \"foo.bar@stackit.cloud\"\n  parent_container_id = stackit_resourcemanager_folder.example.container_id\n}\n\n# Only use the import statement, if you want to import an existing resourcemanager folder\n# Note: There will be a conflict which needs to be resolved manually.\n# Must set a configuration value for the owner_email attribute as the provider has marked it as required.\nimport {\n  to = stackit_resourcemanager_folder.import-example\n  id = var.container_id\n}\n```\n",
+            "description": "Resource Manager folder resource schema.\n\n## Example Usage\n\n```terraform\nresource \"stackit_resourcemanager_folder\" \"example\" {\n  name                = \"example-folder\"\n  owner_email         = \"foo.bar@stackit.cloud\"\n  parent_container_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\n# Note:\n# You can add projects under folders.\n# However, when deleting a project, be aware:\n#   - Projects may remain \"invisible\" for up to 7 days after deletion\n#   - During this time, deleting the parent folder may fail because the project is still technically linked\nresource \"stackit_resourcemanager_project\" \"example_project\" {\n  name                = \"example-project\"\n  owner_email         = \"foo.bar@stackit.cloud\"\n  parent_container_id = stackit_resourcemanager_folder.example.container_id\n}\n\n# Only use the import statement, if you want to import an existing resourcemanager folder\n# Note: There will be a conflict which needs to be resolved manually.\n# Must set a configuration value for the owner_email attribute as the provider has marked it as required.\nimport {\n  to = stackit_resourcemanager_folder.import-example\n  id = var.container_id\n}\n```\n",
             "properties": {
                 "containerId": {
                     "type": "string",
@@ -11882,7 +12428,7 @@
                 },
                 "direction": {
                     "type": "string",
-                    "description": "The direction of the traffic which the rule should match. Some of the possible values are: Supported values are: \u003cspan pulumi-lang-nodejs=\"`ingress`\" pulumi-lang-dotnet=\"`Ingress`\" pulumi-lang-go=\"`ingress`\" pulumi-lang-python=\"`ingress`\" pulumi-lang-yaml=\"`ingress`\" pulumi-lang-java=\"`ingress`\"\u003e`ingress`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`egress`\" pulumi-lang-dotnet=\"`Egress`\" pulumi-lang-go=\"`egress`\" pulumi-lang-python=\"`egress`\" pulumi-lang-yaml=\"`egress`\" pulumi-lang-java=\"`egress`\"\u003e`egress`\u003c/span\u003e.\n"
+                    "description": "The direction of the traffic which the rule should match. Some of the possible values are: Possible values are: \u003cspan pulumi-lang-nodejs=\"`ingress`\" pulumi-lang-dotnet=\"`Ingress`\" pulumi-lang-go=\"`ingress`\" pulumi-lang-python=\"`ingress`\" pulumi-lang-yaml=\"`ingress`\" pulumi-lang-java=\"`ingress`\"\u003e`ingress`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`egress`\" pulumi-lang-dotnet=\"`Egress`\" pulumi-lang-go=\"`egress`\" pulumi-lang-python=\"`egress`\" pulumi-lang-yaml=\"`egress`\" pulumi-lang-java=\"`egress`\"\u003e`egress`\u003c/span\u003e.\n"
                 },
                 "etherType": {
                     "type": "string",
@@ -11938,7 +12484,7 @@
                 },
                 "direction": {
                     "type": "string",
-                    "description": "The direction of the traffic which the rule should match. Some of the possible values are: Supported values are: \u003cspan pulumi-lang-nodejs=\"`ingress`\" pulumi-lang-dotnet=\"`Ingress`\" pulumi-lang-go=\"`ingress`\" pulumi-lang-python=\"`ingress`\" pulumi-lang-yaml=\"`ingress`\" pulumi-lang-java=\"`ingress`\"\u003e`ingress`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`egress`\" pulumi-lang-dotnet=\"`Egress`\" pulumi-lang-go=\"`egress`\" pulumi-lang-python=\"`egress`\" pulumi-lang-yaml=\"`egress`\" pulumi-lang-java=\"`egress`\"\u003e`egress`\u003c/span\u003e.\n"
+                    "description": "The direction of the traffic which the rule should match. Some of the possible values are: Possible values are: \u003cspan pulumi-lang-nodejs=\"`ingress`\" pulumi-lang-dotnet=\"`Ingress`\" pulumi-lang-go=\"`ingress`\" pulumi-lang-python=\"`ingress`\" pulumi-lang-yaml=\"`ingress`\" pulumi-lang-java=\"`ingress`\"\u003e`ingress`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`egress`\" pulumi-lang-dotnet=\"`Egress`\" pulumi-lang-go=\"`egress`\" pulumi-lang-python=\"`egress`\" pulumi-lang-yaml=\"`egress`\" pulumi-lang-java=\"`egress`\"\u003e`egress`\u003c/span\u003e.\n"
                 },
                 "etherType": {
                     "type": "string",
@@ -11987,7 +12533,7 @@
                     },
                     "direction": {
                         "type": "string",
-                        "description": "The direction of the traffic which the rule should match. Some of the possible values are: Supported values are: \u003cspan pulumi-lang-nodejs=\"`ingress`\" pulumi-lang-dotnet=\"`Ingress`\" pulumi-lang-go=\"`ingress`\" pulumi-lang-python=\"`ingress`\" pulumi-lang-yaml=\"`ingress`\" pulumi-lang-java=\"`ingress`\"\u003e`ingress`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`egress`\" pulumi-lang-dotnet=\"`Egress`\" pulumi-lang-go=\"`egress`\" pulumi-lang-python=\"`egress`\" pulumi-lang-yaml=\"`egress`\" pulumi-lang-java=\"`egress`\"\u003e`egress`\u003c/span\u003e.\n"
+                        "description": "The direction of the traffic which the rule should match. Some of the possible values are: Possible values are: \u003cspan pulumi-lang-nodejs=\"`ingress`\" pulumi-lang-dotnet=\"`Ingress`\" pulumi-lang-go=\"`ingress`\" pulumi-lang-python=\"`ingress`\" pulumi-lang-yaml=\"`ingress`\" pulumi-lang-java=\"`ingress`\"\u003e`ingress`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`egress`\" pulumi-lang-dotnet=\"`Egress`\" pulumi-lang-go=\"`egress`\" pulumi-lang-python=\"`egress`\" pulumi-lang-yaml=\"`egress`\" pulumi-lang-java=\"`egress`\"\u003e`egress`\u003c/span\u003e.\n"
                     },
                     "etherType": {
                         "type": "string",
@@ -12050,7 +12596,7 @@
                 },
                 "desiredStatus": {
                     "type": "string",
-                    "description": "The desired status of the server resource. Supported values are: \u003cspan pulumi-lang-nodejs=\"`active`\" pulumi-lang-dotnet=\"`Active`\" pulumi-lang-go=\"`active`\" pulumi-lang-python=\"`active`\" pulumi-lang-yaml=\"`active`\" pulumi-lang-java=\"`active`\"\u003e`active`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`inactive`\" pulumi-lang-dotnet=\"`Inactive`\" pulumi-lang-go=\"`inactive`\" pulumi-lang-python=\"`inactive`\" pulumi-lang-yaml=\"`inactive`\" pulumi-lang-java=\"`inactive`\"\u003e`inactive`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`deallocated`\" pulumi-lang-dotnet=\"`Deallocated`\" pulumi-lang-go=\"`deallocated`\" pulumi-lang-python=\"`deallocated`\" pulumi-lang-yaml=\"`deallocated`\" pulumi-lang-java=\"`deallocated`\"\u003e`deallocated`\u003c/span\u003e.\n"
+                    "description": "The desired status of the server resource. Possible values are: \u003cspan pulumi-lang-nodejs=\"`active`\" pulumi-lang-dotnet=\"`Active`\" pulumi-lang-go=\"`active`\" pulumi-lang-python=\"`active`\" pulumi-lang-yaml=\"`active`\" pulumi-lang-java=\"`active`\"\u003e`active`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`inactive`\" pulumi-lang-dotnet=\"`Inactive`\" pulumi-lang-go=\"`inactive`\" pulumi-lang-python=\"`inactive`\" pulumi-lang-yaml=\"`inactive`\" pulumi-lang-java=\"`inactive`\"\u003e`inactive`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`deallocated`\" pulumi-lang-dotnet=\"`Deallocated`\" pulumi-lang-go=\"`deallocated`\" pulumi-lang-python=\"`deallocated`\" pulumi-lang-yaml=\"`deallocated`\" pulumi-lang-java=\"`deallocated`\"\u003e`deallocated`\u003c/span\u003e.\n"
                 },
                 "imageId": {
                     "type": "string",
@@ -12128,7 +12674,7 @@
                 },
                 "desiredStatus": {
                     "type": "string",
-                    "description": "The desired status of the server resource. Supported values are: \u003cspan pulumi-lang-nodejs=\"`active`\" pulumi-lang-dotnet=\"`Active`\" pulumi-lang-go=\"`active`\" pulumi-lang-python=\"`active`\" pulumi-lang-yaml=\"`active`\" pulumi-lang-java=\"`active`\"\u003e`active`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`inactive`\" pulumi-lang-dotnet=\"`Inactive`\" pulumi-lang-go=\"`inactive`\" pulumi-lang-python=\"`inactive`\" pulumi-lang-yaml=\"`inactive`\" pulumi-lang-java=\"`inactive`\"\u003e`inactive`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`deallocated`\" pulumi-lang-dotnet=\"`Deallocated`\" pulumi-lang-go=\"`deallocated`\" pulumi-lang-python=\"`deallocated`\" pulumi-lang-yaml=\"`deallocated`\" pulumi-lang-java=\"`deallocated`\"\u003e`deallocated`\u003c/span\u003e.\n"
+                    "description": "The desired status of the server resource. Possible values are: \u003cspan pulumi-lang-nodejs=\"`active`\" pulumi-lang-dotnet=\"`Active`\" pulumi-lang-go=\"`active`\" pulumi-lang-python=\"`active`\" pulumi-lang-yaml=\"`active`\" pulumi-lang-java=\"`active`\"\u003e`active`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`inactive`\" pulumi-lang-dotnet=\"`Inactive`\" pulumi-lang-go=\"`inactive`\" pulumi-lang-python=\"`inactive`\" pulumi-lang-yaml=\"`inactive`\" pulumi-lang-java=\"`inactive`\"\u003e`inactive`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`deallocated`\" pulumi-lang-dotnet=\"`Deallocated`\" pulumi-lang-go=\"`deallocated`\" pulumi-lang-python=\"`deallocated`\" pulumi-lang-yaml=\"`deallocated`\" pulumi-lang-java=\"`deallocated`\"\u003e`deallocated`\u003c/span\u003e.\n"
                 },
                 "imageId": {
                     "type": "string",
@@ -12194,7 +12740,7 @@
                     },
                     "desiredStatus": {
                         "type": "string",
-                        "description": "The desired status of the server resource. Supported values are: \u003cspan pulumi-lang-nodejs=\"`active`\" pulumi-lang-dotnet=\"`Active`\" pulumi-lang-go=\"`active`\" pulumi-lang-python=\"`active`\" pulumi-lang-yaml=\"`active`\" pulumi-lang-java=\"`active`\"\u003e`active`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`inactive`\" pulumi-lang-dotnet=\"`Inactive`\" pulumi-lang-go=\"`inactive`\" pulumi-lang-python=\"`inactive`\" pulumi-lang-yaml=\"`inactive`\" pulumi-lang-java=\"`inactive`\"\u003e`inactive`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`deallocated`\" pulumi-lang-dotnet=\"`Deallocated`\" pulumi-lang-go=\"`deallocated`\" pulumi-lang-python=\"`deallocated`\" pulumi-lang-yaml=\"`deallocated`\" pulumi-lang-java=\"`deallocated`\"\u003e`deallocated`\u003c/span\u003e.\n"
+                        "description": "The desired status of the server resource. Possible values are: \u003cspan pulumi-lang-nodejs=\"`active`\" pulumi-lang-dotnet=\"`Active`\" pulumi-lang-go=\"`active`\" pulumi-lang-python=\"`active`\" pulumi-lang-yaml=\"`active`\" pulumi-lang-java=\"`active`\"\u003e`active`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`inactive`\" pulumi-lang-dotnet=\"`Inactive`\" pulumi-lang-go=\"`inactive`\" pulumi-lang-python=\"`inactive`\" pulumi-lang-yaml=\"`inactive`\" pulumi-lang-java=\"`inactive`\"\u003e`inactive`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`deallocated`\" pulumi-lang-dotnet=\"`Deallocated`\" pulumi-lang-go=\"`deallocated`\" pulumi-lang-python=\"`deallocated`\" pulumi-lang-yaml=\"`deallocated`\" pulumi-lang-java=\"`deallocated`\"\u003e`deallocated`\u003c/span\u003e.\n"
                     },
                     "imageId": {
                         "type": "string",
@@ -14590,6 +15136,272 @@
                 ]
             }
         },
+        "stackit:index/getKmsKey:getKmsKey": {
+            "description": "KMS Key datasource schema. Uses the \u003cspan pulumi-lang-nodejs=\"`defaultRegion`\" pulumi-lang-dotnet=\"`DefaultRegion`\" pulumi-lang-go=\"`defaultRegion`\" pulumi-lang-python=\"`default_region`\" pulumi-lang-yaml=\"`defaultRegion`\" pulumi-lang-java=\"`defaultRegion`\"\u003e`default_region`\u003c/span\u003e specified in the provider configuration as a fallback in case no \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e is defined on datasource level.\n\n## Example Usage\n\n```terraform\ndata \"stackit_kms_key\" \"key\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  keyring_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  key_id     = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getKmsKey.\n",
+                "properties": {
+                    "keyId": {
+                        "type": "string",
+                        "description": "The ID of the key\n"
+                    },
+                    "keyringId": {
+                        "type": "string",
+                        "description": "The ID of the associated key ring\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID to which the key is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "keyId",
+                    "keyringId",
+                    "projectId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getKmsKey.\n",
+                "properties": {
+                    "accessScope": {
+                        "type": "string",
+                        "description": "The access scope of the key. Default is `PUBLIC`. Possible values are: `PUBLIC`, `SNA`.\n"
+                    },
+                    "algorithm": {
+                        "type": "string",
+                        "description": "The encryption algorithm that the key will use to encrypt data. Possible values are: \u003cspan pulumi-lang-nodejs=\"`aes256Gcm`\" pulumi-lang-dotnet=\"`Aes256Gcm`\" pulumi-lang-go=\"`aes256Gcm`\" pulumi-lang-python=\"`aes_256_gcm`\" pulumi-lang-yaml=\"`aes256Gcm`\" pulumi-lang-java=\"`aes256Gcm`\"\u003e`aes_256_gcm`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa2048OaepSha256`\" pulumi-lang-dotnet=\"`Rsa2048OaepSha256`\" pulumi-lang-go=\"`rsa2048OaepSha256`\" pulumi-lang-python=\"`rsa_2048_oaep_sha256`\" pulumi-lang-yaml=\"`rsa2048OaepSha256`\" pulumi-lang-java=\"`rsa2048OaepSha256`\"\u003e`rsa_2048_oaep_sha256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa3072OaepSha256`\" pulumi-lang-dotnet=\"`Rsa3072OaepSha256`\" pulumi-lang-go=\"`rsa3072OaepSha256`\" pulumi-lang-python=\"`rsa_3072_oaep_sha256`\" pulumi-lang-yaml=\"`rsa3072OaepSha256`\" pulumi-lang-java=\"`rsa3072OaepSha256`\"\u003e`rsa_3072_oaep_sha256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa4096OaepSha256`\" pulumi-lang-dotnet=\"`Rsa4096OaepSha256`\" pulumi-lang-go=\"`rsa4096OaepSha256`\" pulumi-lang-python=\"`rsa_4096_oaep_sha256`\" pulumi-lang-yaml=\"`rsa4096OaepSha256`\" pulumi-lang-java=\"`rsa4096OaepSha256`\"\u003e`rsa_4096_oaep_sha256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa4096OaepSha512`\" pulumi-lang-dotnet=\"`Rsa4096OaepSha512`\" pulumi-lang-go=\"`rsa4096OaepSha512`\" pulumi-lang-python=\"`rsa_4096_oaep_sha512`\" pulumi-lang-yaml=\"`rsa4096OaepSha512`\" pulumi-lang-java=\"`rsa4096OaepSha512`\"\u003e`rsa_4096_oaep_sha512`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`hmacSha256`\" pulumi-lang-dotnet=\"`HmacSha256`\" pulumi-lang-go=\"`hmacSha256`\" pulumi-lang-python=\"`hmac_sha256`\" pulumi-lang-yaml=\"`hmacSha256`\" pulumi-lang-java=\"`hmacSha256`\"\u003e`hmac_sha256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`hmacSha384`\" pulumi-lang-dotnet=\"`HmacSha384`\" pulumi-lang-go=\"`hmacSha384`\" pulumi-lang-python=\"`hmac_sha384`\" pulumi-lang-yaml=\"`hmacSha384`\" pulumi-lang-java=\"`hmacSha384`\"\u003e`hmac_sha384`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`hmacSha512`\" pulumi-lang-dotnet=\"`HmacSha512`\" pulumi-lang-go=\"`hmacSha512`\" pulumi-lang-python=\"`hmac_sha512`\" pulumi-lang-yaml=\"`hmacSha512`\" pulumi-lang-java=\"`hmacSha512`\"\u003e`hmac_sha512`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ecdsaP256Sha256`\" pulumi-lang-dotnet=\"`EcdsaP256Sha256`\" pulumi-lang-go=\"`ecdsaP256Sha256`\" pulumi-lang-python=\"`ecdsa_p256_sha256`\" pulumi-lang-yaml=\"`ecdsaP256Sha256`\" pulumi-lang-java=\"`ecdsaP256Sha256`\"\u003e`ecdsa_p256_sha256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ecdsaP384Sha384`\" pulumi-lang-dotnet=\"`EcdsaP384Sha384`\" pulumi-lang-go=\"`ecdsaP384Sha384`\" pulumi-lang-python=\"`ecdsa_p384_sha384`\" pulumi-lang-yaml=\"`ecdsaP384Sha384`\" pulumi-lang-java=\"`ecdsaP384Sha384`\"\u003e`ecdsa_p384_sha384`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ecdsaP521Sha512`\" pulumi-lang-dotnet=\"`EcdsaP521Sha512`\" pulumi-lang-go=\"`ecdsaP521Sha512`\" pulumi-lang-python=\"`ecdsa_p521_sha512`\" pulumi-lang-yaml=\"`ecdsaP521Sha512`\" pulumi-lang-java=\"`ecdsaP521Sha512`\"\u003e`ecdsa_p521_sha512`\u003c/span\u003e.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "A user chosen description to distinguish multiple keys\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The display name to distinguish multiple keys\n"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "importOnly": {
+                        "type": "boolean",
+                        "description": "States whether versions can be created or only imported.\n"
+                    },
+                    "keyId": {
+                        "type": "string",
+                        "description": "The ID of the key\n"
+                    },
+                    "keyringId": {
+                        "type": "string",
+                        "description": "The ID of the associated key ring\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID to which the key is associated.\n"
+                    },
+                    "protection": {
+                        "type": "string",
+                        "description": "The underlying system that is responsible for protecting the key material. Possible values are: \u003cspan pulumi-lang-nodejs=\"`software`\" pulumi-lang-dotnet=\"`Software`\" pulumi-lang-go=\"`software`\" pulumi-lang-python=\"`software`\" pulumi-lang-yaml=\"`software`\" pulumi-lang-java=\"`software`\"\u003e`software`\u003c/span\u003e.\n"
+                    },
+                    "purpose": {
+                        "type": "string",
+                        "description": "The purpose for which the key will be used. Possible values are: \u003cspan pulumi-lang-nodejs=\"`symmetricEncryptDecrypt`\" pulumi-lang-dotnet=\"`SymmetricEncryptDecrypt`\" pulumi-lang-go=\"`symmetricEncryptDecrypt`\" pulumi-lang-python=\"`symmetric_encrypt_decrypt`\" pulumi-lang-yaml=\"`symmetricEncryptDecrypt`\" pulumi-lang-java=\"`symmetricEncryptDecrypt`\"\u003e`symmetric_encrypt_decrypt`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`asymmetricEncryptDecrypt`\" pulumi-lang-dotnet=\"`AsymmetricEncryptDecrypt`\" pulumi-lang-go=\"`asymmetricEncryptDecrypt`\" pulumi-lang-python=\"`asymmetric_encrypt_decrypt`\" pulumi-lang-yaml=\"`asymmetricEncryptDecrypt`\" pulumi-lang-java=\"`asymmetricEncryptDecrypt`\"\u003e`asymmetric_encrypt_decrypt`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`messageAuthenticationCode`\" pulumi-lang-dotnet=\"`MessageAuthenticationCode`\" pulumi-lang-go=\"`messageAuthenticationCode`\" pulumi-lang-python=\"`message_authentication_code`\" pulumi-lang-yaml=\"`messageAuthenticationCode`\" pulumi-lang-java=\"`messageAuthenticationCode`\"\u003e`message_authentication_code`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`asymmetricSignVerify`\" pulumi-lang-dotnet=\"`AsymmetricSignVerify`\" pulumi-lang-go=\"`asymmetricSignVerify`\" pulumi-lang-python=\"`asymmetric_sign_verify`\" pulumi-lang-yaml=\"`asymmetricSignVerify`\" pulumi-lang-java=\"`asymmetricSignVerify`\"\u003e`asymmetric_sign_verify`\u003c/span\u003e.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "accessScope",
+                    "algorithm",
+                    "description",
+                    "displayName",
+                    "id",
+                    "importOnly",
+                    "keyId",
+                    "keyringId",
+                    "projectId",
+                    "protection",
+                    "purpose",
+                    "region"
+                ]
+            }
+        },
+        "stackit:index/getKmsKeyring:getKmsKeyring": {
+            "description": "KMS Keyring datasource schema. Uses the \u003cspan pulumi-lang-nodejs=\"`defaultRegion`\" pulumi-lang-dotnet=\"`DefaultRegion`\" pulumi-lang-go=\"`defaultRegion`\" pulumi-lang-python=\"`default_region`\" pulumi-lang-yaml=\"`defaultRegion`\" pulumi-lang-java=\"`defaultRegion`\"\u003e`default_region`\u003c/span\u003e specified in the provider configuration as a fallback in case no \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e is defined on datasource level.\n\n## Example Usage\n\n```terraform\ndata \"stackit_kms_keyring\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  keyring_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getKmsKeyring.\n",
+                "properties": {
+                    "keyringId": {
+                        "type": "string",
+                        "description": "An auto generated unique id which identifies the keyring.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID to which the keyring is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "keyringId",
+                    "projectId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getKmsKeyring.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "A user chosen description to distinguish multiple keyrings.\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The display name to distinguish multiple keyrings.\n"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "keyringId": {
+                        "type": "string",
+                        "description": "An auto generated unique id which identifies the keyring.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID to which the keyring is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "description",
+                    "displayName",
+                    "id",
+                    "keyringId",
+                    "projectId",
+                    "region"
+                ]
+            }
+        },
+        "stackit:index/getKmsWrappingKey:getKmsWrappingKey": {
+            "description": "KMS wrapping key datasource schema.\n\n## Example Usage\n\n```terraform\ndata \"stackit_kms_wrapping_key\" \"example\" {\n  project_id      = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  keyring_id      = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  wrapping_key_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getKmsWrappingKey.\n",
+                "properties": {
+                    "keyringId": {
+                        "type": "string",
+                        "description": "The ID of the associated keyring\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID to which the keyring is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    },
+                    "wrappingKeyId": {
+                        "type": "string",
+                        "description": "The ID of the wrapping key\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "keyringId",
+                    "projectId",
+                    "wrappingKeyId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getKmsWrappingKey.\n",
+                "properties": {
+                    "accessScope": {
+                        "type": "string",
+                        "description": "The access scope of the key. Default is `PUBLIC`. Possible values are: `PUBLIC`, `SNA`.\n"
+                    },
+                    "algorithm": {
+                        "type": "string",
+                        "description": "The wrapping algorithm used to wrap the key to import. Possible values are: \u003cspan pulumi-lang-nodejs=\"`rsa2048OaepSha256`\" pulumi-lang-dotnet=\"`Rsa2048OaepSha256`\" pulumi-lang-go=\"`rsa2048OaepSha256`\" pulumi-lang-python=\"`rsa_2048_oaep_sha256`\" pulumi-lang-yaml=\"`rsa2048OaepSha256`\" pulumi-lang-java=\"`rsa2048OaepSha256`\"\u003e`rsa_2048_oaep_sha256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa3072OaepSha256`\" pulumi-lang-dotnet=\"`Rsa3072OaepSha256`\" pulumi-lang-go=\"`rsa3072OaepSha256`\" pulumi-lang-python=\"`rsa_3072_oaep_sha256`\" pulumi-lang-yaml=\"`rsa3072OaepSha256`\" pulumi-lang-java=\"`rsa3072OaepSha256`\"\u003e`rsa_3072_oaep_sha256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa4096OaepSha256`\" pulumi-lang-dotnet=\"`Rsa4096OaepSha256`\" pulumi-lang-go=\"`rsa4096OaepSha256`\" pulumi-lang-python=\"`rsa_4096_oaep_sha256`\" pulumi-lang-yaml=\"`rsa4096OaepSha256`\" pulumi-lang-java=\"`rsa4096OaepSha256`\"\u003e`rsa_4096_oaep_sha256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa4096OaepSha512`\" pulumi-lang-dotnet=\"`Rsa4096OaepSha512`\" pulumi-lang-go=\"`rsa4096OaepSha512`\" pulumi-lang-python=\"`rsa_4096_oaep_sha512`\" pulumi-lang-yaml=\"`rsa4096OaepSha512`\" pulumi-lang-java=\"`rsa4096OaepSha512`\"\u003e`rsa_4096_oaep_sha512`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa2048OaepSha256Aes256KeyWrap`\" pulumi-lang-dotnet=\"`Rsa2048OaepSha256Aes256KeyWrap`\" pulumi-lang-go=\"`rsa2048OaepSha256Aes256KeyWrap`\" pulumi-lang-python=\"`rsa_2048_oaep_sha256_aes_256_key_wrap`\" pulumi-lang-yaml=\"`rsa2048OaepSha256Aes256KeyWrap`\" pulumi-lang-java=\"`rsa2048OaepSha256Aes256KeyWrap`\"\u003e`rsa_2048_oaep_sha256_aes_256_key_wrap`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa3072OaepSha256Aes256KeyWrap`\" pulumi-lang-dotnet=\"`Rsa3072OaepSha256Aes256KeyWrap`\" pulumi-lang-go=\"`rsa3072OaepSha256Aes256KeyWrap`\" pulumi-lang-python=\"`rsa_3072_oaep_sha256_aes_256_key_wrap`\" pulumi-lang-yaml=\"`rsa3072OaepSha256Aes256KeyWrap`\" pulumi-lang-java=\"`rsa3072OaepSha256Aes256KeyWrap`\"\u003e`rsa_3072_oaep_sha256_aes_256_key_wrap`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa4096OaepSha256Aes256KeyWrap`\" pulumi-lang-dotnet=\"`Rsa4096OaepSha256Aes256KeyWrap`\" pulumi-lang-go=\"`rsa4096OaepSha256Aes256KeyWrap`\" pulumi-lang-python=\"`rsa_4096_oaep_sha256_aes_256_key_wrap`\" pulumi-lang-yaml=\"`rsa4096OaepSha256Aes256KeyWrap`\" pulumi-lang-java=\"`rsa4096OaepSha256Aes256KeyWrap`\"\u003e`rsa_4096_oaep_sha256_aes_256_key_wrap`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`rsa4096OaepSha512Aes256KeyWrap`\" pulumi-lang-dotnet=\"`Rsa4096OaepSha512Aes256KeyWrap`\" pulumi-lang-go=\"`rsa4096OaepSha512Aes256KeyWrap`\" pulumi-lang-python=\"`rsa_4096_oaep_sha512_aes_256_key_wrap`\" pulumi-lang-yaml=\"`rsa4096OaepSha512Aes256KeyWrap`\" pulumi-lang-java=\"`rsa4096OaepSha512Aes256KeyWrap`\"\u003e`rsa_4096_oaep_sha512_aes_256_key_wrap`\u003c/span\u003e.\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The date and time the creation of the wrapping key was triggered.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "A user chosen description to distinguish multiple wrapping keys.\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The display name to distinguish multiple wrapping keys.\n"
+                    },
+                    "expiresAt": {
+                        "type": "string",
+                        "description": "The date and time the wrapping key will expire.\n"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "keyringId": {
+                        "type": "string",
+                        "description": "The ID of the associated keyring\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID to which the keyring is associated.\n"
+                    },
+                    "protection": {
+                        "type": "string",
+                        "description": "The underlying system that is responsible for protecting the key material. Possible values are: \u003cspan pulumi-lang-nodejs=\"`software`\" pulumi-lang-dotnet=\"`Software`\" pulumi-lang-go=\"`software`\" pulumi-lang-python=\"`software`\" pulumi-lang-yaml=\"`software`\" pulumi-lang-java=\"`software`\"\u003e`software`\u003c/span\u003e.\n"
+                    },
+                    "publicKey": {
+                        "type": "string",
+                        "description": "The public key of the wrapping key.\n"
+                    },
+                    "purpose": {
+                        "type": "string",
+                        "description": "The purpose for which the key will be used. Possible values are: \u003cspan pulumi-lang-nodejs=\"`wrapSymmetricKey`\" pulumi-lang-dotnet=\"`WrapSymmetricKey`\" pulumi-lang-go=\"`wrapSymmetricKey`\" pulumi-lang-python=\"`wrap_symmetric_key`\" pulumi-lang-yaml=\"`wrapSymmetricKey`\" pulumi-lang-java=\"`wrapSymmetricKey`\"\u003e`wrap_symmetric_key`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`wrapAsymmetricKey`\" pulumi-lang-dotnet=\"`WrapAsymmetricKey`\" pulumi-lang-go=\"`wrapAsymmetricKey`\" pulumi-lang-python=\"`wrap_asymmetric_key`\" pulumi-lang-yaml=\"`wrapAsymmetricKey`\" pulumi-lang-java=\"`wrapAsymmetricKey`\"\u003e`wrap_asymmetric_key`\u003c/span\u003e.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    },
+                    "wrappingKeyId": {
+                        "type": "string",
+                        "description": "The ID of the wrapping key\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "accessScope",
+                    "algorithm",
+                    "createdAt",
+                    "description",
+                    "displayName",
+                    "expiresAt",
+                    "id",
+                    "keyringId",
+                    "projectId",
+                    "protection",
+                    "publicKey",
+                    "purpose",
+                    "region",
+                    "wrappingKeyId"
+                ]
+            }
+        },
         "stackit:index/getLoadbalancer:getLoadbalancer": {
             "description": "Load Balancer data source schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\ndata \"stackit_loadbalancer\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-load-balancer\"\n}\n```\n",
             "inputs": {
@@ -15695,7 +16507,7 @@
                     },
                     "type": {
                         "type": "string",
-                        "description": "Type of network interface. Some of the possible values are: Supported values are: \u003cspan pulumi-lang-nodejs=\"`server`\" pulumi-lang-dotnet=\"`Server`\" pulumi-lang-go=\"`server`\" pulumi-lang-python=\"`server`\" pulumi-lang-yaml=\"`server`\" pulumi-lang-java=\"`server`\"\u003e`server`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`metadata`\" pulumi-lang-dotnet=\"`Metadata`\" pulumi-lang-go=\"`metadata`\" pulumi-lang-python=\"`metadata`\" pulumi-lang-yaml=\"`metadata`\" pulumi-lang-java=\"`metadata`\"\u003e`metadata`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`gateway`\" pulumi-lang-dotnet=\"`Gateway`\" pulumi-lang-go=\"`gateway`\" pulumi-lang-python=\"`gateway`\" pulumi-lang-yaml=\"`gateway`\" pulumi-lang-java=\"`gateway`\"\u003e`gateway`\u003c/span\u003e.\n"
+                        "description": "Type of network interface. Some of the possible values are: Possible values are: \u003cspan pulumi-lang-nodejs=\"`server`\" pulumi-lang-dotnet=\"`Server`\" pulumi-lang-go=\"`server`\" pulumi-lang-python=\"`server`\" pulumi-lang-yaml=\"`server`\" pulumi-lang-java=\"`server`\"\u003e`server`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`metadata`\" pulumi-lang-dotnet=\"`Metadata`\" pulumi-lang-go=\"`metadata`\" pulumi-lang-python=\"`metadata`\" pulumi-lang-yaml=\"`metadata`\" pulumi-lang-java=\"`metadata`\"\u003e`metadata`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`gateway`\" pulumi-lang-dotnet=\"`Gateway`\" pulumi-lang-go=\"`gateway`\" pulumi-lang-python=\"`gateway`\" pulumi-lang-yaml=\"`gateway`\" pulumi-lang-java=\"`gateway`\"\u003e`gateway`\u003c/span\u003e.\n"
                     }
                 },
                 "type": "object",
@@ -16050,6 +16862,10 @@
                         "type": "string",
                         "description": "Specifies URL for pushing logs.\n"
                     },
+                    "logsRetentionDays": {
+                        "type": "integer",
+                        "description": "Specifies for how many days the logs are kept. Default is set to \u003cspan pulumi-lang-nodejs=\"`7`\" pulumi-lang-dotnet=\"`7`\" pulumi-lang-go=\"`7`\" pulumi-lang-python=\"`7`\" pulumi-lang-yaml=\"`7`\" pulumi-lang-java=\"`7`\"\u003e`7`\u003c/span\u003e.\n"
+                    },
                     "logsUrl": {
                         "type": "string",
                         "description": "Specifies Logs URL.\n"
@@ -16104,6 +16920,10 @@
                         "type": "string",
                         "description": "Specifies Targets URL.\n"
                     },
+                    "tracesRetentionDays": {
+                        "type": "integer",
+                        "description": "Specifies for how many days the traces are kept. Default is set to \u003cspan pulumi-lang-nodejs=\"`7`\" pulumi-lang-dotnet=\"`7`\" pulumi-lang-go=\"`7`\" pulumi-lang-python=\"`7`\" pulumi-lang-yaml=\"`7`\" pulumi-lang-java=\"`7`\"\u003e`7`\u003c/span\u003e.\n"
+                    },
                     "zipkinSpansUrl": {
                         "type": "string"
                     }
@@ -16124,6 +16944,7 @@
                     "jaegerTracesUrl",
                     "jaegerUiUrl",
                     "logsPushUrl",
+                    "logsRetentionDays",
                     "logsUrl",
                     "metricsPushUrl",
                     "metricsRetentionDays",
@@ -16137,6 +16958,7 @@
                     "planName",
                     "projectId",
                     "targetsUrl",
+                    "tracesRetentionDays",
                     "zipkinSpansUrl"
                 ]
             }
@@ -17168,7 +17990,7 @@
             }
         },
         "stackit:index/getResourcemanagerFolder:getResourcemanagerFolder": {
-            "description": "Resource Manager folder data source schema. To identify the folder, you need to provide the container_id.\n\n\u003e This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\ndata \"stackit_resourcemanager_folder\" \"example\" {\n  container_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "description": "Resource Manager folder data source schema. To identify the folder, you need to provide the container_id.\n\n## Example Usage\n\n```terraform\ndata \"stackit_resourcemanager_folder\" \"example\" {\n  container_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getResourcemanagerFolder.\n",
                 "properties": {
@@ -18084,7 +18906,7 @@
                     },
                     "direction": {
                         "type": "string",
-                        "description": "The direction of the traffic which the rule should match. Some of the possible values are: Supported values are: \u003cspan pulumi-lang-nodejs=\"`ingress`\" pulumi-lang-dotnet=\"`Ingress`\" pulumi-lang-go=\"`ingress`\" pulumi-lang-python=\"`ingress`\" pulumi-lang-yaml=\"`ingress`\" pulumi-lang-java=\"`ingress`\"\u003e`ingress`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`egress`\" pulumi-lang-dotnet=\"`Egress`\" pulumi-lang-go=\"`egress`\" pulumi-lang-python=\"`egress`\" pulumi-lang-yaml=\"`egress`\" pulumi-lang-java=\"`egress`\"\u003e`egress`\u003c/span\u003e.\n"
+                        "description": "The direction of the traffic which the rule should match. Some of the possible values are: Possible values are: \u003cspan pulumi-lang-nodejs=\"`ingress`\" pulumi-lang-dotnet=\"`Ingress`\" pulumi-lang-go=\"`ingress`\" pulumi-lang-python=\"`ingress`\" pulumi-lang-yaml=\"`ingress`\" pulumi-lang-java=\"`ingress`\"\u003e`ingress`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`egress`\" pulumi-lang-dotnet=\"`Egress`\" pulumi-lang-go=\"`egress`\" pulumi-lang-python=\"`egress`\" pulumi-lang-yaml=\"`egress`\" pulumi-lang-java=\"`egress`\"\u003e`egress`\u003c/span\u003e.\n"
                     },
                     "etherType": {
                         "type": "string",
