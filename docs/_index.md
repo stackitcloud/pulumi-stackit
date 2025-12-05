@@ -1,3 +1,9 @@
+---
+title: stackit
+meta_desc: Learn how to use Pulumi's STACKIT provider to manage STACKIT resources.
+layout: package
+---
+
 <div align="center">
 <br>
 <img src=".github/images/stackit-logo.svg" alt="STACKIT logo" width="50%"/>
@@ -65,9 +71,26 @@ To use from .NET, install using `dotnet add package`:
 dotnet add package Pulumi.stackit
 ```
 
-## Getting started
+## Example
 
-A good starting point is the collection of examples in the [Examples](./examples/) folder.
+{{< chooser language "typescript" >}}
+
+{{% choosable language typescript %}}
+
+```typescript
+import * as pulumi from "@pulumi/pulumi";
+import * as stackit from "@stackitcloud/pulumi-stackit";
+
+const exampleWithName = new stackit.Network("example_with_name", {
+    projectId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",                          // Replace with your actual project ID
+    name: "example-with-name",
+});
+```
+
+{{% /choosable %}}
+{{< /chooser >}}
+
+For more examples, please have a look at the [Examples](./examples/).
 
 A detailed authentication guide, information on how to use beta and experimental resources, and available configuration options can be found under [Installation Configuration](./docs/installation-configuration.md).
 

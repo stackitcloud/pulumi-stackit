@@ -40,7 +40,7 @@ jobs:
         uses: ./.github/actions/pulumitools
       - name: Build sdks
         run: make generate_sdks
-      - name: Lint
+      - name: Lint provider
         run: make lint_provider
       - name: Execute tests
         run: make test

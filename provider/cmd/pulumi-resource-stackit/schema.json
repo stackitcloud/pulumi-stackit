@@ -11,6 +11,7 @@
     "license": "Apache-2.0",
     "attribution": "This Pulumi package is based on the [`stackit` Terraform Provider](https://github.com/stackitcloud/terraform-provider-stackit).",
     "repository": "https://github.com/stackitcloud/pulumi-stackit",
+    "logoUrl": "https://raw.githubusercontent.com/stackitcloud/pulumi-stackit/main/.github/images/stackit-logo.svg",
     "pluginDownloadURL": "github://api.github.com/stackitcloud/pulumi-stackit",
     "publisher": "stackitcloud",
     "meta": {
