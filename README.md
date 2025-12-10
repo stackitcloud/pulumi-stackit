@@ -25,7 +25,10 @@ Apache 2.0
 
 ## Installing
 
-This package is available for several languages/platforms:
+> [!NOTE]
+> Currently those packages are not available via the mentioned packages managers but can be installed locally by using the generated sdks directly.
+> Keep in mind that this is in ALPHA state and only the Resource Manager and IaaS service is supported.
+> E.g. in order to create and install the TypeScript SDK you can use the following [guide](./examples/ts/README.md).
 
 ### Node.js (JavaScript/TypeScript)
 
@@ -39,30 +42,6 @@ or `yarn`:
 
 ```bash
 yarn add @stackitcloud/pulumi-stackit
-```
-
-### Python
-
-To use from Python, install using `pip`:
-
-```bash
-pip install pulumi_stackit
-```
-
-### Go
-
-To use from Go, use `go get` to grab the latest version of the library:
-
-```bash
-go get github.com/stackitcloud/pulumi-stackit/sdk
-```
-
-### .NET
-
-To use from .NET, install using `dotnet add package`:
-
-```bash
-dotnet add package Pulumi.stackit
 ```
 
 ## Getting started
