@@ -22,14 +22,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v6.0.1
-    # TODO: remove when this repo is made public
-    - name: Configure Git for Private Modules
-      run: |
-        git config --global url."https://oauth2:${{ secrets.PR_TOKEN }}@github.com".insteadOf "https://github.com"
-        # Sets GOPRIVATE and GONOSUMDB in order to use the git authetnication for go mod.
-        echo "GOPRIVATE=github.com/${{ github.repository }}/*,github.com/stackitcloud/*" >> $GITHUB_ENV
-        echo "GONOSUMDB=github.com/${{ github.repository }}/*,github.com/stackitcloud/*" >> $GITHUB_ENV
-    # TODO: remove end
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
     - name: Install Go Tools
