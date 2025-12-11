@@ -16,8 +16,7 @@ env:
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   PROVIDER: stackit
   PULUMI_GO_DEP_ROOT: ${{ github.workspace }}/..
-  # TODO: change to true if ready to release
-  PUBLISH_NPM: false
+  PUBLISH_NPM: true
   #NUGET_PUBLISH_KEY: ${{ secrets.NUGET_PUBLISH_KEY }}
   #NUGET_FEED_URL: https://api.nuget.org/v3/index.json
   #PULUMI_LOCAL_NUGET: ${{ github.workspace }}/nuget
@@ -98,9 +97,7 @@ jobs:
         uses: JS-DevTools/npm-publish@7f8fe47b3bea1be0c3aec2b717c5ec1f3e03410b # tag=v4.1.1
         with:
           access: "public"
-          # old way, we want to use Trusted publishers
-          # token: ${{ env.NPM_TOKEN }}
-          package: ${{github.workspace}}/sdk/nodejs/bin/package.json
+          package: ${{github.workspace}}/sdk/nodejs/bin
           provenance: true
       - if: ${{ matrix.language == 'dotnet' && env.PUBLISH_NUGET == 'true' }}
         name: publish nuget package
