@@ -18,12 +18,14 @@ The version of the Pulumi provider is the same as the one for the Terraform prov
 > Consider informing / syncing with the team before creating a new release.
 
 1. Check out latest main branch on your machine
-2. Create the following git tags:
+2. Update the project tools:
+    - `make project-tools`
+3. Create the following git tags:
     - `VERSION="vX.X.X"; git tag "$VERSION" && git tag "provider/pkg/version/$VERSION" && git tag "provider/shim/$VERSION"`
-3. Push the git tag: `git push origin --tags`
-4. The [release pipeline](https://github.com/stackitcloud/pulumi-stackit/actions/workflows/release.yaml) will build the release and publish it on GitHub
-5. Ensure the release was created properly using the 
+4. Push the git tag: `git push origin --tags`
+5. The [release pipeline](https://github.com/stackitcloud/pulumi-stackit/actions/workflows/release.yaml) will build the release and publish it on GitHub
+6. Ensure the release was created properly using the 
     - [GitHub releases page](https://github.com/stackitcloud/pulumi-stackit/releases)
     - [Pulumi registry](https://www.pulumi.com/registry/packages)
-6. Ensure the packages where properly published (e.g. to npm)
+7. Ensure the packages where properly published (e.g. to npm)
     - [npm](https://www.npmjs.com/)
