@@ -114,6 +114,6 @@ jobs:
           - dotnet
           - go
         nodeversion:
-          - 20.x
+          - 25.2.1
         pythonversion:
           - "3.9"
