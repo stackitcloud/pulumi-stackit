@@ -8,7 +8,7 @@ inputs:
   node-version:
     description: "node version to install"
     required: false
-    default: 20.x
+    default: 25.2.1
   python-version:
     description: "python version to install"
     required: false
