@@ -1,11 +1,12 @@
 {
   "scripts": {
     "postinstall": "find tests/ts -maxdepth 2 -mindepth 2 -type d -not -path './.*' | xargs npm install",
-    "test": "mocha --require ts-node/register \"tests/ts/**/test.ts\" --ignore '**/node_modules/**'"
+    "test": "find tests/ts -maxdepth 2 -mindepth 2 -type d -not -path './.*' -print0 | xargs -0 -I {} bash -c 'cd {} && echo \"Running tests in {}...\" && npm test'"
   },
   "devDependencies": {
-    "mocha": "^10.0.0",
-    "ts-node": "^10.0.0",
+    "@types/mocha": "^10.0.10",
+    "mocha": "^11.7.5",
+    "ts-node": "^10.9.2",
     "typescript": "^5.0.0"
   },
   "dependencies": {
