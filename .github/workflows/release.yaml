@@ -94,11 +94,8 @@ jobs:
           password: ${{ env.PYPI_PASSWORD }}
           packages_dir: ${{github.workspace}}/sdk/python/bin/dist
       - if: ${{ matrix.language == 'nodejs' && env.PUBLISH_NPM == 'true' }}
-        uses: JS-DevTools/npm-publish@7f8fe47b3bea1be0c3aec2b717c5ec1f3e03410b # tag=v4.1.1
-        with:
-          access: "public"
-          package: ${{github.workspace}}/sdk/nodejs/bin
-          provenance: true
+        run: |
+          npm publish ${{github.workspace}}/sdk/nodejs/bin --access public
       - if: ${{ matrix.language == 'dotnet' && env.PUBLISH_NUGET == 'true' }}
         name: publish nuget package
         run: |
