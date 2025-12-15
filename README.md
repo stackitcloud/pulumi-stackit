@@ -26,7 +26,7 @@ Apache 2.0
 ## Installing
 
 > [!NOTE]
-> Currently only the npm package is available via the mentioned packages managers but the other ones can be installed locally by using the generated sdks directly.
+> Currently only the npm package is available via the mentioned packages managers but the other ones can be installed locally by using the generated SDKs directly.
 > Keep in mind that this is in ALPHA state and only the Resource Manager and IaaS service for TypeScript is supported.
 > E.g. in order to create and install the TypeScript SDK you can use the following [guide](./examples/ts/README.md).
 
