@@ -28,4 +28,4 @@ The version of the Pulumi provider is the same as the one for the Terraform prov
     - [GitHub releases page](https://github.com/stackitcloud/pulumi-stackit/releases)
     - [Pulumi registry](https://www.pulumi.com/registry/packages)
 7. Ensure the packages where properly published (e.g. to npm)
-    - [npm](https://www.npmjs.com/)
+    - [npm](https://www.npmjs.com/package/@stackitcloud/pulumi-stackit)
