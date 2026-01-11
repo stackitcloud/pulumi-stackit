@@ -42,7 +42,7 @@ jobs:
         with:
           go-version: ${{ matrix.goversion }}
       - uses: sigstore/cosign-installer@faadad0cce49287aee09b3a48701e75088a2c6ad # v4.0.0
-      - uses: anchore/sbom-action/download-syft@a930d0ac434e3182448fe678398ba5713717112a # v0.21.0
+      - uses: anchore/sbom-action/download-syft@0b82b0b1a22399a1c542d4d656f70cd903571b5c # v0.21.1
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@9c156ee8a17a598857849441385a2041ef570552 # tag=v6.3.0
         with:
