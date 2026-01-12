@@ -610,6 +610,63 @@ export interface GetNetworkAreaNetworkRange {
     prefix: string;
 }
 
+export interface GetNetworkAreaRegionIpv4 {
+    /**
+     * List of DNS Servers/Nameservers.
+     */
+    defaultNameservers: string[];
+    /**
+     * The default prefix length for networks in the network area.
+     */
+    defaultPrefixLength: number;
+    /**
+     * The maximal prefix length for networks in the network area.
+     */
+    maxPrefixLength: number;
+    /**
+     * The minimal prefix length for networks in the network area.
+     */
+    minPrefixLength: number;
+    /**
+     * List of Network ranges.
+     */
+    networkRanges: outputs.GetNetworkAreaRegionIpv4NetworkRange[];
+    /**
+     * IPv4 Classless Inter-Domain Routing (CIDR).
+     */
+    transferNetwork: string;
+}
+
+export interface GetNetworkAreaRegionIpv4NetworkRange {
+    networkRangeId: string;
+    /**
+     * Classless Inter-Domain Routing (CIDR).
+     */
+    prefix: string;
+}
+
+export interface GetNetworkAreaRouteDestination {
+    /**
+     * CIDRV type. Possible values are: `cidrv4`, `cidrv6`.
+     */
+    type: string;
+    /**
+     * An CIDR string.
+     */
+    value: string;
+}
+
+export interface GetNetworkAreaRouteNextHop {
+    /**
+     * Type of the next hop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`.
+     */
+    type: string;
+    /**
+     * Either IPv4 or IPv6 (not set for blackhole and internet).
+     */
+    value: string;
+}
+
 export interface GetObservabilityAlertgroupRule {
     /**
      * The name of the alert rule. Is the identifier and must be unique in the group.
@@ -1323,6 +1380,60 @@ export interface GetServerUpdateSchedulesItem {
     updateScheduleId: number;
 }
 
+export interface GetSfsExportPolicyRule {
+    /**
+     * Description of the Rule
+     */
+    description?: string;
+    /**
+     * IP access control list; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
+     */
+    ipAcls: string[];
+    /**
+     * Order of the rule within a Share Export Policy. The order is used so that when a client IP matches multiple rules, the first rule is applied
+     */
+    order: number;
+    /**
+     * Flag to indicate if client IPs matching this rule can only mount the share in read only mode
+     */
+    readOnly: boolean;
+    /**
+     * Flag to honor set UUID
+     */
+    setUuid: boolean;
+    /**
+     * Flag to indicate if client IPs matching this rule have root access on the Share
+     */
+    superUser: boolean;
+}
+
+export interface GetSfsResourcePoolSnapshotSnapshot {
+    /**
+     * (optional) A comment to add more information about a snapshot
+     */
+    comment: string;
+    /**
+     * creation date of the snapshot
+     */
+    createdAt: string;
+    /**
+     * Represents the user-visible data size at the time of the snapshot (e.g. what’s in the snapshot)
+     */
+    logicalSizeGigabytes: number;
+    /**
+     * ID of the Resource Pool of the Snapshot
+     */
+    resourcePoolId: string;
+    /**
+     * Reflects the actual storage footprint in the backend at snapshot time (e.g. how much storage from the Resource Pool does it use)
+     */
+    sizeGigabytes: number;
+    /**
+     * Name of the Resource Pool Snapshot
+     */
+    snapshotName: string;
+}
+
 export interface GetSkeClusterExtensions {
     /**
      * Cluster access control configuration
@@ -1479,11 +1590,11 @@ export interface GetSkeClusterNodePool {
      */
     osVersion: string;
     /**
-     * The minimum OS image version, this field is always nil. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current OS image version being used for the node pool, use the read-only `osVersionUsed` field.
+     * The minimum OS image version, this field is always nil. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/). To get the current OS image version being used for the node pool, use the read-only `osVersionUsed` field.
      */
     osVersionMin: string;
     /**
-     * Full OS image version used. For example, if 3815.2 was set in `osVersionMin`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+     * Full OS image version used. For example, if 3815.2 was set in `osVersionMin`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
      */
     osVersionUsed: string;
     /**
@@ -1914,11 +2025,73 @@ export interface MongodbflexInstanceStorage {
 }
 
 export interface NetworkAreaNetworkRange {
+    /**
+     * @deprecated Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `stackit.NetworkAreaRegion` resource instead.
+     */
+    networkRangeId: string;
+    /**
+     * Classless Inter-Domain Routing (CIDR).
+     *
+     * @deprecated Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `stackit.NetworkAreaRegion` resource instead.
+     */
+    prefix: string;
+}
+
+export interface NetworkAreaRegionIpv4 {
+    /**
+     * List of DNS Servers/Nameservers.
+     */
+    defaultNameservers?: string[];
+    /**
+     * The default prefix length for networks in the network area.
+     */
+    defaultPrefixLength: number;
+    /**
+     * The maximal prefix length for networks in the network area.
+     */
+    maxPrefixLength: number;
+    /**
+     * The minimal prefix length for networks in the network area.
+     */
+    minPrefixLength: number;
+    /**
+     * List of Network ranges.
+     */
+    networkRanges: outputs.NetworkAreaRegionIpv4NetworkRange[];
+    /**
+     * IPv4 Classless Inter-Domain Routing (CIDR).
+     */
+    transferNetwork: string;
+}
+
+export interface NetworkAreaRegionIpv4NetworkRange {
     networkRangeId: string;
     /**
      * Classless Inter-Domain Routing (CIDR).
      */
     prefix: string;
+}
+
+export interface NetworkAreaRouteDestination {
+    /**
+     * CIDRV type. Possible values are: `cidrv4`, `cidrv6`. Only `cidrv4` is supported currently.
+     */
+    type: string;
+    /**
+     * An CIDR string.
+     */
+    value: string;
+}
+
+export interface NetworkAreaRouteNextHop {
+    /**
+     * Type of the next hop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Only `ipv4` supported currently.
+     */
+    type: string;
+    /**
+     * Either IPv4 or IPv6 (not set for blackhole and internet). Only IPv4 supported currently.
+     */
+    value?: string;
 }
 
 export interface ObservabilityAlertgroupRule {
@@ -1963,11 +2136,11 @@ export interface ObservabilityInstanceAlertConfigGlobal {
     /**
      * The API key for OpsGenie.
      */
-    opsgenieApiKey?: string;
+    opsgenieApiKey: string;
     /**
      * The host to send OpsGenie API requests to. Must be a valid URL
      */
-    opsgenieApiUrl?: string;
+    opsgenieApiUrl: string;
     /**
      * The default value used by alertmanager if the alert does not include EndsAt. After this time passes, it can declare the alert as resolved if it has not been updated. This has no impact on alerts from Prometheus, as they always include EndsAt.
      */
@@ -1975,15 +2148,15 @@ export interface ObservabilityInstanceAlertConfigGlobal {
     /**
      * SMTP authentication information. Must be a valid email address
      */
-    smtpAuthIdentity?: string;
+    smtpAuthIdentity: string;
     /**
      * SMTP Auth using LOGIN and PLAIN.
      */
-    smtpAuthPassword?: string;
+    smtpAuthPassword: string;
     /**
      * SMTP Auth using CRAM-MD5, LOGIN and PLAIN. If empty, Alertmanager doesn't authenticate to the SMTP server.
      */
-    smtpAuthUsername?: string;
+    smtpAuthUsername: string;
     /**
      * The default SMTP From header field. Must be a valid email address
      */
@@ -1991,7 +2164,7 @@ export interface ObservabilityInstanceAlertConfigGlobal {
     /**
      * The default SMTP smarthost used for sending emails, including port number in format `host:port` (eg. `smtp.example.com:587`). Port number usually is 25, or 587 for SMTP over TLS (sometimes referred to as STARTTLS).
      */
-    smtpSmartHost?: string;
+    smtpSmartHost: string;
 }
 
 export interface ObservabilityInstanceAlertConfigReceiver {
@@ -2033,7 +2206,7 @@ export interface ObservabilityInstanceAlertConfigReceiverEmailConfig {
     /**
      * Whether to notify about resolved alerts.
      */
-    sendResolved?: boolean;
+    sendResolved: boolean;
     /**
      * The SMTP host through which emails are sent.
      */
@@ -2060,7 +2233,7 @@ export interface ObservabilityInstanceAlertConfigReceiverOpsgenieConfig {
     /**
      * Whether to notify about resolved alerts.
      */
-    sendResolved?: boolean;
+    sendResolved: boolean;
     /**
      * Comma separated list of tags attached to the notifications.
      */
@@ -2079,7 +2252,7 @@ export interface ObservabilityInstanceAlertConfigReceiverWebhooksConfig {
     /**
      * Whether to notify about resolved alerts.
      */
-    sendResolved?: boolean;
+    sendResolved: boolean;
     /**
      * The endpoint to send HTTP POST requests to. Must be a valid URL
      */
@@ -2513,6 +2686,33 @@ export interface ServerBootVolume {
     sourceType: string;
 }
 
+export interface SfsExportPolicyRule {
+    /**
+     * Description of the Rule
+     */
+    description?: string;
+    /**
+     * IP access control list; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
+     */
+    ipAcls: string[];
+    /**
+     * Order of the rule within a Share Export Policy. The order is used so that when a client IP matches multiple rules, the first rule is applied
+     */
+    order: number;
+    /**
+     * Flag to indicate if client IPs matching this rule can only mount the share in read only mode
+     */
+    readOnly: boolean;
+    /**
+     * Flag to honor set UUID
+     */
+    setUuid: boolean;
+    /**
+     * Flag to indicate if client IPs matching this rule have root access on the Share
+     */
+    superUser: boolean;
+}
+
 export interface SkeClusterExtensions {
     /**
      * Cluster access control configuration.
@@ -2595,11 +2795,11 @@ export interface SkeClusterHibernation {
 
 export interface SkeClusterMaintenance {
     /**
-     * Flag to enable/disable auto-updates of the Kubernetes version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+     * Flag to enable/disable auto-updates of the Kubernetes version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
      */
     enableKubernetesVersionUpdates: boolean;
     /**
-     * Flag to enable/disable auto-updates of the OS image version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+     * Flag to enable/disable auto-updates of the OS image version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
      */
     enableMachineImageVersionUpdates: boolean;
     /**
@@ -2671,11 +2871,11 @@ export interface SkeClusterNodePool {
      */
     osVersion?: string;
     /**
-     * The minimum OS image version. This field will be used to set the minimum OS image version on creation/update of the cluster. If unset, the latest supported OS image version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current OS image version being used for the node pool, use the read-only `osVersionUsed` field.
+     * The minimum OS image version. This field will be used to set the minimum OS image version on creation/update of the cluster. If unset, the latest supported OS image version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/). To get the current OS image version being used for the node pool, use the read-only `osVersionUsed` field.
      */
     osVersionMin?: string;
     /**
-     * Full OS image version used. For example, if 3815.2 was set in `osVersionMin`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+     * Full OS image version used. For example, if 3815.2 was set in `osVersionMin`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
      */
     osVersionUsed: string;
     /**

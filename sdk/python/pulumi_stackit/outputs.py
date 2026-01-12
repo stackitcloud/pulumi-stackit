@@ -42,6 +42,10 @@ __all__ = [
     'MongodbflexInstanceOptions',
     'MongodbflexInstanceStorage',
     'NetworkAreaNetworkRange',
+    'NetworkAreaRegionIpv4',
+    'NetworkAreaRegionIpv4NetworkRange',
+    'NetworkAreaRouteDestination',
+    'NetworkAreaRouteNextHop',
     'ObservabilityAlertgroupRule',
     'ObservabilityInstanceAlertConfig',
     'ObservabilityInstanceAlertConfigGlobal',
@@ -67,6 +71,7 @@ __all__ = [
     'SecurityGroupRuleProtocol',
     'ServerBackupScheduleBackupProperties',
     'ServerBootVolume',
+    'SfsExportPolicyRule',
     'SkeClusterExtensions',
     'SkeClusterExtensionsAcl',
     'SkeClusterExtensionsArgus',
@@ -110,6 +115,10 @@ __all__ = [
     'GetMongodbflexInstanceOptionsResult',
     'GetMongodbflexInstanceStorageResult',
     'GetNetworkAreaNetworkRangeResult',
+    'GetNetworkAreaRegionIpv4Result',
+    'GetNetworkAreaRegionIpv4NetworkRangeResult',
+    'GetNetworkAreaRouteDestinationResult',
+    'GetNetworkAreaRouteNextHopResult',
     'GetObservabilityAlertgroupRuleResult',
     'GetObservabilityInstanceAlertConfigResult',
     'GetObservabilityInstanceAlertConfigGlobalResult',
@@ -143,6 +152,8 @@ __all__ = [
     'GetServerBackupSchedulesItemBackupPropertiesResult',
     'GetServerBootVolumeResult',
     'GetServerUpdateSchedulesItemResult',
+    'GetSfsExportPolicyRuleResult',
+    'GetSfsResourcePoolSnapshotSnapshotResult',
     'GetSkeClusterExtensionsResult',
     'GetSkeClusterExtensionsAclResult',
     'GetSkeClusterExtensionsArgusResult',
@@ -1966,6 +1977,155 @@ class NetworkAreaNetworkRange(dict):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
+    def prefix(self) -> _builtins.str:
+        """
+        Classless Inter-Domain Routing (CIDR).
+        """
+        return pulumi.get(self, "prefix")
+
+    @_builtins.property
+    @pulumi.getter(name="networkRangeId")
+    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
+    def network_range_id(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "network_range_id")
+
+
+@pulumi.output_type
+class NetworkAreaRegionIpv4(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkRanges":
+            suggest = "network_ranges"
+        elif key == "transferNetwork":
+            suggest = "transfer_network"
+        elif key == "defaultNameservers":
+            suggest = "default_nameservers"
+        elif key == "defaultPrefixLength":
+            suggest = "default_prefix_length"
+        elif key == "maxPrefixLength":
+            suggest = "max_prefix_length"
+        elif key == "minPrefixLength":
+            suggest = "min_prefix_length"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkAreaRegionIpv4. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkAreaRegionIpv4.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkAreaRegionIpv4.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 network_ranges: Sequence['outputs.NetworkAreaRegionIpv4NetworkRange'],
+                 transfer_network: _builtins.str,
+                 default_nameservers: Optional[Sequence[_builtins.str]] = None,
+                 default_prefix_length: Optional[_builtins.int] = None,
+                 max_prefix_length: Optional[_builtins.int] = None,
+                 min_prefix_length: Optional[_builtins.int] = None):
+        """
+        :param Sequence['NetworkAreaRegionIpv4NetworkRangeArgs'] network_ranges: List of Network ranges.
+        :param _builtins.str transfer_network: IPv4 Classless Inter-Domain Routing (CIDR).
+        :param Sequence[_builtins.str] default_nameservers: List of DNS Servers/Nameservers.
+        :param _builtins.int default_prefix_length: The default prefix length for networks in the network area.
+        :param _builtins.int max_prefix_length: The maximal prefix length for networks in the network area.
+        :param _builtins.int min_prefix_length: The minimal prefix length for networks in the network area.
+        """
+        pulumi.set(__self__, "network_ranges", network_ranges)
+        pulumi.set(__self__, "transfer_network", transfer_network)
+        if default_nameservers is not None:
+            pulumi.set(__self__, "default_nameservers", default_nameservers)
+        if default_prefix_length is not None:
+            pulumi.set(__self__, "default_prefix_length", default_prefix_length)
+        if max_prefix_length is not None:
+            pulumi.set(__self__, "max_prefix_length", max_prefix_length)
+        if min_prefix_length is not None:
+            pulumi.set(__self__, "min_prefix_length", min_prefix_length)
+
+    @_builtins.property
+    @pulumi.getter(name="networkRanges")
+    def network_ranges(self) -> Sequence['outputs.NetworkAreaRegionIpv4NetworkRange']:
+        """
+        List of Network ranges.
+        """
+        return pulumi.get(self, "network_ranges")
+
+    @_builtins.property
+    @pulumi.getter(name="transferNetwork")
+    def transfer_network(self) -> _builtins.str:
+        """
+        IPv4 Classless Inter-Domain Routing (CIDR).
+        """
+        return pulumi.get(self, "transfer_network")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultNameservers")
+    def default_nameservers(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of DNS Servers/Nameservers.
+        """
+        return pulumi.get(self, "default_nameservers")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultPrefixLength")
+    def default_prefix_length(self) -> Optional[_builtins.int]:
+        """
+        The default prefix length for networks in the network area.
+        """
+        return pulumi.get(self, "default_prefix_length")
+
+    @_builtins.property
+    @pulumi.getter(name="maxPrefixLength")
+    def max_prefix_length(self) -> Optional[_builtins.int]:
+        """
+        The maximal prefix length for networks in the network area.
+        """
+        return pulumi.get(self, "max_prefix_length")
+
+    @_builtins.property
+    @pulumi.getter(name="minPrefixLength")
+    def min_prefix_length(self) -> Optional[_builtins.int]:
+        """
+        The minimal prefix length for networks in the network area.
+        """
+        return pulumi.get(self, "min_prefix_length")
+
+
+@pulumi.output_type
+class NetworkAreaRegionIpv4NetworkRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkRangeId":
+            suggest = "network_range_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkAreaRegionIpv4NetworkRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkAreaRegionIpv4NetworkRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkAreaRegionIpv4NetworkRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 prefix: _builtins.str,
+                 network_range_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str prefix: Classless Inter-Domain Routing (CIDR).
+        """
+        pulumi.set(__self__, "prefix", prefix)
+        if network_range_id is not None:
+            pulumi.set(__self__, "network_range_id", network_range_id)
+
+    @_builtins.property
+    @pulumi.getter
     def prefix(self) -> _builtins.str:
         """
         Classless Inter-Domain Routing (CIDR).
@@ -1976,6 +2136,65 @@ class NetworkAreaNetworkRange(dict):
     @pulumi.getter(name="networkRangeId")
     def network_range_id(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "network_range_id")
+
+
+@pulumi.output_type
+class NetworkAreaRouteDestination(dict):
+    def __init__(__self__, *,
+                 type: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str type: CIDRV type. Possible values are: `cidrv4`, `cidrv6`. Only `cidrv4` is supported currently.
+        :param _builtins.str value: An CIDR string.
+        """
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        CIDRV type. Possible values are: `cidrv4`, `cidrv6`. Only `cidrv4` is supported currently.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        An CIDR string.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class NetworkAreaRouteNextHop(dict):
+    def __init__(__self__, *,
+                 type: _builtins.str,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str type: Type of the next hop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Only `ipv4` supported currently.
+        :param _builtins.str value: Either IPv4 or IPv6 (not set for blackhole and internet). Only IPv4 supported currently.
+        """
+        pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the next hop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Only `ipv4` supported currently.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        """
+        Either IPv4 or IPv6 (not set for blackhole and internet). Only IPv4 supported currently.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -4126,6 +4345,106 @@ class ServerBootVolume(dict):
 
 
 @pulumi.output_type
+class SfsExportPolicyRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipAcls":
+            suggest = "ip_acls"
+        elif key == "readOnly":
+            suggest = "read_only"
+        elif key == "setUuid":
+            suggest = "set_uuid"
+        elif key == "superUser":
+            suggest = "super_user"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SfsExportPolicyRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SfsExportPolicyRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SfsExportPolicyRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ip_acls: Sequence[_builtins.str],
+                 order: _builtins.int,
+                 description: Optional[_builtins.str] = None,
+                 read_only: Optional[_builtins.bool] = None,
+                 set_uuid: Optional[_builtins.bool] = None,
+                 super_user: Optional[_builtins.bool] = None):
+        """
+        :param Sequence[_builtins.str] ip_acls: IP access control list; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
+        :param _builtins.int order: Order of the rule within a Share Export Policy. The order is used so that when a client IP matches multiple rules, the first rule is applied
+        :param _builtins.str description: Description of the Rule
+        :param _builtins.bool read_only: Flag to indicate if client IPs matching this rule can only mount the share in read only mode
+        :param _builtins.bool set_uuid: Flag to honor set UUID
+        :param _builtins.bool super_user: Flag to indicate if client IPs matching this rule have root access on the Share
+        """
+        pulumi.set(__self__, "ip_acls", ip_acls)
+        pulumi.set(__self__, "order", order)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if set_uuid is not None:
+            pulumi.set(__self__, "set_uuid", set_uuid)
+        if super_user is not None:
+            pulumi.set(__self__, "super_user", super_user)
+
+    @_builtins.property
+    @pulumi.getter(name="ipAcls")
+    def ip_acls(self) -> Sequence[_builtins.str]:
+        """
+        IP access control list; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
+        """
+        return pulumi.get(self, "ip_acls")
+
+    @_builtins.property
+    @pulumi.getter
+    def order(self) -> _builtins.int:
+        """
+        Order of the rule within a Share Export Policy. The order is used so that when a client IP matches multiple rules, the first rule is applied
+        """
+        return pulumi.get(self, "order")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Description of the Rule
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[_builtins.bool]:
+        """
+        Flag to indicate if client IPs matching this rule can only mount the share in read only mode
+        """
+        return pulumi.get(self, "read_only")
+
+    @_builtins.property
+    @pulumi.getter(name="setUuid")
+    def set_uuid(self) -> Optional[_builtins.bool]:
+        """
+        Flag to honor set UUID
+        """
+        return pulumi.get(self, "set_uuid")
+
+    @_builtins.property
+    @pulumi.getter(name="superUser")
+    def super_user(self) -> Optional[_builtins.bool]:
+        """
+        Flag to indicate if client IPs matching this rule have root access on the Share
+        """
+        return pulumi.get(self, "super_user")
+
+
+@pulumi.output_type
 class SkeClusterExtensions(dict):
     def __init__(__self__, *,
                  acl: Optional['outputs.SkeClusterExtensionsAcl'] = None,
@@ -4421,8 +4740,8 @@ class SkeClusterMaintenance(dict):
         """
         :param _builtins.str end: Time for maintenance window end. E.g. `01:23:45Z`, `05:00:00+02:00`.
         :param _builtins.str start: Time for maintenance window start. E.g. `01:23:45Z`, `05:00:00+02:00`.
-        :param _builtins.bool enable_kubernetes_version_updates: Flag to enable/disable auto-updates of the Kubernetes version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
-        :param _builtins.bool enable_machine_image_version_updates: Flag to enable/disable auto-updates of the OS image version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+        :param _builtins.bool enable_kubernetes_version_updates: Flag to enable/disable auto-updates of the Kubernetes version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
+        :param _builtins.bool enable_machine_image_version_updates: Flag to enable/disable auto-updates of the OS image version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
         """
         pulumi.set(__self__, "end", end)
         pulumi.set(__self__, "start", start)
@@ -4451,7 +4770,7 @@ class SkeClusterMaintenance(dict):
     @pulumi.getter(name="enableKubernetesVersionUpdates")
     def enable_kubernetes_version_updates(self) -> Optional[_builtins.bool]:
         """
-        Flag to enable/disable auto-updates of the Kubernetes version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+        Flag to enable/disable auto-updates of the Kubernetes version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
         """
         return pulumi.get(self, "enable_kubernetes_version_updates")
 
@@ -4459,7 +4778,7 @@ class SkeClusterMaintenance(dict):
     @pulumi.getter(name="enableMachineImageVersionUpdates")
     def enable_machine_image_version_updates(self) -> Optional[_builtins.bool]:
         """
-        Flag to enable/disable auto-updates of the OS image version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+        Flag to enable/disable auto-updates of the OS image version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
         """
         return pulumi.get(self, "enable_machine_image_version_updates")
 
@@ -4553,8 +4872,8 @@ class SkeClusterNodePool(dict):
         :param _builtins.int max_unavailable: Maximum number of VMs that that can be unavailable during an update. If set (larger than 0), then it must be at least the amount of zones configured for the nodepool. The `max_surge` and `max_unavailable` fields cannot both be unset at the same time.
         :param _builtins.str os_name: The name of the OS image. Defaults to `flatcar`.
         :param _builtins.str os_version: This field is deprecated, use `os_version_min` to configure the version and `os_version_used` to get the currently used version instead.
-        :param _builtins.str os_version_min: The minimum OS image version. This field will be used to set the minimum OS image version on creation/update of the cluster. If unset, the latest supported OS image version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current OS image version being used for the node pool, use the read-only `os_version_used` field.
-        :param _builtins.str os_version_used: Full OS image version used. For example, if 3815.2 was set in `os_version_min`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+        :param _builtins.str os_version_min: The minimum OS image version. This field will be used to set the minimum OS image version on creation/update of the cluster. If unset, the latest supported OS image version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/). To get the current OS image version being used for the node pool, use the read-only `os_version_used` field.
+        :param _builtins.str os_version_used: Full OS image version used. For example, if 3815.2 was set in `os_version_min`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
         :param Sequence['SkeClusterNodePoolTaintArgs'] taints: Specifies a taint list as defined below.
         :param _builtins.int volume_size: The volume size in GB. Defaults to `20`
         :param _builtins.str volume_type: Specifies the volume type. Defaults to `storage_premium_perf1`.
@@ -4690,7 +5009,7 @@ class SkeClusterNodePool(dict):
     @pulumi.getter(name="osVersionMin")
     def os_version_min(self) -> Optional[_builtins.str]:
         """
-        The minimum OS image version. This field will be used to set the minimum OS image version on creation/update of the cluster. If unset, the latest supported OS image version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current OS image version being used for the node pool, use the read-only `os_version_used` field.
+        The minimum OS image version. This field will be used to set the minimum OS image version on creation/update of the cluster. If unset, the latest supported OS image version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/). To get the current OS image version being used for the node pool, use the read-only `os_version_used` field.
         """
         return pulumi.get(self, "os_version_min")
 
@@ -4698,7 +5017,7 @@ class SkeClusterNodePool(dict):
     @pulumi.getter(name="osVersionUsed")
     def os_version_used(self) -> Optional[_builtins.str]:
         """
-        Full OS image version used. For example, if 3815.2 was set in `os_version_min`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+        Full OS image version used. For example, if 3815.2 was set in `os_version_min`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
         """
         return pulumi.get(self, "os_version_used")
 
@@ -6420,6 +6739,162 @@ class GetNetworkAreaNetworkRangeResult(dict):
     @pulumi.getter
     def prefix(self) -> _builtins.str:
         return pulumi.get(self, "prefix")
+
+
+@pulumi.output_type
+class GetNetworkAreaRegionIpv4Result(dict):
+    def __init__(__self__, *,
+                 default_nameservers: Sequence[_builtins.str],
+                 default_prefix_length: _builtins.int,
+                 max_prefix_length: _builtins.int,
+                 min_prefix_length: _builtins.int,
+                 network_ranges: Sequence['outputs.GetNetworkAreaRegionIpv4NetworkRangeResult'],
+                 transfer_network: _builtins.str):
+        """
+        :param Sequence[_builtins.str] default_nameservers: List of DNS Servers/Nameservers.
+        :param _builtins.int default_prefix_length: The default prefix length for networks in the network area.
+        :param _builtins.int max_prefix_length: The maximal prefix length for networks in the network area.
+        :param _builtins.int min_prefix_length: The minimal prefix length for networks in the network area.
+        :param Sequence['GetNetworkAreaRegionIpv4NetworkRangeArgs'] network_ranges: List of Network ranges.
+        :param _builtins.str transfer_network: IPv4 Classless Inter-Domain Routing (CIDR).
+        """
+        pulumi.set(__self__, "default_nameservers", default_nameservers)
+        pulumi.set(__self__, "default_prefix_length", default_prefix_length)
+        pulumi.set(__self__, "max_prefix_length", max_prefix_length)
+        pulumi.set(__self__, "min_prefix_length", min_prefix_length)
+        pulumi.set(__self__, "network_ranges", network_ranges)
+        pulumi.set(__self__, "transfer_network", transfer_network)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultNameservers")
+    def default_nameservers(self) -> Sequence[_builtins.str]:
+        """
+        List of DNS Servers/Nameservers.
+        """
+        return pulumi.get(self, "default_nameservers")
+
+    @_builtins.property
+    @pulumi.getter(name="defaultPrefixLength")
+    def default_prefix_length(self) -> _builtins.int:
+        """
+        The default prefix length for networks in the network area.
+        """
+        return pulumi.get(self, "default_prefix_length")
+
+    @_builtins.property
+    @pulumi.getter(name="maxPrefixLength")
+    def max_prefix_length(self) -> _builtins.int:
+        """
+        The maximal prefix length for networks in the network area.
+        """
+        return pulumi.get(self, "max_prefix_length")
+
+    @_builtins.property
+    @pulumi.getter(name="minPrefixLength")
+    def min_prefix_length(self) -> _builtins.int:
+        """
+        The minimal prefix length for networks in the network area.
+        """
+        return pulumi.get(self, "min_prefix_length")
+
+    @_builtins.property
+    @pulumi.getter(name="networkRanges")
+    def network_ranges(self) -> Sequence['outputs.GetNetworkAreaRegionIpv4NetworkRangeResult']:
+        """
+        List of Network ranges.
+        """
+        return pulumi.get(self, "network_ranges")
+
+    @_builtins.property
+    @pulumi.getter(name="transferNetwork")
+    def transfer_network(self) -> _builtins.str:
+        """
+        IPv4 Classless Inter-Domain Routing (CIDR).
+        """
+        return pulumi.get(self, "transfer_network")
+
+
+@pulumi.output_type
+class GetNetworkAreaRegionIpv4NetworkRangeResult(dict):
+    def __init__(__self__, *,
+                 network_range_id: _builtins.str,
+                 prefix: _builtins.str):
+        """
+        :param _builtins.str prefix: Classless Inter-Domain Routing (CIDR).
+        """
+        pulumi.set(__self__, "network_range_id", network_range_id)
+        pulumi.set(__self__, "prefix", prefix)
+
+    @_builtins.property
+    @pulumi.getter(name="networkRangeId")
+    def network_range_id(self) -> _builtins.str:
+        return pulumi.get(self, "network_range_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> _builtins.str:
+        """
+        Classless Inter-Domain Routing (CIDR).
+        """
+        return pulumi.get(self, "prefix")
+
+
+@pulumi.output_type
+class GetNetworkAreaRouteDestinationResult(dict):
+    def __init__(__self__, *,
+                 type: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str type: CIDRV type. Possible values are: `cidrv4`, `cidrv6`.
+        :param _builtins.str value: An CIDR string.
+        """
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        CIDRV type. Possible values are: `cidrv4`, `cidrv6`.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        An CIDR string.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetNetworkAreaRouteNextHopResult(dict):
+    def __init__(__self__, *,
+                 type: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str type: Type of the next hop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`.
+        :param _builtins.str value: Either IPv4 or IPv6 (not set for blackhole and internet).
+        """
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of the next hop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Either IPv4 or IPv6 (not set for blackhole and internet).
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -8385,6 +8860,153 @@ class GetServerUpdateSchedulesItemResult(dict):
 
 
 @pulumi.output_type
+class GetSfsExportPolicyRuleResult(dict):
+    def __init__(__self__, *,
+                 ip_acls: Sequence[_builtins.str],
+                 order: _builtins.int,
+                 read_only: _builtins.bool,
+                 set_uuid: _builtins.bool,
+                 super_user: _builtins.bool,
+                 description: Optional[_builtins.str] = None):
+        """
+        :param Sequence[_builtins.str] ip_acls: IP access control list; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
+        :param _builtins.int order: Order of the rule within a Share Export Policy. The order is used so that when a client IP matches multiple rules, the first rule is applied
+        :param _builtins.bool read_only: Flag to indicate if client IPs matching this rule can only mount the share in read only mode
+        :param _builtins.bool set_uuid: Flag to honor set UUID
+        :param _builtins.bool super_user: Flag to indicate if client IPs matching this rule have root access on the Share
+        :param _builtins.str description: Description of the Rule
+        """
+        pulumi.set(__self__, "ip_acls", ip_acls)
+        pulumi.set(__self__, "order", order)
+        pulumi.set(__self__, "read_only", read_only)
+        pulumi.set(__self__, "set_uuid", set_uuid)
+        pulumi.set(__self__, "super_user", super_user)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter(name="ipAcls")
+    def ip_acls(self) -> Sequence[_builtins.str]:
+        """
+        IP access control list; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
+        """
+        return pulumi.get(self, "ip_acls")
+
+    @_builtins.property
+    @pulumi.getter
+    def order(self) -> _builtins.int:
+        """
+        Order of the rule within a Share Export Policy. The order is used so that when a client IP matches multiple rules, the first rule is applied
+        """
+        return pulumi.get(self, "order")
+
+    @_builtins.property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> _builtins.bool:
+        """
+        Flag to indicate if client IPs matching this rule can only mount the share in read only mode
+        """
+        return pulumi.get(self, "read_only")
+
+    @_builtins.property
+    @pulumi.getter(name="setUuid")
+    def set_uuid(self) -> _builtins.bool:
+        """
+        Flag to honor set UUID
+        """
+        return pulumi.get(self, "set_uuid")
+
+    @_builtins.property
+    @pulumi.getter(name="superUser")
+    def super_user(self) -> _builtins.bool:
+        """
+        Flag to indicate if client IPs matching this rule have root access on the Share
+        """
+        return pulumi.get(self, "super_user")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Description of the Rule
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class GetSfsResourcePoolSnapshotSnapshotResult(dict):
+    def __init__(__self__, *,
+                 comment: _builtins.str,
+                 created_at: _builtins.str,
+                 logical_size_gigabytes: _builtins.int,
+                 resource_pool_id: _builtins.str,
+                 size_gigabytes: _builtins.int,
+                 snapshot_name: _builtins.str):
+        """
+        :param _builtins.str comment: (optional) A comment to add more information about a snapshot
+        :param _builtins.str created_at: creation date of the snapshot
+        :param _builtins.int logical_size_gigabytes: Represents the user-visible data size at the time of the snapshot (e.g. what’s in the snapshot)
+        :param _builtins.str resource_pool_id: ID of the Resource Pool of the Snapshot
+        :param _builtins.int size_gigabytes: Reflects the actual storage footprint in the backend at snapshot time (e.g. how much storage from the Resource Pool does it use)
+        :param _builtins.str snapshot_name: Name of the Resource Pool Snapshot
+        """
+        pulumi.set(__self__, "comment", comment)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "logical_size_gigabytes", logical_size_gigabytes)
+        pulumi.set(__self__, "resource_pool_id", resource_pool_id)
+        pulumi.set(__self__, "size_gigabytes", size_gigabytes)
+        pulumi.set(__self__, "snapshot_name", snapshot_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> _builtins.str:
+        """
+        (optional) A comment to add more information about a snapshot
+        """
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        creation date of the snapshot
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="logicalSizeGigabytes")
+    def logical_size_gigabytes(self) -> _builtins.int:
+        """
+        Represents the user-visible data size at the time of the snapshot (e.g. what’s in the snapshot)
+        """
+        return pulumi.get(self, "logical_size_gigabytes")
+
+    @_builtins.property
+    @pulumi.getter(name="resourcePoolId")
+    def resource_pool_id(self) -> _builtins.str:
+        """
+        ID of the Resource Pool of the Snapshot
+        """
+        return pulumi.get(self, "resource_pool_id")
+
+    @_builtins.property
+    @pulumi.getter(name="sizeGigabytes")
+    def size_gigabytes(self) -> _builtins.int:
+        """
+        Reflects the actual storage footprint in the backend at snapshot time (e.g. how much storage from the Resource Pool does it use)
+        """
+        return pulumi.get(self, "size_gigabytes")
+
+    @_builtins.property
+    @pulumi.getter(name="snapshotName")
+    def snapshot_name(self) -> _builtins.str:
+        """
+        Name of the Resource Pool Snapshot
+        """
+        return pulumi.get(self, "snapshot_name")
+
+
+@pulumi.output_type
 class GetSkeClusterExtensionsResult(dict):
     def __init__(__self__, *,
                  acl: 'outputs.GetSkeClusterExtensionsAclResult',
@@ -8694,8 +9316,8 @@ class GetSkeClusterNodePoolResult(dict):
         :param _builtins.str name: Specifies the name of the node pool.
         :param _builtins.str os_name: The name of the OS image.
         :param _builtins.str os_version: The OS image version.
-        :param _builtins.str os_version_min: The minimum OS image version, this field is always nil. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current OS image version being used for the node pool, use the read-only `os_version_used` field.
-        :param _builtins.str os_version_used: Full OS image version used. For example, if 3815.2 was set in `os_version_min`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+        :param _builtins.str os_version_min: The minimum OS image version, this field is always nil. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/). To get the current OS image version being used for the node pool, use the read-only `os_version_used` field.
+        :param _builtins.str os_version_used: Full OS image version used. For example, if 3815.2 was set in `os_version_min`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
         :param Sequence['GetSkeClusterNodePoolTaintArgs'] taints: Specifies a taint list as defined below.
         :param _builtins.int volume_size: The volume size in GB.
         :param _builtins.str volume_type: Specifies the volume type.
@@ -8818,7 +9440,7 @@ class GetSkeClusterNodePoolResult(dict):
     @pulumi.getter(name="osVersionMin")
     def os_version_min(self) -> _builtins.str:
         """
-        The minimum OS image version, this field is always nil. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current OS image version being used for the node pool, use the read-only `os_version_used` field.
+        The minimum OS image version, this field is always nil. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/). To get the current OS image version being used for the node pool, use the read-only `os_version_used` field.
         """
         return pulumi.get(self, "os_version_min")
 
@@ -8826,7 +9448,7 @@ class GetSkeClusterNodePoolResult(dict):
     @pulumi.getter(name="osVersionUsed")
     def os_version_used(self) -> _builtins.str:
         """
-        Full OS image version used. For example, if 3815.2 was set in `os_version_min`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+        Full OS image version used. For example, if 3815.2 was set in `os_version_min`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
         """
         return pulumi.get(self, "os_version_used")
 

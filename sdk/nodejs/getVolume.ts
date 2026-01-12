@@ -15,6 +15,7 @@ export function getVolume(args: GetVolumeArgs, opts?: pulumi.InvokeOptions): Pro
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("stackit:index/getVolume:getVolume", {
         "projectId": args.projectId,
+        "region": args.region,
         "volumeId": args.volumeId,
     }, opts);
 }
@@ -27,6 +28,10 @@ export interface GetVolumeArgs {
      * STACKIT project ID to which the volume is associated.
      */
     projectId: string;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: string;
     /**
      * The volume ID.
      */
@@ -55,13 +60,17 @@ export interface GetVolumeResult {
      */
     readonly name: string;
     /**
-     * The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/stackit/en/service-plans-blockstorage-75137974.html#ServiceplansBlockStorage-CurrentlyavailableServicePlans%28performanceclasses%29)
+     * The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/products/storage/block-storage/basics/service-plans/#currently-available-service-plans-performance-classes)
      */
     readonly performanceClass: string;
     /**
      * STACKIT project ID to which the volume is associated.
      */
     readonly projectId: string;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    readonly region?: string;
     /**
      * The server ID of the server to which the volume is attached to.
      */
@@ -88,6 +97,7 @@ export function getVolumeOutput(args: GetVolumeOutputArgs, opts?: pulumi.InvokeO
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("stackit:index/getVolume:getVolume", {
         "projectId": args.projectId,
+        "region": args.region,
         "volumeId": args.volumeId,
     }, opts);
 }
@@ -100,6 +110,10 @@ export interface GetVolumeOutputArgs {
      * STACKIT project ID to which the volume is associated.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string>;
     /**
      * The volume ID.
      */

@@ -27,6 +27,7 @@ class VolumeArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  performance_class: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
                  size: Optional[pulumi.Input[_builtins.int]] = None,
                  source: Optional[pulumi.Input['VolumeSourceArgs']] = None):
         """
@@ -36,7 +37,8 @@ class VolumeArgs:
         :param pulumi.Input[_builtins.str] description: The description of the volume.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
         :param pulumi.Input[_builtins.str] name: The name of the volume.
-        :param pulumi.Input[_builtins.str] performance_class: The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/stackit/en/service-plans-blockstorage-75137974.html#ServiceplansBlockStorage-CurrentlyavailableServicePlans%28performanceclasses%29)
+        :param pulumi.Input[_builtins.str] performance_class: The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/products/storage/block-storage/basics/service-plans/#currently-available-service-plans-performance-classes)
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.int] size: The size of the volume in GB. It can only be updated to a larger value than the current size. Either `size` or `source` must be provided
         :param pulumi.Input['VolumeSourceArgs'] source: The source of the volume. It can be either a volume, an image, a snapshot or a backup. Either `size` or `source` must be provided
         """
@@ -50,6 +52,8 @@ class VolumeArgs:
             pulumi.set(__self__, "name", name)
         if performance_class is not None:
             pulumi.set(__self__, "performance_class", performance_class)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if size is not None:
             pulumi.set(__self__, "size", size)
         if source is not None:
@@ -119,13 +123,25 @@ class VolumeArgs:
     @pulumi.getter(name="performanceClass")
     def performance_class(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/stackit/en/service-plans-blockstorage-75137974.html#ServiceplansBlockStorage-CurrentlyavailableServicePlans%28performanceclasses%29)
+        The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/products/storage/block-storage/basics/service-plans/#currently-available-service-plans-performance-classes)
         """
         return pulumi.get(self, "performance_class")
 
     @performance_class.setter
     def performance_class(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "performance_class", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
@@ -161,6 +177,7 @@ class _VolumeState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  performance_class: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
                  server_id: Optional[pulumi.Input[_builtins.str]] = None,
                  size: Optional[pulumi.Input[_builtins.int]] = None,
                  source: Optional[pulumi.Input['VolumeSourceArgs']] = None,
@@ -171,8 +188,9 @@ class _VolumeState:
         :param pulumi.Input[_builtins.str] description: The description of the volume.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
         :param pulumi.Input[_builtins.str] name: The name of the volume.
-        :param pulumi.Input[_builtins.str] performance_class: The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/stackit/en/service-plans-blockstorage-75137974.html#ServiceplansBlockStorage-CurrentlyavailableServicePlans%28performanceclasses%29)
+        :param pulumi.Input[_builtins.str] performance_class: The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/products/storage/block-storage/basics/service-plans/#currently-available-service-plans-performance-classes)
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the volume is associated.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.str] server_id: The server ID of the server to which the volume is attached to.
         :param pulumi.Input[_builtins.int] size: The size of the volume in GB. It can only be updated to a larger value than the current size. Either `size` or `source` must be provided
         :param pulumi.Input['VolumeSourceArgs'] source: The source of the volume. It can be either a volume, an image, a snapshot or a backup. Either `size` or `source` must be provided
@@ -190,6 +208,8 @@ class _VolumeState:
             pulumi.set(__self__, "performance_class", performance_class)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if server_id is not None:
             pulumi.set(__self__, "server_id", server_id)
         if size is not None:
@@ -251,7 +271,7 @@ class _VolumeState:
     @pulumi.getter(name="performanceClass")
     def performance_class(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/stackit/en/service-plans-blockstorage-75137974.html#ServiceplansBlockStorage-CurrentlyavailableServicePlans%28performanceclasses%29)
+        The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/products/storage/block-storage/basics/service-plans/#currently-available-service-plans-performance-classes)
         """
         return pulumi.get(self, "performance_class")
 
@@ -270,6 +290,18 @@ class _VolumeState:
     @project_id.setter
     def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "project_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="serverId")
@@ -332,6 +364,7 @@ class Volume(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  performance_class: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
                  size: Optional[pulumi.Input[_builtins.int]] = None,
                  source: Optional[pulumi.Input[Union['VolumeSourceArgs', 'VolumeSourceArgsDict']]] = None,
                  __props__=None):
@@ -346,8 +379,9 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the volume.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
         :param pulumi.Input[_builtins.str] name: The name of the volume.
-        :param pulumi.Input[_builtins.str] performance_class: The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/stackit/en/service-plans-blockstorage-75137974.html#ServiceplansBlockStorage-CurrentlyavailableServicePlans%28performanceclasses%29)
+        :param pulumi.Input[_builtins.str] performance_class: The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/products/storage/block-storage/basics/service-plans/#currently-available-service-plans-performance-classes)
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the volume is associated.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.int] size: The size of the volume in GB. It can only be updated to a larger value than the current size. Either `size` or `source` must be provided
         :param pulumi.Input[Union['VolumeSourceArgs', 'VolumeSourceArgsDict']] source: The source of the volume. It can be either a volume, an image, a snapshot or a backup. Either `size` or `source` must be provided
         """
@@ -383,6 +417,7 @@ class Volume(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  performance_class: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
                  size: Optional[pulumi.Input[_builtins.int]] = None,
                  source: Optional[pulumi.Input[Union['VolumeSourceArgs', 'VolumeSourceArgsDict']]] = None,
                  __props__=None):
@@ -404,6 +439,7 @@ class Volume(pulumi.CustomResource):
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
+            __props__.__dict__["region"] = region
             __props__.__dict__["size"] = size
             __props__.__dict__["source"] = source
             __props__.__dict__["server_id"] = None
@@ -424,6 +460,7 @@ class Volume(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             performance_class: Optional[pulumi.Input[_builtins.str]] = None,
             project_id: Optional[pulumi.Input[_builtins.str]] = None,
+            region: Optional[pulumi.Input[_builtins.str]] = None,
             server_id: Optional[pulumi.Input[_builtins.str]] = None,
             size: Optional[pulumi.Input[_builtins.int]] = None,
             source: Optional[pulumi.Input[Union['VolumeSourceArgs', 'VolumeSourceArgsDict']]] = None,
@@ -439,8 +476,9 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The description of the volume.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
         :param pulumi.Input[_builtins.str] name: The name of the volume.
-        :param pulumi.Input[_builtins.str] performance_class: The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/stackit/en/service-plans-blockstorage-75137974.html#ServiceplansBlockStorage-CurrentlyavailableServicePlans%28performanceclasses%29)
+        :param pulumi.Input[_builtins.str] performance_class: The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/products/storage/block-storage/basics/service-plans/#currently-available-service-plans-performance-classes)
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the volume is associated.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.str] server_id: The server ID of the server to which the volume is attached to.
         :param pulumi.Input[_builtins.int] size: The size of the volume in GB. It can only be updated to a larger value than the current size. Either `size` or `source` must be provided
         :param pulumi.Input[Union['VolumeSourceArgs', 'VolumeSourceArgsDict']] source: The source of the volume. It can be either a volume, an image, a snapshot or a backup. Either `size` or `source` must be provided
@@ -456,6 +494,7 @@ class Volume(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["performance_class"] = performance_class
         __props__.__dict__["project_id"] = project_id
+        __props__.__dict__["region"] = region
         __props__.__dict__["server_id"] = server_id
         __props__.__dict__["size"] = size
         __props__.__dict__["source"] = source
@@ -498,7 +537,7 @@ class Volume(pulumi.CustomResource):
     @pulumi.getter(name="performanceClass")
     def performance_class(self) -> pulumi.Output[_builtins.str]:
         """
-        The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/stackit/en/service-plans-blockstorage-75137974.html#ServiceplansBlockStorage-CurrentlyavailableServicePlans%28performanceclasses%29)
+        The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/products/storage/block-storage/basics/service-plans/#currently-available-service-plans-performance-classes)
         """
         return pulumi.get(self, "performance_class")
 
@@ -509,6 +548,14 @@ class Volume(pulumi.CustomResource):
         STACKIT project ID to which the volume is associated.
         """
         return pulumi.get(self, "project_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[_builtins.str]:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="serverId")

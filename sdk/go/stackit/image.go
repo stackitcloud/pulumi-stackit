@@ -40,6 +40,8 @@ type Image struct {
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// Whether the image is protected.
 	Protected pulumi.BoolOutput `pulumi:"protected"`
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringOutput `pulumi:"region"`
 	// The scope of the image.
 	Scope pulumi.StringOutput `pulumi:"scope"`
 }
@@ -105,6 +107,8 @@ type imageState struct {
 	ProjectId *string `pulumi:"projectId"`
 	// Whether the image is protected.
 	Protected *bool `pulumi:"protected"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 	// The scope of the image.
 	Scope *string `pulumi:"scope"`
 }
@@ -132,6 +136,8 @@ type ImageState struct {
 	ProjectId pulumi.StringPtrInput
 	// Whether the image is protected.
 	Protected pulumi.BoolPtrInput
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput
 	// The scope of the image.
 	Scope pulumi.StringPtrInput
 }
@@ -157,6 +163,8 @@ type imageArgs struct {
 	Name *string `pulumi:"name"`
 	// STACKIT project ID to which the image is associated.
 	ProjectId string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a Image resource.
@@ -177,6 +185,8 @@ type ImageArgs struct {
 	Name pulumi.StringPtrInput
 	// STACKIT project ID to which the image is associated.
 	ProjectId pulumi.StringInput
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput
 }
 
 func (ImageArgs) ElementType() reflect.Type {
@@ -319,6 +329,11 @@ func (o ImageOutput) ProjectId() pulumi.StringOutput {
 // Whether the image is protected.
 func (o ImageOutput) Protected() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Image) pulumi.BoolOutput { return v.Protected }).(pulumi.BoolOutput)
+}
+
+// The resource region. If not defined, the provider region is used.
+func (o ImageOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *Image) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // The scope of the image.

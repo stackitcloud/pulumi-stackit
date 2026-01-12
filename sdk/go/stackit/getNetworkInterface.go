@@ -32,6 +32,8 @@ type LookupNetworkInterfaceArgs struct {
 	NetworkInterfaceId string `pulumi:"networkInterfaceId"`
 	// STACKIT project ID to which the network interface is associated.
 	ProjectId string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 }
 
 // A collection of values returned by getNetworkInterface.
@@ -55,6 +57,8 @@ type LookupNetworkInterfaceResult struct {
 	NetworkInterfaceId string `pulumi:"networkInterfaceId"`
 	// STACKIT project ID to which the network interface is associated.
 	ProjectId string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 	// The Network Interface Security. If set to false, then no security groups will apply to this network interface.
 	Security bool `pulumi:"security"`
 	// The list of security group UUIDs. If security is set to false, setting this field will lead to an error.
@@ -80,6 +84,8 @@ type LookupNetworkInterfaceOutputArgs struct {
 	NetworkInterfaceId pulumi.StringInput `pulumi:"networkInterfaceId"`
 	// STACKIT project ID to which the network interface is associated.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (LookupNetworkInterfaceOutputArgs) ElementType() reflect.Type {
@@ -148,6 +154,11 @@ func (o LookupNetworkInterfaceResultOutput) NetworkInterfaceId() pulumi.StringOu
 // STACKIT project ID to which the network interface is associated.
 func (o LookupNetworkInterfaceResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkInterfaceResult) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The resource region. If not defined, the provider region is used.
+func (o LookupNetworkInterfaceResultOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNetworkInterfaceResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
 // The Network Interface Security. If set to false, then no security groups will apply to this network interface.

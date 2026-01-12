@@ -72,6 +72,10 @@ export class SecurityGroupRule extends pulumi.CustomResource {
      */
     declare public readonly protocol: pulumi.Output<outputs.SecurityGroupRuleProtocol>;
     /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    declare public readonly region: pulumi.Output<string>;
+    /**
      * The remote security group which the rule should match.
      */
     declare public readonly remoteSecurityGroupId: pulumi.Output<string | undefined>;
@@ -105,6 +109,7 @@ export class SecurityGroupRule extends pulumi.CustomResource {
             resourceInputs["portRange"] = state?.portRange;
             resourceInputs["projectId"] = state?.projectId;
             resourceInputs["protocol"] = state?.protocol;
+            resourceInputs["region"] = state?.region;
             resourceInputs["remoteSecurityGroupId"] = state?.remoteSecurityGroupId;
             resourceInputs["securityGroupId"] = state?.securityGroupId;
             resourceInputs["securityGroupRuleId"] = state?.securityGroupRuleId;
@@ -127,6 +132,7 @@ export class SecurityGroupRule extends pulumi.CustomResource {
             resourceInputs["portRange"] = args?.portRange;
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["protocol"] = args?.protocol;
+            resourceInputs["region"] = args?.region;
             resourceInputs["remoteSecurityGroupId"] = args?.remoteSecurityGroupId;
             resourceInputs["securityGroupId"] = args?.securityGroupId;
             resourceInputs["securityGroupRuleId"] = undefined /*out*/;
@@ -172,6 +178,10 @@ export interface SecurityGroupRuleState {
      * The internet protocol which the rule should match.
      */
     protocol?: pulumi.Input<inputs.SecurityGroupRuleProtocol>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string>;
     /**
      * The remote security group which the rule should match.
      */
@@ -222,6 +232,10 @@ export interface SecurityGroupRuleArgs {
      * The internet protocol which the rule should match.
      */
     protocol?: pulumi.Input<inputs.SecurityGroupRuleProtocol>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string>;
     /**
      * The remote security group which the rule should match.
      */

@@ -217,6 +217,12 @@ namespace Pulumi.Stackit
         public Output<string?> ServiceEnablementCustomEndpoint { get; private set; } = null!;
 
         /// <summary>
+        /// Custom endpoint for the Stackit Filestorage API
+        /// </summary>
+        [Output("sfsCustomEndpoint")]
+        public Output<string?> SfsCustomEndpoint { get; private set; } = null!;
+
+        /// <summary>
         /// Custom endpoint for the Kubernetes Engine (SKE) service
         /// </summary>
         [Output("skeCustomEndpoint")]
@@ -484,6 +490,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("serviceEnablementCustomEndpoint")]
         public Input<string>? ServiceEnablementCustomEndpoint { get; set; }
+
+        /// <summary>
+        /// Custom endpoint for the Stackit Filestorage API
+        /// </summary>
+        [Input("sfsCustomEndpoint")]
+        public Input<string>? SfsCustomEndpoint { get; set; }
 
         /// <summary>
         /// Custom endpoint for the Kubernetes Engine (SKE) service

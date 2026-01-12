@@ -26,7 +26,7 @@ class GetSecurityGroupResult:
     """
     A collection of values returned by getSecurityGroup.
     """
-    def __init__(__self__, description=None, id=None, labels=None, name=None, project_id=None, security_group_id=None, stateful=None):
+    def __init__(__self__, description=None, id=None, labels=None, name=None, project_id=None, region=None, security_group_id=None, stateful=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -42,6 +42,9 @@ class GetSecurityGroupResult:
         if project_id and not isinstance(project_id, str):
             raise TypeError("Expected argument 'project_id' to be a str")
         pulumi.set(__self__, "project_id", project_id)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
         if security_group_id and not isinstance(security_group_id, str):
             raise TypeError("Expected argument 'security_group_id' to be a str")
         pulumi.set(__self__, "security_group_id", security_group_id)
@@ -87,6 +90,14 @@ class GetSecurityGroupResult:
         return pulumi.get(self, "project_id")
 
     @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> _builtins.str:
         """
@@ -114,11 +125,13 @@ class AwaitableGetSecurityGroupResult(GetSecurityGroupResult):
             labels=self.labels,
             name=self.name,
             project_id=self.project_id,
+            region=self.region,
             security_group_id=self.security_group_id,
             stateful=self.stateful)
 
 
 def get_security_group(project_id: Optional[_builtins.str] = None,
+                       region: Optional[_builtins.str] = None,
                        security_group_id: Optional[_builtins.str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecurityGroupResult:
     """
@@ -128,10 +141,12 @@ def get_security_group(project_id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str project_id: STACKIT project ID to which the security group is associated.
+    :param _builtins.str region: The resource region. If not defined, the provider region is used.
     :param _builtins.str security_group_id: The security group ID.
     """
     __args__ = dict()
     __args__['projectId'] = project_id
+    __args__['region'] = region
     __args__['securityGroupId'] = security_group_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('stackit:index/getSecurityGroup:getSecurityGroup', __args__, opts=opts, typ=GetSecurityGroupResult).value
@@ -142,9 +157,11 @@ def get_security_group(project_id: Optional[_builtins.str] = None,
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         project_id=pulumi.get(__ret__, 'project_id'),
+        region=pulumi.get(__ret__, 'region'),
         security_group_id=pulumi.get(__ret__, 'security_group_id'),
         stateful=pulumi.get(__ret__, 'stateful'))
 def get_security_group_output(project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                              region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecurityGroupResult]:
     """
@@ -154,10 +171,12 @@ def get_security_group_output(project_id: Optional[pulumi.Input[_builtins.str]] 
 
 
     :param _builtins.str project_id: STACKIT project ID to which the security group is associated.
+    :param _builtins.str region: The resource region. If not defined, the provider region is used.
     :param _builtins.str security_group_id: The security group ID.
     """
     __args__ = dict()
     __args__['projectId'] = project_id
+    __args__['region'] = region
     __args__['securityGroupId'] = security_group_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('stackit:index/getSecurityGroup:getSecurityGroup', __args__, opts=opts, typ=GetSecurityGroupResult)
@@ -167,5 +186,6 @@ def get_security_group_output(project_id: Optional[pulumi.Input[_builtins.str]] 
         labels=pulumi.get(__response__, 'labels'),
         name=pulumi.get(__response__, 'name'),
         project_id=pulumi.get(__response__, 'project_id'),
+        region=pulumi.get(__response__, 'region'),
         security_group_id=pulumi.get(__response__, 'security_group_id'),
         stateful=pulumi.get(__response__, 'stateful')))

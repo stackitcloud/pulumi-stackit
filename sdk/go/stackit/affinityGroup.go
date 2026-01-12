@@ -12,7 +12,7 @@ import (
 	"github.com/stackitcloud/pulumi-stackit/sdk/go/stackit/internal"
 )
 
-// Affinity Group schema. Must have a `region` specified in the provider configuration.
+// Affinity Group schema.
 //
 // ## Example Usage
 type AffinityGroup struct {
@@ -28,6 +28,8 @@ type AffinityGroup struct {
 	Policy pulumi.StringOutput `pulumi:"policy"`
 	// STACKIT Project ID to which the affinity group is associated.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringOutput `pulumi:"region"`
 }
 
 // NewAffinityGroup registers a new resource with the given unique name, arguments, and options.
@@ -76,6 +78,8 @@ type affinityGroupState struct {
 	Policy *string `pulumi:"policy"`
 	// STACKIT Project ID to which the affinity group is associated.
 	ProjectId *string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 }
 
 type AffinityGroupState struct {
@@ -89,6 +93,8 @@ type AffinityGroupState struct {
 	Policy pulumi.StringPtrInput
 	// STACKIT Project ID to which the affinity group is associated.
 	ProjectId pulumi.StringPtrInput
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput
 }
 
 func (AffinityGroupState) ElementType() reflect.Type {
@@ -102,6 +108,8 @@ type affinityGroupArgs struct {
 	Policy string `pulumi:"policy"`
 	// STACKIT Project ID to which the affinity group is associated.
 	ProjectId string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a AffinityGroup resource.
@@ -112,6 +120,8 @@ type AffinityGroupArgs struct {
 	Policy pulumi.StringInput
 	// STACKIT Project ID to which the affinity group is associated.
 	ProjectId pulumi.StringInput
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput
 }
 
 func (AffinityGroupArgs) ElementType() reflect.Type {
@@ -224,6 +234,11 @@ func (o AffinityGroupOutput) Policy() pulumi.StringOutput {
 // STACKIT Project ID to which the affinity group is associated.
 func (o AffinityGroupOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AffinityGroup) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The resource region. If not defined, the provider region is used.
+func (o AffinityGroupOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *AffinityGroup) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 type AffinityGroupArrayOutput struct{ *pulumi.OutputState }

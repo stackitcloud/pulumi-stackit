@@ -105,9 +105,13 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string ProjectId;
         /// <summary>
-        /// Specifies the state of the project.
+        /// Specifies the status of the project.
         /// </summary>
         public readonly string State;
+        /// <summary>
+        /// Specifies the status of the project.
+        /// </summary>
+        public readonly string Status;
         /// <summary>
         /// Date-time when the project was last updated.
         /// </summary>
@@ -127,6 +131,8 @@ namespace Pulumi.Stackit
 
             string state,
 
+            string status,
+
             string updatedAt)
         {
             AreaId = areaId;
@@ -135,6 +141,7 @@ namespace Pulumi.Stackit
             InternetAccess = internetAccess;
             ProjectId = projectId;
             State = state;
+            Status = status;
             UpdatedAt = updatedAt;
         }
     }

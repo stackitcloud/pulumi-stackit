@@ -157,6 +157,12 @@ namespace Pulumi.Stackit
         public string ProjectId { get; set; } = null!;
 
         /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public string? Region { get; set; }
+
+        /// <summary>
         /// If set to `True`, images are sorted in ascending lexicographical order by image name (such as `Ubuntu 18.04`, `Ubuntu 20.04`, `Ubuntu 22.04`) before selecting the first match. Defaults to `False` (descending such as `Ubuntu 22.04`, `Ubuntu 20.04`, `Ubuntu 18.04`).
         /// </summary>
         [Input("sortAscending")]
@@ -199,6 +205,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
+
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// If set to `True`, images are sorted in ascending lexicographical order by image name (such as `Ubuntu 18.04`, `Ubuntu 20.04`, `Ubuntu 22.04`) before selecting the first match. Defaults to `False` (descending such as `Ubuntu 22.04`, `Ubuntu 20.04`, `Ubuntu 18.04`).
@@ -266,6 +278,10 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly bool Protected;
         /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        public readonly string? Region;
+        /// <summary>
         /// The scope of the image.
         /// </summary>
         public readonly string Scope;
@@ -302,6 +318,8 @@ namespace Pulumi.Stackit
 
             bool @protected,
 
+            string? region,
+
             string scope,
 
             bool? sortAscending)
@@ -319,6 +337,7 @@ namespace Pulumi.Stackit
             NameRegex = nameRegex;
             ProjectId = projectId;
             Protected = @protected;
+            Region = region;
             Scope = scope;
             SortAscending = sortAscending;
         }

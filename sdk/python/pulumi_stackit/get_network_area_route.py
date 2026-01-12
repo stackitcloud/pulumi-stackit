@@ -13,6 +13,7 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
 
 __all__ = [
     'GetNetworkAreaRouteResult',
@@ -26,7 +27,10 @@ class GetNetworkAreaRouteResult:
     """
     A collection of values returned by getNetworkAreaRoute.
     """
-    def __init__(__self__, id=None, labels=None, network_area_id=None, network_area_route_id=None, next_hop=None, organization_id=None, prefix=None):
+    def __init__(__self__, destination=None, id=None, labels=None, network_area_id=None, network_area_route_id=None, next_hop=None, organization_id=None, region=None):
+        if destination and not isinstance(destination, dict):
+            raise TypeError("Expected argument 'destination' to be a dict")
+        pulumi.set(__self__, "destination", destination)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -39,15 +43,23 @@ class GetNetworkAreaRouteResult:
         if network_area_route_id and not isinstance(network_area_route_id, str):
             raise TypeError("Expected argument 'network_area_route_id' to be a str")
         pulumi.set(__self__, "network_area_route_id", network_area_route_id)
-        if next_hop and not isinstance(next_hop, str):
-            raise TypeError("Expected argument 'next_hop' to be a str")
+        if next_hop and not isinstance(next_hop, dict):
+            raise TypeError("Expected argument 'next_hop' to be a dict")
         pulumi.set(__self__, "next_hop", next_hop)
         if organization_id and not isinstance(organization_id, str):
             raise TypeError("Expected argument 'organization_id' to be a str")
         pulumi.set(__self__, "organization_id", organization_id)
-        if prefix and not isinstance(prefix, str):
-            raise TypeError("Expected argument 'prefix' to be a str")
-        pulumi.set(__self__, "prefix", prefix)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def destination(self) -> 'outputs.GetNetworkAreaRouteDestinationResult':
+        """
+        Destination of the route.
+        """
+        return pulumi.get(self, "destination")
 
     @_builtins.property
     @pulumi.getter
@@ -80,9 +92,9 @@ class GetNetworkAreaRouteResult:
 
     @_builtins.property
     @pulumi.getter(name="nextHop")
-    def next_hop(self) -> _builtins.str:
+    def next_hop(self) -> 'outputs.GetNetworkAreaRouteNextHopResult':
         """
-        The IP address of the routing system, that will route the prefix configured. Should be a valid IPv4 address.
+        Next hop destination.
         """
         return pulumi.get(self, "next_hop")
 
@@ -96,11 +108,11 @@ class GetNetworkAreaRouteResult:
 
     @_builtins.property
     @pulumi.getter
-    def prefix(self) -> _builtins.str:
+    def region(self) -> Optional[_builtins.str]:
         """
-        The network, that is reachable though the Next Hop. Should use CIDR notation.
+        The resource region. If not defined, the provider region is used.
         """
-        return pulumi.get(self, "prefix")
+        return pulumi.get(self, "region")
 
 
 class AwaitableGetNetworkAreaRouteResult(GetNetworkAreaRouteResult):
@@ -109,18 +121,20 @@ class AwaitableGetNetworkAreaRouteResult(GetNetworkAreaRouteResult):
         if False:
             yield self
         return GetNetworkAreaRouteResult(
+            destination=self.destination,
             id=self.id,
             labels=self.labels,
             network_area_id=self.network_area_id,
             network_area_route_id=self.network_area_route_id,
             next_hop=self.next_hop,
             organization_id=self.organization_id,
-            prefix=self.prefix)
+            region=self.region)
 
 
 def get_network_area_route(network_area_id: Optional[_builtins.str] = None,
                            network_area_route_id: Optional[_builtins.str] = None,
                            organization_id: Optional[_builtins.str] = None,
+                           region: Optional[_builtins.str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkAreaRouteResult:
     """
     Network area route data resource schema. Must have a `region` specified in the provider configuration.
@@ -131,25 +145,29 @@ def get_network_area_route(network_area_id: Optional[_builtins.str] = None,
     :param _builtins.str network_area_id: The network area ID to which the network area route is associated.
     :param _builtins.str network_area_route_id: The network area route ID.
     :param _builtins.str organization_id: STACKIT organization ID to which the network area is associated.
+    :param _builtins.str region: The resource region. If not defined, the provider region is used.
     """
     __args__ = dict()
     __args__['networkAreaId'] = network_area_id
     __args__['networkAreaRouteId'] = network_area_route_id
     __args__['organizationId'] = organization_id
+    __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('stackit:index/getNetworkAreaRoute:getNetworkAreaRoute', __args__, opts=opts, typ=GetNetworkAreaRouteResult).value
 
     return AwaitableGetNetworkAreaRouteResult(
+        destination=pulumi.get(__ret__, 'destination'),
         id=pulumi.get(__ret__, 'id'),
         labels=pulumi.get(__ret__, 'labels'),
         network_area_id=pulumi.get(__ret__, 'network_area_id'),
         network_area_route_id=pulumi.get(__ret__, 'network_area_route_id'),
         next_hop=pulumi.get(__ret__, 'next_hop'),
         organization_id=pulumi.get(__ret__, 'organization_id'),
-        prefix=pulumi.get(__ret__, 'prefix'))
+        region=pulumi.get(__ret__, 'region'))
 def get_network_area_route_output(network_area_id: Optional[pulumi.Input[_builtins.str]] = None,
                                   network_area_route_id: Optional[pulumi.Input[_builtins.str]] = None,
                                   organization_id: Optional[pulumi.Input[_builtins.str]] = None,
+                                  region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkAreaRouteResult]:
     """
     Network area route data resource schema. Must have a `region` specified in the provider configuration.
@@ -160,18 +178,21 @@ def get_network_area_route_output(network_area_id: Optional[pulumi.Input[_builti
     :param _builtins.str network_area_id: The network area ID to which the network area route is associated.
     :param _builtins.str network_area_route_id: The network area route ID.
     :param _builtins.str organization_id: STACKIT organization ID to which the network area is associated.
+    :param _builtins.str region: The resource region. If not defined, the provider region is used.
     """
     __args__ = dict()
     __args__['networkAreaId'] = network_area_id
     __args__['networkAreaRouteId'] = network_area_route_id
     __args__['organizationId'] = organization_id
+    __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('stackit:index/getNetworkAreaRoute:getNetworkAreaRoute', __args__, opts=opts, typ=GetNetworkAreaRouteResult)
     return __ret__.apply(lambda __response__: GetNetworkAreaRouteResult(
+        destination=pulumi.get(__response__, 'destination'),
         id=pulumi.get(__response__, 'id'),
         labels=pulumi.get(__response__, 'labels'),
         network_area_id=pulumi.get(__response__, 'network_area_id'),
         network_area_route_id=pulumi.get(__response__, 'network_area_route_id'),
         next_hop=pulumi.get(__response__, 'next_hop'),
         organization_id=pulumi.get(__response__, 'organization_id'),
-        prefix=pulumi.get(__response__, 'prefix')))
+        region=pulumi.get(__response__, 'region')))

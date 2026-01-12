@@ -36,6 +36,7 @@ from .get_mongodbflex_instance import *
 from .get_mongodbflex_user import *
 from .get_network import *
 from .get_network_area import *
+from .get_network_area_region import *
 from .get_network_area_route import *
 from .get_network_interface import *
 from .get_objectstorage_bucket import *
@@ -75,6 +76,10 @@ from .get_server_backup_schedules import *
 from .get_server_update_schedule import *
 from .get_server_update_schedules import *
 from .get_service_account import *
+from .get_sfs_export_policy import *
+from .get_sfs_resource_pool import *
+from .get_sfs_resource_pool_snapshot import *
+from .get_sfs_share import *
 from .get_ske_cluster import *
 from .get_sqlserverflex_instance import *
 from .get_sqlserverflex_user import *
@@ -96,6 +101,7 @@ from .mongodbflex_instance import *
 from .mongodbflex_user import *
 from .network import *
 from .network_area import *
+from .network_area_region import *
 from .network_area_route import *
 from .network_interface import *
 from .objectstorage_bucket import *
@@ -137,6 +143,9 @@ from .server_volume_attach import *
 from .service_account import *
 from .service_account_access_token import *
 from .service_account_key import *
+from .sfs_export_policy import *
+from .sfs_resource_pool import *
+from .sfs_share import *
 from .ske_cluster import *
 from .ske_kubeconfig import *
 from .sqlserverflex_instance import *
@@ -345,6 +354,14 @@ _utilities.register(
   "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/networkArea:NetworkArea": "NetworkArea"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/networkAreaRegion",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/networkAreaRegion:NetworkAreaRegion": "NetworkAreaRegion"
   }
  },
  {
@@ -665,6 +682,30 @@ _utilities.register(
   "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/serviceAccountKey:ServiceAccountKey": "ServiceAccountKey"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/sfsExportPolicy",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/sfsExportPolicy:SfsExportPolicy": "SfsExportPolicy"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/sfsResourcePool",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/sfsResourcePool:SfsResourcePool": "SfsResourcePool"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/sfsShare",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/sfsShare:SfsShare": "SfsShare"
   }
  },
  {

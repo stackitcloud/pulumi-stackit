@@ -48,9 +48,15 @@ export interface GetIaasProjectResult {
      */
     readonly projectId: string;
     /**
-     * Specifies the state of the project.
+     * Specifies the status of the project.
+     *
+     * @deprecated Deprecated: Will be removed in May 2026. Use the `status` field instead.
      */
     readonly state: string;
+    /**
+     * Specifies the status of the project.
+     */
+    readonly status: string;
     /**
      * Date-time when the project was last updated.
      */

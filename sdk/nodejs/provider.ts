@@ -156,13 +156,17 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * Token used for authentication. If set, the token flow will be used to authenticate all operations.
      *
-     * @deprecated Authentication via Service Account Token is deprecated and will be removed on December 17, 2025. Please use `serviceAccountKey` or `serviceAccountKeyPath` instead. For a smooth transition, refer to our migration guide: https://docs.stackit.cloud/stackit/en/deprecation-plan-for-service-account-access-tokens-and-migration-guide-373293307.html
+     * @deprecated Authentication via Service Account Token is deprecated and will be removed on December 17, 2025. Please use `serviceAccountKey` or `serviceAccountKeyPath` instead. For a smooth transition, refer to our migration guide: https://docs.stackit.cloud/platform/access-and-identity/service-accounts/migrate-flows/
      */
     declare public readonly serviceAccountToken: pulumi.Output<string | undefined>;
     /**
      * Custom endpoint for the Service Enablement API
      */
     declare public readonly serviceEnablementCustomEndpoint: pulumi.Output<string | undefined>;
+    /**
+     * Custom endpoint for the Stackit Filestorage API
+     */
+    declare public readonly sfsCustomEndpoint: pulumi.Output<string | undefined>;
     /**
      * Custom endpoint for the Kubernetes Engine (SKE) service
      */
@@ -222,6 +226,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["serviceAccountKeyPath"] = args?.serviceAccountKeyPath;
             resourceInputs["serviceAccountToken"] = args?.serviceAccountToken;
             resourceInputs["serviceEnablementCustomEndpoint"] = args?.serviceEnablementCustomEndpoint;
+            resourceInputs["sfsCustomEndpoint"] = args?.sfsCustomEndpoint;
             resourceInputs["skeCustomEndpoint"] = args?.skeCustomEndpoint;
             resourceInputs["sqlserverflexCustomEndpoint"] = args?.sqlserverflexCustomEndpoint;
             resourceInputs["tokenCustomEndpoint"] = args?.tokenCustomEndpoint;
@@ -383,13 +388,17 @@ export interface ProviderArgs {
     /**
      * Token used for authentication. If set, the token flow will be used to authenticate all operations.
      *
-     * @deprecated Authentication via Service Account Token is deprecated and will be removed on December 17, 2025. Please use `serviceAccountKey` or `serviceAccountKeyPath` instead. For a smooth transition, refer to our migration guide: https://docs.stackit.cloud/stackit/en/deprecation-plan-for-service-account-access-tokens-and-migration-guide-373293307.html
+     * @deprecated Authentication via Service Account Token is deprecated and will be removed on December 17, 2025. Please use `serviceAccountKey` or `serviceAccountKeyPath` instead. For a smooth transition, refer to our migration guide: https://docs.stackit.cloud/platform/access-and-identity/service-accounts/migrate-flows/
      */
     serviceAccountToken?: pulumi.Input<string>;
     /**
      * Custom endpoint for the Service Enablement API
      */
     serviceEnablementCustomEndpoint?: pulumi.Input<string>;
+    /**
+     * Custom endpoint for the Stackit Filestorage API
+     */
+    sfsCustomEndpoint?: pulumi.Input<string>;
     /**
      * Custom endpoint for the Kubernetes Engine (SKE) service
      */

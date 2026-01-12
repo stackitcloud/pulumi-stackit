@@ -42,6 +42,10 @@ export class ServerServiceAccountAttach extends pulumi.CustomResource {
      */
     declare public readonly projectId: pulumi.Output<string>;
     /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    declare public readonly region: pulumi.Output<string>;
+    /**
      * The server ID.
      */
     declare public readonly serverId: pulumi.Output<string>;
@@ -64,6 +68,7 @@ export class ServerServiceAccountAttach extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ServerServiceAccountAttachState | undefined;
             resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
             resourceInputs["serverId"] = state?.serverId;
             resourceInputs["serviceAccountEmail"] = state?.serviceAccountEmail;
         } else {
@@ -78,6 +83,7 @@ export class ServerServiceAccountAttach extends pulumi.CustomResource {
                 throw new Error("Missing required property 'serviceAccountEmail'");
             }
             resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
             resourceInputs["serverId"] = args?.serverId;
             resourceInputs["serviceAccountEmail"] = args?.serviceAccountEmail;
         }
@@ -94,6 +100,10 @@ export interface ServerServiceAccountAttachState {
      * STACKIT project ID to which the service account attachment is associated.
      */
     projectId?: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string>;
     /**
      * The server ID.
      */
@@ -112,6 +122,10 @@ export interface ServerServiceAccountAttachArgs {
      * STACKIT project ID to which the service account attachment is associated.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string>;
     /**
      * The server ID.
      */

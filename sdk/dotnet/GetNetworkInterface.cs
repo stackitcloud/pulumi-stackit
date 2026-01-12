@@ -81,6 +81,12 @@ namespace Pulumi.Stackit
         [Input("projectId", required: true)]
         public string ProjectId { get; set; } = null!;
 
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public string? Region { get; set; }
+
         public GetNetworkInterfaceArgs()
         {
         }
@@ -106,6 +112,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
+
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         public GetNetworkInterfaceInvokeArgs()
         {
@@ -155,6 +167,10 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string ProjectId;
         /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        public readonly string? Region;
+        /// <summary>
         /// The Network Interface Security. If set to false, then no security groups will apply to this network interface.
         /// </summary>
         public readonly bool Security;
@@ -189,6 +205,8 @@ namespace Pulumi.Stackit
 
             string projectId,
 
+            string? region,
+
             bool security,
 
             ImmutableArray<string> securityGroupIds,
@@ -205,6 +223,7 @@ namespace Pulumi.Stackit
             NetworkId = networkId;
             NetworkInterfaceId = networkInterfaceId;
             ProjectId = projectId;
+            Region = region;
             Security = security;
             SecurityGroupIds = securityGroupIds;
             Type = type;

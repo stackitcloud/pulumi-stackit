@@ -17,6 +17,7 @@ export function getImageV2(args: GetImageV2Args, opts?: pulumi.InvokeOptions): P
         "name": args.name,
         "nameRegex": args.nameRegex,
         "projectId": args.projectId,
+        "region": args.region,
         "sortAscending": args.sortAscending,
     }, opts);
 }
@@ -45,6 +46,10 @@ export interface GetImageV2Args {
      * STACKIT project ID to which the image is associated.
      */
     projectId: string;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: string;
     /**
      * If set to `true`, images are sorted in ascending lexicographical order by image name (such as `Ubuntu 18.04`, `Ubuntu 20.04`, `Ubuntu 22.04`) before selecting the first match. Defaults to `false` (descending such as `Ubuntu 22.04`, `Ubuntu 20.04`, `Ubuntu 18.04`).
      */
@@ -105,6 +110,10 @@ export interface GetImageV2Result {
      */
     readonly protected: boolean;
     /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    readonly region?: string;
+    /**
      * The scope of the image.
      */
     readonly scope: string;
@@ -124,6 +133,7 @@ export function getImageV2Output(args: GetImageV2OutputArgs, opts?: pulumi.Invok
         "name": args.name,
         "nameRegex": args.nameRegex,
         "projectId": args.projectId,
+        "region": args.region,
         "sortAscending": args.sortAscending,
     }, opts);
 }
@@ -152,6 +162,10 @@ export interface GetImageV2OutputArgs {
      * STACKIT project ID to which the image is associated.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string>;
     /**
      * If set to `true`, images are sorted in ascending lexicographical order by image name (such as `Ubuntu 18.04`, `Ubuntu 20.04`, `Ubuntu 22.04`) before selecting the first match. Defaults to `false` (descending such as `Ubuntu 22.04`, `Ubuntu 20.04`, `Ubuntu 18.04`).
      */

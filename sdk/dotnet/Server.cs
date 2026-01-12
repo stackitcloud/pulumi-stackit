@@ -86,7 +86,7 @@ namespace Pulumi.Stackit
         public Output<string> LaunchedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the type of the machine for the server. Possible values are documented in [Virtual machine flavors](https://docs.stackit.cloud/stackit/en/virtual-machine-flavors-75137231.html)
+        /// Name of the type of the machine for the server. Possible values are documented in [Virtual machine flavors](https://docs.stackit.cloud/products/compute-engine/server/basics/machine-types/)
         /// </summary>
         [Output("machineType")]
         public Output<string> MachineType { get; private set; } = null!;
@@ -98,7 +98,7 @@ namespace Pulumi.Stackit
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The IDs of network interfaces which should be attached to the server. Updating it will recreate the server.
+        /// The IDs of network interfaces which should be attached to the server. Updating it will recreate the server. **Required when (re-)creating servers. Still marked as optional in the schema to not introduce breaking changes. There will be a migration path for this field soon.**
         /// </summary>
         [Output("networkInterfaces")]
         public Output<ImmutableArray<string>> NetworkInterfaces { get; private set; } = null!;
@@ -108,6 +108,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Output("region")]
+        public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
         /// The server ID.
@@ -223,7 +229,7 @@ namespace Pulumi.Stackit
         }
 
         /// <summary>
-        /// Name of the type of the machine for the server. Possible values are documented in [Virtual machine flavors](https://docs.stackit.cloud/stackit/en/virtual-machine-flavors-75137231.html)
+        /// Name of the type of the machine for the server. Possible values are documented in [Virtual machine flavors](https://docs.stackit.cloud/products/compute-engine/server/basics/machine-types/)
         /// </summary>
         [Input("machineType", required: true)]
         public Input<string> MachineType { get; set; } = null!;
@@ -238,7 +244,7 @@ namespace Pulumi.Stackit
         private InputList<string>? _networkInterfaces;
 
         /// <summary>
-        /// The IDs of network interfaces which should be attached to the server. Updating it will recreate the server.
+        /// The IDs of network interfaces which should be attached to the server. Updating it will recreate the server. **Required when (re-)creating servers. Still marked as optional in the schema to not introduce breaking changes. There will be a migration path for this field soon.**
         /// </summary>
         public InputList<string> NetworkInterfaces
         {
@@ -251,6 +257,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
+
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// User data that is passed via cloud-init to the server.
@@ -327,7 +339,7 @@ namespace Pulumi.Stackit
         public Input<string>? LaunchedAt { get; set; }
 
         /// <summary>
-        /// Name of the type of the machine for the server. Possible values are documented in [Virtual machine flavors](https://docs.stackit.cloud/stackit/en/virtual-machine-flavors-75137231.html)
+        /// Name of the type of the machine for the server. Possible values are documented in [Virtual machine flavors](https://docs.stackit.cloud/products/compute-engine/server/basics/machine-types/)
         /// </summary>
         [Input("machineType")]
         public Input<string>? MachineType { get; set; }
@@ -342,7 +354,7 @@ namespace Pulumi.Stackit
         private InputList<string>? _networkInterfaces;
 
         /// <summary>
-        /// The IDs of network interfaces which should be attached to the server. Updating it will recreate the server.
+        /// The IDs of network interfaces which should be attached to the server. Updating it will recreate the server. **Required when (re-)creating servers. Still marked as optional in the schema to not introduce breaking changes. There will be a migration path for this field soon.**
         /// </summary>
         public InputList<string> NetworkInterfaces
         {
@@ -355,6 +367,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// The server ID.

@@ -135,7 +135,6 @@ namespace Pulumi.Stackit
         public Output<string> PublicIp { get; private set; } = null!;
 
         /// <summary>
-        /// Can only be used when experimental "network" is set.
         /// The resource region. If not defined, the provider region is used.
         /// </summary>
         [Output("region")]
@@ -148,7 +147,6 @@ namespace Pulumi.Stackit
         public Output<bool> Routed { get; private set; } = null!;
 
         /// <summary>
-        /// Can only be used when experimental "network" is set.
         /// The ID of the routing table associated with the network.
         /// </summary>
         [Output("routingTableId")]
@@ -311,7 +309,6 @@ namespace Pulumi.Stackit
         public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
-        /// Can only be used when experimental "network" is set.
         /// The resource region. If not defined, the provider region is used.
         /// </summary>
         [Input("region")]
@@ -324,7 +321,6 @@ namespace Pulumi.Stackit
         public Input<bool>? Routed { get; set; }
 
         /// <summary>
-        /// Can only be used when experimental "network" is set.
         /// The ID of the routing table associated with the network.
         /// </summary>
         [Input("routingTableId")]
@@ -497,7 +493,6 @@ namespace Pulumi.Stackit
         public Input<string>? PublicIp { get; set; }
 
         /// <summary>
-        /// Can only be used when experimental "network" is set.
         /// The resource region. If not defined, the provider region is used.
         /// </summary>
         [Input("region")]
@@ -510,7 +505,6 @@ namespace Pulumi.Stackit
         public Input<bool>? Routed { get; set; }
 
         /// <summary>
-        /// Can only be used when experimental "network" is set.
         /// The ID of the routing table associated with the network.
         /// </summary>
         [Input("routingTableId")]

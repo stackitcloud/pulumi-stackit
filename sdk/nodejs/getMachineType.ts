@@ -16,6 +16,7 @@ export function getMachineType(args: GetMachineTypeArgs, opts?: pulumi.InvokeOpt
     return pulumi.runtime.invoke("stackit:index/getMachineType:getMachineType", {
         "filter": args.filter,
         "projectId": args.projectId,
+        "region": args.region,
         "sortAscending": args.sortAscending,
     }, opts);
 }
@@ -29,6 +30,7 @@ export interface GetMachineTypeArgs {
      */
     filter: string;
     projectId: string;
+    region?: string;
     sortAscending?: boolean;
 }
 
@@ -47,6 +49,7 @@ export interface GetMachineTypeResult {
     readonly name: string;
     readonly projectId: string;
     readonly ram: number;
+    readonly region?: string;
     readonly sortAscending?: boolean;
     readonly vcpus: number;
 }
@@ -62,6 +65,7 @@ export function getMachineTypeOutput(args: GetMachineTypeOutputArgs, opts?: pulu
     return pulumi.runtime.invokeOutput("stackit:index/getMachineType:getMachineType", {
         "filter": args.filter,
         "projectId": args.projectId,
+        "region": args.region,
         "sortAscending": args.sortAscending,
     }, opts);
 }
@@ -75,5 +79,6 @@ export interface GetMachineTypeOutputArgs {
      */
     filter: pulumi.Input<string>;
     projectId: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
     sortAscending?: pulumi.Input<boolean>;
 }
