@@ -42,6 +42,10 @@ export class ServerVolumeAttach extends pulumi.CustomResource {
      */
     declare public readonly projectId: pulumi.Output<string>;
     /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    declare public readonly region: pulumi.Output<string>;
+    /**
      * The server ID.
      */
     declare public readonly serverId: pulumi.Output<string>;
@@ -64,6 +68,7 @@ export class ServerVolumeAttach extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ServerVolumeAttachState | undefined;
             resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
             resourceInputs["serverId"] = state?.serverId;
             resourceInputs["volumeId"] = state?.volumeId;
         } else {
@@ -78,6 +83,7 @@ export class ServerVolumeAttach extends pulumi.CustomResource {
                 throw new Error("Missing required property 'volumeId'");
             }
             resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
             resourceInputs["serverId"] = args?.serverId;
             resourceInputs["volumeId"] = args?.volumeId;
         }
@@ -94,6 +100,10 @@ export interface ServerVolumeAttachState {
      * STACKIT project ID to which the volume attachment is associated.
      */
     projectId?: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string>;
     /**
      * The server ID.
      */
@@ -112,6 +122,10 @@ export interface ServerVolumeAttachArgs {
      * STACKIT project ID to which the volume attachment is associated.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string>;
     /**
      * The server ID.
      */

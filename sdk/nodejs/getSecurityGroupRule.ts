@@ -15,6 +15,7 @@ export function getSecurityGroupRule(args: GetSecurityGroupRuleArgs, opts?: pulu
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("stackit:index/getSecurityGroupRule:getSecurityGroupRule", {
         "projectId": args.projectId,
+        "region": args.region,
         "securityGroupId": args.securityGroupId,
         "securityGroupRuleId": args.securityGroupRuleId,
     }, opts);
@@ -28,6 +29,10 @@ export interface GetSecurityGroupRuleArgs {
      * STACKIT project ID to which the security group rule is associated.
      */
     projectId: string;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: string;
     /**
      * The security group ID.
      */
@@ -76,6 +81,10 @@ export interface GetSecurityGroupRuleResult {
      */
     readonly protocol: outputs.GetSecurityGroupRuleProtocol;
     /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    readonly region?: string;
+    /**
      * The remote security group which the rule should match.
      */
     readonly remoteSecurityGroupId: string;
@@ -97,6 +106,7 @@ export function getSecurityGroupRuleOutput(args: GetSecurityGroupRuleOutputArgs,
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("stackit:index/getSecurityGroupRule:getSecurityGroupRule", {
         "projectId": args.projectId,
+        "region": args.region,
         "securityGroupId": args.securityGroupId,
         "securityGroupRuleId": args.securityGroupRuleId,
     }, opts);
@@ -110,6 +120,10 @@ export interface GetSecurityGroupRuleOutputArgs {
      * STACKIT project ID to which the security group rule is associated.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string>;
     /**
      * The security group ID.
      */

@@ -28,7 +28,8 @@ class ImageArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  min_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
                  min_ram: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Image resource.
         :param pulumi.Input[_builtins.str] disk_format: The disk format of the image.
@@ -39,6 +40,7 @@ class ImageArgs:
         :param pulumi.Input[_builtins.int] min_disk_size: The minimum disk size of the image in GB.
         :param pulumi.Input[_builtins.int] min_ram: The minimum RAM of the image in MB.
         :param pulumi.Input[_builtins.str] name: The name of the image.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
         pulumi.set(__self__, "disk_format", disk_format)
         pulumi.set(__self__, "local_file_path", local_file_path)
@@ -53,6 +55,8 @@ class ImageArgs:
             pulumi.set(__self__, "min_ram", min_ram)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
 
     @_builtins.property
     @pulumi.getter(name="diskFormat")
@@ -150,6 +154,18 @@ class ImageArgs:
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
 
 @pulumi.input_type
 class _ImageState:
@@ -165,6 +181,7 @@ class _ImageState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  protected: Optional[pulumi.Input[_builtins.bool]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
                  scope: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Image resources.
@@ -179,6 +196,7 @@ class _ImageState:
         :param pulumi.Input[_builtins.str] name: The name of the image.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the image is associated.
         :param pulumi.Input[_builtins.bool] protected: Whether the image is protected.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.str] scope: The scope of the image.
         """
         if checksum is not None:
@@ -203,6 +221,8 @@ class _ImageState:
             pulumi.set(__self__, "project_id", project_id)
         if protected is not None:
             pulumi.set(__self__, "protected", protected)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if scope is not None:
             pulumi.set(__self__, "scope", scope)
 
@@ -340,6 +360,18 @@ class _ImageState:
 
     @_builtins.property
     @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+    @_builtins.property
+    @pulumi.getter
     def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The scope of the image.
@@ -365,6 +397,7 @@ class Image(pulumi.CustomResource):
                  min_ram: Optional[pulumi.Input[_builtins.int]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         Image resource schema. Must have a `region` specified in the provider configuration.
@@ -381,6 +414,7 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] min_ram: The minimum RAM of the image in MB.
         :param pulumi.Input[_builtins.str] name: The name of the image.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the image is associated.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
         ...
     @overload
@@ -416,6 +450,7 @@ class Image(pulumi.CustomResource):
                  min_ram: Optional[pulumi.Input[_builtins.int]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -439,6 +474,7 @@ class Image(pulumi.CustomResource):
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
+            __props__.__dict__["region"] = region
             __props__.__dict__["checksum"] = None
             __props__.__dict__["image_id"] = None
             __props__.__dict__["protected"] = None
@@ -464,6 +500,7 @@ class Image(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project_id: Optional[pulumi.Input[_builtins.str]] = None,
             protected: Optional[pulumi.Input[_builtins.bool]] = None,
+            region: Optional[pulumi.Input[_builtins.str]] = None,
             scope: Optional[pulumi.Input[_builtins.str]] = None) -> 'Image':
         """
         Get an existing Image resource's state with the given name, id, and optional extra
@@ -483,6 +520,7 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the image.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the image is associated.
         :param pulumi.Input[_builtins.bool] protected: Whether the image is protected.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.str] scope: The scope of the image.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -500,6 +538,7 @@ class Image(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["protected"] = protected
+        __props__.__dict__["region"] = region
         __props__.__dict__["scope"] = scope
         return Image(resource_name, opts=opts, __props__=__props__)
 
@@ -590,6 +629,14 @@ class Image(pulumi.CustomResource):
         Whether the image is protected.
         """
         return pulumi.get(self, "protected")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[_builtins.str]:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter

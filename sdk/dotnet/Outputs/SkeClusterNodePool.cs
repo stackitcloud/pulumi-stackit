@@ -62,11 +62,11 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly string? OsVersion;
         /// <summary>
-        /// The minimum OS image version. This field will be used to set the minimum OS image version on creation/update of the cluster. If unset, the latest supported OS image version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current OS image version being used for the node pool, use the read-only `OsVersionUsed` field.
+        /// The minimum OS image version. This field will be used to set the minimum OS image version on creation/update of the cluster. If unset, the latest supported OS image version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes &amp; OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/). To get the current OS image version being used for the node pool, use the read-only `OsVersionUsed` field.
         /// </summary>
         public readonly string? OsVersionMin;
         /// <summary>
-        /// Full OS image version used. For example, if 3815.2 was set in `OsVersionMin`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+        /// Full OS image version used. For example, if 3815.2 was set in `OsVersionMin`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes &amp; OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
         /// </summary>
         public readonly string? OsVersionUsed;
         /// <summary>

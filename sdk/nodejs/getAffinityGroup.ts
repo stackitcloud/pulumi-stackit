@@ -14,6 +14,7 @@ export function getAffinityGroup(args: GetAffinityGroupArgs, opts?: pulumi.Invok
     return pulumi.runtime.invoke("stackit:index/getAffinityGroup:getAffinityGroup", {
         "affinityGroupId": args.affinityGroupId,
         "projectId": args.projectId,
+        "region": args.region,
     }, opts);
 }
 
@@ -29,6 +30,10 @@ export interface GetAffinityGroupArgs {
      * STACKIT Project ID to which the affinity group is associated.
      */
     projectId: string;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: string;
 }
 
 /**
@@ -56,6 +61,10 @@ export interface GetAffinityGroupResult {
      * STACKIT Project ID to which the affinity group is associated.
      */
     readonly projectId: string;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    readonly region?: string;
 }
 /**
  * Affinity Group schema. Must have a `region` specified in the provider configuration.
@@ -67,6 +76,7 @@ export function getAffinityGroupOutput(args: GetAffinityGroupOutputArgs, opts?: 
     return pulumi.runtime.invokeOutput("stackit:index/getAffinityGroup:getAffinityGroup", {
         "affinityGroupId": args.affinityGroupId,
         "projectId": args.projectId,
+        "region": args.region,
     }, opts);
 }
 
@@ -82,4 +92,8 @@ export interface GetAffinityGroupOutputArgs {
      * STACKIT Project ID to which the affinity group is associated.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string>;
 }

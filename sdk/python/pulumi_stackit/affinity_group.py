@@ -21,17 +21,21 @@ class AffinityGroupArgs:
     def __init__(__self__, *,
                  policy: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AffinityGroup resource.
         :param pulumi.Input[_builtins.str] policy: The policy of the affinity group.
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the affinity group is associated.
         :param pulumi.Input[_builtins.str] name: The name of the affinity group.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
         pulumi.set(__self__, "policy", policy)
         pulumi.set(__self__, "project_id", project_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
 
     @_builtins.property
     @pulumi.getter
@@ -69,6 +73,18 @@ class AffinityGroupArgs:
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
 
 @pulumi.input_type
 class _AffinityGroupState:
@@ -77,7 +93,8 @@ class _AffinityGroupState:
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AffinityGroup resources.
         :param pulumi.Input[_builtins.str] affinity_group_id: The affinity group ID.
@@ -85,6 +102,7 @@ class _AffinityGroupState:
         :param pulumi.Input[_builtins.str] name: The name of the affinity group.
         :param pulumi.Input[_builtins.str] policy: The policy of the affinity group.
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the affinity group is associated.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
         if affinity_group_id is not None:
             pulumi.set(__self__, "affinity_group_id", affinity_group_id)
@@ -96,6 +114,8 @@ class _AffinityGroupState:
             pulumi.set(__self__, "policy", policy)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
 
     @_builtins.property
     @pulumi.getter(name="affinityGroupId")
@@ -157,6 +177,18 @@ class _AffinityGroupState:
     def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
 
 @pulumi.type_token("stackit:index/affinityGroup:AffinityGroup")
 class AffinityGroup(pulumi.CustomResource):
@@ -167,9 +199,10 @@ class AffinityGroup(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  policy: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Affinity Group schema. Must have a `region` specified in the provider configuration.
+        Affinity Group schema.
 
         ## Example Usage
 
@@ -178,6 +211,7 @@ class AffinityGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the affinity group.
         :param pulumi.Input[_builtins.str] policy: The policy of the affinity group.
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the affinity group is associated.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
         ...
     @overload
@@ -186,7 +220,7 @@ class AffinityGroup(pulumi.CustomResource):
                  args: AffinityGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Affinity Group schema. Must have a `region` specified in the provider configuration.
+        Affinity Group schema.
 
         ## Example Usage
 
@@ -208,6 +242,7 @@ class AffinityGroup(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  policy: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -224,6 +259,7 @@ class AffinityGroup(pulumi.CustomResource):
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
+            __props__.__dict__["region"] = region
             __props__.__dict__["affinity_group_id"] = None
             __props__.__dict__["members"] = None
         super(AffinityGroup, __self__).__init__(
@@ -240,7 +276,8 @@ class AffinityGroup(pulumi.CustomResource):
             members: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             policy: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'AffinityGroup':
+            project_id: Optional[pulumi.Input[_builtins.str]] = None,
+            region: Optional[pulumi.Input[_builtins.str]] = None) -> 'AffinityGroup':
         """
         Get an existing AffinityGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -253,6 +290,7 @@ class AffinityGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The name of the affinity group.
         :param pulumi.Input[_builtins.str] policy: The policy of the affinity group.
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the affinity group is associated.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -263,6 +301,7 @@ class AffinityGroup(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["policy"] = policy
         __props__.__dict__["project_id"] = project_id
+        __props__.__dict__["region"] = region
         return AffinityGroup(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -304,4 +343,12 @@ class AffinityGroup(pulumi.CustomResource):
         STACKIT Project ID to which the affinity group is associated.
         """
         return pulumi.get(self, "project_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[_builtins.str]:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
 

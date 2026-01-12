@@ -28,6 +28,8 @@ func LookupVolume(ctx *pulumi.Context, args *LookupVolumeArgs, opts ...pulumi.In
 type LookupVolumeArgs struct {
 	// STACKIT project ID to which the volume is associated.
 	ProjectId string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 	// The volume ID.
 	VolumeId string `pulumi:"volumeId"`
 }
@@ -43,10 +45,12 @@ type LookupVolumeResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the volume.
 	Name string `pulumi:"name"`
-	// The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/stackit/en/service-plans-blockstorage-75137974.html#ServiceplansBlockStorage-CurrentlyavailableServicePlans%28performanceclasses%29)
+	// The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/products/storage/block-storage/basics/service-plans/#currently-available-service-plans-performance-classes)
 	PerformanceClass string `pulumi:"performanceClass"`
 	// STACKIT project ID to which the volume is associated.
 	ProjectId string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 	// The server ID of the server to which the volume is attached to.
 	ServerId string `pulumi:"serverId"`
 	// The size of the volume in GB. It can only be updated to a larger value than the current size
@@ -70,6 +74,8 @@ func LookupVolumeOutput(ctx *pulumi.Context, args LookupVolumeOutputArgs, opts .
 type LookupVolumeOutputArgs struct {
 	// STACKIT project ID to which the volume is associated.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 	// The volume ID.
 	VolumeId pulumi.StringInput `pulumi:"volumeId"`
 }
@@ -117,7 +123,7 @@ func (o LookupVolumeResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/stackit/en/service-plans-blockstorage-75137974.html#ServiceplansBlockStorage-CurrentlyavailableServicePlans%28performanceclasses%29)
+// The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/products/storage/block-storage/basics/service-plans/#currently-available-service-plans-performance-classes)
 func (o LookupVolumeResultOutput) PerformanceClass() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.PerformanceClass }).(pulumi.StringOutput)
 }
@@ -125,6 +131,11 @@ func (o LookupVolumeResultOutput) PerformanceClass() pulumi.StringOutput {
 // STACKIT project ID to which the volume is associated.
 func (o LookupVolumeResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The resource region. If not defined, the provider region is used.
+func (o LookupVolumeResultOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupVolumeResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
 // The server ID of the server to which the volume is attached to.

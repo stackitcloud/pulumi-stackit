@@ -26,7 +26,7 @@ class GetMachineTypeResult:
     """
     A collection of values returned by getMachineType.
     """
-    def __init__(__self__, description=None, disk=None, extra_specs=None, filter=None, id=None, name=None, project_id=None, ram=None, sort_ascending=None, vcpus=None):
+    def __init__(__self__, description=None, disk=None, extra_specs=None, filter=None, id=None, name=None, project_id=None, ram=None, region=None, sort_ascending=None, vcpus=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -51,6 +51,9 @@ class GetMachineTypeResult:
         if ram and not isinstance(ram, int):
             raise TypeError("Expected argument 'ram' to be a int")
         pulumi.set(__self__, "ram", ram)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
         if sort_ascending and not isinstance(sort_ascending, bool):
             raise TypeError("Expected argument 'sort_ascending' to be a bool")
         pulumi.set(__self__, "sort_ascending", sort_ascending)
@@ -102,6 +105,11 @@ class GetMachineTypeResult:
         return pulumi.get(self, "ram")
 
     @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "region")
+
+    @_builtins.property
     @pulumi.getter(name="sortAscending")
     def sort_ascending(self) -> Optional[_builtins.bool]:
         return pulumi.get(self, "sort_ascending")
@@ -126,12 +134,14 @@ class AwaitableGetMachineTypeResult(GetMachineTypeResult):
             name=self.name,
             project_id=self.project_id,
             ram=self.ram,
+            region=self.region,
             sort_ascending=self.sort_ascending,
             vcpus=self.vcpus)
 
 
 def get_machine_type(filter: Optional[_builtins.str] = None,
                      project_id: Optional[_builtins.str] = None,
+                     region: Optional[_builtins.str] = None,
                      sort_ascending: Optional[_builtins.bool] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMachineTypeResult:
     """
@@ -147,6 +157,7 @@ def get_machine_type(filter: Optional[_builtins.str] = None,
     __args__ = dict()
     __args__['filter'] = filter
     __args__['projectId'] = project_id
+    __args__['region'] = region
     __args__['sortAscending'] = sort_ascending
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('stackit:index/getMachineType:getMachineType', __args__, opts=opts, typ=GetMachineTypeResult).value
@@ -160,10 +171,12 @@ def get_machine_type(filter: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         project_id=pulumi.get(__ret__, 'project_id'),
         ram=pulumi.get(__ret__, 'ram'),
+        region=pulumi.get(__ret__, 'region'),
         sort_ascending=pulumi.get(__ret__, 'sort_ascending'),
         vcpus=pulumi.get(__ret__, 'vcpus'))
 def get_machine_type_output(filter: Optional[pulumi.Input[_builtins.str]] = None,
                             project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                            region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                             sort_ascending: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMachineTypeResult]:
     """
@@ -179,6 +192,7 @@ def get_machine_type_output(filter: Optional[pulumi.Input[_builtins.str]] = None
     __args__ = dict()
     __args__['filter'] = filter
     __args__['projectId'] = project_id
+    __args__['region'] = region
     __args__['sortAscending'] = sort_ascending
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('stackit:index/getMachineType:getMachineType', __args__, opts=opts, typ=GetMachineTypeResult)
@@ -191,5 +205,6 @@ def get_machine_type_output(filter: Optional[pulumi.Input[_builtins.str]] = None
         name=pulumi.get(__response__, 'name'),
         project_id=pulumi.get(__response__, 'project_id'),
         ram=pulumi.get(__response__, 'ram'),
+        region=pulumi.get(__response__, 'region'),
         sort_ascending=pulumi.get(__response__, 'sort_ascending'),
         vcpus=pulumi.get(__response__, 'vcpus')))

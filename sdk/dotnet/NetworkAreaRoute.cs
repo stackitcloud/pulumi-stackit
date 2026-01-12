@@ -9,14 +9,15 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Stackit
 {
-    /// <summary>
-    /// Network area route resource schema. Must have a `Region` specified in the provider configuration.
-    /// 
-    /// ## Example Usage
-    /// </summary>
     [StackitResourceType("stackit:index/networkAreaRoute:NetworkAreaRoute")]
     public partial class NetworkAreaRoute : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Destination of the route.
+        /// </summary>
+        [Output("destination")]
+        public Output<Outputs.NetworkAreaRouteDestination> Destination { get; private set; } = null!;
+
         /// <summary>
         /// Labels are key-value string pairs which can be attached to a resource container
         /// </summary>
@@ -36,10 +37,10 @@ namespace Pulumi.Stackit
         public Output<string> NetworkAreaRouteId { get; private set; } = null!;
 
         /// <summary>
-        /// The IP address of the routing system, that will route the prefix configured. Should be a valid IPv4 address.
+        /// Next hop destination.
         /// </summary>
         [Output("nextHop")]
-        public Output<string> NextHop { get; private set; } = null!;
+        public Output<Outputs.NetworkAreaRouteNextHop> NextHop { get; private set; } = null!;
 
         /// <summary>
         /// STACKIT organization ID to which the network area is associated.
@@ -48,10 +49,10 @@ namespace Pulumi.Stackit
         public Output<string> OrganizationId { get; private set; } = null!;
 
         /// <summary>
-        /// The network, that is reachable though the Next Hop. Should use CIDR notation.
+        /// The resource region. If not defined, the provider region is used.
         /// </summary>
-        [Output("prefix")]
-        public Output<string> Prefix { get; private set; } = null!;
+        [Output("region")]
+        public Output<string> Region { get; private set; } = null!;
 
 
         /// <summary>
@@ -100,6 +101,12 @@ namespace Pulumi.Stackit
 
     public sealed class NetworkAreaRouteArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Destination of the route.
+        /// </summary>
+        [Input("destination", required: true)]
+        public Input<Inputs.NetworkAreaRouteDestinationArgs> Destination { get; set; } = null!;
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -119,10 +126,10 @@ namespace Pulumi.Stackit
         public Input<string> NetworkAreaId { get; set; } = null!;
 
         /// <summary>
-        /// The IP address of the routing system, that will route the prefix configured. Should be a valid IPv4 address.
+        /// Next hop destination.
         /// </summary>
         [Input("nextHop", required: true)]
-        public Input<string> NextHop { get; set; } = null!;
+        public Input<Inputs.NetworkAreaRouteNextHopArgs> NextHop { get; set; } = null!;
 
         /// <summary>
         /// STACKIT organization ID to which the network area is associated.
@@ -131,10 +138,10 @@ namespace Pulumi.Stackit
         public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
-        /// The network, that is reachable though the Next Hop. Should use CIDR notation.
+        /// The resource region. If not defined, the provider region is used.
         /// </summary>
-        [Input("prefix", required: true)]
-        public Input<string> Prefix { get; set; } = null!;
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         public NetworkAreaRouteArgs()
         {
@@ -144,6 +151,12 @@ namespace Pulumi.Stackit
 
     public sealed class NetworkAreaRouteState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Destination of the route.
+        /// </summary>
+        [Input("destination")]
+        public Input<Inputs.NetworkAreaRouteDestinationGetArgs>? Destination { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -169,10 +182,10 @@ namespace Pulumi.Stackit
         public Input<string>? NetworkAreaRouteId { get; set; }
 
         /// <summary>
-        /// The IP address of the routing system, that will route the prefix configured. Should be a valid IPv4 address.
+        /// Next hop destination.
         /// </summary>
         [Input("nextHop")]
-        public Input<string>? NextHop { get; set; }
+        public Input<Inputs.NetworkAreaRouteNextHopGetArgs>? NextHop { get; set; }
 
         /// <summary>
         /// STACKIT organization ID to which the network area is associated.
@@ -181,10 +194,10 @@ namespace Pulumi.Stackit
         public Input<string>? OrganizationId { get; set; }
 
         /// <summary>
-        /// The network, that is reachable though the Next Hop. Should use CIDR notation.
+        /// The resource region. If not defined, the provider region is used.
         /// </summary>
-        [Input("prefix")]
-        public Input<string>? Prefix { get; set; }
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         public NetworkAreaRouteState()
         {

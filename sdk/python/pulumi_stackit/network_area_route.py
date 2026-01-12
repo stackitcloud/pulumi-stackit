@@ -13,31 +13,49 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['NetworkAreaRouteArgs', 'NetworkAreaRoute']
 
 @pulumi.input_type
 class NetworkAreaRouteArgs:
     def __init__(__self__, *,
+                 destination: pulumi.Input['NetworkAreaRouteDestinationArgs'],
                  network_area_id: pulumi.Input[_builtins.str],
-                 next_hop: pulumi.Input[_builtins.str],
+                 next_hop: pulumi.Input['NetworkAreaRouteNextHopArgs'],
                  organization_id: pulumi.Input[_builtins.str],
-                 prefix: pulumi.Input[_builtins.str],
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NetworkAreaRoute resource.
+        :param pulumi.Input['NetworkAreaRouteDestinationArgs'] destination: Destination of the route.
         :param pulumi.Input[_builtins.str] network_area_id: The network area ID to which the network area route is associated.
-        :param pulumi.Input[_builtins.str] next_hop: The IP address of the routing system, that will route the prefix configured. Should be a valid IPv4 address.
+        :param pulumi.Input['NetworkAreaRouteNextHopArgs'] next_hop: Next hop destination.
         :param pulumi.Input[_builtins.str] organization_id: STACKIT organization ID to which the network area is associated.
-        :param pulumi.Input[_builtins.str] prefix: The network, that is reachable though the Next Hop. Should use CIDR notation.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
+        pulumi.set(__self__, "destination", destination)
         pulumi.set(__self__, "network_area_id", network_area_id)
         pulumi.set(__self__, "next_hop", next_hop)
         pulumi.set(__self__, "organization_id", organization_id)
-        pulumi.set(__self__, "prefix", prefix)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def destination(self) -> pulumi.Input['NetworkAreaRouteDestinationArgs']:
+        """
+        Destination of the route.
+        """
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: pulumi.Input['NetworkAreaRouteDestinationArgs']):
+        pulumi.set(self, "destination", value)
 
     @_builtins.property
     @pulumi.getter(name="networkAreaId")
@@ -53,14 +71,14 @@ class NetworkAreaRouteArgs:
 
     @_builtins.property
     @pulumi.getter(name="nextHop")
-    def next_hop(self) -> pulumi.Input[_builtins.str]:
+    def next_hop(self) -> pulumi.Input['NetworkAreaRouteNextHopArgs']:
         """
-        The IP address of the routing system, that will route the prefix configured. Should be a valid IPv4 address.
+        Next hop destination.
         """
         return pulumi.get(self, "next_hop")
 
     @next_hop.setter
-    def next_hop(self, value: pulumi.Input[_builtins.str]):
+    def next_hop(self, value: pulumi.Input['NetworkAreaRouteNextHopArgs']):
         pulumi.set(self, "next_hop", value)
 
     @_builtins.property
@@ -77,18 +95,6 @@ class NetworkAreaRouteArgs:
 
     @_builtins.property
     @pulumi.getter
-    def prefix(self) -> pulumi.Input[_builtins.str]:
-        """
-        The network, that is reachable though the Next Hop. Should use CIDR notation.
-        """
-        return pulumi.get(self, "prefix")
-
-    @prefix.setter
-    def prefix(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "prefix", value)
-
-    @_builtins.property
-    @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels are key-value string pairs which can be attached to a resource container
@@ -99,25 +105,41 @@ class NetworkAreaRouteArgs:
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
 
 @pulumi.input_type
 class _NetworkAreaRouteState:
     def __init__(__self__, *,
+                 destination: Optional[pulumi.Input['NetworkAreaRouteDestinationArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  network_area_id: Optional[pulumi.Input[_builtins.str]] = None,
                  network_area_route_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop: Optional[pulumi.Input[_builtins.str]] = None,
+                 next_hop: Optional[pulumi.Input['NetworkAreaRouteNextHopArgs']] = None,
                  organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefix: Optional[pulumi.Input[_builtins.str]] = None):
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkAreaRoute resources.
+        :param pulumi.Input['NetworkAreaRouteDestinationArgs'] destination: Destination of the route.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
         :param pulumi.Input[_builtins.str] network_area_id: The network area ID to which the network area route is associated.
         :param pulumi.Input[_builtins.str] network_area_route_id: The network area route ID.
-        :param pulumi.Input[_builtins.str] next_hop: The IP address of the routing system, that will route the prefix configured. Should be a valid IPv4 address.
+        :param pulumi.Input['NetworkAreaRouteNextHopArgs'] next_hop: Next hop destination.
         :param pulumi.Input[_builtins.str] organization_id: STACKIT organization ID to which the network area is associated.
-        :param pulumi.Input[_builtins.str] prefix: The network, that is reachable though the Next Hop. Should use CIDR notation.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
+        if destination is not None:
+            pulumi.set(__self__, "destination", destination)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if network_area_id is not None:
@@ -128,8 +150,20 @@ class _NetworkAreaRouteState:
             pulumi.set(__self__, "next_hop", next_hop)
         if organization_id is not None:
             pulumi.set(__self__, "organization_id", organization_id)
-        if prefix is not None:
-            pulumi.set(__self__, "prefix", prefix)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def destination(self) -> Optional[pulumi.Input['NetworkAreaRouteDestinationArgs']]:
+        """
+        Destination of the route.
+        """
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: Optional[pulumi.Input['NetworkAreaRouteDestinationArgs']]):
+        pulumi.set(self, "destination", value)
 
     @_builtins.property
     @pulumi.getter
@@ -169,14 +203,14 @@ class _NetworkAreaRouteState:
 
     @_builtins.property
     @pulumi.getter(name="nextHop")
-    def next_hop(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def next_hop(self) -> Optional[pulumi.Input['NetworkAreaRouteNextHopArgs']]:
         """
-        The IP address of the routing system, that will route the prefix configured. Should be a valid IPv4 address.
+        Next hop destination.
         """
         return pulumi.get(self, "next_hop")
 
     @next_hop.setter
-    def next_hop(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def next_hop(self, value: Optional[pulumi.Input['NetworkAreaRouteNextHopArgs']]):
         pulumi.set(self, "next_hop", value)
 
     @_builtins.property
@@ -193,15 +227,15 @@ class _NetworkAreaRouteState:
 
     @_builtins.property
     @pulumi.getter
-    def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The network, that is reachable though the Next Hop. Should use CIDR notation.
+        The resource region. If not defined, the provider region is used.
         """
-        return pulumi.get(self, "prefix")
+        return pulumi.get(self, "region")
 
-    @prefix.setter
-    def prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "prefix", value)
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
 
 
 @pulumi.type_token("stackit:index/networkAreaRoute:NetworkAreaRoute")
@@ -210,24 +244,23 @@ class NetworkAreaRoute(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 destination: Optional[pulumi.Input[Union['NetworkAreaRouteDestinationArgs', 'NetworkAreaRouteDestinationArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  network_area_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop: Optional[pulumi.Input[_builtins.str]] = None,
+                 next_hop: Optional[pulumi.Input[Union['NetworkAreaRouteNextHopArgs', 'NetworkAreaRouteNextHopArgsDict']]] = None,
                  organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Network area route resource schema. Must have a `region` specified in the provider configuration.
-
-        ## Example Usage
-
+        Create a NetworkAreaRoute resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['NetworkAreaRouteDestinationArgs', 'NetworkAreaRouteDestinationArgsDict']] destination: Destination of the route.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
         :param pulumi.Input[_builtins.str] network_area_id: The network area ID to which the network area route is associated.
-        :param pulumi.Input[_builtins.str] next_hop: The IP address of the routing system, that will route the prefix configured. Should be a valid IPv4 address.
+        :param pulumi.Input[Union['NetworkAreaRouteNextHopArgs', 'NetworkAreaRouteNextHopArgsDict']] next_hop: Next hop destination.
         :param pulumi.Input[_builtins.str] organization_id: STACKIT organization ID to which the network area is associated.
-        :param pulumi.Input[_builtins.str] prefix: The network, that is reachable though the Next Hop. Should use CIDR notation.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
         ...
     @overload
@@ -236,10 +269,7 @@ class NetworkAreaRoute(pulumi.CustomResource):
                  args: NetworkAreaRouteArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Network area route resource schema. Must have a `region` specified in the provider configuration.
-
-        ## Example Usage
-
+        Create a NetworkAreaRoute resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param NetworkAreaRouteArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -255,11 +285,12 @@ class NetworkAreaRoute(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 destination: Optional[pulumi.Input[Union['NetworkAreaRouteDestinationArgs', 'NetworkAreaRouteDestinationArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  network_area_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop: Optional[pulumi.Input[_builtins.str]] = None,
+                 next_hop: Optional[pulumi.Input[Union['NetworkAreaRouteNextHopArgs', 'NetworkAreaRouteNextHopArgsDict']]] = None,
                  organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -269,6 +300,9 @@ class NetworkAreaRoute(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NetworkAreaRouteArgs.__new__(NetworkAreaRouteArgs)
 
+            if destination is None and not opts.urn:
+                raise TypeError("Missing required property 'destination'")
+            __props__.__dict__["destination"] = destination
             __props__.__dict__["labels"] = labels
             if network_area_id is None and not opts.urn:
                 raise TypeError("Missing required property 'network_area_id'")
@@ -279,9 +313,7 @@ class NetworkAreaRoute(pulumi.CustomResource):
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
-            if prefix is None and not opts.urn:
-                raise TypeError("Missing required property 'prefix'")
-            __props__.__dict__["prefix"] = prefix
+            __props__.__dict__["region"] = region
             __props__.__dict__["network_area_route_id"] = None
         super(NetworkAreaRoute, __self__).__init__(
             'stackit:index/networkAreaRoute:NetworkAreaRoute',
@@ -293,12 +325,13 @@ class NetworkAreaRoute(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            destination: Optional[pulumi.Input[Union['NetworkAreaRouteDestinationArgs', 'NetworkAreaRouteDestinationArgsDict']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             network_area_id: Optional[pulumi.Input[_builtins.str]] = None,
             network_area_route_id: Optional[pulumi.Input[_builtins.str]] = None,
-            next_hop: Optional[pulumi.Input[_builtins.str]] = None,
+            next_hop: Optional[pulumi.Input[Union['NetworkAreaRouteNextHopArgs', 'NetworkAreaRouteNextHopArgsDict']]] = None,
             organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-            prefix: Optional[pulumi.Input[_builtins.str]] = None) -> 'NetworkAreaRoute':
+            region: Optional[pulumi.Input[_builtins.str]] = None) -> 'NetworkAreaRoute':
         """
         Get an existing NetworkAreaRoute resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -306,24 +339,34 @@ class NetworkAreaRoute(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['NetworkAreaRouteDestinationArgs', 'NetworkAreaRouteDestinationArgsDict']] destination: Destination of the route.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
         :param pulumi.Input[_builtins.str] network_area_id: The network area ID to which the network area route is associated.
         :param pulumi.Input[_builtins.str] network_area_route_id: The network area route ID.
-        :param pulumi.Input[_builtins.str] next_hop: The IP address of the routing system, that will route the prefix configured. Should be a valid IPv4 address.
+        :param pulumi.Input[Union['NetworkAreaRouteNextHopArgs', 'NetworkAreaRouteNextHopArgsDict']] next_hop: Next hop destination.
         :param pulumi.Input[_builtins.str] organization_id: STACKIT organization ID to which the network area is associated.
-        :param pulumi.Input[_builtins.str] prefix: The network, that is reachable though the Next Hop. Should use CIDR notation.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _NetworkAreaRouteState.__new__(_NetworkAreaRouteState)
 
+        __props__.__dict__["destination"] = destination
         __props__.__dict__["labels"] = labels
         __props__.__dict__["network_area_id"] = network_area_id
         __props__.__dict__["network_area_route_id"] = network_area_route_id
         __props__.__dict__["next_hop"] = next_hop
         __props__.__dict__["organization_id"] = organization_id
-        __props__.__dict__["prefix"] = prefix
+        __props__.__dict__["region"] = region
         return NetworkAreaRoute(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter
+    def destination(self) -> pulumi.Output['outputs.NetworkAreaRouteDestination']:
+        """
+        Destination of the route.
+        """
+        return pulumi.get(self, "destination")
 
     @_builtins.property
     @pulumi.getter
@@ -351,9 +394,9 @@ class NetworkAreaRoute(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="nextHop")
-    def next_hop(self) -> pulumi.Output[_builtins.str]:
+    def next_hop(self) -> pulumi.Output['outputs.NetworkAreaRouteNextHop']:
         """
-        The IP address of the routing system, that will route the prefix configured. Should be a valid IPv4 address.
+        Next hop destination.
         """
         return pulumi.get(self, "next_hop")
 
@@ -367,9 +410,9 @@ class NetworkAreaRoute(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def prefix(self) -> pulumi.Output[_builtins.str]:
+    def region(self) -> pulumi.Output[_builtins.str]:
         """
-        The network, that is reachable though the Next Hop. Should use CIDR notation.
+        The resource region. If not defined, the provider region is used.
         """
-        return pulumi.get(self, "prefix")
+        return pulumi.get(self, "region")
 

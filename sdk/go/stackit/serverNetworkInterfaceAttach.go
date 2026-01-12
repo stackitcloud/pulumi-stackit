@@ -12,7 +12,7 @@ import (
 	"github.com/stackitcloud/pulumi-stackit/sdk/go/stackit/internal"
 )
 
-// Network interface attachment resource schema. Attaches a network interface to a server. Must have a `region` specified in the provider configuration. The attachment only takes full effect after server reboot.
+// Network interface attachment resource schema. Attaches a network interface to a server. The attachment only takes full effect after server reboot.
 //
 // ## Example Usage
 type ServerNetworkInterfaceAttach struct {
@@ -22,6 +22,8 @@ type ServerNetworkInterfaceAttach struct {
 	NetworkInterfaceId pulumi.StringOutput `pulumi:"networkInterfaceId"`
 	// STACKIT project ID to which the network interface attachment is associated.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringOutput `pulumi:"region"`
 	// The server ID.
 	ServerId pulumi.StringOutput `pulumi:"serverId"`
 }
@@ -69,6 +71,8 @@ type serverNetworkInterfaceAttachState struct {
 	NetworkInterfaceId *string `pulumi:"networkInterfaceId"`
 	// STACKIT project ID to which the network interface attachment is associated.
 	ProjectId *string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 	// The server ID.
 	ServerId *string `pulumi:"serverId"`
 }
@@ -78,6 +82,8 @@ type ServerNetworkInterfaceAttachState struct {
 	NetworkInterfaceId pulumi.StringPtrInput
 	// STACKIT project ID to which the network interface attachment is associated.
 	ProjectId pulumi.StringPtrInput
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput
 	// The server ID.
 	ServerId pulumi.StringPtrInput
 }
@@ -91,6 +97,8 @@ type serverNetworkInterfaceAttachArgs struct {
 	NetworkInterfaceId string `pulumi:"networkInterfaceId"`
 	// STACKIT project ID to which the network interface attachment is associated.
 	ProjectId string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 	// The server ID.
 	ServerId string `pulumi:"serverId"`
 }
@@ -101,6 +109,8 @@ type ServerNetworkInterfaceAttachArgs struct {
 	NetworkInterfaceId pulumi.StringInput
 	// STACKIT project ID to which the network interface attachment is associated.
 	ProjectId pulumi.StringInput
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput
 	// The server ID.
 	ServerId pulumi.StringInput
 }
@@ -200,6 +210,11 @@ func (o ServerNetworkInterfaceAttachOutput) NetworkInterfaceId() pulumi.StringOu
 // STACKIT project ID to which the network interface attachment is associated.
 func (o ServerNetworkInterfaceAttachOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerNetworkInterfaceAttach) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The resource region. If not defined, the provider region is used.
+func (o ServerNetworkInterfaceAttachOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerNetworkInterfaceAttach) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // The server ID.

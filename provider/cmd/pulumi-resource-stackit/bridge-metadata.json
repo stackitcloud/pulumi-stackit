@@ -231,6 +231,21 @@
                     }
                 }
             },
+            "stackit_network_area_region": {
+                "current": "stackit:index/networkAreaRegion:NetworkAreaRegion",
+                "fields": {
+                    "ipv4": {
+                        "fields": {
+                            "default_nameservers": {
+                                "maxItemsOne": false
+                            },
+                            "network_ranges": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
             "stackit_network_area_route": {
                 "current": "stackit:index/networkAreaRoute:NetworkAreaRoute"
             },
@@ -523,6 +538,32 @@
             },
             "stackit_service_account_key": {
                 "current": "stackit:index/serviceAccountKey:ServiceAccountKey"
+            },
+            "stackit_sfs_export_policy": {
+                "current": "stackit:index/sfsExportPolicy:SfsExportPolicy",
+                "fields": {
+                    "rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ip_acl": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "stackit_sfs_resource_pool": {
+                "current": "stackit:index/sfsResourcePool:SfsResourcePool",
+                "fields": {
+                    "ip_acl": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_sfs_share": {
+                "current": "stackit:index/sfsShare:SfsShare"
             },
             "stackit_ske_cluster": {
                 "current": "stackit:index/skeCluster:SkeCluster",
@@ -817,6 +858,21 @@
                     },
                     "network_ranges": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_network_area_region": {
+                "current": "stackit:index/getNetworkAreaRegion:getNetworkAreaRegion",
+                "fields": {
+                    "ipv4": {
+                        "fields": {
+                            "default_nameservers": {
+                                "maxItemsOne": false
+                            },
+                            "network_ranges": {
+                                "maxItemsOne": false
+                            }
+                        }
                     }
                 }
             },
@@ -1145,6 +1201,40 @@
             },
             "stackit_service_account": {
                 "current": "stackit:index/getServiceAccount:getServiceAccount"
+            },
+            "stackit_sfs_export_policy": {
+                "current": "stackit:index/getSfsExportPolicy:getSfsExportPolicy",
+                "fields": {
+                    "rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ip_acl": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "stackit_sfs_resource_pool": {
+                "current": "stackit:index/getSfsResourcePool:getSfsResourcePool",
+                "fields": {
+                    "ip_acl": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_sfs_resource_pool_snapshot": {
+                "current": "stackit:index/getSfsResourcePoolSnapshot:getSfsResourcePoolSnapshot",
+                "fields": {
+                    "snapshots": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_sfs_share": {
+                "current": "stackit:index/getSfsShare:getSfsShare"
             },
             "stackit_ske_cluster": {
                 "current": "stackit:index/getSkeCluster:getSkeCluster",

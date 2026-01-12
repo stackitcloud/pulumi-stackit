@@ -512,11 +512,73 @@ export interface MongodbflexInstanceStorage {
 }
 
 export interface NetworkAreaNetworkRange {
+    /**
+     * @deprecated Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `stackit.NetworkAreaRegion` resource instead.
+     */
+    networkRangeId?: pulumi.Input<string>;
+    /**
+     * Classless Inter-Domain Routing (CIDR).
+     *
+     * @deprecated Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `stackit.NetworkAreaRegion` resource instead.
+     */
+    prefix: pulumi.Input<string>;
+}
+
+export interface NetworkAreaRegionIpv4 {
+    /**
+     * List of DNS Servers/Nameservers.
+     */
+    defaultNameservers?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The default prefix length for networks in the network area.
+     */
+    defaultPrefixLength?: pulumi.Input<number>;
+    /**
+     * The maximal prefix length for networks in the network area.
+     */
+    maxPrefixLength?: pulumi.Input<number>;
+    /**
+     * The minimal prefix length for networks in the network area.
+     */
+    minPrefixLength?: pulumi.Input<number>;
+    /**
+     * List of Network ranges.
+     */
+    networkRanges: pulumi.Input<pulumi.Input<inputs.NetworkAreaRegionIpv4NetworkRange>[]>;
+    /**
+     * IPv4 Classless Inter-Domain Routing (CIDR).
+     */
+    transferNetwork: pulumi.Input<string>;
+}
+
+export interface NetworkAreaRegionIpv4NetworkRange {
     networkRangeId?: pulumi.Input<string>;
     /**
      * Classless Inter-Domain Routing (CIDR).
      */
     prefix: pulumi.Input<string>;
+}
+
+export interface NetworkAreaRouteDestination {
+    /**
+     * CIDRV type. Possible values are: `cidrv4`, `cidrv6`. Only `cidrv4` is supported currently.
+     */
+    type: pulumi.Input<string>;
+    /**
+     * An CIDR string.
+     */
+    value: pulumi.Input<string>;
+}
+
+export interface NetworkAreaRouteNextHop {
+    /**
+     * Type of the next hop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Only `ipv4` supported currently.
+     */
+    type: pulumi.Input<string>;
+    /**
+     * Either IPv4 or IPv6 (not set for blackhole and internet). Only IPv4 supported currently.
+     */
+    value?: pulumi.Input<string>;
 }
 
 export interface ObservabilityAlertgroupRule {
@@ -1111,6 +1173,33 @@ export interface ServerBootVolume {
     sourceType: pulumi.Input<string>;
 }
 
+export interface SfsExportPolicyRule {
+    /**
+     * Description of the Rule
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * IP access control list; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
+     */
+    ipAcls: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Order of the rule within a Share Export Policy. The order is used so that when a client IP matches multiple rules, the first rule is applied
+     */
+    order: pulumi.Input<number>;
+    /**
+     * Flag to indicate if client IPs matching this rule can only mount the share in read only mode
+     */
+    readOnly?: pulumi.Input<boolean>;
+    /**
+     * Flag to honor set UUID
+     */
+    setUuid?: pulumi.Input<boolean>;
+    /**
+     * Flag to indicate if client IPs matching this rule have root access on the Share
+     */
+    superUser?: pulumi.Input<boolean>;
+}
+
 export interface SkeClusterExtensions {
     /**
      * Cluster access control configuration.
@@ -1193,11 +1282,11 @@ export interface SkeClusterHibernation {
 
 export interface SkeClusterMaintenance {
     /**
-     * Flag to enable/disable auto-updates of the Kubernetes version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+     * Flag to enable/disable auto-updates of the Kubernetes version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
      */
     enableKubernetesVersionUpdates?: pulumi.Input<boolean>;
     /**
-     * Flag to enable/disable auto-updates of the OS image version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+     * Flag to enable/disable auto-updates of the OS image version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
      */
     enableMachineImageVersionUpdates?: pulumi.Input<boolean>;
     /**
@@ -1269,11 +1358,11 @@ export interface SkeClusterNodePool {
      */
     osVersion?: pulumi.Input<string>;
     /**
-     * The minimum OS image version. This field will be used to set the minimum OS image version on creation/update of the cluster. If unset, the latest supported OS image version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current OS image version being used for the node pool, use the read-only `osVersionUsed` field.
+     * The minimum OS image version. This field will be used to set the minimum OS image version on creation/update of the cluster. If unset, the latest supported OS image version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/). To get the current OS image version being used for the node pool, use the read-only `osVersionUsed` field.
      */
     osVersionMin?: pulumi.Input<string>;
     /**
-     * Full OS image version used. For example, if 3815.2 was set in `osVersionMin`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+     * Full OS image version used. For example, if 3815.2 was set in `osVersionMin`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
      */
     osVersionUsed?: pulumi.Input<string>;
     /**

@@ -15,6 +15,7 @@ export function getServer(args: GetServerArgs, opts?: pulumi.InvokeOptions): Pro
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("stackit:index/getServer:getServer", {
         "projectId": args.projectId,
+        "region": args.region,
         "serverId": args.serverId,
     }, opts);
 }
@@ -27,6 +28,10 @@ export interface GetServerArgs {
      * STACKIT project ID to which the server is associated.
      */
     projectId: string;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: string;
     /**
      * The server ID.
      */
@@ -71,7 +76,7 @@ export interface GetServerResult {
      */
     readonly launchedAt: string;
     /**
-     * Name of the type of the machine for the server. Possible values are documented in [Virtual machine flavors](https://docs.stackit.cloud/stackit/en/virtual-machine-flavors-75137231.html)
+     * Name of the type of the machine for the server. Possible values are documented in [Virtual machine flavors](https://docs.stackit.cloud/products/compute-engine/server/basics/machine-types/)
      */
     readonly machineType: string;
     /**
@@ -86,6 +91,10 @@ export interface GetServerResult {
      * STACKIT project ID to which the server is associated.
      */
     readonly projectId: string;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    readonly region?: string;
     /**
      * The server ID.
      */
@@ -108,6 +117,7 @@ export function getServerOutput(args: GetServerOutputArgs, opts?: pulumi.InvokeO
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("stackit:index/getServer:getServer", {
         "projectId": args.projectId,
+        "region": args.region,
         "serverId": args.serverId,
     }, opts);
 }
@@ -120,6 +130,10 @@ export interface GetServerOutputArgs {
      * STACKIT project ID to which the server is associated.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string>;
     /**
      * The server ID.
      */

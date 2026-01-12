@@ -67,6 +67,7 @@ class GetNetworkAreaResult:
 
     @_builtins.property
     @pulumi.getter(name="defaultNameservers")
+    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026.""")
     def default_nameservers(self) -> Sequence[_builtins.str]:
         """
         List of DNS Servers/Nameservers.
@@ -75,6 +76,7 @@ class GetNetworkAreaResult:
 
     @_builtins.property
     @pulumi.getter(name="defaultPrefixLength")
+    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026.""")
     def default_prefix_length(self) -> _builtins.int:
         """
         The default prefix length for networks in the network area.
@@ -96,6 +98,7 @@ class GetNetworkAreaResult:
 
     @_builtins.property
     @pulumi.getter(name="maxPrefixLength")
+    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026.""")
     def max_prefix_length(self) -> _builtins.int:
         """
         The maximal prefix length for networks in the network area.
@@ -104,6 +107,7 @@ class GetNetworkAreaResult:
 
     @_builtins.property
     @pulumi.getter(name="minPrefixLength")
+    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026.""")
     def min_prefix_length(self) -> _builtins.int:
         """
         The minimal prefix length for networks in the network area.
@@ -128,6 +132,7 @@ class GetNetworkAreaResult:
 
     @_builtins.property
     @pulumi.getter(name="networkRanges")
+    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026.""")
     def network_ranges(self) -> Sequence['outputs.GetNetworkAreaNetworkRangeResult']:
         """
         List of Network ranges.
@@ -152,6 +157,7 @@ class GetNetworkAreaResult:
 
     @_builtins.property
     @pulumi.getter(name="transferNetwork")
+    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026.""")
     def transfer_network(self) -> _builtins.str:
         """
         Classless Inter-Domain Routing (CIDR).

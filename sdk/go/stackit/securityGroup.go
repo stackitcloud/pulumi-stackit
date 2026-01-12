@@ -26,6 +26,8 @@ type SecurityGroup struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// STACKIT project ID to which the security group is associated.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringOutput `pulumi:"region"`
 	// The security group ID.
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// Configures if a security group is stateful or stateless. There can only be one type of security groups per network interface/server.
@@ -73,6 +75,8 @@ type securityGroupState struct {
 	Name *string `pulumi:"name"`
 	// STACKIT project ID to which the security group is associated.
 	ProjectId *string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 	// The security group ID.
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// Configures if a security group is stateful or stateless. There can only be one type of security groups per network interface/server.
@@ -88,6 +92,8 @@ type SecurityGroupState struct {
 	Name pulumi.StringPtrInput
 	// STACKIT project ID to which the security group is associated.
 	ProjectId pulumi.StringPtrInput
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput
 	// The security group ID.
 	SecurityGroupId pulumi.StringPtrInput
 	// Configures if a security group is stateful or stateless. There can only be one type of security groups per network interface/server.
@@ -107,6 +113,8 @@ type securityGroupArgs struct {
 	Name *string `pulumi:"name"`
 	// STACKIT project ID to which the security group is associated.
 	ProjectId string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 	// Configures if a security group is stateful or stateless. There can only be one type of security groups per network interface/server.
 	Stateful *bool `pulumi:"stateful"`
 }
@@ -121,6 +129,8 @@ type SecurityGroupArgs struct {
 	Name pulumi.StringPtrInput
 	// STACKIT project ID to which the security group is associated.
 	ProjectId pulumi.StringInput
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput
 	// Configures if a security group is stateful or stateless. There can only be one type of security groups per network interface/server.
 	Stateful pulumi.BoolPtrInput
 }
@@ -230,6 +240,11 @@ func (o SecurityGroupOutput) Name() pulumi.StringOutput {
 // STACKIT project ID to which the security group is associated.
 func (o SecurityGroupOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityGroup) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The resource region. If not defined, the provider region is used.
+func (o SecurityGroupOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityGroup) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // The security group ID.

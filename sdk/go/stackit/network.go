@@ -63,12 +63,10 @@ type Network struct {
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// The public IP of the network.
 	PublicIp pulumi.StringOutput `pulumi:"publicIp"`
-	// Can only be used when experimental "network" is set.
 	// The resource region. If not defined, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// If set to `true`, the network is routed and therefore accessible from other networks.
 	Routed pulumi.BoolOutput `pulumi:"routed"`
-	// Can only be used when experimental "network" is set.
 	// The ID of the routing table associated with the network.
 	RoutingTableId pulumi.StringOutput `pulumi:"routingTableId"`
 }
@@ -148,12 +146,10 @@ type networkState struct {
 	ProjectId *string `pulumi:"projectId"`
 	// The public IP of the network.
 	PublicIp *string `pulumi:"publicIp"`
-	// Can only be used when experimental "network" is set.
 	// The resource region. If not defined, the provider region is used.
 	Region *string `pulumi:"region"`
 	// If set to `true`, the network is routed and therefore accessible from other networks.
 	Routed *bool `pulumi:"routed"`
-	// Can only be used when experimental "network" is set.
 	// The ID of the routing table associated with the network.
 	RoutingTableId *string `pulumi:"routingTableId"`
 }
@@ -201,12 +197,10 @@ type NetworkState struct {
 	ProjectId pulumi.StringPtrInput
 	// The public IP of the network.
 	PublicIp pulumi.StringPtrInput
-	// Can only be used when experimental "network" is set.
 	// The resource region. If not defined, the provider region is used.
 	Region pulumi.StringPtrInput
 	// If set to `true`, the network is routed and therefore accessible from other networks.
 	Routed pulumi.BoolPtrInput
-	// Can only be used when experimental "network" is set.
 	// The ID of the routing table associated with the network.
 	RoutingTableId pulumi.StringPtrInput
 }
@@ -246,12 +240,10 @@ type networkArgs struct {
 	NoIpv6Gateway *bool `pulumi:"noIpv6Gateway"`
 	// STACKIT project ID to which the network is associated.
 	ProjectId string `pulumi:"projectId"`
-	// Can only be used when experimental "network" is set.
 	// The resource region. If not defined, the provider region is used.
 	Region *string `pulumi:"region"`
 	// If set to `true`, the network is routed and therefore accessible from other networks.
 	Routed *bool `pulumi:"routed"`
-	// Can only be used when experimental "network" is set.
 	// The ID of the routing table associated with the network.
 	RoutingTableId *string `pulumi:"routingTableId"`
 }
@@ -288,12 +280,10 @@ type NetworkArgs struct {
 	NoIpv6Gateway pulumi.BoolPtrInput
 	// STACKIT project ID to which the network is associated.
 	ProjectId pulumi.StringInput
-	// Can only be used when experimental "network" is set.
 	// The resource region. If not defined, the provider region is used.
 	Region pulumi.StringPtrInput
 	// If set to `true`, the network is routed and therefore accessible from other networks.
 	Routed pulumi.BoolPtrInput
-	// Can only be used when experimental "network" is set.
 	// The ID of the routing table associated with the network.
 	RoutingTableId pulumi.StringPtrInput
 }
@@ -484,7 +474,6 @@ func (o NetworkOutput) PublicIp() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.PublicIp }).(pulumi.StringOutput)
 }
 
-// Can only be used when experimental "network" is set.
 // The resource region. If not defined, the provider region is used.
 func (o NetworkOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
@@ -495,7 +484,6 @@ func (o NetworkOutput) Routed() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Network) pulumi.BoolOutput { return v.Routed }).(pulumi.BoolOutput)
 }
 
-// Can only be used when experimental "network" is set.
 // The ID of the routing table associated with the network.
 func (o NetworkOutput) RoutingTableId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.RoutingTableId }).(pulumi.StringOutput)

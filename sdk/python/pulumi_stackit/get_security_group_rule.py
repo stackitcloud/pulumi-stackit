@@ -27,7 +27,7 @@ class GetSecurityGroupRuleResult:
     """
     A collection of values returned by getSecurityGroupRule.
     """
-    def __init__(__self__, description=None, direction=None, ether_type=None, icmp_parameters=None, id=None, ip_range=None, port_range=None, project_id=None, protocol=None, remote_security_group_id=None, security_group_id=None, security_group_rule_id=None):
+    def __init__(__self__, description=None, direction=None, ether_type=None, icmp_parameters=None, id=None, ip_range=None, port_range=None, project_id=None, protocol=None, region=None, remote_security_group_id=None, security_group_id=None, security_group_rule_id=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -55,6 +55,9 @@ class GetSecurityGroupRuleResult:
         if protocol and not isinstance(protocol, dict):
             raise TypeError("Expected argument 'protocol' to be a dict")
         pulumi.set(__self__, "protocol", protocol)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
         if remote_security_group_id and not isinstance(remote_security_group_id, str):
             raise TypeError("Expected argument 'remote_security_group_id' to be a str")
         pulumi.set(__self__, "remote_security_group_id", remote_security_group_id)
@@ -135,6 +138,14 @@ class GetSecurityGroupRuleResult:
         return pulumi.get(self, "protocol")
 
     @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
     @pulumi.getter(name="remoteSecurityGroupId")
     def remote_security_group_id(self) -> _builtins.str:
         """
@@ -174,12 +185,14 @@ class AwaitableGetSecurityGroupRuleResult(GetSecurityGroupRuleResult):
             port_range=self.port_range,
             project_id=self.project_id,
             protocol=self.protocol,
+            region=self.region,
             remote_security_group_id=self.remote_security_group_id,
             security_group_id=self.security_group_id,
             security_group_rule_id=self.security_group_rule_id)
 
 
 def get_security_group_rule(project_id: Optional[_builtins.str] = None,
+                            region: Optional[_builtins.str] = None,
                             security_group_id: Optional[_builtins.str] = None,
                             security_group_rule_id: Optional[_builtins.str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecurityGroupRuleResult:
@@ -190,11 +203,13 @@ def get_security_group_rule(project_id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str project_id: STACKIT project ID to which the security group rule is associated.
+    :param _builtins.str region: The resource region. If not defined, the provider region is used.
     :param _builtins.str security_group_id: The security group ID.
     :param _builtins.str security_group_rule_id: The security group rule ID.
     """
     __args__ = dict()
     __args__['projectId'] = project_id
+    __args__['region'] = region
     __args__['securityGroupId'] = security_group_id
     __args__['securityGroupRuleId'] = security_group_rule_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -210,10 +225,12 @@ def get_security_group_rule(project_id: Optional[_builtins.str] = None,
         port_range=pulumi.get(__ret__, 'port_range'),
         project_id=pulumi.get(__ret__, 'project_id'),
         protocol=pulumi.get(__ret__, 'protocol'),
+        region=pulumi.get(__ret__, 'region'),
         remote_security_group_id=pulumi.get(__ret__, 'remote_security_group_id'),
         security_group_id=pulumi.get(__ret__, 'security_group_id'),
         security_group_rule_id=pulumi.get(__ret__, 'security_group_rule_id'))
 def get_security_group_rule_output(project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                                   region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                    security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                                    security_group_rule_id: Optional[pulumi.Input[_builtins.str]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecurityGroupRuleResult]:
@@ -224,11 +241,13 @@ def get_security_group_rule_output(project_id: Optional[pulumi.Input[_builtins.s
 
 
     :param _builtins.str project_id: STACKIT project ID to which the security group rule is associated.
+    :param _builtins.str region: The resource region. If not defined, the provider region is used.
     :param _builtins.str security_group_id: The security group ID.
     :param _builtins.str security_group_rule_id: The security group rule ID.
     """
     __args__ = dict()
     __args__['projectId'] = project_id
+    __args__['region'] = region
     __args__['securityGroupId'] = security_group_id
     __args__['securityGroupRuleId'] = security_group_rule_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -243,6 +262,7 @@ def get_security_group_rule_output(project_id: Optional[pulumi.Input[_builtins.s
         port_range=pulumi.get(__response__, 'port_range'),
         project_id=pulumi.get(__response__, 'project_id'),
         protocol=pulumi.get(__response__, 'protocol'),
+        region=pulumi.get(__response__, 'region'),
         remote_security_group_id=pulumi.get(__response__, 'remote_security_group_id'),
         security_group_id=pulumi.get(__response__, 'security_group_id'),
         security_group_rule_id=pulumi.get(__response__, 'security_group_rule_id')))

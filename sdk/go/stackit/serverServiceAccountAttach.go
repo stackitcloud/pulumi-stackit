@@ -20,6 +20,8 @@ type ServerServiceAccountAttach struct {
 
 	// STACKIT project ID to which the service account attachment is associated.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringOutput `pulumi:"region"`
 	// The server ID.
 	ServerId pulumi.StringOutput `pulumi:"serverId"`
 	// The service account email.
@@ -67,6 +69,8 @@ func GetServerServiceAccountAttach(ctx *pulumi.Context,
 type serverServiceAccountAttachState struct {
 	// STACKIT project ID to which the service account attachment is associated.
 	ProjectId *string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 	// The server ID.
 	ServerId *string `pulumi:"serverId"`
 	// The service account email.
@@ -76,6 +80,8 @@ type serverServiceAccountAttachState struct {
 type ServerServiceAccountAttachState struct {
 	// STACKIT project ID to which the service account attachment is associated.
 	ProjectId pulumi.StringPtrInput
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput
 	// The server ID.
 	ServerId pulumi.StringPtrInput
 	// The service account email.
@@ -89,6 +95,8 @@ func (ServerServiceAccountAttachState) ElementType() reflect.Type {
 type serverServiceAccountAttachArgs struct {
 	// STACKIT project ID to which the service account attachment is associated.
 	ProjectId string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 	// The server ID.
 	ServerId string `pulumi:"serverId"`
 	// The service account email.
@@ -99,6 +107,8 @@ type serverServiceAccountAttachArgs struct {
 type ServerServiceAccountAttachArgs struct {
 	// STACKIT project ID to which the service account attachment is associated.
 	ProjectId pulumi.StringInput
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput
 	// The server ID.
 	ServerId pulumi.StringInput
 	// The service account email.
@@ -195,6 +205,11 @@ func (o ServerServiceAccountAttachOutput) ToServerServiceAccountAttachOutputWith
 // STACKIT project ID to which the service account attachment is associated.
 func (o ServerServiceAccountAttachOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerServiceAccountAttach) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The resource region. If not defined, the provider region is used.
+func (o ServerServiceAccountAttachOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerServiceAccountAttach) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // The server ID.

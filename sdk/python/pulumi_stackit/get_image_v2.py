@@ -28,7 +28,7 @@ class GetImageV2Result:
     """
     A collection of values returned by getImageV2.
     """
-    def __init__(__self__, checksum=None, config=None, disk_format=None, filter=None, id=None, image_id=None, labels=None, min_disk_size=None, min_ram=None, name=None, name_regex=None, project_id=None, protected=None, scope=None, sort_ascending=None):
+    def __init__(__self__, checksum=None, config=None, disk_format=None, filter=None, id=None, image_id=None, labels=None, min_disk_size=None, min_ram=None, name=None, name_regex=None, project_id=None, protected=None, region=None, scope=None, sort_ascending=None):
         if checksum and not isinstance(checksum, dict):
             raise TypeError("Expected argument 'checksum' to be a dict")
         pulumi.set(__self__, "checksum", checksum)
@@ -68,6 +68,9 @@ class GetImageV2Result:
         if protected and not isinstance(protected, bool):
             raise TypeError("Expected argument 'protected' to be a bool")
         pulumi.set(__self__, "protected", protected)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
         if scope and not isinstance(scope, str):
             raise TypeError("Expected argument 'scope' to be a str")
         pulumi.set(__self__, "scope", scope)
@@ -178,6 +181,14 @@ class GetImageV2Result:
 
     @_builtins.property
     @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter
     def scope(self) -> _builtins.str:
         """
         The scope of the image.
@@ -212,6 +223,7 @@ class AwaitableGetImageV2Result(GetImageV2Result):
             name_regex=self.name_regex,
             project_id=self.project_id,
             protected=self.protected,
+            region=self.region,
             scope=self.scope,
             sort_ascending=self.sort_ascending)
 
@@ -221,6 +233,7 @@ def get_image_v2(filter: Optional[Union['GetImageV2FilterArgs', 'GetImageV2Filte
                  name: Optional[_builtins.str] = None,
                  name_regex: Optional[_builtins.str] = None,
                  project_id: Optional[_builtins.str] = None,
+                 region: Optional[_builtins.str] = None,
                  sort_ascending: Optional[_builtins.bool] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImageV2Result:
     """
@@ -232,6 +245,7 @@ def get_image_v2(filter: Optional[Union['GetImageV2FilterArgs', 'GetImageV2Filte
     :param _builtins.str name: Exact image name to match. Optionally applies a `filter` block to further refine results in case multiple images share the same name. The first match is returned, optionally sorted by name in ascending order. Cannot be used together with `name_regex`.
     :param _builtins.str name_regex: Regular expression to match against image names. Optionally applies a `filter` block to narrow down results when multiple image names match the regex. The first match is returned, optionally sorted by name in ascending order. Cannot be used together with `name`.
     :param _builtins.str project_id: STACKIT project ID to which the image is associated.
+    :param _builtins.str region: The resource region. If not defined, the provider region is used.
     :param _builtins.bool sort_ascending: If set to `true`, images are sorted in ascending lexicographical order by image name (such as `Ubuntu 18.04`, `Ubuntu 20.04`, `Ubuntu 22.04`) before selecting the first match. Defaults to `false` (descending such as `Ubuntu 22.04`, `Ubuntu 20.04`, `Ubuntu 18.04`).
     """
     __args__ = dict()
@@ -240,6 +254,7 @@ def get_image_v2(filter: Optional[Union['GetImageV2FilterArgs', 'GetImageV2Filte
     __args__['name'] = name
     __args__['nameRegex'] = name_regex
     __args__['projectId'] = project_id
+    __args__['region'] = region
     __args__['sortAscending'] = sort_ascending
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('stackit:index/getImageV2:getImageV2', __args__, opts=opts, typ=GetImageV2Result).value
@@ -258,6 +273,7 @@ def get_image_v2(filter: Optional[Union['GetImageV2FilterArgs', 'GetImageV2Filte
         name_regex=pulumi.get(__ret__, 'name_regex'),
         project_id=pulumi.get(__ret__, 'project_id'),
         protected=pulumi.get(__ret__, 'protected'),
+        region=pulumi.get(__ret__, 'region'),
         scope=pulumi.get(__ret__, 'scope'),
         sort_ascending=pulumi.get(__ret__, 'sort_ascending'))
 def get_image_v2_output(filter: Optional[pulumi.Input[Optional[Union['GetImageV2FilterArgs', 'GetImageV2FilterArgsDict']]]] = None,
@@ -265,6 +281,7 @@ def get_image_v2_output(filter: Optional[pulumi.Input[Optional[Union['GetImageV2
                         name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                         name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                         project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                        region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                         sort_ascending: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImageV2Result]:
     """
@@ -276,6 +293,7 @@ def get_image_v2_output(filter: Optional[pulumi.Input[Optional[Union['GetImageV2
     :param _builtins.str name: Exact image name to match. Optionally applies a `filter` block to further refine results in case multiple images share the same name. The first match is returned, optionally sorted by name in ascending order. Cannot be used together with `name_regex`.
     :param _builtins.str name_regex: Regular expression to match against image names. Optionally applies a `filter` block to narrow down results when multiple image names match the regex. The first match is returned, optionally sorted by name in ascending order. Cannot be used together with `name`.
     :param _builtins.str project_id: STACKIT project ID to which the image is associated.
+    :param _builtins.str region: The resource region. If not defined, the provider region is used.
     :param _builtins.bool sort_ascending: If set to `true`, images are sorted in ascending lexicographical order by image name (such as `Ubuntu 18.04`, `Ubuntu 20.04`, `Ubuntu 22.04`) before selecting the first match. Defaults to `false` (descending such as `Ubuntu 22.04`, `Ubuntu 20.04`, `Ubuntu 18.04`).
     """
     __args__ = dict()
@@ -284,6 +302,7 @@ def get_image_v2_output(filter: Optional[pulumi.Input[Optional[Union['GetImageV2
     __args__['name'] = name
     __args__['nameRegex'] = name_regex
     __args__['projectId'] = project_id
+    __args__['region'] = region
     __args__['sortAscending'] = sort_ascending
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('stackit:index/getImageV2:getImageV2', __args__, opts=opts, typ=GetImageV2Result)
@@ -301,5 +320,6 @@ def get_image_v2_output(filter: Optional[pulumi.Input[Optional[Union['GetImageV2
         name_regex=pulumi.get(__response__, 'name_regex'),
         project_id=pulumi.get(__response__, 'project_id'),
         protected=pulumi.get(__response__, 'protected'),
+        region=pulumi.get(__response__, 'region'),
         scope=pulumi.get(__response__, 'scope'),
         sort_ascending=pulumi.get(__response__, 'sort_ascending')))

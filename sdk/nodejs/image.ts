@@ -84,6 +84,10 @@ export class Image extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly protected: pulumi.Output<boolean>;
     /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    declare public readonly region: pulumi.Output<string>;
+    /**
      * The scope of the image.
      */
     declare public /*out*/ readonly scope: pulumi.Output<string>;
@@ -112,6 +116,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["projectId"] = state?.projectId;
             resourceInputs["protected"] = state?.protected;
+            resourceInputs["region"] = state?.region;
             resourceInputs["scope"] = state?.scope;
         } else {
             const args = argsOrState as ImageArgs | undefined;
@@ -132,6 +137,7 @@ export class Image extends pulumi.CustomResource {
             resourceInputs["minRam"] = args?.minRam;
             resourceInputs["name"] = args?.name;
             resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
             resourceInputs["checksum"] = undefined /*out*/;
             resourceInputs["imageId"] = undefined /*out*/;
             resourceInputs["protected"] = undefined /*out*/;
@@ -191,6 +197,10 @@ export interface ImageState {
      */
     protected?: pulumi.Input<boolean>;
     /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string>;
+    /**
      * The scope of the image.
      */
     scope?: pulumi.Input<string>;
@@ -232,4 +242,8 @@ export interface ImageArgs {
      * STACKIT project ID to which the image is associated.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string>;
 }

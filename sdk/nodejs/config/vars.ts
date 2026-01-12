@@ -393,6 +393,17 @@ Object.defineProperty(exports, "serviceEnablementCustomEndpoint", {
 });
 
 /**
+ * Custom endpoint for the Stackit Filestorage API
+ */
+export declare const sfsCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "sfsCustomEndpoint", {
+    get() {
+        return __config.get("sfsCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+/**
  * Custom endpoint for the Kubernetes Engine (SKE) service
  */
 export declare const skeCustomEndpoint: string | undefined;

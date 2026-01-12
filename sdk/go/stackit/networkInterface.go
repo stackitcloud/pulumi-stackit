@@ -36,6 +36,8 @@ type NetworkInterface struct {
 	NetworkInterfaceId pulumi.StringOutput `pulumi:"networkInterfaceId"`
 	// STACKIT project ID to which the network is associated.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringOutput `pulumi:"region"`
 	// The Network Interface Security. If set to false, then no security groups will apply to this network interface.
 	Security pulumi.BoolOutput `pulumi:"security"`
 	// The list of security group UUIDs. If security is set to false, setting this field will lead to an error.
@@ -98,6 +100,8 @@ type networkInterfaceState struct {
 	NetworkInterfaceId *string `pulumi:"networkInterfaceId"`
 	// STACKIT project ID to which the network is associated.
 	ProjectId *string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 	// The Network Interface Security. If set to false, then no security groups will apply to this network interface.
 	Security *bool `pulumi:"security"`
 	// The list of security group UUIDs. If security is set to false, setting this field will lead to an error.
@@ -125,6 +129,8 @@ type NetworkInterfaceState struct {
 	NetworkInterfaceId pulumi.StringPtrInput
 	// STACKIT project ID to which the network is associated.
 	ProjectId pulumi.StringPtrInput
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput
 	// The Network Interface Security. If set to false, then no security groups will apply to this network interface.
 	Security pulumi.BoolPtrInput
 	// The list of security group UUIDs. If security is set to false, setting this field will lead to an error.
@@ -150,6 +156,8 @@ type networkInterfaceArgs struct {
 	NetworkId string `pulumi:"networkId"`
 	// STACKIT project ID to which the network is associated.
 	ProjectId string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 	// The Network Interface Security. If set to false, then no security groups will apply to this network interface.
 	Security *bool `pulumi:"security"`
 	// The list of security group UUIDs. If security is set to false, setting this field will lead to an error.
@@ -170,6 +178,8 @@ type NetworkInterfaceArgs struct {
 	NetworkId pulumi.StringInput
 	// STACKIT project ID to which the network is associated.
 	ProjectId pulumi.StringInput
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput
 	// The Network Interface Security. If set to false, then no security groups will apply to this network interface.
 	Security pulumi.BoolPtrInput
 	// The list of security group UUIDs. If security is set to false, setting this field will lead to an error.
@@ -306,6 +316,11 @@ func (o NetworkInterfaceOutput) NetworkInterfaceId() pulumi.StringOutput {
 // STACKIT project ID to which the network is associated.
 func (o NetworkInterfaceOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkInterface) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The resource region. If not defined, the provider region is used.
+func (o NetworkInterfaceOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkInterface) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // The Network Interface Security. If set to false, then no security groups will apply to this network interface.

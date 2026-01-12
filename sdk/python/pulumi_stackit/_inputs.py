@@ -67,6 +67,14 @@ __all__ = [
     'MongodbflexInstanceStorageArgsDict',
     'NetworkAreaNetworkRangeArgs',
     'NetworkAreaNetworkRangeArgsDict',
+    'NetworkAreaRegionIpv4Args',
+    'NetworkAreaRegionIpv4ArgsDict',
+    'NetworkAreaRegionIpv4NetworkRangeArgs',
+    'NetworkAreaRegionIpv4NetworkRangeArgsDict',
+    'NetworkAreaRouteDestinationArgs',
+    'NetworkAreaRouteDestinationArgsDict',
+    'NetworkAreaRouteNextHopArgs',
+    'NetworkAreaRouteNextHopArgsDict',
     'ObservabilityAlertgroupRuleArgs',
     'ObservabilityAlertgroupRuleArgsDict',
     'ObservabilityInstanceAlertConfigArgs',
@@ -117,6 +125,8 @@ __all__ = [
     'ServerBackupScheduleBackupPropertiesArgsDict',
     'ServerBootVolumeArgs',
     'ServerBootVolumeArgsDict',
+    'SfsExportPolicyRuleArgs',
+    'SfsExportPolicyRuleArgsDict',
     'SkeClusterExtensionsArgs',
     'SkeClusterExtensionsArgsDict',
     'SkeClusterExtensionsAclArgs',
@@ -2452,6 +2462,188 @@ class NetworkAreaNetworkRangeArgs:
         """
         :param pulumi.Input[_builtins.str] prefix: Classless Inter-Domain Routing (CIDR).
         """
+        if prefix is not None:
+            warnings.warn("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""", DeprecationWarning)
+            pulumi.log.warn("""prefix is deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
+        pulumi.set(__self__, "prefix", prefix)
+        if network_range_id is not None:
+            warnings.warn("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""", DeprecationWarning)
+            pulumi.log.warn("""network_range_id is deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
+        if network_range_id is not None:
+            pulumi.set(__self__, "network_range_id", network_range_id)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
+    def prefix(self) -> pulumi.Input[_builtins.str]:
+        """
+        Classless Inter-Domain Routing (CIDR).
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "prefix", value)
+
+    @_builtins.property
+    @pulumi.getter(name="networkRangeId")
+    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
+    def network_range_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "network_range_id")
+
+    @network_range_id.setter
+    def network_range_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "network_range_id", value)
+
+
+if not MYPY:
+    class NetworkAreaRegionIpv4ArgsDict(TypedDict):
+        network_ranges: pulumi.Input[Sequence[pulumi.Input['NetworkAreaRegionIpv4NetworkRangeArgsDict']]]
+        """
+        List of Network ranges.
+        """
+        transfer_network: pulumi.Input[_builtins.str]
+        """
+        IPv4 Classless Inter-Domain Routing (CIDR).
+        """
+        default_nameservers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of DNS Servers/Nameservers.
+        """
+        default_prefix_length: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The default prefix length for networks in the network area.
+        """
+        max_prefix_length: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The maximal prefix length for networks in the network area.
+        """
+        min_prefix_length: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        The minimal prefix length for networks in the network area.
+        """
+elif False:
+    NetworkAreaRegionIpv4ArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NetworkAreaRegionIpv4Args:
+    def __init__(__self__, *,
+                 network_ranges: pulumi.Input[Sequence[pulumi.Input['NetworkAreaRegionIpv4NetworkRangeArgs']]],
+                 transfer_network: pulumi.Input[_builtins.str],
+                 default_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 default_prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
+                 max_prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
+                 min_prefix_length: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkAreaRegionIpv4NetworkRangeArgs']]] network_ranges: List of Network ranges.
+        :param pulumi.Input[_builtins.str] transfer_network: IPv4 Classless Inter-Domain Routing (CIDR).
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] default_nameservers: List of DNS Servers/Nameservers.
+        :param pulumi.Input[_builtins.int] default_prefix_length: The default prefix length for networks in the network area.
+        :param pulumi.Input[_builtins.int] max_prefix_length: The maximal prefix length for networks in the network area.
+        :param pulumi.Input[_builtins.int] min_prefix_length: The minimal prefix length for networks in the network area.
+        """
+        pulumi.set(__self__, "network_ranges", network_ranges)
+        pulumi.set(__self__, "transfer_network", transfer_network)
+        if default_nameservers is not None:
+            pulumi.set(__self__, "default_nameservers", default_nameservers)
+        if default_prefix_length is not None:
+            pulumi.set(__self__, "default_prefix_length", default_prefix_length)
+        if max_prefix_length is not None:
+            pulumi.set(__self__, "max_prefix_length", max_prefix_length)
+        if min_prefix_length is not None:
+            pulumi.set(__self__, "min_prefix_length", min_prefix_length)
+
+    @_builtins.property
+    @pulumi.getter(name="networkRanges")
+    def network_ranges(self) -> pulumi.Input[Sequence[pulumi.Input['NetworkAreaRegionIpv4NetworkRangeArgs']]]:
+        """
+        List of Network ranges.
+        """
+        return pulumi.get(self, "network_ranges")
+
+    @network_ranges.setter
+    def network_ranges(self, value: pulumi.Input[Sequence[pulumi.Input['NetworkAreaRegionIpv4NetworkRangeArgs']]]):
+        pulumi.set(self, "network_ranges", value)
+
+    @_builtins.property
+    @pulumi.getter(name="transferNetwork")
+    def transfer_network(self) -> pulumi.Input[_builtins.str]:
+        """
+        IPv4 Classless Inter-Domain Routing (CIDR).
+        """
+        return pulumi.get(self, "transfer_network")
+
+    @transfer_network.setter
+    def transfer_network(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "transfer_network", value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultNameservers")
+    def default_nameservers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of DNS Servers/Nameservers.
+        """
+        return pulumi.get(self, "default_nameservers")
+
+    @default_nameservers.setter
+    def default_nameservers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "default_nameservers", value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultPrefixLength")
+    def default_prefix_length(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The default prefix length for networks in the network area.
+        """
+        return pulumi.get(self, "default_prefix_length")
+
+    @default_prefix_length.setter
+    def default_prefix_length(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "default_prefix_length", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxPrefixLength")
+    def max_prefix_length(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The maximal prefix length for networks in the network area.
+        """
+        return pulumi.get(self, "max_prefix_length")
+
+    @max_prefix_length.setter
+    def max_prefix_length(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_prefix_length", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minPrefixLength")
+    def min_prefix_length(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        The minimal prefix length for networks in the network area.
+        """
+        return pulumi.get(self, "min_prefix_length")
+
+    @min_prefix_length.setter
+    def min_prefix_length(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "min_prefix_length", value)
+
+
+if not MYPY:
+    class NetworkAreaRegionIpv4NetworkRangeArgsDict(TypedDict):
+        prefix: pulumi.Input[_builtins.str]
+        """
+        Classless Inter-Domain Routing (CIDR).
+        """
+        network_range_id: NotRequired[pulumi.Input[_builtins.str]]
+elif False:
+    NetworkAreaRegionIpv4NetworkRangeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NetworkAreaRegionIpv4NetworkRangeArgs:
+    def __init__(__self__, *,
+                 prefix: pulumi.Input[_builtins.str],
+                 network_range_id: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] prefix: Classless Inter-Domain Routing (CIDR).
+        """
         pulumi.set(__self__, "prefix", prefix)
         if network_range_id is not None:
             pulumi.set(__self__, "network_range_id", network_range_id)
@@ -2476,6 +2668,107 @@ class NetworkAreaNetworkRangeArgs:
     @network_range_id.setter
     def network_range_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "network_range_id", value)
+
+
+if not MYPY:
+    class NetworkAreaRouteDestinationArgsDict(TypedDict):
+        type: pulumi.Input[_builtins.str]
+        """
+        CIDRV type. Possible values are: `cidrv4`, `cidrv6`. Only `cidrv4` is supported currently.
+        """
+        value: pulumi.Input[_builtins.str]
+        """
+        An CIDR string.
+        """
+elif False:
+    NetworkAreaRouteDestinationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NetworkAreaRouteDestinationArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] type: CIDRV type. Possible values are: `cidrv4`, `cidrv6`. Only `cidrv4` is supported currently.
+        :param pulumi.Input[_builtins.str] value: An CIDR string.
+        """
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        CIDRV type. Possible values are: `cidrv4`, `cidrv6`. Only `cidrv4` is supported currently.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[_builtins.str]:
+        """
+        An CIDR string.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class NetworkAreaRouteNextHopArgsDict(TypedDict):
+        type: pulumi.Input[_builtins.str]
+        """
+        Type of the next hop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Only `ipv4` supported currently.
+        """
+        value: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Either IPv4 or IPv6 (not set for blackhole and internet). Only IPv4 supported currently.
+        """
+elif False:
+    NetworkAreaRouteNextHopArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class NetworkAreaRouteNextHopArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[_builtins.str],
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] type: Type of the next hop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Only `ipv4` supported currently.
+        :param pulumi.Input[_builtins.str] value: Either IPv4 or IPv6 (not set for blackhole and internet). Only IPv4 supported currently.
+        """
+        pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        Type of the next hop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Only `ipv4` supported currently.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Either IPv4 or IPv6 (not set for blackhole and internet). Only IPv4 supported currently.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
 
 
 if not MYPY:
@@ -5391,6 +5684,136 @@ class ServerBootVolumeArgs:
 
 
 if not MYPY:
+    class SfsExportPolicyRuleArgsDict(TypedDict):
+        ip_acls: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+        """
+        IP access control list; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
+        """
+        order: pulumi.Input[_builtins.int]
+        """
+        Order of the rule within a Share Export Policy. The order is used so that when a client IP matches multiple rules, the first rule is applied
+        """
+        description: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Description of the Rule
+        """
+        read_only: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Flag to indicate if client IPs matching this rule can only mount the share in read only mode
+        """
+        set_uuid: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Flag to honor set UUID
+        """
+        super_user: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Flag to indicate if client IPs matching this rule have root access on the Share
+        """
+elif False:
+    SfsExportPolicyRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SfsExportPolicyRuleArgs:
+    def __init__(__self__, *,
+                 ip_acls: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 order: pulumi.Input[_builtins.int],
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 read_only: Optional[pulumi.Input[_builtins.bool]] = None,
+                 set_uuid: Optional[pulumi.Input[_builtins.bool]] = None,
+                 super_user: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_acls: IP access control list; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
+        :param pulumi.Input[_builtins.int] order: Order of the rule within a Share Export Policy. The order is used so that when a client IP matches multiple rules, the first rule is applied
+        :param pulumi.Input[_builtins.str] description: Description of the Rule
+        :param pulumi.Input[_builtins.bool] read_only: Flag to indicate if client IPs matching this rule can only mount the share in read only mode
+        :param pulumi.Input[_builtins.bool] set_uuid: Flag to honor set UUID
+        :param pulumi.Input[_builtins.bool] super_user: Flag to indicate if client IPs matching this rule have root access on the Share
+        """
+        pulumi.set(__self__, "ip_acls", ip_acls)
+        pulumi.set(__self__, "order", order)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+        if set_uuid is not None:
+            pulumi.set(__self__, "set_uuid", set_uuid)
+        if super_user is not None:
+            pulumi.set(__self__, "super_user", super_user)
+
+    @_builtins.property
+    @pulumi.getter(name="ipAcls")
+    def ip_acls(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        IP access control list; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
+        """
+        return pulumi.get(self, "ip_acls")
+
+    @ip_acls.setter
+    def ip_acls(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "ip_acls", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def order(self) -> pulumi.Input[_builtins.int]:
+        """
+        Order of the rule within a Share Export Policy. The order is used so that when a client IP matches multiple rules, the first rule is applied
+        """
+        return pulumi.get(self, "order")
+
+    @order.setter
+    def order(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "order", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Description of the Rule
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Flag to indicate if client IPs matching this rule can only mount the share in read only mode
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "read_only", value)
+
+    @_builtins.property
+    @pulumi.getter(name="setUuid")
+    def set_uuid(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Flag to honor set UUID
+        """
+        return pulumi.get(self, "set_uuid")
+
+    @set_uuid.setter
+    def set_uuid(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "set_uuid", value)
+
+    @_builtins.property
+    @pulumi.getter(name="superUser")
+    def super_user(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Flag to indicate if client IPs matching this rule have root access on the Share
+        """
+        return pulumi.get(self, "super_user")
+
+    @super_user.setter
+    def super_user(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "super_user", value)
+
+
+if not MYPY:
     class SkeClusterExtensionsArgsDict(TypedDict):
         acl: NotRequired[pulumi.Input['SkeClusterExtensionsAclArgsDict']]
         """
@@ -5771,11 +6194,11 @@ if not MYPY:
         """
         enable_kubernetes_version_updates: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        Flag to enable/disable auto-updates of the Kubernetes version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+        Flag to enable/disable auto-updates of the Kubernetes version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
         """
         enable_machine_image_version_updates: NotRequired[pulumi.Input[_builtins.bool]]
         """
-        Flag to enable/disable auto-updates of the OS image version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+        Flag to enable/disable auto-updates of the OS image version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
         """
 elif False:
     SkeClusterMaintenanceArgsDict: TypeAlias = Mapping[str, Any]
@@ -5790,8 +6213,8 @@ class SkeClusterMaintenanceArgs:
         """
         :param pulumi.Input[_builtins.str] end: Time for maintenance window end. E.g. `01:23:45Z`, `05:00:00+02:00`.
         :param pulumi.Input[_builtins.str] start: Time for maintenance window start. E.g. `01:23:45Z`, `05:00:00+02:00`.
-        :param pulumi.Input[_builtins.bool] enable_kubernetes_version_updates: Flag to enable/disable auto-updates of the Kubernetes version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
-        :param pulumi.Input[_builtins.bool] enable_machine_image_version_updates: Flag to enable/disable auto-updates of the OS image version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+        :param pulumi.Input[_builtins.bool] enable_kubernetes_version_updates: Flag to enable/disable auto-updates of the Kubernetes version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
+        :param pulumi.Input[_builtins.bool] enable_machine_image_version_updates: Flag to enable/disable auto-updates of the OS image version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
         """
         pulumi.set(__self__, "end", end)
         pulumi.set(__self__, "start", start)
@@ -5828,7 +6251,7 @@ class SkeClusterMaintenanceArgs:
     @pulumi.getter(name="enableKubernetesVersionUpdates")
     def enable_kubernetes_version_updates(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Flag to enable/disable auto-updates of the Kubernetes version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+        Flag to enable/disable auto-updates of the Kubernetes version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
         """
         return pulumi.get(self, "enable_kubernetes_version_updates")
 
@@ -5840,7 +6263,7 @@ class SkeClusterMaintenanceArgs:
     @pulumi.getter(name="enableMachineImageVersionUpdates")
     def enable_machine_image_version_updates(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Flag to enable/disable auto-updates of the OS image version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+        Flag to enable/disable auto-updates of the OS image version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
         """
         return pulumi.get(self, "enable_machine_image_version_updates")
 
@@ -5933,11 +6356,11 @@ if not MYPY:
         """
         os_version_min: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The minimum OS image version. This field will be used to set the minimum OS image version on creation/update of the cluster. If unset, the latest supported OS image version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current OS image version being used for the node pool, use the read-only `os_version_used` field.
+        The minimum OS image version. This field will be used to set the minimum OS image version on creation/update of the cluster. If unset, the latest supported OS image version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/). To get the current OS image version being used for the node pool, use the read-only `os_version_used` field.
         """
         os_version_used: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Full OS image version used. For example, if 3815.2 was set in `os_version_min`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+        Full OS image version used. For example, if 3815.2 was set in `os_version_min`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
         """
         taints: NotRequired[pulumi.Input[Sequence[pulumi.Input['SkeClusterNodePoolTaintArgsDict']]]]
         """
@@ -5987,8 +6410,8 @@ class SkeClusterNodePoolArgs:
         :param pulumi.Input[_builtins.int] max_unavailable: Maximum number of VMs that that can be unavailable during an update. If set (larger than 0), then it must be at least the amount of zones configured for the nodepool. The `max_surge` and `max_unavailable` fields cannot both be unset at the same time.
         :param pulumi.Input[_builtins.str] os_name: The name of the OS image. Defaults to `flatcar`.
         :param pulumi.Input[_builtins.str] os_version: This field is deprecated, use `os_version_min` to configure the version and `os_version_used` to get the currently used version instead.
-        :param pulumi.Input[_builtins.str] os_version_min: The minimum OS image version. This field will be used to set the minimum OS image version on creation/update of the cluster. If unset, the latest supported OS image version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current OS image version being used for the node pool, use the read-only `os_version_used` field.
-        :param pulumi.Input[_builtins.str] os_version_used: Full OS image version used. For example, if 3815.2 was set in `os_version_min`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+        :param pulumi.Input[_builtins.str] os_version_min: The minimum OS image version. This field will be used to set the minimum OS image version on creation/update of the cluster. If unset, the latest supported OS image version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/). To get the current OS image version being used for the node pool, use the read-only `os_version_used` field.
+        :param pulumi.Input[_builtins.str] os_version_used: Full OS image version used. For example, if 3815.2 was set in `os_version_min`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
         :param pulumi.Input[Sequence[pulumi.Input['SkeClusterNodePoolTaintArgs']]] taints: Specifies a taint list as defined below.
         :param pulumi.Input[_builtins.int] volume_size: The volume size in GB. Defaults to `20`
         :param pulumi.Input[_builtins.str] volume_type: Specifies the volume type. Defaults to `storage_premium_perf1`.
@@ -6175,7 +6598,7 @@ class SkeClusterNodePoolArgs:
     @pulumi.getter(name="osVersionMin")
     def os_version_min(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The minimum OS image version. This field will be used to set the minimum OS image version on creation/update of the cluster. If unset, the latest supported OS image version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current OS image version being used for the node pool, use the read-only `os_version_used` field.
+        The minimum OS image version. This field will be used to set the minimum OS image version on creation/update of the cluster. If unset, the latest supported OS image version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/). To get the current OS image version being used for the node pool, use the read-only `os_version_used` field.
         """
         return pulumi.get(self, "os_version_min")
 
@@ -6187,7 +6610,7 @@ class SkeClusterNodePoolArgs:
     @pulumi.getter(name="osVersionUsed")
     def os_version_used(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Full OS image version used. For example, if 3815.2 was set in `os_version_min`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+        Full OS image version used. For example, if 3815.2 was set in `os_version_min`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
         """
         return pulumi.get(self, "os_version_used")
 
