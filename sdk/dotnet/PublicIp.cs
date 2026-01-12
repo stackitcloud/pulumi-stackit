@@ -44,6 +44,12 @@ namespace Pulumi.Stackit
         [Output("publicIpId")]
         public Output<string> PublicIpId { get; private set; } = null!;
 
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Output("region")]
+        public Output<string> Region { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a PublicIp resource with the given unique name, arguments, and options.
@@ -112,6 +118,12 @@ namespace Pulumi.Stackit
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
         public PublicIpArgs()
         {
         }
@@ -152,6 +164,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("publicIpId")]
         public Input<string>? PublicIpId { get; set; }
+
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         public PublicIpState()
         {

@@ -56,6 +56,10 @@ export class PublicIpAssociate extends pulumi.CustomResource {
      * The public IP ID.
      */
     declare public readonly publicIpId: pulumi.Output<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a PublicIpAssociate resource with the given unique name, arguments, and options.
@@ -74,6 +78,7 @@ export class PublicIpAssociate extends pulumi.CustomResource {
             resourceInputs["networkInterfaceId"] = state?.networkInterfaceId;
             resourceInputs["projectId"] = state?.projectId;
             resourceInputs["publicIpId"] = state?.publicIpId;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as PublicIpAssociateArgs | undefined;
             if (args?.networkInterfaceId === undefined && !opts.urn) {
@@ -88,6 +93,7 @@ export class PublicIpAssociate extends pulumi.CustomResource {
             resourceInputs["networkInterfaceId"] = args?.networkInterfaceId;
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["publicIpId"] = args?.publicIpId;
+            resourceInputs["region"] = args?.region;
             resourceInputs["ip"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -115,6 +121,10 @@ export interface PublicIpAssociateState {
      * The public IP ID.
      */
     publicIpId?: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string>;
 }
 
 /**
@@ -133,4 +143,8 @@ export interface PublicIpAssociateArgs {
      * The public IP ID.
      */
     publicIpId: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string>;
 }

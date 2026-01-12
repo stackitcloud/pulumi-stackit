@@ -21,17 +21,21 @@ class PublicIpArgs:
     def __init__(__self__, *,
                  project_id: pulumi.Input[_builtins.str],
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 network_interface_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 network_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PublicIp resource.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the public IP is associated.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
         pulumi.set(__self__, "project_id", project_id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if network_interface_id is not None:
             pulumi.set(__self__, "network_interface_id", network_interface_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
@@ -66,6 +70,18 @@ class PublicIpArgs:
     def network_interface_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "network_interface_id", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
 
 @pulumi.input_type
 class _PublicIpState:
@@ -74,13 +90,15 @@ class _PublicIpState:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  network_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ip_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 public_ip_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PublicIp resources.
         :param pulumi.Input[_builtins.str] ip: The IP address.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the public IP is associated.
         :param pulumi.Input[_builtins.str] public_ip_id: The public IP ID.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
         if ip is not None:
             pulumi.set(__self__, "ip", ip)
@@ -92,6 +110,8 @@ class _PublicIpState:
             pulumi.set(__self__, "project_id", project_id)
         if public_ip_id is not None:
             pulumi.set(__self__, "public_ip_id", public_ip_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
 
     @_builtins.property
     @pulumi.getter
@@ -150,6 +170,18 @@ class _PublicIpState:
     def public_ip_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "public_ip_id", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
 
 @pulumi.type_token("stackit:index/publicIp:PublicIp")
 class PublicIp(pulumi.CustomResource):
@@ -160,6 +192,7 @@ class PublicIp(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  network_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         Public IP resource schema. Must have a `region` specified in the provider configuration.
@@ -170,6 +203,7 @@ class PublicIp(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the public IP is associated.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
         ...
     @overload
@@ -200,6 +234,7 @@ class PublicIp(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  network_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -214,6 +249,7 @@ class PublicIp(pulumi.CustomResource):
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
+            __props__.__dict__["region"] = region
             __props__.__dict__["ip"] = None
             __props__.__dict__["public_ip_id"] = None
         super(PublicIp, __self__).__init__(
@@ -230,7 +266,8 @@ class PublicIp(pulumi.CustomResource):
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             network_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
             project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            public_ip_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'PublicIp':
+            public_ip_id: Optional[pulumi.Input[_builtins.str]] = None,
+            region: Optional[pulumi.Input[_builtins.str]] = None) -> 'PublicIp':
         """
         Get an existing PublicIp resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -242,6 +279,7 @@ class PublicIp(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the public IP is associated.
         :param pulumi.Input[_builtins.str] public_ip_id: The public IP ID.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -252,6 +290,7 @@ class PublicIp(pulumi.CustomResource):
         __props__.__dict__["network_interface_id"] = network_interface_id
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["public_ip_id"] = public_ip_id
+        __props__.__dict__["region"] = region
         return PublicIp(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -290,4 +329,12 @@ class PublicIp(pulumi.CustomResource):
         The public IP ID.
         """
         return pulumi.get(self, "public_ip_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[_builtins.str]:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
 

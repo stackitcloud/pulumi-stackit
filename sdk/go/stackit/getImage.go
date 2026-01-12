@@ -30,6 +30,8 @@ type LookupImageArgs struct {
 	ImageId string `pulumi:"imageId"`
 	// STACKIT project ID to which the image is associated.
 	ProjectId string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 }
 
 // A collection of values returned by getImage.
@@ -55,6 +57,8 @@ type LookupImageResult struct {
 	ProjectId string `pulumi:"projectId"`
 	// Whether the image is protected.
 	Protected bool `pulumi:"protected"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 	// The scope of the image.
 	Scope string `pulumi:"scope"`
 }
@@ -74,6 +78,8 @@ type LookupImageOutputArgs struct {
 	ImageId pulumi.StringInput `pulumi:"imageId"`
 	// STACKIT project ID to which the image is associated.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (LookupImageOutputArgs) ElementType() reflect.Type {
@@ -147,6 +153,11 @@ func (o LookupImageResultOutput) ProjectId() pulumi.StringOutput {
 // Whether the image is protected.
 func (o LookupImageResultOutput) Protected() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupImageResult) bool { return v.Protected }).(pulumi.BoolOutput)
+}
+
+// The resource region. If not defined, the provider region is used.
+func (o LookupImageResultOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupImageResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
 // The scope of the image.

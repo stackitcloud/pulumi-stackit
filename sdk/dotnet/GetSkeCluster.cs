@@ -128,7 +128,7 @@ namespace Pulumi.Stackit
         public readonly ImmutableArray<Outputs.GetSkeClusterHibernationResult> Hibernations;
         public readonly string Id;
         /// <summary>
-        /// The minimum Kubernetes version, this field is always nil. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current kubernetes version being used for your cluster, use the `KubernetesVersionUsed` field.
+        /// The minimum Kubernetes version, this field is always nil. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes &amp; OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/). To get the current kubernetes version being used for your cluster, use the `KubernetesVersionUsed` field.
         /// </summary>
         public readonly string KubernetesVersionMin;
         /// <summary>

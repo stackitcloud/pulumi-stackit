@@ -43,7 +43,7 @@ type LookupSkeClusterResult struct {
 	// One or more hibernation block as defined below.
 	Hibernations []GetSkeClusterHibernation `pulumi:"hibernations"`
 	Id           string                     `pulumi:"id"`
-	// The minimum Kubernetes version, this field is always nil. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current kubernetes version being used for your cluster, use the `kubernetesVersionUsed` field.
+	// The minimum Kubernetes version, this field is always nil. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/). To get the current kubernetes version being used for your cluster, use the `kubernetesVersionUsed` field.
 	KubernetesVersionMin string `pulumi:"kubernetesVersionMin"`
 	// Full Kubernetes version used. For example, if `1.22` was selected, this value may result to `1.22.15`
 	KubernetesVersionUsed string `pulumi:"kubernetesVersionUsed"`
@@ -120,7 +120,7 @@ func (o LookupSkeClusterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSkeClusterResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The minimum Kubernetes version, this field is always nil. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current kubernetes version being used for your cluster, use the `kubernetesVersionUsed` field.
+// The minimum Kubernetes version, this field is always nil. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/). To get the current kubernetes version being used for your cluster, use the `kubernetesVersionUsed` field.
 func (o LookupSkeClusterResultOutput) KubernetesVersionMin() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSkeClusterResult) string { return v.KubernetesVersionMin }).(pulumi.StringOutput)
 }

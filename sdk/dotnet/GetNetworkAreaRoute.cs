@@ -81,6 +81,12 @@ namespace Pulumi.Stackit
         [Input("organizationId", required: true)]
         public string OrganizationId { get; set; } = null!;
 
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public string? Region { get; set; }
+
         public GetNetworkAreaRouteArgs()
         {
         }
@@ -107,6 +113,12 @@ namespace Pulumi.Stackit
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
 
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
         public GetNetworkAreaRouteInvokeArgs()
         {
         }
@@ -117,6 +129,10 @@ namespace Pulumi.Stackit
     [OutputType]
     public sealed class GetNetworkAreaRouteResult
     {
+        /// <summary>
+        /// Destination of the route.
+        /// </summary>
+        public readonly Outputs.GetNetworkAreaRouteDestinationResult Destination;
         public readonly string Id;
         /// <summary>
         /// Labels are key-value string pairs which can be attached to a resource container
@@ -131,20 +147,22 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string NetworkAreaRouteId;
         /// <summary>
-        /// The IP address of the routing system, that will route the prefix configured. Should be a valid IPv4 address.
+        /// Next hop destination.
         /// </summary>
-        public readonly string NextHop;
+        public readonly Outputs.GetNetworkAreaRouteNextHopResult NextHop;
         /// <summary>
         /// STACKIT organization ID to which the network area is associated.
         /// </summary>
         public readonly string OrganizationId;
         /// <summary>
-        /// The network, that is reachable though the Next Hop. Should use CIDR notation.
+        /// The resource region. If not defined, the provider region is used.
         /// </summary>
-        public readonly string Prefix;
+        public readonly string? Region;
 
         [OutputConstructor]
         private GetNetworkAreaRouteResult(
+            Outputs.GetNetworkAreaRouteDestinationResult destination,
+
             string id,
 
             ImmutableDictionary<string, string> labels,
@@ -153,19 +171,20 @@ namespace Pulumi.Stackit
 
             string networkAreaRouteId,
 
-            string nextHop,
+            Outputs.GetNetworkAreaRouteNextHopResult nextHop,
 
             string organizationId,
 
-            string prefix)
+            string? region)
         {
+            Destination = destination;
             Id = id;
             Labels = labels;
             NetworkAreaId = networkAreaId;
             NetworkAreaRouteId = networkAreaRouteId;
             NextHop = nextHop;
             OrganizationId = organizationId;
-            Prefix = prefix;
+            Region = region;
         }
     }
 }

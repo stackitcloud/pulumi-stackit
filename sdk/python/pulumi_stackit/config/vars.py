@@ -266,6 +266,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('serviceEnablementCustomEndpoint')
 
     @_builtins.property
+    def sfs_custom_endpoint(self) -> Optional[str]:
+        """
+        Custom endpoint for the Stackit Filestorage API
+        """
+        return __config__.get('sfsCustomEndpoint')
+
+    @_builtins.property
     def ske_custom_endpoint(self) -> Optional[str]:
         """
         Custom endpoint for the Kubernetes Engine (SKE) service

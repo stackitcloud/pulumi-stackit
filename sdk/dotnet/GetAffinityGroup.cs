@@ -72,6 +72,12 @@ namespace Pulumi.Stackit
         [Input("projectId", required: true)]
         public string ProjectId { get; set; } = null!;
 
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public string? Region { get; set; }
+
         public GetAffinityGroupArgs()
         {
         }
@@ -91,6 +97,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
+
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         public GetAffinityGroupInvokeArgs()
         {
@@ -123,6 +135,10 @@ namespace Pulumi.Stackit
         /// STACKIT Project ID to which the affinity group is associated.
         /// </summary>
         public readonly string ProjectId;
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        public readonly string? Region;
 
         [OutputConstructor]
         private GetAffinityGroupResult(
@@ -136,7 +152,9 @@ namespace Pulumi.Stackit
 
             string policy,
 
-            string projectId)
+            string projectId,
+
+            string? region)
         {
             AffinityGroupId = affinityGroupId;
             Id = id;
@@ -144,6 +162,7 @@ namespace Pulumi.Stackit
             Name = name;
             Policy = policy;
             ProjectId = projectId;
+            Region = region;
         }
     }
 }

@@ -27,7 +27,7 @@ class GetImageResult:
     """
     A collection of values returned by getImage.
     """
-    def __init__(__self__, checksum=None, config=None, disk_format=None, id=None, image_id=None, labels=None, min_disk_size=None, min_ram=None, name=None, project_id=None, protected=None, scope=None):
+    def __init__(__self__, checksum=None, config=None, disk_format=None, id=None, image_id=None, labels=None, min_disk_size=None, min_ram=None, name=None, project_id=None, protected=None, region=None, scope=None):
         if checksum and not isinstance(checksum, dict):
             raise TypeError("Expected argument 'checksum' to be a dict")
         pulumi.set(__self__, "checksum", checksum)
@@ -61,6 +61,9 @@ class GetImageResult:
         if protected and not isinstance(protected, bool):
             raise TypeError("Expected argument 'protected' to be a bool")
         pulumi.set(__self__, "protected", protected)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
         if scope and not isinstance(scope, str):
             raise TypeError("Expected argument 'scope' to be a str")
         pulumi.set(__self__, "scope", scope)
@@ -152,6 +155,14 @@ class GetImageResult:
 
     @_builtins.property
     @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter
     def scope(self) -> _builtins.str:
         """
         The scope of the image.
@@ -176,11 +187,13 @@ class AwaitableGetImageResult(GetImageResult):
             name=self.name,
             project_id=self.project_id,
             protected=self.protected,
+            region=self.region,
             scope=self.scope)
 
 
 def get_image(image_id: Optional[_builtins.str] = None,
               project_id: Optional[_builtins.str] = None,
+              region: Optional[_builtins.str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImageResult:
     """
     Image datasource schema. Must have a `region` specified in the provider configuration.
@@ -190,10 +203,12 @@ def get_image(image_id: Optional[_builtins.str] = None,
 
     :param _builtins.str image_id: The image ID.
     :param _builtins.str project_id: STACKIT project ID to which the image is associated.
+    :param _builtins.str region: The resource region. If not defined, the provider region is used.
     """
     __args__ = dict()
     __args__['imageId'] = image_id
     __args__['projectId'] = project_id
+    __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('stackit:index/getImage:getImage', __args__, opts=opts, typ=GetImageResult).value
 
@@ -209,9 +224,11 @@ def get_image(image_id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         project_id=pulumi.get(__ret__, 'project_id'),
         protected=pulumi.get(__ret__, 'protected'),
+        region=pulumi.get(__ret__, 'region'),
         scope=pulumi.get(__ret__, 'scope'))
 def get_image_output(image_id: Optional[pulumi.Input[_builtins.str]] = None,
                      project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                     region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImageResult]:
     """
     Image datasource schema. Must have a `region` specified in the provider configuration.
@@ -221,10 +238,12 @@ def get_image_output(image_id: Optional[pulumi.Input[_builtins.str]] = None,
 
     :param _builtins.str image_id: The image ID.
     :param _builtins.str project_id: STACKIT project ID to which the image is associated.
+    :param _builtins.str region: The resource region. If not defined, the provider region is used.
     """
     __args__ = dict()
     __args__['imageId'] = image_id
     __args__['projectId'] = project_id
+    __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('stackit:index/getImage:getImage', __args__, opts=opts, typ=GetImageResult)
     return __ret__.apply(lambda __response__: GetImageResult(
@@ -239,4 +258,5 @@ def get_image_output(image_id: Optional[pulumi.Input[_builtins.str]] = None,
         name=pulumi.get(__response__, 'name'),
         project_id=pulumi.get(__response__, 'project_id'),
         protected=pulumi.get(__response__, 'protected'),
+        region=pulumi.get(__response__, 'region'),
         scope=pulumi.get(__response__, 'scope')))

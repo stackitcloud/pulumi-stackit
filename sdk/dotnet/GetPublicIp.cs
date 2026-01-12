@@ -72,6 +72,12 @@ namespace Pulumi.Stackit
         [Input("publicIpId", required: true)]
         public string PublicIpId { get; set; } = null!;
 
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public string? Region { get; set; }
+
         public GetPublicIpArgs()
         {
         }
@@ -91,6 +97,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("publicIpId", required: true)]
         public Input<string> PublicIpId { get; set; } = null!;
+
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         public GetPublicIpInvokeArgs()
         {
@@ -123,6 +135,10 @@ namespace Pulumi.Stackit
         /// The public IP ID.
         /// </summary>
         public readonly string PublicIpId;
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        public readonly string? Region;
 
         [OutputConstructor]
         private GetPublicIpResult(
@@ -136,7 +152,9 @@ namespace Pulumi.Stackit
 
             string projectId,
 
-            string publicIpId)
+            string publicIpId,
+
+            string? region)
         {
             Id = id;
             Ip = ip;
@@ -144,6 +162,7 @@ namespace Pulumi.Stackit
             NetworkInterfaceId = networkInterfaceId;
             ProjectId = projectId;
             PublicIpId = publicIpId;
+            Region = region;
         }
     }
 }

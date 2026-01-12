@@ -74,6 +74,10 @@ export class NetworkInterface extends pulumi.CustomResource {
      */
     declare public readonly projectId: pulumi.Output<string>;
     /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    declare public readonly region: pulumi.Output<string>;
+    /**
      * The Network Interface Security. If set to false, then no security groups will apply to this network interface.
      */
     declare public readonly security: pulumi.Output<boolean>;
@@ -108,6 +112,7 @@ export class NetworkInterface extends pulumi.CustomResource {
             resourceInputs["networkId"] = state?.networkId;
             resourceInputs["networkInterfaceId"] = state?.networkInterfaceId;
             resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
             resourceInputs["security"] = state?.security;
             resourceInputs["securityGroupIds"] = state?.securityGroupIds;
             resourceInputs["type"] = state?.type;
@@ -125,6 +130,7 @@ export class NetworkInterface extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["networkId"] = args?.networkId;
             resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
             resourceInputs["security"] = args?.security;
             resourceInputs["securityGroupIds"] = args?.securityGroupIds;
             resourceInputs["device"] = undefined /*out*/;
@@ -178,6 +184,10 @@ export interface NetworkInterfaceState {
      */
     projectId?: pulumi.Input<string>;
     /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string>;
+    /**
      * The Network Interface Security. If set to false, then no security groups will apply to this network interface.
      */
     security?: pulumi.Input<boolean>;
@@ -219,6 +229,10 @@ export interface NetworkInterfaceArgs {
      * STACKIT project ID to which the network is associated.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string>;
     /**
      * The Network Interface Security. If set to false, then no security groups will apply to this network interface.
      */

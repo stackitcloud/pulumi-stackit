@@ -32,23 +32,27 @@ type LookupNetworkAreaRouteArgs struct {
 	NetworkAreaRouteId string `pulumi:"networkAreaRouteId"`
 	// STACKIT organization ID to which the network area is associated.
 	OrganizationId string `pulumi:"organizationId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 }
 
 // A collection of values returned by getNetworkAreaRoute.
 type LookupNetworkAreaRouteResult struct {
-	Id string `pulumi:"id"`
+	// Destination of the route.
+	Destination GetNetworkAreaRouteDestination `pulumi:"destination"`
+	Id          string                         `pulumi:"id"`
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels map[string]string `pulumi:"labels"`
 	// The network area ID to which the network area route is associated.
 	NetworkAreaId string `pulumi:"networkAreaId"`
 	// The network area route ID.
 	NetworkAreaRouteId string `pulumi:"networkAreaRouteId"`
-	// The IP address of the routing system, that will route the prefix configured. Should be a valid IPv4 address.
-	NextHop string `pulumi:"nextHop"`
+	// Next hop destination.
+	NextHop GetNetworkAreaRouteNextHop `pulumi:"nextHop"`
 	// STACKIT organization ID to which the network area is associated.
 	OrganizationId string `pulumi:"organizationId"`
-	// The network, that is reachable though the Next Hop. Should use CIDR notation.
-	Prefix string `pulumi:"prefix"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 }
 
 func LookupNetworkAreaRouteOutput(ctx *pulumi.Context, args LookupNetworkAreaRouteOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkAreaRouteResultOutput {
@@ -68,6 +72,8 @@ type LookupNetworkAreaRouteOutputArgs struct {
 	NetworkAreaRouteId pulumi.StringInput `pulumi:"networkAreaRouteId"`
 	// STACKIT organization ID to which the network area is associated.
 	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (LookupNetworkAreaRouteOutputArgs) ElementType() reflect.Type {
@@ -89,6 +95,11 @@ func (o LookupNetworkAreaRouteResultOutput) ToLookupNetworkAreaRouteResultOutput
 	return o
 }
 
+// Destination of the route.
+func (o LookupNetworkAreaRouteResultOutput) Destination() GetNetworkAreaRouteDestinationOutput {
+	return o.ApplyT(func(v LookupNetworkAreaRouteResult) GetNetworkAreaRouteDestination { return v.Destination }).(GetNetworkAreaRouteDestinationOutput)
+}
+
 func (o LookupNetworkAreaRouteResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkAreaRouteResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -108,9 +119,9 @@ func (o LookupNetworkAreaRouteResultOutput) NetworkAreaRouteId() pulumi.StringOu
 	return o.ApplyT(func(v LookupNetworkAreaRouteResult) string { return v.NetworkAreaRouteId }).(pulumi.StringOutput)
 }
 
-// The IP address of the routing system, that will route the prefix configured. Should be a valid IPv4 address.
-func (o LookupNetworkAreaRouteResultOutput) NextHop() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNetworkAreaRouteResult) string { return v.NextHop }).(pulumi.StringOutput)
+// Next hop destination.
+func (o LookupNetworkAreaRouteResultOutput) NextHop() GetNetworkAreaRouteNextHopOutput {
+	return o.ApplyT(func(v LookupNetworkAreaRouteResult) GetNetworkAreaRouteNextHop { return v.NextHop }).(GetNetworkAreaRouteNextHopOutput)
 }
 
 // STACKIT organization ID to which the network area is associated.
@@ -118,9 +129,9 @@ func (o LookupNetworkAreaRouteResultOutput) OrganizationId() pulumi.StringOutput
 	return o.ApplyT(func(v LookupNetworkAreaRouteResult) string { return v.OrganizationId }).(pulumi.StringOutput)
 }
 
-// The network, that is reachable though the Next Hop. Should use CIDR notation.
-func (o LookupNetworkAreaRouteResultOutput) Prefix() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupNetworkAreaRouteResult) string { return v.Prefix }).(pulumi.StringOutput)
+// The resource region. If not defined, the provider region is used.
+func (o LookupNetworkAreaRouteResultOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNetworkAreaRouteResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
 func init() {

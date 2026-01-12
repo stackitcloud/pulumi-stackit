@@ -4533,8 +4533,11 @@ func (o MongodbflexInstanceStoragePtrOutput) Size() pulumi.IntPtrOutput {
 }
 
 type NetworkAreaNetworkRange struct {
+	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
 	NetworkRangeId *string `pulumi:"networkRangeId"`
 	// Classless Inter-Domain Routing (CIDR).
+	//
+	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
 	Prefix string `pulumi:"prefix"`
 }
 
@@ -4550,8 +4553,11 @@ type NetworkAreaNetworkRangeInput interface {
 }
 
 type NetworkAreaNetworkRangeArgs struct {
+	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
 	NetworkRangeId pulumi.StringPtrInput `pulumi:"networkRangeId"`
 	// Classless Inter-Domain Routing (CIDR).
+	//
+	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
 	Prefix pulumi.StringInput `pulumi:"prefix"`
 }
 
@@ -4606,11 +4612,14 @@ func (o NetworkAreaNetworkRangeOutput) ToNetworkAreaNetworkRangeOutputWithContex
 	return o
 }
 
+// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
 func (o NetworkAreaNetworkRangeOutput) NetworkRangeId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAreaNetworkRange) *string { return v.NetworkRangeId }).(pulumi.StringPtrOutput)
 }
 
 // Classless Inter-Domain Routing (CIDR).
+//
+// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
 func (o NetworkAreaNetworkRangeOutput) Prefix() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkAreaNetworkRange) string { return v.Prefix }).(pulumi.StringOutput)
 }
@@ -4633,6 +4642,653 @@ func (o NetworkAreaNetworkRangeArrayOutput) Index(i pulumi.IntInput) NetworkArea
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkAreaNetworkRange {
 		return vs[0].([]NetworkAreaNetworkRange)[vs[1].(int)]
 	}).(NetworkAreaNetworkRangeOutput)
+}
+
+type NetworkAreaRegionIpv4 struct {
+	// List of DNS Servers/Nameservers.
+	DefaultNameservers []string `pulumi:"defaultNameservers"`
+	// The default prefix length for networks in the network area.
+	DefaultPrefixLength *int `pulumi:"defaultPrefixLength"`
+	// The maximal prefix length for networks in the network area.
+	MaxPrefixLength *int `pulumi:"maxPrefixLength"`
+	// The minimal prefix length for networks in the network area.
+	MinPrefixLength *int `pulumi:"minPrefixLength"`
+	// List of Network ranges.
+	NetworkRanges []NetworkAreaRegionIpv4NetworkRange `pulumi:"networkRanges"`
+	// IPv4 Classless Inter-Domain Routing (CIDR).
+	TransferNetwork string `pulumi:"transferNetwork"`
+}
+
+// NetworkAreaRegionIpv4Input is an input type that accepts NetworkAreaRegionIpv4Args and NetworkAreaRegionIpv4Output values.
+// You can construct a concrete instance of `NetworkAreaRegionIpv4Input` via:
+//
+//	NetworkAreaRegionIpv4Args{...}
+type NetworkAreaRegionIpv4Input interface {
+	pulumi.Input
+
+	ToNetworkAreaRegionIpv4Output() NetworkAreaRegionIpv4Output
+	ToNetworkAreaRegionIpv4OutputWithContext(context.Context) NetworkAreaRegionIpv4Output
+}
+
+type NetworkAreaRegionIpv4Args struct {
+	// List of DNS Servers/Nameservers.
+	DefaultNameservers pulumi.StringArrayInput `pulumi:"defaultNameservers"`
+	// The default prefix length for networks in the network area.
+	DefaultPrefixLength pulumi.IntPtrInput `pulumi:"defaultPrefixLength"`
+	// The maximal prefix length for networks in the network area.
+	MaxPrefixLength pulumi.IntPtrInput `pulumi:"maxPrefixLength"`
+	// The minimal prefix length for networks in the network area.
+	MinPrefixLength pulumi.IntPtrInput `pulumi:"minPrefixLength"`
+	// List of Network ranges.
+	NetworkRanges NetworkAreaRegionIpv4NetworkRangeArrayInput `pulumi:"networkRanges"`
+	// IPv4 Classless Inter-Domain Routing (CIDR).
+	TransferNetwork pulumi.StringInput `pulumi:"transferNetwork"`
+}
+
+func (NetworkAreaRegionIpv4Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAreaRegionIpv4)(nil)).Elem()
+}
+
+func (i NetworkAreaRegionIpv4Args) ToNetworkAreaRegionIpv4Output() NetworkAreaRegionIpv4Output {
+	return i.ToNetworkAreaRegionIpv4OutputWithContext(context.Background())
+}
+
+func (i NetworkAreaRegionIpv4Args) ToNetworkAreaRegionIpv4OutputWithContext(ctx context.Context) NetworkAreaRegionIpv4Output {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAreaRegionIpv4Output)
+}
+
+func (i NetworkAreaRegionIpv4Args) ToNetworkAreaRegionIpv4PtrOutput() NetworkAreaRegionIpv4PtrOutput {
+	return i.ToNetworkAreaRegionIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i NetworkAreaRegionIpv4Args) ToNetworkAreaRegionIpv4PtrOutputWithContext(ctx context.Context) NetworkAreaRegionIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAreaRegionIpv4Output).ToNetworkAreaRegionIpv4PtrOutputWithContext(ctx)
+}
+
+// NetworkAreaRegionIpv4PtrInput is an input type that accepts NetworkAreaRegionIpv4Args, NetworkAreaRegionIpv4Ptr and NetworkAreaRegionIpv4PtrOutput values.
+// You can construct a concrete instance of `NetworkAreaRegionIpv4PtrInput` via:
+//
+//	        NetworkAreaRegionIpv4Args{...}
+//
+//	or:
+//
+//	        nil
+type NetworkAreaRegionIpv4PtrInput interface {
+	pulumi.Input
+
+	ToNetworkAreaRegionIpv4PtrOutput() NetworkAreaRegionIpv4PtrOutput
+	ToNetworkAreaRegionIpv4PtrOutputWithContext(context.Context) NetworkAreaRegionIpv4PtrOutput
+}
+
+type networkAreaRegionIpv4PtrType NetworkAreaRegionIpv4Args
+
+func NetworkAreaRegionIpv4Ptr(v *NetworkAreaRegionIpv4Args) NetworkAreaRegionIpv4PtrInput {
+	return (*networkAreaRegionIpv4PtrType)(v)
+}
+
+func (*networkAreaRegionIpv4PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkAreaRegionIpv4)(nil)).Elem()
+}
+
+func (i *networkAreaRegionIpv4PtrType) ToNetworkAreaRegionIpv4PtrOutput() NetworkAreaRegionIpv4PtrOutput {
+	return i.ToNetworkAreaRegionIpv4PtrOutputWithContext(context.Background())
+}
+
+func (i *networkAreaRegionIpv4PtrType) ToNetworkAreaRegionIpv4PtrOutputWithContext(ctx context.Context) NetworkAreaRegionIpv4PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAreaRegionIpv4PtrOutput)
+}
+
+type NetworkAreaRegionIpv4Output struct{ *pulumi.OutputState }
+
+func (NetworkAreaRegionIpv4Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAreaRegionIpv4)(nil)).Elem()
+}
+
+func (o NetworkAreaRegionIpv4Output) ToNetworkAreaRegionIpv4Output() NetworkAreaRegionIpv4Output {
+	return o
+}
+
+func (o NetworkAreaRegionIpv4Output) ToNetworkAreaRegionIpv4OutputWithContext(ctx context.Context) NetworkAreaRegionIpv4Output {
+	return o
+}
+
+func (o NetworkAreaRegionIpv4Output) ToNetworkAreaRegionIpv4PtrOutput() NetworkAreaRegionIpv4PtrOutput {
+	return o.ToNetworkAreaRegionIpv4PtrOutputWithContext(context.Background())
+}
+
+func (o NetworkAreaRegionIpv4Output) ToNetworkAreaRegionIpv4PtrOutputWithContext(ctx context.Context) NetworkAreaRegionIpv4PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkAreaRegionIpv4) *NetworkAreaRegionIpv4 {
+		return &v
+	}).(NetworkAreaRegionIpv4PtrOutput)
+}
+
+// List of DNS Servers/Nameservers.
+func (o NetworkAreaRegionIpv4Output) DefaultNameservers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v NetworkAreaRegionIpv4) []string { return v.DefaultNameservers }).(pulumi.StringArrayOutput)
+}
+
+// The default prefix length for networks in the network area.
+func (o NetworkAreaRegionIpv4Output) DefaultPrefixLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NetworkAreaRegionIpv4) *int { return v.DefaultPrefixLength }).(pulumi.IntPtrOutput)
+}
+
+// The maximal prefix length for networks in the network area.
+func (o NetworkAreaRegionIpv4Output) MaxPrefixLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NetworkAreaRegionIpv4) *int { return v.MaxPrefixLength }).(pulumi.IntPtrOutput)
+}
+
+// The minimal prefix length for networks in the network area.
+func (o NetworkAreaRegionIpv4Output) MinPrefixLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NetworkAreaRegionIpv4) *int { return v.MinPrefixLength }).(pulumi.IntPtrOutput)
+}
+
+// List of Network ranges.
+func (o NetworkAreaRegionIpv4Output) NetworkRanges() NetworkAreaRegionIpv4NetworkRangeArrayOutput {
+	return o.ApplyT(func(v NetworkAreaRegionIpv4) []NetworkAreaRegionIpv4NetworkRange { return v.NetworkRanges }).(NetworkAreaRegionIpv4NetworkRangeArrayOutput)
+}
+
+// IPv4 Classless Inter-Domain Routing (CIDR).
+func (o NetworkAreaRegionIpv4Output) TransferNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkAreaRegionIpv4) string { return v.TransferNetwork }).(pulumi.StringOutput)
+}
+
+type NetworkAreaRegionIpv4PtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkAreaRegionIpv4PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkAreaRegionIpv4)(nil)).Elem()
+}
+
+func (o NetworkAreaRegionIpv4PtrOutput) ToNetworkAreaRegionIpv4PtrOutput() NetworkAreaRegionIpv4PtrOutput {
+	return o
+}
+
+func (o NetworkAreaRegionIpv4PtrOutput) ToNetworkAreaRegionIpv4PtrOutputWithContext(ctx context.Context) NetworkAreaRegionIpv4PtrOutput {
+	return o
+}
+
+func (o NetworkAreaRegionIpv4PtrOutput) Elem() NetworkAreaRegionIpv4Output {
+	return o.ApplyT(func(v *NetworkAreaRegionIpv4) NetworkAreaRegionIpv4 {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkAreaRegionIpv4
+		return ret
+	}).(NetworkAreaRegionIpv4Output)
+}
+
+// List of DNS Servers/Nameservers.
+func (o NetworkAreaRegionIpv4PtrOutput) DefaultNameservers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkAreaRegionIpv4) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultNameservers
+	}).(pulumi.StringArrayOutput)
+}
+
+// The default prefix length for networks in the network area.
+func (o NetworkAreaRegionIpv4PtrOutput) DefaultPrefixLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NetworkAreaRegionIpv4) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultPrefixLength
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximal prefix length for networks in the network area.
+func (o NetworkAreaRegionIpv4PtrOutput) MaxPrefixLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NetworkAreaRegionIpv4) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxPrefixLength
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimal prefix length for networks in the network area.
+func (o NetworkAreaRegionIpv4PtrOutput) MinPrefixLength() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NetworkAreaRegionIpv4) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinPrefixLength
+	}).(pulumi.IntPtrOutput)
+}
+
+// List of Network ranges.
+func (o NetworkAreaRegionIpv4PtrOutput) NetworkRanges() NetworkAreaRegionIpv4NetworkRangeArrayOutput {
+	return o.ApplyT(func(v *NetworkAreaRegionIpv4) []NetworkAreaRegionIpv4NetworkRange {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkRanges
+	}).(NetworkAreaRegionIpv4NetworkRangeArrayOutput)
+}
+
+// IPv4 Classless Inter-Domain Routing (CIDR).
+func (o NetworkAreaRegionIpv4PtrOutput) TransferNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkAreaRegionIpv4) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TransferNetwork
+	}).(pulumi.StringPtrOutput)
+}
+
+type NetworkAreaRegionIpv4NetworkRange struct {
+	NetworkRangeId *string `pulumi:"networkRangeId"`
+	// Classless Inter-Domain Routing (CIDR).
+	Prefix string `pulumi:"prefix"`
+}
+
+// NetworkAreaRegionIpv4NetworkRangeInput is an input type that accepts NetworkAreaRegionIpv4NetworkRangeArgs and NetworkAreaRegionIpv4NetworkRangeOutput values.
+// You can construct a concrete instance of `NetworkAreaRegionIpv4NetworkRangeInput` via:
+//
+//	NetworkAreaRegionIpv4NetworkRangeArgs{...}
+type NetworkAreaRegionIpv4NetworkRangeInput interface {
+	pulumi.Input
+
+	ToNetworkAreaRegionIpv4NetworkRangeOutput() NetworkAreaRegionIpv4NetworkRangeOutput
+	ToNetworkAreaRegionIpv4NetworkRangeOutputWithContext(context.Context) NetworkAreaRegionIpv4NetworkRangeOutput
+}
+
+type NetworkAreaRegionIpv4NetworkRangeArgs struct {
+	NetworkRangeId pulumi.StringPtrInput `pulumi:"networkRangeId"`
+	// Classless Inter-Domain Routing (CIDR).
+	Prefix pulumi.StringInput `pulumi:"prefix"`
+}
+
+func (NetworkAreaRegionIpv4NetworkRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAreaRegionIpv4NetworkRange)(nil)).Elem()
+}
+
+func (i NetworkAreaRegionIpv4NetworkRangeArgs) ToNetworkAreaRegionIpv4NetworkRangeOutput() NetworkAreaRegionIpv4NetworkRangeOutput {
+	return i.ToNetworkAreaRegionIpv4NetworkRangeOutputWithContext(context.Background())
+}
+
+func (i NetworkAreaRegionIpv4NetworkRangeArgs) ToNetworkAreaRegionIpv4NetworkRangeOutputWithContext(ctx context.Context) NetworkAreaRegionIpv4NetworkRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAreaRegionIpv4NetworkRangeOutput)
+}
+
+// NetworkAreaRegionIpv4NetworkRangeArrayInput is an input type that accepts NetworkAreaRegionIpv4NetworkRangeArray and NetworkAreaRegionIpv4NetworkRangeArrayOutput values.
+// You can construct a concrete instance of `NetworkAreaRegionIpv4NetworkRangeArrayInput` via:
+//
+//	NetworkAreaRegionIpv4NetworkRangeArray{ NetworkAreaRegionIpv4NetworkRangeArgs{...} }
+type NetworkAreaRegionIpv4NetworkRangeArrayInput interface {
+	pulumi.Input
+
+	ToNetworkAreaRegionIpv4NetworkRangeArrayOutput() NetworkAreaRegionIpv4NetworkRangeArrayOutput
+	ToNetworkAreaRegionIpv4NetworkRangeArrayOutputWithContext(context.Context) NetworkAreaRegionIpv4NetworkRangeArrayOutput
+}
+
+type NetworkAreaRegionIpv4NetworkRangeArray []NetworkAreaRegionIpv4NetworkRangeInput
+
+func (NetworkAreaRegionIpv4NetworkRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkAreaRegionIpv4NetworkRange)(nil)).Elem()
+}
+
+func (i NetworkAreaRegionIpv4NetworkRangeArray) ToNetworkAreaRegionIpv4NetworkRangeArrayOutput() NetworkAreaRegionIpv4NetworkRangeArrayOutput {
+	return i.ToNetworkAreaRegionIpv4NetworkRangeArrayOutputWithContext(context.Background())
+}
+
+func (i NetworkAreaRegionIpv4NetworkRangeArray) ToNetworkAreaRegionIpv4NetworkRangeArrayOutputWithContext(ctx context.Context) NetworkAreaRegionIpv4NetworkRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAreaRegionIpv4NetworkRangeArrayOutput)
+}
+
+type NetworkAreaRegionIpv4NetworkRangeOutput struct{ *pulumi.OutputState }
+
+func (NetworkAreaRegionIpv4NetworkRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAreaRegionIpv4NetworkRange)(nil)).Elem()
+}
+
+func (o NetworkAreaRegionIpv4NetworkRangeOutput) ToNetworkAreaRegionIpv4NetworkRangeOutput() NetworkAreaRegionIpv4NetworkRangeOutput {
+	return o
+}
+
+func (o NetworkAreaRegionIpv4NetworkRangeOutput) ToNetworkAreaRegionIpv4NetworkRangeOutputWithContext(ctx context.Context) NetworkAreaRegionIpv4NetworkRangeOutput {
+	return o
+}
+
+func (o NetworkAreaRegionIpv4NetworkRangeOutput) NetworkRangeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkAreaRegionIpv4NetworkRange) *string { return v.NetworkRangeId }).(pulumi.StringPtrOutput)
+}
+
+// Classless Inter-Domain Routing (CIDR).
+func (o NetworkAreaRegionIpv4NetworkRangeOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkAreaRegionIpv4NetworkRange) string { return v.Prefix }).(pulumi.StringOutput)
+}
+
+type NetworkAreaRegionIpv4NetworkRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkAreaRegionIpv4NetworkRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkAreaRegionIpv4NetworkRange)(nil)).Elem()
+}
+
+func (o NetworkAreaRegionIpv4NetworkRangeArrayOutput) ToNetworkAreaRegionIpv4NetworkRangeArrayOutput() NetworkAreaRegionIpv4NetworkRangeArrayOutput {
+	return o
+}
+
+func (o NetworkAreaRegionIpv4NetworkRangeArrayOutput) ToNetworkAreaRegionIpv4NetworkRangeArrayOutputWithContext(ctx context.Context) NetworkAreaRegionIpv4NetworkRangeArrayOutput {
+	return o
+}
+
+func (o NetworkAreaRegionIpv4NetworkRangeArrayOutput) Index(i pulumi.IntInput) NetworkAreaRegionIpv4NetworkRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkAreaRegionIpv4NetworkRange {
+		return vs[0].([]NetworkAreaRegionIpv4NetworkRange)[vs[1].(int)]
+	}).(NetworkAreaRegionIpv4NetworkRangeOutput)
+}
+
+type NetworkAreaRouteDestination struct {
+	// CIDRV type. Possible values are: `cidrv4`, `cidrv6`. Only `cidrv4` is supported currently.
+	Type string `pulumi:"type"`
+	// An CIDR string.
+	Value string `pulumi:"value"`
+}
+
+// NetworkAreaRouteDestinationInput is an input type that accepts NetworkAreaRouteDestinationArgs and NetworkAreaRouteDestinationOutput values.
+// You can construct a concrete instance of `NetworkAreaRouteDestinationInput` via:
+//
+//	NetworkAreaRouteDestinationArgs{...}
+type NetworkAreaRouteDestinationInput interface {
+	pulumi.Input
+
+	ToNetworkAreaRouteDestinationOutput() NetworkAreaRouteDestinationOutput
+	ToNetworkAreaRouteDestinationOutputWithContext(context.Context) NetworkAreaRouteDestinationOutput
+}
+
+type NetworkAreaRouteDestinationArgs struct {
+	// CIDRV type. Possible values are: `cidrv4`, `cidrv6`. Only `cidrv4` is supported currently.
+	Type pulumi.StringInput `pulumi:"type"`
+	// An CIDR string.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (NetworkAreaRouteDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAreaRouteDestination)(nil)).Elem()
+}
+
+func (i NetworkAreaRouteDestinationArgs) ToNetworkAreaRouteDestinationOutput() NetworkAreaRouteDestinationOutput {
+	return i.ToNetworkAreaRouteDestinationOutputWithContext(context.Background())
+}
+
+func (i NetworkAreaRouteDestinationArgs) ToNetworkAreaRouteDestinationOutputWithContext(ctx context.Context) NetworkAreaRouteDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAreaRouteDestinationOutput)
+}
+
+func (i NetworkAreaRouteDestinationArgs) ToNetworkAreaRouteDestinationPtrOutput() NetworkAreaRouteDestinationPtrOutput {
+	return i.ToNetworkAreaRouteDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i NetworkAreaRouteDestinationArgs) ToNetworkAreaRouteDestinationPtrOutputWithContext(ctx context.Context) NetworkAreaRouteDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAreaRouteDestinationOutput).ToNetworkAreaRouteDestinationPtrOutputWithContext(ctx)
+}
+
+// NetworkAreaRouteDestinationPtrInput is an input type that accepts NetworkAreaRouteDestinationArgs, NetworkAreaRouteDestinationPtr and NetworkAreaRouteDestinationPtrOutput values.
+// You can construct a concrete instance of `NetworkAreaRouteDestinationPtrInput` via:
+//
+//	        NetworkAreaRouteDestinationArgs{...}
+//
+//	or:
+//
+//	        nil
+type NetworkAreaRouteDestinationPtrInput interface {
+	pulumi.Input
+
+	ToNetworkAreaRouteDestinationPtrOutput() NetworkAreaRouteDestinationPtrOutput
+	ToNetworkAreaRouteDestinationPtrOutputWithContext(context.Context) NetworkAreaRouteDestinationPtrOutput
+}
+
+type networkAreaRouteDestinationPtrType NetworkAreaRouteDestinationArgs
+
+func NetworkAreaRouteDestinationPtr(v *NetworkAreaRouteDestinationArgs) NetworkAreaRouteDestinationPtrInput {
+	return (*networkAreaRouteDestinationPtrType)(v)
+}
+
+func (*networkAreaRouteDestinationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkAreaRouteDestination)(nil)).Elem()
+}
+
+func (i *networkAreaRouteDestinationPtrType) ToNetworkAreaRouteDestinationPtrOutput() NetworkAreaRouteDestinationPtrOutput {
+	return i.ToNetworkAreaRouteDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i *networkAreaRouteDestinationPtrType) ToNetworkAreaRouteDestinationPtrOutputWithContext(ctx context.Context) NetworkAreaRouteDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAreaRouteDestinationPtrOutput)
+}
+
+type NetworkAreaRouteDestinationOutput struct{ *pulumi.OutputState }
+
+func (NetworkAreaRouteDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAreaRouteDestination)(nil)).Elem()
+}
+
+func (o NetworkAreaRouteDestinationOutput) ToNetworkAreaRouteDestinationOutput() NetworkAreaRouteDestinationOutput {
+	return o
+}
+
+func (o NetworkAreaRouteDestinationOutput) ToNetworkAreaRouteDestinationOutputWithContext(ctx context.Context) NetworkAreaRouteDestinationOutput {
+	return o
+}
+
+func (o NetworkAreaRouteDestinationOutput) ToNetworkAreaRouteDestinationPtrOutput() NetworkAreaRouteDestinationPtrOutput {
+	return o.ToNetworkAreaRouteDestinationPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkAreaRouteDestinationOutput) ToNetworkAreaRouteDestinationPtrOutputWithContext(ctx context.Context) NetworkAreaRouteDestinationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkAreaRouteDestination) *NetworkAreaRouteDestination {
+		return &v
+	}).(NetworkAreaRouteDestinationPtrOutput)
+}
+
+// CIDRV type. Possible values are: `cidrv4`, `cidrv6`. Only `cidrv4` is supported currently.
+func (o NetworkAreaRouteDestinationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkAreaRouteDestination) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// An CIDR string.
+func (o NetworkAreaRouteDestinationOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkAreaRouteDestination) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type NetworkAreaRouteDestinationPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkAreaRouteDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkAreaRouteDestination)(nil)).Elem()
+}
+
+func (o NetworkAreaRouteDestinationPtrOutput) ToNetworkAreaRouteDestinationPtrOutput() NetworkAreaRouteDestinationPtrOutput {
+	return o
+}
+
+func (o NetworkAreaRouteDestinationPtrOutput) ToNetworkAreaRouteDestinationPtrOutputWithContext(ctx context.Context) NetworkAreaRouteDestinationPtrOutput {
+	return o
+}
+
+func (o NetworkAreaRouteDestinationPtrOutput) Elem() NetworkAreaRouteDestinationOutput {
+	return o.ApplyT(func(v *NetworkAreaRouteDestination) NetworkAreaRouteDestination {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkAreaRouteDestination
+		return ret
+	}).(NetworkAreaRouteDestinationOutput)
+}
+
+// CIDRV type. Possible values are: `cidrv4`, `cidrv6`. Only `cidrv4` is supported currently.
+func (o NetworkAreaRouteDestinationPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkAreaRouteDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// An CIDR string.
+func (o NetworkAreaRouteDestinationPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkAreaRouteDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type NetworkAreaRouteNextHop struct {
+	// Type of the next hop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Only `ipv4` supported currently.
+	Type string `pulumi:"type"`
+	// Either IPv4 or IPv6 (not set for blackhole and internet). Only IPv4 supported currently.
+	Value *string `pulumi:"value"`
+}
+
+// NetworkAreaRouteNextHopInput is an input type that accepts NetworkAreaRouteNextHopArgs and NetworkAreaRouteNextHopOutput values.
+// You can construct a concrete instance of `NetworkAreaRouteNextHopInput` via:
+//
+//	NetworkAreaRouteNextHopArgs{...}
+type NetworkAreaRouteNextHopInput interface {
+	pulumi.Input
+
+	ToNetworkAreaRouteNextHopOutput() NetworkAreaRouteNextHopOutput
+	ToNetworkAreaRouteNextHopOutputWithContext(context.Context) NetworkAreaRouteNextHopOutput
+}
+
+type NetworkAreaRouteNextHopArgs struct {
+	// Type of the next hop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Only `ipv4` supported currently.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Either IPv4 or IPv6 (not set for blackhole and internet). Only IPv4 supported currently.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (NetworkAreaRouteNextHopArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAreaRouteNextHop)(nil)).Elem()
+}
+
+func (i NetworkAreaRouteNextHopArgs) ToNetworkAreaRouteNextHopOutput() NetworkAreaRouteNextHopOutput {
+	return i.ToNetworkAreaRouteNextHopOutputWithContext(context.Background())
+}
+
+func (i NetworkAreaRouteNextHopArgs) ToNetworkAreaRouteNextHopOutputWithContext(ctx context.Context) NetworkAreaRouteNextHopOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAreaRouteNextHopOutput)
+}
+
+func (i NetworkAreaRouteNextHopArgs) ToNetworkAreaRouteNextHopPtrOutput() NetworkAreaRouteNextHopPtrOutput {
+	return i.ToNetworkAreaRouteNextHopPtrOutputWithContext(context.Background())
+}
+
+func (i NetworkAreaRouteNextHopArgs) ToNetworkAreaRouteNextHopPtrOutputWithContext(ctx context.Context) NetworkAreaRouteNextHopPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAreaRouteNextHopOutput).ToNetworkAreaRouteNextHopPtrOutputWithContext(ctx)
+}
+
+// NetworkAreaRouteNextHopPtrInput is an input type that accepts NetworkAreaRouteNextHopArgs, NetworkAreaRouteNextHopPtr and NetworkAreaRouteNextHopPtrOutput values.
+// You can construct a concrete instance of `NetworkAreaRouteNextHopPtrInput` via:
+//
+//	        NetworkAreaRouteNextHopArgs{...}
+//
+//	or:
+//
+//	        nil
+type NetworkAreaRouteNextHopPtrInput interface {
+	pulumi.Input
+
+	ToNetworkAreaRouteNextHopPtrOutput() NetworkAreaRouteNextHopPtrOutput
+	ToNetworkAreaRouteNextHopPtrOutputWithContext(context.Context) NetworkAreaRouteNextHopPtrOutput
+}
+
+type networkAreaRouteNextHopPtrType NetworkAreaRouteNextHopArgs
+
+func NetworkAreaRouteNextHopPtr(v *NetworkAreaRouteNextHopArgs) NetworkAreaRouteNextHopPtrInput {
+	return (*networkAreaRouteNextHopPtrType)(v)
+}
+
+func (*networkAreaRouteNextHopPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkAreaRouteNextHop)(nil)).Elem()
+}
+
+func (i *networkAreaRouteNextHopPtrType) ToNetworkAreaRouteNextHopPtrOutput() NetworkAreaRouteNextHopPtrOutput {
+	return i.ToNetworkAreaRouteNextHopPtrOutputWithContext(context.Background())
+}
+
+func (i *networkAreaRouteNextHopPtrType) ToNetworkAreaRouteNextHopPtrOutputWithContext(ctx context.Context) NetworkAreaRouteNextHopPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkAreaRouteNextHopPtrOutput)
+}
+
+type NetworkAreaRouteNextHopOutput struct{ *pulumi.OutputState }
+
+func (NetworkAreaRouteNextHopOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAreaRouteNextHop)(nil)).Elem()
+}
+
+func (o NetworkAreaRouteNextHopOutput) ToNetworkAreaRouteNextHopOutput() NetworkAreaRouteNextHopOutput {
+	return o
+}
+
+func (o NetworkAreaRouteNextHopOutput) ToNetworkAreaRouteNextHopOutputWithContext(ctx context.Context) NetworkAreaRouteNextHopOutput {
+	return o
+}
+
+func (o NetworkAreaRouteNextHopOutput) ToNetworkAreaRouteNextHopPtrOutput() NetworkAreaRouteNextHopPtrOutput {
+	return o.ToNetworkAreaRouteNextHopPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkAreaRouteNextHopOutput) ToNetworkAreaRouteNextHopPtrOutputWithContext(ctx context.Context) NetworkAreaRouteNextHopPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkAreaRouteNextHop) *NetworkAreaRouteNextHop {
+		return &v
+	}).(NetworkAreaRouteNextHopPtrOutput)
+}
+
+// Type of the next hop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Only `ipv4` supported currently.
+func (o NetworkAreaRouteNextHopOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkAreaRouteNextHop) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Either IPv4 or IPv6 (not set for blackhole and internet). Only IPv4 supported currently.
+func (o NetworkAreaRouteNextHopOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkAreaRouteNextHop) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type NetworkAreaRouteNextHopPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkAreaRouteNextHopPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkAreaRouteNextHop)(nil)).Elem()
+}
+
+func (o NetworkAreaRouteNextHopPtrOutput) ToNetworkAreaRouteNextHopPtrOutput() NetworkAreaRouteNextHopPtrOutput {
+	return o
+}
+
+func (o NetworkAreaRouteNextHopPtrOutput) ToNetworkAreaRouteNextHopPtrOutputWithContext(ctx context.Context) NetworkAreaRouteNextHopPtrOutput {
+	return o
+}
+
+func (o NetworkAreaRouteNextHopPtrOutput) Elem() NetworkAreaRouteNextHopOutput {
+	return o.ApplyT(func(v *NetworkAreaRouteNextHop) NetworkAreaRouteNextHop {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkAreaRouteNextHop
+		return ret
+	}).(NetworkAreaRouteNextHopOutput)
+}
+
+// Type of the next hop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Only `ipv4` supported currently.
+func (o NetworkAreaRouteNextHopPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkAreaRouteNextHop) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Either IPv4 or IPv6 (not set for blackhole and internet). Only IPv4 supported currently.
+func (o NetworkAreaRouteNextHopPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkAreaRouteNextHop) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
 }
 
 type ObservabilityAlertgroupRule struct {
@@ -9486,6 +10142,148 @@ func (o ServerBootVolumePtrOutput) SourceType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type SfsExportPolicyRule struct {
+	// Description of the Rule
+	Description *string `pulumi:"description"`
+	// IP access control list; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
+	IpAcls []string `pulumi:"ipAcls"`
+	// Order of the rule within a Share Export Policy. The order is used so that when a client IP matches multiple rules, the first rule is applied
+	Order int `pulumi:"order"`
+	// Flag to indicate if client IPs matching this rule can only mount the share in read only mode
+	ReadOnly *bool `pulumi:"readOnly"`
+	// Flag to honor set UUID
+	SetUuid *bool `pulumi:"setUuid"`
+	// Flag to indicate if client IPs matching this rule have root access on the Share
+	SuperUser *bool `pulumi:"superUser"`
+}
+
+// SfsExportPolicyRuleInput is an input type that accepts SfsExportPolicyRuleArgs and SfsExportPolicyRuleOutput values.
+// You can construct a concrete instance of `SfsExportPolicyRuleInput` via:
+//
+//	SfsExportPolicyRuleArgs{...}
+type SfsExportPolicyRuleInput interface {
+	pulumi.Input
+
+	ToSfsExportPolicyRuleOutput() SfsExportPolicyRuleOutput
+	ToSfsExportPolicyRuleOutputWithContext(context.Context) SfsExportPolicyRuleOutput
+}
+
+type SfsExportPolicyRuleArgs struct {
+	// Description of the Rule
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// IP access control list; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
+	IpAcls pulumi.StringArrayInput `pulumi:"ipAcls"`
+	// Order of the rule within a Share Export Policy. The order is used so that when a client IP matches multiple rules, the first rule is applied
+	Order pulumi.IntInput `pulumi:"order"`
+	// Flag to indicate if client IPs matching this rule can only mount the share in read only mode
+	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+	// Flag to honor set UUID
+	SetUuid pulumi.BoolPtrInput `pulumi:"setUuid"`
+	// Flag to indicate if client IPs matching this rule have root access on the Share
+	SuperUser pulumi.BoolPtrInput `pulumi:"superUser"`
+}
+
+func (SfsExportPolicyRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SfsExportPolicyRule)(nil)).Elem()
+}
+
+func (i SfsExportPolicyRuleArgs) ToSfsExportPolicyRuleOutput() SfsExportPolicyRuleOutput {
+	return i.ToSfsExportPolicyRuleOutputWithContext(context.Background())
+}
+
+func (i SfsExportPolicyRuleArgs) ToSfsExportPolicyRuleOutputWithContext(ctx context.Context) SfsExportPolicyRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SfsExportPolicyRuleOutput)
+}
+
+// SfsExportPolicyRuleArrayInput is an input type that accepts SfsExportPolicyRuleArray and SfsExportPolicyRuleArrayOutput values.
+// You can construct a concrete instance of `SfsExportPolicyRuleArrayInput` via:
+//
+//	SfsExportPolicyRuleArray{ SfsExportPolicyRuleArgs{...} }
+type SfsExportPolicyRuleArrayInput interface {
+	pulumi.Input
+
+	ToSfsExportPolicyRuleArrayOutput() SfsExportPolicyRuleArrayOutput
+	ToSfsExportPolicyRuleArrayOutputWithContext(context.Context) SfsExportPolicyRuleArrayOutput
+}
+
+type SfsExportPolicyRuleArray []SfsExportPolicyRuleInput
+
+func (SfsExportPolicyRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SfsExportPolicyRule)(nil)).Elem()
+}
+
+func (i SfsExportPolicyRuleArray) ToSfsExportPolicyRuleArrayOutput() SfsExportPolicyRuleArrayOutput {
+	return i.ToSfsExportPolicyRuleArrayOutputWithContext(context.Background())
+}
+
+func (i SfsExportPolicyRuleArray) ToSfsExportPolicyRuleArrayOutputWithContext(ctx context.Context) SfsExportPolicyRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SfsExportPolicyRuleArrayOutput)
+}
+
+type SfsExportPolicyRuleOutput struct{ *pulumi.OutputState }
+
+func (SfsExportPolicyRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SfsExportPolicyRule)(nil)).Elem()
+}
+
+func (o SfsExportPolicyRuleOutput) ToSfsExportPolicyRuleOutput() SfsExportPolicyRuleOutput {
+	return o
+}
+
+func (o SfsExportPolicyRuleOutput) ToSfsExportPolicyRuleOutputWithContext(ctx context.Context) SfsExportPolicyRuleOutput {
+	return o
+}
+
+// Description of the Rule
+func (o SfsExportPolicyRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SfsExportPolicyRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// IP access control list; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
+func (o SfsExportPolicyRuleOutput) IpAcls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SfsExportPolicyRule) []string { return v.IpAcls }).(pulumi.StringArrayOutput)
+}
+
+// Order of the rule within a Share Export Policy. The order is used so that when a client IP matches multiple rules, the first rule is applied
+func (o SfsExportPolicyRuleOutput) Order() pulumi.IntOutput {
+	return o.ApplyT(func(v SfsExportPolicyRule) int { return v.Order }).(pulumi.IntOutput)
+}
+
+// Flag to indicate if client IPs matching this rule can only mount the share in read only mode
+func (o SfsExportPolicyRuleOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SfsExportPolicyRule) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// Flag to honor set UUID
+func (o SfsExportPolicyRuleOutput) SetUuid() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SfsExportPolicyRule) *bool { return v.SetUuid }).(pulumi.BoolPtrOutput)
+}
+
+// Flag to indicate if client IPs matching this rule have root access on the Share
+func (o SfsExportPolicyRuleOutput) SuperUser() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SfsExportPolicyRule) *bool { return v.SuperUser }).(pulumi.BoolPtrOutput)
+}
+
+type SfsExportPolicyRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (SfsExportPolicyRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SfsExportPolicyRule)(nil)).Elem()
+}
+
+func (o SfsExportPolicyRuleArrayOutput) ToSfsExportPolicyRuleArrayOutput() SfsExportPolicyRuleArrayOutput {
+	return o
+}
+
+func (o SfsExportPolicyRuleArrayOutput) ToSfsExportPolicyRuleArrayOutputWithContext(ctx context.Context) SfsExportPolicyRuleArrayOutput {
+	return o
+}
+
+func (o SfsExportPolicyRuleArrayOutput) Index(i pulumi.IntInput) SfsExportPolicyRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SfsExportPolicyRule {
+		return vs[0].([]SfsExportPolicyRule)[vs[1].(int)]
+	}).(SfsExportPolicyRuleOutput)
+}
+
 type SkeClusterExtensions struct {
 	// Cluster access control configuration.
 	Acl *SkeClusterExtensionsAcl `pulumi:"acl"`
@@ -10428,9 +11226,9 @@ func (o SkeClusterHibernationArrayOutput) Index(i pulumi.IntInput) SkeClusterHib
 }
 
 type SkeClusterMaintenance struct {
-	// Flag to enable/disable auto-updates of the Kubernetes version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+	// Flag to enable/disable auto-updates of the Kubernetes version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
 	EnableKubernetesVersionUpdates *bool `pulumi:"enableKubernetesVersionUpdates"`
-	// Flag to enable/disable auto-updates of the OS image version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+	// Flag to enable/disable auto-updates of the OS image version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
 	EnableMachineImageVersionUpdates *bool `pulumi:"enableMachineImageVersionUpdates"`
 	// Time for maintenance window end. E.g. `01:23:45Z`, `05:00:00+02:00`.
 	End string `pulumi:"end"`
@@ -10450,9 +11248,9 @@ type SkeClusterMaintenanceInput interface {
 }
 
 type SkeClusterMaintenanceArgs struct {
-	// Flag to enable/disable auto-updates of the Kubernetes version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+	// Flag to enable/disable auto-updates of the Kubernetes version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
 	EnableKubernetesVersionUpdates pulumi.BoolPtrInput `pulumi:"enableKubernetesVersionUpdates"`
-	// Flag to enable/disable auto-updates of the OS image version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+	// Flag to enable/disable auto-updates of the OS image version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
 	EnableMachineImageVersionUpdates pulumi.BoolPtrInput `pulumi:"enableMachineImageVersionUpdates"`
 	// Time for maintenance window end. E.g. `01:23:45Z`, `05:00:00+02:00`.
 	End pulumi.StringInput `pulumi:"end"`
@@ -10537,12 +11335,12 @@ func (o SkeClusterMaintenanceOutput) ToSkeClusterMaintenancePtrOutputWithContext
 	}).(SkeClusterMaintenancePtrOutput)
 }
 
-// Flag to enable/disable auto-updates of the Kubernetes version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+// Flag to enable/disable auto-updates of the Kubernetes version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
 func (o SkeClusterMaintenanceOutput) EnableKubernetesVersionUpdates() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SkeClusterMaintenance) *bool { return v.EnableKubernetesVersionUpdates }).(pulumi.BoolPtrOutput)
 }
 
-// Flag to enable/disable auto-updates of the OS image version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+// Flag to enable/disable auto-updates of the OS image version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
 func (o SkeClusterMaintenanceOutput) EnableMachineImageVersionUpdates() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SkeClusterMaintenance) *bool { return v.EnableMachineImageVersionUpdates }).(pulumi.BoolPtrOutput)
 }
@@ -10581,7 +11379,7 @@ func (o SkeClusterMaintenancePtrOutput) Elem() SkeClusterMaintenanceOutput {
 	}).(SkeClusterMaintenanceOutput)
 }
 
-// Flag to enable/disable auto-updates of the Kubernetes version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+// Flag to enable/disable auto-updates of the Kubernetes version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
 func (o SkeClusterMaintenancePtrOutput) EnableKubernetesVersionUpdates() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SkeClusterMaintenance) *bool {
 		if v == nil {
@@ -10591,7 +11389,7 @@ func (o SkeClusterMaintenancePtrOutput) EnableKubernetesVersionUpdates() pulumi.
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Flag to enable/disable auto-updates of the OS image version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+// Flag to enable/disable auto-updates of the OS image version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
 func (o SkeClusterMaintenancePtrOutput) EnableMachineImageVersionUpdates() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SkeClusterMaintenance) *bool {
 		if v == nil {
@@ -10785,9 +11583,9 @@ type SkeClusterNodePool struct {
 	//
 	// Deprecated: Use `osVersionMin` to configure the version and `osVersionUsed` to get the currently used version instead. Setting a specific OS image version will cause errors during minor OS upgrades due to forced updates.
 	OsVersion *string `pulumi:"osVersion"`
-	// The minimum OS image version. This field will be used to set the minimum OS image version on creation/update of the cluster. If unset, the latest supported OS image version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current OS image version being used for the node pool, use the read-only `osVersionUsed` field.
+	// The minimum OS image version. This field will be used to set the minimum OS image version on creation/update of the cluster. If unset, the latest supported OS image version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/). To get the current OS image version being used for the node pool, use the read-only `osVersionUsed` field.
 	OsVersionMin *string `pulumi:"osVersionMin"`
-	// Full OS image version used. For example, if 3815.2 was set in `osVersionMin`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+	// Full OS image version used. For example, if 3815.2 was set in `osVersionMin`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
 	OsVersionUsed *string `pulumi:"osVersionUsed"`
 	// Specifies a taint list as defined below.
 	Taints []SkeClusterNodePoolTaint `pulumi:"taints"`
@@ -10835,9 +11633,9 @@ type SkeClusterNodePoolArgs struct {
 	//
 	// Deprecated: Use `osVersionMin` to configure the version and `osVersionUsed` to get the currently used version instead. Setting a specific OS image version will cause errors during minor OS upgrades due to forced updates.
 	OsVersion pulumi.StringPtrInput `pulumi:"osVersion"`
-	// The minimum OS image version. This field will be used to set the minimum OS image version on creation/update of the cluster. If unset, the latest supported OS image version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current OS image version being used for the node pool, use the read-only `osVersionUsed` field.
+	// The minimum OS image version. This field will be used to set the minimum OS image version on creation/update of the cluster. If unset, the latest supported OS image version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/). To get the current OS image version being used for the node pool, use the read-only `osVersionUsed` field.
 	OsVersionMin pulumi.StringPtrInput `pulumi:"osVersionMin"`
-	// Full OS image version used. For example, if 3815.2 was set in `osVersionMin`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+	// Full OS image version used. For example, if 3815.2 was set in `osVersionMin`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
 	OsVersionUsed pulumi.StringPtrInput `pulumi:"osVersionUsed"`
 	// Specifies a taint list as defined below.
 	Taints SkeClusterNodePoolTaintArrayInput `pulumi:"taints"`
@@ -10960,12 +11758,12 @@ func (o SkeClusterNodePoolOutput) OsVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SkeClusterNodePool) *string { return v.OsVersion }).(pulumi.StringPtrOutput)
 }
 
-// The minimum OS image version. This field will be used to set the minimum OS image version on creation/update of the cluster. If unset, the latest supported OS image version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current OS image version being used for the node pool, use the read-only `osVersionUsed` field.
+// The minimum OS image version. This field will be used to set the minimum OS image version on creation/update of the cluster. If unset, the latest supported OS image version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/). To get the current OS image version being used for the node pool, use the read-only `osVersionUsed` field.
 func (o SkeClusterNodePoolOutput) OsVersionMin() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SkeClusterNodePool) *string { return v.OsVersionMin }).(pulumi.StringPtrOutput)
 }
 
-// Full OS image version used. For example, if 3815.2 was set in `osVersionMin`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+// Full OS image version used. For example, if 3815.2 was set in `osVersionMin`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
 func (o SkeClusterNodePoolOutput) OsVersionUsed() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SkeClusterNodePool) *string { return v.OsVersionUsed }).(pulumi.StringPtrOutput)
 }
@@ -14692,6 +15490,328 @@ func (o GetNetworkAreaNetworkRangeArrayOutput) Index(i pulumi.IntInput) GetNetwo
 	}).(GetNetworkAreaNetworkRangeOutput)
 }
 
+type GetNetworkAreaRegionIpv4 struct {
+	// List of DNS Servers/Nameservers.
+	DefaultNameservers []string `pulumi:"defaultNameservers"`
+	// The default prefix length for networks in the network area.
+	DefaultPrefixLength int `pulumi:"defaultPrefixLength"`
+	// The maximal prefix length for networks in the network area.
+	MaxPrefixLength int `pulumi:"maxPrefixLength"`
+	// The minimal prefix length for networks in the network area.
+	MinPrefixLength int `pulumi:"minPrefixLength"`
+	// List of Network ranges.
+	NetworkRanges []GetNetworkAreaRegionIpv4NetworkRange `pulumi:"networkRanges"`
+	// IPv4 Classless Inter-Domain Routing (CIDR).
+	TransferNetwork string `pulumi:"transferNetwork"`
+}
+
+// GetNetworkAreaRegionIpv4Input is an input type that accepts GetNetworkAreaRegionIpv4Args and GetNetworkAreaRegionIpv4Output values.
+// You can construct a concrete instance of `GetNetworkAreaRegionIpv4Input` via:
+//
+//	GetNetworkAreaRegionIpv4Args{...}
+type GetNetworkAreaRegionIpv4Input interface {
+	pulumi.Input
+
+	ToGetNetworkAreaRegionIpv4Output() GetNetworkAreaRegionIpv4Output
+	ToGetNetworkAreaRegionIpv4OutputWithContext(context.Context) GetNetworkAreaRegionIpv4Output
+}
+
+type GetNetworkAreaRegionIpv4Args struct {
+	// List of DNS Servers/Nameservers.
+	DefaultNameservers pulumi.StringArrayInput `pulumi:"defaultNameservers"`
+	// The default prefix length for networks in the network area.
+	DefaultPrefixLength pulumi.IntInput `pulumi:"defaultPrefixLength"`
+	// The maximal prefix length for networks in the network area.
+	MaxPrefixLength pulumi.IntInput `pulumi:"maxPrefixLength"`
+	// The minimal prefix length for networks in the network area.
+	MinPrefixLength pulumi.IntInput `pulumi:"minPrefixLength"`
+	// List of Network ranges.
+	NetworkRanges GetNetworkAreaRegionIpv4NetworkRangeArrayInput `pulumi:"networkRanges"`
+	// IPv4 Classless Inter-Domain Routing (CIDR).
+	TransferNetwork pulumi.StringInput `pulumi:"transferNetwork"`
+}
+
+func (GetNetworkAreaRegionIpv4Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAreaRegionIpv4)(nil)).Elem()
+}
+
+func (i GetNetworkAreaRegionIpv4Args) ToGetNetworkAreaRegionIpv4Output() GetNetworkAreaRegionIpv4Output {
+	return i.ToGetNetworkAreaRegionIpv4OutputWithContext(context.Background())
+}
+
+func (i GetNetworkAreaRegionIpv4Args) ToGetNetworkAreaRegionIpv4OutputWithContext(ctx context.Context) GetNetworkAreaRegionIpv4Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAreaRegionIpv4Output)
+}
+
+type GetNetworkAreaRegionIpv4Output struct{ *pulumi.OutputState }
+
+func (GetNetworkAreaRegionIpv4Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAreaRegionIpv4)(nil)).Elem()
+}
+
+func (o GetNetworkAreaRegionIpv4Output) ToGetNetworkAreaRegionIpv4Output() GetNetworkAreaRegionIpv4Output {
+	return o
+}
+
+func (o GetNetworkAreaRegionIpv4Output) ToGetNetworkAreaRegionIpv4OutputWithContext(ctx context.Context) GetNetworkAreaRegionIpv4Output {
+	return o
+}
+
+// List of DNS Servers/Nameservers.
+func (o GetNetworkAreaRegionIpv4Output) DefaultNameservers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetNetworkAreaRegionIpv4) []string { return v.DefaultNameservers }).(pulumi.StringArrayOutput)
+}
+
+// The default prefix length for networks in the network area.
+func (o GetNetworkAreaRegionIpv4Output) DefaultPrefixLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkAreaRegionIpv4) int { return v.DefaultPrefixLength }).(pulumi.IntOutput)
+}
+
+// The maximal prefix length for networks in the network area.
+func (o GetNetworkAreaRegionIpv4Output) MaxPrefixLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkAreaRegionIpv4) int { return v.MaxPrefixLength }).(pulumi.IntOutput)
+}
+
+// The minimal prefix length for networks in the network area.
+func (o GetNetworkAreaRegionIpv4Output) MinPrefixLength() pulumi.IntOutput {
+	return o.ApplyT(func(v GetNetworkAreaRegionIpv4) int { return v.MinPrefixLength }).(pulumi.IntOutput)
+}
+
+// List of Network ranges.
+func (o GetNetworkAreaRegionIpv4Output) NetworkRanges() GetNetworkAreaRegionIpv4NetworkRangeArrayOutput {
+	return o.ApplyT(func(v GetNetworkAreaRegionIpv4) []GetNetworkAreaRegionIpv4NetworkRange { return v.NetworkRanges }).(GetNetworkAreaRegionIpv4NetworkRangeArrayOutput)
+}
+
+// IPv4 Classless Inter-Domain Routing (CIDR).
+func (o GetNetworkAreaRegionIpv4Output) TransferNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAreaRegionIpv4) string { return v.TransferNetwork }).(pulumi.StringOutput)
+}
+
+type GetNetworkAreaRegionIpv4NetworkRange struct {
+	NetworkRangeId string `pulumi:"networkRangeId"`
+	// Classless Inter-Domain Routing (CIDR).
+	Prefix string `pulumi:"prefix"`
+}
+
+// GetNetworkAreaRegionIpv4NetworkRangeInput is an input type that accepts GetNetworkAreaRegionIpv4NetworkRangeArgs and GetNetworkAreaRegionIpv4NetworkRangeOutput values.
+// You can construct a concrete instance of `GetNetworkAreaRegionIpv4NetworkRangeInput` via:
+//
+//	GetNetworkAreaRegionIpv4NetworkRangeArgs{...}
+type GetNetworkAreaRegionIpv4NetworkRangeInput interface {
+	pulumi.Input
+
+	ToGetNetworkAreaRegionIpv4NetworkRangeOutput() GetNetworkAreaRegionIpv4NetworkRangeOutput
+	ToGetNetworkAreaRegionIpv4NetworkRangeOutputWithContext(context.Context) GetNetworkAreaRegionIpv4NetworkRangeOutput
+}
+
+type GetNetworkAreaRegionIpv4NetworkRangeArgs struct {
+	NetworkRangeId pulumi.StringInput `pulumi:"networkRangeId"`
+	// Classless Inter-Domain Routing (CIDR).
+	Prefix pulumi.StringInput `pulumi:"prefix"`
+}
+
+func (GetNetworkAreaRegionIpv4NetworkRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAreaRegionIpv4NetworkRange)(nil)).Elem()
+}
+
+func (i GetNetworkAreaRegionIpv4NetworkRangeArgs) ToGetNetworkAreaRegionIpv4NetworkRangeOutput() GetNetworkAreaRegionIpv4NetworkRangeOutput {
+	return i.ToGetNetworkAreaRegionIpv4NetworkRangeOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAreaRegionIpv4NetworkRangeArgs) ToGetNetworkAreaRegionIpv4NetworkRangeOutputWithContext(ctx context.Context) GetNetworkAreaRegionIpv4NetworkRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAreaRegionIpv4NetworkRangeOutput)
+}
+
+// GetNetworkAreaRegionIpv4NetworkRangeArrayInput is an input type that accepts GetNetworkAreaRegionIpv4NetworkRangeArray and GetNetworkAreaRegionIpv4NetworkRangeArrayOutput values.
+// You can construct a concrete instance of `GetNetworkAreaRegionIpv4NetworkRangeArrayInput` via:
+//
+//	GetNetworkAreaRegionIpv4NetworkRangeArray{ GetNetworkAreaRegionIpv4NetworkRangeArgs{...} }
+type GetNetworkAreaRegionIpv4NetworkRangeArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkAreaRegionIpv4NetworkRangeArrayOutput() GetNetworkAreaRegionIpv4NetworkRangeArrayOutput
+	ToGetNetworkAreaRegionIpv4NetworkRangeArrayOutputWithContext(context.Context) GetNetworkAreaRegionIpv4NetworkRangeArrayOutput
+}
+
+type GetNetworkAreaRegionIpv4NetworkRangeArray []GetNetworkAreaRegionIpv4NetworkRangeInput
+
+func (GetNetworkAreaRegionIpv4NetworkRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAreaRegionIpv4NetworkRange)(nil)).Elem()
+}
+
+func (i GetNetworkAreaRegionIpv4NetworkRangeArray) ToGetNetworkAreaRegionIpv4NetworkRangeArrayOutput() GetNetworkAreaRegionIpv4NetworkRangeArrayOutput {
+	return i.ToGetNetworkAreaRegionIpv4NetworkRangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAreaRegionIpv4NetworkRangeArray) ToGetNetworkAreaRegionIpv4NetworkRangeArrayOutputWithContext(ctx context.Context) GetNetworkAreaRegionIpv4NetworkRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAreaRegionIpv4NetworkRangeArrayOutput)
+}
+
+type GetNetworkAreaRegionIpv4NetworkRangeOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAreaRegionIpv4NetworkRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAreaRegionIpv4NetworkRange)(nil)).Elem()
+}
+
+func (o GetNetworkAreaRegionIpv4NetworkRangeOutput) ToGetNetworkAreaRegionIpv4NetworkRangeOutput() GetNetworkAreaRegionIpv4NetworkRangeOutput {
+	return o
+}
+
+func (o GetNetworkAreaRegionIpv4NetworkRangeOutput) ToGetNetworkAreaRegionIpv4NetworkRangeOutputWithContext(ctx context.Context) GetNetworkAreaRegionIpv4NetworkRangeOutput {
+	return o
+}
+
+func (o GetNetworkAreaRegionIpv4NetworkRangeOutput) NetworkRangeId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAreaRegionIpv4NetworkRange) string { return v.NetworkRangeId }).(pulumi.StringOutput)
+}
+
+// Classless Inter-Domain Routing (CIDR).
+func (o GetNetworkAreaRegionIpv4NetworkRangeOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAreaRegionIpv4NetworkRange) string { return v.Prefix }).(pulumi.StringOutput)
+}
+
+type GetNetworkAreaRegionIpv4NetworkRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAreaRegionIpv4NetworkRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkAreaRegionIpv4NetworkRange)(nil)).Elem()
+}
+
+func (o GetNetworkAreaRegionIpv4NetworkRangeArrayOutput) ToGetNetworkAreaRegionIpv4NetworkRangeArrayOutput() GetNetworkAreaRegionIpv4NetworkRangeArrayOutput {
+	return o
+}
+
+func (o GetNetworkAreaRegionIpv4NetworkRangeArrayOutput) ToGetNetworkAreaRegionIpv4NetworkRangeArrayOutputWithContext(ctx context.Context) GetNetworkAreaRegionIpv4NetworkRangeArrayOutput {
+	return o
+}
+
+func (o GetNetworkAreaRegionIpv4NetworkRangeArrayOutput) Index(i pulumi.IntInput) GetNetworkAreaRegionIpv4NetworkRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkAreaRegionIpv4NetworkRange {
+		return vs[0].([]GetNetworkAreaRegionIpv4NetworkRange)[vs[1].(int)]
+	}).(GetNetworkAreaRegionIpv4NetworkRangeOutput)
+}
+
+type GetNetworkAreaRouteDestination struct {
+	// CIDRV type. Possible values are: `cidrv4`, `cidrv6`.
+	Type string `pulumi:"type"`
+	// An CIDR string.
+	Value string `pulumi:"value"`
+}
+
+// GetNetworkAreaRouteDestinationInput is an input type that accepts GetNetworkAreaRouteDestinationArgs and GetNetworkAreaRouteDestinationOutput values.
+// You can construct a concrete instance of `GetNetworkAreaRouteDestinationInput` via:
+//
+//	GetNetworkAreaRouteDestinationArgs{...}
+type GetNetworkAreaRouteDestinationInput interface {
+	pulumi.Input
+
+	ToGetNetworkAreaRouteDestinationOutput() GetNetworkAreaRouteDestinationOutput
+	ToGetNetworkAreaRouteDestinationOutputWithContext(context.Context) GetNetworkAreaRouteDestinationOutput
+}
+
+type GetNetworkAreaRouteDestinationArgs struct {
+	// CIDRV type. Possible values are: `cidrv4`, `cidrv6`.
+	Type pulumi.StringInput `pulumi:"type"`
+	// An CIDR string.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetNetworkAreaRouteDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAreaRouteDestination)(nil)).Elem()
+}
+
+func (i GetNetworkAreaRouteDestinationArgs) ToGetNetworkAreaRouteDestinationOutput() GetNetworkAreaRouteDestinationOutput {
+	return i.ToGetNetworkAreaRouteDestinationOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAreaRouteDestinationArgs) ToGetNetworkAreaRouteDestinationOutputWithContext(ctx context.Context) GetNetworkAreaRouteDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAreaRouteDestinationOutput)
+}
+
+type GetNetworkAreaRouteDestinationOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAreaRouteDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAreaRouteDestination)(nil)).Elem()
+}
+
+func (o GetNetworkAreaRouteDestinationOutput) ToGetNetworkAreaRouteDestinationOutput() GetNetworkAreaRouteDestinationOutput {
+	return o
+}
+
+func (o GetNetworkAreaRouteDestinationOutput) ToGetNetworkAreaRouteDestinationOutputWithContext(ctx context.Context) GetNetworkAreaRouteDestinationOutput {
+	return o
+}
+
+// CIDRV type. Possible values are: `cidrv4`, `cidrv6`.
+func (o GetNetworkAreaRouteDestinationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAreaRouteDestination) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// An CIDR string.
+func (o GetNetworkAreaRouteDestinationOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAreaRouteDestination) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetNetworkAreaRouteNextHop struct {
+	// Type of the next hop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`.
+	Type string `pulumi:"type"`
+	// Either IPv4 or IPv6 (not set for blackhole and internet).
+	Value string `pulumi:"value"`
+}
+
+// GetNetworkAreaRouteNextHopInput is an input type that accepts GetNetworkAreaRouteNextHopArgs and GetNetworkAreaRouteNextHopOutput values.
+// You can construct a concrete instance of `GetNetworkAreaRouteNextHopInput` via:
+//
+//	GetNetworkAreaRouteNextHopArgs{...}
+type GetNetworkAreaRouteNextHopInput interface {
+	pulumi.Input
+
+	ToGetNetworkAreaRouteNextHopOutput() GetNetworkAreaRouteNextHopOutput
+	ToGetNetworkAreaRouteNextHopOutputWithContext(context.Context) GetNetworkAreaRouteNextHopOutput
+}
+
+type GetNetworkAreaRouteNextHopArgs struct {
+	// Type of the next hop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Either IPv4 or IPv6 (not set for blackhole and internet).
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetNetworkAreaRouteNextHopArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAreaRouteNextHop)(nil)).Elem()
+}
+
+func (i GetNetworkAreaRouteNextHopArgs) ToGetNetworkAreaRouteNextHopOutput() GetNetworkAreaRouteNextHopOutput {
+	return i.ToGetNetworkAreaRouteNextHopOutputWithContext(context.Background())
+}
+
+func (i GetNetworkAreaRouteNextHopArgs) ToGetNetworkAreaRouteNextHopOutputWithContext(ctx context.Context) GetNetworkAreaRouteNextHopOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAreaRouteNextHopOutput)
+}
+
+type GetNetworkAreaRouteNextHopOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkAreaRouteNextHopOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkAreaRouteNextHop)(nil)).Elem()
+}
+
+func (o GetNetworkAreaRouteNextHopOutput) ToGetNetworkAreaRouteNextHopOutput() GetNetworkAreaRouteNextHopOutput {
+	return o
+}
+
+func (o GetNetworkAreaRouteNextHopOutput) ToGetNetworkAreaRouteNextHopOutputWithContext(ctx context.Context) GetNetworkAreaRouteNextHopOutput {
+	return o
+}
+
+// Type of the next hop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`.
+func (o GetNetworkAreaRouteNextHopOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAreaRouteNextHop) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Either IPv4 or IPv6 (not set for blackhole and internet).
+func (o GetNetworkAreaRouteNextHopOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkAreaRouteNextHop) string { return v.Value }).(pulumi.StringOutput)
+}
+
 type GetObservabilityAlertgroupRule struct {
 	// The name of the alert rule. Is the identifier and must be unique in the group.
 	Alert string `pulumi:"alert"`
@@ -18145,6 +19265,290 @@ func (o GetServerUpdateSchedulesItemArrayOutput) Index(i pulumi.IntInput) GetSer
 	}).(GetServerUpdateSchedulesItemOutput)
 }
 
+type GetSfsExportPolicyRule struct {
+	// Description of the Rule
+	Description *string `pulumi:"description"`
+	// IP access control list; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
+	IpAcls []string `pulumi:"ipAcls"`
+	// Order of the rule within a Share Export Policy. The order is used so that when a client IP matches multiple rules, the first rule is applied
+	Order int `pulumi:"order"`
+	// Flag to indicate if client IPs matching this rule can only mount the share in read only mode
+	ReadOnly bool `pulumi:"readOnly"`
+	// Flag to honor set UUID
+	SetUuid bool `pulumi:"setUuid"`
+	// Flag to indicate if client IPs matching this rule have root access on the Share
+	SuperUser bool `pulumi:"superUser"`
+}
+
+// GetSfsExportPolicyRuleInput is an input type that accepts GetSfsExportPolicyRuleArgs and GetSfsExportPolicyRuleOutput values.
+// You can construct a concrete instance of `GetSfsExportPolicyRuleInput` via:
+//
+//	GetSfsExportPolicyRuleArgs{...}
+type GetSfsExportPolicyRuleInput interface {
+	pulumi.Input
+
+	ToGetSfsExportPolicyRuleOutput() GetSfsExportPolicyRuleOutput
+	ToGetSfsExportPolicyRuleOutputWithContext(context.Context) GetSfsExportPolicyRuleOutput
+}
+
+type GetSfsExportPolicyRuleArgs struct {
+	// Description of the Rule
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// IP access control list; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
+	IpAcls pulumi.StringArrayInput `pulumi:"ipAcls"`
+	// Order of the rule within a Share Export Policy. The order is used so that when a client IP matches multiple rules, the first rule is applied
+	Order pulumi.IntInput `pulumi:"order"`
+	// Flag to indicate if client IPs matching this rule can only mount the share in read only mode
+	ReadOnly pulumi.BoolInput `pulumi:"readOnly"`
+	// Flag to honor set UUID
+	SetUuid pulumi.BoolInput `pulumi:"setUuid"`
+	// Flag to indicate if client IPs matching this rule have root access on the Share
+	SuperUser pulumi.BoolInput `pulumi:"superUser"`
+}
+
+func (GetSfsExportPolicyRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSfsExportPolicyRule)(nil)).Elem()
+}
+
+func (i GetSfsExportPolicyRuleArgs) ToGetSfsExportPolicyRuleOutput() GetSfsExportPolicyRuleOutput {
+	return i.ToGetSfsExportPolicyRuleOutputWithContext(context.Background())
+}
+
+func (i GetSfsExportPolicyRuleArgs) ToGetSfsExportPolicyRuleOutputWithContext(ctx context.Context) GetSfsExportPolicyRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSfsExportPolicyRuleOutput)
+}
+
+// GetSfsExportPolicyRuleArrayInput is an input type that accepts GetSfsExportPolicyRuleArray and GetSfsExportPolicyRuleArrayOutput values.
+// You can construct a concrete instance of `GetSfsExportPolicyRuleArrayInput` via:
+//
+//	GetSfsExportPolicyRuleArray{ GetSfsExportPolicyRuleArgs{...} }
+type GetSfsExportPolicyRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetSfsExportPolicyRuleArrayOutput() GetSfsExportPolicyRuleArrayOutput
+	ToGetSfsExportPolicyRuleArrayOutputWithContext(context.Context) GetSfsExportPolicyRuleArrayOutput
+}
+
+type GetSfsExportPolicyRuleArray []GetSfsExportPolicyRuleInput
+
+func (GetSfsExportPolicyRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSfsExportPolicyRule)(nil)).Elem()
+}
+
+func (i GetSfsExportPolicyRuleArray) ToGetSfsExportPolicyRuleArrayOutput() GetSfsExportPolicyRuleArrayOutput {
+	return i.ToGetSfsExportPolicyRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetSfsExportPolicyRuleArray) ToGetSfsExportPolicyRuleArrayOutputWithContext(ctx context.Context) GetSfsExportPolicyRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSfsExportPolicyRuleArrayOutput)
+}
+
+type GetSfsExportPolicyRuleOutput struct{ *pulumi.OutputState }
+
+func (GetSfsExportPolicyRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSfsExportPolicyRule)(nil)).Elem()
+}
+
+func (o GetSfsExportPolicyRuleOutput) ToGetSfsExportPolicyRuleOutput() GetSfsExportPolicyRuleOutput {
+	return o
+}
+
+func (o GetSfsExportPolicyRuleOutput) ToGetSfsExportPolicyRuleOutputWithContext(ctx context.Context) GetSfsExportPolicyRuleOutput {
+	return o
+}
+
+// Description of the Rule
+func (o GetSfsExportPolicyRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSfsExportPolicyRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// IP access control list; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
+func (o GetSfsExportPolicyRuleOutput) IpAcls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSfsExportPolicyRule) []string { return v.IpAcls }).(pulumi.StringArrayOutput)
+}
+
+// Order of the rule within a Share Export Policy. The order is used so that when a client IP matches multiple rules, the first rule is applied
+func (o GetSfsExportPolicyRuleOutput) Order() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSfsExportPolicyRule) int { return v.Order }).(pulumi.IntOutput)
+}
+
+// Flag to indicate if client IPs matching this rule can only mount the share in read only mode
+func (o GetSfsExportPolicyRuleOutput) ReadOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSfsExportPolicyRule) bool { return v.ReadOnly }).(pulumi.BoolOutput)
+}
+
+// Flag to honor set UUID
+func (o GetSfsExportPolicyRuleOutput) SetUuid() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSfsExportPolicyRule) bool { return v.SetUuid }).(pulumi.BoolOutput)
+}
+
+// Flag to indicate if client IPs matching this rule have root access on the Share
+func (o GetSfsExportPolicyRuleOutput) SuperUser() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSfsExportPolicyRule) bool { return v.SuperUser }).(pulumi.BoolOutput)
+}
+
+type GetSfsExportPolicyRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSfsExportPolicyRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSfsExportPolicyRule)(nil)).Elem()
+}
+
+func (o GetSfsExportPolicyRuleArrayOutput) ToGetSfsExportPolicyRuleArrayOutput() GetSfsExportPolicyRuleArrayOutput {
+	return o
+}
+
+func (o GetSfsExportPolicyRuleArrayOutput) ToGetSfsExportPolicyRuleArrayOutputWithContext(ctx context.Context) GetSfsExportPolicyRuleArrayOutput {
+	return o
+}
+
+func (o GetSfsExportPolicyRuleArrayOutput) Index(i pulumi.IntInput) GetSfsExportPolicyRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSfsExportPolicyRule {
+		return vs[0].([]GetSfsExportPolicyRule)[vs[1].(int)]
+	}).(GetSfsExportPolicyRuleOutput)
+}
+
+type GetSfsResourcePoolSnapshotSnapshot struct {
+	// (optional) A comment to add more information about a snapshot
+	Comment string `pulumi:"comment"`
+	// creation date of the snapshot
+	CreatedAt string `pulumi:"createdAt"`
+	// Represents the user-visible data size at the time of the snapshot (e.g. what’s in the snapshot)
+	LogicalSizeGigabytes int `pulumi:"logicalSizeGigabytes"`
+	// ID of the Resource Pool of the Snapshot
+	ResourcePoolId string `pulumi:"resourcePoolId"`
+	// Reflects the actual storage footprint in the backend at snapshot time (e.g. how much storage from the Resource Pool does it use)
+	SizeGigabytes int `pulumi:"sizeGigabytes"`
+	// Name of the Resource Pool Snapshot
+	SnapshotName string `pulumi:"snapshotName"`
+}
+
+// GetSfsResourcePoolSnapshotSnapshotInput is an input type that accepts GetSfsResourcePoolSnapshotSnapshotArgs and GetSfsResourcePoolSnapshotSnapshotOutput values.
+// You can construct a concrete instance of `GetSfsResourcePoolSnapshotSnapshotInput` via:
+//
+//	GetSfsResourcePoolSnapshotSnapshotArgs{...}
+type GetSfsResourcePoolSnapshotSnapshotInput interface {
+	pulumi.Input
+
+	ToGetSfsResourcePoolSnapshotSnapshotOutput() GetSfsResourcePoolSnapshotSnapshotOutput
+	ToGetSfsResourcePoolSnapshotSnapshotOutputWithContext(context.Context) GetSfsResourcePoolSnapshotSnapshotOutput
+}
+
+type GetSfsResourcePoolSnapshotSnapshotArgs struct {
+	// (optional) A comment to add more information about a snapshot
+	Comment pulumi.StringInput `pulumi:"comment"`
+	// creation date of the snapshot
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Represents the user-visible data size at the time of the snapshot (e.g. what’s in the snapshot)
+	LogicalSizeGigabytes pulumi.IntInput `pulumi:"logicalSizeGigabytes"`
+	// ID of the Resource Pool of the Snapshot
+	ResourcePoolId pulumi.StringInput `pulumi:"resourcePoolId"`
+	// Reflects the actual storage footprint in the backend at snapshot time (e.g. how much storage from the Resource Pool does it use)
+	SizeGigabytes pulumi.IntInput `pulumi:"sizeGigabytes"`
+	// Name of the Resource Pool Snapshot
+	SnapshotName pulumi.StringInput `pulumi:"snapshotName"`
+}
+
+func (GetSfsResourcePoolSnapshotSnapshotArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSfsResourcePoolSnapshotSnapshot)(nil)).Elem()
+}
+
+func (i GetSfsResourcePoolSnapshotSnapshotArgs) ToGetSfsResourcePoolSnapshotSnapshotOutput() GetSfsResourcePoolSnapshotSnapshotOutput {
+	return i.ToGetSfsResourcePoolSnapshotSnapshotOutputWithContext(context.Background())
+}
+
+func (i GetSfsResourcePoolSnapshotSnapshotArgs) ToGetSfsResourcePoolSnapshotSnapshotOutputWithContext(ctx context.Context) GetSfsResourcePoolSnapshotSnapshotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSfsResourcePoolSnapshotSnapshotOutput)
+}
+
+// GetSfsResourcePoolSnapshotSnapshotArrayInput is an input type that accepts GetSfsResourcePoolSnapshotSnapshotArray and GetSfsResourcePoolSnapshotSnapshotArrayOutput values.
+// You can construct a concrete instance of `GetSfsResourcePoolSnapshotSnapshotArrayInput` via:
+//
+//	GetSfsResourcePoolSnapshotSnapshotArray{ GetSfsResourcePoolSnapshotSnapshotArgs{...} }
+type GetSfsResourcePoolSnapshotSnapshotArrayInput interface {
+	pulumi.Input
+
+	ToGetSfsResourcePoolSnapshotSnapshotArrayOutput() GetSfsResourcePoolSnapshotSnapshotArrayOutput
+	ToGetSfsResourcePoolSnapshotSnapshotArrayOutputWithContext(context.Context) GetSfsResourcePoolSnapshotSnapshotArrayOutput
+}
+
+type GetSfsResourcePoolSnapshotSnapshotArray []GetSfsResourcePoolSnapshotSnapshotInput
+
+func (GetSfsResourcePoolSnapshotSnapshotArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSfsResourcePoolSnapshotSnapshot)(nil)).Elem()
+}
+
+func (i GetSfsResourcePoolSnapshotSnapshotArray) ToGetSfsResourcePoolSnapshotSnapshotArrayOutput() GetSfsResourcePoolSnapshotSnapshotArrayOutput {
+	return i.ToGetSfsResourcePoolSnapshotSnapshotArrayOutputWithContext(context.Background())
+}
+
+func (i GetSfsResourcePoolSnapshotSnapshotArray) ToGetSfsResourcePoolSnapshotSnapshotArrayOutputWithContext(ctx context.Context) GetSfsResourcePoolSnapshotSnapshotArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSfsResourcePoolSnapshotSnapshotArrayOutput)
+}
+
+type GetSfsResourcePoolSnapshotSnapshotOutput struct{ *pulumi.OutputState }
+
+func (GetSfsResourcePoolSnapshotSnapshotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSfsResourcePoolSnapshotSnapshot)(nil)).Elem()
+}
+
+func (o GetSfsResourcePoolSnapshotSnapshotOutput) ToGetSfsResourcePoolSnapshotSnapshotOutput() GetSfsResourcePoolSnapshotSnapshotOutput {
+	return o
+}
+
+func (o GetSfsResourcePoolSnapshotSnapshotOutput) ToGetSfsResourcePoolSnapshotSnapshotOutputWithContext(ctx context.Context) GetSfsResourcePoolSnapshotSnapshotOutput {
+	return o
+}
+
+// (optional) A comment to add more information about a snapshot
+func (o GetSfsResourcePoolSnapshotSnapshotOutput) Comment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSfsResourcePoolSnapshotSnapshot) string { return v.Comment }).(pulumi.StringOutput)
+}
+
+// creation date of the snapshot
+func (o GetSfsResourcePoolSnapshotSnapshotOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSfsResourcePoolSnapshotSnapshot) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Represents the user-visible data size at the time of the snapshot (e.g. what’s in the snapshot)
+func (o GetSfsResourcePoolSnapshotSnapshotOutput) LogicalSizeGigabytes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSfsResourcePoolSnapshotSnapshot) int { return v.LogicalSizeGigabytes }).(pulumi.IntOutput)
+}
+
+// ID of the Resource Pool of the Snapshot
+func (o GetSfsResourcePoolSnapshotSnapshotOutput) ResourcePoolId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSfsResourcePoolSnapshotSnapshot) string { return v.ResourcePoolId }).(pulumi.StringOutput)
+}
+
+// Reflects the actual storage footprint in the backend at snapshot time (e.g. how much storage from the Resource Pool does it use)
+func (o GetSfsResourcePoolSnapshotSnapshotOutput) SizeGigabytes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSfsResourcePoolSnapshotSnapshot) int { return v.SizeGigabytes }).(pulumi.IntOutput)
+}
+
+// Name of the Resource Pool Snapshot
+func (o GetSfsResourcePoolSnapshotSnapshotOutput) SnapshotName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSfsResourcePoolSnapshotSnapshot) string { return v.SnapshotName }).(pulumi.StringOutput)
+}
+
+type GetSfsResourcePoolSnapshotSnapshotArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSfsResourcePoolSnapshotSnapshotArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSfsResourcePoolSnapshotSnapshot)(nil)).Elem()
+}
+
+func (o GetSfsResourcePoolSnapshotSnapshotArrayOutput) ToGetSfsResourcePoolSnapshotSnapshotArrayOutput() GetSfsResourcePoolSnapshotSnapshotArrayOutput {
+	return o
+}
+
+func (o GetSfsResourcePoolSnapshotSnapshotArrayOutput) ToGetSfsResourcePoolSnapshotSnapshotArrayOutputWithContext(ctx context.Context) GetSfsResourcePoolSnapshotSnapshotArrayOutput {
+	return o
+}
+
+func (o GetSfsResourcePoolSnapshotSnapshotArrayOutput) Index(i pulumi.IntInput) GetSfsResourcePoolSnapshotSnapshotOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSfsResourcePoolSnapshotSnapshot {
+		return vs[0].([]GetSfsResourcePoolSnapshotSnapshot)[vs[1].(int)]
+	}).(GetSfsResourcePoolSnapshotSnapshotOutput)
+}
+
 type GetSkeClusterExtensions struct {
 	// Cluster access control configuration
 	Acl GetSkeClusterExtensionsAcl `pulumi:"acl"`
@@ -18745,9 +20149,9 @@ type GetSkeClusterNodePool struct {
 	OsName string `pulumi:"osName"`
 	// The OS image version.
 	OsVersion string `pulumi:"osVersion"`
-	// The minimum OS image version, this field is always nil. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current OS image version being used for the node pool, use the read-only `osVersionUsed` field.
+	// The minimum OS image version, this field is always nil. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/). To get the current OS image version being used for the node pool, use the read-only `osVersionUsed` field.
 	OsVersionMin string `pulumi:"osVersionMin"`
-	// Full OS image version used. For example, if 3815.2 was set in `osVersionMin`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+	// Full OS image version used. For example, if 3815.2 was set in `osVersionMin`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
 	OsVersionUsed string `pulumi:"osVersionUsed"`
 	// Specifies a taint list as defined below.
 	Taints []GetSkeClusterNodePoolTaint `pulumi:"taints"`
@@ -18793,9 +20197,9 @@ type GetSkeClusterNodePoolArgs struct {
 	OsName pulumi.StringInput `pulumi:"osName"`
 	// The OS image version.
 	OsVersion pulumi.StringInput `pulumi:"osVersion"`
-	// The minimum OS image version, this field is always nil. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current OS image version being used for the node pool, use the read-only `osVersionUsed` field.
+	// The minimum OS image version, this field is always nil. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/). To get the current OS image version being used for the node pool, use the read-only `osVersionUsed` field.
 	OsVersionMin pulumi.StringInput `pulumi:"osVersionMin"`
-	// Full OS image version used. For example, if 3815.2 was set in `osVersionMin`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+	// Full OS image version used. For example, if 3815.2 was set in `osVersionMin`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
 	OsVersionUsed pulumi.StringInput `pulumi:"osVersionUsed"`
 	// Specifies a taint list as defined below.
 	Taints GetSkeClusterNodePoolTaintArrayInput `pulumi:"taints"`
@@ -18916,12 +20320,12 @@ func (o GetSkeClusterNodePoolOutput) OsVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSkeClusterNodePool) string { return v.OsVersion }).(pulumi.StringOutput)
 }
 
-// The minimum OS image version, this field is always nil. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html). To get the current OS image version being used for the node pool, use the read-only `osVersionUsed` field.
+// The minimum OS image version, this field is always nil. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/). To get the current OS image version being used for the node pool, use the read-only `osVersionUsed` field.
 func (o GetSkeClusterNodePoolOutput) OsVersionMin() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSkeClusterNodePool) string { return v.OsVersionMin }).(pulumi.StringOutput)
 }
 
-// Full OS image version used. For example, if 3815.2 was set in `osVersionMin`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [Updates for Kubernetes versions and Operating System versions in SKE](https://docs.stackit.cloud/stackit/en/version-updates-in-ske-10125631.html).
+// Full OS image version used. For example, if 3815.2 was set in `osVersionMin`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
 func (o GetSkeClusterNodePoolOutput) OsVersionUsed() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSkeClusterNodePool) string { return v.OsVersionUsed }).(pulumi.StringOutput)
 }
@@ -19367,6 +20771,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MongodbflexInstanceStoragePtrInput)(nil)).Elem(), MongodbflexInstanceStorageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAreaNetworkRangeInput)(nil)).Elem(), NetworkAreaNetworkRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAreaNetworkRangeArrayInput)(nil)).Elem(), NetworkAreaNetworkRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAreaRegionIpv4Input)(nil)).Elem(), NetworkAreaRegionIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAreaRegionIpv4PtrInput)(nil)).Elem(), NetworkAreaRegionIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAreaRegionIpv4NetworkRangeInput)(nil)).Elem(), NetworkAreaRegionIpv4NetworkRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAreaRegionIpv4NetworkRangeArrayInput)(nil)).Elem(), NetworkAreaRegionIpv4NetworkRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAreaRouteDestinationInput)(nil)).Elem(), NetworkAreaRouteDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAreaRouteDestinationPtrInput)(nil)).Elem(), NetworkAreaRouteDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAreaRouteNextHopInput)(nil)).Elem(), NetworkAreaRouteNextHopArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAreaRouteNextHopPtrInput)(nil)).Elem(), NetworkAreaRouteNextHopArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObservabilityAlertgroupRuleInput)(nil)).Elem(), ObservabilityAlertgroupRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObservabilityAlertgroupRuleArrayInput)(nil)).Elem(), ObservabilityAlertgroupRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ObservabilityInstanceAlertConfigInput)(nil)).Elem(), ObservabilityInstanceAlertConfigArgs{})
@@ -19417,6 +20829,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerBackupScheduleBackupPropertiesPtrInput)(nil)).Elem(), ServerBackupScheduleBackupPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerBootVolumeInput)(nil)).Elem(), ServerBootVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerBootVolumePtrInput)(nil)).Elem(), ServerBootVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SfsExportPolicyRuleInput)(nil)).Elem(), SfsExportPolicyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SfsExportPolicyRuleArrayInput)(nil)).Elem(), SfsExportPolicyRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterExtensionsInput)(nil)).Elem(), SkeClusterExtensionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterExtensionsPtrInput)(nil)).Elem(), SkeClusterExtensionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterExtensionsAclInput)(nil)).Elem(), SkeClusterExtensionsAclArgs{})
@@ -19484,6 +20898,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMongodbflexInstanceStorageInput)(nil)).Elem(), GetMongodbflexInstanceStorageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAreaNetworkRangeInput)(nil)).Elem(), GetNetworkAreaNetworkRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAreaNetworkRangeArrayInput)(nil)).Elem(), GetNetworkAreaNetworkRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAreaRegionIpv4Input)(nil)).Elem(), GetNetworkAreaRegionIpv4Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAreaRegionIpv4NetworkRangeInput)(nil)).Elem(), GetNetworkAreaRegionIpv4NetworkRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAreaRegionIpv4NetworkRangeArrayInput)(nil)).Elem(), GetNetworkAreaRegionIpv4NetworkRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAreaRouteDestinationInput)(nil)).Elem(), GetNetworkAreaRouteDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAreaRouteNextHopInput)(nil)).Elem(), GetNetworkAreaRouteNextHopArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetObservabilityAlertgroupRuleInput)(nil)).Elem(), GetObservabilityAlertgroupRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetObservabilityAlertgroupRuleArrayInput)(nil)).Elem(), GetObservabilityAlertgroupRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetObservabilityInstanceAlertConfigInput)(nil)).Elem(), GetObservabilityInstanceAlertConfigArgs{})
@@ -19530,6 +20949,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerBootVolumeInput)(nil)).Elem(), GetServerBootVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerUpdateSchedulesItemInput)(nil)).Elem(), GetServerUpdateSchedulesItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerUpdateSchedulesItemArrayInput)(nil)).Elem(), GetServerUpdateSchedulesItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSfsExportPolicyRuleInput)(nil)).Elem(), GetSfsExportPolicyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSfsExportPolicyRuleArrayInput)(nil)).Elem(), GetSfsExportPolicyRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSfsResourcePoolSnapshotSnapshotInput)(nil)).Elem(), GetSfsResourcePoolSnapshotSnapshotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSfsResourcePoolSnapshotSnapshotArrayInput)(nil)).Elem(), GetSfsResourcePoolSnapshotSnapshotArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeClusterExtensionsInput)(nil)).Elem(), GetSkeClusterExtensionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeClusterExtensionsAclInput)(nil)).Elem(), GetSkeClusterExtensionsAclArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeClusterExtensionsArgusInput)(nil)).Elem(), GetSkeClusterExtensionsArgusArgs{})
@@ -19599,6 +21022,14 @@ func init() {
 	pulumi.RegisterOutputType(MongodbflexInstanceStoragePtrOutput{})
 	pulumi.RegisterOutputType(NetworkAreaNetworkRangeOutput{})
 	pulumi.RegisterOutputType(NetworkAreaNetworkRangeArrayOutput{})
+	pulumi.RegisterOutputType(NetworkAreaRegionIpv4Output{})
+	pulumi.RegisterOutputType(NetworkAreaRegionIpv4PtrOutput{})
+	pulumi.RegisterOutputType(NetworkAreaRegionIpv4NetworkRangeOutput{})
+	pulumi.RegisterOutputType(NetworkAreaRegionIpv4NetworkRangeArrayOutput{})
+	pulumi.RegisterOutputType(NetworkAreaRouteDestinationOutput{})
+	pulumi.RegisterOutputType(NetworkAreaRouteDestinationPtrOutput{})
+	pulumi.RegisterOutputType(NetworkAreaRouteNextHopOutput{})
+	pulumi.RegisterOutputType(NetworkAreaRouteNextHopPtrOutput{})
 	pulumi.RegisterOutputType(ObservabilityAlertgroupRuleOutput{})
 	pulumi.RegisterOutputType(ObservabilityAlertgroupRuleArrayOutput{})
 	pulumi.RegisterOutputType(ObservabilityInstanceAlertConfigOutput{})
@@ -19649,6 +21080,8 @@ func init() {
 	pulumi.RegisterOutputType(ServerBackupScheduleBackupPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ServerBootVolumeOutput{})
 	pulumi.RegisterOutputType(ServerBootVolumePtrOutput{})
+	pulumi.RegisterOutputType(SfsExportPolicyRuleOutput{})
+	pulumi.RegisterOutputType(SfsExportPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(SkeClusterExtensionsOutput{})
 	pulumi.RegisterOutputType(SkeClusterExtensionsPtrOutput{})
 	pulumi.RegisterOutputType(SkeClusterExtensionsAclOutput{})
@@ -19716,6 +21149,11 @@ func init() {
 	pulumi.RegisterOutputType(GetMongodbflexInstanceStorageOutput{})
 	pulumi.RegisterOutputType(GetNetworkAreaNetworkRangeOutput{})
 	pulumi.RegisterOutputType(GetNetworkAreaNetworkRangeArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkAreaRegionIpv4Output{})
+	pulumi.RegisterOutputType(GetNetworkAreaRegionIpv4NetworkRangeOutput{})
+	pulumi.RegisterOutputType(GetNetworkAreaRegionIpv4NetworkRangeArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkAreaRouteDestinationOutput{})
+	pulumi.RegisterOutputType(GetNetworkAreaRouteNextHopOutput{})
 	pulumi.RegisterOutputType(GetObservabilityAlertgroupRuleOutput{})
 	pulumi.RegisterOutputType(GetObservabilityAlertgroupRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetObservabilityInstanceAlertConfigOutput{})
@@ -19762,6 +21200,10 @@ func init() {
 	pulumi.RegisterOutputType(GetServerBootVolumeOutput{})
 	pulumi.RegisterOutputType(GetServerUpdateSchedulesItemOutput{})
 	pulumi.RegisterOutputType(GetServerUpdateSchedulesItemArrayOutput{})
+	pulumi.RegisterOutputType(GetSfsExportPolicyRuleOutput{})
+	pulumi.RegisterOutputType(GetSfsExportPolicyRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetSfsResourcePoolSnapshotSnapshotOutput{})
+	pulumi.RegisterOutputType(GetSfsResourcePoolSnapshotSnapshotArrayOutput{})
 	pulumi.RegisterOutputType(GetSkeClusterExtensionsOutput{})
 	pulumi.RegisterOutputType(GetSkeClusterExtensionsAclOutput{})
 	pulumi.RegisterOutputType(GetSkeClusterExtensionsArgusOutput{})

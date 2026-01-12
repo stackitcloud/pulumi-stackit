@@ -21,54 +21,62 @@ __all__ = ['NetworkAreaArgs', 'NetworkArea']
 @pulumi.input_type
 class NetworkAreaArgs:
     def __init__(__self__, *,
-                 network_ranges: pulumi.Input[Sequence[pulumi.Input['NetworkAreaNetworkRangeArgs']]],
                  organization_id: pulumi.Input[_builtins.str],
-                 transfer_network: pulumi.Input[_builtins.str],
                  default_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  default_prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  max_prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
                  min_prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 network_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAreaNetworkRangeArgs']]]] = None,
+                 transfer_network: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NetworkArea resource.
-        :param pulumi.Input[Sequence[pulumi.Input['NetworkAreaNetworkRangeArgs']]] network_ranges: List of Network ranges.
         :param pulumi.Input[_builtins.str] organization_id: STACKIT organization ID to which the network area is associated.
-        :param pulumi.Input[_builtins.str] transfer_network: Classless Inter-Domain Routing (CIDR).
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] default_nameservers: List of DNS Servers/Nameservers.
-        :param pulumi.Input[_builtins.int] default_prefix_length: The default prefix length for networks in the network area.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] default_nameservers: List of DNS Servers/Nameservers for configuration of network area for region `eu01`.
+        :param pulumi.Input[_builtins.int] default_prefix_length: The default prefix length for networks in the network area for region `eu01`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
-        :param pulumi.Input[_builtins.int] max_prefix_length: The maximal prefix length for networks in the network area.
-        :param pulumi.Input[_builtins.int] min_prefix_length: The minimal prefix length for networks in the network area.
+        :param pulumi.Input[_builtins.int] max_prefix_length: The maximal prefix length for networks in the network area for region `eu01`.
+        :param pulumi.Input[_builtins.int] min_prefix_length: The minimal prefix length for networks in the network area for region `eu01`.
         :param pulumi.Input[_builtins.str] name: The name of the network area.
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkAreaNetworkRangeArgs']]] network_ranges: List of Network ranges for configuration of network area for region `eu01`.
+        :param pulumi.Input[_builtins.str] transfer_network: Classless Inter-Domain Routing (CIDR) for configuration of network area for region `eu01`.
         """
-        pulumi.set(__self__, "network_ranges", network_ranges)
         pulumi.set(__self__, "organization_id", organization_id)
-        pulumi.set(__self__, "transfer_network", transfer_network)
+        if default_nameservers is not None:
+            warnings.warn("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""", DeprecationWarning)
+            pulumi.log.warn("""default_nameservers is deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
         if default_nameservers is not None:
             pulumi.set(__self__, "default_nameservers", default_nameservers)
+        if default_prefix_length is not None:
+            warnings.warn("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""", DeprecationWarning)
+            pulumi.log.warn("""default_prefix_length is deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
         if default_prefix_length is not None:
             pulumi.set(__self__, "default_prefix_length", default_prefix_length)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if max_prefix_length is not None:
+            warnings.warn("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""", DeprecationWarning)
+            pulumi.log.warn("""max_prefix_length is deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
+        if max_prefix_length is not None:
             pulumi.set(__self__, "max_prefix_length", max_prefix_length)
+        if min_prefix_length is not None:
+            warnings.warn("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""", DeprecationWarning)
+            pulumi.log.warn("""min_prefix_length is deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
         if min_prefix_length is not None:
             pulumi.set(__self__, "min_prefix_length", min_prefix_length)
         if name is not None:
             pulumi.set(__self__, "name", name)
-
-    @_builtins.property
-    @pulumi.getter(name="networkRanges")
-    def network_ranges(self) -> pulumi.Input[Sequence[pulumi.Input['NetworkAreaNetworkRangeArgs']]]:
-        """
-        List of Network ranges.
-        """
-        return pulumi.get(self, "network_ranges")
-
-    @network_ranges.setter
-    def network_ranges(self, value: pulumi.Input[Sequence[pulumi.Input['NetworkAreaNetworkRangeArgs']]]):
-        pulumi.set(self, "network_ranges", value)
+        if network_ranges is not None:
+            warnings.warn("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""", DeprecationWarning)
+            pulumi.log.warn("""network_ranges is deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
+        if network_ranges is not None:
+            pulumi.set(__self__, "network_ranges", network_ranges)
+        if transfer_network is not None:
+            warnings.warn("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""", DeprecationWarning)
+            pulumi.log.warn("""transfer_network is deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
+        if transfer_network is not None:
+            pulumi.set(__self__, "transfer_network", transfer_network)
 
     @_builtins.property
     @pulumi.getter(name="organizationId")
@@ -83,22 +91,11 @@ class NetworkAreaArgs:
         pulumi.set(self, "organization_id", value)
 
     @_builtins.property
-    @pulumi.getter(name="transferNetwork")
-    def transfer_network(self) -> pulumi.Input[_builtins.str]:
-        """
-        Classless Inter-Domain Routing (CIDR).
-        """
-        return pulumi.get(self, "transfer_network")
-
-    @transfer_network.setter
-    def transfer_network(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "transfer_network", value)
-
-    @_builtins.property
     @pulumi.getter(name="defaultNameservers")
+    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
     def default_nameservers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of DNS Servers/Nameservers.
+        List of DNS Servers/Nameservers for configuration of network area for region `eu01`.
         """
         return pulumi.get(self, "default_nameservers")
 
@@ -108,9 +105,10 @@ class NetworkAreaArgs:
 
     @_builtins.property
     @pulumi.getter(name="defaultPrefixLength")
+    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
     def default_prefix_length(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The default prefix length for networks in the network area.
+        The default prefix length for networks in the network area for region `eu01`.
         """
         return pulumi.get(self, "default_prefix_length")
 
@@ -132,9 +130,10 @@ class NetworkAreaArgs:
 
     @_builtins.property
     @pulumi.getter(name="maxPrefixLength")
+    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
     def max_prefix_length(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The maximal prefix length for networks in the network area.
+        The maximal prefix length for networks in the network area for region `eu01`.
         """
         return pulumi.get(self, "max_prefix_length")
 
@@ -144,9 +143,10 @@ class NetworkAreaArgs:
 
     @_builtins.property
     @pulumi.getter(name="minPrefixLength")
+    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
     def min_prefix_length(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The minimal prefix length for networks in the network area.
+        The minimal prefix length for networks in the network area for region `eu01`.
         """
         return pulumi.get(self, "min_prefix_length")
 
@@ -166,6 +166,32 @@ class NetworkAreaArgs:
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
 
+    @_builtins.property
+    @pulumi.getter(name="networkRanges")
+    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
+    def network_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAreaNetworkRangeArgs']]]]:
+        """
+        List of Network ranges for configuration of network area for region `eu01`.
+        """
+        return pulumi.get(self, "network_ranges")
+
+    @network_ranges.setter
+    def network_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAreaNetworkRangeArgs']]]]):
+        pulumi.set(self, "network_ranges", value)
+
+    @_builtins.property
+    @pulumi.getter(name="transferNetwork")
+    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
+    def transfer_network(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Classless Inter-Domain Routing (CIDR) for configuration of network area for region `eu01`.
+        """
+        return pulumi.get(self, "transfer_network")
+
+    @transfer_network.setter
+    def transfer_network(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "transfer_network", value)
+
 
 @pulumi.input_type
 class _NetworkAreaState:
@@ -183,26 +209,38 @@ class _NetworkAreaState:
                  transfer_network: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkArea resources.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] default_nameservers: List of DNS Servers/Nameservers.
-        :param pulumi.Input[_builtins.int] default_prefix_length: The default prefix length for networks in the network area.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] default_nameservers: List of DNS Servers/Nameservers for configuration of network area for region `eu01`.
+        :param pulumi.Input[_builtins.int] default_prefix_length: The default prefix length for networks in the network area for region `eu01`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
-        :param pulumi.Input[_builtins.int] max_prefix_length: The maximal prefix length for networks in the network area.
-        :param pulumi.Input[_builtins.int] min_prefix_length: The minimal prefix length for networks in the network area.
+        :param pulumi.Input[_builtins.int] max_prefix_length: The maximal prefix length for networks in the network area for region `eu01`.
+        :param pulumi.Input[_builtins.int] min_prefix_length: The minimal prefix length for networks in the network area for region `eu01`.
         :param pulumi.Input[_builtins.str] name: The name of the network area.
         :param pulumi.Input[_builtins.str] network_area_id: The network area ID.
-        :param pulumi.Input[Sequence[pulumi.Input['NetworkAreaNetworkRangeArgs']]] network_ranges: List of Network ranges.
+        :param pulumi.Input[Sequence[pulumi.Input['NetworkAreaNetworkRangeArgs']]] network_ranges: List of Network ranges for configuration of network area for region `eu01`.
         :param pulumi.Input[_builtins.str] organization_id: STACKIT organization ID to which the network area is associated.
         :param pulumi.Input[_builtins.int] project_count: The amount of projects currently referencing this area.
-        :param pulumi.Input[_builtins.str] transfer_network: Classless Inter-Domain Routing (CIDR).
+        :param pulumi.Input[_builtins.str] transfer_network: Classless Inter-Domain Routing (CIDR) for configuration of network area for region `eu01`.
         """
         if default_nameservers is not None:
+            warnings.warn("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""", DeprecationWarning)
+            pulumi.log.warn("""default_nameservers is deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
+        if default_nameservers is not None:
             pulumi.set(__self__, "default_nameservers", default_nameservers)
+        if default_prefix_length is not None:
+            warnings.warn("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""", DeprecationWarning)
+            pulumi.log.warn("""default_prefix_length is deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
         if default_prefix_length is not None:
             pulumi.set(__self__, "default_prefix_length", default_prefix_length)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if max_prefix_length is not None:
+            warnings.warn("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""", DeprecationWarning)
+            pulumi.log.warn("""max_prefix_length is deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
+        if max_prefix_length is not None:
             pulumi.set(__self__, "max_prefix_length", max_prefix_length)
+        if min_prefix_length is not None:
+            warnings.warn("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""", DeprecationWarning)
+            pulumi.log.warn("""min_prefix_length is deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
         if min_prefix_length is not None:
             pulumi.set(__self__, "min_prefix_length", min_prefix_length)
         if name is not None:
@@ -210,19 +248,26 @@ class _NetworkAreaState:
         if network_area_id is not None:
             pulumi.set(__self__, "network_area_id", network_area_id)
         if network_ranges is not None:
+            warnings.warn("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""", DeprecationWarning)
+            pulumi.log.warn("""network_ranges is deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
+        if network_ranges is not None:
             pulumi.set(__self__, "network_ranges", network_ranges)
         if organization_id is not None:
             pulumi.set(__self__, "organization_id", organization_id)
         if project_count is not None:
             pulumi.set(__self__, "project_count", project_count)
         if transfer_network is not None:
+            warnings.warn("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""", DeprecationWarning)
+            pulumi.log.warn("""transfer_network is deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
+        if transfer_network is not None:
             pulumi.set(__self__, "transfer_network", transfer_network)
 
     @_builtins.property
     @pulumi.getter(name="defaultNameservers")
+    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
     def default_nameservers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        List of DNS Servers/Nameservers.
+        List of DNS Servers/Nameservers for configuration of network area for region `eu01`.
         """
         return pulumi.get(self, "default_nameservers")
 
@@ -232,9 +277,10 @@ class _NetworkAreaState:
 
     @_builtins.property
     @pulumi.getter(name="defaultPrefixLength")
+    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
     def default_prefix_length(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The default prefix length for networks in the network area.
+        The default prefix length for networks in the network area for region `eu01`.
         """
         return pulumi.get(self, "default_prefix_length")
 
@@ -256,9 +302,10 @@ class _NetworkAreaState:
 
     @_builtins.property
     @pulumi.getter(name="maxPrefixLength")
+    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
     def max_prefix_length(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The maximal prefix length for networks in the network area.
+        The maximal prefix length for networks in the network area for region `eu01`.
         """
         return pulumi.get(self, "max_prefix_length")
 
@@ -268,9 +315,10 @@ class _NetworkAreaState:
 
     @_builtins.property
     @pulumi.getter(name="minPrefixLength")
+    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
     def min_prefix_length(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The minimal prefix length for networks in the network area.
+        The minimal prefix length for networks in the network area for region `eu01`.
         """
         return pulumi.get(self, "min_prefix_length")
 
@@ -304,9 +352,10 @@ class _NetworkAreaState:
 
     @_builtins.property
     @pulumi.getter(name="networkRanges")
+    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
     def network_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAreaNetworkRangeArgs']]]]:
         """
-        List of Network ranges.
+        List of Network ranges for configuration of network area for region `eu01`.
         """
         return pulumi.get(self, "network_ranges")
 
@@ -340,9 +389,10 @@ class _NetworkAreaState:
 
     @_builtins.property
     @pulumi.getter(name="transferNetwork")
+    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
     def transfer_network(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Classless Inter-Domain Routing (CIDR).
+        Classless Inter-Domain Routing (CIDR) for configuration of network area for region `eu01`.
         """
         return pulumi.get(self, "transfer_network")
 
@@ -368,21 +418,21 @@ class NetworkArea(pulumi.CustomResource):
                  transfer_network: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Network area resource schema. Must have a `region` specified in the provider configuration.
+        Network area resource schema.
 
         ## Example Usage
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] default_nameservers: List of DNS Servers/Nameservers.
-        :param pulumi.Input[_builtins.int] default_prefix_length: The default prefix length for networks in the network area.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] default_nameservers: List of DNS Servers/Nameservers for configuration of network area for region `eu01`.
+        :param pulumi.Input[_builtins.int] default_prefix_length: The default prefix length for networks in the network area for region `eu01`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
-        :param pulumi.Input[_builtins.int] max_prefix_length: The maximal prefix length for networks in the network area.
-        :param pulumi.Input[_builtins.int] min_prefix_length: The minimal prefix length for networks in the network area.
+        :param pulumi.Input[_builtins.int] max_prefix_length: The maximal prefix length for networks in the network area for region `eu01`.
+        :param pulumi.Input[_builtins.int] min_prefix_length: The minimal prefix length for networks in the network area for region `eu01`.
         :param pulumi.Input[_builtins.str] name: The name of the network area.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAreaNetworkRangeArgs', 'NetworkAreaNetworkRangeArgsDict']]]] network_ranges: List of Network ranges.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAreaNetworkRangeArgs', 'NetworkAreaNetworkRangeArgsDict']]]] network_ranges: List of Network ranges for configuration of network area for region `eu01`.
         :param pulumi.Input[_builtins.str] organization_id: STACKIT organization ID to which the network area is associated.
-        :param pulumi.Input[_builtins.str] transfer_network: Classless Inter-Domain Routing (CIDR).
+        :param pulumi.Input[_builtins.str] transfer_network: Classless Inter-Domain Routing (CIDR) for configuration of network area for region `eu01`.
         """
         ...
     @overload
@@ -391,7 +441,7 @@ class NetworkArea(pulumi.CustomResource):
                  args: NetworkAreaArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Network area resource schema. Must have a `region` specified in the provider configuration.
+        Network area resource schema.
 
         ## Example Usage
 
@@ -434,14 +484,10 @@ class NetworkArea(pulumi.CustomResource):
             __props__.__dict__["max_prefix_length"] = max_prefix_length
             __props__.__dict__["min_prefix_length"] = min_prefix_length
             __props__.__dict__["name"] = name
-            if network_ranges is None and not opts.urn:
-                raise TypeError("Missing required property 'network_ranges'")
             __props__.__dict__["network_ranges"] = network_ranges
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
-            if transfer_network is None and not opts.urn:
-                raise TypeError("Missing required property 'transfer_network'")
             __props__.__dict__["transfer_network"] = transfer_network
             __props__.__dict__["network_area_id"] = None
             __props__.__dict__["project_count"] = None
@@ -473,17 +519,17 @@ class NetworkArea(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] default_nameservers: List of DNS Servers/Nameservers.
-        :param pulumi.Input[_builtins.int] default_prefix_length: The default prefix length for networks in the network area.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] default_nameservers: List of DNS Servers/Nameservers for configuration of network area for region `eu01`.
+        :param pulumi.Input[_builtins.int] default_prefix_length: The default prefix length for networks in the network area for region `eu01`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
-        :param pulumi.Input[_builtins.int] max_prefix_length: The maximal prefix length for networks in the network area.
-        :param pulumi.Input[_builtins.int] min_prefix_length: The minimal prefix length for networks in the network area.
+        :param pulumi.Input[_builtins.int] max_prefix_length: The maximal prefix length for networks in the network area for region `eu01`.
+        :param pulumi.Input[_builtins.int] min_prefix_length: The minimal prefix length for networks in the network area for region `eu01`.
         :param pulumi.Input[_builtins.str] name: The name of the network area.
         :param pulumi.Input[_builtins.str] network_area_id: The network area ID.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAreaNetworkRangeArgs', 'NetworkAreaNetworkRangeArgsDict']]]] network_ranges: List of Network ranges.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NetworkAreaNetworkRangeArgs', 'NetworkAreaNetworkRangeArgsDict']]]] network_ranges: List of Network ranges for configuration of network area for region `eu01`.
         :param pulumi.Input[_builtins.str] organization_id: STACKIT organization ID to which the network area is associated.
         :param pulumi.Input[_builtins.int] project_count: The amount of projects currently referencing this area.
-        :param pulumi.Input[_builtins.str] transfer_network: Classless Inter-Domain Routing (CIDR).
+        :param pulumi.Input[_builtins.str] transfer_network: Classless Inter-Domain Routing (CIDR) for configuration of network area for region `eu01`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -504,17 +550,19 @@ class NetworkArea(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="defaultNameservers")
+    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
     def default_nameservers(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        List of DNS Servers/Nameservers.
+        List of DNS Servers/Nameservers for configuration of network area for region `eu01`.
         """
         return pulumi.get(self, "default_nameservers")
 
     @_builtins.property
     @pulumi.getter(name="defaultPrefixLength")
+    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
     def default_prefix_length(self) -> pulumi.Output[_builtins.int]:
         """
-        The default prefix length for networks in the network area.
+        The default prefix length for networks in the network area for region `eu01`.
         """
         return pulumi.get(self, "default_prefix_length")
 
@@ -528,17 +576,19 @@ class NetworkArea(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="maxPrefixLength")
+    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
     def max_prefix_length(self) -> pulumi.Output[_builtins.int]:
         """
-        The maximal prefix length for networks in the network area.
+        The maximal prefix length for networks in the network area for region `eu01`.
         """
         return pulumi.get(self, "max_prefix_length")
 
     @_builtins.property
     @pulumi.getter(name="minPrefixLength")
+    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
     def min_prefix_length(self) -> pulumi.Output[_builtins.int]:
         """
-        The minimal prefix length for networks in the network area.
+        The minimal prefix length for networks in the network area for region `eu01`.
         """
         return pulumi.get(self, "min_prefix_length")
 
@@ -560,9 +610,10 @@ class NetworkArea(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="networkRanges")
-    def network_ranges(self) -> pulumi.Output[Sequence['outputs.NetworkAreaNetworkRange']]:
+    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
+    def network_ranges(self) -> pulumi.Output[Optional[Sequence['outputs.NetworkAreaNetworkRange']]]:
         """
-        List of Network ranges.
+        List of Network ranges for configuration of network area for region `eu01`.
         """
         return pulumi.get(self, "network_ranges")
 
@@ -584,9 +635,10 @@ class NetworkArea(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="transferNetwork")
-    def transfer_network(self) -> pulumi.Output[_builtins.str]:
+    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
+    def transfer_network(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Classless Inter-Domain Routing (CIDR).
+        Classless Inter-Domain Routing (CIDR) for configuration of network area for region `eu01`.
         """
         return pulumi.get(self, "transfer_network")
 

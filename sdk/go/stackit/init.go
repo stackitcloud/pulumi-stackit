@@ -69,6 +69,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Network{}
 	case "stackit:index/networkArea:NetworkArea":
 		r = &NetworkArea{}
+	case "stackit:index/networkAreaRegion:NetworkAreaRegion":
+		r = &NetworkAreaRegion{}
 	case "stackit:index/networkAreaRoute:NetworkAreaRoute":
 		r = &NetworkAreaRoute{}
 	case "stackit:index/networkInterface:NetworkInterface":
@@ -149,6 +151,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServiceAccountAccessToken{}
 	case "stackit:index/serviceAccountKey:ServiceAccountKey":
 		r = &ServiceAccountKey{}
+	case "stackit:index/sfsExportPolicy:SfsExportPolicy":
+		r = &SfsExportPolicy{}
+	case "stackit:index/sfsResourcePool:SfsResourcePool":
+		r = &SfsResourcePool{}
+	case "stackit:index/sfsShare:SfsShare":
+		r = &SfsShare{}
 	case "stackit:index/skeCluster:SkeCluster":
 		r = &SkeCluster{}
 	case "stackit:index/skeKubeconfig:SkeKubeconfig":
@@ -308,6 +316,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"stackit",
 		"index/networkArea",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/networkAreaRegion",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -508,6 +521,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"stackit",
 		"index/serviceAccountKey",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/sfsExportPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/sfsResourcePool",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/sfsShare",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

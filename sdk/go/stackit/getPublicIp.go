@@ -30,6 +30,8 @@ type LookupPublicIpArgs struct {
 	ProjectId string `pulumi:"projectId"`
 	// The public IP ID.
 	PublicIpId string `pulumi:"publicIpId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 }
 
 // A collection of values returned by getPublicIp.
@@ -45,6 +47,8 @@ type LookupPublicIpResult struct {
 	ProjectId string `pulumi:"projectId"`
 	// The public IP ID.
 	PublicIpId string `pulumi:"publicIpId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 }
 
 func LookupPublicIpOutput(ctx *pulumi.Context, args LookupPublicIpOutputArgs, opts ...pulumi.InvokeOption) LookupPublicIpResultOutput {
@@ -62,6 +66,8 @@ type LookupPublicIpOutputArgs struct {
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 	// The public IP ID.
 	PublicIpId pulumi.StringInput `pulumi:"publicIpId"`
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (LookupPublicIpOutputArgs) ElementType() reflect.Type {
@@ -110,6 +116,11 @@ func (o LookupPublicIpResultOutput) ProjectId() pulumi.StringOutput {
 // The public IP ID.
 func (o LookupPublicIpResultOutput) PublicIpId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPublicIpResult) string { return v.PublicIpId }).(pulumi.StringOutput)
+}
+
+// The resource region. If not defined, the provider region is used.
+func (o LookupPublicIpResultOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupPublicIpResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
 func init() {

@@ -34,6 +34,8 @@ type GetImageV2Args struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// STACKIT project ID to which the image is associated.
 	ProjectId string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 	// If set to `true`, images are sorted in ascending lexicographical order by image name (such as `Ubuntu 18.04`, `Ubuntu 20.04`, `Ubuntu 22.04`) before selecting the first match. Defaults to `false` (descending such as `Ubuntu 22.04`, `Ubuntu 20.04`, `Ubuntu 18.04`).
 	SortAscending *bool `pulumi:"sortAscending"`
 }
@@ -65,6 +67,8 @@ type GetImageV2Result struct {
 	ProjectId string `pulumi:"projectId"`
 	// Whether the image is protected.
 	Protected bool `pulumi:"protected"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 	// The scope of the image.
 	Scope string `pulumi:"scope"`
 	// If set to `true`, images are sorted in ascending lexicographical order by image name (such as `Ubuntu 18.04`, `Ubuntu 20.04`, `Ubuntu 22.04`) before selecting the first match. Defaults to `false` (descending such as `Ubuntu 22.04`, `Ubuntu 20.04`, `Ubuntu 18.04`).
@@ -92,6 +96,8 @@ type GetImageV2OutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// STACKIT project ID to which the image is associated.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 	// If set to `true`, images are sorted in ascending lexicographical order by image name (such as `Ubuntu 18.04`, `Ubuntu 20.04`, `Ubuntu 22.04`) before selecting the first match. Defaults to `false` (descending such as `Ubuntu 22.04`, `Ubuntu 20.04`, `Ubuntu 18.04`).
 	SortAscending pulumi.BoolPtrInput `pulumi:"sortAscending"`
 }
@@ -177,6 +183,11 @@ func (o GetImageV2ResultOutput) ProjectId() pulumi.StringOutput {
 // Whether the image is protected.
 func (o GetImageV2ResultOutput) Protected() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetImageV2Result) bool { return v.Protected }).(pulumi.BoolOutput)
+}
+
+// The resource region. If not defined, the provider region is used.
+func (o GetImageV2ResultOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImageV2Result) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
 // The scope of the image.

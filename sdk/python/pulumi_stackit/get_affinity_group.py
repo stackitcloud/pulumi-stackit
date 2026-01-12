@@ -26,7 +26,7 @@ class GetAffinityGroupResult:
     """
     A collection of values returned by getAffinityGroup.
     """
-    def __init__(__self__, affinity_group_id=None, id=None, members=None, name=None, policy=None, project_id=None):
+    def __init__(__self__, affinity_group_id=None, id=None, members=None, name=None, policy=None, project_id=None, region=None):
         if affinity_group_id and not isinstance(affinity_group_id, str):
             raise TypeError("Expected argument 'affinity_group_id' to be a str")
         pulumi.set(__self__, "affinity_group_id", affinity_group_id)
@@ -45,6 +45,9 @@ class GetAffinityGroupResult:
         if project_id and not isinstance(project_id, str):
             raise TypeError("Expected argument 'project_id' to be a str")
         pulumi.set(__self__, "project_id", project_id)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
 
     @_builtins.property
     @pulumi.getter(name="affinityGroupId")
@@ -91,6 +94,14 @@ class GetAffinityGroupResult:
         """
         return pulumi.get(self, "project_id")
 
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
 
 class AwaitableGetAffinityGroupResult(GetAffinityGroupResult):
     # pylint: disable=using-constant-test
@@ -103,11 +114,13 @@ class AwaitableGetAffinityGroupResult(GetAffinityGroupResult):
             members=self.members,
             name=self.name,
             policy=self.policy,
-            project_id=self.project_id)
+            project_id=self.project_id,
+            region=self.region)
 
 
 def get_affinity_group(affinity_group_id: Optional[_builtins.str] = None,
                        project_id: Optional[_builtins.str] = None,
+                       region: Optional[_builtins.str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAffinityGroupResult:
     """
     Affinity Group schema. Must have a `region` specified in the provider configuration.
@@ -117,10 +130,12 @@ def get_affinity_group(affinity_group_id: Optional[_builtins.str] = None,
 
     :param _builtins.str affinity_group_id: The affinity group ID.
     :param _builtins.str project_id: STACKIT Project ID to which the affinity group is associated.
+    :param _builtins.str region: The resource region. If not defined, the provider region is used.
     """
     __args__ = dict()
     __args__['affinityGroupId'] = affinity_group_id
     __args__['projectId'] = project_id
+    __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('stackit:index/getAffinityGroup:getAffinityGroup', __args__, opts=opts, typ=GetAffinityGroupResult).value
 
@@ -130,9 +145,11 @@ def get_affinity_group(affinity_group_id: Optional[_builtins.str] = None,
         members=pulumi.get(__ret__, 'members'),
         name=pulumi.get(__ret__, 'name'),
         policy=pulumi.get(__ret__, 'policy'),
-        project_id=pulumi.get(__ret__, 'project_id'))
+        project_id=pulumi.get(__ret__, 'project_id'),
+        region=pulumi.get(__ret__, 'region'))
 def get_affinity_group_output(affinity_group_id: Optional[pulumi.Input[_builtins.str]] = None,
                               project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                              region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAffinityGroupResult]:
     """
     Affinity Group schema. Must have a `region` specified in the provider configuration.
@@ -142,10 +159,12 @@ def get_affinity_group_output(affinity_group_id: Optional[pulumi.Input[_builtins
 
     :param _builtins.str affinity_group_id: The affinity group ID.
     :param _builtins.str project_id: STACKIT Project ID to which the affinity group is associated.
+    :param _builtins.str region: The resource region. If not defined, the provider region is used.
     """
     __args__ = dict()
     __args__['affinityGroupId'] = affinity_group_id
     __args__['projectId'] = project_id
+    __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('stackit:index/getAffinityGroup:getAffinityGroup', __args__, opts=opts, typ=GetAffinityGroupResult)
     return __ret__.apply(lambda __response__: GetAffinityGroupResult(
@@ -154,4 +173,5 @@ def get_affinity_group_output(affinity_group_id: Optional[pulumi.Input[_builtins
         members=pulumi.get(__response__, 'members'),
         name=pulumi.get(__response__, 'name'),
         policy=pulumi.get(__response__, 'policy'),
-        project_id=pulumi.get(__response__, 'project_id')))
+        project_id=pulumi.get(__response__, 'project_id'),
+        region=pulumi.get(__response__, 'region')))

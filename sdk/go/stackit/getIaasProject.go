@@ -41,8 +41,12 @@ type GetIaasProjectResult struct {
 	InternetAccess bool `pulumi:"internetAccess"`
 	// STACKIT project ID.
 	ProjectId string `pulumi:"projectId"`
-	// Specifies the state of the project.
+	// Specifies the status of the project.
+	//
+	// Deprecated: Deprecated: Will be removed in May 2026. Use the `status` field instead.
 	State string `pulumi:"state"`
+	// Specifies the status of the project.
+	Status string `pulumi:"status"`
 	// Date-time when the project was last updated.
 	UpdatedAt string `pulumi:"updatedAt"`
 }
@@ -105,9 +109,16 @@ func (o GetIaasProjectResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIaasProjectResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// Specifies the state of the project.
+// Specifies the status of the project.
+//
+// Deprecated: Deprecated: Will be removed in May 2026. Use the `status` field instead.
 func (o GetIaasProjectResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIaasProjectResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Specifies the status of the project.
+func (o GetIaasProjectResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetIaasProjectResult) string { return v.Status }).(pulumi.StringOutput)
 }
 
 // Date-time when the project was last updated.

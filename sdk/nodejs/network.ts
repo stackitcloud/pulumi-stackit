@@ -121,7 +121,6 @@ export class Network extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly publicIp: pulumi.Output<string>;
     /**
-     * Can only be used when experimental "network" is set.
      * The resource region. If not defined, the provider region is used.
      */
     declare public readonly region: pulumi.Output<string>;
@@ -130,7 +129,6 @@ export class Network extends pulumi.CustomResource {
      */
     declare public readonly routed: pulumi.Output<boolean>;
     /**
-     * Can only be used when experimental "network" is set.
      * The ID of the routing table associated with the network.
      */
     declare public readonly routingTableId: pulumi.Output<string>;
@@ -288,7 +286,6 @@ export interface NetworkState {
      */
     publicIp?: pulumi.Input<string>;
     /**
-     * Can only be used when experimental "network" is set.
      * The resource region. If not defined, the provider region is used.
      */
     region?: pulumi.Input<string>;
@@ -297,7 +294,6 @@ export interface NetworkState {
      */
     routed?: pulumi.Input<boolean>;
     /**
-     * Can only be used when experimental "network" is set.
      * The ID of the routing table associated with the network.
      */
     routingTableId?: pulumi.Input<string>;
@@ -366,7 +362,6 @@ export interface NetworkArgs {
      */
     projectId: pulumi.Input<string>;
     /**
-     * Can only be used when experimental "network" is set.
      * The resource region. If not defined, the provider region is used.
      */
     region?: pulumi.Input<string>;
@@ -375,7 +370,6 @@ export interface NetworkArgs {
      */
     routed?: pulumi.Input<boolean>;
     /**
-     * Can only be used when experimental "network" is set.
      * The ID of the routing table associated with the network.
      */
     routingTableId?: pulumi.Input<string>;

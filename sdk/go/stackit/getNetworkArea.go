@@ -35,27 +35,39 @@ type LookupNetworkAreaArgs struct {
 // A collection of values returned by getNetworkArea.
 type LookupNetworkAreaResult struct {
 	// List of DNS Servers/Nameservers.
+	//
+	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026.
 	DefaultNameservers []string `pulumi:"defaultNameservers"`
 	// The default prefix length for networks in the network area.
+	//
+	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026.
 	DefaultPrefixLength int    `pulumi:"defaultPrefixLength"`
 	Id                  string `pulumi:"id"`
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels map[string]string `pulumi:"labels"`
 	// The maximal prefix length for networks in the network area.
+	//
+	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026.
 	MaxPrefixLength int `pulumi:"maxPrefixLength"`
 	// The minimal prefix length for networks in the network area.
+	//
+	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026.
 	MinPrefixLength int `pulumi:"minPrefixLength"`
 	// The name of the network area.
 	Name string `pulumi:"name"`
 	// The network area ID.
 	NetworkAreaId string `pulumi:"networkAreaId"`
 	// List of Network ranges.
+	//
+	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026.
 	NetworkRanges []GetNetworkAreaNetworkRange `pulumi:"networkRanges"`
 	// STACKIT organization ID to which the network area is associated.
 	OrganizationId string `pulumi:"organizationId"`
 	// The amount of projects currently referencing this area.
 	ProjectCount int `pulumi:"projectCount"`
 	// Classless Inter-Domain Routing (CIDR).
+	//
+	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026.
 	TransferNetwork string `pulumi:"transferNetwork"`
 }
 
@@ -96,11 +108,15 @@ func (o LookupNetworkAreaResultOutput) ToLookupNetworkAreaResultOutputWithContex
 }
 
 // List of DNS Servers/Nameservers.
+//
+// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026.
 func (o LookupNetworkAreaResultOutput) DefaultNameservers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupNetworkAreaResult) []string { return v.DefaultNameservers }).(pulumi.StringArrayOutput)
 }
 
 // The default prefix length for networks in the network area.
+//
+// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026.
 func (o LookupNetworkAreaResultOutput) DefaultPrefixLength() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupNetworkAreaResult) int { return v.DefaultPrefixLength }).(pulumi.IntOutput)
 }
@@ -115,11 +131,15 @@ func (o LookupNetworkAreaResultOutput) Labels() pulumi.StringMapOutput {
 }
 
 // The maximal prefix length for networks in the network area.
+//
+// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026.
 func (o LookupNetworkAreaResultOutput) MaxPrefixLength() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupNetworkAreaResult) int { return v.MaxPrefixLength }).(pulumi.IntOutput)
 }
 
 // The minimal prefix length for networks in the network area.
+//
+// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026.
 func (o LookupNetworkAreaResultOutput) MinPrefixLength() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupNetworkAreaResult) int { return v.MinPrefixLength }).(pulumi.IntOutput)
 }
@@ -135,6 +155,8 @@ func (o LookupNetworkAreaResultOutput) NetworkAreaId() pulumi.StringOutput {
 }
 
 // List of Network ranges.
+//
+// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026.
 func (o LookupNetworkAreaResultOutput) NetworkRanges() GetNetworkAreaNetworkRangeArrayOutput {
 	return o.ApplyT(func(v LookupNetworkAreaResult) []GetNetworkAreaNetworkRange { return v.NetworkRanges }).(GetNetworkAreaNetworkRangeArrayOutput)
 }
@@ -150,6 +172,8 @@ func (o LookupNetworkAreaResultOutput) ProjectCount() pulumi.IntOutput {
 }
 
 // Classless Inter-Domain Routing (CIDR).
+//
+// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026.
 func (o LookupNetworkAreaResultOutput) TransferNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkAreaResult) string { return v.TransferNetwork }).(pulumi.StringOutput)
 }

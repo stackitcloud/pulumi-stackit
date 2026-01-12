@@ -66,6 +66,12 @@ namespace Pulumi.Stackit
         public Output<Outputs.SecurityGroupRuleProtocol> Protocol { get; private set; } = null!;
 
         /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Output("region")]
+        public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
         /// The remote security group which the rule should match.
         /// </summary>
         [Output("remoteSecurityGroupId")]
@@ -179,6 +185,12 @@ namespace Pulumi.Stackit
         public Input<Inputs.SecurityGroupRuleProtocolArgs>? Protocol { get; set; }
 
         /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
+        /// <summary>
         /// The remote security group which the rule should match.
         /// </summary>
         [Input("remoteSecurityGroupId")]
@@ -245,6 +257,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("protocol")]
         public Input<Inputs.SecurityGroupRuleProtocolGetArgs>? Protocol { get; set; }
+
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// The remote security group which the rule should match.

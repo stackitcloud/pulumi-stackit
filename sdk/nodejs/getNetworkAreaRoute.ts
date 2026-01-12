@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -15,6 +17,7 @@ export function getNetworkAreaRoute(args: GetNetworkAreaRouteArgs, opts?: pulumi
         "networkAreaId": args.networkAreaId,
         "networkAreaRouteId": args.networkAreaRouteId,
         "organizationId": args.organizationId,
+        "region": args.region,
     }, opts);
 }
 
@@ -34,12 +37,20 @@ export interface GetNetworkAreaRouteArgs {
      * STACKIT organization ID to which the network area is associated.
      */
     organizationId: string;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: string;
 }
 
 /**
  * A collection of values returned by getNetworkAreaRoute.
  */
 export interface GetNetworkAreaRouteResult {
+    /**
+     * Destination of the route.
+     */
+    readonly destination: outputs.GetNetworkAreaRouteDestination;
     readonly id: string;
     /**
      * Labels are key-value string pairs which can be attached to a resource container
@@ -54,17 +65,17 @@ export interface GetNetworkAreaRouteResult {
      */
     readonly networkAreaRouteId: string;
     /**
-     * The IP address of the routing system, that will route the prefix configured. Should be a valid IPv4 address.
+     * Next hop destination.
      */
-    readonly nextHop: string;
+    readonly nextHop: outputs.GetNetworkAreaRouteNextHop;
     /**
      * STACKIT organization ID to which the network area is associated.
      */
     readonly organizationId: string;
     /**
-     * The network, that is reachable though the Next Hop. Should use CIDR notation.
+     * The resource region. If not defined, the provider region is used.
      */
-    readonly prefix: string;
+    readonly region?: string;
 }
 /**
  * Network area route data resource schema. Must have a `region` specified in the provider configuration.
@@ -77,6 +88,7 @@ export function getNetworkAreaRouteOutput(args: GetNetworkAreaRouteOutputArgs, o
         "networkAreaId": args.networkAreaId,
         "networkAreaRouteId": args.networkAreaRouteId,
         "organizationId": args.organizationId,
+        "region": args.region,
     }, opts);
 }
 
@@ -96,4 +108,8 @@ export interface GetNetworkAreaRouteOutputArgs {
      * STACKIT organization ID to which the network area is associated.
      */
     organizationId: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string>;
 }

@@ -86,10 +86,12 @@ type Provider struct {
 	ServiceAccountKeyPath pulumi.StringPtrOutput `pulumi:"serviceAccountKeyPath"`
 	// Token used for authentication. If set, the token flow will be used to authenticate all operations.
 	//
-	// Deprecated: Authentication via Service Account Token is deprecated and will be removed on December 17, 2025. Please use `serviceAccountKey` or `serviceAccountKeyPath` instead. For a smooth transition, refer to our migration guide: https://docs.stackit.cloud/stackit/en/deprecation-plan-for-service-account-access-tokens-and-migration-guide-373293307.html
+	// Deprecated: Authentication via Service Account Token is deprecated and will be removed on December 17, 2025. Please use `serviceAccountKey` or `serviceAccountKeyPath` instead. For a smooth transition, refer to our migration guide: https://docs.stackit.cloud/platform/access-and-identity/service-accounts/migrate-flows/
 	ServiceAccountToken pulumi.StringPtrOutput `pulumi:"serviceAccountToken"`
 	// Custom endpoint for the Service Enablement API
 	ServiceEnablementCustomEndpoint pulumi.StringPtrOutput `pulumi:"serviceEnablementCustomEndpoint"`
+	// Custom endpoint for the Stackit Filestorage API
+	SfsCustomEndpoint pulumi.StringPtrOutput `pulumi:"sfsCustomEndpoint"`
 	// Custom endpoint for the Kubernetes Engine (SKE) service
 	SkeCustomEndpoint pulumi.StringPtrOutput `pulumi:"skeCustomEndpoint"`
 	// Custom endpoint for the SQL Server Flex service
@@ -187,10 +189,12 @@ type providerArgs struct {
 	ServiceAccountKeyPath *string `pulumi:"serviceAccountKeyPath"`
 	// Token used for authentication. If set, the token flow will be used to authenticate all operations.
 	//
-	// Deprecated: Authentication via Service Account Token is deprecated and will be removed on December 17, 2025. Please use `serviceAccountKey` or `serviceAccountKeyPath` instead. For a smooth transition, refer to our migration guide: https://docs.stackit.cloud/stackit/en/deprecation-plan-for-service-account-access-tokens-and-migration-guide-373293307.html
+	// Deprecated: Authentication via Service Account Token is deprecated and will be removed on December 17, 2025. Please use `serviceAccountKey` or `serviceAccountKeyPath` instead. For a smooth transition, refer to our migration guide: https://docs.stackit.cloud/platform/access-and-identity/service-accounts/migrate-flows/
 	ServiceAccountToken *string `pulumi:"serviceAccountToken"`
 	// Custom endpoint for the Service Enablement API
 	ServiceEnablementCustomEndpoint *string `pulumi:"serviceEnablementCustomEndpoint"`
+	// Custom endpoint for the Stackit Filestorage API
+	SfsCustomEndpoint *string `pulumi:"sfsCustomEndpoint"`
 	// Custom endpoint for the Kubernetes Engine (SKE) service
 	SkeCustomEndpoint *string `pulumi:"skeCustomEndpoint"`
 	// Custom endpoint for the SQL Server Flex service
@@ -273,10 +277,12 @@ type ProviderArgs struct {
 	ServiceAccountKeyPath pulumi.StringPtrInput
 	// Token used for authentication. If set, the token flow will be used to authenticate all operations.
 	//
-	// Deprecated: Authentication via Service Account Token is deprecated and will be removed on December 17, 2025. Please use `serviceAccountKey` or `serviceAccountKeyPath` instead. For a smooth transition, refer to our migration guide: https://docs.stackit.cloud/stackit/en/deprecation-plan-for-service-account-access-tokens-and-migration-guide-373293307.html
+	// Deprecated: Authentication via Service Account Token is deprecated and will be removed on December 17, 2025. Please use `serviceAccountKey` or `serviceAccountKeyPath` instead. For a smooth transition, refer to our migration guide: https://docs.stackit.cloud/platform/access-and-identity/service-accounts/migrate-flows/
 	ServiceAccountToken pulumi.StringPtrInput
 	// Custom endpoint for the Service Enablement API
 	ServiceEnablementCustomEndpoint pulumi.StringPtrInput
+	// Custom endpoint for the Stackit Filestorage API
+	SfsCustomEndpoint pulumi.StringPtrInput
 	// Custom endpoint for the Kubernetes Engine (SKE) service
 	SkeCustomEndpoint pulumi.StringPtrInput
 	// Custom endpoint for the SQL Server Flex service
@@ -506,7 +512,7 @@ func (o ProviderOutput) ServiceAccountKeyPath() pulumi.StringPtrOutput {
 
 // Token used for authentication. If set, the token flow will be used to authenticate all operations.
 //
-// Deprecated: Authentication via Service Account Token is deprecated and will be removed on December 17, 2025. Please use `serviceAccountKey` or `serviceAccountKeyPath` instead. For a smooth transition, refer to our migration guide: https://docs.stackit.cloud/stackit/en/deprecation-plan-for-service-account-access-tokens-and-migration-guide-373293307.html
+// Deprecated: Authentication via Service Account Token is deprecated and will be removed on December 17, 2025. Please use `serviceAccountKey` or `serviceAccountKeyPath` instead. For a smooth transition, refer to our migration guide: https://docs.stackit.cloud/platform/access-and-identity/service-accounts/migrate-flows/
 func (o ProviderOutput) ServiceAccountToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ServiceAccountToken }).(pulumi.StringPtrOutput)
 }
@@ -514,6 +520,11 @@ func (o ProviderOutput) ServiceAccountToken() pulumi.StringPtrOutput {
 // Custom endpoint for the Service Enablement API
 func (o ProviderOutput) ServiceEnablementCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ServiceEnablementCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// Custom endpoint for the Stackit Filestorage API
+func (o ProviderOutput) SfsCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SfsCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 // Custom endpoint for the Kubernetes Engine (SKE) service

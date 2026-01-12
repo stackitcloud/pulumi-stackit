@@ -54,6 +54,7 @@ class ProviderArgs:
                  service_account_key_path: Optional[pulumi.Input[_builtins.str]] = None,
                  service_account_token: Optional[pulumi.Input[_builtins.str]] = None,
                  service_enablement_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 sfs_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  ske_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  sqlserverflex_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  token_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None):
@@ -94,6 +95,7 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.str] service_account_key_path: Path for the service account key used for authentication. If set, the key flow will be used to authenticate all operations.
         :param pulumi.Input[_builtins.str] service_account_token: Token used for authentication. If set, the token flow will be used to authenticate all operations.
         :param pulumi.Input[_builtins.str] service_enablement_custom_endpoint: Custom endpoint for the Service Enablement API
+        :param pulumi.Input[_builtins.str] sfs_custom_endpoint: Custom endpoint for the Stackit Filestorage API
         :param pulumi.Input[_builtins.str] ske_custom_endpoint: Custom endpoint for the Kubernetes Engine (SKE) service
         :param pulumi.Input[_builtins.str] sqlserverflex_custom_endpoint: Custom endpoint for the SQL Server Flex service
         :param pulumi.Input[_builtins.str] token_custom_endpoint: Custom endpoint for the token API, which is used to request access tokens when using the key flow
@@ -171,12 +173,14 @@ class ProviderArgs:
         if service_account_key_path is not None:
             pulumi.set(__self__, "service_account_key_path", service_account_key_path)
         if service_account_token is not None:
-            warnings.warn("""Authentication via Service Account Token is deprecated and will be removed on December 17, 2025. Please use `service_account_key` or `service_account_key_path` instead. For a smooth transition, refer to our migration guide: https://docs.stackit.cloud/stackit/en/deprecation-plan-for-service-account-access-tokens-and-migration-guide-373293307.html""", DeprecationWarning)
-            pulumi.log.warn("""service_account_token is deprecated: Authentication via Service Account Token is deprecated and will be removed on December 17, 2025. Please use `service_account_key` or `service_account_key_path` instead. For a smooth transition, refer to our migration guide: https://docs.stackit.cloud/stackit/en/deprecation-plan-for-service-account-access-tokens-and-migration-guide-373293307.html""")
+            warnings.warn("""Authentication via Service Account Token is deprecated and will be removed on December 17, 2025. Please use `service_account_key` or `service_account_key_path` instead. For a smooth transition, refer to our migration guide: https://docs.stackit.cloud/platform/access-and-identity/service-accounts/migrate-flows/""", DeprecationWarning)
+            pulumi.log.warn("""service_account_token is deprecated: Authentication via Service Account Token is deprecated and will be removed on December 17, 2025. Please use `service_account_key` or `service_account_key_path` instead. For a smooth transition, refer to our migration guide: https://docs.stackit.cloud/platform/access-and-identity/service-accounts/migrate-flows/""")
         if service_account_token is not None:
             pulumi.set(__self__, "service_account_token", service_account_token)
         if service_enablement_custom_endpoint is not None:
             pulumi.set(__self__, "service_enablement_custom_endpoint", service_enablement_custom_endpoint)
+        if sfs_custom_endpoint is not None:
+            pulumi.set(__self__, "sfs_custom_endpoint", sfs_custom_endpoint)
         if ske_custom_endpoint is not None:
             pulumi.set(__self__, "ske_custom_endpoint", ske_custom_endpoint)
         if sqlserverflex_custom_endpoint is not None:
@@ -584,7 +588,7 @@ class ProviderArgs:
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountToken")
-    @_utilities.deprecated("""Authentication via Service Account Token is deprecated and will be removed on December 17, 2025. Please use `service_account_key` or `service_account_key_path` instead. For a smooth transition, refer to our migration guide: https://docs.stackit.cloud/stackit/en/deprecation-plan-for-service-account-access-tokens-and-migration-guide-373293307.html""")
+    @_utilities.deprecated("""Authentication via Service Account Token is deprecated and will be removed on December 17, 2025. Please use `service_account_key` or `service_account_key_path` instead. For a smooth transition, refer to our migration guide: https://docs.stackit.cloud/platform/access-and-identity/service-accounts/migrate-flows/""")
     def service_account_token(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Token used for authentication. If set, the token flow will be used to authenticate all operations.
@@ -606,6 +610,18 @@ class ProviderArgs:
     @service_enablement_custom_endpoint.setter
     def service_enablement_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "service_enablement_custom_endpoint", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sfsCustomEndpoint")
+    def sfs_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Custom endpoint for the Stackit Filestorage API
+        """
+        return pulumi.get(self, "sfs_custom_endpoint")
+
+    @sfs_custom_endpoint.setter
+    def sfs_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "sfs_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="skeCustomEndpoint")
@@ -685,6 +701,7 @@ class Provider(pulumi.ProviderResource):
                  service_account_key_path: Optional[pulumi.Input[_builtins.str]] = None,
                  service_account_token: Optional[pulumi.Input[_builtins.str]] = None,
                  service_enablement_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 sfs_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  ske_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  sqlserverflex_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  token_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -732,6 +749,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[_builtins.str] service_account_key_path: Path for the service account key used for authentication. If set, the key flow will be used to authenticate all operations.
         :param pulumi.Input[_builtins.str] service_account_token: Token used for authentication. If set, the token flow will be used to authenticate all operations.
         :param pulumi.Input[_builtins.str] service_enablement_custom_endpoint: Custom endpoint for the Service Enablement API
+        :param pulumi.Input[_builtins.str] sfs_custom_endpoint: Custom endpoint for the Stackit Filestorage API
         :param pulumi.Input[_builtins.str] ske_custom_endpoint: Custom endpoint for the Kubernetes Engine (SKE) service
         :param pulumi.Input[_builtins.str] sqlserverflex_custom_endpoint: Custom endpoint for the SQL Server Flex service
         :param pulumi.Input[_builtins.str] token_custom_endpoint: Custom endpoint for the token API, which is used to request access tokens when using the key flow
@@ -798,6 +816,7 @@ class Provider(pulumi.ProviderResource):
                  service_account_key_path: Optional[pulumi.Input[_builtins.str]] = None,
                  service_account_token: Optional[pulumi.Input[_builtins.str]] = None,
                  service_enablement_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 sfs_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  ske_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  sqlserverflex_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  token_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -845,6 +864,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["service_account_key_path"] = service_account_key_path
             __props__.__dict__["service_account_token"] = service_account_token
             __props__.__dict__["service_enablement_custom_endpoint"] = service_enablement_custom_endpoint
+            __props__.__dict__["sfs_custom_endpoint"] = sfs_custom_endpoint
             __props__.__dict__["ske_custom_endpoint"] = ske_custom_endpoint
             __props__.__dict__["sqlserverflex_custom_endpoint"] = sqlserverflex_custom_endpoint
             __props__.__dict__["token_custom_endpoint"] = token_custom_endpoint
@@ -1106,7 +1126,7 @@ class Provider(pulumi.ProviderResource):
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountToken")
-    @_utilities.deprecated("""Authentication via Service Account Token is deprecated and will be removed on December 17, 2025. Please use `service_account_key` or `service_account_key_path` instead. For a smooth transition, refer to our migration guide: https://docs.stackit.cloud/stackit/en/deprecation-plan-for-service-account-access-tokens-and-migration-guide-373293307.html""")
+    @_utilities.deprecated("""Authentication via Service Account Token is deprecated and will be removed on December 17, 2025. Please use `service_account_key` or `service_account_key_path` instead. For a smooth transition, refer to our migration guide: https://docs.stackit.cloud/platform/access-and-identity/service-accounts/migrate-flows/""")
     def service_account_token(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Token used for authentication. If set, the token flow will be used to authenticate all operations.
@@ -1120,6 +1140,14 @@ class Provider(pulumi.ProviderResource):
         Custom endpoint for the Service Enablement API
         """
         return pulumi.get(self, "service_enablement_custom_endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="sfsCustomEndpoint")
+    def sfs_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Custom endpoint for the Stackit Filestorage API
+        """
+        return pulumi.get(self, "sfs_custom_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="skeCustomEndpoint")

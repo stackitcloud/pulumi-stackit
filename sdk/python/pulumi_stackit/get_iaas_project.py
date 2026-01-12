@@ -26,7 +26,7 @@ class GetIaasProjectResult:
     """
     A collection of values returned by getIaasProject.
     """
-    def __init__(__self__, area_id=None, created_at=None, id=None, internet_access=None, project_id=None, state=None, updated_at=None):
+    def __init__(__self__, area_id=None, created_at=None, id=None, internet_access=None, project_id=None, state=None, status=None, updated_at=None):
         if area_id and not isinstance(area_id, str):
             raise TypeError("Expected argument 'area_id' to be a str")
         pulumi.set(__self__, "area_id", area_id)
@@ -45,6 +45,9 @@ class GetIaasProjectResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if status and not isinstance(status, str):
+            raise TypeError("Expected argument 'status' to be a str")
+        pulumi.set(__self__, "status", status)
         if updated_at and not isinstance(updated_at, str):
             raise TypeError("Expected argument 'updated_at' to be a str")
         pulumi.set(__self__, "updated_at", updated_at)
@@ -88,11 +91,20 @@ class GetIaasProjectResult:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""Deprecated: Will be removed in May 2026. Use the `status` field instead.""")
     def state(self) -> _builtins.str:
         """
-        Specifies the state of the project.
+        Specifies the status of the project.
         """
         return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Specifies the status of the project.
+        """
+        return pulumi.get(self, "status")
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
@@ -115,6 +127,7 @@ class AwaitableGetIaasProjectResult(GetIaasProjectResult):
             internet_access=self.internet_access,
             project_id=self.project_id,
             state=self.state,
+            status=self.status,
             updated_at=self.updated_at)
 
 
@@ -140,6 +153,7 @@ def get_iaas_project(project_id: Optional[_builtins.str] = None,
         internet_access=pulumi.get(__ret__, 'internet_access'),
         project_id=pulumi.get(__ret__, 'project_id'),
         state=pulumi.get(__ret__, 'state'),
+        status=pulumi.get(__ret__, 'status'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
 def get_iaas_project_output(project_id: Optional[pulumi.Input[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIaasProjectResult]:
@@ -162,4 +176,5 @@ def get_iaas_project_output(project_id: Optional[pulumi.Input[_builtins.str]] = 
         internet_access=pulumi.get(__response__, 'internet_access'),
         project_id=pulumi.get(__response__, 'project_id'),
         state=pulumi.get(__response__, 'state'),
+        status=pulumi.get(__response__, 'status'),
         updated_at=pulumi.get(__response__, 'updated_at')))

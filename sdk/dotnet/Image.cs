@@ -84,6 +84,12 @@ namespace Pulumi.Stackit
         public Output<bool> Protected { get; private set; } = null!;
 
         /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Output("region")]
+        public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
         /// The scope of the image.
         /// </summary>
         [Output("scope")]
@@ -190,6 +196,12 @@ namespace Pulumi.Stackit
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
         public ImageArgs()
         {
         }
@@ -269,6 +281,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("protected")]
         public Input<bool>? Protected { get; set; }
+
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// The scope of the image.
