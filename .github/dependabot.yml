@@ -11,6 +11,19 @@ updates:
     commit-message:
       prefix: "chore"
       include: "scope"
+    groups:
+      internal-deps:
+        patterns:
+          - "^github.com/stackitcloud/"
+      external-deps:
+        patterns:
+          - ".*"
+        exclude-patterns:
+          # should be covered by listing internal-deps first (https://docs.github.com/en/code-security/reference/supply-chain-security/dependabot-options-reference#groups--)
+          # but listing it here to be explicit
+          - "^github.com/stackitcloud/"
+        cooldown:
+          default-days: 7
   - package-ecosystem: "gomod"
     directory: "/sdk"
     schedule:
@@ -22,6 +35,19 @@ updates:
     commit-message:
       prefix: "chore"
       include: "scope"
+    groups:
+      internal-deps:
+        patterns:
+          - "^github.com/stackitcloud/"
+      external-deps:
+        patterns:
+          - ".*"
+        exclude-patterns:
+          # should be covered by listing internal-deps first (https://docs.github.com/en/code-security/reference/supply-chain-security/dependabot-options-reference#groups--)
+          # but listing it here to be explicit
+          - "^github.com/stackitcloud/"
+        cooldown:
+          default-days: 7
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
@@ -33,6 +59,8 @@ updates:
     commit-message:
       prefix: "chore"
       include: "scope"
+    cooldown:
+      default-days: 7
   - package-ecosystem: "docker"
     directory: "/.devcontainer"
     schedule:
