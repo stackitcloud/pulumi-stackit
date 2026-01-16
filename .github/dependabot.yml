@@ -11,6 +11,9 @@ updates:
     commit-message:
       prefix: "chore"
       include: "scope"
+    cooldown:
+        default-days: 7
+        exclude: ["github.com/stackitcloud*"]
   - package-ecosystem: "gomod"
     directory: "/sdk"
     schedule:
@@ -22,6 +25,9 @@ updates:
     commit-message:
       prefix: "chore"
       include: "scope"
+    cooldown:
+      default-days: 7
+      exclude: ["github.com/stackitcloud*"]
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
@@ -33,6 +39,8 @@ updates:
     commit-message:
       prefix: "chore"
       include: "scope"
+    cooldown:
+      default-days: 7
   - package-ecosystem: "docker"
     directory: "/.devcontainer"
     schedule:
