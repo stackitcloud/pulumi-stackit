@@ -1,7 +1,7 @@
 import * as assert from "assert";
 import * as pulumi from "@pulumi/pulumi";
 import "mocha";
-import { exampleNetworkArea, networkAreaId, networkAreaLabelKey, networkAreaLabelValue, networkAreaName, networkAreaNetworkRanges, networkAreaOrganizationId } from "./index";
+import { exampleNetworkArea, networkAreaId, networkAreaLabelKey, networkAreaLabelValue, networkAreaName, networkAreaOrganizationId } from "./index";
 
 
 pulumi.runtime.setMocks({
@@ -57,16 +57,6 @@ describe("exampleNetworkArea", () => {
         });
     });
 
-    it("networkArea must have a networkRanges", function(done) {
-        pulumi.all([infra.exampleNetworkArea.urn, infra.exampleNetworkArea]).apply(([urn, exampleNetworkArea]) => {
-            if (!exampleNetworkArea?.networkRanges) {
-                done(new Error(`Missing a networkRanges tag on exampleNetworkArea ${urn}`));
-            } else {
-                done();
-            }
-        });
-    });
-
     it("check if organization id was correctly set", function(done) {
         pulumi.all([infra.exampleNetworkArea.urn, infra.exampleNetworkArea.organizationId]).apply(([urn, organizationId]) => {
             if (organizationId === networkAreaOrganizationId) {
@@ -83,17 +73,6 @@ describe("exampleNetworkArea", () => {
                 done();
             } else {
                 done(new Error(`Provided name ${name} was not set correctly on exampleNetworkArea ${urn}`));
-            }
-        });
-    });
-
-    it("check if network ranges was correctly set", function(done) {
-        pulumi.all([infra.exampleNetworkArea.urn, infra.exampleNetworkArea.networkRanges]).apply(([urn, networkRanges]) => {
-            const expectedValue = networkAreaNetworkRanges;
-            if (networkRanges && networkRanges.length > 0 && networkRanges[0].prefix === expectedValue) {
-                done();
-            } else {
-                done(new Error(`Provided network ranges ${networkAreaNetworkRanges} was not set correctly on exampleNetworkArea ${urn}`));
             }
         });
     });
@@ -146,17 +125,6 @@ describe("networkArea datasource test", () => {
                 done();
             } else {
                 done(new Error(`Provided name ${name} was not set correctly on datasource ${urn.name}`));
-            }
-        });
-    });
-
-    it("check if network ranges was correctly set", function(done) {
-        pulumi.all([infra.networkAreaDatasource, infra.networkAreaDatasource.networkRanges]).apply(([urn, networkRanges]) => {
-            const expectedValue = networkAreaNetworkRanges;
-            if (networkRanges && networkRanges.length > 0 && networkRanges[0].prefix === expectedValue) {
-                done();
-            } else {
-                done(new Error(`Provided network ranges ${networkAreaNetworkRanges} was not set correctly on networkAreaDatasource ${urn}`));
             }
         });
     });

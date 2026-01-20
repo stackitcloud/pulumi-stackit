@@ -1,12 +1,7 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as stackit from "@stackitcloud/pulumi-stackit";
 
-const example = new stackit.NetworkArea("example", {
+export const example = stackit.getNetworkAreaRegionOutput({
     organizationId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",         // Replace with your actual organization ID
-    name: "example-network-area",
-    labels: {
-        key: "value",
-    },
+    networkAreaId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",          // Replace with your actual network area ID
 });
-
-export const networkAreaIdString = pulumi.interpolate`${example.networkAreaId}`;
