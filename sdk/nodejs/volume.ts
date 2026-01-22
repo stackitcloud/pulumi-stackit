@@ -56,13 +56,17 @@ export class Volume extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/stackit/en/service-plans-blockstorage-75137974.html#ServiceplansBlockStorage-CurrentlyavailableServicePlans%28performanceclasses%29)
+     * The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/products/storage/block-storage/basics/service-plans/#currently-available-service-plans-performance-classes)
      */
     declare public readonly performanceClass: pulumi.Output<string>;
     /**
      * STACKIT project ID to which the volume is associated.
      */
     declare public readonly projectId: pulumi.Output<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The server ID of the server to which the volume is attached to.
      */
@@ -99,6 +103,7 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["performanceClass"] = state?.performanceClass;
             resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
             resourceInputs["serverId"] = state?.serverId;
             resourceInputs["size"] = state?.size;
             resourceInputs["source"] = state?.source;
@@ -117,6 +122,7 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["performanceClass"] = args?.performanceClass;
             resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
             resourceInputs["size"] = args?.size;
             resourceInputs["source"] = args?.source;
             resourceInputs["serverId"] = undefined /*out*/;
@@ -148,13 +154,17 @@ export interface VolumeState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/stackit/en/service-plans-blockstorage-75137974.html#ServiceplansBlockStorage-CurrentlyavailableServicePlans%28performanceclasses%29)
+     * The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/products/storage/block-storage/basics/service-plans/#currently-available-service-plans-performance-classes)
      */
     performanceClass?: pulumi.Input<string>;
     /**
      * STACKIT project ID to which the volume is associated.
      */
     projectId?: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string>;
     /**
      * The server ID of the server to which the volume is attached to.
      */
@@ -194,13 +204,17 @@ export interface VolumeArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/stackit/en/service-plans-blockstorage-75137974.html#ServiceplansBlockStorage-CurrentlyavailableServicePlans%28performanceclasses%29)
+     * The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/products/storage/block-storage/basics/service-plans/#currently-available-service-plans-performance-classes)
      */
     performanceClass?: pulumi.Input<string>;
     /**
      * STACKIT project ID to which the volume is associated.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string>;
     /**
      * The size of the volume in GB. It can only be updated to a larger value than the current size. Either `size` or `source` must be provided
      */

@@ -29,9 +29,10 @@ func GetMachineType(ctx *pulumi.Context, args *GetMachineTypeArgs, opts ...pulum
 // A collection of arguments for invoking getMachineType.
 type GetMachineTypeArgs struct {
 	// Expr-lang filter for filtering machine types.
-	Filter        string `pulumi:"filter"`
-	ProjectId     string `pulumi:"projectId"`
-	SortAscending *bool  `pulumi:"sortAscending"`
+	Filter        string  `pulumi:"filter"`
+	ProjectId     string  `pulumi:"projectId"`
+	Region        *string `pulumi:"region"`
+	SortAscending *bool   `pulumi:"sortAscending"`
 }
 
 // A collection of values returned by getMachineType.
@@ -40,13 +41,14 @@ type GetMachineTypeResult struct {
 	Disk        int               `pulumi:"disk"`
 	ExtraSpecs  map[string]string `pulumi:"extraSpecs"`
 	// Expr-lang filter for filtering machine types.
-	Filter        string `pulumi:"filter"`
-	Id            string `pulumi:"id"`
-	Name          string `pulumi:"name"`
-	ProjectId     string `pulumi:"projectId"`
-	Ram           int    `pulumi:"ram"`
-	SortAscending *bool  `pulumi:"sortAscending"`
-	Vcpus         int    `pulumi:"vcpus"`
+	Filter        string  `pulumi:"filter"`
+	Id            string  `pulumi:"id"`
+	Name          string  `pulumi:"name"`
+	ProjectId     string  `pulumi:"projectId"`
+	Ram           int     `pulumi:"ram"`
+	Region        *string `pulumi:"region"`
+	SortAscending *bool   `pulumi:"sortAscending"`
+	Vcpus         int     `pulumi:"vcpus"`
 }
 
 func GetMachineTypeOutput(ctx *pulumi.Context, args GetMachineTypeOutputArgs, opts ...pulumi.InvokeOption) GetMachineTypeResultOutput {
@@ -61,9 +63,10 @@ func GetMachineTypeOutput(ctx *pulumi.Context, args GetMachineTypeOutputArgs, op
 // A collection of arguments for invoking getMachineType.
 type GetMachineTypeOutputArgs struct {
 	// Expr-lang filter for filtering machine types.
-	Filter        pulumi.StringInput  `pulumi:"filter"`
-	ProjectId     pulumi.StringInput  `pulumi:"projectId"`
-	SortAscending pulumi.BoolPtrInput `pulumi:"sortAscending"`
+	Filter        pulumi.StringInput    `pulumi:"filter"`
+	ProjectId     pulumi.StringInput    `pulumi:"projectId"`
+	Region        pulumi.StringPtrInput `pulumi:"region"`
+	SortAscending pulumi.BoolPtrInput   `pulumi:"sortAscending"`
 }
 
 func (GetMachineTypeOutputArgs) ElementType() reflect.Type {
@@ -116,6 +119,10 @@ func (o GetMachineTypeResultOutput) ProjectId() pulumi.StringOutput {
 
 func (o GetMachineTypeResultOutput) Ram() pulumi.IntOutput {
 	return o.ApplyT(func(v GetMachineTypeResult) int { return v.Ram }).(pulumi.IntOutput)
+}
+
+func (o GetMachineTypeResultOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMachineTypeResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
 func (o GetMachineTypeResultOutput) SortAscending() pulumi.BoolPtrOutput {

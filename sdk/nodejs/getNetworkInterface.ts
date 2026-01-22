@@ -15,6 +15,7 @@ export function getNetworkInterface(args: GetNetworkInterfaceArgs, opts?: pulumi
         "networkId": args.networkId,
         "networkInterfaceId": args.networkInterfaceId,
         "projectId": args.projectId,
+        "region": args.region,
     }, opts);
 }
 
@@ -34,6 +35,10 @@ export interface GetNetworkInterfaceArgs {
      * STACKIT project ID to which the network interface is associated.
      */
     projectId: string;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: string;
 }
 
 /**
@@ -78,6 +83,10 @@ export interface GetNetworkInterfaceResult {
      */
     readonly projectId: string;
     /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    readonly region?: string;
+    /**
      * The Network Interface Security. If set to false, then no security groups will apply to this network interface.
      */
     readonly security: boolean;
@@ -101,6 +110,7 @@ export function getNetworkInterfaceOutput(args: GetNetworkInterfaceOutputArgs, o
         "networkId": args.networkId,
         "networkInterfaceId": args.networkInterfaceId,
         "projectId": args.projectId,
+        "region": args.region,
     }, opts);
 }
 
@@ -120,4 +130,8 @@ export interface GetNetworkInterfaceOutputArgs {
      * STACKIT project ID to which the network interface is associated.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string>;
 }

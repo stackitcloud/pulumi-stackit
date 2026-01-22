@@ -1,7 +1,7 @@
 import * as assert from "assert";
 import * as pulumi from "@pulumi/pulumi";
 import "mocha";
-import { exampleNetworkAreaRoute, networkAreaId, networkAreaRouteId, networkAreaRouteLabelKey, networkAreaRouteLabelValue, networkAreaRouteNextHop, networkAreaRouteOrganizationId, networkAreaRoutePrefix } from "./index";
+import { exampleNetworkAreaRoute, networkAreaId, networkAreaRouteId, networkAreaRouteLabelKey, networkAreaRouteLabelValue, networkAreaRouteNextHop, networkAreaRouteOrganizationId, networkAreaRouteDestination, networkAreaRouteDestinationType, networkAreaRouteNextHopType } from "./index";
 
 pulumi.runtime.setMocks({
     newResource: function(args: pulumi.runtime.MockResourceArgs): {id: string, state: any} {
@@ -56,26 +56,6 @@ describe("exampleNetworkAreaRoute", () => {
         });
     });
 
-    it("networkAreaRoute must have a prefix", function(done) {
-        pulumi.all([infra.exampleNetworkAreaRoute.urn, infra.exampleNetworkAreaRoute]).apply(([urn, exampleNetworkAreaRoute]) => {
-            if (!exampleNetworkAreaRoute?.prefix) {
-                done(new Error(`Missing a prefix tag on exampleNetworkAreaRoute ${urn}`));
-            } else {
-                done();
-            }
-        });
-    });
-
-    it("networkAreaRoute must have a nextHop", function(done) {
-        pulumi.all([infra.exampleNetworkAreaRoute.urn, infra.exampleNetworkAreaRoute]).apply(([urn, exampleNetworkAreaRoute]) => {
-            if (!exampleNetworkAreaRoute?.nextHop) {
-                done(new Error(`Missing a nextHop tag on exampleNetworkAreaRoute ${urn}`));
-            } else {
-                done();
-            }
-        });
-    });
-
     it("check if organization id was correctly set", function(done) {
         pulumi.all([infra.exampleNetworkAreaRoute.urn, infra.exampleNetworkAreaRoute.organizationId]).apply(([urn, organizationId]) => {
             if (organizationId === networkAreaRouteOrganizationId) {
@@ -96,21 +76,25 @@ describe("exampleNetworkAreaRoute", () => {
         });
     });
 
-    it("check if prefix was correctly set", function(done) {
-        pulumi.all([infra.exampleNetworkAreaRoute.urn, infra.exampleNetworkAreaRoute.prefix]).apply(([urn, prefix]) => {
-            if (prefix === networkAreaRoutePrefix) {
+    it("check if destination was correctly set", function(done) {
+        pulumi.all([infra.exampleNetworkAreaRoute.urn, infra.exampleNetworkAreaRoute.destination]).apply(([urn, destination]) => {
+            const expectedType = networkAreaRouteDestinationType;
+            const expectedValue = networkAreaRouteDestination;
+            if (destination && destination.type?.length > 0 && destination.value?.length > 0 && destination.type === expectedType && destination.value === expectedValue)
                 done();
-            } else {
-                done(new Error(`Provided prefix ${prefix} was not set correctly on exampleNetworkAreaRoute ${urn}`));
+            else {
+                done(new Error(`Provided destination ${destination} was not set correctly on exampleNetworkAreaRoute ${urn}`));
             }
         });
     });
 
     it("check if nextHop was correctly set", function(done) {
         pulumi.all([infra.exampleNetworkAreaRoute.urn, infra.exampleNetworkAreaRoute.nextHop]).apply(([urn, nextHop]) => {
-            if (nextHop === networkAreaRouteNextHop) {
+            const expectedType = networkAreaRouteNextHopType;
+            const expectedValue = networkAreaRouteNextHop;
+            if (nextHop && nextHop.type?.length && nextHop.value?.length && nextHop.type === expectedType && nextHop.value === expectedValue)
                 done();
-            } else {
+            else {
                 done(new Error(`Provided nextHop ${nextHop} was not set correctly on exampleNetworkAreaRoute ${urn}`));
             }
         });
@@ -168,22 +152,26 @@ describe("networkAreaRoute datasource test", () => {
         });
     });
 
-    it("networkAreaRoute must have a prefix", function(done) {
-        pulumi.all([infra.networkAreaRouteDatasource, infra.networkAreaRouteDatasource]).apply(([urn, networkAreaRouteDatasource]) => {
-            if (!networkAreaRouteDatasource?.prefix) {
-                done(new Error(`Missing a prefix tag on networkAreaRouteDatasource ${urn}`));
-            } else {
+    it("check if destination was correctly set", function(done) {
+        pulumi.all([infra.networkAreaRouteDatasource, infra.networkAreaRouteDatasource.destination]).apply(([urn, destination]) => {
+            const expectedType = networkAreaRouteDestinationType;
+            const expectedValue = networkAreaRouteDestination;
+            if (destination && destination.type?.length > 0 && destination.value?.length > 0 && destination.type === expectedType && destination.value === expectedValue)
                 done();
+            else {
+                done(new Error(`Provided destination ${destination} was not set correctly on networkAreaRouteDatasource ${urn}`));
             }
         });
     });
 
-    it("networkAreaRoute must have a nextHop", function(done) {
-        pulumi.all([infra.networkAreaRouteDatasource, infra.networkAreaRouteDatasource]).apply(([urn, networkAreaRouteDatasource]) => {
-            if (!networkAreaRouteDatasource?.nextHop) {
-                done(new Error(`Missing a nextHop tag on networkAreaRouteDatasource ${urn}`));
-            } else {
+    it("check if nextHop was correctly set", function(done) {
+        pulumi.all([infra.networkAreaRouteDatasource, infra.networkAreaRouteDatasource.nextHop]).apply(([urn, nextHop]) => {
+            const expectedType = networkAreaRouteNextHopType;
+            const expectedValue = networkAreaRouteNextHop;
+            if (nextHop && nextHop.type?.length && nextHop.value?.length && nextHop.type === expectedType && nextHop.value === expectedValue)
                 done();
+            else {
+                done(new Error(`Provided nextHop ${nextHop} was not set correctly on networkAreaRouteDatasource ${urn}`));
             }
         });
     });
@@ -204,26 +192,6 @@ describe("networkAreaRoute datasource test", () => {
                 done();
             } else {
                 done(new Error(`Provided areaId ${areaId} was not set correctly on networkAreaRouteDatasource ${urn}`));
-            }
-        });
-    });
-
-    it("check if prefix was correctly set", function(done) {
-        pulumi.all([infra.networkAreaRouteDatasource, infra.networkAreaRouteDatasource.prefix]).apply(([urn, prefix]) => {
-            if (prefix === networkAreaRoutePrefix) {
-                done();
-            } else {
-                done(new Error(`Provided prefix ${prefix} was not set correctly on networkAreaRouteDatasource ${urn}`));
-            }
-        });
-    });
-
-    it("check if nextHop was correctly set", function(done) {
-        pulumi.all([infra.networkAreaRouteDatasource, infra.networkAreaRouteDatasource.nextHop]).apply(([urn, nextHop]) => {
-            if (nextHop === networkAreaRouteNextHop) {
-                done();
-            } else {
-                done(new Error(`Provided nextHop ${nextHop} was not set correctly on networkAreaRouteDatasource ${urn}`));
             }
         });
     });

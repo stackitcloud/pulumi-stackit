@@ -27,6 +27,8 @@ type PublicIp struct {
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// The public IP ID.
 	PublicIpId pulumi.StringOutput `pulumi:"publicIpId"`
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringOutput `pulumi:"region"`
 }
 
 // NewPublicIp registers a new resource with the given unique name, arguments, and options.
@@ -71,6 +73,8 @@ type publicIpState struct {
 	ProjectId *string `pulumi:"projectId"`
 	// The public IP ID.
 	PublicIpId *string `pulumi:"publicIpId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 }
 
 type PublicIpState struct {
@@ -83,6 +87,8 @@ type PublicIpState struct {
 	ProjectId pulumi.StringPtrInput
 	// The public IP ID.
 	PublicIpId pulumi.StringPtrInput
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput
 }
 
 func (PublicIpState) ElementType() reflect.Type {
@@ -95,6 +101,8 @@ type publicIpArgs struct {
 	NetworkInterfaceId *string           `pulumi:"networkInterfaceId"`
 	// STACKIT project ID to which the public IP is associated.
 	ProjectId string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a PublicIp resource.
@@ -104,6 +112,8 @@ type PublicIpArgs struct {
 	NetworkInterfaceId pulumi.StringPtrInput
 	// STACKIT project ID to which the public IP is associated.
 	ProjectId pulumi.StringInput
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput
 }
 
 func (PublicIpArgs) ElementType() reflect.Type {
@@ -215,6 +225,11 @@ func (o PublicIpOutput) ProjectId() pulumi.StringOutput {
 // The public IP ID.
 func (o PublicIpOutput) PublicIpId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PublicIp) pulumi.StringOutput { return v.PublicIpId }).(pulumi.StringOutput)
+}
+
+// The resource region. If not defined, the provider region is used.
+func (o PublicIpOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *PublicIp) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 type PublicIpArrayOutput struct{ *pulumi.OutputState }

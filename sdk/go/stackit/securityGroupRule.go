@@ -34,6 +34,8 @@ type SecurityGroupRule struct {
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// The internet protocol which the rule should match.
 	Protocol SecurityGroupRuleProtocolOutput `pulumi:"protocol"`
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringOutput `pulumi:"region"`
 	// The remote security group which the rule should match.
 	RemoteSecurityGroupId pulumi.StringPtrOutput `pulumi:"remoteSecurityGroupId"`
 	// The security group ID.
@@ -97,6 +99,8 @@ type securityGroupRuleState struct {
 	ProjectId *string `pulumi:"projectId"`
 	// The internet protocol which the rule should match.
 	Protocol *SecurityGroupRuleProtocol `pulumi:"protocol"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 	// The remote security group which the rule should match.
 	RemoteSecurityGroupId *string `pulumi:"remoteSecurityGroupId"`
 	// The security group ID.
@@ -122,6 +126,8 @@ type SecurityGroupRuleState struct {
 	ProjectId pulumi.StringPtrInput
 	// The internet protocol which the rule should match.
 	Protocol SecurityGroupRuleProtocolPtrInput
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput
 	// The remote security group which the rule should match.
 	RemoteSecurityGroupId pulumi.StringPtrInput
 	// The security group ID.
@@ -151,6 +157,8 @@ type securityGroupRuleArgs struct {
 	ProjectId string `pulumi:"projectId"`
 	// The internet protocol which the rule should match.
 	Protocol *SecurityGroupRuleProtocol `pulumi:"protocol"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 	// The remote security group which the rule should match.
 	RemoteSecurityGroupId *string `pulumi:"remoteSecurityGroupId"`
 	// The security group ID.
@@ -175,6 +183,8 @@ type SecurityGroupRuleArgs struct {
 	ProjectId pulumi.StringInput
 	// The internet protocol which the rule should match.
 	Protocol SecurityGroupRuleProtocolPtrInput
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput
 	// The remote security group which the rule should match.
 	RemoteSecurityGroupId pulumi.StringPtrInput
 	// The security group ID.
@@ -306,6 +316,11 @@ func (o SecurityGroupRuleOutput) ProjectId() pulumi.StringOutput {
 // The internet protocol which the rule should match.
 func (o SecurityGroupRuleOutput) Protocol() SecurityGroupRuleProtocolOutput {
 	return o.ApplyT(func(v *SecurityGroupRule) SecurityGroupRuleProtocolOutput { return v.Protocol }).(SecurityGroupRuleProtocolOutput)
+}
+
+// The resource region. If not defined, the provider region is used.
+func (o SecurityGroupRuleOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *SecurityGroupRule) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // The remote security group which the rule should match.

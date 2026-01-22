@@ -28,6 +28,8 @@ func LookupSecurityGroupRule(ctx *pulumi.Context, args *LookupSecurityGroupRuleA
 type LookupSecurityGroupRuleArgs struct {
 	// STACKIT project ID to which the security group rule is associated.
 	ProjectId string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 	// The security group ID.
 	SecurityGroupId string `pulumi:"securityGroupId"`
 	// The security group rule ID.
@@ -53,6 +55,8 @@ type LookupSecurityGroupRuleResult struct {
 	ProjectId string `pulumi:"projectId"`
 	// The internet protocol which the rule should match.
 	Protocol GetSecurityGroupRuleProtocol `pulumi:"protocol"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 	// The remote security group which the rule should match.
 	RemoteSecurityGroupId string `pulumi:"remoteSecurityGroupId"`
 	// The security group ID.
@@ -74,6 +78,8 @@ func LookupSecurityGroupRuleOutput(ctx *pulumi.Context, args LookupSecurityGroup
 type LookupSecurityGroupRuleOutputArgs struct {
 	// STACKIT project ID to which the security group rule is associated.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 	// The security group ID.
 	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
 	// The security group rule ID.
@@ -141,6 +147,11 @@ func (o LookupSecurityGroupRuleResultOutput) ProjectId() pulumi.StringOutput {
 // The internet protocol which the rule should match.
 func (o LookupSecurityGroupRuleResultOutput) Protocol() GetSecurityGroupRuleProtocolOutput {
 	return o.ApplyT(func(v LookupSecurityGroupRuleResult) GetSecurityGroupRuleProtocol { return v.Protocol }).(GetSecurityGroupRuleProtocolOutput)
+}
+
+// The resource region. If not defined, the provider region is used.
+func (o LookupSecurityGroupRuleResultOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupSecurityGroupRuleResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
 // The remote security group which the rule should match.

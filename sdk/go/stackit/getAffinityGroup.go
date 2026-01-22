@@ -30,6 +30,8 @@ type LookupAffinityGroupArgs struct {
 	AffinityGroupId string `pulumi:"affinityGroupId"`
 	// STACKIT Project ID to which the affinity group is associated.
 	ProjectId string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 }
 
 // A collection of values returned by getAffinityGroup.
@@ -45,6 +47,8 @@ type LookupAffinityGroupResult struct {
 	Policy string `pulumi:"policy"`
 	// STACKIT Project ID to which the affinity group is associated.
 	ProjectId string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 }
 
 func LookupAffinityGroupOutput(ctx *pulumi.Context, args LookupAffinityGroupOutputArgs, opts ...pulumi.InvokeOption) LookupAffinityGroupResultOutput {
@@ -62,6 +66,8 @@ type LookupAffinityGroupOutputArgs struct {
 	AffinityGroupId pulumi.StringInput `pulumi:"affinityGroupId"`
 	// STACKIT Project ID to which the affinity group is associated.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (LookupAffinityGroupOutputArgs) ElementType() reflect.Type {
@@ -110,6 +116,11 @@ func (o LookupAffinityGroupResultOutput) Policy() pulumi.StringOutput {
 // STACKIT Project ID to which the affinity group is associated.
 func (o LookupAffinityGroupResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAffinityGroupResult) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The resource region. If not defined, the provider region is used.
+func (o LookupAffinityGroupResultOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupAffinityGroupResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
 func init() {

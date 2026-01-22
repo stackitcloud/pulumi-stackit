@@ -24,7 +24,7 @@ setup(name='pulumi_stackit',
       description="A Pulumi package for creating and managing stackit resources.",
       long_description=readme(),
       long_description_content_type='text/markdown',
-      keywords='pulumi stackit category/utility',
+      keywords='pulumi stackit category/cloud',
       url='https://www.pulumi.com',
       project_urls={
           'Repository': 'https://github.com/stackitcloud/pulumi-stackit'

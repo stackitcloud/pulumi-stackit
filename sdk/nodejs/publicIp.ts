@@ -54,6 +54,10 @@ export class PublicIp extends pulumi.CustomResource {
      * The public IP ID.
      */
     declare public /*out*/ readonly publicIpId: pulumi.Output<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a PublicIp resource with the given unique name, arguments, and options.
@@ -73,6 +77,7 @@ export class PublicIp extends pulumi.CustomResource {
             resourceInputs["networkInterfaceId"] = state?.networkInterfaceId;
             resourceInputs["projectId"] = state?.projectId;
             resourceInputs["publicIpId"] = state?.publicIpId;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as PublicIpArgs | undefined;
             if (args?.projectId === undefined && !opts.urn) {
@@ -81,6 +86,7 @@ export class PublicIp extends pulumi.CustomResource {
             resourceInputs["labels"] = args?.labels;
             resourceInputs["networkInterfaceId"] = args?.networkInterfaceId;
             resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
             resourceInputs["ip"] = undefined /*out*/;
             resourceInputs["publicIpId"] = undefined /*out*/;
         }
@@ -110,6 +116,10 @@ export interface PublicIpState {
      * The public IP ID.
      */
     publicIpId?: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string>;
 }
 
 /**
@@ -125,4 +135,8 @@ export interface PublicIpArgs {
      * STACKIT project ID to which the public IP is associated.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string>;
 }

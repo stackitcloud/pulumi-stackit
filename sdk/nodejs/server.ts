@@ -90,7 +90,7 @@ export class Server extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly launchedAt: pulumi.Output<string>;
     /**
-     * Name of the type of the machine for the server. Possible values are documented in [Virtual machine flavors](https://docs.stackit.cloud/stackit/en/virtual-machine-flavors-75137231.html)
+     * Name of the type of the machine for the server. Possible values are documented in [Virtual machine flavors](https://docs.stackit.cloud/products/compute-engine/server/basics/machine-types/)
      */
     declare public readonly machineType: pulumi.Output<string>;
     /**
@@ -98,13 +98,17 @@ export class Server extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The IDs of network interfaces which should be attached to the server. Updating it will recreate the server.
+     * The IDs of network interfaces which should be attached to the server. Updating it will recreate the server. **Required when (re-)creating servers. Still marked as optional in the schema to not introduce breaking changes. There will be a migration path for this field soon.**
      */
     declare public readonly networkInterfaces: pulumi.Output<string[] | undefined>;
     /**
      * STACKIT project ID to which the server is associated.
      */
     declare public readonly projectId: pulumi.Output<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The server ID.
      */
@@ -144,6 +148,7 @@ export class Server extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["networkInterfaces"] = state?.networkInterfaces;
             resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
             resourceInputs["serverId"] = state?.serverId;
             resourceInputs["updatedAt"] = state?.updatedAt;
             resourceInputs["userData"] = state?.userData;
@@ -166,6 +171,7 @@ export class Server extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["networkInterfaces"] = args?.networkInterfaces;
             resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
             resourceInputs["userData"] = args?.userData;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["launchedAt"] = undefined /*out*/;
@@ -218,7 +224,7 @@ export interface ServerState {
      */
     launchedAt?: pulumi.Input<string>;
     /**
-     * Name of the type of the machine for the server. Possible values are documented in [Virtual machine flavors](https://docs.stackit.cloud/stackit/en/virtual-machine-flavors-75137231.html)
+     * Name of the type of the machine for the server. Possible values are documented in [Virtual machine flavors](https://docs.stackit.cloud/products/compute-engine/server/basics/machine-types/)
      */
     machineType?: pulumi.Input<string>;
     /**
@@ -226,13 +232,17 @@ export interface ServerState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The IDs of network interfaces which should be attached to the server. Updating it will recreate the server.
+     * The IDs of network interfaces which should be attached to the server. Updating it will recreate the server. **Required when (re-)creating servers. Still marked as optional in the schema to not introduce breaking changes. There will be a migration path for this field soon.**
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * STACKIT project ID to which the server is associated.
      */
     projectId?: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string>;
     /**
      * The server ID.
      */
@@ -280,7 +290,7 @@ export interface ServerArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Name of the type of the machine for the server. Possible values are documented in [Virtual machine flavors](https://docs.stackit.cloud/stackit/en/virtual-machine-flavors-75137231.html)
+     * Name of the type of the machine for the server. Possible values are documented in [Virtual machine flavors](https://docs.stackit.cloud/products/compute-engine/server/basics/machine-types/)
      */
     machineType: pulumi.Input<string>;
     /**
@@ -288,13 +298,17 @@ export interface ServerArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The IDs of network interfaces which should be attached to the server. Updating it will recreate the server.
+     * The IDs of network interfaces which should be attached to the server. Updating it will recreate the server. **Required when (re-)creating servers. Still marked as optional in the schema to not introduce breaking changes. There will be a migration path for this field soon.**
      */
     networkInterfaces?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * STACKIT project ID to which the server is associated.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string>;
     /**
      * User data that is passed via cloud-init to the server.
      */

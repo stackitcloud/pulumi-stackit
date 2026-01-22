@@ -5,8 +5,10 @@ export const networkAreaRouteOrganizationId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx
 export const networkAreaId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx1";
 export const networkAreaRouteLabelKey = "unit-test";
 export const networkAreaRouteLabelValue = "test-label-value";
-export const networkAreaRoutePrefix = "192.168.0.0/24";
+export const networkAreaRouteDestination = "192.168.0.0/24";
+export const networkAreaRouteDestinationType = "cidrv4";
 export const networkAreaRouteNextHop = "192.168.1.0/24";
+export const networkAreaRouteNextHopType = "ipv4";
 
 // datasource
 export const networkAreaRouteId = "networkAreaRoute-id-to-read";
@@ -14,8 +16,14 @@ export const networkAreaRouteId = "networkAreaRoute-id-to-read";
 export const exampleNetworkAreaRoute = new stackit.NetworkAreaRoute("example_networkAreaRoute", {
     organizationId: networkAreaRouteOrganizationId,
     networkAreaId: networkAreaId,
-    prefix: networkAreaRoutePrefix,
-    nextHop: networkAreaRouteNextHop,
+    destination: {
+        type: networkAreaRouteDestinationType,
+        value: networkAreaRouteDestination,
+    },
+    nextHop: {
+        type: networkAreaRouteNextHopType,
+        value: networkAreaRouteNextHop
+    },
     labels: {[networkAreaRouteLabelKey]:networkAreaRouteLabelValue},
 });
 

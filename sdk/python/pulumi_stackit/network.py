@@ -52,11 +52,9 @@ class NetworkArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] nameservers: The nameservers of the network. This field is deprecated and will be removed in January 2026, use `ipv4_nameservers` to configure the nameservers for IPv4.
         :param pulumi.Input[_builtins.bool] no_ipv4_gateway: If set to `true`, the network doesn't have a gateway.
         :param pulumi.Input[_builtins.bool] no_ipv6_gateway: If set to `true`, the network doesn't have a gateway.
-        :param pulumi.Input[_builtins.str] region: Can only be used when experimental "network" is set.
-               The resource region. If not defined, the provider region is used.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.bool] routed: If set to `true`, the network is routed and therefore accessible from other networks.
-        :param pulumi.Input[_builtins.str] routing_table_id: Can only be used when experimental "network" is set.
-               The ID of the routing table associated with the network.
+        :param pulumi.Input[_builtins.str] routing_table_id: The ID of the routing table associated with the network.
         """
         pulumi.set(__self__, "project_id", project_id)
         if ipv4_gateway is not None:
@@ -268,7 +266,6 @@ class NetworkArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Can only be used when experimental "network" is set.
         The resource region. If not defined, the provider region is used.
         """
         return pulumi.get(self, "region")
@@ -293,7 +290,6 @@ class NetworkArgs:
     @pulumi.getter(name="routingTableId")
     def routing_table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Can only be used when experimental "network" is set.
         The ID of the routing table associated with the network.
         """
         return pulumi.get(self, "routing_table_id")
@@ -349,11 +345,9 @@ class _NetworkState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] prefixes: The prefixes of the network. This field is deprecated and will be removed in January 2026, use `ipv4_prefixes` to read the prefixes of the IPv4 networks.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the network is associated.
         :param pulumi.Input[_builtins.str] public_ip: The public IP of the network.
-        :param pulumi.Input[_builtins.str] region: Can only be used when experimental "network" is set.
-               The resource region. If not defined, the provider region is used.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.bool] routed: If set to `true`, the network is routed and therefore accessible from other networks.
-        :param pulumi.Input[_builtins.str] routing_table_id: Can only be used when experimental "network" is set.
-               The ID of the routing table associated with the network.
+        :param pulumi.Input[_builtins.str] routing_table_id: The ID of the routing table associated with the network.
         """
         if ipv4_gateway is not None:
             pulumi.set(__self__, "ipv4_gateway", ipv4_gateway)
@@ -640,7 +634,6 @@ class _NetworkState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Can only be used when experimental "network" is set.
         The resource region. If not defined, the provider region is used.
         """
         return pulumi.get(self, "region")
@@ -665,7 +658,6 @@ class _NetworkState:
     @pulumi.getter(name="routingTableId")
     def routing_table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Can only be used when experimental "network" is set.
         The ID of the routing table associated with the network.
         """
         return pulumi.get(self, "routing_table_id")
@@ -723,11 +715,9 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] no_ipv4_gateway: If set to `true`, the network doesn't have a gateway.
         :param pulumi.Input[_builtins.bool] no_ipv6_gateway: If set to `true`, the network doesn't have a gateway.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the network is associated.
-        :param pulumi.Input[_builtins.str] region: Can only be used when experimental "network" is set.
-               The resource region. If not defined, the provider region is used.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.bool] routed: If set to `true`, the network is routed and therefore accessible from other networks.
-        :param pulumi.Input[_builtins.str] routing_table_id: Can only be used when experimental "network" is set.
-               The ID of the routing table associated with the network.
+        :param pulumi.Input[_builtins.str] routing_table_id: The ID of the routing table associated with the network.
         """
         ...
     @overload
@@ -866,11 +856,9 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] prefixes: The prefixes of the network. This field is deprecated and will be removed in January 2026, use `ipv4_prefixes` to read the prefixes of the IPv4 networks.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the network is associated.
         :param pulumi.Input[_builtins.str] public_ip: The public IP of the network.
-        :param pulumi.Input[_builtins.str] region: Can only be used when experimental "network" is set.
-               The resource region. If not defined, the provider region is used.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.bool] routed: If set to `true`, the network is routed and therefore accessible from other networks.
-        :param pulumi.Input[_builtins.str] routing_table_id: Can only be used when experimental "network" is set.
-               The ID of the routing table associated with the network.
+        :param pulumi.Input[_builtins.str] routing_table_id: The ID of the routing table associated with the network.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1058,7 +1046,6 @@ class Network(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[_builtins.str]:
         """
-        Can only be used when experimental "network" is set.
         The resource region. If not defined, the provider region is used.
         """
         return pulumi.get(self, "region")
@@ -1075,7 +1062,6 @@ class Network(pulumi.CustomResource):
     @pulumi.getter(name="routingTableId")
     def routing_table_id(self) -> pulumi.Output[_builtins.str]:
         """
-        Can only be used when experimental "network" is set.
         The ID of the routing table associated with the network.
         """
         return pulumi.get(self, "routing_table_id")

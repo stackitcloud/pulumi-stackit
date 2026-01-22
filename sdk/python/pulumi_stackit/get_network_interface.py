@@ -26,7 +26,7 @@ class GetNetworkInterfaceResult:
     """
     A collection of values returned by getNetworkInterface.
     """
-    def __init__(__self__, allowed_addresses=None, device=None, id=None, ipv4=None, labels=None, mac=None, name=None, network_id=None, network_interface_id=None, project_id=None, security=None, security_group_ids=None, type=None):
+    def __init__(__self__, allowed_addresses=None, device=None, id=None, ipv4=None, labels=None, mac=None, name=None, network_id=None, network_interface_id=None, project_id=None, region=None, security=None, security_group_ids=None, type=None):
         if allowed_addresses and not isinstance(allowed_addresses, list):
             raise TypeError("Expected argument 'allowed_addresses' to be a list")
         pulumi.set(__self__, "allowed_addresses", allowed_addresses)
@@ -57,6 +57,9 @@ class GetNetworkInterfaceResult:
         if project_id and not isinstance(project_id, str):
             raise TypeError("Expected argument 'project_id' to be a str")
         pulumi.set(__self__, "project_id", project_id)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
         if security and not isinstance(security, bool):
             raise TypeError("Expected argument 'security' to be a bool")
         pulumi.set(__self__, "security", security)
@@ -146,6 +149,14 @@ class GetNetworkInterfaceResult:
 
     @_builtins.property
     @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter
     def security(self) -> _builtins.bool:
         """
         The Network Interface Security. If set to false, then no security groups will apply to this network interface.
@@ -185,6 +196,7 @@ class AwaitableGetNetworkInterfaceResult(GetNetworkInterfaceResult):
             network_id=self.network_id,
             network_interface_id=self.network_interface_id,
             project_id=self.project_id,
+            region=self.region,
             security=self.security,
             security_group_ids=self.security_group_ids,
             type=self.type)
@@ -193,6 +205,7 @@ class AwaitableGetNetworkInterfaceResult(GetNetworkInterfaceResult):
 def get_network_interface(network_id: Optional[_builtins.str] = None,
                           network_interface_id: Optional[_builtins.str] = None,
                           project_id: Optional[_builtins.str] = None,
+                          region: Optional[_builtins.str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkInterfaceResult:
     """
     Network interface datasource schema. Must have a `region` specified in the provider configuration.
@@ -203,11 +216,13 @@ def get_network_interface(network_id: Optional[_builtins.str] = None,
     :param _builtins.str network_id: The network ID to which the network interface is associated.
     :param _builtins.str network_interface_id: The network interface ID.
     :param _builtins.str project_id: STACKIT project ID to which the network interface is associated.
+    :param _builtins.str region: The resource region. If not defined, the provider region is used.
     """
     __args__ = dict()
     __args__['networkId'] = network_id
     __args__['networkInterfaceId'] = network_interface_id
     __args__['projectId'] = project_id
+    __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('stackit:index/getNetworkInterface:getNetworkInterface', __args__, opts=opts, typ=GetNetworkInterfaceResult).value
 
@@ -222,12 +237,14 @@ def get_network_interface(network_id: Optional[_builtins.str] = None,
         network_id=pulumi.get(__ret__, 'network_id'),
         network_interface_id=pulumi.get(__ret__, 'network_interface_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
+        region=pulumi.get(__ret__, 'region'),
         security=pulumi.get(__ret__, 'security'),
         security_group_ids=pulumi.get(__ret__, 'security_group_ids'),
         type=pulumi.get(__ret__, 'type'))
 def get_network_interface_output(network_id: Optional[pulumi.Input[_builtins.str]] = None,
                                  network_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
                                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                                 region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkInterfaceResult]:
     """
     Network interface datasource schema. Must have a `region` specified in the provider configuration.
@@ -238,11 +255,13 @@ def get_network_interface_output(network_id: Optional[pulumi.Input[_builtins.str
     :param _builtins.str network_id: The network ID to which the network interface is associated.
     :param _builtins.str network_interface_id: The network interface ID.
     :param _builtins.str project_id: STACKIT project ID to which the network interface is associated.
+    :param _builtins.str region: The resource region. If not defined, the provider region is used.
     """
     __args__ = dict()
     __args__['networkId'] = network_id
     __args__['networkInterfaceId'] = network_interface_id
     __args__['projectId'] = project_id
+    __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('stackit:index/getNetworkInterface:getNetworkInterface', __args__, opts=opts, typ=GetNetworkInterfaceResult)
     return __ret__.apply(lambda __response__: GetNetworkInterfaceResult(
@@ -256,6 +275,7 @@ def get_network_interface_output(network_id: Optional[pulumi.Input[_builtins.str
         network_id=pulumi.get(__response__, 'network_id'),
         network_interface_id=pulumi.get(__response__, 'network_interface_id'),
         project_id=pulumi.get(__response__, 'project_id'),
+        region=pulumi.get(__response__, 'region'),
         security=pulumi.get(__response__, 'security'),
         security_group_ids=pulumi.get(__response__, 'security_group_ids'),
         type=pulumi.get(__response__, 'type')))

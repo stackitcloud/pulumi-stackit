@@ -26,7 +26,7 @@ class GetPublicIpResult:
     """
     A collection of values returned by getPublicIp.
     """
-    def __init__(__self__, id=None, ip=None, labels=None, network_interface_id=None, project_id=None, public_ip_id=None):
+    def __init__(__self__, id=None, ip=None, labels=None, network_interface_id=None, project_id=None, public_ip_id=None, region=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -45,6 +45,9 @@ class GetPublicIpResult:
         if public_ip_id and not isinstance(public_ip_id, str):
             raise TypeError("Expected argument 'public_ip_id' to be a str")
         pulumi.set(__self__, "public_ip_id", public_ip_id)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
 
     @_builtins.property
     @pulumi.getter
@@ -91,6 +94,14 @@ class GetPublicIpResult:
         """
         return pulumi.get(self, "public_ip_id")
 
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
 
 class AwaitableGetPublicIpResult(GetPublicIpResult):
     # pylint: disable=using-constant-test
@@ -103,11 +114,13 @@ class AwaitableGetPublicIpResult(GetPublicIpResult):
             labels=self.labels,
             network_interface_id=self.network_interface_id,
             project_id=self.project_id,
-            public_ip_id=self.public_ip_id)
+            public_ip_id=self.public_ip_id,
+            region=self.region)
 
 
 def get_public_ip(project_id: Optional[_builtins.str] = None,
                   public_ip_id: Optional[_builtins.str] = None,
+                  region: Optional[_builtins.str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPublicIpResult:
     """
     Public IP resource schema. Must have a `region` specified in the provider configuration.
@@ -117,10 +130,12 @@ def get_public_ip(project_id: Optional[_builtins.str] = None,
 
     :param _builtins.str project_id: STACKIT project ID to which the public IP is associated.
     :param _builtins.str public_ip_id: The public IP ID.
+    :param _builtins.str region: The resource region. If not defined, the provider region is used.
     """
     __args__ = dict()
     __args__['projectId'] = project_id
     __args__['publicIpId'] = public_ip_id
+    __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('stackit:index/getPublicIp:getPublicIp', __args__, opts=opts, typ=GetPublicIpResult).value
 
@@ -130,9 +145,11 @@ def get_public_ip(project_id: Optional[_builtins.str] = None,
         labels=pulumi.get(__ret__, 'labels'),
         network_interface_id=pulumi.get(__ret__, 'network_interface_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
-        public_ip_id=pulumi.get(__ret__, 'public_ip_id'))
+        public_ip_id=pulumi.get(__ret__, 'public_ip_id'),
+        region=pulumi.get(__ret__, 'region'))
 def get_public_ip_output(project_id: Optional[pulumi.Input[_builtins.str]] = None,
                          public_ip_id: Optional[pulumi.Input[_builtins.str]] = None,
+                         region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPublicIpResult]:
     """
     Public IP resource schema. Must have a `region` specified in the provider configuration.
@@ -142,10 +159,12 @@ def get_public_ip_output(project_id: Optional[pulumi.Input[_builtins.str]] = Non
 
     :param _builtins.str project_id: STACKIT project ID to which the public IP is associated.
     :param _builtins.str public_ip_id: The public IP ID.
+    :param _builtins.str region: The resource region. If not defined, the provider region is used.
     """
     __args__ = dict()
     __args__['projectId'] = project_id
     __args__['publicIpId'] = public_ip_id
+    __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('stackit:index/getPublicIp:getPublicIp', __args__, opts=opts, typ=GetPublicIpResult)
     return __ret__.apply(lambda __response__: GetPublicIpResult(
@@ -154,4 +173,5 @@ def get_public_ip_output(project_id: Optional[pulumi.Input[_builtins.str]] = Non
         labels=pulumi.get(__response__, 'labels'),
         network_interface_id=pulumi.get(__response__, 'network_interface_id'),
         project_id=pulumi.get(__response__, 'project_id'),
-        public_ip_id=pulumi.get(__response__, 'public_ip_id')))
+        public_ip_id=pulumi.get(__response__, 'public_ip_id'),
+        region=pulumi.get(__response__, 'region')))

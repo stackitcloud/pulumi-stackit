@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Network interface attachment resource schema. Attaches a network interface to a server. Must have a `region` specified in the provider configuration. The attachment only takes full effect after server reboot.
+ * Network interface attachment resource schema. Attaches a network interface to a server. The attachment only takes full effect after server reboot.
  *
  * ## Example Usage
  */
@@ -46,6 +46,10 @@ export class ServerNetworkInterfaceAttach extends pulumi.CustomResource {
      */
     declare public readonly projectId: pulumi.Output<string>;
     /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    declare public readonly region: pulumi.Output<string>;
+    /**
      * The server ID.
      */
     declare public readonly serverId: pulumi.Output<string>;
@@ -65,6 +69,7 @@ export class ServerNetworkInterfaceAttach extends pulumi.CustomResource {
             const state = argsOrState as ServerNetworkInterfaceAttachState | undefined;
             resourceInputs["networkInterfaceId"] = state?.networkInterfaceId;
             resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
             resourceInputs["serverId"] = state?.serverId;
         } else {
             const args = argsOrState as ServerNetworkInterfaceAttachArgs | undefined;
@@ -79,6 +84,7 @@ export class ServerNetworkInterfaceAttach extends pulumi.CustomResource {
             }
             resourceInputs["networkInterfaceId"] = args?.networkInterfaceId;
             resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
             resourceInputs["serverId"] = args?.serverId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -99,6 +105,10 @@ export interface ServerNetworkInterfaceAttachState {
      */
     projectId?: pulumi.Input<string>;
     /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string>;
+    /**
      * The server ID.
      */
     serverId?: pulumi.Input<string>;
@@ -116,6 +126,10 @@ export interface ServerNetworkInterfaceAttachArgs {
      * STACKIT project ID to which the network interface attachment is associated.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string>;
     /**
      * The server ID.
      */

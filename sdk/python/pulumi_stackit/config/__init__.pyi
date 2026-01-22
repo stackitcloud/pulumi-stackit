@@ -189,6 +189,11 @@ serviceEnablementCustomEndpoint: Optional[str]
 Custom endpoint for the Service Enablement API
 """
 
+sfsCustomEndpoint: Optional[str]
+"""
+Custom endpoint for the Stackit Filestorage API
+"""
+
 skeCustomEndpoint: Optional[str]
 """
 Custom endpoint for the Kubernetes Engine (SKE) service

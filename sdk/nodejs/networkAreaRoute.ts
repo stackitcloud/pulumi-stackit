@@ -2,13 +2,10 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
-/**
- * Network area route resource schema. Must have a `region` specified in the provider configuration.
- *
- * ## Example Usage
- */
 export class NetworkAreaRoute extends pulumi.CustomResource {
     /**
      * Get an existing NetworkAreaRoute resource's state with the given name, ID, and optional extra
@@ -38,6 +35,10 @@ export class NetworkAreaRoute extends pulumi.CustomResource {
     }
 
     /**
+     * Destination of the route.
+     */
+    declare public readonly destination: pulumi.Output<outputs.NetworkAreaRouteDestination>;
+    /**
      * Labels are key-value string pairs which can be attached to a resource container
      */
     declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
@@ -50,17 +51,17 @@ export class NetworkAreaRoute extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly networkAreaRouteId: pulumi.Output<string>;
     /**
-     * The IP address of the routing system, that will route the prefix configured. Should be a valid IPv4 address.
+     * Next hop destination.
      */
-    declare public readonly nextHop: pulumi.Output<string>;
+    declare public readonly nextHop: pulumi.Output<outputs.NetworkAreaRouteNextHop>;
     /**
      * STACKIT organization ID to which the network area is associated.
      */
     declare public readonly organizationId: pulumi.Output<string>;
     /**
-     * The network, that is reachable though the Next Hop. Should use CIDR notation.
+     * The resource region. If not defined, the provider region is used.
      */
-    declare public readonly prefix: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a NetworkAreaRoute resource with the given unique name, arguments, and options.
@@ -75,14 +76,18 @@ export class NetworkAreaRoute extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkAreaRouteState | undefined;
+            resourceInputs["destination"] = state?.destination;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["networkAreaId"] = state?.networkAreaId;
             resourceInputs["networkAreaRouteId"] = state?.networkAreaRouteId;
             resourceInputs["nextHop"] = state?.nextHop;
             resourceInputs["organizationId"] = state?.organizationId;
-            resourceInputs["prefix"] = state?.prefix;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as NetworkAreaRouteArgs | undefined;
+            if (args?.destination === undefined && !opts.urn) {
+                throw new Error("Missing required property 'destination'");
+            }
             if (args?.networkAreaId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'networkAreaId'");
             }
@@ -92,14 +97,12 @@ export class NetworkAreaRoute extends pulumi.CustomResource {
             if (args?.organizationId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
-            if (args?.prefix === undefined && !opts.urn) {
-                throw new Error("Missing required property 'prefix'");
-            }
+            resourceInputs["destination"] = args?.destination;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["networkAreaId"] = args?.networkAreaId;
             resourceInputs["nextHop"] = args?.nextHop;
             resourceInputs["organizationId"] = args?.organizationId;
-            resourceInputs["prefix"] = args?.prefix;
+            resourceInputs["region"] = args?.region;
             resourceInputs["networkAreaRouteId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -111,6 +114,10 @@ export class NetworkAreaRoute extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NetworkAreaRoute resources.
  */
 export interface NetworkAreaRouteState {
+    /**
+     * Destination of the route.
+     */
+    destination?: pulumi.Input<inputs.NetworkAreaRouteDestination>;
     /**
      * Labels are key-value string pairs which can be attached to a resource container
      */
@@ -124,23 +131,27 @@ export interface NetworkAreaRouteState {
      */
     networkAreaRouteId?: pulumi.Input<string>;
     /**
-     * The IP address of the routing system, that will route the prefix configured. Should be a valid IPv4 address.
+     * Next hop destination.
      */
-    nextHop?: pulumi.Input<string>;
+    nextHop?: pulumi.Input<inputs.NetworkAreaRouteNextHop>;
     /**
      * STACKIT organization ID to which the network area is associated.
      */
     organizationId?: pulumi.Input<string>;
     /**
-     * The network, that is reachable though the Next Hop. Should use CIDR notation.
+     * The resource region. If not defined, the provider region is used.
      */
-    prefix?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }
 
 /**
  * The set of arguments for constructing a NetworkAreaRoute resource.
  */
 export interface NetworkAreaRouteArgs {
+    /**
+     * Destination of the route.
+     */
+    destination: pulumi.Input<inputs.NetworkAreaRouteDestination>;
     /**
      * Labels are key-value string pairs which can be attached to a resource container
      */
@@ -150,15 +161,15 @@ export interface NetworkAreaRouteArgs {
      */
     networkAreaId: pulumi.Input<string>;
     /**
-     * The IP address of the routing system, that will route the prefix configured. Should be a valid IPv4 address.
+     * Next hop destination.
      */
-    nextHop: pulumi.Input<string>;
+    nextHop: pulumi.Input<inputs.NetworkAreaRouteNextHop>;
     /**
      * STACKIT organization ID to which the network area is associated.
      */
     organizationId: pulumi.Input<string>;
     /**
-     * The network, that is reachable though the Next Hop. Should use CIDR notation.
+     * The resource region. If not defined, the provider region is used.
      */
-    prefix: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
 }

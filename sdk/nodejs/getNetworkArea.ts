@@ -39,10 +39,14 @@ export interface GetNetworkAreaArgs {
 export interface GetNetworkAreaResult {
     /**
      * List of DNS Servers/Nameservers.
+     *
+     * @deprecated Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026.
      */
     readonly defaultNameservers: string[];
     /**
      * The default prefix length for networks in the network area.
+     *
+     * @deprecated Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026.
      */
     readonly defaultPrefixLength: number;
     readonly id: string;
@@ -52,10 +56,14 @@ export interface GetNetworkAreaResult {
     readonly labels: {[key: string]: string};
     /**
      * The maximal prefix length for networks in the network area.
+     *
+     * @deprecated Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026.
      */
     readonly maxPrefixLength: number;
     /**
      * The minimal prefix length for networks in the network area.
+     *
+     * @deprecated Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026.
      */
     readonly minPrefixLength: number;
     /**
@@ -68,6 +76,8 @@ export interface GetNetworkAreaResult {
     readonly networkAreaId: string;
     /**
      * List of Network ranges.
+     *
+     * @deprecated Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026.
      */
     readonly networkRanges: outputs.GetNetworkAreaNetworkRange[];
     /**
@@ -80,6 +90,8 @@ export interface GetNetworkAreaResult {
     readonly projectCount: number;
     /**
      * Classless Inter-Domain Routing (CIDR).
+     *
+     * @deprecated Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026.
      */
     readonly transferNetwork: string;
 }

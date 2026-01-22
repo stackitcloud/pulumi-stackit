@@ -70,6 +70,12 @@ namespace Pulumi.Stackit
         public string ProjectId { get; set; } = null!;
 
         /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public string? Region { get; set; }
+
+        /// <summary>
         /// The security group ID.
         /// </summary>
         [Input("securityGroupId", required: true)]
@@ -94,6 +100,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
+
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// The security group ID.
@@ -151,6 +163,10 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly Outputs.GetSecurityGroupRuleProtocolResult Protocol;
         /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        public readonly string? Region;
+        /// <summary>
         /// The remote security group which the rule should match.
         /// </summary>
         public readonly string RemoteSecurityGroupId;
@@ -183,6 +199,8 @@ namespace Pulumi.Stackit
 
             Outputs.GetSecurityGroupRuleProtocolResult protocol,
 
+            string? region,
+
             string remoteSecurityGroupId,
 
             string securityGroupId,
@@ -198,6 +216,7 @@ namespace Pulumi.Stackit
             PortRange = portRange;
             ProjectId = projectId;
             Protocol = protocol;
+            Region = region;
             RemoteSecurityGroupId = remoteSecurityGroupId;
             SecurityGroupId = securityGroupId;
             SecurityGroupRuleId = securityGroupRuleId;

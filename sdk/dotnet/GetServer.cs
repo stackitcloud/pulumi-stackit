@@ -67,6 +67,12 @@ namespace Pulumi.Stackit
         public string ProjectId { get; set; } = null!;
 
         /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public string? Region { get; set; }
+
+        /// <summary>
         /// The server ID.
         /// </summary>
         [Input("serverId", required: true)]
@@ -85,6 +91,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
+
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// The server ID.
@@ -136,7 +148,7 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string LaunchedAt;
         /// <summary>
-        /// Name of the type of the machine for the server. Possible values are documented in [Virtual machine flavors](https://docs.stackit.cloud/stackit/en/virtual-machine-flavors-75137231.html)
+        /// Name of the type of the machine for the server. Possible values are documented in [Virtual machine flavors](https://docs.stackit.cloud/products/compute-engine/server/basics/machine-types/)
         /// </summary>
         public readonly string MachineType;
         /// <summary>
@@ -151,6 +163,10 @@ namespace Pulumi.Stackit
         /// STACKIT project ID to which the server is associated.
         /// </summary>
         public readonly string ProjectId;
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        public readonly string? Region;
         /// <summary>
         /// The server ID.
         /// </summary>
@@ -192,6 +208,8 @@ namespace Pulumi.Stackit
 
             string projectId,
 
+            string? region,
+
             string serverId,
 
             string updatedAt,
@@ -211,6 +229,7 @@ namespace Pulumi.Stackit
             Name = name;
             NetworkInterfaces = networkInterfaces;
             ProjectId = projectId;
+            Region = region;
             ServerId = serverId;
             UpdatedAt = updatedAt;
             UserData = userData;

@@ -155,6 +155,11 @@ export const getNetworkArea: typeof import("./getNetworkArea").getNetworkArea = 
 export const getNetworkAreaOutput: typeof import("./getNetworkArea").getNetworkAreaOutput = null as any;
 utilities.lazyLoad(exports, ["getNetworkArea","getNetworkAreaOutput"], () => require("./getNetworkArea"));
 
+export { GetNetworkAreaRegionArgs, GetNetworkAreaRegionResult, GetNetworkAreaRegionOutputArgs } from "./getNetworkAreaRegion";
+export const getNetworkAreaRegion: typeof import("./getNetworkAreaRegion").getNetworkAreaRegion = null as any;
+export const getNetworkAreaRegionOutput: typeof import("./getNetworkAreaRegion").getNetworkAreaRegionOutput = null as any;
+utilities.lazyLoad(exports, ["getNetworkAreaRegion","getNetworkAreaRegionOutput"], () => require("./getNetworkAreaRegion"));
+
 export { GetNetworkAreaRouteArgs, GetNetworkAreaRouteResult, GetNetworkAreaRouteOutputArgs } from "./getNetworkAreaRoute";
 export const getNetworkAreaRoute: typeof import("./getNetworkAreaRoute").getNetworkAreaRoute = null as any;
 export const getNetworkAreaRouteOutput: typeof import("./getNetworkAreaRoute").getNetworkAreaRouteOutput = null as any;
@@ -350,6 +355,26 @@ export const getServiceAccount: typeof import("./getServiceAccount").getServiceA
 export const getServiceAccountOutput: typeof import("./getServiceAccount").getServiceAccountOutput = null as any;
 utilities.lazyLoad(exports, ["getServiceAccount","getServiceAccountOutput"], () => require("./getServiceAccount"));
 
+export { GetSfsExportPolicyArgs, GetSfsExportPolicyResult, GetSfsExportPolicyOutputArgs } from "./getSfsExportPolicy";
+export const getSfsExportPolicy: typeof import("./getSfsExportPolicy").getSfsExportPolicy = null as any;
+export const getSfsExportPolicyOutput: typeof import("./getSfsExportPolicy").getSfsExportPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getSfsExportPolicy","getSfsExportPolicyOutput"], () => require("./getSfsExportPolicy"));
+
+export { GetSfsResourcePoolArgs, GetSfsResourcePoolResult, GetSfsResourcePoolOutputArgs } from "./getSfsResourcePool";
+export const getSfsResourcePool: typeof import("./getSfsResourcePool").getSfsResourcePool = null as any;
+export const getSfsResourcePoolOutput: typeof import("./getSfsResourcePool").getSfsResourcePoolOutput = null as any;
+utilities.lazyLoad(exports, ["getSfsResourcePool","getSfsResourcePoolOutput"], () => require("./getSfsResourcePool"));
+
+export { GetSfsResourcePoolSnapshotArgs, GetSfsResourcePoolSnapshotResult, GetSfsResourcePoolSnapshotOutputArgs } from "./getSfsResourcePoolSnapshot";
+export const getSfsResourcePoolSnapshot: typeof import("./getSfsResourcePoolSnapshot").getSfsResourcePoolSnapshot = null as any;
+export const getSfsResourcePoolSnapshotOutput: typeof import("./getSfsResourcePoolSnapshot").getSfsResourcePoolSnapshotOutput = null as any;
+utilities.lazyLoad(exports, ["getSfsResourcePoolSnapshot","getSfsResourcePoolSnapshotOutput"], () => require("./getSfsResourcePoolSnapshot"));
+
+export { GetSfsShareArgs, GetSfsShareResult, GetSfsShareOutputArgs } from "./getSfsShare";
+export const getSfsShare: typeof import("./getSfsShare").getSfsShare = null as any;
+export const getSfsShareOutput: typeof import("./getSfsShare").getSfsShareOutput = null as any;
+utilities.lazyLoad(exports, ["getSfsShare","getSfsShareOutput"], () => require("./getSfsShare"));
+
 export { GetSkeClusterArgs, GetSkeClusterResult, GetSkeClusterOutputArgs } from "./getSkeCluster";
 export const getSkeCluster: typeof import("./getSkeCluster").getSkeCluster = null as any;
 export const getSkeClusterOutput: typeof import("./getSkeCluster").getSkeClusterOutput = null as any;
@@ -454,6 +479,11 @@ export { NetworkAreaArgs, NetworkAreaState } from "./networkArea";
 export type NetworkArea = import("./networkArea").NetworkArea;
 export const NetworkArea: typeof import("./networkArea").NetworkArea = null as any;
 utilities.lazyLoad(exports, ["NetworkArea"], () => require("./networkArea"));
+
+export { NetworkAreaRegionArgs, NetworkAreaRegionState } from "./networkAreaRegion";
+export type NetworkAreaRegion = import("./networkAreaRegion").NetworkAreaRegion;
+export const NetworkAreaRegion: typeof import("./networkAreaRegion").NetworkAreaRegion = null as any;
+utilities.lazyLoad(exports, ["NetworkAreaRegion"], () => require("./networkAreaRegion"));
 
 export { NetworkAreaRouteArgs, NetworkAreaRouteState } from "./networkAreaRoute";
 export type NetworkAreaRoute = import("./networkAreaRoute").NetworkAreaRoute;
@@ -658,6 +688,21 @@ export type ServiceAccountKey = import("./serviceAccountKey").ServiceAccountKey;
 export const ServiceAccountKey: typeof import("./serviceAccountKey").ServiceAccountKey = null as any;
 utilities.lazyLoad(exports, ["ServiceAccountKey"], () => require("./serviceAccountKey"));
 
+export { SfsExportPolicyArgs, SfsExportPolicyState } from "./sfsExportPolicy";
+export type SfsExportPolicy = import("./sfsExportPolicy").SfsExportPolicy;
+export const SfsExportPolicy: typeof import("./sfsExportPolicy").SfsExportPolicy = null as any;
+utilities.lazyLoad(exports, ["SfsExportPolicy"], () => require("./sfsExportPolicy"));
+
+export { SfsResourcePoolArgs, SfsResourcePoolState } from "./sfsResourcePool";
+export type SfsResourcePool = import("./sfsResourcePool").SfsResourcePool;
+export const SfsResourcePool: typeof import("./sfsResourcePool").SfsResourcePool = null as any;
+utilities.lazyLoad(exports, ["SfsResourcePool"], () => require("./sfsResourcePool"));
+
+export { SfsShareArgs, SfsShareState } from "./sfsShare";
+export type SfsShare = import("./sfsShare").SfsShare;
+export const SfsShare: typeof import("./sfsShare").SfsShare = null as any;
+utilities.lazyLoad(exports, ["SfsShare"], () => require("./sfsShare"));
+
 export { SkeClusterArgs, SkeClusterState } from "./skeCluster";
 export type SkeCluster = import("./skeCluster").SkeCluster;
 export const SkeCluster: typeof import("./skeCluster").SkeCluster = null as any;
@@ -745,6 +790,8 @@ const _module = {
                 return new Network(name, <any>undefined, { urn })
             case "stackit:index/networkArea:NetworkArea":
                 return new NetworkArea(name, <any>undefined, { urn })
+            case "stackit:index/networkAreaRegion:NetworkAreaRegion":
+                return new NetworkAreaRegion(name, <any>undefined, { urn })
             case "stackit:index/networkAreaRoute:NetworkAreaRoute":
                 return new NetworkAreaRoute(name, <any>undefined, { urn })
             case "stackit:index/networkInterface:NetworkInterface":
@@ -825,6 +872,12 @@ const _module = {
                 return new ServiceAccountAccessToken(name, <any>undefined, { urn })
             case "stackit:index/serviceAccountKey:ServiceAccountKey":
                 return new ServiceAccountKey(name, <any>undefined, { urn })
+            case "stackit:index/sfsExportPolicy:SfsExportPolicy":
+                return new SfsExportPolicy(name, <any>undefined, { urn })
+            case "stackit:index/sfsResourcePool:SfsResourcePool":
+                return new SfsResourcePool(name, <any>undefined, { urn })
+            case "stackit:index/sfsShare:SfsShare":
+                return new SfsShare(name, <any>undefined, { urn })
             case "stackit:index/skeCluster:SkeCluster":
                 return new SkeCluster(name, <any>undefined, { urn })
             case "stackit:index/skeKubeconfig:SkeKubeconfig":
@@ -864,6 +917,7 @@ pulumi.runtime.registerResourceModule("stackit", "index/mongodbflexInstance", _m
 pulumi.runtime.registerResourceModule("stackit", "index/mongodbflexUser", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/network", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/networkArea", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/networkAreaRegion", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/networkAreaRoute", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/networkInterface", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/objectstorageBucket", _module)
@@ -904,6 +958,9 @@ pulumi.runtime.registerResourceModule("stackit", "index/serverVolumeAttach", _mo
 pulumi.runtime.registerResourceModule("stackit", "index/serviceAccount", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/serviceAccountAccessToken", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/serviceAccountKey", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/sfsExportPolicy", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/sfsResourcePool", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/sfsShare", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/skeCluster", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/skeKubeconfig", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/sqlserverflexInstance", _module)

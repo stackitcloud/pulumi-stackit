@@ -20,6 +20,8 @@ type ServerVolumeAttach struct {
 
 	// STACKIT project ID to which the volume attachment is associated.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringOutput `pulumi:"region"`
 	// The server ID.
 	ServerId pulumi.StringOutput `pulumi:"serverId"`
 	// The volume ID.
@@ -67,6 +69,8 @@ func GetServerVolumeAttach(ctx *pulumi.Context,
 type serverVolumeAttachState struct {
 	// STACKIT project ID to which the volume attachment is associated.
 	ProjectId *string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 	// The server ID.
 	ServerId *string `pulumi:"serverId"`
 	// The volume ID.
@@ -76,6 +80,8 @@ type serverVolumeAttachState struct {
 type ServerVolumeAttachState struct {
 	// STACKIT project ID to which the volume attachment is associated.
 	ProjectId pulumi.StringPtrInput
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput
 	// The server ID.
 	ServerId pulumi.StringPtrInput
 	// The volume ID.
@@ -89,6 +95,8 @@ func (ServerVolumeAttachState) ElementType() reflect.Type {
 type serverVolumeAttachArgs struct {
 	// STACKIT project ID to which the volume attachment is associated.
 	ProjectId string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 	// The server ID.
 	ServerId string `pulumi:"serverId"`
 	// The volume ID.
@@ -99,6 +107,8 @@ type serverVolumeAttachArgs struct {
 type ServerVolumeAttachArgs struct {
 	// STACKIT project ID to which the volume attachment is associated.
 	ProjectId pulumi.StringInput
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput
 	// The server ID.
 	ServerId pulumi.StringInput
 	// The volume ID.
@@ -195,6 +205,11 @@ func (o ServerVolumeAttachOutput) ToServerVolumeAttachOutputWithContext(ctx cont
 // STACKIT project ID to which the volume attachment is associated.
 func (o ServerVolumeAttachOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerVolumeAttach) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The resource region. If not defined, the provider region is used.
+func (o ServerVolumeAttachOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServerVolumeAttach) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // The server ID.

@@ -21,16 +21,20 @@ class ServerNetworkInterfaceAttachArgs:
     def __init__(__self__, *,
                  network_interface_id: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
-                 server_id: pulumi.Input[_builtins.str]):
+                 server_id: pulumi.Input[_builtins.str],
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServerNetworkInterfaceAttach resource.
         :param pulumi.Input[_builtins.str] network_interface_id: The network interface ID.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the network interface attachment is associated.
         :param pulumi.Input[_builtins.str] server_id: The server ID.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
         pulumi.set(__self__, "network_interface_id", network_interface_id)
         pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "server_id", server_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaceId")
@@ -68,23 +72,39 @@ class ServerNetworkInterfaceAttachArgs:
     def server_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "server_id", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
 
 @pulumi.input_type
 class _ServerNetworkInterfaceAttachState:
     def __init__(__self__, *,
                  network_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
                  server_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServerNetworkInterfaceAttach resources.
         :param pulumi.Input[_builtins.str] network_interface_id: The network interface ID.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the network interface attachment is associated.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.str] server_id: The server ID.
         """
         if network_interface_id is not None:
             pulumi.set(__self__, "network_interface_id", network_interface_id)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if server_id is not None:
             pulumi.set(__self__, "server_id", server_id)
 
@@ -113,6 +133,18 @@ class _ServerNetworkInterfaceAttachState:
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+    @_builtins.property
     @pulumi.getter(name="serverId")
     def server_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -133,10 +165,11 @@ class ServerNetworkInterfaceAttach(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  network_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
                  server_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Network interface attachment resource schema. Attaches a network interface to a server. Must have a `region` specified in the provider configuration. The attachment only takes full effect after server reboot.
+        Network interface attachment resource schema. Attaches a network interface to a server. The attachment only takes full effect after server reboot.
 
         ## Example Usage
 
@@ -144,6 +177,7 @@ class ServerNetworkInterfaceAttach(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] network_interface_id: The network interface ID.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the network interface attachment is associated.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.str] server_id: The server ID.
         """
         ...
@@ -153,7 +187,7 @@ class ServerNetworkInterfaceAttach(pulumi.CustomResource):
                  args: ServerNetworkInterfaceAttachArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Network interface attachment resource schema. Attaches a network interface to a server. Must have a `region` specified in the provider configuration. The attachment only takes full effect after server reboot.
+        Network interface attachment resource schema. Attaches a network interface to a server. The attachment only takes full effect after server reboot.
 
         ## Example Usage
 
@@ -174,6 +208,7 @@ class ServerNetworkInterfaceAttach(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  network_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
                  server_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -190,6 +225,7 @@ class ServerNetworkInterfaceAttach(pulumi.CustomResource):
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
+            __props__.__dict__["region"] = region
             if server_id is None and not opts.urn:
                 raise TypeError("Missing required property 'server_id'")
             __props__.__dict__["server_id"] = server_id
@@ -205,6 +241,7 @@ class ServerNetworkInterfaceAttach(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             network_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
             project_id: Optional[pulumi.Input[_builtins.str]] = None,
+            region: Optional[pulumi.Input[_builtins.str]] = None,
             server_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ServerNetworkInterfaceAttach':
         """
         Get an existing ServerNetworkInterfaceAttach resource's state with the given name, id, and optional extra
@@ -215,6 +252,7 @@ class ServerNetworkInterfaceAttach(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] network_interface_id: The network interface ID.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the network interface attachment is associated.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.str] server_id: The server ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -223,6 +261,7 @@ class ServerNetworkInterfaceAttach(pulumi.CustomResource):
 
         __props__.__dict__["network_interface_id"] = network_interface_id
         __props__.__dict__["project_id"] = project_id
+        __props__.__dict__["region"] = region
         __props__.__dict__["server_id"] = server_id
         return ServerNetworkInterfaceAttach(resource_name, opts=opts, __props__=__props__)
 
@@ -241,6 +280,14 @@ class ServerNetworkInterfaceAttach(pulumi.CustomResource):
         STACKIT project ID to which the network interface attachment is associated.
         """
         return pulumi.get(self, "project_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[_builtins.str]:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="serverId")

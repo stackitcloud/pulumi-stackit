@@ -126,6 +126,9 @@ namespace Pulumi.Stackit
         [Input("projectId", required: true)]
         public string ProjectId { get; set; } = null!;
 
+        [Input("region")]
+        public string? Region { get; set; }
+
         [Input("sortAscending")]
         public bool? SortAscending { get; set; }
 
@@ -145,6 +148,9 @@ namespace Pulumi.Stackit
 
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
+
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         [Input("sortAscending")]
         public Input<bool>? SortAscending { get; set; }
@@ -170,6 +176,7 @@ namespace Pulumi.Stackit
         public readonly string Name;
         public readonly string ProjectId;
         public readonly int Ram;
+        public readonly string? Region;
         public readonly bool? SortAscending;
         public readonly int Vcpus;
 
@@ -191,6 +198,8 @@ namespace Pulumi.Stackit
 
             int ram,
 
+            string? region,
+
             bool? sortAscending,
 
             int vcpus)
@@ -203,6 +212,7 @@ namespace Pulumi.Stackit
             Name = name;
             ProjectId = projectId;
             Ram = ram;
+            Region = region;
             SortAscending = sortAscending;
             Vcpus = vcpus;
         }

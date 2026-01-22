@@ -21,16 +21,20 @@ class PublicIpAssociateArgs:
     def __init__(__self__, *,
                  network_interface_id: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
-                 public_ip_id: pulumi.Input[_builtins.str]):
+                 public_ip_id: pulumi.Input[_builtins.str],
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PublicIpAssociate resource.
         :param pulumi.Input[_builtins.str] network_interface_id: The ID of the network interface (or virtual IP) to which the public IP should be attached to.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the public IP is associated.
         :param pulumi.Input[_builtins.str] public_ip_id: The public IP ID.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
         pulumi.set(__self__, "network_interface_id", network_interface_id)
         pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "public_ip_id", public_ip_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaceId")
@@ -68,6 +72,18 @@ class PublicIpAssociateArgs:
     def public_ip_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "public_ip_id", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
 
 @pulumi.input_type
 class _PublicIpAssociateState:
@@ -75,13 +91,15 @@ class _PublicIpAssociateState:
                  ip: Optional[pulumi.Input[_builtins.str]] = None,
                  network_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_ip_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 public_ip_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PublicIpAssociate resources.
         :param pulumi.Input[_builtins.str] ip: The IP address.
         :param pulumi.Input[_builtins.str] network_interface_id: The ID of the network interface (or virtual IP) to which the public IP should be attached to.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the public IP is associated.
         :param pulumi.Input[_builtins.str] public_ip_id: The public IP ID.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
         if ip is not None:
             pulumi.set(__self__, "ip", ip)
@@ -91,6 +109,8 @@ class _PublicIpAssociateState:
             pulumi.set(__self__, "project_id", project_id)
         if public_ip_id is not None:
             pulumi.set(__self__, "public_ip_id", public_ip_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
 
     @_builtins.property
     @pulumi.getter
@@ -140,6 +160,18 @@ class _PublicIpAssociateState:
     def public_ip_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "public_ip_id", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
 
 @pulumi.type_token("stackit:index/publicIpAssociate:PublicIpAssociate")
 class PublicIpAssociate(pulumi.CustomResource):
@@ -150,6 +182,7 @@ class PublicIpAssociate(pulumi.CustomResource):
                  network_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  public_ip_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         Associates an existing public IP to a network interface. This is useful for situations where you have a pre-allocated public IP or unable to use the `PublicIp` resource to create a new public IP. Must have a `region` specified in the provider configuration.
@@ -164,6 +197,7 @@ class PublicIpAssociate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] network_interface_id: The ID of the network interface (or virtual IP) to which the public IP should be attached to.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the public IP is associated.
         :param pulumi.Input[_builtins.str] public_ip_id: The public IP ID.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
         ...
     @overload
@@ -197,6 +231,7 @@ class PublicIpAssociate(pulumi.CustomResource):
                  network_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  public_ip_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -215,6 +250,7 @@ class PublicIpAssociate(pulumi.CustomResource):
             if public_ip_id is None and not opts.urn:
                 raise TypeError("Missing required property 'public_ip_id'")
             __props__.__dict__["public_ip_id"] = public_ip_id
+            __props__.__dict__["region"] = region
             __props__.__dict__["ip"] = None
         super(PublicIpAssociate, __self__).__init__(
             'stackit:index/publicIpAssociate:PublicIpAssociate',
@@ -229,7 +265,8 @@ class PublicIpAssociate(pulumi.CustomResource):
             ip: Optional[pulumi.Input[_builtins.str]] = None,
             network_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
             project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            public_ip_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'PublicIpAssociate':
+            public_ip_id: Optional[pulumi.Input[_builtins.str]] = None,
+            region: Optional[pulumi.Input[_builtins.str]] = None) -> 'PublicIpAssociate':
         """
         Get an existing PublicIpAssociate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -241,6 +278,7 @@ class PublicIpAssociate(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] network_interface_id: The ID of the network interface (or virtual IP) to which the public IP should be attached to.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the public IP is associated.
         :param pulumi.Input[_builtins.str] public_ip_id: The public IP ID.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -250,6 +288,7 @@ class PublicIpAssociate(pulumi.CustomResource):
         __props__.__dict__["network_interface_id"] = network_interface_id
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["public_ip_id"] = public_ip_id
+        __props__.__dict__["region"] = region
         return PublicIpAssociate(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -283,4 +322,12 @@ class PublicIpAssociate(pulumi.CustomResource):
         The public IP ID.
         """
         return pulumi.get(self, "public_ip_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[_builtins.str]:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
 

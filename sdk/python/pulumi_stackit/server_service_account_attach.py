@@ -21,16 +21,20 @@ class ServerServiceAccountAttachArgs:
     def __init__(__self__, *,
                  project_id: pulumi.Input[_builtins.str],
                  server_id: pulumi.Input[_builtins.str],
-                 service_account_email: pulumi.Input[_builtins.str]):
+                 service_account_email: pulumi.Input[_builtins.str],
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServerServiceAccountAttach resource.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the service account attachment is associated.
         :param pulumi.Input[_builtins.str] server_id: The server ID.
         :param pulumi.Input[_builtins.str] service_account_email: The service account email.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
         pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "server_id", server_id)
         pulumi.set(__self__, "service_account_email", service_account_email)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
@@ -68,21 +72,37 @@ class ServerServiceAccountAttachArgs:
     def service_account_email(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "service_account_email", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
 
 @pulumi.input_type
 class _ServerServiceAccountAttachState:
     def __init__(__self__, *,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
                  server_id: Optional[pulumi.Input[_builtins.str]] = None,
                  service_account_email: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServerServiceAccountAttach resources.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the service account attachment is associated.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.str] server_id: The server ID.
         :param pulumi.Input[_builtins.str] service_account_email: The service account email.
         """
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if server_id is not None:
             pulumi.set(__self__, "server_id", server_id)
         if service_account_email is not None:
@@ -99,6 +119,18 @@ class _ServerServiceAccountAttachState:
     @project_id.setter
     def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "project_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="serverId")
@@ -132,6 +164,7 @@ class ServerServiceAccountAttach(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
                  server_id: Optional[pulumi.Input[_builtins.str]] = None,
                  service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -143,6 +176,7 @@ class ServerServiceAccountAttach(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the service account attachment is associated.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.str] server_id: The server ID.
         :param pulumi.Input[_builtins.str] service_account_email: The service account email.
         """
@@ -173,6 +207,7 @@ class ServerServiceAccountAttach(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
                  server_id: Optional[pulumi.Input[_builtins.str]] = None,
                  service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -187,6 +222,7 @@ class ServerServiceAccountAttach(pulumi.CustomResource):
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
+            __props__.__dict__["region"] = region
             if server_id is None and not opts.urn:
                 raise TypeError("Missing required property 'server_id'")
             __props__.__dict__["server_id"] = server_id
@@ -204,6 +240,7 @@ class ServerServiceAccountAttach(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             project_id: Optional[pulumi.Input[_builtins.str]] = None,
+            region: Optional[pulumi.Input[_builtins.str]] = None,
             server_id: Optional[pulumi.Input[_builtins.str]] = None,
             service_account_email: Optional[pulumi.Input[_builtins.str]] = None) -> 'ServerServiceAccountAttach':
         """
@@ -214,6 +251,7 @@ class ServerServiceAccountAttach(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the service account attachment is associated.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.str] server_id: The server ID.
         :param pulumi.Input[_builtins.str] service_account_email: The service account email.
         """
@@ -222,6 +260,7 @@ class ServerServiceAccountAttach(pulumi.CustomResource):
         __props__ = _ServerServiceAccountAttachState.__new__(_ServerServiceAccountAttachState)
 
         __props__.__dict__["project_id"] = project_id
+        __props__.__dict__["region"] = region
         __props__.__dict__["server_id"] = server_id
         __props__.__dict__["service_account_email"] = service_account_email
         return ServerServiceAccountAttach(resource_name, opts=opts, __props__=__props__)
@@ -233,6 +272,14 @@ class ServerServiceAccountAttach(pulumi.CustomResource):
         STACKIT project ID to which the service account attachment is associated.
         """
         return pulumi.get(self, "project_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[_builtins.str]:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="serverId")

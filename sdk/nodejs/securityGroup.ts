@@ -54,6 +54,10 @@ export class SecurityGroup extends pulumi.CustomResource {
      */
     declare public readonly projectId: pulumi.Output<string>;
     /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    declare public readonly region: pulumi.Output<string>;
+    /**
      * The security group ID.
      */
     declare public /*out*/ readonly securityGroupId: pulumi.Output<string>;
@@ -79,6 +83,7 @@ export class SecurityGroup extends pulumi.CustomResource {
             resourceInputs["labels"] = state?.labels;
             resourceInputs["name"] = state?.name;
             resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
             resourceInputs["securityGroupId"] = state?.securityGroupId;
             resourceInputs["stateful"] = state?.stateful;
         } else {
@@ -90,6 +95,7 @@ export class SecurityGroup extends pulumi.CustomResource {
             resourceInputs["labels"] = args?.labels;
             resourceInputs["name"] = args?.name;
             resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
             resourceInputs["stateful"] = args?.stateful;
             resourceInputs["securityGroupId"] = undefined /*out*/;
         }
@@ -118,6 +124,10 @@ export interface SecurityGroupState {
      * STACKIT project ID to which the security group is associated.
      */
     projectId?: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string>;
     /**
      * The security group ID.
      */
@@ -148,6 +158,10 @@ export interface SecurityGroupArgs {
      * STACKIT project ID to which the security group is associated.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string>;
     /**
      * Configures if a security group is stateful or stateless. There can only be one type of security groups per network interface/server.
      */

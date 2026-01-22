@@ -42,7 +42,7 @@ namespace Pulumi.Stackit
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/stackit/en/service-plans-blockstorage-75137974.html#ServiceplansBlockStorage-CurrentlyavailableServicePlans%28performanceclasses%29)
+        /// The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/products/storage/block-storage/basics/service-plans/#currently-available-service-plans-performance-classes)
         /// </summary>
         [Output("performanceClass")]
         public Output<string> PerformanceClass { get; private set; } = null!;
@@ -52,6 +52,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Output("region")]
+        public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
         /// The server ID of the server to which the volume is attached to.
@@ -155,7 +161,7 @@ namespace Pulumi.Stackit
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/stackit/en/service-plans-blockstorage-75137974.html#ServiceplansBlockStorage-CurrentlyavailableServicePlans%28performanceclasses%29)
+        /// The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/products/storage/block-storage/basics/service-plans/#currently-available-service-plans-performance-classes)
         /// </summary>
         [Input("performanceClass")]
         public Input<string>? PerformanceClass { get; set; }
@@ -165,6 +171,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
+
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// The size of the volume in GB. It can only be updated to a larger value than the current size. Either `Size` or `Source` must be provided
@@ -217,7 +229,7 @@ namespace Pulumi.Stackit
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/stackit/en/service-plans-blockstorage-75137974.html#ServiceplansBlockStorage-CurrentlyavailableServicePlans%28performanceclasses%29)
+        /// The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/products/storage/block-storage/basics/service-plans/#currently-available-service-plans-performance-classes)
         /// </summary>
         [Input("performanceClass")]
         public Input<string>? PerformanceClass { get; set; }
@@ -227,6 +239,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// The server ID of the server to which the volume is attached to.

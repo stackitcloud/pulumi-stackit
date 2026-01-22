@@ -382,6 +382,16 @@ namespace Pulumi.Stackit
             set => _serviceEnablementCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _sfsCustomEndpoint = new __Value<string?>(() => __config.Get("sfsCustomEndpoint"));
+        /// <summary>
+        /// Custom endpoint for the Stackit Filestorage API
+        /// </summary>
+        public static string? SfsCustomEndpoint
+        {
+            get => _sfsCustomEndpoint.Get();
+            set => _sfsCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _skeCustomEndpoint = new __Value<string?>(() => __config.Get("skeCustomEndpoint"));
         /// <summary>
         /// Custom endpoint for the Kubernetes Engine (SKE) service
