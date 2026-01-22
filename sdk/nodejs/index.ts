@@ -40,6 +40,21 @@ export type DnsZone = import("./dnsZone").DnsZone;
 export const DnsZone: typeof import("./dnsZone").DnsZone = null as any;
 utilities.lazyLoad(exports, ["DnsZone"], () => require("./dnsZone"));
 
+export { EdgecloudInstanceArgs, EdgecloudInstanceState } from "./edgecloudInstance";
+export type EdgecloudInstance = import("./edgecloudInstance").EdgecloudInstance;
+export const EdgecloudInstance: typeof import("./edgecloudInstance").EdgecloudInstance = null as any;
+utilities.lazyLoad(exports, ["EdgecloudInstance"], () => require("./edgecloudInstance"));
+
+export { EdgecloudKubeconfigArgs, EdgecloudKubeconfigState } from "./edgecloudKubeconfig";
+export type EdgecloudKubeconfig = import("./edgecloudKubeconfig").EdgecloudKubeconfig;
+export const EdgecloudKubeconfig: typeof import("./edgecloudKubeconfig").EdgecloudKubeconfig = null as any;
+utilities.lazyLoad(exports, ["EdgecloudKubeconfig"], () => require("./edgecloudKubeconfig"));
+
+export { EdgecloudTokenArgs, EdgecloudTokenState } from "./edgecloudToken";
+export type EdgecloudToken = import("./edgecloudToken").EdgecloudToken;
+export const EdgecloudToken: typeof import("./edgecloudToken").EdgecloudToken = null as any;
+utilities.lazyLoad(exports, ["EdgecloudToken"], () => require("./edgecloudToken"));
+
 export { GetAffinityGroupArgs, GetAffinityGroupResult, GetAffinityGroupOutputArgs } from "./getAffinityGroup";
 export const getAffinityGroup: typeof import("./getAffinityGroup").getAffinityGroup = null as any;
 export const getAffinityGroupOutput: typeof import("./getAffinityGroup").getAffinityGroupOutput = null as any;
@@ -64,6 +79,16 @@ export { GetDnsZoneArgs, GetDnsZoneResult, GetDnsZoneOutputArgs } from "./getDns
 export const getDnsZone: typeof import("./getDnsZone").getDnsZone = null as any;
 export const getDnsZoneOutput: typeof import("./getDnsZone").getDnsZoneOutput = null as any;
 utilities.lazyLoad(exports, ["getDnsZone","getDnsZoneOutput"], () => require("./getDnsZone"));
+
+export { GetEdgecloudInstancesArgs, GetEdgecloudInstancesResult, GetEdgecloudInstancesOutputArgs } from "./getEdgecloudInstances";
+export const getEdgecloudInstances: typeof import("./getEdgecloudInstances").getEdgecloudInstances = null as any;
+export const getEdgecloudInstancesOutput: typeof import("./getEdgecloudInstances").getEdgecloudInstancesOutput = null as any;
+utilities.lazyLoad(exports, ["getEdgecloudInstances","getEdgecloudInstancesOutput"], () => require("./getEdgecloudInstances"));
+
+export { GetEdgecloudPlansArgs, GetEdgecloudPlansResult, GetEdgecloudPlansOutputArgs } from "./getEdgecloudPlans";
+export const getEdgecloudPlans: typeof import("./getEdgecloudPlans").getEdgecloudPlans = null as any;
+export const getEdgecloudPlansOutput: typeof import("./getEdgecloudPlans").getEdgecloudPlansOutput = null as any;
+utilities.lazyLoad(exports, ["getEdgecloudPlans","getEdgecloudPlansOutput"], () => require("./getEdgecloudPlans"));
 
 export { GetGitArgs, GetGitResult, GetGitOutputArgs } from "./getGit";
 export const getGit: typeof import("./getGit").getGit = null as any;
@@ -119,6 +144,11 @@ export { GetLogmeInstanceArgs, GetLogmeInstanceResult, GetLogmeInstanceOutputArg
 export const getLogmeInstance: typeof import("./getLogmeInstance").getLogmeInstance = null as any;
 export const getLogmeInstanceOutput: typeof import("./getLogmeInstance").getLogmeInstanceOutput = null as any;
 utilities.lazyLoad(exports, ["getLogmeInstance","getLogmeInstanceOutput"], () => require("./getLogmeInstance"));
+
+export { GetLogsInstanceArgs, GetLogsInstanceResult, GetLogsInstanceOutputArgs } from "./getLogsInstance";
+export const getLogsInstance: typeof import("./getLogsInstance").getLogsInstance = null as any;
+export const getLogsInstanceOutput: typeof import("./getLogsInstance").getLogsInstanceOutput = null as any;
+utilities.lazyLoad(exports, ["getLogsInstance","getLogsInstanceOutput"], () => require("./getLogsInstance"));
 
 export { GetMachineTypeArgs, GetMachineTypeResult, GetMachineTypeOutputArgs } from "./getMachineType";
 export const getMachineType: typeof import("./getMachineType").getMachineType = null as any;
@@ -445,6 +475,11 @@ export type LogmeInstance = import("./logmeInstance").LogmeInstance;
 export const LogmeInstance: typeof import("./logmeInstance").LogmeInstance = null as any;
 utilities.lazyLoad(exports, ["LogmeInstance"], () => require("./logmeInstance"));
 
+export { LogsInstanceArgs, LogsInstanceState } from "./logsInstance";
+export type LogsInstance = import("./logsInstance").LogsInstance;
+export const LogsInstance: typeof import("./logsInstance").LogsInstance = null as any;
+utilities.lazyLoad(exports, ["LogsInstance"], () => require("./logsInstance"));
+
 export { MariadbCredentialArgs, MariadbCredentialState } from "./mariadbCredential";
 export type MariadbCredential = import("./mariadbCredential").MariadbCredential;
 export const MariadbCredential: typeof import("./mariadbCredential").MariadbCredential = null as any;
@@ -756,6 +791,12 @@ const _module = {
                 return new DnsRecordSet(name, <any>undefined, { urn })
             case "stackit:index/dnsZone:DnsZone":
                 return new DnsZone(name, <any>undefined, { urn })
+            case "stackit:index/edgecloudInstance:EdgecloudInstance":
+                return new EdgecloudInstance(name, <any>undefined, { urn })
+            case "stackit:index/edgecloudKubeconfig:EdgecloudKubeconfig":
+                return new EdgecloudKubeconfig(name, <any>undefined, { urn })
+            case "stackit:index/edgecloudToken:EdgecloudToken":
+                return new EdgecloudToken(name, <any>undefined, { urn })
             case "stackit:index/git:Git":
                 return new Git(name, <any>undefined, { urn })
             case "stackit:index/image:Image":
@@ -776,6 +817,8 @@ const _module = {
                 return new LogmeCredential(name, <any>undefined, { urn })
             case "stackit:index/logmeInstance:LogmeInstance":
                 return new LogmeInstance(name, <any>undefined, { urn })
+            case "stackit:index/logsInstance:LogsInstance":
+                return new LogsInstance(name, <any>undefined, { urn })
             case "stackit:index/mariadbCredential:MariadbCredential":
                 return new MariadbCredential(name, <any>undefined, { urn })
             case "stackit:index/mariadbInstance:MariadbInstance":
@@ -900,6 +943,9 @@ pulumi.runtime.registerResourceModule("stackit", "index/cdnCustomDomain", _modul
 pulumi.runtime.registerResourceModule("stackit", "index/cdnDistribution", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/dnsRecordSet", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/dnsZone", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/edgecloudInstance", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/edgecloudKubeconfig", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/edgecloudToken", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/git", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/image", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/keyPair", _module)
@@ -910,6 +956,7 @@ pulumi.runtime.registerResourceModule("stackit", "index/loadbalancer", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/loadbalancerObservabilityCredential", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/logmeCredential", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/logmeInstance", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/logsInstance", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/mariadbCredential", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/mariadbInstance", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/modelservingToken", _module)

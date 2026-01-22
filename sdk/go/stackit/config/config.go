@@ -36,6 +36,11 @@ func GetDnsCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:dnsCustomEndpoint")
 }
 
+// Custom endpoint for the Edge Cloud service
+func GetEdgecloudCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "stackit:edgecloudCustomEndpoint")
+}
+
 // Enable beta resources. Default is false.
 func GetEnableBetaResources(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "stackit:enableBetaResources")
@@ -69,6 +74,11 @@ func GetLoadbalancerCustomEndpoint(ctx *pulumi.Context) string {
 // Custom endpoint for the LogMe service
 func GetLogmeCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:logmeCustomEndpoint")
+}
+
+// Custom endpoint for the Logs service
+func GetLogsCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "stackit:logsCustomEndpoint")
 }
 
 // Custom endpoint for the MariaDB service

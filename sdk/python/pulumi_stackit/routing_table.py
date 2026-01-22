@@ -22,6 +22,7 @@ class RoutingTableArgs:
                  network_area_id: pulumi.Input[_builtins.str],
                  organization_id: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 dynamic_routes: Optional[pulumi.Input[_builtins.bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -31,6 +32,7 @@ class RoutingTableArgs:
         :param pulumi.Input[_builtins.str] network_area_id: The network area ID to which the routing table is associated.
         :param pulumi.Input[_builtins.str] organization_id: STACKIT organization ID to which the routing table is associated.
         :param pulumi.Input[_builtins.str] description: Description of the routing table.
+        :param pulumi.Input[_builtins.bool] dynamic_routes: This controls whether dynamic routes are propagated to this routing table
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
         :param pulumi.Input[_builtins.str] name: The name of the routing table.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
@@ -40,6 +42,8 @@ class RoutingTableArgs:
         pulumi.set(__self__, "organization_id", organization_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if dynamic_routes is not None:
+            pulumi.set(__self__, "dynamic_routes", dynamic_routes)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -84,6 +88,18 @@ class RoutingTableArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dynamicRoutes")
+    def dynamic_routes(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        This controls whether dynamic routes are propagated to this routing table
+        """
+        return pulumi.get(self, "dynamic_routes")
+
+    @dynamic_routes.setter
+    def dynamic_routes(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "dynamic_routes", value)
 
     @_builtins.property
     @pulumi.getter
@@ -139,6 +155,7 @@ class _RoutingTableState:
     def __init__(__self__, *,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 dynamic_routes: Optional[pulumi.Input[_builtins.bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network_area_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -151,6 +168,7 @@ class _RoutingTableState:
         Input properties used for looking up and filtering RoutingTable resources.
         :param pulumi.Input[_builtins.str] created_at: Date-time when the routing table was created
         :param pulumi.Input[_builtins.str] description: Description of the routing table.
+        :param pulumi.Input[_builtins.bool] dynamic_routes: This controls whether dynamic routes are propagated to this routing table
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
         :param pulumi.Input[_builtins.str] name: The name of the routing table.
         :param pulumi.Input[_builtins.str] network_area_id: The network area ID to which the routing table is associated.
@@ -164,6 +182,8 @@ class _RoutingTableState:
             pulumi.set(__self__, "created_at", created_at)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if dynamic_routes is not None:
+            pulumi.set(__self__, "dynamic_routes", dynamic_routes)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -204,6 +224,18 @@ class _RoutingTableState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dynamicRoutes")
+    def dynamic_routes(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        This controls whether dynamic routes are propagated to this routing table
+        """
+        return pulumi.get(self, "dynamic_routes")
+
+    @dynamic_routes.setter
+    def dynamic_routes(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "dynamic_routes", value)
 
     @_builtins.property
     @pulumi.getter
@@ -309,6 +341,7 @@ class RoutingTable(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 dynamic_routes: Optional[pulumi.Input[_builtins.bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network_area_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -326,6 +359,7 @@ class RoutingTable(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the routing table.
+        :param pulumi.Input[_builtins.bool] dynamic_routes: This controls whether dynamic routes are propagated to this routing table
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
         :param pulumi.Input[_builtins.str] name: The name of the routing table.
         :param pulumi.Input[_builtins.str] network_area_id: The network area ID to which the routing table is associated.
@@ -362,6 +396,7 @@ class RoutingTable(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 dynamic_routes: Optional[pulumi.Input[_builtins.bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  network_area_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -378,6 +413,7 @@ class RoutingTable(pulumi.CustomResource):
             __props__ = RoutingTableArgs.__new__(RoutingTableArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["dynamic_routes"] = dynamic_routes
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             if network_area_id is None and not opts.urn:
@@ -403,6 +439,7 @@ class RoutingTable(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             created_at: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
+            dynamic_routes: Optional[pulumi.Input[_builtins.bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             network_area_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -420,6 +457,7 @@ class RoutingTable(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] created_at: Date-time when the routing table was created
         :param pulumi.Input[_builtins.str] description: Description of the routing table.
+        :param pulumi.Input[_builtins.bool] dynamic_routes: This controls whether dynamic routes are propagated to this routing table
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
         :param pulumi.Input[_builtins.str] name: The name of the routing table.
         :param pulumi.Input[_builtins.str] network_area_id: The network area ID to which the routing table is associated.
@@ -435,6 +473,7 @@ class RoutingTable(pulumi.CustomResource):
 
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["description"] = description
+        __props__.__dict__["dynamic_routes"] = dynamic_routes
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["network_area_id"] = network_area_id
@@ -460,6 +499,14 @@ class RoutingTable(pulumi.CustomResource):
         Description of the routing table.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="dynamicRoutes")
+    def dynamic_routes(self) -> pulumi.Output[_builtins.bool]:
+        """
+        This controls whether dynamic routes are propagated to this routing table
+        """
+        return pulumi.get(self, "dynamic_routes")
 
     @_builtins.property
     @pulumi.getter

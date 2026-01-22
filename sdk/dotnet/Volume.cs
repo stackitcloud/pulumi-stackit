@@ -10,8 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Stackit
 {
     /// <summary>
-    /// Volume resource schema. Must have a `Region` specified in the provider configuration.
-    /// 
     /// ## Example Usage
     /// </summary>
     [StackitResourceType("stackit:index/volume:Volume")]
@@ -28,6 +26,15 @@ namespace Pulumi.Stackit
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates if the volume is encrypted.
+        /// </summary>
+        [Output("encrypted")]
+        public Output<bool> Encrypted { get; private set; } = null!;
+
+        [Output("encryptionParameters")]
+        public Output<Outputs.VolumeEncryptionParameters?> EncryptionParameters { get; private set; } = null!;
 
         /// <summary>
         /// Labels are key-value string pairs which can be attached to a resource container
@@ -142,6 +149,9 @@ namespace Pulumi.Stackit
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("encryptionParameters")]
+        public Input<Inputs.VolumeEncryptionParametersArgs>? EncryptionParameters { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -209,6 +219,15 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// Indicates if the volume is encrypted.
+        /// </summary>
+        [Input("encrypted")]
+        public Input<bool>? Encrypted { get; set; }
+
+        [Input("encryptionParameters")]
+        public Input<Inputs.VolumeEncryptionParametersGetArgs>? EncryptionParameters { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

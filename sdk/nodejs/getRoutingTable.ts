@@ -59,6 +59,10 @@ export interface GetRoutingTableResult {
      * Description of the routing table.
      */
     readonly description: string;
+    /**
+     * This controls whether dynamic routes are propagated to this routing table
+     */
+    readonly dynamicRoutes: boolean;
     readonly id: string;
     /**
      * Labels are key-value string pairs which can be attached to a resource container

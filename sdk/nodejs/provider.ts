@@ -46,6 +46,10 @@ export class Provider extends pulumi.ProviderResource {
      */
     declare public readonly dnsCustomEndpoint: pulumi.Output<string | undefined>;
     /**
+     * Custom endpoint for the Edge Cloud service
+     */
+    declare public readonly edgecloudCustomEndpoint: pulumi.Output<string | undefined>;
+    /**
      * Custom endpoint for the Git service
      */
     declare public readonly gitCustomEndpoint: pulumi.Output<string | undefined>;
@@ -65,6 +69,10 @@ export class Provider extends pulumi.ProviderResource {
      * Custom endpoint for the LogMe service
      */
     declare public readonly logmeCustomEndpoint: pulumi.Output<string | undefined>;
+    /**
+     * Custom endpoint for the Logs service
+     */
+    declare public readonly logsCustomEndpoint: pulumi.Output<string | undefined>;
     /**
      * Custom endpoint for the MariaDB service
      */
@@ -196,6 +204,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["credentialsPath"] = args?.credentialsPath;
             resourceInputs["defaultRegion"] = args?.defaultRegion;
             resourceInputs["dnsCustomEndpoint"] = args?.dnsCustomEndpoint;
+            resourceInputs["edgecloudCustomEndpoint"] = args?.edgecloudCustomEndpoint;
             resourceInputs["enableBetaResources"] = pulumi.output(args?.enableBetaResources).apply(JSON.stringify);
             resourceInputs["experiments"] = pulumi.output(args?.experiments).apply(JSON.stringify);
             resourceInputs["gitCustomEndpoint"] = args?.gitCustomEndpoint;
@@ -203,6 +212,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["kmsCustomEndpoint"] = args?.kmsCustomEndpoint;
             resourceInputs["loadbalancerCustomEndpoint"] = args?.loadbalancerCustomEndpoint;
             resourceInputs["logmeCustomEndpoint"] = args?.logmeCustomEndpoint;
+            resourceInputs["logsCustomEndpoint"] = args?.logsCustomEndpoint;
             resourceInputs["mariadbCustomEndpoint"] = args?.mariadbCustomEndpoint;
             resourceInputs["modelservingCustomEndpoint"] = args?.modelservingCustomEndpoint;
             resourceInputs["mongodbflexCustomEndpoint"] = args?.mongodbflexCustomEndpoint;
@@ -270,6 +280,10 @@ export interface ProviderArgs {
      */
     dnsCustomEndpoint?: pulumi.Input<string>;
     /**
+     * Custom endpoint for the Edge Cloud service
+     */
+    edgecloudCustomEndpoint?: pulumi.Input<string>;
+    /**
      * Enable beta resources. Default is false.
      */
     enableBetaResources?: pulumi.Input<boolean>;
@@ -297,6 +311,10 @@ export interface ProviderArgs {
      * Custom endpoint for the LogMe service
      */
     logmeCustomEndpoint?: pulumi.Input<string>;
+    /**
+     * Custom endpoint for the Logs service
+     */
+    logsCustomEndpoint?: pulumi.Input<string>;
     /**
      * Custom endpoint for the MariaDB service
      */

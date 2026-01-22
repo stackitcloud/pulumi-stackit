@@ -63,6 +63,17 @@ Object.defineProperty(exports, "dnsCustomEndpoint", {
 });
 
 /**
+ * Custom endpoint for the Edge Cloud service
+ */
+export declare const edgecloudCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "edgecloudCustomEndpoint", {
+    get() {
+        return __config.get("edgecloudCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+/**
  * Enable beta resources. Default is false.
  */
 export declare const enableBetaResources: boolean | undefined;
@@ -135,6 +146,17 @@ export declare const logmeCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "logmeCustomEndpoint", {
     get() {
         return __config.get("logmeCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+/**
+ * Custom endpoint for the Logs service
+ */
+export declare const logsCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "logsCustomEndpoint", {
+    get() {
+        return __config.get("logsCustomEndpoint");
     },
     enumerable: true,
 });

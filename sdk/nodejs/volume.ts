@@ -7,8 +7,6 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Volume resource schema. Must have a `region` specified in the provider configuration.
- *
  * ## Example Usage
  */
 export class Volume extends pulumi.CustomResource {
@@ -47,6 +45,11 @@ export class Volume extends pulumi.CustomResource {
      * The description of the volume.
      */
     declare public readonly description: pulumi.Output<string>;
+    /**
+     * Indicates if the volume is encrypted.
+     */
+    declare public /*out*/ readonly encrypted: pulumi.Output<boolean>;
+    declare public readonly encryptionParameters: pulumi.Output<outputs.VolumeEncryptionParameters | undefined>;
     /**
      * Labels are key-value string pairs which can be attached to a resource container
      */
@@ -99,6 +102,8 @@ export class Volume extends pulumi.CustomResource {
             const state = argsOrState as VolumeState | undefined;
             resourceInputs["availabilityZone"] = state?.availabilityZone;
             resourceInputs["description"] = state?.description;
+            resourceInputs["encrypted"] = state?.encrypted;
+            resourceInputs["encryptionParameters"] = state?.encryptionParameters;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["name"] = state?.name;
             resourceInputs["performanceClass"] = state?.performanceClass;
@@ -118,6 +123,7 @@ export class Volume extends pulumi.CustomResource {
             }
             resourceInputs["availabilityZone"] = args?.availabilityZone;
             resourceInputs["description"] = args?.description;
+            resourceInputs["encryptionParameters"] = args?.encryptionParameters;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["name"] = args?.name;
             resourceInputs["performanceClass"] = args?.performanceClass;
@@ -125,6 +131,7 @@ export class Volume extends pulumi.CustomResource {
             resourceInputs["region"] = args?.region;
             resourceInputs["size"] = args?.size;
             resourceInputs["source"] = args?.source;
+            resourceInputs["encrypted"] = undefined /*out*/;
             resourceInputs["serverId"] = undefined /*out*/;
             resourceInputs["volumeId"] = undefined /*out*/;
         }
@@ -145,6 +152,11 @@ export interface VolumeState {
      * The description of the volume.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Indicates if the volume is encrypted.
+     */
+    encrypted?: pulumi.Input<boolean>;
+    encryptionParameters?: pulumi.Input<inputs.VolumeEncryptionParameters>;
     /**
      * Labels are key-value string pairs which can be attached to a resource container
      */
@@ -195,6 +207,7 @@ export interface VolumeArgs {
      * The description of the volume.
      */
     description?: pulumi.Input<string>;
+    encryptionParameters?: pulumi.Input<inputs.VolumeEncryptionParameters>;
     /**
      * Labels are key-value string pairs which can be attached to a resource container
      */

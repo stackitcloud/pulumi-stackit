@@ -40,7 +40,9 @@ type LookupVolumeResult struct {
 	AvailabilityZone string `pulumi:"availabilityZone"`
 	// The description of the volume.
 	Description string `pulumi:"description"`
-	Id          string `pulumi:"id"`
+	// Indicates if the volume is encrypted.
+	Encrypted bool   `pulumi:"encrypted"`
+	Id        string `pulumi:"id"`
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the volume.
@@ -107,6 +109,11 @@ func (o LookupVolumeResultOutput) AvailabilityZone() pulumi.StringOutput {
 // The description of the volume.
 func (o LookupVolumeResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Indicates if the volume is encrypted.
+func (o LookupVolumeResultOutput) Encrypted() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupVolumeResult) bool { return v.Encrypted }).(pulumi.BoolOutput)
 }
 
 func (o LookupVolumeResultOutput) Id() pulumi.StringOutput {

@@ -48,6 +48,10 @@ export class RoutingTable extends pulumi.CustomResource {
      */
     declare public readonly description: pulumi.Output<string>;
     /**
+     * This controls whether dynamic routes are propagated to this routing table
+     */
+    declare public readonly dynamicRoutes: pulumi.Output<boolean>;
+    /**
      * Labels are key-value string pairs which can be attached to a resource container
      */
     declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
@@ -95,6 +99,7 @@ export class RoutingTable extends pulumi.CustomResource {
             const state = argsOrState as RoutingTableState | undefined;
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["description"] = state?.description;
+            resourceInputs["dynamicRoutes"] = state?.dynamicRoutes;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["name"] = state?.name;
             resourceInputs["networkAreaId"] = state?.networkAreaId;
@@ -112,6 +117,7 @@ export class RoutingTable extends pulumi.CustomResource {
                 throw new Error("Missing required property 'organizationId'");
             }
             resourceInputs["description"] = args?.description;
+            resourceInputs["dynamicRoutes"] = args?.dynamicRoutes;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["name"] = args?.name;
             resourceInputs["networkAreaId"] = args?.networkAreaId;
@@ -139,6 +145,10 @@ export interface RoutingTableState {
      * Description of the routing table.
      */
     description?: pulumi.Input<string>;
+    /**
+     * This controls whether dynamic routes are propagated to this routing table
+     */
+    dynamicRoutes?: pulumi.Input<boolean>;
     /**
      * Labels are key-value string pairs which can be attached to a resource container
      */
@@ -181,6 +191,10 @@ export interface RoutingTableArgs {
      * Description of the routing table.
      */
     description?: pulumi.Input<string>;
+    /**
+     * This controls whether dynamic routes are propagated to this routing table
+     */
+    dynamicRoutes?: pulumi.Input<boolean>;
     /**
      * Labels are key-value string pairs which can be attached to a resource container
      */

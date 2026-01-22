@@ -27,13 +27,16 @@ class GetVolumeResult:
     """
     A collection of values returned by getVolume.
     """
-    def __init__(__self__, availability_zone=None, description=None, id=None, labels=None, name=None, performance_class=None, project_id=None, region=None, server_id=None, size=None, source=None, volume_id=None):
+    def __init__(__self__, availability_zone=None, description=None, encrypted=None, id=None, labels=None, name=None, performance_class=None, project_id=None, region=None, server_id=None, size=None, source=None, volume_id=None):
         if availability_zone and not isinstance(availability_zone, str):
             raise TypeError("Expected argument 'availability_zone' to be a str")
         pulumi.set(__self__, "availability_zone", availability_zone)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if encrypted and not isinstance(encrypted, bool):
+            raise TypeError("Expected argument 'encrypted' to be a bool")
+        pulumi.set(__self__, "encrypted", encrypted)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -80,6 +83,14 @@ class GetVolumeResult:
         The description of the volume.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def encrypted(self) -> _builtins.bool:
+        """
+        Indicates if the volume is encrypted.
+        """
+        return pulumi.get(self, "encrypted")
 
     @_builtins.property
     @pulumi.getter
@@ -167,6 +178,7 @@ class AwaitableGetVolumeResult(GetVolumeResult):
         return GetVolumeResult(
             availability_zone=self.availability_zone,
             description=self.description,
+            encrypted=self.encrypted,
             id=self.id,
             labels=self.labels,
             name=self.name,
@@ -203,6 +215,7 @@ def get_volume(project_id: Optional[_builtins.str] = None,
     return AwaitableGetVolumeResult(
         availability_zone=pulumi.get(__ret__, 'availability_zone'),
         description=pulumi.get(__ret__, 'description'),
+        encrypted=pulumi.get(__ret__, 'encrypted'),
         id=pulumi.get(__ret__, 'id'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
@@ -236,6 +249,7 @@ def get_volume_output(project_id: Optional[pulumi.Input[_builtins.str]] = None,
     return __ret__.apply(lambda __response__: GetVolumeResult(
         availability_zone=pulumi.get(__response__, 'availability_zone'),
         description=pulumi.get(__response__, 'description'),
+        encrypted=pulumi.get(__response__, 'encrypted'),
         id=pulumi.get(__response__, 'id'),
         labels=pulumi.get(__response__, 'labels'),
         name=pulumi.get(__response__, 'name'),

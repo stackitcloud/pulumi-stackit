@@ -24,6 +24,7 @@ class ProviderArgs:
                  credentials_path: Optional[pulumi.Input[_builtins.str]] = None,
                  default_region: Optional[pulumi.Input[_builtins.str]] = None,
                  dns_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 edgecloud_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  enable_beta_resources: Optional[pulumi.Input[_builtins.bool]] = None,
                  experiments: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  git_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -31,6 +32,7 @@ class ProviderArgs:
                  kms_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  loadbalancer_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  logme_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 logs_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  mariadb_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  modelserving_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  mongodbflex_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -65,6 +67,7 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.str] credentials_path: Path of JSON from where the credentials are read. Takes precedence over the env var `STACKIT_CREDENTIALS_PATH`. Default value is `~/.stackit/credentials.json`.
         :param pulumi.Input[_builtins.str] default_region: Region will be used as the default location for regional services. Not all services require a region, some are global
         :param pulumi.Input[_builtins.str] dns_custom_endpoint: Custom endpoint for the DNS service
+        :param pulumi.Input[_builtins.str] edgecloud_custom_endpoint: Custom endpoint for the Edge Cloud service
         :param pulumi.Input[_builtins.bool] enable_beta_resources: Enable beta resources. Default is false.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] experiments: Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: iam, routing-tables, network
         :param pulumi.Input[_builtins.str] git_custom_endpoint: Custom endpoint for the Git service
@@ -72,6 +75,7 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.str] kms_custom_endpoint: Custom endpoint for the KMS service
         :param pulumi.Input[_builtins.str] loadbalancer_custom_endpoint: Custom endpoint for the Load Balancer service
         :param pulumi.Input[_builtins.str] logme_custom_endpoint: Custom endpoint for the LogMe service
+        :param pulumi.Input[_builtins.str] logs_custom_endpoint: Custom endpoint for the Logs service
         :param pulumi.Input[_builtins.str] mariadb_custom_endpoint: Custom endpoint for the MariaDB service
         :param pulumi.Input[_builtins.str] modelserving_custom_endpoint: Custom endpoint for the AI Model Serving service
         :param pulumi.Input[_builtins.str] mongodbflex_custom_endpoint: Custom endpoint for the MongoDB Flex service
@@ -110,6 +114,8 @@ class ProviderArgs:
             pulumi.set(__self__, "default_region", default_region)
         if dns_custom_endpoint is not None:
             pulumi.set(__self__, "dns_custom_endpoint", dns_custom_endpoint)
+        if edgecloud_custom_endpoint is not None:
+            pulumi.set(__self__, "edgecloud_custom_endpoint", edgecloud_custom_endpoint)
         if enable_beta_resources is not None:
             pulumi.set(__self__, "enable_beta_resources", enable_beta_resources)
         if experiments is not None:
@@ -124,6 +130,8 @@ class ProviderArgs:
             pulumi.set(__self__, "loadbalancer_custom_endpoint", loadbalancer_custom_endpoint)
         if logme_custom_endpoint is not None:
             pulumi.set(__self__, "logme_custom_endpoint", logme_custom_endpoint)
+        if logs_custom_endpoint is not None:
+            pulumi.set(__self__, "logs_custom_endpoint", logs_custom_endpoint)
         if mariadb_custom_endpoint is not None:
             pulumi.set(__self__, "mariadb_custom_endpoint", mariadb_custom_endpoint)
         if modelserving_custom_endpoint is not None:
@@ -249,6 +257,18 @@ class ProviderArgs:
         pulumi.set(self, "dns_custom_endpoint", value)
 
     @_builtins.property
+    @pulumi.getter(name="edgecloudCustomEndpoint")
+    def edgecloud_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Custom endpoint for the Edge Cloud service
+        """
+        return pulumi.get(self, "edgecloud_custom_endpoint")
+
+    @edgecloud_custom_endpoint.setter
+    def edgecloud_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "edgecloud_custom_endpoint", value)
+
+    @_builtins.property
     @pulumi.getter(name="enableBetaResources")
     def enable_beta_resources(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -331,6 +351,18 @@ class ProviderArgs:
     @logme_custom_endpoint.setter
     def logme_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "logme_custom_endpoint", value)
+
+    @_builtins.property
+    @pulumi.getter(name="logsCustomEndpoint")
+    def logs_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Custom endpoint for the Logs service
+        """
+        return pulumi.get(self, "logs_custom_endpoint")
+
+    @logs_custom_endpoint.setter
+    def logs_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "logs_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="mariadbCustomEndpoint")
@@ -671,6 +703,7 @@ class Provider(pulumi.ProviderResource):
                  credentials_path: Optional[pulumi.Input[_builtins.str]] = None,
                  default_region: Optional[pulumi.Input[_builtins.str]] = None,
                  dns_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 edgecloud_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  enable_beta_resources: Optional[pulumi.Input[_builtins.bool]] = None,
                  experiments: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  git_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -678,6 +711,7 @@ class Provider(pulumi.ProviderResource):
                  kms_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  loadbalancer_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  logme_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 logs_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  mariadb_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  modelserving_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  mongodbflex_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -719,6 +753,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[_builtins.str] credentials_path: Path of JSON from where the credentials are read. Takes precedence over the env var `STACKIT_CREDENTIALS_PATH`. Default value is `~/.stackit/credentials.json`.
         :param pulumi.Input[_builtins.str] default_region: Region will be used as the default location for regional services. Not all services require a region, some are global
         :param pulumi.Input[_builtins.str] dns_custom_endpoint: Custom endpoint for the DNS service
+        :param pulumi.Input[_builtins.str] edgecloud_custom_endpoint: Custom endpoint for the Edge Cloud service
         :param pulumi.Input[_builtins.bool] enable_beta_resources: Enable beta resources. Default is false.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] experiments: Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: iam, routing-tables, network
         :param pulumi.Input[_builtins.str] git_custom_endpoint: Custom endpoint for the Git service
@@ -726,6 +761,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[_builtins.str] kms_custom_endpoint: Custom endpoint for the KMS service
         :param pulumi.Input[_builtins.str] loadbalancer_custom_endpoint: Custom endpoint for the Load Balancer service
         :param pulumi.Input[_builtins.str] logme_custom_endpoint: Custom endpoint for the LogMe service
+        :param pulumi.Input[_builtins.str] logs_custom_endpoint: Custom endpoint for the Logs service
         :param pulumi.Input[_builtins.str] mariadb_custom_endpoint: Custom endpoint for the MariaDB service
         :param pulumi.Input[_builtins.str] modelserving_custom_endpoint: Custom endpoint for the AI Model Serving service
         :param pulumi.Input[_builtins.str] mongodbflex_custom_endpoint: Custom endpoint for the MongoDB Flex service
@@ -786,6 +822,7 @@ class Provider(pulumi.ProviderResource):
                  credentials_path: Optional[pulumi.Input[_builtins.str]] = None,
                  default_region: Optional[pulumi.Input[_builtins.str]] = None,
                  dns_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 edgecloud_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  enable_beta_resources: Optional[pulumi.Input[_builtins.bool]] = None,
                  experiments: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  git_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -793,6 +830,7 @@ class Provider(pulumi.ProviderResource):
                  kms_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  loadbalancer_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  logme_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 logs_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  mariadb_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  modelserving_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  mongodbflex_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -834,6 +872,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["credentials_path"] = credentials_path
             __props__.__dict__["default_region"] = default_region
             __props__.__dict__["dns_custom_endpoint"] = dns_custom_endpoint
+            __props__.__dict__["edgecloud_custom_endpoint"] = edgecloud_custom_endpoint
             __props__.__dict__["enable_beta_resources"] = pulumi.Output.from_input(enable_beta_resources).apply(pulumi.runtime.to_json) if enable_beta_resources is not None else None
             __props__.__dict__["experiments"] = pulumi.Output.from_input(experiments).apply(pulumi.runtime.to_json) if experiments is not None else None
             __props__.__dict__["git_custom_endpoint"] = git_custom_endpoint
@@ -841,6 +880,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["kms_custom_endpoint"] = kms_custom_endpoint
             __props__.__dict__["loadbalancer_custom_endpoint"] = loadbalancer_custom_endpoint
             __props__.__dict__["logme_custom_endpoint"] = logme_custom_endpoint
+            __props__.__dict__["logs_custom_endpoint"] = logs_custom_endpoint
             __props__.__dict__["mariadb_custom_endpoint"] = mariadb_custom_endpoint
             __props__.__dict__["modelserving_custom_endpoint"] = modelserving_custom_endpoint
             __props__.__dict__["mongodbflex_custom_endpoint"] = mongodbflex_custom_endpoint
@@ -915,6 +955,14 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "dns_custom_endpoint")
 
     @_builtins.property
+    @pulumi.getter(name="edgecloudCustomEndpoint")
+    def edgecloud_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Custom endpoint for the Edge Cloud service
+        """
+        return pulumi.get(self, "edgecloud_custom_endpoint")
+
+    @_builtins.property
     @pulumi.getter(name="gitCustomEndpoint")
     def git_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
@@ -953,6 +1001,14 @@ class Provider(pulumi.ProviderResource):
         Custom endpoint for the LogMe service
         """
         return pulumi.get(self, "logme_custom_endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="logsCustomEndpoint")
+    def logs_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Custom endpoint for the Logs service
+        """
+        return pulumi.get(self, "logs_custom_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="mariadbCustomEndpoint")

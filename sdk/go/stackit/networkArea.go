@@ -12,9 +12,6 @@ import (
 	"github.com/stackitcloud/pulumi-stackit/sdk/go/stackit/internal"
 )
 
-// Network area resource schema.
-//
-// ## Example Usage
 type NetworkArea struct {
 	pulumi.CustomResourceState
 

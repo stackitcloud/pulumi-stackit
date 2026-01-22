@@ -56,6 +56,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('dnsCustomEndpoint')
 
     @_builtins.property
+    def edgecloud_custom_endpoint(self) -> Optional[str]:
+        """
+        Custom endpoint for the Edge Cloud service
+        """
+        return __config__.get('edgecloudCustomEndpoint')
+
+    @_builtins.property
     def enable_beta_resources(self) -> Optional[bool]:
         """
         Enable beta resources. Default is false.
@@ -103,6 +110,13 @@ class _ExportableConfig(types.ModuleType):
         Custom endpoint for the LogMe service
         """
         return __config__.get('logmeCustomEndpoint')
+
+    @_builtins.property
+    def logs_custom_endpoint(self) -> Optional[str]:
+        """
+        Custom endpoint for the Logs service
+        """
+        return __config__.get('logsCustomEndpoint')
 
     @_builtins.property
     def mariadb_custom_endpoint(self) -> Optional[str]:

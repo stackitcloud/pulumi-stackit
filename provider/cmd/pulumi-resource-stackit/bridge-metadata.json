@@ -76,6 +76,15 @@
                     }
                 }
             },
+            "stackit_edgecloud_instance": {
+                "current": "stackit:index/edgecloudInstance:EdgecloudInstance"
+            },
+            "stackit_edgecloud_kubeconfig": {
+                "current": "stackit:index/edgecloudKubeconfig:EdgecloudKubeconfig"
+            },
+            "stackit_edgecloud_token": {
+                "current": "stackit:index/edgecloudToken:EdgecloudToken"
+            },
             "stackit_git": {
                 "current": "stackit:index/git:Git",
                 "fields": {
@@ -155,6 +164,14 @@
                                 "maxItemsOne": false
                             }
                         }
+                    }
+                }
+            },
+            "stackit_logs_instance": {
+                "current": "stackit:index/logsInstance:LogsInstance",
+                "fields": {
+                    "acl": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -703,6 +720,22 @@
                     }
                 }
             },
+            "stackit_edgecloud_instances": {
+                "current": "stackit:index/getEdgecloudInstances:getEdgecloudInstances",
+                "fields": {
+                    "instances": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_edgecloud_plans": {
+                "current": "stackit:index/getEdgecloudPlans:getEdgecloudPlans",
+                "fields": {
+                    "plans": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "stackit_git": {
                 "current": "stackit:index/getGit:getGit",
                 "fields": {
@@ -785,6 +818,14 @@
                                 "maxItemsOne": false
                             }
                         }
+                    }
+                }
+            },
+            "stackit_logs_instance": {
+                "current": "stackit:index/getLogsInstance:getLogsInstance",
+                "fields": {
+                    "acl": {
+                        "maxItemsOne": false
                     }
                 }
             },

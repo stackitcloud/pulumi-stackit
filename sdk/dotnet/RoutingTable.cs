@@ -32,6 +32,12 @@ namespace Pulumi.Stackit
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
+        /// This controls whether dynamic routes are propagated to this routing table
+        /// </summary>
+        [Output("dynamicRoutes")]
+        public Output<bool> DynamicRoutes { get; private set; } = null!;
+
+        /// <summary>
         /// Labels are key-value string pairs which can be attached to a resource container
         /// </summary>
         [Output("labels")]
@@ -132,6 +138,12 @@ namespace Pulumi.Stackit
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// This controls whether dynamic routes are propagated to this routing table
+        /// </summary>
+        [Input("dynamicRoutes")]
+        public Input<bool>? DynamicRoutes { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -193,6 +205,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// This controls whether dynamic routes are propagated to this routing table
+        /// </summary>
+        [Input("dynamicRoutes")]
+        public Input<bool>? DynamicRoutes { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;

@@ -49,6 +49,12 @@ namespace Pulumi.Stackit
         public Output<string?> DnsCustomEndpoint { get; private set; } = null!;
 
         /// <summary>
+        /// Custom endpoint for the Edge Cloud service
+        /// </summary>
+        [Output("edgecloudCustomEndpoint")]
+        public Output<string?> EdgecloudCustomEndpoint { get; private set; } = null!;
+
+        /// <summary>
         /// Custom endpoint for the Git service
         /// </summary>
         [Output("gitCustomEndpoint")]
@@ -77,6 +83,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Output("logmeCustomEndpoint")]
         public Output<string?> LogmeCustomEndpoint { get; private set; } = null!;
+
+        /// <summary>
+        /// Custom endpoint for the Logs service
+        /// </summary>
+        [Output("logsCustomEndpoint")]
+        public Output<string?> LogsCustomEndpoint { get; private set; } = null!;
 
         /// <summary>
         /// Custom endpoint for the MariaDB service
@@ -306,6 +318,12 @@ namespace Pulumi.Stackit
         public Input<string>? DnsCustomEndpoint { get; set; }
 
         /// <summary>
+        /// Custom endpoint for the Edge Cloud service
+        /// </summary>
+        [Input("edgecloudCustomEndpoint")]
+        public Input<string>? EdgecloudCustomEndpoint { get; set; }
+
+        /// <summary>
         /// Enable beta resources. Default is false.
         /// </summary>
         [Input("enableBetaResources", json: true)]
@@ -352,6 +370,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("logmeCustomEndpoint")]
         public Input<string>? LogmeCustomEndpoint { get; set; }
+
+        /// <summary>
+        /// Custom endpoint for the Logs service
+        /// </summary>
+        [Input("logsCustomEndpoint")]
+        public Input<string>? LogsCustomEndpoint { get; set; }
 
         /// <summary>
         /// Custom endpoint for the MariaDB service

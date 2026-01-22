@@ -28,6 +28,8 @@ type Provider struct {
 	DefaultRegion pulumi.StringPtrOutput `pulumi:"defaultRegion"`
 	// Custom endpoint for the DNS service
 	DnsCustomEndpoint pulumi.StringPtrOutput `pulumi:"dnsCustomEndpoint"`
+	// Custom endpoint for the Edge Cloud service
+	EdgecloudCustomEndpoint pulumi.StringPtrOutput `pulumi:"edgecloudCustomEndpoint"`
 	// Custom endpoint for the Git service
 	GitCustomEndpoint pulumi.StringPtrOutput `pulumi:"gitCustomEndpoint"`
 	// Custom endpoint for the IaaS service
@@ -38,6 +40,8 @@ type Provider struct {
 	LoadbalancerCustomEndpoint pulumi.StringPtrOutput `pulumi:"loadbalancerCustomEndpoint"`
 	// Custom endpoint for the LogMe service
 	LogmeCustomEndpoint pulumi.StringPtrOutput `pulumi:"logmeCustomEndpoint"`
+	// Custom endpoint for the Logs service
+	LogsCustomEndpoint pulumi.StringPtrOutput `pulumi:"logsCustomEndpoint"`
 	// Custom endpoint for the MariaDB service
 	MariadbCustomEndpoint pulumi.StringPtrOutput `pulumi:"mariadbCustomEndpoint"`
 	// Custom endpoint for the AI Model Serving service
@@ -127,6 +131,8 @@ type providerArgs struct {
 	DefaultRegion *string `pulumi:"defaultRegion"`
 	// Custom endpoint for the DNS service
 	DnsCustomEndpoint *string `pulumi:"dnsCustomEndpoint"`
+	// Custom endpoint for the Edge Cloud service
+	EdgecloudCustomEndpoint *string `pulumi:"edgecloudCustomEndpoint"`
 	// Enable beta resources. Default is false.
 	EnableBetaResources *bool `pulumi:"enableBetaResources"`
 	// Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: iam, routing-tables, network
@@ -141,6 +147,8 @@ type providerArgs struct {
 	LoadbalancerCustomEndpoint *string `pulumi:"loadbalancerCustomEndpoint"`
 	// Custom endpoint for the LogMe service
 	LogmeCustomEndpoint *string `pulumi:"logmeCustomEndpoint"`
+	// Custom endpoint for the Logs service
+	LogsCustomEndpoint *string `pulumi:"logsCustomEndpoint"`
 	// Custom endpoint for the MariaDB service
 	MariadbCustomEndpoint *string `pulumi:"mariadbCustomEndpoint"`
 	// Custom endpoint for the AI Model Serving service
@@ -215,6 +223,8 @@ type ProviderArgs struct {
 	DefaultRegion pulumi.StringPtrInput
 	// Custom endpoint for the DNS service
 	DnsCustomEndpoint pulumi.StringPtrInput
+	// Custom endpoint for the Edge Cloud service
+	EdgecloudCustomEndpoint pulumi.StringPtrInput
 	// Enable beta resources. Default is false.
 	EnableBetaResources pulumi.BoolPtrInput
 	// Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: iam, routing-tables, network
@@ -229,6 +239,8 @@ type ProviderArgs struct {
 	LoadbalancerCustomEndpoint pulumi.StringPtrInput
 	// Custom endpoint for the LogMe service
 	LogmeCustomEndpoint pulumi.StringPtrInput
+	// Custom endpoint for the Logs service
+	LogsCustomEndpoint pulumi.StringPtrInput
 	// Custom endpoint for the MariaDB service
 	MariadbCustomEndpoint pulumi.StringPtrInput
 	// Custom endpoint for the AI Model Serving service
@@ -376,6 +388,11 @@ func (o ProviderOutput) DnsCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DnsCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
+// Custom endpoint for the Edge Cloud service
+func (o ProviderOutput) EdgecloudCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.EdgecloudCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
 // Custom endpoint for the Git service
 func (o ProviderOutput) GitCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.GitCustomEndpoint }).(pulumi.StringPtrOutput)
@@ -399,6 +416,11 @@ func (o ProviderOutput) LoadbalancerCustomEndpoint() pulumi.StringPtrOutput {
 // Custom endpoint for the LogMe service
 func (o ProviderOutput) LogmeCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.LogmeCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// Custom endpoint for the Logs service
+func (o ProviderOutput) LogsCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.LogsCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 // Custom endpoint for the MariaDB service
