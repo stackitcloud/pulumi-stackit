@@ -418,10 +418,7 @@ class NetworkArea(pulumi.CustomResource):
                  transfer_network: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Network area resource schema.
-
-        ## Example Usage
-
+        Create a NetworkArea resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] default_nameservers: List of DNS Servers/Nameservers for configuration of network area for region `eu01`.
@@ -441,10 +438,7 @@ class NetworkArea(pulumi.CustomResource):
                  args: NetworkAreaArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Network area resource schema.
-
-        ## Example Usage
-
+        Create a NetworkArea resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param NetworkAreaArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

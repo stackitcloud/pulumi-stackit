@@ -9,11 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Stackit
 {
-    /// <summary>
-    /// Network area resource schema.
-    /// 
-    /// ## Example Usage
-    /// </summary>
     [StackitResourceType("stackit:index/networkArea:NetworkArea")]
     public partial class NetworkArea : global::Pulumi.CustomResource
     {

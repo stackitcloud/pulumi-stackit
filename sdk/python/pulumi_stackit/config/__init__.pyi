@@ -39,6 +39,11 @@ dnsCustomEndpoint: Optional[str]
 Custom endpoint for the DNS service
 """
 
+edgecloudCustomEndpoint: Optional[str]
+"""
+Custom endpoint for the Edge Cloud service
+"""
+
 enableBetaResources: Optional[bool]
 """
 Enable beta resources. Default is false.
@@ -72,6 +77,11 @@ Custom endpoint for the Load Balancer service
 logmeCustomEndpoint: Optional[str]
 """
 Custom endpoint for the LogMe service
+"""
+
+logsCustomEndpoint: Optional[str]
+"""
+Custom endpoint for the Logs service
 """
 
 mariadbCustomEndpoint: Optional[str]

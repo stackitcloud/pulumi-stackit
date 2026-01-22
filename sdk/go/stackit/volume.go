@@ -12,8 +12,6 @@ import (
 	"github.com/stackitcloud/pulumi-stackit/sdk/go/stackit/internal"
 )
 
-// Volume resource schema. Must have a `region` specified in the provider configuration.
-//
 // ## Example Usage
 type Volume struct {
 	pulumi.CustomResourceState
@@ -22,6 +20,9 @@ type Volume struct {
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
 	// The description of the volume.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Indicates if the volume is encrypted.
+	Encrypted            pulumi.BoolOutput                   `pulumi:"encrypted"`
+	EncryptionParameters VolumeEncryptionParametersPtrOutput `pulumi:"encryptionParameters"`
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the volume.
@@ -82,6 +83,9 @@ type volumeState struct {
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// The description of the volume.
 	Description *string `pulumi:"description"`
+	// Indicates if the volume is encrypted.
+	Encrypted            *bool                       `pulumi:"encrypted"`
+	EncryptionParameters *VolumeEncryptionParameters `pulumi:"encryptionParameters"`
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the volume.
@@ -107,6 +111,9 @@ type VolumeState struct {
 	AvailabilityZone pulumi.StringPtrInput
 	// The description of the volume.
 	Description pulumi.StringPtrInput
+	// Indicates if the volume is encrypted.
+	Encrypted            pulumi.BoolPtrInput
+	EncryptionParameters VolumeEncryptionParametersPtrInput
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels pulumi.StringMapInput
 	// The name of the volume.
@@ -135,7 +142,8 @@ type volumeArgs struct {
 	// The availability zone of the volume.
 	AvailabilityZone string `pulumi:"availabilityZone"`
 	// The description of the volume.
-	Description *string `pulumi:"description"`
+	Description          *string                     `pulumi:"description"`
+	EncryptionParameters *VolumeEncryptionParameters `pulumi:"encryptionParameters"`
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the volume.
@@ -157,7 +165,8 @@ type VolumeArgs struct {
 	// The availability zone of the volume.
 	AvailabilityZone pulumi.StringInput
 	// The description of the volume.
-	Description pulumi.StringPtrInput
+	Description          pulumi.StringPtrInput
+	EncryptionParameters VolumeEncryptionParametersPtrInput
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels pulumi.StringMapInput
 	// The name of the volume.
@@ -269,6 +278,15 @@ func (o VolumeOutput) AvailabilityZone() pulumi.StringOutput {
 // The description of the volume.
 func (o VolumeOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Indicates if the volume is encrypted.
+func (o VolumeOutput) Encrypted() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Volume) pulumi.BoolOutput { return v.Encrypted }).(pulumi.BoolOutput)
+}
+
+func (o VolumeOutput) EncryptionParameters() VolumeEncryptionParametersPtrOutput {
+	return o.ApplyT(func(v *Volume) VolumeEncryptionParametersPtrOutput { return v.EncryptionParameters }).(VolumeEncryptionParametersPtrOutput)
 }
 
 // Labels are key-value string pairs which can be attached to a resource container

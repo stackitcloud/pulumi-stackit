@@ -24,6 +24,7 @@ class VolumeArgs:
                  availability_zone: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryption_parameters: Optional[pulumi.Input['VolumeEncryptionParametersArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  performance_class: Optional[pulumi.Input[_builtins.str]] = None,
@@ -46,6 +47,8 @@ class VolumeArgs:
         pulumi.set(__self__, "project_id", project_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if encryption_parameters is not None:
+            pulumi.set(__self__, "encryption_parameters", encryption_parameters)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -94,6 +97,15 @@ class VolumeArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionParameters")
+    def encryption_parameters(self) -> Optional[pulumi.Input['VolumeEncryptionParametersArgs']]:
+        return pulumi.get(self, "encryption_parameters")
+
+    @encryption_parameters.setter
+    def encryption_parameters(self, value: Optional[pulumi.Input['VolumeEncryptionParametersArgs']]):
+        pulumi.set(self, "encryption_parameters", value)
 
     @_builtins.property
     @pulumi.getter
@@ -173,6 +185,8 @@ class _VolumeState:
     def __init__(__self__, *,
                  availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
+                 encryption_parameters: Optional[pulumi.Input['VolumeEncryptionParametersArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  performance_class: Optional[pulumi.Input[_builtins.str]] = None,
@@ -186,6 +200,7 @@ class _VolumeState:
         Input properties used for looking up and filtering Volume resources.
         :param pulumi.Input[_builtins.str] availability_zone: The availability zone of the volume.
         :param pulumi.Input[_builtins.str] description: The description of the volume.
+        :param pulumi.Input[_builtins.bool] encrypted: Indicates if the volume is encrypted.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
         :param pulumi.Input[_builtins.str] name: The name of the volume.
         :param pulumi.Input[_builtins.str] performance_class: The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/products/storage/block-storage/basics/service-plans/#currently-available-service-plans-performance-classes)
@@ -200,6 +215,10 @@ class _VolumeState:
             pulumi.set(__self__, "availability_zone", availability_zone)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if encrypted is not None:
+            pulumi.set(__self__, "encrypted", encrypted)
+        if encryption_parameters is not None:
+            pulumi.set(__self__, "encryption_parameters", encryption_parameters)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -242,6 +261,27 @@ class _VolumeState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def encrypted(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates if the volume is encrypted.
+        """
+        return pulumi.get(self, "encrypted")
+
+    @encrypted.setter
+    def encrypted(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "encrypted", value)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionParameters")
+    def encryption_parameters(self) -> Optional[pulumi.Input['VolumeEncryptionParametersArgs']]:
+        return pulumi.get(self, "encryption_parameters")
+
+    @encryption_parameters.setter
+    def encryption_parameters(self, value: Optional[pulumi.Input['VolumeEncryptionParametersArgs']]):
+        pulumi.set(self, "encryption_parameters", value)
 
     @_builtins.property
     @pulumi.getter
@@ -360,6 +400,7 @@ class Volume(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryption_parameters: Optional[pulumi.Input[Union['VolumeEncryptionParametersArgs', 'VolumeEncryptionParametersArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  performance_class: Optional[pulumi.Input[_builtins.str]] = None,
@@ -369,8 +410,6 @@ class Volume(pulumi.CustomResource):
                  source: Optional[pulumi.Input[Union['VolumeSourceArgs', 'VolumeSourceArgsDict']]] = None,
                  __props__=None):
         """
-        Volume resource schema. Must have a `region` specified in the provider configuration.
-
         ## Example Usage
 
         :param str resource_name: The name of the resource.
@@ -392,8 +431,6 @@ class Volume(pulumi.CustomResource):
                  args: VolumeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Volume resource schema. Must have a `region` specified in the provider configuration.
-
         ## Example Usage
 
         :param str resource_name: The name of the resource.
@@ -413,6 +450,7 @@ class Volume(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
+                 encryption_parameters: Optional[pulumi.Input[Union['VolumeEncryptionParametersArgs', 'VolumeEncryptionParametersArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  performance_class: Optional[pulumi.Input[_builtins.str]] = None,
@@ -433,6 +471,7 @@ class Volume(pulumi.CustomResource):
                 raise TypeError("Missing required property 'availability_zone'")
             __props__.__dict__["availability_zone"] = availability_zone
             __props__.__dict__["description"] = description
+            __props__.__dict__["encryption_parameters"] = encryption_parameters
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["performance_class"] = performance_class
@@ -442,6 +481,7 @@ class Volume(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["size"] = size
             __props__.__dict__["source"] = source
+            __props__.__dict__["encrypted"] = None
             __props__.__dict__["server_id"] = None
             __props__.__dict__["volume_id"] = None
         super(Volume, __self__).__init__(
@@ -456,6 +496,8 @@ class Volume(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
             description: Optional[pulumi.Input[_builtins.str]] = None,
+            encrypted: Optional[pulumi.Input[_builtins.bool]] = None,
+            encryption_parameters: Optional[pulumi.Input[Union['VolumeEncryptionParametersArgs', 'VolumeEncryptionParametersArgsDict']]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             performance_class: Optional[pulumi.Input[_builtins.str]] = None,
@@ -474,6 +516,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] availability_zone: The availability zone of the volume.
         :param pulumi.Input[_builtins.str] description: The description of the volume.
+        :param pulumi.Input[_builtins.bool] encrypted: Indicates if the volume is encrypted.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
         :param pulumi.Input[_builtins.str] name: The name of the volume.
         :param pulumi.Input[_builtins.str] performance_class: The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/products/storage/block-storage/basics/service-plans/#currently-available-service-plans-performance-classes)
@@ -490,6 +533,8 @@ class Volume(pulumi.CustomResource):
 
         __props__.__dict__["availability_zone"] = availability_zone
         __props__.__dict__["description"] = description
+        __props__.__dict__["encrypted"] = encrypted
+        __props__.__dict__["encryption_parameters"] = encryption_parameters
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["performance_class"] = performance_class
@@ -516,6 +561,19 @@ class Volume(pulumi.CustomResource):
         The description of the volume.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def encrypted(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Indicates if the volume is encrypted.
+        """
+        return pulumi.get(self, "encrypted")
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionParameters")
+    def encryption_parameters(self) -> pulumi.Output[Optional['outputs.VolumeEncryptionParameters']]:
+        return pulumi.get(self, "encryption_parameters")
 
     @_builtins.property
     @pulumi.getter

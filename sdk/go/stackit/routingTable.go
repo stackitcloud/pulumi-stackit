@@ -24,6 +24,8 @@ type RoutingTable struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// Description of the routing table.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// This controls whether dynamic routes are propagated to this routing table
+	DynamicRoutes pulumi.BoolOutput `pulumi:"dynamicRoutes"`
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the routing table.
@@ -82,6 +84,8 @@ type routingTableState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// Description of the routing table.
 	Description *string `pulumi:"description"`
+	// This controls whether dynamic routes are propagated to this routing table
+	DynamicRoutes *bool `pulumi:"dynamicRoutes"`
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the routing table.
@@ -105,6 +109,8 @@ type RoutingTableState struct {
 	CreatedAt pulumi.StringPtrInput
 	// Description of the routing table.
 	Description pulumi.StringPtrInput
+	// This controls whether dynamic routes are propagated to this routing table
+	DynamicRoutes pulumi.BoolPtrInput
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels pulumi.StringMapInput
 	// The name of the routing table.
@@ -130,6 +136,8 @@ func (RoutingTableState) ElementType() reflect.Type {
 type routingTableArgs struct {
 	// Description of the routing table.
 	Description *string `pulumi:"description"`
+	// This controls whether dynamic routes are propagated to this routing table
+	DynamicRoutes *bool `pulumi:"dynamicRoutes"`
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the routing table.
@@ -148,6 +156,8 @@ type routingTableArgs struct {
 type RoutingTableArgs struct {
 	// Description of the routing table.
 	Description pulumi.StringPtrInput
+	// This controls whether dynamic routes are propagated to this routing table
+	DynamicRoutes pulumi.BoolPtrInput
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels pulumi.StringMapInput
 	// The name of the routing table.
@@ -257,6 +267,11 @@ func (o RoutingTableOutput) CreatedAt() pulumi.StringOutput {
 // Description of the routing table.
 func (o RoutingTableOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *RoutingTable) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// This controls whether dynamic routes are propagated to this routing table
+func (o RoutingTableOutput) DynamicRoutes() pulumi.BoolOutput {
+	return o.ApplyT(func(v *RoutingTable) pulumi.BoolOutput { return v.DynamicRoutes }).(pulumi.BoolOutput)
 }
 
 // Labels are key-value string pairs which can be attached to a resource container

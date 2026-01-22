@@ -82,6 +82,16 @@ namespace Pulumi.Stackit
             set => _dnsCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _edgecloudCustomEndpoint = new __Value<string?>(() => __config.Get("edgecloudCustomEndpoint"));
+        /// <summary>
+        /// Custom endpoint for the Edge Cloud service
+        /// </summary>
+        public static string? EdgecloudCustomEndpoint
+        {
+            get => _edgecloudCustomEndpoint.Get();
+            set => _edgecloudCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<bool?> _enableBetaResources = new __Value<bool?>(() => __config.GetBoolean("enableBetaResources"));
         /// <summary>
         /// Enable beta resources. Default is false.
@@ -150,6 +160,16 @@ namespace Pulumi.Stackit
         {
             get => _logmeCustomEndpoint.Get();
             set => _logmeCustomEndpoint.Set(value);
+        }
+
+        private static readonly __Value<string?> _logsCustomEndpoint = new __Value<string?>(() => __config.Get("logsCustomEndpoint"));
+        /// <summary>
+        /// Custom endpoint for the Logs service
+        /// </summary>
+        public static string? LogsCustomEndpoint
+        {
+            get => _logsCustomEndpoint.Get();
+            set => _logsCustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _mariadbCustomEndpoint = new __Value<string?>(() => __config.Get("mariadbCustomEndpoint"));

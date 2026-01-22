@@ -147,6 +147,10 @@ namespace Pulumi.Stackit
         /// Description of the routing table.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// This controls whether dynamic routes are propagated to this routing table
+        /// </summary>
+        public readonly bool DynamicRoutes;
         public readonly string Id;
         /// <summary>
         /// Labels are key-value string pairs which can be attached to a resource container
@@ -189,6 +193,8 @@ namespace Pulumi.Stackit
 
             string description,
 
+            bool dynamicRoutes,
+
             string id,
 
             ImmutableDictionary<string, string> labels,
@@ -210,6 +216,7 @@ namespace Pulumi.Stackit
             CreatedAt = createdAt;
             Default = @default;
             Description = description;
+            DynamicRoutes = dynamicRoutes;
             Id = id;
             Labels = labels;
             Name = name;

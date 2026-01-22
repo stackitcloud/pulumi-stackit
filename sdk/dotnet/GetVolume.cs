@@ -122,6 +122,10 @@ namespace Pulumi.Stackit
         /// The description of the volume.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Indicates if the volume is encrypted.
+        /// </summary>
+        public readonly bool Encrypted;
         public readonly string Id;
         /// <summary>
         /// Labels are key-value string pairs which can be attached to a resource container
@@ -166,6 +170,8 @@ namespace Pulumi.Stackit
 
             string description,
 
+            bool encrypted,
+
             string id,
 
             ImmutableDictionary<string, string> labels,
@@ -188,6 +194,7 @@ namespace Pulumi.Stackit
         {
             AvailabilityZone = availabilityZone;
             Description = description;
+            Encrypted = encrypted;
             Id = id;
             Labels = labels;
             Name = name;

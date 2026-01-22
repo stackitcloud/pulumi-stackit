@@ -26,7 +26,7 @@ class GetRoutingTableResult:
     """
     A collection of values returned by getRoutingTable.
     """
-    def __init__(__self__, created_at=None, default=None, description=None, id=None, labels=None, name=None, network_area_id=None, organization_id=None, region=None, routing_table_id=None, system_routes=None, updated_at=None):
+    def __init__(__self__, created_at=None, default=None, description=None, dynamic_routes=None, id=None, labels=None, name=None, network_area_id=None, organization_id=None, region=None, routing_table_id=None, system_routes=None, updated_at=None):
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
@@ -36,6 +36,9 @@ class GetRoutingTableResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if dynamic_routes and not isinstance(dynamic_routes, bool):
+            raise TypeError("Expected argument 'dynamic_routes' to be a bool")
+        pulumi.set(__self__, "dynamic_routes", dynamic_routes)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -87,6 +90,14 @@ class GetRoutingTableResult:
         Description of the routing table.
         """
         return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter(name="dynamicRoutes")
+    def dynamic_routes(self) -> _builtins.bool:
+        """
+        This controls whether dynamic routes are propagated to this routing table
+        """
+        return pulumi.get(self, "dynamic_routes")
 
     @_builtins.property
     @pulumi.getter
@@ -167,6 +178,7 @@ class AwaitableGetRoutingTableResult(GetRoutingTableResult):
             created_at=self.created_at,
             default=self.default,
             description=self.description,
+            dynamic_routes=self.dynamic_routes,
             id=self.id,
             labels=self.labels,
             name=self.name,
@@ -208,6 +220,7 @@ def get_routing_table(network_area_id: Optional[_builtins.str] = None,
         created_at=pulumi.get(__ret__, 'created_at'),
         default=pulumi.get(__ret__, 'default'),
         description=pulumi.get(__ret__, 'description'),
+        dynamic_routes=pulumi.get(__ret__, 'dynamic_routes'),
         id=pulumi.get(__ret__, 'id'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
@@ -246,6 +259,7 @@ def get_routing_table_output(network_area_id: Optional[pulumi.Input[_builtins.st
         created_at=pulumi.get(__response__, 'created_at'),
         default=pulumi.get(__response__, 'default'),
         description=pulumi.get(__response__, 'description'),
+        dynamic_routes=pulumi.get(__response__, 'dynamic_routes'),
         id=pulumi.get(__response__, 'id'),
         labels=pulumi.get(__response__, 'labels'),
         name=pulumi.get(__response__, 'name'),

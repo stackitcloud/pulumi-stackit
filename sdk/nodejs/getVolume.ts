@@ -50,6 +50,10 @@ export interface GetVolumeResult {
      * The description of the volume.
      */
     readonly description: string;
+    /**
+     * Indicates if the volume is encrypted.
+     */
+    readonly encrypted: boolean;
     readonly id: string;
     /**
      * Labels are key-value string pairs which can be attached to a resource container

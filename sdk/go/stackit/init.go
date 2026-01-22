@@ -35,6 +35,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DnsRecordSet{}
 	case "stackit:index/dnsZone:DnsZone":
 		r = &DnsZone{}
+	case "stackit:index/edgecloudInstance:EdgecloudInstance":
+		r = &EdgecloudInstance{}
+	case "stackit:index/edgecloudKubeconfig:EdgecloudKubeconfig":
+		r = &EdgecloudKubeconfig{}
+	case "stackit:index/edgecloudToken:EdgecloudToken":
+		r = &EdgecloudToken{}
 	case "stackit:index/git:Git":
 		r = &Git{}
 	case "stackit:index/image:Image":
@@ -55,6 +61,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LogmeCredential{}
 	case "stackit:index/logmeInstance:LogmeInstance":
 		r = &LogmeInstance{}
+	case "stackit:index/logsInstance:LogsInstance":
+		r = &LogsInstance{}
 	case "stackit:index/mariadbCredential:MariadbCredential":
 		r = &MariadbCredential{}
 	case "stackit:index/mariadbInstance:MariadbInstance":
@@ -235,6 +243,21 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"stackit",
+		"index/edgecloudInstance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/edgecloudKubeconfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/edgecloudToken",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
 		"index/git",
 		&module{version},
 	)
@@ -281,6 +304,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"stackit",
 		"index/logmeInstance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/logsInstance",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

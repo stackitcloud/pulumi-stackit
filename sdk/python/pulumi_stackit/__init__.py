@@ -13,11 +13,16 @@ from .cdn_custom_domain import *
 from .cdn_distribution import *
 from .dns_record_set import *
 from .dns_zone import *
+from .edgecloud_instance import *
+from .edgecloud_kubeconfig import *
+from .edgecloud_token import *
 from .get_affinity_group import *
 from .get_cdn_custom_domain import *
 from .get_cdn_distribution import *
 from .get_dns_record_set import *
 from .get_dns_zone import *
+from .get_edgecloud_instances import *
+from .get_edgecloud_plans import *
 from .get_git import *
 from .get_iaas_project import *
 from .get_image import *
@@ -29,6 +34,7 @@ from .get_kms_wrapping_key import *
 from .get_loadbalancer import *
 from .get_logme_credential import *
 from .get_logme_instance import *
+from .get_logs_instance import *
 from .get_machine_type import *
 from .get_mariadb_credential import *
 from .get_mariadb_instance import *
@@ -94,6 +100,7 @@ from .loadbalancer import *
 from .loadbalancer_observability_credential import *
 from .logme_credential import *
 from .logme_instance import *
+from .logs_instance import *
 from .mariadb_credential import *
 from .mariadb_instance import *
 from .modelserving_token import *
@@ -222,6 +229,30 @@ _utilities.register(
  },
  {
   "pkg": "stackit",
+  "mod": "index/edgecloudInstance",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/edgecloudInstance:EdgecloudInstance": "EdgecloudInstance"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/edgecloudKubeconfig",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/edgecloudKubeconfig:EdgecloudKubeconfig": "EdgecloudKubeconfig"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/edgecloudToken",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/edgecloudToken:EdgecloudToken": "EdgecloudToken"
+  }
+ },
+ {
+  "pkg": "stackit",
   "mod": "index/git",
   "fqn": "pulumi_stackit",
   "classes": {
@@ -298,6 +329,14 @@ _utilities.register(
   "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/logmeInstance:LogmeInstance": "LogmeInstance"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/logsInstance",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/logsInstance:LogsInstance": "LogsInstance"
   }
  },
  {
