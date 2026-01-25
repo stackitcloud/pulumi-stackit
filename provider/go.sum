@@ -1336,8 +1336,8 @@ github.com/spf13/pflag v1.0.3/go.mod h1:DYY7MBk1bdzusC3SYhjObp+wFpr4gzcvqqNjLnIn
 github.com/spf13/pflag v1.0.9/go.mod h1:McXfInJRrz4CZXVZOBLb0bTZqETkiAhM9Iw0y3An2Bg=
 github.com/spf13/pflag v1.0.10 h1:4EBh2KAYBwaONj6b2Ye1GiHfwjqyROoF4RwYO+vPwFk=
 github.com/spf13/pflag v1.0.10/go.mod h1:McXfInJRrz4CZXVZOBLb0bTZqETkiAhM9Iw0y3An2Bg=
-github.com/stackitcloud/pulumi-stackit/provider/pkg/version v0.0.2 h1:aRo00d97UPh18sEArDHddzAj0og4wgb5AINI9qom3z0=
-github.com/stackitcloud/pulumi-stackit/provider/pkg/version v0.0.2/go.mod h1:AYaRzbN02xCp5DnA2tbc/5pnFxHvY12bp3KftVkZhOE=
+github.com/stackitcloud/pulumi-stackit/provider/pkg/version v0.0.3 h1:aB0mIxvFvZkmDs0Tgb/3raQoceM0XmFp9ThFqRqgEt4=
+github.com/stackitcloud/pulumi-stackit/provider/pkg/version v0.0.3/go.mod h1:AYaRzbN02xCp5DnA2tbc/5pnFxHvY12bp3KftVkZhOE=
 github.com/stackitcloud/pulumi-stackit/provider/shim v0.0.2 h1:y0sicyp0hoFbIa6dK6tj+wQY4rkpIeydoSbk21vorjw=
 github.com/stackitcloud/pulumi-stackit/provider/shim v0.0.2/go.mod h1:gZNU2F3aoul0a08FpWJm9Uhy94dL7oPiMJznePBr0Kc=
 github.com/stackitcloud/stackit-sdk-go/core v0.20.1 h1:odiuhhRXmxvEvnVTeZSN9u98edvw2Cd3DcnkepncP3M=
