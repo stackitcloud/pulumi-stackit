@@ -7,6 +7,7 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .affinity_group import *
+from .authorization_folder_role_assignment import *
 from .authorization_organization_role_assignment import *
 from .authorization_project_role_assignment import *
 from .cdn_custom_domain import *
@@ -177,6 +178,14 @@ _utilities.register(
   "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/affinityGroup:AffinityGroup": "AffinityGroup"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/authorizationFolderRoleAssignment",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/authorizationFolderRoleAssignment:AuthorizationFolderRoleAssignment": "AuthorizationFolderRoleAssignment"
   }
  },
  {

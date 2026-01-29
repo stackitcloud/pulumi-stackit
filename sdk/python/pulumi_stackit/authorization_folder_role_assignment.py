@@ -14,17 +14,17 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 
-__all__ = ['AuthorizationProjectRoleAssignmentArgs', 'AuthorizationProjectRoleAssignment']
+__all__ = ['AuthorizationFolderRoleAssignmentArgs', 'AuthorizationFolderRoleAssignment']
 
 @pulumi.input_type
-class AuthorizationProjectRoleAssignmentArgs:
+class AuthorizationFolderRoleAssignmentArgs:
     def __init__(__self__, *,
                  resource_id: pulumi.Input[_builtins.str],
                  role: pulumi.Input[_builtins.str],
                  subject: pulumi.Input[_builtins.str]):
         """
-        The set of arguments for constructing a AuthorizationProjectRoleAssignment resource.
-        :param pulumi.Input[_builtins.str] resource_id: project Resource to assign the role to.
+        The set of arguments for constructing a AuthorizationFolderRoleAssignment resource.
+        :param pulumi.Input[_builtins.str] resource_id: folder Resource to assign the role to.
         :param pulumi.Input[_builtins.str] role: Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
         :param pulumi.Input[_builtins.str] subject: Identifier of user, service account or client. Usually email address or name in case of clients
         """
@@ -36,7 +36,7 @@ class AuthorizationProjectRoleAssignmentArgs:
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> pulumi.Input[_builtins.str]:
         """
-        project Resource to assign the role to.
+        folder Resource to assign the role to.
         """
         return pulumi.get(self, "resource_id")
 
@@ -70,14 +70,14 @@ class AuthorizationProjectRoleAssignmentArgs:
 
 
 @pulumi.input_type
-class _AuthorizationProjectRoleAssignmentState:
+class _AuthorizationFolderRoleAssignmentState:
     def __init__(__self__, *,
                  resource_id: Optional[pulumi.Input[_builtins.str]] = None,
                  role: Optional[pulumi.Input[_builtins.str]] = None,
                  subject: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        Input properties used for looking up and filtering AuthorizationProjectRoleAssignment resources.
-        :param pulumi.Input[_builtins.str] resource_id: project Resource to assign the role to.
+        Input properties used for looking up and filtering AuthorizationFolderRoleAssignment resources.
+        :param pulumi.Input[_builtins.str] resource_id: folder Resource to assign the role to.
         :param pulumi.Input[_builtins.str] role: Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
         :param pulumi.Input[_builtins.str] subject: Identifier of user, service account or client. Usually email address or name in case of clients
         """
@@ -92,7 +92,7 @@ class _AuthorizationProjectRoleAssignmentState:
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        project Resource to assign the role to.
+        folder Resource to assign the role to.
         """
         return pulumi.get(self, "resource_id")
 
@@ -125,8 +125,8 @@ class _AuthorizationProjectRoleAssignmentState:
         pulumi.set(self, "subject", value)
 
 
-@pulumi.type_token("stackit:index/authorizationProjectRoleAssignment:AuthorizationProjectRoleAssignment")
-class AuthorizationProjectRoleAssignment(pulumi.CustomResource):
+@pulumi.type_token("stackit:index/authorizationFolderRoleAssignment:AuthorizationFolderRoleAssignment")
+class AuthorizationFolderRoleAssignment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -136,7 +136,7 @@ class AuthorizationProjectRoleAssignment(pulumi.CustomResource):
                  subject: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Project Role Assignment resource schema.
+        Folder Role Assignment resource schema.
 
         > This resource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
 
@@ -144,7 +144,7 @@ class AuthorizationProjectRoleAssignment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] resource_id: project Resource to assign the role to.
+        :param pulumi.Input[_builtins.str] resource_id: folder Resource to assign the role to.
         :param pulumi.Input[_builtins.str] role: Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
         :param pulumi.Input[_builtins.str] subject: Identifier of user, service account or client. Usually email address or name in case of clients
         """
@@ -152,22 +152,22 @@ class AuthorizationProjectRoleAssignment(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: AuthorizationProjectRoleAssignmentArgs,
+                 args: AuthorizationFolderRoleAssignmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Project Role Assignment resource schema.
+        Folder Role Assignment resource schema.
 
         > This resource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
 
         ## Example Usage
 
         :param str resource_name: The name of the resource.
-        :param AuthorizationProjectRoleAssignmentArgs args: The arguments to use to populate this resource's properties.
+        :param AuthorizationFolderRoleAssignmentArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(AuthorizationProjectRoleAssignmentArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(AuthorizationFolderRoleAssignmentArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -186,7 +186,7 @@ class AuthorizationProjectRoleAssignment(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = AuthorizationProjectRoleAssignmentArgs.__new__(AuthorizationProjectRoleAssignmentArgs)
+            __props__ = AuthorizationFolderRoleAssignmentArgs.__new__(AuthorizationFolderRoleAssignmentArgs)
 
             if resource_id is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_id'")
@@ -197,8 +197,8 @@ class AuthorizationProjectRoleAssignment(pulumi.CustomResource):
             if subject is None and not opts.urn:
                 raise TypeError("Missing required property 'subject'")
             __props__.__dict__["subject"] = subject
-        super(AuthorizationProjectRoleAssignment, __self__).__init__(
-            'stackit:index/authorizationProjectRoleAssignment:AuthorizationProjectRoleAssignment',
+        super(AuthorizationFolderRoleAssignment, __self__).__init__(
+            'stackit:index/authorizationFolderRoleAssignment:AuthorizationFolderRoleAssignment',
             resource_name,
             __props__,
             opts)
@@ -209,32 +209,32 @@ class AuthorizationProjectRoleAssignment(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             resource_id: Optional[pulumi.Input[_builtins.str]] = None,
             role: Optional[pulumi.Input[_builtins.str]] = None,
-            subject: Optional[pulumi.Input[_builtins.str]] = None) -> 'AuthorizationProjectRoleAssignment':
+            subject: Optional[pulumi.Input[_builtins.str]] = None) -> 'AuthorizationFolderRoleAssignment':
         """
-        Get an existing AuthorizationProjectRoleAssignment resource's state with the given name, id, and optional extra
+        Get an existing AuthorizationFolderRoleAssignment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] resource_id: project Resource to assign the role to.
+        :param pulumi.Input[_builtins.str] resource_id: folder Resource to assign the role to.
         :param pulumi.Input[_builtins.str] role: Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
         :param pulumi.Input[_builtins.str] subject: Identifier of user, service account or client. Usually email address or name in case of clients
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _AuthorizationProjectRoleAssignmentState.__new__(_AuthorizationProjectRoleAssignmentState)
+        __props__ = _AuthorizationFolderRoleAssignmentState.__new__(_AuthorizationFolderRoleAssignmentState)
 
         __props__.__dict__["resource_id"] = resource_id
         __props__.__dict__["role"] = role
         __props__.__dict__["subject"] = subject
-        return AuthorizationProjectRoleAssignment(resource_name, opts=opts, __props__=__props__)
+        return AuthorizationFolderRoleAssignment(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> pulumi.Output[_builtins.str]:
         """
-        project Resource to assign the role to.
+        folder Resource to assign the role to.
         """
         return pulumi.get(self, "resource_id")
 

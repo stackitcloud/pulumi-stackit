@@ -12,7 +12,7 @@ import (
 	"github.com/stackitcloud/pulumi-stackit/sdk/go/stackit/internal"
 )
 
-// organization Role Assignment resource schema.
+// Organization Role Assignment resource schema.
 //
 // > This resource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
 //
@@ -22,7 +22,7 @@ type AuthorizationOrganizationRoleAssignment struct {
 
 	// organization Resource to assign the role to.
 	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
-	// Role to be assigned
+	// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
 	Role pulumi.StringOutput `pulumi:"role"`
 	// Identifier of user, service account or client. Usually email address or name in case of clients
 	Subject pulumi.StringOutput `pulumi:"subject"`
@@ -69,7 +69,7 @@ func GetAuthorizationOrganizationRoleAssignment(ctx *pulumi.Context,
 type authorizationOrganizationRoleAssignmentState struct {
 	// organization Resource to assign the role to.
 	ResourceId *string `pulumi:"resourceId"`
-	// Role to be assigned
+	// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
 	Role *string `pulumi:"role"`
 	// Identifier of user, service account or client. Usually email address or name in case of clients
 	Subject *string `pulumi:"subject"`
@@ -78,7 +78,7 @@ type authorizationOrganizationRoleAssignmentState struct {
 type AuthorizationOrganizationRoleAssignmentState struct {
 	// organization Resource to assign the role to.
 	ResourceId pulumi.StringPtrInput
-	// Role to be assigned
+	// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
 	Role pulumi.StringPtrInput
 	// Identifier of user, service account or client. Usually email address or name in case of clients
 	Subject pulumi.StringPtrInput
@@ -91,7 +91,7 @@ func (AuthorizationOrganizationRoleAssignmentState) ElementType() reflect.Type {
 type authorizationOrganizationRoleAssignmentArgs struct {
 	// organization Resource to assign the role to.
 	ResourceId string `pulumi:"resourceId"`
-	// Role to be assigned
+	// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
 	Role string `pulumi:"role"`
 	// Identifier of user, service account or client. Usually email address or name in case of clients
 	Subject string `pulumi:"subject"`
@@ -101,7 +101,7 @@ type authorizationOrganizationRoleAssignmentArgs struct {
 type AuthorizationOrganizationRoleAssignmentArgs struct {
 	// organization Resource to assign the role to.
 	ResourceId pulumi.StringInput
-	// Role to be assigned
+	// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
 	Role pulumi.StringInput
 	// Identifier of user, service account or client. Usually email address or name in case of clients
 	Subject pulumi.StringInput
@@ -199,7 +199,7 @@ func (o AuthorizationOrganizationRoleAssignmentOutput) ResourceId() pulumi.Strin
 	return o.ApplyT(func(v *AuthorizationOrganizationRoleAssignment) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
 }
 
-// Role to be assigned
+// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
 func (o AuthorizationOrganizationRoleAssignmentOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthorizationOrganizationRoleAssignment) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }

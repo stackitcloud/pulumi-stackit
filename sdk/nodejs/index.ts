@@ -10,6 +10,11 @@ export type AffinityGroup = import("./affinityGroup").AffinityGroup;
 export const AffinityGroup: typeof import("./affinityGroup").AffinityGroup = null as any;
 utilities.lazyLoad(exports, ["AffinityGroup"], () => require("./affinityGroup"));
 
+export { AuthorizationFolderRoleAssignmentArgs, AuthorizationFolderRoleAssignmentState } from "./authorizationFolderRoleAssignment";
+export type AuthorizationFolderRoleAssignment = import("./authorizationFolderRoleAssignment").AuthorizationFolderRoleAssignment;
+export const AuthorizationFolderRoleAssignment: typeof import("./authorizationFolderRoleAssignment").AuthorizationFolderRoleAssignment = null as any;
+utilities.lazyLoad(exports, ["AuthorizationFolderRoleAssignment"], () => require("./authorizationFolderRoleAssignment"));
+
 export { AuthorizationOrganizationRoleAssignmentArgs, AuthorizationOrganizationRoleAssignmentState } from "./authorizationOrganizationRoleAssignment";
 export type AuthorizationOrganizationRoleAssignment = import("./authorizationOrganizationRoleAssignment").AuthorizationOrganizationRoleAssignment;
 export const AuthorizationOrganizationRoleAssignment: typeof import("./authorizationOrganizationRoleAssignment").AuthorizationOrganizationRoleAssignment = null as any;
@@ -779,6 +784,8 @@ const _module = {
         switch (type) {
             case "stackit:index/affinityGroup:AffinityGroup":
                 return new AffinityGroup(name, <any>undefined, { urn })
+            case "stackit:index/authorizationFolderRoleAssignment:AuthorizationFolderRoleAssignment":
+                return new AuthorizationFolderRoleAssignment(name, <any>undefined, { urn })
             case "stackit:index/authorizationOrganizationRoleAssignment:AuthorizationOrganizationRoleAssignment":
                 return new AuthorizationOrganizationRoleAssignment(name, <any>undefined, { urn })
             case "stackit:index/authorizationProjectRoleAssignment:AuthorizationProjectRoleAssignment":
@@ -937,6 +944,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("stackit", "index/affinityGroup", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/authorizationFolderRoleAssignment", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/authorizationOrganizationRoleAssignment", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/authorizationProjectRoleAssignment", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/cdnCustomDomain", _module)

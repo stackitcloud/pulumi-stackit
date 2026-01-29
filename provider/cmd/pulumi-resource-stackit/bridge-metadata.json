@@ -9,6 +9,9 @@
                     }
                 }
             },
+            "stackit_authorization_folder_role_assignment": {
+                "current": "stackit:index/authorizationFolderRoleAssignment:AuthorizationFolderRoleAssignment"
+            },
             "stackit_authorization_organization_role_assignment": {
                 "current": "stackit:index/authorizationOrganizationRoleAssignment:AuthorizationOrganizationRoleAssignment"
             },

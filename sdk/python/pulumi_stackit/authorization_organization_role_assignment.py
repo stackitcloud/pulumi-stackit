@@ -25,7 +25,7 @@ class AuthorizationOrganizationRoleAssignmentArgs:
         """
         The set of arguments for constructing a AuthorizationOrganizationRoleAssignment resource.
         :param pulumi.Input[_builtins.str] resource_id: organization Resource to assign the role to.
-        :param pulumi.Input[_builtins.str] role: Role to be assigned
+        :param pulumi.Input[_builtins.str] role: Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
         :param pulumi.Input[_builtins.str] subject: Identifier of user, service account or client. Usually email address or name in case of clients
         """
         pulumi.set(__self__, "resource_id", resource_id)
@@ -48,7 +48,7 @@ class AuthorizationOrganizationRoleAssignmentArgs:
     @pulumi.getter
     def role(self) -> pulumi.Input[_builtins.str]:
         """
-        Role to be assigned
+        Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
         """
         return pulumi.get(self, "role")
 
@@ -78,7 +78,7 @@ class _AuthorizationOrganizationRoleAssignmentState:
         """
         Input properties used for looking up and filtering AuthorizationOrganizationRoleAssignment resources.
         :param pulumi.Input[_builtins.str] resource_id: organization Resource to assign the role to.
-        :param pulumi.Input[_builtins.str] role: Role to be assigned
+        :param pulumi.Input[_builtins.str] role: Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
         :param pulumi.Input[_builtins.str] subject: Identifier of user, service account or client. Usually email address or name in case of clients
         """
         if resource_id is not None:
@@ -104,7 +104,7 @@ class _AuthorizationOrganizationRoleAssignmentState:
     @pulumi.getter
     def role(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Role to be assigned
+        Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
         """
         return pulumi.get(self, "role")
 
@@ -136,7 +136,7 @@ class AuthorizationOrganizationRoleAssignment(pulumi.CustomResource):
                  subject: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        organization Role Assignment resource schema.
+        Organization Role Assignment resource schema.
 
         > This resource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
 
@@ -145,7 +145,7 @@ class AuthorizationOrganizationRoleAssignment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] resource_id: organization Resource to assign the role to.
-        :param pulumi.Input[_builtins.str] role: Role to be assigned
+        :param pulumi.Input[_builtins.str] role: Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
         :param pulumi.Input[_builtins.str] subject: Identifier of user, service account or client. Usually email address or name in case of clients
         """
         ...
@@ -155,7 +155,7 @@ class AuthorizationOrganizationRoleAssignment(pulumi.CustomResource):
                  args: AuthorizationOrganizationRoleAssignmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        organization Role Assignment resource schema.
+        Organization Role Assignment resource schema.
 
         > This resource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
 
@@ -218,7 +218,7 @@ class AuthorizationOrganizationRoleAssignment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] resource_id: organization Resource to assign the role to.
-        :param pulumi.Input[_builtins.str] role: Role to be assigned
+        :param pulumi.Input[_builtins.str] role: Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
         :param pulumi.Input[_builtins.str] subject: Identifier of user, service account or client. Usually email address or name in case of clients
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -242,7 +242,7 @@ class AuthorizationOrganizationRoleAssignment(pulumi.CustomResource):
     @pulumi.getter
     def role(self) -> pulumi.Output[_builtins.str]:
         """
-        Role to be assigned
+        Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
         """
         return pulumi.get(self, "role")
 
