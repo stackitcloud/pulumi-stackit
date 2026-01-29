@@ -6041,8 +6041,67 @@
                 "type": "object"
             }
         },
+        "stackit:index/authorizationFolderRoleAssignment:AuthorizationFolderRoleAssignment": {
+            "description": "Folder Role Assignment resource schema.\n\n\u003e This resource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_resourcemanager_folder\" \"example\" {\n  name        = \"example_folder\"\n  owner_email = \"foo.bar@stackit.cloud\"\n  # in this case a org-id\n  parent_container_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\nresource \"stackit_authorization_folder_role_assignment\" \"fra\" {\n  resource_id = stackit_resourcemanager_folder.example.folder_id\n  role        = \"reader\"\n  subject     = \"foo.bar@stackit.cloud\"\n}\n\n# Only use the import statement, if you want to import an existing folder role assignment\nimport {\n  to = stackit_authorization_folder_role_assignment.import-example\n  id = \"${var.folder_id},${var.folder_role_assignment},${var.folder_role_assignment_subject}\"\n}\n```\n",
+            "properties": {
+                "resourceId": {
+                    "type": "string",
+                    "description": "folder Resource to assign the role to.\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`\n"
+                },
+                "subject": {
+                    "type": "string",
+                    "description": "Identifier of user, service account or client. Usually email address or name in case of clients\n"
+                }
+            },
+            "required": [
+                "resourceId",
+                "role",
+                "subject"
+            ],
+            "inputProperties": {
+                "resourceId": {
+                    "type": "string",
+                    "description": "folder Resource to assign the role to.\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`\n"
+                },
+                "subject": {
+                    "type": "string",
+                    "description": "Identifier of user, service account or client. Usually email address or name in case of clients\n"
+                }
+            },
+            "requiredInputs": [
+                "resourceId",
+                "role",
+                "subject"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AuthorizationFolderRoleAssignment resources.\n",
+                "properties": {
+                    "resourceId": {
+                        "type": "string",
+                        "description": "folder Resource to assign the role to.\n"
+                    },
+                    "role": {
+                        "type": "string",
+                        "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`\n"
+                    },
+                    "subject": {
+                        "type": "string",
+                        "description": "Identifier of user, service account or client. Usually email address or name in case of clients\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "stackit:index/authorizationOrganizationRoleAssignment:AuthorizationOrganizationRoleAssignment": {
-            "description": "organization Role Assignment resource schema.\n\n\u003e This resource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_authorization_organization_role_assignment\" \"example\" {\n  resource_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  role        = \"owner\"\n  subject     = \"john.doe@stackit.cloud\"\n}\n\n# Only use the import statement, if you want to import an existing organization role assignment\nimport {\n  to = stackit_authorization_organization_role_assignment.import-example\n  id = \"${var.organization_id},${var.org_role_assignment_role},${var.org_role_assignment_subject}\"\n}\n```\n",
+            "description": "Organization Role Assignment resource schema.\n\n\u003e This resource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_authorization_organization_role_assignment\" \"example\" {\n  resource_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  role        = \"owner\"\n  subject     = \"john.doe@stackit.cloud\"\n}\n\n# Only use the import statement, if you want to import an existing organization role assignment\nimport {\n  to = stackit_authorization_organization_role_assignment.import-example\n  id = \"${var.organization_id},${var.org_role_assignment_role},${var.org_role_assignment_subject}\"\n}\n```\n",
             "properties": {
                 "resourceId": {
                     "type": "string",
@@ -6050,7 +6109,7 @@
                 },
                 "role": {
                     "type": "string",
-                    "description": "Role to be assigned\n"
+                    "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`\n"
                 },
                 "subject": {
                     "type": "string",
@@ -6069,7 +6128,7 @@
                 },
                 "role": {
                     "type": "string",
-                    "description": "Role to be assigned\n"
+                    "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`\n"
                 },
                 "subject": {
                     "type": "string",
@@ -6090,7 +6149,7 @@
                     },
                     "role": {
                         "type": "string",
-                        "description": "Role to be assigned\n"
+                        "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`\n"
                     },
                     "subject": {
                         "type": "string",
@@ -6101,7 +6160,7 @@
             }
         },
         "stackit:index/authorizationProjectRoleAssignment:AuthorizationProjectRoleAssignment": {
-            "description": "project Role Assignment resource schema.\n\n\u003e This resource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_authorization_project_role_assignment\" \"example\" {\n  resource_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  role        = \"owner\"\n  subject     = \"john.doe@stackit.cloud\"\n}\n\n# Only use the import statement, if you want to import an existing project role assignment\nimport {\n  to = stackit_authorization_project_role_assignment.import-example\n  id = \"${var.project_id},${var.project_role_assignment_role},${var.project_role_assignment_subject}\"\n}\n```\n",
+            "description": "Project Role Assignment resource schema.\n\n\u003e This resource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_resourcemanager_project\" \"example\" {\n  name        = \"example_project\"\n  owner_email = \"foo.bar@stackit.cloud\"\n  # in this case a folder or a org-id\n  parent_container_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\nresource \"stackit_authorization_project_role_assignment\" \"pra\" {\n  resource_id = stackit_resourcemanager_project.example.folder_id\n  role        = \"reader\"\n  subject     = \"foo.bar@stackit.cloud\"\n}\n\n# Only use the import statement, if you want to import an existing project role assignment\nimport {\n  to = stackit_authorization_project_role_assignment.import-example\n  id = \"${var.project_id},${var.project_role_assignment_role},${var.project_role_assignment_subject}\"\n}\n```\n",
             "properties": {
                 "resourceId": {
                     "type": "string",
@@ -6109,7 +6168,7 @@
                 },
                 "role": {
                     "type": "string",
-                    "description": "Role to be assigned\n"
+                    "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`\n"
                 },
                 "subject": {
                     "type": "string",
@@ -6128,7 +6187,7 @@
                 },
                 "role": {
                     "type": "string",
-                    "description": "Role to be assigned\n"
+                    "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`\n"
                 },
                 "subject": {
                     "type": "string",
@@ -6149,7 +6208,7 @@
                     },
                     "role": {
                         "type": "string",
-                        "description": "Role to be assigned\n"
+                        "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`\n"
                     },
                     "subject": {
                         "type": "string",
