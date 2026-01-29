@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * organization Role Assignment resource schema.
+ * Organization Role Assignment resource schema.
  *
  * > This resource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
  *
@@ -44,7 +44,7 @@ export class AuthorizationOrganizationRoleAssignment extends pulumi.CustomResour
      */
     declare public readonly resourceId: pulumi.Output<string>;
     /**
-     * Role to be assigned
+     * Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
      */
     declare public readonly role: pulumi.Output<string>;
     /**
@@ -97,7 +97,7 @@ export interface AuthorizationOrganizationRoleAssignmentState {
      */
     resourceId?: pulumi.Input<string>;
     /**
-     * Role to be assigned
+     * Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
      */
     role?: pulumi.Input<string>;
     /**
@@ -115,7 +115,7 @@ export interface AuthorizationOrganizationRoleAssignmentArgs {
      */
     resourceId: pulumi.Input<string>;
     /**
-     * Role to be assigned
+     * Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
      */
     role: pulumi.Input<string>;
     /**

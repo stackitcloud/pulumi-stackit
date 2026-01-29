@@ -5,15 +5,15 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Project Role Assignment resource schema.
+ * Folder Role Assignment resource schema.
  *
  * > This resource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
  *
  * ## Example Usage
  */
-export class AuthorizationProjectRoleAssignment extends pulumi.CustomResource {
+export class AuthorizationFolderRoleAssignment extends pulumi.CustomResource {
     /**
-     * Get an existing AuthorizationProjectRoleAssignment resource's state with the given name, ID, and optional extra
+     * Get an existing AuthorizationFolderRoleAssignment resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -21,26 +21,26 @@ export class AuthorizationProjectRoleAssignment extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AuthorizationProjectRoleAssignmentState, opts?: pulumi.CustomResourceOptions): AuthorizationProjectRoleAssignment {
-        return new AuthorizationProjectRoleAssignment(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: AuthorizationFolderRoleAssignmentState, opts?: pulumi.CustomResourceOptions): AuthorizationFolderRoleAssignment {
+        return new AuthorizationFolderRoleAssignment(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'stackit:index/authorizationProjectRoleAssignment:AuthorizationProjectRoleAssignment';
+    public static readonly __pulumiType = 'stackit:index/authorizationFolderRoleAssignment:AuthorizationFolderRoleAssignment';
 
     /**
-     * Returns true if the given object is an instance of AuthorizationProjectRoleAssignment.  This is designed to work even
+     * Returns true if the given object is an instance of AuthorizationFolderRoleAssignment.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is AuthorizationProjectRoleAssignment {
+    public static isInstance(obj: any): obj is AuthorizationFolderRoleAssignment {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === AuthorizationProjectRoleAssignment.__pulumiType;
+        return obj['__pulumiType'] === AuthorizationFolderRoleAssignment.__pulumiType;
     }
 
     /**
-     * project Resource to assign the role to.
+     * folder Resource to assign the role to.
      */
     declare public readonly resourceId: pulumi.Output<string>;
     /**
@@ -53,23 +53,23 @@ export class AuthorizationProjectRoleAssignment extends pulumi.CustomResource {
     declare public readonly subject: pulumi.Output<string>;
 
     /**
-     * Create a AuthorizationProjectRoleAssignment resource with the given unique name, arguments, and options.
+     * Create a AuthorizationFolderRoleAssignment resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: AuthorizationProjectRoleAssignmentArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: AuthorizationProjectRoleAssignmentArgs | AuthorizationProjectRoleAssignmentState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: AuthorizationFolderRoleAssignmentArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: AuthorizationFolderRoleAssignmentArgs | AuthorizationFolderRoleAssignmentState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as AuthorizationProjectRoleAssignmentState | undefined;
+            const state = argsOrState as AuthorizationFolderRoleAssignmentState | undefined;
             resourceInputs["resourceId"] = state?.resourceId;
             resourceInputs["role"] = state?.role;
             resourceInputs["subject"] = state?.subject;
         } else {
-            const args = argsOrState as AuthorizationProjectRoleAssignmentArgs | undefined;
+            const args = argsOrState as AuthorizationFolderRoleAssignmentArgs | undefined;
             if (args?.resourceId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resourceId'");
             }
@@ -84,16 +84,16 @@ export class AuthorizationProjectRoleAssignment extends pulumi.CustomResource {
             resourceInputs["subject"] = args?.subject;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(AuthorizationProjectRoleAssignment.__pulumiType, name, resourceInputs, opts);
+        super(AuthorizationFolderRoleAssignment.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering AuthorizationProjectRoleAssignment resources.
+ * Input properties used for looking up and filtering AuthorizationFolderRoleAssignment resources.
  */
-export interface AuthorizationProjectRoleAssignmentState {
+export interface AuthorizationFolderRoleAssignmentState {
     /**
-     * project Resource to assign the role to.
+     * folder Resource to assign the role to.
      */
     resourceId?: pulumi.Input<string>;
     /**
@@ -107,11 +107,11 @@ export interface AuthorizationProjectRoleAssignmentState {
 }
 
 /**
- * The set of arguments for constructing a AuthorizationProjectRoleAssignment resource.
+ * The set of arguments for constructing a AuthorizationFolderRoleAssignment resource.
  */
-export interface AuthorizationProjectRoleAssignmentArgs {
+export interface AuthorizationFolderRoleAssignmentArgs {
     /**
-     * project Resource to assign the role to.
+     * folder Resource to assign the role to.
      */
     resourceId: pulumi.Input<string>;
     /**

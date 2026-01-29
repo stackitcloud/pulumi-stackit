@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Stackit
 {
     /// <summary>
-    /// organization Role Assignment resource schema.
+    /// Organization Role Assignment resource schema.
     /// 
     /// &gt; This resource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
     /// 
@@ -26,7 +26,7 @@ namespace Pulumi.Stackit
         public Output<string> ResourceId { get; private set; } = null!;
 
         /// <summary>
-        /// Role to be assigned
+        /// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
         /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
@@ -91,7 +91,7 @@ namespace Pulumi.Stackit
         public Input<string> ResourceId { get; set; } = null!;
 
         /// <summary>
-        /// Role to be assigned
+        /// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
         /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
@@ -117,7 +117,7 @@ namespace Pulumi.Stackit
         public Input<string>? ResourceId { get; set; }
 
         /// <summary>
-        /// Role to be assigned
+        /// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }

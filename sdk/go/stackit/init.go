@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "stackit:index/affinityGroup:AffinityGroup":
 		r = &AffinityGroup{}
+	case "stackit:index/authorizationFolderRoleAssignment:AuthorizationFolderRoleAssignment":
+		r = &AuthorizationFolderRoleAssignment{}
 	case "stackit:index/authorizationOrganizationRoleAssignment:AuthorizationOrganizationRoleAssignment":
 		r = &AuthorizationOrganizationRoleAssignment{}
 	case "stackit:index/authorizationProjectRoleAssignment:AuthorizationProjectRoleAssignment":
@@ -209,6 +211,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"stackit",
 		"index/affinityGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/authorizationFolderRoleAssignment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
