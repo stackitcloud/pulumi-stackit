@@ -20,6 +20,11 @@ export type AuthorizationOrganizationRoleAssignment = import("./authorizationOrg
 export const AuthorizationOrganizationRoleAssignment: typeof import("./authorizationOrganizationRoleAssignment").AuthorizationOrganizationRoleAssignment = null as any;
 utilities.lazyLoad(exports, ["AuthorizationOrganizationRoleAssignment"], () => require("./authorizationOrganizationRoleAssignment"));
 
+export { AuthorizationProjectCustomRoleArgs, AuthorizationProjectCustomRoleState } from "./authorizationProjectCustomRole";
+export type AuthorizationProjectCustomRole = import("./authorizationProjectCustomRole").AuthorizationProjectCustomRole;
+export const AuthorizationProjectCustomRole: typeof import("./authorizationProjectCustomRole").AuthorizationProjectCustomRole = null as any;
+utilities.lazyLoad(exports, ["AuthorizationProjectCustomRole"], () => require("./authorizationProjectCustomRole"));
+
 export { AuthorizationProjectRoleAssignmentArgs, AuthorizationProjectRoleAssignmentState } from "./authorizationProjectRoleAssignment";
 export type AuthorizationProjectRoleAssignment = import("./authorizationProjectRoleAssignment").AuthorizationProjectRoleAssignment;
 export const AuthorizationProjectRoleAssignment: typeof import("./authorizationProjectRoleAssignment").AuthorizationProjectRoleAssignment = null as any;
@@ -64,6 +69,11 @@ export { GetAffinityGroupArgs, GetAffinityGroupResult, GetAffinityGroupOutputArg
 export const getAffinityGroup: typeof import("./getAffinityGroup").getAffinityGroup = null as any;
 export const getAffinityGroupOutput: typeof import("./getAffinityGroup").getAffinityGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getAffinityGroup","getAffinityGroupOutput"], () => require("./getAffinityGroup"));
+
+export { GetAuthorizationProjectCustomRoleArgs, GetAuthorizationProjectCustomRoleResult, GetAuthorizationProjectCustomRoleOutputArgs } from "./getAuthorizationProjectCustomRole";
+export const getAuthorizationProjectCustomRole: typeof import("./getAuthorizationProjectCustomRole").getAuthorizationProjectCustomRole = null as any;
+export const getAuthorizationProjectCustomRoleOutput: typeof import("./getAuthorizationProjectCustomRole").getAuthorizationProjectCustomRoleOutput = null as any;
+utilities.lazyLoad(exports, ["getAuthorizationProjectCustomRole","getAuthorizationProjectCustomRoleOutput"], () => require("./getAuthorizationProjectCustomRole"));
 
 export { GetCdnCustomDomainArgs, GetCdnCustomDomainResult, GetCdnCustomDomainOutputArgs } from "./getCdnCustomDomain";
 export const getCdnCustomDomain: typeof import("./getCdnCustomDomain").getCdnCustomDomain = null as any;
@@ -414,6 +424,16 @@ export { GetSkeClusterArgs, GetSkeClusterResult, GetSkeClusterOutputArgs } from 
 export const getSkeCluster: typeof import("./getSkeCluster").getSkeCluster = null as any;
 export const getSkeClusterOutput: typeof import("./getSkeCluster").getSkeClusterOutput = null as any;
 utilities.lazyLoad(exports, ["getSkeCluster","getSkeClusterOutput"], () => require("./getSkeCluster"));
+
+export { GetSkeKubernetesVersionsArgs, GetSkeKubernetesVersionsResult, GetSkeKubernetesVersionsOutputArgs } from "./getSkeKubernetesVersions";
+export const getSkeKubernetesVersions: typeof import("./getSkeKubernetesVersions").getSkeKubernetesVersions = null as any;
+export const getSkeKubernetesVersionsOutput: typeof import("./getSkeKubernetesVersions").getSkeKubernetesVersionsOutput = null as any;
+utilities.lazyLoad(exports, ["getSkeKubernetesVersions","getSkeKubernetesVersionsOutput"], () => require("./getSkeKubernetesVersions"));
+
+export { GetSkeMachineImageVersionsArgs, GetSkeMachineImageVersionsResult, GetSkeMachineImageVersionsOutputArgs } from "./getSkeMachineImageVersions";
+export const getSkeMachineImageVersions: typeof import("./getSkeMachineImageVersions").getSkeMachineImageVersions = null as any;
+export const getSkeMachineImageVersionsOutput: typeof import("./getSkeMachineImageVersions").getSkeMachineImageVersionsOutput = null as any;
+utilities.lazyLoad(exports, ["getSkeMachineImageVersions","getSkeMachineImageVersionsOutput"], () => require("./getSkeMachineImageVersions"));
 
 export { GetSqlserverflexInstanceArgs, GetSqlserverflexInstanceResult, GetSqlserverflexInstanceOutputArgs } from "./getSqlserverflexInstance";
 export const getSqlserverflexInstance: typeof import("./getSqlserverflexInstance").getSqlserverflexInstance = null as any;
@@ -788,6 +808,8 @@ const _module = {
                 return new AuthorizationFolderRoleAssignment(name, <any>undefined, { urn })
             case "stackit:index/authorizationOrganizationRoleAssignment:AuthorizationOrganizationRoleAssignment":
                 return new AuthorizationOrganizationRoleAssignment(name, <any>undefined, { urn })
+            case "stackit:index/authorizationProjectCustomRole:AuthorizationProjectCustomRole":
+                return new AuthorizationProjectCustomRole(name, <any>undefined, { urn })
             case "stackit:index/authorizationProjectRoleAssignment:AuthorizationProjectRoleAssignment":
                 return new AuthorizationProjectRoleAssignment(name, <any>undefined, { urn })
             case "stackit:index/cdnCustomDomain:CdnCustomDomain":
@@ -946,6 +968,7 @@ const _module = {
 pulumi.runtime.registerResourceModule("stackit", "index/affinityGroup", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/authorizationFolderRoleAssignment", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/authorizationOrganizationRoleAssignment", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/authorizationProjectCustomRole", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/authorizationProjectRoleAssignment", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/cdnCustomDomain", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/cdnDistribution", _module)

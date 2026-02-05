@@ -27,7 +27,7 @@ class GetObservabilityInstanceResult:
     """
     A collection of values returned by getObservabilityInstance.
     """
-    def __init__(__self__, acls=None, alert_config=None, alerting_url=None, dashboard_url=None, grafana_initial_admin_password=None, grafana_initial_admin_user=None, grafana_public_read_access=None, grafana_url=None, id=None, instance_id=None, is_updatable=None, jaeger_traces_url=None, jaeger_ui_url=None, logs_push_url=None, logs_retention_days=None, logs_url=None, metrics_push_url=None, metrics_retention_days=None, metrics_retention_days1h_downsampling=None, metrics_retention_days5m_downsampling=None, metrics_url=None, name=None, otlp_traces_url=None, parameters=None, plan_id=None, plan_name=None, project_id=None, targets_url=None, traces_retention_days=None, zipkin_spans_url=None):
+    def __init__(__self__, acls=None, alert_config=None, alerting_url=None, dashboard_url=None, grafana_admin_enabled=None, grafana_public_read_access=None, grafana_url=None, id=None, instance_id=None, is_updatable=None, jaeger_traces_url=None, jaeger_ui_url=None, logs_push_url=None, logs_retention_days=None, logs_url=None, metrics_push_url=None, metrics_retention_days=None, metrics_retention_days1h_downsampling=None, metrics_retention_days5m_downsampling=None, metrics_url=None, name=None, otlp_traces_url=None, parameters=None, plan_id=None, plan_name=None, project_id=None, targets_url=None, traces_retention_days=None, zipkin_spans_url=None):
         if acls and not isinstance(acls, list):
             raise TypeError("Expected argument 'acls' to be a list")
         pulumi.set(__self__, "acls", acls)
@@ -40,12 +40,9 @@ class GetObservabilityInstanceResult:
         if dashboard_url and not isinstance(dashboard_url, str):
             raise TypeError("Expected argument 'dashboard_url' to be a str")
         pulumi.set(__self__, "dashboard_url", dashboard_url)
-        if grafana_initial_admin_password and not isinstance(grafana_initial_admin_password, str):
-            raise TypeError("Expected argument 'grafana_initial_admin_password' to be a str")
-        pulumi.set(__self__, "grafana_initial_admin_password", grafana_initial_admin_password)
-        if grafana_initial_admin_user and not isinstance(grafana_initial_admin_user, str):
-            raise TypeError("Expected argument 'grafana_initial_admin_user' to be a str")
-        pulumi.set(__self__, "grafana_initial_admin_user", grafana_initial_admin_user)
+        if grafana_admin_enabled and not isinstance(grafana_admin_enabled, bool):
+            raise TypeError("Expected argument 'grafana_admin_enabled' to be a bool")
+        pulumi.set(__self__, "grafana_admin_enabled", grafana_admin_enabled)
         if grafana_public_read_access and not isinstance(grafana_public_read_access, bool):
             raise TypeError("Expected argument 'grafana_public_read_access' to be a bool")
         pulumi.set(__self__, "grafana_public_read_access", grafana_public_read_access)
@@ -152,20 +149,12 @@ class GetObservabilityInstanceResult:
         return pulumi.get(self, "dashboard_url")
 
     @_builtins.property
-    @pulumi.getter(name="grafanaInitialAdminPassword")
-    def grafana_initial_admin_password(self) -> _builtins.str:
+    @pulumi.getter(name="grafanaAdminEnabled")
+    def grafana_admin_enabled(self) -> _builtins.bool:
         """
-        Specifies an initial Grafana admin password.
+        If true, a default Grafana server admin user was created.
         """
-        return pulumi.get(self, "grafana_initial_admin_password")
-
-    @_builtins.property
-    @pulumi.getter(name="grafanaInitialAdminUser")
-    def grafana_initial_admin_user(self) -> _builtins.str:
-        """
-        Specifies an initial Grafana admin username.
-        """
-        return pulumi.get(self, "grafana_initial_admin_user")
+        return pulumi.get(self, "grafana_admin_enabled")
 
     @_builtins.property
     @pulumi.getter(name="grafanaPublicReadAccess")
@@ -355,8 +344,7 @@ class AwaitableGetObservabilityInstanceResult(GetObservabilityInstanceResult):
             alert_config=self.alert_config,
             alerting_url=self.alerting_url,
             dashboard_url=self.dashboard_url,
-            grafana_initial_admin_password=self.grafana_initial_admin_password,
-            grafana_initial_admin_user=self.grafana_initial_admin_user,
+            grafana_admin_enabled=self.grafana_admin_enabled,
             grafana_public_read_access=self.grafana_public_read_access,
             grafana_url=self.grafana_url,
             id=self.id,
@@ -406,8 +394,7 @@ def get_observability_instance(instance_id: Optional[_builtins.str] = None,
         alert_config=pulumi.get(__ret__, 'alert_config'),
         alerting_url=pulumi.get(__ret__, 'alerting_url'),
         dashboard_url=pulumi.get(__ret__, 'dashboard_url'),
-        grafana_initial_admin_password=pulumi.get(__ret__, 'grafana_initial_admin_password'),
-        grafana_initial_admin_user=pulumi.get(__ret__, 'grafana_initial_admin_user'),
+        grafana_admin_enabled=pulumi.get(__ret__, 'grafana_admin_enabled'),
         grafana_public_read_access=pulumi.get(__ret__, 'grafana_public_read_access'),
         grafana_url=pulumi.get(__ret__, 'grafana_url'),
         id=pulumi.get(__ret__, 'id'),
@@ -454,8 +441,7 @@ def get_observability_instance_output(instance_id: Optional[pulumi.Input[_builti
         alert_config=pulumi.get(__response__, 'alert_config'),
         alerting_url=pulumi.get(__response__, 'alerting_url'),
         dashboard_url=pulumi.get(__response__, 'dashboard_url'),
-        grafana_initial_admin_password=pulumi.get(__response__, 'grafana_initial_admin_password'),
-        grafana_initial_admin_user=pulumi.get(__response__, 'grafana_initial_admin_user'),
+        grafana_admin_enabled=pulumi.get(__response__, 'grafana_admin_enabled'),
         grafana_public_read_access=pulumi.get(__response__, 'grafana_public_read_access'),
         grafana_url=pulumi.get(__response__, 'grafana_url'),
         id=pulumi.get(__response__, 'id'),

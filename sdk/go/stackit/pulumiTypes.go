@@ -21028,6 +21028,362 @@ func (o GetSkeClusterNodePoolTaintArrayOutput) Index(i pulumi.IntInput) GetSkeCl
 	}).(GetSkeClusterNodePoolTaintOutput)
 }
 
+type GetSkeKubernetesVersionsKubernetesVersion struct {
+	// Expiration date of the version in RFC3339 format.
+	ExpirationDate string `pulumi:"expirationDate"`
+	// Map of available feature gates for this version.
+	FeatureGates map[string]string `pulumi:"featureGates"`
+	// State of the kubernetes version.
+	State string `pulumi:"state"`
+	// Kubernetes version string (e.g., `1.33.6`).
+	Version string `pulumi:"version"`
+}
+
+// GetSkeKubernetesVersionsKubernetesVersionInput is an input type that accepts GetSkeKubernetesVersionsKubernetesVersionArgs and GetSkeKubernetesVersionsKubernetesVersionOutput values.
+// You can construct a concrete instance of `GetSkeKubernetesVersionsKubernetesVersionInput` via:
+//
+//	GetSkeKubernetesVersionsKubernetesVersionArgs{...}
+type GetSkeKubernetesVersionsKubernetesVersionInput interface {
+	pulumi.Input
+
+	ToGetSkeKubernetesVersionsKubernetesVersionOutput() GetSkeKubernetesVersionsKubernetesVersionOutput
+	ToGetSkeKubernetesVersionsKubernetesVersionOutputWithContext(context.Context) GetSkeKubernetesVersionsKubernetesVersionOutput
+}
+
+type GetSkeKubernetesVersionsKubernetesVersionArgs struct {
+	// Expiration date of the version in RFC3339 format.
+	ExpirationDate pulumi.StringInput `pulumi:"expirationDate"`
+	// Map of available feature gates for this version.
+	FeatureGates pulumi.StringMapInput `pulumi:"featureGates"`
+	// State of the kubernetes version.
+	State pulumi.StringInput `pulumi:"state"`
+	// Kubernetes version string (e.g., `1.33.6`).
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetSkeKubernetesVersionsKubernetesVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSkeKubernetesVersionsKubernetesVersion)(nil)).Elem()
+}
+
+func (i GetSkeKubernetesVersionsKubernetesVersionArgs) ToGetSkeKubernetesVersionsKubernetesVersionOutput() GetSkeKubernetesVersionsKubernetesVersionOutput {
+	return i.ToGetSkeKubernetesVersionsKubernetesVersionOutputWithContext(context.Background())
+}
+
+func (i GetSkeKubernetesVersionsKubernetesVersionArgs) ToGetSkeKubernetesVersionsKubernetesVersionOutputWithContext(ctx context.Context) GetSkeKubernetesVersionsKubernetesVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSkeKubernetesVersionsKubernetesVersionOutput)
+}
+
+// GetSkeKubernetesVersionsKubernetesVersionArrayInput is an input type that accepts GetSkeKubernetesVersionsKubernetesVersionArray and GetSkeKubernetesVersionsKubernetesVersionArrayOutput values.
+// You can construct a concrete instance of `GetSkeKubernetesVersionsKubernetesVersionArrayInput` via:
+//
+//	GetSkeKubernetesVersionsKubernetesVersionArray{ GetSkeKubernetesVersionsKubernetesVersionArgs{...} }
+type GetSkeKubernetesVersionsKubernetesVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetSkeKubernetesVersionsKubernetesVersionArrayOutput() GetSkeKubernetesVersionsKubernetesVersionArrayOutput
+	ToGetSkeKubernetesVersionsKubernetesVersionArrayOutputWithContext(context.Context) GetSkeKubernetesVersionsKubernetesVersionArrayOutput
+}
+
+type GetSkeKubernetesVersionsKubernetesVersionArray []GetSkeKubernetesVersionsKubernetesVersionInput
+
+func (GetSkeKubernetesVersionsKubernetesVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSkeKubernetesVersionsKubernetesVersion)(nil)).Elem()
+}
+
+func (i GetSkeKubernetesVersionsKubernetesVersionArray) ToGetSkeKubernetesVersionsKubernetesVersionArrayOutput() GetSkeKubernetesVersionsKubernetesVersionArrayOutput {
+	return i.ToGetSkeKubernetesVersionsKubernetesVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetSkeKubernetesVersionsKubernetesVersionArray) ToGetSkeKubernetesVersionsKubernetesVersionArrayOutputWithContext(ctx context.Context) GetSkeKubernetesVersionsKubernetesVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSkeKubernetesVersionsKubernetesVersionArrayOutput)
+}
+
+type GetSkeKubernetesVersionsKubernetesVersionOutput struct{ *pulumi.OutputState }
+
+func (GetSkeKubernetesVersionsKubernetesVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSkeKubernetesVersionsKubernetesVersion)(nil)).Elem()
+}
+
+func (o GetSkeKubernetesVersionsKubernetesVersionOutput) ToGetSkeKubernetesVersionsKubernetesVersionOutput() GetSkeKubernetesVersionsKubernetesVersionOutput {
+	return o
+}
+
+func (o GetSkeKubernetesVersionsKubernetesVersionOutput) ToGetSkeKubernetesVersionsKubernetesVersionOutputWithContext(ctx context.Context) GetSkeKubernetesVersionsKubernetesVersionOutput {
+	return o
+}
+
+// Expiration date of the version in RFC3339 format.
+func (o GetSkeKubernetesVersionsKubernetesVersionOutput) ExpirationDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSkeKubernetesVersionsKubernetesVersion) string { return v.ExpirationDate }).(pulumi.StringOutput)
+}
+
+// Map of available feature gates for this version.
+func (o GetSkeKubernetesVersionsKubernetesVersionOutput) FeatureGates() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetSkeKubernetesVersionsKubernetesVersion) map[string]string { return v.FeatureGates }).(pulumi.StringMapOutput)
+}
+
+// State of the kubernetes version.
+func (o GetSkeKubernetesVersionsKubernetesVersionOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSkeKubernetesVersionsKubernetesVersion) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Kubernetes version string (e.g., `1.33.6`).
+func (o GetSkeKubernetesVersionsKubernetesVersionOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSkeKubernetesVersionsKubernetesVersion) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetSkeKubernetesVersionsKubernetesVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSkeKubernetesVersionsKubernetesVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSkeKubernetesVersionsKubernetesVersion)(nil)).Elem()
+}
+
+func (o GetSkeKubernetesVersionsKubernetesVersionArrayOutput) ToGetSkeKubernetesVersionsKubernetesVersionArrayOutput() GetSkeKubernetesVersionsKubernetesVersionArrayOutput {
+	return o
+}
+
+func (o GetSkeKubernetesVersionsKubernetesVersionArrayOutput) ToGetSkeKubernetesVersionsKubernetesVersionArrayOutputWithContext(ctx context.Context) GetSkeKubernetesVersionsKubernetesVersionArrayOutput {
+	return o
+}
+
+func (o GetSkeKubernetesVersionsKubernetesVersionArrayOutput) Index(i pulumi.IntInput) GetSkeKubernetesVersionsKubernetesVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSkeKubernetesVersionsKubernetesVersion {
+		return vs[0].([]GetSkeKubernetesVersionsKubernetesVersion)[vs[1].(int)]
+	}).(GetSkeKubernetesVersionsKubernetesVersionOutput)
+}
+
+type GetSkeMachineImageVersionsMachineImage struct {
+	// Name of the OS image (e.g., `ubuntu` or `flatcar`).
+	Name string `pulumi:"name"`
+	// Supported versions of the image.
+	Versions []GetSkeMachineImageVersionsMachineImageVersion `pulumi:"versions"`
+}
+
+// GetSkeMachineImageVersionsMachineImageInput is an input type that accepts GetSkeMachineImageVersionsMachineImageArgs and GetSkeMachineImageVersionsMachineImageOutput values.
+// You can construct a concrete instance of `GetSkeMachineImageVersionsMachineImageInput` via:
+//
+//	GetSkeMachineImageVersionsMachineImageArgs{...}
+type GetSkeMachineImageVersionsMachineImageInput interface {
+	pulumi.Input
+
+	ToGetSkeMachineImageVersionsMachineImageOutput() GetSkeMachineImageVersionsMachineImageOutput
+	ToGetSkeMachineImageVersionsMachineImageOutputWithContext(context.Context) GetSkeMachineImageVersionsMachineImageOutput
+}
+
+type GetSkeMachineImageVersionsMachineImageArgs struct {
+	// Name of the OS image (e.g., `ubuntu` or `flatcar`).
+	Name pulumi.StringInput `pulumi:"name"`
+	// Supported versions of the image.
+	Versions GetSkeMachineImageVersionsMachineImageVersionArrayInput `pulumi:"versions"`
+}
+
+func (GetSkeMachineImageVersionsMachineImageArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSkeMachineImageVersionsMachineImage)(nil)).Elem()
+}
+
+func (i GetSkeMachineImageVersionsMachineImageArgs) ToGetSkeMachineImageVersionsMachineImageOutput() GetSkeMachineImageVersionsMachineImageOutput {
+	return i.ToGetSkeMachineImageVersionsMachineImageOutputWithContext(context.Background())
+}
+
+func (i GetSkeMachineImageVersionsMachineImageArgs) ToGetSkeMachineImageVersionsMachineImageOutputWithContext(ctx context.Context) GetSkeMachineImageVersionsMachineImageOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSkeMachineImageVersionsMachineImageOutput)
+}
+
+// GetSkeMachineImageVersionsMachineImageArrayInput is an input type that accepts GetSkeMachineImageVersionsMachineImageArray and GetSkeMachineImageVersionsMachineImageArrayOutput values.
+// You can construct a concrete instance of `GetSkeMachineImageVersionsMachineImageArrayInput` via:
+//
+//	GetSkeMachineImageVersionsMachineImageArray{ GetSkeMachineImageVersionsMachineImageArgs{...} }
+type GetSkeMachineImageVersionsMachineImageArrayInput interface {
+	pulumi.Input
+
+	ToGetSkeMachineImageVersionsMachineImageArrayOutput() GetSkeMachineImageVersionsMachineImageArrayOutput
+	ToGetSkeMachineImageVersionsMachineImageArrayOutputWithContext(context.Context) GetSkeMachineImageVersionsMachineImageArrayOutput
+}
+
+type GetSkeMachineImageVersionsMachineImageArray []GetSkeMachineImageVersionsMachineImageInput
+
+func (GetSkeMachineImageVersionsMachineImageArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSkeMachineImageVersionsMachineImage)(nil)).Elem()
+}
+
+func (i GetSkeMachineImageVersionsMachineImageArray) ToGetSkeMachineImageVersionsMachineImageArrayOutput() GetSkeMachineImageVersionsMachineImageArrayOutput {
+	return i.ToGetSkeMachineImageVersionsMachineImageArrayOutputWithContext(context.Background())
+}
+
+func (i GetSkeMachineImageVersionsMachineImageArray) ToGetSkeMachineImageVersionsMachineImageArrayOutputWithContext(ctx context.Context) GetSkeMachineImageVersionsMachineImageArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSkeMachineImageVersionsMachineImageArrayOutput)
+}
+
+type GetSkeMachineImageVersionsMachineImageOutput struct{ *pulumi.OutputState }
+
+func (GetSkeMachineImageVersionsMachineImageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSkeMachineImageVersionsMachineImage)(nil)).Elem()
+}
+
+func (o GetSkeMachineImageVersionsMachineImageOutput) ToGetSkeMachineImageVersionsMachineImageOutput() GetSkeMachineImageVersionsMachineImageOutput {
+	return o
+}
+
+func (o GetSkeMachineImageVersionsMachineImageOutput) ToGetSkeMachineImageVersionsMachineImageOutputWithContext(ctx context.Context) GetSkeMachineImageVersionsMachineImageOutput {
+	return o
+}
+
+// Name of the OS image (e.g., `ubuntu` or `flatcar`).
+func (o GetSkeMachineImageVersionsMachineImageOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSkeMachineImageVersionsMachineImage) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Supported versions of the image.
+func (o GetSkeMachineImageVersionsMachineImageOutput) Versions() GetSkeMachineImageVersionsMachineImageVersionArrayOutput {
+	return o.ApplyT(func(v GetSkeMachineImageVersionsMachineImage) []GetSkeMachineImageVersionsMachineImageVersion {
+		return v.Versions
+	}).(GetSkeMachineImageVersionsMachineImageVersionArrayOutput)
+}
+
+type GetSkeMachineImageVersionsMachineImageArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSkeMachineImageVersionsMachineImageArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSkeMachineImageVersionsMachineImage)(nil)).Elem()
+}
+
+func (o GetSkeMachineImageVersionsMachineImageArrayOutput) ToGetSkeMachineImageVersionsMachineImageArrayOutput() GetSkeMachineImageVersionsMachineImageArrayOutput {
+	return o
+}
+
+func (o GetSkeMachineImageVersionsMachineImageArrayOutput) ToGetSkeMachineImageVersionsMachineImageArrayOutputWithContext(ctx context.Context) GetSkeMachineImageVersionsMachineImageArrayOutput {
+	return o
+}
+
+func (o GetSkeMachineImageVersionsMachineImageArrayOutput) Index(i pulumi.IntInput) GetSkeMachineImageVersionsMachineImageOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSkeMachineImageVersionsMachineImage {
+		return vs[0].([]GetSkeMachineImageVersionsMachineImage)[vs[1].(int)]
+	}).(GetSkeMachineImageVersionsMachineImageOutput)
+}
+
+type GetSkeMachineImageVersionsMachineImageVersion struct {
+	// Container runtimes supported (e.g., `containerd`).
+	Cris []string `pulumi:"cris"`
+	// Expiration date of the version in RFC3339 format.
+	ExpirationDate string `pulumi:"expirationDate"`
+	// State of the image version.
+	State string `pulumi:"state"`
+	// Machine image version string.
+	Version string `pulumi:"version"`
+}
+
+// GetSkeMachineImageVersionsMachineImageVersionInput is an input type that accepts GetSkeMachineImageVersionsMachineImageVersionArgs and GetSkeMachineImageVersionsMachineImageVersionOutput values.
+// You can construct a concrete instance of `GetSkeMachineImageVersionsMachineImageVersionInput` via:
+//
+//	GetSkeMachineImageVersionsMachineImageVersionArgs{...}
+type GetSkeMachineImageVersionsMachineImageVersionInput interface {
+	pulumi.Input
+
+	ToGetSkeMachineImageVersionsMachineImageVersionOutput() GetSkeMachineImageVersionsMachineImageVersionOutput
+	ToGetSkeMachineImageVersionsMachineImageVersionOutputWithContext(context.Context) GetSkeMachineImageVersionsMachineImageVersionOutput
+}
+
+type GetSkeMachineImageVersionsMachineImageVersionArgs struct {
+	// Container runtimes supported (e.g., `containerd`).
+	Cris pulumi.StringArrayInput `pulumi:"cris"`
+	// Expiration date of the version in RFC3339 format.
+	ExpirationDate pulumi.StringInput `pulumi:"expirationDate"`
+	// State of the image version.
+	State pulumi.StringInput `pulumi:"state"`
+	// Machine image version string.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetSkeMachineImageVersionsMachineImageVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSkeMachineImageVersionsMachineImageVersion)(nil)).Elem()
+}
+
+func (i GetSkeMachineImageVersionsMachineImageVersionArgs) ToGetSkeMachineImageVersionsMachineImageVersionOutput() GetSkeMachineImageVersionsMachineImageVersionOutput {
+	return i.ToGetSkeMachineImageVersionsMachineImageVersionOutputWithContext(context.Background())
+}
+
+func (i GetSkeMachineImageVersionsMachineImageVersionArgs) ToGetSkeMachineImageVersionsMachineImageVersionOutputWithContext(ctx context.Context) GetSkeMachineImageVersionsMachineImageVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSkeMachineImageVersionsMachineImageVersionOutput)
+}
+
+// GetSkeMachineImageVersionsMachineImageVersionArrayInput is an input type that accepts GetSkeMachineImageVersionsMachineImageVersionArray and GetSkeMachineImageVersionsMachineImageVersionArrayOutput values.
+// You can construct a concrete instance of `GetSkeMachineImageVersionsMachineImageVersionArrayInput` via:
+//
+//	GetSkeMachineImageVersionsMachineImageVersionArray{ GetSkeMachineImageVersionsMachineImageVersionArgs{...} }
+type GetSkeMachineImageVersionsMachineImageVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetSkeMachineImageVersionsMachineImageVersionArrayOutput() GetSkeMachineImageVersionsMachineImageVersionArrayOutput
+	ToGetSkeMachineImageVersionsMachineImageVersionArrayOutputWithContext(context.Context) GetSkeMachineImageVersionsMachineImageVersionArrayOutput
+}
+
+type GetSkeMachineImageVersionsMachineImageVersionArray []GetSkeMachineImageVersionsMachineImageVersionInput
+
+func (GetSkeMachineImageVersionsMachineImageVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSkeMachineImageVersionsMachineImageVersion)(nil)).Elem()
+}
+
+func (i GetSkeMachineImageVersionsMachineImageVersionArray) ToGetSkeMachineImageVersionsMachineImageVersionArrayOutput() GetSkeMachineImageVersionsMachineImageVersionArrayOutput {
+	return i.ToGetSkeMachineImageVersionsMachineImageVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetSkeMachineImageVersionsMachineImageVersionArray) ToGetSkeMachineImageVersionsMachineImageVersionArrayOutputWithContext(ctx context.Context) GetSkeMachineImageVersionsMachineImageVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSkeMachineImageVersionsMachineImageVersionArrayOutput)
+}
+
+type GetSkeMachineImageVersionsMachineImageVersionOutput struct{ *pulumi.OutputState }
+
+func (GetSkeMachineImageVersionsMachineImageVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSkeMachineImageVersionsMachineImageVersion)(nil)).Elem()
+}
+
+func (o GetSkeMachineImageVersionsMachineImageVersionOutput) ToGetSkeMachineImageVersionsMachineImageVersionOutput() GetSkeMachineImageVersionsMachineImageVersionOutput {
+	return o
+}
+
+func (o GetSkeMachineImageVersionsMachineImageVersionOutput) ToGetSkeMachineImageVersionsMachineImageVersionOutputWithContext(ctx context.Context) GetSkeMachineImageVersionsMachineImageVersionOutput {
+	return o
+}
+
+// Container runtimes supported (e.g., `containerd`).
+func (o GetSkeMachineImageVersionsMachineImageVersionOutput) Cris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSkeMachineImageVersionsMachineImageVersion) []string { return v.Cris }).(pulumi.StringArrayOutput)
+}
+
+// Expiration date of the version in RFC3339 format.
+func (o GetSkeMachineImageVersionsMachineImageVersionOutput) ExpirationDate() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSkeMachineImageVersionsMachineImageVersion) string { return v.ExpirationDate }).(pulumi.StringOutput)
+}
+
+// State of the image version.
+func (o GetSkeMachineImageVersionsMachineImageVersionOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSkeMachineImageVersionsMachineImageVersion) string { return v.State }).(pulumi.StringOutput)
+}
+
+// Machine image version string.
+func (o GetSkeMachineImageVersionsMachineImageVersionOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSkeMachineImageVersionsMachineImageVersion) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetSkeMachineImageVersionsMachineImageVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSkeMachineImageVersionsMachineImageVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSkeMachineImageVersionsMachineImageVersion)(nil)).Elem()
+}
+
+func (o GetSkeMachineImageVersionsMachineImageVersionArrayOutput) ToGetSkeMachineImageVersionsMachineImageVersionArrayOutput() GetSkeMachineImageVersionsMachineImageVersionArrayOutput {
+	return o
+}
+
+func (o GetSkeMachineImageVersionsMachineImageVersionArrayOutput) ToGetSkeMachineImageVersionsMachineImageVersionArrayOutputWithContext(ctx context.Context) GetSkeMachineImageVersionsMachineImageVersionArrayOutput {
+	return o
+}
+
+func (o GetSkeMachineImageVersionsMachineImageVersionArrayOutput) Index(i pulumi.IntInput) GetSkeMachineImageVersionsMachineImageVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSkeMachineImageVersionsMachineImageVersion {
+		return vs[0].([]GetSkeMachineImageVersionsMachineImageVersion)[vs[1].(int)]
+	}).(GetSkeMachineImageVersionsMachineImageVersionOutput)
+}
+
 type GetSqlserverflexInstanceFlavor struct {
 	Cpu         int    `pulumi:"cpu"`
 	Description string `pulumi:"description"`
@@ -21520,6 +21876,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeClusterNodePoolArrayInput)(nil)).Elem(), GetSkeClusterNodePoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeClusterNodePoolTaintInput)(nil)).Elem(), GetSkeClusterNodePoolTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeClusterNodePoolTaintArrayInput)(nil)).Elem(), GetSkeClusterNodePoolTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeKubernetesVersionsKubernetesVersionInput)(nil)).Elem(), GetSkeKubernetesVersionsKubernetesVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeKubernetesVersionsKubernetesVersionArrayInput)(nil)).Elem(), GetSkeKubernetesVersionsKubernetesVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeMachineImageVersionsMachineImageInput)(nil)).Elem(), GetSkeMachineImageVersionsMachineImageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeMachineImageVersionsMachineImageArrayInput)(nil)).Elem(), GetSkeMachineImageVersionsMachineImageArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeMachineImageVersionsMachineImageVersionInput)(nil)).Elem(), GetSkeMachineImageVersionsMachineImageVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeMachineImageVersionsMachineImageVersionArrayInput)(nil)).Elem(), GetSkeMachineImageVersionsMachineImageVersionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlserverflexInstanceFlavorInput)(nil)).Elem(), GetSqlserverflexInstanceFlavorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlserverflexInstanceOptionsInput)(nil)).Elem(), GetSqlserverflexInstanceOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlserverflexInstanceStorageInput)(nil)).Elem(), GetSqlserverflexInstanceStorageArgs{})
@@ -21777,6 +22139,12 @@ func init() {
 	pulumi.RegisterOutputType(GetSkeClusterNodePoolArrayOutput{})
 	pulumi.RegisterOutputType(GetSkeClusterNodePoolTaintOutput{})
 	pulumi.RegisterOutputType(GetSkeClusterNodePoolTaintArrayOutput{})
+	pulumi.RegisterOutputType(GetSkeKubernetesVersionsKubernetesVersionOutput{})
+	pulumi.RegisterOutputType(GetSkeKubernetesVersionsKubernetesVersionArrayOutput{})
+	pulumi.RegisterOutputType(GetSkeMachineImageVersionsMachineImageOutput{})
+	pulumi.RegisterOutputType(GetSkeMachineImageVersionsMachineImageArrayOutput{})
+	pulumi.RegisterOutputType(GetSkeMachineImageVersionsMachineImageVersionOutput{})
+	pulumi.RegisterOutputType(GetSkeMachineImageVersionsMachineImageVersionArrayOutput{})
 	pulumi.RegisterOutputType(GetSqlserverflexInstanceFlavorOutput{})
 	pulumi.RegisterOutputType(GetSqlserverflexInstanceOptionsOutput{})
 	pulumi.RegisterOutputType(GetSqlserverflexInstanceStorageOutput{})
