@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AuthorizationFolderRoleAssignment{}
 	case "stackit:index/authorizationOrganizationRoleAssignment:AuthorizationOrganizationRoleAssignment":
 		r = &AuthorizationOrganizationRoleAssignment{}
+	case "stackit:index/authorizationProjectCustomRole:AuthorizationProjectCustomRole":
+		r = &AuthorizationProjectCustomRole{}
 	case "stackit:index/authorizationProjectRoleAssignment:AuthorizationProjectRoleAssignment":
 		r = &AuthorizationProjectRoleAssignment{}
 	case "stackit:index/cdnCustomDomain:CdnCustomDomain":
@@ -221,6 +223,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"stackit",
 		"index/authorizationOrganizationRoleAssignment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/authorizationProjectCustomRole",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

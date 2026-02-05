@@ -42,10 +42,8 @@ type LookupObservabilityInstanceResult struct {
 	AlertingUrl string `pulumi:"alertingUrl"`
 	// Specifies Observability instance dashboard URL.
 	DashboardUrl string `pulumi:"dashboardUrl"`
-	// Specifies an initial Grafana admin password.
-	GrafanaInitialAdminPassword string `pulumi:"grafanaInitialAdminPassword"`
-	// Specifies an initial Grafana admin username.
-	GrafanaInitialAdminUser string `pulumi:"grafanaInitialAdminUser"`
+	// If true, a default Grafana server admin user was created.
+	GrafanaAdminEnabled bool `pulumi:"grafanaAdminEnabled"`
 	// If true, anyone can access Grafana dashboards without logging in.
 	GrafanaPublicReadAccess bool `pulumi:"grafanaPublicReadAccess"`
 	// Specifies Grafana URL.
@@ -147,14 +145,9 @@ func (o LookupObservabilityInstanceResultOutput) DashboardUrl() pulumi.StringOut
 	return o.ApplyT(func(v LookupObservabilityInstanceResult) string { return v.DashboardUrl }).(pulumi.StringOutput)
 }
 
-// Specifies an initial Grafana admin password.
-func (o LookupObservabilityInstanceResultOutput) GrafanaInitialAdminPassword() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupObservabilityInstanceResult) string { return v.GrafanaInitialAdminPassword }).(pulumi.StringOutput)
-}
-
-// Specifies an initial Grafana admin username.
-func (o LookupObservabilityInstanceResultOutput) GrafanaInitialAdminUser() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupObservabilityInstanceResult) string { return v.GrafanaInitialAdminUser }).(pulumi.StringOutput)
+// If true, a default Grafana server admin user was created.
+func (o LookupObservabilityInstanceResultOutput) GrafanaAdminEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupObservabilityInstanceResult) bool { return v.GrafanaAdminEnabled }).(pulumi.BoolOutput)
 }
 
 // If true, anyone can access Grafana dashboards without logging in.

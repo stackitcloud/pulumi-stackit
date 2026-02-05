@@ -54,13 +54,9 @@ export interface GetObservabilityInstanceResult {
      */
     readonly dashboardUrl: string;
     /**
-     * Specifies an initial Grafana admin password.
+     * If true, a default Grafana server admin user was created.
      */
-    readonly grafanaInitialAdminPassword: string;
-    /**
-     * Specifies an initial Grafana admin username.
-     */
-    readonly grafanaInitialAdminUser: string;
+    readonly grafanaAdminEnabled: boolean;
     /**
      * If true, anyone can access Grafana dashboards without logging in.
      */

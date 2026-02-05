@@ -167,6 +167,9 @@ __all__ = [
     'GetSkeClusterNetworkResult',
     'GetSkeClusterNodePoolResult',
     'GetSkeClusterNodePoolTaintResult',
+    'GetSkeKubernetesVersionsKubernetesVersionResult',
+    'GetSkeMachineImageVersionsMachineImageResult',
+    'GetSkeMachineImageVersionsMachineImageVersionResult',
     'GetSqlserverflexInstanceFlavorResult',
     'GetSqlserverflexInstanceOptionsResult',
     'GetSqlserverflexInstanceStorageResult',
@@ -9793,6 +9796,137 @@ class GetSkeClusterNodePoolTaintResult(dict):
         Taint value corresponding to the taint key.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetSkeKubernetesVersionsKubernetesVersionResult(dict):
+    def __init__(__self__, *,
+                 expiration_date: _builtins.str,
+                 feature_gates: Mapping[str, _builtins.str],
+                 state: _builtins.str,
+                 version: _builtins.str):
+        """
+        :param _builtins.str expiration_date: Expiration date of the version in RFC3339 format.
+        :param Mapping[str, _builtins.str] feature_gates: Map of available feature gates for this version.
+        :param _builtins.str state: State of the kubernetes version.
+        :param _builtins.str version: Kubernetes version string (e.g., `1.33.6`).
+        """
+        pulumi.set(__self__, "expiration_date", expiration_date)
+        pulumi.set(__self__, "feature_gates", feature_gates)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter(name="expirationDate")
+    def expiration_date(self) -> _builtins.str:
+        """
+        Expiration date of the version in RFC3339 format.
+        """
+        return pulumi.get(self, "expiration_date")
+
+    @_builtins.property
+    @pulumi.getter(name="featureGates")
+    def feature_gates(self) -> Mapping[str, _builtins.str]:
+        """
+        Map of available feature gates for this version.
+        """
+        return pulumi.get(self, "feature_gates")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        State of the kubernetes version.
+        """
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> _builtins.str:
+        """
+        Kubernetes version string (e.g., `1.33.6`).
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetSkeMachineImageVersionsMachineImageResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 versions: Sequence['outputs.GetSkeMachineImageVersionsMachineImageVersionResult']):
+        """
+        :param _builtins.str name: Name of the OS image (e.g., `ubuntu` or `flatcar`).
+        :param Sequence['GetSkeMachineImageVersionsMachineImageVersionArgs'] versions: Supported versions of the image.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "versions", versions)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the OS image (e.g., `ubuntu` or `flatcar`).
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def versions(self) -> Sequence['outputs.GetSkeMachineImageVersionsMachineImageVersionResult']:
+        """
+        Supported versions of the image.
+        """
+        return pulumi.get(self, "versions")
+
+
+@pulumi.output_type
+class GetSkeMachineImageVersionsMachineImageVersionResult(dict):
+    def __init__(__self__, *,
+                 cris: Sequence[_builtins.str],
+                 expiration_date: _builtins.str,
+                 state: _builtins.str,
+                 version: _builtins.str):
+        """
+        :param Sequence[_builtins.str] cris: Container runtimes supported (e.g., `containerd`).
+        :param _builtins.str expiration_date: Expiration date of the version in RFC3339 format.
+        :param _builtins.str state: State of the image version.
+        :param _builtins.str version: Machine image version string.
+        """
+        pulumi.set(__self__, "cris", cris)
+        pulumi.set(__self__, "expiration_date", expiration_date)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter
+    def cris(self) -> Sequence[_builtins.str]:
+        """
+        Container runtimes supported (e.g., `containerd`).
+        """
+        return pulumi.get(self, "cris")
+
+    @_builtins.property
+    @pulumi.getter(name="expirationDate")
+    def expiration_date(self) -> _builtins.str:
+        """
+        Expiration date of the version in RFC3339 format.
+        """
+        return pulumi.get(self, "expiration_date")
+
+    @_builtins.property
+    @pulumi.getter
+    def state(self) -> _builtins.str:
+        """
+        State of the image version.
+        """
+        return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> _builtins.str:
+        """
+        Machine image version string.
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type

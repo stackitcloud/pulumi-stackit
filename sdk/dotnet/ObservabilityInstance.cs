@@ -42,16 +42,10 @@ namespace Pulumi.Stackit
         public Output<string> DashboardUrl { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies an initial Grafana admin password.
+        /// If true, a default Grafana server admin user is created. It's recommended to set this to false and use STACKIT SSO (Owner or Observability Grafana Server Admin role) instead. It is still possible to manually create a new Grafana admin user via the Grafana UI later.
         /// </summary>
-        [Output("grafanaInitialAdminPassword")]
-        public Output<string> GrafanaInitialAdminPassword { get; private set; } = null!;
-
-        /// <summary>
-        /// Specifies an initial Grafana admin username.
-        /// </summary>
-        [Output("grafanaInitialAdminUser")]
-        public Output<string> GrafanaInitialAdminUser { get; private set; } = null!;
+        [Output("grafanaAdminEnabled")]
+        public Output<bool> GrafanaAdminEnabled { get; private set; } = null!;
 
         /// <summary>
         /// If true, anyone can access Grafana dashboards without logging in.
@@ -203,10 +197,6 @@ namespace Pulumi.Stackit
             {
                 Version = Utilities.Version,
                 PluginDownloadURL = "github://api.github.com/stackitcloud/pulumi-stackit",
-                AdditionalSecretOutputs =
-                {
-                    "grafanaInitialAdminPassword",
-                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -247,6 +237,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("alertConfig")]
         public Input<Inputs.ObservabilityInstanceAlertConfigArgs>? AlertConfig { get; set; }
+
+        /// <summary>
+        /// If true, a default Grafana server admin user is created. It's recommended to set this to false and use STACKIT SSO (Owner or Observability Grafana Server Admin role) instead. It is still possible to manually create a new Grafana admin user via the Grafana UI later.
+        /// </summary>
+        [Input("grafanaAdminEnabled")]
+        public Input<bool>? GrafanaAdminEnabled { get; set; }
 
         /// <summary>
         /// Specifies for how many days the logs are kept. Default is set to `7`.
@@ -346,27 +342,11 @@ namespace Pulumi.Stackit
         [Input("dashboardUrl")]
         public Input<string>? DashboardUrl { get; set; }
 
-        [Input("grafanaInitialAdminPassword")]
-        private Input<string>? _grafanaInitialAdminPassword;
-
         /// <summary>
-        /// Specifies an initial Grafana admin password.
+        /// If true, a default Grafana server admin user is created. It's recommended to set this to false and use STACKIT SSO (Owner or Observability Grafana Server Admin role) instead. It is still possible to manually create a new Grafana admin user via the Grafana UI later.
         /// </summary>
-        public Input<string>? GrafanaInitialAdminPassword
-        {
-            get => _grafanaInitialAdminPassword;
-            set
-            {
-                var emptySecret = Output.CreateSecret(0);
-                _grafanaInitialAdminPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
-            }
-        }
-
-        /// <summary>
-        /// Specifies an initial Grafana admin username.
-        /// </summary>
-        [Input("grafanaInitialAdminUser")]
-        public Input<string>? GrafanaInitialAdminUser { get; set; }
+        [Input("grafanaAdminEnabled")]
+        public Input<bool>? GrafanaAdminEnabled { get; set; }
 
         /// <summary>
         /// If true, anyone can access Grafana dashboards without logging in.

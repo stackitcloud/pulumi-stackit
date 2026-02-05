@@ -9,6 +9,7 @@ import typing
 from .affinity_group import *
 from .authorization_folder_role_assignment import *
 from .authorization_organization_role_assignment import *
+from .authorization_project_custom_role import *
 from .authorization_project_role_assignment import *
 from .cdn_custom_domain import *
 from .cdn_distribution import *
@@ -18,6 +19,7 @@ from .edgecloud_instance import *
 from .edgecloud_kubeconfig import *
 from .edgecloud_token import *
 from .get_affinity_group import *
+from .get_authorization_project_custom_role import *
 from .get_cdn_custom_domain import *
 from .get_cdn_distribution import *
 from .get_dns_record_set import *
@@ -88,6 +90,8 @@ from .get_sfs_resource_pool import *
 from .get_sfs_resource_pool_snapshot import *
 from .get_sfs_share import *
 from .get_ske_cluster import *
+from .get_ske_kubernetes_versions import *
+from .get_ske_machine_image_versions import *
 from .get_sqlserverflex_instance import *
 from .get_sqlserverflex_user import *
 from .get_volume import *
@@ -194,6 +198,14 @@ _utilities.register(
   "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/authorizationOrganizationRoleAssignment:AuthorizationOrganizationRoleAssignment": "AuthorizationOrganizationRoleAssignment"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/authorizationProjectCustomRole",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/authorizationProjectCustomRole:AuthorizationProjectCustomRole": "AuthorizationProjectCustomRole"
   }
  },
  {

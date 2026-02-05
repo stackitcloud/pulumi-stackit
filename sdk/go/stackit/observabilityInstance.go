@@ -26,10 +26,8 @@ type ObservabilityInstance struct {
 	AlertingUrl pulumi.StringOutput `pulumi:"alertingUrl"`
 	// Specifies Observability instance dashboard URL.
 	DashboardUrl pulumi.StringOutput `pulumi:"dashboardUrl"`
-	// Specifies an initial Grafana admin password.
-	GrafanaInitialAdminPassword pulumi.StringOutput `pulumi:"grafanaInitialAdminPassword"`
-	// Specifies an initial Grafana admin username.
-	GrafanaInitialAdminUser pulumi.StringOutput `pulumi:"grafanaInitialAdminUser"`
+	// If true, a default Grafana server admin user is created. It's recommended to set this to false and use STACKIT SSO (Owner or Observability Grafana Server Admin role) instead. It is still possible to manually create a new Grafana admin user via the Grafana UI later.
+	GrafanaAdminEnabled pulumi.BoolOutput `pulumi:"grafanaAdminEnabled"`
 	// If true, anyone can access Grafana dashboards without logging in.
 	GrafanaPublicReadAccess pulumi.BoolOutput `pulumi:"grafanaPublicReadAccess"`
 	// Specifies Grafana URL.
@@ -87,10 +85,6 @@ func NewObservabilityInstance(ctx *pulumi.Context,
 	if args.ProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
-	secrets := pulumi.AdditionalSecretOutputs([]string{
-		"grafanaInitialAdminPassword",
-	})
-	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource ObservabilityInstance
 	err := ctx.RegisterResource("stackit:index/observabilityInstance:ObservabilityInstance", name, args, &resource, opts...)
@@ -122,10 +116,8 @@ type observabilityInstanceState struct {
 	AlertingUrl *string `pulumi:"alertingUrl"`
 	// Specifies Observability instance dashboard URL.
 	DashboardUrl *string `pulumi:"dashboardUrl"`
-	// Specifies an initial Grafana admin password.
-	GrafanaInitialAdminPassword *string `pulumi:"grafanaInitialAdminPassword"`
-	// Specifies an initial Grafana admin username.
-	GrafanaInitialAdminUser *string `pulumi:"grafanaInitialAdminUser"`
+	// If true, a default Grafana server admin user is created. It's recommended to set this to false and use STACKIT SSO (Owner or Observability Grafana Server Admin role) instead. It is still possible to manually create a new Grafana admin user via the Grafana UI later.
+	GrafanaAdminEnabled *bool `pulumi:"grafanaAdminEnabled"`
 	// If true, anyone can access Grafana dashboards without logging in.
 	GrafanaPublicReadAccess *bool `pulumi:"grafanaPublicReadAccess"`
 	// Specifies Grafana URL.
@@ -179,10 +171,8 @@ type ObservabilityInstanceState struct {
 	AlertingUrl pulumi.StringPtrInput
 	// Specifies Observability instance dashboard URL.
 	DashboardUrl pulumi.StringPtrInput
-	// Specifies an initial Grafana admin password.
-	GrafanaInitialAdminPassword pulumi.StringPtrInput
-	// Specifies an initial Grafana admin username.
-	GrafanaInitialAdminUser pulumi.StringPtrInput
+	// If true, a default Grafana server admin user is created. It's recommended to set this to false and use STACKIT SSO (Owner or Observability Grafana Server Admin role) instead. It is still possible to manually create a new Grafana admin user via the Grafana UI later.
+	GrafanaAdminEnabled pulumi.BoolPtrInput
 	// If true, anyone can access Grafana dashboards without logging in.
 	GrafanaPublicReadAccess pulumi.BoolPtrInput
 	// Specifies Grafana URL.
@@ -236,6 +226,8 @@ type observabilityInstanceArgs struct {
 	Acls []string `pulumi:"acls"`
 	// Alert configuration for the instance.
 	AlertConfig *ObservabilityInstanceAlertConfig `pulumi:"alertConfig"`
+	// If true, a default Grafana server admin user is created. It's recommended to set this to false and use STACKIT SSO (Owner or Observability Grafana Server Admin role) instead. It is still possible to manually create a new Grafana admin user via the Grafana UI later.
+	GrafanaAdminEnabled *bool `pulumi:"grafanaAdminEnabled"`
 	// Specifies for how many days the logs are kept. Default is set to `7`.
 	LogsRetentionDays *int `pulumi:"logsRetentionDays"`
 	// Specifies for how many days the raw metrics are kept. Default is set to `90`.
@@ -262,6 +254,8 @@ type ObservabilityInstanceArgs struct {
 	Acls pulumi.StringArrayInput
 	// Alert configuration for the instance.
 	AlertConfig ObservabilityInstanceAlertConfigPtrInput
+	// If true, a default Grafana server admin user is created. It's recommended to set this to false and use STACKIT SSO (Owner or Observability Grafana Server Admin role) instead. It is still possible to manually create a new Grafana admin user via the Grafana UI later.
+	GrafanaAdminEnabled pulumi.BoolPtrInput
 	// Specifies for how many days the logs are kept. Default is set to `7`.
 	LogsRetentionDays pulumi.IntPtrInput
 	// Specifies for how many days the raw metrics are kept. Default is set to `90`.
@@ -389,14 +383,9 @@ func (o ObservabilityInstanceOutput) DashboardUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObservabilityInstance) pulumi.StringOutput { return v.DashboardUrl }).(pulumi.StringOutput)
 }
 
-// Specifies an initial Grafana admin password.
-func (o ObservabilityInstanceOutput) GrafanaInitialAdminPassword() pulumi.StringOutput {
-	return o.ApplyT(func(v *ObservabilityInstance) pulumi.StringOutput { return v.GrafanaInitialAdminPassword }).(pulumi.StringOutput)
-}
-
-// Specifies an initial Grafana admin username.
-func (o ObservabilityInstanceOutput) GrafanaInitialAdminUser() pulumi.StringOutput {
-	return o.ApplyT(func(v *ObservabilityInstance) pulumi.StringOutput { return v.GrafanaInitialAdminUser }).(pulumi.StringOutput)
+// If true, a default Grafana server admin user is created. It's recommended to set this to false and use STACKIT SSO (Owner or Observability Grafana Server Admin role) instead. It is still possible to manually create a new Grafana admin user via the Grafana UI later.
+func (o ObservabilityInstanceOutput) GrafanaAdminEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ObservabilityInstance) pulumi.BoolOutput { return v.GrafanaAdminEnabled }).(pulumi.BoolOutput)
 }
 
 // If true, anyone can access Grafana dashboards without logging in.

@@ -15,6 +15,14 @@
             "stackit_authorization_organization_role_assignment": {
                 "current": "stackit:index/authorizationOrganizationRoleAssignment:AuthorizationOrganizationRoleAssignment"
             },
+            "stackit_authorization_project_custom_role": {
+                "current": "stackit:index/authorizationProjectCustomRole:AuthorizationProjectCustomRole",
+                "fields": {
+                    "permissions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "stackit_authorization_project_role_assignment": {
                 "current": "stackit:index/authorizationProjectRoleAssignment:AuthorizationProjectRoleAssignment"
             },
@@ -658,6 +666,14 @@
                 "current": "stackit:index/getAffinityGroup:getAffinityGroup",
                 "fields": {
                     "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_authorization_project_custom_role": {
+                "current": "stackit:index/getAuthorizationProjectCustomRole:getAuthorizationProjectCustomRole",
+                "fields": {
+                    "permissions": {
                         "maxItemsOne": false
                     }
                 }
@@ -1322,6 +1338,36 @@
                     },
                     "pod_address_ranges": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_ske_kubernetes_versions": {
+                "current": "stackit:index/getSkeKubernetesVersions:getSkeKubernetesVersions",
+                "fields": {
+                    "kubernetes_versions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_ske_machine_image_versions": {
+                "current": "stackit:index/getSkeMachineImageVersions:getSkeMachineImageVersions",
+                "fields": {
+                    "machine_images": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "versions": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "cri": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },

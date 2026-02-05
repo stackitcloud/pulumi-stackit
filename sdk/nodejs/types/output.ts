@@ -1684,6 +1684,55 @@ export interface GetSkeClusterNodePoolTaint {
     value: string;
 }
 
+export interface GetSkeKubernetesVersionsKubernetesVersion {
+    /**
+     * Expiration date of the version in RFC3339 format.
+     */
+    expirationDate: string;
+    /**
+     * Map of available feature gates for this version.
+     */
+    featureGates: {[key: string]: string};
+    /**
+     * State of the kubernetes version.
+     */
+    state: string;
+    /**
+     * Kubernetes version string (e.g., `1.33.6`).
+     */
+    version: string;
+}
+
+export interface GetSkeMachineImageVersionsMachineImage {
+    /**
+     * Name of the OS image (e.g., `ubuntu` or `flatcar`).
+     */
+    name: string;
+    /**
+     * Supported versions of the image.
+     */
+    versions: outputs.GetSkeMachineImageVersionsMachineImageVersion[];
+}
+
+export interface GetSkeMachineImageVersionsMachineImageVersion {
+    /**
+     * Container runtimes supported (e.g., `containerd`).
+     */
+    cris: string[];
+    /**
+     * Expiration date of the version in RFC3339 format.
+     */
+    expirationDate: string;
+    /**
+     * State of the image version.
+     */
+    state: string;
+    /**
+     * Machine image version string.
+     */
+    version: string;
+}
+
 export interface GetSqlserverflexInstanceFlavor {
     cpu: number;
     description: string;
