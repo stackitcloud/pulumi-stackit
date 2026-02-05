@@ -5504,6 +5504,101 @@
                 }
             }
         },
+        "stackit:index/getSkeKubernetesVersionsKubernetesVersion:getSkeKubernetesVersionsKubernetesVersion": {
+            "properties": {
+                "expirationDate": {
+                    "type": "string",
+                    "description": "Expiration date of the version in RFC3339 format.\n"
+                },
+                "featureGates": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map of available feature gates for this version.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "State of the kubernetes version.\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Kubernetes version string (e.g., `1.33.6`).\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "expirationDate",
+                "featureGates",
+                "state",
+                "version"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getSkeMachineImageVersionsMachineImage:getSkeMachineImageVersionsMachineImage": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Name of the OS image (e.g., \u003cspan pulumi-lang-nodejs=\"`ubuntu`\" pulumi-lang-dotnet=\"`Ubuntu`\" pulumi-lang-go=\"`ubuntu`\" pulumi-lang-python=\"`ubuntu`\" pulumi-lang-yaml=\"`ubuntu`\" pulumi-lang-java=\"`ubuntu`\"\u003e`ubuntu`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`flatcar`\" pulumi-lang-dotnet=\"`Flatcar`\" pulumi-lang-go=\"`flatcar`\" pulumi-lang-python=\"`flatcar`\" pulumi-lang-yaml=\"`flatcar`\" pulumi-lang-java=\"`flatcar`\"\u003e`flatcar`\u003c/span\u003e).\n"
+                },
+                "versions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stackit:index/getSkeMachineImageVersionsMachineImageVersion:getSkeMachineImageVersionsMachineImageVersion"
+                    },
+                    "description": "Supported versions of the image.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "versions"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getSkeMachineImageVersionsMachineImageVersion:getSkeMachineImageVersionsMachineImageVersion": {
+            "properties": {
+                "cris": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Container runtimes supported (e.g., \u003cspan pulumi-lang-nodejs=\"`containerd`\" pulumi-lang-dotnet=\"`Containerd`\" pulumi-lang-go=\"`containerd`\" pulumi-lang-python=\"`containerd`\" pulumi-lang-yaml=\"`containerd`\" pulumi-lang-java=\"`containerd`\"\u003e`containerd`\u003c/span\u003e).\n"
+                },
+                "expirationDate": {
+                    "type": "string",
+                    "description": "Expiration date of the version in RFC3339 format.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "State of the image version.\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Machine image version string.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "cris",
+                "expirationDate",
+                "state",
+                "version"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "stackit:index/getSqlserverflexInstanceFlavor:getSqlserverflexInstanceFlavor": {
             "properties": {
                 "cpu": {
@@ -6154,6 +6249,96 @@
                     "subject": {
                         "type": "string",
                         "description": "Identifier of user, service account or client. Usually email address or name in case of clients\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "stackit:index/authorizationProjectCustomRole:AuthorizationProjectCustomRole": {
+            "description": "Custom Role resource schema.\n\n## Example Usage\n\n```terraform\nresource \"stackit_resourcemanager_project\" \"example\" {\n  name                = \"example_project\"\n  owner_email         = \"foo.bar@stackit.cloud\"\n  parent_container_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\nresource \"stackit_authorization_project_custom_role\" \"example\" {\n  resource_id = stackit_resourcemanager_project.example.project_id\n  name        = \"my.custom.role\"\n  description = \"Some description\"\n  permissions = [\n    \"iam.subject.get\"\n  ]\n}\n\n# Only use the import statement, if you want to import an existing custom role\nimport {\n  to = stackit_authorization_project_custom_role.import-example\n  id = \"${var.project_id},${var.custom_role_id}\"\n}\n```\n",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "A human readable description of the role.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the role\n"
+                },
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Permissions for the role\n"
+                },
+                "resourceId": {
+                    "type": "string",
+                    "description": "Resource to add the custom role to.\n"
+                },
+                "roleId": {
+                    "type": "string",
+                    "description": "The ID of the role.\n"
+                }
+            },
+            "required": [
+                "description",
+                "name",
+                "permissions",
+                "resourceId",
+                "roleId"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "A human readable description of the role.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the role\n"
+                },
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Permissions for the role\n"
+                },
+                "resourceId": {
+                    "type": "string",
+                    "description": "Resource to add the custom role to.\n"
+                }
+            },
+            "requiredInputs": [
+                "description",
+                "permissions",
+                "resourceId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AuthorizationProjectCustomRole resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "A human readable description of the role.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the role\n"
+                    },
+                    "permissions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Permissions for the role\n"
+                    },
+                    "resourceId": {
+                        "type": "string",
+                        "description": "Resource to add the custom role to.\n"
+                    },
+                    "roleId": {
+                        "type": "string",
+                        "description": "The ID of the role.\n"
                     }
                 },
                 "type": "object"
@@ -10790,14 +10975,9 @@
                     "type": "string",
                     "description": "Specifies Observability instance dashboard URL.\n"
                 },
-                "grafanaInitialAdminPassword": {
-                    "type": "string",
-                    "description": "Specifies an initial Grafana admin password.\n",
-                    "secret": true
-                },
-                "grafanaInitialAdminUser": {
-                    "type": "string",
-                    "description": "Specifies an initial Grafana admin username.\n"
+                "grafanaAdminEnabled": {
+                    "type": "boolean",
+                    "description": "If true, a default Grafana server admin user is created. It's recommended to set this to false and use STACKIT SSO (Owner or Observability Grafana Server Admin role) instead. It is still possible to manually create a new Grafana admin user via the Grafana UI later.\n"
                 },
                 "grafanaPublicReadAccess": {
                     "type": "boolean",
@@ -10894,8 +11074,7 @@
             "required": [
                 "alertingUrl",
                 "dashboardUrl",
-                "grafanaInitialAdminPassword",
-                "grafanaInitialAdminUser",
+                "grafanaAdminEnabled",
                 "grafanaPublicReadAccess",
                 "grafanaUrl",
                 "instanceId",
@@ -10931,6 +11110,10 @@
                 "alertConfig": {
                     "$ref": "#/types/stackit:index/ObservabilityInstanceAlertConfig:ObservabilityInstanceAlertConfig",
                     "description": "Alert configuration for the instance.\n"
+                },
+                "grafanaAdminEnabled": {
+                    "type": "boolean",
+                    "description": "If true, a default Grafana server admin user is created. It's recommended to set this to false and use STACKIT SSO (Owner or Observability Grafana Server Admin role) instead. It is still possible to manually create a new Grafana admin user via the Grafana UI later.\n"
                 },
                 "logsRetentionDays": {
                     "type": "integer",
@@ -10998,14 +11181,9 @@
                         "type": "string",
                         "description": "Specifies Observability instance dashboard URL.\n"
                     },
-                    "grafanaInitialAdminPassword": {
-                        "type": "string",
-                        "description": "Specifies an initial Grafana admin password.\n",
-                        "secret": true
-                    },
-                    "grafanaInitialAdminUser": {
-                        "type": "string",
-                        "description": "Specifies an initial Grafana admin username.\n"
+                    "grafanaAdminEnabled": {
+                        "type": "boolean",
+                        "description": "If true, a default Grafana server admin user is created. It's recommended to set this to false and use STACKIT SSO (Owner or Observability Grafana Server Admin role) instead. It is still possible to manually create a new Grafana admin user via the Grafana UI later.\n"
                     },
                     "grafanaPublicReadAccess": {
                         "type": "boolean",
@@ -15263,7 +15441,7 @@
             }
         },
         "stackit:index/skeCluster:SkeCluster": {
-            "description": "SKE Cluster Resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n\u003e When updating \u003cspan pulumi-lang-nodejs=\"`nodePools`\" pulumi-lang-dotnet=\"`NodePools`\" pulumi-lang-go=\"`nodePools`\" pulumi-lang-python=\"`node_pools`\" pulumi-lang-yaml=\"`nodePools`\" pulumi-lang-java=\"`nodePools`\"\u003e`node_pools`\u003c/span\u003e of a \u003cspan pulumi-lang-nodejs=\"`stackit.SkeCluster`\" pulumi-lang-dotnet=\"`stackit.SkeCluster`\" pulumi-lang-go=\"`SkeCluster`\" pulumi-lang-python=\"`SkeCluster`\" pulumi-lang-yaml=\"`stackit.SkeCluster`\" pulumi-lang-java=\"`stackit.SkeCluster`\"\u003e`stackit.SkeCluster`\u003c/span\u003e, the pulumi preview might appear incorrect as it matches the node pools by index rather than by name. However, the SKE API correctly identifies node pools by name and applies the intended changes. Please review your changes carefully to ensure the correct configuration will be applied.\n\n## Example Usage\n\n```terraform\nresource \"stackit_ske_cluster\" \"example\" {\n  project_id             = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name                   = \"example\"\n  kubernetes_version_min = \"x.x\"\n  node_pools = [\n    {\n      name               = \"np-example\"\n      machine_type       = \"x.x\"\n      os_version         = \"x.x.x\"\n      minimum            = \"2\"\n      maximum            = \"3\"\n      availability_zones = [\"eu01-3\"]\n    }\n  ]\n  maintenance = {\n    enable_kubernetes_version_updates    = true\n    enable_machine_image_version_updates = true\n    start                                = \"01:00:00Z\"\n    end                                  = \"02:00:00Z\"\n  }\n}\n\n# Only use the import statement, if you want to import an existing ske cluster\nimport {\n  to = stackit_ske_cluster.import-example\n  id = \"${var.project_id},${var.region},${var.ske_name}\"\n}\n```\n",
+            "description": "SKE Cluster Resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n\u003e When updating \u003cspan pulumi-lang-nodejs=\"`nodePools`\" pulumi-lang-dotnet=\"`NodePools`\" pulumi-lang-go=\"`nodePools`\" pulumi-lang-python=\"`node_pools`\" pulumi-lang-yaml=\"`nodePools`\" pulumi-lang-java=\"`nodePools`\"\u003e`node_pools`\u003c/span\u003e of a \u003cspan pulumi-lang-nodejs=\"`stackit.SkeCluster`\" pulumi-lang-dotnet=\"`stackit.SkeCluster`\" pulumi-lang-go=\"`SkeCluster`\" pulumi-lang-python=\"`SkeCluster`\" pulumi-lang-yaml=\"`stackit.SkeCluster`\" pulumi-lang-java=\"`stackit.SkeCluster`\"\u003e`stackit.SkeCluster`\u003c/span\u003e, the pulumi preview might appear incorrect as it matches the node pools by index rather than by name. However, the SKE API correctly identifies node pools by name and applies the intended changes. Please review your changes carefully to ensure the correct configuration will be applied.\n\n## Example Usage\n\n```terraform\nresource \"stackit_ske_cluster\" \"example\" {\n  project_id             = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name                   = \"example\"\n  kubernetes_version_min = \"x.x\"\n  node_pools = [\n    {\n      name               = \"np-example\"\n      machine_type       = \"x.x\"\n      os_version         = \"x.x.x\"\n      os_name            = \"xxx\"\n      minimum            = \"2\"\n      maximum            = \"3\"\n      availability_zones = [\"eu01-3\"]\n      volume_type        = \"storage_premium_perf6\"\n      volume_size        = \"48\"\n    }\n  ]\n  maintenance = {\n    enable_kubernetes_version_updates    = true\n    enable_machine_image_version_updates = true\n    start                                = \"01:00:00Z\"\n    end                                  = \"02:00:00Z\"\n  }\n}\n\n# Only use the import statement, if you want to import an existing ske cluster\nimport {\n  to = stackit_ske_cluster.import-example\n  id = \"${var.project_id},${var.region},${var.ske_name}\"\n}\n```\n",
             "properties": {
                 "egressAddressRanges": {
                     "type": "array",
@@ -16133,6 +16311,67 @@
                     "name",
                     "policy",
                     "projectId"
+                ]
+            }
+        },
+        "stackit:index/getAuthorizationProjectCustomRole:getAuthorizationProjectCustomRole": {
+            "description": "Custom Role resource schema.\n\n## Example Usage\n\n```terraform\ndata \"stackit_authorization_project_custom_role\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"my.custom.role\"\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getAuthorizationProjectCustomRole.\n",
+                "properties": {
+                    "resourceId": {
+                        "type": "string",
+                        "description": "Resource to add the custom role to.\n"
+                    },
+                    "roleId": {
+                        "type": "string",
+                        "description": "The ID of the role.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "resourceId",
+                    "roleId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getAuthorizationProjectCustomRole.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "A human readable description of the role.\n"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the role\n"
+                    },
+                    "permissions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Permissions for the role\n"
+                    },
+                    "resourceId": {
+                        "type": "string",
+                        "description": "Resource to add the custom role to.\n"
+                    },
+                    "roleId": {
+                        "type": "string",
+                        "description": "The ID of the role.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "description",
+                    "id",
+                    "name",
+                    "permissions",
+                    "resourceId",
+                    "roleId"
                 ]
             }
         },
@@ -18924,14 +19163,9 @@
                         "type": "string",
                         "description": "Specifies Observability instance dashboard URL.\n"
                     },
-                    "grafanaInitialAdminPassword": {
-                        "type": "string",
-                        "description": "Specifies an initial Grafana admin password.\n",
-                        "secret": true
-                    },
-                    "grafanaInitialAdminUser": {
-                        "type": "string",
-                        "description": "Specifies an initial Grafana admin username.\n"
+                    "grafanaAdminEnabled": {
+                        "type": "boolean",
+                        "description": "If true, a default Grafana server admin user was created.\n"
                     },
                     "grafanaPublicReadAccess": {
                         "type": "boolean",
@@ -19034,8 +19268,7 @@
                     "alertConfig",
                     "alertingUrl",
                     "dashboardUrl",
-                    "grafanaInitialAdminPassword",
-                    "grafanaInitialAdminUser",
+                    "grafanaAdminEnabled",
                     "grafanaPublicReadAccess",
                     "grafanaUrl",
                     "id",
@@ -21945,6 +22178,98 @@
                     "nodePools",
                     "podAddressRanges",
                     "projectId"
+                ]
+            }
+        },
+        "stackit:index/getSkeKubernetesVersions:getSkeKubernetesVersions": {
+            "description": "Returns Kubernetes versions as reported by the SKE provider options API for the given region.\n\n## Example Usage\n\n```terraform\ndata \"stackit_ske_kubernetes_versions\" \"example\" {\n  version_state = \"SUPPORTED\"\n}\n\nresource \"stackit_ske_cluster\" \"example\" {\n  project_id         = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name               = \"example\"\n  kubernetes_version = data.stackit_ske_kubernetes_versions.example.kubernetes_versions.0.version\n  node_pools = [\n    {\n      name               = \"np-example\"\n      machine_type       = \"x.x\"\n      os_version         = \"x.x.x\"\n      os_name            = \"xxx\"\n      minimum            = \"2\"\n      maximum            = \"3\"\n      availability_zones = [\"eu01-1\"]\n      volume_type        = \"storage_premium_perf6\"\n      volume_size        = \"48\"\n    }\n  ]\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getSkeKubernetesVersions.\n",
+                "properties": {
+                    "region": {
+                        "type": "string",
+                        "description": "Region override. If omitted, the provider’s region will be used.\n"
+                    },
+                    "versionState": {
+                        "type": "string",
+                        "description": "If specified, only returns Kubernetes versions with this version state. Possible values are: `UNSPECIFIED`, `SUPPORTED`.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getSkeKubernetesVersions.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource."
+                    },
+                    "kubernetesVersions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/stackit:index/getSkeKubernetesVersionsKubernetesVersion:getSkeKubernetesVersionsKubernetesVersion"
+                        },
+                        "description": "Kubernetes versions and their metadata.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "Region override. If omitted, the provider’s region will be used.\n"
+                    },
+                    "versionState": {
+                        "type": "string",
+                        "description": "If specified, only returns Kubernetes versions with this version state. Possible values are: `UNSPECIFIED`, `SUPPORTED`.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "kubernetesVersions",
+                    "id"
+                ]
+            }
+        },
+        "stackit:index/getSkeMachineImageVersions:getSkeMachineImageVersions": {
+            "description": "Returns a list of supported Kubernetes machine image versions for the cluster nodes.\n\n## Example Usage\n\n```terraform\ndata \"stackit_ske_machine_image_versions\" \"example\" {\n  version_state = \"SUPPORTED\"\n}\n\nlocals {\n  flatcar_supported_version = one(flatten([\n    for mi in data.stackit_ske_machine_image_versions.example.machine_images : [\n      for v in mi.versions :\n      v.version\n      if mi.name == \"flatcar\" # or ubuntu\n    ]\n  ]))\n}\n\nresource \"stackit_ske_cluster\" \"example\" {\n  project_id         = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name               = \"example\"\n  kubernetes_version = \"x.x\"\n  node_pools = [\n    {\n      name               = \"np-example\"\n      machine_type       = \"x.x\"\n      os_version         = local.flatcar_supported_version\n      os_name            = \"flatcar\"\n      minimum            = \"2\"\n      maximum            = \"3\"\n      availability_zones = [\"eu01-1\"]\n      volume_type        = \"storage_premium_perf6\"\n      volume_size        = \"48\"\n    }\n  ]\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getSkeMachineImageVersions.\n",
+                "properties": {
+                    "region": {
+                        "type": "string",
+                        "description": "Region override. If omitted, the provider’s region will be used.\n"
+                    },
+                    "versionState": {
+                        "type": "string",
+                        "description": "Filter returned machine image versions by their state. Possible values are: `UNSPECIFIED`, `SUPPORTED`.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getSkeMachineImageVersions.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource."
+                    },
+                    "machineImages": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/stackit:index/getSkeMachineImageVersionsMachineImage:getSkeMachineImageVersionsMachineImage"
+                        },
+                        "description": "Supported machine image types and versions.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "Region override. If omitted, the provider’s region will be used.\n"
+                    },
+                    "versionState": {
+                        "type": "string",
+                        "description": "Filter returned machine image versions by their state. Possible values are: `UNSPECIFIED`, `SUPPORTED`.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "machineImages",
+                    "id"
                 ]
             }
         },
