@@ -23,6 +23,9 @@ namespace Pulumi.Stackit
         [Output("acls")]
         public Output<ImmutableArray<string>> Acls { get; private set; } = null!;
 
+        /// <summary>
+        /// The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.
+        /// </summary>
         [Output("backupSchedule")]
         public Output<string> BackupSchedule { get; private set; } = null!;
 
@@ -53,6 +56,9 @@ namespace Pulumi.Stackit
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
+        /// <summary>
+        /// How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.
+        /// </summary>
         [Output("replicas")]
         public Output<int> Replicas { get; private set; } = null!;
 
@@ -121,6 +127,9 @@ namespace Pulumi.Stackit
             set => _acls = value;
         }
 
+        /// <summary>
+        /// The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.
+        /// </summary>
         [Input("backupSchedule", required: true)]
         public Input<string> BackupSchedule { get; set; } = null!;
 
@@ -145,6 +154,9 @@ namespace Pulumi.Stackit
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.
+        /// </summary>
         [Input("replicas", required: true)]
         public Input<int> Replicas { get; set; } = null!;
 
@@ -174,6 +186,9 @@ namespace Pulumi.Stackit
             set => _acls = value;
         }
 
+        /// <summary>
+        /// The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.
+        /// </summary>
         [Input("backupSchedule")]
         public Input<string>? BackupSchedule { get; set; }
 
@@ -204,6 +219,9 @@ namespace Pulumi.Stackit
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.
+        /// </summary>
         [Input("replicas")]
         public Input<int>? Replicas { get; set; }
 

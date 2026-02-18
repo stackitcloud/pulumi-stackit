@@ -41,6 +41,10 @@ export class Network extends pulumi.CustomResource {
     }
 
     /**
+     * If the network has DHCP enabled. Default value is `true`.
+     */
+    declare public readonly dhcp: pulumi.Output<boolean>;
+    /**
      * The IPv4 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
      */
     declare public readonly ipv4Gateway: pulumi.Output<string>;
@@ -146,6 +150,7 @@ export class Network extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as NetworkState | undefined;
+            resourceInputs["dhcp"] = state?.dhcp;
             resourceInputs["ipv4Gateway"] = state?.ipv4Gateway;
             resourceInputs["ipv4Nameservers"] = state?.ipv4Nameservers;
             resourceInputs["ipv4Prefix"] = state?.ipv4Prefix;
@@ -173,6 +178,7 @@ export class Network extends pulumi.CustomResource {
             if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
+            resourceInputs["dhcp"] = args?.dhcp;
             resourceInputs["ipv4Gateway"] = args?.ipv4Gateway;
             resourceInputs["ipv4Nameservers"] = args?.ipv4Nameservers;
             resourceInputs["ipv4Prefix"] = args?.ipv4Prefix;
@@ -205,6 +211,10 @@ export class Network extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Network resources.
  */
 export interface NetworkState {
+    /**
+     * If the network has DHCP enabled. Default value is `true`.
+     */
+    dhcp?: pulumi.Input<boolean>;
     /**
      * The IPv4 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
      */
@@ -303,6 +313,10 @@ export interface NetworkState {
  * The set of arguments for constructing a Network resource.
  */
 export interface NetworkArgs {
+    /**
+     * If the network has DHCP enabled. Default value is `true`.
+     */
+    dhcp?: pulumi.Input<boolean>;
     /**
      * The IPv4 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
      */

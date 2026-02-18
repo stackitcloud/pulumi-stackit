@@ -20,6 +20,7 @@ __all__ = ['NetworkArgs', 'Network']
 class NetworkArgs:
     def __init__(__self__, *,
                  project_id: pulumi.Input[_builtins.str],
+                 dhcp: Optional[pulumi.Input[_builtins.bool]] = None,
                  ipv4_gateway: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv4_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ipv4_prefix: Optional[pulumi.Input[_builtins.str]] = None,
@@ -39,6 +40,7 @@ class NetworkArgs:
         """
         The set of arguments for constructing a Network resource.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the network is associated.
+        :param pulumi.Input[_builtins.bool] dhcp: If the network has DHCP enabled. Default value is `true`.
         :param pulumi.Input[_builtins.str] ipv4_gateway: The IPv4 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv4_nameservers: The IPv4 nameservers of the network.
         :param pulumi.Input[_builtins.str] ipv4_prefix: The IPv4 prefix of the network (CIDR).
@@ -57,6 +59,8 @@ class NetworkArgs:
         :param pulumi.Input[_builtins.str] routing_table_id: The ID of the routing table associated with the network.
         """
         pulumi.set(__self__, "project_id", project_id)
+        if dhcp is not None:
+            pulumi.set(__self__, "dhcp", dhcp)
         if ipv4_gateway is not None:
             pulumi.set(__self__, "ipv4_gateway", ipv4_gateway)
         if ipv4_nameservers is not None:
@@ -104,6 +108,18 @@ class NetworkArgs:
     @project_id.setter
     def project_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "project_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def dhcp(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If the network has DHCP enabled. Default value is `true`.
+        """
+        return pulumi.get(self, "dhcp")
+
+    @dhcp.setter
+    def dhcp(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "dhcp", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv4Gateway")
@@ -302,6 +318,7 @@ class NetworkArgs:
 @pulumi.input_type
 class _NetworkState:
     def __init__(__self__, *,
+                 dhcp: Optional[pulumi.Input[_builtins.bool]] = None,
                  ipv4_gateway: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv4_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ipv4_prefix: Optional[pulumi.Input[_builtins.str]] = None,
@@ -326,6 +343,7 @@ class _NetworkState:
                  routing_table_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Network resources.
+        :param pulumi.Input[_builtins.bool] dhcp: If the network has DHCP enabled. Default value is `true`.
         :param pulumi.Input[_builtins.str] ipv4_gateway: The IPv4 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv4_nameservers: The IPv4 nameservers of the network.
         :param pulumi.Input[_builtins.str] ipv4_prefix: The IPv4 prefix of the network (CIDR).
@@ -349,6 +367,8 @@ class _NetworkState:
         :param pulumi.Input[_builtins.bool] routed: If set to `true`, the network is routed and therefore accessible from other networks.
         :param pulumi.Input[_builtins.str] routing_table_id: The ID of the routing table associated with the network.
         """
+        if dhcp is not None:
+            pulumi.set(__self__, "dhcp", dhcp)
         if ipv4_gateway is not None:
             pulumi.set(__self__, "ipv4_gateway", ipv4_gateway)
         if ipv4_nameservers is not None:
@@ -399,6 +419,18 @@ class _NetworkState:
             pulumi.set(__self__, "routed", routed)
         if routing_table_id is not None:
             pulumi.set(__self__, "routing_table_id", routing_table_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def dhcp(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If the network has DHCP enabled. Default value is `true`.
+        """
+        return pulumi.get(self, "dhcp")
+
+    @dhcp.setter
+    def dhcp(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "dhcp", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv4Gateway")
@@ -673,6 +705,7 @@ class Network(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 dhcp: Optional[pulumi.Input[_builtins.bool]] = None,
                  ipv4_gateway: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv4_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ipv4_prefix: Optional[pulumi.Input[_builtins.str]] = None,
@@ -701,6 +734,7 @@ class Network(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] dhcp: If the network has DHCP enabled. Default value is `true`.
         :param pulumi.Input[_builtins.str] ipv4_gateway: The IPv4 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv4_nameservers: The IPv4 nameservers of the network.
         :param pulumi.Input[_builtins.str] ipv4_prefix: The IPv4 prefix of the network (CIDR).
@@ -748,6 +782,7 @@ class Network(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 dhcp: Optional[pulumi.Input[_builtins.bool]] = None,
                  ipv4_gateway: Optional[pulumi.Input[_builtins.str]] = None,
                  ipv4_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ipv4_prefix: Optional[pulumi.Input[_builtins.str]] = None,
@@ -774,6 +809,7 @@ class Network(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = NetworkArgs.__new__(NetworkArgs)
 
+            __props__.__dict__["dhcp"] = dhcp
             __props__.__dict__["ipv4_gateway"] = ipv4_gateway
             __props__.__dict__["ipv4_nameservers"] = ipv4_nameservers
             __props__.__dict__["ipv4_prefix"] = ipv4_prefix
@@ -808,6 +844,7 @@ class Network(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            dhcp: Optional[pulumi.Input[_builtins.bool]] = None,
             ipv4_gateway: Optional[pulumi.Input[_builtins.str]] = None,
             ipv4_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             ipv4_prefix: Optional[pulumi.Input[_builtins.str]] = None,
@@ -837,6 +874,7 @@ class Network(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.bool] dhcp: If the network has DHCP enabled. Default value is `true`.
         :param pulumi.Input[_builtins.str] ipv4_gateway: The IPv4 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv4_nameservers: The IPv4 nameservers of the network.
         :param pulumi.Input[_builtins.str] ipv4_prefix: The IPv4 prefix of the network (CIDR).
@@ -864,6 +902,7 @@ class Network(pulumi.CustomResource):
 
         __props__ = _NetworkState.__new__(_NetworkState)
 
+        __props__.__dict__["dhcp"] = dhcp
         __props__.__dict__["ipv4_gateway"] = ipv4_gateway
         __props__.__dict__["ipv4_nameservers"] = ipv4_nameservers
         __props__.__dict__["ipv4_prefix"] = ipv4_prefix
@@ -887,6 +926,14 @@ class Network(pulumi.CustomResource):
         __props__.__dict__["routed"] = routed
         __props__.__dict__["routing_table_id"] = routing_table_id
         return Network(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter
+    def dhcp(self) -> pulumi.Output[_builtins.bool]:
+        """
+        If the network has DHCP enabled. Default value is `true`.
+        """
+        return pulumi.get(self, "dhcp")
 
     @_builtins.property
     @pulumi.getter(name="ipv4Gateway")

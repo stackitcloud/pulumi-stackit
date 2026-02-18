@@ -21,6 +21,8 @@ __all__ = [
     'CdnDistributionConfigArgsDict',
     'CdnDistributionConfigBackendArgs',
     'CdnDistributionConfigBackendArgsDict',
+    'CdnDistributionConfigBackendCredentialsArgs',
+    'CdnDistributionConfigBackendCredentialsArgsDict',
     'CdnDistributionConfigOptimizerArgs',
     'CdnDistributionConfigOptimizerArgsDict',
     'CdnDistributionDomainArgs',
@@ -329,21 +331,33 @@ class CdnDistributionConfigArgs:
 
 if not MYPY:
     class CdnDistributionConfigBackendArgsDict(TypedDict):
-        origin_url: pulumi.Input[_builtins.str]
-        """
-        The configured backend type for the distribution
-        """
         type: pulumi.Input[_builtins.str]
         """
-        The configured backend type. Possible values are: `http`.
+        The configured backend type. Possible values are: `http`, `bucket`.
+        """
+        bucket_url: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The URL of the bucket (e.g. https://s3.example.com). Required if type is 'bucket'.
+        """
+        credentials: NotRequired[pulumi.Input['CdnDistributionConfigBackendCredentialsArgsDict']]
+        """
+        The credentials for the bucket. Required if type is 'bucket'.
         """
         geofencing: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]
         """
-        A map of URLs to a list of countries where content is allowed.
+        The configured type http to configure countries where content is allowed. A map of URLs to a list of countries
         """
         origin_request_headers: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
-        The configured origin request headers for the backend
+        The configured type http origin request headers for the backend
+        """
+        origin_url: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The configured backend type http for the distribution
+        """
+        region: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The region where the bucket is hosted. Required if type is 'bucket'.
         """
 elif False:
     CdnDistributionConfigBackendArgsDict: TypeAlias = Mapping[str, Any]
@@ -351,40 +365,41 @@ elif False:
 @pulumi.input_type
 class CdnDistributionConfigBackendArgs:
     def __init__(__self__, *,
-                 origin_url: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
+                 bucket_url: Optional[pulumi.Input[_builtins.str]] = None,
+                 credentials: Optional[pulumi.Input['CdnDistributionConfigBackendCredentialsArgs']] = None,
                  geofencing: Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]] = None,
-                 origin_request_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 origin_request_headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 origin_url: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] origin_url: The configured backend type for the distribution
-        :param pulumi.Input[_builtins.str] type: The configured backend type. Possible values are: `http`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] geofencing: A map of URLs to a list of countries where content is allowed.
-        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] origin_request_headers: The configured origin request headers for the backend
+        :param pulumi.Input[_builtins.str] type: The configured backend type. Possible values are: `http`, `bucket`.
+        :param pulumi.Input[_builtins.str] bucket_url: The URL of the bucket (e.g. https://s3.example.com). Required if type is 'bucket'.
+        :param pulumi.Input['CdnDistributionConfigBackendCredentialsArgs'] credentials: The credentials for the bucket. Required if type is 'bucket'.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]] geofencing: The configured type http to configure countries where content is allowed. A map of URLs to a list of countries
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] origin_request_headers: The configured type http origin request headers for the backend
+        :param pulumi.Input[_builtins.str] origin_url: The configured backend type http for the distribution
+        :param pulumi.Input[_builtins.str] region: The region where the bucket is hosted. Required if type is 'bucket'.
         """
-        pulumi.set(__self__, "origin_url", origin_url)
         pulumi.set(__self__, "type", type)
+        if bucket_url is not None:
+            pulumi.set(__self__, "bucket_url", bucket_url)
+        if credentials is not None:
+            pulumi.set(__self__, "credentials", credentials)
         if geofencing is not None:
             pulumi.set(__self__, "geofencing", geofencing)
         if origin_request_headers is not None:
             pulumi.set(__self__, "origin_request_headers", origin_request_headers)
-
-    @_builtins.property
-    @pulumi.getter(name="originUrl")
-    def origin_url(self) -> pulumi.Input[_builtins.str]:
-        """
-        The configured backend type for the distribution
-        """
-        return pulumi.get(self, "origin_url")
-
-    @origin_url.setter
-    def origin_url(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "origin_url", value)
+        if origin_url is not None:
+            pulumi.set(__self__, "origin_url", origin_url)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
         """
-        The configured backend type. Possible values are: `http`.
+        The configured backend type. Possible values are: `http`, `bucket`.
         """
         return pulumi.get(self, "type")
 
@@ -393,10 +408,34 @@ class CdnDistributionConfigBackendArgs:
         pulumi.set(self, "type", value)
 
     @_builtins.property
+    @pulumi.getter(name="bucketUrl")
+    def bucket_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The URL of the bucket (e.g. https://s3.example.com). Required if type is 'bucket'.
+        """
+        return pulumi.get(self, "bucket_url")
+
+    @bucket_url.setter
+    def bucket_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "bucket_url", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def credentials(self) -> Optional[pulumi.Input['CdnDistributionConfigBackendCredentialsArgs']]:
+        """
+        The credentials for the bucket. Required if type is 'bucket'.
+        """
+        return pulumi.get(self, "credentials")
+
+    @credentials.setter
+    def credentials(self, value: Optional[pulumi.Input['CdnDistributionConfigBackendCredentialsArgs']]):
+        pulumi.set(self, "credentials", value)
+
+    @_builtins.property
     @pulumi.getter
     def geofencing(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]]]:
         """
-        A map of URLs to a list of countries where content is allowed.
+        The configured type http to configure countries where content is allowed. A map of URLs to a list of countries
         """
         return pulumi.get(self, "geofencing")
 
@@ -408,13 +447,87 @@ class CdnDistributionConfigBackendArgs:
     @pulumi.getter(name="originRequestHeaders")
     def origin_request_headers(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
-        The configured origin request headers for the backend
+        The configured type http origin request headers for the backend
         """
         return pulumi.get(self, "origin_request_headers")
 
     @origin_request_headers.setter
     def origin_request_headers(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "origin_request_headers", value)
+
+    @_builtins.property
+    @pulumi.getter(name="originUrl")
+    def origin_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The configured backend type http for the distribution
+        """
+        return pulumi.get(self, "origin_url")
+
+    @origin_url.setter
+    def origin_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "origin_url", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The region where the bucket is hosted. Required if type is 'bucket'.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+
+if not MYPY:
+    class CdnDistributionConfigBackendCredentialsArgsDict(TypedDict):
+        access_key_id: pulumi.Input[_builtins.str]
+        """
+        The access key for the bucket. Required if type is 'bucket'.
+        """
+        secret_access_key: pulumi.Input[_builtins.str]
+        """
+        The access key for the bucket. Required if type is 'bucket'.
+        """
+elif False:
+    CdnDistributionConfigBackendCredentialsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class CdnDistributionConfigBackendCredentialsArgs:
+    def __init__(__self__, *,
+                 access_key_id: pulumi.Input[_builtins.str],
+                 secret_access_key: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] access_key_id: The access key for the bucket. Required if type is 'bucket'.
+        :param pulumi.Input[_builtins.str] secret_access_key: The access key for the bucket. Required if type is 'bucket'.
+        """
+        pulumi.set(__self__, "access_key_id", access_key_id)
+        pulumi.set(__self__, "secret_access_key", secret_access_key)
+
+    @_builtins.property
+    @pulumi.getter(name="accessKeyId")
+    def access_key_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The access key for the bucket. Required if type is 'bucket'.
+        """
+        return pulumi.get(self, "access_key_id")
+
+    @access_key_id.setter
+    def access_key_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "access_key_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretAccessKey")
+    def secret_access_key(self) -> pulumi.Input[_builtins.str]:
+        """
+        The access key for the bucket. Required if type is 'bucket'.
+        """
+        return pulumi.get(self, "secret_access_key")
+
+    @secret_access_key.setter
+    def secret_access_key(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "secret_access_key", value)
 
 
 if not MYPY:
@@ -2775,13 +2888,13 @@ class NetworkAreaRouteNextHopArgs:
 
 if not MYPY:
     class ObservabilityAlertgroupRuleArgsDict(TypedDict):
-        alert: pulumi.Input[_builtins.str]
-        """
-        The name of the alert rule. Is the identifier and must be unique in the group.
-        """
         expression: pulumi.Input[_builtins.str]
         """
         The PromQL expression to evaluate. Every evaluation cycle this is evaluated at the current time, and all resultant time series become pending/firing alerts.
+        """
+        alert: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the alert rule. Is the identifier and must be unique in the group.
         """
         annotations: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
         """
@@ -2795,44 +2908,41 @@ if not MYPY:
         """
         A map of key:value. Labels to add or overwrite for each alert
         """
+        record: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the metric. It's the identifier and must be unique in the group.
+        """
 elif False:
     ObservabilityAlertgroupRuleArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class ObservabilityAlertgroupRuleArgs:
     def __init__(__self__, *,
-                 alert: pulumi.Input[_builtins.str],
                  expression: pulumi.Input[_builtins.str],
+                 alert: Optional[pulumi.Input[_builtins.str]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  for_: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 record: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] alert: The name of the alert rule. Is the identifier and must be unique in the group.
         :param pulumi.Input[_builtins.str] expression: The PromQL expression to evaluate. Every evaluation cycle this is evaluated at the current time, and all resultant time series become pending/firing alerts.
+        :param pulumi.Input[_builtins.str] alert: The name of the alert rule. Is the identifier and must be unique in the group.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] annotations: A map of key:value. Annotations to add or overwrite for each alert
         :param pulumi.Input[_builtins.str] for_: Alerts are considered firing once they have been returned for this long. Alerts which have not yet fired for long enough are considered pending. Default is 0s
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: A map of key:value. Labels to add or overwrite for each alert
+        :param pulumi.Input[_builtins.str] record: The name of the metric. It's the identifier and must be unique in the group.
         """
-        pulumi.set(__self__, "alert", alert)
         pulumi.set(__self__, "expression", expression)
+        if alert is not None:
+            pulumi.set(__self__, "alert", alert)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
         if for_ is not None:
             pulumi.set(__self__, "for_", for_)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
-
-    @_builtins.property
-    @pulumi.getter
-    def alert(self) -> pulumi.Input[_builtins.str]:
-        """
-        The name of the alert rule. Is the identifier and must be unique in the group.
-        """
-        return pulumi.get(self, "alert")
-
-    @alert.setter
-    def alert(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "alert", value)
+        if record is not None:
+            pulumi.set(__self__, "record", record)
 
     @_builtins.property
     @pulumi.getter
@@ -2845,6 +2955,18 @@ class ObservabilityAlertgroupRuleArgs:
     @expression.setter
     def expression(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "expression", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def alert(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the alert rule. Is the identifier and must be unique in the group.
+        """
+        return pulumi.get(self, "alert")
+
+    @alert.setter
+    def alert(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "alert", value)
 
     @_builtins.property
     @pulumi.getter
@@ -2881,6 +3003,18 @@ class ObservabilityAlertgroupRuleArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def record(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the metric. It's the identifier and must be unique in the group.
+        """
+        return pulumi.get(self, "record")
+
+    @record.setter
+    def record(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "record", value)
 
 
 if not MYPY:
@@ -3578,6 +3712,10 @@ if not MYPY:
         """
         The name of the receiver to route the alerts to.
         """
+        continue_: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether an alert should continue matching subsequent sibling nodes.
+        """
         group_bies: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
         The labels by which incoming alerts are grouped together. For example, multiple alerts coming in for cluster=A and alertname=LatencyHigh would be batched into a single group. To aggregate by all possible labels use the special value '...' as the sole label name, for example: group_by: ['...']. This effectively disables aggregation entirely, passing through all alerts as-is. This is unlikely to be what you want, unless you have a very low alert volume or your upstream notification system performs its own grouping.
@@ -3605,6 +3743,7 @@ elif False:
 class ObservabilityInstanceAlertConfigRouteArgs:
     def __init__(__self__, *,
                  receiver: pulumi.Input[_builtins.str],
+                 continue_: Optional[pulumi.Input[_builtins.bool]] = None,
                  group_bies: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  group_interval: Optional[pulumi.Input[_builtins.str]] = None,
                  group_wait: Optional[pulumi.Input[_builtins.str]] = None,
@@ -3612,6 +3751,7 @@ class ObservabilityInstanceAlertConfigRouteArgs:
                  routes: Optional[pulumi.Input[Sequence[pulumi.Input['ObservabilityInstanceAlertConfigRouteRouteArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] receiver: The name of the receiver to route the alerts to.
+        :param pulumi.Input[_builtins.bool] continue_: Whether an alert should continue matching subsequent sibling nodes.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] group_bies: The labels by which incoming alerts are grouped together. For example, multiple alerts coming in for cluster=A and alertname=LatencyHigh would be batched into a single group. To aggregate by all possible labels use the special value '...' as the sole label name, for example: group_by: ['...']. This effectively disables aggregation entirely, passing through all alerts as-is. This is unlikely to be what you want, unless you have a very low alert volume or your upstream notification system performs its own grouping.
         :param pulumi.Input[_builtins.str] group_interval: How long to wait before sending a notification about new alerts that are added to a group of alerts for which an initial notification has already been sent. (Usually ~5m or more.)
         :param pulumi.Input[_builtins.str] group_wait: How long to initially wait to send a notification for a group of alerts. Allows to wait for an inhibiting alert to arrive or collect more initial alerts for the same group. (Usually ~0s to few minutes.)
@@ -3619,6 +3759,8 @@ class ObservabilityInstanceAlertConfigRouteArgs:
         :param pulumi.Input[Sequence[pulumi.Input['ObservabilityInstanceAlertConfigRouteRouteArgs']]] routes: List of child routes.
         """
         pulumi.set(__self__, "receiver", receiver)
+        if continue_ is not None:
+            pulumi.set(__self__, "continue_", continue_)
         if group_bies is not None:
             pulumi.set(__self__, "group_bies", group_bies)
         if group_interval is not None:
@@ -3641,6 +3783,18 @@ class ObservabilityInstanceAlertConfigRouteArgs:
     @receiver.setter
     def receiver(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "receiver", value)
+
+    @_builtins.property
+    @pulumi.getter(name="continue")
+    def continue_(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether an alert should continue matching subsequent sibling nodes.
+        """
+        return pulumi.get(self, "continue_")
+
+    @continue_.setter
+    def continue_(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "continue_", value)
 
     @_builtins.property
     @pulumi.getter(name="groupBies")

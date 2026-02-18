@@ -5,9 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Logs instance resource schema.
- *
- * > This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
+ * Logs instance resource schema. Uses the `defaultRegion` specified in the provider configuration as a fallback in case no `region` is defined on resource level.
  *
  * ## Example Usage
  */

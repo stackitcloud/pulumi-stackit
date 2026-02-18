@@ -14,6 +14,10 @@ namespace Pulumi.Stackit.Outputs
     public sealed class GetObservabilityInstanceAlertConfigRouteResult
     {
         /// <summary>
+        /// Whether an alert should continue matching subsequent sibling nodes.
+        /// </summary>
+        public readonly bool Continue;
+        /// <summary>
         /// The labels by which incoming alerts are grouped together. For example, multiple alerts coming in for cluster=A and alertname=LatencyHigh would be batched into a single group. To aggregate by all possible labels use the special value '...' as the sole label name, for example: group_by: ['...']. This effectively disables aggregation entirely, passing through all alerts as-is. This is unlikely to be what you want, unless you have a very low alert volume or your upstream notification system performs its own grouping.
         /// </summary>
         public readonly ImmutableArray<string> GroupBies;
@@ -40,6 +44,8 @@ namespace Pulumi.Stackit.Outputs
 
         [OutputConstructor]
         private GetObservabilityInstanceAlertConfigRouteResult(
+            bool @continue,
+
             ImmutableArray<string> groupBies,
 
             string groupInterval,
@@ -52,6 +58,7 @@ namespace Pulumi.Stackit.Outputs
 
             ImmutableArray<Outputs.GetObservabilityInstanceAlertConfigRouteRouteResult> routes)
         {
+            Continue = @continue;
             GroupBies = groupBies;
             GroupInterval = groupInterval;
             GroupWait = groupWait;

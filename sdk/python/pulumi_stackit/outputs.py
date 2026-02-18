@@ -19,6 +19,7 @@ __all__ = [
     'CdnCustomDomainCertificate',
     'CdnDistributionConfig',
     'CdnDistributionConfigBackend',
+    'CdnDistributionConfigBackendCredentials',
     'CdnDistributionConfigOptimizer',
     'CdnDistributionDomain',
     'ImageChecksum',
@@ -311,10 +312,12 @@ class CdnDistributionConfigBackend(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "originUrl":
-            suggest = "origin_url"
+        if key == "bucketUrl":
+            suggest = "bucket_url"
         elif key == "originRequestHeaders":
             suggest = "origin_request_headers"
+        elif key == "originUrl":
+            suggest = "origin_url"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in CdnDistributionConfigBackend. Access the value via the '{suggest}' property getter instead.")
@@ -328,44 +331,65 @@ class CdnDistributionConfigBackend(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 origin_url: _builtins.str,
                  type: _builtins.str,
+                 bucket_url: Optional[_builtins.str] = None,
+                 credentials: Optional['outputs.CdnDistributionConfigBackendCredentials'] = None,
                  geofencing: Optional[Mapping[str, Sequence[_builtins.str]]] = None,
-                 origin_request_headers: Optional[Mapping[str, _builtins.str]] = None):
+                 origin_request_headers: Optional[Mapping[str, _builtins.str]] = None,
+                 origin_url: Optional[_builtins.str] = None,
+                 region: Optional[_builtins.str] = None):
         """
-        :param _builtins.str origin_url: The configured backend type for the distribution
-        :param _builtins.str type: The configured backend type. Possible values are: `http`.
-        :param Mapping[str, Sequence[_builtins.str]] geofencing: A map of URLs to a list of countries where content is allowed.
-        :param Mapping[str, _builtins.str] origin_request_headers: The configured origin request headers for the backend
+        :param _builtins.str type: The configured backend type. Possible values are: `http`, `bucket`.
+        :param _builtins.str bucket_url: The URL of the bucket (e.g. https://s3.example.com). Required if type is 'bucket'.
+        :param 'CdnDistributionConfigBackendCredentialsArgs' credentials: The credentials for the bucket. Required if type is 'bucket'.
+        :param Mapping[str, Sequence[_builtins.str]] geofencing: The configured type http to configure countries where content is allowed. A map of URLs to a list of countries
+        :param Mapping[str, _builtins.str] origin_request_headers: The configured type http origin request headers for the backend
+        :param _builtins.str origin_url: The configured backend type http for the distribution
+        :param _builtins.str region: The region where the bucket is hosted. Required if type is 'bucket'.
         """
-        pulumi.set(__self__, "origin_url", origin_url)
         pulumi.set(__self__, "type", type)
+        if bucket_url is not None:
+            pulumi.set(__self__, "bucket_url", bucket_url)
+        if credentials is not None:
+            pulumi.set(__self__, "credentials", credentials)
         if geofencing is not None:
             pulumi.set(__self__, "geofencing", geofencing)
         if origin_request_headers is not None:
             pulumi.set(__self__, "origin_request_headers", origin_request_headers)
-
-    @_builtins.property
-    @pulumi.getter(name="originUrl")
-    def origin_url(self) -> _builtins.str:
-        """
-        The configured backend type for the distribution
-        """
-        return pulumi.get(self, "origin_url")
+        if origin_url is not None:
+            pulumi.set(__self__, "origin_url", origin_url)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
 
     @_builtins.property
     @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        The configured backend type. Possible values are: `http`.
+        The configured backend type. Possible values are: `http`, `bucket`.
         """
         return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter(name="bucketUrl")
+    def bucket_url(self) -> Optional[_builtins.str]:
+        """
+        The URL of the bucket (e.g. https://s3.example.com). Required if type is 'bucket'.
+        """
+        return pulumi.get(self, "bucket_url")
+
+    @_builtins.property
+    @pulumi.getter
+    def credentials(self) -> Optional['outputs.CdnDistributionConfigBackendCredentials']:
+        """
+        The credentials for the bucket. Required if type is 'bucket'.
+        """
+        return pulumi.get(self, "credentials")
 
     @_builtins.property
     @pulumi.getter
     def geofencing(self) -> Optional[Mapping[str, Sequence[_builtins.str]]]:
         """
-        A map of URLs to a list of countries where content is allowed.
+        The configured type http to configure countries where content is allowed. A map of URLs to a list of countries
         """
         return pulumi.get(self, "geofencing")
 
@@ -373,9 +397,73 @@ class CdnDistributionConfigBackend(dict):
     @pulumi.getter(name="originRequestHeaders")
     def origin_request_headers(self) -> Optional[Mapping[str, _builtins.str]]:
         """
-        The configured origin request headers for the backend
+        The configured type http origin request headers for the backend
         """
         return pulumi.get(self, "origin_request_headers")
+
+    @_builtins.property
+    @pulumi.getter(name="originUrl")
+    def origin_url(self) -> Optional[_builtins.str]:
+        """
+        The configured backend type http for the distribution
+        """
+        return pulumi.get(self, "origin_url")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        The region where the bucket is hosted. Required if type is 'bucket'.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class CdnDistributionConfigBackendCredentials(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessKeyId":
+            suggest = "access_key_id"
+        elif key == "secretAccessKey":
+            suggest = "secret_access_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CdnDistributionConfigBackendCredentials. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CdnDistributionConfigBackendCredentials.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CdnDistributionConfigBackendCredentials.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_key_id: _builtins.str,
+                 secret_access_key: _builtins.str):
+        """
+        :param _builtins.str access_key_id: The access key for the bucket. Required if type is 'bucket'.
+        :param _builtins.str secret_access_key: The access key for the bucket. Required if type is 'bucket'.
+        """
+        pulumi.set(__self__, "access_key_id", access_key_id)
+        pulumi.set(__self__, "secret_access_key", secret_access_key)
+
+    @_builtins.property
+    @pulumi.getter(name="accessKeyId")
+    def access_key_id(self) -> _builtins.str:
+        """
+        The access key for the bucket. Required if type is 'bucket'.
+        """
+        return pulumi.get(self, "access_key_id")
+
+    @_builtins.property
+    @pulumi.getter(name="secretAccessKey")
+    def secret_access_key(self) -> _builtins.str:
+        """
+        The access key for the bucket. Required if type is 'bucket'.
+        """
+        return pulumi.get(self, "secret_access_key")
 
 
 @pulumi.output_type
@@ -2223,34 +2311,31 @@ class ObservabilityAlertgroupRule(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 alert: _builtins.str,
                  expression: _builtins.str,
+                 alert: Optional[_builtins.str] = None,
                  annotations: Optional[Mapping[str, _builtins.str]] = None,
                  for_: Optional[_builtins.str] = None,
-                 labels: Optional[Mapping[str, _builtins.str]] = None):
+                 labels: Optional[Mapping[str, _builtins.str]] = None,
+                 record: Optional[_builtins.str] = None):
         """
-        :param _builtins.str alert: The name of the alert rule. Is the identifier and must be unique in the group.
         :param _builtins.str expression: The PromQL expression to evaluate. Every evaluation cycle this is evaluated at the current time, and all resultant time series become pending/firing alerts.
+        :param _builtins.str alert: The name of the alert rule. Is the identifier and must be unique in the group.
         :param Mapping[str, _builtins.str] annotations: A map of key:value. Annotations to add or overwrite for each alert
         :param _builtins.str for_: Alerts are considered firing once they have been returned for this long. Alerts which have not yet fired for long enough are considered pending. Default is 0s
         :param Mapping[str, _builtins.str] labels: A map of key:value. Labels to add or overwrite for each alert
+        :param _builtins.str record: The name of the metric. It's the identifier and must be unique in the group.
         """
-        pulumi.set(__self__, "alert", alert)
         pulumi.set(__self__, "expression", expression)
+        if alert is not None:
+            pulumi.set(__self__, "alert", alert)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
         if for_ is not None:
             pulumi.set(__self__, "for_", for_)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
-
-    @_builtins.property
-    @pulumi.getter
-    def alert(self) -> _builtins.str:
-        """
-        The name of the alert rule. Is the identifier and must be unique in the group.
-        """
-        return pulumi.get(self, "alert")
+        if record is not None:
+            pulumi.set(__self__, "record", record)
 
     @_builtins.property
     @pulumi.getter
@@ -2259,6 +2344,14 @@ class ObservabilityAlertgroupRule(dict):
         The PromQL expression to evaluate. Every evaluation cycle this is evaluated at the current time, and all resultant time series become pending/firing alerts.
         """
         return pulumi.get(self, "expression")
+
+    @_builtins.property
+    @pulumi.getter
+    def alert(self) -> Optional[_builtins.str]:
+        """
+        The name of the alert rule. Is the identifier and must be unique in the group.
+        """
+        return pulumi.get(self, "alert")
 
     @_builtins.property
     @pulumi.getter
@@ -2283,6 +2376,14 @@ class ObservabilityAlertgroupRule(dict):
         A map of key:value. Labels to add or overwrite for each alert
         """
         return pulumi.get(self, "labels")
+
+    @_builtins.property
+    @pulumi.getter
+    def record(self) -> Optional[_builtins.str]:
+        """
+        The name of the metric. It's the identifier and must be unique in the group.
+        """
+        return pulumi.get(self, "record")
 
 
 @pulumi.output_type
@@ -2839,7 +2940,9 @@ class ObservabilityInstanceAlertConfigRoute(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "groupBies":
+        if key == "continue":
+            suggest = "continue_"
+        elif key == "groupBies":
             suggest = "group_bies"
         elif key == "groupInterval":
             suggest = "group_interval"
@@ -2861,6 +2964,7 @@ class ObservabilityInstanceAlertConfigRoute(dict):
 
     def __init__(__self__, *,
                  receiver: _builtins.str,
+                 continue_: Optional[_builtins.bool] = None,
                  group_bies: Optional[Sequence[_builtins.str]] = None,
                  group_interval: Optional[_builtins.str] = None,
                  group_wait: Optional[_builtins.str] = None,
@@ -2868,6 +2972,7 @@ class ObservabilityInstanceAlertConfigRoute(dict):
                  routes: Optional[Sequence['outputs.ObservabilityInstanceAlertConfigRouteRoute']] = None):
         """
         :param _builtins.str receiver: The name of the receiver to route the alerts to.
+        :param _builtins.bool continue_: Whether an alert should continue matching subsequent sibling nodes.
         :param Sequence[_builtins.str] group_bies: The labels by which incoming alerts are grouped together. For example, multiple alerts coming in for cluster=A and alertname=LatencyHigh would be batched into a single group. To aggregate by all possible labels use the special value '...' as the sole label name, for example: group_by: ['...']. This effectively disables aggregation entirely, passing through all alerts as-is. This is unlikely to be what you want, unless you have a very low alert volume or your upstream notification system performs its own grouping.
         :param _builtins.str group_interval: How long to wait before sending a notification about new alerts that are added to a group of alerts for which an initial notification has already been sent. (Usually ~5m or more.)
         :param _builtins.str group_wait: How long to initially wait to send a notification for a group of alerts. Allows to wait for an inhibiting alert to arrive or collect more initial alerts for the same group. (Usually ~0s to few minutes.)
@@ -2875,6 +2980,8 @@ class ObservabilityInstanceAlertConfigRoute(dict):
         :param Sequence['ObservabilityInstanceAlertConfigRouteRouteArgs'] routes: List of child routes.
         """
         pulumi.set(__self__, "receiver", receiver)
+        if continue_ is not None:
+            pulumi.set(__self__, "continue_", continue_)
         if group_bies is not None:
             pulumi.set(__self__, "group_bies", group_bies)
         if group_interval is not None:
@@ -2893,6 +3000,14 @@ class ObservabilityInstanceAlertConfigRoute(dict):
         The name of the receiver to route the alerts to.
         """
         return pulumi.get(self, "receiver")
+
+    @_builtins.property
+    @pulumi.getter(name="continue")
+    def continue_(self) -> Optional[_builtins.bool]:
+        """
+        Whether an alert should continue matching subsequent sibling nodes.
+        """
+        return pulumi.get(self, "continue_")
 
     @_builtins.property
     @pulumi.getter(name="groupBies")
@@ -5424,26 +5539,40 @@ class GetCdnDistributionConfigResult(dict):
 @pulumi.output_type
 class GetCdnDistributionConfigBackendResult(dict):
     def __init__(__self__, *,
+                 bucket_url: _builtins.str,
                  geofencing: Mapping[str, Sequence[_builtins.str]],
                  origin_request_headers: Mapping[str, _builtins.str],
                  origin_url: _builtins.str,
+                 region: _builtins.str,
                  type: _builtins.str):
         """
-        :param Mapping[str, Sequence[_builtins.str]] geofencing: A map of URLs to a list of countries where content is allowed.
-        :param Mapping[str, _builtins.str] origin_request_headers: The configured origin request headers for the backend
-        :param _builtins.str origin_url: The configured backend type for the distribution
-        :param _builtins.str type: The configured backend type. Possible values are: `http`.
+        :param _builtins.str bucket_url: The URL of the bucket (e.g. https://s3.example.com). Required if type is 'bucket'.
+        :param Mapping[str, Sequence[_builtins.str]] geofencing: The configured type http to configure countries where content is allowed. A map of URLs to a list of countries
+        :param Mapping[str, _builtins.str] origin_request_headers: The configured type http origin request headers for the backend
+        :param _builtins.str origin_url: The configured backend type http for the distribution
+        :param _builtins.str region: The region where the bucket is hosted. Required if type is 'bucket'.
+        :param _builtins.str type: The configured backend type. Possible values are: `http`, `bucket`.
         """
+        pulumi.set(__self__, "bucket_url", bucket_url)
         pulumi.set(__self__, "geofencing", geofencing)
         pulumi.set(__self__, "origin_request_headers", origin_request_headers)
         pulumi.set(__self__, "origin_url", origin_url)
+        pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="bucketUrl")
+    def bucket_url(self) -> _builtins.str:
+        """
+        The URL of the bucket (e.g. https://s3.example.com). Required if type is 'bucket'.
+        """
+        return pulumi.get(self, "bucket_url")
 
     @_builtins.property
     @pulumi.getter
     def geofencing(self) -> Mapping[str, Sequence[_builtins.str]]:
         """
-        A map of URLs to a list of countries where content is allowed.
+        The configured type http to configure countries where content is allowed. A map of URLs to a list of countries
         """
         return pulumi.get(self, "geofencing")
 
@@ -5451,7 +5580,7 @@ class GetCdnDistributionConfigBackendResult(dict):
     @pulumi.getter(name="originRequestHeaders")
     def origin_request_headers(self) -> Mapping[str, _builtins.str]:
         """
-        The configured origin request headers for the backend
+        The configured type http origin request headers for the backend
         """
         return pulumi.get(self, "origin_request_headers")
 
@@ -5459,15 +5588,23 @@ class GetCdnDistributionConfigBackendResult(dict):
     @pulumi.getter(name="originUrl")
     def origin_url(self) -> _builtins.str:
         """
-        The configured backend type for the distribution
+        The configured backend type http for the distribution
         """
         return pulumi.get(self, "origin_url")
 
     @_builtins.property
     @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        The region where the bucket is hosted. Required if type is 'bucket'.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter
     def type(self) -> _builtins.str:
         """
-        The configured backend type. Possible values are: `http`.
+        The configured backend type. Possible values are: `http`, `bucket`.
         """
         return pulumi.get(self, "type")
 
@@ -7174,19 +7311,22 @@ class GetObservabilityAlertgroupRuleResult(dict):
                  annotations: Mapping[str, _builtins.str],
                  expression: _builtins.str,
                  for_: _builtins.str,
-                 labels: Mapping[str, _builtins.str]):
+                 labels: Mapping[str, _builtins.str],
+                 record: _builtins.str):
         """
         :param _builtins.str alert: The name of the alert rule. Is the identifier and must be unique in the group.
         :param Mapping[str, _builtins.str] annotations: A map of key:value. Annotations to add or overwrite for each alert
         :param _builtins.str expression: The PromQL expression to evaluate. Every evaluation cycle this is evaluated at the current time, and all resultant time series become pending/firing alerts.
         :param _builtins.str for_: Alerts are considered firing once they have been returned for this long. Alerts which have not yet fired for long enough are considered pending. Default is 0s
         :param Mapping[str, _builtins.str] labels: A map of key:value. Labels to add or overwrite for each alert
+        :param _builtins.str record: The name of the metric. It's the identifier and must be unique in the group.
         """
         pulumi.set(__self__, "alert", alert)
         pulumi.set(__self__, "annotations", annotations)
         pulumi.set(__self__, "expression", expression)
         pulumi.set(__self__, "for_", for_)
         pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "record", record)
 
     @_builtins.property
     @pulumi.getter
@@ -7227,6 +7367,14 @@ class GetObservabilityAlertgroupRuleResult(dict):
         A map of key:value. Labels to add or overwrite for each alert
         """
         return pulumi.get(self, "labels")
+
+    @_builtins.property
+    @pulumi.getter
+    def record(self) -> _builtins.str:
+        """
+        The name of the metric. It's the identifier and must be unique in the group.
+        """
+        return pulumi.get(self, "record")
 
 
 @pulumi.output_type
@@ -7615,6 +7763,7 @@ class GetObservabilityInstanceAlertConfigReceiverWebhooksConfigResult(dict):
 @pulumi.output_type
 class GetObservabilityInstanceAlertConfigRouteResult(dict):
     def __init__(__self__, *,
+                 continue_: _builtins.bool,
                  group_bies: Sequence[_builtins.str],
                  group_interval: _builtins.str,
                  group_wait: _builtins.str,
@@ -7622,6 +7771,7 @@ class GetObservabilityInstanceAlertConfigRouteResult(dict):
                  repeat_interval: _builtins.str,
                  routes: Sequence['outputs.GetObservabilityInstanceAlertConfigRouteRouteResult']):
         """
+        :param _builtins.bool continue_: Whether an alert should continue matching subsequent sibling nodes.
         :param Sequence[_builtins.str] group_bies: The labels by which incoming alerts are grouped together. For example, multiple alerts coming in for cluster=A and alertname=LatencyHigh would be batched into a single group. To aggregate by all possible labels use the special value '...' as the sole label name, for example: group_by: ['...']. This effectively disables aggregation entirely, passing through all alerts as-is. This is unlikely to be what you want, unless you have a very low alert volume or your upstream notification system performs its own grouping.
         :param _builtins.str group_interval: How long to wait before sending a notification about new alerts that are added to a group of alerts for which an initial notification has already been sent. (Usually ~5m or more.)
         :param _builtins.str group_wait: How long to initially wait to send a notification for a group of alerts. Allows to wait for an inhibiting alert to arrive or collect more initial alerts for the same group. (Usually ~0s to few minutes.) .
@@ -7629,12 +7779,21 @@ class GetObservabilityInstanceAlertConfigRouteResult(dict):
         :param _builtins.str repeat_interval: How long to wait before sending a notification again if it has already been sent successfully for an alert. (Usually ~3h or more).
         :param Sequence['GetObservabilityInstanceAlertConfigRouteRouteArgs'] routes: List of child routes.
         """
+        pulumi.set(__self__, "continue_", continue_)
         pulumi.set(__self__, "group_bies", group_bies)
         pulumi.set(__self__, "group_interval", group_interval)
         pulumi.set(__self__, "group_wait", group_wait)
         pulumi.set(__self__, "receiver", receiver)
         pulumi.set(__self__, "repeat_interval", repeat_interval)
         pulumi.set(__self__, "routes", routes)
+
+    @_builtins.property
+    @pulumi.getter(name="continue")
+    def continue_(self) -> _builtins.bool:
+        """
+        Whether an alert should continue matching subsequent sibling nodes.
+        """
+        return pulumi.get(self, "continue_")
 
     @_builtins.property
     @pulumi.getter(name="groupBies")

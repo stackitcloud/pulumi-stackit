@@ -65,6 +65,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LogmeCredential{}
 	case "stackit:index/logmeInstance:LogmeInstance":
 		r = &LogmeInstance{}
+	case "stackit:index/logsAccessToken:LogsAccessToken":
+		r = &LogsAccessToken{}
 	case "stackit:index/logsInstance:LogsInstance":
 		r = &LogsInstance{}
 	case "stackit:index/mariadbCredential:MariadbCredential":
@@ -318,6 +320,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"stackit",
 		"index/logmeInstance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/logsAccessToken",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -37,6 +37,7 @@ from .get_kms_wrapping_key import *
 from .get_loadbalancer import *
 from .get_logme_credential import *
 from .get_logme_instance import *
+from .get_logs_access_token import *
 from .get_logs_instance import *
 from .get_machine_type import *
 from .get_mariadb_credential import *
@@ -105,6 +106,7 @@ from .loadbalancer import *
 from .loadbalancer_observability_credential import *
 from .logme_credential import *
 from .logme_instance import *
+from .logs_access_token import *
 from .logs_instance import *
 from .mariadb_credential import *
 from .mariadb_instance import *
@@ -350,6 +352,14 @@ _utilities.register(
   "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/logmeInstance:LogmeInstance": "LogmeInstance"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/logsAccessToken",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/logsAccessToken:LogsAccessToken": "LogsAccessToken"
   }
  },
  {

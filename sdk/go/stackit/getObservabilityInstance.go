@@ -44,6 +44,14 @@ type LookupObservabilityInstanceResult struct {
 	DashboardUrl string `pulumi:"dashboardUrl"`
 	// If true, a default Grafana server admin user was created.
 	GrafanaAdminEnabled bool `pulumi:"grafanaAdminEnabled"`
+	// Specifies an initial Grafana admin password.
+	//
+	// Deprecated: This attribute is deprecated and will be removed on July 5, 2026. Use `grafanaAdminEnabled` instead.
+	GrafanaInitialAdminPassword string `pulumi:"grafanaInitialAdminPassword"`
+	// Specifies an initial Grafana admin username.
+	//
+	// Deprecated: This attribute is deprecated and will be removed on July 5, 2026. Use `grafanaAdminEnabled` instead.
+	GrafanaInitialAdminUser string `pulumi:"grafanaInitialAdminUser"`
 	// If true, anyone can access Grafana dashboards without logging in.
 	GrafanaPublicReadAccess bool `pulumi:"grafanaPublicReadAccess"`
 	// Specifies Grafana URL.
@@ -148,6 +156,20 @@ func (o LookupObservabilityInstanceResultOutput) DashboardUrl() pulumi.StringOut
 // If true, a default Grafana server admin user was created.
 func (o LookupObservabilityInstanceResultOutput) GrafanaAdminEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupObservabilityInstanceResult) bool { return v.GrafanaAdminEnabled }).(pulumi.BoolOutput)
+}
+
+// Specifies an initial Grafana admin password.
+//
+// Deprecated: This attribute is deprecated and will be removed on July 5, 2026. Use `grafanaAdminEnabled` instead.
+func (o LookupObservabilityInstanceResultOutput) GrafanaInitialAdminPassword() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupObservabilityInstanceResult) string { return v.GrafanaInitialAdminPassword }).(pulumi.StringOutput)
+}
+
+// Specifies an initial Grafana admin username.
+//
+// Deprecated: This attribute is deprecated and will be removed on July 5, 2026. Use `grafanaAdminEnabled` instead.
+func (o LookupObservabilityInstanceResultOutput) GrafanaInitialAdminUser() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupObservabilityInstanceResult) string { return v.GrafanaInitialAdminUser }).(pulumi.StringOutput)
 }
 
 // If true, anyone can access Grafana dashboards without logging in.

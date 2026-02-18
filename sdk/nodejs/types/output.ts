@@ -28,7 +28,7 @@ export interface CdnDistributionConfig {
     /**
      * The configured countries where distribution of content is blocked
      */
-    blockedCountries?: string[];
+    blockedCountries: string[];
     /**
      * Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
      */
@@ -41,21 +41,44 @@ export interface CdnDistributionConfig {
 
 export interface CdnDistributionConfigBackend {
     /**
-     * A map of URLs to a list of countries where content is allowed.
+     * The URL of the bucket (e.g. https://s3.example.com). Required if type is 'bucket'.
+     */
+    bucketUrl?: string;
+    /**
+     * The credentials for the bucket. Required if type is 'bucket'.
+     */
+    credentials?: outputs.CdnDistributionConfigBackendCredentials;
+    /**
+     * The configured type http to configure countries where content is allowed. A map of URLs to a list of countries
      */
     geofencing?: {[key: string]: string[]};
     /**
-     * The configured origin request headers for the backend
+     * The configured type http origin request headers for the backend
      */
     originRequestHeaders?: {[key: string]: string};
     /**
-     * The configured backend type for the distribution
+     * The configured backend type http for the distribution
      */
-    originUrl: string;
+    originUrl?: string;
     /**
-     * The configured backend type. Possible values are: `http`.
+     * The region where the bucket is hosted. Required if type is 'bucket'.
+     */
+    region?: string;
+    /**
+     * The configured backend type. Possible values are: `http`, `bucket`.
      */
     type: string;
+}
+
+export interface CdnDistributionConfigBackendCredentials {
+    /**
+     * The access key for the bucket. Required if type is 'bucket'.
+     */
+    accessKeyId: string;
+    /**
+     * The access key for the bucket. Required if type is 'bucket'.
+     */
+    secretAccessKey: string;
 }
 
 export interface CdnDistributionConfigOptimizer {
@@ -109,19 +132,27 @@ export interface GetCdnDistributionConfig {
 
 export interface GetCdnDistributionConfigBackend {
     /**
-     * A map of URLs to a list of countries where content is allowed.
+     * The URL of the bucket (e.g. https://s3.example.com). Required if type is 'bucket'.
+     */
+    bucketUrl: string;
+    /**
+     * The configured type http to configure countries where content is allowed. A map of URLs to a list of countries
      */
     geofencing: {[key: string]: string[]};
     /**
-     * The configured origin request headers for the backend
+     * The configured type http origin request headers for the backend
      */
     originRequestHeaders: {[key: string]: string};
     /**
-     * The configured backend type for the distribution
+     * The configured backend type http for the distribution
      */
     originUrl: string;
     /**
-     * The configured backend type. Possible values are: `http`.
+     * The region where the bucket is hosted. Required if type is 'bucket'.
+     */
+    region: string;
+    /**
+     * The configured backend type. Possible values are: `http`, `bucket`.
      */
     type: string;
 }
@@ -742,6 +773,10 @@ export interface GetObservabilityAlertgroupRule {
      * A map of key:value. Labels to add or overwrite for each alert
      */
     labels: {[key: string]: string};
+    /**
+     * The name of the metric. It's the identifier and must be unique in the group.
+     */
+    record: string;
 }
 
 export interface GetObservabilityInstanceAlertConfig {
@@ -887,6 +922,10 @@ export interface GetObservabilityInstanceAlertConfigReceiverWebhooksConfig {
 }
 
 export interface GetObservabilityInstanceAlertConfigRoute {
+    /**
+     * Whether an alert should continue matching subsequent sibling nodes.
+     */
+    continue: boolean;
     /**
      * The labels by which incoming alerts are grouped together. For example, multiple alerts coming in for cluster=A and alertname=LatencyHigh would be batched into a single group. To aggregate by all possible labels use the special value '...' as the sole label name, for example: group_by: ['...']. This effectively disables aggregation entirely, passing through all alerts as-is. This is unlikely to be what you want, unless you have a very low alert volume or your upstream notification system performs its own grouping.
      */
@@ -2205,7 +2244,7 @@ export interface ObservabilityAlertgroupRule {
     /**
      * The name of the alert rule. Is the identifier and must be unique in the group.
      */
-    alert: string;
+    alert?: string;
     /**
      * A map of key:value. Annotations to add or overwrite for each alert
      */
@@ -2222,6 +2261,10 @@ export interface ObservabilityAlertgroupRule {
      * A map of key:value. Labels to add or overwrite for each alert
      */
     labels?: {[key: string]: string};
+    /**
+     * The name of the metric. It's the identifier and must be unique in the group.
+     */
+    record?: string;
 }
 
 export interface ObservabilityInstanceAlertConfig {
@@ -2367,6 +2410,10 @@ export interface ObservabilityInstanceAlertConfigReceiverWebhooksConfig {
 }
 
 export interface ObservabilityInstanceAlertConfigRoute {
+    /**
+     * Whether an alert should continue matching subsequent sibling nodes.
+     */
+    continue: boolean;
     /**
      * The labels by which incoming alerts are grouped together. For example, multiple alerts coming in for cluster=A and alertname=LatencyHigh would be batched into a single group. To aggregate by all possible labels use the special value '...' as the sole label name, for example: group_by: ['...']. This effectively disables aggregation entirely, passing through all alerts as-is. This is unlikely to be what you want, unless you have a very low alert volume or your upstream notification system performs its own grouping.
      */

@@ -19,7 +19,8 @@ type PostgresflexInstance struct {
 	pulumi.CustomResourceState
 
 	// The Access Control List (ACL) for the PostgresFlex instance.
-	Acls           pulumi.StringArrayOutput         `pulumi:"acls"`
+	Acls pulumi.StringArrayOutput `pulumi:"acls"`
+	// The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.
 	BackupSchedule pulumi.StringOutput              `pulumi:"backupSchedule"`
 	Flavor         PostgresflexInstanceFlavorOutput `pulumi:"flavor"`
 	// ID of the PostgresFlex instance.
@@ -29,7 +30,8 @@ type PostgresflexInstance struct {
 	// STACKIT project ID to which the instance is associated.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
-	Region   pulumi.StringOutput               `pulumi:"region"`
+	Region pulumi.StringOutput `pulumi:"region"`
+	// How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.
 	Replicas pulumi.IntOutput                  `pulumi:"replicas"`
 	Storage  PostgresflexInstanceStorageOutput `pulumi:"storage"`
 	Version  pulumi.StringOutput               `pulumi:"version"`
@@ -87,7 +89,8 @@ func GetPostgresflexInstance(ctx *pulumi.Context,
 // Input properties used for looking up and filtering PostgresflexInstance resources.
 type postgresflexInstanceState struct {
 	// The Access Control List (ACL) for the PostgresFlex instance.
-	Acls           []string                    `pulumi:"acls"`
+	Acls []string `pulumi:"acls"`
+	// The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.
 	BackupSchedule *string                     `pulumi:"backupSchedule"`
 	Flavor         *PostgresflexInstanceFlavor `pulumi:"flavor"`
 	// ID of the PostgresFlex instance.
@@ -97,7 +100,8 @@ type postgresflexInstanceState struct {
 	// STACKIT project ID to which the instance is associated.
 	ProjectId *string `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
-	Region   *string                      `pulumi:"region"`
+	Region *string `pulumi:"region"`
+	// How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.
 	Replicas *int                         `pulumi:"replicas"`
 	Storage  *PostgresflexInstanceStorage `pulumi:"storage"`
 	Version  *string                      `pulumi:"version"`
@@ -105,7 +109,8 @@ type postgresflexInstanceState struct {
 
 type PostgresflexInstanceState struct {
 	// The Access Control List (ACL) for the PostgresFlex instance.
-	Acls           pulumi.StringArrayInput
+	Acls pulumi.StringArrayInput
+	// The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.
 	BackupSchedule pulumi.StringPtrInput
 	Flavor         PostgresflexInstanceFlavorPtrInput
 	// ID of the PostgresFlex instance.
@@ -115,7 +120,8 @@ type PostgresflexInstanceState struct {
 	// STACKIT project ID to which the instance is associated.
 	ProjectId pulumi.StringPtrInput
 	// The resource region. If not defined, the provider region is used.
-	Region   pulumi.StringPtrInput
+	Region pulumi.StringPtrInput
+	// How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.
 	Replicas pulumi.IntPtrInput
 	Storage  PostgresflexInstanceStoragePtrInput
 	Version  pulumi.StringPtrInput
@@ -127,7 +133,8 @@ func (PostgresflexInstanceState) ElementType() reflect.Type {
 
 type postgresflexInstanceArgs struct {
 	// The Access Control List (ACL) for the PostgresFlex instance.
-	Acls           []string                   `pulumi:"acls"`
+	Acls []string `pulumi:"acls"`
+	// The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.
 	BackupSchedule string                     `pulumi:"backupSchedule"`
 	Flavor         PostgresflexInstanceFlavor `pulumi:"flavor"`
 	// Instance name.
@@ -135,7 +142,8 @@ type postgresflexInstanceArgs struct {
 	// STACKIT project ID to which the instance is associated.
 	ProjectId string `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
-	Region   *string                     `pulumi:"region"`
+	Region *string `pulumi:"region"`
+	// How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.
 	Replicas int                         `pulumi:"replicas"`
 	Storage  PostgresflexInstanceStorage `pulumi:"storage"`
 	Version  string                      `pulumi:"version"`
@@ -144,7 +152,8 @@ type postgresflexInstanceArgs struct {
 // The set of arguments for constructing a PostgresflexInstance resource.
 type PostgresflexInstanceArgs struct {
 	// The Access Control List (ACL) for the PostgresFlex instance.
-	Acls           pulumi.StringArrayInput
+	Acls pulumi.StringArrayInput
+	// The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.
 	BackupSchedule pulumi.StringInput
 	Flavor         PostgresflexInstanceFlavorInput
 	// Instance name.
@@ -152,7 +161,8 @@ type PostgresflexInstanceArgs struct {
 	// STACKIT project ID to which the instance is associated.
 	ProjectId pulumi.StringInput
 	// The resource region. If not defined, the provider region is used.
-	Region   pulumi.StringPtrInput
+	Region pulumi.StringPtrInput
+	// How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.
 	Replicas pulumi.IntInput
 	Storage  PostgresflexInstanceStorageInput
 	Version  pulumi.StringInput
@@ -250,6 +260,7 @@ func (o PostgresflexInstanceOutput) Acls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PostgresflexInstance) pulumi.StringArrayOutput { return v.Acls }).(pulumi.StringArrayOutput)
 }
 
+// The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.
 func (o PostgresflexInstanceOutput) BackupSchedule() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresflexInstance) pulumi.StringOutput { return v.BackupSchedule }).(pulumi.StringOutput)
 }
@@ -278,6 +289,7 @@ func (o PostgresflexInstanceOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresflexInstance) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
+// How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.
 func (o PostgresflexInstanceOutput) Replicas() pulumi.IntOutput {
 	return o.ApplyT(func(v *PostgresflexInstance) pulumi.IntOutput { return v.Replicas }).(pulumi.IntOutput)
 }

@@ -21,6 +21,12 @@ namespace Pulumi.Stackit
     public partial class Network : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// If the network has DHCP enabled. Default value is `True`.
+        /// </summary>
+        [Output("dhcp")]
+        public Output<bool> Dhcp { get; private set; } = null!;
+
+        /// <summary>
         /// The IPv4 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
         /// </summary>
         [Output("ipv4Gateway")]
@@ -200,6 +206,12 @@ namespace Pulumi.Stackit
     public sealed class NetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// If the network has DHCP enabled. Default value is `True`.
+        /// </summary>
+        [Input("dhcp")]
+        public Input<bool>? Dhcp { get; set; }
+
+        /// <summary>
         /// The IPv4 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
         /// </summary>
         [Input("ipv4Gateway")]
@@ -334,6 +346,12 @@ namespace Pulumi.Stackit
 
     public sealed class NetworkState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// If the network has DHCP enabled. Default value is `True`.
+        /// </summary>
+        [Input("dhcp")]
+        public Input<bool>? Dhcp { get; set; }
+
         /// <summary>
         /// The IPv4 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
         /// </summary>

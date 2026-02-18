@@ -15,8 +15,8 @@ namespace Pulumi.Stackit.Inputs
         /// <summary>
         /// The name of the alert rule. Is the identifier and must be unique in the group.
         /// </summary>
-        [Input("alert", required: true)]
-        public Input<string> Alert { get; set; } = null!;
+        [Input("alert")]
+        public Input<string>? Alert { get; set; }
 
         [Input("annotations")]
         private InputMap<string>? _annotations;
@@ -53,6 +53,12 @@ namespace Pulumi.Stackit.Inputs
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        /// <summary>
+        /// The name of the metric. It's the identifier and must be unique in the group.
+        /// </summary>
+        [Input("record")]
+        public Input<string>? Record { get; set; }
 
         public ObservabilityAlertgroupRuleArgs()
         {

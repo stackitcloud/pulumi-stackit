@@ -60,6 +60,18 @@ export class ObservabilityInstance extends pulumi.CustomResource {
      */
     declare public readonly grafanaAdminEnabled: pulumi.Output<boolean>;
     /**
+     * Specifies an initial Grafana admin password.
+     *
+     * @deprecated This attribute is deprecated and will be removed on July 5, 2026. Use `grafanaAdminEnabled` instead.
+     */
+    declare public /*out*/ readonly grafanaInitialAdminPassword: pulumi.Output<string>;
+    /**
+     * Specifies an initial Grafana admin username.
+     *
+     * @deprecated This attribute is deprecated and will be removed on July 5, 2026. Use `grafanaAdminEnabled` instead.
+     */
+    declare public /*out*/ readonly grafanaInitialAdminUser: pulumi.Output<string>;
+    /**
      * If true, anyone can access Grafana dashboards without logging in.
      */
     declare public /*out*/ readonly grafanaPublicReadAccess: pulumi.Output<boolean>;
@@ -158,6 +170,8 @@ export class ObservabilityInstance extends pulumi.CustomResource {
             resourceInputs["alertingUrl"] = state?.alertingUrl;
             resourceInputs["dashboardUrl"] = state?.dashboardUrl;
             resourceInputs["grafanaAdminEnabled"] = state?.grafanaAdminEnabled;
+            resourceInputs["grafanaInitialAdminPassword"] = state?.grafanaInitialAdminPassword;
+            resourceInputs["grafanaInitialAdminUser"] = state?.grafanaInitialAdminUser;
             resourceInputs["grafanaPublicReadAccess"] = state?.grafanaPublicReadAccess;
             resourceInputs["grafanaUrl"] = state?.grafanaUrl;
             resourceInputs["instanceId"] = state?.instanceId;
@@ -203,6 +217,8 @@ export class ObservabilityInstance extends pulumi.CustomResource {
             resourceInputs["tracesRetentionDays"] = args?.tracesRetentionDays;
             resourceInputs["alertingUrl"] = undefined /*out*/;
             resourceInputs["dashboardUrl"] = undefined /*out*/;
+            resourceInputs["grafanaInitialAdminPassword"] = undefined /*out*/;
+            resourceInputs["grafanaInitialAdminUser"] = undefined /*out*/;
             resourceInputs["grafanaPublicReadAccess"] = undefined /*out*/;
             resourceInputs["grafanaUrl"] = undefined /*out*/;
             resourceInputs["instanceId"] = undefined /*out*/;
@@ -219,6 +235,8 @@ export class ObservabilityInstance extends pulumi.CustomResource {
             resourceInputs["zipkinSpansUrl"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["grafanaInitialAdminPassword"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(ObservabilityInstance.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -247,6 +265,18 @@ export interface ObservabilityInstanceState {
      * If true, a default Grafana server admin user is created. It's recommended to set this to false and use STACKIT SSO (Owner or Observability Grafana Server Admin role) instead. It is still possible to manually create a new Grafana admin user via the Grafana UI later.
      */
     grafanaAdminEnabled?: pulumi.Input<boolean>;
+    /**
+     * Specifies an initial Grafana admin password.
+     *
+     * @deprecated This attribute is deprecated and will be removed on July 5, 2026. Use `grafanaAdminEnabled` instead.
+     */
+    grafanaInitialAdminPassword?: pulumi.Input<string>;
+    /**
+     * Specifies an initial Grafana admin username.
+     *
+     * @deprecated This attribute is deprecated and will be removed on July 5, 2026. Use `grafanaAdminEnabled` instead.
+     */
+    grafanaInitialAdminUser?: pulumi.Input<string>;
     /**
      * If true, anyone can access Grafana dashboards without logging in.
      */

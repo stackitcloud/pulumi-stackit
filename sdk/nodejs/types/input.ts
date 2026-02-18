@@ -41,21 +41,44 @@ export interface CdnDistributionConfig {
 
 export interface CdnDistributionConfigBackend {
     /**
-     * A map of URLs to a list of countries where content is allowed.
+     * The URL of the bucket (e.g. https://s3.example.com). Required if type is 'bucket'.
+     */
+    bucketUrl?: pulumi.Input<string>;
+    /**
+     * The credentials for the bucket. Required if type is 'bucket'.
+     */
+    credentials?: pulumi.Input<inputs.CdnDistributionConfigBackendCredentials>;
+    /**
+     * The configured type http to configure countries where content is allowed. A map of URLs to a list of countries
      */
     geofencing?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
     /**
-     * The configured origin request headers for the backend
+     * The configured type http origin request headers for the backend
      */
     originRequestHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The configured backend type for the distribution
+     * The configured backend type http for the distribution
      */
-    originUrl: pulumi.Input<string>;
+    originUrl?: pulumi.Input<string>;
     /**
-     * The configured backend type. Possible values are: `http`.
+     * The region where the bucket is hosted. Required if type is 'bucket'.
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * The configured backend type. Possible values are: `http`, `bucket`.
      */
     type: pulumi.Input<string>;
+}
+
+export interface CdnDistributionConfigBackendCredentials {
+    /**
+     * The access key for the bucket. Required if type is 'bucket'.
+     */
+    accessKeyId: pulumi.Input<string>;
+    /**
+     * The access key for the bucket. Required if type is 'bucket'.
+     */
+    secretAccessKey: pulumi.Input<string>;
 }
 
 export interface CdnDistributionConfigOptimizer {
@@ -585,7 +608,7 @@ export interface ObservabilityAlertgroupRule {
     /**
      * The name of the alert rule. Is the identifier and must be unique in the group.
      */
-    alert: pulumi.Input<string>;
+    alert?: pulumi.Input<string>;
     /**
      * A map of key:value. Annotations to add or overwrite for each alert
      */
@@ -602,6 +625,10 @@ export interface ObservabilityAlertgroupRule {
      * A map of key:value. Labels to add or overwrite for each alert
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The name of the metric. It's the identifier and must be unique in the group.
+     */
+    record?: pulumi.Input<string>;
 }
 
 export interface ObservabilityInstanceAlertConfig {
@@ -747,6 +774,10 @@ export interface ObservabilityInstanceAlertConfigReceiverWebhooksConfig {
 }
 
 export interface ObservabilityInstanceAlertConfigRoute {
+    /**
+     * Whether an alert should continue matching subsequent sibling nodes.
+     */
+    continue?: pulumi.Input<boolean>;
     /**
      * The labels by which incoming alerts are grouped together. For example, multiple alerts coming in for cluster=A and alertname=LatencyHigh would be batched into a single group. To aggregate by all possible labels use the special value '...' as the sole label name, for example: group_by: ['...']. This effectively disables aggregation entirely, passing through all alerts as-is. This is unlikely to be what you want, unless you have a very low alert volume or your upstream notification system performs its own grouping.
      */
