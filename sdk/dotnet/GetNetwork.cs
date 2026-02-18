@@ -73,7 +73,6 @@ namespace Pulumi.Stackit
         public string ProjectId { get; set; } = null!;
 
         /// <summary>
-        /// Can only be used when experimental "network" is set. This is likely going to undergo significant changes or be removed in the future.
         /// The resource region. If not defined, the provider region is used.
         /// </summary>
         [Input("region")]
@@ -100,7 +99,6 @@ namespace Pulumi.Stackit
         public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
-        /// Can only be used when experimental "network" is set. This is likely going to undergo significant changes or be removed in the future.
         /// The resource region. If not defined, the provider region is used.
         /// </summary>
         [Input("region")]
@@ -116,6 +114,10 @@ namespace Pulumi.Stackit
     [OutputType]
     public sealed class GetNetworkResult
     {
+        /// <summary>
+        /// Shows if DHCP is enabled for the network.
+        /// </summary>
+        public readonly bool Dhcp;
         public readonly string Id;
         /// <summary>
         /// The IPv4 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
@@ -186,7 +188,6 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string PublicIp;
         /// <summary>
-        /// Can only be used when experimental "network" is set. This is likely going to undergo significant changes or be removed in the future.
         /// The resource region. If not defined, the provider region is used.
         /// </summary>
         public readonly string? Region;
@@ -195,13 +196,14 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly bool Routed;
         /// <summary>
-        /// Can only be used when experimental "network" is set. This is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
         /// The ID of the routing table associated with the network.
         /// </summary>
         public readonly string RoutingTableId;
 
         [OutputConstructor]
         private GetNetworkResult(
+            bool dhcp,
+
             string id,
 
             string ipv4Gateway,
@@ -244,6 +246,7 @@ namespace Pulumi.Stackit
 
             string routingTableId)
         {
+            Dhcp = dhcp;
             Id = id;
             Ipv4Gateway = ipv4Gateway;
             Ipv4Nameservers = ipv4Nameservers;

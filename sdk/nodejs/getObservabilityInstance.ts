@@ -58,6 +58,18 @@ export interface GetObservabilityInstanceResult {
      */
     readonly grafanaAdminEnabled: boolean;
     /**
+     * Specifies an initial Grafana admin password.
+     *
+     * @deprecated This attribute is deprecated and will be removed on July 5, 2026. Use `grafanaAdminEnabled` instead.
+     */
+    readonly grafanaInitialAdminPassword: string;
+    /**
+     * Specifies an initial Grafana admin username.
+     *
+     * @deprecated This attribute is deprecated and will be removed on July 5, 2026. Use `grafanaAdminEnabled` instead.
+     */
+    readonly grafanaInitialAdminUser: string;
+    /**
      * If true, anyone can access Grafana dashboards without logging in.
      */
     readonly grafanaPublicReadAccess: boolean;

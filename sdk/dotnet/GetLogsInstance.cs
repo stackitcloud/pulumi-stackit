@@ -12,9 +12,7 @@ namespace Pulumi.Stackit
     public static class GetLogsInstance
     {
         /// <summary>
-        /// Logs instance data source schema.
-        /// 
-        /// &gt; This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
+        /// Logs instance data source schema. Uses the `DefaultRegion` specified in the provider configuration as a fallback in case no `Region` is defined on datasource level.
         /// 
         /// ## Example Usage
         /// 
@@ -30,9 +28,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLogsInstanceResult>("stackit:index/getLogsInstance:getLogsInstance", args ?? new GetLogsInstanceArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Logs instance data source schema.
-        /// 
-        /// &gt; This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
+        /// Logs instance data source schema. Uses the `DefaultRegion` specified in the provider configuration as a fallback in case no `Region` is defined on datasource level.
         /// 
         /// ## Example Usage
         /// 
@@ -48,9 +44,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.Invoke<GetLogsInstanceResult>("stackit:index/getLogsInstance:getLogsInstance", args ?? new GetLogsInstanceInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Logs instance data source schema.
-        /// 
-        /// &gt; This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
+        /// Logs instance data source schema. Uses the `DefaultRegion` specified in the provider configuration as a fallback in case no `Region` is defined on datasource level.
         /// 
         /// ## Example Usage
         /// 

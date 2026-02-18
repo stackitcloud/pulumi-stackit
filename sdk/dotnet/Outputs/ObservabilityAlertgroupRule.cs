@@ -16,7 +16,7 @@ namespace Pulumi.Stackit.Outputs
         /// <summary>
         /// The name of the alert rule. Is the identifier and must be unique in the group.
         /// </summary>
-        public readonly string Alert;
+        public readonly string? Alert;
         /// <summary>
         /// A map of key:value. Annotations to add or overwrite for each alert
         /// </summary>
@@ -33,10 +33,14 @@ namespace Pulumi.Stackit.Outputs
         /// A map of key:value. Labels to add or overwrite for each alert
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
+        /// <summary>
+        /// The name of the metric. It's the identifier and must be unique in the group.
+        /// </summary>
+        public readonly string? Record;
 
         [OutputConstructor]
         private ObservabilityAlertgroupRule(
-            string alert,
+            string? alert,
 
             ImmutableDictionary<string, string>? annotations,
 
@@ -44,13 +48,16 @@ namespace Pulumi.Stackit.Outputs
 
             string? @for,
 
-            ImmutableDictionary<string, string>? labels)
+            ImmutableDictionary<string, string>? labels,
+
+            string? record)
         {
             Alert = alert;
             Annotations = annotations;
             Expression = expression;
             For = @for;
             Labels = labels;
+            Record = record;
         }
     }
 }

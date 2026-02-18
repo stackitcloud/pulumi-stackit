@@ -288,6 +288,7 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "backend",
+                        "blockedCountries",
                         "optimizer",
                         "regions"
                     ]
@@ -296,6 +297,14 @@
         },
         "stackit:index/CdnDistributionConfigBackend:CdnDistributionConfigBackend": {
             "properties": {
+                "bucketUrl": {
+                    "type": "string",
+                    "description": "The URL of the bucket (e.g. https://s3.example.com). Required if type is 'bucket'.\n"
+                },
+                "credentials": {
+                    "$ref": "#/types/stackit:index/CdnDistributionConfigBackendCredentials:CdnDistributionConfigBackendCredentials",
+                    "description": "The credentials for the bucket. Required if type is 'bucket'.\n"
+                },
                 "geofencing": {
                     "type": "object",
                     "additionalProperties": {
@@ -304,28 +313,50 @@
                             "type": "string"
                         }
                     },
-                    "description": "A map of URLs to a list of countries where content is allowed.\n"
+                    "description": "The configured type http to configure countries where content is allowed. A map of URLs to a list of countries\n"
                 },
                 "originRequestHeaders": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "The configured origin request headers for the backend\n"
+                    "description": "The configured type http origin request headers for the backend\n"
                 },
                 "originUrl": {
                     "type": "string",
-                    "description": "The configured backend type for the distribution\n"
+                    "description": "The configured backend type http for the distribution\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region where the bucket is hosted. Required if type is 'bucket'.\n"
                 },
                 "type": {
                     "type": "string",
-                    "description": "The configured backend type. Possible values are: \u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\"\u003e`http`\u003c/span\u003e.\n"
+                    "description": "The configured backend type. Possible values are: \u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\"\u003e`http`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`bucket`\" pulumi-lang-dotnet=\"`Bucket`\" pulumi-lang-go=\"`bucket`\" pulumi-lang-python=\"`bucket`\" pulumi-lang-yaml=\"`bucket`\" pulumi-lang-java=\"`bucket`\"\u003e`bucket`\u003c/span\u003e.\n"
                 }
             },
             "type": "object",
             "required": [
-                "originUrl",
                 "type"
+            ]
+        },
+        "stackit:index/CdnDistributionConfigBackendCredentials:CdnDistributionConfigBackendCredentials": {
+            "properties": {
+                "accessKeyId": {
+                    "type": "string",
+                    "description": "The access key for the bucket. Required if type is 'bucket'.\n",
+                    "secret": true
+                },
+                "secretAccessKey": {
+                    "type": "string",
+                    "description": "The access key for the bucket. Required if type is 'bucket'.\n",
+                    "secret": true
+                }
+            },
+            "type": "object",
+            "required": [
+                "accessKeyId",
+                "secretAccessKey"
             ]
         },
         "stackit:index/CdnDistributionConfigOptimizer:CdnDistributionConfigOptimizer": {
@@ -1187,11 +1218,14 @@
                         "type": "string"
                     },
                     "description": "A map of key:value. Labels to add or overwrite for each alert\n"
+                },
+                "record": {
+                    "type": "string",
+                    "description": "The name of the metric. It's the identifier and must be unique in the group.\n"
                 }
             },
             "type": "object",
             "required": [
-                "alert",
                 "expression"
             ]
         },
@@ -1420,6 +1454,10 @@
         },
         "stackit:index/ObservabilityInstanceAlertConfigRoute:ObservabilityInstanceAlertConfigRoute": {
             "properties": {
+                "continue": {
+                    "type": "boolean",
+                    "description": "Whether an alert should continue matching subsequent sibling nodes.\n"
+                },
                 "groupBies": {
                     "type": "array",
                     "items": {
@@ -1458,6 +1496,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "continue",
                         "groupInterval",
                         "groupWait",
                         "receiver",
@@ -2676,6 +2715,10 @@
         },
         "stackit:index/getCdnDistributionConfigBackend:getCdnDistributionConfigBackend": {
             "properties": {
+                "bucketUrl": {
+                    "type": "string",
+                    "description": "The URL of the bucket (e.g. https://s3.example.com). Required if type is 'bucket'.\n"
+                },
                 "geofencing": {
                     "type": "object",
                     "additionalProperties": {
@@ -2684,29 +2727,35 @@
                             "type": "string"
                         }
                     },
-                    "description": "A map of URLs to a list of countries where content is allowed.\n"
+                    "description": "The configured type http to configure countries where content is allowed. A map of URLs to a list of countries\n"
                 },
                 "originRequestHeaders": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "The configured origin request headers for the backend\n"
+                    "description": "The configured type http origin request headers for the backend\n"
                 },
                 "originUrl": {
                     "type": "string",
-                    "description": "The configured backend type for the distribution\n"
+                    "description": "The configured backend type http for the distribution\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region where the bucket is hosted. Required if type is 'bucket'.\n"
                 },
                 "type": {
                     "type": "string",
-                    "description": "The configured backend type. Possible values are: \u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\"\u003e`http`\u003c/span\u003e.\n"
+                    "description": "The configured backend type. Possible values are: \u003cspan pulumi-lang-nodejs=\"`http`\" pulumi-lang-dotnet=\"`Http`\" pulumi-lang-go=\"`http`\" pulumi-lang-python=\"`http`\" pulumi-lang-yaml=\"`http`\" pulumi-lang-java=\"`http`\"\u003e`http`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`bucket`\" pulumi-lang-dotnet=\"`Bucket`\" pulumi-lang-go=\"`bucket`\" pulumi-lang-python=\"`bucket`\" pulumi-lang-yaml=\"`bucket`\" pulumi-lang-java=\"`bucket`\"\u003e`bucket`\u003c/span\u003e.\n"
                 }
             },
             "type": "object",
             "required": [
+                "bucketUrl",
                 "geofencing",
                 "originRequestHeaders",
                 "originUrl",
+                "region",
                 "type"
             ],
             "language": {
@@ -3813,6 +3862,10 @@
                         "type": "string"
                     },
                     "description": "A map of key:value. Labels to add or overwrite for each alert\n"
+                },
+                "record": {
+                    "type": "string",
+                    "description": "The name of the metric. It's the identifier and must be unique in the group.\n"
                 }
             },
             "type": "object",
@@ -3821,7 +3874,8 @@
                 "annotations",
                 "expression",
                 "for",
-                "labels"
+                "labels",
+                "record"
             ],
             "language": {
                 "nodejs": {
@@ -4074,6 +4128,10 @@
         },
         "stackit:index/getObservabilityInstanceAlertConfigRoute:getObservabilityInstanceAlertConfigRoute": {
             "properties": {
+                "continue": {
+                    "type": "boolean",
+                    "description": "Whether an alert should continue matching subsequent sibling nodes.\n"
+                },
                 "groupBies": {
                     "type": "array",
                     "items": {
@@ -4107,6 +4165,7 @@
             },
             "type": "object",
             "required": [
+                "continue",
                 "groupBies",
                 "groupInterval",
                 "groupWait",
@@ -6495,7 +6554,7 @@
             }
         },
         "stackit:index/cdnDistribution:CdnDistribution": {
-            "description": "CDN distribution data source schema.\n\n\u003e This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\nresource \"stackit_cdn_distribution\" \"example_distribution\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  config = {\n    backend = {\n      type       = \"http\"\n      origin_url = \"https://mybackend.onstackit.cloud\"\n      geofencing = {\n        \"https://mybackend.onstackit.cloud\" = [\"DE\"]\n      }\n    }\n    regions           = [\"EU\", \"US\", \"ASIA\", \"AF\", \"SA\"]\n    blocked_countries = [\"DE\", \"AT\", \"CH\"]\n\n    optimizer = {\n      enabled = true\n    }\n  }\n}\n\n# Only use the import statement, if you want to import an existing cdn distribution\nimport {\n  to = stackit_cdn_distribution.import-example\n  id = \"${var.project_id},${var.distribution_id}\"\n}\n```\n",
+            "description": "CDN distribution data source schema.\n\n\u003e This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\nresource \"stackit_cdn_distribution\" \"example_distribution\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  config = {\n    backend = {\n      type       = \"http\"\n      origin_url = \"https://mybackend.onstackit.cloud\"\n      geofencing = {\n        \"https://mybackend.onstackit.cloud\" = [\"DE\"]\n      }\n    }\n    regions           = [\"EU\", \"US\", \"ASIA\", \"AF\", \"SA\"]\n    blocked_countries = [\"DE\", \"AT\", \"CH\"]\n\n    optimizer = {\n      enabled = true\n    }\n  }\n}\n\nresource \"stackit_cdn_distribution\" \"example_bucket_distribution\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  config = {\n    backend = {\n      type       = \"bucket\"\n      bucket_url = \"https://my-test.object.storage.eu01.onstackit.cloud\"\n      region     = \"eu01\"\n\n      # Credentials are required for bucket backends\n      # It is strongly recommended to use variables for secrets\n      credentials = {\n        access_key_id     = var.bucket_access_key\n        secret_access_key = var.bucket_secret_key\n      }\n    }\n    regions           = [\"EU\", \"US\"]\n    blocked_countries = [\"CN\", \"RU\"]\n\n    optimizer = {\n      enabled = false\n    }\n  }\n}\n\n# Only use the import statement, if you want to import an existing cdn distribution\nimport {\n  to = stackit_cdn_distribution.import-example\n  id = \"${var.project_id},${var.distribution_id}\"\n}\n```\n",
             "properties": {
                 "config": {
                     "$ref": "#/types/stackit:index/CdnDistributionConfig:CdnDistributionConfig",
@@ -8749,8 +8808,183 @@
                 "type": "object"
             }
         },
+        "stackit:index/logsAccessToken:LogsAccessToken": {
+            "description": "Logs access token resource schema. Uses the \u003cspan pulumi-lang-nodejs=\"`defaultRegion`\" pulumi-lang-dotnet=\"`DefaultRegion`\" pulumi-lang-go=\"`defaultRegion`\" pulumi-lang-python=\"`default_region`\" pulumi-lang-yaml=\"`defaultRegion`\" pulumi-lang-java=\"`defaultRegion`\"\u003e`default_region`\u003c/span\u003e specified in the provider configuration as a fallback in case no \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e is defined on resource level.\n\n## Example Usage\n\n```terraform\nresource \"stackit_logs_access_token\" \"accessToken\" {\n  project_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  instance_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  region       = \"eu01\"\n  display_name = \"logs-access-token-example\"\n  permissions = [\n    \"read\"\n  ]\n}\n\nresource \"stackit_logs_access_token\" \"accessToken2\" {\n  project_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  instance_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  region       = \"eu01\"\n  display_name = \"logs-access-token-example\"\n  lifetime     = 30\n  permissions = [\n    \"write\"\n  ]\n  description = \"Example description\"\n}\n\n# Only use the import statement, if you want to import an existing logs access token\n# Note: The generated access token is only available upon creation.\n# Since this attribute is not fetched from the API call, to prevent the conflicts, you need to add:\n# lifecycle {\n#   ignore_changes = [ lifetime ]\n# }\nimport {\n  to = stackit_logs_access_token.import-example\n  id = \"${var.project_id},${var.region},${var.logs_instance_id},${var.logs_access_token_id}\"\n}\n```\n",
+            "properties": {
+                "accessToken": {
+                    "type": "string",
+                    "description": "The generated access token\n",
+                    "secret": true
+                },
+                "accessTokenId": {
+                    "type": "string",
+                    "description": "The access token ID\n"
+                },
+                "creator": {
+                    "type": "string",
+                    "description": "The user who created the access token\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The description of the access token\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The displayed name of the access token\n"
+                },
+                "expires": {
+                    "type": "boolean",
+                    "description": "Indicates if the access token can expire\n"
+                },
+                "instanceId": {
+                    "type": "string",
+                    "description": "The Logs instance ID associated with the access token\n"
+                },
+                "lifetime": {
+                    "type": "integer",
+                    "description": "A lifetime period for an access token in days. If unset the token will not expire.\n"
+                },
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The access permissions granted to the access token. Possible values: \u003cspan pulumi-lang-nodejs=\"`read`\" pulumi-lang-dotnet=\"`Read`\" pulumi-lang-go=\"`read`\" pulumi-lang-python=\"`read`\" pulumi-lang-yaml=\"`read`\" pulumi-lang-java=\"`read`\"\u003e`read`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`write`\" pulumi-lang-dotnet=\"`Write`\" pulumi-lang-go=\"`write`\" pulumi-lang-python=\"`write`\" pulumi-lang-yaml=\"`write`\" pulumi-lang-java=\"`write`\"\u003e`write`\u003c/span\u003e.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT project ID associated with the Logs access token\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "STACKIT region name the resource is located in. If not defined, the provider region is used.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of the access token. Possible values are: \u003cspan pulumi-lang-nodejs=\"`active`\" pulumi-lang-dotnet=\"`Active`\" pulumi-lang-go=\"`active`\" pulumi-lang-python=\"`active`\" pulumi-lang-yaml=\"`active`\" pulumi-lang-java=\"`active`\"\u003e`active`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`expired`\" pulumi-lang-dotnet=\"`Expired`\" pulumi-lang-go=\"`expired`\" pulumi-lang-python=\"`expired`\" pulumi-lang-yaml=\"`expired`\" pulumi-lang-java=\"`expired`\"\u003e`expired`\u003c/span\u003e.\n"
+                },
+                "validUntil": {
+                    "type": "string",
+                    "description": "The date and time until an access token is valid to (inclusively)\n"
+                }
+            },
+            "required": [
+                "accessToken",
+                "accessTokenId",
+                "creator",
+                "displayName",
+                "expires",
+                "instanceId",
+                "permissions",
+                "projectId",
+                "region",
+                "status",
+                "validUntil"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the access token\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "The displayed name of the access token\n"
+                },
+                "instanceId": {
+                    "type": "string",
+                    "description": "The Logs instance ID associated with the access token\n"
+                },
+                "lifetime": {
+                    "type": "integer",
+                    "description": "A lifetime period for an access token in days. If unset the token will not expire.\n"
+                },
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The access permissions granted to the access token. Possible values: \u003cspan pulumi-lang-nodejs=\"`read`\" pulumi-lang-dotnet=\"`Read`\" pulumi-lang-go=\"`read`\" pulumi-lang-python=\"`read`\" pulumi-lang-yaml=\"`read`\" pulumi-lang-java=\"`read`\"\u003e`read`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`write`\" pulumi-lang-dotnet=\"`Write`\" pulumi-lang-go=\"`write`\" pulumi-lang-python=\"`write`\" pulumi-lang-yaml=\"`write`\" pulumi-lang-java=\"`write`\"\u003e`write`\u003c/span\u003e.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT project ID associated with the Logs access token\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "STACKIT region name the resource is located in. If not defined, the provider region is used.\n"
+                }
+            },
+            "requiredInputs": [
+                "displayName",
+                "instanceId",
+                "permissions",
+                "projectId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering LogsAccessToken resources.\n",
+                "properties": {
+                    "accessToken": {
+                        "type": "string",
+                        "description": "The generated access token\n",
+                        "secret": true
+                    },
+                    "accessTokenId": {
+                        "type": "string",
+                        "description": "The access token ID\n"
+                    },
+                    "creator": {
+                        "type": "string",
+                        "description": "The user who created the access token\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the access token\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The displayed name of the access token\n"
+                    },
+                    "expires": {
+                        "type": "boolean",
+                        "description": "Indicates if the access token can expire\n"
+                    },
+                    "instanceId": {
+                        "type": "string",
+                        "description": "The Logs instance ID associated with the access token\n"
+                    },
+                    "lifetime": {
+                        "type": "integer",
+                        "description": "A lifetime period for an access token in days. If unset the token will not expire.\n"
+                    },
+                    "permissions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The access permissions granted to the access token. Possible values: \u003cspan pulumi-lang-nodejs=\"`read`\" pulumi-lang-dotnet=\"`Read`\" pulumi-lang-go=\"`read`\" pulumi-lang-python=\"`read`\" pulumi-lang-yaml=\"`read`\" pulumi-lang-java=\"`read`\"\u003e`read`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`write`\" pulumi-lang-dotnet=\"`Write`\" pulumi-lang-go=\"`write`\" pulumi-lang-python=\"`write`\" pulumi-lang-yaml=\"`write`\" pulumi-lang-java=\"`write`\"\u003e`write`\u003c/span\u003e.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID associated with the Logs access token\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "STACKIT region name the resource is located in. If not defined, the provider region is used.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The status of the access token. Possible values are: \u003cspan pulumi-lang-nodejs=\"`active`\" pulumi-lang-dotnet=\"`Active`\" pulumi-lang-go=\"`active`\" pulumi-lang-python=\"`active`\" pulumi-lang-yaml=\"`active`\" pulumi-lang-java=\"`active`\"\u003e`active`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`expired`\" pulumi-lang-dotnet=\"`Expired`\" pulumi-lang-go=\"`expired`\" pulumi-lang-python=\"`expired`\" pulumi-lang-yaml=\"`expired`\" pulumi-lang-java=\"`expired`\"\u003e`expired`\u003c/span\u003e.\n"
+                    },
+                    "validUntil": {
+                        "type": "string",
+                        "description": "The date and time until an access token is valid to (inclusively)\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "stackit:index/logsInstance:LogsInstance": {
-            "description": "Logs instance resource schema.\n\n\u003e This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\nresource \"stackit_logs_instance\" \"logs\" {\n  project_id     = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  region         = \"eu01\"\n  display_name   = \"logs-instance-example\"\n  retention_days = 30\n}\n\nresource \"stackit_logs_instance\" \"logs2\" {\n  project_id     = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  region         = \"eu01\"\n  display_name   = \"logs-instance-example\"\n  retention_days = 30\n  acl = [\n    \"0.0.0.0/0\"\n  ]\n  description = \"Example description\"\n}\n\n# Only use the import statement, if you want to import an existing logs instance\nimport {\n  to = stackit_logs_instance.import-example\n  id = \"${var.project_id},${var.region},${var.logs_instance_id}\"\n}\n```\n",
+            "description": "Logs instance resource schema. Uses the \u003cspan pulumi-lang-nodejs=\"`defaultRegion`\" pulumi-lang-dotnet=\"`DefaultRegion`\" pulumi-lang-go=\"`defaultRegion`\" pulumi-lang-python=\"`default_region`\" pulumi-lang-yaml=\"`defaultRegion`\" pulumi-lang-java=\"`defaultRegion`\"\u003e`default_region`\u003c/span\u003e specified in the provider configuration as a fallback in case no \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e is defined on resource level.\n\n## Example Usage\n\n```terraform\nresource \"stackit_logs_instance\" \"logs\" {\n  project_id     = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  region         = \"eu01\"\n  display_name   = \"logs-instance-example\"\n  retention_days = 30\n}\n\nresource \"stackit_logs_instance\" \"logs2\" {\n  project_id     = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  region         = \"eu01\"\n  display_name   = \"logs-instance-example\"\n  retention_days = 30\n  acl = [\n    \"0.0.0.0/0\"\n  ]\n  description = \"Example description\"\n}\n\n# Only use the import statement, if you want to import an existing logs instance\nimport {\n  to = stackit_logs_instance.import-example\n  id = \"${var.project_id},${var.region},${var.logs_instance_id}\"\n}\n```\n",
             "properties": {
                 "acls": {
                     "type": "array",
@@ -9618,6 +9852,10 @@
         "stackit:index/network:Network": {
             "description": "Network resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\u003e Behavior of not configured \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4_nameservers`\u003c/span\u003e will change from January 2026. When \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4_nameservers`\u003c/span\u003e is not set, it will be set to the network area's \u003cspan pulumi-lang-nodejs=\"`defaultNameservers`\" pulumi-lang-dotnet=\"`DefaultNameservers`\" pulumi-lang-go=\"`defaultNameservers`\" pulumi-lang-python=\"`default_nameservers`\" pulumi-lang-yaml=\"`defaultNameservers`\" pulumi-lang-java=\"`defaultNameservers`\"\u003e`default_nameservers`\u003c/span\u003e.\nTo prevent any nameserver configuration, the \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4_nameservers`\u003c/span\u003e attribute should be explicitly set to an empty list `[]`.\nIn cases where \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4_nameservers`\u003c/span\u003e are defined within the resource, the existing behavior will remain unchanged.\n\n## Example Usage\n\n```terraform\nresource \"stackit_network\" \"example_with_name\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-with-name\"\n}\n\nresource \"stackit_network\" \"example_routed_network\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-routed-network\"\n  labels = {\n    \"key\" = \"value\"\n  }\n  routed = true\n}\n\nresource \"stackit_network\" \"example_non_routed_network\" {\n  project_id       = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name             = \"example-non-routed-network\"\n  ipv4_nameservers = [\"1.2.3.4\", \"5.6.7.8\"]\n  ipv4_gateway     = \"10.1.2.3\"\n  ipv4_prefix      = \"10.1.2.0/24\"\n  labels = {\n    \"key\" = \"value\"\n  }\n  routed = false\n}\n\n# Only use the import statement, if you want to import an existing network\n# Note: There will be a conflict which needs to be resolved manually.\n# These attributes cannot be configured together: [ipv4_prefix,ipv4_prefix_length,ipv4_gateway]\nimport {\n  to = stackit_network.import-example\n  id = \"${var.project_id},${var.region},${var.network_id}\"\n}\n```\n",
             "properties": {
+                "dhcp": {
+                    "type": "boolean",
+                    "description": "If the network has DHCP enabled. Default value is \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e.\n"
+                },
                 "ipv4Gateway": {
                     "type": "string",
                     "description": "The IPv4 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.\n"
@@ -9731,6 +9969,7 @@
                 }
             },
             "required": [
+                "dhcp",
                 "ipv4Gateway",
                 "ipv4Nameservers",
                 "ipv4Prefix",
@@ -9752,6 +9991,10 @@
                 "routingTableId"
             ],
             "inputProperties": {
+                "dhcp": {
+                    "type": "boolean",
+                    "description": "If the network has DHCP enabled. Default value is \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e.\n"
+                },
                 "ipv4Gateway": {
                     "type": "string",
                     "description": "The IPv4 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.\n"
@@ -9840,6 +10083,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering Network resources.\n",
                 "properties": {
+                    "dhcp": {
+                        "type": "boolean",
+                        "description": "If the network has DHCP enabled. Default value is \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e.\n"
+                    },
                     "ipv4Gateway": {
                         "type": "string",
                         "description": "The IPv4 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.\n"
@@ -10783,7 +11030,7 @@
             }
         },
         "stackit:index/observabilityAlertgroup:ObservabilityAlertgroup": {
-            "description": "Observability alert group resource schema. Used to create alerts based on metrics (Thanos). Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\nresource \"stackit_observability_alertgroup\" \"example\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  instance_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name        = \"example-alert-group\"\n  interval    = \"60s\"\n  rules = [\n    {\n      alert      = \"example-alert-name\"\n      expression = \"kube_node_status_condition{condition=\\\"Ready\\\", status=\\\"false\\\"} \u003e 0\"\n      for        = \"60s\"\n      labels = {\n        severity = \"critical\"\n      },\n      annotations = {\n        summary : \"example summary\"\n        description : \"example description\"\n      }\n    },\n    {\n      alert      = \"example-alert-name-2\"\n      expression = \"kube_node_status_condition{condition=\\\"Ready\\\", status=\\\"false\\\"} \u003e 0\"\n      for        = \"1m\"\n      labels = {\n        severity = \"critical\"\n      },\n      annotations = {\n        summary : \"example summary\"\n        description : \"example description\"\n      }\n    },\n  ]\n}\n\n# Only use the import statement, if you want to import an existing observability alertgroup\nimport {\n  to = stackit_observability_alertgroup.import-example\n  id = \"${var.project_id},${var.observability_instance_id},${var.observability_alertgroup_name}\"\n}\n```\n",
+            "description": "Observability alert group resource schema. Used to create alerts based on metrics (Thanos). Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\nresource \"stackit_observability_alertgroup\" \"example\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  instance_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name        = \"example-alert-group\"\n  interval    = \"60s\"\n  rules = [\n    {\n      alert      = \"example-alert-name\"\n      expression = \"kube_node_status_condition{condition=\\\"Ready\\\", status=\\\"false\\\"} \u003e 0\"\n      for        = \"60s\"\n      labels = {\n        severity = \"critical\"\n      },\n      annotations = {\n        summary : \"example summary\"\n        description : \"example description\"\n      }\n    },\n    {\n      expression = \"kube_node_status_condition{condition=\\\"Ready\\\", status=\\\"false\\\"} \u003e 0\"\n      labels = {\n        severity = \"critical\"\n      },\n      record = \"example_record_name\"\n    },\n  ]\n}\n\n# Only use the import statement, if you want to import an existing observability alertgroup\nimport {\n  to = stackit_observability_alertgroup.import-example\n  id = \"${var.project_id},${var.observability_instance_id},${var.observability_alertgroup_name}\"\n}\n```\n",
             "properties": {
                 "instanceId": {
                     "type": "string",
@@ -10979,6 +11226,17 @@
                     "type": "boolean",
                     "description": "If true, a default Grafana server admin user is created. It's recommended to set this to false and use STACKIT SSO (Owner or Observability Grafana Server Admin role) instead. It is still possible to manually create a new Grafana admin user via the Grafana UI later.\n"
                 },
+                "grafanaInitialAdminPassword": {
+                    "type": "string",
+                    "description": "Specifies an initial Grafana admin password.\n",
+                    "deprecationMessage": "This attribute is deprecated and will be removed on July 5, 2026. Use \u003cspan pulumi-lang-nodejs=\"`grafanaAdminEnabled`\" pulumi-lang-dotnet=\"`GrafanaAdminEnabled`\" pulumi-lang-go=\"`grafanaAdminEnabled`\" pulumi-lang-python=\"`grafana_admin_enabled`\" pulumi-lang-yaml=\"`grafanaAdminEnabled`\" pulumi-lang-java=\"`grafanaAdminEnabled`\"\u003e`grafana_admin_enabled`\u003c/span\u003e instead.",
+                    "secret": true
+                },
+                "grafanaInitialAdminUser": {
+                    "type": "string",
+                    "description": "Specifies an initial Grafana admin username.\n",
+                    "deprecationMessage": "This attribute is deprecated and will be removed on July 5, 2026. Use \u003cspan pulumi-lang-nodejs=\"`grafanaAdminEnabled`\" pulumi-lang-dotnet=\"`GrafanaAdminEnabled`\" pulumi-lang-go=\"`grafanaAdminEnabled`\" pulumi-lang-python=\"`grafana_admin_enabled`\" pulumi-lang-yaml=\"`grafanaAdminEnabled`\" pulumi-lang-java=\"`grafanaAdminEnabled`\"\u003e`grafana_admin_enabled`\u003c/span\u003e instead."
+                },
                 "grafanaPublicReadAccess": {
                     "type": "boolean",
                     "description": "If true, anyone can access Grafana dashboards without logging in.\n"
@@ -11075,6 +11333,8 @@
                 "alertingUrl",
                 "dashboardUrl",
                 "grafanaAdminEnabled",
+                "grafanaInitialAdminPassword",
+                "grafanaInitialAdminUser",
                 "grafanaPublicReadAccess",
                 "grafanaUrl",
                 "instanceId",
@@ -11184,6 +11444,17 @@
                     "grafanaAdminEnabled": {
                         "type": "boolean",
                         "description": "If true, a default Grafana server admin user is created. It's recommended to set this to false and use STACKIT SSO (Owner or Observability Grafana Server Admin role) instead. It is still possible to manually create a new Grafana admin user via the Grafana UI later.\n"
+                    },
+                    "grafanaInitialAdminPassword": {
+                        "type": "string",
+                        "description": "Specifies an initial Grafana admin password.\n",
+                        "deprecationMessage": "This attribute is deprecated and will be removed on July 5, 2026. Use \u003cspan pulumi-lang-nodejs=\"`grafanaAdminEnabled`\" pulumi-lang-dotnet=\"`GrafanaAdminEnabled`\" pulumi-lang-go=\"`grafanaAdminEnabled`\" pulumi-lang-python=\"`grafana_admin_enabled`\" pulumi-lang-yaml=\"`grafanaAdminEnabled`\" pulumi-lang-java=\"`grafanaAdminEnabled`\"\u003e`grafana_admin_enabled`\u003c/span\u003e instead.",
+                        "secret": true
+                    },
+                    "grafanaInitialAdminUser": {
+                        "type": "string",
+                        "description": "Specifies an initial Grafana admin username.\n",
+                        "deprecationMessage": "This attribute is deprecated and will be removed on July 5, 2026. Use \u003cspan pulumi-lang-nodejs=\"`grafanaAdminEnabled`\" pulumi-lang-dotnet=\"`GrafanaAdminEnabled`\" pulumi-lang-go=\"`grafanaAdminEnabled`\" pulumi-lang-python=\"`grafana_admin_enabled`\" pulumi-lang-yaml=\"`grafanaAdminEnabled`\" pulumi-lang-java=\"`grafanaAdminEnabled`\"\u003e`grafana_admin_enabled`\u003c/span\u003e instead."
                     },
                     "grafanaPublicReadAccess": {
                         "type": "boolean",
@@ -11900,7 +12171,8 @@
                     "description": "The Access Control List (ACL) for the PostgresFlex instance.\n"
                 },
                 "backupSchedule": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.\n"
                 },
                 "flavor": {
                     "$ref": "#/types/stackit:index/PostgresflexInstanceFlavor:PostgresflexInstanceFlavor"
@@ -11922,7 +12194,8 @@
                     "description": "The resource region. If not defined, the provider region is used.\n"
                 },
                 "replicas": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.\n"
                 },
                 "storage": {
                     "$ref": "#/types/stackit:index/PostgresflexInstanceStorage:PostgresflexInstanceStorage"
@@ -11952,7 +12225,8 @@
                     "description": "The Access Control List (ACL) for the PostgresFlex instance.\n"
                 },
                 "backupSchedule": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.\n"
                 },
                 "flavor": {
                     "$ref": "#/types/stackit:index/PostgresflexInstanceFlavor:PostgresflexInstanceFlavor"
@@ -11970,7 +12244,8 @@
                     "description": "The resource region. If not defined, the provider region is used.\n"
                 },
                 "replicas": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.\n"
                 },
                 "storage": {
                     "$ref": "#/types/stackit:index/PostgresflexInstanceStorage:PostgresflexInstanceStorage"
@@ -11999,7 +12274,8 @@
                         "description": "The Access Control List (ACL) for the PostgresFlex instance.\n"
                     },
                     "backupSchedule": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.\n"
                     },
                     "flavor": {
                         "$ref": "#/types/stackit:index/PostgresflexInstanceFlavor:PostgresflexInstanceFlavor"
@@ -12021,7 +12297,8 @@
                         "description": "The resource region. If not defined, the provider region is used.\n"
                     },
                     "replicas": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.\n"
                     },
                     "storage": {
                         "$ref": "#/types/stackit:index/PostgresflexInstanceStorage:PostgresflexInstanceStorage"
@@ -17815,8 +18092,107 @@
                 ]
             }
         },
+        "stackit:index/getLogsAccessToken:getLogsAccessToken": {
+            "description": "Logs access token data source schema. Uses the \u003cspan pulumi-lang-nodejs=\"`defaultRegion`\" pulumi-lang-dotnet=\"`DefaultRegion`\" pulumi-lang-go=\"`defaultRegion`\" pulumi-lang-python=\"`default_region`\" pulumi-lang-yaml=\"`defaultRegion`\" pulumi-lang-java=\"`defaultRegion`\"\u003e`default_region`\u003c/span\u003e specified in the provider configuration as a fallback in case no \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e is defined on datasource level.\n\n## Example Usage\n\n```terraform\ndata \"stackit_logs_access_token\" \"accessToken\" {\n  project_id      = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  region          = \"eu01\"\n  instance_id     = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  access_token_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getLogsAccessToken.\n",
+                "properties": {
+                    "accessTokenId": {
+                        "type": "string",
+                        "description": "The access token ID\n"
+                    },
+                    "instanceId": {
+                        "type": "string",
+                        "description": "The Logs instance ID associated with the access token\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID associated with the Logs access token\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "STACKIT region name the resource is located in. If not defined, the provider region is used.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "accessTokenId",
+                    "instanceId",
+                    "projectId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getLogsAccessToken.\n",
+                "properties": {
+                    "accessTokenId": {
+                        "type": "string",
+                        "description": "The access token ID\n"
+                    },
+                    "creator": {
+                        "type": "string",
+                        "description": "The user who created the access token\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the access token\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The displayed name of the access token\n"
+                    },
+                    "expires": {
+                        "type": "boolean",
+                        "description": "Indicates if the access token can expire\n"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "instanceId": {
+                        "type": "string",
+                        "description": "The Logs instance ID associated with the access token\n"
+                    },
+                    "permissions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The access permissions granted to the access token. Possible values: \u003cspan pulumi-lang-nodejs=\"`read`\" pulumi-lang-dotnet=\"`Read`\" pulumi-lang-go=\"`read`\" pulumi-lang-python=\"`read`\" pulumi-lang-yaml=\"`read`\" pulumi-lang-java=\"`read`\"\u003e`read`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`write`\" pulumi-lang-dotnet=\"`Write`\" pulumi-lang-go=\"`write`\" pulumi-lang-python=\"`write`\" pulumi-lang-yaml=\"`write`\" pulumi-lang-java=\"`write`\"\u003e`write`\u003c/span\u003e.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID associated with the Logs access token\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "STACKIT region name the resource is located in. If not defined, the provider region is used.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The status of the access token. Possible values are: \u003cspan pulumi-lang-nodejs=\"`active`\" pulumi-lang-dotnet=\"`Active`\" pulumi-lang-go=\"`active`\" pulumi-lang-python=\"`active`\" pulumi-lang-yaml=\"`active`\" pulumi-lang-java=\"`active`\"\u003e`active`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`expired`\" pulumi-lang-dotnet=\"`Expired`\" pulumi-lang-go=\"`expired`\" pulumi-lang-python=\"`expired`\" pulumi-lang-yaml=\"`expired`\" pulumi-lang-java=\"`expired`\"\u003e`expired`\u003c/span\u003e.\n"
+                    },
+                    "validUntil": {
+                        "type": "string",
+                        "description": "The date and time until an access token is valid to (inclusively)\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "accessTokenId",
+                    "creator",
+                    "description",
+                    "displayName",
+                    "expires",
+                    "id",
+                    "instanceId",
+                    "permissions",
+                    "projectId",
+                    "status",
+                    "validUntil"
+                ]
+            }
+        },
         "stackit:index/getLogsInstance:getLogsInstance": {
-            "description": "Logs instance data source schema.\n\n\u003e This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\ndata \"stackit_logs_instance\" \"logs\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  region      = \"eu01\"\n  instance_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "description": "Logs instance data source schema. Uses the \u003cspan pulumi-lang-nodejs=\"`defaultRegion`\" pulumi-lang-dotnet=\"`DefaultRegion`\" pulumi-lang-go=\"`defaultRegion`\" pulumi-lang-python=\"`default_region`\" pulumi-lang-yaml=\"`defaultRegion`\" pulumi-lang-java=\"`defaultRegion`\"\u003e`default_region`\u003c/span\u003e specified in the provider configuration as a fallback in case no \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e is defined on datasource level.\n\n## Example Usage\n\n```terraform\ndata \"stackit_logs_instance\" \"logs\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  region      = \"eu01\"\n  instance_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getLogsInstance.\n",
                 "properties": {
@@ -18368,7 +18744,7 @@
                     },
                     "region": {
                         "type": "string",
-                        "description": "Can only be used when experimental \"network\" is set. This is likely going to undergo significant changes or be removed in the future.\nThe resource region. If not defined, the provider region is used.\n"
+                        "description": "The resource region. If not defined, the provider region is used.\n"
                     }
                 },
                 "type": "object",
@@ -18380,6 +18756,10 @@
             "outputs": {
                 "description": "A collection of values returned by getNetwork.\n",
                 "properties": {
+                    "dhcp": {
+                        "type": "boolean",
+                        "description": "Shows if DHCP is enabled for the network.\n"
+                    },
                     "id": {
                         "type": "string"
                     },
@@ -18478,7 +18858,7 @@
                     },
                     "region": {
                         "type": "string",
-                        "description": "Can only be used when experimental \"network\" is set. This is likely going to undergo significant changes or be removed in the future.\nThe resource region. If not defined, the provider region is used.\n"
+                        "description": "The resource region. If not defined, the provider region is used.\n"
                     },
                     "routed": {
                         "type": "boolean",
@@ -18486,11 +18866,12 @@
                     },
                     "routingTableId": {
                         "type": "string",
-                        "description": "Can only be used when experimental \"network\" is set. This is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\nThe ID of the routing table associated with the network.\n"
+                        "description": "The ID of the routing table associated with the network.\n"
                     }
                 },
                 "type": "object",
                 "required": [
+                    "dhcp",
                     "id",
                     "ipv4Gateway",
                     "ipv4Nameservers",
@@ -19167,6 +19548,17 @@
                         "type": "boolean",
                         "description": "If true, a default Grafana server admin user was created.\n"
                     },
+                    "grafanaInitialAdminPassword": {
+                        "type": "string",
+                        "description": "Specifies an initial Grafana admin password.\n",
+                        "deprecationMessage": "This attribute is deprecated and will be removed on July 5, 2026. Use \u003cspan pulumi-lang-nodejs=\"`grafanaAdminEnabled`\" pulumi-lang-dotnet=\"`GrafanaAdminEnabled`\" pulumi-lang-go=\"`grafanaAdminEnabled`\" pulumi-lang-python=\"`grafana_admin_enabled`\" pulumi-lang-yaml=\"`grafanaAdminEnabled`\" pulumi-lang-java=\"`grafanaAdminEnabled`\"\u003e`grafana_admin_enabled`\u003c/span\u003e instead.",
+                        "secret": true
+                    },
+                    "grafanaInitialAdminUser": {
+                        "type": "string",
+                        "description": "Specifies an initial Grafana admin username.\n",
+                        "deprecationMessage": "This attribute is deprecated and will be removed on July 5, 2026. Use \u003cspan pulumi-lang-nodejs=\"`grafanaAdminEnabled`\" pulumi-lang-dotnet=\"`GrafanaAdminEnabled`\" pulumi-lang-go=\"`grafanaAdminEnabled`\" pulumi-lang-python=\"`grafana_admin_enabled`\" pulumi-lang-yaml=\"`grafanaAdminEnabled`\" pulumi-lang-java=\"`grafanaAdminEnabled`\"\u003e`grafana_admin_enabled`\u003c/span\u003e instead."
+                    },
                     "grafanaPublicReadAccess": {
                         "type": "boolean",
                         "description": "If true, anyone can access Grafana dashboards without logging in.\n"
@@ -19269,6 +19661,8 @@
                     "alertingUrl",
                     "dashboardUrl",
                     "grafanaAdminEnabled",
+                    "grafanaInitialAdminPassword",
+                    "grafanaInitialAdminUser",
                     "grafanaPublicReadAccess",
                     "grafanaUrl",
                     "id",

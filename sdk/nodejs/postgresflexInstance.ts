@@ -43,6 +43,9 @@ export class PostgresflexInstance extends pulumi.CustomResource {
      * The Access Control List (ACL) for the PostgresFlex instance.
      */
     declare public readonly acls: pulumi.Output<string[]>;
+    /**
+     * The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.
+     */
     declare public readonly backupSchedule: pulumi.Output<string>;
     declare public readonly flavor: pulumi.Output<outputs.PostgresflexInstanceFlavor>;
     /**
@@ -61,6 +64,9 @@ export class PostgresflexInstance extends pulumi.CustomResource {
      * The resource region. If not defined, the provider region is used.
      */
     declare public readonly region: pulumi.Output<string>;
+    /**
+     * How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.
+     */
     declare public readonly replicas: pulumi.Output<number>;
     declare public readonly storage: pulumi.Output<outputs.PostgresflexInstanceStorage>;
     declare public readonly version: pulumi.Output<string>;
@@ -135,6 +141,9 @@ export interface PostgresflexInstanceState {
      * The Access Control List (ACL) for the PostgresFlex instance.
      */
     acls?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.
+     */
     backupSchedule?: pulumi.Input<string>;
     flavor?: pulumi.Input<inputs.PostgresflexInstanceFlavor>;
     /**
@@ -153,6 +162,9 @@ export interface PostgresflexInstanceState {
      * The resource region. If not defined, the provider region is used.
      */
     region?: pulumi.Input<string>;
+    /**
+     * How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.
+     */
     replicas?: pulumi.Input<number>;
     storage?: pulumi.Input<inputs.PostgresflexInstanceStorage>;
     version?: pulumi.Input<string>;
@@ -166,6 +178,9 @@ export interface PostgresflexInstanceArgs {
      * The Access Control List (ACL) for the PostgresFlex instance.
      */
     acls: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.
+     */
     backupSchedule: pulumi.Input<string>;
     flavor: pulumi.Input<inputs.PostgresflexInstanceFlavor>;
     /**
@@ -180,6 +195,9 @@ export interface PostgresflexInstanceArgs {
      * The resource region. If not defined, the provider region is used.
      */
     region?: pulumi.Input<string>;
+    /**
+     * How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.
+     */
     replicas: pulumi.Input<number>;
     storage: pulumi.Input<inputs.PostgresflexInstanceStorage>;
     version: pulumi.Input<string>;

@@ -160,6 +160,11 @@ export const getLogmeInstance: typeof import("./getLogmeInstance").getLogmeInsta
 export const getLogmeInstanceOutput: typeof import("./getLogmeInstance").getLogmeInstanceOutput = null as any;
 utilities.lazyLoad(exports, ["getLogmeInstance","getLogmeInstanceOutput"], () => require("./getLogmeInstance"));
 
+export { GetLogsAccessTokenArgs, GetLogsAccessTokenResult, GetLogsAccessTokenOutputArgs } from "./getLogsAccessToken";
+export const getLogsAccessToken: typeof import("./getLogsAccessToken").getLogsAccessToken = null as any;
+export const getLogsAccessTokenOutput: typeof import("./getLogsAccessToken").getLogsAccessTokenOutput = null as any;
+utilities.lazyLoad(exports, ["getLogsAccessToken","getLogsAccessTokenOutput"], () => require("./getLogsAccessToken"));
+
 export { GetLogsInstanceArgs, GetLogsInstanceResult, GetLogsInstanceOutputArgs } from "./getLogsInstance";
 export const getLogsInstance: typeof import("./getLogsInstance").getLogsInstance = null as any;
 export const getLogsInstanceOutput: typeof import("./getLogsInstance").getLogsInstanceOutput = null as any;
@@ -499,6 +504,11 @@ export { LogmeInstanceArgs, LogmeInstanceState } from "./logmeInstance";
 export type LogmeInstance = import("./logmeInstance").LogmeInstance;
 export const LogmeInstance: typeof import("./logmeInstance").LogmeInstance = null as any;
 utilities.lazyLoad(exports, ["LogmeInstance"], () => require("./logmeInstance"));
+
+export { LogsAccessTokenArgs, LogsAccessTokenState } from "./logsAccessToken";
+export type LogsAccessToken = import("./logsAccessToken").LogsAccessToken;
+export const LogsAccessToken: typeof import("./logsAccessToken").LogsAccessToken = null as any;
+utilities.lazyLoad(exports, ["LogsAccessToken"], () => require("./logsAccessToken"));
 
 export { LogsInstanceArgs, LogsInstanceState } from "./logsInstance";
 export type LogsInstance = import("./logsInstance").LogsInstance;
@@ -846,6 +856,8 @@ const _module = {
                 return new LogmeCredential(name, <any>undefined, { urn })
             case "stackit:index/logmeInstance:LogmeInstance":
                 return new LogmeInstance(name, <any>undefined, { urn })
+            case "stackit:index/logsAccessToken:LogsAccessToken":
+                return new LogsAccessToken(name, <any>undefined, { urn })
             case "stackit:index/logsInstance:LogsInstance":
                 return new LogsInstance(name, <any>undefined, { urn })
             case "stackit:index/mariadbCredential:MariadbCredential":
@@ -987,6 +999,7 @@ pulumi.runtime.registerResourceModule("stackit", "index/loadbalancer", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/loadbalancerObservabilityCredential", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/logmeCredential", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/logmeInstance", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/logsAccessToken", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/logsInstance", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/mariadbCredential", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/mariadbInstance", _module)

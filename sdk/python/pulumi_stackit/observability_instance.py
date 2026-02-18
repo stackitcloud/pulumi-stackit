@@ -224,6 +224,8 @@ class _ObservabilityInstanceState:
                  alerting_url: Optional[pulumi.Input[_builtins.str]] = None,
                  dashboard_url: Optional[pulumi.Input[_builtins.str]] = None,
                  grafana_admin_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 grafana_initial_admin_password: Optional[pulumi.Input[_builtins.str]] = None,
+                 grafana_initial_admin_user: Optional[pulumi.Input[_builtins.str]] = None,
                  grafana_public_read_access: Optional[pulumi.Input[_builtins.bool]] = None,
                  grafana_url: Optional[pulumi.Input[_builtins.str]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -254,6 +256,8 @@ class _ObservabilityInstanceState:
         :param pulumi.Input[_builtins.str] alerting_url: Specifies Alerting URL.
         :param pulumi.Input[_builtins.str] dashboard_url: Specifies Observability instance dashboard URL.
         :param pulumi.Input[_builtins.bool] grafana_admin_enabled: If true, a default Grafana server admin user is created. It's recommended to set this to false and use STACKIT SSO (Owner or Observability Grafana Server Admin role) instead. It is still possible to manually create a new Grafana admin user via the Grafana UI later.
+        :param pulumi.Input[_builtins.str] grafana_initial_admin_password: Specifies an initial Grafana admin password.
+        :param pulumi.Input[_builtins.str] grafana_initial_admin_user: Specifies an initial Grafana admin username.
         :param pulumi.Input[_builtins.bool] grafana_public_read_access: If true, anyone can access Grafana dashboards without logging in.
         :param pulumi.Input[_builtins.str] grafana_url: Specifies Grafana URL.
         :param pulumi.Input[_builtins.str] instance_id: The Observability instance ID.
@@ -284,6 +288,16 @@ class _ObservabilityInstanceState:
             pulumi.set(__self__, "dashboard_url", dashboard_url)
         if grafana_admin_enabled is not None:
             pulumi.set(__self__, "grafana_admin_enabled", grafana_admin_enabled)
+        if grafana_initial_admin_password is not None:
+            warnings.warn("""This attribute is deprecated and will be removed on July 5, 2026. Use `grafana_admin_enabled` instead.""", DeprecationWarning)
+            pulumi.log.warn("""grafana_initial_admin_password is deprecated: This attribute is deprecated and will be removed on July 5, 2026. Use `grafana_admin_enabled` instead.""")
+        if grafana_initial_admin_password is not None:
+            pulumi.set(__self__, "grafana_initial_admin_password", grafana_initial_admin_password)
+        if grafana_initial_admin_user is not None:
+            warnings.warn("""This attribute is deprecated and will be removed on July 5, 2026. Use `grafana_admin_enabled` instead.""", DeprecationWarning)
+            pulumi.log.warn("""grafana_initial_admin_user is deprecated: This attribute is deprecated and will be removed on July 5, 2026. Use `grafana_admin_enabled` instead.""")
+        if grafana_initial_admin_user is not None:
+            pulumi.set(__self__, "grafana_initial_admin_user", grafana_initial_admin_user)
         if grafana_public_read_access is not None:
             pulumi.set(__self__, "grafana_public_read_access", grafana_public_read_access)
         if grafana_url is not None:
@@ -390,6 +404,32 @@ class _ObservabilityInstanceState:
     @grafana_admin_enabled.setter
     def grafana_admin_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "grafana_admin_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="grafanaInitialAdminPassword")
+    @_utilities.deprecated("""This attribute is deprecated and will be removed on July 5, 2026. Use `grafana_admin_enabled` instead.""")
+    def grafana_initial_admin_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies an initial Grafana admin password.
+        """
+        return pulumi.get(self, "grafana_initial_admin_password")
+
+    @grafana_initial_admin_password.setter
+    def grafana_initial_admin_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "grafana_initial_admin_password", value)
+
+    @_builtins.property
+    @pulumi.getter(name="grafanaInitialAdminUser")
+    @_utilities.deprecated("""This attribute is deprecated and will be removed on July 5, 2026. Use `grafana_admin_enabled` instead.""")
+    def grafana_initial_admin_user(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies an initial Grafana admin username.
+        """
+        return pulumi.get(self, "grafana_initial_admin_user")
+
+    @grafana_initial_admin_user.setter
+    def grafana_initial_admin_user(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "grafana_initial_admin_user", value)
 
     @_builtins.property
     @pulumi.getter(name="grafanaPublicReadAccess")
@@ -760,6 +800,8 @@ class ObservabilityInstance(pulumi.CustomResource):
             __props__.__dict__["traces_retention_days"] = traces_retention_days
             __props__.__dict__["alerting_url"] = None
             __props__.__dict__["dashboard_url"] = None
+            __props__.__dict__["grafana_initial_admin_password"] = None
+            __props__.__dict__["grafana_initial_admin_user"] = None
             __props__.__dict__["grafana_public_read_access"] = None
             __props__.__dict__["grafana_url"] = None
             __props__.__dict__["instance_id"] = None
@@ -774,6 +816,8 @@ class ObservabilityInstance(pulumi.CustomResource):
             __props__.__dict__["plan_id"] = None
             __props__.__dict__["targets_url"] = None
             __props__.__dict__["zipkin_spans_url"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["grafanaInitialAdminPassword"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(ObservabilityInstance, __self__).__init__(
             'stackit:index/observabilityInstance:ObservabilityInstance',
             resource_name,
@@ -789,6 +833,8 @@ class ObservabilityInstance(pulumi.CustomResource):
             alerting_url: Optional[pulumi.Input[_builtins.str]] = None,
             dashboard_url: Optional[pulumi.Input[_builtins.str]] = None,
             grafana_admin_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+            grafana_initial_admin_password: Optional[pulumi.Input[_builtins.str]] = None,
+            grafana_initial_admin_user: Optional[pulumi.Input[_builtins.str]] = None,
             grafana_public_read_access: Optional[pulumi.Input[_builtins.bool]] = None,
             grafana_url: Optional[pulumi.Input[_builtins.str]] = None,
             instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -824,6 +870,8 @@ class ObservabilityInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] alerting_url: Specifies Alerting URL.
         :param pulumi.Input[_builtins.str] dashboard_url: Specifies Observability instance dashboard URL.
         :param pulumi.Input[_builtins.bool] grafana_admin_enabled: If true, a default Grafana server admin user is created. It's recommended to set this to false and use STACKIT SSO (Owner or Observability Grafana Server Admin role) instead. It is still possible to manually create a new Grafana admin user via the Grafana UI later.
+        :param pulumi.Input[_builtins.str] grafana_initial_admin_password: Specifies an initial Grafana admin password.
+        :param pulumi.Input[_builtins.str] grafana_initial_admin_user: Specifies an initial Grafana admin username.
         :param pulumi.Input[_builtins.bool] grafana_public_read_access: If true, anyone can access Grafana dashboards without logging in.
         :param pulumi.Input[_builtins.str] grafana_url: Specifies Grafana URL.
         :param pulumi.Input[_builtins.str] instance_id: The Observability instance ID.
@@ -853,6 +901,8 @@ class ObservabilityInstance(pulumi.CustomResource):
         __props__.__dict__["alerting_url"] = alerting_url
         __props__.__dict__["dashboard_url"] = dashboard_url
         __props__.__dict__["grafana_admin_enabled"] = grafana_admin_enabled
+        __props__.__dict__["grafana_initial_admin_password"] = grafana_initial_admin_password
+        __props__.__dict__["grafana_initial_admin_user"] = grafana_initial_admin_user
         __props__.__dict__["grafana_public_read_access"] = grafana_public_read_access
         __props__.__dict__["grafana_url"] = grafana_url
         __props__.__dict__["instance_id"] = instance_id
@@ -917,6 +967,24 @@ class ObservabilityInstance(pulumi.CustomResource):
         If true, a default Grafana server admin user is created. It's recommended to set this to false and use STACKIT SSO (Owner or Observability Grafana Server Admin role) instead. It is still possible to manually create a new Grafana admin user via the Grafana UI later.
         """
         return pulumi.get(self, "grafana_admin_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="grafanaInitialAdminPassword")
+    @_utilities.deprecated("""This attribute is deprecated and will be removed on July 5, 2026. Use `grafana_admin_enabled` instead.""")
+    def grafana_initial_admin_password(self) -> pulumi.Output[_builtins.str]:
+        """
+        Specifies an initial Grafana admin password.
+        """
+        return pulumi.get(self, "grafana_initial_admin_password")
+
+    @_builtins.property
+    @pulumi.getter(name="grafanaInitialAdminUser")
+    @_utilities.deprecated("""This attribute is deprecated and will be removed on July 5, 2026. Use `grafana_admin_enabled` instead.""")
+    def grafana_initial_admin_user(self) -> pulumi.Output[_builtins.str]:
+        """
+        Specifies an initial Grafana admin username.
+        """
+        return pulumi.get(self, "grafana_initial_admin_user")
 
     @_builtins.property
     @pulumi.getter(name="grafanaPublicReadAccess")

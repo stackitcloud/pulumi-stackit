@@ -383,13 +383,19 @@ func (o CdnDistributionConfigPtrOutput) Regions() pulumi.StringArrayOutput {
 }
 
 type CdnDistributionConfigBackend struct {
-	// A map of URLs to a list of countries where content is allowed.
+	// The URL of the bucket (e.g. https://s3.example.com). Required if type is 'bucket'.
+	BucketUrl *string `pulumi:"bucketUrl"`
+	// The credentials for the bucket. Required if type is 'bucket'.
+	Credentials *CdnDistributionConfigBackendCredentials `pulumi:"credentials"`
+	// The configured type http to configure countries where content is allowed. A map of URLs to a list of countries
 	Geofencing map[string][]string `pulumi:"geofencing"`
-	// The configured origin request headers for the backend
+	// The configured type http origin request headers for the backend
 	OriginRequestHeaders map[string]string `pulumi:"originRequestHeaders"`
-	// The configured backend type for the distribution
-	OriginUrl string `pulumi:"originUrl"`
-	// The configured backend type. Possible values are: `http`.
+	// The configured backend type http for the distribution
+	OriginUrl *string `pulumi:"originUrl"`
+	// The region where the bucket is hosted. Required if type is 'bucket'.
+	Region *string `pulumi:"region"`
+	// The configured backend type. Possible values are: `http`, `bucket`.
 	Type string `pulumi:"type"`
 }
 
@@ -405,13 +411,19 @@ type CdnDistributionConfigBackendInput interface {
 }
 
 type CdnDistributionConfigBackendArgs struct {
-	// A map of URLs to a list of countries where content is allowed.
+	// The URL of the bucket (e.g. https://s3.example.com). Required if type is 'bucket'.
+	BucketUrl pulumi.StringPtrInput `pulumi:"bucketUrl"`
+	// The credentials for the bucket. Required if type is 'bucket'.
+	Credentials CdnDistributionConfigBackendCredentialsPtrInput `pulumi:"credentials"`
+	// The configured type http to configure countries where content is allowed. A map of URLs to a list of countries
 	Geofencing pulumi.StringArrayMapInput `pulumi:"geofencing"`
-	// The configured origin request headers for the backend
+	// The configured type http origin request headers for the backend
 	OriginRequestHeaders pulumi.StringMapInput `pulumi:"originRequestHeaders"`
-	// The configured backend type for the distribution
-	OriginUrl pulumi.StringInput `pulumi:"originUrl"`
-	// The configured backend type. Possible values are: `http`.
+	// The configured backend type http for the distribution
+	OriginUrl pulumi.StringPtrInput `pulumi:"originUrl"`
+	// The region where the bucket is hosted. Required if type is 'bucket'.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The configured backend type. Possible values are: `http`, `bucket`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -492,22 +504,37 @@ func (o CdnDistributionConfigBackendOutput) ToCdnDistributionConfigBackendPtrOut
 	}).(CdnDistributionConfigBackendPtrOutput)
 }
 
-// A map of URLs to a list of countries where content is allowed.
+// The URL of the bucket (e.g. https://s3.example.com). Required if type is 'bucket'.
+func (o CdnDistributionConfigBackendOutput) BucketUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CdnDistributionConfigBackend) *string { return v.BucketUrl }).(pulumi.StringPtrOutput)
+}
+
+// The credentials for the bucket. Required if type is 'bucket'.
+func (o CdnDistributionConfigBackendOutput) Credentials() CdnDistributionConfigBackendCredentialsPtrOutput {
+	return o.ApplyT(func(v CdnDistributionConfigBackend) *CdnDistributionConfigBackendCredentials { return v.Credentials }).(CdnDistributionConfigBackendCredentialsPtrOutput)
+}
+
+// The configured type http to configure countries where content is allowed. A map of URLs to a list of countries
 func (o CdnDistributionConfigBackendOutput) Geofencing() pulumi.StringArrayMapOutput {
 	return o.ApplyT(func(v CdnDistributionConfigBackend) map[string][]string { return v.Geofencing }).(pulumi.StringArrayMapOutput)
 }
 
-// The configured origin request headers for the backend
+// The configured type http origin request headers for the backend
 func (o CdnDistributionConfigBackendOutput) OriginRequestHeaders() pulumi.StringMapOutput {
 	return o.ApplyT(func(v CdnDistributionConfigBackend) map[string]string { return v.OriginRequestHeaders }).(pulumi.StringMapOutput)
 }
 
-// The configured backend type for the distribution
-func (o CdnDistributionConfigBackendOutput) OriginUrl() pulumi.StringOutput {
-	return o.ApplyT(func(v CdnDistributionConfigBackend) string { return v.OriginUrl }).(pulumi.StringOutput)
+// The configured backend type http for the distribution
+func (o CdnDistributionConfigBackendOutput) OriginUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CdnDistributionConfigBackend) *string { return v.OriginUrl }).(pulumi.StringPtrOutput)
 }
 
-// The configured backend type. Possible values are: `http`.
+// The region where the bucket is hosted. Required if type is 'bucket'.
+func (o CdnDistributionConfigBackendOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CdnDistributionConfigBackend) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// The configured backend type. Possible values are: `http`, `bucket`.
 func (o CdnDistributionConfigBackendOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v CdnDistributionConfigBackend) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -536,7 +563,27 @@ func (o CdnDistributionConfigBackendPtrOutput) Elem() CdnDistributionConfigBacke
 	}).(CdnDistributionConfigBackendOutput)
 }
 
-// A map of URLs to a list of countries where content is allowed.
+// The URL of the bucket (e.g. https://s3.example.com). Required if type is 'bucket'.
+func (o CdnDistributionConfigBackendPtrOutput) BucketUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigBackend) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BucketUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The credentials for the bucket. Required if type is 'bucket'.
+func (o CdnDistributionConfigBackendPtrOutput) Credentials() CdnDistributionConfigBackendCredentialsPtrOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigBackend) *CdnDistributionConfigBackendCredentials {
+		if v == nil {
+			return nil
+		}
+		return v.Credentials
+	}).(CdnDistributionConfigBackendCredentialsPtrOutput)
+}
+
+// The configured type http to configure countries where content is allowed. A map of URLs to a list of countries
 func (o CdnDistributionConfigBackendPtrOutput) Geofencing() pulumi.StringArrayMapOutput {
 	return o.ApplyT(func(v *CdnDistributionConfigBackend) map[string][]string {
 		if v == nil {
@@ -546,7 +593,7 @@ func (o CdnDistributionConfigBackendPtrOutput) Geofencing() pulumi.StringArrayMa
 	}).(pulumi.StringArrayMapOutput)
 }
 
-// The configured origin request headers for the backend
+// The configured type http origin request headers for the backend
 func (o CdnDistributionConfigBackendPtrOutput) OriginRequestHeaders() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CdnDistributionConfigBackend) map[string]string {
 		if v == nil {
@@ -556,23 +603,189 @@ func (o CdnDistributionConfigBackendPtrOutput) OriginRequestHeaders() pulumi.Str
 	}).(pulumi.StringMapOutput)
 }
 
-// The configured backend type for the distribution
+// The configured backend type http for the distribution
 func (o CdnDistributionConfigBackendPtrOutput) OriginUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CdnDistributionConfigBackend) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.OriginUrl
+		return v.OriginUrl
 	}).(pulumi.StringPtrOutput)
 }
 
-// The configured backend type. Possible values are: `http`.
+// The region where the bucket is hosted. Required if type is 'bucket'.
+func (o CdnDistributionConfigBackendPtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigBackend) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+// The configured backend type. Possible values are: `http`, `bucket`.
 func (o CdnDistributionConfigBackendPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CdnDistributionConfigBackend) *string {
 		if v == nil {
 			return nil
 		}
 		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type CdnDistributionConfigBackendCredentials struct {
+	// The access key for the bucket. Required if type is 'bucket'.
+	AccessKeyId string `pulumi:"accessKeyId"`
+	// The access key for the bucket. Required if type is 'bucket'.
+	SecretAccessKey string `pulumi:"secretAccessKey"`
+}
+
+// CdnDistributionConfigBackendCredentialsInput is an input type that accepts CdnDistributionConfigBackendCredentialsArgs and CdnDistributionConfigBackendCredentialsOutput values.
+// You can construct a concrete instance of `CdnDistributionConfigBackendCredentialsInput` via:
+//
+//	CdnDistributionConfigBackendCredentialsArgs{...}
+type CdnDistributionConfigBackendCredentialsInput interface {
+	pulumi.Input
+
+	ToCdnDistributionConfigBackendCredentialsOutput() CdnDistributionConfigBackendCredentialsOutput
+	ToCdnDistributionConfigBackendCredentialsOutputWithContext(context.Context) CdnDistributionConfigBackendCredentialsOutput
+}
+
+type CdnDistributionConfigBackendCredentialsArgs struct {
+	// The access key for the bucket. Required if type is 'bucket'.
+	AccessKeyId pulumi.StringInput `pulumi:"accessKeyId"`
+	// The access key for the bucket. Required if type is 'bucket'.
+	SecretAccessKey pulumi.StringInput `pulumi:"secretAccessKey"`
+}
+
+func (CdnDistributionConfigBackendCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CdnDistributionConfigBackendCredentials)(nil)).Elem()
+}
+
+func (i CdnDistributionConfigBackendCredentialsArgs) ToCdnDistributionConfigBackendCredentialsOutput() CdnDistributionConfigBackendCredentialsOutput {
+	return i.ToCdnDistributionConfigBackendCredentialsOutputWithContext(context.Background())
+}
+
+func (i CdnDistributionConfigBackendCredentialsArgs) ToCdnDistributionConfigBackendCredentialsOutputWithContext(ctx context.Context) CdnDistributionConfigBackendCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnDistributionConfigBackendCredentialsOutput)
+}
+
+func (i CdnDistributionConfigBackendCredentialsArgs) ToCdnDistributionConfigBackendCredentialsPtrOutput() CdnDistributionConfigBackendCredentialsPtrOutput {
+	return i.ToCdnDistributionConfigBackendCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i CdnDistributionConfigBackendCredentialsArgs) ToCdnDistributionConfigBackendCredentialsPtrOutputWithContext(ctx context.Context) CdnDistributionConfigBackendCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnDistributionConfigBackendCredentialsOutput).ToCdnDistributionConfigBackendCredentialsPtrOutputWithContext(ctx)
+}
+
+// CdnDistributionConfigBackendCredentialsPtrInput is an input type that accepts CdnDistributionConfigBackendCredentialsArgs, CdnDistributionConfigBackendCredentialsPtr and CdnDistributionConfigBackendCredentialsPtrOutput values.
+// You can construct a concrete instance of `CdnDistributionConfigBackendCredentialsPtrInput` via:
+//
+//	        CdnDistributionConfigBackendCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CdnDistributionConfigBackendCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToCdnDistributionConfigBackendCredentialsPtrOutput() CdnDistributionConfigBackendCredentialsPtrOutput
+	ToCdnDistributionConfigBackendCredentialsPtrOutputWithContext(context.Context) CdnDistributionConfigBackendCredentialsPtrOutput
+}
+
+type cdnDistributionConfigBackendCredentialsPtrType CdnDistributionConfigBackendCredentialsArgs
+
+func CdnDistributionConfigBackendCredentialsPtr(v *CdnDistributionConfigBackendCredentialsArgs) CdnDistributionConfigBackendCredentialsPtrInput {
+	return (*cdnDistributionConfigBackendCredentialsPtrType)(v)
+}
+
+func (*cdnDistributionConfigBackendCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CdnDistributionConfigBackendCredentials)(nil)).Elem()
+}
+
+func (i *cdnDistributionConfigBackendCredentialsPtrType) ToCdnDistributionConfigBackendCredentialsPtrOutput() CdnDistributionConfigBackendCredentialsPtrOutput {
+	return i.ToCdnDistributionConfigBackendCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *cdnDistributionConfigBackendCredentialsPtrType) ToCdnDistributionConfigBackendCredentialsPtrOutputWithContext(ctx context.Context) CdnDistributionConfigBackendCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnDistributionConfigBackendCredentialsPtrOutput)
+}
+
+type CdnDistributionConfigBackendCredentialsOutput struct{ *pulumi.OutputState }
+
+func (CdnDistributionConfigBackendCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CdnDistributionConfigBackendCredentials)(nil)).Elem()
+}
+
+func (o CdnDistributionConfigBackendCredentialsOutput) ToCdnDistributionConfigBackendCredentialsOutput() CdnDistributionConfigBackendCredentialsOutput {
+	return o
+}
+
+func (o CdnDistributionConfigBackendCredentialsOutput) ToCdnDistributionConfigBackendCredentialsOutputWithContext(ctx context.Context) CdnDistributionConfigBackendCredentialsOutput {
+	return o
+}
+
+func (o CdnDistributionConfigBackendCredentialsOutput) ToCdnDistributionConfigBackendCredentialsPtrOutput() CdnDistributionConfigBackendCredentialsPtrOutput {
+	return o.ToCdnDistributionConfigBackendCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o CdnDistributionConfigBackendCredentialsOutput) ToCdnDistributionConfigBackendCredentialsPtrOutputWithContext(ctx context.Context) CdnDistributionConfigBackendCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CdnDistributionConfigBackendCredentials) *CdnDistributionConfigBackendCredentials {
+		return &v
+	}).(CdnDistributionConfigBackendCredentialsPtrOutput)
+}
+
+// The access key for the bucket. Required if type is 'bucket'.
+func (o CdnDistributionConfigBackendCredentialsOutput) AccessKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v CdnDistributionConfigBackendCredentials) string { return v.AccessKeyId }).(pulumi.StringOutput)
+}
+
+// The access key for the bucket. Required if type is 'bucket'.
+func (o CdnDistributionConfigBackendCredentialsOutput) SecretAccessKey() pulumi.StringOutput {
+	return o.ApplyT(func(v CdnDistributionConfigBackendCredentials) string { return v.SecretAccessKey }).(pulumi.StringOutput)
+}
+
+type CdnDistributionConfigBackendCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (CdnDistributionConfigBackendCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CdnDistributionConfigBackendCredentials)(nil)).Elem()
+}
+
+func (o CdnDistributionConfigBackendCredentialsPtrOutput) ToCdnDistributionConfigBackendCredentialsPtrOutput() CdnDistributionConfigBackendCredentialsPtrOutput {
+	return o
+}
+
+func (o CdnDistributionConfigBackendCredentialsPtrOutput) ToCdnDistributionConfigBackendCredentialsPtrOutputWithContext(ctx context.Context) CdnDistributionConfigBackendCredentialsPtrOutput {
+	return o
+}
+
+func (o CdnDistributionConfigBackendCredentialsPtrOutput) Elem() CdnDistributionConfigBackendCredentialsOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigBackendCredentials) CdnDistributionConfigBackendCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret CdnDistributionConfigBackendCredentials
+		return ret
+	}).(CdnDistributionConfigBackendCredentialsOutput)
+}
+
+// The access key for the bucket. Required if type is 'bucket'.
+func (o CdnDistributionConfigBackendCredentialsPtrOutput) AccessKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigBackendCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AccessKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The access key for the bucket. Required if type is 'bucket'.
+func (o CdnDistributionConfigBackendCredentialsPtrOutput) SecretAccessKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigBackendCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SecretAccessKey
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5293,7 +5506,7 @@ func (o NetworkAreaRouteNextHopPtrOutput) Value() pulumi.StringPtrOutput {
 
 type ObservabilityAlertgroupRule struct {
 	// The name of the alert rule. Is the identifier and must be unique in the group.
-	Alert string `pulumi:"alert"`
+	Alert *string `pulumi:"alert"`
 	// A map of key:value. Annotations to add or overwrite for each alert
 	Annotations map[string]string `pulumi:"annotations"`
 	// The PromQL expression to evaluate. Every evaluation cycle this is evaluated at the current time, and all resultant time series become pending/firing alerts.
@@ -5302,6 +5515,8 @@ type ObservabilityAlertgroupRule struct {
 	For *string `pulumi:"for"`
 	// A map of key:value. Labels to add or overwrite for each alert
 	Labels map[string]string `pulumi:"labels"`
+	// The name of the metric. It's the identifier and must be unique in the group.
+	Record *string `pulumi:"record"`
 }
 
 // ObservabilityAlertgroupRuleInput is an input type that accepts ObservabilityAlertgroupRuleArgs and ObservabilityAlertgroupRuleOutput values.
@@ -5317,7 +5532,7 @@ type ObservabilityAlertgroupRuleInput interface {
 
 type ObservabilityAlertgroupRuleArgs struct {
 	// The name of the alert rule. Is the identifier and must be unique in the group.
-	Alert pulumi.StringInput `pulumi:"alert"`
+	Alert pulumi.StringPtrInput `pulumi:"alert"`
 	// A map of key:value. Annotations to add or overwrite for each alert
 	Annotations pulumi.StringMapInput `pulumi:"annotations"`
 	// The PromQL expression to evaluate. Every evaluation cycle this is evaluated at the current time, and all resultant time series become pending/firing alerts.
@@ -5326,6 +5541,8 @@ type ObservabilityAlertgroupRuleArgs struct {
 	For pulumi.StringPtrInput `pulumi:"for"`
 	// A map of key:value. Labels to add or overwrite for each alert
 	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The name of the metric. It's the identifier and must be unique in the group.
+	Record pulumi.StringPtrInput `pulumi:"record"`
 }
 
 func (ObservabilityAlertgroupRuleArgs) ElementType() reflect.Type {
@@ -5380,8 +5597,8 @@ func (o ObservabilityAlertgroupRuleOutput) ToObservabilityAlertgroupRuleOutputWi
 }
 
 // The name of the alert rule. Is the identifier and must be unique in the group.
-func (o ObservabilityAlertgroupRuleOutput) Alert() pulumi.StringOutput {
-	return o.ApplyT(func(v ObservabilityAlertgroupRule) string { return v.Alert }).(pulumi.StringOutput)
+func (o ObservabilityAlertgroupRuleOutput) Alert() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ObservabilityAlertgroupRule) *string { return v.Alert }).(pulumi.StringPtrOutput)
 }
 
 // A map of key:value. Annotations to add or overwrite for each alert
@@ -5402,6 +5619,11 @@ func (o ObservabilityAlertgroupRuleOutput) For() pulumi.StringPtrOutput {
 // A map of key:value. Labels to add or overwrite for each alert
 func (o ObservabilityAlertgroupRuleOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ObservabilityAlertgroupRule) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The name of the metric. It's the identifier and must be unique in the group.
+func (o ObservabilityAlertgroupRuleOutput) Record() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ObservabilityAlertgroupRule) *string { return v.Record }).(pulumi.StringPtrOutput)
 }
 
 type ObservabilityAlertgroupRuleArrayOutput struct{ *pulumi.OutputState }
@@ -6410,6 +6632,8 @@ func (o ObservabilityInstanceAlertConfigReceiverWebhooksConfigArrayOutput) Index
 }
 
 type ObservabilityInstanceAlertConfigRoute struct {
+	// Whether an alert should continue matching subsequent sibling nodes.
+	Continue *bool `pulumi:"continue"`
 	// The labels by which incoming alerts are grouped together. For example, multiple alerts coming in for cluster=A and alertname=LatencyHigh would be batched into a single group. To aggregate by all possible labels use the special value '...' as the sole label name, for example: group_by: ['...']. This effectively disables aggregation entirely, passing through all alerts as-is. This is unlikely to be what you want, unless you have a very low alert volume or your upstream notification system performs its own grouping.
 	GroupBies []string `pulumi:"groupBies"`
 	// How long to wait before sending a notification about new alerts that are added to a group of alerts for which an initial notification has already been sent. (Usually ~5m or more.)
@@ -6436,6 +6660,8 @@ type ObservabilityInstanceAlertConfigRouteInput interface {
 }
 
 type ObservabilityInstanceAlertConfigRouteArgs struct {
+	// Whether an alert should continue matching subsequent sibling nodes.
+	Continue pulumi.BoolPtrInput `pulumi:"continue"`
 	// The labels by which incoming alerts are grouped together. For example, multiple alerts coming in for cluster=A and alertname=LatencyHigh would be batched into a single group. To aggregate by all possible labels use the special value '...' as the sole label name, for example: group_by: ['...']. This effectively disables aggregation entirely, passing through all alerts as-is. This is unlikely to be what you want, unless you have a very low alert volume or your upstream notification system performs its own grouping.
 	GroupBies pulumi.StringArrayInput `pulumi:"groupBies"`
 	// How long to wait before sending a notification about new alerts that are added to a group of alerts for which an initial notification has already been sent. (Usually ~5m or more.)
@@ -6527,6 +6753,11 @@ func (o ObservabilityInstanceAlertConfigRouteOutput) ToObservabilityInstanceAler
 	}).(ObservabilityInstanceAlertConfigRoutePtrOutput)
 }
 
+// Whether an alert should continue matching subsequent sibling nodes.
+func (o ObservabilityInstanceAlertConfigRouteOutput) Continue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ObservabilityInstanceAlertConfigRoute) *bool { return v.Continue }).(pulumi.BoolPtrOutput)
+}
+
 // The labels by which incoming alerts are grouped together. For example, multiple alerts coming in for cluster=A and alertname=LatencyHigh would be batched into a single group. To aggregate by all possible labels use the special value '...' as the sole label name, for example: group_by: ['...']. This effectively disables aggregation entirely, passing through all alerts as-is. This is unlikely to be what you want, unless you have a very low alert volume or your upstream notification system performs its own grouping.
 func (o ObservabilityInstanceAlertConfigRouteOutput) GroupBies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ObservabilityInstanceAlertConfigRoute) []string { return v.GroupBies }).(pulumi.StringArrayOutput)
@@ -6581,6 +6812,16 @@ func (o ObservabilityInstanceAlertConfigRoutePtrOutput) Elem() ObservabilityInst
 		var ret ObservabilityInstanceAlertConfigRoute
 		return ret
 	}).(ObservabilityInstanceAlertConfigRouteOutput)
+}
+
+// Whether an alert should continue matching subsequent sibling nodes.
+func (o ObservabilityInstanceAlertConfigRoutePtrOutput) Continue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ObservabilityInstanceAlertConfigRoute) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Continue
+	}).(pulumi.BoolPtrOutput)
 }
 
 // The labels by which incoming alerts are grouped together. For example, multiple alerts coming in for cluster=A and alertname=LatencyHigh would be batched into a single group. To aggregate by all possible labels use the special value '...' as the sole label name, for example: group_by: ['...']. This effectively disables aggregation entirely, passing through all alerts as-is. This is unlikely to be what you want, unless you have a very low alert volume or your upstream notification system performs its own grouping.
@@ -13020,13 +13261,17 @@ func (o GetCdnDistributionConfigOutput) Regions() pulumi.StringArrayOutput {
 }
 
 type GetCdnDistributionConfigBackend struct {
-	// A map of URLs to a list of countries where content is allowed.
+	// The URL of the bucket (e.g. https://s3.example.com). Required if type is 'bucket'.
+	BucketUrl string `pulumi:"bucketUrl"`
+	// The configured type http to configure countries where content is allowed. A map of URLs to a list of countries
 	Geofencing map[string][]string `pulumi:"geofencing"`
-	// The configured origin request headers for the backend
+	// The configured type http origin request headers for the backend
 	OriginRequestHeaders map[string]string `pulumi:"originRequestHeaders"`
-	// The configured backend type for the distribution
+	// The configured backend type http for the distribution
 	OriginUrl string `pulumi:"originUrl"`
-	// The configured backend type. Possible values are: `http`.
+	// The region where the bucket is hosted. Required if type is 'bucket'.
+	Region string `pulumi:"region"`
+	// The configured backend type. Possible values are: `http`, `bucket`.
 	Type string `pulumi:"type"`
 }
 
@@ -13042,13 +13287,17 @@ type GetCdnDistributionConfigBackendInput interface {
 }
 
 type GetCdnDistributionConfigBackendArgs struct {
-	// A map of URLs to a list of countries where content is allowed.
+	// The URL of the bucket (e.g. https://s3.example.com). Required if type is 'bucket'.
+	BucketUrl pulumi.StringInput `pulumi:"bucketUrl"`
+	// The configured type http to configure countries where content is allowed. A map of URLs to a list of countries
 	Geofencing pulumi.StringArrayMapInput `pulumi:"geofencing"`
-	// The configured origin request headers for the backend
+	// The configured type http origin request headers for the backend
 	OriginRequestHeaders pulumi.StringMapInput `pulumi:"originRequestHeaders"`
-	// The configured backend type for the distribution
+	// The configured backend type http for the distribution
 	OriginUrl pulumi.StringInput `pulumi:"originUrl"`
-	// The configured backend type. Possible values are: `http`.
+	// The region where the bucket is hosted. Required if type is 'bucket'.
+	Region pulumi.StringInput `pulumi:"region"`
+	// The configured backend type. Possible values are: `http`, `bucket`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -13078,22 +13327,32 @@ func (o GetCdnDistributionConfigBackendOutput) ToGetCdnDistributionConfigBackend
 	return o
 }
 
-// A map of URLs to a list of countries where content is allowed.
+// The URL of the bucket (e.g. https://s3.example.com). Required if type is 'bucket'.
+func (o GetCdnDistributionConfigBackendOutput) BucketUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfigBackend) string { return v.BucketUrl }).(pulumi.StringOutput)
+}
+
+// The configured type http to configure countries where content is allowed. A map of URLs to a list of countries
 func (o GetCdnDistributionConfigBackendOutput) Geofencing() pulumi.StringArrayMapOutput {
 	return o.ApplyT(func(v GetCdnDistributionConfigBackend) map[string][]string { return v.Geofencing }).(pulumi.StringArrayMapOutput)
 }
 
-// The configured origin request headers for the backend
+// The configured type http origin request headers for the backend
 func (o GetCdnDistributionConfigBackendOutput) OriginRequestHeaders() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetCdnDistributionConfigBackend) map[string]string { return v.OriginRequestHeaders }).(pulumi.StringMapOutput)
 }
 
-// The configured backend type for the distribution
+// The configured backend type http for the distribution
 func (o GetCdnDistributionConfigBackendOutput) OriginUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCdnDistributionConfigBackend) string { return v.OriginUrl }).(pulumi.StringOutput)
 }
 
-// The configured backend type. Possible values are: `http`.
+// The region where the bucket is hosted. Required if type is 'bucket'.
+func (o GetCdnDistributionConfigBackendOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfigBackend) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The configured backend type. Possible values are: `http`, `bucket`.
 func (o GetCdnDistributionConfigBackendOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCdnDistributionConfigBackend) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -16362,6 +16621,8 @@ type GetObservabilityAlertgroupRule struct {
 	For string `pulumi:"for"`
 	// A map of key:value. Labels to add or overwrite for each alert
 	Labels map[string]string `pulumi:"labels"`
+	// The name of the metric. It's the identifier and must be unique in the group.
+	Record string `pulumi:"record"`
 }
 
 // GetObservabilityAlertgroupRuleInput is an input type that accepts GetObservabilityAlertgroupRuleArgs and GetObservabilityAlertgroupRuleOutput values.
@@ -16386,6 +16647,8 @@ type GetObservabilityAlertgroupRuleArgs struct {
 	For pulumi.StringInput `pulumi:"for"`
 	// A map of key:value. Labels to add or overwrite for each alert
 	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The name of the metric. It's the identifier and must be unique in the group.
+	Record pulumi.StringInput `pulumi:"record"`
 }
 
 func (GetObservabilityAlertgroupRuleArgs) ElementType() reflect.Type {
@@ -16462,6 +16725,11 @@ func (o GetObservabilityAlertgroupRuleOutput) For() pulumi.StringOutput {
 // A map of key:value. Labels to add or overwrite for each alert
 func (o GetObservabilityAlertgroupRuleOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetObservabilityAlertgroupRule) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The name of the metric. It's the identifier and must be unique in the group.
+func (o GetObservabilityAlertgroupRuleOutput) Record() pulumi.StringOutput {
+	return o.ApplyT(func(v GetObservabilityAlertgroupRule) string { return v.Record }).(pulumi.StringOutput)
 }
 
 type GetObservabilityAlertgroupRuleArrayOutput struct{ *pulumi.OutputState }
@@ -17210,6 +17478,8 @@ func (o GetObservabilityInstanceAlertConfigReceiverWebhooksConfigArrayOutput) In
 }
 
 type GetObservabilityInstanceAlertConfigRoute struct {
+	// Whether an alert should continue matching subsequent sibling nodes.
+	Continue bool `pulumi:"continue"`
 	// The labels by which incoming alerts are grouped together. For example, multiple alerts coming in for cluster=A and alertname=LatencyHigh would be batched into a single group. To aggregate by all possible labels use the special value '...' as the sole label name, for example: group_by: ['...']. This effectively disables aggregation entirely, passing through all alerts as-is. This is unlikely to be what you want, unless you have a very low alert volume or your upstream notification system performs its own grouping.
 	GroupBies []string `pulumi:"groupBies"`
 	// How long to wait before sending a notification about new alerts that are added to a group of alerts for which an initial notification has already been sent. (Usually ~5m or more.)
@@ -17236,6 +17506,8 @@ type GetObservabilityInstanceAlertConfigRouteInput interface {
 }
 
 type GetObservabilityInstanceAlertConfigRouteArgs struct {
+	// Whether an alert should continue matching subsequent sibling nodes.
+	Continue pulumi.BoolInput `pulumi:"continue"`
 	// The labels by which incoming alerts are grouped together. For example, multiple alerts coming in for cluster=A and alertname=LatencyHigh would be batched into a single group. To aggregate by all possible labels use the special value '...' as the sole label name, for example: group_by: ['...']. This effectively disables aggregation entirely, passing through all alerts as-is. This is unlikely to be what you want, unless you have a very low alert volume or your upstream notification system performs its own grouping.
 	GroupBies pulumi.StringArrayInput `pulumi:"groupBies"`
 	// How long to wait before sending a notification about new alerts that are added to a group of alerts for which an initial notification has already been sent. (Usually ~5m or more.)
@@ -17274,6 +17546,11 @@ func (o GetObservabilityInstanceAlertConfigRouteOutput) ToGetObservabilityInstan
 
 func (o GetObservabilityInstanceAlertConfigRouteOutput) ToGetObservabilityInstanceAlertConfigRouteOutputWithContext(ctx context.Context) GetObservabilityInstanceAlertConfigRouteOutput {
 	return o
+}
+
+// Whether an alert should continue matching subsequent sibling nodes.
+func (o GetObservabilityInstanceAlertConfigRouteOutput) Continue() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetObservabilityInstanceAlertConfigRoute) bool { return v.Continue }).(pulumi.BoolOutput)
 }
 
 // The labels by which incoming alerts are grouped together. For example, multiple alerts coming in for cluster=A and alertname=LatencyHigh would be batched into a single group. To aggregate by all possible labels use the special value '...' as the sole label name, for example: group_by: ['...']. This effectively disables aggregation entirely, passing through all alerts as-is. This is unlikely to be what you want, unless you have a very low alert volume or your upstream notification system performs its own grouping.
@@ -21629,6 +21906,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigPtrInput)(nil)).Elem(), CdnDistributionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigBackendInput)(nil)).Elem(), CdnDistributionConfigBackendArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigBackendPtrInput)(nil)).Elem(), CdnDistributionConfigBackendArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigBackendCredentialsInput)(nil)).Elem(), CdnDistributionConfigBackendCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigBackendCredentialsPtrInput)(nil)).Elem(), CdnDistributionConfigBackendCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigOptimizerInput)(nil)).Elem(), CdnDistributionConfigOptimizerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigOptimizerPtrInput)(nil)).Elem(), CdnDistributionConfigOptimizerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionDomainInput)(nil)).Elem(), CdnDistributionDomainArgs{})
@@ -21892,6 +22171,8 @@ func init() {
 	pulumi.RegisterOutputType(CdnDistributionConfigPtrOutput{})
 	pulumi.RegisterOutputType(CdnDistributionConfigBackendOutput{})
 	pulumi.RegisterOutputType(CdnDistributionConfigBackendPtrOutput{})
+	pulumi.RegisterOutputType(CdnDistributionConfigBackendCredentialsOutput{})
+	pulumi.RegisterOutputType(CdnDistributionConfigBackendCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(CdnDistributionConfigOptimizerOutput{})
 	pulumi.RegisterOutputType(CdnDistributionConfigOptimizerPtrOutput{})
 	pulumi.RegisterOutputType(CdnDistributionDomainOutput{})

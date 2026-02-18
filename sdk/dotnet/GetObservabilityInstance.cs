@@ -123,6 +123,14 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly bool GrafanaAdminEnabled;
         /// <summary>
+        /// Specifies an initial Grafana admin password.
+        /// </summary>
+        public readonly string GrafanaInitialAdminPassword;
+        /// <summary>
+        /// Specifies an initial Grafana admin username.
+        /// </summary>
+        public readonly string GrafanaInitialAdminUser;
+        /// <summary>
         /// If true, anyone can access Grafana dashboards without logging in.
         /// </summary>
         public readonly bool GrafanaPublicReadAccess;
@@ -216,6 +224,10 @@ namespace Pulumi.Stackit
 
             bool grafanaAdminEnabled,
 
+            string grafanaInitialAdminPassword,
+
+            string grafanaInitialAdminUser,
+
             bool grafanaPublicReadAccess,
 
             string grafanaUrl,
@@ -269,6 +281,8 @@ namespace Pulumi.Stackit
             AlertingUrl = alertingUrl;
             DashboardUrl = dashboardUrl;
             GrafanaAdminEnabled = grafanaAdminEnabled;
+            GrafanaInitialAdminPassword = grafanaInitialAdminPassword;
+            GrafanaInitialAdminUser = grafanaInitialAdminUser;
             GrafanaPublicReadAccess = grafanaPublicReadAccess;
             GrafanaUrl = grafanaUrl;
             Id = id;

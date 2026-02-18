@@ -30,14 +30,15 @@ type LookupNetworkArgs struct {
 	NetworkId string `pulumi:"networkId"`
 	// STACKIT project ID to which the network is associated.
 	ProjectId string `pulumi:"projectId"`
-	// Can only be used when experimental "network" is set. This is likely going to undergo significant changes or be removed in the future.
 	// The resource region. If not defined, the provider region is used.
 	Region *string `pulumi:"region"`
 }
 
 // A collection of values returned by getNetwork.
 type LookupNetworkResult struct {
-	Id string `pulumi:"id"`
+	// Shows if DHCP is enabled for the network.
+	Dhcp bool   `pulumi:"dhcp"`
+	Id   string `pulumi:"id"`
 	// The IPv4 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
 	Ipv4Gateway string `pulumi:"ipv4Gateway"`
 	// The IPv4 nameservers of the network.
@@ -80,12 +81,10 @@ type LookupNetworkResult struct {
 	ProjectId string `pulumi:"projectId"`
 	// The public IP of the network.
 	PublicIp string `pulumi:"publicIp"`
-	// Can only be used when experimental "network" is set. This is likely going to undergo significant changes or be removed in the future.
 	// The resource region. If not defined, the provider region is used.
 	Region *string `pulumi:"region"`
 	// Shows if the network is routed and therefore accessible from other networks.
 	Routed bool `pulumi:"routed"`
-	// Can only be used when experimental "network" is set. This is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
 	// The ID of the routing table associated with the network.
 	RoutingTableId string `pulumi:"routingTableId"`
 }
@@ -105,7 +104,6 @@ type LookupNetworkOutputArgs struct {
 	NetworkId pulumi.StringInput `pulumi:"networkId"`
 	// STACKIT project ID to which the network is associated.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
-	// Can only be used when experimental "network" is set. This is likely going to undergo significant changes or be removed in the future.
 	// The resource region. If not defined, the provider region is used.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 }
@@ -127,6 +125,11 @@ func (o LookupNetworkResultOutput) ToLookupNetworkResultOutput() LookupNetworkRe
 
 func (o LookupNetworkResultOutput) ToLookupNetworkResultOutputWithContext(ctx context.Context) LookupNetworkResultOutput {
 	return o
+}
+
+// Shows if DHCP is enabled for the network.
+func (o LookupNetworkResultOutput) Dhcp() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupNetworkResult) bool { return v.Dhcp }).(pulumi.BoolOutput)
 }
 
 func (o LookupNetworkResultOutput) Id() pulumi.StringOutput {
@@ -226,7 +229,6 @@ func (o LookupNetworkResultOutput) PublicIp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkResult) string { return v.PublicIp }).(pulumi.StringOutput)
 }
 
-// Can only be used when experimental "network" is set. This is likely going to undergo significant changes or be removed in the future.
 // The resource region. If not defined, the provider region is used.
 func (o LookupNetworkResultOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNetworkResult) *string { return v.Region }).(pulumi.StringPtrOutput)
@@ -237,7 +239,6 @@ func (o LookupNetworkResultOutput) Routed() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupNetworkResult) bool { return v.Routed }).(pulumi.BoolOutput)
 }
 
-// Can only be used when experimental "network" is set. This is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
 // The ID of the routing table associated with the network.
 func (o LookupNetworkResultOutput) RoutingTableId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkResult) string { return v.RoutingTableId }).(pulumi.StringOutput)

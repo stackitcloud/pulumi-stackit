@@ -363,9 +363,7 @@ class LogsInstance(pulumi.CustomResource):
                  retention_days: Optional[pulumi.Input[_builtins.int]] = None,
                  __props__=None):
         """
-        Logs instance resource schema.
-
-        > This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
+        Logs instance resource schema. Uses the `default_region` specified in the provider configuration as a fallback in case no `region` is defined on resource level.
 
         ## Example Usage
 
@@ -385,9 +383,7 @@ class LogsInstance(pulumi.CustomResource):
                  args: LogsInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Logs instance resource schema.
-
-        > This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
+        Logs instance resource schema. Uses the `default_region` specified in the provider configuration as a fallback in case no `region` is defined on resource level.
 
         ## Example Usage
 

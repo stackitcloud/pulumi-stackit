@@ -21,6 +21,8 @@ import (
 type Network struct {
 	pulumi.CustomResourceState
 
+	// If the network has DHCP enabled. Default value is `true`.
+	Dhcp pulumi.BoolOutput `pulumi:"dhcp"`
 	// The IPv4 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
 	Ipv4Gateway pulumi.StringOutput `pulumi:"ipv4Gateway"`
 	// The IPv4 nameservers of the network.
@@ -104,6 +106,8 @@ func GetNetwork(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Network resources.
 type networkState struct {
+	// If the network has DHCP enabled. Default value is `true`.
+	Dhcp *bool `pulumi:"dhcp"`
 	// The IPv4 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
 	Ipv4Gateway *string `pulumi:"ipv4Gateway"`
 	// The IPv4 nameservers of the network.
@@ -155,6 +159,8 @@ type networkState struct {
 }
 
 type NetworkState struct {
+	// If the network has DHCP enabled. Default value is `true`.
+	Dhcp pulumi.BoolPtrInput
 	// The IPv4 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
 	Ipv4Gateway pulumi.StringPtrInput
 	// The IPv4 nameservers of the network.
@@ -210,6 +216,8 @@ func (NetworkState) ElementType() reflect.Type {
 }
 
 type networkArgs struct {
+	// If the network has DHCP enabled. Default value is `true`.
+	Dhcp *bool `pulumi:"dhcp"`
 	// The IPv4 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
 	Ipv4Gateway *string `pulumi:"ipv4Gateway"`
 	// The IPv4 nameservers of the network.
@@ -250,6 +258,8 @@ type networkArgs struct {
 
 // The set of arguments for constructing a Network resource.
 type NetworkArgs struct {
+	// If the network has DHCP enabled. Default value is `true`.
+	Dhcp pulumi.BoolPtrInput
 	// The IPv4 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
 	Ipv4Gateway pulumi.StringPtrInput
 	// The IPv4 nameservers of the network.
@@ -373,6 +383,11 @@ func (o NetworkOutput) ToNetworkOutput() NetworkOutput {
 
 func (o NetworkOutput) ToNetworkOutputWithContext(ctx context.Context) NetworkOutput {
 	return o
+}
+
+// If the network has DHCP enabled. Default value is `true`.
+func (o NetworkOutput) Dhcp() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Network) pulumi.BoolOutput { return v.Dhcp }).(pulumi.BoolOutput)
 }
 
 // The IPv4 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.

@@ -178,6 +178,14 @@
                     }
                 }
             },
+            "stackit_logs_access_token": {
+                "current": "stackit:index/logsAccessToken:LogsAccessToken",
+                "fields": {
+                    "permissions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "stackit_logs_instance": {
                 "current": "stackit:index/logsInstance:LogsInstance",
                 "fields": {
@@ -837,6 +845,14 @@
                                 "maxItemsOne": false
                             }
                         }
+                    }
+                }
+            },
+            "stackit_logs_access_token": {
+                "current": "stackit:index/getLogsAccessToken:getLogsAccessToken",
+                "fields": {
+                    "permissions": {
+                        "maxItemsOne": false
                     }
                 }
             },

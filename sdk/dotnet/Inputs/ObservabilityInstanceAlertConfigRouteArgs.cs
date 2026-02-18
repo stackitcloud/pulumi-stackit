@@ -12,6 +12,12 @@ namespace Pulumi.Stackit.Inputs
 
     public sealed class ObservabilityInstanceAlertConfigRouteArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether an alert should continue matching subsequent sibling nodes.
+        /// </summary>
+        [Input("continue")]
+        public Input<bool>? Continue { get; set; }
+
         [Input("groupBies")]
         private InputList<string>? _groupBies;
 
