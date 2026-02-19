@@ -217,6 +217,28 @@ Object.defineProperty(exports, "observabilityCustomEndpoint", {
 });
 
 /**
+ * The bearer token for the request to the OIDC provider. For use when authenticating as a Service Account using OpenID Connect.
+ */
+export declare const oidcRequestToken: string | undefined;
+Object.defineProperty(exports, "oidcRequestToken", {
+    get() {
+        return __config.get("oidcRequestToken");
+    },
+    enumerable: true,
+});
+
+/**
+ * The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Account using OpenID Connect.
+ */
+export declare const oidcRequestUrl: string | undefined;
+Object.defineProperty(exports, "oidcRequestUrl", {
+    get() {
+        return __config.get("oidcRequestUrl");
+    },
+    enumerable: true,
+});
+
+/**
  * Custom endpoint for the OpenSearch service
  */
 export declare const opensearchCustomEndpoint: string | undefined;
@@ -360,12 +382,34 @@ Object.defineProperty(exports, "serviceAccountCustomEndpoint", {
 });
 
 /**
- * Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource.
+ * Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource. This value is required using OpenID Connect authentication.
  */
 export declare const serviceAccountEmail: string | undefined;
 Object.defineProperty(exports, "serviceAccountEmail", {
     get() {
         return __config.get("serviceAccountEmail");
+    },
+    enumerable: true,
+});
+
+/**
+ * The OIDC ID token for use when authenticating as a Service Account using OpenID Connect.
+ */
+export declare const serviceAccountFederatedToken: string | undefined;
+Object.defineProperty(exports, "serviceAccountFederatedToken", {
+    get() {
+        return __config.get("serviceAccountFederatedToken");
+    },
+    enumerable: true,
+});
+
+/**
+ * Path for workload identity assertion. It can also be set using the environment variable STACKIT_FEDERATED_TOKEN_FILE.
+ */
+export declare const serviceAccountFederatedTokenPath: string | undefined;
+Object.defineProperty(exports, "serviceAccountFederatedTokenPath", {
+    get() {
+        return __config.get("serviceAccountFederatedTokenPath");
     },
     enumerable: true,
 });
@@ -454,6 +498,17 @@ export declare const tokenCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "tokenCustomEndpoint", {
     get() {
         return __config.get("tokenCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+/**
+ * Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to `false`.
+ */
+export declare const useOidc: boolean | undefined;
+Object.defineProperty(exports, "useOidc", {
+    get() {
+        return __config.getObject<boolean>("useOidc");
     },
     enumerable: true,
 });

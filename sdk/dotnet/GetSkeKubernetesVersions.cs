@@ -121,7 +121,7 @@ namespace Pulumi.Stackit
         public string? Region { get; set; }
 
         /// <summary>
-        /// If specified, only returns Kubernetes versions with this version state. Possible values are: `UNSPECIFIED`, `SUPPORTED`.
+        /// If specified, only returns Kubernetes versions with this version state. Possible values are: `SUPPORTED`.
         /// </summary>
         [Input("versionState")]
         public string? VersionState { get; set; }
@@ -141,7 +141,7 @@ namespace Pulumi.Stackit
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// If specified, only returns Kubernetes versions with this version state. Possible values are: `UNSPECIFIED`, `SUPPORTED`.
+        /// If specified, only returns Kubernetes versions with this version state. Possible values are: `SUPPORTED`.
         /// </summary>
         [Input("versionState")]
         public Input<string>? VersionState { get; set; }
@@ -169,7 +169,7 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string? Region;
         /// <summary>
-        /// If specified, only returns Kubernetes versions with this version state. Possible values are: `UNSPECIFIED`, `SUPPORTED`.
+        /// If specified, only returns Kubernetes versions with this version state. Possible values are: `SUPPORTED`.
         /// </summary>
         public readonly string? VersionState;
 

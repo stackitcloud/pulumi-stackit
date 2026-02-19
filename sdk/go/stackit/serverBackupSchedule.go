@@ -32,7 +32,7 @@ type ServerBackupSchedule struct {
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// Backup schedule described in `rrule` (recurrence rule) format.
+	// An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
 	Rrule pulumi.StringOutput `pulumi:"rrule"`
 	// Server ID for the backup schedule.
 	ServerId pulumi.StringOutput `pulumi:"serverId"`
@@ -95,7 +95,7 @@ type serverBackupScheduleState struct {
 	ProjectId *string `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
 	Region *string `pulumi:"region"`
-	// Backup schedule described in `rrule` (recurrence rule) format.
+	// An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
 	Rrule *string `pulumi:"rrule"`
 	// Server ID for the backup schedule.
 	ServerId *string `pulumi:"serverId"`
@@ -114,7 +114,7 @@ type ServerBackupScheduleState struct {
 	ProjectId pulumi.StringPtrInput
 	// The resource region. If not defined, the provider region is used.
 	Region pulumi.StringPtrInput
-	// Backup schedule described in `rrule` (recurrence rule) format.
+	// An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
 	Rrule pulumi.StringPtrInput
 	// Server ID for the backup schedule.
 	ServerId pulumi.StringPtrInput
@@ -135,7 +135,7 @@ type serverBackupScheduleArgs struct {
 	ProjectId string `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
 	Region *string `pulumi:"region"`
-	// Backup schedule described in `rrule` (recurrence rule) format.
+	// An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
 	Rrule string `pulumi:"rrule"`
 	// Server ID for the backup schedule.
 	ServerId string `pulumi:"serverId"`
@@ -153,7 +153,7 @@ type ServerBackupScheduleArgs struct {
 	ProjectId pulumi.StringInput
 	// The resource region. If not defined, the provider region is used.
 	Region pulumi.StringPtrInput
-	// Backup schedule described in `rrule` (recurrence rule) format.
+	// An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
 	Rrule pulumi.StringInput
 	// Server ID for the backup schedule.
 	ServerId pulumi.StringInput
@@ -276,7 +276,7 @@ func (o ServerBackupScheduleOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerBackupSchedule) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Backup schedule described in `rrule` (recurrence rule) format.
+// An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
 func (o ServerBackupScheduleOutput) Rrule() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerBackupSchedule) pulumi.StringOutput { return v.Rrule }).(pulumi.StringOutput)
 }

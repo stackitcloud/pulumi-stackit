@@ -44,7 +44,7 @@ export class ServerUpdateSchedule extends pulumi.CustomResource {
      */
     declare public readonly enabled: pulumi.Output<boolean>;
     /**
-     * Maintenance window [1..24].
+     * Maintenance window [1..24]. Updates start within the defined hourly window. Depending on the updates, the process may exceed this timeframe and require an automatic restart.
      */
     declare public readonly maintenanceWindow: pulumi.Output<number>;
     /**
@@ -60,7 +60,7 @@ export class ServerUpdateSchedule extends pulumi.CustomResource {
      */
     declare public readonly region: pulumi.Output<string>;
     /**
-     * Update schedule described in `rrule` (recurrence rule) format.
+     * An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
      */
     declare public readonly rrule: pulumi.Output<string>;
     /**
@@ -133,7 +133,7 @@ export interface ServerUpdateScheduleState {
      */
     enabled?: pulumi.Input<boolean>;
     /**
-     * Maintenance window [1..24].
+     * Maintenance window [1..24]. Updates start within the defined hourly window. Depending on the updates, the process may exceed this timeframe and require an automatic restart.
      */
     maintenanceWindow?: pulumi.Input<number>;
     /**
@@ -149,7 +149,7 @@ export interface ServerUpdateScheduleState {
      */
     region?: pulumi.Input<string>;
     /**
-     * Update schedule described in `rrule` (recurrence rule) format.
+     * An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
      */
     rrule?: pulumi.Input<string>;
     /**
@@ -171,7 +171,7 @@ export interface ServerUpdateScheduleArgs {
      */
     enabled: pulumi.Input<boolean>;
     /**
-     * Maintenance window [1..24].
+     * Maintenance window [1..24]. Updates start within the defined hourly window. Depending on the updates, the process may exceed this timeframe and require an automatic restart.
      */
     maintenanceWindow: pulumi.Input<number>;
     /**
@@ -187,7 +187,7 @@ export interface ServerUpdateScheduleArgs {
      */
     region?: pulumi.Input<string>;
     /**
-     * Update schedule described in `rrule` (recurrence rule) format.
+     * An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
      */
     rrule: pulumi.Input<string>;
     /**

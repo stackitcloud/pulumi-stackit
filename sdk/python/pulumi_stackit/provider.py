@@ -38,6 +38,8 @@ class ProviderArgs:
                  mongodbflex_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  objectstorage_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  observability_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 oidc_request_token: Optional[pulumi.Input[_builtins.str]] = None,
+                 oidc_request_url: Optional[pulumi.Input[_builtins.str]] = None,
                  opensearch_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  postgresflex_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  private_key: Optional[pulumi.Input[_builtins.str]] = None,
@@ -52,6 +54,8 @@ class ProviderArgs:
                  server_update_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  service_account_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
+                 service_account_federated_token: Optional[pulumi.Input[_builtins.str]] = None,
+                 service_account_federated_token_path: Optional[pulumi.Input[_builtins.str]] = None,
                  service_account_key: Optional[pulumi.Input[_builtins.str]] = None,
                  service_account_key_path: Optional[pulumi.Input[_builtins.str]] = None,
                  service_account_token: Optional[pulumi.Input[_builtins.str]] = None,
@@ -59,7 +63,8 @@ class ProviderArgs:
                  sfs_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  ske_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  sqlserverflex_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None):
+                 token_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 use_oidc: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[_builtins.str] authorization_custom_endpoint: Custom endpoint for the Membership service
@@ -81,6 +86,8 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.str] mongodbflex_custom_endpoint: Custom endpoint for the MongoDB Flex service
         :param pulumi.Input[_builtins.str] objectstorage_custom_endpoint: Custom endpoint for the Object Storage service
         :param pulumi.Input[_builtins.str] observability_custom_endpoint: Custom endpoint for the Observability service
+        :param pulumi.Input[_builtins.str] oidc_request_token: The bearer token for the request to the OIDC provider. For use when authenticating as a Service Account using OpenID Connect.
+        :param pulumi.Input[_builtins.str] oidc_request_url: The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Account using OpenID Connect.
         :param pulumi.Input[_builtins.str] opensearch_custom_endpoint: Custom endpoint for the OpenSearch service
         :param pulumi.Input[_builtins.str] postgresflex_custom_endpoint: Custom endpoint for the PostgresFlex service
         :param pulumi.Input[_builtins.str] private_key: Private RSA key used for authentication, relevant for the key flow. It takes precedence over the private key that is included in the service account key.
@@ -94,7 +101,9 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.str] server_backup_custom_endpoint: Custom endpoint for the Server Backup service
         :param pulumi.Input[_builtins.str] server_update_custom_endpoint: Custom endpoint for the Server Update service
         :param pulumi.Input[_builtins.str] service_account_custom_endpoint: Custom endpoint for the Service Account service
-        :param pulumi.Input[_builtins.str] service_account_email: Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource.
+        :param pulumi.Input[_builtins.str] service_account_email: Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource. This value is required using OpenID Connect authentication.
+        :param pulumi.Input[_builtins.str] service_account_federated_token: The OIDC ID token for use when authenticating as a Service Account using OpenID Connect.
+        :param pulumi.Input[_builtins.str] service_account_federated_token_path: Path for workload identity assertion. It can also be set using the environment variable STACKIT_FEDERATED_TOKEN_FILE.
         :param pulumi.Input[_builtins.str] service_account_key: Service account key used for authentication. If set, the key flow will be used to authenticate all operations.
         :param pulumi.Input[_builtins.str] service_account_key_path: Path for the service account key used for authentication. If set, the key flow will be used to authenticate all operations.
         :param pulumi.Input[_builtins.str] service_account_token: Token used for authentication. If set, the token flow will be used to authenticate all operations.
@@ -103,6 +112,7 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.str] ske_custom_endpoint: Custom endpoint for the Kubernetes Engine (SKE) service
         :param pulumi.Input[_builtins.str] sqlserverflex_custom_endpoint: Custom endpoint for the SQL Server Flex service
         :param pulumi.Input[_builtins.str] token_custom_endpoint: Custom endpoint for the token API, which is used to request access tokens when using the key flow
+        :param pulumi.Input[_builtins.bool] use_oidc: Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to `false`.
         """
         if authorization_custom_endpoint is not None:
             pulumi.set(__self__, "authorization_custom_endpoint", authorization_custom_endpoint)
@@ -142,6 +152,10 @@ class ProviderArgs:
             pulumi.set(__self__, "objectstorage_custom_endpoint", objectstorage_custom_endpoint)
         if observability_custom_endpoint is not None:
             pulumi.set(__self__, "observability_custom_endpoint", observability_custom_endpoint)
+        if oidc_request_token is not None:
+            pulumi.set(__self__, "oidc_request_token", oidc_request_token)
+        if oidc_request_url is not None:
+            pulumi.set(__self__, "oidc_request_url", oidc_request_url)
         if opensearch_custom_endpoint is not None:
             pulumi.set(__self__, "opensearch_custom_endpoint", opensearch_custom_endpoint)
         if postgresflex_custom_endpoint is not None:
@@ -172,10 +186,11 @@ class ProviderArgs:
         if service_account_custom_endpoint is not None:
             pulumi.set(__self__, "service_account_custom_endpoint", service_account_custom_endpoint)
         if service_account_email is not None:
-            warnings.warn("""The `service_account_email` field has been deprecated because it is not required. Will be removed after June 12th 2025.""", DeprecationWarning)
-            pulumi.log.warn("""service_account_email is deprecated: The `service_account_email` field has been deprecated because it is not required. Will be removed after June 12th 2025.""")
-        if service_account_email is not None:
             pulumi.set(__self__, "service_account_email", service_account_email)
+        if service_account_federated_token is not None:
+            pulumi.set(__self__, "service_account_federated_token", service_account_federated_token)
+        if service_account_federated_token_path is not None:
+            pulumi.set(__self__, "service_account_federated_token_path", service_account_federated_token_path)
         if service_account_key is not None:
             pulumi.set(__self__, "service_account_key", service_account_key)
         if service_account_key_path is not None:
@@ -195,6 +210,8 @@ class ProviderArgs:
             pulumi.set(__self__, "sqlserverflex_custom_endpoint", sqlserverflex_custom_endpoint)
         if token_custom_endpoint is not None:
             pulumi.set(__self__, "token_custom_endpoint", token_custom_endpoint)
+        if use_oidc is not None:
+            pulumi.set(__self__, "use_oidc", use_oidc)
 
     @_builtins.property
     @pulumi.getter(name="authorizationCustomEndpoint")
@@ -425,6 +442,30 @@ class ProviderArgs:
         pulumi.set(self, "observability_custom_endpoint", value)
 
     @_builtins.property
+    @pulumi.getter(name="oidcRequestToken")
+    def oidc_request_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The bearer token for the request to the OIDC provider. For use when authenticating as a Service Account using OpenID Connect.
+        """
+        return pulumi.get(self, "oidc_request_token")
+
+    @oidc_request_token.setter
+    def oidc_request_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "oidc_request_token", value)
+
+    @_builtins.property
+    @pulumi.getter(name="oidcRequestUrl")
+    def oidc_request_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Account using OpenID Connect.
+        """
+        return pulumi.get(self, "oidc_request_url")
+
+    @oidc_request_url.setter
+    def oidc_request_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "oidc_request_url", value)
+
+    @_builtins.property
     @pulumi.getter(name="opensearchCustomEndpoint")
     def opensearch_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -583,16 +624,39 @@ class ProviderArgs:
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountEmail")
-    @_utilities.deprecated("""The `service_account_email` field has been deprecated because it is not required. Will be removed after June 12th 2025.""")
     def service_account_email(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource.
+        Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource. This value is required using OpenID Connect authentication.
         """
         return pulumi.get(self, "service_account_email")
 
     @service_account_email.setter
     def service_account_email(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "service_account_email", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountFederatedToken")
+    def service_account_federated_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The OIDC ID token for use when authenticating as a Service Account using OpenID Connect.
+        """
+        return pulumi.get(self, "service_account_federated_token")
+
+    @service_account_federated_token.setter
+    def service_account_federated_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "service_account_federated_token", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountFederatedTokenPath")
+    def service_account_federated_token_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Path for workload identity assertion. It can also be set using the environment variable STACKIT_FEDERATED_TOKEN_FILE.
+        """
+        return pulumi.get(self, "service_account_federated_token_path")
+
+    @service_account_federated_token_path.setter
+    def service_account_federated_token_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "service_account_federated_token_path", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountKey")
@@ -691,6 +755,18 @@ class ProviderArgs:
     def token_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "token_custom_endpoint", value)
 
+    @_builtins.property
+    @pulumi.getter(name="useOidc")
+    def use_oidc(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to `false`.
+        """
+        return pulumi.get(self, "use_oidc")
+
+    @use_oidc.setter
+    def use_oidc(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "use_oidc", value)
+
 
 @pulumi.type_token("pulumi:providers:stackit")
 class Provider(pulumi.ProviderResource):
@@ -717,6 +793,8 @@ class Provider(pulumi.ProviderResource):
                  mongodbflex_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  objectstorage_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  observability_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 oidc_request_token: Optional[pulumi.Input[_builtins.str]] = None,
+                 oidc_request_url: Optional[pulumi.Input[_builtins.str]] = None,
                  opensearch_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  postgresflex_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  private_key: Optional[pulumi.Input[_builtins.str]] = None,
@@ -731,6 +809,8 @@ class Provider(pulumi.ProviderResource):
                  server_update_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  service_account_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
+                 service_account_federated_token: Optional[pulumi.Input[_builtins.str]] = None,
+                 service_account_federated_token_path: Optional[pulumi.Input[_builtins.str]] = None,
                  service_account_key: Optional[pulumi.Input[_builtins.str]] = None,
                  service_account_key_path: Optional[pulumi.Input[_builtins.str]] = None,
                  service_account_token: Optional[pulumi.Input[_builtins.str]] = None,
@@ -739,6 +819,7 @@ class Provider(pulumi.ProviderResource):
                  ske_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  sqlserverflex_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  token_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 use_oidc: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
         The provider type for the stackit package. By default, resources use package-wide configuration
@@ -767,6 +848,8 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[_builtins.str] mongodbflex_custom_endpoint: Custom endpoint for the MongoDB Flex service
         :param pulumi.Input[_builtins.str] objectstorage_custom_endpoint: Custom endpoint for the Object Storage service
         :param pulumi.Input[_builtins.str] observability_custom_endpoint: Custom endpoint for the Observability service
+        :param pulumi.Input[_builtins.str] oidc_request_token: The bearer token for the request to the OIDC provider. For use when authenticating as a Service Account using OpenID Connect.
+        :param pulumi.Input[_builtins.str] oidc_request_url: The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Account using OpenID Connect.
         :param pulumi.Input[_builtins.str] opensearch_custom_endpoint: Custom endpoint for the OpenSearch service
         :param pulumi.Input[_builtins.str] postgresflex_custom_endpoint: Custom endpoint for the PostgresFlex service
         :param pulumi.Input[_builtins.str] private_key: Private RSA key used for authentication, relevant for the key flow. It takes precedence over the private key that is included in the service account key.
@@ -780,7 +863,9 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[_builtins.str] server_backup_custom_endpoint: Custom endpoint for the Server Backup service
         :param pulumi.Input[_builtins.str] server_update_custom_endpoint: Custom endpoint for the Server Update service
         :param pulumi.Input[_builtins.str] service_account_custom_endpoint: Custom endpoint for the Service Account service
-        :param pulumi.Input[_builtins.str] service_account_email: Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource.
+        :param pulumi.Input[_builtins.str] service_account_email: Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource. This value is required using OpenID Connect authentication.
+        :param pulumi.Input[_builtins.str] service_account_federated_token: The OIDC ID token for use when authenticating as a Service Account using OpenID Connect.
+        :param pulumi.Input[_builtins.str] service_account_federated_token_path: Path for workload identity assertion. It can also be set using the environment variable STACKIT_FEDERATED_TOKEN_FILE.
         :param pulumi.Input[_builtins.str] service_account_key: Service account key used for authentication. If set, the key flow will be used to authenticate all operations.
         :param pulumi.Input[_builtins.str] service_account_key_path: Path for the service account key used for authentication. If set, the key flow will be used to authenticate all operations.
         :param pulumi.Input[_builtins.str] service_account_token: Token used for authentication. If set, the token flow will be used to authenticate all operations.
@@ -789,6 +874,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[_builtins.str] ske_custom_endpoint: Custom endpoint for the Kubernetes Engine (SKE) service
         :param pulumi.Input[_builtins.str] sqlserverflex_custom_endpoint: Custom endpoint for the SQL Server Flex service
         :param pulumi.Input[_builtins.str] token_custom_endpoint: Custom endpoint for the token API, which is used to request access tokens when using the key flow
+        :param pulumi.Input[_builtins.bool] use_oidc: Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to `false`.
         """
         ...
     @overload
@@ -836,6 +922,8 @@ class Provider(pulumi.ProviderResource):
                  mongodbflex_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  objectstorage_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  observability_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 oidc_request_token: Optional[pulumi.Input[_builtins.str]] = None,
+                 oidc_request_url: Optional[pulumi.Input[_builtins.str]] = None,
                  opensearch_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  postgresflex_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  private_key: Optional[pulumi.Input[_builtins.str]] = None,
@@ -850,6 +938,8 @@ class Provider(pulumi.ProviderResource):
                  server_update_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  service_account_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
+                 service_account_federated_token: Optional[pulumi.Input[_builtins.str]] = None,
+                 service_account_federated_token_path: Optional[pulumi.Input[_builtins.str]] = None,
                  service_account_key: Optional[pulumi.Input[_builtins.str]] = None,
                  service_account_key_path: Optional[pulumi.Input[_builtins.str]] = None,
                  service_account_token: Optional[pulumi.Input[_builtins.str]] = None,
@@ -858,6 +948,7 @@ class Provider(pulumi.ProviderResource):
                  ske_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  sqlserverflex_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  token_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
+                 use_oidc: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -886,6 +977,8 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["mongodbflex_custom_endpoint"] = mongodbflex_custom_endpoint
             __props__.__dict__["objectstorage_custom_endpoint"] = objectstorage_custom_endpoint
             __props__.__dict__["observability_custom_endpoint"] = observability_custom_endpoint
+            __props__.__dict__["oidc_request_token"] = oidc_request_token
+            __props__.__dict__["oidc_request_url"] = oidc_request_url
             __props__.__dict__["opensearch_custom_endpoint"] = opensearch_custom_endpoint
             __props__.__dict__["postgresflex_custom_endpoint"] = postgresflex_custom_endpoint
             __props__.__dict__["private_key"] = private_key
@@ -900,6 +993,8 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["server_update_custom_endpoint"] = server_update_custom_endpoint
             __props__.__dict__["service_account_custom_endpoint"] = service_account_custom_endpoint
             __props__.__dict__["service_account_email"] = service_account_email
+            __props__.__dict__["service_account_federated_token"] = service_account_federated_token
+            __props__.__dict__["service_account_federated_token_path"] = service_account_federated_token_path
             __props__.__dict__["service_account_key"] = service_account_key
             __props__.__dict__["service_account_key_path"] = service_account_key_path
             __props__.__dict__["service_account_token"] = service_account_token
@@ -908,6 +1003,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["ske_custom_endpoint"] = ske_custom_endpoint
             __props__.__dict__["sqlserverflex_custom_endpoint"] = sqlserverflex_custom_endpoint
             __props__.__dict__["token_custom_endpoint"] = token_custom_endpoint
+            __props__.__dict__["use_oidc"] = pulumi.Output.from_input(use_oidc).apply(pulumi.runtime.to_json) if use_oidc is not None else None
         super(Provider, __self__).__init__(
             'stackit',
             resource_name,
@@ -1051,6 +1147,22 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "observability_custom_endpoint")
 
     @_builtins.property
+    @pulumi.getter(name="oidcRequestToken")
+    def oidc_request_token(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The bearer token for the request to the OIDC provider. For use when authenticating as a Service Account using OpenID Connect.
+        """
+        return pulumi.get(self, "oidc_request_token")
+
+    @_builtins.property
+    @pulumi.getter(name="oidcRequestUrl")
+    def oidc_request_url(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Account using OpenID Connect.
+        """
+        return pulumi.get(self, "oidc_request_url")
+
+    @_builtins.property
     @pulumi.getter(name="opensearchCustomEndpoint")
     def opensearch_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
@@ -1157,12 +1269,27 @@ class Provider(pulumi.ProviderResource):
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountEmail")
-    @_utilities.deprecated("""The `service_account_email` field has been deprecated because it is not required. Will be removed after June 12th 2025.""")
     def service_account_email(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource.
+        Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource. This value is required using OpenID Connect authentication.
         """
         return pulumi.get(self, "service_account_email")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountFederatedToken")
+    def service_account_federated_token(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The OIDC ID token for use when authenticating as a Service Account using OpenID Connect.
+        """
+        return pulumi.get(self, "service_account_federated_token")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountFederatedTokenPath")
+    def service_account_federated_token_path(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Path for workload identity assertion. It can also be set using the environment variable STACKIT_FEDERATED_TOKEN_FILE.
+        """
+        return pulumi.get(self, "service_account_federated_token_path")
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountKey")

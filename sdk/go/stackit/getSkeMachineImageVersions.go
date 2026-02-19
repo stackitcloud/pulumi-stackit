@@ -28,7 +28,7 @@ func GetSkeMachineImageVersions(ctx *pulumi.Context, args *GetSkeMachineImageVer
 type GetSkeMachineImageVersionsArgs struct {
 	// Region override. If omitted, the provider’s region will be used.
 	Region *string `pulumi:"region"`
-	// Filter returned machine image versions by their state. Possible values are: `UNSPECIFIED`, `SUPPORTED`.
+	// Filter returned machine image versions by their state. Possible values are: `SUPPORTED`.
 	VersionState *string `pulumi:"versionState"`
 }
 
@@ -40,7 +40,7 @@ type GetSkeMachineImageVersionsResult struct {
 	MachineImages []GetSkeMachineImageVersionsMachineImage `pulumi:"machineImages"`
 	// Region override. If omitted, the provider’s region will be used.
 	Region *string `pulumi:"region"`
-	// Filter returned machine image versions by their state. Possible values are: `UNSPECIFIED`, `SUPPORTED`.
+	// Filter returned machine image versions by their state. Possible values are: `SUPPORTED`.
 	VersionState *string `pulumi:"versionState"`
 }
 
@@ -57,7 +57,7 @@ func GetSkeMachineImageVersionsOutput(ctx *pulumi.Context, args GetSkeMachineIma
 type GetSkeMachineImageVersionsOutputArgs struct {
 	// Region override. If omitted, the provider’s region will be used.
 	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Filter returned machine image versions by their state. Possible values are: `UNSPECIFIED`, `SUPPORTED`.
+	// Filter returned machine image versions by their state. Possible values are: `SUPPORTED`.
 	VersionState pulumi.StringPtrInput `pulumi:"versionState"`
 }
 
@@ -97,7 +97,7 @@ func (o GetSkeMachineImageVersionsResultOutput) Region() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GetSkeMachineImageVersionsResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// Filter returned machine image versions by their state. Possible values are: `UNSPECIFIED`, `SUPPORTED`.
+// Filter returned machine image versions by their state. Possible values are: `SUPPORTED`.
 func (o GetSkeMachineImageVersionsResultOutput) VersionState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSkeMachineImageVersionsResult) *string { return v.VersionState }).(pulumi.StringPtrOutput)
 }

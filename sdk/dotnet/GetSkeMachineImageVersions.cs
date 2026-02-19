@@ -151,7 +151,7 @@ namespace Pulumi.Stackit
         public string? Region { get; set; }
 
         /// <summary>
-        /// Filter returned machine image versions by their state. Possible values are: `UNSPECIFIED`, `SUPPORTED`.
+        /// Filter returned machine image versions by their state. Possible values are: `SUPPORTED`.
         /// </summary>
         [Input("versionState")]
         public string? VersionState { get; set; }
@@ -171,7 +171,7 @@ namespace Pulumi.Stackit
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// Filter returned machine image versions by their state. Possible values are: `UNSPECIFIED`, `SUPPORTED`.
+        /// Filter returned machine image versions by their state. Possible values are: `SUPPORTED`.
         /// </summary>
         [Input("versionState")]
         public Input<string>? VersionState { get; set; }
@@ -199,7 +199,7 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string? Region;
         /// <summary>
-        /// Filter returned machine image versions by their state. Possible values are: `UNSPECIFIED`, `SUPPORTED`.
+        /// Filter returned machine image versions by their state. Possible values are: `SUPPORTED`.
         /// </summary>
         public readonly string? VersionState;
 

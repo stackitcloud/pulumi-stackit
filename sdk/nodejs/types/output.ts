@@ -1175,9 +1175,9 @@ export interface GetRabbitmqInstanceParameters {
      */
     tlsCiphers: string[];
     /**
-     * TLS protocol to use.
+     * TLS protocol versions to use.
      */
-    tlsProtocols: string;
+    tlsProtocols: string[];
 }
 
 export interface GetRedisInstanceParameters {
@@ -1435,7 +1435,7 @@ export interface GetServerBackupSchedulesItem {
      */
     name: string;
     /**
-     * Backup schedule described in `rrule` (recurrence rule) format.
+     * An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
      */
     rrule: string;
 }
@@ -1463,7 +1463,7 @@ export interface GetServerUpdateSchedulesItem {
      */
     enabled: boolean;
     /**
-     * Maintenance window [1..24].
+     * Maintenance window [1..24]. Updates start within the defined hourly window. Depending on the updates, the process may exceed this timeframe and require an automatic restart.
      */
     maintenanceWindow: number;
     /**
@@ -1471,7 +1471,7 @@ export interface GetServerUpdateSchedulesItem {
      */
     name: string;
     /**
-     * Update schedule described in `rrule` (recurrence rule) format.
+     * An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
      */
     rrule: string;
     updateScheduleId: number;
@@ -2656,9 +2656,9 @@ export interface RabbitmqInstanceParameters {
      */
     tlsCiphers: string[];
     /**
-     * TLS protocol to use.
+     * TLS protocol versions to use.
      */
-    tlsProtocols: string;
+    tlsProtocols: string[];
 }
 
 export interface RedisInstanceParameters {

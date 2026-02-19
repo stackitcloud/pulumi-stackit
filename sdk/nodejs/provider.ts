@@ -94,6 +94,14 @@ export class Provider extends pulumi.ProviderResource {
      */
     declare public readonly observabilityCustomEndpoint: pulumi.Output<string | undefined>;
     /**
+     * The bearer token for the request to the OIDC provider. For use when authenticating as a Service Account using OpenID Connect.
+     */
+    declare public readonly oidcRequestToken: pulumi.Output<string | undefined>;
+    /**
+     * The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Account using OpenID Connect.
+     */
+    declare public readonly oidcRequestUrl: pulumi.Output<string | undefined>;
+    /**
      * Custom endpoint for the OpenSearch service
      */
     declare public readonly opensearchCustomEndpoint: pulumi.Output<string | undefined>;
@@ -148,11 +156,17 @@ export class Provider extends pulumi.ProviderResource {
      */
     declare public readonly serviceAccountCustomEndpoint: pulumi.Output<string | undefined>;
     /**
-     * Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource.
-     *
-     * @deprecated The `serviceAccountEmail` field has been deprecated because it is not required. Will be removed after June 12th 2025.
+     * Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource. This value is required using OpenID Connect authentication.
      */
     declare public readonly serviceAccountEmail: pulumi.Output<string | undefined>;
+    /**
+     * The OIDC ID token for use when authenticating as a Service Account using OpenID Connect.
+     */
+    declare public readonly serviceAccountFederatedToken: pulumi.Output<string | undefined>;
+    /**
+     * Path for workload identity assertion. It can also be set using the environment variable STACKIT_FEDERATED_TOKEN_FILE.
+     */
+    declare public readonly serviceAccountFederatedTokenPath: pulumi.Output<string | undefined>;
     /**
      * Service account key used for authentication. If set, the key flow will be used to authenticate all operations.
      */
@@ -218,6 +232,8 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["mongodbflexCustomEndpoint"] = args?.mongodbflexCustomEndpoint;
             resourceInputs["objectstorageCustomEndpoint"] = args?.objectstorageCustomEndpoint;
             resourceInputs["observabilityCustomEndpoint"] = args?.observabilityCustomEndpoint;
+            resourceInputs["oidcRequestToken"] = args?.oidcRequestToken;
+            resourceInputs["oidcRequestUrl"] = args?.oidcRequestUrl;
             resourceInputs["opensearchCustomEndpoint"] = args?.opensearchCustomEndpoint;
             resourceInputs["postgresflexCustomEndpoint"] = args?.postgresflexCustomEndpoint;
             resourceInputs["privateKey"] = args?.privateKey;
@@ -232,6 +248,8 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["serverUpdateCustomEndpoint"] = args?.serverUpdateCustomEndpoint;
             resourceInputs["serviceAccountCustomEndpoint"] = args?.serviceAccountCustomEndpoint;
             resourceInputs["serviceAccountEmail"] = args?.serviceAccountEmail;
+            resourceInputs["serviceAccountFederatedToken"] = args?.serviceAccountFederatedToken;
+            resourceInputs["serviceAccountFederatedTokenPath"] = args?.serviceAccountFederatedTokenPath;
             resourceInputs["serviceAccountKey"] = args?.serviceAccountKey;
             resourceInputs["serviceAccountKeyPath"] = args?.serviceAccountKeyPath;
             resourceInputs["serviceAccountToken"] = args?.serviceAccountToken;
@@ -240,6 +258,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["skeCustomEndpoint"] = args?.skeCustomEndpoint;
             resourceInputs["sqlserverflexCustomEndpoint"] = args?.sqlserverflexCustomEndpoint;
             resourceInputs["tokenCustomEndpoint"] = args?.tokenCustomEndpoint;
+            resourceInputs["useOidc"] = pulumi.output(args?.useOidc).apply(JSON.stringify);
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
@@ -336,6 +355,14 @@ export interface ProviderArgs {
      */
     observabilityCustomEndpoint?: pulumi.Input<string>;
     /**
+     * The bearer token for the request to the OIDC provider. For use when authenticating as a Service Account using OpenID Connect.
+     */
+    oidcRequestToken?: pulumi.Input<string>;
+    /**
+     * The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Account using OpenID Connect.
+     */
+    oidcRequestUrl?: pulumi.Input<string>;
+    /**
      * Custom endpoint for the OpenSearch service
      */
     opensearchCustomEndpoint?: pulumi.Input<string>;
@@ -390,11 +417,17 @@ export interface ProviderArgs {
      */
     serviceAccountCustomEndpoint?: pulumi.Input<string>;
     /**
-     * Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource.
-     *
-     * @deprecated The `serviceAccountEmail` field has been deprecated because it is not required. Will be removed after June 12th 2025.
+     * Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource. This value is required using OpenID Connect authentication.
      */
     serviceAccountEmail?: pulumi.Input<string>;
+    /**
+     * The OIDC ID token for use when authenticating as a Service Account using OpenID Connect.
+     */
+    serviceAccountFederatedToken?: pulumi.Input<string>;
+    /**
+     * Path for workload identity assertion. It can also be set using the environment variable STACKIT_FEDERATED_TOKEN_FILE.
+     */
+    serviceAccountFederatedTokenPath?: pulumi.Input<string>;
     /**
      * Service account key used for authentication. If set, the key flow will be used to authenticate all operations.
      */
@@ -429,6 +462,10 @@ export interface ProviderArgs {
      * Custom endpoint for the token API, which is used to request access tokens when using the key flow
      */
     tokenCustomEndpoint?: pulumi.Input<string>;
+    /**
+     * Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to `false`.
+     */
+    useOidc?: pulumi.Input<boolean>;
 }
 
 export namespace Provider {

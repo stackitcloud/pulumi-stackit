@@ -106,6 +106,16 @@ func GetObservabilityCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:observabilityCustomEndpoint")
 }
 
+// The bearer token for the request to the OIDC provider. For use when authenticating as a Service Account using OpenID Connect.
+func GetOidcRequestToken(ctx *pulumi.Context) string {
+	return config.Get(ctx, "stackit:oidcRequestToken")
+}
+
+// The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Account using OpenID Connect.
+func GetOidcRequestUrl(ctx *pulumi.Context) string {
+	return config.Get(ctx, "stackit:oidcRequestUrl")
+}
+
 // Custom endpoint for the OpenSearch service
 func GetOpensearchCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:opensearchCustomEndpoint")
@@ -173,11 +183,19 @@ func GetServiceAccountCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:serviceAccountCustomEndpoint")
 }
 
-// Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource.
-//
-// Deprecated: The `serviceAccountEmail` field has been deprecated because it is not required. Will be removed after June 12th 2025.
+// Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource. This value is required using OpenID Connect authentication.
 func GetServiceAccountEmail(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:serviceAccountEmail")
+}
+
+// The OIDC ID token for use when authenticating as a Service Account using OpenID Connect.
+func GetServiceAccountFederatedToken(ctx *pulumi.Context) string {
+	return config.Get(ctx, "stackit:serviceAccountFederatedToken")
+}
+
+// Path for workload identity assertion. It can also be set using the environment variable STACKIT_FEDERATED_TOKEN_FILE.
+func GetServiceAccountFederatedTokenPath(ctx *pulumi.Context) string {
+	return config.Get(ctx, "stackit:serviceAccountFederatedTokenPath")
 }
 
 // Service account key used for authentication. If set, the key flow will be used to authenticate all operations.
@@ -220,4 +238,9 @@ func GetSqlserverflexCustomEndpoint(ctx *pulumi.Context) string {
 // Custom endpoint for the token API, which is used to request access tokens when using the key flow
 func GetTokenCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:tokenCustomEndpoint")
+}
+
+// Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to `false`.
+func GetUseOidc(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "stackit:useOidc")
 }

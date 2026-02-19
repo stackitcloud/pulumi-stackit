@@ -121,6 +121,18 @@ namespace Pulumi.Stackit
         public Output<string?> ObservabilityCustomEndpoint { get; private set; } = null!;
 
         /// <summary>
+        /// The bearer token for the request to the OIDC provider. For use when authenticating as a Service Account using OpenID Connect.
+        /// </summary>
+        [Output("oidcRequestToken")]
+        public Output<string?> OidcRequestToken { get; private set; } = null!;
+
+        /// <summary>
+        /// The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Account using OpenID Connect.
+        /// </summary>
+        [Output("oidcRequestUrl")]
+        public Output<string?> OidcRequestUrl { get; private set; } = null!;
+
+        /// <summary>
         /// Custom endpoint for the OpenSearch service
         /// </summary>
         [Output("opensearchCustomEndpoint")]
@@ -199,10 +211,22 @@ namespace Pulumi.Stackit
         public Output<string?> ServiceAccountCustomEndpoint { get; private set; } = null!;
 
         /// <summary>
-        /// Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource.
+        /// Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource. This value is required using OpenID Connect authentication.
         /// </summary>
         [Output("serviceAccountEmail")]
         public Output<string?> ServiceAccountEmail { get; private set; } = null!;
+
+        /// <summary>
+        /// The OIDC ID token for use when authenticating as a Service Account using OpenID Connect.
+        /// </summary>
+        [Output("serviceAccountFederatedToken")]
+        public Output<string?> ServiceAccountFederatedToken { get; private set; } = null!;
+
+        /// <summary>
+        /// Path for workload identity assertion. It can also be set using the environment variable STACKIT_FEDERATED_TOKEN_FILE.
+        /// </summary>
+        [Output("serviceAccountFederatedTokenPath")]
+        public Output<string?> ServiceAccountFederatedTokenPath { get; private set; } = null!;
 
         /// <summary>
         /// Service account key used for authentication. If set, the key flow will be used to authenticate all operations.
@@ -408,6 +432,18 @@ namespace Pulumi.Stackit
         public Input<string>? ObservabilityCustomEndpoint { get; set; }
 
         /// <summary>
+        /// The bearer token for the request to the OIDC provider. For use when authenticating as a Service Account using OpenID Connect.
+        /// </summary>
+        [Input("oidcRequestToken")]
+        public Input<string>? OidcRequestToken { get; set; }
+
+        /// <summary>
+        /// The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Account using OpenID Connect.
+        /// </summary>
+        [Input("oidcRequestUrl")]
+        public Input<string>? OidcRequestUrl { get; set; }
+
+        /// <summary>
         /// Custom endpoint for the OpenSearch service
         /// </summary>
         [Input("opensearchCustomEndpoint")]
@@ -486,10 +522,22 @@ namespace Pulumi.Stackit
         public Input<string>? ServiceAccountCustomEndpoint { get; set; }
 
         /// <summary>
-        /// Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource.
+        /// Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource. This value is required using OpenID Connect authentication.
         /// </summary>
         [Input("serviceAccountEmail")]
         public Input<string>? ServiceAccountEmail { get; set; }
+
+        /// <summary>
+        /// The OIDC ID token for use when authenticating as a Service Account using OpenID Connect.
+        /// </summary>
+        [Input("serviceAccountFederatedToken")]
+        public Input<string>? ServiceAccountFederatedToken { get; set; }
+
+        /// <summary>
+        /// Path for workload identity assertion. It can also be set using the environment variable STACKIT_FEDERATED_TOKEN_FILE.
+        /// </summary>
+        [Input("serviceAccountFederatedTokenPath")]
+        public Input<string>? ServiceAccountFederatedTokenPath { get; set; }
 
         /// <summary>
         /// Service account key used for authentication. If set, the key flow will be used to authenticate all operations.
@@ -538,6 +586,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("tokenCustomEndpoint")]
         public Input<string>? TokenCustomEndpoint { get; set; }
+
+        /// <summary>
+        /// Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to `False`.
+        /// </summary>
+        [Input("useOidc", json: true)]
+        public Input<bool>? UseOidc { get; set; }
 
         public ProviderArgs()
         {

@@ -22,7 +22,7 @@ type ServerUpdateSchedule struct {
 
 	// Is the update schedule enabled or disabled.
 	Enabled pulumi.BoolOutput `pulumi:"enabled"`
-	// Maintenance window [1..24].
+	// Maintenance window [1..24]. Updates start within the defined hourly window. Depending on the updates, the process may exceed this timeframe and require an automatic restart.
 	MaintenanceWindow pulumi.IntOutput `pulumi:"maintenanceWindow"`
 	// The schedule name.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -30,7 +30,7 @@ type ServerUpdateSchedule struct {
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// Update schedule described in `rrule` (recurrence rule) format.
+	// An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
 	Rrule pulumi.StringOutput `pulumi:"rrule"`
 	// Server ID for the update schedule.
 	ServerId pulumi.StringOutput `pulumi:"serverId"`
@@ -85,7 +85,7 @@ func GetServerUpdateSchedule(ctx *pulumi.Context,
 type serverUpdateScheduleState struct {
 	// Is the update schedule enabled or disabled.
 	Enabled *bool `pulumi:"enabled"`
-	// Maintenance window [1..24].
+	// Maintenance window [1..24]. Updates start within the defined hourly window. Depending on the updates, the process may exceed this timeframe and require an automatic restart.
 	MaintenanceWindow *int `pulumi:"maintenanceWindow"`
 	// The schedule name.
 	Name *string `pulumi:"name"`
@@ -93,7 +93,7 @@ type serverUpdateScheduleState struct {
 	ProjectId *string `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
 	Region *string `pulumi:"region"`
-	// Update schedule described in `rrule` (recurrence rule) format.
+	// An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
 	Rrule *string `pulumi:"rrule"`
 	// Server ID for the update schedule.
 	ServerId *string `pulumi:"serverId"`
@@ -104,7 +104,7 @@ type serverUpdateScheduleState struct {
 type ServerUpdateScheduleState struct {
 	// Is the update schedule enabled or disabled.
 	Enabled pulumi.BoolPtrInput
-	// Maintenance window [1..24].
+	// Maintenance window [1..24]. Updates start within the defined hourly window. Depending on the updates, the process may exceed this timeframe and require an automatic restart.
 	MaintenanceWindow pulumi.IntPtrInput
 	// The schedule name.
 	Name pulumi.StringPtrInput
@@ -112,7 +112,7 @@ type ServerUpdateScheduleState struct {
 	ProjectId pulumi.StringPtrInput
 	// The resource region. If not defined, the provider region is used.
 	Region pulumi.StringPtrInput
-	// Update schedule described in `rrule` (recurrence rule) format.
+	// An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
 	Rrule pulumi.StringPtrInput
 	// Server ID for the update schedule.
 	ServerId pulumi.StringPtrInput
@@ -127,7 +127,7 @@ func (ServerUpdateScheduleState) ElementType() reflect.Type {
 type serverUpdateScheduleArgs struct {
 	// Is the update schedule enabled or disabled.
 	Enabled bool `pulumi:"enabled"`
-	// Maintenance window [1..24].
+	// Maintenance window [1..24]. Updates start within the defined hourly window. Depending on the updates, the process may exceed this timeframe and require an automatic restart.
 	MaintenanceWindow int `pulumi:"maintenanceWindow"`
 	// The schedule name.
 	Name *string `pulumi:"name"`
@@ -135,7 +135,7 @@ type serverUpdateScheduleArgs struct {
 	ProjectId string `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
 	Region *string `pulumi:"region"`
-	// Update schedule described in `rrule` (recurrence rule) format.
+	// An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
 	Rrule string `pulumi:"rrule"`
 	// Server ID for the update schedule.
 	ServerId string `pulumi:"serverId"`
@@ -145,7 +145,7 @@ type serverUpdateScheduleArgs struct {
 type ServerUpdateScheduleArgs struct {
 	// Is the update schedule enabled or disabled.
 	Enabled pulumi.BoolInput
-	// Maintenance window [1..24].
+	// Maintenance window [1..24]. Updates start within the defined hourly window. Depending on the updates, the process may exceed this timeframe and require an automatic restart.
 	MaintenanceWindow pulumi.IntInput
 	// The schedule name.
 	Name pulumi.StringPtrInput
@@ -153,7 +153,7 @@ type ServerUpdateScheduleArgs struct {
 	ProjectId pulumi.StringInput
 	// The resource region. If not defined, the provider region is used.
 	Region pulumi.StringPtrInput
-	// Update schedule described in `rrule` (recurrence rule) format.
+	// An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
 	Rrule pulumi.StringInput
 	// Server ID for the update schedule.
 	ServerId pulumi.StringInput
@@ -251,7 +251,7 @@ func (o ServerUpdateScheduleOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *ServerUpdateSchedule) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Maintenance window [1..24].
+// Maintenance window [1..24]. Updates start within the defined hourly window. Depending on the updates, the process may exceed this timeframe and require an automatic restart.
 func (o ServerUpdateScheduleOutput) MaintenanceWindow() pulumi.IntOutput {
 	return o.ApplyT(func(v *ServerUpdateSchedule) pulumi.IntOutput { return v.MaintenanceWindow }).(pulumi.IntOutput)
 }
@@ -271,7 +271,7 @@ func (o ServerUpdateScheduleOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerUpdateSchedule) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Update schedule described in `rrule` (recurrence rule) format.
+// An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
 func (o ServerUpdateScheduleOutput) Rrule() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerUpdateSchedule) pulumi.StringOutput { return v.Rrule }).(pulumi.StringOutput)
 }

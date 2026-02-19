@@ -66,7 +66,7 @@ export class ServerBackupSchedule extends pulumi.CustomResource {
      */
     declare public readonly region: pulumi.Output<string>;
     /**
-     * Backup schedule described in `rrule` (recurrence rule) format.
+     * An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
      */
     declare public readonly rrule: pulumi.Output<string>;
     /**
@@ -155,7 +155,7 @@ export interface ServerBackupScheduleState {
      */
     region?: pulumi.Input<string>;
     /**
-     * Backup schedule described in `rrule` (recurrence rule) format.
+     * An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
      */
     rrule?: pulumi.Input<string>;
     /**
@@ -189,7 +189,7 @@ export interface ServerBackupScheduleArgs {
      */
     region?: pulumi.Input<string>;
     /**
-     * Backup schedule described in `rrule` (recurrence rule) format.
+     * An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
      */
     rrule: pulumi.Input<string>;
     /**

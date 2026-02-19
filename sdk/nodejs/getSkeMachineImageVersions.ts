@@ -29,7 +29,7 @@ export interface GetSkeMachineImageVersionsArgs {
      */
     region?: string;
     /**
-     * Filter returned machine image versions by their state. Possible values are: `UNSPECIFIED`, `SUPPORTED`.
+     * Filter returned machine image versions by their state. Possible values are: `SUPPORTED`.
      */
     versionState?: string;
 }
@@ -51,7 +51,7 @@ export interface GetSkeMachineImageVersionsResult {
      */
     readonly region?: string;
     /**
-     * Filter returned machine image versions by their state. Possible values are: `UNSPECIFIED`, `SUPPORTED`.
+     * Filter returned machine image versions by their state. Possible values are: `SUPPORTED`.
      */
     readonly versionState?: string;
 }
@@ -78,7 +78,7 @@ export interface GetSkeMachineImageVersionsOutputArgs {
      */
     region?: pulumi.Input<string>;
     /**
-     * Filter returned machine image versions by their state. Possible values are: `UNSPECIFIED`, `SUPPORTED`.
+     * Filter returned machine image versions by their state. Possible values are: `SUPPORTED`.
      */
     versionState?: pulumi.Input<string>;
 }

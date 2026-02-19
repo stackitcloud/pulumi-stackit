@@ -109,6 +109,16 @@ observabilityCustomEndpoint: Optional[str]
 Custom endpoint for the Observability service
 """
 
+oidcRequestToken: Optional[str]
+"""
+The bearer token for the request to the OIDC provider. For use when authenticating as a Service Account using OpenID Connect.
+"""
+
+oidcRequestUrl: Optional[str]
+"""
+The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Account using OpenID Connect.
+"""
+
 opensearchCustomEndpoint: Optional[str]
 """
 Custom endpoint for the OpenSearch service
@@ -176,7 +186,17 @@ Custom endpoint for the Service Account service
 
 serviceAccountEmail: Optional[str]
 """
-Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource.
+Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource. This value is required using OpenID Connect authentication.
+"""
+
+serviceAccountFederatedToken: Optional[str]
+"""
+The OIDC ID token for use when authenticating as a Service Account using OpenID Connect.
+"""
+
+serviceAccountFederatedTokenPath: Optional[str]
+"""
+Path for workload identity assertion. It can also be set using the environment variable STACKIT_FEDERATED_TOKEN_FILE.
 """
 
 serviceAccountKey: Optional[str]
@@ -217,5 +237,10 @@ Custom endpoint for the SQL Server Flex service
 tokenCustomEndpoint: Optional[str]
 """
 Custom endpoint for the token API, which is used to request access tokens when using the key flow
+"""
+
+useOidc: Optional[bool]
+"""
+Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to `false`.
 """
 

@@ -4735,9 +4735,9 @@ if not MYPY:
         """
         List of TLS ciphers to use.
         """
-        tls_protocols: NotRequired[pulumi.Input[_builtins.str]]
+        tls_protocols: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
-        TLS protocol to use.
+        TLS protocol versions to use.
         """
 elif False:
     RabbitmqInstanceParametersArgsDict: TypeAlias = Mapping[str, Any]
@@ -4757,7 +4757,7 @@ class RabbitmqInstanceParametersArgs:
                  sgw_acl: Optional[pulumi.Input[_builtins.str]] = None,
                  syslogs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  tls_ciphers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tls_protocols: Optional[pulumi.Input[_builtins.str]] = None):
+                 tls_protocols: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.int] consumer_timeout: The timeout in milliseconds for the consumer.
         :param pulumi.Input[_builtins.bool] enable_monitoring: Enable monitoring.
@@ -4771,7 +4771,7 @@ class RabbitmqInstanceParametersArgs:
         :param pulumi.Input[_builtins.str] sgw_acl: Comma separated list of IP networks in CIDR notation which are allowed to access this instance.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] syslogs: List of syslog servers to send logs to.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tls_ciphers: List of TLS ciphers to use.
-        :param pulumi.Input[_builtins.str] tls_protocols: TLS protocol to use.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tls_protocols: TLS protocol versions to use.
         """
         if consumer_timeout is not None:
             pulumi.set(__self__, "consumer_timeout", consumer_timeout)
@@ -4946,14 +4946,14 @@ class RabbitmqInstanceParametersArgs:
 
     @_builtins.property
     @pulumi.getter(name="tlsProtocols")
-    def tls_protocols(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tls_protocols(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        TLS protocol to use.
+        TLS protocol versions to use.
         """
         return pulumi.get(self, "tls_protocols")
 
     @tls_protocols.setter
-    def tls_protocols(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tls_protocols(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tls_protocols", value)
 
 

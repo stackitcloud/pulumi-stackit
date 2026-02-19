@@ -1020,9 +1020,9 @@ export interface RabbitmqInstanceParameters {
      */
     tlsCiphers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * TLS protocol to use.
+     * TLS protocol versions to use.
      */
-    tlsProtocols?: pulumi.Input<string>;
+    tlsProtocols?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface RedisInstanceParameters {

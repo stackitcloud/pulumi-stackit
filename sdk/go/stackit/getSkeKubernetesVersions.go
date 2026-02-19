@@ -28,7 +28,7 @@ func GetSkeKubernetesVersions(ctx *pulumi.Context, args *GetSkeKubernetesVersion
 type GetSkeKubernetesVersionsArgs struct {
 	// Region override. If omitted, the provider’s region will be used.
 	Region *string `pulumi:"region"`
-	// If specified, only returns Kubernetes versions with this version state. Possible values are: `UNSPECIFIED`, `SUPPORTED`.
+	// If specified, only returns Kubernetes versions with this version state. Possible values are: `SUPPORTED`.
 	VersionState *string `pulumi:"versionState"`
 }
 
@@ -40,7 +40,7 @@ type GetSkeKubernetesVersionsResult struct {
 	KubernetesVersions []GetSkeKubernetesVersionsKubernetesVersion `pulumi:"kubernetesVersions"`
 	// Region override. If omitted, the provider’s region will be used.
 	Region *string `pulumi:"region"`
-	// If specified, only returns Kubernetes versions with this version state. Possible values are: `UNSPECIFIED`, `SUPPORTED`.
+	// If specified, only returns Kubernetes versions with this version state. Possible values are: `SUPPORTED`.
 	VersionState *string `pulumi:"versionState"`
 }
 
@@ -57,7 +57,7 @@ func GetSkeKubernetesVersionsOutput(ctx *pulumi.Context, args GetSkeKubernetesVe
 type GetSkeKubernetesVersionsOutputArgs struct {
 	// Region override. If omitted, the provider’s region will be used.
 	Region pulumi.StringPtrInput `pulumi:"region"`
-	// If specified, only returns Kubernetes versions with this version state. Possible values are: `UNSPECIFIED`, `SUPPORTED`.
+	// If specified, only returns Kubernetes versions with this version state. Possible values are: `SUPPORTED`.
 	VersionState pulumi.StringPtrInput `pulumi:"versionState"`
 }
 
@@ -97,7 +97,7 @@ func (o GetSkeKubernetesVersionsResultOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSkeKubernetesVersionsResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// If specified, only returns Kubernetes versions with this version state. Possible values are: `UNSPECIFIED`, `SUPPORTED`.
+// If specified, only returns Kubernetes versions with this version state. Possible values are: `SUPPORTED`.
 func (o GetSkeKubernetesVersionsResultOutput) VersionState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetSkeKubernetesVersionsResult) *string { return v.VersionState }).(pulumi.StringPtrOutput)
 }
