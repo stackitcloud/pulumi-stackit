@@ -62,9 +62,9 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly ImmutableArray<string> TlsCiphers;
         /// <summary>
-        /// TLS protocol to use.
+        /// TLS protocol versions to use.
         /// </summary>
-        public readonly string? TlsProtocols;
+        public readonly ImmutableArray<string> TlsProtocols;
 
         [OutputConstructor]
         private RabbitmqInstanceParameters(
@@ -92,7 +92,7 @@ namespace Pulumi.Stackit.Outputs
 
             ImmutableArray<string> tlsCiphers,
 
-            string? tlsProtocols)
+            ImmutableArray<string> tlsProtocols)
         {
             ConsumerTimeout = consumerTimeout;
             EnableMonitoring = enableMonitoring;

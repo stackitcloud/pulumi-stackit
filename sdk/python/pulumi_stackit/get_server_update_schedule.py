@@ -72,7 +72,7 @@ class GetServerUpdateScheduleResult:
     @pulumi.getter(name="maintenanceWindow")
     def maintenance_window(self) -> _builtins.int:
         """
-        Maintenance window [1..24].
+        Maintenance window [1..24]. Updates start within the defined hourly window. Depending on the updates, the process may exceed this timeframe and require an automatic restart.
         """
         return pulumi.get(self, "maintenance_window")
 
@@ -104,7 +104,7 @@ class GetServerUpdateScheduleResult:
     @pulumi.getter
     def rrule(self) -> _builtins.str:
         """
-        Update schedule described in `rrule` (recurrence rule) format.
+        An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
         """
         return pulumi.get(self, "rrule")
 

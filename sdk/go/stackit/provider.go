@@ -52,6 +52,10 @@ type Provider struct {
 	ObjectstorageCustomEndpoint pulumi.StringPtrOutput `pulumi:"objectstorageCustomEndpoint"`
 	// Custom endpoint for the Observability service
 	ObservabilityCustomEndpoint pulumi.StringPtrOutput `pulumi:"observabilityCustomEndpoint"`
+	// The bearer token for the request to the OIDC provider. For use when authenticating as a Service Account using OpenID Connect.
+	OidcRequestToken pulumi.StringPtrOutput `pulumi:"oidcRequestToken"`
+	// The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Account using OpenID Connect.
+	OidcRequestUrl pulumi.StringPtrOutput `pulumi:"oidcRequestUrl"`
 	// Custom endpoint for the OpenSearch service
 	OpensearchCustomEndpoint pulumi.StringPtrOutput `pulumi:"opensearchCustomEndpoint"`
 	// Custom endpoint for the PostgresFlex service
@@ -80,10 +84,12 @@ type Provider struct {
 	ServerUpdateCustomEndpoint pulumi.StringPtrOutput `pulumi:"serverUpdateCustomEndpoint"`
 	// Custom endpoint for the Service Account service
 	ServiceAccountCustomEndpoint pulumi.StringPtrOutput `pulumi:"serviceAccountCustomEndpoint"`
-	// Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource.
-	//
-	// Deprecated: The `serviceAccountEmail` field has been deprecated because it is not required. Will be removed after June 12th 2025.
+	// Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource. This value is required using OpenID Connect authentication.
 	ServiceAccountEmail pulumi.StringPtrOutput `pulumi:"serviceAccountEmail"`
+	// The OIDC ID token for use when authenticating as a Service Account using OpenID Connect.
+	ServiceAccountFederatedToken pulumi.StringPtrOutput `pulumi:"serviceAccountFederatedToken"`
+	// Path for workload identity assertion. It can also be set using the environment variable STACKIT_FEDERATED_TOKEN_FILE.
+	ServiceAccountFederatedTokenPath pulumi.StringPtrOutput `pulumi:"serviceAccountFederatedTokenPath"`
 	// Service account key used for authentication. If set, the key flow will be used to authenticate all operations.
 	ServiceAccountKey pulumi.StringPtrOutput `pulumi:"serviceAccountKey"`
 	// Path for the service account key used for authentication. If set, the key flow will be used to authenticate all operations.
@@ -159,6 +165,10 @@ type providerArgs struct {
 	ObjectstorageCustomEndpoint *string `pulumi:"objectstorageCustomEndpoint"`
 	// Custom endpoint for the Observability service
 	ObservabilityCustomEndpoint *string `pulumi:"observabilityCustomEndpoint"`
+	// The bearer token for the request to the OIDC provider. For use when authenticating as a Service Account using OpenID Connect.
+	OidcRequestToken *string `pulumi:"oidcRequestToken"`
+	// The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Account using OpenID Connect.
+	OidcRequestUrl *string `pulumi:"oidcRequestUrl"`
 	// Custom endpoint for the OpenSearch service
 	OpensearchCustomEndpoint *string `pulumi:"opensearchCustomEndpoint"`
 	// Custom endpoint for the PostgresFlex service
@@ -187,10 +197,12 @@ type providerArgs struct {
 	ServerUpdateCustomEndpoint *string `pulumi:"serverUpdateCustomEndpoint"`
 	// Custom endpoint for the Service Account service
 	ServiceAccountCustomEndpoint *string `pulumi:"serviceAccountCustomEndpoint"`
-	// Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource.
-	//
-	// Deprecated: The `serviceAccountEmail` field has been deprecated because it is not required. Will be removed after June 12th 2025.
+	// Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource. This value is required using OpenID Connect authentication.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
+	// The OIDC ID token for use when authenticating as a Service Account using OpenID Connect.
+	ServiceAccountFederatedToken *string `pulumi:"serviceAccountFederatedToken"`
+	// Path for workload identity assertion. It can also be set using the environment variable STACKIT_FEDERATED_TOKEN_FILE.
+	ServiceAccountFederatedTokenPath *string `pulumi:"serviceAccountFederatedTokenPath"`
 	// Service account key used for authentication. If set, the key flow will be used to authenticate all operations.
 	ServiceAccountKey *string `pulumi:"serviceAccountKey"`
 	// Path for the service account key used for authentication. If set, the key flow will be used to authenticate all operations.
@@ -209,6 +221,8 @@ type providerArgs struct {
 	SqlserverflexCustomEndpoint *string `pulumi:"sqlserverflexCustomEndpoint"`
 	// Custom endpoint for the token API, which is used to request access tokens when using the key flow
 	TokenCustomEndpoint *string `pulumi:"tokenCustomEndpoint"`
+	// Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to `false`.
+	UseOidc *bool `pulumi:"useOidc"`
 }
 
 // The set of arguments for constructing a Provider resource.
@@ -251,6 +265,10 @@ type ProviderArgs struct {
 	ObjectstorageCustomEndpoint pulumi.StringPtrInput
 	// Custom endpoint for the Observability service
 	ObservabilityCustomEndpoint pulumi.StringPtrInput
+	// The bearer token for the request to the OIDC provider. For use when authenticating as a Service Account using OpenID Connect.
+	OidcRequestToken pulumi.StringPtrInput
+	// The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Account using OpenID Connect.
+	OidcRequestUrl pulumi.StringPtrInput
 	// Custom endpoint for the OpenSearch service
 	OpensearchCustomEndpoint pulumi.StringPtrInput
 	// Custom endpoint for the PostgresFlex service
@@ -279,10 +297,12 @@ type ProviderArgs struct {
 	ServerUpdateCustomEndpoint pulumi.StringPtrInput
 	// Custom endpoint for the Service Account service
 	ServiceAccountCustomEndpoint pulumi.StringPtrInput
-	// Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource.
-	//
-	// Deprecated: The `serviceAccountEmail` field has been deprecated because it is not required. Will be removed after June 12th 2025.
+	// Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource. This value is required using OpenID Connect authentication.
 	ServiceAccountEmail pulumi.StringPtrInput
+	// The OIDC ID token for use when authenticating as a Service Account using OpenID Connect.
+	ServiceAccountFederatedToken pulumi.StringPtrInput
+	// Path for workload identity assertion. It can also be set using the environment variable STACKIT_FEDERATED_TOKEN_FILE.
+	ServiceAccountFederatedTokenPath pulumi.StringPtrInput
 	// Service account key used for authentication. If set, the key flow will be used to authenticate all operations.
 	ServiceAccountKey pulumi.StringPtrInput
 	// Path for the service account key used for authentication. If set, the key flow will be used to authenticate all operations.
@@ -301,6 +321,8 @@ type ProviderArgs struct {
 	SqlserverflexCustomEndpoint pulumi.StringPtrInput
 	// Custom endpoint for the token API, which is used to request access tokens when using the key flow
 	TokenCustomEndpoint pulumi.StringPtrInput
+	// Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to `false`.
+	UseOidc pulumi.BoolPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {
@@ -448,6 +470,16 @@ func (o ProviderOutput) ObservabilityCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ObservabilityCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
+// The bearer token for the request to the OIDC provider. For use when authenticating as a Service Account using OpenID Connect.
+func (o ProviderOutput) OidcRequestToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.OidcRequestToken }).(pulumi.StringPtrOutput)
+}
+
+// The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Account using OpenID Connect.
+func (o ProviderOutput) OidcRequestUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.OidcRequestUrl }).(pulumi.StringPtrOutput)
+}
+
 // Custom endpoint for the OpenSearch service
 func (o ProviderOutput) OpensearchCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.OpensearchCustomEndpoint }).(pulumi.StringPtrOutput)
@@ -515,11 +547,19 @@ func (o ProviderOutput) ServiceAccountCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ServiceAccountCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
-// Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource.
-//
-// Deprecated: The `serviceAccountEmail` field has been deprecated because it is not required. Will be removed after June 12th 2025.
+// Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource. This value is required using OpenID Connect authentication.
 func (o ProviderOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
+}
+
+// The OIDC ID token for use when authenticating as a Service Account using OpenID Connect.
+func (o ProviderOutput) ServiceAccountFederatedToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ServiceAccountFederatedToken }).(pulumi.StringPtrOutput)
+}
+
+// Path for workload identity assertion. It can also be set using the environment variable STACKIT_FEDERATED_TOKEN_FILE.
+func (o ProviderOutput) ServiceAccountFederatedTokenPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ServiceAccountFederatedTokenPath }).(pulumi.StringPtrOutput)
 }
 
 // Service account key used for authentication. If set, the key flow will be used to authenticate all operations.

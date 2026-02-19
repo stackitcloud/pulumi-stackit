@@ -8332,8 +8332,8 @@ type RabbitmqInstanceParameters struct {
 	Syslogs []string `pulumi:"syslogs"`
 	// List of TLS ciphers to use.
 	TlsCiphers []string `pulumi:"tlsCiphers"`
-	// TLS protocol to use.
-	TlsProtocols *string `pulumi:"tlsProtocols"`
+	// TLS protocol versions to use.
+	TlsProtocols []string `pulumi:"tlsProtocols"`
 }
 
 // RabbitmqInstanceParametersInput is an input type that accepts RabbitmqInstanceParametersArgs and RabbitmqInstanceParametersOutput values.
@@ -8372,8 +8372,8 @@ type RabbitmqInstanceParametersArgs struct {
 	Syslogs pulumi.StringArrayInput `pulumi:"syslogs"`
 	// List of TLS ciphers to use.
 	TlsCiphers pulumi.StringArrayInput `pulumi:"tlsCiphers"`
-	// TLS protocol to use.
-	TlsProtocols pulumi.StringPtrInput `pulumi:"tlsProtocols"`
+	// TLS protocol versions to use.
+	TlsProtocols pulumi.StringArrayInput `pulumi:"tlsProtocols"`
 }
 
 func (RabbitmqInstanceParametersArgs) ElementType() reflect.Type {
@@ -8513,9 +8513,9 @@ func (o RabbitmqInstanceParametersOutput) TlsCiphers() pulumi.StringArrayOutput 
 	return o.ApplyT(func(v RabbitmqInstanceParameters) []string { return v.TlsCiphers }).(pulumi.StringArrayOutput)
 }
 
-// TLS protocol to use.
-func (o RabbitmqInstanceParametersOutput) TlsProtocols() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RabbitmqInstanceParameters) *string { return v.TlsProtocols }).(pulumi.StringPtrOutput)
+// TLS protocol versions to use.
+func (o RabbitmqInstanceParametersOutput) TlsProtocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RabbitmqInstanceParameters) []string { return v.TlsProtocols }).(pulumi.StringArrayOutput)
 }
 
 type RabbitmqInstanceParametersPtrOutput struct{ *pulumi.OutputState }
@@ -8662,14 +8662,14 @@ func (o RabbitmqInstanceParametersPtrOutput) TlsCiphers() pulumi.StringArrayOutp
 	}).(pulumi.StringArrayOutput)
 }
 
-// TLS protocol to use.
-func (o RabbitmqInstanceParametersPtrOutput) TlsProtocols() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RabbitmqInstanceParameters) *string {
+// TLS protocol versions to use.
+func (o RabbitmqInstanceParametersPtrOutput) TlsProtocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RabbitmqInstanceParameters) []string {
 		if v == nil {
 			return nil
 		}
 		return v.TlsProtocols
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.StringArrayOutput)
 }
 
 type RedisInstanceParameters struct {
@@ -18531,8 +18531,8 @@ type GetRabbitmqInstanceParameters struct {
 	Syslogs []string `pulumi:"syslogs"`
 	// List of TLS ciphers to use.
 	TlsCiphers []string `pulumi:"tlsCiphers"`
-	// TLS protocol to use.
-	TlsProtocols string `pulumi:"tlsProtocols"`
+	// TLS protocol versions to use.
+	TlsProtocols []string `pulumi:"tlsProtocols"`
 }
 
 // GetRabbitmqInstanceParametersInput is an input type that accepts GetRabbitmqInstanceParametersArgs and GetRabbitmqInstanceParametersOutput values.
@@ -18571,8 +18571,8 @@ type GetRabbitmqInstanceParametersArgs struct {
 	Syslogs pulumi.StringArrayInput `pulumi:"syslogs"`
 	// List of TLS ciphers to use.
 	TlsCiphers pulumi.StringArrayInput `pulumi:"tlsCiphers"`
-	// TLS protocol to use.
-	TlsProtocols pulumi.StringInput `pulumi:"tlsProtocols"`
+	// TLS protocol versions to use.
+	TlsProtocols pulumi.StringArrayInput `pulumi:"tlsProtocols"`
 }
 
 func (GetRabbitmqInstanceParametersArgs) ElementType() reflect.Type {
@@ -18661,9 +18661,9 @@ func (o GetRabbitmqInstanceParametersOutput) TlsCiphers() pulumi.StringArrayOutp
 	return o.ApplyT(func(v GetRabbitmqInstanceParameters) []string { return v.TlsCiphers }).(pulumi.StringArrayOutput)
 }
 
-// TLS protocol to use.
-func (o GetRabbitmqInstanceParametersOutput) TlsProtocols() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRabbitmqInstanceParameters) string { return v.TlsProtocols }).(pulumi.StringOutput)
+// TLS protocol versions to use.
+func (o GetRabbitmqInstanceParametersOutput) TlsProtocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRabbitmqInstanceParameters) []string { return v.TlsProtocols }).(pulumi.StringArrayOutput)
 }
 
 type GetRedisInstanceParameters struct {
@@ -19714,7 +19714,7 @@ type GetServerBackupSchedulesItem struct {
 	Enabled bool `pulumi:"enabled"`
 	// The backup schedule name.
 	Name string `pulumi:"name"`
-	// Backup schedule described in `rrule` (recurrence rule) format.
+	// An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
 	Rrule string `pulumi:"rrule"`
 }
 
@@ -19737,7 +19737,7 @@ type GetServerBackupSchedulesItemArgs struct {
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 	// The backup schedule name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Backup schedule described in `rrule` (recurrence rule) format.
+	// An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
 	Rrule pulumi.StringInput `pulumi:"rrule"`
 }
 
@@ -19813,7 +19813,7 @@ func (o GetServerBackupSchedulesItemOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerBackupSchedulesItem) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Backup schedule described in `rrule` (recurrence rule) format.
+// An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
 func (o GetServerBackupSchedulesItemOutput) Rrule() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerBackupSchedulesItem) string { return v.Rrule }).(pulumi.StringOutput)
 }
@@ -19963,11 +19963,11 @@ func (o GetServerBootVolumeOutput) Id() pulumi.StringOutput {
 type GetServerUpdateSchedulesItem struct {
 	// Is the update schedule enabled or disabled.
 	Enabled bool `pulumi:"enabled"`
-	// Maintenance window [1..24].
+	// Maintenance window [1..24]. Updates start within the defined hourly window. Depending on the updates, the process may exceed this timeframe and require an automatic restart.
 	MaintenanceWindow int `pulumi:"maintenanceWindow"`
 	// The update schedule name.
 	Name string `pulumi:"name"`
-	// Update schedule described in `rrule` (recurrence rule) format.
+	// An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
 	Rrule            string `pulumi:"rrule"`
 	UpdateScheduleId int    `pulumi:"updateScheduleId"`
 }
@@ -19986,11 +19986,11 @@ type GetServerUpdateSchedulesItemInput interface {
 type GetServerUpdateSchedulesItemArgs struct {
 	// Is the update schedule enabled or disabled.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// Maintenance window [1..24].
+	// Maintenance window [1..24]. Updates start within the defined hourly window. Depending on the updates, the process may exceed this timeframe and require an automatic restart.
 	MaintenanceWindow pulumi.IntInput `pulumi:"maintenanceWindow"`
 	// The update schedule name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Update schedule described in `rrule` (recurrence rule) format.
+	// An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
 	Rrule            pulumi.StringInput `pulumi:"rrule"`
 	UpdateScheduleId pulumi.IntInput    `pulumi:"updateScheduleId"`
 }
@@ -20051,7 +20051,7 @@ func (o GetServerUpdateSchedulesItemOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetServerUpdateSchedulesItem) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Maintenance window [1..24].
+// Maintenance window [1..24]. Updates start within the defined hourly window. Depending on the updates, the process may exceed this timeframe and require an automatic restart.
 func (o GetServerUpdateSchedulesItemOutput) MaintenanceWindow() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServerUpdateSchedulesItem) int { return v.MaintenanceWindow }).(pulumi.IntOutput)
 }
@@ -20061,7 +20061,7 @@ func (o GetServerUpdateSchedulesItemOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerUpdateSchedulesItem) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Update schedule described in `rrule` (recurrence rule) format.
+// An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
 func (o GetServerUpdateSchedulesItemOutput) Rrule() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerUpdateSchedulesItem) string { return v.Rrule }).(pulumi.StringOutput)
 }

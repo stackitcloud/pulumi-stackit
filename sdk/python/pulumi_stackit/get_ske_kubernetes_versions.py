@@ -69,7 +69,7 @@ class GetSkeKubernetesVersionsResult:
     @pulumi.getter(name="versionState")
     def version_state(self) -> Optional[_builtins.str]:
         """
-        If specified, only returns Kubernetes versions with this version state. Possible values are: `UNSPECIFIED`, `SUPPORTED`.
+        If specified, only returns Kubernetes versions with this version state. Possible values are: `SUPPORTED`.
         """
         return pulumi.get(self, "version_state")
 
@@ -96,7 +96,7 @@ def get_ske_kubernetes_versions(region: Optional[_builtins.str] = None,
 
 
     :param _builtins.str region: Region override. If omitted, the provider’s region will be used.
-    :param _builtins.str version_state: If specified, only returns Kubernetes versions with this version state. Possible values are: `UNSPECIFIED`, `SUPPORTED`.
+    :param _builtins.str version_state: If specified, only returns Kubernetes versions with this version state. Possible values are: `SUPPORTED`.
     """
     __args__ = dict()
     __args__['region'] = region
@@ -119,7 +119,7 @@ def get_ske_kubernetes_versions_output(region: Optional[pulumi.Input[Optional[_b
 
 
     :param _builtins.str region: Region override. If omitted, the provider’s region will be used.
-    :param _builtins.str version_state: If specified, only returns Kubernetes versions with this version state. Possible values are: `UNSPECIFIED`, `SUPPORTED`.
+    :param _builtins.str version_state: If specified, only returns Kubernetes versions with this version state. Possible values are: `SUPPORTED`.
     """
     __args__ = dict()
     __args__['region'] = region

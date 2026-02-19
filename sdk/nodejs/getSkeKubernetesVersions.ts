@@ -29,7 +29,7 @@ export interface GetSkeKubernetesVersionsArgs {
      */
     region?: string;
     /**
-     * If specified, only returns Kubernetes versions with this version state. Possible values are: `UNSPECIFIED`, `SUPPORTED`.
+     * If specified, only returns Kubernetes versions with this version state. Possible values are: `SUPPORTED`.
      */
     versionState?: string;
 }
@@ -51,7 +51,7 @@ export interface GetSkeKubernetesVersionsResult {
      */
     readonly region?: string;
     /**
-     * If specified, only returns Kubernetes versions with this version state. Possible values are: `UNSPECIFIED`, `SUPPORTED`.
+     * If specified, only returns Kubernetes versions with this version state. Possible values are: `SUPPORTED`.
      */
     readonly versionState?: string;
 }
@@ -78,7 +78,7 @@ export interface GetSkeKubernetesVersionsOutputArgs {
      */
     region?: pulumi.Input<string>;
     /**
-     * If specified, only returns Kubernetes versions with this version state. Possible values are: `UNSPECIFIED`, `SUPPORTED`.
+     * If specified, only returns Kubernetes versions with this version state. Possible values are: `SUPPORTED`.
      */
     versionState?: pulumi.Input<string>;
 }

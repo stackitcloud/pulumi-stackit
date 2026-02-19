@@ -134,6 +134,14 @@
                 "type": "string",
                 "description": "Custom endpoint for the Observability service"
             },
+            "oidcRequestToken": {
+                "type": "string",
+                "description": "The bearer token for the request to the OIDC provider. For use when authenticating as a Service Account using OpenID Connect."
+            },
+            "oidcRequestUrl": {
+                "type": "string",
+                "description": "The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Account using OpenID Connect."
+            },
             "opensearchCustomEndpoint": {
                 "type": "string",
                 "description": "Custom endpoint for the OpenSearch service"
@@ -189,8 +197,15 @@
             },
             "serviceAccountEmail": {
                 "type": "string",
-                "description": "Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource.",
-                "deprecationMessage": "The \u003cspan pulumi-lang-nodejs=\"`serviceAccountEmail`\" pulumi-lang-dotnet=\"`ServiceAccountEmail`\" pulumi-lang-go=\"`serviceAccountEmail`\" pulumi-lang-python=\"`service_account_email`\" pulumi-lang-yaml=\"`serviceAccountEmail`\" pulumi-lang-java=\"`serviceAccountEmail`\"\u003e`service_account_email`\u003c/span\u003e field has been deprecated because it is not required. Will be removed after June 12th 2025."
+                "description": "Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource. This value is required using OpenID Connect authentication."
+            },
+            "serviceAccountFederatedToken": {
+                "type": "string",
+                "description": "The OIDC ID token for use when authenticating as a Service Account using OpenID Connect."
+            },
+            "serviceAccountFederatedTokenPath": {
+                "type": "string",
+                "description": "Path for workload identity assertion. It can also be set using the environment variable STACKIT_FEDERATED_TOKEN_FILE."
             },
             "serviceAccountKey": {
                 "type": "string",
@@ -224,6 +239,10 @@
             "tokenCustomEndpoint": {
                 "type": "string",
                 "description": "Custom endpoint for the token API, which is used to request access tokens when using the key flow"
+            },
+            "useOidc": {
+                "type": "boolean",
+                "description": "Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e."
             }
         }
     },
@@ -1866,8 +1885,11 @@
                     "description": "List of TLS ciphers to use.\n"
                 },
                 "tlsProtocols": {
-                    "type": "string",
-                    "description": "TLS protocol to use.\n"
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "TLS protocol versions to use.\n"
                 }
             },
             "type": "object",
@@ -4580,8 +4602,11 @@
                     "description": "List of TLS ciphers to use.\n"
                 },
                 "tlsProtocols": {
-                    "type": "string",
-                    "description": "TLS protocol to use.\n"
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "TLS protocol versions to use.\n"
                 }
             },
             "type": "object",
@@ -5039,7 +5064,7 @@
                 },
                 "rrule": {
                     "type": "string",
-                    "description": "Backup schedule described in \u003cspan pulumi-lang-nodejs=\"`rrule`\" pulumi-lang-dotnet=\"`Rrule`\" pulumi-lang-go=\"`rrule`\" pulumi-lang-python=\"`rrule`\" pulumi-lang-yaml=\"`rrule`\" pulumi-lang-java=\"`rrule`\"\u003e`rrule`\u003c/span\u003e (recurrence rule) format.\n"
+                    "description": "An \u003cspan pulumi-lang-nodejs=\"`rrule`\" pulumi-lang-dotnet=\"`Rrule`\" pulumi-lang-go=\"`rrule`\" pulumi-lang-python=\"`rrule`\" pulumi-lang-yaml=\"`rrule`\" pulumi-lang-java=\"`rrule`\"\u003e`rrule`\u003c/span\u003e (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.\n"
                 }
             },
             "type": "object",
@@ -5113,7 +5138,7 @@
                 },
                 "maintenanceWindow": {
                     "type": "integer",
-                    "description": "Maintenance window [1..24].\n"
+                    "description": "Maintenance window [1..24]. Updates start within the defined hourly window. Depending on the updates, the process may exceed this timeframe and require an automatic restart.\n"
                 },
                 "name": {
                     "type": "string",
@@ -5121,7 +5146,7 @@
                 },
                 "rrule": {
                     "type": "string",
-                    "description": "Update schedule described in \u003cspan pulumi-lang-nodejs=\"`rrule`\" pulumi-lang-dotnet=\"`Rrule`\" pulumi-lang-go=\"`rrule`\" pulumi-lang-python=\"`rrule`\" pulumi-lang-yaml=\"`rrule`\" pulumi-lang-java=\"`rrule`\"\u003e`rrule`\u003c/span\u003e (recurrence rule) format.\n"
+                    "description": "An \u003cspan pulumi-lang-nodejs=\"`rrule`\" pulumi-lang-dotnet=\"`Rrule`\" pulumi-lang-go=\"`rrule`\" pulumi-lang-python=\"`rrule`\" pulumi-lang-yaml=\"`rrule`\" pulumi-lang-java=\"`rrule`\"\u003e`rrule`\u003c/span\u003e (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.\n"
                 },
                 "updateScheduleId": {
                     "type": "integer"
@@ -5831,6 +5856,14 @@
                 "type": "string",
                 "description": "Custom endpoint for the Observability service"
             },
+            "oidcRequestToken": {
+                "type": "string",
+                "description": "The bearer token for the request to the OIDC provider. For use when authenticating as a Service Account using OpenID Connect."
+            },
+            "oidcRequestUrl": {
+                "type": "string",
+                "description": "The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Account using OpenID Connect."
+            },
             "opensearchCustomEndpoint": {
                 "type": "string",
                 "description": "Custom endpoint for the OpenSearch service"
@@ -5886,8 +5919,15 @@
             },
             "serviceAccountEmail": {
                 "type": "string",
-                "description": "Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource.",
-                "deprecationMessage": "The \u003cspan pulumi-lang-nodejs=\"`serviceAccountEmail`\" pulumi-lang-dotnet=\"`ServiceAccountEmail`\" pulumi-lang-go=\"`serviceAccountEmail`\" pulumi-lang-python=\"`service_account_email`\" pulumi-lang-yaml=\"`serviceAccountEmail`\" pulumi-lang-java=\"`serviceAccountEmail`\"\u003e`service_account_email`\u003c/span\u003e field has been deprecated because it is not required. Will be removed after June 12th 2025."
+                "description": "Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource. This value is required using OpenID Connect authentication."
+            },
+            "serviceAccountFederatedToken": {
+                "type": "string",
+                "description": "The OIDC ID token for use when authenticating as a Service Account using OpenID Connect."
+            },
+            "serviceAccountFederatedTokenPath": {
+                "type": "string",
+                "description": "Path for workload identity assertion. It can also be set using the environment variable STACKIT_FEDERATED_TOKEN_FILE."
             },
             "serviceAccountKey": {
                 "type": "string",
@@ -5921,6 +5961,10 @@
             "tokenCustomEndpoint": {
                 "type": "string",
                 "description": "Custom endpoint for the token API, which is used to request access tokens when using the key flow"
+            },
+            "useOidc": {
+                "type": "boolean",
+                "description": "Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e."
             }
         },
         "inputProperties": {
@@ -6003,6 +6047,14 @@
                 "type": "string",
                 "description": "Custom endpoint for the Observability service"
             },
+            "oidcRequestToken": {
+                "type": "string",
+                "description": "The bearer token for the request to the OIDC provider. For use when authenticating as a Service Account using OpenID Connect."
+            },
+            "oidcRequestUrl": {
+                "type": "string",
+                "description": "The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Account using OpenID Connect."
+            },
             "opensearchCustomEndpoint": {
                 "type": "string",
                 "description": "Custom endpoint for the OpenSearch service"
@@ -6058,8 +6110,15 @@
             },
             "serviceAccountEmail": {
                 "type": "string",
-                "description": "Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource.",
-                "deprecationMessage": "The \u003cspan pulumi-lang-nodejs=\"`serviceAccountEmail`\" pulumi-lang-dotnet=\"`ServiceAccountEmail`\" pulumi-lang-go=\"`serviceAccountEmail`\" pulumi-lang-python=\"`service_account_email`\" pulumi-lang-yaml=\"`serviceAccountEmail`\" pulumi-lang-java=\"`serviceAccountEmail`\"\u003e`service_account_email`\u003c/span\u003e field has been deprecated because it is not required. Will be removed after June 12th 2025."
+                "description": "Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource. This value is required using OpenID Connect authentication."
+            },
+            "serviceAccountFederatedToken": {
+                "type": "string",
+                "description": "The OIDC ID token for use when authenticating as a Service Account using OpenID Connect."
+            },
+            "serviceAccountFederatedTokenPath": {
+                "type": "string",
+                "description": "Path for workload identity assertion. It can also be set using the environment variable STACKIT_FEDERATED_TOKEN_FILE."
             },
             "serviceAccountKey": {
                 "type": "string",
@@ -6093,6 +6152,10 @@
             "tokenCustomEndpoint": {
                 "type": "string",
                 "description": "Custom endpoint for the token API, which is used to request access tokens when using the key flow"
+            },
+            "useOidc": {
+                "type": "boolean",
+                "description": "Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e."
             }
         },
         "methods": {
@@ -14651,7 +14714,7 @@
                 },
                 "rrule": {
                     "type": "string",
-                    "description": "Backup schedule described in \u003cspan pulumi-lang-nodejs=\"`rrule`\" pulumi-lang-dotnet=\"`Rrule`\" pulumi-lang-go=\"`rrule`\" pulumi-lang-python=\"`rrule`\" pulumi-lang-yaml=\"`rrule`\" pulumi-lang-java=\"`rrule`\"\u003e`rrule`\u003c/span\u003e (recurrence rule) format.\n"
+                    "description": "An \u003cspan pulumi-lang-nodejs=\"`rrule`\" pulumi-lang-dotnet=\"`Rrule`\" pulumi-lang-go=\"`rrule`\" pulumi-lang-python=\"`rrule`\" pulumi-lang-yaml=\"`rrule`\" pulumi-lang-java=\"`rrule`\"\u003e`rrule`\u003c/span\u003e (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.\n"
                 },
                 "serverId": {
                     "type": "string",
@@ -14691,7 +14754,7 @@
                 },
                 "rrule": {
                     "type": "string",
-                    "description": "Backup schedule described in \u003cspan pulumi-lang-nodejs=\"`rrule`\" pulumi-lang-dotnet=\"`Rrule`\" pulumi-lang-go=\"`rrule`\" pulumi-lang-python=\"`rrule`\" pulumi-lang-yaml=\"`rrule`\" pulumi-lang-java=\"`rrule`\"\u003e`rrule`\u003c/span\u003e (recurrence rule) format.\n"
+                    "description": "An \u003cspan pulumi-lang-nodejs=\"`rrule`\" pulumi-lang-dotnet=\"`Rrule`\" pulumi-lang-go=\"`rrule`\" pulumi-lang-python=\"`rrule`\" pulumi-lang-yaml=\"`rrule`\" pulumi-lang-java=\"`rrule`\"\u003e`rrule`\u003c/span\u003e (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.\n"
                 },
                 "serverId": {
                     "type": "string",
@@ -14734,7 +14797,7 @@
                     },
                     "rrule": {
                         "type": "string",
-                        "description": "Backup schedule described in \u003cspan pulumi-lang-nodejs=\"`rrule`\" pulumi-lang-dotnet=\"`Rrule`\" pulumi-lang-go=\"`rrule`\" pulumi-lang-python=\"`rrule`\" pulumi-lang-yaml=\"`rrule`\" pulumi-lang-java=\"`rrule`\"\u003e`rrule`\u003c/span\u003e (recurrence rule) format.\n"
+                        "description": "An \u003cspan pulumi-lang-nodejs=\"`rrule`\" pulumi-lang-dotnet=\"`Rrule`\" pulumi-lang-go=\"`rrule`\" pulumi-lang-python=\"`rrule`\" pulumi-lang-yaml=\"`rrule`\" pulumi-lang-java=\"`rrule`\"\u003e`rrule`\u003c/span\u003e (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.\n"
                     },
                     "serverId": {
                         "type": "string",
@@ -14897,7 +14960,7 @@
                 },
                 "maintenanceWindow": {
                     "type": "integer",
-                    "description": "Maintenance window [1..24].\n"
+                    "description": "Maintenance window [1..24]. Updates start within the defined hourly window. Depending on the updates, the process may exceed this timeframe and require an automatic restart.\n"
                 },
                 "name": {
                     "type": "string",
@@ -14913,7 +14976,7 @@
                 },
                 "rrule": {
                     "type": "string",
-                    "description": "Update schedule described in \u003cspan pulumi-lang-nodejs=\"`rrule`\" pulumi-lang-dotnet=\"`Rrule`\" pulumi-lang-go=\"`rrule`\" pulumi-lang-python=\"`rrule`\" pulumi-lang-yaml=\"`rrule`\" pulumi-lang-java=\"`rrule`\"\u003e`rrule`\u003c/span\u003e (recurrence rule) format.\n"
+                    "description": "An \u003cspan pulumi-lang-nodejs=\"`rrule`\" pulumi-lang-dotnet=\"`Rrule`\" pulumi-lang-go=\"`rrule`\" pulumi-lang-python=\"`rrule`\" pulumi-lang-yaml=\"`rrule`\" pulumi-lang-java=\"`rrule`\"\u003e`rrule`\u003c/span\u003e (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.\n"
                 },
                 "serverId": {
                     "type": "string",
@@ -14941,7 +15004,7 @@
                 },
                 "maintenanceWindow": {
                     "type": "integer",
-                    "description": "Maintenance window [1..24].\n"
+                    "description": "Maintenance window [1..24]. Updates start within the defined hourly window. Depending on the updates, the process may exceed this timeframe and require an automatic restart.\n"
                 },
                 "name": {
                     "type": "string",
@@ -14957,7 +15020,7 @@
                 },
                 "rrule": {
                     "type": "string",
-                    "description": "Update schedule described in \u003cspan pulumi-lang-nodejs=\"`rrule`\" pulumi-lang-dotnet=\"`Rrule`\" pulumi-lang-go=\"`rrule`\" pulumi-lang-python=\"`rrule`\" pulumi-lang-yaml=\"`rrule`\" pulumi-lang-java=\"`rrule`\"\u003e`rrule`\u003c/span\u003e (recurrence rule) format.\n"
+                    "description": "An \u003cspan pulumi-lang-nodejs=\"`rrule`\" pulumi-lang-dotnet=\"`Rrule`\" pulumi-lang-go=\"`rrule`\" pulumi-lang-python=\"`rrule`\" pulumi-lang-yaml=\"`rrule`\" pulumi-lang-java=\"`rrule`\"\u003e`rrule`\u003c/span\u003e (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.\n"
                 },
                 "serverId": {
                     "type": "string",
@@ -14980,7 +15043,7 @@
                     },
                     "maintenanceWindow": {
                         "type": "integer",
-                        "description": "Maintenance window [1..24].\n"
+                        "description": "Maintenance window [1..24]. Updates start within the defined hourly window. Depending on the updates, the process may exceed this timeframe and require an automatic restart.\n"
                     },
                     "name": {
                         "type": "string",
@@ -14996,7 +15059,7 @@
                     },
                     "rrule": {
                         "type": "string",
-                        "description": "Update schedule described in \u003cspan pulumi-lang-nodejs=\"`rrule`\" pulumi-lang-dotnet=\"`Rrule`\" pulumi-lang-go=\"`rrule`\" pulumi-lang-python=\"`rrule`\" pulumi-lang-yaml=\"`rrule`\" pulumi-lang-java=\"`rrule`\"\u003e`rrule`\u003c/span\u003e (recurrence rule) format.\n"
+                        "description": "An \u003cspan pulumi-lang-nodejs=\"`rrule`\" pulumi-lang-dotnet=\"`Rrule`\" pulumi-lang-go=\"`rrule`\" pulumi-lang-python=\"`rrule`\" pulumi-lang-yaml=\"`rrule`\" pulumi-lang-java=\"`rrule`\"\u003e`rrule`\u003c/span\u003e (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.\n"
                     },
                     "serverId": {
                         "type": "string",
@@ -21904,7 +21967,7 @@
                     },
                     "rrule": {
                         "type": "string",
-                        "description": "Backup schedule described in \u003cspan pulumi-lang-nodejs=\"`rrule`\" pulumi-lang-dotnet=\"`Rrule`\" pulumi-lang-go=\"`rrule`\" pulumi-lang-python=\"`rrule`\" pulumi-lang-yaml=\"`rrule`\" pulumi-lang-java=\"`rrule`\"\u003e`rrule`\u003c/span\u003e (recurrence rule) format.\n"
+                        "description": "An \u003cspan pulumi-lang-nodejs=\"`rrule`\" pulumi-lang-dotnet=\"`Rrule`\" pulumi-lang-go=\"`rrule`\" pulumi-lang-python=\"`rrule`\" pulumi-lang-yaml=\"`rrule`\" pulumi-lang-java=\"`rrule`\"\u003e`rrule`\u003c/span\u003e (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.\n"
                     },
                     "serverId": {
                         "type": "string",
@@ -22023,7 +22086,7 @@
                     },
                     "maintenanceWindow": {
                         "type": "integer",
-                        "description": "Maintenance window [1..24].\n"
+                        "description": "Maintenance window [1..24]. Updates start within the defined hourly window. Depending on the updates, the process may exceed this timeframe and require an automatic restart.\n"
                     },
                     "name": {
                         "type": "string",
@@ -22039,7 +22102,7 @@
                     },
                     "rrule": {
                         "type": "string",
-                        "description": "Update schedule described in \u003cspan pulumi-lang-nodejs=\"`rrule`\" pulumi-lang-dotnet=\"`Rrule`\" pulumi-lang-go=\"`rrule`\" pulumi-lang-python=\"`rrule`\" pulumi-lang-yaml=\"`rrule`\" pulumi-lang-java=\"`rrule`\"\u003e`rrule`\u003c/span\u003e (recurrence rule) format.\n"
+                        "description": "An \u003cspan pulumi-lang-nodejs=\"`rrule`\" pulumi-lang-dotnet=\"`Rrule`\" pulumi-lang-go=\"`rrule`\" pulumi-lang-python=\"`rrule`\" pulumi-lang-yaml=\"`rrule`\" pulumi-lang-java=\"`rrule`\"\u003e`rrule`\u003c/span\u003e (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.\n"
                     },
                     "serverId": {
                         "type": "string",
@@ -22586,7 +22649,7 @@
                     },
                     "versionState": {
                         "type": "string",
-                        "description": "If specified, only returns Kubernetes versions with this version state. Possible values are: `UNSPECIFIED`, `SUPPORTED`.\n"
+                        "description": "If specified, only returns Kubernetes versions with this version state. Possible values are: `SUPPORTED`.\n"
                     }
                 },
                 "type": "object"
@@ -22611,7 +22674,7 @@
                     },
                     "versionState": {
                         "type": "string",
-                        "description": "If specified, only returns Kubernetes versions with this version state. Possible values are: `UNSPECIFIED`, `SUPPORTED`.\n"
+                        "description": "If specified, only returns Kubernetes versions with this version state. Possible values are: `SUPPORTED`.\n"
                     }
                 },
                 "type": "object",
@@ -22632,7 +22695,7 @@
                     },
                     "versionState": {
                         "type": "string",
-                        "description": "Filter returned machine image versions by their state. Possible values are: `UNSPECIFIED`, `SUPPORTED`.\n"
+                        "description": "Filter returned machine image versions by their state. Possible values are: `SUPPORTED`.\n"
                     }
                 },
                 "type": "object"
@@ -22657,7 +22720,7 @@
                     },
                     "versionState": {
                         "type": "string",
-                        "description": "Filter returned machine image versions by their state. Possible values are: `UNSPECIFIED`, `SUPPORTED`.\n"
+                        "description": "Filter returned machine image versions by their state. Possible values are: `SUPPORTED`.\n"
                     }
                 },
                 "type": "object",

@@ -27,7 +27,7 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Backup schedule described in `Rrule` (recurrence rule) format.
+        /// An `Rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
         /// </summary>
         public readonly string Rrule;
 

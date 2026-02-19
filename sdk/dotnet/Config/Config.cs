@@ -222,6 +222,26 @@ namespace Pulumi.Stackit
             set => _observabilityCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _oidcRequestToken = new __Value<string?>(() => __config.Get("oidcRequestToken"));
+        /// <summary>
+        /// The bearer token for the request to the OIDC provider. For use when authenticating as a Service Account using OpenID Connect.
+        /// </summary>
+        public static string? OidcRequestToken
+        {
+            get => _oidcRequestToken.Get();
+            set => _oidcRequestToken.Set(value);
+        }
+
+        private static readonly __Value<string?> _oidcRequestUrl = new __Value<string?>(() => __config.Get("oidcRequestUrl"));
+        /// <summary>
+        /// The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Account using OpenID Connect.
+        /// </summary>
+        public static string? OidcRequestUrl
+        {
+            get => _oidcRequestUrl.Get();
+            set => _oidcRequestUrl.Set(value);
+        }
+
         private static readonly __Value<string?> _opensearchCustomEndpoint = new __Value<string?>(() => __config.Get("opensearchCustomEndpoint"));
         /// <summary>
         /// Custom endpoint for the OpenSearch service
@@ -354,12 +374,32 @@ namespace Pulumi.Stackit
 
         private static readonly __Value<string?> _serviceAccountEmail = new __Value<string?>(() => __config.Get("serviceAccountEmail"));
         /// <summary>
-        /// Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource.
+        /// Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource. This value is required using OpenID Connect authentication.
         /// </summary>
         public static string? ServiceAccountEmail
         {
             get => _serviceAccountEmail.Get();
             set => _serviceAccountEmail.Set(value);
+        }
+
+        private static readonly __Value<string?> _serviceAccountFederatedToken = new __Value<string?>(() => __config.Get("serviceAccountFederatedToken"));
+        /// <summary>
+        /// The OIDC ID token for use when authenticating as a Service Account using OpenID Connect.
+        /// </summary>
+        public static string? ServiceAccountFederatedToken
+        {
+            get => _serviceAccountFederatedToken.Get();
+            set => _serviceAccountFederatedToken.Set(value);
+        }
+
+        private static readonly __Value<string?> _serviceAccountFederatedTokenPath = new __Value<string?>(() => __config.Get("serviceAccountFederatedTokenPath"));
+        /// <summary>
+        /// Path for workload identity assertion. It can also be set using the environment variable STACKIT_FEDERATED_TOKEN_FILE.
+        /// </summary>
+        public static string? ServiceAccountFederatedTokenPath
+        {
+            get => _serviceAccountFederatedTokenPath.Get();
+            set => _serviceAccountFederatedTokenPath.Set(value);
         }
 
         private static readonly __Value<string?> _serviceAccountKey = new __Value<string?>(() => __config.Get("serviceAccountKey"));
@@ -440,6 +480,16 @@ namespace Pulumi.Stackit
         {
             get => _tokenCustomEndpoint.Get();
             set => _tokenCustomEndpoint.Set(value);
+        }
+
+        private static readonly __Value<bool?> _useOidc = new __Value<bool?>(() => __config.GetBoolean("useOidc"));
+        /// <summary>
+        /// Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to `False`.
+        /// </summary>
+        public static bool? UseOidc
+        {
+            get => _useOidc.Get();
+            set => _useOidc.Set(value);
         }
 
     }

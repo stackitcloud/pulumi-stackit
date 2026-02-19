@@ -154,6 +154,20 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('observabilityCustomEndpoint')
 
     @_builtins.property
+    def oidc_request_token(self) -> Optional[str]:
+        """
+        The bearer token for the request to the OIDC provider. For use when authenticating as a Service Account using OpenID Connect.
+        """
+        return __config__.get('oidcRequestToken')
+
+    @_builtins.property
+    def oidc_request_url(self) -> Optional[str]:
+        """
+        The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Account using OpenID Connect.
+        """
+        return __config__.get('oidcRequestUrl')
+
+    @_builtins.property
     def opensearch_custom_endpoint(self) -> Optional[str]:
         """
         Custom endpoint for the OpenSearch service
@@ -247,9 +261,23 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def service_account_email(self) -> Optional[str]:
         """
-        Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource.
+        Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource. This value is required using OpenID Connect authentication.
         """
         return __config__.get('serviceAccountEmail')
+
+    @_builtins.property
+    def service_account_federated_token(self) -> Optional[str]:
+        """
+        The OIDC ID token for use when authenticating as a Service Account using OpenID Connect.
+        """
+        return __config__.get('serviceAccountFederatedToken')
+
+    @_builtins.property
+    def service_account_federated_token_path(self) -> Optional[str]:
+        """
+        Path for workload identity assertion. It can also be set using the environment variable STACKIT_FEDERATED_TOKEN_FILE.
+        """
+        return __config__.get('serviceAccountFederatedTokenPath')
 
     @_builtins.property
     def service_account_key(self) -> Optional[str]:
@@ -306,4 +334,11 @@ class _ExportableConfig(types.ModuleType):
         Custom endpoint for the token API, which is used to request access tokens when using the key flow
         """
         return __config__.get('tokenCustomEndpoint')
+
+    @_builtins.property
+    def use_oidc(self) -> Optional[bool]:
+        """
+        Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to `false`.
+        """
+        return __config__.get_bool('useOidc')
 

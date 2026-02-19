@@ -471,6 +471,9 @@
                             },
                             "tls_ciphers": {
                                 "maxItemsOne": false
+                            },
+                            "tls_protocols": {
+                                "maxItemsOne": false
                             }
                         }
                     }
@@ -1142,6 +1145,9 @@
                                 "maxItemsOne": false
                             },
                             "tls_ciphers": {
+                                "maxItemsOne": false
+                            },
+                            "tls_protocols": {
                                 "maxItemsOne": false
                             }
                         }

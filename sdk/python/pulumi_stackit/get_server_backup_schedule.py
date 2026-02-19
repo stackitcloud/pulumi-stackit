@@ -113,7 +113,7 @@ class GetServerBackupScheduleResult:
     @pulumi.getter
     def rrule(self) -> _builtins.str:
         """
-        Backup schedule described in `rrule` (recurrence rule) format.
+        An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
         """
         return pulumi.get(self, "rrule")
 

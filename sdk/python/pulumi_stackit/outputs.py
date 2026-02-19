@@ -3701,7 +3701,7 @@ class RabbitmqInstanceParameters(dict):
                  sgw_acl: Optional[_builtins.str] = None,
                  syslogs: Optional[Sequence[_builtins.str]] = None,
                  tls_ciphers: Optional[Sequence[_builtins.str]] = None,
-                 tls_protocols: Optional[_builtins.str] = None):
+                 tls_protocols: Optional[Sequence[_builtins.str]] = None):
         """
         :param _builtins.int consumer_timeout: The timeout in milliseconds for the consumer.
         :param _builtins.bool enable_monitoring: Enable monitoring.
@@ -3715,7 +3715,7 @@ class RabbitmqInstanceParameters(dict):
         :param _builtins.str sgw_acl: Comma separated list of IP networks in CIDR notation which are allowed to access this instance.
         :param Sequence[_builtins.str] syslogs: List of syslog servers to send logs to.
         :param Sequence[_builtins.str] tls_ciphers: List of TLS ciphers to use.
-        :param _builtins.str tls_protocols: TLS protocol to use.
+        :param Sequence[_builtins.str] tls_protocols: TLS protocol versions to use.
         """
         if consumer_timeout is not None:
             pulumi.set(__self__, "consumer_timeout", consumer_timeout)
@@ -3842,9 +3842,9 @@ class RabbitmqInstanceParameters(dict):
 
     @_builtins.property
     @pulumi.getter(name="tlsProtocols")
-    def tls_protocols(self) -> Optional[_builtins.str]:
+    def tls_protocols(self) -> Optional[Sequence[_builtins.str]]:
         """
-        TLS protocol to use.
+        TLS protocol versions to use.
         """
         return pulumi.get(self, "tls_protocols")
 
@@ -8336,7 +8336,7 @@ class GetRabbitmqInstanceParametersResult(dict):
                  sgw_acl: _builtins.str,
                  syslogs: Sequence[_builtins.str],
                  tls_ciphers: Sequence[_builtins.str],
-                 tls_protocols: _builtins.str):
+                 tls_protocols: Sequence[_builtins.str]):
         """
         :param _builtins.int consumer_timeout: The timeout in milliseconds for the consumer.
         :param _builtins.bool enable_monitoring: Enable monitoring.
@@ -8350,7 +8350,7 @@ class GetRabbitmqInstanceParametersResult(dict):
         :param _builtins.str sgw_acl: Comma separated list of IP networks in CIDR notation which are allowed to access this instance.
         :param Sequence[_builtins.str] syslogs: List of syslog servers to send logs to.
         :param Sequence[_builtins.str] tls_ciphers: List of TLS ciphers to use.
-        :param _builtins.str tls_protocols: TLS protocol to use.
+        :param Sequence[_builtins.str] tls_protocols: TLS protocol versions to use.
         """
         pulumi.set(__self__, "consumer_timeout", consumer_timeout)
         pulumi.set(__self__, "enable_monitoring", enable_monitoring)
@@ -8464,9 +8464,9 @@ class GetRabbitmqInstanceParametersResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="tlsProtocols")
-    def tls_protocols(self) -> _builtins.str:
+    def tls_protocols(self) -> Sequence[_builtins.str]:
         """
-        TLS protocol to use.
+        TLS protocol versions to use.
         """
         return pulumi.get(self, "tls_protocols")
 
@@ -9140,7 +9140,7 @@ class GetServerBackupSchedulesItemResult(dict):
         :param 'GetServerBackupSchedulesItemBackupPropertiesArgs' backup_properties: Backup schedule details for the backups.
         :param _builtins.bool enabled: Is the backup schedule enabled or disabled.
         :param _builtins.str name: The backup schedule name.
-        :param _builtins.str rrule: Backup schedule described in `rrule` (recurrence rule) format.
+        :param _builtins.str rrule: An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
         """
         pulumi.set(__self__, "backup_properties", backup_properties)
         pulumi.set(__self__, "backup_schedule_id", backup_schedule_id)
@@ -9181,7 +9181,7 @@ class GetServerBackupSchedulesItemResult(dict):
     @pulumi.getter
     def rrule(self) -> _builtins.str:
         """
-        Backup schedule described in `rrule` (recurrence rule) format.
+        An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
         """
         return pulumi.get(self, "rrule")
 
@@ -9251,9 +9251,9 @@ class GetServerUpdateSchedulesItemResult(dict):
                  update_schedule_id: _builtins.int):
         """
         :param _builtins.bool enabled: Is the update schedule enabled or disabled.
-        :param _builtins.int maintenance_window: Maintenance window [1..24].
+        :param _builtins.int maintenance_window: Maintenance window [1..24]. Updates start within the defined hourly window. Depending on the updates, the process may exceed this timeframe and require an automatic restart.
         :param _builtins.str name: The update schedule name.
-        :param _builtins.str rrule: Update schedule described in `rrule` (recurrence rule) format.
+        :param _builtins.str rrule: An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
         """
         pulumi.set(__self__, "enabled", enabled)
         pulumi.set(__self__, "maintenance_window", maintenance_window)
@@ -9273,7 +9273,7 @@ class GetServerUpdateSchedulesItemResult(dict):
     @pulumi.getter(name="maintenanceWindow")
     def maintenance_window(self) -> _builtins.int:
         """
-        Maintenance window [1..24].
+        Maintenance window [1..24]. Updates start within the defined hourly window. Depending on the updates, the process may exceed this timeframe and require an automatic restart.
         """
         return pulumi.get(self, "maintenance_window")
 
@@ -9289,7 +9289,7 @@ class GetServerUpdateSchedulesItemResult(dict):
     @pulumi.getter
     def rrule(self) -> _builtins.str:
         """
-        Update schedule described in `rrule` (recurrence rule) format.
+        An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
         """
         return pulumi.get(self, "rrule")
 
