@@ -44,7 +44,7 @@ jobs:
       - uses: sigstore/cosign-installer@faadad0cce49287aee09b3a48701e75088a2c6ad # v4.0.0
       - uses: anchore/sbom-action/download-syft@28d71544de8eaf1b958d335707167c5f783590ad # v0.22.2
       - name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@9c156ee8a17a598857849441385a2041ef570552 # tag=v6.3.0
+        uses: goreleaser/goreleaser-action@ff4cb9c02952a518c4b06819ac0a2598e9ce2014 # tag=v6.3.0
         with:
           args: -p 3 release --clean
           version: '~> v2'
