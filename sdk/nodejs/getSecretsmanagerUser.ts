@@ -44,6 +44,9 @@ export interface GetSecretsmanagerUserResult {
      * A user chosen description to differentiate between multiple users. Can't be changed after creation.
      */
     readonly description: string;
+    /**
+     * Terraform's internal data source identifier. It is structured as "`projectId`,`instanceId`,`userId`".
+     */
     readonly id: string;
     /**
      * ID of the Secrets Manager instance.

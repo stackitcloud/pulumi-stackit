@@ -25,6 +25,7 @@ class ResourcemanagerFolderArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ResourcemanagerFolder resource.
+
         :param pulumi.Input[_builtins.str] owner_email: Email address of the owner of the folder. This value is only considered during creation. Changing it afterwards will have no effect.
         :param pulumi.Input[_builtins.str] parent_container_id: Parent resource identifier. Both container ID (user-friendly) and UUID are supported.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container. A label key must match the regex [A-ZÄÜÖa-zäüöß0-9*-]{1,64}. A label value must match the regex ^$|[A-ZÄÜÖa-zäüöß0-9*-]{1,64}.
@@ -99,6 +100,7 @@ class _ResourcemanagerFolderState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ResourcemanagerFolder resources.
+
         :param pulumi.Input[_builtins.str] container_id: Folder container ID. Globally unique, user-friendly identifier.
         :param pulumi.Input[_builtins.str] creation_time: Date-time at which the folder was created.
         :param pulumi.Input[_builtins.str] folder_id: Folder UUID identifier. Globally unique folder identifier
@@ -238,6 +240,7 @@ class ResourcemanagerFolder(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container. A label key must match the regex [A-ZÄÜÖa-zäüöß0-9*-]{1,64}. A label value must match the regex ^$|[A-ZÄÜÖa-zäüöß0-9*-]{1,64}.
@@ -255,6 +258,7 @@ class ResourcemanagerFolder(pulumi.CustomResource):
         Resource Manager folder resource schema.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param ResourcemanagerFolderArgs args: The arguments to use to populate this resource's properties.

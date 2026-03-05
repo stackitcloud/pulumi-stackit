@@ -152,6 +152,9 @@ namespace Pulumi.Stackit
         /// Indicates if the access token can expire
         /// </summary>
         public readonly bool Expires;
+        /// <summary>
+        /// Terraform's internal resource identifier. It is structured as "`ProjectId`,`Region`,`InstanceId`,`AccessTokenId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The Logs instance ID associated with the access token

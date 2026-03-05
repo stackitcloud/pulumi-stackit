@@ -39,7 +39,8 @@ type LookupSqlserverflexUserArgs struct {
 // A collection of values returned by getSqlserverflexUser.
 type LookupSqlserverflexUserResult struct {
 	Host string `pulumi:"host"`
-	Id   string `pulumi:"id"`
+	// Terraform's internal data source. ID. It is structured as "`projectId`,`region`,`instanceId`,`userId`".
+	Id string `pulumi:"id"`
 	// ID of the SQLServer Flex instance.
 	InstanceId string `pulumi:"instanceId"`
 	Port       int    `pulumi:"port"`
@@ -99,6 +100,7 @@ func (o LookupSqlserverflexUserResultOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlserverflexUserResult) string { return v.Host }).(pulumi.StringOutput)
 }
 
+// Terraform's internal data source. ID. It is structured as "`projectId`,`region`,`instanceId`,`userId`".
 func (o LookupSqlserverflexUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlserverflexUserResult) string { return v.Id }).(pulumi.StringOutput)
 }

@@ -42,6 +42,9 @@ export interface GetObservabilityAlertgroupArgs {
  * A collection of values returned by getObservabilityAlertgroup.
  */
 export interface GetObservabilityAlertgroupResult {
+    /**
+     * Terraform's internal resource ID. It is structured as "`projectId`,`instanceId`,`name`".
+     */
     readonly id: string;
     /**
      * Observability instance ID to which the alert group is associated.

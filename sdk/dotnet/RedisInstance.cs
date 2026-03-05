@@ -44,6 +44,9 @@ namespace Pulumi.Stackit
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
+        /// </summary>
         [Output("parameters")]
         public Output<Outputs.RedisInstanceParameters> Parameters { get; private set; } = null!;
 
@@ -124,6 +127,9 @@ namespace Pulumi.Stackit
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
+        /// </summary>
         [Input("parameters")]
         public Input<Inputs.RedisInstanceParametersArgs>? Parameters { get; set; }
 
@@ -180,6 +186,9 @@ namespace Pulumi.Stackit
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
+        /// </summary>
         [Input("parameters")]
         public Input<Inputs.RedisInstanceParametersGetArgs>? Parameters { get; set; }
 

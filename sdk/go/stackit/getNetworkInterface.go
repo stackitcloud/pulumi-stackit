@@ -42,7 +42,8 @@ type LookupNetworkInterfaceResult struct {
 	AllowedAddresses []string `pulumi:"allowedAddresses"`
 	// The device UUID of the network interface.
 	Device string `pulumi:"device"`
-	Id     string `pulumi:"id"`
+	// Terraform's internal data source ID. It is structured as "`projectId`,`region`,`networkId`,`networkInterfaceId`".
+	Id string `pulumi:"id"`
 	// The IPv4 address.
 	Ipv4 string `pulumi:"ipv4"`
 	// Labels are key-value string pairs which can be attached to a network interface.
@@ -117,6 +118,7 @@ func (o LookupNetworkInterfaceResultOutput) Device() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkInterfaceResult) string { return v.Device }).(pulumi.StringOutput)
 }
 
+// Terraform's internal data source ID. It is structured as "`projectId`,`region`,`networkId`,`networkInterfaceId`".
 func (o LookupNetworkInterfaceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkInterfaceResult) string { return v.Id }).(pulumi.StringOutput)
 }

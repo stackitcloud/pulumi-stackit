@@ -114,6 +114,9 @@ namespace Pulumi.Stackit
     [OutputType]
     public sealed class GetObjectstorageBucketResult
     {
+        /// <summary>
+        /// Terraform's internal data source identifier. It is structured as "`ProjectId`,`Region`,`Name`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The bucket name. It must be DNS conform.

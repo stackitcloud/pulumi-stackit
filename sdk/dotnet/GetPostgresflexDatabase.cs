@@ -133,6 +133,9 @@ namespace Pulumi.Stackit
         /// Database ID.
         /// </summary>
         public readonly string DatabaseId;
+        /// <summary>
+        /// Terraform's internal resource ID. It is structured as "`ProjectId`,`Region`,`InstanceId`,`DatabaseId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// ID of the Postgres Flex instance.

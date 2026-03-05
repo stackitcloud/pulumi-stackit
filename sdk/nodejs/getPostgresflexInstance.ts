@@ -48,6 +48,9 @@ export interface GetPostgresflexInstanceResult {
     readonly acls: string[];
     readonly backupSchedule: string;
     readonly flavor: outputs.GetPostgresflexInstanceFlavor;
+    /**
+     * Terraform's internal data source. ID. It is structured as "`projectId`,`region`,`instanceId`".
+     */
     readonly id: string;
     /**
      * ID of the PostgresFlex instance.

@@ -54,6 +54,9 @@ export interface GetImageResult {
      * The disk format of the image.
      */
     readonly diskFormat: string;
+    /**
+     * Terraform's internal resource ID. It is structured as "`projectId`,`region`,`imageId`".
+     */
     readonly id: string;
     /**
      * The image ID.

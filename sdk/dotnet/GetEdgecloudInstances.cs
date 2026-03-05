@@ -129,6 +129,9 @@ namespace Pulumi.Stackit
     [OutputType]
     public sealed class GetEdgecloudInstancesResult
     {
+        /// <summary>
+        /// Terraform's internal data source ID, structured as `ProjectId`,`Region`.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// A list of Edge Cloud instances.

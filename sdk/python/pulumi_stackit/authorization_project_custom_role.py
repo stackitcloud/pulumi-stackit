@@ -25,6 +25,7 @@ class AuthorizationProjectCustomRoleArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AuthorizationProjectCustomRole resource.
+
         :param pulumi.Input[_builtins.str] description: A human readable description of the role.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] permissions: Permissions for the role
         :param pulumi.Input[_builtins.str] resource_id: Resource to add the custom role to.
@@ -95,6 +96,7 @@ class _AuthorizationProjectCustomRoleState:
                  role_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AuthorizationProjectCustomRole resources.
+
         :param pulumi.Input[_builtins.str] description: A human readable description of the role.
         :param pulumi.Input[_builtins.str] name: Name of the role
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] permissions: Permissions for the role
@@ -189,6 +191,7 @@ class AuthorizationProjectCustomRole(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A human readable description of the role.
@@ -206,6 +209,7 @@ class AuthorizationProjectCustomRole(pulumi.CustomResource):
         Custom Role resource schema.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param AuthorizationProjectCustomRoleArgs args: The arguments to use to populate this resource's properties.

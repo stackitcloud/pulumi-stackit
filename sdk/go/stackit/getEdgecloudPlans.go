@@ -36,6 +36,7 @@ type GetEdgecloudPlansArgs struct {
 
 // A collection of values returned by getEdgecloudPlans.
 type GetEdgecloudPlansResult struct {
+	// Terraform's internal data source ID, `projectId` is used here.
 	Id string `pulumi:"id"`
 	// A list of Edge Cloud Plans.
 	Plans []GetEdgecloudPlansPlan `pulumi:"plans"`
@@ -77,6 +78,7 @@ func (o GetEdgecloudPlansResultOutput) ToGetEdgecloudPlansResultOutputWithContex
 	return o
 }
 
+// Terraform's internal data source ID, `projectId` is used here.
 func (o GetEdgecloudPlansResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEdgecloudPlansResult) string { return v.Id }).(pulumi.StringOutput)
 }

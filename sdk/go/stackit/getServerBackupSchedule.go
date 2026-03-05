@@ -45,8 +45,9 @@ type LookupServerBackupScheduleResult struct {
 	// Backup schedule ID.
 	BackupScheduleId int `pulumi:"backupScheduleId"`
 	// Is the backup schedule enabled or disabled.
-	Enabled bool   `pulumi:"enabled"`
-	Id      string `pulumi:"id"`
+	Enabled bool `pulumi:"enabled"`
+	// Terraform's internal resource identifier. It is structured as "`projectId`,`serverId`,`backupScheduleId`".
+	Id string `pulumi:"id"`
 	// The schedule name.
 	Name string `pulumi:"name"`
 	// STACKIT Project ID to which the server is associated.
@@ -116,6 +117,7 @@ func (o LookupServerBackupScheduleResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupServerBackupScheduleResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// Terraform's internal resource identifier. It is structured as "`projectId`,`serverId`,`backupScheduleId`".
 func (o LookupServerBackupScheduleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerBackupScheduleResult) string { return v.Id }).(pulumi.StringOutput)
 }

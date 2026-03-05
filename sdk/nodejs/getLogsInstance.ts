@@ -60,6 +60,9 @@ export interface GetLogsInstanceResult {
      * The displayed name of the Logs instance
      */
     readonly displayName: string;
+    /**
+     * Terraform's internal resource identifier. It is structured as "`projectId`,`region`,`instanceId`".
+     */
     readonly id: string;
     /**
      * The Logs instance's ingest logs via OTLP URL

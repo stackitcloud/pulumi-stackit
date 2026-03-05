@@ -26,7 +26,8 @@ type OpensearchInstance struct {
 	// ID of the OpenSearch instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// Instance name.
-	Name       pulumi.StringOutput                `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
 	Parameters OpensearchInstanceParametersOutput `pulumi:"parameters"`
 	// The selected plan ID.
 	PlanId pulumi.StringOutput `pulumi:"planId"`
@@ -85,7 +86,8 @@ type opensearchInstanceState struct {
 	// ID of the OpenSearch instance.
 	InstanceId *string `pulumi:"instanceId"`
 	// Instance name.
-	Name       *string                       `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
 	Parameters *OpensearchInstanceParameters `pulumi:"parameters"`
 	// The selected plan ID.
 	PlanId *string `pulumi:"planId"`
@@ -106,7 +108,8 @@ type OpensearchInstanceState struct {
 	// ID of the OpenSearch instance.
 	InstanceId pulumi.StringPtrInput
 	// Instance name.
-	Name       pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
 	Parameters OpensearchInstanceParametersPtrInput
 	// The selected plan ID.
 	PlanId pulumi.StringPtrInput
@@ -124,7 +127,8 @@ func (OpensearchInstanceState) ElementType() reflect.Type {
 
 type opensearchInstanceArgs struct {
 	// Instance name.
-	Name       *string                       `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
 	Parameters *OpensearchInstanceParameters `pulumi:"parameters"`
 	// The selected plan name.
 	PlanName string `pulumi:"planName"`
@@ -137,7 +141,8 @@ type opensearchInstanceArgs struct {
 // The set of arguments for constructing a OpensearchInstance resource.
 type OpensearchInstanceArgs struct {
 	// Instance name.
-	Name       pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
 	Parameters OpensearchInstanceParametersPtrInput
 	// The selected plan name.
 	PlanName pulumi.StringInput
@@ -264,6 +269,7 @@ func (o OpensearchInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpensearchInstance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
 func (o OpensearchInstanceOutput) Parameters() OpensearchInstanceParametersOutput {
 	return o.ApplyT(func(v *OpensearchInstance) OpensearchInstanceParametersOutput { return v.Parameters }).(OpensearchInstanceParametersOutput)
 }

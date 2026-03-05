@@ -120,6 +120,9 @@ namespace Pulumi.Stackit
         public readonly ImmutableArray<string> Acls;
         public readonly string BackupSchedule;
         public readonly Outputs.GetPostgresflexInstanceFlavorResult Flavor;
+        /// <summary>
+        /// Terraform's internal data source. ID. It is structured as "`ProjectId`,`Region`,`InstanceId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// ID of the PostgresFlex instance.

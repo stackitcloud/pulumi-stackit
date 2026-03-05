@@ -44,6 +44,9 @@ export interface GetScfOrganizationManagerResult {
      * The time when the organization manager was created
      */
     readonly createdAt: string;
+    /**
+     * Terraform's internal resource ID, structured as "`projectId`,`region`,`orgId`,`userId`".
+     */
     readonly id: string;
     /**
      * The ID of the Cloud Foundry Organization

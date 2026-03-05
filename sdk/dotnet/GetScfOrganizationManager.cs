@@ -118,6 +118,9 @@ namespace Pulumi.Stackit
         /// The time when the organization manager was created
         /// </summary>
         public readonly string CreatedAt;
+        /// <summary>
+        /// Terraform's internal resource ID, structured as "`ProjectId`,`Region`,`OrgId`,`UserId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The ID of the Cloud Foundry Organization

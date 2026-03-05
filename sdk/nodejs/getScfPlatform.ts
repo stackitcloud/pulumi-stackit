@@ -52,6 +52,9 @@ export interface GetScfPlatformResult {
      * The name of the platform
      */
     readonly displayName: string;
+    /**
+     * Terraform's internal resource ID, structured as "`projectId`,`region`,`platformId`".
+     */
     readonly id: string;
     /**
      * The unique id of the platform

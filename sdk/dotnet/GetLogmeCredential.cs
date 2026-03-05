@@ -122,6 +122,9 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string CredentialId;
         public readonly string Host;
+        /// <summary>
+        /// Terraform's internal data source. identifier. It is structured as "`ProjectId`,`InstanceId`,`CredentialId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// ID of the LogMe instance.

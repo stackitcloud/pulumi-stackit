@@ -44,6 +44,9 @@ export interface GetSfsResourcePoolSnapshotArgs {
  * A collection of values returned by getSfsResourcePoolSnapshot.
  */
 export interface GetSfsResourcePoolSnapshotResult {
+    /**
+     * Terraform's internal resource ID. It is structured as "`projectId`,`region`,`resourcePoolId`".
+     */
     readonly id: string;
     /**
      * STACKIT project ID to which the resource pool snapshot is associated.

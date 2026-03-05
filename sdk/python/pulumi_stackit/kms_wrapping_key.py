@@ -30,6 +30,7 @@ class KmsWrappingKeyArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a KmsWrappingKey resource.
+
         :param pulumi.Input[_builtins.str] algorithm: The wrapping algorithm used to wrap the key to import. Possible values are: `rsa_2048_oaep_sha256`, `rsa_3072_oaep_sha256`, `rsa_4096_oaep_sha256`, `rsa_4096_oaep_sha512`, `rsa_2048_oaep_sha256_aes_256_key_wrap`, `rsa_3072_oaep_sha256_aes_256_key_wrap`, `rsa_4096_oaep_sha256_aes_256_key_wrap`, `rsa_4096_oaep_sha512_aes_256_key_wrap`.
         :param pulumi.Input[_builtins.str] display_name: The display name to distinguish multiple wrapping keys.
         :param pulumi.Input[_builtins.str] keyring_id: The ID of the associated keyring
@@ -180,6 +181,7 @@ class _KmsWrappingKeyState:
                  wrapping_key_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KmsWrappingKey resources.
+
         :param pulumi.Input[_builtins.str] access_scope: The access scope of the key. Default is `PUBLIC`. Possible values are: `PUBLIC`, `SNA`.
         :param pulumi.Input[_builtins.str] algorithm: The wrapping algorithm used to wrap the key to import. Possible values are: `rsa_2048_oaep_sha256`, `rsa_3072_oaep_sha256`, `rsa_4096_oaep_sha256`, `rsa_4096_oaep_sha512`, `rsa_2048_oaep_sha256_aes_256_key_wrap`, `rsa_3072_oaep_sha256_aes_256_key_wrap`, `rsa_4096_oaep_sha256_aes_256_key_wrap`, `rsa_4096_oaep_sha512_aes_256_key_wrap`.
         :param pulumi.Input[_builtins.str] created_at: The date and time the creation of the wrapping key was triggered.
@@ -399,6 +401,7 @@ class KmsWrappingKey(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] access_scope: The access scope of the key. Default is `PUBLIC`. Possible values are: `PUBLIC`, `SNA`.
@@ -421,6 +424,7 @@ class KmsWrappingKey(pulumi.CustomResource):
         KMS wrapping key resource schema.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param KmsWrappingKeyArgs args: The arguments to use to populate this resource's properties.

@@ -27,6 +27,7 @@ class CdnCustomDomainArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a CdnCustomDomain resource.
+
         :param pulumi.Input[_builtins.str] distribution_id: CDN distribution ID
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID associated with the distribution
         :param pulumi.Input['CdnCustomDomainCertificateArgs'] certificate: The TLS certificate for the custom domain. If omitted, a managed certificate will be used. If the block is specified, a custom certificate is used.
@@ -95,6 +96,7 @@ class _CdnCustomDomainState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CdnCustomDomain resources.
+
         :param pulumi.Input['CdnCustomDomainCertificateArgs'] certificate: The TLS certificate for the custom domain. If omitted, a managed certificate will be used. If the block is specified, a custom certificate is used.
         :param pulumi.Input[_builtins.str] distribution_id: CDN distribution ID
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] errors: List of distribution errors
@@ -202,6 +204,7 @@ class CdnCustomDomain(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['CdnCustomDomainCertificateArgs', 'CdnCustomDomainCertificateArgsDict']] certificate: The TLS certificate for the custom domain. If omitted, a managed certificate will be used. If the block is specified, a custom certificate is used.
@@ -220,6 +223,7 @@ class CdnCustomDomain(pulumi.CustomResource):
         > This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param CdnCustomDomainArgs args: The arguments to use to populate this resource's properties.

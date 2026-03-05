@@ -121,6 +121,9 @@ namespace Pulumi.Stackit
         /// A basic authentication block.
         /// </summary>
         public readonly Outputs.GetObservabilityScrapeconfigBasicAuthResult BasicAuth;
+        /// <summary>
+        /// Terraform's internal data source. ID. It is structured as "`ProjectId`,`InstanceId`,`Name`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Observability instance ID to which the scraping job is associated.

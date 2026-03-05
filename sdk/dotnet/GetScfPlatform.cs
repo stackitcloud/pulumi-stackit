@@ -126,6 +126,9 @@ namespace Pulumi.Stackit
         /// The name of the platform
         /// </summary>
         public readonly string DisplayName;
+        /// <summary>
+        /// Terraform's internal resource ID, structured as "`ProjectId`,`Region`,`PlatformId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The unique id of the platform

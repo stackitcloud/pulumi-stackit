@@ -38,7 +38,8 @@ type LookupObservabilityScrapeconfigArgs struct {
 type LookupObservabilityScrapeconfigResult struct {
 	// A basic authentication block.
 	BasicAuth GetObservabilityScrapeconfigBasicAuth `pulumi:"basicAuth"`
-	Id        string                                `pulumi:"id"`
+	// Terraform's internal data source. ID. It is structured as "`projectId`,`instanceId`,`name`".
+	Id string `pulumi:"id"`
 	// Observability instance ID to which the scraping job is associated.
 	InstanceId string `pulumi:"instanceId"`
 	// Specifies the job scraping url path.
@@ -106,6 +107,7 @@ func (o LookupObservabilityScrapeconfigResultOutput) BasicAuth() GetObservabilit
 	}).(GetObservabilityScrapeconfigBasicAuthOutput)
 }
 
+// Terraform's internal data source. ID. It is structured as "`projectId`,`instanceId`,`name`".
 func (o LookupObservabilityScrapeconfigResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupObservabilityScrapeconfigResult) string { return v.Id }).(pulumi.StringOutput)
 }

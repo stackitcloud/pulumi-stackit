@@ -39,7 +39,8 @@ type LookupLogmeCredentialResult struct {
 	// The credential's ID.
 	CredentialId string `pulumi:"credentialId"`
 	Host         string `pulumi:"host"`
-	Id           string `pulumi:"id"`
+	// Terraform's internal data source. identifier. It is structured as "`projectId`,`instanceId`,`credentialId`".
+	Id string `pulumi:"id"`
 	// ID of the LogMe instance.
 	InstanceId string `pulumi:"instanceId"`
 	Password   string `pulumi:"password"`
@@ -97,6 +98,7 @@ func (o LookupLogmeCredentialResultOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLogmeCredentialResult) string { return v.Host }).(pulumi.StringOutput)
 }
 
+// Terraform's internal data source. identifier. It is structured as "`projectId`,`instanceId`,`credentialId`".
 func (o LookupLogmeCredentialResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLogmeCredentialResult) string { return v.Id }).(pulumi.StringOutput)
 }

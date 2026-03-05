@@ -36,7 +36,8 @@ type LookupServiceAccountArgs struct {
 type LookupServiceAccountResult struct {
 	// Email of the service account.
 	Email string `pulumi:"email"`
-	Id    string `pulumi:"id"`
+	// Terraform's internal resource ID, structured as "`projectId`,`email`".
+	Id string `pulumi:"id"`
 	// Name of the service account.
 	Name string `pulumi:"name"`
 	// STACKIT project ID to which the service account is associated.
@@ -84,6 +85,7 @@ func (o LookupServiceAccountResultOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceAccountResult) string { return v.Email }).(pulumi.StringOutput)
 }
 
+// Terraform's internal resource ID, structured as "`projectId`,`email`".
 func (o LookupServiceAccountResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceAccountResult) string { return v.Id }).(pulumi.StringOutput)
 }

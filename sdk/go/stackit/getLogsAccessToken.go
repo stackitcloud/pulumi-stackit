@@ -47,8 +47,9 @@ type LookupLogsAccessTokenResult struct {
 	// The displayed name of the access token
 	DisplayName string `pulumi:"displayName"`
 	// Indicates if the access token can expire
-	Expires bool   `pulumi:"expires"`
-	Id      string `pulumi:"id"`
+	Expires bool `pulumi:"expires"`
+	// Terraform's internal resource identifier. It is structured as "`projectId`,`region`,`instanceId`,`accessTokenId`".
+	Id string `pulumi:"id"`
 	// The Logs instance ID associated with the access token
 	InstanceId string `pulumi:"instanceId"`
 	// The access permissions granted to the access token. Possible values: `read`, `write`.
@@ -128,6 +129,7 @@ func (o LookupLogsAccessTokenResultOutput) Expires() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupLogsAccessTokenResult) bool { return v.Expires }).(pulumi.BoolOutput)
 }
 
+// Terraform's internal resource identifier. It is structured as "`projectId`,`region`,`instanceId`,`accessTokenId`".
 func (o LookupLogsAccessTokenResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLogsAccessTokenResult) string { return v.Id }).(pulumi.StringOutput)
 }

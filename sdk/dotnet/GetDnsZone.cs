@@ -61,7 +61,7 @@ namespace Pulumi.Stackit
     public sealed class GetDnsZoneArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The zone name. E.g. `example.com`
+        /// The zone name. E.g. `example.com` (must not end with a trailing dot).
         /// </summary>
         [Input("dnsName")]
         public string? DnsName { get; set; }
@@ -87,7 +87,7 @@ namespace Pulumi.Stackit
     public sealed class GetDnsZoneInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The zone name. E.g. `example.com`
+        /// The zone name. E.g. `example.com` (must not end with a trailing dot).
         /// </summary>
         [Input("dnsName")]
         public Input<string>? DnsName { get; set; }
@@ -132,13 +132,16 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The zone name. E.g. `example.com`
+        /// The zone name. E.g. `example.com` (must not end with a trailing dot).
         /// </summary>
         public readonly string? DnsName;
         /// <summary>
         /// Expire time.
         /// </summary>
         public readonly int ExpireTime;
+        /// <summary>
+        /// Terraform's internal data source. ID. It is structured as "`ProjectId`,`ZoneId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Specifies, if the zone is a reverse zone or not.

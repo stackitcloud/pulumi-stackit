@@ -40,7 +40,8 @@ type LookupNetworkAreaRouteArgs struct {
 type LookupNetworkAreaRouteResult struct {
 	// Destination of the route.
 	Destination GetNetworkAreaRouteDestination `pulumi:"destination"`
-	Id          string                         `pulumi:"id"`
+	// Terraform's internal data source ID. It is structured as "`organizationId`,`region`,`networkAreaId`,`networkAreaRouteId`".
+	Id string `pulumi:"id"`
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels map[string]string `pulumi:"labels"`
 	// The network area ID to which the network area route is associated.
@@ -100,6 +101,7 @@ func (o LookupNetworkAreaRouteResultOutput) Destination() GetNetworkAreaRouteDes
 	return o.ApplyT(func(v LookupNetworkAreaRouteResult) GetNetworkAreaRouteDestination { return v.Destination }).(GetNetworkAreaRouteDestinationOutput)
 }
 
+// Terraform's internal data source ID. It is structured as "`organizationId`,`region`,`networkAreaId`,`networkAreaRouteId`".
 func (o LookupNetworkAreaRouteResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkAreaRouteResult) string { return v.Id }).(pulumi.StringOutput)
 }

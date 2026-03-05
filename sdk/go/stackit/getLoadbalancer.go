@@ -40,7 +40,8 @@ type LookupLoadbalancerResult struct {
 	DisableSecurityGroupAssignment bool `pulumi:"disableSecurityGroupAssignment"`
 	// External Load Balancer IP address where this Load Balancer is exposed.
 	ExternalAddress string `pulumi:"externalAddress"`
-	Id              string `pulumi:"id"`
+	// Terraform's internal resource ID. It is structured as "`projectId`","region","`name`".
+	Id string `pulumi:"id"`
 	// List of all listeners which will accept traffic. Limited to 20.
 	Listeners []GetLoadbalancerListener `pulumi:"listeners"`
 	// Load balancer name.
@@ -111,6 +112,7 @@ func (o LookupLoadbalancerResultOutput) ExternalAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLoadbalancerResult) string { return v.ExternalAddress }).(pulumi.StringOutput)
 }
 
+// Terraform's internal resource ID. It is structured as "`projectId`","region","`name`".
 func (o LookupLoadbalancerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLoadbalancerResult) string { return v.Id }).(pulumi.StringOutput)
 }

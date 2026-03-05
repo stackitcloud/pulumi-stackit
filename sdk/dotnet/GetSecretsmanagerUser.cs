@@ -121,6 +121,9 @@ namespace Pulumi.Stackit
         /// A user chosen description to differentiate between multiple users. Can't be changed after creation.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Terraform's internal data source identifier. It is structured as "`ProjectId`,`InstanceId`,`UserId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// ID of the Secrets Manager instance.

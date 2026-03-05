@@ -40,6 +40,9 @@ export interface GetPublicIpArgs {
  * A collection of values returned by getPublicIp.
  */
 export interface GetPublicIpResult {
+    /**
+     * Terraform's internal datasource ID. It is structured as "`projectId`,`region`,`publicIpId`".
+     */
     readonly id: string;
     /**
      * The IP address.

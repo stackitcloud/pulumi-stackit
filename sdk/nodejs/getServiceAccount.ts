@@ -39,6 +39,9 @@ export interface GetServiceAccountResult {
      * Email of the service account.
      */
     readonly email: string;
+    /**
+     * Terraform's internal resource ID, structured as "`projectId`,`email`".
+     */
     readonly id: string;
     /**
      * Name of the service account.

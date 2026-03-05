@@ -7,6 +7,10 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * ## Setting up supporting infrastructure
+ *
+ * The example below creates the supporting infrastructure using the STACKIT Terraform provider, including the network, network interface, a public IP address and server resources.
+ *
  * ## Example Usage
  */
 export class Loadbalancer extends pulumi.CustomResource {

@@ -38,7 +38,8 @@ type LookupResourcemanagerProjectResult struct {
 	ContainerId *string `pulumi:"containerId"`
 	// Date-time at which the project was created.
 	CreationTime string `pulumi:"creationTime"`
-	Id           string `pulumi:"id"`
+	// Terraform's internal data source. ID. It is structured as "`containerId`".
+	Id string `pulumi:"id"`
 	// Labels are key-value string pairs which can be attached to a resource container. A label key must match the regex [A-ZÄÜÖa-zäüöß0-9*-]{1,64}. A label value must match the regex ^$|[A-ZÄÜÖa-zäüöß0-9*-]{1,64}
 	Labels map[string]string `pulumi:"labels"`
 	// Project name.
@@ -97,6 +98,7 @@ func (o LookupResourcemanagerProjectResultOutput) CreationTime() pulumi.StringOu
 	return o.ApplyT(func(v LookupResourcemanagerProjectResult) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
+// Terraform's internal data source. ID. It is structured as "`containerId`".
 func (o LookupResourcemanagerProjectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupResourcemanagerProjectResult) string { return v.Id }).(pulumi.StringOutput)
 }

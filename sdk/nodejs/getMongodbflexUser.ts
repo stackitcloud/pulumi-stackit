@@ -47,6 +47,9 @@ export interface GetMongodbflexUserArgs {
 export interface GetMongodbflexUserResult {
     readonly database: string;
     readonly host: string;
+    /**
+     * Terraform's internal data source. ID. It is structured as "`projectId`,`region`,`instanceId`,`userId`".
+     */
     readonly id: string;
     /**
      * ID of the MongoDB Flex instance.

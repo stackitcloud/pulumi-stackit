@@ -50,7 +50,8 @@ type LookupKmsWrappingKeyResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// The date and time the wrapping key will expire.
 	ExpiresAt string `pulumi:"expiresAt"`
-	Id        string `pulumi:"id"`
+	// Terraform's internal resource ID. It is structured as "`projectId`,`region`,`keyringId`,`wrappingKeyId`".
+	Id string `pulumi:"id"`
 	// The ID of the associated keyring
 	KeyringId string `pulumi:"keyringId"`
 	// STACKIT project ID to which the keyring is associated.
@@ -137,6 +138,7 @@ func (o LookupKmsWrappingKeyResultOutput) ExpiresAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKmsWrappingKeyResult) string { return v.ExpiresAt }).(pulumi.StringOutput)
 }
 
+// Terraform's internal resource ID. It is structured as "`projectId`,`region`,`keyringId`,`wrappingKeyId`".
 func (o LookupKmsWrappingKeyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKmsWrappingKeyResult) string { return v.Id }).(pulumi.StringOutput)
 }

@@ -42,7 +42,8 @@ type LookupRabbitmqCredentialResult struct {
 	Hosts        []string `pulumi:"hosts"`
 	HttpApiUri   string   `pulumi:"httpApiUri"`
 	HttpApiUris  []string `pulumi:"httpApiUris"`
-	Id           string   `pulumi:"id"`
+	// Terraform's internal data source. identifier. It is structured as "`projectId`,`instanceId`,`credentialId`".
+	Id string `pulumi:"id"`
 	// ID of the RabbitMQ instance.
 	InstanceId string `pulumi:"instanceId"`
 	Management string `pulumi:"management"`
@@ -114,6 +115,7 @@ func (o LookupRabbitmqCredentialResultOutput) HttpApiUris() pulumi.StringArrayOu
 	return o.ApplyT(func(v LookupRabbitmqCredentialResult) []string { return v.HttpApiUris }).(pulumi.StringArrayOutput)
 }
 
+// Terraform's internal data source. identifier. It is structured as "`projectId`,`instanceId`,`credentialId`".
 func (o LookupRabbitmqCredentialResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRabbitmqCredentialResult) string { return v.Id }).(pulumi.StringOutput)
 }

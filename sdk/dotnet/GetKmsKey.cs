@@ -145,6 +145,9 @@ namespace Pulumi.Stackit
         /// The display name to distinguish multiple keys
         /// </summary>
         public readonly string DisplayName;
+        /// <summary>
+        /// Terraform's internal resource ID. It is structured as "`ProjectId`,`Region`,`KeyringId`,`KeyId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// States whether versions can be created or only imported.

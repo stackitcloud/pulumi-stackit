@@ -48,6 +48,9 @@ export interface GetKmsKeyringResult {
      * The display name to distinguish multiple keyrings.
      */
     readonly displayName: string;
+    /**
+     * Terraform's internal resource ID. It is structured as "`projectId`,`region`,`keyringId`".
+     */
     readonly id: string;
     /**
      * An auto generated unique id which identifies the keyring.

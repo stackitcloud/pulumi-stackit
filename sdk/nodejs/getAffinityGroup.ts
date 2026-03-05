@@ -44,6 +44,9 @@ export interface GetAffinityGroupResult {
      * The affinity group ID.
      */
     readonly affinityGroupId: string;
+    /**
+     * Terraform's internal resource identifier. It is structured as "`projectId`,`region`,`affinityGroupId`".
+     */
     readonly id: string;
     /**
      * Affinity Group schema. Must have a `region` specified in the provider configuration.

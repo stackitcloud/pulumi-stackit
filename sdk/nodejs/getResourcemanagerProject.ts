@@ -44,6 +44,9 @@ export interface GetResourcemanagerProjectResult {
      * Date-time at which the project was created.
      */
     readonly creationTime: string;
+    /**
+     * Terraform's internal data source. ID. It is structured as "`containerId`".
+     */
     readonly id: string;
     /**
      * Labels are key-value string pairs which can be attached to a resource container. A label key must match the regex [A-ZÄÜÖa-zäüöß0-9*-]{1,64}. A label value must match the regex ^$|[A-ZÄÜÖa-zäüöß0-9*-]{1,64}

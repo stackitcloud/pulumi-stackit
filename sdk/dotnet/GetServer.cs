@@ -130,6 +130,9 @@ namespace Pulumi.Stackit
         /// Date-time when the server was created
         /// </summary>
         public readonly string CreatedAt;
+        /// <summary>
+        /// Terraform's internal resource ID. It is structured as "`ProjectId`,`Region`,`ServerId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The image ID to be used for an ephemeral disk on the server.

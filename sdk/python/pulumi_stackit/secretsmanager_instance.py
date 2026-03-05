@@ -24,6 +24,7 @@ class SecretsmanagerInstanceArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecretsmanagerInstance resource.
+
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the instance is associated.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The access control list for this instance. Each entry is an IP or IP range that is permitted to access, in CIDR notation
         :param pulumi.Input[_builtins.str] name: Instance name.
@@ -80,6 +81,7 @@ class _SecretsmanagerInstanceState:
                  project_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecretsmanagerInstance resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The access control list for this instance. Each entry is an IP or IP range that is permitted to access, in CIDR notation
         :param pulumi.Input[_builtins.str] instance_id: ID of the Secrets Manager instance.
         :param pulumi.Input[_builtins.str] name: Instance name.
@@ -158,6 +160,7 @@ class SecretsmanagerInstance(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The access control list for this instance. Each entry is an IP or IP range that is permitted to access, in CIDR notation
@@ -174,6 +177,7 @@ class SecretsmanagerInstance(pulumi.CustomResource):
         Secrets Manager instance resource schema. Must have a `region` specified in the provider configuration.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param SecretsmanagerInstanceArgs args: The arguments to use to populate this resource's properties.

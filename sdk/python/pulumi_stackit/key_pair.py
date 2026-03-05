@@ -24,6 +24,7 @@ class KeyPairArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a KeyPair resource.
+
         :param pulumi.Input[_builtins.str] public_key: A string representation of the public SSH key. E.g., `ssh-rsa <key_data>` or `ssh-ed25519 <key-data>`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container.
         :param pulumi.Input[_builtins.str] name: The name of the SSH key pair.
@@ -80,6 +81,7 @@ class _KeyPairState:
                  public_key: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KeyPair resources.
+
         :param pulumi.Input[_builtins.str] fingerprint: The fingerprint of the public SSH key.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container.
         :param pulumi.Input[_builtins.str] name: The name of the SSH key pair.
@@ -158,6 +160,7 @@ class KeyPair(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container.
@@ -174,6 +177,7 @@ class KeyPair(pulumi.CustomResource):
         Key pair resource schema. Must have a `region` specified in the provider configuration. Allows uploading an SSH public key to be used for server authentication.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param KeyPairArgs args: The arguments to use to populate this resource's properties.

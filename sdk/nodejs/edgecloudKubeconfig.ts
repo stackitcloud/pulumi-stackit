@@ -64,6 +64,9 @@ export class EdgecloudKubeconfig extends pulumi.CustomResource {
      * Raw kubeconfig.
      */
     declare public /*out*/ readonly kubeconfig: pulumi.Output<string>;
+    /**
+     * Internally generated UUID to identify a kubeconfig resource in Terraform, since the Edge Cloud API doesn't return a kubeconfig identifier
+     */
     declare public /*out*/ readonly kubeconfigId: pulumi.Output<string>;
     /**
      * STACKIT project ID to which the Edge Cloud instance is associated.
@@ -152,6 +155,9 @@ export interface EdgecloudKubeconfigState {
      * Raw kubeconfig.
      */
     kubeconfig?: pulumi.Input<string>;
+    /**
+     * Internally generated UUID to identify a kubeconfig resource in Terraform, since the Edge Cloud API doesn't return a kubeconfig identifier
+     */
     kubeconfigId?: pulumi.Input<string>;
     /**
      * STACKIT project ID to which the Edge Cloud instance is associated.

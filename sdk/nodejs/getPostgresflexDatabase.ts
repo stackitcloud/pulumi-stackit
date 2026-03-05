@@ -49,6 +49,9 @@ export interface GetPostgresflexDatabaseResult {
      * Database ID.
      */
     readonly databaseId: string;
+    /**
+     * Terraform's internal resource ID. It is structured as "`projectId`,`region`,`instanceId`,`databaseId`".
+     */
     readonly id: string;
     /**
      * ID of the Postgres Flex instance.

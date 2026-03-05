@@ -23,6 +23,7 @@ class LogmeCredentialArgs:
                  project_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a LogmeCredential resource.
+
         :param pulumi.Input[_builtins.str] instance_id: ID of the LogMe instance.
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the instance is associated.
         """
@@ -67,6 +68,7 @@ class _LogmeCredentialState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LogmeCredential resources.
+
         :param pulumi.Input[_builtins.str] credential_id: The credential's ID.
         :param pulumi.Input[_builtins.str] instance_id: ID of the LogMe instance.
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the instance is associated.
@@ -184,6 +186,7 @@ class LogmeCredential(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_id: ID of the LogMe instance.
@@ -199,6 +202,7 @@ class LogmeCredential(pulumi.CustomResource):
         LogMe credential resource schema. Must have a `region` specified in the provider configuration.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param LogmeCredentialArgs args: The arguments to use to populate this resource's properties.

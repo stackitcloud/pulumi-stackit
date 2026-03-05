@@ -34,6 +34,9 @@ export interface GetKeyPairResult {
      * The fingerprint of the public SSH key.
      */
     readonly fingerprint: string;
+    /**
+     * Terraform's internal resource ID. It takes the value of the key pair "`name`".
+     */
     readonly id: string;
     /**
      * Labels are key-value string pairs which can be attached to a resource container.

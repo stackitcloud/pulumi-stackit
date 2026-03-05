@@ -51,6 +51,9 @@ export interface GetSqlserverflexInstanceResult {
      */
     readonly backupSchedule: string;
     readonly flavor: outputs.GetSqlserverflexInstanceFlavor;
+    /**
+     * Terraform's internal data source. ID. It is structured as "`projectId`,`region`,`instanceId`".
+     */
     readonly id: string;
     /**
      * ID of the SQLServer Flex instance.

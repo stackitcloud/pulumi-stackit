@@ -38,8 +38,9 @@ type LookupRedisInstanceResult struct {
 	CfOrganizationGuid string `pulumi:"cfOrganizationGuid"`
 	CfSpaceGuid        string `pulumi:"cfSpaceGuid"`
 	DashboardUrl       string `pulumi:"dashboardUrl"`
-	Id                 string `pulumi:"id"`
-	ImageUrl           string `pulumi:"imageUrl"`
+	// Terraform's internal data source. identifier. It is structured as "`projectId`,`instanceId`".
+	Id       string `pulumi:"id"`
+	ImageUrl string `pulumi:"imageUrl"`
 	// ID of the Redis instance.
 	InstanceId string `pulumi:"instanceId"`
 	// Instance name.
@@ -107,6 +108,7 @@ func (o LookupRedisInstanceResultOutput) DashboardUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRedisInstanceResult) string { return v.DashboardUrl }).(pulumi.StringOutput)
 }
 
+// Terraform's internal data source. identifier. It is structured as "`projectId`,`instanceId`".
 func (o LookupRedisInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRedisInstanceResult) string { return v.Id }).(pulumi.StringOutput)
 }

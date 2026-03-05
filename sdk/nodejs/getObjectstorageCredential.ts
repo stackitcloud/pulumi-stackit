@@ -54,6 +54,9 @@ export interface GetObjectstorageCredentialResult {
      */
     readonly credentialsGroupId: string;
     readonly expirationTimestamp: string;
+    /**
+     * Terraform's internal resource identifier. It is structured as "`projectId`,`region`,`credentialsGroupId`,`credentialId`".
+     */
     readonly id: string;
     readonly name: string;
     /**

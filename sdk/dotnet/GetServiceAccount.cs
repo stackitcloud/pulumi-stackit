@@ -106,6 +106,9 @@ namespace Pulumi.Stackit
         /// Email of the service account.
         /// </summary>
         public readonly string Email;
+        /// <summary>
+        /// Terraform's internal resource ID, structured as "`ProjectId`,`Email`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Name of the service account.

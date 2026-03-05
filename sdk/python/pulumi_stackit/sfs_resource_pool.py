@@ -29,6 +29,7 @@ class SfsResourcePoolArgs:
                  snapshots_are_visible: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a SfsResourcePool resource.
+
         :param pulumi.Input[_builtins.str] availability_zone: Availability zone.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_acls: List of IPs that can mount the resource pool in read-only; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
         :param pulumi.Input[_builtins.str] performance_class: Name of the performance class.
@@ -161,6 +162,7 @@ class _SfsResourcePoolState:
                  snapshots_are_visible: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering SfsResourcePool resources.
+
         :param pulumi.Input[_builtins.str] availability_zone: Availability zone.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_acls: List of IPs that can mount the resource pool in read-only; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
         :param pulumi.Input[_builtins.str] name: Name of the resource pool.
@@ -321,6 +323,7 @@ class SfsResourcePool(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] availability_zone: Availability zone.
@@ -344,6 +347,7 @@ class SfsResourcePool(pulumi.CustomResource):
         > This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param SfsResourcePoolArgs args: The arguments to use to populate this resource's properties.

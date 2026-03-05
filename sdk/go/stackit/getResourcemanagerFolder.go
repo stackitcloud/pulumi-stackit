@@ -38,7 +38,8 @@ type LookupResourcemanagerFolderResult struct {
 	CreationTime string `pulumi:"creationTime"`
 	// Folder UUID identifier. Globally unique folder identifier
 	FolderId string `pulumi:"folderId"`
-	Id       string `pulumi:"id"`
+	// Terraform's internal resource ID. It is structured as "`containerId`".
+	Id string `pulumi:"id"`
 	// Labels are key-value string pairs which can be attached to a resource container. A label key must match the regex [A-ZÄÜÖa-zäüöß0-9*-]{1,64}. A label value must match the regex ^$|[A-ZÄÜÖa-zäüöß0-9*-]{1,64}.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the folder.
@@ -98,6 +99,7 @@ func (o LookupResourcemanagerFolderResultOutput) FolderId() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupResourcemanagerFolderResult) string { return v.FolderId }).(pulumi.StringOutput)
 }
 
+// Terraform's internal resource ID. It is structured as "`containerId`".
 func (o LookupResourcemanagerFolderResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupResourcemanagerFolderResult) string { return v.Id }).(pulumi.StringOutput)
 }

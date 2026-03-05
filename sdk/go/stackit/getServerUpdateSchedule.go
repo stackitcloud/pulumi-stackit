@@ -41,8 +41,9 @@ type LookupServerUpdateScheduleArgs struct {
 // A collection of values returned by getServerUpdateSchedule.
 type LookupServerUpdateScheduleResult struct {
 	// Is the update schedule enabled or disabled.
-	Enabled bool   `pulumi:"enabled"`
-	Id      string `pulumi:"id"`
+	Enabled bool `pulumi:"enabled"`
+	// Terraform's internal resource identifier. It is structured as "`projectId`,`region`,`serverId`,`updateScheduleId`".
+	Id string `pulumi:"id"`
 	// Maintenance window [1..24]. Updates start within the defined hourly window. Depending on the updates, the process may exceed this timeframe and require an automatic restart.
 	MaintenanceWindow int `pulumi:"maintenanceWindow"`
 	// The schedule name.
@@ -104,6 +105,7 @@ func (o LookupServerUpdateScheduleResultOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupServerUpdateScheduleResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// Terraform's internal resource identifier. It is structured as "`projectId`,`region`,`serverId`,`updateScheduleId`".
 func (o LookupServerUpdateScheduleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerUpdateScheduleResult) string { return v.Id }).(pulumi.StringOutput)
 }

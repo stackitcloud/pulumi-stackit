@@ -54,6 +54,9 @@ export interface GetSfsShareResult {
      * You can also assign a Share Export Policy after creating the Share
      */
     readonly exportPolicy: string;
+    /**
+     * Terraform's internal resource ID. It is structured as "`projectId`,`shareId`".
+     */
     readonly id: string;
     /**
      * Mount path of the Share, used to mount the Share

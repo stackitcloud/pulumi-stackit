@@ -57,6 +57,9 @@ export class SkeKubeconfig extends pulumi.CustomResource {
      * Raw short-lived admin kubeconfig.
      */
     declare public /*out*/ readonly kubeConfig: pulumi.Output<string>;
+    /**
+     * Internally generated UUID to identify a kubeconfig resource in Terraform, since the SKE API doesnt return a kubeconfig identifier
+     */
     declare public /*out*/ readonly kubeConfigId: pulumi.Output<string>;
     /**
      * STACKIT project ID to which the cluster is associated.
@@ -148,6 +151,9 @@ export interface SkeKubeconfigState {
      * Raw short-lived admin kubeconfig.
      */
     kubeConfig?: pulumi.Input<string>;
+    /**
+     * Internally generated UUID to identify a kubeconfig resource in Terraform, since the SKE API doesnt return a kubeconfig identifier
+     */
     kubeConfigId?: pulumi.Input<string>;
     /**
      * STACKIT project ID to which the cluster is associated.

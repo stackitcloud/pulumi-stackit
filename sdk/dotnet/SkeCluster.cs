@@ -65,7 +65,7 @@ namespace Pulumi.Stackit
         /// Network block as defined below.
         /// </summary>
         [Output("network")]
-        public Output<Outputs.SkeClusterNetwork?> Network { get; private set; } = null!;
+        public Output<Outputs.SkeClusterNetwork> Network { get; private set; } = null!;
 
         /// <summary>
         /// One or more `NodePool` block as defined below.

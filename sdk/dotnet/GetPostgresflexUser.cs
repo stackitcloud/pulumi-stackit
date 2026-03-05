@@ -130,6 +130,9 @@ namespace Pulumi.Stackit
     public sealed class GetPostgresflexUserResult
     {
         public readonly string Host;
+        /// <summary>
+        /// Terraform's internal data source. ID. It is structured as "`ProjectId`,`Region`,`InstanceId`,`UserId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// ID of the PostgresFlex instance.

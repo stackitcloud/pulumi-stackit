@@ -133,6 +133,9 @@ namespace Pulumi.Stackit
         /// Destination of the route.
         /// </summary>
         public readonly Outputs.GetNetworkAreaRouteDestinationResult Destination;
+        /// <summary>
+        /// Terraform's internal data source ID. It is structured as "`OrganizationId`,`Region`,`NetworkAreaId`,`NetworkAreaRouteId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Labels are key-value string pairs which can be attached to a resource container

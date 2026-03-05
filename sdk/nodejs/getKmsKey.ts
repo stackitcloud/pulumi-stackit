@@ -61,6 +61,9 @@ export interface GetKmsKeyResult {
      * The display name to distinguish multiple keys
      */
     readonly displayName: string;
+    /**
+     * Terraform's internal resource ID. It is structured as "`projectId`,`region`,`keyringId`,`keyId`".
+     */
     readonly id: string;
     /**
      * States whether versions can be created or only imported.

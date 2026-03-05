@@ -40,6 +40,9 @@ export interface GetEdgecloudInstancesArgs {
  * A collection of values returned by getEdgecloudInstances.
  */
 export interface GetEdgecloudInstancesResult {
+    /**
+     * Terraform's internal data source ID, structured as `projectId`,`region`.
+     */
     readonly id: string;
     /**
      * A list of Edge Cloud instances.

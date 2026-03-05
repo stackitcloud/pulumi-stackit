@@ -29,6 +29,7 @@ class NetworkAreaRouteArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NetworkAreaRoute resource.
+
         :param pulumi.Input['NetworkAreaRouteDestinationArgs'] destination: Destination of the route.
         :param pulumi.Input[_builtins.str] network_area_id: The network area ID to which the network area route is associated.
         :param pulumi.Input['NetworkAreaRouteNextHopArgs'] next_hop: Next hop destination.
@@ -130,6 +131,7 @@ class _NetworkAreaRouteState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkAreaRoute resources.
+
         :param pulumi.Input['NetworkAreaRouteDestinationArgs'] destination: Destination of the route.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
         :param pulumi.Input[_builtins.str] network_area_id: The network area ID to which the network area route is associated.
@@ -252,7 +254,23 @@ class NetworkAreaRoute(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Create a NetworkAreaRoute resource with the given unique name, props, and options.
+        Network area route resource schema. Must have a `region` specified in the provider configuration.
+
+        ## Example Usage
+
+        ## Migration of IaaS resources from versions <= v0.74.0
+
+        The release of the STACKIT IaaS API v2 provides a lot of new features, but also includes some breaking changes
+        (when coming from v1 of the STACKIT IaaS API) which must be somehow represented on Terraform side. The
+        `NetworkAreaRoute` resource did undergo some changes. See the example below how to migrate your resources.
+
+        ### Breaking change: Network area route resource (stackit_network_area_route)
+
+        **Configuration for <= v0.74.0**
+
+        **Configuration for > v0.74.0**
+
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['NetworkAreaRouteDestinationArgs', 'NetworkAreaRouteDestinationArgsDict']] destination: Destination of the route.
@@ -269,7 +287,23 @@ class NetworkAreaRoute(pulumi.CustomResource):
                  args: NetworkAreaRouteArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a NetworkAreaRoute resource with the given unique name, props, and options.
+        Network area route resource schema. Must have a `region` specified in the provider configuration.
+
+        ## Example Usage
+
+        ## Migration of IaaS resources from versions <= v0.74.0
+
+        The release of the STACKIT IaaS API v2 provides a lot of new features, but also includes some breaking changes
+        (when coming from v1 of the STACKIT IaaS API) which must be somehow represented on Terraform side. The
+        `NetworkAreaRoute` resource did undergo some changes. See the example below how to migrate your resources.
+
+        ### Breaking change: Network area route resource (stackit_network_area_route)
+
+        **Configuration for <= v0.74.0**
+
+        **Configuration for > v0.74.0**
+
+
         :param str resource_name: The name of the resource.
         :param NetworkAreaRouteArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

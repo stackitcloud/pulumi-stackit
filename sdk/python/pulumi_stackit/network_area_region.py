@@ -27,6 +27,7 @@ class NetworkAreaRegionArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NetworkAreaRegion resource.
+
         :param pulumi.Input['NetworkAreaRegionIpv4Args'] ipv4: The regional IPv4 config of a network area.
         :param pulumi.Input[_builtins.str] network_area_id: The network area ID.
         :param pulumi.Input[_builtins.str] organization_id: STACKIT organization ID to which the network area is associated.
@@ -96,6 +97,7 @@ class _NetworkAreaRegionState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkAreaRegion resources.
+
         :param pulumi.Input['NetworkAreaRegionIpv4Args'] ipv4: The regional IPv4 config of a network area.
         :param pulumi.Input[_builtins.str] network_area_id: The network area ID.
         :param pulumi.Input[_builtins.str] organization_id: STACKIT organization ID to which the network area is associated.
@@ -175,6 +177,7 @@ class NetworkAreaRegion(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['NetworkAreaRegionIpv4Args', 'NetworkAreaRegionIpv4ArgsDict']] ipv4: The regional IPv4 config of a network area.
@@ -192,6 +195,7 @@ class NetworkAreaRegion(pulumi.CustomResource):
         Network area region resource schema.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param NetworkAreaRegionArgs args: The arguments to use to populate this resource's properties.

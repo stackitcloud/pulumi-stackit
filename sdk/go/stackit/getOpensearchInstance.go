@@ -38,8 +38,9 @@ type LookupOpensearchInstanceResult struct {
 	CfOrganizationGuid string `pulumi:"cfOrganizationGuid"`
 	CfSpaceGuid        string `pulumi:"cfSpaceGuid"`
 	DashboardUrl       string `pulumi:"dashboardUrl"`
-	Id                 string `pulumi:"id"`
-	ImageUrl           string `pulumi:"imageUrl"`
+	// Terraform's internal data source. identifier. It is structured as "`projectId`,`instanceId`".
+	Id       string `pulumi:"id"`
+	ImageUrl string `pulumi:"imageUrl"`
 	// ID of the OpenSearch instance.
 	InstanceId string `pulumi:"instanceId"`
 	// Instance name.
@@ -107,6 +108,7 @@ func (o LookupOpensearchInstanceResultOutput) DashboardUrl() pulumi.StringOutput
 	return o.ApplyT(func(v LookupOpensearchInstanceResult) string { return v.DashboardUrl }).(pulumi.StringOutput)
 }
 
+// Terraform's internal data source. identifier. It is structured as "`projectId`,`instanceId`".
 func (o LookupOpensearchInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpensearchInstanceResult) string { return v.Id }).(pulumi.StringOutput)
 }

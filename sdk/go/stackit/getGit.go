@@ -46,7 +46,8 @@ type LookupGitResult struct {
 	Created string `pulumi:"created"`
 	// Instance flavor. If not provided, defaults to git-100. For a list of available flavors, refer to our API documentation: `https://docs.api.stackit.cloud/documentation/git/version/v1beta`
 	Flavor string `pulumi:"flavor"`
-	Id     string `pulumi:"id"`
+	// Terraform's internal resource ID, structured as "`projectId`,`instanceId`".
+	Id string `pulumi:"id"`
 	// ID linked to the git instance.
 	InstanceId string `pulumi:"instanceId"`
 	// Unique name linked to the git instance.
@@ -120,6 +121,7 @@ func (o LookupGitResultOutput) Flavor() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGitResult) string { return v.Flavor }).(pulumi.StringOutput)
 }
 
+// Terraform's internal resource ID, structured as "`projectId`,`instanceId`".
 func (o LookupGitResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGitResult) string { return v.Id }).(pulumi.StringOutput)
 }

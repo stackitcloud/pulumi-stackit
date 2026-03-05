@@ -46,7 +46,8 @@ type LookupKmsKeyResult struct {
 	Description string `pulumi:"description"`
 	// The display name to distinguish multiple keys
 	DisplayName string `pulumi:"displayName"`
-	Id          string `pulumi:"id"`
+	// Terraform's internal resource ID. It is structured as "`projectId`,`region`,`keyringId`,`keyId`".
+	Id string `pulumi:"id"`
 	// States whether versions can be created or only imported.
 	ImportOnly bool `pulumi:"importOnly"`
 	// The ID of the key
@@ -123,6 +124,7 @@ func (o LookupKmsKeyResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKmsKeyResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// Terraform's internal resource ID. It is structured as "`projectId`,`region`,`keyringId`,`keyId`".
 func (o LookupKmsKeyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKmsKeyResult) string { return v.Id }).(pulumi.StringOutput)
 }

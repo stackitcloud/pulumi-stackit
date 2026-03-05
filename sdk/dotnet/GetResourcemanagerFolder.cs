@@ -99,6 +99,9 @@ namespace Pulumi.Stackit
         /// Folder UUID identifier. Globally unique folder identifier
         /// </summary>
         public readonly string FolderId;
+        /// <summary>
+        /// Terraform's internal resource ID. It is structured as "`ContainerId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Labels are key-value string pairs which can be attached to a resource container. A label key must match the regex [A-ZÄÜÖa-zäüöß0-9*-]{1,64}. A label value must match the regex ^$|[A-ZÄÜÖa-zäüöß0-9*-]{1,64}.

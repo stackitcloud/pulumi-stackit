@@ -56,7 +56,8 @@ type LookupObservabilityInstanceResult struct {
 	GrafanaPublicReadAccess bool `pulumi:"grafanaPublicReadAccess"`
 	// Specifies Grafana URL.
 	GrafanaUrl string `pulumi:"grafanaUrl"`
-	Id         string `pulumi:"id"`
+	// Terraform's internal data source. ID. It is structured as "`projectId`,`instanceId`".
+	Id string `pulumi:"id"`
 	// The Observability instance ID.
 	InstanceId string `pulumi:"instanceId"`
 	// Specifies if the instance can be updated.
@@ -182,6 +183,7 @@ func (o LookupObservabilityInstanceResultOutput) GrafanaUrl() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupObservabilityInstanceResult) string { return v.GrafanaUrl }).(pulumi.StringOutput)
 }
 
+// Terraform's internal data source. ID. It is structured as "`projectId`,`instanceId`".
 func (o LookupObservabilityInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupObservabilityInstanceResult) string { return v.Id }).(pulumi.StringOutput)
 }

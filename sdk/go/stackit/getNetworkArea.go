@@ -41,8 +41,9 @@ type LookupNetworkAreaResult struct {
 	// The default prefix length for networks in the network area.
 	//
 	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026.
-	DefaultPrefixLength int    `pulumi:"defaultPrefixLength"`
-	Id                  string `pulumi:"id"`
+	DefaultPrefixLength int `pulumi:"defaultPrefixLength"`
+	// Terraform's internal resource ID. It is structured as "`organizationId`,`networkAreaId`".
+	Id string `pulumi:"id"`
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels map[string]string `pulumi:"labels"`
 	// The maximal prefix length for networks in the network area.
@@ -121,6 +122,7 @@ func (o LookupNetworkAreaResultOutput) DefaultPrefixLength() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupNetworkAreaResult) int { return v.DefaultPrefixLength }).(pulumi.IntOutput)
 }
 
+// Terraform's internal resource ID. It is structured as "`organizationId`,`networkAreaId`".
 func (o LookupNetworkAreaResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkAreaResult) string { return v.Id }).(pulumi.StringOutput)
 }

@@ -38,6 +38,7 @@ type LookupSfsExportPolicyArgs struct {
 
 // A collection of values returned by getSfsExportPolicy.
 type LookupSfsExportPolicyResult struct {
+	// Terraform's internal resource ID. It is structured as "`projectId`,`region`,`policyId`".
 	Id string `pulumi:"id"`
 	// Name of the export policy.
 	Name string `pulumi:"name"`
@@ -88,6 +89,7 @@ func (o LookupSfsExportPolicyResultOutput) ToLookupSfsExportPolicyResultOutputWi
 	return o
 }
 
+// Terraform's internal resource ID. It is structured as "`projectId`,`region`,`policyId`".
 func (o LookupSfsExportPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSfsExportPolicyResult) string { return v.Id }).(pulumi.StringOutput)
 }

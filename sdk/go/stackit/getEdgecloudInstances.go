@@ -38,6 +38,7 @@ type GetEdgecloudInstancesArgs struct {
 
 // A collection of values returned by getEdgecloudInstances.
 type GetEdgecloudInstancesResult struct {
+	// Terraform's internal data source ID, structured as `projectId`,`region`.
 	Id string `pulumi:"id"`
 	// A list of Edge Cloud instances.
 	Instances []GetEdgecloudInstancesInstance `pulumi:"instances"`
@@ -83,6 +84,7 @@ func (o GetEdgecloudInstancesResultOutput) ToGetEdgecloudInstancesResultOutputWi
 	return o
 }
 
+// Terraform's internal data source ID, structured as `projectId`,`region`.
 func (o GetEdgecloudInstancesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetEdgecloudInstancesResult) string { return v.Id }).(pulumi.StringOutput)
 }

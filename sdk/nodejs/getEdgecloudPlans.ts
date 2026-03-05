@@ -35,6 +35,9 @@ export interface GetEdgecloudPlansArgs {
  * A collection of values returned by getEdgecloudPlans.
  */
 export interface GetEdgecloudPlansResult {
+    /**
+     * Terraform's internal data source ID, `projectId` is used here.
+     */
     readonly id: string;
     /**
      * A list of Edge Cloud Plans.

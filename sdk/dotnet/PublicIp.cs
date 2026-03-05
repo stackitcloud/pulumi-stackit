@@ -29,6 +29,9 @@ namespace Pulumi.Stackit
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
+        /// <summary>
+        /// Associates the public IP with a network interface or a virtual IP (ID). If you are using this resource with a Kubernetes Load Balancer or any other resource which associates a network interface implicitly, use the lifecycle `IgnoreChanges` property in this field to prevent unintentional removal of the network interface due to drift in the Terraform state
+        /// </summary>
         [Output("networkInterfaceId")]
         public Output<string> NetworkInterfaceId { get; private set; } = null!;
 
@@ -109,6 +112,9 @@ namespace Pulumi.Stackit
             set => _labels = value;
         }
 
+        /// <summary>
+        /// Associates the public IP with a network interface or a virtual IP (ID). If you are using this resource with a Kubernetes Load Balancer or any other resource which associates a network interface implicitly, use the lifecycle `IgnoreChanges` property in this field to prevent unintentional removal of the network interface due to drift in the Terraform state
+        /// </summary>
         [Input("networkInterfaceId")]
         public Input<string>? NetworkInterfaceId { get; set; }
 
@@ -150,6 +156,9 @@ namespace Pulumi.Stackit
             set => _labels = value;
         }
 
+        /// <summary>
+        /// Associates the public IP with a network interface or a virtual IP (ID). If you are using this resource with a Kubernetes Load Balancer or any other resource which associates a network interface implicitly, use the lifecycle `IgnoreChanges` property in this field to prevent unintentional removal of the network interface due to drift in the Terraform state
+        /// </summary>
         [Input("networkInterfaceId")]
         public Input<string>? NetworkInterfaceId { get; set; }
 

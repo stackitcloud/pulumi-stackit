@@ -44,6 +44,9 @@ export interface GetSfsExportPolicyArgs {
  * A collection of values returned by getSfsExportPolicy.
  */
 export interface GetSfsExportPolicyResult {
+    /**
+     * Terraform's internal resource ID. It is structured as "`projectId`,`region`,`policyId`".
+     */
     readonly id: string;
     /**
      * Name of the export policy.

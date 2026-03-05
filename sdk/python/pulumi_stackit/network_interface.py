@@ -30,6 +30,7 @@ class NetworkInterfaceArgs:
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a NetworkInterface resource.
+
         :param pulumi.Input[_builtins.str] network_id: The network ID to which the network interface is associated.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the network is associated.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_addresses: The list of CIDR (Classless Inter-Domain Routing) notations.
@@ -184,6 +185,7 @@ class _NetworkInterfaceState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkInterface resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_addresses: The list of CIDR (Classless Inter-Domain Routing) notations.
         :param pulumi.Input[_builtins.str] device: The device UUID of the network interface.
         :param pulumi.Input[_builtins.str] ipv4: The IPv4 address.
@@ -403,6 +405,7 @@ class NetworkInterface(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_addresses: The list of CIDR (Classless Inter-Domain Routing) notations.
@@ -425,6 +428,7 @@ class NetworkInterface(pulumi.CustomResource):
         Network interface resource schema. Must have a `region` specified in the provider configuration.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param NetworkInterfaceArgs args: The arguments to use to populate this resource's properties.

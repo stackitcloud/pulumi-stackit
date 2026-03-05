@@ -123,6 +123,9 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string BackupSchedule;
         public readonly Outputs.GetMongodbflexInstanceFlavorResult Flavor;
+        /// <summary>
+        /// Terraform's internal data source ID. It is structured as "`ProjectId`,`Region`,`InstanceId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// ID of the MongoDB Flex instance.

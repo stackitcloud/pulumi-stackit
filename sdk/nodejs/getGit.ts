@@ -57,6 +57,9 @@ export interface GetGitResult {
      * Instance flavor. If not provided, defaults to git-100. For a list of available flavors, refer to our API documentation: `https://docs.api.stackit.cloud/documentation/git/version/v1beta`
      */
     readonly flavor: string;
+    /**
+     * Terraform's internal resource ID, structured as "`projectId`,`instanceId`".
+     */
     readonly id: string;
     /**
      * ID linked to the git instance.

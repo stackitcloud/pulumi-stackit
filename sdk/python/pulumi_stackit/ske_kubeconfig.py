@@ -27,6 +27,7 @@ class SkeKubeconfigArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SkeKubeconfig resource.
+
         :param pulumi.Input[_builtins.str] cluster_name: Name of the SKE cluster.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the cluster is associated.
         :param pulumi.Input[_builtins.int] expiration: Expiration time of the kubeconfig, in seconds. Defaults to `3600`
@@ -133,11 +134,13 @@ class _SkeKubeconfigState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SkeKubeconfig resources.
+
         :param pulumi.Input[_builtins.str] cluster_name: Name of the SKE cluster.
         :param pulumi.Input[_builtins.str] creation_time: Date-time when the kubeconfig was created
         :param pulumi.Input[_builtins.int] expiration: Expiration time of the kubeconfig, in seconds. Defaults to `3600`
         :param pulumi.Input[_builtins.str] expires_at: Timestamp when the kubeconfig expires
         :param pulumi.Input[_builtins.str] kube_config: Raw short-lived admin kubeconfig.
+        :param pulumi.Input[_builtins.str] kube_config_id: Internally generated UUID to identify a kubeconfig resource in Terraform, since the SKE API doesnt return a kubeconfig identifier
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the cluster is associated.
         :param pulumi.Input[_builtins.bool] refresh: If set to true, the provider will check if the kubeconfig has expired and will generated a new valid one in-place
         :param pulumi.Input[_builtins.int] refresh_before: Number of seconds before expiration to trigger refresh of the kubeconfig at. Only used if refresh is set to true.
@@ -227,6 +230,9 @@ class _SkeKubeconfigState:
     @_builtins.property
     @pulumi.getter(name="kubeConfigId")
     def kube_config_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Internally generated UUID to identify a kubeconfig resource in Terraform, since the SKE API doesnt return a kubeconfig identifier
+        """
         return pulumi.get(self, "kube_config_id")
 
     @kube_config_id.setter
@@ -300,6 +306,7 @@ class SkeKubeconfig(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_name: Name of the SKE cluster.
@@ -319,6 +326,7 @@ class SkeKubeconfig(pulumi.CustomResource):
         SKE kubeconfig resource schema. Must have a `region` specified in the provider configuration.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param SkeKubeconfigArgs args: The arguments to use to populate this resource's properties.
@@ -398,6 +406,7 @@ class SkeKubeconfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] expiration: Expiration time of the kubeconfig, in seconds. Defaults to `3600`
         :param pulumi.Input[_builtins.str] expires_at: Timestamp when the kubeconfig expires
         :param pulumi.Input[_builtins.str] kube_config: Raw short-lived admin kubeconfig.
+        :param pulumi.Input[_builtins.str] kube_config_id: Internally generated UUID to identify a kubeconfig resource in Terraform, since the SKE API doesnt return a kubeconfig identifier
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the cluster is associated.
         :param pulumi.Input[_builtins.bool] refresh: If set to true, the provider will check if the kubeconfig has expired and will generated a new valid one in-place
         :param pulumi.Input[_builtins.int] refresh_before: Number of seconds before expiration to trigger refresh of the kubeconfig at. Only used if refresh is set to true.
@@ -462,6 +471,9 @@ class SkeKubeconfig(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="kubeConfigId")
     def kube_config_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Internally generated UUID to identify a kubeconfig resource in Terraform, since the SKE API doesnt return a kubeconfig identifier
+        """
         return pulumi.get(self, "kube_config_id")
 
     @_builtins.property

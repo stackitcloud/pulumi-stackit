@@ -24,6 +24,7 @@ class ObjectstorageCredentialsGroupArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ObjectstorageCredentialsGroup resource.
+
         :param pulumi.Input[_builtins.str] project_id: Project ID to which the credentials group is associated.
         :param pulumi.Input[_builtins.str] name: The credentials group's display name.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
@@ -81,6 +82,7 @@ class _ObjectstorageCredentialsGroupState:
                  urn: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ObjectstorageCredentialsGroup resources.
+
         :param pulumi.Input[_builtins.str] credentials_group_id: The credentials group ID
         :param pulumi.Input[_builtins.str] name: The credentials group's display name.
         :param pulumi.Input[_builtins.str] project_id: Project ID to which the credentials group is associated.
@@ -174,6 +176,7 @@ class ObjectstorageCredentialsGroup(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The credentials group's display name.
@@ -190,6 +193,7 @@ class ObjectstorageCredentialsGroup(pulumi.CustomResource):
         ObjectStorage credentials group resource schema. Must have a `region` specified in the provider configuration. If you are creating `credentialsgroup` and `bucket` resources simultaneously, please include the `depends_on` field so that they are created sequentially. This prevents errors from concurrent calls to the service enablement that is done in the background.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param ObjectstorageCredentialsGroupArgs args: The arguments to use to populate this resource's properties.

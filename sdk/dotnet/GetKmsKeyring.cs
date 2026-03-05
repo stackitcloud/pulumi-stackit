@@ -122,6 +122,9 @@ namespace Pulumi.Stackit
         /// The display name to distinguish multiple keyrings.
         /// </summary>
         public readonly string DisplayName;
+        /// <summary>
+        /// Terraform's internal resource ID. It is structured as "`ProjectId`,`Region`,`KeyringId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// An auto generated unique id which identifies the keyring.

@@ -82,6 +82,9 @@ class GetOpensearchCredentialResult:
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        Terraform's internal data source. identifier. It is structured as "`project_id`,`instance_id`,`credential_id`".
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property

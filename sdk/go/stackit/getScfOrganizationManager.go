@@ -38,7 +38,8 @@ type LookupScfOrganizationManagerArgs struct {
 type LookupScfOrganizationManagerResult struct {
 	// The time when the organization manager was created
 	CreatedAt string `pulumi:"createdAt"`
-	Id        string `pulumi:"id"`
+	// Terraform's internal resource ID, structured as "`projectId`,`region`,`orgId`,`userId`".
+	Id string `pulumi:"id"`
 	// The ID of the Cloud Foundry Organization
 	OrgId string `pulumi:"orgId"`
 	// The ID of the platform associated with the organization of the organization manager
@@ -98,6 +99,7 @@ func (o LookupScfOrganizationManagerResultOutput) CreatedAt() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupScfOrganizationManagerResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// Terraform's internal resource ID, structured as "`projectId`,`region`,`orgId`,`userId`".
 func (o LookupScfOrganizationManagerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScfOrganizationManagerResult) string { return v.Id }).(pulumi.StringOutput)
 }

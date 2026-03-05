@@ -118,6 +118,9 @@ namespace Pulumi.Stackit
         /// The description of the security group.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Terraform's internal resource ID. It is structured as "`ProjectId`,`Region`,`SecurityGroupId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Labels are key-value string pairs which can be attached to a resource container

@@ -25,6 +25,7 @@ class ServerNetworkInterfaceAttachArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServerNetworkInterfaceAttach resource.
+
         :param pulumi.Input[_builtins.str] network_interface_id: The network interface ID.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the network interface attachment is associated.
         :param pulumi.Input[_builtins.str] server_id: The server ID.
@@ -94,6 +95,7 @@ class _ServerNetworkInterfaceAttachState:
                  server_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServerNetworkInterfaceAttach resources.
+
         :param pulumi.Input[_builtins.str] network_interface_id: The network interface ID.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the network interface attachment is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
@@ -173,6 +175,7 @@ class ServerNetworkInterfaceAttach(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] network_interface_id: The network interface ID.
@@ -190,6 +193,7 @@ class ServerNetworkInterfaceAttach(pulumi.CustomResource):
         Network interface attachment resource schema. Attaches a network interface to a server. The attachment only takes full effect after server reboot.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param ServerNetworkInterfaceAttachArgs args: The arguments to use to populate this resource's properties.

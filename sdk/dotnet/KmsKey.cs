@@ -10,6 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Stackit
 {
     /// <summary>
+    /// KMS Key resource schema. Uses the `DefaultRegion` specified in the provider configuration as a fallback in case no `Region` is defined on resource level.
+    /// 
+    ///  &gt; Keys will **not** be instantly destroyed by terraform during a `terraform destroy`. They will just be scheduled for deletion via the API and thrown out of the Terraform state afterwards. **This way we can ensure no key setups are deleted by accident and it gives you the option to recover your keys within the grace period.**
+    /// 
     /// ## Example Usage
     /// </summary>
     [StackitResourceType("stackit:index/kmsKey:KmsKey")]

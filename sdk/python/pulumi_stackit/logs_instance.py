@@ -27,6 +27,7 @@ class LogsInstanceArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LogsInstance resource.
+
         :param pulumi.Input[_builtins.str] display_name: The displayed name of the Logs instance
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID associated with the Logs instance
         :param pulumi.Input[_builtins.int] retention_days: The log retention time in days
@@ -136,6 +137,7 @@ class _LogsInstanceState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LogsInstance resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The access control list entries for the Logs instance
         :param pulumi.Input[_builtins.str] created: The date and time the creation of the Logs instance was initiated
         :param pulumi.Input[_builtins.str] datasource_url: Logs instance datasource URL, can be used in Grafana as datasource URL
@@ -367,6 +369,7 @@ class LogsInstance(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The access control list entries for the Logs instance
@@ -386,6 +389,7 @@ class LogsInstance(pulumi.CustomResource):
         Logs instance resource schema. Uses the `default_region` specified in the provider configuration as a fallback in case no `region` is defined on resource level.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param LogsInstanceArgs args: The arguments to use to populate this resource's properties.

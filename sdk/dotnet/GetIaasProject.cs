@@ -95,6 +95,9 @@ namespace Pulumi.Stackit
         /// Date-time when the project was created.
         /// </summary>
         public readonly string CreatedAt;
+        /// <summary>
+        /// Terraform's internal resource ID. It is structured as "`ProjectId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Specifies if the project has internet_access

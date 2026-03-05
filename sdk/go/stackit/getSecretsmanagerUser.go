@@ -38,7 +38,8 @@ type LookupSecretsmanagerUserArgs struct {
 type LookupSecretsmanagerUserResult struct {
 	// A user chosen description to differentiate between multiple users. Can't be changed after creation.
 	Description string `pulumi:"description"`
-	Id          string `pulumi:"id"`
+	// Terraform's internal data source identifier. It is structured as "`projectId`,`instanceId`,`userId`".
+	Id string `pulumi:"id"`
 	// ID of the Secrets Manager instance.
 	InstanceId string `pulumi:"instanceId"`
 	// STACKIT Project ID to which the instance is associated.
@@ -94,6 +95,7 @@ func (o LookupSecretsmanagerUserResultOutput) Description() pulumi.StringOutput 
 	return o.ApplyT(func(v LookupSecretsmanagerUserResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Terraform's internal data source identifier. It is structured as "`projectId`,`instanceId`,`userId`".
 func (o LookupSecretsmanagerUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecretsmanagerUserResult) string { return v.Id }).(pulumi.StringOutput)
 }

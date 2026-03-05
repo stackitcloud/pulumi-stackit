@@ -106,6 +106,9 @@ namespace Pulumi.Stackit
         /// A human readable description of the role.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Terraform's internal resource identifier. It is structured as "[resource*id],[role*id]".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Name of the role

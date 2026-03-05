@@ -9,6 +9,34 @@ using Pulumi.Serialization;
 
 namespace Pulumi.Stackit
 {
+    /// <summary>
+    /// Network area resource schema.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ## Migration of IaaS resources from versions &lt;= v0.78.1
+    /// 
+    /// The release of the STACKIT IaaS API v2 provides a lot of new features, but also includes some breaking changes
+    /// (when coming from v1 of the STACKIT IaaS API) which must be somehow represented on Terraform side. The
+    /// `stackit.NetworkArea` resource deprecated some fields. See the example below how to migrate your resources.
+    /// 
+    /// ### Migration: Network area resource (stackit_network_area)
+    /// 
+    /// **Configuration for &lt;= v0.78.1**
+    /// 
+    /// The previous configuration has some deprecated fields.
+    /// 
+    /// **Configuration for &gt; v0.78.1**
+    /// 
+    /// To migrate from a previous state, you need to modify your configuration like this:
+    /// 
+    /// After modifying the configuration, run `$ pulumi preview` to check what terraform will do.
+    /// The changes should trigger an update in-place for the existing "stackit.NetworkArea" where the deprecated fields will be removed and the resource "stackit.NetworkAreaRegion" should be imported.
+    /// It shouldn't trigger any recreation. If terraform wants to recreate any of the resources, verify that you are using the provider version &gt; v0.78.1 and have everything defined correctly.
+    /// 
+    /// When everything looks good, run `$ pulumi up` to apply these changes.
+    /// When the run is completed, you can remove the import-block. Run `$ pulumi preview` to verify that the infrastructure matches the configuration.
+    /// </summary>
     [StackitResourceType("stackit:index/networkArea:NetworkArea")]
     public partial class NetworkArea : global::Pulumi.CustomResource
     {

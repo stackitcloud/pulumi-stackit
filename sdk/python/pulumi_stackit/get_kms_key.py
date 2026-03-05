@@ -99,6 +99,9 @@ class GetKmsKeyResult:
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        Terraform's internal resource ID. It is structured as "`project_id`,`region`,`keyring_id`,`key_id`".
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property

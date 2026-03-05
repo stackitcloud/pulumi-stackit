@@ -37,8 +37,9 @@ type LookupNetworkArgs struct {
 // A collection of values returned by getNetwork.
 type LookupNetworkResult struct {
 	// Shows if DHCP is enabled for the network.
-	Dhcp bool   `pulumi:"dhcp"`
-	Id   string `pulumi:"id"`
+	Dhcp bool `pulumi:"dhcp"`
+	// Terraform's internal resource ID. It is structured as "`projectId`,`networkId`".
+	Id string `pulumi:"id"`
 	// The IPv4 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
 	Ipv4Gateway string `pulumi:"ipv4Gateway"`
 	// The IPv4 nameservers of the network.
@@ -132,6 +133,7 @@ func (o LookupNetworkResultOutput) Dhcp() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupNetworkResult) bool { return v.Dhcp }).(pulumi.BoolOutput)
 }
 
+// Terraform's internal resource ID. It is structured as "`projectId`,`networkId`".
 func (o LookupNetworkResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkResult) string { return v.Id }).(pulumi.StringOutput)
 }

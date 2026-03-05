@@ -91,6 +91,9 @@ namespace Pulumi.Stackit
         /// The fingerprint of the public SSH key.
         /// </summary>
         public readonly string Fingerprint;
+        /// <summary>
+        /// Terraform's internal resource ID. It takes the value of the key pair "`Name`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Labels are key-value string pairs which can be attached to a resource container.

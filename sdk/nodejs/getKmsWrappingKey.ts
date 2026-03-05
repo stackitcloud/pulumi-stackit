@@ -69,6 +69,9 @@ export interface GetKmsWrappingKeyResult {
      * The date and time the wrapping key will expire.
      */
     readonly expiresAt: string;
+    /**
+     * Terraform's internal resource ID. It is structured as "`projectId`,`region`,`keyringId`,`wrappingKeyId`".
+     */
     readonly id: string;
     /**
      * The ID of the associated keyring

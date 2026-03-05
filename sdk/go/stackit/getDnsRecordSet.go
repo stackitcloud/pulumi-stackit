@@ -44,7 +44,8 @@ type LookupDnsRecordSetResult struct {
 	Error string `pulumi:"error"`
 	// Fully qualified domain name (FQDN) of the record set.
 	Fqdn string `pulumi:"fqdn"`
-	Id   string `pulumi:"id"`
+	// Terraform's internal data source. ID. It is structured as "`projectId`,`zoneId`,`recordSetId`".
+	Id string `pulumi:"id"`
 	// Name of the record which should be a valid domain according to rfc1035 Section 2.3.4. E.g. `example.com`
 	Name string `pulumi:"name"`
 	// STACKIT project ID to which the dns record set is associated.
@@ -121,6 +122,7 @@ func (o LookupDnsRecordSetResultOutput) Fqdn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsRecordSetResult) string { return v.Fqdn }).(pulumi.StringOutput)
 }
 
+// Terraform's internal data source. ID. It is structured as "`projectId`,`zoneId`,`recordSetId`".
 func (o LookupDnsRecordSetResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsRecordSetResult) string { return v.Id }).(pulumi.StringOutput)
 }

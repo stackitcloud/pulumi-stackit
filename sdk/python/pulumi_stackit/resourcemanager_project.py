@@ -25,6 +25,7 @@ class ResourcemanagerProjectArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ResourcemanagerProject resource.
+
         :param pulumi.Input[_builtins.str] owner_email: Email address of the owner of the project. This value is only considered during creation. Changing it afterwards will have no effect.
         :param pulumi.Input[_builtins.str] parent_container_id: Parent resource identifier. Both container ID (user-friendly) and UUID are supported
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container. A label key must match the regex [A-ZÄÜÖa-zäüöß0-9_-]{1,64}. A label value must match the regex ^$|[A-ZÄÜÖa-zäüöß0-9_-]{1,64}.  
@@ -101,6 +102,7 @@ class _ResourcemanagerProjectState:
                  update_time: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ResourcemanagerProject resources.
+
         :param pulumi.Input[_builtins.str] container_id: Project container ID. Globally unique, user-friendly identifier.
         :param pulumi.Input[_builtins.str] creation_time: Date-time at which the project was created.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container. A label key must match the regex [A-ZÄÜÖa-zäüöß0-9_-]{1,64}. A label value must match the regex ^$|[A-ZÄÜÖa-zäüöß0-9_-]{1,64}.  
@@ -238,7 +240,12 @@ class ResourcemanagerProject(pulumi.CustomResource):
                  parent_container_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Resource Manager project resource schema.
+
+        > In case you're getting started with an empty STACKIT organization and want to use this resource to create projects in it, check out this guide for how to create a service account which you can use for authentication in the STACKIT Terraform provider.
+
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -255,7 +262,12 @@ class ResourcemanagerProject(pulumi.CustomResource):
                  args: ResourcemanagerProjectArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Resource Manager project resource schema.
+
+        > In case you're getting started with an empty STACKIT organization and want to use this resource to create projects in it, check out this guide for how to create a service account which you can use for authentication in the STACKIT Terraform provider.
+
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param ResourcemanagerProjectArgs args: The arguments to use to populate this resource's properties.

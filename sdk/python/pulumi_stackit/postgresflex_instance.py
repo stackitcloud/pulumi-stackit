@@ -32,6 +32,7 @@ class PostgresflexInstanceArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PostgresflexInstance resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The Access Control List (ACL) for the PostgresFlex instance.
         :param pulumi.Input[_builtins.str] backup_schedule: The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the instance is associated.
@@ -166,6 +167,7 @@ class _PostgresflexInstanceState:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PostgresflexInstance resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The Access Control List (ACL) for the PostgresFlex instance.
         :param pulumi.Input[_builtins.str] backup_schedule: The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.
         :param pulumi.Input[_builtins.str] instance_id: ID of the PostgresFlex instance.
@@ -328,6 +330,7 @@ class PostgresflexInstance(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The Access Control List (ACL) for the PostgresFlex instance.
@@ -347,6 +350,7 @@ class PostgresflexInstance(pulumi.CustomResource):
         Postgres Flex instance resource schema. Must have a `region` specified in the provider configuration.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param PostgresflexInstanceArgs args: The arguments to use to populate this resource's properties.

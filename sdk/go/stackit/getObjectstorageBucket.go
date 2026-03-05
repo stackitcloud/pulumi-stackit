@@ -36,6 +36,7 @@ type LookupObjectstorageBucketArgs struct {
 
 // A collection of values returned by getObjectstorageBucket.
 type LookupObjectstorageBucketResult struct {
+	// Terraform's internal data source identifier. It is structured as "`projectId`,`region`,`name`".
 	Id string `pulumi:"id"`
 	// The bucket name. It must be DNS conform.
 	Name string `pulumi:"name"`
@@ -85,6 +86,7 @@ func (o LookupObjectstorageBucketResultOutput) ToLookupObjectstorageBucketResult
 	return o
 }
 
+// Terraform's internal data source identifier. It is structured as "`projectId`,`region`,`name`".
 func (o LookupObjectstorageBucketResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupObjectstorageBucketResult) string { return v.Id }).(pulumi.StringOutput)
 }

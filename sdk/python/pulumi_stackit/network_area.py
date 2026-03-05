@@ -32,6 +32,7 @@ class NetworkAreaArgs:
                  transfer_network: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NetworkArea resource.
+
         :param pulumi.Input[_builtins.str] organization_id: STACKIT organization ID to which the network area is associated.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] default_nameservers: List of DNS Servers/Nameservers for configuration of network area for region `eu01`.
         :param pulumi.Input[_builtins.int] default_prefix_length: The default prefix length for networks in the network area for region `eu01`.
@@ -209,6 +210,7 @@ class _NetworkAreaState:
                  transfer_network: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkArea resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] default_nameservers: List of DNS Servers/Nameservers for configuration of network area for region `eu01`.
         :param pulumi.Input[_builtins.int] default_prefix_length: The default prefix length for networks in the network area for region `eu01`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
@@ -418,7 +420,34 @@ class NetworkArea(pulumi.CustomResource):
                  transfer_network: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
-        Create a NetworkArea resource with the given unique name, props, and options.
+        Network area resource schema.
+
+        ## Example Usage
+
+        ## Migration of IaaS resources from versions <= v0.78.1
+
+        The release of the STACKIT IaaS API v2 provides a lot of new features, but also includes some breaking changes
+        (when coming from v1 of the STACKIT IaaS API) which must be somehow represented on Terraform side. The
+        `NetworkArea` resource deprecated some fields. See the example below how to migrate your resources.
+
+        ### Migration: Network area resource (stackit_network_area)
+
+        **Configuration for <= v0.78.1**
+
+        The previous configuration has some deprecated fields.
+
+        **Configuration for > v0.78.1**
+
+        To migrate from a previous state, you need to modify your configuration like this:
+
+        After modifying the configuration, run `$ pulumi preview` to check what terraform will do.
+        The changes should trigger an update in-place for the existing "NetworkArea" where the deprecated fields will be removed and the resource "NetworkAreaRegion" should be imported.
+        It shouldn't trigger any recreation. If terraform wants to recreate any of the resources, verify that you are using the provider version > v0.78.1 and have everything defined correctly.
+
+        When everything looks good, run `$ pulumi up` to apply these changes.
+        When the run is completed, you can remove the import-block. Run `$ pulumi preview` to verify that the infrastructure matches the configuration.
+
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] default_nameservers: List of DNS Servers/Nameservers for configuration of network area for region `eu01`.
@@ -438,7 +467,34 @@ class NetworkArea(pulumi.CustomResource):
                  args: NetworkAreaArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a NetworkArea resource with the given unique name, props, and options.
+        Network area resource schema.
+
+        ## Example Usage
+
+        ## Migration of IaaS resources from versions <= v0.78.1
+
+        The release of the STACKIT IaaS API v2 provides a lot of new features, but also includes some breaking changes
+        (when coming from v1 of the STACKIT IaaS API) which must be somehow represented on Terraform side. The
+        `NetworkArea` resource deprecated some fields. See the example below how to migrate your resources.
+
+        ### Migration: Network area resource (stackit_network_area)
+
+        **Configuration for <= v0.78.1**
+
+        The previous configuration has some deprecated fields.
+
+        **Configuration for > v0.78.1**
+
+        To migrate from a previous state, you need to modify your configuration like this:
+
+        After modifying the configuration, run `$ pulumi preview` to check what terraform will do.
+        The changes should trigger an update in-place for the existing "NetworkArea" where the deprecated fields will be removed and the resource "NetworkAreaRegion" should be imported.
+        It shouldn't trigger any recreation. If terraform wants to recreate any of the resources, verify that you are using the provider version > v0.78.1 and have everything defined correctly.
+
+        When everything looks good, run `$ pulumi up` to apply these changes.
+        When the run is completed, you can remove the import-block. Run `$ pulumi preview` to verify that the infrastructure matches the configuration.
+
+
         :param str resource_name: The name of the resource.
         :param NetworkAreaArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -36,6 +36,7 @@ class ServerArgs:
                  user_data: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Server resource.
+
         :param pulumi.Input[_builtins.str] machine_type: Name of the type of the machine for the server. Possible values are documented in [Virtual machine flavors](https://docs.stackit.cloud/products/compute-engine/server/basics/machine-types/)
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the server is associated.
         :param pulumi.Input[_builtins.str] affinity_group: The affinity group the server is assigned to.
@@ -254,6 +255,7 @@ class _ServerState:
                  user_data: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Server resources.
+
         :param pulumi.Input[_builtins.str] affinity_group: The affinity group the server is assigned to.
         :param pulumi.Input[_builtins.str] availability_zone: The availability zone of the server.
         :param pulumi.Input['ServerBootVolumeArgs'] boot_volume: The boot volume for the server
@@ -551,6 +553,7 @@ class Server(pulumi.CustomResource):
 
         ### Additional Examples
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] affinity_group: The affinity group the server is assigned to.
@@ -591,6 +594,7 @@ class Server(pulumi.CustomResource):
         ### Server with user data (cloud-init)
 
         ### Additional Examples
+
 
         :param str resource_name: The name of the resource.
         :param ServerArgs args: The arguments to use to populate this resource's properties.

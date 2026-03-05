@@ -142,6 +142,9 @@ namespace Pulumi.Stackit
         /// You can also assign a Share Export Policy after creating the Share
         /// </summary>
         public readonly string ExportPolicy;
+        /// <summary>
+        /// Terraform's internal resource ID. It is structured as "`ProjectId`,`ShareId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Mount path of the Share, used to mount the Share

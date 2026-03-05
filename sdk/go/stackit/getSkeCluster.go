@@ -42,7 +42,8 @@ type LookupSkeClusterResult struct {
 	Extensions GetSkeClusterExtensions `pulumi:"extensions"`
 	// One or more hibernation block as defined below.
 	Hibernations []GetSkeClusterHibernation `pulumi:"hibernations"`
-	Id           string                     `pulumi:"id"`
+	// Terraform's internal data source. ID. It is structured as "`projectId`,`name`".
+	Id string `pulumi:"id"`
 	// The minimum Kubernetes version, this field is always nil. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/). To get the current kubernetes version being used for your cluster, use the `kubernetesVersionUsed` field.
 	KubernetesVersionMin string `pulumi:"kubernetesVersionMin"`
 	// Full Kubernetes version used. For example, if `1.22` was selected, this value may result to `1.22.15`
@@ -116,6 +117,7 @@ func (o LookupSkeClusterResultOutput) Hibernations() GetSkeClusterHibernationArr
 	return o.ApplyT(func(v LookupSkeClusterResult) []GetSkeClusterHibernation { return v.Hibernations }).(GetSkeClusterHibernationArrayOutput)
 }
 
+// Terraform's internal data source. ID. It is structured as "`projectId`,`name`".
 func (o LookupSkeClusterResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSkeClusterResult) string { return v.Id }).(pulumi.StringOutput)
 }

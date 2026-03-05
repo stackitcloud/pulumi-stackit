@@ -46,7 +46,8 @@ type LookupRoutingTableRouteResult struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// Destination of the route.
 	Destination GetRoutingTableRouteDestination `pulumi:"destination"`
-	Id          string                          `pulumi:"id"`
+	// Terraform's internal datasource ID. It is structured as "`organizationId`,`region`,`networkAreaId`,`routingTableId`,`routeId`".
+	Id string `pulumi:"id"`
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels map[string]string `pulumi:"labels"`
 	// The network area ID to which the routing table is associated.
@@ -117,6 +118,7 @@ func (o LookupRoutingTableRouteResultOutput) Destination() GetRoutingTableRouteD
 	return o.ApplyT(func(v LookupRoutingTableRouteResult) GetRoutingTableRouteDestination { return v.Destination }).(GetRoutingTableRouteDestinationOutput)
 }
 
+// Terraform's internal datasource ID. It is structured as "`organizationId`,`region`,`networkAreaId`,`routingTableId`,`routeId`".
 func (o LookupRoutingTableRouteResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoutingTableRouteResult) string { return v.Id }).(pulumi.StringOutput)
 }

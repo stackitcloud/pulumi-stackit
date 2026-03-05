@@ -81,6 +81,9 @@ class GetRoutingTableRouteResult:
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        Terraform's internal datasource ID. It is structured as "`organization_id`,`region`,`network_area_id`,`routing_table_id`,`route_id`".
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property

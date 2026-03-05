@@ -52,6 +52,9 @@ export class LogmeInstance extends pulumi.CustomResource {
      * Instance name.
      */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
+     */
     declare public readonly parameters: pulumi.Output<outputs.LogmeInstanceParameters>;
     /**
      * The selected plan ID.
@@ -141,6 +144,9 @@ export interface LogmeInstanceState {
      * Instance name.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
+     */
     parameters?: pulumi.Input<inputs.LogmeInstanceParameters>;
     /**
      * The selected plan ID.
@@ -168,6 +174,9 @@ export interface LogmeInstanceArgs {
      * Instance name.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
+     */
     parameters?: pulumi.Input<inputs.LogmeInstanceParameters>;
     /**
      * The selected plan name.

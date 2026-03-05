@@ -106,6 +106,9 @@ namespace Pulumi.Stackit
         /// The access control list for this instance. Each entry is an IP or IP range that is permitted to access, in CIDR notation
         /// </summary>
         public readonly ImmutableArray<string> Acls;
+        /// <summary>
+        /// Terraform's internal resource ID. It is structured as "`ProjectId`,`InstanceId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// ID of the Secrets Manager instance.

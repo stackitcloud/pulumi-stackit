@@ -137,6 +137,9 @@ namespace Pulumi.Stackit
         /// The displayed name of the Logs instance
         /// </summary>
         public readonly string DisplayName;
+        /// <summary>
+        /// Terraform's internal resource identifier. It is structured as "`ProjectId`,`Region`,`InstanceId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The Logs instance's ingest logs via OTLP URL

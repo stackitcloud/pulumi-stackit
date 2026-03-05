@@ -41,7 +41,8 @@ type LookupSqlserverflexInstanceResult struct {
 	// The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *").
 	BackupSchedule string                         `pulumi:"backupSchedule"`
 	Flavor         GetSqlserverflexInstanceFlavor `pulumi:"flavor"`
-	Id             string                         `pulumi:"id"`
+	// Terraform's internal data source. ID. It is structured as "`projectId`,`region`,`instanceId`".
+	Id string `pulumi:"id"`
 	// ID of the SQLServer Flex instance.
 	InstanceId string `pulumi:"instanceId"`
 	// Instance name.
@@ -109,6 +110,7 @@ func (o LookupSqlserverflexInstanceResultOutput) Flavor() GetSqlserverflexInstan
 	return o.ApplyT(func(v LookupSqlserverflexInstanceResult) GetSqlserverflexInstanceFlavor { return v.Flavor }).(GetSqlserverflexInstanceFlavorOutput)
 }
 
+// Terraform's internal data source. ID. It is structured as "`projectId`,`region`,`instanceId`".
 func (o LookupSqlserverflexInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlserverflexInstanceResult) string { return v.Id }).(pulumi.StringOutput)
 }

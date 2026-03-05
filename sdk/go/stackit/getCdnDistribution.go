@@ -46,7 +46,8 @@ type LookupCdnDistributionResult struct {
 	Domains []GetCdnDistributionDomain `pulumi:"domains"`
 	// List of distribution errors
 	Errors []string `pulumi:"errors"`
-	Id     string   `pulumi:"id"`
+	// Terraform's internal resource identifier. It is structured as "`projectId`,`distributionId`".
+	Id string `pulumi:"id"`
 	// STACKIT project ID associated with the distribution
 	ProjectId string `pulumi:"projectId"`
 	// Status of the distribution
@@ -116,6 +117,7 @@ func (o LookupCdnDistributionResultOutput) Errors() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupCdnDistributionResult) []string { return v.Errors }).(pulumi.StringArrayOutput)
 }
 
+// Terraform's internal resource identifier. It is structured as "`projectId`,`distributionId`".
 func (o LookupCdnDistributionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCdnDistributionResult) string { return v.Id }).(pulumi.StringOutput)
 }

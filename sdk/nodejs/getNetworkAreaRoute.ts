@@ -51,6 +51,9 @@ export interface GetNetworkAreaRouteResult {
      * Destination of the route.
      */
     readonly destination: outputs.GetNetworkAreaRouteDestination;
+    /**
+     * Terraform's internal data source ID. It is structured as "`organizationId`,`region`,`networkAreaId`,`networkAreaRouteId`".
+     */
     readonly id: string;
     /**
      * Labels are key-value string pairs which can be attached to a resource container

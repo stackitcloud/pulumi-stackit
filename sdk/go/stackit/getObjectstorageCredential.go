@@ -43,8 +43,9 @@ type LookupObjectstorageCredentialResult struct {
 	// The credential group ID.
 	CredentialsGroupId  string `pulumi:"credentialsGroupId"`
 	ExpirationTimestamp string `pulumi:"expirationTimestamp"`
-	Id                  string `pulumi:"id"`
-	Name                string `pulumi:"name"`
+	// Terraform's internal resource identifier. It is structured as "`projectId`,`region`,`credentialsGroupId`,`credentialId`".
+	Id   string `pulumi:"id"`
+	Name string `pulumi:"name"`
 	// STACKIT Project ID to which the credential group is associated.
 	ProjectId string `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
@@ -105,6 +106,7 @@ func (o LookupObjectstorageCredentialResultOutput) ExpirationTimestamp() pulumi.
 	return o.ApplyT(func(v LookupObjectstorageCredentialResult) string { return v.ExpirationTimestamp }).(pulumi.StringOutput)
 }
 
+// Terraform's internal resource identifier. It is structured as "`projectId`,`region`,`credentialsGroupId`,`credentialId`".
 func (o LookupObjectstorageCredentialResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupObjectstorageCredentialResult) string { return v.Id }).(pulumi.StringOutput)
 }

@@ -34,7 +34,8 @@ type LookupKeyPairArgs struct {
 type LookupKeyPairResult struct {
 	// The fingerprint of the public SSH key.
 	Fingerprint string `pulumi:"fingerprint"`
-	Id          string `pulumi:"id"`
+	// Terraform's internal resource ID. It takes the value of the key pair "`name`".
+	Id string `pulumi:"id"`
 	// Labels are key-value string pairs which can be attached to a resource container.
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the SSH key pair.
@@ -82,6 +83,7 @@ func (o LookupKeyPairResultOutput) Fingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKeyPairResult) string { return v.Fingerprint }).(pulumi.StringOutput)
 }
 
+// Terraform's internal resource ID. It takes the value of the key pair "`name`".
 func (o LookupKeyPairResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKeyPairResult) string { return v.Id }).(pulumi.StringOutput)
 }

@@ -33,9 +33,11 @@ class VolumeArgs:
                  source: Optional[pulumi.Input['VolumeSourceArgs']] = None):
         """
         The set of arguments for constructing a Volume resource.
+
         :param pulumi.Input[_builtins.str] availability_zone: The availability zone of the volume.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the volume is associated.
         :param pulumi.Input[_builtins.str] description: The description of the volume.
+        :param pulumi.Input['VolumeEncryptionParametersArgs'] encryption_parameters: Parameter to connect to a key-encryption-key within the STACKIT-KMS to create encrypted volumes. These parameters never leave the backend again. So these parameters are not present on imports or in the datasource. They live only in your Terraform state after creation of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
         :param pulumi.Input[_builtins.str] name: The name of the volume.
         :param pulumi.Input[_builtins.str] performance_class: The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/products/storage/block-storage/basics/service-plans/#currently-available-service-plans-performance-classes)
@@ -101,6 +103,9 @@ class VolumeArgs:
     @_builtins.property
     @pulumi.getter(name="encryptionParameters")
     def encryption_parameters(self) -> Optional[pulumi.Input['VolumeEncryptionParametersArgs']]:
+        """
+        Parameter to connect to a key-encryption-key within the STACKIT-KMS to create encrypted volumes. These parameters never leave the backend again. So these parameters are not present on imports or in the datasource. They live only in your Terraform state after creation of the resource.
+        """
         return pulumi.get(self, "encryption_parameters")
 
     @encryption_parameters.setter
@@ -198,9 +203,11 @@ class _VolumeState:
                  volume_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Volume resources.
+
         :param pulumi.Input[_builtins.str] availability_zone: The availability zone of the volume.
         :param pulumi.Input[_builtins.str] description: The description of the volume.
         :param pulumi.Input[_builtins.bool] encrypted: Indicates if the volume is encrypted.
+        :param pulumi.Input['VolumeEncryptionParametersArgs'] encryption_parameters: Parameter to connect to a key-encryption-key within the STACKIT-KMS to create encrypted volumes. These parameters never leave the backend again. So these parameters are not present on imports or in the datasource. They live only in your Terraform state after creation of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
         :param pulumi.Input[_builtins.str] name: The name of the volume.
         :param pulumi.Input[_builtins.str] performance_class: The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/products/storage/block-storage/basics/service-plans/#currently-available-service-plans-performance-classes)
@@ -277,6 +284,9 @@ class _VolumeState:
     @_builtins.property
     @pulumi.getter(name="encryptionParameters")
     def encryption_parameters(self) -> Optional[pulumi.Input['VolumeEncryptionParametersArgs']]:
+        """
+        Parameter to connect to a key-encryption-key within the STACKIT-KMS to create encrypted volumes. These parameters never leave the backend again. So these parameters are not present on imports or in the datasource. They live only in your Terraform state after creation of the resource.
+        """
         return pulumi.get(self, "encryption_parameters")
 
     @encryption_parameters.setter
@@ -410,12 +420,18 @@ class Volume(pulumi.CustomResource):
                  source: Optional[pulumi.Input[Union['VolumeSourceArgs', 'VolumeSourceArgsDict']]] = None,
                  __props__=None):
         """
+        Volume resource schema. Must have a `region` specified in the provider configuration.
+
+        > **Note:** Write-Only argument `key_payload_base64_wo` is available to use in place of `key_payload_base64`. Write-Only arguments are supported in HashiCorp Terraform 1.11.0 and later. Learn more.
+
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] availability_zone: The availability zone of the volume.
         :param pulumi.Input[_builtins.str] description: The description of the volume.
+        :param pulumi.Input[Union['VolumeEncryptionParametersArgs', 'VolumeEncryptionParametersArgsDict']] encryption_parameters: Parameter to connect to a key-encryption-key within the STACKIT-KMS to create encrypted volumes. These parameters never leave the backend again. So these parameters are not present on imports or in the datasource. They live only in your Terraform state after creation of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
         :param pulumi.Input[_builtins.str] name: The name of the volume.
         :param pulumi.Input[_builtins.str] performance_class: The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/products/storage/block-storage/basics/service-plans/#currently-available-service-plans-performance-classes)
@@ -431,7 +447,12 @@ class Volume(pulumi.CustomResource):
                  args: VolumeArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Volume resource schema. Must have a `region` specified in the provider configuration.
+
+        > **Note:** Write-Only argument `key_payload_base64_wo` is available to use in place of `key_payload_base64`. Write-Only arguments are supported in HashiCorp Terraform 1.11.0 and later. Learn more.
+
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param VolumeArgs args: The arguments to use to populate this resource's properties.
@@ -517,6 +538,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] availability_zone: The availability zone of the volume.
         :param pulumi.Input[_builtins.str] description: The description of the volume.
         :param pulumi.Input[_builtins.bool] encrypted: Indicates if the volume is encrypted.
+        :param pulumi.Input[Union['VolumeEncryptionParametersArgs', 'VolumeEncryptionParametersArgsDict']] encryption_parameters: Parameter to connect to a key-encryption-key within the STACKIT-KMS to create encrypted volumes. These parameters never leave the backend again. So these parameters are not present on imports or in the datasource. They live only in your Terraform state after creation of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
         :param pulumi.Input[_builtins.str] name: The name of the volume.
         :param pulumi.Input[_builtins.str] performance_class: The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/products/storage/block-storage/basics/service-plans/#currently-available-service-plans-performance-classes)
@@ -573,6 +595,9 @@ class Volume(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="encryptionParameters")
     def encryption_parameters(self) -> pulumi.Output[Optional['outputs.VolumeEncryptionParameters']]:
+        """
+        Parameter to connect to a key-encryption-key within the STACKIT-KMS to create encrypted volumes. These parameters never leave the backend again. So these parameters are not present on imports or in the datasource. They live only in your Terraform state after creation of the resource.
+        """
         return pulumi.get(self, "encryption_parameters")
 
     @_builtins.property

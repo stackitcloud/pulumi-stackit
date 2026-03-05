@@ -137,6 +137,9 @@ namespace Pulumi.Stackit
         /// The device UUID of the network interface.
         /// </summary>
         public readonly string Device;
+        /// <summary>
+        /// Terraform's internal data source ID. It is structured as "`ProjectId`,`Region`,`NetworkId`,`NetworkInterfaceId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The IPv4 address.

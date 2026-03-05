@@ -29,6 +29,7 @@ class RoutingTableArgs:
                  system_routes: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a RoutingTable resource.
+
         :param pulumi.Input[_builtins.str] network_area_id: The network area ID to which the routing table is associated.
         :param pulumi.Input[_builtins.str] organization_id: STACKIT organization ID to which the routing table is associated.
         :param pulumi.Input[_builtins.str] description: Description of the routing table.
@@ -166,6 +167,7 @@ class _RoutingTableState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RoutingTable resources.
+
         :param pulumi.Input[_builtins.str] created_at: Date-time when the routing table was created
         :param pulumi.Input[_builtins.str] description: Description of the routing table.
         :param pulumi.Input[_builtins.bool] dynamic_routes: This controls whether dynamic routes are propagated to this routing table
@@ -356,6 +358,7 @@ class RoutingTable(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description of the routing table.
@@ -379,6 +382,7 @@ class RoutingTable(pulumi.CustomResource):
         > This resource is part of the routing-tables experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param RoutingTableArgs args: The arguments to use to populate this resource's properties.

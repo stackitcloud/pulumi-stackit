@@ -103,6 +103,9 @@ class GetSecurityGroupRuleResult:
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        Terraform's internal datasource ID. It is structured as "`project_id`,`region`,`security_group_id`,`security_group_rule_id`".
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property

@@ -40,7 +40,8 @@ type LookupPostgresflexInstanceResult struct {
 	Acls           []string                      `pulumi:"acls"`
 	BackupSchedule string                        `pulumi:"backupSchedule"`
 	Flavor         GetPostgresflexInstanceFlavor `pulumi:"flavor"`
-	Id             string                        `pulumi:"id"`
+	// Terraform's internal data source. ID. It is structured as "`projectId`,`region`,`instanceId`".
+	Id string `pulumi:"id"`
 	// ID of the PostgresFlex instance.
 	InstanceId string `pulumi:"instanceId"`
 	// Instance name.
@@ -105,6 +106,7 @@ func (o LookupPostgresflexInstanceResultOutput) Flavor() GetPostgresflexInstance
 	return o.ApplyT(func(v LookupPostgresflexInstanceResult) GetPostgresflexInstanceFlavor { return v.Flavor }).(GetPostgresflexInstanceFlavorOutput)
 }
 
+// Terraform's internal data source. ID. It is structured as "`projectId`,`region`,`instanceId`".
 func (o LookupPostgresflexInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresflexInstanceResult) string { return v.Id }).(pulumi.StringOutput)
 }

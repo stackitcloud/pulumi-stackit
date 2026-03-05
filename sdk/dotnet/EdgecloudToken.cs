@@ -74,6 +74,9 @@ namespace Pulumi.Stackit
         [Output("token")]
         public Output<string> Token { get; private set; } = null!;
 
+        /// <summary>
+        /// Internally generated UUID to identify a token resource in Terraform, since the Edge Cloud API doesnt return a token identifier
+        /// </summary>
         [Output("tokenId")]
         public Output<string> TokenId { get; private set; } = null!;
 
@@ -236,6 +239,9 @@ namespace Pulumi.Stackit
             }
         }
 
+        /// <summary>
+        /// Internally generated UUID to identify a token resource in Terraform, since the Edge Cloud API doesnt return a token identifier
+        /// </summary>
         [Input("tokenId")]
         public Input<string>? TokenId { get; set; }
 

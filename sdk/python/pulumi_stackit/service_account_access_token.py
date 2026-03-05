@@ -25,6 +25,7 @@ class ServiceAccountAccessTokenArgs:
                  ttl_days: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a ServiceAccountAccessToken resource.
+
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID associated with the service account token.
         :param pulumi.Input[_builtins.str] service_account_email: Email address linked to the service account.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] rotate_when_changed: A map of arbitrary key/value pairs that will force recreation of the token when they change, enabling token rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
@@ -100,6 +101,7 @@ class _ServiceAccountAccessTokenState:
                  valid_until: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceAccountAccessToken resources.
+
         :param pulumi.Input[_builtins.str] access_token_id: Identifier for the access token linked to the service account.
         :param pulumi.Input[_builtins.bool] active: Indicate whether the token is currently active or inactive
         :param pulumi.Input[_builtins.str] created_at: Timestamp indicating when the access token was created.
@@ -258,6 +260,7 @@ class ServiceAccountAccessToken(pulumi.CustomResource):
 
         ### Automatically rotate access tokens
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID associated with the service account token.
@@ -279,6 +282,7 @@ class ServiceAccountAccessToken(pulumi.CustomResource):
         ## Example Usage
 
         ### Automatically rotate access tokens
+
 
         :param str resource_name: The name of the resource.
         :param ServiceAccountAccessTokenArgs args: The arguments to use to populate this resource's properties.

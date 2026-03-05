@@ -12,6 +12,36 @@ namespace Pulumi.Stackit
     public static class GetImageV2
     {
         /// <summary>
+        /// Image datasource schema. Must have a `Region` specified in the provider configuration.
+        /// 
+        /// &gt; Important: When using the `Name`, `NameRegex`, or `Filter` attributes to select images dynamically, be aware that image IDs may change frequently. Each OS patch or update results in a new unique image ID. If this data source is used to populate fields like `boot_volume.source_id` in a server resource, it may cause Terraform to detect changes and recreate the associated resource.
+        /// 
+        /// To avoid unintended updates or resource replacements:
+        ///  - Prefer using a static `ImageId` to pin a specific image version.
+        ///  - If you accept automatic image updates but wish to suppress resource changes, use a `Lifecycle` block to ignore relevant changes. For example:
+        /// 
+        /// ```hcl
+        /// resource "stackit_server" "example" {
+        ///   boot_volume = {
+        ///     size        = 64
+        ///     source_type = "image"
+        ///     source_id   = data.stackit_image.latest.id
+        ///   }
+        /// 
+        ///   lifecycle {
+        ///     ignore_changes = [boot_volume[0].source_id]
+        ///   }
+        /// }
+        /// ```
+        /// 
+        /// You can also list available images using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
+        /// 
+        /// ```bash
+        /// stackit image list
+        /// ```
+        /// 
+        /// &gt; This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
+        /// 
         /// ## Example Usage
         /// 
         /// ```terraform
@@ -49,6 +79,36 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetImageV2Result>("stackit:index/getImageV2:getImageV2", args ?? new GetImageV2Args(), options.WithDefaults());
 
         /// <summary>
+        /// Image datasource schema. Must have a `Region` specified in the provider configuration.
+        /// 
+        /// &gt; Important: When using the `Name`, `NameRegex`, or `Filter` attributes to select images dynamically, be aware that image IDs may change frequently. Each OS patch or update results in a new unique image ID. If this data source is used to populate fields like `boot_volume.source_id` in a server resource, it may cause Terraform to detect changes and recreate the associated resource.
+        /// 
+        /// To avoid unintended updates or resource replacements:
+        ///  - Prefer using a static `ImageId` to pin a specific image version.
+        ///  - If you accept automatic image updates but wish to suppress resource changes, use a `Lifecycle` block to ignore relevant changes. For example:
+        /// 
+        /// ```hcl
+        /// resource "stackit_server" "example" {
+        ///   boot_volume = {
+        ///     size        = 64
+        ///     source_type = "image"
+        ///     source_id   = data.stackit_image.latest.id
+        ///   }
+        /// 
+        ///   lifecycle {
+        ///     ignore_changes = [boot_volume[0].source_id]
+        ///   }
+        /// }
+        /// ```
+        /// 
+        /// You can also list available images using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
+        /// 
+        /// ```bash
+        /// stackit image list
+        /// ```
+        /// 
+        /// &gt; This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
+        /// 
         /// ## Example Usage
         /// 
         /// ```terraform
@@ -86,6 +146,36 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.Invoke<GetImageV2Result>("stackit:index/getImageV2:getImageV2", args ?? new GetImageV2InvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Image datasource schema. Must have a `Region` specified in the provider configuration.
+        /// 
+        /// &gt; Important: When using the `Name`, `NameRegex`, or `Filter` attributes to select images dynamically, be aware that image IDs may change frequently. Each OS patch or update results in a new unique image ID. If this data source is used to populate fields like `boot_volume.source_id` in a server resource, it may cause Terraform to detect changes and recreate the associated resource.
+        /// 
+        /// To avoid unintended updates or resource replacements:
+        ///  - Prefer using a static `ImageId` to pin a specific image version.
+        ///  - If you accept automatic image updates but wish to suppress resource changes, use a `Lifecycle` block to ignore relevant changes. For example:
+        /// 
+        /// ```hcl
+        /// resource "stackit_server" "example" {
+        ///   boot_volume = {
+        ///     size        = 64
+        ///     source_type = "image"
+        ///     source_id   = data.stackit_image.latest.id
+        ///   }
+        /// 
+        ///   lifecycle {
+        ///     ignore_changes = [boot_volume[0].source_id]
+        ///   }
+        /// }
+        /// ```
+        /// 
+        /// You can also list available images using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
+        /// 
+        /// ```bash
+        /// stackit image list
+        /// ```
+        /// 
+        /// &gt; This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
+        /// 
         /// ## Example Usage
         /// 
         /// ```terraform
@@ -244,6 +334,9 @@ namespace Pulumi.Stackit
         /// Additional filtering options based on image properties. Can be used independently or in conjunction with `Name` or `NameRegex`.
         /// </summary>
         public readonly Outputs.GetImageV2FilterResult? Filter;
+        /// <summary>
+        /// Terraform's internal resource ID. It is structured as "`ProjectId`,`Region`,`ImageId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Image ID to fetch directly

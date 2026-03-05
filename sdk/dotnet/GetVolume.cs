@@ -126,6 +126,9 @@ namespace Pulumi.Stackit
         /// Indicates if the volume is encrypted.
         /// </summary>
         public readonly bool Encrypted;
+        /// <summary>
+        /// Terraform's internal resource ID. It is structured as "`ProjectId`,`Region`,`VolumeId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Labels are key-value string pairs which can be attached to a resource container

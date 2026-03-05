@@ -49,6 +49,9 @@ export interface GetNetworkAreaResult {
      * @deprecated Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026.
      */
     readonly defaultPrefixLength: number;
+    /**
+     * Terraform's internal resource ID. It is structured as "`organizationId`,`networkAreaId`".
+     */
     readonly id: string;
     /**
      * Labels are key-value string pairs which can be attached to a resource container

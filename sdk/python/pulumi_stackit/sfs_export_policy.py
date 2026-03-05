@@ -27,6 +27,7 @@ class SfsExportPolicyArgs:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['SfsExportPolicyRuleArgs']]]] = None):
         """
         The set of arguments for constructing a SfsExportPolicy resource.
+
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the export policy is associated.
         :param pulumi.Input[_builtins.str] name: Name of the export policy.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
@@ -95,6 +96,7 @@ class _SfsExportPolicyState:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['SfsExportPolicyRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering SfsExportPolicy resources.
+
         :param pulumi.Input[_builtins.str] name: Name of the export policy.
         :param pulumi.Input[_builtins.str] policy_id: Export policy ID
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the export policy is associated.
@@ -187,6 +189,7 @@ class SfsExportPolicy(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: Name of the export policy.
@@ -205,6 +208,7 @@ class SfsExportPolicy(pulumi.CustomResource):
         > This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param SfsExportPolicyArgs args: The arguments to use to populate this resource's properties.

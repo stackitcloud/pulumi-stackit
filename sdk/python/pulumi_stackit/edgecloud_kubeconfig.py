@@ -27,6 +27,7 @@ class EdgecloudKubeconfigArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EdgecloudKubeconfig resource.
+
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the Edge Cloud instance is associated.
         :param pulumi.Input[_builtins.int] expiration: Expiration time of the kubeconfig, in seconds. Minimum is 600, Maximum is 15552000. Defaults to `3600`
         :param pulumi.Input[_builtins.str] instance_id: ID of the Edge Cloud instance.
@@ -134,12 +135,14 @@ class _EdgecloudKubeconfigState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EdgecloudKubeconfig resources.
+
         :param pulumi.Input[_builtins.str] creation_time: Date-time when the kubeconfig was created
         :param pulumi.Input[_builtins.int] expiration: Expiration time of the kubeconfig, in seconds. Minimum is 600, Maximum is 15552000. Defaults to `3600`
         :param pulumi.Input[_builtins.str] expires_at: Timestamp when the kubeconfig expires
         :param pulumi.Input[_builtins.str] instance_id: ID of the Edge Cloud instance.
         :param pulumi.Input[_builtins.str] instance_name: Name of the Edge Cloud instance.
         :param pulumi.Input[_builtins.str] kubeconfig: Raw kubeconfig.
+        :param pulumi.Input[_builtins.str] kubeconfig_id: Internally generated UUID to identify a kubeconfig resource in Terraform, since the Edge Cloud API doesn't return a kubeconfig identifier
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the Edge Cloud instance is associated.
         :param pulumi.Input[_builtins.int] recreate_before: Number of seconds before expiration to trigger recreation of the kubeconfig at.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
@@ -240,6 +243,9 @@ class _EdgecloudKubeconfigState:
     @_builtins.property
     @pulumi.getter(name="kubeconfigId")
     def kubeconfig_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Internally generated UUID to identify a kubeconfig resource in Terraform, since the Edge Cloud API doesn't return a kubeconfig identifier
+        """
         return pulumi.get(self, "kubeconfig_id")
 
     @kubeconfig_id.setter
@@ -304,6 +310,7 @@ class EdgecloudKubeconfig(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] expiration: Expiration time of the kubeconfig, in seconds. Minimum is 600, Maximum is 15552000. Defaults to `3600`
@@ -326,6 +333,7 @@ class EdgecloudKubeconfig(pulumi.CustomResource):
         > This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param EdgecloudKubeconfigArgs args: The arguments to use to populate this resource's properties.
@@ -404,6 +412,7 @@ class EdgecloudKubeconfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] instance_id: ID of the Edge Cloud instance.
         :param pulumi.Input[_builtins.str] instance_name: Name of the Edge Cloud instance.
         :param pulumi.Input[_builtins.str] kubeconfig: Raw kubeconfig.
+        :param pulumi.Input[_builtins.str] kubeconfig_id: Internally generated UUID to identify a kubeconfig resource in Terraform, since the Edge Cloud API doesn't return a kubeconfig identifier
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the Edge Cloud instance is associated.
         :param pulumi.Input[_builtins.int] recreate_before: Number of seconds before expiration to trigger recreation of the kubeconfig at.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
@@ -475,6 +484,9 @@ class EdgecloudKubeconfig(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="kubeconfigId")
     def kubeconfig_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Internally generated UUID to identify a kubeconfig resource in Terraform, since the Edge Cloud API doesn't return a kubeconfig identifier
+        """
         return pulumi.get(self, "kubeconfig_id")
 
     @_builtins.property

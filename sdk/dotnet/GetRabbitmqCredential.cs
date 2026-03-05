@@ -125,6 +125,9 @@ namespace Pulumi.Stackit
         public readonly ImmutableArray<string> Hosts;
         public readonly string HttpApiUri;
         public readonly ImmutableArray<string> HttpApiUris;
+        /// <summary>
+        /// Terraform's internal data source. identifier. It is structured as "`ProjectId`,`InstanceId`,`CredentialId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// ID of the RabbitMQ instance.

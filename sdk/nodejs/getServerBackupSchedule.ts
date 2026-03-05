@@ -61,6 +61,9 @@ export interface GetServerBackupScheduleResult {
      * Is the backup schedule enabled or disabled.
      */
     readonly enabled: boolean;
+    /**
+     * Terraform's internal resource identifier. It is structured as "`projectId`,`serverId`,`backupScheduleId`".
+     */
     readonly id: string;
     /**
      * The schedule name.

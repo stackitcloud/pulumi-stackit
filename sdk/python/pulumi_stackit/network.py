@@ -39,6 +39,7 @@ class NetworkArgs:
                  routing_table_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Network resource.
+
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the network is associated.
         :param pulumi.Input[_builtins.bool] dhcp: If the network has DHCP enabled. Default value is `true`.
         :param pulumi.Input[_builtins.str] ipv4_gateway: The IPv4 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
@@ -343,6 +344,7 @@ class _NetworkState:
                  routing_table_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Network resources.
+
         :param pulumi.Input[_builtins.bool] dhcp: If the network has DHCP enabled. Default value is `true`.
         :param pulumi.Input[_builtins.str] ipv4_gateway: The IPv4 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv4_nameservers: The IPv4 nameservers of the network.
@@ -732,6 +734,7 @@ class Network(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] dhcp: If the network has DHCP enabled. Default value is `true`.
@@ -766,6 +769,7 @@ class Network(pulumi.CustomResource):
         In cases where `ipv4_nameservers` are defined within the resource, the existing behavior will remain unchanged.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param NetworkArgs args: The arguments to use to populate this resource's properties.

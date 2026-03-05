@@ -42,6 +42,9 @@ export interface GetNetworkAreaRegionArgs {
  * A collection of values returned by getNetworkAreaRegion.
  */
 export interface GetNetworkAreaRegionResult {
+    /**
+     * Terraform's internal resource ID. It is structured as "`organizationId`,`networkAreaId`,`region`".
+     */
     readonly id: string;
     /**
      * The regional IPv4 config of a network area.

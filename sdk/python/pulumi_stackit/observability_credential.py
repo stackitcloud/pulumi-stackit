@@ -24,6 +24,7 @@ class ObservabilityCredentialArgs:
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ObservabilityCredential resource.
+
         :param pulumi.Input[_builtins.str] instance_id: The Observability Instance ID the credential belongs to.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the credential is associated.
         :param pulumi.Input[_builtins.str] description: A description of the credential.
@@ -80,6 +81,7 @@ class _ObservabilityCredentialState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ObservabilityCredential resources.
+
         :param pulumi.Input[_builtins.str] description: A description of the credential.
         :param pulumi.Input[_builtins.str] instance_id: The Observability Instance ID the credential belongs to.
         :param pulumi.Input[_builtins.str] password: Credential password
@@ -173,6 +175,7 @@ class ObservabilityCredential(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A description of the credential.
@@ -189,6 +192,7 @@ class ObservabilityCredential(pulumi.CustomResource):
         Observability credential resource schema. Must have a `region` specified in the provider configuration.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param ObservabilityCredentialArgs args: The arguments to use to populate this resource's properties.

@@ -110,6 +110,9 @@ namespace Pulumi.Stackit
         /// Date-time at which the project was created.
         /// </summary>
         public readonly string CreationTime;
+        /// <summary>
+        /// Terraform's internal data source. ID. It is structured as "`ContainerId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Labels are key-value string pairs which can be attached to a resource container. A label key must match the regex [A-ZÄÜÖa-zäüöß0-9*-]{1,64}. A label value must match the regex ^$|[A-ZÄÜÖa-zäüöß0-9*-]{1,64}

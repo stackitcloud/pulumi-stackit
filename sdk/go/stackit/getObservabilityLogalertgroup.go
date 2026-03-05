@@ -36,6 +36,7 @@ type LookupObservabilityLogalertgroupArgs struct {
 
 // A collection of values returned by getObservabilityLogalertgroup.
 type LookupObservabilityLogalertgroupResult struct {
+	// Terraform's internal resource ID. It is structured as "`projectId`,`instanceId`,`name`".
 	Id string `pulumi:"id"`
 	// Observability instance ID to which the log alert group is associated.
 	InstanceId string `pulumi:"instanceId"`
@@ -86,6 +87,7 @@ func (o LookupObservabilityLogalertgroupResultOutput) ToLookupObservabilityLogal
 	return o
 }
 
+// Terraform's internal resource ID. It is structured as "`projectId`,`instanceId`,`name`".
 func (o LookupObservabilityLogalertgroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupObservabilityLogalertgroupResult) string { return v.Id }).(pulumi.StringOutput)
 }

@@ -39,6 +39,9 @@ export interface GetSecretsmanagerInstanceResult {
      * The access control list for this instance. Each entry is an IP or IP range that is permitted to access, in CIDR notation
      */
     readonly acls: string[];
+    /**
+     * Terraform's internal resource ID. It is structured as "`projectId`,`instanceId`".
+     */
     readonly id: string;
     /**
      * ID of the Secrets Manager instance.

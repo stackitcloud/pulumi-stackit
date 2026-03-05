@@ -44,6 +44,9 @@ export interface GetObjectstorageCredentialsGroupResult {
      * The credentials group ID.
      */
     readonly credentialsGroupId: string;
+    /**
+     * Terraform's internal data source identifier. It is structured as "`projectId`,`region`,`credentialsGroupId`".
+     */
     readonly id: string;
     /**
      * The credentials group's display name.

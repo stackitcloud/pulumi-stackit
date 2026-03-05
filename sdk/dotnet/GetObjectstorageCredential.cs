@@ -138,6 +138,9 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string CredentialsGroupId;
         public readonly string ExpirationTimestamp;
+        /// <summary>
+        /// Terraform's internal resource identifier. It is structured as "`ProjectId`,`Region`,`CredentialsGroupId`,`CredentialId`".
+        /// </summary>
         public readonly string Id;
         public readonly string Name;
         /// <summary>

@@ -26,6 +26,7 @@ class SqlserverflexUserArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SqlserverflexUser resource.
+
         :param pulumi.Input[_builtins.str] instance_id: ID of the SQLServer Flex instance.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the instance is associated.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] roles: Database access levels for the user. The values for the default roles are: `##STACKIT_DatabaseManager##`, `##STACKIT_LoginManager##`, `##STACKIT_ProcessManager##`, `##STACKIT_ServerManager##`, `##STACKIT_SQLAgentManager##`, `##STACKIT_SQLAgentUser##`
@@ -110,6 +111,7 @@ class _SqlserverflexUserState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SqlserverflexUser resources.
+
         :param pulumi.Input[_builtins.str] instance_id: ID of the SQLServer Flex instance.
         :param pulumi.Input[_builtins.str] password: Password of the user account.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the instance is associated.
@@ -253,6 +255,7 @@ class SqlserverflexUser(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_id: ID of the SQLServer Flex instance.
@@ -270,6 +273,7 @@ class SqlserverflexUser(pulumi.CustomResource):
         SQLServer Flex user resource schema. Must have a `region` specified in the provider configuration.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param SqlserverflexUserArgs args: The arguments to use to populate this resource's properties.

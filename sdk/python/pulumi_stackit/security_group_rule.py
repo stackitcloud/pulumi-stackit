@@ -34,6 +34,7 @@ class SecurityGroupRuleArgs:
                  remote_security_group_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecurityGroupRule resource.
+
         :param pulumi.Input[_builtins.str] direction: The direction of the traffic which the rule should match. Some of the possible values are: Possible values are: `ingress`, `egress`.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the security group rule is associated.
         :param pulumi.Input[_builtins.str] security_group_id: The security group ID.
@@ -216,6 +217,7 @@ class _SecurityGroupRuleState:
                  security_group_rule_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecurityGroupRule resources.
+
         :param pulumi.Input[_builtins.str] description: The rule description.
         :param pulumi.Input[_builtins.str] direction: The direction of the traffic which the rule should match. Some of the possible values are: Possible values are: `ingress`, `egress`.
         :param pulumi.Input[_builtins.str] ether_type: The ethertype which the rule should match.
@@ -422,6 +424,7 @@ class SecurityGroupRule(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The rule description.
@@ -446,6 +449,7 @@ class SecurityGroupRule(pulumi.CustomResource):
         Security group rule resource schema. Must have a `region` specified in the provider configuration.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param SecurityGroupRuleArgs args: The arguments to use to populate this resource's properties.

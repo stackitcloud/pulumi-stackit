@@ -5,6 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Resource Manager project resource schema.
+ *
+ * > In case you're getting started with an empty STACKIT organization and want to use this resource to create projects in it, check out this guide for how to create a service account which you can use for authentication in the STACKIT Terraform provider.
+ *
  * ## Example Usage
  */
 export class ResourcemanagerProject extends pulumi.CustomResource {

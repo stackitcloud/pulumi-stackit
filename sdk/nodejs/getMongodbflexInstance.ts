@@ -51,6 +51,9 @@ export interface GetMongodbflexInstanceResult {
      */
     readonly backupSchedule: string;
     readonly flavor: outputs.GetMongodbflexInstanceFlavor;
+    /**
+     * Terraform's internal data source ID. It is structured as "`projectId`,`region`,`instanceId`".
+     */
     readonly id: string;
     /**
      * ID of the MongoDB Flex instance.

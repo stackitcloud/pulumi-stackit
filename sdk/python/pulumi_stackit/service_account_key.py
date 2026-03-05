@@ -26,6 +26,7 @@ class ServiceAccountKeyArgs:
                  ttl_days: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a ServiceAccountKey resource.
+
         :param pulumi.Input[_builtins.str] project_id: The STACKIT project ID associated with the service account key.
         :param pulumi.Input[_builtins.str] service_account_email: The email address associated with the service account, used for account identification and communication.
         :param pulumi.Input[_builtins.str] public_key: Specifies the public*key (RSA2048 key-pair). If not provided, a certificate from STACKIT will be used to generate a private*key.
@@ -114,6 +115,7 @@ class _ServiceAccountKeyState:
                  ttl_days: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ServiceAccountKey resources.
+
         :param pulumi.Input[_builtins.str] json: The raw JSON representation of the service account key json, available for direct use.
         :param pulumi.Input[_builtins.str] key_id: The unique identifier for the key associated with the service account.
         :param pulumi.Input[_builtins.str] project_id: The STACKIT project ID associated with the service account key.
@@ -240,6 +242,7 @@ class ServiceAccountKey(pulumi.CustomResource):
 
         ### Automatically rotate service account keys
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] project_id: The STACKIT project ID associated with the service account key.
@@ -259,6 +262,7 @@ class ServiceAccountKey(pulumi.CustomResource):
         ## Example Usage
 
         ### Automatically rotate service account keys
+
 
         :param str resource_name: The name of the resource.
         :param ServiceAccountKeyArgs args: The arguments to use to populate this resource's properties.

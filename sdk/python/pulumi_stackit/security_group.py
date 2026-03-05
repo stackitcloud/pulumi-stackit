@@ -27,6 +27,7 @@ class SecurityGroupArgs:
                  stateful: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a SecurityGroup resource.
+
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the security group is associated.
         :param pulumi.Input[_builtins.str] description: The description of the security group.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
@@ -131,6 +132,7 @@ class _SecurityGroupState:
                  stateful: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering SecurityGroup resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the security group.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
         :param pulumi.Input[_builtins.str] name: The name of the security group.
@@ -257,6 +259,7 @@ class SecurityGroup(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the security group.
@@ -276,6 +279,7 @@ class SecurityGroup(pulumi.CustomResource):
         Security group resource schema. Must have a `region` specified in the provider configuration.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param SecurityGroupArgs args: The arguments to use to populate this resource's properties.

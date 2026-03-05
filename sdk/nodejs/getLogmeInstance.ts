@@ -41,6 +41,9 @@ export interface GetLogmeInstanceResult {
     readonly cfOrganizationGuid: string;
     readonly cfSpaceGuid: string;
     readonly dashboardUrl: string;
+    /**
+     * Terraform's internal data source. identifier. It is structured as "`projectId`,`instanceId`".
+     */
     readonly id: string;
     readonly imageUrl: string;
     /**

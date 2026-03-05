@@ -26,6 +26,7 @@ class PostgresflexDatabaseArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PostgresflexDatabase resource.
+
         :param pulumi.Input[_builtins.str] instance_id: ID of the Postgres Flex instance.
         :param pulumi.Input[_builtins.str] owner: Username of the database owner.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the instance is associated.
@@ -112,6 +113,7 @@ class _PostgresflexDatabaseState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PostgresflexDatabase resources.
+
         :param pulumi.Input[_builtins.str] database_id: Database ID.
         :param pulumi.Input[_builtins.str] instance_id: ID of the Postgres Flex instance.
         :param pulumi.Input[_builtins.str] name: Database name.
@@ -222,6 +224,7 @@ class PostgresflexDatabase(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_id: ID of the Postgres Flex instance.
@@ -240,6 +243,7 @@ class PostgresflexDatabase(pulumi.CustomResource):
         Postgres Flex database resource schema. Must have a `region` specified in the provider configuration.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param PostgresflexDatabaseArgs args: The arguments to use to populate this resource's properties.

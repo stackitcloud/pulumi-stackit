@@ -133,6 +133,9 @@ namespace Pulumi.Stackit
         /// Fully qualified domain name (FQDN) of the record set.
         /// </summary>
         public readonly string Fqdn;
+        /// <summary>
+        /// Terraform's internal data source. ID. It is structured as "`ProjectId`,`ZoneId`,`RecordSetId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Name of the record which should be a valid domain according to rfc1035 Section 2.3.4. E.g. `example.com`

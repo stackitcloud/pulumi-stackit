@@ -44,6 +44,9 @@ export interface GetNetworkResult {
      * Shows if DHCP is enabled for the network.
      */
     readonly dhcp: boolean;
+    /**
+     * Terraform's internal resource ID. It is structured as "`projectId`,`networkId`".
+     */
     readonly id: string;
     /**
      * The IPv4 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
