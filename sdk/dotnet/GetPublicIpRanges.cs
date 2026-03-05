@@ -104,6 +104,9 @@ namespace Pulumi.Stackit
         /// A list of IP range strings (CIDRs) extracted from the public*ip*ranges for easy consumption.
         /// </summary>
         public readonly ImmutableArray<string> CidrLists;
+        /// <summary>
+        /// Terraform's internal resource ID. It takes the values of "`public_ip_ranges.*.cidr`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// A list of all public IP ranges.

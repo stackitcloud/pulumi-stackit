@@ -27,6 +27,7 @@ class SfsShareArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SfsShare resource.
+
         :param pulumi.Input[_builtins.str] export_policy: Name of the Share Export Policy to use in the Share.
                Note that if this is set to an empty string, the Share can only be mounted in read only by
                clients with IPs matching the IP ACL of the Resource Pool hosting this Share.
@@ -139,6 +140,7 @@ class _SfsShareState:
                  space_hard_limit_gigabytes: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering SfsShare resources.
+
         :param pulumi.Input[_builtins.str] export_policy: Name of the Share Export Policy to use in the Share.
                Note that if this is set to an empty string, the Share can only be mounted in read only by
                clients with IPs matching the IP ACL of the Resource Pool hosting this Share.
@@ -292,6 +294,7 @@ class SfsShare(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] export_policy: Name of the Share Export Policy to use in the Share.
@@ -318,6 +321,7 @@ class SfsShare(pulumi.CustomResource):
         > This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param SfsShareArgs args: The arguments to use to populate this resource's properties.

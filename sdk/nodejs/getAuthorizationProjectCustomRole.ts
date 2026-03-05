@@ -39,6 +39,9 @@ export interface GetAuthorizationProjectCustomRoleResult {
      * A human readable description of the role.
      */
     readonly description: string;
+    /**
+     * Terraform's internal resource identifier. It is structured as "[resource*id],[role*id]".
+     */
     readonly id: string;
     /**
      * Name of the role

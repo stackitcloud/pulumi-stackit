@@ -36,7 +36,8 @@ type LookupAuthorizationProjectCustomRoleArgs struct {
 type LookupAuthorizationProjectCustomRoleResult struct {
 	// A human readable description of the role.
 	Description string `pulumi:"description"`
-	Id          string `pulumi:"id"`
+	// Terraform's internal resource identifier. It is structured as "[resource*id],[role*id]".
+	Id string `pulumi:"id"`
 	// Name of the role
 	Name string `pulumi:"name"`
 	// Permissions for the role
@@ -88,6 +89,7 @@ func (o LookupAuthorizationProjectCustomRoleResultOutput) Description() pulumi.S
 	return o.ApplyT(func(v LookupAuthorizationProjectCustomRoleResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Terraform's internal resource identifier. It is structured as "[resource*id],[role*id]".
 func (o LookupAuthorizationProjectCustomRoleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAuthorizationProjectCustomRoleResult) string { return v.Id }).(pulumi.StringOutput)
 }

@@ -51,6 +51,9 @@ export interface GetServerUpdateScheduleResult {
      * Is the update schedule enabled or disabled.
      */
     readonly enabled: boolean;
+    /**
+     * Terraform's internal resource identifier. It is structured as "`projectId`,`region`,`serverId`,`updateScheduleId`".
+     */
     readonly id: string;
     /**
      * Maintenance window [1..24]. Updates start within the defined hourly window. Depending on the updates, the process may exceed this timeframe and require an automatic restart.

@@ -27,6 +27,7 @@ class ScfOrganizationArgs:
                  suspended: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ScfOrganization resource.
+
         :param pulumi.Input[_builtins.str] project_id: The ID of the project associated with the organization
         :param pulumi.Input[_builtins.str] name: The name of the organization
         :param pulumi.Input[_builtins.str] platform_id: The ID of the platform associated with the organization
@@ -134,6 +135,7 @@ class _ScfOrganizationState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ScfOrganization resources.
+
         :param pulumi.Input[_builtins.str] created_at: The time when the organization was created
         :param pulumi.Input[_builtins.str] name: The name of the organization
         :param pulumi.Input[_builtins.str] org_id: The ID of the Cloud Foundry Organization
@@ -305,6 +307,7 @@ class ScfOrganization(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The name of the organization
@@ -324,6 +327,7 @@ class ScfOrganization(pulumi.CustomResource):
         STACKIT Cloud Foundry organization resource schema. Must have a `region` specified in the provider configuration.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param ScfOrganizationArgs args: The arguments to use to populate this resource's properties.

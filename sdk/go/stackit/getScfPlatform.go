@@ -42,7 +42,8 @@ type GetScfPlatformResult struct {
 	ConsoleUrl string `pulumi:"consoleUrl"`
 	// The name of the platform
 	DisplayName string `pulumi:"displayName"`
-	Id          string `pulumi:"id"`
+	// Terraform's internal resource ID, structured as "`projectId`,`region`,`platformId`".
+	Id string `pulumi:"id"`
 	// The unique id of the platform
 	PlatformId string `pulumi:"platformId"`
 	// The ID of the project associated with the platform
@@ -106,6 +107,7 @@ func (o GetScfPlatformResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetScfPlatformResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// Terraform's internal resource ID, structured as "`projectId`,`region`,`platformId`".
 func (o GetScfPlatformResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetScfPlatformResult) string { return v.Id }).(pulumi.StringOutput)
 }

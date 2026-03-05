@@ -58,6 +58,9 @@ export interface GetCdnCustomDomainResult {
      * List of distribution errors
      */
     readonly errors: string[];
+    /**
+     * Terraform's internal resource identifier. It is structured as "`projectId`,`distributionId`".
+     */
     readonly id: string;
     readonly name: string;
     /**

@@ -33,6 +33,7 @@ class MongodbflexInstanceArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a MongodbflexInstance resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The Access Control List (ACL) for the MongoDB Flex instance.
         :param pulumi.Input[_builtins.str] backup_schedule: The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *").
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the instance is associated.
@@ -174,6 +175,7 @@ class _MongodbflexInstanceState:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MongodbflexInstance resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The Access Control List (ACL) for the MongoDB Flex instance.
         :param pulumi.Input[_builtins.str] backup_schedule: The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *").
         :param pulumi.Input[_builtins.str] instance_id: ID of the MongoDB Flex instance.
@@ -344,6 +346,7 @@ class MongodbflexInstance(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The Access Control List (ACL) for the MongoDB Flex instance.
@@ -362,6 +365,7 @@ class MongodbflexInstance(pulumi.CustomResource):
         MongoDB Flex instance resource schema. Must have a `region` specified in the provider configuration.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param MongodbflexInstanceArgs args: The arguments to use to populate this resource's properties.

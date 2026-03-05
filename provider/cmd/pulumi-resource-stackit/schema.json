@@ -2412,7 +2412,14 @@
                     "description": "ID of the STACKIT Network Area (SNA) network into which the cluster will be deployed.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "id"
+                    ]
+                }
+            }
         },
         "stackit:index/SkeClusterNodePool:SkeClusterNodePool": {
             "properties": {
@@ -7321,7 +7328,8 @@
                     "secret": true
                 },
                 "kubeconfigId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Internally generated UUID to identify a kubeconfig resource in Terraform, since the Edge Cloud API doesn't return a kubeconfig identifier\n"
                 },
                 "projectId": {
                     "type": "string",
@@ -7403,7 +7411,8 @@
                         "secret": true
                     },
                     "kubeconfigId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Internally generated UUID to identify a kubeconfig resource in Terraform, since the Edge Cloud API doesn't return a kubeconfig identifier\n"
                     },
                     "projectId": {
                         "type": "string",
@@ -7462,7 +7471,8 @@
                     "secret": true
                 },
                 "tokenId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Internally generated UUID to identify a token resource in Terraform, since the Edge Cloud API doesnt return a token identifier\n"
                 }
             },
             "required": [
@@ -7544,7 +7554,8 @@
                         "secret": true
                     },
                     "tokenId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Internally generated UUID to identify a token resource in Terraform, since the Edge Cloud API doesnt return a token identifier\n"
                     }
                 },
                 "type": "object"
@@ -7939,7 +7950,7 @@
             }
         },
         "stackit:index/kmsKey:KmsKey": {
-            "description": "## Example Usage\n\n```terraform\nresource \"stackit_kms_key\" \"key\" {\n  project_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  keyring_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  display_name = \"key-01\"\n  protection   = \"software\"\n  algorithm    = \"aes_256_gcm\"\n  purpose      = \"symmetric_encrypt_decrypt\"\n}\n```\n",
+            "description": "KMS Key resource schema. Uses the \u003cspan pulumi-lang-nodejs=\"`defaultRegion`\" pulumi-lang-dotnet=\"`DefaultRegion`\" pulumi-lang-go=\"`defaultRegion`\" pulumi-lang-python=\"`default_region`\" pulumi-lang-yaml=\"`defaultRegion`\" pulumi-lang-java=\"`defaultRegion`\"\u003e`default_region`\u003c/span\u003e specified in the provider configuration as a fallback in case no \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e is defined on resource level.\n\n \u003e Keys will **not** be instantly destroyed by terraform during a `terraform destroy`. They will just be scheduled for deletion via the API and thrown out of the Terraform state afterwards. **This way we can ensure no key setups are deleted by accident and it gives you the option to recover your keys within the grace period.**\n\n## Example Usage\n\n```terraform\nresource \"stackit_kms_key\" \"key\" {\n  project_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  keyring_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  display_name = \"key-01\"\n  protection   = \"software\"\n  algorithm    = \"aes_256_gcm\"\n  purpose      = \"symmetric_encrypt_decrypt\"\n}\n```\n",
             "properties": {
                 "accessScope": {
                     "type": "string",
@@ -8100,7 +8111,7 @@
             }
         },
         "stackit:index/kmsKeyring:KmsKeyring": {
-            "description": "## Example Usage\n\n```terraform\nresource \"stackit_kms_keyring\" \"example\" {\n  project_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  display_name = \"example-name\"\n  description  = \"example description\"\n}\n```\n",
+            "description": "KMS Keyring resource schema. Uses the \u003cspan pulumi-lang-nodejs=\"`defaultRegion`\" pulumi-lang-dotnet=\"`DefaultRegion`\" pulumi-lang-go=\"`defaultRegion`\" pulumi-lang-python=\"`default_region`\" pulumi-lang-yaml=\"`defaultRegion`\" pulumi-lang-java=\"`defaultRegion`\"\u003e`default_region`\u003c/span\u003e specified in the provider configuration as a fallback in case no \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e is defined on resource level.\n\n \u003e Keyrings will **not** be destroyed by terraform during a `terraform destroy`. They will just be thrown out of the Terraform state and not deleted on API side. **This way we can ensure no keyring setups are deleted by accident and it gives you the option to recover your keys within the grace period.**\n\n## Example Usage\n\n```terraform\nresource \"stackit_kms_keyring\" \"example\" {\n  project_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  display_name = \"example-name\"\n  description  = \"example description\"\n}\n```\n",
             "properties": {
                 "description": {
                     "type": "string",
@@ -8354,7 +8365,7 @@
             }
         },
         "stackit:index/loadbalancer:Loadbalancer": {
-            "description": "## Example Usage\n\n```terraform\n# Create a network\nresource \"stackit_network\" \"example_network\" {\n  project_id       = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name             = \"example-network\"\n  ipv4_nameservers = [\"8.8.8.8\"]\n  ipv4_prefix      = \"192.168.0.0/25\"\n  labels = {\n    \"key\" = \"value\"\n  }\n  routed = true\n}\n\n# Create a network interface\nresource \"stackit_network_interface\" \"nic\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  network_id = stackit_network.example_network.network_id\n}\n\n# Create a public IP for the load balancer\nresource \"stackit_public_ip\" \"public-ip\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  lifecycle {\n    ignore_changes = [network_interface_id]\n  }\n}\n\n# Create a key pair for accessing the server instance\nresource \"stackit_key_pair\" \"keypair\" {\n  name       = \"example-key-pair\"\n  public_key = chomp(file(\"path/to/id_rsa.pub\"))\n}\n\n# Create a server instance\nresource \"stackit_server\" \"boot-from-image\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-server\"\n  boot_volume = {\n    size        = 64\n    source_type = \"image\"\n    source_id   = \"59838a89-51b1-4892-b57f-b3caf598ee2f\" // Ubuntu 24.04\n  }\n  availability_zone = \"xxxx-x\"\n  machine_type      = \"g2i.1\"\n  keypair_name      = stackit_key_pair.keypair.name\n  network_interfaces = [\n    stackit_network_interface.nic.network_interface_id\n  ]\n}\n\n# Create a load balancer\nresource \"stackit_loadbalancer\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-load-balancer\"\n  plan_id    = \"p10\"\n  target_pools = [\n    {\n      name        = \"example-target-pool\"\n      target_port = 80\n      targets = [\n        {\n          display_name = stackit_server.boot-from-image.name\n          ip           = stackit_network_interface.nic.ipv4\n        }\n      ]\n      active_health_check = {\n        healthy_threshold   = 10\n        interval            = \"3s\"\n        interval_jitter     = \"3s\"\n        timeout             = \"3s\"\n        unhealthy_threshold = 10\n      }\n    }\n  ]\n  listeners = [\n    {\n      display_name = \"example-listener\"\n      port         = 80\n      protocol     = \"PROTOCOL_TCP\"\n      target_pool  = \"example-target-pool\"\n      tcp = {\n        idle_timeout = \"90s\"\n      }\n    }\n  ]\n  networks = [\n    {\n      network_id = stackit_network.example_network.network_id\n      role       = \"ROLE_LISTENERS_AND_TARGETS\"\n    }\n  ]\n  external_address = stackit_public_ip.public-ip.ip\n  options = {\n    private_network_only = false\n  }\n}\n\n# This example demonstrates an advanced setup where the Load Balancer is in one\n# network and the target server is in another. This requires manual\n# security group configuration using the `disable_security_group_assignment`\n# and `security_group_id` attributes.\n\n# We create two separate networks: one for the load balancer and one for the target.\nresource \"stackit_network\" \"lb_network\" {\n  project_id       = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name             = \"lb-network-example\"\n  ipv4_prefix      = \"192.168.10.0/25\"\n  ipv4_nameservers = [\"8.8.8.8\"]\n}\n\nresource \"stackit_network\" \"target_network\" {\n  project_id       = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name             = \"target-network-example\"\n  ipv4_prefix      = \"192.168.10.0/25\"\n  ipv4_nameservers = [\"8.8.8.8\"]\n}\n\nresource \"stackit_public_ip\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\nresource \"stackit_loadbalancer\" \"example\" {\n  project_id       = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name             = \"example-advanced-lb\"\n  external_address = stackit_public_ip.example.ip\n\n  # Key setting for manual mode: disables automatic security group handling.\n  disable_security_group_assignment = true\n\n  networks = [{\n    network_id = stackit_network.lb_network.network_id\n    role       = \"ROLE_LISTENERS_AND_TARGETS\"\n  }]\n\n  listeners = [{\n    port        = 80\n    protocol    = \"PROTOCOL_TCP\"\n    target_pool = \"cross-network-pool\"\n  }]\n\n  target_pools = [{\n    name        = \"cross-network-pool\"\n    target_port = 80\n    targets = [{\n      display_name = stackit_server.example.name\n      ip           = stackit_network_interface.nic.ipv4\n    }]\n  }]\n}\n\n# Create a new security group to be assigned to the target server.\nresource \"stackit_security_group\" \"target_sg\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name        = \"target-sg-for-lb-access\"\n  description = \"Allows ingress traffic from the example load balancer.\"\n}\n\n# Create a rule to allow traffic FROM the load balancer.\n# This rule uses the computed `security_group_id` of the load balancer.\nresource \"stackit_security_group_rule\" \"allow_lb_ingress\" {\n  project_id        = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  security_group_id = stackit_security_group.target_sg.security_group_id\n  direction         = \"ingress\"\n  protocol = {\n    name = \"tcp\"\n  }\n\n  # This is the crucial link: it allows traffic from the LB's security group.\n  remote_security_group_id = stackit_loadbalancer.example.security_group_id\n\n  port_range = {\n    min = 80\n    max = 80\n  }\n}\n\nresource \"stackit_server\" \"example\" {\n  project_id        = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name              = \"example-remote-target\"\n  machine_type      = \"g2i.2\"\n  availability_zone = \"eu01-1\"\n\n  boot_volume = {\n    source_type = \"image\"\n    source_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n    size        = 10\n  }\n\n  network_interfaces = [\n    stackit_network_interface.nic.network_interface_id\n  ]\n}\n\nresource \"stackit_network_interface\" \"nic\" {\n  project_id         = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  network_id         = stackit_network.target_network.network_id\n  security_group_ids = [stackit_security_group.target_sg.security_group_id]\n}\n# End of advanced example\n\n# Only use the import statement, if you want to import an existing loadbalancer\nimport {\n  to = stackit_loadbalancer.import-example\n  id = \"${var.project_id},${var.region},${var.loadbalancer_name}\"\n}\n```\n",
+            "description": "## Setting up supporting infrastructure\n\n\nThe example below creates the supporting infrastructure using the STACKIT Terraform provider, including the network, network interface, a public IP address and server resources.\n\n## Example Usage\n\n```terraform\n# Create a network\nresource \"stackit_network\" \"example_network\" {\n  project_id       = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name             = \"example-network\"\n  ipv4_nameservers = [\"8.8.8.8\"]\n  ipv4_prefix      = \"192.168.0.0/25\"\n  labels = {\n    \"key\" = \"value\"\n  }\n  routed = true\n}\n\n# Create a network interface\nresource \"stackit_network_interface\" \"nic\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  network_id = stackit_network.example_network.network_id\n}\n\n# Create a public IP for the load balancer\nresource \"stackit_public_ip\" \"public-ip\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  lifecycle {\n    ignore_changes = [network_interface_id]\n  }\n}\n\n# Create a key pair for accessing the server instance\nresource \"stackit_key_pair\" \"keypair\" {\n  name       = \"example-key-pair\"\n  public_key = chomp(file(\"path/to/id_rsa.pub\"))\n}\n\n# Create a server instance\nresource \"stackit_server\" \"boot-from-image\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-server\"\n  boot_volume = {\n    size        = 64\n    source_type = \"image\"\n    source_id   = \"59838a89-51b1-4892-b57f-b3caf598ee2f\" // Ubuntu 24.04\n  }\n  availability_zone = \"xxxx-x\"\n  machine_type      = \"g2i.1\"\n  keypair_name      = stackit_key_pair.keypair.name\n  network_interfaces = [\n    stackit_network_interface.nic.network_interface_id\n  ]\n}\n\n# Create a load balancer\nresource \"stackit_loadbalancer\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-load-balancer\"\n  plan_id    = \"p10\"\n  target_pools = [\n    {\n      name        = \"example-target-pool\"\n      target_port = 80\n      targets = [\n        {\n          display_name = stackit_server.boot-from-image.name\n          ip           = stackit_network_interface.nic.ipv4\n        }\n      ]\n      active_health_check = {\n        healthy_threshold   = 10\n        interval            = \"3s\"\n        interval_jitter     = \"3s\"\n        timeout             = \"3s\"\n        unhealthy_threshold = 10\n      }\n    }\n  ]\n  listeners = [\n    {\n      display_name = \"example-listener\"\n      port         = 80\n      protocol     = \"PROTOCOL_TCP\"\n      target_pool  = \"example-target-pool\"\n      tcp = {\n        idle_timeout = \"90s\"\n      }\n    }\n  ]\n  networks = [\n    {\n      network_id = stackit_network.example_network.network_id\n      role       = \"ROLE_LISTENERS_AND_TARGETS\"\n    }\n  ]\n  external_address = stackit_public_ip.public-ip.ip\n  options = {\n    private_network_only = false\n  }\n}\n\n# This example demonstrates an advanced setup where the Load Balancer is in one\n# network and the target server is in another. This requires manual\n# security group configuration using the `disable_security_group_assignment`\n# and `security_group_id` attributes.\n\n# We create two separate networks: one for the load balancer and one for the target.\nresource \"stackit_network\" \"lb_network\" {\n  project_id       = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name             = \"lb-network-example\"\n  ipv4_prefix      = \"192.168.10.0/25\"\n  ipv4_nameservers = [\"8.8.8.8\"]\n}\n\nresource \"stackit_network\" \"target_network\" {\n  project_id       = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name             = \"target-network-example\"\n  ipv4_prefix      = \"192.168.10.0/25\"\n  ipv4_nameservers = [\"8.8.8.8\"]\n}\n\nresource \"stackit_public_ip\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\nresource \"stackit_loadbalancer\" \"example\" {\n  project_id       = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name             = \"example-advanced-lb\"\n  external_address = stackit_public_ip.example.ip\n\n  # Key setting for manual mode: disables automatic security group handling.\n  disable_security_group_assignment = true\n\n  networks = [{\n    network_id = stackit_network.lb_network.network_id\n    role       = \"ROLE_LISTENERS_AND_TARGETS\"\n  }]\n\n  listeners = [{\n    port        = 80\n    protocol    = \"PROTOCOL_TCP\"\n    target_pool = \"cross-network-pool\"\n  }]\n\n  target_pools = [{\n    name        = \"cross-network-pool\"\n    target_port = 80\n    targets = [{\n      display_name = stackit_server.example.name\n      ip           = stackit_network_interface.nic.ipv4\n    }]\n  }]\n}\n\n# Create a new security group to be assigned to the target server.\nresource \"stackit_security_group\" \"target_sg\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name        = \"target-sg-for-lb-access\"\n  description = \"Allows ingress traffic from the example load balancer.\"\n}\n\n# Create a rule to allow traffic FROM the load balancer.\n# This rule uses the computed `security_group_id` of the load balancer.\nresource \"stackit_security_group_rule\" \"allow_lb_ingress\" {\n  project_id        = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  security_group_id = stackit_security_group.target_sg.security_group_id\n  direction         = \"ingress\"\n  protocol = {\n    name = \"tcp\"\n  }\n\n  # This is the crucial link: it allows traffic from the LB's security group.\n  remote_security_group_id = stackit_loadbalancer.example.security_group_id\n\n  port_range = {\n    min = 80\n    max = 80\n  }\n}\n\nresource \"stackit_server\" \"example\" {\n  project_id        = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name              = \"example-remote-target\"\n  machine_type      = \"g2i.2\"\n  availability_zone = \"eu01-1\"\n\n  boot_volume = {\n    source_type = \"image\"\n    source_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n    size        = 10\n  }\n\n  network_interfaces = [\n    stackit_network_interface.nic.network_interface_id\n  ]\n}\n\nresource \"stackit_network_interface\" \"nic\" {\n  project_id         = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  network_id         = stackit_network.target_network.network_id\n  security_group_ids = [stackit_security_group.target_sg.security_group_id]\n}\n# End of advanced example\n\n# Only use the import statement, if you want to import an existing loadbalancer\nimport {\n  to = stackit_loadbalancer.import-example\n  id = \"${var.project_id},${var.region},${var.loadbalancer_name}\"\n}\n```\n",
             "properties": {
                 "disableSecurityGroupAssignment": {
                     "type": "boolean",
@@ -8763,7 +8774,8 @@
                     "description": "Instance name.\n"
                 },
                 "parameters": {
-                    "$ref": "#/types/stackit:index/LogmeInstanceParameters:LogmeInstanceParameters"
+                    "$ref": "#/types/stackit:index/LogmeInstanceParameters:LogmeInstanceParameters",
+                    "description": "Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.\n"
                 },
                 "planId": {
                     "type": "string",
@@ -8802,7 +8814,8 @@
                     "description": "Instance name.\n"
                 },
                 "parameters": {
-                    "$ref": "#/types/stackit:index/LogmeInstanceParameters:LogmeInstanceParameters"
+                    "$ref": "#/types/stackit:index/LogmeInstanceParameters:LogmeInstanceParameters",
+                    "description": "Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.\n"
                 },
                 "planName": {
                     "type": "string",
@@ -8849,7 +8862,8 @@
                         "description": "Instance name.\n"
                     },
                     "parameters": {
-                        "$ref": "#/types/stackit:index/LogmeInstanceParameters:LogmeInstanceParameters"
+                        "$ref": "#/types/stackit:index/LogmeInstanceParameters:LogmeInstanceParameters",
+                        "description": "Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.\n"
                     },
                     "planId": {
                         "type": "string",
@@ -9363,7 +9377,8 @@
                     "description": "Instance name.\n"
                 },
                 "parameters": {
-                    "$ref": "#/types/stackit:index/MariadbInstanceParameters:MariadbInstanceParameters"
+                    "$ref": "#/types/stackit:index/MariadbInstanceParameters:MariadbInstanceParameters",
+                    "description": "Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.\n"
                 },
                 "planId": {
                     "type": "string",
@@ -9402,7 +9417,8 @@
                     "description": "Instance name.\n"
                 },
                 "parameters": {
-                    "$ref": "#/types/stackit:index/MariadbInstanceParameters:MariadbInstanceParameters"
+                    "$ref": "#/types/stackit:index/MariadbInstanceParameters:MariadbInstanceParameters",
+                    "description": "Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.\n"
                 },
                 "planName": {
                     "type": "string",
@@ -9449,7 +9465,8 @@
                         "description": "Instance name.\n"
                     },
                     "parameters": {
-                        "$ref": "#/types/stackit:index/MariadbInstanceParameters:MariadbInstanceParameters"
+                        "$ref": "#/types/stackit:index/MariadbInstanceParameters:MariadbInstanceParameters",
+                        "description": "Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.\n"
                     },
                     "planId": {
                         "type": "string",
@@ -10266,6 +10283,7 @@
             }
         },
         "stackit:index/networkArea:NetworkArea": {
+            "description": "Network area resource schema.\n\n## Example Usage\n\n```terraform\nresource \"stackit_network_area\" \"example\" {\n  organization_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name            = \"example-network-area\"\n  labels = {\n    \"key\" = \"value\"\n  }\n}\n\n# Only use the import statement, if you want to import an existing network area\nimport {\n  to = stackit_network_area.import-example\n  id = \"${var.organization_id},${var.network_area_id}\"\n}\n```\n\n## Migration of IaaS resources from versions \u003c= v0.78.1\n\nThe release of the STACKIT IaaS API v2 provides a lot of new features, but also includes some breaking changes\n(when coming from v1 of the STACKIT IaaS API) which must be somehow represented on Terraform side. The\n\u003cspan pulumi-lang-nodejs=\"`stackit.NetworkArea`\" pulumi-lang-dotnet=\"`stackit.NetworkArea`\" pulumi-lang-go=\"`NetworkArea`\" pulumi-lang-python=\"`NetworkArea`\" pulumi-lang-yaml=\"`stackit.NetworkArea`\" pulumi-lang-java=\"`stackit.NetworkArea`\"\u003e`stackit.NetworkArea`\u003c/span\u003e resource deprecated some fields. See the example below how to migrate your resources.\n\n### Migration: Network area resource (stackit_network_area)\n\n**Configuration for \u003c= v0.78.1**\n\n```terraform\nresource \"stackit_network_area\" \"example\" {\n  organization_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name             = \"my-network-area\"\n  transfer_network = \"192.168.1.0/24\" # transfer_network field got deprecated for provider versions \u003e v0.74.0, use the new \"stackit_network_area_region\" resource instead\n  network_ranges = [\n    {\n      prefix = \"192.168.0.0/25\" # network_ranges field got deprecated for provider versions \u003e v0.74.0, use the new \"stackit_network_area_region\" resource instead\n    }\n  ]\n  default_nameservers   = [\"8.8.8.8\"] # default_nameservers field got deprecated for provider versions \u003e v0.74.0, use the new \"stackit_network_area_region\" resource instead\n  default_prefix_length = 25 # default_prefix_length field got deprecated for provider versions \u003e v0.74.0, use the new \"stackit_network_area_region\" resource instead\n  max_prefix_length     = 29 # max_prefix_length field got deprecated for provider versions \u003e v0.74.0, use the new \"stackit_network_area_region\" resource instead\n  min_prefix_length     = 24 # min_prefix_length field got deprecated for provider versions \u003e v0.74.0, use the new \"stackit_network_area_region\" resource instead\n}\n```\nThe previous configuration has some deprecated fields.\n\n**Configuration for \u003e v0.78.1**\n\nTo migrate from a previous state, you need to modify your configuration like this:\n\n```terraform\nresource \"stackit_network_area\" \"example\" {\n  organization_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name            = \"my-network-area\"\n  # remove all the deprecated fields\n}\n\n# Add the new resource \"stackit_network_area_region\" and configure it with all the deprecated values from the \"stackit_network_area\" resource\nresource \"stackit_network_area_region\" \"example\" {\n  organization_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  network_area_id = stackit_network_area.example.network_area_id\n  region = \"eu01\"\n  ipv4 = {\n    transfer_network = \"192.168.1.0/24\"\n    network_ranges = [\n      {\n        prefix = \"192.168.0.0/25\"\n      }\n    ]\n    default_nameservers   = [\"8.8.8.8\"]\n    default_prefix_length = 25\n    max_prefix_length     = 29\n    min_prefix_length     = 24\n  }\n}\n\n# Add this import for \"stackit_network_area_region\" to migrate from the previous configuration\nimport {\n  to = stackit_network_area_region.example\n  id = \"${stackit_network_area.example.id},eu01\"\n}\n```\n\nAfter modifying the configuration, run `$ pulumi preview` to check what terraform will do.\nThe changes should trigger an update in-place for the existing \u003cspan pulumi-lang-nodejs=\"\"stackit.NetworkArea\"\" pulumi-lang-dotnet=\"\"stackit.NetworkArea\"\" pulumi-lang-go=\"\"NetworkArea\"\" pulumi-lang-python=\"\"NetworkArea\"\" pulumi-lang-yaml=\"\"stackit.NetworkArea\"\" pulumi-lang-java=\"\"stackit.NetworkArea\"\"\u003e\"stackit.NetworkArea\"\u003c/span\u003e where the deprecated fields will be removed and the resource \u003cspan pulumi-lang-nodejs=\"\"stackit.NetworkAreaRegion\"\" pulumi-lang-dotnet=\"\"stackit.NetworkAreaRegion\"\" pulumi-lang-go=\"\"NetworkAreaRegion\"\" pulumi-lang-python=\"\"NetworkAreaRegion\"\" pulumi-lang-yaml=\"\"stackit.NetworkAreaRegion\"\" pulumi-lang-java=\"\"stackit.NetworkAreaRegion\"\"\u003e\"stackit.NetworkAreaRegion\"\u003c/span\u003e should be imported.\nIt shouldn't trigger any recreation. If terraform wants to recreate any of the resources, verify that you are using the provider version \u003e v0.78.1 and have everything defined correctly.\n\nWhen everything looks good, run `$ pulumi up` to apply these changes.\nWhen the run is completed, you can remove the import-block. Run `$ pulumi preview` to verify that the infrastructure matches the configuration.\n",
             "properties": {
                 "defaultNameservers": {
                     "type": "array",
@@ -10531,6 +10549,7 @@
             }
         },
         "stackit:index/networkAreaRoute:NetworkAreaRoute": {
+            "description": "Network area route resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\nresource \"stackit_network_area_route\" \"example\" {\n  organization_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  network_area_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  destination = {\n    type  = \"cidrv4\"\n    value = \"192.168.0.0/24\"\n  }\n  next_hop = {\n    type  = \"ipv4\"\n    value = \"192.168.0.0\"\n  }\n  labels = {\n    \"key\" = \"value\"\n  }\n}\n\n# Only use the import statement, if you want to import an existing network area route\nimport {\n  to = stackit_network_area_route.import-example\n  id = \"${var.organization_id},${var.network_area_id},${var.region},${var.network_area_route_id}\"\n}\n```\n\n## Migration of IaaS resources from versions \u003c= v0.74.0\n\nThe release of the STACKIT IaaS API v2 provides a lot of new features, but also includes some breaking changes\n(when coming from v1 of the STACKIT IaaS API) which must be somehow represented on Terraform side. The \n\u003cspan pulumi-lang-nodejs=\"`stackit.NetworkAreaRoute`\" pulumi-lang-dotnet=\"`stackit.NetworkAreaRoute`\" pulumi-lang-go=\"`NetworkAreaRoute`\" pulumi-lang-python=\"`NetworkAreaRoute`\" pulumi-lang-yaml=\"`stackit.NetworkAreaRoute`\" pulumi-lang-java=\"`stackit.NetworkAreaRoute`\"\u003e`stackit.NetworkAreaRoute`\u003c/span\u003e resource did undergo some changes. See the example below how to migrate your resources.\n\n### Breaking change: Network area route resource (stackit_network_area_route)\n\n**Configuration for \u003c= v0.74.0**\n\n```terraform\nresource \"stackit_network_area_route\" \"example\" {\n  organization_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  network_area_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  prefix          = \"192.168.0.0/24\" # prefix field got removed for provider versions \u003e v0.74.0, use the new destination field instead\n  next_hop        = \"192.168.0.0\" # schema of the next_hop field changed, see below\n}\n```\n\n**Configuration for \u003e v0.74.0**\n\n```terraform\nresource \"stackit_network_area_route\" \"example\" {\n  organization_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  network_area_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  destination = { # the new 'destination' field replaces the old 'prefix' field\n    type  = \"cidrv4\"\n    value = \"192.168.0.0/24\" # migration: put the value of the old 'prefix' field here\n  }\n  next_hop = {\n    type  = \"ipv4\"\n    value = \"192.168.0.0\" # migration: put the value of the old 'next_hop' field here\n  }\n}\n```\n",
             "properties": {
                 "destination": {
                     "$ref": "#/types/stackit:index/NetworkAreaRouteDestination:NetworkAreaRouteDestination",
@@ -12021,7 +12040,8 @@
                     "description": "Instance name.\n"
                 },
                 "parameters": {
-                    "$ref": "#/types/stackit:index/OpensearchInstanceParameters:OpensearchInstanceParameters"
+                    "$ref": "#/types/stackit:index/OpensearchInstanceParameters:OpensearchInstanceParameters",
+                    "description": "Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.\n"
                 },
                 "planId": {
                     "type": "string",
@@ -12060,7 +12080,8 @@
                     "description": "Instance name.\n"
                 },
                 "parameters": {
-                    "$ref": "#/types/stackit:index/OpensearchInstanceParameters:OpensearchInstanceParameters"
+                    "$ref": "#/types/stackit:index/OpensearchInstanceParameters:OpensearchInstanceParameters",
+                    "description": "Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.\n"
                 },
                 "planName": {
                     "type": "string",
@@ -12107,7 +12128,8 @@
                         "description": "Instance name.\n"
                     },
                     "parameters": {
-                        "$ref": "#/types/stackit:index/OpensearchInstanceParameters:OpensearchInstanceParameters"
+                        "$ref": "#/types/stackit:index/OpensearchInstanceParameters:OpensearchInstanceParameters",
+                        "description": "Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.\n"
                     },
                     "planId": {
                         "type": "string",
@@ -12521,7 +12543,8 @@
                     "description": "Labels are key-value string pairs which can be attached to a resource container\n"
                 },
                 "networkInterfaceId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Associates the public IP with a network interface or a virtual IP (ID). If you are using this resource with a Kubernetes Load Balancer or any other resource which associates a network interface implicitly, use the lifecycle \u003cspan pulumi-lang-nodejs=\"`ignoreChanges`\" pulumi-lang-dotnet=\"`IgnoreChanges`\" pulumi-lang-go=\"`ignoreChanges`\" pulumi-lang-python=\"`ignore_changes`\" pulumi-lang-yaml=\"`ignoreChanges`\" pulumi-lang-java=\"`ignoreChanges`\"\u003e`ignore_changes`\u003c/span\u003e property in this field to prevent unintentional removal of the network interface due to drift in the Terraform state\n"
                 },
                 "projectId": {
                     "type": "string",
@@ -12552,7 +12575,8 @@
                     "description": "Labels are key-value string pairs which can be attached to a resource container\n"
                 },
                 "networkInterfaceId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Associates the public IP with a network interface or a virtual IP (ID). If you are using this resource with a Kubernetes Load Balancer or any other resource which associates a network interface implicitly, use the lifecycle \u003cspan pulumi-lang-nodejs=\"`ignoreChanges`\" pulumi-lang-dotnet=\"`IgnoreChanges`\" pulumi-lang-go=\"`ignoreChanges`\" pulumi-lang-python=\"`ignore_changes`\" pulumi-lang-yaml=\"`ignoreChanges`\" pulumi-lang-java=\"`ignoreChanges`\"\u003e`ignore_changes`\u003c/span\u003e property in this field to prevent unintentional removal of the network interface due to drift in the Terraform state\n"
                 },
                 "projectId": {
                     "type": "string",
@@ -12581,7 +12605,8 @@
                         "description": "Labels are key-value string pairs which can be attached to a resource container\n"
                     },
                     "networkInterfaceId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Associates the public IP with a network interface or a virtual IP (ID). If you are using this resource with a Kubernetes Load Balancer or any other resource which associates a network interface implicitly, use the lifecycle \u003cspan pulumi-lang-nodejs=\"`ignoreChanges`\" pulumi-lang-dotnet=\"`IgnoreChanges`\" pulumi-lang-go=\"`ignoreChanges`\" pulumi-lang-python=\"`ignore_changes`\" pulumi-lang-yaml=\"`ignoreChanges`\" pulumi-lang-java=\"`ignoreChanges`\"\u003e`ignore_changes`\u003c/span\u003e property in this field to prevent unintentional removal of the network interface due to drift in the Terraform state\n"
                     },
                     "projectId": {
                         "type": "string",
@@ -12853,7 +12878,8 @@
                     "description": "Instance name.\n"
                 },
                 "parameters": {
-                    "$ref": "#/types/stackit:index/RabbitmqInstanceParameters:RabbitmqInstanceParameters"
+                    "$ref": "#/types/stackit:index/RabbitmqInstanceParameters:RabbitmqInstanceParameters",
+                    "description": "Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.\n"
                 },
                 "planId": {
                     "type": "string",
@@ -12892,7 +12918,8 @@
                     "description": "Instance name.\n"
                 },
                 "parameters": {
-                    "$ref": "#/types/stackit:index/RabbitmqInstanceParameters:RabbitmqInstanceParameters"
+                    "$ref": "#/types/stackit:index/RabbitmqInstanceParameters:RabbitmqInstanceParameters",
+                    "description": "Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.\n"
                 },
                 "planName": {
                     "type": "string",
@@ -12939,7 +12966,8 @@
                         "description": "Instance name.\n"
                     },
                     "parameters": {
-                        "$ref": "#/types/stackit:index/RabbitmqInstanceParameters:RabbitmqInstanceParameters"
+                        "$ref": "#/types/stackit:index/RabbitmqInstanceParameters:RabbitmqInstanceParameters",
+                        "description": "Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.\n"
                     },
                     "planId": {
                         "type": "string",
@@ -13103,7 +13131,8 @@
                     "description": "Instance name.\n"
                 },
                 "parameters": {
-                    "$ref": "#/types/stackit:index/RedisInstanceParameters:RedisInstanceParameters"
+                    "$ref": "#/types/stackit:index/RedisInstanceParameters:RedisInstanceParameters",
+                    "description": "Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.\n"
                 },
                 "planId": {
                     "type": "string",
@@ -13142,7 +13171,8 @@
                     "description": "Instance name.\n"
                 },
                 "parameters": {
-                    "$ref": "#/types/stackit:index/RedisInstanceParameters:RedisInstanceParameters"
+                    "$ref": "#/types/stackit:index/RedisInstanceParameters:RedisInstanceParameters",
+                    "description": "Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.\n"
                 },
                 "planName": {
                     "type": "string",
@@ -13189,7 +13219,8 @@
                         "description": "Instance name.\n"
                     },
                     "parameters": {
-                        "$ref": "#/types/stackit:index/RedisInstanceParameters:RedisInstanceParameters"
+                        "$ref": "#/types/stackit:index/RedisInstanceParameters:RedisInstanceParameters",
+                        "description": "Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.\n"
                     },
                     "planId": {
                         "type": "string",
@@ -13327,7 +13358,7 @@
             }
         },
         "stackit:index/resourcemanagerProject:ResourcemanagerProject": {
-            "description": "## Example Usage\n\n```terraform\nresource \"stackit_resourcemanager_project\" \"example\" {\n  parent_container_id = \"example-parent-container-abc123\"\n  name                = \"example-container\"\n  labels = {\n    \"Label 1\" = \"foo\"\n    // \"networkArea\" = stackit_network_area.foo.network_area_id\n  }\n  owner_email = \"john.doe@stackit.cloud\"\n}\n\n# Only use the import statement, if you want to import an existing resourcemanager project\n# Note: There will be a conflict which needs to be resolved manually.\n# Must set a configuration value for the owner_email attribute as the provider has marked it as required.\nimport {\n  to = stackit_resourcemanager_project.import-example\n  id = var.container_id\n}\n```\n",
+            "description": "Resource Manager project resource schema.\n\n\u003e In case you're getting started with an empty STACKIT organization and want to use this resource to create projects in it, check out this guide for how to create a service account which you can use for authentication in the STACKIT Terraform provider.\n\n## Example Usage\n\n```terraform\nresource \"stackit_resourcemanager_project\" \"example\" {\n  parent_container_id = \"example-parent-container-abc123\"\n  name                = \"example-container\"\n  labels = {\n    \"Label 1\" = \"foo\"\n    // \"networkArea\" = stackit_network_area.foo.network_area_id\n  }\n  owner_email = \"john.doe@stackit.cloud\"\n}\n\n# Only use the import statement, if you want to import an existing resourcemanager project\n# Note: There will be a conflict which needs to be resolved manually.\n# Must set a configuration value for the owner_email attribute as the provider has marked it as required.\nimport {\n  to = stackit_resourcemanager_project.import-example\n  id = var.container_id\n}\n```\n",
             "properties": {
                 "containerId": {
                     "type": "string",
@@ -15849,6 +15880,7 @@
                 "kubernetesVersionUsed",
                 "maintenance",
                 "name",
+                "network",
                 "nodePools",
                 "podAddressRanges",
                 "projectId",
@@ -15994,7 +16026,8 @@
                     "secret": true
                 },
                 "kubeConfigId": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "Internally generated UUID to identify a kubeconfig resource in Terraform, since the SKE API doesnt return a kubeconfig identifier\n"
                 },
                 "projectId": {
                     "type": "string",
@@ -16078,7 +16111,8 @@
                         "secret": true
                     },
                     "kubeConfigId": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Internally generated UUID to identify a kubeconfig resource in Terraform, since the SKE API doesnt return a kubeconfig identifier\n"
                     },
                     "projectId": {
                         "type": "string",
@@ -16376,7 +16410,7 @@
             }
         },
         "stackit:index/volume:Volume": {
-            "description": "## Example Usage\n\n```terraform\nresource \"stackit_volume\" \"example\" {\n  project_id        = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name              = \"my_volume\"\n  availability_zone = \"eu01-1\"\n  size              = 64\n  labels = {\n    \"key\" = \"value\"\n  }\n}\n\n# Only use the import statement, if you want to import an existing volume\nimport {\n  to = stackit_volume.import-example\n  id = \"${var.project_id},${var.region},${var.volume_id}\"\n}\n```\n",
+            "description": "Volume resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration. \n\n\u003e **Note:** Write-Only argument \u003cspan pulumi-lang-nodejs=\"`keyPayloadBase64Wo`\" pulumi-lang-dotnet=\"`KeyPayloadBase64Wo`\" pulumi-lang-go=\"`keyPayloadBase64Wo`\" pulumi-lang-python=\"`key_payload_base64_wo`\" pulumi-lang-yaml=\"`keyPayloadBase64Wo`\" pulumi-lang-java=\"`keyPayloadBase64Wo`\"\u003e`key_payload_base64_wo`\u003c/span\u003e is available to use in place of \u003cspan pulumi-lang-nodejs=\"`keyPayloadBase64`\" pulumi-lang-dotnet=\"`KeyPayloadBase64`\" pulumi-lang-go=\"`keyPayloadBase64`\" pulumi-lang-python=\"`key_payload_base64`\" pulumi-lang-yaml=\"`keyPayloadBase64`\" pulumi-lang-java=\"`keyPayloadBase64`\"\u003e`key_payload_base64`\u003c/span\u003e. Write-Only arguments are supported in HashiCorp Terraform 1.11.0 and later. Learn more.\n\n## Example Usage\n\n```terraform\nresource \"stackit_volume\" \"example\" {\n  project_id        = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name              = \"my_volume\"\n  availability_zone = \"eu01-1\"\n  size              = 64\n  labels = {\n    \"key\" = \"value\"\n  }\n}\n\n# Only use the import statement, if you want to import an existing volume\nimport {\n  to = stackit_volume.import-example\n  id = \"${var.project_id},${var.region},${var.volume_id}\"\n}\n```\n",
             "properties": {
                 "availabilityZone": {
                     "type": "string",
@@ -16391,7 +16425,8 @@
                     "description": "Indicates if the volume is encrypted.\n"
                 },
                 "encryptionParameters": {
-                    "$ref": "#/types/stackit:index/VolumeEncryptionParameters:VolumeEncryptionParameters"
+                    "$ref": "#/types/stackit:index/VolumeEncryptionParameters:VolumeEncryptionParameters",
+                    "description": "Parameter to connect to a key-encryption-key within the STACKIT-KMS to create encrypted volumes. These parameters never leave the backend again. So these parameters are not present on imports or in the datasource. They live only in your Terraform state after creation of the resource.\n"
                 },
                 "labels": {
                     "type": "object",
@@ -16455,7 +16490,8 @@
                     "description": "The description of the volume.\n"
                 },
                 "encryptionParameters": {
-                    "$ref": "#/types/stackit:index/VolumeEncryptionParameters:VolumeEncryptionParameters"
+                    "$ref": "#/types/stackit:index/VolumeEncryptionParameters:VolumeEncryptionParameters",
+                    "description": "Parameter to connect to a key-encryption-key within the STACKIT-KMS to create encrypted volumes. These parameters never leave the backend again. So these parameters are not present on imports or in the datasource. They live only in your Terraform state after creation of the resource.\n"
                 },
                 "labels": {
                     "type": "object",
@@ -16509,7 +16545,8 @@
                         "description": "Indicates if the volume is encrypted.\n"
                     },
                     "encryptionParameters": {
-                        "$ref": "#/types/stackit:index/VolumeEncryptionParameters:VolumeEncryptionParameters"
+                        "$ref": "#/types/stackit:index/VolumeEncryptionParameters:VolumeEncryptionParameters",
+                        "description": "Parameter to connect to a key-encryption-key within the STACKIT-KMS to create encrypted volumes. These parameters never leave the backend again. So these parameters are not present on imports or in the datasource. They live only in your Terraform state after creation of the resource.\n"
                     },
                     "labels": {
                         "type": "object",
@@ -16617,7 +16654,8 @@
                         "description": "The affinity group ID.\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`affinityGroupId`\" pulumi-lang-dotnet=\"`AffinityGroupId`\" pulumi-lang-go=\"`affinityGroupId`\" pulumi-lang-python=\"`affinity_group_id`\" pulumi-lang-yaml=\"`affinityGroupId`\" pulumi-lang-java=\"`affinityGroupId`\"\u003e`affinity_group_id`\u003c/span\u003e\".\n"
                     },
                     "members": {
                         "type": "array",
@@ -16682,7 +16720,8 @@
                         "description": "A human readable description of the role.\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource identifier. It is structured as \"[resource*id],[role*id]\".\n"
                     },
                     "name": {
                         "type": "string",
@@ -16762,7 +16801,8 @@
                         "description": "List of distribution errors\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`distributionId`\" pulumi-lang-dotnet=\"`DistributionId`\" pulumi-lang-go=\"`distributionId`\" pulumi-lang-python=\"`distribution_id`\" pulumi-lang-yaml=\"`distributionId`\" pulumi-lang-java=\"`distributionId`\"\u003e`distribution_id`\u003c/span\u003e\".\n"
                     },
                     "name": {
                         "type": "string"
@@ -16837,7 +16877,8 @@
                         "description": "List of distribution errors\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`distributionId`\" pulumi-lang-dotnet=\"`DistributionId`\" pulumi-lang-go=\"`distributionId`\" pulumi-lang-python=\"`distribution_id`\" pulumi-lang-yaml=\"`distributionId`\" pulumi-lang-java=\"`distributionId`\"\u003e`distribution_id`\u003c/span\u003e\".\n"
                     },
                     "projectId": {
                         "type": "string",
@@ -16911,7 +16952,8 @@
                         "description": "Fully qualified domain name (FQDN) of the record set.\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal data source. ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`zoneId`\" pulumi-lang-dotnet=\"`ZoneId`\" pulumi-lang-go=\"`zoneId`\" pulumi-lang-python=\"`zone_id`\" pulumi-lang-yaml=\"`zoneId`\" pulumi-lang-java=\"`zoneId`\"\u003e`zone_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`recordSetId`\" pulumi-lang-dotnet=\"`RecordSetId`\" pulumi-lang-go=\"`recordSetId`\" pulumi-lang-python=\"`record_set_id`\" pulumi-lang-yaml=\"`recordSetId`\" pulumi-lang-java=\"`recordSetId`\"\u003e`record_set_id`\u003c/span\u003e\".\n"
                     },
                     "name": {
                         "type": "string",
@@ -16974,7 +17016,7 @@
                 "properties": {
                     "dnsName": {
                         "type": "string",
-                        "description": "The zone name. E.g. `example.com`\n"
+                        "description": "The zone name. E.g. `example.com` (must not end with a trailing dot).\n"
                     },
                     "projectId": {
                         "type": "string",
@@ -17014,14 +17056,15 @@
                     },
                     "dnsName": {
                         "type": "string",
-                        "description": "The zone name. E.g. `example.com`\n"
+                        "description": "The zone name. E.g. `example.com` (must not end with a trailing dot).\n"
                     },
                     "expireTime": {
                         "type": "integer",
                         "description": "Expire time.\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal data source. ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`zoneId`\" pulumi-lang-dotnet=\"`ZoneId`\" pulumi-lang-go=\"`zoneId`\" pulumi-lang-python=\"`zone_id`\" pulumi-lang-yaml=\"`zoneId`\" pulumi-lang-java=\"`zoneId`\"\u003e`zone_id`\u003c/span\u003e\".\n"
                     },
                     "isReverseZone": {
                         "type": "boolean",
@@ -17131,7 +17174,8 @@
                 "description": "A collection of values returned by getEdgecloudInstances.\n",
                 "properties": {
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal data source ID, structured as \u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e.\n"
                     },
                     "instances": {
                         "type": "array",
@@ -17176,7 +17220,8 @@
                 "description": "A collection of values returned by getEdgecloudPlans.\n",
                 "properties": {
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal data source ID, \u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e is used here.\n"
                     },
                     "plans": {
                         "type": "array",
@@ -17245,7 +17290,8 @@
                         "description": "Instance flavor. If not provided, defaults to git-100. For a list of available flavors, refer to our API documentation: `https://docs.api.stackit.cloud/documentation/git/version/v1beta`\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource ID, structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`instanceId`\" pulumi-lang-dotnet=\"`InstanceId`\" pulumi-lang-go=\"`instanceId`\" pulumi-lang-python=\"`instance_id`\" pulumi-lang-yaml=\"`instanceId`\" pulumi-lang-java=\"`instanceId`\"\u003e`instance_id`\u003c/span\u003e\".\n"
                     },
                     "instanceId": {
                         "type": "string",
@@ -17311,7 +17357,8 @@
                         "description": "Date-time when the project was created.\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e\".\n"
                     },
                     "internetAccess": {
                         "type": "boolean",
@@ -17388,7 +17435,8 @@
                         "description": "The disk format of the image.\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`imageId`\" pulumi-lang-dotnet=\"`ImageId`\" pulumi-lang-go=\"`imageId`\" pulumi-lang-python=\"`image_id`\" pulumi-lang-yaml=\"`imageId`\" pulumi-lang-java=\"`imageId`\"\u003e`image_id`\u003c/span\u003e\".\n"
                     },
                     "imageId": {
                         "type": "string",
@@ -17448,7 +17496,7 @@
             }
         },
         "stackit:index/getImageV2:getImageV2": {
-            "description": "## Example Usage\n\n```terraform\ndata \"stackit_image_v2\" \"default\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  image_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\ndata \"stackit_image_v2\" \"name_match\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"Ubuntu 22.04\"\n}\n\ndata \"stackit_image_v2\" \"name_regex_latest\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name_regex = \"^Ubuntu .*\"\n}\n\ndata \"stackit_image_v2\" \"name_regex_oldest\" {\n  project_id     = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name_regex     = \"^Ubuntu .*\"\n  sort_ascending = true\n}\n\ndata \"stackit_image_v2\" \"filter_distro_version\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  filter = {\n    distro  = \"debian\"\n    version = \"11\"\n  }\n}\n```\n",
+            "description": "Image datasource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n\u003e Important: When using the \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`nameRegex`\" pulumi-lang-dotnet=\"`NameRegex`\" pulumi-lang-go=\"`nameRegex`\" pulumi-lang-python=\"`name_regex`\" pulumi-lang-yaml=\"`nameRegex`\" pulumi-lang-java=\"`nameRegex`\"\u003e`name_regex`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`filter`\" pulumi-lang-dotnet=\"`Filter`\" pulumi-lang-go=\"`filter`\" pulumi-lang-python=\"`filter`\" pulumi-lang-yaml=\"`filter`\" pulumi-lang-java=\"`filter`\"\u003e`filter`\u003c/span\u003e attributes to select images dynamically, be aware that image IDs may change frequently. Each OS patch or update results in a new unique image ID. If this data source is used to populate fields like `boot_volume.source_id` in a server resource, it may cause Terraform to detect changes and recreate the associated resource.\n\nTo avoid unintended updates or resource replacements:\n - Prefer using a static \u003cspan pulumi-lang-nodejs=\"`imageId`\" pulumi-lang-dotnet=\"`ImageId`\" pulumi-lang-go=\"`imageId`\" pulumi-lang-python=\"`image_id`\" pulumi-lang-yaml=\"`imageId`\" pulumi-lang-java=\"`imageId`\"\u003e`image_id`\u003c/span\u003e to pin a specific image version.\n - If you accept automatic image updates but wish to suppress resource changes, use a \u003cspan pulumi-lang-nodejs=\"`lifecycle`\" pulumi-lang-dotnet=\"`Lifecycle`\" pulumi-lang-go=\"`lifecycle`\" pulumi-lang-python=\"`lifecycle`\" pulumi-lang-yaml=\"`lifecycle`\" pulumi-lang-java=\"`lifecycle`\"\u003e`lifecycle`\u003c/span\u003e block to ignore relevant changes. For example:\n\n```hcl\nresource \"stackit_server\" \"example\" {\n  boot_volume = {\n    size        = 64\n    source_type = \"image\"\n    source_id   = data.stackit_image.latest.id\n  }\n\n  lifecycle {\n    ignore_changes = [boot_volume[0].source_id]\n  }\n}\n```\n\nYou can also list available images using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):\n\n```bash\nstackit image list\n```\n\n\u003e This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\ndata \"stackit_image_v2\" \"default\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  image_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\ndata \"stackit_image_v2\" \"name_match\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"Ubuntu 22.04\"\n}\n\ndata \"stackit_image_v2\" \"name_regex_latest\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name_regex = \"^Ubuntu .*\"\n}\n\ndata \"stackit_image_v2\" \"name_regex_oldest\" {\n  project_id     = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name_regex     = \"^Ubuntu .*\"\n  sort_ascending = true\n}\n\ndata \"stackit_image_v2\" \"filter_distro_version\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  filter = {\n    distro  = \"debian\"\n    version = \"11\"\n  }\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getImageV2.\n",
                 "properties": {
@@ -17506,7 +17554,8 @@
                         "description": "Additional filtering options based on image properties. Can be used independently or in conjunction with \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`nameRegex`\" pulumi-lang-dotnet=\"`NameRegex`\" pulumi-lang-go=\"`nameRegex`\" pulumi-lang-python=\"`name_regex`\" pulumi-lang-yaml=\"`nameRegex`\" pulumi-lang-java=\"`nameRegex`\"\u003e`name_regex`\u003c/span\u003e.\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`imageId`\" pulumi-lang-dotnet=\"`ImageId`\" pulumi-lang-go=\"`imageId`\" pulumi-lang-python=\"`image_id`\" pulumi-lang-yaml=\"`imageId`\" pulumi-lang-java=\"`imageId`\"\u003e`image_id`\u003c/span\u003e\".\n"
                     },
                     "imageId": {
                         "type": "string",
@@ -17594,7 +17643,8 @@
                         "description": "The fingerprint of the public SSH key.\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource ID. It takes the value of the key pair \"\u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e\".\n"
                     },
                     "labels": {
                         "type": "object",
@@ -17671,7 +17721,8 @@
                         "description": "The display name to distinguish multiple keys\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`keyringId`\" pulumi-lang-dotnet=\"`KeyringId`\" pulumi-lang-go=\"`keyringId`\" pulumi-lang-python=\"`keyring_id`\" pulumi-lang-yaml=\"`keyringId`\" pulumi-lang-java=\"`keyringId`\"\u003e`keyring_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`keyId`\" pulumi-lang-dotnet=\"`KeyId`\" pulumi-lang-go=\"`keyId`\" pulumi-lang-python=\"`key_id`\" pulumi-lang-yaml=\"`keyId`\" pulumi-lang-java=\"`keyId`\"\u003e`key_id`\u003c/span\u003e\".\n"
                     },
                     "importOnly": {
                         "type": "boolean",
@@ -17755,7 +17806,8 @@
                         "description": "The display name to distinguish multiple keyrings.\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`keyringId`\" pulumi-lang-dotnet=\"`KeyringId`\" pulumi-lang-go=\"`keyringId`\" pulumi-lang-python=\"`keyring_id`\" pulumi-lang-yaml=\"`keyringId`\" pulumi-lang-java=\"`keyringId`\"\u003e`keyring_id`\u003c/span\u003e\".\n"
                     },
                     "keyringId": {
                         "type": "string",
@@ -17838,7 +17890,8 @@
                         "description": "The date and time the wrapping key will expire.\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`keyringId`\" pulumi-lang-dotnet=\"`KeyringId`\" pulumi-lang-go=\"`keyringId`\" pulumi-lang-python=\"`keyring_id`\" pulumi-lang-yaml=\"`keyringId`\" pulumi-lang-java=\"`keyringId`\"\u003e`keyring_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`wrappingKeyId`\" pulumi-lang-dotnet=\"`WrappingKeyId`\" pulumi-lang-go=\"`wrappingKeyId`\" pulumi-lang-python=\"`wrapping_key_id`\" pulumi-lang-yaml=\"`wrappingKeyId`\" pulumi-lang-java=\"`wrappingKeyId`\"\u003e`wrapping_key_id`\u003c/span\u003e\".\n"
                     },
                     "keyringId": {
                         "type": "string",
@@ -17924,7 +17977,8 @@
                         "description": "External Load Balancer IP address where this Load Balancer is exposed.\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e\",\"region\",\"\u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e\".\n"
                     },
                     "listeners": {
                         "type": "array",
@@ -18029,7 +18083,8 @@
                         "type": "string"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal data source. identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`instanceId`\" pulumi-lang-dotnet=\"`InstanceId`\" pulumi-lang-go=\"`instanceId`\" pulumi-lang-python=\"`instance_id`\" pulumi-lang-yaml=\"`instanceId`\" pulumi-lang-java=\"`instanceId`\"\u003e`instance_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`credentialId`\" pulumi-lang-dotnet=\"`CredentialId`\" pulumi-lang-go=\"`credentialId`\" pulumi-lang-python=\"`credential_id`\" pulumi-lang-yaml=\"`credentialId`\" pulumi-lang-java=\"`credentialId`\"\u003e`credential_id`\u003c/span\u003e\".\n"
                     },
                     "instanceId": {
                         "type": "string",
@@ -18104,7 +18159,8 @@
                         "type": "string"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal data source. identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`instanceId`\" pulumi-lang-dotnet=\"`InstanceId`\" pulumi-lang-go=\"`instanceId`\" pulumi-lang-python=\"`instance_id`\" pulumi-lang-yaml=\"`instanceId`\" pulumi-lang-java=\"`instanceId`\"\u003e`instance_id`\u003c/span\u003e\".\n"
                     },
                     "imageUrl": {
                         "type": "string"
@@ -18208,7 +18264,8 @@
                         "description": "Indicates if the access token can expire\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`instanceId`\" pulumi-lang-dotnet=\"`InstanceId`\" pulumi-lang-go=\"`instanceId`\" pulumi-lang-python=\"`instance_id`\" pulumi-lang-yaml=\"`instanceId`\" pulumi-lang-java=\"`instanceId`\"\u003e`instance_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`accessTokenId`\" pulumi-lang-dotnet=\"`AccessTokenId`\" pulumi-lang-go=\"`accessTokenId`\" pulumi-lang-python=\"`access_token_id`\" pulumi-lang-yaml=\"`accessTokenId`\" pulumi-lang-java=\"`accessTokenId`\"\u003e`access_token_id`\u003c/span\u003e\".\n"
                     },
                     "instanceId": {
                         "type": "string",
@@ -18305,7 +18362,8 @@
                         "description": "The displayed name of the Logs instance\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`instanceId`\" pulumi-lang-dotnet=\"`InstanceId`\" pulumi-lang-go=\"`instanceId`\" pulumi-lang-python=\"`instance_id`\" pulumi-lang-yaml=\"`instanceId`\" pulumi-lang-java=\"`instanceId`\"\u003e`instance_id`\u003c/span\u003e\".\n"
                     },
                     "ingestOtlpUrl": {
                         "type": "string",
@@ -18485,7 +18543,8 @@
                         }
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal data source. identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`instanceId`\" pulumi-lang-dotnet=\"`InstanceId`\" pulumi-lang-go=\"`instanceId`\" pulumi-lang-python=\"`instance_id`\" pulumi-lang-yaml=\"`instanceId`\" pulumi-lang-java=\"`instanceId`\"\u003e`instance_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`credentialId`\" pulumi-lang-dotnet=\"`CredentialId`\" pulumi-lang-go=\"`credentialId`\" pulumi-lang-python=\"`credential_id`\" pulumi-lang-yaml=\"`credentialId`\" pulumi-lang-java=\"`credentialId`\"\u003e`credential_id`\u003c/span\u003e\".\n"
                     },
                     "instanceId": {
                         "type": "string",
@@ -18565,7 +18624,8 @@
                         "type": "string"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal data source. identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`instanceId`\" pulumi-lang-dotnet=\"`InstanceId`\" pulumi-lang-go=\"`instanceId`\" pulumi-lang-python=\"`instance_id`\" pulumi-lang-yaml=\"`instanceId`\" pulumi-lang-java=\"`instanceId`\"\u003e`instance_id`\u003c/span\u003e\".\n"
                     },
                     "imageUrl": {
                         "type": "string"
@@ -18658,7 +18718,8 @@
                         "$ref": "#/types/stackit:index/getMongodbflexInstanceFlavor:getMongodbflexInstanceFlavor"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal data source ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`instanceId`\" pulumi-lang-dotnet=\"`InstanceId`\" pulumi-lang-go=\"`instanceId`\" pulumi-lang-python=\"`instance_id`\" pulumi-lang-yaml=\"`instanceId`\" pulumi-lang-java=\"`instanceId`\"\u003e`instance_id`\u003c/span\u003e\".\n"
                     },
                     "instanceId": {
                         "type": "string",
@@ -18746,7 +18807,8 @@
                         "type": "string"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal data source. ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`instanceId`\" pulumi-lang-dotnet=\"`InstanceId`\" pulumi-lang-go=\"`instanceId`\" pulumi-lang-python=\"`instance_id`\" pulumi-lang-yaml=\"`instanceId`\" pulumi-lang-java=\"`instanceId`\"\u003e`instance_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`userId`\" pulumi-lang-dotnet=\"`UserId`\" pulumi-lang-go=\"`userId`\" pulumi-lang-python=\"`user_id`\" pulumi-lang-yaml=\"`userId`\" pulumi-lang-java=\"`userId`\"\u003e`user_id`\u003c/span\u003e\".\n"
                     },
                     "instanceId": {
                         "type": "string",
@@ -18824,7 +18886,8 @@
                         "description": "Shows if DHCP is enabled for the network.\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`networkId`\" pulumi-lang-dotnet=\"`NetworkId`\" pulumi-lang-go=\"`networkId`\" pulumi-lang-python=\"`network_id`\" pulumi-lang-yaml=\"`networkId`\" pulumi-lang-java=\"`networkId`\"\u003e`network_id`\u003c/span\u003e\".\n"
                     },
                     "ipv4Gateway": {
                         "type": "string",
@@ -18995,7 +19058,8 @@
                         "deprecationMessage": "Deprecated because of the IaaS API v1 -\u003e v2 migration. Will be removed in May 2026."
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`organizationId`\" pulumi-lang-dotnet=\"`OrganizationId`\" pulumi-lang-go=\"`organizationId`\" pulumi-lang-python=\"`organization_id`\" pulumi-lang-yaml=\"`organizationId`\" pulumi-lang-java=\"`organizationId`\"\u003e`organization_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`networkAreaId`\" pulumi-lang-dotnet=\"`NetworkAreaId`\" pulumi-lang-go=\"`networkAreaId`\" pulumi-lang-python=\"`network_area_id`\" pulumi-lang-yaml=\"`networkAreaId`\" pulumi-lang-java=\"`networkAreaId`\"\u003e`network_area_id`\u003c/span\u003e\".\n"
                     },
                     "labels": {
                         "type": "object",
@@ -19089,7 +19153,8 @@
                 "description": "A collection of values returned by getNetworkAreaRegion.\n",
                 "properties": {
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`organizationId`\" pulumi-lang-dotnet=\"`OrganizationId`\" pulumi-lang-go=\"`organizationId`\" pulumi-lang-python=\"`organization_id`\" pulumi-lang-yaml=\"`organizationId`\" pulumi-lang-java=\"`organizationId`\"\u003e`organization_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`networkAreaId`\" pulumi-lang-dotnet=\"`NetworkAreaId`\" pulumi-lang-go=\"`networkAreaId`\" pulumi-lang-python=\"`network_area_id`\" pulumi-lang-yaml=\"`networkAreaId`\" pulumi-lang-java=\"`networkAreaId`\"\u003e`network_area_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e\".\n"
                     },
                     "ipv4": {
                         "$ref": "#/types/stackit:index/getNetworkAreaRegionIpv4:getNetworkAreaRegionIpv4",
@@ -19154,7 +19219,8 @@
                         "description": "Destination of the route.\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal data source ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`organizationId`\" pulumi-lang-dotnet=\"`OrganizationId`\" pulumi-lang-go=\"`organizationId`\" pulumi-lang-python=\"`organization_id`\" pulumi-lang-yaml=\"`organizationId`\" pulumi-lang-java=\"`organizationId`\"\u003e`organization_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`networkAreaId`\" pulumi-lang-dotnet=\"`NetworkAreaId`\" pulumi-lang-go=\"`networkAreaId`\" pulumi-lang-python=\"`network_area_id`\" pulumi-lang-yaml=\"`networkAreaId`\" pulumi-lang-java=\"`networkAreaId`\"\u003e`network_area_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`networkAreaRouteId`\" pulumi-lang-dotnet=\"`NetworkAreaRouteId`\" pulumi-lang-go=\"`networkAreaRouteId`\" pulumi-lang-python=\"`network_area_route_id`\" pulumi-lang-yaml=\"`networkAreaRouteId`\" pulumi-lang-java=\"`networkAreaRouteId`\"\u003e`network_area_route_id`\u003c/span\u003e\".\n"
                     },
                     "labels": {
                         "type": "object",
@@ -19240,7 +19306,8 @@
                         "description": "The device UUID of the network interface.\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal data source ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`networkId`\" pulumi-lang-dotnet=\"`NetworkId`\" pulumi-lang-go=\"`networkId`\" pulumi-lang-python=\"`network_id`\" pulumi-lang-yaml=\"`networkId`\" pulumi-lang-java=\"`networkId`\"\u003e`network_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`networkInterfaceId`\" pulumi-lang-dotnet=\"`NetworkInterfaceId`\" pulumi-lang-go=\"`networkInterfaceId`\" pulumi-lang-python=\"`network_interface_id`\" pulumi-lang-yaml=\"`networkInterfaceId`\" pulumi-lang-java=\"`networkInterfaceId`\"\u003e`network_interface_id`\u003c/span\u003e\".\n"
                     },
                     "ipv4": {
                         "type": "string",
@@ -19339,7 +19406,8 @@
                 "description": "A collection of values returned by getObjectstorageBucket.\n",
                 "properties": {
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal data source identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e\".\n"
                     },
                     "name": {
                         "type": "string",
@@ -19414,7 +19482,8 @@
                         "type": "string"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`credentialsGroupId`\" pulumi-lang-dotnet=\"`CredentialsGroupId`\" pulumi-lang-go=\"`credentialsGroupId`\" pulumi-lang-python=\"`credentials_group_id`\" pulumi-lang-yaml=\"`credentialsGroupId`\" pulumi-lang-java=\"`credentialsGroupId`\"\u003e`credentials_group_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`credentialId`\" pulumi-lang-dotnet=\"`CredentialId`\" pulumi-lang-go=\"`credentialId`\" pulumi-lang-python=\"`credential_id`\" pulumi-lang-yaml=\"`credentialId`\" pulumi-lang-java=\"`credentialId`\"\u003e`credential_id`\u003c/span\u003e\".\n"
                     },
                     "name": {
                         "type": "string"
@@ -19471,7 +19540,8 @@
                         "description": "The credentials group ID.\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal data source identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`credentialsGroupId`\" pulumi-lang-dotnet=\"`CredentialsGroupId`\" pulumi-lang-go=\"`credentialsGroupId`\" pulumi-lang-python=\"`credentials_group_id`\" pulumi-lang-yaml=\"`credentialsGroupId`\" pulumi-lang-java=\"`credentialsGroupId`\"\u003e`credentials_group_id`\u003c/span\u003e\".\n"
                     },
                     "name": {
                         "type": "string",
@@ -19529,7 +19599,8 @@
                 "description": "A collection of values returned by getObservabilityAlertgroup.\n",
                 "properties": {
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`instanceId`\" pulumi-lang-dotnet=\"`InstanceId`\" pulumi-lang-go=\"`instanceId`\" pulumi-lang-python=\"`instance_id`\" pulumi-lang-yaml=\"`instanceId`\" pulumi-lang-java=\"`instanceId`\"\u003e`instance_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e\".\n"
                     },
                     "instanceId": {
                         "type": "string",
@@ -19631,7 +19702,8 @@
                         "description": "Specifies Grafana URL.\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal data source. ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`instanceId`\" pulumi-lang-dotnet=\"`InstanceId`\" pulumi-lang-go=\"`instanceId`\" pulumi-lang-python=\"`instance_id`\" pulumi-lang-yaml=\"`instanceId`\" pulumi-lang-java=\"`instanceId`\"\u003e`instance_id`\u003c/span\u003e\".\n"
                     },
                     "instanceId": {
                         "type": "string",
@@ -19782,7 +19854,8 @@
                 "description": "A collection of values returned by getObservabilityLogalertgroup.\n",
                 "properties": {
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`instanceId`\" pulumi-lang-dotnet=\"`InstanceId`\" pulumi-lang-go=\"`instanceId`\" pulumi-lang-python=\"`instance_id`\" pulumi-lang-yaml=\"`instanceId`\" pulumi-lang-java=\"`instanceId`\"\u003e`instance_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e\".\n"
                     },
                     "instanceId": {
                         "type": "string",
@@ -19851,7 +19924,8 @@
                         "description": "A basic authentication block.\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal data source. ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`instanceId`\" pulumi-lang-dotnet=\"`InstanceId`\" pulumi-lang-go=\"`instanceId`\" pulumi-lang-python=\"`instance_id`\" pulumi-lang-yaml=\"`instanceId`\" pulumi-lang-java=\"`instanceId`\"\u003e`instance_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e\".\n"
                     },
                     "instanceId": {
                         "type": "string",
@@ -19956,7 +20030,8 @@
                         }
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal data source. identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`instanceId`\" pulumi-lang-dotnet=\"`InstanceId`\" pulumi-lang-go=\"`instanceId`\" pulumi-lang-python=\"`instance_id`\" pulumi-lang-yaml=\"`instanceId`\" pulumi-lang-java=\"`instanceId`\"\u003e`instance_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`credentialId`\" pulumi-lang-dotnet=\"`CredentialId`\" pulumi-lang-go=\"`credentialId`\" pulumi-lang-python=\"`credential_id`\" pulumi-lang-yaml=\"`credentialId`\" pulumi-lang-java=\"`credentialId`\"\u003e`credential_id`\u003c/span\u003e\".\n"
                     },
                     "instanceId": {
                         "type": "string",
@@ -20036,7 +20111,8 @@
                         "type": "string"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal data source. identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`instanceId`\" pulumi-lang-dotnet=\"`InstanceId`\" pulumi-lang-go=\"`instanceId`\" pulumi-lang-python=\"`instance_id`\" pulumi-lang-yaml=\"`instanceId`\" pulumi-lang-java=\"`instanceId`\"\u003e`instance_id`\u003c/span\u003e\".\n"
                     },
                     "imageUrl": {
                         "type": "string"
@@ -20124,7 +20200,8 @@
                         "description": "Database ID.\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`instanceId`\" pulumi-lang-dotnet=\"`InstanceId`\" pulumi-lang-go=\"`instanceId`\" pulumi-lang-python=\"`instance_id`\" pulumi-lang-yaml=\"`instanceId`\" pulumi-lang-java=\"`instanceId`\"\u003e`instance_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`databaseId`\" pulumi-lang-dotnet=\"`DatabaseId`\" pulumi-lang-go=\"`databaseId`\" pulumi-lang-python=\"`database_id`\" pulumi-lang-yaml=\"`databaseId`\" pulumi-lang-java=\"`databaseId`\"\u003e`database_id`\u003c/span\u003e\".\n"
                     },
                     "instanceId": {
                         "type": "string",
@@ -20199,7 +20276,8 @@
                         "$ref": "#/types/stackit:index/getPostgresflexInstanceFlavor:getPostgresflexInstanceFlavor"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal data source. ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`instanceId`\" pulumi-lang-dotnet=\"`InstanceId`\" pulumi-lang-go=\"`instanceId`\" pulumi-lang-python=\"`instance_id`\" pulumi-lang-yaml=\"`instanceId`\" pulumi-lang-java=\"`instanceId`\"\u003e`instance_id`\u003c/span\u003e\".\n"
                     },
                     "instanceId": {
                         "type": "string",
@@ -20278,7 +20356,8 @@
                         "type": "string"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal data source. ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`instanceId`\" pulumi-lang-dotnet=\"`InstanceId`\" pulumi-lang-go=\"`instanceId`\" pulumi-lang-python=\"`instance_id`\" pulumi-lang-yaml=\"`instanceId`\" pulumi-lang-java=\"`instanceId`\"\u003e`instance_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`userId`\" pulumi-lang-dotnet=\"`UserId`\" pulumi-lang-go=\"`userId`\" pulumi-lang-python=\"`user_id`\" pulumi-lang-yaml=\"`userId`\" pulumi-lang-java=\"`userId`\"\u003e`user_id`\u003c/span\u003e\".\n"
                     },
                     "instanceId": {
                         "type": "string",
@@ -20350,7 +20429,8 @@
                 "description": "A collection of values returned by getPublicIp.\n",
                 "properties": {
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal datasource ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`publicIpId`\" pulumi-lang-dotnet=\"`PublicIpId`\" pulumi-lang-go=\"`publicIpId`\" pulumi-lang-python=\"`public_ip_id`\" pulumi-lang-yaml=\"`publicIpId`\" pulumi-lang-java=\"`publicIpId`\"\u003e`public_ip_id`\u003c/span\u003e\".\n"
                     },
                     "ip": {
                         "type": "string",
@@ -20404,7 +20484,8 @@
                         "description": "A list of IP range strings (CIDRs) extracted from the public*ip*ranges for easy consumption.\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource ID. It takes the values of \"`public_ip_ranges.*.cidr`\".\n"
                     },
                     "publicIpRanges": {
                         "type": "array",
@@ -20473,7 +20554,8 @@
                         }
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal data source. identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`instanceId`\" pulumi-lang-dotnet=\"`InstanceId`\" pulumi-lang-go=\"`instanceId`\" pulumi-lang-python=\"`instance_id`\" pulumi-lang-yaml=\"`instanceId`\" pulumi-lang-java=\"`instanceId`\"\u003e`instance_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`credentialId`\" pulumi-lang-dotnet=\"`CredentialId`\" pulumi-lang-go=\"`credentialId`\" pulumi-lang-python=\"`credential_id`\" pulumi-lang-yaml=\"`credentialId`\" pulumi-lang-java=\"`credentialId`\"\u003e`credential_id`\u003c/span\u003e\".\n"
                     },
                     "instanceId": {
                         "type": "string",
@@ -20562,7 +20644,8 @@
                         "type": "string"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal data source. identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`instanceId`\" pulumi-lang-dotnet=\"`InstanceId`\" pulumi-lang-go=\"`instanceId`\" pulumi-lang-python=\"`instance_id`\" pulumi-lang-yaml=\"`instanceId`\" pulumi-lang-java=\"`instanceId`\"\u003e`instance_id`\u003c/span\u003e\".\n"
                     },
                     "imageUrl": {
                         "type": "string"
@@ -20655,7 +20738,8 @@
                         }
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal data source. identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`instanceId`\" pulumi-lang-dotnet=\"`InstanceId`\" pulumi-lang-go=\"`instanceId`\" pulumi-lang-python=\"`instance_id`\" pulumi-lang-yaml=\"`instanceId`\" pulumi-lang-java=\"`instanceId`\"\u003e`instance_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`credentialId`\" pulumi-lang-dotnet=\"`CredentialId`\" pulumi-lang-go=\"`credentialId`\" pulumi-lang-python=\"`credential_id`\" pulumi-lang-yaml=\"`credentialId`\" pulumi-lang-java=\"`credentialId`\"\u003e`credential_id`\u003c/span\u003e\".\n"
                     },
                     "instanceId": {
                         "type": "string",
@@ -20736,7 +20820,8 @@
                         "type": "string"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal data source. identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`instanceId`\" pulumi-lang-dotnet=\"`InstanceId`\" pulumi-lang-go=\"`instanceId`\" pulumi-lang-python=\"`instance_id`\" pulumi-lang-yaml=\"`instanceId`\" pulumi-lang-java=\"`instanceId`\"\u003e`instance_id`\u003c/span\u003e\".\n"
                     },
                     "imageUrl": {
                         "type": "string"
@@ -20818,7 +20903,8 @@
                         "description": "Folder UUID identifier. Globally unique folder identifier\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`containerId`\" pulumi-lang-dotnet=\"`ContainerId`\" pulumi-lang-go=\"`containerId`\" pulumi-lang-python=\"`container_id`\" pulumi-lang-yaml=\"`containerId`\" pulumi-lang-java=\"`containerId`\"\u003e`container_id`\u003c/span\u003e\".\n"
                     },
                     "labels": {
                         "type": "object",
@@ -20881,7 +20967,8 @@
                         "description": "Date-time at which the project was created.\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal data source. ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`containerId`\" pulumi-lang-dotnet=\"`ContainerId`\" pulumi-lang-go=\"`containerId`\" pulumi-lang-python=\"`container_id`\" pulumi-lang-yaml=\"`containerId`\" pulumi-lang-java=\"`containerId`\"\u003e`container_id`\u003c/span\u003e\".\n"
                     },
                     "labels": {
                         "type": "object",
@@ -20967,7 +21054,8 @@
                         "description": "This controls whether dynamic routes are propagated to this routing table\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal datasource ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`organizationId`\" pulumi-lang-dotnet=\"`OrganizationId`\" pulumi-lang-go=\"`organizationId`\" pulumi-lang-python=\"`organization_id`\" pulumi-lang-yaml=\"`organizationId`\" pulumi-lang-java=\"`organizationId`\"\u003e`organization_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`networkAreaId`\" pulumi-lang-dotnet=\"`NetworkAreaId`\" pulumi-lang-go=\"`networkAreaId`\" pulumi-lang-python=\"`network_area_id`\" pulumi-lang-yaml=\"`networkAreaId`\" pulumi-lang-java=\"`networkAreaId`\"\u003e`network_area_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`routingTableId`\" pulumi-lang-dotnet=\"`RoutingTableId`\" pulumi-lang-go=\"`routingTableId`\" pulumi-lang-python=\"`routing_table_id`\" pulumi-lang-yaml=\"`routingTableId`\" pulumi-lang-java=\"`routingTableId`\"\u003e`routing_table_id`\u003c/span\u003e\".\n"
                     },
                     "labels": {
                         "type": "object",
@@ -21068,7 +21156,8 @@
                         "description": "Destination of the route.\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal datasource ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`organizationId`\" pulumi-lang-dotnet=\"`OrganizationId`\" pulumi-lang-go=\"`organizationId`\" pulumi-lang-python=\"`organization_id`\" pulumi-lang-yaml=\"`organizationId`\" pulumi-lang-java=\"`organizationId`\"\u003e`organization_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`networkAreaId`\" pulumi-lang-dotnet=\"`NetworkAreaId`\" pulumi-lang-go=\"`networkAreaId`\" pulumi-lang-python=\"`network_area_id`\" pulumi-lang-yaml=\"`networkAreaId`\" pulumi-lang-java=\"`networkAreaId`\"\u003e`network_area_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`routingTableId`\" pulumi-lang-dotnet=\"`RoutingTableId`\" pulumi-lang-go=\"`routingTableId`\" pulumi-lang-python=\"`routing_table_id`\" pulumi-lang-yaml=\"`routingTableId`\" pulumi-lang-java=\"`routingTableId`\"\u003e`routing_table_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`routeId`\" pulumi-lang-dotnet=\"`RouteId`\" pulumi-lang-go=\"`routeId`\" pulumi-lang-python=\"`route_id`\" pulumi-lang-yaml=\"`routeId`\" pulumi-lang-java=\"`routeId`\"\u003e`route_id`\u003c/span\u003e\".\n"
                     },
                     "labels": {
                         "type": "object",
@@ -21154,7 +21243,8 @@
                 "description": "A collection of values returned by getRoutingTableRoutes.\n",
                 "properties": {
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal datasource ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`organizationId`\" pulumi-lang-dotnet=\"`OrganizationId`\" pulumi-lang-go=\"`organizationId`\" pulumi-lang-python=\"`organization_id`\" pulumi-lang-yaml=\"`organizationId`\" pulumi-lang-java=\"`organizationId`\"\u003e`organization_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`networkAreaId`\" pulumi-lang-dotnet=\"`NetworkAreaId`\" pulumi-lang-go=\"`networkAreaId`\" pulumi-lang-python=\"`network_area_id`\" pulumi-lang-yaml=\"`networkAreaId`\" pulumi-lang-java=\"`networkAreaId`\"\u003e`network_area_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`routingTableId`\" pulumi-lang-dotnet=\"`RoutingTableId`\" pulumi-lang-go=\"`routingTableId`\" pulumi-lang-python=\"`routing_table_id`\" pulumi-lang-yaml=\"`routingTableId`\" pulumi-lang-java=\"`routingTableId`\"\u003e`routing_table_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`routeId`\" pulumi-lang-dotnet=\"`RouteId`\" pulumi-lang-go=\"`routeId`\" pulumi-lang-python=\"`route_id`\" pulumi-lang-yaml=\"`routeId`\" pulumi-lang-java=\"`routeId`\"\u003e`route_id`\u003c/span\u003e\".\n"
                     },
                     "networkAreaId": {
                         "type": "string",
@@ -21218,7 +21308,8 @@
                 "description": "A collection of values returned by getRoutingTables.\n",
                 "properties": {
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal datasource ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`organizationId`\" pulumi-lang-dotnet=\"`OrganizationId`\" pulumi-lang-go=\"`organizationId`\" pulumi-lang-python=\"`organization_id`\" pulumi-lang-yaml=\"`organizationId`\" pulumi-lang-java=\"`organizationId`\"\u003e`organization_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`networkAreaId`\" pulumi-lang-dotnet=\"`NetworkAreaId`\" pulumi-lang-go=\"`networkAreaId`\" pulumi-lang-python=\"`network_area_id`\" pulumi-lang-yaml=\"`networkAreaId`\" pulumi-lang-java=\"`networkAreaId`\"\u003e`network_area_id`\u003c/span\u003e\".\n"
                     },
                     "items": {
                         "type": "array",
@@ -21281,7 +21372,8 @@
                         "description": "The time when the organization was created\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource ID, structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`orgId`\" pulumi-lang-dotnet=\"`OrgId`\" pulumi-lang-go=\"`orgId`\" pulumi-lang-python=\"`org_id`\" pulumi-lang-yaml=\"`orgId`\" pulumi-lang-java=\"`orgId`\"\u003e`org_id`\u003c/span\u003e\".\n"
                     },
                     "name": {
                         "type": "string",
@@ -21368,7 +21460,8 @@
                         "description": "The time when the organization manager was created\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource ID, structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`orgId`\" pulumi-lang-dotnet=\"`OrgId`\" pulumi-lang-go=\"`orgId`\" pulumi-lang-python=\"`org_id`\" pulumi-lang-yaml=\"`orgId`\" pulumi-lang-java=\"`orgId`\"\u003e`org_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`userId`\" pulumi-lang-dotnet=\"`UserId`\" pulumi-lang-go=\"`userId`\" pulumi-lang-python=\"`user_id`\" pulumi-lang-yaml=\"`userId`\" pulumi-lang-java=\"`userId`\"\u003e`user_id`\u003c/span\u003e\".\n"
                     },
                     "orgId": {
                         "type": "string",
@@ -21453,7 +21546,8 @@
                         "description": "The name of the platform\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource ID, structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`platformId`\" pulumi-lang-dotnet=\"`PlatformId`\" pulumi-lang-go=\"`platformId`\" pulumi-lang-python=\"`platform_id`\" pulumi-lang-yaml=\"`platformId`\" pulumi-lang-java=\"`platformId`\"\u003e`platform_id`\u003c/span\u003e\".\n"
                     },
                     "platformId": {
                         "type": "string",
@@ -21516,7 +21610,8 @@
                         "description": "The access control list for this instance. Each entry is an IP or IP range that is permitted to access, in CIDR notation\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`instanceId`\" pulumi-lang-dotnet=\"`InstanceId`\" pulumi-lang-go=\"`instanceId`\" pulumi-lang-python=\"`instance_id`\" pulumi-lang-yaml=\"`instanceId`\" pulumi-lang-java=\"`instanceId`\"\u003e`instance_id`\u003c/span\u003e\".\n"
                     },
                     "instanceId": {
                         "type": "string",
@@ -21574,7 +21669,8 @@
                         "description": "A user chosen description to differentiate between multiple users. Can't be changed after creation.\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal data source identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`instanceId`\" pulumi-lang-dotnet=\"`InstanceId`\" pulumi-lang-go=\"`instanceId`\" pulumi-lang-python=\"`instance_id`\" pulumi-lang-yaml=\"`instanceId`\" pulumi-lang-java=\"`instanceId`\"\u003e`instance_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`userId`\" pulumi-lang-dotnet=\"`UserId`\" pulumi-lang-go=\"`userId`\" pulumi-lang-python=\"`user_id`\" pulumi-lang-yaml=\"`userId`\" pulumi-lang-java=\"`userId`\"\u003e`user_id`\u003c/span\u003e\".\n"
                     },
                     "instanceId": {
                         "type": "string",
@@ -21641,7 +21737,8 @@
                         "description": "The description of the security group.\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`securityGroupId`\" pulumi-lang-dotnet=\"`SecurityGroupId`\" pulumi-lang-go=\"`securityGroupId`\" pulumi-lang-python=\"`security_group_id`\" pulumi-lang-yaml=\"`securityGroupId`\" pulumi-lang-java=\"`securityGroupId`\"\u003e`security_group_id`\u003c/span\u003e\".\n"
                     },
                     "labels": {
                         "type": "object",
@@ -21732,7 +21829,8 @@
                         "description": "ICMP Parameters.\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal datasource ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`securityGroupId`\" pulumi-lang-dotnet=\"`SecurityGroupId`\" pulumi-lang-go=\"`securityGroupId`\" pulumi-lang-python=\"`security_group_id`\" pulumi-lang-yaml=\"`securityGroupId`\" pulumi-lang-java=\"`securityGroupId`\"\u003e`security_group_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`securityGroupRuleId`\" pulumi-lang-dotnet=\"`SecurityGroupRuleId`\" pulumi-lang-go=\"`securityGroupRuleId`\" pulumi-lang-python=\"`security_group_rule_id`\" pulumi-lang-yaml=\"`securityGroupRuleId`\" pulumi-lang-java=\"`securityGroupRuleId`\"\u003e`security_group_rule_id`\u003c/span\u003e\".\n"
                     },
                     "ipRange": {
                         "type": "string",
@@ -21828,7 +21926,8 @@
                         "description": "Date-time when the server was created\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`serverId`\" pulumi-lang-dotnet=\"`ServerId`\" pulumi-lang-go=\"`serverId`\" pulumi-lang-python=\"`server_id`\" pulumi-lang-yaml=\"`serverId`\" pulumi-lang-java=\"`serverId`\"\u003e`server_id`\u003c/span\u003e\".\n"
                     },
                     "imageId": {
                         "type": "string",
@@ -21951,7 +22050,8 @@
                         "description": "Is the backup schedule enabled or disabled.\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`serverId`\" pulumi-lang-dotnet=\"`ServerId`\" pulumi-lang-go=\"`serverId`\" pulumi-lang-python=\"`server_id`\" pulumi-lang-yaml=\"`serverId`\" pulumi-lang-java=\"`serverId`\"\u003e`server_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`backupScheduleId`\" pulumi-lang-dotnet=\"`BackupScheduleId`\" pulumi-lang-go=\"`backupScheduleId`\" pulumi-lang-python=\"`backup_schedule_id`\" pulumi-lang-yaml=\"`backupScheduleId`\" pulumi-lang-java=\"`backupScheduleId`\"\u003e`backup_schedule_id`\u003c/span\u003e\".\n"
                     },
                     "name": {
                         "type": "string",
@@ -22015,7 +22115,8 @@
                 "description": "A collection of values returned by getServerBackupSchedules.\n",
                 "properties": {
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal data source identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`serverId`\" pulumi-lang-dotnet=\"`ServerId`\" pulumi-lang-go=\"`serverId`\" pulumi-lang-python=\"`server_id`\" pulumi-lang-yaml=\"`serverId`\" pulumi-lang-java=\"`serverId`\"\u003e`server_id`\u003c/span\u003e\".\n"
                     },
                     "items": {
                         "type": "array",
@@ -22082,7 +22183,8 @@
                         "description": "Is the update schedule enabled or disabled.\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`serverId`\" pulumi-lang-dotnet=\"`ServerId`\" pulumi-lang-go=\"`serverId`\" pulumi-lang-python=\"`server_id`\" pulumi-lang-yaml=\"`serverId`\" pulumi-lang-java=\"`serverId`\"\u003e`server_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`updateScheduleId`\" pulumi-lang-dotnet=\"`UpdateScheduleId`\" pulumi-lang-go=\"`updateScheduleId`\" pulumi-lang-python=\"`update_schedule_id`\" pulumi-lang-yaml=\"`updateScheduleId`\" pulumi-lang-java=\"`updateScheduleId`\"\u003e`update_schedule_id`\u003c/span\u003e\".\n"
                     },
                     "maintenanceWindow": {
                         "type": "integer",
@@ -22154,7 +22256,8 @@
                 "description": "A collection of values returned by getServerUpdateSchedules.\n",
                 "properties": {
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal data source identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`serverId`\" pulumi-lang-dotnet=\"`ServerId`\" pulumi-lang-go=\"`serverId`\" pulumi-lang-python=\"`server_id`\" pulumi-lang-yaml=\"`serverId`\" pulumi-lang-java=\"`serverId`\"\u003e`server_id`\u003c/span\u003e\".\n"
                     },
                     "items": {
                         "type": "array",
@@ -22212,7 +22315,8 @@
                         "description": "Email of the service account.\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource ID, structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`email`\" pulumi-lang-dotnet=\"`Email`\" pulumi-lang-go=\"`email`\" pulumi-lang-python=\"`email`\" pulumi-lang-yaml=\"`email`\" pulumi-lang-java=\"`email`\"\u003e`email`\u003c/span\u003e\".\n"
                     },
                     "name": {
                         "type": "string",
@@ -22260,7 +22364,8 @@
                 "description": "A collection of values returned by getSfsExportPolicy.\n",
                 "properties": {
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`policyId`\" pulumi-lang-dotnet=\"`PolicyId`\" pulumi-lang-go=\"`policyId`\" pulumi-lang-python=\"`policy_id`\" pulumi-lang-yaml=\"`policyId`\" pulumi-lang-java=\"`policyId`\"\u003e`policy_id`\u003c/span\u003e\".\n"
                     },
                     "name": {
                         "type": "string",
@@ -22328,7 +22433,8 @@
                         "description": "Availability zone.\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`resourcePoolId`\" pulumi-lang-dotnet=\"`ResourcePoolId`\" pulumi-lang-go=\"`resourcePoolId`\" pulumi-lang-python=\"`resource_pool_id`\" pulumi-lang-yaml=\"`resourcePoolId`\" pulumi-lang-java=\"`resourcePoolId`\"\u003e`resource_pool_id`\u003c/span\u003e\".\n"
                     },
                     "ipAcls": {
                         "type": "array",
@@ -22418,7 +22524,8 @@
                 "description": "A collection of values returned by getSfsResourcePoolSnapshot.\n",
                 "properties": {
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`resourcePoolId`\" pulumi-lang-dotnet=\"`ResourcePoolId`\" pulumi-lang-go=\"`resourcePoolId`\" pulumi-lang-python=\"`resource_pool_id`\" pulumi-lang-yaml=\"`resourcePoolId`\" pulumi-lang-java=\"`resourcePoolId`\"\u003e`resource_pool_id`\u003c/span\u003e\".\n"
                     },
                     "projectId": {
                         "type": "string",
@@ -22486,7 +22593,8 @@
                         "description": "Name of the Share Export Policy to use in the Share.\nNote that if this is not set, the Share can only be mounted in read only by\nclients with IPs matching the IP ACL of the Resource Pool hosting this Share.\nYou can also assign a Share Export Policy after creating the Share\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`shareId`\" pulumi-lang-dotnet=\"`ShareId`\" pulumi-lang-go=\"`shareId`\" pulumi-lang-python=\"`share_id`\" pulumi-lang-yaml=\"`shareId`\" pulumi-lang-java=\"`shareId`\"\u003e`share_id`\u003c/span\u003e\".\n"
                     },
                     "mountPath": {
                         "type": "string",
@@ -22576,7 +22684,8 @@
                         "description": "One or more hibernation block as defined below.\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal data source. ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e\".\n"
                     },
                     "kubernetesVersionMin": {
                         "type": "string",
@@ -22772,7 +22881,8 @@
                         "$ref": "#/types/stackit:index/getSqlserverflexInstanceFlavor:getSqlserverflexInstanceFlavor"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal data source. ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`instanceId`\" pulumi-lang-dotnet=\"`InstanceId`\" pulumi-lang-go=\"`instanceId`\" pulumi-lang-python=\"`instance_id`\" pulumi-lang-yaml=\"`instanceId`\" pulumi-lang-java=\"`instanceId`\"\u003e`instance_id`\u003c/span\u003e\".\n"
                     },
                     "instanceId": {
                         "type": "string",
@@ -22856,7 +22966,8 @@
                         "type": "string"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal data source. ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`instanceId`\" pulumi-lang-dotnet=\"`InstanceId`\" pulumi-lang-go=\"`instanceId`\" pulumi-lang-python=\"`instance_id`\" pulumi-lang-yaml=\"`instanceId`\" pulumi-lang-java=\"`instanceId`\"\u003e`instance_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`userId`\" pulumi-lang-dotnet=\"`UserId`\" pulumi-lang-go=\"`userId`\" pulumi-lang-python=\"`user_id`\" pulumi-lang-yaml=\"`userId`\" pulumi-lang-java=\"`userId`\"\u003e`user_id`\u003c/span\u003e\".\n"
                     },
                     "instanceId": {
                         "type": "string",
@@ -22942,7 +23053,8 @@
                         "description": "Indicates if the volume is encrypted.\n"
                     },
                     "id": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "Terraform's internal resource ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`volumeId`\" pulumi-lang-dotnet=\"`VolumeId`\" pulumi-lang-go=\"`volumeId`\" pulumi-lang-python=\"`volume_id`\" pulumi-lang-yaml=\"`volumeId`\" pulumi-lang-java=\"`volumeId`\"\u003e`volume_id`\u003c/span\u003e\".\n"
                     },
                     "labels": {
                         "type": "object",

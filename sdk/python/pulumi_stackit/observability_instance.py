@@ -35,6 +35,7 @@ class ObservabilityInstanceArgs:
                  traces_retention_days: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a ObservabilityInstance resource.
+
         :param pulumi.Input[_builtins.str] plan_name: Specifies the Observability plan. E.g. `Observability-Monitoring-Medium-EU01`.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the instance is associated.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The access control list for this instance. Each entry is an IP address range that is permitted to access, in CIDR notation.
@@ -251,6 +252,7 @@ class _ObservabilityInstanceState:
                  zipkin_spans_url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ObservabilityInstance resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The access control list for this instance. Each entry is an IP address range that is permitted to access, in CIDR notation.
         :param pulumi.Input['ObservabilityInstanceAlertConfigArgs'] alert_config: Alert configuration for the instance.
         :param pulumi.Input[_builtins.str] alerting_url: Specifies Alerting URL.
@@ -720,6 +722,7 @@ class ObservabilityInstance(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The access control list for this instance. Each entry is an IP address range that is permitted to access, in CIDR notation.
@@ -745,6 +748,7 @@ class ObservabilityInstance(pulumi.CustomResource):
         Observability instance resource schema. Must have a `region` specified in the provider configuration.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param ObservabilityInstanceArgs args: The arguments to use to populate this resource's properties.

@@ -118,6 +118,9 @@ namespace Pulumi.Stackit
         /// Shows if DHCP is enabled for the network.
         /// </summary>
         public readonly bool Dhcp;
+        /// <summary>
+        /// Terraform's internal resource ID. It is structured as "`ProjectId`,`NetworkId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The IPv4 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.

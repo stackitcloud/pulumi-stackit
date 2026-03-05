@@ -10,6 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Stackit
 {
     /// <summary>
+    /// ## Setting up supporting infrastructure
+    /// 
+    /// The example below creates the supporting infrastructure using the STACKIT Terraform provider, including the network, network interface, a public IP address and server resources.
+    /// 
     /// ## Example Usage
     /// </summary>
     [StackitResourceType("stackit:index/loadbalancer:Loadbalancer")]

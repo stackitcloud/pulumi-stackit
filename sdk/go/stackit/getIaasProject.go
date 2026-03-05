@@ -36,7 +36,8 @@ type GetIaasProjectResult struct {
 	AreaId string `pulumi:"areaId"`
 	// Date-time when the project was created.
 	CreatedAt string `pulumi:"createdAt"`
-	Id        string `pulumi:"id"`
+	// Terraform's internal resource ID. It is structured as "`projectId`".
+	Id string `pulumi:"id"`
 	// Specifies if the project has internet_access
 	InternetAccess bool `pulumi:"internetAccess"`
 	// STACKIT project ID.
@@ -95,6 +96,7 @@ func (o GetIaasProjectResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIaasProjectResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// Terraform's internal resource ID. It is structured as "`projectId`".
 func (o GetIaasProjectResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetIaasProjectResult) string { return v.Id }).(pulumi.StringOutput)
 }

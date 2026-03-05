@@ -120,6 +120,9 @@ namespace Pulumi.Stackit
     [OutputType]
     public sealed class GetSfsResourcePoolSnapshotResult
     {
+        /// <summary>
+        /// Terraform's internal resource ID. It is structured as "`ProjectId`,`Region`,`ResourcePoolId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// STACKIT project ID to which the resource pool snapshot is associated.

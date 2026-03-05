@@ -151,6 +151,9 @@ namespace Pulumi.Stackit
         /// This controls whether dynamic routes are propagated to this routing table
         /// </summary>
         public readonly bool DynamicRoutes;
+        /// <summary>
+        /// Terraform's internal datasource ID. It is structured as "`OrganizationId`,`Region`,`NetworkAreaId`,`RoutingTableId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Labels are key-value string pairs which can be attached to a resource container

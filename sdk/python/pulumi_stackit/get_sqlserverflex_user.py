@@ -63,6 +63,9 @@ class GetSqlserverflexUserResult:
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        Terraform's internal data source. ID. It is structured as "`project_id`,`region`,`instance_id`,`user_id`".
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property

@@ -42,7 +42,8 @@ type LookupImageResult struct {
 	Config GetImageConfig `pulumi:"config"`
 	// The disk format of the image.
 	DiskFormat string `pulumi:"diskFormat"`
-	Id         string `pulumi:"id"`
+	// Terraform's internal resource ID. It is structured as "`projectId`,`region`,`imageId`".
+	Id string `pulumi:"id"`
 	// The image ID.
 	ImageId string `pulumi:"imageId"`
 	// Labels are key-value string pairs which can be attached to a resource container
@@ -116,6 +117,7 @@ func (o LookupImageResultOutput) DiskFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.DiskFormat }).(pulumi.StringOutput)
 }
 
+// Terraform's internal resource ID. It is structured as "`projectId`,`region`,`imageId`".
 func (o LookupImageResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupImageResult) string { return v.Id }).(pulumi.StringOutput)
 }

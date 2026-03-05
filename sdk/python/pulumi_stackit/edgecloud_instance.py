@@ -26,6 +26,7 @@ class EdgecloudInstanceArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EdgecloudInstance resource.
+
         :param pulumi.Input[_builtins.str] display_name: Display name shown for the Edge Cloud instance. Has to be a valid hostname, with a length between 4 and 8 characters.
         :param pulumi.Input[_builtins.str] plan_id: STACKIT Edge Plan ID for the Edge Cloud instance, has to be the UUID of an existing plan.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the Edge Cloud instance is associated.
@@ -115,6 +116,7 @@ class _EdgecloudInstanceState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EdgecloudInstance resources.
+
         :param pulumi.Input[_builtins.str] created: The date and time the creation of the instance was triggered.
         :param pulumi.Input[_builtins.str] description: Description for your STACKIT Edge Cloud instance. Max length is 256 characters
         :param pulumi.Input[_builtins.str] display_name: Display name shown for the Edge Cloud instance. Has to be a valid hostname, with a length between 4 and 8 characters.
@@ -273,6 +275,7 @@ class EdgecloudInstance(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: Description for your STACKIT Edge Cloud instance. Max length is 256 characters
@@ -294,6 +297,7 @@ class EdgecloudInstance(pulumi.CustomResource):
         > This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param EdgecloudInstanceArgs args: The arguments to use to populate this resource's properties.

@@ -48,6 +48,9 @@ export interface GetRabbitmqCredentialResult {
     readonly hosts: string[];
     readonly httpApiUri: string;
     readonly httpApiUris: string[];
+    /**
+     * Terraform's internal data source. identifier. It is structured as "`projectId`,`instanceId`,`credentialId`".
+     */
     readonly id: string;
     /**
      * ID of the RabbitMQ instance.

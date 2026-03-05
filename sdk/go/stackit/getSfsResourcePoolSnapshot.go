@@ -38,6 +38,7 @@ type GetSfsResourcePoolSnapshotArgs struct {
 
 // A collection of values returned by getSfsResourcePoolSnapshot.
 type GetSfsResourcePoolSnapshotResult struct {
+	// Terraform's internal resource ID. It is structured as "`projectId`,`region`,`resourcePoolId`".
 	Id string `pulumi:"id"`
 	// STACKIT project ID to which the resource pool snapshot is associated.
 	ProjectId string `pulumi:"projectId"`
@@ -87,6 +88,7 @@ func (o GetSfsResourcePoolSnapshotResultOutput) ToGetSfsResourcePoolSnapshotResu
 	return o
 }
 
+// Terraform's internal resource ID. It is structured as "`projectId`,`region`,`resourcePoolId`".
 func (o GetSfsResourcePoolSnapshotResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSfsResourcePoolSnapshotResult) string { return v.Id }).(pulumi.StringOutput)
 }

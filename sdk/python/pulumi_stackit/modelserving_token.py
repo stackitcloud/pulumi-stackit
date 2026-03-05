@@ -27,6 +27,7 @@ class ModelservingTokenArgs:
                  ttl_duration: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ModelservingToken resource.
+
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the AI model serving auth token is associated.
         :param pulumi.Input[_builtins.str] description: The description of the AI model serving auth token.
         :param pulumi.Input[_builtins.str] name: Name of the AI model serving auth token.
@@ -134,6 +135,7 @@ class _ModelservingTokenState:
                  valid_until: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ModelservingToken resources.
+
         :param pulumi.Input[_builtins.str] description: The description of the AI model serving auth token.
         :param pulumi.Input[_builtins.str] name: Name of the AI model serving auth token.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the AI model serving auth token is associated.
@@ -307,6 +309,7 @@ class ModelservingToken(pulumi.CustomResource):
 
         ### Automatically rotate AI model serving token
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the AI model serving auth token.
@@ -328,6 +331,7 @@ class ModelservingToken(pulumi.CustomResource):
         ## Example Usage
 
         ### Automatically rotate AI model serving token
+
 
         :param str resource_name: The name of the resource.
         :param ModelservingTokenArgs args: The arguments to use to populate this resource's properties.

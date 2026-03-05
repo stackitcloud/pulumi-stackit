@@ -135,7 +135,7 @@ class GetDnsZoneResult:
     @pulumi.getter(name="dnsName")
     def dns_name(self) -> Optional[_builtins.str]:
         """
-        The zone name. E.g. `example.com`
+        The zone name. E.g. `example.com` (must not end with a trailing dot).
         """
         return pulumi.get(self, "dns_name")
 
@@ -150,6 +150,9 @@ class GetDnsZoneResult:
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        Terraform's internal data source. ID. It is structured as "`project_id`,`zone_id`".
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -305,7 +308,7 @@ def get_dns_zone(dns_name: Optional[_builtins.str] = None,
     ## Example Usage
 
 
-    :param _builtins.str dns_name: The zone name. E.g. `example.com`
+    :param _builtins.str dns_name: The zone name. E.g. `example.com` (must not end with a trailing dot).
     :param _builtins.str project_id: STACKIT project ID to which the dns zone is associated.
     :param _builtins.str zone_id: The zone ID.
     """
@@ -349,7 +352,7 @@ def get_dns_zone_output(dns_name: Optional[pulumi.Input[Optional[_builtins.str]]
     ## Example Usage
 
 
-    :param _builtins.str dns_name: The zone name. E.g. `example.com`
+    :param _builtins.str dns_name: The zone name. E.g. `example.com` (must not end with a trailing dot).
     :param _builtins.str project_id: STACKIT project ID to which the dns zone is associated.
     :param _builtins.str zone_id: The zone ID.
     """

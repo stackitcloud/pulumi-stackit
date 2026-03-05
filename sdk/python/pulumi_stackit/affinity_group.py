@@ -25,6 +25,7 @@ class AffinityGroupArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a AffinityGroup resource.
+
         :param pulumi.Input[_builtins.str] policy: The policy of the affinity group.
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the affinity group is associated.
         :param pulumi.Input[_builtins.str] name: The name of the affinity group.
@@ -97,6 +98,7 @@ class _AffinityGroupState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AffinityGroup resources.
+
         :param pulumi.Input[_builtins.str] affinity_group_id: The affinity group ID.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] members: The servers that are part of the affinity group.
         :param pulumi.Input[_builtins.str] name: The name of the affinity group.
@@ -206,6 +208,7 @@ class AffinityGroup(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The name of the affinity group.
@@ -223,6 +226,7 @@ class AffinityGroup(pulumi.CustomResource):
         Affinity Group schema.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param AffinityGroupArgs args: The arguments to use to populate this resource's properties.

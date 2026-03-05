@@ -79,6 +79,9 @@ class GetScfPlatformResult:
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        Terraform's internal resource ID, structured as "`project_id`,`region`,`platform_id`".
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property

@@ -44,6 +44,9 @@ export interface GetRoutingTablesArgs {
  * A collection of values returned by getRoutingTables.
  */
 export interface GetRoutingTablesResult {
+    /**
+     * Terraform's internal datasource ID. It is structured as "`organizationId`,`region`,`networkAreaId`".
+     */
     readonly id: string;
     /**
      * List of routing tables.

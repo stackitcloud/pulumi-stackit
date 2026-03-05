@@ -47,6 +47,9 @@ class GetNetworkAreaRegionResult:
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        Terraform's internal resource ID. It is structured as "`organization_id`,`network_area_id`,`region`".
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property

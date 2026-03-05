@@ -40,7 +40,8 @@ type LookupSfsResourcePoolArgs struct {
 type LookupSfsResourcePoolResult struct {
 	// Availability zone.
 	AvailabilityZone string `pulumi:"availabilityZone"`
-	Id               string `pulumi:"id"`
+	// Terraform's internal resource ID. It is structured as "`projectId`,`resourcePoolId`".
+	Id string `pulumi:"id"`
 	// List of IPs that can mount the resource pool in read-only; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
 	IpAcls []string `pulumi:"ipAcls"`
 	// Name of the resource pool.
@@ -106,6 +107,7 @@ func (o LookupSfsResourcePoolResultOutput) AvailabilityZone() pulumi.StringOutpu
 	return o.ApplyT(func(v LookupSfsResourcePoolResult) string { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
+// Terraform's internal resource ID. It is structured as "`projectId`,`resourcePoolId`".
 func (o LookupSfsResourcePoolResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSfsResourcePoolResult) string { return v.Id }).(pulumi.StringOutput)
 }

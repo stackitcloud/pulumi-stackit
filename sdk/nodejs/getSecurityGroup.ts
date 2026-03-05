@@ -44,6 +44,9 @@ export interface GetSecurityGroupResult {
      * The description of the security group.
      */
     readonly description: string;
+    /**
+     * Terraform's internal resource ID. It is structured as "`projectId`,`region`,`securityGroupId`".
+     */
     readonly id: string;
     /**
      * Labels are key-value string pairs which can be attached to a resource container

@@ -96,6 +96,9 @@ namespace Pulumi.Stackit
     [OutputType]
     public sealed class GetEdgecloudPlansResult
     {
+        /// <summary>
+        /// Terraform's internal data source ID, `ProjectId` is used here.
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// A list of Edge Cloud Plans.

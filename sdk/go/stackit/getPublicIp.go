@@ -36,6 +36,7 @@ type LookupPublicIpArgs struct {
 
 // A collection of values returned by getPublicIp.
 type LookupPublicIpResult struct {
+	// Terraform's internal datasource ID. It is structured as "`projectId`,`region`,`publicIpId`".
 	Id string `pulumi:"id"`
 	// The IP address.
 	Ip string `pulumi:"ip"`
@@ -89,6 +90,7 @@ func (o LookupPublicIpResultOutput) ToLookupPublicIpResultOutputWithContext(ctx 
 	return o
 }
 
+// Terraform's internal datasource ID. It is structured as "`projectId`,`region`,`publicIpId`".
 func (o LookupPublicIpResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPublicIpResult) string { return v.Id }).(pulumi.StringOutput)
 }

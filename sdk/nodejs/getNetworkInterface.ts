@@ -53,6 +53,9 @@ export interface GetNetworkInterfaceResult {
      * The device UUID of the network interface.
      */
     readonly device: string;
+    /**
+     * Terraform's internal data source ID. It is structured as "`projectId`,`region`,`networkId`,`networkInterfaceId`".
+     */
     readonly id: string;
     /**
      * The IPv4 address.

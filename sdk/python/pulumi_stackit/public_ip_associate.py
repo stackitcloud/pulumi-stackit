@@ -25,6 +25,7 @@ class PublicIpAssociateArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PublicIpAssociate resource.
+
         :param pulumi.Input[_builtins.str] network_interface_id: The ID of the network interface (or virtual IP) to which the public IP should be attached to.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the public IP is associated.
         :param pulumi.Input[_builtins.str] public_ip_id: The public IP ID.
@@ -95,6 +96,7 @@ class _PublicIpAssociateState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PublicIpAssociate resources.
+
         :param pulumi.Input[_builtins.str] ip: The IP address.
         :param pulumi.Input[_builtins.str] network_interface_id: The ID of the network interface (or virtual IP) to which the public IP should be attached to.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the public IP is associated.
@@ -192,6 +194,7 @@ class PublicIpAssociate(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] network_interface_id: The ID of the network interface (or virtual IP) to which the public IP should be attached to.
@@ -212,6 +215,7 @@ class PublicIpAssociate(pulumi.CustomResource):
         Using both resources together for the same public IP or network interface WILL lead to conflicts, as they both have control of the public IP and network interface association.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param PublicIpAssociateArgs args: The arguments to use to populate this resource's properties.

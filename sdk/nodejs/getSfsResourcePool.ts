@@ -46,6 +46,9 @@ export interface GetSfsResourcePoolResult {
      * Availability zone.
      */
     readonly availabilityZone: string;
+    /**
+     * Terraform's internal resource ID. It is structured as "`projectId`,`resourcePoolId`".
+     */
     readonly id: string;
     /**
      * List of IPs that can mount the resource pool in read-only; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).

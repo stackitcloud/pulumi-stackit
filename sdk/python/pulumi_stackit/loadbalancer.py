@@ -33,6 +33,7 @@ class LoadbalancerArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Loadbalancer resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['LoadbalancerListenerArgs']]] listeners: List of all listeners which will accept traffic. Limited to 20.
         :param pulumi.Input[Sequence[pulumi.Input['LoadbalancerNetworkArgs']]] networks: List of networks that listeners and targets reside in.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the Load Balancer is associated.
@@ -199,6 +200,7 @@ class _LoadbalancerState:
                  target_pools: Optional[pulumi.Input[Sequence[pulumi.Input['LoadbalancerTargetPoolArgs']]]] = None):
         """
         Input properties used for looking up and filtering Loadbalancer resources.
+
         :param pulumi.Input[_builtins.bool] disable_security_group_assignment: If set to true, this will disable the automatic assignment of a security group to the load balancer's targets. This option is primarily used to allow targets that are not within the load balancer's own network or SNA (STACKIT network area). When this is enabled, you are fully responsible for ensuring network connectivity to the targets, including managing all routing and security group rules manually. This setting cannot be changed after the load balancer is created.
         :param pulumi.Input[_builtins.str] external_address: External Load Balancer IP address where this Load Balancer is exposed.
         :param pulumi.Input[Sequence[pulumi.Input['LoadbalancerListenerArgs']]] listeners: List of all listeners which will accept traffic. Limited to 20.
@@ -400,7 +402,12 @@ class Loadbalancer(pulumi.CustomResource):
                  target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadbalancerTargetPoolArgs', 'LoadbalancerTargetPoolArgsDict']]]]] = None,
                  __props__=None):
         """
+        ## Setting up supporting infrastructure
+
+        The example below creates the supporting infrastructure using the STACKIT Terraform provider, including the network, network interface, a public IP address and server resources.
+
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -422,7 +429,12 @@ class Loadbalancer(pulumi.CustomResource):
                  args: LoadbalancerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        ## Setting up supporting infrastructure
+
+        The example below creates the supporting infrastructure using the STACKIT Terraform provider, including the network, network interface, a public IP address and server resources.
+
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param LoadbalancerArgs args: The arguments to use to populate this resource's properties.

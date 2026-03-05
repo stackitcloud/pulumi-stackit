@@ -40,7 +40,8 @@ type LookupOpensearchCredentialResult struct {
 	CredentialId string   `pulumi:"credentialId"`
 	Host         string   `pulumi:"host"`
 	Hosts        []string `pulumi:"hosts"`
-	Id           string   `pulumi:"id"`
+	// Terraform's internal data source. identifier. It is structured as "`projectId`,`instanceId`,`credentialId`".
+	Id string `pulumi:"id"`
 	// ID of the OpenSearch instance.
 	InstanceId string `pulumi:"instanceId"`
 	Password   string `pulumi:"password"`
@@ -103,6 +104,7 @@ func (o LookupOpensearchCredentialResultOutput) Hosts() pulumi.StringArrayOutput
 	return o.ApplyT(func(v LookupOpensearchCredentialResult) []string { return v.Hosts }).(pulumi.StringArrayOutput)
 }
 
+// Terraform's internal data source. identifier. It is structured as "`projectId`,`instanceId`,`credentialId`".
 func (o LookupOpensearchCredentialResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOpensearchCredentialResult) string { return v.Id }).(pulumi.StringOutput)
 }

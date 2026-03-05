@@ -25,6 +25,7 @@ class KmsKeyringArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a KmsKeyring resource.
+
         :param pulumi.Input[_builtins.str] display_name: The display name to distinguish multiple keyrings.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the keyring is associated.
         :param pulumi.Input[_builtins.str] description: A user chosen description to distinguish multiple keyrings.
@@ -96,6 +97,7 @@ class _KmsKeyringState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KmsKeyring resources.
+
         :param pulumi.Input[_builtins.str] description: A user chosen description to distinguish multiple keyrings.
         :param pulumi.Input[_builtins.str] display_name: The display name to distinguish multiple keyrings.
         :param pulumi.Input[_builtins.str] keyring_id: An auto generated unique id which identifies the keyring.
@@ -186,7 +188,12 @@ class KmsKeyring(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        KMS Keyring resource schema. Uses the `default_region` specified in the provider configuration as a fallback in case no `region` is defined on resource level.
+
+         > Keyrings will **not** be destroyed by terraform during a `terraform destroy`. They will just be thrown out of the Terraform state and not deleted on API side. **This way we can ensure no keyring setups are deleted by accident and it gives you the option to recover your keys within the grace period.**
+
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -202,7 +209,12 @@ class KmsKeyring(pulumi.CustomResource):
                  args: KmsKeyringArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        KMS Keyring resource schema. Uses the `default_region` specified in the provider configuration as a fallback in case no `region` is defined on resource level.
+
+         > Keyrings will **not** be destroyed by terraform during a `terraform destroy`. They will just be thrown out of the Terraform state and not deleted on API side. **This way we can ensure no keyring setups are deleted by accident and it gives you the option to recover your keys within the grace period.**
+
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param KmsKeyringArgs args: The arguments to use to populate this resource's properties.

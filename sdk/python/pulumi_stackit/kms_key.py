@@ -31,6 +31,7 @@ class KmsKeyArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a KmsKey resource.
+
         :param pulumi.Input[_builtins.str] algorithm: The encryption algorithm that the key will use to encrypt data. Possible values are: `aes_256_gcm`, `rsa_2048_oaep_sha256`, `rsa_3072_oaep_sha256`, `rsa_4096_oaep_sha256`, `rsa_4096_oaep_sha512`, `hmac_sha256`, `hmac_sha384`, `hmac_sha512`, `ecdsa_p256_sha256`, `ecdsa_p384_sha384`, `ecdsa_p521_sha512`.
         :param pulumi.Input[_builtins.str] display_name: The display name to distinguish multiple keys
         :param pulumi.Input[_builtins.str] keyring_id: The ID of the associated keyring
@@ -194,6 +195,7 @@ class _KmsKeyState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KmsKey resources.
+
         :param pulumi.Input[_builtins.str] access_scope: The access scope of the key. Default is `PUBLIC`. Possible values are: `PUBLIC`, `SNA`.
         :param pulumi.Input[_builtins.str] algorithm: The encryption algorithm that the key will use to encrypt data. Possible values are: `aes_256_gcm`, `rsa_2048_oaep_sha256`, `rsa_3072_oaep_sha256`, `rsa_4096_oaep_sha256`, `rsa_4096_oaep_sha512`, `hmac_sha256`, `hmac_sha384`, `hmac_sha512`, `ecdsa_p256_sha256`, `ecdsa_p384_sha384`, `ecdsa_p521_sha512`.
         :param pulumi.Input[_builtins.str] description: A user chosen description to distinguish multiple keys
@@ -380,7 +382,12 @@ class KmsKey(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        KMS Key resource schema. Uses the `default_region` specified in the provider configuration as a fallback in case no `region` is defined on resource level.
+
+         > Keys will **not** be instantly destroyed by terraform during a `terraform destroy`. They will just be scheduled for deletion via the API and thrown out of the Terraform state afterwards. **This way we can ensure no key setups are deleted by accident and it gives you the option to recover your keys within the grace period.**
+
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -402,7 +409,12 @@ class KmsKey(pulumi.CustomResource):
                  args: KmsKeyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        KMS Key resource schema. Uses the `default_region` specified in the provider configuration as a fallback in case no `region` is defined on resource level.
+
+         > Keys will **not** be instantly destroyed by terraform during a `terraform destroy`. They will just be scheduled for deletion via the API and thrown out of the Terraform state afterwards. **This way we can ensure no key setups are deleted by accident and it gives you the option to recover your keys within the grace period.**
+
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param KmsKeyArgs args: The arguments to use to populate this resource's properties.

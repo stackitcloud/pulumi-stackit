@@ -26,7 +26,8 @@ type MariadbInstance struct {
 	// ID of the MariaDB instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// Instance name.
-	Name       pulumi.StringOutput             `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
 	Parameters MariadbInstanceParametersOutput `pulumi:"parameters"`
 	// The selected plan ID.
 	PlanId pulumi.StringOutput `pulumi:"planId"`
@@ -85,7 +86,8 @@ type mariadbInstanceState struct {
 	// ID of the MariaDB instance.
 	InstanceId *string `pulumi:"instanceId"`
 	// Instance name.
-	Name       *string                    `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
 	Parameters *MariadbInstanceParameters `pulumi:"parameters"`
 	// The selected plan ID.
 	PlanId *string `pulumi:"planId"`
@@ -106,7 +108,8 @@ type MariadbInstanceState struct {
 	// ID of the MariaDB instance.
 	InstanceId pulumi.StringPtrInput
 	// Instance name.
-	Name       pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
 	Parameters MariadbInstanceParametersPtrInput
 	// The selected plan ID.
 	PlanId pulumi.StringPtrInput
@@ -124,7 +127,8 @@ func (MariadbInstanceState) ElementType() reflect.Type {
 
 type mariadbInstanceArgs struct {
 	// Instance name.
-	Name       *string                    `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
 	Parameters *MariadbInstanceParameters `pulumi:"parameters"`
 	// The selected plan name.
 	PlanName string `pulumi:"planName"`
@@ -137,7 +141,8 @@ type mariadbInstanceArgs struct {
 // The set of arguments for constructing a MariadbInstance resource.
 type MariadbInstanceArgs struct {
 	// Instance name.
-	Name       pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
 	Parameters MariadbInstanceParametersPtrInput
 	// The selected plan name.
 	PlanName pulumi.StringInput
@@ -264,6 +269,7 @@ func (o MariadbInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *MariadbInstance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
 func (o MariadbInstanceOutput) Parameters() MariadbInstanceParametersOutput {
 	return o.ApplyT(func(v *MariadbInstance) MariadbInstanceParametersOutput { return v.Parameters }).(MariadbInstanceParametersOutput)
 }

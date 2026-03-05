@@ -40,7 +40,8 @@ type LookupPostgresflexDatabaseArgs struct {
 type LookupPostgresflexDatabaseResult struct {
 	// Database ID.
 	DatabaseId string `pulumi:"databaseId"`
-	Id         string `pulumi:"id"`
+	// Terraform's internal resource ID. It is structured as "`projectId`,`region`,`instanceId`,`databaseId`".
+	Id string `pulumi:"id"`
 	// ID of the Postgres Flex instance.
 	InstanceId string `pulumi:"instanceId"`
 	// Database name.
@@ -98,6 +99,7 @@ func (o LookupPostgresflexDatabaseResultOutput) DatabaseId() pulumi.StringOutput
 	return o.ApplyT(func(v LookupPostgresflexDatabaseResult) string { return v.DatabaseId }).(pulumi.StringOutput)
 }
 
+// Terraform's internal resource ID. It is structured as "`projectId`,`region`,`instanceId`,`databaseId`".
 func (o LookupPostgresflexDatabaseResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresflexDatabaseResult) string { return v.Id }).(pulumi.StringOutput)
 }

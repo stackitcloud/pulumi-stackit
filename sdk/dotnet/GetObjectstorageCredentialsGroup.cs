@@ -118,6 +118,9 @@ namespace Pulumi.Stackit
         /// The credentials group ID.
         /// </summary>
         public readonly string CredentialsGroupId;
+        /// <summary>
+        /// Terraform's internal data source identifier. It is structured as "`ProjectId`,`Region`,`CredentialsGroupId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The credentials group's display name.

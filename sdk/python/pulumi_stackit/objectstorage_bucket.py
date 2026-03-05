@@ -24,6 +24,7 @@ class ObjectstorageBucketArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ObjectstorageBucket resource.
+
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the bucket is associated.
         :param pulumi.Input[_builtins.str] name: The bucket name. It must be DNS conform.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
@@ -81,6 +82,7 @@ class _ObjectstorageBucketState:
                  url_virtual_hosted_style: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ObjectstorageBucket resources.
+
         :param pulumi.Input[_builtins.str] name: The bucket name. It must be DNS conform.
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the bucket is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
@@ -166,6 +168,7 @@ class ObjectstorageBucket(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The bucket name. It must be DNS conform.
@@ -182,6 +185,7 @@ class ObjectstorageBucket(pulumi.CustomResource):
         ObjectStorage bucket resource schema. Must have a `region` specified in the provider configuration. If you are creating `credentialsgroup` and `bucket` resources simultaneously, please include the `depends_on` field so that they are created sequentially. This prevents errors from concurrent calls to the service enablement that is done in the background.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param ObjectstorageBucketArgs args: The arguments to use to populate this resource's properties.

@@ -138,6 +138,9 @@ namespace Pulumi.Stackit
         /// Specifies Grafana URL.
         /// </summary>
         public readonly string GrafanaUrl;
+        /// <summary>
+        /// Terraform's internal data source. ID. It is structured as "`ProjectId`,`InstanceId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The Observability instance ID.

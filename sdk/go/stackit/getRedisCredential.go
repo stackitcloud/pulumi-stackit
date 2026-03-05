@@ -40,7 +40,8 @@ type LookupRedisCredentialResult struct {
 	CredentialId string   `pulumi:"credentialId"`
 	Host         string   `pulumi:"host"`
 	Hosts        []string `pulumi:"hosts"`
-	Id           string   `pulumi:"id"`
+	// Terraform's internal data source. identifier. It is structured as "`projectId`,`instanceId`,`credentialId`".
+	Id string `pulumi:"id"`
 	// ID of the Redis instance.
 	InstanceId       string `pulumi:"instanceId"`
 	LoadBalancedHost string `pulumi:"loadBalancedHost"`
@@ -104,6 +105,7 @@ func (o LookupRedisCredentialResultOutput) Hosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupRedisCredentialResult) []string { return v.Hosts }).(pulumi.StringArrayOutput)
 }
 
+// Terraform's internal data source. identifier. It is structured as "`projectId`,`instanceId`,`credentialId`".
 func (o LookupRedisCredentialResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRedisCredentialResult) string { return v.Id }).(pulumi.StringOutput)
 }

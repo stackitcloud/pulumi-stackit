@@ -41,7 +41,8 @@ type LookupMongodbflexInstanceResult struct {
 	// The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *").
 	BackupSchedule string                       `pulumi:"backupSchedule"`
 	Flavor         GetMongodbflexInstanceFlavor `pulumi:"flavor"`
-	Id             string                       `pulumi:"id"`
+	// Terraform's internal data source ID. It is structured as "`projectId`,`region`,`instanceId`".
+	Id string `pulumi:"id"`
 	// ID of the MongoDB Flex instance.
 	InstanceId string `pulumi:"instanceId"`
 	// Instance name.
@@ -109,6 +110,7 @@ func (o LookupMongodbflexInstanceResultOutput) Flavor() GetMongodbflexInstanceFl
 	return o.ApplyT(func(v LookupMongodbflexInstanceResult) GetMongodbflexInstanceFlavor { return v.Flavor }).(GetMongodbflexInstanceFlavorOutput)
 }
 
+// Terraform's internal data source ID. It is structured as "`projectId`,`region`,`instanceId`".
 func (o LookupMongodbflexInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMongodbflexInstanceResult) string { return v.Id }).(pulumi.StringOutput)
 }

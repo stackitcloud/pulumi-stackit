@@ -24,6 +24,7 @@ class AuthorizationFolderRoleAssignmentArgs:
                  subject: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a AuthorizationFolderRoleAssignment resource.
+
         :param pulumi.Input[_builtins.str] resource_id: folder Resource to assign the role to.
         :param pulumi.Input[_builtins.str] role: Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
         :param pulumi.Input[_builtins.str] subject: Identifier of user, service account or client. Usually email address or name in case of clients
@@ -77,6 +78,7 @@ class _AuthorizationFolderRoleAssignmentState:
                  subject: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AuthorizationFolderRoleAssignment resources.
+
         :param pulumi.Input[_builtins.str] resource_id: folder Resource to assign the role to.
         :param pulumi.Input[_builtins.str] role: Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
         :param pulumi.Input[_builtins.str] subject: Identifier of user, service account or client. Usually email address or name in case of clients
@@ -142,6 +144,7 @@ class AuthorizationFolderRoleAssignment(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] resource_id: folder Resource to assign the role to.
@@ -160,6 +163,7 @@ class AuthorizationFolderRoleAssignment(pulumi.CustomResource):
         > This resource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param AuthorizationFolderRoleAssignmentArgs args: The arguments to use to populate this resource's properties.

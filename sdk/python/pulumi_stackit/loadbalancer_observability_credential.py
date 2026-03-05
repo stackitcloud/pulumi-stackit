@@ -26,6 +26,7 @@ class LoadbalancerObservabilityCredentialArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LoadbalancerObservabilityCredential resource.
+
         :param pulumi.Input[_builtins.str] display_name: Observability credential name.
         :param pulumi.Input[_builtins.str] password: The username for the observability service (e.g. Argus) where the logs/metrics will be pushed into.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the load balancer observability credential is associated.
@@ -111,6 +112,7 @@ class _LoadbalancerObservabilityCredentialState:
                  username: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LoadbalancerObservabilityCredential resources.
+
         :param pulumi.Input[_builtins.str] credentials_ref: The credentials reference is used by the Load Balancer to define which credentials it will use.
         :param pulumi.Input[_builtins.str] display_name: Observability credential name.
         :param pulumi.Input[_builtins.str] password: The username for the observability service (e.g. Argus) where the logs/metrics will be pushed into.
@@ -221,6 +223,7 @@ class LoadbalancerObservabilityCredential(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] display_name: Observability credential name.
@@ -239,6 +242,7 @@ class LoadbalancerObservabilityCredential(pulumi.CustomResource):
         Load balancer observability credential resource schema. Must have a `region` specified in the provider configuration. These contain the username and password for the observability service (e.g. Argus) where the load balancer logs/metrics will be pushed into
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param LoadbalancerObservabilityCredentialArgs args: The arguments to use to populate this resource's properties.

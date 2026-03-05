@@ -122,6 +122,9 @@ namespace Pulumi.Stackit
         /// External Load Balancer IP address where this Load Balancer is exposed.
         /// </summary>
         public readonly string ExternalAddress;
+        /// <summary>
+        /// Terraform's internal resource ID. It is structured as "`ProjectId`","region","`Name`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// List of all listeners which will accept traffic. Limited to 20.

@@ -38,7 +38,8 @@ type LookupObjectstorageCredentialsGroupArgs struct {
 type LookupObjectstorageCredentialsGroupResult struct {
 	// The credentials group ID.
 	CredentialsGroupId string `pulumi:"credentialsGroupId"`
-	Id                 string `pulumi:"id"`
+	// Terraform's internal data source identifier. It is structured as "`projectId`,`region`,`credentialsGroupId`".
+	Id string `pulumi:"id"`
 	// The credentials group's display name.
 	Name string `pulumi:"name"`
 	// Object Storage Project ID to which the credentials group is associated.
@@ -92,6 +93,7 @@ func (o LookupObjectstorageCredentialsGroupResultOutput) CredentialsGroupId() pu
 	return o.ApplyT(func(v LookupObjectstorageCredentialsGroupResult) string { return v.CredentialsGroupId }).(pulumi.StringOutput)
 }
 
+// Terraform's internal data source identifier. It is structured as "`projectId`,`region`,`credentialsGroupId`".
 func (o LookupObjectstorageCredentialsGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupObjectstorageCredentialsGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }

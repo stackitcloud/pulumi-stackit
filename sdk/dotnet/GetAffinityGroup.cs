@@ -118,6 +118,9 @@ namespace Pulumi.Stackit
         /// The affinity group ID.
         /// </summary>
         public readonly string AffinityGroupId;
+        /// <summary>
+        /// Terraform's internal resource identifier. It is structured as "`ProjectId`,`Region`,`AffinityGroupId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Affinity Group schema. Must have a `Region` specified in the provider configuration.

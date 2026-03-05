@@ -46,6 +46,9 @@ export interface GetObservabilityScrapeconfigResult {
      * A basic authentication block.
      */
     readonly basicAuth: outputs.GetObservabilityScrapeconfigBasicAuth;
+    /**
+     * Terraform's internal data source. ID. It is structured as "`projectId`,`instanceId`,`name`".
+     */
     readonly id: string;
     /**
      * Observability instance ID to which the scraping job is associated.

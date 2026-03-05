@@ -33,7 +33,8 @@ type EdgecloudKubeconfig struct {
 	// Name of the Edge Cloud instance.
 	InstanceName pulumi.StringPtrOutput `pulumi:"instanceName"`
 	// Raw kubeconfig.
-	Kubeconfig   pulumi.StringOutput `pulumi:"kubeconfig"`
+	Kubeconfig pulumi.StringOutput `pulumi:"kubeconfig"`
+	// Internally generated UUID to identify a kubeconfig resource in Terraform, since the Edge Cloud API doesn't return a kubeconfig identifier
 	KubeconfigId pulumi.StringOutput `pulumi:"kubeconfigId"`
 	// STACKIT project ID to which the Edge Cloud instance is associated.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
@@ -91,7 +92,8 @@ type edgecloudKubeconfigState struct {
 	// Name of the Edge Cloud instance.
 	InstanceName *string `pulumi:"instanceName"`
 	// Raw kubeconfig.
-	Kubeconfig   *string `pulumi:"kubeconfig"`
+	Kubeconfig *string `pulumi:"kubeconfig"`
+	// Internally generated UUID to identify a kubeconfig resource in Terraform, since the Edge Cloud API doesn't return a kubeconfig identifier
 	KubeconfigId *string `pulumi:"kubeconfigId"`
 	// STACKIT project ID to which the Edge Cloud instance is associated.
 	ProjectId *string `pulumi:"projectId"`
@@ -113,7 +115,8 @@ type EdgecloudKubeconfigState struct {
 	// Name of the Edge Cloud instance.
 	InstanceName pulumi.StringPtrInput
 	// Raw kubeconfig.
-	Kubeconfig   pulumi.StringPtrInput
+	Kubeconfig pulumi.StringPtrInput
+	// Internally generated UUID to identify a kubeconfig resource in Terraform, since the Edge Cloud API doesn't return a kubeconfig identifier
 	KubeconfigId pulumi.StringPtrInput
 	// STACKIT project ID to which the Edge Cloud instance is associated.
 	ProjectId pulumi.StringPtrInput
@@ -275,6 +278,7 @@ func (o EdgecloudKubeconfigOutput) Kubeconfig() pulumi.StringOutput {
 	return o.ApplyT(func(v *EdgecloudKubeconfig) pulumi.StringOutput { return v.Kubeconfig }).(pulumi.StringOutput)
 }
 
+// Internally generated UUID to identify a kubeconfig resource in Terraform, since the Edge Cloud API doesn't return a kubeconfig identifier
 func (o EdgecloudKubeconfigOutput) KubeconfigId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EdgecloudKubeconfig) pulumi.StringOutput { return v.KubeconfigId }).(pulumi.StringOutput)
 }

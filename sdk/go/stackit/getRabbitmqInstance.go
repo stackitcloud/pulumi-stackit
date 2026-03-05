@@ -38,8 +38,9 @@ type LookupRabbitmqInstanceResult struct {
 	CfOrganizationGuid string `pulumi:"cfOrganizationGuid"`
 	CfSpaceGuid        string `pulumi:"cfSpaceGuid"`
 	DashboardUrl       string `pulumi:"dashboardUrl"`
-	Id                 string `pulumi:"id"`
-	ImageUrl           string `pulumi:"imageUrl"`
+	// Terraform's internal data source. identifier. It is structured as "`projectId`,`instanceId`".
+	Id       string `pulumi:"id"`
+	ImageUrl string `pulumi:"imageUrl"`
 	// ID of the RabbitMQ instance.
 	InstanceId string `pulumi:"instanceId"`
 	// Instance name.
@@ -107,6 +108,7 @@ func (o LookupRabbitmqInstanceResultOutput) DashboardUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRabbitmqInstanceResult) string { return v.DashboardUrl }).(pulumi.StringOutput)
 }
 
+// Terraform's internal data source. identifier. It is structured as "`projectId`,`instanceId`".
 func (o LookupRabbitmqInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRabbitmqInstanceResult) string { return v.Id }).(pulumi.StringOutput)
 }

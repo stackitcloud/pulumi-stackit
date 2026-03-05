@@ -83,6 +83,9 @@ class GetServerBackupScheduleResult:
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        Terraform's internal resource identifier. It is structured as "`project_id`,`server_id`,`backup_schedule_id`".
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property

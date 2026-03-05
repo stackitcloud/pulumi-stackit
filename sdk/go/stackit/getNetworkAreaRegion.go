@@ -36,6 +36,7 @@ type LookupNetworkAreaRegionArgs struct {
 
 // A collection of values returned by getNetworkAreaRegion.
 type LookupNetworkAreaRegionResult struct {
+	// Terraform's internal resource ID. It is structured as "`organizationId`,`networkAreaId`,`region`".
 	Id string `pulumi:"id"`
 	// The regional IPv4 config of a network area.
 	Ipv4 GetNetworkAreaRegionIpv4 `pulumi:"ipv4"`
@@ -85,6 +86,7 @@ func (o LookupNetworkAreaRegionResultOutput) ToLookupNetworkAreaRegionResultOutp
 	return o
 }
 
+// Terraform's internal resource ID. It is structured as "`organizationId`,`networkAreaId`,`region`".
 func (o LookupNetworkAreaRegionResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkAreaRegionResult) string { return v.Id }).(pulumi.StringOutput)
 }

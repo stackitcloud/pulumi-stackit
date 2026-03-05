@@ -44,6 +44,9 @@ class GetEdgecloudInstancesResult:
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        Terraform's internal data source ID, structured as `project_id`,`region`.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property

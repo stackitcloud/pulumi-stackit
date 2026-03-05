@@ -158,7 +158,7 @@ require (
 	github.com/spf13/cast v1.5.0 // indirect
 	github.com/spf13/cobra v1.10.1 // indirect
 	github.com/spf13/pflag v1.0.10 // indirect
-	github.com/stackitcloud/stackit-sdk-go/core v0.21.1 // indirect
+	github.com/stackitcloud/stackit-sdk-go/core v0.22.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/authorization v0.12.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/cdn v1.10.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/dns v0.17.6 // indirect
@@ -166,14 +166,14 @@ require (
 	github.com/stackitcloud/stackit-sdk-go/services/git v0.10.3 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/iaas v1.3.5 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/kms v1.3.2 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/loadbalancer v1.7.3 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/loadbalancer v1.8.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/logme v0.25.6 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/logs v0.5.2 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/mariadb v0.25.6 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/modelserving v0.6.5 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/mongodbflex v1.5.8 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/objectstorage v1.4.5 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/observability v0.16.3 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/observability v0.17.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/opensearch v0.24.6 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/postgresflex v1.3.5 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/rabbitmq v0.26.0 // indirect
@@ -185,10 +185,10 @@ require (
 	github.com/stackitcloud/stackit-sdk-go/services/serverupdate v1.2.6 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/serviceaccount v0.12.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/serviceenablement v1.2.7 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/sfs v0.3.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/sfs v0.4.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/ske v1.7.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/sqlserverflex v1.4.3 // indirect
-	github.com/stackitcloud/terraform-provider-stackit v0.82.0 // indirect
+	github.com/stackitcloud/terraform-provider-stackit v0.84.0 // indirect
 	github.com/stretchr/objx v0.5.2 // indirect
 	github.com/teambition/rrule-go v1.8.2 // indirect
 	github.com/teekennedy/goldmark-markdown v0.3.0 // indirect

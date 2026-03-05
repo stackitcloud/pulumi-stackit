@@ -131,6 +131,9 @@ namespace Pulumi.Stackit
     {
         public readonly string Database;
         public readonly string Host;
+        /// <summary>
+        /// Terraform's internal data source. ID. It is structured as "`ProjectId`,`Region`,`InstanceId`,`UserId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// ID of the MongoDB Flex instance.

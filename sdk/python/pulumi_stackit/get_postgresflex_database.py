@@ -60,6 +60,9 @@ class GetPostgresflexDatabaseResult:
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        Terraform's internal resource ID. It is structured as "`project_id`,`region`,`instance_id`,`database_id`".
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property

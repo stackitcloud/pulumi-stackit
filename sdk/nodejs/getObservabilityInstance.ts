@@ -77,6 +77,9 @@ export interface GetObservabilityInstanceResult {
      * Specifies Grafana URL.
      */
     readonly grafanaUrl: string;
+    /**
+     * Terraform's internal data source. ID. It is structured as "`projectId`,`instanceId`".
+     */
     readonly id: string;
     /**
      * The Observability instance ID.

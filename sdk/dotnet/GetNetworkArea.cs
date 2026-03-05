@@ -110,6 +110,9 @@ namespace Pulumi.Stackit
         /// The default prefix length for networks in the network area.
         /// </summary>
         public readonly int DefaultPrefixLength;
+        /// <summary>
+        /// Terraform's internal resource ID. It is structured as "`OrganizationId`,`NetworkAreaId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Labels are key-value string pairs which can be attached to a resource container

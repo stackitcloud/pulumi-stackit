@@ -38,7 +38,8 @@ type LookupAffinityGroupArgs struct {
 type LookupAffinityGroupResult struct {
 	// The affinity group ID.
 	AffinityGroupId string `pulumi:"affinityGroupId"`
-	Id              string `pulumi:"id"`
+	// Terraform's internal resource identifier. It is structured as "`projectId`,`region`,`affinityGroupId`".
+	Id string `pulumi:"id"`
 	// Affinity Group schema. Must have a `region` specified in the provider configuration.
 	Members []string `pulumi:"members"`
 	// The name of the affinity group.
@@ -94,6 +95,7 @@ func (o LookupAffinityGroupResultOutput) AffinityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAffinityGroupResult) string { return v.AffinityGroupId }).(pulumi.StringOutput)
 }
 
+// Terraform's internal resource identifier. It is structured as "`projectId`,`region`,`affinityGroupId`".
 func (o LookupAffinityGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAffinityGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }

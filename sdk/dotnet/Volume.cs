@@ -10,6 +10,10 @@ using Pulumi.Serialization;
 namespace Pulumi.Stackit
 {
     /// <summary>
+    /// Volume resource schema. Must have a `Region` specified in the provider configuration.
+    /// 
+    /// &gt; **Note:** Write-Only argument `KeyPayloadBase64Wo` is available to use in place of `KeyPayloadBase64`. Write-Only arguments are supported in HashiCorp Terraform 1.11.0 and later. Learn more.
+    /// 
     /// ## Example Usage
     /// </summary>
     [StackitResourceType("stackit:index/volume:Volume")]
@@ -33,6 +37,9 @@ namespace Pulumi.Stackit
         [Output("encrypted")]
         public Output<bool> Encrypted { get; private set; } = null!;
 
+        /// <summary>
+        /// Parameter to connect to a key-encryption-key within the STACKIT-KMS to create encrypted volumes. These parameters never leave the backend again. So these parameters are not present on imports or in the datasource. They live only in your Terraform state after creation of the resource.
+        /// </summary>
         [Output("encryptionParameters")]
         public Output<Outputs.VolumeEncryptionParameters?> EncryptionParameters { get; private set; } = null!;
 
@@ -149,6 +156,9 @@ namespace Pulumi.Stackit
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Parameter to connect to a key-encryption-key within the STACKIT-KMS to create encrypted volumes. These parameters never leave the backend again. So these parameters are not present on imports or in the datasource. They live only in your Terraform state after creation of the resource.
+        /// </summary>
         [Input("encryptionParameters")]
         public Input<Inputs.VolumeEncryptionParametersArgs>? EncryptionParameters { get; set; }
 
@@ -226,6 +236,9 @@ namespace Pulumi.Stackit
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
 
+        /// <summary>
+        /// Parameter to connect to a key-encryption-key within the STACKIT-KMS to create encrypted volumes. These parameters never leave the backend again. So these parameters are not present on imports or in the datasource. They live only in your Terraform state after creation of the resource.
+        /// </summary>
         [Input("encryptionParameters")]
         public Input<Inputs.VolumeEncryptionParametersGetArgs>? EncryptionParameters { get; set; }
 

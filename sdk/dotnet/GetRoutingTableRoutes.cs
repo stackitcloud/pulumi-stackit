@@ -135,6 +135,9 @@ namespace Pulumi.Stackit
     [OutputType]
     public sealed class GetRoutingTableRoutesResult
     {
+        /// <summary>
+        /// Terraform's internal datasource ID. It is structured as "`OrganizationId`,`Region`,`NetworkAreaId`,`RoutingTableId`,`RouteId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The network area ID to which the routing table is associated.

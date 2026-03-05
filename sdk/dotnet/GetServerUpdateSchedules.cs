@@ -120,6 +120,9 @@ namespace Pulumi.Stackit
     [OutputType]
     public sealed class GetServerUpdateSchedulesResult
     {
+        /// <summary>
+        /// Terraform's internal data source identifier. It is structured as "`ProjectId`,`Region`,`ServerId`".
+        /// </summary>
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetServerUpdateSchedulesItemResult> Items;
         /// <summary>

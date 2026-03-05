@@ -44,6 +44,9 @@ export interface GetServerUpdateSchedulesArgs {
  * A collection of values returned by getServerUpdateSchedules.
  */
 export interface GetServerUpdateSchedulesResult {
+    /**
+     * Terraform's internal data source identifier. It is structured as "`projectId`,`region`,`serverId`".
+     */
     readonly id: string;
     readonly items: outputs.GetServerUpdateSchedulesItem[];
     /**

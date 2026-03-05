@@ -40,7 +40,8 @@ type LookupMongodbflexUserArgs struct {
 type LookupMongodbflexUserResult struct {
 	Database string `pulumi:"database"`
 	Host     string `pulumi:"host"`
-	Id       string `pulumi:"id"`
+	// Terraform's internal data source. ID. It is structured as "`projectId`,`region`,`instanceId`,`userId`".
+	Id string `pulumi:"id"`
 	// ID of the MongoDB Flex instance.
 	InstanceId string `pulumi:"instanceId"`
 	Port       int    `pulumi:"port"`
@@ -102,6 +103,7 @@ func (o LookupMongodbflexUserResultOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMongodbflexUserResult) string { return v.Host }).(pulumi.StringOutput)
 }
 
+// Terraform's internal data source. ID. It is structured as "`projectId`,`region`,`instanceId`,`userId`".
 func (o LookupMongodbflexUserResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupMongodbflexUserResult) string { return v.Id }).(pulumi.StringOutput)
 }

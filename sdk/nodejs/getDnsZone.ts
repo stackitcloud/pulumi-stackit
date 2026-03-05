@@ -23,7 +23,7 @@ export function getDnsZone(args: GetDnsZoneArgs, opts?: pulumi.InvokeOptions): P
  */
 export interface GetDnsZoneArgs {
     /**
-     * The zone name. E.g. `example.com`
+     * The zone name. E.g. `example.com` (must not end with a trailing dot).
      */
     dnsName?: string;
     /**
@@ -58,13 +58,16 @@ export interface GetDnsZoneResult {
      */
     readonly description: string;
     /**
-     * The zone name. E.g. `example.com`
+     * The zone name. E.g. `example.com` (must not end with a trailing dot).
      */
     readonly dnsName?: string;
     /**
      * Expire time.
      */
     readonly expireTime: number;
+    /**
+     * Terraform's internal data source. ID. It is structured as "`projectId`,`zoneId`".
+     */
     readonly id: string;
     /**
      * Specifies, if the zone is a reverse zone or not.
@@ -142,7 +145,7 @@ export function getDnsZoneOutput(args: GetDnsZoneOutputArgs, opts?: pulumi.Invok
  */
 export interface GetDnsZoneOutputArgs {
     /**
-     * The zone name. E.g. `example.com`
+     * The zone name. E.g. `example.com` (must not end with a trailing dot).
      */
     dnsName?: pulumi.Input<string>;
     /**

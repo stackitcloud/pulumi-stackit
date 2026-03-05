@@ -38,7 +38,8 @@ type LookupSecurityGroupArgs struct {
 type LookupSecurityGroupResult struct {
 	// The description of the security group.
 	Description string `pulumi:"description"`
-	Id          string `pulumi:"id"`
+	// Terraform's internal resource ID. It is structured as "`projectId`,`region`,`securityGroupId`".
+	Id string `pulumi:"id"`
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the security group.
@@ -96,6 +97,7 @@ func (o LookupSecurityGroupResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityGroupResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// Terraform's internal resource ID. It is structured as "`projectId`,`region`,`securityGroupId`".
 func (o LookupSecurityGroupResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityGroupResult) string { return v.Id }).(pulumi.StringOutput)
 }

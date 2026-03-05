@@ -114,6 +114,9 @@ namespace Pulumi.Stackit
     [OutputType]
     public sealed class GetNetworkAreaRegionResult
     {
+        /// <summary>
+        /// Terraform's internal resource ID. It is structured as "`OrganizationId`,`NetworkAreaId`,`Region`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The regional IPv4 config of a network area.

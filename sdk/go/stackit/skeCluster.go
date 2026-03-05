@@ -35,7 +35,7 @@ type SkeCluster struct {
 	// The cluster name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Network block as defined below.
-	Network SkeClusterNetworkPtrOutput `pulumi:"network"`
+	Network SkeClusterNetworkOutput `pulumi:"network"`
 	// One or more `nodePool` block as defined below.
 	NodePools SkeClusterNodePoolArrayOutput `pulumi:"nodePools"`
 	// The network ranges (in CIDR notation) used by pods of the cluster.
@@ -305,8 +305,8 @@ func (o SkeClusterOutput) Name() pulumi.StringOutput {
 }
 
 // Network block as defined below.
-func (o SkeClusterOutput) Network() SkeClusterNetworkPtrOutput {
-	return o.ApplyT(func(v *SkeCluster) SkeClusterNetworkPtrOutput { return v.Network }).(SkeClusterNetworkPtrOutput)
+func (o SkeClusterOutput) Network() SkeClusterNetworkOutput {
+	return o.ApplyT(func(v *SkeCluster) SkeClusterNetworkOutput { return v.Network }).(SkeClusterNetworkOutput)
 }
 
 // One or more `nodePool` block as defined below.

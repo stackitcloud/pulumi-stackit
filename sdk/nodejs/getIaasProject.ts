@@ -38,6 +38,9 @@ export interface GetIaasProjectResult {
      * Date-time when the project was created.
      */
     readonly createdAt: string;
+    /**
+     * Terraform's internal resource ID. It is structured as "`projectId`".
+     */
     readonly id: string;
     /**
      * Specifies if the project has internet_access

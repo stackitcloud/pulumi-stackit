@@ -7,6 +7,18 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
+ * Image datasource schema. Must have a `region` specified in the provider configuration.
+ *
+ * > Important: When using the `name`, `nameRegex`, or `filter` attributes to select images dynamically, be aware that image IDs may change frequently. Each OS patch or update results in a new unique image ID. If this data source is used to populate fields like `boot_volume.source_id` in a server resource, it may cause Terraform to detect changes and recreate the associated resource.
+ *
+ * To avoid unintended updates or resource replacements:
+ *  - Prefer using a static `imageId` to pin a specific image version.
+ *  - If you accept automatic image updates but wish to suppress resource changes, use a `lifecycle` block to ignore relevant changes. For example:
+ *
+ * You can also list available images using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
+ *
+ * > This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
+ *
  * ## Example Usage
  */
 export function getImageV2(args: GetImageV2Args, opts?: pulumi.InvokeOptions): Promise<GetImageV2Result> {
@@ -76,6 +88,9 @@ export interface GetImageV2Result {
      * Additional filtering options based on image properties. Can be used independently or in conjunction with `name` or `nameRegex`.
      */
     readonly filter?: outputs.GetImageV2Filter;
+    /**
+     * Terraform's internal resource ID. It is structured as "`projectId`,`region`,`imageId`".
+     */
     readonly id: string;
     /**
      * Image ID to fetch directly
@@ -123,6 +138,18 @@ export interface GetImageV2Result {
     readonly sortAscending?: boolean;
 }
 /**
+ * Image datasource schema. Must have a `region` specified in the provider configuration.
+ *
+ * > Important: When using the `name`, `nameRegex`, or `filter` attributes to select images dynamically, be aware that image IDs may change frequently. Each OS patch or update results in a new unique image ID. If this data source is used to populate fields like `boot_volume.source_id` in a server resource, it may cause Terraform to detect changes and recreate the associated resource.
+ *
+ * To avoid unintended updates or resource replacements:
+ *  - Prefer using a static `imageId` to pin a specific image version.
+ *  - If you accept automatic image updates but wish to suppress resource changes, use a `lifecycle` block to ignore relevant changes. For example:
+ *
+ * You can also list available images using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
+ *
+ * > This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
+ *
  * ## Example Usage
  */
 export function getImageV2Output(args: GetImageV2OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetImageV2Result> {

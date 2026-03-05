@@ -27,6 +27,7 @@ class EdgecloudTokenArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a EdgecloudToken resource.
+
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the Edge Cloud instance is associated.
         :param pulumi.Input[_builtins.int] expiration: Expiration time of the token, in seconds. Minimum is 600, Maximum is 15552000. Defaults to `3600`
         :param pulumi.Input[_builtins.str] instance_id: ID of the Edge Cloud instance.
@@ -134,6 +135,7 @@ class _EdgecloudTokenState:
                  token_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EdgecloudToken resources.
+
         :param pulumi.Input[_builtins.str] creation_time: Date-time when the token was created
         :param pulumi.Input[_builtins.int] expiration: Expiration time of the token, in seconds. Minimum is 600, Maximum is 15552000. Defaults to `3600`
         :param pulumi.Input[_builtins.str] expires_at: Timestamp when the token expires
@@ -143,6 +145,7 @@ class _EdgecloudTokenState:
         :param pulumi.Input[_builtins.int] recreate_before: Number of seconds before expiration to trigger recreation of the token at.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.str] token: Raw token.
+        :param pulumi.Input[_builtins.str] token_id: Internally generated UUID to identify a token resource in Terraform, since the Edge Cloud API doesnt return a token identifier
         """
         if creation_time is not None:
             pulumi.set(__self__, "creation_time", creation_time)
@@ -276,6 +279,9 @@ class _EdgecloudTokenState:
     @_builtins.property
     @pulumi.getter(name="tokenId")
     def token_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Internally generated UUID to identify a token resource in Terraform, since the Edge Cloud API doesnt return a token identifier
+        """
         return pulumi.get(self, "token_id")
 
     @token_id.setter
@@ -304,6 +310,7 @@ class EdgecloudToken(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] expiration: Expiration time of the token, in seconds. Minimum is 600, Maximum is 15552000. Defaults to `3600`
@@ -326,6 +333,7 @@ class EdgecloudToken(pulumi.CustomResource):
         > This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param EdgecloudTokenArgs args: The arguments to use to populate this resource's properties.
@@ -407,6 +415,7 @@ class EdgecloudToken(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] recreate_before: Number of seconds before expiration to trigger recreation of the token at.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.str] token: Raw token.
+        :param pulumi.Input[_builtins.str] token_id: Internally generated UUID to identify a token resource in Terraform, since the Edge Cloud API doesnt return a token identifier
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -499,5 +508,8 @@ class EdgecloudToken(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="tokenId")
     def token_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Internally generated UUID to identify a token resource in Terraform, since the Edge Cloud API doesnt return a token identifier
+        """
         return pulumi.get(self, "token_id")
 

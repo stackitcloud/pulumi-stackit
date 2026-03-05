@@ -76,6 +76,9 @@ export class EdgecloudToken extends pulumi.CustomResource {
      * Raw token.
      */
     declare public /*out*/ readonly token: pulumi.Output<string>;
+    /**
+     * Internally generated UUID to identify a token resource in Terraform, since the Edge Cloud API doesnt return a token identifier
+     */
     declare public /*out*/ readonly tokenId: pulumi.Output<string>;
 
     /**
@@ -164,6 +167,9 @@ export interface EdgecloudTokenState {
      * Raw token.
      */
     token?: pulumi.Input<string>;
+    /**
+     * Internally generated UUID to identify a token resource in Terraform, since the Edge Cloud API doesnt return a token identifier
+     */
     tokenId?: pulumi.Input<string>;
 }
 

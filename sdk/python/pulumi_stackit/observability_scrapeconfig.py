@@ -34,6 +34,7 @@ class ObservabilityScrapeconfigArgs:
                  scrape_timeout: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ObservabilityScrapeconfig resource.
+
         :param pulumi.Input[_builtins.str] instance_id: Observability instance ID to which the scraping job is associated.
         :param pulumi.Input[_builtins.str] metrics_path: Specifies the job scraping url path. E.g. `/metrics`.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the scraping job is associated.
@@ -214,6 +215,7 @@ class _ObservabilityScrapeconfigState:
                  targets: Optional[pulumi.Input[Sequence[pulumi.Input['ObservabilityScrapeconfigTargetArgs']]]] = None):
         """
         Input properties used for looking up and filtering ObservabilityScrapeconfig resources.
+
         :param pulumi.Input['ObservabilityScrapeconfigBasicAuthArgs'] basic_auth: A basic authentication block.
         :param pulumi.Input[_builtins.str] instance_id: Observability instance ID to which the scraping job is associated.
         :param pulumi.Input[_builtins.str] metrics_path: Specifies the job scraping url path. E.g. `/metrics`.
@@ -405,6 +407,7 @@ class ObservabilityScrapeconfig(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ObservabilityScrapeconfigBasicAuthArgs', 'ObservabilityScrapeconfigBasicAuthArgsDict']] basic_auth: A basic authentication block.
@@ -429,6 +432,7 @@ class ObservabilityScrapeconfig(pulumi.CustomResource):
         Observability scrape config resource schema. Must have a `region` specified in the provider configuration.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param ObservabilityScrapeconfigArgs args: The arguments to use to populate this resource's properties.

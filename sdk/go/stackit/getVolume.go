@@ -41,8 +41,9 @@ type LookupVolumeResult struct {
 	// The description of the volume.
 	Description string `pulumi:"description"`
 	// Indicates if the volume is encrypted.
-	Encrypted bool   `pulumi:"encrypted"`
-	Id        string `pulumi:"id"`
+	Encrypted bool `pulumi:"encrypted"`
+	// Terraform's internal resource ID. It is structured as "`projectId`,`region`,`volumeId`".
+	Id string `pulumi:"id"`
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the volume.
@@ -116,6 +117,7 @@ func (o LookupVolumeResultOutput) Encrypted() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupVolumeResult) bool { return v.Encrypted }).(pulumi.BoolOutput)
 }
 
+// Terraform's internal resource ID. It is structured as "`projectId`,`region`,`volumeId`".
 func (o LookupVolumeResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVolumeResult) string { return v.Id }).(pulumi.StringOutput)
 }

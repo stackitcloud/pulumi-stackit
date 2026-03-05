@@ -145,6 +145,9 @@ namespace Pulumi.Stackit
         /// ICMP Parameters.
         /// </summary>
         public readonly Outputs.GetSecurityGroupRuleIcmpParametersResult IcmpParameters;
+        /// <summary>
+        /// Terraform's internal datasource ID. It is structured as "`ProjectId`,`Region`,`SecurityGroupId`,`SecurityGroupRuleId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The remote IP range which the rule should match.

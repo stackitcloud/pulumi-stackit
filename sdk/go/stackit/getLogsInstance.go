@@ -46,7 +46,8 @@ type LookupLogsInstanceResult struct {
 	Description string `pulumi:"description"`
 	// The displayed name of the Logs instance
 	DisplayName string `pulumi:"displayName"`
-	Id          string `pulumi:"id"`
+	// Terraform's internal resource identifier. It is structured as "`projectId`,`region`,`instanceId`".
+	Id string `pulumi:"id"`
 	// The Logs instance's ingest logs via OTLP URL
 	IngestOtlpUrl string `pulumi:"ingestOtlpUrl"`
 	// The logs instance's ingest logs URL
@@ -130,6 +131,7 @@ func (o LookupLogsInstanceResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLogsInstanceResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// Terraform's internal resource identifier. It is structured as "`projectId`,`region`,`instanceId`".
 func (o LookupLogsInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLogsInstanceResult) string { return v.Id }).(pulumi.StringOutput)
 }

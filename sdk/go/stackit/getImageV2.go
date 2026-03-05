@@ -11,6 +11,18 @@ import (
 	"github.com/stackitcloud/pulumi-stackit/sdk/go/stackit/internal"
 )
 
+// Image datasource schema. Must have a `region` specified in the provider configuration.
+//
+// > Important: When using the `name`, `nameRegex`, or `filter` attributes to select images dynamically, be aware that image IDs may change frequently. Each OS patch or update results in a new unique image ID. If this data source is used to populate fields like `boot_volume.source_id` in a server resource, it may cause Terraform to detect changes and recreate the associated resource.
+//
+// To avoid unintended updates or resource replacements:
+//   - Prefer using a static `imageId` to pin a specific image version.
+//   - If you accept automatic image updates but wish to suppress resource changes, use a `lifecycle` block to ignore relevant changes. For example:
+//
+// You can also list available images using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
+//
+// > This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
+//
 // ## Example Usage
 func GetImageV2(ctx *pulumi.Context, args *GetImageV2Args, opts ...pulumi.InvokeOption) (*GetImageV2Result, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
@@ -50,7 +62,8 @@ type GetImageV2Result struct {
 	DiskFormat string `pulumi:"diskFormat"`
 	// Additional filtering options based on image properties. Can be used independently or in conjunction with `name` or `nameRegex`.
 	Filter *GetImageV2Filter `pulumi:"filter"`
-	Id     string            `pulumi:"id"`
+	// Terraform's internal resource ID. It is structured as "`projectId`,`region`,`imageId`".
+	Id string `pulumi:"id"`
 	// Image ID to fetch directly
 	ImageId *string `pulumi:"imageId"`
 	// Labels are key-value string pairs which can be attached to a resource container
@@ -141,6 +154,7 @@ func (o GetImageV2ResultOutput) Filter() GetImageV2FilterPtrOutput {
 	return o.ApplyT(func(v GetImageV2Result) *GetImageV2Filter { return v.Filter }).(GetImageV2FilterPtrOutput)
 }
 
+// Terraform's internal resource ID. It is structured as "`projectId`,`region`,`imageId`".
 func (o GetImageV2ResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImageV2Result) string { return v.Id }).(pulumi.StringOutput)
 }

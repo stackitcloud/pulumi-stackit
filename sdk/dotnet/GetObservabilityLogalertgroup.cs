@@ -117,6 +117,9 @@ namespace Pulumi.Stackit
     [OutputType]
     public sealed class GetObservabilityLogalertgroupResult
     {
+        /// <summary>
+        /// Terraform's internal resource ID. It is structured as "`ProjectId`,`InstanceId`,`Name`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Observability instance ID to which the log alert group is associated.

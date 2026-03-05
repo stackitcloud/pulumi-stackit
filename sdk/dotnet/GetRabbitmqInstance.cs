@@ -106,6 +106,9 @@ namespace Pulumi.Stackit
         public readonly string CfOrganizationGuid;
         public readonly string CfSpaceGuid;
         public readonly string DashboardUrl;
+        /// <summary>
+        /// Terraform's internal data source. identifier. It is structured as "`ProjectId`,`InstanceId`".
+        /// </summary>
         public readonly string Id;
         public readonly string ImageUrl;
         /// <summary>

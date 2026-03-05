@@ -118,6 +118,9 @@ namespace Pulumi.Stackit
         /// The time when the organization was created
         /// </summary>
         public readonly string CreatedAt;
+        /// <summary>
+        /// Terraform's internal resource ID, structured as "`ProjectId`,`Region`,`OrgId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The name of the organization

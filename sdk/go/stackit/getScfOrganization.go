@@ -38,7 +38,8 @@ type LookupScfOrganizationArgs struct {
 type LookupScfOrganizationResult struct {
 	// The time when the organization was created
 	CreatedAt string `pulumi:"createdAt"`
-	Id        string `pulumi:"id"`
+	// Terraform's internal resource ID, structured as "`projectId`,`region`,`orgId`".
+	Id string `pulumi:"id"`
 	// The name of the organization
 	Name string `pulumi:"name"`
 	// The ID of the Cloud Foundry Organization
@@ -102,6 +103,7 @@ func (o LookupScfOrganizationResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScfOrganizationResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// Terraform's internal resource ID, structured as "`projectId`,`region`,`orgId`".
 func (o LookupScfOrganizationResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupScfOrganizationResult) string { return v.Id }).(pulumi.StringOutput)
 }

@@ -54,6 +54,9 @@ class GetKeyPairResult:
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        Terraform's internal resource ID. It takes the value of the key pair "`name`".
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property

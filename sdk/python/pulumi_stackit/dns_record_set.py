@@ -29,6 +29,7 @@ class DnsRecordSetArgs:
                  ttl: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a DnsRecordSet resource.
+
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the dns record set is associated.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] records: Records.
         :param pulumi.Input[_builtins.str] type: The record set type. E.g. `A` or `CNAME`
@@ -165,6 +166,7 @@ class _DnsRecordSetState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DnsRecordSet resources.
+
         :param pulumi.Input[_builtins.bool] active: Specifies if the record set is active or not. Defaults to `true`
         :param pulumi.Input[_builtins.str] comment: Comment.
         :param pulumi.Input[_builtins.str] error: Error shows error in case create/update/delete failed.
@@ -368,6 +370,7 @@ class DnsRecordSet(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] active: Specifies if the record set is active or not. Defaults to `true`
@@ -389,6 +392,7 @@ class DnsRecordSet(pulumi.CustomResource):
         DNS Record Set Resource schema.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param DnsRecordSetArgs args: The arguments to use to populate this resource's properties.

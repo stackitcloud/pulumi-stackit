@@ -25,6 +25,7 @@ class GitArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Git resource.
+
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the git instance is associated.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: Restricted ACL for instance access.
         :param pulumi.Input[_builtins.str] flavor: Instance flavor. If not provided, defaults to git-100. For a list of available flavors, refer to our API documentation: `https://docs.api.stackit.cloud/documentation/git/version/v1beta`
@@ -102,6 +103,7 @@ class _GitState:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Git resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: Restricted ACL for instance access.
         :param pulumi.Input[_builtins.str] consumed_disk: How many bytes of disk space is consumed.
         :param pulumi.Input[_builtins.str] consumed_object_storage: How many bytes of Object Storage is consumed.
@@ -273,6 +275,7 @@ class Git(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: Restricted ACL for instance access.
@@ -292,6 +295,7 @@ class Git(pulumi.CustomResource):
         > This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources. This resource currently does not support updates. Changing the ACLs, flavor, or name will trigger resource recreation. Update functionality will be added soon. In the meantime, please proceed with caution. To update these attributes, please open a support ticket.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param GitArgs args: The arguments to use to populate this resource's properties.

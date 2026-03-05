@@ -66,6 +66,9 @@ class GetServerUpdateScheduleResult:
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        Terraform's internal resource identifier. It is structured as "`project_id`,`region`,`server_id`,`update_schedule_id`".
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property

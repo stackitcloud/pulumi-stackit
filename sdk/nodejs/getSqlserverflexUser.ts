@@ -46,6 +46,9 @@ export interface GetSqlserverflexUserArgs {
  */
 export interface GetSqlserverflexUserResult {
     readonly host: string;
+    /**
+     * Terraform's internal data source. ID. It is structured as "`projectId`,`region`,`instanceId`,`userId`".
+     */
     readonly id: string;
     /**
      * ID of the SQLServer Flex instance.

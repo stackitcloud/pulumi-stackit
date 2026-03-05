@@ -25,6 +25,7 @@ class ServerVolumeAttachArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServerVolumeAttach resource.
+
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the volume attachment is associated.
         :param pulumi.Input[_builtins.str] server_id: The server ID.
         :param pulumi.Input[_builtins.str] volume_id: The volume ID.
@@ -94,6 +95,7 @@ class _ServerVolumeAttachState:
                  volume_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServerVolumeAttach resources.
+
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the volume attachment is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.str] server_id: The server ID.
@@ -173,6 +175,7 @@ class ServerVolumeAttach(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the volume attachment is associated.
@@ -190,6 +193,7 @@ class ServerVolumeAttach(pulumi.CustomResource):
         Volume attachment resource schema. Attaches a volume to a server. Must have a `region` specified in the provider configuration.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param ServerVolumeAttachArgs args: The arguments to use to populate this resource's properties.

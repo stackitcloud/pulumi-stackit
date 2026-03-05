@@ -25,8 +25,10 @@ class PublicIpArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PublicIp resource.
+
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the public IP is associated.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
+        :param pulumi.Input[_builtins.str] network_interface_id: Associates the public IP with a network interface or a virtual IP (ID). If you are using this resource with a Kubernetes Load Balancer or any other resource which associates a network interface implicitly, use the lifecycle `ignore_changes` property in this field to prevent unintentional removal of the network interface due to drift in the Terraform state
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
         pulumi.set(__self__, "project_id", project_id)
@@ -64,6 +66,9 @@ class PublicIpArgs:
     @_builtins.property
     @pulumi.getter(name="networkInterfaceId")
     def network_interface_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Associates the public IP with a network interface or a virtual IP (ID). If you are using this resource with a Kubernetes Load Balancer or any other resource which associates a network interface implicitly, use the lifecycle `ignore_changes` property in this field to prevent unintentional removal of the network interface due to drift in the Terraform state
+        """
         return pulumi.get(self, "network_interface_id")
 
     @network_interface_id.setter
@@ -94,8 +99,10 @@ class _PublicIpState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering PublicIp resources.
+
         :param pulumi.Input[_builtins.str] ip: The IP address.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
+        :param pulumi.Input[_builtins.str] network_interface_id: Associates the public IP with a network interface or a virtual IP (ID). If you are using this resource with a Kubernetes Load Balancer or any other resource which associates a network interface implicitly, use the lifecycle `ignore_changes` property in this field to prevent unintentional removal of the network interface due to drift in the Terraform state
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the public IP is associated.
         :param pulumi.Input[_builtins.str] public_ip_id: The public IP ID.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
@@ -140,6 +147,9 @@ class _PublicIpState:
     @_builtins.property
     @pulumi.getter(name="networkInterfaceId")
     def network_interface_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Associates the public IP with a network interface or a virtual IP (ID). If you are using this resource with a Kubernetes Load Balancer or any other resource which associates a network interface implicitly, use the lifecycle `ignore_changes` property in this field to prevent unintentional removal of the network interface due to drift in the Terraform state
+        """
         return pulumi.get(self, "network_interface_id")
 
     @network_interface_id.setter
@@ -199,9 +209,11 @@ class PublicIp(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
+        :param pulumi.Input[_builtins.str] network_interface_id: Associates the public IP with a network interface or a virtual IP (ID). If you are using this resource with a Kubernetes Load Balancer or any other resource which associates a network interface implicitly, use the lifecycle `ignore_changes` property in this field to prevent unintentional removal of the network interface due to drift in the Terraform state
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the public IP is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
@@ -215,6 +227,7 @@ class PublicIp(pulumi.CustomResource):
         Public IP resource schema. Must have a `region` specified in the provider configuration.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param PublicIpArgs args: The arguments to use to populate this resource's properties.
@@ -277,6 +290,7 @@ class PublicIp(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ip: The IP address.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
+        :param pulumi.Input[_builtins.str] network_interface_id: Associates the public IP with a network interface or a virtual IP (ID). If you are using this resource with a Kubernetes Load Balancer or any other resource which associates a network interface implicitly, use the lifecycle `ignore_changes` property in this field to prevent unintentional removal of the network interface due to drift in the Terraform state
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the public IP is associated.
         :param pulumi.Input[_builtins.str] public_ip_id: The public IP ID.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
@@ -312,6 +326,9 @@ class PublicIp(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="networkInterfaceId")
     def network_interface_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        Associates the public IP with a network interface or a virtual IP (ID). If you are using this resource with a Kubernetes Load Balancer or any other resource which associates a network interface implicitly, use the lifecycle `ignore_changes` property in this field to prevent unintentional removal of the network interface due to drift in the Terraform state
+        """
         return pulumi.get(self, "network_interface_id")
 
     @_builtins.property

@@ -28,6 +28,7 @@ class ServerUpdateScheduleArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServerUpdateSchedule resource.
+
         :param pulumi.Input[_builtins.bool] enabled: Is the update schedule enabled or disabled.
         :param pulumi.Input[_builtins.int] maintenance_window: Maintenance window [1..24]. Updates start within the defined hourly window. Depending on the updates, the process may exceed this timeframe and require an automatic restart.
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the server is associated.
@@ -144,6 +145,7 @@ class _ServerUpdateScheduleState:
                  update_schedule_id: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ServerUpdateSchedule resources.
+
         :param pulumi.Input[_builtins.bool] enabled: Is the update schedule enabled or disabled.
         :param pulumi.Input[_builtins.int] maintenance_window: Maintenance window [1..24]. Updates start within the defined hourly window. Depending on the updates, the process may exceed this timeframe and require an automatic restart.
         :param pulumi.Input[_builtins.str] name: The schedule name.
@@ -288,6 +290,7 @@ class ServerUpdateSchedule(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enabled: Is the update schedule enabled or disabled.
@@ -310,6 +313,7 @@ class ServerUpdateSchedule(pulumi.CustomResource):
         > This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param ServerUpdateScheduleArgs args: The arguments to use to populate this resource's properties.

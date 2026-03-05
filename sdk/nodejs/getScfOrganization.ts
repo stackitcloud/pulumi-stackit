@@ -44,6 +44,9 @@ export interface GetScfOrganizationResult {
      * The time when the organization was created
      */
     readonly createdAt: string;
+    /**
+     * Terraform's internal resource ID, structured as "`projectId`,`region`,`orgId`".
+     */
     readonly id: string;
     /**
      * The name of the organization

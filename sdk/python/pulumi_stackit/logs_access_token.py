@@ -28,6 +28,7 @@ class LogsAccessTokenArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LogsAccessToken resource.
+
         :param pulumi.Input[_builtins.str] display_name: The displayed name of the access token
         :param pulumi.Input[_builtins.str] instance_id: The Logs instance ID associated with the access token
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] permissions: The access permissions granted to the access token. Possible values: `read`, `write`.
@@ -150,6 +151,7 @@ class _LogsAccessTokenState:
                  valid_until: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LogsAccessToken resources.
+
         :param pulumi.Input[_builtins.str] access_token: The generated access token
         :param pulumi.Input[_builtins.str] access_token_id: The access token ID
         :param pulumi.Input[_builtins.str] creator: The user who created the access token
@@ -367,6 +369,7 @@ class LogsAccessToken(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the access token
@@ -387,6 +390,7 @@ class LogsAccessToken(pulumi.CustomResource):
         Logs access token resource schema. Uses the `default_region` specified in the provider configuration as a fallback in case no `region` is defined on resource level.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param LogsAccessTokenArgs args: The arguments to use to populate this resource's properties.

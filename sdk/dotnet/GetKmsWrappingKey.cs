@@ -153,6 +153,9 @@ namespace Pulumi.Stackit
         /// The date and time the wrapping key will expire.
         /// </summary>
         public readonly string ExpiresAt;
+        /// <summary>
+        /// Terraform's internal resource ID. It is structured as "`ProjectId`,`Region`,`KeyringId`,`WrappingKeyId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The ID of the associated keyring

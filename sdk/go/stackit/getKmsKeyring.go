@@ -40,7 +40,8 @@ type LookupKmsKeyringResult struct {
 	Description string `pulumi:"description"`
 	// The display name to distinguish multiple keyrings.
 	DisplayName string `pulumi:"displayName"`
-	Id          string `pulumi:"id"`
+	// Terraform's internal resource ID. It is structured as "`projectId`,`region`,`keyringId`".
+	Id string `pulumi:"id"`
 	// An auto generated unique id which identifies the keyring.
 	KeyringId string `pulumi:"keyringId"`
 	// STACKIT project ID to which the keyring is associated.
@@ -97,6 +98,7 @@ func (o LookupKmsKeyringResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKmsKeyringResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
+// Terraform's internal resource ID. It is structured as "`projectId`,`region`,`keyringId`".
 func (o LookupKmsKeyringResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKmsKeyringResult) string { return v.Id }).(pulumi.StringOutput)
 }

@@ -46,7 +46,8 @@ type LookupSecurityGroupRuleResult struct {
 	EtherType string `pulumi:"etherType"`
 	// ICMP Parameters.
 	IcmpParameters GetSecurityGroupRuleIcmpParameters `pulumi:"icmpParameters"`
-	Id             string                             `pulumi:"id"`
+	// Terraform's internal datasource ID. It is structured as "`projectId`,`region`,`securityGroupId`,`securityGroupRuleId`".
+	Id string `pulumi:"id"`
 	// The remote IP range which the rule should match.
 	IpRange string `pulumi:"ipRange"`
 	// The range of ports.
@@ -125,6 +126,7 @@ func (o LookupSecurityGroupRuleResultOutput) IcmpParameters() GetSecurityGroupRu
 	return o.ApplyT(func(v LookupSecurityGroupRuleResult) GetSecurityGroupRuleIcmpParameters { return v.IcmpParameters }).(GetSecurityGroupRuleIcmpParametersOutput)
 }
 
+// Terraform's internal datasource ID. It is structured as "`projectId`,`region`,`securityGroupId`,`securityGroupRuleId`".
 func (o LookupSecurityGroupRuleResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSecurityGroupRuleResult) string { return v.Id }).(pulumi.StringOutput)
 }

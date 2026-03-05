@@ -49,6 +49,9 @@ class GetPublicIpRangesResult:
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        Terraform's internal resource ID. It takes the values of "`public_ip_ranges.*.cidr`".
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property

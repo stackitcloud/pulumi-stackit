@@ -28,6 +28,7 @@ class ObservabilityLogalertgroupArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ObservabilityLogalertgroup resource.
+
         :param pulumi.Input[_builtins.str] instance_id: Observability instance ID to which the log alert group is associated.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the log alert group is associated.
         :param pulumi.Input[Sequence[pulumi.Input['ObservabilityLogalertgroupRuleArgs']]] rules: Rules for the log alert group
@@ -113,6 +114,7 @@ class _ObservabilityLogalertgroupState:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['ObservabilityLogalertgroupRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering ObservabilityLogalertgroup resources.
+
         :param pulumi.Input[_builtins.str] instance_id: Observability instance ID to which the log alert group is associated.
         :param pulumi.Input[_builtins.str] interval: Specifies the frequency at which rules within the group are evaluated. The interval must be at least 60 seconds and defaults to 60 seconds if not set. Supported formats include hours, minutes, and seconds, either singly or in combination. Examples of valid formats are: '5h30m40s', '5h', '5h30m', '60m', and '60s'.
         :param pulumi.Input[_builtins.str] name: The name of the log alert group. Is the identifier and must be unique in the group.
@@ -208,6 +210,7 @@ class ObservabilityLogalertgroup(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_id: Observability instance ID to which the log alert group is associated.
@@ -226,6 +229,7 @@ class ObservabilityLogalertgroup(pulumi.CustomResource):
         Observability log alert group resource schema. Used to create alerts based on logs (Loki). Must have a `region` specified in the provider configuration.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param ObservabilityLogalertgroupArgs args: The arguments to use to populate this resource's properties.

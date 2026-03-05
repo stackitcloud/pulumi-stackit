@@ -114,6 +114,9 @@ namespace Pulumi.Stackit
     [OutputType]
     public sealed class GetPublicIpResult
     {
+        /// <summary>
+        /// Terraform's internal datasource ID. It is structured as "`ProjectId`,`Region`,`PublicIpId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The IP address.

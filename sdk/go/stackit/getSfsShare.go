@@ -45,7 +45,8 @@ type LookupSfsShareResult struct {
 	// clients with IPs matching the IP ACL of the Resource Pool hosting this Share.
 	// You can also assign a Share Export Policy after creating the Share
 	ExportPolicy string `pulumi:"exportPolicy"`
-	Id           string `pulumi:"id"`
+	// Terraform's internal resource ID. It is structured as "`projectId`,`shareId`".
+	Id string `pulumi:"id"`
 	// Mount path of the Share, used to mount the Share
 	MountPath string `pulumi:"mountPath"`
 	// Name of the Share
@@ -112,6 +113,7 @@ func (o LookupSfsShareResultOutput) ExportPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSfsShareResult) string { return v.ExportPolicy }).(pulumi.StringOutput)
 }
 
+// Terraform's internal resource ID. It is structured as "`projectId`,`shareId`".
 func (o LookupSfsShareResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSfsShareResult) string { return v.Id }).(pulumi.StringOutput)
 }

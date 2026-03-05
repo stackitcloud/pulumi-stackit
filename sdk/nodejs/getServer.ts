@@ -58,6 +58,9 @@ export interface GetServerResult {
      * Date-time when the server was created
      */
     readonly createdAt: string;
+    /**
+     * Terraform's internal resource ID. It is structured as "`projectId`,`region`,`serverId`".
+     */
     readonly id: string;
     /**
      * The image ID to be used for an ephemeral disk on the server.

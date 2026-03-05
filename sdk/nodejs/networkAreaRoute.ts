@@ -6,6 +6,23 @@ import * as inputs from "./types/input";
 import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
+/**
+ * Network area route resource schema. Must have a `region` specified in the provider configuration.
+ *
+ * ## Example Usage
+ *
+ * ## Migration of IaaS resources from versions <= v0.74.0
+ *
+ * The release of the STACKIT IaaS API v2 provides a lot of new features, but also includes some breaking changes
+ * (when coming from v1 of the STACKIT IaaS API) which must be somehow represented on Terraform side. The
+ * `stackit.NetworkAreaRoute` resource did undergo some changes. See the example below how to migrate your resources.
+ *
+ * ### Breaking change: Network area route resource (stackit_network_area_route)
+ *
+ * **Configuration for <= v0.74.0**
+ *
+ * **Configuration for > v0.74.0**
+ */
 export class NetworkAreaRoute extends pulumi.CustomResource {
     /**
      * Get an existing NetworkAreaRoute resource's state with the given name, ID, and optional extra

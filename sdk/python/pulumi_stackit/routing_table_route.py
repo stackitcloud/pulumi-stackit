@@ -30,6 +30,7 @@ class RoutingTableRouteArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a RoutingTableRoute resource.
+
         :param pulumi.Input['RoutingTableRouteDestinationArgs'] destination: Destination of the route.
         :param pulumi.Input[_builtins.str] network_area_id: The network area ID to which the routing table is associated.
         :param pulumi.Input['RoutingTableRouteNextHopArgs'] next_hop: Next hop destination.
@@ -148,6 +149,7 @@ class _RoutingTableRouteState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RoutingTableRoute resources.
+
         :param pulumi.Input[_builtins.str] created_at: Date-time when the route was created.
         :param pulumi.Input['RoutingTableRouteDestinationArgs'] destination: Destination of the route.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
@@ -322,6 +324,7 @@ class RoutingTableRoute(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['RoutingTableRouteDestinationArgs', 'RoutingTableRouteDestinationArgsDict']] destination: Destination of the route.
@@ -344,6 +347,7 @@ class RoutingTableRoute(pulumi.CustomResource):
         > This resource is part of the routing-tables experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param RoutingTableRouteArgs args: The arguments to use to populate this resource's properties.

@@ -59,6 +59,9 @@ export interface GetCdnDistributionResult {
      * List of distribution errors
      */
     readonly errors: string[];
+    /**
+     * Terraform's internal resource identifier. It is structured as "`projectId`,`distributionId`".
+     */
     readonly id: string;
     /**
      * STACKIT project ID associated with the distribution

@@ -25,6 +25,7 @@ class ObjectstorageCredentialArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ObjectstorageCredential resource.
+
         :param pulumi.Input[_builtins.str] credentials_group_id: The credential group ID.
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the credential group is associated.
         :param pulumi.Input[_builtins.str] expiration_timestamp: Expiration timestamp, in RFC339 format without fractional seconds. Example: "2025-01-01T00:00:00Z". If not set, the credential never expires.
@@ -99,6 +100,7 @@ class _ObjectstorageCredentialState:
                  secret_access_key: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ObjectstorageCredential resources.
+
         :param pulumi.Input[_builtins.str] credential_id: The credential ID.
         :param pulumi.Input[_builtins.str] credentials_group_id: The credential group ID.
         :param pulumi.Input[_builtins.str] expiration_timestamp: Expiration timestamp, in RFC339 format without fractional seconds. Example: "2025-01-01T00:00:00Z". If not set, the credential never expires.
@@ -226,6 +228,7 @@ class ObjectstorageCredential(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] credentials_group_id: The credential group ID.
@@ -243,6 +246,7 @@ class ObjectstorageCredential(pulumi.CustomResource):
         ObjectStorage credential resource schema. Must have a `region` specified in the provider configuration.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param ObjectstorageCredentialArgs args: The arguments to use to populate this resource's properties.

@@ -54,6 +54,9 @@ export interface GetVolumeResult {
      * Indicates if the volume is encrypted.
      */
     readonly encrypted: boolean;
+    /**
+     * Terraform's internal resource ID. It is structured as "`projectId`,`region`,`volumeId`".
+     */
     readonly id: string;
     /**
      * Labels are key-value string pairs which can be attached to a resource container

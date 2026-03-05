@@ -50,6 +50,9 @@ export interface GetLoadbalancerResult {
      * External Load Balancer IP address where this Load Balancer is exposed.
      */
     readonly externalAddress: string;
+    /**
+     * Terraform's internal resource ID. It is structured as "`projectId`","region","`name`".
+     */
     readonly id: string;
     /**
      * List of all listeners which will accept traffic. Limited to 20.

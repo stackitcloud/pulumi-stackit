@@ -2970,7 +2970,7 @@ export interface SkeClusterNetwork {
     /**
      * ID of the STACKIT Network Area (SNA) network into which the cluster will be deployed.
      */
-    id?: string;
+    id: string;
 }
 
 export interface SkeClusterNodePool {

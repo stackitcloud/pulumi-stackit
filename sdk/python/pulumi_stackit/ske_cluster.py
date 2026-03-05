@@ -32,6 +32,7 @@ class SkeClusterArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SkeCluster resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['SkeClusterNodePoolArgs']]] node_pools: One or more `node_pool` block as defined below.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the cluster is associated.
         :param pulumi.Input['SkeClusterExtensionsArgs'] extensions: A single extensions block as defined below.
@@ -185,6 +186,7 @@ class _SkeClusterState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SkeCluster resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] egress_address_ranges: The outgoing network ranges (in CIDR notation) of traffic originating from workload on the cluster.
         :param pulumi.Input['SkeClusterExtensionsArgs'] extensions: A single extensions block as defined below.
         :param pulumi.Input[Sequence[pulumi.Input['SkeClusterHibernationArgs']]] hibernations: One or more hibernation block as defined below.
@@ -391,6 +393,7 @@ class SkeCluster(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['SkeClusterExtensionsArgs', 'SkeClusterExtensionsArgsDict']] extensions: A single extensions block as defined below.
@@ -415,6 +418,7 @@ class SkeCluster(pulumi.CustomResource):
         > When updating `node_pools` of a `SkeCluster`, the pulumi preview might appear incorrect as it matches the node pools by index rather than by name. However, the SKE API correctly identifies node pools by name and applies the intended changes. Please review your changes carefully to ensure the correct configuration will be applied.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param SkeClusterArgs args: The arguments to use to populate this resource's properties.
@@ -583,7 +587,7 @@ class SkeCluster(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> pulumi.Output[Optional['outputs.SkeClusterNetwork']]:
+    def network(self) -> pulumi.Output['outputs.SkeClusterNetwork']:
         """
         Network block as defined below.
         """

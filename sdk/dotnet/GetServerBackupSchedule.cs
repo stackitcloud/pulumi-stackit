@@ -147,6 +147,9 @@ namespace Pulumi.Stackit
         /// Is the backup schedule enabled or disabled.
         /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// Terraform's internal resource identifier. It is structured as "`ProjectId`,`ServerId`,`BackupScheduleId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The schedule name.

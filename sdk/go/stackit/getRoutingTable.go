@@ -47,8 +47,9 @@ type LookupRoutingTableResult struct {
 	// Description of the routing table.
 	Description string `pulumi:"description"`
 	// This controls whether dynamic routes are propagated to this routing table
-	DynamicRoutes bool   `pulumi:"dynamicRoutes"`
-	Id            string `pulumi:"id"`
+	DynamicRoutes bool `pulumi:"dynamicRoutes"`
+	// Terraform's internal datasource ID. It is structured as "`organizationId`,`region`,`networkAreaId`,`routingTableId`".
+	Id string `pulumi:"id"`
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the routing table.
@@ -127,6 +128,7 @@ func (o LookupRoutingTableResultOutput) DynamicRoutes() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupRoutingTableResult) bool { return v.DynamicRoutes }).(pulumi.BoolOutput)
 }
 
+// Terraform's internal datasource ID. It is structured as "`organizationId`,`region`,`networkAreaId`,`routingTableId`".
 func (o LookupRoutingTableResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoutingTableResult) string { return v.Id }).(pulumi.StringOutput)
 }

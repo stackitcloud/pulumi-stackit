@@ -21,8 +21,9 @@ type PublicIp struct {
 	// The IP address.
 	Ip pulumi.StringOutput `pulumi:"ip"`
 	// Labels are key-value string pairs which can be attached to a resource container
-	Labels             pulumi.StringMapOutput `pulumi:"labels"`
-	NetworkInterfaceId pulumi.StringOutput    `pulumi:"networkInterfaceId"`
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// Associates the public IP with a network interface or a virtual IP (ID). If you are using this resource with a Kubernetes Load Balancer or any other resource which associates a network interface implicitly, use the lifecycle `ignoreChanges` property in this field to prevent unintentional removal of the network interface due to drift in the Terraform state
+	NetworkInterfaceId pulumi.StringOutput `pulumi:"networkInterfaceId"`
 	// STACKIT project ID to which the public IP is associated.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// The public IP ID.
@@ -67,8 +68,9 @@ type publicIpState struct {
 	// The IP address.
 	Ip *string `pulumi:"ip"`
 	// Labels are key-value string pairs which can be attached to a resource container
-	Labels             map[string]string `pulumi:"labels"`
-	NetworkInterfaceId *string           `pulumi:"networkInterfaceId"`
+	Labels map[string]string `pulumi:"labels"`
+	// Associates the public IP with a network interface or a virtual IP (ID). If you are using this resource with a Kubernetes Load Balancer or any other resource which associates a network interface implicitly, use the lifecycle `ignoreChanges` property in this field to prevent unintentional removal of the network interface due to drift in the Terraform state
+	NetworkInterfaceId *string `pulumi:"networkInterfaceId"`
 	// STACKIT project ID to which the public IP is associated.
 	ProjectId *string `pulumi:"projectId"`
 	// The public IP ID.
@@ -81,7 +83,8 @@ type PublicIpState struct {
 	// The IP address.
 	Ip pulumi.StringPtrInput
 	// Labels are key-value string pairs which can be attached to a resource container
-	Labels             pulumi.StringMapInput
+	Labels pulumi.StringMapInput
+	// Associates the public IP with a network interface or a virtual IP (ID). If you are using this resource with a Kubernetes Load Balancer or any other resource which associates a network interface implicitly, use the lifecycle `ignoreChanges` property in this field to prevent unintentional removal of the network interface due to drift in the Terraform state
 	NetworkInterfaceId pulumi.StringPtrInput
 	// STACKIT project ID to which the public IP is associated.
 	ProjectId pulumi.StringPtrInput
@@ -97,8 +100,9 @@ func (PublicIpState) ElementType() reflect.Type {
 
 type publicIpArgs struct {
 	// Labels are key-value string pairs which can be attached to a resource container
-	Labels             map[string]string `pulumi:"labels"`
-	NetworkInterfaceId *string           `pulumi:"networkInterfaceId"`
+	Labels map[string]string `pulumi:"labels"`
+	// Associates the public IP with a network interface or a virtual IP (ID). If you are using this resource with a Kubernetes Load Balancer or any other resource which associates a network interface implicitly, use the lifecycle `ignoreChanges` property in this field to prevent unintentional removal of the network interface due to drift in the Terraform state
+	NetworkInterfaceId *string `pulumi:"networkInterfaceId"`
 	// STACKIT project ID to which the public IP is associated.
 	ProjectId string `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
@@ -108,7 +112,8 @@ type publicIpArgs struct {
 // The set of arguments for constructing a PublicIp resource.
 type PublicIpArgs struct {
 	// Labels are key-value string pairs which can be attached to a resource container
-	Labels             pulumi.StringMapInput
+	Labels pulumi.StringMapInput
+	// Associates the public IP with a network interface or a virtual IP (ID). If you are using this resource with a Kubernetes Load Balancer or any other resource which associates a network interface implicitly, use the lifecycle `ignoreChanges` property in this field to prevent unintentional removal of the network interface due to drift in the Terraform state
 	NetworkInterfaceId pulumi.StringPtrInput
 	// STACKIT project ID to which the public IP is associated.
 	ProjectId pulumi.StringInput
@@ -213,6 +218,7 @@ func (o PublicIpOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *PublicIp) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
+// Associates the public IP with a network interface or a virtual IP (ID). If you are using this resource with a Kubernetes Load Balancer or any other resource which associates a network interface implicitly, use the lifecycle `ignoreChanges` property in this field to prevent unintentional removal of the network interface due to drift in the Terraform state
 func (o PublicIpOutput) NetworkInterfaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PublicIp) pulumi.StringOutput { return v.NetworkInterfaceId }).(pulumi.StringOutput)
 }

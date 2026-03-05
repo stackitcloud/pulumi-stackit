@@ -47,6 +47,9 @@ namespace Pulumi.Stackit
         [Output("kubeConfig")]
         public Output<string> KubeConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// Internally generated UUID to identify a kubeconfig resource in Terraform, since the SKE API doesnt return a kubeconfig identifier
+        /// </summary>
         [Output("kubeConfigId")]
         public Output<string> KubeConfigId { get; private set; } = null!;
 
@@ -209,6 +212,9 @@ namespace Pulumi.Stackit
             }
         }
 
+        /// <summary>
+        /// Internally generated UUID to identify a kubeconfig resource in Terraform, since the SKE API doesnt return a kubeconfig identifier
+        /// </summary>
         [Input("kubeConfigId")]
         public Input<string>? KubeConfigId { get; set; }
 

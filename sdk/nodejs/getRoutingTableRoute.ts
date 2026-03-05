@@ -62,6 +62,9 @@ export interface GetRoutingTableRouteResult {
      * Destination of the route.
      */
     readonly destination: outputs.GetRoutingTableRouteDestination;
+    /**
+     * Terraform's internal datasource ID. It is structured as "`organizationId`,`region`,`networkAreaId`,`routingTableId`,`routeId`".
+     */
     readonly id: string;
     /**
      * Labels are key-value string pairs which can be attached to a resource container

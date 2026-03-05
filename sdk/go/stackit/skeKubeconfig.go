@@ -27,7 +27,8 @@ type SkeKubeconfig struct {
 	// Timestamp when the kubeconfig expires
 	ExpiresAt pulumi.StringOutput `pulumi:"expiresAt"`
 	// Raw short-lived admin kubeconfig.
-	KubeConfig   pulumi.StringOutput `pulumi:"kubeConfig"`
+	KubeConfig pulumi.StringOutput `pulumi:"kubeConfig"`
+	// Internally generated UUID to identify a kubeconfig resource in Terraform, since the SKE API doesnt return a kubeconfig identifier
 	KubeConfigId pulumi.StringOutput `pulumi:"kubeConfigId"`
 	// STACKIT project ID to which the cluster is associated.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
@@ -88,7 +89,8 @@ type skeKubeconfigState struct {
 	// Timestamp when the kubeconfig expires
 	ExpiresAt *string `pulumi:"expiresAt"`
 	// Raw short-lived admin kubeconfig.
-	KubeConfig   *string `pulumi:"kubeConfig"`
+	KubeConfig *string `pulumi:"kubeConfig"`
+	// Internally generated UUID to identify a kubeconfig resource in Terraform, since the SKE API doesnt return a kubeconfig identifier
 	KubeConfigId *string `pulumi:"kubeConfigId"`
 	// STACKIT project ID to which the cluster is associated.
 	ProjectId *string `pulumi:"projectId"`
@@ -110,7 +112,8 @@ type SkeKubeconfigState struct {
 	// Timestamp when the kubeconfig expires
 	ExpiresAt pulumi.StringPtrInput
 	// Raw short-lived admin kubeconfig.
-	KubeConfig   pulumi.StringPtrInput
+	KubeConfig pulumi.StringPtrInput
+	// Internally generated UUID to identify a kubeconfig resource in Terraform, since the SKE API doesnt return a kubeconfig identifier
 	KubeConfigId pulumi.StringPtrInput
 	// STACKIT project ID to which the cluster is associated.
 	ProjectId pulumi.StringPtrInput
@@ -269,6 +272,7 @@ func (o SkeKubeconfigOutput) KubeConfig() pulumi.StringOutput {
 	return o.ApplyT(func(v *SkeKubeconfig) pulumi.StringOutput { return v.KubeConfig }).(pulumi.StringOutput)
 }
 
+// Internally generated UUID to identify a kubeconfig resource in Terraform, since the SKE API doesnt return a kubeconfig identifier
 func (o SkeKubeconfigOutput) KubeConfigId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SkeKubeconfig) pulumi.StringOutput { return v.KubeConfigId }).(pulumi.StringOutput)
 }

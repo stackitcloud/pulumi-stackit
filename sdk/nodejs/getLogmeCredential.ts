@@ -45,6 +45,9 @@ export interface GetLogmeCredentialResult {
      */
     readonly credentialId: string;
     readonly host: string;
+    /**
+     * Terraform's internal data source. identifier. It is structured as "`projectId`,`instanceId`,`credentialId`".
+     */
     readonly id: string;
     /**
      * ID of the LogMe instance.

@@ -44,6 +44,9 @@ export interface GetServerBackupSchedulesArgs {
  * A collection of values returned by getServerBackupSchedules.
  */
 export interface GetServerBackupSchedulesResult {
+    /**
+     * Terraform's internal data source identifier. It is structured as "`projectId`,`serverId`".
+     */
     readonly id: string;
     readonly items: outputs.GetServerBackupSchedulesItem[];
     /**

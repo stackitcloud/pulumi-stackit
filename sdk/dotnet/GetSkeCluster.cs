@@ -126,6 +126,9 @@ namespace Pulumi.Stackit
         /// One or more hibernation block as defined below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSkeClusterHibernationResult> Hibernations;
+        /// <summary>
+        /// Terraform's internal data source. ID. It is structured as "`ProjectId`,`Name`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The minimum Kubernetes version, this field is always nil. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes &amp; OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/). To get the current kubernetes version being used for your cluster, use the `KubernetesVersionUsed` field.

@@ -46,6 +46,9 @@ export interface GetMariadbCredentialResult {
     readonly credentialId: string;
     readonly host: string;
     readonly hosts: string[];
+    /**
+     * Terraform's internal data source. identifier. It is structured as "`projectId`,`instanceId`,`credentialId`".
+     */
     readonly id: string;
     /**
      * ID of the MariaDB instance.

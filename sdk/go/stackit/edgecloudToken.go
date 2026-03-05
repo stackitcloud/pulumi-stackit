@@ -39,7 +39,8 @@ type EdgecloudToken struct {
 	// The resource region. If not defined, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Raw token.
-	Token   pulumi.StringOutput `pulumi:"token"`
+	Token pulumi.StringOutput `pulumi:"token"`
+	// Internally generated UUID to identify a token resource in Terraform, since the Edge Cloud API doesnt return a token identifier
 	TokenId pulumi.StringOutput `pulumi:"tokenId"`
 }
 
@@ -97,7 +98,8 @@ type edgecloudTokenState struct {
 	// The resource region. If not defined, the provider region is used.
 	Region *string `pulumi:"region"`
 	// Raw token.
-	Token   *string `pulumi:"token"`
+	Token *string `pulumi:"token"`
+	// Internally generated UUID to identify a token resource in Terraform, since the Edge Cloud API doesnt return a token identifier
 	TokenId *string `pulumi:"tokenId"`
 }
 
@@ -119,7 +121,8 @@ type EdgecloudTokenState struct {
 	// The resource region. If not defined, the provider region is used.
 	Region pulumi.StringPtrInput
 	// Raw token.
-	Token   pulumi.StringPtrInput
+	Token pulumi.StringPtrInput
+	// Internally generated UUID to identify a token resource in Terraform, since the Edge Cloud API doesnt return a token identifier
 	TokenId pulumi.StringPtrInput
 }
 
@@ -290,6 +293,7 @@ func (o EdgecloudTokenOutput) Token() pulumi.StringOutput {
 	return o.ApplyT(func(v *EdgecloudToken) pulumi.StringOutput { return v.Token }).(pulumi.StringOutput)
 }
 
+// Internally generated UUID to identify a token resource in Terraform, since the Edge Cloud API doesnt return a token identifier
 func (o EdgecloudTokenOutput) TokenId() pulumi.StringOutput {
 	return o.ApplyT(func(v *EdgecloudToken) pulumi.StringOutput { return v.TokenId }).(pulumi.StringOutput)
 }

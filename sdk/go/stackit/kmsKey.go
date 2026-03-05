@@ -12,6 +12,10 @@ import (
 	"github.com/stackitcloud/pulumi-stackit/sdk/go/stackit/internal"
 )
 
+// KMS Key resource schema. Uses the `defaultRegion` specified in the provider configuration as a fallback in case no `region` is defined on resource level.
+//
+//	> Keys will **not** be instantly destroyed by terraform during a `terraform destroy`. They will just be scheduled for deletion via the API and thrown out of the Terraform state afterwards. **This way we can ensure no key setups are deleted by accident and it gives you the option to recover your keys within the grace period.**
+//
 // ## Example Usage
 type KmsKey struct {
 	pulumi.CustomResourceState

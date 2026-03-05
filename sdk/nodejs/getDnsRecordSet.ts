@@ -56,6 +56,9 @@ export interface GetDnsRecordSetResult {
      * Fully qualified domain name (FQDN) of the record set.
      */
     readonly fqdn: string;
+    /**
+     * Terraform's internal data source. ID. It is structured as "`projectId`,`zoneId`,`recordSetId`".
+     */
     readonly id: string;
     /**
      * Name of the record which should be a valid domain according to rfc1035 Section 2.3.4. E.g. `example.com`

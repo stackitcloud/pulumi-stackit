@@ -51,6 +51,9 @@ class GetServiceAccountResult:
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        Terraform's internal resource ID, structured as "`project_id`,`email`".
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property

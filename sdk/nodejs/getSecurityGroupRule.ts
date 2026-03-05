@@ -63,6 +63,9 @@ export interface GetSecurityGroupRuleResult {
      * ICMP Parameters.
      */
     readonly icmpParameters: outputs.GetSecurityGroupRuleIcmpParameters;
+    /**
+     * Terraform's internal datasource ID. It is structured as "`projectId`,`region`,`securityGroupId`,`securityGroupRuleId`".
+     */
     readonly id: string;
     /**
      * The remote IP range which the rule should match.

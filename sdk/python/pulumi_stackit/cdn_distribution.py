@@ -25,6 +25,7 @@ class CdnDistributionArgs:
                  project_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a CdnDistribution resource.
+
         :param pulumi.Input['CdnDistributionConfigArgs'] config: The distribution configuration
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID associated with the distribution
         """
@@ -69,6 +70,7 @@ class _CdnDistributionState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CdnDistribution resources.
+
         :param pulumi.Input['CdnDistributionConfigArgs'] config: The distribution configuration
         :param pulumi.Input[_builtins.str] created_at: Time when the distribution was created
         :param pulumi.Input[_builtins.str] distribution_id: CDN distribution ID
@@ -208,6 +210,7 @@ class CdnDistribution(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['CdnDistributionConfigArgs', 'CdnDistributionConfigArgsDict']] config: The distribution configuration
@@ -225,6 +228,7 @@ class CdnDistribution(pulumi.CustomResource):
         > This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param CdnDistributionArgs args: The arguments to use to populate this resource's properties.

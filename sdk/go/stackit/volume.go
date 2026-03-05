@@ -12,6 +12,10 @@ import (
 	"github.com/stackitcloud/pulumi-stackit/sdk/go/stackit/internal"
 )
 
+// Volume resource schema. Must have a `region` specified in the provider configuration.
+//
+// > **Note:** Write-Only argument `keyPayloadBase64Wo` is available to use in place of `keyPayloadBase64`. Write-Only arguments are supported in HashiCorp Terraform 1.11.0 and later. Learn more.
+//
 // ## Example Usage
 type Volume struct {
 	pulumi.CustomResourceState
@@ -21,7 +25,8 @@ type Volume struct {
 	// The description of the volume.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Indicates if the volume is encrypted.
-	Encrypted            pulumi.BoolOutput                   `pulumi:"encrypted"`
+	Encrypted pulumi.BoolOutput `pulumi:"encrypted"`
+	// Parameter to connect to a key-encryption-key within the STACKIT-KMS to create encrypted volumes. These parameters never leave the backend again. So these parameters are not present on imports or in the datasource. They live only in your Terraform state after creation of the resource.
 	EncryptionParameters VolumeEncryptionParametersPtrOutput `pulumi:"encryptionParameters"`
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
@@ -84,7 +89,8 @@ type volumeState struct {
 	// The description of the volume.
 	Description *string `pulumi:"description"`
 	// Indicates if the volume is encrypted.
-	Encrypted            *bool                       `pulumi:"encrypted"`
+	Encrypted *bool `pulumi:"encrypted"`
+	// Parameter to connect to a key-encryption-key within the STACKIT-KMS to create encrypted volumes. These parameters never leave the backend again. So these parameters are not present on imports or in the datasource. They live only in your Terraform state after creation of the resource.
 	EncryptionParameters *VolumeEncryptionParameters `pulumi:"encryptionParameters"`
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels map[string]string `pulumi:"labels"`
@@ -112,7 +118,8 @@ type VolumeState struct {
 	// The description of the volume.
 	Description pulumi.StringPtrInput
 	// Indicates if the volume is encrypted.
-	Encrypted            pulumi.BoolPtrInput
+	Encrypted pulumi.BoolPtrInput
+	// Parameter to connect to a key-encryption-key within the STACKIT-KMS to create encrypted volumes. These parameters never leave the backend again. So these parameters are not present on imports or in the datasource. They live only in your Terraform state after creation of the resource.
 	EncryptionParameters VolumeEncryptionParametersPtrInput
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels pulumi.StringMapInput
@@ -142,7 +149,8 @@ type volumeArgs struct {
 	// The availability zone of the volume.
 	AvailabilityZone string `pulumi:"availabilityZone"`
 	// The description of the volume.
-	Description          *string                     `pulumi:"description"`
+	Description *string `pulumi:"description"`
+	// Parameter to connect to a key-encryption-key within the STACKIT-KMS to create encrypted volumes. These parameters never leave the backend again. So these parameters are not present on imports or in the datasource. They live only in your Terraform state after creation of the resource.
 	EncryptionParameters *VolumeEncryptionParameters `pulumi:"encryptionParameters"`
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels map[string]string `pulumi:"labels"`
@@ -165,7 +173,8 @@ type VolumeArgs struct {
 	// The availability zone of the volume.
 	AvailabilityZone pulumi.StringInput
 	// The description of the volume.
-	Description          pulumi.StringPtrInput
+	Description pulumi.StringPtrInput
+	// Parameter to connect to a key-encryption-key within the STACKIT-KMS to create encrypted volumes. These parameters never leave the backend again. So these parameters are not present on imports or in the datasource. They live only in your Terraform state after creation of the resource.
 	EncryptionParameters VolumeEncryptionParametersPtrInput
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels pulumi.StringMapInput
@@ -285,6 +294,7 @@ func (o VolumeOutput) Encrypted() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Volume) pulumi.BoolOutput { return v.Encrypted }).(pulumi.BoolOutput)
 }
 
+// Parameter to connect to a key-encryption-key within the STACKIT-KMS to create encrypted volumes. These parameters never leave the backend again. So these parameters are not present on imports or in the datasource. They live only in your Terraform state after creation of the resource.
 func (o VolumeOutput) EncryptionParameters() VolumeEncryptionParametersPtrOutput {
 	return o.ApplyT(func(v *Volume) VolumeEncryptionParametersPtrOutput { return v.EncryptionParameters }).(VolumeEncryptionParametersPtrOutput)
 }

@@ -72,7 +72,7 @@ export class SkeCluster extends pulumi.CustomResource {
     /**
      * Network block as defined below.
      */
-    declare public readonly network: pulumi.Output<outputs.SkeClusterNetwork | undefined>;
+    declare public readonly network: pulumi.Output<outputs.SkeClusterNetwork>;
     /**
      * One or more `nodePool` block as defined below.
      */

@@ -30,6 +30,7 @@ class ServerBackupScheduleArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServerBackupSchedule resource.
+
         :param pulumi.Input['ServerBackupScheduleBackupPropertiesArgs'] backup_properties: Backup schedule details for the backups.
         :param pulumi.Input[_builtins.bool] enabled: Is the backup schedule enabled or disabled.
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the server is associated.
@@ -146,6 +147,7 @@ class _ServerBackupScheduleState:
                  server_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServerBackupSchedule resources.
+
         :param pulumi.Input['ServerBackupScheduleBackupPropertiesArgs'] backup_properties: Backup schedule details for the backups.
         :param pulumi.Input[_builtins.int] backup_schedule_id: Backup schedule ID.
         :param pulumi.Input[_builtins.bool] enabled: Is the backup schedule enabled or disabled.
@@ -290,6 +292,7 @@ class ServerBackupSchedule(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['ServerBackupScheduleBackupPropertiesArgs', 'ServerBackupScheduleBackupPropertiesArgsDict']] backup_properties: Backup schedule details for the backups.
@@ -312,6 +315,7 @@ class ServerBackupSchedule(pulumi.CustomResource):
         > This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param ServerBackupScheduleArgs args: The arguments to use to populate this resource's properties.

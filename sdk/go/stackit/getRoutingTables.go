@@ -38,6 +38,7 @@ type GetRoutingTablesArgs struct {
 
 // A collection of values returned by getRoutingTables.
 type GetRoutingTablesResult struct {
+	// Terraform's internal datasource ID. It is structured as "`organizationId`,`region`,`networkAreaId`".
 	Id string `pulumi:"id"`
 	// List of routing tables.
 	Items []GetRoutingTablesItem `pulumi:"items"`
@@ -87,6 +88,7 @@ func (o GetRoutingTablesResultOutput) ToGetRoutingTablesResultOutputWithContext(
 	return o
 }
 
+// Terraform's internal datasource ID. It is structured as "`organizationId`,`region`,`networkAreaId`".
 func (o GetRoutingTablesResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRoutingTablesResult) string { return v.Id }).(pulumi.StringOutput)
 }

@@ -26,7 +26,8 @@ type RedisInstance struct {
 	// ID of the Redis instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// Instance name.
-	Name       pulumi.StringOutput           `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
 	Parameters RedisInstanceParametersOutput `pulumi:"parameters"`
 	// The selected plan ID.
 	PlanId pulumi.StringOutput `pulumi:"planId"`
@@ -85,7 +86,8 @@ type redisInstanceState struct {
 	// ID of the Redis instance.
 	InstanceId *string `pulumi:"instanceId"`
 	// Instance name.
-	Name       *string                  `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
 	Parameters *RedisInstanceParameters `pulumi:"parameters"`
 	// The selected plan ID.
 	PlanId *string `pulumi:"planId"`
@@ -106,7 +108,8 @@ type RedisInstanceState struct {
 	// ID of the Redis instance.
 	InstanceId pulumi.StringPtrInput
 	// Instance name.
-	Name       pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
 	Parameters RedisInstanceParametersPtrInput
 	// The selected plan ID.
 	PlanId pulumi.StringPtrInput
@@ -124,7 +127,8 @@ func (RedisInstanceState) ElementType() reflect.Type {
 
 type redisInstanceArgs struct {
 	// Instance name.
-	Name       *string                  `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
 	Parameters *RedisInstanceParameters `pulumi:"parameters"`
 	// The selected plan name.
 	PlanName string `pulumi:"planName"`
@@ -137,7 +141,8 @@ type redisInstanceArgs struct {
 // The set of arguments for constructing a RedisInstance resource.
 type RedisInstanceArgs struct {
 	// Instance name.
-	Name       pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
 	Parameters RedisInstanceParametersPtrInput
 	// The selected plan name.
 	PlanName pulumi.StringInput
@@ -264,6 +269,7 @@ func (o RedisInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RedisInstance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
 func (o RedisInstanceOutput) Parameters() RedisInstanceParametersOutput {
 	return o.ApplyT(func(v *RedisInstance) RedisInstanceParametersOutput { return v.Parameters }).(RedisInstanceParametersOutput)
 }

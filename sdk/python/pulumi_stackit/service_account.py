@@ -23,6 +23,7 @@ class ServiceAccountArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServiceAccount resource.
+
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the service account is associated.
         :param pulumi.Input[_builtins.str] name: Name of the service account.
         """
@@ -63,6 +64,7 @@ class _ServiceAccountState:
                  project_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceAccount resources.
+
         :param pulumi.Input[_builtins.str] email: Email of the service account.
         :param pulumi.Input[_builtins.str] name: Name of the service account.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the service account is associated.
@@ -125,6 +127,7 @@ class ServiceAccount(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: Name of the service account.
@@ -140,6 +143,7 @@ class ServiceAccount(pulumi.CustomResource):
         Service account resource schema.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param ServiceAccountArgs args: The arguments to use to populate this resource's properties.

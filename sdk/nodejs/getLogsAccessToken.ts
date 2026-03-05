@@ -65,6 +65,9 @@ export interface GetLogsAccessTokenResult {
      * Indicates if the access token can expire
      */
     readonly expires: boolean;
+    /**
+     * Terraform's internal resource identifier. It is structured as "`projectId`,`region`,`instanceId`,`accessTokenId`".
+     */
     readonly id: string;
     /**
      * The Logs instance ID associated with the access token

@@ -40,6 +40,9 @@ export interface GetObjectstorageBucketArgs {
  * A collection of values returned by getObjectstorageBucket.
  */
 export interface GetObjectstorageBucketResult {
+    /**
+     * Terraform's internal data source identifier. It is structured as "`projectId`,`region`,`name`".
+     */
     readonly id: string;
     /**
      * The bucket name. It must be DNS conform.

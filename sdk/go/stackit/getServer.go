@@ -44,7 +44,8 @@ type LookupServerResult struct {
 	BootVolume GetServerBootVolume `pulumi:"bootVolume"`
 	// Date-time when the server was created
 	CreatedAt string `pulumi:"createdAt"`
-	Id        string `pulumi:"id"`
+	// Terraform's internal resource ID. It is structured as "`projectId`,`region`,`serverId`".
+	Id string `pulumi:"id"`
 	// The image ID to be used for an ephemeral disk on the server.
 	ImageId string `pulumi:"imageId"`
 	// The name of the keypair used during server creation.
@@ -129,6 +130,7 @@ func (o LookupServerResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// Terraform's internal resource ID. It is structured as "`projectId`,`region`,`serverId`".
 func (o LookupServerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerResult) string { return v.Id }).(pulumi.StringOutput)
 }

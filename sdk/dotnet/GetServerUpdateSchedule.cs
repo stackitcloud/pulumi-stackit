@@ -139,6 +139,9 @@ namespace Pulumi.Stackit
         /// Is the update schedule enabled or disabled.
         /// </summary>
         public readonly bool Enabled;
+        /// <summary>
+        /// Terraform's internal resource identifier. It is structured as "`ProjectId`,`Region`,`ServerId`,`UpdateScheduleId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// Maintenance window [1..24]. Updates start within the defined hourly window. Depending on the updates, the process may exceed this timeframe and require an automatic restart.

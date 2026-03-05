@@ -102,6 +102,9 @@ class GetDnsRecordSetResult:
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        Terraform's internal data source. ID. It is structured as "`project_id`,`zone_id`,`record_set_id`".
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property

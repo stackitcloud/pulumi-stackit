@@ -126,6 +126,9 @@ namespace Pulumi.Stackit
         /// The disk format of the image.
         /// </summary>
         public readonly string DiskFormat;
+        /// <summary>
+        /// Terraform's internal resource ID. It is structured as "`ProjectId`,`Region`,`ImageId`".
+        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The image ID.

@@ -25,6 +25,7 @@ class SecretsmanagerUserArgs:
                  write_enabled: pulumi.Input[_builtins.bool]):
         """
         The set of arguments for constructing a SecretsmanagerUser resource.
+
         :param pulumi.Input[_builtins.str] description: A user chosen description to differentiate between multiple users. Can't be changed after creation.
         :param pulumi.Input[_builtins.str] instance_id: ID of the Secrets Manager instance.
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the instance is associated.
@@ -96,6 +97,7 @@ class _SecretsmanagerUserState:
                  write_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering SecretsmanagerUser resources.
+
         :param pulumi.Input[_builtins.str] description: A user chosen description to differentiate between multiple users. Can't be changed after creation.
         :param pulumi.Input[_builtins.str] instance_id: ID of the Secrets Manager instance.
         :param pulumi.Input[_builtins.str] password: An auto-generated password.
@@ -220,6 +222,7 @@ class SecretsmanagerUser(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A user chosen description to differentiate between multiple users. Can't be changed after creation.
@@ -237,6 +240,7 @@ class SecretsmanagerUser(pulumi.CustomResource):
         Secrets Manager user resource schema. Must have a `region` specified in the provider configuration.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param SecretsmanagerUserArgs args: The arguments to use to populate this resource's properties.

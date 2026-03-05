@@ -36,6 +36,7 @@ class DnsZoneArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DnsZone resource.
+
         :param pulumi.Input[_builtins.str] dns_name: The zone name. E.g. `example.com`
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the dns zone is associated.
         :param pulumi.Input[_builtins.str] acl: The access control list. E.g. `0.0.0.0/0,::/0`
@@ -284,6 +285,7 @@ class _DnsZoneState:
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DnsZone resources.
+
         :param pulumi.Input[_builtins.str] acl: The access control list. E.g. `0.0.0.0/0,::/0`
         :param pulumi.Input[_builtins.str] contact_email: A contact e-mail for the zone.
         :param pulumi.Input[_builtins.int] default_ttl: Default time to live. E.g. 3600.
@@ -625,6 +627,7 @@ class DnsZone(pulumi.CustomResource):
 
         ## Example Usage
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl: The access control list. E.g. `0.0.0.0/0,::/0`
@@ -652,6 +655,7 @@ class DnsZone(pulumi.CustomResource):
         DNS Zone resource schema.
 
         ## Example Usage
+
 
         :param str resource_name: The name of the resource.
         :param DnsZoneArgs args: The arguments to use to populate this resource's properties.
