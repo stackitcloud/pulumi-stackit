@@ -13,8 +13,6 @@ import (
 
 // Server backup schedules datasource schema. Must have a `region` specified in the provider configuration.
 //
-// > This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
-//
 // ## Example Usage
 func GetServerBackupSchedules(ctx *pulumi.Context, args *GetServerBackupSchedulesArgs, opts ...pulumi.InvokeOption) (*GetServerBackupSchedulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

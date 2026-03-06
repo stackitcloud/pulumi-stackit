@@ -18,6 +18,8 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
+	// Custom endpoint for the Application Load Balancer service
+	AlbCustomEndpoint pulumi.StringPtrOutput `pulumi:"albCustomEndpoint"`
 	// Custom endpoint for the Membership service
 	AuthorizationCustomEndpoint pulumi.StringPtrOutput `pulumi:"authorizationCustomEndpoint"`
 	// Custom endpoint for the CDN service
@@ -127,6 +129,8 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
+	// Custom endpoint for the Application Load Balancer service
+	AlbCustomEndpoint *string `pulumi:"albCustomEndpoint"`
 	// Custom endpoint for the Membership service
 	AuthorizationCustomEndpoint *string `pulumi:"authorizationCustomEndpoint"`
 	// Custom endpoint for the CDN service
@@ -227,6 +231,8 @@ type providerArgs struct {
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
+	// Custom endpoint for the Application Load Balancer service
+	AlbCustomEndpoint pulumi.StringPtrInput
 	// Custom endpoint for the Membership service
 	AuthorizationCustomEndpoint pulumi.StringPtrInput
 	// Custom endpoint for the CDN service
@@ -383,6 +389,11 @@ func (o ProviderOutput) ToProviderOutput() ProviderOutput {
 
 func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) ProviderOutput {
 	return o
+}
+
+// Custom endpoint for the Application Load Balancer service
+func (o ProviderOutput) AlbCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AlbCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 // Custom endpoint for the Membership service

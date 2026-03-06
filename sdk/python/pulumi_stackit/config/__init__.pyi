@@ -14,6 +14,11 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
+albCustomEndpoint: Optional[str]
+"""
+Custom endpoint for the Application Load Balancer service
+"""
+
 authorizationCustomEndpoint: Optional[str]
 """
 Custom endpoint for the Membership service

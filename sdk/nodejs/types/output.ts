@@ -5,6 +5,323 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface ApplicationLoadBalancerError {
+    /**
+     * The error description contains additional helpful user information to fix the error state of the Application Load Balancer. For example the IP 45.135.247.139 does not exist in the project, then the description will report: Floating IP "45.135.247.139" could not be found.
+     */
+    description: string;
+    /**
+     * The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`.
+     */
+    type: string;
+}
+
+export interface ApplicationLoadBalancerListener {
+    /**
+     * Configuration for HTTP traffic.
+     */
+    http: outputs.ApplicationLoadBalancerListenerHttp;
+    /**
+     * Configuration for handling HTTPS traffic on this listener.
+     */
+    https?: outputs.ApplicationLoadBalancerListenerHttps;
+    /**
+     * Unique name for the listener
+     */
+    name: string;
+    /**
+     * Port number on which the listener receives incoming traffic.
+     */
+    port: number;
+    /**
+     * Protocol is the highest network protocol we understand to load balance. Possible values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_HTTP`, `PROTOCOL_HTTPS`.
+     */
+    protocol: string;
+    /**
+     * Enable Web Application Firewall (WAF), referenced by name. See "Application Load Balancer - Web Application Firewall API" for more information.
+     */
+    wafConfigName?: string;
+}
+
+export interface ApplicationLoadBalancerListenerHttp {
+    /**
+     * Defines routing rules grouped by hostname.
+     */
+    hosts: outputs.ApplicationLoadBalancerListenerHttpHost[];
+}
+
+export interface ApplicationLoadBalancerListenerHttpHost {
+    /**
+     * Hostname to match. Supports wildcards (e.g. *.example.com).
+     */
+    host: string;
+    /**
+     * Routing rules under the specified host, matched by path prefix.
+     */
+    rules: outputs.ApplicationLoadBalancerListenerHttpHostRule[];
+}
+
+export interface ApplicationLoadBalancerListenerHttpHostRule {
+    /**
+     * Routing persistence via cookies.
+     */
+    cookiePersistence?: outputs.ApplicationLoadBalancerListenerHttpHostRuleCookiePersistence;
+    /**
+     * Headers for the rule.
+     */
+    headers?: outputs.ApplicationLoadBalancerListenerHttpHostRuleHeader[];
+    /**
+     * Routing via path.
+     */
+    path?: outputs.ApplicationLoadBalancerListenerHttpHostRulePath;
+    /**
+     * Query parameters for the rule.
+     */
+    queryParameters?: outputs.ApplicationLoadBalancerListenerHttpHostRuleQueryParameter[];
+    /**
+     * Reference target pool by target pool name.
+     */
+    targetPool: string;
+    /**
+     * If enabled, when client sends an HTTP request with and Upgrade header, indicating the desire to establish a Websocket connection, if backend server supports WebSocket, it responds with HTTP 101 status code, switching protocols from HTTP to WebSocket. Hence the client and the server can exchange data in real-time using one long-lived TCP connection.
+     */
+    webSocket: boolean;
+}
+
+export interface ApplicationLoadBalancerListenerHttpHostRuleCookiePersistence {
+    /**
+     * The name of the cookie to use.
+     */
+    name: string;
+    /**
+     * TTL specifies the time-to-live for the cookie. The default value is 0s, and it acts as a session cookie, expiring when the client session ends.
+     */
+    ttl: string;
+}
+
+export interface ApplicationLoadBalancerListenerHttpHostRuleHeader {
+    /**
+     * Exact match for the header value.
+     */
+    exactMatch?: string;
+    /**
+     * Header name.
+     */
+    name: string;
+}
+
+export interface ApplicationLoadBalancerListenerHttpHostRulePath {
+    /**
+     * Exact path match. Only a request path exactly equal to the value will match, e.g. '/foo' matches only '/foo', not '/foo/bar' or '/foobar'.
+     */
+    exactMatch?: string;
+    /**
+     * Prefix path match. Only matches on full segment boundaries, e.g. '/foo' matches '/foo' and '/foo/bar' but NOT '/foobar'.
+     */
+    prefix?: string;
+}
+
+export interface ApplicationLoadBalancerListenerHttpHostRuleQueryParameter {
+    /**
+     * Exact match for the query parameters value.
+     */
+    exactMatch?: string;
+    /**
+     * Query parameter name.
+     */
+    name: string;
+}
+
+export interface ApplicationLoadBalancerListenerHttps {
+    /**
+     * TLS termination certificate configuration.
+     */
+    certificateConfig: outputs.ApplicationLoadBalancerListenerHttpsCertificateConfig;
+}
+
+export interface ApplicationLoadBalancerListenerHttpsCertificateConfig {
+    /**
+     * Certificate IDs for TLS termination.
+     */
+    certificateIds: string[];
+}
+
+export interface ApplicationLoadBalancerLoadBalancerSecurityGroup {
+    /**
+     * ID of the security Group
+     */
+    id: string;
+    /**
+     * Name of the security Group
+     */
+    name: string;
+}
+
+export interface ApplicationLoadBalancerNetwork {
+    /**
+     * STACKIT network ID the Application Load Balancer and/or targets are in.
+     */
+    networkId: string;
+    /**
+     * The role defines how the Application Load Balancer is using the network. Possible values are: `ROLE_UNSPECIFIED`, `ROLE_LISTENERS_AND_TARGETS`, `ROLE_LISTENERS`, `ROLE_TARGETS`.
+     */
+    role: string;
+}
+
+export interface ApplicationLoadBalancerOptions {
+    /**
+     * Use this option to limit the IP ranges that can use the Application Load Balancer.
+     */
+    accessControl?: outputs.ApplicationLoadBalancerOptionsAccessControl;
+    /**
+     * This option automates the handling of the external IP address for an Application Load Balancer. If set to true a new IP address will be automatically created. It will also be automatically deleted when the Load Balancer is deleted.
+     */
+    ephemeralAddress: boolean;
+    /**
+     * We offer Load Balancer observability via STACKIT Observability or external solutions.
+     */
+    observability?: outputs.ApplicationLoadBalancerOptionsObservability;
+    /**
+     * Application Load Balancer is accessible only via a private network ip address. Not changeable after creation.
+     */
+    privateNetworkOnly: boolean;
+}
+
+export interface ApplicationLoadBalancerOptionsAccessControl {
+    /**
+     * Application Load Balancer is accessible only from an IP address in this range.
+     */
+    allowedSourceRanges: string[];
+}
+
+export interface ApplicationLoadBalancerOptionsObservability {
+    /**
+     * Observability logs configuration.
+     */
+    logs?: outputs.ApplicationLoadBalancerOptionsObservabilityLogs;
+    /**
+     * Observability metrics configuration.
+     */
+    metrics?: outputs.ApplicationLoadBalancerOptionsObservabilityMetrics;
+}
+
+export interface ApplicationLoadBalancerOptionsObservabilityLogs {
+    /**
+     * Credentials reference for logging. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the logging solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+     */
+    credentialsRef: string;
+    /**
+     * Credentials reference for logging. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the logging solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+     */
+    pushUrl: string;
+}
+
+export interface ApplicationLoadBalancerOptionsObservabilityMetrics {
+    /**
+     * Credentials reference for metrics. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the metrics solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+     */
+    credentialsRef: string;
+    /**
+     * Credentials reference for metrics. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the metrics solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+     */
+    pushUrl: string;
+}
+
+export interface ApplicationLoadBalancerTargetPool {
+    activeHealthCheck?: outputs.ApplicationLoadBalancerTargetPoolActiveHealthCheck;
+    /**
+     * Target pool name.
+     */
+    name: string;
+    /**
+     * The number identifying the port where each target listens for traffic.
+     */
+    targetPort: number;
+    /**
+     * List of all targets which will be used in the pool. Limited to 250.
+     */
+    targets: outputs.ApplicationLoadBalancerTargetPoolTarget[];
+    /**
+     * Configuration for TLS bridging.
+     */
+    tlsConfig?: outputs.ApplicationLoadBalancerTargetPoolTlsConfig;
+}
+
+export interface ApplicationLoadBalancerTargetPoolActiveHealthCheck {
+    /**
+     * Healthy threshold of the health checking.
+     */
+    healthyThreshold: number;
+    /**
+     * Options for the HTTP health checking.
+     */
+    httpHealthChecks?: outputs.ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks;
+    /**
+     * Interval duration of health checking in seconds.
+     */
+    interval: string;
+    /**
+     * Interval duration threshold of the health checking in seconds.
+     */
+    intervalJitter: string;
+    /**
+     * Active health checking timeout duration in seconds.
+     */
+    timeout: string;
+    /**
+     * Unhealthy threshold of the health checking.
+     */
+    unhealthyThreshold: number;
+}
+
+export interface ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks {
+    /**
+     * List of HTTP status codes that indicate a healthy response.
+     */
+    okStatuses: string[];
+    /**
+     * Path to send the health check request to.
+     */
+    path: string;
+}
+
+export interface ApplicationLoadBalancerTargetPoolTarget {
+    /**
+     * Target display name
+     */
+    displayName?: string;
+    /**
+     * Private target IP, which must by unique within a target pool.
+     */
+    ip: string;
+}
+
+export interface ApplicationLoadBalancerTargetPoolTlsConfig {
+    /**
+     * Specifies a custom Certificate Authority (CA). When provided, the target pool will trust certificates signed by this CA, in addition to any system-trusted CAs. This is useful for scenarios where the target pool needs to communicate with servers using self-signed or internally-issued certificates. Enabled needs to be set to true and skip validation to false for this option.
+     */
+    customCa?: string;
+    /**
+     * Enable TLS (Transport Layer Security) bridging for the connection between Application Load Balancer and targets in this pool. When enabled, public CAs are trusted. Can be used in tandem with the options either custom CA or skip validation or alone.
+     */
+    enabled: boolean;
+    /**
+     * Bypass certificate validation for TLS bridging in this target pool. This option is insecure and can only be used with public CAs by setting enabled true. Meant to be used for testing purposes only!
+     */
+    skipCertificateValidation: boolean;
+}
+
+export interface ApplicationLoadBalancerTargetSecurityGroup {
+    /**
+     * ID of the security Group
+     */
+    id: string;
+    /**
+     * Name of the security Group
+     */
+    name: string;
+}
+
 export interface CdnCustomDomainCertificate {
     /**
      * The PEM-encoded TLS certificate. Required for custom certificates.
@@ -102,6 +419,323 @@ export interface CdnDistributionDomain {
      * The type of the domain. Each distribution has one domain of type "managed", and domains of type "custom" may be additionally created by the user
      */
     type: string;
+}
+
+export interface GetApplicationLoadBalancerError {
+    /**
+     * The error description contains additional helpful user information to fix the error state of the Application Load Balancer. For example the IP 45.135.247.139 does not exist in the project, then the description will report: Floating IP "45.135.247.139" could not be found.
+     */
+    description: string;
+    /**
+     * The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`.
+     */
+    type: string;
+}
+
+export interface GetApplicationLoadBalancerListener {
+    /**
+     * Configuration for HTTP traffic.
+     */
+    http: outputs.GetApplicationLoadBalancerListenerHttp;
+    /**
+     * Configuration for handling HTTPS traffic on this listener.
+     */
+    https: outputs.GetApplicationLoadBalancerListenerHttps;
+    /**
+     * Unique name for the listener
+     */
+    name: string;
+    /**
+     * Port number on which the listener receives incoming traffic.
+     */
+    port: number;
+    /**
+     * Protocol is the highest network protocol we understand to load balance. Possible values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_HTTP`, `PROTOCOL_HTTPS`.
+     */
+    protocol: string;
+    /**
+     * Enable Web Application Firewall (WAF), referenced by name. See "Application Load Balancer - Web Application Firewall API" for more information.
+     */
+    wafConfigName: string;
+}
+
+export interface GetApplicationLoadBalancerListenerHttp {
+    /**
+     * Defines routing rules grouped by hostname.
+     */
+    hosts: outputs.GetApplicationLoadBalancerListenerHttpHost[];
+}
+
+export interface GetApplicationLoadBalancerListenerHttpHost {
+    /**
+     * Hostname to match. Supports wildcards (e.g. *.example.com).
+     */
+    host: string;
+    /**
+     * Routing rules under the specified host, matched by path prefix.
+     */
+    rules: outputs.GetApplicationLoadBalancerListenerHttpHostRule[];
+}
+
+export interface GetApplicationLoadBalancerListenerHttpHostRule {
+    /**
+     * Routing persistence via cookies.
+     */
+    cookiePersistence: outputs.GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistence;
+    /**
+     * Headers for the rule.
+     */
+    headers: outputs.GetApplicationLoadBalancerListenerHttpHostRuleHeader[];
+    /**
+     * Routing via path.
+     */
+    path: outputs.GetApplicationLoadBalancerListenerHttpHostRulePath;
+    /**
+     * Query parameters for the rule.
+     */
+    queryParameters: outputs.GetApplicationLoadBalancerListenerHttpHostRuleQueryParameter[];
+    /**
+     * Reference target pool by target pool name.
+     */
+    targetPool: string;
+    /**
+     * If enabled, when client sends an HTTP request with and Upgrade header, indicating the desire to establish a Websocket connection, if backend server supports WebSocket, it responds with HTTP 101 status code, switching protocols from HTTP to WebSocket. Hence the client and the server can exchange data in real-time using one long-lived TCP connection.
+     */
+    webSocket: boolean;
+}
+
+export interface GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistence {
+    /**
+     * The name of the cookie to use.
+     */
+    name: string;
+    /**
+     * TTL specifies the time-to-live for the cookie. The default value is 0s, and it acts as a session cookie, expiring when the client session ends.
+     */
+    ttl: string;
+}
+
+export interface GetApplicationLoadBalancerListenerHttpHostRuleHeader {
+    /**
+     * Exact match for the header value.
+     */
+    exactMatch: string;
+    /**
+     * Header name.
+     */
+    name: string;
+}
+
+export interface GetApplicationLoadBalancerListenerHttpHostRulePath {
+    /**
+     * Exact path match. Only a request path exactly equal to the value will match, e.g. '/foo' matches only '/foo', not '/foo/bar' or '/foobar'.
+     */
+    exactMatch: string;
+    /**
+     * Prefix path match. Only matches on full segment boundaries, e.g. '/foo' matches '/foo' and '/foo/bar' but NOT '/foobar'.
+     */
+    prefix: string;
+}
+
+export interface GetApplicationLoadBalancerListenerHttpHostRuleQueryParameter {
+    /**
+     * Exact match for the query parameters value.
+     */
+    exactMatch: string;
+    /**
+     * Query parameter name.
+     */
+    name: string;
+}
+
+export interface GetApplicationLoadBalancerListenerHttps {
+    /**
+     * TLS termination certificate configuration.
+     */
+    certificateConfig: outputs.GetApplicationLoadBalancerListenerHttpsCertificateConfig;
+}
+
+export interface GetApplicationLoadBalancerListenerHttpsCertificateConfig {
+    /**
+     * Certificate IDs for TLS termination.
+     */
+    certificateIds: string[];
+}
+
+export interface GetApplicationLoadBalancerLoadBalancerSecurityGroup {
+    /**
+     * ID of the security Group
+     */
+    id: string;
+    /**
+     * Name of the security Group
+     */
+    name: string;
+}
+
+export interface GetApplicationLoadBalancerNetwork {
+    /**
+     * STACKIT network ID the Application Load Balancer and/or targets are in.
+     */
+    networkId: string;
+    /**
+     * The role defines how the Application Load Balancer is using the network. Possible values are: `ROLE_UNSPECIFIED`, `ROLE_LISTENERS_AND_TARGETS`, `ROLE_LISTENERS`, `ROLE_TARGETS`.
+     */
+    role: string;
+}
+
+export interface GetApplicationLoadBalancerOptions {
+    /**
+     * Use this option to limit the IP ranges that can use the Application Load Balancer.
+     */
+    accessControl: outputs.GetApplicationLoadBalancerOptionsAccessControl;
+    /**
+     * This option automates the handling of the external IP address for an Application Load Balancer. If set to true a new IP address will be automatically created. It will also be automatically deleted when the Load Balancer is deleted.
+     */
+    ephemeralAddress: boolean;
+    /**
+     * We offer Load Balancer observability via STACKIT Observability or external solutions.
+     */
+    observability: outputs.GetApplicationLoadBalancerOptionsObservability;
+    /**
+     * Application Load Balancer is accessible only via a private network ip address. Not changeable after creation.
+     */
+    privateNetworkOnly: boolean;
+}
+
+export interface GetApplicationLoadBalancerOptionsAccessControl {
+    /**
+     * Application Load Balancer is accessible only from an IP address in this range.
+     */
+    allowedSourceRanges: string[];
+}
+
+export interface GetApplicationLoadBalancerOptionsObservability {
+    /**
+     * Observability logs configuration.
+     */
+    logs: outputs.GetApplicationLoadBalancerOptionsObservabilityLogs;
+    /**
+     * Observability metrics configuration.
+     */
+    metrics: outputs.GetApplicationLoadBalancerOptionsObservabilityMetrics;
+}
+
+export interface GetApplicationLoadBalancerOptionsObservabilityLogs {
+    /**
+     * Credentials reference for logging. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the logging solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+     */
+    credentialsRef: string;
+    /**
+     * Credentials reference for logging. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the logging solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+     */
+    pushUrl: string;
+}
+
+export interface GetApplicationLoadBalancerOptionsObservabilityMetrics {
+    /**
+     * Credentials reference for metrics. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the metrics solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+     */
+    credentialsRef: string;
+    /**
+     * Credentials reference for metrics. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the metrics solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+     */
+    pushUrl: string;
+}
+
+export interface GetApplicationLoadBalancerTargetPool {
+    activeHealthCheck: outputs.GetApplicationLoadBalancerTargetPoolActiveHealthCheck;
+    /**
+     * Target pool name.
+     */
+    name: string;
+    /**
+     * The number identifying the port where each target listens for traffic.
+     */
+    targetPort: number;
+    /**
+     * List of all targets which will be used in the pool. Limited to 250.
+     */
+    targets: outputs.GetApplicationLoadBalancerTargetPoolTarget[];
+    /**
+     * Configuration for TLS bridging.
+     */
+    tlsConfig: outputs.GetApplicationLoadBalancerTargetPoolTlsConfig;
+}
+
+export interface GetApplicationLoadBalancerTargetPoolActiveHealthCheck {
+    /**
+     * Healthy threshold of the health checking.
+     */
+    healthyThreshold: number;
+    /**
+     * Options for the HTTP health checking.
+     */
+    httpHealthChecks: outputs.GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks;
+    /**
+     * Interval duration of health checking in seconds.
+     */
+    interval: string;
+    /**
+     * Interval duration threshold of the health checking in seconds.
+     */
+    intervalJitter: string;
+    /**
+     * Active health checking timeout duration in seconds.
+     */
+    timeout: string;
+    /**
+     * Unhealthy threshold of the health checking.
+     */
+    unhealthyThreshold: number;
+}
+
+export interface GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks {
+    /**
+     * List of HTTP status codes that indicate a healthy response.
+     */
+    okStatuses: string[];
+    /**
+     * Path to send the health check request to.
+     */
+    path: string;
+}
+
+export interface GetApplicationLoadBalancerTargetPoolTarget {
+    /**
+     * Target display name
+     */
+    displayName: string;
+    /**
+     * Private target IP, which must by unique within a target pool.
+     */
+    ip: string;
+}
+
+export interface GetApplicationLoadBalancerTargetPoolTlsConfig {
+    /**
+     * Specifies a custom Certificate Authority (CA). When provided, the target pool will trust certificates signed by this CA, in addition to any system-trusted CAs. This is useful for scenarios where the target pool needs to communicate with servers using self-signed or internally-issued certificates. Enabled needs to be set to true and skip validation to false for this option.
+     */
+    customCa: string;
+    /**
+     * Enable TLS (Transport Layer Security) bridging for the connection between Application Load Balancer and targets in this pool. When enabled, public CAs are trusted. Can be used in tandem with the options either custom CA or skip validation or alone.
+     */
+    enabled: boolean;
+    /**
+     * Bypass certificate validation for TLS bridging in this target pool. This option is insecure and can only be used with public CAs by setting enabled true. Meant to be used for testing purposes only!
+     */
+    skipCertificateValidation: boolean;
+}
+
+export interface GetApplicationLoadBalancerTargetSecurityGroup {
+    /**
+     * ID of the security Group
+     */
+    id: string;
+    /**
+     * Name of the security Group
+     */
+    name: string;
 }
 
 export interface GetCdnCustomDomainCertificate {
@@ -1475,6 +2109,21 @@ export interface GetServerUpdateSchedulesItem {
      */
     rrule: string;
     updateScheduleId: number;
+}
+
+export interface GetServiceAccountsItem {
+    /**
+     * Email of the service account.
+     */
+    email: string;
+    /**
+     * Name of the service account.
+     */
+    name: string;
+    /**
+     * The internal UUID of the service account.
+     */
+    serviceAccountId: string;
 }
 
 export interface GetSfsExportPolicyRule {

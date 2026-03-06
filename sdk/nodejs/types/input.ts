@@ -5,6 +5,323 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface ApplicationLoadBalancerError {
+    /**
+     * The error description contains additional helpful user information to fix the error state of the Application Load Balancer. For example the IP 45.135.247.139 does not exist in the project, then the description will report: Floating IP "45.135.247.139" could not be found.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`.
+     */
+    type?: pulumi.Input<string>;
+}
+
+export interface ApplicationLoadBalancerListener {
+    /**
+     * Configuration for HTTP traffic.
+     */
+    http: pulumi.Input<inputs.ApplicationLoadBalancerListenerHttp>;
+    /**
+     * Configuration for handling HTTPS traffic on this listener.
+     */
+    https?: pulumi.Input<inputs.ApplicationLoadBalancerListenerHttps>;
+    /**
+     * Unique name for the listener
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Port number on which the listener receives incoming traffic.
+     */
+    port: pulumi.Input<number>;
+    /**
+     * Protocol is the highest network protocol we understand to load balance. Possible values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_HTTP`, `PROTOCOL_HTTPS`.
+     */
+    protocol: pulumi.Input<string>;
+    /**
+     * Enable Web Application Firewall (WAF), referenced by name. See "Application Load Balancer - Web Application Firewall API" for more information.
+     */
+    wafConfigName?: pulumi.Input<string>;
+}
+
+export interface ApplicationLoadBalancerListenerHttp {
+    /**
+     * Defines routing rules grouped by hostname.
+     */
+    hosts: pulumi.Input<pulumi.Input<inputs.ApplicationLoadBalancerListenerHttpHost>[]>;
+}
+
+export interface ApplicationLoadBalancerListenerHttpHost {
+    /**
+     * Hostname to match. Supports wildcards (e.g. *.example.com).
+     */
+    host: pulumi.Input<string>;
+    /**
+     * Routing rules under the specified host, matched by path prefix.
+     */
+    rules: pulumi.Input<pulumi.Input<inputs.ApplicationLoadBalancerListenerHttpHostRule>[]>;
+}
+
+export interface ApplicationLoadBalancerListenerHttpHostRule {
+    /**
+     * Routing persistence via cookies.
+     */
+    cookiePersistence?: pulumi.Input<inputs.ApplicationLoadBalancerListenerHttpHostRuleCookiePersistence>;
+    /**
+     * Headers for the rule.
+     */
+    headers?: pulumi.Input<pulumi.Input<inputs.ApplicationLoadBalancerListenerHttpHostRuleHeader>[]>;
+    /**
+     * Routing via path.
+     */
+    path?: pulumi.Input<inputs.ApplicationLoadBalancerListenerHttpHostRulePath>;
+    /**
+     * Query parameters for the rule.
+     */
+    queryParameters?: pulumi.Input<pulumi.Input<inputs.ApplicationLoadBalancerListenerHttpHostRuleQueryParameter>[]>;
+    /**
+     * Reference target pool by target pool name.
+     */
+    targetPool: pulumi.Input<string>;
+    /**
+     * If enabled, when client sends an HTTP request with and Upgrade header, indicating the desire to establish a Websocket connection, if backend server supports WebSocket, it responds with HTTP 101 status code, switching protocols from HTTP to WebSocket. Hence the client and the server can exchange data in real-time using one long-lived TCP connection.
+     */
+    webSocket?: pulumi.Input<boolean>;
+}
+
+export interface ApplicationLoadBalancerListenerHttpHostRuleCookiePersistence {
+    /**
+     * The name of the cookie to use.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * TTL specifies the time-to-live for the cookie. The default value is 0s, and it acts as a session cookie, expiring when the client session ends.
+     */
+    ttl: pulumi.Input<string>;
+}
+
+export interface ApplicationLoadBalancerListenerHttpHostRuleHeader {
+    /**
+     * Exact match for the header value.
+     */
+    exactMatch?: pulumi.Input<string>;
+    /**
+     * Header name.
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface ApplicationLoadBalancerListenerHttpHostRulePath {
+    /**
+     * Exact path match. Only a request path exactly equal to the value will match, e.g. '/foo' matches only '/foo', not '/foo/bar' or '/foobar'.
+     */
+    exactMatch?: pulumi.Input<string>;
+    /**
+     * Prefix path match. Only matches on full segment boundaries, e.g. '/foo' matches '/foo' and '/foo/bar' but NOT '/foobar'.
+     */
+    prefix?: pulumi.Input<string>;
+}
+
+export interface ApplicationLoadBalancerListenerHttpHostRuleQueryParameter {
+    /**
+     * Exact match for the query parameters value.
+     */
+    exactMatch?: pulumi.Input<string>;
+    /**
+     * Query parameter name.
+     */
+    name: pulumi.Input<string>;
+}
+
+export interface ApplicationLoadBalancerListenerHttps {
+    /**
+     * TLS termination certificate configuration.
+     */
+    certificateConfig: pulumi.Input<inputs.ApplicationLoadBalancerListenerHttpsCertificateConfig>;
+}
+
+export interface ApplicationLoadBalancerListenerHttpsCertificateConfig {
+    /**
+     * Certificate IDs for TLS termination.
+     */
+    certificateIds: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ApplicationLoadBalancerLoadBalancerSecurityGroup {
+    /**
+     * ID of the security Group
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Name of the security Group
+     */
+    name?: pulumi.Input<string>;
+}
+
+export interface ApplicationLoadBalancerNetwork {
+    /**
+     * STACKIT network ID the Application Load Balancer and/or targets are in.
+     */
+    networkId: pulumi.Input<string>;
+    /**
+     * The role defines how the Application Load Balancer is using the network. Possible values are: `ROLE_UNSPECIFIED`, `ROLE_LISTENERS_AND_TARGETS`, `ROLE_LISTENERS`, `ROLE_TARGETS`.
+     */
+    role: pulumi.Input<string>;
+}
+
+export interface ApplicationLoadBalancerOptions {
+    /**
+     * Use this option to limit the IP ranges that can use the Application Load Balancer.
+     */
+    accessControl?: pulumi.Input<inputs.ApplicationLoadBalancerOptionsAccessControl>;
+    /**
+     * This option automates the handling of the external IP address for an Application Load Balancer. If set to true a new IP address will be automatically created. It will also be automatically deleted when the Load Balancer is deleted.
+     */
+    ephemeralAddress?: pulumi.Input<boolean>;
+    /**
+     * We offer Load Balancer observability via STACKIT Observability or external solutions.
+     */
+    observability?: pulumi.Input<inputs.ApplicationLoadBalancerOptionsObservability>;
+    /**
+     * Application Load Balancer is accessible only via a private network ip address. Not changeable after creation.
+     */
+    privateNetworkOnly?: pulumi.Input<boolean>;
+}
+
+export interface ApplicationLoadBalancerOptionsAccessControl {
+    /**
+     * Application Load Balancer is accessible only from an IP address in this range.
+     */
+    allowedSourceRanges: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface ApplicationLoadBalancerOptionsObservability {
+    /**
+     * Observability logs configuration.
+     */
+    logs?: pulumi.Input<inputs.ApplicationLoadBalancerOptionsObservabilityLogs>;
+    /**
+     * Observability metrics configuration.
+     */
+    metrics?: pulumi.Input<inputs.ApplicationLoadBalancerOptionsObservabilityMetrics>;
+}
+
+export interface ApplicationLoadBalancerOptionsObservabilityLogs {
+    /**
+     * Credentials reference for logging. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the logging solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+     */
+    credentialsRef: pulumi.Input<string>;
+    /**
+     * Credentials reference for logging. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the logging solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+     */
+    pushUrl: pulumi.Input<string>;
+}
+
+export interface ApplicationLoadBalancerOptionsObservabilityMetrics {
+    /**
+     * Credentials reference for metrics. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the metrics solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+     */
+    credentialsRef: pulumi.Input<string>;
+    /**
+     * Credentials reference for metrics. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the metrics solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+     */
+    pushUrl: pulumi.Input<string>;
+}
+
+export interface ApplicationLoadBalancerTargetPool {
+    activeHealthCheck?: pulumi.Input<inputs.ApplicationLoadBalancerTargetPoolActiveHealthCheck>;
+    /**
+     * Target pool name.
+     */
+    name: pulumi.Input<string>;
+    /**
+     * The number identifying the port where each target listens for traffic.
+     */
+    targetPort: pulumi.Input<number>;
+    /**
+     * List of all targets which will be used in the pool. Limited to 250.
+     */
+    targets: pulumi.Input<pulumi.Input<inputs.ApplicationLoadBalancerTargetPoolTarget>[]>;
+    /**
+     * Configuration for TLS bridging.
+     */
+    tlsConfig?: pulumi.Input<inputs.ApplicationLoadBalancerTargetPoolTlsConfig>;
+}
+
+export interface ApplicationLoadBalancerTargetPoolActiveHealthCheck {
+    /**
+     * Healthy threshold of the health checking.
+     */
+    healthyThreshold: pulumi.Input<number>;
+    /**
+     * Options for the HTTP health checking.
+     */
+    httpHealthChecks?: pulumi.Input<inputs.ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks>;
+    /**
+     * Interval duration of health checking in seconds.
+     */
+    interval: pulumi.Input<string>;
+    /**
+     * Interval duration threshold of the health checking in seconds.
+     */
+    intervalJitter: pulumi.Input<string>;
+    /**
+     * Active health checking timeout duration in seconds.
+     */
+    timeout: pulumi.Input<string>;
+    /**
+     * Unhealthy threshold of the health checking.
+     */
+    unhealthyThreshold: pulumi.Input<number>;
+}
+
+export interface ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks {
+    /**
+     * List of HTTP status codes that indicate a healthy response.
+     */
+    okStatuses: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Path to send the health check request to.
+     */
+    path: pulumi.Input<string>;
+}
+
+export interface ApplicationLoadBalancerTargetPoolTarget {
+    /**
+     * Target display name
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * Private target IP, which must by unique within a target pool.
+     */
+    ip: pulumi.Input<string>;
+}
+
+export interface ApplicationLoadBalancerTargetPoolTlsConfig {
+    /**
+     * Specifies a custom Certificate Authority (CA). When provided, the target pool will trust certificates signed by this CA, in addition to any system-trusted CAs. This is useful for scenarios where the target pool needs to communicate with servers using self-signed or internally-issued certificates. Enabled needs to be set to true and skip validation to false for this option.
+     */
+    customCa?: pulumi.Input<string>;
+    /**
+     * Enable TLS (Transport Layer Security) bridging for the connection between Application Load Balancer and targets in this pool. When enabled, public CAs are trusted. Can be used in tandem with the options either custom CA or skip validation or alone.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * Bypass certificate validation for TLS bridging in this target pool. This option is insecure and can only be used with public CAs by setting enabled true. Meant to be used for testing purposes only!
+     */
+    skipCertificateValidation?: pulumi.Input<boolean>;
+}
+
+export interface ApplicationLoadBalancerTargetSecurityGroup {
+    /**
+     * ID of the security Group
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Name of the security Group
+     */
+    name?: pulumi.Input<string>;
+}
+
 export interface CdnCustomDomainCertificate {
     /**
      * The PEM-encoded TLS certificate. Required for custom certificates.

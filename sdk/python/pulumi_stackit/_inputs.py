@@ -15,6 +15,54 @@ else:
 from . import _utilities
 
 __all__ = [
+    'ApplicationLoadBalancerErrorArgs',
+    'ApplicationLoadBalancerErrorArgsDict',
+    'ApplicationLoadBalancerListenerArgs',
+    'ApplicationLoadBalancerListenerArgsDict',
+    'ApplicationLoadBalancerListenerHttpArgs',
+    'ApplicationLoadBalancerListenerHttpArgsDict',
+    'ApplicationLoadBalancerListenerHttpHostArgs',
+    'ApplicationLoadBalancerListenerHttpHostArgsDict',
+    'ApplicationLoadBalancerListenerHttpHostRuleArgs',
+    'ApplicationLoadBalancerListenerHttpHostRuleArgsDict',
+    'ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceArgs',
+    'ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceArgsDict',
+    'ApplicationLoadBalancerListenerHttpHostRuleHeaderArgs',
+    'ApplicationLoadBalancerListenerHttpHostRuleHeaderArgsDict',
+    'ApplicationLoadBalancerListenerHttpHostRulePathArgs',
+    'ApplicationLoadBalancerListenerHttpHostRulePathArgsDict',
+    'ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArgs',
+    'ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArgsDict',
+    'ApplicationLoadBalancerListenerHttpsArgs',
+    'ApplicationLoadBalancerListenerHttpsArgsDict',
+    'ApplicationLoadBalancerListenerHttpsCertificateConfigArgs',
+    'ApplicationLoadBalancerListenerHttpsCertificateConfigArgsDict',
+    'ApplicationLoadBalancerLoadBalancerSecurityGroupArgs',
+    'ApplicationLoadBalancerLoadBalancerSecurityGroupArgsDict',
+    'ApplicationLoadBalancerNetworkArgs',
+    'ApplicationLoadBalancerNetworkArgsDict',
+    'ApplicationLoadBalancerOptionsArgs',
+    'ApplicationLoadBalancerOptionsArgsDict',
+    'ApplicationLoadBalancerOptionsAccessControlArgs',
+    'ApplicationLoadBalancerOptionsAccessControlArgsDict',
+    'ApplicationLoadBalancerOptionsObservabilityArgs',
+    'ApplicationLoadBalancerOptionsObservabilityArgsDict',
+    'ApplicationLoadBalancerOptionsObservabilityLogsArgs',
+    'ApplicationLoadBalancerOptionsObservabilityLogsArgsDict',
+    'ApplicationLoadBalancerOptionsObservabilityMetricsArgs',
+    'ApplicationLoadBalancerOptionsObservabilityMetricsArgsDict',
+    'ApplicationLoadBalancerTargetPoolArgs',
+    'ApplicationLoadBalancerTargetPoolArgsDict',
+    'ApplicationLoadBalancerTargetPoolActiveHealthCheckArgs',
+    'ApplicationLoadBalancerTargetPoolActiveHealthCheckArgsDict',
+    'ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksArgs',
+    'ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksArgsDict',
+    'ApplicationLoadBalancerTargetPoolTargetArgs',
+    'ApplicationLoadBalancerTargetPoolTargetArgsDict',
+    'ApplicationLoadBalancerTargetPoolTlsConfigArgs',
+    'ApplicationLoadBalancerTargetPoolTlsConfigArgsDict',
+    'ApplicationLoadBalancerTargetSecurityGroupArgs',
+    'ApplicationLoadBalancerTargetSecurityGroupArgsDict',
     'CdnCustomDomainCertificateArgs',
     'CdnCustomDomainCertificateArgsDict',
     'CdnDistributionConfigArgs',
@@ -164,6 +212,1423 @@ __all__ = [
     'GetImageV2FilterArgs',
     'GetImageV2FilterArgsDict',
 ]
+
+class ApplicationLoadBalancerErrorArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The error description contains additional helpful user information to fix the error state of the Application Load Balancer. For example the IP 45.135.247.139 does not exist in the project, then the description will report: Floating IP "45.135.247.139" could not be found.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`.
+    """
+
+@pulumi.input_type
+class ApplicationLoadBalancerErrorArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 type: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] description: The error description contains additional helpful user information to fix the error state of the Application Load Balancer. For example the IP 45.135.247.139 does not exist in the project, then the description will report: Floating IP "45.135.247.139" could not be found.
+        :param pulumi.Input[_builtins.str] type: The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The error description contains additional helpful user information to fix the error state of the Application Load Balancer. For example the IP 45.135.247.139 does not exist in the project, then the description will report: Floating IP "45.135.247.139" could not be found.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+
+class ApplicationLoadBalancerListenerArgsDict(TypedDict):
+    http: pulumi.Input['ApplicationLoadBalancerListenerHttpArgsDict']
+    """
+    Configuration for HTTP traffic.
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Unique name for the listener
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    Port number on which the listener receives incoming traffic.
+    """
+    protocol: pulumi.Input[_builtins.str]
+    """
+    Protocol is the highest network protocol we understand to load balance. Possible values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_HTTP`, `PROTOCOL_HTTPS`.
+    """
+    https: NotRequired[pulumi.Input['ApplicationLoadBalancerListenerHttpsArgsDict']]
+    """
+    Configuration for handling HTTPS traffic on this listener.
+    """
+    waf_config_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Enable Web Application Firewall (WAF), referenced by name. See "Application Load Balancer - Web Application Firewall API" for more information.
+    """
+
+@pulumi.input_type
+class ApplicationLoadBalancerListenerArgs:
+    def __init__(__self__, *,
+                 http: pulumi.Input['ApplicationLoadBalancerListenerHttpArgs'],
+                 name: pulumi.Input[_builtins.str],
+                 port: pulumi.Input[_builtins.int],
+                 protocol: pulumi.Input[_builtins.str],
+                 https: Optional[pulumi.Input['ApplicationLoadBalancerListenerHttpsArgs']] = None,
+                 waf_config_name: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input['ApplicationLoadBalancerListenerHttpArgs'] http: Configuration for HTTP traffic.
+        :param pulumi.Input[_builtins.str] name: Unique name for the listener
+        :param pulumi.Input[_builtins.int] port: Port number on which the listener receives incoming traffic.
+        :param pulumi.Input[_builtins.str] protocol: Protocol is the highest network protocol we understand to load balance. Possible values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_HTTP`, `PROTOCOL_HTTPS`.
+        :param pulumi.Input['ApplicationLoadBalancerListenerHttpsArgs'] https: Configuration for handling HTTPS traffic on this listener.
+        :param pulumi.Input[_builtins.str] waf_config_name: Enable Web Application Firewall (WAF), referenced by name. See "Application Load Balancer - Web Application Firewall API" for more information.
+        """
+        pulumi.set(__self__, "http", http)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "protocol", protocol)
+        if https is not None:
+            pulumi.set(__self__, "https", https)
+        if waf_config_name is not None:
+            pulumi.set(__self__, "waf_config_name", waf_config_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def http(self) -> pulumi.Input['ApplicationLoadBalancerListenerHttpArgs']:
+        """
+        Configuration for HTTP traffic.
+        """
+        return pulumi.get(self, "http")
+
+    @http.setter
+    def http(self, value: pulumi.Input['ApplicationLoadBalancerListenerHttpArgs']):
+        pulumi.set(self, "http", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Unique name for the listener
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[_builtins.int]:
+        """
+        Port number on which the listener receives incoming traffic.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def protocol(self) -> pulumi.Input[_builtins.str]:
+        """
+        Protocol is the highest network protocol we understand to load balance. Possible values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_HTTP`, `PROTOCOL_HTTPS`.
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "protocol", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def https(self) -> Optional[pulumi.Input['ApplicationLoadBalancerListenerHttpsArgs']]:
+        """
+        Configuration for handling HTTPS traffic on this listener.
+        """
+        return pulumi.get(self, "https")
+
+    @https.setter
+    def https(self, value: Optional[pulumi.Input['ApplicationLoadBalancerListenerHttpsArgs']]):
+        pulumi.set(self, "https", value)
+
+    @_builtins.property
+    @pulumi.getter(name="wafConfigName")
+    def waf_config_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Enable Web Application Firewall (WAF), referenced by name. See "Application Load Balancer - Web Application Firewall API" for more information.
+        """
+        return pulumi.get(self, "waf_config_name")
+
+    @waf_config_name.setter
+    def waf_config_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "waf_config_name", value)
+
+
+class ApplicationLoadBalancerListenerHttpArgsDict(TypedDict):
+    hosts: pulumi.Input[Sequence[pulumi.Input['ApplicationLoadBalancerListenerHttpHostArgsDict']]]
+    """
+    Defines routing rules grouped by hostname.
+    """
+
+@pulumi.input_type
+class ApplicationLoadBalancerListenerHttpArgs:
+    def __init__(__self__, *,
+                 hosts: pulumi.Input[Sequence[pulumi.Input['ApplicationLoadBalancerListenerHttpHostArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationLoadBalancerListenerHttpHostArgs']]] hosts: Defines routing rules grouped by hostname.
+        """
+        pulumi.set(__self__, "hosts", hosts)
+
+    @_builtins.property
+    @pulumi.getter
+    def hosts(self) -> pulumi.Input[Sequence[pulumi.Input['ApplicationLoadBalancerListenerHttpHostArgs']]]:
+        """
+        Defines routing rules grouped by hostname.
+        """
+        return pulumi.get(self, "hosts")
+
+    @hosts.setter
+    def hosts(self, value: pulumi.Input[Sequence[pulumi.Input['ApplicationLoadBalancerListenerHttpHostArgs']]]):
+        pulumi.set(self, "hosts", value)
+
+
+class ApplicationLoadBalancerListenerHttpHostArgsDict(TypedDict):
+    host: pulumi.Input[_builtins.str]
+    """
+    Hostname to match. Supports wildcards (e.g. *.example.com).
+    """
+    rules: pulumi.Input[Sequence[pulumi.Input['ApplicationLoadBalancerListenerHttpHostRuleArgsDict']]]
+    """
+    Routing rules under the specified host, matched by path prefix.
+    """
+
+@pulumi.input_type
+class ApplicationLoadBalancerListenerHttpHostArgs:
+    def __init__(__self__, *,
+                 host: pulumi.Input[_builtins.str],
+                 rules: pulumi.Input[Sequence[pulumi.Input['ApplicationLoadBalancerListenerHttpHostRuleArgs']]]):
+        """
+        :param pulumi.Input[_builtins.str] host: Hostname to match. Supports wildcards (e.g. *.example.com).
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationLoadBalancerListenerHttpHostRuleArgs']]] rules: Routing rules under the specified host, matched by path prefix.
+        """
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "rules", rules)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> pulumi.Input[_builtins.str]:
+        """
+        Hostname to match. Supports wildcards (e.g. *.example.com).
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "host", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['ApplicationLoadBalancerListenerHttpHostRuleArgs']]]:
+        """
+        Routing rules under the specified host, matched by path prefix.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['ApplicationLoadBalancerListenerHttpHostRuleArgs']]]):
+        pulumi.set(self, "rules", value)
+
+
+class ApplicationLoadBalancerListenerHttpHostRuleArgsDict(TypedDict):
+    target_pool: pulumi.Input[_builtins.str]
+    """
+    Reference target pool by target pool name.
+    """
+    cookie_persistence: NotRequired[pulumi.Input['ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceArgsDict']]
+    """
+    Routing persistence via cookies.
+    """
+    headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApplicationLoadBalancerListenerHttpHostRuleHeaderArgsDict']]]]
+    """
+    Headers for the rule.
+    """
+    path: NotRequired[pulumi.Input['ApplicationLoadBalancerListenerHttpHostRulePathArgsDict']]
+    """
+    Routing via path.
+    """
+    query_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input['ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArgsDict']]]]
+    """
+    Query parameters for the rule.
+    """
+    web_socket: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    If enabled, when client sends an HTTP request with and Upgrade header, indicating the desire to establish a Websocket connection, if backend server supports WebSocket, it responds with HTTP 101 status code, switching protocols from HTTP to WebSocket. Hence the client and the server can exchange data in real-time using one long-lived TCP connection.
+    """
+
+@pulumi.input_type
+class ApplicationLoadBalancerListenerHttpHostRuleArgs:
+    def __init__(__self__, *,
+                 target_pool: pulumi.Input[_builtins.str],
+                 cookie_persistence: Optional[pulumi.Input['ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceArgs']] = None,
+                 headers: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationLoadBalancerListenerHttpHostRuleHeaderArgs']]]] = None,
+                 path: Optional[pulumi.Input['ApplicationLoadBalancerListenerHttpHostRulePathArgs']] = None,
+                 query_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArgs']]]] = None,
+                 web_socket: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.str] target_pool: Reference target pool by target pool name.
+        :param pulumi.Input['ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceArgs'] cookie_persistence: Routing persistence via cookies.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationLoadBalancerListenerHttpHostRuleHeaderArgs']]] headers: Headers for the rule.
+        :param pulumi.Input['ApplicationLoadBalancerListenerHttpHostRulePathArgs'] path: Routing via path.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArgs']]] query_parameters: Query parameters for the rule.
+        :param pulumi.Input[_builtins.bool] web_socket: If enabled, when client sends an HTTP request with and Upgrade header, indicating the desire to establish a Websocket connection, if backend server supports WebSocket, it responds with HTTP 101 status code, switching protocols from HTTP to WebSocket. Hence the client and the server can exchange data in real-time using one long-lived TCP connection.
+        """
+        pulumi.set(__self__, "target_pool", target_pool)
+        if cookie_persistence is not None:
+            pulumi.set(__self__, "cookie_persistence", cookie_persistence)
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if query_parameters is not None:
+            pulumi.set(__self__, "query_parameters", query_parameters)
+        if web_socket is not None:
+            pulumi.set(__self__, "web_socket", web_socket)
+
+    @_builtins.property
+    @pulumi.getter(name="targetPool")
+    def target_pool(self) -> pulumi.Input[_builtins.str]:
+        """
+        Reference target pool by target pool name.
+        """
+        return pulumi.get(self, "target_pool")
+
+    @target_pool.setter
+    def target_pool(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "target_pool", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cookiePersistence")
+    def cookie_persistence(self) -> Optional[pulumi.Input['ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceArgs']]:
+        """
+        Routing persistence via cookies.
+        """
+        return pulumi.get(self, "cookie_persistence")
+
+    @cookie_persistence.setter
+    def cookie_persistence(self, value: Optional[pulumi.Input['ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceArgs']]):
+        pulumi.set(self, "cookie_persistence", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationLoadBalancerListenerHttpHostRuleHeaderArgs']]]]:
+        """
+        Headers for the rule.
+        """
+        return pulumi.get(self, "headers")
+
+    @headers.setter
+    def headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationLoadBalancerListenerHttpHostRuleHeaderArgs']]]]):
+        pulumi.set(self, "headers", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> Optional[pulumi.Input['ApplicationLoadBalancerListenerHttpHostRulePathArgs']]:
+        """
+        Routing via path.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: Optional[pulumi.Input['ApplicationLoadBalancerListenerHttpHostRulePathArgs']]):
+        pulumi.set(self, "path", value)
+
+    @_builtins.property
+    @pulumi.getter(name="queryParameters")
+    def query_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArgs']]]]:
+        """
+        Query parameters for the rule.
+        """
+        return pulumi.get(self, "query_parameters")
+
+    @query_parameters.setter
+    def query_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArgs']]]]):
+        pulumi.set(self, "query_parameters", value)
+
+    @_builtins.property
+    @pulumi.getter(name="webSocket")
+    def web_socket(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        If enabled, when client sends an HTTP request with and Upgrade header, indicating the desire to establish a Websocket connection, if backend server supports WebSocket, it responds with HTTP 101 status code, switching protocols from HTTP to WebSocket. Hence the client and the server can exchange data in real-time using one long-lived TCP connection.
+        """
+        return pulumi.get(self, "web_socket")
+
+    @web_socket.setter
+    def web_socket(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "web_socket", value)
+
+
+class ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the cookie to use.
+    """
+    ttl: pulumi.Input[_builtins.str]
+    """
+    TTL specifies the time-to-live for the cookie. The default value is 0s, and it acts as a session cookie, expiring when the client session ends.
+    """
+
+@pulumi.input_type
+class ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 ttl: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] name: The name of the cookie to use.
+        :param pulumi.Input[_builtins.str] ttl: TTL specifies the time-to-live for the cookie. The default value is 0s, and it acts as a session cookie, expiring when the client session ends.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "ttl", ttl)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the cookie to use.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ttl(self) -> pulumi.Input[_builtins.str]:
+        """
+        TTL specifies the time-to-live for the cookie. The default value is 0s, and it acts as a session cookie, expiring when the client session ends.
+        """
+        return pulumi.get(self, "ttl")
+
+    @ttl.setter
+    def ttl(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "ttl", value)
+
+
+class ApplicationLoadBalancerListenerHttpHostRuleHeaderArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Header name.
+    """
+    exact_match: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Exact match for the header value.
+    """
+
+@pulumi.input_type
+class ApplicationLoadBalancerListenerHttpHostRuleHeaderArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 exact_match: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Header name.
+        :param pulumi.Input[_builtins.str] exact_match: Exact match for the header value.
+        """
+        pulumi.set(__self__, "name", name)
+        if exact_match is not None:
+            pulumi.set(__self__, "exact_match", exact_match)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Header name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="exactMatch")
+    def exact_match(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Exact match for the header value.
+        """
+        return pulumi.get(self, "exact_match")
+
+    @exact_match.setter
+    def exact_match(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "exact_match", value)
+
+
+class ApplicationLoadBalancerListenerHttpHostRulePathArgsDict(TypedDict):
+    exact_match: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Exact path match. Only a request path exactly equal to the value will match, e.g. '/foo' matches only '/foo', not '/foo/bar' or '/foobar'.
+    """
+    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Prefix path match. Only matches on full segment boundaries, e.g. '/foo' matches '/foo' and '/foo/bar' but NOT '/foobar'.
+    """
+
+@pulumi.input_type
+class ApplicationLoadBalancerListenerHttpHostRulePathArgs:
+    def __init__(__self__, *,
+                 exact_match: Optional[pulumi.Input[_builtins.str]] = None,
+                 prefix: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] exact_match: Exact path match. Only a request path exactly equal to the value will match, e.g. '/foo' matches only '/foo', not '/foo/bar' or '/foobar'.
+        :param pulumi.Input[_builtins.str] prefix: Prefix path match. Only matches on full segment boundaries, e.g. '/foo' matches '/foo' and '/foo/bar' but NOT '/foobar'.
+        """
+        if exact_match is not None:
+            pulumi.set(__self__, "exact_match", exact_match)
+        if prefix is not None:
+            pulumi.set(__self__, "prefix", prefix)
+
+    @_builtins.property
+    @pulumi.getter(name="exactMatch")
+    def exact_match(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Exact path match. Only a request path exactly equal to the value will match, e.g. '/foo' matches only '/foo', not '/foo/bar' or '/foobar'.
+        """
+        return pulumi.get(self, "exact_match")
+
+    @exact_match.setter
+    def exact_match(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "exact_match", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Prefix path match. Only matches on full segment boundaries, e.g. '/foo' matches '/foo' and '/foo/bar' but NOT '/foobar'.
+        """
+        return pulumi.get(self, "prefix")
+
+    @prefix.setter
+    def prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "prefix", value)
+
+
+class ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Query parameter name.
+    """
+    exact_match: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Exact match for the query parameters value.
+    """
+
+@pulumi.input_type
+class ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 exact_match: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Query parameter name.
+        :param pulumi.Input[_builtins.str] exact_match: Exact match for the query parameters value.
+        """
+        pulumi.set(__self__, "name", name)
+        if exact_match is not None:
+            pulumi.set(__self__, "exact_match", exact_match)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Query parameter name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="exactMatch")
+    def exact_match(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Exact match for the query parameters value.
+        """
+        return pulumi.get(self, "exact_match")
+
+    @exact_match.setter
+    def exact_match(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "exact_match", value)
+
+
+class ApplicationLoadBalancerListenerHttpsArgsDict(TypedDict):
+    certificate_config: pulumi.Input['ApplicationLoadBalancerListenerHttpsCertificateConfigArgsDict']
+    """
+    TLS termination certificate configuration.
+    """
+
+@pulumi.input_type
+class ApplicationLoadBalancerListenerHttpsArgs:
+    def __init__(__self__, *,
+                 certificate_config: pulumi.Input['ApplicationLoadBalancerListenerHttpsCertificateConfigArgs']):
+        """
+        :param pulumi.Input['ApplicationLoadBalancerListenerHttpsCertificateConfigArgs'] certificate_config: TLS termination certificate configuration.
+        """
+        pulumi.set(__self__, "certificate_config", certificate_config)
+
+    @_builtins.property
+    @pulumi.getter(name="certificateConfig")
+    def certificate_config(self) -> pulumi.Input['ApplicationLoadBalancerListenerHttpsCertificateConfigArgs']:
+        """
+        TLS termination certificate configuration.
+        """
+        return pulumi.get(self, "certificate_config")
+
+    @certificate_config.setter
+    def certificate_config(self, value: pulumi.Input['ApplicationLoadBalancerListenerHttpsCertificateConfigArgs']):
+        pulumi.set(self, "certificate_config", value)
+
+
+class ApplicationLoadBalancerListenerHttpsCertificateConfigArgsDict(TypedDict):
+    certificate_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Certificate IDs for TLS termination.
+    """
+
+@pulumi.input_type
+class ApplicationLoadBalancerListenerHttpsCertificateConfigArgs:
+    def __init__(__self__, *,
+                 certificate_ids: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] certificate_ids: Certificate IDs for TLS termination.
+        """
+        pulumi.set(__self__, "certificate_ids", certificate_ids)
+
+    @_builtins.property
+    @pulumi.getter(name="certificateIds")
+    def certificate_ids(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        Certificate IDs for TLS termination.
+        """
+        return pulumi.get(self, "certificate_ids")
+
+    @certificate_ids.setter
+    def certificate_ids(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "certificate_ids", value)
+
+
+class ApplicationLoadBalancerLoadBalancerSecurityGroupArgsDict(TypedDict):
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the security Group
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the security Group
+    """
+
+@pulumi.input_type
+class ApplicationLoadBalancerLoadBalancerSecurityGroupArgs:
+    def __init__(__self__, *,
+                 id: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] id: ID of the security Group
+        :param pulumi.Input[_builtins.str] name: Name of the security Group
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        ID of the security Group
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the security Group
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+
+class ApplicationLoadBalancerNetworkArgsDict(TypedDict):
+    network_id: pulumi.Input[_builtins.str]
+    """
+    STACKIT network ID the Application Load Balancer and/or targets are in.
+    """
+    role: pulumi.Input[_builtins.str]
+    """
+    The role defines how the Application Load Balancer is using the network. Possible values are: `ROLE_UNSPECIFIED`, `ROLE_LISTENERS_AND_TARGETS`, `ROLE_LISTENERS`, `ROLE_TARGETS`.
+    """
+
+@pulumi.input_type
+class ApplicationLoadBalancerNetworkArgs:
+    def __init__(__self__, *,
+                 network_id: pulumi.Input[_builtins.str],
+                 role: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] network_id: STACKIT network ID the Application Load Balancer and/or targets are in.
+        :param pulumi.Input[_builtins.str] role: The role defines how the Application Load Balancer is using the network. Possible values are: `ROLE_UNSPECIFIED`, `ROLE_LISTENERS_AND_TARGETS`, `ROLE_LISTENERS`, `ROLE_TARGETS`.
+        """
+        pulumi.set(__self__, "network_id", network_id)
+        pulumi.set(__self__, "role", role)
+
+    @_builtins.property
+    @pulumi.getter(name="networkId")
+    def network_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        STACKIT network ID the Application Load Balancer and/or targets are in.
+        """
+        return pulumi.get(self, "network_id")
+
+    @network_id.setter
+    def network_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "network_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def role(self) -> pulumi.Input[_builtins.str]:
+        """
+        The role defines how the Application Load Balancer is using the network. Possible values are: `ROLE_UNSPECIFIED`, `ROLE_LISTENERS_AND_TARGETS`, `ROLE_LISTENERS`, `ROLE_TARGETS`.
+        """
+        return pulumi.get(self, "role")
+
+    @role.setter
+    def role(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "role", value)
+
+
+class ApplicationLoadBalancerOptionsArgsDict(TypedDict):
+    access_control: NotRequired[pulumi.Input['ApplicationLoadBalancerOptionsAccessControlArgsDict']]
+    """
+    Use this option to limit the IP ranges that can use the Application Load Balancer.
+    """
+    ephemeral_address: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    This option automates the handling of the external IP address for an Application Load Balancer. If set to true a new IP address will be automatically created. It will also be automatically deleted when the Load Balancer is deleted.
+    """
+    observability: NotRequired[pulumi.Input['ApplicationLoadBalancerOptionsObservabilityArgsDict']]
+    """
+    We offer Load Balancer observability via STACKIT Observability or external solutions.
+    """
+    private_network_only: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Application Load Balancer is accessible only via a private network ip address. Not changeable after creation.
+    """
+
+@pulumi.input_type
+class ApplicationLoadBalancerOptionsArgs:
+    def __init__(__self__, *,
+                 access_control: Optional[pulumi.Input['ApplicationLoadBalancerOptionsAccessControlArgs']] = None,
+                 ephemeral_address: Optional[pulumi.Input[_builtins.bool]] = None,
+                 observability: Optional[pulumi.Input['ApplicationLoadBalancerOptionsObservabilityArgs']] = None,
+                 private_network_only: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input['ApplicationLoadBalancerOptionsAccessControlArgs'] access_control: Use this option to limit the IP ranges that can use the Application Load Balancer.
+        :param pulumi.Input[_builtins.bool] ephemeral_address: This option automates the handling of the external IP address for an Application Load Balancer. If set to true a new IP address will be automatically created. It will also be automatically deleted when the Load Balancer is deleted.
+        :param pulumi.Input['ApplicationLoadBalancerOptionsObservabilityArgs'] observability: We offer Load Balancer observability via STACKIT Observability or external solutions.
+        :param pulumi.Input[_builtins.bool] private_network_only: Application Load Balancer is accessible only via a private network ip address. Not changeable after creation.
+        """
+        if access_control is not None:
+            pulumi.set(__self__, "access_control", access_control)
+        if ephemeral_address is not None:
+            pulumi.set(__self__, "ephemeral_address", ephemeral_address)
+        if observability is not None:
+            pulumi.set(__self__, "observability", observability)
+        if private_network_only is not None:
+            pulumi.set(__self__, "private_network_only", private_network_only)
+
+    @_builtins.property
+    @pulumi.getter(name="accessControl")
+    def access_control(self) -> Optional[pulumi.Input['ApplicationLoadBalancerOptionsAccessControlArgs']]:
+        """
+        Use this option to limit the IP ranges that can use the Application Load Balancer.
+        """
+        return pulumi.get(self, "access_control")
+
+    @access_control.setter
+    def access_control(self, value: Optional[pulumi.Input['ApplicationLoadBalancerOptionsAccessControlArgs']]):
+        pulumi.set(self, "access_control", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ephemeralAddress")
+    def ephemeral_address(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        This option automates the handling of the external IP address for an Application Load Balancer. If set to true a new IP address will be automatically created. It will also be automatically deleted when the Load Balancer is deleted.
+        """
+        return pulumi.get(self, "ephemeral_address")
+
+    @ephemeral_address.setter
+    def ephemeral_address(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "ephemeral_address", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def observability(self) -> Optional[pulumi.Input['ApplicationLoadBalancerOptionsObservabilityArgs']]:
+        """
+        We offer Load Balancer observability via STACKIT Observability or external solutions.
+        """
+        return pulumi.get(self, "observability")
+
+    @observability.setter
+    def observability(self, value: Optional[pulumi.Input['ApplicationLoadBalancerOptionsObservabilityArgs']]):
+        pulumi.set(self, "observability", value)
+
+    @_builtins.property
+    @pulumi.getter(name="privateNetworkOnly")
+    def private_network_only(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Application Load Balancer is accessible only via a private network ip address. Not changeable after creation.
+        """
+        return pulumi.get(self, "private_network_only")
+
+    @private_network_only.setter
+    def private_network_only(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "private_network_only", value)
+
+
+class ApplicationLoadBalancerOptionsAccessControlArgsDict(TypedDict):
+    allowed_source_ranges: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Application Load Balancer is accessible only from an IP address in this range.
+    """
+
+@pulumi.input_type
+class ApplicationLoadBalancerOptionsAccessControlArgs:
+    def __init__(__self__, *,
+                 allowed_source_ranges: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_source_ranges: Application Load Balancer is accessible only from an IP address in this range.
+        """
+        pulumi.set(__self__, "allowed_source_ranges", allowed_source_ranges)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedSourceRanges")
+    def allowed_source_ranges(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        Application Load Balancer is accessible only from an IP address in this range.
+        """
+        return pulumi.get(self, "allowed_source_ranges")
+
+    @allowed_source_ranges.setter
+    def allowed_source_ranges(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "allowed_source_ranges", value)
+
+
+class ApplicationLoadBalancerOptionsObservabilityArgsDict(TypedDict):
+    logs: NotRequired[pulumi.Input['ApplicationLoadBalancerOptionsObservabilityLogsArgsDict']]
+    """
+    Observability logs configuration.
+    """
+    metrics: NotRequired[pulumi.Input['ApplicationLoadBalancerOptionsObservabilityMetricsArgsDict']]
+    """
+    Observability metrics configuration.
+    """
+
+@pulumi.input_type
+class ApplicationLoadBalancerOptionsObservabilityArgs:
+    def __init__(__self__, *,
+                 logs: Optional[pulumi.Input['ApplicationLoadBalancerOptionsObservabilityLogsArgs']] = None,
+                 metrics: Optional[pulumi.Input['ApplicationLoadBalancerOptionsObservabilityMetricsArgs']] = None):
+        """
+        :param pulumi.Input['ApplicationLoadBalancerOptionsObservabilityLogsArgs'] logs: Observability logs configuration.
+        :param pulumi.Input['ApplicationLoadBalancerOptionsObservabilityMetricsArgs'] metrics: Observability metrics configuration.
+        """
+        if logs is not None:
+            pulumi.set(__self__, "logs", logs)
+        if metrics is not None:
+            pulumi.set(__self__, "metrics", metrics)
+
+    @_builtins.property
+    @pulumi.getter
+    def logs(self) -> Optional[pulumi.Input['ApplicationLoadBalancerOptionsObservabilityLogsArgs']]:
+        """
+        Observability logs configuration.
+        """
+        return pulumi.get(self, "logs")
+
+    @logs.setter
+    def logs(self, value: Optional[pulumi.Input['ApplicationLoadBalancerOptionsObservabilityLogsArgs']]):
+        pulumi.set(self, "logs", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def metrics(self) -> Optional[pulumi.Input['ApplicationLoadBalancerOptionsObservabilityMetricsArgs']]:
+        """
+        Observability metrics configuration.
+        """
+        return pulumi.get(self, "metrics")
+
+    @metrics.setter
+    def metrics(self, value: Optional[pulumi.Input['ApplicationLoadBalancerOptionsObservabilityMetricsArgs']]):
+        pulumi.set(self, "metrics", value)
+
+
+class ApplicationLoadBalancerOptionsObservabilityLogsArgsDict(TypedDict):
+    credentials_ref: pulumi.Input[_builtins.str]
+    """
+    Credentials reference for logging. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the logging solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+    """
+    push_url: pulumi.Input[_builtins.str]
+    """
+    Credentials reference for logging. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the logging solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+    """
+
+@pulumi.input_type
+class ApplicationLoadBalancerOptionsObservabilityLogsArgs:
+    def __init__(__self__, *,
+                 credentials_ref: pulumi.Input[_builtins.str],
+                 push_url: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] credentials_ref: Credentials reference for logging. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the logging solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+        :param pulumi.Input[_builtins.str] push_url: Credentials reference for logging. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the logging solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+        """
+        pulumi.set(__self__, "credentials_ref", credentials_ref)
+        pulumi.set(__self__, "push_url", push_url)
+
+    @_builtins.property
+    @pulumi.getter(name="credentialsRef")
+    def credentials_ref(self) -> pulumi.Input[_builtins.str]:
+        """
+        Credentials reference for logging. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the logging solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+        """
+        return pulumi.get(self, "credentials_ref")
+
+    @credentials_ref.setter
+    def credentials_ref(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "credentials_ref", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pushUrl")
+    def push_url(self) -> pulumi.Input[_builtins.str]:
+        """
+        Credentials reference for logging. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the logging solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+        """
+        return pulumi.get(self, "push_url")
+
+    @push_url.setter
+    def push_url(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "push_url", value)
+
+
+class ApplicationLoadBalancerOptionsObservabilityMetricsArgsDict(TypedDict):
+    credentials_ref: pulumi.Input[_builtins.str]
+    """
+    Credentials reference for metrics. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the metrics solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+    """
+    push_url: pulumi.Input[_builtins.str]
+    """
+    Credentials reference for metrics. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the metrics solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+    """
+
+@pulumi.input_type
+class ApplicationLoadBalancerOptionsObservabilityMetricsArgs:
+    def __init__(__self__, *,
+                 credentials_ref: pulumi.Input[_builtins.str],
+                 push_url: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] credentials_ref: Credentials reference for metrics. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the metrics solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+        :param pulumi.Input[_builtins.str] push_url: Credentials reference for metrics. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the metrics solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+        """
+        pulumi.set(__self__, "credentials_ref", credentials_ref)
+        pulumi.set(__self__, "push_url", push_url)
+
+    @_builtins.property
+    @pulumi.getter(name="credentialsRef")
+    def credentials_ref(self) -> pulumi.Input[_builtins.str]:
+        """
+        Credentials reference for metrics. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the metrics solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+        """
+        return pulumi.get(self, "credentials_ref")
+
+    @credentials_ref.setter
+    def credentials_ref(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "credentials_ref", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pushUrl")
+    def push_url(self) -> pulumi.Input[_builtins.str]:
+        """
+        Credentials reference for metrics. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the metrics solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+        """
+        return pulumi.get(self, "push_url")
+
+    @push_url.setter
+    def push_url(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "push_url", value)
+
+
+class ApplicationLoadBalancerTargetPoolArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Target pool name.
+    """
+    target_port: pulumi.Input[_builtins.int]
+    """
+    The number identifying the port where each target listens for traffic.
+    """
+    targets: pulumi.Input[Sequence[pulumi.Input['ApplicationLoadBalancerTargetPoolTargetArgsDict']]]
+    """
+    List of all targets which will be used in the pool. Limited to 250.
+    """
+    active_health_check: NotRequired[pulumi.Input['ApplicationLoadBalancerTargetPoolActiveHealthCheckArgsDict']]
+    tls_config: NotRequired[pulumi.Input['ApplicationLoadBalancerTargetPoolTlsConfigArgsDict']]
+    """
+    Configuration for TLS bridging.
+    """
+
+@pulumi.input_type
+class ApplicationLoadBalancerTargetPoolArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[_builtins.str],
+                 target_port: pulumi.Input[_builtins.int],
+                 targets: pulumi.Input[Sequence[pulumi.Input['ApplicationLoadBalancerTargetPoolTargetArgs']]],
+                 active_health_check: Optional[pulumi.Input['ApplicationLoadBalancerTargetPoolActiveHealthCheckArgs']] = None,
+                 tls_config: Optional[pulumi.Input['ApplicationLoadBalancerTargetPoolTlsConfigArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.str] name: Target pool name.
+        :param pulumi.Input[_builtins.int] target_port: The number identifying the port where each target listens for traffic.
+        :param pulumi.Input[Sequence[pulumi.Input['ApplicationLoadBalancerTargetPoolTargetArgs']]] targets: List of all targets which will be used in the pool. Limited to 250.
+        :param pulumi.Input['ApplicationLoadBalancerTargetPoolTlsConfigArgs'] tls_config: Configuration for TLS bridging.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "target_port", target_port)
+        pulumi.set(__self__, "targets", targets)
+        if active_health_check is not None:
+            pulumi.set(__self__, "active_health_check", active_health_check)
+        if tls_config is not None:
+            pulumi.set(__self__, "tls_config", tls_config)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Target pool name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="targetPort")
+    def target_port(self) -> pulumi.Input[_builtins.int]:
+        """
+        The number identifying the port where each target listens for traffic.
+        """
+        return pulumi.get(self, "target_port")
+
+    @target_port.setter
+    def target_port(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "target_port", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def targets(self) -> pulumi.Input[Sequence[pulumi.Input['ApplicationLoadBalancerTargetPoolTargetArgs']]]:
+        """
+        List of all targets which will be used in the pool. Limited to 250.
+        """
+        return pulumi.get(self, "targets")
+
+    @targets.setter
+    def targets(self, value: pulumi.Input[Sequence[pulumi.Input['ApplicationLoadBalancerTargetPoolTargetArgs']]]):
+        pulumi.set(self, "targets", value)
+
+    @_builtins.property
+    @pulumi.getter(name="activeHealthCheck")
+    def active_health_check(self) -> Optional[pulumi.Input['ApplicationLoadBalancerTargetPoolActiveHealthCheckArgs']]:
+        return pulumi.get(self, "active_health_check")
+
+    @active_health_check.setter
+    def active_health_check(self, value: Optional[pulumi.Input['ApplicationLoadBalancerTargetPoolActiveHealthCheckArgs']]):
+        pulumi.set(self, "active_health_check", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tlsConfig")
+    def tls_config(self) -> Optional[pulumi.Input['ApplicationLoadBalancerTargetPoolTlsConfigArgs']]:
+        """
+        Configuration for TLS bridging.
+        """
+        return pulumi.get(self, "tls_config")
+
+    @tls_config.setter
+    def tls_config(self, value: Optional[pulumi.Input['ApplicationLoadBalancerTargetPoolTlsConfigArgs']]):
+        pulumi.set(self, "tls_config", value)
+
+
+class ApplicationLoadBalancerTargetPoolActiveHealthCheckArgsDict(TypedDict):
+    healthy_threshold: pulumi.Input[_builtins.int]
+    """
+    Healthy threshold of the health checking.
+    """
+    interval: pulumi.Input[_builtins.str]
+    """
+    Interval duration of health checking in seconds.
+    """
+    interval_jitter: pulumi.Input[_builtins.str]
+    """
+    Interval duration threshold of the health checking in seconds.
+    """
+    timeout: pulumi.Input[_builtins.str]
+    """
+    Active health checking timeout duration in seconds.
+    """
+    unhealthy_threshold: pulumi.Input[_builtins.int]
+    """
+    Unhealthy threshold of the health checking.
+    """
+    http_health_checks: NotRequired[pulumi.Input['ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksArgsDict']]
+    """
+    Options for the HTTP health checking.
+    """
+
+@pulumi.input_type
+class ApplicationLoadBalancerTargetPoolActiveHealthCheckArgs:
+    def __init__(__self__, *,
+                 healthy_threshold: pulumi.Input[_builtins.int],
+                 interval: pulumi.Input[_builtins.str],
+                 interval_jitter: pulumi.Input[_builtins.str],
+                 timeout: pulumi.Input[_builtins.str],
+                 unhealthy_threshold: pulumi.Input[_builtins.int],
+                 http_health_checks: Optional[pulumi.Input['ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksArgs']] = None):
+        """
+        :param pulumi.Input[_builtins.int] healthy_threshold: Healthy threshold of the health checking.
+        :param pulumi.Input[_builtins.str] interval: Interval duration of health checking in seconds.
+        :param pulumi.Input[_builtins.str] interval_jitter: Interval duration threshold of the health checking in seconds.
+        :param pulumi.Input[_builtins.str] timeout: Active health checking timeout duration in seconds.
+        :param pulumi.Input[_builtins.int] unhealthy_threshold: Unhealthy threshold of the health checking.
+        :param pulumi.Input['ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksArgs'] http_health_checks: Options for the HTTP health checking.
+        """
+        pulumi.set(__self__, "healthy_threshold", healthy_threshold)
+        pulumi.set(__self__, "interval", interval)
+        pulumi.set(__self__, "interval_jitter", interval_jitter)
+        pulumi.set(__self__, "timeout", timeout)
+        pulumi.set(__self__, "unhealthy_threshold", unhealthy_threshold)
+        if http_health_checks is not None:
+            pulumi.set(__self__, "http_health_checks", http_health_checks)
+
+    @_builtins.property
+    @pulumi.getter(name="healthyThreshold")
+    def healthy_threshold(self) -> pulumi.Input[_builtins.int]:
+        """
+        Healthy threshold of the health checking.
+        """
+        return pulumi.get(self, "healthy_threshold")
+
+    @healthy_threshold.setter
+    def healthy_threshold(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "healthy_threshold", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def interval(self) -> pulumi.Input[_builtins.str]:
+        """
+        Interval duration of health checking in seconds.
+        """
+        return pulumi.get(self, "interval")
+
+    @interval.setter
+    def interval(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "interval", value)
+
+    @_builtins.property
+    @pulumi.getter(name="intervalJitter")
+    def interval_jitter(self) -> pulumi.Input[_builtins.str]:
+        """
+        Interval duration threshold of the health checking in seconds.
+        """
+        return pulumi.get(self, "interval_jitter")
+
+    @interval_jitter.setter
+    def interval_jitter(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "interval_jitter", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def timeout(self) -> pulumi.Input[_builtins.str]:
+        """
+        Active health checking timeout duration in seconds.
+        """
+        return pulumi.get(self, "timeout")
+
+    @timeout.setter
+    def timeout(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "timeout", value)
+
+    @_builtins.property
+    @pulumi.getter(name="unhealthyThreshold")
+    def unhealthy_threshold(self) -> pulumi.Input[_builtins.int]:
+        """
+        Unhealthy threshold of the health checking.
+        """
+        return pulumi.get(self, "unhealthy_threshold")
+
+    @unhealthy_threshold.setter
+    def unhealthy_threshold(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "unhealthy_threshold", value)
+
+    @_builtins.property
+    @pulumi.getter(name="httpHealthChecks")
+    def http_health_checks(self) -> Optional[pulumi.Input['ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksArgs']]:
+        """
+        Options for the HTTP health checking.
+        """
+        return pulumi.get(self, "http_health_checks")
+
+    @http_health_checks.setter
+    def http_health_checks(self, value: Optional[pulumi.Input['ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksArgs']]):
+        pulumi.set(self, "http_health_checks", value)
+
+
+class ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksArgsDict(TypedDict):
+    ok_statuses: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    List of HTTP status codes that indicate a healthy response.
+    """
+    path: pulumi.Input[_builtins.str]
+    """
+    Path to send the health check request to.
+    """
+
+@pulumi.input_type
+class ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksArgs:
+    def __init__(__self__, *,
+                 ok_statuses: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
+                 path: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ok_statuses: List of HTTP status codes that indicate a healthy response.
+        :param pulumi.Input[_builtins.str] path: Path to send the health check request to.
+        """
+        pulumi.set(__self__, "ok_statuses", ok_statuses)
+        pulumi.set(__self__, "path", path)
+
+    @_builtins.property
+    @pulumi.getter(name="okStatuses")
+    def ok_statuses(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
+        """
+        List of HTTP status codes that indicate a healthy response.
+        """
+        return pulumi.get(self, "ok_statuses")
+
+    @ok_statuses.setter
+    def ok_statuses(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
+        pulumi.set(self, "ok_statuses", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def path(self) -> pulumi.Input[_builtins.str]:
+        """
+        Path to send the health check request to.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "path", value)
+
+
+class ApplicationLoadBalancerTargetPoolTargetArgsDict(TypedDict):
+    ip: pulumi.Input[_builtins.str]
+    """
+    Private target IP, which must by unique within a target pool.
+    """
+    display_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Target display name
+    """
+
+@pulumi.input_type
+class ApplicationLoadBalancerTargetPoolTargetArgs:
+    def __init__(__self__, *,
+                 ip: pulumi.Input[_builtins.str],
+                 display_name: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] ip: Private target IP, which must by unique within a target pool.
+        :param pulumi.Input[_builtins.str] display_name: Target display name
+        """
+        pulumi.set(__self__, "ip", ip)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+
+    @_builtins.property
+    @pulumi.getter
+    def ip(self) -> pulumi.Input[_builtins.str]:
+        """
+        Private target IP, which must by unique within a target pool.
+        """
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "ip", value)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Target display name
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "display_name", value)
+
+
+class ApplicationLoadBalancerTargetPoolTlsConfigArgsDict(TypedDict):
+    custom_ca: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies a custom Certificate Authority (CA). When provided, the target pool will trust certificates signed by this CA, in addition to any system-trusted CAs. This is useful for scenarios where the target pool needs to communicate with servers using self-signed or internally-issued certificates. Enabled needs to be set to true and skip validation to false for this option.
+    """
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable TLS (Transport Layer Security) bridging for the connection between Application Load Balancer and targets in this pool. When enabled, public CAs are trusted. Can be used in tandem with the options either custom CA or skip validation or alone.
+    """
+    skip_certificate_validation: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Bypass certificate validation for TLS bridging in this target pool. This option is insecure and can only be used with public CAs by setting enabled true. Meant to be used for testing purposes only!
+    """
+
+@pulumi.input_type
+class ApplicationLoadBalancerTargetPoolTlsConfigArgs:
+    def __init__(__self__, *,
+                 custom_ca: Optional[pulumi.Input[_builtins.str]] = None,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 skip_certificate_validation: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.str] custom_ca: Specifies a custom Certificate Authority (CA). When provided, the target pool will trust certificates signed by this CA, in addition to any system-trusted CAs. This is useful for scenarios where the target pool needs to communicate with servers using self-signed or internally-issued certificates. Enabled needs to be set to true and skip validation to false for this option.
+        :param pulumi.Input[_builtins.bool] enabled: Enable TLS (Transport Layer Security) bridging for the connection between Application Load Balancer and targets in this pool. When enabled, public CAs are trusted. Can be used in tandem with the options either custom CA or skip validation or alone.
+        :param pulumi.Input[_builtins.bool] skip_certificate_validation: Bypass certificate validation for TLS bridging in this target pool. This option is insecure and can only be used with public CAs by setting enabled true. Meant to be used for testing purposes only!
+        """
+        if custom_ca is not None:
+            pulumi.set(__self__, "custom_ca", custom_ca)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if skip_certificate_validation is not None:
+            pulumi.set(__self__, "skip_certificate_validation", skip_certificate_validation)
+
+    @_builtins.property
+    @pulumi.getter(name="customCa")
+    def custom_ca(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Specifies a custom Certificate Authority (CA). When provided, the target pool will trust certificates signed by this CA, in addition to any system-trusted CAs. This is useful for scenarios where the target pool needs to communicate with servers using self-signed or internally-issued certificates. Enabled needs to be set to true and skip validation to false for this option.
+        """
+        return pulumi.get(self, "custom_ca")
+
+    @custom_ca.setter
+    def custom_ca(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "custom_ca", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Enable TLS (Transport Layer Security) bridging for the connection between Application Load Balancer and targets in this pool. When enabled, public CAs are trusted. Can be used in tandem with the options either custom CA or skip validation or alone.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="skipCertificateValidation")
+    def skip_certificate_validation(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Bypass certificate validation for TLS bridging in this target pool. This option is insecure and can only be used with public CAs by setting enabled true. Meant to be used for testing purposes only!
+        """
+        return pulumi.get(self, "skip_certificate_validation")
+
+    @skip_certificate_validation.setter
+    def skip_certificate_validation(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "skip_certificate_validation", value)
+
+
+class ApplicationLoadBalancerTargetSecurityGroupArgsDict(TypedDict):
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the security Group
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the security Group
+    """
+
+@pulumi.input_type
+class ApplicationLoadBalancerTargetSecurityGroupArgs:
+    def __init__(__self__, *,
+                 id: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] id: ID of the security Group
+        :param pulumi.Input[_builtins.str] name: Name of the security Group
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        ID of the security Group
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the security Group
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
 
 class CdnCustomDomainCertificateArgsDict(TypedDict):
     certificate: NotRequired[pulumi.Input[_builtins.str]]

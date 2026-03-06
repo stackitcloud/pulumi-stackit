@@ -42,6 +42,8 @@ type LookupServiceAccountResult struct {
 	Name string `pulumi:"name"`
 	// STACKIT project ID to which the service account is associated.
 	ProjectId string `pulumi:"projectId"`
+	// The internal UUID of the service account.
+	ServiceAccountId string `pulumi:"serviceAccountId"`
 }
 
 func LookupServiceAccountOutput(ctx *pulumi.Context, args LookupServiceAccountOutputArgs, opts ...pulumi.InvokeOption) LookupServiceAccountResultOutput {
@@ -98,6 +100,11 @@ func (o LookupServiceAccountResultOutput) Name() pulumi.StringOutput {
 // STACKIT project ID to which the service account is associated.
 func (o LookupServiceAccountResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceAccountResult) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The internal UUID of the service account.
+func (o LookupServiceAccountResultOutput) ServiceAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupServiceAccountResult) string { return v.ServiceAccountId }).(pulumi.StringOutput)
 }
 
 func init() {

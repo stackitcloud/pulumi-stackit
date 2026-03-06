@@ -35,6 +35,12 @@ namespace Pulumi.Stackit
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
 
+        /// <summary>
+        /// The internal UUID of the service account.
+        /// </summary>
+        [Output("serviceAccountId")]
+        public Output<string> ServiceAccountId { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a ServiceAccount resource with the given unique name, arguments, and options.
@@ -119,6 +125,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
+        /// The internal UUID of the service account.
+        /// </summary>
+        [Input("serviceAccountId")]
+        public Input<string>? ServiceAccountId { get; set; }
 
         public ServiceAccountState()
         {

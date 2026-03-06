@@ -7,8 +7,6 @@ import * as utilities from "./utilities";
 /**
  * Server update schedule resource schema. Must have a `region` specified in the provider configuration.
  *
- * > This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
- *
  * ## Example Usage
  */
 export class ServerUpdateSchedule extends pulumi.CustomResource {

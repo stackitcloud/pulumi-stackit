@@ -8,6 +8,17 @@ declare var exports: any;
 const __config = new pulumi.Config("stackit");
 
 /**
+ * Custom endpoint for the Application Load Balancer service
+ */
+export declare const albCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "albCustomEndpoint", {
+    get() {
+        return __config.get("albCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+/**
  * Custom endpoint for the Membership service
  */
 export declare const authorizationCustomEndpoint: string | undefined;

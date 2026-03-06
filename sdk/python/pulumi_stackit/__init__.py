@@ -7,6 +7,7 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .affinity_group import *
+from .application_load_balancer import *
 from .authorization_folder_role_assignment import *
 from .authorization_organization_role_assignment import *
 from .authorization_project_custom_role import *
@@ -19,6 +20,7 @@ from .edgecloud_instance import *
 from .edgecloud_kubeconfig import *
 from .edgecloud_token import *
 from .get_affinity_group import *
+from .get_application_load_balancer import *
 from .get_authorization_project_custom_role import *
 from .get_cdn_custom_domain import *
 from .get_cdn_distribution import *
@@ -86,6 +88,7 @@ from .get_server_backup_schedules import *
 from .get_server_update_schedule import *
 from .get_server_update_schedules import *
 from .get_service_account import *
+from .get_service_accounts import *
 from .get_sfs_export_policy import *
 from .get_sfs_resource_pool import *
 from .get_sfs_resource_pool_snapshot import *
@@ -155,7 +158,6 @@ from .server_service_account_attach import *
 from .server_update_schedule import *
 from .server_volume_attach import *
 from .service_account import *
-from .service_account_access_token import *
 from .service_account_key import *
 from .sfs_export_policy import *
 from .sfs_resource_pool import *
@@ -184,6 +186,14 @@ _utilities.register(
   "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/affinityGroup:AffinityGroup": "AffinityGroup"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/applicationLoadBalancer",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/applicationLoadBalancer:ApplicationLoadBalancer": "ApplicationLoadBalancer"
   }
  },
  {
@@ -736,14 +746,6 @@ _utilities.register(
   "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/serviceAccount:ServiceAccount": "ServiceAccount"
-  }
- },
- {
-  "pkg": "stackit",
-  "mod": "index/serviceAccountAccessToken",
-  "fqn": "pulumi_stackit",
-  "classes": {
-   "stackit:index/serviceAccountAccessToken:ServiceAccountAccessToken": "ServiceAccountAccessToken"
   }
  },
  {

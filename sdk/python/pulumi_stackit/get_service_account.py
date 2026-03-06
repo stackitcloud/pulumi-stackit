@@ -26,7 +26,7 @@ class GetServiceAccountResult:
     """
     A collection of values returned by getServiceAccount.
     """
-    def __init__(__self__, email=None, id=None, name=None, project_id=None):
+    def __init__(__self__, email=None, id=None, name=None, project_id=None, service_account_id=None):
         if email and not isinstance(email, str):
             raise TypeError("Expected argument 'email' to be a str")
         pulumi.set(__self__, "email", email)
@@ -39,6 +39,9 @@ class GetServiceAccountResult:
         if project_id and not isinstance(project_id, str):
             raise TypeError("Expected argument 'project_id' to be a str")
         pulumi.set(__self__, "project_id", project_id)
+        if service_account_id and not isinstance(service_account_id, str):
+            raise TypeError("Expected argument 'service_account_id' to be a str")
+        pulumi.set(__self__, "service_account_id", service_account_id)
 
     @_builtins.property
     @pulumi.getter
@@ -72,6 +75,14 @@ class GetServiceAccountResult:
         """
         return pulumi.get(self, "project_id")
 
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountId")
+    def service_account_id(self) -> _builtins.str:
+        """
+        The internal UUID of the service account.
+        """
+        return pulumi.get(self, "service_account_id")
+
 
 class AwaitableGetServiceAccountResult(GetServiceAccountResult):
     # pylint: disable=using-constant-test
@@ -82,7 +93,8 @@ class AwaitableGetServiceAccountResult(GetServiceAccountResult):
             email=self.email,
             id=self.id,
             name=self.name,
-            project_id=self.project_id)
+            project_id=self.project_id,
+            service_account_id=self.service_account_id)
 
 
 def get_service_account(email: Optional[_builtins.str] = None,
@@ -107,7 +119,8 @@ def get_service_account(email: Optional[_builtins.str] = None,
         email=pulumi.get(__ret__, 'email'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
-        project_id=pulumi.get(__ret__, 'project_id'))
+        project_id=pulumi.get(__ret__, 'project_id'),
+        service_account_id=pulumi.get(__ret__, 'service_account_id'))
 def get_service_account_output(email: Optional[pulumi.Input[_builtins.str]] = None,
                                project_id: Optional[pulumi.Input[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceAccountResult]:
@@ -129,4 +142,5 @@ def get_service_account_output(email: Optional[pulumi.Input[_builtins.str]] = No
         email=pulumi.get(__response__, 'email'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
-        project_id=pulumi.get(__response__, 'project_id')))
+        project_id=pulumi.get(__response__, 'project_id'),
+        service_account_id=pulumi.get(__response__, 'service_account_id')))

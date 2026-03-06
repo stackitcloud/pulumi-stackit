@@ -14,8 +14,6 @@ namespace Pulumi.Stackit
         /// <summary>
         /// Server backup schedules datasource schema. Must have a `Region` specified in the provider configuration.
         /// 
-        /// &gt; This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
-        /// 
         /// ## Example Usage
         /// 
         /// ```terraform
@@ -31,8 +29,6 @@ namespace Pulumi.Stackit
         /// <summary>
         /// Server backup schedules datasource schema. Must have a `Region` specified in the provider configuration.
         /// 
-        /// &gt; This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
-        /// 
         /// ## Example Usage
         /// 
         /// ```terraform
@@ -47,8 +43,6 @@ namespace Pulumi.Stackit
 
         /// <summary>
         /// Server backup schedules datasource schema. Must have a `Region` specified in the provider configuration.
-        /// 
-        /// &gt; This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
         /// 
         /// ## Example Usage
         /// 

@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "stackit:index/affinityGroup:AffinityGroup":
 		r = &AffinityGroup{}
+	case "stackit:index/applicationLoadBalancer:ApplicationLoadBalancer":
+		r = &ApplicationLoadBalancer{}
 	case "stackit:index/authorizationFolderRoleAssignment:AuthorizationFolderRoleAssignment":
 		r = &AuthorizationFolderRoleAssignment{}
 	case "stackit:index/authorizationOrganizationRoleAssignment:AuthorizationOrganizationRoleAssignment":
@@ -161,8 +163,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServerVolumeAttach{}
 	case "stackit:index/serviceAccount:ServiceAccount":
 		r = &ServiceAccount{}
-	case "stackit:index/serviceAccountAccessToken:ServiceAccountAccessToken":
-		r = &ServiceAccountAccessToken{}
 	case "stackit:index/serviceAccountKey:ServiceAccountKey":
 		r = &ServiceAccountKey{}
 	case "stackit:index/sfsExportPolicy:SfsExportPolicy":
@@ -215,6 +215,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"stackit",
 		"index/affinityGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/applicationLoadBalancer",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -560,11 +565,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"stackit",
 		"index/serviceAccount",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"stackit",
-		"index/serviceAccountAccessToken",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
