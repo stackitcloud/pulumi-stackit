@@ -9,6 +9,91 @@
                     }
                 }
             },
+            "stackit_application_load_balancer": {
+                "current": "stackit:index/applicationLoadBalancer:ApplicationLoadBalancer",
+                "fields": {
+                    "errors": {
+                        "maxItemsOne": false
+                    },
+                    "listeners": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "http": {
+                                    "fields": {
+                                        "hosts": {
+                                            "maxItemsOne": false,
+                                            "elem": {
+                                                "fields": {
+                                                    "rules": {
+                                                        "maxItemsOne": false,
+                                                        "elem": {
+                                                            "fields": {
+                                                                "headers": {
+                                                                    "maxItemsOne": false
+                                                                },
+                                                                "query_parameters": {
+                                                                    "maxItemsOne": false
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "https": {
+                                    "fields": {
+                                        "certificate_config": {
+                                            "fields": {
+                                                "certificate_ids": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "networks": {
+                        "maxItemsOne": false
+                    },
+                    "options": {
+                        "fields": {
+                            "access_control": {
+                                "fields": {
+                                    "allowed_source_ranges": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "target_pools": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "active_health_check": {
+                                    "fields": {
+                                        "http_health_checks": {
+                                            "fields": {
+                                                "ok_status": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "targets": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "stackit_authorization_folder_role_assignment": {
                 "current": "stackit:index/authorizationFolderRoleAssignment:AuthorizationFolderRoleAssignment"
             },
@@ -572,9 +657,6 @@
             "stackit_service_account": {
                 "current": "stackit:index/serviceAccount:ServiceAccount"
             },
-            "stackit_service_account_access_token": {
-                "current": "stackit:index/serviceAccountAccessToken:ServiceAccountAccessToken"
-            },
             "stackit_service_account_key": {
                 "current": "stackit:index/serviceAccountKey:ServiceAccountKey"
             },
@@ -678,6 +760,91 @@
                 "fields": {
                     "members": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_application_load_balancer": {
+                "current": "stackit:index/getApplicationLoadBalancer:getApplicationLoadBalancer",
+                "fields": {
+                    "errors": {
+                        "maxItemsOne": false
+                    },
+                    "listeners": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "http": {
+                                    "fields": {
+                                        "hosts": {
+                                            "maxItemsOne": false,
+                                            "elem": {
+                                                "fields": {
+                                                    "rules": {
+                                                        "maxItemsOne": false,
+                                                        "elem": {
+                                                            "fields": {
+                                                                "headers": {
+                                                                    "maxItemsOne": false
+                                                                },
+                                                                "query_parameters": {
+                                                                    "maxItemsOne": false
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "https": {
+                                    "fields": {
+                                        "certificate_config": {
+                                            "fields": {
+                                                "certificate_ids": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "networks": {
+                        "maxItemsOne": false
+                    },
+                    "options": {
+                        "fields": {
+                            "access_control": {
+                                "fields": {
+                                    "allowed_source_ranges": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "target_pools": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "active_health_check": {
+                                    "fields": {
+                                        "http_health_checks": {
+                                            "fields": {
+                                                "ok_status": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "targets": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -1283,6 +1450,14 @@
             },
             "stackit_service_account": {
                 "current": "stackit:index/getServiceAccount:getServiceAccount"
+            },
+            "stackit_service_accounts": {
+                "current": "stackit:index/getServiceAccounts:getServiceAccounts",
+                "fields": {
+                    "items": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "stackit_sfs_export_policy": {
                 "current": "stackit:index/getSfsExportPolicy:getSfsExportPolicy",

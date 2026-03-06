@@ -87,7 +87,7 @@ require (
 	github.com/hashicorp/logutils v1.0.0 // indirect
 	github.com/hashicorp/terraform-plugin-framework v1.17.0 // indirect
 	github.com/hashicorp/terraform-plugin-framework-validators v0.19.0 // indirect
-	github.com/hashicorp/terraform-plugin-go v0.29.0 // indirect
+	github.com/hashicorp/terraform-plugin-go v0.30.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.10.0 // indirect
 	github.com/hashicorp/terraform-plugin-sdk v1.8.0 // indirect
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.38.1 // indirect
@@ -159,6 +159,7 @@ require (
 	github.com/spf13/cobra v1.10.1 // indirect
 	github.com/spf13/pflag v1.0.10 // indirect
 	github.com/stackitcloud/stackit-sdk-go/core v0.22.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/alb v0.9.3 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/authorization v0.12.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/cdn v1.10.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/dns v0.17.6 // indirect
@@ -188,7 +189,7 @@ require (
 	github.com/stackitcloud/stackit-sdk-go/services/sfs v0.4.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/ske v1.7.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/sqlserverflex v1.4.3 // indirect
-	github.com/stackitcloud/terraform-provider-stackit v0.84.0 // indirect
+	github.com/stackitcloud/terraform-provider-stackit v0.85.0 // indirect
 	github.com/stretchr/objx v0.5.2 // indirect
 	github.com/teambition/rrule-go v1.8.2 // indirect
 	github.com/teekennedy/goldmark-markdown v0.3.0 // indirect
@@ -227,7 +228,7 @@ require (
 	google.golang.org/genproto v0.0.0-20240311173647-c811ad7063a7 // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20260128011058-8636f8732409 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20260128011058-8636f8732409 // indirect
-	google.golang.org/grpc v1.78.0 // indirect
+	google.golang.org/grpc v1.79.1 // indirect
 	google.golang.org/protobuf v1.36.11 // indirect
 	gopkg.in/warnings.v0 v0.1.2 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect

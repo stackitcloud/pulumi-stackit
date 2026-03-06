@@ -55,6 +55,10 @@
     },
     "config": {
         "variables": {
+            "albCustomEndpoint": {
+                "type": "string",
+                "description": "Custom endpoint for the Application Load Balancer service"
+            },
             "authorizationCustomEndpoint": {
                 "type": "string",
                 "description": "Custom endpoint for the Membership service"
@@ -247,6 +251,511 @@
         }
     },
     "types": {
+        "stackit:index/ApplicationLoadBalancerError:ApplicationLoadBalancerError": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The error description contains additional helpful user information to fix the error state of the Application Load Balancer. For example the IP 45.135.247.139 does not exist in the project, then the description will report: Floating IP \"45.135.247.139\" could not be found.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "description",
+                        "type"
+                    ]
+                }
+            }
+        },
+        "stackit:index/ApplicationLoadBalancerListener:ApplicationLoadBalancerListener": {
+            "properties": {
+                "http": {
+                    "$ref": "#/types/stackit:index/ApplicationLoadBalancerListenerHttp:ApplicationLoadBalancerListenerHttp",
+                    "description": "Configuration for HTTP traffic.\n"
+                },
+                "https": {
+                    "$ref": "#/types/stackit:index/ApplicationLoadBalancerListenerHttps:ApplicationLoadBalancerListenerHttps",
+                    "description": "Configuration for handling HTTPS traffic on this listener.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique name for the listener\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "Port number on which the listener receives incoming traffic.\n"
+                },
+                "protocol": {
+                    "type": "string",
+                    "description": "Protocol is the highest network protocol we understand to load balance. Possible values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_HTTP`, `PROTOCOL_HTTPS`.\n"
+                },
+                "wafConfigName": {
+                    "type": "string",
+                    "description": "Enable Web Application Firewall (WAF), referenced by name. See \"Application Load Balancer - Web Application Firewall API\" for more information.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "http",
+                "name",
+                "port",
+                "protocol"
+            ]
+        },
+        "stackit:index/ApplicationLoadBalancerListenerHttp:ApplicationLoadBalancerListenerHttp": {
+            "properties": {
+                "hosts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stackit:index/ApplicationLoadBalancerListenerHttpHost:ApplicationLoadBalancerListenerHttpHost"
+                    },
+                    "description": "Defines routing rules grouped by hostname.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hosts"
+            ]
+        },
+        "stackit:index/ApplicationLoadBalancerListenerHttpHost:ApplicationLoadBalancerListenerHttpHost": {
+            "properties": {
+                "host": {
+                    "type": "string",
+                    "description": "Hostname to match. Supports wildcards (e.g. *.example.com).\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stackit:index/ApplicationLoadBalancerListenerHttpHostRule:ApplicationLoadBalancerListenerHttpHostRule"
+                    },
+                    "description": "Routing rules under the specified host, matched by path prefix.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "host",
+                "rules"
+            ]
+        },
+        "stackit:index/ApplicationLoadBalancerListenerHttpHostRule:ApplicationLoadBalancerListenerHttpHostRule": {
+            "properties": {
+                "cookiePersistence": {
+                    "$ref": "#/types/stackit:index/ApplicationLoadBalancerListenerHttpHostRuleCookiePersistence:ApplicationLoadBalancerListenerHttpHostRuleCookiePersistence",
+                    "description": "Routing persistence via cookies.\n"
+                },
+                "headers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stackit:index/ApplicationLoadBalancerListenerHttpHostRuleHeader:ApplicationLoadBalancerListenerHttpHostRuleHeader"
+                    },
+                    "description": "Headers for the rule.\n"
+                },
+                "path": {
+                    "$ref": "#/types/stackit:index/ApplicationLoadBalancerListenerHttpHostRulePath:ApplicationLoadBalancerListenerHttpHostRulePath",
+                    "description": "Routing via path.\n"
+                },
+                "queryParameters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stackit:index/ApplicationLoadBalancerListenerHttpHostRuleQueryParameter:ApplicationLoadBalancerListenerHttpHostRuleQueryParameter"
+                    },
+                    "description": "Query parameters for the rule.\n"
+                },
+                "targetPool": {
+                    "type": "string",
+                    "description": "Reference target pool by target pool name.\n"
+                },
+                "webSocket": {
+                    "type": "boolean",
+                    "description": "If enabled, when client sends an HTTP request with and Upgrade header, indicating the desire to establish a Websocket connection, if backend server supports WebSocket, it responds with HTTP 101 status code, switching protocols from HTTP to WebSocket. Hence the client and the server can exchange data in real-time using one long-lived TCP connection.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "targetPool"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "targetPool",
+                        "webSocket"
+                    ]
+                }
+            }
+        },
+        "stackit:index/ApplicationLoadBalancerListenerHttpHostRuleCookiePersistence:ApplicationLoadBalancerListenerHttpHostRuleCookiePersistence": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the cookie to use.\n"
+                },
+                "ttl": {
+                    "type": "string",
+                    "description": "TTL specifies the time-to-live for the cookie. The default value is 0s, and it acts as a session cookie, expiring when the client session ends.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "ttl"
+            ]
+        },
+        "stackit:index/ApplicationLoadBalancerListenerHttpHostRuleHeader:ApplicationLoadBalancerListenerHttpHostRuleHeader": {
+            "properties": {
+                "exactMatch": {
+                    "type": "string",
+                    "description": "Exact match for the header value.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Header name.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
+        "stackit:index/ApplicationLoadBalancerListenerHttpHostRulePath:ApplicationLoadBalancerListenerHttpHostRulePath": {
+            "properties": {
+                "exactMatch": {
+                    "type": "string",
+                    "description": "Exact path match. Only a request path exactly equal to the value will match, e.g. '/foo' matches only '/foo', not '/foo/bar' or '/foobar'.\n"
+                },
+                "prefix": {
+                    "type": "string",
+                    "description": "Prefix path match. Only matches on full segment boundaries, e.g. '/foo' matches '/foo' and '/foo/bar' but NOT '/foobar'.\n"
+                }
+            },
+            "type": "object"
+        },
+        "stackit:index/ApplicationLoadBalancerListenerHttpHostRuleQueryParameter:ApplicationLoadBalancerListenerHttpHostRuleQueryParameter": {
+            "properties": {
+                "exactMatch": {
+                    "type": "string",
+                    "description": "Exact match for the query parameters value.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Query parameter name.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name"
+            ]
+        },
+        "stackit:index/ApplicationLoadBalancerListenerHttps:ApplicationLoadBalancerListenerHttps": {
+            "properties": {
+                "certificateConfig": {
+                    "$ref": "#/types/stackit:index/ApplicationLoadBalancerListenerHttpsCertificateConfig:ApplicationLoadBalancerListenerHttpsCertificateConfig",
+                    "description": "TLS termination certificate configuration.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "certificateConfig"
+            ]
+        },
+        "stackit:index/ApplicationLoadBalancerListenerHttpsCertificateConfig:ApplicationLoadBalancerListenerHttpsCertificateConfig": {
+            "properties": {
+                "certificateIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Certificate IDs for TLS termination.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "certificateIds"
+            ]
+        },
+        "stackit:index/ApplicationLoadBalancerLoadBalancerSecurityGroup:ApplicationLoadBalancerLoadBalancerSecurityGroup": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "ID of the security Group\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the security Group\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "id",
+                        "name"
+                    ]
+                }
+            }
+        },
+        "stackit:index/ApplicationLoadBalancerNetwork:ApplicationLoadBalancerNetwork": {
+            "properties": {
+                "networkId": {
+                    "type": "string",
+                    "description": "STACKIT network ID the Application Load Balancer and/or targets are in.\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "The role defines how the Application Load Balancer is using the network. Possible values are: `ROLE_UNSPECIFIED`, `ROLE_LISTENERS_AND_TARGETS`, `ROLE_LISTENERS`, `ROLE_TARGETS`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "networkId",
+                "role"
+            ]
+        },
+        "stackit:index/ApplicationLoadBalancerOptions:ApplicationLoadBalancerOptions": {
+            "properties": {
+                "accessControl": {
+                    "$ref": "#/types/stackit:index/ApplicationLoadBalancerOptionsAccessControl:ApplicationLoadBalancerOptionsAccessControl",
+                    "description": "Use this option to limit the IP ranges that can use the Application Load Balancer.\n"
+                },
+                "ephemeralAddress": {
+                    "type": "boolean",
+                    "description": "This option automates the handling of the external IP address for an Application Load Balancer. If set to true a new IP address will be automatically created. It will also be automatically deleted when the Load Balancer is deleted.\n"
+                },
+                "observability": {
+                    "$ref": "#/types/stackit:index/ApplicationLoadBalancerOptionsObservability:ApplicationLoadBalancerOptionsObservability",
+                    "description": "We offer Load Balancer observability via STACKIT Observability or external solutions.\n"
+                },
+                "privateNetworkOnly": {
+                    "type": "boolean",
+                    "description": "Application Load Balancer is accessible only via a private network ip address. Not changeable after creation.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "ephemeralAddress",
+                        "privateNetworkOnly"
+                    ]
+                }
+            }
+        },
+        "stackit:index/ApplicationLoadBalancerOptionsAccessControl:ApplicationLoadBalancerOptionsAccessControl": {
+            "properties": {
+                "allowedSourceRanges": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Application Load Balancer is accessible only from an IP address in this range.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "allowedSourceRanges"
+            ]
+        },
+        "stackit:index/ApplicationLoadBalancerOptionsObservability:ApplicationLoadBalancerOptionsObservability": {
+            "properties": {
+                "logs": {
+                    "$ref": "#/types/stackit:index/ApplicationLoadBalancerOptionsObservabilityLogs:ApplicationLoadBalancerOptionsObservabilityLogs",
+                    "description": "Observability logs configuration.\n"
+                },
+                "metrics": {
+                    "$ref": "#/types/stackit:index/ApplicationLoadBalancerOptionsObservabilityMetrics:ApplicationLoadBalancerOptionsObservabilityMetrics",
+                    "description": "Observability metrics configuration.\n"
+                }
+            },
+            "type": "object"
+        },
+        "stackit:index/ApplicationLoadBalancerOptionsObservabilityLogs:ApplicationLoadBalancerOptionsObservabilityLogs": {
+            "properties": {
+                "credentialsRef": {
+                    "type": "string",
+                    "description": "Credentials reference for logging. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the logging solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.\n"
+                },
+                "pushUrl": {
+                    "type": "string",
+                    "description": "Credentials reference for logging. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the logging solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "credentialsRef",
+                "pushUrl"
+            ]
+        },
+        "stackit:index/ApplicationLoadBalancerOptionsObservabilityMetrics:ApplicationLoadBalancerOptionsObservabilityMetrics": {
+            "properties": {
+                "credentialsRef": {
+                    "type": "string",
+                    "description": "Credentials reference for metrics. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the metrics solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.\n"
+                },
+                "pushUrl": {
+                    "type": "string",
+                    "description": "Credentials reference for metrics. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the metrics solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "credentialsRef",
+                "pushUrl"
+            ]
+        },
+        "stackit:index/ApplicationLoadBalancerTargetPool:ApplicationLoadBalancerTargetPool": {
+            "properties": {
+                "activeHealthCheck": {
+                    "$ref": "#/types/stackit:index/ApplicationLoadBalancerTargetPoolActiveHealthCheck:ApplicationLoadBalancerTargetPoolActiveHealthCheck"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Target pool name.\n"
+                },
+                "targetPort": {
+                    "type": "integer",
+                    "description": "The number identifying the port where each target listens for traffic.\n"
+                },
+                "targets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stackit:index/ApplicationLoadBalancerTargetPoolTarget:ApplicationLoadBalancerTargetPoolTarget"
+                    },
+                    "description": "List of all targets which will be used in the pool. Limited to 250.\n"
+                },
+                "tlsConfig": {
+                    "$ref": "#/types/stackit:index/ApplicationLoadBalancerTargetPoolTlsConfig:ApplicationLoadBalancerTargetPoolTlsConfig",
+                    "description": "Configuration for TLS bridging.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "targetPort",
+                "targets"
+            ]
+        },
+        "stackit:index/ApplicationLoadBalancerTargetPoolActiveHealthCheck:ApplicationLoadBalancerTargetPoolActiveHealthCheck": {
+            "properties": {
+                "healthyThreshold": {
+                    "type": "integer",
+                    "description": "Healthy threshold of the health checking.\n"
+                },
+                "httpHealthChecks": {
+                    "$ref": "#/types/stackit:index/ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks:ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks",
+                    "description": "Options for the HTTP health checking.\n"
+                },
+                "interval": {
+                    "type": "string",
+                    "description": "Interval duration of health checking in seconds.\n"
+                },
+                "intervalJitter": {
+                    "type": "string",
+                    "description": "Interval duration threshold of the health checking in seconds.\n"
+                },
+                "timeout": {
+                    "type": "string",
+                    "description": "Active health checking timeout duration in seconds.\n"
+                },
+                "unhealthyThreshold": {
+                    "type": "integer",
+                    "description": "Unhealthy threshold of the health checking.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "healthyThreshold",
+                "interval",
+                "intervalJitter",
+                "timeout",
+                "unhealthyThreshold"
+            ]
+        },
+        "stackit:index/ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks:ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks": {
+            "properties": {
+                "okStatuses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of HTTP status codes that indicate a healthy response.\n"
+                },
+                "path": {
+                    "type": "string",
+                    "description": "Path to send the health check request to.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "okStatuses",
+                "path"
+            ]
+        },
+        "stackit:index/ApplicationLoadBalancerTargetPoolTarget:ApplicationLoadBalancerTargetPoolTarget": {
+            "properties": {
+                "displayName": {
+                    "type": "string",
+                    "description": "Target display name\n"
+                },
+                "ip": {
+                    "type": "string",
+                    "description": "Private target IP, which must by unique within a target pool.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "ip"
+            ]
+        },
+        "stackit:index/ApplicationLoadBalancerTargetPoolTlsConfig:ApplicationLoadBalancerTargetPoolTlsConfig": {
+            "properties": {
+                "customCa": {
+                    "type": "string",
+                    "description": "Specifies a custom Certificate Authority (CA). When provided, the target pool will trust certificates signed by this CA, in addition to any system-trusted CAs. This is useful for scenarios where the target pool needs to communicate with servers using self-signed or internally-issued certificates. Enabled needs to be set to true and skip validation to false for this option.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable TLS (Transport Layer Security) bridging for the connection between Application Load Balancer and targets in this pool. When enabled, public CAs are trusted. Can be used in tandem with the options either custom CA or skip validation or alone.\n"
+                },
+                "skipCertificateValidation": {
+                    "type": "boolean",
+                    "description": "Bypass certificate validation for TLS bridging in this target pool. This option is insecure and can only be used with public CAs by setting enabled true. Meant to be used for testing purposes only!\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "enabled",
+                        "skipCertificateValidation"
+                    ]
+                }
+            }
+        },
+        "stackit:index/ApplicationLoadBalancerTargetSecurityGroup:ApplicationLoadBalancerTargetSecurityGroup": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "ID of the security Group\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the security Group\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "id",
+                        "name"
+                    ]
+                }
+            }
+        },
         "stackit:index/CdnCustomDomainCertificate:CdnCustomDomainCertificate": {
             "properties": {
                 "certificate": {
@@ -2687,6 +3196,627 @@
                 "id",
                 "type"
             ]
+        },
+        "stackit:index/getApplicationLoadBalancerError:getApplicationLoadBalancerError": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The error description contains additional helpful user information to fix the error state of the Application Load Balancer. For example the IP 45.135.247.139 does not exist in the project, then the description will report: Floating IP \"45.135.247.139\" could not be found.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "description",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getApplicationLoadBalancerListener:getApplicationLoadBalancerListener": {
+            "properties": {
+                "http": {
+                    "$ref": "#/types/stackit:index/getApplicationLoadBalancerListenerHttp:getApplicationLoadBalancerListenerHttp",
+                    "description": "Configuration for HTTP traffic.\n"
+                },
+                "https": {
+                    "$ref": "#/types/stackit:index/getApplicationLoadBalancerListenerHttps:getApplicationLoadBalancerListenerHttps",
+                    "description": "Configuration for handling HTTPS traffic on this listener.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Unique name for the listener\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "Port number on which the listener receives incoming traffic.\n"
+                },
+                "protocol": {
+                    "type": "string",
+                    "description": "Protocol is the highest network protocol we understand to load balance. Possible values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_HTTP`, `PROTOCOL_HTTPS`.\n"
+                },
+                "wafConfigName": {
+                    "type": "string",
+                    "description": "Enable Web Application Firewall (WAF), referenced by name. See \"Application Load Balancer - Web Application Firewall API\" for more information.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "http",
+                "https",
+                "name",
+                "port",
+                "protocol",
+                "wafConfigName"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getApplicationLoadBalancerListenerHttp:getApplicationLoadBalancerListenerHttp": {
+            "properties": {
+                "hosts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stackit:index/getApplicationLoadBalancerListenerHttpHost:getApplicationLoadBalancerListenerHttpHost"
+                    },
+                    "description": "Defines routing rules grouped by hostname.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "hosts"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getApplicationLoadBalancerListenerHttpHost:getApplicationLoadBalancerListenerHttpHost": {
+            "properties": {
+                "host": {
+                    "type": "string",
+                    "description": "Hostname to match. Supports wildcards (e.g. *.example.com).\n"
+                },
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stackit:index/getApplicationLoadBalancerListenerHttpHostRule:getApplicationLoadBalancerListenerHttpHostRule"
+                    },
+                    "description": "Routing rules under the specified host, matched by path prefix.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "host",
+                "rules"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getApplicationLoadBalancerListenerHttpHostRule:getApplicationLoadBalancerListenerHttpHostRule": {
+            "properties": {
+                "cookiePersistence": {
+                    "$ref": "#/types/stackit:index/getApplicationLoadBalancerListenerHttpHostRuleCookiePersistence:getApplicationLoadBalancerListenerHttpHostRuleCookiePersistence",
+                    "description": "Routing persistence via cookies.\n"
+                },
+                "headers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stackit:index/getApplicationLoadBalancerListenerHttpHostRuleHeader:getApplicationLoadBalancerListenerHttpHostRuleHeader"
+                    },
+                    "description": "Headers for the rule.\n"
+                },
+                "path": {
+                    "$ref": "#/types/stackit:index/getApplicationLoadBalancerListenerHttpHostRulePath:getApplicationLoadBalancerListenerHttpHostRulePath",
+                    "description": "Routing via path.\n"
+                },
+                "queryParameters": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stackit:index/getApplicationLoadBalancerListenerHttpHostRuleQueryParameter:getApplicationLoadBalancerListenerHttpHostRuleQueryParameter"
+                    },
+                    "description": "Query parameters for the rule.\n"
+                },
+                "targetPool": {
+                    "type": "string",
+                    "description": "Reference target pool by target pool name.\n"
+                },
+                "webSocket": {
+                    "type": "boolean",
+                    "description": "If enabled, when client sends an HTTP request with and Upgrade header, indicating the desire to establish a Websocket connection, if backend server supports WebSocket, it responds with HTTP 101 status code, switching protocols from HTTP to WebSocket. Hence the client and the server can exchange data in real-time using one long-lived TCP connection.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "cookiePersistence",
+                "headers",
+                "path",
+                "queryParameters",
+                "targetPool",
+                "webSocket"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getApplicationLoadBalancerListenerHttpHostRuleCookiePersistence:getApplicationLoadBalancerListenerHttpHostRuleCookiePersistence": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the cookie to use.\n"
+                },
+                "ttl": {
+                    "type": "string",
+                    "description": "TTL specifies the time-to-live for the cookie. The default value is 0s, and it acts as a session cookie, expiring when the client session ends.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "ttl"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getApplicationLoadBalancerListenerHttpHostRuleHeader:getApplicationLoadBalancerListenerHttpHostRuleHeader": {
+            "properties": {
+                "exactMatch": {
+                    "type": "string",
+                    "description": "Exact match for the header value.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Header name.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "exactMatch",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getApplicationLoadBalancerListenerHttpHostRulePath:getApplicationLoadBalancerListenerHttpHostRulePath": {
+            "properties": {
+                "exactMatch": {
+                    "type": "string",
+                    "description": "Exact path match. Only a request path exactly equal to the value will match, e.g. '/foo' matches only '/foo', not '/foo/bar' or '/foobar'.\n"
+                },
+                "prefix": {
+                    "type": "string",
+                    "description": "Prefix path match. Only matches on full segment boundaries, e.g. '/foo' matches '/foo' and '/foo/bar' but NOT '/foobar'.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "exactMatch",
+                "prefix"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getApplicationLoadBalancerListenerHttpHostRuleQueryParameter:getApplicationLoadBalancerListenerHttpHostRuleQueryParameter": {
+            "properties": {
+                "exactMatch": {
+                    "type": "string",
+                    "description": "Exact match for the query parameters value.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Query parameter name.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "exactMatch",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getApplicationLoadBalancerListenerHttps:getApplicationLoadBalancerListenerHttps": {
+            "properties": {
+                "certificateConfig": {
+                    "$ref": "#/types/stackit:index/getApplicationLoadBalancerListenerHttpsCertificateConfig:getApplicationLoadBalancerListenerHttpsCertificateConfig",
+                    "description": "TLS termination certificate configuration.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "certificateConfig"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getApplicationLoadBalancerListenerHttpsCertificateConfig:getApplicationLoadBalancerListenerHttpsCertificateConfig": {
+            "properties": {
+                "certificateIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Certificate IDs for TLS termination.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "certificateIds"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getApplicationLoadBalancerLoadBalancerSecurityGroup:getApplicationLoadBalancerLoadBalancerSecurityGroup": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "ID of the security Group\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the security Group\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getApplicationLoadBalancerNetwork:getApplicationLoadBalancerNetwork": {
+            "properties": {
+                "networkId": {
+                    "type": "string",
+                    "description": "STACKIT network ID the Application Load Balancer and/or targets are in.\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "The role defines how the Application Load Balancer is using the network. Possible values are: `ROLE_UNSPECIFIED`, `ROLE_LISTENERS_AND_TARGETS`, `ROLE_LISTENERS`, `ROLE_TARGETS`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "networkId",
+                "role"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getApplicationLoadBalancerOptions:getApplicationLoadBalancerOptions": {
+            "properties": {
+                "accessControl": {
+                    "$ref": "#/types/stackit:index/getApplicationLoadBalancerOptionsAccessControl:getApplicationLoadBalancerOptionsAccessControl",
+                    "description": "Use this option to limit the IP ranges that can use the Application Load Balancer.\n"
+                },
+                "ephemeralAddress": {
+                    "type": "boolean",
+                    "description": "This option automates the handling of the external IP address for an Application Load Balancer. If set to true a new IP address will be automatically created. It will also be automatically deleted when the Load Balancer is deleted.\n"
+                },
+                "observability": {
+                    "$ref": "#/types/stackit:index/getApplicationLoadBalancerOptionsObservability:getApplicationLoadBalancerOptionsObservability",
+                    "description": "We offer Load Balancer observability via STACKIT Observability or external solutions.\n"
+                },
+                "privateNetworkOnly": {
+                    "type": "boolean",
+                    "description": "Application Load Balancer is accessible only via a private network ip address. Not changeable after creation.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "accessControl",
+                "ephemeralAddress",
+                "observability",
+                "privateNetworkOnly"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getApplicationLoadBalancerOptionsAccessControl:getApplicationLoadBalancerOptionsAccessControl": {
+            "properties": {
+                "allowedSourceRanges": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Application Load Balancer is accessible only from an IP address in this range.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "allowedSourceRanges"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getApplicationLoadBalancerOptionsObservability:getApplicationLoadBalancerOptionsObservability": {
+            "properties": {
+                "logs": {
+                    "$ref": "#/types/stackit:index/getApplicationLoadBalancerOptionsObservabilityLogs:getApplicationLoadBalancerOptionsObservabilityLogs",
+                    "description": "Observability logs configuration.\n"
+                },
+                "metrics": {
+                    "$ref": "#/types/stackit:index/getApplicationLoadBalancerOptionsObservabilityMetrics:getApplicationLoadBalancerOptionsObservabilityMetrics",
+                    "description": "Observability metrics configuration.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "logs",
+                "metrics"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getApplicationLoadBalancerOptionsObservabilityLogs:getApplicationLoadBalancerOptionsObservabilityLogs": {
+            "properties": {
+                "credentialsRef": {
+                    "type": "string",
+                    "description": "Credentials reference for logging. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the logging solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.\n"
+                },
+                "pushUrl": {
+                    "type": "string",
+                    "description": "Credentials reference for logging. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the logging solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "credentialsRef",
+                "pushUrl"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getApplicationLoadBalancerOptionsObservabilityMetrics:getApplicationLoadBalancerOptionsObservabilityMetrics": {
+            "properties": {
+                "credentialsRef": {
+                    "type": "string",
+                    "description": "Credentials reference for metrics. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the metrics solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.\n"
+                },
+                "pushUrl": {
+                    "type": "string",
+                    "description": "Credentials reference for metrics. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the metrics solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "credentialsRef",
+                "pushUrl"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getApplicationLoadBalancerTargetPool:getApplicationLoadBalancerTargetPool": {
+            "properties": {
+                "activeHealthCheck": {
+                    "$ref": "#/types/stackit:index/getApplicationLoadBalancerTargetPoolActiveHealthCheck:getApplicationLoadBalancerTargetPoolActiveHealthCheck"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Target pool name.\n"
+                },
+                "targetPort": {
+                    "type": "integer",
+                    "description": "The number identifying the port where each target listens for traffic.\n"
+                },
+                "targets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stackit:index/getApplicationLoadBalancerTargetPoolTarget:getApplicationLoadBalancerTargetPoolTarget"
+                    },
+                    "description": "List of all targets which will be used in the pool. Limited to 250.\n"
+                },
+                "tlsConfig": {
+                    "$ref": "#/types/stackit:index/getApplicationLoadBalancerTargetPoolTlsConfig:getApplicationLoadBalancerTargetPoolTlsConfig",
+                    "description": "Configuration for TLS bridging.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "activeHealthCheck",
+                "name",
+                "targetPort",
+                "targets",
+                "tlsConfig"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getApplicationLoadBalancerTargetPoolActiveHealthCheck:getApplicationLoadBalancerTargetPoolActiveHealthCheck": {
+            "properties": {
+                "healthyThreshold": {
+                    "type": "integer",
+                    "description": "Healthy threshold of the health checking.\n"
+                },
+                "httpHealthChecks": {
+                    "$ref": "#/types/stackit:index/getApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks:getApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks",
+                    "description": "Options for the HTTP health checking.\n"
+                },
+                "interval": {
+                    "type": "string",
+                    "description": "Interval duration of health checking in seconds.\n"
+                },
+                "intervalJitter": {
+                    "type": "string",
+                    "description": "Interval duration threshold of the health checking in seconds.\n"
+                },
+                "timeout": {
+                    "type": "string",
+                    "description": "Active health checking timeout duration in seconds.\n"
+                },
+                "unhealthyThreshold": {
+                    "type": "integer",
+                    "description": "Unhealthy threshold of the health checking.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "healthyThreshold",
+                "httpHealthChecks",
+                "interval",
+                "intervalJitter",
+                "timeout",
+                "unhealthyThreshold"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks:getApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks": {
+            "properties": {
+                "okStatuses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of HTTP status codes that indicate a healthy response.\n"
+                },
+                "path": {
+                    "type": "string",
+                    "description": "Path to send the health check request to.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "okStatuses",
+                "path"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getApplicationLoadBalancerTargetPoolTarget:getApplicationLoadBalancerTargetPoolTarget": {
+            "properties": {
+                "displayName": {
+                    "type": "string",
+                    "description": "Target display name\n"
+                },
+                "ip": {
+                    "type": "string",
+                    "description": "Private target IP, which must by unique within a target pool.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "displayName",
+                "ip"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getApplicationLoadBalancerTargetPoolTlsConfig:getApplicationLoadBalancerTargetPoolTlsConfig": {
+            "properties": {
+                "customCa": {
+                    "type": "string",
+                    "description": "Specifies a custom Certificate Authority (CA). When provided, the target pool will trust certificates signed by this CA, in addition to any system-trusted CAs. This is useful for scenarios where the target pool needs to communicate with servers using self-signed or internally-issued certificates. Enabled needs to be set to true and skip validation to false for this option.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable TLS (Transport Layer Security) bridging for the connection between Application Load Balancer and targets in this pool. When enabled, public CAs are trusted. Can be used in tandem with the options either custom CA or skip validation or alone.\n"
+                },
+                "skipCertificateValidation": {
+                    "type": "boolean",
+                    "description": "Bypass certificate validation for TLS bridging in this target pool. This option is insecure and can only be used with public CAs by setting enabled true. Meant to be used for testing purposes only!\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "customCa",
+                "enabled",
+                "skipCertificateValidation"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getApplicationLoadBalancerTargetSecurityGroup:getApplicationLoadBalancerTargetSecurityGroup": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "ID of the security Group\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the security Group\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "stackit:index/getCdnCustomDomainCertificate:getCdnCustomDomainCertificate": {
             "properties": {
@@ -5173,6 +6303,33 @@
                 }
             }
         },
+        "stackit:index/getServiceAccountsItem:getServiceAccountsItem": {
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": "Email of the service account.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the service account.\n"
+                },
+                "serviceAccountId": {
+                    "type": "string",
+                    "description": "The internal UUID of the service account.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "email",
+                "name",
+                "serviceAccountId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "stackit:index/getSfsExportPolicyRule:getSfsExportPolicyRule": {
             "properties": {
                 "description": {
@@ -5784,6 +6941,10 @@
     "provider": {
         "description": "The provider type for the stackit package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
         "properties": {
+            "albCustomEndpoint": {
+                "type": "string",
+                "description": "Custom endpoint for the Application Load Balancer service"
+            },
             "authorizationCustomEndpoint": {
                 "type": "string",
                 "description": "Custom endpoint for the Membership service"
@@ -5975,6 +7136,10 @@
             }
         },
         "inputProperties": {
+            "albCustomEndpoint": {
+                "type": "string",
+                "description": "Custom endpoint for the Application Load Balancer service"
+            },
             "authorizationCustomEndpoint": {
                 "type": "string",
                 "description": "Custom endpoint for the Membership service"
@@ -6260,6 +7425,254 @@
                     "region": {
                         "type": "string",
                         "description": "The resource region. If not defined, the provider region is used.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "stackit:index/applicationLoadBalancer:ApplicationLoadBalancer": {
+            "description": "## Setting up supporting infrastructure\n\n\nThe example below creates the supporting infrastructure using the STACKIT Terraform provider, including the network, network interface, a public IP address and server resources.\n\n## Example Usage\n\n```terraform\nvariable \"project_id\" {\n  description = \"The STACKIT Project ID\"\n  type        = string\n  default     = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\nvariable \"image_id\" {\n  description = \"A valid Debian 12 Image ID available in all projects\"\n  type        = string\n  default     = \"939249d1-6f48-4ab7-929b-95170728311a\"\n}\n\nvariable \"availability_zone\" {\n  description = \"An availability zone\"\n  type        = string\n  default     = \"eu01-1\"\n}\n\nvariable \"machine_type\" {\n  description = \"The machine flavor with 2GB of RAM and 1 core\"\n  type        = string\n  default     = \"c2i.1\"\n}\n\nvariable \"label_key\" {\n  description = \"An optional label key\"\n  type        = string\n  default     = \"key\"\n}\n\nvariable \"label_value\" {\n  description = \"An optional label value\"\n  type        = string\n  default     = \"value\"\n}\n\n# Create a network\nresource \"stackit_network\" \"network\" {\n  project_id       = var.project_id\n  name             = \"example-network\"\n  ipv4_nameservers = [\"1.1.1.1\"]\n  ipv4_prefix      = \"192.168.2.0/25\"\n  routed           = true\n}\n\n# Create a network interface\nresource \"stackit_network_interface\" \"nic\" {\n  project_id = var.project_id\n  network_id = stackit_network.network.network_id\n  lifecycle {\n    ignore_changes = [\n      security_group_ids,\n    ]\n  }\n}\n\n# Create a key pair for accessing the target server instance\nresource \"stackit_key_pair\" \"keypair\" {\n  name       = \"example-key-pair\"\n  public_key = chomp(file(\"path/to/id_rsa.pub\"))\n}\n\n# Create a target server instance\nresource \"stackit_server\" \"server\" {\n  project_id        = var.project_id\n  name              = \"example-server\"\n  machine_type      = var.machine_type\n  keypair_name      = stackit_key_pair.keypair.name\n  availability_zone = var.availability_zone\n\n  boot_volume = {\n    size                  = 20\n    source_type           = \"image\"\n    source_id             = var.image_id\n    delete_on_termination = true\n  }\n\n  network_interfaces = [\n    stackit_network_interface.nic.network_interface_id\n  ]\n\n  # Explicit dependencies to ensure ordering\n  depends_on = [\n    stackit_network.network,\n    stackit_key_pair.keypair,\n    stackit_network_interface.nic\n  ]\n}\n\n# Create example credentials for observability of the ALB\n# Create real credentials in your stackit observability\nresource \"stackit_loadbalancer_observability_credential\" \"observability\" {\n  project_id   = var.project_id\n  display_name = \"my-cred\"\n  password     = \"password\"\n  username     = \"username\"\n}\n\n# Create a Application Load Balancer\nresource \"stackit_application_load_balancer\" \"example\" {\n  project_id = var.project_id\n  region     = \"eu01\"\n  name       = \"example-load-balancer\"\n  plan_id    = \"p10\"\n  // Hint: Automatically create an IP for the ALB lifecycle by setting ephemeral_address = true or use:\n  // external_address = \"124.124.124.124\"\n  labels = {\n    (var.label_key) = var.label_value\n  }\n  listeners = [{\n    name = \"my-listener\"\n    port = 443\n    http = {\n      hosts = [{\n        host = \"*\"\n        rules = [{\n          target_pool = \"my-target-pool\"\n          web_socket  = true\n          query_parameters = [{\n            name        = \"my-query-key\"\n            exact_match = \"my-query-value\"\n          }]\n          headers = [{\n            name        = \"my-header-key\"\n            exact_match = \"my-header-value\"\n          }]\n          path = {\n            prefix = \"/path\"\n          }\n          cookie_persistence = {\n            name = \"my-cookie\"\n            ttl  = \"60s\"\n          }\n        }]\n      }]\n    }\n    https = {\n      certificate_config = {\n        certificate_ids = [\n          # Currently no TF provider available, needs to be added with API\n          # https://docs.api.stackit.cloud/documentation/certificates/version/v2\n          \"name-v1-8c81bd317af8a03b8ef0851ccb074eb17d1ad589b540446244a5e593f78ef820\"\n        ]\n      }\n    }\n    protocol = \"PROTOCOL_HTTPS\"\n    # Currently no TF provider available, needs to be added with API\n    # https://docs.api.stackit.cloud/documentation/alb-waf/version/v1alpha\n    waf_config_name = \"my-waf-config\"\n    }\n  ]\n  networks = [\n    {\n      network_id = stackit_network.network.network_id\n      role       = \"ROLE_LISTENERS_AND_TARGETS\"\n    }\n  ]\n  options = {\n    acl                  = [\"123.123.123.123/24\", \"12.12.12.12/24\"]\n    ephemeral_address    = true\n    private_network_only = false\n    observability = {\n      logs = {\n        credentials_ref = stackit_loadbalancer_observability_credential.observability.credentials_ref\n        push_url        = \"https://logs.stackit\u003cid\u003e.argus.eu01.stackit.cloud/instances/\u003cinstance-id\u003e/loki/api/v1/push\"\n      }\n      metrics = {\n        credentials_ref = stackit_loadbalancer_observability_credential.observability.credentials_ref\n        push_url        = \"https://push.metrics.stackit\u003cid\u003e.argus.eu01.stackit.cloud/instances/\u003cinstance-id\u003e/api/v1/receive\"\n      }\n    }\n  }\n  target_pools = [\n    {\n      name = \"my-target-pool\"\n      active_health_check = {\n        interval            = \"0.500s\"\n        interval_jitter     = \"0.010s\"\n        timeout             = \"1s\"\n        healthy_threshold   = \"5\"\n        unhealthy_threshold = \"3\"\n        http_health_checks = {\n          ok_status = [\"200\", \"201\"]\n          path      = \"/healthy\"\n        }\n      }\n      target_port = 80\n      targets = [\n        {\n          display_name = \"my-target\"\n          ip           = stackit_network_interface.nic.ipv4\n        }\n      ]\n      tls_config = {\n        enabled                     = true\n        skip_certificate_validation = false\n        custom_ca                   = chomp(file(\"path/to/PEM_formated_CA\"))\n      }\n    }\n  ]\n  disable_target_security_group_assignment = false # only needed if targets are not in the same network\n}\n```\n",
+            "properties": {
+                "disableTargetSecurityGroupAssignment": {
+                    "type": "boolean",
+                    "description": "Disable target security group assignemt to allow targets outside of the given network. Connectivity to targets need to be ensured by the customer, including routing and Security Groups (targetSecurityGroup can be assigned). Not changeable after creation.\n"
+                },
+                "errors": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stackit:index/ApplicationLoadBalancerError:ApplicationLoadBalancerError"
+                    },
+                    "description": "Reports all errors a Application Load Balancer has.\n"
+                },
+                "externalAddress": {
+                    "type": "string",
+                    "description": "The external IP address where this Application Load Balancer is exposed. Not changeable after creation.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Labels represent user-defined metadata as key-value pairs. Label count cannot exceed 64 per ALB.\n"
+                },
+                "listeners": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stackit:index/ApplicationLoadBalancerListener:ApplicationLoadBalancerListener"
+                    },
+                    "description": "List of all listeners which will accept traffic. Limited to 20.\n"
+                },
+                "loadBalancerSecurityGroup": {
+                    "$ref": "#/types/stackit:index/ApplicationLoadBalancerLoadBalancerSecurityGroup:ApplicationLoadBalancerLoadBalancerSecurityGroup",
+                    "description": "Security Group permitting network traffic from the LoadBalancer to the targets. Useful when disableTargetSecurityGroupAssignment=true to manually assign target security groups to targets.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Application Load balancer name.\n"
+                },
+                "networks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stackit:index/ApplicationLoadBalancerNetwork:ApplicationLoadBalancerNetwork"
+                    },
+                    "description": "List of networks that listeners and targets reside in.\n"
+                },
+                "options": {
+                    "$ref": "#/types/stackit:index/ApplicationLoadBalancerOptions:ApplicationLoadBalancerOptions",
+                    "description": "Defines any optional functionality you want to have enabled on your Application Load Balancer.\n"
+                },
+                "planId": {
+                    "type": "string",
+                    "description": "Service Plan configures the size of the Application Load Balancer e.g. 'p10'. See available plans via STACKIT CLI 'stackit beta alb plans' or API https://docs.api.stackit.cloud/documentation/alb/version/v2#tag/Project/operation/APIService_ListPlans\n"
+                },
+                "privateAddress": {
+                    "type": "string"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT project ID to which the Application Load Balancer is associated.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The resource region (e.g. eu01). If not defined, the provider region is used.\n"
+                },
+                "targetPools": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stackit:index/ApplicationLoadBalancerTargetPool:ApplicationLoadBalancerTargetPool"
+                    },
+                    "description": "List of all target pools which will be used in the Application Load Balancer. Limited to 20.\n"
+                },
+                "targetSecurityGroup": {
+                    "$ref": "#/types/stackit:index/ApplicationLoadBalancerTargetSecurityGroup:ApplicationLoadBalancerTargetSecurityGroup",
+                    "description": "Security Group that allows the targets to receive traffic from the LoadBalancer. Useful when disableTargetSecurityGroupAssignment=true to manually assign target security groups to targets.\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Application Load Balancer resource version. Used for concurrency safe updates.\n"
+                }
+            },
+            "required": [
+                "disableTargetSecurityGroupAssignment",
+                "errors",
+                "externalAddress",
+                "listeners",
+                "loadBalancerSecurityGroup",
+                "name",
+                "networks",
+                "planId",
+                "privateAddress",
+                "projectId",
+                "region",
+                "targetPools",
+                "targetSecurityGroup",
+                "version"
+            ],
+            "inputProperties": {
+                "disableTargetSecurityGroupAssignment": {
+                    "type": "boolean",
+                    "description": "Disable target security group assignemt to allow targets outside of the given network. Connectivity to targets need to be ensured by the customer, including routing and Security Groups (targetSecurityGroup can be assigned). Not changeable after creation.\n"
+                },
+                "externalAddress": {
+                    "type": "string",
+                    "description": "The external IP address where this Application Load Balancer is exposed. Not changeable after creation.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Labels represent user-defined metadata as key-value pairs. Label count cannot exceed 64 per ALB.\n"
+                },
+                "listeners": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stackit:index/ApplicationLoadBalancerListener:ApplicationLoadBalancerListener"
+                    },
+                    "description": "List of all listeners which will accept traffic. Limited to 20.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Application Load balancer name.\n"
+                },
+                "networks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stackit:index/ApplicationLoadBalancerNetwork:ApplicationLoadBalancerNetwork"
+                    },
+                    "description": "List of networks that listeners and targets reside in.\n"
+                },
+                "options": {
+                    "$ref": "#/types/stackit:index/ApplicationLoadBalancerOptions:ApplicationLoadBalancerOptions",
+                    "description": "Defines any optional functionality you want to have enabled on your Application Load Balancer.\n"
+                },
+                "planId": {
+                    "type": "string",
+                    "description": "Service Plan configures the size of the Application Load Balancer e.g. 'p10'. See available plans via STACKIT CLI 'stackit beta alb plans' or API https://docs.api.stackit.cloud/documentation/alb/version/v2#tag/Project/operation/APIService_ListPlans\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT project ID to which the Application Load Balancer is associated.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The resource region (e.g. eu01). If not defined, the provider region is used.\n"
+                },
+                "targetPools": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stackit:index/ApplicationLoadBalancerTargetPool:ApplicationLoadBalancerTargetPool"
+                    },
+                    "description": "List of all target pools which will be used in the Application Load Balancer. Limited to 20.\n"
+                }
+            },
+            "requiredInputs": [
+                "listeners",
+                "networks",
+                "planId",
+                "projectId",
+                "targetPools"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ApplicationLoadBalancer resources.\n",
+                "properties": {
+                    "disableTargetSecurityGroupAssignment": {
+                        "type": "boolean",
+                        "description": "Disable target security group assignemt to allow targets outside of the given network. Connectivity to targets need to be ensured by the customer, including routing and Security Groups (targetSecurityGroup can be assigned). Not changeable after creation.\n"
+                    },
+                    "errors": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/stackit:index/ApplicationLoadBalancerError:ApplicationLoadBalancerError"
+                        },
+                        "description": "Reports all errors a Application Load Balancer has.\n"
+                    },
+                    "externalAddress": {
+                        "type": "string",
+                        "description": "The external IP address where this Application Load Balancer is exposed. Not changeable after creation.\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Labels represent user-defined metadata as key-value pairs. Label count cannot exceed 64 per ALB.\n"
+                    },
+                    "listeners": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/stackit:index/ApplicationLoadBalancerListener:ApplicationLoadBalancerListener"
+                        },
+                        "description": "List of all listeners which will accept traffic. Limited to 20.\n"
+                    },
+                    "loadBalancerSecurityGroup": {
+                        "$ref": "#/types/stackit:index/ApplicationLoadBalancerLoadBalancerSecurityGroup:ApplicationLoadBalancerLoadBalancerSecurityGroup",
+                        "description": "Security Group permitting network traffic from the LoadBalancer to the targets. Useful when disableTargetSecurityGroupAssignment=true to manually assign target security groups to targets.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Application Load balancer name.\n"
+                    },
+                    "networks": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/stackit:index/ApplicationLoadBalancerNetwork:ApplicationLoadBalancerNetwork"
+                        },
+                        "description": "List of networks that listeners and targets reside in.\n"
+                    },
+                    "options": {
+                        "$ref": "#/types/stackit:index/ApplicationLoadBalancerOptions:ApplicationLoadBalancerOptions",
+                        "description": "Defines any optional functionality you want to have enabled on your Application Load Balancer.\n"
+                    },
+                    "planId": {
+                        "type": "string",
+                        "description": "Service Plan configures the size of the Application Load Balancer e.g. 'p10'. See available plans via STACKIT CLI 'stackit beta alb plans' or API https://docs.api.stackit.cloud/documentation/alb/version/v2#tag/Project/operation/APIService_ListPlans\n"
+                    },
+                    "privateAddress": {
+                        "type": "string"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID to which the Application Load Balancer is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region (e.g. eu01). If not defined, the provider region is used.\n"
+                    },
+                    "targetPools": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/stackit:index/ApplicationLoadBalancerTargetPool:ApplicationLoadBalancerTargetPool"
+                        },
+                        "description": "List of all target pools which will be used in the Application Load Balancer. Limited to 20.\n"
+                    },
+                    "targetSecurityGroup": {
+                        "$ref": "#/types/stackit:index/ApplicationLoadBalancerTargetSecurityGroup:ApplicationLoadBalancerTargetSecurityGroup",
+                        "description": "Security Group that allows the targets to receive traffic from the LoadBalancer. Useful when disableTargetSecurityGroupAssignment=true to manually assign target security groups to targets.\n"
+                    },
+                    "version": {
+                        "type": "string",
+                        "description": "Application Load Balancer resource version. Used for concurrency safe updates.\n"
                     }
                 },
                 "type": "object"
@@ -14717,7 +16130,7 @@
             }
         },
         "stackit:index/serverBackupSchedule:ServerBackupSchedule": {
-            "description": "Server backup schedule resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n\u003e This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\nresource \"stackit_server_backup_schedule\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  server_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example_backup_schedule_name\"\n  rrule      = \"DTSTART;TZID=Europe/Sofia:20200803T023000 RRULE:FREQ=DAILY;INTERVAL=1\"\n  enabled    = true\n  backup_properties = {\n    name             = \"example_backup_name\"\n    retention_period = 14\n    volume_ids       = null\n  }\n}\n\n# Only use the import statement, if you want to import an existing server backup schedule\nimport {\n  to = stackit_server_backup_schedule.import-example\n  id = \"${var.project_id},${var.region},${var.server_id},${var.server_backup_schedule_id}\"\n}\n```\n",
+            "description": "Server backup schedule resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\nresource \"stackit_server_backup_schedule\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  server_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example_backup_schedule_name\"\n  rrule      = \"DTSTART;TZID=Europe/Sofia:20200803T023000 RRULE:FREQ=DAILY;INTERVAL=1\"\n  enabled    = true\n  backup_properties = {\n    name             = \"example_backup_name\"\n    retention_period = 14\n    volume_ids       = null\n  }\n}\n\n# Only use the import statement, if you want to import an existing server backup schedule\nimport {\n  to = stackit_server_backup_schedule.import-example\n  id = \"${var.project_id},${var.region},${var.server_id},${var.server_backup_schedule_id}\"\n}\n```\n",
             "properties": {
                 "backupProperties": {
                     "$ref": "#/types/stackit:index/ServerBackupScheduleBackupProperties:ServerBackupScheduleBackupProperties",
@@ -14983,7 +16396,7 @@
             }
         },
         "stackit:index/serverUpdateSchedule:ServerUpdateSchedule": {
-            "description": "Server update schedule resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n\u003e This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\nresource \"stackit_server_update_schedule\" \"example\" {\n  project_id         = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  server_id          = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name               = \"example_update_schedule_name\"\n  rrule              = \"DTSTART;TZID=Europe/Sofia:20200803T023000 RRULE:FREQ=DAILY;INTERVAL=1\"\n  enabled            = true\n  maintenance_window = 1\n}\n\n# Only use the import statement, if you want to import an existing server update schedule\nimport {\n  to = stackit_server_update_schedule.import-example\n  id = \"${var.project_id},${var.region},${var.server_id},${var.server_update_schedule_id}\"\n}\n```\n",
+            "description": "Server update schedule resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\nresource \"stackit_server_update_schedule\" \"example\" {\n  project_id         = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  server_id          = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name               = \"example_update_schedule_name\"\n  rrule              = \"DTSTART;TZID=Europe/Sofia:20200803T023000 RRULE:FREQ=DAILY;INTERVAL=1\"\n  enabled            = true\n  maintenance_window = 1\n}\n\n# Only use the import statement, if you want to import an existing server update schedule\nimport {\n  to = stackit_server_update_schedule.import-example\n  id = \"${var.project_id},${var.region},${var.server_id},${var.server_update_schedule_id}\"\n}\n```\n",
             "properties": {
                 "enabled": {
                     "type": "boolean",
@@ -15190,12 +16603,17 @@
                 "projectId": {
                     "type": "string",
                     "description": "STACKIT project ID to which the service account is associated.\n"
+                },
+                "serviceAccountId": {
+                    "type": "string",
+                    "description": "The internal UUID of the service account.\n"
                 }
             },
             "required": [
                 "email",
                 "name",
-                "projectId"
+                "projectId",
+                "serviceAccountId"
             ],
             "inputProperties": {
                 "name": {
@@ -15224,132 +16642,10 @@
                     "projectId": {
                         "type": "string",
                         "description": "STACKIT project ID to which the service account is associated.\n"
-                    }
-                },
-                "type": "object"
-            }
-        },
-        "stackit:index/serviceAccountAccessToken:ServiceAccountAccessToken": {
-            "description": "Service account access token schema.\n\n!\u003e This resource is scheduled for deprecation and will be removed on December 17, 2025. To ensure a smooth transition, please refer to our migration guide at https://docs.stackit.cloud/platform/access-and-identity/service-accounts/migrate-flows/ for detailed instructions and recommendations.\n\n## Example Usage\n\n### Automatically rotate access tokens\n```terraform\nresource \"stackit_service_account\" \"sa\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"sa01\"\n}\n\nresource \"time_rotating\" \"rotate\" {\n  rotation_days = 80\n}\n\nresource \"stackit_service_account_access_token\" \"sa_token\" {\n  project_id            = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  service_account_email = stackit_service_account.sa.email\n  ttl_days              = 180\n\n  rotate_when_changed = {\n    rotation = time_rotating.rotate.id\n  }\n}\n\n```\n",
-            "properties": {
-                "accessTokenId": {
-                    "type": "string",
-                    "description": "Identifier for the access token linked to the service account.\n"
-                },
-                "active": {
-                    "type": "boolean",
-                    "description": "Indicate whether the token is currently active or inactive\n"
-                },
-                "createdAt": {
-                    "type": "string",
-                    "description": "Timestamp indicating when the access token was created.\n"
-                },
-                "projectId": {
-                    "type": "string",
-                    "description": "STACKIT project ID associated with the service account token.\n"
-                },
-                "rotateWhenChanged": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "string"
                     },
-                    "description": "A map of arbitrary key/value pairs that will force recreation of the token when they change, enabling token rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.\n"
-                },
-                "serviceAccountEmail": {
-                    "type": "string",
-                    "description": "Email address linked to the service account.\n"
-                },
-                "token": {
-                    "type": "string",
-                    "description": "JWT access token for API authentication. Prefixed by 'Bearer' and should be stored securely as it is irretrievable once lost.\n",
-                    "secret": true
-                },
-                "ttlDays": {
-                    "type": "integer",
-                    "description": "Specifies the token's validity duration in days. If unspecified, defaults to 90 days.\n"
-                },
-                "validUntil": {
-                    "type": "string",
-                    "description": "Estimated expiration timestamp of the access token. For precise validity, check the JWT details.\n"
-                }
-            },
-            "required": [
-                "accessTokenId",
-                "active",
-                "createdAt",
-                "projectId",
-                "serviceAccountEmail",
-                "token",
-                "ttlDays",
-                "validUntil"
-            ],
-            "inputProperties": {
-                "projectId": {
-                    "type": "string",
-                    "description": "STACKIT project ID associated with the service account token.\n"
-                },
-                "rotateWhenChanged": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "A map of arbitrary key/value pairs that will force recreation of the token when they change, enabling token rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.\n"
-                },
-                "serviceAccountEmail": {
-                    "type": "string",
-                    "description": "Email address linked to the service account.\n"
-                },
-                "ttlDays": {
-                    "type": "integer",
-                    "description": "Specifies the token's validity duration in days. If unspecified, defaults to 90 days.\n"
-                }
-            },
-            "requiredInputs": [
-                "projectId",
-                "serviceAccountEmail"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering ServiceAccountAccessToken resources.\n",
-                "properties": {
-                    "accessTokenId": {
+                    "serviceAccountId": {
                         "type": "string",
-                        "description": "Identifier for the access token linked to the service account.\n"
-                    },
-                    "active": {
-                        "type": "boolean",
-                        "description": "Indicate whether the token is currently active or inactive\n"
-                    },
-                    "createdAt": {
-                        "type": "string",
-                        "description": "Timestamp indicating when the access token was created.\n"
-                    },
-                    "projectId": {
-                        "type": "string",
-                        "description": "STACKIT project ID associated with the service account token.\n"
-                    },
-                    "rotateWhenChanged": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "type": "string"
-                        },
-                        "description": "A map of arbitrary key/value pairs that will force recreation of the token when they change, enabling token rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.\n"
-                    },
-                    "serviceAccountEmail": {
-                        "type": "string",
-                        "description": "Email address linked to the service account.\n"
-                    },
-                    "token": {
-                        "type": "string",
-                        "description": "JWT access token for API authentication. Prefixed by 'Bearer' and should be stored securely as it is irretrievable once lost.\n",
-                        "secret": true
-                    },
-                    "ttlDays": {
-                        "type": "integer",
-                        "description": "Specifies the token's validity duration in days. If unspecified, defaults to 90 days.\n"
-                    },
-                    "validUntil": {
-                        "type": "string",
-                        "description": "Estimated expiration timestamp of the access token. For precise validity, check the JWT details.\n"
+                        "description": "The internal UUID of the service account.\n"
                     }
                 },
                 "type": "object"
@@ -16689,6 +17985,134 @@
                     "name",
                     "policy",
                     "projectId"
+                ]
+            }
+        },
+        "stackit:index/getApplicationLoadBalancer:getApplicationLoadBalancer": {
+            "description": "Application Load Balancer data source schema. Must have a region specified in the provider configuration.\n\n## Example Usage\n\n```terraform\ndata \"stackit_application_load_balancer\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-load-balancer\"\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getApplicationLoadBalancer.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Application Load balancer name.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID to which the Application Load Balancer is associated.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name",
+                    "projectId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getApplicationLoadBalancer.\n",
+                "properties": {
+                    "disableTargetSecurityGroupAssignment": {
+                        "type": "boolean",
+                        "description": "Disable target security group assignemt to allow targets outside of the given network. Connectivity to targets need to be ensured by the customer, including routing and Security Groups (targetSecurityGroup can be assigned). Not changeable after creation.\n"
+                    },
+                    "errors": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/stackit:index/getApplicationLoadBalancerError:getApplicationLoadBalancerError"
+                        },
+                        "description": "Reports all errors a Application Load Balancer has.\n"
+                    },
+                    "externalAddress": {
+                        "type": "string",
+                        "description": "The external IP address where this Application Load Balancer is exposed. Not changeable after creation.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Terraform's internal resource ID. It is structured as \u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e.\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Labels represent user-defined metadata as key-value pairs. Label count cannot exceed 64 per ALB.\n"
+                    },
+                    "listeners": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/stackit:index/getApplicationLoadBalancerListener:getApplicationLoadBalancerListener"
+                        },
+                        "description": "List of all listeners which will accept traffic. Limited to 20.\n"
+                    },
+                    "loadBalancerSecurityGroup": {
+                        "$ref": "#/types/stackit:index/getApplicationLoadBalancerLoadBalancerSecurityGroup:getApplicationLoadBalancerLoadBalancerSecurityGroup",
+                        "description": "Security Group permitting network traffic from the LoadBalancer to the targets. Useful when disableTargetSecurityGroupAssignment=true to manually assign target security groups to targets.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Application Load balancer name.\n"
+                    },
+                    "networks": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/stackit:index/getApplicationLoadBalancerNetwork:getApplicationLoadBalancerNetwork"
+                        },
+                        "description": "List of networks that listeners and targets reside in.\n"
+                    },
+                    "options": {
+                        "$ref": "#/types/stackit:index/getApplicationLoadBalancerOptions:getApplicationLoadBalancerOptions",
+                        "description": "Defines any optional functionality you want to have enabled on your Application Load Balancer.\n"
+                    },
+                    "planId": {
+                        "type": "string",
+                        "description": "Service Plan configures the size of the Application Load Balancer.\n"
+                    },
+                    "privateAddress": {
+                        "type": "string"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID to which the Application Load Balancer is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    },
+                    "targetPools": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/stackit:index/getApplicationLoadBalancerTargetPool:getApplicationLoadBalancerTargetPool"
+                        },
+                        "description": "List of all target pools which will be used in the Application Load Balancer. Limited to 20.\n"
+                    },
+                    "targetSecurityGroup": {
+                        "$ref": "#/types/stackit:index/getApplicationLoadBalancerTargetSecurityGroup:getApplicationLoadBalancerTargetSecurityGroup",
+                        "description": "Security Group that allows the targets to receive traffic from the LoadBalancer. Useful when disableTargetSecurityGroupAssignment=true to manually assign target security groups to targets.\n"
+                    },
+                    "version": {
+                        "type": "string",
+                        "description": "Application Load Balancer resource version. Used for concurrency safe updates.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "disableTargetSecurityGroupAssignment",
+                    "errors",
+                    "externalAddress",
+                    "id",
+                    "labels",
+                    "listeners",
+                    "loadBalancerSecurityGroup",
+                    "name",
+                    "networks",
+                    "options",
+                    "planId",
+                    "privateAddress",
+                    "projectId",
+                    "region",
+                    "targetPools",
+                    "targetSecurityGroup",
+                    "version"
                 ]
             }
         },
@@ -22006,7 +23430,7 @@
             }
         },
         "stackit:index/getServerBackupSchedule:getServerBackupSchedule": {
-            "description": "Server backup schedule datasource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n\u003e This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\ndata \"stackit_server_backup_schedule\" \"example\" {\n  project_id         = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  server_id          = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  backup_schedule_id = xxxxx\n}\n```\n",
+            "description": "Server backup schedule datasource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\ndata \"stackit_server_backup_schedule\" \"example\" {\n  project_id         = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  server_id          = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  backup_schedule_id = xxxxx\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getServerBackupSchedule.\n",
                 "properties": {
@@ -22088,7 +23512,7 @@
             }
         },
         "stackit:index/getServerBackupSchedules:getServerBackupSchedules": {
-            "description": "Server backup schedules datasource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n\u003e This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\ndata \"stackit_server_backup_schedules\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  server_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "description": "Server backup schedules datasource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\ndata \"stackit_server_backup_schedules\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  server_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getServerBackupSchedules.\n",
                 "properties": {
@@ -22147,7 +23571,7 @@
             }
         },
         "stackit:index/getServerUpdateSchedule:getServerUpdateSchedule": {
-            "description": "Server update schedule datasource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n\u003e This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\ndata \"stackit_server_update_schedule\" \"example\" {\n  project_id         = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  server_id          = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  update_schedule_id = xxxxx\n}\n```\n",
+            "description": "Server update schedule datasource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\ndata \"stackit_server_update_schedule\" \"example\" {\n  project_id         = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  server_id          = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  update_schedule_id = xxxxx\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getServerUpdateSchedule.\n",
                 "properties": {
@@ -22229,7 +23653,7 @@
             }
         },
         "stackit:index/getServerUpdateSchedules:getServerUpdateSchedules": {
-            "description": "Server update schedules datasource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n\u003e This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\ndata \"stackit_server_update_schedules\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  server_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "description": "Server update schedules datasource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\ndata \"stackit_server_update_schedules\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  server_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getServerUpdateSchedules.\n",
                 "properties": {
@@ -22325,6 +23749,10 @@
                     "projectId": {
                         "type": "string",
                         "description": "STACKIT project ID to which the service account is associated.\n"
+                    },
+                    "serviceAccountId": {
+                        "type": "string",
+                        "description": "The internal UUID of the service account.\n"
                     }
                 },
                 "type": "object",
@@ -22332,6 +23760,73 @@
                     "email",
                     "id",
                     "name",
+                    "projectId",
+                    "serviceAccountId"
+                ]
+            }
+        },
+        "stackit:index/getServiceAccounts:getServiceAccounts": {
+            "description": "Service accounts plural data source schema. Returns a list of all service accounts in a project, optionally filtered.\n\n## Example Usage\n\n```terraform\ndata \"stackit_service_accounts\" \"all_sas\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\ndata \"stackit_service_accounts\" \"sas_default_suffix\" {\n  project_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  email_suffix = \"@sa.stackit.cloud\"\n}\n\ndata \"stackit_service_accounts\" \"sas_default_suffix_sort_asc\" {\n  project_id     = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  email_suffix   = \"@sa.stackit.cloud\"\n  sort_ascending = true\n}\n\ndata \"stackit_service_accounts\" \"sas_ske_regex\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  email_regex = \".*@ske\\\\.sa\\\\.stackit\\\\.cloud$\"\n}\n\ndata \"stackit_service_accounts\" \"sas_ske_suffix\" {\n  project_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  email_suffix = \"@ske.sa.stackit.cloud\"\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getServiceAccounts.\n",
+                "properties": {
+                    "emailRegex": {
+                        "type": "string",
+                        "description": "Optional regular expression to filter service accounts by email.\n"
+                    },
+                    "emailSuffix": {
+                        "type": "string",
+                        "description": "Optional suffix to filter service accounts by email (e.g.,`@sa.stackit.cloud`, `@ske.sa.stackit.cloud`).\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID.\n"
+                    },
+                    "sortAscending": {
+                        "type": "boolean",
+                        "description": "If set to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e, service accounts are sorted in ascending lexicographical order by email. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e (descending).\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "projectId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getServiceAccounts.\n",
+                "properties": {
+                    "emailRegex": {
+                        "type": "string",
+                        "description": "Optional regular expression to filter service accounts by email.\n"
+                    },
+                    "emailSuffix": {
+                        "type": "string",
+                        "description": "Optional suffix to filter service accounts by email (e.g.,`@sa.stackit.cloud`, `@ske.sa.stackit.cloud`).\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Terraform's internal resource ID, structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`project_id`\u003c/span\u003e\".\n"
+                    },
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/stackit:index/getServiceAccountsItem:getServiceAccountsItem"
+                        },
+                        "description": "The list of service accounts matching the provided filters.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID.\n"
+                    },
+                    "sortAscending": {
+                        "type": "boolean",
+                        "description": "If set to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e, service accounts are sorted in ascending lexicographical order by email. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e (descending).\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "items",
                     "projectId"
                 ]
             }
