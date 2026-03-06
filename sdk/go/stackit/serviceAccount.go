@@ -24,6 +24,8 @@ type ServiceAccount struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// STACKIT project ID to which the service account is associated.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	// The internal UUID of the service account.
+	ServiceAccountId pulumi.StringOutput `pulumi:"serviceAccountId"`
 }
 
 // NewServiceAccount registers a new resource with the given unique name, arguments, and options.
@@ -65,6 +67,8 @@ type serviceAccountState struct {
 	Name *string `pulumi:"name"`
 	// STACKIT project ID to which the service account is associated.
 	ProjectId *string `pulumi:"projectId"`
+	// The internal UUID of the service account.
+	ServiceAccountId *string `pulumi:"serviceAccountId"`
 }
 
 type ServiceAccountState struct {
@@ -74,6 +78,8 @@ type ServiceAccountState struct {
 	Name pulumi.StringPtrInput
 	// STACKIT project ID to which the service account is associated.
 	ProjectId pulumi.StringPtrInput
+	// The internal UUID of the service account.
+	ServiceAccountId pulumi.StringPtrInput
 }
 
 func (ServiceAccountState) ElementType() reflect.Type {
@@ -195,6 +201,11 @@ func (o ServiceAccountOutput) Name() pulumi.StringOutput {
 // STACKIT project ID to which the service account is associated.
 func (o ServiceAccountOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceAccount) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The internal UUID of the service account.
+func (o ServiceAccountOutput) ServiceAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServiceAccount) pulumi.StringOutput { return v.ServiceAccountId }).(pulumi.StringOutput)
 }
 
 type ServiceAccountArrayOutput struct{ *pulumi.OutputState }

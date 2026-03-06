@@ -13,6 +13,3396 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ApplicationLoadBalancerError struct {
+	// The error description contains additional helpful user information to fix the error state of the Application Load Balancer. For example the IP 45.135.247.139 does not exist in the project, then the description will report: Floating IP "45.135.247.139" could not be found.
+	Description *string `pulumi:"description"`
+	// The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`.
+	Type *string `pulumi:"type"`
+}
+
+// ApplicationLoadBalancerErrorInput is an input type that accepts ApplicationLoadBalancerErrorArgs and ApplicationLoadBalancerErrorOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerErrorInput` via:
+//
+//	ApplicationLoadBalancerErrorArgs{...}
+type ApplicationLoadBalancerErrorInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerErrorOutput() ApplicationLoadBalancerErrorOutput
+	ToApplicationLoadBalancerErrorOutputWithContext(context.Context) ApplicationLoadBalancerErrorOutput
+}
+
+type ApplicationLoadBalancerErrorArgs struct {
+	// The error description contains additional helpful user information to fix the error state of the Application Load Balancer. For example the IP 45.135.247.139 does not exist in the project, then the description will report: Floating IP "45.135.247.139" could not be found.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (ApplicationLoadBalancerErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerError)(nil)).Elem()
+}
+
+func (i ApplicationLoadBalancerErrorArgs) ToApplicationLoadBalancerErrorOutput() ApplicationLoadBalancerErrorOutput {
+	return i.ToApplicationLoadBalancerErrorOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerErrorArgs) ToApplicationLoadBalancerErrorOutputWithContext(ctx context.Context) ApplicationLoadBalancerErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerErrorOutput)
+}
+
+// ApplicationLoadBalancerErrorArrayInput is an input type that accepts ApplicationLoadBalancerErrorArray and ApplicationLoadBalancerErrorArrayOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerErrorArrayInput` via:
+//
+//	ApplicationLoadBalancerErrorArray{ ApplicationLoadBalancerErrorArgs{...} }
+type ApplicationLoadBalancerErrorArrayInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerErrorArrayOutput() ApplicationLoadBalancerErrorArrayOutput
+	ToApplicationLoadBalancerErrorArrayOutputWithContext(context.Context) ApplicationLoadBalancerErrorArrayOutput
+}
+
+type ApplicationLoadBalancerErrorArray []ApplicationLoadBalancerErrorInput
+
+func (ApplicationLoadBalancerErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationLoadBalancerError)(nil)).Elem()
+}
+
+func (i ApplicationLoadBalancerErrorArray) ToApplicationLoadBalancerErrorArrayOutput() ApplicationLoadBalancerErrorArrayOutput {
+	return i.ToApplicationLoadBalancerErrorArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerErrorArray) ToApplicationLoadBalancerErrorArrayOutputWithContext(ctx context.Context) ApplicationLoadBalancerErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerErrorArrayOutput)
+}
+
+type ApplicationLoadBalancerErrorOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerError)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerErrorOutput) ToApplicationLoadBalancerErrorOutput() ApplicationLoadBalancerErrorOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerErrorOutput) ToApplicationLoadBalancerErrorOutputWithContext(ctx context.Context) ApplicationLoadBalancerErrorOutput {
+	return o
+}
+
+// The error description contains additional helpful user information to fix the error state of the Application Load Balancer. For example the IP 45.135.247.139 does not exist in the project, then the description will report: Floating IP "45.135.247.139" could not be found.
+func (o ApplicationLoadBalancerErrorOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerError) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`.
+func (o ApplicationLoadBalancerErrorOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerError) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type ApplicationLoadBalancerErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationLoadBalancerError)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerErrorArrayOutput) ToApplicationLoadBalancerErrorArrayOutput() ApplicationLoadBalancerErrorArrayOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerErrorArrayOutput) ToApplicationLoadBalancerErrorArrayOutputWithContext(ctx context.Context) ApplicationLoadBalancerErrorArrayOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerErrorArrayOutput) Index(i pulumi.IntInput) ApplicationLoadBalancerErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationLoadBalancerError {
+		return vs[0].([]ApplicationLoadBalancerError)[vs[1].(int)]
+	}).(ApplicationLoadBalancerErrorOutput)
+}
+
+type ApplicationLoadBalancerListener struct {
+	// Configuration for HTTP traffic.
+	Http ApplicationLoadBalancerListenerHttp `pulumi:"http"`
+	// Configuration for handling HTTPS traffic on this listener.
+	Https *ApplicationLoadBalancerListenerHttps `pulumi:"https"`
+	// Unique name for the listener
+	Name string `pulumi:"name"`
+	// Port number on which the listener receives incoming traffic.
+	Port int `pulumi:"port"`
+	// Protocol is the highest network protocol we understand to load balance. Possible values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_HTTP`, `PROTOCOL_HTTPS`.
+	Protocol string `pulumi:"protocol"`
+	// Enable Web Application Firewall (WAF), referenced by name. See "Application Load Balancer - Web Application Firewall API" for more information.
+	WafConfigName *string `pulumi:"wafConfigName"`
+}
+
+// ApplicationLoadBalancerListenerInput is an input type that accepts ApplicationLoadBalancerListenerArgs and ApplicationLoadBalancerListenerOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerListenerInput` via:
+//
+//	ApplicationLoadBalancerListenerArgs{...}
+type ApplicationLoadBalancerListenerInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerListenerOutput() ApplicationLoadBalancerListenerOutput
+	ToApplicationLoadBalancerListenerOutputWithContext(context.Context) ApplicationLoadBalancerListenerOutput
+}
+
+type ApplicationLoadBalancerListenerArgs struct {
+	// Configuration for HTTP traffic.
+	Http ApplicationLoadBalancerListenerHttpInput `pulumi:"http"`
+	// Configuration for handling HTTPS traffic on this listener.
+	Https ApplicationLoadBalancerListenerHttpsPtrInput `pulumi:"https"`
+	// Unique name for the listener
+	Name pulumi.StringInput `pulumi:"name"`
+	// Port number on which the listener receives incoming traffic.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Protocol is the highest network protocol we understand to load balance. Possible values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_HTTP`, `PROTOCOL_HTTPS`.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// Enable Web Application Firewall (WAF), referenced by name. See "Application Load Balancer - Web Application Firewall API" for more information.
+	WafConfigName pulumi.StringPtrInput `pulumi:"wafConfigName"`
+}
+
+func (ApplicationLoadBalancerListenerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerListener)(nil)).Elem()
+}
+
+func (i ApplicationLoadBalancerListenerArgs) ToApplicationLoadBalancerListenerOutput() ApplicationLoadBalancerListenerOutput {
+	return i.ToApplicationLoadBalancerListenerOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerListenerArgs) ToApplicationLoadBalancerListenerOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerListenerOutput)
+}
+
+// ApplicationLoadBalancerListenerArrayInput is an input type that accepts ApplicationLoadBalancerListenerArray and ApplicationLoadBalancerListenerArrayOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerListenerArrayInput` via:
+//
+//	ApplicationLoadBalancerListenerArray{ ApplicationLoadBalancerListenerArgs{...} }
+type ApplicationLoadBalancerListenerArrayInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerListenerArrayOutput() ApplicationLoadBalancerListenerArrayOutput
+	ToApplicationLoadBalancerListenerArrayOutputWithContext(context.Context) ApplicationLoadBalancerListenerArrayOutput
+}
+
+type ApplicationLoadBalancerListenerArray []ApplicationLoadBalancerListenerInput
+
+func (ApplicationLoadBalancerListenerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationLoadBalancerListener)(nil)).Elem()
+}
+
+func (i ApplicationLoadBalancerListenerArray) ToApplicationLoadBalancerListenerArrayOutput() ApplicationLoadBalancerListenerArrayOutput {
+	return i.ToApplicationLoadBalancerListenerArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerListenerArray) ToApplicationLoadBalancerListenerArrayOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerListenerArrayOutput)
+}
+
+type ApplicationLoadBalancerListenerOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerListenerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerListener)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerListenerOutput) ToApplicationLoadBalancerListenerOutput() ApplicationLoadBalancerListenerOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerListenerOutput) ToApplicationLoadBalancerListenerOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerOutput {
+	return o
+}
+
+// Configuration for HTTP traffic.
+func (o ApplicationLoadBalancerListenerOutput) Http() ApplicationLoadBalancerListenerHttpOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerListener) ApplicationLoadBalancerListenerHttp { return v.Http }).(ApplicationLoadBalancerListenerHttpOutput)
+}
+
+// Configuration for handling HTTPS traffic on this listener.
+func (o ApplicationLoadBalancerListenerOutput) Https() ApplicationLoadBalancerListenerHttpsPtrOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerListener) *ApplicationLoadBalancerListenerHttps { return v.Https }).(ApplicationLoadBalancerListenerHttpsPtrOutput)
+}
+
+// Unique name for the listener
+func (o ApplicationLoadBalancerListenerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerListener) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Port number on which the listener receives incoming traffic.
+func (o ApplicationLoadBalancerListenerOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerListener) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Protocol is the highest network protocol we understand to load balance. Possible values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_HTTP`, `PROTOCOL_HTTPS`.
+func (o ApplicationLoadBalancerListenerOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerListener) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Enable Web Application Firewall (WAF), referenced by name. See "Application Load Balancer - Web Application Firewall API" for more information.
+func (o ApplicationLoadBalancerListenerOutput) WafConfigName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerListener) *string { return v.WafConfigName }).(pulumi.StringPtrOutput)
+}
+
+type ApplicationLoadBalancerListenerArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerListenerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationLoadBalancerListener)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerListenerArrayOutput) ToApplicationLoadBalancerListenerArrayOutput() ApplicationLoadBalancerListenerArrayOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerListenerArrayOutput) ToApplicationLoadBalancerListenerArrayOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerArrayOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerListenerArrayOutput) Index(i pulumi.IntInput) ApplicationLoadBalancerListenerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationLoadBalancerListener {
+		return vs[0].([]ApplicationLoadBalancerListener)[vs[1].(int)]
+	}).(ApplicationLoadBalancerListenerOutput)
+}
+
+type ApplicationLoadBalancerListenerHttp struct {
+	// Defines routing rules grouped by hostname.
+	Hosts []ApplicationLoadBalancerListenerHttpHost `pulumi:"hosts"`
+}
+
+// ApplicationLoadBalancerListenerHttpInput is an input type that accepts ApplicationLoadBalancerListenerHttpArgs and ApplicationLoadBalancerListenerHttpOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerListenerHttpInput` via:
+//
+//	ApplicationLoadBalancerListenerHttpArgs{...}
+type ApplicationLoadBalancerListenerHttpInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerListenerHttpOutput() ApplicationLoadBalancerListenerHttpOutput
+	ToApplicationLoadBalancerListenerHttpOutputWithContext(context.Context) ApplicationLoadBalancerListenerHttpOutput
+}
+
+type ApplicationLoadBalancerListenerHttpArgs struct {
+	// Defines routing rules grouped by hostname.
+	Hosts ApplicationLoadBalancerListenerHttpHostArrayInput `pulumi:"hosts"`
+}
+
+func (ApplicationLoadBalancerListenerHttpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerListenerHttp)(nil)).Elem()
+}
+
+func (i ApplicationLoadBalancerListenerHttpArgs) ToApplicationLoadBalancerListenerHttpOutput() ApplicationLoadBalancerListenerHttpOutput {
+	return i.ToApplicationLoadBalancerListenerHttpOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerListenerHttpArgs) ToApplicationLoadBalancerListenerHttpOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerListenerHttpOutput)
+}
+
+type ApplicationLoadBalancerListenerHttpOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerListenerHttpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerListenerHttp)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerListenerHttpOutput) ToApplicationLoadBalancerListenerHttpOutput() ApplicationLoadBalancerListenerHttpOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerListenerHttpOutput) ToApplicationLoadBalancerListenerHttpOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpOutput {
+	return o
+}
+
+// Defines routing rules grouped by hostname.
+func (o ApplicationLoadBalancerListenerHttpOutput) Hosts() ApplicationLoadBalancerListenerHttpHostArrayOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerListenerHttp) []ApplicationLoadBalancerListenerHttpHost { return v.Hosts }).(ApplicationLoadBalancerListenerHttpHostArrayOutput)
+}
+
+type ApplicationLoadBalancerListenerHttpHost struct {
+	// Hostname to match. Supports wildcards (e.g. *.example.com).
+	Host string `pulumi:"host"`
+	// Routing rules under the specified host, matched by path prefix.
+	Rules []ApplicationLoadBalancerListenerHttpHostRule `pulumi:"rules"`
+}
+
+// ApplicationLoadBalancerListenerHttpHostInput is an input type that accepts ApplicationLoadBalancerListenerHttpHostArgs and ApplicationLoadBalancerListenerHttpHostOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerListenerHttpHostInput` via:
+//
+//	ApplicationLoadBalancerListenerHttpHostArgs{...}
+type ApplicationLoadBalancerListenerHttpHostInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerListenerHttpHostOutput() ApplicationLoadBalancerListenerHttpHostOutput
+	ToApplicationLoadBalancerListenerHttpHostOutputWithContext(context.Context) ApplicationLoadBalancerListenerHttpHostOutput
+}
+
+type ApplicationLoadBalancerListenerHttpHostArgs struct {
+	// Hostname to match. Supports wildcards (e.g. *.example.com).
+	Host pulumi.StringInput `pulumi:"host"`
+	// Routing rules under the specified host, matched by path prefix.
+	Rules ApplicationLoadBalancerListenerHttpHostRuleArrayInput `pulumi:"rules"`
+}
+
+func (ApplicationLoadBalancerListenerHttpHostArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerListenerHttpHost)(nil)).Elem()
+}
+
+func (i ApplicationLoadBalancerListenerHttpHostArgs) ToApplicationLoadBalancerListenerHttpHostOutput() ApplicationLoadBalancerListenerHttpHostOutput {
+	return i.ToApplicationLoadBalancerListenerHttpHostOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerListenerHttpHostArgs) ToApplicationLoadBalancerListenerHttpHostOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpHostOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerListenerHttpHostOutput)
+}
+
+// ApplicationLoadBalancerListenerHttpHostArrayInput is an input type that accepts ApplicationLoadBalancerListenerHttpHostArray and ApplicationLoadBalancerListenerHttpHostArrayOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerListenerHttpHostArrayInput` via:
+//
+//	ApplicationLoadBalancerListenerHttpHostArray{ ApplicationLoadBalancerListenerHttpHostArgs{...} }
+type ApplicationLoadBalancerListenerHttpHostArrayInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerListenerHttpHostArrayOutput() ApplicationLoadBalancerListenerHttpHostArrayOutput
+	ToApplicationLoadBalancerListenerHttpHostArrayOutputWithContext(context.Context) ApplicationLoadBalancerListenerHttpHostArrayOutput
+}
+
+type ApplicationLoadBalancerListenerHttpHostArray []ApplicationLoadBalancerListenerHttpHostInput
+
+func (ApplicationLoadBalancerListenerHttpHostArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationLoadBalancerListenerHttpHost)(nil)).Elem()
+}
+
+func (i ApplicationLoadBalancerListenerHttpHostArray) ToApplicationLoadBalancerListenerHttpHostArrayOutput() ApplicationLoadBalancerListenerHttpHostArrayOutput {
+	return i.ToApplicationLoadBalancerListenerHttpHostArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerListenerHttpHostArray) ToApplicationLoadBalancerListenerHttpHostArrayOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpHostArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerListenerHttpHostArrayOutput)
+}
+
+type ApplicationLoadBalancerListenerHttpHostOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerListenerHttpHostOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerListenerHttpHost)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerListenerHttpHostOutput) ToApplicationLoadBalancerListenerHttpHostOutput() ApplicationLoadBalancerListenerHttpHostOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerListenerHttpHostOutput) ToApplicationLoadBalancerListenerHttpHostOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpHostOutput {
+	return o
+}
+
+// Hostname to match. Supports wildcards (e.g. *.example.com).
+func (o ApplicationLoadBalancerListenerHttpHostOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerListenerHttpHost) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Routing rules under the specified host, matched by path prefix.
+func (o ApplicationLoadBalancerListenerHttpHostOutput) Rules() ApplicationLoadBalancerListenerHttpHostRuleArrayOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerListenerHttpHost) []ApplicationLoadBalancerListenerHttpHostRule {
+		return v.Rules
+	}).(ApplicationLoadBalancerListenerHttpHostRuleArrayOutput)
+}
+
+type ApplicationLoadBalancerListenerHttpHostArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerListenerHttpHostArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationLoadBalancerListenerHttpHost)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerListenerHttpHostArrayOutput) ToApplicationLoadBalancerListenerHttpHostArrayOutput() ApplicationLoadBalancerListenerHttpHostArrayOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerListenerHttpHostArrayOutput) ToApplicationLoadBalancerListenerHttpHostArrayOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpHostArrayOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerListenerHttpHostArrayOutput) Index(i pulumi.IntInput) ApplicationLoadBalancerListenerHttpHostOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationLoadBalancerListenerHttpHost {
+		return vs[0].([]ApplicationLoadBalancerListenerHttpHost)[vs[1].(int)]
+	}).(ApplicationLoadBalancerListenerHttpHostOutput)
+}
+
+type ApplicationLoadBalancerListenerHttpHostRule struct {
+	// Routing persistence via cookies.
+	CookiePersistence *ApplicationLoadBalancerListenerHttpHostRuleCookiePersistence `pulumi:"cookiePersistence"`
+	// Headers for the rule.
+	Headers []ApplicationLoadBalancerListenerHttpHostRuleHeader `pulumi:"headers"`
+	// Routing via path.
+	Path *ApplicationLoadBalancerListenerHttpHostRulePath `pulumi:"path"`
+	// Query parameters for the rule.
+	QueryParameters []ApplicationLoadBalancerListenerHttpHostRuleQueryParameter `pulumi:"queryParameters"`
+	// Reference target pool by target pool name.
+	TargetPool string `pulumi:"targetPool"`
+	// If enabled, when client sends an HTTP request with and Upgrade header, indicating the desire to establish a Websocket connection, if backend server supports WebSocket, it responds with HTTP 101 status code, switching protocols from HTTP to WebSocket. Hence the client and the server can exchange data in real-time using one long-lived TCP connection.
+	WebSocket *bool `pulumi:"webSocket"`
+}
+
+// ApplicationLoadBalancerListenerHttpHostRuleInput is an input type that accepts ApplicationLoadBalancerListenerHttpHostRuleArgs and ApplicationLoadBalancerListenerHttpHostRuleOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerListenerHttpHostRuleInput` via:
+//
+//	ApplicationLoadBalancerListenerHttpHostRuleArgs{...}
+type ApplicationLoadBalancerListenerHttpHostRuleInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerListenerHttpHostRuleOutput() ApplicationLoadBalancerListenerHttpHostRuleOutput
+	ToApplicationLoadBalancerListenerHttpHostRuleOutputWithContext(context.Context) ApplicationLoadBalancerListenerHttpHostRuleOutput
+}
+
+type ApplicationLoadBalancerListenerHttpHostRuleArgs struct {
+	// Routing persistence via cookies.
+	CookiePersistence ApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrInput `pulumi:"cookiePersistence"`
+	// Headers for the rule.
+	Headers ApplicationLoadBalancerListenerHttpHostRuleHeaderArrayInput `pulumi:"headers"`
+	// Routing via path.
+	Path ApplicationLoadBalancerListenerHttpHostRulePathPtrInput `pulumi:"path"`
+	// Query parameters for the rule.
+	QueryParameters ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayInput `pulumi:"queryParameters"`
+	// Reference target pool by target pool name.
+	TargetPool pulumi.StringInput `pulumi:"targetPool"`
+	// If enabled, when client sends an HTTP request with and Upgrade header, indicating the desire to establish a Websocket connection, if backend server supports WebSocket, it responds with HTTP 101 status code, switching protocols from HTTP to WebSocket. Hence the client and the server can exchange data in real-time using one long-lived TCP connection.
+	WebSocket pulumi.BoolPtrInput `pulumi:"webSocket"`
+}
+
+func (ApplicationLoadBalancerListenerHttpHostRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerListenerHttpHostRule)(nil)).Elem()
+}
+
+func (i ApplicationLoadBalancerListenerHttpHostRuleArgs) ToApplicationLoadBalancerListenerHttpHostRuleOutput() ApplicationLoadBalancerListenerHttpHostRuleOutput {
+	return i.ToApplicationLoadBalancerListenerHttpHostRuleOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerListenerHttpHostRuleArgs) ToApplicationLoadBalancerListenerHttpHostRuleOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpHostRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerListenerHttpHostRuleOutput)
+}
+
+// ApplicationLoadBalancerListenerHttpHostRuleArrayInput is an input type that accepts ApplicationLoadBalancerListenerHttpHostRuleArray and ApplicationLoadBalancerListenerHttpHostRuleArrayOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerListenerHttpHostRuleArrayInput` via:
+//
+//	ApplicationLoadBalancerListenerHttpHostRuleArray{ ApplicationLoadBalancerListenerHttpHostRuleArgs{...} }
+type ApplicationLoadBalancerListenerHttpHostRuleArrayInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerListenerHttpHostRuleArrayOutput() ApplicationLoadBalancerListenerHttpHostRuleArrayOutput
+	ToApplicationLoadBalancerListenerHttpHostRuleArrayOutputWithContext(context.Context) ApplicationLoadBalancerListenerHttpHostRuleArrayOutput
+}
+
+type ApplicationLoadBalancerListenerHttpHostRuleArray []ApplicationLoadBalancerListenerHttpHostRuleInput
+
+func (ApplicationLoadBalancerListenerHttpHostRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationLoadBalancerListenerHttpHostRule)(nil)).Elem()
+}
+
+func (i ApplicationLoadBalancerListenerHttpHostRuleArray) ToApplicationLoadBalancerListenerHttpHostRuleArrayOutput() ApplicationLoadBalancerListenerHttpHostRuleArrayOutput {
+	return i.ToApplicationLoadBalancerListenerHttpHostRuleArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerListenerHttpHostRuleArray) ToApplicationLoadBalancerListenerHttpHostRuleArrayOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpHostRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerListenerHttpHostRuleArrayOutput)
+}
+
+type ApplicationLoadBalancerListenerHttpHostRuleOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerListenerHttpHostRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerListenerHttpHostRule)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerListenerHttpHostRuleOutput) ToApplicationLoadBalancerListenerHttpHostRuleOutput() ApplicationLoadBalancerListenerHttpHostRuleOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerListenerHttpHostRuleOutput) ToApplicationLoadBalancerListenerHttpHostRuleOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpHostRuleOutput {
+	return o
+}
+
+// Routing persistence via cookies.
+func (o ApplicationLoadBalancerListenerHttpHostRuleOutput) CookiePersistence() ApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerListenerHttpHostRule) *ApplicationLoadBalancerListenerHttpHostRuleCookiePersistence {
+		return v.CookiePersistence
+	}).(ApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutput)
+}
+
+// Headers for the rule.
+func (o ApplicationLoadBalancerListenerHttpHostRuleOutput) Headers() ApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerListenerHttpHostRule) []ApplicationLoadBalancerListenerHttpHostRuleHeader {
+		return v.Headers
+	}).(ApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput)
+}
+
+// Routing via path.
+func (o ApplicationLoadBalancerListenerHttpHostRuleOutput) Path() ApplicationLoadBalancerListenerHttpHostRulePathPtrOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerListenerHttpHostRule) *ApplicationLoadBalancerListenerHttpHostRulePath {
+		return v.Path
+	}).(ApplicationLoadBalancerListenerHttpHostRulePathPtrOutput)
+}
+
+// Query parameters for the rule.
+func (o ApplicationLoadBalancerListenerHttpHostRuleOutput) QueryParameters() ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerListenerHttpHostRule) []ApplicationLoadBalancerListenerHttpHostRuleQueryParameter {
+		return v.QueryParameters
+	}).(ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput)
+}
+
+// Reference target pool by target pool name.
+func (o ApplicationLoadBalancerListenerHttpHostRuleOutput) TargetPool() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerListenerHttpHostRule) string { return v.TargetPool }).(pulumi.StringOutput)
+}
+
+// If enabled, when client sends an HTTP request with and Upgrade header, indicating the desire to establish a Websocket connection, if backend server supports WebSocket, it responds with HTTP 101 status code, switching protocols from HTTP to WebSocket. Hence the client and the server can exchange data in real-time using one long-lived TCP connection.
+func (o ApplicationLoadBalancerListenerHttpHostRuleOutput) WebSocket() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerListenerHttpHostRule) *bool { return v.WebSocket }).(pulumi.BoolPtrOutput)
+}
+
+type ApplicationLoadBalancerListenerHttpHostRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerListenerHttpHostRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationLoadBalancerListenerHttpHostRule)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerListenerHttpHostRuleArrayOutput) ToApplicationLoadBalancerListenerHttpHostRuleArrayOutput() ApplicationLoadBalancerListenerHttpHostRuleArrayOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerListenerHttpHostRuleArrayOutput) ToApplicationLoadBalancerListenerHttpHostRuleArrayOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpHostRuleArrayOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerListenerHttpHostRuleArrayOutput) Index(i pulumi.IntInput) ApplicationLoadBalancerListenerHttpHostRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationLoadBalancerListenerHttpHostRule {
+		return vs[0].([]ApplicationLoadBalancerListenerHttpHostRule)[vs[1].(int)]
+	}).(ApplicationLoadBalancerListenerHttpHostRuleOutput)
+}
+
+type ApplicationLoadBalancerListenerHttpHostRuleCookiePersistence struct {
+	// The name of the cookie to use.
+	Name string `pulumi:"name"`
+	// TTL specifies the time-to-live for the cookie. The default value is 0s, and it acts as a session cookie, expiring when the client session ends.
+	Ttl string `pulumi:"ttl"`
+}
+
+// ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceInput is an input type that accepts ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceArgs and ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceInput` via:
+//
+//	ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceArgs{...}
+type ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput() ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput
+	ToApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutputWithContext(context.Context) ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput
+}
+
+type ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceArgs struct {
+	// The name of the cookie to use.
+	Name pulumi.StringInput `pulumi:"name"`
+	// TTL specifies the time-to-live for the cookie. The default value is 0s, and it acts as a session cookie, expiring when the client session ends.
+	Ttl pulumi.StringInput `pulumi:"ttl"`
+}
+
+func (ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerListenerHttpHostRuleCookiePersistence)(nil)).Elem()
+}
+
+func (i ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceArgs) ToApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput() ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput {
+	return i.ToApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceArgs) ToApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput)
+}
+
+func (i ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceArgs) ToApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutput() ApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutput {
+	return i.ToApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceArgs) ToApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput).ToApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutputWithContext(ctx)
+}
+
+// ApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrInput is an input type that accepts ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceArgs, ApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtr and ApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrInput` via:
+//
+//	        ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutput() ApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutput
+	ToApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutputWithContext(context.Context) ApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutput
+}
+
+type applicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrType ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceArgs
+
+func ApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtr(v *ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceArgs) ApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrInput {
+	return (*applicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrType)(v)
+}
+
+func (*applicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLoadBalancerListenerHttpHostRuleCookiePersistence)(nil)).Elem()
+}
+
+func (i *applicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrType) ToApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutput() ApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutput {
+	return i.ToApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutputWithContext(context.Background())
+}
+
+func (i *applicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrType) ToApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutput)
+}
+
+type ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerListenerHttpHostRuleCookiePersistence)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput) ToApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput() ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput) ToApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput) ToApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutput() ApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutput {
+	return o.ToApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput) ToApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationLoadBalancerListenerHttpHostRuleCookiePersistence) *ApplicationLoadBalancerListenerHttpHostRuleCookiePersistence {
+		return &v
+	}).(ApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutput)
+}
+
+// The name of the cookie to use.
+func (o ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerListenerHttpHostRuleCookiePersistence) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// TTL specifies the time-to-live for the cookie. The default value is 0s, and it acts as a session cookie, expiring when the client session ends.
+func (o ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput) Ttl() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerListenerHttpHostRuleCookiePersistence) string { return v.Ttl }).(pulumi.StringOutput)
+}
+
+type ApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLoadBalancerListenerHttpHostRuleCookiePersistence)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutput) ToApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutput() ApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutput) ToApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutput) Elem() ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerListenerHttpHostRuleCookiePersistence) ApplicationLoadBalancerListenerHttpHostRuleCookiePersistence {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationLoadBalancerListenerHttpHostRuleCookiePersistence
+		return ret
+	}).(ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput)
+}
+
+// The name of the cookie to use.
+func (o ApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerListenerHttpHostRuleCookiePersistence) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// TTL specifies the time-to-live for the cookie. The default value is 0s, and it acts as a session cookie, expiring when the client session ends.
+func (o ApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutput) Ttl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerListenerHttpHostRuleCookiePersistence) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Ttl
+	}).(pulumi.StringPtrOutput)
+}
+
+type ApplicationLoadBalancerListenerHttpHostRuleHeader struct {
+	// Exact match for the header value.
+	ExactMatch *string `pulumi:"exactMatch"`
+	// Header name.
+	Name string `pulumi:"name"`
+}
+
+// ApplicationLoadBalancerListenerHttpHostRuleHeaderInput is an input type that accepts ApplicationLoadBalancerListenerHttpHostRuleHeaderArgs and ApplicationLoadBalancerListenerHttpHostRuleHeaderOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerListenerHttpHostRuleHeaderInput` via:
+//
+//	ApplicationLoadBalancerListenerHttpHostRuleHeaderArgs{...}
+type ApplicationLoadBalancerListenerHttpHostRuleHeaderInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerListenerHttpHostRuleHeaderOutput() ApplicationLoadBalancerListenerHttpHostRuleHeaderOutput
+	ToApplicationLoadBalancerListenerHttpHostRuleHeaderOutputWithContext(context.Context) ApplicationLoadBalancerListenerHttpHostRuleHeaderOutput
+}
+
+type ApplicationLoadBalancerListenerHttpHostRuleHeaderArgs struct {
+	// Exact match for the header value.
+	ExactMatch pulumi.StringPtrInput `pulumi:"exactMatch"`
+	// Header name.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (ApplicationLoadBalancerListenerHttpHostRuleHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerListenerHttpHostRuleHeader)(nil)).Elem()
+}
+
+func (i ApplicationLoadBalancerListenerHttpHostRuleHeaderArgs) ToApplicationLoadBalancerListenerHttpHostRuleHeaderOutput() ApplicationLoadBalancerListenerHttpHostRuleHeaderOutput {
+	return i.ToApplicationLoadBalancerListenerHttpHostRuleHeaderOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerListenerHttpHostRuleHeaderArgs) ToApplicationLoadBalancerListenerHttpHostRuleHeaderOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpHostRuleHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerListenerHttpHostRuleHeaderOutput)
+}
+
+// ApplicationLoadBalancerListenerHttpHostRuleHeaderArrayInput is an input type that accepts ApplicationLoadBalancerListenerHttpHostRuleHeaderArray and ApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerListenerHttpHostRuleHeaderArrayInput` via:
+//
+//	ApplicationLoadBalancerListenerHttpHostRuleHeaderArray{ ApplicationLoadBalancerListenerHttpHostRuleHeaderArgs{...} }
+type ApplicationLoadBalancerListenerHttpHostRuleHeaderArrayInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput() ApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput
+	ToApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutputWithContext(context.Context) ApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput
+}
+
+type ApplicationLoadBalancerListenerHttpHostRuleHeaderArray []ApplicationLoadBalancerListenerHttpHostRuleHeaderInput
+
+func (ApplicationLoadBalancerListenerHttpHostRuleHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationLoadBalancerListenerHttpHostRuleHeader)(nil)).Elem()
+}
+
+func (i ApplicationLoadBalancerListenerHttpHostRuleHeaderArray) ToApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput() ApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput {
+	return i.ToApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerListenerHttpHostRuleHeaderArray) ToApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput)
+}
+
+type ApplicationLoadBalancerListenerHttpHostRuleHeaderOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerListenerHttpHostRuleHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerListenerHttpHostRuleHeader)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerListenerHttpHostRuleHeaderOutput) ToApplicationLoadBalancerListenerHttpHostRuleHeaderOutput() ApplicationLoadBalancerListenerHttpHostRuleHeaderOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerListenerHttpHostRuleHeaderOutput) ToApplicationLoadBalancerListenerHttpHostRuleHeaderOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpHostRuleHeaderOutput {
+	return o
+}
+
+// Exact match for the header value.
+func (o ApplicationLoadBalancerListenerHttpHostRuleHeaderOutput) ExactMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerListenerHttpHostRuleHeader) *string { return v.ExactMatch }).(pulumi.StringPtrOutput)
+}
+
+// Header name.
+func (o ApplicationLoadBalancerListenerHttpHostRuleHeaderOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerListenerHttpHostRuleHeader) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type ApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationLoadBalancerListenerHttpHostRuleHeader)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput) ToApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput() ApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput) ToApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput) Index(i pulumi.IntInput) ApplicationLoadBalancerListenerHttpHostRuleHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationLoadBalancerListenerHttpHostRuleHeader {
+		return vs[0].([]ApplicationLoadBalancerListenerHttpHostRuleHeader)[vs[1].(int)]
+	}).(ApplicationLoadBalancerListenerHttpHostRuleHeaderOutput)
+}
+
+type ApplicationLoadBalancerListenerHttpHostRulePath struct {
+	// Exact path match. Only a request path exactly equal to the value will match, e.g. '/foo' matches only '/foo', not '/foo/bar' or '/foobar'.
+	ExactMatch *string `pulumi:"exactMatch"`
+	// Prefix path match. Only matches on full segment boundaries, e.g. '/foo' matches '/foo' and '/foo/bar' but NOT '/foobar'.
+	Prefix *string `pulumi:"prefix"`
+}
+
+// ApplicationLoadBalancerListenerHttpHostRulePathInput is an input type that accepts ApplicationLoadBalancerListenerHttpHostRulePathArgs and ApplicationLoadBalancerListenerHttpHostRulePathOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerListenerHttpHostRulePathInput` via:
+//
+//	ApplicationLoadBalancerListenerHttpHostRulePathArgs{...}
+type ApplicationLoadBalancerListenerHttpHostRulePathInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerListenerHttpHostRulePathOutput() ApplicationLoadBalancerListenerHttpHostRulePathOutput
+	ToApplicationLoadBalancerListenerHttpHostRulePathOutputWithContext(context.Context) ApplicationLoadBalancerListenerHttpHostRulePathOutput
+}
+
+type ApplicationLoadBalancerListenerHttpHostRulePathArgs struct {
+	// Exact path match. Only a request path exactly equal to the value will match, e.g. '/foo' matches only '/foo', not '/foo/bar' or '/foobar'.
+	ExactMatch pulumi.StringPtrInput `pulumi:"exactMatch"`
+	// Prefix path match. Only matches on full segment boundaries, e.g. '/foo' matches '/foo' and '/foo/bar' but NOT '/foobar'.
+	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
+}
+
+func (ApplicationLoadBalancerListenerHttpHostRulePathArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerListenerHttpHostRulePath)(nil)).Elem()
+}
+
+func (i ApplicationLoadBalancerListenerHttpHostRulePathArgs) ToApplicationLoadBalancerListenerHttpHostRulePathOutput() ApplicationLoadBalancerListenerHttpHostRulePathOutput {
+	return i.ToApplicationLoadBalancerListenerHttpHostRulePathOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerListenerHttpHostRulePathArgs) ToApplicationLoadBalancerListenerHttpHostRulePathOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpHostRulePathOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerListenerHttpHostRulePathOutput)
+}
+
+func (i ApplicationLoadBalancerListenerHttpHostRulePathArgs) ToApplicationLoadBalancerListenerHttpHostRulePathPtrOutput() ApplicationLoadBalancerListenerHttpHostRulePathPtrOutput {
+	return i.ToApplicationLoadBalancerListenerHttpHostRulePathPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerListenerHttpHostRulePathArgs) ToApplicationLoadBalancerListenerHttpHostRulePathPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpHostRulePathPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerListenerHttpHostRulePathOutput).ToApplicationLoadBalancerListenerHttpHostRulePathPtrOutputWithContext(ctx)
+}
+
+// ApplicationLoadBalancerListenerHttpHostRulePathPtrInput is an input type that accepts ApplicationLoadBalancerListenerHttpHostRulePathArgs, ApplicationLoadBalancerListenerHttpHostRulePathPtr and ApplicationLoadBalancerListenerHttpHostRulePathPtrOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerListenerHttpHostRulePathPtrInput` via:
+//
+//	        ApplicationLoadBalancerListenerHttpHostRulePathArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationLoadBalancerListenerHttpHostRulePathPtrInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerListenerHttpHostRulePathPtrOutput() ApplicationLoadBalancerListenerHttpHostRulePathPtrOutput
+	ToApplicationLoadBalancerListenerHttpHostRulePathPtrOutputWithContext(context.Context) ApplicationLoadBalancerListenerHttpHostRulePathPtrOutput
+}
+
+type applicationLoadBalancerListenerHttpHostRulePathPtrType ApplicationLoadBalancerListenerHttpHostRulePathArgs
+
+func ApplicationLoadBalancerListenerHttpHostRulePathPtr(v *ApplicationLoadBalancerListenerHttpHostRulePathArgs) ApplicationLoadBalancerListenerHttpHostRulePathPtrInput {
+	return (*applicationLoadBalancerListenerHttpHostRulePathPtrType)(v)
+}
+
+func (*applicationLoadBalancerListenerHttpHostRulePathPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLoadBalancerListenerHttpHostRulePath)(nil)).Elem()
+}
+
+func (i *applicationLoadBalancerListenerHttpHostRulePathPtrType) ToApplicationLoadBalancerListenerHttpHostRulePathPtrOutput() ApplicationLoadBalancerListenerHttpHostRulePathPtrOutput {
+	return i.ToApplicationLoadBalancerListenerHttpHostRulePathPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationLoadBalancerListenerHttpHostRulePathPtrType) ToApplicationLoadBalancerListenerHttpHostRulePathPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpHostRulePathPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerListenerHttpHostRulePathPtrOutput)
+}
+
+type ApplicationLoadBalancerListenerHttpHostRulePathOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerListenerHttpHostRulePathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerListenerHttpHostRulePath)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerListenerHttpHostRulePathOutput) ToApplicationLoadBalancerListenerHttpHostRulePathOutput() ApplicationLoadBalancerListenerHttpHostRulePathOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerListenerHttpHostRulePathOutput) ToApplicationLoadBalancerListenerHttpHostRulePathOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpHostRulePathOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerListenerHttpHostRulePathOutput) ToApplicationLoadBalancerListenerHttpHostRulePathPtrOutput() ApplicationLoadBalancerListenerHttpHostRulePathPtrOutput {
+	return o.ToApplicationLoadBalancerListenerHttpHostRulePathPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationLoadBalancerListenerHttpHostRulePathOutput) ToApplicationLoadBalancerListenerHttpHostRulePathPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpHostRulePathPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationLoadBalancerListenerHttpHostRulePath) *ApplicationLoadBalancerListenerHttpHostRulePath {
+		return &v
+	}).(ApplicationLoadBalancerListenerHttpHostRulePathPtrOutput)
+}
+
+// Exact path match. Only a request path exactly equal to the value will match, e.g. '/foo' matches only '/foo', not '/foo/bar' or '/foobar'.
+func (o ApplicationLoadBalancerListenerHttpHostRulePathOutput) ExactMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerListenerHttpHostRulePath) *string { return v.ExactMatch }).(pulumi.StringPtrOutput)
+}
+
+// Prefix path match. Only matches on full segment boundaries, e.g. '/foo' matches '/foo' and '/foo/bar' but NOT '/foobar'.
+func (o ApplicationLoadBalancerListenerHttpHostRulePathOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerListenerHttpHostRulePath) *string { return v.Prefix }).(pulumi.StringPtrOutput)
+}
+
+type ApplicationLoadBalancerListenerHttpHostRulePathPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerListenerHttpHostRulePathPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLoadBalancerListenerHttpHostRulePath)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerListenerHttpHostRulePathPtrOutput) ToApplicationLoadBalancerListenerHttpHostRulePathPtrOutput() ApplicationLoadBalancerListenerHttpHostRulePathPtrOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerListenerHttpHostRulePathPtrOutput) ToApplicationLoadBalancerListenerHttpHostRulePathPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpHostRulePathPtrOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerListenerHttpHostRulePathPtrOutput) Elem() ApplicationLoadBalancerListenerHttpHostRulePathOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerListenerHttpHostRulePath) ApplicationLoadBalancerListenerHttpHostRulePath {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationLoadBalancerListenerHttpHostRulePath
+		return ret
+	}).(ApplicationLoadBalancerListenerHttpHostRulePathOutput)
+}
+
+// Exact path match. Only a request path exactly equal to the value will match, e.g. '/foo' matches only '/foo', not '/foo/bar' or '/foobar'.
+func (o ApplicationLoadBalancerListenerHttpHostRulePathPtrOutput) ExactMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerListenerHttpHostRulePath) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ExactMatch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Prefix path match. Only matches on full segment boundaries, e.g. '/foo' matches '/foo' and '/foo/bar' but NOT '/foobar'.
+func (o ApplicationLoadBalancerListenerHttpHostRulePathPtrOutput) Prefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerListenerHttpHostRulePath) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Prefix
+	}).(pulumi.StringPtrOutput)
+}
+
+type ApplicationLoadBalancerListenerHttpHostRuleQueryParameter struct {
+	// Exact match for the query parameters value.
+	ExactMatch *string `pulumi:"exactMatch"`
+	// Query parameter name.
+	Name string `pulumi:"name"`
+}
+
+// ApplicationLoadBalancerListenerHttpHostRuleQueryParameterInput is an input type that accepts ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArgs and ApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerListenerHttpHostRuleQueryParameterInput` via:
+//
+//	ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArgs{...}
+type ApplicationLoadBalancerListenerHttpHostRuleQueryParameterInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput() ApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput
+	ToApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutputWithContext(context.Context) ApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput
+}
+
+type ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArgs struct {
+	// Exact match for the query parameters value.
+	ExactMatch pulumi.StringPtrInput `pulumi:"exactMatch"`
+	// Query parameter name.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerListenerHttpHostRuleQueryParameter)(nil)).Elem()
+}
+
+func (i ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArgs) ToApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput() ApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput {
+	return i.ToApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArgs) ToApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput)
+}
+
+// ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayInput is an input type that accepts ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArray and ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayInput` via:
+//
+//	ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArray{ ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArgs{...} }
+type ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput() ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput
+	ToApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutputWithContext(context.Context) ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput
+}
+
+type ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArray []ApplicationLoadBalancerListenerHttpHostRuleQueryParameterInput
+
+func (ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationLoadBalancerListenerHttpHostRuleQueryParameter)(nil)).Elem()
+}
+
+func (i ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArray) ToApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput() ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput {
+	return i.ToApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArray) ToApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput)
+}
+
+type ApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerListenerHttpHostRuleQueryParameter)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput) ToApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput() ApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput) ToApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput {
+	return o
+}
+
+// Exact match for the query parameters value.
+func (o ApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput) ExactMatch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerListenerHttpHostRuleQueryParameter) *string { return v.ExactMatch }).(pulumi.StringPtrOutput)
+}
+
+// Query parameter name.
+func (o ApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerListenerHttpHostRuleQueryParameter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationLoadBalancerListenerHttpHostRuleQueryParameter)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput) ToApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput() ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput) ToApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput) Index(i pulumi.IntInput) ApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationLoadBalancerListenerHttpHostRuleQueryParameter {
+		return vs[0].([]ApplicationLoadBalancerListenerHttpHostRuleQueryParameter)[vs[1].(int)]
+	}).(ApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput)
+}
+
+type ApplicationLoadBalancerListenerHttps struct {
+	// TLS termination certificate configuration.
+	CertificateConfig ApplicationLoadBalancerListenerHttpsCertificateConfig `pulumi:"certificateConfig"`
+}
+
+// ApplicationLoadBalancerListenerHttpsInput is an input type that accepts ApplicationLoadBalancerListenerHttpsArgs and ApplicationLoadBalancerListenerHttpsOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerListenerHttpsInput` via:
+//
+//	ApplicationLoadBalancerListenerHttpsArgs{...}
+type ApplicationLoadBalancerListenerHttpsInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerListenerHttpsOutput() ApplicationLoadBalancerListenerHttpsOutput
+	ToApplicationLoadBalancerListenerHttpsOutputWithContext(context.Context) ApplicationLoadBalancerListenerHttpsOutput
+}
+
+type ApplicationLoadBalancerListenerHttpsArgs struct {
+	// TLS termination certificate configuration.
+	CertificateConfig ApplicationLoadBalancerListenerHttpsCertificateConfigInput `pulumi:"certificateConfig"`
+}
+
+func (ApplicationLoadBalancerListenerHttpsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerListenerHttps)(nil)).Elem()
+}
+
+func (i ApplicationLoadBalancerListenerHttpsArgs) ToApplicationLoadBalancerListenerHttpsOutput() ApplicationLoadBalancerListenerHttpsOutput {
+	return i.ToApplicationLoadBalancerListenerHttpsOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerListenerHttpsArgs) ToApplicationLoadBalancerListenerHttpsOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerListenerHttpsOutput)
+}
+
+func (i ApplicationLoadBalancerListenerHttpsArgs) ToApplicationLoadBalancerListenerHttpsPtrOutput() ApplicationLoadBalancerListenerHttpsPtrOutput {
+	return i.ToApplicationLoadBalancerListenerHttpsPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerListenerHttpsArgs) ToApplicationLoadBalancerListenerHttpsPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerListenerHttpsOutput).ToApplicationLoadBalancerListenerHttpsPtrOutputWithContext(ctx)
+}
+
+// ApplicationLoadBalancerListenerHttpsPtrInput is an input type that accepts ApplicationLoadBalancerListenerHttpsArgs, ApplicationLoadBalancerListenerHttpsPtr and ApplicationLoadBalancerListenerHttpsPtrOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerListenerHttpsPtrInput` via:
+//
+//	        ApplicationLoadBalancerListenerHttpsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationLoadBalancerListenerHttpsPtrInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerListenerHttpsPtrOutput() ApplicationLoadBalancerListenerHttpsPtrOutput
+	ToApplicationLoadBalancerListenerHttpsPtrOutputWithContext(context.Context) ApplicationLoadBalancerListenerHttpsPtrOutput
+}
+
+type applicationLoadBalancerListenerHttpsPtrType ApplicationLoadBalancerListenerHttpsArgs
+
+func ApplicationLoadBalancerListenerHttpsPtr(v *ApplicationLoadBalancerListenerHttpsArgs) ApplicationLoadBalancerListenerHttpsPtrInput {
+	return (*applicationLoadBalancerListenerHttpsPtrType)(v)
+}
+
+func (*applicationLoadBalancerListenerHttpsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLoadBalancerListenerHttps)(nil)).Elem()
+}
+
+func (i *applicationLoadBalancerListenerHttpsPtrType) ToApplicationLoadBalancerListenerHttpsPtrOutput() ApplicationLoadBalancerListenerHttpsPtrOutput {
+	return i.ToApplicationLoadBalancerListenerHttpsPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationLoadBalancerListenerHttpsPtrType) ToApplicationLoadBalancerListenerHttpsPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerListenerHttpsPtrOutput)
+}
+
+type ApplicationLoadBalancerListenerHttpsOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerListenerHttpsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerListenerHttps)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerListenerHttpsOutput) ToApplicationLoadBalancerListenerHttpsOutput() ApplicationLoadBalancerListenerHttpsOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerListenerHttpsOutput) ToApplicationLoadBalancerListenerHttpsOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpsOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerListenerHttpsOutput) ToApplicationLoadBalancerListenerHttpsPtrOutput() ApplicationLoadBalancerListenerHttpsPtrOutput {
+	return o.ToApplicationLoadBalancerListenerHttpsPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationLoadBalancerListenerHttpsOutput) ToApplicationLoadBalancerListenerHttpsPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationLoadBalancerListenerHttps) *ApplicationLoadBalancerListenerHttps {
+		return &v
+	}).(ApplicationLoadBalancerListenerHttpsPtrOutput)
+}
+
+// TLS termination certificate configuration.
+func (o ApplicationLoadBalancerListenerHttpsOutput) CertificateConfig() ApplicationLoadBalancerListenerHttpsCertificateConfigOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerListenerHttps) ApplicationLoadBalancerListenerHttpsCertificateConfig {
+		return v.CertificateConfig
+	}).(ApplicationLoadBalancerListenerHttpsCertificateConfigOutput)
+}
+
+type ApplicationLoadBalancerListenerHttpsPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerListenerHttpsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLoadBalancerListenerHttps)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerListenerHttpsPtrOutput) ToApplicationLoadBalancerListenerHttpsPtrOutput() ApplicationLoadBalancerListenerHttpsPtrOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerListenerHttpsPtrOutput) ToApplicationLoadBalancerListenerHttpsPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpsPtrOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerListenerHttpsPtrOutput) Elem() ApplicationLoadBalancerListenerHttpsOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerListenerHttps) ApplicationLoadBalancerListenerHttps {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationLoadBalancerListenerHttps
+		return ret
+	}).(ApplicationLoadBalancerListenerHttpsOutput)
+}
+
+// TLS termination certificate configuration.
+func (o ApplicationLoadBalancerListenerHttpsPtrOutput) CertificateConfig() ApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerListenerHttps) *ApplicationLoadBalancerListenerHttpsCertificateConfig {
+		if v == nil {
+			return nil
+		}
+		return &v.CertificateConfig
+	}).(ApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutput)
+}
+
+type ApplicationLoadBalancerListenerHttpsCertificateConfig struct {
+	// Certificate IDs for TLS termination.
+	CertificateIds []string `pulumi:"certificateIds"`
+}
+
+// ApplicationLoadBalancerListenerHttpsCertificateConfigInput is an input type that accepts ApplicationLoadBalancerListenerHttpsCertificateConfigArgs and ApplicationLoadBalancerListenerHttpsCertificateConfigOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerListenerHttpsCertificateConfigInput` via:
+//
+//	ApplicationLoadBalancerListenerHttpsCertificateConfigArgs{...}
+type ApplicationLoadBalancerListenerHttpsCertificateConfigInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerListenerHttpsCertificateConfigOutput() ApplicationLoadBalancerListenerHttpsCertificateConfigOutput
+	ToApplicationLoadBalancerListenerHttpsCertificateConfigOutputWithContext(context.Context) ApplicationLoadBalancerListenerHttpsCertificateConfigOutput
+}
+
+type ApplicationLoadBalancerListenerHttpsCertificateConfigArgs struct {
+	// Certificate IDs for TLS termination.
+	CertificateIds pulumi.StringArrayInput `pulumi:"certificateIds"`
+}
+
+func (ApplicationLoadBalancerListenerHttpsCertificateConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerListenerHttpsCertificateConfig)(nil)).Elem()
+}
+
+func (i ApplicationLoadBalancerListenerHttpsCertificateConfigArgs) ToApplicationLoadBalancerListenerHttpsCertificateConfigOutput() ApplicationLoadBalancerListenerHttpsCertificateConfigOutput {
+	return i.ToApplicationLoadBalancerListenerHttpsCertificateConfigOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerListenerHttpsCertificateConfigArgs) ToApplicationLoadBalancerListenerHttpsCertificateConfigOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpsCertificateConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerListenerHttpsCertificateConfigOutput)
+}
+
+func (i ApplicationLoadBalancerListenerHttpsCertificateConfigArgs) ToApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutput() ApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutput {
+	return i.ToApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerListenerHttpsCertificateConfigArgs) ToApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerListenerHttpsCertificateConfigOutput).ToApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutputWithContext(ctx)
+}
+
+// ApplicationLoadBalancerListenerHttpsCertificateConfigPtrInput is an input type that accepts ApplicationLoadBalancerListenerHttpsCertificateConfigArgs, ApplicationLoadBalancerListenerHttpsCertificateConfigPtr and ApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerListenerHttpsCertificateConfigPtrInput` via:
+//
+//	        ApplicationLoadBalancerListenerHttpsCertificateConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationLoadBalancerListenerHttpsCertificateConfigPtrInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutput() ApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutput
+	ToApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutputWithContext(context.Context) ApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutput
+}
+
+type applicationLoadBalancerListenerHttpsCertificateConfigPtrType ApplicationLoadBalancerListenerHttpsCertificateConfigArgs
+
+func ApplicationLoadBalancerListenerHttpsCertificateConfigPtr(v *ApplicationLoadBalancerListenerHttpsCertificateConfigArgs) ApplicationLoadBalancerListenerHttpsCertificateConfigPtrInput {
+	return (*applicationLoadBalancerListenerHttpsCertificateConfigPtrType)(v)
+}
+
+func (*applicationLoadBalancerListenerHttpsCertificateConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLoadBalancerListenerHttpsCertificateConfig)(nil)).Elem()
+}
+
+func (i *applicationLoadBalancerListenerHttpsCertificateConfigPtrType) ToApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutput() ApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutput {
+	return i.ToApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationLoadBalancerListenerHttpsCertificateConfigPtrType) ToApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutput)
+}
+
+type ApplicationLoadBalancerListenerHttpsCertificateConfigOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerListenerHttpsCertificateConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerListenerHttpsCertificateConfig)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerListenerHttpsCertificateConfigOutput) ToApplicationLoadBalancerListenerHttpsCertificateConfigOutput() ApplicationLoadBalancerListenerHttpsCertificateConfigOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerListenerHttpsCertificateConfigOutput) ToApplicationLoadBalancerListenerHttpsCertificateConfigOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpsCertificateConfigOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerListenerHttpsCertificateConfigOutput) ToApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutput() ApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutput {
+	return o.ToApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationLoadBalancerListenerHttpsCertificateConfigOutput) ToApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationLoadBalancerListenerHttpsCertificateConfig) *ApplicationLoadBalancerListenerHttpsCertificateConfig {
+		return &v
+	}).(ApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutput)
+}
+
+// Certificate IDs for TLS termination.
+func (o ApplicationLoadBalancerListenerHttpsCertificateConfigOutput) CertificateIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerListenerHttpsCertificateConfig) []string { return v.CertificateIds }).(pulumi.StringArrayOutput)
+}
+
+type ApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLoadBalancerListenerHttpsCertificateConfig)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutput) ToApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutput() ApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutput) ToApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutput) Elem() ApplicationLoadBalancerListenerHttpsCertificateConfigOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerListenerHttpsCertificateConfig) ApplicationLoadBalancerListenerHttpsCertificateConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationLoadBalancerListenerHttpsCertificateConfig
+		return ret
+	}).(ApplicationLoadBalancerListenerHttpsCertificateConfigOutput)
+}
+
+// Certificate IDs for TLS termination.
+func (o ApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutput) CertificateIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerListenerHttpsCertificateConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CertificateIds
+	}).(pulumi.StringArrayOutput)
+}
+
+type ApplicationLoadBalancerLoadBalancerSecurityGroup struct {
+	// ID of the security Group
+	Id *string `pulumi:"id"`
+	// Name of the security Group
+	Name *string `pulumi:"name"`
+}
+
+// ApplicationLoadBalancerLoadBalancerSecurityGroupInput is an input type that accepts ApplicationLoadBalancerLoadBalancerSecurityGroupArgs and ApplicationLoadBalancerLoadBalancerSecurityGroupOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerLoadBalancerSecurityGroupInput` via:
+//
+//	ApplicationLoadBalancerLoadBalancerSecurityGroupArgs{...}
+type ApplicationLoadBalancerLoadBalancerSecurityGroupInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerLoadBalancerSecurityGroupOutput() ApplicationLoadBalancerLoadBalancerSecurityGroupOutput
+	ToApplicationLoadBalancerLoadBalancerSecurityGroupOutputWithContext(context.Context) ApplicationLoadBalancerLoadBalancerSecurityGroupOutput
+}
+
+type ApplicationLoadBalancerLoadBalancerSecurityGroupArgs struct {
+	// ID of the security Group
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Name of the security Group
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (ApplicationLoadBalancerLoadBalancerSecurityGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerLoadBalancerSecurityGroup)(nil)).Elem()
+}
+
+func (i ApplicationLoadBalancerLoadBalancerSecurityGroupArgs) ToApplicationLoadBalancerLoadBalancerSecurityGroupOutput() ApplicationLoadBalancerLoadBalancerSecurityGroupOutput {
+	return i.ToApplicationLoadBalancerLoadBalancerSecurityGroupOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerLoadBalancerSecurityGroupArgs) ToApplicationLoadBalancerLoadBalancerSecurityGroupOutputWithContext(ctx context.Context) ApplicationLoadBalancerLoadBalancerSecurityGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerLoadBalancerSecurityGroupOutput)
+}
+
+func (i ApplicationLoadBalancerLoadBalancerSecurityGroupArgs) ToApplicationLoadBalancerLoadBalancerSecurityGroupPtrOutput() ApplicationLoadBalancerLoadBalancerSecurityGroupPtrOutput {
+	return i.ToApplicationLoadBalancerLoadBalancerSecurityGroupPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerLoadBalancerSecurityGroupArgs) ToApplicationLoadBalancerLoadBalancerSecurityGroupPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerLoadBalancerSecurityGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerLoadBalancerSecurityGroupOutput).ToApplicationLoadBalancerLoadBalancerSecurityGroupPtrOutputWithContext(ctx)
+}
+
+// ApplicationLoadBalancerLoadBalancerSecurityGroupPtrInput is an input type that accepts ApplicationLoadBalancerLoadBalancerSecurityGroupArgs, ApplicationLoadBalancerLoadBalancerSecurityGroupPtr and ApplicationLoadBalancerLoadBalancerSecurityGroupPtrOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerLoadBalancerSecurityGroupPtrInput` via:
+//
+//	        ApplicationLoadBalancerLoadBalancerSecurityGroupArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationLoadBalancerLoadBalancerSecurityGroupPtrInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerLoadBalancerSecurityGroupPtrOutput() ApplicationLoadBalancerLoadBalancerSecurityGroupPtrOutput
+	ToApplicationLoadBalancerLoadBalancerSecurityGroupPtrOutputWithContext(context.Context) ApplicationLoadBalancerLoadBalancerSecurityGroupPtrOutput
+}
+
+type applicationLoadBalancerLoadBalancerSecurityGroupPtrType ApplicationLoadBalancerLoadBalancerSecurityGroupArgs
+
+func ApplicationLoadBalancerLoadBalancerSecurityGroupPtr(v *ApplicationLoadBalancerLoadBalancerSecurityGroupArgs) ApplicationLoadBalancerLoadBalancerSecurityGroupPtrInput {
+	return (*applicationLoadBalancerLoadBalancerSecurityGroupPtrType)(v)
+}
+
+func (*applicationLoadBalancerLoadBalancerSecurityGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLoadBalancerLoadBalancerSecurityGroup)(nil)).Elem()
+}
+
+func (i *applicationLoadBalancerLoadBalancerSecurityGroupPtrType) ToApplicationLoadBalancerLoadBalancerSecurityGroupPtrOutput() ApplicationLoadBalancerLoadBalancerSecurityGroupPtrOutput {
+	return i.ToApplicationLoadBalancerLoadBalancerSecurityGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationLoadBalancerLoadBalancerSecurityGroupPtrType) ToApplicationLoadBalancerLoadBalancerSecurityGroupPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerLoadBalancerSecurityGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerLoadBalancerSecurityGroupPtrOutput)
+}
+
+type ApplicationLoadBalancerLoadBalancerSecurityGroupOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerLoadBalancerSecurityGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerLoadBalancerSecurityGroup)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerLoadBalancerSecurityGroupOutput) ToApplicationLoadBalancerLoadBalancerSecurityGroupOutput() ApplicationLoadBalancerLoadBalancerSecurityGroupOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerLoadBalancerSecurityGroupOutput) ToApplicationLoadBalancerLoadBalancerSecurityGroupOutputWithContext(ctx context.Context) ApplicationLoadBalancerLoadBalancerSecurityGroupOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerLoadBalancerSecurityGroupOutput) ToApplicationLoadBalancerLoadBalancerSecurityGroupPtrOutput() ApplicationLoadBalancerLoadBalancerSecurityGroupPtrOutput {
+	return o.ToApplicationLoadBalancerLoadBalancerSecurityGroupPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationLoadBalancerLoadBalancerSecurityGroupOutput) ToApplicationLoadBalancerLoadBalancerSecurityGroupPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerLoadBalancerSecurityGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationLoadBalancerLoadBalancerSecurityGroup) *ApplicationLoadBalancerLoadBalancerSecurityGroup {
+		return &v
+	}).(ApplicationLoadBalancerLoadBalancerSecurityGroupPtrOutput)
+}
+
+// ID of the security Group
+func (o ApplicationLoadBalancerLoadBalancerSecurityGroupOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerLoadBalancerSecurityGroup) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Name of the security Group
+func (o ApplicationLoadBalancerLoadBalancerSecurityGroupOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerLoadBalancerSecurityGroup) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ApplicationLoadBalancerLoadBalancerSecurityGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerLoadBalancerSecurityGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLoadBalancerLoadBalancerSecurityGroup)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerLoadBalancerSecurityGroupPtrOutput) ToApplicationLoadBalancerLoadBalancerSecurityGroupPtrOutput() ApplicationLoadBalancerLoadBalancerSecurityGroupPtrOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerLoadBalancerSecurityGroupPtrOutput) ToApplicationLoadBalancerLoadBalancerSecurityGroupPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerLoadBalancerSecurityGroupPtrOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerLoadBalancerSecurityGroupPtrOutput) Elem() ApplicationLoadBalancerLoadBalancerSecurityGroupOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerLoadBalancerSecurityGroup) ApplicationLoadBalancerLoadBalancerSecurityGroup {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationLoadBalancerLoadBalancerSecurityGroup
+		return ret
+	}).(ApplicationLoadBalancerLoadBalancerSecurityGroupOutput)
+}
+
+// ID of the security Group
+func (o ApplicationLoadBalancerLoadBalancerSecurityGroupPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerLoadBalancerSecurityGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the security Group
+func (o ApplicationLoadBalancerLoadBalancerSecurityGroupPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerLoadBalancerSecurityGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+type ApplicationLoadBalancerNetwork struct {
+	// STACKIT network ID the Application Load Balancer and/or targets are in.
+	NetworkId string `pulumi:"networkId"`
+	// The role defines how the Application Load Balancer is using the network. Possible values are: `ROLE_UNSPECIFIED`, `ROLE_LISTENERS_AND_TARGETS`, `ROLE_LISTENERS`, `ROLE_TARGETS`.
+	Role string `pulumi:"role"`
+}
+
+// ApplicationLoadBalancerNetworkInput is an input type that accepts ApplicationLoadBalancerNetworkArgs and ApplicationLoadBalancerNetworkOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerNetworkInput` via:
+//
+//	ApplicationLoadBalancerNetworkArgs{...}
+type ApplicationLoadBalancerNetworkInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerNetworkOutput() ApplicationLoadBalancerNetworkOutput
+	ToApplicationLoadBalancerNetworkOutputWithContext(context.Context) ApplicationLoadBalancerNetworkOutput
+}
+
+type ApplicationLoadBalancerNetworkArgs struct {
+	// STACKIT network ID the Application Load Balancer and/or targets are in.
+	NetworkId pulumi.StringInput `pulumi:"networkId"`
+	// The role defines how the Application Load Balancer is using the network. Possible values are: `ROLE_UNSPECIFIED`, `ROLE_LISTENERS_AND_TARGETS`, `ROLE_LISTENERS`, `ROLE_TARGETS`.
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (ApplicationLoadBalancerNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerNetwork)(nil)).Elem()
+}
+
+func (i ApplicationLoadBalancerNetworkArgs) ToApplicationLoadBalancerNetworkOutput() ApplicationLoadBalancerNetworkOutput {
+	return i.ToApplicationLoadBalancerNetworkOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerNetworkArgs) ToApplicationLoadBalancerNetworkOutputWithContext(ctx context.Context) ApplicationLoadBalancerNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerNetworkOutput)
+}
+
+// ApplicationLoadBalancerNetworkArrayInput is an input type that accepts ApplicationLoadBalancerNetworkArray and ApplicationLoadBalancerNetworkArrayOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerNetworkArrayInput` via:
+//
+//	ApplicationLoadBalancerNetworkArray{ ApplicationLoadBalancerNetworkArgs{...} }
+type ApplicationLoadBalancerNetworkArrayInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerNetworkArrayOutput() ApplicationLoadBalancerNetworkArrayOutput
+	ToApplicationLoadBalancerNetworkArrayOutputWithContext(context.Context) ApplicationLoadBalancerNetworkArrayOutput
+}
+
+type ApplicationLoadBalancerNetworkArray []ApplicationLoadBalancerNetworkInput
+
+func (ApplicationLoadBalancerNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationLoadBalancerNetwork)(nil)).Elem()
+}
+
+func (i ApplicationLoadBalancerNetworkArray) ToApplicationLoadBalancerNetworkArrayOutput() ApplicationLoadBalancerNetworkArrayOutput {
+	return i.ToApplicationLoadBalancerNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerNetworkArray) ToApplicationLoadBalancerNetworkArrayOutputWithContext(ctx context.Context) ApplicationLoadBalancerNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerNetworkArrayOutput)
+}
+
+type ApplicationLoadBalancerNetworkOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerNetwork)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerNetworkOutput) ToApplicationLoadBalancerNetworkOutput() ApplicationLoadBalancerNetworkOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerNetworkOutput) ToApplicationLoadBalancerNetworkOutputWithContext(ctx context.Context) ApplicationLoadBalancerNetworkOutput {
+	return o
+}
+
+// STACKIT network ID the Application Load Balancer and/or targets are in.
+func (o ApplicationLoadBalancerNetworkOutput) NetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerNetwork) string { return v.NetworkId }).(pulumi.StringOutput)
+}
+
+// The role defines how the Application Load Balancer is using the network. Possible values are: `ROLE_UNSPECIFIED`, `ROLE_LISTENERS_AND_TARGETS`, `ROLE_LISTENERS`, `ROLE_TARGETS`.
+func (o ApplicationLoadBalancerNetworkOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerNetwork) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type ApplicationLoadBalancerNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationLoadBalancerNetwork)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerNetworkArrayOutput) ToApplicationLoadBalancerNetworkArrayOutput() ApplicationLoadBalancerNetworkArrayOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerNetworkArrayOutput) ToApplicationLoadBalancerNetworkArrayOutputWithContext(ctx context.Context) ApplicationLoadBalancerNetworkArrayOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerNetworkArrayOutput) Index(i pulumi.IntInput) ApplicationLoadBalancerNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationLoadBalancerNetwork {
+		return vs[0].([]ApplicationLoadBalancerNetwork)[vs[1].(int)]
+	}).(ApplicationLoadBalancerNetworkOutput)
+}
+
+type ApplicationLoadBalancerOptions struct {
+	// Use this option to limit the IP ranges that can use the Application Load Balancer.
+	AccessControl *ApplicationLoadBalancerOptionsAccessControl `pulumi:"accessControl"`
+	// This option automates the handling of the external IP address for an Application Load Balancer. If set to true a new IP address will be automatically created. It will also be automatically deleted when the Load Balancer is deleted.
+	EphemeralAddress *bool `pulumi:"ephemeralAddress"`
+	// We offer Load Balancer observability via STACKIT Observability or external solutions.
+	Observability *ApplicationLoadBalancerOptionsObservability `pulumi:"observability"`
+	// Application Load Balancer is accessible only via a private network ip address. Not changeable after creation.
+	PrivateNetworkOnly *bool `pulumi:"privateNetworkOnly"`
+}
+
+// ApplicationLoadBalancerOptionsInput is an input type that accepts ApplicationLoadBalancerOptionsArgs and ApplicationLoadBalancerOptionsOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerOptionsInput` via:
+//
+//	ApplicationLoadBalancerOptionsArgs{...}
+type ApplicationLoadBalancerOptionsInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerOptionsOutput() ApplicationLoadBalancerOptionsOutput
+	ToApplicationLoadBalancerOptionsOutputWithContext(context.Context) ApplicationLoadBalancerOptionsOutput
+}
+
+type ApplicationLoadBalancerOptionsArgs struct {
+	// Use this option to limit the IP ranges that can use the Application Load Balancer.
+	AccessControl ApplicationLoadBalancerOptionsAccessControlPtrInput `pulumi:"accessControl"`
+	// This option automates the handling of the external IP address for an Application Load Balancer. If set to true a new IP address will be automatically created. It will also be automatically deleted when the Load Balancer is deleted.
+	EphemeralAddress pulumi.BoolPtrInput `pulumi:"ephemeralAddress"`
+	// We offer Load Balancer observability via STACKIT Observability or external solutions.
+	Observability ApplicationLoadBalancerOptionsObservabilityPtrInput `pulumi:"observability"`
+	// Application Load Balancer is accessible only via a private network ip address. Not changeable after creation.
+	PrivateNetworkOnly pulumi.BoolPtrInput `pulumi:"privateNetworkOnly"`
+}
+
+func (ApplicationLoadBalancerOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerOptions)(nil)).Elem()
+}
+
+func (i ApplicationLoadBalancerOptionsArgs) ToApplicationLoadBalancerOptionsOutput() ApplicationLoadBalancerOptionsOutput {
+	return i.ToApplicationLoadBalancerOptionsOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerOptionsArgs) ToApplicationLoadBalancerOptionsOutputWithContext(ctx context.Context) ApplicationLoadBalancerOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerOptionsOutput)
+}
+
+func (i ApplicationLoadBalancerOptionsArgs) ToApplicationLoadBalancerOptionsPtrOutput() ApplicationLoadBalancerOptionsPtrOutput {
+	return i.ToApplicationLoadBalancerOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerOptionsArgs) ToApplicationLoadBalancerOptionsPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerOptionsOutput).ToApplicationLoadBalancerOptionsPtrOutputWithContext(ctx)
+}
+
+// ApplicationLoadBalancerOptionsPtrInput is an input type that accepts ApplicationLoadBalancerOptionsArgs, ApplicationLoadBalancerOptionsPtr and ApplicationLoadBalancerOptionsPtrOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerOptionsPtrInput` via:
+//
+//	        ApplicationLoadBalancerOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationLoadBalancerOptionsPtrInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerOptionsPtrOutput() ApplicationLoadBalancerOptionsPtrOutput
+	ToApplicationLoadBalancerOptionsPtrOutputWithContext(context.Context) ApplicationLoadBalancerOptionsPtrOutput
+}
+
+type applicationLoadBalancerOptionsPtrType ApplicationLoadBalancerOptionsArgs
+
+func ApplicationLoadBalancerOptionsPtr(v *ApplicationLoadBalancerOptionsArgs) ApplicationLoadBalancerOptionsPtrInput {
+	return (*applicationLoadBalancerOptionsPtrType)(v)
+}
+
+func (*applicationLoadBalancerOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLoadBalancerOptions)(nil)).Elem()
+}
+
+func (i *applicationLoadBalancerOptionsPtrType) ToApplicationLoadBalancerOptionsPtrOutput() ApplicationLoadBalancerOptionsPtrOutput {
+	return i.ToApplicationLoadBalancerOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationLoadBalancerOptionsPtrType) ToApplicationLoadBalancerOptionsPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerOptionsPtrOutput)
+}
+
+type ApplicationLoadBalancerOptionsOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerOptions)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerOptionsOutput) ToApplicationLoadBalancerOptionsOutput() ApplicationLoadBalancerOptionsOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerOptionsOutput) ToApplicationLoadBalancerOptionsOutputWithContext(ctx context.Context) ApplicationLoadBalancerOptionsOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerOptionsOutput) ToApplicationLoadBalancerOptionsPtrOutput() ApplicationLoadBalancerOptionsPtrOutput {
+	return o.ToApplicationLoadBalancerOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationLoadBalancerOptionsOutput) ToApplicationLoadBalancerOptionsPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationLoadBalancerOptions) *ApplicationLoadBalancerOptions {
+		return &v
+	}).(ApplicationLoadBalancerOptionsPtrOutput)
+}
+
+// Use this option to limit the IP ranges that can use the Application Load Balancer.
+func (o ApplicationLoadBalancerOptionsOutput) AccessControl() ApplicationLoadBalancerOptionsAccessControlPtrOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerOptions) *ApplicationLoadBalancerOptionsAccessControl {
+		return v.AccessControl
+	}).(ApplicationLoadBalancerOptionsAccessControlPtrOutput)
+}
+
+// This option automates the handling of the external IP address for an Application Load Balancer. If set to true a new IP address will be automatically created. It will also be automatically deleted when the Load Balancer is deleted.
+func (o ApplicationLoadBalancerOptionsOutput) EphemeralAddress() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerOptions) *bool { return v.EphemeralAddress }).(pulumi.BoolPtrOutput)
+}
+
+// We offer Load Balancer observability via STACKIT Observability or external solutions.
+func (o ApplicationLoadBalancerOptionsOutput) Observability() ApplicationLoadBalancerOptionsObservabilityPtrOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerOptions) *ApplicationLoadBalancerOptionsObservability {
+		return v.Observability
+	}).(ApplicationLoadBalancerOptionsObservabilityPtrOutput)
+}
+
+// Application Load Balancer is accessible only via a private network ip address. Not changeable after creation.
+func (o ApplicationLoadBalancerOptionsOutput) PrivateNetworkOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerOptions) *bool { return v.PrivateNetworkOnly }).(pulumi.BoolPtrOutput)
+}
+
+type ApplicationLoadBalancerOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLoadBalancerOptions)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerOptionsPtrOutput) ToApplicationLoadBalancerOptionsPtrOutput() ApplicationLoadBalancerOptionsPtrOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerOptionsPtrOutput) ToApplicationLoadBalancerOptionsPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerOptionsPtrOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerOptionsPtrOutput) Elem() ApplicationLoadBalancerOptionsOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerOptions) ApplicationLoadBalancerOptions {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationLoadBalancerOptions
+		return ret
+	}).(ApplicationLoadBalancerOptionsOutput)
+}
+
+// Use this option to limit the IP ranges that can use the Application Load Balancer.
+func (o ApplicationLoadBalancerOptionsPtrOutput) AccessControl() ApplicationLoadBalancerOptionsAccessControlPtrOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerOptions) *ApplicationLoadBalancerOptionsAccessControl {
+		if v == nil {
+			return nil
+		}
+		return v.AccessControl
+	}).(ApplicationLoadBalancerOptionsAccessControlPtrOutput)
+}
+
+// This option automates the handling of the external IP address for an Application Load Balancer. If set to true a new IP address will be automatically created. It will also be automatically deleted when the Load Balancer is deleted.
+func (o ApplicationLoadBalancerOptionsPtrOutput) EphemeralAddress() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EphemeralAddress
+	}).(pulumi.BoolPtrOutput)
+}
+
+// We offer Load Balancer observability via STACKIT Observability or external solutions.
+func (o ApplicationLoadBalancerOptionsPtrOutput) Observability() ApplicationLoadBalancerOptionsObservabilityPtrOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerOptions) *ApplicationLoadBalancerOptionsObservability {
+		if v == nil {
+			return nil
+		}
+		return v.Observability
+	}).(ApplicationLoadBalancerOptionsObservabilityPtrOutput)
+}
+
+// Application Load Balancer is accessible only via a private network ip address. Not changeable after creation.
+func (o ApplicationLoadBalancerOptionsPtrOutput) PrivateNetworkOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateNetworkOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ApplicationLoadBalancerOptionsAccessControl struct {
+	// Application Load Balancer is accessible only from an IP address in this range.
+	AllowedSourceRanges []string `pulumi:"allowedSourceRanges"`
+}
+
+// ApplicationLoadBalancerOptionsAccessControlInput is an input type that accepts ApplicationLoadBalancerOptionsAccessControlArgs and ApplicationLoadBalancerOptionsAccessControlOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerOptionsAccessControlInput` via:
+//
+//	ApplicationLoadBalancerOptionsAccessControlArgs{...}
+type ApplicationLoadBalancerOptionsAccessControlInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerOptionsAccessControlOutput() ApplicationLoadBalancerOptionsAccessControlOutput
+	ToApplicationLoadBalancerOptionsAccessControlOutputWithContext(context.Context) ApplicationLoadBalancerOptionsAccessControlOutput
+}
+
+type ApplicationLoadBalancerOptionsAccessControlArgs struct {
+	// Application Load Balancer is accessible only from an IP address in this range.
+	AllowedSourceRanges pulumi.StringArrayInput `pulumi:"allowedSourceRanges"`
+}
+
+func (ApplicationLoadBalancerOptionsAccessControlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerOptionsAccessControl)(nil)).Elem()
+}
+
+func (i ApplicationLoadBalancerOptionsAccessControlArgs) ToApplicationLoadBalancerOptionsAccessControlOutput() ApplicationLoadBalancerOptionsAccessControlOutput {
+	return i.ToApplicationLoadBalancerOptionsAccessControlOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerOptionsAccessControlArgs) ToApplicationLoadBalancerOptionsAccessControlOutputWithContext(ctx context.Context) ApplicationLoadBalancerOptionsAccessControlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerOptionsAccessControlOutput)
+}
+
+func (i ApplicationLoadBalancerOptionsAccessControlArgs) ToApplicationLoadBalancerOptionsAccessControlPtrOutput() ApplicationLoadBalancerOptionsAccessControlPtrOutput {
+	return i.ToApplicationLoadBalancerOptionsAccessControlPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerOptionsAccessControlArgs) ToApplicationLoadBalancerOptionsAccessControlPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerOptionsAccessControlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerOptionsAccessControlOutput).ToApplicationLoadBalancerOptionsAccessControlPtrOutputWithContext(ctx)
+}
+
+// ApplicationLoadBalancerOptionsAccessControlPtrInput is an input type that accepts ApplicationLoadBalancerOptionsAccessControlArgs, ApplicationLoadBalancerOptionsAccessControlPtr and ApplicationLoadBalancerOptionsAccessControlPtrOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerOptionsAccessControlPtrInput` via:
+//
+//	        ApplicationLoadBalancerOptionsAccessControlArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationLoadBalancerOptionsAccessControlPtrInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerOptionsAccessControlPtrOutput() ApplicationLoadBalancerOptionsAccessControlPtrOutput
+	ToApplicationLoadBalancerOptionsAccessControlPtrOutputWithContext(context.Context) ApplicationLoadBalancerOptionsAccessControlPtrOutput
+}
+
+type applicationLoadBalancerOptionsAccessControlPtrType ApplicationLoadBalancerOptionsAccessControlArgs
+
+func ApplicationLoadBalancerOptionsAccessControlPtr(v *ApplicationLoadBalancerOptionsAccessControlArgs) ApplicationLoadBalancerOptionsAccessControlPtrInput {
+	return (*applicationLoadBalancerOptionsAccessControlPtrType)(v)
+}
+
+func (*applicationLoadBalancerOptionsAccessControlPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLoadBalancerOptionsAccessControl)(nil)).Elem()
+}
+
+func (i *applicationLoadBalancerOptionsAccessControlPtrType) ToApplicationLoadBalancerOptionsAccessControlPtrOutput() ApplicationLoadBalancerOptionsAccessControlPtrOutput {
+	return i.ToApplicationLoadBalancerOptionsAccessControlPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationLoadBalancerOptionsAccessControlPtrType) ToApplicationLoadBalancerOptionsAccessControlPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerOptionsAccessControlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerOptionsAccessControlPtrOutput)
+}
+
+type ApplicationLoadBalancerOptionsAccessControlOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerOptionsAccessControlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerOptionsAccessControl)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerOptionsAccessControlOutput) ToApplicationLoadBalancerOptionsAccessControlOutput() ApplicationLoadBalancerOptionsAccessControlOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerOptionsAccessControlOutput) ToApplicationLoadBalancerOptionsAccessControlOutputWithContext(ctx context.Context) ApplicationLoadBalancerOptionsAccessControlOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerOptionsAccessControlOutput) ToApplicationLoadBalancerOptionsAccessControlPtrOutput() ApplicationLoadBalancerOptionsAccessControlPtrOutput {
+	return o.ToApplicationLoadBalancerOptionsAccessControlPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationLoadBalancerOptionsAccessControlOutput) ToApplicationLoadBalancerOptionsAccessControlPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerOptionsAccessControlPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationLoadBalancerOptionsAccessControl) *ApplicationLoadBalancerOptionsAccessControl {
+		return &v
+	}).(ApplicationLoadBalancerOptionsAccessControlPtrOutput)
+}
+
+// Application Load Balancer is accessible only from an IP address in this range.
+func (o ApplicationLoadBalancerOptionsAccessControlOutput) AllowedSourceRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerOptionsAccessControl) []string { return v.AllowedSourceRanges }).(pulumi.StringArrayOutput)
+}
+
+type ApplicationLoadBalancerOptionsAccessControlPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerOptionsAccessControlPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLoadBalancerOptionsAccessControl)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerOptionsAccessControlPtrOutput) ToApplicationLoadBalancerOptionsAccessControlPtrOutput() ApplicationLoadBalancerOptionsAccessControlPtrOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerOptionsAccessControlPtrOutput) ToApplicationLoadBalancerOptionsAccessControlPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerOptionsAccessControlPtrOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerOptionsAccessControlPtrOutput) Elem() ApplicationLoadBalancerOptionsAccessControlOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerOptionsAccessControl) ApplicationLoadBalancerOptionsAccessControl {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationLoadBalancerOptionsAccessControl
+		return ret
+	}).(ApplicationLoadBalancerOptionsAccessControlOutput)
+}
+
+// Application Load Balancer is accessible only from an IP address in this range.
+func (o ApplicationLoadBalancerOptionsAccessControlPtrOutput) AllowedSourceRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerOptionsAccessControl) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedSourceRanges
+	}).(pulumi.StringArrayOutput)
+}
+
+type ApplicationLoadBalancerOptionsObservability struct {
+	// Observability logs configuration.
+	Logs *ApplicationLoadBalancerOptionsObservabilityLogs `pulumi:"logs"`
+	// Observability metrics configuration.
+	Metrics *ApplicationLoadBalancerOptionsObservabilityMetrics `pulumi:"metrics"`
+}
+
+// ApplicationLoadBalancerOptionsObservabilityInput is an input type that accepts ApplicationLoadBalancerOptionsObservabilityArgs and ApplicationLoadBalancerOptionsObservabilityOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerOptionsObservabilityInput` via:
+//
+//	ApplicationLoadBalancerOptionsObservabilityArgs{...}
+type ApplicationLoadBalancerOptionsObservabilityInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerOptionsObservabilityOutput() ApplicationLoadBalancerOptionsObservabilityOutput
+	ToApplicationLoadBalancerOptionsObservabilityOutputWithContext(context.Context) ApplicationLoadBalancerOptionsObservabilityOutput
+}
+
+type ApplicationLoadBalancerOptionsObservabilityArgs struct {
+	// Observability logs configuration.
+	Logs ApplicationLoadBalancerOptionsObservabilityLogsPtrInput `pulumi:"logs"`
+	// Observability metrics configuration.
+	Metrics ApplicationLoadBalancerOptionsObservabilityMetricsPtrInput `pulumi:"metrics"`
+}
+
+func (ApplicationLoadBalancerOptionsObservabilityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerOptionsObservability)(nil)).Elem()
+}
+
+func (i ApplicationLoadBalancerOptionsObservabilityArgs) ToApplicationLoadBalancerOptionsObservabilityOutput() ApplicationLoadBalancerOptionsObservabilityOutput {
+	return i.ToApplicationLoadBalancerOptionsObservabilityOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerOptionsObservabilityArgs) ToApplicationLoadBalancerOptionsObservabilityOutputWithContext(ctx context.Context) ApplicationLoadBalancerOptionsObservabilityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerOptionsObservabilityOutput)
+}
+
+func (i ApplicationLoadBalancerOptionsObservabilityArgs) ToApplicationLoadBalancerOptionsObservabilityPtrOutput() ApplicationLoadBalancerOptionsObservabilityPtrOutput {
+	return i.ToApplicationLoadBalancerOptionsObservabilityPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerOptionsObservabilityArgs) ToApplicationLoadBalancerOptionsObservabilityPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerOptionsObservabilityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerOptionsObservabilityOutput).ToApplicationLoadBalancerOptionsObservabilityPtrOutputWithContext(ctx)
+}
+
+// ApplicationLoadBalancerOptionsObservabilityPtrInput is an input type that accepts ApplicationLoadBalancerOptionsObservabilityArgs, ApplicationLoadBalancerOptionsObservabilityPtr and ApplicationLoadBalancerOptionsObservabilityPtrOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerOptionsObservabilityPtrInput` via:
+//
+//	        ApplicationLoadBalancerOptionsObservabilityArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationLoadBalancerOptionsObservabilityPtrInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerOptionsObservabilityPtrOutput() ApplicationLoadBalancerOptionsObservabilityPtrOutput
+	ToApplicationLoadBalancerOptionsObservabilityPtrOutputWithContext(context.Context) ApplicationLoadBalancerOptionsObservabilityPtrOutput
+}
+
+type applicationLoadBalancerOptionsObservabilityPtrType ApplicationLoadBalancerOptionsObservabilityArgs
+
+func ApplicationLoadBalancerOptionsObservabilityPtr(v *ApplicationLoadBalancerOptionsObservabilityArgs) ApplicationLoadBalancerOptionsObservabilityPtrInput {
+	return (*applicationLoadBalancerOptionsObservabilityPtrType)(v)
+}
+
+func (*applicationLoadBalancerOptionsObservabilityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLoadBalancerOptionsObservability)(nil)).Elem()
+}
+
+func (i *applicationLoadBalancerOptionsObservabilityPtrType) ToApplicationLoadBalancerOptionsObservabilityPtrOutput() ApplicationLoadBalancerOptionsObservabilityPtrOutput {
+	return i.ToApplicationLoadBalancerOptionsObservabilityPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationLoadBalancerOptionsObservabilityPtrType) ToApplicationLoadBalancerOptionsObservabilityPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerOptionsObservabilityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerOptionsObservabilityPtrOutput)
+}
+
+type ApplicationLoadBalancerOptionsObservabilityOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerOptionsObservabilityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerOptionsObservability)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerOptionsObservabilityOutput) ToApplicationLoadBalancerOptionsObservabilityOutput() ApplicationLoadBalancerOptionsObservabilityOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerOptionsObservabilityOutput) ToApplicationLoadBalancerOptionsObservabilityOutputWithContext(ctx context.Context) ApplicationLoadBalancerOptionsObservabilityOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerOptionsObservabilityOutput) ToApplicationLoadBalancerOptionsObservabilityPtrOutput() ApplicationLoadBalancerOptionsObservabilityPtrOutput {
+	return o.ToApplicationLoadBalancerOptionsObservabilityPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationLoadBalancerOptionsObservabilityOutput) ToApplicationLoadBalancerOptionsObservabilityPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerOptionsObservabilityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationLoadBalancerOptionsObservability) *ApplicationLoadBalancerOptionsObservability {
+		return &v
+	}).(ApplicationLoadBalancerOptionsObservabilityPtrOutput)
+}
+
+// Observability logs configuration.
+func (o ApplicationLoadBalancerOptionsObservabilityOutput) Logs() ApplicationLoadBalancerOptionsObservabilityLogsPtrOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerOptionsObservability) *ApplicationLoadBalancerOptionsObservabilityLogs {
+		return v.Logs
+	}).(ApplicationLoadBalancerOptionsObservabilityLogsPtrOutput)
+}
+
+// Observability metrics configuration.
+func (o ApplicationLoadBalancerOptionsObservabilityOutput) Metrics() ApplicationLoadBalancerOptionsObservabilityMetricsPtrOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerOptionsObservability) *ApplicationLoadBalancerOptionsObservabilityMetrics {
+		return v.Metrics
+	}).(ApplicationLoadBalancerOptionsObservabilityMetricsPtrOutput)
+}
+
+type ApplicationLoadBalancerOptionsObservabilityPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerOptionsObservabilityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLoadBalancerOptionsObservability)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerOptionsObservabilityPtrOutput) ToApplicationLoadBalancerOptionsObservabilityPtrOutput() ApplicationLoadBalancerOptionsObservabilityPtrOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerOptionsObservabilityPtrOutput) ToApplicationLoadBalancerOptionsObservabilityPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerOptionsObservabilityPtrOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerOptionsObservabilityPtrOutput) Elem() ApplicationLoadBalancerOptionsObservabilityOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerOptionsObservability) ApplicationLoadBalancerOptionsObservability {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationLoadBalancerOptionsObservability
+		return ret
+	}).(ApplicationLoadBalancerOptionsObservabilityOutput)
+}
+
+// Observability logs configuration.
+func (o ApplicationLoadBalancerOptionsObservabilityPtrOutput) Logs() ApplicationLoadBalancerOptionsObservabilityLogsPtrOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerOptionsObservability) *ApplicationLoadBalancerOptionsObservabilityLogs {
+		if v == nil {
+			return nil
+		}
+		return v.Logs
+	}).(ApplicationLoadBalancerOptionsObservabilityLogsPtrOutput)
+}
+
+// Observability metrics configuration.
+func (o ApplicationLoadBalancerOptionsObservabilityPtrOutput) Metrics() ApplicationLoadBalancerOptionsObservabilityMetricsPtrOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerOptionsObservability) *ApplicationLoadBalancerOptionsObservabilityMetrics {
+		if v == nil {
+			return nil
+		}
+		return v.Metrics
+	}).(ApplicationLoadBalancerOptionsObservabilityMetricsPtrOutput)
+}
+
+type ApplicationLoadBalancerOptionsObservabilityLogs struct {
+	// Credentials reference for logging. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the logging solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+	CredentialsRef string `pulumi:"credentialsRef"`
+	// Credentials reference for logging. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the logging solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+	PushUrl string `pulumi:"pushUrl"`
+}
+
+// ApplicationLoadBalancerOptionsObservabilityLogsInput is an input type that accepts ApplicationLoadBalancerOptionsObservabilityLogsArgs and ApplicationLoadBalancerOptionsObservabilityLogsOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerOptionsObservabilityLogsInput` via:
+//
+//	ApplicationLoadBalancerOptionsObservabilityLogsArgs{...}
+type ApplicationLoadBalancerOptionsObservabilityLogsInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerOptionsObservabilityLogsOutput() ApplicationLoadBalancerOptionsObservabilityLogsOutput
+	ToApplicationLoadBalancerOptionsObservabilityLogsOutputWithContext(context.Context) ApplicationLoadBalancerOptionsObservabilityLogsOutput
+}
+
+type ApplicationLoadBalancerOptionsObservabilityLogsArgs struct {
+	// Credentials reference for logging. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the logging solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+	CredentialsRef pulumi.StringInput `pulumi:"credentialsRef"`
+	// Credentials reference for logging. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the logging solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+	PushUrl pulumi.StringInput `pulumi:"pushUrl"`
+}
+
+func (ApplicationLoadBalancerOptionsObservabilityLogsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerOptionsObservabilityLogs)(nil)).Elem()
+}
+
+func (i ApplicationLoadBalancerOptionsObservabilityLogsArgs) ToApplicationLoadBalancerOptionsObservabilityLogsOutput() ApplicationLoadBalancerOptionsObservabilityLogsOutput {
+	return i.ToApplicationLoadBalancerOptionsObservabilityLogsOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerOptionsObservabilityLogsArgs) ToApplicationLoadBalancerOptionsObservabilityLogsOutputWithContext(ctx context.Context) ApplicationLoadBalancerOptionsObservabilityLogsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerOptionsObservabilityLogsOutput)
+}
+
+func (i ApplicationLoadBalancerOptionsObservabilityLogsArgs) ToApplicationLoadBalancerOptionsObservabilityLogsPtrOutput() ApplicationLoadBalancerOptionsObservabilityLogsPtrOutput {
+	return i.ToApplicationLoadBalancerOptionsObservabilityLogsPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerOptionsObservabilityLogsArgs) ToApplicationLoadBalancerOptionsObservabilityLogsPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerOptionsObservabilityLogsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerOptionsObservabilityLogsOutput).ToApplicationLoadBalancerOptionsObservabilityLogsPtrOutputWithContext(ctx)
+}
+
+// ApplicationLoadBalancerOptionsObservabilityLogsPtrInput is an input type that accepts ApplicationLoadBalancerOptionsObservabilityLogsArgs, ApplicationLoadBalancerOptionsObservabilityLogsPtr and ApplicationLoadBalancerOptionsObservabilityLogsPtrOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerOptionsObservabilityLogsPtrInput` via:
+//
+//	        ApplicationLoadBalancerOptionsObservabilityLogsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationLoadBalancerOptionsObservabilityLogsPtrInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerOptionsObservabilityLogsPtrOutput() ApplicationLoadBalancerOptionsObservabilityLogsPtrOutput
+	ToApplicationLoadBalancerOptionsObservabilityLogsPtrOutputWithContext(context.Context) ApplicationLoadBalancerOptionsObservabilityLogsPtrOutput
+}
+
+type applicationLoadBalancerOptionsObservabilityLogsPtrType ApplicationLoadBalancerOptionsObservabilityLogsArgs
+
+func ApplicationLoadBalancerOptionsObservabilityLogsPtr(v *ApplicationLoadBalancerOptionsObservabilityLogsArgs) ApplicationLoadBalancerOptionsObservabilityLogsPtrInput {
+	return (*applicationLoadBalancerOptionsObservabilityLogsPtrType)(v)
+}
+
+func (*applicationLoadBalancerOptionsObservabilityLogsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLoadBalancerOptionsObservabilityLogs)(nil)).Elem()
+}
+
+func (i *applicationLoadBalancerOptionsObservabilityLogsPtrType) ToApplicationLoadBalancerOptionsObservabilityLogsPtrOutput() ApplicationLoadBalancerOptionsObservabilityLogsPtrOutput {
+	return i.ToApplicationLoadBalancerOptionsObservabilityLogsPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationLoadBalancerOptionsObservabilityLogsPtrType) ToApplicationLoadBalancerOptionsObservabilityLogsPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerOptionsObservabilityLogsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerOptionsObservabilityLogsPtrOutput)
+}
+
+type ApplicationLoadBalancerOptionsObservabilityLogsOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerOptionsObservabilityLogsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerOptionsObservabilityLogs)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerOptionsObservabilityLogsOutput) ToApplicationLoadBalancerOptionsObservabilityLogsOutput() ApplicationLoadBalancerOptionsObservabilityLogsOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerOptionsObservabilityLogsOutput) ToApplicationLoadBalancerOptionsObservabilityLogsOutputWithContext(ctx context.Context) ApplicationLoadBalancerOptionsObservabilityLogsOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerOptionsObservabilityLogsOutput) ToApplicationLoadBalancerOptionsObservabilityLogsPtrOutput() ApplicationLoadBalancerOptionsObservabilityLogsPtrOutput {
+	return o.ToApplicationLoadBalancerOptionsObservabilityLogsPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationLoadBalancerOptionsObservabilityLogsOutput) ToApplicationLoadBalancerOptionsObservabilityLogsPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerOptionsObservabilityLogsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationLoadBalancerOptionsObservabilityLogs) *ApplicationLoadBalancerOptionsObservabilityLogs {
+		return &v
+	}).(ApplicationLoadBalancerOptionsObservabilityLogsPtrOutput)
+}
+
+// Credentials reference for logging. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the logging solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+func (o ApplicationLoadBalancerOptionsObservabilityLogsOutput) CredentialsRef() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerOptionsObservabilityLogs) string { return v.CredentialsRef }).(pulumi.StringOutput)
+}
+
+// Credentials reference for logging. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the logging solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+func (o ApplicationLoadBalancerOptionsObservabilityLogsOutput) PushUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerOptionsObservabilityLogs) string { return v.PushUrl }).(pulumi.StringOutput)
+}
+
+type ApplicationLoadBalancerOptionsObservabilityLogsPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerOptionsObservabilityLogsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLoadBalancerOptionsObservabilityLogs)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerOptionsObservabilityLogsPtrOutput) ToApplicationLoadBalancerOptionsObservabilityLogsPtrOutput() ApplicationLoadBalancerOptionsObservabilityLogsPtrOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerOptionsObservabilityLogsPtrOutput) ToApplicationLoadBalancerOptionsObservabilityLogsPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerOptionsObservabilityLogsPtrOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerOptionsObservabilityLogsPtrOutput) Elem() ApplicationLoadBalancerOptionsObservabilityLogsOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerOptionsObservabilityLogs) ApplicationLoadBalancerOptionsObservabilityLogs {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationLoadBalancerOptionsObservabilityLogs
+		return ret
+	}).(ApplicationLoadBalancerOptionsObservabilityLogsOutput)
+}
+
+// Credentials reference for logging. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the logging solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+func (o ApplicationLoadBalancerOptionsObservabilityLogsPtrOutput) CredentialsRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerOptionsObservabilityLogs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CredentialsRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// Credentials reference for logging. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the logging solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+func (o ApplicationLoadBalancerOptionsObservabilityLogsPtrOutput) PushUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerOptionsObservabilityLogs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PushUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+type ApplicationLoadBalancerOptionsObservabilityMetrics struct {
+	// Credentials reference for metrics. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the metrics solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+	CredentialsRef string `pulumi:"credentialsRef"`
+	// Credentials reference for metrics. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the metrics solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+	PushUrl string `pulumi:"pushUrl"`
+}
+
+// ApplicationLoadBalancerOptionsObservabilityMetricsInput is an input type that accepts ApplicationLoadBalancerOptionsObservabilityMetricsArgs and ApplicationLoadBalancerOptionsObservabilityMetricsOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerOptionsObservabilityMetricsInput` via:
+//
+//	ApplicationLoadBalancerOptionsObservabilityMetricsArgs{...}
+type ApplicationLoadBalancerOptionsObservabilityMetricsInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerOptionsObservabilityMetricsOutput() ApplicationLoadBalancerOptionsObservabilityMetricsOutput
+	ToApplicationLoadBalancerOptionsObservabilityMetricsOutputWithContext(context.Context) ApplicationLoadBalancerOptionsObservabilityMetricsOutput
+}
+
+type ApplicationLoadBalancerOptionsObservabilityMetricsArgs struct {
+	// Credentials reference for metrics. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the metrics solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+	CredentialsRef pulumi.StringInput `pulumi:"credentialsRef"`
+	// Credentials reference for metrics. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the metrics solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+	PushUrl pulumi.StringInput `pulumi:"pushUrl"`
+}
+
+func (ApplicationLoadBalancerOptionsObservabilityMetricsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerOptionsObservabilityMetrics)(nil)).Elem()
+}
+
+func (i ApplicationLoadBalancerOptionsObservabilityMetricsArgs) ToApplicationLoadBalancerOptionsObservabilityMetricsOutput() ApplicationLoadBalancerOptionsObservabilityMetricsOutput {
+	return i.ToApplicationLoadBalancerOptionsObservabilityMetricsOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerOptionsObservabilityMetricsArgs) ToApplicationLoadBalancerOptionsObservabilityMetricsOutputWithContext(ctx context.Context) ApplicationLoadBalancerOptionsObservabilityMetricsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerOptionsObservabilityMetricsOutput)
+}
+
+func (i ApplicationLoadBalancerOptionsObservabilityMetricsArgs) ToApplicationLoadBalancerOptionsObservabilityMetricsPtrOutput() ApplicationLoadBalancerOptionsObservabilityMetricsPtrOutput {
+	return i.ToApplicationLoadBalancerOptionsObservabilityMetricsPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerOptionsObservabilityMetricsArgs) ToApplicationLoadBalancerOptionsObservabilityMetricsPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerOptionsObservabilityMetricsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerOptionsObservabilityMetricsOutput).ToApplicationLoadBalancerOptionsObservabilityMetricsPtrOutputWithContext(ctx)
+}
+
+// ApplicationLoadBalancerOptionsObservabilityMetricsPtrInput is an input type that accepts ApplicationLoadBalancerOptionsObservabilityMetricsArgs, ApplicationLoadBalancerOptionsObservabilityMetricsPtr and ApplicationLoadBalancerOptionsObservabilityMetricsPtrOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerOptionsObservabilityMetricsPtrInput` via:
+//
+//	        ApplicationLoadBalancerOptionsObservabilityMetricsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationLoadBalancerOptionsObservabilityMetricsPtrInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerOptionsObservabilityMetricsPtrOutput() ApplicationLoadBalancerOptionsObservabilityMetricsPtrOutput
+	ToApplicationLoadBalancerOptionsObservabilityMetricsPtrOutputWithContext(context.Context) ApplicationLoadBalancerOptionsObservabilityMetricsPtrOutput
+}
+
+type applicationLoadBalancerOptionsObservabilityMetricsPtrType ApplicationLoadBalancerOptionsObservabilityMetricsArgs
+
+func ApplicationLoadBalancerOptionsObservabilityMetricsPtr(v *ApplicationLoadBalancerOptionsObservabilityMetricsArgs) ApplicationLoadBalancerOptionsObservabilityMetricsPtrInput {
+	return (*applicationLoadBalancerOptionsObservabilityMetricsPtrType)(v)
+}
+
+func (*applicationLoadBalancerOptionsObservabilityMetricsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLoadBalancerOptionsObservabilityMetrics)(nil)).Elem()
+}
+
+func (i *applicationLoadBalancerOptionsObservabilityMetricsPtrType) ToApplicationLoadBalancerOptionsObservabilityMetricsPtrOutput() ApplicationLoadBalancerOptionsObservabilityMetricsPtrOutput {
+	return i.ToApplicationLoadBalancerOptionsObservabilityMetricsPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationLoadBalancerOptionsObservabilityMetricsPtrType) ToApplicationLoadBalancerOptionsObservabilityMetricsPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerOptionsObservabilityMetricsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerOptionsObservabilityMetricsPtrOutput)
+}
+
+type ApplicationLoadBalancerOptionsObservabilityMetricsOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerOptionsObservabilityMetricsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerOptionsObservabilityMetrics)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerOptionsObservabilityMetricsOutput) ToApplicationLoadBalancerOptionsObservabilityMetricsOutput() ApplicationLoadBalancerOptionsObservabilityMetricsOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerOptionsObservabilityMetricsOutput) ToApplicationLoadBalancerOptionsObservabilityMetricsOutputWithContext(ctx context.Context) ApplicationLoadBalancerOptionsObservabilityMetricsOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerOptionsObservabilityMetricsOutput) ToApplicationLoadBalancerOptionsObservabilityMetricsPtrOutput() ApplicationLoadBalancerOptionsObservabilityMetricsPtrOutput {
+	return o.ToApplicationLoadBalancerOptionsObservabilityMetricsPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationLoadBalancerOptionsObservabilityMetricsOutput) ToApplicationLoadBalancerOptionsObservabilityMetricsPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerOptionsObservabilityMetricsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationLoadBalancerOptionsObservabilityMetrics) *ApplicationLoadBalancerOptionsObservabilityMetrics {
+		return &v
+	}).(ApplicationLoadBalancerOptionsObservabilityMetricsPtrOutput)
+}
+
+// Credentials reference for metrics. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the metrics solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+func (o ApplicationLoadBalancerOptionsObservabilityMetricsOutput) CredentialsRef() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerOptionsObservabilityMetrics) string { return v.CredentialsRef }).(pulumi.StringOutput)
+}
+
+// Credentials reference for metrics. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the metrics solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+func (o ApplicationLoadBalancerOptionsObservabilityMetricsOutput) PushUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerOptionsObservabilityMetrics) string { return v.PushUrl }).(pulumi.StringOutput)
+}
+
+type ApplicationLoadBalancerOptionsObservabilityMetricsPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerOptionsObservabilityMetricsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLoadBalancerOptionsObservabilityMetrics)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerOptionsObservabilityMetricsPtrOutput) ToApplicationLoadBalancerOptionsObservabilityMetricsPtrOutput() ApplicationLoadBalancerOptionsObservabilityMetricsPtrOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerOptionsObservabilityMetricsPtrOutput) ToApplicationLoadBalancerOptionsObservabilityMetricsPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerOptionsObservabilityMetricsPtrOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerOptionsObservabilityMetricsPtrOutput) Elem() ApplicationLoadBalancerOptionsObservabilityMetricsOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerOptionsObservabilityMetrics) ApplicationLoadBalancerOptionsObservabilityMetrics {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationLoadBalancerOptionsObservabilityMetrics
+		return ret
+	}).(ApplicationLoadBalancerOptionsObservabilityMetricsOutput)
+}
+
+// Credentials reference for metrics. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the metrics solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+func (o ApplicationLoadBalancerOptionsObservabilityMetricsPtrOutput) CredentialsRef() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerOptionsObservabilityMetrics) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CredentialsRef
+	}).(pulumi.StringPtrOutput)
+}
+
+// Credentials reference for metrics. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the metrics solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+func (o ApplicationLoadBalancerOptionsObservabilityMetricsPtrOutput) PushUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerOptionsObservabilityMetrics) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PushUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+type ApplicationLoadBalancerTargetPool struct {
+	ActiveHealthCheck *ApplicationLoadBalancerTargetPoolActiveHealthCheck `pulumi:"activeHealthCheck"`
+	// Target pool name.
+	Name string `pulumi:"name"`
+	// The number identifying the port where each target listens for traffic.
+	TargetPort int `pulumi:"targetPort"`
+	// List of all targets which will be used in the pool. Limited to 250.
+	Targets []ApplicationLoadBalancerTargetPoolTarget `pulumi:"targets"`
+	// Configuration for TLS bridging.
+	TlsConfig *ApplicationLoadBalancerTargetPoolTlsConfig `pulumi:"tlsConfig"`
+}
+
+// ApplicationLoadBalancerTargetPoolInput is an input type that accepts ApplicationLoadBalancerTargetPoolArgs and ApplicationLoadBalancerTargetPoolOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerTargetPoolInput` via:
+//
+//	ApplicationLoadBalancerTargetPoolArgs{...}
+type ApplicationLoadBalancerTargetPoolInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerTargetPoolOutput() ApplicationLoadBalancerTargetPoolOutput
+	ToApplicationLoadBalancerTargetPoolOutputWithContext(context.Context) ApplicationLoadBalancerTargetPoolOutput
+}
+
+type ApplicationLoadBalancerTargetPoolArgs struct {
+	ActiveHealthCheck ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrInput `pulumi:"activeHealthCheck"`
+	// Target pool name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The number identifying the port where each target listens for traffic.
+	TargetPort pulumi.IntInput `pulumi:"targetPort"`
+	// List of all targets which will be used in the pool. Limited to 250.
+	Targets ApplicationLoadBalancerTargetPoolTargetArrayInput `pulumi:"targets"`
+	// Configuration for TLS bridging.
+	TlsConfig ApplicationLoadBalancerTargetPoolTlsConfigPtrInput `pulumi:"tlsConfig"`
+}
+
+func (ApplicationLoadBalancerTargetPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerTargetPool)(nil)).Elem()
+}
+
+func (i ApplicationLoadBalancerTargetPoolArgs) ToApplicationLoadBalancerTargetPoolOutput() ApplicationLoadBalancerTargetPoolOutput {
+	return i.ToApplicationLoadBalancerTargetPoolOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerTargetPoolArgs) ToApplicationLoadBalancerTargetPoolOutputWithContext(ctx context.Context) ApplicationLoadBalancerTargetPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerTargetPoolOutput)
+}
+
+// ApplicationLoadBalancerTargetPoolArrayInput is an input type that accepts ApplicationLoadBalancerTargetPoolArray and ApplicationLoadBalancerTargetPoolArrayOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerTargetPoolArrayInput` via:
+//
+//	ApplicationLoadBalancerTargetPoolArray{ ApplicationLoadBalancerTargetPoolArgs{...} }
+type ApplicationLoadBalancerTargetPoolArrayInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerTargetPoolArrayOutput() ApplicationLoadBalancerTargetPoolArrayOutput
+	ToApplicationLoadBalancerTargetPoolArrayOutputWithContext(context.Context) ApplicationLoadBalancerTargetPoolArrayOutput
+}
+
+type ApplicationLoadBalancerTargetPoolArray []ApplicationLoadBalancerTargetPoolInput
+
+func (ApplicationLoadBalancerTargetPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationLoadBalancerTargetPool)(nil)).Elem()
+}
+
+func (i ApplicationLoadBalancerTargetPoolArray) ToApplicationLoadBalancerTargetPoolArrayOutput() ApplicationLoadBalancerTargetPoolArrayOutput {
+	return i.ToApplicationLoadBalancerTargetPoolArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerTargetPoolArray) ToApplicationLoadBalancerTargetPoolArrayOutputWithContext(ctx context.Context) ApplicationLoadBalancerTargetPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerTargetPoolArrayOutput)
+}
+
+type ApplicationLoadBalancerTargetPoolOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerTargetPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerTargetPool)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerTargetPoolOutput) ToApplicationLoadBalancerTargetPoolOutput() ApplicationLoadBalancerTargetPoolOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerTargetPoolOutput) ToApplicationLoadBalancerTargetPoolOutputWithContext(ctx context.Context) ApplicationLoadBalancerTargetPoolOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerTargetPoolOutput) ActiveHealthCheck() ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerTargetPool) *ApplicationLoadBalancerTargetPoolActiveHealthCheck {
+		return v.ActiveHealthCheck
+	}).(ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutput)
+}
+
+// Target pool name.
+func (o ApplicationLoadBalancerTargetPoolOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerTargetPool) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The number identifying the port where each target listens for traffic.
+func (o ApplicationLoadBalancerTargetPoolOutput) TargetPort() pulumi.IntOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerTargetPool) int { return v.TargetPort }).(pulumi.IntOutput)
+}
+
+// List of all targets which will be used in the pool. Limited to 250.
+func (o ApplicationLoadBalancerTargetPoolOutput) Targets() ApplicationLoadBalancerTargetPoolTargetArrayOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerTargetPool) []ApplicationLoadBalancerTargetPoolTarget { return v.Targets }).(ApplicationLoadBalancerTargetPoolTargetArrayOutput)
+}
+
+// Configuration for TLS bridging.
+func (o ApplicationLoadBalancerTargetPoolOutput) TlsConfig() ApplicationLoadBalancerTargetPoolTlsConfigPtrOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerTargetPool) *ApplicationLoadBalancerTargetPoolTlsConfig {
+		return v.TlsConfig
+	}).(ApplicationLoadBalancerTargetPoolTlsConfigPtrOutput)
+}
+
+type ApplicationLoadBalancerTargetPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerTargetPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationLoadBalancerTargetPool)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerTargetPoolArrayOutput) ToApplicationLoadBalancerTargetPoolArrayOutput() ApplicationLoadBalancerTargetPoolArrayOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerTargetPoolArrayOutput) ToApplicationLoadBalancerTargetPoolArrayOutputWithContext(ctx context.Context) ApplicationLoadBalancerTargetPoolArrayOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerTargetPoolArrayOutput) Index(i pulumi.IntInput) ApplicationLoadBalancerTargetPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationLoadBalancerTargetPool {
+		return vs[0].([]ApplicationLoadBalancerTargetPool)[vs[1].(int)]
+	}).(ApplicationLoadBalancerTargetPoolOutput)
+}
+
+type ApplicationLoadBalancerTargetPoolActiveHealthCheck struct {
+	// Healthy threshold of the health checking.
+	HealthyThreshold int `pulumi:"healthyThreshold"`
+	// Options for the HTTP health checking.
+	HttpHealthChecks *ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks `pulumi:"httpHealthChecks"`
+	// Interval duration of health checking in seconds.
+	Interval string `pulumi:"interval"`
+	// Interval duration threshold of the health checking in seconds.
+	IntervalJitter string `pulumi:"intervalJitter"`
+	// Active health checking timeout duration in seconds.
+	Timeout string `pulumi:"timeout"`
+	// Unhealthy threshold of the health checking.
+	UnhealthyThreshold int `pulumi:"unhealthyThreshold"`
+}
+
+// ApplicationLoadBalancerTargetPoolActiveHealthCheckInput is an input type that accepts ApplicationLoadBalancerTargetPoolActiveHealthCheckArgs and ApplicationLoadBalancerTargetPoolActiveHealthCheckOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerTargetPoolActiveHealthCheckInput` via:
+//
+//	ApplicationLoadBalancerTargetPoolActiveHealthCheckArgs{...}
+type ApplicationLoadBalancerTargetPoolActiveHealthCheckInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerTargetPoolActiveHealthCheckOutput() ApplicationLoadBalancerTargetPoolActiveHealthCheckOutput
+	ToApplicationLoadBalancerTargetPoolActiveHealthCheckOutputWithContext(context.Context) ApplicationLoadBalancerTargetPoolActiveHealthCheckOutput
+}
+
+type ApplicationLoadBalancerTargetPoolActiveHealthCheckArgs struct {
+	// Healthy threshold of the health checking.
+	HealthyThreshold pulumi.IntInput `pulumi:"healthyThreshold"`
+	// Options for the HTTP health checking.
+	HttpHealthChecks ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrInput `pulumi:"httpHealthChecks"`
+	// Interval duration of health checking in seconds.
+	Interval pulumi.StringInput `pulumi:"interval"`
+	// Interval duration threshold of the health checking in seconds.
+	IntervalJitter pulumi.StringInput `pulumi:"intervalJitter"`
+	// Active health checking timeout duration in seconds.
+	Timeout pulumi.StringInput `pulumi:"timeout"`
+	// Unhealthy threshold of the health checking.
+	UnhealthyThreshold pulumi.IntInput `pulumi:"unhealthyThreshold"`
+}
+
+func (ApplicationLoadBalancerTargetPoolActiveHealthCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerTargetPoolActiveHealthCheck)(nil)).Elem()
+}
+
+func (i ApplicationLoadBalancerTargetPoolActiveHealthCheckArgs) ToApplicationLoadBalancerTargetPoolActiveHealthCheckOutput() ApplicationLoadBalancerTargetPoolActiveHealthCheckOutput {
+	return i.ToApplicationLoadBalancerTargetPoolActiveHealthCheckOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerTargetPoolActiveHealthCheckArgs) ToApplicationLoadBalancerTargetPoolActiveHealthCheckOutputWithContext(ctx context.Context) ApplicationLoadBalancerTargetPoolActiveHealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerTargetPoolActiveHealthCheckOutput)
+}
+
+func (i ApplicationLoadBalancerTargetPoolActiveHealthCheckArgs) ToApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutput() ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutput {
+	return i.ToApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerTargetPoolActiveHealthCheckArgs) ToApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerTargetPoolActiveHealthCheckOutput).ToApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutputWithContext(ctx)
+}
+
+// ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrInput is an input type that accepts ApplicationLoadBalancerTargetPoolActiveHealthCheckArgs, ApplicationLoadBalancerTargetPoolActiveHealthCheckPtr and ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrInput` via:
+//
+//	        ApplicationLoadBalancerTargetPoolActiveHealthCheckArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutput() ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutput
+	ToApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutputWithContext(context.Context) ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutput
+}
+
+type applicationLoadBalancerTargetPoolActiveHealthCheckPtrType ApplicationLoadBalancerTargetPoolActiveHealthCheckArgs
+
+func ApplicationLoadBalancerTargetPoolActiveHealthCheckPtr(v *ApplicationLoadBalancerTargetPoolActiveHealthCheckArgs) ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrInput {
+	return (*applicationLoadBalancerTargetPoolActiveHealthCheckPtrType)(v)
+}
+
+func (*applicationLoadBalancerTargetPoolActiveHealthCheckPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLoadBalancerTargetPoolActiveHealthCheck)(nil)).Elem()
+}
+
+func (i *applicationLoadBalancerTargetPoolActiveHealthCheckPtrType) ToApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutput() ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutput {
+	return i.ToApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationLoadBalancerTargetPoolActiveHealthCheckPtrType) ToApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutput)
+}
+
+type ApplicationLoadBalancerTargetPoolActiveHealthCheckOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerTargetPoolActiveHealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerTargetPoolActiveHealthCheck)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerTargetPoolActiveHealthCheckOutput) ToApplicationLoadBalancerTargetPoolActiveHealthCheckOutput() ApplicationLoadBalancerTargetPoolActiveHealthCheckOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerTargetPoolActiveHealthCheckOutput) ToApplicationLoadBalancerTargetPoolActiveHealthCheckOutputWithContext(ctx context.Context) ApplicationLoadBalancerTargetPoolActiveHealthCheckOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerTargetPoolActiveHealthCheckOutput) ToApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutput() ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutput {
+	return o.ToApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationLoadBalancerTargetPoolActiveHealthCheckOutput) ToApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationLoadBalancerTargetPoolActiveHealthCheck) *ApplicationLoadBalancerTargetPoolActiveHealthCheck {
+		return &v
+	}).(ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutput)
+}
+
+// Healthy threshold of the health checking.
+func (o ApplicationLoadBalancerTargetPoolActiveHealthCheckOutput) HealthyThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerTargetPoolActiveHealthCheck) int { return v.HealthyThreshold }).(pulumi.IntOutput)
+}
+
+// Options for the HTTP health checking.
+func (o ApplicationLoadBalancerTargetPoolActiveHealthCheckOutput) HttpHealthChecks() ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerTargetPoolActiveHealthCheck) *ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks {
+		return v.HttpHealthChecks
+	}).(ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutput)
+}
+
+// Interval duration of health checking in seconds.
+func (o ApplicationLoadBalancerTargetPoolActiveHealthCheckOutput) Interval() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerTargetPoolActiveHealthCheck) string { return v.Interval }).(pulumi.StringOutput)
+}
+
+// Interval duration threshold of the health checking in seconds.
+func (o ApplicationLoadBalancerTargetPoolActiveHealthCheckOutput) IntervalJitter() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerTargetPoolActiveHealthCheck) string { return v.IntervalJitter }).(pulumi.StringOutput)
+}
+
+// Active health checking timeout duration in seconds.
+func (o ApplicationLoadBalancerTargetPoolActiveHealthCheckOutput) Timeout() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerTargetPoolActiveHealthCheck) string { return v.Timeout }).(pulumi.StringOutput)
+}
+
+// Unhealthy threshold of the health checking.
+func (o ApplicationLoadBalancerTargetPoolActiveHealthCheckOutput) UnhealthyThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerTargetPoolActiveHealthCheck) int { return v.UnhealthyThreshold }).(pulumi.IntOutput)
+}
+
+type ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLoadBalancerTargetPoolActiveHealthCheck)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutput) ToApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutput() ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutput) ToApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutput) Elem() ApplicationLoadBalancerTargetPoolActiveHealthCheckOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerTargetPoolActiveHealthCheck) ApplicationLoadBalancerTargetPoolActiveHealthCheck {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationLoadBalancerTargetPoolActiveHealthCheck
+		return ret
+	}).(ApplicationLoadBalancerTargetPoolActiveHealthCheckOutput)
+}
+
+// Healthy threshold of the health checking.
+func (o ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutput) HealthyThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerTargetPoolActiveHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.HealthyThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// Options for the HTTP health checking.
+func (o ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutput) HttpHealthChecks() ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerTargetPoolActiveHealthCheck) *ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks {
+		if v == nil {
+			return nil
+		}
+		return v.HttpHealthChecks
+	}).(ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutput)
+}
+
+// Interval duration of health checking in seconds.
+func (o ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutput) Interval() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerTargetPoolActiveHealthCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Interval
+	}).(pulumi.StringPtrOutput)
+}
+
+// Interval duration threshold of the health checking in seconds.
+func (o ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutput) IntervalJitter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerTargetPoolActiveHealthCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IntervalJitter
+	}).(pulumi.StringPtrOutput)
+}
+
+// Active health checking timeout duration in seconds.
+func (o ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutput) Timeout() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerTargetPoolActiveHealthCheck) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Timeout
+	}).(pulumi.StringPtrOutput)
+}
+
+// Unhealthy threshold of the health checking.
+func (o ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutput) UnhealthyThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerTargetPoolActiveHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.UnhealthyThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+type ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks struct {
+	// List of HTTP status codes that indicate a healthy response.
+	OkStatuses []string `pulumi:"okStatuses"`
+	// Path to send the health check request to.
+	Path string `pulumi:"path"`
+}
+
+// ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksInput is an input type that accepts ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksArgs and ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksInput` via:
+//
+//	ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksArgs{...}
+type ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput() ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput
+	ToApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutputWithContext(context.Context) ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput
+}
+
+type ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksArgs struct {
+	// List of HTTP status codes that indicate a healthy response.
+	OkStatuses pulumi.StringArrayInput `pulumi:"okStatuses"`
+	// Path to send the health check request to.
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks)(nil)).Elem()
+}
+
+func (i ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksArgs) ToApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput() ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput {
+	return i.ToApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksArgs) ToApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutputWithContext(ctx context.Context) ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput)
+}
+
+func (i ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksArgs) ToApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutput() ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutput {
+	return i.ToApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksArgs) ToApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput).ToApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutputWithContext(ctx)
+}
+
+// ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrInput is an input type that accepts ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksArgs, ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtr and ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrInput` via:
+//
+//	        ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutput() ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutput
+	ToApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutputWithContext(context.Context) ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutput
+}
+
+type applicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrType ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksArgs
+
+func ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtr(v *ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksArgs) ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrInput {
+	return (*applicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrType)(v)
+}
+
+func (*applicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks)(nil)).Elem()
+}
+
+func (i *applicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrType) ToApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutput() ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutput {
+	return i.ToApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrType) ToApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutput)
+}
+
+type ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput) ToApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput() ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput) ToApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutputWithContext(ctx context.Context) ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput) ToApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutput() ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutput {
+	return o.ToApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput) ToApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks) *ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks {
+		return &v
+	}).(ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutput)
+}
+
+// List of HTTP status codes that indicate a healthy response.
+func (o ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput) OkStatuses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks) []string {
+		return v.OkStatuses
+	}).(pulumi.StringArrayOutput)
+}
+
+// Path to send the health check request to.
+func (o ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutput) ToApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutput() ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutput) ToApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutput) Elem() ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks) ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks
+		return ret
+	}).(ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput)
+}
+
+// List of HTTP status codes that indicate a healthy response.
+func (o ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutput) OkStatuses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks) []string {
+		if v == nil {
+			return nil
+		}
+		return v.OkStatuses
+	}).(pulumi.StringArrayOutput)
+}
+
+// Path to send the health check request to.
+func (o ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+type ApplicationLoadBalancerTargetPoolTarget struct {
+	// Target display name
+	DisplayName *string `pulumi:"displayName"`
+	// Private target IP, which must by unique within a target pool.
+	Ip string `pulumi:"ip"`
+}
+
+// ApplicationLoadBalancerTargetPoolTargetInput is an input type that accepts ApplicationLoadBalancerTargetPoolTargetArgs and ApplicationLoadBalancerTargetPoolTargetOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerTargetPoolTargetInput` via:
+//
+//	ApplicationLoadBalancerTargetPoolTargetArgs{...}
+type ApplicationLoadBalancerTargetPoolTargetInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerTargetPoolTargetOutput() ApplicationLoadBalancerTargetPoolTargetOutput
+	ToApplicationLoadBalancerTargetPoolTargetOutputWithContext(context.Context) ApplicationLoadBalancerTargetPoolTargetOutput
+}
+
+type ApplicationLoadBalancerTargetPoolTargetArgs struct {
+	// Target display name
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Private target IP, which must by unique within a target pool.
+	Ip pulumi.StringInput `pulumi:"ip"`
+}
+
+func (ApplicationLoadBalancerTargetPoolTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerTargetPoolTarget)(nil)).Elem()
+}
+
+func (i ApplicationLoadBalancerTargetPoolTargetArgs) ToApplicationLoadBalancerTargetPoolTargetOutput() ApplicationLoadBalancerTargetPoolTargetOutput {
+	return i.ToApplicationLoadBalancerTargetPoolTargetOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerTargetPoolTargetArgs) ToApplicationLoadBalancerTargetPoolTargetOutputWithContext(ctx context.Context) ApplicationLoadBalancerTargetPoolTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerTargetPoolTargetOutput)
+}
+
+// ApplicationLoadBalancerTargetPoolTargetArrayInput is an input type that accepts ApplicationLoadBalancerTargetPoolTargetArray and ApplicationLoadBalancerTargetPoolTargetArrayOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerTargetPoolTargetArrayInput` via:
+//
+//	ApplicationLoadBalancerTargetPoolTargetArray{ ApplicationLoadBalancerTargetPoolTargetArgs{...} }
+type ApplicationLoadBalancerTargetPoolTargetArrayInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerTargetPoolTargetArrayOutput() ApplicationLoadBalancerTargetPoolTargetArrayOutput
+	ToApplicationLoadBalancerTargetPoolTargetArrayOutputWithContext(context.Context) ApplicationLoadBalancerTargetPoolTargetArrayOutput
+}
+
+type ApplicationLoadBalancerTargetPoolTargetArray []ApplicationLoadBalancerTargetPoolTargetInput
+
+func (ApplicationLoadBalancerTargetPoolTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationLoadBalancerTargetPoolTarget)(nil)).Elem()
+}
+
+func (i ApplicationLoadBalancerTargetPoolTargetArray) ToApplicationLoadBalancerTargetPoolTargetArrayOutput() ApplicationLoadBalancerTargetPoolTargetArrayOutput {
+	return i.ToApplicationLoadBalancerTargetPoolTargetArrayOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerTargetPoolTargetArray) ToApplicationLoadBalancerTargetPoolTargetArrayOutputWithContext(ctx context.Context) ApplicationLoadBalancerTargetPoolTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerTargetPoolTargetArrayOutput)
+}
+
+type ApplicationLoadBalancerTargetPoolTargetOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerTargetPoolTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerTargetPoolTarget)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerTargetPoolTargetOutput) ToApplicationLoadBalancerTargetPoolTargetOutput() ApplicationLoadBalancerTargetPoolTargetOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerTargetPoolTargetOutput) ToApplicationLoadBalancerTargetPoolTargetOutputWithContext(ctx context.Context) ApplicationLoadBalancerTargetPoolTargetOutput {
+	return o
+}
+
+// Target display name
+func (o ApplicationLoadBalancerTargetPoolTargetOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerTargetPoolTarget) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Private target IP, which must by unique within a target pool.
+func (o ApplicationLoadBalancerTargetPoolTargetOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerTargetPoolTarget) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+type ApplicationLoadBalancerTargetPoolTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerTargetPoolTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ApplicationLoadBalancerTargetPoolTarget)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerTargetPoolTargetArrayOutput) ToApplicationLoadBalancerTargetPoolTargetArrayOutput() ApplicationLoadBalancerTargetPoolTargetArrayOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerTargetPoolTargetArrayOutput) ToApplicationLoadBalancerTargetPoolTargetArrayOutputWithContext(ctx context.Context) ApplicationLoadBalancerTargetPoolTargetArrayOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerTargetPoolTargetArrayOutput) Index(i pulumi.IntInput) ApplicationLoadBalancerTargetPoolTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ApplicationLoadBalancerTargetPoolTarget {
+		return vs[0].([]ApplicationLoadBalancerTargetPoolTarget)[vs[1].(int)]
+	}).(ApplicationLoadBalancerTargetPoolTargetOutput)
+}
+
+type ApplicationLoadBalancerTargetPoolTlsConfig struct {
+	// Specifies a custom Certificate Authority (CA). When provided, the target pool will trust certificates signed by this CA, in addition to any system-trusted CAs. This is useful for scenarios where the target pool needs to communicate with servers using self-signed or internally-issued certificates. Enabled needs to be set to true and skip validation to false for this option.
+	CustomCa *string `pulumi:"customCa"`
+	// Enable TLS (Transport Layer Security) bridging for the connection between Application Load Balancer and targets in this pool. When enabled, public CAs are trusted. Can be used in tandem with the options either custom CA or skip validation or alone.
+	Enabled *bool `pulumi:"enabled"`
+	// Bypass certificate validation for TLS bridging in this target pool. This option is insecure and can only be used with public CAs by setting enabled true. Meant to be used for testing purposes only!
+	SkipCertificateValidation *bool `pulumi:"skipCertificateValidation"`
+}
+
+// ApplicationLoadBalancerTargetPoolTlsConfigInput is an input type that accepts ApplicationLoadBalancerTargetPoolTlsConfigArgs and ApplicationLoadBalancerTargetPoolTlsConfigOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerTargetPoolTlsConfigInput` via:
+//
+//	ApplicationLoadBalancerTargetPoolTlsConfigArgs{...}
+type ApplicationLoadBalancerTargetPoolTlsConfigInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerTargetPoolTlsConfigOutput() ApplicationLoadBalancerTargetPoolTlsConfigOutput
+	ToApplicationLoadBalancerTargetPoolTlsConfigOutputWithContext(context.Context) ApplicationLoadBalancerTargetPoolTlsConfigOutput
+}
+
+type ApplicationLoadBalancerTargetPoolTlsConfigArgs struct {
+	// Specifies a custom Certificate Authority (CA). When provided, the target pool will trust certificates signed by this CA, in addition to any system-trusted CAs. This is useful for scenarios where the target pool needs to communicate with servers using self-signed or internally-issued certificates. Enabled needs to be set to true and skip validation to false for this option.
+	CustomCa pulumi.StringPtrInput `pulumi:"customCa"`
+	// Enable TLS (Transport Layer Security) bridging for the connection between Application Load Balancer and targets in this pool. When enabled, public CAs are trusted. Can be used in tandem with the options either custom CA or skip validation or alone.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Bypass certificate validation for TLS bridging in this target pool. This option is insecure and can only be used with public CAs by setting enabled true. Meant to be used for testing purposes only!
+	SkipCertificateValidation pulumi.BoolPtrInput `pulumi:"skipCertificateValidation"`
+}
+
+func (ApplicationLoadBalancerTargetPoolTlsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerTargetPoolTlsConfig)(nil)).Elem()
+}
+
+func (i ApplicationLoadBalancerTargetPoolTlsConfigArgs) ToApplicationLoadBalancerTargetPoolTlsConfigOutput() ApplicationLoadBalancerTargetPoolTlsConfigOutput {
+	return i.ToApplicationLoadBalancerTargetPoolTlsConfigOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerTargetPoolTlsConfigArgs) ToApplicationLoadBalancerTargetPoolTlsConfigOutputWithContext(ctx context.Context) ApplicationLoadBalancerTargetPoolTlsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerTargetPoolTlsConfigOutput)
+}
+
+func (i ApplicationLoadBalancerTargetPoolTlsConfigArgs) ToApplicationLoadBalancerTargetPoolTlsConfigPtrOutput() ApplicationLoadBalancerTargetPoolTlsConfigPtrOutput {
+	return i.ToApplicationLoadBalancerTargetPoolTlsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerTargetPoolTlsConfigArgs) ToApplicationLoadBalancerTargetPoolTlsConfigPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerTargetPoolTlsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerTargetPoolTlsConfigOutput).ToApplicationLoadBalancerTargetPoolTlsConfigPtrOutputWithContext(ctx)
+}
+
+// ApplicationLoadBalancerTargetPoolTlsConfigPtrInput is an input type that accepts ApplicationLoadBalancerTargetPoolTlsConfigArgs, ApplicationLoadBalancerTargetPoolTlsConfigPtr and ApplicationLoadBalancerTargetPoolTlsConfigPtrOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerTargetPoolTlsConfigPtrInput` via:
+//
+//	        ApplicationLoadBalancerTargetPoolTlsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationLoadBalancerTargetPoolTlsConfigPtrInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerTargetPoolTlsConfigPtrOutput() ApplicationLoadBalancerTargetPoolTlsConfigPtrOutput
+	ToApplicationLoadBalancerTargetPoolTlsConfigPtrOutputWithContext(context.Context) ApplicationLoadBalancerTargetPoolTlsConfigPtrOutput
+}
+
+type applicationLoadBalancerTargetPoolTlsConfigPtrType ApplicationLoadBalancerTargetPoolTlsConfigArgs
+
+func ApplicationLoadBalancerTargetPoolTlsConfigPtr(v *ApplicationLoadBalancerTargetPoolTlsConfigArgs) ApplicationLoadBalancerTargetPoolTlsConfigPtrInput {
+	return (*applicationLoadBalancerTargetPoolTlsConfigPtrType)(v)
+}
+
+func (*applicationLoadBalancerTargetPoolTlsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLoadBalancerTargetPoolTlsConfig)(nil)).Elem()
+}
+
+func (i *applicationLoadBalancerTargetPoolTlsConfigPtrType) ToApplicationLoadBalancerTargetPoolTlsConfigPtrOutput() ApplicationLoadBalancerTargetPoolTlsConfigPtrOutput {
+	return i.ToApplicationLoadBalancerTargetPoolTlsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationLoadBalancerTargetPoolTlsConfigPtrType) ToApplicationLoadBalancerTargetPoolTlsConfigPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerTargetPoolTlsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerTargetPoolTlsConfigPtrOutput)
+}
+
+type ApplicationLoadBalancerTargetPoolTlsConfigOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerTargetPoolTlsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerTargetPoolTlsConfig)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerTargetPoolTlsConfigOutput) ToApplicationLoadBalancerTargetPoolTlsConfigOutput() ApplicationLoadBalancerTargetPoolTlsConfigOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerTargetPoolTlsConfigOutput) ToApplicationLoadBalancerTargetPoolTlsConfigOutputWithContext(ctx context.Context) ApplicationLoadBalancerTargetPoolTlsConfigOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerTargetPoolTlsConfigOutput) ToApplicationLoadBalancerTargetPoolTlsConfigPtrOutput() ApplicationLoadBalancerTargetPoolTlsConfigPtrOutput {
+	return o.ToApplicationLoadBalancerTargetPoolTlsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationLoadBalancerTargetPoolTlsConfigOutput) ToApplicationLoadBalancerTargetPoolTlsConfigPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerTargetPoolTlsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationLoadBalancerTargetPoolTlsConfig) *ApplicationLoadBalancerTargetPoolTlsConfig {
+		return &v
+	}).(ApplicationLoadBalancerTargetPoolTlsConfigPtrOutput)
+}
+
+// Specifies a custom Certificate Authority (CA). When provided, the target pool will trust certificates signed by this CA, in addition to any system-trusted CAs. This is useful for scenarios where the target pool needs to communicate with servers using self-signed or internally-issued certificates. Enabled needs to be set to true and skip validation to false for this option.
+func (o ApplicationLoadBalancerTargetPoolTlsConfigOutput) CustomCa() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerTargetPoolTlsConfig) *string { return v.CustomCa }).(pulumi.StringPtrOutput)
+}
+
+// Enable TLS (Transport Layer Security) bridging for the connection between Application Load Balancer and targets in this pool. When enabled, public CAs are trusted. Can be used in tandem with the options either custom CA or skip validation or alone.
+func (o ApplicationLoadBalancerTargetPoolTlsConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerTargetPoolTlsConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Bypass certificate validation for TLS bridging in this target pool. This option is insecure and can only be used with public CAs by setting enabled true. Meant to be used for testing purposes only!
+func (o ApplicationLoadBalancerTargetPoolTlsConfigOutput) SkipCertificateValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerTargetPoolTlsConfig) *bool { return v.SkipCertificateValidation }).(pulumi.BoolPtrOutput)
+}
+
+type ApplicationLoadBalancerTargetPoolTlsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerTargetPoolTlsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLoadBalancerTargetPoolTlsConfig)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerTargetPoolTlsConfigPtrOutput) ToApplicationLoadBalancerTargetPoolTlsConfigPtrOutput() ApplicationLoadBalancerTargetPoolTlsConfigPtrOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerTargetPoolTlsConfigPtrOutput) ToApplicationLoadBalancerTargetPoolTlsConfigPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerTargetPoolTlsConfigPtrOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerTargetPoolTlsConfigPtrOutput) Elem() ApplicationLoadBalancerTargetPoolTlsConfigOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerTargetPoolTlsConfig) ApplicationLoadBalancerTargetPoolTlsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationLoadBalancerTargetPoolTlsConfig
+		return ret
+	}).(ApplicationLoadBalancerTargetPoolTlsConfigOutput)
+}
+
+// Specifies a custom Certificate Authority (CA). When provided, the target pool will trust certificates signed by this CA, in addition to any system-trusted CAs. This is useful for scenarios where the target pool needs to communicate with servers using self-signed or internally-issued certificates. Enabled needs to be set to true and skip validation to false for this option.
+func (o ApplicationLoadBalancerTargetPoolTlsConfigPtrOutput) CustomCa() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerTargetPoolTlsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CustomCa
+	}).(pulumi.StringPtrOutput)
+}
+
+// Enable TLS (Transport Layer Security) bridging for the connection between Application Load Balancer and targets in this pool. When enabled, public CAs are trusted. Can be used in tandem with the options either custom CA or skip validation or alone.
+func (o ApplicationLoadBalancerTargetPoolTlsConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerTargetPoolTlsConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Bypass certificate validation for TLS bridging in this target pool. This option is insecure and can only be used with public CAs by setting enabled true. Meant to be used for testing purposes only!
+func (o ApplicationLoadBalancerTargetPoolTlsConfigPtrOutput) SkipCertificateValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerTargetPoolTlsConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SkipCertificateValidation
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ApplicationLoadBalancerTargetSecurityGroup struct {
+	// ID of the security Group
+	Id *string `pulumi:"id"`
+	// Name of the security Group
+	Name *string `pulumi:"name"`
+}
+
+// ApplicationLoadBalancerTargetSecurityGroupInput is an input type that accepts ApplicationLoadBalancerTargetSecurityGroupArgs and ApplicationLoadBalancerTargetSecurityGroupOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerTargetSecurityGroupInput` via:
+//
+//	ApplicationLoadBalancerTargetSecurityGroupArgs{...}
+type ApplicationLoadBalancerTargetSecurityGroupInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerTargetSecurityGroupOutput() ApplicationLoadBalancerTargetSecurityGroupOutput
+	ToApplicationLoadBalancerTargetSecurityGroupOutputWithContext(context.Context) ApplicationLoadBalancerTargetSecurityGroupOutput
+}
+
+type ApplicationLoadBalancerTargetSecurityGroupArgs struct {
+	// ID of the security Group
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Name of the security Group
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (ApplicationLoadBalancerTargetSecurityGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerTargetSecurityGroup)(nil)).Elem()
+}
+
+func (i ApplicationLoadBalancerTargetSecurityGroupArgs) ToApplicationLoadBalancerTargetSecurityGroupOutput() ApplicationLoadBalancerTargetSecurityGroupOutput {
+	return i.ToApplicationLoadBalancerTargetSecurityGroupOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerTargetSecurityGroupArgs) ToApplicationLoadBalancerTargetSecurityGroupOutputWithContext(ctx context.Context) ApplicationLoadBalancerTargetSecurityGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerTargetSecurityGroupOutput)
+}
+
+func (i ApplicationLoadBalancerTargetSecurityGroupArgs) ToApplicationLoadBalancerTargetSecurityGroupPtrOutput() ApplicationLoadBalancerTargetSecurityGroupPtrOutput {
+	return i.ToApplicationLoadBalancerTargetSecurityGroupPtrOutputWithContext(context.Background())
+}
+
+func (i ApplicationLoadBalancerTargetSecurityGroupArgs) ToApplicationLoadBalancerTargetSecurityGroupPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerTargetSecurityGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerTargetSecurityGroupOutput).ToApplicationLoadBalancerTargetSecurityGroupPtrOutputWithContext(ctx)
+}
+
+// ApplicationLoadBalancerTargetSecurityGroupPtrInput is an input type that accepts ApplicationLoadBalancerTargetSecurityGroupArgs, ApplicationLoadBalancerTargetSecurityGroupPtr and ApplicationLoadBalancerTargetSecurityGroupPtrOutput values.
+// You can construct a concrete instance of `ApplicationLoadBalancerTargetSecurityGroupPtrInput` via:
+//
+//	        ApplicationLoadBalancerTargetSecurityGroupArgs{...}
+//
+//	or:
+//
+//	        nil
+type ApplicationLoadBalancerTargetSecurityGroupPtrInput interface {
+	pulumi.Input
+
+	ToApplicationLoadBalancerTargetSecurityGroupPtrOutput() ApplicationLoadBalancerTargetSecurityGroupPtrOutput
+	ToApplicationLoadBalancerTargetSecurityGroupPtrOutputWithContext(context.Context) ApplicationLoadBalancerTargetSecurityGroupPtrOutput
+}
+
+type applicationLoadBalancerTargetSecurityGroupPtrType ApplicationLoadBalancerTargetSecurityGroupArgs
+
+func ApplicationLoadBalancerTargetSecurityGroupPtr(v *ApplicationLoadBalancerTargetSecurityGroupArgs) ApplicationLoadBalancerTargetSecurityGroupPtrInput {
+	return (*applicationLoadBalancerTargetSecurityGroupPtrType)(v)
+}
+
+func (*applicationLoadBalancerTargetSecurityGroupPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLoadBalancerTargetSecurityGroup)(nil)).Elem()
+}
+
+func (i *applicationLoadBalancerTargetSecurityGroupPtrType) ToApplicationLoadBalancerTargetSecurityGroupPtrOutput() ApplicationLoadBalancerTargetSecurityGroupPtrOutput {
+	return i.ToApplicationLoadBalancerTargetSecurityGroupPtrOutputWithContext(context.Background())
+}
+
+func (i *applicationLoadBalancerTargetSecurityGroupPtrType) ToApplicationLoadBalancerTargetSecurityGroupPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerTargetSecurityGroupPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ApplicationLoadBalancerTargetSecurityGroupPtrOutput)
+}
+
+type ApplicationLoadBalancerTargetSecurityGroupOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerTargetSecurityGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApplicationLoadBalancerTargetSecurityGroup)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerTargetSecurityGroupOutput) ToApplicationLoadBalancerTargetSecurityGroupOutput() ApplicationLoadBalancerTargetSecurityGroupOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerTargetSecurityGroupOutput) ToApplicationLoadBalancerTargetSecurityGroupOutputWithContext(ctx context.Context) ApplicationLoadBalancerTargetSecurityGroupOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerTargetSecurityGroupOutput) ToApplicationLoadBalancerTargetSecurityGroupPtrOutput() ApplicationLoadBalancerTargetSecurityGroupPtrOutput {
+	return o.ToApplicationLoadBalancerTargetSecurityGroupPtrOutputWithContext(context.Background())
+}
+
+func (o ApplicationLoadBalancerTargetSecurityGroupOutput) ToApplicationLoadBalancerTargetSecurityGroupPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerTargetSecurityGroupPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApplicationLoadBalancerTargetSecurityGroup) *ApplicationLoadBalancerTargetSecurityGroup {
+		return &v
+	}).(ApplicationLoadBalancerTargetSecurityGroupPtrOutput)
+}
+
+// ID of the security Group
+func (o ApplicationLoadBalancerTargetSecurityGroupOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerTargetSecurityGroup) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Name of the security Group
+func (o ApplicationLoadBalancerTargetSecurityGroupOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerTargetSecurityGroup) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type ApplicationLoadBalancerTargetSecurityGroupPtrOutput struct{ *pulumi.OutputState }
+
+func (ApplicationLoadBalancerTargetSecurityGroupPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApplicationLoadBalancerTargetSecurityGroup)(nil)).Elem()
+}
+
+func (o ApplicationLoadBalancerTargetSecurityGroupPtrOutput) ToApplicationLoadBalancerTargetSecurityGroupPtrOutput() ApplicationLoadBalancerTargetSecurityGroupPtrOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerTargetSecurityGroupPtrOutput) ToApplicationLoadBalancerTargetSecurityGroupPtrOutputWithContext(ctx context.Context) ApplicationLoadBalancerTargetSecurityGroupPtrOutput {
+	return o
+}
+
+func (o ApplicationLoadBalancerTargetSecurityGroupPtrOutput) Elem() ApplicationLoadBalancerTargetSecurityGroupOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerTargetSecurityGroup) ApplicationLoadBalancerTargetSecurityGroup {
+		if v != nil {
+			return *v
+		}
+		var ret ApplicationLoadBalancerTargetSecurityGroup
+		return ret
+	}).(ApplicationLoadBalancerTargetSecurityGroupOutput)
+}
+
+// ID of the security Group
+func (o ApplicationLoadBalancerTargetSecurityGroupPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerTargetSecurityGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the security Group
+func (o ApplicationLoadBalancerTargetSecurityGroupPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerTargetSecurityGroup) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
 type CdnCustomDomainCertificate struct {
 	// The PEM-encoded TLS certificate. Required for custom certificates.
 	Certificate *string `pulumi:"certificate"`
@@ -13044,6 +16434,2030 @@ func (o VolumeSourcePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetApplicationLoadBalancerError struct {
+	// The error description contains additional helpful user information to fix the error state of the Application Load Balancer. For example the IP 45.135.247.139 does not exist in the project, then the description will report: Floating IP "45.135.247.139" could not be found.
+	Description string `pulumi:"description"`
+	// The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`.
+	Type string `pulumi:"type"`
+}
+
+// GetApplicationLoadBalancerErrorInput is an input type that accepts GetApplicationLoadBalancerErrorArgs and GetApplicationLoadBalancerErrorOutput values.
+// You can construct a concrete instance of `GetApplicationLoadBalancerErrorInput` via:
+//
+//	GetApplicationLoadBalancerErrorArgs{...}
+type GetApplicationLoadBalancerErrorInput interface {
+	pulumi.Input
+
+	ToGetApplicationLoadBalancerErrorOutput() GetApplicationLoadBalancerErrorOutput
+	ToGetApplicationLoadBalancerErrorOutputWithContext(context.Context) GetApplicationLoadBalancerErrorOutput
+}
+
+type GetApplicationLoadBalancerErrorArgs struct {
+	// The error description contains additional helpful user information to fix the error state of the Application Load Balancer. For example the IP 45.135.247.139 does not exist in the project, then the description will report: Floating IP "45.135.247.139" could not be found.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetApplicationLoadBalancerErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerError)(nil)).Elem()
+}
+
+func (i GetApplicationLoadBalancerErrorArgs) ToGetApplicationLoadBalancerErrorOutput() GetApplicationLoadBalancerErrorOutput {
+	return i.ToGetApplicationLoadBalancerErrorOutputWithContext(context.Background())
+}
+
+func (i GetApplicationLoadBalancerErrorArgs) ToGetApplicationLoadBalancerErrorOutputWithContext(ctx context.Context) GetApplicationLoadBalancerErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancerErrorOutput)
+}
+
+// GetApplicationLoadBalancerErrorArrayInput is an input type that accepts GetApplicationLoadBalancerErrorArray and GetApplicationLoadBalancerErrorArrayOutput values.
+// You can construct a concrete instance of `GetApplicationLoadBalancerErrorArrayInput` via:
+//
+//	GetApplicationLoadBalancerErrorArray{ GetApplicationLoadBalancerErrorArgs{...} }
+type GetApplicationLoadBalancerErrorArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationLoadBalancerErrorArrayOutput() GetApplicationLoadBalancerErrorArrayOutput
+	ToGetApplicationLoadBalancerErrorArrayOutputWithContext(context.Context) GetApplicationLoadBalancerErrorArrayOutput
+}
+
+type GetApplicationLoadBalancerErrorArray []GetApplicationLoadBalancerErrorInput
+
+func (GetApplicationLoadBalancerErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationLoadBalancerError)(nil)).Elem()
+}
+
+func (i GetApplicationLoadBalancerErrorArray) ToGetApplicationLoadBalancerErrorArrayOutput() GetApplicationLoadBalancerErrorArrayOutput {
+	return i.ToGetApplicationLoadBalancerErrorArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationLoadBalancerErrorArray) ToGetApplicationLoadBalancerErrorArrayOutputWithContext(ctx context.Context) GetApplicationLoadBalancerErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancerErrorArrayOutput)
+}
+
+type GetApplicationLoadBalancerErrorOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationLoadBalancerErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerError)(nil)).Elem()
+}
+
+func (o GetApplicationLoadBalancerErrorOutput) ToGetApplicationLoadBalancerErrorOutput() GetApplicationLoadBalancerErrorOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerErrorOutput) ToGetApplicationLoadBalancerErrorOutputWithContext(ctx context.Context) GetApplicationLoadBalancerErrorOutput {
+	return o
+}
+
+// The error description contains additional helpful user information to fix the error state of the Application Load Balancer. For example the IP 45.135.247.139 does not exist in the project, then the description will report: Floating IP "45.135.247.139" could not be found.
+func (o GetApplicationLoadBalancerErrorOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerError) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`.
+func (o GetApplicationLoadBalancerErrorOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerError) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetApplicationLoadBalancerErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationLoadBalancerErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationLoadBalancerError)(nil)).Elem()
+}
+
+func (o GetApplicationLoadBalancerErrorArrayOutput) ToGetApplicationLoadBalancerErrorArrayOutput() GetApplicationLoadBalancerErrorArrayOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerErrorArrayOutput) ToGetApplicationLoadBalancerErrorArrayOutputWithContext(ctx context.Context) GetApplicationLoadBalancerErrorArrayOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerErrorArrayOutput) Index(i pulumi.IntInput) GetApplicationLoadBalancerErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationLoadBalancerError {
+		return vs[0].([]GetApplicationLoadBalancerError)[vs[1].(int)]
+	}).(GetApplicationLoadBalancerErrorOutput)
+}
+
+type GetApplicationLoadBalancerListener struct {
+	// Configuration for HTTP traffic.
+	Http GetApplicationLoadBalancerListenerHttp `pulumi:"http"`
+	// Configuration for handling HTTPS traffic on this listener.
+	Https GetApplicationLoadBalancerListenerHttps `pulumi:"https"`
+	// Unique name for the listener
+	Name string `pulumi:"name"`
+	// Port number on which the listener receives incoming traffic.
+	Port int `pulumi:"port"`
+	// Protocol is the highest network protocol we understand to load balance. Possible values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_HTTP`, `PROTOCOL_HTTPS`.
+	Protocol string `pulumi:"protocol"`
+	// Enable Web Application Firewall (WAF), referenced by name. See "Application Load Balancer - Web Application Firewall API" for more information.
+	WafConfigName string `pulumi:"wafConfigName"`
+}
+
+// GetApplicationLoadBalancerListenerInput is an input type that accepts GetApplicationLoadBalancerListenerArgs and GetApplicationLoadBalancerListenerOutput values.
+// You can construct a concrete instance of `GetApplicationLoadBalancerListenerInput` via:
+//
+//	GetApplicationLoadBalancerListenerArgs{...}
+type GetApplicationLoadBalancerListenerInput interface {
+	pulumi.Input
+
+	ToGetApplicationLoadBalancerListenerOutput() GetApplicationLoadBalancerListenerOutput
+	ToGetApplicationLoadBalancerListenerOutputWithContext(context.Context) GetApplicationLoadBalancerListenerOutput
+}
+
+type GetApplicationLoadBalancerListenerArgs struct {
+	// Configuration for HTTP traffic.
+	Http GetApplicationLoadBalancerListenerHttpInput `pulumi:"http"`
+	// Configuration for handling HTTPS traffic on this listener.
+	Https GetApplicationLoadBalancerListenerHttpsInput `pulumi:"https"`
+	// Unique name for the listener
+	Name pulumi.StringInput `pulumi:"name"`
+	// Port number on which the listener receives incoming traffic.
+	Port pulumi.IntInput `pulumi:"port"`
+	// Protocol is the highest network protocol we understand to load balance. Possible values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_HTTP`, `PROTOCOL_HTTPS`.
+	Protocol pulumi.StringInput `pulumi:"protocol"`
+	// Enable Web Application Firewall (WAF), referenced by name. See "Application Load Balancer - Web Application Firewall API" for more information.
+	WafConfigName pulumi.StringInput `pulumi:"wafConfigName"`
+}
+
+func (GetApplicationLoadBalancerListenerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerListener)(nil)).Elem()
+}
+
+func (i GetApplicationLoadBalancerListenerArgs) ToGetApplicationLoadBalancerListenerOutput() GetApplicationLoadBalancerListenerOutput {
+	return i.ToGetApplicationLoadBalancerListenerOutputWithContext(context.Background())
+}
+
+func (i GetApplicationLoadBalancerListenerArgs) ToGetApplicationLoadBalancerListenerOutputWithContext(ctx context.Context) GetApplicationLoadBalancerListenerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancerListenerOutput)
+}
+
+// GetApplicationLoadBalancerListenerArrayInput is an input type that accepts GetApplicationLoadBalancerListenerArray and GetApplicationLoadBalancerListenerArrayOutput values.
+// You can construct a concrete instance of `GetApplicationLoadBalancerListenerArrayInput` via:
+//
+//	GetApplicationLoadBalancerListenerArray{ GetApplicationLoadBalancerListenerArgs{...} }
+type GetApplicationLoadBalancerListenerArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationLoadBalancerListenerArrayOutput() GetApplicationLoadBalancerListenerArrayOutput
+	ToGetApplicationLoadBalancerListenerArrayOutputWithContext(context.Context) GetApplicationLoadBalancerListenerArrayOutput
+}
+
+type GetApplicationLoadBalancerListenerArray []GetApplicationLoadBalancerListenerInput
+
+func (GetApplicationLoadBalancerListenerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationLoadBalancerListener)(nil)).Elem()
+}
+
+func (i GetApplicationLoadBalancerListenerArray) ToGetApplicationLoadBalancerListenerArrayOutput() GetApplicationLoadBalancerListenerArrayOutput {
+	return i.ToGetApplicationLoadBalancerListenerArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationLoadBalancerListenerArray) ToGetApplicationLoadBalancerListenerArrayOutputWithContext(ctx context.Context) GetApplicationLoadBalancerListenerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancerListenerArrayOutput)
+}
+
+type GetApplicationLoadBalancerListenerOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationLoadBalancerListenerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerListener)(nil)).Elem()
+}
+
+func (o GetApplicationLoadBalancerListenerOutput) ToGetApplicationLoadBalancerListenerOutput() GetApplicationLoadBalancerListenerOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerListenerOutput) ToGetApplicationLoadBalancerListenerOutputWithContext(ctx context.Context) GetApplicationLoadBalancerListenerOutput {
+	return o
+}
+
+// Configuration for HTTP traffic.
+func (o GetApplicationLoadBalancerListenerOutput) Http() GetApplicationLoadBalancerListenerHttpOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerListener) GetApplicationLoadBalancerListenerHttp { return v.Http }).(GetApplicationLoadBalancerListenerHttpOutput)
+}
+
+// Configuration for handling HTTPS traffic on this listener.
+func (o GetApplicationLoadBalancerListenerOutput) Https() GetApplicationLoadBalancerListenerHttpsOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerListener) GetApplicationLoadBalancerListenerHttps { return v.Https }).(GetApplicationLoadBalancerListenerHttpsOutput)
+}
+
+// Unique name for the listener
+func (o GetApplicationLoadBalancerListenerOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerListener) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Port number on which the listener receives incoming traffic.
+func (o GetApplicationLoadBalancerListenerOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerListener) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Protocol is the highest network protocol we understand to load balance. Possible values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_HTTP`, `PROTOCOL_HTTPS`.
+func (o GetApplicationLoadBalancerListenerOutput) Protocol() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerListener) string { return v.Protocol }).(pulumi.StringOutput)
+}
+
+// Enable Web Application Firewall (WAF), referenced by name. See "Application Load Balancer - Web Application Firewall API" for more information.
+func (o GetApplicationLoadBalancerListenerOutput) WafConfigName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerListener) string { return v.WafConfigName }).(pulumi.StringOutput)
+}
+
+type GetApplicationLoadBalancerListenerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationLoadBalancerListenerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationLoadBalancerListener)(nil)).Elem()
+}
+
+func (o GetApplicationLoadBalancerListenerArrayOutput) ToGetApplicationLoadBalancerListenerArrayOutput() GetApplicationLoadBalancerListenerArrayOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerListenerArrayOutput) ToGetApplicationLoadBalancerListenerArrayOutputWithContext(ctx context.Context) GetApplicationLoadBalancerListenerArrayOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerListenerArrayOutput) Index(i pulumi.IntInput) GetApplicationLoadBalancerListenerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationLoadBalancerListener {
+		return vs[0].([]GetApplicationLoadBalancerListener)[vs[1].(int)]
+	}).(GetApplicationLoadBalancerListenerOutput)
+}
+
+type GetApplicationLoadBalancerListenerHttp struct {
+	// Defines routing rules grouped by hostname.
+	Hosts []GetApplicationLoadBalancerListenerHttpHost `pulumi:"hosts"`
+}
+
+// GetApplicationLoadBalancerListenerHttpInput is an input type that accepts GetApplicationLoadBalancerListenerHttpArgs and GetApplicationLoadBalancerListenerHttpOutput values.
+// You can construct a concrete instance of `GetApplicationLoadBalancerListenerHttpInput` via:
+//
+//	GetApplicationLoadBalancerListenerHttpArgs{...}
+type GetApplicationLoadBalancerListenerHttpInput interface {
+	pulumi.Input
+
+	ToGetApplicationLoadBalancerListenerHttpOutput() GetApplicationLoadBalancerListenerHttpOutput
+	ToGetApplicationLoadBalancerListenerHttpOutputWithContext(context.Context) GetApplicationLoadBalancerListenerHttpOutput
+}
+
+type GetApplicationLoadBalancerListenerHttpArgs struct {
+	// Defines routing rules grouped by hostname.
+	Hosts GetApplicationLoadBalancerListenerHttpHostArrayInput `pulumi:"hosts"`
+}
+
+func (GetApplicationLoadBalancerListenerHttpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerListenerHttp)(nil)).Elem()
+}
+
+func (i GetApplicationLoadBalancerListenerHttpArgs) ToGetApplicationLoadBalancerListenerHttpOutput() GetApplicationLoadBalancerListenerHttpOutput {
+	return i.ToGetApplicationLoadBalancerListenerHttpOutputWithContext(context.Background())
+}
+
+func (i GetApplicationLoadBalancerListenerHttpArgs) ToGetApplicationLoadBalancerListenerHttpOutputWithContext(ctx context.Context) GetApplicationLoadBalancerListenerHttpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancerListenerHttpOutput)
+}
+
+type GetApplicationLoadBalancerListenerHttpOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationLoadBalancerListenerHttpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerListenerHttp)(nil)).Elem()
+}
+
+func (o GetApplicationLoadBalancerListenerHttpOutput) ToGetApplicationLoadBalancerListenerHttpOutput() GetApplicationLoadBalancerListenerHttpOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerListenerHttpOutput) ToGetApplicationLoadBalancerListenerHttpOutputWithContext(ctx context.Context) GetApplicationLoadBalancerListenerHttpOutput {
+	return o
+}
+
+// Defines routing rules grouped by hostname.
+func (o GetApplicationLoadBalancerListenerHttpOutput) Hosts() GetApplicationLoadBalancerListenerHttpHostArrayOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerListenerHttp) []GetApplicationLoadBalancerListenerHttpHost {
+		return v.Hosts
+	}).(GetApplicationLoadBalancerListenerHttpHostArrayOutput)
+}
+
+type GetApplicationLoadBalancerListenerHttpHost struct {
+	// Hostname to match. Supports wildcards (e.g. *.example.com).
+	Host string `pulumi:"host"`
+	// Routing rules under the specified host, matched by path prefix.
+	Rules []GetApplicationLoadBalancerListenerHttpHostRule `pulumi:"rules"`
+}
+
+// GetApplicationLoadBalancerListenerHttpHostInput is an input type that accepts GetApplicationLoadBalancerListenerHttpHostArgs and GetApplicationLoadBalancerListenerHttpHostOutput values.
+// You can construct a concrete instance of `GetApplicationLoadBalancerListenerHttpHostInput` via:
+//
+//	GetApplicationLoadBalancerListenerHttpHostArgs{...}
+type GetApplicationLoadBalancerListenerHttpHostInput interface {
+	pulumi.Input
+
+	ToGetApplicationLoadBalancerListenerHttpHostOutput() GetApplicationLoadBalancerListenerHttpHostOutput
+	ToGetApplicationLoadBalancerListenerHttpHostOutputWithContext(context.Context) GetApplicationLoadBalancerListenerHttpHostOutput
+}
+
+type GetApplicationLoadBalancerListenerHttpHostArgs struct {
+	// Hostname to match. Supports wildcards (e.g. *.example.com).
+	Host pulumi.StringInput `pulumi:"host"`
+	// Routing rules under the specified host, matched by path prefix.
+	Rules GetApplicationLoadBalancerListenerHttpHostRuleArrayInput `pulumi:"rules"`
+}
+
+func (GetApplicationLoadBalancerListenerHttpHostArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerListenerHttpHost)(nil)).Elem()
+}
+
+func (i GetApplicationLoadBalancerListenerHttpHostArgs) ToGetApplicationLoadBalancerListenerHttpHostOutput() GetApplicationLoadBalancerListenerHttpHostOutput {
+	return i.ToGetApplicationLoadBalancerListenerHttpHostOutputWithContext(context.Background())
+}
+
+func (i GetApplicationLoadBalancerListenerHttpHostArgs) ToGetApplicationLoadBalancerListenerHttpHostOutputWithContext(ctx context.Context) GetApplicationLoadBalancerListenerHttpHostOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancerListenerHttpHostOutput)
+}
+
+// GetApplicationLoadBalancerListenerHttpHostArrayInput is an input type that accepts GetApplicationLoadBalancerListenerHttpHostArray and GetApplicationLoadBalancerListenerHttpHostArrayOutput values.
+// You can construct a concrete instance of `GetApplicationLoadBalancerListenerHttpHostArrayInput` via:
+//
+//	GetApplicationLoadBalancerListenerHttpHostArray{ GetApplicationLoadBalancerListenerHttpHostArgs{...} }
+type GetApplicationLoadBalancerListenerHttpHostArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationLoadBalancerListenerHttpHostArrayOutput() GetApplicationLoadBalancerListenerHttpHostArrayOutput
+	ToGetApplicationLoadBalancerListenerHttpHostArrayOutputWithContext(context.Context) GetApplicationLoadBalancerListenerHttpHostArrayOutput
+}
+
+type GetApplicationLoadBalancerListenerHttpHostArray []GetApplicationLoadBalancerListenerHttpHostInput
+
+func (GetApplicationLoadBalancerListenerHttpHostArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationLoadBalancerListenerHttpHost)(nil)).Elem()
+}
+
+func (i GetApplicationLoadBalancerListenerHttpHostArray) ToGetApplicationLoadBalancerListenerHttpHostArrayOutput() GetApplicationLoadBalancerListenerHttpHostArrayOutput {
+	return i.ToGetApplicationLoadBalancerListenerHttpHostArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationLoadBalancerListenerHttpHostArray) ToGetApplicationLoadBalancerListenerHttpHostArrayOutputWithContext(ctx context.Context) GetApplicationLoadBalancerListenerHttpHostArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancerListenerHttpHostArrayOutput)
+}
+
+type GetApplicationLoadBalancerListenerHttpHostOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationLoadBalancerListenerHttpHostOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerListenerHttpHost)(nil)).Elem()
+}
+
+func (o GetApplicationLoadBalancerListenerHttpHostOutput) ToGetApplicationLoadBalancerListenerHttpHostOutput() GetApplicationLoadBalancerListenerHttpHostOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerListenerHttpHostOutput) ToGetApplicationLoadBalancerListenerHttpHostOutputWithContext(ctx context.Context) GetApplicationLoadBalancerListenerHttpHostOutput {
+	return o
+}
+
+// Hostname to match. Supports wildcards (e.g. *.example.com).
+func (o GetApplicationLoadBalancerListenerHttpHostOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerListenerHttpHost) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// Routing rules under the specified host, matched by path prefix.
+func (o GetApplicationLoadBalancerListenerHttpHostOutput) Rules() GetApplicationLoadBalancerListenerHttpHostRuleArrayOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerListenerHttpHost) []GetApplicationLoadBalancerListenerHttpHostRule {
+		return v.Rules
+	}).(GetApplicationLoadBalancerListenerHttpHostRuleArrayOutput)
+}
+
+type GetApplicationLoadBalancerListenerHttpHostArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationLoadBalancerListenerHttpHostArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationLoadBalancerListenerHttpHost)(nil)).Elem()
+}
+
+func (o GetApplicationLoadBalancerListenerHttpHostArrayOutput) ToGetApplicationLoadBalancerListenerHttpHostArrayOutput() GetApplicationLoadBalancerListenerHttpHostArrayOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerListenerHttpHostArrayOutput) ToGetApplicationLoadBalancerListenerHttpHostArrayOutputWithContext(ctx context.Context) GetApplicationLoadBalancerListenerHttpHostArrayOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerListenerHttpHostArrayOutput) Index(i pulumi.IntInput) GetApplicationLoadBalancerListenerHttpHostOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationLoadBalancerListenerHttpHost {
+		return vs[0].([]GetApplicationLoadBalancerListenerHttpHost)[vs[1].(int)]
+	}).(GetApplicationLoadBalancerListenerHttpHostOutput)
+}
+
+type GetApplicationLoadBalancerListenerHttpHostRule struct {
+	// Routing persistence via cookies.
+	CookiePersistence GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistence `pulumi:"cookiePersistence"`
+	// Headers for the rule.
+	Headers []GetApplicationLoadBalancerListenerHttpHostRuleHeader `pulumi:"headers"`
+	// Routing via path.
+	Path GetApplicationLoadBalancerListenerHttpHostRulePath `pulumi:"path"`
+	// Query parameters for the rule.
+	QueryParameters []GetApplicationLoadBalancerListenerHttpHostRuleQueryParameter `pulumi:"queryParameters"`
+	// Reference target pool by target pool name.
+	TargetPool string `pulumi:"targetPool"`
+	// If enabled, when client sends an HTTP request with and Upgrade header, indicating the desire to establish a Websocket connection, if backend server supports WebSocket, it responds with HTTP 101 status code, switching protocols from HTTP to WebSocket. Hence the client and the server can exchange data in real-time using one long-lived TCP connection.
+	WebSocket bool `pulumi:"webSocket"`
+}
+
+// GetApplicationLoadBalancerListenerHttpHostRuleInput is an input type that accepts GetApplicationLoadBalancerListenerHttpHostRuleArgs and GetApplicationLoadBalancerListenerHttpHostRuleOutput values.
+// You can construct a concrete instance of `GetApplicationLoadBalancerListenerHttpHostRuleInput` via:
+//
+//	GetApplicationLoadBalancerListenerHttpHostRuleArgs{...}
+type GetApplicationLoadBalancerListenerHttpHostRuleInput interface {
+	pulumi.Input
+
+	ToGetApplicationLoadBalancerListenerHttpHostRuleOutput() GetApplicationLoadBalancerListenerHttpHostRuleOutput
+	ToGetApplicationLoadBalancerListenerHttpHostRuleOutputWithContext(context.Context) GetApplicationLoadBalancerListenerHttpHostRuleOutput
+}
+
+type GetApplicationLoadBalancerListenerHttpHostRuleArgs struct {
+	// Routing persistence via cookies.
+	CookiePersistence GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceInput `pulumi:"cookiePersistence"`
+	// Headers for the rule.
+	Headers GetApplicationLoadBalancerListenerHttpHostRuleHeaderArrayInput `pulumi:"headers"`
+	// Routing via path.
+	Path GetApplicationLoadBalancerListenerHttpHostRulePathInput `pulumi:"path"`
+	// Query parameters for the rule.
+	QueryParameters GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayInput `pulumi:"queryParameters"`
+	// Reference target pool by target pool name.
+	TargetPool pulumi.StringInput `pulumi:"targetPool"`
+	// If enabled, when client sends an HTTP request with and Upgrade header, indicating the desire to establish a Websocket connection, if backend server supports WebSocket, it responds with HTTP 101 status code, switching protocols from HTTP to WebSocket. Hence the client and the server can exchange data in real-time using one long-lived TCP connection.
+	WebSocket pulumi.BoolInput `pulumi:"webSocket"`
+}
+
+func (GetApplicationLoadBalancerListenerHttpHostRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerListenerHttpHostRule)(nil)).Elem()
+}
+
+func (i GetApplicationLoadBalancerListenerHttpHostRuleArgs) ToGetApplicationLoadBalancerListenerHttpHostRuleOutput() GetApplicationLoadBalancerListenerHttpHostRuleOutput {
+	return i.ToGetApplicationLoadBalancerListenerHttpHostRuleOutputWithContext(context.Background())
+}
+
+func (i GetApplicationLoadBalancerListenerHttpHostRuleArgs) ToGetApplicationLoadBalancerListenerHttpHostRuleOutputWithContext(ctx context.Context) GetApplicationLoadBalancerListenerHttpHostRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancerListenerHttpHostRuleOutput)
+}
+
+// GetApplicationLoadBalancerListenerHttpHostRuleArrayInput is an input type that accepts GetApplicationLoadBalancerListenerHttpHostRuleArray and GetApplicationLoadBalancerListenerHttpHostRuleArrayOutput values.
+// You can construct a concrete instance of `GetApplicationLoadBalancerListenerHttpHostRuleArrayInput` via:
+//
+//	GetApplicationLoadBalancerListenerHttpHostRuleArray{ GetApplicationLoadBalancerListenerHttpHostRuleArgs{...} }
+type GetApplicationLoadBalancerListenerHttpHostRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationLoadBalancerListenerHttpHostRuleArrayOutput() GetApplicationLoadBalancerListenerHttpHostRuleArrayOutput
+	ToGetApplicationLoadBalancerListenerHttpHostRuleArrayOutputWithContext(context.Context) GetApplicationLoadBalancerListenerHttpHostRuleArrayOutput
+}
+
+type GetApplicationLoadBalancerListenerHttpHostRuleArray []GetApplicationLoadBalancerListenerHttpHostRuleInput
+
+func (GetApplicationLoadBalancerListenerHttpHostRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationLoadBalancerListenerHttpHostRule)(nil)).Elem()
+}
+
+func (i GetApplicationLoadBalancerListenerHttpHostRuleArray) ToGetApplicationLoadBalancerListenerHttpHostRuleArrayOutput() GetApplicationLoadBalancerListenerHttpHostRuleArrayOutput {
+	return i.ToGetApplicationLoadBalancerListenerHttpHostRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationLoadBalancerListenerHttpHostRuleArray) ToGetApplicationLoadBalancerListenerHttpHostRuleArrayOutputWithContext(ctx context.Context) GetApplicationLoadBalancerListenerHttpHostRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancerListenerHttpHostRuleArrayOutput)
+}
+
+type GetApplicationLoadBalancerListenerHttpHostRuleOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationLoadBalancerListenerHttpHostRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerListenerHttpHostRule)(nil)).Elem()
+}
+
+func (o GetApplicationLoadBalancerListenerHttpHostRuleOutput) ToGetApplicationLoadBalancerListenerHttpHostRuleOutput() GetApplicationLoadBalancerListenerHttpHostRuleOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerListenerHttpHostRuleOutput) ToGetApplicationLoadBalancerListenerHttpHostRuleOutputWithContext(ctx context.Context) GetApplicationLoadBalancerListenerHttpHostRuleOutput {
+	return o
+}
+
+// Routing persistence via cookies.
+func (o GetApplicationLoadBalancerListenerHttpHostRuleOutput) CookiePersistence() GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerListenerHttpHostRule) GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistence {
+		return v.CookiePersistence
+	}).(GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput)
+}
+
+// Headers for the rule.
+func (o GetApplicationLoadBalancerListenerHttpHostRuleOutput) Headers() GetApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerListenerHttpHostRule) []GetApplicationLoadBalancerListenerHttpHostRuleHeader {
+		return v.Headers
+	}).(GetApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput)
+}
+
+// Routing via path.
+func (o GetApplicationLoadBalancerListenerHttpHostRuleOutput) Path() GetApplicationLoadBalancerListenerHttpHostRulePathOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerListenerHttpHostRule) GetApplicationLoadBalancerListenerHttpHostRulePath {
+		return v.Path
+	}).(GetApplicationLoadBalancerListenerHttpHostRulePathOutput)
+}
+
+// Query parameters for the rule.
+func (o GetApplicationLoadBalancerListenerHttpHostRuleOutput) QueryParameters() GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerListenerHttpHostRule) []GetApplicationLoadBalancerListenerHttpHostRuleQueryParameter {
+		return v.QueryParameters
+	}).(GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput)
+}
+
+// Reference target pool by target pool name.
+func (o GetApplicationLoadBalancerListenerHttpHostRuleOutput) TargetPool() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerListenerHttpHostRule) string { return v.TargetPool }).(pulumi.StringOutput)
+}
+
+// If enabled, when client sends an HTTP request with and Upgrade header, indicating the desire to establish a Websocket connection, if backend server supports WebSocket, it responds with HTTP 101 status code, switching protocols from HTTP to WebSocket. Hence the client and the server can exchange data in real-time using one long-lived TCP connection.
+func (o GetApplicationLoadBalancerListenerHttpHostRuleOutput) WebSocket() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerListenerHttpHostRule) bool { return v.WebSocket }).(pulumi.BoolOutput)
+}
+
+type GetApplicationLoadBalancerListenerHttpHostRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationLoadBalancerListenerHttpHostRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationLoadBalancerListenerHttpHostRule)(nil)).Elem()
+}
+
+func (o GetApplicationLoadBalancerListenerHttpHostRuleArrayOutput) ToGetApplicationLoadBalancerListenerHttpHostRuleArrayOutput() GetApplicationLoadBalancerListenerHttpHostRuleArrayOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerListenerHttpHostRuleArrayOutput) ToGetApplicationLoadBalancerListenerHttpHostRuleArrayOutputWithContext(ctx context.Context) GetApplicationLoadBalancerListenerHttpHostRuleArrayOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerListenerHttpHostRuleArrayOutput) Index(i pulumi.IntInput) GetApplicationLoadBalancerListenerHttpHostRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationLoadBalancerListenerHttpHostRule {
+		return vs[0].([]GetApplicationLoadBalancerListenerHttpHostRule)[vs[1].(int)]
+	}).(GetApplicationLoadBalancerListenerHttpHostRuleOutput)
+}
+
+type GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistence struct {
+	// The name of the cookie to use.
+	Name string `pulumi:"name"`
+	// TTL specifies the time-to-live for the cookie. The default value is 0s, and it acts as a session cookie, expiring when the client session ends.
+	Ttl string `pulumi:"ttl"`
+}
+
+// GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceInput is an input type that accepts GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceArgs and GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput values.
+// You can construct a concrete instance of `GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceInput` via:
+//
+//	GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceArgs{...}
+type GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceInput interface {
+	pulumi.Input
+
+	ToGetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput() GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput
+	ToGetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutputWithContext(context.Context) GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput
+}
+
+type GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceArgs struct {
+	// The name of the cookie to use.
+	Name pulumi.StringInput `pulumi:"name"`
+	// TTL specifies the time-to-live for the cookie. The default value is 0s, and it acts as a session cookie, expiring when the client session ends.
+	Ttl pulumi.StringInput `pulumi:"ttl"`
+}
+
+func (GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistence)(nil)).Elem()
+}
+
+func (i GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceArgs) ToGetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput() GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput {
+	return i.ToGetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutputWithContext(context.Background())
+}
+
+func (i GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceArgs) ToGetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutputWithContext(ctx context.Context) GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput)
+}
+
+type GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistence)(nil)).Elem()
+}
+
+func (o GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput) ToGetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput() GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput) ToGetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutputWithContext(ctx context.Context) GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput {
+	return o
+}
+
+// The name of the cookie to use.
+func (o GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistence) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// TTL specifies the time-to-live for the cookie. The default value is 0s, and it acts as a session cookie, expiring when the client session ends.
+func (o GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput) Ttl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistence) string { return v.Ttl }).(pulumi.StringOutput)
+}
+
+type GetApplicationLoadBalancerListenerHttpHostRuleHeader struct {
+	// Exact match for the header value.
+	ExactMatch string `pulumi:"exactMatch"`
+	// Header name.
+	Name string `pulumi:"name"`
+}
+
+// GetApplicationLoadBalancerListenerHttpHostRuleHeaderInput is an input type that accepts GetApplicationLoadBalancerListenerHttpHostRuleHeaderArgs and GetApplicationLoadBalancerListenerHttpHostRuleHeaderOutput values.
+// You can construct a concrete instance of `GetApplicationLoadBalancerListenerHttpHostRuleHeaderInput` via:
+//
+//	GetApplicationLoadBalancerListenerHttpHostRuleHeaderArgs{...}
+type GetApplicationLoadBalancerListenerHttpHostRuleHeaderInput interface {
+	pulumi.Input
+
+	ToGetApplicationLoadBalancerListenerHttpHostRuleHeaderOutput() GetApplicationLoadBalancerListenerHttpHostRuleHeaderOutput
+	ToGetApplicationLoadBalancerListenerHttpHostRuleHeaderOutputWithContext(context.Context) GetApplicationLoadBalancerListenerHttpHostRuleHeaderOutput
+}
+
+type GetApplicationLoadBalancerListenerHttpHostRuleHeaderArgs struct {
+	// Exact match for the header value.
+	ExactMatch pulumi.StringInput `pulumi:"exactMatch"`
+	// Header name.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetApplicationLoadBalancerListenerHttpHostRuleHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerListenerHttpHostRuleHeader)(nil)).Elem()
+}
+
+func (i GetApplicationLoadBalancerListenerHttpHostRuleHeaderArgs) ToGetApplicationLoadBalancerListenerHttpHostRuleHeaderOutput() GetApplicationLoadBalancerListenerHttpHostRuleHeaderOutput {
+	return i.ToGetApplicationLoadBalancerListenerHttpHostRuleHeaderOutputWithContext(context.Background())
+}
+
+func (i GetApplicationLoadBalancerListenerHttpHostRuleHeaderArgs) ToGetApplicationLoadBalancerListenerHttpHostRuleHeaderOutputWithContext(ctx context.Context) GetApplicationLoadBalancerListenerHttpHostRuleHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancerListenerHttpHostRuleHeaderOutput)
+}
+
+// GetApplicationLoadBalancerListenerHttpHostRuleHeaderArrayInput is an input type that accepts GetApplicationLoadBalancerListenerHttpHostRuleHeaderArray and GetApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput values.
+// You can construct a concrete instance of `GetApplicationLoadBalancerListenerHttpHostRuleHeaderArrayInput` via:
+//
+//	GetApplicationLoadBalancerListenerHttpHostRuleHeaderArray{ GetApplicationLoadBalancerListenerHttpHostRuleHeaderArgs{...} }
+type GetApplicationLoadBalancerListenerHttpHostRuleHeaderArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput() GetApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput
+	ToGetApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutputWithContext(context.Context) GetApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput
+}
+
+type GetApplicationLoadBalancerListenerHttpHostRuleHeaderArray []GetApplicationLoadBalancerListenerHttpHostRuleHeaderInput
+
+func (GetApplicationLoadBalancerListenerHttpHostRuleHeaderArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationLoadBalancerListenerHttpHostRuleHeader)(nil)).Elem()
+}
+
+func (i GetApplicationLoadBalancerListenerHttpHostRuleHeaderArray) ToGetApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput() GetApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput {
+	return i.ToGetApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationLoadBalancerListenerHttpHostRuleHeaderArray) ToGetApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutputWithContext(ctx context.Context) GetApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput)
+}
+
+type GetApplicationLoadBalancerListenerHttpHostRuleHeaderOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationLoadBalancerListenerHttpHostRuleHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerListenerHttpHostRuleHeader)(nil)).Elem()
+}
+
+func (o GetApplicationLoadBalancerListenerHttpHostRuleHeaderOutput) ToGetApplicationLoadBalancerListenerHttpHostRuleHeaderOutput() GetApplicationLoadBalancerListenerHttpHostRuleHeaderOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerListenerHttpHostRuleHeaderOutput) ToGetApplicationLoadBalancerListenerHttpHostRuleHeaderOutputWithContext(ctx context.Context) GetApplicationLoadBalancerListenerHttpHostRuleHeaderOutput {
+	return o
+}
+
+// Exact match for the header value.
+func (o GetApplicationLoadBalancerListenerHttpHostRuleHeaderOutput) ExactMatch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerListenerHttpHostRuleHeader) string { return v.ExactMatch }).(pulumi.StringOutput)
+}
+
+// Header name.
+func (o GetApplicationLoadBalancerListenerHttpHostRuleHeaderOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerListenerHttpHostRuleHeader) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationLoadBalancerListenerHttpHostRuleHeader)(nil)).Elem()
+}
+
+func (o GetApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput) ToGetApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput() GetApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput) ToGetApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutputWithContext(ctx context.Context) GetApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput) Index(i pulumi.IntInput) GetApplicationLoadBalancerListenerHttpHostRuleHeaderOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationLoadBalancerListenerHttpHostRuleHeader {
+		return vs[0].([]GetApplicationLoadBalancerListenerHttpHostRuleHeader)[vs[1].(int)]
+	}).(GetApplicationLoadBalancerListenerHttpHostRuleHeaderOutput)
+}
+
+type GetApplicationLoadBalancerListenerHttpHostRulePath struct {
+	// Exact path match. Only a request path exactly equal to the value will match, e.g. '/foo' matches only '/foo', not '/foo/bar' or '/foobar'.
+	ExactMatch string `pulumi:"exactMatch"`
+	// Prefix path match. Only matches on full segment boundaries, e.g. '/foo' matches '/foo' and '/foo/bar' but NOT '/foobar'.
+	Prefix string `pulumi:"prefix"`
+}
+
+// GetApplicationLoadBalancerListenerHttpHostRulePathInput is an input type that accepts GetApplicationLoadBalancerListenerHttpHostRulePathArgs and GetApplicationLoadBalancerListenerHttpHostRulePathOutput values.
+// You can construct a concrete instance of `GetApplicationLoadBalancerListenerHttpHostRulePathInput` via:
+//
+//	GetApplicationLoadBalancerListenerHttpHostRulePathArgs{...}
+type GetApplicationLoadBalancerListenerHttpHostRulePathInput interface {
+	pulumi.Input
+
+	ToGetApplicationLoadBalancerListenerHttpHostRulePathOutput() GetApplicationLoadBalancerListenerHttpHostRulePathOutput
+	ToGetApplicationLoadBalancerListenerHttpHostRulePathOutputWithContext(context.Context) GetApplicationLoadBalancerListenerHttpHostRulePathOutput
+}
+
+type GetApplicationLoadBalancerListenerHttpHostRulePathArgs struct {
+	// Exact path match. Only a request path exactly equal to the value will match, e.g. '/foo' matches only '/foo', not '/foo/bar' or '/foobar'.
+	ExactMatch pulumi.StringInput `pulumi:"exactMatch"`
+	// Prefix path match. Only matches on full segment boundaries, e.g. '/foo' matches '/foo' and '/foo/bar' but NOT '/foobar'.
+	Prefix pulumi.StringInput `pulumi:"prefix"`
+}
+
+func (GetApplicationLoadBalancerListenerHttpHostRulePathArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerListenerHttpHostRulePath)(nil)).Elem()
+}
+
+func (i GetApplicationLoadBalancerListenerHttpHostRulePathArgs) ToGetApplicationLoadBalancerListenerHttpHostRulePathOutput() GetApplicationLoadBalancerListenerHttpHostRulePathOutput {
+	return i.ToGetApplicationLoadBalancerListenerHttpHostRulePathOutputWithContext(context.Background())
+}
+
+func (i GetApplicationLoadBalancerListenerHttpHostRulePathArgs) ToGetApplicationLoadBalancerListenerHttpHostRulePathOutputWithContext(ctx context.Context) GetApplicationLoadBalancerListenerHttpHostRulePathOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancerListenerHttpHostRulePathOutput)
+}
+
+type GetApplicationLoadBalancerListenerHttpHostRulePathOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationLoadBalancerListenerHttpHostRulePathOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerListenerHttpHostRulePath)(nil)).Elem()
+}
+
+func (o GetApplicationLoadBalancerListenerHttpHostRulePathOutput) ToGetApplicationLoadBalancerListenerHttpHostRulePathOutput() GetApplicationLoadBalancerListenerHttpHostRulePathOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerListenerHttpHostRulePathOutput) ToGetApplicationLoadBalancerListenerHttpHostRulePathOutputWithContext(ctx context.Context) GetApplicationLoadBalancerListenerHttpHostRulePathOutput {
+	return o
+}
+
+// Exact path match. Only a request path exactly equal to the value will match, e.g. '/foo' matches only '/foo', not '/foo/bar' or '/foobar'.
+func (o GetApplicationLoadBalancerListenerHttpHostRulePathOutput) ExactMatch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerListenerHttpHostRulePath) string { return v.ExactMatch }).(pulumi.StringOutput)
+}
+
+// Prefix path match. Only matches on full segment boundaries, e.g. '/foo' matches '/foo' and '/foo/bar' but NOT '/foobar'.
+func (o GetApplicationLoadBalancerListenerHttpHostRulePathOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerListenerHttpHostRulePath) string { return v.Prefix }).(pulumi.StringOutput)
+}
+
+type GetApplicationLoadBalancerListenerHttpHostRuleQueryParameter struct {
+	// Exact match for the query parameters value.
+	ExactMatch string `pulumi:"exactMatch"`
+	// Query parameter name.
+	Name string `pulumi:"name"`
+}
+
+// GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterInput is an input type that accepts GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArgs and GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput values.
+// You can construct a concrete instance of `GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterInput` via:
+//
+//	GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArgs{...}
+type GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterInput interface {
+	pulumi.Input
+
+	ToGetApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput() GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput
+	ToGetApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutputWithContext(context.Context) GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput
+}
+
+type GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArgs struct {
+	// Exact match for the query parameters value.
+	ExactMatch pulumi.StringInput `pulumi:"exactMatch"`
+	// Query parameter name.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerListenerHttpHostRuleQueryParameter)(nil)).Elem()
+}
+
+func (i GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArgs) ToGetApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput() GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput {
+	return i.ToGetApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutputWithContext(context.Background())
+}
+
+func (i GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArgs) ToGetApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutputWithContext(ctx context.Context) GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput)
+}
+
+// GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayInput is an input type that accepts GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArray and GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput values.
+// You can construct a concrete instance of `GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayInput` via:
+//
+//	GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArray{ GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArgs{...} }
+type GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput() GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput
+	ToGetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutputWithContext(context.Context) GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput
+}
+
+type GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArray []GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterInput
+
+func (GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationLoadBalancerListenerHttpHostRuleQueryParameter)(nil)).Elem()
+}
+
+func (i GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArray) ToGetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput() GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput {
+	return i.ToGetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArray) ToGetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutputWithContext(ctx context.Context) GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput)
+}
+
+type GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerListenerHttpHostRuleQueryParameter)(nil)).Elem()
+}
+
+func (o GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput) ToGetApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput() GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput) ToGetApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutputWithContext(ctx context.Context) GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput {
+	return o
+}
+
+// Exact match for the query parameters value.
+func (o GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput) ExactMatch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerListenerHttpHostRuleQueryParameter) string { return v.ExactMatch }).(pulumi.StringOutput)
+}
+
+// Query parameter name.
+func (o GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerListenerHttpHostRuleQueryParameter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationLoadBalancerListenerHttpHostRuleQueryParameter)(nil)).Elem()
+}
+
+func (o GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput) ToGetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput() GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput) ToGetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutputWithContext(ctx context.Context) GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput) Index(i pulumi.IntInput) GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationLoadBalancerListenerHttpHostRuleQueryParameter {
+		return vs[0].([]GetApplicationLoadBalancerListenerHttpHostRuleQueryParameter)[vs[1].(int)]
+	}).(GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput)
+}
+
+type GetApplicationLoadBalancerListenerHttps struct {
+	// TLS termination certificate configuration.
+	CertificateConfig GetApplicationLoadBalancerListenerHttpsCertificateConfig `pulumi:"certificateConfig"`
+}
+
+// GetApplicationLoadBalancerListenerHttpsInput is an input type that accepts GetApplicationLoadBalancerListenerHttpsArgs and GetApplicationLoadBalancerListenerHttpsOutput values.
+// You can construct a concrete instance of `GetApplicationLoadBalancerListenerHttpsInput` via:
+//
+//	GetApplicationLoadBalancerListenerHttpsArgs{...}
+type GetApplicationLoadBalancerListenerHttpsInput interface {
+	pulumi.Input
+
+	ToGetApplicationLoadBalancerListenerHttpsOutput() GetApplicationLoadBalancerListenerHttpsOutput
+	ToGetApplicationLoadBalancerListenerHttpsOutputWithContext(context.Context) GetApplicationLoadBalancerListenerHttpsOutput
+}
+
+type GetApplicationLoadBalancerListenerHttpsArgs struct {
+	// TLS termination certificate configuration.
+	CertificateConfig GetApplicationLoadBalancerListenerHttpsCertificateConfigInput `pulumi:"certificateConfig"`
+}
+
+func (GetApplicationLoadBalancerListenerHttpsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerListenerHttps)(nil)).Elem()
+}
+
+func (i GetApplicationLoadBalancerListenerHttpsArgs) ToGetApplicationLoadBalancerListenerHttpsOutput() GetApplicationLoadBalancerListenerHttpsOutput {
+	return i.ToGetApplicationLoadBalancerListenerHttpsOutputWithContext(context.Background())
+}
+
+func (i GetApplicationLoadBalancerListenerHttpsArgs) ToGetApplicationLoadBalancerListenerHttpsOutputWithContext(ctx context.Context) GetApplicationLoadBalancerListenerHttpsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancerListenerHttpsOutput)
+}
+
+type GetApplicationLoadBalancerListenerHttpsOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationLoadBalancerListenerHttpsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerListenerHttps)(nil)).Elem()
+}
+
+func (o GetApplicationLoadBalancerListenerHttpsOutput) ToGetApplicationLoadBalancerListenerHttpsOutput() GetApplicationLoadBalancerListenerHttpsOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerListenerHttpsOutput) ToGetApplicationLoadBalancerListenerHttpsOutputWithContext(ctx context.Context) GetApplicationLoadBalancerListenerHttpsOutput {
+	return o
+}
+
+// TLS termination certificate configuration.
+func (o GetApplicationLoadBalancerListenerHttpsOutput) CertificateConfig() GetApplicationLoadBalancerListenerHttpsCertificateConfigOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerListenerHttps) GetApplicationLoadBalancerListenerHttpsCertificateConfig {
+		return v.CertificateConfig
+	}).(GetApplicationLoadBalancerListenerHttpsCertificateConfigOutput)
+}
+
+type GetApplicationLoadBalancerListenerHttpsCertificateConfig struct {
+	// Certificate IDs for TLS termination.
+	CertificateIds []string `pulumi:"certificateIds"`
+}
+
+// GetApplicationLoadBalancerListenerHttpsCertificateConfigInput is an input type that accepts GetApplicationLoadBalancerListenerHttpsCertificateConfigArgs and GetApplicationLoadBalancerListenerHttpsCertificateConfigOutput values.
+// You can construct a concrete instance of `GetApplicationLoadBalancerListenerHttpsCertificateConfigInput` via:
+//
+//	GetApplicationLoadBalancerListenerHttpsCertificateConfigArgs{...}
+type GetApplicationLoadBalancerListenerHttpsCertificateConfigInput interface {
+	pulumi.Input
+
+	ToGetApplicationLoadBalancerListenerHttpsCertificateConfigOutput() GetApplicationLoadBalancerListenerHttpsCertificateConfigOutput
+	ToGetApplicationLoadBalancerListenerHttpsCertificateConfigOutputWithContext(context.Context) GetApplicationLoadBalancerListenerHttpsCertificateConfigOutput
+}
+
+type GetApplicationLoadBalancerListenerHttpsCertificateConfigArgs struct {
+	// Certificate IDs for TLS termination.
+	CertificateIds pulumi.StringArrayInput `pulumi:"certificateIds"`
+}
+
+func (GetApplicationLoadBalancerListenerHttpsCertificateConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerListenerHttpsCertificateConfig)(nil)).Elem()
+}
+
+func (i GetApplicationLoadBalancerListenerHttpsCertificateConfigArgs) ToGetApplicationLoadBalancerListenerHttpsCertificateConfigOutput() GetApplicationLoadBalancerListenerHttpsCertificateConfigOutput {
+	return i.ToGetApplicationLoadBalancerListenerHttpsCertificateConfigOutputWithContext(context.Background())
+}
+
+func (i GetApplicationLoadBalancerListenerHttpsCertificateConfigArgs) ToGetApplicationLoadBalancerListenerHttpsCertificateConfigOutputWithContext(ctx context.Context) GetApplicationLoadBalancerListenerHttpsCertificateConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancerListenerHttpsCertificateConfigOutput)
+}
+
+type GetApplicationLoadBalancerListenerHttpsCertificateConfigOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationLoadBalancerListenerHttpsCertificateConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerListenerHttpsCertificateConfig)(nil)).Elem()
+}
+
+func (o GetApplicationLoadBalancerListenerHttpsCertificateConfigOutput) ToGetApplicationLoadBalancerListenerHttpsCertificateConfigOutput() GetApplicationLoadBalancerListenerHttpsCertificateConfigOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerListenerHttpsCertificateConfigOutput) ToGetApplicationLoadBalancerListenerHttpsCertificateConfigOutputWithContext(ctx context.Context) GetApplicationLoadBalancerListenerHttpsCertificateConfigOutput {
+	return o
+}
+
+// Certificate IDs for TLS termination.
+func (o GetApplicationLoadBalancerListenerHttpsCertificateConfigOutput) CertificateIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerListenerHttpsCertificateConfig) []string { return v.CertificateIds }).(pulumi.StringArrayOutput)
+}
+
+type GetApplicationLoadBalancerLoadBalancerSecurityGroup struct {
+	// ID of the security Group
+	Id string `pulumi:"id"`
+	// Name of the security Group
+	Name string `pulumi:"name"`
+}
+
+// GetApplicationLoadBalancerLoadBalancerSecurityGroupInput is an input type that accepts GetApplicationLoadBalancerLoadBalancerSecurityGroupArgs and GetApplicationLoadBalancerLoadBalancerSecurityGroupOutput values.
+// You can construct a concrete instance of `GetApplicationLoadBalancerLoadBalancerSecurityGroupInput` via:
+//
+//	GetApplicationLoadBalancerLoadBalancerSecurityGroupArgs{...}
+type GetApplicationLoadBalancerLoadBalancerSecurityGroupInput interface {
+	pulumi.Input
+
+	ToGetApplicationLoadBalancerLoadBalancerSecurityGroupOutput() GetApplicationLoadBalancerLoadBalancerSecurityGroupOutput
+	ToGetApplicationLoadBalancerLoadBalancerSecurityGroupOutputWithContext(context.Context) GetApplicationLoadBalancerLoadBalancerSecurityGroupOutput
+}
+
+type GetApplicationLoadBalancerLoadBalancerSecurityGroupArgs struct {
+	// ID of the security Group
+	Id pulumi.StringInput `pulumi:"id"`
+	// Name of the security Group
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetApplicationLoadBalancerLoadBalancerSecurityGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerLoadBalancerSecurityGroup)(nil)).Elem()
+}
+
+func (i GetApplicationLoadBalancerLoadBalancerSecurityGroupArgs) ToGetApplicationLoadBalancerLoadBalancerSecurityGroupOutput() GetApplicationLoadBalancerLoadBalancerSecurityGroupOutput {
+	return i.ToGetApplicationLoadBalancerLoadBalancerSecurityGroupOutputWithContext(context.Background())
+}
+
+func (i GetApplicationLoadBalancerLoadBalancerSecurityGroupArgs) ToGetApplicationLoadBalancerLoadBalancerSecurityGroupOutputWithContext(ctx context.Context) GetApplicationLoadBalancerLoadBalancerSecurityGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancerLoadBalancerSecurityGroupOutput)
+}
+
+type GetApplicationLoadBalancerLoadBalancerSecurityGroupOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationLoadBalancerLoadBalancerSecurityGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerLoadBalancerSecurityGroup)(nil)).Elem()
+}
+
+func (o GetApplicationLoadBalancerLoadBalancerSecurityGroupOutput) ToGetApplicationLoadBalancerLoadBalancerSecurityGroupOutput() GetApplicationLoadBalancerLoadBalancerSecurityGroupOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerLoadBalancerSecurityGroupOutput) ToGetApplicationLoadBalancerLoadBalancerSecurityGroupOutputWithContext(ctx context.Context) GetApplicationLoadBalancerLoadBalancerSecurityGroupOutput {
+	return o
+}
+
+// ID of the security Group
+func (o GetApplicationLoadBalancerLoadBalancerSecurityGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerLoadBalancerSecurityGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Name of the security Group
+func (o GetApplicationLoadBalancerLoadBalancerSecurityGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerLoadBalancerSecurityGroup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetApplicationLoadBalancerNetwork struct {
+	// STACKIT network ID the Application Load Balancer and/or targets are in.
+	NetworkId string `pulumi:"networkId"`
+	// The role defines how the Application Load Balancer is using the network. Possible values are: `ROLE_UNSPECIFIED`, `ROLE_LISTENERS_AND_TARGETS`, `ROLE_LISTENERS`, `ROLE_TARGETS`.
+	Role string `pulumi:"role"`
+}
+
+// GetApplicationLoadBalancerNetworkInput is an input type that accepts GetApplicationLoadBalancerNetworkArgs and GetApplicationLoadBalancerNetworkOutput values.
+// You can construct a concrete instance of `GetApplicationLoadBalancerNetworkInput` via:
+//
+//	GetApplicationLoadBalancerNetworkArgs{...}
+type GetApplicationLoadBalancerNetworkInput interface {
+	pulumi.Input
+
+	ToGetApplicationLoadBalancerNetworkOutput() GetApplicationLoadBalancerNetworkOutput
+	ToGetApplicationLoadBalancerNetworkOutputWithContext(context.Context) GetApplicationLoadBalancerNetworkOutput
+}
+
+type GetApplicationLoadBalancerNetworkArgs struct {
+	// STACKIT network ID the Application Load Balancer and/or targets are in.
+	NetworkId pulumi.StringInput `pulumi:"networkId"`
+	// The role defines how the Application Load Balancer is using the network. Possible values are: `ROLE_UNSPECIFIED`, `ROLE_LISTENERS_AND_TARGETS`, `ROLE_LISTENERS`, `ROLE_TARGETS`.
+	Role pulumi.StringInput `pulumi:"role"`
+}
+
+func (GetApplicationLoadBalancerNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerNetwork)(nil)).Elem()
+}
+
+func (i GetApplicationLoadBalancerNetworkArgs) ToGetApplicationLoadBalancerNetworkOutput() GetApplicationLoadBalancerNetworkOutput {
+	return i.ToGetApplicationLoadBalancerNetworkOutputWithContext(context.Background())
+}
+
+func (i GetApplicationLoadBalancerNetworkArgs) ToGetApplicationLoadBalancerNetworkOutputWithContext(ctx context.Context) GetApplicationLoadBalancerNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancerNetworkOutput)
+}
+
+// GetApplicationLoadBalancerNetworkArrayInput is an input type that accepts GetApplicationLoadBalancerNetworkArray and GetApplicationLoadBalancerNetworkArrayOutput values.
+// You can construct a concrete instance of `GetApplicationLoadBalancerNetworkArrayInput` via:
+//
+//	GetApplicationLoadBalancerNetworkArray{ GetApplicationLoadBalancerNetworkArgs{...} }
+type GetApplicationLoadBalancerNetworkArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationLoadBalancerNetworkArrayOutput() GetApplicationLoadBalancerNetworkArrayOutput
+	ToGetApplicationLoadBalancerNetworkArrayOutputWithContext(context.Context) GetApplicationLoadBalancerNetworkArrayOutput
+}
+
+type GetApplicationLoadBalancerNetworkArray []GetApplicationLoadBalancerNetworkInput
+
+func (GetApplicationLoadBalancerNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationLoadBalancerNetwork)(nil)).Elem()
+}
+
+func (i GetApplicationLoadBalancerNetworkArray) ToGetApplicationLoadBalancerNetworkArrayOutput() GetApplicationLoadBalancerNetworkArrayOutput {
+	return i.ToGetApplicationLoadBalancerNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationLoadBalancerNetworkArray) ToGetApplicationLoadBalancerNetworkArrayOutputWithContext(ctx context.Context) GetApplicationLoadBalancerNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancerNetworkArrayOutput)
+}
+
+type GetApplicationLoadBalancerNetworkOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationLoadBalancerNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerNetwork)(nil)).Elem()
+}
+
+func (o GetApplicationLoadBalancerNetworkOutput) ToGetApplicationLoadBalancerNetworkOutput() GetApplicationLoadBalancerNetworkOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerNetworkOutput) ToGetApplicationLoadBalancerNetworkOutputWithContext(ctx context.Context) GetApplicationLoadBalancerNetworkOutput {
+	return o
+}
+
+// STACKIT network ID the Application Load Balancer and/or targets are in.
+func (o GetApplicationLoadBalancerNetworkOutput) NetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerNetwork) string { return v.NetworkId }).(pulumi.StringOutput)
+}
+
+// The role defines how the Application Load Balancer is using the network. Possible values are: `ROLE_UNSPECIFIED`, `ROLE_LISTENERS_AND_TARGETS`, `ROLE_LISTENERS`, `ROLE_TARGETS`.
+func (o GetApplicationLoadBalancerNetworkOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerNetwork) string { return v.Role }).(pulumi.StringOutput)
+}
+
+type GetApplicationLoadBalancerNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationLoadBalancerNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationLoadBalancerNetwork)(nil)).Elem()
+}
+
+func (o GetApplicationLoadBalancerNetworkArrayOutput) ToGetApplicationLoadBalancerNetworkArrayOutput() GetApplicationLoadBalancerNetworkArrayOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerNetworkArrayOutput) ToGetApplicationLoadBalancerNetworkArrayOutputWithContext(ctx context.Context) GetApplicationLoadBalancerNetworkArrayOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerNetworkArrayOutput) Index(i pulumi.IntInput) GetApplicationLoadBalancerNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationLoadBalancerNetwork {
+		return vs[0].([]GetApplicationLoadBalancerNetwork)[vs[1].(int)]
+	}).(GetApplicationLoadBalancerNetworkOutput)
+}
+
+type GetApplicationLoadBalancerOptions struct {
+	// Use this option to limit the IP ranges that can use the Application Load Balancer.
+	AccessControl GetApplicationLoadBalancerOptionsAccessControl `pulumi:"accessControl"`
+	// This option automates the handling of the external IP address for an Application Load Balancer. If set to true a new IP address will be automatically created. It will also be automatically deleted when the Load Balancer is deleted.
+	EphemeralAddress bool `pulumi:"ephemeralAddress"`
+	// We offer Load Balancer observability via STACKIT Observability or external solutions.
+	Observability GetApplicationLoadBalancerOptionsObservability `pulumi:"observability"`
+	// Application Load Balancer is accessible only via a private network ip address. Not changeable after creation.
+	PrivateNetworkOnly bool `pulumi:"privateNetworkOnly"`
+}
+
+// GetApplicationLoadBalancerOptionsInput is an input type that accepts GetApplicationLoadBalancerOptionsArgs and GetApplicationLoadBalancerOptionsOutput values.
+// You can construct a concrete instance of `GetApplicationLoadBalancerOptionsInput` via:
+//
+//	GetApplicationLoadBalancerOptionsArgs{...}
+type GetApplicationLoadBalancerOptionsInput interface {
+	pulumi.Input
+
+	ToGetApplicationLoadBalancerOptionsOutput() GetApplicationLoadBalancerOptionsOutput
+	ToGetApplicationLoadBalancerOptionsOutputWithContext(context.Context) GetApplicationLoadBalancerOptionsOutput
+}
+
+type GetApplicationLoadBalancerOptionsArgs struct {
+	// Use this option to limit the IP ranges that can use the Application Load Balancer.
+	AccessControl GetApplicationLoadBalancerOptionsAccessControlInput `pulumi:"accessControl"`
+	// This option automates the handling of the external IP address for an Application Load Balancer. If set to true a new IP address will be automatically created. It will also be automatically deleted when the Load Balancer is deleted.
+	EphemeralAddress pulumi.BoolInput `pulumi:"ephemeralAddress"`
+	// We offer Load Balancer observability via STACKIT Observability or external solutions.
+	Observability GetApplicationLoadBalancerOptionsObservabilityInput `pulumi:"observability"`
+	// Application Load Balancer is accessible only via a private network ip address. Not changeable after creation.
+	PrivateNetworkOnly pulumi.BoolInput `pulumi:"privateNetworkOnly"`
+}
+
+func (GetApplicationLoadBalancerOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerOptions)(nil)).Elem()
+}
+
+func (i GetApplicationLoadBalancerOptionsArgs) ToGetApplicationLoadBalancerOptionsOutput() GetApplicationLoadBalancerOptionsOutput {
+	return i.ToGetApplicationLoadBalancerOptionsOutputWithContext(context.Background())
+}
+
+func (i GetApplicationLoadBalancerOptionsArgs) ToGetApplicationLoadBalancerOptionsOutputWithContext(ctx context.Context) GetApplicationLoadBalancerOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancerOptionsOutput)
+}
+
+type GetApplicationLoadBalancerOptionsOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationLoadBalancerOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerOptions)(nil)).Elem()
+}
+
+func (o GetApplicationLoadBalancerOptionsOutput) ToGetApplicationLoadBalancerOptionsOutput() GetApplicationLoadBalancerOptionsOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerOptionsOutput) ToGetApplicationLoadBalancerOptionsOutputWithContext(ctx context.Context) GetApplicationLoadBalancerOptionsOutput {
+	return o
+}
+
+// Use this option to limit the IP ranges that can use the Application Load Balancer.
+func (o GetApplicationLoadBalancerOptionsOutput) AccessControl() GetApplicationLoadBalancerOptionsAccessControlOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerOptions) GetApplicationLoadBalancerOptionsAccessControl {
+		return v.AccessControl
+	}).(GetApplicationLoadBalancerOptionsAccessControlOutput)
+}
+
+// This option automates the handling of the external IP address for an Application Load Balancer. If set to true a new IP address will be automatically created. It will also be automatically deleted when the Load Balancer is deleted.
+func (o GetApplicationLoadBalancerOptionsOutput) EphemeralAddress() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerOptions) bool { return v.EphemeralAddress }).(pulumi.BoolOutput)
+}
+
+// We offer Load Balancer observability via STACKIT Observability or external solutions.
+func (o GetApplicationLoadBalancerOptionsOutput) Observability() GetApplicationLoadBalancerOptionsObservabilityOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerOptions) GetApplicationLoadBalancerOptionsObservability {
+		return v.Observability
+	}).(GetApplicationLoadBalancerOptionsObservabilityOutput)
+}
+
+// Application Load Balancer is accessible only via a private network ip address. Not changeable after creation.
+func (o GetApplicationLoadBalancerOptionsOutput) PrivateNetworkOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerOptions) bool { return v.PrivateNetworkOnly }).(pulumi.BoolOutput)
+}
+
+type GetApplicationLoadBalancerOptionsAccessControl struct {
+	// Application Load Balancer is accessible only from an IP address in this range.
+	AllowedSourceRanges []string `pulumi:"allowedSourceRanges"`
+}
+
+// GetApplicationLoadBalancerOptionsAccessControlInput is an input type that accepts GetApplicationLoadBalancerOptionsAccessControlArgs and GetApplicationLoadBalancerOptionsAccessControlOutput values.
+// You can construct a concrete instance of `GetApplicationLoadBalancerOptionsAccessControlInput` via:
+//
+//	GetApplicationLoadBalancerOptionsAccessControlArgs{...}
+type GetApplicationLoadBalancerOptionsAccessControlInput interface {
+	pulumi.Input
+
+	ToGetApplicationLoadBalancerOptionsAccessControlOutput() GetApplicationLoadBalancerOptionsAccessControlOutput
+	ToGetApplicationLoadBalancerOptionsAccessControlOutputWithContext(context.Context) GetApplicationLoadBalancerOptionsAccessControlOutput
+}
+
+type GetApplicationLoadBalancerOptionsAccessControlArgs struct {
+	// Application Load Balancer is accessible only from an IP address in this range.
+	AllowedSourceRanges pulumi.StringArrayInput `pulumi:"allowedSourceRanges"`
+}
+
+func (GetApplicationLoadBalancerOptionsAccessControlArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerOptionsAccessControl)(nil)).Elem()
+}
+
+func (i GetApplicationLoadBalancerOptionsAccessControlArgs) ToGetApplicationLoadBalancerOptionsAccessControlOutput() GetApplicationLoadBalancerOptionsAccessControlOutput {
+	return i.ToGetApplicationLoadBalancerOptionsAccessControlOutputWithContext(context.Background())
+}
+
+func (i GetApplicationLoadBalancerOptionsAccessControlArgs) ToGetApplicationLoadBalancerOptionsAccessControlOutputWithContext(ctx context.Context) GetApplicationLoadBalancerOptionsAccessControlOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancerOptionsAccessControlOutput)
+}
+
+type GetApplicationLoadBalancerOptionsAccessControlOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationLoadBalancerOptionsAccessControlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerOptionsAccessControl)(nil)).Elem()
+}
+
+func (o GetApplicationLoadBalancerOptionsAccessControlOutput) ToGetApplicationLoadBalancerOptionsAccessControlOutput() GetApplicationLoadBalancerOptionsAccessControlOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerOptionsAccessControlOutput) ToGetApplicationLoadBalancerOptionsAccessControlOutputWithContext(ctx context.Context) GetApplicationLoadBalancerOptionsAccessControlOutput {
+	return o
+}
+
+// Application Load Balancer is accessible only from an IP address in this range.
+func (o GetApplicationLoadBalancerOptionsAccessControlOutput) AllowedSourceRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerOptionsAccessControl) []string { return v.AllowedSourceRanges }).(pulumi.StringArrayOutput)
+}
+
+type GetApplicationLoadBalancerOptionsObservability struct {
+	// Observability logs configuration.
+	Logs GetApplicationLoadBalancerOptionsObservabilityLogs `pulumi:"logs"`
+	// Observability metrics configuration.
+	Metrics GetApplicationLoadBalancerOptionsObservabilityMetrics `pulumi:"metrics"`
+}
+
+// GetApplicationLoadBalancerOptionsObservabilityInput is an input type that accepts GetApplicationLoadBalancerOptionsObservabilityArgs and GetApplicationLoadBalancerOptionsObservabilityOutput values.
+// You can construct a concrete instance of `GetApplicationLoadBalancerOptionsObservabilityInput` via:
+//
+//	GetApplicationLoadBalancerOptionsObservabilityArgs{...}
+type GetApplicationLoadBalancerOptionsObservabilityInput interface {
+	pulumi.Input
+
+	ToGetApplicationLoadBalancerOptionsObservabilityOutput() GetApplicationLoadBalancerOptionsObservabilityOutput
+	ToGetApplicationLoadBalancerOptionsObservabilityOutputWithContext(context.Context) GetApplicationLoadBalancerOptionsObservabilityOutput
+}
+
+type GetApplicationLoadBalancerOptionsObservabilityArgs struct {
+	// Observability logs configuration.
+	Logs GetApplicationLoadBalancerOptionsObservabilityLogsInput `pulumi:"logs"`
+	// Observability metrics configuration.
+	Metrics GetApplicationLoadBalancerOptionsObservabilityMetricsInput `pulumi:"metrics"`
+}
+
+func (GetApplicationLoadBalancerOptionsObservabilityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerOptionsObservability)(nil)).Elem()
+}
+
+func (i GetApplicationLoadBalancerOptionsObservabilityArgs) ToGetApplicationLoadBalancerOptionsObservabilityOutput() GetApplicationLoadBalancerOptionsObservabilityOutput {
+	return i.ToGetApplicationLoadBalancerOptionsObservabilityOutputWithContext(context.Background())
+}
+
+func (i GetApplicationLoadBalancerOptionsObservabilityArgs) ToGetApplicationLoadBalancerOptionsObservabilityOutputWithContext(ctx context.Context) GetApplicationLoadBalancerOptionsObservabilityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancerOptionsObservabilityOutput)
+}
+
+type GetApplicationLoadBalancerOptionsObservabilityOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationLoadBalancerOptionsObservabilityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerOptionsObservability)(nil)).Elem()
+}
+
+func (o GetApplicationLoadBalancerOptionsObservabilityOutput) ToGetApplicationLoadBalancerOptionsObservabilityOutput() GetApplicationLoadBalancerOptionsObservabilityOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerOptionsObservabilityOutput) ToGetApplicationLoadBalancerOptionsObservabilityOutputWithContext(ctx context.Context) GetApplicationLoadBalancerOptionsObservabilityOutput {
+	return o
+}
+
+// Observability logs configuration.
+func (o GetApplicationLoadBalancerOptionsObservabilityOutput) Logs() GetApplicationLoadBalancerOptionsObservabilityLogsOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerOptionsObservability) GetApplicationLoadBalancerOptionsObservabilityLogs {
+		return v.Logs
+	}).(GetApplicationLoadBalancerOptionsObservabilityLogsOutput)
+}
+
+// Observability metrics configuration.
+func (o GetApplicationLoadBalancerOptionsObservabilityOutput) Metrics() GetApplicationLoadBalancerOptionsObservabilityMetricsOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerOptionsObservability) GetApplicationLoadBalancerOptionsObservabilityMetrics {
+		return v.Metrics
+	}).(GetApplicationLoadBalancerOptionsObservabilityMetricsOutput)
+}
+
+type GetApplicationLoadBalancerOptionsObservabilityLogs struct {
+	// Credentials reference for logging. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the logging solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+	CredentialsRef string `pulumi:"credentialsRef"`
+	// Credentials reference for logging. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the logging solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+	PushUrl string `pulumi:"pushUrl"`
+}
+
+// GetApplicationLoadBalancerOptionsObservabilityLogsInput is an input type that accepts GetApplicationLoadBalancerOptionsObservabilityLogsArgs and GetApplicationLoadBalancerOptionsObservabilityLogsOutput values.
+// You can construct a concrete instance of `GetApplicationLoadBalancerOptionsObservabilityLogsInput` via:
+//
+//	GetApplicationLoadBalancerOptionsObservabilityLogsArgs{...}
+type GetApplicationLoadBalancerOptionsObservabilityLogsInput interface {
+	pulumi.Input
+
+	ToGetApplicationLoadBalancerOptionsObservabilityLogsOutput() GetApplicationLoadBalancerOptionsObservabilityLogsOutput
+	ToGetApplicationLoadBalancerOptionsObservabilityLogsOutputWithContext(context.Context) GetApplicationLoadBalancerOptionsObservabilityLogsOutput
+}
+
+type GetApplicationLoadBalancerOptionsObservabilityLogsArgs struct {
+	// Credentials reference for logging. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the logging solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+	CredentialsRef pulumi.StringInput `pulumi:"credentialsRef"`
+	// Credentials reference for logging. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the logging solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+	PushUrl pulumi.StringInput `pulumi:"pushUrl"`
+}
+
+func (GetApplicationLoadBalancerOptionsObservabilityLogsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerOptionsObservabilityLogs)(nil)).Elem()
+}
+
+func (i GetApplicationLoadBalancerOptionsObservabilityLogsArgs) ToGetApplicationLoadBalancerOptionsObservabilityLogsOutput() GetApplicationLoadBalancerOptionsObservabilityLogsOutput {
+	return i.ToGetApplicationLoadBalancerOptionsObservabilityLogsOutputWithContext(context.Background())
+}
+
+func (i GetApplicationLoadBalancerOptionsObservabilityLogsArgs) ToGetApplicationLoadBalancerOptionsObservabilityLogsOutputWithContext(ctx context.Context) GetApplicationLoadBalancerOptionsObservabilityLogsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancerOptionsObservabilityLogsOutput)
+}
+
+type GetApplicationLoadBalancerOptionsObservabilityLogsOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationLoadBalancerOptionsObservabilityLogsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerOptionsObservabilityLogs)(nil)).Elem()
+}
+
+func (o GetApplicationLoadBalancerOptionsObservabilityLogsOutput) ToGetApplicationLoadBalancerOptionsObservabilityLogsOutput() GetApplicationLoadBalancerOptionsObservabilityLogsOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerOptionsObservabilityLogsOutput) ToGetApplicationLoadBalancerOptionsObservabilityLogsOutputWithContext(ctx context.Context) GetApplicationLoadBalancerOptionsObservabilityLogsOutput {
+	return o
+}
+
+// Credentials reference for logging. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the logging solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+func (o GetApplicationLoadBalancerOptionsObservabilityLogsOutput) CredentialsRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerOptionsObservabilityLogs) string { return v.CredentialsRef }).(pulumi.StringOutput)
+}
+
+// Credentials reference for logging. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the logging solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+func (o GetApplicationLoadBalancerOptionsObservabilityLogsOutput) PushUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerOptionsObservabilityLogs) string { return v.PushUrl }).(pulumi.StringOutput)
+}
+
+type GetApplicationLoadBalancerOptionsObservabilityMetrics struct {
+	// Credentials reference for metrics. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the metrics solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+	CredentialsRef string `pulumi:"credentialsRef"`
+	// Credentials reference for metrics. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the metrics solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+	PushUrl string `pulumi:"pushUrl"`
+}
+
+// GetApplicationLoadBalancerOptionsObservabilityMetricsInput is an input type that accepts GetApplicationLoadBalancerOptionsObservabilityMetricsArgs and GetApplicationLoadBalancerOptionsObservabilityMetricsOutput values.
+// You can construct a concrete instance of `GetApplicationLoadBalancerOptionsObservabilityMetricsInput` via:
+//
+//	GetApplicationLoadBalancerOptionsObservabilityMetricsArgs{...}
+type GetApplicationLoadBalancerOptionsObservabilityMetricsInput interface {
+	pulumi.Input
+
+	ToGetApplicationLoadBalancerOptionsObservabilityMetricsOutput() GetApplicationLoadBalancerOptionsObservabilityMetricsOutput
+	ToGetApplicationLoadBalancerOptionsObservabilityMetricsOutputWithContext(context.Context) GetApplicationLoadBalancerOptionsObservabilityMetricsOutput
+}
+
+type GetApplicationLoadBalancerOptionsObservabilityMetricsArgs struct {
+	// Credentials reference for metrics. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the metrics solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+	CredentialsRef pulumi.StringInput `pulumi:"credentialsRef"`
+	// Credentials reference for metrics. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the metrics solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+	PushUrl pulumi.StringInput `pulumi:"pushUrl"`
+}
+
+func (GetApplicationLoadBalancerOptionsObservabilityMetricsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerOptionsObservabilityMetrics)(nil)).Elem()
+}
+
+func (i GetApplicationLoadBalancerOptionsObservabilityMetricsArgs) ToGetApplicationLoadBalancerOptionsObservabilityMetricsOutput() GetApplicationLoadBalancerOptionsObservabilityMetricsOutput {
+	return i.ToGetApplicationLoadBalancerOptionsObservabilityMetricsOutputWithContext(context.Background())
+}
+
+func (i GetApplicationLoadBalancerOptionsObservabilityMetricsArgs) ToGetApplicationLoadBalancerOptionsObservabilityMetricsOutputWithContext(ctx context.Context) GetApplicationLoadBalancerOptionsObservabilityMetricsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancerOptionsObservabilityMetricsOutput)
+}
+
+type GetApplicationLoadBalancerOptionsObservabilityMetricsOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationLoadBalancerOptionsObservabilityMetricsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerOptionsObservabilityMetrics)(nil)).Elem()
+}
+
+func (o GetApplicationLoadBalancerOptionsObservabilityMetricsOutput) ToGetApplicationLoadBalancerOptionsObservabilityMetricsOutput() GetApplicationLoadBalancerOptionsObservabilityMetricsOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerOptionsObservabilityMetricsOutput) ToGetApplicationLoadBalancerOptionsObservabilityMetricsOutputWithContext(ctx context.Context) GetApplicationLoadBalancerOptionsObservabilityMetricsOutput {
+	return o
+}
+
+// Credentials reference for metrics. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the metrics solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+func (o GetApplicationLoadBalancerOptionsObservabilityMetricsOutput) CredentialsRef() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerOptionsObservabilityMetrics) string { return v.CredentialsRef }).(pulumi.StringOutput)
+}
+
+// Credentials reference for metrics. This reference is created via the observability create endpoint and the credential needs to contain the basic auth username and password for the metrics solution the push URL points to. Then this enables monitoring via remote write for the Application Load Balancer.
+func (o GetApplicationLoadBalancerOptionsObservabilityMetricsOutput) PushUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerOptionsObservabilityMetrics) string { return v.PushUrl }).(pulumi.StringOutput)
+}
+
+type GetApplicationLoadBalancerTargetPool struct {
+	ActiveHealthCheck GetApplicationLoadBalancerTargetPoolActiveHealthCheck `pulumi:"activeHealthCheck"`
+	// Target pool name.
+	Name string `pulumi:"name"`
+	// The number identifying the port where each target listens for traffic.
+	TargetPort int `pulumi:"targetPort"`
+	// List of all targets which will be used in the pool. Limited to 250.
+	Targets []GetApplicationLoadBalancerTargetPoolTarget `pulumi:"targets"`
+	// Configuration for TLS bridging.
+	TlsConfig GetApplicationLoadBalancerTargetPoolTlsConfig `pulumi:"tlsConfig"`
+}
+
+// GetApplicationLoadBalancerTargetPoolInput is an input type that accepts GetApplicationLoadBalancerTargetPoolArgs and GetApplicationLoadBalancerTargetPoolOutput values.
+// You can construct a concrete instance of `GetApplicationLoadBalancerTargetPoolInput` via:
+//
+//	GetApplicationLoadBalancerTargetPoolArgs{...}
+type GetApplicationLoadBalancerTargetPoolInput interface {
+	pulumi.Input
+
+	ToGetApplicationLoadBalancerTargetPoolOutput() GetApplicationLoadBalancerTargetPoolOutput
+	ToGetApplicationLoadBalancerTargetPoolOutputWithContext(context.Context) GetApplicationLoadBalancerTargetPoolOutput
+}
+
+type GetApplicationLoadBalancerTargetPoolArgs struct {
+	ActiveHealthCheck GetApplicationLoadBalancerTargetPoolActiveHealthCheckInput `pulumi:"activeHealthCheck"`
+	// Target pool name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The number identifying the port where each target listens for traffic.
+	TargetPort pulumi.IntInput `pulumi:"targetPort"`
+	// List of all targets which will be used in the pool. Limited to 250.
+	Targets GetApplicationLoadBalancerTargetPoolTargetArrayInput `pulumi:"targets"`
+	// Configuration for TLS bridging.
+	TlsConfig GetApplicationLoadBalancerTargetPoolTlsConfigInput `pulumi:"tlsConfig"`
+}
+
+func (GetApplicationLoadBalancerTargetPoolArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerTargetPool)(nil)).Elem()
+}
+
+func (i GetApplicationLoadBalancerTargetPoolArgs) ToGetApplicationLoadBalancerTargetPoolOutput() GetApplicationLoadBalancerTargetPoolOutput {
+	return i.ToGetApplicationLoadBalancerTargetPoolOutputWithContext(context.Background())
+}
+
+func (i GetApplicationLoadBalancerTargetPoolArgs) ToGetApplicationLoadBalancerTargetPoolOutputWithContext(ctx context.Context) GetApplicationLoadBalancerTargetPoolOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancerTargetPoolOutput)
+}
+
+// GetApplicationLoadBalancerTargetPoolArrayInput is an input type that accepts GetApplicationLoadBalancerTargetPoolArray and GetApplicationLoadBalancerTargetPoolArrayOutput values.
+// You can construct a concrete instance of `GetApplicationLoadBalancerTargetPoolArrayInput` via:
+//
+//	GetApplicationLoadBalancerTargetPoolArray{ GetApplicationLoadBalancerTargetPoolArgs{...} }
+type GetApplicationLoadBalancerTargetPoolArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationLoadBalancerTargetPoolArrayOutput() GetApplicationLoadBalancerTargetPoolArrayOutput
+	ToGetApplicationLoadBalancerTargetPoolArrayOutputWithContext(context.Context) GetApplicationLoadBalancerTargetPoolArrayOutput
+}
+
+type GetApplicationLoadBalancerTargetPoolArray []GetApplicationLoadBalancerTargetPoolInput
+
+func (GetApplicationLoadBalancerTargetPoolArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationLoadBalancerTargetPool)(nil)).Elem()
+}
+
+func (i GetApplicationLoadBalancerTargetPoolArray) ToGetApplicationLoadBalancerTargetPoolArrayOutput() GetApplicationLoadBalancerTargetPoolArrayOutput {
+	return i.ToGetApplicationLoadBalancerTargetPoolArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationLoadBalancerTargetPoolArray) ToGetApplicationLoadBalancerTargetPoolArrayOutputWithContext(ctx context.Context) GetApplicationLoadBalancerTargetPoolArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancerTargetPoolArrayOutput)
+}
+
+type GetApplicationLoadBalancerTargetPoolOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationLoadBalancerTargetPoolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerTargetPool)(nil)).Elem()
+}
+
+func (o GetApplicationLoadBalancerTargetPoolOutput) ToGetApplicationLoadBalancerTargetPoolOutput() GetApplicationLoadBalancerTargetPoolOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerTargetPoolOutput) ToGetApplicationLoadBalancerTargetPoolOutputWithContext(ctx context.Context) GetApplicationLoadBalancerTargetPoolOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerTargetPoolOutput) ActiveHealthCheck() GetApplicationLoadBalancerTargetPoolActiveHealthCheckOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerTargetPool) GetApplicationLoadBalancerTargetPoolActiveHealthCheck {
+		return v.ActiveHealthCheck
+	}).(GetApplicationLoadBalancerTargetPoolActiveHealthCheckOutput)
+}
+
+// Target pool name.
+func (o GetApplicationLoadBalancerTargetPoolOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerTargetPool) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The number identifying the port where each target listens for traffic.
+func (o GetApplicationLoadBalancerTargetPoolOutput) TargetPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerTargetPool) int { return v.TargetPort }).(pulumi.IntOutput)
+}
+
+// List of all targets which will be used in the pool. Limited to 250.
+func (o GetApplicationLoadBalancerTargetPoolOutput) Targets() GetApplicationLoadBalancerTargetPoolTargetArrayOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerTargetPool) []GetApplicationLoadBalancerTargetPoolTarget {
+		return v.Targets
+	}).(GetApplicationLoadBalancerTargetPoolTargetArrayOutput)
+}
+
+// Configuration for TLS bridging.
+func (o GetApplicationLoadBalancerTargetPoolOutput) TlsConfig() GetApplicationLoadBalancerTargetPoolTlsConfigOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerTargetPool) GetApplicationLoadBalancerTargetPoolTlsConfig {
+		return v.TlsConfig
+	}).(GetApplicationLoadBalancerTargetPoolTlsConfigOutput)
+}
+
+type GetApplicationLoadBalancerTargetPoolArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationLoadBalancerTargetPoolArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationLoadBalancerTargetPool)(nil)).Elem()
+}
+
+func (o GetApplicationLoadBalancerTargetPoolArrayOutput) ToGetApplicationLoadBalancerTargetPoolArrayOutput() GetApplicationLoadBalancerTargetPoolArrayOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerTargetPoolArrayOutput) ToGetApplicationLoadBalancerTargetPoolArrayOutputWithContext(ctx context.Context) GetApplicationLoadBalancerTargetPoolArrayOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerTargetPoolArrayOutput) Index(i pulumi.IntInput) GetApplicationLoadBalancerTargetPoolOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationLoadBalancerTargetPool {
+		return vs[0].([]GetApplicationLoadBalancerTargetPool)[vs[1].(int)]
+	}).(GetApplicationLoadBalancerTargetPoolOutput)
+}
+
+type GetApplicationLoadBalancerTargetPoolActiveHealthCheck struct {
+	// Healthy threshold of the health checking.
+	HealthyThreshold int `pulumi:"healthyThreshold"`
+	// Options for the HTTP health checking.
+	HttpHealthChecks GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks `pulumi:"httpHealthChecks"`
+	// Interval duration of health checking in seconds.
+	Interval string `pulumi:"interval"`
+	// Interval duration threshold of the health checking in seconds.
+	IntervalJitter string `pulumi:"intervalJitter"`
+	// Active health checking timeout duration in seconds.
+	Timeout string `pulumi:"timeout"`
+	// Unhealthy threshold of the health checking.
+	UnhealthyThreshold int `pulumi:"unhealthyThreshold"`
+}
+
+// GetApplicationLoadBalancerTargetPoolActiveHealthCheckInput is an input type that accepts GetApplicationLoadBalancerTargetPoolActiveHealthCheckArgs and GetApplicationLoadBalancerTargetPoolActiveHealthCheckOutput values.
+// You can construct a concrete instance of `GetApplicationLoadBalancerTargetPoolActiveHealthCheckInput` via:
+//
+//	GetApplicationLoadBalancerTargetPoolActiveHealthCheckArgs{...}
+type GetApplicationLoadBalancerTargetPoolActiveHealthCheckInput interface {
+	pulumi.Input
+
+	ToGetApplicationLoadBalancerTargetPoolActiveHealthCheckOutput() GetApplicationLoadBalancerTargetPoolActiveHealthCheckOutput
+	ToGetApplicationLoadBalancerTargetPoolActiveHealthCheckOutputWithContext(context.Context) GetApplicationLoadBalancerTargetPoolActiveHealthCheckOutput
+}
+
+type GetApplicationLoadBalancerTargetPoolActiveHealthCheckArgs struct {
+	// Healthy threshold of the health checking.
+	HealthyThreshold pulumi.IntInput `pulumi:"healthyThreshold"`
+	// Options for the HTTP health checking.
+	HttpHealthChecks GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksInput `pulumi:"httpHealthChecks"`
+	// Interval duration of health checking in seconds.
+	Interval pulumi.StringInput `pulumi:"interval"`
+	// Interval duration threshold of the health checking in seconds.
+	IntervalJitter pulumi.StringInput `pulumi:"intervalJitter"`
+	// Active health checking timeout duration in seconds.
+	Timeout pulumi.StringInput `pulumi:"timeout"`
+	// Unhealthy threshold of the health checking.
+	UnhealthyThreshold pulumi.IntInput `pulumi:"unhealthyThreshold"`
+}
+
+func (GetApplicationLoadBalancerTargetPoolActiveHealthCheckArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerTargetPoolActiveHealthCheck)(nil)).Elem()
+}
+
+func (i GetApplicationLoadBalancerTargetPoolActiveHealthCheckArgs) ToGetApplicationLoadBalancerTargetPoolActiveHealthCheckOutput() GetApplicationLoadBalancerTargetPoolActiveHealthCheckOutput {
+	return i.ToGetApplicationLoadBalancerTargetPoolActiveHealthCheckOutputWithContext(context.Background())
+}
+
+func (i GetApplicationLoadBalancerTargetPoolActiveHealthCheckArgs) ToGetApplicationLoadBalancerTargetPoolActiveHealthCheckOutputWithContext(ctx context.Context) GetApplicationLoadBalancerTargetPoolActiveHealthCheckOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancerTargetPoolActiveHealthCheckOutput)
+}
+
+type GetApplicationLoadBalancerTargetPoolActiveHealthCheckOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationLoadBalancerTargetPoolActiveHealthCheckOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerTargetPoolActiveHealthCheck)(nil)).Elem()
+}
+
+func (o GetApplicationLoadBalancerTargetPoolActiveHealthCheckOutput) ToGetApplicationLoadBalancerTargetPoolActiveHealthCheckOutput() GetApplicationLoadBalancerTargetPoolActiveHealthCheckOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerTargetPoolActiveHealthCheckOutput) ToGetApplicationLoadBalancerTargetPoolActiveHealthCheckOutputWithContext(ctx context.Context) GetApplicationLoadBalancerTargetPoolActiveHealthCheckOutput {
+	return o
+}
+
+// Healthy threshold of the health checking.
+func (o GetApplicationLoadBalancerTargetPoolActiveHealthCheckOutput) HealthyThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerTargetPoolActiveHealthCheck) int { return v.HealthyThreshold }).(pulumi.IntOutput)
+}
+
+// Options for the HTTP health checking.
+func (o GetApplicationLoadBalancerTargetPoolActiveHealthCheckOutput) HttpHealthChecks() GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerTargetPoolActiveHealthCheck) GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks {
+		return v.HttpHealthChecks
+	}).(GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput)
+}
+
+// Interval duration of health checking in seconds.
+func (o GetApplicationLoadBalancerTargetPoolActiveHealthCheckOutput) Interval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerTargetPoolActiveHealthCheck) string { return v.Interval }).(pulumi.StringOutput)
+}
+
+// Interval duration threshold of the health checking in seconds.
+func (o GetApplicationLoadBalancerTargetPoolActiveHealthCheckOutput) IntervalJitter() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerTargetPoolActiveHealthCheck) string { return v.IntervalJitter }).(pulumi.StringOutput)
+}
+
+// Active health checking timeout duration in seconds.
+func (o GetApplicationLoadBalancerTargetPoolActiveHealthCheckOutput) Timeout() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerTargetPoolActiveHealthCheck) string { return v.Timeout }).(pulumi.StringOutput)
+}
+
+// Unhealthy threshold of the health checking.
+func (o GetApplicationLoadBalancerTargetPoolActiveHealthCheckOutput) UnhealthyThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerTargetPoolActiveHealthCheck) int { return v.UnhealthyThreshold }).(pulumi.IntOutput)
+}
+
+type GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks struct {
+	// List of HTTP status codes that indicate a healthy response.
+	OkStatuses []string `pulumi:"okStatuses"`
+	// Path to send the health check request to.
+	Path string `pulumi:"path"`
+}
+
+// GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksInput is an input type that accepts GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksArgs and GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput values.
+// You can construct a concrete instance of `GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksInput` via:
+//
+//	GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksArgs{...}
+type GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksInput interface {
+	pulumi.Input
+
+	ToGetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput() GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput
+	ToGetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutputWithContext(context.Context) GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput
+}
+
+type GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksArgs struct {
+	// List of HTTP status codes that indicate a healthy response.
+	OkStatuses pulumi.StringArrayInput `pulumi:"okStatuses"`
+	// Path to send the health check request to.
+	Path pulumi.StringInput `pulumi:"path"`
+}
+
+func (GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks)(nil)).Elem()
+}
+
+func (i GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksArgs) ToGetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput() GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput {
+	return i.ToGetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutputWithContext(context.Background())
+}
+
+func (i GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksArgs) ToGetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutputWithContext(ctx context.Context) GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput)
+}
+
+type GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks)(nil)).Elem()
+}
+
+func (o GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput) ToGetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput() GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput) ToGetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutputWithContext(ctx context.Context) GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput {
+	return o
+}
+
+// List of HTTP status codes that indicate a healthy response.
+func (o GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput) OkStatuses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks) []string {
+		return v.OkStatuses
+	}).(pulumi.StringArrayOutput)
+}
+
+// Path to send the health check request to.
+func (o GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks) string { return v.Path }).(pulumi.StringOutput)
+}
+
+type GetApplicationLoadBalancerTargetPoolTarget struct {
+	// Target display name
+	DisplayName string `pulumi:"displayName"`
+	// Private target IP, which must by unique within a target pool.
+	Ip string `pulumi:"ip"`
+}
+
+// GetApplicationLoadBalancerTargetPoolTargetInput is an input type that accepts GetApplicationLoadBalancerTargetPoolTargetArgs and GetApplicationLoadBalancerTargetPoolTargetOutput values.
+// You can construct a concrete instance of `GetApplicationLoadBalancerTargetPoolTargetInput` via:
+//
+//	GetApplicationLoadBalancerTargetPoolTargetArgs{...}
+type GetApplicationLoadBalancerTargetPoolTargetInput interface {
+	pulumi.Input
+
+	ToGetApplicationLoadBalancerTargetPoolTargetOutput() GetApplicationLoadBalancerTargetPoolTargetOutput
+	ToGetApplicationLoadBalancerTargetPoolTargetOutputWithContext(context.Context) GetApplicationLoadBalancerTargetPoolTargetOutput
+}
+
+type GetApplicationLoadBalancerTargetPoolTargetArgs struct {
+	// Target display name
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Private target IP, which must by unique within a target pool.
+	Ip pulumi.StringInput `pulumi:"ip"`
+}
+
+func (GetApplicationLoadBalancerTargetPoolTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerTargetPoolTarget)(nil)).Elem()
+}
+
+func (i GetApplicationLoadBalancerTargetPoolTargetArgs) ToGetApplicationLoadBalancerTargetPoolTargetOutput() GetApplicationLoadBalancerTargetPoolTargetOutput {
+	return i.ToGetApplicationLoadBalancerTargetPoolTargetOutputWithContext(context.Background())
+}
+
+func (i GetApplicationLoadBalancerTargetPoolTargetArgs) ToGetApplicationLoadBalancerTargetPoolTargetOutputWithContext(ctx context.Context) GetApplicationLoadBalancerTargetPoolTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancerTargetPoolTargetOutput)
+}
+
+// GetApplicationLoadBalancerTargetPoolTargetArrayInput is an input type that accepts GetApplicationLoadBalancerTargetPoolTargetArray and GetApplicationLoadBalancerTargetPoolTargetArrayOutput values.
+// You can construct a concrete instance of `GetApplicationLoadBalancerTargetPoolTargetArrayInput` via:
+//
+//	GetApplicationLoadBalancerTargetPoolTargetArray{ GetApplicationLoadBalancerTargetPoolTargetArgs{...} }
+type GetApplicationLoadBalancerTargetPoolTargetArrayInput interface {
+	pulumi.Input
+
+	ToGetApplicationLoadBalancerTargetPoolTargetArrayOutput() GetApplicationLoadBalancerTargetPoolTargetArrayOutput
+	ToGetApplicationLoadBalancerTargetPoolTargetArrayOutputWithContext(context.Context) GetApplicationLoadBalancerTargetPoolTargetArrayOutput
+}
+
+type GetApplicationLoadBalancerTargetPoolTargetArray []GetApplicationLoadBalancerTargetPoolTargetInput
+
+func (GetApplicationLoadBalancerTargetPoolTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationLoadBalancerTargetPoolTarget)(nil)).Elem()
+}
+
+func (i GetApplicationLoadBalancerTargetPoolTargetArray) ToGetApplicationLoadBalancerTargetPoolTargetArrayOutput() GetApplicationLoadBalancerTargetPoolTargetArrayOutput {
+	return i.ToGetApplicationLoadBalancerTargetPoolTargetArrayOutputWithContext(context.Background())
+}
+
+func (i GetApplicationLoadBalancerTargetPoolTargetArray) ToGetApplicationLoadBalancerTargetPoolTargetArrayOutputWithContext(ctx context.Context) GetApplicationLoadBalancerTargetPoolTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancerTargetPoolTargetArrayOutput)
+}
+
+type GetApplicationLoadBalancerTargetPoolTargetOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationLoadBalancerTargetPoolTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerTargetPoolTarget)(nil)).Elem()
+}
+
+func (o GetApplicationLoadBalancerTargetPoolTargetOutput) ToGetApplicationLoadBalancerTargetPoolTargetOutput() GetApplicationLoadBalancerTargetPoolTargetOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerTargetPoolTargetOutput) ToGetApplicationLoadBalancerTargetPoolTargetOutputWithContext(ctx context.Context) GetApplicationLoadBalancerTargetPoolTargetOutput {
+	return o
+}
+
+// Target display name
+func (o GetApplicationLoadBalancerTargetPoolTargetOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerTargetPoolTarget) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Private target IP, which must by unique within a target pool.
+func (o GetApplicationLoadBalancerTargetPoolTargetOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerTargetPoolTarget) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+type GetApplicationLoadBalancerTargetPoolTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationLoadBalancerTargetPoolTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetApplicationLoadBalancerTargetPoolTarget)(nil)).Elem()
+}
+
+func (o GetApplicationLoadBalancerTargetPoolTargetArrayOutput) ToGetApplicationLoadBalancerTargetPoolTargetArrayOutput() GetApplicationLoadBalancerTargetPoolTargetArrayOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerTargetPoolTargetArrayOutput) ToGetApplicationLoadBalancerTargetPoolTargetArrayOutputWithContext(ctx context.Context) GetApplicationLoadBalancerTargetPoolTargetArrayOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerTargetPoolTargetArrayOutput) Index(i pulumi.IntInput) GetApplicationLoadBalancerTargetPoolTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetApplicationLoadBalancerTargetPoolTarget {
+		return vs[0].([]GetApplicationLoadBalancerTargetPoolTarget)[vs[1].(int)]
+	}).(GetApplicationLoadBalancerTargetPoolTargetOutput)
+}
+
+type GetApplicationLoadBalancerTargetPoolTlsConfig struct {
+	// Specifies a custom Certificate Authority (CA). When provided, the target pool will trust certificates signed by this CA, in addition to any system-trusted CAs. This is useful for scenarios where the target pool needs to communicate with servers using self-signed or internally-issued certificates. Enabled needs to be set to true and skip validation to false for this option.
+	CustomCa string `pulumi:"customCa"`
+	// Enable TLS (Transport Layer Security) bridging for the connection between Application Load Balancer and targets in this pool. When enabled, public CAs are trusted. Can be used in tandem with the options either custom CA or skip validation or alone.
+	Enabled bool `pulumi:"enabled"`
+	// Bypass certificate validation for TLS bridging in this target pool. This option is insecure and can only be used with public CAs by setting enabled true. Meant to be used for testing purposes only!
+	SkipCertificateValidation bool `pulumi:"skipCertificateValidation"`
+}
+
+// GetApplicationLoadBalancerTargetPoolTlsConfigInput is an input type that accepts GetApplicationLoadBalancerTargetPoolTlsConfigArgs and GetApplicationLoadBalancerTargetPoolTlsConfigOutput values.
+// You can construct a concrete instance of `GetApplicationLoadBalancerTargetPoolTlsConfigInput` via:
+//
+//	GetApplicationLoadBalancerTargetPoolTlsConfigArgs{...}
+type GetApplicationLoadBalancerTargetPoolTlsConfigInput interface {
+	pulumi.Input
+
+	ToGetApplicationLoadBalancerTargetPoolTlsConfigOutput() GetApplicationLoadBalancerTargetPoolTlsConfigOutput
+	ToGetApplicationLoadBalancerTargetPoolTlsConfigOutputWithContext(context.Context) GetApplicationLoadBalancerTargetPoolTlsConfigOutput
+}
+
+type GetApplicationLoadBalancerTargetPoolTlsConfigArgs struct {
+	// Specifies a custom Certificate Authority (CA). When provided, the target pool will trust certificates signed by this CA, in addition to any system-trusted CAs. This is useful for scenarios where the target pool needs to communicate with servers using self-signed or internally-issued certificates. Enabled needs to be set to true and skip validation to false for this option.
+	CustomCa pulumi.StringInput `pulumi:"customCa"`
+	// Enable TLS (Transport Layer Security) bridging for the connection between Application Load Balancer and targets in this pool. When enabled, public CAs are trusted. Can be used in tandem with the options either custom CA or skip validation or alone.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Bypass certificate validation for TLS bridging in this target pool. This option is insecure and can only be used with public CAs by setting enabled true. Meant to be used for testing purposes only!
+	SkipCertificateValidation pulumi.BoolInput `pulumi:"skipCertificateValidation"`
+}
+
+func (GetApplicationLoadBalancerTargetPoolTlsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerTargetPoolTlsConfig)(nil)).Elem()
+}
+
+func (i GetApplicationLoadBalancerTargetPoolTlsConfigArgs) ToGetApplicationLoadBalancerTargetPoolTlsConfigOutput() GetApplicationLoadBalancerTargetPoolTlsConfigOutput {
+	return i.ToGetApplicationLoadBalancerTargetPoolTlsConfigOutputWithContext(context.Background())
+}
+
+func (i GetApplicationLoadBalancerTargetPoolTlsConfigArgs) ToGetApplicationLoadBalancerTargetPoolTlsConfigOutputWithContext(ctx context.Context) GetApplicationLoadBalancerTargetPoolTlsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancerTargetPoolTlsConfigOutput)
+}
+
+type GetApplicationLoadBalancerTargetPoolTlsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationLoadBalancerTargetPoolTlsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerTargetPoolTlsConfig)(nil)).Elem()
+}
+
+func (o GetApplicationLoadBalancerTargetPoolTlsConfigOutput) ToGetApplicationLoadBalancerTargetPoolTlsConfigOutput() GetApplicationLoadBalancerTargetPoolTlsConfigOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerTargetPoolTlsConfigOutput) ToGetApplicationLoadBalancerTargetPoolTlsConfigOutputWithContext(ctx context.Context) GetApplicationLoadBalancerTargetPoolTlsConfigOutput {
+	return o
+}
+
+// Specifies a custom Certificate Authority (CA). When provided, the target pool will trust certificates signed by this CA, in addition to any system-trusted CAs. This is useful for scenarios where the target pool needs to communicate with servers using self-signed or internally-issued certificates. Enabled needs to be set to true and skip validation to false for this option.
+func (o GetApplicationLoadBalancerTargetPoolTlsConfigOutput) CustomCa() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerTargetPoolTlsConfig) string { return v.CustomCa }).(pulumi.StringOutput)
+}
+
+// Enable TLS (Transport Layer Security) bridging for the connection between Application Load Balancer and targets in this pool. When enabled, public CAs are trusted. Can be used in tandem with the options either custom CA or skip validation or alone.
+func (o GetApplicationLoadBalancerTargetPoolTlsConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerTargetPoolTlsConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Bypass certificate validation for TLS bridging in this target pool. This option is insecure and can only be used with public CAs by setting enabled true. Meant to be used for testing purposes only!
+func (o GetApplicationLoadBalancerTargetPoolTlsConfigOutput) SkipCertificateValidation() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerTargetPoolTlsConfig) bool { return v.SkipCertificateValidation }).(pulumi.BoolOutput)
+}
+
+type GetApplicationLoadBalancerTargetSecurityGroup struct {
+	// ID of the security Group
+	Id string `pulumi:"id"`
+	// Name of the security Group
+	Name string `pulumi:"name"`
+}
+
+// GetApplicationLoadBalancerTargetSecurityGroupInput is an input type that accepts GetApplicationLoadBalancerTargetSecurityGroupArgs and GetApplicationLoadBalancerTargetSecurityGroupOutput values.
+// You can construct a concrete instance of `GetApplicationLoadBalancerTargetSecurityGroupInput` via:
+//
+//	GetApplicationLoadBalancerTargetSecurityGroupArgs{...}
+type GetApplicationLoadBalancerTargetSecurityGroupInput interface {
+	pulumi.Input
+
+	ToGetApplicationLoadBalancerTargetSecurityGroupOutput() GetApplicationLoadBalancerTargetSecurityGroupOutput
+	ToGetApplicationLoadBalancerTargetSecurityGroupOutputWithContext(context.Context) GetApplicationLoadBalancerTargetSecurityGroupOutput
+}
+
+type GetApplicationLoadBalancerTargetSecurityGroupArgs struct {
+	// ID of the security Group
+	Id pulumi.StringInput `pulumi:"id"`
+	// Name of the security Group
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetApplicationLoadBalancerTargetSecurityGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerTargetSecurityGroup)(nil)).Elem()
+}
+
+func (i GetApplicationLoadBalancerTargetSecurityGroupArgs) ToGetApplicationLoadBalancerTargetSecurityGroupOutput() GetApplicationLoadBalancerTargetSecurityGroupOutput {
+	return i.ToGetApplicationLoadBalancerTargetSecurityGroupOutputWithContext(context.Background())
+}
+
+func (i GetApplicationLoadBalancerTargetSecurityGroupArgs) ToGetApplicationLoadBalancerTargetSecurityGroupOutputWithContext(ctx context.Context) GetApplicationLoadBalancerTargetSecurityGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetApplicationLoadBalancerTargetSecurityGroupOutput)
+}
+
+type GetApplicationLoadBalancerTargetSecurityGroupOutput struct{ *pulumi.OutputState }
+
+func (GetApplicationLoadBalancerTargetSecurityGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetApplicationLoadBalancerTargetSecurityGroup)(nil)).Elem()
+}
+
+func (o GetApplicationLoadBalancerTargetSecurityGroupOutput) ToGetApplicationLoadBalancerTargetSecurityGroupOutput() GetApplicationLoadBalancerTargetSecurityGroupOutput {
+	return o
+}
+
+func (o GetApplicationLoadBalancerTargetSecurityGroupOutput) ToGetApplicationLoadBalancerTargetSecurityGroupOutputWithContext(ctx context.Context) GetApplicationLoadBalancerTargetSecurityGroupOutput {
+	return o
+}
+
+// ID of the security Group
+func (o GetApplicationLoadBalancerTargetSecurityGroupOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerTargetSecurityGroup) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Name of the security Group
+func (o GetApplicationLoadBalancerTargetSecurityGroupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerTargetSecurityGroup) string { return v.Name }).(pulumi.StringOutput)
+}
+
 type GetCdnCustomDomainCertificate struct {
 	// A version identifier for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.
 	Version int `pulumi:"version"`
@@ -20090,6 +25504,121 @@ func (o GetServerUpdateSchedulesItemArrayOutput) Index(i pulumi.IntInput) GetSer
 	}).(GetServerUpdateSchedulesItemOutput)
 }
 
+type GetServiceAccountsItem struct {
+	// Email of the service account.
+	Email string `pulumi:"email"`
+	// Name of the service account.
+	Name string `pulumi:"name"`
+	// The internal UUID of the service account.
+	ServiceAccountId string `pulumi:"serviceAccountId"`
+}
+
+// GetServiceAccountsItemInput is an input type that accepts GetServiceAccountsItemArgs and GetServiceAccountsItemOutput values.
+// You can construct a concrete instance of `GetServiceAccountsItemInput` via:
+//
+//	GetServiceAccountsItemArgs{...}
+type GetServiceAccountsItemInput interface {
+	pulumi.Input
+
+	ToGetServiceAccountsItemOutput() GetServiceAccountsItemOutput
+	ToGetServiceAccountsItemOutputWithContext(context.Context) GetServiceAccountsItemOutput
+}
+
+type GetServiceAccountsItemArgs struct {
+	// Email of the service account.
+	Email pulumi.StringInput `pulumi:"email"`
+	// Name of the service account.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The internal UUID of the service account.
+	ServiceAccountId pulumi.StringInput `pulumi:"serviceAccountId"`
+}
+
+func (GetServiceAccountsItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceAccountsItem)(nil)).Elem()
+}
+
+func (i GetServiceAccountsItemArgs) ToGetServiceAccountsItemOutput() GetServiceAccountsItemOutput {
+	return i.ToGetServiceAccountsItemOutputWithContext(context.Background())
+}
+
+func (i GetServiceAccountsItemArgs) ToGetServiceAccountsItemOutputWithContext(ctx context.Context) GetServiceAccountsItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceAccountsItemOutput)
+}
+
+// GetServiceAccountsItemArrayInput is an input type that accepts GetServiceAccountsItemArray and GetServiceAccountsItemArrayOutput values.
+// You can construct a concrete instance of `GetServiceAccountsItemArrayInput` via:
+//
+//	GetServiceAccountsItemArray{ GetServiceAccountsItemArgs{...} }
+type GetServiceAccountsItemArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceAccountsItemArrayOutput() GetServiceAccountsItemArrayOutput
+	ToGetServiceAccountsItemArrayOutputWithContext(context.Context) GetServiceAccountsItemArrayOutput
+}
+
+type GetServiceAccountsItemArray []GetServiceAccountsItemInput
+
+func (GetServiceAccountsItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceAccountsItem)(nil)).Elem()
+}
+
+func (i GetServiceAccountsItemArray) ToGetServiceAccountsItemArrayOutput() GetServiceAccountsItemArrayOutput {
+	return i.ToGetServiceAccountsItemArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceAccountsItemArray) ToGetServiceAccountsItemArrayOutputWithContext(ctx context.Context) GetServiceAccountsItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceAccountsItemArrayOutput)
+}
+
+type GetServiceAccountsItemOutput struct{ *pulumi.OutputState }
+
+func (GetServiceAccountsItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceAccountsItem)(nil)).Elem()
+}
+
+func (o GetServiceAccountsItemOutput) ToGetServiceAccountsItemOutput() GetServiceAccountsItemOutput {
+	return o
+}
+
+func (o GetServiceAccountsItemOutput) ToGetServiceAccountsItemOutputWithContext(ctx context.Context) GetServiceAccountsItemOutput {
+	return o
+}
+
+// Email of the service account.
+func (o GetServiceAccountsItemOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAccountsItem) string { return v.Email }).(pulumi.StringOutput)
+}
+
+// Name of the service account.
+func (o GetServiceAccountsItemOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAccountsItem) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The internal UUID of the service account.
+func (o GetServiceAccountsItemOutput) ServiceAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAccountsItem) string { return v.ServiceAccountId }).(pulumi.StringOutput)
+}
+
+type GetServiceAccountsItemArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceAccountsItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceAccountsItem)(nil)).Elem()
+}
+
+func (o GetServiceAccountsItemArrayOutput) ToGetServiceAccountsItemArrayOutput() GetServiceAccountsItemArrayOutput {
+	return o
+}
+
+func (o GetServiceAccountsItemArrayOutput) ToGetServiceAccountsItemArrayOutputWithContext(ctx context.Context) GetServiceAccountsItemArrayOutput {
+	return o
+}
+
+func (o GetServiceAccountsItemArrayOutput) Index(i pulumi.IntInput) GetServiceAccountsItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceAccountsItem {
+		return vs[0].([]GetServiceAccountsItem)[vs[1].(int)]
+	}).(GetServiceAccountsItemOutput)
+}
+
 type GetSfsExportPolicyRule struct {
 	// Description of the Rule
 	Description *string `pulumi:"description"`
@@ -21900,6 +27429,53 @@ func (o GetVolumeSourceOutput) Type() pulumi.StringOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerErrorInput)(nil)).Elem(), ApplicationLoadBalancerErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerErrorArrayInput)(nil)).Elem(), ApplicationLoadBalancerErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerListenerInput)(nil)).Elem(), ApplicationLoadBalancerListenerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerListenerArrayInput)(nil)).Elem(), ApplicationLoadBalancerListenerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerListenerHttpInput)(nil)).Elem(), ApplicationLoadBalancerListenerHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerListenerHttpHostInput)(nil)).Elem(), ApplicationLoadBalancerListenerHttpHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerListenerHttpHostArrayInput)(nil)).Elem(), ApplicationLoadBalancerListenerHttpHostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerListenerHttpHostRuleInput)(nil)).Elem(), ApplicationLoadBalancerListenerHttpHostRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerListenerHttpHostRuleArrayInput)(nil)).Elem(), ApplicationLoadBalancerListenerHttpHostRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceInput)(nil)).Elem(), ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrInput)(nil)).Elem(), ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerListenerHttpHostRuleHeaderInput)(nil)).Elem(), ApplicationLoadBalancerListenerHttpHostRuleHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerListenerHttpHostRuleHeaderArrayInput)(nil)).Elem(), ApplicationLoadBalancerListenerHttpHostRuleHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerListenerHttpHostRulePathInput)(nil)).Elem(), ApplicationLoadBalancerListenerHttpHostRulePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerListenerHttpHostRulePathPtrInput)(nil)).Elem(), ApplicationLoadBalancerListenerHttpHostRulePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerListenerHttpHostRuleQueryParameterInput)(nil)).Elem(), ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayInput)(nil)).Elem(), ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerListenerHttpsInput)(nil)).Elem(), ApplicationLoadBalancerListenerHttpsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerListenerHttpsPtrInput)(nil)).Elem(), ApplicationLoadBalancerListenerHttpsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerListenerHttpsCertificateConfigInput)(nil)).Elem(), ApplicationLoadBalancerListenerHttpsCertificateConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerListenerHttpsCertificateConfigPtrInput)(nil)).Elem(), ApplicationLoadBalancerListenerHttpsCertificateConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerLoadBalancerSecurityGroupInput)(nil)).Elem(), ApplicationLoadBalancerLoadBalancerSecurityGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerLoadBalancerSecurityGroupPtrInput)(nil)).Elem(), ApplicationLoadBalancerLoadBalancerSecurityGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerNetworkInput)(nil)).Elem(), ApplicationLoadBalancerNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerNetworkArrayInput)(nil)).Elem(), ApplicationLoadBalancerNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerOptionsInput)(nil)).Elem(), ApplicationLoadBalancerOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerOptionsPtrInput)(nil)).Elem(), ApplicationLoadBalancerOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerOptionsAccessControlInput)(nil)).Elem(), ApplicationLoadBalancerOptionsAccessControlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerOptionsAccessControlPtrInput)(nil)).Elem(), ApplicationLoadBalancerOptionsAccessControlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerOptionsObservabilityInput)(nil)).Elem(), ApplicationLoadBalancerOptionsObservabilityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerOptionsObservabilityPtrInput)(nil)).Elem(), ApplicationLoadBalancerOptionsObservabilityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerOptionsObservabilityLogsInput)(nil)).Elem(), ApplicationLoadBalancerOptionsObservabilityLogsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerOptionsObservabilityLogsPtrInput)(nil)).Elem(), ApplicationLoadBalancerOptionsObservabilityLogsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerOptionsObservabilityMetricsInput)(nil)).Elem(), ApplicationLoadBalancerOptionsObservabilityMetricsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerOptionsObservabilityMetricsPtrInput)(nil)).Elem(), ApplicationLoadBalancerOptionsObservabilityMetricsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerTargetPoolInput)(nil)).Elem(), ApplicationLoadBalancerTargetPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerTargetPoolArrayInput)(nil)).Elem(), ApplicationLoadBalancerTargetPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerTargetPoolActiveHealthCheckInput)(nil)).Elem(), ApplicationLoadBalancerTargetPoolActiveHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrInput)(nil)).Elem(), ApplicationLoadBalancerTargetPoolActiveHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksInput)(nil)).Elem(), ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrInput)(nil)).Elem(), ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerTargetPoolTargetInput)(nil)).Elem(), ApplicationLoadBalancerTargetPoolTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerTargetPoolTargetArrayInput)(nil)).Elem(), ApplicationLoadBalancerTargetPoolTargetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerTargetPoolTlsConfigInput)(nil)).Elem(), ApplicationLoadBalancerTargetPoolTlsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerTargetPoolTlsConfigPtrInput)(nil)).Elem(), ApplicationLoadBalancerTargetPoolTlsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerTargetSecurityGroupInput)(nil)).Elem(), ApplicationLoadBalancerTargetSecurityGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerTargetSecurityGroupPtrInput)(nil)).Elem(), ApplicationLoadBalancerTargetSecurityGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnCustomDomainCertificateInput)(nil)).Elem(), CdnCustomDomainCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnCustomDomainCertificatePtrInput)(nil)).Elem(), CdnCustomDomainCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigInput)(nil)).Elem(), CdnDistributionConfigArgs{})
@@ -22044,6 +27620,39 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeEncryptionParametersPtrInput)(nil)).Elem(), VolumeEncryptionParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeSourceInput)(nil)).Elem(), VolumeSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeSourcePtrInput)(nil)).Elem(), VolumeSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerErrorInput)(nil)).Elem(), GetApplicationLoadBalancerErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerErrorArrayInput)(nil)).Elem(), GetApplicationLoadBalancerErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerListenerInput)(nil)).Elem(), GetApplicationLoadBalancerListenerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerListenerArrayInput)(nil)).Elem(), GetApplicationLoadBalancerListenerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerListenerHttpInput)(nil)).Elem(), GetApplicationLoadBalancerListenerHttpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerListenerHttpHostInput)(nil)).Elem(), GetApplicationLoadBalancerListenerHttpHostArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerListenerHttpHostArrayInput)(nil)).Elem(), GetApplicationLoadBalancerListenerHttpHostArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerListenerHttpHostRuleInput)(nil)).Elem(), GetApplicationLoadBalancerListenerHttpHostRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerListenerHttpHostRuleArrayInput)(nil)).Elem(), GetApplicationLoadBalancerListenerHttpHostRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceInput)(nil)).Elem(), GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerListenerHttpHostRuleHeaderInput)(nil)).Elem(), GetApplicationLoadBalancerListenerHttpHostRuleHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerListenerHttpHostRuleHeaderArrayInput)(nil)).Elem(), GetApplicationLoadBalancerListenerHttpHostRuleHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerListenerHttpHostRulePathInput)(nil)).Elem(), GetApplicationLoadBalancerListenerHttpHostRulePathArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterInput)(nil)).Elem(), GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayInput)(nil)).Elem(), GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerListenerHttpsInput)(nil)).Elem(), GetApplicationLoadBalancerListenerHttpsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerListenerHttpsCertificateConfigInput)(nil)).Elem(), GetApplicationLoadBalancerListenerHttpsCertificateConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerLoadBalancerSecurityGroupInput)(nil)).Elem(), GetApplicationLoadBalancerLoadBalancerSecurityGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerNetworkInput)(nil)).Elem(), GetApplicationLoadBalancerNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerNetworkArrayInput)(nil)).Elem(), GetApplicationLoadBalancerNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerOptionsInput)(nil)).Elem(), GetApplicationLoadBalancerOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerOptionsAccessControlInput)(nil)).Elem(), GetApplicationLoadBalancerOptionsAccessControlArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerOptionsObservabilityInput)(nil)).Elem(), GetApplicationLoadBalancerOptionsObservabilityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerOptionsObservabilityLogsInput)(nil)).Elem(), GetApplicationLoadBalancerOptionsObservabilityLogsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerOptionsObservabilityMetricsInput)(nil)).Elem(), GetApplicationLoadBalancerOptionsObservabilityMetricsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerTargetPoolInput)(nil)).Elem(), GetApplicationLoadBalancerTargetPoolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerTargetPoolArrayInput)(nil)).Elem(), GetApplicationLoadBalancerTargetPoolArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerTargetPoolActiveHealthCheckInput)(nil)).Elem(), GetApplicationLoadBalancerTargetPoolActiveHealthCheckArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksInput)(nil)).Elem(), GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerTargetPoolTargetInput)(nil)).Elem(), GetApplicationLoadBalancerTargetPoolTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerTargetPoolTargetArrayInput)(nil)).Elem(), GetApplicationLoadBalancerTargetPoolTargetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerTargetPoolTlsConfigInput)(nil)).Elem(), GetApplicationLoadBalancerTargetPoolTlsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerTargetSecurityGroupInput)(nil)).Elem(), GetApplicationLoadBalancerTargetSecurityGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnCustomDomainCertificateInput)(nil)).Elem(), GetCdnCustomDomainCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnCustomDomainCertificatePtrInput)(nil)).Elem(), GetCdnCustomDomainCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionConfigInput)(nil)).Elem(), GetCdnDistributionConfigArgs{})
@@ -22138,6 +27747,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerBootVolumeInput)(nil)).Elem(), GetServerBootVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerUpdateSchedulesItemInput)(nil)).Elem(), GetServerUpdateSchedulesItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerUpdateSchedulesItemArrayInput)(nil)).Elem(), GetServerUpdateSchedulesItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAccountsItemInput)(nil)).Elem(), GetServiceAccountsItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAccountsItemArrayInput)(nil)).Elem(), GetServiceAccountsItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSfsExportPolicyRuleInput)(nil)).Elem(), GetSfsExportPolicyRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSfsExportPolicyRuleArrayInput)(nil)).Elem(), GetSfsExportPolicyRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSfsResourcePoolSnapshotSnapshotInput)(nil)).Elem(), GetSfsResourcePoolSnapshotSnapshotArgs{})
@@ -22165,6 +27776,53 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlserverflexInstanceOptionsInput)(nil)).Elem(), GetSqlserverflexInstanceOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlserverflexInstanceStorageInput)(nil)).Elem(), GetSqlserverflexInstanceStorageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeSourceInput)(nil)).Elem(), GetVolumeSourceArgs{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerErrorOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerErrorArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerListenerOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerListenerArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerListenerHttpOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerListenerHttpHostOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerListenerHttpHostArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerListenerHttpHostRuleOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerListenerHttpHostRuleArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerListenerHttpHostRuleCookiePersistencePtrOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerListenerHttpHostRuleHeaderOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerListenerHttpHostRulePathOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerListenerHttpHostRulePathPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerListenerHttpsOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerListenerHttpsPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerListenerHttpsCertificateConfigOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerListenerHttpsCertificateConfigPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerLoadBalancerSecurityGroupOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerLoadBalancerSecurityGroupPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerNetworkOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerNetworkArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerOptionsOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerOptionsPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerOptionsAccessControlOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerOptionsAccessControlPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerOptionsObservabilityOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerOptionsObservabilityPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerOptionsObservabilityLogsOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerOptionsObservabilityLogsPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerOptionsObservabilityMetricsOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerOptionsObservabilityMetricsPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerTargetPoolOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerTargetPoolArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerTargetPoolActiveHealthCheckOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerTargetPoolTargetOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerTargetPoolTargetArrayOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerTargetPoolTlsConfigOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerTargetPoolTlsConfigPtrOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerTargetSecurityGroupOutput{})
+	pulumi.RegisterOutputType(ApplicationLoadBalancerTargetSecurityGroupPtrOutput{})
 	pulumi.RegisterOutputType(CdnCustomDomainCertificateOutput{})
 	pulumi.RegisterOutputType(CdnCustomDomainCertificatePtrOutput{})
 	pulumi.RegisterOutputType(CdnDistributionConfigOutput{})
@@ -22309,6 +27967,39 @@ func init() {
 	pulumi.RegisterOutputType(VolumeEncryptionParametersPtrOutput{})
 	pulumi.RegisterOutputType(VolumeSourceOutput{})
 	pulumi.RegisterOutputType(VolumeSourcePtrOutput{})
+	pulumi.RegisterOutputType(GetApplicationLoadBalancerErrorOutput{})
+	pulumi.RegisterOutputType(GetApplicationLoadBalancerErrorArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationLoadBalancerListenerOutput{})
+	pulumi.RegisterOutputType(GetApplicationLoadBalancerListenerArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationLoadBalancerListenerHttpOutput{})
+	pulumi.RegisterOutputType(GetApplicationLoadBalancerListenerHttpHostOutput{})
+	pulumi.RegisterOutputType(GetApplicationLoadBalancerListenerHttpHostArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationLoadBalancerListenerHttpHostRuleOutput{})
+	pulumi.RegisterOutputType(GetApplicationLoadBalancerListenerHttpHostRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationLoadBalancerListenerHttpHostRuleCookiePersistenceOutput{})
+	pulumi.RegisterOutputType(GetApplicationLoadBalancerListenerHttpHostRuleHeaderOutput{})
+	pulumi.RegisterOutputType(GetApplicationLoadBalancerListenerHttpHostRuleHeaderArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationLoadBalancerListenerHttpHostRulePathOutput{})
+	pulumi.RegisterOutputType(GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterOutput{})
+	pulumi.RegisterOutputType(GetApplicationLoadBalancerListenerHttpHostRuleQueryParameterArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationLoadBalancerListenerHttpsOutput{})
+	pulumi.RegisterOutputType(GetApplicationLoadBalancerListenerHttpsCertificateConfigOutput{})
+	pulumi.RegisterOutputType(GetApplicationLoadBalancerLoadBalancerSecurityGroupOutput{})
+	pulumi.RegisterOutputType(GetApplicationLoadBalancerNetworkOutput{})
+	pulumi.RegisterOutputType(GetApplicationLoadBalancerNetworkArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationLoadBalancerOptionsOutput{})
+	pulumi.RegisterOutputType(GetApplicationLoadBalancerOptionsAccessControlOutput{})
+	pulumi.RegisterOutputType(GetApplicationLoadBalancerOptionsObservabilityOutput{})
+	pulumi.RegisterOutputType(GetApplicationLoadBalancerOptionsObservabilityLogsOutput{})
+	pulumi.RegisterOutputType(GetApplicationLoadBalancerOptionsObservabilityMetricsOutput{})
+	pulumi.RegisterOutputType(GetApplicationLoadBalancerTargetPoolOutput{})
+	pulumi.RegisterOutputType(GetApplicationLoadBalancerTargetPoolArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationLoadBalancerTargetPoolActiveHealthCheckOutput{})
+	pulumi.RegisterOutputType(GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksOutput{})
+	pulumi.RegisterOutputType(GetApplicationLoadBalancerTargetPoolTargetOutput{})
+	pulumi.RegisterOutputType(GetApplicationLoadBalancerTargetPoolTargetArrayOutput{})
+	pulumi.RegisterOutputType(GetApplicationLoadBalancerTargetPoolTlsConfigOutput{})
+	pulumi.RegisterOutputType(GetApplicationLoadBalancerTargetSecurityGroupOutput{})
 	pulumi.RegisterOutputType(GetCdnCustomDomainCertificateOutput{})
 	pulumi.RegisterOutputType(GetCdnCustomDomainCertificatePtrOutput{})
 	pulumi.RegisterOutputType(GetCdnDistributionConfigOutput{})
@@ -22403,6 +28094,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServerBootVolumeOutput{})
 	pulumi.RegisterOutputType(GetServerUpdateSchedulesItemOutput{})
 	pulumi.RegisterOutputType(GetServerUpdateSchedulesItemArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceAccountsItemOutput{})
+	pulumi.RegisterOutputType(GetServiceAccountsItemArrayOutput{})
 	pulumi.RegisterOutputType(GetSfsExportPolicyRuleOutput{})
 	pulumi.RegisterOutputType(GetSfsExportPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetSfsResourcePoolSnapshotSnapshotOutput{})

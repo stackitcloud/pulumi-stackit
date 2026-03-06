@@ -4,9 +4,10 @@ go 1.24.0
 
 toolchain go1.24.2
 
-require github.com/stackitcloud/terraform-provider-stackit v0.84.0
+require github.com/stackitcloud/terraform-provider-stackit v0.85.0
 
 require (
+	github.com/stackitcloud/stackit-sdk-go/services/alb v0.9.3 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/edge v0.4.3 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/kms v1.3.2 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/logs v0.5.2 // indirect
@@ -14,8 +15,6 @@ require (
 	github.com/stackitcloud/stackit-sdk-go/services/sfs v0.4.0 // indirect
 	github.com/stretchr/testify v1.11.1 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20260128011058-8636f8732409 // indirect
-	google.golang.org/grpc v1.78.0 // indirect
-	google.golang.org/protobuf v1.36.11 // indirect
 )
 
 require (
@@ -27,7 +26,7 @@ require (
 	github.com/hashicorp/go-hclog v1.6.3 // indirect
 	github.com/hashicorp/terraform-plugin-framework v1.17.0
 	github.com/hashicorp/terraform-plugin-framework-validators v0.19.0 // indirect
-	github.com/hashicorp/terraform-plugin-go v0.29.0 // indirect
+	github.com/hashicorp/terraform-plugin-go v0.30.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.10.0 // indirect
 	github.com/mattn/go-colorable v0.1.14 // indirect
 	github.com/mattn/go-isatty v0.0.20 // indirect

@@ -9,8 +9,6 @@ import * as utilities from "./utilities";
 /**
  * Server backup schedule datasource schema. Must have a `region` specified in the provider configuration.
  *
- * > This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
- *
  * ## Example Usage
  */
 export function getServerBackupSchedule(args: GetServerBackupScheduleArgs, opts?: pulumi.InvokeOptions): Promise<GetServerBackupScheduleResult> {
@@ -88,8 +86,6 @@ export interface GetServerBackupScheduleResult {
 }
 /**
  * Server backup schedule datasource schema. Must have a `region` specified in the provider configuration.
- *
- * > This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
  *
  * ## Example Usage
  */

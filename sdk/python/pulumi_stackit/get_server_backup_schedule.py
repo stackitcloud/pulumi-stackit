@@ -154,8 +154,6 @@ def get_server_backup_schedule(backup_schedule_id: Optional[_builtins.int] = Non
     """
     Server backup schedule datasource schema. Must have a `region` specified in the provider configuration.
 
-    > This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
-
     ## Example Usage
 
 
@@ -189,8 +187,6 @@ def get_server_backup_schedule_output(backup_schedule_id: Optional[pulumi.Input[
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServerBackupScheduleResult]:
     """
     Server backup schedule datasource schema. Must have a `region` specified in the provider configuration.
-
-    > This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
 
     ## Example Usage
 

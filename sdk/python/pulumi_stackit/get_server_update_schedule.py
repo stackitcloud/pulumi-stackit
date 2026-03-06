@@ -153,8 +153,6 @@ def get_server_update_schedule(project_id: Optional[_builtins.str] = None,
     """
     Server update schedule datasource schema. Must have a `region` specified in the provider configuration.
 
-    > This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
-
     ## Example Usage
 
 
@@ -188,8 +186,6 @@ def get_server_update_schedule_output(project_id: Optional[pulumi.Input[_builtin
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServerUpdateScheduleResult]:
     """
     Server update schedule datasource schema. Must have a `region` specified in the provider configuration.
-
-    > This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
 
     ## Example Usage
 

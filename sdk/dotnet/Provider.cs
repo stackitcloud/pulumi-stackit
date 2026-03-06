@@ -19,6 +19,12 @@ namespace Pulumi.Stackit
     public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
+        /// Custom endpoint for the Application Load Balancer service
+        /// </summary>
+        [Output("albCustomEndpoint")]
+        public Output<string?> AlbCustomEndpoint { get; private set; } = null!;
+
+        /// <summary>
         /// Custom endpoint for the Membership service
         /// </summary>
         [Output("authorizationCustomEndpoint")]
@@ -311,6 +317,12 @@ namespace Pulumi.Stackit
 
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Custom endpoint for the Application Load Balancer service
+        /// </summary>
+        [Input("albCustomEndpoint")]
+        public Input<string>? AlbCustomEndpoint { get; set; }
+
         /// <summary>
         /// Custom endpoint for the Membership service
         /// </summary>

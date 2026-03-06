@@ -51,6 +51,10 @@ export interface GetServiceAccountResult {
      * STACKIT project ID to which the service account is associated.
      */
     readonly projectId: string;
+    /**
+     * The internal UUID of the service account.
+     */
+    readonly serviceAccountId: string;
 }
 /**
  * Service account data source schema.

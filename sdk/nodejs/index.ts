@@ -10,6 +10,11 @@ export type AffinityGroup = import("./affinityGroup").AffinityGroup;
 export const AffinityGroup: typeof import("./affinityGroup").AffinityGroup = null as any;
 utilities.lazyLoad(exports, ["AffinityGroup"], () => require("./affinityGroup"));
 
+export { ApplicationLoadBalancerArgs, ApplicationLoadBalancerState } from "./applicationLoadBalancer";
+export type ApplicationLoadBalancer = import("./applicationLoadBalancer").ApplicationLoadBalancer;
+export const ApplicationLoadBalancer: typeof import("./applicationLoadBalancer").ApplicationLoadBalancer = null as any;
+utilities.lazyLoad(exports, ["ApplicationLoadBalancer"], () => require("./applicationLoadBalancer"));
+
 export { AuthorizationFolderRoleAssignmentArgs, AuthorizationFolderRoleAssignmentState } from "./authorizationFolderRoleAssignment";
 export type AuthorizationFolderRoleAssignment = import("./authorizationFolderRoleAssignment").AuthorizationFolderRoleAssignment;
 export const AuthorizationFolderRoleAssignment: typeof import("./authorizationFolderRoleAssignment").AuthorizationFolderRoleAssignment = null as any;
@@ -69,6 +74,11 @@ export { GetAffinityGroupArgs, GetAffinityGroupResult, GetAffinityGroupOutputArg
 export const getAffinityGroup: typeof import("./getAffinityGroup").getAffinityGroup = null as any;
 export const getAffinityGroupOutput: typeof import("./getAffinityGroup").getAffinityGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getAffinityGroup","getAffinityGroupOutput"], () => require("./getAffinityGroup"));
+
+export { GetApplicationLoadBalancerArgs, GetApplicationLoadBalancerResult, GetApplicationLoadBalancerOutputArgs } from "./getApplicationLoadBalancer";
+export const getApplicationLoadBalancer: typeof import("./getApplicationLoadBalancer").getApplicationLoadBalancer = null as any;
+export const getApplicationLoadBalancerOutput: typeof import("./getApplicationLoadBalancer").getApplicationLoadBalancerOutput = null as any;
+utilities.lazyLoad(exports, ["getApplicationLoadBalancer","getApplicationLoadBalancerOutput"], () => require("./getApplicationLoadBalancer"));
 
 export { GetAuthorizationProjectCustomRoleArgs, GetAuthorizationProjectCustomRoleResult, GetAuthorizationProjectCustomRoleOutputArgs } from "./getAuthorizationProjectCustomRole";
 export const getAuthorizationProjectCustomRole: typeof import("./getAuthorizationProjectCustomRole").getAuthorizationProjectCustomRole = null as any;
@@ -404,6 +414,11 @@ export { GetServiceAccountArgs, GetServiceAccountResult, GetServiceAccountOutput
 export const getServiceAccount: typeof import("./getServiceAccount").getServiceAccount = null as any;
 export const getServiceAccountOutput: typeof import("./getServiceAccount").getServiceAccountOutput = null as any;
 utilities.lazyLoad(exports, ["getServiceAccount","getServiceAccountOutput"], () => require("./getServiceAccount"));
+
+export { GetServiceAccountsArgs, GetServiceAccountsResult, GetServiceAccountsOutputArgs } from "./getServiceAccounts";
+export const getServiceAccounts: typeof import("./getServiceAccounts").getServiceAccounts = null as any;
+export const getServiceAccountsOutput: typeof import("./getServiceAccounts").getServiceAccountsOutput = null as any;
+utilities.lazyLoad(exports, ["getServiceAccounts","getServiceAccountsOutput"], () => require("./getServiceAccounts"));
 
 export { GetSfsExportPolicyArgs, GetSfsExportPolicyResult, GetSfsExportPolicyOutputArgs } from "./getSfsExportPolicy";
 export const getSfsExportPolicy: typeof import("./getSfsExportPolicy").getSfsExportPolicy = null as any;
@@ -748,11 +763,6 @@ export type ServiceAccount = import("./serviceAccount").ServiceAccount;
 export const ServiceAccount: typeof import("./serviceAccount").ServiceAccount = null as any;
 utilities.lazyLoad(exports, ["ServiceAccount"], () => require("./serviceAccount"));
 
-export { ServiceAccountAccessTokenArgs, ServiceAccountAccessTokenState } from "./serviceAccountAccessToken";
-export type ServiceAccountAccessToken = import("./serviceAccountAccessToken").ServiceAccountAccessToken;
-export const ServiceAccountAccessToken: typeof import("./serviceAccountAccessToken").ServiceAccountAccessToken = null as any;
-utilities.lazyLoad(exports, ["ServiceAccountAccessToken"], () => require("./serviceAccountAccessToken"));
-
 export { ServiceAccountKeyArgs, ServiceAccountKeyState } from "./serviceAccountKey";
 export type ServiceAccountKey = import("./serviceAccountKey").ServiceAccountKey;
 export const ServiceAccountKey: typeof import("./serviceAccountKey").ServiceAccountKey = null as any;
@@ -814,6 +824,8 @@ const _module = {
         switch (type) {
             case "stackit:index/affinityGroup:AffinityGroup":
                 return new AffinityGroup(name, <any>undefined, { urn })
+            case "stackit:index/applicationLoadBalancer:ApplicationLoadBalancer":
+                return new ApplicationLoadBalancer(name, <any>undefined, { urn })
             case "stackit:index/authorizationFolderRoleAssignment:AuthorizationFolderRoleAssignment":
                 return new AuthorizationFolderRoleAssignment(name, <any>undefined, { urn })
             case "stackit:index/authorizationOrganizationRoleAssignment:AuthorizationOrganizationRoleAssignment":
@@ -952,8 +964,6 @@ const _module = {
                 return new ServerVolumeAttach(name, <any>undefined, { urn })
             case "stackit:index/serviceAccount:ServiceAccount":
                 return new ServiceAccount(name, <any>undefined, { urn })
-            case "stackit:index/serviceAccountAccessToken:ServiceAccountAccessToken":
-                return new ServiceAccountAccessToken(name, <any>undefined, { urn })
             case "stackit:index/serviceAccountKey:ServiceAccountKey":
                 return new ServiceAccountKey(name, <any>undefined, { urn })
             case "stackit:index/sfsExportPolicy:SfsExportPolicy":
@@ -978,6 +988,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("stackit", "index/affinityGroup", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/applicationLoadBalancer", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/authorizationFolderRoleAssignment", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/authorizationOrganizationRoleAssignment", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/authorizationProjectCustomRole", _module)
@@ -1047,7 +1058,6 @@ pulumi.runtime.registerResourceModule("stackit", "index/serverServiceAccountAtta
 pulumi.runtime.registerResourceModule("stackit", "index/serverUpdateSchedule", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/serverVolumeAttach", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/serviceAccount", _module)
-pulumi.runtime.registerResourceModule("stackit", "index/serviceAccountAccessToken", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/serviceAccountKey", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/sfsExportPolicy", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/sfsResourcePool", _module)

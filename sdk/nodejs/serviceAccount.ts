@@ -49,6 +49,10 @@ export class ServiceAccount extends pulumi.CustomResource {
      * STACKIT project ID to which the service account is associated.
      */
     declare public readonly projectId: pulumi.Output<string>;
+    /**
+     * The internal UUID of the service account.
+     */
+    declare public /*out*/ readonly serviceAccountId: pulumi.Output<string>;
 
     /**
      * Create a ServiceAccount resource with the given unique name, arguments, and options.
@@ -66,6 +70,7 @@ export class ServiceAccount extends pulumi.CustomResource {
             resourceInputs["email"] = state?.email;
             resourceInputs["name"] = state?.name;
             resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["serviceAccountId"] = state?.serviceAccountId;
         } else {
             const args = argsOrState as ServiceAccountArgs | undefined;
             if (args?.projectId === undefined && !opts.urn) {
@@ -74,6 +79,7 @@ export class ServiceAccount extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["email"] = undefined /*out*/;
+            resourceInputs["serviceAccountId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServiceAccount.__pulumiType, name, resourceInputs, opts);
@@ -96,6 +102,10 @@ export interface ServiceAccountState {
      * STACKIT project ID to which the service account is associated.
      */
     projectId?: pulumi.Input<string>;
+    /**
+     * The internal UUID of the service account.
+     */
+    serviceAccountId?: pulumi.Input<string>;
 }
 
 /**
