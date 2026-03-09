@@ -1,8 +1,6 @@
 module github.com/stackitcloud/pulumi-stackit/provider/shim
 
-go 1.24.0
-
-toolchain go1.24.2
+go 1.25.0
 
 require github.com/stackitcloud/terraform-provider-stackit v0.85.0
 
@@ -14,7 +12,9 @@ require (
 	github.com/stackitcloud/stackit-sdk-go/services/scf v0.4.3 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/sfs v0.4.0 // indirect
 	github.com/stretchr/testify v1.11.1 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20260128011058-8636f8732409 // indirect
+	golang.org/x/crypto v0.48.0 // indirect
+	golang.org/x/net v0.50.0 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260217215200-42d3e9bedb6d // indirect
 )
 
 require (
@@ -60,5 +60,5 @@ require (
 	github.com/vmihailenco/msgpack/v5 v5.4.1 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
 	golang.org/x/mod v0.33.0 // indirect
-	golang.org/x/sys v0.40.0 // indirect
+	golang.org/x/sys v0.41.0 // indirect
 )
