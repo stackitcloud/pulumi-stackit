@@ -26,7 +26,7 @@ class GetNetworkResult:
     """
     A collection of values returned by getNetwork.
     """
-    def __init__(__self__, dhcp=None, id=None, ipv4_gateway=None, ipv4_nameservers=None, ipv4_prefix=None, ipv4_prefix_length=None, ipv4_prefixes=None, ipv6_gateway=None, ipv6_nameservers=None, ipv6_prefix=None, ipv6_prefix_length=None, ipv6_prefixes=None, labels=None, name=None, nameservers=None, network_id=None, prefixes=None, project_id=None, public_ip=None, region=None, routed=None, routing_table_id=None):
+    def __init__(__self__, dhcp=None, id=None, ipv4_gateway=None, ipv4_nameservers=None, ipv4_prefix=None, ipv4_prefix_length=None, ipv4_prefixes=None, ipv6_gateway=None, ipv6_nameservers=None, ipv6_prefix=None, ipv6_prefix_length=None, ipv6_prefixes=None, labels=None, name=None, network_id=None, project_id=None, public_ip=None, region=None, routed=None, routing_table_id=None):
         if dhcp and not isinstance(dhcp, bool):
             raise TypeError("Expected argument 'dhcp' to be a bool")
         pulumi.set(__self__, "dhcp", dhcp)
@@ -69,15 +69,9 @@ class GetNetworkResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if nameservers and not isinstance(nameservers, list):
-            raise TypeError("Expected argument 'nameservers' to be a list")
-        pulumi.set(__self__, "nameservers", nameservers)
         if network_id and not isinstance(network_id, str):
             raise TypeError("Expected argument 'network_id' to be a str")
         pulumi.set(__self__, "network_id", network_id)
-        if prefixes and not isinstance(prefixes, list):
-            raise TypeError("Expected argument 'prefixes' to be a list")
-        pulumi.set(__self__, "prefixes", prefixes)
         if project_id and not isinstance(project_id, str):
             raise TypeError("Expected argument 'project_id' to be a str")
         pulumi.set(__self__, "project_id", project_id)
@@ -209,30 +203,12 @@ class GetNetworkResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""Use `ipv4_nameservers` to configure the nameservers for IPv4.""")
-    def nameservers(self) -> Sequence[_builtins.str]:
-        """
-        The nameservers of the network. This field is deprecated and will be removed soon, use `ipv4_nameservers` to configure the nameservers for IPv4.
-        """
-        return pulumi.get(self, "nameservers")
-
-    @_builtins.property
     @pulumi.getter(name="networkId")
     def network_id(self) -> _builtins.str:
         """
         The network ID.
         """
         return pulumi.get(self, "network_id")
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""Use `ipv4_prefixes` to read the prefixes of the IPv4 networks.""")
-    def prefixes(self) -> Sequence[_builtins.str]:
-        """
-        The prefixes of the network. This field is deprecated and will be removed soon, use `ipv4_prefixes` to read the prefixes of the IPv4 networks.
-        """
-        return pulumi.get(self, "prefixes")
 
     @_builtins.property
     @pulumi.getter(name="projectId")
@@ -295,9 +271,7 @@ class AwaitableGetNetworkResult(GetNetworkResult):
             ipv6_prefixes=self.ipv6_prefixes,
             labels=self.labels,
             name=self.name,
-            nameservers=self.nameservers,
             network_id=self.network_id,
-            prefixes=self.prefixes,
             project_id=self.project_id,
             public_ip=self.public_ip,
             region=self.region,
@@ -341,9 +315,7 @@ def get_network(network_id: Optional[_builtins.str] = None,
         ipv6_prefixes=pulumi.get(__ret__, 'ipv6_prefixes'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
-        nameservers=pulumi.get(__ret__, 'nameservers'),
         network_id=pulumi.get(__ret__, 'network_id'),
-        prefixes=pulumi.get(__ret__, 'prefixes'),
         project_id=pulumi.get(__ret__, 'project_id'),
         public_ip=pulumi.get(__ret__, 'public_ip'),
         region=pulumi.get(__ret__, 'region'),
@@ -384,9 +356,7 @@ def get_network_output(network_id: Optional[pulumi.Input[_builtins.str]] = None,
         ipv6_prefixes=pulumi.get(__response__, 'ipv6_prefixes'),
         labels=pulumi.get(__response__, 'labels'),
         name=pulumi.get(__response__, 'name'),
-        nameservers=pulumi.get(__response__, 'nameservers'),
         network_id=pulumi.get(__response__, 'network_id'),
-        prefixes=pulumi.get(__response__, 'prefixes'),
         project_id=pulumi.get(__response__, 'project_id'),
         public_ip=pulumi.get(__response__, 'public_ip'),
         region=pulumi.get(__response__, 'region'),

@@ -2,9 +2,10 @@ module github.com/stackitcloud/pulumi-stackit/provider/shim
 
 go 1.25.0
 
-require github.com/stackitcloud/terraform-provider-stackit v0.85.0
+require github.com/stackitcloud/terraform-provider-stackit v0.86.0
 
 require (
+	github.com/hashicorp/go-uuid v1.0.3 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/alb v0.9.3 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/edge v0.4.3 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/kms v1.3.2 // indirect
@@ -24,7 +25,7 @@ require (
 	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/hashicorp/go-hclog v1.6.3 // indirect
-	github.com/hashicorp/terraform-plugin-framework v1.17.0
+	github.com/hashicorp/terraform-plugin-framework v1.18.0
 	github.com/hashicorp/terraform-plugin-framework-validators v0.19.0 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.30.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.10.0 // indirect

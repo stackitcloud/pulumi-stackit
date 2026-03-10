@@ -2093,6 +2093,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "continue",
                         "groupInterval",
                         "groupWait",
                         "receiver",
@@ -11343,7 +11344,7 @@
             }
         },
         "stackit:index/network:Network": {
-            "description": "Network resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\u003e Behavior of not configured \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4_nameservers`\u003c/span\u003e will change from January 2026. When \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4_nameservers`\u003c/span\u003e is not set, it will be set to the network area's \u003cspan pulumi-lang-nodejs=\"`defaultNameservers`\" pulumi-lang-dotnet=\"`DefaultNameservers`\" pulumi-lang-go=\"`defaultNameservers`\" pulumi-lang-python=\"`default_nameservers`\" pulumi-lang-yaml=\"`defaultNameservers`\" pulumi-lang-java=\"`defaultNameservers`\"\u003e`default_nameservers`\u003c/span\u003e.\nTo prevent any nameserver configuration, the \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4_nameservers`\u003c/span\u003e attribute should be explicitly set to an empty list `[]`.\nIn cases where \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4_nameservers`\u003c/span\u003e are defined within the resource, the existing behavior will remain unchanged.\n\n## Example Usage\n\n```terraform\nresource \"stackit_network\" \"example_with_name\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-with-name\"\n}\n\nresource \"stackit_network\" \"example_routed_network\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-routed-network\"\n  labels = {\n    \"key\" = \"value\"\n  }\n  routed = true\n}\n\nresource \"stackit_network\" \"example_non_routed_network\" {\n  project_id       = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name             = \"example-non-routed-network\"\n  ipv4_nameservers = [\"1.2.3.4\", \"5.6.7.8\"]\n  ipv4_gateway     = \"10.1.2.3\"\n  ipv4_prefix      = \"10.1.2.0/24\"\n  labels = {\n    \"key\" = \"value\"\n  }\n  routed = false\n}\n\n# Only use the import statement, if you want to import an existing network\n# Note: There will be a conflict which needs to be resolved manually.\n# These attributes cannot be configured together: [ipv4_prefix,ipv4_prefix_length,ipv4_gateway]\nimport {\n  to = stackit_network.import-example\n  id = \"${var.project_id},${var.region},${var.network_id}\"\n}\n```\n",
+            "description": "Network resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\u003e Behavior of not configured \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4_nameservers`\u003c/span\u003e has changed. When \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4_nameservers`\u003c/span\u003e is not set, it will be set to the network area's \u003cspan pulumi-lang-nodejs=\"`defaultNameservers`\" pulumi-lang-dotnet=\"`DefaultNameservers`\" pulumi-lang-go=\"`defaultNameservers`\" pulumi-lang-python=\"`default_nameservers`\" pulumi-lang-yaml=\"`defaultNameservers`\" pulumi-lang-java=\"`defaultNameservers`\"\u003e`default_nameservers`\u003c/span\u003e.\nTo prevent any nameserver configuration, the \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4_nameservers`\u003c/span\u003e attribute should be explicitly set to an empty list `[]`.\nIn cases where \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4_nameservers`\u003c/span\u003e are defined within the resource, the existing behavior will remain unchanged.\n\n## Example Usage\n\n```terraform\nresource \"stackit_network\" \"example_with_name\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-with-name\"\n}\n\nresource \"stackit_network\" \"example_routed_network\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-routed-network\"\n  labels = {\n    \"key\" = \"value\"\n  }\n  routed = true\n}\n\nresource \"stackit_network\" \"example_non_routed_network\" {\n  project_id       = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name             = \"example-non-routed-network\"\n  ipv4_nameservers = [\"1.2.3.4\", \"5.6.7.8\"]\n  ipv4_gateway     = \"10.1.2.3\"\n  ipv4_prefix      = \"10.1.2.0/24\"\n  labels = {\n    \"key\" = \"value\"\n  }\n  routed = false\n}\n\n# Only use the import statement, if you want to import an existing network\n# Note: There will be a conflict which needs to be resolved manually.\n# These attributes cannot be configured together: [ipv4_prefix,ipv4_prefix_length,ipv4_gateway]\nimport {\n  to = stackit_network.import-example\n  id = \"${var.project_id},${var.region},${var.network_id}\"\n}\n```\n",
             "properties": {
                 "dhcp": {
                     "type": "boolean",
@@ -11358,7 +11359,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The IPv4 nameservers of the network.\n"
+                    "description": "The IPv4 nameservers of the network. If not specified on creation, it will be set with the default nameservers from the network area. If not specified on update, it will remain unchanged.\n"
                 },
                 "ipv4Prefix": {
                     "type": "string",
@@ -11412,14 +11413,6 @@
                     "type": "string",
                     "description": "The name of the network.\n"
                 },
-                "nameservers": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "The nameservers of the network. This field is deprecated and will be removed in January 2026, use \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4_nameservers`\u003c/span\u003e to configure the nameservers for IPv4.\n",
-                    "deprecationMessage": "Use \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4_nameservers`\u003c/span\u003e to configure the nameservers for IPv4."
-                },
                 "networkId": {
                     "type": "string",
                     "description": "The network ID.\n"
@@ -11431,14 +11424,6 @@
                 "noIpv6Gateway": {
                     "type": "boolean",
                     "description": "If set to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e, the network doesn't have a gateway.\n"
-                },
-                "prefixes": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "The prefixes of the network. This field is deprecated and will be removed in January 2026, use \u003cspan pulumi-lang-nodejs=\"`ipv4Prefixes`\" pulumi-lang-dotnet=\"`Ipv4Prefixes`\" pulumi-lang-go=\"`ipv4Prefixes`\" pulumi-lang-python=\"`ipv4_prefixes`\" pulumi-lang-yaml=\"`ipv4Prefixes`\" pulumi-lang-java=\"`ipv4Prefixes`\"\u003e`ipv4_prefixes`\u003c/span\u003e to read the prefixes of the IPv4 networks.\n",
-                    "deprecationMessage": "Use \u003cspan pulumi-lang-nodejs=\"`ipv4Prefixes`\" pulumi-lang-dotnet=\"`Ipv4Prefixes`\" pulumi-lang-go=\"`ipv4Prefixes`\" pulumi-lang-python=\"`ipv4_prefixes`\" pulumi-lang-yaml=\"`ipv4Prefixes`\" pulumi-lang-java=\"`ipv4Prefixes`\"\u003e`ipv4_prefixes`\u003c/span\u003e to read the prefixes of the IPv4 networks."
                 },
                 "projectId": {
                     "type": "string",
@@ -11474,9 +11459,7 @@
                 "ipv6PrefixLength",
                 "ipv6Prefixes",
                 "name",
-                "nameservers",
                 "networkId",
-                "prefixes",
                 "projectId",
                 "publicIp",
                 "region",
@@ -11497,7 +11480,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The IPv4 nameservers of the network.\n"
+                    "description": "The IPv4 nameservers of the network. If not specified on creation, it will be set with the default nameservers from the network area. If not specified on update, it will remain unchanged.\n"
                 },
                 "ipv4Prefix": {
                     "type": "string",
@@ -11536,14 +11519,6 @@
                 "name": {
                     "type": "string",
                     "description": "The name of the network.\n"
-                },
-                "nameservers": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    },
-                    "description": "The nameservers of the network. This field is deprecated and will be removed in January 2026, use \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4_nameservers`\u003c/span\u003e to configure the nameservers for IPv4.\n",
-                    "deprecationMessage": "Use \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4_nameservers`\u003c/span\u003e to configure the nameservers for IPv4."
                 },
                 "noIpv4Gateway": {
                     "type": "boolean",
@@ -11589,7 +11564,7 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The IPv4 nameservers of the network.\n"
+                        "description": "The IPv4 nameservers of the network. If not specified on creation, it will be set with the default nameservers from the network area. If not specified on update, it will remain unchanged.\n"
                     },
                     "ipv4Prefix": {
                         "type": "string",
@@ -11643,14 +11618,6 @@
                         "type": "string",
                         "description": "The name of the network.\n"
                     },
-                    "nameservers": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "The nameservers of the network. This field is deprecated and will be removed in January 2026, use \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4_nameservers`\u003c/span\u003e to configure the nameservers for IPv4.\n",
-                        "deprecationMessage": "Use \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4_nameservers`\u003c/span\u003e to configure the nameservers for IPv4."
-                    },
                     "networkId": {
                         "type": "string",
                         "description": "The network ID.\n"
@@ -11662,14 +11629,6 @@
                     "noIpv6Gateway": {
                         "type": "boolean",
                         "description": "If set to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e, the network doesn't have a gateway.\n"
-                    },
-                    "prefixes": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "The prefixes of the network. This field is deprecated and will be removed in January 2026, use \u003cspan pulumi-lang-nodejs=\"`ipv4Prefixes`\" pulumi-lang-dotnet=\"`Ipv4Prefixes`\" pulumi-lang-go=\"`ipv4Prefixes`\" pulumi-lang-python=\"`ipv4_prefixes`\" pulumi-lang-yaml=\"`ipv4Prefixes`\" pulumi-lang-java=\"`ipv4Prefixes`\"\u003e`ipv4_prefixes`\u003c/span\u003e to read the prefixes of the IPv4 networks.\n",
-                        "deprecationMessage": "Use \u003cspan pulumi-lang-nodejs=\"`ipv4Prefixes`\" pulumi-lang-dotnet=\"`Ipv4Prefixes`\" pulumi-lang-go=\"`ipv4Prefixes`\" pulumi-lang-python=\"`ipv4_prefixes`\" pulumi-lang-yaml=\"`ipv4Prefixes`\" pulumi-lang-java=\"`ipv4Prefixes`\"\u003e`ipv4_prefixes`\u003c/span\u003e to read the prefixes of the IPv4 networks."
                     },
                     "projectId": {
                         "type": "string",
@@ -20378,25 +20337,9 @@
                         "type": "string",
                         "description": "The name of the network.\n"
                     },
-                    "nameservers": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "The nameservers of the network. This field is deprecated and will be removed soon, use \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4_nameservers`\u003c/span\u003e to configure the nameservers for IPv4.\n",
-                        "deprecationMessage": "Use \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4_nameservers`\u003c/span\u003e to configure the nameservers for IPv4."
-                    },
                     "networkId": {
                         "type": "string",
                         "description": "The network ID.\n"
-                    },
-                    "prefixes": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "The prefixes of the network. This field is deprecated and will be removed soon, use \u003cspan pulumi-lang-nodejs=\"`ipv4Prefixes`\" pulumi-lang-dotnet=\"`Ipv4Prefixes`\" pulumi-lang-go=\"`ipv4Prefixes`\" pulumi-lang-python=\"`ipv4_prefixes`\" pulumi-lang-yaml=\"`ipv4Prefixes`\" pulumi-lang-java=\"`ipv4Prefixes`\"\u003e`ipv4_prefixes`\u003c/span\u003e to read the prefixes of the IPv4 networks.\n",
-                        "deprecationMessage": "Use \u003cspan pulumi-lang-nodejs=\"`ipv4Prefixes`\" pulumi-lang-dotnet=\"`Ipv4Prefixes`\" pulumi-lang-go=\"`ipv4Prefixes`\" pulumi-lang-python=\"`ipv4_prefixes`\" pulumi-lang-yaml=\"`ipv4Prefixes`\" pulumi-lang-java=\"`ipv4Prefixes`\"\u003e`ipv4_prefixes`\u003c/span\u003e to read the prefixes of the IPv4 networks."
                     },
                     "projectId": {
                         "type": "string",
@@ -20435,9 +20378,7 @@
                     "ipv6Prefixes",
                     "labels",
                     "name",
-                    "nameservers",
                     "networkId",
-                    "prefixes",
                     "projectId",
                     "publicIp",
                     "routed",

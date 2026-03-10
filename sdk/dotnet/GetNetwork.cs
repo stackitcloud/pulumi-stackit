@@ -171,17 +171,9 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The nameservers of the network. This field is deprecated and will be removed soon, use `Ipv4Nameservers` to configure the nameservers for IPv4.
-        /// </summary>
-        public readonly ImmutableArray<string> Nameservers;
-        /// <summary>
         /// The network ID.
         /// </summary>
         public readonly string NetworkId;
-        /// <summary>
-        /// The prefixes of the network. This field is deprecated and will be removed soon, use `Ipv4Prefixes` to read the prefixes of the IPv4 networks.
-        /// </summary>
-        public readonly ImmutableArray<string> Prefixes;
         /// <summary>
         /// STACKIT project ID to which the network is associated.
         /// </summary>
@@ -233,11 +225,7 @@ namespace Pulumi.Stackit
 
             string name,
 
-            ImmutableArray<string> nameservers,
-
             string networkId,
-
-            ImmutableArray<string> prefixes,
 
             string projectId,
 
@@ -263,9 +251,7 @@ namespace Pulumi.Stackit
             Ipv6Prefixes = ipv6Prefixes;
             Labels = labels;
             Name = name;
-            Nameservers = nameservers;
             NetworkId = networkId;
-            Prefixes = prefixes;
             ProjectId = projectId;
             PublicIp = publicIp;
             Region = region;
