@@ -6,7 +6,7 @@ import * as utilities from "./utilities";
 
 /**
  * Network resource schema. Must have a `region` specified in the provider configuration.
- * > Behavior of not configured `ipv4Nameservers` will change from January 2026. When `ipv4Nameservers` is not set, it will be set to the network area's `defaultNameservers`.
+ * > Behavior of not configured `ipv4Nameservers` has changed. When `ipv4Nameservers` is not set, it will be set to the network area's `defaultNameservers`.
  * To prevent any nameserver configuration, the `ipv4Nameservers` attribute should be explicitly set to an empty list `[]`.
  * In cases where `ipv4Nameservers` are defined within the resource, the existing behavior will remain unchanged.
  *
@@ -49,7 +49,7 @@ export class Network extends pulumi.CustomResource {
      */
     declare public readonly ipv4Gateway: pulumi.Output<string>;
     /**
-     * The IPv4 nameservers of the network.
+     * The IPv4 nameservers of the network. If not specified on creation, it will be set with the default nameservers from the network area. If not specified on update, it will remain unchanged.
      */
     declare public readonly ipv4Nameservers: pulumi.Output<string[]>;
     /**
@@ -93,12 +93,6 @@ export class Network extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The nameservers of the network. This field is deprecated and will be removed in January 2026, use `ipv4Nameservers` to configure the nameservers for IPv4.
-     *
-     * @deprecated Use `ipv4Nameservers` to configure the nameservers for IPv4.
-     */
-    declare public readonly nameservers: pulumi.Output<string[]>;
-    /**
      * The network ID.
      */
     declare public /*out*/ readonly networkId: pulumi.Output<string>;
@@ -110,12 +104,6 @@ export class Network extends pulumi.CustomResource {
      * If set to `true`, the network doesn't have a gateway.
      */
     declare public readonly noIpv6Gateway: pulumi.Output<boolean | undefined>;
-    /**
-     * The prefixes of the network. This field is deprecated and will be removed in January 2026, use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
-     *
-     * @deprecated Use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
-     */
-    declare public /*out*/ readonly prefixes: pulumi.Output<string[]>;
     /**
      * STACKIT project ID to which the network is associated.
      */
@@ -163,11 +151,9 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["ipv6Prefixes"] = state?.ipv6Prefixes;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["name"] = state?.name;
-            resourceInputs["nameservers"] = state?.nameservers;
             resourceInputs["networkId"] = state?.networkId;
             resourceInputs["noIpv4Gateway"] = state?.noIpv4Gateway;
             resourceInputs["noIpv6Gateway"] = state?.noIpv6Gateway;
-            resourceInputs["prefixes"] = state?.prefixes;
             resourceInputs["projectId"] = state?.projectId;
             resourceInputs["publicIp"] = state?.publicIp;
             resourceInputs["region"] = state?.region;
@@ -189,7 +175,6 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["ipv6PrefixLength"] = args?.ipv6PrefixLength;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["name"] = args?.name;
-            resourceInputs["nameservers"] = args?.nameservers;
             resourceInputs["noIpv4Gateway"] = args?.noIpv4Gateway;
             resourceInputs["noIpv6Gateway"] = args?.noIpv6Gateway;
             resourceInputs["projectId"] = args?.projectId;
@@ -199,7 +184,6 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["ipv4Prefixes"] = undefined /*out*/;
             resourceInputs["ipv6Prefixes"] = undefined /*out*/;
             resourceInputs["networkId"] = undefined /*out*/;
-            resourceInputs["prefixes"] = undefined /*out*/;
             resourceInputs["publicIp"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -220,7 +204,7 @@ export interface NetworkState {
      */
     ipv4Gateway?: pulumi.Input<string>;
     /**
-     * The IPv4 nameservers of the network.
+     * The IPv4 nameservers of the network. If not specified on creation, it will be set with the default nameservers from the network area. If not specified on update, it will remain unchanged.
      */
     ipv4Nameservers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -264,12 +248,6 @@ export interface NetworkState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The nameservers of the network. This field is deprecated and will be removed in January 2026, use `ipv4Nameservers` to configure the nameservers for IPv4.
-     *
-     * @deprecated Use `ipv4Nameservers` to configure the nameservers for IPv4.
-     */
-    nameservers?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
      * The network ID.
      */
     networkId?: pulumi.Input<string>;
@@ -281,12 +259,6 @@ export interface NetworkState {
      * If set to `true`, the network doesn't have a gateway.
      */
     noIpv6Gateway?: pulumi.Input<boolean>;
-    /**
-     * The prefixes of the network. This field is deprecated and will be removed in January 2026, use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
-     *
-     * @deprecated Use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
-     */
-    prefixes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * STACKIT project ID to which the network is associated.
      */
@@ -322,7 +294,7 @@ export interface NetworkArgs {
      */
     ipv4Gateway?: pulumi.Input<string>;
     /**
-     * The IPv4 nameservers of the network.
+     * The IPv4 nameservers of the network. If not specified on creation, it will be set with the default nameservers from the network area. If not specified on update, it will remain unchanged.
      */
     ipv4Nameservers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -357,12 +329,6 @@ export interface NetworkArgs {
      * The name of the network.
      */
     name?: pulumi.Input<string>;
-    /**
-     * The nameservers of the network. This field is deprecated and will be removed in January 2026, use `ipv4Nameservers` to configure the nameservers for IPv4.
-     *
-     * @deprecated Use `ipv4Nameservers` to configure the nameservers for IPv4.
-     */
-    nameservers?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * If set to `true`, the network doesn't have a gateway.
      */

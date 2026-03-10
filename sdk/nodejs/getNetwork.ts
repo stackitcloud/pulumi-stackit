@@ -101,21 +101,9 @@ export interface GetNetworkResult {
      */
     readonly name: string;
     /**
-     * The nameservers of the network. This field is deprecated and will be removed soon, use `ipv4Nameservers` to configure the nameservers for IPv4.
-     *
-     * @deprecated Use `ipv4Nameservers` to configure the nameservers for IPv4.
-     */
-    readonly nameservers: string[];
-    /**
      * The network ID.
      */
     readonly networkId: string;
-    /**
-     * The prefixes of the network. This field is deprecated and will be removed soon, use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
-     *
-     * @deprecated Use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
-     */
-    readonly prefixes: string[];
     /**
      * STACKIT project ID to which the network is associated.
      */

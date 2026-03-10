@@ -68,16 +68,8 @@ type LookupNetworkResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the network.
 	Name string `pulumi:"name"`
-	// The nameservers of the network. This field is deprecated and will be removed soon, use `ipv4Nameservers` to configure the nameservers for IPv4.
-	//
-	// Deprecated: Use `ipv4Nameservers` to configure the nameservers for IPv4.
-	Nameservers []string `pulumi:"nameservers"`
 	// The network ID.
 	NetworkId string `pulumi:"networkId"`
-	// The prefixes of the network. This field is deprecated and will be removed soon, use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
-	//
-	// Deprecated: Use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
-	Prefixes []string `pulumi:"prefixes"`
 	// STACKIT project ID to which the network is associated.
 	ProjectId string `pulumi:"projectId"`
 	// The public IP of the network.
@@ -202,23 +194,9 @@ func (o LookupNetworkResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The nameservers of the network. This field is deprecated and will be removed soon, use `ipv4Nameservers` to configure the nameservers for IPv4.
-//
-// Deprecated: Use `ipv4Nameservers` to configure the nameservers for IPv4.
-func (o LookupNetworkResultOutput) Nameservers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupNetworkResult) []string { return v.Nameservers }).(pulumi.StringArrayOutput)
-}
-
 // The network ID.
 func (o LookupNetworkResultOutput) NetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkResult) string { return v.NetworkId }).(pulumi.StringOutput)
-}
-
-// The prefixes of the network. This field is deprecated and will be removed soon, use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
-//
-// Deprecated: Use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
-func (o LookupNetworkResultOutput) Prefixes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupNetworkResult) []string { return v.Prefixes }).(pulumi.StringArrayOutput)
 }
 
 // STACKIT project ID to which the network is associated.

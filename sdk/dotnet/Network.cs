@@ -11,7 +11,7 @@ namespace Pulumi.Stackit
 {
     /// <summary>
     /// Network resource schema. Must have a `Region` specified in the provider configuration.
-    /// &gt; Behavior of not configured `Ipv4Nameservers` will change from January 2026. When `Ipv4Nameservers` is not set, it will be set to the network area's `DefaultNameservers`.
+    /// &gt; Behavior of not configured `Ipv4Nameservers` has changed. When `Ipv4Nameservers` is not set, it will be set to the network area's `DefaultNameservers`.
     /// To prevent any nameserver configuration, the `Ipv4Nameservers` attribute should be explicitly set to an empty list `[]`.
     /// In cases where `Ipv4Nameservers` are defined within the resource, the existing behavior will remain unchanged.
     /// 
@@ -33,7 +33,7 @@ namespace Pulumi.Stackit
         public Output<string> Ipv4Gateway { get; private set; } = null!;
 
         /// <summary>
-        /// The IPv4 nameservers of the network.
+        /// The IPv4 nameservers of the network. If not specified on creation, it will be set with the default nameservers from the network area. If not specified on update, it will remain unchanged.
         /// </summary>
         [Output("ipv4Nameservers")]
         public Output<ImmutableArray<string>> Ipv4Nameservers { get; private set; } = null!;
@@ -99,12 +99,6 @@ namespace Pulumi.Stackit
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The nameservers of the network. This field is deprecated and will be removed in January 2026, use `Ipv4Nameservers` to configure the nameservers for IPv4.
-        /// </summary>
-        [Output("nameservers")]
-        public Output<ImmutableArray<string>> Nameservers { get; private set; } = null!;
-
-        /// <summary>
         /// The network ID.
         /// </summary>
         [Output("networkId")]
@@ -121,12 +115,6 @@ namespace Pulumi.Stackit
         /// </summary>
         [Output("noIpv6Gateway")]
         public Output<bool?> NoIpv6Gateway { get; private set; } = null!;
-
-        /// <summary>
-        /// The prefixes of the network. This field is deprecated and will be removed in January 2026, use `Ipv4Prefixes` to read the prefixes of the IPv4 networks.
-        /// </summary>
-        [Output("prefixes")]
-        public Output<ImmutableArray<string>> Prefixes { get; private set; } = null!;
 
         /// <summary>
         /// STACKIT project ID to which the network is associated.
@@ -221,7 +209,7 @@ namespace Pulumi.Stackit
         private InputList<string>? _ipv4Nameservers;
 
         /// <summary>
-        /// The IPv4 nameservers of the network.
+        /// The IPv4 nameservers of the network. If not specified on creation, it will be set with the default nameservers from the network area. If not specified on update, it will remain unchanged.
         /// </summary>
         public InputList<string> Ipv4Nameservers
         {
@@ -289,19 +277,6 @@ namespace Pulumi.Stackit
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("nameservers")]
-        private InputList<string>? _nameservers;
-
-        /// <summary>
-        /// The nameservers of the network. This field is deprecated and will be removed in January 2026, use `Ipv4Nameservers` to configure the nameservers for IPv4.
-        /// </summary>
-        [Obsolete(@"Use `Ipv4Nameservers` to configure the nameservers for IPv4.")]
-        public InputList<string> Nameservers
-        {
-            get => _nameservers ?? (_nameservers = new InputList<string>());
-            set => _nameservers = value;
-        }
-
         /// <summary>
         /// If set to `True`, the network doesn't have a gateway.
         /// </summary>
@@ -362,7 +337,7 @@ namespace Pulumi.Stackit
         private InputList<string>? _ipv4Nameservers;
 
         /// <summary>
-        /// The IPv4 nameservers of the network.
+        /// The IPv4 nameservers of the network. If not specified on creation, it will be set with the default nameservers from the network area. If not specified on update, it will remain unchanged.
         /// </summary>
         public InputList<string> Ipv4Nameservers
         {
@@ -454,19 +429,6 @@ namespace Pulumi.Stackit
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        [Input("nameservers")]
-        private InputList<string>? _nameservers;
-
-        /// <summary>
-        /// The nameservers of the network. This field is deprecated and will be removed in January 2026, use `Ipv4Nameservers` to configure the nameservers for IPv4.
-        /// </summary>
-        [Obsolete(@"Use `Ipv4Nameservers` to configure the nameservers for IPv4.")]
-        public InputList<string> Nameservers
-        {
-            get => _nameservers ?? (_nameservers = new InputList<string>());
-            set => _nameservers = value;
-        }
-
         /// <summary>
         /// The network ID.
         /// </summary>
@@ -484,19 +446,6 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("noIpv6Gateway")]
         public Input<bool>? NoIpv6Gateway { get; set; }
-
-        [Input("prefixes")]
-        private InputList<string>? _prefixes;
-
-        /// <summary>
-        /// The prefixes of the network. This field is deprecated and will be removed in January 2026, use `Ipv4Prefixes` to read the prefixes of the IPv4 networks.
-        /// </summary>
-        [Obsolete(@"Use `Ipv4Prefixes` to read the prefixes of the IPv4 networks.")]
-        public InputList<string> Prefixes
-        {
-            get => _prefixes ?? (_prefixes = new InputList<string>());
-            set => _prefixes = value;
-        }
 
         /// <summary>
         /// STACKIT project ID to which the network is associated.

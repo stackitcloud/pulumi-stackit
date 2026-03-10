@@ -13,7 +13,7 @@ import (
 )
 
 // Network resource schema. Must have a `region` specified in the provider configuration.
-// > Behavior of not configured `ipv4Nameservers` will change from January 2026. When `ipv4Nameservers` is not set, it will be set to the network area's `defaultNameservers`.
+// > Behavior of not configured `ipv4Nameservers` has changed. When `ipv4Nameservers` is not set, it will be set to the network area's `defaultNameservers`.
 // To prevent any nameserver configuration, the `ipv4Nameservers` attribute should be explicitly set to an empty list `[]`.
 // In cases where `ipv4Nameservers` are defined within the resource, the existing behavior will remain unchanged.
 //
@@ -25,7 +25,7 @@ type Network struct {
 	Dhcp pulumi.BoolOutput `pulumi:"dhcp"`
 	// The IPv4 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
 	Ipv4Gateway pulumi.StringOutput `pulumi:"ipv4Gateway"`
-	// The IPv4 nameservers of the network.
+	// The IPv4 nameservers of the network. If not specified on creation, it will be set with the default nameservers from the network area. If not specified on update, it will remain unchanged.
 	Ipv4Nameservers pulumi.StringArrayOutput `pulumi:"ipv4Nameservers"`
 	// The IPv4 prefix of the network (CIDR).
 	Ipv4Prefix pulumi.StringOutput `pulumi:"ipv4Prefix"`
@@ -47,20 +47,12 @@ type Network struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the network.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The nameservers of the network. This field is deprecated and will be removed in January 2026, use `ipv4Nameservers` to configure the nameservers for IPv4.
-	//
-	// Deprecated: Use `ipv4Nameservers` to configure the nameservers for IPv4.
-	Nameservers pulumi.StringArrayOutput `pulumi:"nameservers"`
 	// The network ID.
 	NetworkId pulumi.StringOutput `pulumi:"networkId"`
 	// If set to `true`, the network doesn't have a gateway.
 	NoIpv4Gateway pulumi.BoolPtrOutput `pulumi:"noIpv4Gateway"`
 	// If set to `true`, the network doesn't have a gateway.
 	NoIpv6Gateway pulumi.BoolPtrOutput `pulumi:"noIpv6Gateway"`
-	// The prefixes of the network. This field is deprecated and will be removed in January 2026, use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
-	//
-	// Deprecated: Use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
-	Prefixes pulumi.StringArrayOutput `pulumi:"prefixes"`
 	// STACKIT project ID to which the network is associated.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// The public IP of the network.
@@ -110,7 +102,7 @@ type networkState struct {
 	Dhcp *bool `pulumi:"dhcp"`
 	// The IPv4 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
 	Ipv4Gateway *string `pulumi:"ipv4Gateway"`
-	// The IPv4 nameservers of the network.
+	// The IPv4 nameservers of the network. If not specified on creation, it will be set with the default nameservers from the network area. If not specified on update, it will remain unchanged.
 	Ipv4Nameservers []string `pulumi:"ipv4Nameservers"`
 	// The IPv4 prefix of the network (CIDR).
 	Ipv4Prefix *string `pulumi:"ipv4Prefix"`
@@ -132,20 +124,12 @@ type networkState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the network.
 	Name *string `pulumi:"name"`
-	// The nameservers of the network. This field is deprecated and will be removed in January 2026, use `ipv4Nameservers` to configure the nameservers for IPv4.
-	//
-	// Deprecated: Use `ipv4Nameservers` to configure the nameservers for IPv4.
-	Nameservers []string `pulumi:"nameservers"`
 	// The network ID.
 	NetworkId *string `pulumi:"networkId"`
 	// If set to `true`, the network doesn't have a gateway.
 	NoIpv4Gateway *bool `pulumi:"noIpv4Gateway"`
 	// If set to `true`, the network doesn't have a gateway.
 	NoIpv6Gateway *bool `pulumi:"noIpv6Gateway"`
-	// The prefixes of the network. This field is deprecated and will be removed in January 2026, use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
-	//
-	// Deprecated: Use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
-	Prefixes []string `pulumi:"prefixes"`
 	// STACKIT project ID to which the network is associated.
 	ProjectId *string `pulumi:"projectId"`
 	// The public IP of the network.
@@ -163,7 +147,7 @@ type NetworkState struct {
 	Dhcp pulumi.BoolPtrInput
 	// The IPv4 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
 	Ipv4Gateway pulumi.StringPtrInput
-	// The IPv4 nameservers of the network.
+	// The IPv4 nameservers of the network. If not specified on creation, it will be set with the default nameservers from the network area. If not specified on update, it will remain unchanged.
 	Ipv4Nameservers pulumi.StringArrayInput
 	// The IPv4 prefix of the network (CIDR).
 	Ipv4Prefix pulumi.StringPtrInput
@@ -185,20 +169,12 @@ type NetworkState struct {
 	Labels pulumi.StringMapInput
 	// The name of the network.
 	Name pulumi.StringPtrInput
-	// The nameservers of the network. This field is deprecated and will be removed in January 2026, use `ipv4Nameservers` to configure the nameservers for IPv4.
-	//
-	// Deprecated: Use `ipv4Nameservers` to configure the nameservers for IPv4.
-	Nameservers pulumi.StringArrayInput
 	// The network ID.
 	NetworkId pulumi.StringPtrInput
 	// If set to `true`, the network doesn't have a gateway.
 	NoIpv4Gateway pulumi.BoolPtrInput
 	// If set to `true`, the network doesn't have a gateway.
 	NoIpv6Gateway pulumi.BoolPtrInput
-	// The prefixes of the network. This field is deprecated and will be removed in January 2026, use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
-	//
-	// Deprecated: Use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
-	Prefixes pulumi.StringArrayInput
 	// STACKIT project ID to which the network is associated.
 	ProjectId pulumi.StringPtrInput
 	// The public IP of the network.
@@ -220,7 +196,7 @@ type networkArgs struct {
 	Dhcp *bool `pulumi:"dhcp"`
 	// The IPv4 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
 	Ipv4Gateway *string `pulumi:"ipv4Gateway"`
-	// The IPv4 nameservers of the network.
+	// The IPv4 nameservers of the network. If not specified on creation, it will be set with the default nameservers from the network area. If not specified on update, it will remain unchanged.
 	Ipv4Nameservers []string `pulumi:"ipv4Nameservers"`
 	// The IPv4 prefix of the network (CIDR).
 	Ipv4Prefix *string `pulumi:"ipv4Prefix"`
@@ -238,10 +214,6 @@ type networkArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the network.
 	Name *string `pulumi:"name"`
-	// The nameservers of the network. This field is deprecated and will be removed in January 2026, use `ipv4Nameservers` to configure the nameservers for IPv4.
-	//
-	// Deprecated: Use `ipv4Nameservers` to configure the nameservers for IPv4.
-	Nameservers []string `pulumi:"nameservers"`
 	// If set to `true`, the network doesn't have a gateway.
 	NoIpv4Gateway *bool `pulumi:"noIpv4Gateway"`
 	// If set to `true`, the network doesn't have a gateway.
@@ -262,7 +234,7 @@ type NetworkArgs struct {
 	Dhcp pulumi.BoolPtrInput
 	// The IPv4 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
 	Ipv4Gateway pulumi.StringPtrInput
-	// The IPv4 nameservers of the network.
+	// The IPv4 nameservers of the network. If not specified on creation, it will be set with the default nameservers from the network area. If not specified on update, it will remain unchanged.
 	Ipv4Nameservers pulumi.StringArrayInput
 	// The IPv4 prefix of the network (CIDR).
 	Ipv4Prefix pulumi.StringPtrInput
@@ -280,10 +252,6 @@ type NetworkArgs struct {
 	Labels pulumi.StringMapInput
 	// The name of the network.
 	Name pulumi.StringPtrInput
-	// The nameservers of the network. This field is deprecated and will be removed in January 2026, use `ipv4Nameservers` to configure the nameservers for IPv4.
-	//
-	// Deprecated: Use `ipv4Nameservers` to configure the nameservers for IPv4.
-	Nameservers pulumi.StringArrayInput
 	// If set to `true`, the network doesn't have a gateway.
 	NoIpv4Gateway pulumi.BoolPtrInput
 	// If set to `true`, the network doesn't have a gateway.
@@ -395,7 +363,7 @@ func (o NetworkOutput) Ipv4Gateway() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Ipv4Gateway }).(pulumi.StringOutput)
 }
 
-// The IPv4 nameservers of the network.
+// The IPv4 nameservers of the network. If not specified on creation, it will be set with the default nameservers from the network area. If not specified on update, it will remain unchanged.
 func (o NetworkOutput) Ipv4Nameservers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringArrayOutput { return v.Ipv4Nameservers }).(pulumi.StringArrayOutput)
 }
@@ -450,13 +418,6 @@ func (o NetworkOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The nameservers of the network. This field is deprecated and will be removed in January 2026, use `ipv4Nameservers` to configure the nameservers for IPv4.
-//
-// Deprecated: Use `ipv4Nameservers` to configure the nameservers for IPv4.
-func (o NetworkOutput) Nameservers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *Network) pulumi.StringArrayOutput { return v.Nameservers }).(pulumi.StringArrayOutput)
-}
-
 // The network ID.
 func (o NetworkOutput) NetworkId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.NetworkId }).(pulumi.StringOutput)
@@ -470,13 +431,6 @@ func (o NetworkOutput) NoIpv4Gateway() pulumi.BoolPtrOutput {
 // If set to `true`, the network doesn't have a gateway.
 func (o NetworkOutput) NoIpv6Gateway() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.BoolPtrOutput { return v.NoIpv6Gateway }).(pulumi.BoolPtrOutput)
-}
-
-// The prefixes of the network. This field is deprecated and will be removed in January 2026, use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
-//
-// Deprecated: Use `ipv4Prefixes` to read the prefixes of the IPv4 networks.
-func (o NetworkOutput) Prefixes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *Network) pulumi.StringArrayOutput { return v.Prefixes }).(pulumi.StringArrayOutput)
 }
 
 // STACKIT project ID to which the network is associated.
