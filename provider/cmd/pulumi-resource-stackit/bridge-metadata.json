@@ -332,12 +332,6 @@
                     },
                     "ipv6_prefixes": {
                         "maxItemsOne": false
-                    },
-                    "nameservers": {
-                        "maxItemsOne": false
-                    },
-                    "prefixes": {
-                        "maxItemsOne": false
                     }
                 }
             },
@@ -1086,12 +1080,6 @@
                         "maxItemsOne": false
                     },
                     "ipv6_prefixes": {
-                        "maxItemsOne": false
-                    },
-                    "nameservers": {
-                        "maxItemsOne": false
-                    },
-                    "prefixes": {
                         "maxItemsOne": false
                     }
                 }
