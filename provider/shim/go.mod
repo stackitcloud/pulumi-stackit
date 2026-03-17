@@ -6,6 +6,7 @@ require github.com/stackitcloud/terraform-provider-stackit v0.86.0
 
 require (
 	github.com/hashicorp/go-uuid v1.0.3 // indirect
+	github.com/hashicorp/go-version v1.8.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/alb v0.9.3 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/edge v0.4.3 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/kms v1.3.2 // indirect
@@ -14,8 +15,8 @@ require (
 	github.com/stackitcloud/stackit-sdk-go/services/sfs v0.4.0 // indirect
 	github.com/stretchr/testify v1.11.1 // indirect
 	golang.org/x/crypto v0.48.0 // indirect
-	golang.org/x/net v0.50.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20260217215200-42d3e9bedb6d // indirect
+	golang.org/x/net v0.51.0 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260226221140-a57be14db171 // indirect
 )
 
 require (
