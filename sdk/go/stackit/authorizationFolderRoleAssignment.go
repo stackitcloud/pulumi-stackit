@@ -20,11 +20,11 @@ import (
 type AuthorizationFolderRoleAssignment struct {
 	pulumi.CustomResourceState
 
-	// folder Resource to assign the role to.
+	// Folder Resource to assign the role to.
 	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
 	// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
 	Role pulumi.StringOutput `pulumi:"role"`
-	// Identifier of user, service account or client. Usually email address or name in case of clients
+	// Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.
 	Subject pulumi.StringOutput `pulumi:"subject"`
 }
 
@@ -67,20 +67,20 @@ func GetAuthorizationFolderRoleAssignment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AuthorizationFolderRoleAssignment resources.
 type authorizationFolderRoleAssignmentState struct {
-	// folder Resource to assign the role to.
+	// Folder Resource to assign the role to.
 	ResourceId *string `pulumi:"resourceId"`
 	// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
 	Role *string `pulumi:"role"`
-	// Identifier of user, service account or client. Usually email address or name in case of clients
+	// Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.
 	Subject *string `pulumi:"subject"`
 }
 
 type AuthorizationFolderRoleAssignmentState struct {
-	// folder Resource to assign the role to.
+	// Folder Resource to assign the role to.
 	ResourceId pulumi.StringPtrInput
 	// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
 	Role pulumi.StringPtrInput
-	// Identifier of user, service account or client. Usually email address or name in case of clients
+	// Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.
 	Subject pulumi.StringPtrInput
 }
 
@@ -89,21 +89,21 @@ func (AuthorizationFolderRoleAssignmentState) ElementType() reflect.Type {
 }
 
 type authorizationFolderRoleAssignmentArgs struct {
-	// folder Resource to assign the role to.
+	// Folder Resource to assign the role to.
 	ResourceId string `pulumi:"resourceId"`
 	// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
 	Role string `pulumi:"role"`
-	// Identifier of user, service account or client. Usually email address or name in case of clients
+	// Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.
 	Subject string `pulumi:"subject"`
 }
 
 // The set of arguments for constructing a AuthorizationFolderRoleAssignment resource.
 type AuthorizationFolderRoleAssignmentArgs struct {
-	// folder Resource to assign the role to.
+	// Folder Resource to assign the role to.
 	ResourceId pulumi.StringInput
 	// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
 	Role pulumi.StringInput
-	// Identifier of user, service account or client. Usually email address or name in case of clients
+	// Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.
 	Subject pulumi.StringInput
 }
 
@@ -194,7 +194,7 @@ func (o AuthorizationFolderRoleAssignmentOutput) ToAuthorizationFolderRoleAssign
 	return o
 }
 
-// folder Resource to assign the role to.
+// Folder Resource to assign the role to.
 func (o AuthorizationFolderRoleAssignmentOutput) ResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthorizationFolderRoleAssignment) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
 }
@@ -204,7 +204,7 @@ func (o AuthorizationFolderRoleAssignmentOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthorizationFolderRoleAssignment) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
-// Identifier of user, service account or client. Usually email address or name in case of clients
+// Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.
 func (o AuthorizationFolderRoleAssignmentOutput) Subject() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthorizationFolderRoleAssignment) pulumi.StringOutput { return v.Subject }).(pulumi.StringOutput)
 }

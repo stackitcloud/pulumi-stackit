@@ -105,6 +105,7 @@ __all__ = [
     'SkeClusterHibernation',
     'SkeClusterMaintenance',
     'SkeClusterNetwork',
+    'SkeClusterNetworkControlPlane',
     'SkeClusterNodePool',
     'SkeClusterNodePoolTaint',
     'SqlserverflexInstanceFlavor',
@@ -215,6 +216,7 @@ __all__ = [
     'GetSkeClusterHibernationResult',
     'GetSkeClusterMaintenanceResult',
     'GetSkeClusterNetworkResult',
+    'GetSkeClusterNetworkControlPlaneResult',
     'GetSkeClusterNodePoolResult',
     'GetSkeClusterNodePoolTaintResult',
     'GetSkeKubernetesVersionsKubernetesVersionResult',
@@ -6146,13 +6148,42 @@ class SkeClusterMaintenance(dict):
 
 @pulumi.output_type
 class SkeClusterNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "controlPlane":
+            suggest = "control_plane"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SkeClusterNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SkeClusterNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SkeClusterNetwork.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 control_plane: Optional['outputs.SkeClusterNetworkControlPlane'] = None,
                  id: Optional[_builtins.str] = None):
         """
+        :param 'SkeClusterNetworkControlPlaneArgs' control_plane: Control plane for the cluster.
         :param _builtins.str id: ID of the STACKIT Network Area (SNA) network into which the cluster will be deployed.
         """
+        if control_plane is not None:
+            pulumi.set(__self__, "control_plane", control_plane)
         if id is not None:
             pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter(name="controlPlane")
+    def control_plane(self) -> Optional['outputs.SkeClusterNetworkControlPlane']:
+        """
+        Control plane for the cluster.
+        """
+        return pulumi.get(self, "control_plane")
 
     @_builtins.property
     @pulumi.getter
@@ -6161,6 +6192,42 @@ class SkeClusterNetwork(dict):
         ID of the STACKIT Network Area (SNA) network into which the cluster will be deployed.
         """
         return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class SkeClusterNetworkControlPlane(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessScope":
+            suggest = "access_scope"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SkeClusterNetworkControlPlane. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SkeClusterNetworkControlPlane.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SkeClusterNetworkControlPlane.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_scope: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str access_scope: Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
+        """
+        if access_scope is not None:
+            pulumi.set(__self__, "access_scope", access_scope)
+
+    @_builtins.property
+    @pulumi.getter(name="accessScope")
+    def access_scope(self) -> Optional[_builtins.str]:
+        """
+        Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
+        """
+        return pulumi.get(self, "access_scope")
 
 
 @pulumi.output_type
@@ -11834,11 +11901,22 @@ class GetSkeClusterMaintenanceResult(dict):
 @pulumi.output_type
 class GetSkeClusterNetworkResult(dict):
     def __init__(__self__, *,
+                 control_plane: 'outputs.GetSkeClusterNetworkControlPlaneResult',
                  id: _builtins.str):
         """
+        :param 'GetSkeClusterNetworkControlPlaneArgs' control_plane: Control plane for the cluster.
         :param _builtins.str id: ID of the STACKIT Network Area (SNA) network into which the cluster will be deployed.
         """
+        pulumi.set(__self__, "control_plane", control_plane)
         pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter(name="controlPlane")
+    def control_plane(self) -> 'outputs.GetSkeClusterNetworkControlPlaneResult':
+        """
+        Control plane for the cluster.
+        """
+        return pulumi.get(self, "control_plane")
 
     @_builtins.property
     @pulumi.getter
@@ -11847,6 +11925,24 @@ class GetSkeClusterNetworkResult(dict):
         ID of the STACKIT Network Area (SNA) network into which the cluster will be deployed.
         """
         return pulumi.get(self, "id")
+
+
+@pulumi.output_type
+class GetSkeClusterNetworkControlPlaneResult(dict):
+    def __init__(__self__, *,
+                 access_scope: _builtins.str):
+        """
+        :param _builtins.str access_scope: Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
+        """
+        pulumi.set(__self__, "access_scope", access_scope)
+
+    @_builtins.property
+    @pulumi.getter(name="accessScope")
+    def access_scope(self) -> _builtins.str:
+        """
+        Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
+        """
+        return pulumi.get(self, "access_scope")
 
 
 @pulumi.output_type

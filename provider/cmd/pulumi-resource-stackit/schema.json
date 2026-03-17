@@ -2917,6 +2917,10 @@
         },
         "stackit:index/SkeClusterNetwork:SkeClusterNetwork": {
             "properties": {
+                "controlPlane": {
+                    "$ref": "#/types/stackit:index/SkeClusterNetworkControlPlane:SkeClusterNetworkControlPlane",
+                    "description": "Control plane for the cluster.\n"
+                },
                 "id": {
                     "type": "string",
                     "description": "ID of the STACKIT Network Area (SNA) network into which the cluster will be deployed.\n"
@@ -2926,7 +2930,24 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "controlPlane",
                         "id"
+                    ]
+                }
+            }
+        },
+        "stackit:index/SkeClusterNetworkControlPlane:SkeClusterNetworkControlPlane": {
+            "properties": {
+                "accessScope": {
+                    "type": "string",
+                    "description": "Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area.Possible values are: `PUBLIC`, `SNA`. The field is immutable!\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "accessScope"
                     ]
                 }
             }
@@ -6605,6 +6626,10 @@
         },
         "stackit:index/getSkeClusterNetwork:getSkeClusterNetwork": {
             "properties": {
+                "controlPlane": {
+                    "$ref": "#/types/stackit:index/getSkeClusterNetworkControlPlane:getSkeClusterNetworkControlPlane",
+                    "description": "Control plane for the cluster.\n"
+                },
                 "id": {
                     "type": "string",
                     "description": "ID of the STACKIT Network Area (SNA) network into which the cluster will be deployed.\n"
@@ -6612,7 +6637,25 @@
             },
             "type": "object",
             "required": [
+                "controlPlane",
                 "id"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getSkeClusterNetworkControlPlane:getSkeClusterNetworkControlPlane": {
+            "properties": {
+                "accessScope": {
+                    "type": "string",
+                    "description": "Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area.Possible values are: `PUBLIC`, `SNA`. The field is immutable!\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "accessScope"
             ],
             "language": {
                 "nodejs": {
@@ -7684,7 +7727,7 @@
             "properties": {
                 "resourceId": {
                     "type": "string",
-                    "description": "folder Resource to assign the role to.\n"
+                    "description": "Folder Resource to assign the role to.\n"
                 },
                 "role": {
                     "type": "string",
@@ -7692,7 +7735,7 @@
                 },
                 "subject": {
                     "type": "string",
-                    "description": "Identifier of user, service account or client. Usually email address or name in case of clients\n"
+                    "description": "Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.\n"
                 }
             },
             "required": [
@@ -7703,7 +7746,7 @@
             "inputProperties": {
                 "resourceId": {
                     "type": "string",
-                    "description": "folder Resource to assign the role to.\n"
+                    "description": "Folder Resource to assign the role to.\n"
                 },
                 "role": {
                     "type": "string",
@@ -7711,7 +7754,7 @@
                 },
                 "subject": {
                     "type": "string",
-                    "description": "Identifier of user, service account or client. Usually email address or name in case of clients\n"
+                    "description": "Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.\n"
                 }
             },
             "requiredInputs": [
@@ -7724,7 +7767,7 @@
                 "properties": {
                     "resourceId": {
                         "type": "string",
-                        "description": "folder Resource to assign the role to.\n"
+                        "description": "Folder Resource to assign the role to.\n"
                     },
                     "role": {
                         "type": "string",
@@ -7732,7 +7775,7 @@
                     },
                     "subject": {
                         "type": "string",
-                        "description": "Identifier of user, service account or client. Usually email address or name in case of clients\n"
+                        "description": "Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.\n"
                     }
                 },
                 "type": "object"
@@ -7743,7 +7786,7 @@
             "properties": {
                 "resourceId": {
                     "type": "string",
-                    "description": "organization Resource to assign the role to.\n"
+                    "description": "Organization Resource to assign the role to.\n"
                 },
                 "role": {
                     "type": "string",
@@ -7751,7 +7794,7 @@
                 },
                 "subject": {
                     "type": "string",
-                    "description": "Identifier of user, service account or client. Usually email address or name in case of clients\n"
+                    "description": "Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.\n"
                 }
             },
             "required": [
@@ -7762,7 +7805,7 @@
             "inputProperties": {
                 "resourceId": {
                     "type": "string",
-                    "description": "organization Resource to assign the role to.\n"
+                    "description": "Organization Resource to assign the role to.\n"
                 },
                 "role": {
                     "type": "string",
@@ -7770,7 +7813,7 @@
                 },
                 "subject": {
                     "type": "string",
-                    "description": "Identifier of user, service account or client. Usually email address or name in case of clients\n"
+                    "description": "Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.\n"
                 }
             },
             "requiredInputs": [
@@ -7783,7 +7826,7 @@
                 "properties": {
                     "resourceId": {
                         "type": "string",
-                        "description": "organization Resource to assign the role to.\n"
+                        "description": "Organization Resource to assign the role to.\n"
                     },
                     "role": {
                         "type": "string",
@@ -7791,7 +7834,7 @@
                     },
                     "subject": {
                         "type": "string",
-                        "description": "Identifier of user, service account or client. Usually email address or name in case of clients\n"
+                        "description": "Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.\n"
                     }
                 },
                 "type": "object"
@@ -7892,7 +7935,7 @@
             "properties": {
                 "resourceId": {
                     "type": "string",
-                    "description": "project Resource to assign the role to.\n"
+                    "description": "Project Resource to assign the role to.\n"
                 },
                 "role": {
                     "type": "string",
@@ -7900,7 +7943,7 @@
                 },
                 "subject": {
                     "type": "string",
-                    "description": "Identifier of user, service account or client. Usually email address or name in case of clients\n"
+                    "description": "Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.\n"
                 }
             },
             "required": [
@@ -7911,7 +7954,7 @@
             "inputProperties": {
                 "resourceId": {
                     "type": "string",
-                    "description": "project Resource to assign the role to.\n"
+                    "description": "Project Resource to assign the role to.\n"
                 },
                 "role": {
                     "type": "string",
@@ -7919,7 +7962,7 @@
                 },
                 "subject": {
                     "type": "string",
-                    "description": "Identifier of user, service account or client. Usually email address or name in case of clients\n"
+                    "description": "Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.\n"
                 }
             },
             "requiredInputs": [
@@ -7932,7 +7975,7 @@
                 "properties": {
                     "resourceId": {
                         "type": "string",
-                        "description": "project Resource to assign the role to.\n"
+                        "description": "Project Resource to assign the role to.\n"
                     },
                     "role": {
                         "type": "string",
@@ -7940,7 +7983,66 @@
                     },
                     "subject": {
                         "type": "string",
-                        "description": "Identifier of user, service account or client. Usually email address or name in case of clients\n"
+                        "description": "Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "stackit:index/authorizationServiceAccountRoleAssignment:AuthorizationServiceAccountRoleAssignment": {
+            "description": "Service-account Role Assignment resource schema.\n\n\u003e **Important:** Use this resource to grant 'Act-As' permissions. This allows a service-account (the \u003cspan pulumi-lang-nodejs=\"`subject`\" pulumi-lang-dotnet=\"`Subject`\" pulumi-lang-go=\"`subject`\" pulumi-lang-python=\"`subject`\" pulumi-lang-yaml=\"`subject`\" pulumi-lang-java=\"`subject`\"\u003e`subject`\u003c/span\u003e) to impersonate the target Service Account. A common example is authorizing the SKE Service Account to act as a project-specific Service Account to access APIs.\n\n\u003e This resource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\ndata \"stackit_service_accounts\" \"ske_sa_suffix\" {\n  project_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  email_suffix = \"@ske.sa.stackit.cloud\"\n}\n\nresource \"stackit_service_account\" \"iam\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"kms\"\n}\n\nresource \"stackit_authorization_project_role_assignment\" \"pr_sa\" {\n  resource_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  role        = \"kms.admin\"\n  subject     = stackit_service_account.iam.email\n}\n\n// Assign the Act-As permissions to the previously created ServiceAccount.\n// The SKE ServiceAccount is now authorized to access KMS upon the behalf of stackit_service_account.iam\nresource \"stackit_authorization_service_account_role_assignment\" \"sa\" {\n  resource_id = stackit_service_account.iam.service_account_id\n  role        = \"user\"\n  subject     = data.stackit_service_accounts.ske_sa_suffix.items.0.email\n}\n\n# Only use the import statement, if you want to import an existing service account assignment\nimport {\n  to = stackit_authorization_service_account_assignment.sa\n  id = \"${var.resource_id},${var.service_account_assignment_role},${var.service_account_assignment_subject}\"\n}\n```\n",
+            "properties": {
+                "resourceId": {
+                    "type": "string",
+                    "description": "Service-account Resource to assign the role to.\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`\n"
+                },
+                "subject": {
+                    "type": "string",
+                    "description": "Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.\n"
+                }
+            },
+            "required": [
+                "resourceId",
+                "role",
+                "subject"
+            ],
+            "inputProperties": {
+                "resourceId": {
+                    "type": "string",
+                    "description": "Service-account Resource to assign the role to.\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`\n"
+                },
+                "subject": {
+                    "type": "string",
+                    "description": "Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.\n"
+                }
+            },
+            "requiredInputs": [
+                "resourceId",
+                "role",
+                "subject"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AuthorizationServiceAccountRoleAssignment resources.\n",
+                "properties": {
+                    "resourceId": {
+                        "type": "string",
+                        "description": "Service-account Resource to assign the role to.\n"
+                    },
+                    "role": {
+                        "type": "string",
+                        "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`\n"
+                    },
+                    "subject": {
+                        "type": "string",
+                        "description": "Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.\n"
                     }
                 },
                 "type": "object"
@@ -17067,7 +17169,7 @@
             }
         },
         "stackit:index/skeCluster:SkeCluster": {
-            "description": "SKE Cluster Resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n\u003e When updating \u003cspan pulumi-lang-nodejs=\"`nodePools`\" pulumi-lang-dotnet=\"`NodePools`\" pulumi-lang-go=\"`nodePools`\" pulumi-lang-python=\"`node_pools`\" pulumi-lang-yaml=\"`nodePools`\" pulumi-lang-java=\"`nodePools`\"\u003e`node_pools`\u003c/span\u003e of a \u003cspan pulumi-lang-nodejs=\"`stackit.SkeCluster`\" pulumi-lang-dotnet=\"`stackit.SkeCluster`\" pulumi-lang-go=\"`SkeCluster`\" pulumi-lang-python=\"`SkeCluster`\" pulumi-lang-yaml=\"`stackit.SkeCluster`\" pulumi-lang-java=\"`stackit.SkeCluster`\"\u003e`stackit.SkeCluster`\u003c/span\u003e, the pulumi preview might appear incorrect as it matches the node pools by index rather than by name. However, the SKE API correctly identifies node pools by name and applies the intended changes. Please review your changes carefully to ensure the correct configuration will be applied.\n\n## Example Usage\n\n```terraform\nresource \"stackit_ske_cluster\" \"example\" {\n  project_id             = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name                   = \"example\"\n  kubernetes_version_min = \"x.x\"\n  node_pools = [\n    {\n      name               = \"np-example\"\n      machine_type       = \"x.x\"\n      os_version         = \"x.x.x\"\n      os_name            = \"xxx\"\n      minimum            = \"2\"\n      maximum            = \"3\"\n      availability_zones = [\"eu01-3\"]\n      volume_type        = \"storage_premium_perf6\"\n      volume_size        = \"48\"\n    }\n  ]\n  maintenance = {\n    enable_kubernetes_version_updates    = true\n    enable_machine_image_version_updates = true\n    start                                = \"01:00:00Z\"\n    end                                  = \"02:00:00Z\"\n  }\n}\n\n# Only use the import statement, if you want to import an existing ske cluster\nimport {\n  to = stackit_ske_cluster.import-example\n  id = \"${var.project_id},${var.region},${var.ske_name}\"\n}\n```\n",
+            "description": "SKE Cluster Resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n\u003e When updating \u003cspan pulumi-lang-nodejs=\"`nodePools`\" pulumi-lang-dotnet=\"`NodePools`\" pulumi-lang-go=\"`nodePools`\" pulumi-lang-python=\"`node_pools`\" pulumi-lang-yaml=\"`nodePools`\" pulumi-lang-java=\"`nodePools`\"\u003e`node_pools`\u003c/span\u003e of a \u003cspan pulumi-lang-nodejs=\"`stackit.SkeCluster`\" pulumi-lang-dotnet=\"`stackit.SkeCluster`\" pulumi-lang-go=\"`SkeCluster`\" pulumi-lang-python=\"`SkeCluster`\" pulumi-lang-yaml=\"`stackit.SkeCluster`\" pulumi-lang-java=\"`stackit.SkeCluster`\"\u003e`stackit.SkeCluster`\u003c/span\u003e, the pulumi preview might appear incorrect as it matches the node pools by index rather than by name. However, the SKE API correctly identifies node pools by name and applies the intended changes. Please review your changes carefully to ensure the correct configuration will be applied.\n\n## Example Usage\n\n```terraform\nresource \"stackit_ske_cluster\" \"example\" {\n  project_id             = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name                   = \"example\"\n  kubernetes_version_min = \"x.x\"\n  node_pools = [\n    {\n      name               = \"np-example\"\n      machine_type       = \"x.x\"\n      os_version         = \"x.x.x\"\n      os_name            = \"xxx\"\n      minimum            = \"2\"\n      maximum            = \"3\"\n      availability_zones = [\"eu01-3\"]\n      volume_type        = \"storage_premium_perf6\"\n      volume_size        = \"48\"\n    }\n  ]\n  maintenance = {\n    enable_kubernetes_version_updates    = true\n    enable_machine_image_version_updates = true\n    start                                = \"01:00:00Z\"\n    end                                  = \"02:00:00Z\"\n  }\n  network = {\n    control_plane = {\n      access_scope = \"PUBLIC\"\n    }\n  }\n}\n\n# Only use the import statement, if you want to import an existing ske cluster\nimport {\n  to = stackit_ske_cluster.import-example\n  id = \"${var.project_id},${var.region},${var.ske_name}\"\n}\n```\n",
             "properties": {
                 "egressAddressRanges": {
                     "type": "array",

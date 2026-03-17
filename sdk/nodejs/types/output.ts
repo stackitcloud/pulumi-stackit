@@ -2281,9 +2281,20 @@ export interface GetSkeClusterMaintenance {
 
 export interface GetSkeClusterNetwork {
     /**
+     * Control plane for the cluster.
+     */
+    controlPlane: outputs.GetSkeClusterNetworkControlPlane;
+    /**
      * ID of the STACKIT Network Area (SNA) network into which the cluster will be deployed.
      */
     id: string;
+}
+
+export interface GetSkeClusterNetworkControlPlane {
+    /**
+     * Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
+     */
+    accessScope: string;
 }
 
 export interface GetSkeClusterNodePool {
@@ -3617,9 +3628,20 @@ export interface SkeClusterMaintenance {
 
 export interface SkeClusterNetwork {
     /**
+     * Control plane for the cluster.
+     */
+    controlPlane: outputs.SkeClusterNetworkControlPlane;
+    /**
      * ID of the STACKIT Network Area (SNA) network into which the cluster will be deployed.
      */
     id: string;
+}
+
+export interface SkeClusterNetworkControlPlane {
+    /**
+     * Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
+     */
+    accessScope: string;
 }
 
 export interface SkeClusterNodePool {

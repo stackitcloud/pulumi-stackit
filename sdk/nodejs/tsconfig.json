@@ -19,6 +19,7 @@
         "authorizationOrganizationRoleAssignment.ts",
         "authorizationProjectCustomRole.ts",
         "authorizationProjectRoleAssignment.ts",
+        "authorizationServiceAccountRoleAssignment.ts",
         "cdnCustomDomain.ts",
         "cdnDistribution.ts",
         "config/index.ts",

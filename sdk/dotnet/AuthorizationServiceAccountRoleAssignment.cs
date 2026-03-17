@@ -10,17 +10,19 @@ using Pulumi.Serialization;
 namespace Pulumi.Stackit
 {
     /// <summary>
-    /// Folder Role Assignment resource schema.
+    /// Service-account Role Assignment resource schema.
+    /// 
+    /// &gt; **Important:** Use this resource to grant 'Act-As' permissions. This allows a service-account (the `Subject`) to impersonate the target Service Account. A common example is authorizing the SKE Service Account to act as a project-specific Service Account to access APIs.
     /// 
     /// &gt; This resource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
     /// 
     /// ## Example Usage
     /// </summary>
-    [StackitResourceType("stackit:index/authorizationFolderRoleAssignment:AuthorizationFolderRoleAssignment")]
-    public partial class AuthorizationFolderRoleAssignment : global::Pulumi.CustomResource
+    [StackitResourceType("stackit:index/authorizationServiceAccountRoleAssignment:AuthorizationServiceAccountRoleAssignment")]
+    public partial class AuthorizationServiceAccountRoleAssignment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Folder Resource to assign the role to.
+        /// Service-account Resource to assign the role to.
         /// </summary>
         [Output("resourceId")]
         public Output<string> ResourceId { get; private set; } = null!;
@@ -39,19 +41,19 @@ namespace Pulumi.Stackit
 
 
         /// <summary>
-        /// Create a AuthorizationFolderRoleAssignment resource with the given unique name, arguments, and options.
+        /// Create a AuthorizationServiceAccountRoleAssignment resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public AuthorizationFolderRoleAssignment(string name, AuthorizationFolderRoleAssignmentArgs args, CustomResourceOptions? options = null)
-            : base("stackit:index/authorizationFolderRoleAssignment:AuthorizationFolderRoleAssignment", name, args ?? new AuthorizationFolderRoleAssignmentArgs(), MakeResourceOptions(options, ""))
+        public AuthorizationServiceAccountRoleAssignment(string name, AuthorizationServiceAccountRoleAssignmentArgs args, CustomResourceOptions? options = null)
+            : base("stackit:index/authorizationServiceAccountRoleAssignment:AuthorizationServiceAccountRoleAssignment", name, args ?? new AuthorizationServiceAccountRoleAssignmentArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private AuthorizationFolderRoleAssignment(string name, Input<string> id, AuthorizationFolderRoleAssignmentState? state = null, CustomResourceOptions? options = null)
-            : base("stackit:index/authorizationFolderRoleAssignment:AuthorizationFolderRoleAssignment", name, state, MakeResourceOptions(options, id))
+        private AuthorizationServiceAccountRoleAssignment(string name, Input<string> id, AuthorizationServiceAccountRoleAssignmentState? state = null, CustomResourceOptions? options = null)
+            : base("stackit:index/authorizationServiceAccountRoleAssignment:AuthorizationServiceAccountRoleAssignment", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -68,7 +70,7 @@ namespace Pulumi.Stackit
             return merged;
         }
         /// <summary>
-        /// Get an existing AuthorizationFolderRoleAssignment resource's state with the given name, ID, and optional extra
+        /// Get an existing AuthorizationServiceAccountRoleAssignment resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -76,16 +78,16 @@ namespace Pulumi.Stackit
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static AuthorizationFolderRoleAssignment Get(string name, Input<string> id, AuthorizationFolderRoleAssignmentState? state = null, CustomResourceOptions? options = null)
+        public static AuthorizationServiceAccountRoleAssignment Get(string name, Input<string> id, AuthorizationServiceAccountRoleAssignmentState? state = null, CustomResourceOptions? options = null)
         {
-            return new AuthorizationFolderRoleAssignment(name, id, state, options);
+            return new AuthorizationServiceAccountRoleAssignment(name, id, state, options);
         }
     }
 
-    public sealed class AuthorizationFolderRoleAssignmentArgs : global::Pulumi.ResourceArgs
+    public sealed class AuthorizationServiceAccountRoleAssignmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Folder Resource to assign the role to.
+        /// Service-account Resource to assign the role to.
         /// </summary>
         [Input("resourceId", required: true)]
         public Input<string> ResourceId { get; set; } = null!;
@@ -102,16 +104,16 @@ namespace Pulumi.Stackit
         [Input("subject", required: true)]
         public Input<string> Subject { get; set; } = null!;
 
-        public AuthorizationFolderRoleAssignmentArgs()
+        public AuthorizationServiceAccountRoleAssignmentArgs()
         {
         }
-        public static new AuthorizationFolderRoleAssignmentArgs Empty => new AuthorizationFolderRoleAssignmentArgs();
+        public static new AuthorizationServiceAccountRoleAssignmentArgs Empty => new AuthorizationServiceAccountRoleAssignmentArgs();
     }
 
-    public sealed class AuthorizationFolderRoleAssignmentState : global::Pulumi.ResourceArgs
+    public sealed class AuthorizationServiceAccountRoleAssignmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Folder Resource to assign the role to.
+        /// Service-account Resource to assign the role to.
         /// </summary>
         [Input("resourceId")]
         public Input<string>? ResourceId { get; set; }
@@ -128,9 +130,9 @@ namespace Pulumi.Stackit
         [Input("subject")]
         public Input<string>? Subject { get; set; }
 
-        public AuthorizationFolderRoleAssignmentState()
+        public AuthorizationServiceAccountRoleAssignmentState()
         {
         }
-        public static new AuthorizationFolderRoleAssignmentState Empty => new AuthorizationFolderRoleAssignmentState();
+        public static new AuthorizationServiceAccountRoleAssignmentState Empty => new AuthorizationServiceAccountRoleAssignmentState();
     }
 }

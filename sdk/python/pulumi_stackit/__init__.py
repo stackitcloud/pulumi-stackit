@@ -12,6 +12,7 @@ from .authorization_folder_role_assignment import *
 from .authorization_organization_role_assignment import *
 from .authorization_project_custom_role import *
 from .authorization_project_role_assignment import *
+from .authorization_service_account_role_assignment import *
 from .cdn_custom_domain import *
 from .cdn_distribution import *
 from .dns_record_set import *
@@ -226,6 +227,14 @@ _utilities.register(
   "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/authorizationProjectRoleAssignment:AuthorizationProjectRoleAssignment": "AuthorizationProjectRoleAssignment"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/authorizationServiceAccountRoleAssignment",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/authorizationServiceAccountRoleAssignment:AuthorizationServiceAccountRoleAssignment": "AuthorizationServiceAccountRoleAssignment"
   }
  },
  {

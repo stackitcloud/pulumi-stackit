@@ -2,7 +2,7 @@ module github.com/stackitcloud/pulumi-stackit/provider/shim
 
 go 1.25.0
 
-require github.com/stackitcloud/terraform-provider-stackit v0.86.0
+require github.com/stackitcloud/terraform-provider-stackit v0.88.0
 
 require (
 	github.com/hashicorp/go-uuid v1.0.3 // indirect
@@ -10,7 +10,7 @@ require (
 	github.com/stackitcloud/stackit-sdk-go/services/alb v0.9.3 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/edge v0.4.3 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/kms v1.3.2 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/logs v0.5.2 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/logs v0.6.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/scf v0.4.3 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/sfs v0.4.0 // indirect
 	github.com/stretchr/testify v1.11.1 // indirect
@@ -50,7 +50,7 @@ require (
 	github.com/stackitcloud/stackit-sdk-go/services/postgresflex v1.3.5 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/rabbitmq v0.26.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/redis v0.25.6 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/resourcemanager v0.18.5 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/resourcemanager v0.19.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/secretsmanager v0.14.3 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/serverbackup v1.3.8 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/serverupdate v1.2.6 // indirect

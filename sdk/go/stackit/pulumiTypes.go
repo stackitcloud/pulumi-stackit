@@ -15051,6 +15051,8 @@ func (o SkeClusterMaintenancePtrOutput) Start() pulumi.StringPtrOutput {
 }
 
 type SkeClusterNetwork struct {
+	// Control plane for the cluster.
+	ControlPlane *SkeClusterNetworkControlPlane `pulumi:"controlPlane"`
 	// ID of the STACKIT Network Area (SNA) network into which the cluster will be deployed.
 	Id *string `pulumi:"id"`
 }
@@ -15067,6 +15069,8 @@ type SkeClusterNetworkInput interface {
 }
 
 type SkeClusterNetworkArgs struct {
+	// Control plane for the cluster.
+	ControlPlane SkeClusterNetworkControlPlanePtrInput `pulumi:"controlPlane"`
 	// ID of the STACKIT Network Area (SNA) network into which the cluster will be deployed.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 }
@@ -15148,6 +15152,11 @@ func (o SkeClusterNetworkOutput) ToSkeClusterNetworkPtrOutputWithContext(ctx con
 	}).(SkeClusterNetworkPtrOutput)
 }
 
+// Control plane for the cluster.
+func (o SkeClusterNetworkOutput) ControlPlane() SkeClusterNetworkControlPlanePtrOutput {
+	return o.ApplyT(func(v SkeClusterNetwork) *SkeClusterNetworkControlPlane { return v.ControlPlane }).(SkeClusterNetworkControlPlanePtrOutput)
+}
+
 // ID of the STACKIT Network Area (SNA) network into which the cluster will be deployed.
 func (o SkeClusterNetworkOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SkeClusterNetwork) *string { return v.Id }).(pulumi.StringPtrOutput)
@@ -15177,6 +15186,16 @@ func (o SkeClusterNetworkPtrOutput) Elem() SkeClusterNetworkOutput {
 	}).(SkeClusterNetworkOutput)
 }
 
+// Control plane for the cluster.
+func (o SkeClusterNetworkPtrOutput) ControlPlane() SkeClusterNetworkControlPlanePtrOutput {
+	return o.ApplyT(func(v *SkeClusterNetwork) *SkeClusterNetworkControlPlane {
+		if v == nil {
+			return nil
+		}
+		return v.ControlPlane
+	}).(SkeClusterNetworkControlPlanePtrOutput)
+}
+
 // ID of the STACKIT Network Area (SNA) network into which the cluster will be deployed.
 func (o SkeClusterNetworkPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SkeClusterNetwork) *string {
@@ -15184,6 +15203,143 @@ func (o SkeClusterNetworkPtrOutput) Id() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+type SkeClusterNetworkControlPlane struct {
+	// Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
+	AccessScope *string `pulumi:"accessScope"`
+}
+
+// SkeClusterNetworkControlPlaneInput is an input type that accepts SkeClusterNetworkControlPlaneArgs and SkeClusterNetworkControlPlaneOutput values.
+// You can construct a concrete instance of `SkeClusterNetworkControlPlaneInput` via:
+//
+//	SkeClusterNetworkControlPlaneArgs{...}
+type SkeClusterNetworkControlPlaneInput interface {
+	pulumi.Input
+
+	ToSkeClusterNetworkControlPlaneOutput() SkeClusterNetworkControlPlaneOutput
+	ToSkeClusterNetworkControlPlaneOutputWithContext(context.Context) SkeClusterNetworkControlPlaneOutput
+}
+
+type SkeClusterNetworkControlPlaneArgs struct {
+	// Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
+	AccessScope pulumi.StringPtrInput `pulumi:"accessScope"`
+}
+
+func (SkeClusterNetworkControlPlaneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkeClusterNetworkControlPlane)(nil)).Elem()
+}
+
+func (i SkeClusterNetworkControlPlaneArgs) ToSkeClusterNetworkControlPlaneOutput() SkeClusterNetworkControlPlaneOutput {
+	return i.ToSkeClusterNetworkControlPlaneOutputWithContext(context.Background())
+}
+
+func (i SkeClusterNetworkControlPlaneArgs) ToSkeClusterNetworkControlPlaneOutputWithContext(ctx context.Context) SkeClusterNetworkControlPlaneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkeClusterNetworkControlPlaneOutput)
+}
+
+func (i SkeClusterNetworkControlPlaneArgs) ToSkeClusterNetworkControlPlanePtrOutput() SkeClusterNetworkControlPlanePtrOutput {
+	return i.ToSkeClusterNetworkControlPlanePtrOutputWithContext(context.Background())
+}
+
+func (i SkeClusterNetworkControlPlaneArgs) ToSkeClusterNetworkControlPlanePtrOutputWithContext(ctx context.Context) SkeClusterNetworkControlPlanePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkeClusterNetworkControlPlaneOutput).ToSkeClusterNetworkControlPlanePtrOutputWithContext(ctx)
+}
+
+// SkeClusterNetworkControlPlanePtrInput is an input type that accepts SkeClusterNetworkControlPlaneArgs, SkeClusterNetworkControlPlanePtr and SkeClusterNetworkControlPlanePtrOutput values.
+// You can construct a concrete instance of `SkeClusterNetworkControlPlanePtrInput` via:
+//
+//	        SkeClusterNetworkControlPlaneArgs{...}
+//
+//	or:
+//
+//	        nil
+type SkeClusterNetworkControlPlanePtrInput interface {
+	pulumi.Input
+
+	ToSkeClusterNetworkControlPlanePtrOutput() SkeClusterNetworkControlPlanePtrOutput
+	ToSkeClusterNetworkControlPlanePtrOutputWithContext(context.Context) SkeClusterNetworkControlPlanePtrOutput
+}
+
+type skeClusterNetworkControlPlanePtrType SkeClusterNetworkControlPlaneArgs
+
+func SkeClusterNetworkControlPlanePtr(v *SkeClusterNetworkControlPlaneArgs) SkeClusterNetworkControlPlanePtrInput {
+	return (*skeClusterNetworkControlPlanePtrType)(v)
+}
+
+func (*skeClusterNetworkControlPlanePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkeClusterNetworkControlPlane)(nil)).Elem()
+}
+
+func (i *skeClusterNetworkControlPlanePtrType) ToSkeClusterNetworkControlPlanePtrOutput() SkeClusterNetworkControlPlanePtrOutput {
+	return i.ToSkeClusterNetworkControlPlanePtrOutputWithContext(context.Background())
+}
+
+func (i *skeClusterNetworkControlPlanePtrType) ToSkeClusterNetworkControlPlanePtrOutputWithContext(ctx context.Context) SkeClusterNetworkControlPlanePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkeClusterNetworkControlPlanePtrOutput)
+}
+
+type SkeClusterNetworkControlPlaneOutput struct{ *pulumi.OutputState }
+
+func (SkeClusterNetworkControlPlaneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkeClusterNetworkControlPlane)(nil)).Elem()
+}
+
+func (o SkeClusterNetworkControlPlaneOutput) ToSkeClusterNetworkControlPlaneOutput() SkeClusterNetworkControlPlaneOutput {
+	return o
+}
+
+func (o SkeClusterNetworkControlPlaneOutput) ToSkeClusterNetworkControlPlaneOutputWithContext(ctx context.Context) SkeClusterNetworkControlPlaneOutput {
+	return o
+}
+
+func (o SkeClusterNetworkControlPlaneOutput) ToSkeClusterNetworkControlPlanePtrOutput() SkeClusterNetworkControlPlanePtrOutput {
+	return o.ToSkeClusterNetworkControlPlanePtrOutputWithContext(context.Background())
+}
+
+func (o SkeClusterNetworkControlPlaneOutput) ToSkeClusterNetworkControlPlanePtrOutputWithContext(ctx context.Context) SkeClusterNetworkControlPlanePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SkeClusterNetworkControlPlane) *SkeClusterNetworkControlPlane {
+		return &v
+	}).(SkeClusterNetworkControlPlanePtrOutput)
+}
+
+// Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
+func (o SkeClusterNetworkControlPlaneOutput) AccessScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkeClusterNetworkControlPlane) *string { return v.AccessScope }).(pulumi.StringPtrOutput)
+}
+
+type SkeClusterNetworkControlPlanePtrOutput struct{ *pulumi.OutputState }
+
+func (SkeClusterNetworkControlPlanePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkeClusterNetworkControlPlane)(nil)).Elem()
+}
+
+func (o SkeClusterNetworkControlPlanePtrOutput) ToSkeClusterNetworkControlPlanePtrOutput() SkeClusterNetworkControlPlanePtrOutput {
+	return o
+}
+
+func (o SkeClusterNetworkControlPlanePtrOutput) ToSkeClusterNetworkControlPlanePtrOutputWithContext(ctx context.Context) SkeClusterNetworkControlPlanePtrOutput {
+	return o
+}
+
+func (o SkeClusterNetworkControlPlanePtrOutput) Elem() SkeClusterNetworkControlPlaneOutput {
+	return o.ApplyT(func(v *SkeClusterNetworkControlPlane) SkeClusterNetworkControlPlane {
+		if v != nil {
+			return *v
+		}
+		var ret SkeClusterNetworkControlPlane
+		return ret
+	}).(SkeClusterNetworkControlPlaneOutput)
+}
+
+// Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
+func (o SkeClusterNetworkControlPlanePtrOutput) AccessScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkeClusterNetworkControlPlane) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessScope
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -26427,6 +26583,8 @@ func (o GetSkeClusterMaintenanceOutput) Start() pulumi.StringOutput {
 }
 
 type GetSkeClusterNetwork struct {
+	// Control plane for the cluster.
+	ControlPlane GetSkeClusterNetworkControlPlane `pulumi:"controlPlane"`
 	// ID of the STACKIT Network Area (SNA) network into which the cluster will be deployed.
 	Id string `pulumi:"id"`
 }
@@ -26443,6 +26601,8 @@ type GetSkeClusterNetworkInput interface {
 }
 
 type GetSkeClusterNetworkArgs struct {
+	// Control plane for the cluster.
+	ControlPlane GetSkeClusterNetworkControlPlaneInput `pulumi:"controlPlane"`
 	// ID of the STACKIT Network Area (SNA) network into which the cluster will be deployed.
 	Id pulumi.StringInput `pulumi:"id"`
 }
@@ -26473,9 +26633,66 @@ func (o GetSkeClusterNetworkOutput) ToGetSkeClusterNetworkOutputWithContext(ctx 
 	return o
 }
 
+// Control plane for the cluster.
+func (o GetSkeClusterNetworkOutput) ControlPlane() GetSkeClusterNetworkControlPlaneOutput {
+	return o.ApplyT(func(v GetSkeClusterNetwork) GetSkeClusterNetworkControlPlane { return v.ControlPlane }).(GetSkeClusterNetworkControlPlaneOutput)
+}
+
 // ID of the STACKIT Network Area (SNA) network into which the cluster will be deployed.
 func (o GetSkeClusterNetworkOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSkeClusterNetwork) string { return v.Id }).(pulumi.StringOutput)
+}
+
+type GetSkeClusterNetworkControlPlane struct {
+	// Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
+	AccessScope string `pulumi:"accessScope"`
+}
+
+// GetSkeClusterNetworkControlPlaneInput is an input type that accepts GetSkeClusterNetworkControlPlaneArgs and GetSkeClusterNetworkControlPlaneOutput values.
+// You can construct a concrete instance of `GetSkeClusterNetworkControlPlaneInput` via:
+//
+//	GetSkeClusterNetworkControlPlaneArgs{...}
+type GetSkeClusterNetworkControlPlaneInput interface {
+	pulumi.Input
+
+	ToGetSkeClusterNetworkControlPlaneOutput() GetSkeClusterNetworkControlPlaneOutput
+	ToGetSkeClusterNetworkControlPlaneOutputWithContext(context.Context) GetSkeClusterNetworkControlPlaneOutput
+}
+
+type GetSkeClusterNetworkControlPlaneArgs struct {
+	// Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
+	AccessScope pulumi.StringInput `pulumi:"accessScope"`
+}
+
+func (GetSkeClusterNetworkControlPlaneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSkeClusterNetworkControlPlane)(nil)).Elem()
+}
+
+func (i GetSkeClusterNetworkControlPlaneArgs) ToGetSkeClusterNetworkControlPlaneOutput() GetSkeClusterNetworkControlPlaneOutput {
+	return i.ToGetSkeClusterNetworkControlPlaneOutputWithContext(context.Background())
+}
+
+func (i GetSkeClusterNetworkControlPlaneArgs) ToGetSkeClusterNetworkControlPlaneOutputWithContext(ctx context.Context) GetSkeClusterNetworkControlPlaneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSkeClusterNetworkControlPlaneOutput)
+}
+
+type GetSkeClusterNetworkControlPlaneOutput struct{ *pulumi.OutputState }
+
+func (GetSkeClusterNetworkControlPlaneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSkeClusterNetworkControlPlane)(nil)).Elem()
+}
+
+func (o GetSkeClusterNetworkControlPlaneOutput) ToGetSkeClusterNetworkControlPlaneOutput() GetSkeClusterNetworkControlPlaneOutput {
+	return o
+}
+
+func (o GetSkeClusterNetworkControlPlaneOutput) ToGetSkeClusterNetworkControlPlaneOutputWithContext(ctx context.Context) GetSkeClusterNetworkControlPlaneOutput {
+	return o
+}
+
+// Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
+func (o GetSkeClusterNetworkControlPlaneOutput) AccessScope() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSkeClusterNetworkControlPlane) string { return v.AccessScope }).(pulumi.StringOutput)
 }
 
 type GetSkeClusterNodePool struct {
@@ -27606,6 +27823,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterMaintenancePtrInput)(nil)).Elem(), SkeClusterMaintenanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterNetworkInput)(nil)).Elem(), SkeClusterNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterNetworkPtrInput)(nil)).Elem(), SkeClusterNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterNetworkControlPlaneInput)(nil)).Elem(), SkeClusterNetworkControlPlaneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterNetworkControlPlanePtrInput)(nil)).Elem(), SkeClusterNetworkControlPlaneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterNodePoolInput)(nil)).Elem(), SkeClusterNodePoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterNodePoolArrayInput)(nil)).Elem(), SkeClusterNodePoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterNodePoolTaintInput)(nil)).Elem(), SkeClusterNodePoolTaintArgs{})
@@ -27762,6 +27981,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeClusterHibernationArrayInput)(nil)).Elem(), GetSkeClusterHibernationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeClusterMaintenanceInput)(nil)).Elem(), GetSkeClusterMaintenanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeClusterNetworkInput)(nil)).Elem(), GetSkeClusterNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeClusterNetworkControlPlaneInput)(nil)).Elem(), GetSkeClusterNetworkControlPlaneArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeClusterNodePoolInput)(nil)).Elem(), GetSkeClusterNodePoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeClusterNodePoolArrayInput)(nil)).Elem(), GetSkeClusterNodePoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeClusterNodePoolTaintInput)(nil)).Elem(), GetSkeClusterNodePoolTaintArgs{})
@@ -27953,6 +28173,8 @@ func init() {
 	pulumi.RegisterOutputType(SkeClusterMaintenancePtrOutput{})
 	pulumi.RegisterOutputType(SkeClusterNetworkOutput{})
 	pulumi.RegisterOutputType(SkeClusterNetworkPtrOutput{})
+	pulumi.RegisterOutputType(SkeClusterNetworkControlPlaneOutput{})
+	pulumi.RegisterOutputType(SkeClusterNetworkControlPlanePtrOutput{})
 	pulumi.RegisterOutputType(SkeClusterNodePoolOutput{})
 	pulumi.RegisterOutputType(SkeClusterNodePoolArrayOutput{})
 	pulumi.RegisterOutputType(SkeClusterNodePoolTaintOutput{})
@@ -28109,6 +28331,7 @@ func init() {
 	pulumi.RegisterOutputType(GetSkeClusterHibernationArrayOutput{})
 	pulumi.RegisterOutputType(GetSkeClusterMaintenanceOutput{})
 	pulumi.RegisterOutputType(GetSkeClusterNetworkOutput{})
+	pulumi.RegisterOutputType(GetSkeClusterNetworkControlPlaneOutput{})
 	pulumi.RegisterOutputType(GetSkeClusterNodePoolOutput{})
 	pulumi.RegisterOutputType(GetSkeClusterNodePoolArrayOutput{})
 	pulumi.RegisterOutputType(GetSkeClusterNodePoolTaintOutput{})
