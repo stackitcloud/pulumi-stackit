@@ -20,11 +20,11 @@ import (
 type AuthorizationProjectRoleAssignment struct {
 	pulumi.CustomResourceState
 
-	// project Resource to assign the role to.
+	// Project Resource to assign the role to.
 	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
 	// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
 	Role pulumi.StringOutput `pulumi:"role"`
-	// Identifier of user, service account or client. Usually email address or name in case of clients
+	// Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.
 	Subject pulumi.StringOutput `pulumi:"subject"`
 }
 
@@ -67,20 +67,20 @@ func GetAuthorizationProjectRoleAssignment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AuthorizationProjectRoleAssignment resources.
 type authorizationProjectRoleAssignmentState struct {
-	// project Resource to assign the role to.
+	// Project Resource to assign the role to.
 	ResourceId *string `pulumi:"resourceId"`
 	// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
 	Role *string `pulumi:"role"`
-	// Identifier of user, service account or client. Usually email address or name in case of clients
+	// Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.
 	Subject *string `pulumi:"subject"`
 }
 
 type AuthorizationProjectRoleAssignmentState struct {
-	// project Resource to assign the role to.
+	// Project Resource to assign the role to.
 	ResourceId pulumi.StringPtrInput
 	// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
 	Role pulumi.StringPtrInput
-	// Identifier of user, service account or client. Usually email address or name in case of clients
+	// Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.
 	Subject pulumi.StringPtrInput
 }
 
@@ -89,21 +89,21 @@ func (AuthorizationProjectRoleAssignmentState) ElementType() reflect.Type {
 }
 
 type authorizationProjectRoleAssignmentArgs struct {
-	// project Resource to assign the role to.
+	// Project Resource to assign the role to.
 	ResourceId string `pulumi:"resourceId"`
 	// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
 	Role string `pulumi:"role"`
-	// Identifier of user, service account or client. Usually email address or name in case of clients
+	// Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.
 	Subject string `pulumi:"subject"`
 }
 
 // The set of arguments for constructing a AuthorizationProjectRoleAssignment resource.
 type AuthorizationProjectRoleAssignmentArgs struct {
-	// project Resource to assign the role to.
+	// Project Resource to assign the role to.
 	ResourceId pulumi.StringInput
 	// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
 	Role pulumi.StringInput
-	// Identifier of user, service account or client. Usually email address or name in case of clients
+	// Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.
 	Subject pulumi.StringInput
 }
 
@@ -194,7 +194,7 @@ func (o AuthorizationProjectRoleAssignmentOutput) ToAuthorizationProjectRoleAssi
 	return o
 }
 
-// project Resource to assign the role to.
+// Project Resource to assign the role to.
 func (o AuthorizationProjectRoleAssignmentOutput) ResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthorizationProjectRoleAssignment) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
 }
@@ -204,7 +204,7 @@ func (o AuthorizationProjectRoleAssignmentOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthorizationProjectRoleAssignment) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
 
-// Identifier of user, service account or client. Usually email address or name in case of clients
+// Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.
 func (o AuthorizationProjectRoleAssignmentOutput) Subject() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthorizationProjectRoleAssignment) pulumi.StringOutput { return v.Subject }).(pulumi.StringOutput)
 }

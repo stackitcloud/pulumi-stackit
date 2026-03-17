@@ -35,6 +35,11 @@ export type AuthorizationProjectRoleAssignment = import("./authorizationProjectR
 export const AuthorizationProjectRoleAssignment: typeof import("./authorizationProjectRoleAssignment").AuthorizationProjectRoleAssignment = null as any;
 utilities.lazyLoad(exports, ["AuthorizationProjectRoleAssignment"], () => require("./authorizationProjectRoleAssignment"));
 
+export { AuthorizationServiceAccountRoleAssignmentArgs, AuthorizationServiceAccountRoleAssignmentState } from "./authorizationServiceAccountRoleAssignment";
+export type AuthorizationServiceAccountRoleAssignment = import("./authorizationServiceAccountRoleAssignment").AuthorizationServiceAccountRoleAssignment;
+export const AuthorizationServiceAccountRoleAssignment: typeof import("./authorizationServiceAccountRoleAssignment").AuthorizationServiceAccountRoleAssignment = null as any;
+utilities.lazyLoad(exports, ["AuthorizationServiceAccountRoleAssignment"], () => require("./authorizationServiceAccountRoleAssignment"));
+
 export { CdnCustomDomainArgs, CdnCustomDomainState } from "./cdnCustomDomain";
 export type CdnCustomDomain = import("./cdnCustomDomain").CdnCustomDomain;
 export const CdnCustomDomain: typeof import("./cdnCustomDomain").CdnCustomDomain = null as any;
@@ -834,6 +839,8 @@ const _module = {
                 return new AuthorizationProjectCustomRole(name, <any>undefined, { urn })
             case "stackit:index/authorizationProjectRoleAssignment:AuthorizationProjectRoleAssignment":
                 return new AuthorizationProjectRoleAssignment(name, <any>undefined, { urn })
+            case "stackit:index/authorizationServiceAccountRoleAssignment:AuthorizationServiceAccountRoleAssignment":
+                return new AuthorizationServiceAccountRoleAssignment(name, <any>undefined, { urn })
             case "stackit:index/cdnCustomDomain:CdnCustomDomain":
                 return new CdnCustomDomain(name, <any>undefined, { urn })
             case "stackit:index/cdnDistribution:CdnDistribution":
@@ -993,6 +1000,7 @@ pulumi.runtime.registerResourceModule("stackit", "index/authorizationFolderRoleA
 pulumi.runtime.registerResourceModule("stackit", "index/authorizationOrganizationRoleAssignment", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/authorizationProjectCustomRole", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/authorizationProjectRoleAssignment", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/authorizationServiceAccountRoleAssignment", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/cdnCustomDomain", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/cdnDistribution", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/dnsRecordSet", _module)

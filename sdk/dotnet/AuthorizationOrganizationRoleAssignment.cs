@@ -20,7 +20,7 @@ namespace Pulumi.Stackit
     public partial class AuthorizationOrganizationRoleAssignment : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// organization Resource to assign the role to.
+        /// Organization Resource to assign the role to.
         /// </summary>
         [Output("resourceId")]
         public Output<string> ResourceId { get; private set; } = null!;
@@ -32,7 +32,7 @@ namespace Pulumi.Stackit
         public Output<string> Role { get; private set; } = null!;
 
         /// <summary>
-        /// Identifier of user, service account or client. Usually email address or name in case of clients
+        /// Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.
         /// </summary>
         [Output("subject")]
         public Output<string> Subject { get; private set; } = null!;
@@ -85,7 +85,7 @@ namespace Pulumi.Stackit
     public sealed class AuthorizationOrganizationRoleAssignmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// organization Resource to assign the role to.
+        /// Organization Resource to assign the role to.
         /// </summary>
         [Input("resourceId", required: true)]
         public Input<string> ResourceId { get; set; } = null!;
@@ -97,7 +97,7 @@ namespace Pulumi.Stackit
         public Input<string> Role { get; set; } = null!;
 
         /// <summary>
-        /// Identifier of user, service account or client. Usually email address or name in case of clients
+        /// Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.
         /// </summary>
         [Input("subject", required: true)]
         public Input<string> Subject { get; set; } = null!;
@@ -111,7 +111,7 @@ namespace Pulumi.Stackit
     public sealed class AuthorizationOrganizationRoleAssignmentState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// organization Resource to assign the role to.
+        /// Organization Resource to assign the role to.
         /// </summary>
         [Input("resourceId")]
         public Input<string>? ResourceId { get; set; }
@@ -123,7 +123,7 @@ namespace Pulumi.Stackit
         public Input<string>? Role { get; set; }
 
         /// <summary>
-        /// Identifier of user, service account or client. Usually email address or name in case of clients
+        /// Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.
         /// </summary>
         [Input("subject")]
         public Input<string>? Subject { get; set; }

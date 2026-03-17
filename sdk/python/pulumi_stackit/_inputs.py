@@ -193,6 +193,8 @@ __all__ = [
     'SkeClusterMaintenanceArgsDict',
     'SkeClusterNetworkArgs',
     'SkeClusterNetworkArgsDict',
+    'SkeClusterNetworkControlPlaneArgs',
+    'SkeClusterNetworkControlPlaneArgsDict',
     'SkeClusterNodePoolArgs',
     'SkeClusterNodePoolArgsDict',
     'SkeClusterNodePoolTaintArgs',
@@ -7700,6 +7702,10 @@ class SkeClusterMaintenanceArgs:
 
 
 class SkeClusterNetworkArgsDict(TypedDict):
+    control_plane: NotRequired[pulumi.Input['SkeClusterNetworkControlPlaneArgsDict']]
+    """
+    Control plane for the cluster.
+    """
     id: NotRequired[pulumi.Input[_builtins.str]]
     """
     ID of the STACKIT Network Area (SNA) network into which the cluster will be deployed.
@@ -7708,12 +7714,28 @@ class SkeClusterNetworkArgsDict(TypedDict):
 @pulumi.input_type
 class SkeClusterNetworkArgs:
     def __init__(__self__, *,
+                 control_plane: Optional[pulumi.Input['SkeClusterNetworkControlPlaneArgs']] = None,
                  id: Optional[pulumi.Input[_builtins.str]] = None):
         """
+        :param pulumi.Input['SkeClusterNetworkControlPlaneArgs'] control_plane: Control plane for the cluster.
         :param pulumi.Input[_builtins.str] id: ID of the STACKIT Network Area (SNA) network into which the cluster will be deployed.
         """
+        if control_plane is not None:
+            pulumi.set(__self__, "control_plane", control_plane)
         if id is not None:
             pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter(name="controlPlane")
+    def control_plane(self) -> Optional[pulumi.Input['SkeClusterNetworkControlPlaneArgs']]:
+        """
+        Control plane for the cluster.
+        """
+        return pulumi.get(self, "control_plane")
+
+    @control_plane.setter
+    def control_plane(self, value: Optional[pulumi.Input['SkeClusterNetworkControlPlaneArgs']]):
+        pulumi.set(self, "control_plane", value)
 
     @_builtins.property
     @pulumi.getter
@@ -7726,6 +7748,35 @@ class SkeClusterNetworkArgs:
     @id.setter
     def id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "id", value)
+
+
+class SkeClusterNetworkControlPlaneArgsDict(TypedDict):
+    access_scope: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
+    """
+
+@pulumi.input_type
+class SkeClusterNetworkControlPlaneArgs:
+    def __init__(__self__, *,
+                 access_scope: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] access_scope: Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
+        """
+        if access_scope is not None:
+            pulumi.set(__self__, "access_scope", access_scope)
+
+    @_builtins.property
+    @pulumi.getter(name="accessScope")
+    def access_scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
+        """
+        return pulumi.get(self, "access_scope")
+
+    @access_scope.setter
+    def access_scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "access_scope", value)
 
 
 class SkeClusterNodePoolArgsDict(TypedDict):

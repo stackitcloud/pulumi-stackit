@@ -1649,9 +1649,20 @@ export interface SkeClusterMaintenance {
 
 export interface SkeClusterNetwork {
     /**
+     * Control plane for the cluster.
+     */
+    controlPlane?: pulumi.Input<inputs.SkeClusterNetworkControlPlane>;
+    /**
      * ID of the STACKIT Network Area (SNA) network into which the cluster will be deployed.
      */
     id?: pulumi.Input<string>;
+}
+
+export interface SkeClusterNetworkControlPlane {
+    /**
+     * Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
+     */
+    accessScope?: pulumi.Input<string>;
 }
 
 export interface SkeClusterNodePool {

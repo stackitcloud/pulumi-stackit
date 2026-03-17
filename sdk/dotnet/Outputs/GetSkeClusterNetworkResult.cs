@@ -14,13 +14,21 @@ namespace Pulumi.Stackit.Outputs
     public sealed class GetSkeClusterNetworkResult
     {
         /// <summary>
+        /// Control plane for the cluster.
+        /// </summary>
+        public readonly Outputs.GetSkeClusterNetworkControlPlaneResult ControlPlane;
+        /// <summary>
         /// ID of the STACKIT Network Area (SNA) network into which the cluster will be deployed.
         /// </summary>
         public readonly string Id;
 
         [OutputConstructor]
-        private GetSkeClusterNetworkResult(string id)
+        private GetSkeClusterNetworkResult(
+            Outputs.GetSkeClusterNetworkControlPlaneResult controlPlane,
+
+            string id)
         {
+            ControlPlane = controlPlane;
             Id = id;
         }
     }

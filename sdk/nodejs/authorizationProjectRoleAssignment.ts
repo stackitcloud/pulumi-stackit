@@ -40,7 +40,7 @@ export class AuthorizationProjectRoleAssignment extends pulumi.CustomResource {
     }
 
     /**
-     * project Resource to assign the role to.
+     * Project Resource to assign the role to.
      */
     declare public readonly resourceId: pulumi.Output<string>;
     /**
@@ -48,7 +48,7 @@ export class AuthorizationProjectRoleAssignment extends pulumi.CustomResource {
      */
     declare public readonly role: pulumi.Output<string>;
     /**
-     * Identifier of user, service account or client. Usually email address or name in case of clients
+     * Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.
      */
     declare public readonly subject: pulumi.Output<string>;
 
@@ -93,7 +93,7 @@ export class AuthorizationProjectRoleAssignment extends pulumi.CustomResource {
  */
 export interface AuthorizationProjectRoleAssignmentState {
     /**
-     * project Resource to assign the role to.
+     * Project Resource to assign the role to.
      */
     resourceId?: pulumi.Input<string>;
     /**
@@ -101,7 +101,7 @@ export interface AuthorizationProjectRoleAssignmentState {
      */
     role?: pulumi.Input<string>;
     /**
-     * Identifier of user, service account or client. Usually email address or name in case of clients
+     * Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.
      */
     subject?: pulumi.Input<string>;
 }
@@ -111,7 +111,7 @@ export interface AuthorizationProjectRoleAssignmentState {
  */
 export interface AuthorizationProjectRoleAssignmentArgs {
     /**
-     * project Resource to assign the role to.
+     * Project Resource to assign the role to.
      */
     resourceId: pulumi.Input<string>;
     /**
@@ -119,7 +119,7 @@ export interface AuthorizationProjectRoleAssignmentArgs {
      */
     role: pulumi.Input<string>;
     /**
-     * Identifier of user, service account or client. Usually email address or name in case of clients
+     * Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.
      */
     subject: pulumi.Input<string>;
 }

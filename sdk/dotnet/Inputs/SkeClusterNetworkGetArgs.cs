@@ -13,6 +13,12 @@ namespace Pulumi.Stackit.Inputs
     public sealed class SkeClusterNetworkGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Control plane for the cluster.
+        /// </summary>
+        [Input("controlPlane")]
+        public Input<Inputs.SkeClusterNetworkControlPlaneGetArgs>? ControlPlane { get; set; }
+
+        /// <summary>
         /// ID of the STACKIT Network Area (SNA) network into which the cluster will be deployed.
         /// </summary>
         [Input("id")]
