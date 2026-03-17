@@ -111,6 +111,9 @@
             "stackit_authorization_project_role_assignment": {
                 "current": "stackit:index/authorizationProjectRoleAssignment:AuthorizationProjectRoleAssignment"
             },
+            "stackit_authorization_service_account_role_assignment": {
+                "current": "stackit:index/authorizationServiceAccountRoleAssignment:AuthorizationServiceAccountRoleAssignment"
+            },
             "stackit_cdn_custom_domain": {
                 "current": "stackit:index/cdnCustomDomain:CdnCustomDomain",
                 "fields": {
