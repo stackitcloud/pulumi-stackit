@@ -24,6 +24,12 @@ namespace Pulumi.Stackit
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Enable Object Lock on this bucket. Can only be set at creation time. Requires an active project-level compliance lock.
+        /// </summary>
+        [Output("objectLock")]
+        public Output<bool> ObjectLock { get; private set; } = null!;
+
+        /// <summary>
         /// STACKIT Project ID to which the bucket is associated.
         /// </summary>
         [Output("projectId")]
@@ -95,6 +101,12 @@ namespace Pulumi.Stackit
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Enable Object Lock on this bucket. Can only be set at creation time. Requires an active project-level compliance lock.
+        /// </summary>
+        [Input("objectLock")]
+        public Input<bool>? ObjectLock { get; set; }
+
+        /// <summary>
         /// STACKIT Project ID to which the bucket is associated.
         /// </summary>
         [Input("projectId", required: true)]
@@ -119,6 +131,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Enable Object Lock on this bucket. Can only be set at creation time. Requires an active project-level compliance lock.
+        /// </summary>
+        [Input("objectLock")]
+        public Input<bool>? ObjectLock { get; set; }
 
         /// <summary>
         /// STACKIT Project ID to which the bucket is associated.

@@ -91,6 +91,7 @@ __all__ = [
     'RedisInstanceParameters',
     'RoutingTableRouteDestination',
     'RoutingTableRouteNextHop',
+    'SecretsmanagerInstanceKmsKey',
     'SecurityGroupRuleIcmpParameters',
     'SecurityGroupRulePortRange',
     'SecurityGroupRuleProtocol',
@@ -197,6 +198,7 @@ __all__ = [
     'GetRoutingTableRoutesRouteDestinationResult',
     'GetRoutingTableRoutesRouteNextHopResult',
     'GetRoutingTablesItemResult',
+    'GetSecretsmanagerInstanceKmsKeyResult',
     'GetSecurityGroupRuleIcmpParametersResult',
     'GetSecurityGroupRulePortRangeResult',
     'GetSecurityGroupRuleProtocolResult',
@@ -5473,6 +5475,80 @@ class RoutingTableRouteNextHop(dict):
 
 
 @pulumi.output_type
+class SecretsmanagerInstanceKmsKey(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keyId":
+            suggest = "key_id"
+        elif key == "keyRingId":
+            suggest = "key_ring_id"
+        elif key == "keyVersion":
+            suggest = "key_version"
+        elif key == "serviceAccountEmail":
+            suggest = "service_account_email"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecretsmanagerInstanceKmsKey. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecretsmanagerInstanceKmsKey.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecretsmanagerInstanceKmsKey.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 key_id: _builtins.str,
+                 key_ring_id: _builtins.str,
+                 key_version: _builtins.int,
+                 service_account_email: _builtins.str):
+        """
+        :param _builtins.str key_id: UUID of the key within the STACKIT-KMS to use for the encryption.
+        :param _builtins.str key_ring_id: UUID of the keyring where the key is located within the STACKTI-KMS.
+        :param _builtins.int key_version: Version of the key within the STACKIT-KMS to use for the encryption.
+        :param _builtins.str service_account_email: Service-Account linked to the Key within the STACKIT-KMS.
+        """
+        pulumi.set(__self__, "key_id", key_id)
+        pulumi.set(__self__, "key_ring_id", key_ring_id)
+        pulumi.set(__self__, "key_version", key_version)
+        pulumi.set(__self__, "service_account_email", service_account_email)
+
+    @_builtins.property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> _builtins.str:
+        """
+        UUID of the key within the STACKIT-KMS to use for the encryption.
+        """
+        return pulumi.get(self, "key_id")
+
+    @_builtins.property
+    @pulumi.getter(name="keyRingId")
+    def key_ring_id(self) -> _builtins.str:
+        """
+        UUID of the keyring where the key is located within the STACKTI-KMS.
+        """
+        return pulumi.get(self, "key_ring_id")
+
+    @_builtins.property
+    @pulumi.getter(name="keyVersion")
+    def key_version(self) -> _builtins.int:
+        """
+        Version of the key within the STACKIT-KMS to use for the encryption.
+        """
+        return pulumi.get(self, "key_version")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> _builtins.str:
+        """
+        Service-Account linked to the Key within the STACKIT-KMS.
+        """
+        return pulumi.get(self, "service_account_email")
+
+
+@pulumi.output_type
 class SecurityGroupRuleIcmpParameters(dict):
     def __init__(__self__, *,
                  code: _builtins.int,
@@ -7926,16 +8002,19 @@ class GetEdgecloudPlansPlanResult(dict):
                  description: _builtins.str,
                  id: _builtins.str,
                  max_edge_hosts: _builtins.int,
+                 min_edge_hosts: _builtins.int,
                  name: _builtins.str):
         """
         :param _builtins.str description: Description of the plan.
         :param _builtins.str id: The ID of the plan.
         :param _builtins.int max_edge_hosts: Maximum number of Edge Cloud hosts that can be used.
+        :param _builtins.int min_edge_hosts: Minimum number of Edge Cloud hosts charged.
         :param _builtins.str name: The name of the plan.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "max_edge_hosts", max_edge_hosts)
+        pulumi.set(__self__, "min_edge_hosts", min_edge_hosts)
         pulumi.set(__self__, "name", name)
 
     @_builtins.property
@@ -7961,6 +8040,14 @@ class GetEdgecloudPlansPlanResult(dict):
         Maximum number of Edge Cloud hosts that can be used.
         """
         return pulumi.get(self, "max_edge_hosts")
+
+    @_builtins.property
+    @pulumi.getter(name="minEdgeHosts")
+    def min_edge_hosts(self) -> _builtins.int:
+        """
+        Minimum number of Edge Cloud hosts charged.
+        """
+        return pulumi.get(self, "min_edge_hosts")
 
     @_builtins.property
     @pulumi.getter
@@ -11166,6 +11253,57 @@ class GetRoutingTablesItemResult(dict):
         Date-time when the routing table was updated
         """
         return pulumi.get(self, "updated_at")
+
+
+@pulumi.output_type
+class GetSecretsmanagerInstanceKmsKeyResult(dict):
+    def __init__(__self__, *,
+                 key_id: _builtins.str,
+                 key_ring_id: _builtins.str,
+                 key_version: _builtins.int,
+                 service_account_email: _builtins.str):
+        """
+        :param _builtins.str key_id: UUID of the key within the STACKIT-KMS to use for the encryption.
+        :param _builtins.str key_ring_id: UUID of the keyring where the key is located within the STACKTI-KMS.
+        :param _builtins.int key_version: Version of the key within the STACKIT-KMS to use for the encryption.
+        :param _builtins.str service_account_email: Service-Account linked to the Key within the STACKIT-KMS.
+        """
+        pulumi.set(__self__, "key_id", key_id)
+        pulumi.set(__self__, "key_ring_id", key_ring_id)
+        pulumi.set(__self__, "key_version", key_version)
+        pulumi.set(__self__, "service_account_email", service_account_email)
+
+    @_builtins.property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> _builtins.str:
+        """
+        UUID of the key within the STACKIT-KMS to use for the encryption.
+        """
+        return pulumi.get(self, "key_id")
+
+    @_builtins.property
+    @pulumi.getter(name="keyRingId")
+    def key_ring_id(self) -> _builtins.str:
+        """
+        UUID of the keyring where the key is located within the STACKTI-KMS.
+        """
+        return pulumi.get(self, "key_ring_id")
+
+    @_builtins.property
+    @pulumi.getter(name="keyVersion")
+    def key_version(self) -> _builtins.int:
+        """
+        Version of the key within the STACKIT-KMS to use for the encryption.
+        """
+        return pulumi.get(self, "key_version")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> _builtins.str:
+        """
+        Service-Account linked to the Key within the STACKIT-KMS.
+        """
+        return pulumi.get(self, "service_account_email")
 
 
 @pulumi.output_type

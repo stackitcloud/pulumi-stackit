@@ -26,13 +26,16 @@ class GetObjectstorageBucketResult:
     """
     A collection of values returned by getObjectstorageBucket.
     """
-    def __init__(__self__, id=None, name=None, project_id=None, region=None, url_path_style=None, url_virtual_hosted_style=None):
+    def __init__(__self__, id=None, name=None, object_lock=None, project_id=None, region=None, url_path_style=None, url_virtual_hosted_style=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if object_lock and not isinstance(object_lock, bool):
+            raise TypeError("Expected argument 'object_lock' to be a bool")
+        pulumi.set(__self__, "object_lock", object_lock)
         if project_id and not isinstance(project_id, str):
             raise TypeError("Expected argument 'project_id' to be a str")
         pulumi.set(__self__, "project_id", project_id)
@@ -61,6 +64,14 @@ class GetObjectstorageBucketResult:
         The bucket name. It must be DNS conform.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="objectLock")
+    def object_lock(self) -> _builtins.bool:
+        """
+        Enable Object Lock on this bucket. Can only be set at creation time. Requires an active project-level compliance lock.
+        """
+        return pulumi.get(self, "object_lock")
 
     @_builtins.property
     @pulumi.getter(name="projectId")
@@ -97,6 +108,7 @@ class AwaitableGetObjectstorageBucketResult(GetObjectstorageBucketResult):
         return GetObjectstorageBucketResult(
             id=self.id,
             name=self.name,
+            object_lock=self.object_lock,
             project_id=self.project_id,
             region=self.region,
             url_path_style=self.url_path_style,
@@ -127,6 +139,7 @@ def get_objectstorage_bucket(name: Optional[_builtins.str] = None,
     return AwaitableGetObjectstorageBucketResult(
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
+        object_lock=pulumi.get(__ret__, 'object_lock'),
         project_id=pulumi.get(__ret__, 'project_id'),
         region=pulumi.get(__ret__, 'region'),
         url_path_style=pulumi.get(__ret__, 'url_path_style'),
@@ -154,6 +167,7 @@ def get_objectstorage_bucket_output(name: Optional[pulumi.Input[_builtins.str]] 
     return __ret__.apply(lambda __response__: GetObjectstorageBucketResult(
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
+        object_lock=pulumi.get(__response__, 'object_lock'),
         project_id=pulumi.get(__response__, 'project_id'),
         region=pulumi.get(__response__, 'region'),
         url_path_style=pulumi.get(__response__, 'url_path_style'),

@@ -20,6 +20,8 @@ type ObjectstorageBucket struct {
 
 	// The bucket name. It must be DNS conform.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Enable Object Lock on this bucket. Can only be set at creation time. Requires an active project-level compliance lock.
+	ObjectLock pulumi.BoolOutput `pulumi:"objectLock"`
 	// STACKIT Project ID to which the bucket is associated.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
@@ -63,6 +65,8 @@ func GetObjectstorageBucket(ctx *pulumi.Context,
 type objectstorageBucketState struct {
 	// The bucket name. It must be DNS conform.
 	Name *string `pulumi:"name"`
+	// Enable Object Lock on this bucket. Can only be set at creation time. Requires an active project-level compliance lock.
+	ObjectLock *bool `pulumi:"objectLock"`
 	// STACKIT Project ID to which the bucket is associated.
 	ProjectId *string `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
@@ -74,6 +78,8 @@ type objectstorageBucketState struct {
 type ObjectstorageBucketState struct {
 	// The bucket name. It must be DNS conform.
 	Name pulumi.StringPtrInput
+	// Enable Object Lock on this bucket. Can only be set at creation time. Requires an active project-level compliance lock.
+	ObjectLock pulumi.BoolPtrInput
 	// STACKIT Project ID to which the bucket is associated.
 	ProjectId pulumi.StringPtrInput
 	// The resource region. If not defined, the provider region is used.
@@ -89,6 +95,8 @@ func (ObjectstorageBucketState) ElementType() reflect.Type {
 type objectstorageBucketArgs struct {
 	// The bucket name. It must be DNS conform.
 	Name *string `pulumi:"name"`
+	// Enable Object Lock on this bucket. Can only be set at creation time. Requires an active project-level compliance lock.
+	ObjectLock *bool `pulumi:"objectLock"`
 	// STACKIT Project ID to which the bucket is associated.
 	ProjectId string `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
@@ -99,6 +107,8 @@ type objectstorageBucketArgs struct {
 type ObjectstorageBucketArgs struct {
 	// The bucket name. It must be DNS conform.
 	Name pulumi.StringPtrInput
+	// Enable Object Lock on this bucket. Can only be set at creation time. Requires an active project-level compliance lock.
+	ObjectLock pulumi.BoolPtrInput
 	// STACKIT Project ID to which the bucket is associated.
 	ProjectId pulumi.StringInput
 	// The resource region. If not defined, the provider region is used.
@@ -195,6 +205,11 @@ func (o ObjectstorageBucketOutput) ToObjectstorageBucketOutputWithContext(ctx co
 // The bucket name. It must be DNS conform.
 func (o ObjectstorageBucketOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObjectstorageBucket) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Enable Object Lock on this bucket. Can only be set at creation time. Requires an active project-level compliance lock.
+func (o ObjectstorageBucketOutput) ObjectLock() pulumi.BoolOutput {
+	return o.ApplyT(func(v *ObjectstorageBucket) pulumi.BoolOutput { return v.ObjectLock }).(pulumi.BoolOutput)
 }
 
 // STACKIT Project ID to which the bucket is associated.

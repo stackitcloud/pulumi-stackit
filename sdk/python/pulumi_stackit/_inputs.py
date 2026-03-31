@@ -165,6 +165,8 @@ __all__ = [
     'RoutingTableRouteDestinationArgsDict',
     'RoutingTableRouteNextHopArgs',
     'RoutingTableRouteNextHopArgsDict',
+    'SecretsmanagerInstanceKmsKeyArgs',
+    'SecretsmanagerInstanceKmsKeyArgsDict',
     'SecurityGroupRuleIcmpParametersArgs',
     'SecurityGroupRuleIcmpParametersArgsDict',
     'SecurityGroupRulePortRangeArgs',
@@ -6820,6 +6822,91 @@ class RoutingTableRouteNextHopArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "value", value)
+
+
+class SecretsmanagerInstanceKmsKeyArgsDict(TypedDict):
+    key_id: pulumi.Input[_builtins.str]
+    """
+    UUID of the key within the STACKIT-KMS to use for the encryption.
+    """
+    key_ring_id: pulumi.Input[_builtins.str]
+    """
+    UUID of the keyring where the key is located within the STACKTI-KMS.
+    """
+    key_version: pulumi.Input[_builtins.int]
+    """
+    Version of the key within the STACKIT-KMS to use for the encryption.
+    """
+    service_account_email: pulumi.Input[_builtins.str]
+    """
+    Service-Account linked to the Key within the STACKIT-KMS.
+    """
+
+@pulumi.input_type
+class SecretsmanagerInstanceKmsKeyArgs:
+    def __init__(__self__, *,
+                 key_id: pulumi.Input[_builtins.str],
+                 key_ring_id: pulumi.Input[_builtins.str],
+                 key_version: pulumi.Input[_builtins.int],
+                 service_account_email: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] key_id: UUID of the key within the STACKIT-KMS to use for the encryption.
+        :param pulumi.Input[_builtins.str] key_ring_id: UUID of the keyring where the key is located within the STACKTI-KMS.
+        :param pulumi.Input[_builtins.int] key_version: Version of the key within the STACKIT-KMS to use for the encryption.
+        :param pulumi.Input[_builtins.str] service_account_email: Service-Account linked to the Key within the STACKIT-KMS.
+        """
+        pulumi.set(__self__, "key_id", key_id)
+        pulumi.set(__self__, "key_ring_id", key_ring_id)
+        pulumi.set(__self__, "key_version", key_version)
+        pulumi.set(__self__, "service_account_email", service_account_email)
+
+    @_builtins.property
+    @pulumi.getter(name="keyId")
+    def key_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        UUID of the key within the STACKIT-KMS to use for the encryption.
+        """
+        return pulumi.get(self, "key_id")
+
+    @key_id.setter
+    def key_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "key_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="keyRingId")
+    def key_ring_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        UUID of the keyring where the key is located within the STACKTI-KMS.
+        """
+        return pulumi.get(self, "key_ring_id")
+
+    @key_ring_id.setter
+    def key_ring_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "key_ring_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="keyVersion")
+    def key_version(self) -> pulumi.Input[_builtins.int]:
+        """
+        Version of the key within the STACKIT-KMS to use for the encryption.
+        """
+        return pulumi.get(self, "key_version")
+
+    @key_version.setter
+    def key_version(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "key_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountEmail")
+    def service_account_email(self) -> pulumi.Input[_builtins.str]:
+        """
+        Service-Account linked to the Key within the STACKIT-KMS.
+        """
+        return pulumi.get(self, "service_account_email")
+
+    @service_account_email.setter
+    def service_account_email(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "service_account_email", value)
 
 
 class SecurityGroupRuleIcmpParametersArgsDict(TypedDict):

@@ -240,6 +240,11 @@ export const getObjectstorageBucket: typeof import("./getObjectstorageBucket").g
 export const getObjectstorageBucketOutput: typeof import("./getObjectstorageBucket").getObjectstorageBucketOutput = null as any;
 utilities.lazyLoad(exports, ["getObjectstorageBucket","getObjectstorageBucketOutput"], () => require("./getObjectstorageBucket"));
 
+export { GetObjectstorageComplianceLockArgs, GetObjectstorageComplianceLockResult, GetObjectstorageComplianceLockOutputArgs } from "./getObjectstorageComplianceLock";
+export const getObjectstorageComplianceLock: typeof import("./getObjectstorageComplianceLock").getObjectstorageComplianceLock = null as any;
+export const getObjectstorageComplianceLockOutput: typeof import("./getObjectstorageComplianceLock").getObjectstorageComplianceLockOutput = null as any;
+utilities.lazyLoad(exports, ["getObjectstorageComplianceLock","getObjectstorageComplianceLockOutput"], () => require("./getObjectstorageComplianceLock"));
+
 export { GetObjectstorageCredentialArgs, GetObjectstorageCredentialResult, GetObjectstorageCredentialOutputArgs } from "./getObjectstorageCredential";
 export const getObjectstorageCredential: typeof import("./getObjectstorageCredential").getObjectstorageCredential = null as any;
 export const getObjectstorageCredentialOutput: typeof import("./getObjectstorageCredential").getObjectstorageCredentialOutput = null as any;
@@ -590,6 +595,11 @@ export type ObjectstorageBucket = import("./objectstorageBucket").ObjectstorageB
 export const ObjectstorageBucket: typeof import("./objectstorageBucket").ObjectstorageBucket = null as any;
 utilities.lazyLoad(exports, ["ObjectstorageBucket"], () => require("./objectstorageBucket"));
 
+export { ObjectstorageComplianceLockArgs, ObjectstorageComplianceLockState } from "./objectstorageComplianceLock";
+export type ObjectstorageComplianceLock = import("./objectstorageComplianceLock").ObjectstorageComplianceLock;
+export const ObjectstorageComplianceLock: typeof import("./objectstorageComplianceLock").ObjectstorageComplianceLock = null as any;
+utilities.lazyLoad(exports, ["ObjectstorageComplianceLock"], () => require("./objectstorageComplianceLock"));
+
 export { ObjectstorageCredentialArgs, ObjectstorageCredentialState } from "./objectstorageCredential";
 export type ObjectstorageCredential = import("./objectstorageCredential").ObjectstorageCredential;
 export const ObjectstorageCredential: typeof import("./objectstorageCredential").ObjectstorageCredential = null as any;
@@ -901,6 +911,8 @@ const _module = {
                 return new NetworkInterface(name, <any>undefined, { urn })
             case "stackit:index/objectstorageBucket:ObjectstorageBucket":
                 return new ObjectstorageBucket(name, <any>undefined, { urn })
+            case "stackit:index/objectstorageComplianceLock:ObjectstorageComplianceLock":
+                return new ObjectstorageComplianceLock(name, <any>undefined, { urn })
             case "stackit:index/objectstorageCredential:ObjectstorageCredential":
                 return new ObjectstorageCredential(name, <any>undefined, { urn })
             case "stackit:index/objectstorageCredentialsGroup:ObjectstorageCredentialsGroup":
@@ -1031,6 +1043,7 @@ pulumi.runtime.registerResourceModule("stackit", "index/networkAreaRegion", _mod
 pulumi.runtime.registerResourceModule("stackit", "index/networkAreaRoute", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/networkInterface", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/objectstorageBucket", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/objectstorageComplianceLock", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/objectstorageCredential", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/objectstorageCredentialsGroup", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/observabilityAlertgroup", _module)

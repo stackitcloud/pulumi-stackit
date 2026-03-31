@@ -49,6 +49,10 @@ export interface GetObjectstorageBucketResult {
      */
     readonly name: string;
     /**
+     * Enable Object Lock on this bucket. Can only be set at creation time. Requires an active project-level compliance lock.
+     */
+    readonly objectLock: boolean;
+    /**
      * STACKIT Project ID to which the bucket is associated.
      */
     readonly projectId: string;

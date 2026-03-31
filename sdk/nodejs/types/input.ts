@@ -1455,6 +1455,25 @@ export interface RoutingTableRouteNextHop {
     value?: pulumi.Input<string>;
 }
 
+export interface SecretsmanagerInstanceKmsKey {
+    /**
+     * UUID of the key within the STACKIT-KMS to use for the encryption.
+     */
+    keyId: pulumi.Input<string>;
+    /**
+     * UUID of the keyring where the key is located within the STACKTI-KMS.
+     */
+    keyRingId: pulumi.Input<string>;
+    /**
+     * Version of the key within the STACKIT-KMS to use for the encryption.
+     */
+    keyVersion: pulumi.Input<number>;
+    /**
+     * Service-Account linked to the Key within the STACKIT-KMS.
+     */
+    serviceAccountEmail: pulumi.Input<string>;
+}
+
 export interface SecurityGroupRuleIcmpParameters {
     /**
      * ICMP code. Can be set if the protocol is ICMP.

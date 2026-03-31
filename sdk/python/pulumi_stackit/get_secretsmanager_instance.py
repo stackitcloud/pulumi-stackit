@@ -13,6 +13,7 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
 
 __all__ = [
     'GetSecretsmanagerInstanceResult',
@@ -26,7 +27,7 @@ class GetSecretsmanagerInstanceResult:
     """
     A collection of values returned by getSecretsmanagerInstance.
     """
-    def __init__(__self__, acls=None, id=None, instance_id=None, name=None, project_id=None):
+    def __init__(__self__, acls=None, id=None, instance_id=None, kms_key=None, name=None, project_id=None):
         if acls and not isinstance(acls, list):
             raise TypeError("Expected argument 'acls' to be a list")
         pulumi.set(__self__, "acls", acls)
@@ -36,6 +37,9 @@ class GetSecretsmanagerInstanceResult:
         if instance_id and not isinstance(instance_id, str):
             raise TypeError("Expected argument 'instance_id' to be a str")
         pulumi.set(__self__, "instance_id", instance_id)
+        if kms_key and not isinstance(kms_key, dict):
+            raise TypeError("Expected argument 'kms_key' to be a dict")
+        pulumi.set(__self__, "kms_key", kms_key)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -68,6 +72,14 @@ class GetSecretsmanagerInstanceResult:
         return pulumi.get(self, "instance_id")
 
     @_builtins.property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> 'outputs.GetSecretsmanagerInstanceKmsKeyResult':
+        """
+        The STACKIT-KMS key for secret encryption and decryption.
+        """
+        return pulumi.get(self, "kms_key")
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
@@ -93,6 +105,7 @@ class AwaitableGetSecretsmanagerInstanceResult(GetSecretsmanagerInstanceResult):
             acls=self.acls,
             id=self.id,
             instance_id=self.instance_id,
+            kms_key=self.kms_key,
             name=self.name,
             project_id=self.project_id)
 
@@ -119,6 +132,7 @@ def get_secretsmanager_instance(instance_id: Optional[_builtins.str] = None,
         acls=pulumi.get(__ret__, 'acls'),
         id=pulumi.get(__ret__, 'id'),
         instance_id=pulumi.get(__ret__, 'instance_id'),
+        kms_key=pulumi.get(__ret__, 'kms_key'),
         name=pulumi.get(__ret__, 'name'),
         project_id=pulumi.get(__ret__, 'project_id'))
 def get_secretsmanager_instance_output(instance_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -142,5 +156,6 @@ def get_secretsmanager_instance_output(instance_id: Optional[pulumi.Input[_built
         acls=pulumi.get(__response__, 'acls'),
         id=pulumi.get(__response__, 'id'),
         instance_id=pulumi.get(__response__, 'instance_id'),
+        kms_key=pulumi.get(__response__, 'kms_key'),
         name=pulumi.get(__response__, 'name'),
         project_id=pulumi.get(__response__, 'project_id')))

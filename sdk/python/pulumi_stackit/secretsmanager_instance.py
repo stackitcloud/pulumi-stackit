@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['SecretsmanagerInstanceArgs', 'SecretsmanagerInstance']
 
@@ -21,17 +23,21 @@ class SecretsmanagerInstanceArgs:
     def __init__(__self__, *,
                  project_id: pulumi.Input[_builtins.str],
                  acls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 kms_key: Optional[pulumi.Input['SecretsmanagerInstanceKmsKeyArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecretsmanagerInstance resource.
 
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the instance is associated.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The access control list for this instance. Each entry is an IP or IP range that is permitted to access, in CIDR notation
+        :param pulumi.Input['SecretsmanagerInstanceKmsKeyArgs'] kms_key: The STACKIT-KMS key for secret encryption and decryption.
         :param pulumi.Input[_builtins.str] name: Instance name.
         """
         pulumi.set(__self__, "project_id", project_id)
         if acls is not None:
             pulumi.set(__self__, "acls", acls)
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
         if name is not None:
             pulumi.set(__self__, "name", name)
 
@@ -60,6 +66,18 @@ class SecretsmanagerInstanceArgs:
         pulumi.set(self, "acls", value)
 
     @_builtins.property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[pulumi.Input['SecretsmanagerInstanceKmsKeyArgs']]:
+        """
+        The STACKIT-KMS key for secret encryption and decryption.
+        """
+        return pulumi.get(self, "kms_key")
+
+    @kms_key.setter
+    def kms_key(self, value: Optional[pulumi.Input['SecretsmanagerInstanceKmsKeyArgs']]):
+        pulumi.set(self, "kms_key", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -77,6 +95,7 @@ class _SecretsmanagerInstanceState:
     def __init__(__self__, *,
                  acls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 kms_key: Optional[pulumi.Input['SecretsmanagerInstanceKmsKeyArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -84,6 +103,7 @@ class _SecretsmanagerInstanceState:
 
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The access control list for this instance. Each entry is an IP or IP range that is permitted to access, in CIDR notation
         :param pulumi.Input[_builtins.str] instance_id: ID of the Secrets Manager instance.
+        :param pulumi.Input['SecretsmanagerInstanceKmsKeyArgs'] kms_key: The STACKIT-KMS key for secret encryption and decryption.
         :param pulumi.Input[_builtins.str] name: Instance name.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the instance is associated.
         """
@@ -91,6 +111,8 @@ class _SecretsmanagerInstanceState:
             pulumi.set(__self__, "acls", acls)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project_id is not None:
@@ -119,6 +141,18 @@ class _SecretsmanagerInstanceState:
     @instance_id.setter
     def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[pulumi.Input['SecretsmanagerInstanceKmsKeyArgs']]:
+        """
+        The STACKIT-KMS key for secret encryption and decryption.
+        """
+        return pulumi.get(self, "kms_key")
+
+    @kms_key.setter
+    def kms_key(self, value: Optional[pulumi.Input['SecretsmanagerInstanceKmsKeyArgs']]):
+        pulumi.set(self, "kms_key", value)
 
     @_builtins.property
     @pulumi.getter
@@ -152,6 +186,7 @@ class SecretsmanagerInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 kms_key: Optional[pulumi.Input[Union['SecretsmanagerInstanceKmsKeyArgs', 'SecretsmanagerInstanceKmsKeyArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -164,6 +199,7 @@ class SecretsmanagerInstance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The access control list for this instance. Each entry is an IP or IP range that is permitted to access, in CIDR notation
+        :param pulumi.Input[Union['SecretsmanagerInstanceKmsKeyArgs', 'SecretsmanagerInstanceKmsKeyArgsDict']] kms_key: The STACKIT-KMS key for secret encryption and decryption.
         :param pulumi.Input[_builtins.str] name: Instance name.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the instance is associated.
         """
@@ -195,6 +231,7 @@ class SecretsmanagerInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 kms_key: Optional[pulumi.Input[Union['SecretsmanagerInstanceKmsKeyArgs', 'SecretsmanagerInstanceKmsKeyArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
@@ -207,6 +244,7 @@ class SecretsmanagerInstance(pulumi.CustomResource):
             __props__ = SecretsmanagerInstanceArgs.__new__(SecretsmanagerInstanceArgs)
 
             __props__.__dict__["acls"] = acls
+            __props__.__dict__["kms_key"] = kms_key
             __props__.__dict__["name"] = name
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
@@ -224,6 +262,7 @@ class SecretsmanagerInstance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             acls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             instance_id: Optional[pulumi.Input[_builtins.str]] = None,
+            kms_key: Optional[pulumi.Input[Union['SecretsmanagerInstanceKmsKeyArgs', 'SecretsmanagerInstanceKmsKeyArgsDict']]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'SecretsmanagerInstance':
         """
@@ -235,6 +274,7 @@ class SecretsmanagerInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The access control list for this instance. Each entry is an IP or IP range that is permitted to access, in CIDR notation
         :param pulumi.Input[_builtins.str] instance_id: ID of the Secrets Manager instance.
+        :param pulumi.Input[Union['SecretsmanagerInstanceKmsKeyArgs', 'SecretsmanagerInstanceKmsKeyArgsDict']] kms_key: The STACKIT-KMS key for secret encryption and decryption.
         :param pulumi.Input[_builtins.str] name: Instance name.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the instance is associated.
         """
@@ -244,6 +284,7 @@ class SecretsmanagerInstance(pulumi.CustomResource):
 
         __props__.__dict__["acls"] = acls
         __props__.__dict__["instance_id"] = instance_id
+        __props__.__dict__["kms_key"] = kms_key
         __props__.__dict__["name"] = name
         __props__.__dict__["project_id"] = project_id
         return SecretsmanagerInstance(resource_name, opts=opts, __props__=__props__)
@@ -263,6 +304,14 @@ class SecretsmanagerInstance(pulumi.CustomResource):
         ID of the Secrets Manager instance.
         """
         return pulumi.get(self, "instance_id")
+
+    @_builtins.property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> pulumi.Output[Optional['outputs.SecretsmanagerInstanceKmsKey']]:
+        """
+        The STACKIT-KMS key for secret encryption and decryption.
+        """
+        return pulumi.get(self, "kms_key")
 
     @_builtins.property
     @pulumi.getter

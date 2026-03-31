@@ -123,6 +123,10 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Enable Object Lock on this bucket. Can only be set at creation time. Requires an active project-level compliance lock.
+        /// </summary>
+        public readonly bool ObjectLock;
+        /// <summary>
         /// STACKIT Project ID to which the bucket is associated.
         /// </summary>
         public readonly string ProjectId;
@@ -139,6 +143,8 @@ namespace Pulumi.Stackit
 
             string name,
 
+            bool objectLock,
+
             string projectId,
 
             string? region,
@@ -149,6 +155,7 @@ namespace Pulumi.Stackit
         {
             Id = id;
             Name = name;
+            ObjectLock = objectLock;
             ProjectId = projectId;
             Region = region;
             UrlPathStyle = urlPathStyle;

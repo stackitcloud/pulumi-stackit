@@ -12910,6 +12910,200 @@ func (o RoutingTableRouteNextHopPtrOutput) Value() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type SecretsmanagerInstanceKmsKey struct {
+	// UUID of the key within the STACKIT-KMS to use for the encryption.
+	KeyId string `pulumi:"keyId"`
+	// UUID of the keyring where the key is located within the STACKTI-KMS.
+	KeyRingId string `pulumi:"keyRingId"`
+	// Version of the key within the STACKIT-KMS to use for the encryption.
+	KeyVersion int `pulumi:"keyVersion"`
+	// Service-Account linked to the Key within the STACKIT-KMS.
+	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
+}
+
+// SecretsmanagerInstanceKmsKeyInput is an input type that accepts SecretsmanagerInstanceKmsKeyArgs and SecretsmanagerInstanceKmsKeyOutput values.
+// You can construct a concrete instance of `SecretsmanagerInstanceKmsKeyInput` via:
+//
+//	SecretsmanagerInstanceKmsKeyArgs{...}
+type SecretsmanagerInstanceKmsKeyInput interface {
+	pulumi.Input
+
+	ToSecretsmanagerInstanceKmsKeyOutput() SecretsmanagerInstanceKmsKeyOutput
+	ToSecretsmanagerInstanceKmsKeyOutputWithContext(context.Context) SecretsmanagerInstanceKmsKeyOutput
+}
+
+type SecretsmanagerInstanceKmsKeyArgs struct {
+	// UUID of the key within the STACKIT-KMS to use for the encryption.
+	KeyId pulumi.StringInput `pulumi:"keyId"`
+	// UUID of the keyring where the key is located within the STACKTI-KMS.
+	KeyRingId pulumi.StringInput `pulumi:"keyRingId"`
+	// Version of the key within the STACKIT-KMS to use for the encryption.
+	KeyVersion pulumi.IntInput `pulumi:"keyVersion"`
+	// Service-Account linked to the Key within the STACKIT-KMS.
+	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
+}
+
+func (SecretsmanagerInstanceKmsKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretsmanagerInstanceKmsKey)(nil)).Elem()
+}
+
+func (i SecretsmanagerInstanceKmsKeyArgs) ToSecretsmanagerInstanceKmsKeyOutput() SecretsmanagerInstanceKmsKeyOutput {
+	return i.ToSecretsmanagerInstanceKmsKeyOutputWithContext(context.Background())
+}
+
+func (i SecretsmanagerInstanceKmsKeyArgs) ToSecretsmanagerInstanceKmsKeyOutputWithContext(ctx context.Context) SecretsmanagerInstanceKmsKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretsmanagerInstanceKmsKeyOutput)
+}
+
+func (i SecretsmanagerInstanceKmsKeyArgs) ToSecretsmanagerInstanceKmsKeyPtrOutput() SecretsmanagerInstanceKmsKeyPtrOutput {
+	return i.ToSecretsmanagerInstanceKmsKeyPtrOutputWithContext(context.Background())
+}
+
+func (i SecretsmanagerInstanceKmsKeyArgs) ToSecretsmanagerInstanceKmsKeyPtrOutputWithContext(ctx context.Context) SecretsmanagerInstanceKmsKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretsmanagerInstanceKmsKeyOutput).ToSecretsmanagerInstanceKmsKeyPtrOutputWithContext(ctx)
+}
+
+// SecretsmanagerInstanceKmsKeyPtrInput is an input type that accepts SecretsmanagerInstanceKmsKeyArgs, SecretsmanagerInstanceKmsKeyPtr and SecretsmanagerInstanceKmsKeyPtrOutput values.
+// You can construct a concrete instance of `SecretsmanagerInstanceKmsKeyPtrInput` via:
+//
+//	        SecretsmanagerInstanceKmsKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecretsmanagerInstanceKmsKeyPtrInput interface {
+	pulumi.Input
+
+	ToSecretsmanagerInstanceKmsKeyPtrOutput() SecretsmanagerInstanceKmsKeyPtrOutput
+	ToSecretsmanagerInstanceKmsKeyPtrOutputWithContext(context.Context) SecretsmanagerInstanceKmsKeyPtrOutput
+}
+
+type secretsmanagerInstanceKmsKeyPtrType SecretsmanagerInstanceKmsKeyArgs
+
+func SecretsmanagerInstanceKmsKeyPtr(v *SecretsmanagerInstanceKmsKeyArgs) SecretsmanagerInstanceKmsKeyPtrInput {
+	return (*secretsmanagerInstanceKmsKeyPtrType)(v)
+}
+
+func (*secretsmanagerInstanceKmsKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretsmanagerInstanceKmsKey)(nil)).Elem()
+}
+
+func (i *secretsmanagerInstanceKmsKeyPtrType) ToSecretsmanagerInstanceKmsKeyPtrOutput() SecretsmanagerInstanceKmsKeyPtrOutput {
+	return i.ToSecretsmanagerInstanceKmsKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *secretsmanagerInstanceKmsKeyPtrType) ToSecretsmanagerInstanceKmsKeyPtrOutputWithContext(ctx context.Context) SecretsmanagerInstanceKmsKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecretsmanagerInstanceKmsKeyPtrOutput)
+}
+
+type SecretsmanagerInstanceKmsKeyOutput struct{ *pulumi.OutputState }
+
+func (SecretsmanagerInstanceKmsKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecretsmanagerInstanceKmsKey)(nil)).Elem()
+}
+
+func (o SecretsmanagerInstanceKmsKeyOutput) ToSecretsmanagerInstanceKmsKeyOutput() SecretsmanagerInstanceKmsKeyOutput {
+	return o
+}
+
+func (o SecretsmanagerInstanceKmsKeyOutput) ToSecretsmanagerInstanceKmsKeyOutputWithContext(ctx context.Context) SecretsmanagerInstanceKmsKeyOutput {
+	return o
+}
+
+func (o SecretsmanagerInstanceKmsKeyOutput) ToSecretsmanagerInstanceKmsKeyPtrOutput() SecretsmanagerInstanceKmsKeyPtrOutput {
+	return o.ToSecretsmanagerInstanceKmsKeyPtrOutputWithContext(context.Background())
+}
+
+func (o SecretsmanagerInstanceKmsKeyOutput) ToSecretsmanagerInstanceKmsKeyPtrOutputWithContext(ctx context.Context) SecretsmanagerInstanceKmsKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecretsmanagerInstanceKmsKey) *SecretsmanagerInstanceKmsKey {
+		return &v
+	}).(SecretsmanagerInstanceKmsKeyPtrOutput)
+}
+
+// UUID of the key within the STACKIT-KMS to use for the encryption.
+func (o SecretsmanagerInstanceKmsKeyOutput) KeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretsmanagerInstanceKmsKey) string { return v.KeyId }).(pulumi.StringOutput)
+}
+
+// UUID of the keyring where the key is located within the STACKTI-KMS.
+func (o SecretsmanagerInstanceKmsKeyOutput) KeyRingId() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretsmanagerInstanceKmsKey) string { return v.KeyRingId }).(pulumi.StringOutput)
+}
+
+// Version of the key within the STACKIT-KMS to use for the encryption.
+func (o SecretsmanagerInstanceKmsKeyOutput) KeyVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v SecretsmanagerInstanceKmsKey) int { return v.KeyVersion }).(pulumi.IntOutput)
+}
+
+// Service-Account linked to the Key within the STACKIT-KMS.
+func (o SecretsmanagerInstanceKmsKeyOutput) ServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v SecretsmanagerInstanceKmsKey) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+}
+
+type SecretsmanagerInstanceKmsKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (SecretsmanagerInstanceKmsKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecretsmanagerInstanceKmsKey)(nil)).Elem()
+}
+
+func (o SecretsmanagerInstanceKmsKeyPtrOutput) ToSecretsmanagerInstanceKmsKeyPtrOutput() SecretsmanagerInstanceKmsKeyPtrOutput {
+	return o
+}
+
+func (o SecretsmanagerInstanceKmsKeyPtrOutput) ToSecretsmanagerInstanceKmsKeyPtrOutputWithContext(ctx context.Context) SecretsmanagerInstanceKmsKeyPtrOutput {
+	return o
+}
+
+func (o SecretsmanagerInstanceKmsKeyPtrOutput) Elem() SecretsmanagerInstanceKmsKeyOutput {
+	return o.ApplyT(func(v *SecretsmanagerInstanceKmsKey) SecretsmanagerInstanceKmsKey {
+		if v != nil {
+			return *v
+		}
+		var ret SecretsmanagerInstanceKmsKey
+		return ret
+	}).(SecretsmanagerInstanceKmsKeyOutput)
+}
+
+// UUID of the key within the STACKIT-KMS to use for the encryption.
+func (o SecretsmanagerInstanceKmsKeyPtrOutput) KeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretsmanagerInstanceKmsKey) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// UUID of the keyring where the key is located within the STACKTI-KMS.
+func (o SecretsmanagerInstanceKmsKeyPtrOutput) KeyRingId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretsmanagerInstanceKmsKey) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyRingId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version of the key within the STACKIT-KMS to use for the encryption.
+func (o SecretsmanagerInstanceKmsKeyPtrOutput) KeyVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SecretsmanagerInstanceKmsKey) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyVersion
+	}).(pulumi.IntPtrOutput)
+}
+
+// Service-Account linked to the Key within the STACKIT-KMS.
+func (o SecretsmanagerInstanceKmsKeyPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecretsmanagerInstanceKmsKey) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceAccountEmail
+	}).(pulumi.StringPtrOutput)
+}
+
 type SecurityGroupRuleIcmpParameters struct {
 	// ICMP code. Can be set if the protocol is ICMP.
 	Code int `pulumi:"code"`
@@ -19267,6 +19461,8 @@ type GetEdgecloudPlansPlan struct {
 	Id string `pulumi:"id"`
 	// Maximum number of Edge Cloud hosts that can be used.
 	MaxEdgeHosts int `pulumi:"maxEdgeHosts"`
+	// Minimum number of Edge Cloud hosts charged.
+	MinEdgeHosts int `pulumi:"minEdgeHosts"`
 	// The name of the plan.
 	Name string `pulumi:"name"`
 }
@@ -19289,6 +19485,8 @@ type GetEdgecloudPlansPlanArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// Maximum number of Edge Cloud hosts that can be used.
 	MaxEdgeHosts pulumi.IntInput `pulumi:"maxEdgeHosts"`
+	// Minimum number of Edge Cloud hosts charged.
+	MinEdgeHosts pulumi.IntInput `pulumi:"minEdgeHosts"`
 	// The name of the plan.
 	Name pulumi.StringInput `pulumi:"name"`
 }
@@ -19357,6 +19555,11 @@ func (o GetEdgecloudPlansPlanOutput) Id() pulumi.StringOutput {
 // Maximum number of Edge Cloud hosts that can be used.
 func (o GetEdgecloudPlansPlanOutput) MaxEdgeHosts() pulumi.IntOutput {
 	return o.ApplyT(func(v GetEdgecloudPlansPlan) int { return v.MaxEdgeHosts }).(pulumi.IntOutput)
+}
+
+// Minimum number of Edge Cloud hosts charged.
+func (o GetEdgecloudPlansPlanOutput) MinEdgeHosts() pulumi.IntOutput {
+	return o.ApplyT(func(v GetEdgecloudPlansPlan) int { return v.MinEdgeHosts }).(pulumi.IntOutput)
 }
 
 // The name of the plan.
@@ -25032,6 +25235,85 @@ func (o GetRoutingTablesItemArrayOutput) Index(i pulumi.IntInput) GetRoutingTabl
 	}).(GetRoutingTablesItemOutput)
 }
 
+type GetSecretsmanagerInstanceKmsKey struct {
+	// UUID of the key within the STACKIT-KMS to use for the encryption.
+	KeyId string `pulumi:"keyId"`
+	// UUID of the keyring where the key is located within the STACKTI-KMS.
+	KeyRingId string `pulumi:"keyRingId"`
+	// Version of the key within the STACKIT-KMS to use for the encryption.
+	KeyVersion int `pulumi:"keyVersion"`
+	// Service-Account linked to the Key within the STACKIT-KMS.
+	ServiceAccountEmail string `pulumi:"serviceAccountEmail"`
+}
+
+// GetSecretsmanagerInstanceKmsKeyInput is an input type that accepts GetSecretsmanagerInstanceKmsKeyArgs and GetSecretsmanagerInstanceKmsKeyOutput values.
+// You can construct a concrete instance of `GetSecretsmanagerInstanceKmsKeyInput` via:
+//
+//	GetSecretsmanagerInstanceKmsKeyArgs{...}
+type GetSecretsmanagerInstanceKmsKeyInput interface {
+	pulumi.Input
+
+	ToGetSecretsmanagerInstanceKmsKeyOutput() GetSecretsmanagerInstanceKmsKeyOutput
+	ToGetSecretsmanagerInstanceKmsKeyOutputWithContext(context.Context) GetSecretsmanagerInstanceKmsKeyOutput
+}
+
+type GetSecretsmanagerInstanceKmsKeyArgs struct {
+	// UUID of the key within the STACKIT-KMS to use for the encryption.
+	KeyId pulumi.StringInput `pulumi:"keyId"`
+	// UUID of the keyring where the key is located within the STACKTI-KMS.
+	KeyRingId pulumi.StringInput `pulumi:"keyRingId"`
+	// Version of the key within the STACKIT-KMS to use for the encryption.
+	KeyVersion pulumi.IntInput `pulumi:"keyVersion"`
+	// Service-Account linked to the Key within the STACKIT-KMS.
+	ServiceAccountEmail pulumi.StringInput `pulumi:"serviceAccountEmail"`
+}
+
+func (GetSecretsmanagerInstanceKmsKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretsmanagerInstanceKmsKey)(nil)).Elem()
+}
+
+func (i GetSecretsmanagerInstanceKmsKeyArgs) ToGetSecretsmanagerInstanceKmsKeyOutput() GetSecretsmanagerInstanceKmsKeyOutput {
+	return i.ToGetSecretsmanagerInstanceKmsKeyOutputWithContext(context.Background())
+}
+
+func (i GetSecretsmanagerInstanceKmsKeyArgs) ToGetSecretsmanagerInstanceKmsKeyOutputWithContext(ctx context.Context) GetSecretsmanagerInstanceKmsKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretsmanagerInstanceKmsKeyOutput)
+}
+
+type GetSecretsmanagerInstanceKmsKeyOutput struct{ *pulumi.OutputState }
+
+func (GetSecretsmanagerInstanceKmsKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretsmanagerInstanceKmsKey)(nil)).Elem()
+}
+
+func (o GetSecretsmanagerInstanceKmsKeyOutput) ToGetSecretsmanagerInstanceKmsKeyOutput() GetSecretsmanagerInstanceKmsKeyOutput {
+	return o
+}
+
+func (o GetSecretsmanagerInstanceKmsKeyOutput) ToGetSecretsmanagerInstanceKmsKeyOutputWithContext(ctx context.Context) GetSecretsmanagerInstanceKmsKeyOutput {
+	return o
+}
+
+// UUID of the key within the STACKIT-KMS to use for the encryption.
+func (o GetSecretsmanagerInstanceKmsKeyOutput) KeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretsmanagerInstanceKmsKey) string { return v.KeyId }).(pulumi.StringOutput)
+}
+
+// UUID of the keyring where the key is located within the STACKTI-KMS.
+func (o GetSecretsmanagerInstanceKmsKeyOutput) KeyRingId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretsmanagerInstanceKmsKey) string { return v.KeyRingId }).(pulumi.StringOutput)
+}
+
+// Version of the key within the STACKIT-KMS to use for the encryption.
+func (o GetSecretsmanagerInstanceKmsKeyOutput) KeyVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSecretsmanagerInstanceKmsKey) int { return v.KeyVersion }).(pulumi.IntOutput)
+}
+
+// Service-Account linked to the Key within the STACKIT-KMS.
+func (o GetSecretsmanagerInstanceKmsKeyOutput) ServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretsmanagerInstanceKmsKey) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
+}
+
 type GetSecurityGroupRuleIcmpParameters struct {
 	// ICMP code. Can be set if the protocol is ICMP.
 	Code int `pulumi:"code"`
@@ -27795,6 +28077,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutingTableRouteDestinationPtrInput)(nil)).Elem(), RoutingTableRouteDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutingTableRouteNextHopInput)(nil)).Elem(), RoutingTableRouteNextHopArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutingTableRouteNextHopPtrInput)(nil)).Elem(), RoutingTableRouteNextHopArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretsmanagerInstanceKmsKeyInput)(nil)).Elem(), SecretsmanagerInstanceKmsKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecretsmanagerInstanceKmsKeyPtrInput)(nil)).Elem(), SecretsmanagerInstanceKmsKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupRuleIcmpParametersInput)(nil)).Elem(), SecurityGroupRuleIcmpParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupRuleIcmpParametersPtrInput)(nil)).Elem(), SecurityGroupRuleIcmpParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupRulePortRangeInput)(nil)).Elem(), SecurityGroupRulePortRangeArgs{})
@@ -27956,6 +28240,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutingTableRoutesRouteNextHopInput)(nil)).Elem(), GetRoutingTableRoutesRouteNextHopArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutingTablesItemInput)(nil)).Elem(), GetRoutingTablesItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutingTablesItemArrayInput)(nil)).Elem(), GetRoutingTablesItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretsmanagerInstanceKmsKeyInput)(nil)).Elem(), GetSecretsmanagerInstanceKmsKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGroupRuleIcmpParametersInput)(nil)).Elem(), GetSecurityGroupRuleIcmpParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGroupRulePortRangeInput)(nil)).Elem(), GetSecurityGroupRulePortRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGroupRuleProtocolInput)(nil)).Elem(), GetSecurityGroupRuleProtocolArgs{})
@@ -28145,6 +28430,8 @@ func init() {
 	pulumi.RegisterOutputType(RoutingTableRouteDestinationPtrOutput{})
 	pulumi.RegisterOutputType(RoutingTableRouteNextHopOutput{})
 	pulumi.RegisterOutputType(RoutingTableRouteNextHopPtrOutput{})
+	pulumi.RegisterOutputType(SecretsmanagerInstanceKmsKeyOutput{})
+	pulumi.RegisterOutputType(SecretsmanagerInstanceKmsKeyPtrOutput{})
 	pulumi.RegisterOutputType(SecurityGroupRuleIcmpParametersOutput{})
 	pulumi.RegisterOutputType(SecurityGroupRuleIcmpParametersPtrOutput{})
 	pulumi.RegisterOutputType(SecurityGroupRulePortRangeOutput{})
@@ -28306,6 +28593,7 @@ func init() {
 	pulumi.RegisterOutputType(GetRoutingTableRoutesRouteNextHopOutput{})
 	pulumi.RegisterOutputType(GetRoutingTablesItemOutput{})
 	pulumi.RegisterOutputType(GetRoutingTablesItemArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretsmanagerInstanceKmsKeyOutput{})
 	pulumi.RegisterOutputType(GetSecurityGroupRuleIcmpParametersOutput{})
 	pulumi.RegisterOutputType(GetSecurityGroupRulePortRangeOutput{})
 	pulumi.RegisterOutputType(GetSecurityGroupRuleProtocolOutput{})

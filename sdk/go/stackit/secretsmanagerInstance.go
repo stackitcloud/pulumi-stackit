@@ -22,6 +22,8 @@ type SecretsmanagerInstance struct {
 	Acls pulumi.StringArrayOutput `pulumi:"acls"`
 	// ID of the Secrets Manager instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
+	// The STACKIT-KMS key for secret encryption and decryption.
+	KmsKey SecretsmanagerInstanceKmsKeyPtrOutput `pulumi:"kmsKey"`
 	// Instance name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// STACKIT project ID to which the instance is associated.
@@ -65,6 +67,8 @@ type secretsmanagerInstanceState struct {
 	Acls []string `pulumi:"acls"`
 	// ID of the Secrets Manager instance.
 	InstanceId *string `pulumi:"instanceId"`
+	// The STACKIT-KMS key for secret encryption and decryption.
+	KmsKey *SecretsmanagerInstanceKmsKey `pulumi:"kmsKey"`
 	// Instance name.
 	Name *string `pulumi:"name"`
 	// STACKIT project ID to which the instance is associated.
@@ -76,6 +80,8 @@ type SecretsmanagerInstanceState struct {
 	Acls pulumi.StringArrayInput
 	// ID of the Secrets Manager instance.
 	InstanceId pulumi.StringPtrInput
+	// The STACKIT-KMS key for secret encryption and decryption.
+	KmsKey SecretsmanagerInstanceKmsKeyPtrInput
 	// Instance name.
 	Name pulumi.StringPtrInput
 	// STACKIT project ID to which the instance is associated.
@@ -89,6 +95,8 @@ func (SecretsmanagerInstanceState) ElementType() reflect.Type {
 type secretsmanagerInstanceArgs struct {
 	// The access control list for this instance. Each entry is an IP or IP range that is permitted to access, in CIDR notation
 	Acls []string `pulumi:"acls"`
+	// The STACKIT-KMS key for secret encryption and decryption.
+	KmsKey *SecretsmanagerInstanceKmsKey `pulumi:"kmsKey"`
 	// Instance name.
 	Name *string `pulumi:"name"`
 	// STACKIT project ID to which the instance is associated.
@@ -99,6 +107,8 @@ type secretsmanagerInstanceArgs struct {
 type SecretsmanagerInstanceArgs struct {
 	// The access control list for this instance. Each entry is an IP or IP range that is permitted to access, in CIDR notation
 	Acls pulumi.StringArrayInput
+	// The STACKIT-KMS key for secret encryption and decryption.
+	KmsKey SecretsmanagerInstanceKmsKeyPtrInput
 	// Instance name.
 	Name pulumi.StringPtrInput
 	// STACKIT project ID to which the instance is associated.
@@ -200,6 +210,11 @@ func (o SecretsmanagerInstanceOutput) Acls() pulumi.StringArrayOutput {
 // ID of the Secrets Manager instance.
 func (o SecretsmanagerInstanceOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretsmanagerInstance) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// The STACKIT-KMS key for secret encryption and decryption.
+func (o SecretsmanagerInstanceOutput) KmsKey() SecretsmanagerInstanceKmsKeyPtrOutput {
+	return o.ApplyT(func(v *SecretsmanagerInstance) SecretsmanagerInstanceKmsKeyPtrOutput { return v.KmsKey }).(SecretsmanagerInstanceKmsKeyPtrOutput)
 }
 
 // Instance name.

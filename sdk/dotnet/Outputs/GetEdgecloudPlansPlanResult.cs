@@ -26,6 +26,10 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly int MaxEdgeHosts;
         /// <summary>
+        /// Minimum number of Edge Cloud hosts charged.
+        /// </summary>
+        public readonly int MinEdgeHosts;
+        /// <summary>
         /// The name of the plan.
         /// </summary>
         public readonly string Name;
@@ -38,11 +42,14 @@ namespace Pulumi.Stackit.Outputs
 
             int maxEdgeHosts,
 
+            int minEdgeHosts,
+
             string name)
         {
             Description = description;
             Id = id;
             MaxEdgeHosts = maxEdgeHosts;
+            MinEdgeHosts = minEdgeHosts;
             Name = name;
         }
     }

@@ -863,6 +863,10 @@ export interface GetEdgecloudPlansPlan {
      */
     maxEdgeHosts: number;
     /**
+     * Minimum number of Edge Cloud hosts charged.
+     */
+    minEdgeHosts: number;
+    /**
      * The name of the plan.
      */
     name: string;
@@ -2013,6 +2017,25 @@ export interface GetRoutingTablesItem {
      * Date-time when the routing table was updated
      */
     updatedAt: string;
+}
+
+export interface GetSecretsmanagerInstanceKmsKey {
+    /**
+     * UUID of the key within the STACKIT-KMS to use for the encryption.
+     */
+    keyId: string;
+    /**
+     * UUID of the keyring where the key is located within the STACKTI-KMS.
+     */
+    keyRingId: string;
+    /**
+     * Version of the key within the STACKIT-KMS to use for the encryption.
+     */
+    keyVersion: number;
+    /**
+     * Service-Account linked to the Key within the STACKIT-KMS.
+     */
+    serviceAccountEmail: string;
 }
 
 export interface GetSecurityGroupRuleIcmpParameters {
@@ -3432,6 +3455,25 @@ export interface RoutingTableRouteNextHop {
      * Either IPv4 or IPv6 (not set for blackhole and internet). Only IPv4 supported during experimental stage.
      */
     value?: string;
+}
+
+export interface SecretsmanagerInstanceKmsKey {
+    /**
+     * UUID of the key within the STACKIT-KMS to use for the encryption.
+     */
+    keyId: string;
+    /**
+     * UUID of the keyring where the key is located within the STACKTI-KMS.
+     */
+    keyRingId: string;
+    /**
+     * Version of the key within the STACKIT-KMS to use for the encryption.
+     */
+    keyVersion: number;
+    /**
+     * Service-Account linked to the Key within the STACKIT-KMS.
+     */
+    serviceAccountEmail: string;
 }
 
 export interface SecurityGroupRuleIcmpParameters {

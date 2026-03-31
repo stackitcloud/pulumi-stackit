@@ -42,6 +42,10 @@ export class ObjectstorageBucket extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Enable Object Lock on this bucket. Can only be set at creation time. Requires an active project-level compliance lock.
+     */
+    declare public readonly objectLock: pulumi.Output<boolean>;
+    /**
      * STACKIT Project ID to which the bucket is associated.
      */
     declare public readonly projectId: pulumi.Output<string>;
@@ -66,6 +70,7 @@ export class ObjectstorageBucket extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ObjectstorageBucketState | undefined;
             resourceInputs["name"] = state?.name;
+            resourceInputs["objectLock"] = state?.objectLock;
             resourceInputs["projectId"] = state?.projectId;
             resourceInputs["region"] = state?.region;
             resourceInputs["urlPathStyle"] = state?.urlPathStyle;
@@ -76,6 +81,7 @@ export class ObjectstorageBucket extends pulumi.CustomResource {
                 throw new Error("Missing required property 'projectId'");
             }
             resourceInputs["name"] = args?.name;
+            resourceInputs["objectLock"] = args?.objectLock;
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["region"] = args?.region;
             resourceInputs["urlPathStyle"] = undefined /*out*/;
@@ -94,6 +100,10 @@ export interface ObjectstorageBucketState {
      * The bucket name. It must be DNS conform.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Enable Object Lock on this bucket. Can only be set at creation time. Requires an active project-level compliance lock.
+     */
+    objectLock?: pulumi.Input<boolean>;
     /**
      * STACKIT Project ID to which the bucket is associated.
      */
@@ -114,6 +124,10 @@ export interface ObjectstorageBucketArgs {
      * The bucket name. It must be DNS conform.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Enable Object Lock on this bucket. Can only be set at creation time. Requires an active project-level compliance lock.
+     */
+    objectLock?: pulumi.Input<boolean>;
     /**
      * STACKIT Project ID to which the bucket is associated.
      */

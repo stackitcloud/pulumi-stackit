@@ -95,6 +95,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NetworkInterface{}
 	case "stackit:index/objectstorageBucket:ObjectstorageBucket":
 		r = &ObjectstorageBucket{}
+	case "stackit:index/objectstorageComplianceLock:ObjectstorageComplianceLock":
+		r = &ObjectstorageComplianceLock{}
 	case "stackit:index/objectstorageCredential:ObjectstorageCredential":
 		r = &ObjectstorageCredential{}
 	case "stackit:index/objectstorageCredentialsGroup:ObjectstorageCredentialsGroup":
@@ -397,6 +399,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"stackit",
 		"index/objectstorageBucket",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/objectstorageComplianceLock",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

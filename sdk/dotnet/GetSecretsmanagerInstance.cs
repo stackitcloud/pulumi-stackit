@@ -115,6 +115,10 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string InstanceId;
         /// <summary>
+        /// The STACKIT-KMS key for secret encryption and decryption.
+        /// </summary>
+        public readonly Outputs.GetSecretsmanagerInstanceKmsKeyResult KmsKey;
+        /// <summary>
         /// Instance name.
         /// </summary>
         public readonly string Name;
@@ -131,6 +135,8 @@ namespace Pulumi.Stackit
 
             string instanceId,
 
+            Outputs.GetSecretsmanagerInstanceKmsKeyResult kmsKey,
+
             string name,
 
             string projectId)
@@ -138,6 +144,7 @@ namespace Pulumi.Stackit
             Acls = acls;
             Id = id;
             InstanceId = instanceId;
+            KmsKey = kmsKey;
             Name = name;
             ProjectId = projectId;
         }

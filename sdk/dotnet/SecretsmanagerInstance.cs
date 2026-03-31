@@ -30,6 +30,12 @@ namespace Pulumi.Stackit
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
+        /// The STACKIT-KMS key for secret encryption and decryption.
+        /// </summary>
+        [Output("kmsKey")]
+        public Output<Outputs.SecretsmanagerInstanceKmsKey?> KmsKey { get; private set; } = null!;
+
+        /// <summary>
         /// Instance name.
         /// </summary>
         [Output("name")]
@@ -101,6 +107,12 @@ namespace Pulumi.Stackit
         }
 
         /// <summary>
+        /// The STACKIT-KMS key for secret encryption and decryption.
+        /// </summary>
+        [Input("kmsKey")]
+        public Input<Inputs.SecretsmanagerInstanceKmsKeyArgs>? KmsKey { get; set; }
+
+        /// <summary>
         /// Instance name.
         /// </summary>
         [Input("name")]
@@ -137,6 +149,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
+
+        /// <summary>
+        /// The STACKIT-KMS key for secret encryption and decryption.
+        /// </summary>
+        [Input("kmsKey")]
+        public Input<Inputs.SecretsmanagerInstanceKmsKeyGetArgs>? KmsKey { get; set; }
 
         /// <summary>
         /// Instance name.

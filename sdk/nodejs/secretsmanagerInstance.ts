@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -46,6 +48,10 @@ export class SecretsmanagerInstance extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly instanceId: pulumi.Output<string>;
     /**
+     * The STACKIT-KMS key for secret encryption and decryption.
+     */
+    declare public readonly kmsKey: pulumi.Output<outputs.SecretsmanagerInstanceKmsKey | undefined>;
+    /**
      * Instance name.
      */
     declare public readonly name: pulumi.Output<string>;
@@ -69,6 +75,7 @@ export class SecretsmanagerInstance extends pulumi.CustomResource {
             const state = argsOrState as SecretsmanagerInstanceState | undefined;
             resourceInputs["acls"] = state?.acls;
             resourceInputs["instanceId"] = state?.instanceId;
+            resourceInputs["kmsKey"] = state?.kmsKey;
             resourceInputs["name"] = state?.name;
             resourceInputs["projectId"] = state?.projectId;
         } else {
@@ -77,6 +84,7 @@ export class SecretsmanagerInstance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'projectId'");
             }
             resourceInputs["acls"] = args?.acls;
+            resourceInputs["kmsKey"] = args?.kmsKey;
             resourceInputs["name"] = args?.name;
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["instanceId"] = undefined /*out*/;
@@ -99,6 +107,10 @@ export interface SecretsmanagerInstanceState {
      */
     instanceId?: pulumi.Input<string>;
     /**
+     * The STACKIT-KMS key for secret encryption and decryption.
+     */
+    kmsKey?: pulumi.Input<inputs.SecretsmanagerInstanceKmsKey>;
+    /**
      * Instance name.
      */
     name?: pulumi.Input<string>;
@@ -116,6 +128,10 @@ export interface SecretsmanagerInstanceArgs {
      * The access control list for this instance. Each entry is an IP or IP range that is permitted to access, in CIDR notation
      */
     acls?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The STACKIT-KMS key for secret encryption and decryption.
+     */
+    kmsKey?: pulumi.Input<inputs.SecretsmanagerInstanceKmsKey>;
     /**
      * Instance name.
      */

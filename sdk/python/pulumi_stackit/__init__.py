@@ -53,6 +53,7 @@ from .get_network_area_region import *
 from .get_network_area_route import *
 from .get_network_interface import *
 from .get_objectstorage_bucket import *
+from .get_objectstorage_compliance_lock import *
 from .get_objectstorage_credential import *
 from .get_objectstorage_credentials_group import *
 from .get_observability_alertgroup import *
@@ -123,6 +124,7 @@ from .network_area_region import *
 from .network_area_route import *
 from .network_interface import *
 from .objectstorage_bucket import *
+from .objectstorage_compliance_lock import *
 from .objectstorage_credential import *
 from .objectstorage_credentials_group import *
 from .observability_alertgroup import *
@@ -475,6 +477,14 @@ _utilities.register(
   "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/objectstorageBucket:ObjectstorageBucket": "ObjectstorageBucket"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/objectstorageComplianceLock",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/objectstorageComplianceLock:ObjectstorageComplianceLock": "ObjectstorageComplianceLock"
   }
  },
  {
