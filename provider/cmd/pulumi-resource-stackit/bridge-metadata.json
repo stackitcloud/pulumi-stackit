@@ -381,6 +381,9 @@
             "stackit_objectstorage_bucket": {
                 "current": "stackit:index/objectstorageBucket:ObjectstorageBucket"
             },
+            "stackit_objectstorage_compliance_lock": {
+                "current": "stackit:index/objectstorageComplianceLock:ObjectstorageComplianceLock"
+            },
             "stackit_objectstorage_credential": {
                 "current": "stackit:index/objectstorageCredential:ObjectstorageCredential"
             },
@@ -1129,6 +1132,9 @@
             },
             "stackit_objectstorage_bucket": {
                 "current": "stackit:index/getObjectstorageBucket:getObjectstorageBucket"
+            },
+            "stackit_objectstorage_compliance_lock": {
+                "current": "stackit:index/getObjectstorageComplianceLock:getObjectstorageComplianceLock"
             },
             "stackit_objectstorage_credential": {
                 "current": "stackit:index/getObjectstorageCredential:getObjectstorageCredential"
