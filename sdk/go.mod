@@ -1,10 +1,10 @@
 module github.com/stackitcloud/pulumi-stackit/sdk
 
-go 1.25.6
+go 1.25.8
 
 require (
 	github.com/blang/semver v3.5.1+incompatible
-	github.com/pulumi/pulumi/sdk/v3 v3.227.0
+	github.com/pulumi/pulumi/sdk/v3 v3.229.0
 )
 
 require (
