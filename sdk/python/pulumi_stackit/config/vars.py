@@ -21,6 +21,13 @@ __config__ = pulumi.Config('stackit')
 
 class _ExportableConfig(types.ModuleType):
     @_builtins.property
+    def alb_certificates_custom_endpoint(self) -> Optional[str]:
+        """
+        Custom endpoint for the Application Load Balancer TLS Certificate service
+        """
+        return __config__.get('albCertificatesCustomEndpoint')
+
+    @_builtins.property
     def alb_custom_endpoint(self) -> Optional[str]:
         """
         Custom endpoint for the Application Load Balancer service

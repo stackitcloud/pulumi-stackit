@@ -7,6 +7,7 @@ from . import _utilities
 import typing
 # Export this package's modules as members:
 from .affinity_group import *
+from .alb_certificate import *
 from .application_load_balancer import *
 from .authorization_folder_role_assignment import *
 from .authorization_organization_role_assignment import *
@@ -21,6 +22,7 @@ from .edgecloud_instance import *
 from .edgecloud_kubeconfig import *
 from .edgecloud_token import *
 from .get_affinity_group import *
+from .get_alb_certificate import *
 from .get_application_load_balancer import *
 from .get_authorization_project_custom_role import *
 from .get_cdn_custom_domain import *
@@ -85,8 +87,10 @@ from .get_secretsmanager_user import *
 from .get_security_group import *
 from .get_security_group_rule import *
 from .get_server import *
+from .get_server_backup_enable import *
 from .get_server_backup_schedule import *
 from .get_server_backup_schedules import *
+from .get_server_update_enable import *
 from .get_server_update_schedule import *
 from .get_server_update_schedules import *
 from .get_service_account import *
@@ -155,9 +159,11 @@ from .secretsmanager_user import *
 from .security_group import *
 from .security_group_rule import *
 from .server import *
+from .server_backup_enable import *
 from .server_backup_schedule import *
 from .server_network_interface_attach import *
 from .server_service_account_attach import *
+from .server_update_enable import *
 from .server_update_schedule import *
 from .server_volume_attach import *
 from .service_account import *
@@ -189,6 +195,14 @@ _utilities.register(
   "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/affinityGroup:AffinityGroup": "AffinityGroup"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/albCertificate",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/albCertificate:AlbCertificate": "AlbCertificate"
   }
  },
  {
@@ -721,6 +735,14 @@ _utilities.register(
  },
  {
   "pkg": "stackit",
+  "mod": "index/serverBackupEnable",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/serverBackupEnable:ServerBackupEnable": "ServerBackupEnable"
+  }
+ },
+ {
+  "pkg": "stackit",
   "mod": "index/serverBackupSchedule",
   "fqn": "pulumi_stackit",
   "classes": {
@@ -741,6 +763,14 @@ _utilities.register(
   "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/serverServiceAccountAttach:ServerServiceAccountAttach": "ServerServiceAccountAttach"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/serverUpdateEnable",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/serverUpdateEnable:ServerUpdateEnable": "ServerUpdateEnable"
   }
  },
  {

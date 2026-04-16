@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "stackit:index/affinityGroup:AffinityGroup":
 		r = &AffinityGroup{}
+	case "stackit:index/albCertificate:AlbCertificate":
+		r = &AlbCertificate{}
 	case "stackit:index/applicationLoadBalancer:ApplicationLoadBalancer":
 		r = &ApplicationLoadBalancer{}
 	case "stackit:index/authorizationFolderRoleAssignment:AuthorizationFolderRoleAssignment":
@@ -155,12 +157,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SecurityGroupRule{}
 	case "stackit:index/server:Server":
 		r = &Server{}
+	case "stackit:index/serverBackupEnable:ServerBackupEnable":
+		r = &ServerBackupEnable{}
 	case "stackit:index/serverBackupSchedule:ServerBackupSchedule":
 		r = &ServerBackupSchedule{}
 	case "stackit:index/serverNetworkInterfaceAttach:ServerNetworkInterfaceAttach":
 		r = &ServerNetworkInterfaceAttach{}
 	case "stackit:index/serverServiceAccountAttach:ServerServiceAccountAttach":
 		r = &ServerServiceAccountAttach{}
+	case "stackit:index/serverUpdateEnable:ServerUpdateEnable":
+		r = &ServerUpdateEnable{}
 	case "stackit:index/serverUpdateSchedule:ServerUpdateSchedule":
 		r = &ServerUpdateSchedule{}
 	case "stackit:index/serverVolumeAttach:ServerVolumeAttach":
@@ -219,6 +225,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"stackit",
 		"index/affinityGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/albCertificate",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -553,6 +564,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"stackit",
+		"index/serverBackupEnable",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
 		"index/serverBackupSchedule",
 		&module{version},
 	)
@@ -564,6 +580,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"stackit",
 		"index/serverServiceAccountAttach",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/serverUpdateEnable",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -26,6 +26,10 @@ export class Provider extends pulumi.ProviderResource {
     }
 
     /**
+     * Custom endpoint for the Application Load Balancer TLS Certificate service
+     */
+    declare public readonly albCertificatesCustomEndpoint: pulumi.Output<string | undefined>;
+    /**
      * Custom endpoint for the Application Load Balancer service
      */
     declare public readonly albCustomEndpoint: pulumi.Output<string | undefined>;
@@ -217,6 +221,7 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
+            resourceInputs["albCertificatesCustomEndpoint"] = args?.albCertificatesCustomEndpoint;
             resourceInputs["albCustomEndpoint"] = args?.albCustomEndpoint;
             resourceInputs["authorizationCustomEndpoint"] = args?.authorizationCustomEndpoint;
             resourceInputs["cdnCustomEndpoint"] = args?.cdnCustomEndpoint;
@@ -283,6 +288,10 @@ export class Provider extends pulumi.ProviderResource {
  * The set of arguments for constructing a Provider resource.
  */
 export interface ProviderArgs {
+    /**
+     * Custom endpoint for the Application Load Balancer TLS Certificate service
+     */
+    albCertificatesCustomEndpoint?: pulumi.Input<string>;
     /**
      * Custom endpoint for the Application Load Balancer service
      */

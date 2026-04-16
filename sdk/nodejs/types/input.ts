@@ -421,6 +421,44 @@ export interface CdnDistributionDomain {
     type?: pulumi.Input<string>;
 }
 
+export interface DnsRecordSetTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
+export interface DnsZoneTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string>;
+}
+
 export interface GetCdnCustomDomainCertificate {
     /**
      * A version identifier for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.
@@ -433,6 +471,34 @@ export interface GetCdnCustomDomainCertificateArgs {
      * A version identifier for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.
      */
     version?: pulumi.Input<number>;
+}
+
+export interface GetDnsRecordSetTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetDnsRecordSetTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string>;
+}
+
+export interface GetDnsZoneTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetDnsZoneTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string>;
 }
 
 export interface GetImageV2Filter {
@@ -559,6 +625,8 @@ export interface LoadbalancerListener {
     protocol: pulumi.Input<string>;
     /**
      * A list of domain names to match in order to pass TLS traffic to the target pool in the current listener
+     *
+     * @deprecated `serverNameIndicators` is deprecated and will be removed after October 2026
      */
     serverNameIndicators?: pulumi.Input<pulumi.Input<inputs.LoadbalancerListenerServerNameIndicator>[]>;
     /**
@@ -639,7 +707,7 @@ export interface LoadbalancerOptionsObservabilityLogs {
      */
     credentialsRef?: pulumi.Input<string>;
     /**
-     * Credentials reference for logs. Not changeable after creation.
+     * The ARGUS/Loki remote write Push URL to ship the logs to. Not changeable after creation.
      */
     pushUrl?: pulumi.Input<string>;
 }
@@ -650,7 +718,7 @@ export interface LoadbalancerOptionsObservabilityMetrics {
      */
     credentialsRef?: pulumi.Input<string>;
     /**
-     * Credentials reference for metrics. Not changeable after creation.
+     * The ARGUS/Prometheus remote write Push URL to ship the metrics to. Not changeable after creation.
      */
     pushUrl?: pulumi.Input<string>;
 }

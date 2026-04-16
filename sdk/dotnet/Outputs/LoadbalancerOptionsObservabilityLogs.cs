@@ -18,7 +18,7 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly string? CredentialsRef;
         /// <summary>
-        /// Credentials reference for logs. Not changeable after creation.
+        /// The ARGUS/Loki remote write Push URL to ship the logs to. Not changeable after creation.
         /// </summary>
         public readonly string? PushUrl;
 

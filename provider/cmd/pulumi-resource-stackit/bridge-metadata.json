@@ -9,6 +9,9 @@
                     }
                 }
             },
+            "stackit_alb_certificate": {
+                "current": "stackit:index/albCertificate:AlbCertificate"
+            },
             "stackit_application_load_balancer": {
                 "current": "stackit:index/applicationLoadBalancer:ApplicationLoadBalancer",
                 "fields": {
@@ -630,6 +633,9 @@
                     }
                 }
             },
+            "stackit_server_backup_enable": {
+                "current": "stackit:index/serverBackupEnable:ServerBackupEnable"
+            },
             "stackit_server_backup_schedule": {
                 "current": "stackit:index/serverBackupSchedule:ServerBackupSchedule",
                 "fields": {
@@ -647,6 +653,9 @@
             },
             "stackit_server_service_account_attach": {
                 "current": "stackit:index/serverServiceAccountAttach:ServerServiceAccountAttach"
+            },
+            "stackit_server_update_enable": {
+                "current": "stackit:index/serverUpdateEnable:ServerUpdateEnable"
             },
             "stackit_server_update_schedule": {
                 "current": "stackit:index/serverUpdateSchedule:ServerUpdateSchedule"
@@ -762,6 +771,9 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "stackit_alb_certificate": {
+                "current": "stackit:index/getAlbCertificate:getAlbCertificate"
             },
             "stackit_application_load_balancer": {
                 "current": "stackit:index/getApplicationLoadBalancer:getApplicationLoadBalancer",
@@ -1242,6 +1254,9 @@
                             },
                             "tls_ciphers": {
                                 "maxItemsOne": false
+                            },
+                            "tls_protocols": {
+                                "maxItemsOne": false
                             }
                         }
                     }
@@ -1403,6 +1418,9 @@
                     }
                 }
             },
+            "stackit_server_backup_enable": {
+                "current": "stackit:index/getServerBackupEnable:getServerBackupEnable"
+            },
             "stackit_server_backup_schedule": {
                 "current": "stackit:index/getServerBackupSchedule:getServerBackupSchedule",
                 "fields": {
@@ -1433,6 +1451,9 @@
                         }
                     }
                 }
+            },
+            "stackit_server_update_enable": {
+                "current": "stackit:index/getServerUpdateEnable:getServerUpdateEnable"
             },
             "stackit_server_update_schedule": {
                 "current": "stackit:index/getServerUpdateSchedule:getServerUpdateSchedule"

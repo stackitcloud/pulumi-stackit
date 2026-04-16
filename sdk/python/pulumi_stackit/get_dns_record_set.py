@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetDnsRecordSetResult',
@@ -26,7 +28,7 @@ class GetDnsRecordSetResult:
     """
     A collection of values returned by getDnsRecordSet.
     """
-    def __init__(__self__, active=None, comment=None, error=None, fqdn=None, id=None, name=None, project_id=None, record_set_id=None, records=None, state=None, ttl=None, type=None, zone_id=None):
+    def __init__(__self__, active=None, comment=None, error=None, fqdn=None, id=None, name=None, project_id=None, record_set_id=None, records=None, state=None, timeouts=None, ttl=None, type=None, zone_id=None):
         if active and not isinstance(active, bool):
             raise TypeError("Expected argument 'active' to be a bool")
         pulumi.set(__self__, "active", active)
@@ -57,6 +59,9 @@ class GetDnsRecordSetResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if timeouts and not isinstance(timeouts, dict):
+            raise TypeError("Expected argument 'timeouts' to be a dict")
+        pulumi.set(__self__, "timeouts", timeouts)
         if ttl and not isinstance(ttl, int):
             raise TypeError("Expected argument 'ttl' to be a int")
         pulumi.set(__self__, "ttl", ttl)
@@ -149,6 +154,11 @@ class GetDnsRecordSetResult:
 
     @_builtins.property
     @pulumi.getter
+    def timeouts(self) -> Optional['outputs.GetDnsRecordSetTimeoutsResult']:
+        return pulumi.get(self, "timeouts")
+
+    @_builtins.property
+    @pulumi.getter
     def ttl(self) -> _builtins.int:
         """
         Time to live. E.g. 3600
@@ -188,6 +198,7 @@ class AwaitableGetDnsRecordSetResult(GetDnsRecordSetResult):
             record_set_id=self.record_set_id,
             records=self.records,
             state=self.state,
+            timeouts=self.timeouts,
             ttl=self.ttl,
             type=self.type,
             zone_id=self.zone_id)
@@ -195,6 +206,7 @@ class AwaitableGetDnsRecordSetResult(GetDnsRecordSetResult):
 
 def get_dns_record_set(project_id: Optional[_builtins.str] = None,
                        record_set_id: Optional[_builtins.str] = None,
+                       timeouts: Optional[Union['GetDnsRecordSetTimeoutsArgs', 'GetDnsRecordSetTimeoutsArgsDict']] = None,
                        zone_id: Optional[_builtins.str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDnsRecordSetResult:
     """
@@ -210,6 +222,7 @@ def get_dns_record_set(project_id: Optional[_builtins.str] = None,
     __args__ = dict()
     __args__['projectId'] = project_id
     __args__['recordSetId'] = record_set_id
+    __args__['timeouts'] = timeouts
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('stackit:index/getDnsRecordSet:getDnsRecordSet', __args__, opts=opts, typ=GetDnsRecordSetResult).value
@@ -225,11 +238,13 @@ def get_dns_record_set(project_id: Optional[_builtins.str] = None,
         record_set_id=pulumi.get(__ret__, 'record_set_id'),
         records=pulumi.get(__ret__, 'records'),
         state=pulumi.get(__ret__, 'state'),
+        timeouts=pulumi.get(__ret__, 'timeouts'),
         ttl=pulumi.get(__ret__, 'ttl'),
         type=pulumi.get(__ret__, 'type'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
 def get_dns_record_set_output(project_id: Optional[pulumi.Input[_builtins.str]] = None,
                               record_set_id: Optional[pulumi.Input[_builtins.str]] = None,
+                              timeouts: Optional[pulumi.Input[Optional[Union['GetDnsRecordSetTimeoutsArgs', 'GetDnsRecordSetTimeoutsArgsDict']]]] = None,
                               zone_id: Optional[pulumi.Input[_builtins.str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDnsRecordSetResult]:
     """
@@ -245,6 +260,7 @@ def get_dns_record_set_output(project_id: Optional[pulumi.Input[_builtins.str]] 
     __args__ = dict()
     __args__['projectId'] = project_id
     __args__['recordSetId'] = record_set_id
+    __args__['timeouts'] = timeouts
     __args__['zoneId'] = zone_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('stackit:index/getDnsRecordSet:getDnsRecordSet', __args__, opts=opts, typ=GetDnsRecordSetResult)
@@ -259,6 +275,7 @@ def get_dns_record_set_output(project_id: Optional[pulumi.Input[_builtins.str]] 
         record_set_id=pulumi.get(__response__, 'record_set_id'),
         records=pulumi.get(__response__, 'records'),
         state=pulumi.get(__response__, 'state'),
+        timeouts=pulumi.get(__response__, 'timeouts'),
         ttl=pulumi.get(__response__, 'ttl'),
         type=pulumi.get(__response__, 'type'),
         zone_id=pulumi.get(__response__, 'zone_id')))

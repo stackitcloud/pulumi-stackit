@@ -4436,6 +4436,394 @@ func (o CdnDistributionDomainArrayOutput) Index(i pulumi.IntInput) CdnDistributi
 	}).(CdnDistributionDomainOutput)
 }
 
+type DnsRecordSetTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// DnsRecordSetTimeoutsInput is an input type that accepts DnsRecordSetTimeoutsArgs and DnsRecordSetTimeoutsOutput values.
+// You can construct a concrete instance of `DnsRecordSetTimeoutsInput` via:
+//
+//	DnsRecordSetTimeoutsArgs{...}
+type DnsRecordSetTimeoutsInput interface {
+	pulumi.Input
+
+	ToDnsRecordSetTimeoutsOutput() DnsRecordSetTimeoutsOutput
+	ToDnsRecordSetTimeoutsOutputWithContext(context.Context) DnsRecordSetTimeoutsOutput
+}
+
+type DnsRecordSetTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (DnsRecordSetTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsRecordSetTimeouts)(nil)).Elem()
+}
+
+func (i DnsRecordSetTimeoutsArgs) ToDnsRecordSetTimeoutsOutput() DnsRecordSetTimeoutsOutput {
+	return i.ToDnsRecordSetTimeoutsOutputWithContext(context.Background())
+}
+
+func (i DnsRecordSetTimeoutsArgs) ToDnsRecordSetTimeoutsOutputWithContext(ctx context.Context) DnsRecordSetTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnsRecordSetTimeoutsOutput)
+}
+
+func (i DnsRecordSetTimeoutsArgs) ToDnsRecordSetTimeoutsPtrOutput() DnsRecordSetTimeoutsPtrOutput {
+	return i.ToDnsRecordSetTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i DnsRecordSetTimeoutsArgs) ToDnsRecordSetTimeoutsPtrOutputWithContext(ctx context.Context) DnsRecordSetTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnsRecordSetTimeoutsOutput).ToDnsRecordSetTimeoutsPtrOutputWithContext(ctx)
+}
+
+// DnsRecordSetTimeoutsPtrInput is an input type that accepts DnsRecordSetTimeoutsArgs, DnsRecordSetTimeoutsPtr and DnsRecordSetTimeoutsPtrOutput values.
+// You can construct a concrete instance of `DnsRecordSetTimeoutsPtrInput` via:
+//
+//	        DnsRecordSetTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DnsRecordSetTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToDnsRecordSetTimeoutsPtrOutput() DnsRecordSetTimeoutsPtrOutput
+	ToDnsRecordSetTimeoutsPtrOutputWithContext(context.Context) DnsRecordSetTimeoutsPtrOutput
+}
+
+type dnsRecordSetTimeoutsPtrType DnsRecordSetTimeoutsArgs
+
+func DnsRecordSetTimeoutsPtr(v *DnsRecordSetTimeoutsArgs) DnsRecordSetTimeoutsPtrInput {
+	return (*dnsRecordSetTimeoutsPtrType)(v)
+}
+
+func (*dnsRecordSetTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DnsRecordSetTimeouts)(nil)).Elem()
+}
+
+func (i *dnsRecordSetTimeoutsPtrType) ToDnsRecordSetTimeoutsPtrOutput() DnsRecordSetTimeoutsPtrOutput {
+	return i.ToDnsRecordSetTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *dnsRecordSetTimeoutsPtrType) ToDnsRecordSetTimeoutsPtrOutputWithContext(ctx context.Context) DnsRecordSetTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnsRecordSetTimeoutsPtrOutput)
+}
+
+type DnsRecordSetTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (DnsRecordSetTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsRecordSetTimeouts)(nil)).Elem()
+}
+
+func (o DnsRecordSetTimeoutsOutput) ToDnsRecordSetTimeoutsOutput() DnsRecordSetTimeoutsOutput {
+	return o
+}
+
+func (o DnsRecordSetTimeoutsOutput) ToDnsRecordSetTimeoutsOutputWithContext(ctx context.Context) DnsRecordSetTimeoutsOutput {
+	return o
+}
+
+func (o DnsRecordSetTimeoutsOutput) ToDnsRecordSetTimeoutsPtrOutput() DnsRecordSetTimeoutsPtrOutput {
+	return o.ToDnsRecordSetTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o DnsRecordSetTimeoutsOutput) ToDnsRecordSetTimeoutsPtrOutputWithContext(ctx context.Context) DnsRecordSetTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DnsRecordSetTimeouts) *DnsRecordSetTimeouts {
+		return &v
+	}).(DnsRecordSetTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DnsRecordSetTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DnsRecordSetTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o DnsRecordSetTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DnsRecordSetTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o DnsRecordSetTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DnsRecordSetTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DnsRecordSetTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DnsRecordSetTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type DnsRecordSetTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (DnsRecordSetTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DnsRecordSetTimeouts)(nil)).Elem()
+}
+
+func (o DnsRecordSetTimeoutsPtrOutput) ToDnsRecordSetTimeoutsPtrOutput() DnsRecordSetTimeoutsPtrOutput {
+	return o
+}
+
+func (o DnsRecordSetTimeoutsPtrOutput) ToDnsRecordSetTimeoutsPtrOutputWithContext(ctx context.Context) DnsRecordSetTimeoutsPtrOutput {
+	return o
+}
+
+func (o DnsRecordSetTimeoutsPtrOutput) Elem() DnsRecordSetTimeoutsOutput {
+	return o.ApplyT(func(v *DnsRecordSetTimeouts) DnsRecordSetTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret DnsRecordSetTimeouts
+		return ret
+	}).(DnsRecordSetTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DnsRecordSetTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DnsRecordSetTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o DnsRecordSetTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DnsRecordSetTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o DnsRecordSetTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DnsRecordSetTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DnsRecordSetTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DnsRecordSetTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
+type DnsZoneTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// DnsZoneTimeoutsInput is an input type that accepts DnsZoneTimeoutsArgs and DnsZoneTimeoutsOutput values.
+// You can construct a concrete instance of `DnsZoneTimeoutsInput` via:
+//
+//	DnsZoneTimeoutsArgs{...}
+type DnsZoneTimeoutsInput interface {
+	pulumi.Input
+
+	ToDnsZoneTimeoutsOutput() DnsZoneTimeoutsOutput
+	ToDnsZoneTimeoutsOutputWithContext(context.Context) DnsZoneTimeoutsOutput
+}
+
+type DnsZoneTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (DnsZoneTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsZoneTimeouts)(nil)).Elem()
+}
+
+func (i DnsZoneTimeoutsArgs) ToDnsZoneTimeoutsOutput() DnsZoneTimeoutsOutput {
+	return i.ToDnsZoneTimeoutsOutputWithContext(context.Background())
+}
+
+func (i DnsZoneTimeoutsArgs) ToDnsZoneTimeoutsOutputWithContext(ctx context.Context) DnsZoneTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnsZoneTimeoutsOutput)
+}
+
+func (i DnsZoneTimeoutsArgs) ToDnsZoneTimeoutsPtrOutput() DnsZoneTimeoutsPtrOutput {
+	return i.ToDnsZoneTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i DnsZoneTimeoutsArgs) ToDnsZoneTimeoutsPtrOutputWithContext(ctx context.Context) DnsZoneTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnsZoneTimeoutsOutput).ToDnsZoneTimeoutsPtrOutputWithContext(ctx)
+}
+
+// DnsZoneTimeoutsPtrInput is an input type that accepts DnsZoneTimeoutsArgs, DnsZoneTimeoutsPtr and DnsZoneTimeoutsPtrOutput values.
+// You can construct a concrete instance of `DnsZoneTimeoutsPtrInput` via:
+//
+//	        DnsZoneTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DnsZoneTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToDnsZoneTimeoutsPtrOutput() DnsZoneTimeoutsPtrOutput
+	ToDnsZoneTimeoutsPtrOutputWithContext(context.Context) DnsZoneTimeoutsPtrOutput
+}
+
+type dnsZoneTimeoutsPtrType DnsZoneTimeoutsArgs
+
+func DnsZoneTimeoutsPtr(v *DnsZoneTimeoutsArgs) DnsZoneTimeoutsPtrInput {
+	return (*dnsZoneTimeoutsPtrType)(v)
+}
+
+func (*dnsZoneTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DnsZoneTimeouts)(nil)).Elem()
+}
+
+func (i *dnsZoneTimeoutsPtrType) ToDnsZoneTimeoutsPtrOutput() DnsZoneTimeoutsPtrOutput {
+	return i.ToDnsZoneTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *dnsZoneTimeoutsPtrType) ToDnsZoneTimeoutsPtrOutputWithContext(ctx context.Context) DnsZoneTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DnsZoneTimeoutsPtrOutput)
+}
+
+type DnsZoneTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (DnsZoneTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DnsZoneTimeouts)(nil)).Elem()
+}
+
+func (o DnsZoneTimeoutsOutput) ToDnsZoneTimeoutsOutput() DnsZoneTimeoutsOutput {
+	return o
+}
+
+func (o DnsZoneTimeoutsOutput) ToDnsZoneTimeoutsOutputWithContext(ctx context.Context) DnsZoneTimeoutsOutput {
+	return o
+}
+
+func (o DnsZoneTimeoutsOutput) ToDnsZoneTimeoutsPtrOutput() DnsZoneTimeoutsPtrOutput {
+	return o.ToDnsZoneTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o DnsZoneTimeoutsOutput) ToDnsZoneTimeoutsPtrOutputWithContext(ctx context.Context) DnsZoneTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DnsZoneTimeouts) *DnsZoneTimeouts {
+		return &v
+	}).(DnsZoneTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DnsZoneTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DnsZoneTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o DnsZoneTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DnsZoneTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o DnsZoneTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DnsZoneTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DnsZoneTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DnsZoneTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type DnsZoneTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (DnsZoneTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DnsZoneTimeouts)(nil)).Elem()
+}
+
+func (o DnsZoneTimeoutsPtrOutput) ToDnsZoneTimeoutsPtrOutput() DnsZoneTimeoutsPtrOutput {
+	return o
+}
+
+func (o DnsZoneTimeoutsPtrOutput) ToDnsZoneTimeoutsPtrOutputWithContext(ctx context.Context) DnsZoneTimeoutsPtrOutput {
+	return o
+}
+
+func (o DnsZoneTimeoutsPtrOutput) Elem() DnsZoneTimeoutsOutput {
+	return o.ApplyT(func(v *DnsZoneTimeouts) DnsZoneTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret DnsZoneTimeouts
+		return ret
+	}).(DnsZoneTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DnsZoneTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DnsZoneTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o DnsZoneTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DnsZoneTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o DnsZoneTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DnsZoneTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DnsZoneTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DnsZoneTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
 type ImageChecksum struct {
 	// Algorithm for the checksum of the image data.
 	Algorithm *string `pulumi:"algorithm"`
@@ -4964,6 +5352,8 @@ type LoadbalancerListener struct {
 	// Protocol is the highest network protocol we understand to load balance. Possible values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_TCP`, `PROTOCOL_UDP`, `PROTOCOL_TCP_PROXY`, `PROTOCOL_TLS_PASSTHROUGH`.
 	Protocol string `pulumi:"protocol"`
 	// A list of domain names to match in order to pass TLS traffic to the target pool in the current listener
+	//
+	// Deprecated: `serverNameIndicators` is deprecated and will be removed after October 2026
 	ServerNameIndicators []LoadbalancerListenerServerNameIndicator `pulumi:"serverNameIndicators"`
 	// Reference target pool by target pool name.
 	TargetPool string `pulumi:"targetPool"`
@@ -4991,6 +5381,8 @@ type LoadbalancerListenerArgs struct {
 	// Protocol is the highest network protocol we understand to load balance. Possible values are: `PROTOCOL_UNSPECIFIED`, `PROTOCOL_TCP`, `PROTOCOL_UDP`, `PROTOCOL_TCP_PROXY`, `PROTOCOL_TLS_PASSTHROUGH`.
 	Protocol pulumi.StringInput `pulumi:"protocol"`
 	// A list of domain names to match in order to pass TLS traffic to the target pool in the current listener
+	//
+	// Deprecated: `serverNameIndicators` is deprecated and will be removed after October 2026
 	ServerNameIndicators LoadbalancerListenerServerNameIndicatorArrayInput `pulumi:"serverNameIndicators"`
 	// Reference target pool by target pool name.
 	TargetPool pulumi.StringInput `pulumi:"targetPool"`
@@ -5066,6 +5458,8 @@ func (o LoadbalancerListenerOutput) Protocol() pulumi.StringOutput {
 }
 
 // A list of domain names to match in order to pass TLS traffic to the target pool in the current listener
+//
+// Deprecated: `serverNameIndicators` is deprecated and will be removed after October 2026
 func (o LoadbalancerListenerOutput) ServerNameIndicators() LoadbalancerListenerServerNameIndicatorArrayOutput {
 	return o.ApplyT(func(v LoadbalancerListener) []LoadbalancerListenerServerNameIndicator { return v.ServerNameIndicators }).(LoadbalancerListenerServerNameIndicatorArrayOutput)
 }
@@ -5916,7 +6310,7 @@ func (o LoadbalancerOptionsObservabilityPtrOutput) Metrics() LoadbalancerOptions
 type LoadbalancerOptionsObservabilityLogs struct {
 	// Credentials reference for logs. Not changeable after creation.
 	CredentialsRef *string `pulumi:"credentialsRef"`
-	// Credentials reference for logs. Not changeable after creation.
+	// The ARGUS/Loki remote write Push URL to ship the logs to. Not changeable after creation.
 	PushUrl *string `pulumi:"pushUrl"`
 }
 
@@ -5934,7 +6328,7 @@ type LoadbalancerOptionsObservabilityLogsInput interface {
 type LoadbalancerOptionsObservabilityLogsArgs struct {
 	// Credentials reference for logs. Not changeable after creation.
 	CredentialsRef pulumi.StringPtrInput `pulumi:"credentialsRef"`
-	// Credentials reference for logs. Not changeable after creation.
+	// The ARGUS/Loki remote write Push URL to ship the logs to. Not changeable after creation.
 	PushUrl pulumi.StringPtrInput `pulumi:"pushUrl"`
 }
 
@@ -6020,7 +6414,7 @@ func (o LoadbalancerOptionsObservabilityLogsOutput) CredentialsRef() pulumi.Stri
 	return o.ApplyT(func(v LoadbalancerOptionsObservabilityLogs) *string { return v.CredentialsRef }).(pulumi.StringPtrOutput)
 }
 
-// Credentials reference for logs. Not changeable after creation.
+// The ARGUS/Loki remote write Push URL to ship the logs to. Not changeable after creation.
 func (o LoadbalancerOptionsObservabilityLogsOutput) PushUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadbalancerOptionsObservabilityLogs) *string { return v.PushUrl }).(pulumi.StringPtrOutput)
 }
@@ -6059,7 +6453,7 @@ func (o LoadbalancerOptionsObservabilityLogsPtrOutput) CredentialsRef() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// Credentials reference for logs. Not changeable after creation.
+// The ARGUS/Loki remote write Push URL to ship the logs to. Not changeable after creation.
 func (o LoadbalancerOptionsObservabilityLogsPtrOutput) PushUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadbalancerOptionsObservabilityLogs) *string {
 		if v == nil {
@@ -6072,7 +6466,7 @@ func (o LoadbalancerOptionsObservabilityLogsPtrOutput) PushUrl() pulumi.StringPt
 type LoadbalancerOptionsObservabilityMetrics struct {
 	// Credentials reference for metrics. Not changeable after creation.
 	CredentialsRef *string `pulumi:"credentialsRef"`
-	// Credentials reference for metrics. Not changeable after creation.
+	// The ARGUS/Prometheus remote write Push URL to ship the metrics to. Not changeable after creation.
 	PushUrl *string `pulumi:"pushUrl"`
 }
 
@@ -6090,7 +6484,7 @@ type LoadbalancerOptionsObservabilityMetricsInput interface {
 type LoadbalancerOptionsObservabilityMetricsArgs struct {
 	// Credentials reference for metrics. Not changeable after creation.
 	CredentialsRef pulumi.StringPtrInput `pulumi:"credentialsRef"`
-	// Credentials reference for metrics. Not changeable after creation.
+	// The ARGUS/Prometheus remote write Push URL to ship the metrics to. Not changeable after creation.
 	PushUrl pulumi.StringPtrInput `pulumi:"pushUrl"`
 }
 
@@ -6176,7 +6570,7 @@ func (o LoadbalancerOptionsObservabilityMetricsOutput) CredentialsRef() pulumi.S
 	return o.ApplyT(func(v LoadbalancerOptionsObservabilityMetrics) *string { return v.CredentialsRef }).(pulumi.StringPtrOutput)
 }
 
-// Credentials reference for metrics. Not changeable after creation.
+// The ARGUS/Prometheus remote write Push URL to ship the metrics to. Not changeable after creation.
 func (o LoadbalancerOptionsObservabilityMetricsOutput) PushUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadbalancerOptionsObservabilityMetrics) *string { return v.PushUrl }).(pulumi.StringPtrOutput)
 }
@@ -6215,7 +6609,7 @@ func (o LoadbalancerOptionsObservabilityMetricsPtrOutput) CredentialsRef() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-// Credentials reference for metrics. Not changeable after creation.
+// The ARGUS/Prometheus remote write Push URL to ship the metrics to. Not changeable after creation.
 func (o LoadbalancerOptionsObservabilityMetricsPtrOutput) PushUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadbalancerOptionsObservabilityMetrics) *string {
 		if v == nil {
@@ -19294,6 +19688,280 @@ func (o GetCdnDistributionDomainArrayOutput) Index(i pulumi.IntInput) GetCdnDist
 	}).(GetCdnDistributionDomainOutput)
 }
 
+type GetDnsRecordSetTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetDnsRecordSetTimeoutsInput is an input type that accepts GetDnsRecordSetTimeoutsArgs and GetDnsRecordSetTimeoutsOutput values.
+// You can construct a concrete instance of `GetDnsRecordSetTimeoutsInput` via:
+//
+//	GetDnsRecordSetTimeoutsArgs{...}
+type GetDnsRecordSetTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetDnsRecordSetTimeoutsOutput() GetDnsRecordSetTimeoutsOutput
+	ToGetDnsRecordSetTimeoutsOutputWithContext(context.Context) GetDnsRecordSetTimeoutsOutput
+}
+
+type GetDnsRecordSetTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetDnsRecordSetTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDnsRecordSetTimeouts)(nil)).Elem()
+}
+
+func (i GetDnsRecordSetTimeoutsArgs) ToGetDnsRecordSetTimeoutsOutput() GetDnsRecordSetTimeoutsOutput {
+	return i.ToGetDnsRecordSetTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetDnsRecordSetTimeoutsArgs) ToGetDnsRecordSetTimeoutsOutputWithContext(ctx context.Context) GetDnsRecordSetTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDnsRecordSetTimeoutsOutput)
+}
+
+func (i GetDnsRecordSetTimeoutsArgs) ToGetDnsRecordSetTimeoutsPtrOutput() GetDnsRecordSetTimeoutsPtrOutput {
+	return i.ToGetDnsRecordSetTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetDnsRecordSetTimeoutsArgs) ToGetDnsRecordSetTimeoutsPtrOutputWithContext(ctx context.Context) GetDnsRecordSetTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDnsRecordSetTimeoutsOutput).ToGetDnsRecordSetTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetDnsRecordSetTimeoutsPtrInput is an input type that accepts GetDnsRecordSetTimeoutsArgs, GetDnsRecordSetTimeoutsPtr and GetDnsRecordSetTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetDnsRecordSetTimeoutsPtrInput` via:
+//
+//	        GetDnsRecordSetTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetDnsRecordSetTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetDnsRecordSetTimeoutsPtrOutput() GetDnsRecordSetTimeoutsPtrOutput
+	ToGetDnsRecordSetTimeoutsPtrOutputWithContext(context.Context) GetDnsRecordSetTimeoutsPtrOutput
+}
+
+type getDnsRecordSetTimeoutsPtrType GetDnsRecordSetTimeoutsArgs
+
+func GetDnsRecordSetTimeoutsPtr(v *GetDnsRecordSetTimeoutsArgs) GetDnsRecordSetTimeoutsPtrInput {
+	return (*getDnsRecordSetTimeoutsPtrType)(v)
+}
+
+func (*getDnsRecordSetTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetDnsRecordSetTimeouts)(nil)).Elem()
+}
+
+func (i *getDnsRecordSetTimeoutsPtrType) ToGetDnsRecordSetTimeoutsPtrOutput() GetDnsRecordSetTimeoutsPtrOutput {
+	return i.ToGetDnsRecordSetTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getDnsRecordSetTimeoutsPtrType) ToGetDnsRecordSetTimeoutsPtrOutputWithContext(ctx context.Context) GetDnsRecordSetTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDnsRecordSetTimeoutsPtrOutput)
+}
+
+type GetDnsRecordSetTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetDnsRecordSetTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDnsRecordSetTimeouts)(nil)).Elem()
+}
+
+func (o GetDnsRecordSetTimeoutsOutput) ToGetDnsRecordSetTimeoutsOutput() GetDnsRecordSetTimeoutsOutput {
+	return o
+}
+
+func (o GetDnsRecordSetTimeoutsOutput) ToGetDnsRecordSetTimeoutsOutputWithContext(ctx context.Context) GetDnsRecordSetTimeoutsOutput {
+	return o
+}
+
+func (o GetDnsRecordSetTimeoutsOutput) ToGetDnsRecordSetTimeoutsPtrOutput() GetDnsRecordSetTimeoutsPtrOutput {
+	return o.ToGetDnsRecordSetTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetDnsRecordSetTimeoutsOutput) ToGetDnsRecordSetTimeoutsPtrOutputWithContext(ctx context.Context) GetDnsRecordSetTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetDnsRecordSetTimeouts) *GetDnsRecordSetTimeouts {
+		return &v
+	}).(GetDnsRecordSetTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetDnsRecordSetTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDnsRecordSetTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetDnsRecordSetTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetDnsRecordSetTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetDnsRecordSetTimeouts)(nil)).Elem()
+}
+
+func (o GetDnsRecordSetTimeoutsPtrOutput) ToGetDnsRecordSetTimeoutsPtrOutput() GetDnsRecordSetTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetDnsRecordSetTimeoutsPtrOutput) ToGetDnsRecordSetTimeoutsPtrOutputWithContext(ctx context.Context) GetDnsRecordSetTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetDnsRecordSetTimeoutsPtrOutput) Elem() GetDnsRecordSetTimeoutsOutput {
+	return o.ApplyT(func(v *GetDnsRecordSetTimeouts) GetDnsRecordSetTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetDnsRecordSetTimeouts
+		return ret
+	}).(GetDnsRecordSetTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetDnsRecordSetTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetDnsRecordSetTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetDnsZoneTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetDnsZoneTimeoutsInput is an input type that accepts GetDnsZoneTimeoutsArgs and GetDnsZoneTimeoutsOutput values.
+// You can construct a concrete instance of `GetDnsZoneTimeoutsInput` via:
+//
+//	GetDnsZoneTimeoutsArgs{...}
+type GetDnsZoneTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetDnsZoneTimeoutsOutput() GetDnsZoneTimeoutsOutput
+	ToGetDnsZoneTimeoutsOutputWithContext(context.Context) GetDnsZoneTimeoutsOutput
+}
+
+type GetDnsZoneTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetDnsZoneTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDnsZoneTimeouts)(nil)).Elem()
+}
+
+func (i GetDnsZoneTimeoutsArgs) ToGetDnsZoneTimeoutsOutput() GetDnsZoneTimeoutsOutput {
+	return i.ToGetDnsZoneTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetDnsZoneTimeoutsArgs) ToGetDnsZoneTimeoutsOutputWithContext(ctx context.Context) GetDnsZoneTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDnsZoneTimeoutsOutput)
+}
+
+func (i GetDnsZoneTimeoutsArgs) ToGetDnsZoneTimeoutsPtrOutput() GetDnsZoneTimeoutsPtrOutput {
+	return i.ToGetDnsZoneTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetDnsZoneTimeoutsArgs) ToGetDnsZoneTimeoutsPtrOutputWithContext(ctx context.Context) GetDnsZoneTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDnsZoneTimeoutsOutput).ToGetDnsZoneTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetDnsZoneTimeoutsPtrInput is an input type that accepts GetDnsZoneTimeoutsArgs, GetDnsZoneTimeoutsPtr and GetDnsZoneTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetDnsZoneTimeoutsPtrInput` via:
+//
+//	        GetDnsZoneTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetDnsZoneTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetDnsZoneTimeoutsPtrOutput() GetDnsZoneTimeoutsPtrOutput
+	ToGetDnsZoneTimeoutsPtrOutputWithContext(context.Context) GetDnsZoneTimeoutsPtrOutput
+}
+
+type getDnsZoneTimeoutsPtrType GetDnsZoneTimeoutsArgs
+
+func GetDnsZoneTimeoutsPtr(v *GetDnsZoneTimeoutsArgs) GetDnsZoneTimeoutsPtrInput {
+	return (*getDnsZoneTimeoutsPtrType)(v)
+}
+
+func (*getDnsZoneTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetDnsZoneTimeouts)(nil)).Elem()
+}
+
+func (i *getDnsZoneTimeoutsPtrType) ToGetDnsZoneTimeoutsPtrOutput() GetDnsZoneTimeoutsPtrOutput {
+	return i.ToGetDnsZoneTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getDnsZoneTimeoutsPtrType) ToGetDnsZoneTimeoutsPtrOutputWithContext(ctx context.Context) GetDnsZoneTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDnsZoneTimeoutsPtrOutput)
+}
+
+type GetDnsZoneTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetDnsZoneTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDnsZoneTimeouts)(nil)).Elem()
+}
+
+func (o GetDnsZoneTimeoutsOutput) ToGetDnsZoneTimeoutsOutput() GetDnsZoneTimeoutsOutput {
+	return o
+}
+
+func (o GetDnsZoneTimeoutsOutput) ToGetDnsZoneTimeoutsOutputWithContext(ctx context.Context) GetDnsZoneTimeoutsOutput {
+	return o
+}
+
+func (o GetDnsZoneTimeoutsOutput) ToGetDnsZoneTimeoutsPtrOutput() GetDnsZoneTimeoutsPtrOutput {
+	return o.ToGetDnsZoneTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetDnsZoneTimeoutsOutput) ToGetDnsZoneTimeoutsPtrOutputWithContext(ctx context.Context) GetDnsZoneTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetDnsZoneTimeouts) *GetDnsZoneTimeouts {
+		return &v
+	}).(GetDnsZoneTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetDnsZoneTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetDnsZoneTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetDnsZoneTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetDnsZoneTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetDnsZoneTimeouts)(nil)).Elem()
+}
+
+func (o GetDnsZoneTimeoutsPtrOutput) ToGetDnsZoneTimeoutsPtrOutput() GetDnsZoneTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetDnsZoneTimeoutsPtrOutput) ToGetDnsZoneTimeoutsPtrOutputWithContext(ctx context.Context) GetDnsZoneTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetDnsZoneTimeoutsPtrOutput) Elem() GetDnsZoneTimeoutsOutput {
+	return o.ApplyT(func(v *GetDnsZoneTimeouts) GetDnsZoneTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetDnsZoneTimeouts
+		return ret
+	}).(GetDnsZoneTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetDnsZoneTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetDnsZoneTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetEdgecloudInstancesInstance struct {
 	// The date and time the instance was created.
 	Created string `pulumi:"created"`
@@ -20249,6 +20917,8 @@ type GetLoadbalancerListener struct {
 	// Protocol is the highest network protocol we understand to load balance.
 	Protocol string `pulumi:"protocol"`
 	// A list of domain names to match in order to pass TLS traffic to the target pool in the current listener
+	//
+	// Deprecated: `serverNameIndicators` is deprecated and will be removed after October 2026
 	ServerNameIndicators []GetLoadbalancerListenerServerNameIndicator `pulumi:"serverNameIndicators"`
 	// Reference target pool by target pool name.
 	TargetPool string `pulumi:"targetPool"`
@@ -20276,6 +20946,8 @@ type GetLoadbalancerListenerArgs struct {
 	// Protocol is the highest network protocol we understand to load balance.
 	Protocol pulumi.StringInput `pulumi:"protocol"`
 	// A list of domain names to match in order to pass TLS traffic to the target pool in the current listener
+	//
+	// Deprecated: `serverNameIndicators` is deprecated and will be removed after October 2026
 	ServerNameIndicators GetLoadbalancerListenerServerNameIndicatorArrayInput `pulumi:"serverNameIndicators"`
 	// Reference target pool by target pool name.
 	TargetPool pulumi.StringInput `pulumi:"targetPool"`
@@ -20351,6 +21023,8 @@ func (o GetLoadbalancerListenerOutput) Protocol() pulumi.StringOutput {
 }
 
 // A list of domain names to match in order to pass TLS traffic to the target pool in the current listener
+//
+// Deprecated: `serverNameIndicators` is deprecated and will be removed after October 2026
 func (o GetLoadbalancerListenerOutput) ServerNameIndicators() GetLoadbalancerListenerServerNameIndicatorArrayOutput {
 	return o.ApplyT(func(v GetLoadbalancerListener) []GetLoadbalancerListenerServerNameIndicator {
 		return v.ServerNameIndicators
@@ -23918,8 +24592,8 @@ type GetOpensearchInstanceParameters struct {
 	Syslogs []string `pulumi:"syslogs"`
 	// List of TLS ciphers to use.
 	TlsCiphers []string `pulumi:"tlsCiphers"`
-	// The TLS protocol to use.
-	TlsProtocols string `pulumi:"tlsProtocols"`
+	// List of TLS protocols to use.
+	TlsProtocols []string `pulumi:"tlsProtocols"`
 }
 
 // GetOpensearchInstanceParametersInput is an input type that accepts GetOpensearchInstanceParametersArgs and GetOpensearchInstanceParametersOutput values.
@@ -23960,8 +24634,8 @@ type GetOpensearchInstanceParametersArgs struct {
 	Syslogs pulumi.StringArrayInput `pulumi:"syslogs"`
 	// List of TLS ciphers to use.
 	TlsCiphers pulumi.StringArrayInput `pulumi:"tlsCiphers"`
-	// The TLS protocol to use.
-	TlsProtocols pulumi.StringInput `pulumi:"tlsProtocols"`
+	// List of TLS protocols to use.
+	TlsProtocols pulumi.StringArrayInput `pulumi:"tlsProtocols"`
 }
 
 func (GetOpensearchInstanceParametersArgs) ElementType() reflect.Type {
@@ -24055,9 +24729,9 @@ func (o GetOpensearchInstanceParametersOutput) TlsCiphers() pulumi.StringArrayOu
 	return o.ApplyT(func(v GetOpensearchInstanceParameters) []string { return v.TlsCiphers }).(pulumi.StringArrayOutput)
 }
 
-// The TLS protocol to use.
-func (o GetOpensearchInstanceParametersOutput) TlsProtocols() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOpensearchInstanceParameters) string { return v.TlsProtocols }).(pulumi.StringOutput)
+// List of TLS protocols to use.
+func (o GetOpensearchInstanceParametersOutput) TlsProtocols() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetOpensearchInstanceParameters) []string { return v.TlsProtocols }).(pulumi.StringArrayOutput)
 }
 
 type GetPostgresflexInstanceFlavor struct {
@@ -27987,6 +28661,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigOptimizerPtrInput)(nil)).Elem(), CdnDistributionConfigOptimizerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionDomainInput)(nil)).Elem(), CdnDistributionDomainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionDomainArrayInput)(nil)).Elem(), CdnDistributionDomainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DnsRecordSetTimeoutsInput)(nil)).Elem(), DnsRecordSetTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DnsRecordSetTimeoutsPtrInput)(nil)).Elem(), DnsRecordSetTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DnsZoneTimeoutsInput)(nil)).Elem(), DnsZoneTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DnsZoneTimeoutsPtrInput)(nil)).Elem(), DnsZoneTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageChecksumInput)(nil)).Elem(), ImageChecksumArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageChecksumPtrInput)(nil)).Elem(), ImageChecksumArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageConfigInput)(nil)).Elem(), ImageConfigArgs{})
@@ -28163,6 +28841,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionConfigOptimizerInput)(nil)).Elem(), GetCdnDistributionConfigOptimizerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionDomainInput)(nil)).Elem(), GetCdnDistributionDomainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionDomainArrayInput)(nil)).Elem(), GetCdnDistributionDomainArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDnsRecordSetTimeoutsInput)(nil)).Elem(), GetDnsRecordSetTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDnsRecordSetTimeoutsPtrInput)(nil)).Elem(), GetDnsRecordSetTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDnsZoneTimeoutsInput)(nil)).Elem(), GetDnsZoneTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDnsZoneTimeoutsPtrInput)(nil)).Elem(), GetDnsZoneTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEdgecloudInstancesInstanceInput)(nil)).Elem(), GetEdgecloudInstancesInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEdgecloudInstancesInstanceArrayInput)(nil)).Elem(), GetEdgecloudInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEdgecloudPlansPlanInput)(nil)).Elem(), GetEdgecloudPlansPlanArgs{})
@@ -28340,6 +29022,10 @@ func init() {
 	pulumi.RegisterOutputType(CdnDistributionConfigOptimizerPtrOutput{})
 	pulumi.RegisterOutputType(CdnDistributionDomainOutput{})
 	pulumi.RegisterOutputType(CdnDistributionDomainArrayOutput{})
+	pulumi.RegisterOutputType(DnsRecordSetTimeoutsOutput{})
+	pulumi.RegisterOutputType(DnsRecordSetTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(DnsZoneTimeoutsOutput{})
+	pulumi.RegisterOutputType(DnsZoneTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(ImageChecksumOutput{})
 	pulumi.RegisterOutputType(ImageChecksumPtrOutput{})
 	pulumi.RegisterOutputType(ImageConfigOutput{})
@@ -28516,6 +29202,10 @@ func init() {
 	pulumi.RegisterOutputType(GetCdnDistributionConfigOptimizerOutput{})
 	pulumi.RegisterOutputType(GetCdnDistributionDomainOutput{})
 	pulumi.RegisterOutputType(GetCdnDistributionDomainArrayOutput{})
+	pulumi.RegisterOutputType(GetDnsRecordSetTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetDnsRecordSetTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetDnsZoneTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetDnsZoneTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetEdgecloudInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetEdgecloudInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetEdgecloudPlansPlanOutput{})

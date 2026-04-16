@@ -72,6 +72,9 @@ namespace Pulumi.Stackit
         [Input("projectId", required: true)]
         public string ProjectId { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Inputs.GetDnsZoneTimeoutsArgs? Timeouts { get; set; }
+
         /// <summary>
         /// The zone ID.
         /// </summary>
@@ -97,6 +100,9 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Input<Inputs.GetDnsZoneTimeoutsInputArgs>? Timeouts { get; set; }
 
         /// <summary>
         /// The zone ID.
@@ -187,6 +193,7 @@ namespace Pulumi.Stackit
         /// Zone state.
         /// </summary>
         public readonly string State;
+        public readonly Outputs.GetDnsZoneTimeoutsResult? Timeouts;
         /// <summary>
         /// Zone type.
         /// </summary>
@@ -240,6 +247,8 @@ namespace Pulumi.Stackit
 
             string state,
 
+            Outputs.GetDnsZoneTimeoutsResult? timeouts,
+
             string type,
 
             string visibility,
@@ -265,6 +274,7 @@ namespace Pulumi.Stackit
             RetryTime = retryTime;
             SerialNumber = serialNumber;
             State = state;
+            Timeouts = timeouts;
             Type = type;
             Visibility = visibility;
             ZoneId = zoneId;

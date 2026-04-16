@@ -19,7 +19,7 @@ namespace Pulumi.Stackit.Inputs
         public Input<string>? CredentialsRef { get; set; }
 
         /// <summary>
-        /// Credentials reference for metrics. Not changeable after creation.
+        /// The ARGUS/Prometheus remote write Push URL to ship the metrics to. Not changeable after creation.
         /// </summary>
         [Input("pushUrl")]
         public Input<string>? PushUrl { get; set; }

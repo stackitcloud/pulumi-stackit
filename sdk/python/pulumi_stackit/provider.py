@@ -19,6 +19,7 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
+                 alb_certificates_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  alb_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  authorization_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  cdn_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -69,6 +70,7 @@ class ProviderArgs:
         """
         The set of arguments for constructing a Provider resource.
 
+        :param pulumi.Input[_builtins.str] alb_certificates_custom_endpoint: Custom endpoint for the Application Load Balancer TLS Certificate service
         :param pulumi.Input[_builtins.str] alb_custom_endpoint: Custom endpoint for the Application Load Balancer service
         :param pulumi.Input[_builtins.str] authorization_custom_endpoint: Custom endpoint for the Membership service
         :param pulumi.Input[_builtins.str] cdn_custom_endpoint: Custom endpoint for the CDN service
@@ -117,6 +119,8 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.str] token_custom_endpoint: Custom endpoint for the token API, which is used to request access tokens when using the key flow
         :param pulumi.Input[_builtins.bool] use_oidc: Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to `false`.
         """
+        if alb_certificates_custom_endpoint is not None:
+            pulumi.set(__self__, "alb_certificates_custom_endpoint", alb_certificates_custom_endpoint)
         if alb_custom_endpoint is not None:
             pulumi.set(__self__, "alb_custom_endpoint", alb_custom_endpoint)
         if authorization_custom_endpoint is not None:
@@ -217,6 +221,18 @@ class ProviderArgs:
             pulumi.set(__self__, "token_custom_endpoint", token_custom_endpoint)
         if use_oidc is not None:
             pulumi.set(__self__, "use_oidc", use_oidc)
+
+    @_builtins.property
+    @pulumi.getter(name="albCertificatesCustomEndpoint")
+    def alb_certificates_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Custom endpoint for the Application Load Balancer TLS Certificate service
+        """
+        return pulumi.get(self, "alb_certificates_custom_endpoint")
+
+    @alb_certificates_custom_endpoint.setter
+    def alb_certificates_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "alb_certificates_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="albCustomEndpoint")
@@ -791,6 +807,7 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 alb_certificates_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  alb_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  authorization_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  cdn_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -848,6 +865,7 @@ class Provider(pulumi.ProviderResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] alb_certificates_custom_endpoint: Custom endpoint for the Application Load Balancer TLS Certificate service
         :param pulumi.Input[_builtins.str] alb_custom_endpoint: Custom endpoint for the Application Load Balancer service
         :param pulumi.Input[_builtins.str] authorization_custom_endpoint: Custom endpoint for the Membership service
         :param pulumi.Input[_builtins.str] cdn_custom_endpoint: Custom endpoint for the CDN service
@@ -924,6 +942,7 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 alb_certificates_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  alb_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  authorization_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
                  cdn_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
@@ -980,6 +999,7 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
+            __props__.__dict__["alb_certificates_custom_endpoint"] = alb_certificates_custom_endpoint
             __props__.__dict__["alb_custom_endpoint"] = alb_custom_endpoint
             __props__.__dict__["authorization_custom_endpoint"] = authorization_custom_endpoint
             __props__.__dict__["cdn_custom_endpoint"] = cdn_custom_endpoint
@@ -1032,6 +1052,14 @@ class Provider(pulumi.ProviderResource):
             resource_name,
             __props__,
             opts)
+
+    @_builtins.property
+    @pulumi.getter(name="albCertificatesCustomEndpoint")
+    def alb_certificates_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Custom endpoint for the Application Load Balancer TLS Certificate service
+        """
+        return pulumi.get(self, "alb_certificates_custom_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="albCustomEndpoint")

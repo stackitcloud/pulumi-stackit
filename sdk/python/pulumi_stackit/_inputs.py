@@ -75,6 +75,10 @@ __all__ = [
     'CdnDistributionConfigOptimizerArgsDict',
     'CdnDistributionDomainArgs',
     'CdnDistributionDomainArgsDict',
+    'DnsRecordSetTimeoutsArgs',
+    'DnsRecordSetTimeoutsArgsDict',
+    'DnsZoneTimeoutsArgs',
+    'DnsZoneTimeoutsArgsDict',
     'ImageChecksumArgs',
     'ImageChecksumArgsDict',
     'ImageConfigArgs',
@@ -213,6 +217,10 @@ __all__ = [
     'VolumeSourceArgsDict',
     'GetCdnCustomDomainCertificateArgs',
     'GetCdnCustomDomainCertificateArgsDict',
+    'GetDnsRecordSetTimeoutsArgs',
+    'GetDnsRecordSetTimeoutsArgsDict',
+    'GetDnsZoneTimeoutsArgs',
+    'GetDnsZoneTimeoutsArgsDict',
     'GetImageV2FilterArgs',
     'GetImageV2FilterArgsDict',
 ]
@@ -2094,6 +2102,184 @@ class CdnDistributionDomainArgs:
         pulumi.set(self, "type", value)
 
 
+class DnsRecordSetTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    delete: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    read: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+    """
+    update: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class DnsRecordSetTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete: Optional[pulumi.Input[_builtins.str]] = None,
+                 read: Optional[pulumi.Input[_builtins.str]] = None,
+                 update: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[_builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[_builtins.str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[_builtins.str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "read", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "update", value)
+
+
+class DnsZoneTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    delete: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    read: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+    """
+    update: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class DnsZoneTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: Optional[pulumi.Input[_builtins.str]] = None,
+                 delete: Optional[pulumi.Input[_builtins.str]] = None,
+                 read: Optional[pulumi.Input[_builtins.str]] = None,
+                 update: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[_builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[_builtins.str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[_builtins.str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "read", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "update", value)
+
+
 class ImageChecksumArgsDict(TypedDict):
     algorithm: NotRequired[pulumi.Input[_builtins.str]]
     """
@@ -2463,6 +2649,9 @@ class LoadbalancerListenerArgs:
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if server_name_indicators is not None:
+            warnings.warn("""`server_name_indicators` is deprecated and will be removed after October 2026""", DeprecationWarning)
+            pulumi.log.warn("""server_name_indicators is deprecated: `server_name_indicators` is deprecated and will be removed after October 2026""")
+        if server_name_indicators is not None:
             pulumi.set(__self__, "server_name_indicators", server_name_indicators)
         if tcp is not None:
             pulumi.set(__self__, "tcp", tcp)
@@ -2516,6 +2705,7 @@ class LoadbalancerListenerArgs:
 
     @_builtins.property
     @pulumi.getter(name="serverNameIndicators")
+    @_utilities.deprecated("""`server_name_indicators` is deprecated and will be removed after October 2026""")
     def server_name_indicators(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadbalancerListenerServerNameIndicatorArgs']]]]:
         """
         A list of domain names to match in order to pass TLS traffic to the target pool in the current listener
@@ -2810,7 +3000,7 @@ class LoadbalancerOptionsObservabilityLogsArgsDict(TypedDict):
     """
     push_url: NotRequired[pulumi.Input[_builtins.str]]
     """
-    Credentials reference for logs. Not changeable after creation.
+    The ARGUS/Loki remote write Push URL to ship the logs to. Not changeable after creation.
     """
 
 @pulumi.input_type
@@ -2820,7 +3010,7 @@ class LoadbalancerOptionsObservabilityLogsArgs:
                  push_url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] credentials_ref: Credentials reference for logs. Not changeable after creation.
-        :param pulumi.Input[_builtins.str] push_url: Credentials reference for logs. Not changeable after creation.
+        :param pulumi.Input[_builtins.str] push_url: The ARGUS/Loki remote write Push URL to ship the logs to. Not changeable after creation.
         """
         if credentials_ref is not None:
             pulumi.set(__self__, "credentials_ref", credentials_ref)
@@ -2843,7 +3033,7 @@ class LoadbalancerOptionsObservabilityLogsArgs:
     @pulumi.getter(name="pushUrl")
     def push_url(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Credentials reference for logs. Not changeable after creation.
+        The ARGUS/Loki remote write Push URL to ship the logs to. Not changeable after creation.
         """
         return pulumi.get(self, "push_url")
 
@@ -2859,7 +3049,7 @@ class LoadbalancerOptionsObservabilityMetricsArgsDict(TypedDict):
     """
     push_url: NotRequired[pulumi.Input[_builtins.str]]
     """
-    Credentials reference for metrics. Not changeable after creation.
+    The ARGUS/Prometheus remote write Push URL to ship the metrics to. Not changeable after creation.
     """
 
 @pulumi.input_type
@@ -2869,7 +3059,7 @@ class LoadbalancerOptionsObservabilityMetricsArgs:
                  push_url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] credentials_ref: Credentials reference for metrics. Not changeable after creation.
-        :param pulumi.Input[_builtins.str] push_url: Credentials reference for metrics. Not changeable after creation.
+        :param pulumi.Input[_builtins.str] push_url: The ARGUS/Prometheus remote write Push URL to ship the metrics to. Not changeable after creation.
         """
         if credentials_ref is not None:
             pulumi.set(__self__, "credentials_ref", credentials_ref)
@@ -2892,7 +3082,7 @@ class LoadbalancerOptionsObservabilityMetricsArgs:
     @pulumi.getter(name="pushUrl")
     def push_url(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Credentials reference for metrics. Not changeable after creation.
+        The ARGUS/Prometheus remote write Push URL to ship the metrics to. Not changeable after creation.
         """
         return pulumi.get(self, "push_url")
 
@@ -8625,6 +8815,64 @@ class GetCdnCustomDomainCertificateArgs:
     @version.setter
     def version(self, value: _builtins.int):
         pulumi.set(self, "version", value)
+
+
+class GetDnsRecordSetTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class GetDnsRecordSetTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "read", value)
+
+
+class GetDnsZoneTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class GetDnsZoneTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "read", value)
 
 
 class GetImageV2FilterArgsDict(TypedDict):

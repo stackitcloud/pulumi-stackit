@@ -19,6 +19,12 @@ namespace Pulumi.Stackit
     public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
+        /// Custom endpoint for the Application Load Balancer TLS Certificate service
+        /// </summary>
+        [Output("albCertificatesCustomEndpoint")]
+        public Output<string?> AlbCertificatesCustomEndpoint { get; private set; } = null!;
+
+        /// <summary>
         /// Custom endpoint for the Application Load Balancer service
         /// </summary>
         [Output("albCustomEndpoint")]
@@ -317,6 +323,12 @@ namespace Pulumi.Stackit
 
     public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Custom endpoint for the Application Load Balancer TLS Certificate service
+        /// </summary>
+        [Input("albCertificatesCustomEndpoint")]
+        public Input<string>? AlbCertificatesCustomEndpoint { get; set; }
+
         /// <summary>
         /// Custom endpoint for the Application Load Balancer service
         /// </summary>

@@ -35,7 +35,8 @@ type DnsRecordSet struct {
 	// Records.
 	Records pulumi.StringArrayOutput `pulumi:"records"`
 	// Record set state.
-	State pulumi.StringOutput `pulumi:"state"`
+	State    pulumi.StringOutput           `pulumi:"state"`
+	Timeouts DnsRecordSetTimeoutsPtrOutput `pulumi:"timeouts"`
 	// Time to live. E.g. 3600
 	Ttl pulumi.IntOutput `pulumi:"ttl"`
 	// The record set type. E.g. `A` or `CNAME`
@@ -103,7 +104,8 @@ type dnsRecordSetState struct {
 	// Records.
 	Records []string `pulumi:"records"`
 	// Record set state.
-	State *string `pulumi:"state"`
+	State    *string               `pulumi:"state"`
+	Timeouts *DnsRecordSetTimeouts `pulumi:"timeouts"`
 	// Time to live. E.g. 3600
 	Ttl *int `pulumi:"ttl"`
 	// The record set type. E.g. `A` or `CNAME`
@@ -130,7 +132,8 @@ type DnsRecordSetState struct {
 	// Records.
 	Records pulumi.StringArrayInput
 	// Record set state.
-	State pulumi.StringPtrInput
+	State    pulumi.StringPtrInput
+	Timeouts DnsRecordSetTimeoutsPtrInput
 	// Time to live. E.g. 3600
 	Ttl pulumi.IntPtrInput
 	// The record set type. E.g. `A` or `CNAME`
@@ -153,7 +156,8 @@ type dnsRecordSetArgs struct {
 	// STACKIT project ID to which the dns record set is associated.
 	ProjectId string `pulumi:"projectId"`
 	// Records.
-	Records []string `pulumi:"records"`
+	Records  []string              `pulumi:"records"`
+	Timeouts *DnsRecordSetTimeouts `pulumi:"timeouts"`
 	// Time to live. E.g. 3600
 	Ttl *int `pulumi:"ttl"`
 	// The record set type. E.g. `A` or `CNAME`
@@ -173,7 +177,8 @@ type DnsRecordSetArgs struct {
 	// STACKIT project ID to which the dns record set is associated.
 	ProjectId pulumi.StringInput
 	// Records.
-	Records pulumi.StringArrayInput
+	Records  pulumi.StringArrayInput
+	Timeouts DnsRecordSetTimeoutsPtrInput
 	// Time to live. E.g. 3600
 	Ttl pulumi.IntPtrInput
 	// The record set type. E.g. `A` or `CNAME`
@@ -312,6 +317,10 @@ func (o DnsRecordSetOutput) Records() pulumi.StringArrayOutput {
 // Record set state.
 func (o DnsRecordSetOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *DnsRecordSet) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+func (o DnsRecordSetOutput) Timeouts() DnsRecordSetTimeoutsPtrOutput {
+	return o.ApplyT(func(v *DnsRecordSet) DnsRecordSetTimeoutsPtrOutput { return v.Timeouts }).(DnsRecordSetTimeoutsPtrOutput)
 }
 
 // Time to live. E.g. 3600

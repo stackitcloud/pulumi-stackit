@@ -44,6 +44,8 @@ type Loadbalancer struct {
 	SecurityGroupId pulumi.StringOutput `pulumi:"securityGroupId"`
 	// List of all target pools which will be used in the Load Balancer. Limited to 20.
 	TargetPools LoadbalancerTargetPoolArrayOutput `pulumi:"targetPools"`
+	// Load balancer resource version. This is needed to have concurrency safe updates.
+	Version pulumi.StringOutput `pulumi:"version"`
 }
 
 // NewLoadbalancer registers a new resource with the given unique name, arguments, and options.
@@ -112,6 +114,8 @@ type loadbalancerState struct {
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// List of all target pools which will be used in the Load Balancer. Limited to 20.
 	TargetPools []LoadbalancerTargetPool `pulumi:"targetPools"`
+	// Load balancer resource version. This is needed to have concurrency safe updates.
+	Version *string `pulumi:"version"`
 }
 
 type LoadbalancerState struct {
@@ -139,6 +143,8 @@ type LoadbalancerState struct {
 	SecurityGroupId pulumi.StringPtrInput
 	// List of all target pools which will be used in the Load Balancer. Limited to 20.
 	TargetPools LoadbalancerTargetPoolArrayInput
+	// Load balancer resource version. This is needed to have concurrency safe updates.
+	Version pulumi.StringPtrInput
 }
 
 func (LoadbalancerState) ElementType() reflect.Type {
@@ -337,6 +343,11 @@ func (o LoadbalancerOutput) SecurityGroupId() pulumi.StringOutput {
 // List of all target pools which will be used in the Load Balancer. Limited to 20.
 func (o LoadbalancerOutput) TargetPools() LoadbalancerTargetPoolArrayOutput {
 	return o.ApplyT(func(v *Loadbalancer) LoadbalancerTargetPoolArrayOutput { return v.TargetPools }).(LoadbalancerTargetPoolArrayOutput)
+}
+
+// Load balancer resource version. This is needed to have concurrency safe updates.
+func (o LoadbalancerOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v *Loadbalancer) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
 }
 
 type LoadbalancerArrayOutput struct{ *pulumi.OutputState }

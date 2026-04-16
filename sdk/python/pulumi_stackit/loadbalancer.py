@@ -197,7 +197,8 @@ class _LoadbalancerState:
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 target_pools: Optional[pulumi.Input[Sequence[pulumi.Input['LoadbalancerTargetPoolArgs']]]] = None):
+                 target_pools: Optional[pulumi.Input[Sequence[pulumi.Input['LoadbalancerTargetPoolArgs']]]] = None,
+                 version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Loadbalancer resources.
 
@@ -213,6 +214,7 @@ class _LoadbalancerState:
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT network areas (SNA). To enable this, create a security group rule for your target VMs and set the `remote_security_group_id` of that rule to this value. This is typically used when `disable_security_group_assignment` is set to `true`.
         :param pulumi.Input[Sequence[pulumi.Input['LoadbalancerTargetPoolArgs']]] target_pools: List of all target pools which will be used in the Load Balancer. Limited to 20.
+        :param pulumi.Input[_builtins.str] version: Load balancer resource version. This is needed to have concurrency safe updates.
         """
         if disable_security_group_assignment is not None:
             pulumi.set(__self__, "disable_security_group_assignment", disable_security_group_assignment)
@@ -238,6 +240,8 @@ class _LoadbalancerState:
             pulumi.set(__self__, "security_group_id", security_group_id)
         if target_pools is not None:
             pulumi.set(__self__, "target_pools", target_pools)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
 
     @_builtins.property
     @pulumi.getter(name="disableSecurityGroupAssignment")
@@ -383,6 +387,18 @@ class _LoadbalancerState:
     def target_pools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadbalancerTargetPoolArgs']]]]):
         pulumi.set(self, "target_pools", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Load balancer resource version. This is needed to have concurrency safe updates.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "version", value)
+
 
 @pulumi.type_token("stackit:index/loadbalancer:Loadbalancer")
 class Loadbalancer(pulumi.CustomResource):
@@ -490,6 +506,7 @@ class Loadbalancer(pulumi.CustomResource):
             __props__.__dict__["target_pools"] = target_pools
             __props__.__dict__["private_address"] = None
             __props__.__dict__["security_group_id"] = None
+            __props__.__dict__["version"] = None
         super(Loadbalancer, __self__).__init__(
             'stackit:index/loadbalancer:Loadbalancer',
             resource_name,
@@ -511,7 +528,8 @@ class Loadbalancer(pulumi.CustomResource):
             project_id: Optional[pulumi.Input[_builtins.str]] = None,
             region: Optional[pulumi.Input[_builtins.str]] = None,
             security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadbalancerTargetPoolArgs', 'LoadbalancerTargetPoolArgsDict']]]]] = None) -> 'Loadbalancer':
+            target_pools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadbalancerTargetPoolArgs', 'LoadbalancerTargetPoolArgsDict']]]]] = None,
+            version: Optional[pulumi.Input[_builtins.str]] = None) -> 'Loadbalancer':
         """
         Get an existing Loadbalancer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -531,6 +549,7 @@ class Loadbalancer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT network areas (SNA). To enable this, create a security group rule for your target VMs and set the `remote_security_group_id` of that rule to this value. This is typically used when `disable_security_group_assignment` is set to `true`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['LoadbalancerTargetPoolArgs', 'LoadbalancerTargetPoolArgsDict']]]] target_pools: List of all target pools which will be used in the Load Balancer. Limited to 20.
+        :param pulumi.Input[_builtins.str] version: Load balancer resource version. This is needed to have concurrency safe updates.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -548,6 +567,7 @@ class Loadbalancer(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         __props__.__dict__["security_group_id"] = security_group_id
         __props__.__dict__["target_pools"] = target_pools
+        __props__.__dict__["version"] = version
         return Loadbalancer(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -645,4 +665,12 @@ class Loadbalancer(pulumi.CustomResource):
         List of all target pools which will be used in the Load Balancer. Limited to 20.
         """
         return pulumi.get(self, "target_pools")
+
+    @_builtins.property
+    @pulumi.getter
+    def version(self) -> pulumi.Output[_builtins.str]:
+        """
+        Load balancer resource version. This is needed to have concurrency safe updates.
+        """
+        return pulumi.get(self, "version")
 

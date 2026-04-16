@@ -94,6 +94,10 @@ export interface GetLoadbalancerResult {
      * List of all target pools which will be used in the Load Balancer. Limited to 20.
      */
     readonly targetPools: outputs.GetLoadbalancerTargetPool[];
+    /**
+     * Load balancer resource version.
+     */
+    readonly version: string;
 }
 /**
  * Load Balancer data source schema. Must have a `region` specified in the provider configuration.

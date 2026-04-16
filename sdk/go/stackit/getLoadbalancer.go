@@ -62,6 +62,8 @@ type LookupLoadbalancerResult struct {
 	SecurityGroupId string `pulumi:"securityGroupId"`
 	// List of all target pools which will be used in the Load Balancer. Limited to 20.
 	TargetPools []GetLoadbalancerTargetPool `pulumi:"targetPools"`
+	// Load balancer resource version.
+	Version string `pulumi:"version"`
 }
 
 func LookupLoadbalancerOutput(ctx *pulumi.Context, args LookupLoadbalancerOutputArgs, opts ...pulumi.InvokeOption) LookupLoadbalancerResultOutput {
@@ -165,6 +167,11 @@ func (o LookupLoadbalancerResultOutput) SecurityGroupId() pulumi.StringOutput {
 // List of all target pools which will be used in the Load Balancer. Limited to 20.
 func (o LookupLoadbalancerResultOutput) TargetPools() GetLoadbalancerTargetPoolArrayOutput {
 	return o.ApplyT(func(v LookupLoadbalancerResult) []GetLoadbalancerTargetPool { return v.TargetPools }).(GetLoadbalancerTargetPoolArrayOutput)
+}
+
+// Load balancer resource version.
+func (o LookupLoadbalancerResultOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadbalancerResult) string { return v.Version }).(pulumi.StringOutput)
 }
 
 func init() {
