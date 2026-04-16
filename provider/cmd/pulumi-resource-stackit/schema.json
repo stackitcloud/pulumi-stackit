@@ -55,6 +55,10 @@
     },
     "config": {
         "variables": {
+            "albCertificatesCustomEndpoint": {
+                "type": "string",
+                "description": "Custom endpoint for the Application Load Balancer TLS Certificate service"
+            },
             "albCustomEndpoint": {
                 "type": "string",
                 "description": "Custom endpoint for the Application Load Balancer service"
@@ -936,6 +940,48 @@
                 }
             }
         },
+        "stackit:index/DnsRecordSetTimeouts:DnsRecordSetTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                },
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                },
+                "update": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
+        },
+        "stackit:index/DnsZoneTimeouts:DnsZoneTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                },
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                },
+                "update": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
+        },
         "stackit:index/ImageChecksum:ImageChecksum": {
             "properties": {
                 "algorithm": {
@@ -1051,7 +1097,8 @@
                     "items": {
                         "$ref": "#/types/stackit:index/LoadbalancerListenerServerNameIndicator:LoadbalancerListenerServerNameIndicator"
                     },
-                    "description": "A list of domain names to match in order to pass TLS traffic to the target pool in the current listener\n"
+                    "description": "A list of domain names to match in order to pass TLS traffic to the target pool in the current listener\n",
+                    "deprecationMessage": "\u003cspan pulumi-lang-nodejs=\"`serverNameIndicators`\" pulumi-lang-dotnet=\"`ServerNameIndicators`\" pulumi-lang-go=\"`serverNameIndicators`\" pulumi-lang-python=\"`server_name_indicators`\" pulumi-lang-yaml=\"`serverNameIndicators`\" pulumi-lang-java=\"`serverNameIndicators`\"\u003e`serverNameIndicators`\u003c/span\u003e is deprecated and will be removed after October 2026"
                 },
                 "targetPool": {
                     "type": "string",
@@ -1185,7 +1232,7 @@
                 },
                 "pushUrl": {
                     "type": "string",
-                    "description": "Credentials reference for logs. Not changeable after creation.\n"
+                    "description": "The ARGUS/Loki remote write Push URL to ship the logs to. Not changeable after creation.\n"
                 }
             },
             "type": "object",
@@ -1206,7 +1253,7 @@
                 },
                 "pushUrl": {
                     "type": "string",
-                    "description": "Credentials reference for metrics. Not changeable after creation.\n"
+                    "description": "The ARGUS/Prometheus remote write Push URL to ship the metrics to. Not changeable after creation.\n"
                 }
             },
             "type": "object",
@@ -4023,6 +4070,24 @@
                 }
             }
         },
+        "stackit:index/getDnsRecordSetTimeouts:getDnsRecordSetTimeouts": {
+            "properties": {
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
+        },
+        "stackit:index/getDnsZoneTimeouts:getDnsZoneTimeouts": {
+            "properties": {
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
+        },
         "stackit:index/getEdgecloudInstancesInstance:getEdgecloudInstancesInstance": {
             "properties": {
                 "created": {
@@ -4353,7 +4418,8 @@
                     "items": {
                         "$ref": "#/types/stackit:index/getLoadbalancerListenerServerNameIndicator:getLoadbalancerListenerServerNameIndicator"
                     },
-                    "description": "A list of domain names to match in order to pass TLS traffic to the target pool in the current listener\n"
+                    "description": "A list of domain names to match in order to pass TLS traffic to the target pool in the current listener\n",
+                    "deprecationMessage": "\u003cspan pulumi-lang-nodejs=\"`serverNameIndicators`\" pulumi-lang-dotnet=\"`ServerNameIndicators`\" pulumi-lang-go=\"`serverNameIndicators`\" pulumi-lang-python=\"`server_name_indicators`\" pulumi-lang-yaml=\"`serverNameIndicators`\" pulumi-lang-java=\"`serverNameIndicators`\"\u003e`serverNameIndicators`\u003c/span\u003e is deprecated and will be removed after October 2026"
                 },
                 "targetPool": {
                     "type": "string",
@@ -5638,8 +5704,11 @@
                     "description": "List of TLS ciphers to use.\n"
                 },
                 "tlsProtocols": {
-                    "type": "string",
-                    "description": "The TLS protocol to use.\n"
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of TLS protocols to use.\n"
                 }
             },
             "type": "object",
@@ -7049,6 +7118,10 @@
     "provider": {
         "description": "The provider type for the stackit package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
         "properties": {
+            "albCertificatesCustomEndpoint": {
+                "type": "string",
+                "description": "Custom endpoint for the Application Load Balancer TLS Certificate service"
+            },
             "albCustomEndpoint": {
                 "type": "string",
                 "description": "Custom endpoint for the Application Load Balancer service"
@@ -7244,6 +7317,10 @@
             }
         },
         "inputProperties": {
+            "albCertificatesCustomEndpoint": {
+                "type": "string",
+                "description": "Custom endpoint for the Application Load Balancer TLS Certificate service"
+            },
             "albCustomEndpoint": {
                 "type": "string",
                 "description": "Custom endpoint for the Application Load Balancer service"
@@ -7538,8 +7615,105 @@
                 "type": "object"
             }
         },
+        "stackit:index/albCertificate:AlbCertificate": {
+            "description": "## Setting up supporting infrastructure\n\n\nThe example below creates the supporting infrastructure using the STACKIT Terraform provider, including the automatic creation of a TLS certificate resource.\n\n## Example Usage\n\n```terraform\nvariable \"project_id\" {\n  description = \"The STACKIT Project ID\"\n  type        = string\n  default     = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\n# Create a RAS key pair\nresource \"tls_private_key\" \"example\" {\n  algorithm = \"RSA\"\n  rsa_bits  = 2048\n}\n\n# Create a TLS certificate\nresource \"tls_self_signed_cert\" \"example\" {\n  private_key_pem = tls_private_key.example.private_key_pem\n\n  subject {\n    common_name  = \"localhost\"\n    organization = \"STACKIT Test\"\n  }\n\n  validity_period_hours = 12\n\n  allowed_uses = [\n    \"key_encipherment\",\n    \"digital_signature\",\n    \"server_auth\",\n  ]\n}\n\n# Create a ALB certificate\nresource \"stackit_alb_certificate\" \"certificate\" {\n  project_id  = var.project_id\n  name        = \"example-certificate\"\n  private_key = tls_private_key.example.private_key_pem\n  public_key  = tls_self_signed_cert.example.cert_pem\n}\n```\n",
+            "properties": {
+                "certId": {
+                    "type": "string",
+                    "description": "The ID of the certificate.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Certificate name.\n"
+                },
+                "privateKey": {
+                    "type": "string",
+                    "description": "The PEM encoded private key part\n",
+                    "secret": true
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT project ID to which the certificate is associated.\n"
+                },
+                "publicKey": {
+                    "type": "string",
+                    "description": "The PEM encoded public key part\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The resource region (e.g. eu01). If not defined, the provider region is used.\n"
+                }
+            },
+            "required": [
+                "certId",
+                "name",
+                "privateKey",
+                "projectId",
+                "publicKey",
+                "region"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "Certificate name.\n"
+                },
+                "privateKey": {
+                    "type": "string",
+                    "description": "The PEM encoded private key part\n",
+                    "secret": true
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT project ID to which the certificate is associated.\n"
+                },
+                "publicKey": {
+                    "type": "string",
+                    "description": "The PEM encoded public key part\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The resource region (e.g. eu01). If not defined, the provider region is used.\n"
+                }
+            },
+            "requiredInputs": [
+                "privateKey",
+                "projectId",
+                "publicKey"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AlbCertificate resources.\n",
+                "properties": {
+                    "certId": {
+                        "type": "string",
+                        "description": "The ID of the certificate.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Certificate name.\n"
+                    },
+                    "privateKey": {
+                        "type": "string",
+                        "description": "The PEM encoded private key part\n",
+                        "secret": true
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID to which the certificate is associated.\n"
+                    },
+                    "publicKey": {
+                        "type": "string",
+                        "description": "The PEM encoded public key part\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region (e.g. eu01). If not defined, the provider region is used.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "stackit:index/applicationLoadBalancer:ApplicationLoadBalancer": {
-            "description": "## Setting up supporting infrastructure\n\n\nThe example below creates the supporting infrastructure using the STACKIT Terraform provider, including the network, network interface, a public IP address and server resources.\n\n## Example Usage\n\n```terraform\nvariable \"project_id\" {\n  description = \"The STACKIT Project ID\"\n  type        = string\n  default     = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\nvariable \"image_id\" {\n  description = \"A valid Debian 12 Image ID available in all projects\"\n  type        = string\n  default     = \"939249d1-6f48-4ab7-929b-95170728311a\"\n}\n\nvariable \"availability_zone\" {\n  description = \"An availability zone\"\n  type        = string\n  default     = \"eu01-1\"\n}\n\nvariable \"machine_type\" {\n  description = \"The machine flavor with 2GB of RAM and 1 core\"\n  type        = string\n  default     = \"c2i.1\"\n}\n\nvariable \"label_key\" {\n  description = \"An optional label key\"\n  type        = string\n  default     = \"key\"\n}\n\nvariable \"label_value\" {\n  description = \"An optional label value\"\n  type        = string\n  default     = \"value\"\n}\n\n# Create a network\nresource \"stackit_network\" \"network\" {\n  project_id       = var.project_id\n  name             = \"example-network\"\n  ipv4_nameservers = [\"1.1.1.1\"]\n  ipv4_prefix      = \"192.168.2.0/25\"\n  routed           = true\n}\n\n# Create a network interface\nresource \"stackit_network_interface\" \"nic\" {\n  project_id = var.project_id\n  network_id = stackit_network.network.network_id\n  lifecycle {\n    ignore_changes = [\n      security_group_ids,\n    ]\n  }\n}\n\n# Create a key pair for accessing the target server instance\nresource \"stackit_key_pair\" \"keypair\" {\n  name       = \"example-key-pair\"\n  public_key = chomp(file(\"path/to/id_rsa.pub\"))\n}\n\n# Create a target server instance\nresource \"stackit_server\" \"server\" {\n  project_id        = var.project_id\n  name              = \"example-server\"\n  machine_type      = var.machine_type\n  keypair_name      = stackit_key_pair.keypair.name\n  availability_zone = var.availability_zone\n\n  boot_volume = {\n    size                  = 20\n    source_type           = \"image\"\n    source_id             = var.image_id\n    delete_on_termination = true\n  }\n\n  network_interfaces = [\n    stackit_network_interface.nic.network_interface_id\n  ]\n\n  # Explicit dependencies to ensure ordering\n  depends_on = [\n    stackit_network.network,\n    stackit_key_pair.keypair,\n    stackit_network_interface.nic\n  ]\n}\n\n# Create example credentials for observability of the ALB\n# Create real credentials in your stackit observability\nresource \"stackit_loadbalancer_observability_credential\" \"observability\" {\n  project_id   = var.project_id\n  display_name = \"my-cred\"\n  password     = \"password\"\n  username     = \"username\"\n}\n\n# Create a Application Load Balancer\nresource \"stackit_application_load_balancer\" \"example\" {\n  project_id = var.project_id\n  region     = \"eu01\"\n  name       = \"example-load-balancer\"\n  plan_id    = \"p10\"\n  // Hint: Automatically create an IP for the ALB lifecycle by setting ephemeral_address = true or use:\n  // external_address = \"124.124.124.124\"\n  labels = {\n    (var.label_key) = var.label_value\n  }\n  listeners = [{\n    name = \"my-listener\"\n    port = 443\n    http = {\n      hosts = [{\n        host = \"*\"\n        rules = [{\n          target_pool = \"my-target-pool\"\n          web_socket  = true\n          query_parameters = [{\n            name        = \"my-query-key\"\n            exact_match = \"my-query-value\"\n          }]\n          headers = [{\n            name        = \"my-header-key\"\n            exact_match = \"my-header-value\"\n          }]\n          path = {\n            prefix = \"/path\"\n          }\n          cookie_persistence = {\n            name = \"my-cookie\"\n            ttl  = \"60s\"\n          }\n        }]\n      }]\n    }\n    https = {\n      certificate_config = {\n        certificate_ids = [\n          # Currently no TF provider available, needs to be added with API\n          # https://docs.api.stackit.cloud/documentation/certificates/version/v2\n          \"name-v1-8c81bd317af8a03b8ef0851ccb074eb17d1ad589b540446244a5e593f78ef820\"\n        ]\n      }\n    }\n    protocol = \"PROTOCOL_HTTPS\"\n    # Currently no TF provider available, needs to be added with API\n    # https://docs.api.stackit.cloud/documentation/alb-waf/version/v1alpha\n    waf_config_name = \"my-waf-config\"\n    }\n  ]\n  networks = [\n    {\n      network_id = stackit_network.network.network_id\n      role       = \"ROLE_LISTENERS_AND_TARGETS\"\n    }\n  ]\n  options = {\n    acl                  = [\"123.123.123.123/24\", \"12.12.12.12/24\"]\n    ephemeral_address    = true\n    private_network_only = false\n    observability = {\n      logs = {\n        credentials_ref = stackit_loadbalancer_observability_credential.observability.credentials_ref\n        push_url        = \"https://logs.stackit\u003cid\u003e.argus.eu01.stackit.cloud/instances/\u003cinstance-id\u003e/loki/api/v1/push\"\n      }\n      metrics = {\n        credentials_ref = stackit_loadbalancer_observability_credential.observability.credentials_ref\n        push_url        = \"https://push.metrics.stackit\u003cid\u003e.argus.eu01.stackit.cloud/instances/\u003cinstance-id\u003e/api/v1/receive\"\n      }\n    }\n  }\n  target_pools = [\n    {\n      name = \"my-target-pool\"\n      active_health_check = {\n        interval            = \"0.500s\"\n        interval_jitter     = \"0.010s\"\n        timeout             = \"1s\"\n        healthy_threshold   = \"5\"\n        unhealthy_threshold = \"3\"\n        http_health_checks = {\n          ok_status = [\"200\", \"201\"]\n          path      = \"/healthy\"\n        }\n      }\n      target_port = 80\n      targets = [\n        {\n          display_name = \"my-target\"\n          ip           = stackit_network_interface.nic.ipv4\n        }\n      ]\n      tls_config = {\n        enabled                     = true\n        skip_certificate_validation = false\n        custom_ca                   = chomp(file(\"path/to/PEM_formated_CA\"))\n      }\n    }\n  ]\n  disable_target_security_group_assignment = false # only needed if targets are not in the same network\n}\n```\n",
+            "description": "## Setting up supporting infrastructure\n\n\nThe example below creates the supporting infrastructure using the STACKIT Terraform provider, including the network, network interface, a public IP address and server resources.\n\n## Example Usage\n\n```terraform\nvariable \"project_id\" {\n  description = \"The STACKIT Project ID\"\n  type        = string\n  default     = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\nvariable \"image_id\" {\n  description = \"A valid Debian 12 Image ID available in all projects\"\n  type        = string\n  default     = \"939249d1-6f48-4ab7-929b-95170728311a\"\n}\n\nvariable \"availability_zone\" {\n  description = \"An availability zone\"\n  type        = string\n  default     = \"eu01-1\"\n}\n\nvariable \"machine_type\" {\n  description = \"The machine flavor with 2GB of RAM and 1 core\"\n  type        = string\n  default     = \"c2i.1\"\n}\n\nvariable \"label_key\" {\n  description = \"An optional label key\"\n  type        = string\n  default     = \"key\"\n}\n\nvariable \"label_value\" {\n  description = \"An optional label value\"\n  type        = string\n  default     = \"value\"\n}\n\n# Create a network\nresource \"stackit_network\" \"network\" {\n  project_id       = var.project_id\n  name             = \"example-network\"\n  ipv4_nameservers = [\"1.1.1.1\"]\n  ipv4_prefix      = \"192.168.2.0/25\"\n  routed           = true\n}\n\n# Create a network interface\nresource \"stackit_network_interface\" \"nic\" {\n  project_id = var.project_id\n  network_id = stackit_network.network.network_id\n  lifecycle {\n    ignore_changes = [\n      security_group_ids,\n    ]\n  }\n}\n\n# Create a key pair for accessing the target server instance\nresource \"stackit_key_pair\" \"keypair\" {\n  name       = \"example-key-pair\"\n  public_key = chomp(file(\"path/to/id_rsa.pub\"))\n}\n\n# Create a target server instance\nresource \"stackit_server\" \"server\" {\n  project_id        = var.project_id\n  name              = \"example-server\"\n  machine_type      = var.machine_type\n  keypair_name      = stackit_key_pair.keypair.name\n  availability_zone = var.availability_zone\n\n  boot_volume = {\n    size                  = 20\n    source_type           = \"image\"\n    source_id             = var.image_id\n    delete_on_termination = true\n  }\n\n  network_interfaces = [\n    stackit_network_interface.nic.network_interface_id\n  ]\n\n  # Explicit dependencies to ensure ordering\n  depends_on = [\n    stackit_network.network,\n    stackit_key_pair.keypair,\n    stackit_network_interface.nic\n  ]\n}\n\n# Create example credentials for observability of the ALB\n# Create real credentials in your STACKIT observability\nresource \"stackit_loadbalancer_observability_credential\" \"observability\" {\n  project_id   = var.project_id\n  display_name = \"my-cred\"\n  password     = \"password\"\n  username     = \"username\"\n}\n\n# Create a RAS key pair\nresource \"tls_private_key\" \"example\" {\n  algorithm = \"RSA\"\n  rsa_bits  = 2048\n}\n\n# Create a TLS certificate\nresource \"tls_self_signed_cert\" \"example\" {\n  private_key_pem = tls_private_key.example.private_key_pem\n\n  subject {\n    common_name  = \"localhost\"\n    organization = \"STACKIT Test\"\n  }\n\n  validity_period_hours = 12\n\n  allowed_uses = [\n    \"key_encipherment\",\n    \"digital_signature\",\n    \"server_auth\",\n  ]\n}\n\n# Create a ALB certificate\nresource \"stackit_alb_certificate\" \"certificate\" {\n  project_id  = var.project_id\n  name        = \"example-certificate\"\n  private_key = tls_private_key.example.private_key_pem\n  public_key  = tls_self_signed_cert.example.cert_pem\n}\n\n# Create a Application Load Balancer\nresource \"stackit_application_load_balancer\" \"example\" {\n  project_id = var.project_id\n  region     = \"eu01\"\n  name       = \"example-load-balancer\"\n  plan_id    = \"p10\"\n  // Hint: Automatically create an IP for the ALB lifecycle by setting ephemeral_address = true or use:\n  // external_address = \"124.124.124.124\"\n  labels = {\n    (var.label_key) = var.label_value\n  }\n  listeners = [{\n    name = \"my-listener\"\n    port = 443\n    http = {\n      hosts = [{\n        host = \"*\"\n        rules = [{\n          target_pool = \"my-target-pool\"\n          web_socket  = true\n          query_parameters = [{\n            name        = \"my-query-key\"\n            exact_match = \"my-query-value\"\n          }]\n          headers = [{\n            name        = \"my-header-key\"\n            exact_match = \"my-header-value\"\n          }]\n          path = {\n            prefix = \"/path\"\n          }\n          cookie_persistence = {\n            name = \"my-cookie\"\n            ttl  = \"60s\"\n          }\n        }]\n      }]\n    }\n    https = {\n      certificate_config = {\n        certificate_ids = [\n          stackit_alb_certificate.certificate.cert_id\n        ]\n      }\n    }\n    protocol = \"PROTOCOL_HTTPS\"\n    # Currently no TF provider available, needs to be added with API\n    # https://docs.api.stackit.cloud/documentation/alb-waf/version/v1alpha\n    waf_config_name = \"my-waf-config\"\n    }\n  ]\n  networks = [\n    {\n      network_id = stackit_network.network.network_id\n      role       = \"ROLE_LISTENERS_AND_TARGETS\"\n    }\n  ]\n  options = {\n    acl                  = [\"123.123.123.123/24\", \"12.12.12.12/24\"]\n    ephemeral_address    = true\n    private_network_only = false\n    observability = {\n      logs = {\n        credentials_ref = stackit_loadbalancer_observability_credential.observability.credentials_ref\n        push_url        = \"https://logs.stackit\u003cid\u003e.argus.eu01.stackit.cloud/instances/\u003cinstance-id\u003e/loki/api/v1/push\"\n      }\n      metrics = {\n        credentials_ref = stackit_loadbalancer_observability_credential.observability.credentials_ref\n        push_url        = \"https://push.metrics.stackit\u003cid\u003e.argus.eu01.stackit.cloud/instances/\u003cinstance-id\u003e/api/v1/receive\"\n      }\n    }\n  }\n  target_pools = [\n    {\n      name = \"my-target-pool\"\n      active_health_check = {\n        interval            = \"0.500s\"\n        interval_jitter     = \"0.010s\"\n        timeout             = \"1s\"\n        healthy_threshold   = \"5\"\n        unhealthy_threshold = \"3\"\n        http_health_checks = {\n          ok_status = [\"200\", \"201\"]\n          path      = \"/healthy\"\n        }\n      }\n      target_port = 80\n      targets = [\n        {\n          display_name = \"my-target\"\n          ip           = stackit_network_interface.nic.ipv4\n        }\n      ]\n      tls_config = {\n        enabled                     = true\n        skip_certificate_validation = false\n        custom_ca                   = chomp(file(\"path/to/PEM_formated_CA\"))\n      }\n    }\n  ]\n  disable_target_security_group_assignment = false # only needed if targets are not in the same network\n}\n```\n",
             "properties": {
                 "disableTargetSecurityGroupAssignment": {
                     "type": "boolean",
@@ -8356,6 +8530,9 @@
                     "type": "string",
                     "description": "Record set state.\n"
                 },
+                "timeouts": {
+                    "$ref": "#/types/stackit:index/DnsRecordSetTimeouts:DnsRecordSetTimeouts"
+                },
                 "ttl": {
                     "type": "integer",
                     "description": "Time to live. E.g. 3600\n"
@@ -8406,6 +8583,9 @@
                         "type": "string"
                     },
                     "description": "Records.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/stackit:index/DnsRecordSetTimeouts:DnsRecordSetTimeouts"
                 },
                 "ttl": {
                     "type": "integer",
@@ -8467,6 +8647,9 @@
                     "state": {
                         "type": "string",
                         "description": "Record set state.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/stackit:index/DnsRecordSetTimeouts:DnsRecordSetTimeouts"
                     },
                     "ttl": {
                         "type": "integer",
@@ -8560,6 +8743,9 @@
                 "state": {
                     "type": "string",
                     "description": "Zone state. E.g. `CREATE_SUCCEEDED`.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/stackit:index/DnsZoneTimeouts:DnsZoneTimeouts"
                 },
                 "type": {
                     "type": "string",
@@ -8656,6 +8842,9 @@
                     "type": "integer",
                     "description": "Retry time. E.g. 600\n"
                 },
+                "timeouts": {
+                    "$ref": "#/types/stackit:index/DnsZoneTimeouts:DnsZoneTimeouts"
+                },
                 "type": {
                     "type": "string",
                     "description": "Zone type. Defaults to \u003cspan pulumi-lang-nodejs=\"`primary`\" pulumi-lang-dotnet=\"`Primary`\" pulumi-lang-go=\"`primary`\" pulumi-lang-python=\"`primary`\" pulumi-lang-yaml=\"`primary`\" pulumi-lang-java=\"`primary`\"\u003e`primary`\u003c/span\u003e. Possible values are: \u003cspan pulumi-lang-nodejs=\"`primary`\" pulumi-lang-dotnet=\"`Primary`\" pulumi-lang-go=\"`primary`\" pulumi-lang-python=\"`primary`\" pulumi-lang-yaml=\"`primary`\" pulumi-lang-java=\"`primary`\"\u003e`primary`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`secondary`\" pulumi-lang-dotnet=\"`Secondary`\" pulumi-lang-go=\"`secondary`\" pulumi-lang-python=\"`secondary`\" pulumi-lang-yaml=\"`secondary`\" pulumi-lang-java=\"`secondary`\"\u003e`secondary`\u003c/span\u003e.\n"
@@ -8741,6 +8930,9 @@
                     "state": {
                         "type": "string",
                         "description": "Zone state. E.g. `CREATE_SUCCEEDED`.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/stackit:index/DnsZoneTimeouts:DnsZoneTimeouts"
                     },
                     "type": {
                         "type": "string",
@@ -10003,6 +10195,10 @@
                         "$ref": "#/types/stackit:index/LoadbalancerTargetPool:LoadbalancerTargetPool"
                     },
                     "description": "List of all target pools which will be used in the Load Balancer. Limited to 20.\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Load balancer resource version. This is needed to have concurrency safe updates.\n"
                 }
             },
             "required": [
@@ -10016,7 +10212,8 @@
                 "projectId",
                 "region",
                 "securityGroupId",
-                "targetPools"
+                "targetPools",
+                "version"
             ],
             "inputProperties": {
                 "disableSecurityGroupAssignment": {
@@ -10134,6 +10331,10 @@
                             "$ref": "#/types/stackit:index/LoadbalancerTargetPool:LoadbalancerTargetPool"
                         },
                         "description": "List of all target pools which will be used in the Load Balancer. Limited to 20.\n"
+                    },
+                    "version": {
+                        "type": "string",
+                        "description": "Load balancer resource version. This is needed to have concurrency safe updates.\n"
                     }
                 },
                 "type": "object"
@@ -16332,8 +16533,87 @@
                 "type": "object"
             }
         },
+        "stackit:index/serverBackupEnable:ServerBackupEnable": {
+            "description": "Server backup enable resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration. Always use only one enable resource per server.\n",
+            "properties": {
+                "backupPolicyId": {
+                    "type": "string",
+                    "description": "The backup policy ID.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Set to true if the service is enabled.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT Project ID to which the server backup enable is associated.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The resource region. If not defined, the provider region is used.\n"
+                },
+                "serverId": {
+                    "type": "string",
+                    "description": "Server ID to which the server backup enable is associated.\n"
+                }
+            },
+            "required": [
+                "enabled",
+                "projectId",
+                "region",
+                "serverId"
+            ],
+            "inputProperties": {
+                "backupPolicyId": {
+                    "type": "string",
+                    "description": "The backup policy ID.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT Project ID to which the server backup enable is associated.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The resource region. If not defined, the provider region is used.\n"
+                },
+                "serverId": {
+                    "type": "string",
+                    "description": "Server ID to which the server backup enable is associated.\n"
+                }
+            },
+            "requiredInputs": [
+                "projectId",
+                "serverId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ServerBackupEnable resources.\n",
+                "properties": {
+                    "backupPolicyId": {
+                        "type": "string",
+                        "description": "The backup policy ID.\n"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Set to true if the service is enabled.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT Project ID to which the server backup enable is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    },
+                    "serverId": {
+                        "type": "string",
+                        "description": "Server ID to which the server backup enable is associated.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "stackit:index/serverBackupSchedule:ServerBackupSchedule": {
-            "description": "Server backup schedule resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\nresource \"stackit_server_backup_schedule\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  server_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example_backup_schedule_name\"\n  rrule      = \"DTSTART;TZID=Europe/Sofia:20200803T023000 RRULE:FREQ=DAILY;INTERVAL=1\"\n  enabled    = true\n  backup_properties = {\n    name             = \"example_backup_name\"\n    retention_period = 14\n    volume_ids       = null\n  }\n}\n\n# Only use the import statement, if you want to import an existing server backup schedule\nimport {\n  to = stackit_server_backup_schedule.import-example\n  id = \"${var.project_id},${var.region},${var.server_id},${var.server_backup_schedule_id}\"\n}\n```\n",
+            "description": "Server backup schedule resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\nresource \"stackit_server_backup_schedule\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  server_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example_backup_schedule_name\"\n  rrule      = \"DTSTART;TZID=Europe/Sofia:20200803T023000 RRULE:FREQ=DAILY;INTERVAL=1\"\n  enabled    = true\n  backup_properties = {\n    name             = \"example_backup_name\"\n    retention_period = 14\n    volume_ids       = null\n  }\n  depends_on = [\n    stackit_server_backup_enable.enable\n  ]\n}\n\nresource \"stackit_server_backup_enable\" \"enable\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  server_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\n# Only use the import statement, if you want to import an existing server backup schedule\nimport {\n  to = stackit_server_backup_schedule.import-example\n  id = \"${var.project_id},${var.region},${var.server_id},${var.server_backup_schedule_id}\"\n}\n```\n",
             "properties": {
                 "backupProperties": {
                     "$ref": "#/types/stackit:index/ServerBackupScheduleBackupProperties:ServerBackupScheduleBackupProperties",
@@ -16598,8 +16878,87 @@
                 "type": "object"
             }
         },
+        "stackit:index/serverUpdateEnable:ServerUpdateEnable": {
+            "description": "Server update enable resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration. Always use only one enable resource per server.\n",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Set to true if the service is enabled.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT Project ID to which the server update enable is associated.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The resource region. If not defined, the provider region is used.\n"
+                },
+                "serverId": {
+                    "type": "string",
+                    "description": "Server ID to which the server update enable is associated.\n"
+                },
+                "updatePolicyId": {
+                    "type": "string",
+                    "description": "The update policy ID.\n"
+                }
+            },
+            "required": [
+                "enabled",
+                "projectId",
+                "region",
+                "serverId"
+            ],
+            "inputProperties": {
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT Project ID to which the server update enable is associated.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The resource region. If not defined, the provider region is used.\n"
+                },
+                "serverId": {
+                    "type": "string",
+                    "description": "Server ID to which the server update enable is associated.\n"
+                },
+                "updatePolicyId": {
+                    "type": "string",
+                    "description": "The update policy ID.\n"
+                }
+            },
+            "requiredInputs": [
+                "projectId",
+                "serverId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ServerUpdateEnable resources.\n",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Set to true if the service is enabled.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT Project ID to which the server update enable is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    },
+                    "serverId": {
+                        "type": "string",
+                        "description": "Server ID to which the server update enable is associated.\n"
+                    },
+                    "updatePolicyId": {
+                        "type": "string",
+                        "description": "The update policy ID.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "stackit:index/serverUpdateSchedule:ServerUpdateSchedule": {
-            "description": "Server update schedule resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\nresource \"stackit_server_update_schedule\" \"example\" {\n  project_id         = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  server_id          = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name               = \"example_update_schedule_name\"\n  rrule              = \"DTSTART;TZID=Europe/Sofia:20200803T023000 RRULE:FREQ=DAILY;INTERVAL=1\"\n  enabled            = true\n  maintenance_window = 1\n}\n\n# Only use the import statement, if you want to import an existing server update schedule\nimport {\n  to = stackit_server_update_schedule.import-example\n  id = \"${var.project_id},${var.region},${var.server_id},${var.server_update_schedule_id}\"\n}\n```\n",
+            "description": "Server update schedule resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\nresource \"stackit_server_update_schedule\" \"example\" {\n  project_id         = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  server_id          = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name               = \"example_update_schedule_name\"\n  rrule              = \"DTSTART;TZID=Europe/Sofia:20200803T023000 RRULE:FREQ=DAILY;INTERVAL=1\"\n  enabled            = true\n  maintenance_window = 1\n  depends_on = [\n    stackit_server_update_enable.enable\n  ]\n}\n\nresource \"stackit_server_update_enable\" \"enable\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  server_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\n# Only use the import statement, if you want to import an existing server update schedule\nimport {\n  to = stackit_server_update_schedule.import-example\n  id = \"${var.project_id},${var.region},${var.server_id},${var.server_update_schedule_id}\"\n}\n```\n",
             "properties": {
                 "enabled": {
                     "type": "boolean",
@@ -18191,6 +18550,65 @@
                 ]
             }
         },
+        "stackit:index/getAlbCertificate:getAlbCertificate": {
+            "description": "ALB TLS Certificate data source schema. Must have a region specified in the provider configuration.\n\n## Example Usage\n\n```terraform\ndata \"stackit_alb_certificate\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  cert_id    = \"example-certificate-v1-dfa816b3184f63f43d918ea5f9493f5359f6c2404b69afbb0b60fb1af69d0bc0\"\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getAlbCertificate.\n",
+                "properties": {
+                    "certId": {
+                        "type": "string",
+                        "description": "The ID of the certificate.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID to which the certificate is associated.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "certId",
+                    "projectId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getAlbCertificate.\n",
+                "properties": {
+                    "certId": {
+                        "type": "string",
+                        "description": "The ID of the certificate.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Terraform's internal resource ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`projectId`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`certId`\" pulumi-lang-dotnet=\"`CertId`\" pulumi-lang-go=\"`certId`\" pulumi-lang-python=\"`cert_id`\" pulumi-lang-yaml=\"`certId`\" pulumi-lang-java=\"`certId`\"\u003e`certId`\u003c/span\u003e\".\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Certificate name.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID to which the certificate is associated.\n"
+                    },
+                    "publicKey": {
+                        "type": "string",
+                        "description": "The PEM encoded public key part\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region (e.g. eu01). If not defined, the provider region is used.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "certId",
+                    "id",
+                    "name",
+                    "projectId",
+                    "publicKey",
+                    "region"
+                ]
+            }
+        },
         "stackit:index/getApplicationLoadBalancer:getApplicationLoadBalancer": {
             "description": "Application Load Balancer data source schema. Must have a region specified in the provider configuration.\n\n## Example Usage\n\n```terraform\ndata \"stackit_application_load_balancer\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-load-balancer\"\n}\n```\n",
             "inputs": {
@@ -18547,6 +18965,9 @@
                         "type": "string",
                         "description": "The rr set id.\n"
                     },
+                    "timeouts": {
+                        "$ref": "#/types/stackit:index/getDnsRecordSetTimeouts:getDnsRecordSetTimeouts"
+                    },
                     "zoneId": {
                         "type": "string",
                         "description": "The zone ID to which is dns record set is associated.\n"
@@ -18605,6 +19026,9 @@
                         "type": "string",
                         "description": "Record set state.\n"
                     },
+                    "timeouts": {
+                        "$ref": "#/types/stackit:index/getDnsRecordSetTimeouts:getDnsRecordSetTimeouts"
+                    },
                     "ttl": {
                         "type": "integer",
                         "description": "Time to live. E.g. 3600\n"
@@ -18648,6 +19072,9 @@
                     "projectId": {
                         "type": "string",
                         "description": "STACKIT project ID to which the dns zone is associated.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/stackit:index/getDnsZoneTimeouts:getDnsZoneTimeouts"
                     },
                     "zoneId": {
                         "type": "string",
@@ -18739,6 +19166,9 @@
                     "state": {
                         "type": "string",
                         "description": "Zone state.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/stackit:index/getDnsZoneTimeouts:getDnsZoneTimeouts"
                     },
                     "type": {
                         "type": "string",
@@ -19655,6 +20085,10 @@
                             "$ref": "#/types/stackit:index/getLoadbalancerTargetPool:getLoadbalancerTargetPool"
                         },
                         "description": "List of all target pools which will be used in the Load Balancer. Limited to 20.\n"
+                    },
+                    "version": {
+                        "type": "string",
+                        "description": "Load balancer resource version.\n"
                     }
                 },
                 "type": "object",
@@ -19670,7 +20104,8 @@
                     "privateAddress",
                     "projectId",
                     "securityGroupId",
-                    "targetPools"
+                    "targetPools",
+                    "version"
                 ]
             }
         },
@@ -23671,6 +24106,63 @@
                 ]
             }
         },
+        "stackit:index/getServerBackupEnable:getServerBackupEnable": {
+            "description": "Server backup enable datasource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getServerBackupEnable.\n",
+                "properties": {
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT Project ID to which the server backup enable is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    },
+                    "serverId": {
+                        "type": "string",
+                        "description": "Server ID to which the server backup enable is associated.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "projectId",
+                    "serverId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getServerBackupEnable.\n",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Set to true if the service is enabled.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Terraform's internal resource identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`projectId`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`serverId`\" pulumi-lang-dotnet=\"`ServerId`\" pulumi-lang-go=\"`serverId`\" pulumi-lang-python=\"`server_id`\" pulumi-lang-yaml=\"`serverId`\" pulumi-lang-java=\"`serverId`\"\u003e`serverId`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e\".\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT Project ID to which the server backup enable is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    },
+                    "serverId": {
+                        "type": "string",
+                        "description": "Server ID to which the server backup enable is associated.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "enabled",
+                    "id",
+                    "projectId",
+                    "serverId"
+                ]
+            }
+        },
         "stackit:index/getServerBackupSchedule:getServerBackupSchedule": {
             "description": "Server backup schedule datasource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\ndata \"stackit_server_backup_schedule\" \"example\" {\n  project_id         = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  server_id          = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  backup_schedule_id = xxxxx\n}\n```\n",
             "inputs": {
@@ -23807,6 +24299,63 @@
                 "required": [
                     "id",
                     "items",
+                    "projectId",
+                    "serverId"
+                ]
+            }
+        },
+        "stackit:index/getServerUpdateEnable:getServerUpdateEnable": {
+            "description": "Server update enable datasource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getServerUpdateEnable.\n",
+                "properties": {
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT Project ID to which the server update enable is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    },
+                    "serverId": {
+                        "type": "string",
+                        "description": "Server ID to which the server update enable is associated.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "projectId",
+                    "serverId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getServerUpdateEnable.\n",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Set to true if the service is enabled.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Terraform's internal resource identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`projectId`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`serverId`\" pulumi-lang-dotnet=\"`ServerId`\" pulumi-lang-go=\"`serverId`\" pulumi-lang-python=\"`server_id`\" pulumi-lang-yaml=\"`serverId`\" pulumi-lang-java=\"`serverId`\"\u003e`serverId`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e\".\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT Project ID to which the server update enable is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    },
+                    "serverId": {
+                        "type": "string",
+                        "description": "Server ID to which the server update enable is associated.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "enabled",
+                    "id",
                     "projectId",
                     "serverId"
                 ]
