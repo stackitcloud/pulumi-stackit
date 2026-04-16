@@ -32,6 +32,16 @@ namespace Pulumi.Stackit
 
         private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("stackit");
 
+        private static readonly __Value<string?> _albCertificatesCustomEndpoint = new __Value<string?>(() => __config.Get("albCertificatesCustomEndpoint"));
+        /// <summary>
+        /// Custom endpoint for the Application Load Balancer TLS Certificate service
+        /// </summary>
+        public static string? AlbCertificatesCustomEndpoint
+        {
+            get => _albCertificatesCustomEndpoint.Get();
+            set => _albCertificatesCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _albCustomEndpoint = new __Value<string?>(() => __config.Get("albCustomEndpoint"));
         /// <summary>
         /// Custom endpoint for the Application Load Balancer service

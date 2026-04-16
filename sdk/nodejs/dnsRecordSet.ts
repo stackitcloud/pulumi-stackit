@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -73,6 +75,7 @@ export class DnsRecordSet extends pulumi.CustomResource {
      * Record set state.
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.DnsRecordSetTimeouts | undefined>;
     /**
      * Time to live. E.g. 3600
      */
@@ -108,6 +111,7 @@ export class DnsRecordSet extends pulumi.CustomResource {
             resourceInputs["recordSetId"] = state?.recordSetId;
             resourceInputs["records"] = state?.records;
             resourceInputs["state"] = state?.state;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["ttl"] = state?.ttl;
             resourceInputs["type"] = state?.type;
             resourceInputs["zoneId"] = state?.zoneId;
@@ -130,6 +134,7 @@ export class DnsRecordSet extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["records"] = args?.records;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["ttl"] = args?.ttl;
             resourceInputs["type"] = args?.type;
             resourceInputs["zoneId"] = args?.zoneId;
@@ -183,6 +188,7 @@ export interface DnsRecordSetState {
      * Record set state.
      */
     state?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.DnsRecordSetTimeouts>;
     /**
      * Time to live. E.g. 3600
      */
@@ -221,6 +227,7 @@ export interface DnsRecordSetArgs {
      * Records.
      */
     records: pulumi.Input<pulumi.Input<string>[]>;
+    timeouts?: pulumi.Input<inputs.DnsRecordSetTimeouts>;
     /**
      * Time to live. E.g. 3600
      */

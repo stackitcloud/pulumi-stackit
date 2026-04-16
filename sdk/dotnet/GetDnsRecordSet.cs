@@ -75,6 +75,9 @@ namespace Pulumi.Stackit
         [Input("recordSetId", required: true)]
         public string RecordSetId { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Inputs.GetDnsRecordSetTimeoutsArgs? Timeouts { get; set; }
+
         /// <summary>
         /// The zone ID to which is dns record set is associated.
         /// </summary>
@@ -100,6 +103,9 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("recordSetId", required: true)]
         public Input<string> RecordSetId { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Input<Inputs.GetDnsRecordSetTimeoutsInputArgs>? Timeouts { get; set; }
 
         /// <summary>
         /// The zone ID to which is dns record set is associated.
@@ -157,6 +163,7 @@ namespace Pulumi.Stackit
         /// Record set state.
         /// </summary>
         public readonly string State;
+        public readonly Outputs.GetDnsRecordSetTimeoutsResult? Timeouts;
         /// <summary>
         /// Time to live. E.g. 3600
         /// </summary>
@@ -192,6 +199,8 @@ namespace Pulumi.Stackit
 
             string state,
 
+            Outputs.GetDnsRecordSetTimeoutsResult? timeouts,
+
             int ttl,
 
             string type,
@@ -208,6 +217,7 @@ namespace Pulumi.Stackit
             RecordSetId = recordSetId;
             Records = records;
             State = state;
+            Timeouts = timeouts;
             Ttl = ttl;
             Type = type;
             ZoneId = zoneId;

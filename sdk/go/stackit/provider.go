@@ -18,6 +18,8 @@ import (
 type Provider struct {
 	pulumi.ProviderResourceState
 
+	// Custom endpoint for the Application Load Balancer TLS Certificate service
+	AlbCertificatesCustomEndpoint pulumi.StringPtrOutput `pulumi:"albCertificatesCustomEndpoint"`
 	// Custom endpoint for the Application Load Balancer service
 	AlbCustomEndpoint pulumi.StringPtrOutput `pulumi:"albCustomEndpoint"`
 	// Custom endpoint for the Membership service
@@ -129,6 +131,8 @@ func NewProvider(ctx *pulumi.Context,
 }
 
 type providerArgs struct {
+	// Custom endpoint for the Application Load Balancer TLS Certificate service
+	AlbCertificatesCustomEndpoint *string `pulumi:"albCertificatesCustomEndpoint"`
 	// Custom endpoint for the Application Load Balancer service
 	AlbCustomEndpoint *string `pulumi:"albCustomEndpoint"`
 	// Custom endpoint for the Membership service
@@ -231,6 +235,8 @@ type providerArgs struct {
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
+	// Custom endpoint for the Application Load Balancer TLS Certificate service
+	AlbCertificatesCustomEndpoint pulumi.StringPtrInput
 	// Custom endpoint for the Application Load Balancer service
 	AlbCustomEndpoint pulumi.StringPtrInput
 	// Custom endpoint for the Membership service
@@ -389,6 +395,11 @@ func (o ProviderOutput) ToProviderOutput() ProviderOutput {
 
 func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) ProviderOutput {
 	return o
+}
+
+// Custom endpoint for the Application Load Balancer TLS Certificate service
+func (o ProviderOutput) AlbCertificatesCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AlbCertificatesCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 // Custom endpoint for the Application Load Balancer service

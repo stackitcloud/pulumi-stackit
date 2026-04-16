@@ -10,6 +10,11 @@ export type AffinityGroup = import("./affinityGroup").AffinityGroup;
 export const AffinityGroup: typeof import("./affinityGroup").AffinityGroup = null as any;
 utilities.lazyLoad(exports, ["AffinityGroup"], () => require("./affinityGroup"));
 
+export { AlbCertificateArgs, AlbCertificateState } from "./albCertificate";
+export type AlbCertificate = import("./albCertificate").AlbCertificate;
+export const AlbCertificate: typeof import("./albCertificate").AlbCertificate = null as any;
+utilities.lazyLoad(exports, ["AlbCertificate"], () => require("./albCertificate"));
+
 export { ApplicationLoadBalancerArgs, ApplicationLoadBalancerState } from "./applicationLoadBalancer";
 export type ApplicationLoadBalancer = import("./applicationLoadBalancer").ApplicationLoadBalancer;
 export const ApplicationLoadBalancer: typeof import("./applicationLoadBalancer").ApplicationLoadBalancer = null as any;
@@ -79,6 +84,11 @@ export { GetAffinityGroupArgs, GetAffinityGroupResult, GetAffinityGroupOutputArg
 export const getAffinityGroup: typeof import("./getAffinityGroup").getAffinityGroup = null as any;
 export const getAffinityGroupOutput: typeof import("./getAffinityGroup").getAffinityGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getAffinityGroup","getAffinityGroupOutput"], () => require("./getAffinityGroup"));
+
+export { GetAlbCertificateArgs, GetAlbCertificateResult, GetAlbCertificateOutputArgs } from "./getAlbCertificate";
+export const getAlbCertificate: typeof import("./getAlbCertificate").getAlbCertificate = null as any;
+export const getAlbCertificateOutput: typeof import("./getAlbCertificate").getAlbCertificateOutput = null as any;
+utilities.lazyLoad(exports, ["getAlbCertificate","getAlbCertificateOutput"], () => require("./getAlbCertificate"));
 
 export { GetApplicationLoadBalancerArgs, GetApplicationLoadBalancerResult, GetApplicationLoadBalancerOutputArgs } from "./getApplicationLoadBalancer";
 export const getApplicationLoadBalancer: typeof import("./getApplicationLoadBalancer").getApplicationLoadBalancer = null as any;
@@ -400,6 +410,11 @@ export const getServer: typeof import("./getServer").getServer = null as any;
 export const getServerOutput: typeof import("./getServer").getServerOutput = null as any;
 utilities.lazyLoad(exports, ["getServer","getServerOutput"], () => require("./getServer"));
 
+export { GetServerBackupEnableArgs, GetServerBackupEnableResult, GetServerBackupEnableOutputArgs } from "./getServerBackupEnable";
+export const getServerBackupEnable: typeof import("./getServerBackupEnable").getServerBackupEnable = null as any;
+export const getServerBackupEnableOutput: typeof import("./getServerBackupEnable").getServerBackupEnableOutput = null as any;
+utilities.lazyLoad(exports, ["getServerBackupEnable","getServerBackupEnableOutput"], () => require("./getServerBackupEnable"));
+
 export { GetServerBackupScheduleArgs, GetServerBackupScheduleResult, GetServerBackupScheduleOutputArgs } from "./getServerBackupSchedule";
 export const getServerBackupSchedule: typeof import("./getServerBackupSchedule").getServerBackupSchedule = null as any;
 export const getServerBackupScheduleOutput: typeof import("./getServerBackupSchedule").getServerBackupScheduleOutput = null as any;
@@ -409,6 +424,11 @@ export { GetServerBackupSchedulesArgs, GetServerBackupSchedulesResult, GetServer
 export const getServerBackupSchedules: typeof import("./getServerBackupSchedules").getServerBackupSchedules = null as any;
 export const getServerBackupSchedulesOutput: typeof import("./getServerBackupSchedules").getServerBackupSchedulesOutput = null as any;
 utilities.lazyLoad(exports, ["getServerBackupSchedules","getServerBackupSchedulesOutput"], () => require("./getServerBackupSchedules"));
+
+export { GetServerUpdateEnableArgs, GetServerUpdateEnableResult, GetServerUpdateEnableOutputArgs } from "./getServerUpdateEnable";
+export const getServerUpdateEnable: typeof import("./getServerUpdateEnable").getServerUpdateEnable = null as any;
+export const getServerUpdateEnableOutput: typeof import("./getServerUpdateEnable").getServerUpdateEnableOutput = null as any;
+utilities.lazyLoad(exports, ["getServerUpdateEnable","getServerUpdateEnableOutput"], () => require("./getServerUpdateEnable"));
 
 export { GetServerUpdateScheduleArgs, GetServerUpdateScheduleResult, GetServerUpdateScheduleOutputArgs } from "./getServerUpdateSchedule";
 export const getServerUpdateSchedule: typeof import("./getServerUpdateSchedule").getServerUpdateSchedule = null as any;
@@ -748,6 +768,11 @@ export type Server = import("./server").Server;
 export const Server: typeof import("./server").Server = null as any;
 utilities.lazyLoad(exports, ["Server"], () => require("./server"));
 
+export { ServerBackupEnableArgs, ServerBackupEnableState } from "./serverBackupEnable";
+export type ServerBackupEnable = import("./serverBackupEnable").ServerBackupEnable;
+export const ServerBackupEnable: typeof import("./serverBackupEnable").ServerBackupEnable = null as any;
+utilities.lazyLoad(exports, ["ServerBackupEnable"], () => require("./serverBackupEnable"));
+
 export { ServerBackupScheduleArgs, ServerBackupScheduleState } from "./serverBackupSchedule";
 export type ServerBackupSchedule = import("./serverBackupSchedule").ServerBackupSchedule;
 export const ServerBackupSchedule: typeof import("./serverBackupSchedule").ServerBackupSchedule = null as any;
@@ -762,6 +787,11 @@ export { ServerServiceAccountAttachArgs, ServerServiceAccountAttachState } from 
 export type ServerServiceAccountAttach = import("./serverServiceAccountAttach").ServerServiceAccountAttach;
 export const ServerServiceAccountAttach: typeof import("./serverServiceAccountAttach").ServerServiceAccountAttach = null as any;
 utilities.lazyLoad(exports, ["ServerServiceAccountAttach"], () => require("./serverServiceAccountAttach"));
+
+export { ServerUpdateEnableArgs, ServerUpdateEnableState } from "./serverUpdateEnable";
+export type ServerUpdateEnable = import("./serverUpdateEnable").ServerUpdateEnable;
+export const ServerUpdateEnable: typeof import("./serverUpdateEnable").ServerUpdateEnable = null as any;
+utilities.lazyLoad(exports, ["ServerUpdateEnable"], () => require("./serverUpdateEnable"));
 
 export { ServerUpdateScheduleArgs, ServerUpdateScheduleState } from "./serverUpdateSchedule";
 export type ServerUpdateSchedule = import("./serverUpdateSchedule").ServerUpdateSchedule;
@@ -839,6 +869,8 @@ const _module = {
         switch (type) {
             case "stackit:index/affinityGroup:AffinityGroup":
                 return new AffinityGroup(name, <any>undefined, { urn })
+            case "stackit:index/albCertificate:AlbCertificate":
+                return new AlbCertificate(name, <any>undefined, { urn })
             case "stackit:index/applicationLoadBalancer:ApplicationLoadBalancer":
                 return new ApplicationLoadBalancer(name, <any>undefined, { urn })
             case "stackit:index/authorizationFolderRoleAssignment:AuthorizationFolderRoleAssignment":
@@ -971,12 +1003,16 @@ const _module = {
                 return new SecurityGroupRule(name, <any>undefined, { urn })
             case "stackit:index/server:Server":
                 return new Server(name, <any>undefined, { urn })
+            case "stackit:index/serverBackupEnable:ServerBackupEnable":
+                return new ServerBackupEnable(name, <any>undefined, { urn })
             case "stackit:index/serverBackupSchedule:ServerBackupSchedule":
                 return new ServerBackupSchedule(name, <any>undefined, { urn })
             case "stackit:index/serverNetworkInterfaceAttach:ServerNetworkInterfaceAttach":
                 return new ServerNetworkInterfaceAttach(name, <any>undefined, { urn })
             case "stackit:index/serverServiceAccountAttach:ServerServiceAccountAttach":
                 return new ServerServiceAccountAttach(name, <any>undefined, { urn })
+            case "stackit:index/serverUpdateEnable:ServerUpdateEnable":
+                return new ServerUpdateEnable(name, <any>undefined, { urn })
             case "stackit:index/serverUpdateSchedule:ServerUpdateSchedule":
                 return new ServerUpdateSchedule(name, <any>undefined, { urn })
             case "stackit:index/serverVolumeAttach:ServerVolumeAttach":
@@ -1007,6 +1043,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("stackit", "index/affinityGroup", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/albCertificate", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/applicationLoadBalancer", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/authorizationFolderRoleAssignment", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/authorizationOrganizationRoleAssignment", _module)
@@ -1073,9 +1110,11 @@ pulumi.runtime.registerResourceModule("stackit", "index/secretsmanagerUser", _mo
 pulumi.runtime.registerResourceModule("stackit", "index/securityGroup", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/securityGroupRule", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/server", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/serverBackupEnable", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/serverBackupSchedule", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/serverNetworkInterfaceAttach", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/serverServiceAccountAttach", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/serverUpdateEnable", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/serverUpdateSchedule", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/serverVolumeAttach", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/serviceAccount", _module)

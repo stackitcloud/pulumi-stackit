@@ -122,6 +122,9 @@ namespace Pulumi.Stackit
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
+        [Output("timeouts")]
+        public Output<Outputs.DnsZoneTimeouts?> Timeouts { get; private set; } = null!;
+
         /// <summary>
         /// Zone type. Defaults to `Primary`. Possible values are: `Primary`, `Secondary`.
         /// </summary>
@@ -274,6 +277,9 @@ namespace Pulumi.Stackit
         [Input("retryTime")]
         public Input<int>? RetryTime { get; set; }
 
+        [Input("timeouts")]
+        public Input<Inputs.DnsZoneTimeoutsArgs>? Timeouts { get; set; }
+
         /// <summary>
         /// Zone type. Defaults to `Primary`. Possible values are: `Primary`, `Secondary`.
         /// </summary>
@@ -398,6 +404,9 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.DnsZoneTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
         /// Zone type. Defaults to `Primary`. Possible values are: `Primary`, `Secondary`.

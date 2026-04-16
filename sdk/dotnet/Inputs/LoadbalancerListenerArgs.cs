@@ -33,6 +33,7 @@ namespace Pulumi.Stackit.Inputs
         /// <summary>
         /// A list of domain names to match in order to pass TLS traffic to the target pool in the current listener
         /// </summary>
+        [Obsolete(@"`ServerNameIndicators` is deprecated and will be removed after October 2026")]
         public InputList<Inputs.LoadbalancerListenerServerNameIndicatorArgs> ServerNameIndicators
         {
             get => _serverNameIndicators ?? (_serverNameIndicators = new InputList<Inputs.LoadbalancerListenerServerNameIndicatorArgs>());

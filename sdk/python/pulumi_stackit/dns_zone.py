@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['DnsZoneArgs', 'DnsZone']
 
@@ -33,6 +35,7 @@ class DnsZoneArgs:
                  primaries: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  refresh_time: Optional[pulumi.Input[_builtins.int]] = None,
                  retry_time: Optional[pulumi.Input[_builtins.int]] = None,
+                 timeouts: Optional[pulumi.Input['DnsZoneTimeoutsArgs']] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DnsZone resource.
@@ -78,6 +81,8 @@ class DnsZoneArgs:
             pulumi.set(__self__, "refresh_time", refresh_time)
         if retry_time is not None:
             pulumi.set(__self__, "retry_time", retry_time)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if type is not None:
             pulumi.set(__self__, "type", type)
 
@@ -248,6 +253,15 @@ class DnsZoneArgs:
 
     @_builtins.property
     @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['DnsZoneTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['DnsZoneTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @_builtins.property
+    @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Zone type. Defaults to `primary`. Possible values are: `primary`, `secondary`.
@@ -280,6 +294,7 @@ class _DnsZoneState:
                  retry_time: Optional[pulumi.Input[_builtins.int]] = None,
                  serial_number: Optional[pulumi.Input[_builtins.int]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input['DnsZoneTimeoutsArgs']] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  visibility: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
@@ -343,6 +358,8 @@ class _DnsZoneState:
             pulumi.set(__self__, "serial_number", serial_number)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if visibility is not None:
@@ -565,6 +582,15 @@ class _DnsZoneState:
 
     @_builtins.property
     @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['DnsZoneTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['DnsZoneTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @_builtins.property
+    @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Zone type. Defaults to `primary`. Possible values are: `primary`, `secondary`.
@@ -620,6 +646,7 @@ class DnsZone(pulumi.CustomResource):
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  refresh_time: Optional[pulumi.Input[_builtins.int]] = None,
                  retry_time: Optional[pulumi.Input[_builtins.int]] = None,
+                 timeouts: Optional[pulumi.Input[Union['DnsZoneTimeoutsArgs', 'DnsZoneTimeoutsArgsDict']]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -686,6 +713,7 @@ class DnsZone(pulumi.CustomResource):
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  refresh_time: Optional[pulumi.Input[_builtins.int]] = None,
                  retry_time: Optional[pulumi.Input[_builtins.int]] = None,
+                 timeouts: Optional[pulumi.Input[Union['DnsZoneTimeoutsArgs', 'DnsZoneTimeoutsArgsDict']]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -714,6 +742,7 @@ class DnsZone(pulumi.CustomResource):
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["refresh_time"] = refresh_time
             __props__.__dict__["retry_time"] = retry_time
+            __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["type"] = type
             __props__.__dict__["primary_name_server"] = None
             __props__.__dict__["record_count"] = None
@@ -749,6 +778,7 @@ class DnsZone(pulumi.CustomResource):
             retry_time: Optional[pulumi.Input[_builtins.int]] = None,
             serial_number: Optional[pulumi.Input[_builtins.int]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
+            timeouts: Optional[pulumi.Input[Union['DnsZoneTimeoutsArgs', 'DnsZoneTimeoutsArgsDict']]] = None,
             type: Optional[pulumi.Input[_builtins.str]] = None,
             visibility: Optional[pulumi.Input[_builtins.str]] = None,
             zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'DnsZone':
@@ -802,6 +832,7 @@ class DnsZone(pulumi.CustomResource):
         __props__.__dict__["retry_time"] = retry_time
         __props__.__dict__["serial_number"] = serial_number
         __props__.__dict__["state"] = state
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["type"] = type
         __props__.__dict__["visibility"] = visibility
         __props__.__dict__["zone_id"] = zone_id
@@ -947,6 +978,11 @@ class DnsZone(pulumi.CustomResource):
         Zone state. E.g. `CREATE_SUCCEEDED`.
         """
         return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.DnsZoneTimeouts']]:
+        return pulumi.get(self, "timeouts")
 
     @_builtins.property
     @pulumi.getter

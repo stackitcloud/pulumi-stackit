@@ -66,9 +66,9 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly ImmutableArray<string> TlsCiphers;
         /// <summary>
-        /// The TLS protocol to use.
+        /// List of TLS protocols to use.
         /// </summary>
-        public readonly string TlsProtocols;
+        public readonly ImmutableArray<string> TlsProtocols;
 
         [OutputConstructor]
         private GetOpensearchInstanceParametersResult(
@@ -98,7 +98,7 @@ namespace Pulumi.Stackit.Outputs
 
             ImmutableArray<string> tlsCiphers,
 
-            string tlsProtocols)
+            ImmutableArray<string> tlsProtocols)
         {
             EnableMonitoring = enableMonitoring;
             Graphite = graphite;

@@ -71,6 +71,9 @@ namespace Pulumi.Stackit
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
+        [Output("timeouts")]
+        public Output<Outputs.DnsRecordSetTimeouts?> Timeouts { get; private set; } = null!;
+
         /// <summary>
         /// Time to live. E.g. 3600
         /// </summary>
@@ -172,6 +175,9 @@ namespace Pulumi.Stackit
             set => _records = value;
         }
 
+        [Input("timeouts")]
+        public Input<Inputs.DnsRecordSetTimeoutsArgs>? Timeouts { get; set; }
+
         /// <summary>
         /// Time to live. E.g. 3600
         /// </summary>
@@ -257,6 +263,9 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.DnsRecordSetTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
         /// Time to live. E.g. 3600

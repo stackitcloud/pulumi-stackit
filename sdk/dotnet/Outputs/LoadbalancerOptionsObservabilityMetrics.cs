@@ -18,7 +18,7 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly string? CredentialsRef;
         /// <summary>
-        /// Credentials reference for metrics. Not changeable after creation.
+        /// The ARGUS/Prometheus remote write Push URL to ship the metrics to. Not changeable after creation.
         /// </summary>
         public readonly string? PushUrl;
 

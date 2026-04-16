@@ -89,6 +89,10 @@ export class Loadbalancer extends pulumi.CustomResource {
      * List of all target pools which will be used in the Load Balancer. Limited to 20.
      */
     declare public readonly targetPools: pulumi.Output<outputs.LoadbalancerTargetPool[]>;
+    /**
+     * Load balancer resource version. This is needed to have concurrency safe updates.
+     */
+    declare public /*out*/ readonly version: pulumi.Output<string>;
 
     /**
      * Create a Loadbalancer resource with the given unique name, arguments, and options.
@@ -115,6 +119,7 @@ export class Loadbalancer extends pulumi.CustomResource {
             resourceInputs["region"] = state?.region;
             resourceInputs["securityGroupId"] = state?.securityGroupId;
             resourceInputs["targetPools"] = state?.targetPools;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as LoadbalancerArgs | undefined;
             if (args?.listeners === undefined && !opts.urn) {
@@ -141,6 +146,7 @@ export class Loadbalancer extends pulumi.CustomResource {
             resourceInputs["targetPools"] = args?.targetPools;
             resourceInputs["privateAddress"] = undefined /*out*/;
             resourceInputs["securityGroupId"] = undefined /*out*/;
+            resourceInputs["version"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Loadbalancer.__pulumiType, name, resourceInputs, opts);
@@ -199,6 +205,10 @@ export interface LoadbalancerState {
      * List of all target pools which will be used in the Load Balancer. Limited to 20.
      */
     targetPools?: pulumi.Input<pulumi.Input<inputs.LoadbalancerTargetPool>[]>;
+    /**
+     * Load balancer resource version. This is needed to have concurrency safe updates.
+     */
+    version?: pulumi.Input<string>;
 }
 
 /**

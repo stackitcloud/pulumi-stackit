@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['DnsRecordSetArgs', 'DnsRecordSet']
 
@@ -26,6 +28,7 @@ class DnsRecordSetArgs:
                  active: Optional[pulumi.Input[_builtins.bool]] = None,
                  comment: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input['DnsRecordSetTimeoutsArgs']] = None,
                  ttl: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a DnsRecordSet resource.
@@ -49,6 +52,8 @@ class DnsRecordSetArgs:
             pulumi.set(__self__, "comment", comment)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if ttl is not None:
             pulumi.set(__self__, "ttl", ttl)
 
@@ -138,6 +143,15 @@ class DnsRecordSetArgs:
 
     @_builtins.property
     @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['DnsRecordSetTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['DnsRecordSetTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @_builtins.property
+    @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Time to live. E.g. 3600
@@ -161,6 +175,7 @@ class _DnsRecordSetState:
                  record_set_id: Optional[pulumi.Input[_builtins.str]] = None,
                  records: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
+                 timeouts: Optional[pulumi.Input['DnsRecordSetTimeoutsArgs']] = None,
                  ttl: Optional[pulumi.Input[_builtins.int]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None):
@@ -198,6 +213,8 @@ class _DnsRecordSetState:
             pulumi.set(__self__, "records", records)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
         if ttl is not None:
             pulumi.set(__self__, "ttl", ttl)
         if type is not None:
@@ -315,6 +332,15 @@ class _DnsRecordSetState:
 
     @_builtins.property
     @pulumi.getter
+    def timeouts(self) -> Optional[pulumi.Input['DnsRecordSetTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: Optional[pulumi.Input['DnsRecordSetTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
+    @_builtins.property
+    @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
         Time to live. E.g. 3600
@@ -361,6 +387,7 @@ class DnsRecordSet(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  records: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timeouts: Optional[pulumi.Input[Union['DnsRecordSetTimeoutsArgs', 'DnsRecordSetTimeoutsArgsDict']]] = None,
                  ttl: Optional[pulumi.Input[_builtins.int]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -414,6 +441,7 @@ class DnsRecordSet(pulumi.CustomResource):
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  records: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 timeouts: Optional[pulumi.Input[Union['DnsRecordSetTimeoutsArgs', 'DnsRecordSetTimeoutsArgsDict']]] = None,
                  ttl: Optional[pulumi.Input[_builtins.int]] = None,
                  type: Optional[pulumi.Input[_builtins.str]] = None,
                  zone_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -435,6 +463,7 @@ class DnsRecordSet(pulumi.CustomResource):
             if records is None and not opts.urn:
                 raise TypeError("Missing required property 'records'")
             __props__.__dict__["records"] = records
+            __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["ttl"] = ttl
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
@@ -465,6 +494,7 @@ class DnsRecordSet(pulumi.CustomResource):
             record_set_id: Optional[pulumi.Input[_builtins.str]] = None,
             records: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
+            timeouts: Optional[pulumi.Input[Union['DnsRecordSetTimeoutsArgs', 'DnsRecordSetTimeoutsArgsDict']]] = None,
             ttl: Optional[pulumi.Input[_builtins.int]] = None,
             type: Optional[pulumi.Input[_builtins.str]] = None,
             zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'DnsRecordSet':
@@ -501,6 +531,7 @@ class DnsRecordSet(pulumi.CustomResource):
         __props__.__dict__["record_set_id"] = record_set_id
         __props__.__dict__["records"] = records
         __props__.__dict__["state"] = state
+        __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["ttl"] = ttl
         __props__.__dict__["type"] = type
         __props__.__dict__["zone_id"] = zone_id
@@ -577,6 +608,11 @@ class DnsRecordSet(pulumi.CustomResource):
         Record set state.
         """
         return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.DnsRecordSetTimeouts']]:
+        return pulumi.get(self, "timeouts")
 
     @_builtins.property
     @pulumi.getter

@@ -46,6 +46,8 @@ __all__ = [
     'CdnDistributionConfigBackendCredentials',
     'CdnDistributionConfigOptimizer',
     'CdnDistributionDomain',
+    'DnsRecordSetTimeouts',
+    'DnsZoneTimeouts',
     'ImageChecksum',
     'ImageConfig',
     'LoadbalancerListener',
@@ -143,6 +145,8 @@ __all__ = [
     'GetCdnDistributionConfigBackendResult',
     'GetCdnDistributionConfigOptimizerResult',
     'GetCdnDistributionDomainResult',
+    'GetDnsRecordSetTimeoutsResult',
+    'GetDnsZoneTimeoutsResult',
     'GetEdgecloudInstancesInstanceResult',
     'GetEdgecloudPlansPlanResult',
     'GetImageChecksumResult',
@@ -1779,6 +1783,116 @@ class CdnDistributionDomain(dict):
 
 
 @pulumi.output_type
+class DnsRecordSetTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class DnsZoneTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
 class ImageChecksum(dict):
     def __init__(__self__, *,
                  algorithm: Optional[_builtins.str] = None,
@@ -2093,6 +2207,7 @@ class LoadbalancerListener(dict):
 
     @_builtins.property
     @pulumi.getter(name="serverNameIndicators")
+    @_utilities.deprecated("""`server_name_indicators` is deprecated and will be removed after October 2026""")
     def server_name_indicators(self) -> Optional[Sequence['outputs.LoadbalancerListenerServerNameIndicator']]:
         """
         A list of domain names to match in order to pass TLS traffic to the target pool in the current listener
@@ -2370,7 +2485,7 @@ class LoadbalancerOptionsObservabilityLogs(dict):
                  push_url: Optional[_builtins.str] = None):
         """
         :param _builtins.str credentials_ref: Credentials reference for logs. Not changeable after creation.
-        :param _builtins.str push_url: Credentials reference for logs. Not changeable after creation.
+        :param _builtins.str push_url: The ARGUS/Loki remote write Push URL to ship the logs to. Not changeable after creation.
         """
         if credentials_ref is not None:
             pulumi.set(__self__, "credentials_ref", credentials_ref)
@@ -2389,7 +2504,7 @@ class LoadbalancerOptionsObservabilityLogs(dict):
     @pulumi.getter(name="pushUrl")
     def push_url(self) -> Optional[_builtins.str]:
         """
-        Credentials reference for logs. Not changeable after creation.
+        The ARGUS/Loki remote write Push URL to ship the logs to. Not changeable after creation.
         """
         return pulumi.get(self, "push_url")
 
@@ -2420,7 +2535,7 @@ class LoadbalancerOptionsObservabilityMetrics(dict):
                  push_url: Optional[_builtins.str] = None):
         """
         :param _builtins.str credentials_ref: Credentials reference for metrics. Not changeable after creation.
-        :param _builtins.str push_url: Credentials reference for metrics. Not changeable after creation.
+        :param _builtins.str push_url: The ARGUS/Prometheus remote write Push URL to ship the metrics to. Not changeable after creation.
         """
         if credentials_ref is not None:
             pulumi.set(__self__, "credentials_ref", credentials_ref)
@@ -2439,7 +2554,7 @@ class LoadbalancerOptionsObservabilityMetrics(dict):
     @pulumi.getter(name="pushUrl")
     def push_url(self) -> Optional[_builtins.str]:
         """
-        Credentials reference for metrics. Not changeable after creation.
+        The ARGUS/Prometheus remote write Push URL to ship the metrics to. Not changeable after creation.
         """
         return pulumi.get(self, "push_url")
 
@@ -7902,6 +8017,44 @@ class GetCdnDistributionDomainResult(dict):
 
 
 @pulumi.output_type
+class GetDnsRecordSetTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+
+@pulumi.output_type
+class GetDnsZoneTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+
+@pulumi.output_type
 class GetEdgecloudInstancesInstanceResult(dict):
     def __init__(__self__, *,
                  created: _builtins.str,
@@ -8557,6 +8710,7 @@ class GetLoadbalancerListenerResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="serverNameIndicators")
+    @_utilities.deprecated("""`server_name_indicators` is deprecated and will be removed after October 2026""")
     def server_name_indicators(self) -> Optional[Sequence['outputs.GetLoadbalancerListenerServerNameIndicatorResult']]:
         """
         A list of domain names to match in order to pass TLS traffic to the target pool in the current listener
@@ -10346,7 +10500,7 @@ class GetOpensearchInstanceParametersResult(dict):
                  sgw_acl: _builtins.str,
                  syslogs: Sequence[_builtins.str],
                  tls_ciphers: Sequence[_builtins.str],
-                 tls_protocols: _builtins.str):
+                 tls_protocols: Sequence[_builtins.str]):
         """
         :param _builtins.bool enable_monitoring: Enable monitoring.
         :param _builtins.str graphite: If set, monitoring with Graphite will be enabled. Expects the host and port where the Graphite metrics should be sent to (host:port).
@@ -10361,7 +10515,7 @@ class GetOpensearchInstanceParametersResult(dict):
         :param _builtins.str sgw_acl: Comma separated list of IP networks in CIDR notation which are allowed to access this instance.
         :param Sequence[_builtins.str] syslogs: List of syslog servers to send logs to.
         :param Sequence[_builtins.str] tls_ciphers: List of TLS ciphers to use.
-        :param _builtins.str tls_protocols: The TLS protocol to use.
+        :param Sequence[_builtins.str] tls_protocols: List of TLS protocols to use.
         """
         pulumi.set(__self__, "enable_monitoring", enable_monitoring)
         pulumi.set(__self__, "graphite", graphite)
@@ -10484,9 +10638,9 @@ class GetOpensearchInstanceParametersResult(dict):
 
     @_builtins.property
     @pulumi.getter(name="tlsProtocols")
-    def tls_protocols(self) -> _builtins.str:
+    def tls_protocols(self) -> Sequence[_builtins.str]:
         """
-        The TLS protocol to use.
+        List of TLS protocols to use.
         """
         return pulumi.get(self, "tls_protocols")
 

@@ -8,6 +8,17 @@ declare var exports: any;
 const __config = new pulumi.Config("stackit");
 
 /**
+ * Custom endpoint for the Application Load Balancer TLS Certificate service
+ */
+export declare const albCertificatesCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "albCertificatesCustomEndpoint", {
+    get() {
+        return __config.get("albCertificatesCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+/**
  * Custom endpoint for the Application Load Balancer service
  */
 export declare const albCustomEndpoint: string | undefined;

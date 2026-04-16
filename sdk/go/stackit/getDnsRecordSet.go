@@ -29,7 +29,8 @@ type LookupDnsRecordSetArgs struct {
 	// STACKIT project ID to which the dns record set is associated.
 	ProjectId string `pulumi:"projectId"`
 	// The rr set id.
-	RecordSetId string `pulumi:"recordSetId"`
+	RecordSetId string                   `pulumi:"recordSetId"`
+	Timeouts    *GetDnsRecordSetTimeouts `pulumi:"timeouts"`
 	// The zone ID to which is dns record set is associated.
 	ZoneId string `pulumi:"zoneId"`
 }
@@ -55,7 +56,8 @@ type LookupDnsRecordSetResult struct {
 	// Records.
 	Records []string `pulumi:"records"`
 	// Record set state.
-	State string `pulumi:"state"`
+	State    string                   `pulumi:"state"`
+	Timeouts *GetDnsRecordSetTimeouts `pulumi:"timeouts"`
 	// Time to live. E.g. 3600
 	Ttl int `pulumi:"ttl"`
 	// The record set type. E.g. `A` or `CNAME`
@@ -78,7 +80,8 @@ type LookupDnsRecordSetOutputArgs struct {
 	// STACKIT project ID to which the dns record set is associated.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 	// The rr set id.
-	RecordSetId pulumi.StringInput `pulumi:"recordSetId"`
+	RecordSetId pulumi.StringInput              `pulumi:"recordSetId"`
+	Timeouts    GetDnsRecordSetTimeoutsPtrInput `pulumi:"timeouts"`
 	// The zone ID to which is dns record set is associated.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
@@ -150,6 +153,10 @@ func (o LookupDnsRecordSetResultOutput) Records() pulumi.StringArrayOutput {
 // Record set state.
 func (o LookupDnsRecordSetResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDnsRecordSetResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+func (o LookupDnsRecordSetResultOutput) Timeouts() GetDnsRecordSetTimeoutsPtrOutput {
+	return o.ApplyT(func(v LookupDnsRecordSetResult) *GetDnsRecordSetTimeouts { return v.Timeouts }).(GetDnsRecordSetTimeoutsPtrOutput)
 }
 
 // Time to live. E.g. 3600

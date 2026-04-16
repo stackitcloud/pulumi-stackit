@@ -14,6 +14,11 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
 
+albCertificatesCustomEndpoint: Optional[str]
+"""
+Custom endpoint for the Application Load Balancer TLS Certificate service
+"""
+
 albCustomEndpoint: Optional[str]
 """
 Custom endpoint for the Application Load Balancer service

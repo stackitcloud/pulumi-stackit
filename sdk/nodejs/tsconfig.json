@@ -1,19 +1,26 @@
 {
     "compilerOptions": {
+        // Output
         "outDir": "bin",
-        "target": "ES2020",
-        "module": "commonjs",
-        "moduleResolution": "node",
         "declaration": true,
+        "declarationMap": true,
         "sourceMap": true,
         "stripInternal": true,
-        "experimentalDecorators": true,
+        // Environment
+        "target": "ES2022",
+        "module": "nodenext",
+        "moduleResolution": "nodenext",
+        "moduleDetection": "force",
+        "types": ["node"],
+        // Type Checking
+        "strict": true,
         "noFallthroughCasesInSwitch": true,
-        "forceConsistentCasingInFileNames": true,
-        "strict": true
+        "noImplicitReturns": true,
+        "skipLibCheck": true
     },
     "files": [
         "affinityGroup.ts",
+        "albCertificate.ts",
         "applicationLoadBalancer.ts",
         "authorizationFolderRoleAssignment.ts",
         "authorizationOrganizationRoleAssignment.ts",
@@ -30,6 +37,7 @@
         "edgecloudKubeconfig.ts",
         "edgecloudToken.ts",
         "getAffinityGroup.ts",
+        "getAlbCertificate.ts",
         "getApplicationLoadBalancer.ts",
         "getAuthorizationProjectCustomRole.ts",
         "getCdnCustomDomain.ts",
@@ -94,8 +102,10 @@
         "getSecurityGroup.ts",
         "getSecurityGroupRule.ts",
         "getServer.ts",
+        "getServerBackupEnable.ts",
         "getServerBackupSchedule.ts",
         "getServerBackupSchedules.ts",
+        "getServerUpdateEnable.ts",
         "getServerUpdateSchedule.ts",
         "getServerUpdateSchedules.ts",
         "getServiceAccount.ts",
@@ -165,9 +175,11 @@
         "securityGroup.ts",
         "securityGroupRule.ts",
         "server.ts",
+        "serverBackupEnable.ts",
         "serverBackupSchedule.ts",
         "serverNetworkInterfaceAttach.ts",
         "serverServiceAccountAttach.ts",
+        "serverUpdateEnable.ts",
         "serverUpdateSchedule.ts",
         "serverVolumeAttach.ts",
         "serviceAccount.ts",

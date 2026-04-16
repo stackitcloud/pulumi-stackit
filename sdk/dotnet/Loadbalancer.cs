@@ -91,6 +91,12 @@ namespace Pulumi.Stackit
         [Output("targetPools")]
         public Output<ImmutableArray<Outputs.LoadbalancerTargetPool>> TargetPools { get; private set; } = null!;
 
+        /// <summary>
+        /// Load balancer resource version. This is needed to have concurrency safe updates.
+        /// </summary>
+        [Output("version")]
+        public Output<string> Version { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Loadbalancer resource with the given unique name, arguments, and options.
@@ -313,6 +319,12 @@ namespace Pulumi.Stackit
             get => _targetPools ?? (_targetPools = new InputList<Inputs.LoadbalancerTargetPoolGetArgs>());
             set => _targetPools = value;
         }
+
+        /// <summary>
+        /// Load balancer resource version. This is needed to have concurrency safe updates.
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
 
         public LoadbalancerState()
         {

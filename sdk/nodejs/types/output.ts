@@ -421,6 +421,44 @@ export interface CdnDistributionDomain {
     type: string;
 }
 
+export interface DnsRecordSetTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
+export interface DnsZoneTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
 export interface GetApplicationLoadBalancerError {
     /**
      * The error description contains additional helpful user information to fix the error state of the Application Load Balancer. For example the IP 45.135.247.139 does not exist in the project, then the description will report: Floating IP "45.135.247.139" could not be found.
@@ -814,6 +852,20 @@ export interface GetCdnDistributionDomain {
     type: string;
 }
 
+export interface GetDnsRecordSetTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetDnsZoneTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
 export interface GetEdgecloudInstancesInstance {
     /**
      * The date and time the instance was created.
@@ -1039,6 +1091,8 @@ export interface GetLoadbalancerListener {
     protocol: string;
     /**
      * A list of domain names to match in order to pass TLS traffic to the target pool in the current listener
+     *
+     * @deprecated `serverNameIndicators` is deprecated and will be removed after October 2026
      */
     serverNameIndicators?: outputs.GetLoadbalancerListenerServerNameIndicator[];
     /**
@@ -1739,9 +1793,9 @@ export interface GetOpensearchInstanceParameters {
      */
     tlsCiphers: string[];
     /**
-     * The TLS protocol to use.
+     * List of TLS protocols to use.
      */
-    tlsProtocols: string;
+    tlsProtocols: string[];
 }
 
 export interface GetPostgresflexInstanceFlavor {
@@ -2561,6 +2615,8 @@ export interface LoadbalancerListener {
     protocol: string;
     /**
      * A list of domain names to match in order to pass TLS traffic to the target pool in the current listener
+     *
+     * @deprecated `serverNameIndicators` is deprecated and will be removed after October 2026
      */
     serverNameIndicators?: outputs.LoadbalancerListenerServerNameIndicator[];
     /**
@@ -2641,7 +2697,7 @@ export interface LoadbalancerOptionsObservabilityLogs {
      */
     credentialsRef: string;
     /**
-     * Credentials reference for logs. Not changeable after creation.
+     * The ARGUS/Loki remote write Push URL to ship the logs to. Not changeable after creation.
      */
     pushUrl: string;
 }
@@ -2652,7 +2708,7 @@ export interface LoadbalancerOptionsObservabilityMetrics {
      */
     credentialsRef: string;
     /**
-     * Credentials reference for metrics. Not changeable after creation.
+     * The ARGUS/Prometheus remote write Push URL to ship the metrics to. Not changeable after creation.
      */
     pushUrl: string;
 }

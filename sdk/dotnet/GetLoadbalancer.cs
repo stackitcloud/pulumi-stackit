@@ -166,6 +166,10 @@ namespace Pulumi.Stackit
         /// List of all target pools which will be used in the Load Balancer. Limited to 20.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLoadbalancerTargetPoolResult> TargetPools;
+        /// <summary>
+        /// Load balancer resource version.
+        /// </summary>
+        public readonly string Version;
 
         [OutputConstructor]
         private GetLoadbalancerResult(
@@ -193,7 +197,9 @@ namespace Pulumi.Stackit
 
             string securityGroupId,
 
-            ImmutableArray<Outputs.GetLoadbalancerTargetPoolResult> targetPools)
+            ImmutableArray<Outputs.GetLoadbalancerTargetPoolResult> targetPools,
+
+            string version)
         {
             DisableSecurityGroupAssignment = disableSecurityGroupAssignment;
             ExternalAddress = externalAddress;
@@ -208,6 +214,7 @@ namespace Pulumi.Stackit
             Region = region;
             SecurityGroupId = securityGroupId;
             TargetPools = targetPools;
+            Version = version;
         }
     }
 }

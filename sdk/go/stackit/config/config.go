@@ -11,6 +11,11 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+// Custom endpoint for the Application Load Balancer TLS Certificate service
+func GetAlbCertificatesCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "stackit:albCertificatesCustomEndpoint")
+}
+
 // Custom endpoint for the Application Load Balancer service
 func GetAlbCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:albCustomEndpoint")

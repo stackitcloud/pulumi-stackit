@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -106,6 +108,7 @@ export class DnsZone extends pulumi.CustomResource {
      * Zone state. E.g. `CREATE_SUCCEEDED`.
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
+    declare public readonly timeouts: pulumi.Output<outputs.DnsZoneTimeouts | undefined>;
     /**
      * Zone type. Defaults to `primary`. Possible values are: `primary`, `secondary`.
      */
@@ -150,6 +153,7 @@ export class DnsZone extends pulumi.CustomResource {
             resourceInputs["retryTime"] = state?.retryTime;
             resourceInputs["serialNumber"] = state?.serialNumber;
             resourceInputs["state"] = state?.state;
+            resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["type"] = state?.type;
             resourceInputs["visibility"] = state?.visibility;
             resourceInputs["zoneId"] = state?.zoneId;
@@ -175,6 +179,7 @@ export class DnsZone extends pulumi.CustomResource {
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["refreshTime"] = args?.refreshTime;
             resourceInputs["retryTime"] = args?.retryTime;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["type"] = args?.type;
             resourceInputs["primaryNameServer"] = undefined /*out*/;
             resourceInputs["recordCount"] = undefined /*out*/;
@@ -261,6 +266,7 @@ export interface DnsZoneState {
      * Zone state. E.g. `CREATE_SUCCEEDED`.
      */
     state?: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.DnsZoneTimeouts>;
     /**
      * Zone type. Defaults to `primary`. Possible values are: `primary`, `secondary`.
      */
@@ -332,6 +338,7 @@ export interface DnsZoneArgs {
      * Retry time. E.g. 600
      */
     retryTime?: pulumi.Input<number>;
+    timeouts?: pulumi.Input<inputs.DnsZoneTimeouts>;
     /**
      * Zone type. Defaults to `primary`. Possible values are: `primary`, `secondary`.
      */
