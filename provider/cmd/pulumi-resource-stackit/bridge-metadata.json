@@ -97,8 +97,24 @@
                     }
                 }
             },
+            "stackit_authorization_folder_custom_role": {
+                "current": "stackit:index/authorizationFolderCustomRole:AuthorizationFolderCustomRole",
+                "fields": {
+                    "permissions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "stackit_authorization_folder_role_assignment": {
                 "current": "stackit:index/authorizationFolderRoleAssignment:AuthorizationFolderRoleAssignment"
+            },
+            "stackit_authorization_organization_custom_role": {
+                "current": "stackit:index/authorizationOrganizationCustomRole:AuthorizationOrganizationCustomRole",
+                "fields": {
+                    "permissions": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "stackit_authorization_organization_role_assignment": {
                 "current": "stackit:index/authorizationOrganizationRoleAssignment:AuthorizationOrganizationRoleAssignment"
@@ -141,6 +157,27 @@
                             },
                             "blocked_countries": {
                                 "maxItemsOne": false
+                            },
+                            "redirects": {
+                                "fields": {
+                                    "rules": {
+                                        "maxItemsOne": false,
+                                        "elem": {
+                                            "fields": {
+                                                "matchers": {
+                                                    "maxItemsOne": false,
+                                                    "elem": {
+                                                        "fields": {
+                                                            "values": {
+                                                                "maxItemsOne": false
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
                             },
                             "regions": {
                                 "maxItemsOne": false
@@ -616,6 +653,12 @@
                     }
                 }
             },
+            "stackit_secretsmanager_instance_role_binding_v1": {
+                "current": "stackit:index/secretsmanagerInstanceRoleBindingV1:SecretsmanagerInstanceRoleBindingV1"
+            },
+            "stackit_secretsmanager_secret_group_role_binding_v1": {
+                "current": "stackit:index/secretsmanagerSecretGroupRoleBindingV1:SecretsmanagerSecretGroupRoleBindingV1"
+            },
             "stackit_secretsmanager_user": {
                 "current": "stackit:index/secretsmanagerUser:SecretsmanagerUser"
             },
@@ -683,6 +726,9 @@
                         }
                     }
                 }
+            },
+            "stackit_sfs_project_lock": {
+                "current": "stackit:index/sfsProjectLock:SfsProjectLock"
             },
             "stackit_sfs_resource_pool": {
                 "current": "stackit:index/sfsResourcePool:SfsResourcePool",
@@ -860,6 +906,22 @@
                     }
                 }
             },
+            "stackit_authorization_folder_custom_role": {
+                "current": "stackit:index/getAuthorizationFolderCustomRole:getAuthorizationFolderCustomRole",
+                "fields": {
+                    "permissions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_authorization_organization_custom_role": {
+                "current": "stackit:index/getAuthorizationOrganizationCustomRole:getAuthorizationOrganizationCustomRole",
+                "fields": {
+                    "permissions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "stackit_authorization_project_custom_role": {
                 "current": "stackit:index/getAuthorizationProjectCustomRole:getAuthorizationProjectCustomRole",
                 "fields": {
@@ -892,6 +954,27 @@
                             },
                             "blocked_countries": {
                                 "maxItemsOne": false
+                            },
+                            "redirects": {
+                                "fields": {
+                                    "rules": {
+                                        "maxItemsOne": false,
+                                        "elem": {
+                                            "fields": {
+                                                "matchers": {
+                                                    "maxItemsOne": false,
+                                                    "elem": {
+                                                        "fields": {
+                                                            "values": {
+                                                                "maxItemsOne": false
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
                             },
                             "regions": {
                                 "maxItemsOne": false
@@ -1401,6 +1484,22 @@
                     }
                 }
             },
+            "stackit_secretsmanager_instance_role_bindings_v1": {
+                "current": "stackit:index/getSecretsmanagerInstanceRoleBindingsV1:getSecretsmanagerInstanceRoleBindingsV1",
+                "fields": {
+                    "role_bindings": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_secretsmanager_secret_group_role_bindings_v1": {
+                "current": "stackit:index/getSecretsmanagerSecretGroupRoleBindingsV1:getSecretsmanagerSecretGroupRoleBindingsV1",
+                "fields": {
+                    "role_bindings": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "stackit_secretsmanager_user": {
                 "current": "stackit:index/getSecretsmanagerUser:getSecretsmanagerUser"
             },
@@ -1491,6 +1590,9 @@
                         }
                     }
                 }
+            },
+            "stackit_sfs_project_lock": {
+                "current": "stackit:index/getSfsProjectLock:getSfsProjectLock"
             },
             "stackit_sfs_resource_pool": {
                 "current": "stackit:index/getSfsResourcePool:getSfsResourcePool",

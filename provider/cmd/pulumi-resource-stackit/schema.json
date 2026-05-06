@@ -803,6 +803,10 @@
                     "$ref": "#/types/stackit:index/CdnDistributionConfigOptimizer:CdnDistributionConfigOptimizer",
                     "description": "Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.\n"
                 },
+                "redirects": {
+                    "$ref": "#/types/stackit:index/CdnDistributionConfigRedirects:CdnDistributionConfigRedirects",
+                    "description": "A wrapper for a list of redirect rules that allows for redirect settings on a distribution\n"
+                },
                 "regions": {
                     "type": "array",
                     "items": {
@@ -902,6 +906,97 @@
                 "nodejs": {
                     "requiredOutputs": [
                         "enabled"
+                    ]
+                }
+            }
+        },
+        "stackit:index/CdnDistributionConfigRedirects:CdnDistributionConfigRedirects": {
+            "properties": {
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stackit:index/CdnDistributionConfigRedirectsRule:CdnDistributionConfigRedirectsRule"
+                    },
+                    "description": "A list of redirect rules. The order of rules matters for evaluation\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "rules"
+            ]
+        },
+        "stackit:index/CdnDistributionConfigRedirectsRule:CdnDistributionConfigRedirectsRule": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "An optional description for the redirect rule\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "A toggle to enable or disable the redirect rule. Default to true\n"
+                },
+                "matchers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stackit:index/CdnDistributionConfigRedirectsRuleMatcher:CdnDistributionConfigRedirectsRuleMatcher"
+                    },
+                    "description": "A list of matchers that define when this rule should apply. At least one matcher is required\n"
+                },
+                "ruleMatchCondition": {
+                    "type": "string",
+                    "description": "Defines how multiple matchers within this rule are combined (ALL, ANY, NONE). Defaults to ANY.\n"
+                },
+                "statusCode": {
+                    "type": "integer",
+                    "description": "The HTTP status code for the redirect. Must be one of 301, 302, 303, 307, or 308.\n"
+                },
+                "targetUrl": {
+                    "type": "string",
+                    "description": "The target URL to redirect to. Must be a valid URI\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "matchers",
+                "statusCode",
+                "targetUrl"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "description",
+                        "enabled",
+                        "matchers",
+                        "ruleMatchCondition",
+                        "statusCode",
+                        "targetUrl"
+                    ]
+                }
+            }
+        },
+        "stackit:index/CdnDistributionConfigRedirectsRuleMatcher:CdnDistributionConfigRedirectsRuleMatcher": {
+            "properties": {
+                "valueMatchCondition": {
+                    "type": "string",
+                    "description": "Defines how multiple matchers within this rule are combined (ALL, ANY, NONE). Defaults to ANY.\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of glob patterns to match against the request path. At least one value is required. Examples: \"/shop/*\" or \"*/img/*\"\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "values"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "valueMatchCondition",
+                        "values"
                     ]
                 }
             }
@@ -1302,6 +1397,7 @@
                     "requiredOutputs": [
                         "activeHealthCheck",
                         "name",
+                        "sessionPersistence",
                         "targetPort",
                         "targets"
                     ]
@@ -1351,7 +1447,14 @@
                     "description": "If true then all connections from one source IP address are redirected to the same target. This setting changes the load balancing algorithm to Maglev.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "useSourceIpAddress"
+                    ]
+                }
+            }
         },
         "stackit:index/LoadbalancerTargetPoolTarget:LoadbalancerTargetPoolTarget": {
             "properties": {
@@ -2974,10 +3077,6 @@
                 }
             },
             "type": "object",
-            "required": [
-                "end",
-                "start"
-            ],
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
@@ -3948,6 +4047,10 @@
                     "$ref": "#/types/stackit:index/getCdnDistributionConfigOptimizer:getCdnDistributionConfigOptimizer",
                     "description": "Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.\n"
                 },
+                "redirects": {
+                    "$ref": "#/types/stackit:index/getCdnDistributionConfigRedirects:getCdnDistributionConfigRedirects",
+                    "description": "A wrapper for a list of redirect rules that allows for redirect settings on a distribution\n"
+                },
                 "regions": {
                     "type": "array",
                     "items": {
@@ -3960,6 +4063,7 @@
             "required": [
                 "backend",
                 "optimizer",
+                "redirects",
                 "regions"
             ],
             "language": {
@@ -4028,6 +4132,96 @@
             "type": "object",
             "required": [
                 "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getCdnDistributionConfigRedirects:getCdnDistributionConfigRedirects": {
+            "properties": {
+                "rules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stackit:index/getCdnDistributionConfigRedirectsRule:getCdnDistributionConfigRedirectsRule"
+                    },
+                    "description": "A list of redirect rules. The order of rules matters for evaluation\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "rules"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getCdnDistributionConfigRedirectsRule:getCdnDistributionConfigRedirectsRule": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "An optional description for the redirect rule\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "A toggle to enable or disable the redirect rule. Default to true\n"
+                },
+                "matchers": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stackit:index/getCdnDistributionConfigRedirectsRuleMatcher:getCdnDistributionConfigRedirectsRuleMatcher"
+                    },
+                    "description": "A list of matchers that define when this rule should apply. At least one matcher is required\n"
+                },
+                "ruleMatchCondition": {
+                    "type": "string",
+                    "description": "Defines how multiple matchers within this rule are combined (ALL, ANY, NONE). Defaults to ANY.\n"
+                },
+                "statusCode": {
+                    "type": "integer",
+                    "description": "The HTTP status code for the redirect. Must be one of 301, 302, 303, 307, or 308.\n"
+                },
+                "targetUrl": {
+                    "type": "string",
+                    "description": "The target URL to redirect to. Must be a valid URI\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "description",
+                "enabled",
+                "matchers",
+                "ruleMatchCondition",
+                "statusCode",
+                "targetUrl"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getCdnDistributionConfigRedirectsRuleMatcher:getCdnDistributionConfigRedirectsRuleMatcher": {
+            "properties": {
+                "valueMatchCondition": {
+                    "type": "string",
+                    "description": "Defines how multiple matchers within this rule are combined (ALL, ANY, NONE). Defaults to ANY.\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of glob patterns to match against the request path. At least one value is required. Examples: \"/shop/*\" or \"*/img/*\"\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "valueMatchCondition",
+                "values"
             ],
             "language": {
                 "nodejs": {
@@ -4639,6 +4833,7 @@
             "required": [
                 "activeHealthCheck",
                 "name",
+                "sessionPersistence",
                 "targetPort",
                 "targets"
             ],
@@ -4692,7 +4887,15 @@
                     "description": "If true then all connections from one source IP address are redirected to the same target. This setting changes the load balancing algorithm to Maglev.\n"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "useSourceIpAddress"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "stackit:index/getLoadbalancerTargetPoolTarget:getLoadbalancerTargetPoolTarget": {
             "properties": {
@@ -6237,6 +6440,50 @@
                 "keyRingId",
                 "keyVersion",
                 "serviceAccountEmail"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getSecretsmanagerInstanceRoleBindingsV1RoleBinding:getSecretsmanagerInstanceRoleBindingsV1RoleBinding": {
+            "properties": {
+                "role": {
+                    "type": "string",
+                    "description": "A valid role defined for the resource.\n"
+                },
+                "subject": {
+                    "type": "string",
+                    "description": "Identifier of user, service account or client. Usually email address or name in case of clients.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "role",
+                "subject"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getSecretsmanagerSecretGroupRoleBindingsV1RoleBinding:getSecretsmanagerSecretGroupRoleBindingsV1RoleBinding": {
+            "properties": {
+                "role": {
+                    "type": "string",
+                    "description": "A valid role defined for the resource.\n"
+                },
+                "subject": {
+                    "type": "string",
+                    "description": "Identifier of user, service account or client. Usually email address or name in case of clients.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "role",
+                "subject"
             ],
             "language": {
                 "nodejs": {
@@ -7960,6 +8207,96 @@
                 "type": "object"
             }
         },
+        "stackit:index/authorizationFolderCustomRole:AuthorizationFolderCustomRole": {
+            "description": "Custom Role resource schema.\n\n## Example Usage\n\n```terraform\nresource \"stackit_resourcemanager_folder\" \"example\" {\n  name                = \"example_folder\"\n  owner_email         = \"foo.bar@stackit.cloud\"\n  parent_container_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\nresource \"stackit_authorization_folder_custom_role\" \"example\" {\n  resource_id = stackit_resourcemanager_folder.example.folder_id\n  name        = \"my.custom.role\"\n  description = \"Some description\"\n  permissions = [\n    \"iam.subject.get\"\n  ]\n}\n\n# Only use the import statement, if you want to import an existing custom role\nimport {\n  to = stackit_authorization_folder_custom_role.import-example\n  id = \"${var.folder_id},${var.custom_role_id}\"\n}\n```\n",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "A human readable description of the role.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the role\n"
+                },
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Permissions for the role\n"
+                },
+                "resourceId": {
+                    "type": "string",
+                    "description": "Resource to add the custom role to.\n"
+                },
+                "roleId": {
+                    "type": "string",
+                    "description": "The ID of the role.\n"
+                }
+            },
+            "required": [
+                "description",
+                "name",
+                "permissions",
+                "resourceId",
+                "roleId"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "A human readable description of the role.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the role\n"
+                },
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Permissions for the role\n"
+                },
+                "resourceId": {
+                    "type": "string",
+                    "description": "Resource to add the custom role to.\n"
+                }
+            },
+            "requiredInputs": [
+                "description",
+                "permissions",
+                "resourceId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AuthorizationFolderCustomRole resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "A human readable description of the role.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the role\n"
+                    },
+                    "permissions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Permissions for the role\n"
+                    },
+                    "resourceId": {
+                        "type": "string",
+                        "description": "Resource to add the custom role to.\n"
+                    },
+                    "roleId": {
+                        "type": "string",
+                        "description": "The ID of the role.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "stackit:index/authorizationFolderRoleAssignment:AuthorizationFolderRoleAssignment": {
             "description": "Folder Role Assignment resource schema.\n\n\u003e This resource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_resourcemanager_folder\" \"example\" {\n  name        = \"example_folder\"\n  owner_email = \"foo.bar@stackit.cloud\"\n  # in this case a org-id\n  parent_container_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\nresource \"stackit_authorization_folder_role_assignment\" \"fra\" {\n  resource_id = stackit_resourcemanager_folder.example.folder_id\n  role        = \"reader\"\n  subject     = \"foo.bar@stackit.cloud\"\n}\n\n# Only use the import statement, if you want to import an existing folder role assignment\nimport {\n  to = stackit_authorization_folder_role_assignment.import-example\n  id = \"${var.folder_id},${var.folder_role_assignment},${var.folder_role_assignment_subject}\"\n}\n```\n",
             "properties": {
@@ -8014,6 +8351,96 @@
                     "subject": {
                         "type": "string",
                         "description": "Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "stackit:index/authorizationOrganizationCustomRole:AuthorizationOrganizationCustomRole": {
+            "description": "Custom Role resource schema.\n\n## Example Usage\n\n```terraform\nresource \"stackit_authorization_organization_custom_role\" \"example\" {\n  resource_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name        = \"my.custom.role\"\n  description = \"Some description\"\n  permissions = [\n    \"iam.subject.get\"\n  ]\n}\n\n# Only use the import statement, if you want to import an existing custom role\nimport {\n  to = stackit_authorization_organization_custom_role.import-example\n  id = \"${var.organization_id},${var.custom_role_id}\"\n}\n```\n",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "A human readable description of the role.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the role\n"
+                },
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Permissions for the role\n"
+                },
+                "resourceId": {
+                    "type": "string",
+                    "description": "Resource to add the custom role to.\n"
+                },
+                "roleId": {
+                    "type": "string",
+                    "description": "The ID of the role.\n"
+                }
+            },
+            "required": [
+                "description",
+                "name",
+                "permissions",
+                "resourceId",
+                "roleId"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "A human readable description of the role.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the role\n"
+                },
+                "permissions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Permissions for the role\n"
+                },
+                "resourceId": {
+                    "type": "string",
+                    "description": "Resource to add the custom role to.\n"
+                }
+            },
+            "requiredInputs": [
+                "description",
+                "permissions",
+                "resourceId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering AuthorizationOrganizationCustomRole resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "A human readable description of the role.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the role\n"
+                    },
+                    "permissions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Permissions for the role\n"
+                    },
+                    "resourceId": {
+                        "type": "string",
+                        "description": "Resource to add the custom role to.\n"
+                    },
+                    "roleId": {
+                        "type": "string",
+                        "description": "The ID of the role.\n"
                     }
                 },
                 "type": "object"
@@ -8378,7 +8805,7 @@
             }
         },
         "stackit:index/cdnDistribution:CdnDistribution": {
-            "description": "CDN distribution data source schema.\n\n\u003e This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\nresource \"stackit_cdn_distribution\" \"example_distribution\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  config = {\n    backend = {\n      type       = \"http\"\n      origin_url = \"https://mybackend.onstackit.cloud\"\n      geofencing = {\n        \"https://mybackend.onstackit.cloud\" = [\"DE\"]\n      }\n    }\n    regions           = [\"EU\", \"US\", \"ASIA\", \"AF\", \"SA\"]\n    blocked_countries = [\"DE\", \"AT\", \"CH\"]\n\n    optimizer = {\n      enabled = true\n    }\n  }\n}\n\nresource \"stackit_cdn_distribution\" \"example_bucket_distribution\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  config = {\n    backend = {\n      type       = \"bucket\"\n      bucket_url = \"https://my-test.object.storage.eu01.onstackit.cloud\"\n      region     = \"eu01\"\n\n      # Credentials are required for bucket backends\n      # It is strongly recommended to use variables for secrets\n      credentials = {\n        access_key_id     = var.bucket_access_key\n        secret_access_key = var.bucket_secret_key\n      }\n    }\n    regions           = [\"EU\", \"US\"]\n    blocked_countries = [\"CN\", \"RU\"]\n\n    optimizer = {\n      enabled = false\n    }\n  }\n}\n\n# Only use the import statement, if you want to import an existing cdn distribution\nimport {\n  to = stackit_cdn_distribution.import-example\n  id = \"${var.project_id},${var.distribution_id}\"\n}\n```\n",
+            "description": "CDN distribution data source schema.\n\n\u003e This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\nresource \"stackit_cdn_distribution\" \"example_distribution\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  config = {\n    backend = {\n      type       = \"http\"\n      origin_url = \"https://mybackend.onstackit.cloud\"\n      geofencing = {\n        \"https://mybackend.onstackit.cloud\" = [\"DE\"]\n      }\n    }\n    regions           = [\"EU\", \"US\", \"ASIA\", \"AF\", \"SA\"]\n    blocked_countries = [\"DE\", \"AT\", \"CH\"]\n\n    optimizer = {\n      enabled = true\n    }\n  }\n}\n\nresource \"stackit_cdn_distribution\" \"example_bucket_distribution\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  config = {\n    backend = {\n      type       = \"bucket\"\n      bucket_url = \"https://my-test.object.storage.eu01.onstackit.cloud\"\n      region     = \"eu01\"\n\n      # Credentials are required for bucket backends\n      # It is strongly recommended to use variables for secrets\n      credentials = {\n        access_key_id     = var.bucket_access_key\n        secret_access_key = var.bucket_secret_key\n      }\n    }\n    regions           = [\"EU\", \"US\"]\n    blocked_countries = [\"CN\", \"RU\"]\n\n    optimizer = {\n      enabled = false\n    }\n\n    redirects = {\n      rules = [\n        {\n          description          = \"test redirect\"\n          enabled              = true\n          rule_match_condition = \"ANY\"\n          status_code          = 302\n          target_url           = \"https://stackit.de/\"\n          matchers = [\n            {\n              values                = [\"*/otherPath/\"]\n              value_match_condition = \"ANY\"\n            }\n          ]\n        }\n      ]\n    }\n  }\n}\n\n# Only use the import statement, if you want to import an existing cdn distribution\nimport {\n  to = stackit_cdn_distribution.import-example\n  id = \"${var.project_id},${var.distribution_id}\"\n}\n```\n",
             "properties": {
                 "config": {
                     "$ref": "#/types/stackit:index/CdnDistributionConfig:CdnDistributionConfig",
@@ -12860,7 +13287,7 @@
                     "type": "string",
                     "description": "The resource region. If not defined, the provider region is used.\n"
                 },
-                "urn": {
+                "stackitUrn": {
                     "type": "string",
                     "description": "Credentials group uniform resource name (URN)\n"
                 }
@@ -12870,7 +13297,7 @@
                 "name",
                 "projectId",
                 "region",
-                "urn"
+                "stackitUrn"
             ],
             "inputProperties": {
                 "name": {
@@ -12908,7 +13335,7 @@
                         "type": "string",
                         "description": "The resource region. If not defined, the provider region is used.\n"
                     },
-                    "urn": {
+                    "stackitUrn": {
                         "type": "string",
                         "description": "Credentials group uniform resource name (URN)\n"
                     }
@@ -15915,6 +16342,150 @@
                 "type": "object"
             }
         },
+        "stackit:index/secretsmanagerInstanceRoleBindingV1:SecretsmanagerInstanceRoleBindingV1": {
+            "description": "IAM role binding resource schema.\n\n\u003e This resource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_secretsmanager_instance_role_binding_v1\" \"role_binding\" {\n  resource_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  role        = \"owner\"\n  subject     = \"john.doe@example.com\"\n}\n```\n\n## Import\n\n```terraform\n# Only use the import statement if you want to import an existing role binding\nimport {\n  to = stackit_secretsmanager_instance_role_binding_v1.import_example\n  id = \"${var.region},${var.resource_id},${var.role},${var.subject}\"\n}\n```\n\n",
+            "properties": {
+                "region": {
+                    "type": "string",
+                    "description": "The resource region. If not defined, the provider region is used.\n"
+                },
+                "resourceId": {
+                    "type": "string",
+                    "description": "The identifier of the resource to apply this role binding to.\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "A valid role defined for the resource.\n"
+                },
+                "subject": {
+                    "type": "string",
+                    "description": "Identifier of user, service account or client. Usually email address or name in case of clients.\n"
+                }
+            },
+            "required": [
+                "region",
+                "resourceId",
+                "role",
+                "subject"
+            ],
+            "inputProperties": {
+                "region": {
+                    "type": "string",
+                    "description": "The resource region. If not defined, the provider region is used.\n"
+                },
+                "resourceId": {
+                    "type": "string",
+                    "description": "The identifier of the resource to apply this role binding to.\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "A valid role defined for the resource.\n"
+                },
+                "subject": {
+                    "type": "string",
+                    "description": "Identifier of user, service account or client. Usually email address or name in case of clients.\n"
+                }
+            },
+            "requiredInputs": [
+                "resourceId",
+                "role",
+                "subject"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering SecretsmanagerInstanceRoleBindingV1 resources.\n",
+                "properties": {
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    },
+                    "resourceId": {
+                        "type": "string",
+                        "description": "The identifier of the resource to apply this role binding to.\n"
+                    },
+                    "role": {
+                        "type": "string",
+                        "description": "A valid role defined for the resource.\n"
+                    },
+                    "subject": {
+                        "type": "string",
+                        "description": "Identifier of user, service account or client. Usually email address or name in case of clients.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "stackit:index/secretsmanagerSecretGroupRoleBindingV1:SecretsmanagerSecretGroupRoleBindingV1": {
+            "description": "IAM role binding resource schema.\n\n\u003e This resource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_secretsmanager_secret_group_role_binding_v1\" \"role_binding\" {\n  resource_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  role        = \"owner\"\n  subject     = \"john.doe@example.com\"\n}\n```\n\n## Import\n\n```terraform\n# Only use the import statement if you want to import an existing role binding\nimport {\n  to = stackit_secretsmanager_secret_group_role_binding_v1.import_example\n  id = \"${var.region},${var.resource_id},${var.role},${var.subject}\"\n}\n```\n\n",
+            "properties": {
+                "region": {
+                    "type": "string",
+                    "description": "The resource region. If not defined, the provider region is used.\n"
+                },
+                "resourceId": {
+                    "type": "string",
+                    "description": "The identifier of the resource to apply this role binding to.\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "A valid role defined for the resource.\n"
+                },
+                "subject": {
+                    "type": "string",
+                    "description": "Identifier of user, service account or client. Usually email address or name in case of clients.\n"
+                }
+            },
+            "required": [
+                "region",
+                "resourceId",
+                "role",
+                "subject"
+            ],
+            "inputProperties": {
+                "region": {
+                    "type": "string",
+                    "description": "The resource region. If not defined, the provider region is used.\n"
+                },
+                "resourceId": {
+                    "type": "string",
+                    "description": "The identifier of the resource to apply this role binding to.\n"
+                },
+                "role": {
+                    "type": "string",
+                    "description": "A valid role defined for the resource.\n"
+                },
+                "subject": {
+                    "type": "string",
+                    "description": "Identifier of user, service account or client. Usually email address or name in case of clients.\n"
+                }
+            },
+            "requiredInputs": [
+                "resourceId",
+                "role",
+                "subject"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering SecretsmanagerSecretGroupRoleBindingV1 resources.\n",
+                "properties": {
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    },
+                    "resourceId": {
+                        "type": "string",
+                        "description": "The identifier of the resource to apply this role binding to.\n"
+                    },
+                    "role": {
+                        "type": "string",
+                        "description": "A valid role defined for the resource.\n"
+                    },
+                    "subject": {
+                        "type": "string",
+                        "description": "Identifier of user, service account or client. Usually email address or name in case of clients.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "stackit:index/secretsmanagerUser:SecretsmanagerUser": {
             "description": "Secrets Manager user resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\nresource \"stackit_secretsmanager_user\" \"example\" {\n  project_id    = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  instance_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  description   = \"Example user\"\n  write_enabled = false\n}\n\n# Only use the import statement, if you want to import an existing secretsmanager user\nimport {\n  to = stackit_secretsmanager_user.import-example\n  id = \"${var.project_id},${var.secret_instance_id},${var.secret_user_id}\"\n}\n```\n",
             "properties": {
@@ -16300,7 +16871,7 @@
             }
         },
         "stackit:index/server:Server": {
-            "description": "Server resource schema. Must have a region specified in the provider configuration.\n\n## Example Usage\n\n### With key pair\n```terraform\nresource \"stackit_key_pair\" \"keypair\" {\n  name       = \"example-key-pair\"\n  public_key = chomp(file(\"path/to/id_rsa.pub\"))\n}\n\nresource \"stackit_server\" \"user-data-from-file\" {\n  project_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  boot_volume = {\n    size        = 64\n    source_type = \"image\"\n    source_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  }\n  name         = \"example-server\"\n  machine_type = \"g2i.1\"\n  keypair_name = stackit_key_pair.keypair.name\n  user_data    = file(\"${path.module}/cloud-init.yaml\")\n}\n\n```\n\n### Boot from volume\n```terraform\nresource \"stackit_server\" \"boot-from-volume\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-server\"\n  boot_volume = {\n    size        = 64\n    source_type = \"image\"\n    source_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  }\n  availability_zone = \"eu01-1\"\n  machine_type      = \"g2i.1\"\n  keypair_name      = \"example-keypair\"\n}\n\n```\n\n### Boot from existing volume\n```terraform\nresource \"stackit_volume\" \"example-volume\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  size       = 12\n  source = {\n    type = \"image\"\n    id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  }\n  name              = \"example-volume\"\n  availability_zone = \"eu01-1\"\n}\n\nresource \"stackit_server\" \"boot-from-volume\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-server\"\n  boot_volume = {\n    source_type = \"volume\"\n    source_id   = stackit_volume.example-volume.volume_id\n  }\n  availability_zone = \"eu01-1\"\n  machine_type      = \"g2i.1\"\n  keypair_name = stackit_key_pair.keypair.name\n}\n\n```\n\n### Network setup\n```terraform\nresource \"stackit_network\" \"network\" {\n  project_id         = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name               = \"example-network\"\n  nameservers        = [\"192.0.2.0\", \"198.51.100.0\", \"203.0.113.0\"]\n  ipv4_prefix_length = 24\n}\n\nresource \"stackit_security_group\" \"sec-group\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-security-group\"\n  stateful   = true\n}\n\nresource \"stackit_security_group_rule\" \"rule\" {\n  project_id        = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  security_group_id = stackit_security_group.sec-group.security_group_id\n  direction         = \"ingress\"\n  ether_type         = \"IPv4\"\n}\n\nresource \"stackit_network_interface\" \"nic\" {\n  project_id         = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  network_id         = stackit_network.network.network_id\n  security_group_ids = [stackit_security_group.sec-group.security_group_id]\n}\n\nresource \"stackit_server\" \"server-with-network\" {\n  project_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name         = \"example-server\"\n  boot_volume = {\n    size        = 64\n    source_type = \"image\"\n    source_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  }\n  machine_type = \"g2i.1\"\n  keypair_name = stackit_key_pair.keypair.name\n  network_interfaces = [\n    stackit_network_interface.nic.network_interface_id\n  ]\t\n}\n\nresource \"stackit_public_ip\" \"public-ip\" {\n  project_id           = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  network_interface_id = stackit_network_interface.nic.network_interface_id\n}\n\n```\n\n### Server with attached volume\n```terraform\nresource \"stackit_volume\" \"example-volume\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  size       = 12\n  performance_class = \"storage_premium_perf6\"\n  name              = \"example-volume\"\n  availability_zone = \"eu01-1\"\n}\n\nresource \"stackit_server\" \"server-with-volume\" {\n  project_id        = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name              = \"example-server\"\n  boot_volume = {\n    size        = 64\n    source_type = \"image\"\n    source_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  }\n  availability_zone = \"eu01-1\"\n  machine_type      = \"g2i.1\"\n  keypair_name = stackit_key_pair.keypair.name\n}\n\nresource \"stackit_server_volume_attach\" \"attach_volume\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  server_id  = stackit_server.server-with-volume.server_id\n  volume_id  = stackit_volume.example-volume.volume_id\n}\n\n```\n\n### Server with user data (cloud-init)\n```terraform\nresource \"stackit_server\" \"user-data\" {\n  project_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  boot_volume = {\n    size        = 64\n    source_type = \"image\"\n    source_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  }\n  name         = \"example-server\"\n  machine_type = \"g2i.1\"\n  keypair_name = stackit_key_pair.keypair.name\n  user_data    = \"#!/bin/bash\\n/bin/su\"\n}\n\nresource \"stackit_server\" \"user-data-from-file\" {\n  project_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  boot_volume = {\n    size        = 64\n    source_type = \"image\"\n    source_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  }\n  name         = \"example-server\"\n  machine_type = \"g2i.1\"\n  keypair_name = stackit_key_pair.keypair.name\n  user_data    = file(\"${path.module}/cloud-init.yaml\")\n}\n\n```\n\n\n### Additional Examples\n\n```terraform\nresource \"stackit_server\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-server\"\n  boot_volume = {\n    size        = 64\n    source_type = \"image\"\n    source_id   = \"59838a89-51b1-4892-b57f-b3caf598ee2f\" // Ubuntu 24.04\n  }\n  availability_zone = \"xxxx-x\"\n  machine_type      = \"g2i.1\"\n  network_interfaces = [\n    stackit_network_interface.example.network_interface_id\n  ]\n}\n\n# Only use the import statement, if you want to import an existing server\n# Note: There will be a conflict which needs to be resolved manually.\n# Must set a configuration value for the boot_volume.source_type and boot_volume.source_id attribute as the provider has marked it as required.\n# Since those attributes are not fetched in general from the API call, after adding them this would replace your server resource after an pulumi up.\n# In order to prevent this you need to add:\n# lifecycle {\n#   ignore_changes = [ boot_volume ]\n# }\nimport {\n  to = stackit_server.import-example\n  id = \"${var.project_id},${var.region},${var.server_id}\"\n}\n```\n",
+            "description": "Server resource schema. Must have a region specified in the provider configuration.\n\n## Example Usage\n\n### With key pair\n```terraform\nresource \"stackit_key_pair\" \"keypair\" {\n  name       = \"example-key-pair\"\n  public_key = chomp(file(\"path/to/id_rsa.pub\"))\n}\n\nresource \"stackit_server\" \"user-data-from-file\" {\n  project_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  boot_volume = {\n    size        = 64\n    source_type = \"image\"\n    source_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  }\n  name         = \"example-server\"\n  machine_type = \"g2i.1\"\n  keypair_name = stackit_key_pair.keypair.name\n  user_data    = file(\"${path.module}/cloud-init.yaml\")\n}\n\n```\n\n### Boot from volume\n```terraform\nresource \"stackit_server\" \"boot-from-volume\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-server\"\n  boot_volume = {\n    size        = 64\n    source_type = \"image\"\n    source_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  }\n  availability_zone = \"eu01-1\"\n  machine_type      = \"g2i.1\"\n  keypair_name      = \"example-keypair\"\n}\n\n```\n\n### Boot from existing volume\n```terraform\nresource \"stackit_volume\" \"example-volume\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  size       = 12\n  source = {\n    type = \"image\"\n    id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  }\n  name              = \"example-volume\"\n  availability_zone = \"eu01-1\"\n}\n\nresource \"stackit_server\" \"boot-from-volume\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-server\"\n  boot_volume = {\n    source_type = \"volume\"\n    source_id   = stackit_volume.example-volume.volume_id\n  }\n  availability_zone = \"eu01-1\"\n  machine_type      = \"g2i.1\"\n  keypair_name = stackit_key_pair.keypair.name\n}\n\n```\n\n### Network setup\n```terraform\nresource \"stackit_network\" \"network\" {\n  project_id         = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name               = \"example-network\"\n  ipv4_nameservers   = [\"192.0.2.0\", \"198.51.100.0\", \"203.0.113.0\"]\n  ipv4_prefix_length = 24\n}\n\nresource \"stackit_security_group\" \"sec-group\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-security-group\"\n  stateful   = true\n}\n\nresource \"stackit_security_group_rule\" \"rule\" {\n  project_id        = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  security_group_id = stackit_security_group.sec-group.security_group_id\n  direction         = \"ingress\"\n  ether_type         = \"IPv4\"\n}\n\nresource \"stackit_network_interface\" \"nic\" {\n  project_id         = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  network_id         = stackit_network.network.network_id\n  security_group_ids = [stackit_security_group.sec-group.security_group_id]\n}\n\nresource \"stackit_server\" \"server-with-network\" {\n  project_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name         = \"example-server\"\n  boot_volume = {\n    size        = 64\n    source_type = \"image\"\n    source_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  }\n  machine_type = \"g2i.1\"\n  keypair_name = stackit_key_pair.keypair.name\n  network_interfaces = [\n    stackit_network_interface.nic.network_interface_id\n  ]\n}\n\nresource \"stackit_public_ip\" \"public-ip\" {\n  project_id           = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  network_interface_id = stackit_network_interface.nic.network_interface_id\n}\n\n```\n\n### Server with attached volume\n```terraform\nresource \"stackit_volume\" \"example-volume\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  size       = 12\n  performance_class = \"storage_premium_perf6\"\n  name              = \"example-volume\"\n  availability_zone = \"eu01-1\"\n}\n\nresource \"stackit_server\" \"server-with-volume\" {\n  project_id        = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name              = \"example-server\"\n  boot_volume = {\n    size        = 64\n    source_type = \"image\"\n    source_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  }\n  availability_zone = \"eu01-1\"\n  machine_type      = \"g2i.1\"\n  keypair_name = stackit_key_pair.keypair.name\n}\n\nresource \"stackit_server_volume_attach\" \"attach_volume\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  server_id  = stackit_server.server-with-volume.server_id\n  volume_id  = stackit_volume.example-volume.volume_id\n}\n\n```\n\n### Server with user data (cloud-init)\n```terraform\nresource \"stackit_server\" \"user-data\" {\n  project_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  boot_volume = {\n    size        = 64\n    source_type = \"image\"\n    source_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  }\n  name         = \"example-server\"\n  machine_type = \"g2i.1\"\n  keypair_name = stackit_key_pair.keypair.name\n  user_data    = \"#!/bin/bash\\n/bin/su\"\n}\n\nresource \"stackit_server\" \"user-data-from-file\" {\n  project_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  boot_volume = {\n    size        = 64\n    source_type = \"image\"\n    source_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  }\n  name         = \"example-server\"\n  machine_type = \"g2i.1\"\n  keypair_name = stackit_key_pair.keypair.name\n  user_data    = file(\"${path.module}/cloud-init.yaml\")\n}\n\n```\n\n\n### Additional Examples\n\n```terraform\nresource \"stackit_server\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-server\"\n  boot_volume = {\n    size        = 64\n    source_type = \"image\"\n    source_id   = \"59838a89-51b1-4892-b57f-b3caf598ee2f\" // Ubuntu 24.04\n  }\n  availability_zone = \"xxxx-x\"\n  machine_type      = \"g2i.1\"\n  network_interfaces = [\n    stackit_network_interface.example.network_interface_id\n  ]\n}\n\n# Only use the import statement, if you want to import an existing server\n# Note: There will be a conflict which needs to be resolved manually.\n# Must set a configuration value for the boot_volume.source_type and boot_volume.source_id attribute as the provider has marked it as required.\n# Since those attributes are not fetched in general from the API call, after adding them this would replace your server resource after an pulumi up.\n# In order to prevent this you need to add:\n# lifecycle {\n#   ignore_changes = [ boot_volume ]\n# }\nimport {\n  to = stackit_server.import-example\n  id = \"${var.project_id},${var.region},${var.server_id}\"\n}\n```\n",
             "properties": {
                 "affinityGroup": {
                     "type": "string",
@@ -17408,6 +17979,59 @@
                 "type": "object"
             }
         },
+        "stackit:index/sfsProjectLock:SfsProjectLock": {
+            "description": "SFS project lock resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration. Always use only one project lock per project.\n\n## Example Usage\n\n```terraform\nresource \"stackit_sfs_project_lock\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\n# Only use the import statement, if you want to import an existing project lock\nimport {\n  to = stackit_sfs_project_lock.example\n  id = \"${var.project_id},${var.region}\"\n}\n```\n",
+            "properties": {
+                "lockId": {
+                    "type": "string",
+                    "description": "ID of the lock.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT Project ID to which the project lock is associated.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The resource region. If not defined, the provider region is used.\n"
+                }
+            },
+            "required": [
+                "lockId",
+                "projectId",
+                "region"
+            ],
+            "inputProperties": {
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT Project ID to which the project lock is associated.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The resource region. If not defined, the provider region is used.\n"
+                }
+            },
+            "requiredInputs": [
+                "projectId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering SfsProjectLock resources.\n",
+                "properties": {
+                    "lockId": {
+                        "type": "string",
+                        "description": "ID of the lock.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT Project ID to which the project lock is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "stackit:index/sfsResourcePool:SfsResourcePool": {
             "description": "Resource-pool resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n\u003e This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\nresource \"stackit_sfs_resource_pool\" \"resourcepool\" {\n  project_id        = \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\"\n  name              = \"some-resourcepool\"\n  availability_zone = \"eu01-m\"\n  performance_class = \"Standard\"\n  size_gigabytes    = 512\n  ip_acl = [\n    \"192.168.42.1/32\",\n    \"192.168.42.2/32\"\n  ]\n  snapshots_are_visible = true\n}\n\n# Only use the import statement, if you want to import an existing resource pool\nimport {\n  to = stackit_sfs_resource_pool.resourcepool\n  id = \"${var.project_id},${var.region},${var.resource_pool_id}\"\n}\n```\n",
             "properties": {
@@ -17589,7 +18213,6 @@
                 }
             },
             "required": [
-                "exportPolicy",
                 "mountPath",
                 "name",
                 "projectId",
@@ -17625,7 +18248,6 @@
                 }
             },
             "requiredInputs": [
-                "exportPolicy",
                 "projectId",
                 "resourcePoolId",
                 "spaceHardLimitGigabytes"
@@ -17715,7 +18337,7 @@
                     "items": {
                         "$ref": "#/types/stackit:index/SkeClusterNodePool:SkeClusterNodePool"
                     },
-                    "description": "One or more \u003cspan pulumi-lang-nodejs=\"`nodePool`\" pulumi-lang-dotnet=\"`NodePool`\" pulumi-lang-go=\"`nodePool`\" pulumi-lang-python=\"`node_pool`\" pulumi-lang-yaml=\"`nodePool`\" pulumi-lang-java=\"`nodePool`\"\u003e`nodePool`\u003c/span\u003e block as defined below.\n"
+                    "description": "One or more \u003cspan pulumi-lang-nodejs=\"`nodePool`\" pulumi-lang-dotnet=\"`NodePool`\" pulumi-lang-go=\"`nodePool`\" pulumi-lang-python=\"`node_pool`\" pulumi-lang-yaml=\"`nodePool`\" pulumi-lang-java=\"`nodePool`\"\u003e`nodePool`\u003c/span\u003e block as defined below.\nTo keep your Terraform plans clean and readable, always append new node pools to the end of the list.\n"
                 },
                 "podAddressRanges": {
                     "type": "array",
@@ -17777,7 +18399,7 @@
                     "items": {
                         "$ref": "#/types/stackit:index/SkeClusterNodePool:SkeClusterNodePool"
                     },
-                    "description": "One or more \u003cspan pulumi-lang-nodejs=\"`nodePool`\" pulumi-lang-dotnet=\"`NodePool`\" pulumi-lang-go=\"`nodePool`\" pulumi-lang-python=\"`node_pool`\" pulumi-lang-yaml=\"`nodePool`\" pulumi-lang-java=\"`nodePool`\"\u003e`nodePool`\u003c/span\u003e block as defined below.\n"
+                    "description": "One or more \u003cspan pulumi-lang-nodejs=\"`nodePool`\" pulumi-lang-dotnet=\"`NodePool`\" pulumi-lang-go=\"`nodePool`\" pulumi-lang-python=\"`node_pool`\" pulumi-lang-yaml=\"`nodePool`\" pulumi-lang-java=\"`nodePool`\"\u003e`nodePool`\u003c/span\u003e block as defined below.\nTo keep your Terraform plans clean and readable, always append new node pools to the end of the list.\n"
                 },
                 "projectId": {
                     "type": "string",
@@ -17838,7 +18460,7 @@
                         "items": {
                             "$ref": "#/types/stackit:index/SkeClusterNodePool:SkeClusterNodePool"
                         },
-                        "description": "One or more \u003cspan pulumi-lang-nodejs=\"`nodePool`\" pulumi-lang-dotnet=\"`NodePool`\" pulumi-lang-go=\"`nodePool`\" pulumi-lang-python=\"`node_pool`\" pulumi-lang-yaml=\"`nodePool`\" pulumi-lang-java=\"`nodePool`\"\u003e`nodePool`\u003c/span\u003e block as defined below.\n"
+                        "description": "One or more \u003cspan pulumi-lang-nodejs=\"`nodePool`\" pulumi-lang-dotnet=\"`NodePool`\" pulumi-lang-go=\"`nodePool`\" pulumi-lang-python=\"`node_pool`\" pulumi-lang-yaml=\"`nodePool`\" pulumi-lang-java=\"`nodePool`\"\u003e`nodePool`\u003c/span\u003e block as defined below.\nTo keep your Terraform plans clean and readable, always append new node pools to the end of the list.\n"
                     },
                     "podAddressRanges": {
                         "type": "array",
@@ -18737,8 +19359,132 @@
                 ]
             }
         },
+        "stackit:index/getAuthorizationFolderCustomRole:getAuthorizationFolderCustomRole": {
+            "description": "Custom Role resource schema.\n\n## Example Usage\n\n```terraform\ndata \"stackit_authorization_folder_custom_role\" \"example\" {\n  resource_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name        = \"my.custom.role\"\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getAuthorizationFolderCustomRole.\n",
+                "properties": {
+                    "resourceId": {
+                        "type": "string",
+                        "description": "Resource to add the custom role to.\n"
+                    },
+                    "roleId": {
+                        "type": "string",
+                        "description": "The ID of the role.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "resourceId",
+                    "roleId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getAuthorizationFolderCustomRole.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "A human readable description of the role.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Terraform's internal resource identifier. It is structured as \"[resource*id],[role*id]\".\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the role\n"
+                    },
+                    "permissions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Permissions for the role\n"
+                    },
+                    "resourceId": {
+                        "type": "string",
+                        "description": "Resource to add the custom role to.\n"
+                    },
+                    "roleId": {
+                        "type": "string",
+                        "description": "The ID of the role.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "description",
+                    "id",
+                    "name",
+                    "permissions",
+                    "resourceId",
+                    "roleId"
+                ]
+            }
+        },
+        "stackit:index/getAuthorizationOrganizationCustomRole:getAuthorizationOrganizationCustomRole": {
+            "description": "Custom Role resource schema.\n\n## Example Usage\n\n```terraform\ndata \"stackit_authorization_organization_custom_role\" \"example\" {\n  resource_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name        = \"my.custom.role\"\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getAuthorizationOrganizationCustomRole.\n",
+                "properties": {
+                    "resourceId": {
+                        "type": "string",
+                        "description": "Resource to add the custom role to.\n"
+                    },
+                    "roleId": {
+                        "type": "string",
+                        "description": "The ID of the role.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "resourceId",
+                    "roleId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getAuthorizationOrganizationCustomRole.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "A human readable description of the role.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Terraform's internal resource identifier. It is structured as \"[resource*id],[role*id]\".\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the role\n"
+                    },
+                    "permissions": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Permissions for the role\n"
+                    },
+                    "resourceId": {
+                        "type": "string",
+                        "description": "Resource to add the custom role to.\n"
+                    },
+                    "roleId": {
+                        "type": "string",
+                        "description": "The ID of the role.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "description",
+                    "id",
+                    "name",
+                    "permissions",
+                    "resourceId",
+                    "roleId"
+                ]
+            }
+        },
         "stackit:index/getAuthorizationProjectCustomRole:getAuthorizationProjectCustomRole": {
-            "description": "Custom Role resource schema.\n\n## Example Usage\n\n```terraform\ndata \"stackit_authorization_project_custom_role\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"my.custom.role\"\n}\n```\n",
+            "description": "Custom Role resource schema.\n\n## Example Usage\n\n```terraform\ndata \"stackit_authorization_project_custom_role\" \"example\" {\n  resource_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name        = \"my.custom.role\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getAuthorizationProjectCustomRole.\n",
                 "properties": {
@@ -23737,6 +24483,106 @@
                 ]
             }
         },
+        "stackit:index/getSecretsmanagerInstanceRoleBindingsV1:getSecretsmanagerInstanceRoleBindingsV1": {
+            "description": "IAM role binding datasource schema.\n\n\u003e This datasource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\ndata \"stackit_secretsmanager_instance_role_bindings_v1\" \"role_binding\" {\n  resource_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getSecretsmanagerInstanceRoleBindingsV1.\n",
+                "properties": {
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    },
+                    "resourceId": {
+                        "type": "string",
+                        "description": "The identifier of the resource to get the role bindings for.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "resourceId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getSecretsmanagerInstanceRoleBindingsV1.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Terraform's internal resource identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`resourceId`\" pulumi-lang-dotnet=\"`ResourceId`\" pulumi-lang-go=\"`resourceId`\" pulumi-lang-python=\"`resource_id`\" pulumi-lang-yaml=\"`resourceId`\" pulumi-lang-java=\"`resourceId`\"\u003e`resourceId`\u003c/span\u003e\".\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    },
+                    "resourceId": {
+                        "type": "string",
+                        "description": "The identifier of the resource to get the role bindings for.\n"
+                    },
+                    "roleBindings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/stackit:index/getSecretsmanagerInstanceRoleBindingsV1RoleBinding:getSecretsmanagerInstanceRoleBindingsV1RoleBinding"
+                        },
+                        "description": "List of role bindings.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "resourceId",
+                    "roleBindings"
+                ]
+            }
+        },
+        "stackit:index/getSecretsmanagerSecretGroupRoleBindingsV1:getSecretsmanagerSecretGroupRoleBindingsV1": {
+            "description": "IAM role binding datasource schema.\n\n\u003e This datasource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\ndata \"stackit_secretsmanager_secret_group_role_bindings_v1\" \"role_binding\" {\n  resource_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getSecretsmanagerSecretGroupRoleBindingsV1.\n",
+                "properties": {
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    },
+                    "resourceId": {
+                        "type": "string",
+                        "description": "The identifier of the resource to get the role bindings for.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "resourceId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getSecretsmanagerSecretGroupRoleBindingsV1.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Terraform's internal resource identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`resourceId`\" pulumi-lang-dotnet=\"`ResourceId`\" pulumi-lang-go=\"`resourceId`\" pulumi-lang-python=\"`resource_id`\" pulumi-lang-yaml=\"`resourceId`\" pulumi-lang-java=\"`resourceId`\"\u003e`resourceId`\u003c/span\u003e\".\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    },
+                    "resourceId": {
+                        "type": "string",
+                        "description": "The identifier of the resource to get the role bindings for.\n"
+                    },
+                    "roleBindings": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/stackit:index/getSecretsmanagerSecretGroupRoleBindingsV1RoleBinding:getSecretsmanagerSecretGroupRoleBindingsV1RoleBinding"
+                        },
+                        "description": "List of role bindings.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "resourceId",
+                    "roleBindings"
+                ]
+            }
+        },
         "stackit:index/getSecretsmanagerUser:getSecretsmanagerUser": {
             "description": "Secrets Manager user data source schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\ndata \"stackit_secretsmanager_user\" \"example\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  instance_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  user_id     = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
             "inputs": {
@@ -24684,6 +25530,54 @@
                     "projectId",
                     "region",
                     "rules"
+                ]
+            }
+        },
+        "stackit:index/getSfsProjectLock:getSfsProjectLock": {
+            "description": "SFS project lock resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration. Always use only one project lock per project.\n\n## Example Usage\n\n```terraform\ndata \"stackit_sfs_project_lock\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getSfsProjectLock.\n",
+                "properties": {
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT Project ID to which the project lock is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "projectId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getSfsProjectLock.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Terraform's internal resource identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`projectId`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e\".\n"
+                    },
+                    "lockId": {
+                        "type": "string",
+                        "description": "ID of the lock.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT Project ID to which the project lock is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "lockId",
+                    "projectId",
+                    "region"
                 ]
             }
         },
