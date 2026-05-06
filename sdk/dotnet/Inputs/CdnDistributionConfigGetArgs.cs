@@ -36,6 +36,12 @@ namespace Pulumi.Stackit.Inputs
         [Input("optimizer")]
         public Input<Inputs.CdnDistributionConfigOptimizerGetArgs>? Optimizer { get; set; }
 
+        /// <summary>
+        /// A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+        /// </summary>
+        [Input("redirects")]
+        public Input<Inputs.CdnDistributionConfigRedirectsGetArgs>? Redirects { get; set; }
+
         [Input("regions", required: true)]
         private InputList<string>? _regions;
 

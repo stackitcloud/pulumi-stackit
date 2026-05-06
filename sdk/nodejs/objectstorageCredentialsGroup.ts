@@ -56,7 +56,7 @@ export class ObjectstorageCredentialsGroup extends pulumi.CustomResource {
     /**
      * Credentials group uniform resource name (URN)
      */
-    declare public /*out*/ readonly urn: pulumi.Output<string>;
+    declare public /*out*/ readonly stackitUrn: pulumi.Output<string>;
 
     /**
      * Create a ObjectstorageCredentialsGroup resource with the given unique name, arguments, and options.
@@ -75,7 +75,7 @@ export class ObjectstorageCredentialsGroup extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["projectId"] = state?.projectId;
             resourceInputs["region"] = state?.region;
-            resourceInputs["urn"] = state?.urn;
+            resourceInputs["stackitUrn"] = state?.stackitUrn;
         } else {
             const args = argsOrState as ObjectstorageCredentialsGroupArgs | undefined;
             if (args?.projectId === undefined && !opts.urn) {
@@ -85,7 +85,7 @@ export class ObjectstorageCredentialsGroup extends pulumi.CustomResource {
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["region"] = args?.region;
             resourceInputs["credentialsGroupId"] = undefined /*out*/;
-            resourceInputs["urn"] = undefined /*out*/;
+            resourceInputs["stackitUrn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ObjectstorageCredentialsGroup.__pulumiType, name, resourceInputs, opts);
@@ -115,7 +115,7 @@ export interface ObjectstorageCredentialsGroupState {
     /**
      * Credentials group uniform resource name (URN)
      */
-    urn?: pulumi.Input<string>;
+    stackitUrn?: pulumi.Input<string>;
 }
 
 /**

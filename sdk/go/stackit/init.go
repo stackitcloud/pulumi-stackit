@@ -27,8 +27,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AlbCertificate{}
 	case "stackit:index/applicationLoadBalancer:ApplicationLoadBalancer":
 		r = &ApplicationLoadBalancer{}
+	case "stackit:index/authorizationFolderCustomRole:AuthorizationFolderCustomRole":
+		r = &AuthorizationFolderCustomRole{}
 	case "stackit:index/authorizationFolderRoleAssignment:AuthorizationFolderRoleAssignment":
 		r = &AuthorizationFolderRoleAssignment{}
+	case "stackit:index/authorizationOrganizationCustomRole:AuthorizationOrganizationCustomRole":
+		r = &AuthorizationOrganizationCustomRole{}
 	case "stackit:index/authorizationOrganizationRoleAssignment:AuthorizationOrganizationRoleAssignment":
 		r = &AuthorizationOrganizationRoleAssignment{}
 	case "stackit:index/authorizationProjectCustomRole:AuthorizationProjectCustomRole":
@@ -149,6 +153,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ScfOrganizationManager{}
 	case "stackit:index/secretsmanagerInstance:SecretsmanagerInstance":
 		r = &SecretsmanagerInstance{}
+	case "stackit:index/secretsmanagerInstanceRoleBindingV1:SecretsmanagerInstanceRoleBindingV1":
+		r = &SecretsmanagerInstanceRoleBindingV1{}
+	case "stackit:index/secretsmanagerSecretGroupRoleBindingV1:SecretsmanagerSecretGroupRoleBindingV1":
+		r = &SecretsmanagerSecretGroupRoleBindingV1{}
 	case "stackit:index/secretsmanagerUser:SecretsmanagerUser":
 		r = &SecretsmanagerUser{}
 	case "stackit:index/securityGroup:SecurityGroup":
@@ -177,6 +185,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServiceAccountKey{}
 	case "stackit:index/sfsExportPolicy:SfsExportPolicy":
 		r = &SfsExportPolicy{}
+	case "stackit:index/sfsProjectLock:SfsProjectLock":
+		r = &SfsProjectLock{}
 	case "stackit:index/sfsResourcePool:SfsResourcePool":
 		r = &SfsResourcePool{}
 	case "stackit:index/sfsShare:SfsShare":
@@ -239,7 +249,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"stackit",
+		"index/authorizationFolderCustomRole",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
 		"index/authorizationFolderRoleAssignment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/authorizationOrganizationCustomRole",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -544,6 +564,16 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"stackit",
+		"index/secretsmanagerInstanceRoleBindingV1",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/secretsmanagerSecretGroupRoleBindingV1",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
 		"index/secretsmanagerUser",
 		&module{version},
 	)
@@ -610,6 +640,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"stackit",
 		"index/sfsExportPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/sfsProjectLock",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

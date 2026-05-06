@@ -75,6 +75,7 @@ export class SkeCluster extends pulumi.CustomResource {
     declare public readonly network: pulumi.Output<outputs.SkeClusterNetwork>;
     /**
      * One or more `nodePool` block as defined below.
+     * To keep your Terraform plans clean and readable, always append new node pools to the end of the list.
      */
     declare public readonly nodePools: pulumi.Output<outputs.SkeClusterNodePool[]>;
     /**
@@ -179,6 +180,7 @@ export interface SkeClusterState {
     network?: pulumi.Input<inputs.SkeClusterNetwork>;
     /**
      * One or more `nodePool` block as defined below.
+     * To keep your Terraform plans clean and readable, always append new node pools to the end of the list.
      */
     nodePools?: pulumi.Input<pulumi.Input<inputs.SkeClusterNodePool>[]>;
     /**
@@ -225,6 +227,7 @@ export interface SkeClusterArgs {
     network?: pulumi.Input<inputs.SkeClusterNetwork>;
     /**
      * One or more `nodePool` block as defined below.
+     * To keep your Terraform plans clean and readable, always append new node pools to the end of the list.
      */
     nodePools: pulumi.Input<pulumi.Input<inputs.SkeClusterNodePool>[]>;
     /**

@@ -69,6 +69,7 @@ namespace Pulumi.Stackit
 
         /// <summary>
         /// One or more `NodePool` block as defined below.
+        /// To keep your Terraform plans clean and readable, always append new node pools to the end of the list.
         /// </summary>
         [Output("nodePools")]
         public Output<ImmutableArray<Outputs.SkeClusterNodePool>> NodePools { get; private set; } = null!;
@@ -185,6 +186,7 @@ namespace Pulumi.Stackit
 
         /// <summary>
         /// One or more `NodePool` block as defined below.
+        /// To keep your Terraform plans clean and readable, always append new node pools to the end of the list.
         /// </summary>
         public InputList<Inputs.SkeClusterNodePoolArgs> NodePools
         {
@@ -277,6 +279,7 @@ namespace Pulumi.Stackit
 
         /// <summary>
         /// One or more `NodePool` block as defined below.
+        /// To keep your Terraform plans clean and readable, always append new node pools to the end of the list.
         /// </summary>
         public InputList<Inputs.SkeClusterNodePoolGetArgs> NodePools
         {

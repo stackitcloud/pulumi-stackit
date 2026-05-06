@@ -9,7 +9,9 @@ import typing
 from .affinity_group import *
 from .alb_certificate import *
 from .application_load_balancer import *
+from .authorization_folder_custom_role import *
 from .authorization_folder_role_assignment import *
+from .authorization_organization_custom_role import *
 from .authorization_organization_role_assignment import *
 from .authorization_project_custom_role import *
 from .authorization_project_role_assignment import *
@@ -24,6 +26,8 @@ from .edgecloud_token import *
 from .get_affinity_group import *
 from .get_alb_certificate import *
 from .get_application_load_balancer import *
+from .get_authorization_folder_custom_role import *
+from .get_authorization_organization_custom_role import *
 from .get_authorization_project_custom_role import *
 from .get_cdn_custom_domain import *
 from .get_cdn_distribution import *
@@ -83,6 +87,8 @@ from .get_scf_organization import *
 from .get_scf_organization_manager import *
 from .get_scf_platform import *
 from .get_secretsmanager_instance import *
+from .get_secretsmanager_instance_role_bindings_v1 import *
+from .get_secretsmanager_secret_group_role_bindings_v1 import *
 from .get_secretsmanager_user import *
 from .get_security_group import *
 from .get_security_group_rule import *
@@ -96,6 +102,7 @@ from .get_server_update_schedules import *
 from .get_service_account import *
 from .get_service_accounts import *
 from .get_sfs_export_policy import *
+from .get_sfs_project_lock import *
 from .get_sfs_resource_pool import *
 from .get_sfs_resource_pool_snapshot import *
 from .get_sfs_share import *
@@ -155,6 +162,8 @@ from .routing_table_route import *
 from .scf_organization import *
 from .scf_organization_manager import *
 from .secretsmanager_instance import *
+from .secretsmanager_instance_role_binding_v1 import *
+from .secretsmanager_secret_group_role_binding_v1 import *
 from .secretsmanager_user import *
 from .security_group import *
 from .security_group_rule import *
@@ -169,6 +178,7 @@ from .server_volume_attach import *
 from .service_account import *
 from .service_account_key import *
 from .sfs_export_policy import *
+from .sfs_project_lock import *
 from .sfs_resource_pool import *
 from .sfs_share import *
 from .ske_cluster import *
@@ -215,10 +225,26 @@ _utilities.register(
  },
  {
   "pkg": "stackit",
+  "mod": "index/authorizationFolderCustomRole",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/authorizationFolderCustomRole:AuthorizationFolderCustomRole": "AuthorizationFolderCustomRole"
+  }
+ },
+ {
+  "pkg": "stackit",
   "mod": "index/authorizationFolderRoleAssignment",
   "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/authorizationFolderRoleAssignment:AuthorizationFolderRoleAssignment": "AuthorizationFolderRoleAssignment"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/authorizationOrganizationCustomRole",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/authorizationOrganizationCustomRole:AuthorizationOrganizationCustomRole": "AuthorizationOrganizationCustomRole"
   }
  },
  {
@@ -703,6 +729,22 @@ _utilities.register(
  },
  {
   "pkg": "stackit",
+  "mod": "index/secretsmanagerInstanceRoleBindingV1",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/secretsmanagerInstanceRoleBindingV1:SecretsmanagerInstanceRoleBindingV1": "SecretsmanagerInstanceRoleBindingV1"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/secretsmanagerSecretGroupRoleBindingV1",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/secretsmanagerSecretGroupRoleBindingV1:SecretsmanagerSecretGroupRoleBindingV1": "SecretsmanagerSecretGroupRoleBindingV1"
+  }
+ },
+ {
+  "pkg": "stackit",
   "mod": "index/secretsmanagerUser",
   "fqn": "pulumi_stackit",
   "classes": {
@@ -811,6 +853,14 @@ _utilities.register(
   "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/sfsExportPolicy:SfsExportPolicy": "SfsExportPolicy"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/sfsProjectLock",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/sfsProjectLock:SfsProjectLock": "SfsProjectLock"
   }
  },
  {

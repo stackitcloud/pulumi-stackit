@@ -20,10 +20,20 @@ export type ApplicationLoadBalancer = import("./applicationLoadBalancer").Applic
 export const ApplicationLoadBalancer: typeof import("./applicationLoadBalancer").ApplicationLoadBalancer = null as any;
 utilities.lazyLoad(exports, ["ApplicationLoadBalancer"], () => require("./applicationLoadBalancer"));
 
+export { AuthorizationFolderCustomRoleArgs, AuthorizationFolderCustomRoleState } from "./authorizationFolderCustomRole";
+export type AuthorizationFolderCustomRole = import("./authorizationFolderCustomRole").AuthorizationFolderCustomRole;
+export const AuthorizationFolderCustomRole: typeof import("./authorizationFolderCustomRole").AuthorizationFolderCustomRole = null as any;
+utilities.lazyLoad(exports, ["AuthorizationFolderCustomRole"], () => require("./authorizationFolderCustomRole"));
+
 export { AuthorizationFolderRoleAssignmentArgs, AuthorizationFolderRoleAssignmentState } from "./authorizationFolderRoleAssignment";
 export type AuthorizationFolderRoleAssignment = import("./authorizationFolderRoleAssignment").AuthorizationFolderRoleAssignment;
 export const AuthorizationFolderRoleAssignment: typeof import("./authorizationFolderRoleAssignment").AuthorizationFolderRoleAssignment = null as any;
 utilities.lazyLoad(exports, ["AuthorizationFolderRoleAssignment"], () => require("./authorizationFolderRoleAssignment"));
+
+export { AuthorizationOrganizationCustomRoleArgs, AuthorizationOrganizationCustomRoleState } from "./authorizationOrganizationCustomRole";
+export type AuthorizationOrganizationCustomRole = import("./authorizationOrganizationCustomRole").AuthorizationOrganizationCustomRole;
+export const AuthorizationOrganizationCustomRole: typeof import("./authorizationOrganizationCustomRole").AuthorizationOrganizationCustomRole = null as any;
+utilities.lazyLoad(exports, ["AuthorizationOrganizationCustomRole"], () => require("./authorizationOrganizationCustomRole"));
 
 export { AuthorizationOrganizationRoleAssignmentArgs, AuthorizationOrganizationRoleAssignmentState } from "./authorizationOrganizationRoleAssignment";
 export type AuthorizationOrganizationRoleAssignment = import("./authorizationOrganizationRoleAssignment").AuthorizationOrganizationRoleAssignment;
@@ -94,6 +104,16 @@ export { GetApplicationLoadBalancerArgs, GetApplicationLoadBalancerResult, GetAp
 export const getApplicationLoadBalancer: typeof import("./getApplicationLoadBalancer").getApplicationLoadBalancer = null as any;
 export const getApplicationLoadBalancerOutput: typeof import("./getApplicationLoadBalancer").getApplicationLoadBalancerOutput = null as any;
 utilities.lazyLoad(exports, ["getApplicationLoadBalancer","getApplicationLoadBalancerOutput"], () => require("./getApplicationLoadBalancer"));
+
+export { GetAuthorizationFolderCustomRoleArgs, GetAuthorizationFolderCustomRoleResult, GetAuthorizationFolderCustomRoleOutputArgs } from "./getAuthorizationFolderCustomRole";
+export const getAuthorizationFolderCustomRole: typeof import("./getAuthorizationFolderCustomRole").getAuthorizationFolderCustomRole = null as any;
+export const getAuthorizationFolderCustomRoleOutput: typeof import("./getAuthorizationFolderCustomRole").getAuthorizationFolderCustomRoleOutput = null as any;
+utilities.lazyLoad(exports, ["getAuthorizationFolderCustomRole","getAuthorizationFolderCustomRoleOutput"], () => require("./getAuthorizationFolderCustomRole"));
+
+export { GetAuthorizationOrganizationCustomRoleArgs, GetAuthorizationOrganizationCustomRoleResult, GetAuthorizationOrganizationCustomRoleOutputArgs } from "./getAuthorizationOrganizationCustomRole";
+export const getAuthorizationOrganizationCustomRole: typeof import("./getAuthorizationOrganizationCustomRole").getAuthorizationOrganizationCustomRole = null as any;
+export const getAuthorizationOrganizationCustomRoleOutput: typeof import("./getAuthorizationOrganizationCustomRole").getAuthorizationOrganizationCustomRoleOutput = null as any;
+utilities.lazyLoad(exports, ["getAuthorizationOrganizationCustomRole","getAuthorizationOrganizationCustomRoleOutput"], () => require("./getAuthorizationOrganizationCustomRole"));
 
 export { GetAuthorizationProjectCustomRoleArgs, GetAuthorizationProjectCustomRoleResult, GetAuthorizationProjectCustomRoleOutputArgs } from "./getAuthorizationProjectCustomRole";
 export const getAuthorizationProjectCustomRole: typeof import("./getAuthorizationProjectCustomRole").getAuthorizationProjectCustomRole = null as any;
@@ -390,6 +410,16 @@ export const getSecretsmanagerInstance: typeof import("./getSecretsmanagerInstan
 export const getSecretsmanagerInstanceOutput: typeof import("./getSecretsmanagerInstance").getSecretsmanagerInstanceOutput = null as any;
 utilities.lazyLoad(exports, ["getSecretsmanagerInstance","getSecretsmanagerInstanceOutput"], () => require("./getSecretsmanagerInstance"));
 
+export { GetSecretsmanagerInstanceRoleBindingsV1Args, GetSecretsmanagerInstanceRoleBindingsV1Result, GetSecretsmanagerInstanceRoleBindingsV1OutputArgs } from "./getSecretsmanagerInstanceRoleBindingsV1";
+export const getSecretsmanagerInstanceRoleBindingsV1: typeof import("./getSecretsmanagerInstanceRoleBindingsV1").getSecretsmanagerInstanceRoleBindingsV1 = null as any;
+export const getSecretsmanagerInstanceRoleBindingsV1Output: typeof import("./getSecretsmanagerInstanceRoleBindingsV1").getSecretsmanagerInstanceRoleBindingsV1Output = null as any;
+utilities.lazyLoad(exports, ["getSecretsmanagerInstanceRoleBindingsV1","getSecretsmanagerInstanceRoleBindingsV1Output"], () => require("./getSecretsmanagerInstanceRoleBindingsV1"));
+
+export { GetSecretsmanagerSecretGroupRoleBindingsV1Args, GetSecretsmanagerSecretGroupRoleBindingsV1Result, GetSecretsmanagerSecretGroupRoleBindingsV1OutputArgs } from "./getSecretsmanagerSecretGroupRoleBindingsV1";
+export const getSecretsmanagerSecretGroupRoleBindingsV1: typeof import("./getSecretsmanagerSecretGroupRoleBindingsV1").getSecretsmanagerSecretGroupRoleBindingsV1 = null as any;
+export const getSecretsmanagerSecretGroupRoleBindingsV1Output: typeof import("./getSecretsmanagerSecretGroupRoleBindingsV1").getSecretsmanagerSecretGroupRoleBindingsV1Output = null as any;
+utilities.lazyLoad(exports, ["getSecretsmanagerSecretGroupRoleBindingsV1","getSecretsmanagerSecretGroupRoleBindingsV1Output"], () => require("./getSecretsmanagerSecretGroupRoleBindingsV1"));
+
 export { GetSecretsmanagerUserArgs, GetSecretsmanagerUserResult, GetSecretsmanagerUserOutputArgs } from "./getSecretsmanagerUser";
 export const getSecretsmanagerUser: typeof import("./getSecretsmanagerUser").getSecretsmanagerUser = null as any;
 export const getSecretsmanagerUserOutput: typeof import("./getSecretsmanagerUser").getSecretsmanagerUserOutput = null as any;
@@ -454,6 +484,11 @@ export { GetSfsExportPolicyArgs, GetSfsExportPolicyResult, GetSfsExportPolicyOut
 export const getSfsExportPolicy: typeof import("./getSfsExportPolicy").getSfsExportPolicy = null as any;
 export const getSfsExportPolicyOutput: typeof import("./getSfsExportPolicy").getSfsExportPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getSfsExportPolicy","getSfsExportPolicyOutput"], () => require("./getSfsExportPolicy"));
+
+export { GetSfsProjectLockArgs, GetSfsProjectLockResult, GetSfsProjectLockOutputArgs } from "./getSfsProjectLock";
+export const getSfsProjectLock: typeof import("./getSfsProjectLock").getSfsProjectLock = null as any;
+export const getSfsProjectLockOutput: typeof import("./getSfsProjectLock").getSfsProjectLockOutput = null as any;
+utilities.lazyLoad(exports, ["getSfsProjectLock","getSfsProjectLockOutput"], () => require("./getSfsProjectLock"));
 
 export { GetSfsResourcePoolArgs, GetSfsResourcePoolResult, GetSfsResourcePoolOutputArgs } from "./getSfsResourcePool";
 export const getSfsResourcePool: typeof import("./getSfsResourcePool").getSfsResourcePool = null as any;
@@ -748,6 +783,16 @@ export type SecretsmanagerInstance = import("./secretsmanagerInstance").Secretsm
 export const SecretsmanagerInstance: typeof import("./secretsmanagerInstance").SecretsmanagerInstance = null as any;
 utilities.lazyLoad(exports, ["SecretsmanagerInstance"], () => require("./secretsmanagerInstance"));
 
+export { SecretsmanagerInstanceRoleBindingV1Args, SecretsmanagerInstanceRoleBindingV1State } from "./secretsmanagerInstanceRoleBindingV1";
+export type SecretsmanagerInstanceRoleBindingV1 = import("./secretsmanagerInstanceRoleBindingV1").SecretsmanagerInstanceRoleBindingV1;
+export const SecretsmanagerInstanceRoleBindingV1: typeof import("./secretsmanagerInstanceRoleBindingV1").SecretsmanagerInstanceRoleBindingV1 = null as any;
+utilities.lazyLoad(exports, ["SecretsmanagerInstanceRoleBindingV1"], () => require("./secretsmanagerInstanceRoleBindingV1"));
+
+export { SecretsmanagerSecretGroupRoleBindingV1Args, SecretsmanagerSecretGroupRoleBindingV1State } from "./secretsmanagerSecretGroupRoleBindingV1";
+export type SecretsmanagerSecretGroupRoleBindingV1 = import("./secretsmanagerSecretGroupRoleBindingV1").SecretsmanagerSecretGroupRoleBindingV1;
+export const SecretsmanagerSecretGroupRoleBindingV1: typeof import("./secretsmanagerSecretGroupRoleBindingV1").SecretsmanagerSecretGroupRoleBindingV1 = null as any;
+utilities.lazyLoad(exports, ["SecretsmanagerSecretGroupRoleBindingV1"], () => require("./secretsmanagerSecretGroupRoleBindingV1"));
+
 export { SecretsmanagerUserArgs, SecretsmanagerUserState } from "./secretsmanagerUser";
 export type SecretsmanagerUser = import("./secretsmanagerUser").SecretsmanagerUser;
 export const SecretsmanagerUser: typeof import("./secretsmanagerUser").SecretsmanagerUser = null as any;
@@ -818,6 +863,11 @@ export type SfsExportPolicy = import("./sfsExportPolicy").SfsExportPolicy;
 export const SfsExportPolicy: typeof import("./sfsExportPolicy").SfsExportPolicy = null as any;
 utilities.lazyLoad(exports, ["SfsExportPolicy"], () => require("./sfsExportPolicy"));
 
+export { SfsProjectLockArgs, SfsProjectLockState } from "./sfsProjectLock";
+export type SfsProjectLock = import("./sfsProjectLock").SfsProjectLock;
+export const SfsProjectLock: typeof import("./sfsProjectLock").SfsProjectLock = null as any;
+utilities.lazyLoad(exports, ["SfsProjectLock"], () => require("./sfsProjectLock"));
+
 export { SfsResourcePoolArgs, SfsResourcePoolState } from "./sfsResourcePool";
 export type SfsResourcePool = import("./sfsResourcePool").SfsResourcePool;
 export const SfsResourcePool: typeof import("./sfsResourcePool").SfsResourcePool = null as any;
@@ -873,8 +923,12 @@ const _module = {
                 return new AlbCertificate(name, <any>undefined, { urn })
             case "stackit:index/applicationLoadBalancer:ApplicationLoadBalancer":
                 return new ApplicationLoadBalancer(name, <any>undefined, { urn })
+            case "stackit:index/authorizationFolderCustomRole:AuthorizationFolderCustomRole":
+                return new AuthorizationFolderCustomRole(name, <any>undefined, { urn })
             case "stackit:index/authorizationFolderRoleAssignment:AuthorizationFolderRoleAssignment":
                 return new AuthorizationFolderRoleAssignment(name, <any>undefined, { urn })
+            case "stackit:index/authorizationOrganizationCustomRole:AuthorizationOrganizationCustomRole":
+                return new AuthorizationOrganizationCustomRole(name, <any>undefined, { urn })
             case "stackit:index/authorizationOrganizationRoleAssignment:AuthorizationOrganizationRoleAssignment":
                 return new AuthorizationOrganizationRoleAssignment(name, <any>undefined, { urn })
             case "stackit:index/authorizationProjectCustomRole:AuthorizationProjectCustomRole":
@@ -995,6 +1049,10 @@ const _module = {
                 return new ScfOrganizationManager(name, <any>undefined, { urn })
             case "stackit:index/secretsmanagerInstance:SecretsmanagerInstance":
                 return new SecretsmanagerInstance(name, <any>undefined, { urn })
+            case "stackit:index/secretsmanagerInstanceRoleBindingV1:SecretsmanagerInstanceRoleBindingV1":
+                return new SecretsmanagerInstanceRoleBindingV1(name, <any>undefined, { urn })
+            case "stackit:index/secretsmanagerSecretGroupRoleBindingV1:SecretsmanagerSecretGroupRoleBindingV1":
+                return new SecretsmanagerSecretGroupRoleBindingV1(name, <any>undefined, { urn })
             case "stackit:index/secretsmanagerUser:SecretsmanagerUser":
                 return new SecretsmanagerUser(name, <any>undefined, { urn })
             case "stackit:index/securityGroup:SecurityGroup":
@@ -1023,6 +1081,8 @@ const _module = {
                 return new ServiceAccountKey(name, <any>undefined, { urn })
             case "stackit:index/sfsExportPolicy:SfsExportPolicy":
                 return new SfsExportPolicy(name, <any>undefined, { urn })
+            case "stackit:index/sfsProjectLock:SfsProjectLock":
+                return new SfsProjectLock(name, <any>undefined, { urn })
             case "stackit:index/sfsResourcePool:SfsResourcePool":
                 return new SfsResourcePool(name, <any>undefined, { urn })
             case "stackit:index/sfsShare:SfsShare":
@@ -1045,7 +1105,9 @@ const _module = {
 pulumi.runtime.registerResourceModule("stackit", "index/affinityGroup", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/albCertificate", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/applicationLoadBalancer", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/authorizationFolderCustomRole", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/authorizationFolderRoleAssignment", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/authorizationOrganizationCustomRole", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/authorizationOrganizationRoleAssignment", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/authorizationProjectCustomRole", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/authorizationProjectRoleAssignment", _module)
@@ -1106,6 +1168,8 @@ pulumi.runtime.registerResourceModule("stackit", "index/routingTableRoute", _mod
 pulumi.runtime.registerResourceModule("stackit", "index/scfOrganization", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/scfOrganizationManager", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/secretsmanagerInstance", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/secretsmanagerInstanceRoleBindingV1", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/secretsmanagerSecretGroupRoleBindingV1", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/secretsmanagerUser", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/securityGroup", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/securityGroupRule", _module)
@@ -1120,6 +1184,7 @@ pulumi.runtime.registerResourceModule("stackit", "index/serverVolumeAttach", _mo
 pulumi.runtime.registerResourceModule("stackit", "index/serviceAccount", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/serviceAccountKey", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/sfsExportPolicy", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/sfsProjectLock", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/sfsResourcePool", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/sfsShare", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/skeCluster", _module)

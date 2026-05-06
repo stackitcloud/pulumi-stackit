@@ -44,8 +44,8 @@ namespace Pulumi.Stackit
         /// <summary>
         /// Credentials group uniform resource name (URN)
         /// </summary>
-        [Output("urn")]
-        public Output<string> Urn { get; private set; } = null!;
+        [Output("stackitUrn")]
+        public Output<string> StackitUrn { get; private set; } = null!;
 
 
         /// <summary>
@@ -147,8 +147,8 @@ namespace Pulumi.Stackit
         /// <summary>
         /// Credentials group uniform resource name (URN)
         /// </summary>
-        [Input("urn")]
-        public Input<string>? Urn { get; set; }
+        [Input("stackitUrn")]
+        public Input<string>? StackitUrn { get; set; }
 
         public ObjectstorageCredentialsGroupState()
         {

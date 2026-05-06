@@ -45,6 +45,9 @@ __all__ = [
     'CdnDistributionConfigBackend',
     'CdnDistributionConfigBackendCredentials',
     'CdnDistributionConfigOptimizer',
+    'CdnDistributionConfigRedirects',
+    'CdnDistributionConfigRedirectsRule',
+    'CdnDistributionConfigRedirectsRuleMatcher',
     'CdnDistributionDomain',
     'DnsRecordSetTimeouts',
     'DnsZoneTimeouts',
@@ -144,6 +147,9 @@ __all__ = [
     'GetCdnDistributionConfigResult',
     'GetCdnDistributionConfigBackendResult',
     'GetCdnDistributionConfigOptimizerResult',
+    'GetCdnDistributionConfigRedirectsResult',
+    'GetCdnDistributionConfigRedirectsRuleResult',
+    'GetCdnDistributionConfigRedirectsRuleMatcherResult',
     'GetCdnDistributionDomainResult',
     'GetDnsRecordSetTimeoutsResult',
     'GetDnsZoneTimeoutsResult',
@@ -203,6 +209,8 @@ __all__ = [
     'GetRoutingTableRoutesRouteNextHopResult',
     'GetRoutingTablesItemResult',
     'GetSecretsmanagerInstanceKmsKeyResult',
+    'GetSecretsmanagerInstanceRoleBindingsV1RoleBindingResult',
+    'GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingResult',
     'GetSecurityGroupRuleIcmpParametersResult',
     'GetSecurityGroupRulePortRangeResult',
     'GetSecurityGroupRuleProtocolResult',
@@ -1508,12 +1516,14 @@ class CdnDistributionConfig(dict):
                  backend: 'outputs.CdnDistributionConfigBackend',
                  regions: Sequence[_builtins.str],
                  blocked_countries: Optional[Sequence[_builtins.str]] = None,
-                 optimizer: Optional['outputs.CdnDistributionConfigOptimizer'] = None):
+                 optimizer: Optional['outputs.CdnDistributionConfigOptimizer'] = None,
+                 redirects: Optional['outputs.CdnDistributionConfigRedirects'] = None):
         """
         :param 'CdnDistributionConfigBackendArgs' backend: The configured backend for the distribution
         :param Sequence[_builtins.str] regions: The configured regions where content will be hosted
         :param Sequence[_builtins.str] blocked_countries: The configured countries where distribution of content is blocked
         :param 'CdnDistributionConfigOptimizerArgs' optimizer: Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
+        :param 'CdnDistributionConfigRedirectsArgs' redirects: A wrapper for a list of redirect rules that allows for redirect settings on a distribution
         """
         pulumi.set(__self__, "backend", backend)
         pulumi.set(__self__, "regions", regions)
@@ -1521,6 +1531,8 @@ class CdnDistributionConfig(dict):
             pulumi.set(__self__, "blocked_countries", blocked_countries)
         if optimizer is not None:
             pulumi.set(__self__, "optimizer", optimizer)
+        if redirects is not None:
+            pulumi.set(__self__, "redirects", redirects)
 
     @_builtins.property
     @pulumi.getter
@@ -1553,6 +1565,14 @@ class CdnDistributionConfig(dict):
         Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
         """
         return pulumi.get(self, "optimizer")
+
+    @_builtins.property
+    @pulumi.getter
+    def redirects(self) -> Optional['outputs.CdnDistributionConfigRedirects']:
+        """
+        A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+        """
+        return pulumi.get(self, "redirects")
 
 
 @pulumi.output_type
@@ -1725,6 +1745,168 @@ class CdnDistributionConfigOptimizer(dict):
     @pulumi.getter
     def enabled(self) -> Optional[_builtins.bool]:
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class CdnDistributionConfigRedirects(dict):
+    def __init__(__self__, *,
+                 rules: Sequence['outputs.CdnDistributionConfigRedirectsRule']):
+        """
+        :param Sequence['CdnDistributionConfigRedirectsRuleArgs'] rules: A list of redirect rules. The order of rules matters for evaluation
+        """
+        pulumi.set(__self__, "rules", rules)
+
+    @_builtins.property
+    @pulumi.getter
+    def rules(self) -> Sequence['outputs.CdnDistributionConfigRedirectsRule']:
+        """
+        A list of redirect rules. The order of rules matters for evaluation
+        """
+        return pulumi.get(self, "rules")
+
+
+@pulumi.output_type
+class CdnDistributionConfigRedirectsRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "statusCode":
+            suggest = "status_code"
+        elif key == "targetUrl":
+            suggest = "target_url"
+        elif key == "ruleMatchCondition":
+            suggest = "rule_match_condition"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CdnDistributionConfigRedirectsRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CdnDistributionConfigRedirectsRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CdnDistributionConfigRedirectsRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 matchers: Sequence['outputs.CdnDistributionConfigRedirectsRuleMatcher'],
+                 status_code: _builtins.int,
+                 target_url: _builtins.str,
+                 description: Optional[_builtins.str] = None,
+                 enabled: Optional[_builtins.bool] = None,
+                 rule_match_condition: Optional[_builtins.str] = None):
+        """
+        :param Sequence['CdnDistributionConfigRedirectsRuleMatcherArgs'] matchers: A list of matchers that define when this rule should apply. At least one matcher is required
+        :param _builtins.int status_code: The HTTP status code for the redirect. Must be one of 301, 302, 303, 307, or 308.
+        :param _builtins.str target_url: The target URL to redirect to. Must be a valid URI
+        :param _builtins.str description: An optional description for the redirect rule
+        :param _builtins.bool enabled: A toggle to enable or disable the redirect rule. Default to true
+        :param _builtins.str rule_match_condition: Defines how multiple matchers within this rule are combined (ALL, ANY, NONE). Defaults to ANY.
+        """
+        pulumi.set(__self__, "matchers", matchers)
+        pulumi.set(__self__, "status_code", status_code)
+        pulumi.set(__self__, "target_url", target_url)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if rule_match_condition is not None:
+            pulumi.set(__self__, "rule_match_condition", rule_match_condition)
+
+    @_builtins.property
+    @pulumi.getter
+    def matchers(self) -> Sequence['outputs.CdnDistributionConfigRedirectsRuleMatcher']:
+        """
+        A list of matchers that define when this rule should apply. At least one matcher is required
+        """
+        return pulumi.get(self, "matchers")
+
+    @_builtins.property
+    @pulumi.getter(name="statusCode")
+    def status_code(self) -> _builtins.int:
+        """
+        The HTTP status code for the redirect. Must be one of 301, 302, 303, 307, or 308.
+        """
+        return pulumi.get(self, "status_code")
+
+    @_builtins.property
+    @pulumi.getter(name="targetUrl")
+    def target_url(self) -> _builtins.str:
+        """
+        The target URL to redirect to. Must be a valid URI
+        """
+        return pulumi.get(self, "target_url")
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        An optional description for the redirect rule
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        A toggle to enable or disable the redirect rule. Default to true
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="ruleMatchCondition")
+    def rule_match_condition(self) -> Optional[_builtins.str]:
+        """
+        Defines how multiple matchers within this rule are combined (ALL, ANY, NONE). Defaults to ANY.
+        """
+        return pulumi.get(self, "rule_match_condition")
+
+
+@pulumi.output_type
+class CdnDistributionConfigRedirectsRuleMatcher(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "valueMatchCondition":
+            suggest = "value_match_condition"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CdnDistributionConfigRedirectsRuleMatcher. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CdnDistributionConfigRedirectsRuleMatcher.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CdnDistributionConfigRedirectsRuleMatcher.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 values: Sequence[_builtins.str],
+                 value_match_condition: Optional[_builtins.str] = None):
+        """
+        :param Sequence[_builtins.str] values: A list of glob patterns to match against the request path. At least one value is required. Examples: "/shop/*" or "*/img/*"
+        :param _builtins.str value_match_condition: Defines how multiple matchers within this rule are combined (ALL, ANY, NONE). Defaults to ANY.
+        """
+        pulumi.set(__self__, "values", values)
+        if value_match_condition is not None:
+            pulumi.set(__self__, "value_match_condition", value_match_condition)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        A list of glob patterns to match against the request path. At least one value is required. Examples: "/shop/*" or "*/img/*"
+        """
+        return pulumi.get(self, "values")
+
+    @_builtins.property
+    @pulumi.getter(name="valueMatchCondition")
+    def value_match_condition(self) -> Optional[_builtins.str]:
+        """
+        Defines how multiple matchers within this rule are combined (ALL, ANY, NONE). Defaults to ANY.
+        """
+        return pulumi.get(self, "value_match_condition")
 
 
 @pulumi.output_type
@@ -6287,38 +6469,24 @@ class SkeClusterMaintenance(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 end: _builtins.str,
-                 start: _builtins.str,
                  enable_kubernetes_version_updates: Optional[_builtins.bool] = None,
-                 enable_machine_image_version_updates: Optional[_builtins.bool] = None):
+                 enable_machine_image_version_updates: Optional[_builtins.bool] = None,
+                 end: Optional[_builtins.str] = None,
+                 start: Optional[_builtins.str] = None):
         """
-        :param _builtins.str end: Time for maintenance window end. E.g. `01:23:45Z`, `05:00:00+02:00`.
-        :param _builtins.str start: Time for maintenance window start. E.g. `01:23:45Z`, `05:00:00+02:00`.
         :param _builtins.bool enable_kubernetes_version_updates: Flag to enable/disable auto-updates of the Kubernetes version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
         :param _builtins.bool enable_machine_image_version_updates: Flag to enable/disable auto-updates of the OS image version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
+        :param _builtins.str end: Time for maintenance window end. E.g. `01:23:45Z`, `05:00:00+02:00`.
+        :param _builtins.str start: Time for maintenance window start. E.g. `01:23:45Z`, `05:00:00+02:00`.
         """
-        pulumi.set(__self__, "end", end)
-        pulumi.set(__self__, "start", start)
         if enable_kubernetes_version_updates is not None:
             pulumi.set(__self__, "enable_kubernetes_version_updates", enable_kubernetes_version_updates)
         if enable_machine_image_version_updates is not None:
             pulumi.set(__self__, "enable_machine_image_version_updates", enable_machine_image_version_updates)
-
-    @_builtins.property
-    @pulumi.getter
-    def end(self) -> _builtins.str:
-        """
-        Time for maintenance window end. E.g. `01:23:45Z`, `05:00:00+02:00`.
-        """
-        return pulumi.get(self, "end")
-
-    @_builtins.property
-    @pulumi.getter
-    def start(self) -> _builtins.str:
-        """
-        Time for maintenance window start. E.g. `01:23:45Z`, `05:00:00+02:00`.
-        """
-        return pulumi.get(self, "start")
+        if end is not None:
+            pulumi.set(__self__, "end", end)
+        if start is not None:
+            pulumi.set(__self__, "start", start)
 
     @_builtins.property
     @pulumi.getter(name="enableKubernetesVersionUpdates")
@@ -6335,6 +6503,22 @@ class SkeClusterMaintenance(dict):
         Flag to enable/disable auto-updates of the OS image version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
         """
         return pulumi.get(self, "enable_machine_image_version_updates")
+
+    @_builtins.property
+    @pulumi.getter
+    def end(self) -> Optional[_builtins.str]:
+        """
+        Time for maintenance window end. E.g. `01:23:45Z`, `05:00:00+02:00`.
+        """
+        return pulumi.get(self, "end")
+
+    @_builtins.property
+    @pulumi.getter
+    def start(self) -> Optional[_builtins.str]:
+        """
+        Time for maintenance window start. E.g. `01:23:45Z`, `05:00:00+02:00`.
+        """
+        return pulumi.get(self, "start")
 
 
 @pulumi.output_type
@@ -7833,16 +8017,19 @@ class GetCdnDistributionConfigResult(dict):
     def __init__(__self__, *,
                  backend: 'outputs.GetCdnDistributionConfigBackendResult',
                  optimizer: 'outputs.GetCdnDistributionConfigOptimizerResult',
+                 redirects: 'outputs.GetCdnDistributionConfigRedirectsResult',
                  regions: Sequence[_builtins.str],
                  blocked_countries: Optional[Sequence[_builtins.str]] = None):
         """
         :param 'GetCdnDistributionConfigBackendArgs' backend: The configured backend for the distribution
         :param 'GetCdnDistributionConfigOptimizerArgs' optimizer: Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
+        :param 'GetCdnDistributionConfigRedirectsArgs' redirects: A wrapper for a list of redirect rules that allows for redirect settings on a distribution
         :param Sequence[_builtins.str] regions: The configured regions where content will be hosted
         :param Sequence[_builtins.str] blocked_countries: The configured countries where distribution of content is blocked
         """
         pulumi.set(__self__, "backend", backend)
         pulumi.set(__self__, "optimizer", optimizer)
+        pulumi.set(__self__, "redirects", redirects)
         pulumi.set(__self__, "regions", regions)
         if blocked_countries is not None:
             pulumi.set(__self__, "blocked_countries", blocked_countries)
@@ -7862,6 +8049,14 @@ class GetCdnDistributionConfigResult(dict):
         Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
         """
         return pulumi.get(self, "optimizer")
+
+    @_builtins.property
+    @pulumi.getter
+    def redirects(self) -> 'outputs.GetCdnDistributionConfigRedirectsResult':
+        """
+        A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+        """
+        return pulumi.get(self, "redirects")
 
     @_builtins.property
     @pulumi.getter
@@ -7963,6 +8158,126 @@ class GetCdnDistributionConfigOptimizerResult(dict):
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetCdnDistributionConfigRedirectsResult(dict):
+    def __init__(__self__, *,
+                 rules: Sequence['outputs.GetCdnDistributionConfigRedirectsRuleResult']):
+        """
+        :param Sequence['GetCdnDistributionConfigRedirectsRuleArgs'] rules: A list of redirect rules. The order of rules matters for evaluation
+        """
+        pulumi.set(__self__, "rules", rules)
+
+    @_builtins.property
+    @pulumi.getter
+    def rules(self) -> Sequence['outputs.GetCdnDistributionConfigRedirectsRuleResult']:
+        """
+        A list of redirect rules. The order of rules matters for evaluation
+        """
+        return pulumi.get(self, "rules")
+
+
+@pulumi.output_type
+class GetCdnDistributionConfigRedirectsRuleResult(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 enabled: _builtins.bool,
+                 matchers: Sequence['outputs.GetCdnDistributionConfigRedirectsRuleMatcherResult'],
+                 rule_match_condition: _builtins.str,
+                 status_code: _builtins.int,
+                 target_url: _builtins.str):
+        """
+        :param _builtins.str description: An optional description for the redirect rule
+        :param _builtins.bool enabled: A toggle to enable or disable the redirect rule. Default to true
+        :param Sequence['GetCdnDistributionConfigRedirectsRuleMatcherArgs'] matchers: A list of matchers that define when this rule should apply. At least one matcher is required
+        :param _builtins.str rule_match_condition: Defines how multiple matchers within this rule are combined (ALL, ANY, NONE). Defaults to ANY.
+        :param _builtins.int status_code: The HTTP status code for the redirect. Must be one of 301, 302, 303, 307, or 308.
+        :param _builtins.str target_url: The target URL to redirect to. Must be a valid URI
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "matchers", matchers)
+        pulumi.set(__self__, "rule_match_condition", rule_match_condition)
+        pulumi.set(__self__, "status_code", status_code)
+        pulumi.set(__self__, "target_url", target_url)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        An optional description for the redirect rule
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        A toggle to enable or disable the redirect rule. Default to true
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def matchers(self) -> Sequence['outputs.GetCdnDistributionConfigRedirectsRuleMatcherResult']:
+        """
+        A list of matchers that define when this rule should apply. At least one matcher is required
+        """
+        return pulumi.get(self, "matchers")
+
+    @_builtins.property
+    @pulumi.getter(name="ruleMatchCondition")
+    def rule_match_condition(self) -> _builtins.str:
+        """
+        Defines how multiple matchers within this rule are combined (ALL, ANY, NONE). Defaults to ANY.
+        """
+        return pulumi.get(self, "rule_match_condition")
+
+    @_builtins.property
+    @pulumi.getter(name="statusCode")
+    def status_code(self) -> _builtins.int:
+        """
+        The HTTP status code for the redirect. Must be one of 301, 302, 303, 307, or 308.
+        """
+        return pulumi.get(self, "status_code")
+
+    @_builtins.property
+    @pulumi.getter(name="targetUrl")
+    def target_url(self) -> _builtins.str:
+        """
+        The target URL to redirect to. Must be a valid URI
+        """
+        return pulumi.get(self, "target_url")
+
+
+@pulumi.output_type
+class GetCdnDistributionConfigRedirectsRuleMatcherResult(dict):
+    def __init__(__self__, *,
+                 value_match_condition: _builtins.str,
+                 values: Sequence[_builtins.str]):
+        """
+        :param _builtins.str value_match_condition: Defines how multiple matchers within this rule are combined (ALL, ANY, NONE). Defaults to ANY.
+        :param Sequence[_builtins.str] values: A list of glob patterns to match against the request path. At least one value is required. Examples: "/shop/*" or "*/img/*"
+        """
+        pulumi.set(__self__, "value_match_condition", value_match_condition)
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter(name="valueMatchCondition")
+    def value_match_condition(self) -> _builtins.str:
+        """
+        Defines how multiple matchers within this rule are combined (ALL, ANY, NONE). Defaults to ANY.
+        """
+        return pulumi.get(self, "value_match_condition")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        A list of glob patterns to match against the request path. At least one value is required. Examples: "/shop/*" or "*/img/*"
+        """
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type
@@ -8934,21 +9249,20 @@ class GetLoadbalancerTargetPoolResult(dict):
     def __init__(__self__, *,
                  active_health_check: 'outputs.GetLoadbalancerTargetPoolActiveHealthCheckResult',
                  name: _builtins.str,
+                 session_persistence: 'outputs.GetLoadbalancerTargetPoolSessionPersistenceResult',
                  target_port: _builtins.int,
-                 targets: Sequence['outputs.GetLoadbalancerTargetPoolTargetResult'],
-                 session_persistence: Optional['outputs.GetLoadbalancerTargetPoolSessionPersistenceResult'] = None):
+                 targets: Sequence['outputs.GetLoadbalancerTargetPoolTargetResult']):
         """
         :param _builtins.str name: Target pool name.
+        :param 'GetLoadbalancerTargetPoolSessionPersistenceArgs' session_persistence: Here you can setup various session persistence options, so far only "`use_source_ip_address`" is supported.
         :param _builtins.int target_port: Identical port number where each target listens for traffic.
         :param Sequence['GetLoadbalancerTargetPoolTargetArgs'] targets: List of all targets which will be used in the pool. Limited to 1000.
-        :param 'GetLoadbalancerTargetPoolSessionPersistenceArgs' session_persistence: Here you can setup various session persistence options, so far only "`use_source_ip_address`" is supported.
         """
         pulumi.set(__self__, "active_health_check", active_health_check)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "session_persistence", session_persistence)
         pulumi.set(__self__, "target_port", target_port)
         pulumi.set(__self__, "targets", targets)
-        if session_persistence is not None:
-            pulumi.set(__self__, "session_persistence", session_persistence)
 
     @_builtins.property
     @pulumi.getter(name="activeHealthCheck")
@@ -8962,6 +9276,14 @@ class GetLoadbalancerTargetPoolResult(dict):
         Target pool name.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="sessionPersistence")
+    def session_persistence(self) -> 'outputs.GetLoadbalancerTargetPoolSessionPersistenceResult':
+        """
+        Here you can setup various session persistence options, so far only "`use_source_ip_address`" is supported.
+        """
+        return pulumi.get(self, "session_persistence")
 
     @_builtins.property
     @pulumi.getter(name="targetPort")
@@ -8978,14 +9300,6 @@ class GetLoadbalancerTargetPoolResult(dict):
         List of all targets which will be used in the pool. Limited to 1000.
         """
         return pulumi.get(self, "targets")
-
-    @_builtins.property
-    @pulumi.getter(name="sessionPersistence")
-    def session_persistence(self) -> Optional['outputs.GetLoadbalancerTargetPoolSessionPersistenceResult']:
-        """
-        Here you can setup various session persistence options, so far only "`use_source_ip_address`" is supported.
-        """
-        return pulumi.get(self, "session_persistence")
 
 
 @pulumi.output_type
@@ -9053,16 +9367,15 @@ class GetLoadbalancerTargetPoolActiveHealthCheckResult(dict):
 @pulumi.output_type
 class GetLoadbalancerTargetPoolSessionPersistenceResult(dict):
     def __init__(__self__, *,
-                 use_source_ip_address: Optional[_builtins.bool] = None):
+                 use_source_ip_address: _builtins.bool):
         """
         :param _builtins.bool use_source_ip_address: If true then all connections from one source IP address are redirected to the same target. This setting changes the load balancing algorithm to Maglev.
         """
-        if use_source_ip_address is not None:
-            pulumi.set(__self__, "use_source_ip_address", use_source_ip_address)
+        pulumi.set(__self__, "use_source_ip_address", use_source_ip_address)
 
     @_builtins.property
     @pulumi.getter(name="useSourceIpAddress")
-    def use_source_ip_address(self) -> Optional[_builtins.bool]:
+    def use_source_ip_address(self) -> _builtins.bool:
         """
         If true then all connections from one source IP address are redirected to the same target. This setting changes the load balancing algorithm to Maglev.
         """
@@ -11458,6 +11771,64 @@ class GetSecretsmanagerInstanceKmsKeyResult(dict):
         Service-Account linked to the Key within the STACKIT-KMS.
         """
         return pulumi.get(self, "service_account_email")
+
+
+@pulumi.output_type
+class GetSecretsmanagerInstanceRoleBindingsV1RoleBindingResult(dict):
+    def __init__(__self__, *,
+                 role: _builtins.str,
+                 subject: _builtins.str):
+        """
+        :param _builtins.str role: A valid role defined for the resource.
+        :param _builtins.str subject: Identifier of user, service account or client. Usually email address or name in case of clients.
+        """
+        pulumi.set(__self__, "role", role)
+        pulumi.set(__self__, "subject", subject)
+
+    @_builtins.property
+    @pulumi.getter
+    def role(self) -> _builtins.str:
+        """
+        A valid role defined for the resource.
+        """
+        return pulumi.get(self, "role")
+
+    @_builtins.property
+    @pulumi.getter
+    def subject(self) -> _builtins.str:
+        """
+        Identifier of user, service account or client. Usually email address or name in case of clients.
+        """
+        return pulumi.get(self, "subject")
+
+
+@pulumi.output_type
+class GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingResult(dict):
+    def __init__(__self__, *,
+                 role: _builtins.str,
+                 subject: _builtins.str):
+        """
+        :param _builtins.str role: A valid role defined for the resource.
+        :param _builtins.str subject: Identifier of user, service account or client. Usually email address or name in case of clients.
+        """
+        pulumi.set(__self__, "role", role)
+        pulumi.set(__self__, "subject", subject)
+
+    @_builtins.property
+    @pulumi.getter
+    def role(self) -> _builtins.str:
+        """
+        A valid role defined for the resource.
+        """
+        return pulumi.get(self, "role")
+
+    @_builtins.property
+    @pulumi.getter
+    def subject(self) -> _builtins.str:
+        """
+        Identifier of user, service account or client. Usually email address or name in case of clients.
+        """
+        return pulumi.get(self, "subject")
 
 
 @pulumi.output_type

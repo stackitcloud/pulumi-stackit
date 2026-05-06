@@ -27,14 +27,14 @@ namespace Pulumi.Stackit.Inputs
         /// <summary>
         /// Time for maintenance window end. E.g. `01:23:45Z`, `05:00:00+02:00`.
         /// </summary>
-        [Input("end", required: true)]
-        public Input<string> End { get; set; } = null!;
+        [Input("end")]
+        public Input<string>? End { get; set; }
 
         /// <summary>
         /// Time for maintenance window start. E.g. `01:23:45Z`, `05:00:00+02:00`.
         /// </summary>
-        [Input("start", required: true)]
-        public Input<string> Start { get; set; } = null!;
+        [Input("start")]
+        public Input<string>? Start { get; set; }
 
         public SkeClusterMaintenanceGetArgs()
         {

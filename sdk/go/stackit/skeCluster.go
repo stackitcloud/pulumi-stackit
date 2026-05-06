@@ -37,6 +37,7 @@ type SkeCluster struct {
 	// Network block as defined below.
 	Network SkeClusterNetworkOutput `pulumi:"network"`
 	// One or more `nodePool` block as defined below.
+	// To keep your Terraform plans clean and readable, always append new node pools to the end of the list.
 	NodePools SkeClusterNodePoolArrayOutput `pulumi:"nodePools"`
 	// The network ranges (in CIDR notation) used by pods of the cluster.
 	PodAddressRanges pulumi.StringArrayOutput `pulumi:"podAddressRanges"`
@@ -99,6 +100,7 @@ type skeClusterState struct {
 	// Network block as defined below.
 	Network *SkeClusterNetwork `pulumi:"network"`
 	// One or more `nodePool` block as defined below.
+	// To keep your Terraform plans clean and readable, always append new node pools to the end of the list.
 	NodePools []SkeClusterNodePool `pulumi:"nodePools"`
 	// The network ranges (in CIDR notation) used by pods of the cluster.
 	PodAddressRanges []string `pulumi:"podAddressRanges"`
@@ -126,6 +128,7 @@ type SkeClusterState struct {
 	// Network block as defined below.
 	Network SkeClusterNetworkPtrInput
 	// One or more `nodePool` block as defined below.
+	// To keep your Terraform plans clean and readable, always append new node pools to the end of the list.
 	NodePools SkeClusterNodePoolArrayInput
 	// The network ranges (in CIDR notation) used by pods of the cluster.
 	PodAddressRanges pulumi.StringArrayInput
@@ -153,6 +156,7 @@ type skeClusterArgs struct {
 	// Network block as defined below.
 	Network *SkeClusterNetwork `pulumi:"network"`
 	// One or more `nodePool` block as defined below.
+	// To keep your Terraform plans clean and readable, always append new node pools to the end of the list.
 	NodePools []SkeClusterNodePool `pulumi:"nodePools"`
 	// STACKIT project ID to which the cluster is associated.
 	ProjectId string `pulumi:"projectId"`
@@ -175,6 +179,7 @@ type SkeClusterArgs struct {
 	// Network block as defined below.
 	Network SkeClusterNetworkPtrInput
 	// One or more `nodePool` block as defined below.
+	// To keep your Terraform plans clean and readable, always append new node pools to the end of the list.
 	NodePools SkeClusterNodePoolArrayInput
 	// STACKIT project ID to which the cluster is associated.
 	ProjectId pulumi.StringInput
@@ -310,6 +315,7 @@ func (o SkeClusterOutput) Network() SkeClusterNetworkOutput {
 }
 
 // One or more `nodePool` block as defined below.
+// To keep your Terraform plans clean and readable, always append new node pools to the end of the list.
 func (o SkeClusterOutput) NodePools() SkeClusterNodePoolArrayOutput {
 	return o.ApplyT(func(v *SkeCluster) SkeClusterNodePoolArrayOutput { return v.NodePools }).(SkeClusterNodePoolArrayOutput)
 }

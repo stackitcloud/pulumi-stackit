@@ -27,7 +27,7 @@ type ObjectstorageCredentialsGroup struct {
 	// The resource region. If not defined, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Credentials group uniform resource name (URN)
-	Urn pulumi.StringOutput `pulumi:"urn"`
+	StackitUrn pulumi.StringOutput `pulumi:"stackitUrn"`
 }
 
 // NewObjectstorageCredentialsGroup registers a new resource with the given unique name, arguments, and options.
@@ -72,7 +72,7 @@ type objectstorageCredentialsGroupState struct {
 	// The resource region. If not defined, the provider region is used.
 	Region *string `pulumi:"region"`
 	// Credentials group uniform resource name (URN)
-	Urn *string `pulumi:"urn"`
+	StackitUrn *string `pulumi:"stackitUrn"`
 }
 
 type ObjectstorageCredentialsGroupState struct {
@@ -85,7 +85,7 @@ type ObjectstorageCredentialsGroupState struct {
 	// The resource region. If not defined, the provider region is used.
 	Region pulumi.StringPtrInput
 	// Credentials group uniform resource name (URN)
-	Urn pulumi.StringPtrInput
+	StackitUrn pulumi.StringPtrInput
 }
 
 func (ObjectstorageCredentialsGroupState) ElementType() reflect.Type {
@@ -219,8 +219,8 @@ func (o ObjectstorageCredentialsGroupOutput) Region() pulumi.StringOutput {
 }
 
 // Credentials group uniform resource name (URN)
-func (o ObjectstorageCredentialsGroupOutput) Urn() pulumi.StringOutput {
-	return o.ApplyT(func(v *ObjectstorageCredentialsGroup) pulumi.StringOutput { return v.Urn }).(pulumi.StringOutput)
+func (o ObjectstorageCredentialsGroupOutput) StackitUrn() pulumi.StringOutput {
+	return o.ApplyT(func(v *ObjectstorageCredentialsGroup) pulumi.StringOutput { return v.StackitUrn }).(pulumi.StringOutput)
 }
 
 type ObjectstorageCredentialsGroupArrayOutput struct{ *pulumi.OutputState }

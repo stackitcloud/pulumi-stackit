@@ -3585,6 +3585,8 @@ type CdnDistributionConfig struct {
 	BlockedCountries []string `pulumi:"blockedCountries"`
 	// Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
 	Optimizer *CdnDistributionConfigOptimizer `pulumi:"optimizer"`
+	// A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+	Redirects *CdnDistributionConfigRedirects `pulumi:"redirects"`
 	// The configured regions where content will be hosted
 	Regions []string `pulumi:"regions"`
 }
@@ -3607,6 +3609,8 @@ type CdnDistributionConfigArgs struct {
 	BlockedCountries pulumi.StringArrayInput `pulumi:"blockedCountries"`
 	// Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
 	Optimizer CdnDistributionConfigOptimizerPtrInput `pulumi:"optimizer"`
+	// A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+	Redirects CdnDistributionConfigRedirectsPtrInput `pulumi:"redirects"`
 	// The configured regions where content will be hosted
 	Regions pulumi.StringArrayInput `pulumi:"regions"`
 }
@@ -3703,6 +3707,11 @@ func (o CdnDistributionConfigOutput) Optimizer() CdnDistributionConfigOptimizerP
 	return o.ApplyT(func(v CdnDistributionConfig) *CdnDistributionConfigOptimizer { return v.Optimizer }).(CdnDistributionConfigOptimizerPtrOutput)
 }
 
+// A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+func (o CdnDistributionConfigOutput) Redirects() CdnDistributionConfigRedirectsPtrOutput {
+	return o.ApplyT(func(v CdnDistributionConfig) *CdnDistributionConfigRedirects { return v.Redirects }).(CdnDistributionConfigRedirectsPtrOutput)
+}
+
 // The configured regions where content will be hosted
 func (o CdnDistributionConfigOutput) Regions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CdnDistributionConfig) []string { return v.Regions }).(pulumi.StringArrayOutput)
@@ -3760,6 +3769,16 @@ func (o CdnDistributionConfigPtrOutput) Optimizer() CdnDistributionConfigOptimiz
 		}
 		return v.Optimizer
 	}).(CdnDistributionConfigOptimizerPtrOutput)
+}
+
+// A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+func (o CdnDistributionConfigPtrOutput) Redirects() CdnDistributionConfigRedirectsPtrOutput {
+	return o.ApplyT(func(v *CdnDistributionConfig) *CdnDistributionConfigRedirects {
+		if v == nil {
+			return nil
+		}
+		return v.Redirects
+	}).(CdnDistributionConfigRedirectsPtrOutput)
 }
 
 // The configured regions where content will be hosted
@@ -4310,6 +4329,393 @@ func (o CdnDistributionConfigOptimizerPtrOutput) Enabled() pulumi.BoolPtrOutput 
 		}
 		return v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+type CdnDistributionConfigRedirects struct {
+	// A list of redirect rules. The order of rules matters for evaluation
+	Rules []CdnDistributionConfigRedirectsRule `pulumi:"rules"`
+}
+
+// CdnDistributionConfigRedirectsInput is an input type that accepts CdnDistributionConfigRedirectsArgs and CdnDistributionConfigRedirectsOutput values.
+// You can construct a concrete instance of `CdnDistributionConfigRedirectsInput` via:
+//
+//	CdnDistributionConfigRedirectsArgs{...}
+type CdnDistributionConfigRedirectsInput interface {
+	pulumi.Input
+
+	ToCdnDistributionConfigRedirectsOutput() CdnDistributionConfigRedirectsOutput
+	ToCdnDistributionConfigRedirectsOutputWithContext(context.Context) CdnDistributionConfigRedirectsOutput
+}
+
+type CdnDistributionConfigRedirectsArgs struct {
+	// A list of redirect rules. The order of rules matters for evaluation
+	Rules CdnDistributionConfigRedirectsRuleArrayInput `pulumi:"rules"`
+}
+
+func (CdnDistributionConfigRedirectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CdnDistributionConfigRedirects)(nil)).Elem()
+}
+
+func (i CdnDistributionConfigRedirectsArgs) ToCdnDistributionConfigRedirectsOutput() CdnDistributionConfigRedirectsOutput {
+	return i.ToCdnDistributionConfigRedirectsOutputWithContext(context.Background())
+}
+
+func (i CdnDistributionConfigRedirectsArgs) ToCdnDistributionConfigRedirectsOutputWithContext(ctx context.Context) CdnDistributionConfigRedirectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnDistributionConfigRedirectsOutput)
+}
+
+func (i CdnDistributionConfigRedirectsArgs) ToCdnDistributionConfigRedirectsPtrOutput() CdnDistributionConfigRedirectsPtrOutput {
+	return i.ToCdnDistributionConfigRedirectsPtrOutputWithContext(context.Background())
+}
+
+func (i CdnDistributionConfigRedirectsArgs) ToCdnDistributionConfigRedirectsPtrOutputWithContext(ctx context.Context) CdnDistributionConfigRedirectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnDistributionConfigRedirectsOutput).ToCdnDistributionConfigRedirectsPtrOutputWithContext(ctx)
+}
+
+// CdnDistributionConfigRedirectsPtrInput is an input type that accepts CdnDistributionConfigRedirectsArgs, CdnDistributionConfigRedirectsPtr and CdnDistributionConfigRedirectsPtrOutput values.
+// You can construct a concrete instance of `CdnDistributionConfigRedirectsPtrInput` via:
+//
+//	        CdnDistributionConfigRedirectsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CdnDistributionConfigRedirectsPtrInput interface {
+	pulumi.Input
+
+	ToCdnDistributionConfigRedirectsPtrOutput() CdnDistributionConfigRedirectsPtrOutput
+	ToCdnDistributionConfigRedirectsPtrOutputWithContext(context.Context) CdnDistributionConfigRedirectsPtrOutput
+}
+
+type cdnDistributionConfigRedirectsPtrType CdnDistributionConfigRedirectsArgs
+
+func CdnDistributionConfigRedirectsPtr(v *CdnDistributionConfigRedirectsArgs) CdnDistributionConfigRedirectsPtrInput {
+	return (*cdnDistributionConfigRedirectsPtrType)(v)
+}
+
+func (*cdnDistributionConfigRedirectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CdnDistributionConfigRedirects)(nil)).Elem()
+}
+
+func (i *cdnDistributionConfigRedirectsPtrType) ToCdnDistributionConfigRedirectsPtrOutput() CdnDistributionConfigRedirectsPtrOutput {
+	return i.ToCdnDistributionConfigRedirectsPtrOutputWithContext(context.Background())
+}
+
+func (i *cdnDistributionConfigRedirectsPtrType) ToCdnDistributionConfigRedirectsPtrOutputWithContext(ctx context.Context) CdnDistributionConfigRedirectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnDistributionConfigRedirectsPtrOutput)
+}
+
+type CdnDistributionConfigRedirectsOutput struct{ *pulumi.OutputState }
+
+func (CdnDistributionConfigRedirectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CdnDistributionConfigRedirects)(nil)).Elem()
+}
+
+func (o CdnDistributionConfigRedirectsOutput) ToCdnDistributionConfigRedirectsOutput() CdnDistributionConfigRedirectsOutput {
+	return o
+}
+
+func (o CdnDistributionConfigRedirectsOutput) ToCdnDistributionConfigRedirectsOutputWithContext(ctx context.Context) CdnDistributionConfigRedirectsOutput {
+	return o
+}
+
+func (o CdnDistributionConfigRedirectsOutput) ToCdnDistributionConfigRedirectsPtrOutput() CdnDistributionConfigRedirectsPtrOutput {
+	return o.ToCdnDistributionConfigRedirectsPtrOutputWithContext(context.Background())
+}
+
+func (o CdnDistributionConfigRedirectsOutput) ToCdnDistributionConfigRedirectsPtrOutputWithContext(ctx context.Context) CdnDistributionConfigRedirectsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CdnDistributionConfigRedirects) *CdnDistributionConfigRedirects {
+		return &v
+	}).(CdnDistributionConfigRedirectsPtrOutput)
+}
+
+// A list of redirect rules. The order of rules matters for evaluation
+func (o CdnDistributionConfigRedirectsOutput) Rules() CdnDistributionConfigRedirectsRuleArrayOutput {
+	return o.ApplyT(func(v CdnDistributionConfigRedirects) []CdnDistributionConfigRedirectsRule { return v.Rules }).(CdnDistributionConfigRedirectsRuleArrayOutput)
+}
+
+type CdnDistributionConfigRedirectsPtrOutput struct{ *pulumi.OutputState }
+
+func (CdnDistributionConfigRedirectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CdnDistributionConfigRedirects)(nil)).Elem()
+}
+
+func (o CdnDistributionConfigRedirectsPtrOutput) ToCdnDistributionConfigRedirectsPtrOutput() CdnDistributionConfigRedirectsPtrOutput {
+	return o
+}
+
+func (o CdnDistributionConfigRedirectsPtrOutput) ToCdnDistributionConfigRedirectsPtrOutputWithContext(ctx context.Context) CdnDistributionConfigRedirectsPtrOutput {
+	return o
+}
+
+func (o CdnDistributionConfigRedirectsPtrOutput) Elem() CdnDistributionConfigRedirectsOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigRedirects) CdnDistributionConfigRedirects {
+		if v != nil {
+			return *v
+		}
+		var ret CdnDistributionConfigRedirects
+		return ret
+	}).(CdnDistributionConfigRedirectsOutput)
+}
+
+// A list of redirect rules. The order of rules matters for evaluation
+func (o CdnDistributionConfigRedirectsPtrOutput) Rules() CdnDistributionConfigRedirectsRuleArrayOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigRedirects) []CdnDistributionConfigRedirectsRule {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(CdnDistributionConfigRedirectsRuleArrayOutput)
+}
+
+type CdnDistributionConfigRedirectsRule struct {
+	// An optional description for the redirect rule
+	Description *string `pulumi:"description"`
+	// A toggle to enable or disable the redirect rule. Default to true
+	Enabled *bool `pulumi:"enabled"`
+	// A list of matchers that define when this rule should apply. At least one matcher is required
+	Matchers []CdnDistributionConfigRedirectsRuleMatcher `pulumi:"matchers"`
+	// Defines how multiple matchers within this rule are combined (ALL, ANY, NONE). Defaults to ANY.
+	RuleMatchCondition *string `pulumi:"ruleMatchCondition"`
+	// The HTTP status code for the redirect. Must be one of 301, 302, 303, 307, or 308.
+	StatusCode int `pulumi:"statusCode"`
+	// The target URL to redirect to. Must be a valid URI
+	TargetUrl string `pulumi:"targetUrl"`
+}
+
+// CdnDistributionConfigRedirectsRuleInput is an input type that accepts CdnDistributionConfigRedirectsRuleArgs and CdnDistributionConfigRedirectsRuleOutput values.
+// You can construct a concrete instance of `CdnDistributionConfigRedirectsRuleInput` via:
+//
+//	CdnDistributionConfigRedirectsRuleArgs{...}
+type CdnDistributionConfigRedirectsRuleInput interface {
+	pulumi.Input
+
+	ToCdnDistributionConfigRedirectsRuleOutput() CdnDistributionConfigRedirectsRuleOutput
+	ToCdnDistributionConfigRedirectsRuleOutputWithContext(context.Context) CdnDistributionConfigRedirectsRuleOutput
+}
+
+type CdnDistributionConfigRedirectsRuleArgs struct {
+	// An optional description for the redirect rule
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// A toggle to enable or disable the redirect rule. Default to true
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// A list of matchers that define when this rule should apply. At least one matcher is required
+	Matchers CdnDistributionConfigRedirectsRuleMatcherArrayInput `pulumi:"matchers"`
+	// Defines how multiple matchers within this rule are combined (ALL, ANY, NONE). Defaults to ANY.
+	RuleMatchCondition pulumi.StringPtrInput `pulumi:"ruleMatchCondition"`
+	// The HTTP status code for the redirect. Must be one of 301, 302, 303, 307, or 308.
+	StatusCode pulumi.IntInput `pulumi:"statusCode"`
+	// The target URL to redirect to. Must be a valid URI
+	TargetUrl pulumi.StringInput `pulumi:"targetUrl"`
+}
+
+func (CdnDistributionConfigRedirectsRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CdnDistributionConfigRedirectsRule)(nil)).Elem()
+}
+
+func (i CdnDistributionConfigRedirectsRuleArgs) ToCdnDistributionConfigRedirectsRuleOutput() CdnDistributionConfigRedirectsRuleOutput {
+	return i.ToCdnDistributionConfigRedirectsRuleOutputWithContext(context.Background())
+}
+
+func (i CdnDistributionConfigRedirectsRuleArgs) ToCdnDistributionConfigRedirectsRuleOutputWithContext(ctx context.Context) CdnDistributionConfigRedirectsRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnDistributionConfigRedirectsRuleOutput)
+}
+
+// CdnDistributionConfigRedirectsRuleArrayInput is an input type that accepts CdnDistributionConfigRedirectsRuleArray and CdnDistributionConfigRedirectsRuleArrayOutput values.
+// You can construct a concrete instance of `CdnDistributionConfigRedirectsRuleArrayInput` via:
+//
+//	CdnDistributionConfigRedirectsRuleArray{ CdnDistributionConfigRedirectsRuleArgs{...} }
+type CdnDistributionConfigRedirectsRuleArrayInput interface {
+	pulumi.Input
+
+	ToCdnDistributionConfigRedirectsRuleArrayOutput() CdnDistributionConfigRedirectsRuleArrayOutput
+	ToCdnDistributionConfigRedirectsRuleArrayOutputWithContext(context.Context) CdnDistributionConfigRedirectsRuleArrayOutput
+}
+
+type CdnDistributionConfigRedirectsRuleArray []CdnDistributionConfigRedirectsRuleInput
+
+func (CdnDistributionConfigRedirectsRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CdnDistributionConfigRedirectsRule)(nil)).Elem()
+}
+
+func (i CdnDistributionConfigRedirectsRuleArray) ToCdnDistributionConfigRedirectsRuleArrayOutput() CdnDistributionConfigRedirectsRuleArrayOutput {
+	return i.ToCdnDistributionConfigRedirectsRuleArrayOutputWithContext(context.Background())
+}
+
+func (i CdnDistributionConfigRedirectsRuleArray) ToCdnDistributionConfigRedirectsRuleArrayOutputWithContext(ctx context.Context) CdnDistributionConfigRedirectsRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnDistributionConfigRedirectsRuleArrayOutput)
+}
+
+type CdnDistributionConfigRedirectsRuleOutput struct{ *pulumi.OutputState }
+
+func (CdnDistributionConfigRedirectsRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CdnDistributionConfigRedirectsRule)(nil)).Elem()
+}
+
+func (o CdnDistributionConfigRedirectsRuleOutput) ToCdnDistributionConfigRedirectsRuleOutput() CdnDistributionConfigRedirectsRuleOutput {
+	return o
+}
+
+func (o CdnDistributionConfigRedirectsRuleOutput) ToCdnDistributionConfigRedirectsRuleOutputWithContext(ctx context.Context) CdnDistributionConfigRedirectsRuleOutput {
+	return o
+}
+
+// An optional description for the redirect rule
+func (o CdnDistributionConfigRedirectsRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CdnDistributionConfigRedirectsRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// A toggle to enable or disable the redirect rule. Default to true
+func (o CdnDistributionConfigRedirectsRuleOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CdnDistributionConfigRedirectsRule) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// A list of matchers that define when this rule should apply. At least one matcher is required
+func (o CdnDistributionConfigRedirectsRuleOutput) Matchers() CdnDistributionConfigRedirectsRuleMatcherArrayOutput {
+	return o.ApplyT(func(v CdnDistributionConfigRedirectsRule) []CdnDistributionConfigRedirectsRuleMatcher {
+		return v.Matchers
+	}).(CdnDistributionConfigRedirectsRuleMatcherArrayOutput)
+}
+
+// Defines how multiple matchers within this rule are combined (ALL, ANY, NONE). Defaults to ANY.
+func (o CdnDistributionConfigRedirectsRuleOutput) RuleMatchCondition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CdnDistributionConfigRedirectsRule) *string { return v.RuleMatchCondition }).(pulumi.StringPtrOutput)
+}
+
+// The HTTP status code for the redirect. Must be one of 301, 302, 303, 307, or 308.
+func (o CdnDistributionConfigRedirectsRuleOutput) StatusCode() pulumi.IntOutput {
+	return o.ApplyT(func(v CdnDistributionConfigRedirectsRule) int { return v.StatusCode }).(pulumi.IntOutput)
+}
+
+// The target URL to redirect to. Must be a valid URI
+func (o CdnDistributionConfigRedirectsRuleOutput) TargetUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v CdnDistributionConfigRedirectsRule) string { return v.TargetUrl }).(pulumi.StringOutput)
+}
+
+type CdnDistributionConfigRedirectsRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (CdnDistributionConfigRedirectsRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CdnDistributionConfigRedirectsRule)(nil)).Elem()
+}
+
+func (o CdnDistributionConfigRedirectsRuleArrayOutput) ToCdnDistributionConfigRedirectsRuleArrayOutput() CdnDistributionConfigRedirectsRuleArrayOutput {
+	return o
+}
+
+func (o CdnDistributionConfigRedirectsRuleArrayOutput) ToCdnDistributionConfigRedirectsRuleArrayOutputWithContext(ctx context.Context) CdnDistributionConfigRedirectsRuleArrayOutput {
+	return o
+}
+
+func (o CdnDistributionConfigRedirectsRuleArrayOutput) Index(i pulumi.IntInput) CdnDistributionConfigRedirectsRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CdnDistributionConfigRedirectsRule {
+		return vs[0].([]CdnDistributionConfigRedirectsRule)[vs[1].(int)]
+	}).(CdnDistributionConfigRedirectsRuleOutput)
+}
+
+type CdnDistributionConfigRedirectsRuleMatcher struct {
+	// Defines how multiple matchers within this rule are combined (ALL, ANY, NONE). Defaults to ANY.
+	ValueMatchCondition *string `pulumi:"valueMatchCondition"`
+	// A list of glob patterns to match against the request path. At least one value is required. Examples: "/shop/*" or "*/img/*"
+	Values []string `pulumi:"values"`
+}
+
+// CdnDistributionConfigRedirectsRuleMatcherInput is an input type that accepts CdnDistributionConfigRedirectsRuleMatcherArgs and CdnDistributionConfigRedirectsRuleMatcherOutput values.
+// You can construct a concrete instance of `CdnDistributionConfigRedirectsRuleMatcherInput` via:
+//
+//	CdnDistributionConfigRedirectsRuleMatcherArgs{...}
+type CdnDistributionConfigRedirectsRuleMatcherInput interface {
+	pulumi.Input
+
+	ToCdnDistributionConfigRedirectsRuleMatcherOutput() CdnDistributionConfigRedirectsRuleMatcherOutput
+	ToCdnDistributionConfigRedirectsRuleMatcherOutputWithContext(context.Context) CdnDistributionConfigRedirectsRuleMatcherOutput
+}
+
+type CdnDistributionConfigRedirectsRuleMatcherArgs struct {
+	// Defines how multiple matchers within this rule are combined (ALL, ANY, NONE). Defaults to ANY.
+	ValueMatchCondition pulumi.StringPtrInput `pulumi:"valueMatchCondition"`
+	// A list of glob patterns to match against the request path. At least one value is required. Examples: "/shop/*" or "*/img/*"
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (CdnDistributionConfigRedirectsRuleMatcherArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CdnDistributionConfigRedirectsRuleMatcher)(nil)).Elem()
+}
+
+func (i CdnDistributionConfigRedirectsRuleMatcherArgs) ToCdnDistributionConfigRedirectsRuleMatcherOutput() CdnDistributionConfigRedirectsRuleMatcherOutput {
+	return i.ToCdnDistributionConfigRedirectsRuleMatcherOutputWithContext(context.Background())
+}
+
+func (i CdnDistributionConfigRedirectsRuleMatcherArgs) ToCdnDistributionConfigRedirectsRuleMatcherOutputWithContext(ctx context.Context) CdnDistributionConfigRedirectsRuleMatcherOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnDistributionConfigRedirectsRuleMatcherOutput)
+}
+
+// CdnDistributionConfigRedirectsRuleMatcherArrayInput is an input type that accepts CdnDistributionConfigRedirectsRuleMatcherArray and CdnDistributionConfigRedirectsRuleMatcherArrayOutput values.
+// You can construct a concrete instance of `CdnDistributionConfigRedirectsRuleMatcherArrayInput` via:
+//
+//	CdnDistributionConfigRedirectsRuleMatcherArray{ CdnDistributionConfigRedirectsRuleMatcherArgs{...} }
+type CdnDistributionConfigRedirectsRuleMatcherArrayInput interface {
+	pulumi.Input
+
+	ToCdnDistributionConfigRedirectsRuleMatcherArrayOutput() CdnDistributionConfigRedirectsRuleMatcherArrayOutput
+	ToCdnDistributionConfigRedirectsRuleMatcherArrayOutputWithContext(context.Context) CdnDistributionConfigRedirectsRuleMatcherArrayOutput
+}
+
+type CdnDistributionConfigRedirectsRuleMatcherArray []CdnDistributionConfigRedirectsRuleMatcherInput
+
+func (CdnDistributionConfigRedirectsRuleMatcherArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CdnDistributionConfigRedirectsRuleMatcher)(nil)).Elem()
+}
+
+func (i CdnDistributionConfigRedirectsRuleMatcherArray) ToCdnDistributionConfigRedirectsRuleMatcherArrayOutput() CdnDistributionConfigRedirectsRuleMatcherArrayOutput {
+	return i.ToCdnDistributionConfigRedirectsRuleMatcherArrayOutputWithContext(context.Background())
+}
+
+func (i CdnDistributionConfigRedirectsRuleMatcherArray) ToCdnDistributionConfigRedirectsRuleMatcherArrayOutputWithContext(ctx context.Context) CdnDistributionConfigRedirectsRuleMatcherArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnDistributionConfigRedirectsRuleMatcherArrayOutput)
+}
+
+type CdnDistributionConfigRedirectsRuleMatcherOutput struct{ *pulumi.OutputState }
+
+func (CdnDistributionConfigRedirectsRuleMatcherOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CdnDistributionConfigRedirectsRuleMatcher)(nil)).Elem()
+}
+
+func (o CdnDistributionConfigRedirectsRuleMatcherOutput) ToCdnDistributionConfigRedirectsRuleMatcherOutput() CdnDistributionConfigRedirectsRuleMatcherOutput {
+	return o
+}
+
+func (o CdnDistributionConfigRedirectsRuleMatcherOutput) ToCdnDistributionConfigRedirectsRuleMatcherOutputWithContext(ctx context.Context) CdnDistributionConfigRedirectsRuleMatcherOutput {
+	return o
+}
+
+// Defines how multiple matchers within this rule are combined (ALL, ANY, NONE). Defaults to ANY.
+func (o CdnDistributionConfigRedirectsRuleMatcherOutput) ValueMatchCondition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CdnDistributionConfigRedirectsRuleMatcher) *string { return v.ValueMatchCondition }).(pulumi.StringPtrOutput)
+}
+
+// A list of glob patterns to match against the request path. At least one value is required. Examples: "/shop/*" or "*/img/*"
+func (o CdnDistributionConfigRedirectsRuleMatcherOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CdnDistributionConfigRedirectsRuleMatcher) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type CdnDistributionConfigRedirectsRuleMatcherArrayOutput struct{ *pulumi.OutputState }
+
+func (CdnDistributionConfigRedirectsRuleMatcherArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CdnDistributionConfigRedirectsRuleMatcher)(nil)).Elem()
+}
+
+func (o CdnDistributionConfigRedirectsRuleMatcherArrayOutput) ToCdnDistributionConfigRedirectsRuleMatcherArrayOutput() CdnDistributionConfigRedirectsRuleMatcherArrayOutput {
+	return o
+}
+
+func (o CdnDistributionConfigRedirectsRuleMatcherArrayOutput) ToCdnDistributionConfigRedirectsRuleMatcherArrayOutputWithContext(ctx context.Context) CdnDistributionConfigRedirectsRuleMatcherArrayOutput {
+	return o
+}
+
+func (o CdnDistributionConfigRedirectsRuleMatcherArrayOutput) Index(i pulumi.IntInput) CdnDistributionConfigRedirectsRuleMatcherOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CdnDistributionConfigRedirectsRuleMatcher {
+		return vs[0].([]CdnDistributionConfigRedirectsRuleMatcher)[vs[1].(int)]
+	}).(CdnDistributionConfigRedirectsRuleMatcherOutput)
 }
 
 type CdnDistributionDomain struct {
@@ -15450,9 +15856,9 @@ type SkeClusterMaintenance struct {
 	// Flag to enable/disable auto-updates of the OS image version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
 	EnableMachineImageVersionUpdates *bool `pulumi:"enableMachineImageVersionUpdates"`
 	// Time for maintenance window end. E.g. `01:23:45Z`, `05:00:00+02:00`.
-	End string `pulumi:"end"`
+	End *string `pulumi:"end"`
 	// Time for maintenance window start. E.g. `01:23:45Z`, `05:00:00+02:00`.
-	Start string `pulumi:"start"`
+	Start *string `pulumi:"start"`
 }
 
 // SkeClusterMaintenanceInput is an input type that accepts SkeClusterMaintenanceArgs and SkeClusterMaintenanceOutput values.
@@ -15472,9 +15878,9 @@ type SkeClusterMaintenanceArgs struct {
 	// Flag to enable/disable auto-updates of the OS image version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
 	EnableMachineImageVersionUpdates pulumi.BoolPtrInput `pulumi:"enableMachineImageVersionUpdates"`
 	// Time for maintenance window end. E.g. `01:23:45Z`, `05:00:00+02:00`.
-	End pulumi.StringInput `pulumi:"end"`
+	End pulumi.StringPtrInput `pulumi:"end"`
 	// Time for maintenance window start. E.g. `01:23:45Z`, `05:00:00+02:00`.
-	Start pulumi.StringInput `pulumi:"start"`
+	Start pulumi.StringPtrInput `pulumi:"start"`
 }
 
 func (SkeClusterMaintenanceArgs) ElementType() reflect.Type {
@@ -15565,13 +15971,13 @@ func (o SkeClusterMaintenanceOutput) EnableMachineImageVersionUpdates() pulumi.B
 }
 
 // Time for maintenance window end. E.g. `01:23:45Z`, `05:00:00+02:00`.
-func (o SkeClusterMaintenanceOutput) End() pulumi.StringOutput {
-	return o.ApplyT(func(v SkeClusterMaintenance) string { return v.End }).(pulumi.StringOutput)
+func (o SkeClusterMaintenanceOutput) End() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkeClusterMaintenance) *string { return v.End }).(pulumi.StringPtrOutput)
 }
 
 // Time for maintenance window start. E.g. `01:23:45Z`, `05:00:00+02:00`.
-func (o SkeClusterMaintenanceOutput) Start() pulumi.StringOutput {
-	return o.ApplyT(func(v SkeClusterMaintenance) string { return v.Start }).(pulumi.StringOutput)
+func (o SkeClusterMaintenanceOutput) Start() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkeClusterMaintenance) *string { return v.Start }).(pulumi.StringPtrOutput)
 }
 
 type SkeClusterMaintenancePtrOutput struct{ *pulumi.OutputState }
@@ -15624,7 +16030,7 @@ func (o SkeClusterMaintenancePtrOutput) End() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.End
+		return v.End
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -15634,7 +16040,7 @@ func (o SkeClusterMaintenancePtrOutput) Start() pulumi.StringPtrOutput {
 		if v == nil {
 			return nil
 		}
-		return &v.Start
+		return v.Start
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -19346,6 +19752,8 @@ type GetCdnDistributionConfig struct {
 	BlockedCountries []string `pulumi:"blockedCountries"`
 	// Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
 	Optimizer GetCdnDistributionConfigOptimizer `pulumi:"optimizer"`
+	// A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+	Redirects GetCdnDistributionConfigRedirects `pulumi:"redirects"`
 	// The configured regions where content will be hosted
 	Regions []string `pulumi:"regions"`
 }
@@ -19368,6 +19776,8 @@ type GetCdnDistributionConfigArgs struct {
 	BlockedCountries pulumi.StringArrayInput `pulumi:"blockedCountries"`
 	// Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
 	Optimizer GetCdnDistributionConfigOptimizerInput `pulumi:"optimizer"`
+	// A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+	Redirects GetCdnDistributionConfigRedirectsInput `pulumi:"redirects"`
 	// The configured regions where content will be hosted
 	Regions pulumi.StringArrayInput `pulumi:"regions"`
 }
@@ -19411,6 +19821,11 @@ func (o GetCdnDistributionConfigOutput) BlockedCountries() pulumi.StringArrayOut
 // Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
 func (o GetCdnDistributionConfigOutput) Optimizer() GetCdnDistributionConfigOptimizerOutput {
 	return o.ApplyT(func(v GetCdnDistributionConfig) GetCdnDistributionConfigOptimizer { return v.Optimizer }).(GetCdnDistributionConfigOptimizerOutput)
+}
+
+// A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+func (o GetCdnDistributionConfigOutput) Redirects() GetCdnDistributionConfigRedirectsOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfig) GetCdnDistributionConfigRedirects { return v.Redirects }).(GetCdnDistributionConfigRedirectsOutput)
 }
 
 // The configured regions where content will be hosted
@@ -19562,6 +19977,308 @@ func (o GetCdnDistributionConfigOptimizerOutput) ToGetCdnDistributionConfigOptim
 
 func (o GetCdnDistributionConfigOptimizerOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetCdnDistributionConfigOptimizer) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetCdnDistributionConfigRedirects struct {
+	// A list of redirect rules. The order of rules matters for evaluation
+	Rules []GetCdnDistributionConfigRedirectsRule `pulumi:"rules"`
+}
+
+// GetCdnDistributionConfigRedirectsInput is an input type that accepts GetCdnDistributionConfigRedirectsArgs and GetCdnDistributionConfigRedirectsOutput values.
+// You can construct a concrete instance of `GetCdnDistributionConfigRedirectsInput` via:
+//
+//	GetCdnDistributionConfigRedirectsArgs{...}
+type GetCdnDistributionConfigRedirectsInput interface {
+	pulumi.Input
+
+	ToGetCdnDistributionConfigRedirectsOutput() GetCdnDistributionConfigRedirectsOutput
+	ToGetCdnDistributionConfigRedirectsOutputWithContext(context.Context) GetCdnDistributionConfigRedirectsOutput
+}
+
+type GetCdnDistributionConfigRedirectsArgs struct {
+	// A list of redirect rules. The order of rules matters for evaluation
+	Rules GetCdnDistributionConfigRedirectsRuleArrayInput `pulumi:"rules"`
+}
+
+func (GetCdnDistributionConfigRedirectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCdnDistributionConfigRedirects)(nil)).Elem()
+}
+
+func (i GetCdnDistributionConfigRedirectsArgs) ToGetCdnDistributionConfigRedirectsOutput() GetCdnDistributionConfigRedirectsOutput {
+	return i.ToGetCdnDistributionConfigRedirectsOutputWithContext(context.Background())
+}
+
+func (i GetCdnDistributionConfigRedirectsArgs) ToGetCdnDistributionConfigRedirectsOutputWithContext(ctx context.Context) GetCdnDistributionConfigRedirectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCdnDistributionConfigRedirectsOutput)
+}
+
+type GetCdnDistributionConfigRedirectsOutput struct{ *pulumi.OutputState }
+
+func (GetCdnDistributionConfigRedirectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCdnDistributionConfigRedirects)(nil)).Elem()
+}
+
+func (o GetCdnDistributionConfigRedirectsOutput) ToGetCdnDistributionConfigRedirectsOutput() GetCdnDistributionConfigRedirectsOutput {
+	return o
+}
+
+func (o GetCdnDistributionConfigRedirectsOutput) ToGetCdnDistributionConfigRedirectsOutputWithContext(ctx context.Context) GetCdnDistributionConfigRedirectsOutput {
+	return o
+}
+
+// A list of redirect rules. The order of rules matters for evaluation
+func (o GetCdnDistributionConfigRedirectsOutput) Rules() GetCdnDistributionConfigRedirectsRuleArrayOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfigRedirects) []GetCdnDistributionConfigRedirectsRule { return v.Rules }).(GetCdnDistributionConfigRedirectsRuleArrayOutput)
+}
+
+type GetCdnDistributionConfigRedirectsRule struct {
+	// An optional description for the redirect rule
+	Description string `pulumi:"description"`
+	// A toggle to enable or disable the redirect rule. Default to true
+	Enabled bool `pulumi:"enabled"`
+	// A list of matchers that define when this rule should apply. At least one matcher is required
+	Matchers []GetCdnDistributionConfigRedirectsRuleMatcher `pulumi:"matchers"`
+	// Defines how multiple matchers within this rule are combined (ALL, ANY, NONE). Defaults to ANY.
+	RuleMatchCondition string `pulumi:"ruleMatchCondition"`
+	// The HTTP status code for the redirect. Must be one of 301, 302, 303, 307, or 308.
+	StatusCode int `pulumi:"statusCode"`
+	// The target URL to redirect to. Must be a valid URI
+	TargetUrl string `pulumi:"targetUrl"`
+}
+
+// GetCdnDistributionConfigRedirectsRuleInput is an input type that accepts GetCdnDistributionConfigRedirectsRuleArgs and GetCdnDistributionConfigRedirectsRuleOutput values.
+// You can construct a concrete instance of `GetCdnDistributionConfigRedirectsRuleInput` via:
+//
+//	GetCdnDistributionConfigRedirectsRuleArgs{...}
+type GetCdnDistributionConfigRedirectsRuleInput interface {
+	pulumi.Input
+
+	ToGetCdnDistributionConfigRedirectsRuleOutput() GetCdnDistributionConfigRedirectsRuleOutput
+	ToGetCdnDistributionConfigRedirectsRuleOutputWithContext(context.Context) GetCdnDistributionConfigRedirectsRuleOutput
+}
+
+type GetCdnDistributionConfigRedirectsRuleArgs struct {
+	// An optional description for the redirect rule
+	Description pulumi.StringInput `pulumi:"description"`
+	// A toggle to enable or disable the redirect rule. Default to true
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// A list of matchers that define when this rule should apply. At least one matcher is required
+	Matchers GetCdnDistributionConfigRedirectsRuleMatcherArrayInput `pulumi:"matchers"`
+	// Defines how multiple matchers within this rule are combined (ALL, ANY, NONE). Defaults to ANY.
+	RuleMatchCondition pulumi.StringInput `pulumi:"ruleMatchCondition"`
+	// The HTTP status code for the redirect. Must be one of 301, 302, 303, 307, or 308.
+	StatusCode pulumi.IntInput `pulumi:"statusCode"`
+	// The target URL to redirect to. Must be a valid URI
+	TargetUrl pulumi.StringInput `pulumi:"targetUrl"`
+}
+
+func (GetCdnDistributionConfigRedirectsRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCdnDistributionConfigRedirectsRule)(nil)).Elem()
+}
+
+func (i GetCdnDistributionConfigRedirectsRuleArgs) ToGetCdnDistributionConfigRedirectsRuleOutput() GetCdnDistributionConfigRedirectsRuleOutput {
+	return i.ToGetCdnDistributionConfigRedirectsRuleOutputWithContext(context.Background())
+}
+
+func (i GetCdnDistributionConfigRedirectsRuleArgs) ToGetCdnDistributionConfigRedirectsRuleOutputWithContext(ctx context.Context) GetCdnDistributionConfigRedirectsRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCdnDistributionConfigRedirectsRuleOutput)
+}
+
+// GetCdnDistributionConfigRedirectsRuleArrayInput is an input type that accepts GetCdnDistributionConfigRedirectsRuleArray and GetCdnDistributionConfigRedirectsRuleArrayOutput values.
+// You can construct a concrete instance of `GetCdnDistributionConfigRedirectsRuleArrayInput` via:
+//
+//	GetCdnDistributionConfigRedirectsRuleArray{ GetCdnDistributionConfigRedirectsRuleArgs{...} }
+type GetCdnDistributionConfigRedirectsRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetCdnDistributionConfigRedirectsRuleArrayOutput() GetCdnDistributionConfigRedirectsRuleArrayOutput
+	ToGetCdnDistributionConfigRedirectsRuleArrayOutputWithContext(context.Context) GetCdnDistributionConfigRedirectsRuleArrayOutput
+}
+
+type GetCdnDistributionConfigRedirectsRuleArray []GetCdnDistributionConfigRedirectsRuleInput
+
+func (GetCdnDistributionConfigRedirectsRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCdnDistributionConfigRedirectsRule)(nil)).Elem()
+}
+
+func (i GetCdnDistributionConfigRedirectsRuleArray) ToGetCdnDistributionConfigRedirectsRuleArrayOutput() GetCdnDistributionConfigRedirectsRuleArrayOutput {
+	return i.ToGetCdnDistributionConfigRedirectsRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetCdnDistributionConfigRedirectsRuleArray) ToGetCdnDistributionConfigRedirectsRuleArrayOutputWithContext(ctx context.Context) GetCdnDistributionConfigRedirectsRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCdnDistributionConfigRedirectsRuleArrayOutput)
+}
+
+type GetCdnDistributionConfigRedirectsRuleOutput struct{ *pulumi.OutputState }
+
+func (GetCdnDistributionConfigRedirectsRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCdnDistributionConfigRedirectsRule)(nil)).Elem()
+}
+
+func (o GetCdnDistributionConfigRedirectsRuleOutput) ToGetCdnDistributionConfigRedirectsRuleOutput() GetCdnDistributionConfigRedirectsRuleOutput {
+	return o
+}
+
+func (o GetCdnDistributionConfigRedirectsRuleOutput) ToGetCdnDistributionConfigRedirectsRuleOutputWithContext(ctx context.Context) GetCdnDistributionConfigRedirectsRuleOutput {
+	return o
+}
+
+// An optional description for the redirect rule
+func (o GetCdnDistributionConfigRedirectsRuleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfigRedirectsRule) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// A toggle to enable or disable the redirect rule. Default to true
+func (o GetCdnDistributionConfigRedirectsRuleOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfigRedirectsRule) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// A list of matchers that define when this rule should apply. At least one matcher is required
+func (o GetCdnDistributionConfigRedirectsRuleOutput) Matchers() GetCdnDistributionConfigRedirectsRuleMatcherArrayOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfigRedirectsRule) []GetCdnDistributionConfigRedirectsRuleMatcher {
+		return v.Matchers
+	}).(GetCdnDistributionConfigRedirectsRuleMatcherArrayOutput)
+}
+
+// Defines how multiple matchers within this rule are combined (ALL, ANY, NONE). Defaults to ANY.
+func (o GetCdnDistributionConfigRedirectsRuleOutput) RuleMatchCondition() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfigRedirectsRule) string { return v.RuleMatchCondition }).(pulumi.StringOutput)
+}
+
+// The HTTP status code for the redirect. Must be one of 301, 302, 303, 307, or 308.
+func (o GetCdnDistributionConfigRedirectsRuleOutput) StatusCode() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfigRedirectsRule) int { return v.StatusCode }).(pulumi.IntOutput)
+}
+
+// The target URL to redirect to. Must be a valid URI
+func (o GetCdnDistributionConfigRedirectsRuleOutput) TargetUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfigRedirectsRule) string { return v.TargetUrl }).(pulumi.StringOutput)
+}
+
+type GetCdnDistributionConfigRedirectsRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCdnDistributionConfigRedirectsRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCdnDistributionConfigRedirectsRule)(nil)).Elem()
+}
+
+func (o GetCdnDistributionConfigRedirectsRuleArrayOutput) ToGetCdnDistributionConfigRedirectsRuleArrayOutput() GetCdnDistributionConfigRedirectsRuleArrayOutput {
+	return o
+}
+
+func (o GetCdnDistributionConfigRedirectsRuleArrayOutput) ToGetCdnDistributionConfigRedirectsRuleArrayOutputWithContext(ctx context.Context) GetCdnDistributionConfigRedirectsRuleArrayOutput {
+	return o
+}
+
+func (o GetCdnDistributionConfigRedirectsRuleArrayOutput) Index(i pulumi.IntInput) GetCdnDistributionConfigRedirectsRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCdnDistributionConfigRedirectsRule {
+		return vs[0].([]GetCdnDistributionConfigRedirectsRule)[vs[1].(int)]
+	}).(GetCdnDistributionConfigRedirectsRuleOutput)
+}
+
+type GetCdnDistributionConfigRedirectsRuleMatcher struct {
+	// Defines how multiple matchers within this rule are combined (ALL, ANY, NONE). Defaults to ANY.
+	ValueMatchCondition string `pulumi:"valueMatchCondition"`
+	// A list of glob patterns to match against the request path. At least one value is required. Examples: "/shop/*" or "*/img/*"
+	Values []string `pulumi:"values"`
+}
+
+// GetCdnDistributionConfigRedirectsRuleMatcherInput is an input type that accepts GetCdnDistributionConfigRedirectsRuleMatcherArgs and GetCdnDistributionConfigRedirectsRuleMatcherOutput values.
+// You can construct a concrete instance of `GetCdnDistributionConfigRedirectsRuleMatcherInput` via:
+//
+//	GetCdnDistributionConfigRedirectsRuleMatcherArgs{...}
+type GetCdnDistributionConfigRedirectsRuleMatcherInput interface {
+	pulumi.Input
+
+	ToGetCdnDistributionConfigRedirectsRuleMatcherOutput() GetCdnDistributionConfigRedirectsRuleMatcherOutput
+	ToGetCdnDistributionConfigRedirectsRuleMatcherOutputWithContext(context.Context) GetCdnDistributionConfigRedirectsRuleMatcherOutput
+}
+
+type GetCdnDistributionConfigRedirectsRuleMatcherArgs struct {
+	// Defines how multiple matchers within this rule are combined (ALL, ANY, NONE). Defaults to ANY.
+	ValueMatchCondition pulumi.StringInput `pulumi:"valueMatchCondition"`
+	// A list of glob patterns to match against the request path. At least one value is required. Examples: "/shop/*" or "*/img/*"
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetCdnDistributionConfigRedirectsRuleMatcherArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCdnDistributionConfigRedirectsRuleMatcher)(nil)).Elem()
+}
+
+func (i GetCdnDistributionConfigRedirectsRuleMatcherArgs) ToGetCdnDistributionConfigRedirectsRuleMatcherOutput() GetCdnDistributionConfigRedirectsRuleMatcherOutput {
+	return i.ToGetCdnDistributionConfigRedirectsRuleMatcherOutputWithContext(context.Background())
+}
+
+func (i GetCdnDistributionConfigRedirectsRuleMatcherArgs) ToGetCdnDistributionConfigRedirectsRuleMatcherOutputWithContext(ctx context.Context) GetCdnDistributionConfigRedirectsRuleMatcherOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCdnDistributionConfigRedirectsRuleMatcherOutput)
+}
+
+// GetCdnDistributionConfigRedirectsRuleMatcherArrayInput is an input type that accepts GetCdnDistributionConfigRedirectsRuleMatcherArray and GetCdnDistributionConfigRedirectsRuleMatcherArrayOutput values.
+// You can construct a concrete instance of `GetCdnDistributionConfigRedirectsRuleMatcherArrayInput` via:
+//
+//	GetCdnDistributionConfigRedirectsRuleMatcherArray{ GetCdnDistributionConfigRedirectsRuleMatcherArgs{...} }
+type GetCdnDistributionConfigRedirectsRuleMatcherArrayInput interface {
+	pulumi.Input
+
+	ToGetCdnDistributionConfigRedirectsRuleMatcherArrayOutput() GetCdnDistributionConfigRedirectsRuleMatcherArrayOutput
+	ToGetCdnDistributionConfigRedirectsRuleMatcherArrayOutputWithContext(context.Context) GetCdnDistributionConfigRedirectsRuleMatcherArrayOutput
+}
+
+type GetCdnDistributionConfigRedirectsRuleMatcherArray []GetCdnDistributionConfigRedirectsRuleMatcherInput
+
+func (GetCdnDistributionConfigRedirectsRuleMatcherArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCdnDistributionConfigRedirectsRuleMatcher)(nil)).Elem()
+}
+
+func (i GetCdnDistributionConfigRedirectsRuleMatcherArray) ToGetCdnDistributionConfigRedirectsRuleMatcherArrayOutput() GetCdnDistributionConfigRedirectsRuleMatcherArrayOutput {
+	return i.ToGetCdnDistributionConfigRedirectsRuleMatcherArrayOutputWithContext(context.Background())
+}
+
+func (i GetCdnDistributionConfigRedirectsRuleMatcherArray) ToGetCdnDistributionConfigRedirectsRuleMatcherArrayOutputWithContext(ctx context.Context) GetCdnDistributionConfigRedirectsRuleMatcherArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCdnDistributionConfigRedirectsRuleMatcherArrayOutput)
+}
+
+type GetCdnDistributionConfigRedirectsRuleMatcherOutput struct{ *pulumi.OutputState }
+
+func (GetCdnDistributionConfigRedirectsRuleMatcherOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCdnDistributionConfigRedirectsRuleMatcher)(nil)).Elem()
+}
+
+func (o GetCdnDistributionConfigRedirectsRuleMatcherOutput) ToGetCdnDistributionConfigRedirectsRuleMatcherOutput() GetCdnDistributionConfigRedirectsRuleMatcherOutput {
+	return o
+}
+
+func (o GetCdnDistributionConfigRedirectsRuleMatcherOutput) ToGetCdnDistributionConfigRedirectsRuleMatcherOutputWithContext(ctx context.Context) GetCdnDistributionConfigRedirectsRuleMatcherOutput {
+	return o
+}
+
+// Defines how multiple matchers within this rule are combined (ALL, ANY, NONE). Defaults to ANY.
+func (o GetCdnDistributionConfigRedirectsRuleMatcherOutput) ValueMatchCondition() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfigRedirectsRuleMatcher) string { return v.ValueMatchCondition }).(pulumi.StringOutput)
+}
+
+// A list of glob patterns to match against the request path. At least one value is required. Examples: "/shop/*" or "*/img/*"
+func (o GetCdnDistributionConfigRedirectsRuleMatcherOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfigRedirectsRuleMatcher) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetCdnDistributionConfigRedirectsRuleMatcherArrayOutput struct{ *pulumi.OutputState }
+
+func (GetCdnDistributionConfigRedirectsRuleMatcherArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetCdnDistributionConfigRedirectsRuleMatcher)(nil)).Elem()
+}
+
+func (o GetCdnDistributionConfigRedirectsRuleMatcherArrayOutput) ToGetCdnDistributionConfigRedirectsRuleMatcherArrayOutput() GetCdnDistributionConfigRedirectsRuleMatcherArrayOutput {
+	return o
+}
+
+func (o GetCdnDistributionConfigRedirectsRuleMatcherArrayOutput) ToGetCdnDistributionConfigRedirectsRuleMatcherArrayOutputWithContext(ctx context.Context) GetCdnDistributionConfigRedirectsRuleMatcherArrayOutput {
+	return o
+}
+
+func (o GetCdnDistributionConfigRedirectsRuleMatcherArrayOutput) Index(i pulumi.IntInput) GetCdnDistributionConfigRedirectsRuleMatcherOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCdnDistributionConfigRedirectsRuleMatcher {
+		return vs[0].([]GetCdnDistributionConfigRedirectsRuleMatcher)[vs[1].(int)]
+	}).(GetCdnDistributionConfigRedirectsRuleMatcherOutput)
 }
 
 type GetCdnDistributionDomain struct {
@@ -21633,7 +22350,7 @@ type GetLoadbalancerTargetPool struct {
 	// Target pool name.
 	Name string `pulumi:"name"`
 	// Here you can setup various session persistence options, so far only "`useSourceIpAddress`" is supported.
-	SessionPersistence *GetLoadbalancerTargetPoolSessionPersistence `pulumi:"sessionPersistence"`
+	SessionPersistence GetLoadbalancerTargetPoolSessionPersistence `pulumi:"sessionPersistence"`
 	// Identical port number where each target listens for traffic.
 	TargetPort int `pulumi:"targetPort"`
 	// List of all targets which will be used in the pool. Limited to 1000.
@@ -21656,7 +22373,7 @@ type GetLoadbalancerTargetPoolArgs struct {
 	// Target pool name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Here you can setup various session persistence options, so far only "`useSourceIpAddress`" is supported.
-	SessionPersistence GetLoadbalancerTargetPoolSessionPersistencePtrInput `pulumi:"sessionPersistence"`
+	SessionPersistence GetLoadbalancerTargetPoolSessionPersistenceInput `pulumi:"sessionPersistence"`
 	// Identical port number where each target listens for traffic.
 	TargetPort pulumi.IntInput `pulumi:"targetPort"`
 	// List of all targets which will be used in the pool. Limited to 1000.
@@ -21726,10 +22443,10 @@ func (o GetLoadbalancerTargetPoolOutput) Name() pulumi.StringOutput {
 }
 
 // Here you can setup various session persistence options, so far only "`useSourceIpAddress`" is supported.
-func (o GetLoadbalancerTargetPoolOutput) SessionPersistence() GetLoadbalancerTargetPoolSessionPersistencePtrOutput {
-	return o.ApplyT(func(v GetLoadbalancerTargetPool) *GetLoadbalancerTargetPoolSessionPersistence {
+func (o GetLoadbalancerTargetPoolOutput) SessionPersistence() GetLoadbalancerTargetPoolSessionPersistenceOutput {
+	return o.ApplyT(func(v GetLoadbalancerTargetPool) GetLoadbalancerTargetPoolSessionPersistence {
 		return v.SessionPersistence
-	}).(GetLoadbalancerTargetPoolSessionPersistencePtrOutput)
+	}).(GetLoadbalancerTargetPoolSessionPersistenceOutput)
 }
 
 // Identical port number where each target listens for traffic.
@@ -21852,7 +22569,7 @@ func (o GetLoadbalancerTargetPoolActiveHealthCheckOutput) UnhealthyThreshold() p
 
 type GetLoadbalancerTargetPoolSessionPersistence struct {
 	// If true then all connections from one source IP address are redirected to the same target. This setting changes the load balancing algorithm to Maglev.
-	UseSourceIpAddress *bool `pulumi:"useSourceIpAddress"`
+	UseSourceIpAddress bool `pulumi:"useSourceIpAddress"`
 }
 
 // GetLoadbalancerTargetPoolSessionPersistenceInput is an input type that accepts GetLoadbalancerTargetPoolSessionPersistenceArgs and GetLoadbalancerTargetPoolSessionPersistenceOutput values.
@@ -21868,7 +22585,7 @@ type GetLoadbalancerTargetPoolSessionPersistenceInput interface {
 
 type GetLoadbalancerTargetPoolSessionPersistenceArgs struct {
 	// If true then all connections from one source IP address are redirected to the same target. This setting changes the load balancing algorithm to Maglev.
-	UseSourceIpAddress pulumi.BoolPtrInput `pulumi:"useSourceIpAddress"`
+	UseSourceIpAddress pulumi.BoolInput `pulumi:"useSourceIpAddress"`
 }
 
 func (GetLoadbalancerTargetPoolSessionPersistenceArgs) ElementType() reflect.Type {
@@ -21881,47 +22598,6 @@ func (i GetLoadbalancerTargetPoolSessionPersistenceArgs) ToGetLoadbalancerTarget
 
 func (i GetLoadbalancerTargetPoolSessionPersistenceArgs) ToGetLoadbalancerTargetPoolSessionPersistenceOutputWithContext(ctx context.Context) GetLoadbalancerTargetPoolSessionPersistenceOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GetLoadbalancerTargetPoolSessionPersistenceOutput)
-}
-
-func (i GetLoadbalancerTargetPoolSessionPersistenceArgs) ToGetLoadbalancerTargetPoolSessionPersistencePtrOutput() GetLoadbalancerTargetPoolSessionPersistencePtrOutput {
-	return i.ToGetLoadbalancerTargetPoolSessionPersistencePtrOutputWithContext(context.Background())
-}
-
-func (i GetLoadbalancerTargetPoolSessionPersistenceArgs) ToGetLoadbalancerTargetPoolSessionPersistencePtrOutputWithContext(ctx context.Context) GetLoadbalancerTargetPoolSessionPersistencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetLoadbalancerTargetPoolSessionPersistenceOutput).ToGetLoadbalancerTargetPoolSessionPersistencePtrOutputWithContext(ctx)
-}
-
-// GetLoadbalancerTargetPoolSessionPersistencePtrInput is an input type that accepts GetLoadbalancerTargetPoolSessionPersistenceArgs, GetLoadbalancerTargetPoolSessionPersistencePtr and GetLoadbalancerTargetPoolSessionPersistencePtrOutput values.
-// You can construct a concrete instance of `GetLoadbalancerTargetPoolSessionPersistencePtrInput` via:
-//
-//	        GetLoadbalancerTargetPoolSessionPersistenceArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetLoadbalancerTargetPoolSessionPersistencePtrInput interface {
-	pulumi.Input
-
-	ToGetLoadbalancerTargetPoolSessionPersistencePtrOutput() GetLoadbalancerTargetPoolSessionPersistencePtrOutput
-	ToGetLoadbalancerTargetPoolSessionPersistencePtrOutputWithContext(context.Context) GetLoadbalancerTargetPoolSessionPersistencePtrOutput
-}
-
-type getLoadbalancerTargetPoolSessionPersistencePtrType GetLoadbalancerTargetPoolSessionPersistenceArgs
-
-func GetLoadbalancerTargetPoolSessionPersistencePtr(v *GetLoadbalancerTargetPoolSessionPersistenceArgs) GetLoadbalancerTargetPoolSessionPersistencePtrInput {
-	return (*getLoadbalancerTargetPoolSessionPersistencePtrType)(v)
-}
-
-func (*getLoadbalancerTargetPoolSessionPersistencePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetLoadbalancerTargetPoolSessionPersistence)(nil)).Elem()
-}
-
-func (i *getLoadbalancerTargetPoolSessionPersistencePtrType) ToGetLoadbalancerTargetPoolSessionPersistencePtrOutput() GetLoadbalancerTargetPoolSessionPersistencePtrOutput {
-	return i.ToGetLoadbalancerTargetPoolSessionPersistencePtrOutputWithContext(context.Background())
-}
-
-func (i *getLoadbalancerTargetPoolSessionPersistencePtrType) ToGetLoadbalancerTargetPoolSessionPersistencePtrOutputWithContext(ctx context.Context) GetLoadbalancerTargetPoolSessionPersistencePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetLoadbalancerTargetPoolSessionPersistencePtrOutput)
 }
 
 type GetLoadbalancerTargetPoolSessionPersistenceOutput struct{ *pulumi.OutputState }
@@ -21938,53 +22614,9 @@ func (o GetLoadbalancerTargetPoolSessionPersistenceOutput) ToGetLoadbalancerTarg
 	return o
 }
 
-func (o GetLoadbalancerTargetPoolSessionPersistenceOutput) ToGetLoadbalancerTargetPoolSessionPersistencePtrOutput() GetLoadbalancerTargetPoolSessionPersistencePtrOutput {
-	return o.ToGetLoadbalancerTargetPoolSessionPersistencePtrOutputWithContext(context.Background())
-}
-
-func (o GetLoadbalancerTargetPoolSessionPersistenceOutput) ToGetLoadbalancerTargetPoolSessionPersistencePtrOutputWithContext(ctx context.Context) GetLoadbalancerTargetPoolSessionPersistencePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetLoadbalancerTargetPoolSessionPersistence) *GetLoadbalancerTargetPoolSessionPersistence {
-		return &v
-	}).(GetLoadbalancerTargetPoolSessionPersistencePtrOutput)
-}
-
 // If true then all connections from one source IP address are redirected to the same target. This setting changes the load balancing algorithm to Maglev.
-func (o GetLoadbalancerTargetPoolSessionPersistenceOutput) UseSourceIpAddress() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetLoadbalancerTargetPoolSessionPersistence) *bool { return v.UseSourceIpAddress }).(pulumi.BoolPtrOutput)
-}
-
-type GetLoadbalancerTargetPoolSessionPersistencePtrOutput struct{ *pulumi.OutputState }
-
-func (GetLoadbalancerTargetPoolSessionPersistencePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetLoadbalancerTargetPoolSessionPersistence)(nil)).Elem()
-}
-
-func (o GetLoadbalancerTargetPoolSessionPersistencePtrOutput) ToGetLoadbalancerTargetPoolSessionPersistencePtrOutput() GetLoadbalancerTargetPoolSessionPersistencePtrOutput {
-	return o
-}
-
-func (o GetLoadbalancerTargetPoolSessionPersistencePtrOutput) ToGetLoadbalancerTargetPoolSessionPersistencePtrOutputWithContext(ctx context.Context) GetLoadbalancerTargetPoolSessionPersistencePtrOutput {
-	return o
-}
-
-func (o GetLoadbalancerTargetPoolSessionPersistencePtrOutput) Elem() GetLoadbalancerTargetPoolSessionPersistenceOutput {
-	return o.ApplyT(func(v *GetLoadbalancerTargetPoolSessionPersistence) GetLoadbalancerTargetPoolSessionPersistence {
-		if v != nil {
-			return *v
-		}
-		var ret GetLoadbalancerTargetPoolSessionPersistence
-		return ret
-	}).(GetLoadbalancerTargetPoolSessionPersistenceOutput)
-}
-
-// If true then all connections from one source IP address are redirected to the same target. This setting changes the load balancing algorithm to Maglev.
-func (o GetLoadbalancerTargetPoolSessionPersistencePtrOutput) UseSourceIpAddress() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GetLoadbalancerTargetPoolSessionPersistence) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.UseSourceIpAddress
-	}).(pulumi.BoolPtrOutput)
+func (o GetLoadbalancerTargetPoolSessionPersistenceOutput) UseSourceIpAddress() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetLoadbalancerTargetPoolSessionPersistence) bool { return v.UseSourceIpAddress }).(pulumi.BoolOutput)
 }
 
 type GetLoadbalancerTargetPoolTarget struct {
@@ -25988,6 +26620,218 @@ func (o GetSecretsmanagerInstanceKmsKeyOutput) ServiceAccountEmail() pulumi.Stri
 	return o.ApplyT(func(v GetSecretsmanagerInstanceKmsKey) string { return v.ServiceAccountEmail }).(pulumi.StringOutput)
 }
 
+type GetSecretsmanagerInstanceRoleBindingsV1RoleBinding struct {
+	// A valid role defined for the resource.
+	Role string `pulumi:"role"`
+	// Identifier of user, service account or client. Usually email address or name in case of clients.
+	Subject string `pulumi:"subject"`
+}
+
+// GetSecretsmanagerInstanceRoleBindingsV1RoleBindingInput is an input type that accepts GetSecretsmanagerInstanceRoleBindingsV1RoleBindingArgs and GetSecretsmanagerInstanceRoleBindingsV1RoleBindingOutput values.
+// You can construct a concrete instance of `GetSecretsmanagerInstanceRoleBindingsV1RoleBindingInput` via:
+//
+//	GetSecretsmanagerInstanceRoleBindingsV1RoleBindingArgs{...}
+type GetSecretsmanagerInstanceRoleBindingsV1RoleBindingInput interface {
+	pulumi.Input
+
+	ToGetSecretsmanagerInstanceRoleBindingsV1RoleBindingOutput() GetSecretsmanagerInstanceRoleBindingsV1RoleBindingOutput
+	ToGetSecretsmanagerInstanceRoleBindingsV1RoleBindingOutputWithContext(context.Context) GetSecretsmanagerInstanceRoleBindingsV1RoleBindingOutput
+}
+
+type GetSecretsmanagerInstanceRoleBindingsV1RoleBindingArgs struct {
+	// A valid role defined for the resource.
+	Role pulumi.StringInput `pulumi:"role"`
+	// Identifier of user, service account or client. Usually email address or name in case of clients.
+	Subject pulumi.StringInput `pulumi:"subject"`
+}
+
+func (GetSecretsmanagerInstanceRoleBindingsV1RoleBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretsmanagerInstanceRoleBindingsV1RoleBinding)(nil)).Elem()
+}
+
+func (i GetSecretsmanagerInstanceRoleBindingsV1RoleBindingArgs) ToGetSecretsmanagerInstanceRoleBindingsV1RoleBindingOutput() GetSecretsmanagerInstanceRoleBindingsV1RoleBindingOutput {
+	return i.ToGetSecretsmanagerInstanceRoleBindingsV1RoleBindingOutputWithContext(context.Background())
+}
+
+func (i GetSecretsmanagerInstanceRoleBindingsV1RoleBindingArgs) ToGetSecretsmanagerInstanceRoleBindingsV1RoleBindingOutputWithContext(ctx context.Context) GetSecretsmanagerInstanceRoleBindingsV1RoleBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretsmanagerInstanceRoleBindingsV1RoleBindingOutput)
+}
+
+// GetSecretsmanagerInstanceRoleBindingsV1RoleBindingArrayInput is an input type that accepts GetSecretsmanagerInstanceRoleBindingsV1RoleBindingArray and GetSecretsmanagerInstanceRoleBindingsV1RoleBindingArrayOutput values.
+// You can construct a concrete instance of `GetSecretsmanagerInstanceRoleBindingsV1RoleBindingArrayInput` via:
+//
+//	GetSecretsmanagerInstanceRoleBindingsV1RoleBindingArray{ GetSecretsmanagerInstanceRoleBindingsV1RoleBindingArgs{...} }
+type GetSecretsmanagerInstanceRoleBindingsV1RoleBindingArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretsmanagerInstanceRoleBindingsV1RoleBindingArrayOutput() GetSecretsmanagerInstanceRoleBindingsV1RoleBindingArrayOutput
+	ToGetSecretsmanagerInstanceRoleBindingsV1RoleBindingArrayOutputWithContext(context.Context) GetSecretsmanagerInstanceRoleBindingsV1RoleBindingArrayOutput
+}
+
+type GetSecretsmanagerInstanceRoleBindingsV1RoleBindingArray []GetSecretsmanagerInstanceRoleBindingsV1RoleBindingInput
+
+func (GetSecretsmanagerInstanceRoleBindingsV1RoleBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretsmanagerInstanceRoleBindingsV1RoleBinding)(nil)).Elem()
+}
+
+func (i GetSecretsmanagerInstanceRoleBindingsV1RoleBindingArray) ToGetSecretsmanagerInstanceRoleBindingsV1RoleBindingArrayOutput() GetSecretsmanagerInstanceRoleBindingsV1RoleBindingArrayOutput {
+	return i.ToGetSecretsmanagerInstanceRoleBindingsV1RoleBindingArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretsmanagerInstanceRoleBindingsV1RoleBindingArray) ToGetSecretsmanagerInstanceRoleBindingsV1RoleBindingArrayOutputWithContext(ctx context.Context) GetSecretsmanagerInstanceRoleBindingsV1RoleBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretsmanagerInstanceRoleBindingsV1RoleBindingArrayOutput)
+}
+
+type GetSecretsmanagerInstanceRoleBindingsV1RoleBindingOutput struct{ *pulumi.OutputState }
+
+func (GetSecretsmanagerInstanceRoleBindingsV1RoleBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretsmanagerInstanceRoleBindingsV1RoleBinding)(nil)).Elem()
+}
+
+func (o GetSecretsmanagerInstanceRoleBindingsV1RoleBindingOutput) ToGetSecretsmanagerInstanceRoleBindingsV1RoleBindingOutput() GetSecretsmanagerInstanceRoleBindingsV1RoleBindingOutput {
+	return o
+}
+
+func (o GetSecretsmanagerInstanceRoleBindingsV1RoleBindingOutput) ToGetSecretsmanagerInstanceRoleBindingsV1RoleBindingOutputWithContext(ctx context.Context) GetSecretsmanagerInstanceRoleBindingsV1RoleBindingOutput {
+	return o
+}
+
+// A valid role defined for the resource.
+func (o GetSecretsmanagerInstanceRoleBindingsV1RoleBindingOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretsmanagerInstanceRoleBindingsV1RoleBinding) string { return v.Role }).(pulumi.StringOutput)
+}
+
+// Identifier of user, service account or client. Usually email address or name in case of clients.
+func (o GetSecretsmanagerInstanceRoleBindingsV1RoleBindingOutput) Subject() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretsmanagerInstanceRoleBindingsV1RoleBinding) string { return v.Subject }).(pulumi.StringOutput)
+}
+
+type GetSecretsmanagerInstanceRoleBindingsV1RoleBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretsmanagerInstanceRoleBindingsV1RoleBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretsmanagerInstanceRoleBindingsV1RoleBinding)(nil)).Elem()
+}
+
+func (o GetSecretsmanagerInstanceRoleBindingsV1RoleBindingArrayOutput) ToGetSecretsmanagerInstanceRoleBindingsV1RoleBindingArrayOutput() GetSecretsmanagerInstanceRoleBindingsV1RoleBindingArrayOutput {
+	return o
+}
+
+func (o GetSecretsmanagerInstanceRoleBindingsV1RoleBindingArrayOutput) ToGetSecretsmanagerInstanceRoleBindingsV1RoleBindingArrayOutputWithContext(ctx context.Context) GetSecretsmanagerInstanceRoleBindingsV1RoleBindingArrayOutput {
+	return o
+}
+
+func (o GetSecretsmanagerInstanceRoleBindingsV1RoleBindingArrayOutput) Index(i pulumi.IntInput) GetSecretsmanagerInstanceRoleBindingsV1RoleBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretsmanagerInstanceRoleBindingsV1RoleBinding {
+		return vs[0].([]GetSecretsmanagerInstanceRoleBindingsV1RoleBinding)[vs[1].(int)]
+	}).(GetSecretsmanagerInstanceRoleBindingsV1RoleBindingOutput)
+}
+
+type GetSecretsmanagerSecretGroupRoleBindingsV1RoleBinding struct {
+	// A valid role defined for the resource.
+	Role string `pulumi:"role"`
+	// Identifier of user, service account or client. Usually email address or name in case of clients.
+	Subject string `pulumi:"subject"`
+}
+
+// GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingInput is an input type that accepts GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArgs and GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingOutput values.
+// You can construct a concrete instance of `GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingInput` via:
+//
+//	GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArgs{...}
+type GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingInput interface {
+	pulumi.Input
+
+	ToGetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingOutput() GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingOutput
+	ToGetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingOutputWithContext(context.Context) GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingOutput
+}
+
+type GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArgs struct {
+	// A valid role defined for the resource.
+	Role pulumi.StringInput `pulumi:"role"`
+	// Identifier of user, service account or client. Usually email address or name in case of clients.
+	Subject pulumi.StringInput `pulumi:"subject"`
+}
+
+func (GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretsmanagerSecretGroupRoleBindingsV1RoleBinding)(nil)).Elem()
+}
+
+func (i GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArgs) ToGetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingOutput() GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingOutput {
+	return i.ToGetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingOutputWithContext(context.Background())
+}
+
+func (i GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArgs) ToGetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingOutputWithContext(ctx context.Context) GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingOutput)
+}
+
+// GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArrayInput is an input type that accepts GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArray and GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArrayOutput values.
+// You can construct a concrete instance of `GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArrayInput` via:
+//
+//	GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArray{ GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArgs{...} }
+type GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArrayInput interface {
+	pulumi.Input
+
+	ToGetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArrayOutput() GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArrayOutput
+	ToGetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArrayOutputWithContext(context.Context) GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArrayOutput
+}
+
+type GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArray []GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingInput
+
+func (GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretsmanagerSecretGroupRoleBindingsV1RoleBinding)(nil)).Elem()
+}
+
+func (i GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArray) ToGetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArrayOutput() GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArrayOutput {
+	return i.ToGetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArray) ToGetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArrayOutputWithContext(ctx context.Context) GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArrayOutput)
+}
+
+type GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingOutput struct{ *pulumi.OutputState }
+
+func (GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecretsmanagerSecretGroupRoleBindingsV1RoleBinding)(nil)).Elem()
+}
+
+func (o GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingOutput) ToGetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingOutput() GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingOutput {
+	return o
+}
+
+func (o GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingOutput) ToGetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingOutputWithContext(ctx context.Context) GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingOutput {
+	return o
+}
+
+// A valid role defined for the resource.
+func (o GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingOutput) Role() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretsmanagerSecretGroupRoleBindingsV1RoleBinding) string { return v.Role }).(pulumi.StringOutput)
+}
+
+// Identifier of user, service account or client. Usually email address or name in case of clients.
+func (o GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingOutput) Subject() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecretsmanagerSecretGroupRoleBindingsV1RoleBinding) string { return v.Subject }).(pulumi.StringOutput)
+}
+
+type GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecretsmanagerSecretGroupRoleBindingsV1RoleBinding)(nil)).Elem()
+}
+
+func (o GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArrayOutput) ToGetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArrayOutput() GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArrayOutput {
+	return o
+}
+
+func (o GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArrayOutput) ToGetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArrayOutputWithContext(ctx context.Context) GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArrayOutput {
+	return o
+}
+
+func (o GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArrayOutput) Index(i pulumi.IntInput) GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecretsmanagerSecretGroupRoleBindingsV1RoleBinding {
+		return vs[0].([]GetSecretsmanagerSecretGroupRoleBindingsV1RoleBinding)[vs[1].(int)]
+	}).(GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingOutput)
+}
+
 type GetSecurityGroupRuleIcmpParameters struct {
 	// ICMP code. Can be set if the protocol is ICMP.
 	Code int `pulumi:"code"`
@@ -28659,6 +29503,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigBackendCredentialsPtrInput)(nil)).Elem(), CdnDistributionConfigBackendCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigOptimizerInput)(nil)).Elem(), CdnDistributionConfigOptimizerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigOptimizerPtrInput)(nil)).Elem(), CdnDistributionConfigOptimizerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigRedirectsInput)(nil)).Elem(), CdnDistributionConfigRedirectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigRedirectsPtrInput)(nil)).Elem(), CdnDistributionConfigRedirectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigRedirectsRuleInput)(nil)).Elem(), CdnDistributionConfigRedirectsRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigRedirectsRuleArrayInput)(nil)).Elem(), CdnDistributionConfigRedirectsRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigRedirectsRuleMatcherInput)(nil)).Elem(), CdnDistributionConfigRedirectsRuleMatcherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigRedirectsRuleMatcherArrayInput)(nil)).Elem(), CdnDistributionConfigRedirectsRuleMatcherArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionDomainInput)(nil)).Elem(), CdnDistributionDomainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionDomainArrayInput)(nil)).Elem(), CdnDistributionDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsRecordSetTimeoutsInput)(nil)).Elem(), DnsRecordSetTimeoutsArgs{})
@@ -28839,6 +29689,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionConfigInput)(nil)).Elem(), GetCdnDistributionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionConfigBackendInput)(nil)).Elem(), GetCdnDistributionConfigBackendArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionConfigOptimizerInput)(nil)).Elem(), GetCdnDistributionConfigOptimizerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionConfigRedirectsInput)(nil)).Elem(), GetCdnDistributionConfigRedirectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionConfigRedirectsRuleInput)(nil)).Elem(), GetCdnDistributionConfigRedirectsRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionConfigRedirectsRuleArrayInput)(nil)).Elem(), GetCdnDistributionConfigRedirectsRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionConfigRedirectsRuleMatcherInput)(nil)).Elem(), GetCdnDistributionConfigRedirectsRuleMatcherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionConfigRedirectsRuleMatcherArrayInput)(nil)).Elem(), GetCdnDistributionConfigRedirectsRuleMatcherArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionDomainInput)(nil)).Elem(), GetCdnDistributionDomainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionDomainArrayInput)(nil)).Elem(), GetCdnDistributionDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDnsRecordSetTimeoutsInput)(nil)).Elem(), GetDnsRecordSetTimeoutsArgs{})
@@ -28871,7 +29726,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadbalancerTargetPoolArrayInput)(nil)).Elem(), GetLoadbalancerTargetPoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadbalancerTargetPoolActiveHealthCheckInput)(nil)).Elem(), GetLoadbalancerTargetPoolActiveHealthCheckArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadbalancerTargetPoolSessionPersistenceInput)(nil)).Elem(), GetLoadbalancerTargetPoolSessionPersistenceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadbalancerTargetPoolSessionPersistencePtrInput)(nil)).Elem(), GetLoadbalancerTargetPoolSessionPersistenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadbalancerTargetPoolTargetInput)(nil)).Elem(), GetLoadbalancerTargetPoolTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadbalancerTargetPoolTargetArrayInput)(nil)).Elem(), GetLoadbalancerTargetPoolTargetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLogmeInstanceParametersInput)(nil)).Elem(), GetLogmeInstanceParametersArgs{})
@@ -28923,6 +29777,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutingTablesItemInput)(nil)).Elem(), GetRoutingTablesItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRoutingTablesItemArrayInput)(nil)).Elem(), GetRoutingTablesItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretsmanagerInstanceKmsKeyInput)(nil)).Elem(), GetSecretsmanagerInstanceKmsKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretsmanagerInstanceRoleBindingsV1RoleBindingInput)(nil)).Elem(), GetSecretsmanagerInstanceRoleBindingsV1RoleBindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretsmanagerInstanceRoleBindingsV1RoleBindingArrayInput)(nil)).Elem(), GetSecretsmanagerInstanceRoleBindingsV1RoleBindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingInput)(nil)).Elem(), GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArrayInput)(nil)).Elem(), GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGroupRuleIcmpParametersInput)(nil)).Elem(), GetSecurityGroupRuleIcmpParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGroupRulePortRangeInput)(nil)).Elem(), GetSecurityGroupRulePortRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGroupRuleProtocolInput)(nil)).Elem(), GetSecurityGroupRuleProtocolArgs{})
@@ -29020,6 +29878,12 @@ func init() {
 	pulumi.RegisterOutputType(CdnDistributionConfigBackendCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(CdnDistributionConfigOptimizerOutput{})
 	pulumi.RegisterOutputType(CdnDistributionConfigOptimizerPtrOutput{})
+	pulumi.RegisterOutputType(CdnDistributionConfigRedirectsOutput{})
+	pulumi.RegisterOutputType(CdnDistributionConfigRedirectsPtrOutput{})
+	pulumi.RegisterOutputType(CdnDistributionConfigRedirectsRuleOutput{})
+	pulumi.RegisterOutputType(CdnDistributionConfigRedirectsRuleArrayOutput{})
+	pulumi.RegisterOutputType(CdnDistributionConfigRedirectsRuleMatcherOutput{})
+	pulumi.RegisterOutputType(CdnDistributionConfigRedirectsRuleMatcherArrayOutput{})
 	pulumi.RegisterOutputType(CdnDistributionDomainOutput{})
 	pulumi.RegisterOutputType(CdnDistributionDomainArrayOutput{})
 	pulumi.RegisterOutputType(DnsRecordSetTimeoutsOutput{})
@@ -29200,6 +30064,11 @@ func init() {
 	pulumi.RegisterOutputType(GetCdnDistributionConfigOutput{})
 	pulumi.RegisterOutputType(GetCdnDistributionConfigBackendOutput{})
 	pulumi.RegisterOutputType(GetCdnDistributionConfigOptimizerOutput{})
+	pulumi.RegisterOutputType(GetCdnDistributionConfigRedirectsOutput{})
+	pulumi.RegisterOutputType(GetCdnDistributionConfigRedirectsRuleOutput{})
+	pulumi.RegisterOutputType(GetCdnDistributionConfigRedirectsRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetCdnDistributionConfigRedirectsRuleMatcherOutput{})
+	pulumi.RegisterOutputType(GetCdnDistributionConfigRedirectsRuleMatcherArrayOutput{})
 	pulumi.RegisterOutputType(GetCdnDistributionDomainOutput{})
 	pulumi.RegisterOutputType(GetCdnDistributionDomainArrayOutput{})
 	pulumi.RegisterOutputType(GetDnsRecordSetTimeoutsOutput{})
@@ -29232,7 +30101,6 @@ func init() {
 	pulumi.RegisterOutputType(GetLoadbalancerTargetPoolArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadbalancerTargetPoolActiveHealthCheckOutput{})
 	pulumi.RegisterOutputType(GetLoadbalancerTargetPoolSessionPersistenceOutput{})
-	pulumi.RegisterOutputType(GetLoadbalancerTargetPoolSessionPersistencePtrOutput{})
 	pulumi.RegisterOutputType(GetLoadbalancerTargetPoolTargetOutput{})
 	pulumi.RegisterOutputType(GetLoadbalancerTargetPoolTargetArrayOutput{})
 	pulumi.RegisterOutputType(GetLogmeInstanceParametersOutput{})
@@ -29284,6 +30152,10 @@ func init() {
 	pulumi.RegisterOutputType(GetRoutingTablesItemOutput{})
 	pulumi.RegisterOutputType(GetRoutingTablesItemArrayOutput{})
 	pulumi.RegisterOutputType(GetSecretsmanagerInstanceKmsKeyOutput{})
+	pulumi.RegisterOutputType(GetSecretsmanagerInstanceRoleBindingsV1RoleBindingOutput{})
+	pulumi.RegisterOutputType(GetSecretsmanagerInstanceRoleBindingsV1RoleBindingArrayOutput{})
+	pulumi.RegisterOutputType(GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingOutput{})
+	pulumi.RegisterOutputType(GetSecretsmanagerSecretGroupRoleBindingsV1RoleBindingArrayOutput{})
 	pulumi.RegisterOutputType(GetSecurityGroupRuleIcmpParametersOutput{})
 	pulumi.RegisterOutputType(GetSecurityGroupRulePortRangeOutput{})
 	pulumi.RegisterOutputType(GetSecurityGroupRuleProtocolOutput{})

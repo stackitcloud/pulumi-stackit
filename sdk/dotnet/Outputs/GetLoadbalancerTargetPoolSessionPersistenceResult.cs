@@ -16,10 +16,10 @@ namespace Pulumi.Stackit.Outputs
         /// <summary>
         /// If true then all connections from one source IP address are redirected to the same target. This setting changes the load balancing algorithm to Maglev.
         /// </summary>
-        public readonly bool? UseSourceIpAddress;
+        public readonly bool UseSourceIpAddress;
 
         [OutputConstructor]
-        private GetLoadbalancerTargetPoolSessionPersistenceResult(bool? useSourceIpAddress)
+        private GetLoadbalancerTargetPoolSessionPersistenceResult(bool useSourceIpAddress)
         {
             UseSourceIpAddress = useSourceIpAddress;
         }

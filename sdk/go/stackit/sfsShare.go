@@ -24,7 +24,7 @@ type SfsShare struct {
 	// Note that if this is set to an empty string, the Share can only be mounted in read only by
 	// clients with IPs matching the IP ACL of the Resource Pool hosting this Share.
 	// You can also assign a Share Export Policy after creating the Share
-	ExportPolicy pulumi.StringOutput `pulumi:"exportPolicy"`
+	ExportPolicy pulumi.StringPtrOutput `pulumi:"exportPolicy"`
 	// Mount path of the Share, used to mount the Share
 	MountPath pulumi.StringOutput `pulumi:"mountPath"`
 	// Name of the share.
@@ -50,9 +50,6 @@ func NewSfsShare(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.ExportPolicy == nil {
-		return nil, errors.New("invalid value for required argument 'ExportPolicy'")
-	}
 	if args.ProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
@@ -141,7 +138,7 @@ type sfsShareArgs struct {
 	// Note that if this is set to an empty string, the Share can only be mounted in read only by
 	// clients with IPs matching the IP ACL of the Resource Pool hosting this Share.
 	// You can also assign a Share Export Policy after creating the Share
-	ExportPolicy string `pulumi:"exportPolicy"`
+	ExportPolicy *string `pulumi:"exportPolicy"`
 	// Name of the share.
 	Name *string `pulumi:"name"`
 	// STACKIT project ID to which the share is associated.
@@ -162,7 +159,7 @@ type SfsShareArgs struct {
 	// Note that if this is set to an empty string, the Share can only be mounted in read only by
 	// clients with IPs matching the IP ACL of the Resource Pool hosting this Share.
 	// You can also assign a Share Export Policy after creating the Share
-	ExportPolicy pulumi.StringInput
+	ExportPolicy pulumi.StringPtrInput
 	// Name of the share.
 	Name pulumi.StringPtrInput
 	// STACKIT project ID to which the share is associated.
@@ -268,8 +265,8 @@ func (o SfsShareOutput) ToSfsShareOutputWithContext(ctx context.Context) SfsShar
 // Note that if this is set to an empty string, the Share can only be mounted in read only by
 // clients with IPs matching the IP ACL of the Resource Pool hosting this Share.
 // You can also assign a Share Export Policy after creating the Share
-func (o SfsShareOutput) ExportPolicy() pulumi.StringOutput {
-	return o.ApplyT(func(v *SfsShare) pulumi.StringOutput { return v.ExportPolicy }).(pulumi.StringOutput)
+func (o SfsShareOutput) ExportPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SfsShare) pulumi.StringPtrOutput { return v.ExportPolicy }).(pulumi.StringPtrOutput)
 }
 
 // Mount path of the Share, used to mount the Share

@@ -26,7 +26,7 @@ namespace Pulumi.Stackit
         /// You can also assign a Share Export Policy after creating the Share
         /// </summary>
         [Output("exportPolicy")]
-        public Output<string> ExportPolicy { get; private set; } = null!;
+        public Output<string?> ExportPolicy { get; private set; } = null!;
 
         /// <summary>
         /// Mount path of the Share, used to mount the Share
@@ -125,8 +125,8 @@ namespace Pulumi.Stackit
         /// clients with IPs matching the IP ACL of the Resource Pool hosting this Share.
         /// You can also assign a Share Export Policy after creating the Share
         /// </summary>
-        [Input("exportPolicy", required: true)]
-        public Input<string> ExportPolicy { get; set; } = null!;
+        [Input("exportPolicy")]
+        public Input<string>? ExportPolicy { get; set; }
 
         /// <summary>
         /// Name of the share.

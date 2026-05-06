@@ -19,50 +19,36 @@ __all__ = ['SfsShareArgs', 'SfsShare']
 @pulumi.input_type
 class SfsShareArgs:
     def __init__(__self__, *,
-                 export_policy: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
                  resource_pool_id: pulumi.Input[_builtins.str],
                  space_hard_limit_gigabytes: pulumi.Input[_builtins.int],
+                 export_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SfsShare resource.
 
-        :param pulumi.Input[_builtins.str] export_policy: Name of the Share Export Policy to use in the Share.
-               Note that if this is set to an empty string, the Share can only be mounted in read only by
-               clients with IPs matching the IP ACL of the Resource Pool hosting this Share.
-               You can also assign a Share Export Policy after creating the Share
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the share is associated.
         :param pulumi.Input[_builtins.str] resource_pool_id: The ID of the resource pool for the SFS share.
         :param pulumi.Input[_builtins.int] space_hard_limit_gigabytes: Space hard limit for the Share.
                			If zero, the Share will have access to the full space of the Resource Pool it lives in.
                			(unit: gigabytes)
+        :param pulumi.Input[_builtins.str] export_policy: Name of the Share Export Policy to use in the Share.
+               Note that if this is set to an empty string, the Share can only be mounted in read only by
+               clients with IPs matching the IP ACL of the Resource Pool hosting this Share.
+               You can also assign a Share Export Policy after creating the Share
         :param pulumi.Input[_builtins.str] name: Name of the share.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
-        pulumi.set(__self__, "export_policy", export_policy)
         pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "resource_pool_id", resource_pool_id)
         pulumi.set(__self__, "space_hard_limit_gigabytes", space_hard_limit_gigabytes)
+        if export_policy is not None:
+            pulumi.set(__self__, "export_policy", export_policy)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if region is not None:
             pulumi.set(__self__, "region", region)
-
-    @_builtins.property
-    @pulumi.getter(name="exportPolicy")
-    def export_policy(self) -> pulumi.Input[_builtins.str]:
-        """
-        Name of the Share Export Policy to use in the Share.
-        Note that if this is set to an empty string, the Share can only be mounted in read only by
-        clients with IPs matching the IP ACL of the Resource Pool hosting this Share.
-        You can also assign a Share Export Policy after creating the Share
-        """
-        return pulumi.get(self, "export_policy")
-
-    @export_policy.setter
-    def export_policy(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "export_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
@@ -101,6 +87,21 @@ class SfsShareArgs:
     @space_hard_limit_gigabytes.setter
     def space_hard_limit_gigabytes(self, value: pulumi.Input[_builtins.int]):
         pulumi.set(self, "space_hard_limit_gigabytes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="exportPolicy")
+    def export_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the Share Export Policy to use in the Share.
+        Note that if this is set to an empty string, the Share can only be mounted in read only by
+        clients with IPs matching the IP ACL of the Resource Pool hosting this Share.
+        You can also assign a Share Export Policy after creating the Share
+        """
+        return pulumi.get(self, "export_policy")
+
+    @export_policy.setter
+    def export_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "export_policy", value)
 
     @_builtins.property
     @pulumi.getter
@@ -353,8 +354,6 @@ class SfsShare(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SfsShareArgs.__new__(SfsShareArgs)
 
-            if export_policy is None and not opts.urn:
-                raise TypeError("Missing required property 'export_policy'")
             __props__.__dict__["export_policy"] = export_policy
             __props__.__dict__["name"] = name
             if project_id is None and not opts.urn:
@@ -424,7 +423,7 @@ class SfsShare(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="exportPolicy")
-    def export_policy(self) -> pulumi.Output[_builtins.str]:
+    def export_policy(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Name of the Share Export Policy to use in the Share.
         Note that if this is set to an empty string, the Share can only be mounted in read only by

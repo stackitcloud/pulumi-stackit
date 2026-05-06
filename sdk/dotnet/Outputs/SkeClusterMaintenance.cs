@@ -24,11 +24,11 @@ namespace Pulumi.Stackit.Outputs
         /// <summary>
         /// Time for maintenance window end. E.g. `01:23:45Z`, `05:00:00+02:00`.
         /// </summary>
-        public readonly string End;
+        public readonly string? End;
         /// <summary>
         /// Time for maintenance window start. E.g. `01:23:45Z`, `05:00:00+02:00`.
         /// </summary>
-        public readonly string Start;
+        public readonly string? Start;
 
         [OutputConstructor]
         private SkeClusterMaintenance(
@@ -36,9 +36,9 @@ namespace Pulumi.Stackit.Outputs
 
             bool? enableMachineImageVersionUpdates,
 
-            string end,
+            string? end,
 
-            string start)
+            string? start)
         {
             EnableKubernetesVersionUpdates = enableKubernetesVersionUpdates;
             EnableMachineImageVersionUpdates = enableMachineImageVersionUpdates;

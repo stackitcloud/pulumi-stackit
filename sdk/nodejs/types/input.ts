@@ -351,6 +351,10 @@ export interface CdnDistributionConfig {
      */
     optimizer?: pulumi.Input<inputs.CdnDistributionConfigOptimizer>;
     /**
+     * A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+     */
+    redirects?: pulumi.Input<inputs.CdnDistributionConfigRedirects>;
+    /**
      * The configured regions where content will be hosted
      */
     regions: pulumi.Input<pulumi.Input<string>[]>;
@@ -400,6 +404,51 @@ export interface CdnDistributionConfigBackendCredentials {
 
 export interface CdnDistributionConfigOptimizer {
     enabled?: pulumi.Input<boolean>;
+}
+
+export interface CdnDistributionConfigRedirects {
+    /**
+     * A list of redirect rules. The order of rules matters for evaluation
+     */
+    rules: pulumi.Input<pulumi.Input<inputs.CdnDistributionConfigRedirectsRule>[]>;
+}
+
+export interface CdnDistributionConfigRedirectsRule {
+    /**
+     * An optional description for the redirect rule
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * A toggle to enable or disable the redirect rule. Default to true
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * A list of matchers that define when this rule should apply. At least one matcher is required
+     */
+    matchers: pulumi.Input<pulumi.Input<inputs.CdnDistributionConfigRedirectsRuleMatcher>[]>;
+    /**
+     * Defines how multiple matchers within this rule are combined (ALL, ANY, NONE). Defaults to ANY.
+     */
+    ruleMatchCondition?: pulumi.Input<string>;
+    /**
+     * The HTTP status code for the redirect. Must be one of 301, 302, 303, 307, or 308.
+     */
+    statusCode: pulumi.Input<number>;
+    /**
+     * The target URL to redirect to. Must be a valid URI
+     */
+    targetUrl: pulumi.Input<string>;
+}
+
+export interface CdnDistributionConfigRedirectsRuleMatcher {
+    /**
+     * Defines how multiple matchers within this rule are combined (ALL, ANY, NONE). Defaults to ANY.
+     */
+    valueMatchCondition?: pulumi.Input<string>;
+    /**
+     * A list of glob patterns to match against the request path. At least one value is required. Examples: "/shop/*" or "*&#47;img/*"
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 export interface CdnDistributionDomain {
@@ -1727,11 +1776,11 @@ export interface SkeClusterMaintenance {
     /**
      * Time for maintenance window end. E.g. `01:23:45Z`, `05:00:00+02:00`.
      */
-    end: pulumi.Input<string>;
+    end?: pulumi.Input<string>;
     /**
      * Time for maintenance window start. E.g. `01:23:45Z`, `05:00:00+02:00`.
      */
-    start: pulumi.Input<string>;
+    start?: pulumi.Input<string>;
 }
 
 export interface SkeClusterNetwork {

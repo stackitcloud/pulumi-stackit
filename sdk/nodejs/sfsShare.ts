@@ -45,7 +45,7 @@ export class SfsShare extends pulumi.CustomResource {
      * clients with IPs matching the IP ACL of the Resource Pool hosting this Share.
      * You can also assign a Share Export Policy after creating the Share
      */
-    declare public readonly exportPolicy: pulumi.Output<string>;
+    declare public readonly exportPolicy: pulumi.Output<string | undefined>;
     /**
      * Mount path of the Share, used to mount the Share
      */
@@ -100,9 +100,6 @@ export class SfsShare extends pulumi.CustomResource {
             resourceInputs["spaceHardLimitGigabytes"] = state?.spaceHardLimitGigabytes;
         } else {
             const args = argsOrState as SfsShareArgs | undefined;
-            if (args?.exportPolicy === undefined && !opts.urn) {
-                throw new Error("Missing required property 'exportPolicy'");
-            }
             if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
@@ -179,7 +176,7 @@ export interface SfsShareArgs {
      * clients with IPs matching the IP ACL of the Resource Pool hosting this Share.
      * You can also assign a Share Export Policy after creating the Share
      */
-    exportPolicy: pulumi.Input<string>;
+    exportPolicy?: pulumi.Input<string>;
     /**
      * Name of the share.
      */

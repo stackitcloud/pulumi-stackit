@@ -34,6 +34,7 @@ class SkeClusterArgs:
         The set of arguments for constructing a SkeCluster resource.
 
         :param pulumi.Input[Sequence[pulumi.Input['SkeClusterNodePoolArgs']]] node_pools: One or more `node_pool` block as defined below.
+               To keep your Terraform plans clean and readable, always append new node pools to the end of the list.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the cluster is associated.
         :param pulumi.Input['SkeClusterExtensionsArgs'] extensions: A single extensions block as defined below.
         :param pulumi.Input[Sequence[pulumi.Input['SkeClusterHibernationArgs']]] hibernations: One or more hibernation block as defined below.
@@ -65,6 +66,7 @@ class SkeClusterArgs:
     def node_pools(self) -> pulumi.Input[Sequence[pulumi.Input['SkeClusterNodePoolArgs']]]:
         """
         One or more `node_pool` block as defined below.
+        To keep your Terraform plans clean and readable, always append new node pools to the end of the list.
         """
         return pulumi.get(self, "node_pools")
 
@@ -196,6 +198,7 @@ class _SkeClusterState:
         :param pulumi.Input[_builtins.str] name: The cluster name.
         :param pulumi.Input['SkeClusterNetworkArgs'] network: Network block as defined below.
         :param pulumi.Input[Sequence[pulumi.Input['SkeClusterNodePoolArgs']]] node_pools: One or more `node_pool` block as defined below.
+               To keep your Terraform plans clean and readable, always append new node pools to the end of the list.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pod_address_ranges: The network ranges (in CIDR notation) used by pods of the cluster.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the cluster is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
@@ -326,6 +329,7 @@ class _SkeClusterState:
     def node_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SkeClusterNodePoolArgs']]]]:
         """
         One or more `node_pool` block as defined below.
+        To keep your Terraform plans clean and readable, always append new node pools to the end of the list.
         """
         return pulumi.get(self, "node_pools")
 
@@ -403,6 +407,7 @@ class SkeCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The cluster name.
         :param pulumi.Input[Union['SkeClusterNetworkArgs', 'SkeClusterNetworkArgsDict']] network: Network block as defined below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SkeClusterNodePoolArgs', 'SkeClusterNodePoolArgsDict']]]] node_pools: One or more `node_pool` block as defined below.
+               To keep your Terraform plans clean and readable, always append new node pools to the end of the list.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the cluster is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
@@ -507,6 +512,7 @@ class SkeCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The cluster name.
         :param pulumi.Input[Union['SkeClusterNetworkArgs', 'SkeClusterNetworkArgsDict']] network: Network block as defined below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SkeClusterNodePoolArgs', 'SkeClusterNodePoolArgsDict']]]] node_pools: One or more `node_pool` block as defined below.
+               To keep your Terraform plans clean and readable, always append new node pools to the end of the list.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pod_address_ranges: The network ranges (in CIDR notation) used by pods of the cluster.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the cluster is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
@@ -598,6 +604,7 @@ class SkeCluster(pulumi.CustomResource):
     def node_pools(self) -> pulumi.Output[Sequence['outputs.SkeClusterNodePool']]:
         """
         One or more `node_pool` block as defined below.
+        To keep your Terraform plans clean and readable, always append new node pools to the end of the list.
         """
         return pulumi.get(self, "node_pools")
 

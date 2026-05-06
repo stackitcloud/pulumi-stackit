@@ -26,6 +26,10 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly Outputs.CdnDistributionConfigOptimizer? Optimizer;
         /// <summary>
+        /// A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+        /// </summary>
+        public readonly Outputs.CdnDistributionConfigRedirects? Redirects;
+        /// <summary>
         /// The configured regions where content will be hosted
         /// </summary>
         public readonly ImmutableArray<string> Regions;
@@ -38,11 +42,14 @@ namespace Pulumi.Stackit.Outputs
 
             Outputs.CdnDistributionConfigOptimizer? optimizer,
 
+            Outputs.CdnDistributionConfigRedirects? redirects,
+
             ImmutableArray<string> regions)
         {
             Backend = backend;
             BlockedCountries = blockedCountries;
             Optimizer = optimizer;
+            Redirects = redirects;
             Regions = regions;
         }
     }

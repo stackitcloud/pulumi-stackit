@@ -351,6 +351,10 @@ export interface CdnDistributionConfig {
      */
     optimizer: outputs.CdnDistributionConfigOptimizer;
     /**
+     * A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+     */
+    redirects?: outputs.CdnDistributionConfigRedirects;
+    /**
      * The configured regions where content will be hosted
      */
     regions: string[];
@@ -400,6 +404,51 @@ export interface CdnDistributionConfigBackendCredentials {
 
 export interface CdnDistributionConfigOptimizer {
     enabled: boolean;
+}
+
+export interface CdnDistributionConfigRedirects {
+    /**
+     * A list of redirect rules. The order of rules matters for evaluation
+     */
+    rules: outputs.CdnDistributionConfigRedirectsRule[];
+}
+
+export interface CdnDistributionConfigRedirectsRule {
+    /**
+     * An optional description for the redirect rule
+     */
+    description: string;
+    /**
+     * A toggle to enable or disable the redirect rule. Default to true
+     */
+    enabled: boolean;
+    /**
+     * A list of matchers that define when this rule should apply. At least one matcher is required
+     */
+    matchers: outputs.CdnDistributionConfigRedirectsRuleMatcher[];
+    /**
+     * Defines how multiple matchers within this rule are combined (ALL, ANY, NONE). Defaults to ANY.
+     */
+    ruleMatchCondition: string;
+    /**
+     * The HTTP status code for the redirect. Must be one of 301, 302, 303, 307, or 308.
+     */
+    statusCode: number;
+    /**
+     * The target URL to redirect to. Must be a valid URI
+     */
+    targetUrl: string;
+}
+
+export interface CdnDistributionConfigRedirectsRuleMatcher {
+    /**
+     * Defines how multiple matchers within this rule are combined (ALL, ANY, NONE). Defaults to ANY.
+     */
+    valueMatchCondition: string;
+    /**
+     * A list of glob patterns to match against the request path. At least one value is required. Examples: "/shop/*" or "*&#47;img/*"
+     */
+    values: string[];
 }
 
 export interface CdnDistributionDomain {
@@ -797,6 +846,10 @@ export interface GetCdnDistributionConfig {
      */
     optimizer: outputs.GetCdnDistributionConfigOptimizer;
     /**
+     * A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+     */
+    redirects: outputs.GetCdnDistributionConfigRedirects;
+    /**
      * The configured regions where content will be hosted
      */
     regions: string[];
@@ -831,6 +884,51 @@ export interface GetCdnDistributionConfigBackend {
 
 export interface GetCdnDistributionConfigOptimizer {
     enabled: boolean;
+}
+
+export interface GetCdnDistributionConfigRedirects {
+    /**
+     * A list of redirect rules. The order of rules matters for evaluation
+     */
+    rules: outputs.GetCdnDistributionConfigRedirectsRule[];
+}
+
+export interface GetCdnDistributionConfigRedirectsRule {
+    /**
+     * An optional description for the redirect rule
+     */
+    description: string;
+    /**
+     * A toggle to enable or disable the redirect rule. Default to true
+     */
+    enabled: boolean;
+    /**
+     * A list of matchers that define when this rule should apply. At least one matcher is required
+     */
+    matchers: outputs.GetCdnDistributionConfigRedirectsRuleMatcher[];
+    /**
+     * Defines how multiple matchers within this rule are combined (ALL, ANY, NONE). Defaults to ANY.
+     */
+    ruleMatchCondition: string;
+    /**
+     * The HTTP status code for the redirect. Must be one of 301, 302, 303, 307, or 308.
+     */
+    statusCode: number;
+    /**
+     * The target URL to redirect to. Must be a valid URI
+     */
+    targetUrl: string;
+}
+
+export interface GetCdnDistributionConfigRedirectsRuleMatcher {
+    /**
+     * Defines how multiple matchers within this rule are combined (ALL, ANY, NONE). Defaults to ANY.
+     */
+    valueMatchCondition: string;
+    /**
+     * A list of glob patterns to match against the request path. At least one value is required. Examples: "/shop/*" or "*&#47;img/*"
+     */
+    values: string[];
 }
 
 export interface GetCdnDistributionDomain {
@@ -1198,7 +1296,7 @@ export interface GetLoadbalancerTargetPool {
     /**
      * Here you can setup various session persistence options, so far only "`useSourceIpAddress`" is supported.
      */
-    sessionPersistence?: outputs.GetLoadbalancerTargetPoolSessionPersistence;
+    sessionPersistence: outputs.GetLoadbalancerTargetPoolSessionPersistence;
     /**
      * Identical port number where each target listens for traffic.
      */
@@ -1236,7 +1334,7 @@ export interface GetLoadbalancerTargetPoolSessionPersistence {
     /**
      * If true then all connections from one source IP address are redirected to the same target. This setting changes the load balancing algorithm to Maglev.
      */
-    useSourceIpAddress?: boolean;
+    useSourceIpAddress: boolean;
 }
 
 export interface GetLoadbalancerTargetPoolTarget {
@@ -2092,6 +2190,28 @@ export interface GetSecretsmanagerInstanceKmsKey {
     serviceAccountEmail: string;
 }
 
+export interface GetSecretsmanagerInstanceRoleBindingsV1RoleBinding {
+    /**
+     * A valid role defined for the resource.
+     */
+    role: string;
+    /**
+     * Identifier of user, service account or client. Usually email address or name in case of clients.
+     */
+    subject: string;
+}
+
+export interface GetSecretsmanagerSecretGroupRoleBindingsV1RoleBinding {
+    /**
+     * A valid role defined for the resource.
+     */
+    role: string;
+    /**
+     * Identifier of user, service account or client. Usually email address or name in case of clients.
+     */
+    subject: string;
+}
+
 export interface GetSecurityGroupRuleIcmpParameters {
     /**
      * ICMP code. Can be set if the protocol is ICMP.
@@ -2722,7 +2842,7 @@ export interface LoadbalancerTargetPool {
     /**
      * Here you can setup various session persistence options, so far only "`useSourceIpAddress`" is supported.
      */
-    sessionPersistence?: outputs.LoadbalancerTargetPoolSessionPersistence;
+    sessionPersistence: outputs.LoadbalancerTargetPoolSessionPersistence;
     /**
      * Identical port number where each target listens for traffic.
      */
@@ -2760,7 +2880,7 @@ export interface LoadbalancerTargetPoolSessionPersistence {
     /**
      * If true then all connections from one source IP address are redirected to the same target. This setting changes the load balancing algorithm to Maglev.
      */
-    useSourceIpAddress?: boolean;
+    useSourceIpAddress: boolean;
 }
 
 export interface LoadbalancerTargetPoolTarget {

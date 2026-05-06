@@ -79,7 +79,7 @@ class _ObjectstorageCredentialsGroupState:
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
-                 urn: Optional[pulumi.Input[_builtins.str]] = None):
+                 stackit_urn: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ObjectstorageCredentialsGroup resources.
 
@@ -87,7 +87,7 @@ class _ObjectstorageCredentialsGroupState:
         :param pulumi.Input[_builtins.str] name: The credentials group's display name.
         :param pulumi.Input[_builtins.str] project_id: Project ID to which the credentials group is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
-        :param pulumi.Input[_builtins.str] urn: Credentials group uniform resource name (URN)
+        :param pulumi.Input[_builtins.str] stackit_urn: Credentials group uniform resource name (URN)
         """
         if credentials_group_id is not None:
             pulumi.set(__self__, "credentials_group_id", credentials_group_id)
@@ -97,8 +97,8 @@ class _ObjectstorageCredentialsGroupState:
             pulumi.set(__self__, "project_id", project_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
-        if urn is not None:
-            pulumi.set(__self__, "urn", urn)
+        if stackit_urn is not None:
+            pulumi.set(__self__, "stackit_urn", stackit_urn)
 
     @_builtins.property
     @pulumi.getter(name="credentialsGroupId")
@@ -149,16 +149,16 @@ class _ObjectstorageCredentialsGroupState:
         pulumi.set(self, "region", value)
 
     @_builtins.property
-    @pulumi.getter
-    def urn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    @pulumi.getter(name="stackitUrn")
+    def stackit_urn(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         Credentials group uniform resource name (URN)
         """
-        return pulumi.get(self, "urn")
+        return pulumi.get(self, "stackit_urn")
 
-    @urn.setter
-    def urn(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "urn", value)
+    @stackit_urn.setter
+    def stackit_urn(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "stackit_urn", value)
 
 
 @pulumi.type_token("stackit:index/objectstorageCredentialsGroup:ObjectstorageCredentialsGroup")
@@ -228,7 +228,7 @@ class ObjectstorageCredentialsGroup(pulumi.CustomResource):
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["region"] = region
             __props__.__dict__["credentials_group_id"] = None
-            __props__.__dict__["urn"] = None
+            __props__.__dict__["stackit_urn"] = None
         super(ObjectstorageCredentialsGroup, __self__).__init__(
             'stackit:index/objectstorageCredentialsGroup:ObjectstorageCredentialsGroup',
             resource_name,
@@ -243,7 +243,7 @@ class ObjectstorageCredentialsGroup(pulumi.CustomResource):
             name: Optional[pulumi.Input[_builtins.str]] = None,
             project_id: Optional[pulumi.Input[_builtins.str]] = None,
             region: Optional[pulumi.Input[_builtins.str]] = None,
-            urn: Optional[pulumi.Input[_builtins.str]] = None) -> 'ObjectstorageCredentialsGroup':
+            stackit_urn: Optional[pulumi.Input[_builtins.str]] = None) -> 'ObjectstorageCredentialsGroup':
         """
         Get an existing ObjectstorageCredentialsGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -255,7 +255,7 @@ class ObjectstorageCredentialsGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The credentials group's display name.
         :param pulumi.Input[_builtins.str] project_id: Project ID to which the credentials group is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
-        :param pulumi.Input[_builtins.str] urn: Credentials group uniform resource name (URN)
+        :param pulumi.Input[_builtins.str] stackit_urn: Credentials group uniform resource name (URN)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -265,7 +265,7 @@ class ObjectstorageCredentialsGroup(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["region"] = region
-        __props__.__dict__["urn"] = urn
+        __props__.__dict__["stackit_urn"] = stackit_urn
         return ObjectstorageCredentialsGroup(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -301,10 +301,10 @@ class ObjectstorageCredentialsGroup(pulumi.CustomResource):
         return pulumi.get(self, "region")
 
     @_builtins.property
-    @pulumi.getter
-    def urn(self) -> pulumi.Output[_builtins.str]:
+    @pulumi.getter(name="stackitUrn")
+    def stackit_urn(self) -> pulumi.Output[_builtins.str]:
         """
         Credentials group uniform resource name (URN)
         """
-        return pulumi.get(self, "urn")
+        return pulumi.get(self, "stackit_urn")
 
