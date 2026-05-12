@@ -640,8 +640,8 @@ github.com/spiffe/go-spiffe/v2 v2.6.0 h1:l+DolpxNWYgruGQVV0xsfeya3CsC7m8iBzDnMps
 github.com/spiffe/go-spiffe/v2 v2.6.0/go.mod h1:gm2SeUoMZEtpnzPNs2Csc0D/gX33k1xIx7lEzqblHEs=
 github.com/stackitcloud/pulumi-stackit/provider/pkg/version v0.0.6 h1:65b+/u5WhBwdwiwRijrREkosEQE4PVIQXu2Cf3qir9U=
 github.com/stackitcloud/pulumi-stackit/provider/pkg/version v0.0.6/go.mod h1:EZ5yZatO0uo7jmkG0p1U15gucMoaKJwvP73lmhTdBFc=
-github.com/stackitcloud/pulumi-stackit/provider/shim v0.0.5 h1:ctFtNsPgsd+TjmeAM/cjvqMXwRaaT83b6VzRwvdEZf8=
-github.com/stackitcloud/pulumi-stackit/provider/shim v0.0.5/go.mod h1:WRtX5YpJExVNq7XEFo5sXTYUfjxWolOVDT3ybrNoanI=
+github.com/stackitcloud/pulumi-stackit/provider/shim v0.0.6 h1:HxckjrBBHZ+c2SAcFBeubsU/7QzkBtFab6xUK5hIkL4=
+github.com/stackitcloud/pulumi-stackit/provider/shim v0.0.6/go.mod h1:XfgIyIgXyLYqtYtxiIcvxxW20cCJmiPv1UDoecT9T/Q=
 github.com/stackitcloud/stackit-sdk-go/core v0.26.0 h1:jQEb9gkehfp6VCP6TcYk7BI10cz4l0KM2L6hqYBH2QA=
 github.com/stackitcloud/stackit-sdk-go/core v0.26.0/go.mod h1:WU1hhxnjXw2EV7CYa1nlEvNpMiRY6CvmIOaHuL3pOaA=
 github.com/stackitcloud/stackit-sdk-go/services/alb v0.14.1 h1:hlos/aew02XKWtq1ss9EQh1UCzV1SXArYioew+WIv2M=
