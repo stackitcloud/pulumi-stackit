@@ -813,6 +813,10 @@
                         "type": "string"
                     },
                     "description": "The configured regions where content will be hosted\n"
+                },
+                "waf": {
+                    "$ref": "#/types/stackit:index/CdnDistributionConfigWaf:CdnDistributionConfigWaf",
+                    "description": "Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.\n"
                 }
             },
             "type": "object",
@@ -826,7 +830,8 @@
                         "backend",
                         "blockedCountries",
                         "optimizer",
-                        "regions"
+                        "regions",
+                        "waf"
                     ]
                 }
             }
@@ -997,6 +1002,128 @@
                     "requiredOutputs": [
                         "valueMatchCondition",
                         "values"
+                    ]
+                }
+            }
+        },
+        "stackit:index/CdnDistributionConfigWaf:CdnDistributionConfigWaf": {
+            "properties": {
+                "allowedHttpMethods": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Restricts which HTTP methods the distribution accepts. If provided, the set must contain at least one item. Case you removed waf will retain the last known state and if omitted, the API applies the following defaults: `GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `CONNECT`, `OPTIONS`, `TRACE`, `PATCH`.\n"
+                },
+                "allowedHttpVersions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Restricts which HTTP protocol versions are accepted. If provided, the set must contain at least one item. If omitted, the API applies the following defaults: `HTTP/1.0`, `HTTP/1.1`, `HTTP/2`, `HTTP/2.0`.\n"
+                },
+                "allowedRequestContentTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Restricts which Content-Type headers are accepted in request bodies. If provided, the set must contain at least one item. Case you removed waf will retain the last known state and if omitted, the API applies the following defaults: `application/x-www-form-urlencoded`, `multipart/form-data`, `multipart/related`, `text/xml`, `application/xml`, `application/soap+xml`, `application/x-amf`, `application/json`, `application/octet-stream`, `application/csp-report`, `application/xss-auditor-report`, `text/plain`.\n"
+                },
+                "disabledRuleCollectionIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Set of WAF Collection IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections\n"
+                },
+                "disabledRuleGroupIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Set of WAF Rule Group IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections\n"
+                },
+                "disabledRuleIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Set of WAF rule IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. For example, an explicitly disabled Rule ID takes precedence over an enabled Group ID. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections\n"
+                },
+                "enabledRuleCollectionIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Set of WAF Collection IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections\n"
+                },
+                "enabledRuleGroupIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Set of WAF Rule Group IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections\n"
+                },
+                "enabledRuleIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Set of WAF rule IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. For example, an explicitly enabled Rule ID takes precedence over a disabled Group ID. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections\n"
+                },
+                "logOnlyRuleCollectionIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Set of WAF Collection IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections\n"
+                },
+                "logOnlyRuleGroupIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Set of WAF Rule Group IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections\n"
+                },
+                "logOnlyRuleIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Set of WAF rule IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections\n"
+                },
+                "mode": {
+                    "type": "string",
+                    "description": "The operating mode of the WAF. 'ENABLED' actively blocks threats, 'LOG_ONLY' logs matches without blocking, and 'DISABLED' completely turns off inspection. Defaults to 'DISABLED'.\n"
+                },
+                "paranoiaLevel": {
+                    "type": "string",
+                    "description": "Defines how aggressively the WAF should act on requests. Valid values are 'L1' to 'L4'. Case you removed waf will retain the last known state and if omitted, The API applies the following default 'L1'.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The tier of the WAF. Valid values are 'FREE' or 'PREMIUM'. Defaults to 'FREE'.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "allowedHttpMethods",
+                        "allowedHttpVersions",
+                        "allowedRequestContentTypes",
+                        "disabledRuleCollectionIds",
+                        "disabledRuleGroupIds",
+                        "disabledRuleIds",
+                        "enabledRuleCollectionIds",
+                        "enabledRuleGroupIds",
+                        "enabledRuleIds",
+                        "logOnlyRuleCollectionIds",
+                        "logOnlyRuleGroupIds",
+                        "logOnlyRuleIds",
+                        "mode",
+                        "paranoiaLevel",
+                        "type"
                     ]
                 }
             }
@@ -2815,6 +2942,27 @@
                 }
             }
         },
+        "stackit:index/ServerAgent:ServerAgent": {
+            "properties": {
+                "provisioned": {
+                    "type": "boolean",
+                    "description": "Whether a STACKIT Server Agent is provisioned at the server\n"
+                },
+                "provisioningPolicy": {
+                    "type": "string",
+                    "description": "Agent provisioning policy: `ALWAYS`, `NEVER`, or `INHERIT`. `INHERIT` follows the image default value.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "provisioned",
+                        "provisioningPolicy"
+                    ]
+                }
+            }
+        },
         "stackit:index/ServerBackupScheduleBackupProperties:ServerBackupScheduleBackupProperties": {
             "properties": {
                 "name": {
@@ -2878,6 +3026,28 @@
                     ]
                 }
             }
+        },
+        "stackit:index/ServiceAccountFederatedIdentityProviderAssertion:ServiceAccountFederatedIdentityProviderAssertion": {
+            "properties": {
+                "item": {
+                    "type": "string",
+                    "description": "The assertion claim. At least one assertion with the claim \"aud\" is required for security reasons.\n"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "The assertion operator. Currently, the only supported operator is \"equals\".\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The assertion value.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "item",
+                "operator",
+                "value"
+            ]
         },
         "stackit:index/SfsExportPolicyRule:SfsExportPolicyRule": {
             "properties": {
@@ -4057,6 +4227,10 @@
                         "type": "string"
                     },
                     "description": "The configured regions where content will be hosted\n"
+                },
+                "waf": {
+                    "$ref": "#/types/stackit:index/getCdnDistributionConfigWaf:getCdnDistributionConfigWaf",
+                    "description": "Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.\n"
                 }
             },
             "type": "object",
@@ -4064,7 +4238,8 @@
                 "backend",
                 "optimizer",
                 "redirects",
-                "regions"
+                "regions",
+                "waf"
             ],
             "language": {
                 "nodejs": {
@@ -4222,6 +4397,129 @@
             "required": [
                 "valueMatchCondition",
                 "values"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getCdnDistributionConfigWaf:getCdnDistributionConfigWaf": {
+            "properties": {
+                "allowedHttpMethods": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Restricts which HTTP methods the distribution accepts. If provided, the set must contain at least one item. Case you removed waf will retain the last known state and if omitted, the API applies the following defaults: `GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `CONNECT`, `OPTIONS`, `TRACE`, `PATCH`.\n"
+                },
+                "allowedHttpVersions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Restricts which HTTP protocol versions are accepted. If provided, the set must contain at least one item. If omitted, the API applies the following defaults: `HTTP/1.0`, `HTTP/1.1`, `HTTP/2`, `HTTP/2.0`.\n"
+                },
+                "allowedRequestContentTypes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Restricts which Content-Type headers are accepted in request bodies. If provided, the set must contain at least one item. Case you removed waf will retain the last known state and if omitted, the API applies the following defaults: `application/x-www-form-urlencoded`, `multipart/form-data`, `multipart/related`, `text/xml`, `application/xml`, `application/soap+xml`, `application/x-amf`, `application/json`, `application/octet-stream`, `application/csp-report`, `application/xss-auditor-report`, `text/plain`.\n"
+                },
+                "disabledRuleCollectionIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Set of WAF Collection IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections\n"
+                },
+                "disabledRuleGroupIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Set of WAF Rule Group IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections\n"
+                },
+                "disabledRuleIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Set of WAF rule IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. For example, an explicitly disabled Rule ID takes precedence over an enabled Group ID. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections\n"
+                },
+                "enabledRuleCollectionIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Set of WAF Collection IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections\n"
+                },
+                "enabledRuleGroupIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Set of WAF Rule Group IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections\n"
+                },
+                "enabledRuleIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Set of WAF rule IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. For example, an explicitly enabled Rule ID takes precedence over a disabled Group ID. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections\n"
+                },
+                "logOnlyRuleCollectionIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Set of WAF Collection IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections\n"
+                },
+                "logOnlyRuleGroupIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Set of WAF Rule Group IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections\n"
+                },
+                "logOnlyRuleIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Set of WAF rule IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections\n"
+                },
+                "mode": {
+                    "type": "string",
+                    "description": "The operating mode of the WAF. 'ENABLED' actively blocks threats, 'LOG_ONLY' logs matches without blocking, and 'DISABLED' completely turns off inspection. Defaults to 'DISABLED'.\n"
+                },
+                "paranoiaLevel": {
+                    "type": "string",
+                    "description": "Defines how aggressively the WAF should act on requests. Valid values are 'L1' to 'L4'. Case you removed waf will retain the last known state and if omitted, The API applies the following default 'L1'.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The tier of the WAF. Valid values are 'FREE' or 'PREMIUM'. Defaults to 'FREE'.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "allowedHttpMethods",
+                "allowedHttpVersions",
+                "allowedRequestContentTypes",
+                "disabledRuleCollectionIds",
+                "disabledRuleGroupIds",
+                "disabledRuleIds",
+                "enabledRuleCollectionIds",
+                "enabledRuleGroupIds",
+                "enabledRuleIds",
+                "logOnlyRuleCollectionIds",
+                "logOnlyRuleGroupIds",
+                "logOnlyRuleIds",
+                "mode",
+                "paranoiaLevel",
+                "type"
             ],
             "language": {
                 "nodejs": {
@@ -6557,6 +6855,23 @@
                 }
             }
         },
+        "stackit:index/getServerAgent:getServerAgent": {
+            "properties": {
+                "provisioned": {
+                    "type": "boolean",
+                    "description": "Whether a STACKIT Server Agent is provisioned at the server\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "provisioned"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "stackit:index/getServerBackupScheduleBackupProperties:getServerBackupScheduleBackupProperties": {
             "properties": {
                 "name": {
@@ -6698,6 +7013,33 @@
                 "name",
                 "rrule",
                 "updateScheduleId"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getServiceAccountFederatedIdentityProviderAssertion:getServiceAccountFederatedIdentityProviderAssertion": {
+            "properties": {
+                "item": {
+                    "type": "string",
+                    "description": "The assertion claim. At least one assertion with the claim \"aud\" is required for security reasons.\n"
+                },
+                "operator": {
+                    "type": "string",
+                    "description": "The assertion operator. Currently, the only supported operator is \"equals\".\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The assertion value.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "item",
+                "operator",
+                "value"
             ],
             "language": {
                 "nodejs": {
@@ -8596,7 +8938,7 @@
             }
         },
         "stackit:index/authorizationProjectRoleAssignment:AuthorizationProjectRoleAssignment": {
-            "description": "Project Role Assignment resource schema.\n\n\u003e This resource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_resourcemanager_project\" \"example\" {\n  name        = \"example_project\"\n  owner_email = \"foo.bar@stackit.cloud\"\n  # in this case a folder or a org-id\n  parent_container_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\nresource \"stackit_authorization_project_role_assignment\" \"pra\" {\n  resource_id = stackit_resourcemanager_project.example.folder_id\n  role        = \"reader\"\n  subject     = \"foo.bar@stackit.cloud\"\n}\n\n# Only use the import statement, if you want to import an existing project role assignment\nimport {\n  to = stackit_authorization_project_role_assignment.import-example\n  id = \"${var.project_id},${var.project_role_assignment_role},${var.project_role_assignment_subject}\"\n}\n```\n",
+            "description": "Project Role Assignment resource schema.\n\n\u003e This resource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_resourcemanager_project\" \"example\" {\n  name        = \"example_project\"\n  owner_email = \"foo.bar@stackit.cloud\"\n  # in this case a folder or a org-id\n  parent_container_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\nresource \"stackit_authorization_project_role_assignment\" \"pra\" {\n  resource_id = stackit_resourcemanager_project.example.project_id\n  role        = \"reader\"\n  subject     = \"foo.bar@stackit.cloud\"\n}\n\n# Only use the import statement, if you want to import an existing project role assignment\nimport {\n  to = stackit_authorization_project_role_assignment.import-example\n  id = \"${var.project_id},${var.project_role_assignment_role},${var.project_role_assignment_subject}\"\n}\n```\n",
             "properties": {
                 "resourceId": {
                     "type": "string",
@@ -8805,7 +9147,7 @@
             }
         },
         "stackit:index/cdnDistribution:CdnDistribution": {
-            "description": "CDN distribution data source schema.\n\n\u003e This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\nresource \"stackit_cdn_distribution\" \"example_distribution\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  config = {\n    backend = {\n      type       = \"http\"\n      origin_url = \"https://mybackend.onstackit.cloud\"\n      geofencing = {\n        \"https://mybackend.onstackit.cloud\" = [\"DE\"]\n      }\n    }\n    regions           = [\"EU\", \"US\", \"ASIA\", \"AF\", \"SA\"]\n    blocked_countries = [\"DE\", \"AT\", \"CH\"]\n\n    optimizer = {\n      enabled = true\n    }\n  }\n}\n\nresource \"stackit_cdn_distribution\" \"example_bucket_distribution\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  config = {\n    backend = {\n      type       = \"bucket\"\n      bucket_url = \"https://my-test.object.storage.eu01.onstackit.cloud\"\n      region     = \"eu01\"\n\n      # Credentials are required for bucket backends\n      # It is strongly recommended to use variables for secrets\n      credentials = {\n        access_key_id     = var.bucket_access_key\n        secret_access_key = var.bucket_secret_key\n      }\n    }\n    regions           = [\"EU\", \"US\"]\n    blocked_countries = [\"CN\", \"RU\"]\n\n    optimizer = {\n      enabled = false\n    }\n\n    redirects = {\n      rules = [\n        {\n          description          = \"test redirect\"\n          enabled              = true\n          rule_match_condition = \"ANY\"\n          status_code          = 302\n          target_url           = \"https://stackit.de/\"\n          matchers = [\n            {\n              values                = [\"*/otherPath/\"]\n              value_match_condition = \"ANY\"\n            }\n          ]\n        }\n      ]\n    }\n  }\n}\n\n# Only use the import statement, if you want to import an existing cdn distribution\nimport {\n  to = stackit_cdn_distribution.import-example\n  id = \"${var.project_id},${var.distribution_id}\"\n}\n```\n",
+            "description": "CDN distribution data source schema.\n\n\u003e This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\nresource \"stackit_cdn_distribution\" \"example_distribution\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  config = {\n    backend = {\n      type       = \"http\"\n      origin_url = \"https://mybackend.onstackit.cloud\"\n      geofencing = {\n        \"https://mybackend.onstackit.cloud\" = [\"DE\"]\n      }\n    }\n    regions           = [\"EU\", \"US\", \"ASIA\", \"AF\", \"SA\"]\n    blocked_countries = [\"DE\", \"AT\", \"CH\"]\n\n    optimizer = {\n      enabled = true\n    }\n  }\n}\n\nresource \"stackit_cdn_distribution\" \"example_bucket_distribution\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  config = {\n    backend = {\n      type       = \"bucket\"\n      bucket_url = \"https://my-test.object.storage.eu01.onstackit.cloud\"\n      region     = \"eu01\"\n\n      # Credentials are required for bucket backends\n      # It is strongly recommended to use variables for secrets\n      credentials = {\n        access_key_id     = var.bucket_access_key\n        secret_access_key = var.bucket_secret_key\n      }\n    }\n    regions           = [\"EU\", \"US\"]\n    blocked_countries = [\"CN\", \"RU\"]\n\n    optimizer = {\n      enabled = false\n    }\n\n    redirects = {\n      rules = [\n        {\n          description          = \"test redirect\"\n          enabled              = true\n          rule_match_condition = \"ANY\"\n          status_code          = 302\n          target_url           = \"https://stackit.de/\"\n          matchers = [\n            {\n              values                = [\"*/otherPath/\"]\n              value_match_condition = \"ANY\"\n            }\n          ]\n        }\n      ]\n    }\n\n    # WAF Configuration\n    # \n    # Precedence Hierarchy: Specific Rules \u003e Groups \u003e Collections\n    # In this example, the entire \"@builtin/crs/request\" collection is ENABLED.\n    # However, because specific Rule IDs have a higher precedence, the rule \n    # \"@builtin/crs/request/942151\" is explicitly DISABLED, overriding the collection setting.\n    # \n    # To view all available collections, groups, and rules, consult the API documentation:\n    # https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections\n    waf = {\n      mode                          = \"ENABLED\"\n      type                          = \"PREMIUM\"\n      paranoia_level                = \"L1\"\n      allowed_http_versions         = [\"HTTP/1.0\", \"HTTP/1.1\"]\n      allowed_http_methods          = [\"GET\"]\n      allowed_request_content_types = [\"text/plain\"]\n\n      # Collections\n      enabled_rule_collection_ids  = [\"@builtin/crs/request\"]\n      disabled_rule_collection_ids = []\n      log_only_rule_collection_ids = [\"@builtin/crs/response\"]\n\n      # Groups\n      enabled_rule_group_ids  = []\n      disabled_rule_group_ids = []\n      log_only_rule_group_ids = []\n\n      # Specific Rules (Highest Precedence)\n      enabled_rule_ids  = [\"@builtin/crs/request/913100\"]\n      disabled_rule_ids = [\"@builtin/crs/request/942151\"]\n      log_only_rule_ids = [\"@builtin/crs/response/954120\"]\n    }\n  }\n}\n\n# Only use the import statement, if you want to import an existing cdn distribution\nimport {\n  to = stackit_cdn_distribution.import-example\n  id = \"${var.project_id},${var.distribution_id}\"\n}\n```\n",
             "properties": {
                 "config": {
                     "$ref": "#/types/stackit:index/CdnDistributionConfig:CdnDistributionConfig",
@@ -13609,6 +13951,15 @@
                     "type": "string",
                     "description": "The name of the Observability instance.\n"
                 },
+                "otlpGrpcTracesUrl": {
+                    "type": "string"
+                },
+                "otlpHttpLogsUrl": {
+                    "type": "string"
+                },
+                "otlpHttpTracesUrl": {
+                    "type": "string"
+                },
                 "otlpTracesUrl": {
                     "type": "string"
                 },
@@ -13664,6 +14015,9 @@
                 "metricsRetentionDays5mDownsampling",
                 "metricsUrl",
                 "name",
+                "otlpGrpcTracesUrl",
+                "otlpHttpLogsUrl",
+                "otlpHttpTracesUrl",
                 "otlpTracesUrl",
                 "parameters",
                 "planId",
@@ -13827,6 +14181,15 @@
                     "name": {
                         "type": "string",
                         "description": "The name of the Observability instance.\n"
+                    },
+                    "otlpGrpcTracesUrl": {
+                        "type": "string"
+                    },
+                    "otlpHttpLogsUrl": {
+                        "type": "string"
+                    },
+                    "otlpHttpTracesUrl": {
+                        "type": "string"
                     },
                     "otlpTracesUrl": {
                         "type": "string"
@@ -16877,6 +17240,10 @@
                     "type": "string",
                     "description": "The affinity group the server is assigned to.\n"
                 },
+                "agent": {
+                    "$ref": "#/types/stackit:index/ServerAgent:ServerAgent",
+                    "description": "The STACKIT Server Agent configured for the server\n"
+                },
                 "availabilityZone": {
                     "type": "string",
                     "description": "The availability zone of the server.\n"
@@ -16949,6 +17316,7 @@
                 }
             },
             "required": [
+                "agent",
                 "availabilityZone",
                 "createdAt",
                 "launchedAt",
@@ -16963,6 +17331,10 @@
                 "affinityGroup": {
                     "type": "string",
                     "description": "The affinity group the server is assigned to.\n"
+                },
+                "agent": {
+                    "$ref": "#/types/stackit:index/ServerAgent:ServerAgent",
+                    "description": "The STACKIT Server Agent configured for the server\n"
                 },
                 "availabilityZone": {
                     "type": "string",
@@ -17029,6 +17401,10 @@
                     "affinityGroup": {
                         "type": "string",
                         "description": "The affinity group the server is assigned to.\n"
+                    },
+                    "agent": {
+                        "$ref": "#/types/stackit:index/ServerAgent:ServerAgent",
+                        "description": "The STACKIT Server Agent configured for the server\n"
                     },
                     "availabilityZone": {
                         "type": "string",
@@ -17779,6 +18155,110 @@
                     "serviceAccountId": {
                         "type": "string",
                         "description": "The internal UUID of the service account.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "stackit:index/serviceAccountFederatedIdentityProvider:ServiceAccountFederatedIdentityProvider": {
+            "description": "Service account federated identity provider schema.\n## Example Usage\n\n### Create a federated identity provider\n```terraform\nresource \"stackit_service_account\" \"sa\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"my-service-account\"\n}\n\nresource \"stackit_service_account_federated_identity_provider\" \"provider\" {\n  project_id            = stackit_service_account.sa.project_id\n  service_account_email = stackit_service_account.sa.email\n  name                  = \"my-provider\"\n  issuer                = \"https://auth.example.com\"\n\n  assertions = [\n    {\n      item     = \"aud\" # Including the audience check is mandatory for security reasons, the value is free to choose\n      operator = \"equals\"\n      value    = \"sts.accounts.stackit.cloud\"\n    },\n    {\n      item     = \"email\"\n      operator = \"equals\"\n      value    = \"terraform@example.com\"\n    }\n  ]\n}\n\n```\n\n\n### Additional Examples\n\n```terraform\nresource \"stackit_service_account\" \"sa\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"my-service-account\"\n}\n\nresource \"stackit_service_account_federated_identity_provider\" \"provider\" {\n  project_id            = stackit_service_account.sa.project_id\n  service_account_email = stackit_service_account.sa.email\n  name                  = \"gh-actions\"\n  issuer                = \"https://token.actions.githubusercontent.com\"\n\n  assertions = [\n    {\n      item     = \"aud\"\n      operator = \"equals\"\n      value    = \"sts.accounts.stackit.cloud\"\n    },\n    {\n      item     = \"sub\"\n      operator = \"equals\"\n      value    = \"repo:stackitcloud/terraform-provider-stackit:ref:refs/heads/main\"\n    }\n  ]\n}\n\n# Only use the import statement, if you want to import an existing federated identity provider\nimport {\n  to = stackit_service_account_federated_identity_provider.import-example\n  id = \"${var.project_id},${var.service_account_email},${var.federation_id}\"\n}\n```\n",
+            "properties": {
+                "assertions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stackit:index/ServiceAccountFederatedIdentityProviderAssertion:ServiceAccountFederatedIdentityProviderAssertion"
+                    },
+                    "description": "The assertions for the federated identity provider.\n"
+                },
+                "federationId": {
+                    "type": "string",
+                    "description": "The unique identifier for the federated identity provider associated with the service account.\n"
+                },
+                "issuer": {
+                    "type": "string",
+                    "description": "The issuer URL.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the federated identity provider.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "The STACKIT project ID associated with the service account.\n"
+                },
+                "serviceAccountEmail": {
+                    "type": "string",
+                    "description": "The email address associated with the service account, used for account identification and communication.\n"
+                }
+            },
+            "required": [
+                "assertions",
+                "federationId",
+                "issuer",
+                "name",
+                "projectId",
+                "serviceAccountEmail"
+            ],
+            "inputProperties": {
+                "assertions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stackit:index/ServiceAccountFederatedIdentityProviderAssertion:ServiceAccountFederatedIdentityProviderAssertion"
+                    },
+                    "description": "The assertions for the federated identity provider.\n"
+                },
+                "issuer": {
+                    "type": "string",
+                    "description": "The issuer URL.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the federated identity provider.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "The STACKIT project ID associated with the service account.\n"
+                },
+                "serviceAccountEmail": {
+                    "type": "string",
+                    "description": "The email address associated with the service account, used for account identification and communication.\n"
+                }
+            },
+            "requiredInputs": [
+                "assertions",
+                "issuer",
+                "projectId",
+                "serviceAccountEmail"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ServiceAccountFederatedIdentityProvider resources.\n",
+                "properties": {
+                    "assertions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/stackit:index/ServiceAccountFederatedIdentityProviderAssertion:ServiceAccountFederatedIdentityProviderAssertion"
+                        },
+                        "description": "The assertions for the federated identity provider.\n"
+                    },
+                    "federationId": {
+                        "type": "string",
+                        "description": "The unique identifier for the federated identity provider associated with the service account.\n"
+                    },
+                    "issuer": {
+                        "type": "string",
+                        "description": "The issuer URL.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the federated identity provider.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "The STACKIT project ID associated with the service account.\n"
+                    },
+                    "serviceAccountEmail": {
+                        "type": "string",
+                        "description": "The email address associated with the service account, used for account identification and communication.\n"
                     }
                 },
                 "type": "object"
@@ -19625,7 +20105,7 @@
                 "properties": {
                     "distributionId": {
                         "type": "string",
-                        "description": "STACKIT project ID associated with the distribution\n"
+                        "description": "CDN distribution ID\n"
                     },
                     "projectId": {
                         "type": "string",
@@ -19651,7 +20131,7 @@
                     },
                     "distributionId": {
                         "type": "string",
-                        "description": "STACKIT project ID associated with the distribution\n"
+                        "description": "CDN distribution ID\n"
                     },
                     "domains": {
                         "type": "array",
@@ -22597,6 +23077,15 @@
                         "type": "string",
                         "description": "The name of the Observability instance.\n"
                     },
+                    "otlpGrpcTracesUrl": {
+                        "type": "string"
+                    },
+                    "otlpHttpLogsUrl": {
+                        "type": "string"
+                    },
+                    "otlpHttpTracesUrl": {
+                        "type": "string"
+                    },
                     "otlpTracesUrl": {
                         "type": "string"
                     },
@@ -22656,6 +23145,9 @@
                     "metricsRetentionDays5mDownsampling",
                     "metricsUrl",
                     "name",
+                    "otlpGrpcTracesUrl",
+                    "otlpHttpLogsUrl",
+                    "otlpHttpTracesUrl",
                     "otlpTracesUrl",
                     "parameters",
                     "planId",
@@ -24860,6 +25352,10 @@
                         "type": "string",
                         "description": "The affinity group the server is assigned to.\n"
                     },
+                    "agent": {
+                        "$ref": "#/types/stackit:index/getServerAgent:getServerAgent",
+                        "description": "STACKIT Server Agent as setup on the server\n"
+                    },
                     "availabilityZone": {
                         "type": "string",
                         "description": "The availability zone of the server.\n"
@@ -24934,6 +25430,7 @@
                 "type": "object",
                 "required": [
                     "affinityGroup",
+                    "agent",
                     "availabilityZone",
                     "bootVolume",
                     "createdAt",
@@ -25399,6 +25896,78 @@
                     "name",
                     "projectId",
                     "serviceAccountId"
+                ]
+            }
+        },
+        "stackit:index/getServiceAccountFederatedIdentityProvider:getServiceAccountFederatedIdentityProvider": {
+            "description": "Service account federated identity provider schema.\n\n## Example Usage\n\n```terraform\ndata \"stackit_service_account\" \"sa\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  email      = \"sa01-8565oq1@sa.stackit.cloud\"\n}\n\ndata \"stackit_service_account_federated_identity_provider\" \"provider\" {\n  project_id            = data.stackit_service_account.sa.project_id\n  service_account_email = data.stackit_service_account.sa.email\n  federation_id         = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getServiceAccountFederatedIdentityProvider.\n",
+                "properties": {
+                    "federationId": {
+                        "type": "string",
+                        "description": "The unique identifier for the federated identity provider associated with the service account.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "The STACKIT project ID associated with the service account.\n"
+                    },
+                    "serviceAccountEmail": {
+                        "type": "string",
+                        "description": "The email address associated with the service account, used for account identification and communication.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "federationId",
+                    "projectId",
+                    "serviceAccountEmail"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getServiceAccountFederatedIdentityProvider.\n",
+                "properties": {
+                    "assertions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/stackit:index/getServiceAccountFederatedIdentityProviderAssertion:getServiceAccountFederatedIdentityProviderAssertion"
+                        },
+                        "description": "The assertions for the federated identity provider.\n"
+                    },
+                    "federationId": {
+                        "type": "string",
+                        "description": "The unique identifier for the federated identity provider associated with the service account.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Terraform's internal resource identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`projectId`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`serviceAccountEmail`\" pulumi-lang-dotnet=\"`ServiceAccountEmail`\" pulumi-lang-go=\"`serviceAccountEmail`\" pulumi-lang-python=\"`service_account_email`\" pulumi-lang-yaml=\"`serviceAccountEmail`\" pulumi-lang-java=\"`serviceAccountEmail`\"\u003e`serviceAccountEmail`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`federationId`\" pulumi-lang-dotnet=\"`FederationId`\" pulumi-lang-go=\"`federationId`\" pulumi-lang-python=\"`federation_id`\" pulumi-lang-yaml=\"`federationId`\" pulumi-lang-java=\"`federationId`\"\u003e`federationId`\u003c/span\u003e\".\n"
+                    },
+                    "issuer": {
+                        "type": "string",
+                        "description": "The issuer URL.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the federated identity provider.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "The STACKIT project ID associated with the service account.\n"
+                    },
+                    "serviceAccountEmail": {
+                        "type": "string",
+                        "description": "The email address associated with the service account, used for account identification and communication.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "assertions",
+                    "federationId",
+                    "id",
+                    "issuer",
+                    "name",
+                    "projectId",
+                    "serviceAccountEmail"
                 ]
             }
         },

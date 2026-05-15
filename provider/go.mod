@@ -29,7 +29,7 @@ require (
 	github.com/Masterminds/semver/v3 v3.4.0 // indirect
 	github.com/Masterminds/sprig/v3 v3.2.3 // indirect
 	github.com/Microsoft/go-winio v0.6.2 // indirect
-	github.com/ProtonMail/go-crypto v1.3.0 // indirect
+	github.com/ProtonMail/go-crypto v1.4.1 // indirect
 	github.com/agext/levenshtein v1.2.3 // indirect
 	github.com/apparentlymart/go-cidr v1.1.0 // indirect
 	github.com/apparentlymart/go-textseg/v15 v15.0.0 // indirect
@@ -112,7 +112,7 @@ require (
 	github.com/hashicorp/go-multierror v1.1.1 // indirect
 	github.com/hashicorp/go-plugin v1.7.0 // indirect
 	github.com/hashicorp/go-uuid v1.0.3 // indirect
-	github.com/hashicorp/go-version v1.8.0 // indirect
+	github.com/hashicorp/go-version v1.9.0 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/hashicorp/hcl/v2 v2.24.0 // indirect
 	github.com/hashicorp/hil v0.0.0-20190212132231-97b3a9cdfa93 // indirect
@@ -125,7 +125,7 @@ require (
 	github.com/hashicorp/terraform-plugin-sdk v1.8.0 // indirect
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.40.0 // indirect
 	github.com/hashicorp/terraform-registry-address v0.4.0 // indirect
-	github.com/hashicorp/terraform-svchost v0.1.1 // indirect
+	github.com/hashicorp/terraform-svchost v0.2.1 // indirect
 	github.com/hashicorp/yamux v0.1.2 // indirect
 	github.com/huandu/xstrings v1.3.3 // indirect
 	github.com/iancoleman/strcase v0.3.0 // indirect
@@ -197,38 +197,38 @@ require (
 	github.com/spf13/pflag v1.0.10 // indirect
 	github.com/spiffe/go-spiffe/v2 v2.6.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/core v0.26.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/alb v0.14.1 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/authorization v0.15.1 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/cdn v1.15.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/certificates v1.6.1 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/alb v0.14.2 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/authorization v0.15.2 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/cdn v1.16.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/certificates v1.6.2 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/dns v0.20.2 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/edge v0.9.1 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/edge v0.11.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/git v0.12.2 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/iaas v1.10.2 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/kms v1.7.2 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/loadbalancer v1.12.1 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/iaas v1.11.1 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/kms v1.8.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/loadbalancer v1.12.2 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/logme v0.28.2 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/logs v0.8.2 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/mariadb v0.28.2 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/modelserving v0.9.2 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/mongodbflex v1.8.3 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/objectstorage v1.8.2 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/objectstorage v1.9.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/observability v0.21.2 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/opensearch v0.27.2 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/postgresflex v1.7.2 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/postgresflex v1.8.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/rabbitmq v0.29.2 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/redis v0.28.2 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/resourcemanager v0.22.1 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/scf v0.7.1 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/resourcemanager v0.23.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/scf v0.8.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/secretsmanager v0.18.1 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/serverbackup v1.6.2 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/serverupdate v1.5.2 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/serviceaccount v0.18.1 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/serviceenablement v1.5.1 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/serviceaccount v0.19.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/serviceenablement v1.5.3 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/sfs v0.9.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/ske v1.13.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/sqlserverflex v1.9.1 // indirect
-	github.com/stackitcloud/terraform-provider-stackit v0.94.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/ske v1.14.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/sqlserverflex v1.10.0 // indirect
+	github.com/stackitcloud/terraform-provider-stackit v0.95.0 // indirect
 	github.com/teambition/rrule-go v1.8.2 // indirect
 	github.com/teekennedy/goldmark-markdown v0.3.0 // indirect
 	github.com/texttheater/golang-levenshtein v1.0.1 // indirect
@@ -241,7 +241,7 @@ require (
 	github.com/xanzy/ssh-agent v0.3.3 // indirect
 	github.com/xo/terminfo v0.0.0-20220910002029-abceb7e1c41e // indirect
 	github.com/yuin/goldmark v1.7.13 // indirect
-	github.com/zclconf/go-cty v1.17.0 // indirect
+	github.com/zclconf/go-cty v1.18.1 // indirect
 	go.opentelemetry.io/auto/sdk v1.2.1 // indirect
 	go.opentelemetry.io/collector/featuregate v1.54.0 // indirect
 	go.opentelemetry.io/collector/pdata v1.54.0 // indirect

@@ -181,6 +181,46 @@
                             },
                             "regions": {
                                 "maxItemsOne": false
+                            },
+                            "waf": {
+                                "fields": {
+                                    "allowed_http_methods": {
+                                        "maxItemsOne": false
+                                    },
+                                    "allowed_http_versions": {
+                                        "maxItemsOne": false
+                                    },
+                                    "allowed_request_content_types": {
+                                        "maxItemsOne": false
+                                    },
+                                    "disabled_rule_collection_ids": {
+                                        "maxItemsOne": false
+                                    },
+                                    "disabled_rule_group_ids": {
+                                        "maxItemsOne": false
+                                    },
+                                    "disabled_rule_ids": {
+                                        "maxItemsOne": false
+                                    },
+                                    "enabled_rule_collection_ids": {
+                                        "maxItemsOne": false
+                                    },
+                                    "enabled_rule_group_ids": {
+                                        "maxItemsOne": false
+                                    },
+                                    "enabled_rule_ids": {
+                                        "maxItemsOne": false
+                                    },
+                                    "log_only_rule_collection_ids": {
+                                        "maxItemsOne": false
+                                    },
+                                    "log_only_rule_group_ids": {
+                                        "maxItemsOne": false
+                                    },
+                                    "log_only_rule_ids": {
+                                        "maxItemsOne": false
+                                    }
+                                }
                             }
                         }
                     },
@@ -709,6 +749,14 @@
             "stackit_service_account": {
                 "current": "stackit:index/serviceAccount:ServiceAccount"
             },
+            "stackit_service_account_federated_identity_provider": {
+                "current": "stackit:index/serviceAccountFederatedIdentityProvider:ServiceAccountFederatedIdentityProvider",
+                "fields": {
+                    "assertions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "stackit_service_account_key": {
                 "current": "stackit:index/serviceAccountKey:ServiceAccountKey"
             },
@@ -978,6 +1026,46 @@
                             },
                             "regions": {
                                 "maxItemsOne": false
+                            },
+                            "waf": {
+                                "fields": {
+                                    "allowed_http_methods": {
+                                        "maxItemsOne": false
+                                    },
+                                    "allowed_http_versions": {
+                                        "maxItemsOne": false
+                                    },
+                                    "allowed_request_content_types": {
+                                        "maxItemsOne": false
+                                    },
+                                    "disabled_rule_collection_ids": {
+                                        "maxItemsOne": false
+                                    },
+                                    "disabled_rule_group_ids": {
+                                        "maxItemsOne": false
+                                    },
+                                    "disabled_rule_ids": {
+                                        "maxItemsOne": false
+                                    },
+                                    "enabled_rule_collection_ids": {
+                                        "maxItemsOne": false
+                                    },
+                                    "enabled_rule_group_ids": {
+                                        "maxItemsOne": false
+                                    },
+                                    "enabled_rule_ids": {
+                                        "maxItemsOne": false
+                                    },
+                                    "log_only_rule_collection_ids": {
+                                        "maxItemsOne": false
+                                    },
+                                    "log_only_rule_group_ids": {
+                                        "maxItemsOne": false
+                                    },
+                                    "log_only_rule_ids": {
+                                        "maxItemsOne": false
+                                    }
+                                }
                             }
                         }
                     },
@@ -1567,6 +1655,14 @@
             },
             "stackit_service_account": {
                 "current": "stackit:index/getServiceAccount:getServiceAccount"
+            },
+            "stackit_service_account_federated_identity_provider": {
+                "current": "stackit:index/getServiceAccountFederatedIdentityProvider:getServiceAccountFederatedIdentityProvider",
+                "fields": {
+                    "assertions": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "stackit_service_accounts": {
                 "current": "stackit:index/getServiceAccounts:getServiceAccounts",
