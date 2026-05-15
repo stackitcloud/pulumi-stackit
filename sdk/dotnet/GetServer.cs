@@ -119,6 +119,10 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string AffinityGroup;
         /// <summary>
+        /// STACKIT Server Agent as setup on the server
+        /// </summary>
+        public readonly Outputs.GetServerAgentResult Agent;
+        /// <summary>
         /// The availability zone of the server.
         /// </summary>
         public readonly string AvailabilityZone;
@@ -187,6 +191,8 @@ namespace Pulumi.Stackit
         private GetServerResult(
             string affinityGroup,
 
+            Outputs.GetServerAgentResult agent,
+
             string availabilityZone,
 
             Outputs.GetServerBootVolumeResult bootVolume,
@@ -220,6 +226,7 @@ namespace Pulumi.Stackit
             string userData)
         {
             AffinityGroup = affinityGroup;
+            Agent = agent;
             AvailabilityZone = availabilityZone;
             BootVolume = bootVolume;
             CreatedAt = createdAt;

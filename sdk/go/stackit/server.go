@@ -34,6 +34,8 @@ type Server struct {
 
 	// The affinity group the server is assigned to.
 	AffinityGroup pulumi.StringPtrOutput `pulumi:"affinityGroup"`
+	// The STACKIT Server Agent configured for the server
+	Agent ServerAgentOutput `pulumi:"agent"`
 	// The availability zone of the server.
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
 	// The boot volume for the server
@@ -106,6 +108,8 @@ func GetServer(ctx *pulumi.Context,
 type serverState struct {
 	// The affinity group the server is assigned to.
 	AffinityGroup *string `pulumi:"affinityGroup"`
+	// The STACKIT Server Agent configured for the server
+	Agent *ServerAgent `pulumi:"agent"`
 	// The availability zone of the server.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// The boot volume for the server
@@ -143,6 +147,8 @@ type serverState struct {
 type ServerState struct {
 	// The affinity group the server is assigned to.
 	AffinityGroup pulumi.StringPtrInput
+	// The STACKIT Server Agent configured for the server
+	Agent ServerAgentPtrInput
 	// The availability zone of the server.
 	AvailabilityZone pulumi.StringPtrInput
 	// The boot volume for the server
@@ -184,6 +190,8 @@ func (ServerState) ElementType() reflect.Type {
 type serverArgs struct {
 	// The affinity group the server is assigned to.
 	AffinityGroup *string `pulumi:"affinityGroup"`
+	// The STACKIT Server Agent configured for the server
+	Agent *ServerAgent `pulumi:"agent"`
 	// The availability zone of the server.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// The boot volume for the server
@@ -214,6 +222,8 @@ type serverArgs struct {
 type ServerArgs struct {
 	// The affinity group the server is assigned to.
 	AffinityGroup pulumi.StringPtrInput
+	// The STACKIT Server Agent configured for the server
+	Agent ServerAgentPtrInput
 	// The availability zone of the server.
 	AvailabilityZone pulumi.StringPtrInput
 	// The boot volume for the server
@@ -330,6 +340,11 @@ func (o ServerOutput) ToServerOutputWithContext(ctx context.Context) ServerOutpu
 // The affinity group the server is assigned to.
 func (o ServerOutput) AffinityGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Server) pulumi.StringPtrOutput { return v.AffinityGroup }).(pulumi.StringPtrOutput)
+}
+
+// The STACKIT Server Agent configured for the server
+func (o ServerOutput) Agent() ServerAgentOutput {
+	return o.ApplyT(func(v *Server) ServerAgentOutput { return v.Agent }).(ServerAgentOutput)
 }
 
 // The availability zone of the server.

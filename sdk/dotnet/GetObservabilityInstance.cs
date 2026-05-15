@@ -188,6 +188,9 @@ namespace Pulumi.Stackit
         /// The name of the Observability instance.
         /// </summary>
         public readonly string Name;
+        public readonly string OtlpGrpcTracesUrl;
+        public readonly string OtlpHttpLogsUrl;
+        public readonly string OtlpHttpTracesUrl;
         public readonly string OtlpTracesUrl;
         /// <summary>
         /// Additional parameters.
@@ -263,6 +266,12 @@ namespace Pulumi.Stackit
 
             string name,
 
+            string otlpGrpcTracesUrl,
+
+            string otlpHttpLogsUrl,
+
+            string otlpHttpTracesUrl,
+
             string otlpTracesUrl,
 
             ImmutableDictionary<string, string> parameters,
@@ -302,6 +311,9 @@ namespace Pulumi.Stackit
             MetricsRetentionDays5mDownsampling = metricsRetentionDays5mDownsampling;
             MetricsUrl = metricsUrl;
             Name = name;
+            OtlpGrpcTracesUrl = otlpGrpcTracesUrl;
+            OtlpHttpLogsUrl = otlpHttpLogsUrl;
+            OtlpHttpTracesUrl = otlpHttpTracesUrl;
             OtlpTracesUrl = otlpTracesUrl;
             Parameters = parameters;
             PlanId = planId;

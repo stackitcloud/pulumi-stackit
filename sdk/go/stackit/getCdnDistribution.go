@@ -28,7 +28,7 @@ func LookupCdnDistribution(ctx *pulumi.Context, args *LookupCdnDistributionArgs,
 
 // A collection of arguments for invoking getCdnDistribution.
 type LookupCdnDistributionArgs struct {
-	// STACKIT project ID associated with the distribution
+	// CDN distribution ID
 	DistributionId string `pulumi:"distributionId"`
 	// STACKIT project ID associated with the distribution
 	ProjectId string `pulumi:"projectId"`
@@ -40,7 +40,7 @@ type LookupCdnDistributionResult struct {
 	Config GetCdnDistributionConfig `pulumi:"config"`
 	// Time when the distribution was created
 	CreatedAt string `pulumi:"createdAt"`
-	// STACKIT project ID associated with the distribution
+	// CDN distribution ID
 	DistributionId string `pulumi:"distributionId"`
 	// List of configured domains for the distribution
 	Domains []GetCdnDistributionDomain `pulumi:"domains"`
@@ -67,7 +67,7 @@ func LookupCdnDistributionOutput(ctx *pulumi.Context, args LookupCdnDistribution
 
 // A collection of arguments for invoking getCdnDistribution.
 type LookupCdnDistributionOutputArgs struct {
-	// STACKIT project ID associated with the distribution
+	// CDN distribution ID
 	DistributionId pulumi.StringInput `pulumi:"distributionId"`
 	// STACKIT project ID associated with the distribution
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
@@ -102,7 +102,7 @@ func (o LookupCdnDistributionResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCdnDistributionResult) string { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// STACKIT project ID associated with the distribution
+// CDN distribution ID
 func (o LookupCdnDistributionResultOutput) DistributionId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCdnDistributionResult) string { return v.DistributionId }).(pulumi.StringOutput)
 }

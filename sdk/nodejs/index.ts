@@ -475,6 +475,11 @@ export const getServiceAccount: typeof import("./getServiceAccount").getServiceA
 export const getServiceAccountOutput: typeof import("./getServiceAccount").getServiceAccountOutput = null as any;
 utilities.lazyLoad(exports, ["getServiceAccount","getServiceAccountOutput"], () => require("./getServiceAccount"));
 
+export { GetServiceAccountFederatedIdentityProviderArgs, GetServiceAccountFederatedIdentityProviderResult, GetServiceAccountFederatedIdentityProviderOutputArgs } from "./getServiceAccountFederatedIdentityProvider";
+export const getServiceAccountFederatedIdentityProvider: typeof import("./getServiceAccountFederatedIdentityProvider").getServiceAccountFederatedIdentityProvider = null as any;
+export const getServiceAccountFederatedIdentityProviderOutput: typeof import("./getServiceAccountFederatedIdentityProvider").getServiceAccountFederatedIdentityProviderOutput = null as any;
+utilities.lazyLoad(exports, ["getServiceAccountFederatedIdentityProvider","getServiceAccountFederatedIdentityProviderOutput"], () => require("./getServiceAccountFederatedIdentityProvider"));
+
 export { GetServiceAccountsArgs, GetServiceAccountsResult, GetServiceAccountsOutputArgs } from "./getServiceAccounts";
 export const getServiceAccounts: typeof import("./getServiceAccounts").getServiceAccounts = null as any;
 export const getServiceAccountsOutput: typeof import("./getServiceAccounts").getServiceAccountsOutput = null as any;
@@ -853,6 +858,11 @@ export type ServiceAccount = import("./serviceAccount").ServiceAccount;
 export const ServiceAccount: typeof import("./serviceAccount").ServiceAccount = null as any;
 utilities.lazyLoad(exports, ["ServiceAccount"], () => require("./serviceAccount"));
 
+export { ServiceAccountFederatedIdentityProviderArgs, ServiceAccountFederatedIdentityProviderState } from "./serviceAccountFederatedIdentityProvider";
+export type ServiceAccountFederatedIdentityProvider = import("./serviceAccountFederatedIdentityProvider").ServiceAccountFederatedIdentityProvider;
+export const ServiceAccountFederatedIdentityProvider: typeof import("./serviceAccountFederatedIdentityProvider").ServiceAccountFederatedIdentityProvider = null as any;
+utilities.lazyLoad(exports, ["ServiceAccountFederatedIdentityProvider"], () => require("./serviceAccountFederatedIdentityProvider"));
+
 export { ServiceAccountKeyArgs, ServiceAccountKeyState } from "./serviceAccountKey";
 export type ServiceAccountKey = import("./serviceAccountKey").ServiceAccountKey;
 export const ServiceAccountKey: typeof import("./serviceAccountKey").ServiceAccountKey = null as any;
@@ -1077,6 +1087,8 @@ const _module = {
                 return new ServerVolumeAttach(name, <any>undefined, { urn })
             case "stackit:index/serviceAccount:ServiceAccount":
                 return new ServiceAccount(name, <any>undefined, { urn })
+            case "stackit:index/serviceAccountFederatedIdentityProvider:ServiceAccountFederatedIdentityProvider":
+                return new ServiceAccountFederatedIdentityProvider(name, <any>undefined, { urn })
             case "stackit:index/serviceAccountKey:ServiceAccountKey":
                 return new ServiceAccountKey(name, <any>undefined, { urn })
             case "stackit:index/sfsExportPolicy:SfsExportPolicy":
@@ -1182,6 +1194,7 @@ pulumi.runtime.registerResourceModule("stackit", "index/serverUpdateEnable", _mo
 pulumi.runtime.registerResourceModule("stackit", "index/serverUpdateSchedule", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/serverVolumeAttach", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/serviceAccount", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/serviceAccountFederatedIdentityProvider", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/serviceAccountKey", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/sfsExportPolicy", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/sfsProjectLock", _module)

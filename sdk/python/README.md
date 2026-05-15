@@ -53,3 +53,8 @@ A detailed authentication guide, information on how to use beta and experimental
 ## Reference
 
 For detailed reference documentation, please visit [the Pulumi registry](https://www.pulumi.com/registry/packages/stackit/api-docs/).
+
+## Contribute
+
+Your contribution is welcome! For more details on how to contribute, refer to our [Contribution Guide](./CONTRIBUTING.md).
+

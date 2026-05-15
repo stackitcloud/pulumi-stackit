@@ -26,7 +26,7 @@ export function getCdnDistribution(args: GetCdnDistributionArgs, opts?: pulumi.I
  */
 export interface GetCdnDistributionArgs {
     /**
-     * STACKIT project ID associated with the distribution
+     * CDN distribution ID
      */
     distributionId: string;
     /**
@@ -48,7 +48,7 @@ export interface GetCdnDistributionResult {
      */
     readonly createdAt: string;
     /**
-     * STACKIT project ID associated with the distribution
+     * CDN distribution ID
      */
     readonly distributionId: string;
     /**
@@ -96,7 +96,7 @@ export function getCdnDistributionOutput(args: GetCdnDistributionOutputArgs, opt
  */
 export interface GetCdnDistributionOutputArgs {
     /**
-     * STACKIT project ID associated with the distribution
+     * CDN distribution ID
      */
     distributionId: pulumi.Input<string>;
     /**

@@ -76,7 +76,7 @@ class GetCdnDistributionResult:
     @pulumi.getter(name="distributionId")
     def distribution_id(self) -> _builtins.str:
         """
-        STACKIT project ID associated with the distribution
+        CDN distribution ID
         """
         return pulumi.get(self, "distribution_id")
 
@@ -157,7 +157,7 @@ def get_cdn_distribution(distribution_id: Optional[_builtins.str] = None,
     ## Example Usage
 
 
-    :param _builtins.str distribution_id: STACKIT project ID associated with the distribution
+    :param _builtins.str distribution_id: CDN distribution ID
     :param _builtins.str project_id: STACKIT project ID associated with the distribution
     """
     __args__ = dict()
@@ -187,7 +187,7 @@ def get_cdn_distribution_output(distribution_id: Optional[pulumi.Input[_builtins
     ## Example Usage
 
 
-    :param _builtins.str distribution_id: STACKIT project ID associated with the distribution
+    :param _builtins.str distribution_id: CDN distribution ID
     :param _builtins.str project_id: STACKIT project ID associated with the distribution
     """
     __args__ = dict()

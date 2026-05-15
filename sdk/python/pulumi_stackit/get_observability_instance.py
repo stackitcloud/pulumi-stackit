@@ -27,7 +27,7 @@ class GetObservabilityInstanceResult:
     """
     A collection of values returned by getObservabilityInstance.
     """
-    def __init__(__self__, acls=None, alert_config=None, alerting_url=None, dashboard_url=None, grafana_admin_enabled=None, grafana_initial_admin_password=None, grafana_initial_admin_user=None, grafana_public_read_access=None, grafana_url=None, id=None, instance_id=None, is_updatable=None, jaeger_traces_url=None, jaeger_ui_url=None, logs_push_url=None, logs_retention_days=None, logs_url=None, metrics_push_url=None, metrics_retention_days=None, metrics_retention_days1h_downsampling=None, metrics_retention_days5m_downsampling=None, metrics_url=None, name=None, otlp_traces_url=None, parameters=None, plan_id=None, plan_name=None, project_id=None, targets_url=None, traces_retention_days=None, zipkin_spans_url=None):
+    def __init__(__self__, acls=None, alert_config=None, alerting_url=None, dashboard_url=None, grafana_admin_enabled=None, grafana_initial_admin_password=None, grafana_initial_admin_user=None, grafana_public_read_access=None, grafana_url=None, id=None, instance_id=None, is_updatable=None, jaeger_traces_url=None, jaeger_ui_url=None, logs_push_url=None, logs_retention_days=None, logs_url=None, metrics_push_url=None, metrics_retention_days=None, metrics_retention_days1h_downsampling=None, metrics_retention_days5m_downsampling=None, metrics_url=None, name=None, otlp_grpc_traces_url=None, otlp_http_logs_url=None, otlp_http_traces_url=None, otlp_traces_url=None, parameters=None, plan_id=None, plan_name=None, project_id=None, targets_url=None, traces_retention_days=None, zipkin_spans_url=None):
         if acls and not isinstance(acls, list):
             raise TypeError("Expected argument 'acls' to be a list")
         pulumi.set(__self__, "acls", acls)
@@ -97,6 +97,15 @@ class GetObservabilityInstanceResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if otlp_grpc_traces_url and not isinstance(otlp_grpc_traces_url, str):
+            raise TypeError("Expected argument 'otlp_grpc_traces_url' to be a str")
+        pulumi.set(__self__, "otlp_grpc_traces_url", otlp_grpc_traces_url)
+        if otlp_http_logs_url and not isinstance(otlp_http_logs_url, str):
+            raise TypeError("Expected argument 'otlp_http_logs_url' to be a str")
+        pulumi.set(__self__, "otlp_http_logs_url", otlp_http_logs_url)
+        if otlp_http_traces_url and not isinstance(otlp_http_traces_url, str):
+            raise TypeError("Expected argument 'otlp_http_traces_url' to be a str")
+        pulumi.set(__self__, "otlp_http_traces_url", otlp_http_traces_url)
         if otlp_traces_url and not isinstance(otlp_traces_url, str):
             raise TypeError("Expected argument 'otlp_traces_url' to be a str")
         pulumi.set(__self__, "otlp_traces_url", otlp_traces_url)
@@ -303,6 +312,21 @@ class GetObservabilityInstanceResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="otlpGrpcTracesUrl")
+    def otlp_grpc_traces_url(self) -> _builtins.str:
+        return pulumi.get(self, "otlp_grpc_traces_url")
+
+    @_builtins.property
+    @pulumi.getter(name="otlpHttpLogsUrl")
+    def otlp_http_logs_url(self) -> _builtins.str:
+        return pulumi.get(self, "otlp_http_logs_url")
+
+    @_builtins.property
+    @pulumi.getter(name="otlpHttpTracesUrl")
+    def otlp_http_traces_url(self) -> _builtins.str:
+        return pulumi.get(self, "otlp_http_traces_url")
+
+    @_builtins.property
     @pulumi.getter(name="otlpTracesUrl")
     def otlp_traces_url(self) -> _builtins.str:
         return pulumi.get(self, "otlp_traces_url")
@@ -390,6 +414,9 @@ class AwaitableGetObservabilityInstanceResult(GetObservabilityInstanceResult):
             metrics_retention_days5m_downsampling=self.metrics_retention_days5m_downsampling,
             metrics_url=self.metrics_url,
             name=self.name,
+            otlp_grpc_traces_url=self.otlp_grpc_traces_url,
+            otlp_http_logs_url=self.otlp_http_logs_url,
+            otlp_http_traces_url=self.otlp_http_traces_url,
             otlp_traces_url=self.otlp_traces_url,
             parameters=self.parameters,
             plan_id=self.plan_id,
@@ -442,6 +469,9 @@ def get_observability_instance(instance_id: Optional[_builtins.str] = None,
         metrics_retention_days5m_downsampling=pulumi.get(__ret__, 'metrics_retention_days5m_downsampling'),
         metrics_url=pulumi.get(__ret__, 'metrics_url'),
         name=pulumi.get(__ret__, 'name'),
+        otlp_grpc_traces_url=pulumi.get(__ret__, 'otlp_grpc_traces_url'),
+        otlp_http_logs_url=pulumi.get(__ret__, 'otlp_http_logs_url'),
+        otlp_http_traces_url=pulumi.get(__ret__, 'otlp_http_traces_url'),
         otlp_traces_url=pulumi.get(__ret__, 'otlp_traces_url'),
         parameters=pulumi.get(__ret__, 'parameters'),
         plan_id=pulumi.get(__ret__, 'plan_id'),
@@ -491,6 +521,9 @@ def get_observability_instance_output(instance_id: Optional[pulumi.Input[_builti
         metrics_retention_days5m_downsampling=pulumi.get(__response__, 'metrics_retention_days5m_downsampling'),
         metrics_url=pulumi.get(__response__, 'metrics_url'),
         name=pulumi.get(__response__, 'name'),
+        otlp_grpc_traces_url=pulumi.get(__response__, 'otlp_grpc_traces_url'),
+        otlp_http_logs_url=pulumi.get(__response__, 'otlp_http_logs_url'),
+        otlp_http_traces_url=pulumi.get(__response__, 'otlp_http_traces_url'),
         otlp_traces_url=pulumi.get(__response__, 'otlp_traces_url'),
         parameters=pulumi.get(__response__, 'parameters'),
         plan_id=pulumi.get(__response__, 'plan_id'),

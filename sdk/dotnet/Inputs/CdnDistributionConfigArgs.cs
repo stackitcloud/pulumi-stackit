@@ -54,6 +54,12 @@ namespace Pulumi.Stackit.Inputs
             set => _regions = value;
         }
 
+        /// <summary>
+        /// Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.
+        /// </summary>
+        [Input("waf")]
+        public Input<Inputs.CdnDistributionConfigWafArgs>? Waf { get; set; }
+
         public CdnDistributionConfigArgs()
         {
         }

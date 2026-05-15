@@ -67,7 +67,7 @@ namespace Pulumi.Stackit
     public sealed class GetCdnDistributionArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// STACKIT project ID associated with the distribution
+        /// CDN distribution ID
         /// </summary>
         [Input("distributionId", required: true)]
         public string DistributionId { get; set; } = null!;
@@ -87,7 +87,7 @@ namespace Pulumi.Stackit
     public sealed class GetCdnDistributionInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// STACKIT project ID associated with the distribution
+        /// CDN distribution ID
         /// </summary>
         [Input("distributionId", required: true)]
         public Input<string> DistributionId { get; set; } = null!;
@@ -117,7 +117,7 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string CreatedAt;
         /// <summary>
-        /// STACKIT project ID associated with the distribution
+        /// CDN distribution ID
         /// </summary>
         public readonly string DistributionId;
         /// <summary>

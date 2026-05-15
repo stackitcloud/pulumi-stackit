@@ -100,6 +100,7 @@ from .get_server_update_enable import *
 from .get_server_update_schedule import *
 from .get_server_update_schedules import *
 from .get_service_account import *
+from .get_service_account_federated_identity_provider import *
 from .get_service_accounts import *
 from .get_sfs_export_policy import *
 from .get_sfs_project_lock import *
@@ -176,6 +177,7 @@ from .server_update_enable import *
 from .server_update_schedule import *
 from .server_volume_attach import *
 from .service_account import *
+from .service_account_federated_identity_provider import *
 from .service_account_key import *
 from .sfs_export_policy import *
 from .sfs_project_lock import *
@@ -837,6 +839,14 @@ _utilities.register(
   "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/serviceAccount:ServiceAccount": "ServiceAccount"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/serviceAccountFederatedIdentityProvider",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/serviceAccountFederatedIdentityProvider:ServiceAccountFederatedIdentityProvider": "ServiceAccountFederatedIdentityProvider"
   }
  },
  {

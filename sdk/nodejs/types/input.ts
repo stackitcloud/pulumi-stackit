@@ -358,6 +358,10 @@ export interface CdnDistributionConfig {
      * The configured regions where content will be hosted
      */
     regions: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.
+     */
+    waf?: pulumi.Input<inputs.CdnDistributionConfigWaf>;
 }
 
 export interface CdnDistributionConfigBackend {
@@ -449,6 +453,69 @@ export interface CdnDistributionConfigRedirectsRuleMatcher {
      * A list of glob patterns to match against the request path. At least one value is required. Examples: "/shop/*" or "*&#47;img/*"
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface CdnDistributionConfigWaf {
+    /**
+     * Restricts which HTTP methods the distribution accepts. If provided, the set must contain at least one item. Case you removed waf will retain the last known state and if omitted, the API applies the following defaults: `GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `CONNECT`, `OPTIONS`, `TRACE`, `PATCH`.
+     */
+    allowedHttpMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Restricts which HTTP protocol versions are accepted. If provided, the set must contain at least one item. If omitted, the API applies the following defaults: `HTTP/1.0`, `HTTP/1.1`, `HTTP/2`, `HTTP/2.0`.
+     */
+    allowedHttpVersions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Restricts which Content-Type headers are accepted in request bodies. If provided, the set must contain at least one item. Case you removed waf will retain the last known state and if omitted, the API applies the following defaults: `application/x-www-form-urlencoded`, `multipart/form-data`, `multipart/related`, `text/xml`, `application/xml`, `application/soap+xml`, `application/x-amf`, `application/json`, `application/octet-stream`, `application/csp-report`, `application/xss-auditor-report`, `text/plain`.
+     */
+    allowedRequestContentTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Set of WAF Collection IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+     */
+    disabledRuleCollectionIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Set of WAF Rule Group IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+     */
+    disabledRuleGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Set of WAF rule IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. For example, an explicitly disabled Rule ID takes precedence over an enabled Group ID. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+     */
+    disabledRuleIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Set of WAF Collection IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+     */
+    enabledRuleCollectionIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Set of WAF Rule Group IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+     */
+    enabledRuleGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Set of WAF rule IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. For example, an explicitly enabled Rule ID takes precedence over a disabled Group ID. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+     */
+    enabledRuleIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Set of WAF Collection IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+     */
+    logOnlyRuleCollectionIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Set of WAF Rule Group IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+     */
+    logOnlyRuleGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Set of WAF rule IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+     */
+    logOnlyRuleIds?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The operating mode of the WAF. 'ENABLED' actively blocks threats, 'LOG_ONLY' logs matches without blocking, and 'DISABLED' completely turns off inspection. Defaults to 'DISABLED'.
+     */
+    mode?: pulumi.Input<string>;
+    /**
+     * Defines how aggressively the WAF should act on requests. Valid values are 'L1' to 'L4'. Case you removed waf will retain the last known state and if omitted, The API applies the following default 'L1'.
+     */
+    paranoiaLevel?: pulumi.Input<string>;
+    /**
+     * The tier of the WAF. Valid values are 'FREE' or 'PREMIUM'. Defaults to 'FREE'.
+     */
+    type?: pulumi.Input<string>;
 }
 
 export interface CdnDistributionDomain {
@@ -1624,6 +1691,17 @@ export interface SecurityGroupRuleProtocol {
     number?: pulumi.Input<number>;
 }
 
+export interface ServerAgent {
+    /**
+     * Whether a STACKIT Server Agent is provisioned at the server
+     */
+    provisioned?: pulumi.Input<boolean>;
+    /**
+     * Agent provisioning policy: `ALWAYS`, `NEVER`, or `INHERIT`. `INHERIT` follows the image default value.
+     */
+    provisioningPolicy?: pulumi.Input<string>;
+}
+
 export interface ServerBackupScheduleBackupProperties {
     name: pulumi.Input<string>;
     retentionPeriod: pulumi.Input<number>;
@@ -1655,6 +1733,21 @@ export interface ServerBootVolume {
      * The type of the source. Possible values are: `volume`, `image`.
      */
     sourceType: pulumi.Input<string>;
+}
+
+export interface ServiceAccountFederatedIdentityProviderAssertion {
+    /**
+     * The assertion claim. At least one assertion with the claim "aud" is required for security reasons.
+     */
+    item: pulumi.Input<string>;
+    /**
+     * The assertion operator. Currently, the only supported operator is "equals".
+     */
+    operator: pulumi.Input<string>;
+    /**
+     * The assertion value.
+     */
+    value: pulumi.Input<string>;
 }
 
 export interface SfsExportPolicyRule {

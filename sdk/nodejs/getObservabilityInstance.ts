@@ -127,6 +127,9 @@ export interface GetObservabilityInstanceResult {
      * The name of the Observability instance.
      */
     readonly name: string;
+    readonly otlpGrpcTracesUrl: string;
+    readonly otlpHttpLogsUrl: string;
+    readonly otlpHttpTracesUrl: string;
     readonly otlpTracesUrl: string;
     /**
      * Additional parameters.

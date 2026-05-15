@@ -24,6 +24,7 @@ class ServerArgs:
                  machine_type: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
                  affinity_group: Optional[pulumi.Input[_builtins.str]] = None,
+                 agent: Optional[pulumi.Input['ServerAgentArgs']] = None,
                  availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  boot_volume: Optional[pulumi.Input['ServerBootVolumeArgs']] = None,
                  desired_status: Optional[pulumi.Input[_builtins.str]] = None,
@@ -40,6 +41,7 @@ class ServerArgs:
         :param pulumi.Input[_builtins.str] machine_type: Name of the type of the machine for the server. Possible values are documented in [Virtual machine flavors](https://docs.stackit.cloud/products/compute-engine/server/basics/machine-types/)
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the server is associated.
         :param pulumi.Input[_builtins.str] affinity_group: The affinity group the server is assigned to.
+        :param pulumi.Input['ServerAgentArgs'] agent: The STACKIT Server Agent configured for the server
         :param pulumi.Input[_builtins.str] availability_zone: The availability zone of the server.
         :param pulumi.Input['ServerBootVolumeArgs'] boot_volume: The boot volume for the server
         :param pulumi.Input[_builtins.str] desired_status: The desired status of the server resource. Possible values are: `active`, `inactive`, `deallocated`.
@@ -55,6 +57,8 @@ class ServerArgs:
         pulumi.set(__self__, "project_id", project_id)
         if affinity_group is not None:
             pulumi.set(__self__, "affinity_group", affinity_group)
+        if agent is not None:
+            pulumi.set(__self__, "agent", agent)
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
         if boot_volume is not None:
@@ -111,6 +115,18 @@ class ServerArgs:
     @affinity_group.setter
     def affinity_group(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "affinity_group", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def agent(self) -> Optional[pulumi.Input['ServerAgentArgs']]:
+        """
+        The STACKIT Server Agent configured for the server
+        """
+        return pulumi.get(self, "agent")
+
+    @agent.setter
+    def agent(self, value: Optional[pulumi.Input['ServerAgentArgs']]):
+        pulumi.set(self, "agent", value)
 
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
@@ -237,6 +253,7 @@ class ServerArgs:
 class _ServerState:
     def __init__(__self__, *,
                  affinity_group: Optional[pulumi.Input[_builtins.str]] = None,
+                 agent: Optional[pulumi.Input['ServerAgentArgs']] = None,
                  availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  boot_volume: Optional[pulumi.Input['ServerBootVolumeArgs']] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
@@ -257,6 +274,7 @@ class _ServerState:
         Input properties used for looking up and filtering Server resources.
 
         :param pulumi.Input[_builtins.str] affinity_group: The affinity group the server is assigned to.
+        :param pulumi.Input['ServerAgentArgs'] agent: The STACKIT Server Agent configured for the server
         :param pulumi.Input[_builtins.str] availability_zone: The availability zone of the server.
         :param pulumi.Input['ServerBootVolumeArgs'] boot_volume: The boot volume for the server
         :param pulumi.Input[_builtins.str] created_at: Date-time when the server was created
@@ -276,6 +294,8 @@ class _ServerState:
         """
         if affinity_group is not None:
             pulumi.set(__self__, "affinity_group", affinity_group)
+        if agent is not None:
+            pulumi.set(__self__, "agent", agent)
         if availability_zone is not None:
             pulumi.set(__self__, "availability_zone", availability_zone)
         if boot_volume is not None:
@@ -320,6 +340,18 @@ class _ServerState:
     @affinity_group.setter
     def affinity_group(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "affinity_group", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def agent(self) -> Optional[pulumi.Input['ServerAgentArgs']]:
+        """
+        The STACKIT Server Agent configured for the server
+        """
+        return pulumi.get(self, "agent")
+
+    @agent.setter
+    def agent(self, value: Optional[pulumi.Input['ServerAgentArgs']]):
+        pulumi.set(self, "agent", value)
 
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
@@ -521,6 +553,7 @@ class Server(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  affinity_group: Optional[pulumi.Input[_builtins.str]] = None,
+                 agent: Optional[pulumi.Input[Union['ServerAgentArgs', 'ServerAgentArgsDict']]] = None,
                  availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  boot_volume: Optional[pulumi.Input[Union['ServerBootVolumeArgs', 'ServerBootVolumeArgsDict']]] = None,
                  desired_status: Optional[pulumi.Input[_builtins.str]] = None,
@@ -557,6 +590,7 @@ class Server(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] affinity_group: The affinity group the server is assigned to.
+        :param pulumi.Input[Union['ServerAgentArgs', 'ServerAgentArgsDict']] agent: The STACKIT Server Agent configured for the server
         :param pulumi.Input[_builtins.str] availability_zone: The availability zone of the server.
         :param pulumi.Input[Union['ServerBootVolumeArgs', 'ServerBootVolumeArgsDict']] boot_volume: The boot volume for the server
         :param pulumi.Input[_builtins.str] desired_status: The desired status of the server resource. Possible values are: `active`, `inactive`, `deallocated`.
@@ -612,6 +646,7 @@ class Server(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  affinity_group: Optional[pulumi.Input[_builtins.str]] = None,
+                 agent: Optional[pulumi.Input[Union['ServerAgentArgs', 'ServerAgentArgsDict']]] = None,
                  availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
                  boot_volume: Optional[pulumi.Input[Union['ServerBootVolumeArgs', 'ServerBootVolumeArgsDict']]] = None,
                  desired_status: Optional[pulumi.Input[_builtins.str]] = None,
@@ -634,6 +669,7 @@ class Server(pulumi.CustomResource):
             __props__ = ServerArgs.__new__(ServerArgs)
 
             __props__.__dict__["affinity_group"] = affinity_group
+            __props__.__dict__["agent"] = agent
             __props__.__dict__["availability_zone"] = availability_zone
             __props__.__dict__["boot_volume"] = boot_volume
             __props__.__dict__["desired_status"] = desired_status
@@ -665,6 +701,7 @@ class Server(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             affinity_group: Optional[pulumi.Input[_builtins.str]] = None,
+            agent: Optional[pulumi.Input[Union['ServerAgentArgs', 'ServerAgentArgsDict']]] = None,
             availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
             boot_volume: Optional[pulumi.Input[Union['ServerBootVolumeArgs', 'ServerBootVolumeArgsDict']]] = None,
             created_at: Optional[pulumi.Input[_builtins.str]] = None,
@@ -689,6 +726,7 @@ class Server(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] affinity_group: The affinity group the server is assigned to.
+        :param pulumi.Input[Union['ServerAgentArgs', 'ServerAgentArgsDict']] agent: The STACKIT Server Agent configured for the server
         :param pulumi.Input[_builtins.str] availability_zone: The availability zone of the server.
         :param pulumi.Input[Union['ServerBootVolumeArgs', 'ServerBootVolumeArgsDict']] boot_volume: The boot volume for the server
         :param pulumi.Input[_builtins.str] created_at: Date-time when the server was created
@@ -711,6 +749,7 @@ class Server(pulumi.CustomResource):
         __props__ = _ServerState.__new__(_ServerState)
 
         __props__.__dict__["affinity_group"] = affinity_group
+        __props__.__dict__["agent"] = agent
         __props__.__dict__["availability_zone"] = availability_zone
         __props__.__dict__["boot_volume"] = boot_volume
         __props__.__dict__["created_at"] = created_at
@@ -736,6 +775,14 @@ class Server(pulumi.CustomResource):
         The affinity group the server is assigned to.
         """
         return pulumi.get(self, "affinity_group")
+
+    @_builtins.property
+    @pulumi.getter
+    def agent(self) -> pulumi.Output['outputs.ServerAgent']:
+        """
+        The STACKIT Server Agent configured for the server
+        """
+        return pulumi.get(self, "agent")
 
     @_builtins.property
     @pulumi.getter(name="availabilityZone")

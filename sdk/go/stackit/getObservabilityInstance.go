@@ -81,8 +81,11 @@ type LookupObservabilityInstanceResult struct {
 	// Specifies metrics URL.
 	MetricsUrl string `pulumi:"metricsUrl"`
 	// The name of the Observability instance.
-	Name          string `pulumi:"name"`
-	OtlpTracesUrl string `pulumi:"otlpTracesUrl"`
+	Name              string `pulumi:"name"`
+	OtlpGrpcTracesUrl string `pulumi:"otlpGrpcTracesUrl"`
+	OtlpHttpLogsUrl   string `pulumi:"otlpHttpLogsUrl"`
+	OtlpHttpTracesUrl string `pulumi:"otlpHttpTracesUrl"`
+	OtlpTracesUrl     string `pulumi:"otlpTracesUrl"`
 	// Additional parameters.
 	Parameters map[string]string `pulumi:"parameters"`
 	// The Observability plan ID.
@@ -249,6 +252,18 @@ func (o LookupObservabilityInstanceResultOutput) MetricsUrl() pulumi.StringOutpu
 // The name of the Observability instance.
 func (o LookupObservabilityInstanceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupObservabilityInstanceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupObservabilityInstanceResultOutput) OtlpGrpcTracesUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupObservabilityInstanceResult) string { return v.OtlpGrpcTracesUrl }).(pulumi.StringOutput)
+}
+
+func (o LookupObservabilityInstanceResultOutput) OtlpHttpLogsUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupObservabilityInstanceResult) string { return v.OtlpHttpLogsUrl }).(pulumi.StringOutput)
+}
+
+func (o LookupObservabilityInstanceResultOutput) OtlpHttpTracesUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupObservabilityInstanceResult) string { return v.OtlpHttpTracesUrl }).(pulumi.StringOutput)
 }
 
 func (o LookupObservabilityInstanceResultOutput) OtlpTracesUrl() pulumi.StringOutput {

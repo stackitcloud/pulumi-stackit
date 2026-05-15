@@ -242,6 +242,9 @@ class _ObservabilityInstanceState:
                  metrics_retention_days5m_downsampling: Optional[pulumi.Input[_builtins.int]] = None,
                  metrics_url: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 otlp_grpc_traces_url: Optional[pulumi.Input[_builtins.str]] = None,
+                 otlp_http_logs_url: Optional[pulumi.Input[_builtins.str]] = None,
+                 otlp_http_traces_url: Optional[pulumi.Input[_builtins.str]] = None,
                  otlp_traces_url: Optional[pulumi.Input[_builtins.str]] = None,
                  parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  plan_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -330,6 +333,12 @@ class _ObservabilityInstanceState:
             pulumi.set(__self__, "metrics_url", metrics_url)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if otlp_grpc_traces_url is not None:
+            pulumi.set(__self__, "otlp_grpc_traces_url", otlp_grpc_traces_url)
+        if otlp_http_logs_url is not None:
+            pulumi.set(__self__, "otlp_http_logs_url", otlp_http_logs_url)
+        if otlp_http_traces_url is not None:
+            pulumi.set(__self__, "otlp_http_traces_url", otlp_http_traces_url)
         if otlp_traces_url is not None:
             pulumi.set(__self__, "otlp_traces_url", otlp_traces_url)
         if parameters is not None:
@@ -608,6 +617,33 @@ class _ObservabilityInstanceState:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="otlpGrpcTracesUrl")
+    def otlp_grpc_traces_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "otlp_grpc_traces_url")
+
+    @otlp_grpc_traces_url.setter
+    def otlp_grpc_traces_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "otlp_grpc_traces_url", value)
+
+    @_builtins.property
+    @pulumi.getter(name="otlpHttpLogsUrl")
+    def otlp_http_logs_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "otlp_http_logs_url")
+
+    @otlp_http_logs_url.setter
+    def otlp_http_logs_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "otlp_http_logs_url", value)
+
+    @_builtins.property
+    @pulumi.getter(name="otlpHttpTracesUrl")
+    def otlp_http_traces_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "otlp_http_traces_url")
+
+    @otlp_http_traces_url.setter
+    def otlp_http_traces_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "otlp_http_traces_url", value)
+
+    @_builtins.property
     @pulumi.getter(name="otlpTracesUrl")
     def otlp_traces_url(self) -> Optional[pulumi.Input[_builtins.str]]:
         return pulumi.get(self, "otlp_traces_url")
@@ -816,6 +852,9 @@ class ObservabilityInstance(pulumi.CustomResource):
             __props__.__dict__["logs_url"] = None
             __props__.__dict__["metrics_push_url"] = None
             __props__.__dict__["metrics_url"] = None
+            __props__.__dict__["otlp_grpc_traces_url"] = None
+            __props__.__dict__["otlp_http_logs_url"] = None
+            __props__.__dict__["otlp_http_traces_url"] = None
             __props__.__dict__["otlp_traces_url"] = None
             __props__.__dict__["plan_id"] = None
             __props__.__dict__["targets_url"] = None
@@ -854,6 +893,9 @@ class ObservabilityInstance(pulumi.CustomResource):
             metrics_retention_days5m_downsampling: Optional[pulumi.Input[_builtins.int]] = None,
             metrics_url: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            otlp_grpc_traces_url: Optional[pulumi.Input[_builtins.str]] = None,
+            otlp_http_logs_url: Optional[pulumi.Input[_builtins.str]] = None,
+            otlp_http_traces_url: Optional[pulumi.Input[_builtins.str]] = None,
             otlp_traces_url: Optional[pulumi.Input[_builtins.str]] = None,
             parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             plan_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -922,6 +964,9 @@ class ObservabilityInstance(pulumi.CustomResource):
         __props__.__dict__["metrics_retention_days5m_downsampling"] = metrics_retention_days5m_downsampling
         __props__.__dict__["metrics_url"] = metrics_url
         __props__.__dict__["name"] = name
+        __props__.__dict__["otlp_grpc_traces_url"] = otlp_grpc_traces_url
+        __props__.__dict__["otlp_http_logs_url"] = otlp_http_logs_url
+        __props__.__dict__["otlp_http_traces_url"] = otlp_http_traces_url
         __props__.__dict__["otlp_traces_url"] = otlp_traces_url
         __props__.__dict__["parameters"] = parameters
         __props__.__dict__["plan_id"] = plan_id
@@ -1103,6 +1148,21 @@ class ObservabilityInstance(pulumi.CustomResource):
         The name of the Observability instance.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="otlpGrpcTracesUrl")
+    def otlp_grpc_traces_url(self) -> pulumi.Output[_builtins.str]:
+        return pulumi.get(self, "otlp_grpc_traces_url")
+
+    @_builtins.property
+    @pulumi.getter(name="otlpHttpLogsUrl")
+    def otlp_http_logs_url(self) -> pulumi.Output[_builtins.str]:
+        return pulumi.get(self, "otlp_http_logs_url")
+
+    @_builtins.property
+    @pulumi.getter(name="otlpHttpTracesUrl")
+    def otlp_http_traces_url(self) -> pulumi.Output[_builtins.str]:
+        return pulumi.get(self, "otlp_http_traces_url")
 
     @_builtins.property
     @pulumi.getter(name="otlpTracesUrl")

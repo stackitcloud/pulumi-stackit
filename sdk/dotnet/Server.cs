@@ -38,6 +38,12 @@ namespace Pulumi.Stackit
         public Output<string?> AffinityGroup { get; private set; } = null!;
 
         /// <summary>
+        /// The STACKIT Server Agent configured for the server
+        /// </summary>
+        [Output("agent")]
+        public Output<Outputs.ServerAgent> Agent { get; private set; } = null!;
+
+        /// <summary>
         /// The availability zone of the server.
         /// </summary>
         [Output("availabilityZone")]
@@ -187,6 +193,12 @@ namespace Pulumi.Stackit
         public Input<string>? AffinityGroup { get; set; }
 
         /// <summary>
+        /// The STACKIT Server Agent configured for the server
+        /// </summary>
+        [Input("agent")]
+        public Input<Inputs.ServerAgentArgs>? Agent { get; set; }
+
+        /// <summary>
         /// The availability zone of the server.
         /// </summary>
         [Input("availabilityZone")]
@@ -283,6 +295,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("affinityGroup")]
         public Input<string>? AffinityGroup { get; set; }
+
+        /// <summary>
+        /// The STACKIT Server Agent configured for the server
+        /// </summary>
+        [Input("agent")]
+        public Input<Inputs.ServerAgentGetArgs>? Agent { get; set; }
 
         /// <summary>
         /// The availability zone of the server.

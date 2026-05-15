@@ -58,6 +58,10 @@ export class Server extends pulumi.CustomResource {
      */
     declare public readonly affinityGroup: pulumi.Output<string | undefined>;
     /**
+     * The STACKIT Server Agent configured for the server
+     */
+    declare public readonly agent: pulumi.Output<outputs.ServerAgent>;
+    /**
      * The availability zone of the server.
      */
     declare public readonly availabilityZone: pulumi.Output<string>;
@@ -136,6 +140,7 @@ export class Server extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ServerState | undefined;
             resourceInputs["affinityGroup"] = state?.affinityGroup;
+            resourceInputs["agent"] = state?.agent;
             resourceInputs["availabilityZone"] = state?.availabilityZone;
             resourceInputs["bootVolume"] = state?.bootVolume;
             resourceInputs["createdAt"] = state?.createdAt;
@@ -161,6 +166,7 @@ export class Server extends pulumi.CustomResource {
                 throw new Error("Missing required property 'projectId'");
             }
             resourceInputs["affinityGroup"] = args?.affinityGroup;
+            resourceInputs["agent"] = args?.agent;
             resourceInputs["availabilityZone"] = args?.availabilityZone;
             resourceInputs["bootVolume"] = args?.bootVolume;
             resourceInputs["desiredStatus"] = args?.desiredStatus;
@@ -191,6 +197,10 @@ export interface ServerState {
      * The affinity group the server is assigned to.
      */
     affinityGroup?: pulumi.Input<string>;
+    /**
+     * The STACKIT Server Agent configured for the server
+     */
+    agent?: pulumi.Input<inputs.ServerAgent>;
     /**
      * The availability zone of the server.
      */
@@ -265,6 +275,10 @@ export interface ServerArgs {
      * The affinity group the server is assigned to.
      */
     affinityGroup?: pulumi.Input<string>;
+    /**
+     * The STACKIT Server Agent configured for the server
+     */
+    agent?: pulumi.Input<inputs.ServerAgent>;
     /**
      * The availability zone of the server.
      */

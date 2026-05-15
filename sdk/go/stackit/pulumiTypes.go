@@ -3589,6 +3589,8 @@ type CdnDistributionConfig struct {
 	Redirects *CdnDistributionConfigRedirects `pulumi:"redirects"`
 	// The configured regions where content will be hosted
 	Regions []string `pulumi:"regions"`
+	// Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.
+	Waf *CdnDistributionConfigWaf `pulumi:"waf"`
 }
 
 // CdnDistributionConfigInput is an input type that accepts CdnDistributionConfigArgs and CdnDistributionConfigOutput values.
@@ -3613,6 +3615,8 @@ type CdnDistributionConfigArgs struct {
 	Redirects CdnDistributionConfigRedirectsPtrInput `pulumi:"redirects"`
 	// The configured regions where content will be hosted
 	Regions pulumi.StringArrayInput `pulumi:"regions"`
+	// Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.
+	Waf CdnDistributionConfigWafPtrInput `pulumi:"waf"`
 }
 
 func (CdnDistributionConfigArgs) ElementType() reflect.Type {
@@ -3717,6 +3721,11 @@ func (o CdnDistributionConfigOutput) Regions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CdnDistributionConfig) []string { return v.Regions }).(pulumi.StringArrayOutput)
 }
 
+// Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.
+func (o CdnDistributionConfigOutput) Waf() CdnDistributionConfigWafPtrOutput {
+	return o.ApplyT(func(v CdnDistributionConfig) *CdnDistributionConfigWaf { return v.Waf }).(CdnDistributionConfigWafPtrOutput)
+}
+
 type CdnDistributionConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (CdnDistributionConfigPtrOutput) ElementType() reflect.Type {
@@ -3789,6 +3798,16 @@ func (o CdnDistributionConfigPtrOutput) Regions() pulumi.StringArrayOutput {
 		}
 		return v.Regions
 	}).(pulumi.StringArrayOutput)
+}
+
+// Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.
+func (o CdnDistributionConfigPtrOutput) Waf() CdnDistributionConfigWafPtrOutput {
+	return o.ApplyT(func(v *CdnDistributionConfig) *CdnDistributionConfigWaf {
+		if v == nil {
+			return nil
+		}
+		return v.Waf
+	}).(CdnDistributionConfigWafPtrOutput)
 }
 
 type CdnDistributionConfigBackend struct {
@@ -4716,6 +4735,409 @@ func (o CdnDistributionConfigRedirectsRuleMatcherArrayOutput) Index(i pulumi.Int
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CdnDistributionConfigRedirectsRuleMatcher {
 		return vs[0].([]CdnDistributionConfigRedirectsRuleMatcher)[vs[1].(int)]
 	}).(CdnDistributionConfigRedirectsRuleMatcherOutput)
+}
+
+type CdnDistributionConfigWaf struct {
+	// Restricts which HTTP methods the distribution accepts. If provided, the set must contain at least one item. Case you removed waf will retain the last known state and if omitted, the API applies the following defaults: `GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `CONNECT`, `OPTIONS`, `TRACE`, `PATCH`.
+	AllowedHttpMethods []string `pulumi:"allowedHttpMethods"`
+	// Restricts which HTTP protocol versions are accepted. If provided, the set must contain at least one item. If omitted, the API applies the following defaults: `HTTP/1.0`, `HTTP/1.1`, `HTTP/2`, `HTTP/2.0`.
+	AllowedHttpVersions []string `pulumi:"allowedHttpVersions"`
+	// Restricts which Content-Type headers are accepted in request bodies. If provided, the set must contain at least one item. Case you removed waf will retain the last known state and if omitted, the API applies the following defaults: `application/x-www-form-urlencoded`, `multipart/form-data`, `multipart/related`, `text/xml`, `application/xml`, `application/soap+xml`, `application/x-amf`, `application/json`, `application/octet-stream`, `application/csp-report`, `application/xss-auditor-report`, `text/plain`.
+	AllowedRequestContentTypes []string `pulumi:"allowedRequestContentTypes"`
+	// Set of WAF Collection IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	DisabledRuleCollectionIds []string `pulumi:"disabledRuleCollectionIds"`
+	// Set of WAF Rule Group IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	DisabledRuleGroupIds []string `pulumi:"disabledRuleGroupIds"`
+	// Set of WAF rule IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. For example, an explicitly disabled Rule ID takes precedence over an enabled Group ID. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	DisabledRuleIds []string `pulumi:"disabledRuleIds"`
+	// Set of WAF Collection IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	EnabledRuleCollectionIds []string `pulumi:"enabledRuleCollectionIds"`
+	// Set of WAF Rule Group IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	EnabledRuleGroupIds []string `pulumi:"enabledRuleGroupIds"`
+	// Set of WAF rule IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. For example, an explicitly enabled Rule ID takes precedence over a disabled Group ID. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	EnabledRuleIds []string `pulumi:"enabledRuleIds"`
+	// Set of WAF Collection IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	LogOnlyRuleCollectionIds []string `pulumi:"logOnlyRuleCollectionIds"`
+	// Set of WAF Rule Group IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	LogOnlyRuleGroupIds []string `pulumi:"logOnlyRuleGroupIds"`
+	// Set of WAF rule IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	LogOnlyRuleIds []string `pulumi:"logOnlyRuleIds"`
+	// The operating mode of the WAF. 'ENABLED' actively blocks threats, 'LOG_ONLY' logs matches without blocking, and 'DISABLED' completely turns off inspection. Defaults to 'DISABLED'.
+	Mode *string `pulumi:"mode"`
+	// Defines how aggressively the WAF should act on requests. Valid values are 'L1' to 'L4'. Case you removed waf will retain the last known state and if omitted, The API applies the following default 'L1'.
+	ParanoiaLevel *string `pulumi:"paranoiaLevel"`
+	// The tier of the WAF. Valid values are 'FREE' or 'PREMIUM'. Defaults to 'FREE'.
+	Type *string `pulumi:"type"`
+}
+
+// CdnDistributionConfigWafInput is an input type that accepts CdnDistributionConfigWafArgs and CdnDistributionConfigWafOutput values.
+// You can construct a concrete instance of `CdnDistributionConfigWafInput` via:
+//
+//	CdnDistributionConfigWafArgs{...}
+type CdnDistributionConfigWafInput interface {
+	pulumi.Input
+
+	ToCdnDistributionConfigWafOutput() CdnDistributionConfigWafOutput
+	ToCdnDistributionConfigWafOutputWithContext(context.Context) CdnDistributionConfigWafOutput
+}
+
+type CdnDistributionConfigWafArgs struct {
+	// Restricts which HTTP methods the distribution accepts. If provided, the set must contain at least one item. Case you removed waf will retain the last known state and if omitted, the API applies the following defaults: `GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `CONNECT`, `OPTIONS`, `TRACE`, `PATCH`.
+	AllowedHttpMethods pulumi.StringArrayInput `pulumi:"allowedHttpMethods"`
+	// Restricts which HTTP protocol versions are accepted. If provided, the set must contain at least one item. If omitted, the API applies the following defaults: `HTTP/1.0`, `HTTP/1.1`, `HTTP/2`, `HTTP/2.0`.
+	AllowedHttpVersions pulumi.StringArrayInput `pulumi:"allowedHttpVersions"`
+	// Restricts which Content-Type headers are accepted in request bodies. If provided, the set must contain at least one item. Case you removed waf will retain the last known state and if omitted, the API applies the following defaults: `application/x-www-form-urlencoded`, `multipart/form-data`, `multipart/related`, `text/xml`, `application/xml`, `application/soap+xml`, `application/x-amf`, `application/json`, `application/octet-stream`, `application/csp-report`, `application/xss-auditor-report`, `text/plain`.
+	AllowedRequestContentTypes pulumi.StringArrayInput `pulumi:"allowedRequestContentTypes"`
+	// Set of WAF Collection IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	DisabledRuleCollectionIds pulumi.StringArrayInput `pulumi:"disabledRuleCollectionIds"`
+	// Set of WAF Rule Group IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	DisabledRuleGroupIds pulumi.StringArrayInput `pulumi:"disabledRuleGroupIds"`
+	// Set of WAF rule IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. For example, an explicitly disabled Rule ID takes precedence over an enabled Group ID. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	DisabledRuleIds pulumi.StringArrayInput `pulumi:"disabledRuleIds"`
+	// Set of WAF Collection IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	EnabledRuleCollectionIds pulumi.StringArrayInput `pulumi:"enabledRuleCollectionIds"`
+	// Set of WAF Rule Group IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	EnabledRuleGroupIds pulumi.StringArrayInput `pulumi:"enabledRuleGroupIds"`
+	// Set of WAF rule IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. For example, an explicitly enabled Rule ID takes precedence over a disabled Group ID. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	EnabledRuleIds pulumi.StringArrayInput `pulumi:"enabledRuleIds"`
+	// Set of WAF Collection IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	LogOnlyRuleCollectionIds pulumi.StringArrayInput `pulumi:"logOnlyRuleCollectionIds"`
+	// Set of WAF Rule Group IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	LogOnlyRuleGroupIds pulumi.StringArrayInput `pulumi:"logOnlyRuleGroupIds"`
+	// Set of WAF rule IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	LogOnlyRuleIds pulumi.StringArrayInput `pulumi:"logOnlyRuleIds"`
+	// The operating mode of the WAF. 'ENABLED' actively blocks threats, 'LOG_ONLY' logs matches without blocking, and 'DISABLED' completely turns off inspection. Defaults to 'DISABLED'.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// Defines how aggressively the WAF should act on requests. Valid values are 'L1' to 'L4'. Case you removed waf will retain the last known state and if omitted, The API applies the following default 'L1'.
+	ParanoiaLevel pulumi.StringPtrInput `pulumi:"paranoiaLevel"`
+	// The tier of the WAF. Valid values are 'FREE' or 'PREMIUM'. Defaults to 'FREE'.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (CdnDistributionConfigWafArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CdnDistributionConfigWaf)(nil)).Elem()
+}
+
+func (i CdnDistributionConfigWafArgs) ToCdnDistributionConfigWafOutput() CdnDistributionConfigWafOutput {
+	return i.ToCdnDistributionConfigWafOutputWithContext(context.Background())
+}
+
+func (i CdnDistributionConfigWafArgs) ToCdnDistributionConfigWafOutputWithContext(ctx context.Context) CdnDistributionConfigWafOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnDistributionConfigWafOutput)
+}
+
+func (i CdnDistributionConfigWafArgs) ToCdnDistributionConfigWafPtrOutput() CdnDistributionConfigWafPtrOutput {
+	return i.ToCdnDistributionConfigWafPtrOutputWithContext(context.Background())
+}
+
+func (i CdnDistributionConfigWafArgs) ToCdnDistributionConfigWafPtrOutputWithContext(ctx context.Context) CdnDistributionConfigWafPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnDistributionConfigWafOutput).ToCdnDistributionConfigWafPtrOutputWithContext(ctx)
+}
+
+// CdnDistributionConfigWafPtrInput is an input type that accepts CdnDistributionConfigWafArgs, CdnDistributionConfigWafPtr and CdnDistributionConfigWafPtrOutput values.
+// You can construct a concrete instance of `CdnDistributionConfigWafPtrInput` via:
+//
+//	        CdnDistributionConfigWafArgs{...}
+//
+//	or:
+//
+//	        nil
+type CdnDistributionConfigWafPtrInput interface {
+	pulumi.Input
+
+	ToCdnDistributionConfigWafPtrOutput() CdnDistributionConfigWafPtrOutput
+	ToCdnDistributionConfigWafPtrOutputWithContext(context.Context) CdnDistributionConfigWafPtrOutput
+}
+
+type cdnDistributionConfigWafPtrType CdnDistributionConfigWafArgs
+
+func CdnDistributionConfigWafPtr(v *CdnDistributionConfigWafArgs) CdnDistributionConfigWafPtrInput {
+	return (*cdnDistributionConfigWafPtrType)(v)
+}
+
+func (*cdnDistributionConfigWafPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CdnDistributionConfigWaf)(nil)).Elem()
+}
+
+func (i *cdnDistributionConfigWafPtrType) ToCdnDistributionConfigWafPtrOutput() CdnDistributionConfigWafPtrOutput {
+	return i.ToCdnDistributionConfigWafPtrOutputWithContext(context.Background())
+}
+
+func (i *cdnDistributionConfigWafPtrType) ToCdnDistributionConfigWafPtrOutputWithContext(ctx context.Context) CdnDistributionConfigWafPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnDistributionConfigWafPtrOutput)
+}
+
+type CdnDistributionConfigWafOutput struct{ *pulumi.OutputState }
+
+func (CdnDistributionConfigWafOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CdnDistributionConfigWaf)(nil)).Elem()
+}
+
+func (o CdnDistributionConfigWafOutput) ToCdnDistributionConfigWafOutput() CdnDistributionConfigWafOutput {
+	return o
+}
+
+func (o CdnDistributionConfigWafOutput) ToCdnDistributionConfigWafOutputWithContext(ctx context.Context) CdnDistributionConfigWafOutput {
+	return o
+}
+
+func (o CdnDistributionConfigWafOutput) ToCdnDistributionConfigWafPtrOutput() CdnDistributionConfigWafPtrOutput {
+	return o.ToCdnDistributionConfigWafPtrOutputWithContext(context.Background())
+}
+
+func (o CdnDistributionConfigWafOutput) ToCdnDistributionConfigWafPtrOutputWithContext(ctx context.Context) CdnDistributionConfigWafPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CdnDistributionConfigWaf) *CdnDistributionConfigWaf {
+		return &v
+	}).(CdnDistributionConfigWafPtrOutput)
+}
+
+// Restricts which HTTP methods the distribution accepts. If provided, the set must contain at least one item. Case you removed waf will retain the last known state and if omitted, the API applies the following defaults: `GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `CONNECT`, `OPTIONS`, `TRACE`, `PATCH`.
+func (o CdnDistributionConfigWafOutput) AllowedHttpMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CdnDistributionConfigWaf) []string { return v.AllowedHttpMethods }).(pulumi.StringArrayOutput)
+}
+
+// Restricts which HTTP protocol versions are accepted. If provided, the set must contain at least one item. If omitted, the API applies the following defaults: `HTTP/1.0`, `HTTP/1.1`, `HTTP/2`, `HTTP/2.0`.
+func (o CdnDistributionConfigWafOutput) AllowedHttpVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CdnDistributionConfigWaf) []string { return v.AllowedHttpVersions }).(pulumi.StringArrayOutput)
+}
+
+// Restricts which Content-Type headers are accepted in request bodies. If provided, the set must contain at least one item. Case you removed waf will retain the last known state and if omitted, the API applies the following defaults: `application/x-www-form-urlencoded`, `multipart/form-data`, `multipart/related`, `text/xml`, `application/xml`, `application/soap+xml`, `application/x-amf`, `application/json`, `application/octet-stream`, `application/csp-report`, `application/xss-auditor-report`, `text/plain`.
+func (o CdnDistributionConfigWafOutput) AllowedRequestContentTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CdnDistributionConfigWaf) []string { return v.AllowedRequestContentTypes }).(pulumi.StringArrayOutput)
+}
+
+// Set of WAF Collection IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+func (o CdnDistributionConfigWafOutput) DisabledRuleCollectionIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CdnDistributionConfigWaf) []string { return v.DisabledRuleCollectionIds }).(pulumi.StringArrayOutput)
+}
+
+// Set of WAF Rule Group IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+func (o CdnDistributionConfigWafOutput) DisabledRuleGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CdnDistributionConfigWaf) []string { return v.DisabledRuleGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Set of WAF rule IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. For example, an explicitly disabled Rule ID takes precedence over an enabled Group ID. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+func (o CdnDistributionConfigWafOutput) DisabledRuleIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CdnDistributionConfigWaf) []string { return v.DisabledRuleIds }).(pulumi.StringArrayOutput)
+}
+
+// Set of WAF Collection IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+func (o CdnDistributionConfigWafOutput) EnabledRuleCollectionIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CdnDistributionConfigWaf) []string { return v.EnabledRuleCollectionIds }).(pulumi.StringArrayOutput)
+}
+
+// Set of WAF Rule Group IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+func (o CdnDistributionConfigWafOutput) EnabledRuleGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CdnDistributionConfigWaf) []string { return v.EnabledRuleGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Set of WAF rule IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. For example, an explicitly enabled Rule ID takes precedence over a disabled Group ID. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+func (o CdnDistributionConfigWafOutput) EnabledRuleIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CdnDistributionConfigWaf) []string { return v.EnabledRuleIds }).(pulumi.StringArrayOutput)
+}
+
+// Set of WAF Collection IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+func (o CdnDistributionConfigWafOutput) LogOnlyRuleCollectionIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CdnDistributionConfigWaf) []string { return v.LogOnlyRuleCollectionIds }).(pulumi.StringArrayOutput)
+}
+
+// Set of WAF Rule Group IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+func (o CdnDistributionConfigWafOutput) LogOnlyRuleGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CdnDistributionConfigWaf) []string { return v.LogOnlyRuleGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Set of WAF rule IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+func (o CdnDistributionConfigWafOutput) LogOnlyRuleIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CdnDistributionConfigWaf) []string { return v.LogOnlyRuleIds }).(pulumi.StringArrayOutput)
+}
+
+// The operating mode of the WAF. 'ENABLED' actively blocks threats, 'LOG_ONLY' logs matches without blocking, and 'DISABLED' completely turns off inspection. Defaults to 'DISABLED'.
+func (o CdnDistributionConfigWafOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CdnDistributionConfigWaf) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// Defines how aggressively the WAF should act on requests. Valid values are 'L1' to 'L4'. Case you removed waf will retain the last known state and if omitted, The API applies the following default 'L1'.
+func (o CdnDistributionConfigWafOutput) ParanoiaLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CdnDistributionConfigWaf) *string { return v.ParanoiaLevel }).(pulumi.StringPtrOutput)
+}
+
+// The tier of the WAF. Valid values are 'FREE' or 'PREMIUM'. Defaults to 'FREE'.
+func (o CdnDistributionConfigWafOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CdnDistributionConfigWaf) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type CdnDistributionConfigWafPtrOutput struct{ *pulumi.OutputState }
+
+func (CdnDistributionConfigWafPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CdnDistributionConfigWaf)(nil)).Elem()
+}
+
+func (o CdnDistributionConfigWafPtrOutput) ToCdnDistributionConfigWafPtrOutput() CdnDistributionConfigWafPtrOutput {
+	return o
+}
+
+func (o CdnDistributionConfigWafPtrOutput) ToCdnDistributionConfigWafPtrOutputWithContext(ctx context.Context) CdnDistributionConfigWafPtrOutput {
+	return o
+}
+
+func (o CdnDistributionConfigWafPtrOutput) Elem() CdnDistributionConfigWafOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigWaf) CdnDistributionConfigWaf {
+		if v != nil {
+			return *v
+		}
+		var ret CdnDistributionConfigWaf
+		return ret
+	}).(CdnDistributionConfigWafOutput)
+}
+
+// Restricts which HTTP methods the distribution accepts. If provided, the set must contain at least one item. Case you removed waf will retain the last known state and if omitted, the API applies the following defaults: `GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `CONNECT`, `OPTIONS`, `TRACE`, `PATCH`.
+func (o CdnDistributionConfigWafPtrOutput) AllowedHttpMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigWaf) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHttpMethods
+	}).(pulumi.StringArrayOutput)
+}
+
+// Restricts which HTTP protocol versions are accepted. If provided, the set must contain at least one item. If omitted, the API applies the following defaults: `HTTP/1.0`, `HTTP/1.1`, `HTTP/2`, `HTTP/2.0`.
+func (o CdnDistributionConfigWafPtrOutput) AllowedHttpVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigWaf) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedHttpVersions
+	}).(pulumi.StringArrayOutput)
+}
+
+// Restricts which Content-Type headers are accepted in request bodies. If provided, the set must contain at least one item. Case you removed waf will retain the last known state and if omitted, the API applies the following defaults: `application/x-www-form-urlencoded`, `multipart/form-data`, `multipart/related`, `text/xml`, `application/xml`, `application/soap+xml`, `application/x-amf`, `application/json`, `application/octet-stream`, `application/csp-report`, `application/xss-auditor-report`, `text/plain`.
+func (o CdnDistributionConfigWafPtrOutput) AllowedRequestContentTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigWaf) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedRequestContentTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+// Set of WAF Collection IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+func (o CdnDistributionConfigWafPtrOutput) DisabledRuleCollectionIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigWaf) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DisabledRuleCollectionIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Set of WAF Rule Group IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+func (o CdnDistributionConfigWafPtrOutput) DisabledRuleGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigWaf) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DisabledRuleGroupIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Set of WAF rule IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. For example, an explicitly disabled Rule ID takes precedence over an enabled Group ID. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+func (o CdnDistributionConfigWafPtrOutput) DisabledRuleIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigWaf) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DisabledRuleIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Set of WAF Collection IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+func (o CdnDistributionConfigWafPtrOutput) EnabledRuleCollectionIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigWaf) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledRuleCollectionIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Set of WAF Rule Group IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+func (o CdnDistributionConfigWafPtrOutput) EnabledRuleGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigWaf) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledRuleGroupIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Set of WAF rule IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. For example, an explicitly enabled Rule ID takes precedence over a disabled Group ID. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+func (o CdnDistributionConfigWafPtrOutput) EnabledRuleIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigWaf) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EnabledRuleIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Set of WAF Collection IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+func (o CdnDistributionConfigWafPtrOutput) LogOnlyRuleCollectionIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigWaf) []string {
+		if v == nil {
+			return nil
+		}
+		return v.LogOnlyRuleCollectionIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Set of WAF Rule Group IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+func (o CdnDistributionConfigWafPtrOutput) LogOnlyRuleGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigWaf) []string {
+		if v == nil {
+			return nil
+		}
+		return v.LogOnlyRuleGroupIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Set of WAF rule IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+func (o CdnDistributionConfigWafPtrOutput) LogOnlyRuleIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigWaf) []string {
+		if v == nil {
+			return nil
+		}
+		return v.LogOnlyRuleIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// The operating mode of the WAF. 'ENABLED' actively blocks threats, 'LOG_ONLY' logs matches without blocking, and 'DISABLED' completely turns off inspection. Defaults to 'DISABLED'.
+func (o CdnDistributionConfigWafPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigWaf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// Defines how aggressively the WAF should act on requests. Valid values are 'L1' to 'L4'. Case you removed waf will retain the last known state and if omitted, The API applies the following default 'L1'.
+func (o CdnDistributionConfigWafPtrOutput) ParanoiaLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigWaf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ParanoiaLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+// The tier of the WAF. Valid values are 'FREE' or 'PREMIUM'. Defaults to 'FREE'.
+func (o CdnDistributionConfigWafPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigWaf) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
 }
 
 type CdnDistributionDomain struct {
@@ -14372,6 +14794,162 @@ func (o SecurityGroupRuleProtocolPtrOutput) Number() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type ServerAgent struct {
+	// Whether a STACKIT Server Agent is provisioned at the server
+	Provisioned *bool `pulumi:"provisioned"`
+	// Agent provisioning policy: `ALWAYS`, `NEVER`, or `INHERIT`. `INHERIT` follows the image default value.
+	ProvisioningPolicy *string `pulumi:"provisioningPolicy"`
+}
+
+// ServerAgentInput is an input type that accepts ServerAgentArgs and ServerAgentOutput values.
+// You can construct a concrete instance of `ServerAgentInput` via:
+//
+//	ServerAgentArgs{...}
+type ServerAgentInput interface {
+	pulumi.Input
+
+	ToServerAgentOutput() ServerAgentOutput
+	ToServerAgentOutputWithContext(context.Context) ServerAgentOutput
+}
+
+type ServerAgentArgs struct {
+	// Whether a STACKIT Server Agent is provisioned at the server
+	Provisioned pulumi.BoolPtrInput `pulumi:"provisioned"`
+	// Agent provisioning policy: `ALWAYS`, `NEVER`, or `INHERIT`. `INHERIT` follows the image default value.
+	ProvisioningPolicy pulumi.StringPtrInput `pulumi:"provisioningPolicy"`
+}
+
+func (ServerAgentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerAgent)(nil)).Elem()
+}
+
+func (i ServerAgentArgs) ToServerAgentOutput() ServerAgentOutput {
+	return i.ToServerAgentOutputWithContext(context.Background())
+}
+
+func (i ServerAgentArgs) ToServerAgentOutputWithContext(ctx context.Context) ServerAgentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerAgentOutput)
+}
+
+func (i ServerAgentArgs) ToServerAgentPtrOutput() ServerAgentPtrOutput {
+	return i.ToServerAgentPtrOutputWithContext(context.Background())
+}
+
+func (i ServerAgentArgs) ToServerAgentPtrOutputWithContext(ctx context.Context) ServerAgentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerAgentOutput).ToServerAgentPtrOutputWithContext(ctx)
+}
+
+// ServerAgentPtrInput is an input type that accepts ServerAgentArgs, ServerAgentPtr and ServerAgentPtrOutput values.
+// You can construct a concrete instance of `ServerAgentPtrInput` via:
+//
+//	        ServerAgentArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServerAgentPtrInput interface {
+	pulumi.Input
+
+	ToServerAgentPtrOutput() ServerAgentPtrOutput
+	ToServerAgentPtrOutputWithContext(context.Context) ServerAgentPtrOutput
+}
+
+type serverAgentPtrType ServerAgentArgs
+
+func ServerAgentPtr(v *ServerAgentArgs) ServerAgentPtrInput {
+	return (*serverAgentPtrType)(v)
+}
+
+func (*serverAgentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerAgent)(nil)).Elem()
+}
+
+func (i *serverAgentPtrType) ToServerAgentPtrOutput() ServerAgentPtrOutput {
+	return i.ToServerAgentPtrOutputWithContext(context.Background())
+}
+
+func (i *serverAgentPtrType) ToServerAgentPtrOutputWithContext(ctx context.Context) ServerAgentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServerAgentPtrOutput)
+}
+
+type ServerAgentOutput struct{ *pulumi.OutputState }
+
+func (ServerAgentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServerAgent)(nil)).Elem()
+}
+
+func (o ServerAgentOutput) ToServerAgentOutput() ServerAgentOutput {
+	return o
+}
+
+func (o ServerAgentOutput) ToServerAgentOutputWithContext(ctx context.Context) ServerAgentOutput {
+	return o
+}
+
+func (o ServerAgentOutput) ToServerAgentPtrOutput() ServerAgentPtrOutput {
+	return o.ToServerAgentPtrOutputWithContext(context.Background())
+}
+
+func (o ServerAgentOutput) ToServerAgentPtrOutputWithContext(ctx context.Context) ServerAgentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServerAgent) *ServerAgent {
+		return &v
+	}).(ServerAgentPtrOutput)
+}
+
+// Whether a STACKIT Server Agent is provisioned at the server
+func (o ServerAgentOutput) Provisioned() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServerAgent) *bool { return v.Provisioned }).(pulumi.BoolPtrOutput)
+}
+
+// Agent provisioning policy: `ALWAYS`, `NEVER`, or `INHERIT`. `INHERIT` follows the image default value.
+func (o ServerAgentOutput) ProvisioningPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServerAgent) *string { return v.ProvisioningPolicy }).(pulumi.StringPtrOutput)
+}
+
+type ServerAgentPtrOutput struct{ *pulumi.OutputState }
+
+func (ServerAgentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServerAgent)(nil)).Elem()
+}
+
+func (o ServerAgentPtrOutput) ToServerAgentPtrOutput() ServerAgentPtrOutput {
+	return o
+}
+
+func (o ServerAgentPtrOutput) ToServerAgentPtrOutputWithContext(ctx context.Context) ServerAgentPtrOutput {
+	return o
+}
+
+func (o ServerAgentPtrOutput) Elem() ServerAgentOutput {
+	return o.ApplyT(func(v *ServerAgent) ServerAgent {
+		if v != nil {
+			return *v
+		}
+		var ret ServerAgent
+		return ret
+	}).(ServerAgentOutput)
+}
+
+// Whether a STACKIT Server Agent is provisioned at the server
+func (o ServerAgentPtrOutput) Provisioned() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServerAgent) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Provisioned
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Agent provisioning policy: `ALWAYS`, `NEVER`, or `INHERIT`. `INHERIT` follows the image default value.
+func (o ServerAgentPtrOutput) ProvisioningPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServerAgent) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisioningPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
 type ServerBackupScheduleBackupProperties struct {
 	Name            string   `pulumi:"name"`
 	RetentionPeriod int      `pulumi:"retentionPeriod"`
@@ -14765,6 +15343,121 @@ func (o ServerBootVolumePtrOutput) SourceType() pulumi.StringPtrOutput {
 		}
 		return &v.SourceType
 	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceAccountFederatedIdentityProviderAssertion struct {
+	// The assertion claim. At least one assertion with the claim "aud" is required for security reasons.
+	Item string `pulumi:"item"`
+	// The assertion operator. Currently, the only supported operator is "equals".
+	Operator string `pulumi:"operator"`
+	// The assertion value.
+	Value string `pulumi:"value"`
+}
+
+// ServiceAccountFederatedIdentityProviderAssertionInput is an input type that accepts ServiceAccountFederatedIdentityProviderAssertionArgs and ServiceAccountFederatedIdentityProviderAssertionOutput values.
+// You can construct a concrete instance of `ServiceAccountFederatedIdentityProviderAssertionInput` via:
+//
+//	ServiceAccountFederatedIdentityProviderAssertionArgs{...}
+type ServiceAccountFederatedIdentityProviderAssertionInput interface {
+	pulumi.Input
+
+	ToServiceAccountFederatedIdentityProviderAssertionOutput() ServiceAccountFederatedIdentityProviderAssertionOutput
+	ToServiceAccountFederatedIdentityProviderAssertionOutputWithContext(context.Context) ServiceAccountFederatedIdentityProviderAssertionOutput
+}
+
+type ServiceAccountFederatedIdentityProviderAssertionArgs struct {
+	// The assertion claim. At least one assertion with the claim "aud" is required for security reasons.
+	Item pulumi.StringInput `pulumi:"item"`
+	// The assertion operator. Currently, the only supported operator is "equals".
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// The assertion value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (ServiceAccountFederatedIdentityProviderAssertionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceAccountFederatedIdentityProviderAssertion)(nil)).Elem()
+}
+
+func (i ServiceAccountFederatedIdentityProviderAssertionArgs) ToServiceAccountFederatedIdentityProviderAssertionOutput() ServiceAccountFederatedIdentityProviderAssertionOutput {
+	return i.ToServiceAccountFederatedIdentityProviderAssertionOutputWithContext(context.Background())
+}
+
+func (i ServiceAccountFederatedIdentityProviderAssertionArgs) ToServiceAccountFederatedIdentityProviderAssertionOutputWithContext(ctx context.Context) ServiceAccountFederatedIdentityProviderAssertionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceAccountFederatedIdentityProviderAssertionOutput)
+}
+
+// ServiceAccountFederatedIdentityProviderAssertionArrayInput is an input type that accepts ServiceAccountFederatedIdentityProviderAssertionArray and ServiceAccountFederatedIdentityProviderAssertionArrayOutput values.
+// You can construct a concrete instance of `ServiceAccountFederatedIdentityProviderAssertionArrayInput` via:
+//
+//	ServiceAccountFederatedIdentityProviderAssertionArray{ ServiceAccountFederatedIdentityProviderAssertionArgs{...} }
+type ServiceAccountFederatedIdentityProviderAssertionArrayInput interface {
+	pulumi.Input
+
+	ToServiceAccountFederatedIdentityProviderAssertionArrayOutput() ServiceAccountFederatedIdentityProviderAssertionArrayOutput
+	ToServiceAccountFederatedIdentityProviderAssertionArrayOutputWithContext(context.Context) ServiceAccountFederatedIdentityProviderAssertionArrayOutput
+}
+
+type ServiceAccountFederatedIdentityProviderAssertionArray []ServiceAccountFederatedIdentityProviderAssertionInput
+
+func (ServiceAccountFederatedIdentityProviderAssertionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceAccountFederatedIdentityProviderAssertion)(nil)).Elem()
+}
+
+func (i ServiceAccountFederatedIdentityProviderAssertionArray) ToServiceAccountFederatedIdentityProviderAssertionArrayOutput() ServiceAccountFederatedIdentityProviderAssertionArrayOutput {
+	return i.ToServiceAccountFederatedIdentityProviderAssertionArrayOutputWithContext(context.Background())
+}
+
+func (i ServiceAccountFederatedIdentityProviderAssertionArray) ToServiceAccountFederatedIdentityProviderAssertionArrayOutputWithContext(ctx context.Context) ServiceAccountFederatedIdentityProviderAssertionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceAccountFederatedIdentityProviderAssertionArrayOutput)
+}
+
+type ServiceAccountFederatedIdentityProviderAssertionOutput struct{ *pulumi.OutputState }
+
+func (ServiceAccountFederatedIdentityProviderAssertionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceAccountFederatedIdentityProviderAssertion)(nil)).Elem()
+}
+
+func (o ServiceAccountFederatedIdentityProviderAssertionOutput) ToServiceAccountFederatedIdentityProviderAssertionOutput() ServiceAccountFederatedIdentityProviderAssertionOutput {
+	return o
+}
+
+func (o ServiceAccountFederatedIdentityProviderAssertionOutput) ToServiceAccountFederatedIdentityProviderAssertionOutputWithContext(ctx context.Context) ServiceAccountFederatedIdentityProviderAssertionOutput {
+	return o
+}
+
+// The assertion claim. At least one assertion with the claim "aud" is required for security reasons.
+func (o ServiceAccountFederatedIdentityProviderAssertionOutput) Item() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceAccountFederatedIdentityProviderAssertion) string { return v.Item }).(pulumi.StringOutput)
+}
+
+// The assertion operator. Currently, the only supported operator is "equals".
+func (o ServiceAccountFederatedIdentityProviderAssertionOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceAccountFederatedIdentityProviderAssertion) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// The assertion value.
+func (o ServiceAccountFederatedIdentityProviderAssertionOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceAccountFederatedIdentityProviderAssertion) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ServiceAccountFederatedIdentityProviderAssertionArrayOutput struct{ *pulumi.OutputState }
+
+func (ServiceAccountFederatedIdentityProviderAssertionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ServiceAccountFederatedIdentityProviderAssertion)(nil)).Elem()
+}
+
+func (o ServiceAccountFederatedIdentityProviderAssertionArrayOutput) ToServiceAccountFederatedIdentityProviderAssertionArrayOutput() ServiceAccountFederatedIdentityProviderAssertionArrayOutput {
+	return o
+}
+
+func (o ServiceAccountFederatedIdentityProviderAssertionArrayOutput) ToServiceAccountFederatedIdentityProviderAssertionArrayOutputWithContext(ctx context.Context) ServiceAccountFederatedIdentityProviderAssertionArrayOutput {
+	return o
+}
+
+func (o ServiceAccountFederatedIdentityProviderAssertionArrayOutput) Index(i pulumi.IntInput) ServiceAccountFederatedIdentityProviderAssertionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceAccountFederatedIdentityProviderAssertion {
+		return vs[0].([]ServiceAccountFederatedIdentityProviderAssertion)[vs[1].(int)]
+	}).(ServiceAccountFederatedIdentityProviderAssertionOutput)
 }
 
 type SfsExportPolicyRule struct {
@@ -19756,6 +20449,8 @@ type GetCdnDistributionConfig struct {
 	Redirects GetCdnDistributionConfigRedirects `pulumi:"redirects"`
 	// The configured regions where content will be hosted
 	Regions []string `pulumi:"regions"`
+	// Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.
+	Waf GetCdnDistributionConfigWaf `pulumi:"waf"`
 }
 
 // GetCdnDistributionConfigInput is an input type that accepts GetCdnDistributionConfigArgs and GetCdnDistributionConfigOutput values.
@@ -19780,6 +20475,8 @@ type GetCdnDistributionConfigArgs struct {
 	Redirects GetCdnDistributionConfigRedirectsInput `pulumi:"redirects"`
 	// The configured regions where content will be hosted
 	Regions pulumi.StringArrayInput `pulumi:"regions"`
+	// Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.
+	Waf GetCdnDistributionConfigWafInput `pulumi:"waf"`
 }
 
 func (GetCdnDistributionConfigArgs) ElementType() reflect.Type {
@@ -19831,6 +20528,11 @@ func (o GetCdnDistributionConfigOutput) Redirects() GetCdnDistributionConfigRedi
 // The configured regions where content will be hosted
 func (o GetCdnDistributionConfigOutput) Regions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetCdnDistributionConfig) []string { return v.Regions }).(pulumi.StringArrayOutput)
+}
+
+// Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.
+func (o GetCdnDistributionConfigOutput) Waf() GetCdnDistributionConfigWafOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfig) GetCdnDistributionConfigWaf { return v.Waf }).(GetCdnDistributionConfigWafOutput)
 }
 
 type GetCdnDistributionConfigBackend struct {
@@ -20279,6 +20981,184 @@ func (o GetCdnDistributionConfigRedirectsRuleMatcherArrayOutput) Index(i pulumi.
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCdnDistributionConfigRedirectsRuleMatcher {
 		return vs[0].([]GetCdnDistributionConfigRedirectsRuleMatcher)[vs[1].(int)]
 	}).(GetCdnDistributionConfigRedirectsRuleMatcherOutput)
+}
+
+type GetCdnDistributionConfigWaf struct {
+	// Restricts which HTTP methods the distribution accepts. If provided, the set must contain at least one item. Case you removed waf will retain the last known state and if omitted, the API applies the following defaults: `GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `CONNECT`, `OPTIONS`, `TRACE`, `PATCH`.
+	AllowedHttpMethods []string `pulumi:"allowedHttpMethods"`
+	// Restricts which HTTP protocol versions are accepted. If provided, the set must contain at least one item. If omitted, the API applies the following defaults: `HTTP/1.0`, `HTTP/1.1`, `HTTP/2`, `HTTP/2.0`.
+	AllowedHttpVersions []string `pulumi:"allowedHttpVersions"`
+	// Restricts which Content-Type headers are accepted in request bodies. If provided, the set must contain at least one item. Case you removed waf will retain the last known state and if omitted, the API applies the following defaults: `application/x-www-form-urlencoded`, `multipart/form-data`, `multipart/related`, `text/xml`, `application/xml`, `application/soap+xml`, `application/x-amf`, `application/json`, `application/octet-stream`, `application/csp-report`, `application/xss-auditor-report`, `text/plain`.
+	AllowedRequestContentTypes []string `pulumi:"allowedRequestContentTypes"`
+	// Set of WAF Collection IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	DisabledRuleCollectionIds []string `pulumi:"disabledRuleCollectionIds"`
+	// Set of WAF Rule Group IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	DisabledRuleGroupIds []string `pulumi:"disabledRuleGroupIds"`
+	// Set of WAF rule IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. For example, an explicitly disabled Rule ID takes precedence over an enabled Group ID. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	DisabledRuleIds []string `pulumi:"disabledRuleIds"`
+	// Set of WAF Collection IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	EnabledRuleCollectionIds []string `pulumi:"enabledRuleCollectionIds"`
+	// Set of WAF Rule Group IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	EnabledRuleGroupIds []string `pulumi:"enabledRuleGroupIds"`
+	// Set of WAF rule IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. For example, an explicitly enabled Rule ID takes precedence over a disabled Group ID. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	EnabledRuleIds []string `pulumi:"enabledRuleIds"`
+	// Set of WAF Collection IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	LogOnlyRuleCollectionIds []string `pulumi:"logOnlyRuleCollectionIds"`
+	// Set of WAF Rule Group IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	LogOnlyRuleGroupIds []string `pulumi:"logOnlyRuleGroupIds"`
+	// Set of WAF rule IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	LogOnlyRuleIds []string `pulumi:"logOnlyRuleIds"`
+	// The operating mode of the WAF. 'ENABLED' actively blocks threats, 'LOG_ONLY' logs matches without blocking, and 'DISABLED' completely turns off inspection. Defaults to 'DISABLED'.
+	Mode string `pulumi:"mode"`
+	// Defines how aggressively the WAF should act on requests. Valid values are 'L1' to 'L4'. Case you removed waf will retain the last known state and if omitted, The API applies the following default 'L1'.
+	ParanoiaLevel string `pulumi:"paranoiaLevel"`
+	// The tier of the WAF. Valid values are 'FREE' or 'PREMIUM'. Defaults to 'FREE'.
+	Type string `pulumi:"type"`
+}
+
+// GetCdnDistributionConfigWafInput is an input type that accepts GetCdnDistributionConfigWafArgs and GetCdnDistributionConfigWafOutput values.
+// You can construct a concrete instance of `GetCdnDistributionConfigWafInput` via:
+//
+//	GetCdnDistributionConfigWafArgs{...}
+type GetCdnDistributionConfigWafInput interface {
+	pulumi.Input
+
+	ToGetCdnDistributionConfigWafOutput() GetCdnDistributionConfigWafOutput
+	ToGetCdnDistributionConfigWafOutputWithContext(context.Context) GetCdnDistributionConfigWafOutput
+}
+
+type GetCdnDistributionConfigWafArgs struct {
+	// Restricts which HTTP methods the distribution accepts. If provided, the set must contain at least one item. Case you removed waf will retain the last known state and if omitted, the API applies the following defaults: `GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `CONNECT`, `OPTIONS`, `TRACE`, `PATCH`.
+	AllowedHttpMethods pulumi.StringArrayInput `pulumi:"allowedHttpMethods"`
+	// Restricts which HTTP protocol versions are accepted. If provided, the set must contain at least one item. If omitted, the API applies the following defaults: `HTTP/1.0`, `HTTP/1.1`, `HTTP/2`, `HTTP/2.0`.
+	AllowedHttpVersions pulumi.StringArrayInput `pulumi:"allowedHttpVersions"`
+	// Restricts which Content-Type headers are accepted in request bodies. If provided, the set must contain at least one item. Case you removed waf will retain the last known state and if omitted, the API applies the following defaults: `application/x-www-form-urlencoded`, `multipart/form-data`, `multipart/related`, `text/xml`, `application/xml`, `application/soap+xml`, `application/x-amf`, `application/json`, `application/octet-stream`, `application/csp-report`, `application/xss-auditor-report`, `text/plain`.
+	AllowedRequestContentTypes pulumi.StringArrayInput `pulumi:"allowedRequestContentTypes"`
+	// Set of WAF Collection IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	DisabledRuleCollectionIds pulumi.StringArrayInput `pulumi:"disabledRuleCollectionIds"`
+	// Set of WAF Rule Group IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	DisabledRuleGroupIds pulumi.StringArrayInput `pulumi:"disabledRuleGroupIds"`
+	// Set of WAF rule IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. For example, an explicitly disabled Rule ID takes precedence over an enabled Group ID. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	DisabledRuleIds pulumi.StringArrayInput `pulumi:"disabledRuleIds"`
+	// Set of WAF Collection IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	EnabledRuleCollectionIds pulumi.StringArrayInput `pulumi:"enabledRuleCollectionIds"`
+	// Set of WAF Rule Group IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	EnabledRuleGroupIds pulumi.StringArrayInput `pulumi:"enabledRuleGroupIds"`
+	// Set of WAF rule IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. For example, an explicitly enabled Rule ID takes precedence over a disabled Group ID. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	EnabledRuleIds pulumi.StringArrayInput `pulumi:"enabledRuleIds"`
+	// Set of WAF Collection IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	LogOnlyRuleCollectionIds pulumi.StringArrayInput `pulumi:"logOnlyRuleCollectionIds"`
+	// Set of WAF Rule Group IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	LogOnlyRuleGroupIds pulumi.StringArrayInput `pulumi:"logOnlyRuleGroupIds"`
+	// Set of WAF rule IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+	LogOnlyRuleIds pulumi.StringArrayInput `pulumi:"logOnlyRuleIds"`
+	// The operating mode of the WAF. 'ENABLED' actively blocks threats, 'LOG_ONLY' logs matches without blocking, and 'DISABLED' completely turns off inspection. Defaults to 'DISABLED'.
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// Defines how aggressively the WAF should act on requests. Valid values are 'L1' to 'L4'. Case you removed waf will retain the last known state and if omitted, The API applies the following default 'L1'.
+	ParanoiaLevel pulumi.StringInput `pulumi:"paranoiaLevel"`
+	// The tier of the WAF. Valid values are 'FREE' or 'PREMIUM'. Defaults to 'FREE'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetCdnDistributionConfigWafArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCdnDistributionConfigWaf)(nil)).Elem()
+}
+
+func (i GetCdnDistributionConfigWafArgs) ToGetCdnDistributionConfigWafOutput() GetCdnDistributionConfigWafOutput {
+	return i.ToGetCdnDistributionConfigWafOutputWithContext(context.Background())
+}
+
+func (i GetCdnDistributionConfigWafArgs) ToGetCdnDistributionConfigWafOutputWithContext(ctx context.Context) GetCdnDistributionConfigWafOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCdnDistributionConfigWafOutput)
+}
+
+type GetCdnDistributionConfigWafOutput struct{ *pulumi.OutputState }
+
+func (GetCdnDistributionConfigWafOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCdnDistributionConfigWaf)(nil)).Elem()
+}
+
+func (o GetCdnDistributionConfigWafOutput) ToGetCdnDistributionConfigWafOutput() GetCdnDistributionConfigWafOutput {
+	return o
+}
+
+func (o GetCdnDistributionConfigWafOutput) ToGetCdnDistributionConfigWafOutputWithContext(ctx context.Context) GetCdnDistributionConfigWafOutput {
+	return o
+}
+
+// Restricts which HTTP methods the distribution accepts. If provided, the set must contain at least one item. Case you removed waf will retain the last known state and if omitted, the API applies the following defaults: `GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `CONNECT`, `OPTIONS`, `TRACE`, `PATCH`.
+func (o GetCdnDistributionConfigWafOutput) AllowedHttpMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfigWaf) []string { return v.AllowedHttpMethods }).(pulumi.StringArrayOutput)
+}
+
+// Restricts which HTTP protocol versions are accepted. If provided, the set must contain at least one item. If omitted, the API applies the following defaults: `HTTP/1.0`, `HTTP/1.1`, `HTTP/2`, `HTTP/2.0`.
+func (o GetCdnDistributionConfigWafOutput) AllowedHttpVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfigWaf) []string { return v.AllowedHttpVersions }).(pulumi.StringArrayOutput)
+}
+
+// Restricts which Content-Type headers are accepted in request bodies. If provided, the set must contain at least one item. Case you removed waf will retain the last known state and if omitted, the API applies the following defaults: `application/x-www-form-urlencoded`, `multipart/form-data`, `multipart/related`, `text/xml`, `application/xml`, `application/soap+xml`, `application/x-amf`, `application/json`, `application/octet-stream`, `application/csp-report`, `application/xss-auditor-report`, `text/plain`.
+func (o GetCdnDistributionConfigWafOutput) AllowedRequestContentTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfigWaf) []string { return v.AllowedRequestContentTypes }).(pulumi.StringArrayOutput)
+}
+
+// Set of WAF Collection IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+func (o GetCdnDistributionConfigWafOutput) DisabledRuleCollectionIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfigWaf) []string { return v.DisabledRuleCollectionIds }).(pulumi.StringArrayOutput)
+}
+
+// Set of WAF Rule Group IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+func (o GetCdnDistributionConfigWafOutput) DisabledRuleGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfigWaf) []string { return v.DisabledRuleGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Set of WAF rule IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. For example, an explicitly disabled Rule ID takes precedence over an enabled Group ID. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+func (o GetCdnDistributionConfigWafOutput) DisabledRuleIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfigWaf) []string { return v.DisabledRuleIds }).(pulumi.StringArrayOutput)
+}
+
+// Set of WAF Collection IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+func (o GetCdnDistributionConfigWafOutput) EnabledRuleCollectionIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfigWaf) []string { return v.EnabledRuleCollectionIds }).(pulumi.StringArrayOutput)
+}
+
+// Set of WAF Rule Group IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+func (o GetCdnDistributionConfigWafOutput) EnabledRuleGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfigWaf) []string { return v.EnabledRuleGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Set of WAF rule IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. For example, an explicitly enabled Rule ID takes precedence over a disabled Group ID. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+func (o GetCdnDistributionConfigWafOutput) EnabledRuleIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfigWaf) []string { return v.EnabledRuleIds }).(pulumi.StringArrayOutput)
+}
+
+// Set of WAF Collection IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+func (o GetCdnDistributionConfigWafOutput) LogOnlyRuleCollectionIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfigWaf) []string { return v.LogOnlyRuleCollectionIds }).(pulumi.StringArrayOutput)
+}
+
+// Set of WAF Rule Group IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+func (o GetCdnDistributionConfigWafOutput) LogOnlyRuleGroupIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfigWaf) []string { return v.LogOnlyRuleGroupIds }).(pulumi.StringArrayOutput)
+}
+
+// Set of WAF rule IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+func (o GetCdnDistributionConfigWafOutput) LogOnlyRuleIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfigWaf) []string { return v.LogOnlyRuleIds }).(pulumi.StringArrayOutput)
+}
+
+// The operating mode of the WAF. 'ENABLED' actively blocks threats, 'LOG_ONLY' logs matches without blocking, and 'DISABLED' completely turns off inspection. Defaults to 'DISABLED'.
+func (o GetCdnDistributionConfigWafOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfigWaf) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// Defines how aggressively the WAF should act on requests. Valid values are 'L1' to 'L4'. Case you removed waf will retain the last known state and if omitted, The API applies the following default 'L1'.
+func (o GetCdnDistributionConfigWafOutput) ParanoiaLevel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfigWaf) string { return v.ParanoiaLevel }).(pulumi.StringOutput)
+}
+
+// The tier of the WAF. Valid values are 'FREE' or 'PREMIUM'. Defaults to 'FREE'.
+func (o GetCdnDistributionConfigWafOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfigWaf) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type GetCdnDistributionDomain struct {
@@ -27015,6 +27895,58 @@ func (o GetSecurityGroupRuleProtocolOutput) Number() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSecurityGroupRuleProtocol) int { return v.Number }).(pulumi.IntOutput)
 }
 
+type GetServerAgent struct {
+	// Whether a STACKIT Server Agent is provisioned at the server
+	Provisioned bool `pulumi:"provisioned"`
+}
+
+// GetServerAgentInput is an input type that accepts GetServerAgentArgs and GetServerAgentOutput values.
+// You can construct a concrete instance of `GetServerAgentInput` via:
+//
+//	GetServerAgentArgs{...}
+type GetServerAgentInput interface {
+	pulumi.Input
+
+	ToGetServerAgentOutput() GetServerAgentOutput
+	ToGetServerAgentOutputWithContext(context.Context) GetServerAgentOutput
+}
+
+type GetServerAgentArgs struct {
+	// Whether a STACKIT Server Agent is provisioned at the server
+	Provisioned pulumi.BoolInput `pulumi:"provisioned"`
+}
+
+func (GetServerAgentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerAgent)(nil)).Elem()
+}
+
+func (i GetServerAgentArgs) ToGetServerAgentOutput() GetServerAgentOutput {
+	return i.ToGetServerAgentOutputWithContext(context.Background())
+}
+
+func (i GetServerAgentArgs) ToGetServerAgentOutputWithContext(ctx context.Context) GetServerAgentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServerAgentOutput)
+}
+
+type GetServerAgentOutput struct{ *pulumi.OutputState }
+
+func (GetServerAgentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServerAgent)(nil)).Elem()
+}
+
+func (o GetServerAgentOutput) ToGetServerAgentOutput() GetServerAgentOutput {
+	return o
+}
+
+func (o GetServerAgentOutput) ToGetServerAgentOutputWithContext(ctx context.Context) GetServerAgentOutput {
+	return o
+}
+
+// Whether a STACKIT Server Agent is provisioned at the server
+func (o GetServerAgentOutput) Provisioned() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServerAgent) bool { return v.Provisioned }).(pulumi.BoolOutput)
+}
+
 type GetServerBackupScheduleBackupProperties struct {
 	Name            string   `pulumi:"name"`
 	RetentionPeriod int      `pulumi:"retentionPeriod"`
@@ -27458,6 +28390,121 @@ func (o GetServerUpdateSchedulesItemArrayOutput) Index(i pulumi.IntInput) GetSer
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServerUpdateSchedulesItem {
 		return vs[0].([]GetServerUpdateSchedulesItem)[vs[1].(int)]
 	}).(GetServerUpdateSchedulesItemOutput)
+}
+
+type GetServiceAccountFederatedIdentityProviderAssertion struct {
+	// The assertion claim. At least one assertion with the claim "aud" is required for security reasons.
+	Item string `pulumi:"item"`
+	// The assertion operator. Currently, the only supported operator is "equals".
+	Operator string `pulumi:"operator"`
+	// The assertion value.
+	Value string `pulumi:"value"`
+}
+
+// GetServiceAccountFederatedIdentityProviderAssertionInput is an input type that accepts GetServiceAccountFederatedIdentityProviderAssertionArgs and GetServiceAccountFederatedIdentityProviderAssertionOutput values.
+// You can construct a concrete instance of `GetServiceAccountFederatedIdentityProviderAssertionInput` via:
+//
+//	GetServiceAccountFederatedIdentityProviderAssertionArgs{...}
+type GetServiceAccountFederatedIdentityProviderAssertionInput interface {
+	pulumi.Input
+
+	ToGetServiceAccountFederatedIdentityProviderAssertionOutput() GetServiceAccountFederatedIdentityProviderAssertionOutput
+	ToGetServiceAccountFederatedIdentityProviderAssertionOutputWithContext(context.Context) GetServiceAccountFederatedIdentityProviderAssertionOutput
+}
+
+type GetServiceAccountFederatedIdentityProviderAssertionArgs struct {
+	// The assertion claim. At least one assertion with the claim "aud" is required for security reasons.
+	Item pulumi.StringInput `pulumi:"item"`
+	// The assertion operator. Currently, the only supported operator is "equals".
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// The assertion value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetServiceAccountFederatedIdentityProviderAssertionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceAccountFederatedIdentityProviderAssertion)(nil)).Elem()
+}
+
+func (i GetServiceAccountFederatedIdentityProviderAssertionArgs) ToGetServiceAccountFederatedIdentityProviderAssertionOutput() GetServiceAccountFederatedIdentityProviderAssertionOutput {
+	return i.ToGetServiceAccountFederatedIdentityProviderAssertionOutputWithContext(context.Background())
+}
+
+func (i GetServiceAccountFederatedIdentityProviderAssertionArgs) ToGetServiceAccountFederatedIdentityProviderAssertionOutputWithContext(ctx context.Context) GetServiceAccountFederatedIdentityProviderAssertionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceAccountFederatedIdentityProviderAssertionOutput)
+}
+
+// GetServiceAccountFederatedIdentityProviderAssertionArrayInput is an input type that accepts GetServiceAccountFederatedIdentityProviderAssertionArray and GetServiceAccountFederatedIdentityProviderAssertionArrayOutput values.
+// You can construct a concrete instance of `GetServiceAccountFederatedIdentityProviderAssertionArrayInput` via:
+//
+//	GetServiceAccountFederatedIdentityProviderAssertionArray{ GetServiceAccountFederatedIdentityProviderAssertionArgs{...} }
+type GetServiceAccountFederatedIdentityProviderAssertionArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceAccountFederatedIdentityProviderAssertionArrayOutput() GetServiceAccountFederatedIdentityProviderAssertionArrayOutput
+	ToGetServiceAccountFederatedIdentityProviderAssertionArrayOutputWithContext(context.Context) GetServiceAccountFederatedIdentityProviderAssertionArrayOutput
+}
+
+type GetServiceAccountFederatedIdentityProviderAssertionArray []GetServiceAccountFederatedIdentityProviderAssertionInput
+
+func (GetServiceAccountFederatedIdentityProviderAssertionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceAccountFederatedIdentityProviderAssertion)(nil)).Elem()
+}
+
+func (i GetServiceAccountFederatedIdentityProviderAssertionArray) ToGetServiceAccountFederatedIdentityProviderAssertionArrayOutput() GetServiceAccountFederatedIdentityProviderAssertionArrayOutput {
+	return i.ToGetServiceAccountFederatedIdentityProviderAssertionArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceAccountFederatedIdentityProviderAssertionArray) ToGetServiceAccountFederatedIdentityProviderAssertionArrayOutputWithContext(ctx context.Context) GetServiceAccountFederatedIdentityProviderAssertionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceAccountFederatedIdentityProviderAssertionArrayOutput)
+}
+
+type GetServiceAccountFederatedIdentityProviderAssertionOutput struct{ *pulumi.OutputState }
+
+func (GetServiceAccountFederatedIdentityProviderAssertionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceAccountFederatedIdentityProviderAssertion)(nil)).Elem()
+}
+
+func (o GetServiceAccountFederatedIdentityProviderAssertionOutput) ToGetServiceAccountFederatedIdentityProviderAssertionOutput() GetServiceAccountFederatedIdentityProviderAssertionOutput {
+	return o
+}
+
+func (o GetServiceAccountFederatedIdentityProviderAssertionOutput) ToGetServiceAccountFederatedIdentityProviderAssertionOutputWithContext(ctx context.Context) GetServiceAccountFederatedIdentityProviderAssertionOutput {
+	return o
+}
+
+// The assertion claim. At least one assertion with the claim "aud" is required for security reasons.
+func (o GetServiceAccountFederatedIdentityProviderAssertionOutput) Item() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAccountFederatedIdentityProviderAssertion) string { return v.Item }).(pulumi.StringOutput)
+}
+
+// The assertion operator. Currently, the only supported operator is "equals".
+func (o GetServiceAccountFederatedIdentityProviderAssertionOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAccountFederatedIdentityProviderAssertion) string { return v.Operator }).(pulumi.StringOutput)
+}
+
+// The assertion value.
+func (o GetServiceAccountFederatedIdentityProviderAssertionOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceAccountFederatedIdentityProviderAssertion) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetServiceAccountFederatedIdentityProviderAssertionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceAccountFederatedIdentityProviderAssertionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceAccountFederatedIdentityProviderAssertion)(nil)).Elem()
+}
+
+func (o GetServiceAccountFederatedIdentityProviderAssertionArrayOutput) ToGetServiceAccountFederatedIdentityProviderAssertionArrayOutput() GetServiceAccountFederatedIdentityProviderAssertionArrayOutput {
+	return o
+}
+
+func (o GetServiceAccountFederatedIdentityProviderAssertionArrayOutput) ToGetServiceAccountFederatedIdentityProviderAssertionArrayOutputWithContext(ctx context.Context) GetServiceAccountFederatedIdentityProviderAssertionArrayOutput {
+	return o
+}
+
+func (o GetServiceAccountFederatedIdentityProviderAssertionArrayOutput) Index(i pulumi.IntInput) GetServiceAccountFederatedIdentityProviderAssertionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceAccountFederatedIdentityProviderAssertion {
+		return vs[0].([]GetServiceAccountFederatedIdentityProviderAssertion)[vs[1].(int)]
+	}).(GetServiceAccountFederatedIdentityProviderAssertionOutput)
 }
 
 type GetServiceAccountsItem struct {
@@ -29509,6 +30556,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigRedirectsRuleArrayInput)(nil)).Elem(), CdnDistributionConfigRedirectsRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigRedirectsRuleMatcherInput)(nil)).Elem(), CdnDistributionConfigRedirectsRuleMatcherArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigRedirectsRuleMatcherArrayInput)(nil)).Elem(), CdnDistributionConfigRedirectsRuleMatcherArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigWafInput)(nil)).Elem(), CdnDistributionConfigWafArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigWafPtrInput)(nil)).Elem(), CdnDistributionConfigWafArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionDomainInput)(nil)).Elem(), CdnDistributionDomainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionDomainArrayInput)(nil)).Elem(), CdnDistributionDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsRecordSetTimeoutsInput)(nil)).Elem(), DnsRecordSetTimeoutsArgs{})
@@ -29613,10 +30662,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupRulePortRangePtrInput)(nil)).Elem(), SecurityGroupRulePortRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupRuleProtocolInput)(nil)).Elem(), SecurityGroupRuleProtocolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityGroupRuleProtocolPtrInput)(nil)).Elem(), SecurityGroupRuleProtocolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerAgentInput)(nil)).Elem(), ServerAgentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServerAgentPtrInput)(nil)).Elem(), ServerAgentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerBackupScheduleBackupPropertiesInput)(nil)).Elem(), ServerBackupScheduleBackupPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerBackupScheduleBackupPropertiesPtrInput)(nil)).Elem(), ServerBackupScheduleBackupPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerBootVolumeInput)(nil)).Elem(), ServerBootVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerBootVolumePtrInput)(nil)).Elem(), ServerBootVolumeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAccountFederatedIdentityProviderAssertionInput)(nil)).Elem(), ServiceAccountFederatedIdentityProviderAssertionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAccountFederatedIdentityProviderAssertionArrayInput)(nil)).Elem(), ServiceAccountFederatedIdentityProviderAssertionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SfsExportPolicyRuleInput)(nil)).Elem(), SfsExportPolicyRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SfsExportPolicyRuleArrayInput)(nil)).Elem(), SfsExportPolicyRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterExtensionsInput)(nil)).Elem(), SkeClusterExtensionsArgs{})
@@ -29694,6 +30747,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionConfigRedirectsRuleArrayInput)(nil)).Elem(), GetCdnDistributionConfigRedirectsRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionConfigRedirectsRuleMatcherInput)(nil)).Elem(), GetCdnDistributionConfigRedirectsRuleMatcherArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionConfigRedirectsRuleMatcherArrayInput)(nil)).Elem(), GetCdnDistributionConfigRedirectsRuleMatcherArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionConfigWafInput)(nil)).Elem(), GetCdnDistributionConfigWafArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionDomainInput)(nil)).Elem(), GetCdnDistributionDomainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionDomainArrayInput)(nil)).Elem(), GetCdnDistributionDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDnsRecordSetTimeoutsInput)(nil)).Elem(), GetDnsRecordSetTimeoutsArgs{})
@@ -29784,6 +30838,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGroupRuleIcmpParametersInput)(nil)).Elem(), GetSecurityGroupRuleIcmpParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGroupRulePortRangeInput)(nil)).Elem(), GetSecurityGroupRulePortRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityGroupRuleProtocolInput)(nil)).Elem(), GetSecurityGroupRuleProtocolArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServerAgentInput)(nil)).Elem(), GetServerAgentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerBackupScheduleBackupPropertiesInput)(nil)).Elem(), GetServerBackupScheduleBackupPropertiesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerBackupSchedulesItemInput)(nil)).Elem(), GetServerBackupSchedulesItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerBackupSchedulesItemArrayInput)(nil)).Elem(), GetServerBackupSchedulesItemArray{})
@@ -29791,6 +30846,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerBootVolumeInput)(nil)).Elem(), GetServerBootVolumeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerUpdateSchedulesItemInput)(nil)).Elem(), GetServerUpdateSchedulesItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServerUpdateSchedulesItemArrayInput)(nil)).Elem(), GetServerUpdateSchedulesItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAccountFederatedIdentityProviderAssertionInput)(nil)).Elem(), GetServiceAccountFederatedIdentityProviderAssertionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAccountFederatedIdentityProviderAssertionArrayInput)(nil)).Elem(), GetServiceAccountFederatedIdentityProviderAssertionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAccountsItemInput)(nil)).Elem(), GetServiceAccountsItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAccountsItemArrayInput)(nil)).Elem(), GetServiceAccountsItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSfsExportPolicyRuleInput)(nil)).Elem(), GetSfsExportPolicyRuleArgs{})
@@ -29884,6 +30941,8 @@ func init() {
 	pulumi.RegisterOutputType(CdnDistributionConfigRedirectsRuleArrayOutput{})
 	pulumi.RegisterOutputType(CdnDistributionConfigRedirectsRuleMatcherOutput{})
 	pulumi.RegisterOutputType(CdnDistributionConfigRedirectsRuleMatcherArrayOutput{})
+	pulumi.RegisterOutputType(CdnDistributionConfigWafOutput{})
+	pulumi.RegisterOutputType(CdnDistributionConfigWafPtrOutput{})
 	pulumi.RegisterOutputType(CdnDistributionDomainOutput{})
 	pulumi.RegisterOutputType(CdnDistributionDomainArrayOutput{})
 	pulumi.RegisterOutputType(DnsRecordSetTimeoutsOutput{})
@@ -29988,10 +31047,14 @@ func init() {
 	pulumi.RegisterOutputType(SecurityGroupRulePortRangePtrOutput{})
 	pulumi.RegisterOutputType(SecurityGroupRuleProtocolOutput{})
 	pulumi.RegisterOutputType(SecurityGroupRuleProtocolPtrOutput{})
+	pulumi.RegisterOutputType(ServerAgentOutput{})
+	pulumi.RegisterOutputType(ServerAgentPtrOutput{})
 	pulumi.RegisterOutputType(ServerBackupScheduleBackupPropertiesOutput{})
 	pulumi.RegisterOutputType(ServerBackupScheduleBackupPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(ServerBootVolumeOutput{})
 	pulumi.RegisterOutputType(ServerBootVolumePtrOutput{})
+	pulumi.RegisterOutputType(ServiceAccountFederatedIdentityProviderAssertionOutput{})
+	pulumi.RegisterOutputType(ServiceAccountFederatedIdentityProviderAssertionArrayOutput{})
 	pulumi.RegisterOutputType(SfsExportPolicyRuleOutput{})
 	pulumi.RegisterOutputType(SfsExportPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(SkeClusterExtensionsOutput{})
@@ -30069,6 +31132,7 @@ func init() {
 	pulumi.RegisterOutputType(GetCdnDistributionConfigRedirectsRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetCdnDistributionConfigRedirectsRuleMatcherOutput{})
 	pulumi.RegisterOutputType(GetCdnDistributionConfigRedirectsRuleMatcherArrayOutput{})
+	pulumi.RegisterOutputType(GetCdnDistributionConfigWafOutput{})
 	pulumi.RegisterOutputType(GetCdnDistributionDomainOutput{})
 	pulumi.RegisterOutputType(GetCdnDistributionDomainArrayOutput{})
 	pulumi.RegisterOutputType(GetDnsRecordSetTimeoutsOutput{})
@@ -30159,6 +31223,7 @@ func init() {
 	pulumi.RegisterOutputType(GetSecurityGroupRuleIcmpParametersOutput{})
 	pulumi.RegisterOutputType(GetSecurityGroupRulePortRangeOutput{})
 	pulumi.RegisterOutputType(GetSecurityGroupRuleProtocolOutput{})
+	pulumi.RegisterOutputType(GetServerAgentOutput{})
 	pulumi.RegisterOutputType(GetServerBackupScheduleBackupPropertiesOutput{})
 	pulumi.RegisterOutputType(GetServerBackupSchedulesItemOutput{})
 	pulumi.RegisterOutputType(GetServerBackupSchedulesItemArrayOutput{})
@@ -30166,6 +31231,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServerBootVolumeOutput{})
 	pulumi.RegisterOutputType(GetServerUpdateSchedulesItemOutput{})
 	pulumi.RegisterOutputType(GetServerUpdateSchedulesItemArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceAccountFederatedIdentityProviderAssertionOutput{})
+	pulumi.RegisterOutputType(GetServiceAccountFederatedIdentityProviderAssertionArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceAccountsItemOutput{})
 	pulumi.RegisterOutputType(GetServiceAccountsItemArrayOutput{})
 	pulumi.RegisterOutputType(GetSfsExportPolicyRuleOutput{})

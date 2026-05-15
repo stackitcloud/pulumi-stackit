@@ -48,6 +48,7 @@ __all__ = [
     'CdnDistributionConfigRedirects',
     'CdnDistributionConfigRedirectsRule',
     'CdnDistributionConfigRedirectsRuleMatcher',
+    'CdnDistributionConfigWaf',
     'CdnDistributionDomain',
     'DnsRecordSetTimeouts',
     'DnsZoneTimeouts',
@@ -100,8 +101,10 @@ __all__ = [
     'SecurityGroupRuleIcmpParameters',
     'SecurityGroupRulePortRange',
     'SecurityGroupRuleProtocol',
+    'ServerAgent',
     'ServerBackupScheduleBackupProperties',
     'ServerBootVolume',
+    'ServiceAccountFederatedIdentityProviderAssertion',
     'SfsExportPolicyRule',
     'SkeClusterExtensions',
     'SkeClusterExtensionsAcl',
@@ -150,6 +153,7 @@ __all__ = [
     'GetCdnDistributionConfigRedirectsResult',
     'GetCdnDistributionConfigRedirectsRuleResult',
     'GetCdnDistributionConfigRedirectsRuleMatcherResult',
+    'GetCdnDistributionConfigWafResult',
     'GetCdnDistributionDomainResult',
     'GetDnsRecordSetTimeoutsResult',
     'GetDnsZoneTimeoutsResult',
@@ -214,11 +218,13 @@ __all__ = [
     'GetSecurityGroupRuleIcmpParametersResult',
     'GetSecurityGroupRulePortRangeResult',
     'GetSecurityGroupRuleProtocolResult',
+    'GetServerAgentResult',
     'GetServerBackupScheduleBackupPropertiesResult',
     'GetServerBackupSchedulesItemResult',
     'GetServerBackupSchedulesItemBackupPropertiesResult',
     'GetServerBootVolumeResult',
     'GetServerUpdateSchedulesItemResult',
+    'GetServiceAccountFederatedIdentityProviderAssertionResult',
     'GetServiceAccountsItemResult',
     'GetSfsExportPolicyRuleResult',
     'GetSfsResourcePoolSnapshotSnapshotResult',
@@ -1517,13 +1523,15 @@ class CdnDistributionConfig(dict):
                  regions: Sequence[_builtins.str],
                  blocked_countries: Optional[Sequence[_builtins.str]] = None,
                  optimizer: Optional['outputs.CdnDistributionConfigOptimizer'] = None,
-                 redirects: Optional['outputs.CdnDistributionConfigRedirects'] = None):
+                 redirects: Optional['outputs.CdnDistributionConfigRedirects'] = None,
+                 waf: Optional['outputs.CdnDistributionConfigWaf'] = None):
         """
         :param 'CdnDistributionConfigBackendArgs' backend: The configured backend for the distribution
         :param Sequence[_builtins.str] regions: The configured regions where content will be hosted
         :param Sequence[_builtins.str] blocked_countries: The configured countries where distribution of content is blocked
         :param 'CdnDistributionConfigOptimizerArgs' optimizer: Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
         :param 'CdnDistributionConfigRedirectsArgs' redirects: A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+        :param 'CdnDistributionConfigWafArgs' waf: Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.
         """
         pulumi.set(__self__, "backend", backend)
         pulumi.set(__self__, "regions", regions)
@@ -1533,6 +1541,8 @@ class CdnDistributionConfig(dict):
             pulumi.set(__self__, "optimizer", optimizer)
         if redirects is not None:
             pulumi.set(__self__, "redirects", redirects)
+        if waf is not None:
+            pulumi.set(__self__, "waf", waf)
 
     @_builtins.property
     @pulumi.getter
@@ -1573,6 +1583,14 @@ class CdnDistributionConfig(dict):
         A wrapper for a list of redirect rules that allows for redirect settings on a distribution
         """
         return pulumi.get(self, "redirects")
+
+    @_builtins.property
+    @pulumi.getter
+    def waf(self) -> Optional['outputs.CdnDistributionConfigWaf']:
+        """
+        Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.
+        """
+        return pulumi.get(self, "waf")
 
 
 @pulumi.output_type
@@ -1907,6 +1925,234 @@ class CdnDistributionConfigRedirectsRuleMatcher(dict):
         Defines how multiple matchers within this rule are combined (ALL, ANY, NONE). Defaults to ANY.
         """
         return pulumi.get(self, "value_match_condition")
+
+
+@pulumi.output_type
+class CdnDistributionConfigWaf(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedHttpMethods":
+            suggest = "allowed_http_methods"
+        elif key == "allowedHttpVersions":
+            suggest = "allowed_http_versions"
+        elif key == "allowedRequestContentTypes":
+            suggest = "allowed_request_content_types"
+        elif key == "disabledRuleCollectionIds":
+            suggest = "disabled_rule_collection_ids"
+        elif key == "disabledRuleGroupIds":
+            suggest = "disabled_rule_group_ids"
+        elif key == "disabledRuleIds":
+            suggest = "disabled_rule_ids"
+        elif key == "enabledRuleCollectionIds":
+            suggest = "enabled_rule_collection_ids"
+        elif key == "enabledRuleGroupIds":
+            suggest = "enabled_rule_group_ids"
+        elif key == "enabledRuleIds":
+            suggest = "enabled_rule_ids"
+        elif key == "logOnlyRuleCollectionIds":
+            suggest = "log_only_rule_collection_ids"
+        elif key == "logOnlyRuleGroupIds":
+            suggest = "log_only_rule_group_ids"
+        elif key == "logOnlyRuleIds":
+            suggest = "log_only_rule_ids"
+        elif key == "paranoiaLevel":
+            suggest = "paranoia_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CdnDistributionConfigWaf. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CdnDistributionConfigWaf.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CdnDistributionConfigWaf.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_http_methods: Optional[Sequence[_builtins.str]] = None,
+                 allowed_http_versions: Optional[Sequence[_builtins.str]] = None,
+                 allowed_request_content_types: Optional[Sequence[_builtins.str]] = None,
+                 disabled_rule_collection_ids: Optional[Sequence[_builtins.str]] = None,
+                 disabled_rule_group_ids: Optional[Sequence[_builtins.str]] = None,
+                 disabled_rule_ids: Optional[Sequence[_builtins.str]] = None,
+                 enabled_rule_collection_ids: Optional[Sequence[_builtins.str]] = None,
+                 enabled_rule_group_ids: Optional[Sequence[_builtins.str]] = None,
+                 enabled_rule_ids: Optional[Sequence[_builtins.str]] = None,
+                 log_only_rule_collection_ids: Optional[Sequence[_builtins.str]] = None,
+                 log_only_rule_group_ids: Optional[Sequence[_builtins.str]] = None,
+                 log_only_rule_ids: Optional[Sequence[_builtins.str]] = None,
+                 mode: Optional[_builtins.str] = None,
+                 paranoia_level: Optional[_builtins.str] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param Sequence[_builtins.str] allowed_http_methods: Restricts which HTTP methods the distribution accepts. If provided, the set must contain at least one item. Case you removed waf will retain the last known state and if omitted, the API applies the following defaults: `GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `CONNECT`, `OPTIONS`, `TRACE`, `PATCH`.
+        :param Sequence[_builtins.str] allowed_http_versions: Restricts which HTTP protocol versions are accepted. If provided, the set must contain at least one item. If omitted, the API applies the following defaults: `HTTP/1.0`, `HTTP/1.1`, `HTTP/2`, `HTTP/2.0`.
+        :param Sequence[_builtins.str] allowed_request_content_types: Restricts which Content-Type headers are accepted in request bodies. If provided, the set must contain at least one item. Case you removed waf will retain the last known state and if omitted, the API applies the following defaults: `application/x-www-form-urlencoded`, `multipart/form-data`, `multipart/related`, `text/xml`, `application/xml`, `application/soap+xml`, `application/x-amf`, `application/json`, `application/octet-stream`, `application/csp-report`, `application/xss-auditor-report`, `text/plain`.
+        :param Sequence[_builtins.str] disabled_rule_collection_ids: Set of WAF Collection IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        :param Sequence[_builtins.str] disabled_rule_group_ids: Set of WAF Rule Group IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        :param Sequence[_builtins.str] disabled_rule_ids: Set of WAF rule IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. For example, an explicitly disabled Rule ID takes precedence over an enabled Group ID. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        :param Sequence[_builtins.str] enabled_rule_collection_ids: Set of WAF Collection IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        :param Sequence[_builtins.str] enabled_rule_group_ids: Set of WAF Rule Group IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        :param Sequence[_builtins.str] enabled_rule_ids: Set of WAF rule IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. For example, an explicitly enabled Rule ID takes precedence over a disabled Group ID. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        :param Sequence[_builtins.str] log_only_rule_collection_ids: Set of WAF Collection IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        :param Sequence[_builtins.str] log_only_rule_group_ids: Set of WAF Rule Group IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        :param Sequence[_builtins.str] log_only_rule_ids: Set of WAF rule IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        :param _builtins.str mode: The operating mode of the WAF. 'ENABLED' actively blocks threats, 'LOG_ONLY' logs matches without blocking, and 'DISABLED' completely turns off inspection. Defaults to 'DISABLED'.
+        :param _builtins.str paranoia_level: Defines how aggressively the WAF should act on requests. Valid values are 'L1' to 'L4'. Case you removed waf will retain the last known state and if omitted, The API applies the following default 'L1'.
+        :param _builtins.str type: The tier of the WAF. Valid values are 'FREE' or 'PREMIUM'. Defaults to 'FREE'.
+        """
+        if allowed_http_methods is not None:
+            pulumi.set(__self__, "allowed_http_methods", allowed_http_methods)
+        if allowed_http_versions is not None:
+            pulumi.set(__self__, "allowed_http_versions", allowed_http_versions)
+        if allowed_request_content_types is not None:
+            pulumi.set(__self__, "allowed_request_content_types", allowed_request_content_types)
+        if disabled_rule_collection_ids is not None:
+            pulumi.set(__self__, "disabled_rule_collection_ids", disabled_rule_collection_ids)
+        if disabled_rule_group_ids is not None:
+            pulumi.set(__self__, "disabled_rule_group_ids", disabled_rule_group_ids)
+        if disabled_rule_ids is not None:
+            pulumi.set(__self__, "disabled_rule_ids", disabled_rule_ids)
+        if enabled_rule_collection_ids is not None:
+            pulumi.set(__self__, "enabled_rule_collection_ids", enabled_rule_collection_ids)
+        if enabled_rule_group_ids is not None:
+            pulumi.set(__self__, "enabled_rule_group_ids", enabled_rule_group_ids)
+        if enabled_rule_ids is not None:
+            pulumi.set(__self__, "enabled_rule_ids", enabled_rule_ids)
+        if log_only_rule_collection_ids is not None:
+            pulumi.set(__self__, "log_only_rule_collection_ids", log_only_rule_collection_ids)
+        if log_only_rule_group_ids is not None:
+            pulumi.set(__self__, "log_only_rule_group_ids", log_only_rule_group_ids)
+        if log_only_rule_ids is not None:
+            pulumi.set(__self__, "log_only_rule_ids", log_only_rule_ids)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if paranoia_level is not None:
+            pulumi.set(__self__, "paranoia_level", paranoia_level)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedHttpMethods")
+    def allowed_http_methods(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Restricts which HTTP methods the distribution accepts. If provided, the set must contain at least one item. Case you removed waf will retain the last known state and if omitted, the API applies the following defaults: `GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `CONNECT`, `OPTIONS`, `TRACE`, `PATCH`.
+        """
+        return pulumi.get(self, "allowed_http_methods")
+
+    @_builtins.property
+    @pulumi.getter(name="allowedHttpVersions")
+    def allowed_http_versions(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Restricts which HTTP protocol versions are accepted. If provided, the set must contain at least one item. If omitted, the API applies the following defaults: `HTTP/1.0`, `HTTP/1.1`, `HTTP/2`, `HTTP/2.0`.
+        """
+        return pulumi.get(self, "allowed_http_versions")
+
+    @_builtins.property
+    @pulumi.getter(name="allowedRequestContentTypes")
+    def allowed_request_content_types(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Restricts which Content-Type headers are accepted in request bodies. If provided, the set must contain at least one item. Case you removed waf will retain the last known state and if omitted, the API applies the following defaults: `application/x-www-form-urlencoded`, `multipart/form-data`, `multipart/related`, `text/xml`, `application/xml`, `application/soap+xml`, `application/x-amf`, `application/json`, `application/octet-stream`, `application/csp-report`, `application/xss-auditor-report`, `text/plain`.
+        """
+        return pulumi.get(self, "allowed_request_content_types")
+
+    @_builtins.property
+    @pulumi.getter(name="disabledRuleCollectionIds")
+    def disabled_rule_collection_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Set of WAF Collection IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        """
+        return pulumi.get(self, "disabled_rule_collection_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="disabledRuleGroupIds")
+    def disabled_rule_group_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Set of WAF Rule Group IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        """
+        return pulumi.get(self, "disabled_rule_group_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="disabledRuleIds")
+    def disabled_rule_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Set of WAF rule IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. For example, an explicitly disabled Rule ID takes precedence over an enabled Group ID. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        """
+        return pulumi.get(self, "disabled_rule_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="enabledRuleCollectionIds")
+    def enabled_rule_collection_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Set of WAF Collection IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        """
+        return pulumi.get(self, "enabled_rule_collection_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="enabledRuleGroupIds")
+    def enabled_rule_group_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Set of WAF Rule Group IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        """
+        return pulumi.get(self, "enabled_rule_group_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="enabledRuleIds")
+    def enabled_rule_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Set of WAF rule IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. For example, an explicitly enabled Rule ID takes precedence over a disabled Group ID. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        """
+        return pulumi.get(self, "enabled_rule_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="logOnlyRuleCollectionIds")
+    def log_only_rule_collection_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Set of WAF Collection IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        """
+        return pulumi.get(self, "log_only_rule_collection_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="logOnlyRuleGroupIds")
+    def log_only_rule_group_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Set of WAF Rule Group IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        """
+        return pulumi.get(self, "log_only_rule_group_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="logOnlyRuleIds")
+    def log_only_rule_ids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Set of WAF rule IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        """
+        return pulumi.get(self, "log_only_rule_ids")
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> Optional[_builtins.str]:
+        """
+        The operating mode of the WAF. 'ENABLED' actively blocks threats, 'LOG_ONLY' logs matches without blocking, and 'DISABLED' completely turns off inspection. Defaults to 'DISABLED'.
+        """
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
+    @pulumi.getter(name="paranoiaLevel")
+    def paranoia_level(self) -> Optional[_builtins.str]:
+        """
+        Defines how aggressively the WAF should act on requests. Valid values are 'L1' to 'L4'. Case you removed waf will retain the last known state and if omitted, The API applies the following default 'L1'.
+        """
+        return pulumi.get(self, "paranoia_level")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        The tier of the WAF. Valid values are 'FREE' or 'PREMIUM'. Defaults to 'FREE'.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -5935,6 +6181,54 @@ class SecurityGroupRuleProtocol(dict):
 
 
 @pulumi.output_type
+class ServerAgent(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "provisioningPolicy":
+            suggest = "provisioning_policy"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServerAgent. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServerAgent.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServerAgent.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 provisioned: Optional[_builtins.bool] = None,
+                 provisioning_policy: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool provisioned: Whether a STACKIT Server Agent is provisioned at the server
+        :param _builtins.str provisioning_policy: Agent provisioning policy: `ALWAYS`, `NEVER`, or `INHERIT`. `INHERIT` follows the image default value.
+        """
+        if provisioned is not None:
+            pulumi.set(__self__, "provisioned", provisioned)
+        if provisioning_policy is not None:
+            pulumi.set(__self__, "provisioning_policy", provisioning_policy)
+
+    @_builtins.property
+    @pulumi.getter
+    def provisioned(self) -> Optional[_builtins.bool]:
+        """
+        Whether a STACKIT Server Agent is provisioned at the server
+        """
+        return pulumi.get(self, "provisioned")
+
+    @_builtins.property
+    @pulumi.getter(name="provisioningPolicy")
+    def provisioning_policy(self) -> Optional[_builtins.str]:
+        """
+        Agent provisioning policy: `ALWAYS`, `NEVER`, or `INHERIT`. `INHERIT` follows the image default value.
+        """
+        return pulumi.get(self, "provisioning_policy")
+
+
+@pulumi.output_type
 class ServerBackupScheduleBackupProperties(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -6078,6 +6372,46 @@ class ServerBootVolume(dict):
         The size of the boot volume in GB. Must be provided when `source_type` is `image`.
         """
         return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class ServiceAccountFederatedIdentityProviderAssertion(dict):
+    def __init__(__self__, *,
+                 item: _builtins.str,
+                 operator: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str item: The assertion claim. At least one assertion with the claim "aud" is required for security reasons.
+        :param _builtins.str operator: The assertion operator. Currently, the only supported operator is "equals".
+        :param _builtins.str value: The assertion value.
+        """
+        pulumi.set(__self__, "item", item)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def item(self) -> _builtins.str:
+        """
+        The assertion claim. At least one assertion with the claim "aud" is required for security reasons.
+        """
+        return pulumi.get(self, "item")
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        The assertion operator. Currently, the only supported operator is "equals".
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The assertion value.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -8019,18 +8353,21 @@ class GetCdnDistributionConfigResult(dict):
                  optimizer: 'outputs.GetCdnDistributionConfigOptimizerResult',
                  redirects: 'outputs.GetCdnDistributionConfigRedirectsResult',
                  regions: Sequence[_builtins.str],
+                 waf: 'outputs.GetCdnDistributionConfigWafResult',
                  blocked_countries: Optional[Sequence[_builtins.str]] = None):
         """
         :param 'GetCdnDistributionConfigBackendArgs' backend: The configured backend for the distribution
         :param 'GetCdnDistributionConfigOptimizerArgs' optimizer: Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
         :param 'GetCdnDistributionConfigRedirectsArgs' redirects: A wrapper for a list of redirect rules that allows for redirect settings on a distribution
         :param Sequence[_builtins.str] regions: The configured regions where content will be hosted
+        :param 'GetCdnDistributionConfigWafArgs' waf: Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.
         :param Sequence[_builtins.str] blocked_countries: The configured countries where distribution of content is blocked
         """
         pulumi.set(__self__, "backend", backend)
         pulumi.set(__self__, "optimizer", optimizer)
         pulumi.set(__self__, "redirects", redirects)
         pulumi.set(__self__, "regions", regions)
+        pulumi.set(__self__, "waf", waf)
         if blocked_countries is not None:
             pulumi.set(__self__, "blocked_countries", blocked_countries)
 
@@ -8065,6 +8402,14 @@ class GetCdnDistributionConfigResult(dict):
         The configured regions where content will be hosted
         """
         return pulumi.get(self, "regions")
+
+    @_builtins.property
+    @pulumi.getter
+    def waf(self) -> 'outputs.GetCdnDistributionConfigWafResult':
+        """
+        Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.
+        """
+        return pulumi.get(self, "waf")
 
     @_builtins.property
     @pulumi.getter(name="blockedCountries")
@@ -8278,6 +8623,178 @@ class GetCdnDistributionConfigRedirectsRuleMatcherResult(dict):
         A list of glob patterns to match against the request path. At least one value is required. Examples: "/shop/*" or "*/img/*"
         """
         return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetCdnDistributionConfigWafResult(dict):
+    def __init__(__self__, *,
+                 allowed_http_methods: Sequence[_builtins.str],
+                 allowed_http_versions: Sequence[_builtins.str],
+                 allowed_request_content_types: Sequence[_builtins.str],
+                 disabled_rule_collection_ids: Sequence[_builtins.str],
+                 disabled_rule_group_ids: Sequence[_builtins.str],
+                 disabled_rule_ids: Sequence[_builtins.str],
+                 enabled_rule_collection_ids: Sequence[_builtins.str],
+                 enabled_rule_group_ids: Sequence[_builtins.str],
+                 enabled_rule_ids: Sequence[_builtins.str],
+                 log_only_rule_collection_ids: Sequence[_builtins.str],
+                 log_only_rule_group_ids: Sequence[_builtins.str],
+                 log_only_rule_ids: Sequence[_builtins.str],
+                 mode: _builtins.str,
+                 paranoia_level: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param Sequence[_builtins.str] allowed_http_methods: Restricts which HTTP methods the distribution accepts. If provided, the set must contain at least one item. Case you removed waf will retain the last known state and if omitted, the API applies the following defaults: `GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `CONNECT`, `OPTIONS`, `TRACE`, `PATCH`.
+        :param Sequence[_builtins.str] allowed_http_versions: Restricts which HTTP protocol versions are accepted. If provided, the set must contain at least one item. If omitted, the API applies the following defaults: `HTTP/1.0`, `HTTP/1.1`, `HTTP/2`, `HTTP/2.0`.
+        :param Sequence[_builtins.str] allowed_request_content_types: Restricts which Content-Type headers are accepted in request bodies. If provided, the set must contain at least one item. Case you removed waf will retain the last known state and if omitted, the API applies the following defaults: `application/x-www-form-urlencoded`, `multipart/form-data`, `multipart/related`, `text/xml`, `application/xml`, `application/soap+xml`, `application/x-amf`, `application/json`, `application/octet-stream`, `application/csp-report`, `application/xss-auditor-report`, `text/plain`.
+        :param Sequence[_builtins.str] disabled_rule_collection_ids: Set of WAF Collection IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        :param Sequence[_builtins.str] disabled_rule_group_ids: Set of WAF Rule Group IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        :param Sequence[_builtins.str] disabled_rule_ids: Set of WAF rule IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. For example, an explicitly disabled Rule ID takes precedence over an enabled Group ID. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        :param Sequence[_builtins.str] enabled_rule_collection_ids: Set of WAF Collection IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        :param Sequence[_builtins.str] enabled_rule_group_ids: Set of WAF Rule Group IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        :param Sequence[_builtins.str] enabled_rule_ids: Set of WAF rule IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. For example, an explicitly enabled Rule ID takes precedence over a disabled Group ID. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        :param Sequence[_builtins.str] log_only_rule_collection_ids: Set of WAF Collection IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        :param Sequence[_builtins.str] log_only_rule_group_ids: Set of WAF Rule Group IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        :param Sequence[_builtins.str] log_only_rule_ids: Set of WAF rule IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        :param _builtins.str mode: The operating mode of the WAF. 'ENABLED' actively blocks threats, 'LOG_ONLY' logs matches without blocking, and 'DISABLED' completely turns off inspection. Defaults to 'DISABLED'.
+        :param _builtins.str paranoia_level: Defines how aggressively the WAF should act on requests. Valid values are 'L1' to 'L4'. Case you removed waf will retain the last known state and if omitted, The API applies the following default 'L1'.
+        :param _builtins.str type: The tier of the WAF. Valid values are 'FREE' or 'PREMIUM'. Defaults to 'FREE'.
+        """
+        pulumi.set(__self__, "allowed_http_methods", allowed_http_methods)
+        pulumi.set(__self__, "allowed_http_versions", allowed_http_versions)
+        pulumi.set(__self__, "allowed_request_content_types", allowed_request_content_types)
+        pulumi.set(__self__, "disabled_rule_collection_ids", disabled_rule_collection_ids)
+        pulumi.set(__self__, "disabled_rule_group_ids", disabled_rule_group_ids)
+        pulumi.set(__self__, "disabled_rule_ids", disabled_rule_ids)
+        pulumi.set(__self__, "enabled_rule_collection_ids", enabled_rule_collection_ids)
+        pulumi.set(__self__, "enabled_rule_group_ids", enabled_rule_group_ids)
+        pulumi.set(__self__, "enabled_rule_ids", enabled_rule_ids)
+        pulumi.set(__self__, "log_only_rule_collection_ids", log_only_rule_collection_ids)
+        pulumi.set(__self__, "log_only_rule_group_ids", log_only_rule_group_ids)
+        pulumi.set(__self__, "log_only_rule_ids", log_only_rule_ids)
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "paranoia_level", paranoia_level)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedHttpMethods")
+    def allowed_http_methods(self) -> Sequence[_builtins.str]:
+        """
+        Restricts which HTTP methods the distribution accepts. If provided, the set must contain at least one item. Case you removed waf will retain the last known state and if omitted, the API applies the following defaults: `GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `CONNECT`, `OPTIONS`, `TRACE`, `PATCH`.
+        """
+        return pulumi.get(self, "allowed_http_methods")
+
+    @_builtins.property
+    @pulumi.getter(name="allowedHttpVersions")
+    def allowed_http_versions(self) -> Sequence[_builtins.str]:
+        """
+        Restricts which HTTP protocol versions are accepted. If provided, the set must contain at least one item. If omitted, the API applies the following defaults: `HTTP/1.0`, `HTTP/1.1`, `HTTP/2`, `HTTP/2.0`.
+        """
+        return pulumi.get(self, "allowed_http_versions")
+
+    @_builtins.property
+    @pulumi.getter(name="allowedRequestContentTypes")
+    def allowed_request_content_types(self) -> Sequence[_builtins.str]:
+        """
+        Restricts which Content-Type headers are accepted in request bodies. If provided, the set must contain at least one item. Case you removed waf will retain the last known state and if omitted, the API applies the following defaults: `application/x-www-form-urlencoded`, `multipart/form-data`, `multipart/related`, `text/xml`, `application/xml`, `application/soap+xml`, `application/x-amf`, `application/json`, `application/octet-stream`, `application/csp-report`, `application/xss-auditor-report`, `text/plain`.
+        """
+        return pulumi.get(self, "allowed_request_content_types")
+
+    @_builtins.property
+    @pulumi.getter(name="disabledRuleCollectionIds")
+    def disabled_rule_collection_ids(self) -> Sequence[_builtins.str]:
+        """
+        Set of WAF Collection IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        """
+        return pulumi.get(self, "disabled_rule_collection_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="disabledRuleGroupIds")
+    def disabled_rule_group_ids(self) -> Sequence[_builtins.str]:
+        """
+        Set of WAF Rule Group IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        """
+        return pulumi.get(self, "disabled_rule_group_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="disabledRuleIds")
+    def disabled_rule_ids(self) -> Sequence[_builtins.str]:
+        """
+        Set of WAF rule IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. For example, an explicitly disabled Rule ID takes precedence over an enabled Group ID. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        """
+        return pulumi.get(self, "disabled_rule_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="enabledRuleCollectionIds")
+    def enabled_rule_collection_ids(self) -> Sequence[_builtins.str]:
+        """
+        Set of WAF Collection IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        """
+        return pulumi.get(self, "enabled_rule_collection_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="enabledRuleGroupIds")
+    def enabled_rule_group_ids(self) -> Sequence[_builtins.str]:
+        """
+        Set of WAF Rule Group IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        """
+        return pulumi.get(self, "enabled_rule_group_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="enabledRuleIds")
+    def enabled_rule_ids(self) -> Sequence[_builtins.str]:
+        """
+        Set of WAF rule IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. For example, an explicitly enabled Rule ID takes precedence over a disabled Group ID. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        """
+        return pulumi.get(self, "enabled_rule_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="logOnlyRuleCollectionIds")
+    def log_only_rule_collection_ids(self) -> Sequence[_builtins.str]:
+        """
+        Set of WAF Collection IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        """
+        return pulumi.get(self, "log_only_rule_collection_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="logOnlyRuleGroupIds")
+    def log_only_rule_group_ids(self) -> Sequence[_builtins.str]:
+        """
+        Set of WAF Rule Group IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        """
+        return pulumi.get(self, "log_only_rule_group_ids")
+
+    @_builtins.property
+    @pulumi.getter(name="logOnlyRuleIds")
+    def log_only_rule_ids(self) -> Sequence[_builtins.str]:
+        """
+        Set of WAF rule IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+        """
+        return pulumi.get(self, "log_only_rule_ids")
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> _builtins.str:
+        """
+        The operating mode of the WAF. 'ENABLED' actively blocks threats, 'LOG_ONLY' logs matches without blocking, and 'DISABLED' completely turns off inspection. Defaults to 'DISABLED'.
+        """
+        return pulumi.get(self, "mode")
+
+    @_builtins.property
+    @pulumi.getter(name="paranoiaLevel")
+    def paranoia_level(self) -> _builtins.str:
+        """
+        Defines how aggressively the WAF should act on requests. Valid values are 'L1' to 'L4'. Case you removed waf will retain the last known state and if omitted, The API applies the following default 'L1'.
+        """
+        return pulumi.get(self, "paranoia_level")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The tier of the WAF. Valid values are 'FREE' or 'PREMIUM'. Defaults to 'FREE'.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -11919,6 +12436,24 @@ class GetSecurityGroupRuleProtocolResult(dict):
 
 
 @pulumi.output_type
+class GetServerAgentResult(dict):
+    def __init__(__self__, *,
+                 provisioned: _builtins.bool):
+        """
+        :param _builtins.bool provisioned: Whether a STACKIT Server Agent is provisioned at the server
+        """
+        pulumi.set(__self__, "provisioned", provisioned)
+
+    @_builtins.property
+    @pulumi.getter
+    def provisioned(self) -> _builtins.bool:
+        """
+        Whether a STACKIT Server Agent is provisioned at the server
+        """
+        return pulumi.get(self, "provisioned")
+
+
+@pulumi.output_type
 class GetServerBackupScheduleBackupPropertiesResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
@@ -12113,6 +12648,46 @@ class GetServerUpdateSchedulesItemResult(dict):
     @pulumi.getter(name="updateScheduleId")
     def update_schedule_id(self) -> _builtins.int:
         return pulumi.get(self, "update_schedule_id")
+
+
+@pulumi.output_type
+class GetServiceAccountFederatedIdentityProviderAssertionResult(dict):
+    def __init__(__self__, *,
+                 item: _builtins.str,
+                 operator: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str item: The assertion claim. At least one assertion with the claim "aud" is required for security reasons.
+        :param _builtins.str operator: The assertion operator. Currently, the only supported operator is "equals".
+        :param _builtins.str value: The assertion value.
+        """
+        pulumi.set(__self__, "item", item)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def item(self) -> _builtins.str:
+        """
+        The assertion claim. At least one assertion with the claim "aud" is required for security reasons.
+        """
+        return pulumi.get(self, "item")
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> _builtins.str:
+        """
+        The assertion operator. Currently, the only supported operator is "equals".
+        """
+        return pulumi.get(self, "operator")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The assertion value.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

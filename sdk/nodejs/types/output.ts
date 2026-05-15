@@ -358,6 +358,10 @@ export interface CdnDistributionConfig {
      * The configured regions where content will be hosted
      */
     regions: string[];
+    /**
+     * Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.
+     */
+    waf: outputs.CdnDistributionConfigWaf;
 }
 
 export interface CdnDistributionConfigBackend {
@@ -449,6 +453,69 @@ export interface CdnDistributionConfigRedirectsRuleMatcher {
      * A list of glob patterns to match against the request path. At least one value is required. Examples: "/shop/*" or "*&#47;img/*"
      */
     values: string[];
+}
+
+export interface CdnDistributionConfigWaf {
+    /**
+     * Restricts which HTTP methods the distribution accepts. If provided, the set must contain at least one item. Case you removed waf will retain the last known state and if omitted, the API applies the following defaults: `GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `CONNECT`, `OPTIONS`, `TRACE`, `PATCH`.
+     */
+    allowedHttpMethods: string[];
+    /**
+     * Restricts which HTTP protocol versions are accepted. If provided, the set must contain at least one item. If omitted, the API applies the following defaults: `HTTP/1.0`, `HTTP/1.1`, `HTTP/2`, `HTTP/2.0`.
+     */
+    allowedHttpVersions: string[];
+    /**
+     * Restricts which Content-Type headers are accepted in request bodies. If provided, the set must contain at least one item. Case you removed waf will retain the last known state and if omitted, the API applies the following defaults: `application/x-www-form-urlencoded`, `multipart/form-data`, `multipart/related`, `text/xml`, `application/xml`, `application/soap+xml`, `application/x-amf`, `application/json`, `application/octet-stream`, `application/csp-report`, `application/xss-auditor-report`, `text/plain`.
+     */
+    allowedRequestContentTypes: string[];
+    /**
+     * Set of WAF Collection IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+     */
+    disabledRuleCollectionIds: string[];
+    /**
+     * Set of WAF Rule Group IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+     */
+    disabledRuleGroupIds: string[];
+    /**
+     * Set of WAF rule IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. For example, an explicitly disabled Rule ID takes precedence over an enabled Group ID. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+     */
+    disabledRuleIds: string[];
+    /**
+     * Set of WAF Collection IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+     */
+    enabledRuleCollectionIds: string[];
+    /**
+     * Set of WAF Rule Group IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+     */
+    enabledRuleGroupIds: string[];
+    /**
+     * Set of WAF rule IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. For example, an explicitly enabled Rule ID takes precedence over a disabled Group ID. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+     */
+    enabledRuleIds: string[];
+    /**
+     * Set of WAF Collection IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+     */
+    logOnlyRuleCollectionIds: string[];
+    /**
+     * Set of WAF Rule Group IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+     */
+    logOnlyRuleGroupIds: string[];
+    /**
+     * Set of WAF rule IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+     */
+    logOnlyRuleIds: string[];
+    /**
+     * The operating mode of the WAF. 'ENABLED' actively blocks threats, 'LOG_ONLY' logs matches without blocking, and 'DISABLED' completely turns off inspection. Defaults to 'DISABLED'.
+     */
+    mode: string;
+    /**
+     * Defines how aggressively the WAF should act on requests. Valid values are 'L1' to 'L4'. Case you removed waf will retain the last known state and if omitted, The API applies the following default 'L1'.
+     */
+    paranoiaLevel: string;
+    /**
+     * The tier of the WAF. Valid values are 'FREE' or 'PREMIUM'. Defaults to 'FREE'.
+     */
+    type: string;
 }
 
 export interface CdnDistributionDomain {
@@ -853,6 +920,10 @@ export interface GetCdnDistributionConfig {
      * The configured regions where content will be hosted
      */
     regions: string[];
+    /**
+     * Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.
+     */
+    waf: outputs.GetCdnDistributionConfigWaf;
 }
 
 export interface GetCdnDistributionConfigBackend {
@@ -929,6 +1000,69 @@ export interface GetCdnDistributionConfigRedirectsRuleMatcher {
      * A list of glob patterns to match against the request path. At least one value is required. Examples: "/shop/*" or "*&#47;img/*"
      */
     values: string[];
+}
+
+export interface GetCdnDistributionConfigWaf {
+    /**
+     * Restricts which HTTP methods the distribution accepts. If provided, the set must contain at least one item. Case you removed waf will retain the last known state and if omitted, the API applies the following defaults: `GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `CONNECT`, `OPTIONS`, `TRACE`, `PATCH`.
+     */
+    allowedHttpMethods: string[];
+    /**
+     * Restricts which HTTP protocol versions are accepted. If provided, the set must contain at least one item. If omitted, the API applies the following defaults: `HTTP/1.0`, `HTTP/1.1`, `HTTP/2`, `HTTP/2.0`.
+     */
+    allowedHttpVersions: string[];
+    /**
+     * Restricts which Content-Type headers are accepted in request bodies. If provided, the set must contain at least one item. Case you removed waf will retain the last known state and if omitted, the API applies the following defaults: `application/x-www-form-urlencoded`, `multipart/form-data`, `multipart/related`, `text/xml`, `application/xml`, `application/soap+xml`, `application/x-amf`, `application/json`, `application/octet-stream`, `application/csp-report`, `application/xss-auditor-report`, `text/plain`.
+     */
+    allowedRequestContentTypes: string[];
+    /**
+     * Set of WAF Collection IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+     */
+    disabledRuleCollectionIds: string[];
+    /**
+     * Set of WAF Rule Group IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+     */
+    disabledRuleGroupIds: string[];
+    /**
+     * Set of WAF rule IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. For example, an explicitly disabled Rule ID takes precedence over an enabled Group ID. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+     */
+    disabledRuleIds: string[];
+    /**
+     * Set of WAF Collection IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+     */
+    enabledRuleCollectionIds: string[];
+    /**
+     * Set of WAF Rule Group IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+     */
+    enabledRuleGroupIds: string[];
+    /**
+     * Set of WAF rule IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. For example, an explicitly enabled Rule ID takes precedence over a disabled Group ID. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+     */
+    enabledRuleIds: string[];
+    /**
+     * Set of WAF Collection IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+     */
+    logOnlyRuleCollectionIds: string[];
+    /**
+     * Set of WAF Rule Group IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+     */
+    logOnlyRuleGroupIds: string[];
+    /**
+     * Set of WAF rule IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
+     */
+    logOnlyRuleIds: string[];
+    /**
+     * The operating mode of the WAF. 'ENABLED' actively blocks threats, 'LOG_ONLY' logs matches without blocking, and 'DISABLED' completely turns off inspection. Defaults to 'DISABLED'.
+     */
+    mode: string;
+    /**
+     * Defines how aggressively the WAF should act on requests. Valid values are 'L1' to 'L4'. Case you removed waf will retain the last known state and if omitted, The API applies the following default 'L1'.
+     */
+    paranoiaLevel: string;
+    /**
+     * The tier of the WAF. Valid values are 'FREE' or 'PREMIUM'. Defaults to 'FREE'.
+     */
+    type: string;
 }
 
 export interface GetCdnDistributionDomain {
@@ -2245,6 +2379,13 @@ export interface GetSecurityGroupRuleProtocol {
     number: number;
 }
 
+export interface GetServerAgent {
+    /**
+     * Whether a STACKIT Server Agent is provisioned at the server
+     */
+    provisioned: boolean;
+}
+
 export interface GetServerBackupScheduleBackupProperties {
     name: string;
     retentionPeriod: number;
@@ -2306,6 +2447,21 @@ export interface GetServerUpdateSchedulesItem {
      */
     rrule: string;
     updateScheduleId: number;
+}
+
+export interface GetServiceAccountFederatedIdentityProviderAssertion {
+    /**
+     * The assertion claim. At least one assertion with the claim "aud" is required for security reasons.
+     */
+    item: string;
+    /**
+     * The assertion operator. Currently, the only supported operator is "equals".
+     */
+    operator: string;
+    /**
+     * The assertion value.
+     */
+    value: string;
 }
 
 export interface GetServiceAccountsItem {
@@ -3685,6 +3841,17 @@ export interface SecurityGroupRuleProtocol {
     number: number;
 }
 
+export interface ServerAgent {
+    /**
+     * Whether a STACKIT Server Agent is provisioned at the server
+     */
+    provisioned: boolean;
+    /**
+     * Agent provisioning policy: `ALWAYS`, `NEVER`, or `INHERIT`. `INHERIT` follows the image default value.
+     */
+    provisioningPolicy: string;
+}
+
 export interface ServerBackupScheduleBackupProperties {
     name: string;
     retentionPeriod: number;
@@ -3716,6 +3883,21 @@ export interface ServerBootVolume {
      * The type of the source. Possible values are: `volume`, `image`.
      */
     sourceType: string;
+}
+
+export interface ServiceAccountFederatedIdentityProviderAssertion {
+    /**
+     * The assertion claim. At least one assertion with the claim "aud" is required for security reasons.
+     */
+    item: string;
+    /**
+     * The assertion operator. Currently, the only supported operator is "equals".
+     */
+    operator: string;
+    /**
+     * The assertion value.
+     */
+    value: string;
 }
 
 export interface SfsExportPolicyRule {

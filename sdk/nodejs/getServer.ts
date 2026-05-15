@@ -47,6 +47,10 @@ export interface GetServerResult {
      */
     readonly affinityGroup: string;
     /**
+     * STACKIT Server Agent as setup on the server
+     */
+    readonly agent: outputs.GetServerAgent;
+    /**
      * The availability zone of the server.
      */
     readonly availabilityZone: string;

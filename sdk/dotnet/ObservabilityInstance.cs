@@ -143,6 +143,15 @@ namespace Pulumi.Stackit
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("otlpGrpcTracesUrl")]
+        public Output<string> OtlpGrpcTracesUrl { get; private set; } = null!;
+
+        [Output("otlpHttpLogsUrl")]
+        public Output<string> OtlpHttpLogsUrl { get; private set; } = null!;
+
+        [Output("otlpHttpTracesUrl")]
+        public Output<string> OtlpHttpTracesUrl { get; private set; } = null!;
+
         [Output("otlpTracesUrl")]
         public Output<string> OtlpTracesUrl { get; private set; } = null!;
 
@@ -470,6 +479,15 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("otlpGrpcTracesUrl")]
+        public Input<string>? OtlpGrpcTracesUrl { get; set; }
+
+        [Input("otlpHttpLogsUrl")]
+        public Input<string>? OtlpHttpLogsUrl { get; set; }
+
+        [Input("otlpHttpTracesUrl")]
+        public Input<string>? OtlpHttpTracesUrl { get; set; }
 
         [Input("otlpTracesUrl")]
         public Input<string>? OtlpTracesUrl { get; set; }

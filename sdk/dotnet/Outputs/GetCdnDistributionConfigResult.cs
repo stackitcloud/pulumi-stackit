@@ -33,6 +33,10 @@ namespace Pulumi.Stackit.Outputs
         /// The configured regions where content will be hosted
         /// </summary>
         public readonly ImmutableArray<string> Regions;
+        /// <summary>
+        /// Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.
+        /// </summary>
+        public readonly Outputs.GetCdnDistributionConfigWafResult Waf;
 
         [OutputConstructor]
         private GetCdnDistributionConfigResult(
@@ -44,13 +48,16 @@ namespace Pulumi.Stackit.Outputs
 
             Outputs.GetCdnDistributionConfigRedirectsResult redirects,
 
-            ImmutableArray<string> regions)
+            ImmutableArray<string> regions,
+
+            Outputs.GetCdnDistributionConfigWafResult waf)
         {
             Backend = backend;
             BlockedCountries = blockedCountries;
             Optimizer = optimizer;
             Redirects = redirects;
             Regions = regions;
+            Waf = waf;
         }
     }
 }

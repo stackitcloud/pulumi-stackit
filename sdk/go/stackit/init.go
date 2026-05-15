@@ -181,6 +181,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ServerVolumeAttach{}
 	case "stackit:index/serviceAccount:ServiceAccount":
 		r = &ServiceAccount{}
+	case "stackit:index/serviceAccountFederatedIdentityProvider:ServiceAccountFederatedIdentityProvider":
+		r = &ServiceAccountFederatedIdentityProvider{}
 	case "stackit:index/serviceAccountKey:ServiceAccountKey":
 		r = &ServiceAccountKey{}
 	case "stackit:index/sfsExportPolicy:SfsExportPolicy":
@@ -630,6 +632,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"stackit",
 		"index/serviceAccount",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/serviceAccountFederatedIdentityProvider",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

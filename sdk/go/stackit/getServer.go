@@ -38,6 +38,8 @@ type LookupServerArgs struct {
 type LookupServerResult struct {
 	// The affinity group the server is assigned to.
 	AffinityGroup string `pulumi:"affinityGroup"`
+	// STACKIT Server Agent as setup on the server
+	Agent GetServerAgent `pulumi:"agent"`
 	// The availability zone of the server.
 	AvailabilityZone string `pulumi:"availabilityZone"`
 	// The boot volume for the server
@@ -113,6 +115,11 @@ func (o LookupServerResultOutput) ToLookupServerResultOutputWithContext(ctx cont
 // The affinity group the server is assigned to.
 func (o LookupServerResultOutput) AffinityGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServerResult) string { return v.AffinityGroup }).(pulumi.StringOutput)
+}
+
+// STACKIT Server Agent as setup on the server
+func (o LookupServerResultOutput) Agent() GetServerAgentOutput {
+	return o.ApplyT(func(v LookupServerResult) GetServerAgent { return v.Agent }).(GetServerAgentOutput)
 }
 
 // The availability zone of the server.

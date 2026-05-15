@@ -27,10 +27,13 @@ class GetServerResult:
     """
     A collection of values returned by getServer.
     """
-    def __init__(__self__, affinity_group=None, availability_zone=None, boot_volume=None, created_at=None, id=None, image_id=None, keypair_name=None, labels=None, launched_at=None, machine_type=None, name=None, network_interfaces=None, project_id=None, region=None, server_id=None, updated_at=None, user_data=None):
+    def __init__(__self__, affinity_group=None, agent=None, availability_zone=None, boot_volume=None, created_at=None, id=None, image_id=None, keypair_name=None, labels=None, launched_at=None, machine_type=None, name=None, network_interfaces=None, project_id=None, region=None, server_id=None, updated_at=None, user_data=None):
         if affinity_group and not isinstance(affinity_group, str):
             raise TypeError("Expected argument 'affinity_group' to be a str")
         pulumi.set(__self__, "affinity_group", affinity_group)
+        if agent and not isinstance(agent, dict):
+            raise TypeError("Expected argument 'agent' to be a dict")
+        pulumi.set(__self__, "agent", agent)
         if availability_zone and not isinstance(availability_zone, str):
             raise TypeError("Expected argument 'availability_zone' to be a str")
         pulumi.set(__self__, "availability_zone", availability_zone)
@@ -87,6 +90,14 @@ class GetServerResult:
         The affinity group the server is assigned to.
         """
         return pulumi.get(self, "affinity_group")
+
+    @_builtins.property
+    @pulumi.getter
+    def agent(self) -> 'outputs.GetServerAgentResult':
+        """
+        STACKIT Server Agent as setup on the server
+        """
+        return pulumi.get(self, "agent")
 
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
@@ -224,6 +235,7 @@ class AwaitableGetServerResult(GetServerResult):
             yield self
         return GetServerResult(
             affinity_group=self.affinity_group,
+            agent=self.agent,
             availability_zone=self.availability_zone,
             boot_volume=self.boot_volume,
             created_at=self.created_at,
@@ -265,6 +277,7 @@ def get_server(project_id: Optional[_builtins.str] = None,
 
     return AwaitableGetServerResult(
         affinity_group=pulumi.get(__ret__, 'affinity_group'),
+        agent=pulumi.get(__ret__, 'agent'),
         availability_zone=pulumi.get(__ret__, 'availability_zone'),
         boot_volume=pulumi.get(__ret__, 'boot_volume'),
         created_at=pulumi.get(__ret__, 'created_at'),
@@ -303,6 +316,7 @@ def get_server_output(project_id: Optional[pulumi.Input[_builtins.str]] = None,
     __ret__ = pulumi.runtime.invoke_output('stackit:index/getServer:getServer', __args__, opts=opts, typ=GetServerResult)
     return __ret__.apply(lambda __response__: GetServerResult(
         affinity_group=pulumi.get(__response__, 'affinity_group'),
+        agent=pulumi.get(__response__, 'agent'),
         availability_zone=pulumi.get(__response__, 'availability_zone'),
         boot_volume=pulumi.get(__response__, 'boot_volume'),
         created_at=pulumi.get(__response__, 'created_at'),

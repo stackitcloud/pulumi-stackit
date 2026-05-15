@@ -125,6 +125,9 @@ export class ObservabilityInstance extends pulumi.CustomResource {
      * The name of the Observability instance.
      */
     declare public readonly name: pulumi.Output<string>;
+    declare public /*out*/ readonly otlpGrpcTracesUrl: pulumi.Output<string>;
+    declare public /*out*/ readonly otlpHttpLogsUrl: pulumi.Output<string>;
+    declare public /*out*/ readonly otlpHttpTracesUrl: pulumi.Output<string>;
     declare public /*out*/ readonly otlpTracesUrl: pulumi.Output<string>;
     /**
      * Additional parameters.
@@ -187,6 +190,9 @@ export class ObservabilityInstance extends pulumi.CustomResource {
             resourceInputs["metricsRetentionDays5mDownsampling"] = state?.metricsRetentionDays5mDownsampling;
             resourceInputs["metricsUrl"] = state?.metricsUrl;
             resourceInputs["name"] = state?.name;
+            resourceInputs["otlpGrpcTracesUrl"] = state?.otlpGrpcTracesUrl;
+            resourceInputs["otlpHttpLogsUrl"] = state?.otlpHttpLogsUrl;
+            resourceInputs["otlpHttpTracesUrl"] = state?.otlpHttpTracesUrl;
             resourceInputs["otlpTracesUrl"] = state?.otlpTracesUrl;
             resourceInputs["parameters"] = state?.parameters;
             resourceInputs["planId"] = state?.planId;
@@ -229,6 +235,9 @@ export class ObservabilityInstance extends pulumi.CustomResource {
             resourceInputs["logsUrl"] = undefined /*out*/;
             resourceInputs["metricsPushUrl"] = undefined /*out*/;
             resourceInputs["metricsUrl"] = undefined /*out*/;
+            resourceInputs["otlpGrpcTracesUrl"] = undefined /*out*/;
+            resourceInputs["otlpHttpLogsUrl"] = undefined /*out*/;
+            resourceInputs["otlpHttpTracesUrl"] = undefined /*out*/;
             resourceInputs["otlpTracesUrl"] = undefined /*out*/;
             resourceInputs["planId"] = undefined /*out*/;
             resourceInputs["targetsUrl"] = undefined /*out*/;
@@ -331,6 +340,9 @@ export interface ObservabilityInstanceState {
      * The name of the Observability instance.
      */
     name?: pulumi.Input<string>;
+    otlpGrpcTracesUrl?: pulumi.Input<string>;
+    otlpHttpLogsUrl?: pulumi.Input<string>;
+    otlpHttpTracesUrl?: pulumi.Input<string>;
     otlpTracesUrl?: pulumi.Input<string>;
     /**
      * Additional parameters.
