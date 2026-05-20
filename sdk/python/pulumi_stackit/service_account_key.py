@@ -21,9 +21,9 @@ class ServiceAccountKeyArgs:
     def __init__(__self__, *,
                  project_id: pulumi.Input[_builtins.str],
                  service_account_email: pulumi.Input[_builtins.str],
-                 public_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 rotate_when_changed: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 ttl_days: Optional[pulumi.Input[_builtins.int]] = None):
+                 public_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 ttl_days: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a ServiceAccountKey resource.
 
@@ -68,51 +68,51 @@ class ServiceAccountKeyArgs:
 
     @_builtins.property
     @pulumi.getter(name="publicKey")
-    def public_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the public*key (RSA2048 key-pair). If not provided, a certificate from STACKIT will be used to generate a private*key.
         """
         return pulumi.get(self, "public_key")
 
     @public_key.setter
-    def public_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_key", value)
 
     @_builtins.property
     @pulumi.getter(name="rotateWhenChanged")
-    def rotate_when_changed(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def rotate_when_changed(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of arbitrary key/value pairs designed to force key recreation when they change, facilitating key rotation based on external factors such as a changing timestamp. Modifying this map triggers the creation of a new resource.
         """
         return pulumi.get(self, "rotate_when_changed")
 
     @rotate_when_changed.setter
-    def rotate_when_changed(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def rotate_when_changed(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "rotate_when_changed", value)
 
     @_builtins.property
     @pulumi.getter(name="ttlDays")
-    def ttl_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ttl_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the key's validity duration in days. If left unspecified, the key is considered valid until it is deleted
         """
         return pulumi.get(self, "ttl_days")
 
     @ttl_days.setter
-    def ttl_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ttl_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ttl_days", value)
 
 
 @pulumi.input_type
 class _ServiceAccountKeyState:
     def __init__(__self__, *,
-                 json: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 rotate_when_changed: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl_days: Optional[pulumi.Input[_builtins.int]] = None):
+                 json: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl_days: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering ServiceAccountKey resources.
 
@@ -141,86 +141,86 @@ class _ServiceAccountKeyState:
 
     @_builtins.property
     @pulumi.getter
-    def json(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def json(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The raw JSON representation of the service account key json, available for direct use.
         """
         return pulumi.get(self, "json")
 
     @json.setter
-    def json(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def json(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "json", value)
 
     @_builtins.property
     @pulumi.getter(name="keyId")
-    def key_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for the key associated with the service account.
         """
         return pulumi.get(self, "key_id")
 
     @key_id.setter
-    def key_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The STACKIT project ID associated with the service account key.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="publicKey")
-    def public_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the public*key (RSA2048 key-pair). If not provided, a certificate from STACKIT will be used to generate a private*key.
         """
         return pulumi.get(self, "public_key")
 
     @public_key.setter
-    def public_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_key", value)
 
     @_builtins.property
     @pulumi.getter(name="rotateWhenChanged")
-    def rotate_when_changed(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def rotate_when_changed(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of arbitrary key/value pairs designed to force key recreation when they change, facilitating key rotation based on external factors such as a changing timestamp. Modifying this map triggers the creation of a new resource.
         """
         return pulumi.get(self, "rotate_when_changed")
 
     @rotate_when_changed.setter
-    def rotate_when_changed(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def rotate_when_changed(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "rotate_when_changed", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountEmail")
-    def service_account_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email address associated with the service account, used for account identification and communication.
         """
         return pulumi.get(self, "service_account_email")
 
     @service_account_email.setter
-    def service_account_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_email", value)
 
     @_builtins.property
     @pulumi.getter(name="ttlDays")
-    def ttl_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ttl_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the key's validity duration in days. If left unspecified, the key is considered valid until it is deleted
         """
         return pulumi.get(self, "ttl_days")
 
     @ttl_days.setter
-    def ttl_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ttl_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ttl_days", value)
 
 
@@ -230,11 +230,11 @@ class ServiceAccountKey(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 rotate_when_changed: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl_days: Optional[pulumi.Input[_builtins.int]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl_days: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Service account key schema.
@@ -279,11 +279,11 @@ class ServiceAccountKey(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 rotate_when_changed: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl_days: Optional[pulumi.Input[_builtins.int]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl_days: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -316,13 +316,13 @@ class ServiceAccountKey(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            json: Optional[pulumi.Input[_builtins.str]] = None,
-            key_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            public_key: Optional[pulumi.Input[_builtins.str]] = None,
-            rotate_when_changed: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
-            ttl_days: Optional[pulumi.Input[_builtins.int]] = None) -> 'ServiceAccountKey':
+            json: pulumi.Input[Optional[_builtins.str]] = None,
+            key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            public_key: pulumi.Input[Optional[_builtins.str]] = None,
+            rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+            ttl_days: pulumi.Input[Optional[_builtins.int]] = None) -> 'ServiceAccountKey':
         """
         Get an existing ServiceAccountKey resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

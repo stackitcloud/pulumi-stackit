@@ -13,6 +13,7 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
 
 __all__ = [
     'GetSfsResourcePoolResult',
@@ -26,7 +27,7 @@ class GetSfsResourcePoolResult:
     """
     A collection of values returned by getSfsResourcePool.
     """
-    def __init__(__self__, availability_zone=None, id=None, ip_acls=None, name=None, performance_class=None, performance_class_downgradable_at=None, project_id=None, region=None, resource_pool_id=None, size_gigabytes=None, size_reducible_at=None, snapshots_are_visible=None):
+    def __init__(__self__, availability_zone=None, id=None, ip_acls=None, name=None, performance_class=None, performance_class_downgradable_at=None, project_id=None, region=None, resource_pool_id=None, size_gigabytes=None, size_reducible_at=None, snapshot_policy=None, snapshots_are_visible=None):
         if availability_zone and not isinstance(availability_zone, str):
             raise TypeError("Expected argument 'availability_zone' to be a str")
         pulumi.set(__self__, "availability_zone", availability_zone)
@@ -60,6 +61,9 @@ class GetSfsResourcePoolResult:
         if size_reducible_at and not isinstance(size_reducible_at, str):
             raise TypeError("Expected argument 'size_reducible_at' to be a str")
         pulumi.set(__self__, "size_reducible_at", size_reducible_at)
+        if snapshot_policy and not isinstance(snapshot_policy, dict):
+            raise TypeError("Expected argument 'snapshot_policy' to be a dict")
+        pulumi.set(__self__, "snapshot_policy", snapshot_policy)
         if snapshots_are_visible and not isinstance(snapshots_are_visible, bool):
             raise TypeError("Expected argument 'snapshots_are_visible' to be a bool")
         pulumi.set(__self__, "snapshots_are_visible", snapshots_are_visible)
@@ -153,6 +157,14 @@ class GetSfsResourcePoolResult:
         return pulumi.get(self, "size_reducible_at")
 
     @_builtins.property
+    @pulumi.getter(name="snapshotPolicy")
+    def snapshot_policy(self) -> 'outputs.GetSfsResourcePoolSnapshotPolicyResult':
+        """
+        Name of the snapshot policy.
+        """
+        return pulumi.get(self, "snapshot_policy")
+
+    @_builtins.property
     @pulumi.getter(name="snapshotsAreVisible")
     def snapshots_are_visible(self) -> _builtins.bool:
         """
@@ -178,6 +190,7 @@ class AwaitableGetSfsResourcePoolResult(GetSfsResourcePoolResult):
             resource_pool_id=self.resource_pool_id,
             size_gigabytes=self.size_gigabytes,
             size_reducible_at=self.size_reducible_at,
+            snapshot_policy=self.snapshot_policy,
             snapshots_are_visible=self.snapshots_are_visible)
 
 
@@ -216,10 +229,11 @@ def get_sfs_resource_pool(project_id: Optional[_builtins.str] = None,
         resource_pool_id=pulumi.get(__ret__, 'resource_pool_id'),
         size_gigabytes=pulumi.get(__ret__, 'size_gigabytes'),
         size_reducible_at=pulumi.get(__ret__, 'size_reducible_at'),
+        snapshot_policy=pulumi.get(__ret__, 'snapshot_policy'),
         snapshots_are_visible=pulumi.get(__ret__, 'snapshots_are_visible'))
-def get_sfs_resource_pool_output(project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                 region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 resource_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_sfs_resource_pool_output(project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                 region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 resource_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSfsResourcePoolResult]:
     """
     Resource-pool datasource schema. Must have a `region` specified in the provider configuration.
@@ -251,4 +265,5 @@ def get_sfs_resource_pool_output(project_id: Optional[pulumi.Input[_builtins.str
         resource_pool_id=pulumi.get(__response__, 'resource_pool_id'),
         size_gigabytes=pulumi.get(__response__, 'size_gigabytes'),
         size_reducible_at=pulumi.get(__response__, 'size_reducible_at'),
+        snapshot_policy=pulumi.get(__response__, 'snapshot_policy'),
         snapshots_are_visible=pulumi.get(__response__, 'snapshots_are_visible')))

@@ -117,7 +117,7 @@ export interface GetSfsShareOutputArgs {
     /**
      * The resource region. Read-only attribute that reflects the provider region.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource pool for the SFS share.
      */

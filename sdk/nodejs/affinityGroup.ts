@@ -108,27 +108,27 @@ export interface AffinityGroupState {
     /**
      * The affinity group ID.
      */
-    affinityGroupId?: pulumi.Input<string>;
+    affinityGroupId?: pulumi.Input<string | undefined>;
     /**
      * The servers that are part of the affinity group.
      */
-    members?: pulumi.Input<pulumi.Input<string>[]>;
+    members?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the affinity group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The policy of the affinity group.
      */
-    policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
     /**
      * STACKIT Project ID to which the affinity group is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -138,7 +138,7 @@ export interface AffinityGroupArgs {
     /**
      * The name of the affinity group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The policy of the affinity group.
      */
@@ -150,5 +150,5 @@ export interface AffinityGroupArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

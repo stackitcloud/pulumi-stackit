@@ -15602,6 +15602,162 @@ func (o SfsExportPolicyRuleArrayOutput) Index(i pulumi.IntInput) SfsExportPolicy
 	}).(SfsExportPolicyRuleOutput)
 }
 
+type SfsResourcePoolSnapshotPolicy struct {
+	// ID of the snapshot policy.
+	Id string `pulumi:"id"`
+	// Name of the snapshot policy.
+	Name *string `pulumi:"name"`
+}
+
+// SfsResourcePoolSnapshotPolicyInput is an input type that accepts SfsResourcePoolSnapshotPolicyArgs and SfsResourcePoolSnapshotPolicyOutput values.
+// You can construct a concrete instance of `SfsResourcePoolSnapshotPolicyInput` via:
+//
+//	SfsResourcePoolSnapshotPolicyArgs{...}
+type SfsResourcePoolSnapshotPolicyInput interface {
+	pulumi.Input
+
+	ToSfsResourcePoolSnapshotPolicyOutput() SfsResourcePoolSnapshotPolicyOutput
+	ToSfsResourcePoolSnapshotPolicyOutputWithContext(context.Context) SfsResourcePoolSnapshotPolicyOutput
+}
+
+type SfsResourcePoolSnapshotPolicyArgs struct {
+	// ID of the snapshot policy.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Name of the snapshot policy.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (SfsResourcePoolSnapshotPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SfsResourcePoolSnapshotPolicy)(nil)).Elem()
+}
+
+func (i SfsResourcePoolSnapshotPolicyArgs) ToSfsResourcePoolSnapshotPolicyOutput() SfsResourcePoolSnapshotPolicyOutput {
+	return i.ToSfsResourcePoolSnapshotPolicyOutputWithContext(context.Background())
+}
+
+func (i SfsResourcePoolSnapshotPolicyArgs) ToSfsResourcePoolSnapshotPolicyOutputWithContext(ctx context.Context) SfsResourcePoolSnapshotPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SfsResourcePoolSnapshotPolicyOutput)
+}
+
+func (i SfsResourcePoolSnapshotPolicyArgs) ToSfsResourcePoolSnapshotPolicyPtrOutput() SfsResourcePoolSnapshotPolicyPtrOutput {
+	return i.ToSfsResourcePoolSnapshotPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i SfsResourcePoolSnapshotPolicyArgs) ToSfsResourcePoolSnapshotPolicyPtrOutputWithContext(ctx context.Context) SfsResourcePoolSnapshotPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SfsResourcePoolSnapshotPolicyOutput).ToSfsResourcePoolSnapshotPolicyPtrOutputWithContext(ctx)
+}
+
+// SfsResourcePoolSnapshotPolicyPtrInput is an input type that accepts SfsResourcePoolSnapshotPolicyArgs, SfsResourcePoolSnapshotPolicyPtr and SfsResourcePoolSnapshotPolicyPtrOutput values.
+// You can construct a concrete instance of `SfsResourcePoolSnapshotPolicyPtrInput` via:
+//
+//	        SfsResourcePoolSnapshotPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type SfsResourcePoolSnapshotPolicyPtrInput interface {
+	pulumi.Input
+
+	ToSfsResourcePoolSnapshotPolicyPtrOutput() SfsResourcePoolSnapshotPolicyPtrOutput
+	ToSfsResourcePoolSnapshotPolicyPtrOutputWithContext(context.Context) SfsResourcePoolSnapshotPolicyPtrOutput
+}
+
+type sfsResourcePoolSnapshotPolicyPtrType SfsResourcePoolSnapshotPolicyArgs
+
+func SfsResourcePoolSnapshotPolicyPtr(v *SfsResourcePoolSnapshotPolicyArgs) SfsResourcePoolSnapshotPolicyPtrInput {
+	return (*sfsResourcePoolSnapshotPolicyPtrType)(v)
+}
+
+func (*sfsResourcePoolSnapshotPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SfsResourcePoolSnapshotPolicy)(nil)).Elem()
+}
+
+func (i *sfsResourcePoolSnapshotPolicyPtrType) ToSfsResourcePoolSnapshotPolicyPtrOutput() SfsResourcePoolSnapshotPolicyPtrOutput {
+	return i.ToSfsResourcePoolSnapshotPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *sfsResourcePoolSnapshotPolicyPtrType) ToSfsResourcePoolSnapshotPolicyPtrOutputWithContext(ctx context.Context) SfsResourcePoolSnapshotPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SfsResourcePoolSnapshotPolicyPtrOutput)
+}
+
+type SfsResourcePoolSnapshotPolicyOutput struct{ *pulumi.OutputState }
+
+func (SfsResourcePoolSnapshotPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SfsResourcePoolSnapshotPolicy)(nil)).Elem()
+}
+
+func (o SfsResourcePoolSnapshotPolicyOutput) ToSfsResourcePoolSnapshotPolicyOutput() SfsResourcePoolSnapshotPolicyOutput {
+	return o
+}
+
+func (o SfsResourcePoolSnapshotPolicyOutput) ToSfsResourcePoolSnapshotPolicyOutputWithContext(ctx context.Context) SfsResourcePoolSnapshotPolicyOutput {
+	return o
+}
+
+func (o SfsResourcePoolSnapshotPolicyOutput) ToSfsResourcePoolSnapshotPolicyPtrOutput() SfsResourcePoolSnapshotPolicyPtrOutput {
+	return o.ToSfsResourcePoolSnapshotPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o SfsResourcePoolSnapshotPolicyOutput) ToSfsResourcePoolSnapshotPolicyPtrOutputWithContext(ctx context.Context) SfsResourcePoolSnapshotPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SfsResourcePoolSnapshotPolicy) *SfsResourcePoolSnapshotPolicy {
+		return &v
+	}).(SfsResourcePoolSnapshotPolicyPtrOutput)
+}
+
+// ID of the snapshot policy.
+func (o SfsResourcePoolSnapshotPolicyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v SfsResourcePoolSnapshotPolicy) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Name of the snapshot policy.
+func (o SfsResourcePoolSnapshotPolicyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SfsResourcePoolSnapshotPolicy) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type SfsResourcePoolSnapshotPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (SfsResourcePoolSnapshotPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SfsResourcePoolSnapshotPolicy)(nil)).Elem()
+}
+
+func (o SfsResourcePoolSnapshotPolicyPtrOutput) ToSfsResourcePoolSnapshotPolicyPtrOutput() SfsResourcePoolSnapshotPolicyPtrOutput {
+	return o
+}
+
+func (o SfsResourcePoolSnapshotPolicyPtrOutput) ToSfsResourcePoolSnapshotPolicyPtrOutputWithContext(ctx context.Context) SfsResourcePoolSnapshotPolicyPtrOutput {
+	return o
+}
+
+func (o SfsResourcePoolSnapshotPolicyPtrOutput) Elem() SfsResourcePoolSnapshotPolicyOutput {
+	return o.ApplyT(func(v *SfsResourcePoolSnapshotPolicy) SfsResourcePoolSnapshotPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret SfsResourcePoolSnapshotPolicy
+		return ret
+	}).(SfsResourcePoolSnapshotPolicyOutput)
+}
+
+// ID of the snapshot policy.
+func (o SfsResourcePoolSnapshotPolicyPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SfsResourcePoolSnapshotPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the snapshot policy.
+func (o SfsResourcePoolSnapshotPolicyPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SfsResourcePoolSnapshotPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
 type SkeClusterExtensions struct {
 	// Cluster access control configuration.
 	Acl *SkeClusterExtensionsAcl `pulumi:"acl"`
@@ -28764,6 +28920,67 @@ func (o GetSfsExportPolicyRuleArrayOutput) Index(i pulumi.IntInput) GetSfsExport
 	}).(GetSfsExportPolicyRuleOutput)
 }
 
+type GetSfsResourcePoolSnapshotPolicy struct {
+	// ID of the snapshot policy.
+	Id string `pulumi:"id"`
+	// Name of the snapshot policy.
+	Name string `pulumi:"name"`
+}
+
+// GetSfsResourcePoolSnapshotPolicyInput is an input type that accepts GetSfsResourcePoolSnapshotPolicyArgs and GetSfsResourcePoolSnapshotPolicyOutput values.
+// You can construct a concrete instance of `GetSfsResourcePoolSnapshotPolicyInput` via:
+//
+//	GetSfsResourcePoolSnapshotPolicyArgs{...}
+type GetSfsResourcePoolSnapshotPolicyInput interface {
+	pulumi.Input
+
+	ToGetSfsResourcePoolSnapshotPolicyOutput() GetSfsResourcePoolSnapshotPolicyOutput
+	ToGetSfsResourcePoolSnapshotPolicyOutputWithContext(context.Context) GetSfsResourcePoolSnapshotPolicyOutput
+}
+
+type GetSfsResourcePoolSnapshotPolicyArgs struct {
+	// ID of the snapshot policy.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Name of the snapshot policy.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetSfsResourcePoolSnapshotPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSfsResourcePoolSnapshotPolicy)(nil)).Elem()
+}
+
+func (i GetSfsResourcePoolSnapshotPolicyArgs) ToGetSfsResourcePoolSnapshotPolicyOutput() GetSfsResourcePoolSnapshotPolicyOutput {
+	return i.ToGetSfsResourcePoolSnapshotPolicyOutputWithContext(context.Background())
+}
+
+func (i GetSfsResourcePoolSnapshotPolicyArgs) ToGetSfsResourcePoolSnapshotPolicyOutputWithContext(ctx context.Context) GetSfsResourcePoolSnapshotPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSfsResourcePoolSnapshotPolicyOutput)
+}
+
+type GetSfsResourcePoolSnapshotPolicyOutput struct{ *pulumi.OutputState }
+
+func (GetSfsResourcePoolSnapshotPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSfsResourcePoolSnapshotPolicy)(nil)).Elem()
+}
+
+func (o GetSfsResourcePoolSnapshotPolicyOutput) ToGetSfsResourcePoolSnapshotPolicyOutput() GetSfsResourcePoolSnapshotPolicyOutput {
+	return o
+}
+
+func (o GetSfsResourcePoolSnapshotPolicyOutput) ToGetSfsResourcePoolSnapshotPolicyOutputWithContext(ctx context.Context) GetSfsResourcePoolSnapshotPolicyOutput {
+	return o
+}
+
+// ID of the snapshot policy.
+func (o GetSfsResourcePoolSnapshotPolicyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSfsResourcePoolSnapshotPolicy) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Name of the snapshot policy.
+func (o GetSfsResourcePoolSnapshotPolicyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSfsResourcePoolSnapshotPolicy) string { return v.Name }).(pulumi.StringOutput)
+}
+
 type GetSfsResourcePoolSnapshotSnapshot struct {
 	// (optional) A comment to add more information about a snapshot
 	Comment string `pulumi:"comment"`
@@ -28904,6 +29121,298 @@ func (o GetSfsResourcePoolSnapshotSnapshotArrayOutput) Index(i pulumi.IntInput) 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSfsResourcePoolSnapshotSnapshot {
 		return vs[0].([]GetSfsResourcePoolSnapshotSnapshot)[vs[1].(int)]
 	}).(GetSfsResourcePoolSnapshotSnapshotOutput)
+}
+
+type GetSfsSnapshotPoliciesItem struct {
+	// Comment of the Snapshot Policy.
+	Comment string `pulumi:"comment"`
+	// Created At timestamp.
+	CreatedAt string `pulumi:"createdAt"`
+	// Wether the Snapshot Policy is enabled.
+	Enabled bool `pulumi:"enabled"`
+	// ID of the Snapshot Policy.
+	Id string `pulumi:"id"`
+	// Name of the Snapshot Policy.
+	Name              string                                       `pulumi:"name"`
+	SnapshotSchedules []GetSfsSnapshotPoliciesItemSnapshotSchedule `pulumi:"snapshotSchedules"`
+}
+
+// GetSfsSnapshotPoliciesItemInput is an input type that accepts GetSfsSnapshotPoliciesItemArgs and GetSfsSnapshotPoliciesItemOutput values.
+// You can construct a concrete instance of `GetSfsSnapshotPoliciesItemInput` via:
+//
+//	GetSfsSnapshotPoliciesItemArgs{...}
+type GetSfsSnapshotPoliciesItemInput interface {
+	pulumi.Input
+
+	ToGetSfsSnapshotPoliciesItemOutput() GetSfsSnapshotPoliciesItemOutput
+	ToGetSfsSnapshotPoliciesItemOutputWithContext(context.Context) GetSfsSnapshotPoliciesItemOutput
+}
+
+type GetSfsSnapshotPoliciesItemArgs struct {
+	// Comment of the Snapshot Policy.
+	Comment pulumi.StringInput `pulumi:"comment"`
+	// Created At timestamp.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Wether the Snapshot Policy is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// ID of the Snapshot Policy.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Name of the Snapshot Policy.
+	Name              pulumi.StringInput                                   `pulumi:"name"`
+	SnapshotSchedules GetSfsSnapshotPoliciesItemSnapshotScheduleArrayInput `pulumi:"snapshotSchedules"`
+}
+
+func (GetSfsSnapshotPoliciesItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSfsSnapshotPoliciesItem)(nil)).Elem()
+}
+
+func (i GetSfsSnapshotPoliciesItemArgs) ToGetSfsSnapshotPoliciesItemOutput() GetSfsSnapshotPoliciesItemOutput {
+	return i.ToGetSfsSnapshotPoliciesItemOutputWithContext(context.Background())
+}
+
+func (i GetSfsSnapshotPoliciesItemArgs) ToGetSfsSnapshotPoliciesItemOutputWithContext(ctx context.Context) GetSfsSnapshotPoliciesItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSfsSnapshotPoliciesItemOutput)
+}
+
+// GetSfsSnapshotPoliciesItemArrayInput is an input type that accepts GetSfsSnapshotPoliciesItemArray and GetSfsSnapshotPoliciesItemArrayOutput values.
+// You can construct a concrete instance of `GetSfsSnapshotPoliciesItemArrayInput` via:
+//
+//	GetSfsSnapshotPoliciesItemArray{ GetSfsSnapshotPoliciesItemArgs{...} }
+type GetSfsSnapshotPoliciesItemArrayInput interface {
+	pulumi.Input
+
+	ToGetSfsSnapshotPoliciesItemArrayOutput() GetSfsSnapshotPoliciesItemArrayOutput
+	ToGetSfsSnapshotPoliciesItemArrayOutputWithContext(context.Context) GetSfsSnapshotPoliciesItemArrayOutput
+}
+
+type GetSfsSnapshotPoliciesItemArray []GetSfsSnapshotPoliciesItemInput
+
+func (GetSfsSnapshotPoliciesItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSfsSnapshotPoliciesItem)(nil)).Elem()
+}
+
+func (i GetSfsSnapshotPoliciesItemArray) ToGetSfsSnapshotPoliciesItemArrayOutput() GetSfsSnapshotPoliciesItemArrayOutput {
+	return i.ToGetSfsSnapshotPoliciesItemArrayOutputWithContext(context.Background())
+}
+
+func (i GetSfsSnapshotPoliciesItemArray) ToGetSfsSnapshotPoliciesItemArrayOutputWithContext(ctx context.Context) GetSfsSnapshotPoliciesItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSfsSnapshotPoliciesItemArrayOutput)
+}
+
+type GetSfsSnapshotPoliciesItemOutput struct{ *pulumi.OutputState }
+
+func (GetSfsSnapshotPoliciesItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSfsSnapshotPoliciesItem)(nil)).Elem()
+}
+
+func (o GetSfsSnapshotPoliciesItemOutput) ToGetSfsSnapshotPoliciesItemOutput() GetSfsSnapshotPoliciesItemOutput {
+	return o
+}
+
+func (o GetSfsSnapshotPoliciesItemOutput) ToGetSfsSnapshotPoliciesItemOutputWithContext(ctx context.Context) GetSfsSnapshotPoliciesItemOutput {
+	return o
+}
+
+// Comment of the Snapshot Policy.
+func (o GetSfsSnapshotPoliciesItemOutput) Comment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSfsSnapshotPoliciesItem) string { return v.Comment }).(pulumi.StringOutput)
+}
+
+// Created At timestamp.
+func (o GetSfsSnapshotPoliciesItemOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSfsSnapshotPoliciesItem) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Wether the Snapshot Policy is enabled.
+func (o GetSfsSnapshotPoliciesItemOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSfsSnapshotPoliciesItem) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// ID of the Snapshot Policy.
+func (o GetSfsSnapshotPoliciesItemOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSfsSnapshotPoliciesItem) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Name of the Snapshot Policy.
+func (o GetSfsSnapshotPoliciesItemOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSfsSnapshotPoliciesItem) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetSfsSnapshotPoliciesItemOutput) SnapshotSchedules() GetSfsSnapshotPoliciesItemSnapshotScheduleArrayOutput {
+	return o.ApplyT(func(v GetSfsSnapshotPoliciesItem) []GetSfsSnapshotPoliciesItemSnapshotSchedule {
+		return v.SnapshotSchedules
+	}).(GetSfsSnapshotPoliciesItemSnapshotScheduleArrayOutput)
+}
+
+type GetSfsSnapshotPoliciesItemArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSfsSnapshotPoliciesItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSfsSnapshotPoliciesItem)(nil)).Elem()
+}
+
+func (o GetSfsSnapshotPoliciesItemArrayOutput) ToGetSfsSnapshotPoliciesItemArrayOutput() GetSfsSnapshotPoliciesItemArrayOutput {
+	return o
+}
+
+func (o GetSfsSnapshotPoliciesItemArrayOutput) ToGetSfsSnapshotPoliciesItemArrayOutputWithContext(ctx context.Context) GetSfsSnapshotPoliciesItemArrayOutput {
+	return o
+}
+
+func (o GetSfsSnapshotPoliciesItemArrayOutput) Index(i pulumi.IntInput) GetSfsSnapshotPoliciesItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSfsSnapshotPoliciesItem {
+		return vs[0].([]GetSfsSnapshotPoliciesItem)[vs[1].(int)]
+	}).(GetSfsSnapshotPoliciesItemOutput)
+}
+
+type GetSfsSnapshotPoliciesItemSnapshotSchedule struct {
+	// Created At timestamp.
+	CreatedAt string `pulumi:"createdAt"`
+	// ID of the Snapshot Schedule.
+	Id string `pulumi:"id"`
+	// Interval of the Snapshot Schedule (follows the cron schedule xpression in Unix-like systems).
+	Interval string `pulumi:"interval"`
+	// Name of the Snapshot Schedule.
+	Name string `pulumi:"name"`
+	// Prefix used for snapshots created by this policy.
+	Prefix string `pulumi:"prefix"`
+	// Retention Count.
+	RetentionCount int `pulumi:"retentionCount"`
+	// Retention Period (ISO 8601 format or 'infinite').
+	RetentionPeriod string `pulumi:"retentionPeriod"`
+}
+
+// GetSfsSnapshotPoliciesItemSnapshotScheduleInput is an input type that accepts GetSfsSnapshotPoliciesItemSnapshotScheduleArgs and GetSfsSnapshotPoliciesItemSnapshotScheduleOutput values.
+// You can construct a concrete instance of `GetSfsSnapshotPoliciesItemSnapshotScheduleInput` via:
+//
+//	GetSfsSnapshotPoliciesItemSnapshotScheduleArgs{...}
+type GetSfsSnapshotPoliciesItemSnapshotScheduleInput interface {
+	pulumi.Input
+
+	ToGetSfsSnapshotPoliciesItemSnapshotScheduleOutput() GetSfsSnapshotPoliciesItemSnapshotScheduleOutput
+	ToGetSfsSnapshotPoliciesItemSnapshotScheduleOutputWithContext(context.Context) GetSfsSnapshotPoliciesItemSnapshotScheduleOutput
+}
+
+type GetSfsSnapshotPoliciesItemSnapshotScheduleArgs struct {
+	// Created At timestamp.
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// ID of the Snapshot Schedule.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Interval of the Snapshot Schedule (follows the cron schedule xpression in Unix-like systems).
+	Interval pulumi.StringInput `pulumi:"interval"`
+	// Name of the Snapshot Schedule.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Prefix used for snapshots created by this policy.
+	Prefix pulumi.StringInput `pulumi:"prefix"`
+	// Retention Count.
+	RetentionCount pulumi.IntInput `pulumi:"retentionCount"`
+	// Retention Period (ISO 8601 format or 'infinite').
+	RetentionPeriod pulumi.StringInput `pulumi:"retentionPeriod"`
+}
+
+func (GetSfsSnapshotPoliciesItemSnapshotScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSfsSnapshotPoliciesItemSnapshotSchedule)(nil)).Elem()
+}
+
+func (i GetSfsSnapshotPoliciesItemSnapshotScheduleArgs) ToGetSfsSnapshotPoliciesItemSnapshotScheduleOutput() GetSfsSnapshotPoliciesItemSnapshotScheduleOutput {
+	return i.ToGetSfsSnapshotPoliciesItemSnapshotScheduleOutputWithContext(context.Background())
+}
+
+func (i GetSfsSnapshotPoliciesItemSnapshotScheduleArgs) ToGetSfsSnapshotPoliciesItemSnapshotScheduleOutputWithContext(ctx context.Context) GetSfsSnapshotPoliciesItemSnapshotScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSfsSnapshotPoliciesItemSnapshotScheduleOutput)
+}
+
+// GetSfsSnapshotPoliciesItemSnapshotScheduleArrayInput is an input type that accepts GetSfsSnapshotPoliciesItemSnapshotScheduleArray and GetSfsSnapshotPoliciesItemSnapshotScheduleArrayOutput values.
+// You can construct a concrete instance of `GetSfsSnapshotPoliciesItemSnapshotScheduleArrayInput` via:
+//
+//	GetSfsSnapshotPoliciesItemSnapshotScheduleArray{ GetSfsSnapshotPoliciesItemSnapshotScheduleArgs{...} }
+type GetSfsSnapshotPoliciesItemSnapshotScheduleArrayInput interface {
+	pulumi.Input
+
+	ToGetSfsSnapshotPoliciesItemSnapshotScheduleArrayOutput() GetSfsSnapshotPoliciesItemSnapshotScheduleArrayOutput
+	ToGetSfsSnapshotPoliciesItemSnapshotScheduleArrayOutputWithContext(context.Context) GetSfsSnapshotPoliciesItemSnapshotScheduleArrayOutput
+}
+
+type GetSfsSnapshotPoliciesItemSnapshotScheduleArray []GetSfsSnapshotPoliciesItemSnapshotScheduleInput
+
+func (GetSfsSnapshotPoliciesItemSnapshotScheduleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSfsSnapshotPoliciesItemSnapshotSchedule)(nil)).Elem()
+}
+
+func (i GetSfsSnapshotPoliciesItemSnapshotScheduleArray) ToGetSfsSnapshotPoliciesItemSnapshotScheduleArrayOutput() GetSfsSnapshotPoliciesItemSnapshotScheduleArrayOutput {
+	return i.ToGetSfsSnapshotPoliciesItemSnapshotScheduleArrayOutputWithContext(context.Background())
+}
+
+func (i GetSfsSnapshotPoliciesItemSnapshotScheduleArray) ToGetSfsSnapshotPoliciesItemSnapshotScheduleArrayOutputWithContext(ctx context.Context) GetSfsSnapshotPoliciesItemSnapshotScheduleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSfsSnapshotPoliciesItemSnapshotScheduleArrayOutput)
+}
+
+type GetSfsSnapshotPoliciesItemSnapshotScheduleOutput struct{ *pulumi.OutputState }
+
+func (GetSfsSnapshotPoliciesItemSnapshotScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSfsSnapshotPoliciesItemSnapshotSchedule)(nil)).Elem()
+}
+
+func (o GetSfsSnapshotPoliciesItemSnapshotScheduleOutput) ToGetSfsSnapshotPoliciesItemSnapshotScheduleOutput() GetSfsSnapshotPoliciesItemSnapshotScheduleOutput {
+	return o
+}
+
+func (o GetSfsSnapshotPoliciesItemSnapshotScheduleOutput) ToGetSfsSnapshotPoliciesItemSnapshotScheduleOutputWithContext(ctx context.Context) GetSfsSnapshotPoliciesItemSnapshotScheduleOutput {
+	return o
+}
+
+// Created At timestamp.
+func (o GetSfsSnapshotPoliciesItemSnapshotScheduleOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSfsSnapshotPoliciesItemSnapshotSchedule) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// ID of the Snapshot Schedule.
+func (o GetSfsSnapshotPoliciesItemSnapshotScheduleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSfsSnapshotPoliciesItemSnapshotSchedule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Interval of the Snapshot Schedule (follows the cron schedule xpression in Unix-like systems).
+func (o GetSfsSnapshotPoliciesItemSnapshotScheduleOutput) Interval() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSfsSnapshotPoliciesItemSnapshotSchedule) string { return v.Interval }).(pulumi.StringOutput)
+}
+
+// Name of the Snapshot Schedule.
+func (o GetSfsSnapshotPoliciesItemSnapshotScheduleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSfsSnapshotPoliciesItemSnapshotSchedule) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Prefix used for snapshots created by this policy.
+func (o GetSfsSnapshotPoliciesItemSnapshotScheduleOutput) Prefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSfsSnapshotPoliciesItemSnapshotSchedule) string { return v.Prefix }).(pulumi.StringOutput)
+}
+
+// Retention Count.
+func (o GetSfsSnapshotPoliciesItemSnapshotScheduleOutput) RetentionCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSfsSnapshotPoliciesItemSnapshotSchedule) int { return v.RetentionCount }).(pulumi.IntOutput)
+}
+
+// Retention Period (ISO 8601 format or 'infinite').
+func (o GetSfsSnapshotPoliciesItemSnapshotScheduleOutput) RetentionPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSfsSnapshotPoliciesItemSnapshotSchedule) string { return v.RetentionPeriod }).(pulumi.StringOutput)
+}
+
+type GetSfsSnapshotPoliciesItemSnapshotScheduleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSfsSnapshotPoliciesItemSnapshotScheduleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSfsSnapshotPoliciesItemSnapshotSchedule)(nil)).Elem()
+}
+
+func (o GetSfsSnapshotPoliciesItemSnapshotScheduleArrayOutput) ToGetSfsSnapshotPoliciesItemSnapshotScheduleArrayOutput() GetSfsSnapshotPoliciesItemSnapshotScheduleArrayOutput {
+	return o
+}
+
+func (o GetSfsSnapshotPoliciesItemSnapshotScheduleArrayOutput) ToGetSfsSnapshotPoliciesItemSnapshotScheduleArrayOutputWithContext(ctx context.Context) GetSfsSnapshotPoliciesItemSnapshotScheduleArrayOutput {
+	return o
+}
+
+func (o GetSfsSnapshotPoliciesItemSnapshotScheduleArrayOutput) Index(i pulumi.IntInput) GetSfsSnapshotPoliciesItemSnapshotScheduleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSfsSnapshotPoliciesItemSnapshotSchedule {
+		return vs[0].([]GetSfsSnapshotPoliciesItemSnapshotSchedule)[vs[1].(int)]
+	}).(GetSfsSnapshotPoliciesItemSnapshotScheduleOutput)
 }
 
 type GetSkeClusterExtensions struct {
@@ -30672,6 +31181,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAccountFederatedIdentityProviderAssertionArrayInput)(nil)).Elem(), ServiceAccountFederatedIdentityProviderAssertionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SfsExportPolicyRuleInput)(nil)).Elem(), SfsExportPolicyRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SfsExportPolicyRuleArrayInput)(nil)).Elem(), SfsExportPolicyRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SfsResourcePoolSnapshotPolicyInput)(nil)).Elem(), SfsResourcePoolSnapshotPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SfsResourcePoolSnapshotPolicyPtrInput)(nil)).Elem(), SfsResourcePoolSnapshotPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterExtensionsInput)(nil)).Elem(), SkeClusterExtensionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterExtensionsPtrInput)(nil)).Elem(), SkeClusterExtensionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterExtensionsAclInput)(nil)).Elem(), SkeClusterExtensionsAclArgs{})
@@ -30852,8 +31363,13 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceAccountsItemArrayInput)(nil)).Elem(), GetServiceAccountsItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSfsExportPolicyRuleInput)(nil)).Elem(), GetSfsExportPolicyRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSfsExportPolicyRuleArrayInput)(nil)).Elem(), GetSfsExportPolicyRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSfsResourcePoolSnapshotPolicyInput)(nil)).Elem(), GetSfsResourcePoolSnapshotPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSfsResourcePoolSnapshotSnapshotInput)(nil)).Elem(), GetSfsResourcePoolSnapshotSnapshotArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSfsResourcePoolSnapshotSnapshotArrayInput)(nil)).Elem(), GetSfsResourcePoolSnapshotSnapshotArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSfsSnapshotPoliciesItemInput)(nil)).Elem(), GetSfsSnapshotPoliciesItemArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSfsSnapshotPoliciesItemArrayInput)(nil)).Elem(), GetSfsSnapshotPoliciesItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSfsSnapshotPoliciesItemSnapshotScheduleInput)(nil)).Elem(), GetSfsSnapshotPoliciesItemSnapshotScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSfsSnapshotPoliciesItemSnapshotScheduleArrayInput)(nil)).Elem(), GetSfsSnapshotPoliciesItemSnapshotScheduleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeClusterExtensionsInput)(nil)).Elem(), GetSkeClusterExtensionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeClusterExtensionsAclInput)(nil)).Elem(), GetSkeClusterExtensionsAclArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeClusterExtensionsArgusInput)(nil)).Elem(), GetSkeClusterExtensionsArgusArgs{})
@@ -31057,6 +31573,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceAccountFederatedIdentityProviderAssertionArrayOutput{})
 	pulumi.RegisterOutputType(SfsExportPolicyRuleOutput{})
 	pulumi.RegisterOutputType(SfsExportPolicyRuleArrayOutput{})
+	pulumi.RegisterOutputType(SfsResourcePoolSnapshotPolicyOutput{})
+	pulumi.RegisterOutputType(SfsResourcePoolSnapshotPolicyPtrOutput{})
 	pulumi.RegisterOutputType(SkeClusterExtensionsOutput{})
 	pulumi.RegisterOutputType(SkeClusterExtensionsPtrOutput{})
 	pulumi.RegisterOutputType(SkeClusterExtensionsAclOutput{})
@@ -31237,8 +31755,13 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceAccountsItemArrayOutput{})
 	pulumi.RegisterOutputType(GetSfsExportPolicyRuleOutput{})
 	pulumi.RegisterOutputType(GetSfsExportPolicyRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetSfsResourcePoolSnapshotPolicyOutput{})
 	pulumi.RegisterOutputType(GetSfsResourcePoolSnapshotSnapshotOutput{})
 	pulumi.RegisterOutputType(GetSfsResourcePoolSnapshotSnapshotArrayOutput{})
+	pulumi.RegisterOutputType(GetSfsSnapshotPoliciesItemOutput{})
+	pulumi.RegisterOutputType(GetSfsSnapshotPoliciesItemArrayOutput{})
+	pulumi.RegisterOutputType(GetSfsSnapshotPoliciesItemSnapshotScheduleOutput{})
+	pulumi.RegisterOutputType(GetSfsSnapshotPoliciesItemSnapshotScheduleArrayOutput{})
 	pulumi.RegisterOutputType(GetSkeClusterExtensionsOutput{})
 	pulumi.RegisterOutputType(GetSkeClusterExtensionsAclOutput{})
 	pulumi.RegisterOutputType(GetSkeClusterExtensionsArgusOutput{})

@@ -134,8 +134,8 @@ def get_authorization_project_custom_role(resource_id: Optional[_builtins.str] =
         permissions=pulumi.get(__ret__, 'permissions'),
         resource_id=pulumi.get(__ret__, 'resource_id'),
         role_id=pulumi.get(__ret__, 'role_id'))
-def get_authorization_project_custom_role_output(resource_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                                 role_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_authorization_project_custom_role_output(resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                                 role_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAuthorizationProjectCustomRoleResult]:
     """
     Custom Role resource schema.

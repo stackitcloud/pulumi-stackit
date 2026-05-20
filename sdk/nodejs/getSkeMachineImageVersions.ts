@@ -76,9 +76,9 @@ export interface GetSkeMachineImageVersionsOutputArgs {
     /**
      * Region override. If omitted, the provider’s region will be used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Filter returned machine image versions by their state. Possible values are: `SUPPORTED`.
      */
-    versionState?: pulumi.Input<string>;
+    versionState?: pulumi.Input<string | undefined>;
 }

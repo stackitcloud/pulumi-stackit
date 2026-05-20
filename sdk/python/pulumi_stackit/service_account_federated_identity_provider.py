@@ -25,7 +25,7 @@ class ServiceAccountFederatedIdentityProviderArgs:
                  issuer: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
                  service_account_email: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServiceAccountFederatedIdentityProvider resource.
 
@@ -92,26 +92,26 @@ class ServiceAccountFederatedIdentityProviderArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the federated identity provider.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _ServiceAccountFederatedIdentityProviderState:
     def __init__(__self__, *,
-                 assertions: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAccountFederatedIdentityProviderAssertionArgs']]]] = None,
-                 federation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 issuer: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_email: Optional[pulumi.Input[_builtins.str]] = None):
+                 assertions: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceAccountFederatedIdentityProviderAssertionArgs']]]] = None,
+                 federation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 issuer: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_email: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServiceAccountFederatedIdentityProvider resources.
 
@@ -137,74 +137,74 @@ class _ServiceAccountFederatedIdentityProviderState:
 
     @_builtins.property
     @pulumi.getter
-    def assertions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAccountFederatedIdentityProviderAssertionArgs']]]]:
+    def assertions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ServiceAccountFederatedIdentityProviderAssertionArgs']]]]:
         """
         The assertions for the federated identity provider.
         """
         return pulumi.get(self, "assertions")
 
     @assertions.setter
-    def assertions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAccountFederatedIdentityProviderAssertionArgs']]]]):
+    def assertions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ServiceAccountFederatedIdentityProviderAssertionArgs']]]]):
         pulumi.set(self, "assertions", value)
 
     @_builtins.property
     @pulumi.getter(name="federationId")
-    def federation_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def federation_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for the federated identity provider associated with the service account.
         """
         return pulumi.get(self, "federation_id")
 
     @federation_id.setter
-    def federation_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def federation_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "federation_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def issuer(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def issuer(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The issuer URL.
         """
         return pulumi.get(self, "issuer")
 
     @issuer.setter
-    def issuer(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def issuer(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "issuer", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the federated identity provider.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The STACKIT project ID associated with the service account.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountEmail")
-    def service_account_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The email address associated with the service account, used for account identification and communication.
         """
         return pulumi.get(self, "service_account_email")
 
     @service_account_email.setter
-    def service_account_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_email", value)
 
 
@@ -214,11 +214,11 @@ class ServiceAccountFederatedIdentityProvider(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assertions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceAccountFederatedIdentityProviderAssertionArgs', 'ServiceAccountFederatedIdentityProviderAssertionArgsDict']]]]] = None,
-                 issuer: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
+                 assertions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceAccountFederatedIdentityProviderAssertionArgs', 'ServiceAccountFederatedIdentityProviderAssertionArgsDict']]]]] = None,
+                 issuer: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Service account federated identity provider schema.
@@ -267,11 +267,11 @@ class ServiceAccountFederatedIdentityProvider(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assertions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceAccountFederatedIdentityProviderAssertionArgs', 'ServiceAccountFederatedIdentityProviderAssertionArgsDict']]]]] = None,
-                 issuer: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
+                 assertions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceAccountFederatedIdentityProviderAssertionArgs', 'ServiceAccountFederatedIdentityProviderAssertionArgsDict']]]]] = None,
+                 issuer: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -305,12 +305,12 @@ class ServiceAccountFederatedIdentityProvider(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            assertions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceAccountFederatedIdentityProviderAssertionArgs', 'ServiceAccountFederatedIdentityProviderAssertionArgsDict']]]]] = None,
-            federation_id: Optional[pulumi.Input[_builtins.str]] = None,
-            issuer: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            service_account_email: Optional[pulumi.Input[_builtins.str]] = None) -> 'ServiceAccountFederatedIdentityProvider':
+            assertions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceAccountFederatedIdentityProviderAssertionArgs', 'ServiceAccountFederatedIdentityProviderAssertionArgsDict']]]]] = None,
+            federation_id: pulumi.Input[Optional[_builtins.str]] = None,
+            issuer: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account_email: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServiceAccountFederatedIdentityProvider':
         """
         Get an existing ServiceAccountFederatedIdentityProvider resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

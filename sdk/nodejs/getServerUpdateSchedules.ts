@@ -85,7 +85,7 @@ export interface GetServerUpdateSchedulesOutputArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Server ID (UUID) to which the update schedule is associated.
      */

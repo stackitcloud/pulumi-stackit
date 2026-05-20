@@ -87,15 +87,15 @@ export interface SfsProjectLockState {
     /**
      * ID of the lock.
      */
-    lockId?: pulumi.Input<string>;
+    lockId?: pulumi.Input<string | undefined>;
     /**
      * STACKIT Project ID to which the project lock is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -109,5 +109,5 @@ export interface SfsProjectLockArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

@@ -174,57 +174,57 @@ export interface NetworkAreaState {
      *
      * @deprecated Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `stackit.NetworkAreaRegion` resource instead.
      */
-    defaultNameservers?: pulumi.Input<pulumi.Input<string>[]>;
+    defaultNameservers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The default prefix length for networks in the network area for region `eu01`.
      *
      * @deprecated Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `stackit.NetworkAreaRegion` resource instead.
      */
-    defaultPrefixLength?: pulumi.Input<number>;
+    defaultPrefixLength?: pulumi.Input<number | undefined>;
     /**
      * Labels are key-value string pairs which can be attached to a resource container
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The maximal prefix length for networks in the network area for region `eu01`.
      *
      * @deprecated Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `stackit.NetworkAreaRegion` resource instead.
      */
-    maxPrefixLength?: pulumi.Input<number>;
+    maxPrefixLength?: pulumi.Input<number | undefined>;
     /**
      * The minimal prefix length for networks in the network area for region `eu01`.
      *
      * @deprecated Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `stackit.NetworkAreaRegion` resource instead.
      */
-    minPrefixLength?: pulumi.Input<number>;
+    minPrefixLength?: pulumi.Input<number | undefined>;
     /**
      * The name of the network area.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The network area ID.
      */
-    networkAreaId?: pulumi.Input<string>;
+    networkAreaId?: pulumi.Input<string | undefined>;
     /**
      * List of Network ranges for configuration of network area for region `eu01`.
      *
      * @deprecated Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `stackit.NetworkAreaRegion` resource instead.
      */
-    networkRanges?: pulumi.Input<pulumi.Input<inputs.NetworkAreaNetworkRange>[]>;
+    networkRanges?: pulumi.Input<pulumi.Input<inputs.NetworkAreaNetworkRange>[] | undefined>;
     /**
      * STACKIT organization ID to which the network area is associated.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
     /**
      * The amount of projects currently referencing this area.
      */
-    projectCount?: pulumi.Input<number>;
+    projectCount?: pulumi.Input<number | undefined>;
     /**
      * Classless Inter-Domain Routing (CIDR) for configuration of network area for region `eu01`.
      *
      * @deprecated Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `stackit.NetworkAreaRegion` resource instead.
      */
-    transferNetwork?: pulumi.Input<string>;
+    transferNetwork?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -236,39 +236,39 @@ export interface NetworkAreaArgs {
      *
      * @deprecated Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `stackit.NetworkAreaRegion` resource instead.
      */
-    defaultNameservers?: pulumi.Input<pulumi.Input<string>[]>;
+    defaultNameservers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The default prefix length for networks in the network area for region `eu01`.
      *
      * @deprecated Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `stackit.NetworkAreaRegion` resource instead.
      */
-    defaultPrefixLength?: pulumi.Input<number>;
+    defaultPrefixLength?: pulumi.Input<number | undefined>;
     /**
      * Labels are key-value string pairs which can be attached to a resource container
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The maximal prefix length for networks in the network area for region `eu01`.
      *
      * @deprecated Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `stackit.NetworkAreaRegion` resource instead.
      */
-    maxPrefixLength?: pulumi.Input<number>;
+    maxPrefixLength?: pulumi.Input<number | undefined>;
     /**
      * The minimal prefix length for networks in the network area for region `eu01`.
      *
      * @deprecated Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `stackit.NetworkAreaRegion` resource instead.
      */
-    minPrefixLength?: pulumi.Input<number>;
+    minPrefixLength?: pulumi.Input<number | undefined>;
     /**
      * The name of the network area.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * List of Network ranges for configuration of network area for region `eu01`.
      *
      * @deprecated Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `stackit.NetworkAreaRegion` resource instead.
      */
-    networkRanges?: pulumi.Input<pulumi.Input<inputs.NetworkAreaNetworkRange>[]>;
+    networkRanges?: pulumi.Input<pulumi.Input<inputs.NetworkAreaNetworkRange>[] | undefined>;
     /**
      * STACKIT organization ID to which the network area is associated.
      */
@@ -278,5 +278,5 @@ export interface NetworkAreaArgs {
      *
      * @deprecated Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `stackit.NetworkAreaRegion` resource instead.
      */
-    transferNetwork?: pulumi.Input<string>;
+    transferNetwork?: pulumi.Input<string | undefined>;
 }

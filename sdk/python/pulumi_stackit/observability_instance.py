@@ -23,16 +23,16 @@ class ObservabilityInstanceArgs:
     def __init__(__self__, *,
                  plan_name: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
-                 acls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 alert_config: Optional[pulumi.Input['ObservabilityInstanceAlertConfigArgs']] = None,
-                 grafana_admin_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 logs_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 metrics_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 metrics_retention_days1h_downsampling: Optional[pulumi.Input[_builtins.int]] = None,
-                 metrics_retention_days5m_downsampling: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 traces_retention_days: Optional[pulumi.Input[_builtins.int]] = None):
+                 acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 alert_config: pulumi.Input[Optional['ObservabilityInstanceAlertConfigArgs']] = None,
+                 grafana_admin_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 logs_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 metrics_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 metrics_retention_days1h_downsampling: pulumi.Input[Optional[_builtins.int]] = None,
+                 metrics_retention_days5m_downsampling: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 traces_retention_days: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a ObservabilityInstance resource.
 
@@ -98,161 +98,161 @@ class ObservabilityInstanceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def acls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def acls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The access control list for this instance. Each entry is an IP address range that is permitted to access, in CIDR notation.
         """
         return pulumi.get(self, "acls")
 
     @acls.setter
-    def acls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def acls(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "acls", value)
 
     @_builtins.property
     @pulumi.getter(name="alertConfig")
-    def alert_config(self) -> Optional[pulumi.Input['ObservabilityInstanceAlertConfigArgs']]:
+    def alert_config(self) -> pulumi.Input[Optional['ObservabilityInstanceAlertConfigArgs']]:
         """
         Alert configuration for the instance.
         """
         return pulumi.get(self, "alert_config")
 
     @alert_config.setter
-    def alert_config(self, value: Optional[pulumi.Input['ObservabilityInstanceAlertConfigArgs']]):
+    def alert_config(self, value: pulumi.Input[Optional['ObservabilityInstanceAlertConfigArgs']]):
         pulumi.set(self, "alert_config", value)
 
     @_builtins.property
     @pulumi.getter(name="grafanaAdminEnabled")
-    def grafana_admin_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def grafana_admin_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, a default Grafana server admin user is created. It's recommended to set this to false and use STACKIT SSO (Owner or Observability Grafana Server Admin role) instead. It is still possible to manually create a new Grafana admin user via the Grafana UI later.
         """
         return pulumi.get(self, "grafana_admin_enabled")
 
     @grafana_admin_enabled.setter
-    def grafana_admin_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def grafana_admin_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "grafana_admin_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="logsRetentionDays")
-    def logs_retention_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def logs_retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies for how many days the logs are kept. Default is set to `7`.
         """
         return pulumi.get(self, "logs_retention_days")
 
     @logs_retention_days.setter
-    def logs_retention_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def logs_retention_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "logs_retention_days", value)
 
     @_builtins.property
     @pulumi.getter(name="metricsRetentionDays")
-    def metrics_retention_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def metrics_retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies for how many days the raw metrics are kept. Default is set to `90`.
         """
         return pulumi.get(self, "metrics_retention_days")
 
     @metrics_retention_days.setter
-    def metrics_retention_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def metrics_retention_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "metrics_retention_days", value)
 
     @_builtins.property
     @pulumi.getter(name="metricsRetentionDays1hDownsampling")
-    def metrics_retention_days1h_downsampling(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def metrics_retention_days1h_downsampling(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies for how many days the 1h downsampled metrics are kept. must be less than the value of the 5m downsampling retention. Default is set to `90`.
         """
         return pulumi.get(self, "metrics_retention_days1h_downsampling")
 
     @metrics_retention_days1h_downsampling.setter
-    def metrics_retention_days1h_downsampling(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def metrics_retention_days1h_downsampling(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "metrics_retention_days1h_downsampling", value)
 
     @_builtins.property
     @pulumi.getter(name="metricsRetentionDays5mDownsampling")
-    def metrics_retention_days5m_downsampling(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def metrics_retention_days5m_downsampling(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies for how many days the 5m downsampled metrics are kept. must be less than the value of the general retention. Default is set to `90`.
         """
         return pulumi.get(self, "metrics_retention_days5m_downsampling")
 
     @metrics_retention_days5m_downsampling.setter
-    def metrics_retention_days5m_downsampling(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def metrics_retention_days5m_downsampling(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "metrics_retention_days5m_downsampling", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Observability instance.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def parameters(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Additional parameters.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def parameters(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="tracesRetentionDays")
-    def traces_retention_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def traces_retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies for how many days the traces are kept. Default is set to `7`.
         """
         return pulumi.get(self, "traces_retention_days")
 
     @traces_retention_days.setter
-    def traces_retention_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def traces_retention_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "traces_retention_days", value)
 
 
 @pulumi.input_type
 class _ObservabilityInstanceState:
     def __init__(__self__, *,
-                 acls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 alert_config: Optional[pulumi.Input['ObservabilityInstanceAlertConfigArgs']] = None,
-                 alerting_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 dashboard_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 grafana_admin_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 grafana_initial_admin_password: Optional[pulumi.Input[_builtins.str]] = None,
-                 grafana_initial_admin_user: Optional[pulumi.Input[_builtins.str]] = None,
-                 grafana_public_read_access: Optional[pulumi.Input[_builtins.bool]] = None,
-                 grafana_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 is_updatable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 jaeger_traces_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 jaeger_ui_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 logs_push_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 logs_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 logs_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 metrics_push_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 metrics_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 metrics_retention_days1h_downsampling: Optional[pulumi.Input[_builtins.int]] = None,
-                 metrics_retention_days5m_downsampling: Optional[pulumi.Input[_builtins.int]] = None,
-                 metrics_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 otlp_grpc_traces_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 otlp_http_logs_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 otlp_http_traces_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 otlp_traces_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 plan_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 targets_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 traces_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 zipkin_spans_url: Optional[pulumi.Input[_builtins.str]] = None):
+                 acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 alert_config: pulumi.Input[Optional['ObservabilityInstanceAlertConfigArgs']] = None,
+                 alerting_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 dashboard_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 grafana_admin_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 grafana_initial_admin_password: pulumi.Input[Optional[_builtins.str]] = None,
+                 grafana_initial_admin_user: pulumi.Input[Optional[_builtins.str]] = None,
+                 grafana_public_read_access: pulumi.Input[Optional[_builtins.bool]] = None,
+                 grafana_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 is_updatable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 jaeger_traces_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 jaeger_ui_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 logs_push_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 logs_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 logs_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 metrics_push_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 metrics_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 metrics_retention_days1h_downsampling: pulumi.Input[Optional[_builtins.int]] = None,
+                 metrics_retention_days5m_downsampling: pulumi.Input[Optional[_builtins.int]] = None,
+                 metrics_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 otlp_grpc_traces_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 otlp_http_logs_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 otlp_http_traces_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 otlp_traces_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 plan_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 targets_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 traces_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 zipkin_spans_url: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ObservabilityInstance resources.
 
@@ -358,379 +358,379 @@ class _ObservabilityInstanceState:
 
     @_builtins.property
     @pulumi.getter
-    def acls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def acls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The access control list for this instance. Each entry is an IP address range that is permitted to access, in CIDR notation.
         """
         return pulumi.get(self, "acls")
 
     @acls.setter
-    def acls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def acls(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "acls", value)
 
     @_builtins.property
     @pulumi.getter(name="alertConfig")
-    def alert_config(self) -> Optional[pulumi.Input['ObservabilityInstanceAlertConfigArgs']]:
+    def alert_config(self) -> pulumi.Input[Optional['ObservabilityInstanceAlertConfigArgs']]:
         """
         Alert configuration for the instance.
         """
         return pulumi.get(self, "alert_config")
 
     @alert_config.setter
-    def alert_config(self, value: Optional[pulumi.Input['ObservabilityInstanceAlertConfigArgs']]):
+    def alert_config(self, value: pulumi.Input[Optional['ObservabilityInstanceAlertConfigArgs']]):
         pulumi.set(self, "alert_config", value)
 
     @_builtins.property
     @pulumi.getter(name="alertingUrl")
-    def alerting_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alerting_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies Alerting URL.
         """
         return pulumi.get(self, "alerting_url")
 
     @alerting_url.setter
-    def alerting_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alerting_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alerting_url", value)
 
     @_builtins.property
     @pulumi.getter(name="dashboardUrl")
-    def dashboard_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dashboard_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies Observability instance dashboard URL.
         """
         return pulumi.get(self, "dashboard_url")
 
     @dashboard_url.setter
-    def dashboard_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dashboard_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dashboard_url", value)
 
     @_builtins.property
     @pulumi.getter(name="grafanaAdminEnabled")
-    def grafana_admin_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def grafana_admin_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, a default Grafana server admin user is created. It's recommended to set this to false and use STACKIT SSO (Owner or Observability Grafana Server Admin role) instead. It is still possible to manually create a new Grafana admin user via the Grafana UI later.
         """
         return pulumi.get(self, "grafana_admin_enabled")
 
     @grafana_admin_enabled.setter
-    def grafana_admin_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def grafana_admin_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "grafana_admin_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="grafanaInitialAdminPassword")
     @_utilities.deprecated("""This attribute is deprecated and will be removed on July 5, 2026. Use `grafana_admin_enabled` instead.""")
-    def grafana_initial_admin_password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def grafana_initial_admin_password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies an initial Grafana admin password.
         """
         return pulumi.get(self, "grafana_initial_admin_password")
 
     @grafana_initial_admin_password.setter
-    def grafana_initial_admin_password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def grafana_initial_admin_password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "grafana_initial_admin_password", value)
 
     @_builtins.property
     @pulumi.getter(name="grafanaInitialAdminUser")
     @_utilities.deprecated("""This attribute is deprecated and will be removed on July 5, 2026. Use `grafana_admin_enabled` instead.""")
-    def grafana_initial_admin_user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def grafana_initial_admin_user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies an initial Grafana admin username.
         """
         return pulumi.get(self, "grafana_initial_admin_user")
 
     @grafana_initial_admin_user.setter
-    def grafana_initial_admin_user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def grafana_initial_admin_user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "grafana_initial_admin_user", value)
 
     @_builtins.property
     @pulumi.getter(name="grafanaPublicReadAccess")
-    def grafana_public_read_access(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def grafana_public_read_access(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If true, anyone can access Grafana dashboards without logging in.
         """
         return pulumi.get(self, "grafana_public_read_access")
 
     @grafana_public_read_access.setter
-    def grafana_public_read_access(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def grafana_public_read_access(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "grafana_public_read_access", value)
 
     @_builtins.property
     @pulumi.getter(name="grafanaUrl")
-    def grafana_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def grafana_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies Grafana URL.
         """
         return pulumi.get(self, "grafana_url")
 
     @grafana_url.setter
-    def grafana_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def grafana_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "grafana_url", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Observability instance ID.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="isUpdatable")
-    def is_updatable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_updatable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies if the instance can be updated.
         """
         return pulumi.get(self, "is_updatable")
 
     @is_updatable.setter
-    def is_updatable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_updatable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_updatable", value)
 
     @_builtins.property
     @pulumi.getter(name="jaegerTracesUrl")
-    def jaeger_traces_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jaeger_traces_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "jaeger_traces_url")
 
     @jaeger_traces_url.setter
-    def jaeger_traces_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jaeger_traces_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jaeger_traces_url", value)
 
     @_builtins.property
     @pulumi.getter(name="jaegerUiUrl")
-    def jaeger_ui_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def jaeger_ui_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "jaeger_ui_url")
 
     @jaeger_ui_url.setter
-    def jaeger_ui_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def jaeger_ui_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "jaeger_ui_url", value)
 
     @_builtins.property
     @pulumi.getter(name="logsPushUrl")
-    def logs_push_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logs_push_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies URL for pushing logs.
         """
         return pulumi.get(self, "logs_push_url")
 
     @logs_push_url.setter
-    def logs_push_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logs_push_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logs_push_url", value)
 
     @_builtins.property
     @pulumi.getter(name="logsRetentionDays")
-    def logs_retention_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def logs_retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies for how many days the logs are kept. Default is set to `7`.
         """
         return pulumi.get(self, "logs_retention_days")
 
     @logs_retention_days.setter
-    def logs_retention_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def logs_retention_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "logs_retention_days", value)
 
     @_builtins.property
     @pulumi.getter(name="logsUrl")
-    def logs_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logs_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies Logs URL.
         """
         return pulumi.get(self, "logs_url")
 
     @logs_url.setter
-    def logs_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logs_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logs_url", value)
 
     @_builtins.property
     @pulumi.getter(name="metricsPushUrl")
-    def metrics_push_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metrics_push_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies URL for pushing metrics.
         """
         return pulumi.get(self, "metrics_push_url")
 
     @metrics_push_url.setter
-    def metrics_push_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metrics_push_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metrics_push_url", value)
 
     @_builtins.property
     @pulumi.getter(name="metricsRetentionDays")
-    def metrics_retention_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def metrics_retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies for how many days the raw metrics are kept. Default is set to `90`.
         """
         return pulumi.get(self, "metrics_retention_days")
 
     @metrics_retention_days.setter
-    def metrics_retention_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def metrics_retention_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "metrics_retention_days", value)
 
     @_builtins.property
     @pulumi.getter(name="metricsRetentionDays1hDownsampling")
-    def metrics_retention_days1h_downsampling(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def metrics_retention_days1h_downsampling(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies for how many days the 1h downsampled metrics are kept. must be less than the value of the 5m downsampling retention. Default is set to `90`.
         """
         return pulumi.get(self, "metrics_retention_days1h_downsampling")
 
     @metrics_retention_days1h_downsampling.setter
-    def metrics_retention_days1h_downsampling(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def metrics_retention_days1h_downsampling(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "metrics_retention_days1h_downsampling", value)
 
     @_builtins.property
     @pulumi.getter(name="metricsRetentionDays5mDownsampling")
-    def metrics_retention_days5m_downsampling(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def metrics_retention_days5m_downsampling(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies for how many days the 5m downsampled metrics are kept. must be less than the value of the general retention. Default is set to `90`.
         """
         return pulumi.get(self, "metrics_retention_days5m_downsampling")
 
     @metrics_retention_days5m_downsampling.setter
-    def metrics_retention_days5m_downsampling(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def metrics_retention_days5m_downsampling(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "metrics_retention_days5m_downsampling", value)
 
     @_builtins.property
     @pulumi.getter(name="metricsUrl")
-    def metrics_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metrics_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies metrics URL.
         """
         return pulumi.get(self, "metrics_url")
 
     @metrics_url.setter
-    def metrics_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metrics_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metrics_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the Observability instance.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="otlpGrpcTracesUrl")
-    def otlp_grpc_traces_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def otlp_grpc_traces_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "otlp_grpc_traces_url")
 
     @otlp_grpc_traces_url.setter
-    def otlp_grpc_traces_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def otlp_grpc_traces_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "otlp_grpc_traces_url", value)
 
     @_builtins.property
     @pulumi.getter(name="otlpHttpLogsUrl")
-    def otlp_http_logs_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def otlp_http_logs_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "otlp_http_logs_url")
 
     @otlp_http_logs_url.setter
-    def otlp_http_logs_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def otlp_http_logs_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "otlp_http_logs_url", value)
 
     @_builtins.property
     @pulumi.getter(name="otlpHttpTracesUrl")
-    def otlp_http_traces_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def otlp_http_traces_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "otlp_http_traces_url")
 
     @otlp_http_traces_url.setter
-    def otlp_http_traces_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def otlp_http_traces_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "otlp_http_traces_url", value)
 
     @_builtins.property
     @pulumi.getter(name="otlpTracesUrl")
-    def otlp_traces_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def otlp_traces_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "otlp_traces_url")
 
     @otlp_traces_url.setter
-    def otlp_traces_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def otlp_traces_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "otlp_traces_url", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def parameters(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Additional parameters.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def parameters(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="planId")
-    def plan_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plan_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Observability plan ID.
         """
         return pulumi.get(self, "plan_id")
 
     @plan_id.setter
-    def plan_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plan_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plan_id", value)
 
     @_builtins.property
     @pulumi.getter(name="planName")
-    def plan_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plan_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the Observability plan. E.g. `Observability-Monitoring-Medium-EU01`.
         """
         return pulumi.get(self, "plan_name")
 
     @plan_name.setter
-    def plan_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plan_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plan_name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         STACKIT project ID to which the instance is associated.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="targetsUrl")
-    def targets_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def targets_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies Targets URL.
         """
         return pulumi.get(self, "targets_url")
 
     @targets_url.setter
-    def targets_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def targets_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "targets_url", value)
 
     @_builtins.property
     @pulumi.getter(name="tracesRetentionDays")
-    def traces_retention_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def traces_retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies for how many days the traces are kept. Default is set to `7`.
         """
         return pulumi.get(self, "traces_retention_days")
 
     @traces_retention_days.setter
-    def traces_retention_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def traces_retention_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "traces_retention_days", value)
 
     @_builtins.property
     @pulumi.getter(name="zipkinSpansUrl")
-    def zipkin_spans_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zipkin_spans_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "zipkin_spans_url")
 
     @zipkin_spans_url.setter
-    def zipkin_spans_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zipkin_spans_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zipkin_spans_url", value)
 
 
@@ -740,18 +740,18 @@ class ObservabilityInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 alert_config: Optional[pulumi.Input[Union['ObservabilityInstanceAlertConfigArgs', 'ObservabilityInstanceAlertConfigArgsDict']]] = None,
-                 grafana_admin_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 logs_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 metrics_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 metrics_retention_days1h_downsampling: Optional[pulumi.Input[_builtins.int]] = None,
-                 metrics_retention_days5m_downsampling: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 plan_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 traces_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
+                 acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 alert_config: pulumi.Input[Optional[Union['ObservabilityInstanceAlertConfigArgs', 'ObservabilityInstanceAlertConfigArgsDict']]] = None,
+                 grafana_admin_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 logs_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 metrics_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 metrics_retention_days1h_downsampling: pulumi.Input[Optional[_builtins.int]] = None,
+                 metrics_retention_days5m_downsampling: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 traces_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Observability instance resource schema. Must have a `region` specified in the provider configuration.
@@ -801,18 +801,18 @@ class ObservabilityInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 alert_config: Optional[pulumi.Input[Union['ObservabilityInstanceAlertConfigArgs', 'ObservabilityInstanceAlertConfigArgsDict']]] = None,
-                 grafana_admin_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 logs_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 metrics_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 metrics_retention_days1h_downsampling: Optional[pulumi.Input[_builtins.int]] = None,
-                 metrics_retention_days5m_downsampling: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 plan_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 traces_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
+                 acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 alert_config: pulumi.Input[Optional[Union['ObservabilityInstanceAlertConfigArgs', 'ObservabilityInstanceAlertConfigArgsDict']]] = None,
+                 grafana_admin_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 logs_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 metrics_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 metrics_retention_days1h_downsampling: pulumi.Input[Optional[_builtins.int]] = None,
+                 metrics_retention_days5m_downsampling: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 traces_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -871,39 +871,39 @@ class ObservabilityInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            alert_config: Optional[pulumi.Input[Union['ObservabilityInstanceAlertConfigArgs', 'ObservabilityInstanceAlertConfigArgsDict']]] = None,
-            alerting_url: Optional[pulumi.Input[_builtins.str]] = None,
-            dashboard_url: Optional[pulumi.Input[_builtins.str]] = None,
-            grafana_admin_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            grafana_initial_admin_password: Optional[pulumi.Input[_builtins.str]] = None,
-            grafana_initial_admin_user: Optional[pulumi.Input[_builtins.str]] = None,
-            grafana_public_read_access: Optional[pulumi.Input[_builtins.bool]] = None,
-            grafana_url: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            is_updatable: Optional[pulumi.Input[_builtins.bool]] = None,
-            jaeger_traces_url: Optional[pulumi.Input[_builtins.str]] = None,
-            jaeger_ui_url: Optional[pulumi.Input[_builtins.str]] = None,
-            logs_push_url: Optional[pulumi.Input[_builtins.str]] = None,
-            logs_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-            logs_url: Optional[pulumi.Input[_builtins.str]] = None,
-            metrics_push_url: Optional[pulumi.Input[_builtins.str]] = None,
-            metrics_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-            metrics_retention_days1h_downsampling: Optional[pulumi.Input[_builtins.int]] = None,
-            metrics_retention_days5m_downsampling: Optional[pulumi.Input[_builtins.int]] = None,
-            metrics_url: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            otlp_grpc_traces_url: Optional[pulumi.Input[_builtins.str]] = None,
-            otlp_http_logs_url: Optional[pulumi.Input[_builtins.str]] = None,
-            otlp_http_traces_url: Optional[pulumi.Input[_builtins.str]] = None,
-            otlp_traces_url: Optional[pulumi.Input[_builtins.str]] = None,
-            parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            plan_id: Optional[pulumi.Input[_builtins.str]] = None,
-            plan_name: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            targets_url: Optional[pulumi.Input[_builtins.str]] = None,
-            traces_retention_days: Optional[pulumi.Input[_builtins.int]] = None,
-            zipkin_spans_url: Optional[pulumi.Input[_builtins.str]] = None) -> 'ObservabilityInstance':
+            acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            alert_config: pulumi.Input[Optional[Union['ObservabilityInstanceAlertConfigArgs', 'ObservabilityInstanceAlertConfigArgsDict']]] = None,
+            alerting_url: pulumi.Input[Optional[_builtins.str]] = None,
+            dashboard_url: pulumi.Input[Optional[_builtins.str]] = None,
+            grafana_admin_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            grafana_initial_admin_password: pulumi.Input[Optional[_builtins.str]] = None,
+            grafana_initial_admin_user: pulumi.Input[Optional[_builtins.str]] = None,
+            grafana_public_read_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            grafana_url: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            is_updatable: pulumi.Input[Optional[_builtins.bool]] = None,
+            jaeger_traces_url: pulumi.Input[Optional[_builtins.str]] = None,
+            jaeger_ui_url: pulumi.Input[Optional[_builtins.str]] = None,
+            logs_push_url: pulumi.Input[Optional[_builtins.str]] = None,
+            logs_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+            logs_url: pulumi.Input[Optional[_builtins.str]] = None,
+            metrics_push_url: pulumi.Input[Optional[_builtins.str]] = None,
+            metrics_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+            metrics_retention_days1h_downsampling: pulumi.Input[Optional[_builtins.int]] = None,
+            metrics_retention_days5m_downsampling: pulumi.Input[Optional[_builtins.int]] = None,
+            metrics_url: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            otlp_grpc_traces_url: pulumi.Input[Optional[_builtins.str]] = None,
+            otlp_http_logs_url: pulumi.Input[Optional[_builtins.str]] = None,
+            otlp_http_traces_url: pulumi.Input[Optional[_builtins.str]] = None,
+            otlp_traces_url: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            plan_id: pulumi.Input[Optional[_builtins.str]] = None,
+            plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            targets_url: pulumi.Input[Optional[_builtins.str]] = None,
+            traces_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+            zipkin_spans_url: pulumi.Input[Optional[_builtins.str]] = None) -> 'ObservabilityInstance':
         """
         Get an existing ObservabilityInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

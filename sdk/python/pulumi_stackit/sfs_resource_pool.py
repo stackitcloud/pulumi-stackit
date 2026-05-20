@@ -13,6 +13,8 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['SfsResourcePoolArgs', 'SfsResourcePool']
 
@@ -24,9 +26,10 @@ class SfsResourcePoolArgs:
                  performance_class: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
                  size_gigabytes: pulumi.Input[_builtins.int],
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 snapshots_are_visible: Optional[pulumi.Input[_builtins.bool]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot_policy: pulumi.Input[Optional['SfsResourcePoolSnapshotPolicyArgs']] = None,
+                 snapshots_are_visible: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a SfsResourcePool resource.
 
@@ -37,6 +40,7 @@ class SfsResourcePoolArgs:
         :param pulumi.Input[_builtins.int] size_gigabytes: Size of the resource pool (unit: gigabytes)
         :param pulumi.Input[_builtins.str] name: Name of the resource pool.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
+        :param pulumi.Input['SfsResourcePoolSnapshotPolicyArgs'] snapshot_policy: Name of the snapshot policy.
         :param pulumi.Input[_builtins.bool] snapshots_are_visible: If set to true, snapshots are visible and accessible to users. (default: false)
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
@@ -48,6 +52,8 @@ class SfsResourcePoolArgs:
             pulumi.set(__self__, "name", name)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if snapshot_policy is not None:
+            pulumi.set(__self__, "snapshot_policy", snapshot_policy)
         if snapshots_are_visible is not None:
             pulumi.set(__self__, "snapshots_are_visible", snapshots_are_visible)
 
@@ -113,53 +119,66 @@ class SfsResourcePoolArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource pool.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource region. If not defined, the provider region is used.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
+    @pulumi.getter(name="snapshotPolicy")
+    def snapshot_policy(self) -> pulumi.Input[Optional['SfsResourcePoolSnapshotPolicyArgs']]:
+        """
+        Name of the snapshot policy.
+        """
+        return pulumi.get(self, "snapshot_policy")
+
+    @snapshot_policy.setter
+    def snapshot_policy(self, value: pulumi.Input[Optional['SfsResourcePoolSnapshotPolicyArgs']]):
+        pulumi.set(self, "snapshot_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="snapshotsAreVisible")
-    def snapshots_are_visible(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def snapshots_are_visible(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, snapshots are visible and accessible to users. (default: false)
         """
         return pulumi.get(self, "snapshots_are_visible")
 
     @snapshots_are_visible.setter
-    def snapshots_are_visible(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def snapshots_are_visible(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "snapshots_are_visible", value)
 
 
 @pulumi.input_type
 class _SfsResourcePoolState:
     def __init__(__self__, *,
-                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_acls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 performance_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 size_gigabytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 snapshots_are_visible: Optional[pulumi.Input[_builtins.bool]] = None):
+                 availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 performance_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 size_gigabytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 snapshot_policy: pulumi.Input[Optional['SfsResourcePoolSnapshotPolicyArgs']] = None,
+                 snapshots_are_visible: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering SfsResourcePool resources.
 
@@ -171,6 +190,7 @@ class _SfsResourcePoolState:
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.str] resource_pool_id: Resource pool ID
         :param pulumi.Input[_builtins.int] size_gigabytes: Size of the resource pool (unit: gigabytes)
+        :param pulumi.Input['SfsResourcePoolSnapshotPolicyArgs'] snapshot_policy: Name of the snapshot policy.
         :param pulumi.Input[_builtins.bool] snapshots_are_visible: If set to true, snapshots are visible and accessible to users. (default: false)
         """
         if availability_zone is not None:
@@ -189,115 +209,129 @@ class _SfsResourcePoolState:
             pulumi.set(__self__, "resource_pool_id", resource_pool_id)
         if size_gigabytes is not None:
             pulumi.set(__self__, "size_gigabytes", size_gigabytes)
+        if snapshot_policy is not None:
+            pulumi.set(__self__, "snapshot_policy", snapshot_policy)
         if snapshots_are_visible is not None:
             pulumi.set(__self__, "snapshots_are_visible", snapshots_are_visible)
 
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
-    def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def availability_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Availability zone.
         """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
-    def availability_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def availability_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "availability_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAcls")
-    def ip_acls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ip_acls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of IPs that can mount the resource pool in read-only; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
         """
         return pulumi.get(self, "ip_acls")
 
     @ip_acls.setter
-    def ip_acls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ip_acls(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ip_acls", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource pool.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="performanceClass")
-    def performance_class(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def performance_class(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the performance class.
         """
         return pulumi.get(self, "performance_class")
 
     @performance_class.setter
-    def performance_class(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def performance_class(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "performance_class", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         STACKIT project ID to which the resource pool is associated.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource region. If not defined, the provider region is used.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="resourcePoolId")
-    def resource_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Resource pool ID
         """
         return pulumi.get(self, "resource_pool_id")
 
     @resource_pool_id.setter
-    def resource_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_pool_id", value)
 
     @_builtins.property
     @pulumi.getter(name="sizeGigabytes")
-    def size_gigabytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size_gigabytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Size of the resource pool (unit: gigabytes)
         """
         return pulumi.get(self, "size_gigabytes")
 
     @size_gigabytes.setter
-    def size_gigabytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size_gigabytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size_gigabytes", value)
 
     @_builtins.property
+    @pulumi.getter(name="snapshotPolicy")
+    def snapshot_policy(self) -> pulumi.Input[Optional['SfsResourcePoolSnapshotPolicyArgs']]:
+        """
+        Name of the snapshot policy.
+        """
+        return pulumi.get(self, "snapshot_policy")
+
+    @snapshot_policy.setter
+    def snapshot_policy(self, value: pulumi.Input[Optional['SfsResourcePoolSnapshotPolicyArgs']]):
+        pulumi.set(self, "snapshot_policy", value)
+
+    @_builtins.property
     @pulumi.getter(name="snapshotsAreVisible")
-    def snapshots_are_visible(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def snapshots_are_visible(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, snapshots are visible and accessible to users. (default: false)
         """
         return pulumi.get(self, "snapshots_are_visible")
 
     @snapshots_are_visible.setter
-    def snapshots_are_visible(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def snapshots_are_visible(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "snapshots_are_visible", value)
 
 
@@ -307,14 +341,15 @@ class SfsResourcePool(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_acls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 performance_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 size_gigabytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 snapshots_are_visible: Optional[pulumi.Input[_builtins.bool]] = None,
+                 availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 performance_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 size_gigabytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 snapshot_policy: pulumi.Input[Optional[Union['SfsResourcePoolSnapshotPolicyArgs', 'SfsResourcePoolSnapshotPolicyArgsDict']]] = None,
+                 snapshots_are_visible: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Resource-pool resource schema. Must have a `region` specified in the provider configuration.
@@ -333,6 +368,7 @@ class SfsResourcePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the resource pool is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.int] size_gigabytes: Size of the resource pool (unit: gigabytes)
+        :param pulumi.Input[Union['SfsResourcePoolSnapshotPolicyArgs', 'SfsResourcePoolSnapshotPolicyArgsDict']] snapshot_policy: Name of the snapshot policy.
         :param pulumi.Input[_builtins.bool] snapshots_are_visible: If set to true, snapshots are visible and accessible to users. (default: false)
         """
         ...
@@ -364,14 +400,15 @@ class SfsResourcePool(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 ip_acls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 performance_class: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 size_gigabytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 snapshots_are_visible: Optional[pulumi.Input[_builtins.bool]] = None,
+                 availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 ip_acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 performance_class: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 size_gigabytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 snapshot_policy: pulumi.Input[Optional[Union['SfsResourcePoolSnapshotPolicyArgs', 'SfsResourcePoolSnapshotPolicyArgsDict']]] = None,
+                 snapshots_are_visible: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -398,6 +435,7 @@ class SfsResourcePool(pulumi.CustomResource):
             if size_gigabytes is None and not opts.urn:
                 raise TypeError("Missing required property 'size_gigabytes'")
             __props__.__dict__["size_gigabytes"] = size_gigabytes
+            __props__.__dict__["snapshot_policy"] = snapshot_policy
             __props__.__dict__["snapshots_are_visible"] = snapshots_are_visible
             __props__.__dict__["resource_pool_id"] = None
         super(SfsResourcePool, __self__).__init__(
@@ -410,15 +448,16 @@ class SfsResourcePool(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
-            ip_acls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            performance_class: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-            size_gigabytes: Optional[pulumi.Input[_builtins.int]] = None,
-            snapshots_are_visible: Optional[pulumi.Input[_builtins.bool]] = None) -> 'SfsResourcePool':
+            availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            performance_class: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            size_gigabytes: pulumi.Input[Optional[_builtins.int]] = None,
+            snapshot_policy: pulumi.Input[Optional[Union['SfsResourcePoolSnapshotPolicyArgs', 'SfsResourcePoolSnapshotPolicyArgsDict']]] = None,
+            snapshots_are_visible: pulumi.Input[Optional[_builtins.bool]] = None) -> 'SfsResourcePool':
         """
         Get an existing SfsResourcePool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -434,6 +473,7 @@ class SfsResourcePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.str] resource_pool_id: Resource pool ID
         :param pulumi.Input[_builtins.int] size_gigabytes: Size of the resource pool (unit: gigabytes)
+        :param pulumi.Input[Union['SfsResourcePoolSnapshotPolicyArgs', 'SfsResourcePoolSnapshotPolicyArgsDict']] snapshot_policy: Name of the snapshot policy.
         :param pulumi.Input[_builtins.bool] snapshots_are_visible: If set to true, snapshots are visible and accessible to users. (default: false)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -448,6 +488,7 @@ class SfsResourcePool(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         __props__.__dict__["resource_pool_id"] = resource_pool_id
         __props__.__dict__["size_gigabytes"] = size_gigabytes
+        __props__.__dict__["snapshot_policy"] = snapshot_policy
         __props__.__dict__["snapshots_are_visible"] = snapshots_are_visible
         return SfsResourcePool(resource_name, opts=opts, __props__=__props__)
 
@@ -514,6 +555,14 @@ class SfsResourcePool(pulumi.CustomResource):
         Size of the resource pool (unit: gigabytes)
         """
         return pulumi.get(self, "size_gigabytes")
+
+    @_builtins.property
+    @pulumi.getter(name="snapshotPolicy")
+    def snapshot_policy(self) -> pulumi.Output[Optional['outputs.SfsResourcePoolSnapshotPolicy']]:
+        """
+        Name of the snapshot policy.
+        """
+        return pulumi.get(self, "snapshot_policy")
 
     @_builtins.property
     @pulumi.getter(name="snapshotsAreVisible")

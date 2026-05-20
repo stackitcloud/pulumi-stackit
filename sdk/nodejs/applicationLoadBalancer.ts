@@ -178,64 +178,64 @@ export interface ApplicationLoadBalancerState {
     /**
      * Disable target security group assignemt to allow targets outside of the given network. Connectivity to targets need to be ensured by the customer, including routing and Security Groups (targetSecurityGroup can be assigned). Not changeable after creation.
      */
-    disableTargetSecurityGroupAssignment?: pulumi.Input<boolean>;
+    disableTargetSecurityGroupAssignment?: pulumi.Input<boolean | undefined>;
     /**
      * Reports all errors a Application Load Balancer has.
      */
-    errors?: pulumi.Input<pulumi.Input<inputs.ApplicationLoadBalancerError>[]>;
+    errors?: pulumi.Input<pulumi.Input<inputs.ApplicationLoadBalancerError>[] | undefined>;
     /**
      * The external IP address where this Application Load Balancer is exposed. Not changeable after creation.
      */
-    externalAddress?: pulumi.Input<string>;
+    externalAddress?: pulumi.Input<string | undefined>;
     /**
      * Labels represent user-defined metadata as key-value pairs. Label count cannot exceed 64 per ALB.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * List of all listeners which will accept traffic. Limited to 20.
      */
-    listeners?: pulumi.Input<pulumi.Input<inputs.ApplicationLoadBalancerListener>[]>;
+    listeners?: pulumi.Input<pulumi.Input<inputs.ApplicationLoadBalancerListener>[] | undefined>;
     /**
      * Security Group permitting network traffic from the LoadBalancer to the targets. Useful when disableTargetSecurityGroupAssignment=true to manually assign target security groups to targets.
      */
-    loadBalancerSecurityGroup?: pulumi.Input<inputs.ApplicationLoadBalancerLoadBalancerSecurityGroup>;
+    loadBalancerSecurityGroup?: pulumi.Input<inputs.ApplicationLoadBalancerLoadBalancerSecurityGroup | undefined>;
     /**
      * Application Load balancer name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * List of networks that listeners and targets reside in.
      */
-    networks?: pulumi.Input<pulumi.Input<inputs.ApplicationLoadBalancerNetwork>[]>;
+    networks?: pulumi.Input<pulumi.Input<inputs.ApplicationLoadBalancerNetwork>[] | undefined>;
     /**
      * Defines any optional functionality you want to have enabled on your Application Load Balancer.
      */
-    options?: pulumi.Input<inputs.ApplicationLoadBalancerOptions>;
+    options?: pulumi.Input<inputs.ApplicationLoadBalancerOptions | undefined>;
     /**
      * Service Plan configures the size of the Application Load Balancer e.g. 'p10'. See available plans via STACKIT CLI 'stackit beta alb plans' or API https://docs.api.stackit.cloud/documentation/alb/version/v2#tag/Project/operation/APIService_ListPlans
      */
-    planId?: pulumi.Input<string>;
-    privateAddress?: pulumi.Input<string>;
+    planId?: pulumi.Input<string | undefined>;
+    privateAddress?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the Application Load Balancer is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The resource region (e.g. eu01). If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * List of all target pools which will be used in the Application Load Balancer. Limited to 20.
      */
-    targetPools?: pulumi.Input<pulumi.Input<inputs.ApplicationLoadBalancerTargetPool>[]>;
+    targetPools?: pulumi.Input<pulumi.Input<inputs.ApplicationLoadBalancerTargetPool>[] | undefined>;
     /**
      * Security Group that allows the targets to receive traffic from the LoadBalancer. Useful when disableTargetSecurityGroupAssignment=true to manually assign target security groups to targets.
      */
-    targetSecurityGroup?: pulumi.Input<inputs.ApplicationLoadBalancerTargetSecurityGroup>;
+    targetSecurityGroup?: pulumi.Input<inputs.ApplicationLoadBalancerTargetSecurityGroup | undefined>;
     /**
      * Application Load Balancer resource version. Used for concurrency safe updates.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -245,15 +245,15 @@ export interface ApplicationLoadBalancerArgs {
     /**
      * Disable target security group assignemt to allow targets outside of the given network. Connectivity to targets need to be ensured by the customer, including routing and Security Groups (targetSecurityGroup can be assigned). Not changeable after creation.
      */
-    disableTargetSecurityGroupAssignment?: pulumi.Input<boolean>;
+    disableTargetSecurityGroupAssignment?: pulumi.Input<boolean | undefined>;
     /**
      * The external IP address where this Application Load Balancer is exposed. Not changeable after creation.
      */
-    externalAddress?: pulumi.Input<string>;
+    externalAddress?: pulumi.Input<string | undefined>;
     /**
      * Labels represent user-defined metadata as key-value pairs. Label count cannot exceed 64 per ALB.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * List of all listeners which will accept traffic. Limited to 20.
      */
@@ -261,7 +261,7 @@ export interface ApplicationLoadBalancerArgs {
     /**
      * Application Load balancer name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * List of networks that listeners and targets reside in.
      */
@@ -269,7 +269,7 @@ export interface ApplicationLoadBalancerArgs {
     /**
      * Defines any optional functionality you want to have enabled on your Application Load Balancer.
      */
-    options?: pulumi.Input<inputs.ApplicationLoadBalancerOptions>;
+    options?: pulumi.Input<inputs.ApplicationLoadBalancerOptions | undefined>;
     /**
      * Service Plan configures the size of the Application Load Balancer e.g. 'p10'. See available plans via STACKIT CLI 'stackit beta alb plans' or API https://docs.api.stackit.cloud/documentation/alb/version/v2#tag/Project/operation/APIService_ListPlans
      */
@@ -281,7 +281,7 @@ export interface ApplicationLoadBalancerArgs {
     /**
      * The resource region (e.g. eu01). If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * List of all target pools which will be used in the Application Load Balancer. Limited to 20.
      */

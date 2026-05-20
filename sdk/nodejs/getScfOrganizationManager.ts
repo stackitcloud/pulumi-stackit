@@ -106,5 +106,5 @@ export interface GetScfOrganizationManagerOutputArgs {
     /**
      * The region where the organization of the organization manager is located. If not defined, the provider region is used
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

@@ -24,7 +24,7 @@ class NetworkAreaRegionArgs:
                  ipv4: pulumi.Input['NetworkAreaRegionIpv4Args'],
                  network_area_id: pulumi.Input[_builtins.str],
                  organization_id: pulumi.Input[_builtins.str],
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a NetworkAreaRegion resource.
 
@@ -77,24 +77,24 @@ class NetworkAreaRegionArgs:
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource region. If not defined, the provider region is used.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _NetworkAreaRegionState:
     def __init__(__self__, *,
-                 ipv4: Optional[pulumi.Input['NetworkAreaRegionIpv4Args']] = None,
-                 network_area_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 ipv4: pulumi.Input[Optional['NetworkAreaRegionIpv4Args']] = None,
+                 network_area_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkAreaRegion resources.
 
@@ -114,50 +114,50 @@ class _NetworkAreaRegionState:
 
     @_builtins.property
     @pulumi.getter
-    def ipv4(self) -> Optional[pulumi.Input['NetworkAreaRegionIpv4Args']]:
+    def ipv4(self) -> pulumi.Input[Optional['NetworkAreaRegionIpv4Args']]:
         """
         The regional IPv4 config of a network area.
         """
         return pulumi.get(self, "ipv4")
 
     @ipv4.setter
-    def ipv4(self, value: Optional[pulumi.Input['NetworkAreaRegionIpv4Args']]):
+    def ipv4(self, value: pulumi.Input[Optional['NetworkAreaRegionIpv4Args']]):
         pulumi.set(self, "ipv4", value)
 
     @_builtins.property
     @pulumi.getter(name="networkAreaId")
-    def network_area_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_area_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network area ID.
         """
         return pulumi.get(self, "network_area_id")
 
     @network_area_id.setter
-    def network_area_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_area_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_area_id", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationId")
-    def organization_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         STACKIT organization ID to which the network area is associated.
         """
         return pulumi.get(self, "organization_id")
 
     @organization_id.setter
-    def organization_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource region. If not defined, the provider region is used.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
@@ -167,10 +167,10 @@ class NetworkAreaRegion(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ipv4: Optional[pulumi.Input[Union['NetworkAreaRegionIpv4Args', 'NetworkAreaRegionIpv4ArgsDict']]] = None,
-                 network_area_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 ipv4: pulumi.Input[Optional[Union['NetworkAreaRegionIpv4Args', 'NetworkAreaRegionIpv4ArgsDict']]] = None,
+                 network_area_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Network area region resource schema.
@@ -212,10 +212,10 @@ class NetworkAreaRegion(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ipv4: Optional[pulumi.Input[Union['NetworkAreaRegionIpv4Args', 'NetworkAreaRegionIpv4ArgsDict']]] = None,
-                 network_area_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 ipv4: pulumi.Input[Optional[Union['NetworkAreaRegionIpv4Args', 'NetworkAreaRegionIpv4ArgsDict']]] = None,
+                 network_area_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -245,10 +245,10 @@ class NetworkAreaRegion(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            ipv4: Optional[pulumi.Input[Union['NetworkAreaRegionIpv4Args', 'NetworkAreaRegionIpv4ArgsDict']]] = None,
-            network_area_id: Optional[pulumi.Input[_builtins.str]] = None,
-            organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None) -> 'NetworkAreaRegion':
+            ipv4: pulumi.Input[Optional[Union['NetworkAreaRegionIpv4Args', 'NetworkAreaRegionIpv4ArgsDict']]] = None,
+            network_area_id: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> 'NetworkAreaRegion':
         """
         Get an existing NetworkAreaRegion resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

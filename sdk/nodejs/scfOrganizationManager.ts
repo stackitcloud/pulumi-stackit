@@ -128,39 +128,39 @@ export interface ScfOrganizationManagerState {
     /**
      * The time when the organization manager was created
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Cloud Foundry Organization
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * An auto-generated password
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * The ID of the platform associated with the organization of the organization manager
      */
-    platformId?: pulumi.Input<string>;
+    platformId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project associated with the organization of the organization manager
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region where the organization of the organization manager is located. If not defined, the provider region is used
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The time when the organization manager was last updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * The ID of the organization manager user
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * An auto-generated organization manager user name
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -178,5 +178,5 @@ export interface ScfOrganizationManagerArgs {
     /**
      * The region where the organization of the organization manager is located. If not defined, the provider region is used
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

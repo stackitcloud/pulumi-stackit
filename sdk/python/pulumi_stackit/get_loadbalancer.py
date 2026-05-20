@@ -242,9 +242,9 @@ def get_loadbalancer(name: Optional[_builtins.str] = None,
         security_group_id=pulumi.get(__ret__, 'security_group_id'),
         target_pools=pulumi.get(__ret__, 'target_pools'),
         version=pulumi.get(__ret__, 'version'))
-def get_loadbalancer_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                            region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_loadbalancer_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                            region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLoadbalancerResult]:
     """
     Load Balancer data source schema. Must have a `region` specified in the provider configuration.

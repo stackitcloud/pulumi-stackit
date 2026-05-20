@@ -25,8 +25,8 @@ class NetworkAreaRouteArgs:
                  network_area_id: pulumi.Input[_builtins.str],
                  next_hop: pulumi.Input['NetworkAreaRouteNextHopArgs'],
                  organization_id: pulumi.Input[_builtins.str],
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a NetworkAreaRoute resource.
 
@@ -96,39 +96,39 @@ class NetworkAreaRouteArgs:
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels are key-value string pairs which can be attached to a resource container
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource region. If not defined, the provider region is used.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _NetworkAreaRouteState:
     def __init__(__self__, *,
-                 destination: Optional[pulumi.Input['NetworkAreaRouteDestinationArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 network_area_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_area_route_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop: Optional[pulumi.Input['NetworkAreaRouteNextHopArgs']] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 destination: pulumi.Input[Optional['NetworkAreaRouteDestinationArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 network_area_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_area_route_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop: pulumi.Input[Optional['NetworkAreaRouteNextHopArgs']] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkAreaRoute resources.
 
@@ -157,86 +157,86 @@ class _NetworkAreaRouteState:
 
     @_builtins.property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input['NetworkAreaRouteDestinationArgs']]:
+    def destination(self) -> pulumi.Input[Optional['NetworkAreaRouteDestinationArgs']]:
         """
         Destination of the route.
         """
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input['NetworkAreaRouteDestinationArgs']]):
+    def destination(self, value: pulumi.Input[Optional['NetworkAreaRouteDestinationArgs']]):
         pulumi.set(self, "destination", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels are key-value string pairs which can be attached to a resource container
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="networkAreaId")
-    def network_area_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_area_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network area ID to which the network area route is associated.
         """
         return pulumi.get(self, "network_area_id")
 
     @network_area_id.setter
-    def network_area_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_area_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_area_id", value)
 
     @_builtins.property
     @pulumi.getter(name="networkAreaRouteId")
-    def network_area_route_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_area_route_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network area route ID.
         """
         return pulumi.get(self, "network_area_route_id")
 
     @network_area_route_id.setter
-    def network_area_route_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_area_route_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_area_route_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nextHop")
-    def next_hop(self) -> Optional[pulumi.Input['NetworkAreaRouteNextHopArgs']]:
+    def next_hop(self) -> pulumi.Input[Optional['NetworkAreaRouteNextHopArgs']]:
         """
         Next hop destination.
         """
         return pulumi.get(self, "next_hop")
 
     @next_hop.setter
-    def next_hop(self, value: Optional[pulumi.Input['NetworkAreaRouteNextHopArgs']]):
+    def next_hop(self, value: pulumi.Input[Optional['NetworkAreaRouteNextHopArgs']]):
         pulumi.set(self, "next_hop", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationId")
-    def organization_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         STACKIT organization ID to which the network area is associated.
         """
         return pulumi.get(self, "organization_id")
 
     @organization_id.setter
-    def organization_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource region. If not defined, the provider region is used.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
@@ -246,12 +246,12 @@ class NetworkAreaRoute(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 destination: Optional[pulumi.Input[Union['NetworkAreaRouteDestinationArgs', 'NetworkAreaRouteDestinationArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 network_area_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop: Optional[pulumi.Input[Union['NetworkAreaRouteNextHopArgs', 'NetworkAreaRouteNextHopArgsDict']]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 destination: pulumi.Input[Optional[Union['NetworkAreaRouteDestinationArgs', 'NetworkAreaRouteDestinationArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 network_area_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop: pulumi.Input[Optional[Union['NetworkAreaRouteNextHopArgs', 'NetworkAreaRouteNextHopArgsDict']]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Network area route resource schema. Must have a `region` specified in the provider configuration.
@@ -319,12 +319,12 @@ class NetworkAreaRoute(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 destination: Optional[pulumi.Input[Union['NetworkAreaRouteDestinationArgs', 'NetworkAreaRouteDestinationArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 network_area_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop: Optional[pulumi.Input[Union['NetworkAreaRouteNextHopArgs', 'NetworkAreaRouteNextHopArgsDict']]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 destination: pulumi.Input[Optional[Union['NetworkAreaRouteDestinationArgs', 'NetworkAreaRouteDestinationArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 network_area_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop: pulumi.Input[Optional[Union['NetworkAreaRouteNextHopArgs', 'NetworkAreaRouteNextHopArgsDict']]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -359,13 +359,13 @@ class NetworkAreaRoute(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            destination: Optional[pulumi.Input[Union['NetworkAreaRouteDestinationArgs', 'NetworkAreaRouteDestinationArgsDict']]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            network_area_id: Optional[pulumi.Input[_builtins.str]] = None,
-            network_area_route_id: Optional[pulumi.Input[_builtins.str]] = None,
-            next_hop: Optional[pulumi.Input[Union['NetworkAreaRouteNextHopArgs', 'NetworkAreaRouteNextHopArgsDict']]] = None,
-            organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None) -> 'NetworkAreaRoute':
+            destination: pulumi.Input[Optional[Union['NetworkAreaRouteDestinationArgs', 'NetworkAreaRouteDestinationArgsDict']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            network_area_id: pulumi.Input[Optional[_builtins.str]] = None,
+            network_area_route_id: pulumi.Input[Optional[_builtins.str]] = None,
+            next_hop: pulumi.Input[Optional[Union['NetworkAreaRouteNextHopArgs', 'NetworkAreaRouteNextHopArgsDict']]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> 'NetworkAreaRoute':
         """
         Get an existing NetworkAreaRoute resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

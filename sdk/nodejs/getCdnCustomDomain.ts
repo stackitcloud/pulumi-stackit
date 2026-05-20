@@ -96,7 +96,7 @@ export interface GetCdnCustomDomainOutputArgs {
     /**
      * The TLS certificate for the custom domain. If omitted, a managed certificate will be used. If the block is specified, a custom certificate is used.
      */
-    certificate?: pulumi.Input<inputs.GetCdnCustomDomainCertificateArgs>;
+    certificate?: pulumi.Input<inputs.GetCdnCustomDomainCertificateArgs | undefined>;
     /**
      * CDN distribution ID
      */

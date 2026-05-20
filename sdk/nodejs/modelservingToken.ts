@@ -133,43 +133,43 @@ export interface ModelservingTokenState {
     /**
      * The description of the AI model serving auth token.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the AI model serving auth token.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the AI model serving auth token is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Region to which the AI model serving auth token is associated. If not defined, the provider region is used
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A map of arbitrary key/value pairs that will force recreation of the token when they change, enabling token rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
      */
-    rotateWhenChanged?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    rotateWhenChanged?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * State of the AI model serving auth token.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Content of the AI model serving auth token.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * The AI model serving auth token ID.
      */
-    tokenId?: pulumi.Input<string>;
+    tokenId?: pulumi.Input<string | undefined>;
     /**
      * The TTL duration of the AI model serving auth token. E.g. 5h30m40s,5h,5h30m,30m,30s
      */
-    ttlDuration?: pulumi.Input<string>;
+    ttlDuration?: pulumi.Input<string | undefined>;
     /**
      * The time until the AI model serving auth token is valid.
      */
-    validUntil?: pulumi.Input<string>;
+    validUntil?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -179,11 +179,11 @@ export interface ModelservingTokenArgs {
     /**
      * The description of the AI model serving auth token.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Name of the AI model serving auth token.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the AI model serving auth token is associated.
      */
@@ -191,13 +191,13 @@ export interface ModelservingTokenArgs {
     /**
      * Region to which the AI model serving auth token is associated. If not defined, the provider region is used
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A map of arbitrary key/value pairs that will force recreation of the token when they change, enabling token rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
      */
-    rotateWhenChanged?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    rotateWhenChanged?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The TTL duration of the AI model serving auth token. E.g. 5h30m40s,5h,5h30m,30m,30s
      */
-    ttlDuration?: pulumi.Input<string>;
+    ttlDuration?: pulumi.Input<string | undefined>;
 }

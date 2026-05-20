@@ -186,10 +186,10 @@ def get_sfs_share(project_id: Optional[_builtins.str] = None,
         resource_pool_id=pulumi.get(__ret__, 'resource_pool_id'),
         share_id=pulumi.get(__ret__, 'share_id'),
         space_hard_limit_gigabytes=pulumi.get(__ret__, 'space_hard_limit_gigabytes'))
-def get_sfs_share_output(project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                         region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                         resource_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                         share_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_sfs_share_output(project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                         region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                         resource_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                         share_id: pulumi.Input[Optional[_builtins.str]] = None,
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSfsShareResult]:
     """
     SFS Share schema. Must have a `region` specified in the provider configuration.

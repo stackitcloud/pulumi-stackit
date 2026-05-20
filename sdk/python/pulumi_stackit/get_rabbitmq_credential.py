@@ -211,9 +211,9 @@ def get_rabbitmq_credential(credential_id: Optional[_builtins.str] = None,
         uri=pulumi.get(__ret__, 'uri'),
         uris=pulumi.get(__ret__, 'uris'),
         username=pulumi.get(__ret__, 'username'))
-def get_rabbitmq_credential_output(credential_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                   instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                   project_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_rabbitmq_credential_output(credential_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                   instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                   project_id: pulumi.Input[Optional[_builtins.str]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRabbitmqCredentialResult]:
     """
     RabbitMQ credential data source schema. Must have a `region` specified in the provider configuration.

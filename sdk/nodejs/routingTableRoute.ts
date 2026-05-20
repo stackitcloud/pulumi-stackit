@@ -145,43 +145,43 @@ export interface RoutingTableRouteState {
     /**
      * Date-time when the route was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Destination of the route.
      */
-    destination?: pulumi.Input<inputs.RoutingTableRouteDestination>;
+    destination?: pulumi.Input<inputs.RoutingTableRouteDestination | undefined>;
     /**
      * Labels are key-value string pairs which can be attached to a resource container
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The network area ID to which the routing table is associated.
      */
-    networkAreaId?: pulumi.Input<string>;
+    networkAreaId?: pulumi.Input<string | undefined>;
     /**
      * Next hop destination.
      */
-    nextHop?: pulumi.Input<inputs.RoutingTableRouteNextHop>;
+    nextHop?: pulumi.Input<inputs.RoutingTableRouteNextHop | undefined>;
     /**
      * STACKIT organization ID to which the routing table is associated.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The ID of the route.
      */
-    routeId?: pulumi.Input<string>;
+    routeId?: pulumi.Input<string | undefined>;
     /**
      * The routing tables ID.
      */
-    routingTableId?: pulumi.Input<string>;
+    routingTableId?: pulumi.Input<string | undefined>;
     /**
      * Date-time when the route was updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -195,7 +195,7 @@ export interface RoutingTableRouteArgs {
     /**
      * Labels are key-value string pairs which can be attached to a resource container
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The network area ID to which the routing table is associated.
      */
@@ -211,7 +211,7 @@ export interface RoutingTableRouteArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The routing tables ID.
      */

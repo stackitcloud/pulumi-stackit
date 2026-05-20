@@ -120,35 +120,35 @@ export interface ResourcemanagerFolderState {
     /**
      * Folder container ID. Globally unique, user-friendly identifier.
      */
-    containerId?: pulumi.Input<string>;
+    containerId?: pulumi.Input<string | undefined>;
     /**
      * Date-time at which the folder was created.
      */
-    creationTime?: pulumi.Input<string>;
+    creationTime?: pulumi.Input<string | undefined>;
     /**
      * Folder UUID identifier. Globally unique folder identifier
      */
-    folderId?: pulumi.Input<string>;
+    folderId?: pulumi.Input<string | undefined>;
     /**
      * Labels are key-value string pairs which can be attached to a resource container. A label key must match the regex [A-ZÄÜÖa-zäüöß0-9*-]{1,64}. A label value must match the regex ^$|[A-ZÄÜÖa-zäüöß0-9*-]{1,64}.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the folder.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Email address of the owner of the folder. This value is only considered during creation. Changing it afterwards will have no effect.
      */
-    ownerEmail?: pulumi.Input<string>;
+    ownerEmail?: pulumi.Input<string | undefined>;
     /**
      * Parent resource identifier. Both container ID (user-friendly) and UUID are supported.
      */
-    parentContainerId?: pulumi.Input<string>;
+    parentContainerId?: pulumi.Input<string | undefined>;
     /**
      * Date-time at which the folder was last modified.
      */
-    updateTime?: pulumi.Input<string>;
+    updateTime?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -158,11 +158,11 @@ export interface ResourcemanagerFolderArgs {
     /**
      * Labels are key-value string pairs which can be attached to a resource container. A label key must match the regex [A-ZÄÜÖa-zäüöß0-9*-]{1,64}. A label value must match the regex ^$|[A-ZÄÜÖa-zäüöß0-9*-]{1,64}.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the folder.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Email address of the owner of the folder. This value is only considered during creation. Changing it afterwards will have no effect.
      */

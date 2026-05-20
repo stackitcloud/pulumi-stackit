@@ -60,6 +60,8 @@ type LookupSfsResourcePoolResult struct {
 	SizeGigabytes int `pulumi:"sizeGigabytes"`
 	// Time when the size can be reduced again.
 	SizeReducibleAt string `pulumi:"sizeReducibleAt"`
+	// Name of the snapshot policy.
+	SnapshotPolicy GetSfsResourcePoolSnapshotPolicy `pulumi:"snapshotPolicy"`
 	// If set to true, snapshots are visible and accessible to users. (default: false)
 	SnapshotsAreVisible bool `pulumi:"snapshotsAreVisible"`
 }
@@ -155,6 +157,11 @@ func (o LookupSfsResourcePoolResultOutput) SizeGigabytes() pulumi.IntOutput {
 // Time when the size can be reduced again.
 func (o LookupSfsResourcePoolResultOutput) SizeReducibleAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSfsResourcePoolResult) string { return v.SizeReducibleAt }).(pulumi.StringOutput)
+}
+
+// Name of the snapshot policy.
+func (o LookupSfsResourcePoolResultOutput) SnapshotPolicy() GetSfsResourcePoolSnapshotPolicyOutput {
+	return o.ApplyT(func(v LookupSfsResourcePoolResult) GetSfsResourcePoolSnapshotPolicy { return v.SnapshotPolicy }).(GetSfsResourcePoolSnapshotPolicyOutput)
 }
 
 // If set to true, snapshots are visible and accessible to users. (default: false)

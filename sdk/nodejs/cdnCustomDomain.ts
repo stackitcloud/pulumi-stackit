@@ -109,24 +109,24 @@ export interface CdnCustomDomainState {
     /**
      * The TLS certificate for the custom domain. If omitted, a managed certificate will be used. If the block is specified, a custom certificate is used.
      */
-    certificate?: pulumi.Input<inputs.CdnCustomDomainCertificate>;
+    certificate?: pulumi.Input<inputs.CdnCustomDomainCertificate | undefined>;
     /**
      * CDN distribution ID
      */
-    distributionId?: pulumi.Input<string>;
+    distributionId?: pulumi.Input<string | undefined>;
     /**
      * List of distribution errors
      */
-    errors?: pulumi.Input<pulumi.Input<string>[]>;
-    name?: pulumi.Input<string>;
+    errors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID associated with the distribution
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Status of the distribution
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -136,12 +136,12 @@ export interface CdnCustomDomainArgs {
     /**
      * The TLS certificate for the custom domain. If omitted, a managed certificate will be used. If the block is specified, a custom certificate is used.
      */
-    certificate?: pulumi.Input<inputs.CdnCustomDomainCertificate>;
+    certificate?: pulumi.Input<inputs.CdnCustomDomainCertificate | undefined>;
     /**
      * CDN distribution ID
      */
     distributionId: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID associated with the distribution
      */

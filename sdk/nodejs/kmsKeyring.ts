@@ -104,23 +104,23 @@ export interface KmsKeyringState {
     /**
      * A user chosen description to distinguish multiple keyrings.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name to distinguish multiple keyrings.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * An auto generated unique id which identifies the keyring.
      */
-    keyringId?: pulumi.Input<string>;
+    keyringId?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the keyring is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -130,7 +130,7 @@ export interface KmsKeyringArgs {
     /**
      * A user chosen description to distinguish multiple keyrings.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name to distinguish multiple keyrings.
      */
@@ -142,5 +142,5 @@ export interface KmsKeyringArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

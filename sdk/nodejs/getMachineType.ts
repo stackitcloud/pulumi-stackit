@@ -79,6 +79,6 @@ export interface GetMachineTypeOutputArgs {
      */
     filter: pulumi.Input<string>;
     projectId: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
-    sortAscending?: pulumi.Input<boolean>;
+    region?: pulumi.Input<string | undefined>;
+    sortAscending?: pulumi.Input<boolean | undefined>;
 }

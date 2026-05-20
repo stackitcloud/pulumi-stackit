@@ -105,6 +105,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('iaasCustomEndpoint')
 
     @_builtins.property
+    def intake_custom_endpoint(self) -> Optional[str]:
+        """
+        Custom endpoint for the Intake service
+        """
+        return __config__.get('intakeCustomEndpoint')
+
+    @_builtins.property
     def kms_custom_endpoint(self) -> Optional[str]:
         """
         Custom endpoint for the KMS service

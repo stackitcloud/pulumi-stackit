@@ -95,15 +95,15 @@ export interface AuthorizationOrganizationRoleAssignmentState {
     /**
      * Organization Resource to assign the role to.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.
      */
-    subject?: pulumi.Input<string>;
+    subject?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -74,6 +74,11 @@ iaasCustomEndpoint: Optional[str]
 Custom endpoint for the IaaS service
 """
 
+intakeCustomEndpoint: Optional[str]
+"""
+Custom endpoint for the Intake service
+"""
+
 kmsCustomEndpoint: Optional[str]
 """
 Custom endpoint for the KMS service

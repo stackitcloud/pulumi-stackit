@@ -122,31 +122,31 @@ export class PostgresflexUser extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PostgresflexUser resources.
  */
 export interface PostgresflexUserState {
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * ID of the PostgresFlex instance.
      */
-    instanceId?: pulumi.Input<string>;
-    password?: pulumi.Input<string>;
-    port?: pulumi.Input<number>;
+    instanceId?: pulumi.Input<string | undefined>;
+    password?: pulumi.Input<string | undefined>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * STACKIT project ID to which the instance is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Database access levels for the user.
      */
-    roles?: pulumi.Input<pulumi.Input<string>[]>;
-    uri?: pulumi.Input<string>;
+    roles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    uri?: pulumi.Input<string | undefined>;
     /**
      * User ID.
      */
-    userId?: pulumi.Input<string>;
-    username?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -164,7 +164,7 @@ export interface PostgresflexUserArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Database access levels for the user.
      */

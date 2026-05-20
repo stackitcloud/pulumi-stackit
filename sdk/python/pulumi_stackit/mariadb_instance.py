@@ -24,8 +24,8 @@ class MariadbInstanceArgs:
                  plan_name: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
                  version: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input['MariadbInstanceParametersArgs']] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional['MariadbInstanceParametersArgs']] = None):
         """
         The set of arguments for constructing a MariadbInstance resource.
 
@@ -81,44 +81,44 @@ class MariadbInstanceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input['MariadbInstanceParametersArgs']]:
+    def parameters(self) -> pulumi.Input[Optional['MariadbInstanceParametersArgs']]:
         """
         Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input['MariadbInstanceParametersArgs']]):
+    def parameters(self, value: pulumi.Input[Optional['MariadbInstanceParametersArgs']]):
         pulumi.set(self, "parameters", value)
 
 
 @pulumi.input_type
 class _MariadbInstanceState:
     def __init__(__self__, *,
-                 cf_guid: Optional[pulumi.Input[_builtins.str]] = None,
-                 cf_organization_guid: Optional[pulumi.Input[_builtins.str]] = None,
-                 cf_space_guid: Optional[pulumi.Input[_builtins.str]] = None,
-                 dashboard_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input['MariadbInstanceParametersArgs']] = None,
-                 plan_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 cf_guid: pulumi.Input[Optional[_builtins.str]] = None,
+                 cf_organization_guid: pulumi.Input[Optional[_builtins.str]] = None,
+                 cf_space_guid: pulumi.Input[Optional[_builtins.str]] = None,
+                 dashboard_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional['MariadbInstanceParametersArgs']] = None,
+                 plan_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MariadbInstance resources.
 
@@ -157,131 +157,131 @@ class _MariadbInstanceState:
 
     @_builtins.property
     @pulumi.getter(name="cfGuid")
-    def cf_guid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cf_guid(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cf_guid")
 
     @cf_guid.setter
-    def cf_guid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cf_guid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cf_guid", value)
 
     @_builtins.property
     @pulumi.getter(name="cfOrganizationGuid")
-    def cf_organization_guid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cf_organization_guid(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cf_organization_guid")
 
     @cf_organization_guid.setter
-    def cf_organization_guid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cf_organization_guid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cf_organization_guid", value)
 
     @_builtins.property
     @pulumi.getter(name="cfSpaceGuid")
-    def cf_space_guid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cf_space_guid(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cf_space_guid")
 
     @cf_space_guid.setter
-    def cf_space_guid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cf_space_guid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cf_space_guid", value)
 
     @_builtins.property
     @pulumi.getter(name="dashboardUrl")
-    def dashboard_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dashboard_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "dashboard_url")
 
     @dashboard_url.setter
-    def dashboard_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dashboard_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dashboard_url", value)
 
     @_builtins.property
     @pulumi.getter(name="imageUrl")
-    def image_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "image_url")
 
     @image_url.setter
-    def image_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_url", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the MariaDB instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input['MariadbInstanceParametersArgs']]:
+    def parameters(self) -> pulumi.Input[Optional['MariadbInstanceParametersArgs']]:
         """
         Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input['MariadbInstanceParametersArgs']]):
+    def parameters(self, value: pulumi.Input[Optional['MariadbInstanceParametersArgs']]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="planId")
-    def plan_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plan_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The selected plan ID.
         """
         return pulumi.get(self, "plan_id")
 
     @plan_id.setter
-    def plan_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plan_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plan_id", value)
 
     @_builtins.property
     @pulumi.getter(name="planName")
-    def plan_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plan_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The selected plan name.
         """
         return pulumi.get(self, "plan_name")
 
     @plan_name.setter
-    def plan_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plan_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plan_name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         STACKIT project ID to which the instance is associated.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service version.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
@@ -291,11 +291,11 @@ class MariadbInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Union['MariadbInstanceParametersArgs', 'MariadbInstanceParametersArgsDict']]] = None,
-                 plan_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Union['MariadbInstanceParametersArgs', 'MariadbInstanceParametersArgsDict']]] = None,
+                 plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         MariaDB instance resource schema. Must have a `region` specified in the provider configuration.
@@ -338,11 +338,11 @@ class MariadbInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Union['MariadbInstanceParametersArgs', 'MariadbInstanceParametersArgsDict']]] = None,
-                 plan_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Union['MariadbInstanceParametersArgs', 'MariadbInstanceParametersArgsDict']]] = None,
+                 plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -380,18 +380,18 @@ class MariadbInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cf_guid: Optional[pulumi.Input[_builtins.str]] = None,
-            cf_organization_guid: Optional[pulumi.Input[_builtins.str]] = None,
-            cf_space_guid: Optional[pulumi.Input[_builtins.str]] = None,
-            dashboard_url: Optional[pulumi.Input[_builtins.str]] = None,
-            image_url: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parameters: Optional[pulumi.Input[Union['MariadbInstanceParametersArgs', 'MariadbInstanceParametersArgsDict']]] = None,
-            plan_id: Optional[pulumi.Input[_builtins.str]] = None,
-            plan_name: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            version: Optional[pulumi.Input[_builtins.str]] = None) -> 'MariadbInstance':
+            cf_guid: pulumi.Input[Optional[_builtins.str]] = None,
+            cf_organization_guid: pulumi.Input[Optional[_builtins.str]] = None,
+            cf_space_guid: pulumi.Input[Optional[_builtins.str]] = None,
+            dashboard_url: pulumi.Input[Optional[_builtins.str]] = None,
+            image_url: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[Union['MariadbInstanceParametersArgs', 'MariadbInstanceParametersArgsDict']]] = None,
+            plan_id: pulumi.Input[Optional[_builtins.str]] = None,
+            plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> 'MariadbInstance':
         """
         Get an existing MariadbInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

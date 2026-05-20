@@ -23,18 +23,18 @@ class ServerArgs:
     def __init__(__self__, *,
                  machine_type: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
-                 affinity_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 agent: Optional[pulumi.Input['ServerAgentArgs']] = None,
-                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 boot_volume: Optional[pulumi.Input['ServerBootVolumeArgs']] = None,
-                 desired_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 keypair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None):
+                 affinity_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 agent: pulumi.Input[Optional['ServerAgentArgs']] = None,
+                 availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 boot_volume: pulumi.Input[Optional['ServerBootVolumeArgs']] = None,
+                 desired_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 keypair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Server resource.
 
@@ -106,170 +106,170 @@ class ServerArgs:
 
     @_builtins.property
     @pulumi.getter(name="affinityGroup")
-    def affinity_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def affinity_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The affinity group the server is assigned to.
         """
         return pulumi.get(self, "affinity_group")
 
     @affinity_group.setter
-    def affinity_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def affinity_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "affinity_group", value)
 
     @_builtins.property
     @pulumi.getter
-    def agent(self) -> Optional[pulumi.Input['ServerAgentArgs']]:
+    def agent(self) -> pulumi.Input[Optional['ServerAgentArgs']]:
         """
         The STACKIT Server Agent configured for the server
         """
         return pulumi.get(self, "agent")
 
     @agent.setter
-    def agent(self, value: Optional[pulumi.Input['ServerAgentArgs']]):
+    def agent(self, value: pulumi.Input[Optional['ServerAgentArgs']]):
         pulumi.set(self, "agent", value)
 
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
-    def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def availability_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The availability zone of the server.
         """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
-    def availability_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def availability_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "availability_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="bootVolume")
-    def boot_volume(self) -> Optional[pulumi.Input['ServerBootVolumeArgs']]:
+    def boot_volume(self) -> pulumi.Input[Optional['ServerBootVolumeArgs']]:
         """
         The boot volume for the server
         """
         return pulumi.get(self, "boot_volume")
 
     @boot_volume.setter
-    def boot_volume(self, value: Optional[pulumi.Input['ServerBootVolumeArgs']]):
+    def boot_volume(self, value: pulumi.Input[Optional['ServerBootVolumeArgs']]):
         pulumi.set(self, "boot_volume", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredStatus")
-    def desired_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desired_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desired status of the server resource. Possible values are: `active`, `inactive`, `deallocated`.
         """
         return pulumi.get(self, "desired_status")
 
     @desired_status.setter
-    def desired_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desired_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desired_status", value)
 
     @_builtins.property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The image ID to be used for an ephemeral disk on the server.
         """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
-    def image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_id", value)
 
     @_builtins.property
     @pulumi.getter(name="keypairName")
-    def keypair_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def keypair_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the keypair used during server creation.
         """
         return pulumi.get(self, "keypair_name")
 
     @keypair_name.setter
-    def keypair_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def keypair_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "keypair_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels are key-value string pairs which can be attached to a resource container
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the server.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def network_interfaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IDs of network interfaces which should be attached to the server. Updating it will recreate the server. **Required when (re-)creating servers. Still marked as optional in the schema to not introduce breaking changes. There will be a migration path for this field soon.**
         """
         return pulumi.get(self, "network_interfaces")
 
     @network_interfaces.setter
-    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def network_interfaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "network_interfaces", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource region. If not defined, the provider region is used.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User data that is passed via cloud-init to the server.
         """
         return pulumi.get(self, "user_data")
 
     @user_data.setter
-    def user_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_data", value)
 
 
 @pulumi.input_type
 class _ServerState:
     def __init__(__self__, *,
-                 affinity_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 agent: Optional[pulumi.Input['ServerAgentArgs']] = None,
-                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 boot_volume: Optional[pulumi.Input['ServerBootVolumeArgs']] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 desired_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 keypair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 launched_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None):
+                 affinity_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 agent: pulumi.Input[Optional['ServerAgentArgs']] = None,
+                 availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 boot_volume: pulumi.Input[Optional['ServerBootVolumeArgs']] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 desired_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 keypair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 launched_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Server resources.
 
@@ -331,218 +331,218 @@ class _ServerState:
 
     @_builtins.property
     @pulumi.getter(name="affinityGroup")
-    def affinity_group(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def affinity_group(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The affinity group the server is assigned to.
         """
         return pulumi.get(self, "affinity_group")
 
     @affinity_group.setter
-    def affinity_group(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def affinity_group(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "affinity_group", value)
 
     @_builtins.property
     @pulumi.getter
-    def agent(self) -> Optional[pulumi.Input['ServerAgentArgs']]:
+    def agent(self) -> pulumi.Input[Optional['ServerAgentArgs']]:
         """
         The STACKIT Server Agent configured for the server
         """
         return pulumi.get(self, "agent")
 
     @agent.setter
-    def agent(self, value: Optional[pulumi.Input['ServerAgentArgs']]):
+    def agent(self, value: pulumi.Input[Optional['ServerAgentArgs']]):
         pulumi.set(self, "agent", value)
 
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
-    def availability_zone(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def availability_zone(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The availability zone of the server.
         """
         return pulumi.get(self, "availability_zone")
 
     @availability_zone.setter
-    def availability_zone(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def availability_zone(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "availability_zone", value)
 
     @_builtins.property
     @pulumi.getter(name="bootVolume")
-    def boot_volume(self) -> Optional[pulumi.Input['ServerBootVolumeArgs']]:
+    def boot_volume(self) -> pulumi.Input[Optional['ServerBootVolumeArgs']]:
         """
         The boot volume for the server
         """
         return pulumi.get(self, "boot_volume")
 
     @boot_volume.setter
-    def boot_volume(self, value: Optional[pulumi.Input['ServerBootVolumeArgs']]):
+    def boot_volume(self, value: pulumi.Input[Optional['ServerBootVolumeArgs']]):
         pulumi.set(self, "boot_volume", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Date-time when the server was created
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="desiredStatus")
-    def desired_status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def desired_status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The desired status of the server resource. Possible values are: `active`, `inactive`, `deallocated`.
         """
         return pulumi.get(self, "desired_status")
 
     @desired_status.setter
-    def desired_status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def desired_status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "desired_status", value)
 
     @_builtins.property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The image ID to be used for an ephemeral disk on the server.
         """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
-    def image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_id", value)
 
     @_builtins.property
     @pulumi.getter(name="keypairName")
-    def keypair_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def keypair_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the keypair used during server creation.
         """
         return pulumi.get(self, "keypair_name")
 
     @keypair_name.setter
-    def keypair_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def keypair_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "keypair_name", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels are key-value string pairs which can be attached to a resource container
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="launchedAt")
-    def launched_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def launched_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Date-time when the server was launched
         """
         return pulumi.get(self, "launched_at")
 
     @launched_at.setter
-    def launched_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def launched_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "launched_at", value)
 
     @_builtins.property
     @pulumi.getter(name="machineType")
-    def machine_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def machine_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the type of the machine for the server. Possible values are documented in [Virtual machine flavors](https://docs.stackit.cloud/products/compute-engine/server/basics/machine-types/)
         """
         return pulumi.get(self, "machine_type")
 
     @machine_type.setter
-    def machine_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def machine_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "machine_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the server.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkInterfaces")
-    def network_interfaces(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def network_interfaces(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The IDs of network interfaces which should be attached to the server. Updating it will recreate the server. **Required when (re-)creating servers. Still marked as optional in the schema to not introduce breaking changes. There will be a migration path for this field soon.**
         """
         return pulumi.get(self, "network_interfaces")
 
     @network_interfaces.setter
-    def network_interfaces(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def network_interfaces(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "network_interfaces", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         STACKIT project ID to which the server is associated.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource region. If not defined, the provider region is used.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="serverId")
-    def server_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The server ID.
         """
         return pulumi.get(self, "server_id")
 
     @server_id.setter
-    def server_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_id", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Date-time when the server was updated
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User data that is passed via cloud-init to the server.
         """
         return pulumi.get(self, "user_data")
 
     @user_data.setter
-    def user_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_data", value)
 
 
@@ -552,20 +552,20 @@ class Server(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 affinity_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 agent: Optional[pulumi.Input[Union['ServerAgentArgs', 'ServerAgentArgsDict']]] = None,
-                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 boot_volume: Optional[pulumi.Input[Union['ServerBootVolumeArgs', 'ServerBootVolumeArgsDict']]] = None,
-                 desired_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 keypair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
+                 affinity_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 agent: pulumi.Input[Optional[Union['ServerAgentArgs', 'ServerAgentArgsDict']]] = None,
+                 availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 boot_volume: pulumi.Input[Optional[Union['ServerBootVolumeArgs', 'ServerBootVolumeArgsDict']]] = None,
+                 desired_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 keypair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Server resource schema. Must have a region specified in the provider configuration.
@@ -645,20 +645,20 @@ class Server(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 affinity_group: Optional[pulumi.Input[_builtins.str]] = None,
-                 agent: Optional[pulumi.Input[Union['ServerAgentArgs', 'ServerAgentArgsDict']]] = None,
-                 availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
-                 boot_volume: Optional[pulumi.Input[Union['ServerBootVolumeArgs', 'ServerBootVolumeArgsDict']]] = None,
-                 desired_status: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 keypair_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
+                 affinity_group: pulumi.Input[Optional[_builtins.str]] = None,
+                 agent: pulumi.Input[Optional[Union['ServerAgentArgs', 'ServerAgentArgsDict']]] = None,
+                 availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+                 boot_volume: pulumi.Input[Optional[Union['ServerBootVolumeArgs', 'ServerBootVolumeArgsDict']]] = None,
+                 desired_status: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 keypair_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -700,24 +700,24 @@ class Server(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            affinity_group: Optional[pulumi.Input[_builtins.str]] = None,
-            agent: Optional[pulumi.Input[Union['ServerAgentArgs', 'ServerAgentArgsDict']]] = None,
-            availability_zone: Optional[pulumi.Input[_builtins.str]] = None,
-            boot_volume: Optional[pulumi.Input[Union['ServerBootVolumeArgs', 'ServerBootVolumeArgsDict']]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            desired_status: Optional[pulumi.Input[_builtins.str]] = None,
-            image_id: Optional[pulumi.Input[_builtins.str]] = None,
-            keypair_name: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            launched_at: Optional[pulumi.Input[_builtins.str]] = None,
-            machine_type: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            server_id: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-            user_data: Optional[pulumi.Input[_builtins.str]] = None) -> 'Server':
+            affinity_group: pulumi.Input[Optional[_builtins.str]] = None,
+            agent: pulumi.Input[Optional[Union['ServerAgentArgs', 'ServerAgentArgsDict']]] = None,
+            availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            boot_volume: pulumi.Input[Optional[Union['ServerBootVolumeArgs', 'ServerBootVolumeArgsDict']]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_status: pulumi.Input[Optional[_builtins.str]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            keypair_name: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            launched_at: pulumi.Input[Optional[_builtins.str]] = None,
+            machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            server_id: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            user_data: pulumi.Input[Optional[_builtins.str]] = None) -> 'Server':
         """
         Get an existing Server resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

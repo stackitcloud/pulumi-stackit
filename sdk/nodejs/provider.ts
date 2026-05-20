@@ -66,6 +66,10 @@ export class Provider extends pulumi.ProviderResource {
      */
     declare public readonly iaasCustomEndpoint: pulumi.Output<string | undefined>;
     /**
+     * Custom endpoint for the Intake service
+     */
+    declare public readonly intakeCustomEndpoint: pulumi.Output<string | undefined>;
+    /**
      * Custom endpoint for the KMS service
      */
     declare public readonly kmsCustomEndpoint: pulumi.Output<string | undefined>;
@@ -233,6 +237,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["experiments"] = pulumi.output(args?.experiments).apply(JSON.stringify);
             resourceInputs["gitCustomEndpoint"] = args?.gitCustomEndpoint;
             resourceInputs["iaasCustomEndpoint"] = args?.iaasCustomEndpoint;
+            resourceInputs["intakeCustomEndpoint"] = args?.intakeCustomEndpoint;
             resourceInputs["kmsCustomEndpoint"] = args?.kmsCustomEndpoint;
             resourceInputs["loadbalancerCustomEndpoint"] = args?.loadbalancerCustomEndpoint;
             resourceInputs["logmeCustomEndpoint"] = args?.logmeCustomEndpoint;
@@ -291,199 +296,203 @@ export interface ProviderArgs {
     /**
      * Custom endpoint for the Application Load Balancer TLS Certificate service
      */
-    albCertificatesCustomEndpoint?: pulumi.Input<string>;
+    albCertificatesCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Custom endpoint for the Application Load Balancer service
      */
-    albCustomEndpoint?: pulumi.Input<string>;
+    albCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Custom endpoint for the Membership service
      */
-    authorizationCustomEndpoint?: pulumi.Input<string>;
+    authorizationCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Custom endpoint for the CDN service
      */
-    cdnCustomEndpoint?: pulumi.Input<string>;
+    cdnCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Path of JSON from where the credentials are read. Takes precedence over the env var `STACKIT_CREDENTIALS_PATH`. Default value is `~/.stackit/credentials.json`.
      */
-    credentialsPath?: pulumi.Input<string>;
+    credentialsPath?: pulumi.Input<string | undefined>;
     /**
      * Region will be used as the default location for regional services. Not all services require a region, some are global
      */
-    defaultRegion?: pulumi.Input<string>;
+    defaultRegion?: pulumi.Input<string | undefined>;
     /**
      * Custom endpoint for the DNS service
      */
-    dnsCustomEndpoint?: pulumi.Input<string>;
+    dnsCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Custom endpoint for the Edge Cloud service
      */
-    edgecloudCustomEndpoint?: pulumi.Input<string>;
+    edgecloudCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Enable beta resources. Default is false.
      */
-    enableBetaResources?: pulumi.Input<boolean>;
+    enableBetaResources?: pulumi.Input<boolean | undefined>;
     /**
      * Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: iam, routing-tables, network
      */
-    experiments?: pulumi.Input<pulumi.Input<string>[]>;
+    experiments?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Custom endpoint for the Git service
      */
-    gitCustomEndpoint?: pulumi.Input<string>;
+    gitCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Custom endpoint for the IaaS service
      */
-    iaasCustomEndpoint?: pulumi.Input<string>;
+    iaasCustomEndpoint?: pulumi.Input<string | undefined>;
+    /**
+     * Custom endpoint for the Intake service
+     */
+    intakeCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Custom endpoint for the KMS service
      */
-    kmsCustomEndpoint?: pulumi.Input<string>;
+    kmsCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Custom endpoint for the Load Balancer service
      */
-    loadbalancerCustomEndpoint?: pulumi.Input<string>;
+    loadbalancerCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Custom endpoint for the LogMe service
      */
-    logmeCustomEndpoint?: pulumi.Input<string>;
+    logmeCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Custom endpoint for the Logs service
      */
-    logsCustomEndpoint?: pulumi.Input<string>;
+    logsCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Custom endpoint for the MariaDB service
      */
-    mariadbCustomEndpoint?: pulumi.Input<string>;
+    mariadbCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Custom endpoint for the AI Model Serving service
      */
-    modelservingCustomEndpoint?: pulumi.Input<string>;
+    modelservingCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Custom endpoint for the MongoDB Flex service
      */
-    mongodbflexCustomEndpoint?: pulumi.Input<string>;
+    mongodbflexCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Custom endpoint for the Object Storage service
      */
-    objectstorageCustomEndpoint?: pulumi.Input<string>;
+    objectstorageCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Custom endpoint for the Observability service
      */
-    observabilityCustomEndpoint?: pulumi.Input<string>;
+    observabilityCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
      * The bearer token for the request to the OIDC provider. For use when authenticating as a Service Account using OpenID Connect.
      */
-    oidcRequestToken?: pulumi.Input<string>;
+    oidcRequestToken?: pulumi.Input<string | undefined>;
     /**
      * The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Account using OpenID Connect.
      */
-    oidcRequestUrl?: pulumi.Input<string>;
+    oidcRequestUrl?: pulumi.Input<string | undefined>;
     /**
      * Custom endpoint for the OpenSearch service
      */
-    opensearchCustomEndpoint?: pulumi.Input<string>;
+    opensearchCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Custom endpoint for the PostgresFlex service
      */
-    postgresflexCustomEndpoint?: pulumi.Input<string>;
+    postgresflexCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Private RSA key used for authentication, relevant for the key flow. It takes precedence over the private key that is included in the service account key.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * Path for the private RSA key used for authentication, relevant for the key flow. It takes precedence over the private key that is included in the service account key.
      */
-    privateKeyPath?: pulumi.Input<string>;
+    privateKeyPath?: pulumi.Input<string | undefined>;
     /**
      * Custom endpoint for the RabbitMQ service
      */
-    rabbitmqCustomEndpoint?: pulumi.Input<string>;
+    rabbitmqCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Custom endpoint for the Redis service
      */
-    redisCustomEndpoint?: pulumi.Input<string>;
+    redisCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Region will be used as the default location for regional services. Not all services require a region, some are global
      *
      * @deprecated This attribute is deprecated. Use 'default_region' instead
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Custom endpoint for the Resource Manager service
      */
-    resourcemanagerCustomEndpoint?: pulumi.Input<string>;
+    resourcemanagerCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Custom endpoint for the Cloud Foundry (SCF) service
      */
-    scfCustomEndpoint?: pulumi.Input<string>;
+    scfCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Custom endpoint for the Secrets Manager service
      */
-    secretsmanagerCustomEndpoint?: pulumi.Input<string>;
+    secretsmanagerCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Custom endpoint for the Server Backup service
      */
-    serverBackupCustomEndpoint?: pulumi.Input<string>;
+    serverBackupCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Custom endpoint for the Server Update service
      */
-    serverUpdateCustomEndpoint?: pulumi.Input<string>;
+    serverUpdateCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Custom endpoint for the Service Account service
      */
-    serviceAccountCustomEndpoint?: pulumi.Input<string>;
+    serviceAccountCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource. This value is required using OpenID Connect authentication.
      */
-    serviceAccountEmail?: pulumi.Input<string>;
+    serviceAccountEmail?: pulumi.Input<string | undefined>;
     /**
      * The OIDC ID token for use when authenticating as a Service Account using OpenID Connect.
      */
-    serviceAccountFederatedToken?: pulumi.Input<string>;
+    serviceAccountFederatedToken?: pulumi.Input<string | undefined>;
     /**
      * Path for workload identity assertion. It can also be set using the environment variable STACKIT_FEDERATED_TOKEN_FILE.
      */
-    serviceAccountFederatedTokenPath?: pulumi.Input<string>;
+    serviceAccountFederatedTokenPath?: pulumi.Input<string | undefined>;
     /**
      * Service account key used for authentication. If set, the key flow will be used to authenticate all operations.
      */
-    serviceAccountKey?: pulumi.Input<string>;
+    serviceAccountKey?: pulumi.Input<string | undefined>;
     /**
      * Path for the service account key used for authentication. If set, the key flow will be used to authenticate all operations.
      */
-    serviceAccountKeyPath?: pulumi.Input<string>;
+    serviceAccountKeyPath?: pulumi.Input<string | undefined>;
     /**
      * Token used for authentication. If set, the token flow will be used to authenticate all operations.
      *
      * @deprecated Authentication via Service Account Token is deprecated and will be removed on December 17, 2025. Please use `serviceAccountKey` or `serviceAccountKeyPath` instead. For a smooth transition, refer to our migration guide: https://docs.stackit.cloud/platform/access-and-identity/service-accounts/migrate-flows/
      */
-    serviceAccountToken?: pulumi.Input<string>;
+    serviceAccountToken?: pulumi.Input<string | undefined>;
     /**
      * Custom endpoint for the Service Enablement API
      */
-    serviceEnablementCustomEndpoint?: pulumi.Input<string>;
+    serviceEnablementCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Custom endpoint for the Stackit Filestorage API
      */
-    sfsCustomEndpoint?: pulumi.Input<string>;
+    sfsCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Custom endpoint for the Kubernetes Engine (SKE) service
      */
-    skeCustomEndpoint?: pulumi.Input<string>;
+    skeCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Custom endpoint for the SQL Server Flex service
      */
-    sqlserverflexCustomEndpoint?: pulumi.Input<string>;
+    sqlserverflexCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Custom endpoint for the token API, which is used to request access tokens when using the key flow
      */
-    tokenCustomEndpoint?: pulumi.Input<string>;
+    tokenCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to `false`.
      */
-    useOidc?: pulumi.Input<boolean>;
+    useOidc?: pulumi.Input<boolean | undefined>;
 }
 
 export namespace Provider {

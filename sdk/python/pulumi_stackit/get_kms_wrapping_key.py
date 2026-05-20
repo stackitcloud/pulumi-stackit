@@ -244,10 +244,10 @@ def get_kms_wrapping_key(keyring_id: Optional[_builtins.str] = None,
         purpose=pulumi.get(__ret__, 'purpose'),
         region=pulumi.get(__ret__, 'region'),
         wrapping_key_id=pulumi.get(__ret__, 'wrapping_key_id'))
-def get_kms_wrapping_key_output(keyring_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                wrapping_key_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_kms_wrapping_key_output(keyring_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                wrapping_key_id: pulumi.Input[Optional[_builtins.str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKmsWrappingKeyResult]:
     """
     KMS wrapping key datasource schema.

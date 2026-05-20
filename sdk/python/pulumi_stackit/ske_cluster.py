@@ -23,13 +23,13 @@ class SkeClusterArgs:
     def __init__(__self__, *,
                  node_pools: pulumi.Input[Sequence[pulumi.Input['SkeClusterNodePoolArgs']]],
                  project_id: pulumi.Input[_builtins.str],
-                 extensions: Optional[pulumi.Input['SkeClusterExtensionsArgs']] = None,
-                 hibernations: Optional[pulumi.Input[Sequence[pulumi.Input['SkeClusterHibernationArgs']]]] = None,
-                 kubernetes_version_min: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance: Optional[pulumi.Input['SkeClusterMaintenanceArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input['SkeClusterNetworkArgs']] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 extensions: pulumi.Input[Optional['SkeClusterExtensionsArgs']] = None,
+                 hibernations: pulumi.Input[Optional[Sequence[pulumi.Input['SkeClusterHibernationArgs']]]] = None,
+                 kubernetes_version_min: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance: pulumi.Input[Optional['SkeClusterMaintenanceArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional['SkeClusterNetworkArgs']] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SkeCluster resource.
 
@@ -88,104 +88,104 @@ class SkeClusterArgs:
 
     @_builtins.property
     @pulumi.getter
-    def extensions(self) -> Optional[pulumi.Input['SkeClusterExtensionsArgs']]:
+    def extensions(self) -> pulumi.Input[Optional['SkeClusterExtensionsArgs']]:
         """
         A single extensions block as defined below.
         """
         return pulumi.get(self, "extensions")
 
     @extensions.setter
-    def extensions(self, value: Optional[pulumi.Input['SkeClusterExtensionsArgs']]):
+    def extensions(self, value: pulumi.Input[Optional['SkeClusterExtensionsArgs']]):
         pulumi.set(self, "extensions", value)
 
     @_builtins.property
     @pulumi.getter
-    def hibernations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SkeClusterHibernationArgs']]]]:
+    def hibernations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SkeClusterHibernationArgs']]]]:
         """
         One or more hibernation block as defined below.
         """
         return pulumi.get(self, "hibernations")
 
     @hibernations.setter
-    def hibernations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SkeClusterHibernationArgs']]]]):
+    def hibernations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SkeClusterHibernationArgs']]]]):
         pulumi.set(self, "hibernations", value)
 
     @_builtins.property
     @pulumi.getter(name="kubernetesVersionMin")
-    def kubernetes_version_min(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kubernetes_version_min(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The minimum Kubernetes version. This field will be used to set the minimum kubernetes version on creation/update of the cluster. If unset, the latest supported Kubernetes version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/). To get the current kubernetes version being used for your cluster, use the read-only `kubernetes_version_used` field.
         """
         return pulumi.get(self, "kubernetes_version_min")
 
     @kubernetes_version_min.setter
-    def kubernetes_version_min(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kubernetes_version_min(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kubernetes_version_min", value)
 
     @_builtins.property
     @pulumi.getter
-    def maintenance(self) -> Optional[pulumi.Input['SkeClusterMaintenanceArgs']]:
+    def maintenance(self) -> pulumi.Input[Optional['SkeClusterMaintenanceArgs']]:
         """
         A single maintenance block as defined below.
         """
         return pulumi.get(self, "maintenance")
 
     @maintenance.setter
-    def maintenance(self, value: Optional[pulumi.Input['SkeClusterMaintenanceArgs']]):
+    def maintenance(self, value: pulumi.Input[Optional['SkeClusterMaintenanceArgs']]):
         pulumi.set(self, "maintenance", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input['SkeClusterNetworkArgs']]:
+    def network(self) -> pulumi.Input[Optional['SkeClusterNetworkArgs']]:
         """
         Network block as defined below.
         """
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input['SkeClusterNetworkArgs']]):
+    def network(self, value: pulumi.Input[Optional['SkeClusterNetworkArgs']]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource region. If not defined, the provider region is used.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _SkeClusterState:
     def __init__(__self__, *,
-                 egress_address_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 extensions: Optional[pulumi.Input['SkeClusterExtensionsArgs']] = None,
-                 hibernations: Optional[pulumi.Input[Sequence[pulumi.Input['SkeClusterHibernationArgs']]]] = None,
-                 kubernetes_version_min: Optional[pulumi.Input[_builtins.str]] = None,
-                 kubernetes_version_used: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance: Optional[pulumi.Input['SkeClusterMaintenanceArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input['SkeClusterNetworkArgs']] = None,
-                 node_pools: Optional[pulumi.Input[Sequence[pulumi.Input['SkeClusterNodePoolArgs']]]] = None,
-                 pod_address_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 egress_address_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 extensions: pulumi.Input[Optional['SkeClusterExtensionsArgs']] = None,
+                 hibernations: pulumi.Input[Optional[Sequence[pulumi.Input['SkeClusterHibernationArgs']]]] = None,
+                 kubernetes_version_min: pulumi.Input[Optional[_builtins.str]] = None,
+                 kubernetes_version_used: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance: pulumi.Input[Optional['SkeClusterMaintenanceArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional['SkeClusterNetworkArgs']] = None,
+                 node_pools: pulumi.Input[Optional[Sequence[pulumi.Input['SkeClusterNodePoolArgs']]]] = None,
+                 pod_address_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SkeCluster resources.
 
@@ -230,103 +230,103 @@ class _SkeClusterState:
 
     @_builtins.property
     @pulumi.getter(name="egressAddressRanges")
-    def egress_address_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def egress_address_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The outgoing network ranges (in CIDR notation) of traffic originating from workload on the cluster.
         """
         return pulumi.get(self, "egress_address_ranges")
 
     @egress_address_ranges.setter
-    def egress_address_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def egress_address_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "egress_address_ranges", value)
 
     @_builtins.property
     @pulumi.getter
-    def extensions(self) -> Optional[pulumi.Input['SkeClusterExtensionsArgs']]:
+    def extensions(self) -> pulumi.Input[Optional['SkeClusterExtensionsArgs']]:
         """
         A single extensions block as defined below.
         """
         return pulumi.get(self, "extensions")
 
     @extensions.setter
-    def extensions(self, value: Optional[pulumi.Input['SkeClusterExtensionsArgs']]):
+    def extensions(self, value: pulumi.Input[Optional['SkeClusterExtensionsArgs']]):
         pulumi.set(self, "extensions", value)
 
     @_builtins.property
     @pulumi.getter
-    def hibernations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SkeClusterHibernationArgs']]]]:
+    def hibernations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SkeClusterHibernationArgs']]]]:
         """
         One or more hibernation block as defined below.
         """
         return pulumi.get(self, "hibernations")
 
     @hibernations.setter
-    def hibernations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SkeClusterHibernationArgs']]]]):
+    def hibernations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SkeClusterHibernationArgs']]]]):
         pulumi.set(self, "hibernations", value)
 
     @_builtins.property
     @pulumi.getter(name="kubernetesVersionMin")
-    def kubernetes_version_min(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kubernetes_version_min(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The minimum Kubernetes version. This field will be used to set the minimum kubernetes version on creation/update of the cluster. If unset, the latest supported Kubernetes version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/). To get the current kubernetes version being used for your cluster, use the read-only `kubernetes_version_used` field.
         """
         return pulumi.get(self, "kubernetes_version_min")
 
     @kubernetes_version_min.setter
-    def kubernetes_version_min(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kubernetes_version_min(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kubernetes_version_min", value)
 
     @_builtins.property
     @pulumi.getter(name="kubernetesVersionUsed")
-    def kubernetes_version_used(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kubernetes_version_used(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Full Kubernetes version used. For example, if 1.22 was set in `kubernetes_version_min`, this value may result to 1.22.15. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
         """
         return pulumi.get(self, "kubernetes_version_used")
 
     @kubernetes_version_used.setter
-    def kubernetes_version_used(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kubernetes_version_used(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kubernetes_version_used", value)
 
     @_builtins.property
     @pulumi.getter
-    def maintenance(self) -> Optional[pulumi.Input['SkeClusterMaintenanceArgs']]:
+    def maintenance(self) -> pulumi.Input[Optional['SkeClusterMaintenanceArgs']]:
         """
         A single maintenance block as defined below.
         """
         return pulumi.get(self, "maintenance")
 
     @maintenance.setter
-    def maintenance(self, value: Optional[pulumi.Input['SkeClusterMaintenanceArgs']]):
+    def maintenance(self, value: pulumi.Input[Optional['SkeClusterMaintenanceArgs']]):
         pulumi.set(self, "maintenance", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cluster name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input['SkeClusterNetworkArgs']]:
+    def network(self) -> pulumi.Input[Optional['SkeClusterNetworkArgs']]:
         """
         Network block as defined below.
         """
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input['SkeClusterNetworkArgs']]):
+    def network(self, value: pulumi.Input[Optional['SkeClusterNetworkArgs']]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="nodePools")
-    def node_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SkeClusterNodePoolArgs']]]]:
+    def node_pools(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SkeClusterNodePoolArgs']]]]:
         """
         One or more `node_pool` block as defined below.
         To keep your Terraform plans clean and readable, always append new node pools to the end of the list.
@@ -334,43 +334,43 @@ class _SkeClusterState:
         return pulumi.get(self, "node_pools")
 
     @node_pools.setter
-    def node_pools(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SkeClusterNodePoolArgs']]]]):
+    def node_pools(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SkeClusterNodePoolArgs']]]]):
         pulumi.set(self, "node_pools", value)
 
     @_builtins.property
     @pulumi.getter(name="podAddressRanges")
-    def pod_address_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def pod_address_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The network ranges (in CIDR notation) used by pods of the cluster.
         """
         return pulumi.get(self, "pod_address_ranges")
 
     @pod_address_ranges.setter
-    def pod_address_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def pod_address_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "pod_address_ranges", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         STACKIT project ID to which the cluster is associated.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource region. If not defined, the provider region is used.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
@@ -380,15 +380,15 @@ class SkeCluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 extensions: Optional[pulumi.Input[Union['SkeClusterExtensionsArgs', 'SkeClusterExtensionsArgsDict']]] = None,
-                 hibernations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SkeClusterHibernationArgs', 'SkeClusterHibernationArgsDict']]]]] = None,
-                 kubernetes_version_min: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance: Optional[pulumi.Input[Union['SkeClusterMaintenanceArgs', 'SkeClusterMaintenanceArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[Union['SkeClusterNetworkArgs', 'SkeClusterNetworkArgsDict']]] = None,
-                 node_pools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SkeClusterNodePoolArgs', 'SkeClusterNodePoolArgsDict']]]]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 extensions: pulumi.Input[Optional[Union['SkeClusterExtensionsArgs', 'SkeClusterExtensionsArgsDict']]] = None,
+                 hibernations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SkeClusterHibernationArgs', 'SkeClusterHibernationArgsDict']]]]] = None,
+                 kubernetes_version_min: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance: pulumi.Input[Optional[Union['SkeClusterMaintenanceArgs', 'SkeClusterMaintenanceArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[Union['SkeClusterNetworkArgs', 'SkeClusterNetworkArgsDict']]] = None,
+                 node_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SkeClusterNodePoolArgs', 'SkeClusterNodePoolArgsDict']]]]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         SKE Cluster Resource schema. Must have a `region` specified in the provider configuration.
@@ -440,15 +440,15 @@ class SkeCluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 extensions: Optional[pulumi.Input[Union['SkeClusterExtensionsArgs', 'SkeClusterExtensionsArgsDict']]] = None,
-                 hibernations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SkeClusterHibernationArgs', 'SkeClusterHibernationArgsDict']]]]] = None,
-                 kubernetes_version_min: Optional[pulumi.Input[_builtins.str]] = None,
-                 maintenance: Optional[pulumi.Input[Union['SkeClusterMaintenanceArgs', 'SkeClusterMaintenanceArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[Union['SkeClusterNetworkArgs', 'SkeClusterNetworkArgsDict']]] = None,
-                 node_pools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SkeClusterNodePoolArgs', 'SkeClusterNodePoolArgsDict']]]]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 extensions: pulumi.Input[Optional[Union['SkeClusterExtensionsArgs', 'SkeClusterExtensionsArgsDict']]] = None,
+                 hibernations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SkeClusterHibernationArgs', 'SkeClusterHibernationArgsDict']]]]] = None,
+                 kubernetes_version_min: pulumi.Input[Optional[_builtins.str]] = None,
+                 maintenance: pulumi.Input[Optional[Union['SkeClusterMaintenanceArgs', 'SkeClusterMaintenanceArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[Union['SkeClusterNetworkArgs', 'SkeClusterNetworkArgsDict']]] = None,
+                 node_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SkeClusterNodePoolArgs', 'SkeClusterNodePoolArgsDict']]]]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -484,18 +484,18 @@ class SkeCluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            egress_address_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            extensions: Optional[pulumi.Input[Union['SkeClusterExtensionsArgs', 'SkeClusterExtensionsArgsDict']]] = None,
-            hibernations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SkeClusterHibernationArgs', 'SkeClusterHibernationArgsDict']]]]] = None,
-            kubernetes_version_min: Optional[pulumi.Input[_builtins.str]] = None,
-            kubernetes_version_used: Optional[pulumi.Input[_builtins.str]] = None,
-            maintenance: Optional[pulumi.Input[Union['SkeClusterMaintenanceArgs', 'SkeClusterMaintenanceArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network: Optional[pulumi.Input[Union['SkeClusterNetworkArgs', 'SkeClusterNetworkArgsDict']]] = None,
-            node_pools: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SkeClusterNodePoolArgs', 'SkeClusterNodePoolArgsDict']]]]] = None,
-            pod_address_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None) -> 'SkeCluster':
+            egress_address_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            extensions: pulumi.Input[Optional[Union['SkeClusterExtensionsArgs', 'SkeClusterExtensionsArgsDict']]] = None,
+            hibernations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SkeClusterHibernationArgs', 'SkeClusterHibernationArgsDict']]]]] = None,
+            kubernetes_version_min: pulumi.Input[Optional[_builtins.str]] = None,
+            kubernetes_version_used: pulumi.Input[Optional[_builtins.str]] = None,
+            maintenance: pulumi.Input[Optional[Union['SkeClusterMaintenanceArgs', 'SkeClusterMaintenanceArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[Union['SkeClusterNetworkArgs', 'SkeClusterNetworkArgsDict']]] = None,
+            node_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SkeClusterNodePoolArgs', 'SkeClusterNodePoolArgsDict']]]]] = None,
+            pod_address_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> 'SkeCluster':
         """
         Get an existing SkeCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

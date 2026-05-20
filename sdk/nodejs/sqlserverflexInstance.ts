@@ -125,32 +125,32 @@ export interface SqlserverflexInstanceState {
     /**
      * The Access Control List (ACL) for the SQLServer Flex instance.
      */
-    acls?: pulumi.Input<pulumi.Input<string>[]>;
+    acls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *")
      */
-    backupSchedule?: pulumi.Input<string>;
-    flavor?: pulumi.Input<inputs.SqlserverflexInstanceFlavor>;
+    backupSchedule?: pulumi.Input<string | undefined>;
+    flavor?: pulumi.Input<inputs.SqlserverflexInstanceFlavor | undefined>;
     /**
      * ID of the SQLServer Flex instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Instance name.
      */
-    name?: pulumi.Input<string>;
-    options?: pulumi.Input<inputs.SqlserverflexInstanceOptions>;
+    name?: pulumi.Input<string | undefined>;
+    options?: pulumi.Input<inputs.SqlserverflexInstanceOptions | undefined>;
     /**
      * STACKIT project ID to which the instance is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
-    replicas?: pulumi.Input<number>;
-    storage?: pulumi.Input<inputs.SqlserverflexInstanceStorage>;
-    version?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
+    replicas?: pulumi.Input<number | undefined>;
+    storage?: pulumi.Input<inputs.SqlserverflexInstanceStorage | undefined>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -160,17 +160,17 @@ export interface SqlserverflexInstanceArgs {
     /**
      * The Access Control List (ACL) for the SQLServer Flex instance.
      */
-    acls?: pulumi.Input<pulumi.Input<string>[]>;
+    acls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *")
      */
-    backupSchedule?: pulumi.Input<string>;
+    backupSchedule?: pulumi.Input<string | undefined>;
     flavor: pulumi.Input<inputs.SqlserverflexInstanceFlavor>;
     /**
      * Instance name.
      */
-    name?: pulumi.Input<string>;
-    options?: pulumi.Input<inputs.SqlserverflexInstanceOptions>;
+    name?: pulumi.Input<string | undefined>;
+    options?: pulumi.Input<inputs.SqlserverflexInstanceOptions | undefined>;
     /**
      * STACKIT project ID to which the instance is associated.
      */
@@ -178,7 +178,7 @@ export interface SqlserverflexInstanceArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
-    storage?: pulumi.Input<inputs.SqlserverflexInstanceStorage>;
-    version?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
+    storage?: pulumi.Input<inputs.SqlserverflexInstanceStorage | undefined>;
+    version?: pulumi.Input<string | undefined>;
 }

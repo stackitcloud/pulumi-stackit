@@ -155,55 +155,55 @@ export interface ImageState {
     /**
      * Representation of an image checksum.
      */
-    checksum?: pulumi.Input<inputs.ImageChecksum>;
+    checksum?: pulumi.Input<inputs.ImageChecksum | undefined>;
     /**
      * Properties to set hardware and scheduling settings for an image.
      */
-    config?: pulumi.Input<inputs.ImageConfig>;
+    config?: pulumi.Input<inputs.ImageConfig | undefined>;
     /**
      * The disk format of the image.
      */
-    diskFormat?: pulumi.Input<string>;
+    diskFormat?: pulumi.Input<string | undefined>;
     /**
      * The image ID.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * Labels are key-value string pairs which can be attached to a resource container
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The filepath of the raw image file to be uploaded.
      */
-    localFilePath?: pulumi.Input<string>;
+    localFilePath?: pulumi.Input<string | undefined>;
     /**
      * The minimum disk size of the image in GB.
      */
-    minDiskSize?: pulumi.Input<number>;
+    minDiskSize?: pulumi.Input<number | undefined>;
     /**
      * The minimum RAM of the image in MB.
      */
-    minRam?: pulumi.Input<number>;
+    minRam?: pulumi.Input<number | undefined>;
     /**
      * The name of the image.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the image is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Whether the image is protected.
      */
-    protected?: pulumi.Input<boolean>;
+    protected?: pulumi.Input<boolean | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The scope of the image.
      */
-    scope?: pulumi.Input<string>;
+    scope?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -213,7 +213,7 @@ export interface ImageArgs {
     /**
      * Properties to set hardware and scheduling settings for an image.
      */
-    config?: pulumi.Input<inputs.ImageConfig>;
+    config?: pulumi.Input<inputs.ImageConfig | undefined>;
     /**
      * The disk format of the image.
      */
@@ -221,7 +221,7 @@ export interface ImageArgs {
     /**
      * Labels are key-value string pairs which can be attached to a resource container
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The filepath of the raw image file to be uploaded.
      */
@@ -229,15 +229,15 @@ export interface ImageArgs {
     /**
      * The minimum disk size of the image in GB.
      */
-    minDiskSize?: pulumi.Input<number>;
+    minDiskSize?: pulumi.Input<number | undefined>;
     /**
      * The minimum RAM of the image in MB.
      */
-    minRam?: pulumi.Input<number>;
+    minRam?: pulumi.Input<number | undefined>;
     /**
      * The name of the image.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the image is associated.
      */
@@ -245,5 +245,5 @@ export interface ImageArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

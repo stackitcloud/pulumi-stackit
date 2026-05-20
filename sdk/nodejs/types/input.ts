@@ -9,11 +9,11 @@ export interface ApplicationLoadBalancerError {
     /**
      * The error description contains additional helpful user information to fix the error state of the Application Load Balancer. For example the IP 45.135.247.139 does not exist in the project, then the description will report: Floating IP "45.135.247.139" could not be found.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 export interface ApplicationLoadBalancerListener {
@@ -24,7 +24,7 @@ export interface ApplicationLoadBalancerListener {
     /**
      * Configuration for handling HTTPS traffic on this listener.
      */
-    https?: pulumi.Input<inputs.ApplicationLoadBalancerListenerHttps>;
+    https?: pulumi.Input<inputs.ApplicationLoadBalancerListenerHttps | undefined>;
     /**
      * Unique name for the listener
      */
@@ -40,7 +40,7 @@ export interface ApplicationLoadBalancerListener {
     /**
      * Enable Web Application Firewall (WAF), referenced by name. See "Application Load Balancer - Web Application Firewall API" for more information.
      */
-    wafConfigName?: pulumi.Input<string>;
+    wafConfigName?: pulumi.Input<string | undefined>;
 }
 
 export interface ApplicationLoadBalancerListenerHttp {
@@ -65,19 +65,19 @@ export interface ApplicationLoadBalancerListenerHttpHostRule {
     /**
      * Routing persistence via cookies.
      */
-    cookiePersistence?: pulumi.Input<inputs.ApplicationLoadBalancerListenerHttpHostRuleCookiePersistence>;
+    cookiePersistence?: pulumi.Input<inputs.ApplicationLoadBalancerListenerHttpHostRuleCookiePersistence | undefined>;
     /**
      * Headers for the rule.
      */
-    headers?: pulumi.Input<pulumi.Input<inputs.ApplicationLoadBalancerListenerHttpHostRuleHeader>[]>;
+    headers?: pulumi.Input<pulumi.Input<inputs.ApplicationLoadBalancerListenerHttpHostRuleHeader>[] | undefined>;
     /**
      * Routing via path.
      */
-    path?: pulumi.Input<inputs.ApplicationLoadBalancerListenerHttpHostRulePath>;
+    path?: pulumi.Input<inputs.ApplicationLoadBalancerListenerHttpHostRulePath | undefined>;
     /**
      * Query parameters for the rule.
      */
-    queryParameters?: pulumi.Input<pulumi.Input<inputs.ApplicationLoadBalancerListenerHttpHostRuleQueryParameter>[]>;
+    queryParameters?: pulumi.Input<pulumi.Input<inputs.ApplicationLoadBalancerListenerHttpHostRuleQueryParameter>[] | undefined>;
     /**
      * Reference target pool by target pool name.
      */
@@ -85,7 +85,7 @@ export interface ApplicationLoadBalancerListenerHttpHostRule {
     /**
      * If enabled, when client sends an HTTP request with and Upgrade header, indicating the desire to establish a Websocket connection, if backend server supports WebSocket, it responds with HTTP 101 status code, switching protocols from HTTP to WebSocket. Hence the client and the server can exchange data in real-time using one long-lived TCP connection.
      */
-    webSocket?: pulumi.Input<boolean>;
+    webSocket?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ApplicationLoadBalancerListenerHttpHostRuleCookiePersistence {
@@ -103,7 +103,7 @@ export interface ApplicationLoadBalancerListenerHttpHostRuleHeader {
     /**
      * Exact match for the header value.
      */
-    exactMatch?: pulumi.Input<string>;
+    exactMatch?: pulumi.Input<string | undefined>;
     /**
      * Header name.
      */
@@ -114,18 +114,18 @@ export interface ApplicationLoadBalancerListenerHttpHostRulePath {
     /**
      * Exact path match. Only a request path exactly equal to the value will match, e.g. '/foo' matches only '/foo', not '/foo/bar' or '/foobar'.
      */
-    exactMatch?: pulumi.Input<string>;
+    exactMatch?: pulumi.Input<string | undefined>;
     /**
      * Prefix path match. Only matches on full segment boundaries, e.g. '/foo' matches '/foo' and '/foo/bar' but NOT '/foobar'.
      */
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
 }
 
 export interface ApplicationLoadBalancerListenerHttpHostRuleQueryParameter {
     /**
      * Exact match for the query parameters value.
      */
-    exactMatch?: pulumi.Input<string>;
+    exactMatch?: pulumi.Input<string | undefined>;
     /**
      * Query parameter name.
      */
@@ -150,11 +150,11 @@ export interface ApplicationLoadBalancerLoadBalancerSecurityGroup {
     /**
      * ID of the security Group
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Name of the security Group
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 export interface ApplicationLoadBalancerNetwork {
@@ -172,19 +172,19 @@ export interface ApplicationLoadBalancerOptions {
     /**
      * Use this option to limit the IP ranges that can use the Application Load Balancer.
      */
-    accessControl?: pulumi.Input<inputs.ApplicationLoadBalancerOptionsAccessControl>;
+    accessControl?: pulumi.Input<inputs.ApplicationLoadBalancerOptionsAccessControl | undefined>;
     /**
      * This option automates the handling of the external IP address for an Application Load Balancer. If set to true a new IP address will be automatically created. It will also be automatically deleted when the Load Balancer is deleted.
      */
-    ephemeralAddress?: pulumi.Input<boolean>;
+    ephemeralAddress?: pulumi.Input<boolean | undefined>;
     /**
      * We offer Load Balancer observability via STACKIT Observability or external solutions.
      */
-    observability?: pulumi.Input<inputs.ApplicationLoadBalancerOptionsObservability>;
+    observability?: pulumi.Input<inputs.ApplicationLoadBalancerOptionsObservability | undefined>;
     /**
      * Application Load Balancer is accessible only via a private network ip address. Not changeable after creation.
      */
-    privateNetworkOnly?: pulumi.Input<boolean>;
+    privateNetworkOnly?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ApplicationLoadBalancerOptionsAccessControl {
@@ -198,11 +198,11 @@ export interface ApplicationLoadBalancerOptionsObservability {
     /**
      * Observability logs configuration.
      */
-    logs?: pulumi.Input<inputs.ApplicationLoadBalancerOptionsObservabilityLogs>;
+    logs?: pulumi.Input<inputs.ApplicationLoadBalancerOptionsObservabilityLogs | undefined>;
     /**
      * Observability metrics configuration.
      */
-    metrics?: pulumi.Input<inputs.ApplicationLoadBalancerOptionsObservabilityMetrics>;
+    metrics?: pulumi.Input<inputs.ApplicationLoadBalancerOptionsObservabilityMetrics | undefined>;
 }
 
 export interface ApplicationLoadBalancerOptionsObservabilityLogs {
@@ -228,7 +228,7 @@ export interface ApplicationLoadBalancerOptionsObservabilityMetrics {
 }
 
 export interface ApplicationLoadBalancerTargetPool {
-    activeHealthCheck?: pulumi.Input<inputs.ApplicationLoadBalancerTargetPoolActiveHealthCheck>;
+    activeHealthCheck?: pulumi.Input<inputs.ApplicationLoadBalancerTargetPoolActiveHealthCheck | undefined>;
     /**
      * Target pool name.
      */
@@ -244,7 +244,7 @@ export interface ApplicationLoadBalancerTargetPool {
     /**
      * Configuration for TLS bridging.
      */
-    tlsConfig?: pulumi.Input<inputs.ApplicationLoadBalancerTargetPoolTlsConfig>;
+    tlsConfig?: pulumi.Input<inputs.ApplicationLoadBalancerTargetPoolTlsConfig | undefined>;
 }
 
 export interface ApplicationLoadBalancerTargetPoolActiveHealthCheck {
@@ -255,7 +255,7 @@ export interface ApplicationLoadBalancerTargetPoolActiveHealthCheck {
     /**
      * Options for the HTTP health checking.
      */
-    httpHealthChecks?: pulumi.Input<inputs.ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks>;
+    httpHealthChecks?: pulumi.Input<inputs.ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks | undefined>;
     /**
      * Interval duration of health checking in seconds.
      */
@@ -289,7 +289,7 @@ export interface ApplicationLoadBalancerTargetPoolTarget {
     /**
      * Target display name
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Private target IP, which must by unique within a target pool.
      */
@@ -300,41 +300,41 @@ export interface ApplicationLoadBalancerTargetPoolTlsConfig {
     /**
      * Specifies a custom Certificate Authority (CA). When provided, the target pool will trust certificates signed by this CA, in addition to any system-trusted CAs. This is useful for scenarios where the target pool needs to communicate with servers using self-signed or internally-issued certificates. Enabled needs to be set to true and skip validation to false for this option.
      */
-    customCa?: pulumi.Input<string>;
+    customCa?: pulumi.Input<string | undefined>;
     /**
      * Enable TLS (Transport Layer Security) bridging for the connection between Application Load Balancer and targets in this pool. When enabled, public CAs are trusted. Can be used in tandem with the options either custom CA or skip validation or alone.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * Bypass certificate validation for TLS bridging in this target pool. This option is insecure and can only be used with public CAs by setting enabled true. Meant to be used for testing purposes only!
      */
-    skipCertificateValidation?: pulumi.Input<boolean>;
+    skipCertificateValidation?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ApplicationLoadBalancerTargetSecurityGroup {
     /**
      * ID of the security Group
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * Name of the security Group
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 export interface CdnCustomDomainCertificate {
     /**
      * The PEM-encoded TLS certificate. Required for custom certificates.
      */
-    certificate?: pulumi.Input<string>;
+    certificate?: pulumi.Input<string | undefined>;
     /**
      * The PEM-encoded private key for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * A version identifier for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.
      */
-    version?: pulumi.Input<number>;
+    version?: pulumi.Input<number | undefined>;
 }
 
 export interface CdnDistributionConfig {
@@ -345,15 +345,15 @@ export interface CdnDistributionConfig {
     /**
      * The configured countries where distribution of content is blocked
      */
-    blockedCountries?: pulumi.Input<pulumi.Input<string>[]>;
+    blockedCountries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
      */
-    optimizer?: pulumi.Input<inputs.CdnDistributionConfigOptimizer>;
+    optimizer?: pulumi.Input<inputs.CdnDistributionConfigOptimizer | undefined>;
     /**
      * A wrapper for a list of redirect rules that allows for redirect settings on a distribution
      */
-    redirects?: pulumi.Input<inputs.CdnDistributionConfigRedirects>;
+    redirects?: pulumi.Input<inputs.CdnDistributionConfigRedirects | undefined>;
     /**
      * The configured regions where content will be hosted
      */
@@ -361,34 +361,34 @@ export interface CdnDistributionConfig {
     /**
      * Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.
      */
-    waf?: pulumi.Input<inputs.CdnDistributionConfigWaf>;
+    waf?: pulumi.Input<inputs.CdnDistributionConfigWaf | undefined>;
 }
 
 export interface CdnDistributionConfigBackend {
     /**
      * The URL of the bucket (e.g. https://s3.example.com). Required if type is 'bucket'.
      */
-    bucketUrl?: pulumi.Input<string>;
+    bucketUrl?: pulumi.Input<string | undefined>;
     /**
      * The credentials for the bucket. Required if type is 'bucket'.
      */
-    credentials?: pulumi.Input<inputs.CdnDistributionConfigBackendCredentials>;
+    credentials?: pulumi.Input<inputs.CdnDistributionConfigBackendCredentials | undefined>;
     /**
      * The configured type http to configure countries where content is allowed. A map of URLs to a list of countries
      */
-    geofencing?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>}>;
+    geofencing?: pulumi.Input<{[key: string]: pulumi.Input<pulumi.Input<string>[]>} | undefined>;
     /**
      * The configured type http origin request headers for the backend
      */
-    originRequestHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    originRequestHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The configured backend type http for the distribution
      */
-    originUrl?: pulumi.Input<string>;
+    originUrl?: pulumi.Input<string | undefined>;
     /**
      * The region where the bucket is hosted. Required if type is 'bucket'.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The configured backend type. Possible values are: `http`, `bucket`.
      */
@@ -407,7 +407,7 @@ export interface CdnDistributionConfigBackendCredentials {
 }
 
 export interface CdnDistributionConfigOptimizer {
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
 }
 
 export interface CdnDistributionConfigRedirects {
@@ -421,11 +421,11 @@ export interface CdnDistributionConfigRedirectsRule {
     /**
      * An optional description for the redirect rule
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * A toggle to enable or disable the redirect rule. Default to true
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * A list of matchers that define when this rule should apply. At least one matcher is required
      */
@@ -433,7 +433,7 @@ export interface CdnDistributionConfigRedirectsRule {
     /**
      * Defines how multiple matchers within this rule are combined (ALL, ANY, NONE). Defaults to ANY.
      */
-    ruleMatchCondition?: pulumi.Input<string>;
+    ruleMatchCondition?: pulumi.Input<string | undefined>;
     /**
      * The HTTP status code for the redirect. Must be one of 301, 302, 303, 307, or 308.
      */
@@ -448,7 +448,7 @@ export interface CdnDistributionConfigRedirectsRuleMatcher {
     /**
      * Defines how multiple matchers within this rule are combined (ALL, ANY, NONE). Defaults to ANY.
      */
-    valueMatchCondition?: pulumi.Input<string>;
+    valueMatchCondition?: pulumi.Input<string | undefined>;
     /**
      * A list of glob patterns to match against the request path. At least one value is required. Examples: "/shop/*" or "*&#47;img/*"
      */
@@ -459,120 +459,120 @@ export interface CdnDistributionConfigWaf {
     /**
      * Restricts which HTTP methods the distribution accepts. If provided, the set must contain at least one item. Case you removed waf will retain the last known state and if omitted, the API applies the following defaults: `GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `CONNECT`, `OPTIONS`, `TRACE`, `PATCH`.
      */
-    allowedHttpMethods?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedHttpMethods?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Restricts which HTTP protocol versions are accepted. If provided, the set must contain at least one item. If omitted, the API applies the following defaults: `HTTP/1.0`, `HTTP/1.1`, `HTTP/2`, `HTTP/2.0`.
      */
-    allowedHttpVersions?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedHttpVersions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Restricts which Content-Type headers are accepted in request bodies. If provided, the set must contain at least one item. Case you removed waf will retain the last known state and if omitted, the API applies the following defaults: `application/x-www-form-urlencoded`, `multipart/form-data`, `multipart/related`, `text/xml`, `application/xml`, `application/soap+xml`, `application/x-amf`, `application/json`, `application/octet-stream`, `application/csp-report`, `application/xss-auditor-report`, `text/plain`.
      */
-    allowedRequestContentTypes?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedRequestContentTypes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set of WAF Collection IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
      */
-    disabledRuleCollectionIds?: pulumi.Input<pulumi.Input<string>[]>;
+    disabledRuleCollectionIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set of WAF Rule Group IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
      */
-    disabledRuleGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    disabledRuleGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set of WAF rule IDs explicitly disabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. For example, an explicitly disabled Rule ID takes precedence over an enabled Group ID. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
      */
-    disabledRuleIds?: pulumi.Input<pulumi.Input<string>[]>;
+    disabledRuleIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set of WAF Collection IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
      */
-    enabledRuleCollectionIds?: pulumi.Input<pulumi.Input<string>[]>;
+    enabledRuleCollectionIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set of WAF Rule Group IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
      */
-    enabledRuleGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    enabledRuleGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set of WAF rule IDs explicitly enabled. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. For example, an explicitly enabled Rule ID takes precedence over a disabled Group ID. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
      */
-    enabledRuleIds?: pulumi.Input<pulumi.Input<string>[]>;
+    enabledRuleIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set of WAF Collection IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. To view available rule collections, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
      */
-    logOnlyRuleCollectionIds?: pulumi.Input<pulumi.Input<string>[]>;
+    logOnlyRuleCollectionIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set of WAF Rule Group IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Groups override Collections. To view available rule groups, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
      */
-    logOnlyRuleGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    logOnlyRuleGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Set of WAF rule IDs explicitly marked as Log Only. Can be set to an empty set to clear previously set rules. Case you removed waf will retain the last known state. Precedence hierarchy: Specific Rules override Groups. To view available rules, please consult the API documentation: https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections
      */
-    logOnlyRuleIds?: pulumi.Input<pulumi.Input<string>[]>;
+    logOnlyRuleIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The operating mode of the WAF. 'ENABLED' actively blocks threats, 'LOG_ONLY' logs matches without blocking, and 'DISABLED' completely turns off inspection. Defaults to 'DISABLED'.
      */
-    mode?: pulumi.Input<string>;
+    mode?: pulumi.Input<string | undefined>;
     /**
      * Defines how aggressively the WAF should act on requests. Valid values are 'L1' to 'L4'. Case you removed waf will retain the last known state and if omitted, The API applies the following default 'L1'.
      */
-    paranoiaLevel?: pulumi.Input<string>;
+    paranoiaLevel?: pulumi.Input<string | undefined>;
     /**
      * The tier of the WAF. Valid values are 'FREE' or 'PREMIUM'. Defaults to 'FREE'.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 export interface CdnDistributionDomain {
     /**
      * List of domain errors
      */
-    errors?: pulumi.Input<pulumi.Input<string>[]>;
+    errors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the domain
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The status of the domain
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The type of the domain. Each distribution has one domain of type "managed", and domains of type "custom" may be additionally created by the user
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 export interface DnsRecordSetTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface DnsZoneTimeouts {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }
 
 export interface GetCdnCustomDomainCertificate {
@@ -586,7 +586,7 @@ export interface GetCdnCustomDomainCertificateArgs {
     /**
      * A version identifier for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.
      */
-    version?: pulumi.Input<number>;
+    version?: pulumi.Input<number | undefined>;
 }
 
 export interface GetDnsRecordSetTimeouts {
@@ -600,7 +600,7 @@ export interface GetDnsRecordSetTimeoutsArgs {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
 }
 
 export interface GetDnsZoneTimeouts {
@@ -614,7 +614,7 @@ export interface GetDnsZoneTimeoutsArgs {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
 }
 
 export interface GetImageV2Filter {
@@ -644,93 +644,93 @@ export interface GetImageV2FilterArgs {
     /**
      * Filter images by operating system distribution. For example: `ubuntu`, `ubuntu-arm64`, `debian`, `rhel`, etc.
      */
-    distro?: pulumi.Input<string>;
+    distro?: pulumi.Input<string | undefined>;
     /**
      * Filter images by operating system type, such as `linux` or `windows`.
      */
-    os?: pulumi.Input<string>;
+    os?: pulumi.Input<string | undefined>;
     /**
      * Filter images with Secure Boot support. Set to `true` to match images that support Secure Boot.
      */
-    secureBoot?: pulumi.Input<boolean>;
+    secureBoot?: pulumi.Input<boolean | undefined>;
     /**
      * Filter images based on UEFI support. Set to `true` to match images that support UEFI.
      */
-    uefi?: pulumi.Input<boolean>;
+    uefi?: pulumi.Input<boolean | undefined>;
     /**
      * Filter images by OS distribution version, such as `22.04`, `11`, or `9.1`.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 export interface ImageChecksum {
     /**
      * Algorithm for the checksum of the image data.
      */
-    algorithm?: pulumi.Input<string>;
+    algorithm?: pulumi.Input<string | undefined>;
     /**
      * Hexdigest of the checksum of the image data.
      */
-    digest?: pulumi.Input<string>;
+    digest?: pulumi.Input<string | undefined>;
 }
 
 export interface ImageConfig {
     /**
      * Enables the BIOS bootmenu.
      */
-    bootMenu?: pulumi.Input<boolean>;
+    bootMenu?: pulumi.Input<boolean | undefined>;
     /**
      * Sets CDROM bus controller type.
      */
-    cdromBus?: pulumi.Input<string>;
+    cdromBus?: pulumi.Input<string | undefined>;
     /**
      * Sets Disk bus controller type.
      */
-    diskBus?: pulumi.Input<string>;
+    diskBus?: pulumi.Input<string | undefined>;
     /**
      * Sets virtual network interface model.
      */
-    nicModel?: pulumi.Input<string>;
+    nicModel?: pulumi.Input<string | undefined>;
     /**
      * Enables operating system specific optimizations.
      */
-    operatingSystem?: pulumi.Input<string>;
+    operatingSystem?: pulumi.Input<string | undefined>;
     /**
      * Operating system distribution.
      */
-    operatingSystemDistro?: pulumi.Input<string>;
+    operatingSystemDistro?: pulumi.Input<string | undefined>;
     /**
      * Version of the operating system.
      */
-    operatingSystemVersion?: pulumi.Input<string>;
+    operatingSystemVersion?: pulumi.Input<string | undefined>;
     /**
      * Sets the device bus when the image is used as a rescue image.
      */
-    rescueBus?: pulumi.Input<string>;
+    rescueBus?: pulumi.Input<string | undefined>;
     /**
      * Sets the device when the image is used as a rescue image.
      */
-    rescueDevice?: pulumi.Input<string>;
+    rescueDevice?: pulumi.Input<string | undefined>;
     /**
      * Enables Secure Boot.
      */
-    secureBoot?: pulumi.Input<boolean>;
+    secureBoot?: pulumi.Input<boolean | undefined>;
     /**
      * Enables UEFI boot.
      */
-    uefi?: pulumi.Input<boolean>;
+    uefi?: pulumi.Input<boolean | undefined>;
     /**
      * Sets Graphic device model.
      */
-    videoModel?: pulumi.Input<string>;
+    videoModel?: pulumi.Input<string | undefined>;
     /**
      * Enables the use of VirtIO SCSI to provide block device access. By default instances use VirtIO Block.
      */
-    virtioScsi?: pulumi.Input<boolean>;
+    virtioScsi?: pulumi.Input<boolean | undefined>;
 }
 
 export interface LoadbalancerListener {
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Port number where we listen for traffic.
      */
@@ -744,7 +744,7 @@ export interface LoadbalancerListener {
      *
      * @deprecated `serverNameIndicators` is deprecated and will be removed after October 2026
      */
-    serverNameIndicators?: pulumi.Input<pulumi.Input<inputs.LoadbalancerListenerServerNameIndicator>[]>;
+    serverNameIndicators?: pulumi.Input<pulumi.Input<inputs.LoadbalancerListenerServerNameIndicator>[] | undefined>;
     /**
      * Reference target pool by target pool name.
      */
@@ -752,32 +752,32 @@ export interface LoadbalancerListener {
     /**
      * Options that are specific to the TCP protocol.
      */
-    tcp?: pulumi.Input<inputs.LoadbalancerListenerTcp>;
+    tcp?: pulumi.Input<inputs.LoadbalancerListenerTcp | undefined>;
     /**
      * Options that are specific to the UDP protocol.
      */
-    udp?: pulumi.Input<inputs.LoadbalancerListenerUdp>;
+    udp?: pulumi.Input<inputs.LoadbalancerListenerUdp | undefined>;
 }
 
 export interface LoadbalancerListenerServerNameIndicator {
     /**
      * A domain name to match in order to pass TLS traffic to the target pool in the current listener
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }
 
 export interface LoadbalancerListenerTcp {
     /**
      * Time after which an idle connection is closed. The default value is set to 300 seconds, and the maximum value is 3600 seconds. The format is a duration and the unit must be seconds. Example: 30s
      */
-    idleTimeout?: pulumi.Input<string>;
+    idleTimeout?: pulumi.Input<string | undefined>;
 }
 
 export interface LoadbalancerListenerUdp {
     /**
      * Time after which an idle session is closed. The default value is set to 1 minute, and the maximum value is 2 minutes. The format is a duration and the unit must be seconds. Example: 30s
      */
-    idleTimeout?: pulumi.Input<string>;
+    idleTimeout?: pulumi.Input<string | undefined>;
 }
 
 export interface LoadbalancerNetwork {
@@ -795,52 +795,52 @@ export interface LoadbalancerOptions {
     /**
      * Load Balancer is accessible only from an IP address in this range.
      */
-    acls?: pulumi.Input<pulumi.Input<string>[]>;
+    acls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * We offer Load Balancer metrics observability via ARGUS or external solutions. Not changeable after creation.
      */
-    observability?: pulumi.Input<inputs.LoadbalancerOptionsObservability>;
+    observability?: pulumi.Input<inputs.LoadbalancerOptionsObservability | undefined>;
     /**
      * If true, Load Balancer is accessible only via a private network IP address.
      */
-    privateNetworkOnly?: pulumi.Input<boolean>;
+    privateNetworkOnly?: pulumi.Input<boolean | undefined>;
 }
 
 export interface LoadbalancerOptionsObservability {
     /**
      * Observability logs configuration. Not changeable after creation.
      */
-    logs?: pulumi.Input<inputs.LoadbalancerOptionsObservabilityLogs>;
+    logs?: pulumi.Input<inputs.LoadbalancerOptionsObservabilityLogs | undefined>;
     /**
      * Observability metrics configuration. Not changeable after creation.
      */
-    metrics?: pulumi.Input<inputs.LoadbalancerOptionsObservabilityMetrics>;
+    metrics?: pulumi.Input<inputs.LoadbalancerOptionsObservabilityMetrics | undefined>;
 }
 
 export interface LoadbalancerOptionsObservabilityLogs {
     /**
      * Credentials reference for logs. Not changeable after creation.
      */
-    credentialsRef?: pulumi.Input<string>;
+    credentialsRef?: pulumi.Input<string | undefined>;
     /**
      * The ARGUS/Loki remote write Push URL to ship the logs to. Not changeable after creation.
      */
-    pushUrl?: pulumi.Input<string>;
+    pushUrl?: pulumi.Input<string | undefined>;
 }
 
 export interface LoadbalancerOptionsObservabilityMetrics {
     /**
      * Credentials reference for metrics. Not changeable after creation.
      */
-    credentialsRef?: pulumi.Input<string>;
+    credentialsRef?: pulumi.Input<string | undefined>;
     /**
      * The ARGUS/Prometheus remote write Push URL to ship the metrics to. Not changeable after creation.
      */
-    pushUrl?: pulumi.Input<string>;
+    pushUrl?: pulumi.Input<string | undefined>;
 }
 
 export interface LoadbalancerTargetPool {
-    activeHealthCheck?: pulumi.Input<inputs.LoadbalancerTargetPoolActiveHealthCheck>;
+    activeHealthCheck?: pulumi.Input<inputs.LoadbalancerTargetPoolActiveHealthCheck | undefined>;
     /**
      * Target pool name.
      */
@@ -848,7 +848,7 @@ export interface LoadbalancerTargetPool {
     /**
      * Here you can setup various session persistence options, so far only "`useSourceIpAddress`" is supported.
      */
-    sessionPersistence?: pulumi.Input<inputs.LoadbalancerTargetPoolSessionPersistence>;
+    sessionPersistence?: pulumi.Input<inputs.LoadbalancerTargetPoolSessionPersistence | undefined>;
     /**
      * Identical port number where each target listens for traffic.
      */
@@ -863,30 +863,30 @@ export interface LoadbalancerTargetPoolActiveHealthCheck {
     /**
      * Healthy threshold of the health checking.
      */
-    healthyThreshold?: pulumi.Input<number>;
+    healthyThreshold?: pulumi.Input<number | undefined>;
     /**
      * Interval duration of health checking in seconds.
      */
-    interval?: pulumi.Input<string>;
+    interval?: pulumi.Input<string | undefined>;
     /**
      * Interval duration threshold of the health checking in seconds.
      */
-    intervalJitter?: pulumi.Input<string>;
+    intervalJitter?: pulumi.Input<string | undefined>;
     /**
      * Active health checking timeout duration in seconds.
      */
-    timeout?: pulumi.Input<string>;
+    timeout?: pulumi.Input<string | undefined>;
     /**
      * Unhealthy threshold of the health checking.
      */
-    unhealthyThreshold?: pulumi.Input<number>;
+    unhealthyThreshold?: pulumi.Input<number | undefined>;
 }
 
 export interface LoadbalancerTargetPoolSessionPersistence {
     /**
      * If true then all connections from one source IP address are redirected to the same target. This setting changes the load balancing algorithm to Maglev.
      */
-    useSourceIpAddress?: pulumi.Input<boolean>;
+    useSourceIpAddress?: pulumi.Input<boolean | undefined>;
 }
 
 export interface LoadbalancerTargetPoolTarget {
@@ -904,102 +904,102 @@ export interface LogmeInstanceParameters {
     /**
      * Enable monitoring.
      */
-    enableMonitoring?: pulumi.Input<boolean>;
-    fluentdTcp?: pulumi.Input<number>;
-    fluentdTls?: pulumi.Input<number>;
-    fluentdTlsCiphers?: pulumi.Input<string>;
-    fluentdTlsMaxVersion?: pulumi.Input<string>;
-    fluentdTlsMinVersion?: pulumi.Input<string>;
-    fluentdTlsVersion?: pulumi.Input<string>;
-    fluentdUdp?: pulumi.Input<number>;
+    enableMonitoring?: pulumi.Input<boolean | undefined>;
+    fluentdTcp?: pulumi.Input<number | undefined>;
+    fluentdTls?: pulumi.Input<number | undefined>;
+    fluentdTlsCiphers?: pulumi.Input<string | undefined>;
+    fluentdTlsMaxVersion?: pulumi.Input<string | undefined>;
+    fluentdTlsMinVersion?: pulumi.Input<string | undefined>;
+    fluentdTlsVersion?: pulumi.Input<string | undefined>;
+    fluentdUdp?: pulumi.Input<number | undefined>;
     /**
      * If set, monitoring with Graphite will be enabled. Expects the host and port where the Graphite metrics should be sent to (host:port).
      */
-    graphite?: pulumi.Input<string>;
+    graphite?: pulumi.Input<string | undefined>;
     /**
      * Combination of an integer and a timerange when an index will be considered "old" and can be deleted. Possible values for the timerange are `s`, `m`, `h` and `d`.
      */
-    ismDeletionAfter?: pulumi.Input<string>;
-    ismJitter?: pulumi.Input<number>;
+    ismDeletionAfter?: pulumi.Input<string | undefined>;
+    ismJitter?: pulumi.Input<number | undefined>;
     /**
      * Jitter of the execution time.
      */
-    ismJobInterval?: pulumi.Input<number>;
+    ismJobInterval?: pulumi.Input<number | undefined>;
     /**
      * The amount of memory (in MB) allocated as heap by the JVM for OpenSearch.
      */
-    javaHeapspace?: pulumi.Input<number>;
+    javaHeapspace?: pulumi.Input<number | undefined>;
     /**
      * The amount of memory (in MB) used by the JVM to store metadata for OpenSearch.
      */
-    javaMaxmetaspace?: pulumi.Input<number>;
+    javaMaxmetaspace?: pulumi.Input<number | undefined>;
     /**
      * The maximum disk threshold in MB. If the disk usage exceeds this threshold, the instance will be stopped.
      */
-    maxDiskThreshold?: pulumi.Input<number>;
+    maxDiskThreshold?: pulumi.Input<number | undefined>;
     /**
      * The frequency in seconds at which metrics are emitted (in seconds).
      */
-    metricsFrequency?: pulumi.Input<number>;
+    metricsFrequency?: pulumi.Input<number | undefined>;
     /**
      * The prefix for the metrics. Could be useful when using Graphite monitoring to prefix the metrics with a certain value, like an API key.
      */
-    metricsPrefix?: pulumi.Input<string>;
+    metricsPrefix?: pulumi.Input<string | undefined>;
     /**
      * The ID of the STACKIT monitoring instance.
      */
-    monitoringInstanceId?: pulumi.Input<string>;
-    opensearchTlsCiphers?: pulumi.Input<pulumi.Input<string>[]>;
-    opensearchTlsProtocols?: pulumi.Input<pulumi.Input<string>[]>;
+    monitoringInstanceId?: pulumi.Input<string | undefined>;
+    opensearchTlsCiphers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    opensearchTlsProtocols?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Comma separated list of IP networks in CIDR notation which are allowed to access this instance.
      */
-    sgwAcl?: pulumi.Input<string>;
+    sgwAcl?: pulumi.Input<string | undefined>;
     /**
      * List of syslog servers to send logs to.
      */
-    syslogs?: pulumi.Input<pulumi.Input<string>[]>;
+    syslogs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface MariadbInstanceParameters {
     /**
      * Enable monitoring.
      */
-    enableMonitoring?: pulumi.Input<boolean>;
+    enableMonitoring?: pulumi.Input<boolean | undefined>;
     /**
      * Graphite server URL (host and port). If set, monitoring with Graphite will be enabled.
      */
-    graphite?: pulumi.Input<string>;
+    graphite?: pulumi.Input<string | undefined>;
     /**
      * The maximum disk threshold in MB. If the disk usage exceeds this threshold, the instance will be stopped.
      */
-    maxDiskThreshold?: pulumi.Input<number>;
+    maxDiskThreshold?: pulumi.Input<number | undefined>;
     /**
      * The frequency in seconds at which metrics are emitted.
      */
-    metricsFrequency?: pulumi.Input<number>;
+    metricsFrequency?: pulumi.Input<number | undefined>;
     /**
      * The prefix for the metrics. Could be useful when using Graphite monitoring to prefix the metrics with a certain value, like an API key
      */
-    metricsPrefix?: pulumi.Input<string>;
+    metricsPrefix?: pulumi.Input<string | undefined>;
     /**
      * The ID of the STACKIT monitoring instance. Monitoring instances with the plan "Observability-Monitoring-Starter" are not supported.
      */
-    monitoringInstanceId?: pulumi.Input<string>;
+    monitoringInstanceId?: pulumi.Input<string | undefined>;
     /**
      * Comma separated list of IP networks in CIDR notation which are allowed to access this instance.
      */
-    sgwAcl?: pulumi.Input<string>;
+    sgwAcl?: pulumi.Input<string | undefined>;
     /**
      * List of syslog servers to send logs to.
      */
-    syslogs?: pulumi.Input<pulumi.Input<string>[]>;
+    syslogs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface MongodbflexInstanceFlavor {
     cpu: pulumi.Input<number>;
-    description?: pulumi.Input<string>;
-    id?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
+    id?: pulumi.Input<string | undefined>;
     ram: pulumi.Input<number>;
 }
 
@@ -1007,11 +1007,11 @@ export interface MongodbflexInstanceOptions {
     /**
      * The number of days that daily backups will be retained.
      */
-    dailySnapshotRetentionDays?: pulumi.Input<number>;
+    dailySnapshotRetentionDays?: pulumi.Input<number | undefined>;
     /**
      * The number of months that monthly backups will be retained.
      */
-    monthlySnapshotRetentionMonths?: pulumi.Input<number>;
+    monthlySnapshotRetentionMonths?: pulumi.Input<number | undefined>;
     /**
      * The number of hours back in time the point-in-time recovery feature will be able to recover.
      */
@@ -1019,7 +1019,7 @@ export interface MongodbflexInstanceOptions {
     /**
      * The number of days that continuous backups (controlled via the `backupSchedule`) will be retained.
      */
-    snapshotRetentionDays?: pulumi.Input<number>;
+    snapshotRetentionDays?: pulumi.Input<number | undefined>;
     /**
      * Type of the MongoDB Flex instance. Possible values are: `Replica`, `Sharded`, `Single`.
      */
@@ -1027,7 +1027,7 @@ export interface MongodbflexInstanceOptions {
     /**
      * The number of weeks that weekly backups will be retained.
      */
-    weeklySnapshotRetentionWeeks?: pulumi.Input<number>;
+    weeklySnapshotRetentionWeeks?: pulumi.Input<number | undefined>;
 }
 
 export interface MongodbflexInstanceStorage {
@@ -1039,7 +1039,7 @@ export interface NetworkAreaNetworkRange {
     /**
      * @deprecated Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `stackit.NetworkAreaRegion` resource instead.
      */
-    networkRangeId?: pulumi.Input<string>;
+    networkRangeId?: pulumi.Input<string | undefined>;
     /**
      * Classless Inter-Domain Routing (CIDR).
      *
@@ -1052,19 +1052,19 @@ export interface NetworkAreaRegionIpv4 {
     /**
      * List of DNS Servers/Nameservers.
      */
-    defaultNameservers?: pulumi.Input<pulumi.Input<string>[]>;
+    defaultNameservers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The default prefix length for networks in the network area.
      */
-    defaultPrefixLength?: pulumi.Input<number>;
+    defaultPrefixLength?: pulumi.Input<number | undefined>;
     /**
      * The maximal prefix length for networks in the network area.
      */
-    maxPrefixLength?: pulumi.Input<number>;
+    maxPrefixLength?: pulumi.Input<number | undefined>;
     /**
      * The minimal prefix length for networks in the network area.
      */
-    minPrefixLength?: pulumi.Input<number>;
+    minPrefixLength?: pulumi.Input<number | undefined>;
     /**
      * List of Network ranges.
      */
@@ -1076,7 +1076,7 @@ export interface NetworkAreaRegionIpv4 {
 }
 
 export interface NetworkAreaRegionIpv4NetworkRange {
-    networkRangeId?: pulumi.Input<string>;
+    networkRangeId?: pulumi.Input<string | undefined>;
     /**
      * Classless Inter-Domain Routing (CIDR).
      */
@@ -1102,18 +1102,18 @@ export interface NetworkAreaRouteNextHop {
     /**
      * Either IPv4 or IPv6 (not set for blackhole and internet). Only IPv4 supported currently.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface ObservabilityAlertgroupRule {
     /**
      * The name of the alert rule. Is the identifier and must be unique in the group.
      */
-    alert?: pulumi.Input<string>;
+    alert?: pulumi.Input<string | undefined>;
     /**
      * A map of key:value. Annotations to add or overwrite for each alert
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The PromQL expression to evaluate. Every evaluation cycle this is evaluated at the current time, and all resultant time series become pending/firing alerts.
      */
@@ -1121,22 +1121,22 @@ export interface ObservabilityAlertgroupRule {
     /**
      * Alerts are considered firing once they have been returned for this long. Alerts which have not yet fired for long enough are considered pending. Default is 0s
      */
-    for?: pulumi.Input<string>;
+    for?: pulumi.Input<string | undefined>;
     /**
      * A map of key:value. Labels to add or overwrite for each alert
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the metric. It's the identifier and must be unique in the group.
      */
-    record?: pulumi.Input<string>;
+    record?: pulumi.Input<string | undefined>;
 }
 
 export interface ObservabilityInstanceAlertConfig {
     /**
      * Global configuration for the alerts. If nothing passed the default argus config will be used. It is only possible to update the entire global part, not individual attributes.
      */
-    global?: pulumi.Input<inputs.ObservabilityInstanceAlertConfigGlobal>;
+    global?: pulumi.Input<inputs.ObservabilityInstanceAlertConfigGlobal | undefined>;
     /**
      * List of alert receivers.
      */
@@ -1151,42 +1151,42 @@ export interface ObservabilityInstanceAlertConfigGlobal {
     /**
      * The API key for OpsGenie.
      */
-    opsgenieApiKey?: pulumi.Input<string>;
+    opsgenieApiKey?: pulumi.Input<string | undefined>;
     /**
      * The host to send OpsGenie API requests to. Must be a valid URL
      */
-    opsgenieApiUrl?: pulumi.Input<string>;
+    opsgenieApiUrl?: pulumi.Input<string | undefined>;
     /**
      * The default value used by alertmanager if the alert does not include EndsAt. After this time passes, it can declare the alert as resolved if it has not been updated. This has no impact on alerts from Prometheus, as they always include EndsAt.
      */
-    resolveTimeout?: pulumi.Input<string>;
+    resolveTimeout?: pulumi.Input<string | undefined>;
     /**
      * SMTP authentication information. Must be a valid email address
      */
-    smtpAuthIdentity?: pulumi.Input<string>;
+    smtpAuthIdentity?: pulumi.Input<string | undefined>;
     /**
      * SMTP Auth using LOGIN and PLAIN.
      */
-    smtpAuthPassword?: pulumi.Input<string>;
+    smtpAuthPassword?: pulumi.Input<string | undefined>;
     /**
      * SMTP Auth using CRAM-MD5, LOGIN and PLAIN. If empty, Alertmanager doesn't authenticate to the SMTP server.
      */
-    smtpAuthUsername?: pulumi.Input<string>;
+    smtpAuthUsername?: pulumi.Input<string | undefined>;
     /**
      * The default SMTP From header field. Must be a valid email address
      */
-    smtpFrom?: pulumi.Input<string>;
+    smtpFrom?: pulumi.Input<string | undefined>;
     /**
      * The default SMTP smarthost used for sending emails, including port number in format `host:port` (eg. `smtp.example.com:587`). Port number usually is 25, or 587 for SMTP over TLS (sometimes referred to as STARTTLS).
      */
-    smtpSmartHost?: pulumi.Input<string>;
+    smtpSmartHost?: pulumi.Input<string | undefined>;
 }
 
 export interface ObservabilityInstanceAlertConfigReceiver {
     /**
      * List of email configurations.
      */
-    emailConfigs?: pulumi.Input<pulumi.Input<inputs.ObservabilityInstanceAlertConfigReceiverEmailConfig>[]>;
+    emailConfigs?: pulumi.Input<pulumi.Input<inputs.ObservabilityInstanceAlertConfigReceiverEmailConfig>[] | undefined>;
     /**
      * Name of the receiver.
      */
@@ -1194,103 +1194,103 @@ export interface ObservabilityInstanceAlertConfigReceiver {
     /**
      * List of OpsGenie configurations.
      */
-    opsgenieConfigs?: pulumi.Input<pulumi.Input<inputs.ObservabilityInstanceAlertConfigReceiverOpsgenieConfig>[]>;
+    opsgenieConfigs?: pulumi.Input<pulumi.Input<inputs.ObservabilityInstanceAlertConfigReceiverOpsgenieConfig>[] | undefined>;
     /**
      * List of Webhooks configurations.
      */
-    webhooksConfigs?: pulumi.Input<pulumi.Input<inputs.ObservabilityInstanceAlertConfigReceiverWebhooksConfig>[]>;
+    webhooksConfigs?: pulumi.Input<pulumi.Input<inputs.ObservabilityInstanceAlertConfigReceiverWebhooksConfig>[] | undefined>;
 }
 
 export interface ObservabilityInstanceAlertConfigReceiverEmailConfig {
     /**
      * SMTP authentication information. Must be a valid email address
      */
-    authIdentity?: pulumi.Input<string>;
+    authIdentity?: pulumi.Input<string | undefined>;
     /**
      * SMTP authentication password.
      */
-    authPassword?: pulumi.Input<string>;
+    authPassword?: pulumi.Input<string | undefined>;
     /**
      * SMTP authentication username.
      */
-    authUsername?: pulumi.Input<string>;
+    authUsername?: pulumi.Input<string | undefined>;
     /**
      * The sender email address. Must be a valid email address
      */
-    from?: pulumi.Input<string>;
+    from?: pulumi.Input<string | undefined>;
     /**
      * Whether to notify about resolved alerts.
      */
-    sendResolved?: pulumi.Input<boolean>;
+    sendResolved?: pulumi.Input<boolean | undefined>;
     /**
      * The SMTP host through which emails are sent.
      */
-    smartHost?: pulumi.Input<string>;
+    smartHost?: pulumi.Input<string | undefined>;
     /**
      * The email address to send notifications to. Must be a valid email address
      */
-    to?: pulumi.Input<string>;
+    to?: pulumi.Input<string | undefined>;
 }
 
 export interface ObservabilityInstanceAlertConfigReceiverOpsgenieConfig {
     /**
      * The API key for OpsGenie.
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
     /**
      * The host to send OpsGenie API requests to. Must be a valid URL
      */
-    apiUrl?: pulumi.Input<string>;
+    apiUrl?: pulumi.Input<string | undefined>;
     /**
      * Priority of the alert. Possible values are: `P1`, `P2`, `P3`, `P4`, `P5`.
      */
-    priority?: pulumi.Input<string>;
+    priority?: pulumi.Input<string | undefined>;
     /**
      * Whether to notify about resolved alerts.
      */
-    sendResolved?: pulumi.Input<boolean>;
+    sendResolved?: pulumi.Input<boolean | undefined>;
     /**
      * Comma separated list of tags attached to the notifications.
      */
-    tags?: pulumi.Input<string>;
+    tags?: pulumi.Input<string | undefined>;
 }
 
 export interface ObservabilityInstanceAlertConfigReceiverWebhooksConfig {
     /**
      * Google Chat webhooks require special handling, set this to true if the webhook is for Google Chat.
      */
-    googleChat?: pulumi.Input<boolean>;
+    googleChat?: pulumi.Input<boolean | undefined>;
     /**
      * Microsoft Teams webhooks require special handling, set this to true if the webhook is for Microsoft Teams.
      */
-    msTeams?: pulumi.Input<boolean>;
+    msTeams?: pulumi.Input<boolean | undefined>;
     /**
      * Whether to notify about resolved alerts.
      */
-    sendResolved?: pulumi.Input<boolean>;
+    sendResolved?: pulumi.Input<boolean | undefined>;
     /**
      * The endpoint to send HTTP POST requests to. Must be a valid URL
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
 }
 
 export interface ObservabilityInstanceAlertConfigRoute {
     /**
      * Whether an alert should continue matching subsequent sibling nodes.
      */
-    continue?: pulumi.Input<boolean>;
+    continue?: pulumi.Input<boolean | undefined>;
     /**
      * The labels by which incoming alerts are grouped together. For example, multiple alerts coming in for cluster=A and alertname=LatencyHigh would be batched into a single group. To aggregate by all possible labels use the special value '...' as the sole label name, for example: group_by: ['...']. This effectively disables aggregation entirely, passing through all alerts as-is. This is unlikely to be what you want, unless you have a very low alert volume or your upstream notification system performs its own grouping.
      */
-    groupBies?: pulumi.Input<pulumi.Input<string>[]>;
+    groupBies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * How long to wait before sending a notification about new alerts that are added to a group of alerts for which an initial notification has already been sent. (Usually ~5m or more.)
      */
-    groupInterval?: pulumi.Input<string>;
+    groupInterval?: pulumi.Input<string | undefined>;
     /**
      * How long to initially wait to send a notification for a group of alerts. Allows to wait for an inhibiting alert to arrive or collect more initial alerts for the same group. (Usually ~0s to few minutes.)
      */
-    groupWait?: pulumi.Input<string>;
+    groupWait?: pulumi.Input<string | undefined>;
     /**
      * The name of the receiver to route the alerts to.
      */
@@ -1298,46 +1298,46 @@ export interface ObservabilityInstanceAlertConfigRoute {
     /**
      * How long to wait before sending a notification again if it has already been sent successfully for an alert. (Usually ~3h or more).
      */
-    repeatInterval?: pulumi.Input<string>;
+    repeatInterval?: pulumi.Input<string | undefined>;
     /**
      * List of child routes.
      */
-    routes?: pulumi.Input<pulumi.Input<inputs.ObservabilityInstanceAlertConfigRouteRoute>[]>;
+    routes?: pulumi.Input<pulumi.Input<inputs.ObservabilityInstanceAlertConfigRouteRoute>[] | undefined>;
 }
 
 export interface ObservabilityInstanceAlertConfigRouteRoute {
     /**
      * Whether an alert should continue matching subsequent sibling nodes.
      */
-    continue?: pulumi.Input<boolean>;
+    continue?: pulumi.Input<boolean | undefined>;
     /**
      * The labels by which incoming alerts are grouped together. For example, multiple alerts coming in for cluster=A and alertname=LatencyHigh would be batched into a single group. To aggregate by all possible labels use the special value '...' as the sole label name, for example: group_by: ['...']. This effectively disables aggregation entirely, passing through all alerts as-is. This is unlikely to be what you want, unless you have a very low alert volume or your upstream notification system performs its own grouping.
      */
-    groupBies?: pulumi.Input<pulumi.Input<string>[]>;
+    groupBies?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * How long to wait before sending a notification about new alerts that are added to a group of alerts for which an initial notification has already been sent. (Usually ~5m or more.)
      */
-    groupInterval?: pulumi.Input<string>;
+    groupInterval?: pulumi.Input<string | undefined>;
     /**
      * How long to initially wait to send a notification for a group of alerts. Allows to wait for an inhibiting alert to arrive or collect more initial alerts for the same group. (Usually ~0s to few minutes.)
      */
-    groupWait?: pulumi.Input<string>;
+    groupWait?: pulumi.Input<string | undefined>;
     /**
      * A set of equality matchers an alert has to fulfill to match the node. This field is deprecated and will be removed after 10th March 2026, use `matchers` in the `routes` instead
      *
      * @deprecated Use `matchers` in the `routes` instead.
      */
-    match?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    match?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A set of regex-matchers an alert has to fulfill to match the node. This field is deprecated and will be removed after 10th March 2026, use `matchers` in the `routes` instead
      *
      * @deprecated Use `matchers` in the `routes` instead.
      */
-    matchRegex?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    matchRegex?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * A list of matchers that an alert has to fulfill to match the node. A matcher is a string with a syntax inspired by PromQL and OpenMetrics.
      */
-    matchers?: pulumi.Input<pulumi.Input<string>[]>;
+    matchers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the receiver to route the alerts to.
      */
@@ -1345,7 +1345,7 @@ export interface ObservabilityInstanceAlertConfigRouteRoute {
     /**
      * How long to wait before sending a notification again if it has already been sent successfully for an alert. (Usually ~3h or more).
      */
-    repeatInterval?: pulumi.Input<string>;
+    repeatInterval?: pulumi.Input<string | undefined>;
 }
 
 export interface ObservabilityLogalertgroupRule {
@@ -1356,7 +1356,7 @@ export interface ObservabilityLogalertgroupRule {
     /**
      * A map of key:value. Annotations to add or overwrite for each alert
      */
-    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The LogQL expression to evaluate. Every evaluation cycle this is evaluated at the current time, and all resultant time series become pending/firing alerts.
      */
@@ -1364,11 +1364,11 @@ export interface ObservabilityLogalertgroupRule {
     /**
      * Alerts are considered firing once they have been returned for this long. Alerts which have not yet fired for long enough are considered pending. Default is 0s
      */
-    for?: pulumi.Input<string>;
+    for?: pulumi.Input<string | undefined>;
     /**
      * A map of key:value. Labels to add or overwrite for each alert
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }
 
 export interface ObservabilityScrapeconfigBasicAuth {
@@ -1386,14 +1386,14 @@ export interface ObservabilityScrapeconfigSaml2 {
     /**
      * Specifies if URL parameters are enabled. Defaults to `true`
      */
-    enableUrlParameters?: pulumi.Input<boolean>;
+    enableUrlParameters?: pulumi.Input<boolean | undefined>;
 }
 
 export interface ObservabilityScrapeconfigTarget {
     /**
      * Specifies labels.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies target URLs.
      */
@@ -1404,65 +1404,65 @@ export interface OpensearchInstanceParameters {
     /**
      * Enable monitoring.
      */
-    enableMonitoring?: pulumi.Input<boolean>;
+    enableMonitoring?: pulumi.Input<boolean | undefined>;
     /**
      * If set, monitoring with Graphite will be enabled. Expects the host and port where the Graphite metrics should be sent to (host:port).
      */
-    graphite?: pulumi.Input<string>;
+    graphite?: pulumi.Input<string | undefined>;
     /**
      * The garbage collector to use for OpenSearch.
      */
-    javaGarbageCollector?: pulumi.Input<string>;
+    javaGarbageCollector?: pulumi.Input<string | undefined>;
     /**
      * The amount of memory (in MB) allocated as heap by the JVM for OpenSearch.
      */
-    javaHeapspace?: pulumi.Input<number>;
+    javaHeapspace?: pulumi.Input<number | undefined>;
     /**
      * The amount of memory (in MB) used by the JVM to store metadata for OpenSearch.
      */
-    javaMaxmetaspace?: pulumi.Input<number>;
+    javaMaxmetaspace?: pulumi.Input<number | undefined>;
     /**
      * The maximum disk threshold in MB. If the disk usage exceeds this threshold, the instance will be stopped.
      */
-    maxDiskThreshold?: pulumi.Input<number>;
+    maxDiskThreshold?: pulumi.Input<number | undefined>;
     /**
      * The frequency in seconds at which metrics are emitted (in seconds).
      */
-    metricsFrequency?: pulumi.Input<number>;
+    metricsFrequency?: pulumi.Input<number | undefined>;
     /**
      * The prefix for the metrics. Could be useful when using Graphite monitoring to prefix the metrics with a certain value, like an API key.
      */
-    metricsPrefix?: pulumi.Input<string>;
+    metricsPrefix?: pulumi.Input<string | undefined>;
     /**
      * The ID of the STACKIT monitoring instance.
      */
-    monitoringInstanceId?: pulumi.Input<string>;
+    monitoringInstanceId?: pulumi.Input<string | undefined>;
     /**
      * List of plugins to install. Must be a supported plugin name. The plugins `repository-s3` and `repository-azure` are enabled by default and cannot be disabled.
      */
-    plugins?: pulumi.Input<pulumi.Input<string>[]>;
+    plugins?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Comma separated list of IP networks in CIDR notation which are allowed to access this instance.
      */
-    sgwAcl?: pulumi.Input<string>;
+    sgwAcl?: pulumi.Input<string | undefined>;
     /**
      * List of syslog servers to send logs to.
      */
-    syslogs?: pulumi.Input<pulumi.Input<string>[]>;
+    syslogs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of TLS ciphers to use.
      */
-    tlsCiphers?: pulumi.Input<pulumi.Input<string>[]>;
+    tlsCiphers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The TLS protocol to use.
      */
-    tlsProtocols?: pulumi.Input<pulumi.Input<string>[]>;
+    tlsProtocols?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface PostgresflexInstanceFlavor {
     cpu: pulumi.Input<number>;
-    description?: pulumi.Input<string>;
-    id?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
+    id?: pulumi.Input<string | undefined>;
     ram: pulumi.Input<number>;
 }
 
@@ -1475,146 +1475,146 @@ export interface RabbitmqInstanceParameters {
     /**
      * The timeout in milliseconds for the consumer.
      */
-    consumerTimeout?: pulumi.Input<number>;
+    consumerTimeout?: pulumi.Input<number | undefined>;
     /**
      * Enable monitoring.
      */
-    enableMonitoring?: pulumi.Input<boolean>;
+    enableMonitoring?: pulumi.Input<boolean | undefined>;
     /**
      * Graphite server URL (host and port). If set, monitoring with Graphite will be enabled.
      */
-    graphite?: pulumi.Input<string>;
+    graphite?: pulumi.Input<string | undefined>;
     /**
      * The maximum disk threshold in MB. If the disk usage exceeds this threshold, the instance will be stopped.
      */
-    maxDiskThreshold?: pulumi.Input<number>;
+    maxDiskThreshold?: pulumi.Input<number | undefined>;
     /**
      * The frequency in seconds at which metrics are emitted.
      */
-    metricsFrequency?: pulumi.Input<number>;
+    metricsFrequency?: pulumi.Input<number | undefined>;
     /**
      * The prefix for the metrics. Could be useful when using Graphite monitoring to prefix the metrics with a certain value, like an API key
      */
-    metricsPrefix?: pulumi.Input<string>;
+    metricsPrefix?: pulumi.Input<string | undefined>;
     /**
      * The ID of the STACKIT monitoring instance.
      */
-    monitoringInstanceId?: pulumi.Input<string>;
+    monitoringInstanceId?: pulumi.Input<string | undefined>;
     /**
      * List of plugins to install. Must be a supported plugin name.
      */
-    plugins?: pulumi.Input<pulumi.Input<string>[]>;
+    plugins?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of roles to assign to the instance.
      */
-    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    roles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Comma separated list of IP networks in CIDR notation which are allowed to access this instance.
      */
-    sgwAcl?: pulumi.Input<string>;
+    sgwAcl?: pulumi.Input<string | undefined>;
     /**
      * List of syslog servers to send logs to.
      */
-    syslogs?: pulumi.Input<pulumi.Input<string>[]>;
+    syslogs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of TLS ciphers to use.
      */
-    tlsCiphers?: pulumi.Input<pulumi.Input<string>[]>;
+    tlsCiphers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * TLS protocol versions to use.
      */
-    tlsProtocols?: pulumi.Input<pulumi.Input<string>[]>;
+    tlsProtocols?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface RedisInstanceParameters {
     /**
      * The number of milliseconds after which the instance is considered down.
      */
-    downAfterMilliseconds?: pulumi.Input<number>;
+    downAfterMilliseconds?: pulumi.Input<number | undefined>;
     /**
      * Enable monitoring.
      */
-    enableMonitoring?: pulumi.Input<boolean>;
+    enableMonitoring?: pulumi.Input<boolean | undefined>;
     /**
      * The failover timeout in milliseconds.
      */
-    failoverTimeout?: pulumi.Input<number>;
+    failoverTimeout?: pulumi.Input<number | undefined>;
     /**
      * Graphite server URL (host and port). If set, monitoring with Graphite will be enabled.
      */
-    graphite?: pulumi.Input<string>;
+    graphite?: pulumi.Input<string | undefined>;
     /**
      * The lazy eviction enablement (yes or no).
      */
-    lazyfreeLazyEviction?: pulumi.Input<string>;
+    lazyfreeLazyEviction?: pulumi.Input<string | undefined>;
     /**
      * The lazy expire enablement (yes or no).
      */
-    lazyfreeLazyExpire?: pulumi.Input<string>;
+    lazyfreeLazyExpire?: pulumi.Input<string | undefined>;
     /**
      * The Lua time limit.
      */
-    luaTimeLimit?: pulumi.Input<number>;
+    luaTimeLimit?: pulumi.Input<number | undefined>;
     /**
      * The maximum disk threshold in MB. If the disk usage exceeds this threshold, the instance will be stopped.
      */
-    maxDiskThreshold?: pulumi.Input<number>;
+    maxDiskThreshold?: pulumi.Input<number | undefined>;
     /**
      * The maximum number of clients.
      */
-    maxclients?: pulumi.Input<number>;
+    maxclients?: pulumi.Input<number | undefined>;
     /**
      * The policy to handle the maximum memory (volatile-lru, noeviction, etc).
      */
-    maxmemoryPolicy?: pulumi.Input<string>;
+    maxmemoryPolicy?: pulumi.Input<string | undefined>;
     /**
      * The maximum memory samples.
      */
-    maxmemorySamples?: pulumi.Input<number>;
+    maxmemorySamples?: pulumi.Input<number | undefined>;
     /**
      * The frequency in seconds at which metrics are emitted.
      */
-    metricsFrequency?: pulumi.Input<number>;
+    metricsFrequency?: pulumi.Input<number | undefined>;
     /**
      * The prefix for the metrics. Could be useful when using Graphite monitoring to prefix the metrics with a certain value, like an API key
      */
-    metricsPrefix?: pulumi.Input<string>;
+    metricsPrefix?: pulumi.Input<string | undefined>;
     /**
      * The minimum replicas maximum lag.
      */
-    minReplicasMaxLag?: pulumi.Input<number>;
+    minReplicasMaxLag?: pulumi.Input<number | undefined>;
     /**
      * The ID of the STACKIT monitoring instance.
      */
-    monitoringInstanceId?: pulumi.Input<string>;
+    monitoringInstanceId?: pulumi.Input<string | undefined>;
     /**
      * The notify keyspace events.
      */
-    notifyKeyspaceEvents?: pulumi.Input<string>;
+    notifyKeyspaceEvents?: pulumi.Input<string | undefined>;
     /**
      * Comma separated list of IP networks in CIDR notation which are allowed to access this instance.
      */
-    sgwAcl?: pulumi.Input<string>;
+    sgwAcl?: pulumi.Input<string | undefined>;
     /**
      * The snapshot configuration.
      */
-    snapshot?: pulumi.Input<string>;
+    snapshot?: pulumi.Input<string | undefined>;
     /**
      * List of syslog servers to send logs to.
      */
-    syslogs?: pulumi.Input<pulumi.Input<string>[]>;
+    syslogs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * List of TLS ciphers to use.
      */
-    tlsCiphers?: pulumi.Input<pulumi.Input<string>[]>;
+    tlsCiphers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * TLS cipher suites to use.
      */
-    tlsCiphersuites?: pulumi.Input<string>;
+    tlsCiphersuites?: pulumi.Input<string | undefined>;
     /**
      * TLS protocol to use.
      */
-    tlsProtocols?: pulumi.Input<string>;
+    tlsProtocols?: pulumi.Input<string | undefined>;
 }
 
 export interface RoutingTableRouteDestination {
@@ -1636,7 +1636,7 @@ export interface RoutingTableRouteNextHop {
     /**
      * Either IPv4 or IPv6 (not set for blackhole and internet). Only IPv4 supported during experimental stage.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface SecretsmanagerInstanceKmsKey {
@@ -1684,47 +1684,47 @@ export interface SecurityGroupRuleProtocol {
     /**
      * The protocol name which the rule should match. Either `name` or `number` must be provided. Possible values are: `ah`, `dccp`, `egp`, `esp`, `gre`, `icmp`, `igmp`, `ipip`, `ipv6-encap`, `ipv6-frag`, `ipv6-icmp`, `ipv6-nonxt`, `ipv6-opts`, `ipv6-route`, `ospf`, `pgm`, `rsvp`, `sctp`, `tcp`, `udp`, `udplite`, `vrrp`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The protocol number which the rule should match. Either `name` or `number` must be provided.
      */
-    number?: pulumi.Input<number>;
+    number?: pulumi.Input<number | undefined>;
 }
 
 export interface ServerAgent {
     /**
      * Whether a STACKIT Server Agent is provisioned at the server
      */
-    provisioned?: pulumi.Input<boolean>;
+    provisioned?: pulumi.Input<boolean | undefined>;
     /**
      * Agent provisioning policy: `ALWAYS`, `NEVER`, or `INHERIT`. `INHERIT` follows the image default value.
      */
-    provisioningPolicy?: pulumi.Input<string>;
+    provisioningPolicy?: pulumi.Input<string | undefined>;
 }
 
 export interface ServerBackupScheduleBackupProperties {
     name: pulumi.Input<string>;
     retentionPeriod: pulumi.Input<number>;
-    volumeIds?: pulumi.Input<pulumi.Input<string>[]>;
+    volumeIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ServerBootVolume {
     /**
      * Delete the volume during the termination of the server. Only allowed when `sourceType` is `image`.
      */
-    deleteOnTermination?: pulumi.Input<boolean>;
+    deleteOnTermination?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the boot volume
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The performance class of the server.
      */
-    performanceClass?: pulumi.Input<string>;
+    performanceClass?: pulumi.Input<string | undefined>;
     /**
      * The size of the boot volume in GB. Must be provided when `sourceType` is `image`.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * The ID of the source, either image ID or volume ID
      */
@@ -1754,7 +1754,7 @@ export interface SfsExportPolicyRule {
     /**
      * Description of the Rule
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * IP access control list; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
      */
@@ -1766,36 +1766,47 @@ export interface SfsExportPolicyRule {
     /**
      * Flag to indicate if client IPs matching this rule can only mount the share in read only mode
      */
-    readOnly?: pulumi.Input<boolean>;
+    readOnly?: pulumi.Input<boolean | undefined>;
     /**
      * Flag to honor set UUID
      */
-    setUuid?: pulumi.Input<boolean>;
+    setUuid?: pulumi.Input<boolean | undefined>;
     /**
      * Flag to indicate if client IPs matching this rule have root access on the Share
      */
-    superUser?: pulumi.Input<boolean>;
+    superUser?: pulumi.Input<boolean | undefined>;
+}
+
+export interface SfsResourcePoolSnapshotPolicy {
+    /**
+     * ID of the snapshot policy.
+     */
+    id: pulumi.Input<string>;
+    /**
+     * Name of the snapshot policy.
+     */
+    name?: pulumi.Input<string | undefined>;
 }
 
 export interface SkeClusterExtensions {
     /**
      * Cluster access control configuration.
      */
-    acl?: pulumi.Input<inputs.SkeClusterExtensionsAcl>;
+    acl?: pulumi.Input<inputs.SkeClusterExtensionsAcl | undefined>;
     /**
      * A single argus block as defined below. This field is deprecated and will be removed 06 January 2026.
      *
      * @deprecated Use observability instead.
      */
-    argus?: pulumi.Input<inputs.SkeClusterExtensionsArgus>;
+    argus?: pulumi.Input<inputs.SkeClusterExtensionsArgus | undefined>;
     /**
      * DNS extension configuration
      */
-    dns?: pulumi.Input<inputs.SkeClusterExtensionsDns>;
+    dns?: pulumi.Input<inputs.SkeClusterExtensionsDns | undefined>;
     /**
      * A single observability block as defined below.
      */
-    observability?: pulumi.Input<inputs.SkeClusterExtensionsObservability>;
+    observability?: pulumi.Input<inputs.SkeClusterExtensionsObservability | undefined>;
 }
 
 export interface SkeClusterExtensionsAcl {
@@ -1813,7 +1824,7 @@ export interface SkeClusterExtensionsArgus {
     /**
      * Argus instance ID to choose which Argus instance is used. Required when enabled is set to `true`.
      */
-    argusInstanceId?: pulumi.Input<string>;
+    argusInstanceId?: pulumi.Input<string | undefined>;
     /**
      * Flag to enable/disable Argus extensions.
      */
@@ -1828,7 +1839,7 @@ export interface SkeClusterExtensionsDns {
     /**
      * Specify a list of domain filters for externalDNS (e.g., `foo.runs.onstackit.cloud`)
      */
-    zones?: pulumi.Input<pulumi.Input<string>[]>;
+    zones?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface SkeClusterExtensionsObservability {
@@ -1839,7 +1850,7 @@ export interface SkeClusterExtensionsObservability {
     /**
      * Observability instance ID to choose which Observability instance is used. Required when enabled is set to `true`.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
 }
 
 export interface SkeClusterHibernation {
@@ -1854,51 +1865,51 @@ export interface SkeClusterHibernation {
     /**
      * Timezone name corresponding to a file in the IANA Time Zone database. i.e. `Europe/Berlin`.
      */
-    timezone?: pulumi.Input<string>;
+    timezone?: pulumi.Input<string | undefined>;
 }
 
 export interface SkeClusterMaintenance {
     /**
      * Flag to enable/disable auto-updates of the Kubernetes version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
      */
-    enableKubernetesVersionUpdates?: pulumi.Input<boolean>;
+    enableKubernetesVersionUpdates?: pulumi.Input<boolean | undefined>;
     /**
      * Flag to enable/disable auto-updates of the OS image version. Defaults to `true`. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
      */
-    enableMachineImageVersionUpdates?: pulumi.Input<boolean>;
+    enableMachineImageVersionUpdates?: pulumi.Input<boolean | undefined>;
     /**
      * Time for maintenance window end. E.g. `01:23:45Z`, `05:00:00+02:00`.
      */
-    end?: pulumi.Input<string>;
+    end?: pulumi.Input<string | undefined>;
     /**
      * Time for maintenance window start. E.g. `01:23:45Z`, `05:00:00+02:00`.
      */
-    start?: pulumi.Input<string>;
+    start?: pulumi.Input<string | undefined>;
 }
 
 export interface SkeClusterNetwork {
     /**
      * Control plane for the cluster.
      */
-    controlPlane?: pulumi.Input<inputs.SkeClusterNetworkControlPlane>;
+    controlPlane?: pulumi.Input<inputs.SkeClusterNetworkControlPlane | undefined>;
     /**
      * ID of the STACKIT Network Area (SNA) network into which the cluster will be deployed.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
 }
 
 export interface SkeClusterNetworkControlPlane {
     /**
      * Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
      */
-    accessScope?: pulumi.Input<string>;
+    accessScope?: pulumi.Input<string | undefined>;
 }
 
 export interface SkeClusterNodePool {
     /**
      * Allow system components to run on this node pool.
      */
-    allowSystemComponents?: pulumi.Input<boolean>;
+    allowSystemComponents?: pulumi.Input<boolean | undefined>;
     /**
      * Specify a list of availability zones. E.g. `eu01-m`
      */
@@ -1906,11 +1917,11 @@ export interface SkeClusterNodePool {
     /**
      * Specifies the container runtime. Defaults to `containerd`
      */
-    cri?: pulumi.Input<string>;
+    cri?: pulumi.Input<string | undefined>;
     /**
      * Labels to add to each node.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The machine type.
      */
@@ -1918,11 +1929,11 @@ export interface SkeClusterNodePool {
     /**
      * Maximum number of additional VMs that are created during an update. If set (larger than 0), then it must be at least the amount of zones configured for the nodepool. The `maxSurge` and `maxUnavailable` fields cannot both be unset at the same time.
      */
-    maxSurge?: pulumi.Input<number>;
+    maxSurge?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of VMs that that can be unavailable during an update. If set (larger than 0), then it must be at least the amount of zones configured for the nodepool. The `maxSurge` and `maxUnavailable` fields cannot both be unset at the same time.
      */
-    maxUnavailable?: pulumi.Input<number>;
+    maxUnavailable?: pulumi.Input<number | undefined>;
     /**
      * Maximum number of nodes in the pool.
      */
@@ -1938,33 +1949,33 @@ export interface SkeClusterNodePool {
     /**
      * The name of the OS image. Defaults to `flatcar`.
      */
-    osName?: pulumi.Input<string>;
+    osName?: pulumi.Input<string | undefined>;
     /**
      * This field is deprecated, use `osVersionMin` to configure the version and `osVersionUsed` to get the currently used version instead.
      *
      * @deprecated Use `osVersionMin` to configure the version and `osVersionUsed` to get the currently used version instead. Setting a specific OS image version will cause errors during minor OS upgrades due to forced updates.
      */
-    osVersion?: pulumi.Input<string>;
+    osVersion?: pulumi.Input<string | undefined>;
     /**
      * The minimum OS image version. This field will be used to set the minimum OS image version on creation/update of the cluster. If unset, the latest supported OS image version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/). To get the current OS image version being used for the node pool, use the read-only `osVersionUsed` field.
      */
-    osVersionMin?: pulumi.Input<string>;
+    osVersionMin?: pulumi.Input<string | undefined>;
     /**
      * Full OS image version used. For example, if 3815.2 was set in `osVersionMin`, this value may result to 3815.2.2. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
      */
-    osVersionUsed?: pulumi.Input<string>;
+    osVersionUsed?: pulumi.Input<string | undefined>;
     /**
      * Specifies a taint list as defined below.
      */
-    taints?: pulumi.Input<pulumi.Input<inputs.SkeClusterNodePoolTaint>[]>;
+    taints?: pulumi.Input<pulumi.Input<inputs.SkeClusterNodePoolTaint>[] | undefined>;
     /**
      * The volume size in GB. Defaults to `20`
      */
-    volumeSize?: pulumi.Input<number>;
+    volumeSize?: pulumi.Input<number | undefined>;
     /**
      * Specifies the volume type. Defaults to `storagePremiumPerf1`.
      */
-    volumeType?: pulumi.Input<string>;
+    volumeType?: pulumi.Input<string | undefined>;
 }
 
 export interface SkeClusterNodePoolTaint {
@@ -1979,24 +1990,24 @@ export interface SkeClusterNodePoolTaint {
     /**
      * Taint value corresponding to the taint key.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
 }
 
 export interface SqlserverflexInstanceFlavor {
     cpu: pulumi.Input<number>;
-    description?: pulumi.Input<string>;
-    id?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
+    id?: pulumi.Input<string | undefined>;
     ram: pulumi.Input<number>;
 }
 
 export interface SqlserverflexInstanceOptions {
-    edition?: pulumi.Input<string>;
-    retentionDays?: pulumi.Input<number>;
+    edition?: pulumi.Input<string | undefined>;
+    retentionDays?: pulumi.Input<number | undefined>;
 }
 
 export interface SqlserverflexInstanceStorage {
-    class?: pulumi.Input<string>;
-    size?: pulumi.Input<number>;
+    class?: pulumi.Input<string | undefined>;
+    size?: pulumi.Input<number | undefined>;
 }
 
 export interface VolumeEncryptionParameters {
@@ -2015,16 +2026,16 @@ export interface VolumeEncryptionParameters {
     /**
      * Optional predefined secret, which will be encrypted against the key-encryption-key within the STACKIT-KMS. If not defined, a random secret will be generated by the API and encrypted against the STACKIT-KMS. If a key-payload is provided here, it must be base64 encoded.
      */
-    keyPayloadBase64?: pulumi.Input<string>;
+    keyPayloadBase64?: pulumi.Input<string | undefined>;
     /**
      * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
      * Optional predefined secret, which will be encrypted against the key-encryption-key within the STACKIT-KMS. If not defined, a random secret will be generated by the API and encrypted against the STACKIT-KMS. If a key-payload is provided here, it must be base64 encoded.
      */
-    keyPayloadBase64Wo?: pulumi.Input<string>;
+    keyPayloadBase64Wo?: pulumi.Input<string | undefined>;
     /**
      * Used together with `keyPayloadBase64Wo` to trigger an re-create. Increment this value when an update to `keyPayloadBase64Wo` is required.
      */
-    keyPayloadBase64WoVersion?: pulumi.Input<number>;
+    keyPayloadBase64WoVersion?: pulumi.Input<number | undefined>;
     /**
      * Service-Account linked to the Key within the STACKIT-KMS.
      */

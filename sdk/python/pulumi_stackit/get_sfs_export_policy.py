@@ -137,9 +137,9 @@ def get_sfs_export_policy(policy_id: Optional[_builtins.str] = None,
         project_id=pulumi.get(__ret__, 'project_id'),
         region=pulumi.get(__ret__, 'region'),
         rules=pulumi.get(__ret__, 'rules'))
-def get_sfs_export_policy_output(policy_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                 region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_sfs_export_policy_output(policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                 region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSfsExportPolicyResult]:
     """
     SFS export policy datasource schema. Must have a `region` specified in the provider configuration.

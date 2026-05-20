@@ -107,20 +107,20 @@ export interface LogmeCredentialState {
     /**
      * The credential's ID.
      */
-    credentialId?: pulumi.Input<string>;
-    host?: pulumi.Input<string>;
+    credentialId?: pulumi.Input<string | undefined>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * ID of the LogMe instance.
      */
-    instanceId?: pulumi.Input<string>;
-    password?: pulumi.Input<string>;
-    port?: pulumi.Input<number>;
+    instanceId?: pulumi.Input<string | undefined>;
+    password?: pulumi.Input<string | undefined>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * STACKIT Project ID to which the instance is associated.
      */
-    projectId?: pulumi.Input<string>;
-    uri?: pulumi.Input<string>;
-    username?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
+    uri?: pulumi.Input<string | undefined>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -218,10 +218,10 @@ def get_kms_key(key_id: Optional[_builtins.str] = None,
         protection=pulumi.get(__ret__, 'protection'),
         purpose=pulumi.get(__ret__, 'purpose'),
         region=pulumi.get(__ret__, 'region'))
-def get_kms_key_output(key_id: Optional[pulumi.Input[_builtins.str]] = None,
-                       keyring_id: Optional[pulumi.Input[_builtins.str]] = None,
-                       project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                       region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_kms_key_output(key_id: pulumi.Input[Optional[_builtins.str]] = None,
+                       keyring_id: pulumi.Input[Optional[_builtins.str]] = None,
+                       project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                       region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKmsKeyResult]:
     """
     KMS Key datasource schema. Uses the `default_region` specified in the provider configuration as a fallback in case no `region` is defined on datasource level.

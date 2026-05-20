@@ -150,55 +150,55 @@ export interface NetworkInterfaceState {
     /**
      * The list of CIDR (Classless Inter-Domain Routing) notations.
      */
-    allowedAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The device UUID of the network interface.
      */
-    device?: pulumi.Input<string>;
+    device?: pulumi.Input<string | undefined>;
     /**
      * The IPv4 address.
      */
-    ipv4?: pulumi.Input<string>;
+    ipv4?: pulumi.Input<string | undefined>;
     /**
      * Labels are key-value string pairs which can be attached to a network interface.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The MAC address of network interface.
      */
-    mac?: pulumi.Input<string>;
+    mac?: pulumi.Input<string | undefined>;
     /**
      * The name of the network interface.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The network ID to which the network interface is associated.
      */
-    networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string | undefined>;
     /**
      * The network interface ID.
      */
-    networkInterfaceId?: pulumi.Input<string>;
+    networkInterfaceId?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the network is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The Network Interface Security. If set to false, then no security groups will apply to this network interface.
      */
-    security?: pulumi.Input<boolean>;
+    security?: pulumi.Input<boolean | undefined>;
     /**
      * The list of security group UUIDs. If security is set to false, setting this field will lead to an error.
      */
-    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Type of network interface. Some of the possible values are: Possible values are: `server`, `metadata`, `gateway`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -208,19 +208,19 @@ export interface NetworkInterfaceArgs {
     /**
      * The list of CIDR (Classless Inter-Domain Routing) notations.
      */
-    allowedAddresses?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedAddresses?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The IPv4 address.
      */
-    ipv4?: pulumi.Input<string>;
+    ipv4?: pulumi.Input<string | undefined>;
     /**
      * Labels are key-value string pairs which can be attached to a network interface.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the network interface.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The network ID to which the network interface is associated.
      */
@@ -232,13 +232,13 @@ export interface NetworkInterfaceArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The Network Interface Security. If set to false, then no security groups will apply to this network interface.
      */
-    security?: pulumi.Input<boolean>;
+    security?: pulumi.Input<boolean | undefined>;
     /**
      * The list of security group UUIDs. If security is set to false, setting this field will lead to an error.
      */
-    securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+    securityGroupIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

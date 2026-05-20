@@ -165,6 +165,10 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string SizeReducibleAt;
         /// <summary>
+        /// Name of the snapshot policy.
+        /// </summary>
+        public readonly Outputs.GetSfsResourcePoolSnapshotPolicyResult SnapshotPolicy;
+        /// <summary>
         /// If set to true, snapshots are visible and accessible to users. (default: false)
         /// </summary>
         public readonly bool SnapshotsAreVisible;
@@ -193,6 +197,8 @@ namespace Pulumi.Stackit
 
             string sizeReducibleAt,
 
+            Outputs.GetSfsResourcePoolSnapshotPolicyResult snapshotPolicy,
+
             bool snapshotsAreVisible)
         {
             AvailabilityZone = availabilityZone;
@@ -206,6 +212,7 @@ namespace Pulumi.Stackit
             ResourcePoolId = resourcePoolId;
             SizeGigabytes = sizeGigabytes;
             SizeReducibleAt = sizeReducibleAt;
+            SnapshotPolicy = snapshotPolicy;
             SnapshotsAreVisible = snapshotsAreVisible;
         }
     }

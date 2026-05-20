@@ -149,52 +149,52 @@ export interface SkeClusterState {
     /**
      * The outgoing network ranges (in CIDR notation) of traffic originating from workload on the cluster.
      */
-    egressAddressRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    egressAddressRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A single extensions block as defined below.
      */
-    extensions?: pulumi.Input<inputs.SkeClusterExtensions>;
+    extensions?: pulumi.Input<inputs.SkeClusterExtensions | undefined>;
     /**
      * One or more hibernation block as defined below.
      */
-    hibernations?: pulumi.Input<pulumi.Input<inputs.SkeClusterHibernation>[]>;
+    hibernations?: pulumi.Input<pulumi.Input<inputs.SkeClusterHibernation>[] | undefined>;
     /**
      * The minimum Kubernetes version. This field will be used to set the minimum kubernetes version on creation/update of the cluster. If unset, the latest supported Kubernetes version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/). To get the current kubernetes version being used for your cluster, use the read-only `kubernetesVersionUsed` field.
      */
-    kubernetesVersionMin?: pulumi.Input<string>;
+    kubernetesVersionMin?: pulumi.Input<string | undefined>;
     /**
      * Full Kubernetes version used. For example, if 1.22 was set in `kubernetesVersionMin`, this value may result to 1.22.15. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/).
      */
-    kubernetesVersionUsed?: pulumi.Input<string>;
+    kubernetesVersionUsed?: pulumi.Input<string | undefined>;
     /**
      * A single maintenance block as defined below.
      */
-    maintenance?: pulumi.Input<inputs.SkeClusterMaintenance>;
+    maintenance?: pulumi.Input<inputs.SkeClusterMaintenance | undefined>;
     /**
      * The cluster name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Network block as defined below.
      */
-    network?: pulumi.Input<inputs.SkeClusterNetwork>;
+    network?: pulumi.Input<inputs.SkeClusterNetwork | undefined>;
     /**
      * One or more `nodePool` block as defined below.
      * To keep your Terraform plans clean and readable, always append new node pools to the end of the list.
      */
-    nodePools?: pulumi.Input<pulumi.Input<inputs.SkeClusterNodePool>[]>;
+    nodePools?: pulumi.Input<pulumi.Input<inputs.SkeClusterNodePool>[] | undefined>;
     /**
      * The network ranges (in CIDR notation) used by pods of the cluster.
      */
-    podAddressRanges?: pulumi.Input<pulumi.Input<string>[]>;
+    podAddressRanges?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * STACKIT project ID to which the cluster is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -204,27 +204,27 @@ export interface SkeClusterArgs {
     /**
      * A single extensions block as defined below.
      */
-    extensions?: pulumi.Input<inputs.SkeClusterExtensions>;
+    extensions?: pulumi.Input<inputs.SkeClusterExtensions | undefined>;
     /**
      * One or more hibernation block as defined below.
      */
-    hibernations?: pulumi.Input<pulumi.Input<inputs.SkeClusterHibernation>[]>;
+    hibernations?: pulumi.Input<pulumi.Input<inputs.SkeClusterHibernation>[] | undefined>;
     /**
      * The minimum Kubernetes version. This field will be used to set the minimum kubernetes version on creation/update of the cluster. If unset, the latest supported Kubernetes version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/). To get the current kubernetes version being used for your cluster, use the read-only `kubernetesVersionUsed` field.
      */
-    kubernetesVersionMin?: pulumi.Input<string>;
+    kubernetesVersionMin?: pulumi.Input<string | undefined>;
     /**
      * A single maintenance block as defined below.
      */
-    maintenance?: pulumi.Input<inputs.SkeClusterMaintenance>;
+    maintenance?: pulumi.Input<inputs.SkeClusterMaintenance | undefined>;
     /**
      * The cluster name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Network block as defined below.
      */
-    network?: pulumi.Input<inputs.SkeClusterNetwork>;
+    network?: pulumi.Input<inputs.SkeClusterNetwork | undefined>;
     /**
      * One or more `nodePool` block as defined below.
      * To keep your Terraform plans clean and readable, always append new node pools to the end of the list.
@@ -237,5 +237,5 @@ export interface SkeClusterArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

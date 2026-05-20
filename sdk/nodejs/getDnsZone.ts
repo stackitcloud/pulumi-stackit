@@ -153,14 +153,14 @@ export interface GetDnsZoneOutputArgs {
     /**
      * The zone name. E.g. `example.com` (must not end with a trailing dot).
      */
-    dnsName?: pulumi.Input<string>;
+    dnsName?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the dns zone is associated.
      */
     projectId: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.GetDnsZoneTimeoutsArgs>;
+    timeouts?: pulumi.Input<inputs.GetDnsZoneTimeoutsArgs | undefined>;
     /**
      * The zone ID.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }

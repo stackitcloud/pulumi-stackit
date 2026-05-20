@@ -23,20 +23,20 @@ class DnsZoneArgs:
     def __init__(__self__, *,
                  dns_name: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 contact_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 expire_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 is_reverse_zone: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 negative_cache: Optional[pulumi.Input[_builtins.int]] = None,
-                 primaries: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 refresh_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 retry_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeouts: Optional[pulumi.Input['DnsZoneTimeoutsArgs']] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None):
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 contact_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 expire_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 is_reverse_zone: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 negative_cache: pulumi.Input[Optional[_builtins.int]] = None,
+                 primaries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 refresh_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 retry_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeouts: pulumi.Input[Optional['DnsZoneTimeoutsArgs']] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DnsZone resource.
 
@@ -112,192 +112,192 @@ class DnsZoneArgs:
 
     @_builtins.property
     @pulumi.getter
-    def acl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access control list. E.g. `0.0.0.0/0,::/0`
         """
         return pulumi.get(self, "acl")
 
     @acl.setter
-    def acl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl", value)
 
     @_builtins.property
     @pulumi.getter
-    def active(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def active(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "active")
 
     @active.setter
-    def active(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def active(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "active", value)
 
     @_builtins.property
     @pulumi.getter(name="contactEmail")
-    def contact_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def contact_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A contact e-mail for the zone.
         """
         return pulumi.get(self, "contact_email")
 
     @contact_email.setter
-    def contact_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def contact_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "contact_email", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultTtl")
-    def default_ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def default_ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Default time to live. E.g. 3600.
         """
         return pulumi.get(self, "default_ttl")
 
     @default_ttl.setter
-    def default_ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def default_ttl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "default_ttl", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the zone.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="expireTime")
-    def expire_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def expire_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Expire time. E.g. 1209600.
         """
         return pulumi.get(self, "expire_time")
 
     @expire_time.setter
-    def expire_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def expire_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "expire_time", value)
 
     @_builtins.property
     @pulumi.getter(name="isReverseZone")
-    def is_reverse_zone(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_reverse_zone(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies, if the zone is a reverse zone or not. Defaults to `false`
         """
         return pulumi.get(self, "is_reverse_zone")
 
     @is_reverse_zone.setter
-    def is_reverse_zone(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_reverse_zone(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_reverse_zone", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user given name of the zone.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="negativeCache")
-    def negative_cache(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def negative_cache(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Negative caching. E.g. 60
         """
         return pulumi.get(self, "negative_cache")
 
     @negative_cache.setter
-    def negative_cache(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def negative_cache(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "negative_cache", value)
 
     @_builtins.property
     @pulumi.getter
-    def primaries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def primaries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Primary name server for secondary zone. E.g. ["1.2.3.4"]
         """
         return pulumi.get(self, "primaries")
 
     @primaries.setter
-    def primaries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def primaries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "primaries", value)
 
     @_builtins.property
     @pulumi.getter(name="refreshTime")
-    def refresh_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def refresh_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Refresh time. E.g. 3600
         """
         return pulumi.get(self, "refresh_time")
 
     @refresh_time.setter
-    def refresh_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def refresh_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "refresh_time", value)
 
     @_builtins.property
     @pulumi.getter(name="retryTime")
-    def retry_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retry_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Retry time. E.g. 600
         """
         return pulumi.get(self, "retry_time")
 
     @retry_time.setter
-    def retry_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retry_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retry_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['DnsZoneTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['DnsZoneTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['DnsZoneTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['DnsZoneTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Zone type. Defaults to `primary`. Possible values are: `primary`, `secondary`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
 class _DnsZoneState:
     def __init__(__self__, *,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 contact_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 expire_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 is_reverse_zone: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 negative_cache: Optional[pulumi.Input[_builtins.int]] = None,
-                 primaries: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 primary_name_server: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 record_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 refresh_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 retry_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 serial_number: Optional[pulumi.Input[_builtins.int]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['DnsZoneTimeoutsArgs']] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 visibility: Optional[pulumi.Input[_builtins.str]] = None,
-                 zone_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 contact_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 expire_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 is_reverse_zone: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 negative_cache: pulumi.Input[Optional[_builtins.int]] = None,
+                 primaries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 primary_name_server: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 record_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 refresh_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 retry_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 serial_number: pulumi.Input[Optional[_builtins.int]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['DnsZoneTimeoutsArgs']] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 visibility: pulumi.Input[Optional[_builtins.str]] = None,
+                 zone_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DnsZone resources.
 
@@ -369,260 +369,260 @@ class _DnsZoneState:
 
     @_builtins.property
     @pulumi.getter
-    def acl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The access control list. E.g. `0.0.0.0/0,::/0`
         """
         return pulumi.get(self, "acl")
 
     @acl.setter
-    def acl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl", value)
 
     @_builtins.property
     @pulumi.getter
-    def active(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def active(self) -> pulumi.Input[Optional[_builtins.bool]]:
         return pulumi.get(self, "active")
 
     @active.setter
-    def active(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def active(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "active", value)
 
     @_builtins.property
     @pulumi.getter(name="contactEmail")
-    def contact_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def contact_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A contact e-mail for the zone.
         """
         return pulumi.get(self, "contact_email")
 
     @contact_email.setter
-    def contact_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def contact_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "contact_email", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultTtl")
-    def default_ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def default_ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Default time to live. E.g. 3600.
         """
         return pulumi.get(self, "default_ttl")
 
     @default_ttl.setter
-    def default_ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def default_ttl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "default_ttl", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description of the zone.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsName")
-    def dns_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone name. E.g. `example.com`
         """
         return pulumi.get(self, "dns_name")
 
     @dns_name.setter
-    def dns_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns_name", value)
 
     @_builtins.property
     @pulumi.getter(name="expireTime")
-    def expire_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def expire_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Expire time. E.g. 1209600.
         """
         return pulumi.get(self, "expire_time")
 
     @expire_time.setter
-    def expire_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def expire_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "expire_time", value)
 
     @_builtins.property
     @pulumi.getter(name="isReverseZone")
-    def is_reverse_zone(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def is_reverse_zone(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies, if the zone is a reverse zone or not. Defaults to `false`
         """
         return pulumi.get(self, "is_reverse_zone")
 
     @is_reverse_zone.setter
-    def is_reverse_zone(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def is_reverse_zone(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "is_reverse_zone", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The user given name of the zone.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="negativeCache")
-    def negative_cache(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def negative_cache(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Negative caching. E.g. 60
         """
         return pulumi.get(self, "negative_cache")
 
     @negative_cache.setter
-    def negative_cache(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def negative_cache(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "negative_cache", value)
 
     @_builtins.property
     @pulumi.getter
-    def primaries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def primaries(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Primary name server for secondary zone. E.g. ["1.2.3.4"]
         """
         return pulumi.get(self, "primaries")
 
     @primaries.setter
-    def primaries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def primaries(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "primaries", value)
 
     @_builtins.property
     @pulumi.getter(name="primaryNameServer")
-    def primary_name_server(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def primary_name_server(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Primary name server. FQDN.
         """
         return pulumi.get(self, "primary_name_server")
 
     @primary_name_server.setter
-    def primary_name_server(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def primary_name_server(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "primary_name_server", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         STACKIT project ID to which the dns zone is associated.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="recordCount")
-    def record_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def record_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Record count how many records are in the zone.
         """
         return pulumi.get(self, "record_count")
 
     @record_count.setter
-    def record_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def record_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "record_count", value)
 
     @_builtins.property
     @pulumi.getter(name="refreshTime")
-    def refresh_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def refresh_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Refresh time. E.g. 3600
         """
         return pulumi.get(self, "refresh_time")
 
     @refresh_time.setter
-    def refresh_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def refresh_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "refresh_time", value)
 
     @_builtins.property
     @pulumi.getter(name="retryTime")
-    def retry_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def retry_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Retry time. E.g. 600
         """
         return pulumi.get(self, "retry_time")
 
     @retry_time.setter
-    def retry_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def retry_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "retry_time", value)
 
     @_builtins.property
     @pulumi.getter(name="serialNumber")
-    def serial_number(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def serial_number(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Serial number. E.g. `2022111400`.
         """
         return pulumi.get(self, "serial_number")
 
     @serial_number.setter
-    def serial_number(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def serial_number(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "serial_number", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Zone state. E.g. `CREATE_SUCCEEDED`.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['DnsZoneTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['DnsZoneTimeoutsArgs']]:
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['DnsZoneTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['DnsZoneTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Zone type. Defaults to `primary`. Possible values are: `primary`, `secondary`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter
-    def visibility(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def visibility(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Visibility of the zone. E.g. `public`.
         """
         return pulumi.get(self, "visibility")
 
     @visibility.setter
-    def visibility(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def visibility(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "visibility", value)
 
     @_builtins.property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def zone_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone ID.
         """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
-    def zone_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def zone_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "zone_id", value)
 
 
@@ -632,22 +632,22 @@ class DnsZone(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 contact_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 expire_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 is_reverse_zone: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 negative_cache: Optional[pulumi.Input[_builtins.int]] = None,
-                 primaries: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 refresh_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 retry_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeouts: Optional[pulumi.Input[Union['DnsZoneTimeoutsArgs', 'DnsZoneTimeoutsArgsDict']]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 contact_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 expire_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 is_reverse_zone: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 negative_cache: pulumi.Input[Optional[_builtins.int]] = None,
+                 primaries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 refresh_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 retry_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeouts: pulumi.Input[Optional[Union['DnsZoneTimeoutsArgs', 'DnsZoneTimeoutsArgsDict']]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         DNS Zone resource schema.
@@ -699,22 +699,22 @@ class DnsZone(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 contact_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 expire_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 is_reverse_zone: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 negative_cache: Optional[pulumi.Input[_builtins.int]] = None,
-                 primaries: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 refresh_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 retry_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 timeouts: Optional[pulumi.Input[Union['DnsZoneTimeoutsArgs', 'DnsZoneTimeoutsArgsDict']]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 contact_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 expire_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 is_reverse_zone: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 negative_cache: pulumi.Input[Optional[_builtins.int]] = None,
+                 primaries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 refresh_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 retry_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 timeouts: pulumi.Input[Optional[Union['DnsZoneTimeoutsArgs', 'DnsZoneTimeoutsArgsDict']]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -760,28 +760,28 @@ class DnsZone(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl: Optional[pulumi.Input[_builtins.str]] = None,
-            active: Optional[pulumi.Input[_builtins.bool]] = None,
-            contact_email: Optional[pulumi.Input[_builtins.str]] = None,
-            default_ttl: Optional[pulumi.Input[_builtins.int]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            dns_name: Optional[pulumi.Input[_builtins.str]] = None,
-            expire_time: Optional[pulumi.Input[_builtins.int]] = None,
-            is_reverse_zone: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            negative_cache: Optional[pulumi.Input[_builtins.int]] = None,
-            primaries: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            primary_name_server: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            record_count: Optional[pulumi.Input[_builtins.int]] = None,
-            refresh_time: Optional[pulumi.Input[_builtins.int]] = None,
-            retry_time: Optional[pulumi.Input[_builtins.int]] = None,
-            serial_number: Optional[pulumi.Input[_builtins.int]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            timeouts: Optional[pulumi.Input[Union['DnsZoneTimeoutsArgs', 'DnsZoneTimeoutsArgsDict']]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            visibility: Optional[pulumi.Input[_builtins.str]] = None,
-            zone_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'DnsZone':
+            acl: pulumi.Input[Optional[_builtins.str]] = None,
+            active: pulumi.Input[Optional[_builtins.bool]] = None,
+            contact_email: pulumi.Input[Optional[_builtins.str]] = None,
+            default_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_name: pulumi.Input[Optional[_builtins.str]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.int]] = None,
+            is_reverse_zone: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            negative_cache: pulumi.Input[Optional[_builtins.int]] = None,
+            primaries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            primary_name_server: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            record_count: pulumi.Input[Optional[_builtins.int]] = None,
+            refresh_time: pulumi.Input[Optional[_builtins.int]] = None,
+            retry_time: pulumi.Input[Optional[_builtins.int]] = None,
+            serial_number: pulumi.Input[Optional[_builtins.int]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['DnsZoneTimeoutsArgs', 'DnsZoneTimeoutsArgsDict']]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            visibility: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'DnsZone':
         """
         Get an existing DnsZone resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -158,7 +158,7 @@ def get_iaas_project(project_id: Optional[_builtins.str] = None,
         state=pulumi.get(__ret__, 'state'),
         status=pulumi.get(__ret__, 'status'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
-def get_iaas_project_output(project_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_iaas_project_output(project_id: pulumi.Input[Optional[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIaasProjectResult]:
     """
     Project details. Must have a `region` specified in the provider configuration.

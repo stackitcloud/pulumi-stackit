@@ -152,6 +152,16 @@ namespace Pulumi.Stackit
             set => _iaasCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _intakeCustomEndpoint = new __Value<string?>(() => __config.Get("intakeCustomEndpoint"));
+        /// <summary>
+        /// Custom endpoint for the Intake service
+        /// </summary>
+        public static string? IntakeCustomEndpoint
+        {
+            get => _intakeCustomEndpoint.Get();
+            set => _intakeCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _kmsCustomEndpoint = new __Value<string?>(() => __config.Get("kmsCustomEndpoint"));
         /// <summary>
         /// Custom endpoint for the KMS service

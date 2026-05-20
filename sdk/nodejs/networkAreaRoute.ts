@@ -134,31 +134,31 @@ export interface NetworkAreaRouteState {
     /**
      * Destination of the route.
      */
-    destination?: pulumi.Input<inputs.NetworkAreaRouteDestination>;
+    destination?: pulumi.Input<inputs.NetworkAreaRouteDestination | undefined>;
     /**
      * Labels are key-value string pairs which can be attached to a resource container
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The network area ID to which the network area route is associated.
      */
-    networkAreaId?: pulumi.Input<string>;
+    networkAreaId?: pulumi.Input<string | undefined>;
     /**
      * The network area route ID.
      */
-    networkAreaRouteId?: pulumi.Input<string>;
+    networkAreaRouteId?: pulumi.Input<string | undefined>;
     /**
      * Next hop destination.
      */
-    nextHop?: pulumi.Input<inputs.NetworkAreaRouteNextHop>;
+    nextHop?: pulumi.Input<inputs.NetworkAreaRouteNextHop | undefined>;
     /**
      * STACKIT organization ID to which the network area is associated.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -172,7 +172,7 @@ export interface NetworkAreaRouteArgs {
     /**
      * Labels are key-value string pairs which can be attached to a resource container
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The network area ID to which the network area route is associated.
      */
@@ -188,5 +188,5 @@ export interface NetworkAreaRouteArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

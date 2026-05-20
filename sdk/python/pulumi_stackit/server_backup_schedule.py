@@ -26,8 +26,8 @@ class ServerBackupScheduleArgs:
                  project_id: pulumi.Input[_builtins.str],
                  rrule: pulumi.Input[_builtins.str],
                  server_id: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ServerBackupSchedule resource.
 
@@ -111,40 +111,40 @@ class ServerBackupScheduleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The schedule name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource region. If not defined, the provider region is used.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _ServerBackupScheduleState:
     def __init__(__self__, *,
-                 backup_properties: Optional[pulumi.Input['ServerBackupScheduleBackupPropertiesArgs']] = None,
-                 backup_schedule_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 rrule: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 backup_properties: pulumi.Input[Optional['ServerBackupScheduleBackupPropertiesArgs']] = None,
+                 backup_schedule_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 rrule: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ServerBackupSchedule resources.
 
@@ -176,98 +176,98 @@ class _ServerBackupScheduleState:
 
     @_builtins.property
     @pulumi.getter(name="backupProperties")
-    def backup_properties(self) -> Optional[pulumi.Input['ServerBackupScheduleBackupPropertiesArgs']]:
+    def backup_properties(self) -> pulumi.Input[Optional['ServerBackupScheduleBackupPropertiesArgs']]:
         """
         Backup schedule details for the backups.
         """
         return pulumi.get(self, "backup_properties")
 
     @backup_properties.setter
-    def backup_properties(self, value: Optional[pulumi.Input['ServerBackupScheduleBackupPropertiesArgs']]):
+    def backup_properties(self, value: pulumi.Input[Optional['ServerBackupScheduleBackupPropertiesArgs']]):
         pulumi.set(self, "backup_properties", value)
 
     @_builtins.property
     @pulumi.getter(name="backupScheduleId")
-    def backup_schedule_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def backup_schedule_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Backup schedule ID.
         """
         return pulumi.get(self, "backup_schedule_id")
 
     @backup_schedule_id.setter
-    def backup_schedule_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def backup_schedule_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "backup_schedule_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Is the backup schedule enabled or disabled.
         """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The schedule name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         STACKIT Project ID to which the server is associated.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource region. If not defined, the provider region is used.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def rrule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rrule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
         """
         return pulumi.get(self, "rrule")
 
     @rrule.setter
-    def rrule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rrule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rrule", value)
 
     @_builtins.property
     @pulumi.getter(name="serverId")
-    def server_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Server ID for the backup schedule.
         """
         return pulumi.get(self, "server_id")
 
     @server_id.setter
-    def server_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_id", value)
 
 
@@ -277,13 +277,13 @@ class ServerBackupSchedule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_properties: Optional[pulumi.Input[Union['ServerBackupScheduleBackupPropertiesArgs', 'ServerBackupScheduleBackupPropertiesArgsDict']]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 rrule: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 backup_properties: pulumi.Input[Optional[Union['ServerBackupScheduleBackupPropertiesArgs', 'ServerBackupScheduleBackupPropertiesArgsDict']]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 rrule: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Server backup schedule resource schema. Must have a `region` specified in the provider configuration.
@@ -328,13 +328,13 @@ class ServerBackupSchedule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_properties: Optional[pulumi.Input[Union['ServerBackupScheduleBackupPropertiesArgs', 'ServerBackupScheduleBackupPropertiesArgsDict']]] = None,
-                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 rrule: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 backup_properties: pulumi.Input[Optional[Union['ServerBackupScheduleBackupPropertiesArgs', 'ServerBackupScheduleBackupPropertiesArgsDict']]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 rrule: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -372,14 +372,14 @@ class ServerBackupSchedule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backup_properties: Optional[pulumi.Input[Union['ServerBackupScheduleBackupPropertiesArgs', 'ServerBackupScheduleBackupPropertiesArgsDict']]] = None,
-            backup_schedule_id: Optional[pulumi.Input[_builtins.int]] = None,
-            enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            rrule: Optional[pulumi.Input[_builtins.str]] = None,
-            server_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'ServerBackupSchedule':
+            backup_properties: pulumi.Input[Optional[Union['ServerBackupScheduleBackupPropertiesArgs', 'ServerBackupScheduleBackupPropertiesArgsDict']]] = None,
+            backup_schedule_id: pulumi.Input[Optional[_builtins.int]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            rrule: pulumi.Input[Optional[_builtins.str]] = None,
+            server_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'ServerBackupSchedule':
         """
         Get an existing ServerBackupSchedule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

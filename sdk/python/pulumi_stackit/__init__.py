@@ -39,6 +39,7 @@ from .get_git import *
 from .get_iaas_project import *
 from .get_image import *
 from .get_image_v2 import *
+from .get_intake_runner import *
 from .get_key_pair import *
 from .get_kms_key import *
 from .get_kms_keyring import *
@@ -107,6 +108,7 @@ from .get_sfs_project_lock import *
 from .get_sfs_resource_pool import *
 from .get_sfs_resource_pool_snapshot import *
 from .get_sfs_share import *
+from .get_sfs_snapshot_policies import *
 from .get_ske_cluster import *
 from .get_ske_kubernetes_versions import *
 from .get_ske_machine_image_versions import *
@@ -115,6 +117,7 @@ from .get_sqlserverflex_user import *
 from .get_volume import *
 from .git import *
 from .image import *
+from .intake_runner import *
 from .key_pair import *
 from .kms_key import *
 from .kms_keyring import *
@@ -351,6 +354,14 @@ _utilities.register(
   "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/image:Image": "Image"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/intakeRunner",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/intakeRunner:IntakeRunner": "IntakeRunner"
   }
  },
  {

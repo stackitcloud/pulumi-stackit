@@ -176,9 +176,9 @@ def get_scf_organization_manager(org_id: Optional[_builtins.str] = None,
         updated_at=pulumi.get(__ret__, 'updated_at'),
         user_id=pulumi.get(__ret__, 'user_id'),
         username=pulumi.get(__ret__, 'username'))
-def get_scf_organization_manager_output(org_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                        project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                        region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_scf_organization_manager_output(org_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                        project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                        region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetScfOrganizationManagerResult]:
     """
     STACKIT Cloud Foundry organization manager datasource schema.

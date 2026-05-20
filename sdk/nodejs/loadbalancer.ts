@@ -160,55 +160,55 @@ export interface LoadbalancerState {
     /**
      * If set to true, this will disable the automatic assignment of a security group to the load balancer's targets. This option is primarily used to allow targets that are not within the load balancer's own network or SNA (STACKIT network area). When this is enabled, you are fully responsible for ensuring network connectivity to the targets, including managing all routing and security group rules manually. This setting cannot be changed after the load balancer is created.
      */
-    disableSecurityGroupAssignment?: pulumi.Input<boolean>;
+    disableSecurityGroupAssignment?: pulumi.Input<boolean | undefined>;
     /**
      * External Load Balancer IP address where this Load Balancer is exposed.
      */
-    externalAddress?: pulumi.Input<string>;
+    externalAddress?: pulumi.Input<string | undefined>;
     /**
      * List of all listeners which will accept traffic. Limited to 20.
      */
-    listeners?: pulumi.Input<pulumi.Input<inputs.LoadbalancerListener>[]>;
+    listeners?: pulumi.Input<pulumi.Input<inputs.LoadbalancerListener>[] | undefined>;
     /**
      * Load balancer name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * List of networks that listeners and targets reside in.
      */
-    networks?: pulumi.Input<pulumi.Input<inputs.LoadbalancerNetwork>[]>;
+    networks?: pulumi.Input<pulumi.Input<inputs.LoadbalancerNetwork>[] | undefined>;
     /**
      * Defines any optional functionality you want to have enabled on your load balancer.
      */
-    options?: pulumi.Input<inputs.LoadbalancerOptions>;
+    options?: pulumi.Input<inputs.LoadbalancerOptions | undefined>;
     /**
      * The service plan ID. If not defined, the default service plan is `p10`. Possible values are: `p10`, `p50`, `p250`, `p750`.
      */
-    planId?: pulumi.Input<string>;
+    planId?: pulumi.Input<string | undefined>;
     /**
      * Transient private Load Balancer IP address. It can change any time.
      */
-    privateAddress?: pulumi.Input<string>;
+    privateAddress?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the Load Balancer is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT network areas (SNA). To enable this, create a security group rule for your target VMs and set the `remoteSecurityGroupId` of that rule to this value. This is typically used when `disableSecurityGroupAssignment` is set to `true`.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * List of all target pools which will be used in the Load Balancer. Limited to 20.
      */
-    targetPools?: pulumi.Input<pulumi.Input<inputs.LoadbalancerTargetPool>[]>;
+    targetPools?: pulumi.Input<pulumi.Input<inputs.LoadbalancerTargetPool>[] | undefined>;
     /**
      * Load balancer resource version. This is needed to have concurrency safe updates.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -218,11 +218,11 @@ export interface LoadbalancerArgs {
     /**
      * If set to true, this will disable the automatic assignment of a security group to the load balancer's targets. This option is primarily used to allow targets that are not within the load balancer's own network or SNA (STACKIT network area). When this is enabled, you are fully responsible for ensuring network connectivity to the targets, including managing all routing and security group rules manually. This setting cannot be changed after the load balancer is created.
      */
-    disableSecurityGroupAssignment?: pulumi.Input<boolean>;
+    disableSecurityGroupAssignment?: pulumi.Input<boolean | undefined>;
     /**
      * External Load Balancer IP address where this Load Balancer is exposed.
      */
-    externalAddress?: pulumi.Input<string>;
+    externalAddress?: pulumi.Input<string | undefined>;
     /**
      * List of all listeners which will accept traffic. Limited to 20.
      */
@@ -230,7 +230,7 @@ export interface LoadbalancerArgs {
     /**
      * Load balancer name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * List of networks that listeners and targets reside in.
      */
@@ -238,11 +238,11 @@ export interface LoadbalancerArgs {
     /**
      * Defines any optional functionality you want to have enabled on your load balancer.
      */
-    options?: pulumi.Input<inputs.LoadbalancerOptions>;
+    options?: pulumi.Input<inputs.LoadbalancerOptions | undefined>;
     /**
      * The service plan ID. If not defined, the default service plan is `p10`. Possible values are: `p10`, `p50`, `p250`, `p750`.
      */
-    planId?: pulumi.Input<string>;
+    planId?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the Load Balancer is associated.
      */
@@ -250,7 +250,7 @@ export interface LoadbalancerArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * List of all target pools which will be used in the Load Balancer. Limited to 20.
      */

@@ -291,13 +291,13 @@ def get_image_v2(filter: Optional[Union['GetImageV2FilterArgs', 'GetImageV2Filte
         region=pulumi.get(__ret__, 'region'),
         scope=pulumi.get(__ret__, 'scope'),
         sort_ascending=pulumi.get(__ret__, 'sort_ascending'))
-def get_image_v2_output(filter: Optional[pulumi.Input[Optional[Union['GetImageV2FilterArgs', 'GetImageV2FilterArgsDict']]]] = None,
-                        image_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        name_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                        region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        sort_ascending: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+def get_image_v2_output(filter: pulumi.Input[Optional[Optional[Union['GetImageV2FilterArgs', 'GetImageV2FilterArgsDict']]]] = None,
+                        image_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                        region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        sort_ascending: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImageV2Result]:
     """
     Image datasource schema. Must have a `region` specified in the provider configuration.

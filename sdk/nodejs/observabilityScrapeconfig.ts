@@ -146,47 +146,47 @@ export interface ObservabilityScrapeconfigState {
     /**
      * A basic authentication block.
      */
-    basicAuth?: pulumi.Input<inputs.ObservabilityScrapeconfigBasicAuth>;
+    basicAuth?: pulumi.Input<inputs.ObservabilityScrapeconfigBasicAuth | undefined>;
     /**
      * Observability instance ID to which the scraping job is associated.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Specifies the job scraping url path. E.g. `/metrics`.
      */
-    metricsPath?: pulumi.Input<string>;
+    metricsPath?: pulumi.Input<string | undefined>;
     /**
      * Specifies the name of the scraping job.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the scraping job is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * A SAML2 configuration block.
      */
-    saml2?: pulumi.Input<inputs.ObservabilityScrapeconfigSaml2>;
+    saml2?: pulumi.Input<inputs.ObservabilityScrapeconfigSaml2 | undefined>;
     /**
      * Specifies the scrape sample limit. Upper limit depends on the service plan. Defaults to `5000`.
      */
-    sampleLimit?: pulumi.Input<number>;
+    sampleLimit?: pulumi.Input<number | undefined>;
     /**
      * Specifies the http scheme. Defaults to `https`.
      */
-    scheme?: pulumi.Input<string>;
+    scheme?: pulumi.Input<string | undefined>;
     /**
      * Specifies the scrape interval as duration string. Defaults to `5m`.
      */
-    scrapeInterval?: pulumi.Input<string>;
+    scrapeInterval?: pulumi.Input<string | undefined>;
     /**
      * Specifies the scrape timeout as duration string. Defaults to `2m`.
      */
-    scrapeTimeout?: pulumi.Input<string>;
+    scrapeTimeout?: pulumi.Input<string | undefined>;
     /**
      * The targets list (specified by the static config).
      */
-    targets?: pulumi.Input<pulumi.Input<inputs.ObservabilityScrapeconfigTarget>[]>;
+    targets?: pulumi.Input<pulumi.Input<inputs.ObservabilityScrapeconfigTarget>[] | undefined>;
 }
 
 /**
@@ -196,7 +196,7 @@ export interface ObservabilityScrapeconfigArgs {
     /**
      * A basic authentication block.
      */
-    basicAuth?: pulumi.Input<inputs.ObservabilityScrapeconfigBasicAuth>;
+    basicAuth?: pulumi.Input<inputs.ObservabilityScrapeconfigBasicAuth | undefined>;
     /**
      * Observability instance ID to which the scraping job is associated.
      */
@@ -208,7 +208,7 @@ export interface ObservabilityScrapeconfigArgs {
     /**
      * Specifies the name of the scraping job.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the scraping job is associated.
      */
@@ -216,23 +216,23 @@ export interface ObservabilityScrapeconfigArgs {
     /**
      * A SAML2 configuration block.
      */
-    saml2?: pulumi.Input<inputs.ObservabilityScrapeconfigSaml2>;
+    saml2?: pulumi.Input<inputs.ObservabilityScrapeconfigSaml2 | undefined>;
     /**
      * Specifies the scrape sample limit. Upper limit depends on the service plan. Defaults to `5000`.
      */
-    sampleLimit?: pulumi.Input<number>;
+    sampleLimit?: pulumi.Input<number | undefined>;
     /**
      * Specifies the http scheme. Defaults to `https`.
      */
-    scheme?: pulumi.Input<string>;
+    scheme?: pulumi.Input<string | undefined>;
     /**
      * Specifies the scrape interval as duration string. Defaults to `5m`.
      */
-    scrapeInterval?: pulumi.Input<string>;
+    scrapeInterval?: pulumi.Input<string | undefined>;
     /**
      * Specifies the scrape timeout as duration string. Defaults to `2m`.
      */
-    scrapeTimeout?: pulumi.Input<string>;
+    scrapeTimeout?: pulumi.Input<string | undefined>;
     /**
      * The targets list (specified by the static config).
      */

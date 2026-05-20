@@ -76,9 +76,9 @@ export interface GetSkeKubernetesVersionsOutputArgs {
     /**
      * Region override. If omitted, the provider’s region will be used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * If specified, only returns Kubernetes versions with this version state. Possible values are: `SUPPORTED`.
      */
-    versionState?: pulumi.Input<string>;
+    versionState?: pulumi.Input<string | undefined>;
 }

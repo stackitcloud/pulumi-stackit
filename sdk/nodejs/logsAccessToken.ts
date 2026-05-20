@@ -158,55 +158,55 @@ export interface LogsAccessTokenState {
     /**
      * The generated access token
      */
-    accessToken?: pulumi.Input<string>;
+    accessToken?: pulumi.Input<string | undefined>;
     /**
      * The access token ID
      */
-    accessTokenId?: pulumi.Input<string>;
+    accessTokenId?: pulumi.Input<string | undefined>;
     /**
      * The user who created the access token
      */
-    creator?: pulumi.Input<string>;
+    creator?: pulumi.Input<string | undefined>;
     /**
      * The description of the access token
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The displayed name of the access token
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the access token can expire
      */
-    expires?: pulumi.Input<boolean>;
+    expires?: pulumi.Input<boolean | undefined>;
     /**
      * The Logs instance ID associated with the access token
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * A lifetime period for an access token in days. If unset the token will not expire.
      */
-    lifetime?: pulumi.Input<number>;
+    lifetime?: pulumi.Input<number | undefined>;
     /**
      * The access permissions granted to the access token. Possible values: `read`, `write`.
      */
-    permissions?: pulumi.Input<pulumi.Input<string>[]>;
+    permissions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * STACKIT project ID associated with the Logs access token
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * STACKIT region name the resource is located in. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The status of the access token. Possible values are: `active`, `expired`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The date and time until an access token is valid to (inclusively)
      */
-    validUntil?: pulumi.Input<string>;
+    validUntil?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -216,7 +216,7 @@ export interface LogsAccessTokenArgs {
     /**
      * The description of the access token
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The displayed name of the access token
      */
@@ -228,7 +228,7 @@ export interface LogsAccessTokenArgs {
     /**
      * A lifetime period for an access token in days. If unset the token will not expire.
      */
-    lifetime?: pulumi.Input<number>;
+    lifetime?: pulumi.Input<number | undefined>;
     /**
      * The access permissions granted to the access token. Possible values: `read`, `write`.
      */
@@ -240,5 +240,5 @@ export interface LogsAccessTokenArgs {
     /**
      * STACKIT region name the resource is located in. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

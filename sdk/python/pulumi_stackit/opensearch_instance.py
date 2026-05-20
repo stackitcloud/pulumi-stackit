@@ -24,8 +24,8 @@ class OpensearchInstanceArgs:
                  plan_name: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
                  version: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input['OpensearchInstanceParametersArgs']] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional['OpensearchInstanceParametersArgs']] = None):
         """
         The set of arguments for constructing a OpensearchInstance resource.
 
@@ -81,44 +81,44 @@ class OpensearchInstanceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input['OpensearchInstanceParametersArgs']]:
+    def parameters(self) -> pulumi.Input[Optional['OpensearchInstanceParametersArgs']]:
         """
         Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input['OpensearchInstanceParametersArgs']]):
+    def parameters(self, value: pulumi.Input[Optional['OpensearchInstanceParametersArgs']]):
         pulumi.set(self, "parameters", value)
 
 
 @pulumi.input_type
 class _OpensearchInstanceState:
     def __init__(__self__, *,
-                 cf_guid: Optional[pulumi.Input[_builtins.str]] = None,
-                 cf_organization_guid: Optional[pulumi.Input[_builtins.str]] = None,
-                 cf_space_guid: Optional[pulumi.Input[_builtins.str]] = None,
-                 dashboard_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input['OpensearchInstanceParametersArgs']] = None,
-                 plan_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 plan_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 cf_guid: pulumi.Input[Optional[_builtins.str]] = None,
+                 cf_organization_guid: pulumi.Input[Optional[_builtins.str]] = None,
+                 cf_space_guid: pulumi.Input[Optional[_builtins.str]] = None,
+                 dashboard_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional['OpensearchInstanceParametersArgs']] = None,
+                 plan_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OpensearchInstance resources.
 
@@ -157,131 +157,131 @@ class _OpensearchInstanceState:
 
     @_builtins.property
     @pulumi.getter(name="cfGuid")
-    def cf_guid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cf_guid(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cf_guid")
 
     @cf_guid.setter
-    def cf_guid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cf_guid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cf_guid", value)
 
     @_builtins.property
     @pulumi.getter(name="cfOrganizationGuid")
-    def cf_organization_guid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cf_organization_guid(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cf_organization_guid")
 
     @cf_organization_guid.setter
-    def cf_organization_guid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cf_organization_guid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cf_organization_guid", value)
 
     @_builtins.property
     @pulumi.getter(name="cfSpaceGuid")
-    def cf_space_guid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cf_space_guid(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "cf_space_guid")
 
     @cf_space_guid.setter
-    def cf_space_guid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cf_space_guid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cf_space_guid", value)
 
     @_builtins.property
     @pulumi.getter(name="dashboardUrl")
-    def dashboard_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dashboard_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "dashboard_url")
 
     @dashboard_url.setter
-    def dashboard_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dashboard_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dashboard_url", value)
 
     @_builtins.property
     @pulumi.getter(name="imageUrl")
-    def image_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "image_url")
 
     @image_url.setter
-    def image_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_url", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the OpenSearch instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input['OpensearchInstanceParametersArgs']]:
+    def parameters(self) -> pulumi.Input[Optional['OpensearchInstanceParametersArgs']]:
         """
         Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
         """
         return pulumi.get(self, "parameters")
 
     @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input['OpensearchInstanceParametersArgs']]):
+    def parameters(self, value: pulumi.Input[Optional['OpensearchInstanceParametersArgs']]):
         pulumi.set(self, "parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="planId")
-    def plan_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plan_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The selected plan ID.
         """
         return pulumi.get(self, "plan_id")
 
     @plan_id.setter
-    def plan_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plan_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plan_id", value)
 
     @_builtins.property
     @pulumi.getter(name="planName")
-    def plan_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def plan_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The selected plan name.
         """
         return pulumi.get(self, "plan_name")
 
     @plan_name.setter
-    def plan_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def plan_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "plan_name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         STACKIT project ID to which the instance is associated.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service version.
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
@@ -291,11 +291,11 @@ class OpensearchInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Union['OpensearchInstanceParametersArgs', 'OpensearchInstanceParametersArgsDict']]] = None,
-                 plan_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Union['OpensearchInstanceParametersArgs', 'OpensearchInstanceParametersArgsDict']]] = None,
+                 plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         OpenSearch instance resource schema. Must have a `region` specified in the provider configuration.
@@ -338,11 +338,11 @@ class OpensearchInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 parameters: Optional[pulumi.Input[Union['OpensearchInstanceParametersArgs', 'OpensearchInstanceParametersArgsDict']]] = None,
-                 plan_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 parameters: pulumi.Input[Optional[Union['OpensearchInstanceParametersArgs', 'OpensearchInstanceParametersArgsDict']]] = None,
+                 plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -380,18 +380,18 @@ class OpensearchInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cf_guid: Optional[pulumi.Input[_builtins.str]] = None,
-            cf_organization_guid: Optional[pulumi.Input[_builtins.str]] = None,
-            cf_space_guid: Optional[pulumi.Input[_builtins.str]] = None,
-            dashboard_url: Optional[pulumi.Input[_builtins.str]] = None,
-            image_url: Optional[pulumi.Input[_builtins.str]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            parameters: Optional[pulumi.Input[Union['OpensearchInstanceParametersArgs', 'OpensearchInstanceParametersArgsDict']]] = None,
-            plan_id: Optional[pulumi.Input[_builtins.str]] = None,
-            plan_name: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            version: Optional[pulumi.Input[_builtins.str]] = None) -> 'OpensearchInstance':
+            cf_guid: pulumi.Input[Optional[_builtins.str]] = None,
+            cf_organization_guid: pulumi.Input[Optional[_builtins.str]] = None,
+            cf_space_guid: pulumi.Input[Optional[_builtins.str]] = None,
+            dashboard_url: pulumi.Input[Optional[_builtins.str]] = None,
+            image_url: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[Union['OpensearchInstanceParametersArgs', 'OpensearchInstanceParametersArgsDict']]] = None,
+            plan_id: pulumi.Input[Optional[_builtins.str]] = None,
+            plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> 'OpensearchInstance':
         """
         Get an existing OpensearchInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

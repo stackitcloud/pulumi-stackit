@@ -22,9 +22,9 @@ class SfsShareArgs:
                  project_id: pulumi.Input[_builtins.str],
                  resource_pool_id: pulumi.Input[_builtins.str],
                  space_hard_limit_gigabytes: pulumi.Input[_builtins.int],
-                 export_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 export_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SfsShare resource.
 
@@ -90,7 +90,7 @@ class SfsShareArgs:
 
     @_builtins.property
     @pulumi.getter(name="exportPolicy")
-    def export_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def export_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Share Export Policy to use in the Share.
         Note that if this is set to an empty string, the Share can only be mounted in read only by
@@ -100,45 +100,45 @@ class SfsShareArgs:
         return pulumi.get(self, "export_policy")
 
     @export_policy.setter
-    def export_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def export_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "export_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the share.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource region. If not defined, the provider region is used.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _SfsShareState:
     def __init__(__self__, *,
-                 export_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 mount_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 share_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 space_hard_limit_gigabytes: Optional[pulumi.Input[_builtins.int]] = None):
+                 export_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 mount_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 share_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 space_hard_limit_gigabytes: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering SfsShare resources.
 
@@ -175,7 +175,7 @@ class _SfsShareState:
 
     @_builtins.property
     @pulumi.getter(name="exportPolicy")
-    def export_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def export_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Share Export Policy to use in the Share.
         Note that if this is set to an empty string, the Share can only be mounted in read only by
@@ -185,84 +185,84 @@ class _SfsShareState:
         return pulumi.get(self, "export_policy")
 
     @export_policy.setter
-    def export_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def export_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "export_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="mountPath")
-    def mount_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mount_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Mount path of the Share, used to mount the Share
         """
         return pulumi.get(self, "mount_path")
 
     @mount_path.setter
-    def mount_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mount_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mount_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the share.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         STACKIT project ID to which the share is associated.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource region. If not defined, the provider region is used.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="resourcePoolId")
-    def resource_pool_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resource_pool_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the resource pool for the SFS share.
         """
         return pulumi.get(self, "resource_pool_id")
 
     @resource_pool_id.setter
-    def resource_pool_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resource_pool_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resource_pool_id", value)
 
     @_builtins.property
     @pulumi.getter(name="shareId")
-    def share_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def share_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         share ID
         """
         return pulumi.get(self, "share_id")
 
     @share_id.setter
-    def share_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def share_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "share_id", value)
 
     @_builtins.property
     @pulumi.getter(name="spaceHardLimitGigabytes")
-    def space_hard_limit_gigabytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def space_hard_limit_gigabytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Space hard limit for the Share.
         			If zero, the Share will have access to the full space of the Resource Pool it lives in.
@@ -271,7 +271,7 @@ class _SfsShareState:
         return pulumi.get(self, "space_hard_limit_gigabytes")
 
     @space_hard_limit_gigabytes.setter
-    def space_hard_limit_gigabytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def space_hard_limit_gigabytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "space_hard_limit_gigabytes", value)
 
 
@@ -281,12 +281,12 @@ class SfsShare(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 export_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 space_hard_limit_gigabytes: Optional[pulumi.Input[_builtins.int]] = None,
+                 export_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 space_hard_limit_gigabytes: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         SFS Share schema. Must have a `region` specified in the provider configuration.
@@ -339,12 +339,12 @@ class SfsShare(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 export_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resource_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 space_hard_limit_gigabytes: Optional[pulumi.Input[_builtins.int]] = None,
+                 export_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 resource_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 space_hard_limit_gigabytes: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -378,14 +378,14 @@ class SfsShare(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            export_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            mount_path: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            resource_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
-            share_id: Optional[pulumi.Input[_builtins.str]] = None,
-            space_hard_limit_gigabytes: Optional[pulumi.Input[_builtins.int]] = None) -> 'SfsShare':
+            export_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            mount_path: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            share_id: pulumi.Input[Optional[_builtins.str]] = None,
+            space_hard_limit_gigabytes: pulumi.Input[Optional[_builtins.int]] = None) -> 'SfsShare':
         """
         Get an existing SfsShare resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

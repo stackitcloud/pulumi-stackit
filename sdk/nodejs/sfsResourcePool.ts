@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -72,6 +74,10 @@ export class SfsResourcePool extends pulumi.CustomResource {
      */
     declare public readonly sizeGigabytes: pulumi.Output<number>;
     /**
+     * Name of the snapshot policy.
+     */
+    declare public readonly snapshotPolicy: pulumi.Output<outputs.SfsResourcePoolSnapshotPolicy | undefined>;
+    /**
      * If set to true, snapshots are visible and accessible to users. (default: false)
      */
     declare public readonly snapshotsAreVisible: pulumi.Output<boolean>;
@@ -97,6 +103,7 @@ export class SfsResourcePool extends pulumi.CustomResource {
             resourceInputs["region"] = state?.region;
             resourceInputs["resourcePoolId"] = state?.resourcePoolId;
             resourceInputs["sizeGigabytes"] = state?.sizeGigabytes;
+            resourceInputs["snapshotPolicy"] = state?.snapshotPolicy;
             resourceInputs["snapshotsAreVisible"] = state?.snapshotsAreVisible;
         } else {
             const args = argsOrState as SfsResourcePoolArgs | undefined;
@@ -122,6 +129,7 @@ export class SfsResourcePool extends pulumi.CustomResource {
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["region"] = args?.region;
             resourceInputs["sizeGigabytes"] = args?.sizeGigabytes;
+            resourceInputs["snapshotPolicy"] = args?.snapshotPolicy;
             resourceInputs["snapshotsAreVisible"] = args?.snapshotsAreVisible;
             resourceInputs["resourcePoolId"] = undefined /*out*/;
         }
@@ -137,39 +145,43 @@ export interface SfsResourcePoolState {
     /**
      * Availability zone.
      */
-    availabilityZone?: pulumi.Input<string>;
+    availabilityZone?: pulumi.Input<string | undefined>;
     /**
      * List of IPs that can mount the resource pool in read-only; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
      */
-    ipAcls?: pulumi.Input<pulumi.Input<string>[]>;
+    ipAcls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Name of the resource pool.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Name of the performance class.
      */
-    performanceClass?: pulumi.Input<string>;
+    performanceClass?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the resource pool is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Resource pool ID
      */
-    resourcePoolId?: pulumi.Input<string>;
+    resourcePoolId?: pulumi.Input<string | undefined>;
     /**
      * Size of the resource pool (unit: gigabytes)
      */
-    sizeGigabytes?: pulumi.Input<number>;
+    sizeGigabytes?: pulumi.Input<number | undefined>;
+    /**
+     * Name of the snapshot policy.
+     */
+    snapshotPolicy?: pulumi.Input<inputs.SfsResourcePoolSnapshotPolicy | undefined>;
     /**
      * If set to true, snapshots are visible and accessible to users. (default: false)
      */
-    snapshotsAreVisible?: pulumi.Input<boolean>;
+    snapshotsAreVisible?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -187,7 +199,7 @@ export interface SfsResourcePoolArgs {
     /**
      * Name of the resource pool.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Name of the performance class.
      */
@@ -199,13 +211,17 @@ export interface SfsResourcePoolArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Size of the resource pool (unit: gigabytes)
      */
     sizeGigabytes: pulumi.Input<number>;
     /**
+     * Name of the snapshot policy.
+     */
+    snapshotPolicy?: pulumi.Input<inputs.SfsResourcePoolSnapshotPolicy | undefined>;
+    /**
      * If set to true, snapshots are visible and accessible to users. (default: false)
      */
-    snapshotsAreVisible?: pulumi.Input<boolean>;
+    snapshotsAreVisible?: pulumi.Input<boolean | undefined>;
 }

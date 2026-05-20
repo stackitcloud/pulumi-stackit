@@ -112,8 +112,8 @@ def get_edgecloud_instances(project_id: Optional[_builtins.str] = None,
         instances=pulumi.get(__ret__, 'instances'),
         project_id=pulumi.get(__ret__, 'project_id'),
         region=pulumi.get(__ret__, 'region'))
-def get_edgecloud_instances_output(project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                   region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_edgecloud_instances_output(project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                   region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEdgecloudInstancesResult]:
     """
     Edge Cloud is in private Beta and not generally available.

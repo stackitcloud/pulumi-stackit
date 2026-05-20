@@ -254,9 +254,9 @@ def get_logs_instance(instance_id: Optional[_builtins.str] = None,
         region=pulumi.get(__ret__, 'region'),
         retention_days=pulumi.get(__ret__, 'retention_days'),
         status=pulumi.get(__ret__, 'status'))
-def get_logs_instance_output(instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                             project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                             region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_logs_instance_output(instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                             project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                             region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLogsInstanceResult]:
     """
     Logs instance data source schema. Uses the `default_region` specified in the provider configuration as a fallback in case no `region` is defined on datasource level.

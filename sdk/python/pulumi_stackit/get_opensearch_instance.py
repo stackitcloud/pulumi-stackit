@@ -208,8 +208,8 @@ def get_opensearch_instance(instance_id: Optional[_builtins.str] = None,
         plan_name=pulumi.get(__ret__, 'plan_name'),
         project_id=pulumi.get(__ret__, 'project_id'),
         version=pulumi.get(__ret__, 'version'))
-def get_opensearch_instance_output(instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                   project_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_opensearch_instance_output(instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                   project_id: pulumi.Input[Optional[_builtins.str]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOpensearchInstanceResult]:
     """
     OpenSearch instance data source schema. Must have a `region` specified in the provider configuration.

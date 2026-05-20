@@ -24,12 +24,12 @@ class ImageArgs:
                  disk_format: pulumi.Input[_builtins.str],
                  local_file_path: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
-                 config: Optional[pulumi.Input['ImageConfigArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 min_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_ram: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 config: pulumi.Input[Optional['ImageConfigArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 min_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_ram: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Image resource.
 
@@ -97,93 +97,93 @@ class ImageArgs:
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['ImageConfigArgs']]:
+    def config(self) -> pulumi.Input[Optional['ImageConfigArgs']]:
         """
         Properties to set hardware and scheduling settings for an image.
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['ImageConfigArgs']]):
+    def config(self, value: pulumi.Input[Optional['ImageConfigArgs']]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels are key-value string pairs which can be attached to a resource container
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="minDiskSize")
-    def min_disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum disk size of the image in GB.
         """
         return pulumi.get(self, "min_disk_size")
 
     @min_disk_size.setter
-    def min_disk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_disk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_disk_size", value)
 
     @_builtins.property
     @pulumi.getter(name="minRam")
-    def min_ram(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_ram(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum RAM of the image in MB.
         """
         return pulumi.get(self, "min_ram")
 
     @min_ram.setter
-    def min_ram(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_ram(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_ram", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the image.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource region. If not defined, the provider region is used.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _ImageState:
     def __init__(__self__, *,
-                 checksum: Optional[pulumi.Input['ImageChecksumArgs']] = None,
-                 config: Optional[pulumi.Input['ImageConfigArgs']] = None,
-                 disk_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 local_file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_ram: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 protected: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 scope: Optional[pulumi.Input[_builtins.str]] = None):
+                 checksum: pulumi.Input[Optional['ImageChecksumArgs']] = None,
+                 config: pulumi.Input[Optional['ImageConfigArgs']] = None,
+                 disk_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 local_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_ram: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 protected: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 scope: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Image resources.
 
@@ -230,158 +230,158 @@ class _ImageState:
 
     @_builtins.property
     @pulumi.getter
-    def checksum(self) -> Optional[pulumi.Input['ImageChecksumArgs']]:
+    def checksum(self) -> pulumi.Input[Optional['ImageChecksumArgs']]:
         """
         Representation of an image checksum.
         """
         return pulumi.get(self, "checksum")
 
     @checksum.setter
-    def checksum(self, value: Optional[pulumi.Input['ImageChecksumArgs']]):
+    def checksum(self, value: pulumi.Input[Optional['ImageChecksumArgs']]):
         pulumi.set(self, "checksum", value)
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['ImageConfigArgs']]:
+    def config(self) -> pulumi.Input[Optional['ImageConfigArgs']]:
         """
         Properties to set hardware and scheduling settings for an image.
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['ImageConfigArgs']]):
+    def config(self, value: pulumi.Input[Optional['ImageConfigArgs']]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter(name="diskFormat")
-    def disk_format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def disk_format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The disk format of the image.
         """
         return pulumi.get(self, "disk_format")
 
     @disk_format.setter
-    def disk_format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def disk_format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "disk_format", value)
 
     @_builtins.property
     @pulumi.getter(name="imageId")
-    def image_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The image ID.
         """
         return pulumi.get(self, "image_id")
 
     @image_id.setter
-    def image_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels are key-value string pairs which can be attached to a resource container
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="localFilePath")
-    def local_file_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def local_file_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The filepath of the raw image file to be uploaded.
         """
         return pulumi.get(self, "local_file_path")
 
     @local_file_path.setter
-    def local_file_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def local_file_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "local_file_path", value)
 
     @_builtins.property
     @pulumi.getter(name="minDiskSize")
-    def min_disk_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_disk_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum disk size of the image in GB.
         """
         return pulumi.get(self, "min_disk_size")
 
     @min_disk_size.setter
-    def min_disk_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_disk_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_disk_size", value)
 
     @_builtins.property
     @pulumi.getter(name="minRam")
-    def min_ram(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_ram(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum RAM of the image in MB.
         """
         return pulumi.get(self, "min_ram")
 
     @min_ram.setter
-    def min_ram(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_ram(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_ram", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the image.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         STACKIT project ID to which the image is associated.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def protected(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def protected(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the image is protected.
         """
         return pulumi.get(self, "protected")
 
     @protected.setter
-    def protected(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def protected(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "protected", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource region. If not defined, the provider region is used.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def scope(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The scope of the image.
         """
         return pulumi.get(self, "scope")
 
     @scope.setter
-    def scope(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scope(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scope", value)
 
 
@@ -391,15 +391,15 @@ class Image(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[Union['ImageConfigArgs', 'ImageConfigArgsDict']]] = None,
-                 disk_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 local_file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_ram: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[Union['ImageConfigArgs', 'ImageConfigArgsDict']]] = None,
+                 disk_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 local_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_ram: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Image resource schema. Must have a `region` specified in the provider configuration.
@@ -446,15 +446,15 @@ class Image(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[Union['ImageConfigArgs', 'ImageConfigArgsDict']]] = None,
-                 disk_format: Optional[pulumi.Input[_builtins.str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 local_file_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 min_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_ram: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[Union['ImageConfigArgs', 'ImageConfigArgsDict']]] = None,
+                 disk_format: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 local_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_ram: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -493,19 +493,19 @@ class Image(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            checksum: Optional[pulumi.Input[Union['ImageChecksumArgs', 'ImageChecksumArgsDict']]] = None,
-            config: Optional[pulumi.Input[Union['ImageConfigArgs', 'ImageConfigArgsDict']]] = None,
-            disk_format: Optional[pulumi.Input[_builtins.str]] = None,
-            image_id: Optional[pulumi.Input[_builtins.str]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            local_file_path: Optional[pulumi.Input[_builtins.str]] = None,
-            min_disk_size: Optional[pulumi.Input[_builtins.int]] = None,
-            min_ram: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            protected: Optional[pulumi.Input[_builtins.bool]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            scope: Optional[pulumi.Input[_builtins.str]] = None) -> 'Image':
+            checksum: pulumi.Input[Optional[Union['ImageChecksumArgs', 'ImageChecksumArgsDict']]] = None,
+            config: pulumi.Input[Optional[Union['ImageConfigArgs', 'ImageConfigArgsDict']]] = None,
+            disk_format: pulumi.Input[Optional[_builtins.str]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            local_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+            min_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+            min_ram: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            protected: pulumi.Input[Optional[_builtins.bool]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            scope: pulumi.Input[Optional[_builtins.str]] = None) -> 'Image':
         """
         Get an existing Image resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

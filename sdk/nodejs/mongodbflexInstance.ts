@@ -143,32 +143,32 @@ export interface MongodbflexInstanceState {
     /**
      * The Access Control List (ACL) for the MongoDB Flex instance.
      */
-    acls?: pulumi.Input<pulumi.Input<string>[]>;
+    acls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *").
      */
-    backupSchedule?: pulumi.Input<string>;
-    flavor?: pulumi.Input<inputs.MongodbflexInstanceFlavor>;
+    backupSchedule?: pulumi.Input<string | undefined>;
+    flavor?: pulumi.Input<inputs.MongodbflexInstanceFlavor | undefined>;
     /**
      * ID of the MongoDB Flex instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Instance name.
      */
-    name?: pulumi.Input<string>;
-    options?: pulumi.Input<inputs.MongodbflexInstanceOptions>;
+    name?: pulumi.Input<string | undefined>;
+    options?: pulumi.Input<inputs.MongodbflexInstanceOptions | undefined>;
     /**
      * STACKIT project ID to which the instance is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
-    replicas?: pulumi.Input<number>;
-    storage?: pulumi.Input<inputs.MongodbflexInstanceStorage>;
-    version?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
+    replicas?: pulumi.Input<number | undefined>;
+    storage?: pulumi.Input<inputs.MongodbflexInstanceStorage | undefined>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -187,7 +187,7 @@ export interface MongodbflexInstanceArgs {
     /**
      * Instance name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     options: pulumi.Input<inputs.MongodbflexInstanceOptions>;
     /**
      * STACKIT project ID to which the instance is associated.
@@ -196,7 +196,7 @@ export interface MongodbflexInstanceArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     replicas: pulumi.Input<number>;
     storage: pulumi.Input<inputs.MongodbflexInstanceStorage>;
     version: pulumi.Input<string>;

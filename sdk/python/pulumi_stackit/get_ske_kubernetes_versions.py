@@ -109,8 +109,8 @@ def get_ske_kubernetes_versions(region: Optional[_builtins.str] = None,
         kubernetes_versions=pulumi.get(__ret__, 'kubernetes_versions'),
         region=pulumi.get(__ret__, 'region'),
         version_state=pulumi.get(__ret__, 'version_state'))
-def get_ske_kubernetes_versions_output(region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                       version_state: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_ske_kubernetes_versions_output(region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                       version_state: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSkeKubernetesVersionsResult]:
     """
     Returns Kubernetes versions as reported by the SKE provider options API for the given region.

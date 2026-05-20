@@ -135,8 +135,8 @@ def get_secretsmanager_instance(instance_id: Optional[_builtins.str] = None,
         kms_key=pulumi.get(__ret__, 'kms_key'),
         name=pulumi.get(__ret__, 'name'),
         project_id=pulumi.get(__ret__, 'project_id'))
-def get_secretsmanager_instance_output(instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                       project_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_secretsmanager_instance_output(instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                       project_id: pulumi.Input[Optional[_builtins.str]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecretsmanagerInstanceResult]:
     """
     Secrets Manager instance data source schema. Must have a `region` specified in the provider configuration.

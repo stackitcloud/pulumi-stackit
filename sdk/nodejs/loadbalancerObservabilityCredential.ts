@@ -114,27 +114,27 @@ export interface LoadbalancerObservabilityCredentialState {
     /**
      * The credentials reference is used by the Load Balancer to define which credentials it will use.
      */
-    credentialsRef?: pulumi.Input<string>;
+    credentialsRef?: pulumi.Input<string | undefined>;
     /**
      * Observability credential name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The username for the observability service (e.g. Argus) where the logs/metrics will be pushed into.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the load balancer observability credential is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The password for the observability service (e.g. Argus) where the logs/metrics will be pushed into.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -156,7 +156,7 @@ export interface LoadbalancerObservabilityCredentialArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The password for the observability service (e.g. Argus) where the logs/metrics will be pushed into.
      */

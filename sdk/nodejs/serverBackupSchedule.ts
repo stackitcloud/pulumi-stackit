@@ -131,35 +131,35 @@ export interface ServerBackupScheduleState {
     /**
      * Backup schedule details for the backups.
      */
-    backupProperties?: pulumi.Input<inputs.ServerBackupScheduleBackupProperties>;
+    backupProperties?: pulumi.Input<inputs.ServerBackupScheduleBackupProperties | undefined>;
     /**
      * Backup schedule ID.
      */
-    backupScheduleId?: pulumi.Input<number>;
+    backupScheduleId?: pulumi.Input<number | undefined>;
     /**
      * Is the backup schedule enabled or disabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * The schedule name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * STACKIT Project ID to which the server is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
      */
-    rrule?: pulumi.Input<string>;
+    rrule?: pulumi.Input<string | undefined>;
     /**
      * Server ID for the backup schedule.
      */
-    serverId?: pulumi.Input<string>;
+    serverId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -177,7 +177,7 @@ export interface ServerBackupScheduleArgs {
     /**
      * The schedule name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * STACKIT Project ID to which the server is associated.
      */
@@ -185,7 +185,7 @@ export interface ServerBackupScheduleArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
      */

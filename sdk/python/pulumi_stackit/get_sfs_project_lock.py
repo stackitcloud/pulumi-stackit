@@ -108,8 +108,8 @@ def get_sfs_project_lock(project_id: Optional[_builtins.str] = None,
         lock_id=pulumi.get(__ret__, 'lock_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         region=pulumi.get(__ret__, 'region'))
-def get_sfs_project_lock_output(project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_sfs_project_lock_output(project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSfsProjectLockResult]:
     """
     SFS project lock resource schema. Must have a `region` specified in the provider configuration. Always use only one project lock per project.

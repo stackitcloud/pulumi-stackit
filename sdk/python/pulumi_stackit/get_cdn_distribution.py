@@ -176,8 +176,8 @@ def get_cdn_distribution(distribution_id: Optional[_builtins.str] = None,
         project_id=pulumi.get(__ret__, 'project_id'),
         status=pulumi.get(__ret__, 'status'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
-def get_cdn_distribution_output(distribution_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                project_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_cdn_distribution_output(distribution_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                project_id: pulumi.Input[Optional[_builtins.str]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCdnDistributionResult]:
     """
     CDN distribution data source schema.

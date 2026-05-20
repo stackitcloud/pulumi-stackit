@@ -131,39 +131,39 @@ export class OpensearchInstance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering OpensearchInstance resources.
  */
 export interface OpensearchInstanceState {
-    cfGuid?: pulumi.Input<string>;
-    cfOrganizationGuid?: pulumi.Input<string>;
-    cfSpaceGuid?: pulumi.Input<string>;
-    dashboardUrl?: pulumi.Input<string>;
-    imageUrl?: pulumi.Input<string>;
+    cfGuid?: pulumi.Input<string | undefined>;
+    cfOrganizationGuid?: pulumi.Input<string | undefined>;
+    cfSpaceGuid?: pulumi.Input<string | undefined>;
+    dashboardUrl?: pulumi.Input<string | undefined>;
+    imageUrl?: pulumi.Input<string | undefined>;
     /**
      * ID of the OpenSearch instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Instance name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
      */
-    parameters?: pulumi.Input<inputs.OpensearchInstanceParameters>;
+    parameters?: pulumi.Input<inputs.OpensearchInstanceParameters | undefined>;
     /**
      * The selected plan ID.
      */
-    planId?: pulumi.Input<string>;
+    planId?: pulumi.Input<string | undefined>;
     /**
      * The selected plan name.
      */
-    planName?: pulumi.Input<string>;
+    planName?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the instance is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The service version.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -173,11 +173,11 @@ export interface OpensearchInstanceArgs {
     /**
      * Instance name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
      */
-    parameters?: pulumi.Input<inputs.OpensearchInstanceParameters>;
+    parameters?: pulumi.Input<inputs.OpensearchInstanceParameters | undefined>;
     /**
      * The selected plan name.
      */

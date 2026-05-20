@@ -196,75 +196,75 @@ export interface ServerState {
     /**
      * The affinity group the server is assigned to.
      */
-    affinityGroup?: pulumi.Input<string>;
+    affinityGroup?: pulumi.Input<string | undefined>;
     /**
      * The STACKIT Server Agent configured for the server
      */
-    agent?: pulumi.Input<inputs.ServerAgent>;
+    agent?: pulumi.Input<inputs.ServerAgent | undefined>;
     /**
      * The availability zone of the server.
      */
-    availabilityZone?: pulumi.Input<string>;
+    availabilityZone?: pulumi.Input<string | undefined>;
     /**
      * The boot volume for the server
      */
-    bootVolume?: pulumi.Input<inputs.ServerBootVolume>;
+    bootVolume?: pulumi.Input<inputs.ServerBootVolume | undefined>;
     /**
      * Date-time when the server was created
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The desired status of the server resource. Possible values are: `active`, `inactive`, `deallocated`.
      */
-    desiredStatus?: pulumi.Input<string>;
+    desiredStatus?: pulumi.Input<string | undefined>;
     /**
      * The image ID to be used for an ephemeral disk on the server.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * The name of the keypair used during server creation.
      */
-    keypairName?: pulumi.Input<string>;
+    keypairName?: pulumi.Input<string | undefined>;
     /**
      * Labels are key-value string pairs which can be attached to a resource container
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Date-time when the server was launched
      */
-    launchedAt?: pulumi.Input<string>;
+    launchedAt?: pulumi.Input<string | undefined>;
     /**
      * Name of the type of the machine for the server. Possible values are documented in [Virtual machine flavors](https://docs.stackit.cloud/products/compute-engine/server/basics/machine-types/)
      */
-    machineType?: pulumi.Input<string>;
+    machineType?: pulumi.Input<string | undefined>;
     /**
      * The name of the server.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The IDs of network interfaces which should be attached to the server. Updating it will recreate the server. **Required when (re-)creating servers. Still marked as optional in the schema to not introduce breaking changes. There will be a migration path for this field soon.**
      */
-    networkInterfaces?: pulumi.Input<pulumi.Input<string>[]>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * STACKIT project ID to which the server is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The server ID.
      */
-    serverId?: pulumi.Input<string>;
+    serverId?: pulumi.Input<string | undefined>;
     /**
      * Date-time when the server was updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * User data that is passed via cloud-init to the server.
      */
-    userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -274,35 +274,35 @@ export interface ServerArgs {
     /**
      * The affinity group the server is assigned to.
      */
-    affinityGroup?: pulumi.Input<string>;
+    affinityGroup?: pulumi.Input<string | undefined>;
     /**
      * The STACKIT Server Agent configured for the server
      */
-    agent?: pulumi.Input<inputs.ServerAgent>;
+    agent?: pulumi.Input<inputs.ServerAgent | undefined>;
     /**
      * The availability zone of the server.
      */
-    availabilityZone?: pulumi.Input<string>;
+    availabilityZone?: pulumi.Input<string | undefined>;
     /**
      * The boot volume for the server
      */
-    bootVolume?: pulumi.Input<inputs.ServerBootVolume>;
+    bootVolume?: pulumi.Input<inputs.ServerBootVolume | undefined>;
     /**
      * The desired status of the server resource. Possible values are: `active`, `inactive`, `deallocated`.
      */
-    desiredStatus?: pulumi.Input<string>;
+    desiredStatus?: pulumi.Input<string | undefined>;
     /**
      * The image ID to be used for an ephemeral disk on the server.
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * The name of the keypair used during server creation.
      */
-    keypairName?: pulumi.Input<string>;
+    keypairName?: pulumi.Input<string | undefined>;
     /**
      * Labels are key-value string pairs which can be attached to a resource container
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the type of the machine for the server. Possible values are documented in [Virtual machine flavors](https://docs.stackit.cloud/products/compute-engine/server/basics/machine-types/)
      */
@@ -310,11 +310,11 @@ export interface ServerArgs {
     /**
      * The name of the server.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The IDs of network interfaces which should be attached to the server. Updating it will recreate the server. **Required when (re-)creating servers. Still marked as optional in the schema to not introduce breaking changes. There will be a migration path for this field soon.**
      */
-    networkInterfaces?: pulumi.Input<pulumi.Input<string>[]>;
+    networkInterfaces?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * STACKIT project ID to which the server is associated.
      */
@@ -322,9 +322,9 @@ export interface ServerArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * User data that is passed via cloud-init to the server.
      */
-    userData?: pulumi.Input<string>;
+    userData?: pulumi.Input<string | undefined>;
 }

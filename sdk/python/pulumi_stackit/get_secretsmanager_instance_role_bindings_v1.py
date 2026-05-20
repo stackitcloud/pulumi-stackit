@@ -111,8 +111,8 @@ def get_secretsmanager_instance_role_bindings_v1(region: Optional[_builtins.str]
         region=pulumi.get(__ret__, 'region'),
         resource_id=pulumi.get(__ret__, 'resource_id'),
         role_bindings=pulumi.get(__ret__, 'role_bindings'))
-def get_secretsmanager_instance_role_bindings_v1_output(region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                                        resource_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_secretsmanager_instance_role_bindings_v1_output(region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                                        resource_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecretsmanagerInstanceRoleBindingsV1Result]:
     """
     IAM role binding datasource schema.

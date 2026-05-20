@@ -92,7 +92,7 @@ export interface GetSfsResourcePoolSnapshotOutputArgs {
     /**
      * The resource region. Read-only attribute that reflects the provider region.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Resource pool ID
      */

@@ -163,9 +163,9 @@ def get_security_group(project_id: Optional[_builtins.str] = None,
         region=pulumi.get(__ret__, 'region'),
         security_group_id=pulumi.get(__ret__, 'security_group_id'),
         stateful=pulumi.get(__ret__, 'stateful'))
-def get_security_group_output(project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                              region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                              security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_security_group_output(project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                              region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                              security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecurityGroupResult]:
     """
     Security group datasource schema. Must have a `region` specified in the provider configuration.

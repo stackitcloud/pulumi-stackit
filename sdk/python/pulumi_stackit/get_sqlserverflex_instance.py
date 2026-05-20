@@ -204,9 +204,9 @@ def get_sqlserverflex_instance(instance_id: Optional[_builtins.str] = None,
         replicas=pulumi.get(__ret__, 'replicas'),
         storage=pulumi.get(__ret__, 'storage'),
         version=pulumi.get(__ret__, 'version'))
-def get_sqlserverflex_instance_output(instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                      project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                      region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_sqlserverflex_instance_output(instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                      project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                      region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSqlserverflexInstanceResult]:
     """
     SQLServer Flex instance data source schema. Must have a `region` specified in the provider configuration.

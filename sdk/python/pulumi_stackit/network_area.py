@@ -22,14 +22,14 @@ __all__ = ['NetworkAreaArgs', 'NetworkArea']
 class NetworkAreaArgs:
     def __init__(__self__, *,
                  organization_id: pulumi.Input[_builtins.str],
-                 default_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 default_prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 max_prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAreaNetworkRangeArgs']]]] = None,
-                 transfer_network: Optional[pulumi.Input[_builtins.str]] = None):
+                 default_nameservers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 default_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 max_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_ranges: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkAreaNetworkRangeArgs']]]] = None,
+                 transfer_network: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a NetworkArea resource.
 
@@ -94,120 +94,120 @@ class NetworkAreaArgs:
     @_builtins.property
     @pulumi.getter(name="defaultNameservers")
     @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
-    def default_nameservers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def default_nameservers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of DNS Servers/Nameservers for configuration of network area for region `eu01`.
         """
         return pulumi.get(self, "default_nameservers")
 
     @default_nameservers.setter
-    def default_nameservers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def default_nameservers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "default_nameservers", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultPrefixLength")
     @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
-    def default_prefix_length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def default_prefix_length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The default prefix length for networks in the network area for region `eu01`.
         """
         return pulumi.get(self, "default_prefix_length")
 
     @default_prefix_length.setter
-    def default_prefix_length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def default_prefix_length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "default_prefix_length", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels are key-value string pairs which can be attached to a resource container
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="maxPrefixLength")
     @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
-    def max_prefix_length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_prefix_length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximal prefix length for networks in the network area for region `eu01`.
         """
         return pulumi.get(self, "max_prefix_length")
 
     @max_prefix_length.setter
-    def max_prefix_length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_prefix_length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_prefix_length", value)
 
     @_builtins.property
     @pulumi.getter(name="minPrefixLength")
     @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
-    def min_prefix_length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_prefix_length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimal prefix length for networks in the network area for region `eu01`.
         """
         return pulumi.get(self, "min_prefix_length")
 
     @min_prefix_length.setter
-    def min_prefix_length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_prefix_length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_prefix_length", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the network area.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkRanges")
     @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
-    def network_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAreaNetworkRangeArgs']]]]:
+    def network_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NetworkAreaNetworkRangeArgs']]]]:
         """
         List of Network ranges for configuration of network area for region `eu01`.
         """
         return pulumi.get(self, "network_ranges")
 
     @network_ranges.setter
-    def network_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAreaNetworkRangeArgs']]]]):
+    def network_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkAreaNetworkRangeArgs']]]]):
         pulumi.set(self, "network_ranges", value)
 
     @_builtins.property
     @pulumi.getter(name="transferNetwork")
     @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
-    def transfer_network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transfer_network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Classless Inter-Domain Routing (CIDR) for configuration of network area for region `eu01`.
         """
         return pulumi.get(self, "transfer_network")
 
     @transfer_network.setter
-    def transfer_network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transfer_network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transfer_network", value)
 
 
 @pulumi.input_type
 class _NetworkAreaState:
     def __init__(__self__, *,
-                 default_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 default_prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 max_prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_area_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAreaNetworkRangeArgs']]]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 transfer_network: Optional[pulumi.Input[_builtins.str]] = None):
+                 default_nameservers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 default_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 max_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_area_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_ranges: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkAreaNetworkRangeArgs']]]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 transfer_network: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NetworkArea resources.
 
@@ -267,139 +267,139 @@ class _NetworkAreaState:
     @_builtins.property
     @pulumi.getter(name="defaultNameservers")
     @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
-    def default_nameservers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def default_nameservers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of DNS Servers/Nameservers for configuration of network area for region `eu01`.
         """
         return pulumi.get(self, "default_nameservers")
 
     @default_nameservers.setter
-    def default_nameservers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def default_nameservers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "default_nameservers", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultPrefixLength")
     @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
-    def default_prefix_length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def default_prefix_length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The default prefix length for networks in the network area for region `eu01`.
         """
         return pulumi.get(self, "default_prefix_length")
 
     @default_prefix_length.setter
-    def default_prefix_length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def default_prefix_length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "default_prefix_length", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels are key-value string pairs which can be attached to a resource container
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="maxPrefixLength")
     @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
-    def max_prefix_length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_prefix_length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximal prefix length for networks in the network area for region `eu01`.
         """
         return pulumi.get(self, "max_prefix_length")
 
     @max_prefix_length.setter
-    def max_prefix_length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_prefix_length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_prefix_length", value)
 
     @_builtins.property
     @pulumi.getter(name="minPrefixLength")
     @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
-    def min_prefix_length(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def min_prefix_length(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimal prefix length for networks in the network area for region `eu01`.
         """
         return pulumi.get(self, "min_prefix_length")
 
     @min_prefix_length.setter
-    def min_prefix_length(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def min_prefix_length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "min_prefix_length", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the network area.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="networkAreaId")
-    def network_area_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_area_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network area ID.
         """
         return pulumi.get(self, "network_area_id")
 
     @network_area_id.setter
-    def network_area_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_area_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_area_id", value)
 
     @_builtins.property
     @pulumi.getter(name="networkRanges")
     @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
-    def network_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAreaNetworkRangeArgs']]]]:
+    def network_ranges(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['NetworkAreaNetworkRangeArgs']]]]:
         """
         List of Network ranges for configuration of network area for region `eu01`.
         """
         return pulumi.get(self, "network_ranges")
 
     @network_ranges.setter
-    def network_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkAreaNetworkRangeArgs']]]]):
+    def network_ranges(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['NetworkAreaNetworkRangeArgs']]]]):
         pulumi.set(self, "network_ranges", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationId")
-    def organization_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         STACKIT organization ID to which the network area is associated.
         """
         return pulumi.get(self, "organization_id")
 
     @organization_id.setter
-    def organization_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectCount")
-    def project_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def project_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of projects currently referencing this area.
         """
         return pulumi.get(self, "project_count")
 
     @project_count.setter
-    def project_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def project_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "project_count", value)
 
     @_builtins.property
     @pulumi.getter(name="transferNetwork")
     @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
-    def transfer_network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def transfer_network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Classless Inter-Domain Routing (CIDR) for configuration of network area for region `eu01`.
         """
         return pulumi.get(self, "transfer_network")
 
     @transfer_network.setter
-    def transfer_network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def transfer_network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "transfer_network", value)
 
 
@@ -409,15 +409,15 @@ class NetworkArea(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 default_prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 max_prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAreaNetworkRangeArgs', 'NetworkAreaNetworkRangeArgsDict']]]]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transfer_network: Optional[pulumi.Input[_builtins.str]] = None,
+                 default_nameservers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 default_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 max_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAreaNetworkRangeArgs', 'NetworkAreaNetworkRangeArgsDict']]]]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transfer_network: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Network area resource schema.
@@ -510,15 +510,15 @@ class NetworkArea(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 default_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 default_prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 max_prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 min_prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAreaNetworkRangeArgs', 'NetworkAreaNetworkRangeArgsDict']]]]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 transfer_network: Optional[pulumi.Input[_builtins.str]] = None,
+                 default_nameservers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 default_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 max_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAreaNetworkRangeArgs', 'NetworkAreaNetworkRangeArgsDict']]]]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 transfer_network: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -551,17 +551,17 @@ class NetworkArea(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            default_nameservers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            default_prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            max_prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-            min_prefix_length: Optional[pulumi.Input[_builtins.int]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network_area_id: Optional[pulumi.Input[_builtins.str]] = None,
-            network_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NetworkAreaNetworkRangeArgs', 'NetworkAreaNetworkRangeArgsDict']]]]] = None,
-            organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_count: Optional[pulumi.Input[_builtins.int]] = None,
-            transfer_network: Optional[pulumi.Input[_builtins.str]] = None) -> 'NetworkArea':
+            default_nameservers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            default_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            max_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+            min_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_area_id: pulumi.Input[Optional[_builtins.str]] = None,
+            network_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[Union['NetworkAreaNetworkRangeArgs', 'NetworkAreaNetworkRangeArgsDict']]]]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_count: pulumi.Input[Optional[_builtins.int]] = None,
+            transfer_network: pulumi.Input[Optional[_builtins.str]] = None) -> 'NetworkArea':
         """
         Get an existing NetworkArea resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

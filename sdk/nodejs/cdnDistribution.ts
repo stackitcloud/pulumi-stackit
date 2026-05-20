@@ -124,35 +124,35 @@ export interface CdnDistributionState {
     /**
      * The distribution configuration
      */
-    config?: pulumi.Input<inputs.CdnDistributionConfig>;
+    config?: pulumi.Input<inputs.CdnDistributionConfig | undefined>;
     /**
      * Time when the distribution was created
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * CDN distribution ID
      */
-    distributionId?: pulumi.Input<string>;
+    distributionId?: pulumi.Input<string | undefined>;
     /**
      * List of configured domains for the distribution
      */
-    domains?: pulumi.Input<pulumi.Input<inputs.CdnDistributionDomain>[]>;
+    domains?: pulumi.Input<pulumi.Input<inputs.CdnDistributionDomain>[] | undefined>;
     /**
      * List of distribution errors
      */
-    errors?: pulumi.Input<pulumi.Input<string>[]>;
+    errors?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * STACKIT project ID associated with the distribution
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Status of the distribution
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Time when the distribution was last updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -140,6 +140,17 @@ Object.defineProperty(exports, "iaasCustomEndpoint", {
 });
 
 /**
+ * Custom endpoint for the Intake service
+ */
+export declare const intakeCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "intakeCustomEndpoint", {
+    get() {
+        return __config.get("intakeCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+/**
  * Custom endpoint for the KMS service
  */
 export declare const kmsCustomEndpoint: string | undefined;

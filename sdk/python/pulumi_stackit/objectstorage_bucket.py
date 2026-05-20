@@ -20,9 +20,9 @@ __all__ = ['ObjectstorageBucketArgs', 'ObjectstorageBucket']
 class ObjectstorageBucketArgs:
     def __init__(__self__, *,
                  project_id: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_lock: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_lock: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ObjectstorageBucket resource.
 
@@ -53,50 +53,50 @@ class ObjectstorageBucketArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bucket name. It must be DNS conform.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="objectLock")
-    def object_lock(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def object_lock(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Object Lock on this bucket. Can only be set at creation time. Requires an active project-level compliance lock.
         """
         return pulumi.get(self, "object_lock")
 
     @object_lock.setter
-    def object_lock(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def object_lock(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "object_lock", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource region. If not defined, the provider region is used.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _ObjectstorageBucketState:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_lock: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 url_path_style: Optional[pulumi.Input[_builtins.str]] = None,
-                 url_virtual_hosted_style: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_lock: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_path_style: pulumi.Input[Optional[_builtins.str]] = None,
+                 url_virtual_hosted_style: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ObjectstorageBucket resources.
 
@@ -120,68 +120,68 @@ class _ObjectstorageBucketState:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bucket name. It must be DNS conform.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="objectLock")
-    def object_lock(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def object_lock(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable Object Lock on this bucket. Can only be set at creation time. Requires an active project-level compliance lock.
         """
         return pulumi.get(self, "object_lock")
 
     @object_lock.setter
-    def object_lock(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def object_lock(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "object_lock", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         STACKIT Project ID to which the bucket is associated.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource region. If not defined, the provider region is used.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="urlPathStyle")
-    def url_path_style(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url_path_style(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "url_path_style")
 
     @url_path_style.setter
-    def url_path_style(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url_path_style(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url_path_style", value)
 
     @_builtins.property
     @pulumi.getter(name="urlVirtualHostedStyle")
-    def url_virtual_hosted_style(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url_virtual_hosted_style(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "url_virtual_hosted_style")
 
     @url_virtual_hosted_style.setter
-    def url_virtual_hosted_style(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url_virtual_hosted_style(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url_virtual_hosted_style", value)
 
 
@@ -191,10 +191,10 @@ class ObjectstorageBucket(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_lock: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_lock: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         ObjectStorage bucket resource schema. Must have a `region` specified in the provider configuration. If you are creating `credentialsgroup` and `bucket` resources simultaneously, please include the `depends_on` field so that they are created sequentially. This prevents errors from concurrent calls to the service enablement that is done in the background.
@@ -236,10 +236,10 @@ class ObjectstorageBucket(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 object_lock: Optional[pulumi.Input[_builtins.bool]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_lock: pulumi.Input[Optional[_builtins.bool]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -267,12 +267,12 @@ class ObjectstorageBucket(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            object_lock: Optional[pulumi.Input[_builtins.bool]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            url_path_style: Optional[pulumi.Input[_builtins.str]] = None,
-            url_virtual_hosted_style: Optional[pulumi.Input[_builtins.str]] = None) -> 'ObjectstorageBucket':
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            object_lock: pulumi.Input[Optional[_builtins.bool]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            url_path_style: pulumi.Input[Optional[_builtins.str]] = None,
+            url_virtual_hosted_style: pulumi.Input[Optional[_builtins.str]] = None) -> 'ObjectstorageBucket':
         """
         Get an existing ObjectstorageBucket resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

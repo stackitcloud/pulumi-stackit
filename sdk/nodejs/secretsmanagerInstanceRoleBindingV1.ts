@@ -103,19 +103,19 @@ export interface SecretsmanagerInstanceRoleBindingV1State {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The identifier of the resource to apply this role binding to.
      */
-    resourceId?: pulumi.Input<string>;
+    resourceId?: pulumi.Input<string | undefined>;
     /**
      * A valid role defined for the resource.
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * Identifier of user, service account or client. Usually email address or name in case of clients.
      */
-    subject?: pulumi.Input<string>;
+    subject?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -125,7 +125,7 @@ export interface SecretsmanagerInstanceRoleBindingV1Args {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The identifier of the resource to apply this role binding to.
      */

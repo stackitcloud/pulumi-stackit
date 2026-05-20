@@ -159,59 +159,59 @@ export interface LogsInstanceState {
     /**
      * The access control list entries for the Logs instance
      */
-    acls?: pulumi.Input<pulumi.Input<string>[]>;
+    acls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The date and time the creation of the Logs instance was initiated
      */
-    created?: pulumi.Input<string>;
+    created?: pulumi.Input<string | undefined>;
     /**
      * Logs instance datasource URL, can be used in Grafana as datasource URL
      */
-    datasourceUrl?: pulumi.Input<string>;
+    datasourceUrl?: pulumi.Input<string | undefined>;
     /**
      * The description of the Logs instance
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The displayed name of the Logs instance
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The Logs instance's ingest logs via OTLP URL
      */
-    ingestOtlpUrl?: pulumi.Input<string>;
+    ingestOtlpUrl?: pulumi.Input<string | undefined>;
     /**
      * The logs instance's ingest logs URL
      */
-    ingestUrl?: pulumi.Input<string>;
+    ingestUrl?: pulumi.Input<string | undefined>;
     /**
      * The Logs instance ID
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID associated with the Logs instance
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The Logs instance's query range URL
      */
-    queryRangeUrl?: pulumi.Input<string>;
+    queryRangeUrl?: pulumi.Input<string | undefined>;
     /**
      * The Logs instance's query URL
      */
-    queryUrl?: pulumi.Input<string>;
+    queryUrl?: pulumi.Input<string | undefined>;
     /**
      * STACKIT region name the resource is located in. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The log retention time in days
      */
-    retentionDays?: pulumi.Input<number>;
+    retentionDays?: pulumi.Input<number | undefined>;
     /**
      * The status of the Logs instance, possible values: Possible values are: `active`, `deleting`, `reconciling`.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -221,11 +221,11 @@ export interface LogsInstanceArgs {
     /**
      * The access control list entries for the Logs instance
      */
-    acls?: pulumi.Input<pulumi.Input<string>[]>;
+    acls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The description of the Logs instance
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The displayed name of the Logs instance
      */
@@ -237,7 +237,7 @@ export interface LogsInstanceArgs {
     /**
      * STACKIT region name the resource is located in. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The log retention time in days
      */

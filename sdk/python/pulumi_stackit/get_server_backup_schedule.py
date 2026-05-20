@@ -180,10 +180,10 @@ def get_server_backup_schedule(backup_schedule_id: Optional[_builtins.int] = Non
         region=pulumi.get(__ret__, 'region'),
         rrule=pulumi.get(__ret__, 'rrule'),
         server_id=pulumi.get(__ret__, 'server_id'))
-def get_server_backup_schedule_output(backup_schedule_id: Optional[pulumi.Input[_builtins.int]] = None,
-                                      project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                      region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                      server_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_server_backup_schedule_output(backup_schedule_id: pulumi.Input[Optional[_builtins.int]] = None,
+                                      project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                      region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                      server_id: pulumi.Input[Optional[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServerBackupScheduleResult]:
     """
     Server backup schedule datasource schema. Must have a `region` specified in the provider configuration.

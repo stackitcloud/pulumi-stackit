@@ -21,8 +21,8 @@ class ObjectstorageCredentialArgs:
     def __init__(__self__, *,
                  credentials_group_id: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
-                 expiration_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 expiration_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ObjectstorageCredential resource.
 
@@ -64,40 +64,40 @@ class ObjectstorageCredentialArgs:
 
     @_builtins.property
     @pulumi.getter(name="expirationTimestamp")
-    def expiration_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expiration_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Expiration timestamp, in RFC339 format without fractional seconds. Example: "2025-01-01T00:00:00Z". If not set, the credential never expires.
         """
         return pulumi.get(self, "expiration_timestamp")
 
     @expiration_timestamp.setter
-    def expiration_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expiration_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expiration_timestamp", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource region. If not defined, the provider region is used.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _ObjectstorageCredentialState:
     def __init__(__self__, *,
-                 access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 credential_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 credentials_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 expiration_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 secret_access_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 credential_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 credentials_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiration_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 secret_access_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ObjectstorageCredential resources.
 
@@ -126,89 +126,89 @@ class _ObjectstorageCredentialState:
 
     @_builtins.property
     @pulumi.getter(name="accessKey")
-    def access_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "access_key")
 
     @access_key.setter
-    def access_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_key", value)
 
     @_builtins.property
     @pulumi.getter(name="credentialId")
-    def credential_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def credential_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The credential ID.
         """
         return pulumi.get(self, "credential_id")
 
     @credential_id.setter
-    def credential_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def credential_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "credential_id", value)
 
     @_builtins.property
     @pulumi.getter(name="credentialsGroupId")
-    def credentials_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def credentials_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The credential group ID.
         """
         return pulumi.get(self, "credentials_group_id")
 
     @credentials_group_id.setter
-    def credentials_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def credentials_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "credentials_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="expirationTimestamp")
-    def expiration_timestamp(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expiration_timestamp(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Expiration timestamp, in RFC339 format without fractional seconds. Example: "2025-01-01T00:00:00Z". If not set, the credential never expires.
         """
         return pulumi.get(self, "expiration_timestamp")
 
     @expiration_timestamp.setter
-    def expiration_timestamp(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expiration_timestamp(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expiration_timestamp", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         STACKIT Project ID to which the credential group is associated.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource region. If not defined, the provider region is used.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="secretAccessKey")
-    def secret_access_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secret_access_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "secret_access_key")
 
     @secret_access_key.setter
-    def secret_access_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secret_access_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secret_access_key", value)
 
 
@@ -218,10 +218,10 @@ class ObjectstorageCredential(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 credentials_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 expiration_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 credentials_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiration_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         ObjectStorage credential resource schema. Must have a `region` specified in the provider configuration.
@@ -263,10 +263,10 @@ class ObjectstorageCredential(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 credentials_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 expiration_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 credentials_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiration_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -300,14 +300,14 @@ class ObjectstorageCredential(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_key: Optional[pulumi.Input[_builtins.str]] = None,
-            credential_id: Optional[pulumi.Input[_builtins.str]] = None,
-            credentials_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            expiration_timestamp: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            secret_access_key: Optional[pulumi.Input[_builtins.str]] = None) -> 'ObjectstorageCredential':
+            access_key: pulumi.Input[Optional[_builtins.str]] = None,
+            credential_id: pulumi.Input[Optional[_builtins.str]] = None,
+            credentials_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            expiration_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            secret_access_key: pulumi.Input[Optional[_builtins.str]] = None) -> 'ObjectstorageCredential':
         """
         Get an existing ObjectstorageCredential resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

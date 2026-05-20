@@ -155,52 +155,52 @@ export interface DnsRecordSetState {
     /**
      * Specifies if the record set is active or not. Defaults to `true`
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * Comment.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Error shows error in case create/update/delete failed.
      */
-    error?: pulumi.Input<string>;
+    error?: pulumi.Input<string | undefined>;
     /**
      * Fully qualified domain name (FQDN) of the record set.
      */
-    fqdn?: pulumi.Input<string>;
+    fqdn?: pulumi.Input<string | undefined>;
     /**
      * Name of the record which should be a valid domain according to rfc1035 Section 2.3.4. E.g. `example.com`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the dns record set is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The rr set id.
      */
-    recordSetId?: pulumi.Input<string>;
+    recordSetId?: pulumi.Input<string | undefined>;
     /**
      * Records.
      */
-    records?: pulumi.Input<pulumi.Input<string>[]>;
+    records?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Record set state.
      */
-    state?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.DnsRecordSetTimeouts>;
+    state?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.DnsRecordSetTimeouts | undefined>;
     /**
      * Time to live. E.g. 3600
      */
-    ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number | undefined>;
     /**
      * The record set type. E.g. `A` or `CNAME`
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The zone ID to which is dns record set is associated.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -210,15 +210,15 @@ export interface DnsRecordSetArgs {
     /**
      * Specifies if the record set is active or not. Defaults to `true`
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * Comment.
      */
-    comment?: pulumi.Input<string>;
+    comment?: pulumi.Input<string | undefined>;
     /**
      * Name of the record which should be a valid domain according to rfc1035 Section 2.3.4. E.g. `example.com`
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the dns record set is associated.
      */
@@ -227,11 +227,11 @@ export interface DnsRecordSetArgs {
      * Records.
      */
     records: pulumi.Input<pulumi.Input<string>[]>;
-    timeouts?: pulumi.Input<inputs.DnsRecordSetTimeouts>;
+    timeouts?: pulumi.Input<inputs.DnsRecordSetTimeouts | undefined>;
     /**
      * Time to live. E.g. 3600
      */
-    ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number | undefined>;
     /**
      * The record set type. E.g. `A` or `CNAME`
      */

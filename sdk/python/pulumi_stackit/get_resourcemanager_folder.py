@@ -157,7 +157,7 @@ def get_resourcemanager_folder(container_id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         parent_container_id=pulumi.get(__ret__, 'parent_container_id'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_resourcemanager_folder_output(container_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_resourcemanager_folder_output(container_id: pulumi.Input[Optional[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetResourcemanagerFolderResult]:
     """
     Resource Manager folder data source schema. To identify the folder, you need to provide the container_id.

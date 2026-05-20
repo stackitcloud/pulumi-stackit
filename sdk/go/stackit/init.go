@@ -59,6 +59,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Git{}
 	case "stackit:index/image:Image":
 		r = &Image{}
+	case "stackit:index/intakeRunner:IntakeRunner":
+		r = &IntakeRunner{}
 	case "stackit:index/keyPair:KeyPair":
 		r = &KeyPair{}
 	case "stackit:index/kmsKey:KmsKey":
@@ -327,6 +329,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"stackit",
 		"index/image",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/intakeRunner",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

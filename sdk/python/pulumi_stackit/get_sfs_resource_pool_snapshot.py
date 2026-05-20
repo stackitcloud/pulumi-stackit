@@ -127,9 +127,9 @@ def get_sfs_resource_pool_snapshot(project_id: Optional[_builtins.str] = None,
         region=pulumi.get(__ret__, 'region'),
         resource_pool_id=pulumi.get(__ret__, 'resource_pool_id'),
         snapshots=pulumi.get(__ret__, 'snapshots'))
-def get_sfs_resource_pool_snapshot_output(project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                          region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                          resource_pool_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_sfs_resource_pool_snapshot_output(project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                          region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                          resource_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSfsResourcePoolSnapshotResult]:
     """
     Resource-pool datasource schema. Must have a `region` specified in the provider configuration.

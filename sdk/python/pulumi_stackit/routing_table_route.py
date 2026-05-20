@@ -26,8 +26,8 @@ class RoutingTableRouteArgs:
                  next_hop: pulumi.Input['RoutingTableRouteNextHopArgs'],
                  organization_id: pulumi.Input[_builtins.str],
                  routing_table_id: pulumi.Input[_builtins.str],
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a RoutingTableRoute resource.
 
@@ -111,42 +111,42 @@ class RoutingTableRouteArgs:
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels are key-value string pairs which can be attached to a resource container
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource region. If not defined, the provider region is used.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _RoutingTableRouteState:
     def __init__(__self__, *,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination: Optional[pulumi.Input['RoutingTableRouteDestinationArgs']] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 network_area_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop: Optional[pulumi.Input['RoutingTableRouteNextHopArgs']] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 routing_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None):
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination: pulumi.Input[Optional['RoutingTableRouteDestinationArgs']] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 network_area_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop: pulumi.Input[Optional['RoutingTableRouteNextHopArgs']] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 routing_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering RoutingTableRoute resources.
 
@@ -184,122 +184,122 @@ class _RoutingTableRouteState:
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Date-time when the route was created.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input['RoutingTableRouteDestinationArgs']]:
+    def destination(self) -> pulumi.Input[Optional['RoutingTableRouteDestinationArgs']]:
         """
         Destination of the route.
         """
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input['RoutingTableRouteDestinationArgs']]):
+    def destination(self, value: pulumi.Input[Optional['RoutingTableRouteDestinationArgs']]):
         pulumi.set(self, "destination", value)
 
     @_builtins.property
     @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         Labels are key-value string pairs which can be attached to a resource container
         """
         return pulumi.get(self, "labels")
 
     @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="networkAreaId")
-    def network_area_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_area_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network area ID to which the routing table is associated.
         """
         return pulumi.get(self, "network_area_id")
 
     @network_area_id.setter
-    def network_area_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_area_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_area_id", value)
 
     @_builtins.property
     @pulumi.getter(name="nextHop")
-    def next_hop(self) -> Optional[pulumi.Input['RoutingTableRouteNextHopArgs']]:
+    def next_hop(self) -> pulumi.Input[Optional['RoutingTableRouteNextHopArgs']]:
         """
         Next hop destination.
         """
         return pulumi.get(self, "next_hop")
 
     @next_hop.setter
-    def next_hop(self, value: Optional[pulumi.Input['RoutingTableRouteNextHopArgs']]):
+    def next_hop(self, value: pulumi.Input[Optional['RoutingTableRouteNextHopArgs']]):
         pulumi.set(self, "next_hop", value)
 
     @_builtins.property
     @pulumi.getter(name="organizationId")
-    def organization_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def organization_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         STACKIT organization ID to which the routing table is associated.
         """
         return pulumi.get(self, "organization_id")
 
     @organization_id.setter
-    def organization_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def organization_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "organization_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource region. If not defined, the provider region is used.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="routeId")
-    def route_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def route_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the route.
         """
         return pulumi.get(self, "route_id")
 
     @route_id.setter
-    def route_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def route_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "route_id", value)
 
     @_builtins.property
     @pulumi.getter(name="routingTableId")
-    def routing_table_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def routing_table_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The routing tables ID.
         """
         return pulumi.get(self, "routing_table_id")
 
     @routing_table_id.setter
-    def routing_table_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def routing_table_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "routing_table_id", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Date-time when the route was updated.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
 
@@ -309,13 +309,13 @@ class RoutingTableRoute(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 destination: Optional[pulumi.Input[Union['RoutingTableRouteDestinationArgs', 'RoutingTableRouteDestinationArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 network_area_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop: Optional[pulumi.Input[Union['RoutingTableRouteNextHopArgs', 'RoutingTableRouteNextHopArgsDict']]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 routing_table_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 destination: pulumi.Input[Optional[Union['RoutingTableRouteDestinationArgs', 'RoutingTableRouteDestinationArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 network_area_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop: pulumi.Input[Optional[Union['RoutingTableRouteNextHopArgs', 'RoutingTableRouteNextHopArgsDict']]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 routing_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Routing table route resource schema. Must have a `region` specified in the provider configuration.
@@ -364,13 +364,13 @@ class RoutingTableRoute(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 destination: Optional[pulumi.Input[Union['RoutingTableRouteDestinationArgs', 'RoutingTableRouteDestinationArgsDict']]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 network_area_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 next_hop: Optional[pulumi.Input[Union['RoutingTableRouteNextHopArgs', 'RoutingTableRouteNextHopArgsDict']]] = None,
-                 organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 routing_table_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 destination: pulumi.Input[Optional[Union['RoutingTableRouteDestinationArgs', 'RoutingTableRouteDestinationArgsDict']]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 network_area_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 next_hop: pulumi.Input[Optional[Union['RoutingTableRouteNextHopArgs', 'RoutingTableRouteNextHopArgsDict']]] = None,
+                 organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 routing_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -410,16 +410,16 @@ class RoutingTableRoute(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            destination: Optional[pulumi.Input[Union['RoutingTableRouteDestinationArgs', 'RoutingTableRouteDestinationArgsDict']]] = None,
-            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            network_area_id: Optional[pulumi.Input[_builtins.str]] = None,
-            next_hop: Optional[pulumi.Input[Union['RoutingTableRouteNextHopArgs', 'RoutingTableRouteNextHopArgsDict']]] = None,
-            organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            route_id: Optional[pulumi.Input[_builtins.str]] = None,
-            routing_table_id: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None) -> 'RoutingTableRoute':
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            destination: pulumi.Input[Optional[Union['RoutingTableRouteDestinationArgs', 'RoutingTableRouteDestinationArgsDict']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            network_area_id: pulumi.Input[Optional[_builtins.str]] = None,
+            next_hop: pulumi.Input[Optional[Union['RoutingTableRouteNextHopArgs', 'RoutingTableRouteNextHopArgsDict']]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            route_id: pulumi.Input[Optional[_builtins.str]] = None,
+            routing_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'RoutingTableRoute':
         """
         Get an existing RoutingTableRoute resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

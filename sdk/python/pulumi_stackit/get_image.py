@@ -229,9 +229,9 @@ def get_image(image_id: Optional[_builtins.str] = None,
         protected=pulumi.get(__ret__, 'protected'),
         region=pulumi.get(__ret__, 'region'),
         scope=pulumi.get(__ret__, 'scope'))
-def get_image_output(image_id: Optional[pulumi.Input[_builtins.str]] = None,
-                     project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                     region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_image_output(image_id: pulumi.Input[Optional[_builtins.str]] = None,
+                     project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                     region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImageResult]:
     """
     Image datasource schema. Must have a `region` specified in the provider configuration.

@@ -151,9 +151,9 @@ def get_service_account_federated_identity_provider(federation_id: Optional[_bui
         name=pulumi.get(__ret__, 'name'),
         project_id=pulumi.get(__ret__, 'project_id'),
         service_account_email=pulumi.get(__ret__, 'service_account_email'))
-def get_service_account_federated_identity_provider_output(federation_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                                           project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                                           service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
+def get_service_account_federated_identity_provider_output(federation_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                                           project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                                           service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
                                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceAccountFederatedIdentityProviderResult]:
     """
     Service account federated identity provider schema.

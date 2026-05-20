@@ -99,23 +99,23 @@ export interface ObjectstorageCredentialsGroupState {
     /**
      * The credentials group ID
      */
-    credentialsGroupId?: pulumi.Input<string>;
+    credentialsGroupId?: pulumi.Input<string | undefined>;
     /**
      * The credentials group's display name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Project ID to which the credentials group is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Credentials group uniform resource name (URN)
      */
-    stackitUrn?: pulumi.Input<string>;
+    stackitUrn?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -125,7 +125,7 @@ export interface ObjectstorageCredentialsGroupArgs {
     /**
      * The credentials group's display name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Project ID to which the credentials group is associated.
      */
@@ -133,5 +133,5 @@ export interface ObjectstorageCredentialsGroupArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

@@ -115,27 +115,27 @@ export interface AlbCertificateState {
     /**
      * The ID of the certificate.
      */
-    certId?: pulumi.Input<string>;
+    certId?: pulumi.Input<string | undefined>;
     /**
      * Certificate name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The PEM encoded private key part
      */
-    privateKey?: pulumi.Input<string>;
+    privateKey?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the certificate is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The PEM encoded public key part
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
     /**
      * The resource region (e.g. eu01). If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -145,7 +145,7 @@ export interface AlbCertificateArgs {
     /**
      * Certificate name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The PEM encoded private key part
      */
@@ -161,5 +161,5 @@ export interface AlbCertificateArgs {
     /**
      * The resource region (e.g. eu01). If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

@@ -219,8 +219,8 @@ def get_network_area(network_area_id: Optional[_builtins.str] = None,
         organization_id=pulumi.get(__ret__, 'organization_id'),
         project_count=pulumi.get(__ret__, 'project_count'),
         transfer_network=pulumi.get(__ret__, 'transfer_network'))
-def get_network_area_output(network_area_id: Optional[pulumi.Input[_builtins.str]] = None,
-                            organization_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_network_area_output(network_area_id: pulumi.Input[Optional[_builtins.str]] = None,
+                            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkAreaResult]:
     """
     Network area datasource schema. Must have a `region` specified in the provider configuration.

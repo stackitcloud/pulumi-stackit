@@ -108,5 +108,5 @@ export interface GetPostgresflexDatabaseOutputArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

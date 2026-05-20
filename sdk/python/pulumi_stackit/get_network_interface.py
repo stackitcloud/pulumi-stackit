@@ -244,10 +244,10 @@ def get_network_interface(network_id: Optional[_builtins.str] = None,
         security=pulumi.get(__ret__, 'security'),
         security_group_ids=pulumi.get(__ret__, 'security_group_ids'),
         type=pulumi.get(__ret__, 'type'))
-def get_network_interface_output(network_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                 network_interface_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                 region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_network_interface_output(network_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                 network_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                 region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkInterfaceResult]:
     """
     Network interface datasource schema. Must have a `region` specified in the provider configuration.

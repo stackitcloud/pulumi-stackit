@@ -150,9 +150,9 @@ def get_affinity_group(affinity_group_id: Optional[_builtins.str] = None,
         policy=pulumi.get(__ret__, 'policy'),
         project_id=pulumi.get(__ret__, 'project_id'),
         region=pulumi.get(__ret__, 'region'))
-def get_affinity_group_output(affinity_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                              project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                              region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_affinity_group_output(affinity_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                              project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                              region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAffinityGroupResult]:
     """
     Affinity Group schema. Must have a `region` specified in the provider configuration.

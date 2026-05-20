@@ -167,10 +167,10 @@ def get_postgresflex_user(instance_id: Optional[_builtins.str] = None,
         roles=pulumi.get(__ret__, 'roles'),
         user_id=pulumi.get(__ret__, 'user_id'),
         username=pulumi.get(__ret__, 'username'))
-def get_postgresflex_user_output(instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                 region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_postgresflex_user_output(instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                 region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresflexUserResult]:
     """
     Postgres Flex user data source schema. Must have a `region` specified in the provider configuration.

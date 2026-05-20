@@ -71,6 +71,11 @@ func GetIaasCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:iaasCustomEndpoint")
 }
 
+// Custom endpoint for the Intake service
+func GetIntakeCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "stackit:intakeCustomEndpoint")
+}
+
 // Custom endpoint for the KMS service
 func GetKmsCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:kmsCustomEndpoint")

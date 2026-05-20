@@ -117,31 +117,31 @@ export interface ServiceAccountKeyState {
     /**
      * The raw JSON representation of the service account key json, available for direct use.
      */
-    json?: pulumi.Input<string>;
+    json?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier for the key associated with the service account.
      */
-    keyId?: pulumi.Input<string>;
+    keyId?: pulumi.Input<string | undefined>;
     /**
      * The STACKIT project ID associated with the service account key.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Specifies the public*key (RSA2048 key-pair). If not provided, a certificate from STACKIT will be used to generate a private*key.
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
     /**
      * A map of arbitrary key/value pairs designed to force key recreation when they change, facilitating key rotation based on external factors such as a changing timestamp. Modifying this map triggers the creation of a new resource.
      */
-    rotateWhenChanged?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    rotateWhenChanged?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The email address associated with the service account, used for account identification and communication.
      */
-    serviceAccountEmail?: pulumi.Input<string>;
+    serviceAccountEmail?: pulumi.Input<string | undefined>;
     /**
      * Specifies the key's validity duration in days. If left unspecified, the key is considered valid until it is deleted
      */
-    ttlDays?: pulumi.Input<number>;
+    ttlDays?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -155,11 +155,11 @@ export interface ServiceAccountKeyArgs {
     /**
      * Specifies the public*key (RSA2048 key-pair). If not provided, a certificate from STACKIT will be used to generate a private*key.
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
     /**
      * A map of arbitrary key/value pairs designed to force key recreation when they change, facilitating key rotation based on external factors such as a changing timestamp. Modifying this map triggers the creation of a new resource.
      */
-    rotateWhenChanged?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    rotateWhenChanged?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The email address associated with the service account, used for account identification and communication.
      */
@@ -167,5 +167,5 @@ export interface ServiceAccountKeyArgs {
     /**
      * Specifies the key's validity duration in days. If left unspecified, the key is considered valid until it is deleted
      */
-    ttlDays?: pulumi.Input<number>;
+    ttlDays?: pulumi.Input<number | undefined>;
 }

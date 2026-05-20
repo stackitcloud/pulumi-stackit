@@ -149,51 +149,51 @@ export interface SecurityGroupRuleState {
     /**
      * The rule description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The direction of the traffic which the rule should match. Some of the possible values are: Possible values are: `ingress`, `egress`.
      */
-    direction?: pulumi.Input<string>;
+    direction?: pulumi.Input<string | undefined>;
     /**
      * The ethertype which the rule should match.
      */
-    etherType?: pulumi.Input<string>;
+    etherType?: pulumi.Input<string | undefined>;
     /**
      * ICMP Parameters. These parameters should only be provided if the protocol is ICMP.
      */
-    icmpParameters?: pulumi.Input<inputs.SecurityGroupRuleIcmpParameters>;
+    icmpParameters?: pulumi.Input<inputs.SecurityGroupRuleIcmpParameters | undefined>;
     /**
      * The remote IP range which the rule should match.
      */
-    ipRange?: pulumi.Input<string>;
+    ipRange?: pulumi.Input<string | undefined>;
     /**
      * The range of ports. This should only be provided if the protocol is not ICMP.
      */
-    portRange?: pulumi.Input<inputs.SecurityGroupRulePortRange>;
+    portRange?: pulumi.Input<inputs.SecurityGroupRulePortRange | undefined>;
     /**
      * STACKIT project ID to which the security group rule is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The internet protocol which the rule should match.
      */
-    protocol?: pulumi.Input<inputs.SecurityGroupRuleProtocol>;
+    protocol?: pulumi.Input<inputs.SecurityGroupRuleProtocol | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The remote security group which the rule should match.
      */
-    remoteSecurityGroupId?: pulumi.Input<string>;
+    remoteSecurityGroupId?: pulumi.Input<string | undefined>;
     /**
      * The security group ID.
      */
-    securityGroupId?: pulumi.Input<string>;
+    securityGroupId?: pulumi.Input<string | undefined>;
     /**
      * The security group rule ID.
      */
-    securityGroupRuleId?: pulumi.Input<string>;
+    securityGroupRuleId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -203,7 +203,7 @@ export interface SecurityGroupRuleArgs {
     /**
      * The rule description.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The direction of the traffic which the rule should match. Some of the possible values are: Possible values are: `ingress`, `egress`.
      */
@@ -211,19 +211,19 @@ export interface SecurityGroupRuleArgs {
     /**
      * The ethertype which the rule should match.
      */
-    etherType?: pulumi.Input<string>;
+    etherType?: pulumi.Input<string | undefined>;
     /**
      * ICMP Parameters. These parameters should only be provided if the protocol is ICMP.
      */
-    icmpParameters?: pulumi.Input<inputs.SecurityGroupRuleIcmpParameters>;
+    icmpParameters?: pulumi.Input<inputs.SecurityGroupRuleIcmpParameters | undefined>;
     /**
      * The remote IP range which the rule should match.
      */
-    ipRange?: pulumi.Input<string>;
+    ipRange?: pulumi.Input<string | undefined>;
     /**
      * The range of ports. This should only be provided if the protocol is not ICMP.
      */
-    portRange?: pulumi.Input<inputs.SecurityGroupRulePortRange>;
+    portRange?: pulumi.Input<inputs.SecurityGroupRulePortRange | undefined>;
     /**
      * STACKIT project ID to which the security group rule is associated.
      */
@@ -231,15 +231,15 @@ export interface SecurityGroupRuleArgs {
     /**
      * The internet protocol which the rule should match.
      */
-    protocol?: pulumi.Input<inputs.SecurityGroupRuleProtocol>;
+    protocol?: pulumi.Input<inputs.SecurityGroupRuleProtocol | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The remote security group which the rule should match.
      */
-    remoteSecurityGroupId?: pulumi.Input<string>;
+    remoteSecurityGroupId?: pulumi.Input<string | undefined>;
     /**
      * The security group ID.
      */

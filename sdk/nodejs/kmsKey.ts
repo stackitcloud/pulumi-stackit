@@ -152,47 +152,47 @@ export interface KmsKeyState {
     /**
      * The access scope of the key. Default is `PUBLIC`. Possible values are: `PUBLIC`, `SNA`.
      */
-    accessScope?: pulumi.Input<string>;
+    accessScope?: pulumi.Input<string | undefined>;
     /**
      * The encryption algorithm that the key will use to encrypt data. Possible values are: `aes256Gcm`, `rsa2048OaepSha256`, `rsa3072OaepSha256`, `rsa4096OaepSha256`, `rsa4096OaepSha512`, `hmacSha256`, `hmacSha384`, `hmacSha512`, `ecdsaP256Sha256`, `ecdsaP384Sha384`, `ecdsaP521Sha512`.
      */
-    algorithm?: pulumi.Input<string>;
+    algorithm?: pulumi.Input<string | undefined>;
     /**
      * A user chosen description to distinguish multiple keys
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name to distinguish multiple keys
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * States whether versions can be created or only imported.
      */
-    importOnly?: pulumi.Input<boolean>;
+    importOnly?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the key
      */
-    keyId?: pulumi.Input<string>;
+    keyId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the associated keyring
      */
-    keyringId?: pulumi.Input<string>;
+    keyringId?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the key is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The underlying system that is responsible for protecting the key material. Possible values are: `software`.
      */
-    protection?: pulumi.Input<string>;
+    protection?: pulumi.Input<string | undefined>;
     /**
      * The purpose for which the key will be used. Possible values are: `symmetricEncryptDecrypt`, `asymmetricEncryptDecrypt`, `messageAuthenticationCode`, `asymmetricSignVerify`.
      */
-    purpose?: pulumi.Input<string>;
+    purpose?: pulumi.Input<string | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -202,7 +202,7 @@ export interface KmsKeyArgs {
     /**
      * The access scope of the key. Default is `PUBLIC`. Possible values are: `PUBLIC`, `SNA`.
      */
-    accessScope?: pulumi.Input<string>;
+    accessScope?: pulumi.Input<string | undefined>;
     /**
      * The encryption algorithm that the key will use to encrypt data. Possible values are: `aes256Gcm`, `rsa2048OaepSha256`, `rsa3072OaepSha256`, `rsa4096OaepSha256`, `rsa4096OaepSha512`, `hmacSha256`, `hmacSha384`, `hmacSha512`, `ecdsaP256Sha256`, `ecdsaP384Sha384`, `ecdsaP521Sha512`.
      */
@@ -210,7 +210,7 @@ export interface KmsKeyArgs {
     /**
      * A user chosen description to distinguish multiple keys
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name to distinguish multiple keys
      */
@@ -218,7 +218,7 @@ export interface KmsKeyArgs {
     /**
      * States whether versions can be created or only imported.
      */
-    importOnly?: pulumi.Input<boolean>;
+    importOnly?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the associated keyring
      */
@@ -238,5 +238,5 @@ export interface KmsKeyArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

@@ -110,29 +110,29 @@ export class ObjectstorageCredential extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ObjectstorageCredential resources.
  */
 export interface ObjectstorageCredentialState {
-    accessKey?: pulumi.Input<string>;
+    accessKey?: pulumi.Input<string | undefined>;
     /**
      * The credential ID.
      */
-    credentialId?: pulumi.Input<string>;
+    credentialId?: pulumi.Input<string | undefined>;
     /**
      * The credential group ID.
      */
-    credentialsGroupId?: pulumi.Input<string>;
+    credentialsGroupId?: pulumi.Input<string | undefined>;
     /**
      * Expiration timestamp, in RFC339 format without fractional seconds. Example: "2025-01-01T00:00:00Z". If not set, the credential never expires.
      */
-    expirationTimestamp?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
+    expirationTimestamp?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * STACKIT Project ID to which the credential group is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
-    secretAccessKey?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
+    secretAccessKey?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -146,7 +146,7 @@ export interface ObjectstorageCredentialArgs {
     /**
      * Expiration timestamp, in RFC339 format without fractional seconds. Example: "2025-01-01T00:00:00Z". If not set, the credential never expires.
      */
-    expirationTimestamp?: pulumi.Input<string>;
+    expirationTimestamp?: pulumi.Input<string | undefined>;
     /**
      * STACKIT Project ID to which the credential group is associated.
      */
@@ -154,5 +154,5 @@ export interface ObjectstorageCredentialArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

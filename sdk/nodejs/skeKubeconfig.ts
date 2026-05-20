@@ -134,43 +134,43 @@ export interface SkeKubeconfigState {
     /**
      * Name of the SKE cluster.
      */
-    clusterName?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string | undefined>;
     /**
      * Date-time when the kubeconfig was created
      */
-    creationTime?: pulumi.Input<string>;
+    creationTime?: pulumi.Input<string | undefined>;
     /**
      * Expiration time of the kubeconfig, in seconds. Defaults to `3600`
      */
-    expiration?: pulumi.Input<number>;
+    expiration?: pulumi.Input<number | undefined>;
     /**
      * Timestamp when the kubeconfig expires
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * Raw short-lived admin kubeconfig.
      */
-    kubeConfig?: pulumi.Input<string>;
+    kubeConfig?: pulumi.Input<string | undefined>;
     /**
      * Internally generated UUID to identify a kubeconfig resource in Terraform, since the SKE API doesnt return a kubeconfig identifier
      */
-    kubeConfigId?: pulumi.Input<string>;
+    kubeConfigId?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the cluster is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * If set to true, the provider will check if the kubeconfig has expired and will generated a new valid one in-place
      */
-    refresh?: pulumi.Input<boolean>;
+    refresh?: pulumi.Input<boolean | undefined>;
     /**
      * Number of seconds before expiration to trigger refresh of the kubeconfig at. Only used if refresh is set to true.
      */
-    refreshBefore?: pulumi.Input<number>;
+    refreshBefore?: pulumi.Input<number | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -184,7 +184,7 @@ export interface SkeKubeconfigArgs {
     /**
      * Expiration time of the kubeconfig, in seconds. Defaults to `3600`
      */
-    expiration?: pulumi.Input<number>;
+    expiration?: pulumi.Input<number | undefined>;
     /**
      * STACKIT project ID to which the cluster is associated.
      */
@@ -192,13 +192,13 @@ export interface SkeKubeconfigArgs {
     /**
      * If set to true, the provider will check if the kubeconfig has expired and will generated a new valid one in-place
      */
-    refresh?: pulumi.Input<boolean>;
+    refresh?: pulumi.Input<boolean | undefined>;
     /**
      * Number of seconds before expiration to trigger refresh of the kubeconfig at. Only used if refresh is set to true.
      */
-    refreshBefore?: pulumi.Input<number>;
+    refreshBefore?: pulumi.Input<number | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

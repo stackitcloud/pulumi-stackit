@@ -140,47 +140,47 @@ export interface RoutingTableState {
     /**
      * Date-time when the routing table was created
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Description of the routing table.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * This controls whether dynamic routes are propagated to this routing table
      */
-    dynamicRoutes?: pulumi.Input<boolean>;
+    dynamicRoutes?: pulumi.Input<boolean | undefined>;
     /**
      * Labels are key-value string pairs which can be attached to a resource container
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the routing table.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The network area ID to which the routing table is associated.
      */
-    networkAreaId?: pulumi.Input<string>;
+    networkAreaId?: pulumi.Input<string | undefined>;
     /**
      * STACKIT organization ID to which the routing table is associated.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The routing tables ID.
      */
-    routingTableId?: pulumi.Input<string>;
+    routingTableId?: pulumi.Input<string | undefined>;
     /**
      * This controls whether the routes for project-to-project communication are created automatically or not.
      */
-    systemRoutes?: pulumi.Input<boolean>;
+    systemRoutes?: pulumi.Input<boolean | undefined>;
     /**
      * Date-time when the routing table was updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -190,19 +190,19 @@ export interface RoutingTableArgs {
     /**
      * Description of the routing table.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * This controls whether dynamic routes are propagated to this routing table
      */
-    dynamicRoutes?: pulumi.Input<boolean>;
+    dynamicRoutes?: pulumi.Input<boolean | undefined>;
     /**
      * Labels are key-value string pairs which can be attached to a resource container
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the routing table.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The network area ID to which the routing table is associated.
      */
@@ -214,9 +214,9 @@ export interface RoutingTableArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * This controls whether the routes for project-to-project communication are created automatically or not.
      */
-    systemRoutes?: pulumi.Input<boolean>;
+    systemRoutes?: pulumi.Input<boolean | undefined>;
 }

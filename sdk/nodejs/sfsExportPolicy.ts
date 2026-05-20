@@ -100,20 +100,20 @@ export interface SfsExportPolicyState {
     /**
      * Name of the export policy.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Export policy ID
      */
-    policyId?: pulumi.Input<string>;
+    policyId?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the export policy is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
-    rules?: pulumi.Input<pulumi.Input<inputs.SfsExportPolicyRule>[]>;
+    region?: pulumi.Input<string | undefined>;
+    rules?: pulumi.Input<pulumi.Input<inputs.SfsExportPolicyRule>[] | undefined>;
 }
 
 /**
@@ -123,7 +123,7 @@ export interface SfsExportPolicyArgs {
     /**
      * Name of the export policy.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the export policy is associated.
      */
@@ -131,6 +131,6 @@ export interface SfsExportPolicyArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
-    rules?: pulumi.Input<pulumi.Input<inputs.SfsExportPolicyRule>[]>;
+    region?: pulumi.Input<string | undefined>;
+    rules?: pulumi.Input<pulumi.Input<inputs.SfsExportPolicyRule>[] | undefined>;
 }

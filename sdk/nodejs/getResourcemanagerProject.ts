@@ -90,9 +90,9 @@ export interface GetResourcemanagerProjectOutputArgs {
     /**
      * Project container ID. Globally unique, user-friendly identifier.
      */
-    containerId?: pulumi.Input<string>;
+    containerId?: pulumi.Input<string | undefined>;
     /**
      * Project UUID identifier. This is the ID that can be used in most of the other resources to identify the project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }

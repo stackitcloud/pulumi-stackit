@@ -200,85 +200,85 @@ export interface DnsZoneState {
     /**
      * The access control list. E.g. `0.0.0.0/0,::/0`
      */
-    acl?: pulumi.Input<string>;
-    active?: pulumi.Input<boolean>;
+    acl?: pulumi.Input<string | undefined>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * A contact e-mail for the zone.
      */
-    contactEmail?: pulumi.Input<string>;
+    contactEmail?: pulumi.Input<string | undefined>;
     /**
      * Default time to live. E.g. 3600.
      */
-    defaultTtl?: pulumi.Input<number>;
+    defaultTtl?: pulumi.Input<number | undefined>;
     /**
      * Description of the zone.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The zone name. E.g. `example.com`
      */
-    dnsName?: pulumi.Input<string>;
+    dnsName?: pulumi.Input<string | undefined>;
     /**
      * Expire time. E.g. 1209600.
      */
-    expireTime?: pulumi.Input<number>;
+    expireTime?: pulumi.Input<number | undefined>;
     /**
      * Specifies, if the zone is a reverse zone or not. Defaults to `false`
      */
-    isReverseZone?: pulumi.Input<boolean>;
+    isReverseZone?: pulumi.Input<boolean | undefined>;
     /**
      * The user given name of the zone.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Negative caching. E.g. 60
      */
-    negativeCache?: pulumi.Input<number>;
+    negativeCache?: pulumi.Input<number | undefined>;
     /**
      * Primary name server for secondary zone. E.g. ["1.2.3.4"]
      */
-    primaries?: pulumi.Input<pulumi.Input<string>[]>;
+    primaries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Primary name server. FQDN.
      */
-    primaryNameServer?: pulumi.Input<string>;
+    primaryNameServer?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the dns zone is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Record count how many records are in the zone.
      */
-    recordCount?: pulumi.Input<number>;
+    recordCount?: pulumi.Input<number | undefined>;
     /**
      * Refresh time. E.g. 3600
      */
-    refreshTime?: pulumi.Input<number>;
+    refreshTime?: pulumi.Input<number | undefined>;
     /**
      * Retry time. E.g. 600
      */
-    retryTime?: pulumi.Input<number>;
+    retryTime?: pulumi.Input<number | undefined>;
     /**
      * Serial number. E.g. `2022111400`.
      */
-    serialNumber?: pulumi.Input<number>;
+    serialNumber?: pulumi.Input<number | undefined>;
     /**
      * Zone state. E.g. `CREATE_SUCCEEDED`.
      */
-    state?: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.DnsZoneTimeouts>;
+    state?: pulumi.Input<string | undefined>;
+    timeouts?: pulumi.Input<inputs.DnsZoneTimeouts | undefined>;
     /**
      * Zone type. Defaults to `primary`. Possible values are: `primary`, `secondary`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * Visibility of the zone. E.g. `public`.
      */
-    visibility?: pulumi.Input<string>;
+    visibility?: pulumi.Input<string | undefined>;
     /**
      * The zone ID.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -288,20 +288,20 @@ export interface DnsZoneArgs {
     /**
      * The access control list. E.g. `0.0.0.0/0,::/0`
      */
-    acl?: pulumi.Input<string>;
-    active?: pulumi.Input<boolean>;
+    acl?: pulumi.Input<string | undefined>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * A contact e-mail for the zone.
      */
-    contactEmail?: pulumi.Input<string>;
+    contactEmail?: pulumi.Input<string | undefined>;
     /**
      * Default time to live. E.g. 3600.
      */
-    defaultTtl?: pulumi.Input<number>;
+    defaultTtl?: pulumi.Input<number | undefined>;
     /**
      * Description of the zone.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The zone name. E.g. `example.com`
      */
@@ -309,23 +309,23 @@ export interface DnsZoneArgs {
     /**
      * Expire time. E.g. 1209600.
      */
-    expireTime?: pulumi.Input<number>;
+    expireTime?: pulumi.Input<number | undefined>;
     /**
      * Specifies, if the zone is a reverse zone or not. Defaults to `false`
      */
-    isReverseZone?: pulumi.Input<boolean>;
+    isReverseZone?: pulumi.Input<boolean | undefined>;
     /**
      * The user given name of the zone.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Negative caching. E.g. 60
      */
-    negativeCache?: pulumi.Input<number>;
+    negativeCache?: pulumi.Input<number | undefined>;
     /**
      * Primary name server for secondary zone. E.g. ["1.2.3.4"]
      */
-    primaries?: pulumi.Input<pulumi.Input<string>[]>;
+    primaries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * STACKIT project ID to which the dns zone is associated.
      */
@@ -333,14 +333,14 @@ export interface DnsZoneArgs {
     /**
      * Refresh time. E.g. 3600
      */
-    refreshTime?: pulumi.Input<number>;
+    refreshTime?: pulumi.Input<number | undefined>;
     /**
      * Retry time. E.g. 600
      */
-    retryTime?: pulumi.Input<number>;
-    timeouts?: pulumi.Input<inputs.DnsZoneTimeouts>;
+    retryTime?: pulumi.Input<number | undefined>;
+    timeouts?: pulumi.Input<inputs.DnsZoneTimeouts | undefined>;
     /**
      * Zone type. Defaults to `primary`. Possible values are: `primary`, `secondary`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

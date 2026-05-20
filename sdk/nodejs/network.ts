@@ -198,87 +198,87 @@ export interface NetworkState {
     /**
      * If the network has DHCP enabled. Default value is `true`.
      */
-    dhcp?: pulumi.Input<boolean>;
+    dhcp?: pulumi.Input<boolean | undefined>;
     /**
      * The IPv4 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
      */
-    ipv4Gateway?: pulumi.Input<string>;
+    ipv4Gateway?: pulumi.Input<string | undefined>;
     /**
      * The IPv4 nameservers of the network. If not specified on creation, it will be set with the default nameservers from the network area. If not specified on update, it will remain unchanged.
      */
-    ipv4Nameservers?: pulumi.Input<pulumi.Input<string>[]>;
+    ipv4Nameservers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The IPv4 prefix of the network (CIDR).
      */
-    ipv4Prefix?: pulumi.Input<string>;
+    ipv4Prefix?: pulumi.Input<string | undefined>;
     /**
      * The IPv4 prefix length of the network.
      */
-    ipv4PrefixLength?: pulumi.Input<number>;
+    ipv4PrefixLength?: pulumi.Input<number | undefined>;
     /**
      * The IPv4 prefixes of the network.
      */
-    ipv4Prefixes?: pulumi.Input<pulumi.Input<string>[]>;
+    ipv4Prefixes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The IPv6 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
      */
-    ipv6Gateway?: pulumi.Input<string>;
+    ipv6Gateway?: pulumi.Input<string | undefined>;
     /**
      * The IPv6 nameservers of the network.
      */
-    ipv6Nameservers?: pulumi.Input<pulumi.Input<string>[]>;
+    ipv6Nameservers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The IPv6 prefix of the network (CIDR).
      */
-    ipv6Prefix?: pulumi.Input<string>;
+    ipv6Prefix?: pulumi.Input<string | undefined>;
     /**
      * The IPv6 prefix length of the network.
      */
-    ipv6PrefixLength?: pulumi.Input<number>;
+    ipv6PrefixLength?: pulumi.Input<number | undefined>;
     /**
      * The IPv6 prefixes of the network.
      */
-    ipv6Prefixes?: pulumi.Input<pulumi.Input<string>[]>;
+    ipv6Prefixes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Labels are key-value string pairs which can be attached to a resource container
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the network.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The network ID.
      */
-    networkId?: pulumi.Input<string>;
+    networkId?: pulumi.Input<string | undefined>;
     /**
      * If set to `true`, the network doesn't have a gateway.
      */
-    noIpv4Gateway?: pulumi.Input<boolean>;
+    noIpv4Gateway?: pulumi.Input<boolean | undefined>;
     /**
      * If set to `true`, the network doesn't have a gateway.
      */
-    noIpv6Gateway?: pulumi.Input<boolean>;
+    noIpv6Gateway?: pulumi.Input<boolean | undefined>;
     /**
      * STACKIT project ID to which the network is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The public IP of the network.
      */
-    publicIp?: pulumi.Input<string>;
+    publicIp?: pulumi.Input<string | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * If set to `true`, the network is routed and therefore accessible from other networks.
      */
-    routed?: pulumi.Input<boolean>;
+    routed?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the routing table associated with the network.
      */
-    routingTableId?: pulumi.Input<string>;
+    routingTableId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -288,55 +288,55 @@ export interface NetworkArgs {
     /**
      * If the network has DHCP enabled. Default value is `true`.
      */
-    dhcp?: pulumi.Input<boolean>;
+    dhcp?: pulumi.Input<boolean | undefined>;
     /**
      * The IPv4 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
      */
-    ipv4Gateway?: pulumi.Input<string>;
+    ipv4Gateway?: pulumi.Input<string | undefined>;
     /**
      * The IPv4 nameservers of the network. If not specified on creation, it will be set with the default nameservers from the network area. If not specified on update, it will remain unchanged.
      */
-    ipv4Nameservers?: pulumi.Input<pulumi.Input<string>[]>;
+    ipv4Nameservers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The IPv4 prefix of the network (CIDR).
      */
-    ipv4Prefix?: pulumi.Input<string>;
+    ipv4Prefix?: pulumi.Input<string | undefined>;
     /**
      * The IPv4 prefix length of the network.
      */
-    ipv4PrefixLength?: pulumi.Input<number>;
+    ipv4PrefixLength?: pulumi.Input<number | undefined>;
     /**
      * The IPv6 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
      */
-    ipv6Gateway?: pulumi.Input<string>;
+    ipv6Gateway?: pulumi.Input<string | undefined>;
     /**
      * The IPv6 nameservers of the network.
      */
-    ipv6Nameservers?: pulumi.Input<pulumi.Input<string>[]>;
+    ipv6Nameservers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The IPv6 prefix of the network (CIDR).
      */
-    ipv6Prefix?: pulumi.Input<string>;
+    ipv6Prefix?: pulumi.Input<string | undefined>;
     /**
      * The IPv6 prefix length of the network.
      */
-    ipv6PrefixLength?: pulumi.Input<number>;
+    ipv6PrefixLength?: pulumi.Input<number | undefined>;
     /**
      * Labels are key-value string pairs which can be attached to a resource container
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the network.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * If set to `true`, the network doesn't have a gateway.
      */
-    noIpv4Gateway?: pulumi.Input<boolean>;
+    noIpv4Gateway?: pulumi.Input<boolean | undefined>;
     /**
      * If set to `true`, the network doesn't have a gateway.
      */
-    noIpv6Gateway?: pulumi.Input<boolean>;
+    noIpv6Gateway?: pulumi.Input<boolean | undefined>;
     /**
      * STACKIT project ID to which the network is associated.
      */
@@ -344,13 +344,13 @@ export interface NetworkArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * If set to `true`, the network is routed and therefore accessible from other networks.
      */
-    routed?: pulumi.Input<boolean>;
+    routed?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the routing table associated with the network.
      */
-    routingTableId?: pulumi.Input<string>;
+    routingTableId?: pulumi.Input<string | undefined>;
 }

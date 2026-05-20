@@ -21,10 +21,10 @@ class SkeKubeconfigArgs:
     def __init__(__self__, *,
                  cluster_name: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
-                 expiration: Optional[pulumi.Input[_builtins.int]] = None,
-                 refresh: Optional[pulumi.Input[_builtins.bool]] = None,
-                 refresh_before: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 expiration: pulumi.Input[Optional[_builtins.int]] = None,
+                 refresh: pulumi.Input[Optional[_builtins.bool]] = None,
+                 refresh_before: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SkeKubeconfig resource.
 
@@ -72,66 +72,66 @@ class SkeKubeconfigArgs:
 
     @_builtins.property
     @pulumi.getter
-    def expiration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def expiration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Expiration time of the kubeconfig, in seconds. Defaults to `3600`
         """
         return pulumi.get(self, "expiration")
 
     @expiration.setter
-    def expiration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def expiration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "expiration", value)
 
     @_builtins.property
     @pulumi.getter
-    def refresh(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def refresh(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, the provider will check if the kubeconfig has expired and will generated a new valid one in-place
         """
         return pulumi.get(self, "refresh")
 
     @refresh.setter
-    def refresh(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def refresh(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "refresh", value)
 
     @_builtins.property
     @pulumi.getter(name="refreshBefore")
-    def refresh_before(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def refresh_before(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of seconds before expiration to trigger refresh of the kubeconfig at. Only used if refresh is set to true.
         """
         return pulumi.get(self, "refresh_before")
 
     @refresh_before.setter
-    def refresh_before(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def refresh_before(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "refresh_before", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource region. If not defined, the provider region is used.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _SkeKubeconfigState:
     def __init__(__self__, *,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 creation_time: Optional[pulumi.Input[_builtins.str]] = None,
-                 expiration: Optional[pulumi.Input[_builtins.int]] = None,
-                 expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 kube_config: Optional[pulumi.Input[_builtins.str]] = None,
-                 kube_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 refresh: Optional[pulumi.Input[_builtins.bool]] = None,
-                 refresh_before: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 creation_time: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiration: pulumi.Input[Optional[_builtins.int]] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 kube_config: pulumi.Input[Optional[_builtins.str]] = None,
+                 kube_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 refresh: pulumi.Input[Optional[_builtins.bool]] = None,
+                 refresh_before: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SkeKubeconfig resources.
 
@@ -169,122 +169,122 @@ class _SkeKubeconfigState:
 
     @_builtins.property
     @pulumi.getter(name="clusterName")
-    def cluster_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the SKE cluster.
         """
         return pulumi.get(self, "cluster_name")
 
     @cluster_name.setter
-    def cluster_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_name", value)
 
     @_builtins.property
     @pulumi.getter(name="creationTime")
-    def creation_time(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def creation_time(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Date-time when the kubeconfig was created
         """
         return pulumi.get(self, "creation_time")
 
     @creation_time.setter
-    def creation_time(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def creation_time(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "creation_time", value)
 
     @_builtins.property
     @pulumi.getter
-    def expiration(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def expiration(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Expiration time of the kubeconfig, in seconds. Defaults to `3600`
         """
         return pulumi.get(self, "expiration")
 
     @expiration.setter
-    def expiration(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def expiration(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "expiration", value)
 
     @_builtins.property
     @pulumi.getter(name="expiresAt")
-    def expires_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expires_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp when the kubeconfig expires
         """
         return pulumi.get(self, "expires_at")
 
     @expires_at.setter
-    def expires_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expires_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expires_at", value)
 
     @_builtins.property
     @pulumi.getter(name="kubeConfig")
-    def kube_config(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kube_config(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Raw short-lived admin kubeconfig.
         """
         return pulumi.get(self, "kube_config")
 
     @kube_config.setter
-    def kube_config(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kube_config(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kube_config", value)
 
     @_builtins.property
     @pulumi.getter(name="kubeConfigId")
-    def kube_config_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kube_config_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Internally generated UUID to identify a kubeconfig resource in Terraform, since the SKE API doesnt return a kubeconfig identifier
         """
         return pulumi.get(self, "kube_config_id")
 
     @kube_config_id.setter
-    def kube_config_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kube_config_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kube_config_id", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         STACKIT project ID to which the cluster is associated.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def refresh(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def refresh(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         If set to true, the provider will check if the kubeconfig has expired and will generated a new valid one in-place
         """
         return pulumi.get(self, "refresh")
 
     @refresh.setter
-    def refresh(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def refresh(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "refresh", value)
 
     @_builtins.property
     @pulumi.getter(name="refreshBefore")
-    def refresh_before(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def refresh_before(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of seconds before expiration to trigger refresh of the kubeconfig at. Only used if refresh is set to true.
         """
         return pulumi.get(self, "refresh_before")
 
     @refresh_before.setter
-    def refresh_before(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def refresh_before(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "refresh_before", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource region. If not defined, the provider region is used.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
@@ -294,12 +294,12 @@ class SkeKubeconfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 expiration: Optional[pulumi.Input[_builtins.int]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 refresh: Optional[pulumi.Input[_builtins.bool]] = None,
-                 refresh_before: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiration: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 refresh: pulumi.Input[Optional[_builtins.bool]] = None,
+                 refresh_before: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         SKE kubeconfig resource schema. Must have a `region` specified in the provider configuration.
@@ -343,12 +343,12 @@ class SkeKubeconfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 expiration: Optional[pulumi.Input[_builtins.int]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 refresh: Optional[pulumi.Input[_builtins.bool]] = None,
-                 refresh_before: Optional[pulumi.Input[_builtins.int]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 expiration: pulumi.Input[Optional[_builtins.int]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 refresh: pulumi.Input[Optional[_builtins.bool]] = None,
+                 refresh_before: pulumi.Input[Optional[_builtins.int]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -384,16 +384,16 @@ class SkeKubeconfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster_name: Optional[pulumi.Input[_builtins.str]] = None,
-            creation_time: Optional[pulumi.Input[_builtins.str]] = None,
-            expiration: Optional[pulumi.Input[_builtins.int]] = None,
-            expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-            kube_config: Optional[pulumi.Input[_builtins.str]] = None,
-            kube_config_id: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            refresh: Optional[pulumi.Input[_builtins.bool]] = None,
-            refresh_before: Optional[pulumi.Input[_builtins.int]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None) -> 'SkeKubeconfig':
+            cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_time: pulumi.Input[Optional[_builtins.str]] = None,
+            expiration: pulumi.Input[Optional[_builtins.int]] = None,
+            expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+            kube_config: pulumi.Input[Optional[_builtins.str]] = None,
+            kube_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            refresh: pulumi.Input[Optional[_builtins.bool]] = None,
+            refresh_before: pulumi.Input[Optional[_builtins.int]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> 'SkeKubeconfig':
         """
         Get an existing SkeKubeconfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

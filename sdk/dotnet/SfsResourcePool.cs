@@ -68,6 +68,12 @@ namespace Pulumi.Stackit
         public Output<int> SizeGigabytes { get; private set; } = null!;
 
         /// <summary>
+        /// Name of the snapshot policy.
+        /// </summary>
+        [Output("snapshotPolicy")]
+        public Output<Outputs.SfsResourcePoolSnapshotPolicy?> SnapshotPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// If set to true, snapshots are visible and accessible to users. (default: false)
         /// </summary>
         [Output("snapshotsAreVisible")]
@@ -169,6 +175,12 @@ namespace Pulumi.Stackit
         public Input<int> SizeGigabytes { get; set; } = null!;
 
         /// <summary>
+        /// Name of the snapshot policy.
+        /// </summary>
+        [Input("snapshotPolicy")]
+        public Input<Inputs.SfsResourcePoolSnapshotPolicyArgs>? SnapshotPolicy { get; set; }
+
+        /// <summary>
         /// If set to true, snapshots are visible and accessible to users. (default: false)
         /// </summary>
         [Input("snapshotsAreVisible")]
@@ -235,6 +247,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("sizeGigabytes")]
         public Input<int>? SizeGigabytes { get; set; }
+
+        /// <summary>
+        /// Name of the snapshot policy.
+        /// </summary>
+        [Input("snapshotPolicy")]
+        public Input<Inputs.SfsResourcePoolSnapshotPolicyGetArgs>? SnapshotPolicy { get; set; }
 
         /// <summary>
         /// If set to true, snapshots are visible and accessible to users. (default: false)

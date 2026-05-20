@@ -25,13 +25,13 @@ class ObservabilityScrapeconfigArgs:
                  metrics_path: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
                  targets: pulumi.Input[Sequence[pulumi.Input['ObservabilityScrapeconfigTargetArgs']]],
-                 basic_auth: Optional[pulumi.Input['ObservabilityScrapeconfigBasicAuthArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml2: Optional[pulumi.Input['ObservabilityScrapeconfigSaml2Args']] = None,
-                 sample_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 scheme: Optional[pulumi.Input[_builtins.str]] = None,
-                 scrape_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 scrape_timeout: Optional[pulumi.Input[_builtins.str]] = None):
+                 basic_auth: pulumi.Input[Optional['ObservabilityScrapeconfigBasicAuthArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml2: pulumi.Input[Optional['ObservabilityScrapeconfigSaml2Args']] = None,
+                 sample_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 scheme: pulumi.Input[Optional[_builtins.str]] = None,
+                 scrape_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 scrape_timeout: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ObservabilityScrapeconfig resource.
 
@@ -116,103 +116,103 @@ class ObservabilityScrapeconfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="basicAuth")
-    def basic_auth(self) -> Optional[pulumi.Input['ObservabilityScrapeconfigBasicAuthArgs']]:
+    def basic_auth(self) -> pulumi.Input[Optional['ObservabilityScrapeconfigBasicAuthArgs']]:
         """
         A basic authentication block.
         """
         return pulumi.get(self, "basic_auth")
 
     @basic_auth.setter
-    def basic_auth(self, value: Optional[pulumi.Input['ObservabilityScrapeconfigBasicAuthArgs']]):
+    def basic_auth(self, value: pulumi.Input[Optional['ObservabilityScrapeconfigBasicAuthArgs']]):
         pulumi.set(self, "basic_auth", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the name of the scraping job.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def saml2(self) -> Optional[pulumi.Input['ObservabilityScrapeconfigSaml2Args']]:
+    def saml2(self) -> pulumi.Input[Optional['ObservabilityScrapeconfigSaml2Args']]:
         """
         A SAML2 configuration block.
         """
         return pulumi.get(self, "saml2")
 
     @saml2.setter
-    def saml2(self, value: Optional[pulumi.Input['ObservabilityScrapeconfigSaml2Args']]):
+    def saml2(self, value: pulumi.Input[Optional['ObservabilityScrapeconfigSaml2Args']]):
         pulumi.set(self, "saml2", value)
 
     @_builtins.property
     @pulumi.getter(name="sampleLimit")
-    def sample_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sample_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the scrape sample limit. Upper limit depends on the service plan. Defaults to `5000`.
         """
         return pulumi.get(self, "sample_limit")
 
     @sample_limit.setter
-    def sample_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sample_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sample_limit", value)
 
     @_builtins.property
     @pulumi.getter
-    def scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheme(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the http scheme. Defaults to `https`.
         """
         return pulumi.get(self, "scheme")
 
     @scheme.setter
-    def scheme(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheme(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheme", value)
 
     @_builtins.property
     @pulumi.getter(name="scrapeInterval")
-    def scrape_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scrape_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the scrape interval as duration string. Defaults to `5m`.
         """
         return pulumi.get(self, "scrape_interval")
 
     @scrape_interval.setter
-    def scrape_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scrape_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scrape_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="scrapeTimeout")
-    def scrape_timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scrape_timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the scrape timeout as duration string. Defaults to `2m`.
         """
         return pulumi.get(self, "scrape_timeout")
 
     @scrape_timeout.setter
-    def scrape_timeout(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scrape_timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scrape_timeout", value)
 
 
 @pulumi.input_type
 class _ObservabilityScrapeconfigState:
     def __init__(__self__, *,
-                 basic_auth: Optional[pulumi.Input['ObservabilityScrapeconfigBasicAuthArgs']] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 metrics_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml2: Optional[pulumi.Input['ObservabilityScrapeconfigSaml2Args']] = None,
-                 sample_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 scheme: Optional[pulumi.Input[_builtins.str]] = None,
-                 scrape_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 scrape_timeout: Optional[pulumi.Input[_builtins.str]] = None,
-                 targets: Optional[pulumi.Input[Sequence[pulumi.Input['ObservabilityScrapeconfigTargetArgs']]]] = None):
+                 basic_auth: pulumi.Input[Optional['ObservabilityScrapeconfigBasicAuthArgs']] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 metrics_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml2: pulumi.Input[Optional['ObservabilityScrapeconfigSaml2Args']] = None,
+                 sample_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 scheme: pulumi.Input[Optional[_builtins.str]] = None,
+                 scrape_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 scrape_timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 targets: pulumi.Input[Optional[Sequence[pulumi.Input['ObservabilityScrapeconfigTargetArgs']]]] = None):
         """
         Input properties used for looking up and filtering ObservabilityScrapeconfig resources.
 
@@ -253,134 +253,134 @@ class _ObservabilityScrapeconfigState:
 
     @_builtins.property
     @pulumi.getter(name="basicAuth")
-    def basic_auth(self) -> Optional[pulumi.Input['ObservabilityScrapeconfigBasicAuthArgs']]:
+    def basic_auth(self) -> pulumi.Input[Optional['ObservabilityScrapeconfigBasicAuthArgs']]:
         """
         A basic authentication block.
         """
         return pulumi.get(self, "basic_auth")
 
     @basic_auth.setter
-    def basic_auth(self, value: Optional[pulumi.Input['ObservabilityScrapeconfigBasicAuthArgs']]):
+    def basic_auth(self, value: pulumi.Input[Optional['ObservabilityScrapeconfigBasicAuthArgs']]):
         pulumi.set(self, "basic_auth", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Observability instance ID to which the scraping job is associated.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter(name="metricsPath")
-    def metrics_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def metrics_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the job scraping url path. E.g. `/metrics`.
         """
         return pulumi.get(self, "metrics_path")
 
     @metrics_path.setter
-    def metrics_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def metrics_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "metrics_path", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the name of the scraping job.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         STACKIT project ID to which the scraping job is associated.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def saml2(self) -> Optional[pulumi.Input['ObservabilityScrapeconfigSaml2Args']]:
+    def saml2(self) -> pulumi.Input[Optional['ObservabilityScrapeconfigSaml2Args']]:
         """
         A SAML2 configuration block.
         """
         return pulumi.get(self, "saml2")
 
     @saml2.setter
-    def saml2(self, value: Optional[pulumi.Input['ObservabilityScrapeconfigSaml2Args']]):
+    def saml2(self, value: pulumi.Input[Optional['ObservabilityScrapeconfigSaml2Args']]):
         pulumi.set(self, "saml2", value)
 
     @_builtins.property
     @pulumi.getter(name="sampleLimit")
-    def sample_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def sample_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the scrape sample limit. Upper limit depends on the service plan. Defaults to `5000`.
         """
         return pulumi.get(self, "sample_limit")
 
     @sample_limit.setter
-    def sample_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def sample_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "sample_limit", value)
 
     @_builtins.property
     @pulumi.getter
-    def scheme(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scheme(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the http scheme. Defaults to `https`.
         """
         return pulumi.get(self, "scheme")
 
     @scheme.setter
-    def scheme(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scheme(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scheme", value)
 
     @_builtins.property
     @pulumi.getter(name="scrapeInterval")
-    def scrape_interval(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scrape_interval(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the scrape interval as duration string. Defaults to `5m`.
         """
         return pulumi.get(self, "scrape_interval")
 
     @scrape_interval.setter
-    def scrape_interval(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scrape_interval(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scrape_interval", value)
 
     @_builtins.property
     @pulumi.getter(name="scrapeTimeout")
-    def scrape_timeout(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scrape_timeout(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Specifies the scrape timeout as duration string. Defaults to `2m`.
         """
         return pulumi.get(self, "scrape_timeout")
 
     @scrape_timeout.setter
-    def scrape_timeout(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scrape_timeout(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scrape_timeout", value)
 
     @_builtins.property
     @pulumi.getter
-    def targets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ObservabilityScrapeconfigTargetArgs']]]]:
+    def targets(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['ObservabilityScrapeconfigTargetArgs']]]]:
         """
         The targets list (specified by the static config).
         """
         return pulumi.get(self, "targets")
 
     @targets.setter
-    def targets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ObservabilityScrapeconfigTargetArgs']]]]):
+    def targets(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['ObservabilityScrapeconfigTargetArgs']]]]):
         pulumi.set(self, "targets", value)
 
 
@@ -390,17 +390,17 @@ class ObservabilityScrapeconfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 basic_auth: Optional[pulumi.Input[Union['ObservabilityScrapeconfigBasicAuthArgs', 'ObservabilityScrapeconfigBasicAuthArgsDict']]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 metrics_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml2: Optional[pulumi.Input[Union['ObservabilityScrapeconfigSaml2Args', 'ObservabilityScrapeconfigSaml2ArgsDict']]] = None,
-                 sample_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 scheme: Optional[pulumi.Input[_builtins.str]] = None,
-                 scrape_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 scrape_timeout: Optional[pulumi.Input[_builtins.str]] = None,
-                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ObservabilityScrapeconfigTargetArgs', 'ObservabilityScrapeconfigTargetArgsDict']]]]] = None,
+                 basic_auth: pulumi.Input[Optional[Union['ObservabilityScrapeconfigBasicAuthArgs', 'ObservabilityScrapeconfigBasicAuthArgsDict']]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 metrics_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml2: pulumi.Input[Optional[Union['ObservabilityScrapeconfigSaml2Args', 'ObservabilityScrapeconfigSaml2ArgsDict']]] = None,
+                 sample_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 scheme: pulumi.Input[Optional[_builtins.str]] = None,
+                 scrape_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 scrape_timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ObservabilityScrapeconfigTargetArgs', 'ObservabilityScrapeconfigTargetArgsDict']]]]] = None,
                  __props__=None):
         """
         Observability scrape config resource schema. Must have a `region` specified in the provider configuration.
@@ -449,17 +449,17 @@ class ObservabilityScrapeconfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 basic_auth: Optional[pulumi.Input[Union['ObservabilityScrapeconfigBasicAuthArgs', 'ObservabilityScrapeconfigBasicAuthArgsDict']]] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 metrics_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 saml2: Optional[pulumi.Input[Union['ObservabilityScrapeconfigSaml2Args', 'ObservabilityScrapeconfigSaml2ArgsDict']]] = None,
-                 sample_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 scheme: Optional[pulumi.Input[_builtins.str]] = None,
-                 scrape_interval: Optional[pulumi.Input[_builtins.str]] = None,
-                 scrape_timeout: Optional[pulumi.Input[_builtins.str]] = None,
-                 targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ObservabilityScrapeconfigTargetArgs', 'ObservabilityScrapeconfigTargetArgsDict']]]]] = None,
+                 basic_auth: pulumi.Input[Optional[Union['ObservabilityScrapeconfigBasicAuthArgs', 'ObservabilityScrapeconfigBasicAuthArgsDict']]] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 metrics_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 saml2: pulumi.Input[Optional[Union['ObservabilityScrapeconfigSaml2Args', 'ObservabilityScrapeconfigSaml2ArgsDict']]] = None,
+                 sample_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 scheme: pulumi.Input[Optional[_builtins.str]] = None,
+                 scrape_interval: pulumi.Input[Optional[_builtins.str]] = None,
+                 scrape_timeout: pulumi.Input[Optional[_builtins.str]] = None,
+                 targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ObservabilityScrapeconfigTargetArgs', 'ObservabilityScrapeconfigTargetArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -498,17 +498,17 @@ class ObservabilityScrapeconfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            basic_auth: Optional[pulumi.Input[Union['ObservabilityScrapeconfigBasicAuthArgs', 'ObservabilityScrapeconfigBasicAuthArgsDict']]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            metrics_path: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            saml2: Optional[pulumi.Input[Union['ObservabilityScrapeconfigSaml2Args', 'ObservabilityScrapeconfigSaml2ArgsDict']]] = None,
-            sample_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            scheme: Optional[pulumi.Input[_builtins.str]] = None,
-            scrape_interval: Optional[pulumi.Input[_builtins.str]] = None,
-            scrape_timeout: Optional[pulumi.Input[_builtins.str]] = None,
-            targets: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ObservabilityScrapeconfigTargetArgs', 'ObservabilityScrapeconfigTargetArgsDict']]]]] = None) -> 'ObservabilityScrapeconfig':
+            basic_auth: pulumi.Input[Optional[Union['ObservabilityScrapeconfigBasicAuthArgs', 'ObservabilityScrapeconfigBasicAuthArgsDict']]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            metrics_path: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            saml2: pulumi.Input[Optional[Union['ObservabilityScrapeconfigSaml2Args', 'ObservabilityScrapeconfigSaml2ArgsDict']]] = None,
+            sample_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            scheme: pulumi.Input[Optional[_builtins.str]] = None,
+            scrape_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            scrape_timeout: pulumi.Input[Optional[_builtins.str]] = None,
+            targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ObservabilityScrapeconfigTargetArgs', 'ObservabilityScrapeconfigTargetArgsDict']]]]] = None) -> 'ObservabilityScrapeconfig':
         """
         Get an existing ObservabilityScrapeconfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

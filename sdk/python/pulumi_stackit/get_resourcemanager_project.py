@@ -160,8 +160,8 @@ def get_resourcemanager_project(container_id: Optional[_builtins.str] = None,
         parent_container_id=pulumi.get(__ret__, 'parent_container_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         update_time=pulumi.get(__ret__, 'update_time'))
-def get_resourcemanager_project_output(container_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                       project_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_resourcemanager_project_output(container_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                       project_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetResourcemanagerProjectResult]:
     """
     Resource Manager project data source schema. To identify the project, you need to provider either project_id or container_id. If you provide both, project_id will be used.

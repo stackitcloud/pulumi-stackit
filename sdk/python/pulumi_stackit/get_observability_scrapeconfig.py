@@ -216,9 +216,9 @@ def get_observability_scrapeconfig(instance_id: Optional[_builtins.str] = None,
         scrape_interval=pulumi.get(__ret__, 'scrape_interval'),
         scrape_timeout=pulumi.get(__ret__, 'scrape_timeout'),
         targets=pulumi.get(__ret__, 'targets'))
-def get_observability_scrapeconfig_output(instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                          name: Optional[pulumi.Input[_builtins.str]] = None,
-                                          project_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_observability_scrapeconfig_output(instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                          name: pulumi.Input[Optional[_builtins.str]] = None,
+                                          project_id: pulumi.Input[Optional[_builtins.str]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetObservabilityScrapeconfigResult]:
     """
     Observability scrape config data source schema. Must have a `region` specified in the provider configuration.

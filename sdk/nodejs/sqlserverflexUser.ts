@@ -122,33 +122,33 @@ export class SqlserverflexUser extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SqlserverflexUser resources.
  */
 export interface SqlserverflexUserState {
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * ID of the SQLServer Flex instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Password of the user account.
      */
-    password?: pulumi.Input<string>;
-    port?: pulumi.Input<number>;
+    password?: pulumi.Input<string | undefined>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * STACKIT project ID to which the instance is associated.
      */
-    projectId?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Database access levels for the user. The values for the default roles are: `##STACKIT_DatabaseManager##`, `##STACKIT_LoginManager##`, `##STACKIT_ProcessManager##`, `##STACKIT_ServerManager##`, `##STACKIT_SQLAgentManager##`, `##STACKIT_SQLAgentUser##`
      */
-    roles?: pulumi.Input<pulumi.Input<string>[]>;
+    roles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * User ID.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * Username of the SQLServer Flex instance.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -163,7 +163,7 @@ export interface SqlserverflexUserArgs {
      * STACKIT project ID to which the instance is associated.
      */
     projectId: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Database access levels for the user. The values for the default roles are: `##STACKIT_DatabaseManager##`, `##STACKIT_LoginManager##`, `##STACKIT_ProcessManager##`, `##STACKIT_ServerManager##`, `##STACKIT_SQLAgentManager##`, `##STACKIT_SQLAgentUser##`
      */

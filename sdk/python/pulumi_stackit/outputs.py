@@ -106,6 +106,7 @@ __all__ = [
     'ServerBootVolume',
     'ServiceAccountFederatedIdentityProviderAssertion',
     'SfsExportPolicyRule',
+    'SfsResourcePoolSnapshotPolicy',
     'SkeClusterExtensions',
     'SkeClusterExtensionsAcl',
     'SkeClusterExtensionsArgus',
@@ -227,7 +228,10 @@ __all__ = [
     'GetServiceAccountFederatedIdentityProviderAssertionResult',
     'GetServiceAccountsItemResult',
     'GetSfsExportPolicyRuleResult',
+    'GetSfsResourcePoolSnapshotPolicyResult',
     'GetSfsResourcePoolSnapshotSnapshotResult',
+    'GetSfsSnapshotPoliciesItemResult',
+    'GetSfsSnapshotPoliciesItemSnapshotScheduleResult',
     'GetSkeClusterExtensionsResult',
     'GetSkeClusterExtensionsAclResult',
     'GetSkeClusterExtensionsArgusResult',
@@ -6512,6 +6516,36 @@ class SfsExportPolicyRule(dict):
         Flag to indicate if client IPs matching this rule have root access on the Share
         """
         return pulumi.get(self, "super_user")
+
+
+@pulumi.output_type
+class SfsResourcePoolSnapshotPolicy(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 name: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str id: ID of the snapshot policy.
+        :param _builtins.str name: Name of the snapshot policy.
+        """
+        pulumi.set(__self__, "id", id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        ID of the snapshot policy.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the snapshot policy.
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -12805,6 +12839,35 @@ class GetSfsExportPolicyRuleResult(dict):
 
 
 @pulumi.output_type
+class GetSfsResourcePoolSnapshotPolicyResult(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 name: _builtins.str):
+        """
+        :param _builtins.str id: ID of the snapshot policy.
+        :param _builtins.str name: Name of the snapshot policy.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        ID of the snapshot policy.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the snapshot policy.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
 class GetSfsResourcePoolSnapshotSnapshotResult(dict):
     def __init__(__self__, *,
                  comment: _builtins.str,
@@ -12875,6 +12938,159 @@ class GetSfsResourcePoolSnapshotSnapshotResult(dict):
         Name of the Resource Pool Snapshot
         """
         return pulumi.get(self, "snapshot_name")
+
+
+@pulumi.output_type
+class GetSfsSnapshotPoliciesItemResult(dict):
+    def __init__(__self__, *,
+                 comment: _builtins.str,
+                 created_at: _builtins.str,
+                 enabled: _builtins.bool,
+                 id: _builtins.str,
+                 name: _builtins.str,
+                 snapshot_schedules: Sequence['outputs.GetSfsSnapshotPoliciesItemSnapshotScheduleResult']):
+        """
+        :param _builtins.str comment: Comment of the Snapshot Policy.
+        :param _builtins.str created_at: Created At timestamp.
+        :param _builtins.bool enabled: Wether the Snapshot Policy is enabled.
+        :param _builtins.str id: ID of the Snapshot Policy.
+        :param _builtins.str name: Name of the Snapshot Policy.
+        """
+        pulumi.set(__self__, "comment", comment)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "snapshot_schedules", snapshot_schedules)
+
+    @_builtins.property
+    @pulumi.getter
+    def comment(self) -> _builtins.str:
+        """
+        Comment of the Snapshot Policy.
+        """
+        return pulumi.get(self, "comment")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Created At timestamp.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Wether the Snapshot Policy is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        ID of the Snapshot Policy.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the Snapshot Policy.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="snapshotSchedules")
+    def snapshot_schedules(self) -> Sequence['outputs.GetSfsSnapshotPoliciesItemSnapshotScheduleResult']:
+        return pulumi.get(self, "snapshot_schedules")
+
+
+@pulumi.output_type
+class GetSfsSnapshotPoliciesItemSnapshotScheduleResult(dict):
+    def __init__(__self__, *,
+                 created_at: _builtins.str,
+                 id: _builtins.str,
+                 interval: _builtins.str,
+                 name: _builtins.str,
+                 prefix: _builtins.str,
+                 retention_count: _builtins.int,
+                 retention_period: _builtins.str):
+        """
+        :param _builtins.str created_at: Created At timestamp.
+        :param _builtins.str id: ID of the Snapshot Schedule.
+        :param _builtins.str interval: Interval of the Snapshot Schedule (follows the cron schedule xpression in Unix-like systems).
+        :param _builtins.str name: Name of the Snapshot Schedule.
+        :param _builtins.str prefix: Prefix used for snapshots created by this policy.
+        :param _builtins.int retention_count: Retention Count.
+        :param _builtins.str retention_period: Retention Period (ISO 8601 format or 'infinite').
+        """
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "interval", interval)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "prefix", prefix)
+        pulumi.set(__self__, "retention_count", retention_count)
+        pulumi.set(__self__, "retention_period", retention_period)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Created At timestamp.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        ID of the Snapshot Schedule.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def interval(self) -> _builtins.str:
+        """
+        Interval of the Snapshot Schedule (follows the cron schedule xpression in Unix-like systems).
+        """
+        return pulumi.get(self, "interval")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the Snapshot Schedule.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def prefix(self) -> _builtins.str:
+        """
+        Prefix used for snapshots created by this policy.
+        """
+        return pulumi.get(self, "prefix")
+
+    @_builtins.property
+    @pulumi.getter(name="retentionCount")
+    def retention_count(self) -> _builtins.int:
+        """
+        Retention Count.
+        """
+        return pulumi.get(self, "retention_count")
+
+    @_builtins.property
+    @pulumi.getter(name="retentionPeriod")
+    def retention_period(self) -> _builtins.str:
+        """
+        Retention Period (ISO 8601 format or 'infinite').
+        """
+        return pulumi.get(self, "retention_period")
 
 
 @pulumi.output_type

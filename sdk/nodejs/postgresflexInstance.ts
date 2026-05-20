@@ -140,34 +140,34 @@ export interface PostgresflexInstanceState {
     /**
      * The Access Control List (ACL) for the PostgresFlex instance.
      */
-    acls?: pulumi.Input<pulumi.Input<string>[]>;
+    acls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.
      */
-    backupSchedule?: pulumi.Input<string>;
-    flavor?: pulumi.Input<inputs.PostgresflexInstanceFlavor>;
+    backupSchedule?: pulumi.Input<string | undefined>;
+    flavor?: pulumi.Input<inputs.PostgresflexInstanceFlavor | undefined>;
     /**
      * ID of the PostgresFlex instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Instance name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the instance is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.
      */
-    replicas?: pulumi.Input<number>;
-    storage?: pulumi.Input<inputs.PostgresflexInstanceStorage>;
-    version?: pulumi.Input<string>;
+    replicas?: pulumi.Input<number | undefined>;
+    storage?: pulumi.Input<inputs.PostgresflexInstanceStorage | undefined>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -186,7 +186,7 @@ export interface PostgresflexInstanceArgs {
     /**
      * Instance name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the instance is associated.
      */
@@ -194,7 +194,7 @@ export interface PostgresflexInstanceArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.
      */

@@ -134,43 +134,43 @@ export interface EdgecloudKubeconfigState {
     /**
      * Date-time when the kubeconfig was created
      */
-    creationTime?: pulumi.Input<string>;
+    creationTime?: pulumi.Input<string | undefined>;
     /**
      * Expiration time of the kubeconfig, in seconds. Minimum is 600, Maximum is 15552000. Defaults to `3600`
      */
-    expiration?: pulumi.Input<number>;
+    expiration?: pulumi.Input<number | undefined>;
     /**
      * Timestamp when the kubeconfig expires
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * ID of the Edge Cloud instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Name of the Edge Cloud instance.
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * Raw kubeconfig.
      */
-    kubeconfig?: pulumi.Input<string>;
+    kubeconfig?: pulumi.Input<string | undefined>;
     /**
      * Internally generated UUID to identify a kubeconfig resource in Terraform, since the Edge Cloud API doesn't return a kubeconfig identifier
      */
-    kubeconfigId?: pulumi.Input<string>;
+    kubeconfigId?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the Edge Cloud instance is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Number of seconds before expiration to trigger recreation of the kubeconfig at.
      */
-    recreateBefore?: pulumi.Input<number>;
+    recreateBefore?: pulumi.Input<number | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -180,15 +180,15 @@ export interface EdgecloudKubeconfigArgs {
     /**
      * Expiration time of the kubeconfig, in seconds. Minimum is 600, Maximum is 15552000. Defaults to `3600`
      */
-    expiration?: pulumi.Input<number>;
+    expiration?: pulumi.Input<number | undefined>;
     /**
      * ID of the Edge Cloud instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Name of the Edge Cloud instance.
      */
-    instanceName?: pulumi.Input<string>;
+    instanceName?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the Edge Cloud instance is associated.
      */
@@ -196,9 +196,9 @@ export interface EdgecloudKubeconfigArgs {
     /**
      * Number of seconds before expiration to trigger recreation of the kubeconfig at.
      */
-    recreateBefore?: pulumi.Input<number>;
+    recreateBefore?: pulumi.Input<number | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

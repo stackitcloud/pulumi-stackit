@@ -242,10 +242,10 @@ def get_dns_record_set(project_id: Optional[_builtins.str] = None,
         ttl=pulumi.get(__ret__, 'ttl'),
         type=pulumi.get(__ret__, 'type'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_dns_record_set_output(project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                              record_set_id: Optional[pulumi.Input[_builtins.str]] = None,
-                              timeouts: Optional[pulumi.Input[Optional[Union['GetDnsRecordSetTimeoutsArgs', 'GetDnsRecordSetTimeoutsArgsDict']]]] = None,
-                              zone_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_dns_record_set_output(project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                              record_set_id: pulumi.Input[Optional[_builtins.str]] = None,
+                              timeouts: pulumi.Input[Optional[Optional[Union['GetDnsRecordSetTimeoutsArgs', 'GetDnsRecordSetTimeoutsArgsDict']]]] = None,
+                              zone_id: pulumi.Input[Optional[_builtins.str]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDnsRecordSetResult]:
     """
     DNS Record Set Resource schema.

@@ -109,8 +109,8 @@ def get_ske_machine_image_versions(region: Optional[_builtins.str] = None,
         machine_images=pulumi.get(__ret__, 'machine_images'),
         region=pulumi.get(__ret__, 'region'),
         version_state=pulumi.get(__ret__, 'version_state'))
-def get_ske_machine_image_versions_output(region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                          version_state: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_ske_machine_image_versions_output(region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                          version_state: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSkeMachineImageVersionsResult]:
     """
     Returns a list of supported Kubernetes machine image versions for the cluster nodes.

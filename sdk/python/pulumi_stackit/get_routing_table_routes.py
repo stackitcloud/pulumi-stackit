@@ -143,10 +143,10 @@ def get_routing_table_routes(network_area_id: Optional[_builtins.str] = None,
         region=pulumi.get(__ret__, 'region'),
         routes=pulumi.get(__ret__, 'routes'),
         routing_table_id=pulumi.get(__ret__, 'routing_table_id'))
-def get_routing_table_routes_output(network_area_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                    organization_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                    region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    routing_table_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_routing_table_routes_output(network_area_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                    organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                    region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    routing_table_id: pulumi.Input[Optional[_builtins.str]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRoutingTableRoutesResult]:
     """
     Routing table routes datasource schema. Must have a `region` specified in the provider configuration.

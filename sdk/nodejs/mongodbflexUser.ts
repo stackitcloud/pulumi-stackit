@@ -125,32 +125,32 @@ export class MongodbflexUser extends pulumi.CustomResource {
  * Input properties used for looking up and filtering MongodbflexUser resources.
  */
 export interface MongodbflexUserState {
-    database?: pulumi.Input<string>;
-    host?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * ID of the MongoDB Flex instance.
      */
-    instanceId?: pulumi.Input<string>;
-    password?: pulumi.Input<string>;
-    port?: pulumi.Input<number>;
+    instanceId?: pulumi.Input<string | undefined>;
+    password?: pulumi.Input<string | undefined>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * STACKIT project ID to which the instance is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Database access levels for the user. Some of the possible values are: [`read`, `readWrite`, `readWriteAnyDatabase`]
      */
-    roles?: pulumi.Input<pulumi.Input<string>[]>;
-    uri?: pulumi.Input<string>;
+    roles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    uri?: pulumi.Input<string | undefined>;
     /**
      * User ID.
      */
-    userId?: pulumi.Input<string>;
-    username?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -169,10 +169,10 @@ export interface MongodbflexUserArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Database access levels for the user. Some of the possible values are: [`read`, `readWrite`, `readWriteAnyDatabase`]
      */
     roles: pulumi.Input<pulumi.Input<string>[]>;
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
 }

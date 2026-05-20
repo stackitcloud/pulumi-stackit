@@ -154,55 +154,55 @@ export interface VolumeState {
     /**
      * The availability zone of the volume.
      */
-    availabilityZone?: pulumi.Input<string>;
+    availabilityZone?: pulumi.Input<string | undefined>;
     /**
      * The description of the volume.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Indicates if the volume is encrypted.
      */
-    encrypted?: pulumi.Input<boolean>;
+    encrypted?: pulumi.Input<boolean | undefined>;
     /**
      * Parameter to connect to a key-encryption-key within the STACKIT-KMS to create encrypted volumes. These parameters never leave the backend again. So these parameters are not present on imports or in the datasource. They live only in your Terraform state after creation of the resource.
      */
-    encryptionParameters?: pulumi.Input<inputs.VolumeEncryptionParameters>;
+    encryptionParameters?: pulumi.Input<inputs.VolumeEncryptionParameters | undefined>;
     /**
      * Labels are key-value string pairs which can be attached to a resource container
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the volume.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/products/storage/block-storage/basics/service-plans/#currently-available-service-plans-performance-classes)
      */
-    performanceClass?: pulumi.Input<string>;
+    performanceClass?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the volume is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The server ID of the server to which the volume is attached to.
      */
-    serverId?: pulumi.Input<string>;
+    serverId?: pulumi.Input<string | undefined>;
     /**
      * The size of the volume in GB. It can only be updated to a larger value than the current size. Either `size` or `source` must be provided
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * The source of the volume. It can be either a volume, an image, a snapshot or a backup. Either `size` or `source` must be provided
      */
-    source?: pulumi.Input<inputs.VolumeSource>;
+    source?: pulumi.Input<inputs.VolumeSource | undefined>;
     /**
      * The volume ID.
      */
-    volumeId?: pulumi.Input<string>;
+    volumeId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -216,23 +216,23 @@ export interface VolumeArgs {
     /**
      * The description of the volume.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Parameter to connect to a key-encryption-key within the STACKIT-KMS to create encrypted volumes. These parameters never leave the backend again. So these parameters are not present on imports or in the datasource. They live only in your Terraform state after creation of the resource.
      */
-    encryptionParameters?: pulumi.Input<inputs.VolumeEncryptionParameters>;
+    encryptionParameters?: pulumi.Input<inputs.VolumeEncryptionParameters | undefined>;
     /**
      * Labels are key-value string pairs which can be attached to a resource container
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The name of the volume.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The performance class of the volume. Possible values are documented in [Service plans BlockStorage](https://docs.stackit.cloud/products/storage/block-storage/basics/service-plans/#currently-available-service-plans-performance-classes)
      */
-    performanceClass?: pulumi.Input<string>;
+    performanceClass?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the volume is associated.
      */
@@ -240,13 +240,13 @@ export interface VolumeArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The size of the volume in GB. It can only be updated to a larger value than the current size. Either `size` or `source` must be provided
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * The source of the volume. It can be either a volume, an image, a snapshot or a backup. Either `size` or `source` must be provided
      */
-    source?: pulumi.Input<inputs.VolumeSource>;
+    source?: pulumi.Input<inputs.VolumeSource | undefined>;
 }

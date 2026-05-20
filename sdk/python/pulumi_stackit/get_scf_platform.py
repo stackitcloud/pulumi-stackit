@@ -163,9 +163,9 @@ def get_scf_platform(platform_id: Optional[_builtins.str] = None,
         project_id=pulumi.get(__ret__, 'project_id'),
         region=pulumi.get(__ret__, 'region'),
         system_id=pulumi.get(__ret__, 'system_id'))
-def get_scf_platform_output(platform_id: Optional[pulumi.Input[_builtins.str]] = None,
-                            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                            region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_scf_platform_output(platform_id: pulumi.Input[Optional[_builtins.str]] = None,
+                            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                            region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetScfPlatformResult]:
     """
     STACKIT Cloud Foundry Platform datasource schema.

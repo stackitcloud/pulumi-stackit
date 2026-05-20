@@ -78,7 +78,7 @@ export interface GetSecretsmanagerSecretGroupRoleBindingsV1OutputArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The identifier of the resource to get the role bindings for.
      */

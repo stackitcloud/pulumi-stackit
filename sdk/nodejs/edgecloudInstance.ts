@@ -132,39 +132,39 @@ export interface EdgecloudInstanceState {
     /**
      * The date and time the creation of the instance was triggered.
      */
-    created?: pulumi.Input<string>;
+    created?: pulumi.Input<string | undefined>;
     /**
      * Description for your STACKIT Edge Cloud instance. Max length is 256 characters
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Display name shown for the Edge Cloud instance. Has to be a valid hostname, with a length between 4 and 8 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * Frontend URL for the Edge Cloud instance.
      */
-    frontendUrl?: pulumi.Input<string>;
+    frontendUrl?: pulumi.Input<string | undefined>;
     /**
      * \n\n-\n\n
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * STACKIT Edge Plan ID for the Edge Cloud instance, has to be the UUID of an existing plan.
      */
-    planId?: pulumi.Input<string>;
+    planId?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the Edge Cloud instance is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * STACKIT region to use for the instance, providers defaultRegion will be used if unset.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * instance status
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -174,7 +174,7 @@ export interface EdgecloudInstanceArgs {
     /**
      * Description for your STACKIT Edge Cloud instance. Max length is 256 characters
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * Display name shown for the Edge Cloud instance. Has to be a valid hostname, with a length between 4 and 8 characters.
      */
@@ -190,5 +190,5 @@ export interface EdgecloudInstanceArgs {
     /**
      * STACKIT region to use for the instance, providers defaultRegion will be used if unset.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

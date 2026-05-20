@@ -119,27 +119,27 @@ export interface ServiceAccountFederatedIdentityProviderState {
     /**
      * The assertions for the federated identity provider.
      */
-    assertions?: pulumi.Input<pulumi.Input<inputs.ServiceAccountFederatedIdentityProviderAssertion>[]>;
+    assertions?: pulumi.Input<pulumi.Input<inputs.ServiceAccountFederatedIdentityProviderAssertion>[] | undefined>;
     /**
      * The unique identifier for the federated identity provider associated with the service account.
      */
-    federationId?: pulumi.Input<string>;
+    federationId?: pulumi.Input<string | undefined>;
     /**
      * The issuer URL.
      */
-    issuer?: pulumi.Input<string>;
+    issuer?: pulumi.Input<string | undefined>;
     /**
      * The name of the federated identity provider.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The STACKIT project ID associated with the service account.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The email address associated with the service account, used for account identification and communication.
      */
-    serviceAccountEmail?: pulumi.Input<string>;
+    serviceAccountEmail?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -157,7 +157,7 @@ export interface ServiceAccountFederatedIdentityProviderArgs {
     /**
      * The name of the federated identity provider.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The STACKIT project ID associated with the service account.
      */

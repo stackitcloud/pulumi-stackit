@@ -60,14 +60,14 @@ class CdnDistributionArgs:
 @pulumi.input_type
 class _CdnDistributionState:
     def __init__(__self__, *,
-                 config: Optional[pulumi.Input['CdnDistributionConfigArgs']] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 distribution_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 domains: Optional[pulumi.Input[Sequence[pulumi.Input['CdnDistributionDomainArgs']]]] = None,
-                 errors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None):
+                 config: pulumi.Input[Optional['CdnDistributionConfigArgs']] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 distribution_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 domains: pulumi.Input[Optional[Sequence[pulumi.Input['CdnDistributionDomainArgs']]]] = None,
+                 errors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CdnDistribution resources.
 
@@ -99,98 +99,98 @@ class _CdnDistributionState:
 
     @_builtins.property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['CdnDistributionConfigArgs']]:
+    def config(self) -> pulumi.Input[Optional['CdnDistributionConfigArgs']]:
         """
         The distribution configuration
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['CdnDistributionConfigArgs']]):
+    def config(self, value: pulumi.Input[Optional['CdnDistributionConfigArgs']]):
         pulumi.set(self, "config", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time when the distribution was created
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="distributionId")
-    def distribution_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def distribution_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CDN distribution ID
         """
         return pulumi.get(self, "distribution_id")
 
     @distribution_id.setter
-    def distribution_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def distribution_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "distribution_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CdnDistributionDomainArgs']]]]:
+    def domains(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['CdnDistributionDomainArgs']]]]:
         """
         List of configured domains for the distribution
         """
         return pulumi.get(self, "domains")
 
     @domains.setter
-    def domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CdnDistributionDomainArgs']]]]):
+    def domains(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['CdnDistributionDomainArgs']]]]):
         pulumi.set(self, "domains", value)
 
     @_builtins.property
     @pulumi.getter
-    def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of distribution errors
         """
         return pulumi.get(self, "errors")
 
     @errors.setter
-    def errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "errors", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         STACKIT project ID associated with the distribution
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status of the distribution
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Time when the distribution was last updated
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
 
@@ -200,8 +200,8 @@ class CdnDistribution(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[Union['CdnDistributionConfigArgs', 'CdnDistributionConfigArgsDict']]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[Union['CdnDistributionConfigArgs', 'CdnDistributionConfigArgsDict']]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         CDN distribution data source schema.
@@ -245,8 +245,8 @@ class CdnDistribution(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: Optional[pulumi.Input[Union['CdnDistributionConfigArgs', 'CdnDistributionConfigArgsDict']]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 config: pulumi.Input[Optional[Union['CdnDistributionConfigArgs', 'CdnDistributionConfigArgsDict']]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -278,14 +278,14 @@ class CdnDistribution(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: Optional[pulumi.Input[Union['CdnDistributionConfigArgs', 'CdnDistributionConfigArgsDict']]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            distribution_id: Optional[pulumi.Input[_builtins.str]] = None,
-            domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['CdnDistributionDomainArgs', 'CdnDistributionDomainArgsDict']]]]] = None,
-            errors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None) -> 'CdnDistribution':
+            config: pulumi.Input[Optional[Union['CdnDistributionConfigArgs', 'CdnDistributionConfigArgsDict']]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            distribution_id: pulumi.Input[Optional[_builtins.str]] = None,
+            domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CdnDistributionDomainArgs', 'CdnDistributionDomainArgsDict']]]]] = None,
+            errors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'CdnDistribution':
         """
         Get an existing CdnDistribution resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

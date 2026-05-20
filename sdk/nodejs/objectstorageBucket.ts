@@ -99,21 +99,21 @@ export interface ObjectstorageBucketState {
     /**
      * The bucket name. It must be DNS conform.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Enable Object Lock on this bucket. Can only be set at creation time. Requires an active project-level compliance lock.
      */
-    objectLock?: pulumi.Input<boolean>;
+    objectLock?: pulumi.Input<boolean | undefined>;
     /**
      * STACKIT Project ID to which the bucket is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
-    urlPathStyle?: pulumi.Input<string>;
-    urlVirtualHostedStyle?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
+    urlPathStyle?: pulumi.Input<string | undefined>;
+    urlVirtualHostedStyle?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -123,11 +123,11 @@ export interface ObjectstorageBucketArgs {
     /**
      * The bucket name. It must be DNS conform.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Enable Object Lock on this bucket. Can only be set at creation time. Requires an active project-level compliance lock.
      */
-    objectLock?: pulumi.Input<boolean>;
+    objectLock?: pulumi.Input<boolean | undefined>;
     /**
      * STACKIT Project ID to which the bucket is associated.
      */
@@ -135,5 +135,5 @@ export interface ObjectstorageBucketArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

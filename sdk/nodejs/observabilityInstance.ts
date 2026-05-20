@@ -257,118 +257,118 @@ export interface ObservabilityInstanceState {
     /**
      * The access control list for this instance. Each entry is an IP address range that is permitted to access, in CIDR notation.
      */
-    acls?: pulumi.Input<pulumi.Input<string>[]>;
+    acls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Alert configuration for the instance.
      */
-    alertConfig?: pulumi.Input<inputs.ObservabilityInstanceAlertConfig>;
+    alertConfig?: pulumi.Input<inputs.ObservabilityInstanceAlertConfig | undefined>;
     /**
      * Specifies Alerting URL.
      */
-    alertingUrl?: pulumi.Input<string>;
+    alertingUrl?: pulumi.Input<string | undefined>;
     /**
      * Specifies Observability instance dashboard URL.
      */
-    dashboardUrl?: pulumi.Input<string>;
+    dashboardUrl?: pulumi.Input<string | undefined>;
     /**
      * If true, a default Grafana server admin user is created. It's recommended to set this to false and use STACKIT SSO (Owner or Observability Grafana Server Admin role) instead. It is still possible to manually create a new Grafana admin user via the Grafana UI later.
      */
-    grafanaAdminEnabled?: pulumi.Input<boolean>;
+    grafanaAdminEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies an initial Grafana admin password.
      *
      * @deprecated This attribute is deprecated and will be removed on July 5, 2026. Use `grafanaAdminEnabled` instead.
      */
-    grafanaInitialAdminPassword?: pulumi.Input<string>;
+    grafanaInitialAdminPassword?: pulumi.Input<string | undefined>;
     /**
      * Specifies an initial Grafana admin username.
      *
      * @deprecated This attribute is deprecated and will be removed on July 5, 2026. Use `grafanaAdminEnabled` instead.
      */
-    grafanaInitialAdminUser?: pulumi.Input<string>;
+    grafanaInitialAdminUser?: pulumi.Input<string | undefined>;
     /**
      * If true, anyone can access Grafana dashboards without logging in.
      */
-    grafanaPublicReadAccess?: pulumi.Input<boolean>;
+    grafanaPublicReadAccess?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies Grafana URL.
      */
-    grafanaUrl?: pulumi.Input<string>;
+    grafanaUrl?: pulumi.Input<string | undefined>;
     /**
      * The Observability instance ID.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Specifies if the instance can be updated.
      */
-    isUpdatable?: pulumi.Input<boolean>;
-    jaegerTracesUrl?: pulumi.Input<string>;
-    jaegerUiUrl?: pulumi.Input<string>;
+    isUpdatable?: pulumi.Input<boolean | undefined>;
+    jaegerTracesUrl?: pulumi.Input<string | undefined>;
+    jaegerUiUrl?: pulumi.Input<string | undefined>;
     /**
      * Specifies URL for pushing logs.
      */
-    logsPushUrl?: pulumi.Input<string>;
+    logsPushUrl?: pulumi.Input<string | undefined>;
     /**
      * Specifies for how many days the logs are kept. Default is set to `7`.
      */
-    logsRetentionDays?: pulumi.Input<number>;
+    logsRetentionDays?: pulumi.Input<number | undefined>;
     /**
      * Specifies Logs URL.
      */
-    logsUrl?: pulumi.Input<string>;
+    logsUrl?: pulumi.Input<string | undefined>;
     /**
      * Specifies URL for pushing metrics.
      */
-    metricsPushUrl?: pulumi.Input<string>;
+    metricsPushUrl?: pulumi.Input<string | undefined>;
     /**
      * Specifies for how many days the raw metrics are kept. Default is set to `90`.
      */
-    metricsRetentionDays?: pulumi.Input<number>;
+    metricsRetentionDays?: pulumi.Input<number | undefined>;
     /**
      * Specifies for how many days the 1h downsampled metrics are kept. must be less than the value of the 5m downsampling retention. Default is set to `90`.
      */
-    metricsRetentionDays1hDownsampling?: pulumi.Input<number>;
+    metricsRetentionDays1hDownsampling?: pulumi.Input<number | undefined>;
     /**
      * Specifies for how many days the 5m downsampled metrics are kept. must be less than the value of the general retention. Default is set to `90`.
      */
-    metricsRetentionDays5mDownsampling?: pulumi.Input<number>;
+    metricsRetentionDays5mDownsampling?: pulumi.Input<number | undefined>;
     /**
      * Specifies metrics URL.
      */
-    metricsUrl?: pulumi.Input<string>;
+    metricsUrl?: pulumi.Input<string | undefined>;
     /**
      * The name of the Observability instance.
      */
-    name?: pulumi.Input<string>;
-    otlpGrpcTracesUrl?: pulumi.Input<string>;
-    otlpHttpLogsUrl?: pulumi.Input<string>;
-    otlpHttpTracesUrl?: pulumi.Input<string>;
-    otlpTracesUrl?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    otlpGrpcTracesUrl?: pulumi.Input<string | undefined>;
+    otlpHttpLogsUrl?: pulumi.Input<string | undefined>;
+    otlpHttpTracesUrl?: pulumi.Input<string | undefined>;
+    otlpTracesUrl?: pulumi.Input<string | undefined>;
     /**
      * Additional parameters.
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * The Observability plan ID.
      */
-    planId?: pulumi.Input<string>;
+    planId?: pulumi.Input<string | undefined>;
     /**
      * Specifies the Observability plan. E.g. `Observability-Monitoring-Medium-EU01`.
      */
-    planName?: pulumi.Input<string>;
+    planName?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the instance is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Specifies Targets URL.
      */
-    targetsUrl?: pulumi.Input<string>;
+    targetsUrl?: pulumi.Input<string | undefined>;
     /**
      * Specifies for how many days the traces are kept. Default is set to `7`.
      */
-    tracesRetentionDays?: pulumi.Input<number>;
-    zipkinSpansUrl?: pulumi.Input<string>;
+    tracesRetentionDays?: pulumi.Input<number | undefined>;
+    zipkinSpansUrl?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -378,39 +378,39 @@ export interface ObservabilityInstanceArgs {
     /**
      * The access control list for this instance. Each entry is an IP address range that is permitted to access, in CIDR notation.
      */
-    acls?: pulumi.Input<pulumi.Input<string>[]>;
+    acls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Alert configuration for the instance.
      */
-    alertConfig?: pulumi.Input<inputs.ObservabilityInstanceAlertConfig>;
+    alertConfig?: pulumi.Input<inputs.ObservabilityInstanceAlertConfig | undefined>;
     /**
      * If true, a default Grafana server admin user is created. It's recommended to set this to false and use STACKIT SSO (Owner or Observability Grafana Server Admin role) instead. It is still possible to manually create a new Grafana admin user via the Grafana UI later.
      */
-    grafanaAdminEnabled?: pulumi.Input<boolean>;
+    grafanaAdminEnabled?: pulumi.Input<boolean | undefined>;
     /**
      * Specifies for how many days the logs are kept. Default is set to `7`.
      */
-    logsRetentionDays?: pulumi.Input<number>;
+    logsRetentionDays?: pulumi.Input<number | undefined>;
     /**
      * Specifies for how many days the raw metrics are kept. Default is set to `90`.
      */
-    metricsRetentionDays?: pulumi.Input<number>;
+    metricsRetentionDays?: pulumi.Input<number | undefined>;
     /**
      * Specifies for how many days the 1h downsampled metrics are kept. must be less than the value of the 5m downsampling retention. Default is set to `90`.
      */
-    metricsRetentionDays1hDownsampling?: pulumi.Input<number>;
+    metricsRetentionDays1hDownsampling?: pulumi.Input<number | undefined>;
     /**
      * Specifies for how many days the 5m downsampled metrics are kept. must be less than the value of the general retention. Default is set to `90`.
      */
-    metricsRetentionDays5mDownsampling?: pulumi.Input<number>;
+    metricsRetentionDays5mDownsampling?: pulumi.Input<number | undefined>;
     /**
      * The name of the Observability instance.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Additional parameters.
      */
-    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Specifies the Observability plan. E.g. `Observability-Monitoring-Medium-EU01`.
      */
@@ -422,5 +422,5 @@ export interface ObservabilityInstanceArgs {
     /**
      * Specifies for how many days the traces are kept. Default is set to `7`.
      */
-    tracesRetentionDays?: pulumi.Input<number>;
+    tracesRetentionDays?: pulumi.Input<number | undefined>;
 }

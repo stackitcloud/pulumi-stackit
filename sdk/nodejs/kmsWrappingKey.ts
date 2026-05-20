@@ -162,55 +162,55 @@ export interface KmsWrappingKeyState {
     /**
      * The access scope of the key. Default is `PUBLIC`. Possible values are: `PUBLIC`, `SNA`.
      */
-    accessScope?: pulumi.Input<string>;
+    accessScope?: pulumi.Input<string | undefined>;
     /**
      * The wrapping algorithm used to wrap the key to import. Possible values are: `rsa2048OaepSha256`, `rsa3072OaepSha256`, `rsa4096OaepSha256`, `rsa4096OaepSha512`, `rsa2048OaepSha256Aes256KeyWrap`, `rsa3072OaepSha256Aes256KeyWrap`, `rsa4096OaepSha256Aes256KeyWrap`, `rsa4096OaepSha512Aes256KeyWrap`.
      */
-    algorithm?: pulumi.Input<string>;
+    algorithm?: pulumi.Input<string | undefined>;
     /**
      * The date and time the creation of the wrapping key was triggered.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * A user chosen description to distinguish multiple wrapping keys.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name to distinguish multiple wrapping keys.
      */
-    displayName?: pulumi.Input<string>;
+    displayName?: pulumi.Input<string | undefined>;
     /**
      * The date and time the wrapping key will expire.
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * The ID of the associated keyring
      */
-    keyringId?: pulumi.Input<string>;
+    keyringId?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the keyring is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The underlying system that is responsible for protecting the key material. Possible values are: `software`.
      */
-    protection?: pulumi.Input<string>;
+    protection?: pulumi.Input<string | undefined>;
     /**
      * The public key of the wrapping key.
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
     /**
      * The purpose for which the key will be used. Possible values are: `wrapSymmetricKey`, `wrapAsymmetricKey`.
      */
-    purpose?: pulumi.Input<string>;
+    purpose?: pulumi.Input<string | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The ID of the wrapping key
      */
-    wrappingKeyId?: pulumi.Input<string>;
+    wrappingKeyId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -220,7 +220,7 @@ export interface KmsWrappingKeyArgs {
     /**
      * The access scope of the key. Default is `PUBLIC`. Possible values are: `PUBLIC`, `SNA`.
      */
-    accessScope?: pulumi.Input<string>;
+    accessScope?: pulumi.Input<string | undefined>;
     /**
      * The wrapping algorithm used to wrap the key to import. Possible values are: `rsa2048OaepSha256`, `rsa3072OaepSha256`, `rsa4096OaepSha256`, `rsa4096OaepSha512`, `rsa2048OaepSha256Aes256KeyWrap`, `rsa3072OaepSha256Aes256KeyWrap`, `rsa4096OaepSha256Aes256KeyWrap`, `rsa4096OaepSha512Aes256KeyWrap`.
      */
@@ -228,7 +228,7 @@ export interface KmsWrappingKeyArgs {
     /**
      * A user chosen description to distinguish multiple wrapping keys.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The display name to distinguish multiple wrapping keys.
      */
@@ -252,5 +252,5 @@ export interface KmsWrappingKeyArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

@@ -356,10 +356,10 @@ def get_dns_zone(dns_name: Optional[_builtins.str] = None,
         type=pulumi.get(__ret__, 'type'),
         visibility=pulumi.get(__ret__, 'visibility'),
         zone_id=pulumi.get(__ret__, 'zone_id'))
-def get_dns_zone_output(dns_name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                        project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                        timeouts: Optional[pulumi.Input[Optional[Union['GetDnsZoneTimeoutsArgs', 'GetDnsZoneTimeoutsArgsDict']]]] = None,
-                        zone_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_dns_zone_output(dns_name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                        project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                        timeouts: pulumi.Input[Optional[Optional[Union['GetDnsZoneTimeoutsArgs', 'GetDnsZoneTimeoutsArgsDict']]]] = None,
+                        zone_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDnsZoneResult]:
     """
     DNS Zone resource schema.

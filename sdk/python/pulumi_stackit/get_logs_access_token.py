@@ -218,10 +218,10 @@ def get_logs_access_token(access_token_id: Optional[_builtins.str] = None,
         region=pulumi.get(__ret__, 'region'),
         status=pulumi.get(__ret__, 'status'),
         valid_until=pulumi.get(__ret__, 'valid_until'))
-def get_logs_access_token_output(access_token_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                 region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_logs_access_token_output(access_token_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                 region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLogsAccessTokenResult]:
     """
     Logs access token data source schema. Uses the `default_region` specified in the provider configuration as a fallback in case no `region` is defined on datasource level.

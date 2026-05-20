@@ -153,10 +153,10 @@ def get_cdn_custom_domain(certificate: Optional[Union['GetCdnCustomDomainCertifi
         name=pulumi.get(__ret__, 'name'),
         project_id=pulumi.get(__ret__, 'project_id'),
         status=pulumi.get(__ret__, 'status'))
-def get_cdn_custom_domain_output(certificate: Optional[pulumi.Input[Optional[Union['GetCdnCustomDomainCertificateArgs', 'GetCdnCustomDomainCertificateArgsDict']]]] = None,
-                                 distribution_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_cdn_custom_domain_output(certificate: pulumi.Input[Optional[Optional[Union['GetCdnCustomDomainCertificateArgs', 'GetCdnCustomDomainCertificateArgsDict']]]] = None,
+                                 distribution_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCdnCustomDomainResult]:
     """
     CDN distribution data source schema.

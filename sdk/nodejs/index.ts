@@ -170,6 +170,11 @@ export const getImageV2: typeof import("./getImageV2").getImageV2 = null as any;
 export const getImageV2Output: typeof import("./getImageV2").getImageV2Output = null as any;
 utilities.lazyLoad(exports, ["getImageV2","getImageV2Output"], () => require("./getImageV2"));
 
+export { GetIntakeRunnerArgs, GetIntakeRunnerResult, GetIntakeRunnerOutputArgs } from "./getIntakeRunner";
+export const getIntakeRunner: typeof import("./getIntakeRunner").getIntakeRunner = null as any;
+export const getIntakeRunnerOutput: typeof import("./getIntakeRunner").getIntakeRunnerOutput = null as any;
+utilities.lazyLoad(exports, ["getIntakeRunner","getIntakeRunnerOutput"], () => require("./getIntakeRunner"));
+
 export { GetKeyPairArgs, GetKeyPairResult, GetKeyPairOutputArgs } from "./getKeyPair";
 export const getKeyPair: typeof import("./getKeyPair").getKeyPair = null as any;
 export const getKeyPairOutput: typeof import("./getKeyPair").getKeyPairOutput = null as any;
@@ -510,6 +515,11 @@ export const getSfsShare: typeof import("./getSfsShare").getSfsShare = null as a
 export const getSfsShareOutput: typeof import("./getSfsShare").getSfsShareOutput = null as any;
 utilities.lazyLoad(exports, ["getSfsShare","getSfsShareOutput"], () => require("./getSfsShare"));
 
+export { GetSfsSnapshotPoliciesArgs, GetSfsSnapshotPoliciesResult, GetSfsSnapshotPoliciesOutputArgs } from "./getSfsSnapshotPolicies";
+export const getSfsSnapshotPolicies: typeof import("./getSfsSnapshotPolicies").getSfsSnapshotPolicies = null as any;
+export const getSfsSnapshotPoliciesOutput: typeof import("./getSfsSnapshotPolicies").getSfsSnapshotPoliciesOutput = null as any;
+utilities.lazyLoad(exports, ["getSfsSnapshotPolicies","getSfsSnapshotPoliciesOutput"], () => require("./getSfsSnapshotPolicies"));
+
 export { GetSkeClusterArgs, GetSkeClusterResult, GetSkeClusterOutputArgs } from "./getSkeCluster";
 export const getSkeCluster: typeof import("./getSkeCluster").getSkeCluster = null as any;
 export const getSkeClusterOutput: typeof import("./getSkeCluster").getSkeClusterOutput = null as any;
@@ -549,6 +559,11 @@ export { ImageArgs, ImageState } from "./image";
 export type Image = import("./image").Image;
 export const Image: typeof import("./image").Image = null as any;
 utilities.lazyLoad(exports, ["Image"], () => require("./image"));
+
+export { IntakeRunnerArgs, IntakeRunnerState } from "./intakeRunner";
+export type IntakeRunner = import("./intakeRunner").IntakeRunner;
+export const IntakeRunner: typeof import("./intakeRunner").IntakeRunner = null as any;
+utilities.lazyLoad(exports, ["IntakeRunner"], () => require("./intakeRunner"));
 
 export { KeyPairArgs, KeyPairState } from "./keyPair";
 export type KeyPair = import("./keyPair").KeyPair;
@@ -965,6 +980,8 @@ const _module = {
                 return new Git(name, <any>undefined, { urn })
             case "stackit:index/image:Image":
                 return new Image(name, <any>undefined, { urn })
+            case "stackit:index/intakeRunner:IntakeRunner":
+                return new IntakeRunner(name, <any>undefined, { urn })
             case "stackit:index/keyPair:KeyPair":
                 return new KeyPair(name, <any>undefined, { urn })
             case "stackit:index/kmsKey:KmsKey":
@@ -1133,6 +1150,7 @@ pulumi.runtime.registerResourceModule("stackit", "index/edgecloudKubeconfig", _m
 pulumi.runtime.registerResourceModule("stackit", "index/edgecloudToken", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/git", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/image", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/intakeRunner", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/keyPair", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/kmsKey", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/kmsKeyring", _module)

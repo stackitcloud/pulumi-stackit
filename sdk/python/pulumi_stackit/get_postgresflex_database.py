@@ -153,10 +153,10 @@ def get_postgresflex_database(database_id: Optional[_builtins.str] = None,
         owner=pulumi.get(__ret__, 'owner'),
         project_id=pulumi.get(__ret__, 'project_id'),
         region=pulumi.get(__ret__, 'region'))
-def get_postgresflex_database_output(database_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                     instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                     project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                     region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_postgresflex_database_output(database_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                     instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                     project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                     region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresflexDatabaseResult]:
     """
     Postgres Flex database resource schema. Must have a `region` specified in the provider configuration.

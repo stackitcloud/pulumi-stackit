@@ -101,19 +101,19 @@ export interface NetworkAreaRegionState {
     /**
      * The regional IPv4 config of a network area.
      */
-    ipv4?: pulumi.Input<inputs.NetworkAreaRegionIpv4>;
+    ipv4?: pulumi.Input<inputs.NetworkAreaRegionIpv4 | undefined>;
     /**
      * The network area ID.
      */
-    networkAreaId?: pulumi.Input<string>;
+    networkAreaId?: pulumi.Input<string | undefined>;
     /**
      * STACKIT organization ID to which the network area is associated.
      */
-    organizationId?: pulumi.Input<string>;
+    organizationId?: pulumi.Input<string | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -135,5 +135,5 @@ export interface NetworkAreaRegionArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

@@ -118,7 +118,7 @@ def get_key_pair(name: Optional[_builtins.str] = None,
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         public_key=pulumi.get(__ret__, 'public_key'))
-def get_key_pair_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_key_pair_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKeyPairResult]:
     """
     Key pair resource schema. Must have a `region` specified in the provider configuration.

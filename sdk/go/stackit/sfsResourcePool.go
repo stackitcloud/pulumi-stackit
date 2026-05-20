@@ -36,6 +36,8 @@ type SfsResourcePool struct {
 	ResourcePoolId pulumi.StringOutput `pulumi:"resourcePoolId"`
 	// Size of the resource pool (unit: gigabytes)
 	SizeGigabytes pulumi.IntOutput `pulumi:"sizeGigabytes"`
+	// Name of the snapshot policy.
+	SnapshotPolicy SfsResourcePoolSnapshotPolicyPtrOutput `pulumi:"snapshotPolicy"`
 	// If set to true, snapshots are visible and accessible to users. (default: false)
 	SnapshotsAreVisible pulumi.BoolOutput `pulumi:"snapshotsAreVisible"`
 }
@@ -101,6 +103,8 @@ type sfsResourcePoolState struct {
 	ResourcePoolId *string `pulumi:"resourcePoolId"`
 	// Size of the resource pool (unit: gigabytes)
 	SizeGigabytes *int `pulumi:"sizeGigabytes"`
+	// Name of the snapshot policy.
+	SnapshotPolicy *SfsResourcePoolSnapshotPolicy `pulumi:"snapshotPolicy"`
 	// If set to true, snapshots are visible and accessible to users. (default: false)
 	SnapshotsAreVisible *bool `pulumi:"snapshotsAreVisible"`
 }
@@ -122,6 +126,8 @@ type SfsResourcePoolState struct {
 	ResourcePoolId pulumi.StringPtrInput
 	// Size of the resource pool (unit: gigabytes)
 	SizeGigabytes pulumi.IntPtrInput
+	// Name of the snapshot policy.
+	SnapshotPolicy SfsResourcePoolSnapshotPolicyPtrInput
 	// If set to true, snapshots are visible and accessible to users. (default: false)
 	SnapshotsAreVisible pulumi.BoolPtrInput
 }
@@ -145,6 +151,8 @@ type sfsResourcePoolArgs struct {
 	Region *string `pulumi:"region"`
 	// Size of the resource pool (unit: gigabytes)
 	SizeGigabytes int `pulumi:"sizeGigabytes"`
+	// Name of the snapshot policy.
+	SnapshotPolicy *SfsResourcePoolSnapshotPolicy `pulumi:"snapshotPolicy"`
 	// If set to true, snapshots are visible and accessible to users. (default: false)
 	SnapshotsAreVisible *bool `pulumi:"snapshotsAreVisible"`
 }
@@ -165,6 +173,8 @@ type SfsResourcePoolArgs struct {
 	Region pulumi.StringPtrInput
 	// Size of the resource pool (unit: gigabytes)
 	SizeGigabytes pulumi.IntInput
+	// Name of the snapshot policy.
+	SnapshotPolicy SfsResourcePoolSnapshotPolicyPtrInput
 	// If set to true, snapshots are visible and accessible to users. (default: false)
 	SnapshotsAreVisible pulumi.BoolPtrInput
 }
@@ -294,6 +304,11 @@ func (o SfsResourcePoolOutput) ResourcePoolId() pulumi.StringOutput {
 // Size of the resource pool (unit: gigabytes)
 func (o SfsResourcePoolOutput) SizeGigabytes() pulumi.IntOutput {
 	return o.ApplyT(func(v *SfsResourcePool) pulumi.IntOutput { return v.SizeGigabytes }).(pulumi.IntOutput)
+}
+
+// Name of the snapshot policy.
+func (o SfsResourcePoolOutput) SnapshotPolicy() SfsResourcePoolSnapshotPolicyPtrOutput {
+	return o.ApplyT(func(v *SfsResourcePool) SfsResourcePoolSnapshotPolicyPtrOutput { return v.SnapshotPolicy }).(SfsResourcePoolSnapshotPolicyPtrOutput)
 }
 
 // If set to true, snapshots are visible and accessible to users. (default: false)

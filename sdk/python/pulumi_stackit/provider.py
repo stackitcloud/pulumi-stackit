@@ -19,54 +19,55 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 alb_certificates_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 alb_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 authorization_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cdn_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 credentials_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 edgecloud_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_beta_resources: Optional[pulumi.Input[_builtins.bool]] = None,
-                 experiments: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 git_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 iaas_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 loadbalancer_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 logme_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 logs_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 mariadb_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 modelserving_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 mongodbflex_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 objectstorage_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 observability_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 oidc_request_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 oidc_request_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 opensearch_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 postgresflex_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 rabbitmq_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 redis_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resourcemanager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 scf_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 secretsmanager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_backup_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_update_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_federated_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_federated_token_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_key_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_enablement_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 sfs_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 ske_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 sqlserverflex_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_oidc: Optional[pulumi.Input[_builtins.bool]] = None):
+                 alb_certificates_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 alb_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 authorization_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cdn_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 credentials_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 edgecloud_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_beta_resources: pulumi.Input[Optional[_builtins.bool]] = None,
+                 experiments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 git_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 iaas_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 intake_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 loadbalancer_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 logme_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 logs_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 mariadb_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 modelserving_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 mongodbflex_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 objectstorage_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 observability_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 oidc_request_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 oidc_request_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 opensearch_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 postgresflex_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 rabbitmq_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 redis_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 resourcemanager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 scf_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 secretsmanager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_backup_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_update_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_federated_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_federated_token_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_key_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_enablement_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 sfs_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 ske_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 sqlserverflex_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_oidc: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Provider resource.
 
@@ -82,6 +83,7 @@ class ProviderArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] experiments: Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: iam, routing-tables, network
         :param pulumi.Input[_builtins.str] git_custom_endpoint: Custom endpoint for the Git service
         :param pulumi.Input[_builtins.str] iaas_custom_endpoint: Custom endpoint for the IaaS service
+        :param pulumi.Input[_builtins.str] intake_custom_endpoint: Custom endpoint for the Intake service
         :param pulumi.Input[_builtins.str] kms_custom_endpoint: Custom endpoint for the KMS service
         :param pulumi.Input[_builtins.str] loadbalancer_custom_endpoint: Custom endpoint for the Load Balancer service
         :param pulumi.Input[_builtins.str] logme_custom_endpoint: Custom endpoint for the LogMe service
@@ -143,6 +145,8 @@ class ProviderArgs:
             pulumi.set(__self__, "git_custom_endpoint", git_custom_endpoint)
         if iaas_custom_endpoint is not None:
             pulumi.set(__self__, "iaas_custom_endpoint", iaas_custom_endpoint)
+        if intake_custom_endpoint is not None:
+            pulumi.set(__self__, "intake_custom_endpoint", intake_custom_endpoint)
         if kms_custom_endpoint is not None:
             pulumi.set(__self__, "kms_custom_endpoint", kms_custom_endpoint)
         if loadbalancer_custom_endpoint is not None:
@@ -224,580 +228,592 @@ class ProviderArgs:
 
     @_builtins.property
     @pulumi.getter(name="albCertificatesCustomEndpoint")
-    def alb_certificates_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alb_certificates_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom endpoint for the Application Load Balancer TLS Certificate service
         """
         return pulumi.get(self, "alb_certificates_custom_endpoint")
 
     @alb_certificates_custom_endpoint.setter
-    def alb_certificates_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alb_certificates_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alb_certificates_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="albCustomEndpoint")
-    def alb_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alb_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom endpoint for the Application Load Balancer service
         """
         return pulumi.get(self, "alb_custom_endpoint")
 
     @alb_custom_endpoint.setter
-    def alb_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alb_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alb_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizationCustomEndpoint")
-    def authorization_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def authorization_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom endpoint for the Membership service
         """
         return pulumi.get(self, "authorization_custom_endpoint")
 
     @authorization_custom_endpoint.setter
-    def authorization_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def authorization_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authorization_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="cdnCustomEndpoint")
-    def cdn_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cdn_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom endpoint for the CDN service
         """
         return pulumi.get(self, "cdn_custom_endpoint")
 
     @cdn_custom_endpoint.setter
-    def cdn_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cdn_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cdn_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="credentialsPath")
-    def credentials_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def credentials_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path of JSON from where the credentials are read. Takes precedence over the env var `STACKIT_CREDENTIALS_PATH`. Default value is `~/.stackit/credentials.json`.
         """
         return pulumi.get(self, "credentials_path")
 
     @credentials_path.setter
-    def credentials_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def credentials_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "credentials_path", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultRegion")
-    def default_region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def default_region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region will be used as the default location for regional services. Not all services require a region, some are global
         """
         return pulumi.get(self, "default_region")
 
     @default_region.setter
-    def default_region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def default_region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "default_region", value)
 
     @_builtins.property
     @pulumi.getter(name="dnsCustomEndpoint")
-    def dns_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def dns_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom endpoint for the DNS service
         """
         return pulumi.get(self, "dns_custom_endpoint")
 
     @dns_custom_endpoint.setter
-    def dns_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def dns_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "dns_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="edgecloudCustomEndpoint")
-    def edgecloud_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def edgecloud_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom endpoint for the Edge Cloud service
         """
         return pulumi.get(self, "edgecloud_custom_endpoint")
 
     @edgecloud_custom_endpoint.setter
-    def edgecloud_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def edgecloud_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "edgecloud_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="enableBetaResources")
-    def enable_beta_resources(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_beta_resources(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable beta resources. Default is false.
         """
         return pulumi.get(self, "enable_beta_resources")
 
     @enable_beta_resources.setter
-    def enable_beta_resources(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_beta_resources(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_beta_resources", value)
 
     @_builtins.property
     @pulumi.getter
-    def experiments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def experiments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: iam, routing-tables, network
         """
         return pulumi.get(self, "experiments")
 
     @experiments.setter
-    def experiments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def experiments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "experiments", value)
 
     @_builtins.property
     @pulumi.getter(name="gitCustomEndpoint")
-    def git_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def git_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom endpoint for the Git service
         """
         return pulumi.get(self, "git_custom_endpoint")
 
     @git_custom_endpoint.setter
-    def git_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def git_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "git_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="iaasCustomEndpoint")
-    def iaas_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def iaas_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom endpoint for the IaaS service
         """
         return pulumi.get(self, "iaas_custom_endpoint")
 
     @iaas_custom_endpoint.setter
-    def iaas_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def iaas_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "iaas_custom_endpoint", value)
 
     @_builtins.property
+    @pulumi.getter(name="intakeCustomEndpoint")
+    def intake_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Custom endpoint for the Intake service
+        """
+        return pulumi.get(self, "intake_custom_endpoint")
+
+    @intake_custom_endpoint.setter
+    def intake_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "intake_custom_endpoint", value)
+
+    @_builtins.property
     @pulumi.getter(name="kmsCustomEndpoint")
-    def kms_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def kms_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom endpoint for the KMS service
         """
         return pulumi.get(self, "kms_custom_endpoint")
 
     @kms_custom_endpoint.setter
-    def kms_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def kms_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "kms_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="loadbalancerCustomEndpoint")
-    def loadbalancer_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def loadbalancer_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom endpoint for the Load Balancer service
         """
         return pulumi.get(self, "loadbalancer_custom_endpoint")
 
     @loadbalancer_custom_endpoint.setter
-    def loadbalancer_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def loadbalancer_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "loadbalancer_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="logmeCustomEndpoint")
-    def logme_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logme_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom endpoint for the LogMe service
         """
         return pulumi.get(self, "logme_custom_endpoint")
 
     @logme_custom_endpoint.setter
-    def logme_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logme_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logme_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="logsCustomEndpoint")
-    def logs_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logs_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom endpoint for the Logs service
         """
         return pulumi.get(self, "logs_custom_endpoint")
 
     @logs_custom_endpoint.setter
-    def logs_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logs_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logs_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="mariadbCustomEndpoint")
-    def mariadb_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mariadb_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom endpoint for the MariaDB service
         """
         return pulumi.get(self, "mariadb_custom_endpoint")
 
     @mariadb_custom_endpoint.setter
-    def mariadb_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mariadb_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mariadb_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="modelservingCustomEndpoint")
-    def modelserving_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def modelserving_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom endpoint for the AI Model Serving service
         """
         return pulumi.get(self, "modelserving_custom_endpoint")
 
     @modelserving_custom_endpoint.setter
-    def modelserving_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def modelserving_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "modelserving_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="mongodbflexCustomEndpoint")
-    def mongodbflex_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mongodbflex_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom endpoint for the MongoDB Flex service
         """
         return pulumi.get(self, "mongodbflex_custom_endpoint")
 
     @mongodbflex_custom_endpoint.setter
-    def mongodbflex_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mongodbflex_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mongodbflex_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="objectstorageCustomEndpoint")
-    def objectstorage_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def objectstorage_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom endpoint for the Object Storage service
         """
         return pulumi.get(self, "objectstorage_custom_endpoint")
 
     @objectstorage_custom_endpoint.setter
-    def objectstorage_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def objectstorage_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "objectstorage_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="observabilityCustomEndpoint")
-    def observability_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def observability_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom endpoint for the Observability service
         """
         return pulumi.get(self, "observability_custom_endpoint")
 
     @observability_custom_endpoint.setter
-    def observability_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def observability_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "observability_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="oidcRequestToken")
-    def oidc_request_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oidc_request_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The bearer token for the request to the OIDC provider. For use when authenticating as a Service Account using OpenID Connect.
         """
         return pulumi.get(self, "oidc_request_token")
 
     @oidc_request_token.setter
-    def oidc_request_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oidc_request_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oidc_request_token", value)
 
     @_builtins.property
     @pulumi.getter(name="oidcRequestUrl")
-    def oidc_request_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def oidc_request_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL for the OIDC provider from which to request an ID token. For use when authenticating as a Service Account using OpenID Connect.
         """
         return pulumi.get(self, "oidc_request_url")
 
     @oidc_request_url.setter
-    def oidc_request_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def oidc_request_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "oidc_request_url", value)
 
     @_builtins.property
     @pulumi.getter(name="opensearchCustomEndpoint")
-    def opensearch_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def opensearch_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom endpoint for the OpenSearch service
         """
         return pulumi.get(self, "opensearch_custom_endpoint")
 
     @opensearch_custom_endpoint.setter
-    def opensearch_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def opensearch_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "opensearch_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="postgresflexCustomEndpoint")
-    def postgresflex_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def postgresflex_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom endpoint for the PostgresFlex service
         """
         return pulumi.get(self, "postgresflex_custom_endpoint")
 
     @postgresflex_custom_endpoint.setter
-    def postgresflex_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def postgresflex_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "postgresflex_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
-    def private_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Private RSA key used for authentication, relevant for the key flow. It takes precedence over the private key that is included in the service account key.
         """
         return pulumi.get(self, "private_key")
 
     @private_key.setter
-    def private_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key", value)
 
     @_builtins.property
     @pulumi.getter(name="privateKeyPath")
-    def private_key_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_key_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path for the private RSA key used for authentication, relevant for the key flow. It takes precedence over the private key that is included in the service account key.
         """
         return pulumi.get(self, "private_key_path")
 
     @private_key_path.setter
-    def private_key_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_key_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key_path", value)
 
     @_builtins.property
     @pulumi.getter(name="rabbitmqCustomEndpoint")
-    def rabbitmq_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def rabbitmq_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom endpoint for the RabbitMQ service
         """
         return pulumi.get(self, "rabbitmq_custom_endpoint")
 
     @rabbitmq_custom_endpoint.setter
-    def rabbitmq_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def rabbitmq_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "rabbitmq_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="redisCustomEndpoint")
-    def redis_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def redis_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom endpoint for the Redis service
         """
         return pulumi.get(self, "redis_custom_endpoint")
 
     @redis_custom_endpoint.setter
-    def redis_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def redis_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "redis_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""This attribute is deprecated. Use 'default_region' instead""")
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region will be used as the default location for regional services. Not all services require a region, some are global
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="resourcemanagerCustomEndpoint")
-    def resourcemanager_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def resourcemanager_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom endpoint for the Resource Manager service
         """
         return pulumi.get(self, "resourcemanager_custom_endpoint")
 
     @resourcemanager_custom_endpoint.setter
-    def resourcemanager_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def resourcemanager_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "resourcemanager_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="scfCustomEndpoint")
-    def scf_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def scf_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom endpoint for the Cloud Foundry (SCF) service
         """
         return pulumi.get(self, "scf_custom_endpoint")
 
     @scf_custom_endpoint.setter
-    def scf_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def scf_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "scf_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="secretsmanagerCustomEndpoint")
-    def secretsmanager_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def secretsmanager_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom endpoint for the Secrets Manager service
         """
         return pulumi.get(self, "secretsmanager_custom_endpoint")
 
     @secretsmanager_custom_endpoint.setter
-    def secretsmanager_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def secretsmanager_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "secretsmanager_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="serverBackupCustomEndpoint")
-    def server_backup_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_backup_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom endpoint for the Server Backup service
         """
         return pulumi.get(self, "server_backup_custom_endpoint")
 
     @server_backup_custom_endpoint.setter
-    def server_backup_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_backup_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_backup_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="serverUpdateCustomEndpoint")
-    def server_update_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_update_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom endpoint for the Server Update service
         """
         return pulumi.get(self, "server_update_custom_endpoint")
 
     @server_update_custom_endpoint.setter
-    def server_update_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_update_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_update_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountCustomEndpoint")
-    def service_account_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom endpoint for the Service Account service
         """
         return pulumi.get(self, "service_account_custom_endpoint")
 
     @service_account_custom_endpoint.setter
-    def service_account_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountEmail")
-    def service_account_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service account email. It can also be set using the environment variable STACKIT_SERVICE_ACCOUNT_EMAIL. It is required if you want to use the resource manager project resource. This value is required using OpenID Connect authentication.
         """
         return pulumi.get(self, "service_account_email")
 
     @service_account_email.setter
-    def service_account_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_email", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountFederatedToken")
-    def service_account_federated_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_federated_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The OIDC ID token for use when authenticating as a Service Account using OpenID Connect.
         """
         return pulumi.get(self, "service_account_federated_token")
 
     @service_account_federated_token.setter
-    def service_account_federated_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_federated_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_federated_token", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountFederatedTokenPath")
-    def service_account_federated_token_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_federated_token_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path for workload identity assertion. It can also be set using the environment variable STACKIT_FEDERATED_TOKEN_FILE.
         """
         return pulumi.get(self, "service_account_federated_token_path")
 
     @service_account_federated_token_path.setter
-    def service_account_federated_token_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_federated_token_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_federated_token_path", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountKey")
-    def service_account_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Service account key used for authentication. If set, the key flow will be used to authenticate all operations.
         """
         return pulumi.get(self, "service_account_key")
 
     @service_account_key.setter
-    def service_account_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_key", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountKeyPath")
-    def service_account_key_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_key_path(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Path for the service account key used for authentication. If set, the key flow will be used to authenticate all operations.
         """
         return pulumi.get(self, "service_account_key_path")
 
     @service_account_key_path.setter
-    def service_account_key_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_key_path(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_key_path", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceAccountToken")
     @_utilities.deprecated("""Authentication via Service Account Token is deprecated and will be removed on December 17, 2025. Please use `service_account_key` or `service_account_key_path` instead. For a smooth transition, refer to our migration guide: https://docs.stackit.cloud/platform/access-and-identity/service-accounts/migrate-flows/""")
-    def service_account_token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_account_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Token used for authentication. If set, the token flow will be used to authenticate all operations.
         """
         return pulumi.get(self, "service_account_token")
 
     @service_account_token.setter
-    def service_account_token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_account_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_account_token", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceEnablementCustomEndpoint")
-    def service_enablement_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_enablement_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom endpoint for the Service Enablement API
         """
         return pulumi.get(self, "service_enablement_custom_endpoint")
 
     @service_enablement_custom_endpoint.setter
-    def service_enablement_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_enablement_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_enablement_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="sfsCustomEndpoint")
-    def sfs_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sfs_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom endpoint for the Stackit Filestorage API
         """
         return pulumi.get(self, "sfs_custom_endpoint")
 
     @sfs_custom_endpoint.setter
-    def sfs_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sfs_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sfs_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="skeCustomEndpoint")
-    def ske_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ske_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom endpoint for the Kubernetes Engine (SKE) service
         """
         return pulumi.get(self, "ske_custom_endpoint")
 
     @ske_custom_endpoint.setter
-    def ske_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ske_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ske_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="sqlserverflexCustomEndpoint")
-    def sqlserverflex_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def sqlserverflex_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom endpoint for the SQL Server Flex service
         """
         return pulumi.get(self, "sqlserverflex_custom_endpoint")
 
     @sqlserverflex_custom_endpoint.setter
-    def sqlserverflex_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def sqlserverflex_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "sqlserverflex_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="tokenCustomEndpoint")
-    def token_custom_endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom endpoint for the token API, which is used to request access tokens when using the key flow
         """
         return pulumi.get(self, "token_custom_endpoint")
 
     @token_custom_endpoint.setter
-    def token_custom_endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="useOidc")
-    def use_oidc(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def use_oidc(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to `false`.
         """
         return pulumi.get(self, "use_oidc")
 
     @use_oidc.setter
-    def use_oidc(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def use_oidc(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_oidc", value)
 
 
@@ -807,54 +823,55 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alb_certificates_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 alb_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 authorization_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cdn_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 credentials_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 edgecloud_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_beta_resources: Optional[pulumi.Input[_builtins.bool]] = None,
-                 experiments: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 git_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 iaas_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 loadbalancer_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 logme_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 logs_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 mariadb_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 modelserving_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 mongodbflex_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 objectstorage_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 observability_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 oidc_request_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 oidc_request_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 opensearch_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 postgresflex_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 rabbitmq_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 redis_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resourcemanager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 scf_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 secretsmanager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_backup_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_update_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_federated_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_federated_token_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_key_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_enablement_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 sfs_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 ske_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 sqlserverflex_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_oidc: Optional[pulumi.Input[_builtins.bool]] = None,
+                 alb_certificates_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 alb_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 authorization_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cdn_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 credentials_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 edgecloud_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_beta_resources: pulumi.Input[Optional[_builtins.bool]] = None,
+                 experiments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 git_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 iaas_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 intake_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 loadbalancer_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 logme_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 logs_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 mariadb_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 modelserving_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 mongodbflex_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 objectstorage_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 observability_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 oidc_request_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 oidc_request_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 opensearch_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 postgresflex_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 rabbitmq_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 redis_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 resourcemanager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 scf_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 secretsmanager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_backup_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_update_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_federated_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_federated_token_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_key_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_enablement_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 sfs_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 ske_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 sqlserverflex_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_oidc: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         The provider type for the stackit package. By default, resources use package-wide configuration
@@ -877,6 +894,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] experiments: Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: iam, routing-tables, network
         :param pulumi.Input[_builtins.str] git_custom_endpoint: Custom endpoint for the Git service
         :param pulumi.Input[_builtins.str] iaas_custom_endpoint: Custom endpoint for the IaaS service
+        :param pulumi.Input[_builtins.str] intake_custom_endpoint: Custom endpoint for the Intake service
         :param pulumi.Input[_builtins.str] kms_custom_endpoint: Custom endpoint for the KMS service
         :param pulumi.Input[_builtins.str] loadbalancer_custom_endpoint: Custom endpoint for the Load Balancer service
         :param pulumi.Input[_builtins.str] logme_custom_endpoint: Custom endpoint for the LogMe service
@@ -942,54 +960,55 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alb_certificates_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 alb_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 authorization_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 cdn_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 credentials_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 default_region: Optional[pulumi.Input[_builtins.str]] = None,
-                 dns_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 edgecloud_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_beta_resources: Optional[pulumi.Input[_builtins.bool]] = None,
-                 experiments: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 git_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 iaas_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 kms_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 loadbalancer_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 logme_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 logs_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 mariadb_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 modelserving_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 mongodbflex_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 objectstorage_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 observability_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 oidc_request_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 oidc_request_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 opensearch_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 postgresflex_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_key_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 rabbitmq_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 redis_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 resourcemanager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 scf_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 secretsmanager_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_backup_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_update_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_federated_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_federated_token_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_key_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_account_token: Optional[pulumi.Input[_builtins.str]] = None,
-                 service_enablement_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 sfs_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 ske_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 sqlserverflex_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 token_custom_endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 use_oidc: Optional[pulumi.Input[_builtins.bool]] = None,
+                 alb_certificates_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 alb_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 authorization_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 cdn_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 credentials_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 default_region: pulumi.Input[Optional[_builtins.str]] = None,
+                 dns_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 edgecloud_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_beta_resources: pulumi.Input[Optional[_builtins.bool]] = None,
+                 experiments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 git_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 iaas_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 intake_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 kms_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 loadbalancer_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 logme_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 logs_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 mariadb_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 modelserving_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 mongodbflex_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 objectstorage_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 observability_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 oidc_request_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 oidc_request_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 opensearch_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 postgresflex_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_key_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 rabbitmq_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 redis_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 resourcemanager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 scf_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 secretsmanager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_backup_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_update_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_federated_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_federated_token_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_key_path: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_enablement_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 sfs_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 ske_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 sqlserverflex_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 use_oidc: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1011,6 +1030,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["experiments"] = pulumi.Output.from_input(experiments).apply(pulumi.runtime.to_json) if experiments is not None else None
             __props__.__dict__["git_custom_endpoint"] = git_custom_endpoint
             __props__.__dict__["iaas_custom_endpoint"] = iaas_custom_endpoint
+            __props__.__dict__["intake_custom_endpoint"] = intake_custom_endpoint
             __props__.__dict__["kms_custom_endpoint"] = kms_custom_endpoint
             __props__.__dict__["loadbalancer_custom_endpoint"] = loadbalancer_custom_endpoint
             __props__.__dict__["logme_custom_endpoint"] = logme_custom_endpoint
@@ -1132,6 +1152,14 @@ class Provider(pulumi.ProviderResource):
         Custom endpoint for the IaaS service
         """
         return pulumi.get(self, "iaas_custom_endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="intakeCustomEndpoint")
+    def intake_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Custom endpoint for the Intake service
+        """
+        return pulumi.get(self, "intake_custom_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="kmsCustomEndpoint")

@@ -133,37 +133,37 @@ export interface SfsShareState {
      * clients with IPs matching the IP ACL of the Resource Pool hosting this Share.
      * You can also assign a Share Export Policy after creating the Share
      */
-    exportPolicy?: pulumi.Input<string>;
+    exportPolicy?: pulumi.Input<string | undefined>;
     /**
      * Mount path of the Share, used to mount the Share
      */
-    mountPath?: pulumi.Input<string>;
+    mountPath?: pulumi.Input<string | undefined>;
     /**
      * Name of the share.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the share is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource pool for the SFS share.
      */
-    resourcePoolId?: pulumi.Input<string>;
+    resourcePoolId?: pulumi.Input<string | undefined>;
     /**
      * share ID
      */
-    shareId?: pulumi.Input<string>;
+    shareId?: pulumi.Input<string | undefined>;
     /**
      * Space hard limit for the Share.
      * 			If zero, the Share will have access to the full space of the Resource Pool it lives in.
      * 			(unit: gigabytes)
      */
-    spaceHardLimitGigabytes?: pulumi.Input<number>;
+    spaceHardLimitGigabytes?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -176,11 +176,11 @@ export interface SfsShareArgs {
      * clients with IPs matching the IP ACL of the Resource Pool hosting this Share.
      * You can also assign a Share Export Policy after creating the Share
      */
-    exportPolicy?: pulumi.Input<string>;
+    exportPolicy?: pulumi.Input<string | undefined>;
     /**
      * Name of the share.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the share is associated.
      */
@@ -188,7 +188,7 @@ export interface SfsShareArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The ID of the resource pool for the SFS share.
      */

@@ -79,6 +79,12 @@ namespace Pulumi.Stackit
         public Output<string?> IaasCustomEndpoint { get; private set; } = null!;
 
         /// <summary>
+        /// Custom endpoint for the Intake service
+        /// </summary>
+        [Output("intakeCustomEndpoint")]
+        public Output<string?> IntakeCustomEndpoint { get; private set; } = null!;
+
+        /// <summary>
         /// Custom endpoint for the KMS service
         /// </summary>
         [Output("kmsCustomEndpoint")]
@@ -400,6 +406,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("iaasCustomEndpoint")]
         public Input<string>? IaasCustomEndpoint { get; set; }
+
+        /// <summary>
+        /// Custom endpoint for the Intake service
+        /// </summary>
+        [Input("intakeCustomEndpoint")]
+        public Input<string>? IntakeCustomEndpoint { get; set; }
 
         /// <summary>
         /// Custom endpoint for the KMS service

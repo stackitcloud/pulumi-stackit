@@ -229,9 +229,9 @@ def get_ske_cluster(name: Optional[_builtins.str] = None,
         pod_address_ranges=pulumi.get(__ret__, 'pod_address_ranges'),
         project_id=pulumi.get(__ret__, 'project_id'),
         region=pulumi.get(__ret__, 'region'))
-def get_ske_cluster_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                           project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                           region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_ske_cluster_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                           project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                           region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSkeClusterResult]:
     """
     SKE Cluster data source schema. Must have a `region` specified in the provider configuration.

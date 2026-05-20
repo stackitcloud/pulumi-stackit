@@ -100,23 +100,23 @@ export interface ServerUpdateEnableState {
     /**
      * Set to true if the service is enabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * STACKIT Project ID to which the server update enable is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Server ID to which the server update enable is associated.
      */
-    serverId?: pulumi.Input<string>;
+    serverId?: pulumi.Input<string | undefined>;
     /**
      * The update policy ID.
      */
-    updatePolicyId?: pulumi.Input<string>;
+    updatePolicyId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -130,7 +130,7 @@ export interface ServerUpdateEnableArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Server ID to which the server update enable is associated.
      */
@@ -138,5 +138,5 @@ export interface ServerUpdateEnableArgs {
     /**
      * The update policy ID.
      */
-    updatePolicyId?: pulumi.Input<string>;
+    updatePolicyId?: pulumi.Input<string | undefined>;
 }

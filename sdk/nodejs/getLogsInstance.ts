@@ -130,5 +130,5 @@ export interface GetLogsInstanceOutputArgs {
     /**
      * STACKIT region name the resource is located in. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

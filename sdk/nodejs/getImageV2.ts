@@ -172,19 +172,19 @@ export interface GetImageV2OutputArgs {
     /**
      * Additional filtering options based on image properties. Can be used independently or in conjunction with `name` or `nameRegex`.
      */
-    filter?: pulumi.Input<inputs.GetImageV2FilterArgs>;
+    filter?: pulumi.Input<inputs.GetImageV2FilterArgs | undefined>;
     /**
      * Image ID to fetch directly
      */
-    imageId?: pulumi.Input<string>;
+    imageId?: pulumi.Input<string | undefined>;
     /**
      * Exact image name to match. Optionally applies a `filter` block to further refine results in case multiple images share the same name. The first match is returned, optionally sorted by name in ascending order. Cannot be used together with `nameRegex`.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Regular expression to match against image names. Optionally applies a `filter` block to narrow down results when multiple image names match the regex. The first match is returned, optionally sorted by name in ascending order. Cannot be used together with `name`.
      */
-    nameRegex?: pulumi.Input<string>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the image is associated.
      */
@@ -192,9 +192,9 @@ export interface GetImageV2OutputArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * If set to `true`, images are sorted in ascending lexicographical order by image name (such as `Ubuntu 18.04`, `Ubuntu 20.04`, `Ubuntu 22.04`) before selecting the first match. Defaults to `false` (descending such as `Ubuntu 22.04`, `Ubuntu 20.04`, `Ubuntu 18.04`).
      */
-    sortAscending?: pulumi.Input<boolean>;
+    sortAscending?: pulumi.Input<boolean | undefined>;
 }

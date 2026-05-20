@@ -129,43 +129,43 @@ export interface ScfOrganizationState {
     /**
      * The time when the organization was created
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The name of the organization
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the Cloud Foundry Organization
      */
-    orgId?: pulumi.Input<string>;
+    orgId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the platform associated with the organization
      */
-    platformId?: pulumi.Input<string>;
+    platformId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project associated with the organization
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the quota associated with the organization
      */
-    quotaId?: pulumi.Input<string>;
+    quotaId?: pulumi.Input<string | undefined>;
     /**
      * The resource region. If not defined, the provider region is used
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The status of the organization (e.g., deleting, delete_failed)
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A boolean indicating whether the organization is suspended
      */
-    suspended?: pulumi.Input<boolean>;
+    suspended?: pulumi.Input<boolean | undefined>;
     /**
      * The time when the organization was last updated
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -175,11 +175,11 @@ export interface ScfOrganizationArgs {
     /**
      * The name of the organization
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the platform associated with the organization
      */
-    platformId?: pulumi.Input<string>;
+    platformId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project associated with the organization
      */
@@ -187,13 +187,13 @@ export interface ScfOrganizationArgs {
     /**
      * The ID of the quota associated with the organization
      */
-    quotaId?: pulumi.Input<string>;
+    quotaId?: pulumi.Input<string | undefined>;
     /**
      * The resource region. If not defined, the provider region is used
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * A boolean indicating whether the organization is suspended
      */
-    suspended?: pulumi.Input<boolean>;
+    suspended?: pulumi.Input<boolean | undefined>;
 }

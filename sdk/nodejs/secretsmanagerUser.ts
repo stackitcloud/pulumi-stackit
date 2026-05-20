@@ -122,31 +122,31 @@ export interface SecretsmanagerUserState {
     /**
      * A user chosen description to differentiate between multiple users. Can't be changed after creation.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * ID of the Secrets Manager instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * An auto-generated password.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * STACKIT Project ID to which the instance is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The user's ID.
      */
-    userId?: pulumi.Input<string>;
+    userId?: pulumi.Input<string | undefined>;
     /**
      * An auto-generated user name.
      */
-    username?: pulumi.Input<string>;
+    username?: pulumi.Input<string | undefined>;
     /**
      * If true, the user has writeaccess to the secrets engine.
      */
-    writeEnabled?: pulumi.Input<boolean>;
+    writeEnabled?: pulumi.Input<boolean | undefined>;
 }
 
 /**

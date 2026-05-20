@@ -23,8 +23,8 @@ class CdnCustomDomainArgs:
     def __init__(__self__, *,
                  distribution_id: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
-                 certificate: Optional[pulumi.Input['CdnCustomDomainCertificateArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None):
+                 certificate: pulumi.Input[Optional['CdnCustomDomainCertificateArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a CdnCustomDomain resource.
 
@@ -65,35 +65,35 @@ class CdnCustomDomainArgs:
 
     @_builtins.property
     @pulumi.getter
-    def certificate(self) -> Optional[pulumi.Input['CdnCustomDomainCertificateArgs']]:
+    def certificate(self) -> pulumi.Input[Optional['CdnCustomDomainCertificateArgs']]:
         """
         The TLS certificate for the custom domain. If omitted, a managed certificate will be used. If the block is specified, a custom certificate is used.
         """
         return pulumi.get(self, "certificate")
 
     @certificate.setter
-    def certificate(self, value: Optional[pulumi.Input['CdnCustomDomainCertificateArgs']]):
+    def certificate(self, value: pulumi.Input[Optional['CdnCustomDomainCertificateArgs']]):
         pulumi.set(self, "certificate", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class _CdnCustomDomainState:
     def __init__(__self__, *,
-                 certificate: Optional[pulumi.Input['CdnCustomDomainCertificateArgs']] = None,
-                 distribution_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 errors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 certificate: pulumi.Input[Optional['CdnCustomDomainCertificateArgs']] = None,
+                 distribution_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 errors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CdnCustomDomain resources.
 
@@ -118,71 +118,71 @@ class _CdnCustomDomainState:
 
     @_builtins.property
     @pulumi.getter
-    def certificate(self) -> Optional[pulumi.Input['CdnCustomDomainCertificateArgs']]:
+    def certificate(self) -> pulumi.Input[Optional['CdnCustomDomainCertificateArgs']]:
         """
         The TLS certificate for the custom domain. If omitted, a managed certificate will be used. If the block is specified, a custom certificate is used.
         """
         return pulumi.get(self, "certificate")
 
     @certificate.setter
-    def certificate(self, value: Optional[pulumi.Input['CdnCustomDomainCertificateArgs']]):
+    def certificate(self, value: pulumi.Input[Optional['CdnCustomDomainCertificateArgs']]):
         pulumi.set(self, "certificate", value)
 
     @_builtins.property
     @pulumi.getter(name="distributionId")
-    def distribution_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def distribution_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CDN distribution ID
         """
         return pulumi.get(self, "distribution_id")
 
     @distribution_id.setter
-    def distribution_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def distribution_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "distribution_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def errors(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def errors(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of distribution errors
         """
         return pulumi.get(self, "errors")
 
     @errors.setter
-    def errors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def errors(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "errors", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         STACKIT project ID associated with the distribution
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Status of the distribution
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -192,10 +192,10 @@ class CdnCustomDomain(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 certificate: Optional[pulumi.Input[Union['CdnCustomDomainCertificateArgs', 'CdnCustomDomainCertificateArgsDict']]] = None,
-                 distribution_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 certificate: pulumi.Input[Optional[Union['CdnCustomDomainCertificateArgs', 'CdnCustomDomainCertificateArgsDict']]] = None,
+                 distribution_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         CDN distribution data source schema.
@@ -240,10 +240,10 @@ class CdnCustomDomain(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 certificate: Optional[pulumi.Input[Union['CdnCustomDomainCertificateArgs', 'CdnCustomDomainCertificateArgsDict']]] = None,
-                 distribution_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 certificate: pulumi.Input[Optional[Union['CdnCustomDomainCertificateArgs', 'CdnCustomDomainCertificateArgsDict']]] = None,
+                 distribution_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -273,12 +273,12 @@ class CdnCustomDomain(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            certificate: Optional[pulumi.Input[Union['CdnCustomDomainCertificateArgs', 'CdnCustomDomainCertificateArgsDict']]] = None,
-            distribution_id: Optional[pulumi.Input[_builtins.str]] = None,
-            errors: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'CdnCustomDomain':
+            certificate: pulumi.Input[Optional[Union['CdnCustomDomainCertificateArgs', 'CdnCustomDomainCertificateArgsDict']]] = None,
+            distribution_id: pulumi.Input[Optional[_builtins.str]] = None,
+            errors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'CdnCustomDomain':
         """
         Get an existing CdnCustomDomain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -480,8 +480,8 @@ def get_observability_instance(instance_id: Optional[_builtins.str] = None,
         targets_url=pulumi.get(__ret__, 'targets_url'),
         traces_retention_days=pulumi.get(__ret__, 'traces_retention_days'),
         zipkin_spans_url=pulumi.get(__ret__, 'zipkin_spans_url'))
-def get_observability_instance_output(instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                      project_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_observability_instance_output(instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                      project_id: pulumi.Input[Optional[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetObservabilityInstanceResult]:
     """
     Observability instance data source schema. Must have a `region` specified in the provider configuration.

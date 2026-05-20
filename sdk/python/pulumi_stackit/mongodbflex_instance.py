@@ -29,8 +29,8 @@ class MongodbflexInstanceArgs:
                  replicas: pulumi.Input[_builtins.int],
                  storage: pulumi.Input['MongodbflexInstanceStorageArgs'],
                  version: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a MongodbflexInstance resource.
 
@@ -136,43 +136,43 @@ class MongodbflexInstanceArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource region. If not defined, the provider region is used.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _MongodbflexInstanceState:
     def __init__(__self__, *,
-                 acls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 backup_schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 flavor: Optional[pulumi.Input['MongodbflexInstanceFlavorArgs']] = None,
-                 instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input['MongodbflexInstanceOptionsArgs']] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 replicas: Optional[pulumi.Input[_builtins.int]] = None,
-                 storage: Optional[pulumi.Input['MongodbflexInstanceStorageArgs']] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None):
+                 acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 backup_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 flavor: pulumi.Input[Optional['MongodbflexInstanceFlavorArgs']] = None,
+                 instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional['MongodbflexInstanceOptionsArgs']] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 replicas: pulumi.Input[Optional[_builtins.int]] = None,
+                 storage: pulumi.Input[Optional['MongodbflexInstanceStorageArgs']] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MongodbflexInstance resources.
 
@@ -208,119 +208,119 @@ class _MongodbflexInstanceState:
 
     @_builtins.property
     @pulumi.getter
-    def acls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def acls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The Access Control List (ACL) for the MongoDB Flex instance.
         """
         return pulumi.get(self, "acls")
 
     @acls.setter
-    def acls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def acls(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "acls", value)
 
     @_builtins.property
     @pulumi.getter(name="backupSchedule")
-    def backup_schedule(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def backup_schedule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *").
         """
         return pulumi.get(self, "backup_schedule")
 
     @backup_schedule.setter
-    def backup_schedule(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def backup_schedule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_schedule", value)
 
     @_builtins.property
     @pulumi.getter
-    def flavor(self) -> Optional[pulumi.Input['MongodbflexInstanceFlavorArgs']]:
+    def flavor(self) -> pulumi.Input[Optional['MongodbflexInstanceFlavorArgs']]:
         return pulumi.get(self, "flavor")
 
     @flavor.setter
-    def flavor(self, value: Optional[pulumi.Input['MongodbflexInstanceFlavorArgs']]):
+    def flavor(self, value: pulumi.Input[Optional['MongodbflexInstanceFlavorArgs']]):
         pulumi.set(self, "flavor", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the MongoDB Flex instance.
         """
         return pulumi.get(self, "instance_id")
 
     @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instance_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def options(self) -> Optional[pulumi.Input['MongodbflexInstanceOptionsArgs']]:
+    def options(self) -> pulumi.Input[Optional['MongodbflexInstanceOptionsArgs']]:
         return pulumi.get(self, "options")
 
     @options.setter
-    def options(self, value: Optional[pulumi.Input['MongodbflexInstanceOptionsArgs']]):
+    def options(self, value: pulumi.Input[Optional['MongodbflexInstanceOptionsArgs']]):
         pulumi.set(self, "options", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         STACKIT project ID to which the instance is associated.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource region. If not defined, the provider region is used.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def replicas(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def replicas(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "replicas")
 
     @replicas.setter
-    def replicas(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def replicas(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "replicas", value)
 
     @_builtins.property
     @pulumi.getter
-    def storage(self) -> Optional[pulumi.Input['MongodbflexInstanceStorageArgs']]:
+    def storage(self) -> pulumi.Input[Optional['MongodbflexInstanceStorageArgs']]:
         return pulumi.get(self, "storage")
 
     @storage.setter
-    def storage(self, value: Optional[pulumi.Input['MongodbflexInstanceStorageArgs']]):
+    def storage(self, value: pulumi.Input[Optional['MongodbflexInstanceStorageArgs']]):
         pulumi.set(self, "storage", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
 
@@ -330,16 +330,16 @@ class MongodbflexInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 backup_schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 flavor: Optional[pulumi.Input[Union['MongodbflexInstanceFlavorArgs', 'MongodbflexInstanceFlavorArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input[Union['MongodbflexInstanceOptionsArgs', 'MongodbflexInstanceOptionsArgsDict']]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 replicas: Optional[pulumi.Input[_builtins.int]] = None,
-                 storage: Optional[pulumi.Input[Union['MongodbflexInstanceStorageArgs', 'MongodbflexInstanceStorageArgsDict']]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
+                 acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 backup_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 flavor: pulumi.Input[Optional[Union['MongodbflexInstanceFlavorArgs', 'MongodbflexInstanceFlavorArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[Union['MongodbflexInstanceOptionsArgs', 'MongodbflexInstanceOptionsArgsDict']]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 replicas: pulumi.Input[Optional[_builtins.int]] = None,
+                 storage: pulumi.Input[Optional[Union['MongodbflexInstanceStorageArgs', 'MongodbflexInstanceStorageArgsDict']]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         MongoDB Flex instance resource schema. Must have a `region` specified in the provider configuration.
@@ -382,16 +382,16 @@ class MongodbflexInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 backup_schedule: Optional[pulumi.Input[_builtins.str]] = None,
-                 flavor: Optional[pulumi.Input[Union['MongodbflexInstanceFlavorArgs', 'MongodbflexInstanceFlavorArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 options: Optional[pulumi.Input[Union['MongodbflexInstanceOptionsArgs', 'MongodbflexInstanceOptionsArgsDict']]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 replicas: Optional[pulumi.Input[_builtins.int]] = None,
-                 storage: Optional[pulumi.Input[Union['MongodbflexInstanceStorageArgs', 'MongodbflexInstanceStorageArgsDict']]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
+                 acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 backup_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 flavor: pulumi.Input[Optional[Union['MongodbflexInstanceFlavorArgs', 'MongodbflexInstanceFlavorArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 options: pulumi.Input[Optional[Union['MongodbflexInstanceOptionsArgs', 'MongodbflexInstanceOptionsArgsDict']]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 replicas: pulumi.Input[Optional[_builtins.int]] = None,
+                 storage: pulumi.Input[Optional[Union['MongodbflexInstanceStorageArgs', 'MongodbflexInstanceStorageArgsDict']]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -438,17 +438,17 @@ class MongodbflexInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acls: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            backup_schedule: Optional[pulumi.Input[_builtins.str]] = None,
-            flavor: Optional[pulumi.Input[Union['MongodbflexInstanceFlavorArgs', 'MongodbflexInstanceFlavorArgsDict']]] = None,
-            instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            options: Optional[pulumi.Input[Union['MongodbflexInstanceOptionsArgs', 'MongodbflexInstanceOptionsArgsDict']]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            replicas: Optional[pulumi.Input[_builtins.int]] = None,
-            storage: Optional[pulumi.Input[Union['MongodbflexInstanceStorageArgs', 'MongodbflexInstanceStorageArgsDict']]] = None,
-            version: Optional[pulumi.Input[_builtins.str]] = None) -> 'MongodbflexInstance':
+            acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            backup_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+            flavor: pulumi.Input[Optional[Union['MongodbflexInstanceFlavorArgs', 'MongodbflexInstanceFlavorArgsDict']]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            options: pulumi.Input[Optional[Union['MongodbflexInstanceOptionsArgs', 'MongodbflexInstanceOptionsArgsDict']]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            replicas: pulumi.Input[Optional[_builtins.int]] = None,
+            storage: pulumi.Input[Optional[Union['MongodbflexInstanceStorageArgs', 'MongodbflexInstanceStorageArgsDict']]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> 'MongodbflexInstance':
         """
         Get an existing MongodbflexInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

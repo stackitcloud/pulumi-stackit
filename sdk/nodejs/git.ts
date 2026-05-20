@@ -131,43 +131,43 @@ export interface GitState {
     /**
      * Restricted ACL for instance access.
      */
-    acls?: pulumi.Input<pulumi.Input<string>[]>;
+    acls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * How many bytes of disk space is consumed.
      */
-    consumedDisk?: pulumi.Input<string>;
+    consumedDisk?: pulumi.Input<string | undefined>;
     /**
      * How many bytes of Object Storage is consumed.
      */
-    consumedObjectStorage?: pulumi.Input<string>;
+    consumedObjectStorage?: pulumi.Input<string | undefined>;
     /**
      * Instance creation timestamp in RFC3339 format.
      */
-    created?: pulumi.Input<string>;
+    created?: pulumi.Input<string | undefined>;
     /**
      * Instance flavor. If not provided, defaults to git-100. For a list of available flavors, refer to our API documentation: `https://docs.api.stackit.cloud/documentation/git/version/v1beta`
      */
-    flavor?: pulumi.Input<string>;
+    flavor?: pulumi.Input<string | undefined>;
     /**
      * ID linked to the git instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Unique name linked to the git instance.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the git instance is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Url linked to the git instance.
      */
-    url?: pulumi.Input<string>;
+    url?: pulumi.Input<string | undefined>;
     /**
      * Version linked to the git instance.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -177,15 +177,15 @@ export interface GitArgs {
     /**
      * Restricted ACL for instance access.
      */
-    acls?: pulumi.Input<pulumi.Input<string>[]>;
+    acls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Instance flavor. If not provided, defaults to git-100. For a list of available flavors, refer to our API documentation: `https://docs.api.stackit.cloud/documentation/git/version/v1beta`
      */
-    flavor?: pulumi.Input<string>;
+    flavor?: pulumi.Input<string | undefined>;
     /**
      * Unique name linked to the git instance.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the git instance is associated.
      */

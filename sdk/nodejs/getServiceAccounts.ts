@@ -94,11 +94,11 @@ export interface GetServiceAccountsOutputArgs {
     /**
      * Optional regular expression to filter service accounts by email.
      */
-    emailRegex?: pulumi.Input<string>;
+    emailRegex?: pulumi.Input<string | undefined>;
     /**
      * Optional suffix to filter service accounts by email (e.g.,`@sa.stackit.cloud`, `@ske.sa.stackit.cloud`).
      */
-    emailSuffix?: pulumi.Input<string>;
+    emailSuffix?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID.
      */
@@ -106,5 +106,5 @@ export interface GetServiceAccountsOutputArgs {
     /**
      * If set to `true`, service accounts are sorted in ascending lexicographical order by email. Defaults to `false` (descending).
      */
-    sortAscending?: pulumi.Input<boolean>;
+    sortAscending?: pulumi.Input<boolean | undefined>;
 }

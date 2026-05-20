@@ -125,7 +125,7 @@ export interface GetDnsRecordSetOutputArgs {
      * The rr set id.
      */
     recordSetId: pulumi.Input<string>;
-    timeouts?: pulumi.Input<inputs.GetDnsRecordSetTimeoutsArgs>;
+    timeouts?: pulumi.Input<inputs.GetDnsRecordSetTimeoutsArgs | undefined>;
     /**
      * The zone ID to which is dns record set is associated.
      */

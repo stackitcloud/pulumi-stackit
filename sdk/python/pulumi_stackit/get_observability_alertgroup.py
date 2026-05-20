@@ -135,9 +135,9 @@ def get_observability_alertgroup(instance_id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         project_id=pulumi.get(__ret__, 'project_id'),
         rules=pulumi.get(__ret__, 'rules'))
-def get_observability_alertgroup_output(instance_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                        name: Optional[pulumi.Input[_builtins.str]] = None,
-                                        project_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_observability_alertgroup_output(instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                        name: pulumi.Input[Optional[_builtins.str]] = None,
+                                        project_id: pulumi.Input[Optional[_builtins.str]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetObservabilityAlertgroupResult]:
     """
     Observability alert group datasource schema. Used to create alerts based on metrics (Thanos). Must have a `region` specified in the provider configuration.

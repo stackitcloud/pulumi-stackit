@@ -141,10 +141,10 @@ def get_service_accounts(email_regex: Optional[_builtins.str] = None,
         items=pulumi.get(__ret__, 'items'),
         project_id=pulumi.get(__ret__, 'project_id'),
         sort_ascending=pulumi.get(__ret__, 'sort_ascending'))
-def get_service_accounts_output(email_regex: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                email_suffix: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                sort_ascending: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
+def get_service_accounts_output(email_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                email_suffix: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                sort_ascending: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceAccountsResult]:
     """
     Service accounts plural data source schema. Returns a list of all service accounts in a project, optionally filtered.

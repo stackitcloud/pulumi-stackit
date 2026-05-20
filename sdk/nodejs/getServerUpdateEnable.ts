@@ -82,7 +82,7 @@ export interface GetServerUpdateEnableOutputArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Server ID to which the server update enable is associated.
      */

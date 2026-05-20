@@ -101,23 +101,23 @@ export interface SecretsmanagerInstanceState {
     /**
      * The access control list for this instance. Each entry is an IP or IP range that is permitted to access, in CIDR notation
      */
-    acls?: pulumi.Input<pulumi.Input<string>[]>;
+    acls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * ID of the Secrets Manager instance.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * The STACKIT-KMS key for secret encryption and decryption.
      */
-    kmsKey?: pulumi.Input<inputs.SecretsmanagerInstanceKmsKey>;
+    kmsKey?: pulumi.Input<inputs.SecretsmanagerInstanceKmsKey | undefined>;
     /**
      * Instance name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the instance is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -127,15 +127,15 @@ export interface SecretsmanagerInstanceArgs {
     /**
      * The access control list for this instance. Each entry is an IP or IP range that is permitted to access, in CIDR notation
      */
-    acls?: pulumi.Input<pulumi.Input<string>[]>;
+    acls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The STACKIT-KMS key for secret encryption and decryption.
      */
-    kmsKey?: pulumi.Input<inputs.SecretsmanagerInstanceKmsKey>;
+    kmsKey?: pulumi.Input<inputs.SecretsmanagerInstanceKmsKey | undefined>;
     /**
      * Instance name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the instance is associated.
      */

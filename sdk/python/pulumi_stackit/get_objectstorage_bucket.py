@@ -144,9 +144,9 @@ def get_objectstorage_bucket(name: Optional[_builtins.str] = None,
         region=pulumi.get(__ret__, 'region'),
         url_path_style=pulumi.get(__ret__, 'url_path_style'),
         url_virtual_hosted_style=pulumi.get(__ret__, 'url_virtual_hosted_style'))
-def get_objectstorage_bucket_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                                    project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                    region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_objectstorage_bucket_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                                    project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                    region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetObjectstorageBucketResult]:
     """
     ObjectStorage bucket data source schema. Must have a `region` specified in the provider configuration.

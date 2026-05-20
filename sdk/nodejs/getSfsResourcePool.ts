@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -87,6 +89,10 @@ export interface GetSfsResourcePoolResult {
      */
     readonly sizeReducibleAt: string;
     /**
+     * Name of the snapshot policy.
+     */
+    readonly snapshotPolicy: outputs.GetSfsResourcePoolSnapshotPolicy;
+    /**
      * If set to true, snapshots are visible and accessible to users. (default: false)
      */
     readonly snapshotsAreVisible: boolean;
@@ -118,7 +124,7 @@ export interface GetSfsResourcePoolOutputArgs {
     /**
      * The resource region. Read-only attribute that reflects the provider region.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * Resourcepool ID
      */

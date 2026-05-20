@@ -134,8 +134,8 @@ def get_alb_certificate(cert_id: Optional[_builtins.str] = None,
         project_id=pulumi.get(__ret__, 'project_id'),
         public_key=pulumi.get(__ret__, 'public_key'),
         region=pulumi.get(__ret__, 'region'))
-def get_alb_certificate_output(cert_id: Optional[pulumi.Input[_builtins.str]] = None,
-                               project_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_alb_certificate_output(cert_id: pulumi.Input[Optional[_builtins.str]] = None,
+                               project_id: pulumi.Input[Optional[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAlbCertificateResult]:
     """
     ALB TLS Certificate data source schema. Must have a region specified in the provider configuration.

@@ -122,25 +122,25 @@ export interface RabbitmqCredentialState {
     /**
      * The credential's ID.
      */
-    credentialId?: pulumi.Input<string>;
-    host?: pulumi.Input<string>;
-    hosts?: pulumi.Input<pulumi.Input<string>[]>;
-    httpApiUri?: pulumi.Input<string>;
-    httpApiUris?: pulumi.Input<pulumi.Input<string>[]>;
+    credentialId?: pulumi.Input<string | undefined>;
+    host?: pulumi.Input<string | undefined>;
+    hosts?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    httpApiUri?: pulumi.Input<string | undefined>;
+    httpApiUris?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * ID of the RabbitMQ instance.
      */
-    instanceId?: pulumi.Input<string>;
-    management?: pulumi.Input<string>;
-    password?: pulumi.Input<string>;
-    port?: pulumi.Input<number>;
+    instanceId?: pulumi.Input<string | undefined>;
+    management?: pulumi.Input<string | undefined>;
+    password?: pulumi.Input<string | undefined>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * STACKIT Project ID to which the instance is associated.
      */
-    projectId?: pulumi.Input<string>;
-    uri?: pulumi.Input<string>;
-    uris?: pulumi.Input<pulumi.Input<string>[]>;
-    username?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
+    uri?: pulumi.Input<string | undefined>;
+    uris?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    username?: pulumi.Input<string | undefined>;
 }
 
 /**

@@ -87,15 +87,15 @@ export interface ObjectstorageComplianceLockState {
     /**
      * Maximum retention period in days.
      */
-    maxRetentionDays?: pulumi.Input<number>;
+    maxRetentionDays?: pulumi.Input<number | undefined>;
     /**
      * STACKIT Project ID to which the compliance lock is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -109,5 +109,5 @@ export interface ObjectstorageComplianceLockArgs {
     /**
      * The resource region. If not defined, the provider region is used.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }

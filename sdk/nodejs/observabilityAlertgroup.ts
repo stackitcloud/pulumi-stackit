@@ -107,23 +107,23 @@ export interface ObservabilityAlertgroupState {
     /**
      * Observability instance ID to which the alert group is associated.
      */
-    instanceId?: pulumi.Input<string>;
+    instanceId?: pulumi.Input<string | undefined>;
     /**
      * Specifies the frequency at which rules within the group are evaluated. The interval must be at least 60 seconds and defaults to 60 seconds if not set. Supported formats include hours, minutes, and seconds, either singly or in combination. Examples of valid formats are: '5h30m40s', '5h', '5h30m', '60m', and '60s'.
      */
-    interval?: pulumi.Input<string>;
+    interval?: pulumi.Input<string | undefined>;
     /**
      * The name of the alert group. Is the identifier and must be unique in the group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the alert group is associated.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * Rules for the alert group
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.ObservabilityAlertgroupRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.ObservabilityAlertgroupRule>[] | undefined>;
 }
 
 /**
@@ -137,11 +137,11 @@ export interface ObservabilityAlertgroupArgs {
     /**
      * Specifies the frequency at which rules within the group are evaluated. The interval must be at least 60 seconds and defaults to 60 seconds if not set. Supported formats include hours, minutes, and seconds, either singly or in combination. Examples of valid formats are: '5h30m40s', '5h', '5h30m', '60m', and '60s'.
      */
-    interval?: pulumi.Input<string>;
+    interval?: pulumi.Input<string | undefined>;
     /**
      * The name of the alert group. Is the identifier and must be unique in the group.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * STACKIT project ID to which the alert group is associated.
      */

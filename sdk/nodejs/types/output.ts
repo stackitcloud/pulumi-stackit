@@ -2506,6 +2506,17 @@ export interface GetSfsExportPolicyRule {
     superUser: boolean;
 }
 
+export interface GetSfsResourcePoolSnapshotPolicy {
+    /**
+     * ID of the snapshot policy.
+     */
+    id: string;
+    /**
+     * Name of the snapshot policy.
+     */
+    name: string;
+}
+
 export interface GetSfsResourcePoolSnapshotSnapshot {
     /**
      * (optional) A comment to add more information about a snapshot
@@ -2531,6 +2542,61 @@ export interface GetSfsResourcePoolSnapshotSnapshot {
      * Name of the Resource Pool Snapshot
      */
     snapshotName: string;
+}
+
+export interface GetSfsSnapshotPoliciesItem {
+    /**
+     * Comment of the Snapshot Policy.
+     */
+    comment: string;
+    /**
+     * Created At timestamp.
+     */
+    createdAt: string;
+    /**
+     * Wether the Snapshot Policy is enabled.
+     */
+    enabled: boolean;
+    /**
+     * ID of the Snapshot Policy.
+     */
+    id: string;
+    /**
+     * Name of the Snapshot Policy.
+     */
+    name: string;
+    snapshotSchedules: outputs.GetSfsSnapshotPoliciesItemSnapshotSchedule[];
+}
+
+export interface GetSfsSnapshotPoliciesItemSnapshotSchedule {
+    /**
+     * Created At timestamp.
+     */
+    createdAt: string;
+    /**
+     * ID of the Snapshot Schedule.
+     */
+    id: string;
+    /**
+     * Interval of the Snapshot Schedule (follows the cron schedule xpression in Unix-like systems).
+     */
+    interval: string;
+    /**
+     * Name of the Snapshot Schedule.
+     */
+    name: string;
+    /**
+     * Prefix used for snapshots created by this policy.
+     */
+    prefix: string;
+    /**
+     * Retention Count.
+     */
+    retentionCount: number;
+    /**
+     * Retention Period (ISO 8601 format or 'infinite').
+     */
+    retentionPeriod: string;
 }
 
 export interface GetSkeClusterExtensions {
@@ -3925,6 +3991,17 @@ export interface SfsExportPolicyRule {
      * Flag to indicate if client IPs matching this rule have root access on the Share
      */
     superUser: boolean;
+}
+
+export interface SfsResourcePoolSnapshotPolicy {
+    /**
+     * ID of the snapshot policy.
+     */
+    id: string;
+    /**
+     * Name of the snapshot policy.
+     */
+    name: string;
 }
 
 export interface SkeClusterExtensions {

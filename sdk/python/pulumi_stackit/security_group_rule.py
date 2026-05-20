@@ -24,14 +24,14 @@ class SecurityGroupRuleArgs:
                  direction: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
                  security_group_id: pulumi.Input[_builtins.str],
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 ether_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 icmp_parameters: Optional[pulumi.Input['SecurityGroupRuleIcmpParametersArgs']] = None,
-                 ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_range: Optional[pulumi.Input['SecurityGroupRulePortRangeArgs']] = None,
-                 protocol: Optional[pulumi.Input['SecurityGroupRuleProtocolArgs']] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_security_group_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 ether_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 icmp_parameters: pulumi.Input[Optional['SecurityGroupRuleIcmpParametersArgs']] = None,
+                 ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_range: pulumi.Input[Optional['SecurityGroupRulePortRangeArgs']] = None,
+                 protocol: pulumi.Input[Optional['SecurityGroupRuleProtocolArgs']] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_security_group_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a SecurityGroupRule resource.
 
@@ -105,116 +105,116 @@ class SecurityGroupRuleArgs:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rule description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter(name="etherType")
-    def ether_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ether_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ethertype which the rule should match.
         """
         return pulumi.get(self, "ether_type")
 
     @ether_type.setter
-    def ether_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ether_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ether_type", value)
 
     @_builtins.property
     @pulumi.getter(name="icmpParameters")
-    def icmp_parameters(self) -> Optional[pulumi.Input['SecurityGroupRuleIcmpParametersArgs']]:
+    def icmp_parameters(self) -> pulumi.Input[Optional['SecurityGroupRuleIcmpParametersArgs']]:
         """
         ICMP Parameters. These parameters should only be provided if the protocol is ICMP.
         """
         return pulumi.get(self, "icmp_parameters")
 
     @icmp_parameters.setter
-    def icmp_parameters(self, value: Optional[pulumi.Input['SecurityGroupRuleIcmpParametersArgs']]):
+    def icmp_parameters(self, value: pulumi.Input[Optional['SecurityGroupRuleIcmpParametersArgs']]):
         pulumi.set(self, "icmp_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="ipRange")
-    def ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The remote IP range which the rule should match.
         """
         return pulumi.get(self, "ip_range")
 
     @ip_range.setter
-    def ip_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_range", value)
 
     @_builtins.property
     @pulumi.getter(name="portRange")
-    def port_range(self) -> Optional[pulumi.Input['SecurityGroupRulePortRangeArgs']]:
+    def port_range(self) -> pulumi.Input[Optional['SecurityGroupRulePortRangeArgs']]:
         """
         The range of ports. This should only be provided if the protocol is not ICMP.
         """
         return pulumi.get(self, "port_range")
 
     @port_range.setter
-    def port_range(self, value: Optional[pulumi.Input['SecurityGroupRulePortRangeArgs']]):
+    def port_range(self, value: pulumi.Input[Optional['SecurityGroupRulePortRangeArgs']]):
         pulumi.set(self, "port_range", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input['SecurityGroupRuleProtocolArgs']]:
+    def protocol(self) -> pulumi.Input[Optional['SecurityGroupRuleProtocolArgs']]:
         """
         The internet protocol which the rule should match.
         """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input['SecurityGroupRuleProtocolArgs']]):
+    def protocol(self, value: pulumi.Input[Optional['SecurityGroupRuleProtocolArgs']]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource region. If not defined, the provider region is used.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteSecurityGroupId")
-    def remote_security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remote_security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The remote security group which the rule should match.
         """
         return pulumi.get(self, "remote_security_group_id")
 
     @remote_security_group_id.setter
-    def remote_security_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remote_security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remote_security_group_id", value)
 
 
 @pulumi.input_type
 class _SecurityGroupRuleState:
     def __init__(__self__, *,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 ether_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 icmp_parameters: Optional[pulumi.Input['SecurityGroupRuleIcmpParametersArgs']] = None,
-                 ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_range: Optional[pulumi.Input['SecurityGroupRulePortRangeArgs']] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input['SecurityGroupRuleProtocolArgs']] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_rule_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 ether_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 icmp_parameters: pulumi.Input[Optional['SecurityGroupRuleIcmpParametersArgs']] = None,
+                 ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_range: pulumi.Input[Optional['SecurityGroupRulePortRangeArgs']] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional['SecurityGroupRuleProtocolArgs']] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_rule_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SecurityGroupRule resources.
 
@@ -258,146 +258,146 @@ class _SecurityGroupRuleState:
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The rule description.
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def direction(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def direction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The direction of the traffic which the rule should match. Some of the possible values are: Possible values are: `ingress`, `egress`.
         """
         return pulumi.get(self, "direction")
 
     @direction.setter
-    def direction(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def direction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "direction", value)
 
     @_builtins.property
     @pulumi.getter(name="etherType")
-    def ether_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ether_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ethertype which the rule should match.
         """
         return pulumi.get(self, "ether_type")
 
     @ether_type.setter
-    def ether_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ether_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ether_type", value)
 
     @_builtins.property
     @pulumi.getter(name="icmpParameters")
-    def icmp_parameters(self) -> Optional[pulumi.Input['SecurityGroupRuleIcmpParametersArgs']]:
+    def icmp_parameters(self) -> pulumi.Input[Optional['SecurityGroupRuleIcmpParametersArgs']]:
         """
         ICMP Parameters. These parameters should only be provided if the protocol is ICMP.
         """
         return pulumi.get(self, "icmp_parameters")
 
     @icmp_parameters.setter
-    def icmp_parameters(self, value: Optional[pulumi.Input['SecurityGroupRuleIcmpParametersArgs']]):
+    def icmp_parameters(self, value: pulumi.Input[Optional['SecurityGroupRuleIcmpParametersArgs']]):
         pulumi.set(self, "icmp_parameters", value)
 
     @_builtins.property
     @pulumi.getter(name="ipRange")
-    def ip_range(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_range(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The remote IP range which the rule should match.
         """
         return pulumi.get(self, "ip_range")
 
     @ip_range.setter
-    def ip_range(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_range(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_range", value)
 
     @_builtins.property
     @pulumi.getter(name="portRange")
-    def port_range(self) -> Optional[pulumi.Input['SecurityGroupRulePortRangeArgs']]:
+    def port_range(self) -> pulumi.Input[Optional['SecurityGroupRulePortRangeArgs']]:
         """
         The range of ports. This should only be provided if the protocol is not ICMP.
         """
         return pulumi.get(self, "port_range")
 
     @port_range.setter
-    def port_range(self, value: Optional[pulumi.Input['SecurityGroupRulePortRangeArgs']]):
+    def port_range(self, value: pulumi.Input[Optional['SecurityGroupRulePortRangeArgs']]):
         pulumi.set(self, "port_range", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         STACKIT project ID to which the security group rule is associated.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input['SecurityGroupRuleProtocolArgs']]:
+    def protocol(self) -> pulumi.Input[Optional['SecurityGroupRuleProtocolArgs']]:
         """
         The internet protocol which the rule should match.
         """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input['SecurityGroupRuleProtocolArgs']]):
+    def protocol(self, value: pulumi.Input[Optional['SecurityGroupRuleProtocolArgs']]):
         pulumi.set(self, "protocol", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The resource region. If not defined, the provider region is used.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="remoteSecurityGroupId")
-    def remote_security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def remote_security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The remote security group which the rule should match.
         """
         return pulumi.get(self, "remote_security_group_id")
 
     @remote_security_group_id.setter
-    def remote_security_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def remote_security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "remote_security_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupId")
-    def security_group_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The security group ID.
         """
         return pulumi.get(self, "security_group_id")
 
     @security_group_id.setter
-    def security_group_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group_id", value)
 
     @_builtins.property
     @pulumi.getter(name="securityGroupRuleId")
-    def security_group_rule_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def security_group_rule_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The security group rule ID.
         """
         return pulumi.get(self, "security_group_rule_id")
 
     @security_group_rule_id.setter
-    def security_group_rule_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def security_group_rule_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "security_group_rule_id", value)
 
 
@@ -407,17 +407,17 @@ class SecurityGroupRule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 ether_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 icmp_parameters: Optional[pulumi.Input[Union['SecurityGroupRuleIcmpParametersArgs', 'SecurityGroupRuleIcmpParametersArgsDict']]] = None,
-                 ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_range: Optional[pulumi.Input[Union['SecurityGroupRulePortRangeArgs', 'SecurityGroupRulePortRangeArgsDict']]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[Union['SecurityGroupRuleProtocolArgs', 'SecurityGroupRuleProtocolArgsDict']]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 ether_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 icmp_parameters: pulumi.Input[Optional[Union['SecurityGroupRuleIcmpParametersArgs', 'SecurityGroupRuleIcmpParametersArgsDict']]] = None,
+                 ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_range: pulumi.Input[Optional[Union['SecurityGroupRulePortRangeArgs', 'SecurityGroupRulePortRangeArgsDict']]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[Union['SecurityGroupRuleProtocolArgs', 'SecurityGroupRuleProtocolArgsDict']]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Security group rule resource schema. Must have a `region` specified in the provider configuration.
@@ -466,17 +466,17 @@ class SecurityGroupRule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 direction: Optional[pulumi.Input[_builtins.str]] = None,
-                 ether_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 icmp_parameters: Optional[pulumi.Input[Union['SecurityGroupRuleIcmpParametersArgs', 'SecurityGroupRuleIcmpParametersArgsDict']]] = None,
-                 ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-                 port_range: Optional[pulumi.Input[Union['SecurityGroupRulePortRangeArgs', 'SecurityGroupRulePortRangeArgsDict']]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 protocol: Optional[pulumi.Input[Union['SecurityGroupRuleProtocolArgs', 'SecurityGroupRuleProtocolArgsDict']]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 remote_security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 direction: pulumi.Input[Optional[_builtins.str]] = None,
+                 ether_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 icmp_parameters: pulumi.Input[Optional[Union['SecurityGroupRuleIcmpParametersArgs', 'SecurityGroupRuleIcmpParametersArgsDict']]] = None,
+                 ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+                 port_range: pulumi.Input[Optional[Union['SecurityGroupRulePortRangeArgs', 'SecurityGroupRulePortRangeArgsDict']]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 protocol: pulumi.Input[Optional[Union['SecurityGroupRuleProtocolArgs', 'SecurityGroupRuleProtocolArgsDict']]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 remote_security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -514,18 +514,18 @@ class SecurityGroupRule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            direction: Optional[pulumi.Input[_builtins.str]] = None,
-            ether_type: Optional[pulumi.Input[_builtins.str]] = None,
-            icmp_parameters: Optional[pulumi.Input[Union['SecurityGroupRuleIcmpParametersArgs', 'SecurityGroupRuleIcmpParametersArgsDict']]] = None,
-            ip_range: Optional[pulumi.Input[_builtins.str]] = None,
-            port_range: Optional[pulumi.Input[Union['SecurityGroupRulePortRangeArgs', 'SecurityGroupRulePortRangeArgsDict']]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            protocol: Optional[pulumi.Input[Union['SecurityGroupRuleProtocolArgs', 'SecurityGroupRuleProtocolArgsDict']]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            remote_security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            security_group_id: Optional[pulumi.Input[_builtins.str]] = None,
-            security_group_rule_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'SecurityGroupRule':
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            direction: pulumi.Input[Optional[_builtins.str]] = None,
+            ether_type: pulumi.Input[Optional[_builtins.str]] = None,
+            icmp_parameters: pulumi.Input[Optional[Union['SecurityGroupRuleIcmpParametersArgs', 'SecurityGroupRuleIcmpParametersArgsDict']]] = None,
+            ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+            port_range: pulumi.Input[Optional[Union['SecurityGroupRulePortRangeArgs', 'SecurityGroupRulePortRangeArgsDict']]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol: pulumi.Input[Optional[Union['SecurityGroupRuleProtocolArgs', 'SecurityGroupRuleProtocolArgsDict']]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            remote_security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_rule_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'SecurityGroupRule':
         """
         Get an existing SecurityGroupRule resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
