@@ -106,6 +106,10 @@
                 "type": "string",
                 "description": "Custom endpoint for the IaaS service"
             },
+            "intakeCustomEndpoint": {
+                "type": "string",
+                "description": "Custom endpoint for the Intake service"
+            },
             "kmsCustomEndpoint": {
                 "type": "string",
                 "description": "Custom endpoint for the KMS service"
@@ -3092,6 +3096,30 @@
                         "readOnly",
                         "setUuid",
                         "superUser"
+                    ]
+                }
+            }
+        },
+        "stackit:index/SfsResourcePoolSnapshotPolicy:SfsResourcePoolSnapshotPolicy": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "ID of the snapshot policy.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the snapshot policy.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "id",
+                        "name"
                     ]
                 }
             }
@@ -7118,6 +7146,28 @@
                 }
             }
         },
+        "stackit:index/getSfsResourcePoolSnapshotPolicy:getSfsResourcePoolSnapshotPolicy": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "ID of the snapshot policy.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the snapshot policy.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "id",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "stackit:index/getSfsResourcePoolSnapshotSnapshot:getSfsResourcePoolSnapshotSnapshot": {
             "properties": {
                 "comment": {
@@ -7153,6 +7203,97 @@
                 "resourcePoolId",
                 "sizeGigabytes",
                 "snapshotName"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getSfsSnapshotPoliciesItem:getSfsSnapshotPoliciesItem": {
+            "properties": {
+                "comment": {
+                    "type": "string",
+                    "description": "Comment of the Snapshot Policy.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "Created At timestamp.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Wether the Snapshot Policy is enabled.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "ID of the Snapshot Policy.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the Snapshot Policy.\n"
+                },
+                "snapshotSchedules": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/stackit:index/getSfsSnapshotPoliciesItemSnapshotSchedule:getSfsSnapshotPoliciesItemSnapshotSchedule"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "comment",
+                "createdAt",
+                "enabled",
+                "id",
+                "name",
+                "snapshotSchedules"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getSfsSnapshotPoliciesItemSnapshotSchedule:getSfsSnapshotPoliciesItemSnapshotSchedule": {
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "Created At timestamp.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "ID of the Snapshot Schedule.\n"
+                },
+                "interval": {
+                    "type": "string",
+                    "description": "Interval of the Snapshot Schedule (follows the cron schedule xpression in Unix-like systems).\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the Snapshot Schedule.\n"
+                },
+                "prefix": {
+                    "type": "string",
+                    "description": "Prefix used for snapshots created by this policy.\n"
+                },
+                "retentionCount": {
+                    "type": "integer",
+                    "description": "Retention Count.\n"
+                },
+                "retentionPeriod": {
+                    "type": "string",
+                    "description": "Retention Period (ISO 8601 format or 'infinite').\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "createdAt",
+                "id",
+                "interval",
+                "name",
+                "prefix",
+                "retentionCount",
+                "retentionPeriod"
             ],
             "language": {
                 "nodejs": {
@@ -7758,6 +7899,10 @@
                 "type": "string",
                 "description": "Custom endpoint for the IaaS service"
             },
+            "intakeCustomEndpoint": {
+                "type": "string",
+                "description": "Custom endpoint for the Intake service"
+            },
             "kmsCustomEndpoint": {
                 "type": "string",
                 "description": "Custom endpoint for the KMS service"
@@ -7956,6 +8101,10 @@
             "iaasCustomEndpoint": {
                 "type": "string",
                 "description": "Custom endpoint for the IaaS service"
+            },
+            "intakeCustomEndpoint": {
+                "type": "string",
+                "description": "Custom endpoint for the Intake service"
             },
             "kmsCustomEndpoint": {
                 "type": "string",
@@ -10411,6 +10560,133 @@
                     "scope": {
                         "type": "string",
                         "description": "The scope of the image.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "stackit:index/intakeRunner:IntakeRunner": {
+            "description": "Manages STACKIT Intake Runner.\n\n## Example Usage\n\n```terraform\nresource \"stackit_intake_runner\" \"example\" {\n  project_id            = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name                  = \"example-runner\"\n  region                = \"eu01\"\n  description           = \"An example runner for STACKIT Intake\"\n  max_message_size_kib  = 1024\n  max_messages_per_hour = 1000\n  labels = {\n    \"env\" = \"development\"\n  }\n}\n```\n",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the runner.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "User-defined labels.\n"
+                },
+                "maxMessageSizeKib": {
+                    "type": "integer",
+                    "description": "The maximum message size in KiB.\n"
+                },
+                "maxMessagesPerHour": {
+                    "type": "integer",
+                    "description": "The maximum number of messages per hour.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the runner.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT Project ID to which the runner is associated.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The resource region. If not defined, the provider region is used.\n"
+                },
+                "runnerId": {
+                    "type": "string",
+                    "description": "The runner ID.\n"
+                }
+            },
+            "required": [
+                "maxMessageSizeKib",
+                "maxMessagesPerHour",
+                "name",
+                "projectId",
+                "region",
+                "runnerId"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the runner.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "User-defined labels.\n"
+                },
+                "maxMessageSizeKib": {
+                    "type": "integer",
+                    "description": "The maximum message size in KiB.\n"
+                },
+                "maxMessagesPerHour": {
+                    "type": "integer",
+                    "description": "The maximum number of messages per hour.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the runner.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT Project ID to which the runner is associated.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The resource region. If not defined, the provider region is used.\n"
+                }
+            },
+            "requiredInputs": [
+                "maxMessageSizeKib",
+                "maxMessagesPerHour",
+                "projectId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering IntakeRunner resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the runner.\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "User-defined labels.\n"
+                    },
+                    "maxMessageSizeKib": {
+                        "type": "integer",
+                        "description": "The maximum message size in KiB.\n"
+                    },
+                    "maxMessagesPerHour": {
+                        "type": "integer",
+                        "description": "The maximum number of messages per hour.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the runner.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT Project ID to which the runner is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    },
+                    "runnerId": {
+                        "type": "string",
+                        "description": "The runner ID.\n"
                     }
                 },
                 "type": "object"
@@ -18550,6 +18826,10 @@
                     "type": "integer",
                     "description": "Size of the resource pool (unit: gigabytes)\n"
                 },
+                "snapshotPolicy": {
+                    "$ref": "#/types/stackit:index/SfsResourcePoolSnapshotPolicy:SfsResourcePoolSnapshotPolicy",
+                    "description": "Name of the snapshot policy.\n"
+                },
                 "snapshotsAreVisible": {
                     "type": "boolean",
                     "description": "If set to true, snapshots are visible and accessible to users. (default: false)\n"
@@ -18597,6 +18877,10 @@
                 "sizeGigabytes": {
                     "type": "integer",
                     "description": "Size of the resource pool (unit: gigabytes)\n"
+                },
+                "snapshotPolicy": {
+                    "$ref": "#/types/stackit:index/SfsResourcePoolSnapshotPolicy:SfsResourcePoolSnapshotPolicy",
+                    "description": "Name of the snapshot policy.\n"
                 },
                 "snapshotsAreVisible": {
                     "type": "boolean",
@@ -18647,6 +18931,10 @@
                     "sizeGigabytes": {
                         "type": "integer",
                         "description": "Size of the resource pool (unit: gigabytes)\n"
+                    },
+                    "snapshotPolicy": {
+                        "$ref": "#/types/stackit:index/SfsResourcePoolSnapshotPolicy:SfsResourcePoolSnapshotPolicy",
+                        "description": "Name of the snapshot policy.\n"
                     },
                     "snapshotsAreVisible": {
                         "type": "boolean",
@@ -20900,6 +21188,86 @@
                     "projectId",
                     "protected",
                     "scope"
+                ]
+            }
+        },
+        "stackit:index/getIntakeRunner:getIntakeRunner": {
+            "description": "Datasource for STACKIT Intake Runner.\n\n## Example Usage\n\n```terraform\ndata \"stackit_intake_runner\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  runner_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getIntakeRunner.\n",
+                "properties": {
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT Project ID to which the runner is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    },
+                    "runnerId": {
+                        "type": "string",
+                        "description": "The runner ID.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "projectId",
+                    "runnerId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getIntakeRunner.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the runner.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Terraform's internal resource identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`projectId`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`runnerId`\" pulumi-lang-dotnet=\"`RunnerId`\" pulumi-lang-go=\"`runnerId`\" pulumi-lang-python=\"`runner_id`\" pulumi-lang-yaml=\"`runnerId`\" pulumi-lang-java=\"`runnerId`\"\u003e`runnerId`\u003c/span\u003e\".\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "User-defined labels.\n"
+                    },
+                    "maxMessageSizeKib": {
+                        "type": "integer",
+                        "description": "The maximum message size in KiB.\n"
+                    },
+                    "maxMessagesPerHour": {
+                        "type": "integer",
+                        "description": "The maximum number of messages per hour.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the runner.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT Project ID to which the runner is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    },
+                    "runnerId": {
+                        "type": "string",
+                        "description": "The runner ID.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "description",
+                    "id",
+                    "labels",
+                    "maxMessageSizeKib",
+                    "maxMessagesPerHour",
+                    "name",
+                    "projectId",
+                    "runnerId"
                 ]
             }
         },
@@ -26224,6 +26592,10 @@
                         "type": "string",
                         "description": "Time when the size can be reduced again.\n"
                     },
+                    "snapshotPolicy": {
+                        "$ref": "#/types/stackit:index/getSfsResourcePoolSnapshotPolicy:getSfsResourcePoolSnapshotPolicy",
+                        "description": "Name of the snapshot policy.\n"
+                    },
                     "snapshotsAreVisible": {
                         "type": "boolean",
                         "description": "If set to true, snapshots are visible and accessible to users. (default: false)\n"
@@ -26241,6 +26613,7 @@
                     "resourcePoolId",
                     "sizeGigabytes",
                     "sizeReducibleAt",
+                    "snapshotPolicy",
                     "snapshotsAreVisible"
                 ]
             }
@@ -26384,6 +26757,55 @@
                     "resourcePoolId",
                     "shareId",
                     "spaceHardLimitGigabytes"
+                ]
+            }
+        },
+        "stackit:index/getSfsSnapshotPolicies:getSfsSnapshotPolicies": {
+            "description": "SFS snapshot policies datasource schema\n\n\u003e This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\ndata \"stackit_sfs_snapshot_policies\" \"all\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\ndata \"stackit_sfs_snapshot_policies\" \"immutable_only\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  immutable  = \"immutable-only\"\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getSfsSnapshotPolicies.\n",
+                "properties": {
+                    "immutable": {
+                        "type": "string",
+                        "description": "Filter snapshot policies by immutability. Possible values are: \u003cspan pulumi-lang-nodejs=\"`all`\" pulumi-lang-dotnet=\"`All`\" pulumi-lang-go=\"`all`\" pulumi-lang-python=\"`all`\" pulumi-lang-yaml=\"`all`\" pulumi-lang-java=\"`all`\"\u003e`all`\u003c/span\u003e, `immutable-only`, `mutable-only`. Defaults to \u003cspan pulumi-lang-nodejs=\"`all`\" pulumi-lang-dotnet=\"`All`\" pulumi-lang-go=\"`all`\" pulumi-lang-python=\"`all`\" pulumi-lang-yaml=\"`all`\" pulumi-lang-java=\"`all`\"\u003e`all`\u003c/span\u003e. This attribute is in beta, may have breaking changes in the future.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID to which the snapshot policy is associated.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "projectId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getSfsSnapshotPolicies.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Terraform's internal data source ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`projectId`\u003c/span\u003e\".\n"
+                    },
+                    "immutable": {
+                        "type": "string",
+                        "description": "Filter snapshot policies by immutability. Possible values are: \u003cspan pulumi-lang-nodejs=\"`all`\" pulumi-lang-dotnet=\"`All`\" pulumi-lang-go=\"`all`\" pulumi-lang-python=\"`all`\" pulumi-lang-yaml=\"`all`\" pulumi-lang-java=\"`all`\"\u003e`all`\u003c/span\u003e, `immutable-only`, `mutable-only`. Defaults to \u003cspan pulumi-lang-nodejs=\"`all`\" pulumi-lang-dotnet=\"`All`\" pulumi-lang-go=\"`all`\" pulumi-lang-python=\"`all`\" pulumi-lang-yaml=\"`all`\" pulumi-lang-java=\"`all`\"\u003e`all`\u003c/span\u003e. This attribute is in beta, may have breaking changes in the future.\n"
+                    },
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/stackit:index/getSfsSnapshotPoliciesItem:getSfsSnapshotPoliciesItem"
+                        }
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID to which the snapshot policy is associated.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "items",
+                    "projectId"
                 ]
             }
         },

@@ -2,7 +2,7 @@ module github.com/stackitcloud/pulumi-stackit/provider/shim
 
 go 1.26.0
 
-require github.com/stackitcloud/terraform-provider-stackit v0.95.0
+require github.com/stackitcloud/terraform-provider-stackit v0.96.0
 
 require (
 	github.com/hashicorp/go-uuid v1.0.3 // indirect
@@ -10,10 +10,11 @@ require (
 	github.com/stackitcloud/stackit-sdk-go/services/alb v0.14.2 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/certificates v1.6.2 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/edge v0.11.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/kms v1.8.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/logs v0.8.2 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/intake v0.9.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/kms v1.9.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/logs v0.9.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/scf v0.8.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/sfs v0.9.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/sfs v0.10.0 // indirect
 	golang.org/x/tools v0.44.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20260401024825-9d38bb4040a9 // indirect
 	google.golang.org/grpc v1.80.0 // indirect
@@ -36,9 +37,9 @@ require (
 	github.com/stackitcloud/stackit-sdk-go/services/authorization v0.15.2 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/cdn v1.16.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/dns v0.20.2 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/git v0.12.2 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/git v0.13.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/iaas v1.11.1 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/loadbalancer v1.12.2 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/loadbalancer v1.13.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/logme v0.28.2 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/mariadb v0.28.2 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/modelserving v0.9.2 // indirect

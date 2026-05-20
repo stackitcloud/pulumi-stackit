@@ -275,6 +275,9 @@
             "stackit_image": {
                 "current": "stackit:index/image:Image"
             },
+            "stackit_intake_runner": {
+                "current": "stackit:index/intakeRunner:IntakeRunner"
+            },
             "stackit_key_pair": {
                 "current": "stackit:index/keyPair:KeyPair"
             },
@@ -1133,6 +1136,9 @@
             "stackit_image_v2": {
                 "current": "stackit:index/getImageV2:getImageV2"
             },
+            "stackit_intake_runner": {
+                "current": "stackit:index/getIntakeRunner:getIntakeRunner"
+            },
             "stackit_key_pair": {
                 "current": "stackit:index/getKeyPair:getKeyPair"
             },
@@ -1708,6 +1714,21 @@
             },
             "stackit_sfs_share": {
                 "current": "stackit:index/getSfsShare:getSfsShare"
+            },
+            "stackit_sfs_snapshot_policies": {
+                "current": "stackit:index/getSfsSnapshotPolicies:getSfsSnapshotPolicies",
+                "fields": {
+                    "items": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "snapshot_schedules": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "stackit_ske_cluster": {
                 "current": "stackit:index/getSkeCluster:getSkeCluster",

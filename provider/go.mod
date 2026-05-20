@@ -203,12 +203,13 @@ require (
 	github.com/stackitcloud/stackit-sdk-go/services/certificates v1.6.2 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/dns v0.20.2 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/edge v0.11.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/git v0.12.2 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/git v0.13.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/iaas v1.11.1 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/kms v1.8.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/loadbalancer v1.12.2 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/intake v0.9.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/kms v1.9.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/loadbalancer v1.13.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/logme v0.28.2 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/logs v0.8.2 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/logs v0.9.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/mariadb v0.28.2 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/modelserving v0.9.2 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/mongodbflex v1.8.3 // indirect
@@ -225,10 +226,10 @@ require (
 	github.com/stackitcloud/stackit-sdk-go/services/serverupdate v1.5.2 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/serviceaccount v0.19.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/serviceenablement v1.5.3 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/sfs v0.9.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/sfs v0.10.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/ske v1.14.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/sqlserverflex v1.10.0 // indirect
-	github.com/stackitcloud/terraform-provider-stackit v0.95.0 // indirect
+	github.com/stackitcloud/terraform-provider-stackit v0.96.0 // indirect
 	github.com/teambition/rrule-go v1.8.2 // indirect
 	github.com/teekennedy/goldmark-markdown v0.3.0 // indirect
 	github.com/texttheater/golang-levenshtein v1.0.1 // indirect
