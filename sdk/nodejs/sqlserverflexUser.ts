@@ -57,6 +57,10 @@ export class SqlserverflexUser extends pulumi.CustomResource {
      */
     declare public readonly roles: pulumi.Output<string[]>;
     /**
+     * A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+     */
+    declare public readonly rotateWhenChanged: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * User ID.
      */
     declare public /*out*/ readonly userId: pulumi.Output<string>;
@@ -85,6 +89,7 @@ export class SqlserverflexUser extends pulumi.CustomResource {
             resourceInputs["projectId"] = state?.projectId;
             resourceInputs["region"] = state?.region;
             resourceInputs["roles"] = state?.roles;
+            resourceInputs["rotateWhenChanged"] = state?.rotateWhenChanged;
             resourceInputs["userId"] = state?.userId;
             resourceInputs["username"] = state?.username;
         } else {
@@ -105,6 +110,7 @@ export class SqlserverflexUser extends pulumi.CustomResource {
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["region"] = args?.region;
             resourceInputs["roles"] = args?.roles;
+            resourceInputs["rotateWhenChanged"] = args?.rotateWhenChanged;
             resourceInputs["username"] = args?.username;
             resourceInputs["host"] = undefined /*out*/;
             resourceInputs["password"] = undefined /*out*/;
@@ -142,6 +148,10 @@ export interface SqlserverflexUserState {
      */
     roles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
+     * A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+     */
+    rotateWhenChanged?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
      * User ID.
      */
     userId?: pulumi.Input<string | undefined>;
@@ -168,6 +178,10 @@ export interface SqlserverflexUserArgs {
      * Database access levels for the user. The values for the default roles are: `##STACKIT_DatabaseManager##`, `##STACKIT_LoginManager##`, `##STACKIT_ProcessManager##`, `##STACKIT_ServerManager##`, `##STACKIT_SQLAgentManager##`, `##STACKIT_SQLAgentUser##`
      */
     roles: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+     */
+    rotateWhenChanged?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Username of the SQLServer Flex instance.
      */

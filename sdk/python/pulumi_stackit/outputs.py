@@ -52,6 +52,14 @@ __all__ = [
     'CdnDistributionDomain',
     'DnsRecordSetTimeouts',
     'DnsZoneTimeouts',
+    'DremioInstanceAuthentication',
+    'DremioInstanceAuthenticationAzuread',
+    'DremioInstanceAuthenticationOauth',
+    'DremioInstanceAuthenticationOauthJwtClaims',
+    'DremioInstanceAuthenticationOauthParameter',
+    'DremioInstanceEndpoints',
+    'DremioInstanceTimeouts',
+    'DremioUserTimeouts',
     'ImageChecksum',
     'ImageConfig',
     'LoadbalancerListener',
@@ -121,8 +129,19 @@ __all__ = [
     'SqlserverflexInstanceFlavor',
     'SqlserverflexInstanceOptions',
     'SqlserverflexInstanceStorage',
+    'TelemetryrouterDestinationConfig',
+    'TelemetryrouterDestinationConfigFilter',
+    'TelemetryrouterDestinationConfigFilterAttribute',
+    'TelemetryrouterDestinationConfigOpentelemetry',
+    'TelemetryrouterDestinationConfigOpentelemetryBasicAuth',
+    'TelemetryrouterDestinationConfigS3',
+    'TelemetryrouterDestinationConfigS3AccessKey',
+    'TelemetryrouterInstanceFilter',
+    'TelemetryrouterInstanceFilterAttribute',
     'VolumeEncryptionParameters',
     'VolumeSource',
+    'VpnGatewayAvailabilityZones',
+    'VpnGatewayBgp',
     'GetApplicationLoadBalancerErrorResult',
     'GetApplicationLoadBalancerListenerResult',
     'GetApplicationLoadBalancerListenerHttpResult',
@@ -158,6 +177,12 @@ __all__ = [
     'GetCdnDistributionDomainResult',
     'GetDnsRecordSetTimeoutsResult',
     'GetDnsZoneTimeoutsResult',
+    'GetDremioInstanceAuthenticationResult',
+    'GetDremioInstanceAuthenticationAzureadResult',
+    'GetDremioInstanceAuthenticationOauthResult',
+    'GetDremioInstanceAuthenticationOauthJwtClaimsResult',
+    'GetDremioInstanceAuthenticationOauthParameterResult',
+    'GetDremioInstanceEndpointsResult',
     'GetEdgecloudInstancesInstanceResult',
     'GetEdgecloudPlansPlanResult',
     'GetImageChecksumResult',
@@ -249,7 +274,16 @@ __all__ = [
     'GetSqlserverflexInstanceFlavorResult',
     'GetSqlserverflexInstanceOptionsResult',
     'GetSqlserverflexInstanceStorageResult',
+    'GetTelemetryrouterDestinationConfigResult',
+    'GetTelemetryrouterDestinationConfigFilterResult',
+    'GetTelemetryrouterDestinationConfigFilterAttributeResult',
+    'GetTelemetryrouterDestinationConfigOpentelemetryResult',
+    'GetTelemetryrouterDestinationConfigS3Result',
+    'GetTelemetryrouterInstanceFilterResult',
+    'GetTelemetryrouterInstanceFilterAttributeResult',
     'GetVolumeSourceResult',
+    'GetVpnGatewayAvailabilityZonesResult',
+    'GetVpnGatewayBgpResult',
 ]
 
 @pulumi.output_type
@@ -2325,6 +2359,469 @@ class DnsZoneTimeouts(dict):
 
 
 @pulumi.output_type
+class DremioInstanceAuthentication(dict):
+    def __init__(__self__, *,
+                 type: _builtins.str,
+                 azuread: Optional['outputs.DremioInstanceAuthenticationAzuread'] = None,
+                 oauth: Optional['outputs.DremioInstanceAuthenticationOauth'] = None):
+        """
+        :param _builtins.str type: Type of authentication (local-only, azuread, oauth).
+        :param 'DremioInstanceAuthenticationAzureadArgs' azuread: Azure Active Directory authentication configuration.
+        :param 'DremioInstanceAuthenticationOauthArgs' oauth: OIDC authentication configuration.
+        """
+        pulumi.set(__self__, "type", type)
+        if azuread is not None:
+            pulumi.set(__self__, "azuread", azuread)
+        if oauth is not None:
+            pulumi.set(__self__, "oauth", oauth)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of authentication (local-only, azuread, oauth).
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def azuread(self) -> Optional['outputs.DremioInstanceAuthenticationAzuread']:
+        """
+        Azure Active Directory authentication configuration.
+        """
+        return pulumi.get(self, "azuread")
+
+    @_builtins.property
+    @pulumi.getter
+    def oauth(self) -> Optional['outputs.DremioInstanceAuthenticationOauth']:
+        """
+        OIDC authentication configuration.
+        """
+        return pulumi.get(self, "oauth")
+
+
+@pulumi.output_type
+class DremioInstanceAuthenticationAzuread(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authorityUrl":
+            suggest = "authority_url"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "redirectUrl":
+            suggest = "redirect_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DremioInstanceAuthenticationAzuread. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DremioInstanceAuthenticationAzuread.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DremioInstanceAuthenticationAzuread.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 authority_url: _builtins.str,
+                 client_id: _builtins.str,
+                 client_secret: _builtins.str,
+                 redirect_url: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str authority_url: The Azure AD authority URL.
+        :param _builtins.str client_id: The Azure AD client ID.
+        :param _builtins.str client_secret: The Azure AD client secret.
+        :param _builtins.str redirect_url: The Azure AD redirect URL.
+        """
+        pulumi.set(__self__, "authority_url", authority_url)
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret", client_secret)
+        if redirect_url is not None:
+            pulumi.set(__self__, "redirect_url", redirect_url)
+
+    @_builtins.property
+    @pulumi.getter(name="authorityUrl")
+    def authority_url(self) -> _builtins.str:
+        """
+        The Azure AD authority URL.
+        """
+        return pulumi.get(self, "authority_url")
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> _builtins.str:
+        """
+        The Azure AD client ID.
+        """
+        return pulumi.get(self, "client_id")
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> _builtins.str:
+        """
+        The Azure AD client secret.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @_builtins.property
+    @pulumi.getter(name="redirectUrl")
+    def redirect_url(self) -> Optional[_builtins.str]:
+        """
+        The Azure AD redirect URL.
+        """
+        return pulumi.get(self, "redirect_url")
+
+
+@pulumi.output_type
+class DremioInstanceAuthenticationOauth(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authorityUrl":
+            suggest = "authority_url"
+        elif key == "clientId":
+            suggest = "client_id"
+        elif key == "clientSecret":
+            suggest = "client_secret"
+        elif key == "jwtClaims":
+            suggest = "jwt_claims"
+        elif key == "redirectUrl":
+            suggest = "redirect_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DremioInstanceAuthenticationOauth. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DremioInstanceAuthenticationOauth.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DremioInstanceAuthenticationOauth.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 authority_url: _builtins.str,
+                 client_id: _builtins.str,
+                 client_secret: _builtins.str,
+                 jwt_claims: 'outputs.DremioInstanceAuthenticationOauthJwtClaims',
+                 parameters: Optional[Sequence['outputs.DremioInstanceAuthenticationOauthParameter']] = None,
+                 redirect_url: Optional[_builtins.str] = None,
+                 scope: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str authority_url: The Issuer location URI, where the OIDC provider configuration can be found.
+        :param _builtins.str client_id: The client ID assigned by the Identity Provider.
+        :param _builtins.str client_secret: The client secret generated by the Identity Provider.
+        :param 'DremioInstanceAuthenticationOauthJwtClaimsArgs' jwt_claims: Maps fields from the JWT token to fields Dremio requires.
+        :param Sequence['DremioInstanceAuthenticationOauthParameterArgs'] parameters: Any additional parameters the Identity Provider requires.
+        :param _builtins.str redirect_url: The URL where the Dremio instance is hosted. The URL must match the redirect URL set in the Identity Provider.
+        :param _builtins.str scope: A list of space-separated scopes. The `openid` scope is always required; other scopes can vary by provider.
+        """
+        pulumi.set(__self__, "authority_url", authority_url)
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret", client_secret)
+        pulumi.set(__self__, "jwt_claims", jwt_claims)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if redirect_url is not None:
+            pulumi.set(__self__, "redirect_url", redirect_url)
+        if scope is not None:
+            pulumi.set(__self__, "scope", scope)
+
+    @_builtins.property
+    @pulumi.getter(name="authorityUrl")
+    def authority_url(self) -> _builtins.str:
+        """
+        The Issuer location URI, where the OIDC provider configuration can be found.
+        """
+        return pulumi.get(self, "authority_url")
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> _builtins.str:
+        """
+        The client ID assigned by the Identity Provider.
+        """
+        return pulumi.get(self, "client_id")
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> _builtins.str:
+        """
+        The client secret generated by the Identity Provider.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @_builtins.property
+    @pulumi.getter(name="jwtClaims")
+    def jwt_claims(self) -> 'outputs.DremioInstanceAuthenticationOauthJwtClaims':
+        """
+        Maps fields from the JWT token to fields Dremio requires.
+        """
+        return pulumi.get(self, "jwt_claims")
+
+    @_builtins.property
+    @pulumi.getter
+    def parameters(self) -> Optional[Sequence['outputs.DremioInstanceAuthenticationOauthParameter']]:
+        """
+        Any additional parameters the Identity Provider requires.
+        """
+        return pulumi.get(self, "parameters")
+
+    @_builtins.property
+    @pulumi.getter(name="redirectUrl")
+    def redirect_url(self) -> Optional[_builtins.str]:
+        """
+        The URL where the Dremio instance is hosted. The URL must match the redirect URL set in the Identity Provider.
+        """
+        return pulumi.get(self, "redirect_url")
+
+    @_builtins.property
+    @pulumi.getter
+    def scope(self) -> Optional[_builtins.str]:
+        """
+        A list of space-separated scopes. The `openid` scope is always required; other scopes can vary by provider.
+        """
+        return pulumi.get(self, "scope")
+
+
+@pulumi.output_type
+class DremioInstanceAuthenticationOauthJwtClaims(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "userName":
+            suggest = "user_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DremioInstanceAuthenticationOauthJwtClaims. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DremioInstanceAuthenticationOauthJwtClaims.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DremioInstanceAuthenticationOauthJwtClaims.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 user_name: _builtins.str):
+        """
+        :param _builtins.str user_name: Mapped user name claim (e.g. email).
+        """
+        pulumi.set(__self__, "user_name", user_name)
+
+    @_builtins.property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> _builtins.str:
+        """
+        Mapped user name claim (e.g. email).
+        """
+        return pulumi.get(self, "user_name")
+
+
+@pulumi.output_type
+class DremioInstanceAuthenticationOauthParameter(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str name: Parameter name.
+        :param _builtins.str value: Parameter value.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Parameter name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Parameter value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class DremioInstanceEndpoints(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "arrowFlight":
+            suggest = "arrow_flight"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DremioInstanceEndpoints. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DremioInstanceEndpoints.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DremioInstanceEndpoints.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 arrow_flight: Optional[_builtins.str] = None,
+                 catalog: Optional[_builtins.str] = None,
+                 ui: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str arrow_flight: The arrow flight endpoint of the Dremio instance.
+        :param _builtins.str catalog: The Apache Iceberg endpoint of the Dremio instance.
+        :param _builtins.str ui: The UI endpoint of the Dremio instance.
+        """
+        if arrow_flight is not None:
+            pulumi.set(__self__, "arrow_flight", arrow_flight)
+        if catalog is not None:
+            pulumi.set(__self__, "catalog", catalog)
+        if ui is not None:
+            pulumi.set(__self__, "ui", ui)
+
+    @_builtins.property
+    @pulumi.getter(name="arrowFlight")
+    def arrow_flight(self) -> Optional[_builtins.str]:
+        """
+        The arrow flight endpoint of the Dremio instance.
+        """
+        return pulumi.get(self, "arrow_flight")
+
+    @_builtins.property
+    @pulumi.getter
+    def catalog(self) -> Optional[_builtins.str]:
+        """
+        The Apache Iceberg endpoint of the Dremio instance.
+        """
+        return pulumi.get(self, "catalog")
+
+    @_builtins.property
+    @pulumi.getter
+    def ui(self) -> Optional[_builtins.str]:
+        """
+        The UI endpoint of the Dremio instance.
+        """
+        return pulumi.get(self, "ui")
+
+
+@pulumi.output_type
+class DremioInstanceTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
+class DremioUserTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
 class ImageChecksum(dict):
     def __init__(__self__, *,
                  algorithm: Optional[_builtins.str] = None,
@@ -3817,12 +4314,26 @@ class MongodbflexInstanceStorage(dict):
     def __init__(__self__, *,
                  class_: _builtins.str,
                  size: _builtins.int):
+        """
+        :param _builtins.str class_: The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
+               `bash
+               stackit mongodbflex options --storages --flavor-id FLAVOR_ID
+               `
+               - `size` (Number)
+        """
         pulumi.set(__self__, "class_", class_)
         pulumi.set(__self__, "size", size)
 
     @_builtins.property
     @pulumi.getter(name="class")
     def class_(self) -> _builtins.str:
+        """
+        The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
+        `bash
+        stackit mongodbflex options --storages --flavor-id FLAVOR_ID
+        `
+        - `size` (Number)
+        """
         return pulumi.get(self, "class_")
 
     @_builtins.property
@@ -5430,12 +5941,26 @@ class PostgresflexInstanceStorage(dict):
     def __init__(__self__, *,
                  class_: _builtins.str,
                  size: _builtins.int):
+        """
+        :param _builtins.str class_: The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
+               `bash
+               stackit postgresflex options --storages --flavor-id FLAVOR_ID
+               `
+               - `size` (Number)
+        """
         pulumi.set(__self__, "class_", class_)
         pulumi.set(__self__, "size", size)
 
     @_builtins.property
     @pulumi.getter(name="class")
     def class_(self) -> _builtins.str:
+        """
+        The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
+        `bash
+        stackit postgresflex options --storages --flavor-id FLAVOR_ID
+        `
+        - `size` (Number)
+        """
         return pulumi.get(self, "class_")
 
     @_builtins.property
@@ -7353,6 +7878,13 @@ class SqlserverflexInstanceStorage(dict):
     def __init__(__self__, *,
                  class_: Optional[_builtins.str] = None,
                  size: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str class_: The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
+               `bash
+               stackit beta sqlserverflex options --storages --flavor-id FLAVOR_ID
+               `
+               - `size` (Number)
+        """
         if class_ is not None:
             pulumi.set(__self__, "class_", class_)
         if size is not None:
@@ -7361,12 +7893,405 @@ class SqlserverflexInstanceStorage(dict):
     @_builtins.property
     @pulumi.getter(name="class")
     def class_(self) -> Optional[_builtins.str]:
+        """
+        The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
+        `bash
+        stackit beta sqlserverflex options --storages --flavor-id FLAVOR_ID
+        `
+        - `size` (Number)
+        """
         return pulumi.get(self, "class_")
 
     @_builtins.property
     @pulumi.getter
     def size(self) -> Optional[_builtins.int]:
         return pulumi.get(self, "size")
+
+
+@pulumi.output_type
+class TelemetryrouterDestinationConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "configType":
+            suggest = "config_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TelemetryrouterDestinationConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TelemetryrouterDestinationConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TelemetryrouterDestinationConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 config_type: _builtins.str,
+                 filter: Optional['outputs.TelemetryrouterDestinationConfigFilter'] = None,
+                 opentelemetry: Optional['outputs.TelemetryrouterDestinationConfigOpentelemetry'] = None,
+                 s3: Optional['outputs.TelemetryrouterDestinationConfigS3'] = None):
+        """
+        :param _builtins.str config_type: The TelemetryRouter destinations's configuration type, possible values: Possible values are: `OpenTelemetry`, `S3`.
+        :param 'TelemetryrouterDestinationConfigFilterArgs' filter: The TelemetryRouter destination's filter settings
+        :param 'TelemetryrouterDestinationConfigOpentelemetryArgs' opentelemetry: OpenTelemetry configuration
+        :param 'TelemetryrouterDestinationConfigS3Args' s3: S3 configuration
+        """
+        pulumi.set(__self__, "config_type", config_type)
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+        if opentelemetry is not None:
+            pulumi.set(__self__, "opentelemetry", opentelemetry)
+        if s3 is not None:
+            pulumi.set(__self__, "s3", s3)
+
+    @_builtins.property
+    @pulumi.getter(name="configType")
+    def config_type(self) -> _builtins.str:
+        """
+        The TelemetryRouter destinations's configuration type, possible values: Possible values are: `OpenTelemetry`, `S3`.
+        """
+        return pulumi.get(self, "config_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def filter(self) -> Optional['outputs.TelemetryrouterDestinationConfigFilter']:
+        """
+        The TelemetryRouter destination's filter settings
+        """
+        return pulumi.get(self, "filter")
+
+    @_builtins.property
+    @pulumi.getter
+    def opentelemetry(self) -> Optional['outputs.TelemetryrouterDestinationConfigOpentelemetry']:
+        """
+        OpenTelemetry configuration
+        """
+        return pulumi.get(self, "opentelemetry")
+
+    @_builtins.property
+    @pulumi.getter
+    def s3(self) -> Optional['outputs.TelemetryrouterDestinationConfigS3']:
+        """
+        S3 configuration
+        """
+        return pulumi.get(self, "s3")
+
+
+@pulumi.output_type
+class TelemetryrouterDestinationConfigFilter(dict):
+    def __init__(__self__, *,
+                 attributes: Sequence['outputs.TelemetryrouterDestinationConfigFilterAttribute']):
+        """
+        :param Sequence['TelemetryrouterDestinationConfigFilterAttributeArgs'] attributes: The TelemetryRouter destination's filter attributes
+        """
+        pulumi.set(__self__, "attributes", attributes)
+
+    @_builtins.property
+    @pulumi.getter
+    def attributes(self) -> Sequence['outputs.TelemetryrouterDestinationConfigFilterAttribute']:
+        """
+        The TelemetryRouter destination's filter attributes
+        """
+        return pulumi.get(self, "attributes")
+
+
+@pulumi.output_type
+class TelemetryrouterDestinationConfigFilterAttribute(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 level: _builtins.str,
+                 matcher: _builtins.str,
+                 values: Sequence[_builtins.str]):
+        """
+        :param _builtins.str key: The TelemetryRouter destination's filter attribute key
+        :param _builtins.str level: The TelemetryRouter destination's filter attribute level, possible values: Possible values are: `resource`, `scope`, `logRecord`.
+        :param _builtins.str matcher: The TelemetryRouter destination's filter attribute matcher, possible values: Possible values are: `=`, `!=`.
+        :param Sequence[_builtins.str] values: The TelemetryRouter destination's filter attribute values
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "level", level)
+        pulumi.set(__self__, "matcher", matcher)
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        The TelemetryRouter destination's filter attribute key
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def level(self) -> _builtins.str:
+        """
+        The TelemetryRouter destination's filter attribute level, possible values: Possible values are: `resource`, `scope`, `logRecord`.
+        """
+        return pulumi.get(self, "level")
+
+    @_builtins.property
+    @pulumi.getter
+    def matcher(self) -> _builtins.str:
+        """
+        The TelemetryRouter destination's filter attribute matcher, possible values: Possible values are: `=`, `!=`.
+        """
+        return pulumi.get(self, "matcher")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        The TelemetryRouter destination's filter attribute values
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class TelemetryrouterDestinationConfigOpentelemetry(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "basicAuth":
+            suggest = "basic_auth"
+        elif key == "bearerToken":
+            suggest = "bearer_token"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TelemetryrouterDestinationConfigOpentelemetry. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TelemetryrouterDestinationConfigOpentelemetry.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TelemetryrouterDestinationConfigOpentelemetry.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 uri: _builtins.str,
+                 basic_auth: Optional['outputs.TelemetryrouterDestinationConfigOpentelemetryBasicAuth'] = None,
+                 bearer_token: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str uri: OpenTelemetry destination URI
+        :param 'TelemetryrouterDestinationConfigOpentelemetryBasicAuthArgs' basic_auth: OpenTelemetry basic auth configuration
+        :param _builtins.str bearer_token: OpenTelemetry bearer token
+        """
+        pulumi.set(__self__, "uri", uri)
+        if basic_auth is not None:
+            pulumi.set(__self__, "basic_auth", basic_auth)
+        if bearer_token is not None:
+            pulumi.set(__self__, "bearer_token", bearer_token)
+
+    @_builtins.property
+    @pulumi.getter
+    def uri(self) -> _builtins.str:
+        """
+        OpenTelemetry destination URI
+        """
+        return pulumi.get(self, "uri")
+
+    @_builtins.property
+    @pulumi.getter(name="basicAuth")
+    def basic_auth(self) -> Optional['outputs.TelemetryrouterDestinationConfigOpentelemetryBasicAuth']:
+        """
+        OpenTelemetry basic auth configuration
+        """
+        return pulumi.get(self, "basic_auth")
+
+    @_builtins.property
+    @pulumi.getter(name="bearerToken")
+    def bearer_token(self) -> Optional[_builtins.str]:
+        """
+        OpenTelemetry bearer token
+        """
+        return pulumi.get(self, "bearer_token")
+
+
+@pulumi.output_type
+class TelemetryrouterDestinationConfigOpentelemetryBasicAuth(dict):
+    def __init__(__self__, *,
+                 password: _builtins.str,
+                 username: _builtins.str):
+        """
+        :param _builtins.str password: OpenTelemetry basic auth username
+        :param _builtins.str username: OpenTelemetry basic auth username
+        """
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> _builtins.str:
+        """
+        OpenTelemetry basic auth username
+        """
+        return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> _builtins.str:
+        """
+        OpenTelemetry basic auth username
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class TelemetryrouterDestinationConfigS3(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessKey":
+            suggest = "access_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TelemetryrouterDestinationConfigS3. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TelemetryrouterDestinationConfigS3.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TelemetryrouterDestinationConfigS3.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bucket: _builtins.str,
+                 endpoint: _builtins.str,
+                 access_key: Optional['outputs.TelemetryrouterDestinationConfigS3AccessKey'] = None):
+        """
+        :param _builtins.str bucket: S3 bucket name
+        :param _builtins.str endpoint: S3 endpoint
+        :param 'TelemetryrouterDestinationConfigS3AccessKeyArgs' access_key: S3 access key configuration
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "endpoint", endpoint)
+        if access_key is not None:
+            pulumi.set(__self__, "access_key", access_key)
+
+    @_builtins.property
+    @pulumi.getter
+    def bucket(self) -> _builtins.str:
+        """
+        S3 bucket name
+        """
+        return pulumi.get(self, "bucket")
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoint(self) -> _builtins.str:
+        """
+        S3 endpoint
+        """
+        return pulumi.get(self, "endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="accessKey")
+    def access_key(self) -> Optional['outputs.TelemetryrouterDestinationConfigS3AccessKey']:
+        """
+        S3 access key configuration
+        """
+        return pulumi.get(self, "access_key")
+
+
+@pulumi.output_type
+class TelemetryrouterDestinationConfigS3AccessKey(dict):
+    def __init__(__self__, *,
+                 id: _builtins.str,
+                 secret: _builtins.str):
+        """
+        :param _builtins.str id: S3 access key ID
+        :param _builtins.str secret: S3 access key secret
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "secret", secret)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        S3 access key ID
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def secret(self) -> _builtins.str:
+        """
+        S3 access key secret
+        """
+        return pulumi.get(self, "secret")
+
+
+@pulumi.output_type
+class TelemetryrouterInstanceFilter(dict):
+    def __init__(__self__, *,
+                 attributes: Sequence['outputs.TelemetryrouterInstanceFilterAttribute']):
+        """
+        :param Sequence['TelemetryrouterInstanceFilterAttributeArgs'] attributes: The TelemetryRouter global filter attributes
+        """
+        pulumi.set(__self__, "attributes", attributes)
+
+    @_builtins.property
+    @pulumi.getter
+    def attributes(self) -> Sequence['outputs.TelemetryrouterInstanceFilterAttribute']:
+        """
+        The TelemetryRouter global filter attributes
+        """
+        return pulumi.get(self, "attributes")
+
+
+@pulumi.output_type
+class TelemetryrouterInstanceFilterAttribute(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 level: _builtins.str,
+                 matcher: _builtins.str,
+                 values: Sequence[_builtins.str]):
+        """
+        :param _builtins.str key: The TelemetryRouter global filter attribute key
+        :param _builtins.str level: The TelemetryRouter global filter attribute level, possible values: Possible values are: `resource`, `scope`, `logRecord`.
+        :param _builtins.str matcher: The TelemetryRouter global filter attribute matcher, possible values: Possible values are: `=`, `!=`.
+        :param Sequence[_builtins.str] values: The TelemetryRouter global filter attributes
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "level", level)
+        pulumi.set(__self__, "matcher", matcher)
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        The TelemetryRouter global filter attribute key
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def level(self) -> _builtins.str:
+        """
+        The TelemetryRouter global filter attribute level, possible values: Possible values are: `resource`, `scope`, `logRecord`.
+        """
+        return pulumi.get(self, "level")
+
+    @_builtins.property
+    @pulumi.getter
+    def matcher(self) -> _builtins.str:
+        """
+        The TelemetryRouter global filter attribute matcher, possible values: Possible values are: `=`, `!=`.
+        """
+        return pulumi.get(self, "matcher")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        The TelemetryRouter global filter attributes
+        """
+        return pulumi.get(self, "values")
 
 
 @pulumi.output_type
@@ -7514,6 +8439,84 @@ class VolumeSource(dict):
         The type of the source. Possible values are: `volume`, `image`, `snapshot`, `backup`.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class VpnGatewayAvailabilityZones(dict):
+    def __init__(__self__, *,
+                 tunnel1: _builtins.str,
+                 tunnel2: _builtins.str):
+        """
+        :param _builtins.str tunnel1: Availability zone for tunnel 1.
+        :param _builtins.str tunnel2: Availability zone for tunnel 2.
+        """
+        pulumi.set(__self__, "tunnel1", tunnel1)
+        pulumi.set(__self__, "tunnel2", tunnel2)
+
+    @_builtins.property
+    @pulumi.getter
+    def tunnel1(self) -> _builtins.str:
+        """
+        Availability zone for tunnel 1.
+        """
+        return pulumi.get(self, "tunnel1")
+
+    @_builtins.property
+    @pulumi.getter
+    def tunnel2(self) -> _builtins.str:
+        """
+        Availability zone for tunnel 2.
+        """
+        return pulumi.get(self, "tunnel2")
+
+
+@pulumi.output_type
+class VpnGatewayBgp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "localAsn":
+            suggest = "local_asn"
+        elif key == "overrideAdvertisedRoutes":
+            suggest = "override_advertised_routes"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VpnGatewayBgp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VpnGatewayBgp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VpnGatewayBgp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 local_asn: _builtins.int,
+                 override_advertised_routes: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.int local_asn: Local ASN for BGP (private ASN range, 64512-4294967294).
+        :param Sequence[_builtins.str] override_advertised_routes: List of IPv4 CIDRs to advertise via BGP. If omitted, SNA network ranges are advertised.
+        """
+        pulumi.set(__self__, "local_asn", local_asn)
+        if override_advertised_routes is not None:
+            pulumi.set(__self__, "override_advertised_routes", override_advertised_routes)
+
+    @_builtins.property
+    @pulumi.getter(name="localAsn")
+    def local_asn(self) -> _builtins.int:
+        """
+        Local ASN for BGP (private ASN range, 64512-4294967294).
+        """
+        return pulumi.get(self, "local_asn")
+
+    @_builtins.property
+    @pulumi.getter(name="overrideAdvertisedRoutes")
+    def override_advertised_routes(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of IPv4 CIDRs to advertise via BGP. If omitted, SNA network ranges are advertised.
+        """
+        return pulumi.get(self, "override_advertised_routes")
 
 
 @pulumi.output_type
@@ -8918,6 +9921,268 @@ class GetDnsZoneTimeoutsResult(dict):
         A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
         """
         return pulumi.get(self, "read")
+
+
+@pulumi.output_type
+class GetDremioInstanceAuthenticationResult(dict):
+    def __init__(__self__, *,
+                 azuread: 'outputs.GetDremioInstanceAuthenticationAzureadResult',
+                 oauth: 'outputs.GetDremioInstanceAuthenticationOauthResult',
+                 type: _builtins.str):
+        """
+        :param 'GetDremioInstanceAuthenticationAzureadArgs' azuread: Azure Active Directory authentication configuration.
+        :param 'GetDremioInstanceAuthenticationOauthArgs' oauth: OIDC authentication configuration.
+        :param _builtins.str type: Type of authentication (local-only, azuread, oauth).
+        """
+        pulumi.set(__self__, "azuread", azuread)
+        pulumi.set(__self__, "oauth", oauth)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def azuread(self) -> 'outputs.GetDremioInstanceAuthenticationAzureadResult':
+        """
+        Azure Active Directory authentication configuration.
+        """
+        return pulumi.get(self, "azuread")
+
+    @_builtins.property
+    @pulumi.getter
+    def oauth(self) -> 'outputs.GetDremioInstanceAuthenticationOauthResult':
+        """
+        OIDC authentication configuration.
+        """
+        return pulumi.get(self, "oauth")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        Type of authentication (local-only, azuread, oauth).
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDremioInstanceAuthenticationAzureadResult(dict):
+    def __init__(__self__, *,
+                 authority_url: _builtins.str,
+                 client_id: _builtins.str,
+                 client_secret: _builtins.str,
+                 redirect_url: _builtins.str):
+        """
+        :param _builtins.str authority_url: The Azure AD authority URL.
+        :param _builtins.str client_id: The Azure AD client ID.
+        :param _builtins.str client_secret: The Azure AD client secret.
+        :param _builtins.str redirect_url: The Azure AD redirect URL.
+        """
+        pulumi.set(__self__, "authority_url", authority_url)
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret", client_secret)
+        pulumi.set(__self__, "redirect_url", redirect_url)
+
+    @_builtins.property
+    @pulumi.getter(name="authorityUrl")
+    def authority_url(self) -> _builtins.str:
+        """
+        The Azure AD authority URL.
+        """
+        return pulumi.get(self, "authority_url")
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> _builtins.str:
+        """
+        The Azure AD client ID.
+        """
+        return pulumi.get(self, "client_id")
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> _builtins.str:
+        """
+        The Azure AD client secret.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @_builtins.property
+    @pulumi.getter(name="redirectUrl")
+    def redirect_url(self) -> _builtins.str:
+        """
+        The Azure AD redirect URL.
+        """
+        return pulumi.get(self, "redirect_url")
+
+
+@pulumi.output_type
+class GetDremioInstanceAuthenticationOauthResult(dict):
+    def __init__(__self__, *,
+                 authority_url: _builtins.str,
+                 client_id: _builtins.str,
+                 client_secret: _builtins.str,
+                 jwt_claims: 'outputs.GetDremioInstanceAuthenticationOauthJwtClaimsResult',
+                 parameters: Sequence['outputs.GetDremioInstanceAuthenticationOauthParameterResult'],
+                 redirect_url: _builtins.str,
+                 scope: _builtins.str):
+        """
+        :param _builtins.str authority_url: The Issuer location URI, where the OIDC provider configuration can be found.
+        :param _builtins.str client_id: The client ID assigned by the Identity Provider.
+        :param _builtins.str client_secret: The client secret generated by the Identity Provider.
+        :param 'GetDremioInstanceAuthenticationOauthJwtClaimsArgs' jwt_claims: Maps fields from the JWT token to fields Dremio requires.
+        :param Sequence['GetDremioInstanceAuthenticationOauthParameterArgs'] parameters: Any additional parameters the Identity Provider requires.
+        :param _builtins.str redirect_url: The URL where the Dremio instance is hosted. The URL must match the redirect URL set in the Identity Provider.
+        :param _builtins.str scope: A list of space-separated scopes. The `openid` scope is always required; other scopes can vary by provider.
+        """
+        pulumi.set(__self__, "authority_url", authority_url)
+        pulumi.set(__self__, "client_id", client_id)
+        pulumi.set(__self__, "client_secret", client_secret)
+        pulumi.set(__self__, "jwt_claims", jwt_claims)
+        pulumi.set(__self__, "parameters", parameters)
+        pulumi.set(__self__, "redirect_url", redirect_url)
+        pulumi.set(__self__, "scope", scope)
+
+    @_builtins.property
+    @pulumi.getter(name="authorityUrl")
+    def authority_url(self) -> _builtins.str:
+        """
+        The Issuer location URI, where the OIDC provider configuration can be found.
+        """
+        return pulumi.get(self, "authority_url")
+
+    @_builtins.property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> _builtins.str:
+        """
+        The client ID assigned by the Identity Provider.
+        """
+        return pulumi.get(self, "client_id")
+
+    @_builtins.property
+    @pulumi.getter(name="clientSecret")
+    def client_secret(self) -> _builtins.str:
+        """
+        The client secret generated by the Identity Provider.
+        """
+        return pulumi.get(self, "client_secret")
+
+    @_builtins.property
+    @pulumi.getter(name="jwtClaims")
+    def jwt_claims(self) -> 'outputs.GetDremioInstanceAuthenticationOauthJwtClaimsResult':
+        """
+        Maps fields from the JWT token to fields Dremio requires.
+        """
+        return pulumi.get(self, "jwt_claims")
+
+    @_builtins.property
+    @pulumi.getter
+    def parameters(self) -> Sequence['outputs.GetDremioInstanceAuthenticationOauthParameterResult']:
+        """
+        Any additional parameters the Identity Provider requires.
+        """
+        return pulumi.get(self, "parameters")
+
+    @_builtins.property
+    @pulumi.getter(name="redirectUrl")
+    def redirect_url(self) -> _builtins.str:
+        """
+        The URL where the Dremio instance is hosted. The URL must match the redirect URL set in the Identity Provider.
+        """
+        return pulumi.get(self, "redirect_url")
+
+    @_builtins.property
+    @pulumi.getter
+    def scope(self) -> _builtins.str:
+        """
+        A list of space-separated scopes. The `openid` scope is always required; other scopes can vary by provider.
+        """
+        return pulumi.get(self, "scope")
+
+
+@pulumi.output_type
+class GetDremioInstanceAuthenticationOauthJwtClaimsResult(dict):
+    def __init__(__self__, *,
+                 user_name: _builtins.str):
+        """
+        :param _builtins.str user_name: Mapped user name claim (e.g. email).
+        """
+        pulumi.set(__self__, "user_name", user_name)
+
+    @_builtins.property
+    @pulumi.getter(name="userName")
+    def user_name(self) -> _builtins.str:
+        """
+        Mapped user name claim (e.g. email).
+        """
+        return pulumi.get(self, "user_name")
+
+
+@pulumi.output_type
+class GetDremioInstanceAuthenticationOauthParameterResult(dict):
+    def __init__(__self__, *,
+                 name: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str name: Parameter name.
+        :param _builtins.str value: Parameter value.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Parameter name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        Parameter value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetDremioInstanceEndpointsResult(dict):
+    def __init__(__self__, *,
+                 arrow_flight: _builtins.str,
+                 catalog: _builtins.str,
+                 ui: _builtins.str):
+        """
+        :param _builtins.str arrow_flight: The arrow flight endpoint of the Dremio instance.
+        :param _builtins.str catalog: The Apache Iceberg endpoint of the Dremio instance.
+        :param _builtins.str ui: The UI endpoint of the Dremio instance.
+        """
+        pulumi.set(__self__, "arrow_flight", arrow_flight)
+        pulumi.set(__self__, "catalog", catalog)
+        pulumi.set(__self__, "ui", ui)
+
+    @_builtins.property
+    @pulumi.getter(name="arrowFlight")
+    def arrow_flight(self) -> _builtins.str:
+        """
+        The arrow flight endpoint of the Dremio instance.
+        """
+        return pulumi.get(self, "arrow_flight")
+
+    @_builtins.property
+    @pulumi.getter
+    def catalog(self) -> _builtins.str:
+        """
+        The Apache Iceberg endpoint of the Dremio instance.
+        """
+        return pulumi.get(self, "catalog")
+
+    @_builtins.property
+    @pulumi.getter
+    def ui(self) -> _builtins.str:
+        """
+        The UI endpoint of the Dremio instance.
+        """
+        return pulumi.get(self, "ui")
 
 
 @pulumi.output_type
@@ -13836,6 +15101,242 @@ class GetSqlserverflexInstanceStorageResult(dict):
 
 
 @pulumi.output_type
+class GetTelemetryrouterDestinationConfigResult(dict):
+    def __init__(__self__, *,
+                 config_type: _builtins.str,
+                 filter: 'outputs.GetTelemetryrouterDestinationConfigFilterResult',
+                 opentelemetry: 'outputs.GetTelemetryrouterDestinationConfigOpentelemetryResult',
+                 s3: 'outputs.GetTelemetryrouterDestinationConfigS3Result'):
+        """
+        :param _builtins.str config_type: The TelemetryRouter destinations's configuration type, possible values: Possible values are: `OpenTelemetry`, `S3`.
+        :param 'GetTelemetryrouterDestinationConfigFilterArgs' filter: The TelemetryRouter destination's filter settings
+        :param 'GetTelemetryrouterDestinationConfigOpentelemetryArgs' opentelemetry: OpenTelemetry configuration
+        :param 'GetTelemetryrouterDestinationConfigS3Args' s3: S3 configuration
+        """
+        pulumi.set(__self__, "config_type", config_type)
+        pulumi.set(__self__, "filter", filter)
+        pulumi.set(__self__, "opentelemetry", opentelemetry)
+        pulumi.set(__self__, "s3", s3)
+
+    @_builtins.property
+    @pulumi.getter(name="configType")
+    def config_type(self) -> _builtins.str:
+        """
+        The TelemetryRouter destinations's configuration type, possible values: Possible values are: `OpenTelemetry`, `S3`.
+        """
+        return pulumi.get(self, "config_type")
+
+    @_builtins.property
+    @pulumi.getter
+    def filter(self) -> 'outputs.GetTelemetryrouterDestinationConfigFilterResult':
+        """
+        The TelemetryRouter destination's filter settings
+        """
+        return pulumi.get(self, "filter")
+
+    @_builtins.property
+    @pulumi.getter
+    def opentelemetry(self) -> 'outputs.GetTelemetryrouterDestinationConfigOpentelemetryResult':
+        """
+        OpenTelemetry configuration
+        """
+        return pulumi.get(self, "opentelemetry")
+
+    @_builtins.property
+    @pulumi.getter
+    def s3(self) -> 'outputs.GetTelemetryrouterDestinationConfigS3Result':
+        """
+        S3 configuration
+        """
+        return pulumi.get(self, "s3")
+
+
+@pulumi.output_type
+class GetTelemetryrouterDestinationConfigFilterResult(dict):
+    def __init__(__self__, *,
+                 attributes: Sequence['outputs.GetTelemetryrouterDestinationConfigFilterAttributeResult']):
+        """
+        :param Sequence['GetTelemetryrouterDestinationConfigFilterAttributeArgs'] attributes: The TelemetryRouter destination's filter attributes
+        """
+        pulumi.set(__self__, "attributes", attributes)
+
+    @_builtins.property
+    @pulumi.getter
+    def attributes(self) -> Sequence['outputs.GetTelemetryrouterDestinationConfigFilterAttributeResult']:
+        """
+        The TelemetryRouter destination's filter attributes
+        """
+        return pulumi.get(self, "attributes")
+
+
+@pulumi.output_type
+class GetTelemetryrouterDestinationConfigFilterAttributeResult(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 level: _builtins.str,
+                 matcher: _builtins.str,
+                 values: Sequence[_builtins.str]):
+        """
+        :param _builtins.str key: The TelemetryRouter destination's filter attribute key
+        :param _builtins.str level: The TelemetryRouter destination's filter attribute level, possible values: Possible values are: `resource`, `scope`, `logRecord`.
+        :param _builtins.str matcher: The TelemetryRouter destination's filter attribute matcher, possible values: Possible values are: `=`, `!=`.
+        :param Sequence[_builtins.str] values: The TelemetryRouter destination's filter attribute values
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "level", level)
+        pulumi.set(__self__, "matcher", matcher)
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        The TelemetryRouter destination's filter attribute key
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def level(self) -> _builtins.str:
+        """
+        The TelemetryRouter destination's filter attribute level, possible values: Possible values are: `resource`, `scope`, `logRecord`.
+        """
+        return pulumi.get(self, "level")
+
+    @_builtins.property
+    @pulumi.getter
+    def matcher(self) -> _builtins.str:
+        """
+        The TelemetryRouter destination's filter attribute matcher, possible values: Possible values are: `=`, `!=`.
+        """
+        return pulumi.get(self, "matcher")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        The TelemetryRouter destination's filter attribute values
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetTelemetryrouterDestinationConfigOpentelemetryResult(dict):
+    def __init__(__self__, *,
+                 uri: _builtins.str):
+        """
+        :param _builtins.str uri: OpenTelemetry destination URI
+        """
+        pulumi.set(__self__, "uri", uri)
+
+    @_builtins.property
+    @pulumi.getter
+    def uri(self) -> _builtins.str:
+        """
+        OpenTelemetry destination URI
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class GetTelemetryrouterDestinationConfigS3Result(dict):
+    def __init__(__self__, *,
+                 bucket: _builtins.str,
+                 endpoint: _builtins.str):
+        """
+        :param _builtins.str bucket: S3 bucket name
+        :param _builtins.str endpoint: S3 endpoint
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "endpoint", endpoint)
+
+    @_builtins.property
+    @pulumi.getter
+    def bucket(self) -> _builtins.str:
+        """
+        S3 bucket name
+        """
+        return pulumi.get(self, "bucket")
+
+    @_builtins.property
+    @pulumi.getter
+    def endpoint(self) -> _builtins.str:
+        """
+        S3 endpoint
+        """
+        return pulumi.get(self, "endpoint")
+
+
+@pulumi.output_type
+class GetTelemetryrouterInstanceFilterResult(dict):
+    def __init__(__self__, *,
+                 attributes: Sequence['outputs.GetTelemetryrouterInstanceFilterAttributeResult']):
+        """
+        :param Sequence['GetTelemetryrouterInstanceFilterAttributeArgs'] attributes: The TelemetryRouter global filter attributes
+        """
+        pulumi.set(__self__, "attributes", attributes)
+
+    @_builtins.property
+    @pulumi.getter
+    def attributes(self) -> Sequence['outputs.GetTelemetryrouterInstanceFilterAttributeResult']:
+        """
+        The TelemetryRouter global filter attributes
+        """
+        return pulumi.get(self, "attributes")
+
+
+@pulumi.output_type
+class GetTelemetryrouterInstanceFilterAttributeResult(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 level: _builtins.str,
+                 matcher: _builtins.str,
+                 values: Sequence[_builtins.str]):
+        """
+        :param _builtins.str key: The TelemetryRouter global filter attribute key
+        :param _builtins.str level: The TelemetryRouter global filter attribute level, possible values: Possible values are: `resource`, `scope`, `logRecord`.
+        :param _builtins.str matcher: The TelemetryRouter global filter attribute matcher, possible values: Possible values are: `=`, `!=`.
+        :param Sequence[_builtins.str] values: The TelemetryRouter global filter attributes
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "level", level)
+        pulumi.set(__self__, "matcher", matcher)
+        pulumi.set(__self__, "values", values)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        The TelemetryRouter global filter attribute key
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def level(self) -> _builtins.str:
+        """
+        The TelemetryRouter global filter attribute level, possible values: Possible values are: `resource`, `scope`, `logRecord`.
+        """
+        return pulumi.get(self, "level")
+
+    @_builtins.property
+    @pulumi.getter
+    def matcher(self) -> _builtins.str:
+        """
+        The TelemetryRouter global filter attribute matcher, possible values: Possible values are: `=`, `!=`.
+        """
+        return pulumi.get(self, "matcher")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        The TelemetryRouter global filter attributes
+        """
+        return pulumi.get(self, "values")
+
+
+@pulumi.output_type
 class GetVolumeSourceResult(dict):
     def __init__(__self__, *,
                  id: _builtins.str,
@@ -13862,5 +15363,63 @@ class GetVolumeSourceResult(dict):
         The type of the source. Possible values are: `volume`, `image`, `snapshot`, `backup`.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetVpnGatewayAvailabilityZonesResult(dict):
+    def __init__(__self__, *,
+                 tunnel1: _builtins.str,
+                 tunnel2: _builtins.str):
+        """
+        :param _builtins.str tunnel1: Availability zone for tunnel 1.
+        :param _builtins.str tunnel2: Availability zone for tunnel 2.
+        """
+        pulumi.set(__self__, "tunnel1", tunnel1)
+        pulumi.set(__self__, "tunnel2", tunnel2)
+
+    @_builtins.property
+    @pulumi.getter
+    def tunnel1(self) -> _builtins.str:
+        """
+        Availability zone for tunnel 1.
+        """
+        return pulumi.get(self, "tunnel1")
+
+    @_builtins.property
+    @pulumi.getter
+    def tunnel2(self) -> _builtins.str:
+        """
+        Availability zone for tunnel 2.
+        """
+        return pulumi.get(self, "tunnel2")
+
+
+@pulumi.output_type
+class GetVpnGatewayBgpResult(dict):
+    def __init__(__self__, *,
+                 local_asn: _builtins.int,
+                 override_advertised_routes: Sequence[_builtins.str]):
+        """
+        :param _builtins.int local_asn: Local ASN for BGP (private ASN range, 64512-4294967294).
+        :param Sequence[_builtins.str] override_advertised_routes: List of IPv4 CIDRs to advertise via BGP. If omitted, SNA network ranges are advertised.
+        """
+        pulumi.set(__self__, "local_asn", local_asn)
+        pulumi.set(__self__, "override_advertised_routes", override_advertised_routes)
+
+    @_builtins.property
+    @pulumi.getter(name="localAsn")
+    def local_asn(self) -> _builtins.int:
+        """
+        Local ASN for BGP (private ASN range, 64512-4294967294).
+        """
+        return pulumi.get(self, "local_asn")
+
+    @_builtins.property
+    @pulumi.getter(name="overrideAdvertisedRoutes")
+    def override_advertised_routes(self) -> Sequence[_builtins.str]:
+        """
+        List of IPv4 CIDRs to advertise via BGP. If omitted, SNA network ranges are advertised.
+        """
+        return pulumi.get(self, "override_advertised_routes")
 
 

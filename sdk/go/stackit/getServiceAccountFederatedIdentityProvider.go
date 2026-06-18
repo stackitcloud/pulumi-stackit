@@ -11,7 +11,7 @@ import (
 	"github.com/stackitcloud/pulumi-stackit/sdk/go/stackit/internal"
 )
 
-// Service account federated identity provider schema.
+// Gets details about a federated identity provider configured for a STACKIT service account.
 //
 // ## Example Usage
 func LookupServiceAccountFederatedIdentityProvider(ctx *pulumi.Context, args *LookupServiceAccountFederatedIdentityProviderArgs, opts ...pulumi.InvokeOption) (*LookupServiceAccountFederatedIdentityProviderResult, error) {

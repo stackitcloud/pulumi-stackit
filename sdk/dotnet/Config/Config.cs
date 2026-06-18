@@ -102,6 +102,16 @@ namespace Pulumi.Stackit
             set => _dnsCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _dremioCustomEndpoint = new __Value<string?>(() => __config.Get("dremioCustomEndpoint"));
+        /// <summary>
+        /// Custom endpoint for the Dremio service
+        /// </summary>
+        public static string? DremioCustomEndpoint
+        {
+            get => _dremioCustomEndpoint.Get();
+            set => _dremioCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _edgecloudCustomEndpoint = new __Value<string?>(() => __config.Get("edgecloudCustomEndpoint"));
         /// <summary>
         /// Custom endpoint for the Edge Cloud service
@@ -124,7 +134,7 @@ namespace Pulumi.Stackit
 
         private static readonly __Value<ImmutableArray<string>> _experiments = new __Value<ImmutableArray<string>>(() => __config.GetObject<ImmutableArray<string>>("experiments"));
         /// <summary>
-        /// Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: iam, routing-tables, network
+        /// Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, routing-tables, network
         /// </summary>
         public static ImmutableArray<string> Experiments
         {
@@ -502,6 +512,26 @@ namespace Pulumi.Stackit
             set => _sqlserverflexCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _telemetrylinkCustomEndpoint = new __Value<string?>(() => __config.Get("telemetrylinkCustomEndpoint"));
+        /// <summary>
+        /// Custom endpoint for the Telemetry Link service
+        /// </summary>
+        public static string? TelemetrylinkCustomEndpoint
+        {
+            get => _telemetrylinkCustomEndpoint.Get();
+            set => _telemetrylinkCustomEndpoint.Set(value);
+        }
+
+        private static readonly __Value<string?> _telemetryrouterCustomEndpoint = new __Value<string?>(() => __config.Get("telemetryrouterCustomEndpoint"));
+        /// <summary>
+        /// Custom endpoint for the Telemetry Router service
+        /// </summary>
+        public static string? TelemetryrouterCustomEndpoint
+        {
+            get => _telemetryrouterCustomEndpoint.Get();
+            set => _telemetryrouterCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _tokenCustomEndpoint = new __Value<string?>(() => __config.Get("tokenCustomEndpoint"));
         /// <summary>
         /// Custom endpoint for the token API, which is used to request access tokens when using the key flow
@@ -520,6 +550,16 @@ namespace Pulumi.Stackit
         {
             get => _useOidc.Get();
             set => _useOidc.Set(value);
+        }
+
+        private static readonly __Value<string?> _vpnCustomEndpoint = new __Value<string?>(() => __config.Get("vpnCustomEndpoint"));
+        /// <summary>
+        /// Custom endpoint for the VPN service
+        /// </summary>
+        public static string? VpnCustomEndpoint
+        {
+            get => _vpnCustomEndpoint.Get();
+            set => _vpnCustomEndpoint.Set(value);
         }
 
     }

@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Service account key schema.
+ * Creates and manages a key for a STACKIT service account.
  * ## Example Usage
  *
  * ### Automatically rotate service account keys

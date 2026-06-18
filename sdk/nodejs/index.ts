@@ -75,6 +75,16 @@ export type DnsZone = import("./dnsZone").DnsZone;
 export const DnsZone: typeof import("./dnsZone").DnsZone = null as any;
 utilities.lazyLoad(exports, ["DnsZone"], () => require("./dnsZone"));
 
+export { DremioInstanceArgs, DremioInstanceState } from "./dremioInstance";
+export type DremioInstance = import("./dremioInstance").DremioInstance;
+export const DremioInstance: typeof import("./dremioInstance").DremioInstance = null as any;
+utilities.lazyLoad(exports, ["DremioInstance"], () => require("./dremioInstance"));
+
+export { DremioUserArgs, DremioUserState } from "./dremioUser";
+export type DremioUser = import("./dremioUser").DremioUser;
+export const DremioUser: typeof import("./dremioUser").DremioUser = null as any;
+utilities.lazyLoad(exports, ["DremioUser"], () => require("./dremioUser"));
+
 export { EdgecloudInstanceArgs, EdgecloudInstanceState } from "./edgecloudInstance";
 export type EdgecloudInstance = import("./edgecloudInstance").EdgecloudInstance;
 export const EdgecloudInstance: typeof import("./edgecloudInstance").EdgecloudInstance = null as any;
@@ -139,6 +149,16 @@ export { GetDnsZoneArgs, GetDnsZoneResult, GetDnsZoneOutputArgs } from "./getDns
 export const getDnsZone: typeof import("./getDnsZone").getDnsZone = null as any;
 export const getDnsZoneOutput: typeof import("./getDnsZone").getDnsZoneOutput = null as any;
 utilities.lazyLoad(exports, ["getDnsZone","getDnsZoneOutput"], () => require("./getDnsZone"));
+
+export { GetDremioInstanceArgs, GetDremioInstanceResult, GetDremioInstanceOutputArgs } from "./getDremioInstance";
+export const getDremioInstance: typeof import("./getDremioInstance").getDremioInstance = null as any;
+export const getDremioInstanceOutput: typeof import("./getDremioInstance").getDremioInstanceOutput = null as any;
+utilities.lazyLoad(exports, ["getDremioInstance","getDremioInstanceOutput"], () => require("./getDremioInstance"));
+
+export { GetDremioUserArgs, GetDremioUserResult, GetDremioUserOutputArgs } from "./getDremioUser";
+export const getDremioUser: typeof import("./getDremioUser").getDremioUser = null as any;
+export const getDremioUserOutput: typeof import("./getDremioUser").getDremioUserOutput = null as any;
+utilities.lazyLoad(exports, ["getDremioUser","getDremioUserOutput"], () => require("./getDremioUser"));
 
 export { GetEdgecloudInstancesArgs, GetEdgecloudInstancesResult, GetEdgecloudInstancesOutputArgs } from "./getEdgecloudInstances";
 export const getEdgecloudInstances: typeof import("./getEdgecloudInstances").getEdgecloudInstances = null as any;
@@ -545,10 +565,35 @@ export const getSqlserverflexUser: typeof import("./getSqlserverflexUser").getSq
 export const getSqlserverflexUserOutput: typeof import("./getSqlserverflexUser").getSqlserverflexUserOutput = null as any;
 utilities.lazyLoad(exports, ["getSqlserverflexUser","getSqlserverflexUserOutput"], () => require("./getSqlserverflexUser"));
 
+export { GetTelemetrylinkArgs, GetTelemetrylinkResult, GetTelemetrylinkOutputArgs } from "./getTelemetrylink";
+export const getTelemetrylink: typeof import("./getTelemetrylink").getTelemetrylink = null as any;
+export const getTelemetrylinkOutput: typeof import("./getTelemetrylink").getTelemetrylinkOutput = null as any;
+utilities.lazyLoad(exports, ["getTelemetrylink","getTelemetrylinkOutput"], () => require("./getTelemetrylink"));
+
+export { GetTelemetryrouterAccessTokenArgs, GetTelemetryrouterAccessTokenResult, GetTelemetryrouterAccessTokenOutputArgs } from "./getTelemetryrouterAccessToken";
+export const getTelemetryrouterAccessToken: typeof import("./getTelemetryrouterAccessToken").getTelemetryrouterAccessToken = null as any;
+export const getTelemetryrouterAccessTokenOutput: typeof import("./getTelemetryrouterAccessToken").getTelemetryrouterAccessTokenOutput = null as any;
+utilities.lazyLoad(exports, ["getTelemetryrouterAccessToken","getTelemetryrouterAccessTokenOutput"], () => require("./getTelemetryrouterAccessToken"));
+
+export { GetTelemetryrouterDestinationArgs, GetTelemetryrouterDestinationResult, GetTelemetryrouterDestinationOutputArgs } from "./getTelemetryrouterDestination";
+export const getTelemetryrouterDestination: typeof import("./getTelemetryrouterDestination").getTelemetryrouterDestination = null as any;
+export const getTelemetryrouterDestinationOutput: typeof import("./getTelemetryrouterDestination").getTelemetryrouterDestinationOutput = null as any;
+utilities.lazyLoad(exports, ["getTelemetryrouterDestination","getTelemetryrouterDestinationOutput"], () => require("./getTelemetryrouterDestination"));
+
+export { GetTelemetryrouterInstanceArgs, GetTelemetryrouterInstanceResult, GetTelemetryrouterInstanceOutputArgs } from "./getTelemetryrouterInstance";
+export const getTelemetryrouterInstance: typeof import("./getTelemetryrouterInstance").getTelemetryrouterInstance = null as any;
+export const getTelemetryrouterInstanceOutput: typeof import("./getTelemetryrouterInstance").getTelemetryrouterInstanceOutput = null as any;
+utilities.lazyLoad(exports, ["getTelemetryrouterInstance","getTelemetryrouterInstanceOutput"], () => require("./getTelemetryrouterInstance"));
+
 export { GetVolumeArgs, GetVolumeResult, GetVolumeOutputArgs } from "./getVolume";
 export const getVolume: typeof import("./getVolume").getVolume = null as any;
 export const getVolumeOutput: typeof import("./getVolume").getVolumeOutput = null as any;
 utilities.lazyLoad(exports, ["getVolume","getVolumeOutput"], () => require("./getVolume"));
+
+export { GetVpnGatewayArgs, GetVpnGatewayResult, GetVpnGatewayOutputArgs } from "./getVpnGateway";
+export const getVpnGateway: typeof import("./getVpnGateway").getVpnGateway = null as any;
+export const getVpnGatewayOutput: typeof import("./getVpnGateway").getVpnGatewayOutput = null as any;
+utilities.lazyLoad(exports, ["getVpnGateway","getVpnGatewayOutput"], () => require("./getVpnGateway"));
 
 export { GitArgs, GitState } from "./git";
 export type Git = import("./git").Git;
@@ -923,10 +968,35 @@ export type SqlserverflexUser = import("./sqlserverflexUser").SqlserverflexUser;
 export const SqlserverflexUser: typeof import("./sqlserverflexUser").SqlserverflexUser = null as any;
 utilities.lazyLoad(exports, ["SqlserverflexUser"], () => require("./sqlserverflexUser"));
 
+export { TelemetrylinkArgs, TelemetrylinkState } from "./telemetrylink";
+export type Telemetrylink = import("./telemetrylink").Telemetrylink;
+export const Telemetrylink: typeof import("./telemetrylink").Telemetrylink = null as any;
+utilities.lazyLoad(exports, ["Telemetrylink"], () => require("./telemetrylink"));
+
+export { TelemetryrouterAccessTokenArgs, TelemetryrouterAccessTokenState } from "./telemetryrouterAccessToken";
+export type TelemetryrouterAccessToken = import("./telemetryrouterAccessToken").TelemetryrouterAccessToken;
+export const TelemetryrouterAccessToken: typeof import("./telemetryrouterAccessToken").TelemetryrouterAccessToken = null as any;
+utilities.lazyLoad(exports, ["TelemetryrouterAccessToken"], () => require("./telemetryrouterAccessToken"));
+
+export { TelemetryrouterDestinationArgs, TelemetryrouterDestinationState } from "./telemetryrouterDestination";
+export type TelemetryrouterDestination = import("./telemetryrouterDestination").TelemetryrouterDestination;
+export const TelemetryrouterDestination: typeof import("./telemetryrouterDestination").TelemetryrouterDestination = null as any;
+utilities.lazyLoad(exports, ["TelemetryrouterDestination"], () => require("./telemetryrouterDestination"));
+
+export { TelemetryrouterInstanceArgs, TelemetryrouterInstanceState } from "./telemetryrouterInstance";
+export type TelemetryrouterInstance = import("./telemetryrouterInstance").TelemetryrouterInstance;
+export const TelemetryrouterInstance: typeof import("./telemetryrouterInstance").TelemetryrouterInstance = null as any;
+utilities.lazyLoad(exports, ["TelemetryrouterInstance"], () => require("./telemetryrouterInstance"));
+
 export { VolumeArgs, VolumeState } from "./volume";
 export type Volume = import("./volume").Volume;
 export const Volume: typeof import("./volume").Volume = null as any;
 utilities.lazyLoad(exports, ["Volume"], () => require("./volume"));
+
+export { VpnGatewayArgs, VpnGatewayState } from "./vpnGateway";
+export type VpnGateway = import("./vpnGateway").VpnGateway;
+export const VpnGateway: typeof import("./vpnGateway").VpnGateway = null as any;
+utilities.lazyLoad(exports, ["VpnGateway"], () => require("./vpnGateway"));
 
 
 // Export sub-modules:
@@ -970,6 +1040,10 @@ const _module = {
                 return new DnsRecordSet(name, <any>undefined, { urn })
             case "stackit:index/dnsZone:DnsZone":
                 return new DnsZone(name, <any>undefined, { urn })
+            case "stackit:index/dremioInstance:DremioInstance":
+                return new DremioInstance(name, <any>undefined, { urn })
+            case "stackit:index/dremioUser:DremioUser":
+                return new DremioUser(name, <any>undefined, { urn })
             case "stackit:index/edgecloudInstance:EdgecloudInstance":
                 return new EdgecloudInstance(name, <any>undefined, { urn })
             case "stackit:index/edgecloudKubeconfig:EdgecloudKubeconfig":
@@ -1124,8 +1198,18 @@ const _module = {
                 return new SqlserverflexInstance(name, <any>undefined, { urn })
             case "stackit:index/sqlserverflexUser:SqlserverflexUser":
                 return new SqlserverflexUser(name, <any>undefined, { urn })
+            case "stackit:index/telemetrylink:Telemetrylink":
+                return new Telemetrylink(name, <any>undefined, { urn })
+            case "stackit:index/telemetryrouterAccessToken:TelemetryrouterAccessToken":
+                return new TelemetryrouterAccessToken(name, <any>undefined, { urn })
+            case "stackit:index/telemetryrouterDestination:TelemetryrouterDestination":
+                return new TelemetryrouterDestination(name, <any>undefined, { urn })
+            case "stackit:index/telemetryrouterInstance:TelemetryrouterInstance":
+                return new TelemetryrouterInstance(name, <any>undefined, { urn })
             case "stackit:index/volume:Volume":
                 return new Volume(name, <any>undefined, { urn })
+            case "stackit:index/vpnGateway:VpnGateway":
+                return new VpnGateway(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -1145,6 +1229,8 @@ pulumi.runtime.registerResourceModule("stackit", "index/cdnCustomDomain", _modul
 pulumi.runtime.registerResourceModule("stackit", "index/cdnDistribution", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/dnsRecordSet", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/dnsZone", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/dremioInstance", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/dremioUser", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/edgecloudInstance", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/edgecloudKubeconfig", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/edgecloudToken", _module)
@@ -1222,7 +1308,12 @@ pulumi.runtime.registerResourceModule("stackit", "index/skeCluster", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/skeKubeconfig", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/sqlserverflexInstance", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/sqlserverflexUser", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/telemetrylink", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/telemetryrouterAccessToken", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/telemetryrouterDestination", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/telemetryrouterInstance", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/volume", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/vpnGateway", _module)
 pulumi.runtime.registerResourcePackage("stackit", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

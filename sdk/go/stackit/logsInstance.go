@@ -44,7 +44,7 @@ type LogsInstance struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The log retention time in days
 	RetentionDays pulumi.IntOutput `pulumi:"retentionDays"`
-	// The status of the Logs instance, possible values: Possible values are: `active`, `deleting`, `reconciling`.
+	// The status of the Logs instance. Possible values are: `active`, `deleting`, `reconciling`.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
 
@@ -113,7 +113,7 @@ type logsInstanceState struct {
 	Region *string `pulumi:"region"`
 	// The log retention time in days
 	RetentionDays *int `pulumi:"retentionDays"`
-	// The status of the Logs instance, possible values: Possible values are: `active`, `deleting`, `reconciling`.
+	// The status of the Logs instance. Possible values are: `active`, `deleting`, `reconciling`.
 	Status *string `pulumi:"status"`
 }
 
@@ -144,7 +144,7 @@ type LogsInstanceState struct {
 	Region pulumi.StringPtrInput
 	// The log retention time in days
 	RetentionDays pulumi.IntPtrInput
-	// The status of the Logs instance, possible values: Possible values are: `active`, `deleting`, `reconciling`.
+	// The status of the Logs instance. Possible values are: `active`, `deleting`, `reconciling`.
 	Status pulumi.StringPtrInput
 }
 
@@ -335,7 +335,7 @@ func (o LogsInstanceOutput) RetentionDays() pulumi.IntOutput {
 	return o.ApplyT(func(v *LogsInstance) pulumi.IntOutput { return v.RetentionDays }).(pulumi.IntOutput)
 }
 
-// The status of the Logs instance, possible values: Possible values are: `active`, `deleting`, `reconciling`.
+// The status of the Logs instance. Possible values are: `active`, `deleting`, `reconciling`.
 func (o LogsInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsInstance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

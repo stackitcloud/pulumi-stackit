@@ -22,7 +22,8 @@ class ObjectstorageCredentialArgs:
                  credentials_group_id: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
                  expiration_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
-                 region: pulumi.Input[Optional[_builtins.str]] = None):
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ObjectstorageCredential resource.
 
@@ -30,6 +31,7 @@ class ObjectstorageCredentialArgs:
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the credential group is associated.
         :param pulumi.Input[_builtins.str] expiration_timestamp: Expiration timestamp, in RFC339 format without fractional seconds. Example: "2025-01-01T00:00:00Z". If not set, the credential never expires.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] rotate_when_changed: A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
         """
         pulumi.set(__self__, "credentials_group_id", credentials_group_id)
         pulumi.set(__self__, "project_id", project_id)
@@ -37,6 +39,8 @@ class ObjectstorageCredentialArgs:
             pulumi.set(__self__, "expiration_timestamp", expiration_timestamp)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if rotate_when_changed is not None:
+            pulumi.set(__self__, "rotate_when_changed", rotate_when_changed)
 
     @_builtins.property
     @pulumi.getter(name="credentialsGroupId")
@@ -86,6 +90,18 @@ class ObjectstorageCredentialArgs:
     def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
+    @_builtins.property
+    @pulumi.getter(name="rotateWhenChanged")
+    def rotate_when_changed(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "rotate_when_changed")
+
+    @rotate_when_changed.setter
+    def rotate_when_changed(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "rotate_when_changed", value)
+
 
 @pulumi.input_type
 class _ObjectstorageCredentialState:
@@ -97,6 +113,7 @@ class _ObjectstorageCredentialState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  secret_access_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ObjectstorageCredential resources.
@@ -106,6 +123,7 @@ class _ObjectstorageCredentialState:
         :param pulumi.Input[_builtins.str] expiration_timestamp: Expiration timestamp, in RFC339 format without fractional seconds. Example: "2025-01-01T00:00:00Z". If not set, the credential never expires.
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the credential group is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] rotate_when_changed: A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
         """
         if access_key is not None:
             pulumi.set(__self__, "access_key", access_key)
@@ -121,6 +139,8 @@ class _ObjectstorageCredentialState:
             pulumi.set(__self__, "project_id", project_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if rotate_when_changed is not None:
+            pulumi.set(__self__, "rotate_when_changed", rotate_when_changed)
         if secret_access_key is not None:
             pulumi.set(__self__, "secret_access_key", secret_access_key)
 
@@ -203,6 +223,18 @@ class _ObjectstorageCredentialState:
         pulumi.set(self, "region", value)
 
     @_builtins.property
+    @pulumi.getter(name="rotateWhenChanged")
+    def rotate_when_changed(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "rotate_when_changed")
+
+    @rotate_when_changed.setter
+    def rotate_when_changed(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "rotate_when_changed", value)
+
+    @_builtins.property
     @pulumi.getter(name="secretAccessKey")
     def secret_access_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "secret_access_key")
@@ -222,6 +254,7 @@ class ObjectstorageCredential(pulumi.CustomResource):
                  expiration_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         ObjectStorage credential resource schema. Must have a `region` specified in the provider configuration.
@@ -235,6 +268,7 @@ class ObjectstorageCredential(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] expiration_timestamp: Expiration timestamp, in RFC339 format without fractional seconds. Example: "2025-01-01T00:00:00Z". If not set, the credential never expires.
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the credential group is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] rotate_when_changed: A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
         """
         ...
     @overload
@@ -267,6 +301,7 @@ class ObjectstorageCredential(pulumi.CustomResource):
                  expiration_timestamp: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -284,6 +319,7 @@ class ObjectstorageCredential(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["region"] = region
+            __props__.__dict__["rotate_when_changed"] = rotate_when_changed
             __props__.__dict__["access_key"] = None
             __props__.__dict__["credential_id"] = None
             __props__.__dict__["name"] = None
@@ -307,6 +343,7 @@ class ObjectstorageCredential(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
+            rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             secret_access_key: pulumi.Input[Optional[_builtins.str]] = None) -> 'ObjectstorageCredential':
         """
         Get an existing ObjectstorageCredential resource's state with the given name, id, and optional extra
@@ -320,6 +357,7 @@ class ObjectstorageCredential(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] expiration_timestamp: Expiration timestamp, in RFC339 format without fractional seconds. Example: "2025-01-01T00:00:00Z". If not set, the credential never expires.
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the credential group is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] rotate_when_changed: A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -332,6 +370,7 @@ class ObjectstorageCredential(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["region"] = region
+        __props__.__dict__["rotate_when_changed"] = rotate_when_changed
         __props__.__dict__["secret_access_key"] = secret_access_key
         return ObjectstorageCredential(resource_name, opts=opts, __props__=__props__)
 
@@ -384,6 +423,14 @@ class ObjectstorageCredential(pulumi.CustomResource):
         The resource region. If not defined, the provider region is used.
         """
         return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="rotateWhenChanged")
+    def rotate_when_changed(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "rotate_when_changed")
 
     @_builtins.property
     @pulumi.getter(name="secretAccessKey")

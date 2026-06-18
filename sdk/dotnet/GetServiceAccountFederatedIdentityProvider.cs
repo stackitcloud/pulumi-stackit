@@ -12,7 +12,7 @@ namespace Pulumi.Stackit
     public static class GetServiceAccountFederatedIdentityProvider
     {
         /// <summary>
-        /// Service account federated identity provider schema.
+        /// Gets details about a federated identity provider configured for a STACKIT service account.
         /// 
         /// ## Example Usage
         /// 
@@ -33,7 +33,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceAccountFederatedIdentityProviderResult>("stackit:index/getServiceAccountFederatedIdentityProvider:getServiceAccountFederatedIdentityProvider", args ?? new GetServiceAccountFederatedIdentityProviderArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Service account federated identity provider schema.
+        /// Gets details about a federated identity provider configured for a STACKIT service account.
         /// 
         /// ## Example Usage
         /// 
@@ -54,7 +54,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceAccountFederatedIdentityProviderResult>("stackit:index/getServiceAccountFederatedIdentityProvider:getServiceAccountFederatedIdentityProvider", args ?? new GetServiceAccountFederatedIdentityProviderInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Service account federated identity provider schema.
+        /// Gets details about a federated identity provider configured for a STACKIT service account.
         /// 
         /// ## Example Usage
         /// 

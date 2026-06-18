@@ -32,6 +32,12 @@ namespace Pulumi.Stackit
         public Output<ImmutableArray<string>> IpAcls { get; private set; } = null!;
 
         /// <summary>
+        /// Labels are key-value string pairs which can be attached to the resource.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the resource pool.
         /// </summary>
         [Output("name")]
@@ -144,6 +150,18 @@ namespace Pulumi.Stackit
             set => _ipAcls = value;
         }
 
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Labels are key-value string pairs which can be attached to the resource.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
         /// <summary>
         /// Name of the resource pool.
         /// </summary>
@@ -210,6 +228,18 @@ namespace Pulumi.Stackit
         {
             get => _ipAcls ?? (_ipAcls = new InputList<string>());
             set => _ipAcls = value;
+        }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Labels are key-value string pairs which can be attached to the resource.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
         }
 
         /// <summary>

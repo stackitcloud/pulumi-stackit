@@ -55,6 +55,10 @@ export class RedisCredential extends pulumi.CustomResource {
      */
     declare public readonly projectId: pulumi.Output<string>;
     /**
+     * A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+     */
+    declare public readonly rotateWhenChanged: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * Connection URI.
      */
     declare public /*out*/ readonly uri: pulumi.Output<string>;
@@ -81,6 +85,7 @@ export class RedisCredential extends pulumi.CustomResource {
             resourceInputs["password"] = state?.password;
             resourceInputs["port"] = state?.port;
             resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["rotateWhenChanged"] = state?.rotateWhenChanged;
             resourceInputs["uri"] = state?.uri;
             resourceInputs["username"] = state?.username;
         } else {
@@ -93,6 +98,7 @@ export class RedisCredential extends pulumi.CustomResource {
             }
             resourceInputs["instanceId"] = args?.instanceId;
             resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["rotateWhenChanged"] = args?.rotateWhenChanged;
             resourceInputs["credentialId"] = undefined /*out*/;
             resourceInputs["host"] = undefined /*out*/;
             resourceInputs["hosts"] = undefined /*out*/;
@@ -131,6 +137,10 @@ export interface RedisCredentialState {
      */
     projectId?: pulumi.Input<string | undefined>;
     /**
+     * A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+     */
+    rotateWhenChanged?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
      * Connection URI.
      */
     uri?: pulumi.Input<string | undefined>;
@@ -149,4 +159,8 @@ export interface RedisCredentialArgs {
      * STACKIT Project ID to which the instance is associated.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+     */
+    rotateWhenChanged?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

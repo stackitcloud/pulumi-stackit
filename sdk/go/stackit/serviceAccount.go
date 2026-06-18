@@ -12,7 +12,7 @@ import (
 	"github.com/stackitcloud/pulumi-stackit/sdk/go/stackit/internal"
 )
 
-// Service account resource schema.
+// Manages a STACKIT service account in a project.
 //
 // ## Example Usage
 type ServiceAccount struct {

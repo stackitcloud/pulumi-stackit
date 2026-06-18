@@ -59,6 +59,10 @@ export class ObjectstorageCredential extends pulumi.CustomResource {
      * The resource region. If not defined, the provider region is used.
      */
     declare public readonly region: pulumi.Output<string>;
+    /**
+     * A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+     */
+    declare public readonly rotateWhenChanged: pulumi.Output<{[key: string]: string} | undefined>;
     declare public /*out*/ readonly secretAccessKey: pulumi.Output<string>;
 
     /**
@@ -81,6 +85,7 @@ export class ObjectstorageCredential extends pulumi.CustomResource {
             resourceInputs["name"] = state?.name;
             resourceInputs["projectId"] = state?.projectId;
             resourceInputs["region"] = state?.region;
+            resourceInputs["rotateWhenChanged"] = state?.rotateWhenChanged;
             resourceInputs["secretAccessKey"] = state?.secretAccessKey;
         } else {
             const args = argsOrState as ObjectstorageCredentialArgs | undefined;
@@ -94,6 +99,7 @@ export class ObjectstorageCredential extends pulumi.CustomResource {
             resourceInputs["expirationTimestamp"] = args?.expirationTimestamp;
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["region"] = args?.region;
+            resourceInputs["rotateWhenChanged"] = args?.rotateWhenChanged;
             resourceInputs["accessKey"] = undefined /*out*/;
             resourceInputs["credentialId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -132,6 +138,10 @@ export interface ObjectstorageCredentialState {
      * The resource region. If not defined, the provider region is used.
      */
     region?: pulumi.Input<string | undefined>;
+    /**
+     * A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+     */
+    rotateWhenChanged?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     secretAccessKey?: pulumi.Input<string | undefined>;
 }
 
@@ -155,4 +165,8 @@ export interface ObjectstorageCredentialArgs {
      * The resource region. If not defined, the provider region is used.
      */
     region?: pulumi.Input<string | undefined>;
+    /**
+     * A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+     */
+    rotateWhenChanged?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -11,7 +11,7 @@ import (
 	"github.com/stackitcloud/pulumi-stackit/sdk/go/stackit/internal"
 )
 
-// Service accounts plural data source schema. Returns a list of all service accounts in a project, optionally filtered.
+// Lists STACKIT service accounts in a project, optionally filtered by email.
 //
 // ## Example Usage
 func GetServiceAccounts(ctx *pulumi.Context, args *GetServiceAccountsArgs, opts ...pulumi.InvokeOption) (*GetServiceAccountsResult, error) {

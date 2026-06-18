@@ -29,7 +29,9 @@ type PostgresflexUser struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Database access levels for the user.
 	Roles pulumi.StringArrayOutput `pulumi:"roles"`
-	Uri   pulumi.StringOutput      `pulumi:"uri"`
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapOutput `pulumi:"rotateWhenChanged"`
+	Uri               pulumi.StringOutput    `pulumi:"uri"`
 	// User ID.
 	UserId   pulumi.StringOutput `pulumi:"userId"`
 	Username pulumi.StringOutput `pulumi:"username"`
@@ -93,7 +95,9 @@ type postgresflexUserState struct {
 	Region *string `pulumi:"region"`
 	// Database access levels for the user.
 	Roles []string `pulumi:"roles"`
-	Uri   *string  `pulumi:"uri"`
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged map[string]string `pulumi:"rotateWhenChanged"`
+	Uri               *string           `pulumi:"uri"`
 	// User ID.
 	UserId   *string `pulumi:"userId"`
 	Username *string `pulumi:"username"`
@@ -111,7 +115,9 @@ type PostgresflexUserState struct {
 	Region pulumi.StringPtrInput
 	// Database access levels for the user.
 	Roles pulumi.StringArrayInput
-	Uri   pulumi.StringPtrInput
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapInput
+	Uri               pulumi.StringPtrInput
 	// User ID.
 	UserId   pulumi.StringPtrInput
 	Username pulumi.StringPtrInput
@@ -129,8 +135,10 @@ type postgresflexUserArgs struct {
 	// The resource region. If not defined, the provider region is used.
 	Region *string `pulumi:"region"`
 	// Database access levels for the user.
-	Roles    []string `pulumi:"roles"`
-	Username string   `pulumi:"username"`
+	Roles []string `pulumi:"roles"`
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged map[string]string `pulumi:"rotateWhenChanged"`
+	Username          string            `pulumi:"username"`
 }
 
 // The set of arguments for constructing a PostgresflexUser resource.
@@ -142,8 +150,10 @@ type PostgresflexUserArgs struct {
 	// The resource region. If not defined, the provider region is used.
 	Region pulumi.StringPtrInput
 	// Database access levels for the user.
-	Roles    pulumi.StringArrayInput
-	Username pulumi.StringInput
+	Roles pulumi.StringArrayInput
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapInput
+	Username          pulumi.StringInput
 }
 
 func (PostgresflexUserArgs) ElementType() reflect.Type {
@@ -263,6 +273,11 @@ func (o PostgresflexUserOutput) Region() pulumi.StringOutput {
 // Database access levels for the user.
 func (o PostgresflexUserOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PostgresflexUser) pulumi.StringArrayOutput { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
+// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+func (o PostgresflexUserOutput) RotateWhenChanged() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PostgresflexUser) pulumi.StringMapOutput { return v.RotateWhenChanged }).(pulumi.StringMapOutput)
 }
 
 func (o PostgresflexUserOutput) Uri() pulumi.StringOutput {

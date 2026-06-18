@@ -101,7 +101,7 @@ def get_service_account(email: Optional[_builtins.str] = None,
                         project_id: Optional[_builtins.str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceAccountResult:
     """
-    Service account data source schema.
+    Gets details about a STACKIT service account in a project by email.
 
     ## Example Usage
 
@@ -125,7 +125,7 @@ def get_service_account_output(email: pulumi.Input[Optional[_builtins.str]] = No
                                project_id: pulumi.Input[Optional[_builtins.str]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceAccountResult]:
     """
-    Service account data source schema.
+    Gets details about a STACKIT service account in a project by email.
 
     ## Example Usage
 

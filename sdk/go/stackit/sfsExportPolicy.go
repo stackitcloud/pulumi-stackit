@@ -20,6 +20,8 @@ import (
 type SfsExportPolicy struct {
 	pulumi.CustomResourceState
 
+	// Labels are key-value string pairs which can be attached to the resource.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Name of the export policy.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Export policy ID
@@ -64,6 +66,8 @@ func GetSfsExportPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SfsExportPolicy resources.
 type sfsExportPolicyState struct {
+	// Labels are key-value string pairs which can be attached to the resource.
+	Labels map[string]string `pulumi:"labels"`
 	// Name of the export policy.
 	Name *string `pulumi:"name"`
 	// Export policy ID
@@ -76,6 +80,8 @@ type sfsExportPolicyState struct {
 }
 
 type SfsExportPolicyState struct {
+	// Labels are key-value string pairs which can be attached to the resource.
+	Labels pulumi.StringMapInput
 	// Name of the export policy.
 	Name pulumi.StringPtrInput
 	// Export policy ID
@@ -92,6 +98,8 @@ func (SfsExportPolicyState) ElementType() reflect.Type {
 }
 
 type sfsExportPolicyArgs struct {
+	// Labels are key-value string pairs which can be attached to the resource.
+	Labels map[string]string `pulumi:"labels"`
 	// Name of the export policy.
 	Name *string `pulumi:"name"`
 	// STACKIT project ID to which the export policy is associated.
@@ -103,6 +111,8 @@ type sfsExportPolicyArgs struct {
 
 // The set of arguments for constructing a SfsExportPolicy resource.
 type SfsExportPolicyArgs struct {
+	// Labels are key-value string pairs which can be attached to the resource.
+	Labels pulumi.StringMapInput
 	// Name of the export policy.
 	Name pulumi.StringPtrInput
 	// STACKIT project ID to which the export policy is associated.
@@ -197,6 +207,11 @@ func (o SfsExportPolicyOutput) ToSfsExportPolicyOutput() SfsExportPolicyOutput {
 
 func (o SfsExportPolicyOutput) ToSfsExportPolicyOutputWithContext(ctx context.Context) SfsExportPolicyOutput {
 	return o
+}
+
+// Labels are key-value string pairs which can be attached to the resource.
+func (o SfsExportPolicyOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SfsExportPolicy) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // Name of the export policy.

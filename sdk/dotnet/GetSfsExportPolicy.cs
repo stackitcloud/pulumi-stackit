@@ -125,6 +125,10 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// Labels are key-value string pairs which can be attached to an export policy
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Labels;
+        /// <summary>
         /// Name of the export policy.
         /// </summary>
         public readonly string Name;
@@ -146,6 +150,8 @@ namespace Pulumi.Stackit
         private GetSfsExportPolicyResult(
             string id,
 
+            ImmutableDictionary<string, string> labels,
+
             string name,
 
             string policyId,
@@ -157,6 +163,7 @@ namespace Pulumi.Stackit
             ImmutableArray<Outputs.GetSfsExportPolicyRuleResult> rules)
         {
             Id = id;
+            Labels = labels;
             Name = name;
             PolicyId = policyId;
             ProjectId = projectId;

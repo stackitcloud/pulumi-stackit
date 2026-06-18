@@ -26,6 +26,8 @@ type ObservabilityCredential struct {
 	Password pulumi.StringOutput `pulumi:"password"`
 	// STACKIT project ID to which the credential is associated.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapOutput `pulumi:"rotateWhenChanged"`
 	// Credential username
 	Username pulumi.StringOutput `pulumi:"username"`
 }
@@ -78,6 +80,8 @@ type observabilityCredentialState struct {
 	Password *string `pulumi:"password"`
 	// STACKIT project ID to which the credential is associated.
 	ProjectId *string `pulumi:"projectId"`
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged map[string]string `pulumi:"rotateWhenChanged"`
 	// Credential username
 	Username *string `pulumi:"username"`
 }
@@ -91,6 +95,8 @@ type ObservabilityCredentialState struct {
 	Password pulumi.StringPtrInput
 	// STACKIT project ID to which the credential is associated.
 	ProjectId pulumi.StringPtrInput
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapInput
 	// Credential username
 	Username pulumi.StringPtrInput
 }
@@ -106,6 +112,8 @@ type observabilityCredentialArgs struct {
 	InstanceId string `pulumi:"instanceId"`
 	// STACKIT project ID to which the credential is associated.
 	ProjectId string `pulumi:"projectId"`
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged map[string]string `pulumi:"rotateWhenChanged"`
 }
 
 // The set of arguments for constructing a ObservabilityCredential resource.
@@ -116,6 +124,8 @@ type ObservabilityCredentialArgs struct {
 	InstanceId pulumi.StringInput
 	// STACKIT project ID to which the credential is associated.
 	ProjectId pulumi.StringInput
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapInput
 }
 
 func (ObservabilityCredentialArgs) ElementType() reflect.Type {
@@ -223,6 +233,11 @@ func (o ObservabilityCredentialOutput) Password() pulumi.StringOutput {
 // STACKIT project ID to which the credential is associated.
 func (o ObservabilityCredentialOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObservabilityCredential) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+func (o ObservabilityCredentialOutput) RotateWhenChanged() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ObservabilityCredential) pulumi.StringMapOutput { return v.RotateWhenChanged }).(pulumi.StringMapOutput)
 }
 
 // Credential username

@@ -147,6 +147,10 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string Id;
         /// <summary>
+        /// Labels are key-value string pairs which can be attached to a share
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Labels;
+        /// <summary>
         /// Mount path of the Share, used to mount the Share
         /// </summary>
         public readonly string MountPath;
@@ -183,6 +187,8 @@ namespace Pulumi.Stackit
 
             string id,
 
+            ImmutableDictionary<string, string> labels,
+
             string mountPath,
 
             string name,
@@ -199,6 +205,7 @@ namespace Pulumi.Stackit
         {
             ExportPolicy = exportPolicy;
             Id = id;
+            Labels = labels;
             MountPath = mountPath;
             Name = name;
             ProjectId = projectId;

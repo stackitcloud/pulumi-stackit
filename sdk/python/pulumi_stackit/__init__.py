@@ -20,6 +20,8 @@ from .cdn_custom_domain import *
 from .cdn_distribution import *
 from .dns_record_set import *
 from .dns_zone import *
+from .dremio_instance import *
+from .dremio_user import *
 from .edgecloud_instance import *
 from .edgecloud_kubeconfig import *
 from .edgecloud_token import *
@@ -33,6 +35,8 @@ from .get_cdn_custom_domain import *
 from .get_cdn_distribution import *
 from .get_dns_record_set import *
 from .get_dns_zone import *
+from .get_dremio_instance import *
+from .get_dremio_user import *
 from .get_edgecloud_instances import *
 from .get_edgecloud_plans import *
 from .get_git import *
@@ -114,7 +118,12 @@ from .get_ske_kubernetes_versions import *
 from .get_ske_machine_image_versions import *
 from .get_sqlserverflex_instance import *
 from .get_sqlserverflex_user import *
+from .get_telemetrylink import *
+from .get_telemetryrouter_access_token import *
+from .get_telemetryrouter_destination import *
+from .get_telemetryrouter_instance import *
 from .get_volume import *
+from .get_vpn_gateway import *
 from .git import *
 from .image import *
 from .intake_runner import *
@@ -190,7 +199,12 @@ from .ske_cluster import *
 from .ske_kubeconfig import *
 from .sqlserverflex_instance import *
 from .sqlserverflex_user import *
+from .telemetrylink import *
+from .telemetryrouter_access_token import *
+from .telemetryrouter_destination import *
+from .telemetryrouter_instance import *
 from .volume import *
+from .vpn_gateway import *
 from ._inputs import *
 from . import outputs
 
@@ -314,6 +328,22 @@ _utilities.register(
   "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/dnsZone:DnsZone": "DnsZone"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/dremioInstance",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/dremioInstance:DremioInstance": "DremioInstance"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/dremioUser",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/dremioUser:DremioUser": "DremioUser"
   }
  },
  {
@@ -934,10 +964,50 @@ _utilities.register(
  },
  {
   "pkg": "stackit",
+  "mod": "index/telemetrylink",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/telemetrylink:Telemetrylink": "Telemetrylink"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/telemetryrouterAccessToken",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/telemetryrouterAccessToken:TelemetryrouterAccessToken": "TelemetryrouterAccessToken"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/telemetryrouterDestination",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/telemetryrouterDestination:TelemetryrouterDestination": "TelemetryrouterDestination"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/telemetryrouterInstance",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/telemetryrouterInstance:TelemetryrouterInstance": "TelemetryrouterInstance"
+  }
+ },
+ {
+  "pkg": "stackit",
   "mod": "index/volume",
   "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/volume:Volume": "Volume"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/vpnGateway",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/vpnGateway:VpnGateway": "VpnGateway"
   }
  }
 ]

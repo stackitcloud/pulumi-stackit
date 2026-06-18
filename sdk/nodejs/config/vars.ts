@@ -85,6 +85,17 @@ Object.defineProperty(exports, "dnsCustomEndpoint", {
 });
 
 /**
+ * Custom endpoint for the Dremio service
+ */
+export declare const dremioCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "dremioCustomEndpoint", {
+    get() {
+        return __config.get("dremioCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+/**
  * Custom endpoint for the Edge Cloud service
  */
 export declare const edgecloudCustomEndpoint: string | undefined;
@@ -107,7 +118,7 @@ Object.defineProperty(exports, "enableBetaResources", {
 });
 
 /**
- * Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: iam, routing-tables, network
+ * Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, routing-tables, network
  */
 export declare const experiments: string[] | undefined;
 Object.defineProperty(exports, "experiments", {
@@ -525,6 +536,28 @@ Object.defineProperty(exports, "sqlserverflexCustomEndpoint", {
 });
 
 /**
+ * Custom endpoint for the Telemetry Link service
+ */
+export declare const telemetrylinkCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "telemetrylinkCustomEndpoint", {
+    get() {
+        return __config.get("telemetrylinkCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+/**
+ * Custom endpoint for the Telemetry Router service
+ */
+export declare const telemetryrouterCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "telemetryrouterCustomEndpoint", {
+    get() {
+        return __config.get("telemetryrouterCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+/**
  * Custom endpoint for the token API, which is used to request access tokens when using the key flow
  */
 export declare const tokenCustomEndpoint: string | undefined;
@@ -542,6 +575,17 @@ export declare const useOidc: boolean | undefined;
 Object.defineProperty(exports, "useOidc", {
     get() {
         return __config.getObject<boolean>("useOidc");
+    },
+    enumerable: true,
+});
+
+/**
+ * Custom endpoint for the VPN service
+ */
+export declare const vpnCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "vpnCustomEndpoint", {
+    get() {
+        return __config.get("vpnCustomEndpoint");
     },
     enumerable: true,
 });

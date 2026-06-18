@@ -189,7 +189,7 @@ class GetLogsInstanceResult:
     @pulumi.getter
     def status(self) -> _builtins.str:
         """
-        The status of the Logs instance, possible values: Possible values are: `active`, `deleting`, `reconciling`.
+        The status of the Logs instance. Possible values are: `active`, `deleting`, `reconciling`.
         """
         return pulumi.get(self, "status")
 

@@ -97,7 +97,7 @@ export interface GetLogsInstanceResult {
      */
     readonly retentionDays: number;
     /**
-     * The status of the Logs instance, possible values: Possible values are: `active`, `deleting`, `reconciling`.
+     * The status of the Logs instance. Possible values are: `active`, `deleting`, `reconciling`.
      */
     readonly status: string;
 }

@@ -54,6 +54,10 @@ export class Provider extends pulumi.ProviderResource {
      */
     declare public readonly dnsCustomEndpoint: pulumi.Output<string | undefined>;
     /**
+     * Custom endpoint for the Dremio service
+     */
+    declare public readonly dremioCustomEndpoint: pulumi.Output<string | undefined>;
+    /**
      * Custom endpoint for the Edge Cloud service
      */
     declare public readonly edgecloudCustomEndpoint: pulumi.Output<string | undefined>;
@@ -210,9 +214,21 @@ export class Provider extends pulumi.ProviderResource {
      */
     declare public readonly sqlserverflexCustomEndpoint: pulumi.Output<string | undefined>;
     /**
+     * Custom endpoint for the Telemetry Link service
+     */
+    declare public readonly telemetrylinkCustomEndpoint: pulumi.Output<string | undefined>;
+    /**
+     * Custom endpoint for the Telemetry Router service
+     */
+    declare public readonly telemetryrouterCustomEndpoint: pulumi.Output<string | undefined>;
+    /**
      * Custom endpoint for the token API, which is used to request access tokens when using the key flow
      */
     declare public readonly tokenCustomEndpoint: pulumi.Output<string | undefined>;
+    /**
+     * Custom endpoint for the VPN service
+     */
+    declare public readonly vpnCustomEndpoint: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -232,6 +248,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["credentialsPath"] = args?.credentialsPath;
             resourceInputs["defaultRegion"] = args?.defaultRegion;
             resourceInputs["dnsCustomEndpoint"] = args?.dnsCustomEndpoint;
+            resourceInputs["dremioCustomEndpoint"] = args?.dremioCustomEndpoint;
             resourceInputs["edgecloudCustomEndpoint"] = args?.edgecloudCustomEndpoint;
             resourceInputs["enableBetaResources"] = pulumi.output(args?.enableBetaResources).apply(JSON.stringify);
             resourceInputs["experiments"] = pulumi.output(args?.experiments).apply(JSON.stringify);
@@ -272,8 +289,11 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["sfsCustomEndpoint"] = args?.sfsCustomEndpoint;
             resourceInputs["skeCustomEndpoint"] = args?.skeCustomEndpoint;
             resourceInputs["sqlserverflexCustomEndpoint"] = args?.sqlserverflexCustomEndpoint;
+            resourceInputs["telemetrylinkCustomEndpoint"] = args?.telemetrylinkCustomEndpoint;
+            resourceInputs["telemetryrouterCustomEndpoint"] = args?.telemetryrouterCustomEndpoint;
             resourceInputs["tokenCustomEndpoint"] = args?.tokenCustomEndpoint;
             resourceInputs["useOidc"] = pulumi.output(args?.useOidc).apply(JSON.stringify);
+            resourceInputs["vpnCustomEndpoint"] = args?.vpnCustomEndpoint;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
@@ -322,6 +342,10 @@ export interface ProviderArgs {
      */
     dnsCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
+     * Custom endpoint for the Dremio service
+     */
+    dremioCustomEndpoint?: pulumi.Input<string | undefined>;
+    /**
      * Custom endpoint for the Edge Cloud service
      */
     edgecloudCustomEndpoint?: pulumi.Input<string | undefined>;
@@ -330,7 +354,7 @@ export interface ProviderArgs {
      */
     enableBetaResources?: pulumi.Input<boolean | undefined>;
     /**
-     * Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: iam, routing-tables, network
+     * Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, routing-tables, network
      */
     experiments?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -486,6 +510,14 @@ export interface ProviderArgs {
      */
     sqlserverflexCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
+     * Custom endpoint for the Telemetry Link service
+     */
+    telemetrylinkCustomEndpoint?: pulumi.Input<string | undefined>;
+    /**
+     * Custom endpoint for the Telemetry Router service
+     */
+    telemetryrouterCustomEndpoint?: pulumi.Input<string | undefined>;
+    /**
      * Custom endpoint for the token API, which is used to request access tokens when using the key flow
      */
     tokenCustomEndpoint?: pulumi.Input<string | undefined>;
@@ -493,6 +525,10 @@ export interface ProviderArgs {
      * Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to `false`.
      */
     useOidc?: pulumi.Input<boolean | undefined>;
+    /**
+     * Custom endpoint for the VPN service
+     */
+    vpnCustomEndpoint?: pulumi.Input<string | undefined>;
 }
 
 export namespace Provider {

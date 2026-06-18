@@ -12,7 +12,7 @@ namespace Pulumi.Stackit
     public static class GetServiceAccount
     {
         /// <summary>
-        /// Service account data source schema.
+        /// Gets details about a STACKIT service account in a project by email.
         /// 
         /// ## Example Usage
         /// 
@@ -27,7 +27,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceAccountResult>("stackit:index/getServiceAccount:getServiceAccount", args ?? new GetServiceAccountArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Service account data source schema.
+        /// Gets details about a STACKIT service account in a project by email.
         /// 
         /// ## Example Usage
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceAccountResult>("stackit:index/getServiceAccount:getServiceAccount", args ?? new GetServiceAccountInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Service account data source schema.
+        /// Gets details about a STACKIT service account in a project by email.
         /// 
         /// ## Example Usage
         /// 

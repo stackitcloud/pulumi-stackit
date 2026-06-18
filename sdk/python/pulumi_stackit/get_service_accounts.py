@@ -116,7 +116,7 @@ def get_service_accounts(email_regex: Optional[_builtins.str] = None,
                          sort_ascending: Optional[_builtins.bool] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceAccountsResult:
     """
-    Service accounts plural data source schema. Returns a list of all service accounts in a project, optionally filtered.
+    Lists STACKIT service accounts in a project, optionally filtered by email.
 
     ## Example Usage
 
@@ -147,7 +147,7 @@ def get_service_accounts_output(email_regex: pulumi.Input[Optional[Optional[_bui
                                 sort_ascending: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceAccountsResult]:
     """
-    Service accounts plural data source schema. Returns a list of all service accounts in a project, optionally filtered.
+    Lists STACKIT service accounts in a project, optionally filtered by email.
 
     ## Example Usage
 

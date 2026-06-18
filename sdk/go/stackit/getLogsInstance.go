@@ -64,7 +64,7 @@ type LookupLogsInstanceResult struct {
 	Region *string `pulumi:"region"`
 	// The log retention time in days
 	RetentionDays int `pulumi:"retentionDays"`
-	// The status of the Logs instance, possible values: Possible values are: `active`, `deleting`, `reconciling`.
+	// The status of the Logs instance. Possible values are: `active`, `deleting`, `reconciling`.
 	Status string `pulumi:"status"`
 }
 
@@ -176,7 +176,7 @@ func (o LookupLogsInstanceResultOutput) RetentionDays() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupLogsInstanceResult) int { return v.RetentionDays }).(pulumi.IntOutput)
 }
 
-// The status of the Logs instance, possible values: Possible values are: `active`, `deleting`, `reconciling`.
+// The status of the Logs instance. Possible values are: `active`, `deleting`, `reconciling`.
 func (o LookupLogsInstanceResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLogsInstanceResult) string { return v.Status }).(pulumi.StringOutput)
 }

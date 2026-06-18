@@ -90,7 +90,7 @@ export class LogsInstance extends pulumi.CustomResource {
      */
     declare public readonly retentionDays: pulumi.Output<number>;
     /**
-     * The status of the Logs instance, possible values: Possible values are: `active`, `deleting`, `reconciling`.
+     * The status of the Logs instance. Possible values are: `active`, `deleting`, `reconciling`.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
 
@@ -209,7 +209,7 @@ export interface LogsInstanceState {
      */
     retentionDays?: pulumi.Input<number | undefined>;
     /**
-     * The status of the Logs instance, possible values: Possible values are: `active`, `deleting`, `reconciling`.
+     * The status of the Logs instance. Possible values are: `active`, `deleting`, `reconciling`.
      */
     status?: pulumi.Input<string | undefined>;
 }

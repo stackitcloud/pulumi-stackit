@@ -49,6 +49,11 @@ dnsCustomEndpoint: Optional[str]
 Custom endpoint for the DNS service
 """
 
+dremioCustomEndpoint: Optional[str]
+"""
+Custom endpoint for the Dremio service
+"""
+
 edgecloudCustomEndpoint: Optional[str]
 """
 Custom endpoint for the Edge Cloud service
@@ -61,7 +66,7 @@ Enable beta resources. Default is false.
 
 experiments: Optional[str]
 """
-Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: iam, routing-tables, network
+Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, routing-tables, network
 """
 
 gitCustomEndpoint: Optional[str]
@@ -249,6 +254,16 @@ sqlserverflexCustomEndpoint: Optional[str]
 Custom endpoint for the SQL Server Flex service
 """
 
+telemetrylinkCustomEndpoint: Optional[str]
+"""
+Custom endpoint for the Telemetry Link service
+"""
+
+telemetryrouterCustomEndpoint: Optional[str]
+"""
+Custom endpoint for the Telemetry Router service
+"""
+
 tokenCustomEndpoint: Optional[str]
 """
 Custom endpoint for the token API, which is used to request access tokens when using the key flow
@@ -257,5 +272,10 @@ Custom endpoint for the token API, which is used to request access tokens when u
 useOidc: Optional[bool]
 """
 Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to `false`.
+"""
+
+vpnCustomEndpoint: Optional[str]
+"""
+Custom endpoint for the VPN service
 """
 

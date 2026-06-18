@@ -59,6 +59,10 @@ export interface GetSfsShareResult {
      */
     readonly id: string;
     /**
+     * Labels are key-value string pairs which can be attached to a share
+     */
+    readonly labels: {[key: string]: string};
+    /**
      * Mount path of the Share, used to mount the Share
      */
     readonly mountPath: string;

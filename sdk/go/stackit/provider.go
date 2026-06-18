@@ -32,6 +32,8 @@ type Provider struct {
 	DefaultRegion pulumi.StringPtrOutput `pulumi:"defaultRegion"`
 	// Custom endpoint for the DNS service
 	DnsCustomEndpoint pulumi.StringPtrOutput `pulumi:"dnsCustomEndpoint"`
+	// Custom endpoint for the Dremio service
+	DremioCustomEndpoint pulumi.StringPtrOutput `pulumi:"dremioCustomEndpoint"`
 	// Custom endpoint for the Edge Cloud service
 	EdgecloudCustomEndpoint pulumi.StringPtrOutput `pulumi:"edgecloudCustomEndpoint"`
 	// Custom endpoint for the Git service
@@ -112,8 +114,14 @@ type Provider struct {
 	SkeCustomEndpoint pulumi.StringPtrOutput `pulumi:"skeCustomEndpoint"`
 	// Custom endpoint for the SQL Server Flex service
 	SqlserverflexCustomEndpoint pulumi.StringPtrOutput `pulumi:"sqlserverflexCustomEndpoint"`
+	// Custom endpoint for the Telemetry Link service
+	TelemetrylinkCustomEndpoint pulumi.StringPtrOutput `pulumi:"telemetrylinkCustomEndpoint"`
+	// Custom endpoint for the Telemetry Router service
+	TelemetryrouterCustomEndpoint pulumi.StringPtrOutput `pulumi:"telemetryrouterCustomEndpoint"`
 	// Custom endpoint for the token API, which is used to request access tokens when using the key flow
 	TokenCustomEndpoint pulumi.StringPtrOutput `pulumi:"tokenCustomEndpoint"`
+	// Custom endpoint for the VPN service
+	VpnCustomEndpoint pulumi.StringPtrOutput `pulumi:"vpnCustomEndpoint"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
@@ -147,11 +155,13 @@ type providerArgs struct {
 	DefaultRegion *string `pulumi:"defaultRegion"`
 	// Custom endpoint for the DNS service
 	DnsCustomEndpoint *string `pulumi:"dnsCustomEndpoint"`
+	// Custom endpoint for the Dremio service
+	DremioCustomEndpoint *string `pulumi:"dremioCustomEndpoint"`
 	// Custom endpoint for the Edge Cloud service
 	EdgecloudCustomEndpoint *string `pulumi:"edgecloudCustomEndpoint"`
 	// Enable beta resources. Default is false.
 	EnableBetaResources *bool `pulumi:"enableBetaResources"`
-	// Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: iam, routing-tables, network
+	// Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, routing-tables, network
 	Experiments []string `pulumi:"experiments"`
 	// Custom endpoint for the Git service
 	GitCustomEndpoint *string `pulumi:"gitCustomEndpoint"`
@@ -231,10 +241,16 @@ type providerArgs struct {
 	SkeCustomEndpoint *string `pulumi:"skeCustomEndpoint"`
 	// Custom endpoint for the SQL Server Flex service
 	SqlserverflexCustomEndpoint *string `pulumi:"sqlserverflexCustomEndpoint"`
+	// Custom endpoint for the Telemetry Link service
+	TelemetrylinkCustomEndpoint *string `pulumi:"telemetrylinkCustomEndpoint"`
+	// Custom endpoint for the Telemetry Router service
+	TelemetryrouterCustomEndpoint *string `pulumi:"telemetryrouterCustomEndpoint"`
 	// Custom endpoint for the token API, which is used to request access tokens when using the key flow
 	TokenCustomEndpoint *string `pulumi:"tokenCustomEndpoint"`
 	// Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to `false`.
 	UseOidc *bool `pulumi:"useOidc"`
+	// Custom endpoint for the VPN service
+	VpnCustomEndpoint *string `pulumi:"vpnCustomEndpoint"`
 }
 
 // The set of arguments for constructing a Provider resource.
@@ -253,11 +269,13 @@ type ProviderArgs struct {
 	DefaultRegion pulumi.StringPtrInput
 	// Custom endpoint for the DNS service
 	DnsCustomEndpoint pulumi.StringPtrInput
+	// Custom endpoint for the Dremio service
+	DremioCustomEndpoint pulumi.StringPtrInput
 	// Custom endpoint for the Edge Cloud service
 	EdgecloudCustomEndpoint pulumi.StringPtrInput
 	// Enable beta resources. Default is false.
 	EnableBetaResources pulumi.BoolPtrInput
-	// Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: iam, routing-tables, network
+	// Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, routing-tables, network
 	Experiments pulumi.StringArrayInput
 	// Custom endpoint for the Git service
 	GitCustomEndpoint pulumi.StringPtrInput
@@ -337,10 +355,16 @@ type ProviderArgs struct {
 	SkeCustomEndpoint pulumi.StringPtrInput
 	// Custom endpoint for the SQL Server Flex service
 	SqlserverflexCustomEndpoint pulumi.StringPtrInput
+	// Custom endpoint for the Telemetry Link service
+	TelemetrylinkCustomEndpoint pulumi.StringPtrInput
+	// Custom endpoint for the Telemetry Router service
+	TelemetryrouterCustomEndpoint pulumi.StringPtrInput
 	// Custom endpoint for the token API, which is used to request access tokens when using the key flow
 	TokenCustomEndpoint pulumi.StringPtrInput
 	// Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to `false`.
 	UseOidc pulumi.BoolPtrInput
+	// Custom endpoint for the VPN service
+	VpnCustomEndpoint pulumi.StringPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {
@@ -436,6 +460,11 @@ func (o ProviderOutput) DefaultRegion() pulumi.StringPtrOutput {
 // Custom endpoint for the DNS service
 func (o ProviderOutput) DnsCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DnsCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// Custom endpoint for the Dremio service
+func (o ProviderOutput) DremioCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DremioCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 // Custom endpoint for the Edge Cloud service
@@ -632,9 +661,24 @@ func (o ProviderOutput) SqlserverflexCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SqlserverflexCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
+// Custom endpoint for the Telemetry Link service
+func (o ProviderOutput) TelemetrylinkCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.TelemetrylinkCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// Custom endpoint for the Telemetry Router service
+func (o ProviderOutput) TelemetryrouterCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.TelemetryrouterCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
 // Custom endpoint for the token API, which is used to request access tokens when using the key flow
 func (o ProviderOutput) TokenCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.TokenCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// Custom endpoint for the VPN service
+func (o ProviderOutput) VpnCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.VpnCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func init() {

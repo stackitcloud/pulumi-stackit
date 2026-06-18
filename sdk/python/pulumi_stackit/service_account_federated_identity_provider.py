@@ -221,7 +221,7 @@ class ServiceAccountFederatedIdentityProvider(pulumi.CustomResource):
                  service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        Service account federated identity provider schema.
+        Manages a federated identity provider for a STACKIT service account to enable workload identity federation.
         ## Example Usage
 
         ### Create a federated identity provider
@@ -244,7 +244,7 @@ class ServiceAccountFederatedIdentityProvider(pulumi.CustomResource):
                  args: ServiceAccountFederatedIdentityProviderArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Service account federated identity provider schema.
+        Manages a federated identity provider for a STACKIT service account to enable workload identity federation.
         ## Example Usage
 
         ### Create a federated identity provider

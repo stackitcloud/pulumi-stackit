@@ -27,10 +27,13 @@ class GetSfsExportPolicyResult:
     """
     A collection of values returned by getSfsExportPolicy.
     """
-    def __init__(__self__, id=None, name=None, policy_id=None, project_id=None, region=None, rules=None):
+    def __init__(__self__, id=None, labels=None, name=None, policy_id=None, project_id=None, region=None, rules=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -54,6 +57,14 @@ class GetSfsExportPolicyResult:
         Terraform's internal resource ID. It is structured as "`project_id`,`region`,`policy_id`".
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, _builtins.str]:
+        """
+        Labels are key-value string pairs which can be attached to an export policy
+        """
+        return pulumi.get(self, "labels")
 
     @_builtins.property
     @pulumi.getter
@@ -100,6 +111,7 @@ class AwaitableGetSfsExportPolicyResult(GetSfsExportPolicyResult):
             yield self
         return GetSfsExportPolicyResult(
             id=self.id,
+            labels=self.labels,
             name=self.name,
             policy_id=self.policy_id,
             project_id=self.project_id,
@@ -132,6 +144,7 @@ def get_sfs_export_policy(policy_id: Optional[_builtins.str] = None,
 
     return AwaitableGetSfsExportPolicyResult(
         id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         policy_id=pulumi.get(__ret__, 'policy_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
@@ -161,6 +174,7 @@ def get_sfs_export_policy_output(policy_id: pulumi.Input[Optional[_builtins.str]
     __ret__ = pulumi.runtime.invoke_output('stackit:index/getSfsExportPolicy:getSfsExportPolicy', __args__, opts=opts, typ=GetSfsExportPolicyResult)
     return __ret__.apply(lambda __response__: GetSfsExportPolicyResult(
         id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
         name=pulumi.get(__response__, 'name'),
         policy_id=pulumi.get(__response__, 'policy_id'),
         project_id=pulumi.get(__response__, 'project_id'),

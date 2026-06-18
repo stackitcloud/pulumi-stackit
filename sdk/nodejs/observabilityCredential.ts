@@ -54,6 +54,10 @@ export class ObservabilityCredential extends pulumi.CustomResource {
      */
     declare public readonly projectId: pulumi.Output<string>;
     /**
+     * A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+     */
+    declare public readonly rotateWhenChanged: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * Credential username
      */
     declare public /*out*/ readonly username: pulumi.Output<string>;
@@ -75,6 +79,7 @@ export class ObservabilityCredential extends pulumi.CustomResource {
             resourceInputs["instanceId"] = state?.instanceId;
             resourceInputs["password"] = state?.password;
             resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["rotateWhenChanged"] = state?.rotateWhenChanged;
             resourceInputs["username"] = state?.username;
         } else {
             const args = argsOrState as ObservabilityCredentialArgs | undefined;
@@ -87,6 +92,7 @@ export class ObservabilityCredential extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["instanceId"] = args?.instanceId;
             resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["rotateWhenChanged"] = args?.rotateWhenChanged;
             resourceInputs["password"] = undefined /*out*/;
             resourceInputs["username"] = undefined /*out*/;
         }
@@ -118,6 +124,10 @@ export interface ObservabilityCredentialState {
      */
     projectId?: pulumi.Input<string | undefined>;
     /**
+     * A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+     */
+    rotateWhenChanged?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
      * Credential username
      */
     username?: pulumi.Input<string | undefined>;
@@ -139,4 +149,8 @@ export interface ObservabilityCredentialArgs {
      * STACKIT project ID to which the credential is associated.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+     */
+    rotateWhenChanged?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

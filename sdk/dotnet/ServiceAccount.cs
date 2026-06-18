@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Stackit
 {
     /// <summary>
-    /// Service account resource schema.
+    /// Manages a STACKIT service account in a project.
     /// 
     /// ## Example Usage
     /// </summary>

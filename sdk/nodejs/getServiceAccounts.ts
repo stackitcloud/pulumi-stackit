@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Service accounts plural data source schema. Returns a list of all service accounts in a project, optionally filtered.
+ * Lists STACKIT service accounts in a project, optionally filtered by email.
  *
  * ## Example Usage
  */
@@ -73,7 +73,7 @@ export interface GetServiceAccountsResult {
     readonly sortAscending?: boolean;
 }
 /**
- * Service accounts plural data source schema. Returns a list of all service accounts in a project, optionally filtered.
+ * Lists STACKIT service accounts in a project, optionally filtered by email.
  *
  * ## Example Usage
  */

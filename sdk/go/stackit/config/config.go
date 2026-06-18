@@ -46,6 +46,11 @@ func GetDnsCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:dnsCustomEndpoint")
 }
 
+// Custom endpoint for the Dremio service
+func GetDremioCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "stackit:dremioCustomEndpoint")
+}
+
 // Custom endpoint for the Edge Cloud service
 func GetEdgecloudCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:edgecloudCustomEndpoint")
@@ -56,7 +61,7 @@ func GetEnableBetaResources(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "stackit:enableBetaResources")
 }
 
-// Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: iam, routing-tables, network
+// Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, routing-tables, network
 func GetExperiments(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:experiments")
 }
@@ -250,6 +255,16 @@ func GetSqlserverflexCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:sqlserverflexCustomEndpoint")
 }
 
+// Custom endpoint for the Telemetry Link service
+func GetTelemetrylinkCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "stackit:telemetrylinkCustomEndpoint")
+}
+
+// Custom endpoint for the Telemetry Router service
+func GetTelemetryrouterCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "stackit:telemetryrouterCustomEndpoint")
+}
+
 // Custom endpoint for the token API, which is used to request access tokens when using the key flow
 func GetTokenCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:tokenCustomEndpoint")
@@ -258,4 +273,9 @@ func GetTokenCustomEndpoint(ctx *pulumi.Context) string {
 // Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to `false`.
 func GetUseOidc(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "stackit:useOidc")
+}
+
+// Custom endpoint for the VPN service
+func GetVpnCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "stackit:vpnCustomEndpoint")
 }

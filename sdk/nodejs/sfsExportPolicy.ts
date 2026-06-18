@@ -42,6 +42,10 @@ export class SfsExportPolicy extends pulumi.CustomResource {
     }
 
     /**
+     * Labels are key-value string pairs which can be attached to the resource.
+     */
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * Name of the export policy.
      */
     declare public readonly name: pulumi.Output<string>;
@@ -72,6 +76,7 @@ export class SfsExportPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SfsExportPolicyState | undefined;
+            resourceInputs["labels"] = state?.labels;
             resourceInputs["name"] = state?.name;
             resourceInputs["policyId"] = state?.policyId;
             resourceInputs["projectId"] = state?.projectId;
@@ -82,6 +87,7 @@ export class SfsExportPolicy extends pulumi.CustomResource {
             if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
+            resourceInputs["labels"] = args?.labels;
             resourceInputs["name"] = args?.name;
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["region"] = args?.region;
@@ -97,6 +103,10 @@ export class SfsExportPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SfsExportPolicy resources.
  */
 export interface SfsExportPolicyState {
+    /**
+     * Labels are key-value string pairs which can be attached to the resource.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the export policy.
      */
@@ -120,6 +130,10 @@ export interface SfsExportPolicyState {
  * The set of arguments for constructing a SfsExportPolicy resource.
  */
 export interface SfsExportPolicyArgs {
+    /**
+     * Labels are key-value string pairs which can be attached to the resource.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the export policy.
      */

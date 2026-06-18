@@ -26,6 +26,7 @@ class SfsResourcePoolArgs:
                  performance_class: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
                  size_gigabytes: pulumi.Input[_builtins.int],
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  snapshot_policy: pulumi.Input[Optional['SfsResourcePoolSnapshotPolicyArgs']] = None,
@@ -38,6 +39,7 @@ class SfsResourcePoolArgs:
         :param pulumi.Input[_builtins.str] performance_class: Name of the performance class.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the resource pool is associated.
         :param pulumi.Input[_builtins.int] size_gigabytes: Size of the resource pool (unit: gigabytes)
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource pool.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input['SfsResourcePoolSnapshotPolicyArgs'] snapshot_policy: Name of the snapshot policy.
@@ -48,6 +50,8 @@ class SfsResourcePoolArgs:
         pulumi.set(__self__, "performance_class", performance_class)
         pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "size_gigabytes", size_gigabytes)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if region is not None:
@@ -119,6 +123,18 @@ class SfsResourcePoolArgs:
 
     @_builtins.property
     @pulumi.getter
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Labels are key-value string pairs which can be attached to the resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @_builtins.property
+    @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the resource pool.
@@ -171,6 +187,7 @@ class _SfsResourcePoolState:
     def __init__(__self__, *,
                  availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  performance_class: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -184,6 +201,7 @@ class _SfsResourcePoolState:
 
         :param pulumi.Input[_builtins.str] availability_zone: Availability zone.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_acls: List of IPs that can mount the resource pool in read-only; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource pool.
         :param pulumi.Input[_builtins.str] performance_class: Name of the performance class.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the resource pool is associated.
@@ -197,6 +215,8 @@ class _SfsResourcePoolState:
             pulumi.set(__self__, "availability_zone", availability_zone)
         if ip_acls is not None:
             pulumi.set(__self__, "ip_acls", ip_acls)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if performance_class is not None:
@@ -237,6 +257,18 @@ class _SfsResourcePoolState:
     @ip_acls.setter
     def ip_acls(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ip_acls", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Labels are key-value string pairs which can be attached to the resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
@@ -343,6 +375,7 @@ class SfsResourcePool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  performance_class: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -363,6 +396,7 @@ class SfsResourcePool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] availability_zone: Availability zone.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_acls: List of IPs that can mount the resource pool in read-only; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource pool.
         :param pulumi.Input[_builtins.str] performance_class: Name of the performance class.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the resource pool is associated.
@@ -402,6 +436,7 @@ class SfsResourcePool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
                  ip_acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  performance_class: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -424,6 +459,7 @@ class SfsResourcePool(pulumi.CustomResource):
             if ip_acls is None and not opts.urn:
                 raise TypeError("Missing required property 'ip_acls'")
             __props__.__dict__["ip_acls"] = ip_acls
+            __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             if performance_class is None and not opts.urn:
                 raise TypeError("Missing required property 'performance_class'")
@@ -450,6 +486,7 @@ class SfsResourcePool(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
             ip_acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             performance_class: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -467,6 +504,7 @@ class SfsResourcePool(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] availability_zone: Availability zone.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ip_acls: List of IPs that can mount the resource pool in read-only; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to the resource.
         :param pulumi.Input[_builtins.str] name: Name of the resource pool.
         :param pulumi.Input[_builtins.str] performance_class: Name of the performance class.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the resource pool is associated.
@@ -482,6 +520,7 @@ class SfsResourcePool(pulumi.CustomResource):
 
         __props__.__dict__["availability_zone"] = availability_zone
         __props__.__dict__["ip_acls"] = ip_acls
+        __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["performance_class"] = performance_class
         __props__.__dict__["project_id"] = project_id
@@ -507,6 +546,14 @@ class SfsResourcePool(pulumi.CustomResource):
         List of IPs that can mount the resource pool in read-only; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
         """
         return pulumi.get(self, "ip_acls")
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        Labels are key-value string pairs which can be attached to the resource.
+        """
+        return pulumi.get(self, "labels")
 
     @_builtins.property
     @pulumi.getter

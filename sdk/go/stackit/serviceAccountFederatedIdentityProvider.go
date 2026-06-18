@@ -12,7 +12,7 @@ import (
 	"github.com/stackitcloud/pulumi-stackit/sdk/go/stackit/internal"
 )
 
-// Service account federated identity provider schema.
+// Manages a federated identity provider for a STACKIT service account to enable workload identity federation.
 // ## Example Usage
 //
 // ### Create a federated identity provider

@@ -82,6 +82,10 @@ export class LogsAccessToken extends pulumi.CustomResource {
      */
     declare public readonly region: pulumi.Output<string>;
     /**
+     * A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+     */
+    declare public readonly rotateWhenChanged: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The status of the access token. Possible values are: `active`, `expired`.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
@@ -114,6 +118,7 @@ export class LogsAccessToken extends pulumi.CustomResource {
             resourceInputs["permissions"] = state?.permissions;
             resourceInputs["projectId"] = state?.projectId;
             resourceInputs["region"] = state?.region;
+            resourceInputs["rotateWhenChanged"] = state?.rotateWhenChanged;
             resourceInputs["status"] = state?.status;
             resourceInputs["validUntil"] = state?.validUntil;
         } else {
@@ -137,6 +142,7 @@ export class LogsAccessToken extends pulumi.CustomResource {
             resourceInputs["permissions"] = args?.permissions;
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["region"] = args?.region;
+            resourceInputs["rotateWhenChanged"] = args?.rotateWhenChanged;
             resourceInputs["accessToken"] = undefined /*out*/;
             resourceInputs["accessTokenId"] = undefined /*out*/;
             resourceInputs["creator"] = undefined /*out*/;
@@ -200,6 +206,10 @@ export interface LogsAccessTokenState {
      */
     region?: pulumi.Input<string | undefined>;
     /**
+     * A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+     */
+    rotateWhenChanged?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
      * The status of the access token. Possible values are: `active`, `expired`.
      */
     status?: pulumi.Input<string | undefined>;
@@ -241,4 +251,8 @@ export interface LogsAccessTokenArgs {
      * STACKIT region name the resource is located in. If not defined, the provider region is used.
      */
     region?: pulumi.Input<string | undefined>;
+    /**
+     * A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+     */
+    rotateWhenChanged?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -21,18 +21,22 @@ class ObservabilityCredentialArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
-                 description: pulumi.Input[Optional[_builtins.str]] = None):
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a ObservabilityCredential resource.
 
         :param pulumi.Input[_builtins.str] instance_id: The Observability Instance ID the credential belongs to.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the credential is associated.
         :param pulumi.Input[_builtins.str] description: A description of the credential.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] rotate_when_changed: A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "project_id", project_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if rotate_when_changed is not None:
+            pulumi.set(__self__, "rotate_when_changed", rotate_when_changed)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
@@ -70,6 +74,18 @@ class ObservabilityCredentialArgs:
     def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
+    @_builtins.property
+    @pulumi.getter(name="rotateWhenChanged")
+    def rotate_when_changed(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "rotate_when_changed")
+
+    @rotate_when_changed.setter
+    def rotate_when_changed(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "rotate_when_changed", value)
+
 
 @pulumi.input_type
 class _ObservabilityCredentialState:
@@ -78,6 +94,7 @@ class _ObservabilityCredentialState:
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ObservabilityCredential resources.
@@ -86,6 +103,7 @@ class _ObservabilityCredentialState:
         :param pulumi.Input[_builtins.str] instance_id: The Observability Instance ID the credential belongs to.
         :param pulumi.Input[_builtins.str] password: Credential password
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the credential is associated.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] rotate_when_changed: A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] username: Credential username
         """
         if description is not None:
@@ -96,6 +114,8 @@ class _ObservabilityCredentialState:
             pulumi.set(__self__, "password", password)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
+        if rotate_when_changed is not None:
+            pulumi.set(__self__, "rotate_when_changed", rotate_when_changed)
         if username is not None:
             pulumi.set(__self__, "username", username)
 
@@ -148,6 +168,18 @@ class _ObservabilityCredentialState:
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="rotateWhenChanged")
+    def rotate_when_changed(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "rotate_when_changed")
+
+    @rotate_when_changed.setter
+    def rotate_when_changed(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "rotate_when_changed", value)
+
+    @_builtins.property
     @pulumi.getter
     def username(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -169,6 +201,7 @@ class ObservabilityCredential(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Observability credential resource schema. Must have a `region` specified in the provider configuration.
@@ -181,6 +214,7 @@ class ObservabilityCredential(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: A description of the credential.
         :param pulumi.Input[_builtins.str] instance_id: The Observability Instance ID the credential belongs to.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the credential is associated.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] rotate_when_changed: A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
         """
         ...
     @overload
@@ -212,6 +246,7 @@ class ObservabilityCredential(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -228,6 +263,7 @@ class ObservabilityCredential(pulumi.CustomResource):
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
+            __props__.__dict__["rotate_when_changed"] = rotate_when_changed
             __props__.__dict__["password"] = None
             __props__.__dict__["username"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
@@ -246,6 +282,7 @@ class ObservabilityCredential(pulumi.CustomResource):
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             password: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             username: pulumi.Input[Optional[_builtins.str]] = None) -> 'ObservabilityCredential':
         """
         Get an existing ObservabilityCredential resource's state with the given name, id, and optional extra
@@ -258,6 +295,7 @@ class ObservabilityCredential(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] instance_id: The Observability Instance ID the credential belongs to.
         :param pulumi.Input[_builtins.str] password: Credential password
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the credential is associated.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] rotate_when_changed: A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] username: Credential username
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -268,6 +306,7 @@ class ObservabilityCredential(pulumi.CustomResource):
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["password"] = password
         __props__.__dict__["project_id"] = project_id
+        __props__.__dict__["rotate_when_changed"] = rotate_when_changed
         __props__.__dict__["username"] = username
         return ObservabilityCredential(resource_name, opts=opts, __props__=__props__)
 
@@ -302,6 +341,14 @@ class ObservabilityCredential(pulumi.CustomResource):
         STACKIT project ID to which the credential is associated.
         """
         return pulumi.get(self, "project_id")
+
+    @_builtins.property
+    @pulumi.getter(name="rotateWhenChanged")
+    def rotate_when_changed(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "rotate_when_changed")
 
     @_builtins.property
     @pulumi.getter

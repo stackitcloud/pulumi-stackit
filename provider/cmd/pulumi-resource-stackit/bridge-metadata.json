@@ -255,6 +255,25 @@
                     }
                 }
             },
+            "stackit_dremio_instance": {
+                "current": "stackit:index/dremioInstance:DremioInstance",
+                "fields": {
+                    "authentication": {
+                        "fields": {
+                            "oauth": {
+                                "fields": {
+                                    "parameters": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "stackit_dremio_user": {
+                "current": "stackit:index/dremioUser:DremioUser"
+            },
             "stackit_edgecloud_instance": {
                 "current": "stackit:index/edgecloudInstance:EdgecloudInstance"
             },
@@ -856,8 +875,68 @@
                     }
                 }
             },
+            "stackit_telemetrylink": {
+                "current": "stackit:index/telemetrylink:Telemetrylink"
+            },
+            "stackit_telemetryrouter_access_token": {
+                "current": "stackit:index/telemetryrouterAccessToken:TelemetryrouterAccessToken"
+            },
+            "stackit_telemetryrouter_destination": {
+                "current": "stackit:index/telemetryrouterDestination:TelemetryrouterDestination",
+                "fields": {
+                    "config": {
+                        "fields": {
+                            "filter": {
+                                "fields": {
+                                    "attributes": {
+                                        "maxItemsOne": false,
+                                        "elem": {
+                                            "fields": {
+                                                "values": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "stackit_telemetryrouter_instance": {
+                "current": "stackit:index/telemetryrouterInstance:TelemetryrouterInstance",
+                "fields": {
+                    "filter": {
+                        "fields": {
+                            "attributes": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "values": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "stackit_volume": {
                 "current": "stackit:index/volume:Volume"
+            },
+            "stackit_vpn_gateway": {
+                "current": "stackit:index/vpnGateway:VpnGateway",
+                "fields": {
+                    "bgp": {
+                        "fields": {
+                            "override_advertised_routes": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
             }
         },
         "datasources": {
@@ -1102,6 +1181,25 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "stackit_dremio_instance": {
+                "current": "stackit:index/getDremioInstance:getDremioInstance",
+                "fields": {
+                    "authentication": {
+                        "fields": {
+                            "oauth": {
+                                "fields": {
+                                    "parameters": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "stackit_dremio_user": {
+                "current": "stackit:index/getDremioUser:getDremioUser"
             },
             "stackit_edgecloud_instances": {
                 "current": "stackit:index/getEdgecloudInstances:getEdgecloudInstances",
@@ -1821,8 +1919,68 @@
                     }
                 }
             },
+            "stackit_telemetrylink": {
+                "current": "stackit:index/getTelemetrylink:getTelemetrylink"
+            },
+            "stackit_telemetryrouter_access_token": {
+                "current": "stackit:index/getTelemetryrouterAccessToken:getTelemetryrouterAccessToken"
+            },
+            "stackit_telemetryrouter_destination": {
+                "current": "stackit:index/getTelemetryrouterDestination:getTelemetryrouterDestination",
+                "fields": {
+                    "config": {
+                        "fields": {
+                            "filter": {
+                                "fields": {
+                                    "attributes": {
+                                        "maxItemsOne": false,
+                                        "elem": {
+                                            "fields": {
+                                                "values": {
+                                                    "maxItemsOne": false
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "stackit_telemetryrouter_instance": {
+                "current": "stackit:index/getTelemetryrouterInstance:getTelemetryrouterInstance",
+                "fields": {
+                    "filter": {
+                        "fields": {
+                            "attributes": {
+                                "maxItemsOne": false,
+                                "elem": {
+                                    "fields": {
+                                        "values": {
+                                            "maxItemsOne": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "stackit_volume": {
                 "current": "stackit:index/getVolume:getVolume"
+            },
+            "stackit_vpn_gateway": {
+                "current": "stackit:index/getVpnGateway:getVpnGateway",
+                "fields": {
+                    "bgp": {
+                        "fields": {
+                            "override_advertised_routes": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
             }
         }
     },

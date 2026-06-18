@@ -29,8 +29,10 @@ type ObjectstorageCredential struct {
 	// STACKIT Project ID to which the credential group is associated.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
-	Region          pulumi.StringOutput `pulumi:"region"`
-	SecretAccessKey pulumi.StringOutput `pulumi:"secretAccessKey"`
+	Region pulumi.StringOutput `pulumi:"region"`
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapOutput `pulumi:"rotateWhenChanged"`
+	SecretAccessKey   pulumi.StringOutput    `pulumi:"secretAccessKey"`
 }
 
 // NewObjectstorageCredential registers a new resource with the given unique name, arguments, and options.
@@ -84,8 +86,10 @@ type objectstorageCredentialState struct {
 	// STACKIT Project ID to which the credential group is associated.
 	ProjectId *string `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
-	Region          *string `pulumi:"region"`
-	SecretAccessKey *string `pulumi:"secretAccessKey"`
+	Region *string `pulumi:"region"`
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged map[string]string `pulumi:"rotateWhenChanged"`
+	SecretAccessKey   *string           `pulumi:"secretAccessKey"`
 }
 
 type ObjectstorageCredentialState struct {
@@ -100,8 +104,10 @@ type ObjectstorageCredentialState struct {
 	// STACKIT Project ID to which the credential group is associated.
 	ProjectId pulumi.StringPtrInput
 	// The resource region. If not defined, the provider region is used.
-	Region          pulumi.StringPtrInput
-	SecretAccessKey pulumi.StringPtrInput
+	Region pulumi.StringPtrInput
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapInput
+	SecretAccessKey   pulumi.StringPtrInput
 }
 
 func (ObjectstorageCredentialState) ElementType() reflect.Type {
@@ -117,6 +123,8 @@ type objectstorageCredentialArgs struct {
 	ProjectId string `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
 	Region *string `pulumi:"region"`
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged map[string]string `pulumi:"rotateWhenChanged"`
 }
 
 // The set of arguments for constructing a ObjectstorageCredential resource.
@@ -129,6 +137,8 @@ type ObjectstorageCredentialArgs struct {
 	ProjectId pulumi.StringInput
 	// The resource region. If not defined, the provider region is used.
 	Region pulumi.StringPtrInput
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapInput
 }
 
 func (ObjectstorageCredentialArgs) ElementType() reflect.Type {
@@ -249,6 +259,11 @@ func (o ObjectstorageCredentialOutput) ProjectId() pulumi.StringOutput {
 // The resource region. If not defined, the provider region is used.
 func (o ObjectstorageCredentialOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *ObjectstorageCredential) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+func (o ObjectstorageCredentialOutput) RotateWhenChanged() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ObjectstorageCredential) pulumi.StringMapOutput { return v.RotateWhenChanged }).(pulumi.StringMapOutput)
 }
 
 func (o ObjectstorageCredentialOutput) SecretAccessKey() pulumi.StringOutput {

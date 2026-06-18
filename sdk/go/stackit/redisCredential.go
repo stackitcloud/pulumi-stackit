@@ -29,6 +29,8 @@ type RedisCredential struct {
 	Port             pulumi.IntOutput    `pulumi:"port"`
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapOutput `pulumi:"rotateWhenChanged"`
 	// Connection URI.
 	Uri      pulumi.StringOutput `pulumi:"uri"`
 	Username pulumi.StringOutput `pulumi:"username"`
@@ -86,6 +88,8 @@ type redisCredentialState struct {
 	Port             *int    `pulumi:"port"`
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId *string `pulumi:"projectId"`
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged map[string]string `pulumi:"rotateWhenChanged"`
 	// Connection URI.
 	Uri      *string `pulumi:"uri"`
 	Username *string `pulumi:"username"`
@@ -103,6 +107,8 @@ type RedisCredentialState struct {
 	Port             pulumi.IntPtrInput
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId pulumi.StringPtrInput
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapInput
 	// Connection URI.
 	Uri      pulumi.StringPtrInput
 	Username pulumi.StringPtrInput
@@ -117,6 +123,8 @@ type redisCredentialArgs struct {
 	InstanceId string `pulumi:"instanceId"`
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId string `pulumi:"projectId"`
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged map[string]string `pulumi:"rotateWhenChanged"`
 }
 
 // The set of arguments for constructing a RedisCredential resource.
@@ -125,6 +133,8 @@ type RedisCredentialArgs struct {
 	InstanceId pulumi.StringInput
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId pulumi.StringInput
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapInput
 }
 
 func (RedisCredentialArgs) ElementType() reflect.Type {
@@ -247,6 +257,11 @@ func (o RedisCredentialOutput) Port() pulumi.IntOutput {
 // STACKIT Project ID to which the instance is associated.
 func (o RedisCredentialOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RedisCredential) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+func (o RedisCredentialOutput) RotateWhenChanged() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RedisCredential) pulumi.StringMapOutput { return v.RotateWhenChanged }).(pulumi.StringMapOutput)
 }
 
 // Connection URI.

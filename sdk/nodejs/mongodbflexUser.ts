@@ -57,6 +57,10 @@ export class MongodbflexUser extends pulumi.CustomResource {
      * Database access levels for the user. Some of the possible values are: [`read`, `readWrite`, `readWriteAnyDatabase`]
      */
     declare public readonly roles: pulumi.Output<string[]>;
+    /**
+     * A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+     */
+    declare public readonly rotateWhenChanged: pulumi.Output<{[key: string]: string} | undefined>;
     declare public /*out*/ readonly uri: pulumi.Output<string>;
     /**
      * User ID.
@@ -85,6 +89,7 @@ export class MongodbflexUser extends pulumi.CustomResource {
             resourceInputs["projectId"] = state?.projectId;
             resourceInputs["region"] = state?.region;
             resourceInputs["roles"] = state?.roles;
+            resourceInputs["rotateWhenChanged"] = state?.rotateWhenChanged;
             resourceInputs["uri"] = state?.uri;
             resourceInputs["userId"] = state?.userId;
             resourceInputs["username"] = state?.username;
@@ -107,6 +112,7 @@ export class MongodbflexUser extends pulumi.CustomResource {
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["region"] = args?.region;
             resourceInputs["roles"] = args?.roles;
+            resourceInputs["rotateWhenChanged"] = args?.rotateWhenChanged;
             resourceInputs["username"] = args?.username;
             resourceInputs["host"] = undefined /*out*/;
             resourceInputs["password"] = undefined /*out*/;
@@ -145,6 +151,10 @@ export interface MongodbflexUserState {
      * Database access levels for the user. Some of the possible values are: [`read`, `readWrite`, `readWriteAnyDatabase`]
      */
     roles?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+     */
+    rotateWhenChanged?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     uri?: pulumi.Input<string | undefined>;
     /**
      * User ID.
@@ -174,5 +184,9 @@ export interface MongodbflexUserArgs {
      * Database access levels for the user. Some of the possible values are: [`read`, `readWrite`, `readWriteAnyDatabase`]
      */
     roles: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+     */
+    rotateWhenChanged?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     username?: pulumi.Input<string | undefined>;
 }

@@ -133,6 +133,10 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly ImmutableArray<string> IpAcls;
         /// <summary>
+        /// Labels are key-value string pairs which can be attached to a resource pool
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Labels;
+        /// <summary>
         /// Name of the resource pool.
         /// </summary>
         public readonly string Name;
@@ -181,6 +185,8 @@ namespace Pulumi.Stackit
 
             ImmutableArray<string> ipAcls,
 
+            ImmutableDictionary<string, string> labels,
+
             string name,
 
             string performanceClass,
@@ -204,6 +210,7 @@ namespace Pulumi.Stackit
             AvailabilityZone = availabilityZone;
             Id = id;
             IpAcls = ipAcls;
+            Labels = labels;
             Name = name;
             PerformanceClass = performanceClass;
             PerformanceClassDowngradableAt = performanceClassDowngradableAt;

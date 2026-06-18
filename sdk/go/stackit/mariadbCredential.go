@@ -29,8 +29,10 @@ type MariadbCredential struct {
 	Port       pulumi.IntOutput    `pulumi:"port"`
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	Uri       pulumi.StringOutput `pulumi:"uri"`
-	Username  pulumi.StringOutput `pulumi:"username"`
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapOutput `pulumi:"rotateWhenChanged"`
+	Uri               pulumi.StringOutput    `pulumi:"uri"`
+	Username          pulumi.StringOutput    `pulumi:"username"`
 }
 
 // NewMariadbCredential registers a new resource with the given unique name, arguments, and options.
@@ -85,8 +87,10 @@ type mariadbCredentialState struct {
 	Port       *int    `pulumi:"port"`
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId *string `pulumi:"projectId"`
-	Uri       *string `pulumi:"uri"`
-	Username  *string `pulumi:"username"`
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged map[string]string `pulumi:"rotateWhenChanged"`
+	Uri               *string           `pulumi:"uri"`
+	Username          *string           `pulumi:"username"`
 }
 
 type MariadbCredentialState struct {
@@ -101,8 +105,10 @@ type MariadbCredentialState struct {
 	Port       pulumi.IntPtrInput
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId pulumi.StringPtrInput
-	Uri       pulumi.StringPtrInput
-	Username  pulumi.StringPtrInput
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapInput
+	Uri               pulumi.StringPtrInput
+	Username          pulumi.StringPtrInput
 }
 
 func (MariadbCredentialState) ElementType() reflect.Type {
@@ -114,6 +120,8 @@ type mariadbCredentialArgs struct {
 	InstanceId string `pulumi:"instanceId"`
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId string `pulumi:"projectId"`
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged map[string]string `pulumi:"rotateWhenChanged"`
 }
 
 // The set of arguments for constructing a MariadbCredential resource.
@@ -122,6 +130,8 @@ type MariadbCredentialArgs struct {
 	InstanceId pulumi.StringInput
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId pulumi.StringInput
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapInput
 }
 
 func (MariadbCredentialArgs) ElementType() reflect.Type {
@@ -244,6 +254,11 @@ func (o MariadbCredentialOutput) Port() pulumi.IntOutput {
 // STACKIT Project ID to which the instance is associated.
 func (o MariadbCredentialOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MariadbCredential) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+func (o MariadbCredentialOutput) RotateWhenChanged() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *MariadbCredential) pulumi.StringMapOutput { return v.RotateWhenChanged }).(pulumi.StringMapOutput)
 }
 
 func (o MariadbCredentialOutput) Uri() pulumi.StringOutput {

@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Service account data source schema.
+ * Gets details about a STACKIT service account in a project by email.
  *
  * ## Example Usage
  */
@@ -57,7 +57,7 @@ export interface GetServiceAccountResult {
     readonly serviceAccountId: string;
 }
 /**
- * Service account data source schema.
+ * Gets details about a STACKIT service account in a project by email.
  *
  * ## Example Usage
  */
