@@ -151,7 +151,7 @@ class _LogsInstanceState:
         :param pulumi.Input[_builtins.str] query_url: The Logs instance's query URL
         :param pulumi.Input[_builtins.str] region: STACKIT region name the resource is located in. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.int] retention_days: The log retention time in days
-        :param pulumi.Input[_builtins.str] status: The status of the Logs instance, possible values: Possible values are: `active`, `deleting`, `reconciling`.
+        :param pulumi.Input[_builtins.str] status: The status of the Logs instance. Possible values are: `active`, `deleting`, `reconciling`.
         """
         if acls is not None:
             pulumi.set(__self__, "acls", acls)
@@ -342,7 +342,7 @@ class _LogsInstanceState:
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The status of the Logs instance, possible values: Possible values are: `active`, `deleting`, `reconciling`.
+        The status of the Logs instance. Possible values are: `active`, `deleting`, `reconciling`.
         """
         return pulumi.get(self, "status")
 
@@ -485,7 +485,7 @@ class LogsInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] query_url: The Logs instance's query URL
         :param pulumi.Input[_builtins.str] region: STACKIT region name the resource is located in. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.int] retention_days: The log retention time in days
-        :param pulumi.Input[_builtins.str] status: The status of the Logs instance, possible values: Possible values are: `active`, `deleting`, `reconciling`.
+        :param pulumi.Input[_builtins.str] status: The status of the Logs instance. Possible values are: `active`, `deleting`, `reconciling`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -615,7 +615,7 @@ class LogsInstance(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[_builtins.str]:
         """
-        The status of the Logs instance, possible values: Possible values are: `active`, `deleting`, `reconciling`.
+        The status of the Logs instance. Possible values are: `active`, `deleting`, `reconciling`.
         """
         return pulumi.get(self, "status")
 

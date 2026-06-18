@@ -26,13 +26,16 @@ class GetSfsShareResult:
     """
     A collection of values returned by getSfsShare.
     """
-    def __init__(__self__, export_policy=None, id=None, mount_path=None, name=None, project_id=None, region=None, resource_pool_id=None, share_id=None, space_hard_limit_gigabytes=None):
+    def __init__(__self__, export_policy=None, id=None, labels=None, mount_path=None, name=None, project_id=None, region=None, resource_pool_id=None, share_id=None, space_hard_limit_gigabytes=None):
         if export_policy and not isinstance(export_policy, str):
             raise TypeError("Expected argument 'export_policy' to be a str")
         pulumi.set(__self__, "export_policy", export_policy)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
         if mount_path and not isinstance(mount_path, str):
             raise TypeError("Expected argument 'mount_path' to be a str")
         pulumi.set(__self__, "mount_path", mount_path)
@@ -73,6 +76,14 @@ class GetSfsShareResult:
         Terraform's internal resource ID. It is structured as "`project_id`,`share_id`".
         """
         return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, _builtins.str]:
+        """
+        Labels are key-value string pairs which can be attached to a share
+        """
+        return pulumi.get(self, "labels")
 
     @_builtins.property
     @pulumi.getter(name="mountPath")
@@ -141,6 +152,7 @@ class AwaitableGetSfsShareResult(GetSfsShareResult):
         return GetSfsShareResult(
             export_policy=self.export_policy,
             id=self.id,
+            labels=self.labels,
             mount_path=self.mount_path,
             name=self.name,
             project_id=self.project_id,
@@ -179,6 +191,7 @@ def get_sfs_share(project_id: Optional[_builtins.str] = None,
     return AwaitableGetSfsShareResult(
         export_policy=pulumi.get(__ret__, 'export_policy'),
         id=pulumi.get(__ret__, 'id'),
+        labels=pulumi.get(__ret__, 'labels'),
         mount_path=pulumi.get(__ret__, 'mount_path'),
         name=pulumi.get(__ret__, 'name'),
         project_id=pulumi.get(__ret__, 'project_id'),
@@ -214,6 +227,7 @@ def get_sfs_share_output(project_id: pulumi.Input[Optional[_builtins.str]] = Non
     return __ret__.apply(lambda __response__: GetSfsShareResult(
         export_policy=pulumi.get(__response__, 'export_policy'),
         id=pulumi.get(__response__, 'id'),
+        labels=pulumi.get(__response__, 'labels'),
         mount_path=pulumi.get(__response__, 'mount_path'),
         name=pulumi.get(__response__, 'name'),
         project_id=pulumi.get(__response__, 'project_id'),

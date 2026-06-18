@@ -47,6 +47,8 @@ type LookupSfsShareResult struct {
 	ExportPolicy string `pulumi:"exportPolicy"`
 	// Terraform's internal resource ID. It is structured as "`projectId`,`shareId`".
 	Id string `pulumi:"id"`
+	// Labels are key-value string pairs which can be attached to a share
+	Labels map[string]string `pulumi:"labels"`
 	// Mount path of the Share, used to mount the Share
 	MountPath string `pulumi:"mountPath"`
 	// Name of the Share
@@ -116,6 +118,11 @@ func (o LookupSfsShareResultOutput) ExportPolicy() pulumi.StringOutput {
 // Terraform's internal resource ID. It is structured as "`projectId`,`shareId`".
 func (o LookupSfsShareResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSfsShareResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Labels are key-value string pairs which can be attached to a share
+func (o LookupSfsShareResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSfsShareResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // Mount path of the Share, used to mount the Share

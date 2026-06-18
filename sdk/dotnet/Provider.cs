@@ -61,6 +61,12 @@ namespace Pulumi.Stackit
         public Output<string?> DnsCustomEndpoint { get; private set; } = null!;
 
         /// <summary>
+        /// Custom endpoint for the Dremio service
+        /// </summary>
+        [Output("dremioCustomEndpoint")]
+        public Output<string?> DremioCustomEndpoint { get; private set; } = null!;
+
+        /// <summary>
         /// Custom endpoint for the Edge Cloud service
         /// </summary>
         [Output("edgecloudCustomEndpoint")]
@@ -289,10 +295,28 @@ namespace Pulumi.Stackit
         public Output<string?> SqlserverflexCustomEndpoint { get; private set; } = null!;
 
         /// <summary>
+        /// Custom endpoint for the Telemetry Link service
+        /// </summary>
+        [Output("telemetrylinkCustomEndpoint")]
+        public Output<string?> TelemetrylinkCustomEndpoint { get; private set; } = null!;
+
+        /// <summary>
+        /// Custom endpoint for the Telemetry Router service
+        /// </summary>
+        [Output("telemetryrouterCustomEndpoint")]
+        public Output<string?> TelemetryrouterCustomEndpoint { get; private set; } = null!;
+
+        /// <summary>
         /// Custom endpoint for the token API, which is used to request access tokens when using the key flow
         /// </summary>
         [Output("tokenCustomEndpoint")]
         public Output<string?> TokenCustomEndpoint { get; private set; } = null!;
+
+        /// <summary>
+        /// Custom endpoint for the VPN service
+        /// </summary>
+        [Output("vpnCustomEndpoint")]
+        public Output<string?> VpnCustomEndpoint { get; private set; } = null!;
 
 
         /// <summary>
@@ -372,6 +396,12 @@ namespace Pulumi.Stackit
         public Input<string>? DnsCustomEndpoint { get; set; }
 
         /// <summary>
+        /// Custom endpoint for the Dremio service
+        /// </summary>
+        [Input("dremioCustomEndpoint")]
+        public Input<string>? DremioCustomEndpoint { get; set; }
+
+        /// <summary>
         /// Custom endpoint for the Edge Cloud service
         /// </summary>
         [Input("edgecloudCustomEndpoint")]
@@ -387,7 +417,7 @@ namespace Pulumi.Stackit
         private InputList<string>? _experiments;
 
         /// <summary>
-        /// Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: iam, routing-tables, network
+        /// Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, routing-tables, network
         /// </summary>
         public InputList<string> Experiments
         {
@@ -618,6 +648,18 @@ namespace Pulumi.Stackit
         public Input<string>? SqlserverflexCustomEndpoint { get; set; }
 
         /// <summary>
+        /// Custom endpoint for the Telemetry Link service
+        /// </summary>
+        [Input("telemetrylinkCustomEndpoint")]
+        public Input<string>? TelemetrylinkCustomEndpoint { get; set; }
+
+        /// <summary>
+        /// Custom endpoint for the Telemetry Router service
+        /// </summary>
+        [Input("telemetryrouterCustomEndpoint")]
+        public Input<string>? TelemetryrouterCustomEndpoint { get; set; }
+
+        /// <summary>
         /// Custom endpoint for the token API, which is used to request access tokens when using the key flow
         /// </summary>
         [Input("tokenCustomEndpoint")]
@@ -628,6 +670,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("useOidc", json: true)]
         public Input<bool>? UseOidc { get; set; }
+
+        /// <summary>
+        /// Custom endpoint for the VPN service
+        /// </summary>
+        [Input("vpnCustomEndpoint")]
+        public Input<string>? VpnCustomEndpoint { get; set; }
 
         public ProviderArgs()
         {

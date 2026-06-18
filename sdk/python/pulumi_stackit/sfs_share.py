@@ -23,6 +23,7 @@ class SfsShareArgs:
                  resource_pool_id: pulumi.Input[_builtins.str],
                  space_hard_limit_gigabytes: pulumi.Input[_builtins.int],
                  export_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -37,6 +38,7 @@ class SfsShareArgs:
                Note that if this is set to an empty string, the Share can only be mounted in read only by
                clients with IPs matching the IP ACL of the Resource Pool hosting this Share.
                You can also assign a Share Export Policy after creating the Share
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to the resource.
         :param pulumi.Input[_builtins.str] name: Name of the share.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
@@ -45,6 +47,8 @@ class SfsShareArgs:
         pulumi.set(__self__, "space_hard_limit_gigabytes", space_hard_limit_gigabytes)
         if export_policy is not None:
             pulumi.set(__self__, "export_policy", export_policy)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if region is not None:
@@ -105,6 +109,18 @@ class SfsShareArgs:
 
     @_builtins.property
     @pulumi.getter
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Labels are key-value string pairs which can be attached to the resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @_builtins.property
+    @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the share.
@@ -132,6 +148,7 @@ class SfsShareArgs:
 class _SfsShareState:
     def __init__(__self__, *,
                  export_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  mount_path: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -146,6 +163,7 @@ class _SfsShareState:
                Note that if this is set to an empty string, the Share can only be mounted in read only by
                clients with IPs matching the IP ACL of the Resource Pool hosting this Share.
                You can also assign a Share Export Policy after creating the Share
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to the resource.
         :param pulumi.Input[_builtins.str] mount_path: Mount path of the Share, used to mount the Share
         :param pulumi.Input[_builtins.str] name: Name of the share.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the share is associated.
@@ -158,6 +176,8 @@ class _SfsShareState:
         """
         if export_policy is not None:
             pulumi.set(__self__, "export_policy", export_policy)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if mount_path is not None:
             pulumi.set(__self__, "mount_path", mount_path)
         if name is not None:
@@ -187,6 +207,18 @@ class _SfsShareState:
     @export_policy.setter
     def export_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "export_policy", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Labels are key-value string pairs which can be attached to the resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter(name="mountPath")
@@ -282,6 +314,7 @@ class SfsShare(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  export_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -302,6 +335,7 @@ class SfsShare(pulumi.CustomResource):
                Note that if this is set to an empty string, the Share can only be mounted in read only by
                clients with IPs matching the IP ACL of the Resource Pool hosting this Share.
                You can also assign a Share Export Policy after creating the Share
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to the resource.
         :param pulumi.Input[_builtins.str] name: Name of the share.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the share is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
@@ -340,6 +374,7 @@ class SfsShare(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  export_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -355,6 +390,7 @@ class SfsShare(pulumi.CustomResource):
             __props__ = SfsShareArgs.__new__(SfsShareArgs)
 
             __props__.__dict__["export_policy"] = export_policy
+            __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
@@ -379,6 +415,7 @@ class SfsShare(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             export_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             mount_path: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -397,6 +434,7 @@ class SfsShare(pulumi.CustomResource):
                Note that if this is set to an empty string, the Share can only be mounted in read only by
                clients with IPs matching the IP ACL of the Resource Pool hosting this Share.
                You can also assign a Share Export Policy after creating the Share
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to the resource.
         :param pulumi.Input[_builtins.str] mount_path: Mount path of the Share, used to mount the Share
         :param pulumi.Input[_builtins.str] name: Name of the share.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the share is associated.
@@ -412,6 +450,7 @@ class SfsShare(pulumi.CustomResource):
         __props__ = _SfsShareState.__new__(_SfsShareState)
 
         __props__.__dict__["export_policy"] = export_policy
+        __props__.__dict__["labels"] = labels
         __props__.__dict__["mount_path"] = mount_path
         __props__.__dict__["name"] = name
         __props__.__dict__["project_id"] = project_id
@@ -431,6 +470,14 @@ class SfsShare(pulumi.CustomResource):
         You can also assign a Share Export Policy after creating the Share
         """
         return pulumi.get(self, "export_policy")
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        Labels are key-value string pairs which can be attached to the resource.
+        """
+        return pulumi.get(self, "labels")
 
     @_builtins.property
     @pulumi.getter(name="mountPath")

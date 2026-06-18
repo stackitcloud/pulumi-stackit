@@ -23,7 +23,8 @@ class PostgresflexUserArgs:
                  project_id: pulumi.Input[_builtins.str],
                  roles: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  username: pulumi.Input[_builtins.str],
-                 region: pulumi.Input[Optional[_builtins.str]] = None):
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a PostgresflexUser resource.
 
@@ -31,6 +32,7 @@ class PostgresflexUserArgs:
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the instance is associated.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] roles: Database access levels for the user.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] rotate_when_changed: A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "project_id", project_id)
@@ -38,6 +40,8 @@ class PostgresflexUserArgs:
         pulumi.set(__self__, "username", username)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if rotate_when_changed is not None:
+            pulumi.set(__self__, "rotate_when_changed", rotate_when_changed)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
@@ -96,6 +100,18 @@ class PostgresflexUserArgs:
     def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
+    @_builtins.property
+    @pulumi.getter(name="rotateWhenChanged")
+    def rotate_when_changed(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "rotate_when_changed")
+
+    @rotate_when_changed.setter
+    def rotate_when_changed(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "rotate_when_changed", value)
+
 
 @pulumi.input_type
 class _PostgresflexUserState:
@@ -107,6 +123,7 @@ class _PostgresflexUserState:
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  uri: pulumi.Input[Optional[_builtins.str]] = None,
                  user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None):
@@ -117,6 +134,7 @@ class _PostgresflexUserState:
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the instance is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] roles: Database access levels for the user.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] rotate_when_changed: A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] user_id: User ID.
         """
         if host is not None:
@@ -133,6 +151,8 @@ class _PostgresflexUserState:
             pulumi.set(__self__, "region", region)
         if roles is not None:
             pulumi.set(__self__, "roles", roles)
+        if rotate_when_changed is not None:
+            pulumi.set(__self__, "rotate_when_changed", rotate_when_changed)
         if uri is not None:
             pulumi.set(__self__, "uri", uri)
         if user_id is not None:
@@ -216,6 +236,18 @@ class _PostgresflexUserState:
         pulumi.set(self, "roles", value)
 
     @_builtins.property
+    @pulumi.getter(name="rotateWhenChanged")
+    def rotate_when_changed(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "rotate_when_changed")
+
+    @rotate_when_changed.setter
+    def rotate_when_changed(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "rotate_when_changed", value)
+
+    @_builtins.property
     @pulumi.getter
     def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "uri")
@@ -256,6 +288,7 @@ class PostgresflexUser(pulumi.CustomResource):
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -270,6 +303,7 @@ class PostgresflexUser(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the instance is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] roles: Database access levels for the user.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] rotate_when_changed: A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
         """
         ...
     @overload
@@ -302,6 +336,7 @@ class PostgresflexUser(pulumi.CustomResource):
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -322,6 +357,7 @@ class PostgresflexUser(pulumi.CustomResource):
             if roles is None and not opts.urn:
                 raise TypeError("Missing required property 'roles'")
             __props__.__dict__["roles"] = roles
+            __props__.__dict__["rotate_when_changed"] = rotate_when_changed
             if username is None and not opts.urn:
                 raise TypeError("Missing required property 'username'")
             __props__.__dict__["username"] = username
@@ -349,6 +385,7 @@ class PostgresflexUser(pulumi.CustomResource):
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             roles: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             uri: pulumi.Input[Optional[_builtins.str]] = None,
             user_id: pulumi.Input[Optional[_builtins.str]] = None,
             username: pulumi.Input[Optional[_builtins.str]] = None) -> 'PostgresflexUser':
@@ -363,6 +400,7 @@ class PostgresflexUser(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the instance is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] roles: Database access levels for the user.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] rotate_when_changed: A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] user_id: User ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -376,6 +414,7 @@ class PostgresflexUser(pulumi.CustomResource):
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["region"] = region
         __props__.__dict__["roles"] = roles
+        __props__.__dict__["rotate_when_changed"] = rotate_when_changed
         __props__.__dict__["uri"] = uri
         __props__.__dict__["user_id"] = user_id
         __props__.__dict__["username"] = username
@@ -427,6 +466,14 @@ class PostgresflexUser(pulumi.CustomResource):
         Database access levels for the user.
         """
         return pulumi.get(self, "roles")
+
+    @_builtins.property
+    @pulumi.getter(name="rotateWhenChanged")
+    def rotate_when_changed(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "rotate_when_changed")
 
     @_builtins.property
     @pulumi.getter

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Stackit
 {
     /// <summary>
-    /// Service account federated identity provider schema.
+    /// Manages a federated identity provider for a STACKIT service account to enable workload identity federation.
     /// ## Example Usage
     /// 
     /// ### Create a federated identity provider

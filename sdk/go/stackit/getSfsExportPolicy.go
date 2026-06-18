@@ -40,6 +40,8 @@ type LookupSfsExportPolicyArgs struct {
 type LookupSfsExportPolicyResult struct {
 	// Terraform's internal resource ID. It is structured as "`projectId`,`region`,`policyId`".
 	Id string `pulumi:"id"`
+	// Labels are key-value string pairs which can be attached to an export policy
+	Labels map[string]string `pulumi:"labels"`
 	// Name of the export policy.
 	Name string `pulumi:"name"`
 	// Export policy ID
@@ -92,6 +94,11 @@ func (o LookupSfsExportPolicyResultOutput) ToLookupSfsExportPolicyResultOutputWi
 // Terraform's internal resource ID. It is structured as "`projectId`,`region`,`policyId`".
 func (o LookupSfsExportPolicyResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSfsExportPolicyResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Labels are key-value string pairs which can be attached to an export policy
+func (o LookupSfsExportPolicyResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSfsExportPolicyResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // Name of the export policy.

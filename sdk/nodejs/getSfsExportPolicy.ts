@@ -49,6 +49,10 @@ export interface GetSfsExportPolicyResult {
      */
     readonly id: string;
     /**
+     * Labels are key-value string pairs which can be attached to an export policy
+     */
+    readonly labels: {[key: string]: string};
+    /**
      * Name of the export policy.
      */
     readonly name: string;

@@ -12,6 +12,13 @@ namespace Pulumi.Stackit.Inputs
 
     public sealed class PostgresflexInstanceStorageArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
+        /// `bash
+        /// stackit postgresflex options --storages --flavor-id FLAVOR_ID
+        /// `
+        /// - `Size` (Number)
+        /// </summary>
         [Input("class", required: true)]
         public Input<string> Class { get; set; } = null!;
 

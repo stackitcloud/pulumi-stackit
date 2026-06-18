@@ -50,6 +50,10 @@ export class SfsResourcePool extends pulumi.CustomResource {
      */
     declare public readonly ipAcls: pulumi.Output<string[]>;
     /**
+     * Labels are key-value string pairs which can be attached to the resource.
+     */
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * Name of the resource pool.
      */
     declare public readonly name: pulumi.Output<string>;
@@ -97,6 +101,7 @@ export class SfsResourcePool extends pulumi.CustomResource {
             const state = argsOrState as SfsResourcePoolState | undefined;
             resourceInputs["availabilityZone"] = state?.availabilityZone;
             resourceInputs["ipAcls"] = state?.ipAcls;
+            resourceInputs["labels"] = state?.labels;
             resourceInputs["name"] = state?.name;
             resourceInputs["performanceClass"] = state?.performanceClass;
             resourceInputs["projectId"] = state?.projectId;
@@ -124,6 +129,7 @@ export class SfsResourcePool extends pulumi.CustomResource {
             }
             resourceInputs["availabilityZone"] = args?.availabilityZone;
             resourceInputs["ipAcls"] = args?.ipAcls;
+            resourceInputs["labels"] = args?.labels;
             resourceInputs["name"] = args?.name;
             resourceInputs["performanceClass"] = args?.performanceClass;
             resourceInputs["projectId"] = args?.projectId;
@@ -150,6 +156,10 @@ export interface SfsResourcePoolState {
      * List of IPs that can mount the resource pool in read-only; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
      */
     ipAcls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Labels are key-value string pairs which can be attached to the resource.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the resource pool.
      */
@@ -196,6 +206,10 @@ export interface SfsResourcePoolArgs {
      * List of IPs that can mount the resource pool in read-only; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
      */
     ipAcls: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Labels are key-value string pairs which can be attached to the resource.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the resource pool.
      */

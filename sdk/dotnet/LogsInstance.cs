@@ -96,7 +96,7 @@ namespace Pulumi.Stackit
         public Output<int> RetentionDays { get; private set; } = null!;
 
         /// <summary>
-        /// The status of the Logs instance, possible values: Possible values are: `Active`, `Deleting`, `Reconciling`.
+        /// The status of the Logs instance. Possible values are: `Active`, `Deleting`, `Reconciling`.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -283,7 +283,7 @@ namespace Pulumi.Stackit
         public Input<int>? RetentionDays { get; set; }
 
         /// <summary>
-        /// The status of the Logs instance, possible values: Possible values are: `Active`, `Deleting`, `Reconciling`.
+        /// The status of the Logs instance. Possible values are: `Active`, `Deleting`, `Reconciling`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

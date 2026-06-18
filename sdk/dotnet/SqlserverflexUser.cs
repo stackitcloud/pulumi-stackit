@@ -51,6 +51,12 @@ namespace Pulumi.Stackit
         public Output<ImmutableArray<string>> Roles { get; private set; } = null!;
 
         /// <summary>
+        /// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+        /// </summary>
+        [Output("rotateWhenChanged")]
+        public Output<ImmutableDictionary<string, string>?> RotateWhenChanged { get; private set; } = null!;
+
+        /// <summary>
         /// User ID.
         /// </summary>
         [Output("userId")]
@@ -140,6 +146,18 @@ namespace Pulumi.Stackit
             set => _roles = value;
         }
 
+        [Input("rotateWhenChanged")]
+        private InputMap<string>? _rotateWhenChanged;
+
+        /// <summary>
+        /// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+        /// </summary>
+        public InputMap<string> RotateWhenChanged
+        {
+            get => _rotateWhenChanged ?? (_rotateWhenChanged = new InputMap<string>());
+            set => _rotateWhenChanged = value;
+        }
+
         /// <summary>
         /// Username of the SQLServer Flex instance.
         /// </summary>
@@ -201,6 +219,18 @@ namespace Pulumi.Stackit
         {
             get => _roles ?? (_roles = new InputList<string>());
             set => _roles = value;
+        }
+
+        [Input("rotateWhenChanged")]
+        private InputMap<string>? _rotateWhenChanged;
+
+        /// <summary>
+        /// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+        /// </summary>
+        public InputMap<string> RotateWhenChanged
+        {
+            get => _rotateWhenChanged ?? (_rotateWhenChanged = new InputMap<string>());
+            set => _rotateWhenChanged = value;
         }
 
         /// <summary>

@@ -30,7 +30,9 @@ type MongodbflexUser struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Database access levels for the user. Some of the possible values are: [`read`, `readWrite`, `readWriteAnyDatabase`]
 	Roles pulumi.StringArrayOutput `pulumi:"roles"`
-	Uri   pulumi.StringOutput      `pulumi:"uri"`
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapOutput `pulumi:"rotateWhenChanged"`
+	Uri               pulumi.StringOutput    `pulumi:"uri"`
 	// User ID.
 	UserId   pulumi.StringOutput `pulumi:"userId"`
 	Username pulumi.StringOutput `pulumi:"username"`
@@ -95,7 +97,9 @@ type mongodbflexUserState struct {
 	Region *string `pulumi:"region"`
 	// Database access levels for the user. Some of the possible values are: [`read`, `readWrite`, `readWriteAnyDatabase`]
 	Roles []string `pulumi:"roles"`
-	Uri   *string  `pulumi:"uri"`
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged map[string]string `pulumi:"rotateWhenChanged"`
+	Uri               *string           `pulumi:"uri"`
 	// User ID.
 	UserId   *string `pulumi:"userId"`
 	Username *string `pulumi:"username"`
@@ -114,7 +118,9 @@ type MongodbflexUserState struct {
 	Region pulumi.StringPtrInput
 	// Database access levels for the user. Some of the possible values are: [`read`, `readWrite`, `readWriteAnyDatabase`]
 	Roles pulumi.StringArrayInput
-	Uri   pulumi.StringPtrInput
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapInput
+	Uri               pulumi.StringPtrInput
 	// User ID.
 	UserId   pulumi.StringPtrInput
 	Username pulumi.StringPtrInput
@@ -133,8 +139,10 @@ type mongodbflexUserArgs struct {
 	// The resource region. If not defined, the provider region is used.
 	Region *string `pulumi:"region"`
 	// Database access levels for the user. Some of the possible values are: [`read`, `readWrite`, `readWriteAnyDatabase`]
-	Roles    []string `pulumi:"roles"`
-	Username *string  `pulumi:"username"`
+	Roles []string `pulumi:"roles"`
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged map[string]string `pulumi:"rotateWhenChanged"`
+	Username          *string           `pulumi:"username"`
 }
 
 // The set of arguments for constructing a MongodbflexUser resource.
@@ -147,8 +155,10 @@ type MongodbflexUserArgs struct {
 	// The resource region. If not defined, the provider region is used.
 	Region pulumi.StringPtrInput
 	// Database access levels for the user. Some of the possible values are: [`read`, `readWrite`, `readWriteAnyDatabase`]
-	Roles    pulumi.StringArrayInput
-	Username pulumi.StringPtrInput
+	Roles pulumi.StringArrayInput
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapInput
+	Username          pulumi.StringPtrInput
 }
 
 func (MongodbflexUserArgs) ElementType() reflect.Type {
@@ -272,6 +282,11 @@ func (o MongodbflexUserOutput) Region() pulumi.StringOutput {
 // Database access levels for the user. Some of the possible values are: [`read`, `readWrite`, `readWriteAnyDatabase`]
 func (o MongodbflexUserOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *MongodbflexUser) pulumi.StringArrayOutput { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
+// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+func (o MongodbflexUserOutput) RotateWhenChanged() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *MongodbflexUser) pulumi.StringMapOutput { return v.RotateWhenChanged }).(pulumi.StringMapOutput)
 }
 
 func (o MongodbflexUserOutput) Uri() pulumi.StringOutput {

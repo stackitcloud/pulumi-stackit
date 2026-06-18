@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Service account federated identity provider schema.
+ * Gets details about a federated identity provider configured for a STACKIT service account.
  *
  * ## Example Usage
  */
@@ -72,7 +72,7 @@ export interface GetServiceAccountFederatedIdentityProviderResult {
     readonly serviceAccountEmail: string;
 }
 /**
- * Service account federated identity provider schema.
+ * Gets details about a federated identity provider configured for a STACKIT service account.
  *
  * ## Example Usage
  */

@@ -29,6 +29,8 @@ type SqlserverflexUser struct {
 	Region    pulumi.StringOutput `pulumi:"region"`
 	// Database access levels for the user. The values for the default roles are: `##STACKIT_DatabaseManager##`, `##STACKIT_LoginManager##`, `##STACKIT_ProcessManager##`, `##STACKIT_ServerManager##`, `##STACKIT_SQLAgentManager##`, `##STACKIT_SQLAgentUser##`
 	Roles pulumi.StringArrayOutput `pulumi:"roles"`
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapOutput `pulumi:"rotateWhenChanged"`
 	// User ID.
 	UserId pulumi.StringOutput `pulumi:"userId"`
 	// Username of the SQLServer Flex instance.
@@ -92,6 +94,8 @@ type sqlserverflexUserState struct {
 	Region    *string `pulumi:"region"`
 	// Database access levels for the user. The values for the default roles are: `##STACKIT_DatabaseManager##`, `##STACKIT_LoginManager##`, `##STACKIT_ProcessManager##`, `##STACKIT_ServerManager##`, `##STACKIT_SQLAgentManager##`, `##STACKIT_SQLAgentUser##`
 	Roles []string `pulumi:"roles"`
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged map[string]string `pulumi:"rotateWhenChanged"`
 	// User ID.
 	UserId *string `pulumi:"userId"`
 	// Username of the SQLServer Flex instance.
@@ -110,6 +114,8 @@ type SqlserverflexUserState struct {
 	Region    pulumi.StringPtrInput
 	// Database access levels for the user. The values for the default roles are: `##STACKIT_DatabaseManager##`, `##STACKIT_LoginManager##`, `##STACKIT_ProcessManager##`, `##STACKIT_ServerManager##`, `##STACKIT_SQLAgentManager##`, `##STACKIT_SQLAgentUser##`
 	Roles pulumi.StringArrayInput
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapInput
 	// User ID.
 	UserId pulumi.StringPtrInput
 	// Username of the SQLServer Flex instance.
@@ -128,6 +134,8 @@ type sqlserverflexUserArgs struct {
 	Region    *string `pulumi:"region"`
 	// Database access levels for the user. The values for the default roles are: `##STACKIT_DatabaseManager##`, `##STACKIT_LoginManager##`, `##STACKIT_ProcessManager##`, `##STACKIT_ServerManager##`, `##STACKIT_SQLAgentManager##`, `##STACKIT_SQLAgentUser##`
 	Roles []string `pulumi:"roles"`
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged map[string]string `pulumi:"rotateWhenChanged"`
 	// Username of the SQLServer Flex instance.
 	Username string `pulumi:"username"`
 }
@@ -141,6 +149,8 @@ type SqlserverflexUserArgs struct {
 	Region    pulumi.StringPtrInput
 	// Database access levels for the user. The values for the default roles are: `##STACKIT_DatabaseManager##`, `##STACKIT_LoginManager##`, `##STACKIT_ProcessManager##`, `##STACKIT_ServerManager##`, `##STACKIT_SQLAgentManager##`, `##STACKIT_SQLAgentUser##`
 	Roles pulumi.StringArrayInput
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapInput
 	// Username of the SQLServer Flex instance.
 	Username pulumi.StringInput
 }
@@ -262,6 +272,11 @@ func (o SqlserverflexUserOutput) Region() pulumi.StringOutput {
 // Database access levels for the user. The values for the default roles are: `##STACKIT_DatabaseManager##`, `##STACKIT_LoginManager##`, `##STACKIT_ProcessManager##`, `##STACKIT_ServerManager##`, `##STACKIT_SQLAgentManager##`, `##STACKIT_SQLAgentUser##`
 func (o SqlserverflexUserOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SqlserverflexUser) pulumi.StringArrayOutput { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
+// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+func (o SqlserverflexUserOutput) RotateWhenChanged() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SqlserverflexUser) pulumi.StringMapOutput { return v.RotateWhenChanged }).(pulumi.StringMapOutput)
 }
 
 // User ID.

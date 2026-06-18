@@ -44,6 +44,8 @@ type LookupSfsResourcePoolResult struct {
 	Id string `pulumi:"id"`
 	// List of IPs that can mount the resource pool in read-only; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
 	IpAcls []string `pulumi:"ipAcls"`
+	// Labels are key-value string pairs which can be attached to a resource pool
+	Labels map[string]string `pulumi:"labels"`
 	// Name of the resource pool.
 	Name string `pulumi:"name"`
 	// Name of the performance class.
@@ -117,6 +119,11 @@ func (o LookupSfsResourcePoolResultOutput) Id() pulumi.StringOutput {
 // List of IPs that can mount the resource pool in read-only; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
 func (o LookupSfsResourcePoolResultOutput) IpAcls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupSfsResourcePoolResult) []string { return v.IpAcls }).(pulumi.StringArrayOutput)
+}
+
+// Labels are key-value string pairs which can be attached to a resource pool
+func (o LookupSfsResourcePoolResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupSfsResourcePoolResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // Name of the resource pool.

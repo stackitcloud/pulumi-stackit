@@ -13,6 +13,13 @@ namespace Pulumi.Stackit.Outputs
     [OutputType]
     public sealed class MongodbflexInstanceStorage
     {
+        /// <summary>
+        /// The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
+        /// `bash
+        /// stackit mongodbflex options --storages --flavor-id FLAVOR_ID
+        /// `
+        /// - `Size` (Number)
+        /// </summary>
         public readonly string Class;
         public readonly int Size;
 

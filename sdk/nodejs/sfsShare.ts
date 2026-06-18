@@ -47,6 +47,10 @@ export class SfsShare extends pulumi.CustomResource {
      */
     declare public readonly exportPolicy: pulumi.Output<string | undefined>;
     /**
+     * Labels are key-value string pairs which can be attached to the resource.
+     */
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * Mount path of the Share, used to mount the Share
      */
     declare public /*out*/ readonly mountPath: pulumi.Output<string>;
@@ -91,6 +95,7 @@ export class SfsShare extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as SfsShareState | undefined;
             resourceInputs["exportPolicy"] = state?.exportPolicy;
+            resourceInputs["labels"] = state?.labels;
             resourceInputs["mountPath"] = state?.mountPath;
             resourceInputs["name"] = state?.name;
             resourceInputs["projectId"] = state?.projectId;
@@ -110,6 +115,7 @@ export class SfsShare extends pulumi.CustomResource {
                 throw new Error("Missing required property 'spaceHardLimitGigabytes'");
             }
             resourceInputs["exportPolicy"] = args?.exportPolicy;
+            resourceInputs["labels"] = args?.labels;
             resourceInputs["name"] = args?.name;
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["region"] = args?.region;
@@ -134,6 +140,10 @@ export interface SfsShareState {
      * You can also assign a Share Export Policy after creating the Share
      */
     exportPolicy?: pulumi.Input<string | undefined>;
+    /**
+     * Labels are key-value string pairs which can be attached to the resource.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Mount path of the Share, used to mount the Share
      */
@@ -177,6 +187,10 @@ export interface SfsShareArgs {
      * You can also assign a Share Export Policy after creating the Share
      */
     exportPolicy?: pulumi.Input<string | undefined>;
+    /**
+     * Labels are key-value string pairs which can be attached to the resource.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * Name of the share.
      */

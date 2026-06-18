@@ -174,7 +174,7 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly int RetentionDays;
         /// <summary>
-        /// The status of the Logs instance, possible values: Possible values are: `Active`, `Deleting`, `Reconciling`.
+        /// The status of the Logs instance. Possible values are: `Active`, `Deleting`, `Reconciling`.
         /// </summary>
         public readonly string Status;
 

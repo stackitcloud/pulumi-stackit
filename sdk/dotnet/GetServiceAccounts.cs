@@ -12,7 +12,7 @@ namespace Pulumi.Stackit
     public static class GetServiceAccounts
     {
         /// <summary>
-        /// Service accounts plural data source schema. Returns a list of all service accounts in a project, optionally filtered.
+        /// Lists STACKIT service accounts in a project, optionally filtered by email.
         /// 
         /// ## Example Usage
         /// 
@@ -47,7 +47,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceAccountsResult>("stackit:index/getServiceAccounts:getServiceAccounts", args ?? new GetServiceAccountsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Service accounts plural data source schema. Returns a list of all service accounts in a project, optionally filtered.
+        /// Lists STACKIT service accounts in a project, optionally filtered by email.
         /// 
         /// ## Example Usage
         /// 
@@ -82,7 +82,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceAccountsResult>("stackit:index/getServiceAccounts:getServiceAccounts", args ?? new GetServiceAccountsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Service accounts plural data source schema. Returns a list of all service accounts in a project, optionally filtered.
+        /// Lists STACKIT service accounts in a project, optionally filtered by email.
         /// 
         /// ## Example Usage
         /// 

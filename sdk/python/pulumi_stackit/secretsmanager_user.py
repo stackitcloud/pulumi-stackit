@@ -22,7 +22,8 @@ class SecretsmanagerUserArgs:
                  description: pulumi.Input[_builtins.str],
                  instance_id: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
-                 write_enabled: pulumi.Input[_builtins.bool]):
+                 write_enabled: pulumi.Input[_builtins.bool],
+                 rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a SecretsmanagerUser resource.
 
@@ -30,11 +31,14 @@ class SecretsmanagerUserArgs:
         :param pulumi.Input[_builtins.str] instance_id: ID of the Secrets Manager instance.
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the instance is associated.
         :param pulumi.Input[_builtins.bool] write_enabled: If true, the user has writeaccess to the secrets engine.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] rotate_when_changed: A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "write_enabled", write_enabled)
+        if rotate_when_changed is not None:
+            pulumi.set(__self__, "rotate_when_changed", rotate_when_changed)
 
     @_builtins.property
     @pulumi.getter
@@ -84,6 +88,18 @@ class SecretsmanagerUserArgs:
     def write_enabled(self, value: pulumi.Input[_builtins.bool]):
         pulumi.set(self, "write_enabled", value)
 
+    @_builtins.property
+    @pulumi.getter(name="rotateWhenChanged")
+    def rotate_when_changed(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "rotate_when_changed")
+
+    @rotate_when_changed.setter
+    def rotate_when_changed(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "rotate_when_changed", value)
+
 
 @pulumi.input_type
 class _SecretsmanagerUserState:
@@ -92,6 +108,7 @@ class _SecretsmanagerUserState:
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  user_id: pulumi.Input[Optional[_builtins.str]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None,
                  write_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
@@ -102,6 +119,7 @@ class _SecretsmanagerUserState:
         :param pulumi.Input[_builtins.str] instance_id: ID of the Secrets Manager instance.
         :param pulumi.Input[_builtins.str] password: An auto-generated password.
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the instance is associated.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] rotate_when_changed: A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] user_id: The user's ID.
         :param pulumi.Input[_builtins.str] username: An auto-generated user name.
         :param pulumi.Input[_builtins.bool] write_enabled: If true, the user has writeaccess to the secrets engine.
@@ -114,6 +132,8 @@ class _SecretsmanagerUserState:
             pulumi.set(__self__, "password", password)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
+        if rotate_when_changed is not None:
+            pulumi.set(__self__, "rotate_when_changed", rotate_when_changed)
         if user_id is not None:
             pulumi.set(__self__, "user_id", user_id)
         if username is not None:
@@ -170,6 +190,18 @@ class _SecretsmanagerUserState:
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="rotateWhenChanged")
+    def rotate_when_changed(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "rotate_when_changed")
+
+    @rotate_when_changed.setter
+    def rotate_when_changed(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "rotate_when_changed", value)
+
+    @_builtins.property
     @pulumi.getter(name="userId")
     def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -215,6 +247,7 @@ class SecretsmanagerUser(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  write_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
@@ -228,6 +261,7 @@ class SecretsmanagerUser(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: A user chosen description to differentiate between multiple users. Can't be changed after creation.
         :param pulumi.Input[_builtins.str] instance_id: ID of the Secrets Manager instance.
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the instance is associated.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] rotate_when_changed: A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.bool] write_enabled: If true, the user has writeaccess to the secrets engine.
         """
         ...
@@ -260,6 +294,7 @@ class SecretsmanagerUser(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  write_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -279,6 +314,7 @@ class SecretsmanagerUser(pulumi.CustomResource):
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
+            __props__.__dict__["rotate_when_changed"] = rotate_when_changed
             if write_enabled is None and not opts.urn:
                 raise TypeError("Missing required property 'write_enabled'")
             __props__.__dict__["write_enabled"] = write_enabled
@@ -301,6 +337,7 @@ class SecretsmanagerUser(pulumi.CustomResource):
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             password: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             user_id: pulumi.Input[Optional[_builtins.str]] = None,
             username: pulumi.Input[Optional[_builtins.str]] = None,
             write_enabled: pulumi.Input[Optional[_builtins.bool]] = None) -> 'SecretsmanagerUser':
@@ -315,6 +352,7 @@ class SecretsmanagerUser(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] instance_id: ID of the Secrets Manager instance.
         :param pulumi.Input[_builtins.str] password: An auto-generated password.
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the instance is associated.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] rotate_when_changed: A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] user_id: The user's ID.
         :param pulumi.Input[_builtins.str] username: An auto-generated user name.
         :param pulumi.Input[_builtins.bool] write_enabled: If true, the user has writeaccess to the secrets engine.
@@ -327,6 +365,7 @@ class SecretsmanagerUser(pulumi.CustomResource):
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["password"] = password
         __props__.__dict__["project_id"] = project_id
+        __props__.__dict__["rotate_when_changed"] = rotate_when_changed
         __props__.__dict__["user_id"] = user_id
         __props__.__dict__["username"] = username
         __props__.__dict__["write_enabled"] = write_enabled
@@ -363,6 +402,14 @@ class SecretsmanagerUser(pulumi.CustomResource):
         STACKIT Project ID to which the instance is associated.
         """
         return pulumi.get(self, "project_id")
+
+    @_builtins.property
+    @pulumi.getter(name="rotateWhenChanged")
+    def rotate_when_changed(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "rotate_when_changed")
 
     @_builtins.property
     @pulumi.getter(name="userId")

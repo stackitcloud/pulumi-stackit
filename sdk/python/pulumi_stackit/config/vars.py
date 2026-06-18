@@ -70,6 +70,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('dnsCustomEndpoint')
 
     @_builtins.property
+    def dremio_custom_endpoint(self) -> Optional[str]:
+        """
+        Custom endpoint for the Dremio service
+        """
+        return __config__.get('dremioCustomEndpoint')
+
+    @_builtins.property
     def edgecloud_custom_endpoint(self) -> Optional[str]:
         """
         Custom endpoint for the Edge Cloud service
@@ -86,7 +93,7 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def experiments(self) -> Optional[str]:
         """
-        Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: iam, routing-tables, network
+        Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, routing-tables, network
         """
         return __config__.get('experiments')
 
@@ -350,6 +357,20 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('sqlserverflexCustomEndpoint')
 
     @_builtins.property
+    def telemetrylink_custom_endpoint(self) -> Optional[str]:
+        """
+        Custom endpoint for the Telemetry Link service
+        """
+        return __config__.get('telemetrylinkCustomEndpoint')
+
+    @_builtins.property
+    def telemetryrouter_custom_endpoint(self) -> Optional[str]:
+        """
+        Custom endpoint for the Telemetry Router service
+        """
+        return __config__.get('telemetryrouterCustomEndpoint')
+
+    @_builtins.property
     def token_custom_endpoint(self) -> Optional[str]:
         """
         Custom endpoint for the token API, which is used to request access tokens when using the key flow
@@ -362,4 +383,11 @@ class _ExportableConfig(types.ModuleType):
         Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to `false`.
         """
         return __config__.get_bool('useOidc')
+
+    @_builtins.property
+    def vpn_custom_endpoint(self) -> Optional[str]:
+        """
+        Custom endpoint for the VPN service
+        """
+        return __config__.get('vpnCustomEndpoint')
 

@@ -57,6 +57,10 @@ export interface GetSfsResourcePoolResult {
      */
     readonly ipAcls: string[];
     /**
+     * Labels are key-value string pairs which can be attached to a resource pool
+     */
+    readonly labels: {[key: string]: string};
+    /**
      * Name of the resource pool.
      */
     readonly name: string;

@@ -22,6 +22,7 @@ __all__ = ['SfsExportPolicyArgs', 'SfsExportPolicy']
 class SfsExportPolicyArgs:
     def __init__(__self__, *,
                  project_id: pulumi.Input[_builtins.str],
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  rules: pulumi.Input[Optional[Sequence[pulumi.Input['SfsExportPolicyRuleArgs']]]] = None):
@@ -29,10 +30,13 @@ class SfsExportPolicyArgs:
         The set of arguments for constructing a SfsExportPolicy resource.
 
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the export policy is associated.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to the resource.
         :param pulumi.Input[_builtins.str] name: Name of the export policy.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
         pulumi.set(__self__, "project_id", project_id)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if region is not None:
@@ -51,6 +55,18 @@ class SfsExportPolicyArgs:
     @project_id.setter
     def project_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "project_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Labels are key-value string pairs which can be attached to the resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
@@ -89,6 +105,7 @@ class SfsExportPolicyArgs:
 @pulumi.input_type
 class _SfsExportPolicyState:
     def __init__(__self__, *,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  policy_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -97,11 +114,14 @@ class _SfsExportPolicyState:
         """
         Input properties used for looking up and filtering SfsExportPolicy resources.
 
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to the resource.
         :param pulumi.Input[_builtins.str] name: Name of the export policy.
         :param pulumi.Input[_builtins.str] policy_id: Export policy ID
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the export policy is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if policy_id is not None:
@@ -112,6 +132,18 @@ class _SfsExportPolicyState:
             pulumi.set(__self__, "region", region)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        Labels are key-value string pairs which can be attached to the resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "labels", value)
 
     @_builtins.property
     @pulumi.getter
@@ -177,6 +209,7 @@ class SfsExportPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -192,6 +225,7 @@ class SfsExportPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to the resource.
         :param pulumi.Input[_builtins.str] name: Name of the export policy.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the export policy is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
@@ -225,6 +259,7 @@ class SfsExportPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -238,6 +273,7 @@ class SfsExportPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SfsExportPolicyArgs.__new__(SfsExportPolicyArgs)
 
+            __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
@@ -255,6 +291,7 @@ class SfsExportPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -267,6 +304,7 @@ class SfsExportPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to the resource.
         :param pulumi.Input[_builtins.str] name: Name of the export policy.
         :param pulumi.Input[_builtins.str] policy_id: Export policy ID
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the export policy is associated.
@@ -276,12 +314,21 @@ class SfsExportPolicy(pulumi.CustomResource):
 
         __props__ = _SfsExportPolicyState.__new__(_SfsExportPolicyState)
 
+        __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["policy_id"] = policy_id
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["region"] = region
         __props__.__dict__["rules"] = rules
         return SfsExportPolicy(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        Labels are key-value string pairs which can be attached to the resource.
+        """
+        return pulumi.get(self, "labels")
 
     @_builtins.property
     @pulumi.getter

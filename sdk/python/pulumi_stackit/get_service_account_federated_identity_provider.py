@@ -127,7 +127,7 @@ def get_service_account_federated_identity_provider(federation_id: Optional[_bui
                                                     service_account_email: Optional[_builtins.str] = None,
                                                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServiceAccountFederatedIdentityProviderResult:
     """
-    Service account federated identity provider schema.
+    Gets details about a federated identity provider configured for a STACKIT service account.
 
     ## Example Usage
 
@@ -156,7 +156,7 @@ def get_service_account_federated_identity_provider_output(federation_id: pulumi
                                                            service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
                                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceAccountFederatedIdentityProviderResult]:
     """
-    Service account federated identity provider schema.
+    Gets details about a federated identity provider configured for a STACKIT service account.
 
     ## Example Usage
 

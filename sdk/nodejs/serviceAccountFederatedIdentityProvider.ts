@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Service account federated identity provider schema.
+ * Manages a federated identity provider for a STACKIT service account to enable workload identity federation.
  * ## Example Usage
  *
  * ### Create a federated identity provider

@@ -20,15 +20,19 @@ __all__ = ['MariadbCredentialArgs', 'MariadbCredential']
 class MariadbCredentialArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[_builtins.str],
-                 project_id: pulumi.Input[_builtins.str]):
+                 project_id: pulumi.Input[_builtins.str],
+                 rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a MariadbCredential resource.
 
         :param pulumi.Input[_builtins.str] instance_id: ID of the MariaDB instance.
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the instance is associated.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] rotate_when_changed: A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "project_id", project_id)
+        if rotate_when_changed is not None:
+            pulumi.set(__self__, "rotate_when_changed", rotate_when_changed)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
@@ -54,6 +58,18 @@ class MariadbCredentialArgs:
     def project_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "project_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="rotateWhenChanged")
+    def rotate_when_changed(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "rotate_when_changed")
+
+    @rotate_when_changed.setter
+    def rotate_when_changed(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "rotate_when_changed", value)
+
 
 @pulumi.input_type
 class _MariadbCredentialState:
@@ -66,6 +82,7 @@ class _MariadbCredentialState:
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  port: pulumi.Input[Optional[_builtins.int]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  uri: pulumi.Input[Optional[_builtins.str]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -74,6 +91,7 @@ class _MariadbCredentialState:
         :param pulumi.Input[_builtins.str] credential_id: The credential's ID.
         :param pulumi.Input[_builtins.str] instance_id: ID of the MariaDB instance.
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the instance is associated.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] rotate_when_changed: A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
         """
         if credential_id is not None:
             pulumi.set(__self__, "credential_id", credential_id)
@@ -91,6 +109,8 @@ class _MariadbCredentialState:
             pulumi.set(__self__, "port", port)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
+        if rotate_when_changed is not None:
+            pulumi.set(__self__, "rotate_when_changed", rotate_when_changed)
         if uri is not None:
             pulumi.set(__self__, "uri", uri)
         if username is not None:
@@ -178,6 +198,18 @@ class _MariadbCredentialState:
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
+    @pulumi.getter(name="rotateWhenChanged")
+    def rotate_when_changed(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "rotate_when_changed")
+
+    @rotate_when_changed.setter
+    def rotate_when_changed(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "rotate_when_changed", value)
+
+    @_builtins.property
     @pulumi.getter
     def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "uri")
@@ -204,6 +236,7 @@ class MariadbCredential(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         MariaDB credential resource schema. Must have a `region` specified in the provider configuration.
@@ -215,6 +248,7 @@ class MariadbCredential(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_id: ID of the MariaDB instance.
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the instance is associated.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] rotate_when_changed: A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
         """
         ...
     @overload
@@ -245,6 +279,7 @@ class MariadbCredential(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -260,6 +295,7 @@ class MariadbCredential(pulumi.CustomResource):
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
+            __props__.__dict__["rotate_when_changed"] = rotate_when_changed
             __props__.__dict__["credential_id"] = None
             __props__.__dict__["host"] = None
             __props__.__dict__["hosts"] = None
@@ -288,6 +324,7 @@ class MariadbCredential(pulumi.CustomResource):
             password: pulumi.Input[Optional[_builtins.str]] = None,
             port: pulumi.Input[Optional[_builtins.int]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             uri: pulumi.Input[Optional[_builtins.str]] = None,
             username: pulumi.Input[Optional[_builtins.str]] = None) -> 'MariadbCredential':
         """
@@ -300,6 +337,7 @@ class MariadbCredential(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] credential_id: The credential's ID.
         :param pulumi.Input[_builtins.str] instance_id: ID of the MariaDB instance.
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the instance is associated.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] rotate_when_changed: A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -313,6 +351,7 @@ class MariadbCredential(pulumi.CustomResource):
         __props__.__dict__["password"] = password
         __props__.__dict__["port"] = port
         __props__.__dict__["project_id"] = project_id
+        __props__.__dict__["rotate_when_changed"] = rotate_when_changed
         __props__.__dict__["uri"] = uri
         __props__.__dict__["username"] = username
         return MariadbCredential(resource_name, opts=opts, __props__=__props__)
@@ -365,6 +404,14 @@ class MariadbCredential(pulumi.CustomResource):
         STACKIT Project ID to which the instance is associated.
         """
         return pulumi.get(self, "project_id")
+
+    @_builtins.property
+    @pulumi.getter(name="rotateWhenChanged")
+    def rotate_when_changed(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "rotate_when_changed")
 
     @_builtins.property
     @pulumi.getter

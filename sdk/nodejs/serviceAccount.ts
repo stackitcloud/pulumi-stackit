@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Service account resource schema.
+ * Manages a STACKIT service account in a project.
  *
  * ## Example Usage
  */

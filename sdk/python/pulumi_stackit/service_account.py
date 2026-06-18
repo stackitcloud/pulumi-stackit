@@ -139,7 +139,7 @@ class ServiceAccount(pulumi.CustomResource):
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        Service account resource schema.
+        Manages a STACKIT service account in a project.
 
         ## Example Usage
 
@@ -156,7 +156,7 @@ class ServiceAccount(pulumi.CustomResource):
                  args: ServiceAccountArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Service account resource schema.
+        Manages a STACKIT service account in a project.
 
         ## Example Usage
 

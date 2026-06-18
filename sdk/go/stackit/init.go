@@ -49,6 +49,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DnsRecordSet{}
 	case "stackit:index/dnsZone:DnsZone":
 		r = &DnsZone{}
+	case "stackit:index/dremioInstance:DremioInstance":
+		r = &DremioInstance{}
+	case "stackit:index/dremioUser:DremioUser":
+		r = &DremioUser{}
 	case "stackit:index/edgecloudInstance:EdgecloudInstance":
 		r = &EdgecloudInstance{}
 	case "stackit:index/edgecloudKubeconfig:EdgecloudKubeconfig":
@@ -203,8 +207,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SqlserverflexInstance{}
 	case "stackit:index/sqlserverflexUser:SqlserverflexUser":
 		r = &SqlserverflexUser{}
+	case "stackit:index/telemetrylink:Telemetrylink":
+		r = &Telemetrylink{}
+	case "stackit:index/telemetryrouterAccessToken:TelemetryrouterAccessToken":
+		r = &TelemetryrouterAccessToken{}
+	case "stackit:index/telemetryrouterDestination:TelemetryrouterDestination":
+		r = &TelemetryrouterDestination{}
+	case "stackit:index/telemetryrouterInstance:TelemetryrouterInstance":
+		r = &TelemetryrouterInstance{}
 	case "stackit:index/volume:Volume":
 		r = &Volume{}
+	case "stackit:index/vpnGateway:VpnGateway":
+		r = &VpnGateway{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -304,6 +318,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"stackit",
 		"index/dnsZone",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/dremioInstance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/dremioUser",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -693,7 +717,32 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"stackit",
+		"index/telemetrylink",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/telemetryrouterAccessToken",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/telemetryrouterDestination",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/telemetryrouterInstance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
 		"index/volume",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/vpnGateway",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

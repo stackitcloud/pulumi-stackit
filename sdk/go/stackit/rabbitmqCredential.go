@@ -30,10 +30,12 @@ type RabbitmqCredential struct {
 	Password   pulumi.StringOutput `pulumi:"password"`
 	Port       pulumi.IntOutput    `pulumi:"port"`
 	// STACKIT Project ID to which the instance is associated.
-	ProjectId pulumi.StringOutput      `pulumi:"projectId"`
-	Uri       pulumi.StringOutput      `pulumi:"uri"`
-	Uris      pulumi.StringArrayOutput `pulumi:"uris"`
-	Username  pulumi.StringOutput      `pulumi:"username"`
+	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapOutput   `pulumi:"rotateWhenChanged"`
+	Uri               pulumi.StringOutput      `pulumi:"uri"`
+	Uris              pulumi.StringArrayOutput `pulumi:"uris"`
+	Username          pulumi.StringOutput      `pulumi:"username"`
 }
 
 // NewRabbitmqCredential registers a new resource with the given unique name, arguments, and options.
@@ -89,10 +91,12 @@ type rabbitmqCredentialState struct {
 	Password   *string `pulumi:"password"`
 	Port       *int    `pulumi:"port"`
 	// STACKIT Project ID to which the instance is associated.
-	ProjectId *string  `pulumi:"projectId"`
-	Uri       *string  `pulumi:"uri"`
-	Uris      []string `pulumi:"uris"`
-	Username  *string  `pulumi:"username"`
+	ProjectId *string `pulumi:"projectId"`
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged map[string]string `pulumi:"rotateWhenChanged"`
+	Uri               *string           `pulumi:"uri"`
+	Uris              []string          `pulumi:"uris"`
+	Username          *string           `pulumi:"username"`
 }
 
 type RabbitmqCredentialState struct {
@@ -109,9 +113,11 @@ type RabbitmqCredentialState struct {
 	Port       pulumi.IntPtrInput
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId pulumi.StringPtrInput
-	Uri       pulumi.StringPtrInput
-	Uris      pulumi.StringArrayInput
-	Username  pulumi.StringPtrInput
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapInput
+	Uri               pulumi.StringPtrInput
+	Uris              pulumi.StringArrayInput
+	Username          pulumi.StringPtrInput
 }
 
 func (RabbitmqCredentialState) ElementType() reflect.Type {
@@ -123,6 +129,8 @@ type rabbitmqCredentialArgs struct {
 	InstanceId string `pulumi:"instanceId"`
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId string `pulumi:"projectId"`
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged map[string]string `pulumi:"rotateWhenChanged"`
 }
 
 // The set of arguments for constructing a RabbitmqCredential resource.
@@ -131,6 +139,8 @@ type RabbitmqCredentialArgs struct {
 	InstanceId pulumi.StringInput
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId pulumi.StringInput
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapInput
 }
 
 func (RabbitmqCredentialArgs) ElementType() reflect.Type {
@@ -261,6 +271,11 @@ func (o RabbitmqCredentialOutput) Port() pulumi.IntOutput {
 // STACKIT Project ID to which the instance is associated.
 func (o RabbitmqCredentialOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RabbitmqCredential) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+func (o RabbitmqCredentialOutput) RotateWhenChanged() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RabbitmqCredential) pulumi.StringMapOutput { return v.RotateWhenChanged }).(pulumi.StringMapOutput)
 }
 
 func (o RabbitmqCredentialOutput) Uri() pulumi.StringOutput {

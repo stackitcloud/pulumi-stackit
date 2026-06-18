@@ -26,6 +26,8 @@ type SecretsmanagerUser struct {
 	Password pulumi.StringOutput `pulumi:"password"`
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapOutput `pulumi:"rotateWhenChanged"`
 	// The user's ID.
 	UserId pulumi.StringOutput `pulumi:"userId"`
 	// An auto-generated user name.
@@ -88,6 +90,8 @@ type secretsmanagerUserState struct {
 	Password *string `pulumi:"password"`
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId *string `pulumi:"projectId"`
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged map[string]string `pulumi:"rotateWhenChanged"`
 	// The user's ID.
 	UserId *string `pulumi:"userId"`
 	// An auto-generated user name.
@@ -105,6 +109,8 @@ type SecretsmanagerUserState struct {
 	Password pulumi.StringPtrInput
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId pulumi.StringPtrInput
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapInput
 	// The user's ID.
 	UserId pulumi.StringPtrInput
 	// An auto-generated user name.
@@ -124,6 +130,8 @@ type secretsmanagerUserArgs struct {
 	InstanceId string `pulumi:"instanceId"`
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId string `pulumi:"projectId"`
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged map[string]string `pulumi:"rotateWhenChanged"`
 	// If true, the user has writeaccess to the secrets engine.
 	WriteEnabled bool `pulumi:"writeEnabled"`
 }
@@ -136,6 +144,8 @@ type SecretsmanagerUserArgs struct {
 	InstanceId pulumi.StringInput
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId pulumi.StringInput
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapInput
 	// If true, the user has writeaccess to the secrets engine.
 	WriteEnabled pulumi.BoolInput
 }
@@ -245,6 +255,11 @@ func (o SecretsmanagerUserOutput) Password() pulumi.StringOutput {
 // STACKIT Project ID to which the instance is associated.
 func (o SecretsmanagerUserOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecretsmanagerUser) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+func (o SecretsmanagerUserOutput) RotateWhenChanged() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SecretsmanagerUser) pulumi.StringMapOutput { return v.RotateWhenChanged }).(pulumi.StringMapOutput)
 }
 
 // The user's ID.

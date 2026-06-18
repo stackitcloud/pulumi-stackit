@@ -26,6 +26,7 @@ class ProviderArgs:
                  credentials_path: pulumi.Input[Optional[_builtins.str]] = None,
                  default_region: pulumi.Input[Optional[_builtins.str]] = None,
                  dns_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 dremio_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  edgecloud_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_beta_resources: pulumi.Input[Optional[_builtins.bool]] = None,
                  experiments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -66,8 +67,11 @@ class ProviderArgs:
                  sfs_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  ske_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  sqlserverflex_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 telemetrylink_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 telemetryrouter_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  token_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
-                 use_oidc: pulumi.Input[Optional[_builtins.bool]] = None):
+                 use_oidc: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vpn_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
 
@@ -78,9 +82,10 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.str] credentials_path: Path of JSON from where the credentials are read. Takes precedence over the env var `STACKIT_CREDENTIALS_PATH`. Default value is `~/.stackit/credentials.json`.
         :param pulumi.Input[_builtins.str] default_region: Region will be used as the default location for regional services. Not all services require a region, some are global
         :param pulumi.Input[_builtins.str] dns_custom_endpoint: Custom endpoint for the DNS service
+        :param pulumi.Input[_builtins.str] dremio_custom_endpoint: Custom endpoint for the Dremio service
         :param pulumi.Input[_builtins.str] edgecloud_custom_endpoint: Custom endpoint for the Edge Cloud service
         :param pulumi.Input[_builtins.bool] enable_beta_resources: Enable beta resources. Default is false.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] experiments: Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: iam, routing-tables, network
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] experiments: Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, routing-tables, network
         :param pulumi.Input[_builtins.str] git_custom_endpoint: Custom endpoint for the Git service
         :param pulumi.Input[_builtins.str] iaas_custom_endpoint: Custom endpoint for the IaaS service
         :param pulumi.Input[_builtins.str] intake_custom_endpoint: Custom endpoint for the Intake service
@@ -118,8 +123,11 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.str] sfs_custom_endpoint: Custom endpoint for the Stackit Filestorage API
         :param pulumi.Input[_builtins.str] ske_custom_endpoint: Custom endpoint for the Kubernetes Engine (SKE) service
         :param pulumi.Input[_builtins.str] sqlserverflex_custom_endpoint: Custom endpoint for the SQL Server Flex service
+        :param pulumi.Input[_builtins.str] telemetrylink_custom_endpoint: Custom endpoint for the Telemetry Link service
+        :param pulumi.Input[_builtins.str] telemetryrouter_custom_endpoint: Custom endpoint for the Telemetry Router service
         :param pulumi.Input[_builtins.str] token_custom_endpoint: Custom endpoint for the token API, which is used to request access tokens when using the key flow
         :param pulumi.Input[_builtins.bool] use_oidc: Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to `false`.
+        :param pulumi.Input[_builtins.str] vpn_custom_endpoint: Custom endpoint for the VPN service
         """
         if alb_certificates_custom_endpoint is not None:
             pulumi.set(__self__, "alb_certificates_custom_endpoint", alb_certificates_custom_endpoint)
@@ -135,6 +143,8 @@ class ProviderArgs:
             pulumi.set(__self__, "default_region", default_region)
         if dns_custom_endpoint is not None:
             pulumi.set(__self__, "dns_custom_endpoint", dns_custom_endpoint)
+        if dremio_custom_endpoint is not None:
+            pulumi.set(__self__, "dremio_custom_endpoint", dremio_custom_endpoint)
         if edgecloud_custom_endpoint is not None:
             pulumi.set(__self__, "edgecloud_custom_endpoint", edgecloud_custom_endpoint)
         if enable_beta_resources is not None:
@@ -221,10 +231,16 @@ class ProviderArgs:
             pulumi.set(__self__, "ske_custom_endpoint", ske_custom_endpoint)
         if sqlserverflex_custom_endpoint is not None:
             pulumi.set(__self__, "sqlserverflex_custom_endpoint", sqlserverflex_custom_endpoint)
+        if telemetrylink_custom_endpoint is not None:
+            pulumi.set(__self__, "telemetrylink_custom_endpoint", telemetrylink_custom_endpoint)
+        if telemetryrouter_custom_endpoint is not None:
+            pulumi.set(__self__, "telemetryrouter_custom_endpoint", telemetryrouter_custom_endpoint)
         if token_custom_endpoint is not None:
             pulumi.set(__self__, "token_custom_endpoint", token_custom_endpoint)
         if use_oidc is not None:
             pulumi.set(__self__, "use_oidc", use_oidc)
+        if vpn_custom_endpoint is not None:
+            pulumi.set(__self__, "vpn_custom_endpoint", vpn_custom_endpoint)
 
     @_builtins.property
     @pulumi.getter(name="albCertificatesCustomEndpoint")
@@ -311,6 +327,18 @@ class ProviderArgs:
         pulumi.set(self, "dns_custom_endpoint", value)
 
     @_builtins.property
+    @pulumi.getter(name="dremioCustomEndpoint")
+    def dremio_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Custom endpoint for the Dremio service
+        """
+        return pulumi.get(self, "dremio_custom_endpoint")
+
+    @dremio_custom_endpoint.setter
+    def dremio_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "dremio_custom_endpoint", value)
+
+    @_builtins.property
     @pulumi.getter(name="edgecloudCustomEndpoint")
     def edgecloud_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -338,7 +366,7 @@ class ProviderArgs:
     @pulumi.getter
     def experiments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: iam, routing-tables, network
+        Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, routing-tables, network
         """
         return pulumi.get(self, "experiments")
 
@@ -793,6 +821,30 @@ class ProviderArgs:
         pulumi.set(self, "sqlserverflex_custom_endpoint", value)
 
     @_builtins.property
+    @pulumi.getter(name="telemetrylinkCustomEndpoint")
+    def telemetrylink_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Custom endpoint for the Telemetry Link service
+        """
+        return pulumi.get(self, "telemetrylink_custom_endpoint")
+
+    @telemetrylink_custom_endpoint.setter
+    def telemetrylink_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "telemetrylink_custom_endpoint", value)
+
+    @_builtins.property
+    @pulumi.getter(name="telemetryrouterCustomEndpoint")
+    def telemetryrouter_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Custom endpoint for the Telemetry Router service
+        """
+        return pulumi.get(self, "telemetryrouter_custom_endpoint")
+
+    @telemetryrouter_custom_endpoint.setter
+    def telemetryrouter_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "telemetryrouter_custom_endpoint", value)
+
+    @_builtins.property
     @pulumi.getter(name="tokenCustomEndpoint")
     def token_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -816,6 +868,18 @@ class ProviderArgs:
     def use_oidc(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "use_oidc", value)
 
+    @_builtins.property
+    @pulumi.getter(name="vpnCustomEndpoint")
+    def vpn_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Custom endpoint for the VPN service
+        """
+        return pulumi.get(self, "vpn_custom_endpoint")
+
+    @vpn_custom_endpoint.setter
+    def vpn_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "vpn_custom_endpoint", value)
+
 
 @pulumi.type_token("pulumi:providers:stackit")
 class Provider(pulumi.ProviderResource):
@@ -830,6 +894,7 @@ class Provider(pulumi.ProviderResource):
                  credentials_path: pulumi.Input[Optional[_builtins.str]] = None,
                  default_region: pulumi.Input[Optional[_builtins.str]] = None,
                  dns_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 dremio_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  edgecloud_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_beta_resources: pulumi.Input[Optional[_builtins.bool]] = None,
                  experiments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -870,8 +935,11 @@ class Provider(pulumi.ProviderResource):
                  sfs_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  ske_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  sqlserverflex_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 telemetrylink_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 telemetryrouter_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  token_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  use_oidc: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vpn_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The provider type for the stackit package. By default, resources use package-wide configuration
@@ -889,9 +957,10 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[_builtins.str] credentials_path: Path of JSON from where the credentials are read. Takes precedence over the env var `STACKIT_CREDENTIALS_PATH`. Default value is `~/.stackit/credentials.json`.
         :param pulumi.Input[_builtins.str] default_region: Region will be used as the default location for regional services. Not all services require a region, some are global
         :param pulumi.Input[_builtins.str] dns_custom_endpoint: Custom endpoint for the DNS service
+        :param pulumi.Input[_builtins.str] dremio_custom_endpoint: Custom endpoint for the Dremio service
         :param pulumi.Input[_builtins.str] edgecloud_custom_endpoint: Custom endpoint for the Edge Cloud service
         :param pulumi.Input[_builtins.bool] enable_beta_resources: Enable beta resources. Default is false.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] experiments: Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: iam, routing-tables, network
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] experiments: Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, routing-tables, network
         :param pulumi.Input[_builtins.str] git_custom_endpoint: Custom endpoint for the Git service
         :param pulumi.Input[_builtins.str] iaas_custom_endpoint: Custom endpoint for the IaaS service
         :param pulumi.Input[_builtins.str] intake_custom_endpoint: Custom endpoint for the Intake service
@@ -929,8 +998,11 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[_builtins.str] sfs_custom_endpoint: Custom endpoint for the Stackit Filestorage API
         :param pulumi.Input[_builtins.str] ske_custom_endpoint: Custom endpoint for the Kubernetes Engine (SKE) service
         :param pulumi.Input[_builtins.str] sqlserverflex_custom_endpoint: Custom endpoint for the SQL Server Flex service
+        :param pulumi.Input[_builtins.str] telemetrylink_custom_endpoint: Custom endpoint for the Telemetry Link service
+        :param pulumi.Input[_builtins.str] telemetryrouter_custom_endpoint: Custom endpoint for the Telemetry Router service
         :param pulumi.Input[_builtins.str] token_custom_endpoint: Custom endpoint for the token API, which is used to request access tokens when using the key flow
         :param pulumi.Input[_builtins.bool] use_oidc: Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to `false`.
+        :param pulumi.Input[_builtins.str] vpn_custom_endpoint: Custom endpoint for the VPN service
         """
         ...
     @overload
@@ -967,6 +1039,7 @@ class Provider(pulumi.ProviderResource):
                  credentials_path: pulumi.Input[Optional[_builtins.str]] = None,
                  default_region: pulumi.Input[Optional[_builtins.str]] = None,
                  dns_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 dremio_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  edgecloud_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  enable_beta_resources: pulumi.Input[Optional[_builtins.bool]] = None,
                  experiments: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1007,8 +1080,11 @@ class Provider(pulumi.ProviderResource):
                  sfs_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  ske_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  sqlserverflex_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 telemetrylink_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 telemetryrouter_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  token_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  use_oidc: pulumi.Input[Optional[_builtins.bool]] = None,
+                 vpn_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1025,6 +1101,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["credentials_path"] = credentials_path
             __props__.__dict__["default_region"] = default_region
             __props__.__dict__["dns_custom_endpoint"] = dns_custom_endpoint
+            __props__.__dict__["dremio_custom_endpoint"] = dremio_custom_endpoint
             __props__.__dict__["edgecloud_custom_endpoint"] = edgecloud_custom_endpoint
             __props__.__dict__["enable_beta_resources"] = pulumi.Output.from_input(enable_beta_resources).apply(pulumi.runtime.to_json) if enable_beta_resources is not None else None
             __props__.__dict__["experiments"] = pulumi.Output.from_input(experiments).apply(pulumi.runtime.to_json) if experiments is not None else None
@@ -1065,8 +1142,11 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["sfs_custom_endpoint"] = sfs_custom_endpoint
             __props__.__dict__["ske_custom_endpoint"] = ske_custom_endpoint
             __props__.__dict__["sqlserverflex_custom_endpoint"] = sqlserverflex_custom_endpoint
+            __props__.__dict__["telemetrylink_custom_endpoint"] = telemetrylink_custom_endpoint
+            __props__.__dict__["telemetryrouter_custom_endpoint"] = telemetryrouter_custom_endpoint
             __props__.__dict__["token_custom_endpoint"] = token_custom_endpoint
             __props__.__dict__["use_oidc"] = pulumi.Output.from_input(use_oidc).apply(pulumi.runtime.to_json) if use_oidc is not None else None
+            __props__.__dict__["vpn_custom_endpoint"] = vpn_custom_endpoint
         super(Provider, __self__).__init__(
             'stackit',
             resource_name,
@@ -1128,6 +1208,14 @@ class Provider(pulumi.ProviderResource):
         Custom endpoint for the DNS service
         """
         return pulumi.get(self, "dns_custom_endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="dremioCustomEndpoint")
+    def dremio_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Custom endpoint for the Dremio service
+        """
+        return pulumi.get(self, "dremio_custom_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="edgecloudCustomEndpoint")
@@ -1436,12 +1524,36 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "sqlserverflex_custom_endpoint")
 
     @_builtins.property
+    @pulumi.getter(name="telemetrylinkCustomEndpoint")
+    def telemetrylink_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Custom endpoint for the Telemetry Link service
+        """
+        return pulumi.get(self, "telemetrylink_custom_endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="telemetryrouterCustomEndpoint")
+    def telemetryrouter_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Custom endpoint for the Telemetry Router service
+        """
+        return pulumi.get(self, "telemetryrouter_custom_endpoint")
+
+    @_builtins.property
     @pulumi.getter(name="tokenCustomEndpoint")
     def token_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         Custom endpoint for the token API, which is used to request access tokens when using the key flow
         """
         return pulumi.get(self, "token_custom_endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="vpnCustomEndpoint")
+    def vpn_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Custom endpoint for the VPN service
+        """
+        return pulumi.get(self, "vpn_custom_endpoint")
 
     @pulumi.output_type
     class TerraformConfigResult:

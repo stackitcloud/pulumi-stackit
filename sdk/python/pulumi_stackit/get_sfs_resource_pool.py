@@ -27,7 +27,7 @@ class GetSfsResourcePoolResult:
     """
     A collection of values returned by getSfsResourcePool.
     """
-    def __init__(__self__, availability_zone=None, id=None, ip_acls=None, name=None, performance_class=None, performance_class_downgradable_at=None, project_id=None, region=None, resource_pool_id=None, size_gigabytes=None, size_reducible_at=None, snapshot_policy=None, snapshots_are_visible=None):
+    def __init__(__self__, availability_zone=None, id=None, ip_acls=None, labels=None, name=None, performance_class=None, performance_class_downgradable_at=None, project_id=None, region=None, resource_pool_id=None, size_gigabytes=None, size_reducible_at=None, snapshot_policy=None, snapshots_are_visible=None):
         if availability_zone and not isinstance(availability_zone, str):
             raise TypeError("Expected argument 'availability_zone' to be a str")
         pulumi.set(__self__, "availability_zone", availability_zone)
@@ -37,6 +37,9 @@ class GetSfsResourcePoolResult:
         if ip_acls and not isinstance(ip_acls, list):
             raise TypeError("Expected argument 'ip_acls' to be a list")
         pulumi.set(__self__, "ip_acls", ip_acls)
+        if labels and not isinstance(labels, dict):
+            raise TypeError("Expected argument 'labels' to be a dict")
+        pulumi.set(__self__, "labels", labels)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -91,6 +94,14 @@ class GetSfsResourcePoolResult:
         List of IPs that can mount the resource pool in read-only; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
         """
         return pulumi.get(self, "ip_acls")
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, _builtins.str]:
+        """
+        Labels are key-value string pairs which can be attached to a resource pool
+        """
+        return pulumi.get(self, "labels")
 
     @_builtins.property
     @pulumi.getter
@@ -182,6 +193,7 @@ class AwaitableGetSfsResourcePoolResult(GetSfsResourcePoolResult):
             availability_zone=self.availability_zone,
             id=self.id,
             ip_acls=self.ip_acls,
+            labels=self.labels,
             name=self.name,
             performance_class=self.performance_class,
             performance_class_downgradable_at=self.performance_class_downgradable_at,
@@ -221,6 +233,7 @@ def get_sfs_resource_pool(project_id: Optional[_builtins.str] = None,
         availability_zone=pulumi.get(__ret__, 'availability_zone'),
         id=pulumi.get(__ret__, 'id'),
         ip_acls=pulumi.get(__ret__, 'ip_acls'),
+        labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         performance_class=pulumi.get(__ret__, 'performance_class'),
         performance_class_downgradable_at=pulumi.get(__ret__, 'performance_class_downgradable_at'),
@@ -257,6 +270,7 @@ def get_sfs_resource_pool_output(project_id: pulumi.Input[Optional[_builtins.str
         availability_zone=pulumi.get(__response__, 'availability_zone'),
         id=pulumi.get(__response__, 'id'),
         ip_acls=pulumi.get(__response__, 'ip_acls'),
+        labels=pulumi.get(__response__, 'labels'),
         name=pulumi.get(__response__, 'name'),
         performance_class=pulumi.get(__response__, 'performance_class'),
         performance_class_downgradable_at=pulumi.get(__response__, 'performance_class_downgradable_at'),

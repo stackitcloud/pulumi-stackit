@@ -237,7 +237,7 @@ class ServiceAccountKey(pulumi.CustomResource):
                  ttl_days: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
-        Service account key schema.
+        Creates and manages a key for a STACKIT service account.
         ## Example Usage
 
         ### Automatically rotate service account keys
@@ -258,7 +258,7 @@ class ServiceAccountKey(pulumi.CustomResource):
                  args: ServiceAccountKeyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Service account key schema.
+        Creates and manages a key for a STACKIT service account.
         ## Example Usage
 
         ### Automatically rotate service account keys

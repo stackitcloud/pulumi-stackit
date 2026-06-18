@@ -84,6 +84,12 @@ namespace Pulumi.Stackit
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
+        /// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+        /// </summary>
+        [Output("rotateWhenChanged")]
+        public Output<ImmutableDictionary<string, string>?> RotateWhenChanged { get; private set; } = null!;
+
+        /// <summary>
         /// The status of the access token. Possible values are: `Active`, `Expired`.
         /// </summary>
         [Output("status")]
@@ -194,6 +200,18 @@ namespace Pulumi.Stackit
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        [Input("rotateWhenChanged")]
+        private InputMap<string>? _rotateWhenChanged;
+
+        /// <summary>
+        /// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+        /// </summary>
+        public InputMap<string> RotateWhenChanged
+        {
+            get => _rotateWhenChanged ?? (_rotateWhenChanged = new InputMap<string>());
+            set => _rotateWhenChanged = value;
+        }
+
         public LogsAccessTokenArgs()
         {
         }
@@ -283,6 +301,18 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        [Input("rotateWhenChanged")]
+        private InputMap<string>? _rotateWhenChanged;
+
+        /// <summary>
+        /// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+        /// </summary>
+        public InputMap<string> RotateWhenChanged
+        {
+            get => _rotateWhenChanged ?? (_rotateWhenChanged = new InputMap<string>());
+            set => _rotateWhenChanged = value;
+        }
 
         /// <summary>
         /// The status of the access token. Possible values are: `Active`, `Expired`.

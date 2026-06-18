@@ -25,7 +25,8 @@ class LogsAccessTokenArgs:
                  project_id: pulumi.Input[_builtins.str],
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  lifetime: pulumi.Input[Optional[_builtins.int]] = None,
-                 region: pulumi.Input[Optional[_builtins.str]] = None):
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a LogsAccessToken resource.
 
@@ -36,6 +37,7 @@ class LogsAccessTokenArgs:
         :param pulumi.Input[_builtins.str] description: The description of the access token
         :param pulumi.Input[_builtins.int] lifetime: A lifetime period for an access token in days. If unset the token will not expire.
         :param pulumi.Input[_builtins.str] region: STACKIT region name the resource is located in. If not defined, the provider region is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] rotate_when_changed: A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "instance_id", instance_id)
@@ -47,6 +49,8 @@ class LogsAccessTokenArgs:
             pulumi.set(__self__, "lifetime", lifetime)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if rotate_when_changed is not None:
+            pulumi.set(__self__, "rotate_when_changed", rotate_when_changed)
 
     @_builtins.property
     @pulumi.getter(name="displayName")
@@ -132,6 +136,18 @@ class LogsAccessTokenArgs:
     def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
+    @_builtins.property
+    @pulumi.getter(name="rotateWhenChanged")
+    def rotate_when_changed(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "rotate_when_changed")
+
+    @rotate_when_changed.setter
+    def rotate_when_changed(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "rotate_when_changed", value)
+
 
 @pulumi.input_type
 class _LogsAccessTokenState:
@@ -147,6 +163,7 @@ class _LogsAccessTokenState:
                  permissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  status: pulumi.Input[Optional[_builtins.str]] = None,
                  valid_until: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -163,6 +180,7 @@ class _LogsAccessTokenState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] permissions: The access permissions granted to the access token. Possible values: `read`, `write`.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID associated with the Logs access token
         :param pulumi.Input[_builtins.str] region: STACKIT region name the resource is located in. If not defined, the provider region is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] rotate_when_changed: A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] status: The status of the access token. Possible values are: `active`, `expired`.
         :param pulumi.Input[_builtins.str] valid_until: The date and time until an access token is valid to (inclusively)
         """
@@ -188,6 +206,8 @@ class _LogsAccessTokenState:
             pulumi.set(__self__, "project_id", project_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if rotate_when_changed is not None:
+            pulumi.set(__self__, "rotate_when_changed", rotate_when_changed)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if valid_until is not None:
@@ -326,6 +346,18 @@ class _LogsAccessTokenState:
         pulumi.set(self, "region", value)
 
     @_builtins.property
+    @pulumi.getter(name="rotateWhenChanged")
+    def rotate_when_changed(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
+        """
+        A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "rotate_when_changed")
+
+    @rotate_when_changed.setter
+    def rotate_when_changed(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "rotate_when_changed", value)
+
+    @_builtins.property
     @pulumi.getter
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -363,6 +395,7 @@ class LogsAccessToken(pulumi.CustomResource):
                  permissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Logs access token resource schema. Uses the `default_region` specified in the provider configuration as a fallback in case no `region` is defined on resource level.
@@ -379,6 +412,7 @@ class LogsAccessToken(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] permissions: The access permissions granted to the access token. Possible values: `read`, `write`.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID associated with the Logs access token
         :param pulumi.Input[_builtins.str] region: STACKIT region name the resource is located in. If not defined, the provider region is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] rotate_when_changed: A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
         """
         ...
     @overload
@@ -414,6 +448,7 @@ class LogsAccessToken(pulumi.CustomResource):
                  permissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
+                 rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -438,6 +473,7 @@ class LogsAccessToken(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["region"] = region
+            __props__.__dict__["rotate_when_changed"] = rotate_when_changed
             __props__.__dict__["access_token"] = None
             __props__.__dict__["access_token_id"] = None
             __props__.__dict__["creator"] = None
@@ -467,6 +503,7 @@ class LogsAccessToken(pulumi.CustomResource):
             permissions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
+            rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
             valid_until: pulumi.Input[Optional[_builtins.str]] = None) -> 'LogsAccessToken':
         """
@@ -487,6 +524,7 @@ class LogsAccessToken(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] permissions: The access permissions granted to the access token. Possible values: `read`, `write`.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID associated with the Logs access token
         :param pulumi.Input[_builtins.str] region: STACKIT region name the resource is located in. If not defined, the provider region is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] rotate_when_changed: A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
         :param pulumi.Input[_builtins.str] status: The status of the access token. Possible values are: `active`, `expired`.
         :param pulumi.Input[_builtins.str] valid_until: The date and time until an access token is valid to (inclusively)
         """
@@ -505,6 +543,7 @@ class LogsAccessToken(pulumi.CustomResource):
         __props__.__dict__["permissions"] = permissions
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["region"] = region
+        __props__.__dict__["rotate_when_changed"] = rotate_when_changed
         __props__.__dict__["status"] = status
         __props__.__dict__["valid_until"] = valid_until
         return LogsAccessToken(resource_name, opts=opts, __props__=__props__)
@@ -596,6 +635,14 @@ class LogsAccessToken(pulumi.CustomResource):
         STACKIT region name the resource is located in. If not defined, the provider region is used.
         """
         return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="rotateWhenChanged")
+    def rotate_when_changed(self) -> pulumi.Output[Optional[Mapping[str, _builtins.str]]]:
+        """
+        A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+        """
+        return pulumi.get(self, "rotate_when_changed")
 
     @_builtins.property
     @pulumi.getter

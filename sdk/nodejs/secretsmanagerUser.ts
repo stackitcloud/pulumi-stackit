@@ -54,6 +54,10 @@ export class SecretsmanagerUser extends pulumi.CustomResource {
      */
     declare public readonly projectId: pulumi.Output<string>;
     /**
+     * A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+     */
+    declare public readonly rotateWhenChanged: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The user's ID.
      */
     declare public /*out*/ readonly userId: pulumi.Output<string>;
@@ -83,6 +87,7 @@ export class SecretsmanagerUser extends pulumi.CustomResource {
             resourceInputs["instanceId"] = state?.instanceId;
             resourceInputs["password"] = state?.password;
             resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["rotateWhenChanged"] = state?.rotateWhenChanged;
             resourceInputs["userId"] = state?.userId;
             resourceInputs["username"] = state?.username;
             resourceInputs["writeEnabled"] = state?.writeEnabled;
@@ -103,6 +108,7 @@ export class SecretsmanagerUser extends pulumi.CustomResource {
             resourceInputs["description"] = args?.description;
             resourceInputs["instanceId"] = args?.instanceId;
             resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["rotateWhenChanged"] = args?.rotateWhenChanged;
             resourceInputs["writeEnabled"] = args?.writeEnabled;
             resourceInputs["password"] = undefined /*out*/;
             resourceInputs["userId"] = undefined /*out*/;
@@ -136,6 +142,10 @@ export interface SecretsmanagerUserState {
      */
     projectId?: pulumi.Input<string | undefined>;
     /**
+     * A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+     */
+    rotateWhenChanged?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
      * The user's ID.
      */
     userId?: pulumi.Input<string | undefined>;
@@ -165,6 +175,10 @@ export interface SecretsmanagerUserArgs {
      * STACKIT Project ID to which the instance is associated.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+     */
+    rotateWhenChanged?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * If true, the user has writeaccess to the secrets engine.
      */

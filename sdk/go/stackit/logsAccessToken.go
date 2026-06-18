@@ -40,6 +40,8 @@ type LogsAccessToken struct {
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// STACKIT region name the resource is located in. If not defined, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapOutput `pulumi:"rotateWhenChanged"`
 	// The status of the access token. Possible values are: `active`, `expired`.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The date and time until an access token is valid to (inclusively)
@@ -114,6 +116,8 @@ type logsAccessTokenState struct {
 	ProjectId *string `pulumi:"projectId"`
 	// STACKIT region name the resource is located in. If not defined, the provider region is used.
 	Region *string `pulumi:"region"`
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged map[string]string `pulumi:"rotateWhenChanged"`
 	// The status of the access token. Possible values are: `active`, `expired`.
 	Status *string `pulumi:"status"`
 	// The date and time until an access token is valid to (inclusively)
@@ -143,6 +147,8 @@ type LogsAccessTokenState struct {
 	ProjectId pulumi.StringPtrInput
 	// STACKIT region name the resource is located in. If not defined, the provider region is used.
 	Region pulumi.StringPtrInput
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapInput
 	// The status of the access token. Possible values are: `active`, `expired`.
 	Status pulumi.StringPtrInput
 	// The date and time until an access token is valid to (inclusively)
@@ -168,6 +174,8 @@ type logsAccessTokenArgs struct {
 	ProjectId string `pulumi:"projectId"`
 	// STACKIT region name the resource is located in. If not defined, the provider region is used.
 	Region *string `pulumi:"region"`
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged map[string]string `pulumi:"rotateWhenChanged"`
 }
 
 // The set of arguments for constructing a LogsAccessToken resource.
@@ -186,6 +194,8 @@ type LogsAccessTokenArgs struct {
 	ProjectId pulumi.StringInput
 	// STACKIT region name the resource is located in. If not defined, the provider region is used.
 	Region pulumi.StringPtrInput
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapInput
 }
 
 func (LogsAccessTokenArgs) ElementType() reflect.Type {
@@ -328,6 +338,11 @@ func (o LogsAccessTokenOutput) ProjectId() pulumi.StringOutput {
 // STACKIT region name the resource is located in. If not defined, the provider region is used.
 func (o LogsAccessTokenOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogsAccessToken) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+func (o LogsAccessTokenOutput) RotateWhenChanged() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *LogsAccessToken) pulumi.StringMapOutput { return v.RotateWhenChanged }).(pulumi.StringMapOutput)
 }
 
 // The status of the access token. Possible values are: `active`, `expired`.

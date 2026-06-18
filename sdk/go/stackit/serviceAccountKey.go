@@ -12,7 +12,7 @@ import (
 	"github.com/stackitcloud/pulumi-stackit/sdk/go/stackit/internal"
 )
 
-// Service account key schema.
+// Creates and manages a key for a STACKIT service account.
 // ## Example Usage
 //
 // ### Automatically rotate service account keys

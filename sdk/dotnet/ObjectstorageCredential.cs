@@ -53,6 +53,12 @@ namespace Pulumi.Stackit
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
+        /// <summary>
+        /// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+        /// </summary>
+        [Output("rotateWhenChanged")]
+        public Output<ImmutableDictionary<string, string>?> RotateWhenChanged { get; private set; } = null!;
+
         [Output("secretAccessKey")]
         public Output<string> SecretAccessKey { get; private set; } = null!;
 
@@ -131,6 +137,18 @@ namespace Pulumi.Stackit
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        [Input("rotateWhenChanged")]
+        private InputMap<string>? _rotateWhenChanged;
+
+        /// <summary>
+        /// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+        /// </summary>
+        public InputMap<string> RotateWhenChanged
+        {
+            get => _rotateWhenChanged ?? (_rotateWhenChanged = new InputMap<string>());
+            set => _rotateWhenChanged = value;
+        }
+
         public ObjectstorageCredentialArgs()
         {
         }
@@ -174,6 +192,18 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        [Input("rotateWhenChanged")]
+        private InputMap<string>? _rotateWhenChanged;
+
+        /// <summary>
+        /// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+        /// </summary>
+        public InputMap<string> RotateWhenChanged
+        {
+            get => _rotateWhenChanged ?? (_rotateWhenChanged = new InputMap<string>());
+            set => _rotateWhenChanged = value;
+        }
 
         [Input("secretAccessKey")]
         private Input<string>? _secretAccessKey;

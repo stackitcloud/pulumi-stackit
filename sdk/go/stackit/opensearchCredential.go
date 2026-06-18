@@ -28,9 +28,11 @@ type OpensearchCredential struct {
 	Port       pulumi.IntOutput    `pulumi:"port"`
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	Scheme    pulumi.StringOutput `pulumi:"scheme"`
-	Uri       pulumi.StringOutput `pulumi:"uri"`
-	Username  pulumi.StringOutput `pulumi:"username"`
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapOutput `pulumi:"rotateWhenChanged"`
+	Scheme            pulumi.StringOutput    `pulumi:"scheme"`
+	Uri               pulumi.StringOutput    `pulumi:"uri"`
+	Username          pulumi.StringOutput    `pulumi:"username"`
 }
 
 // NewOpensearchCredential registers a new resource with the given unique name, arguments, and options.
@@ -84,9 +86,11 @@ type opensearchCredentialState struct {
 	Port       *int    `pulumi:"port"`
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId *string `pulumi:"projectId"`
-	Scheme    *string `pulumi:"scheme"`
-	Uri       *string `pulumi:"uri"`
-	Username  *string `pulumi:"username"`
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged map[string]string `pulumi:"rotateWhenChanged"`
+	Scheme            *string           `pulumi:"scheme"`
+	Uri               *string           `pulumi:"uri"`
+	Username          *string           `pulumi:"username"`
 }
 
 type OpensearchCredentialState struct {
@@ -100,9 +104,11 @@ type OpensearchCredentialState struct {
 	Port       pulumi.IntPtrInput
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId pulumi.StringPtrInput
-	Scheme    pulumi.StringPtrInput
-	Uri       pulumi.StringPtrInput
-	Username  pulumi.StringPtrInput
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapInput
+	Scheme            pulumi.StringPtrInput
+	Uri               pulumi.StringPtrInput
+	Username          pulumi.StringPtrInput
 }
 
 func (OpensearchCredentialState) ElementType() reflect.Type {
@@ -114,6 +120,8 @@ type opensearchCredentialArgs struct {
 	InstanceId string `pulumi:"instanceId"`
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId string `pulumi:"projectId"`
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged map[string]string `pulumi:"rotateWhenChanged"`
 }
 
 // The set of arguments for constructing a OpensearchCredential resource.
@@ -122,6 +130,8 @@ type OpensearchCredentialArgs struct {
 	InstanceId pulumi.StringInput
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId pulumi.StringInput
+	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+	RotateWhenChanged pulumi.StringMapInput
 }
 
 func (OpensearchCredentialArgs) ElementType() reflect.Type {
@@ -240,6 +250,11 @@ func (o OpensearchCredentialOutput) Port() pulumi.IntOutput {
 // STACKIT Project ID to which the instance is associated.
 func (o OpensearchCredentialOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *OpensearchCredential) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+func (o OpensearchCredentialOutput) RotateWhenChanged() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *OpensearchCredential) pulumi.StringMapOutput { return v.RotateWhenChanged }).(pulumi.StringMapOutput)
 }
 
 func (o OpensearchCredentialOutput) Scheme() pulumi.StringOutput {

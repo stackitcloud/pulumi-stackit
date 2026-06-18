@@ -5652,6 +5652,1436 @@ func (o DnsZoneTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type DremioInstanceAuthentication struct {
+	// Azure Active Directory authentication configuration.
+	Azuread *DremioInstanceAuthenticationAzuread `pulumi:"azuread"`
+	// OIDC authentication configuration.
+	Oauth *DremioInstanceAuthenticationOauth `pulumi:"oauth"`
+	// Type of authentication (local-only, azuread, oauth).
+	Type string `pulumi:"type"`
+}
+
+// DremioInstanceAuthenticationInput is an input type that accepts DremioInstanceAuthenticationArgs and DremioInstanceAuthenticationOutput values.
+// You can construct a concrete instance of `DremioInstanceAuthenticationInput` via:
+//
+//	DremioInstanceAuthenticationArgs{...}
+type DremioInstanceAuthenticationInput interface {
+	pulumi.Input
+
+	ToDremioInstanceAuthenticationOutput() DremioInstanceAuthenticationOutput
+	ToDremioInstanceAuthenticationOutputWithContext(context.Context) DremioInstanceAuthenticationOutput
+}
+
+type DremioInstanceAuthenticationArgs struct {
+	// Azure Active Directory authentication configuration.
+	Azuread DremioInstanceAuthenticationAzureadPtrInput `pulumi:"azuread"`
+	// OIDC authentication configuration.
+	Oauth DremioInstanceAuthenticationOauthPtrInput `pulumi:"oauth"`
+	// Type of authentication (local-only, azuread, oauth).
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (DremioInstanceAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DremioInstanceAuthentication)(nil)).Elem()
+}
+
+func (i DremioInstanceAuthenticationArgs) ToDremioInstanceAuthenticationOutput() DremioInstanceAuthenticationOutput {
+	return i.ToDremioInstanceAuthenticationOutputWithContext(context.Background())
+}
+
+func (i DremioInstanceAuthenticationArgs) ToDremioInstanceAuthenticationOutputWithContext(ctx context.Context) DremioInstanceAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DremioInstanceAuthenticationOutput)
+}
+
+func (i DremioInstanceAuthenticationArgs) ToDremioInstanceAuthenticationPtrOutput() DremioInstanceAuthenticationPtrOutput {
+	return i.ToDremioInstanceAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i DremioInstanceAuthenticationArgs) ToDremioInstanceAuthenticationPtrOutputWithContext(ctx context.Context) DremioInstanceAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DremioInstanceAuthenticationOutput).ToDremioInstanceAuthenticationPtrOutputWithContext(ctx)
+}
+
+// DremioInstanceAuthenticationPtrInput is an input type that accepts DremioInstanceAuthenticationArgs, DremioInstanceAuthenticationPtr and DremioInstanceAuthenticationPtrOutput values.
+// You can construct a concrete instance of `DremioInstanceAuthenticationPtrInput` via:
+//
+//	        DremioInstanceAuthenticationArgs{...}
+//
+//	or:
+//
+//	        nil
+type DremioInstanceAuthenticationPtrInput interface {
+	pulumi.Input
+
+	ToDremioInstanceAuthenticationPtrOutput() DremioInstanceAuthenticationPtrOutput
+	ToDremioInstanceAuthenticationPtrOutputWithContext(context.Context) DremioInstanceAuthenticationPtrOutput
+}
+
+type dremioInstanceAuthenticationPtrType DremioInstanceAuthenticationArgs
+
+func DremioInstanceAuthenticationPtr(v *DremioInstanceAuthenticationArgs) DremioInstanceAuthenticationPtrInput {
+	return (*dremioInstanceAuthenticationPtrType)(v)
+}
+
+func (*dremioInstanceAuthenticationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DremioInstanceAuthentication)(nil)).Elem()
+}
+
+func (i *dremioInstanceAuthenticationPtrType) ToDremioInstanceAuthenticationPtrOutput() DremioInstanceAuthenticationPtrOutput {
+	return i.ToDremioInstanceAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (i *dremioInstanceAuthenticationPtrType) ToDremioInstanceAuthenticationPtrOutputWithContext(ctx context.Context) DremioInstanceAuthenticationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DremioInstanceAuthenticationPtrOutput)
+}
+
+type DremioInstanceAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (DremioInstanceAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DremioInstanceAuthentication)(nil)).Elem()
+}
+
+func (o DremioInstanceAuthenticationOutput) ToDremioInstanceAuthenticationOutput() DremioInstanceAuthenticationOutput {
+	return o
+}
+
+func (o DremioInstanceAuthenticationOutput) ToDremioInstanceAuthenticationOutputWithContext(ctx context.Context) DremioInstanceAuthenticationOutput {
+	return o
+}
+
+func (o DremioInstanceAuthenticationOutput) ToDremioInstanceAuthenticationPtrOutput() DremioInstanceAuthenticationPtrOutput {
+	return o.ToDremioInstanceAuthenticationPtrOutputWithContext(context.Background())
+}
+
+func (o DremioInstanceAuthenticationOutput) ToDremioInstanceAuthenticationPtrOutputWithContext(ctx context.Context) DremioInstanceAuthenticationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DremioInstanceAuthentication) *DremioInstanceAuthentication {
+		return &v
+	}).(DremioInstanceAuthenticationPtrOutput)
+}
+
+// Azure Active Directory authentication configuration.
+func (o DremioInstanceAuthenticationOutput) Azuread() DremioInstanceAuthenticationAzureadPtrOutput {
+	return o.ApplyT(func(v DremioInstanceAuthentication) *DremioInstanceAuthenticationAzuread { return v.Azuread }).(DremioInstanceAuthenticationAzureadPtrOutput)
+}
+
+// OIDC authentication configuration.
+func (o DremioInstanceAuthenticationOutput) Oauth() DremioInstanceAuthenticationOauthPtrOutput {
+	return o.ApplyT(func(v DremioInstanceAuthentication) *DremioInstanceAuthenticationOauth { return v.Oauth }).(DremioInstanceAuthenticationOauthPtrOutput)
+}
+
+// Type of authentication (local-only, azuread, oauth).
+func (o DremioInstanceAuthenticationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DremioInstanceAuthentication) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type DremioInstanceAuthenticationPtrOutput struct{ *pulumi.OutputState }
+
+func (DremioInstanceAuthenticationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DremioInstanceAuthentication)(nil)).Elem()
+}
+
+func (o DremioInstanceAuthenticationPtrOutput) ToDremioInstanceAuthenticationPtrOutput() DremioInstanceAuthenticationPtrOutput {
+	return o
+}
+
+func (o DremioInstanceAuthenticationPtrOutput) ToDremioInstanceAuthenticationPtrOutputWithContext(ctx context.Context) DremioInstanceAuthenticationPtrOutput {
+	return o
+}
+
+func (o DremioInstanceAuthenticationPtrOutput) Elem() DremioInstanceAuthenticationOutput {
+	return o.ApplyT(func(v *DremioInstanceAuthentication) DremioInstanceAuthentication {
+		if v != nil {
+			return *v
+		}
+		var ret DremioInstanceAuthentication
+		return ret
+	}).(DremioInstanceAuthenticationOutput)
+}
+
+// Azure Active Directory authentication configuration.
+func (o DremioInstanceAuthenticationPtrOutput) Azuread() DremioInstanceAuthenticationAzureadPtrOutput {
+	return o.ApplyT(func(v *DremioInstanceAuthentication) *DremioInstanceAuthenticationAzuread {
+		if v == nil {
+			return nil
+		}
+		return v.Azuread
+	}).(DremioInstanceAuthenticationAzureadPtrOutput)
+}
+
+// OIDC authentication configuration.
+func (o DremioInstanceAuthenticationPtrOutput) Oauth() DremioInstanceAuthenticationOauthPtrOutput {
+	return o.ApplyT(func(v *DremioInstanceAuthentication) *DremioInstanceAuthenticationOauth {
+		if v == nil {
+			return nil
+		}
+		return v.Oauth
+	}).(DremioInstanceAuthenticationOauthPtrOutput)
+}
+
+// Type of authentication (local-only, azuread, oauth).
+func (o DremioInstanceAuthenticationPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DremioInstanceAuthentication) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type DremioInstanceAuthenticationAzuread struct {
+	// The Azure AD authority URL.
+	AuthorityUrl string `pulumi:"authorityUrl"`
+	// The Azure AD client ID.
+	ClientId string `pulumi:"clientId"`
+	// The Azure AD client secret.
+	ClientSecret string `pulumi:"clientSecret"`
+	// The Azure AD redirect URL.
+	RedirectUrl *string `pulumi:"redirectUrl"`
+}
+
+// DremioInstanceAuthenticationAzureadInput is an input type that accepts DremioInstanceAuthenticationAzureadArgs and DremioInstanceAuthenticationAzureadOutput values.
+// You can construct a concrete instance of `DremioInstanceAuthenticationAzureadInput` via:
+//
+//	DremioInstanceAuthenticationAzureadArgs{...}
+type DremioInstanceAuthenticationAzureadInput interface {
+	pulumi.Input
+
+	ToDremioInstanceAuthenticationAzureadOutput() DremioInstanceAuthenticationAzureadOutput
+	ToDremioInstanceAuthenticationAzureadOutputWithContext(context.Context) DremioInstanceAuthenticationAzureadOutput
+}
+
+type DremioInstanceAuthenticationAzureadArgs struct {
+	// The Azure AD authority URL.
+	AuthorityUrl pulumi.StringInput `pulumi:"authorityUrl"`
+	// The Azure AD client ID.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// The Azure AD client secret.
+	ClientSecret pulumi.StringInput `pulumi:"clientSecret"`
+	// The Azure AD redirect URL.
+	RedirectUrl pulumi.StringPtrInput `pulumi:"redirectUrl"`
+}
+
+func (DremioInstanceAuthenticationAzureadArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DremioInstanceAuthenticationAzuread)(nil)).Elem()
+}
+
+func (i DremioInstanceAuthenticationAzureadArgs) ToDremioInstanceAuthenticationAzureadOutput() DremioInstanceAuthenticationAzureadOutput {
+	return i.ToDremioInstanceAuthenticationAzureadOutputWithContext(context.Background())
+}
+
+func (i DremioInstanceAuthenticationAzureadArgs) ToDremioInstanceAuthenticationAzureadOutputWithContext(ctx context.Context) DremioInstanceAuthenticationAzureadOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DremioInstanceAuthenticationAzureadOutput)
+}
+
+func (i DremioInstanceAuthenticationAzureadArgs) ToDremioInstanceAuthenticationAzureadPtrOutput() DremioInstanceAuthenticationAzureadPtrOutput {
+	return i.ToDremioInstanceAuthenticationAzureadPtrOutputWithContext(context.Background())
+}
+
+func (i DremioInstanceAuthenticationAzureadArgs) ToDremioInstanceAuthenticationAzureadPtrOutputWithContext(ctx context.Context) DremioInstanceAuthenticationAzureadPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DremioInstanceAuthenticationAzureadOutput).ToDremioInstanceAuthenticationAzureadPtrOutputWithContext(ctx)
+}
+
+// DremioInstanceAuthenticationAzureadPtrInput is an input type that accepts DremioInstanceAuthenticationAzureadArgs, DremioInstanceAuthenticationAzureadPtr and DremioInstanceAuthenticationAzureadPtrOutput values.
+// You can construct a concrete instance of `DremioInstanceAuthenticationAzureadPtrInput` via:
+//
+//	        DremioInstanceAuthenticationAzureadArgs{...}
+//
+//	or:
+//
+//	        nil
+type DremioInstanceAuthenticationAzureadPtrInput interface {
+	pulumi.Input
+
+	ToDremioInstanceAuthenticationAzureadPtrOutput() DremioInstanceAuthenticationAzureadPtrOutput
+	ToDremioInstanceAuthenticationAzureadPtrOutputWithContext(context.Context) DremioInstanceAuthenticationAzureadPtrOutput
+}
+
+type dremioInstanceAuthenticationAzureadPtrType DremioInstanceAuthenticationAzureadArgs
+
+func DremioInstanceAuthenticationAzureadPtr(v *DremioInstanceAuthenticationAzureadArgs) DremioInstanceAuthenticationAzureadPtrInput {
+	return (*dremioInstanceAuthenticationAzureadPtrType)(v)
+}
+
+func (*dremioInstanceAuthenticationAzureadPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DremioInstanceAuthenticationAzuread)(nil)).Elem()
+}
+
+func (i *dremioInstanceAuthenticationAzureadPtrType) ToDremioInstanceAuthenticationAzureadPtrOutput() DremioInstanceAuthenticationAzureadPtrOutput {
+	return i.ToDremioInstanceAuthenticationAzureadPtrOutputWithContext(context.Background())
+}
+
+func (i *dremioInstanceAuthenticationAzureadPtrType) ToDremioInstanceAuthenticationAzureadPtrOutputWithContext(ctx context.Context) DremioInstanceAuthenticationAzureadPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DremioInstanceAuthenticationAzureadPtrOutput)
+}
+
+type DremioInstanceAuthenticationAzureadOutput struct{ *pulumi.OutputState }
+
+func (DremioInstanceAuthenticationAzureadOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DremioInstanceAuthenticationAzuread)(nil)).Elem()
+}
+
+func (o DremioInstanceAuthenticationAzureadOutput) ToDremioInstanceAuthenticationAzureadOutput() DremioInstanceAuthenticationAzureadOutput {
+	return o
+}
+
+func (o DremioInstanceAuthenticationAzureadOutput) ToDremioInstanceAuthenticationAzureadOutputWithContext(ctx context.Context) DremioInstanceAuthenticationAzureadOutput {
+	return o
+}
+
+func (o DremioInstanceAuthenticationAzureadOutput) ToDremioInstanceAuthenticationAzureadPtrOutput() DremioInstanceAuthenticationAzureadPtrOutput {
+	return o.ToDremioInstanceAuthenticationAzureadPtrOutputWithContext(context.Background())
+}
+
+func (o DremioInstanceAuthenticationAzureadOutput) ToDremioInstanceAuthenticationAzureadPtrOutputWithContext(ctx context.Context) DremioInstanceAuthenticationAzureadPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DremioInstanceAuthenticationAzuread) *DremioInstanceAuthenticationAzuread {
+		return &v
+	}).(DremioInstanceAuthenticationAzureadPtrOutput)
+}
+
+// The Azure AD authority URL.
+func (o DremioInstanceAuthenticationAzureadOutput) AuthorityUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v DremioInstanceAuthenticationAzuread) string { return v.AuthorityUrl }).(pulumi.StringOutput)
+}
+
+// The Azure AD client ID.
+func (o DremioInstanceAuthenticationAzureadOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v DremioInstanceAuthenticationAzuread) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The Azure AD client secret.
+func (o DremioInstanceAuthenticationAzureadOutput) ClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v DremioInstanceAuthenticationAzuread) string { return v.ClientSecret }).(pulumi.StringOutput)
+}
+
+// The Azure AD redirect URL.
+func (o DremioInstanceAuthenticationAzureadOutput) RedirectUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DremioInstanceAuthenticationAzuread) *string { return v.RedirectUrl }).(pulumi.StringPtrOutput)
+}
+
+type DremioInstanceAuthenticationAzureadPtrOutput struct{ *pulumi.OutputState }
+
+func (DremioInstanceAuthenticationAzureadPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DremioInstanceAuthenticationAzuread)(nil)).Elem()
+}
+
+func (o DremioInstanceAuthenticationAzureadPtrOutput) ToDremioInstanceAuthenticationAzureadPtrOutput() DremioInstanceAuthenticationAzureadPtrOutput {
+	return o
+}
+
+func (o DremioInstanceAuthenticationAzureadPtrOutput) ToDremioInstanceAuthenticationAzureadPtrOutputWithContext(ctx context.Context) DremioInstanceAuthenticationAzureadPtrOutput {
+	return o
+}
+
+func (o DremioInstanceAuthenticationAzureadPtrOutput) Elem() DremioInstanceAuthenticationAzureadOutput {
+	return o.ApplyT(func(v *DremioInstanceAuthenticationAzuread) DremioInstanceAuthenticationAzuread {
+		if v != nil {
+			return *v
+		}
+		var ret DremioInstanceAuthenticationAzuread
+		return ret
+	}).(DremioInstanceAuthenticationAzureadOutput)
+}
+
+// The Azure AD authority URL.
+func (o DremioInstanceAuthenticationAzureadPtrOutput) AuthorityUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DremioInstanceAuthenticationAzuread) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthorityUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Azure AD client ID.
+func (o DremioInstanceAuthenticationAzureadPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DremioInstanceAuthenticationAzuread) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Azure AD client secret.
+func (o DremioInstanceAuthenticationAzureadPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DremioInstanceAuthenticationAzuread) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Azure AD redirect URL.
+func (o DremioInstanceAuthenticationAzureadPtrOutput) RedirectUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DremioInstanceAuthenticationAzuread) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+type DremioInstanceAuthenticationOauth struct {
+	// The Issuer location URI, where the OIDC provider configuration can be found.
+	AuthorityUrl string `pulumi:"authorityUrl"`
+	// The client ID assigned by the Identity Provider.
+	ClientId string `pulumi:"clientId"`
+	// The client secret generated by the Identity Provider.
+	ClientSecret string `pulumi:"clientSecret"`
+	// Maps fields from the JWT token to fields Dremio requires.
+	JwtClaims DremioInstanceAuthenticationOauthJwtClaims `pulumi:"jwtClaims"`
+	// Any additional parameters the Identity Provider requires.
+	Parameters []DremioInstanceAuthenticationOauthParameter `pulumi:"parameters"`
+	// The URL where the Dremio instance is hosted. The URL must match the redirect URL set in the Identity Provider.
+	RedirectUrl *string `pulumi:"redirectUrl"`
+	// A list of space-separated scopes. The `openid` scope is always required; other scopes can vary by provider.
+	Scope *string `pulumi:"scope"`
+}
+
+// DremioInstanceAuthenticationOauthInput is an input type that accepts DremioInstanceAuthenticationOauthArgs and DremioInstanceAuthenticationOauthOutput values.
+// You can construct a concrete instance of `DremioInstanceAuthenticationOauthInput` via:
+//
+//	DremioInstanceAuthenticationOauthArgs{...}
+type DremioInstanceAuthenticationOauthInput interface {
+	pulumi.Input
+
+	ToDremioInstanceAuthenticationOauthOutput() DremioInstanceAuthenticationOauthOutput
+	ToDremioInstanceAuthenticationOauthOutputWithContext(context.Context) DremioInstanceAuthenticationOauthOutput
+}
+
+type DremioInstanceAuthenticationOauthArgs struct {
+	// The Issuer location URI, where the OIDC provider configuration can be found.
+	AuthorityUrl pulumi.StringInput `pulumi:"authorityUrl"`
+	// The client ID assigned by the Identity Provider.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// The client secret generated by the Identity Provider.
+	ClientSecret pulumi.StringInput `pulumi:"clientSecret"`
+	// Maps fields from the JWT token to fields Dremio requires.
+	JwtClaims DremioInstanceAuthenticationOauthJwtClaimsInput `pulumi:"jwtClaims"`
+	// Any additional parameters the Identity Provider requires.
+	Parameters DremioInstanceAuthenticationOauthParameterArrayInput `pulumi:"parameters"`
+	// The URL where the Dremio instance is hosted. The URL must match the redirect URL set in the Identity Provider.
+	RedirectUrl pulumi.StringPtrInput `pulumi:"redirectUrl"`
+	// A list of space-separated scopes. The `openid` scope is always required; other scopes can vary by provider.
+	Scope pulumi.StringPtrInput `pulumi:"scope"`
+}
+
+func (DremioInstanceAuthenticationOauthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DremioInstanceAuthenticationOauth)(nil)).Elem()
+}
+
+func (i DremioInstanceAuthenticationOauthArgs) ToDremioInstanceAuthenticationOauthOutput() DremioInstanceAuthenticationOauthOutput {
+	return i.ToDremioInstanceAuthenticationOauthOutputWithContext(context.Background())
+}
+
+func (i DremioInstanceAuthenticationOauthArgs) ToDremioInstanceAuthenticationOauthOutputWithContext(ctx context.Context) DremioInstanceAuthenticationOauthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DremioInstanceAuthenticationOauthOutput)
+}
+
+func (i DremioInstanceAuthenticationOauthArgs) ToDremioInstanceAuthenticationOauthPtrOutput() DremioInstanceAuthenticationOauthPtrOutput {
+	return i.ToDremioInstanceAuthenticationOauthPtrOutputWithContext(context.Background())
+}
+
+func (i DremioInstanceAuthenticationOauthArgs) ToDremioInstanceAuthenticationOauthPtrOutputWithContext(ctx context.Context) DremioInstanceAuthenticationOauthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DremioInstanceAuthenticationOauthOutput).ToDremioInstanceAuthenticationOauthPtrOutputWithContext(ctx)
+}
+
+// DremioInstanceAuthenticationOauthPtrInput is an input type that accepts DremioInstanceAuthenticationOauthArgs, DremioInstanceAuthenticationOauthPtr and DremioInstanceAuthenticationOauthPtrOutput values.
+// You can construct a concrete instance of `DremioInstanceAuthenticationOauthPtrInput` via:
+//
+//	        DremioInstanceAuthenticationOauthArgs{...}
+//
+//	or:
+//
+//	        nil
+type DremioInstanceAuthenticationOauthPtrInput interface {
+	pulumi.Input
+
+	ToDremioInstanceAuthenticationOauthPtrOutput() DremioInstanceAuthenticationOauthPtrOutput
+	ToDremioInstanceAuthenticationOauthPtrOutputWithContext(context.Context) DremioInstanceAuthenticationOauthPtrOutput
+}
+
+type dremioInstanceAuthenticationOauthPtrType DremioInstanceAuthenticationOauthArgs
+
+func DremioInstanceAuthenticationOauthPtr(v *DremioInstanceAuthenticationOauthArgs) DremioInstanceAuthenticationOauthPtrInput {
+	return (*dremioInstanceAuthenticationOauthPtrType)(v)
+}
+
+func (*dremioInstanceAuthenticationOauthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DremioInstanceAuthenticationOauth)(nil)).Elem()
+}
+
+func (i *dremioInstanceAuthenticationOauthPtrType) ToDremioInstanceAuthenticationOauthPtrOutput() DremioInstanceAuthenticationOauthPtrOutput {
+	return i.ToDremioInstanceAuthenticationOauthPtrOutputWithContext(context.Background())
+}
+
+func (i *dremioInstanceAuthenticationOauthPtrType) ToDremioInstanceAuthenticationOauthPtrOutputWithContext(ctx context.Context) DremioInstanceAuthenticationOauthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DremioInstanceAuthenticationOauthPtrOutput)
+}
+
+type DremioInstanceAuthenticationOauthOutput struct{ *pulumi.OutputState }
+
+func (DremioInstanceAuthenticationOauthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DremioInstanceAuthenticationOauth)(nil)).Elem()
+}
+
+func (o DremioInstanceAuthenticationOauthOutput) ToDremioInstanceAuthenticationOauthOutput() DremioInstanceAuthenticationOauthOutput {
+	return o
+}
+
+func (o DremioInstanceAuthenticationOauthOutput) ToDremioInstanceAuthenticationOauthOutputWithContext(ctx context.Context) DremioInstanceAuthenticationOauthOutput {
+	return o
+}
+
+func (o DremioInstanceAuthenticationOauthOutput) ToDremioInstanceAuthenticationOauthPtrOutput() DremioInstanceAuthenticationOauthPtrOutput {
+	return o.ToDremioInstanceAuthenticationOauthPtrOutputWithContext(context.Background())
+}
+
+func (o DremioInstanceAuthenticationOauthOutput) ToDremioInstanceAuthenticationOauthPtrOutputWithContext(ctx context.Context) DremioInstanceAuthenticationOauthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DremioInstanceAuthenticationOauth) *DremioInstanceAuthenticationOauth {
+		return &v
+	}).(DremioInstanceAuthenticationOauthPtrOutput)
+}
+
+// The Issuer location URI, where the OIDC provider configuration can be found.
+func (o DremioInstanceAuthenticationOauthOutput) AuthorityUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v DremioInstanceAuthenticationOauth) string { return v.AuthorityUrl }).(pulumi.StringOutput)
+}
+
+// The client ID assigned by the Identity Provider.
+func (o DremioInstanceAuthenticationOauthOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v DremioInstanceAuthenticationOauth) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The client secret generated by the Identity Provider.
+func (o DremioInstanceAuthenticationOauthOutput) ClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v DremioInstanceAuthenticationOauth) string { return v.ClientSecret }).(pulumi.StringOutput)
+}
+
+// Maps fields from the JWT token to fields Dremio requires.
+func (o DremioInstanceAuthenticationOauthOutput) JwtClaims() DremioInstanceAuthenticationOauthJwtClaimsOutput {
+	return o.ApplyT(func(v DremioInstanceAuthenticationOauth) DremioInstanceAuthenticationOauthJwtClaims {
+		return v.JwtClaims
+	}).(DremioInstanceAuthenticationOauthJwtClaimsOutput)
+}
+
+// Any additional parameters the Identity Provider requires.
+func (o DremioInstanceAuthenticationOauthOutput) Parameters() DremioInstanceAuthenticationOauthParameterArrayOutput {
+	return o.ApplyT(func(v DremioInstanceAuthenticationOauth) []DremioInstanceAuthenticationOauthParameter {
+		return v.Parameters
+	}).(DremioInstanceAuthenticationOauthParameterArrayOutput)
+}
+
+// The URL where the Dremio instance is hosted. The URL must match the redirect URL set in the Identity Provider.
+func (o DremioInstanceAuthenticationOauthOutput) RedirectUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DremioInstanceAuthenticationOauth) *string { return v.RedirectUrl }).(pulumi.StringPtrOutput)
+}
+
+// A list of space-separated scopes. The `openid` scope is always required; other scopes can vary by provider.
+func (o DremioInstanceAuthenticationOauthOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DremioInstanceAuthenticationOauth) *string { return v.Scope }).(pulumi.StringPtrOutput)
+}
+
+type DremioInstanceAuthenticationOauthPtrOutput struct{ *pulumi.OutputState }
+
+func (DremioInstanceAuthenticationOauthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DremioInstanceAuthenticationOauth)(nil)).Elem()
+}
+
+func (o DremioInstanceAuthenticationOauthPtrOutput) ToDremioInstanceAuthenticationOauthPtrOutput() DremioInstanceAuthenticationOauthPtrOutput {
+	return o
+}
+
+func (o DremioInstanceAuthenticationOauthPtrOutput) ToDremioInstanceAuthenticationOauthPtrOutputWithContext(ctx context.Context) DremioInstanceAuthenticationOauthPtrOutput {
+	return o
+}
+
+func (o DremioInstanceAuthenticationOauthPtrOutput) Elem() DremioInstanceAuthenticationOauthOutput {
+	return o.ApplyT(func(v *DremioInstanceAuthenticationOauth) DremioInstanceAuthenticationOauth {
+		if v != nil {
+			return *v
+		}
+		var ret DremioInstanceAuthenticationOauth
+		return ret
+	}).(DremioInstanceAuthenticationOauthOutput)
+}
+
+// The Issuer location URI, where the OIDC provider configuration can be found.
+func (o DremioInstanceAuthenticationOauthPtrOutput) AuthorityUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DremioInstanceAuthenticationOauth) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.AuthorityUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The client ID assigned by the Identity Provider.
+func (o DremioInstanceAuthenticationOauthPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DremioInstanceAuthenticationOauth) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The client secret generated by the Identity Provider.
+func (o DremioInstanceAuthenticationOauthPtrOutput) ClientSecret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DremioInstanceAuthenticationOauth) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClientSecret
+	}).(pulumi.StringPtrOutput)
+}
+
+// Maps fields from the JWT token to fields Dremio requires.
+func (o DremioInstanceAuthenticationOauthPtrOutput) JwtClaims() DremioInstanceAuthenticationOauthJwtClaimsPtrOutput {
+	return o.ApplyT(func(v *DremioInstanceAuthenticationOauth) *DremioInstanceAuthenticationOauthJwtClaims {
+		if v == nil {
+			return nil
+		}
+		return &v.JwtClaims
+	}).(DremioInstanceAuthenticationOauthJwtClaimsPtrOutput)
+}
+
+// Any additional parameters the Identity Provider requires.
+func (o DremioInstanceAuthenticationOauthPtrOutput) Parameters() DremioInstanceAuthenticationOauthParameterArrayOutput {
+	return o.ApplyT(func(v *DremioInstanceAuthenticationOauth) []DremioInstanceAuthenticationOauthParameter {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(DremioInstanceAuthenticationOauthParameterArrayOutput)
+}
+
+// The URL where the Dremio instance is hosted. The URL must match the redirect URL set in the Identity Provider.
+func (o DremioInstanceAuthenticationOauthPtrOutput) RedirectUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DremioInstanceAuthenticationOauth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RedirectUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of space-separated scopes. The `openid` scope is always required; other scopes can vary by provider.
+func (o DremioInstanceAuthenticationOauthPtrOutput) Scope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DremioInstanceAuthenticationOauth) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Scope
+	}).(pulumi.StringPtrOutput)
+}
+
+type DremioInstanceAuthenticationOauthJwtClaims struct {
+	// Mapped user name claim (e.g. email).
+	UserName string `pulumi:"userName"`
+}
+
+// DremioInstanceAuthenticationOauthJwtClaimsInput is an input type that accepts DremioInstanceAuthenticationOauthJwtClaimsArgs and DremioInstanceAuthenticationOauthJwtClaimsOutput values.
+// You can construct a concrete instance of `DremioInstanceAuthenticationOauthJwtClaimsInput` via:
+//
+//	DremioInstanceAuthenticationOauthJwtClaimsArgs{...}
+type DremioInstanceAuthenticationOauthJwtClaimsInput interface {
+	pulumi.Input
+
+	ToDremioInstanceAuthenticationOauthJwtClaimsOutput() DremioInstanceAuthenticationOauthJwtClaimsOutput
+	ToDremioInstanceAuthenticationOauthJwtClaimsOutputWithContext(context.Context) DremioInstanceAuthenticationOauthJwtClaimsOutput
+}
+
+type DremioInstanceAuthenticationOauthJwtClaimsArgs struct {
+	// Mapped user name claim (e.g. email).
+	UserName pulumi.StringInput `pulumi:"userName"`
+}
+
+func (DremioInstanceAuthenticationOauthJwtClaimsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DremioInstanceAuthenticationOauthJwtClaims)(nil)).Elem()
+}
+
+func (i DremioInstanceAuthenticationOauthJwtClaimsArgs) ToDremioInstanceAuthenticationOauthJwtClaimsOutput() DremioInstanceAuthenticationOauthJwtClaimsOutput {
+	return i.ToDremioInstanceAuthenticationOauthJwtClaimsOutputWithContext(context.Background())
+}
+
+func (i DremioInstanceAuthenticationOauthJwtClaimsArgs) ToDremioInstanceAuthenticationOauthJwtClaimsOutputWithContext(ctx context.Context) DremioInstanceAuthenticationOauthJwtClaimsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DremioInstanceAuthenticationOauthJwtClaimsOutput)
+}
+
+func (i DremioInstanceAuthenticationOauthJwtClaimsArgs) ToDremioInstanceAuthenticationOauthJwtClaimsPtrOutput() DremioInstanceAuthenticationOauthJwtClaimsPtrOutput {
+	return i.ToDremioInstanceAuthenticationOauthJwtClaimsPtrOutputWithContext(context.Background())
+}
+
+func (i DremioInstanceAuthenticationOauthJwtClaimsArgs) ToDremioInstanceAuthenticationOauthJwtClaimsPtrOutputWithContext(ctx context.Context) DremioInstanceAuthenticationOauthJwtClaimsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DremioInstanceAuthenticationOauthJwtClaimsOutput).ToDremioInstanceAuthenticationOauthJwtClaimsPtrOutputWithContext(ctx)
+}
+
+// DremioInstanceAuthenticationOauthJwtClaimsPtrInput is an input type that accepts DremioInstanceAuthenticationOauthJwtClaimsArgs, DremioInstanceAuthenticationOauthJwtClaimsPtr and DremioInstanceAuthenticationOauthJwtClaimsPtrOutput values.
+// You can construct a concrete instance of `DremioInstanceAuthenticationOauthJwtClaimsPtrInput` via:
+//
+//	        DremioInstanceAuthenticationOauthJwtClaimsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DremioInstanceAuthenticationOauthJwtClaimsPtrInput interface {
+	pulumi.Input
+
+	ToDremioInstanceAuthenticationOauthJwtClaimsPtrOutput() DremioInstanceAuthenticationOauthJwtClaimsPtrOutput
+	ToDremioInstanceAuthenticationOauthJwtClaimsPtrOutputWithContext(context.Context) DremioInstanceAuthenticationOauthJwtClaimsPtrOutput
+}
+
+type dremioInstanceAuthenticationOauthJwtClaimsPtrType DremioInstanceAuthenticationOauthJwtClaimsArgs
+
+func DremioInstanceAuthenticationOauthJwtClaimsPtr(v *DremioInstanceAuthenticationOauthJwtClaimsArgs) DremioInstanceAuthenticationOauthJwtClaimsPtrInput {
+	return (*dremioInstanceAuthenticationOauthJwtClaimsPtrType)(v)
+}
+
+func (*dremioInstanceAuthenticationOauthJwtClaimsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DremioInstanceAuthenticationOauthJwtClaims)(nil)).Elem()
+}
+
+func (i *dremioInstanceAuthenticationOauthJwtClaimsPtrType) ToDremioInstanceAuthenticationOauthJwtClaimsPtrOutput() DremioInstanceAuthenticationOauthJwtClaimsPtrOutput {
+	return i.ToDremioInstanceAuthenticationOauthJwtClaimsPtrOutputWithContext(context.Background())
+}
+
+func (i *dremioInstanceAuthenticationOauthJwtClaimsPtrType) ToDremioInstanceAuthenticationOauthJwtClaimsPtrOutputWithContext(ctx context.Context) DremioInstanceAuthenticationOauthJwtClaimsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DremioInstanceAuthenticationOauthJwtClaimsPtrOutput)
+}
+
+type DremioInstanceAuthenticationOauthJwtClaimsOutput struct{ *pulumi.OutputState }
+
+func (DremioInstanceAuthenticationOauthJwtClaimsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DremioInstanceAuthenticationOauthJwtClaims)(nil)).Elem()
+}
+
+func (o DremioInstanceAuthenticationOauthJwtClaimsOutput) ToDremioInstanceAuthenticationOauthJwtClaimsOutput() DremioInstanceAuthenticationOauthJwtClaimsOutput {
+	return o
+}
+
+func (o DremioInstanceAuthenticationOauthJwtClaimsOutput) ToDremioInstanceAuthenticationOauthJwtClaimsOutputWithContext(ctx context.Context) DremioInstanceAuthenticationOauthJwtClaimsOutput {
+	return o
+}
+
+func (o DremioInstanceAuthenticationOauthJwtClaimsOutput) ToDremioInstanceAuthenticationOauthJwtClaimsPtrOutput() DremioInstanceAuthenticationOauthJwtClaimsPtrOutput {
+	return o.ToDremioInstanceAuthenticationOauthJwtClaimsPtrOutputWithContext(context.Background())
+}
+
+func (o DremioInstanceAuthenticationOauthJwtClaimsOutput) ToDremioInstanceAuthenticationOauthJwtClaimsPtrOutputWithContext(ctx context.Context) DremioInstanceAuthenticationOauthJwtClaimsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DremioInstanceAuthenticationOauthJwtClaims) *DremioInstanceAuthenticationOauthJwtClaims {
+		return &v
+	}).(DremioInstanceAuthenticationOauthJwtClaimsPtrOutput)
+}
+
+// Mapped user name claim (e.g. email).
+func (o DremioInstanceAuthenticationOauthJwtClaimsOutput) UserName() pulumi.StringOutput {
+	return o.ApplyT(func(v DremioInstanceAuthenticationOauthJwtClaims) string { return v.UserName }).(pulumi.StringOutput)
+}
+
+type DremioInstanceAuthenticationOauthJwtClaimsPtrOutput struct{ *pulumi.OutputState }
+
+func (DremioInstanceAuthenticationOauthJwtClaimsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DremioInstanceAuthenticationOauthJwtClaims)(nil)).Elem()
+}
+
+func (o DremioInstanceAuthenticationOauthJwtClaimsPtrOutput) ToDremioInstanceAuthenticationOauthJwtClaimsPtrOutput() DremioInstanceAuthenticationOauthJwtClaimsPtrOutput {
+	return o
+}
+
+func (o DremioInstanceAuthenticationOauthJwtClaimsPtrOutput) ToDremioInstanceAuthenticationOauthJwtClaimsPtrOutputWithContext(ctx context.Context) DremioInstanceAuthenticationOauthJwtClaimsPtrOutput {
+	return o
+}
+
+func (o DremioInstanceAuthenticationOauthJwtClaimsPtrOutput) Elem() DremioInstanceAuthenticationOauthJwtClaimsOutput {
+	return o.ApplyT(func(v *DremioInstanceAuthenticationOauthJwtClaims) DremioInstanceAuthenticationOauthJwtClaims {
+		if v != nil {
+			return *v
+		}
+		var ret DremioInstanceAuthenticationOauthJwtClaims
+		return ret
+	}).(DremioInstanceAuthenticationOauthJwtClaimsOutput)
+}
+
+// Mapped user name claim (e.g. email).
+func (o DremioInstanceAuthenticationOauthJwtClaimsPtrOutput) UserName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DremioInstanceAuthenticationOauthJwtClaims) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UserName
+	}).(pulumi.StringPtrOutput)
+}
+
+type DremioInstanceAuthenticationOauthParameter struct {
+	// Parameter name.
+	Name string `pulumi:"name"`
+	// Parameter value.
+	Value string `pulumi:"value"`
+}
+
+// DremioInstanceAuthenticationOauthParameterInput is an input type that accepts DremioInstanceAuthenticationOauthParameterArgs and DremioInstanceAuthenticationOauthParameterOutput values.
+// You can construct a concrete instance of `DremioInstanceAuthenticationOauthParameterInput` via:
+//
+//	DremioInstanceAuthenticationOauthParameterArgs{...}
+type DremioInstanceAuthenticationOauthParameterInput interface {
+	pulumi.Input
+
+	ToDremioInstanceAuthenticationOauthParameterOutput() DremioInstanceAuthenticationOauthParameterOutput
+	ToDremioInstanceAuthenticationOauthParameterOutputWithContext(context.Context) DremioInstanceAuthenticationOauthParameterOutput
+}
+
+type DremioInstanceAuthenticationOauthParameterArgs struct {
+	// Parameter name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Parameter value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (DremioInstanceAuthenticationOauthParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DremioInstanceAuthenticationOauthParameter)(nil)).Elem()
+}
+
+func (i DremioInstanceAuthenticationOauthParameterArgs) ToDremioInstanceAuthenticationOauthParameterOutput() DremioInstanceAuthenticationOauthParameterOutput {
+	return i.ToDremioInstanceAuthenticationOauthParameterOutputWithContext(context.Background())
+}
+
+func (i DremioInstanceAuthenticationOauthParameterArgs) ToDremioInstanceAuthenticationOauthParameterOutputWithContext(ctx context.Context) DremioInstanceAuthenticationOauthParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DremioInstanceAuthenticationOauthParameterOutput)
+}
+
+// DremioInstanceAuthenticationOauthParameterArrayInput is an input type that accepts DremioInstanceAuthenticationOauthParameterArray and DremioInstanceAuthenticationOauthParameterArrayOutput values.
+// You can construct a concrete instance of `DremioInstanceAuthenticationOauthParameterArrayInput` via:
+//
+//	DremioInstanceAuthenticationOauthParameterArray{ DremioInstanceAuthenticationOauthParameterArgs{...} }
+type DremioInstanceAuthenticationOauthParameterArrayInput interface {
+	pulumi.Input
+
+	ToDremioInstanceAuthenticationOauthParameterArrayOutput() DremioInstanceAuthenticationOauthParameterArrayOutput
+	ToDremioInstanceAuthenticationOauthParameterArrayOutputWithContext(context.Context) DremioInstanceAuthenticationOauthParameterArrayOutput
+}
+
+type DremioInstanceAuthenticationOauthParameterArray []DremioInstanceAuthenticationOauthParameterInput
+
+func (DremioInstanceAuthenticationOauthParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DremioInstanceAuthenticationOauthParameter)(nil)).Elem()
+}
+
+func (i DremioInstanceAuthenticationOauthParameterArray) ToDremioInstanceAuthenticationOauthParameterArrayOutput() DremioInstanceAuthenticationOauthParameterArrayOutput {
+	return i.ToDremioInstanceAuthenticationOauthParameterArrayOutputWithContext(context.Background())
+}
+
+func (i DremioInstanceAuthenticationOauthParameterArray) ToDremioInstanceAuthenticationOauthParameterArrayOutputWithContext(ctx context.Context) DremioInstanceAuthenticationOauthParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DremioInstanceAuthenticationOauthParameterArrayOutput)
+}
+
+type DremioInstanceAuthenticationOauthParameterOutput struct{ *pulumi.OutputState }
+
+func (DremioInstanceAuthenticationOauthParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DremioInstanceAuthenticationOauthParameter)(nil)).Elem()
+}
+
+func (o DremioInstanceAuthenticationOauthParameterOutput) ToDremioInstanceAuthenticationOauthParameterOutput() DremioInstanceAuthenticationOauthParameterOutput {
+	return o
+}
+
+func (o DremioInstanceAuthenticationOauthParameterOutput) ToDremioInstanceAuthenticationOauthParameterOutputWithContext(ctx context.Context) DremioInstanceAuthenticationOauthParameterOutput {
+	return o
+}
+
+// Parameter name.
+func (o DremioInstanceAuthenticationOauthParameterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v DremioInstanceAuthenticationOauthParameter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Parameter value.
+func (o DremioInstanceAuthenticationOauthParameterOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v DremioInstanceAuthenticationOauthParameter) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type DremioInstanceAuthenticationOauthParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (DremioInstanceAuthenticationOauthParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DremioInstanceAuthenticationOauthParameter)(nil)).Elem()
+}
+
+func (o DremioInstanceAuthenticationOauthParameterArrayOutput) ToDremioInstanceAuthenticationOauthParameterArrayOutput() DremioInstanceAuthenticationOauthParameterArrayOutput {
+	return o
+}
+
+func (o DremioInstanceAuthenticationOauthParameterArrayOutput) ToDremioInstanceAuthenticationOauthParameterArrayOutputWithContext(ctx context.Context) DremioInstanceAuthenticationOauthParameterArrayOutput {
+	return o
+}
+
+func (o DremioInstanceAuthenticationOauthParameterArrayOutput) Index(i pulumi.IntInput) DremioInstanceAuthenticationOauthParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DremioInstanceAuthenticationOauthParameter {
+		return vs[0].([]DremioInstanceAuthenticationOauthParameter)[vs[1].(int)]
+	}).(DremioInstanceAuthenticationOauthParameterOutput)
+}
+
+type DremioInstanceEndpoints struct {
+	// The arrow flight endpoint of the Dremio instance.
+	ArrowFlight *string `pulumi:"arrowFlight"`
+	// The Apache Iceberg endpoint of the Dremio instance.
+	Catalog *string `pulumi:"catalog"`
+	// The UI endpoint of the Dremio instance.
+	Ui *string `pulumi:"ui"`
+}
+
+// DremioInstanceEndpointsInput is an input type that accepts DremioInstanceEndpointsArgs and DremioInstanceEndpointsOutput values.
+// You can construct a concrete instance of `DremioInstanceEndpointsInput` via:
+//
+//	DremioInstanceEndpointsArgs{...}
+type DremioInstanceEndpointsInput interface {
+	pulumi.Input
+
+	ToDremioInstanceEndpointsOutput() DremioInstanceEndpointsOutput
+	ToDremioInstanceEndpointsOutputWithContext(context.Context) DremioInstanceEndpointsOutput
+}
+
+type DremioInstanceEndpointsArgs struct {
+	// The arrow flight endpoint of the Dremio instance.
+	ArrowFlight pulumi.StringPtrInput `pulumi:"arrowFlight"`
+	// The Apache Iceberg endpoint of the Dremio instance.
+	Catalog pulumi.StringPtrInput `pulumi:"catalog"`
+	// The UI endpoint of the Dremio instance.
+	Ui pulumi.StringPtrInput `pulumi:"ui"`
+}
+
+func (DremioInstanceEndpointsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DremioInstanceEndpoints)(nil)).Elem()
+}
+
+func (i DremioInstanceEndpointsArgs) ToDremioInstanceEndpointsOutput() DremioInstanceEndpointsOutput {
+	return i.ToDremioInstanceEndpointsOutputWithContext(context.Background())
+}
+
+func (i DremioInstanceEndpointsArgs) ToDremioInstanceEndpointsOutputWithContext(ctx context.Context) DremioInstanceEndpointsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DremioInstanceEndpointsOutput)
+}
+
+func (i DremioInstanceEndpointsArgs) ToDremioInstanceEndpointsPtrOutput() DremioInstanceEndpointsPtrOutput {
+	return i.ToDremioInstanceEndpointsPtrOutputWithContext(context.Background())
+}
+
+func (i DremioInstanceEndpointsArgs) ToDremioInstanceEndpointsPtrOutputWithContext(ctx context.Context) DremioInstanceEndpointsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DremioInstanceEndpointsOutput).ToDremioInstanceEndpointsPtrOutputWithContext(ctx)
+}
+
+// DremioInstanceEndpointsPtrInput is an input type that accepts DremioInstanceEndpointsArgs, DremioInstanceEndpointsPtr and DremioInstanceEndpointsPtrOutput values.
+// You can construct a concrete instance of `DremioInstanceEndpointsPtrInput` via:
+//
+//	        DremioInstanceEndpointsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DremioInstanceEndpointsPtrInput interface {
+	pulumi.Input
+
+	ToDremioInstanceEndpointsPtrOutput() DremioInstanceEndpointsPtrOutput
+	ToDremioInstanceEndpointsPtrOutputWithContext(context.Context) DremioInstanceEndpointsPtrOutput
+}
+
+type dremioInstanceEndpointsPtrType DremioInstanceEndpointsArgs
+
+func DremioInstanceEndpointsPtr(v *DremioInstanceEndpointsArgs) DremioInstanceEndpointsPtrInput {
+	return (*dremioInstanceEndpointsPtrType)(v)
+}
+
+func (*dremioInstanceEndpointsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DremioInstanceEndpoints)(nil)).Elem()
+}
+
+func (i *dremioInstanceEndpointsPtrType) ToDremioInstanceEndpointsPtrOutput() DremioInstanceEndpointsPtrOutput {
+	return i.ToDremioInstanceEndpointsPtrOutputWithContext(context.Background())
+}
+
+func (i *dremioInstanceEndpointsPtrType) ToDremioInstanceEndpointsPtrOutputWithContext(ctx context.Context) DremioInstanceEndpointsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DremioInstanceEndpointsPtrOutput)
+}
+
+type DremioInstanceEndpointsOutput struct{ *pulumi.OutputState }
+
+func (DremioInstanceEndpointsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DremioInstanceEndpoints)(nil)).Elem()
+}
+
+func (o DremioInstanceEndpointsOutput) ToDremioInstanceEndpointsOutput() DremioInstanceEndpointsOutput {
+	return o
+}
+
+func (o DremioInstanceEndpointsOutput) ToDremioInstanceEndpointsOutputWithContext(ctx context.Context) DremioInstanceEndpointsOutput {
+	return o
+}
+
+func (o DremioInstanceEndpointsOutput) ToDremioInstanceEndpointsPtrOutput() DremioInstanceEndpointsPtrOutput {
+	return o.ToDremioInstanceEndpointsPtrOutputWithContext(context.Background())
+}
+
+func (o DremioInstanceEndpointsOutput) ToDremioInstanceEndpointsPtrOutputWithContext(ctx context.Context) DremioInstanceEndpointsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DremioInstanceEndpoints) *DremioInstanceEndpoints {
+		return &v
+	}).(DremioInstanceEndpointsPtrOutput)
+}
+
+// The arrow flight endpoint of the Dremio instance.
+func (o DremioInstanceEndpointsOutput) ArrowFlight() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DremioInstanceEndpoints) *string { return v.ArrowFlight }).(pulumi.StringPtrOutput)
+}
+
+// The Apache Iceberg endpoint of the Dremio instance.
+func (o DremioInstanceEndpointsOutput) Catalog() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DremioInstanceEndpoints) *string { return v.Catalog }).(pulumi.StringPtrOutput)
+}
+
+// The UI endpoint of the Dremio instance.
+func (o DremioInstanceEndpointsOutput) Ui() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DremioInstanceEndpoints) *string { return v.Ui }).(pulumi.StringPtrOutput)
+}
+
+type DremioInstanceEndpointsPtrOutput struct{ *pulumi.OutputState }
+
+func (DremioInstanceEndpointsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DremioInstanceEndpoints)(nil)).Elem()
+}
+
+func (o DremioInstanceEndpointsPtrOutput) ToDremioInstanceEndpointsPtrOutput() DremioInstanceEndpointsPtrOutput {
+	return o
+}
+
+func (o DremioInstanceEndpointsPtrOutput) ToDremioInstanceEndpointsPtrOutputWithContext(ctx context.Context) DremioInstanceEndpointsPtrOutput {
+	return o
+}
+
+func (o DremioInstanceEndpointsPtrOutput) Elem() DremioInstanceEndpointsOutput {
+	return o.ApplyT(func(v *DremioInstanceEndpoints) DremioInstanceEndpoints {
+		if v != nil {
+			return *v
+		}
+		var ret DremioInstanceEndpoints
+		return ret
+	}).(DremioInstanceEndpointsOutput)
+}
+
+// The arrow flight endpoint of the Dremio instance.
+func (o DremioInstanceEndpointsPtrOutput) ArrowFlight() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DremioInstanceEndpoints) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ArrowFlight
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Apache Iceberg endpoint of the Dremio instance.
+func (o DremioInstanceEndpointsPtrOutput) Catalog() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DremioInstanceEndpoints) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Catalog
+	}).(pulumi.StringPtrOutput)
+}
+
+// The UI endpoint of the Dremio instance.
+func (o DremioInstanceEndpointsPtrOutput) Ui() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DremioInstanceEndpoints) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Ui
+	}).(pulumi.StringPtrOutput)
+}
+
+type DremioInstanceTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// DremioInstanceTimeoutsInput is an input type that accepts DremioInstanceTimeoutsArgs and DremioInstanceTimeoutsOutput values.
+// You can construct a concrete instance of `DremioInstanceTimeoutsInput` via:
+//
+//	DremioInstanceTimeoutsArgs{...}
+type DremioInstanceTimeoutsInput interface {
+	pulumi.Input
+
+	ToDremioInstanceTimeoutsOutput() DremioInstanceTimeoutsOutput
+	ToDremioInstanceTimeoutsOutputWithContext(context.Context) DremioInstanceTimeoutsOutput
+}
+
+type DremioInstanceTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (DremioInstanceTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DremioInstanceTimeouts)(nil)).Elem()
+}
+
+func (i DremioInstanceTimeoutsArgs) ToDremioInstanceTimeoutsOutput() DremioInstanceTimeoutsOutput {
+	return i.ToDremioInstanceTimeoutsOutputWithContext(context.Background())
+}
+
+func (i DremioInstanceTimeoutsArgs) ToDremioInstanceTimeoutsOutputWithContext(ctx context.Context) DremioInstanceTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DremioInstanceTimeoutsOutput)
+}
+
+func (i DremioInstanceTimeoutsArgs) ToDremioInstanceTimeoutsPtrOutput() DremioInstanceTimeoutsPtrOutput {
+	return i.ToDremioInstanceTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i DremioInstanceTimeoutsArgs) ToDremioInstanceTimeoutsPtrOutputWithContext(ctx context.Context) DremioInstanceTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DremioInstanceTimeoutsOutput).ToDremioInstanceTimeoutsPtrOutputWithContext(ctx)
+}
+
+// DremioInstanceTimeoutsPtrInput is an input type that accepts DremioInstanceTimeoutsArgs, DremioInstanceTimeoutsPtr and DremioInstanceTimeoutsPtrOutput values.
+// You can construct a concrete instance of `DremioInstanceTimeoutsPtrInput` via:
+//
+//	        DremioInstanceTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DremioInstanceTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToDremioInstanceTimeoutsPtrOutput() DremioInstanceTimeoutsPtrOutput
+	ToDremioInstanceTimeoutsPtrOutputWithContext(context.Context) DremioInstanceTimeoutsPtrOutput
+}
+
+type dremioInstanceTimeoutsPtrType DremioInstanceTimeoutsArgs
+
+func DremioInstanceTimeoutsPtr(v *DremioInstanceTimeoutsArgs) DremioInstanceTimeoutsPtrInput {
+	return (*dremioInstanceTimeoutsPtrType)(v)
+}
+
+func (*dremioInstanceTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DremioInstanceTimeouts)(nil)).Elem()
+}
+
+func (i *dremioInstanceTimeoutsPtrType) ToDremioInstanceTimeoutsPtrOutput() DremioInstanceTimeoutsPtrOutput {
+	return i.ToDremioInstanceTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *dremioInstanceTimeoutsPtrType) ToDremioInstanceTimeoutsPtrOutputWithContext(ctx context.Context) DremioInstanceTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DremioInstanceTimeoutsPtrOutput)
+}
+
+type DremioInstanceTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (DremioInstanceTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DremioInstanceTimeouts)(nil)).Elem()
+}
+
+func (o DremioInstanceTimeoutsOutput) ToDremioInstanceTimeoutsOutput() DremioInstanceTimeoutsOutput {
+	return o
+}
+
+func (o DremioInstanceTimeoutsOutput) ToDremioInstanceTimeoutsOutputWithContext(ctx context.Context) DremioInstanceTimeoutsOutput {
+	return o
+}
+
+func (o DremioInstanceTimeoutsOutput) ToDremioInstanceTimeoutsPtrOutput() DremioInstanceTimeoutsPtrOutput {
+	return o.ToDremioInstanceTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o DremioInstanceTimeoutsOutput) ToDremioInstanceTimeoutsPtrOutputWithContext(ctx context.Context) DremioInstanceTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DremioInstanceTimeouts) *DremioInstanceTimeouts {
+		return &v
+	}).(DremioInstanceTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DremioInstanceTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DremioInstanceTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o DremioInstanceTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DremioInstanceTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o DremioInstanceTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DremioInstanceTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DremioInstanceTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DremioInstanceTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type DremioInstanceTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (DremioInstanceTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DremioInstanceTimeouts)(nil)).Elem()
+}
+
+func (o DremioInstanceTimeoutsPtrOutput) ToDremioInstanceTimeoutsPtrOutput() DremioInstanceTimeoutsPtrOutput {
+	return o
+}
+
+func (o DremioInstanceTimeoutsPtrOutput) ToDremioInstanceTimeoutsPtrOutputWithContext(ctx context.Context) DremioInstanceTimeoutsPtrOutput {
+	return o
+}
+
+func (o DremioInstanceTimeoutsPtrOutput) Elem() DremioInstanceTimeoutsOutput {
+	return o.ApplyT(func(v *DremioInstanceTimeouts) DremioInstanceTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret DremioInstanceTimeouts
+		return ret
+	}).(DremioInstanceTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DremioInstanceTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DremioInstanceTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o DremioInstanceTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DremioInstanceTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o DremioInstanceTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DremioInstanceTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DremioInstanceTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DremioInstanceTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
+type DremioUserTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// DremioUserTimeoutsInput is an input type that accepts DremioUserTimeoutsArgs and DremioUserTimeoutsOutput values.
+// You can construct a concrete instance of `DremioUserTimeoutsInput` via:
+//
+//	DremioUserTimeoutsArgs{...}
+type DremioUserTimeoutsInput interface {
+	pulumi.Input
+
+	ToDremioUserTimeoutsOutput() DremioUserTimeoutsOutput
+	ToDremioUserTimeoutsOutputWithContext(context.Context) DremioUserTimeoutsOutput
+}
+
+type DremioUserTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (DremioUserTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DremioUserTimeouts)(nil)).Elem()
+}
+
+func (i DremioUserTimeoutsArgs) ToDremioUserTimeoutsOutput() DremioUserTimeoutsOutput {
+	return i.ToDremioUserTimeoutsOutputWithContext(context.Background())
+}
+
+func (i DremioUserTimeoutsArgs) ToDremioUserTimeoutsOutputWithContext(ctx context.Context) DremioUserTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DremioUserTimeoutsOutput)
+}
+
+func (i DremioUserTimeoutsArgs) ToDremioUserTimeoutsPtrOutput() DremioUserTimeoutsPtrOutput {
+	return i.ToDremioUserTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i DremioUserTimeoutsArgs) ToDremioUserTimeoutsPtrOutputWithContext(ctx context.Context) DremioUserTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DremioUserTimeoutsOutput).ToDremioUserTimeoutsPtrOutputWithContext(ctx)
+}
+
+// DremioUserTimeoutsPtrInput is an input type that accepts DremioUserTimeoutsArgs, DremioUserTimeoutsPtr and DremioUserTimeoutsPtrOutput values.
+// You can construct a concrete instance of `DremioUserTimeoutsPtrInput` via:
+//
+//	        DremioUserTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DremioUserTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToDremioUserTimeoutsPtrOutput() DremioUserTimeoutsPtrOutput
+	ToDremioUserTimeoutsPtrOutputWithContext(context.Context) DremioUserTimeoutsPtrOutput
+}
+
+type dremioUserTimeoutsPtrType DremioUserTimeoutsArgs
+
+func DremioUserTimeoutsPtr(v *DremioUserTimeoutsArgs) DremioUserTimeoutsPtrInput {
+	return (*dremioUserTimeoutsPtrType)(v)
+}
+
+func (*dremioUserTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DremioUserTimeouts)(nil)).Elem()
+}
+
+func (i *dremioUserTimeoutsPtrType) ToDremioUserTimeoutsPtrOutput() DremioUserTimeoutsPtrOutput {
+	return i.ToDremioUserTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *dremioUserTimeoutsPtrType) ToDremioUserTimeoutsPtrOutputWithContext(ctx context.Context) DremioUserTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DremioUserTimeoutsPtrOutput)
+}
+
+type DremioUserTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (DremioUserTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DremioUserTimeouts)(nil)).Elem()
+}
+
+func (o DremioUserTimeoutsOutput) ToDremioUserTimeoutsOutput() DremioUserTimeoutsOutput {
+	return o
+}
+
+func (o DremioUserTimeoutsOutput) ToDremioUserTimeoutsOutputWithContext(ctx context.Context) DremioUserTimeoutsOutput {
+	return o
+}
+
+func (o DremioUserTimeoutsOutput) ToDremioUserTimeoutsPtrOutput() DremioUserTimeoutsPtrOutput {
+	return o.ToDremioUserTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o DremioUserTimeoutsOutput) ToDremioUserTimeoutsPtrOutputWithContext(ctx context.Context) DremioUserTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DremioUserTimeouts) *DremioUserTimeouts {
+		return &v
+	}).(DremioUserTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DremioUserTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DremioUserTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o DremioUserTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DremioUserTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o DremioUserTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DremioUserTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DremioUserTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DremioUserTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type DremioUserTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (DremioUserTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DremioUserTimeouts)(nil)).Elem()
+}
+
+func (o DremioUserTimeoutsPtrOutput) ToDremioUserTimeoutsPtrOutput() DremioUserTimeoutsPtrOutput {
+	return o
+}
+
+func (o DremioUserTimeoutsPtrOutput) ToDremioUserTimeoutsPtrOutputWithContext(ctx context.Context) DremioUserTimeoutsPtrOutput {
+	return o
+}
+
+func (o DremioUserTimeoutsPtrOutput) Elem() DremioUserTimeoutsOutput {
+	return o.ApplyT(func(v *DremioUserTimeouts) DremioUserTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret DremioUserTimeouts
+		return ret
+	}).(DremioUserTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DremioUserTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DremioUserTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o DremioUserTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DremioUserTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o DremioUserTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DremioUserTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o DremioUserTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DremioUserTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
 type ImageChecksum struct {
 	// Algorithm for the checksum of the image data.
 	Algorithm *string `pulumi:"algorithm"`
@@ -9210,6 +10640,11 @@ func (o MongodbflexInstanceOptionsPtrOutput) WeeklySnapshotRetentionWeeks() pulu
 }
 
 type MongodbflexInstanceStorage struct {
+	// The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
+	// `bash
+	// stackit mongodbflex options --storages --flavor-id FLAVOR_ID
+	// `
+	// - `size` (Number)
 	Class string `pulumi:"class"`
 	Size  int    `pulumi:"size"`
 }
@@ -9226,6 +10661,11 @@ type MongodbflexInstanceStorageInput interface {
 }
 
 type MongodbflexInstanceStorageArgs struct {
+	// The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
+	// `bash
+	// stackit mongodbflex options --storages --flavor-id FLAVOR_ID
+	// `
+	// - `size` (Number)
 	Class pulumi.StringInput `pulumi:"class"`
 	Size  pulumi.IntInput    `pulumi:"size"`
 }
@@ -9307,6 +10747,11 @@ func (o MongodbflexInstanceStorageOutput) ToMongodbflexInstanceStoragePtrOutputW
 	}).(MongodbflexInstanceStoragePtrOutput)
 }
 
+// The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
+// `bash
+// stackit mongodbflex options --storages --flavor-id FLAVOR_ID
+// `
+// - `size` (Number)
 func (o MongodbflexInstanceStorageOutput) Class() pulumi.StringOutput {
 	return o.ApplyT(func(v MongodbflexInstanceStorage) string { return v.Class }).(pulumi.StringOutput)
 }
@@ -9339,6 +10784,11 @@ func (o MongodbflexInstanceStoragePtrOutput) Elem() MongodbflexInstanceStorageOu
 	}).(MongodbflexInstanceStorageOutput)
 }
 
+// The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
+// `bash
+// stackit mongodbflex options --storages --flavor-id FLAVOR_ID
+// `
+// - `size` (Number)
 func (o MongodbflexInstanceStoragePtrOutput) Class() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MongodbflexInstanceStorage) *string {
 		if v == nil {
@@ -12772,6 +14222,11 @@ func (o PostgresflexInstanceFlavorPtrOutput) Ram() pulumi.IntPtrOutput {
 }
 
 type PostgresflexInstanceStorage struct {
+	// The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
+	// `bash
+	// stackit postgresflex options --storages --flavor-id FLAVOR_ID
+	// `
+	// - `size` (Number)
 	Class string `pulumi:"class"`
 	Size  int    `pulumi:"size"`
 }
@@ -12788,6 +14243,11 @@ type PostgresflexInstanceStorageInput interface {
 }
 
 type PostgresflexInstanceStorageArgs struct {
+	// The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
+	// `bash
+	// stackit postgresflex options --storages --flavor-id FLAVOR_ID
+	// `
+	// - `size` (Number)
 	Class pulumi.StringInput `pulumi:"class"`
 	Size  pulumi.IntInput    `pulumi:"size"`
 }
@@ -12869,6 +14329,11 @@ func (o PostgresflexInstanceStorageOutput) ToPostgresflexInstanceStoragePtrOutpu
 	}).(PostgresflexInstanceStoragePtrOutput)
 }
 
+// The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
+// `bash
+// stackit postgresflex options --storages --flavor-id FLAVOR_ID
+// `
+// - `size` (Number)
 func (o PostgresflexInstanceStorageOutput) Class() pulumi.StringOutput {
 	return o.ApplyT(func(v PostgresflexInstanceStorage) string { return v.Class }).(pulumi.StringOutput)
 }
@@ -12901,6 +14366,11 @@ func (o PostgresflexInstanceStoragePtrOutput) Elem() PostgresflexInstanceStorage
 	}).(PostgresflexInstanceStorageOutput)
 }
 
+// The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
+// `bash
+// stackit postgresflex options --storages --flavor-id FLAVOR_ID
+// `
+// - `size` (Number)
 func (o PostgresflexInstanceStoragePtrOutput) Class() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PostgresflexInstanceStorage) *string {
 		if v == nil {
@@ -17875,6 +19345,11 @@ func (o SqlserverflexInstanceOptionsPtrOutput) RetentionDays() pulumi.IntPtrOutp
 }
 
 type SqlserverflexInstanceStorage struct {
+	// The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
+	// `bash
+	// stackit beta sqlserverflex options --storages --flavor-id FLAVOR_ID
+	// `
+	// - `size` (Number)
 	Class *string `pulumi:"class"`
 	Size  *int    `pulumi:"size"`
 }
@@ -17891,6 +19366,11 @@ type SqlserverflexInstanceStorageInput interface {
 }
 
 type SqlserverflexInstanceStorageArgs struct {
+	// The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
+	// `bash
+	// stackit beta sqlserverflex options --storages --flavor-id FLAVOR_ID
+	// `
+	// - `size` (Number)
 	Class pulumi.StringPtrInput `pulumi:"class"`
 	Size  pulumi.IntPtrInput    `pulumi:"size"`
 }
@@ -17972,6 +19452,11 @@ func (o SqlserverflexInstanceStorageOutput) ToSqlserverflexInstanceStoragePtrOut
 	}).(SqlserverflexInstanceStoragePtrOutput)
 }
 
+// The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
+// `bash
+// stackit beta sqlserverflex options --storages --flavor-id FLAVOR_ID
+// `
+// - `size` (Number)
 func (o SqlserverflexInstanceStorageOutput) Class() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlserverflexInstanceStorage) *string { return v.Class }).(pulumi.StringPtrOutput)
 }
@@ -18004,6 +19489,11 @@ func (o SqlserverflexInstanceStoragePtrOutput) Elem() SqlserverflexInstanceStora
 	}).(SqlserverflexInstanceStorageOutput)
 }
 
+// The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
+// `bash
+// stackit beta sqlserverflex options --storages --flavor-id FLAVOR_ID
+// `
+// - `size` (Number)
 func (o SqlserverflexInstanceStoragePtrOutput) Class() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlserverflexInstanceStorage) *string {
 		if v == nil {
@@ -18020,6 +19510,1392 @@ func (o SqlserverflexInstanceStoragePtrOutput) Size() pulumi.IntPtrOutput {
 		}
 		return v.Size
 	}).(pulumi.IntPtrOutput)
+}
+
+type TelemetryrouterDestinationConfig struct {
+	// The TelemetryRouter destinations's configuration type, possible values: Possible values are: `OpenTelemetry`, `S3`.
+	ConfigType string `pulumi:"configType"`
+	// The TelemetryRouter destination's filter settings
+	Filter *TelemetryrouterDestinationConfigFilter `pulumi:"filter"`
+	// OpenTelemetry configuration
+	Opentelemetry *TelemetryrouterDestinationConfigOpentelemetry `pulumi:"opentelemetry"`
+	// S3 configuration
+	S3 *TelemetryrouterDestinationConfigS3 `pulumi:"s3"`
+}
+
+// TelemetryrouterDestinationConfigInput is an input type that accepts TelemetryrouterDestinationConfigArgs and TelemetryrouterDestinationConfigOutput values.
+// You can construct a concrete instance of `TelemetryrouterDestinationConfigInput` via:
+//
+//	TelemetryrouterDestinationConfigArgs{...}
+type TelemetryrouterDestinationConfigInput interface {
+	pulumi.Input
+
+	ToTelemetryrouterDestinationConfigOutput() TelemetryrouterDestinationConfigOutput
+	ToTelemetryrouterDestinationConfigOutputWithContext(context.Context) TelemetryrouterDestinationConfigOutput
+}
+
+type TelemetryrouterDestinationConfigArgs struct {
+	// The TelemetryRouter destinations's configuration type, possible values: Possible values are: `OpenTelemetry`, `S3`.
+	ConfigType pulumi.StringInput `pulumi:"configType"`
+	// The TelemetryRouter destination's filter settings
+	Filter TelemetryrouterDestinationConfigFilterPtrInput `pulumi:"filter"`
+	// OpenTelemetry configuration
+	Opentelemetry TelemetryrouterDestinationConfigOpentelemetryPtrInput `pulumi:"opentelemetry"`
+	// S3 configuration
+	S3 TelemetryrouterDestinationConfigS3PtrInput `pulumi:"s3"`
+}
+
+func (TelemetryrouterDestinationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TelemetryrouterDestinationConfig)(nil)).Elem()
+}
+
+func (i TelemetryrouterDestinationConfigArgs) ToTelemetryrouterDestinationConfigOutput() TelemetryrouterDestinationConfigOutput {
+	return i.ToTelemetryrouterDestinationConfigOutputWithContext(context.Background())
+}
+
+func (i TelemetryrouterDestinationConfigArgs) ToTelemetryrouterDestinationConfigOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryrouterDestinationConfigOutput)
+}
+
+func (i TelemetryrouterDestinationConfigArgs) ToTelemetryrouterDestinationConfigPtrOutput() TelemetryrouterDestinationConfigPtrOutput {
+	return i.ToTelemetryrouterDestinationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i TelemetryrouterDestinationConfigArgs) ToTelemetryrouterDestinationConfigPtrOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryrouterDestinationConfigOutput).ToTelemetryrouterDestinationConfigPtrOutputWithContext(ctx)
+}
+
+// TelemetryrouterDestinationConfigPtrInput is an input type that accepts TelemetryrouterDestinationConfigArgs, TelemetryrouterDestinationConfigPtr and TelemetryrouterDestinationConfigPtrOutput values.
+// You can construct a concrete instance of `TelemetryrouterDestinationConfigPtrInput` via:
+//
+//	        TelemetryrouterDestinationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type TelemetryrouterDestinationConfigPtrInput interface {
+	pulumi.Input
+
+	ToTelemetryrouterDestinationConfigPtrOutput() TelemetryrouterDestinationConfigPtrOutput
+	ToTelemetryrouterDestinationConfigPtrOutputWithContext(context.Context) TelemetryrouterDestinationConfigPtrOutput
+}
+
+type telemetryrouterDestinationConfigPtrType TelemetryrouterDestinationConfigArgs
+
+func TelemetryrouterDestinationConfigPtr(v *TelemetryrouterDestinationConfigArgs) TelemetryrouterDestinationConfigPtrInput {
+	return (*telemetryrouterDestinationConfigPtrType)(v)
+}
+
+func (*telemetryrouterDestinationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TelemetryrouterDestinationConfig)(nil)).Elem()
+}
+
+func (i *telemetryrouterDestinationConfigPtrType) ToTelemetryrouterDestinationConfigPtrOutput() TelemetryrouterDestinationConfigPtrOutput {
+	return i.ToTelemetryrouterDestinationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *telemetryrouterDestinationConfigPtrType) ToTelemetryrouterDestinationConfigPtrOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryrouterDestinationConfigPtrOutput)
+}
+
+type TelemetryrouterDestinationConfigOutput struct{ *pulumi.OutputState }
+
+func (TelemetryrouterDestinationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TelemetryrouterDestinationConfig)(nil)).Elem()
+}
+
+func (o TelemetryrouterDestinationConfigOutput) ToTelemetryrouterDestinationConfigOutput() TelemetryrouterDestinationConfigOutput {
+	return o
+}
+
+func (o TelemetryrouterDestinationConfigOutput) ToTelemetryrouterDestinationConfigOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigOutput {
+	return o
+}
+
+func (o TelemetryrouterDestinationConfigOutput) ToTelemetryrouterDestinationConfigPtrOutput() TelemetryrouterDestinationConfigPtrOutput {
+	return o.ToTelemetryrouterDestinationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o TelemetryrouterDestinationConfigOutput) ToTelemetryrouterDestinationConfigPtrOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TelemetryrouterDestinationConfig) *TelemetryrouterDestinationConfig {
+		return &v
+	}).(TelemetryrouterDestinationConfigPtrOutput)
+}
+
+// The TelemetryRouter destinations's configuration type, possible values: Possible values are: `OpenTelemetry`, `S3`.
+func (o TelemetryrouterDestinationConfigOutput) ConfigType() pulumi.StringOutput {
+	return o.ApplyT(func(v TelemetryrouterDestinationConfig) string { return v.ConfigType }).(pulumi.StringOutput)
+}
+
+// The TelemetryRouter destination's filter settings
+func (o TelemetryrouterDestinationConfigOutput) Filter() TelemetryrouterDestinationConfigFilterPtrOutput {
+	return o.ApplyT(func(v TelemetryrouterDestinationConfig) *TelemetryrouterDestinationConfigFilter { return v.Filter }).(TelemetryrouterDestinationConfigFilterPtrOutput)
+}
+
+// OpenTelemetry configuration
+func (o TelemetryrouterDestinationConfigOutput) Opentelemetry() TelemetryrouterDestinationConfigOpentelemetryPtrOutput {
+	return o.ApplyT(func(v TelemetryrouterDestinationConfig) *TelemetryrouterDestinationConfigOpentelemetry {
+		return v.Opentelemetry
+	}).(TelemetryrouterDestinationConfigOpentelemetryPtrOutput)
+}
+
+// S3 configuration
+func (o TelemetryrouterDestinationConfigOutput) S3() TelemetryrouterDestinationConfigS3PtrOutput {
+	return o.ApplyT(func(v TelemetryrouterDestinationConfig) *TelemetryrouterDestinationConfigS3 { return v.S3 }).(TelemetryrouterDestinationConfigS3PtrOutput)
+}
+
+type TelemetryrouterDestinationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (TelemetryrouterDestinationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TelemetryrouterDestinationConfig)(nil)).Elem()
+}
+
+func (o TelemetryrouterDestinationConfigPtrOutput) ToTelemetryrouterDestinationConfigPtrOutput() TelemetryrouterDestinationConfigPtrOutput {
+	return o
+}
+
+func (o TelemetryrouterDestinationConfigPtrOutput) ToTelemetryrouterDestinationConfigPtrOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigPtrOutput {
+	return o
+}
+
+func (o TelemetryrouterDestinationConfigPtrOutput) Elem() TelemetryrouterDestinationConfigOutput {
+	return o.ApplyT(func(v *TelemetryrouterDestinationConfig) TelemetryrouterDestinationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret TelemetryrouterDestinationConfig
+		return ret
+	}).(TelemetryrouterDestinationConfigOutput)
+}
+
+// The TelemetryRouter destinations's configuration type, possible values: Possible values are: `OpenTelemetry`, `S3`.
+func (o TelemetryrouterDestinationConfigPtrOutput) ConfigType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TelemetryrouterDestinationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConfigType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The TelemetryRouter destination's filter settings
+func (o TelemetryrouterDestinationConfigPtrOutput) Filter() TelemetryrouterDestinationConfigFilterPtrOutput {
+	return o.ApplyT(func(v *TelemetryrouterDestinationConfig) *TelemetryrouterDestinationConfigFilter {
+		if v == nil {
+			return nil
+		}
+		return v.Filter
+	}).(TelemetryrouterDestinationConfigFilterPtrOutput)
+}
+
+// OpenTelemetry configuration
+func (o TelemetryrouterDestinationConfigPtrOutput) Opentelemetry() TelemetryrouterDestinationConfigOpentelemetryPtrOutput {
+	return o.ApplyT(func(v *TelemetryrouterDestinationConfig) *TelemetryrouterDestinationConfigOpentelemetry {
+		if v == nil {
+			return nil
+		}
+		return v.Opentelemetry
+	}).(TelemetryrouterDestinationConfigOpentelemetryPtrOutput)
+}
+
+// S3 configuration
+func (o TelemetryrouterDestinationConfigPtrOutput) S3() TelemetryrouterDestinationConfigS3PtrOutput {
+	return o.ApplyT(func(v *TelemetryrouterDestinationConfig) *TelemetryrouterDestinationConfigS3 {
+		if v == nil {
+			return nil
+		}
+		return v.S3
+	}).(TelemetryrouterDestinationConfigS3PtrOutput)
+}
+
+type TelemetryrouterDestinationConfigFilter struct {
+	// The TelemetryRouter destination's filter attributes
+	Attributes []TelemetryrouterDestinationConfigFilterAttribute `pulumi:"attributes"`
+}
+
+// TelemetryrouterDestinationConfigFilterInput is an input type that accepts TelemetryrouterDestinationConfigFilterArgs and TelemetryrouterDestinationConfigFilterOutput values.
+// You can construct a concrete instance of `TelemetryrouterDestinationConfigFilterInput` via:
+//
+//	TelemetryrouterDestinationConfigFilterArgs{...}
+type TelemetryrouterDestinationConfigFilterInput interface {
+	pulumi.Input
+
+	ToTelemetryrouterDestinationConfigFilterOutput() TelemetryrouterDestinationConfigFilterOutput
+	ToTelemetryrouterDestinationConfigFilterOutputWithContext(context.Context) TelemetryrouterDestinationConfigFilterOutput
+}
+
+type TelemetryrouterDestinationConfigFilterArgs struct {
+	// The TelemetryRouter destination's filter attributes
+	Attributes TelemetryrouterDestinationConfigFilterAttributeArrayInput `pulumi:"attributes"`
+}
+
+func (TelemetryrouterDestinationConfigFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TelemetryrouterDestinationConfigFilter)(nil)).Elem()
+}
+
+func (i TelemetryrouterDestinationConfigFilterArgs) ToTelemetryrouterDestinationConfigFilterOutput() TelemetryrouterDestinationConfigFilterOutput {
+	return i.ToTelemetryrouterDestinationConfigFilterOutputWithContext(context.Background())
+}
+
+func (i TelemetryrouterDestinationConfigFilterArgs) ToTelemetryrouterDestinationConfigFilterOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryrouterDestinationConfigFilterOutput)
+}
+
+func (i TelemetryrouterDestinationConfigFilterArgs) ToTelemetryrouterDestinationConfigFilterPtrOutput() TelemetryrouterDestinationConfigFilterPtrOutput {
+	return i.ToTelemetryrouterDestinationConfigFilterPtrOutputWithContext(context.Background())
+}
+
+func (i TelemetryrouterDestinationConfigFilterArgs) ToTelemetryrouterDestinationConfigFilterPtrOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryrouterDestinationConfigFilterOutput).ToTelemetryrouterDestinationConfigFilterPtrOutputWithContext(ctx)
+}
+
+// TelemetryrouterDestinationConfigFilterPtrInput is an input type that accepts TelemetryrouterDestinationConfigFilterArgs, TelemetryrouterDestinationConfigFilterPtr and TelemetryrouterDestinationConfigFilterPtrOutput values.
+// You can construct a concrete instance of `TelemetryrouterDestinationConfigFilterPtrInput` via:
+//
+//	        TelemetryrouterDestinationConfigFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type TelemetryrouterDestinationConfigFilterPtrInput interface {
+	pulumi.Input
+
+	ToTelemetryrouterDestinationConfigFilterPtrOutput() TelemetryrouterDestinationConfigFilterPtrOutput
+	ToTelemetryrouterDestinationConfigFilterPtrOutputWithContext(context.Context) TelemetryrouterDestinationConfigFilterPtrOutput
+}
+
+type telemetryrouterDestinationConfigFilterPtrType TelemetryrouterDestinationConfigFilterArgs
+
+func TelemetryrouterDestinationConfigFilterPtr(v *TelemetryrouterDestinationConfigFilterArgs) TelemetryrouterDestinationConfigFilterPtrInput {
+	return (*telemetryrouterDestinationConfigFilterPtrType)(v)
+}
+
+func (*telemetryrouterDestinationConfigFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TelemetryrouterDestinationConfigFilter)(nil)).Elem()
+}
+
+func (i *telemetryrouterDestinationConfigFilterPtrType) ToTelemetryrouterDestinationConfigFilterPtrOutput() TelemetryrouterDestinationConfigFilterPtrOutput {
+	return i.ToTelemetryrouterDestinationConfigFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *telemetryrouterDestinationConfigFilterPtrType) ToTelemetryrouterDestinationConfigFilterPtrOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryrouterDestinationConfigFilterPtrOutput)
+}
+
+type TelemetryrouterDestinationConfigFilterOutput struct{ *pulumi.OutputState }
+
+func (TelemetryrouterDestinationConfigFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TelemetryrouterDestinationConfigFilter)(nil)).Elem()
+}
+
+func (o TelemetryrouterDestinationConfigFilterOutput) ToTelemetryrouterDestinationConfigFilterOutput() TelemetryrouterDestinationConfigFilterOutput {
+	return o
+}
+
+func (o TelemetryrouterDestinationConfigFilterOutput) ToTelemetryrouterDestinationConfigFilterOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigFilterOutput {
+	return o
+}
+
+func (o TelemetryrouterDestinationConfigFilterOutput) ToTelemetryrouterDestinationConfigFilterPtrOutput() TelemetryrouterDestinationConfigFilterPtrOutput {
+	return o.ToTelemetryrouterDestinationConfigFilterPtrOutputWithContext(context.Background())
+}
+
+func (o TelemetryrouterDestinationConfigFilterOutput) ToTelemetryrouterDestinationConfigFilterPtrOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TelemetryrouterDestinationConfigFilter) *TelemetryrouterDestinationConfigFilter {
+		return &v
+	}).(TelemetryrouterDestinationConfigFilterPtrOutput)
+}
+
+// The TelemetryRouter destination's filter attributes
+func (o TelemetryrouterDestinationConfigFilterOutput) Attributes() TelemetryrouterDestinationConfigFilterAttributeArrayOutput {
+	return o.ApplyT(func(v TelemetryrouterDestinationConfigFilter) []TelemetryrouterDestinationConfigFilterAttribute {
+		return v.Attributes
+	}).(TelemetryrouterDestinationConfigFilterAttributeArrayOutput)
+}
+
+type TelemetryrouterDestinationConfigFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (TelemetryrouterDestinationConfigFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TelemetryrouterDestinationConfigFilter)(nil)).Elem()
+}
+
+func (o TelemetryrouterDestinationConfigFilterPtrOutput) ToTelemetryrouterDestinationConfigFilterPtrOutput() TelemetryrouterDestinationConfigFilterPtrOutput {
+	return o
+}
+
+func (o TelemetryrouterDestinationConfigFilterPtrOutput) ToTelemetryrouterDestinationConfigFilterPtrOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigFilterPtrOutput {
+	return o
+}
+
+func (o TelemetryrouterDestinationConfigFilterPtrOutput) Elem() TelemetryrouterDestinationConfigFilterOutput {
+	return o.ApplyT(func(v *TelemetryrouterDestinationConfigFilter) TelemetryrouterDestinationConfigFilter {
+		if v != nil {
+			return *v
+		}
+		var ret TelemetryrouterDestinationConfigFilter
+		return ret
+	}).(TelemetryrouterDestinationConfigFilterOutput)
+}
+
+// The TelemetryRouter destination's filter attributes
+func (o TelemetryrouterDestinationConfigFilterPtrOutput) Attributes() TelemetryrouterDestinationConfigFilterAttributeArrayOutput {
+	return o.ApplyT(func(v *TelemetryrouterDestinationConfigFilter) []TelemetryrouterDestinationConfigFilterAttribute {
+		if v == nil {
+			return nil
+		}
+		return v.Attributes
+	}).(TelemetryrouterDestinationConfigFilterAttributeArrayOutput)
+}
+
+type TelemetryrouterDestinationConfigFilterAttribute struct {
+	// The TelemetryRouter destination's filter attribute key
+	Key string `pulumi:"key"`
+	// The TelemetryRouter destination's filter attribute level, possible values: Possible values are: `resource`, `scope`, `logRecord`.
+	Level string `pulumi:"level"`
+	// The TelemetryRouter destination's filter attribute matcher, possible values: Possible values are: `=`, `!=`.
+	Matcher string `pulumi:"matcher"`
+	// The TelemetryRouter destination's filter attribute values
+	Values []string `pulumi:"values"`
+}
+
+// TelemetryrouterDestinationConfigFilterAttributeInput is an input type that accepts TelemetryrouterDestinationConfigFilterAttributeArgs and TelemetryrouterDestinationConfigFilterAttributeOutput values.
+// You can construct a concrete instance of `TelemetryrouterDestinationConfigFilterAttributeInput` via:
+//
+//	TelemetryrouterDestinationConfigFilterAttributeArgs{...}
+type TelemetryrouterDestinationConfigFilterAttributeInput interface {
+	pulumi.Input
+
+	ToTelemetryrouterDestinationConfigFilterAttributeOutput() TelemetryrouterDestinationConfigFilterAttributeOutput
+	ToTelemetryrouterDestinationConfigFilterAttributeOutputWithContext(context.Context) TelemetryrouterDestinationConfigFilterAttributeOutput
+}
+
+type TelemetryrouterDestinationConfigFilterAttributeArgs struct {
+	// The TelemetryRouter destination's filter attribute key
+	Key pulumi.StringInput `pulumi:"key"`
+	// The TelemetryRouter destination's filter attribute level, possible values: Possible values are: `resource`, `scope`, `logRecord`.
+	Level pulumi.StringInput `pulumi:"level"`
+	// The TelemetryRouter destination's filter attribute matcher, possible values: Possible values are: `=`, `!=`.
+	Matcher pulumi.StringInput `pulumi:"matcher"`
+	// The TelemetryRouter destination's filter attribute values
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (TelemetryrouterDestinationConfigFilterAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TelemetryrouterDestinationConfigFilterAttribute)(nil)).Elem()
+}
+
+func (i TelemetryrouterDestinationConfigFilterAttributeArgs) ToTelemetryrouterDestinationConfigFilterAttributeOutput() TelemetryrouterDestinationConfigFilterAttributeOutput {
+	return i.ToTelemetryrouterDestinationConfigFilterAttributeOutputWithContext(context.Background())
+}
+
+func (i TelemetryrouterDestinationConfigFilterAttributeArgs) ToTelemetryrouterDestinationConfigFilterAttributeOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigFilterAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryrouterDestinationConfigFilterAttributeOutput)
+}
+
+// TelemetryrouterDestinationConfigFilterAttributeArrayInput is an input type that accepts TelemetryrouterDestinationConfigFilterAttributeArray and TelemetryrouterDestinationConfigFilterAttributeArrayOutput values.
+// You can construct a concrete instance of `TelemetryrouterDestinationConfigFilterAttributeArrayInput` via:
+//
+//	TelemetryrouterDestinationConfigFilterAttributeArray{ TelemetryrouterDestinationConfigFilterAttributeArgs{...} }
+type TelemetryrouterDestinationConfigFilterAttributeArrayInput interface {
+	pulumi.Input
+
+	ToTelemetryrouterDestinationConfigFilterAttributeArrayOutput() TelemetryrouterDestinationConfigFilterAttributeArrayOutput
+	ToTelemetryrouterDestinationConfigFilterAttributeArrayOutputWithContext(context.Context) TelemetryrouterDestinationConfigFilterAttributeArrayOutput
+}
+
+type TelemetryrouterDestinationConfigFilterAttributeArray []TelemetryrouterDestinationConfigFilterAttributeInput
+
+func (TelemetryrouterDestinationConfigFilterAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TelemetryrouterDestinationConfigFilterAttribute)(nil)).Elem()
+}
+
+func (i TelemetryrouterDestinationConfigFilterAttributeArray) ToTelemetryrouterDestinationConfigFilterAttributeArrayOutput() TelemetryrouterDestinationConfigFilterAttributeArrayOutput {
+	return i.ToTelemetryrouterDestinationConfigFilterAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i TelemetryrouterDestinationConfigFilterAttributeArray) ToTelemetryrouterDestinationConfigFilterAttributeArrayOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigFilterAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryrouterDestinationConfigFilterAttributeArrayOutput)
+}
+
+type TelemetryrouterDestinationConfigFilterAttributeOutput struct{ *pulumi.OutputState }
+
+func (TelemetryrouterDestinationConfigFilterAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TelemetryrouterDestinationConfigFilterAttribute)(nil)).Elem()
+}
+
+func (o TelemetryrouterDestinationConfigFilterAttributeOutput) ToTelemetryrouterDestinationConfigFilterAttributeOutput() TelemetryrouterDestinationConfigFilterAttributeOutput {
+	return o
+}
+
+func (o TelemetryrouterDestinationConfigFilterAttributeOutput) ToTelemetryrouterDestinationConfigFilterAttributeOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigFilterAttributeOutput {
+	return o
+}
+
+// The TelemetryRouter destination's filter attribute key
+func (o TelemetryrouterDestinationConfigFilterAttributeOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v TelemetryrouterDestinationConfigFilterAttribute) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The TelemetryRouter destination's filter attribute level, possible values: Possible values are: `resource`, `scope`, `logRecord`.
+func (o TelemetryrouterDestinationConfigFilterAttributeOutput) Level() pulumi.StringOutput {
+	return o.ApplyT(func(v TelemetryrouterDestinationConfigFilterAttribute) string { return v.Level }).(pulumi.StringOutput)
+}
+
+// The TelemetryRouter destination's filter attribute matcher, possible values: Possible values are: `=`, `!=`.
+func (o TelemetryrouterDestinationConfigFilterAttributeOutput) Matcher() pulumi.StringOutput {
+	return o.ApplyT(func(v TelemetryrouterDestinationConfigFilterAttribute) string { return v.Matcher }).(pulumi.StringOutput)
+}
+
+// The TelemetryRouter destination's filter attribute values
+func (o TelemetryrouterDestinationConfigFilterAttributeOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TelemetryrouterDestinationConfigFilterAttribute) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type TelemetryrouterDestinationConfigFilterAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (TelemetryrouterDestinationConfigFilterAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TelemetryrouterDestinationConfigFilterAttribute)(nil)).Elem()
+}
+
+func (o TelemetryrouterDestinationConfigFilterAttributeArrayOutput) ToTelemetryrouterDestinationConfigFilterAttributeArrayOutput() TelemetryrouterDestinationConfigFilterAttributeArrayOutput {
+	return o
+}
+
+func (o TelemetryrouterDestinationConfigFilterAttributeArrayOutput) ToTelemetryrouterDestinationConfigFilterAttributeArrayOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigFilterAttributeArrayOutput {
+	return o
+}
+
+func (o TelemetryrouterDestinationConfigFilterAttributeArrayOutput) Index(i pulumi.IntInput) TelemetryrouterDestinationConfigFilterAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TelemetryrouterDestinationConfigFilterAttribute {
+		return vs[0].([]TelemetryrouterDestinationConfigFilterAttribute)[vs[1].(int)]
+	}).(TelemetryrouterDestinationConfigFilterAttributeOutput)
+}
+
+type TelemetryrouterDestinationConfigOpentelemetry struct {
+	// OpenTelemetry basic auth configuration
+	BasicAuth *TelemetryrouterDestinationConfigOpentelemetryBasicAuth `pulumi:"basicAuth"`
+	// OpenTelemetry bearer token
+	BearerToken *string `pulumi:"bearerToken"`
+	// OpenTelemetry destination URI
+	Uri string `pulumi:"uri"`
+}
+
+// TelemetryrouterDestinationConfigOpentelemetryInput is an input type that accepts TelemetryrouterDestinationConfigOpentelemetryArgs and TelemetryrouterDestinationConfigOpentelemetryOutput values.
+// You can construct a concrete instance of `TelemetryrouterDestinationConfigOpentelemetryInput` via:
+//
+//	TelemetryrouterDestinationConfigOpentelemetryArgs{...}
+type TelemetryrouterDestinationConfigOpentelemetryInput interface {
+	pulumi.Input
+
+	ToTelemetryrouterDestinationConfigOpentelemetryOutput() TelemetryrouterDestinationConfigOpentelemetryOutput
+	ToTelemetryrouterDestinationConfigOpentelemetryOutputWithContext(context.Context) TelemetryrouterDestinationConfigOpentelemetryOutput
+}
+
+type TelemetryrouterDestinationConfigOpentelemetryArgs struct {
+	// OpenTelemetry basic auth configuration
+	BasicAuth TelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrInput `pulumi:"basicAuth"`
+	// OpenTelemetry bearer token
+	BearerToken pulumi.StringPtrInput `pulumi:"bearerToken"`
+	// OpenTelemetry destination URI
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (TelemetryrouterDestinationConfigOpentelemetryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TelemetryrouterDestinationConfigOpentelemetry)(nil)).Elem()
+}
+
+func (i TelemetryrouterDestinationConfigOpentelemetryArgs) ToTelemetryrouterDestinationConfigOpentelemetryOutput() TelemetryrouterDestinationConfigOpentelemetryOutput {
+	return i.ToTelemetryrouterDestinationConfigOpentelemetryOutputWithContext(context.Background())
+}
+
+func (i TelemetryrouterDestinationConfigOpentelemetryArgs) ToTelemetryrouterDestinationConfigOpentelemetryOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigOpentelemetryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryrouterDestinationConfigOpentelemetryOutput)
+}
+
+func (i TelemetryrouterDestinationConfigOpentelemetryArgs) ToTelemetryrouterDestinationConfigOpentelemetryPtrOutput() TelemetryrouterDestinationConfigOpentelemetryPtrOutput {
+	return i.ToTelemetryrouterDestinationConfigOpentelemetryPtrOutputWithContext(context.Background())
+}
+
+func (i TelemetryrouterDestinationConfigOpentelemetryArgs) ToTelemetryrouterDestinationConfigOpentelemetryPtrOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigOpentelemetryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryrouterDestinationConfigOpentelemetryOutput).ToTelemetryrouterDestinationConfigOpentelemetryPtrOutputWithContext(ctx)
+}
+
+// TelemetryrouterDestinationConfigOpentelemetryPtrInput is an input type that accepts TelemetryrouterDestinationConfigOpentelemetryArgs, TelemetryrouterDestinationConfigOpentelemetryPtr and TelemetryrouterDestinationConfigOpentelemetryPtrOutput values.
+// You can construct a concrete instance of `TelemetryrouterDestinationConfigOpentelemetryPtrInput` via:
+//
+//	        TelemetryrouterDestinationConfigOpentelemetryArgs{...}
+//
+//	or:
+//
+//	        nil
+type TelemetryrouterDestinationConfigOpentelemetryPtrInput interface {
+	pulumi.Input
+
+	ToTelemetryrouterDestinationConfigOpentelemetryPtrOutput() TelemetryrouterDestinationConfigOpentelemetryPtrOutput
+	ToTelemetryrouterDestinationConfigOpentelemetryPtrOutputWithContext(context.Context) TelemetryrouterDestinationConfigOpentelemetryPtrOutput
+}
+
+type telemetryrouterDestinationConfigOpentelemetryPtrType TelemetryrouterDestinationConfigOpentelemetryArgs
+
+func TelemetryrouterDestinationConfigOpentelemetryPtr(v *TelemetryrouterDestinationConfigOpentelemetryArgs) TelemetryrouterDestinationConfigOpentelemetryPtrInput {
+	return (*telemetryrouterDestinationConfigOpentelemetryPtrType)(v)
+}
+
+func (*telemetryrouterDestinationConfigOpentelemetryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TelemetryrouterDestinationConfigOpentelemetry)(nil)).Elem()
+}
+
+func (i *telemetryrouterDestinationConfigOpentelemetryPtrType) ToTelemetryrouterDestinationConfigOpentelemetryPtrOutput() TelemetryrouterDestinationConfigOpentelemetryPtrOutput {
+	return i.ToTelemetryrouterDestinationConfigOpentelemetryPtrOutputWithContext(context.Background())
+}
+
+func (i *telemetryrouterDestinationConfigOpentelemetryPtrType) ToTelemetryrouterDestinationConfigOpentelemetryPtrOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigOpentelemetryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryrouterDestinationConfigOpentelemetryPtrOutput)
+}
+
+type TelemetryrouterDestinationConfigOpentelemetryOutput struct{ *pulumi.OutputState }
+
+func (TelemetryrouterDestinationConfigOpentelemetryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TelemetryrouterDestinationConfigOpentelemetry)(nil)).Elem()
+}
+
+func (o TelemetryrouterDestinationConfigOpentelemetryOutput) ToTelemetryrouterDestinationConfigOpentelemetryOutput() TelemetryrouterDestinationConfigOpentelemetryOutput {
+	return o
+}
+
+func (o TelemetryrouterDestinationConfigOpentelemetryOutput) ToTelemetryrouterDestinationConfigOpentelemetryOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigOpentelemetryOutput {
+	return o
+}
+
+func (o TelemetryrouterDestinationConfigOpentelemetryOutput) ToTelemetryrouterDestinationConfigOpentelemetryPtrOutput() TelemetryrouterDestinationConfigOpentelemetryPtrOutput {
+	return o.ToTelemetryrouterDestinationConfigOpentelemetryPtrOutputWithContext(context.Background())
+}
+
+func (o TelemetryrouterDestinationConfigOpentelemetryOutput) ToTelemetryrouterDestinationConfigOpentelemetryPtrOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigOpentelemetryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TelemetryrouterDestinationConfigOpentelemetry) *TelemetryrouterDestinationConfigOpentelemetry {
+		return &v
+	}).(TelemetryrouterDestinationConfigOpentelemetryPtrOutput)
+}
+
+// OpenTelemetry basic auth configuration
+func (o TelemetryrouterDestinationConfigOpentelemetryOutput) BasicAuth() TelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutput {
+	return o.ApplyT(func(v TelemetryrouterDestinationConfigOpentelemetry) *TelemetryrouterDestinationConfigOpentelemetryBasicAuth {
+		return v.BasicAuth
+	}).(TelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutput)
+}
+
+// OpenTelemetry bearer token
+func (o TelemetryrouterDestinationConfigOpentelemetryOutput) BearerToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TelemetryrouterDestinationConfigOpentelemetry) *string { return v.BearerToken }).(pulumi.StringPtrOutput)
+}
+
+// OpenTelemetry destination URI
+func (o TelemetryrouterDestinationConfigOpentelemetryOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v TelemetryrouterDestinationConfigOpentelemetry) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type TelemetryrouterDestinationConfigOpentelemetryPtrOutput struct{ *pulumi.OutputState }
+
+func (TelemetryrouterDestinationConfigOpentelemetryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TelemetryrouterDestinationConfigOpentelemetry)(nil)).Elem()
+}
+
+func (o TelemetryrouterDestinationConfigOpentelemetryPtrOutput) ToTelemetryrouterDestinationConfigOpentelemetryPtrOutput() TelemetryrouterDestinationConfigOpentelemetryPtrOutput {
+	return o
+}
+
+func (o TelemetryrouterDestinationConfigOpentelemetryPtrOutput) ToTelemetryrouterDestinationConfigOpentelemetryPtrOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigOpentelemetryPtrOutput {
+	return o
+}
+
+func (o TelemetryrouterDestinationConfigOpentelemetryPtrOutput) Elem() TelemetryrouterDestinationConfigOpentelemetryOutput {
+	return o.ApplyT(func(v *TelemetryrouterDestinationConfigOpentelemetry) TelemetryrouterDestinationConfigOpentelemetry {
+		if v != nil {
+			return *v
+		}
+		var ret TelemetryrouterDestinationConfigOpentelemetry
+		return ret
+	}).(TelemetryrouterDestinationConfigOpentelemetryOutput)
+}
+
+// OpenTelemetry basic auth configuration
+func (o TelemetryrouterDestinationConfigOpentelemetryPtrOutput) BasicAuth() TelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutput {
+	return o.ApplyT(func(v *TelemetryrouterDestinationConfigOpentelemetry) *TelemetryrouterDestinationConfigOpentelemetryBasicAuth {
+		if v == nil {
+			return nil
+		}
+		return v.BasicAuth
+	}).(TelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutput)
+}
+
+// OpenTelemetry bearer token
+func (o TelemetryrouterDestinationConfigOpentelemetryPtrOutput) BearerToken() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TelemetryrouterDestinationConfigOpentelemetry) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BearerToken
+	}).(pulumi.StringPtrOutput)
+}
+
+// OpenTelemetry destination URI
+func (o TelemetryrouterDestinationConfigOpentelemetryPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TelemetryrouterDestinationConfigOpentelemetry) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type TelemetryrouterDestinationConfigOpentelemetryBasicAuth struct {
+	// OpenTelemetry basic auth username
+	Password string `pulumi:"password"`
+	// OpenTelemetry basic auth username
+	Username string `pulumi:"username"`
+}
+
+// TelemetryrouterDestinationConfigOpentelemetryBasicAuthInput is an input type that accepts TelemetryrouterDestinationConfigOpentelemetryBasicAuthArgs and TelemetryrouterDestinationConfigOpentelemetryBasicAuthOutput values.
+// You can construct a concrete instance of `TelemetryrouterDestinationConfigOpentelemetryBasicAuthInput` via:
+//
+//	TelemetryrouterDestinationConfigOpentelemetryBasicAuthArgs{...}
+type TelemetryrouterDestinationConfigOpentelemetryBasicAuthInput interface {
+	pulumi.Input
+
+	ToTelemetryrouterDestinationConfigOpentelemetryBasicAuthOutput() TelemetryrouterDestinationConfigOpentelemetryBasicAuthOutput
+	ToTelemetryrouterDestinationConfigOpentelemetryBasicAuthOutputWithContext(context.Context) TelemetryrouterDestinationConfigOpentelemetryBasicAuthOutput
+}
+
+type TelemetryrouterDestinationConfigOpentelemetryBasicAuthArgs struct {
+	// OpenTelemetry basic auth username
+	Password pulumi.StringInput `pulumi:"password"`
+	// OpenTelemetry basic auth username
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (TelemetryrouterDestinationConfigOpentelemetryBasicAuthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TelemetryrouterDestinationConfigOpentelemetryBasicAuth)(nil)).Elem()
+}
+
+func (i TelemetryrouterDestinationConfigOpentelemetryBasicAuthArgs) ToTelemetryrouterDestinationConfigOpentelemetryBasicAuthOutput() TelemetryrouterDestinationConfigOpentelemetryBasicAuthOutput {
+	return i.ToTelemetryrouterDestinationConfigOpentelemetryBasicAuthOutputWithContext(context.Background())
+}
+
+func (i TelemetryrouterDestinationConfigOpentelemetryBasicAuthArgs) ToTelemetryrouterDestinationConfigOpentelemetryBasicAuthOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigOpentelemetryBasicAuthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryrouterDestinationConfigOpentelemetryBasicAuthOutput)
+}
+
+func (i TelemetryrouterDestinationConfigOpentelemetryBasicAuthArgs) ToTelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutput() TelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutput {
+	return i.ToTelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutputWithContext(context.Background())
+}
+
+func (i TelemetryrouterDestinationConfigOpentelemetryBasicAuthArgs) ToTelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryrouterDestinationConfigOpentelemetryBasicAuthOutput).ToTelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutputWithContext(ctx)
+}
+
+// TelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrInput is an input type that accepts TelemetryrouterDestinationConfigOpentelemetryBasicAuthArgs, TelemetryrouterDestinationConfigOpentelemetryBasicAuthPtr and TelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutput values.
+// You can construct a concrete instance of `TelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrInput` via:
+//
+//	        TelemetryrouterDestinationConfigOpentelemetryBasicAuthArgs{...}
+//
+//	or:
+//
+//	        nil
+type TelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrInput interface {
+	pulumi.Input
+
+	ToTelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutput() TelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutput
+	ToTelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutputWithContext(context.Context) TelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutput
+}
+
+type telemetryrouterDestinationConfigOpentelemetryBasicAuthPtrType TelemetryrouterDestinationConfigOpentelemetryBasicAuthArgs
+
+func TelemetryrouterDestinationConfigOpentelemetryBasicAuthPtr(v *TelemetryrouterDestinationConfigOpentelemetryBasicAuthArgs) TelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrInput {
+	return (*telemetryrouterDestinationConfigOpentelemetryBasicAuthPtrType)(v)
+}
+
+func (*telemetryrouterDestinationConfigOpentelemetryBasicAuthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TelemetryrouterDestinationConfigOpentelemetryBasicAuth)(nil)).Elem()
+}
+
+func (i *telemetryrouterDestinationConfigOpentelemetryBasicAuthPtrType) ToTelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutput() TelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutput {
+	return i.ToTelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutputWithContext(context.Background())
+}
+
+func (i *telemetryrouterDestinationConfigOpentelemetryBasicAuthPtrType) ToTelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutput)
+}
+
+type TelemetryrouterDestinationConfigOpentelemetryBasicAuthOutput struct{ *pulumi.OutputState }
+
+func (TelemetryrouterDestinationConfigOpentelemetryBasicAuthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TelemetryrouterDestinationConfigOpentelemetryBasicAuth)(nil)).Elem()
+}
+
+func (o TelemetryrouterDestinationConfigOpentelemetryBasicAuthOutput) ToTelemetryrouterDestinationConfigOpentelemetryBasicAuthOutput() TelemetryrouterDestinationConfigOpentelemetryBasicAuthOutput {
+	return o
+}
+
+func (o TelemetryrouterDestinationConfigOpentelemetryBasicAuthOutput) ToTelemetryrouterDestinationConfigOpentelemetryBasicAuthOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigOpentelemetryBasicAuthOutput {
+	return o
+}
+
+func (o TelemetryrouterDestinationConfigOpentelemetryBasicAuthOutput) ToTelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutput() TelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutput {
+	return o.ToTelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutputWithContext(context.Background())
+}
+
+func (o TelemetryrouterDestinationConfigOpentelemetryBasicAuthOutput) ToTelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TelemetryrouterDestinationConfigOpentelemetryBasicAuth) *TelemetryrouterDestinationConfigOpentelemetryBasicAuth {
+		return &v
+	}).(TelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutput)
+}
+
+// OpenTelemetry basic auth username
+func (o TelemetryrouterDestinationConfigOpentelemetryBasicAuthOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v TelemetryrouterDestinationConfigOpentelemetryBasicAuth) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// OpenTelemetry basic auth username
+func (o TelemetryrouterDestinationConfigOpentelemetryBasicAuthOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v TelemetryrouterDestinationConfigOpentelemetryBasicAuth) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type TelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutput struct{ *pulumi.OutputState }
+
+func (TelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TelemetryrouterDestinationConfigOpentelemetryBasicAuth)(nil)).Elem()
+}
+
+func (o TelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutput) ToTelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutput() TelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutput {
+	return o
+}
+
+func (o TelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutput) ToTelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutput {
+	return o
+}
+
+func (o TelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutput) Elem() TelemetryrouterDestinationConfigOpentelemetryBasicAuthOutput {
+	return o.ApplyT(func(v *TelemetryrouterDestinationConfigOpentelemetryBasicAuth) TelemetryrouterDestinationConfigOpentelemetryBasicAuth {
+		if v != nil {
+			return *v
+		}
+		var ret TelemetryrouterDestinationConfigOpentelemetryBasicAuth
+		return ret
+	}).(TelemetryrouterDestinationConfigOpentelemetryBasicAuthOutput)
+}
+
+// OpenTelemetry basic auth username
+func (o TelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TelemetryrouterDestinationConfigOpentelemetryBasicAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// OpenTelemetry basic auth username
+func (o TelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TelemetryrouterDestinationConfigOpentelemetryBasicAuth) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type TelemetryrouterDestinationConfigS3 struct {
+	// S3 access key configuration
+	AccessKey *TelemetryrouterDestinationConfigS3AccessKey `pulumi:"accessKey"`
+	// S3 bucket name
+	Bucket string `pulumi:"bucket"`
+	// S3 endpoint
+	Endpoint string `pulumi:"endpoint"`
+}
+
+// TelemetryrouterDestinationConfigS3Input is an input type that accepts TelemetryrouterDestinationConfigS3Args and TelemetryrouterDestinationConfigS3Output values.
+// You can construct a concrete instance of `TelemetryrouterDestinationConfigS3Input` via:
+//
+//	TelemetryrouterDestinationConfigS3Args{...}
+type TelemetryrouterDestinationConfigS3Input interface {
+	pulumi.Input
+
+	ToTelemetryrouterDestinationConfigS3Output() TelemetryrouterDestinationConfigS3Output
+	ToTelemetryrouterDestinationConfigS3OutputWithContext(context.Context) TelemetryrouterDestinationConfigS3Output
+}
+
+type TelemetryrouterDestinationConfigS3Args struct {
+	// S3 access key configuration
+	AccessKey TelemetryrouterDestinationConfigS3AccessKeyPtrInput `pulumi:"accessKey"`
+	// S3 bucket name
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// S3 endpoint
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+}
+
+func (TelemetryrouterDestinationConfigS3Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*TelemetryrouterDestinationConfigS3)(nil)).Elem()
+}
+
+func (i TelemetryrouterDestinationConfigS3Args) ToTelemetryrouterDestinationConfigS3Output() TelemetryrouterDestinationConfigS3Output {
+	return i.ToTelemetryrouterDestinationConfigS3OutputWithContext(context.Background())
+}
+
+func (i TelemetryrouterDestinationConfigS3Args) ToTelemetryrouterDestinationConfigS3OutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigS3Output {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryrouterDestinationConfigS3Output)
+}
+
+func (i TelemetryrouterDestinationConfigS3Args) ToTelemetryrouterDestinationConfigS3PtrOutput() TelemetryrouterDestinationConfigS3PtrOutput {
+	return i.ToTelemetryrouterDestinationConfigS3PtrOutputWithContext(context.Background())
+}
+
+func (i TelemetryrouterDestinationConfigS3Args) ToTelemetryrouterDestinationConfigS3PtrOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigS3PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryrouterDestinationConfigS3Output).ToTelemetryrouterDestinationConfigS3PtrOutputWithContext(ctx)
+}
+
+// TelemetryrouterDestinationConfigS3PtrInput is an input type that accepts TelemetryrouterDestinationConfigS3Args, TelemetryrouterDestinationConfigS3Ptr and TelemetryrouterDestinationConfigS3PtrOutput values.
+// You can construct a concrete instance of `TelemetryrouterDestinationConfigS3PtrInput` via:
+//
+//	        TelemetryrouterDestinationConfigS3Args{...}
+//
+//	or:
+//
+//	        nil
+type TelemetryrouterDestinationConfigS3PtrInput interface {
+	pulumi.Input
+
+	ToTelemetryrouterDestinationConfigS3PtrOutput() TelemetryrouterDestinationConfigS3PtrOutput
+	ToTelemetryrouterDestinationConfigS3PtrOutputWithContext(context.Context) TelemetryrouterDestinationConfigS3PtrOutput
+}
+
+type telemetryrouterDestinationConfigS3PtrType TelemetryrouterDestinationConfigS3Args
+
+func TelemetryrouterDestinationConfigS3Ptr(v *TelemetryrouterDestinationConfigS3Args) TelemetryrouterDestinationConfigS3PtrInput {
+	return (*telemetryrouterDestinationConfigS3PtrType)(v)
+}
+
+func (*telemetryrouterDestinationConfigS3PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TelemetryrouterDestinationConfigS3)(nil)).Elem()
+}
+
+func (i *telemetryrouterDestinationConfigS3PtrType) ToTelemetryrouterDestinationConfigS3PtrOutput() TelemetryrouterDestinationConfigS3PtrOutput {
+	return i.ToTelemetryrouterDestinationConfigS3PtrOutputWithContext(context.Background())
+}
+
+func (i *telemetryrouterDestinationConfigS3PtrType) ToTelemetryrouterDestinationConfigS3PtrOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigS3PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryrouterDestinationConfigS3PtrOutput)
+}
+
+type TelemetryrouterDestinationConfigS3Output struct{ *pulumi.OutputState }
+
+func (TelemetryrouterDestinationConfigS3Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*TelemetryrouterDestinationConfigS3)(nil)).Elem()
+}
+
+func (o TelemetryrouterDestinationConfigS3Output) ToTelemetryrouterDestinationConfigS3Output() TelemetryrouterDestinationConfigS3Output {
+	return o
+}
+
+func (o TelemetryrouterDestinationConfigS3Output) ToTelemetryrouterDestinationConfigS3OutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigS3Output {
+	return o
+}
+
+func (o TelemetryrouterDestinationConfigS3Output) ToTelemetryrouterDestinationConfigS3PtrOutput() TelemetryrouterDestinationConfigS3PtrOutput {
+	return o.ToTelemetryrouterDestinationConfigS3PtrOutputWithContext(context.Background())
+}
+
+func (o TelemetryrouterDestinationConfigS3Output) ToTelemetryrouterDestinationConfigS3PtrOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigS3PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TelemetryrouterDestinationConfigS3) *TelemetryrouterDestinationConfigS3 {
+		return &v
+	}).(TelemetryrouterDestinationConfigS3PtrOutput)
+}
+
+// S3 access key configuration
+func (o TelemetryrouterDestinationConfigS3Output) AccessKey() TelemetryrouterDestinationConfigS3AccessKeyPtrOutput {
+	return o.ApplyT(func(v TelemetryrouterDestinationConfigS3) *TelemetryrouterDestinationConfigS3AccessKey {
+		return v.AccessKey
+	}).(TelemetryrouterDestinationConfigS3AccessKeyPtrOutput)
+}
+
+// S3 bucket name
+func (o TelemetryrouterDestinationConfigS3Output) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v TelemetryrouterDestinationConfigS3) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// S3 endpoint
+func (o TelemetryrouterDestinationConfigS3Output) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v TelemetryrouterDestinationConfigS3) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+type TelemetryrouterDestinationConfigS3PtrOutput struct{ *pulumi.OutputState }
+
+func (TelemetryrouterDestinationConfigS3PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TelemetryrouterDestinationConfigS3)(nil)).Elem()
+}
+
+func (o TelemetryrouterDestinationConfigS3PtrOutput) ToTelemetryrouterDestinationConfigS3PtrOutput() TelemetryrouterDestinationConfigS3PtrOutput {
+	return o
+}
+
+func (o TelemetryrouterDestinationConfigS3PtrOutput) ToTelemetryrouterDestinationConfigS3PtrOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigS3PtrOutput {
+	return o
+}
+
+func (o TelemetryrouterDestinationConfigS3PtrOutput) Elem() TelemetryrouterDestinationConfigS3Output {
+	return o.ApplyT(func(v *TelemetryrouterDestinationConfigS3) TelemetryrouterDestinationConfigS3 {
+		if v != nil {
+			return *v
+		}
+		var ret TelemetryrouterDestinationConfigS3
+		return ret
+	}).(TelemetryrouterDestinationConfigS3Output)
+}
+
+// S3 access key configuration
+func (o TelemetryrouterDestinationConfigS3PtrOutput) AccessKey() TelemetryrouterDestinationConfigS3AccessKeyPtrOutput {
+	return o.ApplyT(func(v *TelemetryrouterDestinationConfigS3) *TelemetryrouterDestinationConfigS3AccessKey {
+		if v == nil {
+			return nil
+		}
+		return v.AccessKey
+	}).(TelemetryrouterDestinationConfigS3AccessKeyPtrOutput)
+}
+
+// S3 bucket name
+func (o TelemetryrouterDestinationConfigS3PtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TelemetryrouterDestinationConfigS3) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// S3 endpoint
+func (o TelemetryrouterDestinationConfigS3PtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TelemetryrouterDestinationConfigS3) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Endpoint
+	}).(pulumi.StringPtrOutput)
+}
+
+type TelemetryrouterDestinationConfigS3AccessKey struct {
+	// S3 access key ID
+	Id string `pulumi:"id"`
+	// S3 access key secret
+	Secret string `pulumi:"secret"`
+}
+
+// TelemetryrouterDestinationConfigS3AccessKeyInput is an input type that accepts TelemetryrouterDestinationConfigS3AccessKeyArgs and TelemetryrouterDestinationConfigS3AccessKeyOutput values.
+// You can construct a concrete instance of `TelemetryrouterDestinationConfigS3AccessKeyInput` via:
+//
+//	TelemetryrouterDestinationConfigS3AccessKeyArgs{...}
+type TelemetryrouterDestinationConfigS3AccessKeyInput interface {
+	pulumi.Input
+
+	ToTelemetryrouterDestinationConfigS3AccessKeyOutput() TelemetryrouterDestinationConfigS3AccessKeyOutput
+	ToTelemetryrouterDestinationConfigS3AccessKeyOutputWithContext(context.Context) TelemetryrouterDestinationConfigS3AccessKeyOutput
+}
+
+type TelemetryrouterDestinationConfigS3AccessKeyArgs struct {
+	// S3 access key ID
+	Id pulumi.StringInput `pulumi:"id"`
+	// S3 access key secret
+	Secret pulumi.StringInput `pulumi:"secret"`
+}
+
+func (TelemetryrouterDestinationConfigS3AccessKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TelemetryrouterDestinationConfigS3AccessKey)(nil)).Elem()
+}
+
+func (i TelemetryrouterDestinationConfigS3AccessKeyArgs) ToTelemetryrouterDestinationConfigS3AccessKeyOutput() TelemetryrouterDestinationConfigS3AccessKeyOutput {
+	return i.ToTelemetryrouterDestinationConfigS3AccessKeyOutputWithContext(context.Background())
+}
+
+func (i TelemetryrouterDestinationConfigS3AccessKeyArgs) ToTelemetryrouterDestinationConfigS3AccessKeyOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigS3AccessKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryrouterDestinationConfigS3AccessKeyOutput)
+}
+
+func (i TelemetryrouterDestinationConfigS3AccessKeyArgs) ToTelemetryrouterDestinationConfigS3AccessKeyPtrOutput() TelemetryrouterDestinationConfigS3AccessKeyPtrOutput {
+	return i.ToTelemetryrouterDestinationConfigS3AccessKeyPtrOutputWithContext(context.Background())
+}
+
+func (i TelemetryrouterDestinationConfigS3AccessKeyArgs) ToTelemetryrouterDestinationConfigS3AccessKeyPtrOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigS3AccessKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryrouterDestinationConfigS3AccessKeyOutput).ToTelemetryrouterDestinationConfigS3AccessKeyPtrOutputWithContext(ctx)
+}
+
+// TelemetryrouterDestinationConfigS3AccessKeyPtrInput is an input type that accepts TelemetryrouterDestinationConfigS3AccessKeyArgs, TelemetryrouterDestinationConfigS3AccessKeyPtr and TelemetryrouterDestinationConfigS3AccessKeyPtrOutput values.
+// You can construct a concrete instance of `TelemetryrouterDestinationConfigS3AccessKeyPtrInput` via:
+//
+//	        TelemetryrouterDestinationConfigS3AccessKeyArgs{...}
+//
+//	or:
+//
+//	        nil
+type TelemetryrouterDestinationConfigS3AccessKeyPtrInput interface {
+	pulumi.Input
+
+	ToTelemetryrouterDestinationConfigS3AccessKeyPtrOutput() TelemetryrouterDestinationConfigS3AccessKeyPtrOutput
+	ToTelemetryrouterDestinationConfigS3AccessKeyPtrOutputWithContext(context.Context) TelemetryrouterDestinationConfigS3AccessKeyPtrOutput
+}
+
+type telemetryrouterDestinationConfigS3AccessKeyPtrType TelemetryrouterDestinationConfigS3AccessKeyArgs
+
+func TelemetryrouterDestinationConfigS3AccessKeyPtr(v *TelemetryrouterDestinationConfigS3AccessKeyArgs) TelemetryrouterDestinationConfigS3AccessKeyPtrInput {
+	return (*telemetryrouterDestinationConfigS3AccessKeyPtrType)(v)
+}
+
+func (*telemetryrouterDestinationConfigS3AccessKeyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TelemetryrouterDestinationConfigS3AccessKey)(nil)).Elem()
+}
+
+func (i *telemetryrouterDestinationConfigS3AccessKeyPtrType) ToTelemetryrouterDestinationConfigS3AccessKeyPtrOutput() TelemetryrouterDestinationConfigS3AccessKeyPtrOutput {
+	return i.ToTelemetryrouterDestinationConfigS3AccessKeyPtrOutputWithContext(context.Background())
+}
+
+func (i *telemetryrouterDestinationConfigS3AccessKeyPtrType) ToTelemetryrouterDestinationConfigS3AccessKeyPtrOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigS3AccessKeyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryrouterDestinationConfigS3AccessKeyPtrOutput)
+}
+
+type TelemetryrouterDestinationConfigS3AccessKeyOutput struct{ *pulumi.OutputState }
+
+func (TelemetryrouterDestinationConfigS3AccessKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TelemetryrouterDestinationConfigS3AccessKey)(nil)).Elem()
+}
+
+func (o TelemetryrouterDestinationConfigS3AccessKeyOutput) ToTelemetryrouterDestinationConfigS3AccessKeyOutput() TelemetryrouterDestinationConfigS3AccessKeyOutput {
+	return o
+}
+
+func (o TelemetryrouterDestinationConfigS3AccessKeyOutput) ToTelemetryrouterDestinationConfigS3AccessKeyOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigS3AccessKeyOutput {
+	return o
+}
+
+func (o TelemetryrouterDestinationConfigS3AccessKeyOutput) ToTelemetryrouterDestinationConfigS3AccessKeyPtrOutput() TelemetryrouterDestinationConfigS3AccessKeyPtrOutput {
+	return o.ToTelemetryrouterDestinationConfigS3AccessKeyPtrOutputWithContext(context.Background())
+}
+
+func (o TelemetryrouterDestinationConfigS3AccessKeyOutput) ToTelemetryrouterDestinationConfigS3AccessKeyPtrOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigS3AccessKeyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TelemetryrouterDestinationConfigS3AccessKey) *TelemetryrouterDestinationConfigS3AccessKey {
+		return &v
+	}).(TelemetryrouterDestinationConfigS3AccessKeyPtrOutput)
+}
+
+// S3 access key ID
+func (o TelemetryrouterDestinationConfigS3AccessKeyOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v TelemetryrouterDestinationConfigS3AccessKey) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// S3 access key secret
+func (o TelemetryrouterDestinationConfigS3AccessKeyOutput) Secret() pulumi.StringOutput {
+	return o.ApplyT(func(v TelemetryrouterDestinationConfigS3AccessKey) string { return v.Secret }).(pulumi.StringOutput)
+}
+
+type TelemetryrouterDestinationConfigS3AccessKeyPtrOutput struct{ *pulumi.OutputState }
+
+func (TelemetryrouterDestinationConfigS3AccessKeyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TelemetryrouterDestinationConfigS3AccessKey)(nil)).Elem()
+}
+
+func (o TelemetryrouterDestinationConfigS3AccessKeyPtrOutput) ToTelemetryrouterDestinationConfigS3AccessKeyPtrOutput() TelemetryrouterDestinationConfigS3AccessKeyPtrOutput {
+	return o
+}
+
+func (o TelemetryrouterDestinationConfigS3AccessKeyPtrOutput) ToTelemetryrouterDestinationConfigS3AccessKeyPtrOutputWithContext(ctx context.Context) TelemetryrouterDestinationConfigS3AccessKeyPtrOutput {
+	return o
+}
+
+func (o TelemetryrouterDestinationConfigS3AccessKeyPtrOutput) Elem() TelemetryrouterDestinationConfigS3AccessKeyOutput {
+	return o.ApplyT(func(v *TelemetryrouterDestinationConfigS3AccessKey) TelemetryrouterDestinationConfigS3AccessKey {
+		if v != nil {
+			return *v
+		}
+		var ret TelemetryrouterDestinationConfigS3AccessKey
+		return ret
+	}).(TelemetryrouterDestinationConfigS3AccessKeyOutput)
+}
+
+// S3 access key ID
+func (o TelemetryrouterDestinationConfigS3AccessKeyPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TelemetryrouterDestinationConfigS3AccessKey) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// S3 access key secret
+func (o TelemetryrouterDestinationConfigS3AccessKeyPtrOutput) Secret() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TelemetryrouterDestinationConfigS3AccessKey) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Secret
+	}).(pulumi.StringPtrOutput)
+}
+
+type TelemetryrouterInstanceFilter struct {
+	// The TelemetryRouter global filter attributes
+	Attributes []TelemetryrouterInstanceFilterAttribute `pulumi:"attributes"`
+}
+
+// TelemetryrouterInstanceFilterInput is an input type that accepts TelemetryrouterInstanceFilterArgs and TelemetryrouterInstanceFilterOutput values.
+// You can construct a concrete instance of `TelemetryrouterInstanceFilterInput` via:
+//
+//	TelemetryrouterInstanceFilterArgs{...}
+type TelemetryrouterInstanceFilterInput interface {
+	pulumi.Input
+
+	ToTelemetryrouterInstanceFilterOutput() TelemetryrouterInstanceFilterOutput
+	ToTelemetryrouterInstanceFilterOutputWithContext(context.Context) TelemetryrouterInstanceFilterOutput
+}
+
+type TelemetryrouterInstanceFilterArgs struct {
+	// The TelemetryRouter global filter attributes
+	Attributes TelemetryrouterInstanceFilterAttributeArrayInput `pulumi:"attributes"`
+}
+
+func (TelemetryrouterInstanceFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TelemetryrouterInstanceFilter)(nil)).Elem()
+}
+
+func (i TelemetryrouterInstanceFilterArgs) ToTelemetryrouterInstanceFilterOutput() TelemetryrouterInstanceFilterOutput {
+	return i.ToTelemetryrouterInstanceFilterOutputWithContext(context.Background())
+}
+
+func (i TelemetryrouterInstanceFilterArgs) ToTelemetryrouterInstanceFilterOutputWithContext(ctx context.Context) TelemetryrouterInstanceFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryrouterInstanceFilterOutput)
+}
+
+func (i TelemetryrouterInstanceFilterArgs) ToTelemetryrouterInstanceFilterPtrOutput() TelemetryrouterInstanceFilterPtrOutput {
+	return i.ToTelemetryrouterInstanceFilterPtrOutputWithContext(context.Background())
+}
+
+func (i TelemetryrouterInstanceFilterArgs) ToTelemetryrouterInstanceFilterPtrOutputWithContext(ctx context.Context) TelemetryrouterInstanceFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryrouterInstanceFilterOutput).ToTelemetryrouterInstanceFilterPtrOutputWithContext(ctx)
+}
+
+// TelemetryrouterInstanceFilterPtrInput is an input type that accepts TelemetryrouterInstanceFilterArgs, TelemetryrouterInstanceFilterPtr and TelemetryrouterInstanceFilterPtrOutput values.
+// You can construct a concrete instance of `TelemetryrouterInstanceFilterPtrInput` via:
+//
+//	        TelemetryrouterInstanceFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type TelemetryrouterInstanceFilterPtrInput interface {
+	pulumi.Input
+
+	ToTelemetryrouterInstanceFilterPtrOutput() TelemetryrouterInstanceFilterPtrOutput
+	ToTelemetryrouterInstanceFilterPtrOutputWithContext(context.Context) TelemetryrouterInstanceFilterPtrOutput
+}
+
+type telemetryrouterInstanceFilterPtrType TelemetryrouterInstanceFilterArgs
+
+func TelemetryrouterInstanceFilterPtr(v *TelemetryrouterInstanceFilterArgs) TelemetryrouterInstanceFilterPtrInput {
+	return (*telemetryrouterInstanceFilterPtrType)(v)
+}
+
+func (*telemetryrouterInstanceFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TelemetryrouterInstanceFilter)(nil)).Elem()
+}
+
+func (i *telemetryrouterInstanceFilterPtrType) ToTelemetryrouterInstanceFilterPtrOutput() TelemetryrouterInstanceFilterPtrOutput {
+	return i.ToTelemetryrouterInstanceFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *telemetryrouterInstanceFilterPtrType) ToTelemetryrouterInstanceFilterPtrOutputWithContext(ctx context.Context) TelemetryrouterInstanceFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryrouterInstanceFilterPtrOutput)
+}
+
+type TelemetryrouterInstanceFilterOutput struct{ *pulumi.OutputState }
+
+func (TelemetryrouterInstanceFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TelemetryrouterInstanceFilter)(nil)).Elem()
+}
+
+func (o TelemetryrouterInstanceFilterOutput) ToTelemetryrouterInstanceFilterOutput() TelemetryrouterInstanceFilterOutput {
+	return o
+}
+
+func (o TelemetryrouterInstanceFilterOutput) ToTelemetryrouterInstanceFilterOutputWithContext(ctx context.Context) TelemetryrouterInstanceFilterOutput {
+	return o
+}
+
+func (o TelemetryrouterInstanceFilterOutput) ToTelemetryrouterInstanceFilterPtrOutput() TelemetryrouterInstanceFilterPtrOutput {
+	return o.ToTelemetryrouterInstanceFilterPtrOutputWithContext(context.Background())
+}
+
+func (o TelemetryrouterInstanceFilterOutput) ToTelemetryrouterInstanceFilterPtrOutputWithContext(ctx context.Context) TelemetryrouterInstanceFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TelemetryrouterInstanceFilter) *TelemetryrouterInstanceFilter {
+		return &v
+	}).(TelemetryrouterInstanceFilterPtrOutput)
+}
+
+// The TelemetryRouter global filter attributes
+func (o TelemetryrouterInstanceFilterOutput) Attributes() TelemetryrouterInstanceFilterAttributeArrayOutput {
+	return o.ApplyT(func(v TelemetryrouterInstanceFilter) []TelemetryrouterInstanceFilterAttribute { return v.Attributes }).(TelemetryrouterInstanceFilterAttributeArrayOutput)
+}
+
+type TelemetryrouterInstanceFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (TelemetryrouterInstanceFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TelemetryrouterInstanceFilter)(nil)).Elem()
+}
+
+func (o TelemetryrouterInstanceFilterPtrOutput) ToTelemetryrouterInstanceFilterPtrOutput() TelemetryrouterInstanceFilterPtrOutput {
+	return o
+}
+
+func (o TelemetryrouterInstanceFilterPtrOutput) ToTelemetryrouterInstanceFilterPtrOutputWithContext(ctx context.Context) TelemetryrouterInstanceFilterPtrOutput {
+	return o
+}
+
+func (o TelemetryrouterInstanceFilterPtrOutput) Elem() TelemetryrouterInstanceFilterOutput {
+	return o.ApplyT(func(v *TelemetryrouterInstanceFilter) TelemetryrouterInstanceFilter {
+		if v != nil {
+			return *v
+		}
+		var ret TelemetryrouterInstanceFilter
+		return ret
+	}).(TelemetryrouterInstanceFilterOutput)
+}
+
+// The TelemetryRouter global filter attributes
+func (o TelemetryrouterInstanceFilterPtrOutput) Attributes() TelemetryrouterInstanceFilterAttributeArrayOutput {
+	return o.ApplyT(func(v *TelemetryrouterInstanceFilter) []TelemetryrouterInstanceFilterAttribute {
+		if v == nil {
+			return nil
+		}
+		return v.Attributes
+	}).(TelemetryrouterInstanceFilterAttributeArrayOutput)
+}
+
+type TelemetryrouterInstanceFilterAttribute struct {
+	// The TelemetryRouter global filter attribute key
+	Key string `pulumi:"key"`
+	// The TelemetryRouter global filter attribute level, possible values: Possible values are: `resource`, `scope`, `logRecord`.
+	Level string `pulumi:"level"`
+	// The TelemetryRouter global filter attribute matcher, possible values: Possible values are: `=`, `!=`.
+	Matcher string `pulumi:"matcher"`
+	// The TelemetryRouter global filter attributes
+	Values []string `pulumi:"values"`
+}
+
+// TelemetryrouterInstanceFilterAttributeInput is an input type that accepts TelemetryrouterInstanceFilterAttributeArgs and TelemetryrouterInstanceFilterAttributeOutput values.
+// You can construct a concrete instance of `TelemetryrouterInstanceFilterAttributeInput` via:
+//
+//	TelemetryrouterInstanceFilterAttributeArgs{...}
+type TelemetryrouterInstanceFilterAttributeInput interface {
+	pulumi.Input
+
+	ToTelemetryrouterInstanceFilterAttributeOutput() TelemetryrouterInstanceFilterAttributeOutput
+	ToTelemetryrouterInstanceFilterAttributeOutputWithContext(context.Context) TelemetryrouterInstanceFilterAttributeOutput
+}
+
+type TelemetryrouterInstanceFilterAttributeArgs struct {
+	// The TelemetryRouter global filter attribute key
+	Key pulumi.StringInput `pulumi:"key"`
+	// The TelemetryRouter global filter attribute level, possible values: Possible values are: `resource`, `scope`, `logRecord`.
+	Level pulumi.StringInput `pulumi:"level"`
+	// The TelemetryRouter global filter attribute matcher, possible values: Possible values are: `=`, `!=`.
+	Matcher pulumi.StringInput `pulumi:"matcher"`
+	// The TelemetryRouter global filter attributes
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (TelemetryrouterInstanceFilterAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TelemetryrouterInstanceFilterAttribute)(nil)).Elem()
+}
+
+func (i TelemetryrouterInstanceFilterAttributeArgs) ToTelemetryrouterInstanceFilterAttributeOutput() TelemetryrouterInstanceFilterAttributeOutput {
+	return i.ToTelemetryrouterInstanceFilterAttributeOutputWithContext(context.Background())
+}
+
+func (i TelemetryrouterInstanceFilterAttributeArgs) ToTelemetryrouterInstanceFilterAttributeOutputWithContext(ctx context.Context) TelemetryrouterInstanceFilterAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryrouterInstanceFilterAttributeOutput)
+}
+
+// TelemetryrouterInstanceFilterAttributeArrayInput is an input type that accepts TelemetryrouterInstanceFilterAttributeArray and TelemetryrouterInstanceFilterAttributeArrayOutput values.
+// You can construct a concrete instance of `TelemetryrouterInstanceFilterAttributeArrayInput` via:
+//
+//	TelemetryrouterInstanceFilterAttributeArray{ TelemetryrouterInstanceFilterAttributeArgs{...} }
+type TelemetryrouterInstanceFilterAttributeArrayInput interface {
+	pulumi.Input
+
+	ToTelemetryrouterInstanceFilterAttributeArrayOutput() TelemetryrouterInstanceFilterAttributeArrayOutput
+	ToTelemetryrouterInstanceFilterAttributeArrayOutputWithContext(context.Context) TelemetryrouterInstanceFilterAttributeArrayOutput
+}
+
+type TelemetryrouterInstanceFilterAttributeArray []TelemetryrouterInstanceFilterAttributeInput
+
+func (TelemetryrouterInstanceFilterAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TelemetryrouterInstanceFilterAttribute)(nil)).Elem()
+}
+
+func (i TelemetryrouterInstanceFilterAttributeArray) ToTelemetryrouterInstanceFilterAttributeArrayOutput() TelemetryrouterInstanceFilterAttributeArrayOutput {
+	return i.ToTelemetryrouterInstanceFilterAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i TelemetryrouterInstanceFilterAttributeArray) ToTelemetryrouterInstanceFilterAttributeArrayOutputWithContext(ctx context.Context) TelemetryrouterInstanceFilterAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TelemetryrouterInstanceFilterAttributeArrayOutput)
+}
+
+type TelemetryrouterInstanceFilterAttributeOutput struct{ *pulumi.OutputState }
+
+func (TelemetryrouterInstanceFilterAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TelemetryrouterInstanceFilterAttribute)(nil)).Elem()
+}
+
+func (o TelemetryrouterInstanceFilterAttributeOutput) ToTelemetryrouterInstanceFilterAttributeOutput() TelemetryrouterInstanceFilterAttributeOutput {
+	return o
+}
+
+func (o TelemetryrouterInstanceFilterAttributeOutput) ToTelemetryrouterInstanceFilterAttributeOutputWithContext(ctx context.Context) TelemetryrouterInstanceFilterAttributeOutput {
+	return o
+}
+
+// The TelemetryRouter global filter attribute key
+func (o TelemetryrouterInstanceFilterAttributeOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v TelemetryrouterInstanceFilterAttribute) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The TelemetryRouter global filter attribute level, possible values: Possible values are: `resource`, `scope`, `logRecord`.
+func (o TelemetryrouterInstanceFilterAttributeOutput) Level() pulumi.StringOutput {
+	return o.ApplyT(func(v TelemetryrouterInstanceFilterAttribute) string { return v.Level }).(pulumi.StringOutput)
+}
+
+// The TelemetryRouter global filter attribute matcher, possible values: Possible values are: `=`, `!=`.
+func (o TelemetryrouterInstanceFilterAttributeOutput) Matcher() pulumi.StringOutput {
+	return o.ApplyT(func(v TelemetryrouterInstanceFilterAttribute) string { return v.Matcher }).(pulumi.StringOutput)
+}
+
+// The TelemetryRouter global filter attributes
+func (o TelemetryrouterInstanceFilterAttributeOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TelemetryrouterInstanceFilterAttribute) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type TelemetryrouterInstanceFilterAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (TelemetryrouterInstanceFilterAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TelemetryrouterInstanceFilterAttribute)(nil)).Elem()
+}
+
+func (o TelemetryrouterInstanceFilterAttributeArrayOutput) ToTelemetryrouterInstanceFilterAttributeArrayOutput() TelemetryrouterInstanceFilterAttributeArrayOutput {
+	return o
+}
+
+func (o TelemetryrouterInstanceFilterAttributeArrayOutput) ToTelemetryrouterInstanceFilterAttributeArrayOutputWithContext(ctx context.Context) TelemetryrouterInstanceFilterAttributeArrayOutput {
+	return o
+}
+
+func (o TelemetryrouterInstanceFilterAttributeArrayOutput) Index(i pulumi.IntInput) TelemetryrouterInstanceFilterAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TelemetryrouterInstanceFilterAttribute {
+		return vs[0].([]TelemetryrouterInstanceFilterAttribute)[vs[1].(int)]
+	}).(TelemetryrouterInstanceFilterAttributeOutput)
 }
 
 type VolumeEncryptionParameters struct {
@@ -18431,6 +21307,318 @@ func (o VolumeSourcePtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+type VpnGatewayAvailabilityZones struct {
+	// Availability zone for tunnel 1.
+	Tunnel1 string `pulumi:"tunnel1"`
+	// Availability zone for tunnel 2.
+	Tunnel2 string `pulumi:"tunnel2"`
+}
+
+// VpnGatewayAvailabilityZonesInput is an input type that accepts VpnGatewayAvailabilityZonesArgs and VpnGatewayAvailabilityZonesOutput values.
+// You can construct a concrete instance of `VpnGatewayAvailabilityZonesInput` via:
+//
+//	VpnGatewayAvailabilityZonesArgs{...}
+type VpnGatewayAvailabilityZonesInput interface {
+	pulumi.Input
+
+	ToVpnGatewayAvailabilityZonesOutput() VpnGatewayAvailabilityZonesOutput
+	ToVpnGatewayAvailabilityZonesOutputWithContext(context.Context) VpnGatewayAvailabilityZonesOutput
+}
+
+type VpnGatewayAvailabilityZonesArgs struct {
+	// Availability zone for tunnel 1.
+	Tunnel1 pulumi.StringInput `pulumi:"tunnel1"`
+	// Availability zone for tunnel 2.
+	Tunnel2 pulumi.StringInput `pulumi:"tunnel2"`
+}
+
+func (VpnGatewayAvailabilityZonesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnGatewayAvailabilityZones)(nil)).Elem()
+}
+
+func (i VpnGatewayAvailabilityZonesArgs) ToVpnGatewayAvailabilityZonesOutput() VpnGatewayAvailabilityZonesOutput {
+	return i.ToVpnGatewayAvailabilityZonesOutputWithContext(context.Background())
+}
+
+func (i VpnGatewayAvailabilityZonesArgs) ToVpnGatewayAvailabilityZonesOutputWithContext(ctx context.Context) VpnGatewayAvailabilityZonesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnGatewayAvailabilityZonesOutput)
+}
+
+func (i VpnGatewayAvailabilityZonesArgs) ToVpnGatewayAvailabilityZonesPtrOutput() VpnGatewayAvailabilityZonesPtrOutput {
+	return i.ToVpnGatewayAvailabilityZonesPtrOutputWithContext(context.Background())
+}
+
+func (i VpnGatewayAvailabilityZonesArgs) ToVpnGatewayAvailabilityZonesPtrOutputWithContext(ctx context.Context) VpnGatewayAvailabilityZonesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnGatewayAvailabilityZonesOutput).ToVpnGatewayAvailabilityZonesPtrOutputWithContext(ctx)
+}
+
+// VpnGatewayAvailabilityZonesPtrInput is an input type that accepts VpnGatewayAvailabilityZonesArgs, VpnGatewayAvailabilityZonesPtr and VpnGatewayAvailabilityZonesPtrOutput values.
+// You can construct a concrete instance of `VpnGatewayAvailabilityZonesPtrInput` via:
+//
+//	        VpnGatewayAvailabilityZonesArgs{...}
+//
+//	or:
+//
+//	        nil
+type VpnGatewayAvailabilityZonesPtrInput interface {
+	pulumi.Input
+
+	ToVpnGatewayAvailabilityZonesPtrOutput() VpnGatewayAvailabilityZonesPtrOutput
+	ToVpnGatewayAvailabilityZonesPtrOutputWithContext(context.Context) VpnGatewayAvailabilityZonesPtrOutput
+}
+
+type vpnGatewayAvailabilityZonesPtrType VpnGatewayAvailabilityZonesArgs
+
+func VpnGatewayAvailabilityZonesPtr(v *VpnGatewayAvailabilityZonesArgs) VpnGatewayAvailabilityZonesPtrInput {
+	return (*vpnGatewayAvailabilityZonesPtrType)(v)
+}
+
+func (*vpnGatewayAvailabilityZonesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnGatewayAvailabilityZones)(nil)).Elem()
+}
+
+func (i *vpnGatewayAvailabilityZonesPtrType) ToVpnGatewayAvailabilityZonesPtrOutput() VpnGatewayAvailabilityZonesPtrOutput {
+	return i.ToVpnGatewayAvailabilityZonesPtrOutputWithContext(context.Background())
+}
+
+func (i *vpnGatewayAvailabilityZonesPtrType) ToVpnGatewayAvailabilityZonesPtrOutputWithContext(ctx context.Context) VpnGatewayAvailabilityZonesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnGatewayAvailabilityZonesPtrOutput)
+}
+
+type VpnGatewayAvailabilityZonesOutput struct{ *pulumi.OutputState }
+
+func (VpnGatewayAvailabilityZonesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnGatewayAvailabilityZones)(nil)).Elem()
+}
+
+func (o VpnGatewayAvailabilityZonesOutput) ToVpnGatewayAvailabilityZonesOutput() VpnGatewayAvailabilityZonesOutput {
+	return o
+}
+
+func (o VpnGatewayAvailabilityZonesOutput) ToVpnGatewayAvailabilityZonesOutputWithContext(ctx context.Context) VpnGatewayAvailabilityZonesOutput {
+	return o
+}
+
+func (o VpnGatewayAvailabilityZonesOutput) ToVpnGatewayAvailabilityZonesPtrOutput() VpnGatewayAvailabilityZonesPtrOutput {
+	return o.ToVpnGatewayAvailabilityZonesPtrOutputWithContext(context.Background())
+}
+
+func (o VpnGatewayAvailabilityZonesOutput) ToVpnGatewayAvailabilityZonesPtrOutputWithContext(ctx context.Context) VpnGatewayAvailabilityZonesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpnGatewayAvailabilityZones) *VpnGatewayAvailabilityZones {
+		return &v
+	}).(VpnGatewayAvailabilityZonesPtrOutput)
+}
+
+// Availability zone for tunnel 1.
+func (o VpnGatewayAvailabilityZonesOutput) Tunnel1() pulumi.StringOutput {
+	return o.ApplyT(func(v VpnGatewayAvailabilityZones) string { return v.Tunnel1 }).(pulumi.StringOutput)
+}
+
+// Availability zone for tunnel 2.
+func (o VpnGatewayAvailabilityZonesOutput) Tunnel2() pulumi.StringOutput {
+	return o.ApplyT(func(v VpnGatewayAvailabilityZones) string { return v.Tunnel2 }).(pulumi.StringOutput)
+}
+
+type VpnGatewayAvailabilityZonesPtrOutput struct{ *pulumi.OutputState }
+
+func (VpnGatewayAvailabilityZonesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnGatewayAvailabilityZones)(nil)).Elem()
+}
+
+func (o VpnGatewayAvailabilityZonesPtrOutput) ToVpnGatewayAvailabilityZonesPtrOutput() VpnGatewayAvailabilityZonesPtrOutput {
+	return o
+}
+
+func (o VpnGatewayAvailabilityZonesPtrOutput) ToVpnGatewayAvailabilityZonesPtrOutputWithContext(ctx context.Context) VpnGatewayAvailabilityZonesPtrOutput {
+	return o
+}
+
+func (o VpnGatewayAvailabilityZonesPtrOutput) Elem() VpnGatewayAvailabilityZonesOutput {
+	return o.ApplyT(func(v *VpnGatewayAvailabilityZones) VpnGatewayAvailabilityZones {
+		if v != nil {
+			return *v
+		}
+		var ret VpnGatewayAvailabilityZones
+		return ret
+	}).(VpnGatewayAvailabilityZonesOutput)
+}
+
+// Availability zone for tunnel 1.
+func (o VpnGatewayAvailabilityZonesPtrOutput) Tunnel1() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnGatewayAvailabilityZones) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Tunnel1
+	}).(pulumi.StringPtrOutput)
+}
+
+// Availability zone for tunnel 2.
+func (o VpnGatewayAvailabilityZonesPtrOutput) Tunnel2() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnGatewayAvailabilityZones) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Tunnel2
+	}).(pulumi.StringPtrOutput)
+}
+
+type VpnGatewayBgp struct {
+	// Local ASN for BGP (private ASN range, 64512-4294967294).
+	LocalAsn int `pulumi:"localAsn"`
+	// List of IPv4 CIDRs to advertise via BGP. If omitted, SNA network ranges are advertised.
+	OverrideAdvertisedRoutes []string `pulumi:"overrideAdvertisedRoutes"`
+}
+
+// VpnGatewayBgpInput is an input type that accepts VpnGatewayBgpArgs and VpnGatewayBgpOutput values.
+// You can construct a concrete instance of `VpnGatewayBgpInput` via:
+//
+//	VpnGatewayBgpArgs{...}
+type VpnGatewayBgpInput interface {
+	pulumi.Input
+
+	ToVpnGatewayBgpOutput() VpnGatewayBgpOutput
+	ToVpnGatewayBgpOutputWithContext(context.Context) VpnGatewayBgpOutput
+}
+
+type VpnGatewayBgpArgs struct {
+	// Local ASN for BGP (private ASN range, 64512-4294967294).
+	LocalAsn pulumi.IntInput `pulumi:"localAsn"`
+	// List of IPv4 CIDRs to advertise via BGP. If omitted, SNA network ranges are advertised.
+	OverrideAdvertisedRoutes pulumi.StringArrayInput `pulumi:"overrideAdvertisedRoutes"`
+}
+
+func (VpnGatewayBgpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnGatewayBgp)(nil)).Elem()
+}
+
+func (i VpnGatewayBgpArgs) ToVpnGatewayBgpOutput() VpnGatewayBgpOutput {
+	return i.ToVpnGatewayBgpOutputWithContext(context.Background())
+}
+
+func (i VpnGatewayBgpArgs) ToVpnGatewayBgpOutputWithContext(ctx context.Context) VpnGatewayBgpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnGatewayBgpOutput)
+}
+
+func (i VpnGatewayBgpArgs) ToVpnGatewayBgpPtrOutput() VpnGatewayBgpPtrOutput {
+	return i.ToVpnGatewayBgpPtrOutputWithContext(context.Background())
+}
+
+func (i VpnGatewayBgpArgs) ToVpnGatewayBgpPtrOutputWithContext(ctx context.Context) VpnGatewayBgpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnGatewayBgpOutput).ToVpnGatewayBgpPtrOutputWithContext(ctx)
+}
+
+// VpnGatewayBgpPtrInput is an input type that accepts VpnGatewayBgpArgs, VpnGatewayBgpPtr and VpnGatewayBgpPtrOutput values.
+// You can construct a concrete instance of `VpnGatewayBgpPtrInput` via:
+//
+//	        VpnGatewayBgpArgs{...}
+//
+//	or:
+//
+//	        nil
+type VpnGatewayBgpPtrInput interface {
+	pulumi.Input
+
+	ToVpnGatewayBgpPtrOutput() VpnGatewayBgpPtrOutput
+	ToVpnGatewayBgpPtrOutputWithContext(context.Context) VpnGatewayBgpPtrOutput
+}
+
+type vpnGatewayBgpPtrType VpnGatewayBgpArgs
+
+func VpnGatewayBgpPtr(v *VpnGatewayBgpArgs) VpnGatewayBgpPtrInput {
+	return (*vpnGatewayBgpPtrType)(v)
+}
+
+func (*vpnGatewayBgpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnGatewayBgp)(nil)).Elem()
+}
+
+func (i *vpnGatewayBgpPtrType) ToVpnGatewayBgpPtrOutput() VpnGatewayBgpPtrOutput {
+	return i.ToVpnGatewayBgpPtrOutputWithContext(context.Background())
+}
+
+func (i *vpnGatewayBgpPtrType) ToVpnGatewayBgpPtrOutputWithContext(ctx context.Context) VpnGatewayBgpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnGatewayBgpPtrOutput)
+}
+
+type VpnGatewayBgpOutput struct{ *pulumi.OutputState }
+
+func (VpnGatewayBgpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnGatewayBgp)(nil)).Elem()
+}
+
+func (o VpnGatewayBgpOutput) ToVpnGatewayBgpOutput() VpnGatewayBgpOutput {
+	return o
+}
+
+func (o VpnGatewayBgpOutput) ToVpnGatewayBgpOutputWithContext(ctx context.Context) VpnGatewayBgpOutput {
+	return o
+}
+
+func (o VpnGatewayBgpOutput) ToVpnGatewayBgpPtrOutput() VpnGatewayBgpPtrOutput {
+	return o.ToVpnGatewayBgpPtrOutputWithContext(context.Background())
+}
+
+func (o VpnGatewayBgpOutput) ToVpnGatewayBgpPtrOutputWithContext(ctx context.Context) VpnGatewayBgpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpnGatewayBgp) *VpnGatewayBgp {
+		return &v
+	}).(VpnGatewayBgpPtrOutput)
+}
+
+// Local ASN for BGP (private ASN range, 64512-4294967294).
+func (o VpnGatewayBgpOutput) LocalAsn() pulumi.IntOutput {
+	return o.ApplyT(func(v VpnGatewayBgp) int { return v.LocalAsn }).(pulumi.IntOutput)
+}
+
+// List of IPv4 CIDRs to advertise via BGP. If omitted, SNA network ranges are advertised.
+func (o VpnGatewayBgpOutput) OverrideAdvertisedRoutes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VpnGatewayBgp) []string { return v.OverrideAdvertisedRoutes }).(pulumi.StringArrayOutput)
+}
+
+type VpnGatewayBgpPtrOutput struct{ *pulumi.OutputState }
+
+func (VpnGatewayBgpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnGatewayBgp)(nil)).Elem()
+}
+
+func (o VpnGatewayBgpPtrOutput) ToVpnGatewayBgpPtrOutput() VpnGatewayBgpPtrOutput {
+	return o
+}
+
+func (o VpnGatewayBgpPtrOutput) ToVpnGatewayBgpPtrOutputWithContext(ctx context.Context) VpnGatewayBgpPtrOutput {
+	return o
+}
+
+func (o VpnGatewayBgpPtrOutput) Elem() VpnGatewayBgpOutput {
+	return o.ApplyT(func(v *VpnGatewayBgp) VpnGatewayBgp {
+		if v != nil {
+			return *v
+		}
+		var ret VpnGatewayBgp
+		return ret
+	}).(VpnGatewayBgpOutput)
+}
+
+// Local ASN for BGP (private ASN range, 64512-4294967294).
+func (o VpnGatewayBgpPtrOutput) LocalAsn() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VpnGatewayBgp) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.LocalAsn
+	}).(pulumi.IntPtrOutput)
+}
+
+// List of IPv4 CIDRs to advertise via BGP. If omitted, SNA network ranges are advertised.
+func (o VpnGatewayBgpPtrOutput) OverrideAdvertisedRoutes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VpnGatewayBgp) []string {
+		if v == nil {
+			return nil
+		}
+		return v.OverrideAdvertisedRoutes
+	}).(pulumi.StringArrayOutput)
 }
 
 type GetApplicationLoadBalancerError struct {
@@ -21713,6 +24901,493 @@ func (o GetDnsZoneTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
 		}
 		return v.Read
 	}).(pulumi.StringPtrOutput)
+}
+
+type GetDremioInstanceAuthentication struct {
+	// Azure Active Directory authentication configuration.
+	Azuread GetDremioInstanceAuthenticationAzuread `pulumi:"azuread"`
+	// OIDC authentication configuration.
+	Oauth GetDremioInstanceAuthenticationOauth `pulumi:"oauth"`
+	// Type of authentication (local-only, azuread, oauth).
+	Type string `pulumi:"type"`
+}
+
+// GetDremioInstanceAuthenticationInput is an input type that accepts GetDremioInstanceAuthenticationArgs and GetDremioInstanceAuthenticationOutput values.
+// You can construct a concrete instance of `GetDremioInstanceAuthenticationInput` via:
+//
+//	GetDremioInstanceAuthenticationArgs{...}
+type GetDremioInstanceAuthenticationInput interface {
+	pulumi.Input
+
+	ToGetDremioInstanceAuthenticationOutput() GetDremioInstanceAuthenticationOutput
+	ToGetDremioInstanceAuthenticationOutputWithContext(context.Context) GetDremioInstanceAuthenticationOutput
+}
+
+type GetDremioInstanceAuthenticationArgs struct {
+	// Azure Active Directory authentication configuration.
+	Azuread GetDremioInstanceAuthenticationAzureadInput `pulumi:"azuread"`
+	// OIDC authentication configuration.
+	Oauth GetDremioInstanceAuthenticationOauthInput `pulumi:"oauth"`
+	// Type of authentication (local-only, azuread, oauth).
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDremioInstanceAuthenticationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDremioInstanceAuthentication)(nil)).Elem()
+}
+
+func (i GetDremioInstanceAuthenticationArgs) ToGetDremioInstanceAuthenticationOutput() GetDremioInstanceAuthenticationOutput {
+	return i.ToGetDremioInstanceAuthenticationOutputWithContext(context.Background())
+}
+
+func (i GetDremioInstanceAuthenticationArgs) ToGetDremioInstanceAuthenticationOutputWithContext(ctx context.Context) GetDremioInstanceAuthenticationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDremioInstanceAuthenticationOutput)
+}
+
+type GetDremioInstanceAuthenticationOutput struct{ *pulumi.OutputState }
+
+func (GetDremioInstanceAuthenticationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDremioInstanceAuthentication)(nil)).Elem()
+}
+
+func (o GetDremioInstanceAuthenticationOutput) ToGetDremioInstanceAuthenticationOutput() GetDremioInstanceAuthenticationOutput {
+	return o
+}
+
+func (o GetDremioInstanceAuthenticationOutput) ToGetDremioInstanceAuthenticationOutputWithContext(ctx context.Context) GetDremioInstanceAuthenticationOutput {
+	return o
+}
+
+// Azure Active Directory authentication configuration.
+func (o GetDremioInstanceAuthenticationOutput) Azuread() GetDremioInstanceAuthenticationAzureadOutput {
+	return o.ApplyT(func(v GetDremioInstanceAuthentication) GetDremioInstanceAuthenticationAzuread { return v.Azuread }).(GetDremioInstanceAuthenticationAzureadOutput)
+}
+
+// OIDC authentication configuration.
+func (o GetDremioInstanceAuthenticationOutput) Oauth() GetDremioInstanceAuthenticationOauthOutput {
+	return o.ApplyT(func(v GetDremioInstanceAuthentication) GetDremioInstanceAuthenticationOauth { return v.Oauth }).(GetDremioInstanceAuthenticationOauthOutput)
+}
+
+// Type of authentication (local-only, azuread, oauth).
+func (o GetDremioInstanceAuthenticationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDremioInstanceAuthentication) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDremioInstanceAuthenticationAzuread struct {
+	// The Azure AD authority URL.
+	AuthorityUrl string `pulumi:"authorityUrl"`
+	// The Azure AD client ID.
+	ClientId string `pulumi:"clientId"`
+	// The Azure AD client secret.
+	ClientSecret string `pulumi:"clientSecret"`
+	// The Azure AD redirect URL.
+	RedirectUrl string `pulumi:"redirectUrl"`
+}
+
+// GetDremioInstanceAuthenticationAzureadInput is an input type that accepts GetDremioInstanceAuthenticationAzureadArgs and GetDremioInstanceAuthenticationAzureadOutput values.
+// You can construct a concrete instance of `GetDremioInstanceAuthenticationAzureadInput` via:
+//
+//	GetDremioInstanceAuthenticationAzureadArgs{...}
+type GetDremioInstanceAuthenticationAzureadInput interface {
+	pulumi.Input
+
+	ToGetDremioInstanceAuthenticationAzureadOutput() GetDremioInstanceAuthenticationAzureadOutput
+	ToGetDremioInstanceAuthenticationAzureadOutputWithContext(context.Context) GetDremioInstanceAuthenticationAzureadOutput
+}
+
+type GetDremioInstanceAuthenticationAzureadArgs struct {
+	// The Azure AD authority URL.
+	AuthorityUrl pulumi.StringInput `pulumi:"authorityUrl"`
+	// The Azure AD client ID.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// The Azure AD client secret.
+	ClientSecret pulumi.StringInput `pulumi:"clientSecret"`
+	// The Azure AD redirect URL.
+	RedirectUrl pulumi.StringInput `pulumi:"redirectUrl"`
+}
+
+func (GetDremioInstanceAuthenticationAzureadArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDremioInstanceAuthenticationAzuread)(nil)).Elem()
+}
+
+func (i GetDremioInstanceAuthenticationAzureadArgs) ToGetDremioInstanceAuthenticationAzureadOutput() GetDremioInstanceAuthenticationAzureadOutput {
+	return i.ToGetDremioInstanceAuthenticationAzureadOutputWithContext(context.Background())
+}
+
+func (i GetDremioInstanceAuthenticationAzureadArgs) ToGetDremioInstanceAuthenticationAzureadOutputWithContext(ctx context.Context) GetDremioInstanceAuthenticationAzureadOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDremioInstanceAuthenticationAzureadOutput)
+}
+
+type GetDremioInstanceAuthenticationAzureadOutput struct{ *pulumi.OutputState }
+
+func (GetDremioInstanceAuthenticationAzureadOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDremioInstanceAuthenticationAzuread)(nil)).Elem()
+}
+
+func (o GetDremioInstanceAuthenticationAzureadOutput) ToGetDremioInstanceAuthenticationAzureadOutput() GetDremioInstanceAuthenticationAzureadOutput {
+	return o
+}
+
+func (o GetDremioInstanceAuthenticationAzureadOutput) ToGetDremioInstanceAuthenticationAzureadOutputWithContext(ctx context.Context) GetDremioInstanceAuthenticationAzureadOutput {
+	return o
+}
+
+// The Azure AD authority URL.
+func (o GetDremioInstanceAuthenticationAzureadOutput) AuthorityUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDremioInstanceAuthenticationAzuread) string { return v.AuthorityUrl }).(pulumi.StringOutput)
+}
+
+// The Azure AD client ID.
+func (o GetDremioInstanceAuthenticationAzureadOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDremioInstanceAuthenticationAzuread) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The Azure AD client secret.
+func (o GetDremioInstanceAuthenticationAzureadOutput) ClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDremioInstanceAuthenticationAzuread) string { return v.ClientSecret }).(pulumi.StringOutput)
+}
+
+// The Azure AD redirect URL.
+func (o GetDremioInstanceAuthenticationAzureadOutput) RedirectUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDremioInstanceAuthenticationAzuread) string { return v.RedirectUrl }).(pulumi.StringOutput)
+}
+
+type GetDremioInstanceAuthenticationOauth struct {
+	// The Issuer location URI, where the OIDC provider configuration can be found.
+	AuthorityUrl string `pulumi:"authorityUrl"`
+	// The client ID assigned by the Identity Provider.
+	ClientId string `pulumi:"clientId"`
+	// The client secret generated by the Identity Provider.
+	ClientSecret string `pulumi:"clientSecret"`
+	// Maps fields from the JWT token to fields Dremio requires.
+	JwtClaims GetDremioInstanceAuthenticationOauthJwtClaims `pulumi:"jwtClaims"`
+	// Any additional parameters the Identity Provider requires.
+	Parameters []GetDremioInstanceAuthenticationOauthParameter `pulumi:"parameters"`
+	// The URL where the Dremio instance is hosted. The URL must match the redirect URL set in the Identity Provider.
+	RedirectUrl string `pulumi:"redirectUrl"`
+	// A list of space-separated scopes. The `openid` scope is always required; other scopes can vary by provider.
+	Scope string `pulumi:"scope"`
+}
+
+// GetDremioInstanceAuthenticationOauthInput is an input type that accepts GetDremioInstanceAuthenticationOauthArgs and GetDremioInstanceAuthenticationOauthOutput values.
+// You can construct a concrete instance of `GetDremioInstanceAuthenticationOauthInput` via:
+//
+//	GetDremioInstanceAuthenticationOauthArgs{...}
+type GetDremioInstanceAuthenticationOauthInput interface {
+	pulumi.Input
+
+	ToGetDremioInstanceAuthenticationOauthOutput() GetDremioInstanceAuthenticationOauthOutput
+	ToGetDremioInstanceAuthenticationOauthOutputWithContext(context.Context) GetDremioInstanceAuthenticationOauthOutput
+}
+
+type GetDremioInstanceAuthenticationOauthArgs struct {
+	// The Issuer location URI, where the OIDC provider configuration can be found.
+	AuthorityUrl pulumi.StringInput `pulumi:"authorityUrl"`
+	// The client ID assigned by the Identity Provider.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// The client secret generated by the Identity Provider.
+	ClientSecret pulumi.StringInput `pulumi:"clientSecret"`
+	// Maps fields from the JWT token to fields Dremio requires.
+	JwtClaims GetDremioInstanceAuthenticationOauthJwtClaimsInput `pulumi:"jwtClaims"`
+	// Any additional parameters the Identity Provider requires.
+	Parameters GetDremioInstanceAuthenticationOauthParameterArrayInput `pulumi:"parameters"`
+	// The URL where the Dremio instance is hosted. The URL must match the redirect URL set in the Identity Provider.
+	RedirectUrl pulumi.StringInput `pulumi:"redirectUrl"`
+	// A list of space-separated scopes. The `openid` scope is always required; other scopes can vary by provider.
+	Scope pulumi.StringInput `pulumi:"scope"`
+}
+
+func (GetDremioInstanceAuthenticationOauthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDremioInstanceAuthenticationOauth)(nil)).Elem()
+}
+
+func (i GetDremioInstanceAuthenticationOauthArgs) ToGetDremioInstanceAuthenticationOauthOutput() GetDremioInstanceAuthenticationOauthOutput {
+	return i.ToGetDremioInstanceAuthenticationOauthOutputWithContext(context.Background())
+}
+
+func (i GetDremioInstanceAuthenticationOauthArgs) ToGetDremioInstanceAuthenticationOauthOutputWithContext(ctx context.Context) GetDremioInstanceAuthenticationOauthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDremioInstanceAuthenticationOauthOutput)
+}
+
+type GetDremioInstanceAuthenticationOauthOutput struct{ *pulumi.OutputState }
+
+func (GetDremioInstanceAuthenticationOauthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDremioInstanceAuthenticationOauth)(nil)).Elem()
+}
+
+func (o GetDremioInstanceAuthenticationOauthOutput) ToGetDremioInstanceAuthenticationOauthOutput() GetDremioInstanceAuthenticationOauthOutput {
+	return o
+}
+
+func (o GetDremioInstanceAuthenticationOauthOutput) ToGetDremioInstanceAuthenticationOauthOutputWithContext(ctx context.Context) GetDremioInstanceAuthenticationOauthOutput {
+	return o
+}
+
+// The Issuer location URI, where the OIDC provider configuration can be found.
+func (o GetDremioInstanceAuthenticationOauthOutput) AuthorityUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDremioInstanceAuthenticationOauth) string { return v.AuthorityUrl }).(pulumi.StringOutput)
+}
+
+// The client ID assigned by the Identity Provider.
+func (o GetDremioInstanceAuthenticationOauthOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDremioInstanceAuthenticationOauth) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The client secret generated by the Identity Provider.
+func (o GetDremioInstanceAuthenticationOauthOutput) ClientSecret() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDremioInstanceAuthenticationOauth) string { return v.ClientSecret }).(pulumi.StringOutput)
+}
+
+// Maps fields from the JWT token to fields Dremio requires.
+func (o GetDremioInstanceAuthenticationOauthOutput) JwtClaims() GetDremioInstanceAuthenticationOauthJwtClaimsOutput {
+	return o.ApplyT(func(v GetDremioInstanceAuthenticationOauth) GetDremioInstanceAuthenticationOauthJwtClaims {
+		return v.JwtClaims
+	}).(GetDremioInstanceAuthenticationOauthJwtClaimsOutput)
+}
+
+// Any additional parameters the Identity Provider requires.
+func (o GetDremioInstanceAuthenticationOauthOutput) Parameters() GetDremioInstanceAuthenticationOauthParameterArrayOutput {
+	return o.ApplyT(func(v GetDremioInstanceAuthenticationOauth) []GetDremioInstanceAuthenticationOauthParameter {
+		return v.Parameters
+	}).(GetDremioInstanceAuthenticationOauthParameterArrayOutput)
+}
+
+// The URL where the Dremio instance is hosted. The URL must match the redirect URL set in the Identity Provider.
+func (o GetDremioInstanceAuthenticationOauthOutput) RedirectUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDremioInstanceAuthenticationOauth) string { return v.RedirectUrl }).(pulumi.StringOutput)
+}
+
+// A list of space-separated scopes. The `openid` scope is always required; other scopes can vary by provider.
+func (o GetDremioInstanceAuthenticationOauthOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDremioInstanceAuthenticationOauth) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+type GetDremioInstanceAuthenticationOauthJwtClaims struct {
+	// Mapped user name claim (e.g. email).
+	UserName string `pulumi:"userName"`
+}
+
+// GetDremioInstanceAuthenticationOauthJwtClaimsInput is an input type that accepts GetDremioInstanceAuthenticationOauthJwtClaimsArgs and GetDremioInstanceAuthenticationOauthJwtClaimsOutput values.
+// You can construct a concrete instance of `GetDremioInstanceAuthenticationOauthJwtClaimsInput` via:
+//
+//	GetDremioInstanceAuthenticationOauthJwtClaimsArgs{...}
+type GetDremioInstanceAuthenticationOauthJwtClaimsInput interface {
+	pulumi.Input
+
+	ToGetDremioInstanceAuthenticationOauthJwtClaimsOutput() GetDremioInstanceAuthenticationOauthJwtClaimsOutput
+	ToGetDremioInstanceAuthenticationOauthJwtClaimsOutputWithContext(context.Context) GetDremioInstanceAuthenticationOauthJwtClaimsOutput
+}
+
+type GetDremioInstanceAuthenticationOauthJwtClaimsArgs struct {
+	// Mapped user name claim (e.g. email).
+	UserName pulumi.StringInput `pulumi:"userName"`
+}
+
+func (GetDremioInstanceAuthenticationOauthJwtClaimsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDremioInstanceAuthenticationOauthJwtClaims)(nil)).Elem()
+}
+
+func (i GetDremioInstanceAuthenticationOauthJwtClaimsArgs) ToGetDremioInstanceAuthenticationOauthJwtClaimsOutput() GetDremioInstanceAuthenticationOauthJwtClaimsOutput {
+	return i.ToGetDremioInstanceAuthenticationOauthJwtClaimsOutputWithContext(context.Background())
+}
+
+func (i GetDremioInstanceAuthenticationOauthJwtClaimsArgs) ToGetDremioInstanceAuthenticationOauthJwtClaimsOutputWithContext(ctx context.Context) GetDremioInstanceAuthenticationOauthJwtClaimsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDremioInstanceAuthenticationOauthJwtClaimsOutput)
+}
+
+type GetDremioInstanceAuthenticationOauthJwtClaimsOutput struct{ *pulumi.OutputState }
+
+func (GetDremioInstanceAuthenticationOauthJwtClaimsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDremioInstanceAuthenticationOauthJwtClaims)(nil)).Elem()
+}
+
+func (o GetDremioInstanceAuthenticationOauthJwtClaimsOutput) ToGetDremioInstanceAuthenticationOauthJwtClaimsOutput() GetDremioInstanceAuthenticationOauthJwtClaimsOutput {
+	return o
+}
+
+func (o GetDremioInstanceAuthenticationOauthJwtClaimsOutput) ToGetDremioInstanceAuthenticationOauthJwtClaimsOutputWithContext(ctx context.Context) GetDremioInstanceAuthenticationOauthJwtClaimsOutput {
+	return o
+}
+
+// Mapped user name claim (e.g. email).
+func (o GetDremioInstanceAuthenticationOauthJwtClaimsOutput) UserName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDremioInstanceAuthenticationOauthJwtClaims) string { return v.UserName }).(pulumi.StringOutput)
+}
+
+type GetDremioInstanceAuthenticationOauthParameter struct {
+	// Parameter name.
+	Name string `pulumi:"name"`
+	// Parameter value.
+	Value string `pulumi:"value"`
+}
+
+// GetDremioInstanceAuthenticationOauthParameterInput is an input type that accepts GetDremioInstanceAuthenticationOauthParameterArgs and GetDremioInstanceAuthenticationOauthParameterOutput values.
+// You can construct a concrete instance of `GetDremioInstanceAuthenticationOauthParameterInput` via:
+//
+//	GetDremioInstanceAuthenticationOauthParameterArgs{...}
+type GetDremioInstanceAuthenticationOauthParameterInput interface {
+	pulumi.Input
+
+	ToGetDremioInstanceAuthenticationOauthParameterOutput() GetDremioInstanceAuthenticationOauthParameterOutput
+	ToGetDremioInstanceAuthenticationOauthParameterOutputWithContext(context.Context) GetDremioInstanceAuthenticationOauthParameterOutput
+}
+
+type GetDremioInstanceAuthenticationOauthParameterArgs struct {
+	// Parameter name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Parameter value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetDremioInstanceAuthenticationOauthParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDremioInstanceAuthenticationOauthParameter)(nil)).Elem()
+}
+
+func (i GetDremioInstanceAuthenticationOauthParameterArgs) ToGetDremioInstanceAuthenticationOauthParameterOutput() GetDremioInstanceAuthenticationOauthParameterOutput {
+	return i.ToGetDremioInstanceAuthenticationOauthParameterOutputWithContext(context.Background())
+}
+
+func (i GetDremioInstanceAuthenticationOauthParameterArgs) ToGetDremioInstanceAuthenticationOauthParameterOutputWithContext(ctx context.Context) GetDremioInstanceAuthenticationOauthParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDremioInstanceAuthenticationOauthParameterOutput)
+}
+
+// GetDremioInstanceAuthenticationOauthParameterArrayInput is an input type that accepts GetDremioInstanceAuthenticationOauthParameterArray and GetDremioInstanceAuthenticationOauthParameterArrayOutput values.
+// You can construct a concrete instance of `GetDremioInstanceAuthenticationOauthParameterArrayInput` via:
+//
+//	GetDremioInstanceAuthenticationOauthParameterArray{ GetDremioInstanceAuthenticationOauthParameterArgs{...} }
+type GetDremioInstanceAuthenticationOauthParameterArrayInput interface {
+	pulumi.Input
+
+	ToGetDremioInstanceAuthenticationOauthParameterArrayOutput() GetDremioInstanceAuthenticationOauthParameterArrayOutput
+	ToGetDremioInstanceAuthenticationOauthParameterArrayOutputWithContext(context.Context) GetDremioInstanceAuthenticationOauthParameterArrayOutput
+}
+
+type GetDremioInstanceAuthenticationOauthParameterArray []GetDremioInstanceAuthenticationOauthParameterInput
+
+func (GetDremioInstanceAuthenticationOauthParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDremioInstanceAuthenticationOauthParameter)(nil)).Elem()
+}
+
+func (i GetDremioInstanceAuthenticationOauthParameterArray) ToGetDremioInstanceAuthenticationOauthParameterArrayOutput() GetDremioInstanceAuthenticationOauthParameterArrayOutput {
+	return i.ToGetDremioInstanceAuthenticationOauthParameterArrayOutputWithContext(context.Background())
+}
+
+func (i GetDremioInstanceAuthenticationOauthParameterArray) ToGetDremioInstanceAuthenticationOauthParameterArrayOutputWithContext(ctx context.Context) GetDremioInstanceAuthenticationOauthParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDremioInstanceAuthenticationOauthParameterArrayOutput)
+}
+
+type GetDremioInstanceAuthenticationOauthParameterOutput struct{ *pulumi.OutputState }
+
+func (GetDremioInstanceAuthenticationOauthParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDremioInstanceAuthenticationOauthParameter)(nil)).Elem()
+}
+
+func (o GetDremioInstanceAuthenticationOauthParameterOutput) ToGetDremioInstanceAuthenticationOauthParameterOutput() GetDremioInstanceAuthenticationOauthParameterOutput {
+	return o
+}
+
+func (o GetDremioInstanceAuthenticationOauthParameterOutput) ToGetDremioInstanceAuthenticationOauthParameterOutputWithContext(ctx context.Context) GetDremioInstanceAuthenticationOauthParameterOutput {
+	return o
+}
+
+// Parameter name.
+func (o GetDremioInstanceAuthenticationOauthParameterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDremioInstanceAuthenticationOauthParameter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Parameter value.
+func (o GetDremioInstanceAuthenticationOauthParameterOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDremioInstanceAuthenticationOauthParameter) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetDremioInstanceAuthenticationOauthParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDremioInstanceAuthenticationOauthParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDremioInstanceAuthenticationOauthParameter)(nil)).Elem()
+}
+
+func (o GetDremioInstanceAuthenticationOauthParameterArrayOutput) ToGetDremioInstanceAuthenticationOauthParameterArrayOutput() GetDremioInstanceAuthenticationOauthParameterArrayOutput {
+	return o
+}
+
+func (o GetDremioInstanceAuthenticationOauthParameterArrayOutput) ToGetDremioInstanceAuthenticationOauthParameterArrayOutputWithContext(ctx context.Context) GetDremioInstanceAuthenticationOauthParameterArrayOutput {
+	return o
+}
+
+func (o GetDremioInstanceAuthenticationOauthParameterArrayOutput) Index(i pulumi.IntInput) GetDremioInstanceAuthenticationOauthParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDremioInstanceAuthenticationOauthParameter {
+		return vs[0].([]GetDremioInstanceAuthenticationOauthParameter)[vs[1].(int)]
+	}).(GetDremioInstanceAuthenticationOauthParameterOutput)
+}
+
+type GetDremioInstanceEndpoints struct {
+	// The arrow flight endpoint of the Dremio instance.
+	ArrowFlight string `pulumi:"arrowFlight"`
+	// The Apache Iceberg endpoint of the Dremio instance.
+	Catalog string `pulumi:"catalog"`
+	// The UI endpoint of the Dremio instance.
+	Ui string `pulumi:"ui"`
+}
+
+// GetDremioInstanceEndpointsInput is an input type that accepts GetDremioInstanceEndpointsArgs and GetDremioInstanceEndpointsOutput values.
+// You can construct a concrete instance of `GetDremioInstanceEndpointsInput` via:
+//
+//	GetDremioInstanceEndpointsArgs{...}
+type GetDremioInstanceEndpointsInput interface {
+	pulumi.Input
+
+	ToGetDremioInstanceEndpointsOutput() GetDremioInstanceEndpointsOutput
+	ToGetDremioInstanceEndpointsOutputWithContext(context.Context) GetDremioInstanceEndpointsOutput
+}
+
+type GetDremioInstanceEndpointsArgs struct {
+	// The arrow flight endpoint of the Dremio instance.
+	ArrowFlight pulumi.StringInput `pulumi:"arrowFlight"`
+	// The Apache Iceberg endpoint of the Dremio instance.
+	Catalog pulumi.StringInput `pulumi:"catalog"`
+	// The UI endpoint of the Dremio instance.
+	Ui pulumi.StringInput `pulumi:"ui"`
+}
+
+func (GetDremioInstanceEndpointsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDremioInstanceEndpoints)(nil)).Elem()
+}
+
+func (i GetDremioInstanceEndpointsArgs) ToGetDremioInstanceEndpointsOutput() GetDremioInstanceEndpointsOutput {
+	return i.ToGetDremioInstanceEndpointsOutputWithContext(context.Background())
+}
+
+func (i GetDremioInstanceEndpointsArgs) ToGetDremioInstanceEndpointsOutputWithContext(ctx context.Context) GetDremioInstanceEndpointsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDremioInstanceEndpointsOutput)
+}
+
+type GetDremioInstanceEndpointsOutput struct{ *pulumi.OutputState }
+
+func (GetDremioInstanceEndpointsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDremioInstanceEndpoints)(nil)).Elem()
+}
+
+func (o GetDremioInstanceEndpointsOutput) ToGetDremioInstanceEndpointsOutput() GetDremioInstanceEndpointsOutput {
+	return o
+}
+
+func (o GetDremioInstanceEndpointsOutput) ToGetDremioInstanceEndpointsOutputWithContext(ctx context.Context) GetDremioInstanceEndpointsOutput {
+	return o
+}
+
+// The arrow flight endpoint of the Dremio instance.
+func (o GetDremioInstanceEndpointsOutput) ArrowFlight() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDremioInstanceEndpoints) string { return v.ArrowFlight }).(pulumi.StringOutput)
+}
+
+// The Apache Iceberg endpoint of the Dremio instance.
+func (o GetDremioInstanceEndpointsOutput) Catalog() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDremioInstanceEndpoints) string { return v.Catalog }).(pulumi.StringOutput)
+}
+
+// The UI endpoint of the Dremio instance.
+func (o GetDremioInstanceEndpointsOutput) Ui() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDremioInstanceEndpoints) string { return v.Ui }).(pulumi.StringOutput)
 }
 
 type GetEdgecloudInstancesInstance struct {
@@ -30940,6 +34615,556 @@ func (o GetSqlserverflexInstanceStorageOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSqlserverflexInstanceStorage) int { return v.Size }).(pulumi.IntOutput)
 }
 
+type GetTelemetryrouterDestinationConfig struct {
+	// The TelemetryRouter destinations's configuration type, possible values: Possible values are: `OpenTelemetry`, `S3`.
+	ConfigType string `pulumi:"configType"`
+	// The TelemetryRouter destination's filter settings
+	Filter GetTelemetryrouterDestinationConfigFilter `pulumi:"filter"`
+	// OpenTelemetry configuration
+	Opentelemetry GetTelemetryrouterDestinationConfigOpentelemetry `pulumi:"opentelemetry"`
+	// S3 configuration
+	S3 GetTelemetryrouterDestinationConfigS3 `pulumi:"s3"`
+}
+
+// GetTelemetryrouterDestinationConfigInput is an input type that accepts GetTelemetryrouterDestinationConfigArgs and GetTelemetryrouterDestinationConfigOutput values.
+// You can construct a concrete instance of `GetTelemetryrouterDestinationConfigInput` via:
+//
+//	GetTelemetryrouterDestinationConfigArgs{...}
+type GetTelemetryrouterDestinationConfigInput interface {
+	pulumi.Input
+
+	ToGetTelemetryrouterDestinationConfigOutput() GetTelemetryrouterDestinationConfigOutput
+	ToGetTelemetryrouterDestinationConfigOutputWithContext(context.Context) GetTelemetryrouterDestinationConfigOutput
+}
+
+type GetTelemetryrouterDestinationConfigArgs struct {
+	// The TelemetryRouter destinations's configuration type, possible values: Possible values are: `OpenTelemetry`, `S3`.
+	ConfigType pulumi.StringInput `pulumi:"configType"`
+	// The TelemetryRouter destination's filter settings
+	Filter GetTelemetryrouterDestinationConfigFilterInput `pulumi:"filter"`
+	// OpenTelemetry configuration
+	Opentelemetry GetTelemetryrouterDestinationConfigOpentelemetryInput `pulumi:"opentelemetry"`
+	// S3 configuration
+	S3 GetTelemetryrouterDestinationConfigS3Input `pulumi:"s3"`
+}
+
+func (GetTelemetryrouterDestinationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTelemetryrouterDestinationConfig)(nil)).Elem()
+}
+
+func (i GetTelemetryrouterDestinationConfigArgs) ToGetTelemetryrouterDestinationConfigOutput() GetTelemetryrouterDestinationConfigOutput {
+	return i.ToGetTelemetryrouterDestinationConfigOutputWithContext(context.Background())
+}
+
+func (i GetTelemetryrouterDestinationConfigArgs) ToGetTelemetryrouterDestinationConfigOutputWithContext(ctx context.Context) GetTelemetryrouterDestinationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTelemetryrouterDestinationConfigOutput)
+}
+
+type GetTelemetryrouterDestinationConfigOutput struct{ *pulumi.OutputState }
+
+func (GetTelemetryrouterDestinationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTelemetryrouterDestinationConfig)(nil)).Elem()
+}
+
+func (o GetTelemetryrouterDestinationConfigOutput) ToGetTelemetryrouterDestinationConfigOutput() GetTelemetryrouterDestinationConfigOutput {
+	return o
+}
+
+func (o GetTelemetryrouterDestinationConfigOutput) ToGetTelemetryrouterDestinationConfigOutputWithContext(ctx context.Context) GetTelemetryrouterDestinationConfigOutput {
+	return o
+}
+
+// The TelemetryRouter destinations's configuration type, possible values: Possible values are: `OpenTelemetry`, `S3`.
+func (o GetTelemetryrouterDestinationConfigOutput) ConfigType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTelemetryrouterDestinationConfig) string { return v.ConfigType }).(pulumi.StringOutput)
+}
+
+// The TelemetryRouter destination's filter settings
+func (o GetTelemetryrouterDestinationConfigOutput) Filter() GetTelemetryrouterDestinationConfigFilterOutput {
+	return o.ApplyT(func(v GetTelemetryrouterDestinationConfig) GetTelemetryrouterDestinationConfigFilter { return v.Filter }).(GetTelemetryrouterDestinationConfigFilterOutput)
+}
+
+// OpenTelemetry configuration
+func (o GetTelemetryrouterDestinationConfigOutput) Opentelemetry() GetTelemetryrouterDestinationConfigOpentelemetryOutput {
+	return o.ApplyT(func(v GetTelemetryrouterDestinationConfig) GetTelemetryrouterDestinationConfigOpentelemetry {
+		return v.Opentelemetry
+	}).(GetTelemetryrouterDestinationConfigOpentelemetryOutput)
+}
+
+// S3 configuration
+func (o GetTelemetryrouterDestinationConfigOutput) S3() GetTelemetryrouterDestinationConfigS3Output {
+	return o.ApplyT(func(v GetTelemetryrouterDestinationConfig) GetTelemetryrouterDestinationConfigS3 { return v.S3 }).(GetTelemetryrouterDestinationConfigS3Output)
+}
+
+type GetTelemetryrouterDestinationConfigFilter struct {
+	// The TelemetryRouter destination's filter attributes
+	Attributes []GetTelemetryrouterDestinationConfigFilterAttribute `pulumi:"attributes"`
+}
+
+// GetTelemetryrouterDestinationConfigFilterInput is an input type that accepts GetTelemetryrouterDestinationConfigFilterArgs and GetTelemetryrouterDestinationConfigFilterOutput values.
+// You can construct a concrete instance of `GetTelemetryrouterDestinationConfigFilterInput` via:
+//
+//	GetTelemetryrouterDestinationConfigFilterArgs{...}
+type GetTelemetryrouterDestinationConfigFilterInput interface {
+	pulumi.Input
+
+	ToGetTelemetryrouterDestinationConfigFilterOutput() GetTelemetryrouterDestinationConfigFilterOutput
+	ToGetTelemetryrouterDestinationConfigFilterOutputWithContext(context.Context) GetTelemetryrouterDestinationConfigFilterOutput
+}
+
+type GetTelemetryrouterDestinationConfigFilterArgs struct {
+	// The TelemetryRouter destination's filter attributes
+	Attributes GetTelemetryrouterDestinationConfigFilterAttributeArrayInput `pulumi:"attributes"`
+}
+
+func (GetTelemetryrouterDestinationConfigFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTelemetryrouterDestinationConfigFilter)(nil)).Elem()
+}
+
+func (i GetTelemetryrouterDestinationConfigFilterArgs) ToGetTelemetryrouterDestinationConfigFilterOutput() GetTelemetryrouterDestinationConfigFilterOutput {
+	return i.ToGetTelemetryrouterDestinationConfigFilterOutputWithContext(context.Background())
+}
+
+func (i GetTelemetryrouterDestinationConfigFilterArgs) ToGetTelemetryrouterDestinationConfigFilterOutputWithContext(ctx context.Context) GetTelemetryrouterDestinationConfigFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTelemetryrouterDestinationConfigFilterOutput)
+}
+
+type GetTelemetryrouterDestinationConfigFilterOutput struct{ *pulumi.OutputState }
+
+func (GetTelemetryrouterDestinationConfigFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTelemetryrouterDestinationConfigFilter)(nil)).Elem()
+}
+
+func (o GetTelemetryrouterDestinationConfigFilterOutput) ToGetTelemetryrouterDestinationConfigFilterOutput() GetTelemetryrouterDestinationConfigFilterOutput {
+	return o
+}
+
+func (o GetTelemetryrouterDestinationConfigFilterOutput) ToGetTelemetryrouterDestinationConfigFilterOutputWithContext(ctx context.Context) GetTelemetryrouterDestinationConfigFilterOutput {
+	return o
+}
+
+// The TelemetryRouter destination's filter attributes
+func (o GetTelemetryrouterDestinationConfigFilterOutput) Attributes() GetTelemetryrouterDestinationConfigFilterAttributeArrayOutput {
+	return o.ApplyT(func(v GetTelemetryrouterDestinationConfigFilter) []GetTelemetryrouterDestinationConfigFilterAttribute {
+		return v.Attributes
+	}).(GetTelemetryrouterDestinationConfigFilterAttributeArrayOutput)
+}
+
+type GetTelemetryrouterDestinationConfigFilterAttribute struct {
+	// The TelemetryRouter destination's filter attribute key
+	Key string `pulumi:"key"`
+	// The TelemetryRouter destination's filter attribute level, possible values: Possible values are: `resource`, `scope`, `logRecord`.
+	Level string `pulumi:"level"`
+	// The TelemetryRouter destination's filter attribute matcher, possible values: Possible values are: `=`, `!=`.
+	Matcher string `pulumi:"matcher"`
+	// The TelemetryRouter destination's filter attribute values
+	Values []string `pulumi:"values"`
+}
+
+// GetTelemetryrouterDestinationConfigFilterAttributeInput is an input type that accepts GetTelemetryrouterDestinationConfigFilterAttributeArgs and GetTelemetryrouterDestinationConfigFilterAttributeOutput values.
+// You can construct a concrete instance of `GetTelemetryrouterDestinationConfigFilterAttributeInput` via:
+//
+//	GetTelemetryrouterDestinationConfigFilterAttributeArgs{...}
+type GetTelemetryrouterDestinationConfigFilterAttributeInput interface {
+	pulumi.Input
+
+	ToGetTelemetryrouterDestinationConfigFilterAttributeOutput() GetTelemetryrouterDestinationConfigFilterAttributeOutput
+	ToGetTelemetryrouterDestinationConfigFilterAttributeOutputWithContext(context.Context) GetTelemetryrouterDestinationConfigFilterAttributeOutput
+}
+
+type GetTelemetryrouterDestinationConfigFilterAttributeArgs struct {
+	// The TelemetryRouter destination's filter attribute key
+	Key pulumi.StringInput `pulumi:"key"`
+	// The TelemetryRouter destination's filter attribute level, possible values: Possible values are: `resource`, `scope`, `logRecord`.
+	Level pulumi.StringInput `pulumi:"level"`
+	// The TelemetryRouter destination's filter attribute matcher, possible values: Possible values are: `=`, `!=`.
+	Matcher pulumi.StringInput `pulumi:"matcher"`
+	// The TelemetryRouter destination's filter attribute values
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetTelemetryrouterDestinationConfigFilterAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTelemetryrouterDestinationConfigFilterAttribute)(nil)).Elem()
+}
+
+func (i GetTelemetryrouterDestinationConfigFilterAttributeArgs) ToGetTelemetryrouterDestinationConfigFilterAttributeOutput() GetTelemetryrouterDestinationConfigFilterAttributeOutput {
+	return i.ToGetTelemetryrouterDestinationConfigFilterAttributeOutputWithContext(context.Background())
+}
+
+func (i GetTelemetryrouterDestinationConfigFilterAttributeArgs) ToGetTelemetryrouterDestinationConfigFilterAttributeOutputWithContext(ctx context.Context) GetTelemetryrouterDestinationConfigFilterAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTelemetryrouterDestinationConfigFilterAttributeOutput)
+}
+
+// GetTelemetryrouterDestinationConfigFilterAttributeArrayInput is an input type that accepts GetTelemetryrouterDestinationConfigFilterAttributeArray and GetTelemetryrouterDestinationConfigFilterAttributeArrayOutput values.
+// You can construct a concrete instance of `GetTelemetryrouterDestinationConfigFilterAttributeArrayInput` via:
+//
+//	GetTelemetryrouterDestinationConfigFilterAttributeArray{ GetTelemetryrouterDestinationConfigFilterAttributeArgs{...} }
+type GetTelemetryrouterDestinationConfigFilterAttributeArrayInput interface {
+	pulumi.Input
+
+	ToGetTelemetryrouterDestinationConfigFilterAttributeArrayOutput() GetTelemetryrouterDestinationConfigFilterAttributeArrayOutput
+	ToGetTelemetryrouterDestinationConfigFilterAttributeArrayOutputWithContext(context.Context) GetTelemetryrouterDestinationConfigFilterAttributeArrayOutput
+}
+
+type GetTelemetryrouterDestinationConfigFilterAttributeArray []GetTelemetryrouterDestinationConfigFilterAttributeInput
+
+func (GetTelemetryrouterDestinationConfigFilterAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTelemetryrouterDestinationConfigFilterAttribute)(nil)).Elem()
+}
+
+func (i GetTelemetryrouterDestinationConfigFilterAttributeArray) ToGetTelemetryrouterDestinationConfigFilterAttributeArrayOutput() GetTelemetryrouterDestinationConfigFilterAttributeArrayOutput {
+	return i.ToGetTelemetryrouterDestinationConfigFilterAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i GetTelemetryrouterDestinationConfigFilterAttributeArray) ToGetTelemetryrouterDestinationConfigFilterAttributeArrayOutputWithContext(ctx context.Context) GetTelemetryrouterDestinationConfigFilterAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTelemetryrouterDestinationConfigFilterAttributeArrayOutput)
+}
+
+type GetTelemetryrouterDestinationConfigFilterAttributeOutput struct{ *pulumi.OutputState }
+
+func (GetTelemetryrouterDestinationConfigFilterAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTelemetryrouterDestinationConfigFilterAttribute)(nil)).Elem()
+}
+
+func (o GetTelemetryrouterDestinationConfigFilterAttributeOutput) ToGetTelemetryrouterDestinationConfigFilterAttributeOutput() GetTelemetryrouterDestinationConfigFilterAttributeOutput {
+	return o
+}
+
+func (o GetTelemetryrouterDestinationConfigFilterAttributeOutput) ToGetTelemetryrouterDestinationConfigFilterAttributeOutputWithContext(ctx context.Context) GetTelemetryrouterDestinationConfigFilterAttributeOutput {
+	return o
+}
+
+// The TelemetryRouter destination's filter attribute key
+func (o GetTelemetryrouterDestinationConfigFilterAttributeOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTelemetryrouterDestinationConfigFilterAttribute) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The TelemetryRouter destination's filter attribute level, possible values: Possible values are: `resource`, `scope`, `logRecord`.
+func (o GetTelemetryrouterDestinationConfigFilterAttributeOutput) Level() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTelemetryrouterDestinationConfigFilterAttribute) string { return v.Level }).(pulumi.StringOutput)
+}
+
+// The TelemetryRouter destination's filter attribute matcher, possible values: Possible values are: `=`, `!=`.
+func (o GetTelemetryrouterDestinationConfigFilterAttributeOutput) Matcher() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTelemetryrouterDestinationConfigFilterAttribute) string { return v.Matcher }).(pulumi.StringOutput)
+}
+
+// The TelemetryRouter destination's filter attribute values
+func (o GetTelemetryrouterDestinationConfigFilterAttributeOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTelemetryrouterDestinationConfigFilterAttribute) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetTelemetryrouterDestinationConfigFilterAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTelemetryrouterDestinationConfigFilterAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTelemetryrouterDestinationConfigFilterAttribute)(nil)).Elem()
+}
+
+func (o GetTelemetryrouterDestinationConfigFilterAttributeArrayOutput) ToGetTelemetryrouterDestinationConfigFilterAttributeArrayOutput() GetTelemetryrouterDestinationConfigFilterAttributeArrayOutput {
+	return o
+}
+
+func (o GetTelemetryrouterDestinationConfigFilterAttributeArrayOutput) ToGetTelemetryrouterDestinationConfigFilterAttributeArrayOutputWithContext(ctx context.Context) GetTelemetryrouterDestinationConfigFilterAttributeArrayOutput {
+	return o
+}
+
+func (o GetTelemetryrouterDestinationConfigFilterAttributeArrayOutput) Index(i pulumi.IntInput) GetTelemetryrouterDestinationConfigFilterAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTelemetryrouterDestinationConfigFilterAttribute {
+		return vs[0].([]GetTelemetryrouterDestinationConfigFilterAttribute)[vs[1].(int)]
+	}).(GetTelemetryrouterDestinationConfigFilterAttributeOutput)
+}
+
+type GetTelemetryrouterDestinationConfigOpentelemetry struct {
+	// OpenTelemetry destination URI
+	Uri string `pulumi:"uri"`
+}
+
+// GetTelemetryrouterDestinationConfigOpentelemetryInput is an input type that accepts GetTelemetryrouterDestinationConfigOpentelemetryArgs and GetTelemetryrouterDestinationConfigOpentelemetryOutput values.
+// You can construct a concrete instance of `GetTelemetryrouterDestinationConfigOpentelemetryInput` via:
+//
+//	GetTelemetryrouterDestinationConfigOpentelemetryArgs{...}
+type GetTelemetryrouterDestinationConfigOpentelemetryInput interface {
+	pulumi.Input
+
+	ToGetTelemetryrouterDestinationConfigOpentelemetryOutput() GetTelemetryrouterDestinationConfigOpentelemetryOutput
+	ToGetTelemetryrouterDestinationConfigOpentelemetryOutputWithContext(context.Context) GetTelemetryrouterDestinationConfigOpentelemetryOutput
+}
+
+type GetTelemetryrouterDestinationConfigOpentelemetryArgs struct {
+	// OpenTelemetry destination URI
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (GetTelemetryrouterDestinationConfigOpentelemetryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTelemetryrouterDestinationConfigOpentelemetry)(nil)).Elem()
+}
+
+func (i GetTelemetryrouterDestinationConfigOpentelemetryArgs) ToGetTelemetryrouterDestinationConfigOpentelemetryOutput() GetTelemetryrouterDestinationConfigOpentelemetryOutput {
+	return i.ToGetTelemetryrouterDestinationConfigOpentelemetryOutputWithContext(context.Background())
+}
+
+func (i GetTelemetryrouterDestinationConfigOpentelemetryArgs) ToGetTelemetryrouterDestinationConfigOpentelemetryOutputWithContext(ctx context.Context) GetTelemetryrouterDestinationConfigOpentelemetryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTelemetryrouterDestinationConfigOpentelemetryOutput)
+}
+
+type GetTelemetryrouterDestinationConfigOpentelemetryOutput struct{ *pulumi.OutputState }
+
+func (GetTelemetryrouterDestinationConfigOpentelemetryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTelemetryrouterDestinationConfigOpentelemetry)(nil)).Elem()
+}
+
+func (o GetTelemetryrouterDestinationConfigOpentelemetryOutput) ToGetTelemetryrouterDestinationConfigOpentelemetryOutput() GetTelemetryrouterDestinationConfigOpentelemetryOutput {
+	return o
+}
+
+func (o GetTelemetryrouterDestinationConfigOpentelemetryOutput) ToGetTelemetryrouterDestinationConfigOpentelemetryOutputWithContext(ctx context.Context) GetTelemetryrouterDestinationConfigOpentelemetryOutput {
+	return o
+}
+
+// OpenTelemetry destination URI
+func (o GetTelemetryrouterDestinationConfigOpentelemetryOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTelemetryrouterDestinationConfigOpentelemetry) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type GetTelemetryrouterDestinationConfigS3 struct {
+	// S3 bucket name
+	Bucket string `pulumi:"bucket"`
+	// S3 endpoint
+	Endpoint string `pulumi:"endpoint"`
+}
+
+// GetTelemetryrouterDestinationConfigS3Input is an input type that accepts GetTelemetryrouterDestinationConfigS3Args and GetTelemetryrouterDestinationConfigS3Output values.
+// You can construct a concrete instance of `GetTelemetryrouterDestinationConfigS3Input` via:
+//
+//	GetTelemetryrouterDestinationConfigS3Args{...}
+type GetTelemetryrouterDestinationConfigS3Input interface {
+	pulumi.Input
+
+	ToGetTelemetryrouterDestinationConfigS3Output() GetTelemetryrouterDestinationConfigS3Output
+	ToGetTelemetryrouterDestinationConfigS3OutputWithContext(context.Context) GetTelemetryrouterDestinationConfigS3Output
+}
+
+type GetTelemetryrouterDestinationConfigS3Args struct {
+	// S3 bucket name
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// S3 endpoint
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+}
+
+func (GetTelemetryrouterDestinationConfigS3Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTelemetryrouterDestinationConfigS3)(nil)).Elem()
+}
+
+func (i GetTelemetryrouterDestinationConfigS3Args) ToGetTelemetryrouterDestinationConfigS3Output() GetTelemetryrouterDestinationConfigS3Output {
+	return i.ToGetTelemetryrouterDestinationConfigS3OutputWithContext(context.Background())
+}
+
+func (i GetTelemetryrouterDestinationConfigS3Args) ToGetTelemetryrouterDestinationConfigS3OutputWithContext(ctx context.Context) GetTelemetryrouterDestinationConfigS3Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTelemetryrouterDestinationConfigS3Output)
+}
+
+type GetTelemetryrouterDestinationConfigS3Output struct{ *pulumi.OutputState }
+
+func (GetTelemetryrouterDestinationConfigS3Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTelemetryrouterDestinationConfigS3)(nil)).Elem()
+}
+
+func (o GetTelemetryrouterDestinationConfigS3Output) ToGetTelemetryrouterDestinationConfigS3Output() GetTelemetryrouterDestinationConfigS3Output {
+	return o
+}
+
+func (o GetTelemetryrouterDestinationConfigS3Output) ToGetTelemetryrouterDestinationConfigS3OutputWithContext(ctx context.Context) GetTelemetryrouterDestinationConfigS3Output {
+	return o
+}
+
+// S3 bucket name
+func (o GetTelemetryrouterDestinationConfigS3Output) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTelemetryrouterDestinationConfigS3) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// S3 endpoint
+func (o GetTelemetryrouterDestinationConfigS3Output) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTelemetryrouterDestinationConfigS3) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+type GetTelemetryrouterInstanceFilter struct {
+	// The TelemetryRouter global filter attributes
+	Attributes []GetTelemetryrouterInstanceFilterAttribute `pulumi:"attributes"`
+}
+
+// GetTelemetryrouterInstanceFilterInput is an input type that accepts GetTelemetryrouterInstanceFilterArgs and GetTelemetryrouterInstanceFilterOutput values.
+// You can construct a concrete instance of `GetTelemetryrouterInstanceFilterInput` via:
+//
+//	GetTelemetryrouterInstanceFilterArgs{...}
+type GetTelemetryrouterInstanceFilterInput interface {
+	pulumi.Input
+
+	ToGetTelemetryrouterInstanceFilterOutput() GetTelemetryrouterInstanceFilterOutput
+	ToGetTelemetryrouterInstanceFilterOutputWithContext(context.Context) GetTelemetryrouterInstanceFilterOutput
+}
+
+type GetTelemetryrouterInstanceFilterArgs struct {
+	// The TelemetryRouter global filter attributes
+	Attributes GetTelemetryrouterInstanceFilterAttributeArrayInput `pulumi:"attributes"`
+}
+
+func (GetTelemetryrouterInstanceFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTelemetryrouterInstanceFilter)(nil)).Elem()
+}
+
+func (i GetTelemetryrouterInstanceFilterArgs) ToGetTelemetryrouterInstanceFilterOutput() GetTelemetryrouterInstanceFilterOutput {
+	return i.ToGetTelemetryrouterInstanceFilterOutputWithContext(context.Background())
+}
+
+func (i GetTelemetryrouterInstanceFilterArgs) ToGetTelemetryrouterInstanceFilterOutputWithContext(ctx context.Context) GetTelemetryrouterInstanceFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTelemetryrouterInstanceFilterOutput)
+}
+
+type GetTelemetryrouterInstanceFilterOutput struct{ *pulumi.OutputState }
+
+func (GetTelemetryrouterInstanceFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTelemetryrouterInstanceFilter)(nil)).Elem()
+}
+
+func (o GetTelemetryrouterInstanceFilterOutput) ToGetTelemetryrouterInstanceFilterOutput() GetTelemetryrouterInstanceFilterOutput {
+	return o
+}
+
+func (o GetTelemetryrouterInstanceFilterOutput) ToGetTelemetryrouterInstanceFilterOutputWithContext(ctx context.Context) GetTelemetryrouterInstanceFilterOutput {
+	return o
+}
+
+// The TelemetryRouter global filter attributes
+func (o GetTelemetryrouterInstanceFilterOutput) Attributes() GetTelemetryrouterInstanceFilterAttributeArrayOutput {
+	return o.ApplyT(func(v GetTelemetryrouterInstanceFilter) []GetTelemetryrouterInstanceFilterAttribute {
+		return v.Attributes
+	}).(GetTelemetryrouterInstanceFilterAttributeArrayOutput)
+}
+
+type GetTelemetryrouterInstanceFilterAttribute struct {
+	// The TelemetryRouter global filter attribute key
+	Key string `pulumi:"key"`
+	// The TelemetryRouter global filter attribute level, possible values: Possible values are: `resource`, `scope`, `logRecord`.
+	Level string `pulumi:"level"`
+	// The TelemetryRouter global filter attribute matcher, possible values: Possible values are: `=`, `!=`.
+	Matcher string `pulumi:"matcher"`
+	// The TelemetryRouter global filter attributes
+	Values []string `pulumi:"values"`
+}
+
+// GetTelemetryrouterInstanceFilterAttributeInput is an input type that accepts GetTelemetryrouterInstanceFilterAttributeArgs and GetTelemetryrouterInstanceFilterAttributeOutput values.
+// You can construct a concrete instance of `GetTelemetryrouterInstanceFilterAttributeInput` via:
+//
+//	GetTelemetryrouterInstanceFilterAttributeArgs{...}
+type GetTelemetryrouterInstanceFilterAttributeInput interface {
+	pulumi.Input
+
+	ToGetTelemetryrouterInstanceFilterAttributeOutput() GetTelemetryrouterInstanceFilterAttributeOutput
+	ToGetTelemetryrouterInstanceFilterAttributeOutputWithContext(context.Context) GetTelemetryrouterInstanceFilterAttributeOutput
+}
+
+type GetTelemetryrouterInstanceFilterAttributeArgs struct {
+	// The TelemetryRouter global filter attribute key
+	Key pulumi.StringInput `pulumi:"key"`
+	// The TelemetryRouter global filter attribute level, possible values: Possible values are: `resource`, `scope`, `logRecord`.
+	Level pulumi.StringInput `pulumi:"level"`
+	// The TelemetryRouter global filter attribute matcher, possible values: Possible values are: `=`, `!=`.
+	Matcher pulumi.StringInput `pulumi:"matcher"`
+	// The TelemetryRouter global filter attributes
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetTelemetryrouterInstanceFilterAttributeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTelemetryrouterInstanceFilterAttribute)(nil)).Elem()
+}
+
+func (i GetTelemetryrouterInstanceFilterAttributeArgs) ToGetTelemetryrouterInstanceFilterAttributeOutput() GetTelemetryrouterInstanceFilterAttributeOutput {
+	return i.ToGetTelemetryrouterInstanceFilterAttributeOutputWithContext(context.Background())
+}
+
+func (i GetTelemetryrouterInstanceFilterAttributeArgs) ToGetTelemetryrouterInstanceFilterAttributeOutputWithContext(ctx context.Context) GetTelemetryrouterInstanceFilterAttributeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTelemetryrouterInstanceFilterAttributeOutput)
+}
+
+// GetTelemetryrouterInstanceFilterAttributeArrayInput is an input type that accepts GetTelemetryrouterInstanceFilterAttributeArray and GetTelemetryrouterInstanceFilterAttributeArrayOutput values.
+// You can construct a concrete instance of `GetTelemetryrouterInstanceFilterAttributeArrayInput` via:
+//
+//	GetTelemetryrouterInstanceFilterAttributeArray{ GetTelemetryrouterInstanceFilterAttributeArgs{...} }
+type GetTelemetryrouterInstanceFilterAttributeArrayInput interface {
+	pulumi.Input
+
+	ToGetTelemetryrouterInstanceFilterAttributeArrayOutput() GetTelemetryrouterInstanceFilterAttributeArrayOutput
+	ToGetTelemetryrouterInstanceFilterAttributeArrayOutputWithContext(context.Context) GetTelemetryrouterInstanceFilterAttributeArrayOutput
+}
+
+type GetTelemetryrouterInstanceFilterAttributeArray []GetTelemetryrouterInstanceFilterAttributeInput
+
+func (GetTelemetryrouterInstanceFilterAttributeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTelemetryrouterInstanceFilterAttribute)(nil)).Elem()
+}
+
+func (i GetTelemetryrouterInstanceFilterAttributeArray) ToGetTelemetryrouterInstanceFilterAttributeArrayOutput() GetTelemetryrouterInstanceFilterAttributeArrayOutput {
+	return i.ToGetTelemetryrouterInstanceFilterAttributeArrayOutputWithContext(context.Background())
+}
+
+func (i GetTelemetryrouterInstanceFilterAttributeArray) ToGetTelemetryrouterInstanceFilterAttributeArrayOutputWithContext(ctx context.Context) GetTelemetryrouterInstanceFilterAttributeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTelemetryrouterInstanceFilterAttributeArrayOutput)
+}
+
+type GetTelemetryrouterInstanceFilterAttributeOutput struct{ *pulumi.OutputState }
+
+func (GetTelemetryrouterInstanceFilterAttributeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTelemetryrouterInstanceFilterAttribute)(nil)).Elem()
+}
+
+func (o GetTelemetryrouterInstanceFilterAttributeOutput) ToGetTelemetryrouterInstanceFilterAttributeOutput() GetTelemetryrouterInstanceFilterAttributeOutput {
+	return o
+}
+
+func (o GetTelemetryrouterInstanceFilterAttributeOutput) ToGetTelemetryrouterInstanceFilterAttributeOutputWithContext(ctx context.Context) GetTelemetryrouterInstanceFilterAttributeOutput {
+	return o
+}
+
+// The TelemetryRouter global filter attribute key
+func (o GetTelemetryrouterInstanceFilterAttributeOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTelemetryrouterInstanceFilterAttribute) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The TelemetryRouter global filter attribute level, possible values: Possible values are: `resource`, `scope`, `logRecord`.
+func (o GetTelemetryrouterInstanceFilterAttributeOutput) Level() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTelemetryrouterInstanceFilterAttribute) string { return v.Level }).(pulumi.StringOutput)
+}
+
+// The TelemetryRouter global filter attribute matcher, possible values: Possible values are: `=`, `!=`.
+func (o GetTelemetryrouterInstanceFilterAttributeOutput) Matcher() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTelemetryrouterInstanceFilterAttribute) string { return v.Matcher }).(pulumi.StringOutput)
+}
+
+// The TelemetryRouter global filter attributes
+func (o GetTelemetryrouterInstanceFilterAttributeOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTelemetryrouterInstanceFilterAttribute) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetTelemetryrouterInstanceFilterAttributeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTelemetryrouterInstanceFilterAttributeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTelemetryrouterInstanceFilterAttribute)(nil)).Elem()
+}
+
+func (o GetTelemetryrouterInstanceFilterAttributeArrayOutput) ToGetTelemetryrouterInstanceFilterAttributeArrayOutput() GetTelemetryrouterInstanceFilterAttributeArrayOutput {
+	return o
+}
+
+func (o GetTelemetryrouterInstanceFilterAttributeArrayOutput) ToGetTelemetryrouterInstanceFilterAttributeArrayOutputWithContext(ctx context.Context) GetTelemetryrouterInstanceFilterAttributeArrayOutput {
+	return o
+}
+
+func (o GetTelemetryrouterInstanceFilterAttributeArrayOutput) Index(i pulumi.IntInput) GetTelemetryrouterInstanceFilterAttributeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTelemetryrouterInstanceFilterAttribute {
+		return vs[0].([]GetTelemetryrouterInstanceFilterAttribute)[vs[1].(int)]
+	}).(GetTelemetryrouterInstanceFilterAttributeOutput)
+}
+
 type GetVolumeSource struct {
 	// The ID of the source, e.g. image ID
 	Id string `pulumi:"id"`
@@ -30999,6 +35224,128 @@ func (o GetVolumeSourceOutput) Id() pulumi.StringOutput {
 // The type of the source. Possible values are: `volume`, `image`, `snapshot`, `backup`.
 func (o GetVolumeSourceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumeSource) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetVpnGatewayAvailabilityZones struct {
+	// Availability zone for tunnel 1.
+	Tunnel1 string `pulumi:"tunnel1"`
+	// Availability zone for tunnel 2.
+	Tunnel2 string `pulumi:"tunnel2"`
+}
+
+// GetVpnGatewayAvailabilityZonesInput is an input type that accepts GetVpnGatewayAvailabilityZonesArgs and GetVpnGatewayAvailabilityZonesOutput values.
+// You can construct a concrete instance of `GetVpnGatewayAvailabilityZonesInput` via:
+//
+//	GetVpnGatewayAvailabilityZonesArgs{...}
+type GetVpnGatewayAvailabilityZonesInput interface {
+	pulumi.Input
+
+	ToGetVpnGatewayAvailabilityZonesOutput() GetVpnGatewayAvailabilityZonesOutput
+	ToGetVpnGatewayAvailabilityZonesOutputWithContext(context.Context) GetVpnGatewayAvailabilityZonesOutput
+}
+
+type GetVpnGatewayAvailabilityZonesArgs struct {
+	// Availability zone for tunnel 1.
+	Tunnel1 pulumi.StringInput `pulumi:"tunnel1"`
+	// Availability zone for tunnel 2.
+	Tunnel2 pulumi.StringInput `pulumi:"tunnel2"`
+}
+
+func (GetVpnGatewayAvailabilityZonesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpnGatewayAvailabilityZones)(nil)).Elem()
+}
+
+func (i GetVpnGatewayAvailabilityZonesArgs) ToGetVpnGatewayAvailabilityZonesOutput() GetVpnGatewayAvailabilityZonesOutput {
+	return i.ToGetVpnGatewayAvailabilityZonesOutputWithContext(context.Background())
+}
+
+func (i GetVpnGatewayAvailabilityZonesArgs) ToGetVpnGatewayAvailabilityZonesOutputWithContext(ctx context.Context) GetVpnGatewayAvailabilityZonesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpnGatewayAvailabilityZonesOutput)
+}
+
+type GetVpnGatewayAvailabilityZonesOutput struct{ *pulumi.OutputState }
+
+func (GetVpnGatewayAvailabilityZonesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpnGatewayAvailabilityZones)(nil)).Elem()
+}
+
+func (o GetVpnGatewayAvailabilityZonesOutput) ToGetVpnGatewayAvailabilityZonesOutput() GetVpnGatewayAvailabilityZonesOutput {
+	return o
+}
+
+func (o GetVpnGatewayAvailabilityZonesOutput) ToGetVpnGatewayAvailabilityZonesOutputWithContext(ctx context.Context) GetVpnGatewayAvailabilityZonesOutput {
+	return o
+}
+
+// Availability zone for tunnel 1.
+func (o GetVpnGatewayAvailabilityZonesOutput) Tunnel1() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpnGatewayAvailabilityZones) string { return v.Tunnel1 }).(pulumi.StringOutput)
+}
+
+// Availability zone for tunnel 2.
+func (o GetVpnGatewayAvailabilityZonesOutput) Tunnel2() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpnGatewayAvailabilityZones) string { return v.Tunnel2 }).(pulumi.StringOutput)
+}
+
+type GetVpnGatewayBgp struct {
+	// Local ASN for BGP (private ASN range, 64512-4294967294).
+	LocalAsn int `pulumi:"localAsn"`
+	// List of IPv4 CIDRs to advertise via BGP. If omitted, SNA network ranges are advertised.
+	OverrideAdvertisedRoutes []string `pulumi:"overrideAdvertisedRoutes"`
+}
+
+// GetVpnGatewayBgpInput is an input type that accepts GetVpnGatewayBgpArgs and GetVpnGatewayBgpOutput values.
+// You can construct a concrete instance of `GetVpnGatewayBgpInput` via:
+//
+//	GetVpnGatewayBgpArgs{...}
+type GetVpnGatewayBgpInput interface {
+	pulumi.Input
+
+	ToGetVpnGatewayBgpOutput() GetVpnGatewayBgpOutput
+	ToGetVpnGatewayBgpOutputWithContext(context.Context) GetVpnGatewayBgpOutput
+}
+
+type GetVpnGatewayBgpArgs struct {
+	// Local ASN for BGP (private ASN range, 64512-4294967294).
+	LocalAsn pulumi.IntInput `pulumi:"localAsn"`
+	// List of IPv4 CIDRs to advertise via BGP. If omitted, SNA network ranges are advertised.
+	OverrideAdvertisedRoutes pulumi.StringArrayInput `pulumi:"overrideAdvertisedRoutes"`
+}
+
+func (GetVpnGatewayBgpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpnGatewayBgp)(nil)).Elem()
+}
+
+func (i GetVpnGatewayBgpArgs) ToGetVpnGatewayBgpOutput() GetVpnGatewayBgpOutput {
+	return i.ToGetVpnGatewayBgpOutputWithContext(context.Background())
+}
+
+func (i GetVpnGatewayBgpArgs) ToGetVpnGatewayBgpOutputWithContext(ctx context.Context) GetVpnGatewayBgpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpnGatewayBgpOutput)
+}
+
+type GetVpnGatewayBgpOutput struct{ *pulumi.OutputState }
+
+func (GetVpnGatewayBgpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpnGatewayBgp)(nil)).Elem()
+}
+
+func (o GetVpnGatewayBgpOutput) ToGetVpnGatewayBgpOutput() GetVpnGatewayBgpOutput {
+	return o
+}
+
+func (o GetVpnGatewayBgpOutput) ToGetVpnGatewayBgpOutputWithContext(ctx context.Context) GetVpnGatewayBgpOutput {
+	return o
+}
+
+// Local ASN for BGP (private ASN range, 64512-4294967294).
+func (o GetVpnGatewayBgpOutput) LocalAsn() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpnGatewayBgp) int { return v.LocalAsn }).(pulumi.IntOutput)
+}
+
+// List of IPv4 CIDRs to advertise via BGP. If omitted, SNA network ranges are advertised.
+func (o GetVpnGatewayBgpOutput) OverrideAdvertisedRoutes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVpnGatewayBgp) []string { return v.OverrideAdvertisedRoutes }).(pulumi.StringArrayOutput)
 }
 
 func init() {
@@ -31073,6 +35420,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsRecordSetTimeoutsPtrInput)(nil)).Elem(), DnsRecordSetTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsZoneTimeoutsInput)(nil)).Elem(), DnsZoneTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsZoneTimeoutsPtrInput)(nil)).Elem(), DnsZoneTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DremioInstanceAuthenticationInput)(nil)).Elem(), DremioInstanceAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DremioInstanceAuthenticationPtrInput)(nil)).Elem(), DremioInstanceAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DremioInstanceAuthenticationAzureadInput)(nil)).Elem(), DremioInstanceAuthenticationAzureadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DremioInstanceAuthenticationAzureadPtrInput)(nil)).Elem(), DremioInstanceAuthenticationAzureadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DremioInstanceAuthenticationOauthInput)(nil)).Elem(), DremioInstanceAuthenticationOauthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DremioInstanceAuthenticationOauthPtrInput)(nil)).Elem(), DremioInstanceAuthenticationOauthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DremioInstanceAuthenticationOauthJwtClaimsInput)(nil)).Elem(), DremioInstanceAuthenticationOauthJwtClaimsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DremioInstanceAuthenticationOauthJwtClaimsPtrInput)(nil)).Elem(), DremioInstanceAuthenticationOauthJwtClaimsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DremioInstanceAuthenticationOauthParameterInput)(nil)).Elem(), DremioInstanceAuthenticationOauthParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DremioInstanceAuthenticationOauthParameterArrayInput)(nil)).Elem(), DremioInstanceAuthenticationOauthParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DremioInstanceEndpointsInput)(nil)).Elem(), DremioInstanceEndpointsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DremioInstanceEndpointsPtrInput)(nil)).Elem(), DremioInstanceEndpointsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DremioInstanceTimeoutsInput)(nil)).Elem(), DremioInstanceTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DremioInstanceTimeoutsPtrInput)(nil)).Elem(), DremioInstanceTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DremioUserTimeoutsInput)(nil)).Elem(), DremioUserTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DremioUserTimeoutsPtrInput)(nil)).Elem(), DremioUserTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageChecksumInput)(nil)).Elem(), ImageChecksumArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageChecksumPtrInput)(nil)).Elem(), ImageChecksumArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ImageConfigInput)(nil)).Elem(), ImageConfigArgs{})
@@ -31211,10 +35574,32 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlserverflexInstanceOptionsPtrInput)(nil)).Elem(), SqlserverflexInstanceOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlserverflexInstanceStorageInput)(nil)).Elem(), SqlserverflexInstanceStorageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlserverflexInstanceStoragePtrInput)(nil)).Elem(), SqlserverflexInstanceStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryrouterDestinationConfigInput)(nil)).Elem(), TelemetryrouterDestinationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryrouterDestinationConfigPtrInput)(nil)).Elem(), TelemetryrouterDestinationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryrouterDestinationConfigFilterInput)(nil)).Elem(), TelemetryrouterDestinationConfigFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryrouterDestinationConfigFilterPtrInput)(nil)).Elem(), TelemetryrouterDestinationConfigFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryrouterDestinationConfigFilterAttributeInput)(nil)).Elem(), TelemetryrouterDestinationConfigFilterAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryrouterDestinationConfigFilterAttributeArrayInput)(nil)).Elem(), TelemetryrouterDestinationConfigFilterAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryrouterDestinationConfigOpentelemetryInput)(nil)).Elem(), TelemetryrouterDestinationConfigOpentelemetryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryrouterDestinationConfigOpentelemetryPtrInput)(nil)).Elem(), TelemetryrouterDestinationConfigOpentelemetryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryrouterDestinationConfigOpentelemetryBasicAuthInput)(nil)).Elem(), TelemetryrouterDestinationConfigOpentelemetryBasicAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrInput)(nil)).Elem(), TelemetryrouterDestinationConfigOpentelemetryBasicAuthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryrouterDestinationConfigS3Input)(nil)).Elem(), TelemetryrouterDestinationConfigS3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryrouterDestinationConfigS3PtrInput)(nil)).Elem(), TelemetryrouterDestinationConfigS3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryrouterDestinationConfigS3AccessKeyInput)(nil)).Elem(), TelemetryrouterDestinationConfigS3AccessKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryrouterDestinationConfigS3AccessKeyPtrInput)(nil)).Elem(), TelemetryrouterDestinationConfigS3AccessKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryrouterInstanceFilterInput)(nil)).Elem(), TelemetryrouterInstanceFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryrouterInstanceFilterPtrInput)(nil)).Elem(), TelemetryrouterInstanceFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryrouterInstanceFilterAttributeInput)(nil)).Elem(), TelemetryrouterInstanceFilterAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryrouterInstanceFilterAttributeArrayInput)(nil)).Elem(), TelemetryrouterInstanceFilterAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeEncryptionParametersInput)(nil)).Elem(), VolumeEncryptionParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeEncryptionParametersPtrInput)(nil)).Elem(), VolumeEncryptionParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeSourceInput)(nil)).Elem(), VolumeSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeSourcePtrInput)(nil)).Elem(), VolumeSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayAvailabilityZonesInput)(nil)).Elem(), VpnGatewayAvailabilityZonesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayAvailabilityZonesPtrInput)(nil)).Elem(), VpnGatewayAvailabilityZonesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayBgpInput)(nil)).Elem(), VpnGatewayBgpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayBgpPtrInput)(nil)).Elem(), VpnGatewayBgpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerErrorInput)(nil)).Elem(), GetApplicationLoadBalancerErrorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerErrorArrayInput)(nil)).Elem(), GetApplicationLoadBalancerErrorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerListenerInput)(nil)).Elem(), GetApplicationLoadBalancerListenerArgs{})
@@ -31265,6 +35650,13 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDnsRecordSetTimeoutsPtrInput)(nil)).Elem(), GetDnsRecordSetTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDnsZoneTimeoutsInput)(nil)).Elem(), GetDnsZoneTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDnsZoneTimeoutsPtrInput)(nil)).Elem(), GetDnsZoneTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDremioInstanceAuthenticationInput)(nil)).Elem(), GetDremioInstanceAuthenticationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDremioInstanceAuthenticationAzureadInput)(nil)).Elem(), GetDremioInstanceAuthenticationAzureadArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDremioInstanceAuthenticationOauthInput)(nil)).Elem(), GetDremioInstanceAuthenticationOauthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDremioInstanceAuthenticationOauthJwtClaimsInput)(nil)).Elem(), GetDremioInstanceAuthenticationOauthJwtClaimsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDremioInstanceAuthenticationOauthParameterInput)(nil)).Elem(), GetDremioInstanceAuthenticationOauthParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDremioInstanceAuthenticationOauthParameterArrayInput)(nil)).Elem(), GetDremioInstanceAuthenticationOauthParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDremioInstanceEndpointsInput)(nil)).Elem(), GetDremioInstanceEndpointsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEdgecloudInstancesInstanceInput)(nil)).Elem(), GetEdgecloudInstancesInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEdgecloudInstancesInstanceArrayInput)(nil)).Elem(), GetEdgecloudInstancesInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEdgecloudPlansPlanInput)(nil)).Elem(), GetEdgecloudPlansPlanArgs{})
@@ -31393,7 +35785,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlserverflexInstanceFlavorInput)(nil)).Elem(), GetSqlserverflexInstanceFlavorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlserverflexInstanceOptionsInput)(nil)).Elem(), GetSqlserverflexInstanceOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlserverflexInstanceStorageInput)(nil)).Elem(), GetSqlserverflexInstanceStorageArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTelemetryrouterDestinationConfigInput)(nil)).Elem(), GetTelemetryrouterDestinationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTelemetryrouterDestinationConfigFilterInput)(nil)).Elem(), GetTelemetryrouterDestinationConfigFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTelemetryrouterDestinationConfigFilterAttributeInput)(nil)).Elem(), GetTelemetryrouterDestinationConfigFilterAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTelemetryrouterDestinationConfigFilterAttributeArrayInput)(nil)).Elem(), GetTelemetryrouterDestinationConfigFilterAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTelemetryrouterDestinationConfigOpentelemetryInput)(nil)).Elem(), GetTelemetryrouterDestinationConfigOpentelemetryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTelemetryrouterDestinationConfigS3Input)(nil)).Elem(), GetTelemetryrouterDestinationConfigS3Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTelemetryrouterInstanceFilterInput)(nil)).Elem(), GetTelemetryrouterInstanceFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTelemetryrouterInstanceFilterAttributeInput)(nil)).Elem(), GetTelemetryrouterInstanceFilterAttributeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTelemetryrouterInstanceFilterAttributeArrayInput)(nil)).Elem(), GetTelemetryrouterInstanceFilterAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeSourceInput)(nil)).Elem(), GetVolumeSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpnGatewayAvailabilityZonesInput)(nil)).Elem(), GetVpnGatewayAvailabilityZonesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpnGatewayBgpInput)(nil)).Elem(), GetVpnGatewayBgpArgs{})
 	pulumi.RegisterOutputType(ApplicationLoadBalancerErrorOutput{})
 	pulumi.RegisterOutputType(ApplicationLoadBalancerErrorArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationLoadBalancerListenerOutput{})
@@ -31465,6 +35868,22 @@ func init() {
 	pulumi.RegisterOutputType(DnsRecordSetTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(DnsZoneTimeoutsOutput{})
 	pulumi.RegisterOutputType(DnsZoneTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(DremioInstanceAuthenticationOutput{})
+	pulumi.RegisterOutputType(DremioInstanceAuthenticationPtrOutput{})
+	pulumi.RegisterOutputType(DremioInstanceAuthenticationAzureadOutput{})
+	pulumi.RegisterOutputType(DremioInstanceAuthenticationAzureadPtrOutput{})
+	pulumi.RegisterOutputType(DremioInstanceAuthenticationOauthOutput{})
+	pulumi.RegisterOutputType(DremioInstanceAuthenticationOauthPtrOutput{})
+	pulumi.RegisterOutputType(DremioInstanceAuthenticationOauthJwtClaimsOutput{})
+	pulumi.RegisterOutputType(DremioInstanceAuthenticationOauthJwtClaimsPtrOutput{})
+	pulumi.RegisterOutputType(DremioInstanceAuthenticationOauthParameterOutput{})
+	pulumi.RegisterOutputType(DremioInstanceAuthenticationOauthParameterArrayOutput{})
+	pulumi.RegisterOutputType(DremioInstanceEndpointsOutput{})
+	pulumi.RegisterOutputType(DremioInstanceEndpointsPtrOutput{})
+	pulumi.RegisterOutputType(DremioInstanceTimeoutsOutput{})
+	pulumi.RegisterOutputType(DremioInstanceTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(DremioUserTimeoutsOutput{})
+	pulumi.RegisterOutputType(DremioUserTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(ImageChecksumOutput{})
 	pulumi.RegisterOutputType(ImageChecksumPtrOutput{})
 	pulumi.RegisterOutputType(ImageConfigOutput{})
@@ -31603,10 +36022,32 @@ func init() {
 	pulumi.RegisterOutputType(SqlserverflexInstanceOptionsPtrOutput{})
 	pulumi.RegisterOutputType(SqlserverflexInstanceStorageOutput{})
 	pulumi.RegisterOutputType(SqlserverflexInstanceStoragePtrOutput{})
+	pulumi.RegisterOutputType(TelemetryrouterDestinationConfigOutput{})
+	pulumi.RegisterOutputType(TelemetryrouterDestinationConfigPtrOutput{})
+	pulumi.RegisterOutputType(TelemetryrouterDestinationConfigFilterOutput{})
+	pulumi.RegisterOutputType(TelemetryrouterDestinationConfigFilterPtrOutput{})
+	pulumi.RegisterOutputType(TelemetryrouterDestinationConfigFilterAttributeOutput{})
+	pulumi.RegisterOutputType(TelemetryrouterDestinationConfigFilterAttributeArrayOutput{})
+	pulumi.RegisterOutputType(TelemetryrouterDestinationConfigOpentelemetryOutput{})
+	pulumi.RegisterOutputType(TelemetryrouterDestinationConfigOpentelemetryPtrOutput{})
+	pulumi.RegisterOutputType(TelemetryrouterDestinationConfigOpentelemetryBasicAuthOutput{})
+	pulumi.RegisterOutputType(TelemetryrouterDestinationConfigOpentelemetryBasicAuthPtrOutput{})
+	pulumi.RegisterOutputType(TelemetryrouterDestinationConfigS3Output{})
+	pulumi.RegisterOutputType(TelemetryrouterDestinationConfigS3PtrOutput{})
+	pulumi.RegisterOutputType(TelemetryrouterDestinationConfigS3AccessKeyOutput{})
+	pulumi.RegisterOutputType(TelemetryrouterDestinationConfigS3AccessKeyPtrOutput{})
+	pulumi.RegisterOutputType(TelemetryrouterInstanceFilterOutput{})
+	pulumi.RegisterOutputType(TelemetryrouterInstanceFilterPtrOutput{})
+	pulumi.RegisterOutputType(TelemetryrouterInstanceFilterAttributeOutput{})
+	pulumi.RegisterOutputType(TelemetryrouterInstanceFilterAttributeArrayOutput{})
 	pulumi.RegisterOutputType(VolumeEncryptionParametersOutput{})
 	pulumi.RegisterOutputType(VolumeEncryptionParametersPtrOutput{})
 	pulumi.RegisterOutputType(VolumeSourceOutput{})
 	pulumi.RegisterOutputType(VolumeSourcePtrOutput{})
+	pulumi.RegisterOutputType(VpnGatewayAvailabilityZonesOutput{})
+	pulumi.RegisterOutputType(VpnGatewayAvailabilityZonesPtrOutput{})
+	pulumi.RegisterOutputType(VpnGatewayBgpOutput{})
+	pulumi.RegisterOutputType(VpnGatewayBgpPtrOutput{})
 	pulumi.RegisterOutputType(GetApplicationLoadBalancerErrorOutput{})
 	pulumi.RegisterOutputType(GetApplicationLoadBalancerErrorArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationLoadBalancerListenerOutput{})
@@ -31657,6 +36098,13 @@ func init() {
 	pulumi.RegisterOutputType(GetDnsRecordSetTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetDnsZoneTimeoutsOutput{})
 	pulumi.RegisterOutputType(GetDnsZoneTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetDremioInstanceAuthenticationOutput{})
+	pulumi.RegisterOutputType(GetDremioInstanceAuthenticationAzureadOutput{})
+	pulumi.RegisterOutputType(GetDremioInstanceAuthenticationOauthOutput{})
+	pulumi.RegisterOutputType(GetDremioInstanceAuthenticationOauthJwtClaimsOutput{})
+	pulumi.RegisterOutputType(GetDremioInstanceAuthenticationOauthParameterOutput{})
+	pulumi.RegisterOutputType(GetDremioInstanceAuthenticationOauthParameterArrayOutput{})
+	pulumi.RegisterOutputType(GetDremioInstanceEndpointsOutput{})
 	pulumi.RegisterOutputType(GetEdgecloudInstancesInstanceOutput{})
 	pulumi.RegisterOutputType(GetEdgecloudInstancesInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetEdgecloudPlansPlanOutput{})
@@ -31785,5 +36233,16 @@ func init() {
 	pulumi.RegisterOutputType(GetSqlserverflexInstanceFlavorOutput{})
 	pulumi.RegisterOutputType(GetSqlserverflexInstanceOptionsOutput{})
 	pulumi.RegisterOutputType(GetSqlserverflexInstanceStorageOutput{})
+	pulumi.RegisterOutputType(GetTelemetryrouterDestinationConfigOutput{})
+	pulumi.RegisterOutputType(GetTelemetryrouterDestinationConfigFilterOutput{})
+	pulumi.RegisterOutputType(GetTelemetryrouterDestinationConfigFilterAttributeOutput{})
+	pulumi.RegisterOutputType(GetTelemetryrouterDestinationConfigFilterAttributeArrayOutput{})
+	pulumi.RegisterOutputType(GetTelemetryrouterDestinationConfigOpentelemetryOutput{})
+	pulumi.RegisterOutputType(GetTelemetryrouterDestinationConfigS3Output{})
+	pulumi.RegisterOutputType(GetTelemetryrouterInstanceFilterOutput{})
+	pulumi.RegisterOutputType(GetTelemetryrouterInstanceFilterAttributeOutput{})
+	pulumi.RegisterOutputType(GetTelemetryrouterInstanceFilterAttributeArrayOutput{})
 	pulumi.RegisterOutputType(GetVolumeSourceOutput{})
+	pulumi.RegisterOutputType(GetVpnGatewayAvailabilityZonesOutput{})
+	pulumi.RegisterOutputType(GetVpnGatewayBgpOutput{})
 }

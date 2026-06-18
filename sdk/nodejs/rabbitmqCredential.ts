@@ -56,6 +56,10 @@ export class RabbitmqCredential extends pulumi.CustomResource {
      * STACKIT Project ID to which the instance is associated.
      */
     declare public readonly projectId: pulumi.Output<string>;
+    /**
+     * A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+     */
+    declare public readonly rotateWhenChanged: pulumi.Output<{[key: string]: string} | undefined>;
     declare public /*out*/ readonly uri: pulumi.Output<string>;
     declare public /*out*/ readonly uris: pulumi.Output<string[]>;
     declare public /*out*/ readonly username: pulumi.Output<string>;
@@ -83,6 +87,7 @@ export class RabbitmqCredential extends pulumi.CustomResource {
             resourceInputs["password"] = state?.password;
             resourceInputs["port"] = state?.port;
             resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["rotateWhenChanged"] = state?.rotateWhenChanged;
             resourceInputs["uri"] = state?.uri;
             resourceInputs["uris"] = state?.uris;
             resourceInputs["username"] = state?.username;
@@ -96,6 +101,7 @@ export class RabbitmqCredential extends pulumi.CustomResource {
             }
             resourceInputs["instanceId"] = args?.instanceId;
             resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["rotateWhenChanged"] = args?.rotateWhenChanged;
             resourceInputs["credentialId"] = undefined /*out*/;
             resourceInputs["host"] = undefined /*out*/;
             resourceInputs["hosts"] = undefined /*out*/;
@@ -138,6 +144,10 @@ export interface RabbitmqCredentialState {
      * STACKIT Project ID to which the instance is associated.
      */
     projectId?: pulumi.Input<string | undefined>;
+    /**
+     * A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+     */
+    rotateWhenChanged?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     uri?: pulumi.Input<string | undefined>;
     uris?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     username?: pulumi.Input<string | undefined>;
@@ -155,4 +165,8 @@ export interface RabbitmqCredentialArgs {
      * STACKIT Project ID to which the instance is associated.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
+     */
+    rotateWhenChanged?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
 }

@@ -25,6 +25,8 @@ type SfsShare struct {
 	// clients with IPs matching the IP ACL of the Resource Pool hosting this Share.
 	// You can also assign a Share Export Policy after creating the Share
 	ExportPolicy pulumi.StringPtrOutput `pulumi:"exportPolicy"`
+	// Labels are key-value string pairs which can be attached to the resource.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Mount path of the Share, used to mount the Share
 	MountPath pulumi.StringOutput `pulumi:"mountPath"`
 	// Name of the share.
@@ -87,6 +89,8 @@ type sfsShareState struct {
 	// clients with IPs matching the IP ACL of the Resource Pool hosting this Share.
 	// You can also assign a Share Export Policy after creating the Share
 	ExportPolicy *string `pulumi:"exportPolicy"`
+	// Labels are key-value string pairs which can be attached to the resource.
+	Labels map[string]string `pulumi:"labels"`
 	// Mount path of the Share, used to mount the Share
 	MountPath *string `pulumi:"mountPath"`
 	// Name of the share.
@@ -111,6 +115,8 @@ type SfsShareState struct {
 	// clients with IPs matching the IP ACL of the Resource Pool hosting this Share.
 	// You can also assign a Share Export Policy after creating the Share
 	ExportPolicy pulumi.StringPtrInput
+	// Labels are key-value string pairs which can be attached to the resource.
+	Labels pulumi.StringMapInput
 	// Mount path of the Share, used to mount the Share
 	MountPath pulumi.StringPtrInput
 	// Name of the share.
@@ -139,6 +145,8 @@ type sfsShareArgs struct {
 	// clients with IPs matching the IP ACL of the Resource Pool hosting this Share.
 	// You can also assign a Share Export Policy after creating the Share
 	ExportPolicy *string `pulumi:"exportPolicy"`
+	// Labels are key-value string pairs which can be attached to the resource.
+	Labels map[string]string `pulumi:"labels"`
 	// Name of the share.
 	Name *string `pulumi:"name"`
 	// STACKIT project ID to which the share is associated.
@@ -160,6 +168,8 @@ type SfsShareArgs struct {
 	// clients with IPs matching the IP ACL of the Resource Pool hosting this Share.
 	// You can also assign a Share Export Policy after creating the Share
 	ExportPolicy pulumi.StringPtrInput
+	// Labels are key-value string pairs which can be attached to the resource.
+	Labels pulumi.StringMapInput
 	// Name of the share.
 	Name pulumi.StringPtrInput
 	// STACKIT project ID to which the share is associated.
@@ -267,6 +277,11 @@ func (o SfsShareOutput) ToSfsShareOutputWithContext(ctx context.Context) SfsShar
 // You can also assign a Share Export Policy after creating the Share
 func (o SfsShareOutput) ExportPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SfsShare) pulumi.StringPtrOutput { return v.ExportPolicy }).(pulumi.StringPtrOutput)
+}
+
+// Labels are key-value string pairs which can be attached to the resource.
+func (o SfsShareOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SfsShare) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // Mount path of the Share, used to mount the Share

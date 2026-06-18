@@ -24,6 +24,8 @@ type SfsResourcePool struct {
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
 	// List of IPs that can mount the resource pool in read-only; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
 	IpAcls pulumi.StringArrayOutput `pulumi:"ipAcls"`
+	// Labels are key-value string pairs which can be attached to the resource.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Name of the resource pool.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Name of the performance class.
@@ -91,6 +93,8 @@ type sfsResourcePoolState struct {
 	AvailabilityZone *string `pulumi:"availabilityZone"`
 	// List of IPs that can mount the resource pool in read-only; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
 	IpAcls []string `pulumi:"ipAcls"`
+	// Labels are key-value string pairs which can be attached to the resource.
+	Labels map[string]string `pulumi:"labels"`
 	// Name of the resource pool.
 	Name *string `pulumi:"name"`
 	// Name of the performance class.
@@ -114,6 +118,8 @@ type SfsResourcePoolState struct {
 	AvailabilityZone pulumi.StringPtrInput
 	// List of IPs that can mount the resource pool in read-only; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
 	IpAcls pulumi.StringArrayInput
+	// Labels are key-value string pairs which can be attached to the resource.
+	Labels pulumi.StringMapInput
 	// Name of the resource pool.
 	Name pulumi.StringPtrInput
 	// Name of the performance class.
@@ -141,6 +147,8 @@ type sfsResourcePoolArgs struct {
 	AvailabilityZone string `pulumi:"availabilityZone"`
 	// List of IPs that can mount the resource pool in read-only; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
 	IpAcls []string `pulumi:"ipAcls"`
+	// Labels are key-value string pairs which can be attached to the resource.
+	Labels map[string]string `pulumi:"labels"`
 	// Name of the resource pool.
 	Name *string `pulumi:"name"`
 	// Name of the performance class.
@@ -163,6 +171,8 @@ type SfsResourcePoolArgs struct {
 	AvailabilityZone pulumi.StringInput
 	// List of IPs that can mount the resource pool in read-only; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
 	IpAcls pulumi.StringArrayInput
+	// Labels are key-value string pairs which can be attached to the resource.
+	Labels pulumi.StringMapInput
 	// Name of the resource pool.
 	Name pulumi.StringPtrInput
 	// Name of the performance class.
@@ -274,6 +284,11 @@ func (o SfsResourcePoolOutput) AvailabilityZone() pulumi.StringOutput {
 // List of IPs that can mount the resource pool in read-only; IPs must have a subnet mask (e.g. "172.16.0.0/24" for a range of IPs, or "172.16.0.250/32" for a specific IP).
 func (o SfsResourcePoolOutput) IpAcls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SfsResourcePool) pulumi.StringArrayOutput { return v.IpAcls }).(pulumi.StringArrayOutput)
+}
+
+// Labels are key-value string pairs which can be attached to the resource.
+func (o SfsResourcePoolOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SfsResourcePool) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // Name of the resource pool.
