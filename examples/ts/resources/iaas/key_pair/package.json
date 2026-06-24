@@ -6,7 +6,7 @@
 	"dependencies": {
 		"@pulumi/pulumi": "^3.0.0",
 		"@pulumi/std": "2.2.0",
-		"@stackitcloud/pulumi-stackit": "file:../../../../../sdk/nodejs/bin",
+		"@stackitcloud/pulumi-stackit": "^0.0.6",
 		"typescript": "^4.0.0"
 	}
 }

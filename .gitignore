@@ -22,3 +22,6 @@ provider/**/schema-embed.json
 **/version.txt
 **/nuget
 **/dist
+
+examples/ts/**/package-lock.json
+tests/ts/**/package-lock.json
