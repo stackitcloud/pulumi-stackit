@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v6.0.3
+      uses: actions/checkout@v7.0.0
     - name: Unshallow clone for tags
       run: git fetch --prune --unshallow --tags
     - name: Install Go Tools
