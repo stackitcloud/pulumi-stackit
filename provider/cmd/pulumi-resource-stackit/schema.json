@@ -3351,6 +3351,43 @@
                 }
             }
         },
+        "stackit:index/SkeClusterAccess:SkeClusterAccess": {
+            "properties": {
+                "idp": {
+                    "$ref": "#/types/stackit:index/SkeClusterAccessIdp:SkeClusterAccessIdp",
+                    "description": "Configure IDP\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "idp"
+                    ]
+                }
+            }
+        },
+        "stackit:index/SkeClusterAccessIdp:SkeClusterAccessIdp": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable IDP integration for the cluster.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The IDP type. Possible values: 'stackit'.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "enabled",
+                        "type"
+                    ]
+                }
+            }
+        },
         "stackit:index/SkeClusterExtensions:SkeClusterExtensions": {
             "properties": {
                 "acl": {
@@ -4009,6 +4046,336 @@
                 "id",
                 "type"
             ]
+        },
+        "stackit:index/VpnConnectionTunnel1:VpnConnectionTunnel1": {
+            "properties": {
+                "bgp": {
+                    "$ref": "#/types/stackit:index/VpnConnectionTunnel1Bgp:VpnConnectionTunnel1Bgp"
+                },
+                "peering": {
+                    "$ref": "#/types/stackit:index/VpnConnectionTunnel1Peering:VpnConnectionTunnel1Peering"
+                },
+                "phase1": {
+                    "$ref": "#/types/stackit:index/VpnConnectionTunnel1Phase1:VpnConnectionTunnel1Phase1"
+                },
+                "phase2": {
+                    "$ref": "#/types/stackit:index/VpnConnectionTunnel1Phase2:VpnConnectionTunnel1Phase2"
+                },
+                "preSharedKey": {
+                    "type": "string",
+                    "description": "Pre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only argument \u003cspan pulumi-lang-nodejs=\"`preSharedKeyWo`\" pulumi-lang-dotnet=\"`PreSharedKeyWo`\" pulumi-lang-go=\"`preSharedKeyWo`\" pulumi-lang-python=\"`pre_shared_key_wo`\" pulumi-lang-yaml=\"`preSharedKeyWo`\" pulumi-lang-java=\"`preSharedKeyWo`\"\u003e`preSharedKeyWo`\u003c/span\u003e should be preferred.\n",
+                    "secret": true
+                },
+                "preSharedKeyWo": {
+                    "type": "string",
+                    "description": "**NOTE:** This field is write-only and its value will not be updated in state as part of read operations.\nPre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only - never stored in state and never returned by the API. To rotate the key, update this value AND increment pre*shared*key*wo*version. Changing this field alone will NOT trigger an update.\n",
+                    "secret": true
+                },
+                "preSharedKeyWoVersion": {
+                    "type": "integer",
+                    "description": "User-managed rotation counter for the pre-shared key. Must be incremented every time pre*shared*key*wo is changed. Terraform diffs this field to detect key rotations - changing pre*shared*key*wo alone will NOT trigger an update because it is write-only and never stored in state.\n"
+                },
+                "remoteAddress": {
+                    "type": "string",
+                    "description": "Remote IPv4 address for the tunnel endpoint.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "phase1",
+                "phase2",
+                "remoteAddress"
+            ]
+        },
+        "stackit:index/VpnConnectionTunnel1Bgp:VpnConnectionTunnel1Bgp": {
+            "properties": {
+                "remoteAsn": {
+                    "type": "integer",
+                    "description": "Remote ASN for BGP peering (private ASN range, 64512-4294967294).\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "remoteAsn"
+            ]
+        },
+        "stackit:index/VpnConnectionTunnel1Peering:VpnConnectionTunnel1Peering": {
+            "properties": {
+                "localAddress": {
+                    "type": "string",
+                    "description": "Local tunnel interface IPv4 address.\n"
+                },
+                "remoteAddress": {
+                    "type": "string",
+                    "description": "Remote tunnel interface IPv4 address.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "localAddress",
+                "remoteAddress"
+            ]
+        },
+        "stackit:index/VpnConnectionTunnel1Phase1:VpnConnectionTunnel1Phase1": {
+            "properties": {
+                "dhGroups": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Diffie-Hellman groups for key exchange. Possible values are: \u003cspan pulumi-lang-nodejs=\"`modp1024`\" pulumi-lang-dotnet=\"`Modp1024`\" pulumi-lang-go=\"`modp1024`\" pulumi-lang-python=\"`modp1024`\" pulumi-lang-yaml=\"`modp1024`\" pulumi-lang-java=\"`modp1024`\"\u003e`modp1024`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`modp2048`\" pulumi-lang-dotnet=\"`Modp2048`\" pulumi-lang-go=\"`modp2048`\" pulumi-lang-python=\"`modp2048`\" pulumi-lang-yaml=\"`modp2048`\" pulumi-lang-java=\"`modp2048`\"\u003e`modp2048`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ecp256`\" pulumi-lang-dotnet=\"`Ecp256`\" pulumi-lang-go=\"`ecp256`\" pulumi-lang-python=\"`ecp256`\" pulumi-lang-yaml=\"`ecp256`\" pulumi-lang-java=\"`ecp256`\"\u003e`ecp256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ecp384`\" pulumi-lang-dotnet=\"`Ecp384`\" pulumi-lang-go=\"`ecp384`\" pulumi-lang-python=\"`ecp384`\" pulumi-lang-yaml=\"`ecp384`\" pulumi-lang-java=\"`ecp384`\"\u003e`ecp384`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`modp2048s256`\" pulumi-lang-dotnet=\"`Modp2048s256`\" pulumi-lang-go=\"`modp2048s256`\" pulumi-lang-python=\"`modp2048s256`\" pulumi-lang-yaml=\"`modp2048s256`\" pulumi-lang-java=\"`modp2048s256`\"\u003e`modp2048s256`\u003c/span\u003e.\n"
+                },
+                "encryptionAlgorithms": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Encryption algorithms for Phase 1. Possible values are: \u003cspan pulumi-lang-nodejs=\"`aes256`\" pulumi-lang-dotnet=\"`Aes256`\" pulumi-lang-go=\"`aes256`\" pulumi-lang-python=\"`aes256`\" pulumi-lang-yaml=\"`aes256`\" pulumi-lang-java=\"`aes256`\"\u003e`aes256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`aes128gcm16`\" pulumi-lang-dotnet=\"`Aes128gcm16`\" pulumi-lang-go=\"`aes128gcm16`\" pulumi-lang-python=\"`aes128gcm16`\" pulumi-lang-yaml=\"`aes128gcm16`\" pulumi-lang-java=\"`aes128gcm16`\"\u003e`aes128gcm16`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`aes256gcm16`\" pulumi-lang-dotnet=\"`Aes256gcm16`\" pulumi-lang-go=\"`aes256gcm16`\" pulumi-lang-python=\"`aes256gcm16`\" pulumi-lang-yaml=\"`aes256gcm16`\" pulumi-lang-java=\"`aes256gcm16`\"\u003e`aes256gcm16`\u003c/span\u003e.\n"
+                },
+                "integrityAlgorithms": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Integrity algorithms for Phase 1. Possible values are: \u003cspan pulumi-lang-nodejs=\"`sha1`\" pulumi-lang-dotnet=\"`Sha1`\" pulumi-lang-go=\"`sha1`\" pulumi-lang-python=\"`sha1`\" pulumi-lang-yaml=\"`sha1`\" pulumi-lang-java=\"`sha1`\"\u003e`sha1`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sha2256`\" pulumi-lang-dotnet=\"`Sha2256`\" pulumi-lang-go=\"`sha2256`\" pulumi-lang-python=\"`sha2_256`\" pulumi-lang-yaml=\"`sha2256`\" pulumi-lang-java=\"`sha2256`\"\u003e`sha2256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sha2384`\" pulumi-lang-dotnet=\"`Sha2384`\" pulumi-lang-go=\"`sha2384`\" pulumi-lang-python=\"`sha2_384`\" pulumi-lang-yaml=\"`sha2384`\" pulumi-lang-java=\"`sha2384`\"\u003e`sha2384`\u003c/span\u003e.\n"
+                },
+                "rekeyTime": {
+                    "type": "integer",
+                    "description": "Time to schedule an IKE re-keying in seconds. Range: 900-28800. Default: 14400.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "encryptionAlgorithms",
+                "integrityAlgorithms"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "encryptionAlgorithms",
+                        "integrityAlgorithms",
+                        "rekeyTime"
+                    ]
+                }
+            }
+        },
+        "stackit:index/VpnConnectionTunnel1Phase2:VpnConnectionTunnel1Phase2": {
+            "properties": {
+                "dhGroups": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Diffie-Hellman groups for Phase 2. Possible values are: \u003cspan pulumi-lang-nodejs=\"`modp1024`\" pulumi-lang-dotnet=\"`Modp1024`\" pulumi-lang-go=\"`modp1024`\" pulumi-lang-python=\"`modp1024`\" pulumi-lang-yaml=\"`modp1024`\" pulumi-lang-java=\"`modp1024`\"\u003e`modp1024`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`modp2048`\" pulumi-lang-dotnet=\"`Modp2048`\" pulumi-lang-go=\"`modp2048`\" pulumi-lang-python=\"`modp2048`\" pulumi-lang-yaml=\"`modp2048`\" pulumi-lang-java=\"`modp2048`\"\u003e`modp2048`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ecp256`\" pulumi-lang-dotnet=\"`Ecp256`\" pulumi-lang-go=\"`ecp256`\" pulumi-lang-python=\"`ecp256`\" pulumi-lang-yaml=\"`ecp256`\" pulumi-lang-java=\"`ecp256`\"\u003e`ecp256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ecp384`\" pulumi-lang-dotnet=\"`Ecp384`\" pulumi-lang-go=\"`ecp384`\" pulumi-lang-python=\"`ecp384`\" pulumi-lang-yaml=\"`ecp384`\" pulumi-lang-java=\"`ecp384`\"\u003e`ecp384`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`modp2048s256`\" pulumi-lang-dotnet=\"`Modp2048s256`\" pulumi-lang-go=\"`modp2048s256`\" pulumi-lang-python=\"`modp2048s256`\" pulumi-lang-yaml=\"`modp2048s256`\" pulumi-lang-java=\"`modp2048s256`\"\u003e`modp2048s256`\u003c/span\u003e.\n"
+                },
+                "dpdAction": {
+                    "type": "string",
+                    "description": "Action to perform on DPD timeout. Default: 'restart'. Possible values are: \u003cspan pulumi-lang-nodejs=\"`clear`\" pulumi-lang-dotnet=\"`Clear`\" pulumi-lang-go=\"`clear`\" pulumi-lang-python=\"`clear`\" pulumi-lang-yaml=\"`clear`\" pulumi-lang-java=\"`clear`\"\u003e`clear`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`restart`\" pulumi-lang-dotnet=\"`Restart`\" pulumi-lang-go=\"`restart`\" pulumi-lang-python=\"`restart`\" pulumi-lang-yaml=\"`restart`\" pulumi-lang-java=\"`restart`\"\u003e`restart`\u003c/span\u003e.\n"
+                },
+                "encryptionAlgorithms": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Encryption algorithms for Phase 2. Possible values are: \u003cspan pulumi-lang-nodejs=\"`aes256`\" pulumi-lang-dotnet=\"`Aes256`\" pulumi-lang-go=\"`aes256`\" pulumi-lang-python=\"`aes256`\" pulumi-lang-yaml=\"`aes256`\" pulumi-lang-java=\"`aes256`\"\u003e`aes256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`aes128gcm16`\" pulumi-lang-dotnet=\"`Aes128gcm16`\" pulumi-lang-go=\"`aes128gcm16`\" pulumi-lang-python=\"`aes128gcm16`\" pulumi-lang-yaml=\"`aes128gcm16`\" pulumi-lang-java=\"`aes128gcm16`\"\u003e`aes128gcm16`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`aes256gcm16`\" pulumi-lang-dotnet=\"`Aes256gcm16`\" pulumi-lang-go=\"`aes256gcm16`\" pulumi-lang-python=\"`aes256gcm16`\" pulumi-lang-yaml=\"`aes256gcm16`\" pulumi-lang-java=\"`aes256gcm16`\"\u003e`aes256gcm16`\u003c/span\u003e.\n"
+                },
+                "integrityAlgorithms": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Integrity algorithms for Phase 2. Possible values are: \u003cspan pulumi-lang-nodejs=\"`sha1`\" pulumi-lang-dotnet=\"`Sha1`\" pulumi-lang-go=\"`sha1`\" pulumi-lang-python=\"`sha1`\" pulumi-lang-yaml=\"`sha1`\" pulumi-lang-java=\"`sha1`\"\u003e`sha1`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sha2256`\" pulumi-lang-dotnet=\"`Sha2256`\" pulumi-lang-go=\"`sha2256`\" pulumi-lang-python=\"`sha2_256`\" pulumi-lang-yaml=\"`sha2256`\" pulumi-lang-java=\"`sha2256`\"\u003e`sha2256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sha2384`\" pulumi-lang-dotnet=\"`Sha2384`\" pulumi-lang-go=\"`sha2384`\" pulumi-lang-python=\"`sha2_384`\" pulumi-lang-yaml=\"`sha2384`\" pulumi-lang-java=\"`sha2384`\"\u003e`sha2384`\u003c/span\u003e.\n"
+                },
+                "rekeyTime": {
+                    "type": "integer",
+                    "description": "Time to schedule a Child SA re-keying in seconds. Range: 900-3600. Default: 3600.\n"
+                },
+                "startAction": {
+                    "type": "string",
+                    "description": "Action to perform after loading the connection configuration. Default: 'start'. Possible values are: \u003cspan pulumi-lang-nodejs=\"`none`\" pulumi-lang-dotnet=\"`None`\" pulumi-lang-go=\"`none`\" pulumi-lang-python=\"`none`\" pulumi-lang-yaml=\"`none`\" pulumi-lang-java=\"`none`\"\u003e`none`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`start`\" pulumi-lang-dotnet=\"`Start`\" pulumi-lang-go=\"`start`\" pulumi-lang-python=\"`start`\" pulumi-lang-yaml=\"`start`\" pulumi-lang-java=\"`start`\"\u003e`start`\u003c/span\u003e.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "encryptionAlgorithms",
+                "integrityAlgorithms"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "dpdAction",
+                        "encryptionAlgorithms",
+                        "integrityAlgorithms",
+                        "rekeyTime",
+                        "startAction"
+                    ]
+                }
+            }
+        },
+        "stackit:index/VpnConnectionTunnel2:VpnConnectionTunnel2": {
+            "properties": {
+                "bgp": {
+                    "$ref": "#/types/stackit:index/VpnConnectionTunnel2Bgp:VpnConnectionTunnel2Bgp"
+                },
+                "peering": {
+                    "$ref": "#/types/stackit:index/VpnConnectionTunnel2Peering:VpnConnectionTunnel2Peering"
+                },
+                "phase1": {
+                    "$ref": "#/types/stackit:index/VpnConnectionTunnel2Phase1:VpnConnectionTunnel2Phase1"
+                },
+                "phase2": {
+                    "$ref": "#/types/stackit:index/VpnConnectionTunnel2Phase2:VpnConnectionTunnel2Phase2"
+                },
+                "preSharedKey": {
+                    "type": "string",
+                    "description": "Pre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only argument \u003cspan pulumi-lang-nodejs=\"`preSharedKeyWo`\" pulumi-lang-dotnet=\"`PreSharedKeyWo`\" pulumi-lang-go=\"`preSharedKeyWo`\" pulumi-lang-python=\"`pre_shared_key_wo`\" pulumi-lang-yaml=\"`preSharedKeyWo`\" pulumi-lang-java=\"`preSharedKeyWo`\"\u003e`preSharedKeyWo`\u003c/span\u003e should be preferred.\n",
+                    "secret": true
+                },
+                "preSharedKeyWo": {
+                    "type": "string",
+                    "description": "**NOTE:** This field is write-only and its value will not be updated in state as part of read operations.\nPre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only - never stored in state and never returned by the API. To rotate the key, update this value AND increment pre*shared*key*wo*version. Changing this field alone will NOT trigger an update.\n",
+                    "secret": true
+                },
+                "preSharedKeyWoVersion": {
+                    "type": "integer",
+                    "description": "User-managed rotation counter for the pre-shared key. Must be incremented every time pre*shared*key*wo is changed. Terraform diffs this field to detect key rotations - changing pre*shared*key*wo alone will NOT trigger an update because it is write-only and never stored in state.\n"
+                },
+                "remoteAddress": {
+                    "type": "string",
+                    "description": "Remote IPv4 address for the tunnel endpoint.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "phase1",
+                "phase2",
+                "remoteAddress"
+            ]
+        },
+        "stackit:index/VpnConnectionTunnel2Bgp:VpnConnectionTunnel2Bgp": {
+            "properties": {
+                "remoteAsn": {
+                    "type": "integer",
+                    "description": "Remote ASN for BGP peering (private ASN range, 64512-4294967294).\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "remoteAsn"
+            ]
+        },
+        "stackit:index/VpnConnectionTunnel2Peering:VpnConnectionTunnel2Peering": {
+            "properties": {
+                "localAddress": {
+                    "type": "string",
+                    "description": "Local tunnel interface IPv4 address.\n"
+                },
+                "remoteAddress": {
+                    "type": "string",
+                    "description": "Remote tunnel interface IPv4 address.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "localAddress",
+                "remoteAddress"
+            ]
+        },
+        "stackit:index/VpnConnectionTunnel2Phase1:VpnConnectionTunnel2Phase1": {
+            "properties": {
+                "dhGroups": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Diffie-Hellman groups for key exchange. Possible values are: \u003cspan pulumi-lang-nodejs=\"`modp1024`\" pulumi-lang-dotnet=\"`Modp1024`\" pulumi-lang-go=\"`modp1024`\" pulumi-lang-python=\"`modp1024`\" pulumi-lang-yaml=\"`modp1024`\" pulumi-lang-java=\"`modp1024`\"\u003e`modp1024`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`modp2048`\" pulumi-lang-dotnet=\"`Modp2048`\" pulumi-lang-go=\"`modp2048`\" pulumi-lang-python=\"`modp2048`\" pulumi-lang-yaml=\"`modp2048`\" pulumi-lang-java=\"`modp2048`\"\u003e`modp2048`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ecp256`\" pulumi-lang-dotnet=\"`Ecp256`\" pulumi-lang-go=\"`ecp256`\" pulumi-lang-python=\"`ecp256`\" pulumi-lang-yaml=\"`ecp256`\" pulumi-lang-java=\"`ecp256`\"\u003e`ecp256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ecp384`\" pulumi-lang-dotnet=\"`Ecp384`\" pulumi-lang-go=\"`ecp384`\" pulumi-lang-python=\"`ecp384`\" pulumi-lang-yaml=\"`ecp384`\" pulumi-lang-java=\"`ecp384`\"\u003e`ecp384`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`modp2048s256`\" pulumi-lang-dotnet=\"`Modp2048s256`\" pulumi-lang-go=\"`modp2048s256`\" pulumi-lang-python=\"`modp2048s256`\" pulumi-lang-yaml=\"`modp2048s256`\" pulumi-lang-java=\"`modp2048s256`\"\u003e`modp2048s256`\u003c/span\u003e.\n"
+                },
+                "encryptionAlgorithms": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Encryption algorithms for Phase 1. Possible values are: \u003cspan pulumi-lang-nodejs=\"`aes256`\" pulumi-lang-dotnet=\"`Aes256`\" pulumi-lang-go=\"`aes256`\" pulumi-lang-python=\"`aes256`\" pulumi-lang-yaml=\"`aes256`\" pulumi-lang-java=\"`aes256`\"\u003e`aes256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`aes128gcm16`\" pulumi-lang-dotnet=\"`Aes128gcm16`\" pulumi-lang-go=\"`aes128gcm16`\" pulumi-lang-python=\"`aes128gcm16`\" pulumi-lang-yaml=\"`aes128gcm16`\" pulumi-lang-java=\"`aes128gcm16`\"\u003e`aes128gcm16`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`aes256gcm16`\" pulumi-lang-dotnet=\"`Aes256gcm16`\" pulumi-lang-go=\"`aes256gcm16`\" pulumi-lang-python=\"`aes256gcm16`\" pulumi-lang-yaml=\"`aes256gcm16`\" pulumi-lang-java=\"`aes256gcm16`\"\u003e`aes256gcm16`\u003c/span\u003e.\n"
+                },
+                "integrityAlgorithms": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Integrity algorithms for Phase 1. Possible values are: \u003cspan pulumi-lang-nodejs=\"`sha1`\" pulumi-lang-dotnet=\"`Sha1`\" pulumi-lang-go=\"`sha1`\" pulumi-lang-python=\"`sha1`\" pulumi-lang-yaml=\"`sha1`\" pulumi-lang-java=\"`sha1`\"\u003e`sha1`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sha2256`\" pulumi-lang-dotnet=\"`Sha2256`\" pulumi-lang-go=\"`sha2256`\" pulumi-lang-python=\"`sha2_256`\" pulumi-lang-yaml=\"`sha2256`\" pulumi-lang-java=\"`sha2256`\"\u003e`sha2256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sha2384`\" pulumi-lang-dotnet=\"`Sha2384`\" pulumi-lang-go=\"`sha2384`\" pulumi-lang-python=\"`sha2_384`\" pulumi-lang-yaml=\"`sha2384`\" pulumi-lang-java=\"`sha2384`\"\u003e`sha2384`\u003c/span\u003e.\n"
+                },
+                "rekeyTime": {
+                    "type": "integer",
+                    "description": "Time to schedule an IKE re-keying in seconds. Range: 900-28800. Default: 14400.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "encryptionAlgorithms",
+                "integrityAlgorithms"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "encryptionAlgorithms",
+                        "integrityAlgorithms",
+                        "rekeyTime"
+                    ]
+                }
+            }
+        },
+        "stackit:index/VpnConnectionTunnel2Phase2:VpnConnectionTunnel2Phase2": {
+            "properties": {
+                "dhGroups": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Diffie-Hellman groups for Phase 2. Possible values are: \u003cspan pulumi-lang-nodejs=\"`modp1024`\" pulumi-lang-dotnet=\"`Modp1024`\" pulumi-lang-go=\"`modp1024`\" pulumi-lang-python=\"`modp1024`\" pulumi-lang-yaml=\"`modp1024`\" pulumi-lang-java=\"`modp1024`\"\u003e`modp1024`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`modp2048`\" pulumi-lang-dotnet=\"`Modp2048`\" pulumi-lang-go=\"`modp2048`\" pulumi-lang-python=\"`modp2048`\" pulumi-lang-yaml=\"`modp2048`\" pulumi-lang-java=\"`modp2048`\"\u003e`modp2048`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ecp256`\" pulumi-lang-dotnet=\"`Ecp256`\" pulumi-lang-go=\"`ecp256`\" pulumi-lang-python=\"`ecp256`\" pulumi-lang-yaml=\"`ecp256`\" pulumi-lang-java=\"`ecp256`\"\u003e`ecp256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ecp384`\" pulumi-lang-dotnet=\"`Ecp384`\" pulumi-lang-go=\"`ecp384`\" pulumi-lang-python=\"`ecp384`\" pulumi-lang-yaml=\"`ecp384`\" pulumi-lang-java=\"`ecp384`\"\u003e`ecp384`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`modp2048s256`\" pulumi-lang-dotnet=\"`Modp2048s256`\" pulumi-lang-go=\"`modp2048s256`\" pulumi-lang-python=\"`modp2048s256`\" pulumi-lang-yaml=\"`modp2048s256`\" pulumi-lang-java=\"`modp2048s256`\"\u003e`modp2048s256`\u003c/span\u003e.\n"
+                },
+                "dpdAction": {
+                    "type": "string",
+                    "description": "Action to perform on DPD timeout. Default: 'restart'. Possible values are: \u003cspan pulumi-lang-nodejs=\"`clear`\" pulumi-lang-dotnet=\"`Clear`\" pulumi-lang-go=\"`clear`\" pulumi-lang-python=\"`clear`\" pulumi-lang-yaml=\"`clear`\" pulumi-lang-java=\"`clear`\"\u003e`clear`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`restart`\" pulumi-lang-dotnet=\"`Restart`\" pulumi-lang-go=\"`restart`\" pulumi-lang-python=\"`restart`\" pulumi-lang-yaml=\"`restart`\" pulumi-lang-java=\"`restart`\"\u003e`restart`\u003c/span\u003e.\n"
+                },
+                "encryptionAlgorithms": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Encryption algorithms for Phase 2. Possible values are: \u003cspan pulumi-lang-nodejs=\"`aes256`\" pulumi-lang-dotnet=\"`Aes256`\" pulumi-lang-go=\"`aes256`\" pulumi-lang-python=\"`aes256`\" pulumi-lang-yaml=\"`aes256`\" pulumi-lang-java=\"`aes256`\"\u003e`aes256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`aes128gcm16`\" pulumi-lang-dotnet=\"`Aes128gcm16`\" pulumi-lang-go=\"`aes128gcm16`\" pulumi-lang-python=\"`aes128gcm16`\" pulumi-lang-yaml=\"`aes128gcm16`\" pulumi-lang-java=\"`aes128gcm16`\"\u003e`aes128gcm16`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`aes256gcm16`\" pulumi-lang-dotnet=\"`Aes256gcm16`\" pulumi-lang-go=\"`aes256gcm16`\" pulumi-lang-python=\"`aes256gcm16`\" pulumi-lang-yaml=\"`aes256gcm16`\" pulumi-lang-java=\"`aes256gcm16`\"\u003e`aes256gcm16`\u003c/span\u003e.\n"
+                },
+                "integrityAlgorithms": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Integrity algorithms for Phase 2. Possible values are: \u003cspan pulumi-lang-nodejs=\"`sha1`\" pulumi-lang-dotnet=\"`Sha1`\" pulumi-lang-go=\"`sha1`\" pulumi-lang-python=\"`sha1`\" pulumi-lang-yaml=\"`sha1`\" pulumi-lang-java=\"`sha1`\"\u003e`sha1`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sha2256`\" pulumi-lang-dotnet=\"`Sha2256`\" pulumi-lang-go=\"`sha2256`\" pulumi-lang-python=\"`sha2_256`\" pulumi-lang-yaml=\"`sha2256`\" pulumi-lang-java=\"`sha2256`\"\u003e`sha2256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sha2384`\" pulumi-lang-dotnet=\"`Sha2384`\" pulumi-lang-go=\"`sha2384`\" pulumi-lang-python=\"`sha2_384`\" pulumi-lang-yaml=\"`sha2384`\" pulumi-lang-java=\"`sha2384`\"\u003e`sha2384`\u003c/span\u003e.\n"
+                },
+                "rekeyTime": {
+                    "type": "integer",
+                    "description": "Time to schedule a Child SA re-keying in seconds. Range: 900-3600. Default: 3600.\n"
+                },
+                "startAction": {
+                    "type": "string",
+                    "description": "Action to perform after loading the connection configuration. Default: 'start'. Possible values are: \u003cspan pulumi-lang-nodejs=\"`none`\" pulumi-lang-dotnet=\"`None`\" pulumi-lang-go=\"`none`\" pulumi-lang-python=\"`none`\" pulumi-lang-yaml=\"`none`\" pulumi-lang-java=\"`none`\"\u003e`none`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`start`\" pulumi-lang-dotnet=\"`Start`\" pulumi-lang-go=\"`start`\" pulumi-lang-python=\"`start`\" pulumi-lang-yaml=\"`start`\" pulumi-lang-java=\"`start`\"\u003e`start`\u003c/span\u003e.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "encryptionAlgorithms",
+                "integrityAlgorithms"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "dpdAction",
+                        "encryptionAlgorithms",
+                        "integrityAlgorithms",
+                        "rekeyTime",
+                        "startAction"
+                    ]
+                }
+            }
         },
         "stackit:index/VpnGatewayAvailabilityZones:VpnGatewayAvailabilityZones": {
             "properties": {
@@ -7942,6 +8309,45 @@
                 }
             }
         },
+        "stackit:index/getSkeClusterAccess:getSkeClusterAccess": {
+            "properties": {
+                "idp": {
+                    "$ref": "#/types/stackit:index/getSkeClusterAccessIdp:getSkeClusterAccessIdp",
+                    "description": "Configure IDP\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "idp"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getSkeClusterAccessIdp:getSkeClusterAccessIdp": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Enable IDP integration for the cluster.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The IDP type. Possible values: 'stackit'.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "stackit:index/getSkeClusterExtensions:getSkeClusterExtensions": {
             "properties": {
                 "acl": {
@@ -8666,6 +9072,342 @@
                 }
             }
         },
+        "stackit:index/getVpnConnectionTunnel1:getVpnConnectionTunnel1": {
+            "properties": {
+                "bgp": {
+                    "$ref": "#/types/stackit:index/getVpnConnectionTunnel1Bgp:getVpnConnectionTunnel1Bgp",
+                    "description": "BGP configuration for this tunnel.\n"
+                },
+                "peering": {
+                    "$ref": "#/types/stackit:index/getVpnConnectionTunnel1Peering:getVpnConnectionTunnel1Peering",
+                    "description": "Tunnel interface peering configuration.\n"
+                },
+                "phase1": {
+                    "$ref": "#/types/stackit:index/getVpnConnectionTunnel1Phase1:getVpnConnectionTunnel1Phase1",
+                    "description": "IKE Phase 1 configuration.\n"
+                },
+                "phase2": {
+                    "$ref": "#/types/stackit:index/getVpnConnectionTunnel1Phase2:getVpnConnectionTunnel1Phase2",
+                    "description": "IKE Phase 2 configuration.\n"
+                },
+                "remoteAddress": {
+                    "type": "string",
+                    "description": "Remote peer IPv4 address for this tunnel.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "bgp",
+                "peering",
+                "phase1",
+                "phase2",
+                "remoteAddress"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getVpnConnectionTunnel1Bgp:getVpnConnectionTunnel1Bgp": {
+            "properties": {
+                "remoteAsn": {
+                    "type": "integer",
+                    "description": "Remote AS number.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "remoteAsn"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getVpnConnectionTunnel1Peering:getVpnConnectionTunnel1Peering": {
+            "properties": {
+                "localAddress": {
+                    "type": "string",
+                    "description": "Local tunnel interface IPv4 address.\n"
+                },
+                "remoteAddress": {
+                    "type": "string",
+                    "description": "Remote tunnel interface IPv4 address.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "localAddress",
+                "remoteAddress"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getVpnConnectionTunnel1Phase1:getVpnConnectionTunnel1Phase1": {
+            "properties": {
+                "dhGroups": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Diffie-Hellman groups.\n"
+                },
+                "encryptionAlgorithms": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Encryption algorithms.\n"
+                },
+                "integrityAlgorithms": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Integrity/hash algorithms.\n"
+                },
+                "rekeyTime": {
+                    "type": "integer",
+                    "description": "IKE re-keying time in seconds.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "dhGroups",
+                "encryptionAlgorithms",
+                "integrityAlgorithms",
+                "rekeyTime"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getVpnConnectionTunnel1Phase2:getVpnConnectionTunnel1Phase2": {
+            "properties": {
+                "dhGroups": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Diffie-Hellman groups for PFS.\n"
+                },
+                "dpdAction": {
+                    "type": "string",
+                    "description": "DPD timeout action (clear or restart).\n"
+                },
+                "encryptionAlgorithms": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Encryption algorithms.\n"
+                },
+                "integrityAlgorithms": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Integrity/hash algorithms.\n"
+                },
+                "rekeyTime": {
+                    "type": "integer",
+                    "description": "Child SA re-keying time in seconds.\n"
+                },
+                "startAction": {
+                    "type": "string",
+                    "description": "Start action (none or start).\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "dhGroups",
+                "dpdAction",
+                "encryptionAlgorithms",
+                "integrityAlgorithms",
+                "rekeyTime",
+                "startAction"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getVpnConnectionTunnel2:getVpnConnectionTunnel2": {
+            "properties": {
+                "bgp": {
+                    "$ref": "#/types/stackit:index/getVpnConnectionTunnel2Bgp:getVpnConnectionTunnel2Bgp",
+                    "description": "BGP configuration for this tunnel.\n"
+                },
+                "peering": {
+                    "$ref": "#/types/stackit:index/getVpnConnectionTunnel2Peering:getVpnConnectionTunnel2Peering",
+                    "description": "Tunnel interface peering configuration.\n"
+                },
+                "phase1": {
+                    "$ref": "#/types/stackit:index/getVpnConnectionTunnel2Phase1:getVpnConnectionTunnel2Phase1",
+                    "description": "IKE Phase 1 configuration.\n"
+                },
+                "phase2": {
+                    "$ref": "#/types/stackit:index/getVpnConnectionTunnel2Phase2:getVpnConnectionTunnel2Phase2",
+                    "description": "IKE Phase 2 configuration.\n"
+                },
+                "remoteAddress": {
+                    "type": "string",
+                    "description": "Remote peer IPv4 address for this tunnel.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "bgp",
+                "peering",
+                "phase1",
+                "phase2",
+                "remoteAddress"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getVpnConnectionTunnel2Bgp:getVpnConnectionTunnel2Bgp": {
+            "properties": {
+                "remoteAsn": {
+                    "type": "integer",
+                    "description": "Remote AS number.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "remoteAsn"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getVpnConnectionTunnel2Peering:getVpnConnectionTunnel2Peering": {
+            "properties": {
+                "localAddress": {
+                    "type": "string",
+                    "description": "Local tunnel interface IPv4 address.\n"
+                },
+                "remoteAddress": {
+                    "type": "string",
+                    "description": "Remote tunnel interface IPv4 address.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "localAddress",
+                "remoteAddress"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getVpnConnectionTunnel2Phase1:getVpnConnectionTunnel2Phase1": {
+            "properties": {
+                "dhGroups": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Diffie-Hellman groups.\n"
+                },
+                "encryptionAlgorithms": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Encryption algorithms.\n"
+                },
+                "integrityAlgorithms": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Integrity/hash algorithms.\n"
+                },
+                "rekeyTime": {
+                    "type": "integer",
+                    "description": "IKE re-keying time in seconds.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "dhGroups",
+                "encryptionAlgorithms",
+                "integrityAlgorithms",
+                "rekeyTime"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getVpnConnectionTunnel2Phase2:getVpnConnectionTunnel2Phase2": {
+            "properties": {
+                "dhGroups": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Diffie-Hellman groups for PFS.\n"
+                },
+                "dpdAction": {
+                    "type": "string",
+                    "description": "DPD timeout action (clear or restart).\n"
+                },
+                "encryptionAlgorithms": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Encryption algorithms.\n"
+                },
+                "integrityAlgorithms": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Integrity/hash algorithms.\n"
+                },
+                "rekeyTime": {
+                    "type": "integer",
+                    "description": "Child SA re-keying time in seconds.\n"
+                },
+                "startAction": {
+                    "type": "string",
+                    "description": "Start action (none or start).\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "dhGroups",
+                "dpdAction",
+                "encryptionAlgorithms",
+                "integrityAlgorithms",
+                "rekeyTime",
+                "startAction"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "stackit:index/getVpnGatewayAvailabilityZones:getVpnGatewayAvailabilityZones": {
             "properties": {
                 "tunnel1": {
@@ -8706,6 +9448,60 @@
             "required": [
                 "localAsn",
                 "overrideAdvertisedRoutes"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getVpnGatewayStatusConnection:getVpnGatewayStatusConnection": {
+            "properties": {
+                "connectionId": {
+                    "type": "string",
+                    "description": "ID of the VPN connection.\n"
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "Display name of the VPN connection.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Wether the VPN connection is enabled or not.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "connectionId",
+                "displayName",
+                "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getVpnGatewayStatusTunnel:getVpnGatewayStatusTunnel": {
+            "properties": {
+                "internalNextHopIp": {
+                    "type": "string",
+                    "description": "The IPv4 address of the endpoint in the SNA.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the VPN tunnel. Possible values are: \u003cspan pulumi-lang-nodejs=\"`tunnel1`\" pulumi-lang-dotnet=\"`Tunnel1`\" pulumi-lang-go=\"`tunnel1`\" pulumi-lang-python=\"`tunnel1`\" pulumi-lang-yaml=\"`tunnel1`\" pulumi-lang-java=\"`tunnel1`\"\u003e`tunnel1`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`tunnel2`\" pulumi-lang-dotnet=\"`Tunnel2`\" pulumi-lang-go=\"`tunnel2`\" pulumi-lang-python=\"`tunnel2`\" pulumi-lang-yaml=\"`tunnel2`\" pulumi-lang-java=\"`tunnel2`\"\u003e`tunnel2`\u003c/span\u003e.\n"
+                },
+                "publicIp": {
+                    "type": "string",
+                    "description": "The public IPv4 address of this endpoint.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "internalNextHopIp",
+                "name",
+                "publicIp"
             ],
             "language": {
                 "nodejs": {
@@ -9352,7 +10148,7 @@
             }
         },
         "stackit:index/applicationLoadBalancer:ApplicationLoadBalancer": {
-            "description": "## Setting up supporting infrastructure\n\n\nThe example below creates the supporting infrastructure using the STACKIT Terraform provider, including the network, network interface, a public IP address and server resources.\n\n## Example Usage\n\n```terraform\nvariable \"project_id\" {\n  description = \"The STACKIT Project ID\"\n  type        = string\n  default     = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\nvariable \"image_id\" {\n  description = \"A valid Debian 12 Image ID available in all projects\"\n  type        = string\n  default     = \"939249d1-6f48-4ab7-929b-95170728311a\"\n}\n\nvariable \"availability_zone\" {\n  description = \"An availability zone\"\n  type        = string\n  default     = \"eu01-1\"\n}\n\nvariable \"machine_type\" {\n  description = \"The machine flavor with 2GB of RAM and 1 core\"\n  type        = string\n  default     = \"c2i.1\"\n}\n\nvariable \"label_key\" {\n  description = \"An optional label key\"\n  type        = string\n  default     = \"key\"\n}\n\nvariable \"label_value\" {\n  description = \"An optional label value\"\n  type        = string\n  default     = \"value\"\n}\n\n# Create a network\nresource \"stackit_network\" \"network\" {\n  project_id       = var.project_id\n  name             = \"example-network\"\n  ipv4_nameservers = [\"1.1.1.1\"]\n  ipv4_prefix      = \"192.168.2.0/25\"\n  routed           = true\n}\n\n# Create a network interface\nresource \"stackit_network_interface\" \"nic\" {\n  project_id = var.project_id\n  network_id = stackit_network.network.network_id\n  lifecycle {\n    ignore_changes = [\n      security_group_ids,\n    ]\n  }\n}\n\n# Create a key pair for accessing the target server instance\nresource \"stackit_key_pair\" \"keypair\" {\n  name       = \"example-key-pair\"\n  public_key = chomp(file(\"path/to/id_rsa.pub\"))\n}\n\n# Create a target server instance\nresource \"stackit_server\" \"server\" {\n  project_id        = var.project_id\n  name              = \"example-server\"\n  machine_type      = var.machine_type\n  keypair_name      = stackit_key_pair.keypair.name\n  availability_zone = var.availability_zone\n\n  boot_volume = {\n    size                  = 20\n    source_type           = \"image\"\n    source_id             = var.image_id\n    delete_on_termination = true\n  }\n\n  network_interfaces = [\n    stackit_network_interface.nic.network_interface_id\n  ]\n\n  # Explicit dependencies to ensure ordering\n  depends_on = [\n    stackit_network.network,\n    stackit_key_pair.keypair,\n    stackit_network_interface.nic\n  ]\n}\n\n# Create example credentials for observability of the ALB\n# Create real credentials in your STACKIT observability\nresource \"stackit_loadbalancer_observability_credential\" \"observability\" {\n  project_id   = var.project_id\n  display_name = \"my-cred\"\n  password     = \"password\"\n  username     = \"username\"\n}\n\n# Create a RAS key pair\nresource \"tls_private_key\" \"example\" {\n  algorithm = \"RSA\"\n  rsa_bits  = 2048\n}\n\n# Create a TLS certificate\nresource \"tls_self_signed_cert\" \"example\" {\n  private_key_pem = tls_private_key.example.private_key_pem\n\n  subject {\n    common_name  = \"localhost\"\n    organization = \"STACKIT Test\"\n  }\n\n  validity_period_hours = 12\n\n  allowed_uses = [\n    \"key_encipherment\",\n    \"digital_signature\",\n    \"server_auth\",\n  ]\n}\n\n# Create a ALB certificate\nresource \"stackit_alb_certificate\" \"certificate\" {\n  project_id  = var.project_id\n  name        = \"example-certificate\"\n  private_key = tls_private_key.example.private_key_pem\n  public_key  = tls_self_signed_cert.example.cert_pem\n}\n\n# Create a Application Load Balancer\nresource \"stackit_application_load_balancer\" \"example\" {\n  project_id = var.project_id\n  region     = \"eu01\"\n  name       = \"example-load-balancer\"\n  plan_id    = \"p10\"\n  // Hint: Automatically create an IP for the ALB lifecycle by setting ephemeral_address = true or use:\n  // external_address = \"124.124.124.124\"\n  labels = {\n    (var.label_key) = var.label_value\n  }\n  listeners = [{\n    name = \"my-listener\"\n    port = 443\n    http = {\n      hosts = [{\n        host = \"*\"\n        rules = [{\n          target_pool = \"my-target-pool\"\n          web_socket  = true\n          query_parameters = [{\n            name        = \"my-query-key\"\n            exact_match = \"my-query-value\"\n          }]\n          headers = [{\n            name        = \"my-header-key\"\n            exact_match = \"my-header-value\"\n          }]\n          path = {\n            prefix = \"/path\"\n          }\n          cookie_persistence = {\n            name = \"my-cookie\"\n            ttl  = \"60s\"\n          }\n        }]\n      }]\n    }\n    https = {\n      certificate_config = {\n        certificate_ids = [\n          stackit_alb_certificate.certificate.cert_id\n        ]\n      }\n    }\n    protocol = \"PROTOCOL_HTTPS\"\n    # Currently no TF provider available, needs to be added with API\n    # https://docs.api.stackit.cloud/documentation/alb-waf/version/v1alpha\n    waf_config_name = \"my-waf-config\"\n    }\n  ]\n  networks = [\n    {\n      network_id = stackit_network.network.network_id\n      role       = \"ROLE_LISTENERS_AND_TARGETS\"\n    }\n  ]\n  options = {\n    acl                  = [\"123.123.123.123/24\", \"12.12.12.12/24\"]\n    ephemeral_address    = true\n    private_network_only = false\n    observability = {\n      logs = {\n        credentials_ref = stackit_loadbalancer_observability_credential.observability.credentials_ref\n        push_url        = \"https://logs.stackit\u003cid\u003e.argus.eu01.stackit.cloud/instances/\u003cinstance-id\u003e/loki/api/v1/push\"\n      }\n      metrics = {\n        credentials_ref = stackit_loadbalancer_observability_credential.observability.credentials_ref\n        push_url        = \"https://push.metrics.stackit\u003cid\u003e.argus.eu01.stackit.cloud/instances/\u003cinstance-id\u003e/api/v1/receive\"\n      }\n    }\n  }\n  target_pools = [\n    {\n      name = \"my-target-pool\"\n      active_health_check = {\n        interval            = \"0.500s\"\n        interval_jitter     = \"0.010s\"\n        timeout             = \"1s\"\n        healthy_threshold   = \"5\"\n        unhealthy_threshold = \"3\"\n        http_health_checks = {\n          ok_status = [\"200\", \"201\"]\n          path      = \"/healthy\"\n        }\n      }\n      target_port = 80\n      targets = [\n        {\n          display_name = \"my-target\"\n          ip           = stackit_network_interface.nic.ipv4\n        }\n      ]\n      tls_config = {\n        enabled                     = true\n        skip_certificate_validation = false\n        custom_ca                   = chomp(file(\"path/to/PEM_formated_CA\"))\n      }\n    }\n  ]\n  disable_target_security_group_assignment = false # only needed if targets are not in the same network\n}\n```\n",
+            "description": "## Setting up supporting infrastructure\n\n\nThe example below creates the supporting infrastructure using the STACKIT Terraform provider, including the network, network interface, a public IP address and server resources.\n\n## Example Usage\n\n```terraform\nvariable \"project_id\" {\n  description = \"The STACKIT Project ID\"\n  type        = string\n  default     = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\nvariable \"image_id\" {\n  description = \"A valid Debian 12 Image ID available in all projects\"\n  type        = string\n  default     = \"d333affd-9f00-446d-978f-524cb0384360\"\n}\n\nvariable \"availability_zone\" {\n  description = \"An availability zone\"\n  type        = string\n  default     = \"eu01-1\"\n}\n\nvariable \"machine_type\" {\n  description = \"The machine flavor with 2GB of RAM and 1 core\"\n  type        = string\n  default     = \"c2i.1\"\n}\n\nvariable \"label_key\" {\n  description = \"An optional label key\"\n  type        = string\n  default     = \"key\"\n}\n\nvariable \"label_value\" {\n  description = \"An optional label value\"\n  type        = string\n  default     = \"value\"\n}\n\n# Create a network\nresource \"stackit_network\" \"network\" {\n  project_id       = var.project_id\n  name             = \"example-network\"\n  ipv4_nameservers = [\"1.1.1.1\"]\n  ipv4_prefix      = \"192.168.2.0/25\"\n  routed           = true\n}\n\n# Create a network interface\nresource \"stackit_network_interface\" \"nic\" {\n  project_id = var.project_id\n  network_id = stackit_network.network.network_id\n  lifecycle {\n    ignore_changes = [\n      security_group_ids,\n    ]\n  }\n}\n\n# Create a key pair for accessing the target server instance\nresource \"stackit_key_pair\" \"keypair\" {\n  name       = \"example-key-pair\"\n  public_key = chomp(file(\"path/to/id_rsa.pub\"))\n}\n\n# Create a target server instance\nresource \"stackit_server\" \"server\" {\n  project_id        = var.project_id\n  name              = \"example-server\"\n  machine_type      = var.machine_type\n  keypair_name      = stackit_key_pair.keypair.name\n  availability_zone = var.availability_zone\n\n  boot_volume = {\n    size                  = 20\n    source_type           = \"image\"\n    source_id             = var.image_id\n    delete_on_termination = true\n  }\n\n  network_interfaces = [\n    stackit_network_interface.nic.network_interface_id\n  ]\n\n  # Explicit dependencies to ensure ordering\n  depends_on = [\n    stackit_network.network,\n    stackit_key_pair.keypair,\n    stackit_network_interface.nic\n  ]\n}\n\n# Create example credentials for observability of the ALB\n# Create real credentials in your STACKIT observability\nresource \"stackit_loadbalancer_observability_credential\" \"observability\" {\n  project_id   = var.project_id\n  display_name = \"my-cred\"\n  password     = \"password\"\n  username     = \"username\"\n}\n\n# Create a RAS key pair\nresource \"tls_private_key\" \"example\" {\n  algorithm = \"RSA\"\n  rsa_bits  = 2048\n}\n\n# Create a TLS certificate\nresource \"tls_self_signed_cert\" \"example\" {\n  private_key_pem = tls_private_key.example.private_key_pem\n\n  subject {\n    common_name  = \"localhost\"\n    organization = \"STACKIT Test\"\n  }\n\n  validity_period_hours = 12\n\n  allowed_uses = [\n    \"key_encipherment\",\n    \"digital_signature\",\n    \"server_auth\",\n  ]\n}\n\n# Create a ALB certificate\nresource \"stackit_alb_certificate\" \"certificate\" {\n  project_id  = var.project_id\n  name        = \"example-certificate\"\n  private_key = tls_private_key.example.private_key_pem\n  public_key  = tls_self_signed_cert.example.cert_pem\n}\n\n# Create a Application Load Balancer\nresource \"stackit_application_load_balancer\" \"example\" {\n  project_id = var.project_id\n  region     = \"eu01\"\n  name       = \"example-load-balancer\"\n  plan_id    = \"p10\"\n  // Hint: Automatically create an IP for the ALB lifecycle by setting ephemeral_address = true or use:\n  // external_address = \"124.124.124.124\"\n  labels = {\n    (var.label_key) = var.label_value\n  }\n  listeners = [{\n    name = \"my-listener\"\n    port = 443\n    http = {\n      hosts = [{\n        host = \"*\"\n        rules = [{\n          target_pool = \"my-target-pool\"\n          web_socket  = true\n          query_parameters = [{\n            name        = \"my-query-key\"\n            exact_match = \"my-query-value\"\n          }]\n          headers = [{\n            name        = \"my-header-key\"\n            exact_match = \"my-header-value\"\n          }]\n          path = {\n            prefix = \"/path\"\n          }\n          cookie_persistence = {\n            name = \"my-cookie\"\n            ttl  = \"60s\"\n          }\n        }]\n      }]\n    }\n    https = {\n      certificate_config = {\n        certificate_ids = [\n          stackit_alb_certificate.certificate.cert_id\n        ]\n      }\n    }\n    protocol = \"PROTOCOL_HTTPS\"\n    # Currently no TF provider available, needs to be added with API\n    # https://docs.api.stackit.cloud/documentation/alb-waf/version/v1alpha\n    waf_config_name = \"my-waf-config\"\n    }\n  ]\n  networks = [\n    {\n      network_id = stackit_network.network.network_id\n      role       = \"ROLE_LISTENERS_AND_TARGETS\"\n    }\n  ]\n  options = {\n    access_control = {\n      allowed_source_ranges = [\"123.123.123.123/24\", \"12.12.12.12/24\"]\n    }\n    ephemeral_address    = true\n    private_network_only = false\n    observability = {\n      logs = {\n        credentials_ref = stackit_loadbalancer_observability_credential.observability.credentials_ref\n        push_url        = \"https://logs.stackit\u003cid\u003e.argus.eu01.stackit.cloud/instances/\u003cinstance-id\u003e/loki/api/v1/push\"\n      }\n      metrics = {\n        credentials_ref = stackit_loadbalancer_observability_credential.observability.credentials_ref\n        push_url        = \"https://push.metrics.stackit\u003cid\u003e.argus.eu01.stackit.cloud/instances/\u003cinstance-id\u003e/api/v1/receive\"\n      }\n    }\n  }\n  target_pools = [\n    {\n      name = \"my-target-pool\"\n      active_health_check = {\n        interval            = \"0.500s\"\n        interval_jitter     = \"0.010s\"\n        timeout             = \"1s\"\n        healthy_threshold   = \"5\"\n        unhealthy_threshold = \"3\"\n        http_health_checks = {\n          ok_status = [\"200\", \"201\"]\n          path      = \"/healthy\"\n        }\n      }\n      target_port = 80\n      targets = [\n        {\n          display_name = \"my-target\"\n          ip           = stackit_network_interface.nic.ipv4\n        }\n      ]\n      tls_config = {\n        enabled                     = true\n        skip_certificate_validation = false\n        custom_ca                   = chomp(file(\"path/to/PEM_formated_CA\"))\n      }\n    }\n  ]\n  disable_target_security_group_assignment = false # only needed if targets are not in the same network\n}\n```\n",
             "properties": {
                 "disableTargetSecurityGroupAssignment": {
                     "type": "boolean",
@@ -11742,6 +12538,10 @@
         "stackit:index/intakeRunner:IntakeRunner": {
             "description": "Manages STACKIT Intake Runner.\n\n## Example Usage\n\n```terraform\nresource \"stackit_intake_runner\" \"example\" {\n  project_id            = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name                  = \"example-runner\"\n  region                = \"eu01\"\n  description           = \"An example runner for STACKIT Intake\"\n  max_message_size_kib  = 1024\n  max_messages_per_hour = 1000\n  labels = {\n    \"env\" = \"development\"\n  }\n}\n```\n",
             "properties": {
+                "createTime": {
+                    "type": "string",
+                    "description": "The creation time of the runner.\n"
+                },
                 "description": {
                     "type": "string",
                     "description": "The description of the runner.\n"
@@ -11776,15 +12576,21 @@
                 "runnerId": {
                     "type": "string",
                     "description": "The runner ID.\n"
+                },
+                "uri": {
+                    "type": "string",
+                    "description": "The URI of the runner.\n"
                 }
             },
             "required": [
+                "createTime",
                 "maxMessageSizeKib",
                 "maxMessagesPerHour",
                 "name",
                 "projectId",
                 "region",
-                "runnerId"
+                "runnerId",
+                "uri"
             ],
             "inputProperties": {
                 "description": {
@@ -11827,6 +12633,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering IntakeRunner resources.\n",
                 "properties": {
+                    "createTime": {
+                        "type": "string",
+                        "description": "The creation time of the runner.\n"
+                    },
                     "description": {
                         "type": "string",
                         "description": "The description of the runner.\n"
@@ -11861,6 +12671,10 @@
                     "runnerId": {
                         "type": "string",
                         "description": "The runner ID.\n"
+                    },
+                    "uri": {
+                        "type": "string",
+                        "description": "The URI of the runner.\n"
                     }
                 },
                 "type": "object"
@@ -12356,7 +13170,7 @@
             }
         },
         "stackit:index/loadbalancer:Loadbalancer": {
-            "description": "## Setting up supporting infrastructure\n\n\nThe example below creates the supporting infrastructure using the STACKIT Terraform provider, including the network, network interface, a public IP address and server resources.\n\n## Example Usage\n\n```terraform\n# Create a network\nresource \"stackit_network\" \"example_network\" {\n  project_id       = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name             = \"example-network\"\n  ipv4_nameservers = [\"8.8.8.8\"]\n  ipv4_prefix      = \"192.168.0.0/25\"\n  labels = {\n    \"key\" = \"value\"\n  }\n  routed = true\n}\n\n# Create a network interface\nresource \"stackit_network_interface\" \"nic\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  network_id = stackit_network.example_network.network_id\n}\n\n# Create a public IP for the load balancer\nresource \"stackit_public_ip\" \"public-ip\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  lifecycle {\n    ignore_changes = [network_interface_id]\n  }\n}\n\n# Create a key pair for accessing the server instance\nresource \"stackit_key_pair\" \"keypair\" {\n  name       = \"example-key-pair\"\n  public_key = chomp(file(\"path/to/id_rsa.pub\"))\n}\n\n# Create a server instance\nresource \"stackit_server\" \"boot-from-image\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-server\"\n  boot_volume = {\n    size        = 64\n    source_type = \"image\"\n    source_id   = \"7b10e105-295b-4369-b6e0-567ec940a02b\" // Ubuntu 24.04\n  }\n  availability_zone = \"xxxx-x\"\n  machine_type      = \"g2i.1\"\n  keypair_name      = stackit_key_pair.keypair.name\n  network_interfaces = [\n    stackit_network_interface.nic.network_interface_id\n  ]\n}\n\n# Create a load balancer\nresource \"stackit_loadbalancer\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-load-balancer\"\n  plan_id    = \"p10\"\n  target_pools = [\n    {\n      name        = \"example-target-pool\"\n      target_port = 80\n      targets = [\n        {\n          display_name = stackit_server.boot-from-image.name\n          ip           = stackit_network_interface.nic.ipv4\n        }\n      ]\n      active_health_check = {\n        healthy_threshold   = 10\n        interval            = \"3s\"\n        interval_jitter     = \"3s\"\n        timeout             = \"3s\"\n        unhealthy_threshold = 10\n      }\n    }\n  ]\n  listeners = [\n    {\n      display_name = \"example-listener\"\n      port         = 80\n      protocol     = \"PROTOCOL_TCP\"\n      target_pool  = \"example-target-pool\"\n      tcp = {\n        idle_timeout = \"90s\"\n      }\n    }\n  ]\n  networks = [\n    {\n      network_id = stackit_network.example_network.network_id\n      role       = \"ROLE_LISTENERS_AND_TARGETS\"\n    }\n  ]\n  external_address = stackit_public_ip.public-ip.ip\n  options = {\n    private_network_only = false\n  }\n}\n\n# This example demonstrates an advanced setup where the Load Balancer is in one\n# network and the target server is in another. This requires manual\n# security group configuration using the `disable_security_group_assignment`\n# and `security_group_id` attributes.\n\n# We create two separate networks: one for the load balancer and one for the target.\nresource \"stackit_network\" \"lb_network\" {\n  project_id       = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name             = \"lb-network-example\"\n  ipv4_prefix      = \"192.168.10.0/25\"\n  ipv4_nameservers = [\"8.8.8.8\"]\n}\n\nresource \"stackit_network\" \"target_network\" {\n  project_id       = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name             = \"target-network-example\"\n  ipv4_prefix      = \"192.168.10.0/25\"\n  ipv4_nameservers = [\"8.8.8.8\"]\n}\n\nresource \"stackit_public_ip\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\nresource \"stackit_loadbalancer\" \"example\" {\n  project_id       = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name             = \"example-advanced-lb\"\n  external_address = stackit_public_ip.example.ip\n\n  # Key setting for manual mode: disables automatic security group handling.\n  disable_security_group_assignment = true\n\n  networks = [{\n    network_id = stackit_network.lb_network.network_id\n    role       = \"ROLE_LISTENERS_AND_TARGETS\"\n  }]\n\n  listeners = [{\n    port        = 80\n    protocol    = \"PROTOCOL_TCP\"\n    target_pool = \"cross-network-pool\"\n  }]\n\n  target_pools = [{\n    name        = \"cross-network-pool\"\n    target_port = 80\n    targets = [{\n      display_name = stackit_server.example.name\n      ip           = stackit_network_interface.nic.ipv4\n    }]\n  }]\n}\n\n# Create a new security group to be assigned to the target server.\nresource \"stackit_security_group\" \"target_sg\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name        = \"target-sg-for-lb-access\"\n  description = \"Allows ingress traffic from the example load balancer.\"\n}\n\n# Create a rule to allow traffic FROM the load balancer.\n# This rule uses the computed `security_group_id` of the load balancer.\nresource \"stackit_security_group_rule\" \"allow_lb_ingress\" {\n  project_id        = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  security_group_id = stackit_security_group.target_sg.security_group_id\n  direction         = \"ingress\"\n  protocol = {\n    name = \"tcp\"\n  }\n\n  # This is the crucial link: it allows traffic from the LB's security group.\n  remote_security_group_id = stackit_loadbalancer.example.security_group_id\n\n  port_range = {\n    min = 80\n    max = 80\n  }\n}\n\nresource \"stackit_server\" \"example\" {\n  project_id        = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name              = \"example-remote-target\"\n  machine_type      = \"g2i.2\"\n  availability_zone = \"eu01-1\"\n\n  boot_volume = {\n    source_type = \"image\"\n    source_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n    size        = 10\n  }\n\n  network_interfaces = [\n    stackit_network_interface.nic.network_interface_id\n  ]\n}\n\nresource \"stackit_network_interface\" \"nic\" {\n  project_id         = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  network_id         = stackit_network.target_network.network_id\n  security_group_ids = [stackit_security_group.target_sg.security_group_id]\n}\n# End of advanced example\n\n# Only use the import statement, if you want to import an existing loadbalancer\nimport {\n  to = stackit_loadbalancer.import-example\n  id = \"${var.project_id},${var.region},${var.loadbalancer_name}\"\n}\n```\n",
+            "description": "## Setting up supporting infrastructure\n\n\nThe example below creates the supporting infrastructure using the STACKIT Terraform provider, including the network, network interface, a public IP address and server resources.\n\n## Example Usage\n\n```terraform\nvariable \"project_id\" {\n  description = \"The STACKIT Project ID\"\n  type        = string\n  default     = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\nvariable \"image_id\" {\n  description = \"A valid Debian 12 Image ID available in all projects\"\n  type        = string\n  default     = \"939249d1-6f48-4ab7-929b-95170728311a\"\n}\n\n# Create a network\nresource \"stackit_network\" \"example_network\" {\n  project_id       = var.project_id\n  name             = \"example-network\"\n  ipv4_nameservers = [\"8.8.8.8\"]\n  ipv4_prefix      = \"192.168.0.0/25\"\n  labels = {\n    \"key\" = \"value\"\n  }\n  routed = true\n}\n\n# Create a network interface\nresource \"stackit_network_interface\" \"nic\" {\n  project_id = var.project_id\n  network_id = stackit_network.example_network.network_id\n}\n\n# Create a public IP for the load balancer\nresource \"stackit_public_ip\" \"public-ip\" {\n  project_id = var.project_id\n  lifecycle {\n    ignore_changes = [network_interface_id]\n  }\n}\n\n# Create a key pair for accessing the server instance\nresource \"stackit_key_pair\" \"keypair\" {\n  name       = \"example-key-pair\"\n  public_key = chomp(file(\"path/to/id_rsa.pub\"))\n}\n\n# Create a server instance\nresource \"stackit_server\" \"boot-from-image\" {\n  project_id = var.project_id\n  name       = \"example-server\"\n  boot_volume = {\n    size        = 64\n    source_type = \"image\"\n    source_id   = \"7b10e105-295b-4369-b6e0-567ec940a02b\" // Ubuntu 24.04\n  }\n  availability_zone = \"xxxx-x\"\n  machine_type      = \"g2i.1\"\n  keypair_name      = stackit_key_pair.keypair.name\n  network_interfaces = [\n    stackit_network_interface.nic.network_interface_id\n  ]\n}\n\n# Create a load balancer\nresource \"stackit_loadbalancer\" \"example\" {\n  project_id = var.project_id\n  name       = \"example-load-balancer\"\n  plan_id    = \"p10\"\n  target_pools = [\n    {\n      name        = \"example-target-pool\"\n      target_port = 80\n      targets = [\n        {\n          display_name = stackit_server.boot-from-image.name\n          ip           = stackit_network_interface.nic.ipv4\n        }\n      ]\n      active_health_check = {\n        healthy_threshold   = 10\n        interval            = \"3s\"\n        interval_jitter     = \"3s\"\n        timeout             = \"3s\"\n        unhealthy_threshold = 10\n      }\n    }\n  ]\n  listeners = [\n    {\n      display_name = \"example-listener\"\n      port         = 80\n      protocol     = \"PROTOCOL_TCP\"\n      target_pool  = \"example-target-pool\"\n      tcp = {\n        idle_timeout = \"90s\"\n      }\n    }\n  ]\n  networks = [\n    {\n      network_id = stackit_network.example_network.network_id\n      role       = \"ROLE_LISTENERS_AND_TARGETS\"\n    }\n  ]\n  external_address = stackit_public_ip.public-ip.ip\n  options = {\n    private_network_only = false\n  }\n}\n\n# This example demonstrates an advanced setup where the Load Balancer is in one\n# network and the target server is in another. This requires manual\n# security group configuration using the `disable_security_group_assignment`\n# and `load_balancer_security_group_id` attributes.\n\n# We create two separate networks: one for the load balancer and one for the target.\nresource \"stackit_network\" \"lb_network\" {\n  project_id       = var.project_id\n  name             = \"lb-network-example\"\n  ipv4_prefix      = \"192.168.10.0/25\"\n  ipv4_nameservers = [\"8.8.8.8\"]\n  routed           = true\n}\n\nresource \"stackit_network\" \"target_network\" {\n  project_id       = var.project_id\n  name             = \"target-network-example\"\n  ipv4_prefix      = \"192.168.15.0/25\"\n  ipv4_nameservers = [\"8.8.8.8\"]\n}\n\nresource \"stackit_public_ip\" \"example\" {\n  project_id = var.project_id\n}\n\nresource \"stackit_loadbalancer\" \"example\" {\n  project_id       = var.project_id\n  name             = \"example-advanced-lb\"\n  external_address = stackit_public_ip.example.ip\n\n  # Key setting for manual mode: disables automatic security group handling.\n  disable_security_group_assignment = true\n\n  networks = [{\n    network_id = stackit_network.lb_network.network_id\n    role       = \"ROLE_LISTENERS_AND_TARGETS\"\n  }]\n\n  listeners = [{\n    port        = 80\n    protocol    = \"PROTOCOL_TCP\"\n    target_pool = \"cross-network-pool\"\n  }]\n\n  target_pools = [{\n    name        = \"cross-network-pool\"\n    target_port = 80\n    targets = [{\n      display_name = stackit_server.example.name\n      ip           = stackit_network_interface.nic.ipv4\n    }]\n  }]\n}\n\n# Create a new security group to be assigned to the target server.\nresource \"stackit_security_group\" \"target_sg\" {\n  project_id  = var.project_id\n  name        = \"target-sg-for-lb-access\"\n  description = \"Allows ingress traffic from the example load balancer.\"\n}\n\n# Create a rule to allow traffic FROM the load balancer.\n# This rule uses the computed `load_balancer_security_group_id` of the load balancer.\nresource \"stackit_security_group_rule\" \"allow_lb_ingress\" {\n  project_id        = var.project_id\n  security_group_id = stackit_security_group.target_sg.security_group_id\n  direction         = \"ingress\"\n  protocol = {\n    name = \"tcp\"\n  }\n\n  # This is the crucial link: it allows traffic from the LB's security group.\n  remote_security_group_id = stackit_loadbalancer.example.load_balancer_security_group_id\n\n  port_range = {\n    min = 80\n    max = 80\n  }\n}\n\nresource \"stackit_server\" \"example\" {\n  project_id        = var.project_id\n  name              = \"example-remote-target\"\n  machine_type      = \"g2i.2\"\n  availability_zone = \"eu01-1\"\n\n  boot_volume = {\n    source_type = \"image\"\n    source_id   = var.image_id\n    size        = 10\n  }\n\n  network_interfaces = [\n    stackit_network_interface.nic.network_interface_id\n  ]\n}\n\nresource \"stackit_network_interface\" \"nic\" {\n  project_id         = var.project_id\n  network_id         = stackit_network.target_network.network_id\n  security_group_ids = [stackit_security_group.target_sg.security_group_id]\n}\n# End of advanced example\n\n# Only use the import statement, if you want to import an existing loadbalancer\nimport {\n  to = stackit_loadbalancer.import-example\n  id = \"${var.project_id},${var.region},${var.loadbalancer_name}\"\n}\n```\n",
             "properties": {
                 "disableSecurityGroupAssignment": {
                     "type": "boolean",
@@ -12372,6 +13186,10 @@
                         "$ref": "#/types/stackit:index/LoadbalancerListener:LoadbalancerListener"
                     },
                     "description": "List of all listeners which will accept traffic. Limited to 20.\n"
+                },
+                "loadBalancerSecurityGroupId": {
+                    "type": "string",
+                    "description": "The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT network areas (SNA). To enable this, create a security group rule for your target VMs and set the \u003cspan pulumi-lang-nodejs=\"`remoteSecurityGroupId`\" pulumi-lang-dotnet=\"`RemoteSecurityGroupId`\" pulumi-lang-go=\"`remoteSecurityGroupId`\" pulumi-lang-python=\"`remote_security_group_id`\" pulumi-lang-yaml=\"`remoteSecurityGroupId`\" pulumi-lang-java=\"`remoteSecurityGroupId`\"\u003e`remoteSecurityGroupId`\u003c/span\u003e of that rule to this value. This is typically used when \u003cspan pulumi-lang-nodejs=\"`disableSecurityGroupAssignment`\" pulumi-lang-dotnet=\"`DisableSecurityGroupAssignment`\" pulumi-lang-go=\"`disableSecurityGroupAssignment`\" pulumi-lang-python=\"`disable_security_group_assignment`\" pulumi-lang-yaml=\"`disableSecurityGroupAssignment`\" pulumi-lang-java=\"`disableSecurityGroupAssignment`\"\u003e`disableSecurityGroupAssignment`\u003c/span\u003e is set to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e.\n"
                 },
                 "name": {
                     "type": "string",
@@ -12406,7 +13224,7 @@
                 },
                 "securityGroupId": {
                     "type": "string",
-                    "description": "The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT network areas (SNA). To enable this, create a security group rule for your target VMs and set the \u003cspan pulumi-lang-nodejs=\"`remoteSecurityGroupId`\" pulumi-lang-dotnet=\"`RemoteSecurityGroupId`\" pulumi-lang-go=\"`remoteSecurityGroupId`\" pulumi-lang-python=\"`remote_security_group_id`\" pulumi-lang-yaml=\"`remoteSecurityGroupId`\" pulumi-lang-java=\"`remoteSecurityGroupId`\"\u003e`remoteSecurityGroupId`\u003c/span\u003e of that rule to this value. This is typically used when \u003cspan pulumi-lang-nodejs=\"`disableSecurityGroupAssignment`\" pulumi-lang-dotnet=\"`DisableSecurityGroupAssignment`\" pulumi-lang-go=\"`disableSecurityGroupAssignment`\" pulumi-lang-python=\"`disable_security_group_assignment`\" pulumi-lang-yaml=\"`disableSecurityGroupAssignment`\" pulumi-lang-java=\"`disableSecurityGroupAssignment`\"\u003e`disableSecurityGroupAssignment`\u003c/span\u003e is set to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e.\n"
+                    "description": "The ID of the automatically created security group that allows the targets to receive traffic from the LoadBalancer. Useful when disableTargetSecurityGroupAssignment=true to manually assign this security groups to targets.\n"
                 },
                 "targetPools": {
                     "type": "array",
@@ -12423,6 +13241,7 @@
             "required": [
                 "disableSecurityGroupAssignment",
                 "listeners",
+                "loadBalancerSecurityGroupId",
                 "name",
                 "networks",
                 "options",
@@ -12509,6 +13328,10 @@
                         },
                         "description": "List of all listeners which will accept traffic. Limited to 20.\n"
                     },
+                    "loadBalancerSecurityGroupId": {
+                        "type": "string",
+                        "description": "The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT network areas (SNA). To enable this, create a security group rule for your target VMs and set the \u003cspan pulumi-lang-nodejs=\"`remoteSecurityGroupId`\" pulumi-lang-dotnet=\"`RemoteSecurityGroupId`\" pulumi-lang-go=\"`remoteSecurityGroupId`\" pulumi-lang-python=\"`remote_security_group_id`\" pulumi-lang-yaml=\"`remoteSecurityGroupId`\" pulumi-lang-java=\"`remoteSecurityGroupId`\"\u003e`remoteSecurityGroupId`\u003c/span\u003e of that rule to this value. This is typically used when \u003cspan pulumi-lang-nodejs=\"`disableSecurityGroupAssignment`\" pulumi-lang-dotnet=\"`DisableSecurityGroupAssignment`\" pulumi-lang-go=\"`disableSecurityGroupAssignment`\" pulumi-lang-python=\"`disable_security_group_assignment`\" pulumi-lang-yaml=\"`disableSecurityGroupAssignment`\" pulumi-lang-java=\"`disableSecurityGroupAssignment`\"\u003e`disableSecurityGroupAssignment`\u003c/span\u003e is set to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e.\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "Load balancer name.\n"
@@ -12542,7 +13365,7 @@
                     },
                     "securityGroupId": {
                         "type": "string",
-                        "description": "The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT network areas (SNA). To enable this, create a security group rule for your target VMs and set the \u003cspan pulumi-lang-nodejs=\"`remoteSecurityGroupId`\" pulumi-lang-dotnet=\"`RemoteSecurityGroupId`\" pulumi-lang-go=\"`remoteSecurityGroupId`\" pulumi-lang-python=\"`remote_security_group_id`\" pulumi-lang-yaml=\"`remoteSecurityGroupId`\" pulumi-lang-java=\"`remoteSecurityGroupId`\"\u003e`remoteSecurityGroupId`\u003c/span\u003e of that rule to this value. This is typically used when \u003cspan pulumi-lang-nodejs=\"`disableSecurityGroupAssignment`\" pulumi-lang-dotnet=\"`DisableSecurityGroupAssignment`\" pulumi-lang-go=\"`disableSecurityGroupAssignment`\" pulumi-lang-python=\"`disable_security_group_assignment`\" pulumi-lang-yaml=\"`disableSecurityGroupAssignment`\" pulumi-lang-java=\"`disableSecurityGroupAssignment`\"\u003e`disableSecurityGroupAssignment`\u003c/span\u003e is set to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e.\n"
+                        "description": "The ID of the automatically created security group that allows the targets to receive traffic from the LoadBalancer. Useful when disableTargetSecurityGroupAssignment=true to manually assign this security groups to targets.\n"
                     },
                     "targetPools": {
                         "type": "array",
@@ -14884,7 +15707,7 @@
             }
         },
         "stackit:index/objectstorageBucket:ObjectstorageBucket": {
-            "description": "ObjectStorage bucket resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration. If you are creating \u003cspan pulumi-lang-nodejs=\"`credentialsgroup`\" pulumi-lang-dotnet=\"`Credentialsgroup`\" pulumi-lang-go=\"`credentialsgroup`\" pulumi-lang-python=\"`credentialsgroup`\" pulumi-lang-yaml=\"`credentialsgroup`\" pulumi-lang-java=\"`credentialsgroup`\"\u003e`credentialsgroup`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`bucket`\" pulumi-lang-dotnet=\"`Bucket`\" pulumi-lang-go=\"`bucket`\" pulumi-lang-python=\"`bucket`\" pulumi-lang-yaml=\"`bucket`\" pulumi-lang-java=\"`bucket`\"\u003e`bucket`\u003c/span\u003e resources simultaneously, please include the \u003cspan pulumi-lang-nodejs=\"`dependsOn`\" pulumi-lang-dotnet=\"`DependsOn`\" pulumi-lang-go=\"`dependsOn`\" pulumi-lang-python=\"`depends_on`\" pulumi-lang-yaml=\"`dependsOn`\" pulumi-lang-java=\"`dependsOn`\"\u003e`dependsOn`\u003c/span\u003e field so that they are created sequentially. This prevents errors from concurrent calls to the service enablement that is done in the background.\n\n## Example Usage\n\n```terraform\nresource \"stackit_objectstorage_bucket\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-bucket\"\n}\n\n## With compliance lock\nresource \"stackit_objectstorage_compliance_lock\" \"example_with_lock\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\nresource \"stackit_objectstorage_bucket\" \"example_with_lock\" {\n  depends_on  = [stackit_objectstorage_compliance_lock.example_with_lock]\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name        = \"example-bucket-with-lock\"\n  object_lock = true\n}\n\n\n# Only use the import statement, if you want to import an existing objectstorage bucket\nimport {\n  to = stackit_objectstorage_bucket.import-example\n  id = \"${var.project_id},${var.region},${var.bucket_name}\"\n}\n```\n",
+            "description": "ObjectStorage bucket resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration. If you are creating \u003cspan pulumi-lang-nodejs=\"`credentialsgroup`\" pulumi-lang-dotnet=\"`Credentialsgroup`\" pulumi-lang-go=\"`credentialsgroup`\" pulumi-lang-python=\"`credentialsgroup`\" pulumi-lang-yaml=\"`credentialsgroup`\" pulumi-lang-java=\"`credentialsgroup`\"\u003e`credentialsgroup`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`bucket`\" pulumi-lang-dotnet=\"`Bucket`\" pulumi-lang-go=\"`bucket`\" pulumi-lang-python=\"`bucket`\" pulumi-lang-yaml=\"`bucket`\" pulumi-lang-java=\"`bucket`\"\u003e`bucket`\u003c/span\u003e resources simultaneously, please include the \u003cspan pulumi-lang-nodejs=\"`dependsOn`\" pulumi-lang-dotnet=\"`DependsOn`\" pulumi-lang-go=\"`dependsOn`\" pulumi-lang-python=\"`depends_on`\" pulumi-lang-yaml=\"`dependsOn`\" pulumi-lang-java=\"`dependsOn`\"\u003e`dependsOn`\u003c/span\u003e field so that they are created sequentially. This prevents errors from concurrent calls to the service enablement that is done in the background.\n\n\u003e This resource cannot be destroyed if the bucket contains objects. Please ensure the bucket is empty before attempting to destroy it.\n\n## Example Usage\n\n```terraform\nresource \"stackit_objectstorage_bucket\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-bucket\"\n}\n\n## With compliance lock\nresource \"stackit_objectstorage_compliance_lock\" \"example_with_lock\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\nresource \"stackit_objectstorage_bucket\" \"example_with_lock\" {\n  depends_on  = [stackit_objectstorage_compliance_lock.example_with_lock]\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name        = \"example-bucket-with-lock\"\n  object_lock = true\n}\n\n\n# Only use the import statement, if you want to import an existing objectstorage bucket\nimport {\n  to = stackit_objectstorage_bucket.import-example\n  id = \"${var.project_id},${var.region},${var.bucket_name}\"\n}\n```\n",
             "properties": {
                 "name": {
                     "type": "string",
@@ -20509,6 +21332,10 @@
         "stackit:index/skeCluster:SkeCluster": {
             "description": "SKE Cluster Resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n\u003e When updating \u003cspan pulumi-lang-nodejs=\"`nodePools`\" pulumi-lang-dotnet=\"`NodePools`\" pulumi-lang-go=\"`nodePools`\" pulumi-lang-python=\"`node_pools`\" pulumi-lang-yaml=\"`nodePools`\" pulumi-lang-java=\"`nodePools`\"\u003e`nodePools`\u003c/span\u003e of a \u003cspan pulumi-lang-nodejs=\"`stackit.SkeCluster`\" pulumi-lang-dotnet=\"`stackit.SkeCluster`\" pulumi-lang-go=\"`SkeCluster`\" pulumi-lang-python=\"`SkeCluster`\" pulumi-lang-yaml=\"`stackit.SkeCluster`\" pulumi-lang-java=\"`stackit.SkeCluster`\"\u003e`stackit.SkeCluster`\u003c/span\u003e, the pulumi preview might appear incorrect as it matches the node pools by index rather than by name. However, the SKE API correctly identifies node pools by name and applies the intended changes. Please review your changes carefully to ensure the correct configuration will be applied.\n\n## Example Usage\n\n```terraform\nresource \"stackit_ske_cluster\" \"example\" {\n  project_id             = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name                   = \"example\"\n  kubernetes_version_min = \"x.x\"\n  node_pools = [\n    {\n      name               = \"np-example\"\n      machine_type       = \"x.x\"\n      os_version         = \"x.x.x\"\n      os_name            = \"xxx\"\n      minimum            = \"2\"\n      maximum            = \"3\"\n      availability_zones = [\"eu01-3\"]\n      volume_type        = \"storage_premium_perf6\"\n      volume_size        = \"48\"\n    }\n  ]\n  maintenance = {\n    enable_kubernetes_version_updates    = true\n    enable_machine_image_version_updates = true\n    start                                = \"01:00:00Z\"\n    end                                  = \"02:00:00Z\"\n  }\n  network = {\n    control_plane = {\n      access_scope = \"PUBLIC\"\n    }\n  }\n}\n\n# Only use the import statement, if you want to import an existing ske cluster\nimport {\n  to = stackit_ske_cluster.import-example\n  id = \"${var.project_id},${var.region},${var.ske_name}\"\n}\n```\n",
             "properties": {
+                "access": {
+                    "$ref": "#/types/stackit:index/SkeClusterAccess:SkeClusterAccess",
+                    "description": "Configure access to the cluster\n"
+                },
                 "egressAddressRanges": {
                     "type": "array",
                     "items": {
@@ -20571,6 +21398,7 @@
                 }
             },
             "required": [
+                "access",
                 "egressAddressRanges",
                 "kubernetesVersionUsed",
                 "maintenance",
@@ -20582,6 +21410,10 @@
                 "region"
             ],
             "inputProperties": {
+                "access": {
+                    "$ref": "#/types/stackit:index/SkeClusterAccess:SkeClusterAccess",
+                    "description": "Configure access to the cluster\n"
+                },
                 "extensions": {
                     "$ref": "#/types/stackit:index/SkeClusterExtensions:SkeClusterExtensions",
                     "description": "A single extensions block as defined below.\n"
@@ -20632,6 +21464,10 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering SkeCluster resources.\n",
                 "properties": {
+                    "access": {
+                        "$ref": "#/types/stackit:index/SkeClusterAccess:SkeClusterAccess",
+                        "description": "Configure access to the cluster\n"
+                    },
                     "egressAddressRanges": {
                         "type": "array",
                         "items": {
@@ -21828,6 +22664,215 @@
                     "volumeId": {
                         "type": "string",
                         "description": "The volume ID.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "stackit:index/vpnConnection:VpnConnection": {
+            "description": "VPN Connection resource schema. Uses the \u003cspan pulumi-lang-nodejs=\"`defaultRegion`\" pulumi-lang-dotnet=\"`DefaultRegion`\" pulumi-lang-go=\"`defaultRegion`\" pulumi-lang-python=\"`default_region`\" pulumi-lang-yaml=\"`defaultRegion`\" pulumi-lang-java=\"`defaultRegion`\"\u003e`defaultRegion`\u003c/span\u003e specified in the provider configuration as a fallback in case no \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e is defined on resource level.\n\n## Example Usage\n\n```terraform\nresource \"stackit_vpn_connection\" \"example\" {\n  project_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  gateway_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  display_name = \"example-vpn-connection\"\n\n  tunnel1 = {\n    remote_address    = \"198.51.100.10\"\n    pre_shared_key_wo = \"example-super-secret-key-tunnel1\"\n\n    phase1 = {\n      dh_groups             = [\"ecp384\"]\n      encryption_algorithms = [\"aes256\"]\n      integrity_algorithms  = [\"sha2_384\"]\n    }\n\n    phase2 = {\n      dh_groups             = [\"ecp384\"]\n      encryption_algorithms = [\"aes256\"]\n      integrity_algorithms  = [\"sha2_384\"]\n    }\n  }\n\n  tunnel2 = {\n    remote_address    = \"203.0.113.10\"\n    pre_shared_key_wo = \"example-super-secret-key-tunnel2\"\n\n    phase1 = {\n      dh_groups             = [\"ecp384\"]\n      encryption_algorithms = [\"aes256\"]\n      integrity_algorithms  = [\"sha2_384\"]\n    }\n\n    phase2 = {\n      dh_groups             = [\"ecp384\"]\n      encryption_algorithms = [\"aes256\"]\n      integrity_algorithms  = [\"sha2_384\"]\n    }\n  }\n}\n\n# Only use the import statement, if you want to import an existing VPN connection\nimport {\n  to = stackit_vpn_connection.example\n  id = \"${var.project_id},${var.region},${var.gateway_id},${var.connection_id}\"\n}\n```\n",
+            "properties": {
+                "connectionId": {
+                    "type": "string",
+                    "description": "The server-generated UUID of the VPN connection."
+                },
+                "displayName": {
+                    "type": "string",
+                    "description": "A user-friendly name for the connection. Must start and end with an alphanumeric character, may contain hyphens, and be 1-63 characters long.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether this connection is enabled. Defaults to true."
+                },
+                "gatewayId": {
+                    "type": "string",
+                    "description": "The UUID of the parent VPN gateway.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map of custom labels."
+                },
+                "localSubnets": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of local IPv4 CIDRs to route through this connection. Optional for route-based and BGP configurations (defaults to 0.0.0.0/0). Mandatory for policy-based."
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT project ID.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "STACKIT region."
+                },
+                "remoteSubnets": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of remote IPv4 CIDRs accessible via this connection. Optional for route-based and BGP configurations (defaults to 0.0.0.0/0). Mandatory for policy-based."
+                },
+                "staticRoutes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of static routes (IPv4 CIDRs) for route-based VPN. Mandatory for ROUTE_BASED gateways."
+                },
+                "tunnel1": {
+                    "$ref": "#/types/stackit:index/VpnConnectionTunnel1:VpnConnectionTunnel1",
+                    "description": "Configuration for the IPsec tunnel1\n"
+                },
+                "tunnel2": {
+                    "$ref": "#/types/stackit:index/VpnConnectionTunnel2:VpnConnectionTunnel2",
+                    "description": "Configuration for the IPsec tunnel2 \n\n\u003e Write-Only argument \u003cspan pulumi-lang-nodejs=\"`preSharedKeyWo`\" pulumi-lang-dotnet=\"`PreSharedKeyWo`\" pulumi-lang-go=\"`preSharedKeyWo`\" pulumi-lang-python=\"`pre_shared_key_wo`\" pulumi-lang-yaml=\"`preSharedKeyWo`\" pulumi-lang-java=\"`preSharedKeyWo`\"\u003e`preSharedKeyWo`\u003c/span\u003e is available to use in place of \u003cspan pulumi-lang-nodejs=\"`preSharedKey`\" pulumi-lang-dotnet=\"`PreSharedKey`\" pulumi-lang-go=\"`preSharedKey`\" pulumi-lang-python=\"`pre_shared_key`\" pulumi-lang-yaml=\"`preSharedKey`\" pulumi-lang-java=\"`preSharedKey`\"\u003e`preSharedKey`\u003c/span\u003e. Write-Only arguments are supported in HashiCorp Terraform 1.11.0 and later. [Learn more](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments)."
+                }
+            },
+            "required": [
+                "connectionId",
+                "displayName",
+                "enabled",
+                "gatewayId",
+                "localSubnets",
+                "projectId",
+                "region",
+                "remoteSubnets",
+                "staticRoutes",
+                "tunnel1",
+                "tunnel2"
+            ],
+            "inputProperties": {
+                "displayName": {
+                    "type": "string",
+                    "description": "A user-friendly name for the connection. Must start and end with an alphanumeric character, may contain hyphens, and be 1-63 characters long.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether this connection is enabled. Defaults to true."
+                },
+                "gatewayId": {
+                    "type": "string",
+                    "description": "The UUID of the parent VPN gateway.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map of custom labels."
+                },
+                "localSubnets": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of local IPv4 CIDRs to route through this connection. Optional for route-based and BGP configurations (defaults to 0.0.0.0/0). Mandatory for policy-based."
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT project ID.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "STACKIT region."
+                },
+                "remoteSubnets": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of remote IPv4 CIDRs accessible via this connection. Optional for route-based and BGP configurations (defaults to 0.0.0.0/0). Mandatory for policy-based."
+                },
+                "staticRoutes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of static routes (IPv4 CIDRs) for route-based VPN. Mandatory for ROUTE_BASED gateways."
+                },
+                "tunnel1": {
+                    "$ref": "#/types/stackit:index/VpnConnectionTunnel1:VpnConnectionTunnel1",
+                    "description": "Configuration for the IPsec tunnel1\n"
+                },
+                "tunnel2": {
+                    "$ref": "#/types/stackit:index/VpnConnectionTunnel2:VpnConnectionTunnel2",
+                    "description": "Configuration for the IPsec tunnel2 \n\n\u003e Write-Only argument \u003cspan pulumi-lang-nodejs=\"`preSharedKeyWo`\" pulumi-lang-dotnet=\"`PreSharedKeyWo`\" pulumi-lang-go=\"`preSharedKeyWo`\" pulumi-lang-python=\"`pre_shared_key_wo`\" pulumi-lang-yaml=\"`preSharedKeyWo`\" pulumi-lang-java=\"`preSharedKeyWo`\"\u003e`preSharedKeyWo`\u003c/span\u003e is available to use in place of \u003cspan pulumi-lang-nodejs=\"`preSharedKey`\" pulumi-lang-dotnet=\"`PreSharedKey`\" pulumi-lang-go=\"`preSharedKey`\" pulumi-lang-python=\"`pre_shared_key`\" pulumi-lang-yaml=\"`preSharedKey`\" pulumi-lang-java=\"`preSharedKey`\"\u003e`preSharedKey`\u003c/span\u003e. Write-Only arguments are supported in HashiCorp Terraform 1.11.0 and later. [Learn more](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments)."
+                }
+            },
+            "requiredInputs": [
+                "displayName",
+                "gatewayId",
+                "projectId",
+                "tunnel1",
+                "tunnel2"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering VpnConnection resources.\n",
+                "properties": {
+                    "connectionId": {
+                        "type": "string",
+                        "description": "The server-generated UUID of the VPN connection."
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "A user-friendly name for the connection. Must start and end with an alphanumeric character, may contain hyphens, and be 1-63 characters long.\n"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Whether this connection is enabled. Defaults to true."
+                    },
+                    "gatewayId": {
+                        "type": "string",
+                        "description": "The UUID of the parent VPN gateway.\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Map of custom labels."
+                    },
+                    "localSubnets": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of local IPv4 CIDRs to route through this connection. Optional for route-based and BGP configurations (defaults to 0.0.0.0/0). Mandatory for policy-based."
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "STACKIT region."
+                    },
+                    "remoteSubnets": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of remote IPv4 CIDRs accessible via this connection. Optional for route-based and BGP configurations (defaults to 0.0.0.0/0). Mandatory for policy-based."
+                    },
+                    "staticRoutes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of static routes (IPv4 CIDRs) for route-based VPN. Mandatory for ROUTE_BASED gateways."
+                    },
+                    "tunnel1": {
+                        "$ref": "#/types/stackit:index/VpnConnectionTunnel1:VpnConnectionTunnel1",
+                        "description": "Configuration for the IPsec tunnel1\n"
+                    },
+                    "tunnel2": {
+                        "$ref": "#/types/stackit:index/VpnConnectionTunnel2:VpnConnectionTunnel2",
+                        "description": "Configuration for the IPsec tunnel2 \n\n\u003e Write-Only argument \u003cspan pulumi-lang-nodejs=\"`preSharedKeyWo`\" pulumi-lang-dotnet=\"`PreSharedKeyWo`\" pulumi-lang-go=\"`preSharedKeyWo`\" pulumi-lang-python=\"`pre_shared_key_wo`\" pulumi-lang-yaml=\"`preSharedKeyWo`\" pulumi-lang-java=\"`preSharedKeyWo`\"\u003e`preSharedKeyWo`\u003c/span\u003e is available to use in place of \u003cspan pulumi-lang-nodejs=\"`preSharedKey`\" pulumi-lang-dotnet=\"`PreSharedKey`\" pulumi-lang-go=\"`preSharedKey`\" pulumi-lang-python=\"`pre_shared_key`\" pulumi-lang-yaml=\"`preSharedKey`\" pulumi-lang-java=\"`preSharedKey`\"\u003e`preSharedKey`\u003c/span\u003e. Write-Only arguments are supported in HashiCorp Terraform 1.11.0 and later. [Learn more](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments)."
                     }
                 },
                 "type": "object"
@@ -23521,6 +24566,10 @@
             "outputs": {
                 "description": "A collection of values returned by getIntakeRunner.\n",
                 "properties": {
+                    "createTime": {
+                        "type": "string",
+                        "description": "The creation time of the runner.\n"
+                    },
                     "description": {
                         "type": "string",
                         "description": "The description of the runner.\n"
@@ -23559,10 +24608,15 @@
                     "runnerId": {
                         "type": "string",
                         "description": "The runner ID.\n"
+                    },
+                    "uri": {
+                        "type": "string",
+                        "description": "The URI of the runner.\n"
                     }
                 },
                 "type": "object",
                 "required": [
+                    "createTime",
                     "description",
                     "id",
                     "labels",
@@ -23570,7 +24624,8 @@
                     "maxMessagesPerHour",
                     "name",
                     "projectId",
-                    "runnerId"
+                    "runnerId",
+                    "uri"
                 ]
             }
         },
@@ -23941,6 +24996,10 @@
                         },
                         "description": "List of all listeners which will accept traffic. Limited to 20.\n"
                     },
+                    "loadBalancerSecurityGroupId": {
+                        "type": "string",
+                        "description": "The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT network areas (SNA). To enable this, create a security group rule for your target VMs and set the \u003cspan pulumi-lang-nodejs=\"`remoteSecurityGroupId`\" pulumi-lang-dotnet=\"`RemoteSecurityGroupId`\" pulumi-lang-go=\"`remoteSecurityGroupId`\" pulumi-lang-python=\"`remote_security_group_id`\" pulumi-lang-yaml=\"`remoteSecurityGroupId`\" pulumi-lang-java=\"`remoteSecurityGroupId`\"\u003e`remoteSecurityGroupId`\u003c/span\u003e of that rule to this value. This is typically used when \u003cspan pulumi-lang-nodejs=\"`disableSecurityGroupAssignment`\" pulumi-lang-dotnet=\"`DisableSecurityGroupAssignment`\" pulumi-lang-go=\"`disableSecurityGroupAssignment`\" pulumi-lang-python=\"`disable_security_group_assignment`\" pulumi-lang-yaml=\"`disableSecurityGroupAssignment`\" pulumi-lang-java=\"`disableSecurityGroupAssignment`\"\u003e`disableSecurityGroupAssignment`\u003c/span\u003e is set to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e.\n"
+                    },
                     "name": {
                         "type": "string",
                         "description": "Load balancer name.\n"
@@ -23974,7 +25033,7 @@
                     },
                     "securityGroupId": {
                         "type": "string",
-                        "description": "The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT Network areas (SNA). To enable this, create a security group rule for your target VMs and set the \u003cspan pulumi-lang-nodejs=\"`remoteSecurityGroupId`\" pulumi-lang-dotnet=\"`RemoteSecurityGroupId`\" pulumi-lang-go=\"`remoteSecurityGroupId`\" pulumi-lang-python=\"`remote_security_group_id`\" pulumi-lang-yaml=\"`remoteSecurityGroupId`\" pulumi-lang-java=\"`remoteSecurityGroupId`\"\u003e`remoteSecurityGroupId`\u003c/span\u003e of that rule to this value. This is typically used when \u003cspan pulumi-lang-nodejs=\"`disableSecurityGroupAssignment`\" pulumi-lang-dotnet=\"`DisableSecurityGroupAssignment`\" pulumi-lang-go=\"`disableSecurityGroupAssignment`\" pulumi-lang-python=\"`disable_security_group_assignment`\" pulumi-lang-yaml=\"`disableSecurityGroupAssignment`\" pulumi-lang-java=\"`disableSecurityGroupAssignment`\"\u003e`disableSecurityGroupAssignment`\u003c/span\u003e is set to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e.\n"
+                        "description": "The ID of the automatically created security group that allows the targets to receive traffic from the LoadBalancer. Useful when disableTargetSecurityGroupAssignment=true to manually assign this security groups to targets.\n"
                     },
                     "targetPools": {
                         "type": "array",
@@ -23994,6 +25053,7 @@
                     "externalAddress",
                     "id",
                     "listeners",
+                    "loadBalancerSecurityGroupId",
                     "name",
                     "networks",
                     "options",
@@ -29163,6 +30223,10 @@
             "outputs": {
                 "description": "A collection of values returned by getSkeCluster.\n",
                 "properties": {
+                    "access": {
+                        "$ref": "#/types/stackit:index/getSkeClusterAccess:getSkeClusterAccess",
+                        "description": "Configure access to the cluster\n"
+                    },
                     "egressAddressRanges": {
                         "type": "array",
                         "items": {
@@ -29230,6 +30294,7 @@
                 },
                 "type": "object",
                 "required": [
+                    "access",
                     "egressAddressRanges",
                     "extensions",
                     "hibernations",
@@ -29950,6 +31015,115 @@
                 ]
             }
         },
+        "stackit:index/getVpnConnection:getVpnConnection": {
+            "description": "VPN Connection data source schema. Uses the \u003cspan pulumi-lang-nodejs=\"`defaultRegion`\" pulumi-lang-dotnet=\"`DefaultRegion`\" pulumi-lang-go=\"`defaultRegion`\" pulumi-lang-python=\"`default_region`\" pulumi-lang-yaml=\"`defaultRegion`\" pulumi-lang-java=\"`defaultRegion`\"\u003e`defaultRegion`\u003c/span\u003e specified in the provider configuration as a fallback in case no \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e is defined on datasource level.\n\n## Example Usage\n\n```terraform\ndata \"stackit_vpn_connection\" \"example\" {\n  project_id    = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  gateway_id    = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  connection_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getVpnConnection.\n",
+                "properties": {
+                    "connectionId": {
+                        "type": "string",
+                        "description": "The server-generated UUID of the VPN connection.\n"
+                    },
+                    "gatewayId": {
+                        "type": "string",
+                        "description": "The UUID of the parent VPN gateway.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "connectionId",
+                    "gatewayId",
+                    "projectId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getVpnConnection.\n",
+                "properties": {
+                    "connectionId": {
+                        "type": "string",
+                        "description": "The server-generated UUID of the VPN connection.\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "A user-friendly name for the connection.\n"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Whether this connection is enabled.\n"
+                    },
+                    "gatewayId": {
+                        "type": "string",
+                        "description": "The UUID of the parent VPN gateway.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Terraform's internal resource identifier. Structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`projectId`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`gatewayId`\" pulumi-lang-dotnet=\"`GatewayId`\" pulumi-lang-go=\"`gatewayId`\" pulumi-lang-python=\"`gateway_id`\" pulumi-lang-yaml=\"`gatewayId`\" pulumi-lang-java=\"`gatewayId`\"\u003e`gatewayId`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`connectionId`\" pulumi-lang-dotnet=\"`ConnectionId`\" pulumi-lang-go=\"`connectionId`\" pulumi-lang-python=\"`connection_id`\" pulumi-lang-yaml=\"`connectionId`\" pulumi-lang-java=\"`connectionId`\"\u003e`connectionId`\u003c/span\u003e\".\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Map of custom labels.\n"
+                    },
+                    "localSubnets": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of local IPv4 CIDRs to route through this connection.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "STACKIT region.\n"
+                    },
+                    "remoteSubnets": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of remote IPv4 CIDRs accessible via this connection.\n"
+                    },
+                    "staticRoutes": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of static routes (IPv4 CIDRs) for route-based VPN.\n"
+                    },
+                    "tunnel1": {
+                        "$ref": "#/types/stackit:index/getVpnConnectionTunnel1:getVpnConnectionTunnel1"
+                    },
+                    "tunnel2": {
+                        "$ref": "#/types/stackit:index/getVpnConnectionTunnel2:getVpnConnectionTunnel2"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "connectionId",
+                    "displayName",
+                    "enabled",
+                    "gatewayId",
+                    "id",
+                    "labels",
+                    "localSubnets",
+                    "projectId",
+                    "region",
+                    "remoteSubnets",
+                    "staticRoutes",
+                    "tunnel1",
+                    "tunnel2"
+                ]
+            }
+        },
         "stackit:index/getVpnGateway:getVpnGateway": {
             "description": "VPN Gateway data source schema. Uses the \u003cspan pulumi-lang-nodejs=\"`defaultRegion`\" pulumi-lang-dotnet=\"`DefaultRegion`\" pulumi-lang-go=\"`defaultRegion`\" pulumi-lang-python=\"`default_region`\" pulumi-lang-yaml=\"`defaultRegion`\" pulumi-lang-java=\"`defaultRegion`\"\u003e`defaultRegion`\u003c/span\u003e specified in the provider configuration as a fallback in case no \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e is defined on datasource level.\n\n## Example Usage\n\n```terraform\ndata \"stackit_vpn_gateway\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  gateway_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
             "inputs": {
@@ -30029,6 +31203,76 @@
                     "projectId",
                     "region",
                     "routingType"
+                ]
+            }
+        },
+        "stackit:index/getVpnGatewayStatus:getVpnGatewayStatus": {
+            "description": "VPN Gateway Status data source schema. Uses the \u003cspan pulumi-lang-nodejs=\"`defaultRegion`\" pulumi-lang-dotnet=\"`DefaultRegion`\" pulumi-lang-go=\"`defaultRegion`\" pulumi-lang-python=\"`default_region`\" pulumi-lang-yaml=\"`defaultRegion`\" pulumi-lang-java=\"`defaultRegion`\"\u003e`defaultRegion`\u003c/span\u003e specified in the provider configuration as a fallback in case no \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e is defined on datasource level.\n\n## Example Usage\n\n```terraform\ndata \"stackit_vpn_gateway_status\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  gateway_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getVpnGatewayStatus.\n",
+                "properties": {
+                    "gatewayId": {
+                        "type": "string",
+                        "description": "The server-generated UUID of the VPN gateway.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID associated with the VPN gateway.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "gatewayId",
+                    "projectId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getVpnGatewayStatus.\n",
+                "properties": {
+                    "connections": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/stackit:index/getVpnGatewayStatusConnection:getVpnGatewayStatusConnection"
+                        },
+                        "description": "List of connections in the VPN gateway.\n"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "A user-friendly name for the VPN gateway.\n"
+                    },
+                    "gatewayId": {
+                        "type": "string",
+                        "description": "The server-generated UUID of the VPN gateway.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Terraform's internal resource identifier. Structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`projectId`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`gatewayId`\" pulumi-lang-dotnet=\"`GatewayId`\" pulumi-lang-go=\"`gatewayId`\" pulumi-lang-python=\"`gateway_id`\" pulumi-lang-yaml=\"`gatewayId`\" pulumi-lang-java=\"`gatewayId`\"\u003e`gatewayId`\u003c/span\u003e\".\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID associated with the VPN gateway.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "STACKIT region name the resource is located in. If not defined, the provider region is used.\n"
+                    },
+                    "tunnels": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/stackit:index/getVpnGatewayStatusTunnel:getVpnGatewayStatusTunnel"
+                        },
+                        "description": "List of the VPN tunnels in the gateway.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "connections",
+                    "displayName",
+                    "gatewayId",
+                    "id",
+                    "projectId",
+                    "region",
+                    "tunnels"
                 ]
             }
         }

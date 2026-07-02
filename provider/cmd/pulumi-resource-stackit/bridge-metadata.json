@@ -926,6 +926,80 @@
             "stackit_volume": {
                 "current": "stackit:index/volume:Volume"
             },
+            "stackit_vpn_connection": {
+                "current": "stackit:index/vpnConnection:VpnConnection",
+                "fields": {
+                    "local_subnets": {
+                        "maxItemsOne": false
+                    },
+                    "remote_subnets": {
+                        "maxItemsOne": false
+                    },
+                    "static_routes": {
+                        "maxItemsOne": false
+                    },
+                    "tunnel1": {
+                        "fields": {
+                            "phase1": {
+                                "fields": {
+                                    "dh_groups": {
+                                        "maxItemsOne": false
+                                    },
+                                    "encryption_algorithms": {
+                                        "maxItemsOne": false
+                                    },
+                                    "integrity_algorithms": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
+                            "phase2": {
+                                "fields": {
+                                    "dh_groups": {
+                                        "maxItemsOne": false
+                                    },
+                                    "encryption_algorithms": {
+                                        "maxItemsOne": false
+                                    },
+                                    "integrity_algorithms": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "tunnel2": {
+                        "fields": {
+                            "phase1": {
+                                "fields": {
+                                    "dh_groups": {
+                                        "maxItemsOne": false
+                                    },
+                                    "encryption_algorithms": {
+                                        "maxItemsOne": false
+                                    },
+                                    "integrity_algorithms": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
+                            "phase2": {
+                                "fields": {
+                                    "dh_groups": {
+                                        "maxItemsOne": false
+                                    },
+                                    "encryption_algorithms": {
+                                        "maxItemsOne": false
+                                    },
+                                    "integrity_algorithms": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "stackit_vpn_gateway": {
                 "current": "stackit:index/vpnGateway:VpnGateway",
                 "fields": {
@@ -1970,6 +2044,80 @@
             "stackit_volume": {
                 "current": "stackit:index/getVolume:getVolume"
             },
+            "stackit_vpn_connection": {
+                "current": "stackit:index/getVpnConnection:getVpnConnection",
+                "fields": {
+                    "local_subnets": {
+                        "maxItemsOne": false
+                    },
+                    "remote_subnets": {
+                        "maxItemsOne": false
+                    },
+                    "static_routes": {
+                        "maxItemsOne": false
+                    },
+                    "tunnel1": {
+                        "fields": {
+                            "phase1": {
+                                "fields": {
+                                    "dh_groups": {
+                                        "maxItemsOne": false
+                                    },
+                                    "encryption_algorithms": {
+                                        "maxItemsOne": false
+                                    },
+                                    "integrity_algorithms": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
+                            "phase2": {
+                                "fields": {
+                                    "dh_groups": {
+                                        "maxItemsOne": false
+                                    },
+                                    "encryption_algorithms": {
+                                        "maxItemsOne": false
+                                    },
+                                    "integrity_algorithms": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "tunnel2": {
+                        "fields": {
+                            "phase1": {
+                                "fields": {
+                                    "dh_groups": {
+                                        "maxItemsOne": false
+                                    },
+                                    "encryption_algorithms": {
+                                        "maxItemsOne": false
+                                    },
+                                    "integrity_algorithms": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
+                            "phase2": {
+                                "fields": {
+                                    "dh_groups": {
+                                        "maxItemsOne": false
+                                    },
+                                    "encryption_algorithms": {
+                                        "maxItemsOne": false
+                                    },
+                                    "integrity_algorithms": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "stackit_vpn_gateway": {
                 "current": "stackit:index/getVpnGateway:getVpnGateway",
                 "fields": {
@@ -1979,6 +2127,17 @@
                                 "maxItemsOne": false
                             }
                         }
+                    }
+                }
+            },
+            "stackit_vpn_gateway_status": {
+                "current": "stackit:index/getVpnGatewayStatus:getVpnGatewayStatus",
+                "fields": {
+                    "connections": {
+                        "maxItemsOne": false
+                    },
+                    "tunnels": {
+                        "maxItemsOne": false
                     }
                 }
             }
