@@ -27,7 +27,7 @@ class GetLoadbalancerResult:
     """
     A collection of values returned by getLoadbalancer.
     """
-    def __init__(__self__, disable_security_group_assignment=None, external_address=None, id=None, listeners=None, name=None, networks=None, options=None, plan_id=None, private_address=None, project_id=None, region=None, security_group_id=None, target_pools=None, version=None):
+    def __init__(__self__, disable_security_group_assignment=None, external_address=None, id=None, listeners=None, load_balancer_security_group_id=None, name=None, networks=None, options=None, plan_id=None, private_address=None, project_id=None, region=None, security_group_id=None, target_pools=None, version=None):
         if disable_security_group_assignment and not isinstance(disable_security_group_assignment, bool):
             raise TypeError("Expected argument 'disable_security_group_assignment' to be a bool")
         pulumi.set(__self__, "disable_security_group_assignment", disable_security_group_assignment)
@@ -40,6 +40,9 @@ class GetLoadbalancerResult:
         if listeners and not isinstance(listeners, list):
             raise TypeError("Expected argument 'listeners' to be a list")
         pulumi.set(__self__, "listeners", listeners)
+        if load_balancer_security_group_id and not isinstance(load_balancer_security_group_id, str):
+            raise TypeError("Expected argument 'load_balancer_security_group_id' to be a str")
+        pulumi.set(__self__, "load_balancer_security_group_id", load_balancer_security_group_id)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -104,6 +107,14 @@ class GetLoadbalancerResult:
         return pulumi.get(self, "listeners")
 
     @_builtins.property
+    @pulumi.getter(name="loadBalancerSecurityGroupId")
+    def load_balancer_security_group_id(self) -> _builtins.str:
+        """
+        The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT network areas (SNA). To enable this, create a security group rule for your target VMs and set the `remote_security_group_id` of that rule to this value. This is typically used when `disable_security_group_assignment` is set to `true`.
+        """
+        return pulumi.get(self, "load_balancer_security_group_id")
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
@@ -163,7 +174,7 @@ class GetLoadbalancerResult:
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> _builtins.str:
         """
-        The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT Network areas (SNA). To enable this, create a security group rule for your target VMs and set the `remote_security_group_id` of that rule to this value. This is typically used when `disable_security_group_assignment` is set to `true`.
+        The ID of the automatically created security group that allows the targets to receive traffic from the LoadBalancer. Useful when disableTargetSecurityGroupAssignment=true to manually assign this security groups to targets.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -194,6 +205,7 @@ class AwaitableGetLoadbalancerResult(GetLoadbalancerResult):
             external_address=self.external_address,
             id=self.id,
             listeners=self.listeners,
+            load_balancer_security_group_id=self.load_balancer_security_group_id,
             name=self.name,
             networks=self.networks,
             options=self.options,
@@ -232,6 +244,7 @@ def get_loadbalancer(name: Optional[_builtins.str] = None,
         external_address=pulumi.get(__ret__, 'external_address'),
         id=pulumi.get(__ret__, 'id'),
         listeners=pulumi.get(__ret__, 'listeners'),
+        load_balancer_security_group_id=pulumi.get(__ret__, 'load_balancer_security_group_id'),
         name=pulumi.get(__ret__, 'name'),
         networks=pulumi.get(__ret__, 'networks'),
         options=pulumi.get(__ret__, 'options'),
@@ -267,6 +280,7 @@ def get_loadbalancer_output(name: pulumi.Input[Optional[_builtins.str]] = None,
         external_address=pulumi.get(__response__, 'external_address'),
         id=pulumi.get(__response__, 'id'),
         listeners=pulumi.get(__response__, 'listeners'),
+        load_balancer_security_group_id=pulumi.get(__response__, 'load_balancer_security_group_id'),
         name=pulumi.get(__response__, 'name'),
         networks=pulumi.get(__response__, 'networks'),
         options=pulumi.get(__response__, 'options'),

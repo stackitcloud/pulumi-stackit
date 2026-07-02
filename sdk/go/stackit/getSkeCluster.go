@@ -36,6 +36,8 @@ type LookupSkeClusterArgs struct {
 
 // A collection of values returned by getSkeCluster.
 type LookupSkeClusterResult struct {
+	// Configure access to the cluster
+	Access GetSkeClusterAccess `pulumi:"access"`
 	// The outgoing network ranges (in CIDR notation) of traffic originating from workload on the cluster.
 	EgressAddressRanges []string `pulumi:"egressAddressRanges"`
 	// A single extensions block as defined below
@@ -100,6 +102,11 @@ func (o LookupSkeClusterResultOutput) ToLookupSkeClusterResultOutput() LookupSke
 
 func (o LookupSkeClusterResultOutput) ToLookupSkeClusterResultOutputWithContext(ctx context.Context) LookupSkeClusterResultOutput {
 	return o
+}
+
+// Configure access to the cluster
+func (o LookupSkeClusterResultOutput) Access() GetSkeClusterAccessOutput {
+	return o.ApplyT(func(v LookupSkeClusterResult) GetSkeClusterAccess { return v.Access }).(GetSkeClusterAccessOutput)
 }
 
 // The outgoing network ranges (in CIDR notation) of traffic originating from workload on the cluster.

@@ -41,6 +41,10 @@ export interface GetIntakeRunnerArgs {
  */
 export interface GetIntakeRunnerResult {
     /**
+     * The creation time of the runner.
+     */
+    readonly createTime: string;
+    /**
      * The description of the runner.
      */
     readonly description: string;
@@ -76,6 +80,10 @@ export interface GetIntakeRunnerResult {
      * The runner ID.
      */
     readonly runnerId: string;
+    /**
+     * The URI of the runner.
+     */
+    readonly uri: string;
 }
 /**
  * Datasource for STACKIT Intake Runner.

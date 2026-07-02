@@ -38,6 +38,12 @@ namespace Pulumi.Stackit
         public Output<ImmutableArray<Outputs.LoadbalancerListener>> Listeners { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT network areas (SNA). To enable this, create a security group rule for your target VMs and set the `RemoteSecurityGroupId` of that rule to this value. This is typically used when `DisableSecurityGroupAssignment` is set to `True`.
+        /// </summary>
+        [Output("loadBalancerSecurityGroupId")]
+        public Output<string> LoadBalancerSecurityGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// Load balancer name.
         /// </summary>
         [Output("name")]
@@ -80,7 +86,7 @@ namespace Pulumi.Stackit
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT network areas (SNA). To enable this, create a security group rule for your target VMs and set the `RemoteSecurityGroupId` of that rule to this value. This is typically used when `DisableSecurityGroupAssignment` is set to `True`.
+        /// The ID of the automatically created security group that allows the targets to receive traffic from the LoadBalancer. Useful when disableTargetSecurityGroupAssignment=true to manually assign this security groups to targets.
         /// </summary>
         [Output("securityGroupId")]
         public Output<string> SecurityGroupId { get; private set; } = null!;
@@ -255,6 +261,12 @@ namespace Pulumi.Stackit
         }
 
         /// <summary>
+        /// The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT network areas (SNA). To enable this, create a security group rule for your target VMs and set the `RemoteSecurityGroupId` of that rule to this value. This is typically used when `DisableSecurityGroupAssignment` is set to `True`.
+        /// </summary>
+        [Input("loadBalancerSecurityGroupId")]
+        public Input<string>? LoadBalancerSecurityGroupId { get; set; }
+
+        /// <summary>
         /// Load balancer name.
         /// </summary>
         [Input("name")]
@@ -303,7 +315,7 @@ namespace Pulumi.Stackit
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT network areas (SNA). To enable this, create a security group rule for your target VMs and set the `RemoteSecurityGroupId` of that rule to this value. This is typically used when `DisableSecurityGroupAssignment` is set to `True`.
+        /// The ID of the automatically created security group that allows the targets to receive traffic from the LoadBalancer. Useful when disableTargetSecurityGroupAssignment=true to manually assign this security groups to targets.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }

@@ -131,6 +131,10 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly ImmutableArray<Outputs.GetLoadbalancerListenerResult> Listeners;
         /// <summary>
+        /// The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT network areas (SNA). To enable this, create a security group rule for your target VMs and set the `RemoteSecurityGroupId` of that rule to this value. This is typically used when `DisableSecurityGroupAssignment` is set to `True`.
+        /// </summary>
+        public readonly string LoadBalancerSecurityGroupId;
+        /// <summary>
         /// Load balancer name.
         /// </summary>
         public readonly string Name;
@@ -159,7 +163,7 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string? Region;
         /// <summary>
-        /// The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT Network areas (SNA). To enable this, create a security group rule for your target VMs and set the `RemoteSecurityGroupId` of that rule to this value. This is typically used when `DisableSecurityGroupAssignment` is set to `True`.
+        /// The ID of the automatically created security group that allows the targets to receive traffic from the LoadBalancer. Useful when disableTargetSecurityGroupAssignment=true to manually assign this security groups to targets.
         /// </summary>
         public readonly string SecurityGroupId;
         /// <summary>
@@ -180,6 +184,8 @@ namespace Pulumi.Stackit
             string id,
 
             ImmutableArray<Outputs.GetLoadbalancerListenerResult> listeners,
+
+            string loadBalancerSecurityGroupId,
 
             string name,
 
@@ -205,6 +211,7 @@ namespace Pulumi.Stackit
             ExternalAddress = externalAddress;
             Id = id;
             Listeners = listeners;
+            LoadBalancerSecurityGroupId = loadBalancerSecurityGroupId;
             Name = name;
             Networks = networks;
             Options = options;

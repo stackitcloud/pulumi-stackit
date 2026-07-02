@@ -20,6 +20,12 @@ namespace Pulumi.Stackit
     public partial class SkeCluster : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Configure access to the cluster
+        /// </summary>
+        [Output("access")]
+        public Output<Outputs.SkeClusterAccess> Access { get; private set; } = null!;
+
+        /// <summary>
         /// The outgoing network ranges (in CIDR notation) of traffic originating from workload on the cluster.
         /// </summary>
         [Output("egressAddressRanges")]
@@ -140,6 +146,12 @@ namespace Pulumi.Stackit
     public sealed class SkeClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Configure access to the cluster
+        /// </summary>
+        [Input("access")]
+        public Input<Inputs.SkeClusterAccessArgs>? Access { get; set; }
+
+        /// <summary>
         /// A single extensions block as defined below.
         /// </summary>
         [Input("extensions")]
@@ -214,6 +226,12 @@ namespace Pulumi.Stackit
 
     public sealed class SkeClusterState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Configure access to the cluster
+        /// </summary>
+        [Input("access")]
+        public Input<Inputs.SkeClusterAccessGetArgs>? Access { get; set; }
+
         [Input("egressAddressRanges")]
         private InputList<string>? _egressAddressRanges;
 

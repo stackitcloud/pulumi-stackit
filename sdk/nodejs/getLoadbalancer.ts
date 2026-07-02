@@ -59,6 +59,10 @@ export interface GetLoadbalancerResult {
      */
     readonly listeners: outputs.GetLoadbalancerListener[];
     /**
+     * The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT network areas (SNA). To enable this, create a security group rule for your target VMs and set the `remoteSecurityGroupId` of that rule to this value. This is typically used when `disableSecurityGroupAssignment` is set to `true`.
+     */
+    readonly loadBalancerSecurityGroupId: string;
+    /**
      * Load balancer name.
      */
     readonly name: string;
@@ -87,7 +91,7 @@ export interface GetLoadbalancerResult {
      */
     readonly region?: string;
     /**
-     * The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT Network areas (SNA). To enable this, create a security group rule for your target VMs and set the `remoteSecurityGroupId` of that rule to this value. This is typically used when `disableSecurityGroupAssignment` is set to `true`.
+     * The ID of the automatically created security group that allows the targets to receive traffic from the LoadBalancer. Useful when disableTargetSecurityGroupAssignment=true to manually assign this security groups to targets.
      */
     readonly securityGroupId: string;
     /**

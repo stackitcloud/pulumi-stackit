@@ -590,10 +590,20 @@ export const getVolume: typeof import("./getVolume").getVolume = null as any;
 export const getVolumeOutput: typeof import("./getVolume").getVolumeOutput = null as any;
 utilities.lazyLoad(exports, ["getVolume","getVolumeOutput"], () => require("./getVolume"));
 
+export { GetVpnConnectionArgs, GetVpnConnectionResult, GetVpnConnectionOutputArgs } from "./getVpnConnection";
+export const getVpnConnection: typeof import("./getVpnConnection").getVpnConnection = null as any;
+export const getVpnConnectionOutput: typeof import("./getVpnConnection").getVpnConnectionOutput = null as any;
+utilities.lazyLoad(exports, ["getVpnConnection","getVpnConnectionOutput"], () => require("./getVpnConnection"));
+
 export { GetVpnGatewayArgs, GetVpnGatewayResult, GetVpnGatewayOutputArgs } from "./getVpnGateway";
 export const getVpnGateway: typeof import("./getVpnGateway").getVpnGateway = null as any;
 export const getVpnGatewayOutput: typeof import("./getVpnGateway").getVpnGatewayOutput = null as any;
 utilities.lazyLoad(exports, ["getVpnGateway","getVpnGatewayOutput"], () => require("./getVpnGateway"));
+
+export { GetVpnGatewayStatusArgs, GetVpnGatewayStatusResult, GetVpnGatewayStatusOutputArgs } from "./getVpnGatewayStatus";
+export const getVpnGatewayStatus: typeof import("./getVpnGatewayStatus").getVpnGatewayStatus = null as any;
+export const getVpnGatewayStatusOutput: typeof import("./getVpnGatewayStatus").getVpnGatewayStatusOutput = null as any;
+utilities.lazyLoad(exports, ["getVpnGatewayStatus","getVpnGatewayStatusOutput"], () => require("./getVpnGatewayStatus"));
 
 export { GitArgs, GitState } from "./git";
 export type Git = import("./git").Git;
@@ -993,6 +1003,11 @@ export type Volume = import("./volume").Volume;
 export const Volume: typeof import("./volume").Volume = null as any;
 utilities.lazyLoad(exports, ["Volume"], () => require("./volume"));
 
+export { VpnConnectionArgs, VpnConnectionState } from "./vpnConnection";
+export type VpnConnection = import("./vpnConnection").VpnConnection;
+export const VpnConnection: typeof import("./vpnConnection").VpnConnection = null as any;
+utilities.lazyLoad(exports, ["VpnConnection"], () => require("./vpnConnection"));
+
 export { VpnGatewayArgs, VpnGatewayState } from "./vpnGateway";
 export type VpnGateway = import("./vpnGateway").VpnGateway;
 export const VpnGateway: typeof import("./vpnGateway").VpnGateway = null as any;
@@ -1208,6 +1223,8 @@ const _module = {
                 return new TelemetryrouterInstance(name, <any>undefined, { urn })
             case "stackit:index/volume:Volume":
                 return new Volume(name, <any>undefined, { urn })
+            case "stackit:index/vpnConnection:VpnConnection":
+                return new VpnConnection(name, <any>undefined, { urn })
             case "stackit:index/vpnGateway:VpnGateway":
                 return new VpnGateway(name, <any>undefined, { urn })
             default:
@@ -1313,6 +1330,7 @@ pulumi.runtime.registerResourceModule("stackit", "index/telemetryrouterAccessTok
 pulumi.runtime.registerResourceModule("stackit", "index/telemetryrouterDestination", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/telemetryrouterInstance", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/volume", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/vpnConnection", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/vpnGateway", _module)
 pulumi.runtime.registerResourcePackage("stackit", {
     version: utilities.getVersion(),

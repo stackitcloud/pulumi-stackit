@@ -20,6 +20,8 @@ import (
 type SkeCluster struct {
 	pulumi.CustomResourceState
 
+	// Configure access to the cluster
+	Access SkeClusterAccessOutput `pulumi:"access"`
 	// The outgoing network ranges (in CIDR notation) of traffic originating from workload on the cluster.
 	EgressAddressRanges pulumi.StringArrayOutput `pulumi:"egressAddressRanges"`
 	// A single extensions block as defined below.
@@ -83,6 +85,8 @@ func GetSkeCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SkeCluster resources.
 type skeClusterState struct {
+	// Configure access to the cluster
+	Access *SkeClusterAccess `pulumi:"access"`
 	// The outgoing network ranges (in CIDR notation) of traffic originating from workload on the cluster.
 	EgressAddressRanges []string `pulumi:"egressAddressRanges"`
 	// A single extensions block as defined below.
@@ -111,6 +115,8 @@ type skeClusterState struct {
 }
 
 type SkeClusterState struct {
+	// Configure access to the cluster
+	Access SkeClusterAccessPtrInput
 	// The outgoing network ranges (in CIDR notation) of traffic originating from workload on the cluster.
 	EgressAddressRanges pulumi.StringArrayInput
 	// A single extensions block as defined below.
@@ -143,6 +149,8 @@ func (SkeClusterState) ElementType() reflect.Type {
 }
 
 type skeClusterArgs struct {
+	// Configure access to the cluster
+	Access *SkeClusterAccess `pulumi:"access"`
 	// A single extensions block as defined below.
 	Extensions *SkeClusterExtensions `pulumi:"extensions"`
 	// One or more hibernation block as defined below.
@@ -166,6 +174,8 @@ type skeClusterArgs struct {
 
 // The set of arguments for constructing a SkeCluster resource.
 type SkeClusterArgs struct {
+	// Configure access to the cluster
+	Access SkeClusterAccessPtrInput
 	// A single extensions block as defined below.
 	Extensions SkeClusterExtensionsPtrInput
 	// One or more hibernation block as defined below.
@@ -272,6 +282,11 @@ func (o SkeClusterOutput) ToSkeClusterOutput() SkeClusterOutput {
 
 func (o SkeClusterOutput) ToSkeClusterOutputWithContext(ctx context.Context) SkeClusterOutput {
 	return o
+}
+
+// Configure access to the cluster
+func (o SkeClusterOutput) Access() SkeClusterAccessOutput {
+	return o.ApplyT(func(v *SkeCluster) SkeClusterAccessOutput { return v.Access }).(SkeClusterAccessOutput)
 }
 
 // The outgoing network ranges (in CIDR notation) of traffic originating from workload on the cluster.

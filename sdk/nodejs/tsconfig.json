@@ -138,7 +138,9 @@
         "getTelemetryrouterDestination.ts",
         "getTelemetryrouterInstance.ts",
         "getVolume.ts",
+        "getVpnConnection.ts",
         "getVpnGateway.ts",
+        "getVpnGatewayStatus.ts",
         "git.ts",
         "image.ts",
         "index.ts",
@@ -224,6 +226,7 @@
         "types/output.ts",
         "utilities.ts",
         "volume.ts",
+        "vpnConnection.ts",
         "vpnGateway.ts"
     ]
 }
