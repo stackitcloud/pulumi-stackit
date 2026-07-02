@@ -115,6 +115,10 @@ namespace Pulumi.Stackit
     public sealed class GetIntakeRunnerResult
     {
         /// <summary>
+        /// The creation time of the runner.
+        /// </summary>
+        public readonly string CreateTime;
+        /// <summary>
         /// The description of the runner.
         /// </summary>
         public readonly string Description;
@@ -150,9 +154,15 @@ namespace Pulumi.Stackit
         /// The runner ID.
         /// </summary>
         public readonly string RunnerId;
+        /// <summary>
+        /// The URI of the runner.
+        /// </summary>
+        public readonly string Uri;
 
         [OutputConstructor]
         private GetIntakeRunnerResult(
+            string createTime,
+
             string description,
 
             string id,
@@ -169,8 +179,11 @@ namespace Pulumi.Stackit
 
             string? region,
 
-            string runnerId)
+            string runnerId,
+
+            string uri)
         {
+            CreateTime = createTime;
             Description = description;
             Id = id;
             Labels = labels;
@@ -180,6 +193,7 @@ namespace Pulumi.Stackit
             ProjectId = projectId;
             Region = region;
             RunnerId = runnerId;
+            Uri = uri;
         }
     }
 }

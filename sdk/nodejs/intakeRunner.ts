@@ -38,6 +38,10 @@ export class IntakeRunner extends pulumi.CustomResource {
     }
 
     /**
+     * The creation time of the runner.
+     */
+    declare public /*out*/ readonly createTime: pulumi.Output<string>;
+    /**
      * The description of the runner.
      */
     declare public readonly description: pulumi.Output<string | undefined>;
@@ -69,6 +73,10 @@ export class IntakeRunner extends pulumi.CustomResource {
      * The runner ID.
      */
     declare public /*out*/ readonly runnerId: pulumi.Output<string>;
+    /**
+     * The URI of the runner.
+     */
+    declare public /*out*/ readonly uri: pulumi.Output<string>;
 
     /**
      * Create a IntakeRunner resource with the given unique name, arguments, and options.
@@ -83,6 +91,7 @@ export class IntakeRunner extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as IntakeRunnerState | undefined;
+            resourceInputs["createTime"] = state?.createTime;
             resourceInputs["description"] = state?.description;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["maxMessageSizeKib"] = state?.maxMessageSizeKib;
@@ -91,6 +100,7 @@ export class IntakeRunner extends pulumi.CustomResource {
             resourceInputs["projectId"] = state?.projectId;
             resourceInputs["region"] = state?.region;
             resourceInputs["runnerId"] = state?.runnerId;
+            resourceInputs["uri"] = state?.uri;
         } else {
             const args = argsOrState as IntakeRunnerArgs | undefined;
             if (args?.maxMessageSizeKib === undefined && !opts.urn) {
@@ -109,7 +119,9 @@ export class IntakeRunner extends pulumi.CustomResource {
             resourceInputs["name"] = args?.name;
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["region"] = args?.region;
+            resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["runnerId"] = undefined /*out*/;
+            resourceInputs["uri"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(IntakeRunner.__pulumiType, name, resourceInputs, opts);
@@ -120,6 +132,10 @@ export class IntakeRunner extends pulumi.CustomResource {
  * Input properties used for looking up and filtering IntakeRunner resources.
  */
 export interface IntakeRunnerState {
+    /**
+     * The creation time of the runner.
+     */
+    createTime?: pulumi.Input<string | undefined>;
     /**
      * The description of the runner.
      */
@@ -152,6 +168,10 @@ export interface IntakeRunnerState {
      * The runner ID.
      */
     runnerId?: pulumi.Input<string | undefined>;
+    /**
+     * The URI of the runner.
+     */
+    uri?: pulumi.Input<string | undefined>;
 }
 
 /**

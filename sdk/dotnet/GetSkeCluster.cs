@@ -115,6 +115,10 @@ namespace Pulumi.Stackit
     public sealed class GetSkeClusterResult
     {
         /// <summary>
+        /// Configure access to the cluster
+        /// </summary>
+        public readonly Outputs.GetSkeClusterAccessResult Access;
+        /// <summary>
         /// The outgoing network ranges (in CIDR notation) of traffic originating from workload on the cluster.
         /// </summary>
         public readonly ImmutableArray<string> EgressAddressRanges;
@@ -169,6 +173,8 @@ namespace Pulumi.Stackit
 
         [OutputConstructor]
         private GetSkeClusterResult(
+            Outputs.GetSkeClusterAccessResult access,
+
             ImmutableArray<string> egressAddressRanges,
 
             Outputs.GetSkeClusterExtensionsResult extensions,
@@ -195,6 +201,7 @@ namespace Pulumi.Stackit
 
             string? region)
         {
+            Access = access;
             EgressAddressRanges = egressAddressRanges;
             Extensions = extensions;
             Hibernations = hibernations;

@@ -17228,6 +17228,299 @@ func (o SfsResourcePoolSnapshotPolicyPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type SkeClusterAccess struct {
+	// Configure IDP
+	Idp *SkeClusterAccessIdp `pulumi:"idp"`
+}
+
+// SkeClusterAccessInput is an input type that accepts SkeClusterAccessArgs and SkeClusterAccessOutput values.
+// You can construct a concrete instance of `SkeClusterAccessInput` via:
+//
+//	SkeClusterAccessArgs{...}
+type SkeClusterAccessInput interface {
+	pulumi.Input
+
+	ToSkeClusterAccessOutput() SkeClusterAccessOutput
+	ToSkeClusterAccessOutputWithContext(context.Context) SkeClusterAccessOutput
+}
+
+type SkeClusterAccessArgs struct {
+	// Configure IDP
+	Idp SkeClusterAccessIdpPtrInput `pulumi:"idp"`
+}
+
+func (SkeClusterAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkeClusterAccess)(nil)).Elem()
+}
+
+func (i SkeClusterAccessArgs) ToSkeClusterAccessOutput() SkeClusterAccessOutput {
+	return i.ToSkeClusterAccessOutputWithContext(context.Background())
+}
+
+func (i SkeClusterAccessArgs) ToSkeClusterAccessOutputWithContext(ctx context.Context) SkeClusterAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkeClusterAccessOutput)
+}
+
+func (i SkeClusterAccessArgs) ToSkeClusterAccessPtrOutput() SkeClusterAccessPtrOutput {
+	return i.ToSkeClusterAccessPtrOutputWithContext(context.Background())
+}
+
+func (i SkeClusterAccessArgs) ToSkeClusterAccessPtrOutputWithContext(ctx context.Context) SkeClusterAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkeClusterAccessOutput).ToSkeClusterAccessPtrOutputWithContext(ctx)
+}
+
+// SkeClusterAccessPtrInput is an input type that accepts SkeClusterAccessArgs, SkeClusterAccessPtr and SkeClusterAccessPtrOutput values.
+// You can construct a concrete instance of `SkeClusterAccessPtrInput` via:
+//
+//	        SkeClusterAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type SkeClusterAccessPtrInput interface {
+	pulumi.Input
+
+	ToSkeClusterAccessPtrOutput() SkeClusterAccessPtrOutput
+	ToSkeClusterAccessPtrOutputWithContext(context.Context) SkeClusterAccessPtrOutput
+}
+
+type skeClusterAccessPtrType SkeClusterAccessArgs
+
+func SkeClusterAccessPtr(v *SkeClusterAccessArgs) SkeClusterAccessPtrInput {
+	return (*skeClusterAccessPtrType)(v)
+}
+
+func (*skeClusterAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkeClusterAccess)(nil)).Elem()
+}
+
+func (i *skeClusterAccessPtrType) ToSkeClusterAccessPtrOutput() SkeClusterAccessPtrOutput {
+	return i.ToSkeClusterAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *skeClusterAccessPtrType) ToSkeClusterAccessPtrOutputWithContext(ctx context.Context) SkeClusterAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkeClusterAccessPtrOutput)
+}
+
+type SkeClusterAccessOutput struct{ *pulumi.OutputState }
+
+func (SkeClusterAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkeClusterAccess)(nil)).Elem()
+}
+
+func (o SkeClusterAccessOutput) ToSkeClusterAccessOutput() SkeClusterAccessOutput {
+	return o
+}
+
+func (o SkeClusterAccessOutput) ToSkeClusterAccessOutputWithContext(ctx context.Context) SkeClusterAccessOutput {
+	return o
+}
+
+func (o SkeClusterAccessOutput) ToSkeClusterAccessPtrOutput() SkeClusterAccessPtrOutput {
+	return o.ToSkeClusterAccessPtrOutputWithContext(context.Background())
+}
+
+func (o SkeClusterAccessOutput) ToSkeClusterAccessPtrOutputWithContext(ctx context.Context) SkeClusterAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SkeClusterAccess) *SkeClusterAccess {
+		return &v
+	}).(SkeClusterAccessPtrOutput)
+}
+
+// Configure IDP
+func (o SkeClusterAccessOutput) Idp() SkeClusterAccessIdpPtrOutput {
+	return o.ApplyT(func(v SkeClusterAccess) *SkeClusterAccessIdp { return v.Idp }).(SkeClusterAccessIdpPtrOutput)
+}
+
+type SkeClusterAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (SkeClusterAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkeClusterAccess)(nil)).Elem()
+}
+
+func (o SkeClusterAccessPtrOutput) ToSkeClusterAccessPtrOutput() SkeClusterAccessPtrOutput {
+	return o
+}
+
+func (o SkeClusterAccessPtrOutput) ToSkeClusterAccessPtrOutputWithContext(ctx context.Context) SkeClusterAccessPtrOutput {
+	return o
+}
+
+func (o SkeClusterAccessPtrOutput) Elem() SkeClusterAccessOutput {
+	return o.ApplyT(func(v *SkeClusterAccess) SkeClusterAccess {
+		if v != nil {
+			return *v
+		}
+		var ret SkeClusterAccess
+		return ret
+	}).(SkeClusterAccessOutput)
+}
+
+// Configure IDP
+func (o SkeClusterAccessPtrOutput) Idp() SkeClusterAccessIdpPtrOutput {
+	return o.ApplyT(func(v *SkeClusterAccess) *SkeClusterAccessIdp {
+		if v == nil {
+			return nil
+		}
+		return v.Idp
+	}).(SkeClusterAccessIdpPtrOutput)
+}
+
+type SkeClusterAccessIdp struct {
+	// Enable IDP integration for the cluster.
+	Enabled *bool `pulumi:"enabled"`
+	// The IDP type. Possible values: 'stackit'.
+	Type *string `pulumi:"type"`
+}
+
+// SkeClusterAccessIdpInput is an input type that accepts SkeClusterAccessIdpArgs and SkeClusterAccessIdpOutput values.
+// You can construct a concrete instance of `SkeClusterAccessIdpInput` via:
+//
+//	SkeClusterAccessIdpArgs{...}
+type SkeClusterAccessIdpInput interface {
+	pulumi.Input
+
+	ToSkeClusterAccessIdpOutput() SkeClusterAccessIdpOutput
+	ToSkeClusterAccessIdpOutputWithContext(context.Context) SkeClusterAccessIdpOutput
+}
+
+type SkeClusterAccessIdpArgs struct {
+	// Enable IDP integration for the cluster.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// The IDP type. Possible values: 'stackit'.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (SkeClusterAccessIdpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkeClusterAccessIdp)(nil)).Elem()
+}
+
+func (i SkeClusterAccessIdpArgs) ToSkeClusterAccessIdpOutput() SkeClusterAccessIdpOutput {
+	return i.ToSkeClusterAccessIdpOutputWithContext(context.Background())
+}
+
+func (i SkeClusterAccessIdpArgs) ToSkeClusterAccessIdpOutputWithContext(ctx context.Context) SkeClusterAccessIdpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkeClusterAccessIdpOutput)
+}
+
+func (i SkeClusterAccessIdpArgs) ToSkeClusterAccessIdpPtrOutput() SkeClusterAccessIdpPtrOutput {
+	return i.ToSkeClusterAccessIdpPtrOutputWithContext(context.Background())
+}
+
+func (i SkeClusterAccessIdpArgs) ToSkeClusterAccessIdpPtrOutputWithContext(ctx context.Context) SkeClusterAccessIdpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkeClusterAccessIdpOutput).ToSkeClusterAccessIdpPtrOutputWithContext(ctx)
+}
+
+// SkeClusterAccessIdpPtrInput is an input type that accepts SkeClusterAccessIdpArgs, SkeClusterAccessIdpPtr and SkeClusterAccessIdpPtrOutput values.
+// You can construct a concrete instance of `SkeClusterAccessIdpPtrInput` via:
+//
+//	        SkeClusterAccessIdpArgs{...}
+//
+//	or:
+//
+//	        nil
+type SkeClusterAccessIdpPtrInput interface {
+	pulumi.Input
+
+	ToSkeClusterAccessIdpPtrOutput() SkeClusterAccessIdpPtrOutput
+	ToSkeClusterAccessIdpPtrOutputWithContext(context.Context) SkeClusterAccessIdpPtrOutput
+}
+
+type skeClusterAccessIdpPtrType SkeClusterAccessIdpArgs
+
+func SkeClusterAccessIdpPtr(v *SkeClusterAccessIdpArgs) SkeClusterAccessIdpPtrInput {
+	return (*skeClusterAccessIdpPtrType)(v)
+}
+
+func (*skeClusterAccessIdpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkeClusterAccessIdp)(nil)).Elem()
+}
+
+func (i *skeClusterAccessIdpPtrType) ToSkeClusterAccessIdpPtrOutput() SkeClusterAccessIdpPtrOutput {
+	return i.ToSkeClusterAccessIdpPtrOutputWithContext(context.Background())
+}
+
+func (i *skeClusterAccessIdpPtrType) ToSkeClusterAccessIdpPtrOutputWithContext(ctx context.Context) SkeClusterAccessIdpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkeClusterAccessIdpPtrOutput)
+}
+
+type SkeClusterAccessIdpOutput struct{ *pulumi.OutputState }
+
+func (SkeClusterAccessIdpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkeClusterAccessIdp)(nil)).Elem()
+}
+
+func (o SkeClusterAccessIdpOutput) ToSkeClusterAccessIdpOutput() SkeClusterAccessIdpOutput {
+	return o
+}
+
+func (o SkeClusterAccessIdpOutput) ToSkeClusterAccessIdpOutputWithContext(ctx context.Context) SkeClusterAccessIdpOutput {
+	return o
+}
+
+func (o SkeClusterAccessIdpOutput) ToSkeClusterAccessIdpPtrOutput() SkeClusterAccessIdpPtrOutput {
+	return o.ToSkeClusterAccessIdpPtrOutputWithContext(context.Background())
+}
+
+func (o SkeClusterAccessIdpOutput) ToSkeClusterAccessIdpPtrOutputWithContext(ctx context.Context) SkeClusterAccessIdpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SkeClusterAccessIdp) *SkeClusterAccessIdp {
+		return &v
+	}).(SkeClusterAccessIdpPtrOutput)
+}
+
+// Enable IDP integration for the cluster.
+func (o SkeClusterAccessIdpOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SkeClusterAccessIdp) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// The IDP type. Possible values: 'stackit'.
+func (o SkeClusterAccessIdpOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SkeClusterAccessIdp) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type SkeClusterAccessIdpPtrOutput struct{ *pulumi.OutputState }
+
+func (SkeClusterAccessIdpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkeClusterAccessIdp)(nil)).Elem()
+}
+
+func (o SkeClusterAccessIdpPtrOutput) ToSkeClusterAccessIdpPtrOutput() SkeClusterAccessIdpPtrOutput {
+	return o
+}
+
+func (o SkeClusterAccessIdpPtrOutput) ToSkeClusterAccessIdpPtrOutputWithContext(ctx context.Context) SkeClusterAccessIdpPtrOutput {
+	return o
+}
+
+func (o SkeClusterAccessIdpPtrOutput) Elem() SkeClusterAccessIdpOutput {
+	return o.ApplyT(func(v *SkeClusterAccessIdp) SkeClusterAccessIdp {
+		if v != nil {
+			return *v
+		}
+		var ret SkeClusterAccessIdp
+		return ret
+	}).(SkeClusterAccessIdpOutput)
+}
+
+// Enable IDP integration for the cluster.
+func (o SkeClusterAccessIdpPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SkeClusterAccessIdp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The IDP type. Possible values: 'stackit'.
+func (o SkeClusterAccessIdpPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SkeClusterAccessIdp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
 type SkeClusterExtensions struct {
 	// Cluster access control configuration.
 	Acl *SkeClusterExtensionsAcl `pulumi:"acl"`
@@ -21306,6 +21599,1960 @@ func (o VolumeSourcePtrOutput) Type() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type VpnConnectionTunnel1 struct {
+	Bgp     *VpnConnectionTunnel1Bgp     `pulumi:"bgp"`
+	Peering *VpnConnectionTunnel1Peering `pulumi:"peering"`
+	Phase1  VpnConnectionTunnel1Phase1   `pulumi:"phase1"`
+	Phase2  VpnConnectionTunnel1Phase2   `pulumi:"phase2"`
+	// Pre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only argument `preSharedKeyWo` should be preferred.
+	PreSharedKey *string `pulumi:"preSharedKey"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Pre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only - never stored in state and never returned by the API. To rotate the key, update this value AND increment pre*shared*key*wo*version. Changing this field alone will NOT trigger an update.
+	PreSharedKeyWo *string `pulumi:"preSharedKeyWo"`
+	// User-managed rotation counter for the pre-shared key. Must be incremented every time pre*shared*key*wo is changed. Terraform diffs this field to detect key rotations - changing pre*shared*key*wo alone will NOT trigger an update because it is write-only and never stored in state.
+	PreSharedKeyWoVersion *int `pulumi:"preSharedKeyWoVersion"`
+	// Remote IPv4 address for the tunnel endpoint.
+	RemoteAddress string `pulumi:"remoteAddress"`
+}
+
+// VpnConnectionTunnel1Input is an input type that accepts VpnConnectionTunnel1Args and VpnConnectionTunnel1Output values.
+// You can construct a concrete instance of `VpnConnectionTunnel1Input` via:
+//
+//	VpnConnectionTunnel1Args{...}
+type VpnConnectionTunnel1Input interface {
+	pulumi.Input
+
+	ToVpnConnectionTunnel1Output() VpnConnectionTunnel1Output
+	ToVpnConnectionTunnel1OutputWithContext(context.Context) VpnConnectionTunnel1Output
+}
+
+type VpnConnectionTunnel1Args struct {
+	Bgp     VpnConnectionTunnel1BgpPtrInput     `pulumi:"bgp"`
+	Peering VpnConnectionTunnel1PeeringPtrInput `pulumi:"peering"`
+	Phase1  VpnConnectionTunnel1Phase1Input     `pulumi:"phase1"`
+	Phase2  VpnConnectionTunnel1Phase2Input     `pulumi:"phase2"`
+	// Pre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only argument `preSharedKeyWo` should be preferred.
+	PreSharedKey pulumi.StringPtrInput `pulumi:"preSharedKey"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Pre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only - never stored in state and never returned by the API. To rotate the key, update this value AND increment pre*shared*key*wo*version. Changing this field alone will NOT trigger an update.
+	PreSharedKeyWo pulumi.StringPtrInput `pulumi:"preSharedKeyWo"`
+	// User-managed rotation counter for the pre-shared key. Must be incremented every time pre*shared*key*wo is changed. Terraform diffs this field to detect key rotations - changing pre*shared*key*wo alone will NOT trigger an update because it is write-only and never stored in state.
+	PreSharedKeyWoVersion pulumi.IntPtrInput `pulumi:"preSharedKeyWoVersion"`
+	// Remote IPv4 address for the tunnel endpoint.
+	RemoteAddress pulumi.StringInput `pulumi:"remoteAddress"`
+}
+
+func (VpnConnectionTunnel1Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnConnectionTunnel1)(nil)).Elem()
+}
+
+func (i VpnConnectionTunnel1Args) ToVpnConnectionTunnel1Output() VpnConnectionTunnel1Output {
+	return i.ToVpnConnectionTunnel1OutputWithContext(context.Background())
+}
+
+func (i VpnConnectionTunnel1Args) ToVpnConnectionTunnel1OutputWithContext(ctx context.Context) VpnConnectionTunnel1Output {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionTunnel1Output)
+}
+
+func (i VpnConnectionTunnel1Args) ToVpnConnectionTunnel1PtrOutput() VpnConnectionTunnel1PtrOutput {
+	return i.ToVpnConnectionTunnel1PtrOutputWithContext(context.Background())
+}
+
+func (i VpnConnectionTunnel1Args) ToVpnConnectionTunnel1PtrOutputWithContext(ctx context.Context) VpnConnectionTunnel1PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionTunnel1Output).ToVpnConnectionTunnel1PtrOutputWithContext(ctx)
+}
+
+// VpnConnectionTunnel1PtrInput is an input type that accepts VpnConnectionTunnel1Args, VpnConnectionTunnel1Ptr and VpnConnectionTunnel1PtrOutput values.
+// You can construct a concrete instance of `VpnConnectionTunnel1PtrInput` via:
+//
+//	        VpnConnectionTunnel1Args{...}
+//
+//	or:
+//
+//	        nil
+type VpnConnectionTunnel1PtrInput interface {
+	pulumi.Input
+
+	ToVpnConnectionTunnel1PtrOutput() VpnConnectionTunnel1PtrOutput
+	ToVpnConnectionTunnel1PtrOutputWithContext(context.Context) VpnConnectionTunnel1PtrOutput
+}
+
+type vpnConnectionTunnel1PtrType VpnConnectionTunnel1Args
+
+func VpnConnectionTunnel1Ptr(v *VpnConnectionTunnel1Args) VpnConnectionTunnel1PtrInput {
+	return (*vpnConnectionTunnel1PtrType)(v)
+}
+
+func (*vpnConnectionTunnel1PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnConnectionTunnel1)(nil)).Elem()
+}
+
+func (i *vpnConnectionTunnel1PtrType) ToVpnConnectionTunnel1PtrOutput() VpnConnectionTunnel1PtrOutput {
+	return i.ToVpnConnectionTunnel1PtrOutputWithContext(context.Background())
+}
+
+func (i *vpnConnectionTunnel1PtrType) ToVpnConnectionTunnel1PtrOutputWithContext(ctx context.Context) VpnConnectionTunnel1PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionTunnel1PtrOutput)
+}
+
+type VpnConnectionTunnel1Output struct{ *pulumi.OutputState }
+
+func (VpnConnectionTunnel1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnConnectionTunnel1)(nil)).Elem()
+}
+
+func (o VpnConnectionTunnel1Output) ToVpnConnectionTunnel1Output() VpnConnectionTunnel1Output {
+	return o
+}
+
+func (o VpnConnectionTunnel1Output) ToVpnConnectionTunnel1OutputWithContext(ctx context.Context) VpnConnectionTunnel1Output {
+	return o
+}
+
+func (o VpnConnectionTunnel1Output) ToVpnConnectionTunnel1PtrOutput() VpnConnectionTunnel1PtrOutput {
+	return o.ToVpnConnectionTunnel1PtrOutputWithContext(context.Background())
+}
+
+func (o VpnConnectionTunnel1Output) ToVpnConnectionTunnel1PtrOutputWithContext(ctx context.Context) VpnConnectionTunnel1PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpnConnectionTunnel1) *VpnConnectionTunnel1 {
+		return &v
+	}).(VpnConnectionTunnel1PtrOutput)
+}
+
+func (o VpnConnectionTunnel1Output) Bgp() VpnConnectionTunnel1BgpPtrOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel1) *VpnConnectionTunnel1Bgp { return v.Bgp }).(VpnConnectionTunnel1BgpPtrOutput)
+}
+
+func (o VpnConnectionTunnel1Output) Peering() VpnConnectionTunnel1PeeringPtrOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel1) *VpnConnectionTunnel1Peering { return v.Peering }).(VpnConnectionTunnel1PeeringPtrOutput)
+}
+
+func (o VpnConnectionTunnel1Output) Phase1() VpnConnectionTunnel1Phase1Output {
+	return o.ApplyT(func(v VpnConnectionTunnel1) VpnConnectionTunnel1Phase1 { return v.Phase1 }).(VpnConnectionTunnel1Phase1Output)
+}
+
+func (o VpnConnectionTunnel1Output) Phase2() VpnConnectionTunnel1Phase2Output {
+	return o.ApplyT(func(v VpnConnectionTunnel1) VpnConnectionTunnel1Phase2 { return v.Phase2 }).(VpnConnectionTunnel1Phase2Output)
+}
+
+// Pre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only argument `preSharedKeyWo` should be preferred.
+func (o VpnConnectionTunnel1Output) PreSharedKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel1) *string { return v.PreSharedKey }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// Pre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only - never stored in state and never returned by the API. To rotate the key, update this value AND increment pre*shared*key*wo*version. Changing this field alone will NOT trigger an update.
+func (o VpnConnectionTunnel1Output) PreSharedKeyWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel1) *string { return v.PreSharedKeyWo }).(pulumi.StringPtrOutput)
+}
+
+// User-managed rotation counter for the pre-shared key. Must be incremented every time pre*shared*key*wo is changed. Terraform diffs this field to detect key rotations - changing pre*shared*key*wo alone will NOT trigger an update because it is write-only and never stored in state.
+func (o VpnConnectionTunnel1Output) PreSharedKeyWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel1) *int { return v.PreSharedKeyWoVersion }).(pulumi.IntPtrOutput)
+}
+
+// Remote IPv4 address for the tunnel endpoint.
+func (o VpnConnectionTunnel1Output) RemoteAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel1) string { return v.RemoteAddress }).(pulumi.StringOutput)
+}
+
+type VpnConnectionTunnel1PtrOutput struct{ *pulumi.OutputState }
+
+func (VpnConnectionTunnel1PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnConnectionTunnel1)(nil)).Elem()
+}
+
+func (o VpnConnectionTunnel1PtrOutput) ToVpnConnectionTunnel1PtrOutput() VpnConnectionTunnel1PtrOutput {
+	return o
+}
+
+func (o VpnConnectionTunnel1PtrOutput) ToVpnConnectionTunnel1PtrOutputWithContext(ctx context.Context) VpnConnectionTunnel1PtrOutput {
+	return o
+}
+
+func (o VpnConnectionTunnel1PtrOutput) Elem() VpnConnectionTunnel1Output {
+	return o.ApplyT(func(v *VpnConnectionTunnel1) VpnConnectionTunnel1 {
+		if v != nil {
+			return *v
+		}
+		var ret VpnConnectionTunnel1
+		return ret
+	}).(VpnConnectionTunnel1Output)
+}
+
+func (o VpnConnectionTunnel1PtrOutput) Bgp() VpnConnectionTunnel1BgpPtrOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel1) *VpnConnectionTunnel1Bgp {
+		if v == nil {
+			return nil
+		}
+		return v.Bgp
+	}).(VpnConnectionTunnel1BgpPtrOutput)
+}
+
+func (o VpnConnectionTunnel1PtrOutput) Peering() VpnConnectionTunnel1PeeringPtrOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel1) *VpnConnectionTunnel1Peering {
+		if v == nil {
+			return nil
+		}
+		return v.Peering
+	}).(VpnConnectionTunnel1PeeringPtrOutput)
+}
+
+func (o VpnConnectionTunnel1PtrOutput) Phase1() VpnConnectionTunnel1Phase1PtrOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel1) *VpnConnectionTunnel1Phase1 {
+		if v == nil {
+			return nil
+		}
+		return &v.Phase1
+	}).(VpnConnectionTunnel1Phase1PtrOutput)
+}
+
+func (o VpnConnectionTunnel1PtrOutput) Phase2() VpnConnectionTunnel1Phase2PtrOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel1) *VpnConnectionTunnel1Phase2 {
+		if v == nil {
+			return nil
+		}
+		return &v.Phase2
+	}).(VpnConnectionTunnel1Phase2PtrOutput)
+}
+
+// Pre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only argument `preSharedKeyWo` should be preferred.
+func (o VpnConnectionTunnel1PtrOutput) PreSharedKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel1) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PreSharedKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// Pre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only - never stored in state and never returned by the API. To rotate the key, update this value AND increment pre*shared*key*wo*version. Changing this field alone will NOT trigger an update.
+func (o VpnConnectionTunnel1PtrOutput) PreSharedKeyWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel1) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PreSharedKeyWo
+	}).(pulumi.StringPtrOutput)
+}
+
+// User-managed rotation counter for the pre-shared key. Must be incremented every time pre*shared*key*wo is changed. Terraform diffs this field to detect key rotations - changing pre*shared*key*wo alone will NOT trigger an update because it is write-only and never stored in state.
+func (o VpnConnectionTunnel1PtrOutput) PreSharedKeyWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel1) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PreSharedKeyWoVersion
+	}).(pulumi.IntPtrOutput)
+}
+
+// Remote IPv4 address for the tunnel endpoint.
+func (o VpnConnectionTunnel1PtrOutput) RemoteAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel1) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RemoteAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+type VpnConnectionTunnel1Bgp struct {
+	// Remote ASN for BGP peering (private ASN range, 64512-4294967294).
+	RemoteAsn int `pulumi:"remoteAsn"`
+}
+
+// VpnConnectionTunnel1BgpInput is an input type that accepts VpnConnectionTunnel1BgpArgs and VpnConnectionTunnel1BgpOutput values.
+// You can construct a concrete instance of `VpnConnectionTunnel1BgpInput` via:
+//
+//	VpnConnectionTunnel1BgpArgs{...}
+type VpnConnectionTunnel1BgpInput interface {
+	pulumi.Input
+
+	ToVpnConnectionTunnel1BgpOutput() VpnConnectionTunnel1BgpOutput
+	ToVpnConnectionTunnel1BgpOutputWithContext(context.Context) VpnConnectionTunnel1BgpOutput
+}
+
+type VpnConnectionTunnel1BgpArgs struct {
+	// Remote ASN for BGP peering (private ASN range, 64512-4294967294).
+	RemoteAsn pulumi.IntInput `pulumi:"remoteAsn"`
+}
+
+func (VpnConnectionTunnel1BgpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnConnectionTunnel1Bgp)(nil)).Elem()
+}
+
+func (i VpnConnectionTunnel1BgpArgs) ToVpnConnectionTunnel1BgpOutput() VpnConnectionTunnel1BgpOutput {
+	return i.ToVpnConnectionTunnel1BgpOutputWithContext(context.Background())
+}
+
+func (i VpnConnectionTunnel1BgpArgs) ToVpnConnectionTunnel1BgpOutputWithContext(ctx context.Context) VpnConnectionTunnel1BgpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionTunnel1BgpOutput)
+}
+
+func (i VpnConnectionTunnel1BgpArgs) ToVpnConnectionTunnel1BgpPtrOutput() VpnConnectionTunnel1BgpPtrOutput {
+	return i.ToVpnConnectionTunnel1BgpPtrOutputWithContext(context.Background())
+}
+
+func (i VpnConnectionTunnel1BgpArgs) ToVpnConnectionTunnel1BgpPtrOutputWithContext(ctx context.Context) VpnConnectionTunnel1BgpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionTunnel1BgpOutput).ToVpnConnectionTunnel1BgpPtrOutputWithContext(ctx)
+}
+
+// VpnConnectionTunnel1BgpPtrInput is an input type that accepts VpnConnectionTunnel1BgpArgs, VpnConnectionTunnel1BgpPtr and VpnConnectionTunnel1BgpPtrOutput values.
+// You can construct a concrete instance of `VpnConnectionTunnel1BgpPtrInput` via:
+//
+//	        VpnConnectionTunnel1BgpArgs{...}
+//
+//	or:
+//
+//	        nil
+type VpnConnectionTunnel1BgpPtrInput interface {
+	pulumi.Input
+
+	ToVpnConnectionTunnel1BgpPtrOutput() VpnConnectionTunnel1BgpPtrOutput
+	ToVpnConnectionTunnel1BgpPtrOutputWithContext(context.Context) VpnConnectionTunnel1BgpPtrOutput
+}
+
+type vpnConnectionTunnel1BgpPtrType VpnConnectionTunnel1BgpArgs
+
+func VpnConnectionTunnel1BgpPtr(v *VpnConnectionTunnel1BgpArgs) VpnConnectionTunnel1BgpPtrInput {
+	return (*vpnConnectionTunnel1BgpPtrType)(v)
+}
+
+func (*vpnConnectionTunnel1BgpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnConnectionTunnel1Bgp)(nil)).Elem()
+}
+
+func (i *vpnConnectionTunnel1BgpPtrType) ToVpnConnectionTunnel1BgpPtrOutput() VpnConnectionTunnel1BgpPtrOutput {
+	return i.ToVpnConnectionTunnel1BgpPtrOutputWithContext(context.Background())
+}
+
+func (i *vpnConnectionTunnel1BgpPtrType) ToVpnConnectionTunnel1BgpPtrOutputWithContext(ctx context.Context) VpnConnectionTunnel1BgpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionTunnel1BgpPtrOutput)
+}
+
+type VpnConnectionTunnel1BgpOutput struct{ *pulumi.OutputState }
+
+func (VpnConnectionTunnel1BgpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnConnectionTunnel1Bgp)(nil)).Elem()
+}
+
+func (o VpnConnectionTunnel1BgpOutput) ToVpnConnectionTunnel1BgpOutput() VpnConnectionTunnel1BgpOutput {
+	return o
+}
+
+func (o VpnConnectionTunnel1BgpOutput) ToVpnConnectionTunnel1BgpOutputWithContext(ctx context.Context) VpnConnectionTunnel1BgpOutput {
+	return o
+}
+
+func (o VpnConnectionTunnel1BgpOutput) ToVpnConnectionTunnel1BgpPtrOutput() VpnConnectionTunnel1BgpPtrOutput {
+	return o.ToVpnConnectionTunnel1BgpPtrOutputWithContext(context.Background())
+}
+
+func (o VpnConnectionTunnel1BgpOutput) ToVpnConnectionTunnel1BgpPtrOutputWithContext(ctx context.Context) VpnConnectionTunnel1BgpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpnConnectionTunnel1Bgp) *VpnConnectionTunnel1Bgp {
+		return &v
+	}).(VpnConnectionTunnel1BgpPtrOutput)
+}
+
+// Remote ASN for BGP peering (private ASN range, 64512-4294967294).
+func (o VpnConnectionTunnel1BgpOutput) RemoteAsn() pulumi.IntOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel1Bgp) int { return v.RemoteAsn }).(pulumi.IntOutput)
+}
+
+type VpnConnectionTunnel1BgpPtrOutput struct{ *pulumi.OutputState }
+
+func (VpnConnectionTunnel1BgpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnConnectionTunnel1Bgp)(nil)).Elem()
+}
+
+func (o VpnConnectionTunnel1BgpPtrOutput) ToVpnConnectionTunnel1BgpPtrOutput() VpnConnectionTunnel1BgpPtrOutput {
+	return o
+}
+
+func (o VpnConnectionTunnel1BgpPtrOutput) ToVpnConnectionTunnel1BgpPtrOutputWithContext(ctx context.Context) VpnConnectionTunnel1BgpPtrOutput {
+	return o
+}
+
+func (o VpnConnectionTunnel1BgpPtrOutput) Elem() VpnConnectionTunnel1BgpOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel1Bgp) VpnConnectionTunnel1Bgp {
+		if v != nil {
+			return *v
+		}
+		var ret VpnConnectionTunnel1Bgp
+		return ret
+	}).(VpnConnectionTunnel1BgpOutput)
+}
+
+// Remote ASN for BGP peering (private ASN range, 64512-4294967294).
+func (o VpnConnectionTunnel1BgpPtrOutput) RemoteAsn() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel1Bgp) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.RemoteAsn
+	}).(pulumi.IntPtrOutput)
+}
+
+type VpnConnectionTunnel1Peering struct {
+	// Local tunnel interface IPv4 address.
+	LocalAddress string `pulumi:"localAddress"`
+	// Remote tunnel interface IPv4 address.
+	RemoteAddress string `pulumi:"remoteAddress"`
+}
+
+// VpnConnectionTunnel1PeeringInput is an input type that accepts VpnConnectionTunnel1PeeringArgs and VpnConnectionTunnel1PeeringOutput values.
+// You can construct a concrete instance of `VpnConnectionTunnel1PeeringInput` via:
+//
+//	VpnConnectionTunnel1PeeringArgs{...}
+type VpnConnectionTunnel1PeeringInput interface {
+	pulumi.Input
+
+	ToVpnConnectionTunnel1PeeringOutput() VpnConnectionTunnel1PeeringOutput
+	ToVpnConnectionTunnel1PeeringOutputWithContext(context.Context) VpnConnectionTunnel1PeeringOutput
+}
+
+type VpnConnectionTunnel1PeeringArgs struct {
+	// Local tunnel interface IPv4 address.
+	LocalAddress pulumi.StringInput `pulumi:"localAddress"`
+	// Remote tunnel interface IPv4 address.
+	RemoteAddress pulumi.StringInput `pulumi:"remoteAddress"`
+}
+
+func (VpnConnectionTunnel1PeeringArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnConnectionTunnel1Peering)(nil)).Elem()
+}
+
+func (i VpnConnectionTunnel1PeeringArgs) ToVpnConnectionTunnel1PeeringOutput() VpnConnectionTunnel1PeeringOutput {
+	return i.ToVpnConnectionTunnel1PeeringOutputWithContext(context.Background())
+}
+
+func (i VpnConnectionTunnel1PeeringArgs) ToVpnConnectionTunnel1PeeringOutputWithContext(ctx context.Context) VpnConnectionTunnel1PeeringOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionTunnel1PeeringOutput)
+}
+
+func (i VpnConnectionTunnel1PeeringArgs) ToVpnConnectionTunnel1PeeringPtrOutput() VpnConnectionTunnel1PeeringPtrOutput {
+	return i.ToVpnConnectionTunnel1PeeringPtrOutputWithContext(context.Background())
+}
+
+func (i VpnConnectionTunnel1PeeringArgs) ToVpnConnectionTunnel1PeeringPtrOutputWithContext(ctx context.Context) VpnConnectionTunnel1PeeringPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionTunnel1PeeringOutput).ToVpnConnectionTunnel1PeeringPtrOutputWithContext(ctx)
+}
+
+// VpnConnectionTunnel1PeeringPtrInput is an input type that accepts VpnConnectionTunnel1PeeringArgs, VpnConnectionTunnel1PeeringPtr and VpnConnectionTunnel1PeeringPtrOutput values.
+// You can construct a concrete instance of `VpnConnectionTunnel1PeeringPtrInput` via:
+//
+//	        VpnConnectionTunnel1PeeringArgs{...}
+//
+//	or:
+//
+//	        nil
+type VpnConnectionTunnel1PeeringPtrInput interface {
+	pulumi.Input
+
+	ToVpnConnectionTunnel1PeeringPtrOutput() VpnConnectionTunnel1PeeringPtrOutput
+	ToVpnConnectionTunnel1PeeringPtrOutputWithContext(context.Context) VpnConnectionTunnel1PeeringPtrOutput
+}
+
+type vpnConnectionTunnel1PeeringPtrType VpnConnectionTunnel1PeeringArgs
+
+func VpnConnectionTunnel1PeeringPtr(v *VpnConnectionTunnel1PeeringArgs) VpnConnectionTunnel1PeeringPtrInput {
+	return (*vpnConnectionTunnel1PeeringPtrType)(v)
+}
+
+func (*vpnConnectionTunnel1PeeringPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnConnectionTunnel1Peering)(nil)).Elem()
+}
+
+func (i *vpnConnectionTunnel1PeeringPtrType) ToVpnConnectionTunnel1PeeringPtrOutput() VpnConnectionTunnel1PeeringPtrOutput {
+	return i.ToVpnConnectionTunnel1PeeringPtrOutputWithContext(context.Background())
+}
+
+func (i *vpnConnectionTunnel1PeeringPtrType) ToVpnConnectionTunnel1PeeringPtrOutputWithContext(ctx context.Context) VpnConnectionTunnel1PeeringPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionTunnel1PeeringPtrOutput)
+}
+
+type VpnConnectionTunnel1PeeringOutput struct{ *pulumi.OutputState }
+
+func (VpnConnectionTunnel1PeeringOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnConnectionTunnel1Peering)(nil)).Elem()
+}
+
+func (o VpnConnectionTunnel1PeeringOutput) ToVpnConnectionTunnel1PeeringOutput() VpnConnectionTunnel1PeeringOutput {
+	return o
+}
+
+func (o VpnConnectionTunnel1PeeringOutput) ToVpnConnectionTunnel1PeeringOutputWithContext(ctx context.Context) VpnConnectionTunnel1PeeringOutput {
+	return o
+}
+
+func (o VpnConnectionTunnel1PeeringOutput) ToVpnConnectionTunnel1PeeringPtrOutput() VpnConnectionTunnel1PeeringPtrOutput {
+	return o.ToVpnConnectionTunnel1PeeringPtrOutputWithContext(context.Background())
+}
+
+func (o VpnConnectionTunnel1PeeringOutput) ToVpnConnectionTunnel1PeeringPtrOutputWithContext(ctx context.Context) VpnConnectionTunnel1PeeringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpnConnectionTunnel1Peering) *VpnConnectionTunnel1Peering {
+		return &v
+	}).(VpnConnectionTunnel1PeeringPtrOutput)
+}
+
+// Local tunnel interface IPv4 address.
+func (o VpnConnectionTunnel1PeeringOutput) LocalAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel1Peering) string { return v.LocalAddress }).(pulumi.StringOutput)
+}
+
+// Remote tunnel interface IPv4 address.
+func (o VpnConnectionTunnel1PeeringOutput) RemoteAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel1Peering) string { return v.RemoteAddress }).(pulumi.StringOutput)
+}
+
+type VpnConnectionTunnel1PeeringPtrOutput struct{ *pulumi.OutputState }
+
+func (VpnConnectionTunnel1PeeringPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnConnectionTunnel1Peering)(nil)).Elem()
+}
+
+func (o VpnConnectionTunnel1PeeringPtrOutput) ToVpnConnectionTunnel1PeeringPtrOutput() VpnConnectionTunnel1PeeringPtrOutput {
+	return o
+}
+
+func (o VpnConnectionTunnel1PeeringPtrOutput) ToVpnConnectionTunnel1PeeringPtrOutputWithContext(ctx context.Context) VpnConnectionTunnel1PeeringPtrOutput {
+	return o
+}
+
+func (o VpnConnectionTunnel1PeeringPtrOutput) Elem() VpnConnectionTunnel1PeeringOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel1Peering) VpnConnectionTunnel1Peering {
+		if v != nil {
+			return *v
+		}
+		var ret VpnConnectionTunnel1Peering
+		return ret
+	}).(VpnConnectionTunnel1PeeringOutput)
+}
+
+// Local tunnel interface IPv4 address.
+func (o VpnConnectionTunnel1PeeringPtrOutput) LocalAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel1Peering) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LocalAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// Remote tunnel interface IPv4 address.
+func (o VpnConnectionTunnel1PeeringPtrOutput) RemoteAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel1Peering) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RemoteAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+type VpnConnectionTunnel1Phase1 struct {
+	// Diffie-Hellman groups for key exchange. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
+	DhGroups []string `pulumi:"dhGroups"`
+	// Encryption algorithms for Phase 1. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
+	EncryptionAlgorithms []string `pulumi:"encryptionAlgorithms"`
+	// Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`.
+	IntegrityAlgorithms []string `pulumi:"integrityAlgorithms"`
+	// Time to schedule an IKE re-keying in seconds. Range: 900-28800. Default: 14400.
+	RekeyTime *int `pulumi:"rekeyTime"`
+}
+
+// VpnConnectionTunnel1Phase1Input is an input type that accepts VpnConnectionTunnel1Phase1Args and VpnConnectionTunnel1Phase1Output values.
+// You can construct a concrete instance of `VpnConnectionTunnel1Phase1Input` via:
+//
+//	VpnConnectionTunnel1Phase1Args{...}
+type VpnConnectionTunnel1Phase1Input interface {
+	pulumi.Input
+
+	ToVpnConnectionTunnel1Phase1Output() VpnConnectionTunnel1Phase1Output
+	ToVpnConnectionTunnel1Phase1OutputWithContext(context.Context) VpnConnectionTunnel1Phase1Output
+}
+
+type VpnConnectionTunnel1Phase1Args struct {
+	// Diffie-Hellman groups for key exchange. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
+	DhGroups pulumi.StringArrayInput `pulumi:"dhGroups"`
+	// Encryption algorithms for Phase 1. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
+	EncryptionAlgorithms pulumi.StringArrayInput `pulumi:"encryptionAlgorithms"`
+	// Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`.
+	IntegrityAlgorithms pulumi.StringArrayInput `pulumi:"integrityAlgorithms"`
+	// Time to schedule an IKE re-keying in seconds. Range: 900-28800. Default: 14400.
+	RekeyTime pulumi.IntPtrInput `pulumi:"rekeyTime"`
+}
+
+func (VpnConnectionTunnel1Phase1Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnConnectionTunnel1Phase1)(nil)).Elem()
+}
+
+func (i VpnConnectionTunnel1Phase1Args) ToVpnConnectionTunnel1Phase1Output() VpnConnectionTunnel1Phase1Output {
+	return i.ToVpnConnectionTunnel1Phase1OutputWithContext(context.Background())
+}
+
+func (i VpnConnectionTunnel1Phase1Args) ToVpnConnectionTunnel1Phase1OutputWithContext(ctx context.Context) VpnConnectionTunnel1Phase1Output {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionTunnel1Phase1Output)
+}
+
+func (i VpnConnectionTunnel1Phase1Args) ToVpnConnectionTunnel1Phase1PtrOutput() VpnConnectionTunnel1Phase1PtrOutput {
+	return i.ToVpnConnectionTunnel1Phase1PtrOutputWithContext(context.Background())
+}
+
+func (i VpnConnectionTunnel1Phase1Args) ToVpnConnectionTunnel1Phase1PtrOutputWithContext(ctx context.Context) VpnConnectionTunnel1Phase1PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionTunnel1Phase1Output).ToVpnConnectionTunnel1Phase1PtrOutputWithContext(ctx)
+}
+
+// VpnConnectionTunnel1Phase1PtrInput is an input type that accepts VpnConnectionTunnel1Phase1Args, VpnConnectionTunnel1Phase1Ptr and VpnConnectionTunnel1Phase1PtrOutput values.
+// You can construct a concrete instance of `VpnConnectionTunnel1Phase1PtrInput` via:
+//
+//	        VpnConnectionTunnel1Phase1Args{...}
+//
+//	or:
+//
+//	        nil
+type VpnConnectionTunnel1Phase1PtrInput interface {
+	pulumi.Input
+
+	ToVpnConnectionTunnel1Phase1PtrOutput() VpnConnectionTunnel1Phase1PtrOutput
+	ToVpnConnectionTunnel1Phase1PtrOutputWithContext(context.Context) VpnConnectionTunnel1Phase1PtrOutput
+}
+
+type vpnConnectionTunnel1Phase1PtrType VpnConnectionTunnel1Phase1Args
+
+func VpnConnectionTunnel1Phase1Ptr(v *VpnConnectionTunnel1Phase1Args) VpnConnectionTunnel1Phase1PtrInput {
+	return (*vpnConnectionTunnel1Phase1PtrType)(v)
+}
+
+func (*vpnConnectionTunnel1Phase1PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnConnectionTunnel1Phase1)(nil)).Elem()
+}
+
+func (i *vpnConnectionTunnel1Phase1PtrType) ToVpnConnectionTunnel1Phase1PtrOutput() VpnConnectionTunnel1Phase1PtrOutput {
+	return i.ToVpnConnectionTunnel1Phase1PtrOutputWithContext(context.Background())
+}
+
+func (i *vpnConnectionTunnel1Phase1PtrType) ToVpnConnectionTunnel1Phase1PtrOutputWithContext(ctx context.Context) VpnConnectionTunnel1Phase1PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionTunnel1Phase1PtrOutput)
+}
+
+type VpnConnectionTunnel1Phase1Output struct{ *pulumi.OutputState }
+
+func (VpnConnectionTunnel1Phase1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnConnectionTunnel1Phase1)(nil)).Elem()
+}
+
+func (o VpnConnectionTunnel1Phase1Output) ToVpnConnectionTunnel1Phase1Output() VpnConnectionTunnel1Phase1Output {
+	return o
+}
+
+func (o VpnConnectionTunnel1Phase1Output) ToVpnConnectionTunnel1Phase1OutputWithContext(ctx context.Context) VpnConnectionTunnel1Phase1Output {
+	return o
+}
+
+func (o VpnConnectionTunnel1Phase1Output) ToVpnConnectionTunnel1Phase1PtrOutput() VpnConnectionTunnel1Phase1PtrOutput {
+	return o.ToVpnConnectionTunnel1Phase1PtrOutputWithContext(context.Background())
+}
+
+func (o VpnConnectionTunnel1Phase1Output) ToVpnConnectionTunnel1Phase1PtrOutputWithContext(ctx context.Context) VpnConnectionTunnel1Phase1PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpnConnectionTunnel1Phase1) *VpnConnectionTunnel1Phase1 {
+		return &v
+	}).(VpnConnectionTunnel1Phase1PtrOutput)
+}
+
+// Diffie-Hellman groups for key exchange. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
+func (o VpnConnectionTunnel1Phase1Output) DhGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel1Phase1) []string { return v.DhGroups }).(pulumi.StringArrayOutput)
+}
+
+// Encryption algorithms for Phase 1. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
+func (o VpnConnectionTunnel1Phase1Output) EncryptionAlgorithms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel1Phase1) []string { return v.EncryptionAlgorithms }).(pulumi.StringArrayOutput)
+}
+
+// Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`.
+func (o VpnConnectionTunnel1Phase1Output) IntegrityAlgorithms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel1Phase1) []string { return v.IntegrityAlgorithms }).(pulumi.StringArrayOutput)
+}
+
+// Time to schedule an IKE re-keying in seconds. Range: 900-28800. Default: 14400.
+func (o VpnConnectionTunnel1Phase1Output) RekeyTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel1Phase1) *int { return v.RekeyTime }).(pulumi.IntPtrOutput)
+}
+
+type VpnConnectionTunnel1Phase1PtrOutput struct{ *pulumi.OutputState }
+
+func (VpnConnectionTunnel1Phase1PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnConnectionTunnel1Phase1)(nil)).Elem()
+}
+
+func (o VpnConnectionTunnel1Phase1PtrOutput) ToVpnConnectionTunnel1Phase1PtrOutput() VpnConnectionTunnel1Phase1PtrOutput {
+	return o
+}
+
+func (o VpnConnectionTunnel1Phase1PtrOutput) ToVpnConnectionTunnel1Phase1PtrOutputWithContext(ctx context.Context) VpnConnectionTunnel1Phase1PtrOutput {
+	return o
+}
+
+func (o VpnConnectionTunnel1Phase1PtrOutput) Elem() VpnConnectionTunnel1Phase1Output {
+	return o.ApplyT(func(v *VpnConnectionTunnel1Phase1) VpnConnectionTunnel1Phase1 {
+		if v != nil {
+			return *v
+		}
+		var ret VpnConnectionTunnel1Phase1
+		return ret
+	}).(VpnConnectionTunnel1Phase1Output)
+}
+
+// Diffie-Hellman groups for key exchange. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
+func (o VpnConnectionTunnel1Phase1PtrOutput) DhGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel1Phase1) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DhGroups
+	}).(pulumi.StringArrayOutput)
+}
+
+// Encryption algorithms for Phase 1. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
+func (o VpnConnectionTunnel1Phase1PtrOutput) EncryptionAlgorithms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel1Phase1) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptionAlgorithms
+	}).(pulumi.StringArrayOutput)
+}
+
+// Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`.
+func (o VpnConnectionTunnel1Phase1PtrOutput) IntegrityAlgorithms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel1Phase1) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IntegrityAlgorithms
+	}).(pulumi.StringArrayOutput)
+}
+
+// Time to schedule an IKE re-keying in seconds. Range: 900-28800. Default: 14400.
+func (o VpnConnectionTunnel1Phase1PtrOutput) RekeyTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel1Phase1) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RekeyTime
+	}).(pulumi.IntPtrOutput)
+}
+
+type VpnConnectionTunnel1Phase2 struct {
+	// Diffie-Hellman groups for Phase 2. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
+	DhGroups []string `pulumi:"dhGroups"`
+	// Action to perform on DPD timeout. Default: 'restart'. Possible values are: `clear`, `restart`.
+	DpdAction *string `pulumi:"dpdAction"`
+	// Encryption algorithms for Phase 2. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
+	EncryptionAlgorithms []string `pulumi:"encryptionAlgorithms"`
+	// Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`.
+	IntegrityAlgorithms []string `pulumi:"integrityAlgorithms"`
+	// Time to schedule a Child SA re-keying in seconds. Range: 900-3600. Default: 3600.
+	RekeyTime *int `pulumi:"rekeyTime"`
+	// Action to perform after loading the connection configuration. Default: 'start'. Possible values are: `none`, `start`.
+	StartAction *string `pulumi:"startAction"`
+}
+
+// VpnConnectionTunnel1Phase2Input is an input type that accepts VpnConnectionTunnel1Phase2Args and VpnConnectionTunnel1Phase2Output values.
+// You can construct a concrete instance of `VpnConnectionTunnel1Phase2Input` via:
+//
+//	VpnConnectionTunnel1Phase2Args{...}
+type VpnConnectionTunnel1Phase2Input interface {
+	pulumi.Input
+
+	ToVpnConnectionTunnel1Phase2Output() VpnConnectionTunnel1Phase2Output
+	ToVpnConnectionTunnel1Phase2OutputWithContext(context.Context) VpnConnectionTunnel1Phase2Output
+}
+
+type VpnConnectionTunnel1Phase2Args struct {
+	// Diffie-Hellman groups for Phase 2. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
+	DhGroups pulumi.StringArrayInput `pulumi:"dhGroups"`
+	// Action to perform on DPD timeout. Default: 'restart'. Possible values are: `clear`, `restart`.
+	DpdAction pulumi.StringPtrInput `pulumi:"dpdAction"`
+	// Encryption algorithms for Phase 2. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
+	EncryptionAlgorithms pulumi.StringArrayInput `pulumi:"encryptionAlgorithms"`
+	// Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`.
+	IntegrityAlgorithms pulumi.StringArrayInput `pulumi:"integrityAlgorithms"`
+	// Time to schedule a Child SA re-keying in seconds. Range: 900-3600. Default: 3600.
+	RekeyTime pulumi.IntPtrInput `pulumi:"rekeyTime"`
+	// Action to perform after loading the connection configuration. Default: 'start'. Possible values are: `none`, `start`.
+	StartAction pulumi.StringPtrInput `pulumi:"startAction"`
+}
+
+func (VpnConnectionTunnel1Phase2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnConnectionTunnel1Phase2)(nil)).Elem()
+}
+
+func (i VpnConnectionTunnel1Phase2Args) ToVpnConnectionTunnel1Phase2Output() VpnConnectionTunnel1Phase2Output {
+	return i.ToVpnConnectionTunnel1Phase2OutputWithContext(context.Background())
+}
+
+func (i VpnConnectionTunnel1Phase2Args) ToVpnConnectionTunnel1Phase2OutputWithContext(ctx context.Context) VpnConnectionTunnel1Phase2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionTunnel1Phase2Output)
+}
+
+func (i VpnConnectionTunnel1Phase2Args) ToVpnConnectionTunnel1Phase2PtrOutput() VpnConnectionTunnel1Phase2PtrOutput {
+	return i.ToVpnConnectionTunnel1Phase2PtrOutputWithContext(context.Background())
+}
+
+func (i VpnConnectionTunnel1Phase2Args) ToVpnConnectionTunnel1Phase2PtrOutputWithContext(ctx context.Context) VpnConnectionTunnel1Phase2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionTunnel1Phase2Output).ToVpnConnectionTunnel1Phase2PtrOutputWithContext(ctx)
+}
+
+// VpnConnectionTunnel1Phase2PtrInput is an input type that accepts VpnConnectionTunnel1Phase2Args, VpnConnectionTunnel1Phase2Ptr and VpnConnectionTunnel1Phase2PtrOutput values.
+// You can construct a concrete instance of `VpnConnectionTunnel1Phase2PtrInput` via:
+//
+//	        VpnConnectionTunnel1Phase2Args{...}
+//
+//	or:
+//
+//	        nil
+type VpnConnectionTunnel1Phase2PtrInput interface {
+	pulumi.Input
+
+	ToVpnConnectionTunnel1Phase2PtrOutput() VpnConnectionTunnel1Phase2PtrOutput
+	ToVpnConnectionTunnel1Phase2PtrOutputWithContext(context.Context) VpnConnectionTunnel1Phase2PtrOutput
+}
+
+type vpnConnectionTunnel1Phase2PtrType VpnConnectionTunnel1Phase2Args
+
+func VpnConnectionTunnel1Phase2Ptr(v *VpnConnectionTunnel1Phase2Args) VpnConnectionTunnel1Phase2PtrInput {
+	return (*vpnConnectionTunnel1Phase2PtrType)(v)
+}
+
+func (*vpnConnectionTunnel1Phase2PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnConnectionTunnel1Phase2)(nil)).Elem()
+}
+
+func (i *vpnConnectionTunnel1Phase2PtrType) ToVpnConnectionTunnel1Phase2PtrOutput() VpnConnectionTunnel1Phase2PtrOutput {
+	return i.ToVpnConnectionTunnel1Phase2PtrOutputWithContext(context.Background())
+}
+
+func (i *vpnConnectionTunnel1Phase2PtrType) ToVpnConnectionTunnel1Phase2PtrOutputWithContext(ctx context.Context) VpnConnectionTunnel1Phase2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionTunnel1Phase2PtrOutput)
+}
+
+type VpnConnectionTunnel1Phase2Output struct{ *pulumi.OutputState }
+
+func (VpnConnectionTunnel1Phase2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnConnectionTunnel1Phase2)(nil)).Elem()
+}
+
+func (o VpnConnectionTunnel1Phase2Output) ToVpnConnectionTunnel1Phase2Output() VpnConnectionTunnel1Phase2Output {
+	return o
+}
+
+func (o VpnConnectionTunnel1Phase2Output) ToVpnConnectionTunnel1Phase2OutputWithContext(ctx context.Context) VpnConnectionTunnel1Phase2Output {
+	return o
+}
+
+func (o VpnConnectionTunnel1Phase2Output) ToVpnConnectionTunnel1Phase2PtrOutput() VpnConnectionTunnel1Phase2PtrOutput {
+	return o.ToVpnConnectionTunnel1Phase2PtrOutputWithContext(context.Background())
+}
+
+func (o VpnConnectionTunnel1Phase2Output) ToVpnConnectionTunnel1Phase2PtrOutputWithContext(ctx context.Context) VpnConnectionTunnel1Phase2PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpnConnectionTunnel1Phase2) *VpnConnectionTunnel1Phase2 {
+		return &v
+	}).(VpnConnectionTunnel1Phase2PtrOutput)
+}
+
+// Diffie-Hellman groups for Phase 2. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
+func (o VpnConnectionTunnel1Phase2Output) DhGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel1Phase2) []string { return v.DhGroups }).(pulumi.StringArrayOutput)
+}
+
+// Action to perform on DPD timeout. Default: 'restart'. Possible values are: `clear`, `restart`.
+func (o VpnConnectionTunnel1Phase2Output) DpdAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel1Phase2) *string { return v.DpdAction }).(pulumi.StringPtrOutput)
+}
+
+// Encryption algorithms for Phase 2. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
+func (o VpnConnectionTunnel1Phase2Output) EncryptionAlgorithms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel1Phase2) []string { return v.EncryptionAlgorithms }).(pulumi.StringArrayOutput)
+}
+
+// Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`.
+func (o VpnConnectionTunnel1Phase2Output) IntegrityAlgorithms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel1Phase2) []string { return v.IntegrityAlgorithms }).(pulumi.StringArrayOutput)
+}
+
+// Time to schedule a Child SA re-keying in seconds. Range: 900-3600. Default: 3600.
+func (o VpnConnectionTunnel1Phase2Output) RekeyTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel1Phase2) *int { return v.RekeyTime }).(pulumi.IntPtrOutput)
+}
+
+// Action to perform after loading the connection configuration. Default: 'start'. Possible values are: `none`, `start`.
+func (o VpnConnectionTunnel1Phase2Output) StartAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel1Phase2) *string { return v.StartAction }).(pulumi.StringPtrOutput)
+}
+
+type VpnConnectionTunnel1Phase2PtrOutput struct{ *pulumi.OutputState }
+
+func (VpnConnectionTunnel1Phase2PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnConnectionTunnel1Phase2)(nil)).Elem()
+}
+
+func (o VpnConnectionTunnel1Phase2PtrOutput) ToVpnConnectionTunnel1Phase2PtrOutput() VpnConnectionTunnel1Phase2PtrOutput {
+	return o
+}
+
+func (o VpnConnectionTunnel1Phase2PtrOutput) ToVpnConnectionTunnel1Phase2PtrOutputWithContext(ctx context.Context) VpnConnectionTunnel1Phase2PtrOutput {
+	return o
+}
+
+func (o VpnConnectionTunnel1Phase2PtrOutput) Elem() VpnConnectionTunnel1Phase2Output {
+	return o.ApplyT(func(v *VpnConnectionTunnel1Phase2) VpnConnectionTunnel1Phase2 {
+		if v != nil {
+			return *v
+		}
+		var ret VpnConnectionTunnel1Phase2
+		return ret
+	}).(VpnConnectionTunnel1Phase2Output)
+}
+
+// Diffie-Hellman groups for Phase 2. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
+func (o VpnConnectionTunnel1Phase2PtrOutput) DhGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel1Phase2) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DhGroups
+	}).(pulumi.StringArrayOutput)
+}
+
+// Action to perform on DPD timeout. Default: 'restart'. Possible values are: `clear`, `restart`.
+func (o VpnConnectionTunnel1Phase2PtrOutput) DpdAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel1Phase2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DpdAction
+	}).(pulumi.StringPtrOutput)
+}
+
+// Encryption algorithms for Phase 2. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
+func (o VpnConnectionTunnel1Phase2PtrOutput) EncryptionAlgorithms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel1Phase2) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptionAlgorithms
+	}).(pulumi.StringArrayOutput)
+}
+
+// Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`.
+func (o VpnConnectionTunnel1Phase2PtrOutput) IntegrityAlgorithms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel1Phase2) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IntegrityAlgorithms
+	}).(pulumi.StringArrayOutput)
+}
+
+// Time to schedule a Child SA re-keying in seconds. Range: 900-3600. Default: 3600.
+func (o VpnConnectionTunnel1Phase2PtrOutput) RekeyTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel1Phase2) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RekeyTime
+	}).(pulumi.IntPtrOutput)
+}
+
+// Action to perform after loading the connection configuration. Default: 'start'. Possible values are: `none`, `start`.
+func (o VpnConnectionTunnel1Phase2PtrOutput) StartAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel1Phase2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartAction
+	}).(pulumi.StringPtrOutput)
+}
+
+type VpnConnectionTunnel2 struct {
+	Bgp     *VpnConnectionTunnel2Bgp     `pulumi:"bgp"`
+	Peering *VpnConnectionTunnel2Peering `pulumi:"peering"`
+	Phase1  VpnConnectionTunnel2Phase1   `pulumi:"phase1"`
+	Phase2  VpnConnectionTunnel2Phase2   `pulumi:"phase2"`
+	// Pre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only argument `preSharedKeyWo` should be preferred.
+	PreSharedKey *string `pulumi:"preSharedKey"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Pre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only - never stored in state and never returned by the API. To rotate the key, update this value AND increment pre*shared*key*wo*version. Changing this field alone will NOT trigger an update.
+	PreSharedKeyWo *string `pulumi:"preSharedKeyWo"`
+	// User-managed rotation counter for the pre-shared key. Must be incremented every time pre*shared*key*wo is changed. Terraform diffs this field to detect key rotations - changing pre*shared*key*wo alone will NOT trigger an update because it is write-only and never stored in state.
+	PreSharedKeyWoVersion *int `pulumi:"preSharedKeyWoVersion"`
+	// Remote IPv4 address for the tunnel endpoint.
+	RemoteAddress string `pulumi:"remoteAddress"`
+}
+
+// VpnConnectionTunnel2Input is an input type that accepts VpnConnectionTunnel2Args and VpnConnectionTunnel2Output values.
+// You can construct a concrete instance of `VpnConnectionTunnel2Input` via:
+//
+//	VpnConnectionTunnel2Args{...}
+type VpnConnectionTunnel2Input interface {
+	pulumi.Input
+
+	ToVpnConnectionTunnel2Output() VpnConnectionTunnel2Output
+	ToVpnConnectionTunnel2OutputWithContext(context.Context) VpnConnectionTunnel2Output
+}
+
+type VpnConnectionTunnel2Args struct {
+	Bgp     VpnConnectionTunnel2BgpPtrInput     `pulumi:"bgp"`
+	Peering VpnConnectionTunnel2PeeringPtrInput `pulumi:"peering"`
+	Phase1  VpnConnectionTunnel2Phase1Input     `pulumi:"phase1"`
+	Phase2  VpnConnectionTunnel2Phase2Input     `pulumi:"phase2"`
+	// Pre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only argument `preSharedKeyWo` should be preferred.
+	PreSharedKey pulumi.StringPtrInput `pulumi:"preSharedKey"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Pre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only - never stored in state and never returned by the API. To rotate the key, update this value AND increment pre*shared*key*wo*version. Changing this field alone will NOT trigger an update.
+	PreSharedKeyWo pulumi.StringPtrInput `pulumi:"preSharedKeyWo"`
+	// User-managed rotation counter for the pre-shared key. Must be incremented every time pre*shared*key*wo is changed. Terraform diffs this field to detect key rotations - changing pre*shared*key*wo alone will NOT trigger an update because it is write-only and never stored in state.
+	PreSharedKeyWoVersion pulumi.IntPtrInput `pulumi:"preSharedKeyWoVersion"`
+	// Remote IPv4 address for the tunnel endpoint.
+	RemoteAddress pulumi.StringInput `pulumi:"remoteAddress"`
+}
+
+func (VpnConnectionTunnel2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnConnectionTunnel2)(nil)).Elem()
+}
+
+func (i VpnConnectionTunnel2Args) ToVpnConnectionTunnel2Output() VpnConnectionTunnel2Output {
+	return i.ToVpnConnectionTunnel2OutputWithContext(context.Background())
+}
+
+func (i VpnConnectionTunnel2Args) ToVpnConnectionTunnel2OutputWithContext(ctx context.Context) VpnConnectionTunnel2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionTunnel2Output)
+}
+
+func (i VpnConnectionTunnel2Args) ToVpnConnectionTunnel2PtrOutput() VpnConnectionTunnel2PtrOutput {
+	return i.ToVpnConnectionTunnel2PtrOutputWithContext(context.Background())
+}
+
+func (i VpnConnectionTunnel2Args) ToVpnConnectionTunnel2PtrOutputWithContext(ctx context.Context) VpnConnectionTunnel2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionTunnel2Output).ToVpnConnectionTunnel2PtrOutputWithContext(ctx)
+}
+
+// VpnConnectionTunnel2PtrInput is an input type that accepts VpnConnectionTunnel2Args, VpnConnectionTunnel2Ptr and VpnConnectionTunnel2PtrOutput values.
+// You can construct a concrete instance of `VpnConnectionTunnel2PtrInput` via:
+//
+//	        VpnConnectionTunnel2Args{...}
+//
+//	or:
+//
+//	        nil
+type VpnConnectionTunnel2PtrInput interface {
+	pulumi.Input
+
+	ToVpnConnectionTunnel2PtrOutput() VpnConnectionTunnel2PtrOutput
+	ToVpnConnectionTunnel2PtrOutputWithContext(context.Context) VpnConnectionTunnel2PtrOutput
+}
+
+type vpnConnectionTunnel2PtrType VpnConnectionTunnel2Args
+
+func VpnConnectionTunnel2Ptr(v *VpnConnectionTunnel2Args) VpnConnectionTunnel2PtrInput {
+	return (*vpnConnectionTunnel2PtrType)(v)
+}
+
+func (*vpnConnectionTunnel2PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnConnectionTunnel2)(nil)).Elem()
+}
+
+func (i *vpnConnectionTunnel2PtrType) ToVpnConnectionTunnel2PtrOutput() VpnConnectionTunnel2PtrOutput {
+	return i.ToVpnConnectionTunnel2PtrOutputWithContext(context.Background())
+}
+
+func (i *vpnConnectionTunnel2PtrType) ToVpnConnectionTunnel2PtrOutputWithContext(ctx context.Context) VpnConnectionTunnel2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionTunnel2PtrOutput)
+}
+
+type VpnConnectionTunnel2Output struct{ *pulumi.OutputState }
+
+func (VpnConnectionTunnel2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnConnectionTunnel2)(nil)).Elem()
+}
+
+func (o VpnConnectionTunnel2Output) ToVpnConnectionTunnel2Output() VpnConnectionTunnel2Output {
+	return o
+}
+
+func (o VpnConnectionTunnel2Output) ToVpnConnectionTunnel2OutputWithContext(ctx context.Context) VpnConnectionTunnel2Output {
+	return o
+}
+
+func (o VpnConnectionTunnel2Output) ToVpnConnectionTunnel2PtrOutput() VpnConnectionTunnel2PtrOutput {
+	return o.ToVpnConnectionTunnel2PtrOutputWithContext(context.Background())
+}
+
+func (o VpnConnectionTunnel2Output) ToVpnConnectionTunnel2PtrOutputWithContext(ctx context.Context) VpnConnectionTunnel2PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpnConnectionTunnel2) *VpnConnectionTunnel2 {
+		return &v
+	}).(VpnConnectionTunnel2PtrOutput)
+}
+
+func (o VpnConnectionTunnel2Output) Bgp() VpnConnectionTunnel2BgpPtrOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel2) *VpnConnectionTunnel2Bgp { return v.Bgp }).(VpnConnectionTunnel2BgpPtrOutput)
+}
+
+func (o VpnConnectionTunnel2Output) Peering() VpnConnectionTunnel2PeeringPtrOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel2) *VpnConnectionTunnel2Peering { return v.Peering }).(VpnConnectionTunnel2PeeringPtrOutput)
+}
+
+func (o VpnConnectionTunnel2Output) Phase1() VpnConnectionTunnel2Phase1Output {
+	return o.ApplyT(func(v VpnConnectionTunnel2) VpnConnectionTunnel2Phase1 { return v.Phase1 }).(VpnConnectionTunnel2Phase1Output)
+}
+
+func (o VpnConnectionTunnel2Output) Phase2() VpnConnectionTunnel2Phase2Output {
+	return o.ApplyT(func(v VpnConnectionTunnel2) VpnConnectionTunnel2Phase2 { return v.Phase2 }).(VpnConnectionTunnel2Phase2Output)
+}
+
+// Pre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only argument `preSharedKeyWo` should be preferred.
+func (o VpnConnectionTunnel2Output) PreSharedKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel2) *string { return v.PreSharedKey }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// Pre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only - never stored in state and never returned by the API. To rotate the key, update this value AND increment pre*shared*key*wo*version. Changing this field alone will NOT trigger an update.
+func (o VpnConnectionTunnel2Output) PreSharedKeyWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel2) *string { return v.PreSharedKeyWo }).(pulumi.StringPtrOutput)
+}
+
+// User-managed rotation counter for the pre-shared key. Must be incremented every time pre*shared*key*wo is changed. Terraform diffs this field to detect key rotations - changing pre*shared*key*wo alone will NOT trigger an update because it is write-only and never stored in state.
+func (o VpnConnectionTunnel2Output) PreSharedKeyWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel2) *int { return v.PreSharedKeyWoVersion }).(pulumi.IntPtrOutput)
+}
+
+// Remote IPv4 address for the tunnel endpoint.
+func (o VpnConnectionTunnel2Output) RemoteAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel2) string { return v.RemoteAddress }).(pulumi.StringOutput)
+}
+
+type VpnConnectionTunnel2PtrOutput struct{ *pulumi.OutputState }
+
+func (VpnConnectionTunnel2PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnConnectionTunnel2)(nil)).Elem()
+}
+
+func (o VpnConnectionTunnel2PtrOutput) ToVpnConnectionTunnel2PtrOutput() VpnConnectionTunnel2PtrOutput {
+	return o
+}
+
+func (o VpnConnectionTunnel2PtrOutput) ToVpnConnectionTunnel2PtrOutputWithContext(ctx context.Context) VpnConnectionTunnel2PtrOutput {
+	return o
+}
+
+func (o VpnConnectionTunnel2PtrOutput) Elem() VpnConnectionTunnel2Output {
+	return o.ApplyT(func(v *VpnConnectionTunnel2) VpnConnectionTunnel2 {
+		if v != nil {
+			return *v
+		}
+		var ret VpnConnectionTunnel2
+		return ret
+	}).(VpnConnectionTunnel2Output)
+}
+
+func (o VpnConnectionTunnel2PtrOutput) Bgp() VpnConnectionTunnel2BgpPtrOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel2) *VpnConnectionTunnel2Bgp {
+		if v == nil {
+			return nil
+		}
+		return v.Bgp
+	}).(VpnConnectionTunnel2BgpPtrOutput)
+}
+
+func (o VpnConnectionTunnel2PtrOutput) Peering() VpnConnectionTunnel2PeeringPtrOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel2) *VpnConnectionTunnel2Peering {
+		if v == nil {
+			return nil
+		}
+		return v.Peering
+	}).(VpnConnectionTunnel2PeeringPtrOutput)
+}
+
+func (o VpnConnectionTunnel2PtrOutput) Phase1() VpnConnectionTunnel2Phase1PtrOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel2) *VpnConnectionTunnel2Phase1 {
+		if v == nil {
+			return nil
+		}
+		return &v.Phase1
+	}).(VpnConnectionTunnel2Phase1PtrOutput)
+}
+
+func (o VpnConnectionTunnel2PtrOutput) Phase2() VpnConnectionTunnel2Phase2PtrOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel2) *VpnConnectionTunnel2Phase2 {
+		if v == nil {
+			return nil
+		}
+		return &v.Phase2
+	}).(VpnConnectionTunnel2Phase2PtrOutput)
+}
+
+// Pre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only argument `preSharedKeyWo` should be preferred.
+func (o VpnConnectionTunnel2PtrOutput) PreSharedKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PreSharedKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// Pre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only - never stored in state and never returned by the API. To rotate the key, update this value AND increment pre*shared*key*wo*version. Changing this field alone will NOT trigger an update.
+func (o VpnConnectionTunnel2PtrOutput) PreSharedKeyWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PreSharedKeyWo
+	}).(pulumi.StringPtrOutput)
+}
+
+// User-managed rotation counter for the pre-shared key. Must be incremented every time pre*shared*key*wo is changed. Terraform diffs this field to detect key rotations - changing pre*shared*key*wo alone will NOT trigger an update because it is write-only and never stored in state.
+func (o VpnConnectionTunnel2PtrOutput) PreSharedKeyWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel2) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PreSharedKeyWoVersion
+	}).(pulumi.IntPtrOutput)
+}
+
+// Remote IPv4 address for the tunnel endpoint.
+func (o VpnConnectionTunnel2PtrOutput) RemoteAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel2) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RemoteAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+type VpnConnectionTunnel2Bgp struct {
+	// Remote ASN for BGP peering (private ASN range, 64512-4294967294).
+	RemoteAsn int `pulumi:"remoteAsn"`
+}
+
+// VpnConnectionTunnel2BgpInput is an input type that accepts VpnConnectionTunnel2BgpArgs and VpnConnectionTunnel2BgpOutput values.
+// You can construct a concrete instance of `VpnConnectionTunnel2BgpInput` via:
+//
+//	VpnConnectionTunnel2BgpArgs{...}
+type VpnConnectionTunnel2BgpInput interface {
+	pulumi.Input
+
+	ToVpnConnectionTunnel2BgpOutput() VpnConnectionTunnel2BgpOutput
+	ToVpnConnectionTunnel2BgpOutputWithContext(context.Context) VpnConnectionTunnel2BgpOutput
+}
+
+type VpnConnectionTunnel2BgpArgs struct {
+	// Remote ASN for BGP peering (private ASN range, 64512-4294967294).
+	RemoteAsn pulumi.IntInput `pulumi:"remoteAsn"`
+}
+
+func (VpnConnectionTunnel2BgpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnConnectionTunnel2Bgp)(nil)).Elem()
+}
+
+func (i VpnConnectionTunnel2BgpArgs) ToVpnConnectionTunnel2BgpOutput() VpnConnectionTunnel2BgpOutput {
+	return i.ToVpnConnectionTunnel2BgpOutputWithContext(context.Background())
+}
+
+func (i VpnConnectionTunnel2BgpArgs) ToVpnConnectionTunnel2BgpOutputWithContext(ctx context.Context) VpnConnectionTunnel2BgpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionTunnel2BgpOutput)
+}
+
+func (i VpnConnectionTunnel2BgpArgs) ToVpnConnectionTunnel2BgpPtrOutput() VpnConnectionTunnel2BgpPtrOutput {
+	return i.ToVpnConnectionTunnel2BgpPtrOutputWithContext(context.Background())
+}
+
+func (i VpnConnectionTunnel2BgpArgs) ToVpnConnectionTunnel2BgpPtrOutputWithContext(ctx context.Context) VpnConnectionTunnel2BgpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionTunnel2BgpOutput).ToVpnConnectionTunnel2BgpPtrOutputWithContext(ctx)
+}
+
+// VpnConnectionTunnel2BgpPtrInput is an input type that accepts VpnConnectionTunnel2BgpArgs, VpnConnectionTunnel2BgpPtr and VpnConnectionTunnel2BgpPtrOutput values.
+// You can construct a concrete instance of `VpnConnectionTunnel2BgpPtrInput` via:
+//
+//	        VpnConnectionTunnel2BgpArgs{...}
+//
+//	or:
+//
+//	        nil
+type VpnConnectionTunnel2BgpPtrInput interface {
+	pulumi.Input
+
+	ToVpnConnectionTunnel2BgpPtrOutput() VpnConnectionTunnel2BgpPtrOutput
+	ToVpnConnectionTunnel2BgpPtrOutputWithContext(context.Context) VpnConnectionTunnel2BgpPtrOutput
+}
+
+type vpnConnectionTunnel2BgpPtrType VpnConnectionTunnel2BgpArgs
+
+func VpnConnectionTunnel2BgpPtr(v *VpnConnectionTunnel2BgpArgs) VpnConnectionTunnel2BgpPtrInput {
+	return (*vpnConnectionTunnel2BgpPtrType)(v)
+}
+
+func (*vpnConnectionTunnel2BgpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnConnectionTunnel2Bgp)(nil)).Elem()
+}
+
+func (i *vpnConnectionTunnel2BgpPtrType) ToVpnConnectionTunnel2BgpPtrOutput() VpnConnectionTunnel2BgpPtrOutput {
+	return i.ToVpnConnectionTunnel2BgpPtrOutputWithContext(context.Background())
+}
+
+func (i *vpnConnectionTunnel2BgpPtrType) ToVpnConnectionTunnel2BgpPtrOutputWithContext(ctx context.Context) VpnConnectionTunnel2BgpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionTunnel2BgpPtrOutput)
+}
+
+type VpnConnectionTunnel2BgpOutput struct{ *pulumi.OutputState }
+
+func (VpnConnectionTunnel2BgpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnConnectionTunnel2Bgp)(nil)).Elem()
+}
+
+func (o VpnConnectionTunnel2BgpOutput) ToVpnConnectionTunnel2BgpOutput() VpnConnectionTunnel2BgpOutput {
+	return o
+}
+
+func (o VpnConnectionTunnel2BgpOutput) ToVpnConnectionTunnel2BgpOutputWithContext(ctx context.Context) VpnConnectionTunnel2BgpOutput {
+	return o
+}
+
+func (o VpnConnectionTunnel2BgpOutput) ToVpnConnectionTunnel2BgpPtrOutput() VpnConnectionTunnel2BgpPtrOutput {
+	return o.ToVpnConnectionTunnel2BgpPtrOutputWithContext(context.Background())
+}
+
+func (o VpnConnectionTunnel2BgpOutput) ToVpnConnectionTunnel2BgpPtrOutputWithContext(ctx context.Context) VpnConnectionTunnel2BgpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpnConnectionTunnel2Bgp) *VpnConnectionTunnel2Bgp {
+		return &v
+	}).(VpnConnectionTunnel2BgpPtrOutput)
+}
+
+// Remote ASN for BGP peering (private ASN range, 64512-4294967294).
+func (o VpnConnectionTunnel2BgpOutput) RemoteAsn() pulumi.IntOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel2Bgp) int { return v.RemoteAsn }).(pulumi.IntOutput)
+}
+
+type VpnConnectionTunnel2BgpPtrOutput struct{ *pulumi.OutputState }
+
+func (VpnConnectionTunnel2BgpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnConnectionTunnel2Bgp)(nil)).Elem()
+}
+
+func (o VpnConnectionTunnel2BgpPtrOutput) ToVpnConnectionTunnel2BgpPtrOutput() VpnConnectionTunnel2BgpPtrOutput {
+	return o
+}
+
+func (o VpnConnectionTunnel2BgpPtrOutput) ToVpnConnectionTunnel2BgpPtrOutputWithContext(ctx context.Context) VpnConnectionTunnel2BgpPtrOutput {
+	return o
+}
+
+func (o VpnConnectionTunnel2BgpPtrOutput) Elem() VpnConnectionTunnel2BgpOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel2Bgp) VpnConnectionTunnel2Bgp {
+		if v != nil {
+			return *v
+		}
+		var ret VpnConnectionTunnel2Bgp
+		return ret
+	}).(VpnConnectionTunnel2BgpOutput)
+}
+
+// Remote ASN for BGP peering (private ASN range, 64512-4294967294).
+func (o VpnConnectionTunnel2BgpPtrOutput) RemoteAsn() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel2Bgp) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.RemoteAsn
+	}).(pulumi.IntPtrOutput)
+}
+
+type VpnConnectionTunnel2Peering struct {
+	// Local tunnel interface IPv4 address.
+	LocalAddress string `pulumi:"localAddress"`
+	// Remote tunnel interface IPv4 address.
+	RemoteAddress string `pulumi:"remoteAddress"`
+}
+
+// VpnConnectionTunnel2PeeringInput is an input type that accepts VpnConnectionTunnel2PeeringArgs and VpnConnectionTunnel2PeeringOutput values.
+// You can construct a concrete instance of `VpnConnectionTunnel2PeeringInput` via:
+//
+//	VpnConnectionTunnel2PeeringArgs{...}
+type VpnConnectionTunnel2PeeringInput interface {
+	pulumi.Input
+
+	ToVpnConnectionTunnel2PeeringOutput() VpnConnectionTunnel2PeeringOutput
+	ToVpnConnectionTunnel2PeeringOutputWithContext(context.Context) VpnConnectionTunnel2PeeringOutput
+}
+
+type VpnConnectionTunnel2PeeringArgs struct {
+	// Local tunnel interface IPv4 address.
+	LocalAddress pulumi.StringInput `pulumi:"localAddress"`
+	// Remote tunnel interface IPv4 address.
+	RemoteAddress pulumi.StringInput `pulumi:"remoteAddress"`
+}
+
+func (VpnConnectionTunnel2PeeringArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnConnectionTunnel2Peering)(nil)).Elem()
+}
+
+func (i VpnConnectionTunnel2PeeringArgs) ToVpnConnectionTunnel2PeeringOutput() VpnConnectionTunnel2PeeringOutput {
+	return i.ToVpnConnectionTunnel2PeeringOutputWithContext(context.Background())
+}
+
+func (i VpnConnectionTunnel2PeeringArgs) ToVpnConnectionTunnel2PeeringOutputWithContext(ctx context.Context) VpnConnectionTunnel2PeeringOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionTunnel2PeeringOutput)
+}
+
+func (i VpnConnectionTunnel2PeeringArgs) ToVpnConnectionTunnel2PeeringPtrOutput() VpnConnectionTunnel2PeeringPtrOutput {
+	return i.ToVpnConnectionTunnel2PeeringPtrOutputWithContext(context.Background())
+}
+
+func (i VpnConnectionTunnel2PeeringArgs) ToVpnConnectionTunnel2PeeringPtrOutputWithContext(ctx context.Context) VpnConnectionTunnel2PeeringPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionTunnel2PeeringOutput).ToVpnConnectionTunnel2PeeringPtrOutputWithContext(ctx)
+}
+
+// VpnConnectionTunnel2PeeringPtrInput is an input type that accepts VpnConnectionTunnel2PeeringArgs, VpnConnectionTunnel2PeeringPtr and VpnConnectionTunnel2PeeringPtrOutput values.
+// You can construct a concrete instance of `VpnConnectionTunnel2PeeringPtrInput` via:
+//
+//	        VpnConnectionTunnel2PeeringArgs{...}
+//
+//	or:
+//
+//	        nil
+type VpnConnectionTunnel2PeeringPtrInput interface {
+	pulumi.Input
+
+	ToVpnConnectionTunnel2PeeringPtrOutput() VpnConnectionTunnel2PeeringPtrOutput
+	ToVpnConnectionTunnel2PeeringPtrOutputWithContext(context.Context) VpnConnectionTunnel2PeeringPtrOutput
+}
+
+type vpnConnectionTunnel2PeeringPtrType VpnConnectionTunnel2PeeringArgs
+
+func VpnConnectionTunnel2PeeringPtr(v *VpnConnectionTunnel2PeeringArgs) VpnConnectionTunnel2PeeringPtrInput {
+	return (*vpnConnectionTunnel2PeeringPtrType)(v)
+}
+
+func (*vpnConnectionTunnel2PeeringPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnConnectionTunnel2Peering)(nil)).Elem()
+}
+
+func (i *vpnConnectionTunnel2PeeringPtrType) ToVpnConnectionTunnel2PeeringPtrOutput() VpnConnectionTunnel2PeeringPtrOutput {
+	return i.ToVpnConnectionTunnel2PeeringPtrOutputWithContext(context.Background())
+}
+
+func (i *vpnConnectionTunnel2PeeringPtrType) ToVpnConnectionTunnel2PeeringPtrOutputWithContext(ctx context.Context) VpnConnectionTunnel2PeeringPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionTunnel2PeeringPtrOutput)
+}
+
+type VpnConnectionTunnel2PeeringOutput struct{ *pulumi.OutputState }
+
+func (VpnConnectionTunnel2PeeringOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnConnectionTunnel2Peering)(nil)).Elem()
+}
+
+func (o VpnConnectionTunnel2PeeringOutput) ToVpnConnectionTunnel2PeeringOutput() VpnConnectionTunnel2PeeringOutput {
+	return o
+}
+
+func (o VpnConnectionTunnel2PeeringOutput) ToVpnConnectionTunnel2PeeringOutputWithContext(ctx context.Context) VpnConnectionTunnel2PeeringOutput {
+	return o
+}
+
+func (o VpnConnectionTunnel2PeeringOutput) ToVpnConnectionTunnel2PeeringPtrOutput() VpnConnectionTunnel2PeeringPtrOutput {
+	return o.ToVpnConnectionTunnel2PeeringPtrOutputWithContext(context.Background())
+}
+
+func (o VpnConnectionTunnel2PeeringOutput) ToVpnConnectionTunnel2PeeringPtrOutputWithContext(ctx context.Context) VpnConnectionTunnel2PeeringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpnConnectionTunnel2Peering) *VpnConnectionTunnel2Peering {
+		return &v
+	}).(VpnConnectionTunnel2PeeringPtrOutput)
+}
+
+// Local tunnel interface IPv4 address.
+func (o VpnConnectionTunnel2PeeringOutput) LocalAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel2Peering) string { return v.LocalAddress }).(pulumi.StringOutput)
+}
+
+// Remote tunnel interface IPv4 address.
+func (o VpnConnectionTunnel2PeeringOutput) RemoteAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel2Peering) string { return v.RemoteAddress }).(pulumi.StringOutput)
+}
+
+type VpnConnectionTunnel2PeeringPtrOutput struct{ *pulumi.OutputState }
+
+func (VpnConnectionTunnel2PeeringPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnConnectionTunnel2Peering)(nil)).Elem()
+}
+
+func (o VpnConnectionTunnel2PeeringPtrOutput) ToVpnConnectionTunnel2PeeringPtrOutput() VpnConnectionTunnel2PeeringPtrOutput {
+	return o
+}
+
+func (o VpnConnectionTunnel2PeeringPtrOutput) ToVpnConnectionTunnel2PeeringPtrOutputWithContext(ctx context.Context) VpnConnectionTunnel2PeeringPtrOutput {
+	return o
+}
+
+func (o VpnConnectionTunnel2PeeringPtrOutput) Elem() VpnConnectionTunnel2PeeringOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel2Peering) VpnConnectionTunnel2Peering {
+		if v != nil {
+			return *v
+		}
+		var ret VpnConnectionTunnel2Peering
+		return ret
+	}).(VpnConnectionTunnel2PeeringOutput)
+}
+
+// Local tunnel interface IPv4 address.
+func (o VpnConnectionTunnel2PeeringPtrOutput) LocalAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel2Peering) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.LocalAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// Remote tunnel interface IPv4 address.
+func (o VpnConnectionTunnel2PeeringPtrOutput) RemoteAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel2Peering) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RemoteAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+type VpnConnectionTunnel2Phase1 struct {
+	// Diffie-Hellman groups for key exchange. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
+	DhGroups []string `pulumi:"dhGroups"`
+	// Encryption algorithms for Phase 1. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
+	EncryptionAlgorithms []string `pulumi:"encryptionAlgorithms"`
+	// Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`.
+	IntegrityAlgorithms []string `pulumi:"integrityAlgorithms"`
+	// Time to schedule an IKE re-keying in seconds. Range: 900-28800. Default: 14400.
+	RekeyTime *int `pulumi:"rekeyTime"`
+}
+
+// VpnConnectionTunnel2Phase1Input is an input type that accepts VpnConnectionTunnel2Phase1Args and VpnConnectionTunnel2Phase1Output values.
+// You can construct a concrete instance of `VpnConnectionTunnel2Phase1Input` via:
+//
+//	VpnConnectionTunnel2Phase1Args{...}
+type VpnConnectionTunnel2Phase1Input interface {
+	pulumi.Input
+
+	ToVpnConnectionTunnel2Phase1Output() VpnConnectionTunnel2Phase1Output
+	ToVpnConnectionTunnel2Phase1OutputWithContext(context.Context) VpnConnectionTunnel2Phase1Output
+}
+
+type VpnConnectionTunnel2Phase1Args struct {
+	// Diffie-Hellman groups for key exchange. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
+	DhGroups pulumi.StringArrayInput `pulumi:"dhGroups"`
+	// Encryption algorithms for Phase 1. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
+	EncryptionAlgorithms pulumi.StringArrayInput `pulumi:"encryptionAlgorithms"`
+	// Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`.
+	IntegrityAlgorithms pulumi.StringArrayInput `pulumi:"integrityAlgorithms"`
+	// Time to schedule an IKE re-keying in seconds. Range: 900-28800. Default: 14400.
+	RekeyTime pulumi.IntPtrInput `pulumi:"rekeyTime"`
+}
+
+func (VpnConnectionTunnel2Phase1Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnConnectionTunnel2Phase1)(nil)).Elem()
+}
+
+func (i VpnConnectionTunnel2Phase1Args) ToVpnConnectionTunnel2Phase1Output() VpnConnectionTunnel2Phase1Output {
+	return i.ToVpnConnectionTunnel2Phase1OutputWithContext(context.Background())
+}
+
+func (i VpnConnectionTunnel2Phase1Args) ToVpnConnectionTunnel2Phase1OutputWithContext(ctx context.Context) VpnConnectionTunnel2Phase1Output {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionTunnel2Phase1Output)
+}
+
+func (i VpnConnectionTunnel2Phase1Args) ToVpnConnectionTunnel2Phase1PtrOutput() VpnConnectionTunnel2Phase1PtrOutput {
+	return i.ToVpnConnectionTunnel2Phase1PtrOutputWithContext(context.Background())
+}
+
+func (i VpnConnectionTunnel2Phase1Args) ToVpnConnectionTunnel2Phase1PtrOutputWithContext(ctx context.Context) VpnConnectionTunnel2Phase1PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionTunnel2Phase1Output).ToVpnConnectionTunnel2Phase1PtrOutputWithContext(ctx)
+}
+
+// VpnConnectionTunnel2Phase1PtrInput is an input type that accepts VpnConnectionTunnel2Phase1Args, VpnConnectionTunnel2Phase1Ptr and VpnConnectionTunnel2Phase1PtrOutput values.
+// You can construct a concrete instance of `VpnConnectionTunnel2Phase1PtrInput` via:
+//
+//	        VpnConnectionTunnel2Phase1Args{...}
+//
+//	or:
+//
+//	        nil
+type VpnConnectionTunnel2Phase1PtrInput interface {
+	pulumi.Input
+
+	ToVpnConnectionTunnel2Phase1PtrOutput() VpnConnectionTunnel2Phase1PtrOutput
+	ToVpnConnectionTunnel2Phase1PtrOutputWithContext(context.Context) VpnConnectionTunnel2Phase1PtrOutput
+}
+
+type vpnConnectionTunnel2Phase1PtrType VpnConnectionTunnel2Phase1Args
+
+func VpnConnectionTunnel2Phase1Ptr(v *VpnConnectionTunnel2Phase1Args) VpnConnectionTunnel2Phase1PtrInput {
+	return (*vpnConnectionTunnel2Phase1PtrType)(v)
+}
+
+func (*vpnConnectionTunnel2Phase1PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnConnectionTunnel2Phase1)(nil)).Elem()
+}
+
+func (i *vpnConnectionTunnel2Phase1PtrType) ToVpnConnectionTunnel2Phase1PtrOutput() VpnConnectionTunnel2Phase1PtrOutput {
+	return i.ToVpnConnectionTunnel2Phase1PtrOutputWithContext(context.Background())
+}
+
+func (i *vpnConnectionTunnel2Phase1PtrType) ToVpnConnectionTunnel2Phase1PtrOutputWithContext(ctx context.Context) VpnConnectionTunnel2Phase1PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionTunnel2Phase1PtrOutput)
+}
+
+type VpnConnectionTunnel2Phase1Output struct{ *pulumi.OutputState }
+
+func (VpnConnectionTunnel2Phase1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnConnectionTunnel2Phase1)(nil)).Elem()
+}
+
+func (o VpnConnectionTunnel2Phase1Output) ToVpnConnectionTunnel2Phase1Output() VpnConnectionTunnel2Phase1Output {
+	return o
+}
+
+func (o VpnConnectionTunnel2Phase1Output) ToVpnConnectionTunnel2Phase1OutputWithContext(ctx context.Context) VpnConnectionTunnel2Phase1Output {
+	return o
+}
+
+func (o VpnConnectionTunnel2Phase1Output) ToVpnConnectionTunnel2Phase1PtrOutput() VpnConnectionTunnel2Phase1PtrOutput {
+	return o.ToVpnConnectionTunnel2Phase1PtrOutputWithContext(context.Background())
+}
+
+func (o VpnConnectionTunnel2Phase1Output) ToVpnConnectionTunnel2Phase1PtrOutputWithContext(ctx context.Context) VpnConnectionTunnel2Phase1PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpnConnectionTunnel2Phase1) *VpnConnectionTunnel2Phase1 {
+		return &v
+	}).(VpnConnectionTunnel2Phase1PtrOutput)
+}
+
+// Diffie-Hellman groups for key exchange. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
+func (o VpnConnectionTunnel2Phase1Output) DhGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel2Phase1) []string { return v.DhGroups }).(pulumi.StringArrayOutput)
+}
+
+// Encryption algorithms for Phase 1. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
+func (o VpnConnectionTunnel2Phase1Output) EncryptionAlgorithms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel2Phase1) []string { return v.EncryptionAlgorithms }).(pulumi.StringArrayOutput)
+}
+
+// Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`.
+func (o VpnConnectionTunnel2Phase1Output) IntegrityAlgorithms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel2Phase1) []string { return v.IntegrityAlgorithms }).(pulumi.StringArrayOutput)
+}
+
+// Time to schedule an IKE re-keying in seconds. Range: 900-28800. Default: 14400.
+func (o VpnConnectionTunnel2Phase1Output) RekeyTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel2Phase1) *int { return v.RekeyTime }).(pulumi.IntPtrOutput)
+}
+
+type VpnConnectionTunnel2Phase1PtrOutput struct{ *pulumi.OutputState }
+
+func (VpnConnectionTunnel2Phase1PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnConnectionTunnel2Phase1)(nil)).Elem()
+}
+
+func (o VpnConnectionTunnel2Phase1PtrOutput) ToVpnConnectionTunnel2Phase1PtrOutput() VpnConnectionTunnel2Phase1PtrOutput {
+	return o
+}
+
+func (o VpnConnectionTunnel2Phase1PtrOutput) ToVpnConnectionTunnel2Phase1PtrOutputWithContext(ctx context.Context) VpnConnectionTunnel2Phase1PtrOutput {
+	return o
+}
+
+func (o VpnConnectionTunnel2Phase1PtrOutput) Elem() VpnConnectionTunnel2Phase1Output {
+	return o.ApplyT(func(v *VpnConnectionTunnel2Phase1) VpnConnectionTunnel2Phase1 {
+		if v != nil {
+			return *v
+		}
+		var ret VpnConnectionTunnel2Phase1
+		return ret
+	}).(VpnConnectionTunnel2Phase1Output)
+}
+
+// Diffie-Hellman groups for key exchange. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
+func (o VpnConnectionTunnel2Phase1PtrOutput) DhGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel2Phase1) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DhGroups
+	}).(pulumi.StringArrayOutput)
+}
+
+// Encryption algorithms for Phase 1. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
+func (o VpnConnectionTunnel2Phase1PtrOutput) EncryptionAlgorithms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel2Phase1) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptionAlgorithms
+	}).(pulumi.StringArrayOutput)
+}
+
+// Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`.
+func (o VpnConnectionTunnel2Phase1PtrOutput) IntegrityAlgorithms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel2Phase1) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IntegrityAlgorithms
+	}).(pulumi.StringArrayOutput)
+}
+
+// Time to schedule an IKE re-keying in seconds. Range: 900-28800. Default: 14400.
+func (o VpnConnectionTunnel2Phase1PtrOutput) RekeyTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel2Phase1) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RekeyTime
+	}).(pulumi.IntPtrOutput)
+}
+
+type VpnConnectionTunnel2Phase2 struct {
+	// Diffie-Hellman groups for Phase 2. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
+	DhGroups []string `pulumi:"dhGroups"`
+	// Action to perform on DPD timeout. Default: 'restart'. Possible values are: `clear`, `restart`.
+	DpdAction *string `pulumi:"dpdAction"`
+	// Encryption algorithms for Phase 2. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
+	EncryptionAlgorithms []string `pulumi:"encryptionAlgorithms"`
+	// Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`.
+	IntegrityAlgorithms []string `pulumi:"integrityAlgorithms"`
+	// Time to schedule a Child SA re-keying in seconds. Range: 900-3600. Default: 3600.
+	RekeyTime *int `pulumi:"rekeyTime"`
+	// Action to perform after loading the connection configuration. Default: 'start'. Possible values are: `none`, `start`.
+	StartAction *string `pulumi:"startAction"`
+}
+
+// VpnConnectionTunnel2Phase2Input is an input type that accepts VpnConnectionTunnel2Phase2Args and VpnConnectionTunnel2Phase2Output values.
+// You can construct a concrete instance of `VpnConnectionTunnel2Phase2Input` via:
+//
+//	VpnConnectionTunnel2Phase2Args{...}
+type VpnConnectionTunnel2Phase2Input interface {
+	pulumi.Input
+
+	ToVpnConnectionTunnel2Phase2Output() VpnConnectionTunnel2Phase2Output
+	ToVpnConnectionTunnel2Phase2OutputWithContext(context.Context) VpnConnectionTunnel2Phase2Output
+}
+
+type VpnConnectionTunnel2Phase2Args struct {
+	// Diffie-Hellman groups for Phase 2. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
+	DhGroups pulumi.StringArrayInput `pulumi:"dhGroups"`
+	// Action to perform on DPD timeout. Default: 'restart'. Possible values are: `clear`, `restart`.
+	DpdAction pulumi.StringPtrInput `pulumi:"dpdAction"`
+	// Encryption algorithms for Phase 2. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
+	EncryptionAlgorithms pulumi.StringArrayInput `pulumi:"encryptionAlgorithms"`
+	// Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`.
+	IntegrityAlgorithms pulumi.StringArrayInput `pulumi:"integrityAlgorithms"`
+	// Time to schedule a Child SA re-keying in seconds. Range: 900-3600. Default: 3600.
+	RekeyTime pulumi.IntPtrInput `pulumi:"rekeyTime"`
+	// Action to perform after loading the connection configuration. Default: 'start'. Possible values are: `none`, `start`.
+	StartAction pulumi.StringPtrInput `pulumi:"startAction"`
+}
+
+func (VpnConnectionTunnel2Phase2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnConnectionTunnel2Phase2)(nil)).Elem()
+}
+
+func (i VpnConnectionTunnel2Phase2Args) ToVpnConnectionTunnel2Phase2Output() VpnConnectionTunnel2Phase2Output {
+	return i.ToVpnConnectionTunnel2Phase2OutputWithContext(context.Background())
+}
+
+func (i VpnConnectionTunnel2Phase2Args) ToVpnConnectionTunnel2Phase2OutputWithContext(ctx context.Context) VpnConnectionTunnel2Phase2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionTunnel2Phase2Output)
+}
+
+func (i VpnConnectionTunnel2Phase2Args) ToVpnConnectionTunnel2Phase2PtrOutput() VpnConnectionTunnel2Phase2PtrOutput {
+	return i.ToVpnConnectionTunnel2Phase2PtrOutputWithContext(context.Background())
+}
+
+func (i VpnConnectionTunnel2Phase2Args) ToVpnConnectionTunnel2Phase2PtrOutputWithContext(ctx context.Context) VpnConnectionTunnel2Phase2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionTunnel2Phase2Output).ToVpnConnectionTunnel2Phase2PtrOutputWithContext(ctx)
+}
+
+// VpnConnectionTunnel2Phase2PtrInput is an input type that accepts VpnConnectionTunnel2Phase2Args, VpnConnectionTunnel2Phase2Ptr and VpnConnectionTunnel2Phase2PtrOutput values.
+// You can construct a concrete instance of `VpnConnectionTunnel2Phase2PtrInput` via:
+//
+//	        VpnConnectionTunnel2Phase2Args{...}
+//
+//	or:
+//
+//	        nil
+type VpnConnectionTunnel2Phase2PtrInput interface {
+	pulumi.Input
+
+	ToVpnConnectionTunnel2Phase2PtrOutput() VpnConnectionTunnel2Phase2PtrOutput
+	ToVpnConnectionTunnel2Phase2PtrOutputWithContext(context.Context) VpnConnectionTunnel2Phase2PtrOutput
+}
+
+type vpnConnectionTunnel2Phase2PtrType VpnConnectionTunnel2Phase2Args
+
+func VpnConnectionTunnel2Phase2Ptr(v *VpnConnectionTunnel2Phase2Args) VpnConnectionTunnel2Phase2PtrInput {
+	return (*vpnConnectionTunnel2Phase2PtrType)(v)
+}
+
+func (*vpnConnectionTunnel2Phase2PtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnConnectionTunnel2Phase2)(nil)).Elem()
+}
+
+func (i *vpnConnectionTunnel2Phase2PtrType) ToVpnConnectionTunnel2Phase2PtrOutput() VpnConnectionTunnel2Phase2PtrOutput {
+	return i.ToVpnConnectionTunnel2Phase2PtrOutputWithContext(context.Background())
+}
+
+func (i *vpnConnectionTunnel2Phase2PtrType) ToVpnConnectionTunnel2Phase2PtrOutputWithContext(ctx context.Context) VpnConnectionTunnel2Phase2PtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnConnectionTunnel2Phase2PtrOutput)
+}
+
+type VpnConnectionTunnel2Phase2Output struct{ *pulumi.OutputState }
+
+func (VpnConnectionTunnel2Phase2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnConnectionTunnel2Phase2)(nil)).Elem()
+}
+
+func (o VpnConnectionTunnel2Phase2Output) ToVpnConnectionTunnel2Phase2Output() VpnConnectionTunnel2Phase2Output {
+	return o
+}
+
+func (o VpnConnectionTunnel2Phase2Output) ToVpnConnectionTunnel2Phase2OutputWithContext(ctx context.Context) VpnConnectionTunnel2Phase2Output {
+	return o
+}
+
+func (o VpnConnectionTunnel2Phase2Output) ToVpnConnectionTunnel2Phase2PtrOutput() VpnConnectionTunnel2Phase2PtrOutput {
+	return o.ToVpnConnectionTunnel2Phase2PtrOutputWithContext(context.Background())
+}
+
+func (o VpnConnectionTunnel2Phase2Output) ToVpnConnectionTunnel2Phase2PtrOutputWithContext(ctx context.Context) VpnConnectionTunnel2Phase2PtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpnConnectionTunnel2Phase2) *VpnConnectionTunnel2Phase2 {
+		return &v
+	}).(VpnConnectionTunnel2Phase2PtrOutput)
+}
+
+// Diffie-Hellman groups for Phase 2. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
+func (o VpnConnectionTunnel2Phase2Output) DhGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel2Phase2) []string { return v.DhGroups }).(pulumi.StringArrayOutput)
+}
+
+// Action to perform on DPD timeout. Default: 'restart'. Possible values are: `clear`, `restart`.
+func (o VpnConnectionTunnel2Phase2Output) DpdAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel2Phase2) *string { return v.DpdAction }).(pulumi.StringPtrOutput)
+}
+
+// Encryption algorithms for Phase 2. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
+func (o VpnConnectionTunnel2Phase2Output) EncryptionAlgorithms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel2Phase2) []string { return v.EncryptionAlgorithms }).(pulumi.StringArrayOutput)
+}
+
+// Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`.
+func (o VpnConnectionTunnel2Phase2Output) IntegrityAlgorithms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel2Phase2) []string { return v.IntegrityAlgorithms }).(pulumi.StringArrayOutput)
+}
+
+// Time to schedule a Child SA re-keying in seconds. Range: 900-3600. Default: 3600.
+func (o VpnConnectionTunnel2Phase2Output) RekeyTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel2Phase2) *int { return v.RekeyTime }).(pulumi.IntPtrOutput)
+}
+
+// Action to perform after loading the connection configuration. Default: 'start'. Possible values are: `none`, `start`.
+func (o VpnConnectionTunnel2Phase2Output) StartAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpnConnectionTunnel2Phase2) *string { return v.StartAction }).(pulumi.StringPtrOutput)
+}
+
+type VpnConnectionTunnel2Phase2PtrOutput struct{ *pulumi.OutputState }
+
+func (VpnConnectionTunnel2Phase2PtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnConnectionTunnel2Phase2)(nil)).Elem()
+}
+
+func (o VpnConnectionTunnel2Phase2PtrOutput) ToVpnConnectionTunnel2Phase2PtrOutput() VpnConnectionTunnel2Phase2PtrOutput {
+	return o
+}
+
+func (o VpnConnectionTunnel2Phase2PtrOutput) ToVpnConnectionTunnel2Phase2PtrOutputWithContext(ctx context.Context) VpnConnectionTunnel2Phase2PtrOutput {
+	return o
+}
+
+func (o VpnConnectionTunnel2Phase2PtrOutput) Elem() VpnConnectionTunnel2Phase2Output {
+	return o.ApplyT(func(v *VpnConnectionTunnel2Phase2) VpnConnectionTunnel2Phase2 {
+		if v != nil {
+			return *v
+		}
+		var ret VpnConnectionTunnel2Phase2
+		return ret
+	}).(VpnConnectionTunnel2Phase2Output)
+}
+
+// Diffie-Hellman groups for Phase 2. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
+func (o VpnConnectionTunnel2Phase2PtrOutput) DhGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel2Phase2) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DhGroups
+	}).(pulumi.StringArrayOutput)
+}
+
+// Action to perform on DPD timeout. Default: 'restart'. Possible values are: `clear`, `restart`.
+func (o VpnConnectionTunnel2Phase2PtrOutput) DpdAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel2Phase2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DpdAction
+	}).(pulumi.StringPtrOutput)
+}
+
+// Encryption algorithms for Phase 2. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
+func (o VpnConnectionTunnel2Phase2PtrOutput) EncryptionAlgorithms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel2Phase2) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptionAlgorithms
+	}).(pulumi.StringArrayOutput)
+}
+
+// Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`.
+func (o VpnConnectionTunnel2Phase2PtrOutput) IntegrityAlgorithms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel2Phase2) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IntegrityAlgorithms
+	}).(pulumi.StringArrayOutput)
+}
+
+// Time to schedule a Child SA re-keying in seconds. Range: 900-3600. Default: 3600.
+func (o VpnConnectionTunnel2Phase2PtrOutput) RekeyTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel2Phase2) *int {
+		if v == nil {
+			return nil
+		}
+		return v.RekeyTime
+	}).(pulumi.IntPtrOutput)
+}
+
+// Action to perform after loading the connection configuration. Default: 'start'. Possible values are: `none`, `start`.
+func (o VpnConnectionTunnel2Phase2PtrOutput) StartAction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnConnectionTunnel2Phase2) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StartAction
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -33090,6 +35337,119 @@ func (o GetSfsSnapshotPoliciesItemSnapshotScheduleArrayOutput) Index(i pulumi.In
 	}).(GetSfsSnapshotPoliciesItemSnapshotScheduleOutput)
 }
 
+type GetSkeClusterAccess struct {
+	// Configure IDP
+	Idp GetSkeClusterAccessIdp `pulumi:"idp"`
+}
+
+// GetSkeClusterAccessInput is an input type that accepts GetSkeClusterAccessArgs and GetSkeClusterAccessOutput values.
+// You can construct a concrete instance of `GetSkeClusterAccessInput` via:
+//
+//	GetSkeClusterAccessArgs{...}
+type GetSkeClusterAccessInput interface {
+	pulumi.Input
+
+	ToGetSkeClusterAccessOutput() GetSkeClusterAccessOutput
+	ToGetSkeClusterAccessOutputWithContext(context.Context) GetSkeClusterAccessOutput
+}
+
+type GetSkeClusterAccessArgs struct {
+	// Configure IDP
+	Idp GetSkeClusterAccessIdpInput `pulumi:"idp"`
+}
+
+func (GetSkeClusterAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSkeClusterAccess)(nil)).Elem()
+}
+
+func (i GetSkeClusterAccessArgs) ToGetSkeClusterAccessOutput() GetSkeClusterAccessOutput {
+	return i.ToGetSkeClusterAccessOutputWithContext(context.Background())
+}
+
+func (i GetSkeClusterAccessArgs) ToGetSkeClusterAccessOutputWithContext(ctx context.Context) GetSkeClusterAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSkeClusterAccessOutput)
+}
+
+type GetSkeClusterAccessOutput struct{ *pulumi.OutputState }
+
+func (GetSkeClusterAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSkeClusterAccess)(nil)).Elem()
+}
+
+func (o GetSkeClusterAccessOutput) ToGetSkeClusterAccessOutput() GetSkeClusterAccessOutput {
+	return o
+}
+
+func (o GetSkeClusterAccessOutput) ToGetSkeClusterAccessOutputWithContext(ctx context.Context) GetSkeClusterAccessOutput {
+	return o
+}
+
+// Configure IDP
+func (o GetSkeClusterAccessOutput) Idp() GetSkeClusterAccessIdpOutput {
+	return o.ApplyT(func(v GetSkeClusterAccess) GetSkeClusterAccessIdp { return v.Idp }).(GetSkeClusterAccessIdpOutput)
+}
+
+type GetSkeClusterAccessIdp struct {
+	// Enable IDP integration for the cluster.
+	Enabled bool `pulumi:"enabled"`
+	// The IDP type. Possible values: 'stackit'.
+	Type string `pulumi:"type"`
+}
+
+// GetSkeClusterAccessIdpInput is an input type that accepts GetSkeClusterAccessIdpArgs and GetSkeClusterAccessIdpOutput values.
+// You can construct a concrete instance of `GetSkeClusterAccessIdpInput` via:
+//
+//	GetSkeClusterAccessIdpArgs{...}
+type GetSkeClusterAccessIdpInput interface {
+	pulumi.Input
+
+	ToGetSkeClusterAccessIdpOutput() GetSkeClusterAccessIdpOutput
+	ToGetSkeClusterAccessIdpOutputWithContext(context.Context) GetSkeClusterAccessIdpOutput
+}
+
+type GetSkeClusterAccessIdpArgs struct {
+	// Enable IDP integration for the cluster.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// The IDP type. Possible values: 'stackit'.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetSkeClusterAccessIdpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSkeClusterAccessIdp)(nil)).Elem()
+}
+
+func (i GetSkeClusterAccessIdpArgs) ToGetSkeClusterAccessIdpOutput() GetSkeClusterAccessIdpOutput {
+	return i.ToGetSkeClusterAccessIdpOutputWithContext(context.Background())
+}
+
+func (i GetSkeClusterAccessIdpArgs) ToGetSkeClusterAccessIdpOutputWithContext(ctx context.Context) GetSkeClusterAccessIdpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSkeClusterAccessIdpOutput)
+}
+
+type GetSkeClusterAccessIdpOutput struct{ *pulumi.OutputState }
+
+func (GetSkeClusterAccessIdpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSkeClusterAccessIdp)(nil)).Elem()
+}
+
+func (o GetSkeClusterAccessIdpOutput) ToGetSkeClusterAccessIdpOutput() GetSkeClusterAccessIdpOutput {
+	return o
+}
+
+func (o GetSkeClusterAccessIdpOutput) ToGetSkeClusterAccessIdpOutputWithContext(ctx context.Context) GetSkeClusterAccessIdpOutput {
+	return o
+}
+
+// Enable IDP integration for the cluster.
+func (o GetSkeClusterAccessIdpOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSkeClusterAccessIdp) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// The IDP type. Possible values: 'stackit'.
+func (o GetSkeClusterAccessIdpOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSkeClusterAccessIdp) string { return v.Type }).(pulumi.StringOutput)
+}
+
 type GetSkeClusterExtensions struct {
 	// Cluster access control configuration
 	Acl GetSkeClusterExtensionsAcl `pulumi:"acl"`
@@ -35226,6 +37586,760 @@ func (o GetVolumeSourceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumeSource) string { return v.Type }).(pulumi.StringOutput)
 }
 
+type GetVpnConnectionTunnel1 struct {
+	// BGP configuration for this tunnel.
+	Bgp GetVpnConnectionTunnel1Bgp `pulumi:"bgp"`
+	// Tunnel interface peering configuration.
+	Peering GetVpnConnectionTunnel1Peering `pulumi:"peering"`
+	// IKE Phase 1 configuration.
+	Phase1 GetVpnConnectionTunnel1Phase1 `pulumi:"phase1"`
+	// IKE Phase 2 configuration.
+	Phase2 GetVpnConnectionTunnel1Phase2 `pulumi:"phase2"`
+	// Remote peer IPv4 address for this tunnel.
+	RemoteAddress string `pulumi:"remoteAddress"`
+}
+
+// GetVpnConnectionTunnel1Input is an input type that accepts GetVpnConnectionTunnel1Args and GetVpnConnectionTunnel1Output values.
+// You can construct a concrete instance of `GetVpnConnectionTunnel1Input` via:
+//
+//	GetVpnConnectionTunnel1Args{...}
+type GetVpnConnectionTunnel1Input interface {
+	pulumi.Input
+
+	ToGetVpnConnectionTunnel1Output() GetVpnConnectionTunnel1Output
+	ToGetVpnConnectionTunnel1OutputWithContext(context.Context) GetVpnConnectionTunnel1Output
+}
+
+type GetVpnConnectionTunnel1Args struct {
+	// BGP configuration for this tunnel.
+	Bgp GetVpnConnectionTunnel1BgpInput `pulumi:"bgp"`
+	// Tunnel interface peering configuration.
+	Peering GetVpnConnectionTunnel1PeeringInput `pulumi:"peering"`
+	// IKE Phase 1 configuration.
+	Phase1 GetVpnConnectionTunnel1Phase1Input `pulumi:"phase1"`
+	// IKE Phase 2 configuration.
+	Phase2 GetVpnConnectionTunnel1Phase2Input `pulumi:"phase2"`
+	// Remote peer IPv4 address for this tunnel.
+	RemoteAddress pulumi.StringInput `pulumi:"remoteAddress"`
+}
+
+func (GetVpnConnectionTunnel1Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpnConnectionTunnel1)(nil)).Elem()
+}
+
+func (i GetVpnConnectionTunnel1Args) ToGetVpnConnectionTunnel1Output() GetVpnConnectionTunnel1Output {
+	return i.ToGetVpnConnectionTunnel1OutputWithContext(context.Background())
+}
+
+func (i GetVpnConnectionTunnel1Args) ToGetVpnConnectionTunnel1OutputWithContext(ctx context.Context) GetVpnConnectionTunnel1Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpnConnectionTunnel1Output)
+}
+
+type GetVpnConnectionTunnel1Output struct{ *pulumi.OutputState }
+
+func (GetVpnConnectionTunnel1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpnConnectionTunnel1)(nil)).Elem()
+}
+
+func (o GetVpnConnectionTunnel1Output) ToGetVpnConnectionTunnel1Output() GetVpnConnectionTunnel1Output {
+	return o
+}
+
+func (o GetVpnConnectionTunnel1Output) ToGetVpnConnectionTunnel1OutputWithContext(ctx context.Context) GetVpnConnectionTunnel1Output {
+	return o
+}
+
+// BGP configuration for this tunnel.
+func (o GetVpnConnectionTunnel1Output) Bgp() GetVpnConnectionTunnel1BgpOutput {
+	return o.ApplyT(func(v GetVpnConnectionTunnel1) GetVpnConnectionTunnel1Bgp { return v.Bgp }).(GetVpnConnectionTunnel1BgpOutput)
+}
+
+// Tunnel interface peering configuration.
+func (o GetVpnConnectionTunnel1Output) Peering() GetVpnConnectionTunnel1PeeringOutput {
+	return o.ApplyT(func(v GetVpnConnectionTunnel1) GetVpnConnectionTunnel1Peering { return v.Peering }).(GetVpnConnectionTunnel1PeeringOutput)
+}
+
+// IKE Phase 1 configuration.
+func (o GetVpnConnectionTunnel1Output) Phase1() GetVpnConnectionTunnel1Phase1Output {
+	return o.ApplyT(func(v GetVpnConnectionTunnel1) GetVpnConnectionTunnel1Phase1 { return v.Phase1 }).(GetVpnConnectionTunnel1Phase1Output)
+}
+
+// IKE Phase 2 configuration.
+func (o GetVpnConnectionTunnel1Output) Phase2() GetVpnConnectionTunnel1Phase2Output {
+	return o.ApplyT(func(v GetVpnConnectionTunnel1) GetVpnConnectionTunnel1Phase2 { return v.Phase2 }).(GetVpnConnectionTunnel1Phase2Output)
+}
+
+// Remote peer IPv4 address for this tunnel.
+func (o GetVpnConnectionTunnel1Output) RemoteAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpnConnectionTunnel1) string { return v.RemoteAddress }).(pulumi.StringOutput)
+}
+
+type GetVpnConnectionTunnel1Bgp struct {
+	// Remote AS number.
+	RemoteAsn int `pulumi:"remoteAsn"`
+}
+
+// GetVpnConnectionTunnel1BgpInput is an input type that accepts GetVpnConnectionTunnel1BgpArgs and GetVpnConnectionTunnel1BgpOutput values.
+// You can construct a concrete instance of `GetVpnConnectionTunnel1BgpInput` via:
+//
+//	GetVpnConnectionTunnel1BgpArgs{...}
+type GetVpnConnectionTunnel1BgpInput interface {
+	pulumi.Input
+
+	ToGetVpnConnectionTunnel1BgpOutput() GetVpnConnectionTunnel1BgpOutput
+	ToGetVpnConnectionTunnel1BgpOutputWithContext(context.Context) GetVpnConnectionTunnel1BgpOutput
+}
+
+type GetVpnConnectionTunnel1BgpArgs struct {
+	// Remote AS number.
+	RemoteAsn pulumi.IntInput `pulumi:"remoteAsn"`
+}
+
+func (GetVpnConnectionTunnel1BgpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpnConnectionTunnel1Bgp)(nil)).Elem()
+}
+
+func (i GetVpnConnectionTunnel1BgpArgs) ToGetVpnConnectionTunnel1BgpOutput() GetVpnConnectionTunnel1BgpOutput {
+	return i.ToGetVpnConnectionTunnel1BgpOutputWithContext(context.Background())
+}
+
+func (i GetVpnConnectionTunnel1BgpArgs) ToGetVpnConnectionTunnel1BgpOutputWithContext(ctx context.Context) GetVpnConnectionTunnel1BgpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpnConnectionTunnel1BgpOutput)
+}
+
+type GetVpnConnectionTunnel1BgpOutput struct{ *pulumi.OutputState }
+
+func (GetVpnConnectionTunnel1BgpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpnConnectionTunnel1Bgp)(nil)).Elem()
+}
+
+func (o GetVpnConnectionTunnel1BgpOutput) ToGetVpnConnectionTunnel1BgpOutput() GetVpnConnectionTunnel1BgpOutput {
+	return o
+}
+
+func (o GetVpnConnectionTunnel1BgpOutput) ToGetVpnConnectionTunnel1BgpOutputWithContext(ctx context.Context) GetVpnConnectionTunnel1BgpOutput {
+	return o
+}
+
+// Remote AS number.
+func (o GetVpnConnectionTunnel1BgpOutput) RemoteAsn() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpnConnectionTunnel1Bgp) int { return v.RemoteAsn }).(pulumi.IntOutput)
+}
+
+type GetVpnConnectionTunnel1Peering struct {
+	// Local tunnel interface IPv4 address.
+	LocalAddress string `pulumi:"localAddress"`
+	// Remote tunnel interface IPv4 address.
+	RemoteAddress string `pulumi:"remoteAddress"`
+}
+
+// GetVpnConnectionTunnel1PeeringInput is an input type that accepts GetVpnConnectionTunnel1PeeringArgs and GetVpnConnectionTunnel1PeeringOutput values.
+// You can construct a concrete instance of `GetVpnConnectionTunnel1PeeringInput` via:
+//
+//	GetVpnConnectionTunnel1PeeringArgs{...}
+type GetVpnConnectionTunnel1PeeringInput interface {
+	pulumi.Input
+
+	ToGetVpnConnectionTunnel1PeeringOutput() GetVpnConnectionTunnel1PeeringOutput
+	ToGetVpnConnectionTunnel1PeeringOutputWithContext(context.Context) GetVpnConnectionTunnel1PeeringOutput
+}
+
+type GetVpnConnectionTunnel1PeeringArgs struct {
+	// Local tunnel interface IPv4 address.
+	LocalAddress pulumi.StringInput `pulumi:"localAddress"`
+	// Remote tunnel interface IPv4 address.
+	RemoteAddress pulumi.StringInput `pulumi:"remoteAddress"`
+}
+
+func (GetVpnConnectionTunnel1PeeringArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpnConnectionTunnel1Peering)(nil)).Elem()
+}
+
+func (i GetVpnConnectionTunnel1PeeringArgs) ToGetVpnConnectionTunnel1PeeringOutput() GetVpnConnectionTunnel1PeeringOutput {
+	return i.ToGetVpnConnectionTunnel1PeeringOutputWithContext(context.Background())
+}
+
+func (i GetVpnConnectionTunnel1PeeringArgs) ToGetVpnConnectionTunnel1PeeringOutputWithContext(ctx context.Context) GetVpnConnectionTunnel1PeeringOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpnConnectionTunnel1PeeringOutput)
+}
+
+type GetVpnConnectionTunnel1PeeringOutput struct{ *pulumi.OutputState }
+
+func (GetVpnConnectionTunnel1PeeringOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpnConnectionTunnel1Peering)(nil)).Elem()
+}
+
+func (o GetVpnConnectionTunnel1PeeringOutput) ToGetVpnConnectionTunnel1PeeringOutput() GetVpnConnectionTunnel1PeeringOutput {
+	return o
+}
+
+func (o GetVpnConnectionTunnel1PeeringOutput) ToGetVpnConnectionTunnel1PeeringOutputWithContext(ctx context.Context) GetVpnConnectionTunnel1PeeringOutput {
+	return o
+}
+
+// Local tunnel interface IPv4 address.
+func (o GetVpnConnectionTunnel1PeeringOutput) LocalAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpnConnectionTunnel1Peering) string { return v.LocalAddress }).(pulumi.StringOutput)
+}
+
+// Remote tunnel interface IPv4 address.
+func (o GetVpnConnectionTunnel1PeeringOutput) RemoteAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpnConnectionTunnel1Peering) string { return v.RemoteAddress }).(pulumi.StringOutput)
+}
+
+type GetVpnConnectionTunnel1Phase1 struct {
+	// Diffie-Hellman groups.
+	DhGroups []string `pulumi:"dhGroups"`
+	// Encryption algorithms.
+	EncryptionAlgorithms []string `pulumi:"encryptionAlgorithms"`
+	// Integrity/hash algorithms.
+	IntegrityAlgorithms []string `pulumi:"integrityAlgorithms"`
+	// IKE re-keying time in seconds.
+	RekeyTime int `pulumi:"rekeyTime"`
+}
+
+// GetVpnConnectionTunnel1Phase1Input is an input type that accepts GetVpnConnectionTunnel1Phase1Args and GetVpnConnectionTunnel1Phase1Output values.
+// You can construct a concrete instance of `GetVpnConnectionTunnel1Phase1Input` via:
+//
+//	GetVpnConnectionTunnel1Phase1Args{...}
+type GetVpnConnectionTunnel1Phase1Input interface {
+	pulumi.Input
+
+	ToGetVpnConnectionTunnel1Phase1Output() GetVpnConnectionTunnel1Phase1Output
+	ToGetVpnConnectionTunnel1Phase1OutputWithContext(context.Context) GetVpnConnectionTunnel1Phase1Output
+}
+
+type GetVpnConnectionTunnel1Phase1Args struct {
+	// Diffie-Hellman groups.
+	DhGroups pulumi.StringArrayInput `pulumi:"dhGroups"`
+	// Encryption algorithms.
+	EncryptionAlgorithms pulumi.StringArrayInput `pulumi:"encryptionAlgorithms"`
+	// Integrity/hash algorithms.
+	IntegrityAlgorithms pulumi.StringArrayInput `pulumi:"integrityAlgorithms"`
+	// IKE re-keying time in seconds.
+	RekeyTime pulumi.IntInput `pulumi:"rekeyTime"`
+}
+
+func (GetVpnConnectionTunnel1Phase1Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpnConnectionTunnel1Phase1)(nil)).Elem()
+}
+
+func (i GetVpnConnectionTunnel1Phase1Args) ToGetVpnConnectionTunnel1Phase1Output() GetVpnConnectionTunnel1Phase1Output {
+	return i.ToGetVpnConnectionTunnel1Phase1OutputWithContext(context.Background())
+}
+
+func (i GetVpnConnectionTunnel1Phase1Args) ToGetVpnConnectionTunnel1Phase1OutputWithContext(ctx context.Context) GetVpnConnectionTunnel1Phase1Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpnConnectionTunnel1Phase1Output)
+}
+
+type GetVpnConnectionTunnel1Phase1Output struct{ *pulumi.OutputState }
+
+func (GetVpnConnectionTunnel1Phase1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpnConnectionTunnel1Phase1)(nil)).Elem()
+}
+
+func (o GetVpnConnectionTunnel1Phase1Output) ToGetVpnConnectionTunnel1Phase1Output() GetVpnConnectionTunnel1Phase1Output {
+	return o
+}
+
+func (o GetVpnConnectionTunnel1Phase1Output) ToGetVpnConnectionTunnel1Phase1OutputWithContext(ctx context.Context) GetVpnConnectionTunnel1Phase1Output {
+	return o
+}
+
+// Diffie-Hellman groups.
+func (o GetVpnConnectionTunnel1Phase1Output) DhGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVpnConnectionTunnel1Phase1) []string { return v.DhGroups }).(pulumi.StringArrayOutput)
+}
+
+// Encryption algorithms.
+func (o GetVpnConnectionTunnel1Phase1Output) EncryptionAlgorithms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVpnConnectionTunnel1Phase1) []string { return v.EncryptionAlgorithms }).(pulumi.StringArrayOutput)
+}
+
+// Integrity/hash algorithms.
+func (o GetVpnConnectionTunnel1Phase1Output) IntegrityAlgorithms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVpnConnectionTunnel1Phase1) []string { return v.IntegrityAlgorithms }).(pulumi.StringArrayOutput)
+}
+
+// IKE re-keying time in seconds.
+func (o GetVpnConnectionTunnel1Phase1Output) RekeyTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpnConnectionTunnel1Phase1) int { return v.RekeyTime }).(pulumi.IntOutput)
+}
+
+type GetVpnConnectionTunnel1Phase2 struct {
+	// Diffie-Hellman groups for PFS.
+	DhGroups []string `pulumi:"dhGroups"`
+	// DPD timeout action (clear or restart).
+	DpdAction string `pulumi:"dpdAction"`
+	// Encryption algorithms.
+	EncryptionAlgorithms []string `pulumi:"encryptionAlgorithms"`
+	// Integrity/hash algorithms.
+	IntegrityAlgorithms []string `pulumi:"integrityAlgorithms"`
+	// Child SA re-keying time in seconds.
+	RekeyTime int `pulumi:"rekeyTime"`
+	// Start action (none or start).
+	StartAction string `pulumi:"startAction"`
+}
+
+// GetVpnConnectionTunnel1Phase2Input is an input type that accepts GetVpnConnectionTunnel1Phase2Args and GetVpnConnectionTunnel1Phase2Output values.
+// You can construct a concrete instance of `GetVpnConnectionTunnel1Phase2Input` via:
+//
+//	GetVpnConnectionTunnel1Phase2Args{...}
+type GetVpnConnectionTunnel1Phase2Input interface {
+	pulumi.Input
+
+	ToGetVpnConnectionTunnel1Phase2Output() GetVpnConnectionTunnel1Phase2Output
+	ToGetVpnConnectionTunnel1Phase2OutputWithContext(context.Context) GetVpnConnectionTunnel1Phase2Output
+}
+
+type GetVpnConnectionTunnel1Phase2Args struct {
+	// Diffie-Hellman groups for PFS.
+	DhGroups pulumi.StringArrayInput `pulumi:"dhGroups"`
+	// DPD timeout action (clear or restart).
+	DpdAction pulumi.StringInput `pulumi:"dpdAction"`
+	// Encryption algorithms.
+	EncryptionAlgorithms pulumi.StringArrayInput `pulumi:"encryptionAlgorithms"`
+	// Integrity/hash algorithms.
+	IntegrityAlgorithms pulumi.StringArrayInput `pulumi:"integrityAlgorithms"`
+	// Child SA re-keying time in seconds.
+	RekeyTime pulumi.IntInput `pulumi:"rekeyTime"`
+	// Start action (none or start).
+	StartAction pulumi.StringInput `pulumi:"startAction"`
+}
+
+func (GetVpnConnectionTunnel1Phase2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpnConnectionTunnel1Phase2)(nil)).Elem()
+}
+
+func (i GetVpnConnectionTunnel1Phase2Args) ToGetVpnConnectionTunnel1Phase2Output() GetVpnConnectionTunnel1Phase2Output {
+	return i.ToGetVpnConnectionTunnel1Phase2OutputWithContext(context.Background())
+}
+
+func (i GetVpnConnectionTunnel1Phase2Args) ToGetVpnConnectionTunnel1Phase2OutputWithContext(ctx context.Context) GetVpnConnectionTunnel1Phase2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpnConnectionTunnel1Phase2Output)
+}
+
+type GetVpnConnectionTunnel1Phase2Output struct{ *pulumi.OutputState }
+
+func (GetVpnConnectionTunnel1Phase2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpnConnectionTunnel1Phase2)(nil)).Elem()
+}
+
+func (o GetVpnConnectionTunnel1Phase2Output) ToGetVpnConnectionTunnel1Phase2Output() GetVpnConnectionTunnel1Phase2Output {
+	return o
+}
+
+func (o GetVpnConnectionTunnel1Phase2Output) ToGetVpnConnectionTunnel1Phase2OutputWithContext(ctx context.Context) GetVpnConnectionTunnel1Phase2Output {
+	return o
+}
+
+// Diffie-Hellman groups for PFS.
+func (o GetVpnConnectionTunnel1Phase2Output) DhGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVpnConnectionTunnel1Phase2) []string { return v.DhGroups }).(pulumi.StringArrayOutput)
+}
+
+// DPD timeout action (clear or restart).
+func (o GetVpnConnectionTunnel1Phase2Output) DpdAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpnConnectionTunnel1Phase2) string { return v.DpdAction }).(pulumi.StringOutput)
+}
+
+// Encryption algorithms.
+func (o GetVpnConnectionTunnel1Phase2Output) EncryptionAlgorithms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVpnConnectionTunnel1Phase2) []string { return v.EncryptionAlgorithms }).(pulumi.StringArrayOutput)
+}
+
+// Integrity/hash algorithms.
+func (o GetVpnConnectionTunnel1Phase2Output) IntegrityAlgorithms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVpnConnectionTunnel1Phase2) []string { return v.IntegrityAlgorithms }).(pulumi.StringArrayOutput)
+}
+
+// Child SA re-keying time in seconds.
+func (o GetVpnConnectionTunnel1Phase2Output) RekeyTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpnConnectionTunnel1Phase2) int { return v.RekeyTime }).(pulumi.IntOutput)
+}
+
+// Start action (none or start).
+func (o GetVpnConnectionTunnel1Phase2Output) StartAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpnConnectionTunnel1Phase2) string { return v.StartAction }).(pulumi.StringOutput)
+}
+
+type GetVpnConnectionTunnel2 struct {
+	// BGP configuration for this tunnel.
+	Bgp GetVpnConnectionTunnel2Bgp `pulumi:"bgp"`
+	// Tunnel interface peering configuration.
+	Peering GetVpnConnectionTunnel2Peering `pulumi:"peering"`
+	// IKE Phase 1 configuration.
+	Phase1 GetVpnConnectionTunnel2Phase1 `pulumi:"phase1"`
+	// IKE Phase 2 configuration.
+	Phase2 GetVpnConnectionTunnel2Phase2 `pulumi:"phase2"`
+	// Remote peer IPv4 address for this tunnel.
+	RemoteAddress string `pulumi:"remoteAddress"`
+}
+
+// GetVpnConnectionTunnel2Input is an input type that accepts GetVpnConnectionTunnel2Args and GetVpnConnectionTunnel2Output values.
+// You can construct a concrete instance of `GetVpnConnectionTunnel2Input` via:
+//
+//	GetVpnConnectionTunnel2Args{...}
+type GetVpnConnectionTunnel2Input interface {
+	pulumi.Input
+
+	ToGetVpnConnectionTunnel2Output() GetVpnConnectionTunnel2Output
+	ToGetVpnConnectionTunnel2OutputWithContext(context.Context) GetVpnConnectionTunnel2Output
+}
+
+type GetVpnConnectionTunnel2Args struct {
+	// BGP configuration for this tunnel.
+	Bgp GetVpnConnectionTunnel2BgpInput `pulumi:"bgp"`
+	// Tunnel interface peering configuration.
+	Peering GetVpnConnectionTunnel2PeeringInput `pulumi:"peering"`
+	// IKE Phase 1 configuration.
+	Phase1 GetVpnConnectionTunnel2Phase1Input `pulumi:"phase1"`
+	// IKE Phase 2 configuration.
+	Phase2 GetVpnConnectionTunnel2Phase2Input `pulumi:"phase2"`
+	// Remote peer IPv4 address for this tunnel.
+	RemoteAddress pulumi.StringInput `pulumi:"remoteAddress"`
+}
+
+func (GetVpnConnectionTunnel2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpnConnectionTunnel2)(nil)).Elem()
+}
+
+func (i GetVpnConnectionTunnel2Args) ToGetVpnConnectionTunnel2Output() GetVpnConnectionTunnel2Output {
+	return i.ToGetVpnConnectionTunnel2OutputWithContext(context.Background())
+}
+
+func (i GetVpnConnectionTunnel2Args) ToGetVpnConnectionTunnel2OutputWithContext(ctx context.Context) GetVpnConnectionTunnel2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpnConnectionTunnel2Output)
+}
+
+type GetVpnConnectionTunnel2Output struct{ *pulumi.OutputState }
+
+func (GetVpnConnectionTunnel2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpnConnectionTunnel2)(nil)).Elem()
+}
+
+func (o GetVpnConnectionTunnel2Output) ToGetVpnConnectionTunnel2Output() GetVpnConnectionTunnel2Output {
+	return o
+}
+
+func (o GetVpnConnectionTunnel2Output) ToGetVpnConnectionTunnel2OutputWithContext(ctx context.Context) GetVpnConnectionTunnel2Output {
+	return o
+}
+
+// BGP configuration for this tunnel.
+func (o GetVpnConnectionTunnel2Output) Bgp() GetVpnConnectionTunnel2BgpOutput {
+	return o.ApplyT(func(v GetVpnConnectionTunnel2) GetVpnConnectionTunnel2Bgp { return v.Bgp }).(GetVpnConnectionTunnel2BgpOutput)
+}
+
+// Tunnel interface peering configuration.
+func (o GetVpnConnectionTunnel2Output) Peering() GetVpnConnectionTunnel2PeeringOutput {
+	return o.ApplyT(func(v GetVpnConnectionTunnel2) GetVpnConnectionTunnel2Peering { return v.Peering }).(GetVpnConnectionTunnel2PeeringOutput)
+}
+
+// IKE Phase 1 configuration.
+func (o GetVpnConnectionTunnel2Output) Phase1() GetVpnConnectionTunnel2Phase1Output {
+	return o.ApplyT(func(v GetVpnConnectionTunnel2) GetVpnConnectionTunnel2Phase1 { return v.Phase1 }).(GetVpnConnectionTunnel2Phase1Output)
+}
+
+// IKE Phase 2 configuration.
+func (o GetVpnConnectionTunnel2Output) Phase2() GetVpnConnectionTunnel2Phase2Output {
+	return o.ApplyT(func(v GetVpnConnectionTunnel2) GetVpnConnectionTunnel2Phase2 { return v.Phase2 }).(GetVpnConnectionTunnel2Phase2Output)
+}
+
+// Remote peer IPv4 address for this tunnel.
+func (o GetVpnConnectionTunnel2Output) RemoteAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpnConnectionTunnel2) string { return v.RemoteAddress }).(pulumi.StringOutput)
+}
+
+type GetVpnConnectionTunnel2Bgp struct {
+	// Remote AS number.
+	RemoteAsn int `pulumi:"remoteAsn"`
+}
+
+// GetVpnConnectionTunnel2BgpInput is an input type that accepts GetVpnConnectionTunnel2BgpArgs and GetVpnConnectionTunnel2BgpOutput values.
+// You can construct a concrete instance of `GetVpnConnectionTunnel2BgpInput` via:
+//
+//	GetVpnConnectionTunnel2BgpArgs{...}
+type GetVpnConnectionTunnel2BgpInput interface {
+	pulumi.Input
+
+	ToGetVpnConnectionTunnel2BgpOutput() GetVpnConnectionTunnel2BgpOutput
+	ToGetVpnConnectionTunnel2BgpOutputWithContext(context.Context) GetVpnConnectionTunnel2BgpOutput
+}
+
+type GetVpnConnectionTunnel2BgpArgs struct {
+	// Remote AS number.
+	RemoteAsn pulumi.IntInput `pulumi:"remoteAsn"`
+}
+
+func (GetVpnConnectionTunnel2BgpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpnConnectionTunnel2Bgp)(nil)).Elem()
+}
+
+func (i GetVpnConnectionTunnel2BgpArgs) ToGetVpnConnectionTunnel2BgpOutput() GetVpnConnectionTunnel2BgpOutput {
+	return i.ToGetVpnConnectionTunnel2BgpOutputWithContext(context.Background())
+}
+
+func (i GetVpnConnectionTunnel2BgpArgs) ToGetVpnConnectionTunnel2BgpOutputWithContext(ctx context.Context) GetVpnConnectionTunnel2BgpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpnConnectionTunnel2BgpOutput)
+}
+
+type GetVpnConnectionTunnel2BgpOutput struct{ *pulumi.OutputState }
+
+func (GetVpnConnectionTunnel2BgpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpnConnectionTunnel2Bgp)(nil)).Elem()
+}
+
+func (o GetVpnConnectionTunnel2BgpOutput) ToGetVpnConnectionTunnel2BgpOutput() GetVpnConnectionTunnel2BgpOutput {
+	return o
+}
+
+func (o GetVpnConnectionTunnel2BgpOutput) ToGetVpnConnectionTunnel2BgpOutputWithContext(ctx context.Context) GetVpnConnectionTunnel2BgpOutput {
+	return o
+}
+
+// Remote AS number.
+func (o GetVpnConnectionTunnel2BgpOutput) RemoteAsn() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpnConnectionTunnel2Bgp) int { return v.RemoteAsn }).(pulumi.IntOutput)
+}
+
+type GetVpnConnectionTunnel2Peering struct {
+	// Local tunnel interface IPv4 address.
+	LocalAddress string `pulumi:"localAddress"`
+	// Remote tunnel interface IPv4 address.
+	RemoteAddress string `pulumi:"remoteAddress"`
+}
+
+// GetVpnConnectionTunnel2PeeringInput is an input type that accepts GetVpnConnectionTunnel2PeeringArgs and GetVpnConnectionTunnel2PeeringOutput values.
+// You can construct a concrete instance of `GetVpnConnectionTunnel2PeeringInput` via:
+//
+//	GetVpnConnectionTunnel2PeeringArgs{...}
+type GetVpnConnectionTunnel2PeeringInput interface {
+	pulumi.Input
+
+	ToGetVpnConnectionTunnel2PeeringOutput() GetVpnConnectionTunnel2PeeringOutput
+	ToGetVpnConnectionTunnel2PeeringOutputWithContext(context.Context) GetVpnConnectionTunnel2PeeringOutput
+}
+
+type GetVpnConnectionTunnel2PeeringArgs struct {
+	// Local tunnel interface IPv4 address.
+	LocalAddress pulumi.StringInput `pulumi:"localAddress"`
+	// Remote tunnel interface IPv4 address.
+	RemoteAddress pulumi.StringInput `pulumi:"remoteAddress"`
+}
+
+func (GetVpnConnectionTunnel2PeeringArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpnConnectionTunnel2Peering)(nil)).Elem()
+}
+
+func (i GetVpnConnectionTunnel2PeeringArgs) ToGetVpnConnectionTunnel2PeeringOutput() GetVpnConnectionTunnel2PeeringOutput {
+	return i.ToGetVpnConnectionTunnel2PeeringOutputWithContext(context.Background())
+}
+
+func (i GetVpnConnectionTunnel2PeeringArgs) ToGetVpnConnectionTunnel2PeeringOutputWithContext(ctx context.Context) GetVpnConnectionTunnel2PeeringOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpnConnectionTunnel2PeeringOutput)
+}
+
+type GetVpnConnectionTunnel2PeeringOutput struct{ *pulumi.OutputState }
+
+func (GetVpnConnectionTunnel2PeeringOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpnConnectionTunnel2Peering)(nil)).Elem()
+}
+
+func (o GetVpnConnectionTunnel2PeeringOutput) ToGetVpnConnectionTunnel2PeeringOutput() GetVpnConnectionTunnel2PeeringOutput {
+	return o
+}
+
+func (o GetVpnConnectionTunnel2PeeringOutput) ToGetVpnConnectionTunnel2PeeringOutputWithContext(ctx context.Context) GetVpnConnectionTunnel2PeeringOutput {
+	return o
+}
+
+// Local tunnel interface IPv4 address.
+func (o GetVpnConnectionTunnel2PeeringOutput) LocalAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpnConnectionTunnel2Peering) string { return v.LocalAddress }).(pulumi.StringOutput)
+}
+
+// Remote tunnel interface IPv4 address.
+func (o GetVpnConnectionTunnel2PeeringOutput) RemoteAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpnConnectionTunnel2Peering) string { return v.RemoteAddress }).(pulumi.StringOutput)
+}
+
+type GetVpnConnectionTunnel2Phase1 struct {
+	// Diffie-Hellman groups.
+	DhGroups []string `pulumi:"dhGroups"`
+	// Encryption algorithms.
+	EncryptionAlgorithms []string `pulumi:"encryptionAlgorithms"`
+	// Integrity/hash algorithms.
+	IntegrityAlgorithms []string `pulumi:"integrityAlgorithms"`
+	// IKE re-keying time in seconds.
+	RekeyTime int `pulumi:"rekeyTime"`
+}
+
+// GetVpnConnectionTunnel2Phase1Input is an input type that accepts GetVpnConnectionTunnel2Phase1Args and GetVpnConnectionTunnel2Phase1Output values.
+// You can construct a concrete instance of `GetVpnConnectionTunnel2Phase1Input` via:
+//
+//	GetVpnConnectionTunnel2Phase1Args{...}
+type GetVpnConnectionTunnel2Phase1Input interface {
+	pulumi.Input
+
+	ToGetVpnConnectionTunnel2Phase1Output() GetVpnConnectionTunnel2Phase1Output
+	ToGetVpnConnectionTunnel2Phase1OutputWithContext(context.Context) GetVpnConnectionTunnel2Phase1Output
+}
+
+type GetVpnConnectionTunnel2Phase1Args struct {
+	// Diffie-Hellman groups.
+	DhGroups pulumi.StringArrayInput `pulumi:"dhGroups"`
+	// Encryption algorithms.
+	EncryptionAlgorithms pulumi.StringArrayInput `pulumi:"encryptionAlgorithms"`
+	// Integrity/hash algorithms.
+	IntegrityAlgorithms pulumi.StringArrayInput `pulumi:"integrityAlgorithms"`
+	// IKE re-keying time in seconds.
+	RekeyTime pulumi.IntInput `pulumi:"rekeyTime"`
+}
+
+func (GetVpnConnectionTunnel2Phase1Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpnConnectionTunnel2Phase1)(nil)).Elem()
+}
+
+func (i GetVpnConnectionTunnel2Phase1Args) ToGetVpnConnectionTunnel2Phase1Output() GetVpnConnectionTunnel2Phase1Output {
+	return i.ToGetVpnConnectionTunnel2Phase1OutputWithContext(context.Background())
+}
+
+func (i GetVpnConnectionTunnel2Phase1Args) ToGetVpnConnectionTunnel2Phase1OutputWithContext(ctx context.Context) GetVpnConnectionTunnel2Phase1Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpnConnectionTunnel2Phase1Output)
+}
+
+type GetVpnConnectionTunnel2Phase1Output struct{ *pulumi.OutputState }
+
+func (GetVpnConnectionTunnel2Phase1Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpnConnectionTunnel2Phase1)(nil)).Elem()
+}
+
+func (o GetVpnConnectionTunnel2Phase1Output) ToGetVpnConnectionTunnel2Phase1Output() GetVpnConnectionTunnel2Phase1Output {
+	return o
+}
+
+func (o GetVpnConnectionTunnel2Phase1Output) ToGetVpnConnectionTunnel2Phase1OutputWithContext(ctx context.Context) GetVpnConnectionTunnel2Phase1Output {
+	return o
+}
+
+// Diffie-Hellman groups.
+func (o GetVpnConnectionTunnel2Phase1Output) DhGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVpnConnectionTunnel2Phase1) []string { return v.DhGroups }).(pulumi.StringArrayOutput)
+}
+
+// Encryption algorithms.
+func (o GetVpnConnectionTunnel2Phase1Output) EncryptionAlgorithms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVpnConnectionTunnel2Phase1) []string { return v.EncryptionAlgorithms }).(pulumi.StringArrayOutput)
+}
+
+// Integrity/hash algorithms.
+func (o GetVpnConnectionTunnel2Phase1Output) IntegrityAlgorithms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVpnConnectionTunnel2Phase1) []string { return v.IntegrityAlgorithms }).(pulumi.StringArrayOutput)
+}
+
+// IKE re-keying time in seconds.
+func (o GetVpnConnectionTunnel2Phase1Output) RekeyTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpnConnectionTunnel2Phase1) int { return v.RekeyTime }).(pulumi.IntOutput)
+}
+
+type GetVpnConnectionTunnel2Phase2 struct {
+	// Diffie-Hellman groups for PFS.
+	DhGroups []string `pulumi:"dhGroups"`
+	// DPD timeout action (clear or restart).
+	DpdAction string `pulumi:"dpdAction"`
+	// Encryption algorithms.
+	EncryptionAlgorithms []string `pulumi:"encryptionAlgorithms"`
+	// Integrity/hash algorithms.
+	IntegrityAlgorithms []string `pulumi:"integrityAlgorithms"`
+	// Child SA re-keying time in seconds.
+	RekeyTime int `pulumi:"rekeyTime"`
+	// Start action (none or start).
+	StartAction string `pulumi:"startAction"`
+}
+
+// GetVpnConnectionTunnel2Phase2Input is an input type that accepts GetVpnConnectionTunnel2Phase2Args and GetVpnConnectionTunnel2Phase2Output values.
+// You can construct a concrete instance of `GetVpnConnectionTunnel2Phase2Input` via:
+//
+//	GetVpnConnectionTunnel2Phase2Args{...}
+type GetVpnConnectionTunnel2Phase2Input interface {
+	pulumi.Input
+
+	ToGetVpnConnectionTunnel2Phase2Output() GetVpnConnectionTunnel2Phase2Output
+	ToGetVpnConnectionTunnel2Phase2OutputWithContext(context.Context) GetVpnConnectionTunnel2Phase2Output
+}
+
+type GetVpnConnectionTunnel2Phase2Args struct {
+	// Diffie-Hellman groups for PFS.
+	DhGroups pulumi.StringArrayInput `pulumi:"dhGroups"`
+	// DPD timeout action (clear or restart).
+	DpdAction pulumi.StringInput `pulumi:"dpdAction"`
+	// Encryption algorithms.
+	EncryptionAlgorithms pulumi.StringArrayInput `pulumi:"encryptionAlgorithms"`
+	// Integrity/hash algorithms.
+	IntegrityAlgorithms pulumi.StringArrayInput `pulumi:"integrityAlgorithms"`
+	// Child SA re-keying time in seconds.
+	RekeyTime pulumi.IntInput `pulumi:"rekeyTime"`
+	// Start action (none or start).
+	StartAction pulumi.StringInput `pulumi:"startAction"`
+}
+
+func (GetVpnConnectionTunnel2Phase2Args) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpnConnectionTunnel2Phase2)(nil)).Elem()
+}
+
+func (i GetVpnConnectionTunnel2Phase2Args) ToGetVpnConnectionTunnel2Phase2Output() GetVpnConnectionTunnel2Phase2Output {
+	return i.ToGetVpnConnectionTunnel2Phase2OutputWithContext(context.Background())
+}
+
+func (i GetVpnConnectionTunnel2Phase2Args) ToGetVpnConnectionTunnel2Phase2OutputWithContext(ctx context.Context) GetVpnConnectionTunnel2Phase2Output {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpnConnectionTunnel2Phase2Output)
+}
+
+type GetVpnConnectionTunnel2Phase2Output struct{ *pulumi.OutputState }
+
+func (GetVpnConnectionTunnel2Phase2Output) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpnConnectionTunnel2Phase2)(nil)).Elem()
+}
+
+func (o GetVpnConnectionTunnel2Phase2Output) ToGetVpnConnectionTunnel2Phase2Output() GetVpnConnectionTunnel2Phase2Output {
+	return o
+}
+
+func (o GetVpnConnectionTunnel2Phase2Output) ToGetVpnConnectionTunnel2Phase2OutputWithContext(ctx context.Context) GetVpnConnectionTunnel2Phase2Output {
+	return o
+}
+
+// Diffie-Hellman groups for PFS.
+func (o GetVpnConnectionTunnel2Phase2Output) DhGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVpnConnectionTunnel2Phase2) []string { return v.DhGroups }).(pulumi.StringArrayOutput)
+}
+
+// DPD timeout action (clear or restart).
+func (o GetVpnConnectionTunnel2Phase2Output) DpdAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpnConnectionTunnel2Phase2) string { return v.DpdAction }).(pulumi.StringOutput)
+}
+
+// Encryption algorithms.
+func (o GetVpnConnectionTunnel2Phase2Output) EncryptionAlgorithms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVpnConnectionTunnel2Phase2) []string { return v.EncryptionAlgorithms }).(pulumi.StringArrayOutput)
+}
+
+// Integrity/hash algorithms.
+func (o GetVpnConnectionTunnel2Phase2Output) IntegrityAlgorithms() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetVpnConnectionTunnel2Phase2) []string { return v.IntegrityAlgorithms }).(pulumi.StringArrayOutput)
+}
+
+// Child SA re-keying time in seconds.
+func (o GetVpnConnectionTunnel2Phase2Output) RekeyTime() pulumi.IntOutput {
+	return o.ApplyT(func(v GetVpnConnectionTunnel2Phase2) int { return v.RekeyTime }).(pulumi.IntOutput)
+}
+
+// Start action (none or start).
+func (o GetVpnConnectionTunnel2Phase2Output) StartAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpnConnectionTunnel2Phase2) string { return v.StartAction }).(pulumi.StringOutput)
+}
+
 type GetVpnGatewayAvailabilityZones struct {
 	// Availability zone for tunnel 1.
 	Tunnel1 string `pulumi:"tunnel1"`
@@ -35346,6 +38460,236 @@ func (o GetVpnGatewayBgpOutput) LocalAsn() pulumi.IntOutput {
 // List of IPv4 CIDRs to advertise via BGP. If omitted, SNA network ranges are advertised.
 func (o GetVpnGatewayBgpOutput) OverrideAdvertisedRoutes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetVpnGatewayBgp) []string { return v.OverrideAdvertisedRoutes }).(pulumi.StringArrayOutput)
+}
+
+type GetVpnGatewayStatusConnection struct {
+	// ID of the VPN connection.
+	ConnectionId string `pulumi:"connectionId"`
+	// Display name of the VPN connection.
+	DisplayName string `pulumi:"displayName"`
+	// Wether the VPN connection is enabled or not.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetVpnGatewayStatusConnectionInput is an input type that accepts GetVpnGatewayStatusConnectionArgs and GetVpnGatewayStatusConnectionOutput values.
+// You can construct a concrete instance of `GetVpnGatewayStatusConnectionInput` via:
+//
+//	GetVpnGatewayStatusConnectionArgs{...}
+type GetVpnGatewayStatusConnectionInput interface {
+	pulumi.Input
+
+	ToGetVpnGatewayStatusConnectionOutput() GetVpnGatewayStatusConnectionOutput
+	ToGetVpnGatewayStatusConnectionOutputWithContext(context.Context) GetVpnGatewayStatusConnectionOutput
+}
+
+type GetVpnGatewayStatusConnectionArgs struct {
+	// ID of the VPN connection.
+	ConnectionId pulumi.StringInput `pulumi:"connectionId"`
+	// Display name of the VPN connection.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// Wether the VPN connection is enabled or not.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetVpnGatewayStatusConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpnGatewayStatusConnection)(nil)).Elem()
+}
+
+func (i GetVpnGatewayStatusConnectionArgs) ToGetVpnGatewayStatusConnectionOutput() GetVpnGatewayStatusConnectionOutput {
+	return i.ToGetVpnGatewayStatusConnectionOutputWithContext(context.Background())
+}
+
+func (i GetVpnGatewayStatusConnectionArgs) ToGetVpnGatewayStatusConnectionOutputWithContext(ctx context.Context) GetVpnGatewayStatusConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpnGatewayStatusConnectionOutput)
+}
+
+// GetVpnGatewayStatusConnectionArrayInput is an input type that accepts GetVpnGatewayStatusConnectionArray and GetVpnGatewayStatusConnectionArrayOutput values.
+// You can construct a concrete instance of `GetVpnGatewayStatusConnectionArrayInput` via:
+//
+//	GetVpnGatewayStatusConnectionArray{ GetVpnGatewayStatusConnectionArgs{...} }
+type GetVpnGatewayStatusConnectionArrayInput interface {
+	pulumi.Input
+
+	ToGetVpnGatewayStatusConnectionArrayOutput() GetVpnGatewayStatusConnectionArrayOutput
+	ToGetVpnGatewayStatusConnectionArrayOutputWithContext(context.Context) GetVpnGatewayStatusConnectionArrayOutput
+}
+
+type GetVpnGatewayStatusConnectionArray []GetVpnGatewayStatusConnectionInput
+
+func (GetVpnGatewayStatusConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpnGatewayStatusConnection)(nil)).Elem()
+}
+
+func (i GetVpnGatewayStatusConnectionArray) ToGetVpnGatewayStatusConnectionArrayOutput() GetVpnGatewayStatusConnectionArrayOutput {
+	return i.ToGetVpnGatewayStatusConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpnGatewayStatusConnectionArray) ToGetVpnGatewayStatusConnectionArrayOutputWithContext(ctx context.Context) GetVpnGatewayStatusConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpnGatewayStatusConnectionArrayOutput)
+}
+
+type GetVpnGatewayStatusConnectionOutput struct{ *pulumi.OutputState }
+
+func (GetVpnGatewayStatusConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpnGatewayStatusConnection)(nil)).Elem()
+}
+
+func (o GetVpnGatewayStatusConnectionOutput) ToGetVpnGatewayStatusConnectionOutput() GetVpnGatewayStatusConnectionOutput {
+	return o
+}
+
+func (o GetVpnGatewayStatusConnectionOutput) ToGetVpnGatewayStatusConnectionOutputWithContext(ctx context.Context) GetVpnGatewayStatusConnectionOutput {
+	return o
+}
+
+// ID of the VPN connection.
+func (o GetVpnGatewayStatusConnectionOutput) ConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpnGatewayStatusConnection) string { return v.ConnectionId }).(pulumi.StringOutput)
+}
+
+// Display name of the VPN connection.
+func (o GetVpnGatewayStatusConnectionOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpnGatewayStatusConnection) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Wether the VPN connection is enabled or not.
+func (o GetVpnGatewayStatusConnectionOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetVpnGatewayStatusConnection) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetVpnGatewayStatusConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpnGatewayStatusConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpnGatewayStatusConnection)(nil)).Elem()
+}
+
+func (o GetVpnGatewayStatusConnectionArrayOutput) ToGetVpnGatewayStatusConnectionArrayOutput() GetVpnGatewayStatusConnectionArrayOutput {
+	return o
+}
+
+func (o GetVpnGatewayStatusConnectionArrayOutput) ToGetVpnGatewayStatusConnectionArrayOutputWithContext(ctx context.Context) GetVpnGatewayStatusConnectionArrayOutput {
+	return o
+}
+
+func (o GetVpnGatewayStatusConnectionArrayOutput) Index(i pulumi.IntInput) GetVpnGatewayStatusConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpnGatewayStatusConnection {
+		return vs[0].([]GetVpnGatewayStatusConnection)[vs[1].(int)]
+	}).(GetVpnGatewayStatusConnectionOutput)
+}
+
+type GetVpnGatewayStatusTunnel struct {
+	// The IPv4 address of the endpoint in the SNA.
+	InternalNextHopIp string `pulumi:"internalNextHopIp"`
+	// The name of the VPN tunnel. Possible values are: `tunnel1`, `tunnel2`.
+	Name string `pulumi:"name"`
+	// The public IPv4 address of this endpoint.
+	PublicIp string `pulumi:"publicIp"`
+}
+
+// GetVpnGatewayStatusTunnelInput is an input type that accepts GetVpnGatewayStatusTunnelArgs and GetVpnGatewayStatusTunnelOutput values.
+// You can construct a concrete instance of `GetVpnGatewayStatusTunnelInput` via:
+//
+//	GetVpnGatewayStatusTunnelArgs{...}
+type GetVpnGatewayStatusTunnelInput interface {
+	pulumi.Input
+
+	ToGetVpnGatewayStatusTunnelOutput() GetVpnGatewayStatusTunnelOutput
+	ToGetVpnGatewayStatusTunnelOutputWithContext(context.Context) GetVpnGatewayStatusTunnelOutput
+}
+
+type GetVpnGatewayStatusTunnelArgs struct {
+	// The IPv4 address of the endpoint in the SNA.
+	InternalNextHopIp pulumi.StringInput `pulumi:"internalNextHopIp"`
+	// The name of the VPN tunnel. Possible values are: `tunnel1`, `tunnel2`.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The public IPv4 address of this endpoint.
+	PublicIp pulumi.StringInput `pulumi:"publicIp"`
+}
+
+func (GetVpnGatewayStatusTunnelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpnGatewayStatusTunnel)(nil)).Elem()
+}
+
+func (i GetVpnGatewayStatusTunnelArgs) ToGetVpnGatewayStatusTunnelOutput() GetVpnGatewayStatusTunnelOutput {
+	return i.ToGetVpnGatewayStatusTunnelOutputWithContext(context.Background())
+}
+
+func (i GetVpnGatewayStatusTunnelArgs) ToGetVpnGatewayStatusTunnelOutputWithContext(ctx context.Context) GetVpnGatewayStatusTunnelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpnGatewayStatusTunnelOutput)
+}
+
+// GetVpnGatewayStatusTunnelArrayInput is an input type that accepts GetVpnGatewayStatusTunnelArray and GetVpnGatewayStatusTunnelArrayOutput values.
+// You can construct a concrete instance of `GetVpnGatewayStatusTunnelArrayInput` via:
+//
+//	GetVpnGatewayStatusTunnelArray{ GetVpnGatewayStatusTunnelArgs{...} }
+type GetVpnGatewayStatusTunnelArrayInput interface {
+	pulumi.Input
+
+	ToGetVpnGatewayStatusTunnelArrayOutput() GetVpnGatewayStatusTunnelArrayOutput
+	ToGetVpnGatewayStatusTunnelArrayOutputWithContext(context.Context) GetVpnGatewayStatusTunnelArrayOutput
+}
+
+type GetVpnGatewayStatusTunnelArray []GetVpnGatewayStatusTunnelInput
+
+func (GetVpnGatewayStatusTunnelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpnGatewayStatusTunnel)(nil)).Elem()
+}
+
+func (i GetVpnGatewayStatusTunnelArray) ToGetVpnGatewayStatusTunnelArrayOutput() GetVpnGatewayStatusTunnelArrayOutput {
+	return i.ToGetVpnGatewayStatusTunnelArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpnGatewayStatusTunnelArray) ToGetVpnGatewayStatusTunnelArrayOutputWithContext(ctx context.Context) GetVpnGatewayStatusTunnelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpnGatewayStatusTunnelArrayOutput)
+}
+
+type GetVpnGatewayStatusTunnelOutput struct{ *pulumi.OutputState }
+
+func (GetVpnGatewayStatusTunnelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpnGatewayStatusTunnel)(nil)).Elem()
+}
+
+func (o GetVpnGatewayStatusTunnelOutput) ToGetVpnGatewayStatusTunnelOutput() GetVpnGatewayStatusTunnelOutput {
+	return o
+}
+
+func (o GetVpnGatewayStatusTunnelOutput) ToGetVpnGatewayStatusTunnelOutputWithContext(ctx context.Context) GetVpnGatewayStatusTunnelOutput {
+	return o
+}
+
+// The IPv4 address of the endpoint in the SNA.
+func (o GetVpnGatewayStatusTunnelOutput) InternalNextHopIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpnGatewayStatusTunnel) string { return v.InternalNextHopIp }).(pulumi.StringOutput)
+}
+
+// The name of the VPN tunnel. Possible values are: `tunnel1`, `tunnel2`.
+func (o GetVpnGatewayStatusTunnelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpnGatewayStatusTunnel) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The public IPv4 address of this endpoint.
+func (o GetVpnGatewayStatusTunnelOutput) PublicIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpnGatewayStatusTunnel) string { return v.PublicIp }).(pulumi.StringOutput)
+}
+
+type GetVpnGatewayStatusTunnelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpnGatewayStatusTunnelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpnGatewayStatusTunnel)(nil)).Elem()
+}
+
+func (o GetVpnGatewayStatusTunnelArrayOutput) ToGetVpnGatewayStatusTunnelArrayOutput() GetVpnGatewayStatusTunnelArrayOutput {
+	return o
+}
+
+func (o GetVpnGatewayStatusTunnelArrayOutput) ToGetVpnGatewayStatusTunnelArrayOutputWithContext(ctx context.Context) GetVpnGatewayStatusTunnelArrayOutput {
+	return o
+}
+
+func (o GetVpnGatewayStatusTunnelArrayOutput) Index(i pulumi.IntInput) GetVpnGatewayStatusTunnelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpnGatewayStatusTunnel {
+		return vs[0].([]GetVpnGatewayStatusTunnel)[vs[1].(int)]
+	}).(GetVpnGatewayStatusTunnelOutput)
 }
 
 func init() {
@@ -35546,6 +38890,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SfsExportPolicyRuleArrayInput)(nil)).Elem(), SfsExportPolicyRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SfsResourcePoolSnapshotPolicyInput)(nil)).Elem(), SfsResourcePoolSnapshotPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SfsResourcePoolSnapshotPolicyPtrInput)(nil)).Elem(), SfsResourcePoolSnapshotPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterAccessInput)(nil)).Elem(), SkeClusterAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterAccessPtrInput)(nil)).Elem(), SkeClusterAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterAccessIdpInput)(nil)).Elem(), SkeClusterAccessIdpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterAccessIdpPtrInput)(nil)).Elem(), SkeClusterAccessIdpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterExtensionsInput)(nil)).Elem(), SkeClusterExtensionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterExtensionsPtrInput)(nil)).Elem(), SkeClusterExtensionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterExtensionsAclInput)(nil)).Elem(), SkeClusterExtensionsAclArgs{})
@@ -35596,6 +38944,26 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeEncryptionParametersPtrInput)(nil)).Elem(), VolumeEncryptionParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeSourceInput)(nil)).Elem(), VolumeSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeSourcePtrInput)(nil)).Elem(), VolumeSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnConnectionTunnel1Input)(nil)).Elem(), VpnConnectionTunnel1Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnConnectionTunnel1PtrInput)(nil)).Elem(), VpnConnectionTunnel1Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnConnectionTunnel1BgpInput)(nil)).Elem(), VpnConnectionTunnel1BgpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnConnectionTunnel1BgpPtrInput)(nil)).Elem(), VpnConnectionTunnel1BgpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnConnectionTunnel1PeeringInput)(nil)).Elem(), VpnConnectionTunnel1PeeringArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnConnectionTunnel1PeeringPtrInput)(nil)).Elem(), VpnConnectionTunnel1PeeringArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnConnectionTunnel1Phase1Input)(nil)).Elem(), VpnConnectionTunnel1Phase1Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnConnectionTunnel1Phase1PtrInput)(nil)).Elem(), VpnConnectionTunnel1Phase1Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnConnectionTunnel1Phase2Input)(nil)).Elem(), VpnConnectionTunnel1Phase2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnConnectionTunnel1Phase2PtrInput)(nil)).Elem(), VpnConnectionTunnel1Phase2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnConnectionTunnel2Input)(nil)).Elem(), VpnConnectionTunnel2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnConnectionTunnel2PtrInput)(nil)).Elem(), VpnConnectionTunnel2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnConnectionTunnel2BgpInput)(nil)).Elem(), VpnConnectionTunnel2BgpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnConnectionTunnel2BgpPtrInput)(nil)).Elem(), VpnConnectionTunnel2BgpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnConnectionTunnel2PeeringInput)(nil)).Elem(), VpnConnectionTunnel2PeeringArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnConnectionTunnel2PeeringPtrInput)(nil)).Elem(), VpnConnectionTunnel2PeeringArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnConnectionTunnel2Phase1Input)(nil)).Elem(), VpnConnectionTunnel2Phase1Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnConnectionTunnel2Phase1PtrInput)(nil)).Elem(), VpnConnectionTunnel2Phase1Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnConnectionTunnel2Phase2Input)(nil)).Elem(), VpnConnectionTunnel2Phase2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnConnectionTunnel2Phase2PtrInput)(nil)).Elem(), VpnConnectionTunnel2Phase2Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayAvailabilityZonesInput)(nil)).Elem(), VpnGatewayAvailabilityZonesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayAvailabilityZonesPtrInput)(nil)).Elem(), VpnGatewayAvailabilityZonesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayBgpInput)(nil)).Elem(), VpnGatewayBgpArgs{})
@@ -35762,6 +39130,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSfsSnapshotPoliciesItemArrayInput)(nil)).Elem(), GetSfsSnapshotPoliciesItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSfsSnapshotPoliciesItemSnapshotScheduleInput)(nil)).Elem(), GetSfsSnapshotPoliciesItemSnapshotScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSfsSnapshotPoliciesItemSnapshotScheduleArrayInput)(nil)).Elem(), GetSfsSnapshotPoliciesItemSnapshotScheduleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeClusterAccessInput)(nil)).Elem(), GetSkeClusterAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeClusterAccessIdpInput)(nil)).Elem(), GetSkeClusterAccessIdpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeClusterExtensionsInput)(nil)).Elem(), GetSkeClusterExtensionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeClusterExtensionsAclInput)(nil)).Elem(), GetSkeClusterExtensionsAclArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeClusterExtensionsArgusInput)(nil)).Elem(), GetSkeClusterExtensionsArgusArgs{})
@@ -35795,8 +39165,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTelemetryrouterInstanceFilterAttributeInput)(nil)).Elem(), GetTelemetryrouterInstanceFilterAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTelemetryrouterInstanceFilterAttributeArrayInput)(nil)).Elem(), GetTelemetryrouterInstanceFilterAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeSourceInput)(nil)).Elem(), GetVolumeSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpnConnectionTunnel1Input)(nil)).Elem(), GetVpnConnectionTunnel1Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpnConnectionTunnel1BgpInput)(nil)).Elem(), GetVpnConnectionTunnel1BgpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpnConnectionTunnel1PeeringInput)(nil)).Elem(), GetVpnConnectionTunnel1PeeringArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpnConnectionTunnel1Phase1Input)(nil)).Elem(), GetVpnConnectionTunnel1Phase1Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpnConnectionTunnel1Phase2Input)(nil)).Elem(), GetVpnConnectionTunnel1Phase2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpnConnectionTunnel2Input)(nil)).Elem(), GetVpnConnectionTunnel2Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpnConnectionTunnel2BgpInput)(nil)).Elem(), GetVpnConnectionTunnel2BgpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpnConnectionTunnel2PeeringInput)(nil)).Elem(), GetVpnConnectionTunnel2PeeringArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpnConnectionTunnel2Phase1Input)(nil)).Elem(), GetVpnConnectionTunnel2Phase1Args{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpnConnectionTunnel2Phase2Input)(nil)).Elem(), GetVpnConnectionTunnel2Phase2Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpnGatewayAvailabilityZonesInput)(nil)).Elem(), GetVpnGatewayAvailabilityZonesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpnGatewayBgpInput)(nil)).Elem(), GetVpnGatewayBgpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpnGatewayStatusConnectionInput)(nil)).Elem(), GetVpnGatewayStatusConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpnGatewayStatusConnectionArrayInput)(nil)).Elem(), GetVpnGatewayStatusConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpnGatewayStatusTunnelInput)(nil)).Elem(), GetVpnGatewayStatusTunnelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpnGatewayStatusTunnelArrayInput)(nil)).Elem(), GetVpnGatewayStatusTunnelArray{})
 	pulumi.RegisterOutputType(ApplicationLoadBalancerErrorOutput{})
 	pulumi.RegisterOutputType(ApplicationLoadBalancerErrorArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationLoadBalancerListenerOutput{})
@@ -35994,6 +39378,10 @@ func init() {
 	pulumi.RegisterOutputType(SfsExportPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(SfsResourcePoolSnapshotPolicyOutput{})
 	pulumi.RegisterOutputType(SfsResourcePoolSnapshotPolicyPtrOutput{})
+	pulumi.RegisterOutputType(SkeClusterAccessOutput{})
+	pulumi.RegisterOutputType(SkeClusterAccessPtrOutput{})
+	pulumi.RegisterOutputType(SkeClusterAccessIdpOutput{})
+	pulumi.RegisterOutputType(SkeClusterAccessIdpPtrOutput{})
 	pulumi.RegisterOutputType(SkeClusterExtensionsOutput{})
 	pulumi.RegisterOutputType(SkeClusterExtensionsPtrOutput{})
 	pulumi.RegisterOutputType(SkeClusterExtensionsAclOutput{})
@@ -36044,6 +39432,26 @@ func init() {
 	pulumi.RegisterOutputType(VolumeEncryptionParametersPtrOutput{})
 	pulumi.RegisterOutputType(VolumeSourceOutput{})
 	pulumi.RegisterOutputType(VolumeSourcePtrOutput{})
+	pulumi.RegisterOutputType(VpnConnectionTunnel1Output{})
+	pulumi.RegisterOutputType(VpnConnectionTunnel1PtrOutput{})
+	pulumi.RegisterOutputType(VpnConnectionTunnel1BgpOutput{})
+	pulumi.RegisterOutputType(VpnConnectionTunnel1BgpPtrOutput{})
+	pulumi.RegisterOutputType(VpnConnectionTunnel1PeeringOutput{})
+	pulumi.RegisterOutputType(VpnConnectionTunnel1PeeringPtrOutput{})
+	pulumi.RegisterOutputType(VpnConnectionTunnel1Phase1Output{})
+	pulumi.RegisterOutputType(VpnConnectionTunnel1Phase1PtrOutput{})
+	pulumi.RegisterOutputType(VpnConnectionTunnel1Phase2Output{})
+	pulumi.RegisterOutputType(VpnConnectionTunnel1Phase2PtrOutput{})
+	pulumi.RegisterOutputType(VpnConnectionTunnel2Output{})
+	pulumi.RegisterOutputType(VpnConnectionTunnel2PtrOutput{})
+	pulumi.RegisterOutputType(VpnConnectionTunnel2BgpOutput{})
+	pulumi.RegisterOutputType(VpnConnectionTunnel2BgpPtrOutput{})
+	pulumi.RegisterOutputType(VpnConnectionTunnel2PeeringOutput{})
+	pulumi.RegisterOutputType(VpnConnectionTunnel2PeeringPtrOutput{})
+	pulumi.RegisterOutputType(VpnConnectionTunnel2Phase1Output{})
+	pulumi.RegisterOutputType(VpnConnectionTunnel2Phase1PtrOutput{})
+	pulumi.RegisterOutputType(VpnConnectionTunnel2Phase2Output{})
+	pulumi.RegisterOutputType(VpnConnectionTunnel2Phase2PtrOutput{})
 	pulumi.RegisterOutputType(VpnGatewayAvailabilityZonesOutput{})
 	pulumi.RegisterOutputType(VpnGatewayAvailabilityZonesPtrOutput{})
 	pulumi.RegisterOutputType(VpnGatewayBgpOutput{})
@@ -36210,6 +39618,8 @@ func init() {
 	pulumi.RegisterOutputType(GetSfsSnapshotPoliciesItemArrayOutput{})
 	pulumi.RegisterOutputType(GetSfsSnapshotPoliciesItemSnapshotScheduleOutput{})
 	pulumi.RegisterOutputType(GetSfsSnapshotPoliciesItemSnapshotScheduleArrayOutput{})
+	pulumi.RegisterOutputType(GetSkeClusterAccessOutput{})
+	pulumi.RegisterOutputType(GetSkeClusterAccessIdpOutput{})
 	pulumi.RegisterOutputType(GetSkeClusterExtensionsOutput{})
 	pulumi.RegisterOutputType(GetSkeClusterExtensionsAclOutput{})
 	pulumi.RegisterOutputType(GetSkeClusterExtensionsArgusOutput{})
@@ -36243,6 +39653,20 @@ func init() {
 	pulumi.RegisterOutputType(GetTelemetryrouterInstanceFilterAttributeOutput{})
 	pulumi.RegisterOutputType(GetTelemetryrouterInstanceFilterAttributeArrayOutput{})
 	pulumi.RegisterOutputType(GetVolumeSourceOutput{})
+	pulumi.RegisterOutputType(GetVpnConnectionTunnel1Output{})
+	pulumi.RegisterOutputType(GetVpnConnectionTunnel1BgpOutput{})
+	pulumi.RegisterOutputType(GetVpnConnectionTunnel1PeeringOutput{})
+	pulumi.RegisterOutputType(GetVpnConnectionTunnel1Phase1Output{})
+	pulumi.RegisterOutputType(GetVpnConnectionTunnel1Phase2Output{})
+	pulumi.RegisterOutputType(GetVpnConnectionTunnel2Output{})
+	pulumi.RegisterOutputType(GetVpnConnectionTunnel2BgpOutput{})
+	pulumi.RegisterOutputType(GetVpnConnectionTunnel2PeeringOutput{})
+	pulumi.RegisterOutputType(GetVpnConnectionTunnel2Phase1Output{})
+	pulumi.RegisterOutputType(GetVpnConnectionTunnel2Phase2Output{})
 	pulumi.RegisterOutputType(GetVpnGatewayAvailabilityZonesOutput{})
 	pulumi.RegisterOutputType(GetVpnGatewayBgpOutput{})
+	pulumi.RegisterOutputType(GetVpnGatewayStatusConnectionOutput{})
+	pulumi.RegisterOutputType(GetVpnGatewayStatusConnectionArrayOutput{})
+	pulumi.RegisterOutputType(GetVpnGatewayStatusTunnelOutput{})
+	pulumi.RegisterOutputType(GetVpnGatewayStatusTunnelArrayOutput{})
 }

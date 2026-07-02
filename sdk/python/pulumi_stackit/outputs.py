@@ -115,6 +115,8 @@ __all__ = [
     'ServiceAccountFederatedIdentityProviderAssertion',
     'SfsExportPolicyRule',
     'SfsResourcePoolSnapshotPolicy',
+    'SkeClusterAccess',
+    'SkeClusterAccessIdp',
     'SkeClusterExtensions',
     'SkeClusterExtensionsAcl',
     'SkeClusterExtensionsArgus',
@@ -140,6 +142,16 @@ __all__ = [
     'TelemetryrouterInstanceFilterAttribute',
     'VolumeEncryptionParameters',
     'VolumeSource',
+    'VpnConnectionTunnel1',
+    'VpnConnectionTunnel1Bgp',
+    'VpnConnectionTunnel1Peering',
+    'VpnConnectionTunnel1Phase1',
+    'VpnConnectionTunnel1Phase2',
+    'VpnConnectionTunnel2',
+    'VpnConnectionTunnel2Bgp',
+    'VpnConnectionTunnel2Peering',
+    'VpnConnectionTunnel2Phase1',
+    'VpnConnectionTunnel2Phase2',
     'VpnGatewayAvailabilityZones',
     'VpnGatewayBgp',
     'GetApplicationLoadBalancerErrorResult',
@@ -257,6 +269,8 @@ __all__ = [
     'GetSfsResourcePoolSnapshotSnapshotResult',
     'GetSfsSnapshotPoliciesItemResult',
     'GetSfsSnapshotPoliciesItemSnapshotScheduleResult',
+    'GetSkeClusterAccessResult',
+    'GetSkeClusterAccessIdpResult',
     'GetSkeClusterExtensionsResult',
     'GetSkeClusterExtensionsAclResult',
     'GetSkeClusterExtensionsArgusResult',
@@ -282,8 +296,20 @@ __all__ = [
     'GetTelemetryrouterInstanceFilterResult',
     'GetTelemetryrouterInstanceFilterAttributeResult',
     'GetVolumeSourceResult',
+    'GetVpnConnectionTunnel1Result',
+    'GetVpnConnectionTunnel1BgpResult',
+    'GetVpnConnectionTunnel1PeeringResult',
+    'GetVpnConnectionTunnel1Phase1Result',
+    'GetVpnConnectionTunnel1Phase2Result',
+    'GetVpnConnectionTunnel2Result',
+    'GetVpnConnectionTunnel2BgpResult',
+    'GetVpnConnectionTunnel2PeeringResult',
+    'GetVpnConnectionTunnel2Phase1Result',
+    'GetVpnConnectionTunnel2Phase2Result',
     'GetVpnGatewayAvailabilityZonesResult',
     'GetVpnGatewayBgpResult',
+    'GetVpnGatewayStatusConnectionResult',
+    'GetVpnGatewayStatusTunnelResult',
 ]
 
 @pulumi.output_type
@@ -7074,6 +7100,56 @@ class SfsResourcePoolSnapshotPolicy(dict):
 
 
 @pulumi.output_type
+class SkeClusterAccess(dict):
+    def __init__(__self__, *,
+                 idp: Optional['outputs.SkeClusterAccessIdp'] = None):
+        """
+        :param 'SkeClusterAccessIdpArgs' idp: Configure IDP
+        """
+        if idp is not None:
+            pulumi.set(__self__, "idp", idp)
+
+    @_builtins.property
+    @pulumi.getter
+    def idp(self) -> Optional['outputs.SkeClusterAccessIdp']:
+        """
+        Configure IDP
+        """
+        return pulumi.get(self, "idp")
+
+
+@pulumi.output_type
+class SkeClusterAccessIdp(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 type: Optional[_builtins.str] = None):
+        """
+        :param _builtins.bool enabled: Enable IDP integration for the cluster.
+        :param _builtins.str type: The IDP type. Possible values: 'stackit'.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Enable IDP integration for the cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        The IDP type. Possible values: 'stackit'.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
 class SkeClusterExtensions(dict):
     def __init__(__self__, *,
                  acl: Optional['outputs.SkeClusterExtensionsAcl'] = None,
@@ -8439,6 +8515,750 @@ class VolumeSource(dict):
         The type of the source. Possible values are: `volume`, `image`, `snapshot`, `backup`.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class VpnConnectionTunnel1(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "remoteAddress":
+            suggest = "remote_address"
+        elif key == "preSharedKey":
+            suggest = "pre_shared_key"
+        elif key == "preSharedKeyWo":
+            suggest = "pre_shared_key_wo"
+        elif key == "preSharedKeyWoVersion":
+            suggest = "pre_shared_key_wo_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VpnConnectionTunnel1. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VpnConnectionTunnel1.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VpnConnectionTunnel1.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 phase1: 'outputs.VpnConnectionTunnel1Phase1',
+                 phase2: 'outputs.VpnConnectionTunnel1Phase2',
+                 remote_address: _builtins.str,
+                 bgp: Optional['outputs.VpnConnectionTunnel1Bgp'] = None,
+                 peering: Optional['outputs.VpnConnectionTunnel1Peering'] = None,
+                 pre_shared_key: Optional[_builtins.str] = None,
+                 pre_shared_key_wo: Optional[_builtins.str] = None,
+                 pre_shared_key_wo_version: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str remote_address: Remote IPv4 address for the tunnel endpoint.
+        :param _builtins.str pre_shared_key: Pre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only argument `pre_shared_key_wo` should be preferred.
+        :param _builtins.str pre_shared_key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Pre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only - never stored in state and never returned by the API. To rotate the key, update this value AND increment pre*shared*key*wo*version. Changing this field alone will NOT trigger an update.
+        :param _builtins.int pre_shared_key_wo_version: User-managed rotation counter for the pre-shared key. Must be incremented every time pre*shared*key*wo is changed. Terraform diffs this field to detect key rotations - changing pre*shared*key*wo alone will NOT trigger an update because it is write-only and never stored in state.
+        """
+        pulumi.set(__self__, "phase1", phase1)
+        pulumi.set(__self__, "phase2", phase2)
+        pulumi.set(__self__, "remote_address", remote_address)
+        if bgp is not None:
+            pulumi.set(__self__, "bgp", bgp)
+        if peering is not None:
+            pulumi.set(__self__, "peering", peering)
+        if pre_shared_key is not None:
+            pulumi.set(__self__, "pre_shared_key", pre_shared_key)
+        if pre_shared_key_wo is not None:
+            pulumi.set(__self__, "pre_shared_key_wo", pre_shared_key_wo)
+        if pre_shared_key_wo_version is not None:
+            pulumi.set(__self__, "pre_shared_key_wo_version", pre_shared_key_wo_version)
+
+    @_builtins.property
+    @pulumi.getter
+    def phase1(self) -> 'outputs.VpnConnectionTunnel1Phase1':
+        return pulumi.get(self, "phase1")
+
+    @_builtins.property
+    @pulumi.getter
+    def phase2(self) -> 'outputs.VpnConnectionTunnel1Phase2':
+        return pulumi.get(self, "phase2")
+
+    @_builtins.property
+    @pulumi.getter(name="remoteAddress")
+    def remote_address(self) -> _builtins.str:
+        """
+        Remote IPv4 address for the tunnel endpoint.
+        """
+        return pulumi.get(self, "remote_address")
+
+    @_builtins.property
+    @pulumi.getter
+    def bgp(self) -> Optional['outputs.VpnConnectionTunnel1Bgp']:
+        return pulumi.get(self, "bgp")
+
+    @_builtins.property
+    @pulumi.getter
+    def peering(self) -> Optional['outputs.VpnConnectionTunnel1Peering']:
+        return pulumi.get(self, "peering")
+
+    @_builtins.property
+    @pulumi.getter(name="preSharedKey")
+    def pre_shared_key(self) -> Optional[_builtins.str]:
+        """
+        Pre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only argument `pre_shared_key_wo` should be preferred.
+        """
+        return pulumi.get(self, "pre_shared_key")
+
+    @_builtins.property
+    @pulumi.getter(name="preSharedKeyWo")
+    def pre_shared_key_wo(self) -> Optional[_builtins.str]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Pre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only - never stored in state and never returned by the API. To rotate the key, update this value AND increment pre*shared*key*wo*version. Changing this field alone will NOT trigger an update.
+        """
+        return pulumi.get(self, "pre_shared_key_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="preSharedKeyWoVersion")
+    def pre_shared_key_wo_version(self) -> Optional[_builtins.int]:
+        """
+        User-managed rotation counter for the pre-shared key. Must be incremented every time pre*shared*key*wo is changed. Terraform diffs this field to detect key rotations - changing pre*shared*key*wo alone will NOT trigger an update because it is write-only and never stored in state.
+        """
+        return pulumi.get(self, "pre_shared_key_wo_version")
+
+
+@pulumi.output_type
+class VpnConnectionTunnel1Bgp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "remoteAsn":
+            suggest = "remote_asn"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VpnConnectionTunnel1Bgp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VpnConnectionTunnel1Bgp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VpnConnectionTunnel1Bgp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 remote_asn: _builtins.int):
+        """
+        :param _builtins.int remote_asn: Remote ASN for BGP peering (private ASN range, 64512-4294967294).
+        """
+        pulumi.set(__self__, "remote_asn", remote_asn)
+
+    @_builtins.property
+    @pulumi.getter(name="remoteAsn")
+    def remote_asn(self) -> _builtins.int:
+        """
+        Remote ASN for BGP peering (private ASN range, 64512-4294967294).
+        """
+        return pulumi.get(self, "remote_asn")
+
+
+@pulumi.output_type
+class VpnConnectionTunnel1Peering(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "localAddress":
+            suggest = "local_address"
+        elif key == "remoteAddress":
+            suggest = "remote_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VpnConnectionTunnel1Peering. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VpnConnectionTunnel1Peering.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VpnConnectionTunnel1Peering.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 local_address: _builtins.str,
+                 remote_address: _builtins.str):
+        """
+        :param _builtins.str local_address: Local tunnel interface IPv4 address.
+        :param _builtins.str remote_address: Remote tunnel interface IPv4 address.
+        """
+        pulumi.set(__self__, "local_address", local_address)
+        pulumi.set(__self__, "remote_address", remote_address)
+
+    @_builtins.property
+    @pulumi.getter(name="localAddress")
+    def local_address(self) -> _builtins.str:
+        """
+        Local tunnel interface IPv4 address.
+        """
+        return pulumi.get(self, "local_address")
+
+    @_builtins.property
+    @pulumi.getter(name="remoteAddress")
+    def remote_address(self) -> _builtins.str:
+        """
+        Remote tunnel interface IPv4 address.
+        """
+        return pulumi.get(self, "remote_address")
+
+
+@pulumi.output_type
+class VpnConnectionTunnel1Phase1(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "encryptionAlgorithms":
+            suggest = "encryption_algorithms"
+        elif key == "integrityAlgorithms":
+            suggest = "integrity_algorithms"
+        elif key == "dhGroups":
+            suggest = "dh_groups"
+        elif key == "rekeyTime":
+            suggest = "rekey_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VpnConnectionTunnel1Phase1. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VpnConnectionTunnel1Phase1.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VpnConnectionTunnel1Phase1.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 encryption_algorithms: Sequence[_builtins.str],
+                 integrity_algorithms: Sequence[_builtins.str],
+                 dh_groups: Optional[Sequence[_builtins.str]] = None,
+                 rekey_time: Optional[_builtins.int] = None):
+        """
+        :param Sequence[_builtins.str] encryption_algorithms: Encryption algorithms for Phase 1. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
+        :param Sequence[_builtins.str] integrity_algorithms: Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2_256`, `sha2_384`.
+        :param Sequence[_builtins.str] dh_groups: Diffie-Hellman groups for key exchange. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
+        :param _builtins.int rekey_time: Time to schedule an IKE re-keying in seconds. Range: 900-28800. Default: 14400.
+        """
+        pulumi.set(__self__, "encryption_algorithms", encryption_algorithms)
+        pulumi.set(__self__, "integrity_algorithms", integrity_algorithms)
+        if dh_groups is not None:
+            pulumi.set(__self__, "dh_groups", dh_groups)
+        if rekey_time is not None:
+            pulumi.set(__self__, "rekey_time", rekey_time)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionAlgorithms")
+    def encryption_algorithms(self) -> Sequence[_builtins.str]:
+        """
+        Encryption algorithms for Phase 1. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
+        """
+        return pulumi.get(self, "encryption_algorithms")
+
+    @_builtins.property
+    @pulumi.getter(name="integrityAlgorithms")
+    def integrity_algorithms(self) -> Sequence[_builtins.str]:
+        """
+        Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2_256`, `sha2_384`.
+        """
+        return pulumi.get(self, "integrity_algorithms")
+
+    @_builtins.property
+    @pulumi.getter(name="dhGroups")
+    def dh_groups(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Diffie-Hellman groups for key exchange. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
+        """
+        return pulumi.get(self, "dh_groups")
+
+    @_builtins.property
+    @pulumi.getter(name="rekeyTime")
+    def rekey_time(self) -> Optional[_builtins.int]:
+        """
+        Time to schedule an IKE re-keying in seconds. Range: 900-28800. Default: 14400.
+        """
+        return pulumi.get(self, "rekey_time")
+
+
+@pulumi.output_type
+class VpnConnectionTunnel1Phase2(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "encryptionAlgorithms":
+            suggest = "encryption_algorithms"
+        elif key == "integrityAlgorithms":
+            suggest = "integrity_algorithms"
+        elif key == "dhGroups":
+            suggest = "dh_groups"
+        elif key == "dpdAction":
+            suggest = "dpd_action"
+        elif key == "rekeyTime":
+            suggest = "rekey_time"
+        elif key == "startAction":
+            suggest = "start_action"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VpnConnectionTunnel1Phase2. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VpnConnectionTunnel1Phase2.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VpnConnectionTunnel1Phase2.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 encryption_algorithms: Sequence[_builtins.str],
+                 integrity_algorithms: Sequence[_builtins.str],
+                 dh_groups: Optional[Sequence[_builtins.str]] = None,
+                 dpd_action: Optional[_builtins.str] = None,
+                 rekey_time: Optional[_builtins.int] = None,
+                 start_action: Optional[_builtins.str] = None):
+        """
+        :param Sequence[_builtins.str] encryption_algorithms: Encryption algorithms for Phase 2. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
+        :param Sequence[_builtins.str] integrity_algorithms: Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2_256`, `sha2_384`.
+        :param Sequence[_builtins.str] dh_groups: Diffie-Hellman groups for Phase 2. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
+        :param _builtins.str dpd_action: Action to perform on DPD timeout. Default: 'restart'. Possible values are: `clear`, `restart`.
+        :param _builtins.int rekey_time: Time to schedule a Child SA re-keying in seconds. Range: 900-3600. Default: 3600.
+        :param _builtins.str start_action: Action to perform after loading the connection configuration. Default: 'start'. Possible values are: `none`, `start`.
+        """
+        pulumi.set(__self__, "encryption_algorithms", encryption_algorithms)
+        pulumi.set(__self__, "integrity_algorithms", integrity_algorithms)
+        if dh_groups is not None:
+            pulumi.set(__self__, "dh_groups", dh_groups)
+        if dpd_action is not None:
+            pulumi.set(__self__, "dpd_action", dpd_action)
+        if rekey_time is not None:
+            pulumi.set(__self__, "rekey_time", rekey_time)
+        if start_action is not None:
+            pulumi.set(__self__, "start_action", start_action)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionAlgorithms")
+    def encryption_algorithms(self) -> Sequence[_builtins.str]:
+        """
+        Encryption algorithms for Phase 2. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
+        """
+        return pulumi.get(self, "encryption_algorithms")
+
+    @_builtins.property
+    @pulumi.getter(name="integrityAlgorithms")
+    def integrity_algorithms(self) -> Sequence[_builtins.str]:
+        """
+        Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2_256`, `sha2_384`.
+        """
+        return pulumi.get(self, "integrity_algorithms")
+
+    @_builtins.property
+    @pulumi.getter(name="dhGroups")
+    def dh_groups(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Diffie-Hellman groups for Phase 2. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
+        """
+        return pulumi.get(self, "dh_groups")
+
+    @_builtins.property
+    @pulumi.getter(name="dpdAction")
+    def dpd_action(self) -> Optional[_builtins.str]:
+        """
+        Action to perform on DPD timeout. Default: 'restart'. Possible values are: `clear`, `restart`.
+        """
+        return pulumi.get(self, "dpd_action")
+
+    @_builtins.property
+    @pulumi.getter(name="rekeyTime")
+    def rekey_time(self) -> Optional[_builtins.int]:
+        """
+        Time to schedule a Child SA re-keying in seconds. Range: 900-3600. Default: 3600.
+        """
+        return pulumi.get(self, "rekey_time")
+
+    @_builtins.property
+    @pulumi.getter(name="startAction")
+    def start_action(self) -> Optional[_builtins.str]:
+        """
+        Action to perform after loading the connection configuration. Default: 'start'. Possible values are: `none`, `start`.
+        """
+        return pulumi.get(self, "start_action")
+
+
+@pulumi.output_type
+class VpnConnectionTunnel2(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "remoteAddress":
+            suggest = "remote_address"
+        elif key == "preSharedKey":
+            suggest = "pre_shared_key"
+        elif key == "preSharedKeyWo":
+            suggest = "pre_shared_key_wo"
+        elif key == "preSharedKeyWoVersion":
+            suggest = "pre_shared_key_wo_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VpnConnectionTunnel2. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VpnConnectionTunnel2.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VpnConnectionTunnel2.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 phase1: 'outputs.VpnConnectionTunnel2Phase1',
+                 phase2: 'outputs.VpnConnectionTunnel2Phase2',
+                 remote_address: _builtins.str,
+                 bgp: Optional['outputs.VpnConnectionTunnel2Bgp'] = None,
+                 peering: Optional['outputs.VpnConnectionTunnel2Peering'] = None,
+                 pre_shared_key: Optional[_builtins.str] = None,
+                 pre_shared_key_wo: Optional[_builtins.str] = None,
+                 pre_shared_key_wo_version: Optional[_builtins.int] = None):
+        """
+        :param _builtins.str remote_address: Remote IPv4 address for the tunnel endpoint.
+        :param _builtins.str pre_shared_key: Pre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only argument `pre_shared_key_wo` should be preferred.
+        :param _builtins.str pre_shared_key_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Pre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only - never stored in state and never returned by the API. To rotate the key, update this value AND increment pre*shared*key*wo*version. Changing this field alone will NOT trigger an update.
+        :param _builtins.int pre_shared_key_wo_version: User-managed rotation counter for the pre-shared key. Must be incremented every time pre*shared*key*wo is changed. Terraform diffs this field to detect key rotations - changing pre*shared*key*wo alone will NOT trigger an update because it is write-only and never stored in state.
+        """
+        pulumi.set(__self__, "phase1", phase1)
+        pulumi.set(__self__, "phase2", phase2)
+        pulumi.set(__self__, "remote_address", remote_address)
+        if bgp is not None:
+            pulumi.set(__self__, "bgp", bgp)
+        if peering is not None:
+            pulumi.set(__self__, "peering", peering)
+        if pre_shared_key is not None:
+            pulumi.set(__self__, "pre_shared_key", pre_shared_key)
+        if pre_shared_key_wo is not None:
+            pulumi.set(__self__, "pre_shared_key_wo", pre_shared_key_wo)
+        if pre_shared_key_wo_version is not None:
+            pulumi.set(__self__, "pre_shared_key_wo_version", pre_shared_key_wo_version)
+
+    @_builtins.property
+    @pulumi.getter
+    def phase1(self) -> 'outputs.VpnConnectionTunnel2Phase1':
+        return pulumi.get(self, "phase1")
+
+    @_builtins.property
+    @pulumi.getter
+    def phase2(self) -> 'outputs.VpnConnectionTunnel2Phase2':
+        return pulumi.get(self, "phase2")
+
+    @_builtins.property
+    @pulumi.getter(name="remoteAddress")
+    def remote_address(self) -> _builtins.str:
+        """
+        Remote IPv4 address for the tunnel endpoint.
+        """
+        return pulumi.get(self, "remote_address")
+
+    @_builtins.property
+    @pulumi.getter
+    def bgp(self) -> Optional['outputs.VpnConnectionTunnel2Bgp']:
+        return pulumi.get(self, "bgp")
+
+    @_builtins.property
+    @pulumi.getter
+    def peering(self) -> Optional['outputs.VpnConnectionTunnel2Peering']:
+        return pulumi.get(self, "peering")
+
+    @_builtins.property
+    @pulumi.getter(name="preSharedKey")
+    def pre_shared_key(self) -> Optional[_builtins.str]:
+        """
+        Pre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only argument `pre_shared_key_wo` should be preferred.
+        """
+        return pulumi.get(self, "pre_shared_key")
+
+    @_builtins.property
+    @pulumi.getter(name="preSharedKeyWo")
+    def pre_shared_key_wo(self) -> Optional[_builtins.str]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Pre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only - never stored in state and never returned by the API. To rotate the key, update this value AND increment pre*shared*key*wo*version. Changing this field alone will NOT trigger an update.
+        """
+        return pulumi.get(self, "pre_shared_key_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="preSharedKeyWoVersion")
+    def pre_shared_key_wo_version(self) -> Optional[_builtins.int]:
+        """
+        User-managed rotation counter for the pre-shared key. Must be incremented every time pre*shared*key*wo is changed. Terraform diffs this field to detect key rotations - changing pre*shared*key*wo alone will NOT trigger an update because it is write-only and never stored in state.
+        """
+        return pulumi.get(self, "pre_shared_key_wo_version")
+
+
+@pulumi.output_type
+class VpnConnectionTunnel2Bgp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "remoteAsn":
+            suggest = "remote_asn"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VpnConnectionTunnel2Bgp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VpnConnectionTunnel2Bgp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VpnConnectionTunnel2Bgp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 remote_asn: _builtins.int):
+        """
+        :param _builtins.int remote_asn: Remote ASN for BGP peering (private ASN range, 64512-4294967294).
+        """
+        pulumi.set(__self__, "remote_asn", remote_asn)
+
+    @_builtins.property
+    @pulumi.getter(name="remoteAsn")
+    def remote_asn(self) -> _builtins.int:
+        """
+        Remote ASN for BGP peering (private ASN range, 64512-4294967294).
+        """
+        return pulumi.get(self, "remote_asn")
+
+
+@pulumi.output_type
+class VpnConnectionTunnel2Peering(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "localAddress":
+            suggest = "local_address"
+        elif key == "remoteAddress":
+            suggest = "remote_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VpnConnectionTunnel2Peering. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VpnConnectionTunnel2Peering.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VpnConnectionTunnel2Peering.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 local_address: _builtins.str,
+                 remote_address: _builtins.str):
+        """
+        :param _builtins.str local_address: Local tunnel interface IPv4 address.
+        :param _builtins.str remote_address: Remote tunnel interface IPv4 address.
+        """
+        pulumi.set(__self__, "local_address", local_address)
+        pulumi.set(__self__, "remote_address", remote_address)
+
+    @_builtins.property
+    @pulumi.getter(name="localAddress")
+    def local_address(self) -> _builtins.str:
+        """
+        Local tunnel interface IPv4 address.
+        """
+        return pulumi.get(self, "local_address")
+
+    @_builtins.property
+    @pulumi.getter(name="remoteAddress")
+    def remote_address(self) -> _builtins.str:
+        """
+        Remote tunnel interface IPv4 address.
+        """
+        return pulumi.get(self, "remote_address")
+
+
+@pulumi.output_type
+class VpnConnectionTunnel2Phase1(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "encryptionAlgorithms":
+            suggest = "encryption_algorithms"
+        elif key == "integrityAlgorithms":
+            suggest = "integrity_algorithms"
+        elif key == "dhGroups":
+            suggest = "dh_groups"
+        elif key == "rekeyTime":
+            suggest = "rekey_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VpnConnectionTunnel2Phase1. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VpnConnectionTunnel2Phase1.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VpnConnectionTunnel2Phase1.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 encryption_algorithms: Sequence[_builtins.str],
+                 integrity_algorithms: Sequence[_builtins.str],
+                 dh_groups: Optional[Sequence[_builtins.str]] = None,
+                 rekey_time: Optional[_builtins.int] = None):
+        """
+        :param Sequence[_builtins.str] encryption_algorithms: Encryption algorithms for Phase 1. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
+        :param Sequence[_builtins.str] integrity_algorithms: Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2_256`, `sha2_384`.
+        :param Sequence[_builtins.str] dh_groups: Diffie-Hellman groups for key exchange. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
+        :param _builtins.int rekey_time: Time to schedule an IKE re-keying in seconds. Range: 900-28800. Default: 14400.
+        """
+        pulumi.set(__self__, "encryption_algorithms", encryption_algorithms)
+        pulumi.set(__self__, "integrity_algorithms", integrity_algorithms)
+        if dh_groups is not None:
+            pulumi.set(__self__, "dh_groups", dh_groups)
+        if rekey_time is not None:
+            pulumi.set(__self__, "rekey_time", rekey_time)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionAlgorithms")
+    def encryption_algorithms(self) -> Sequence[_builtins.str]:
+        """
+        Encryption algorithms for Phase 1. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
+        """
+        return pulumi.get(self, "encryption_algorithms")
+
+    @_builtins.property
+    @pulumi.getter(name="integrityAlgorithms")
+    def integrity_algorithms(self) -> Sequence[_builtins.str]:
+        """
+        Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2_256`, `sha2_384`.
+        """
+        return pulumi.get(self, "integrity_algorithms")
+
+    @_builtins.property
+    @pulumi.getter(name="dhGroups")
+    def dh_groups(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Diffie-Hellman groups for key exchange. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
+        """
+        return pulumi.get(self, "dh_groups")
+
+    @_builtins.property
+    @pulumi.getter(name="rekeyTime")
+    def rekey_time(self) -> Optional[_builtins.int]:
+        """
+        Time to schedule an IKE re-keying in seconds. Range: 900-28800. Default: 14400.
+        """
+        return pulumi.get(self, "rekey_time")
+
+
+@pulumi.output_type
+class VpnConnectionTunnel2Phase2(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "encryptionAlgorithms":
+            suggest = "encryption_algorithms"
+        elif key == "integrityAlgorithms":
+            suggest = "integrity_algorithms"
+        elif key == "dhGroups":
+            suggest = "dh_groups"
+        elif key == "dpdAction":
+            suggest = "dpd_action"
+        elif key == "rekeyTime":
+            suggest = "rekey_time"
+        elif key == "startAction":
+            suggest = "start_action"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VpnConnectionTunnel2Phase2. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VpnConnectionTunnel2Phase2.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VpnConnectionTunnel2Phase2.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 encryption_algorithms: Sequence[_builtins.str],
+                 integrity_algorithms: Sequence[_builtins.str],
+                 dh_groups: Optional[Sequence[_builtins.str]] = None,
+                 dpd_action: Optional[_builtins.str] = None,
+                 rekey_time: Optional[_builtins.int] = None,
+                 start_action: Optional[_builtins.str] = None):
+        """
+        :param Sequence[_builtins.str] encryption_algorithms: Encryption algorithms for Phase 2. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
+        :param Sequence[_builtins.str] integrity_algorithms: Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2_256`, `sha2_384`.
+        :param Sequence[_builtins.str] dh_groups: Diffie-Hellman groups for Phase 2. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
+        :param _builtins.str dpd_action: Action to perform on DPD timeout. Default: 'restart'. Possible values are: `clear`, `restart`.
+        :param _builtins.int rekey_time: Time to schedule a Child SA re-keying in seconds. Range: 900-3600. Default: 3600.
+        :param _builtins.str start_action: Action to perform after loading the connection configuration. Default: 'start'. Possible values are: `none`, `start`.
+        """
+        pulumi.set(__self__, "encryption_algorithms", encryption_algorithms)
+        pulumi.set(__self__, "integrity_algorithms", integrity_algorithms)
+        if dh_groups is not None:
+            pulumi.set(__self__, "dh_groups", dh_groups)
+        if dpd_action is not None:
+            pulumi.set(__self__, "dpd_action", dpd_action)
+        if rekey_time is not None:
+            pulumi.set(__self__, "rekey_time", rekey_time)
+        if start_action is not None:
+            pulumi.set(__self__, "start_action", start_action)
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionAlgorithms")
+    def encryption_algorithms(self) -> Sequence[_builtins.str]:
+        """
+        Encryption algorithms for Phase 2. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
+        """
+        return pulumi.get(self, "encryption_algorithms")
+
+    @_builtins.property
+    @pulumi.getter(name="integrityAlgorithms")
+    def integrity_algorithms(self) -> Sequence[_builtins.str]:
+        """
+        Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2_256`, `sha2_384`.
+        """
+        return pulumi.get(self, "integrity_algorithms")
+
+    @_builtins.property
+    @pulumi.getter(name="dhGroups")
+    def dh_groups(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Diffie-Hellman groups for Phase 2. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
+        """
+        return pulumi.get(self, "dh_groups")
+
+    @_builtins.property
+    @pulumi.getter(name="dpdAction")
+    def dpd_action(self) -> Optional[_builtins.str]:
+        """
+        Action to perform on DPD timeout. Default: 'restart'. Possible values are: `clear`, `restart`.
+        """
+        return pulumi.get(self, "dpd_action")
+
+    @_builtins.property
+    @pulumi.getter(name="rekeyTime")
+    def rekey_time(self) -> Optional[_builtins.int]:
+        """
+        Time to schedule a Child SA re-keying in seconds. Range: 900-3600. Default: 3600.
+        """
+        return pulumi.get(self, "rekey_time")
+
+    @_builtins.property
+    @pulumi.getter(name="startAction")
+    def start_action(self) -> Optional[_builtins.str]:
+        """
+        Action to perform after loading the connection configuration. Default: 'start'. Possible values are: `none`, `start`.
+        """
+        return pulumi.get(self, "start_action")
 
 
 @pulumi.output_type
@@ -14359,6 +15179,53 @@ class GetSfsSnapshotPoliciesItemSnapshotScheduleResult(dict):
 
 
 @pulumi.output_type
+class GetSkeClusterAccessResult(dict):
+    def __init__(__self__, *,
+                 idp: 'outputs.GetSkeClusterAccessIdpResult'):
+        """
+        :param 'GetSkeClusterAccessIdpArgs' idp: Configure IDP
+        """
+        pulumi.set(__self__, "idp", idp)
+
+    @_builtins.property
+    @pulumi.getter
+    def idp(self) -> 'outputs.GetSkeClusterAccessIdpResult':
+        """
+        Configure IDP
+        """
+        return pulumi.get(self, "idp")
+
+
+@pulumi.output_type
+class GetSkeClusterAccessIdpResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 type: _builtins.str):
+        """
+        :param _builtins.bool enabled: Enable IDP integration for the cluster.
+        :param _builtins.str type: The IDP type. Possible values: 'stackit'.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Enable IDP integration for the cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The IDP type. Possible values: 'stackit'.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
 class GetSkeClusterExtensionsResult(dict):
     def __init__(__self__, *,
                  acl: 'outputs.GetSkeClusterExtensionsAclResult',
@@ -15366,6 +16233,472 @@ class GetVolumeSourceResult(dict):
 
 
 @pulumi.output_type
+class GetVpnConnectionTunnel1Result(dict):
+    def __init__(__self__, *,
+                 bgp: 'outputs.GetVpnConnectionTunnel1BgpResult',
+                 peering: 'outputs.GetVpnConnectionTunnel1PeeringResult',
+                 phase1: 'outputs.GetVpnConnectionTunnel1Phase1Result',
+                 phase2: 'outputs.GetVpnConnectionTunnel1Phase2Result',
+                 remote_address: _builtins.str):
+        """
+        :param 'GetVpnConnectionTunnel1BgpArgs' bgp: BGP configuration for this tunnel.
+        :param 'GetVpnConnectionTunnel1PeeringArgs' peering: Tunnel interface peering configuration.
+        :param 'GetVpnConnectionTunnel1Phase1Args' phase1: IKE Phase 1 configuration.
+        :param 'GetVpnConnectionTunnel1Phase2Args' phase2: IKE Phase 2 configuration.
+        :param _builtins.str remote_address: Remote peer IPv4 address for this tunnel.
+        """
+        pulumi.set(__self__, "bgp", bgp)
+        pulumi.set(__self__, "peering", peering)
+        pulumi.set(__self__, "phase1", phase1)
+        pulumi.set(__self__, "phase2", phase2)
+        pulumi.set(__self__, "remote_address", remote_address)
+
+    @_builtins.property
+    @pulumi.getter
+    def bgp(self) -> 'outputs.GetVpnConnectionTunnel1BgpResult':
+        """
+        BGP configuration for this tunnel.
+        """
+        return pulumi.get(self, "bgp")
+
+    @_builtins.property
+    @pulumi.getter
+    def peering(self) -> 'outputs.GetVpnConnectionTunnel1PeeringResult':
+        """
+        Tunnel interface peering configuration.
+        """
+        return pulumi.get(self, "peering")
+
+    @_builtins.property
+    @pulumi.getter
+    def phase1(self) -> 'outputs.GetVpnConnectionTunnel1Phase1Result':
+        """
+        IKE Phase 1 configuration.
+        """
+        return pulumi.get(self, "phase1")
+
+    @_builtins.property
+    @pulumi.getter
+    def phase2(self) -> 'outputs.GetVpnConnectionTunnel1Phase2Result':
+        """
+        IKE Phase 2 configuration.
+        """
+        return pulumi.get(self, "phase2")
+
+    @_builtins.property
+    @pulumi.getter(name="remoteAddress")
+    def remote_address(self) -> _builtins.str:
+        """
+        Remote peer IPv4 address for this tunnel.
+        """
+        return pulumi.get(self, "remote_address")
+
+
+@pulumi.output_type
+class GetVpnConnectionTunnel1BgpResult(dict):
+    def __init__(__self__, *,
+                 remote_asn: _builtins.int):
+        """
+        :param _builtins.int remote_asn: Remote AS number.
+        """
+        pulumi.set(__self__, "remote_asn", remote_asn)
+
+    @_builtins.property
+    @pulumi.getter(name="remoteAsn")
+    def remote_asn(self) -> _builtins.int:
+        """
+        Remote AS number.
+        """
+        return pulumi.get(self, "remote_asn")
+
+
+@pulumi.output_type
+class GetVpnConnectionTunnel1PeeringResult(dict):
+    def __init__(__self__, *,
+                 local_address: _builtins.str,
+                 remote_address: _builtins.str):
+        """
+        :param _builtins.str local_address: Local tunnel interface IPv4 address.
+        :param _builtins.str remote_address: Remote tunnel interface IPv4 address.
+        """
+        pulumi.set(__self__, "local_address", local_address)
+        pulumi.set(__self__, "remote_address", remote_address)
+
+    @_builtins.property
+    @pulumi.getter(name="localAddress")
+    def local_address(self) -> _builtins.str:
+        """
+        Local tunnel interface IPv4 address.
+        """
+        return pulumi.get(self, "local_address")
+
+    @_builtins.property
+    @pulumi.getter(name="remoteAddress")
+    def remote_address(self) -> _builtins.str:
+        """
+        Remote tunnel interface IPv4 address.
+        """
+        return pulumi.get(self, "remote_address")
+
+
+@pulumi.output_type
+class GetVpnConnectionTunnel1Phase1Result(dict):
+    def __init__(__self__, *,
+                 dh_groups: Sequence[_builtins.str],
+                 encryption_algorithms: Sequence[_builtins.str],
+                 integrity_algorithms: Sequence[_builtins.str],
+                 rekey_time: _builtins.int):
+        """
+        :param Sequence[_builtins.str] dh_groups: Diffie-Hellman groups.
+        :param Sequence[_builtins.str] encryption_algorithms: Encryption algorithms.
+        :param Sequence[_builtins.str] integrity_algorithms: Integrity/hash algorithms.
+        :param _builtins.int rekey_time: IKE re-keying time in seconds.
+        """
+        pulumi.set(__self__, "dh_groups", dh_groups)
+        pulumi.set(__self__, "encryption_algorithms", encryption_algorithms)
+        pulumi.set(__self__, "integrity_algorithms", integrity_algorithms)
+        pulumi.set(__self__, "rekey_time", rekey_time)
+
+    @_builtins.property
+    @pulumi.getter(name="dhGroups")
+    def dh_groups(self) -> Sequence[_builtins.str]:
+        """
+        Diffie-Hellman groups.
+        """
+        return pulumi.get(self, "dh_groups")
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionAlgorithms")
+    def encryption_algorithms(self) -> Sequence[_builtins.str]:
+        """
+        Encryption algorithms.
+        """
+        return pulumi.get(self, "encryption_algorithms")
+
+    @_builtins.property
+    @pulumi.getter(name="integrityAlgorithms")
+    def integrity_algorithms(self) -> Sequence[_builtins.str]:
+        """
+        Integrity/hash algorithms.
+        """
+        return pulumi.get(self, "integrity_algorithms")
+
+    @_builtins.property
+    @pulumi.getter(name="rekeyTime")
+    def rekey_time(self) -> _builtins.int:
+        """
+        IKE re-keying time in seconds.
+        """
+        return pulumi.get(self, "rekey_time")
+
+
+@pulumi.output_type
+class GetVpnConnectionTunnel1Phase2Result(dict):
+    def __init__(__self__, *,
+                 dh_groups: Sequence[_builtins.str],
+                 dpd_action: _builtins.str,
+                 encryption_algorithms: Sequence[_builtins.str],
+                 integrity_algorithms: Sequence[_builtins.str],
+                 rekey_time: _builtins.int,
+                 start_action: _builtins.str):
+        """
+        :param Sequence[_builtins.str] dh_groups: Diffie-Hellman groups for PFS.
+        :param _builtins.str dpd_action: DPD timeout action (clear or restart).
+        :param Sequence[_builtins.str] encryption_algorithms: Encryption algorithms.
+        :param Sequence[_builtins.str] integrity_algorithms: Integrity/hash algorithms.
+        :param _builtins.int rekey_time: Child SA re-keying time in seconds.
+        :param _builtins.str start_action: Start action (none or start).
+        """
+        pulumi.set(__self__, "dh_groups", dh_groups)
+        pulumi.set(__self__, "dpd_action", dpd_action)
+        pulumi.set(__self__, "encryption_algorithms", encryption_algorithms)
+        pulumi.set(__self__, "integrity_algorithms", integrity_algorithms)
+        pulumi.set(__self__, "rekey_time", rekey_time)
+        pulumi.set(__self__, "start_action", start_action)
+
+    @_builtins.property
+    @pulumi.getter(name="dhGroups")
+    def dh_groups(self) -> Sequence[_builtins.str]:
+        """
+        Diffie-Hellman groups for PFS.
+        """
+        return pulumi.get(self, "dh_groups")
+
+    @_builtins.property
+    @pulumi.getter(name="dpdAction")
+    def dpd_action(self) -> _builtins.str:
+        """
+        DPD timeout action (clear or restart).
+        """
+        return pulumi.get(self, "dpd_action")
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionAlgorithms")
+    def encryption_algorithms(self) -> Sequence[_builtins.str]:
+        """
+        Encryption algorithms.
+        """
+        return pulumi.get(self, "encryption_algorithms")
+
+    @_builtins.property
+    @pulumi.getter(name="integrityAlgorithms")
+    def integrity_algorithms(self) -> Sequence[_builtins.str]:
+        """
+        Integrity/hash algorithms.
+        """
+        return pulumi.get(self, "integrity_algorithms")
+
+    @_builtins.property
+    @pulumi.getter(name="rekeyTime")
+    def rekey_time(self) -> _builtins.int:
+        """
+        Child SA re-keying time in seconds.
+        """
+        return pulumi.get(self, "rekey_time")
+
+    @_builtins.property
+    @pulumi.getter(name="startAction")
+    def start_action(self) -> _builtins.str:
+        """
+        Start action (none or start).
+        """
+        return pulumi.get(self, "start_action")
+
+
+@pulumi.output_type
+class GetVpnConnectionTunnel2Result(dict):
+    def __init__(__self__, *,
+                 bgp: 'outputs.GetVpnConnectionTunnel2BgpResult',
+                 peering: 'outputs.GetVpnConnectionTunnel2PeeringResult',
+                 phase1: 'outputs.GetVpnConnectionTunnel2Phase1Result',
+                 phase2: 'outputs.GetVpnConnectionTunnel2Phase2Result',
+                 remote_address: _builtins.str):
+        """
+        :param 'GetVpnConnectionTunnel2BgpArgs' bgp: BGP configuration for this tunnel.
+        :param 'GetVpnConnectionTunnel2PeeringArgs' peering: Tunnel interface peering configuration.
+        :param 'GetVpnConnectionTunnel2Phase1Args' phase1: IKE Phase 1 configuration.
+        :param 'GetVpnConnectionTunnel2Phase2Args' phase2: IKE Phase 2 configuration.
+        :param _builtins.str remote_address: Remote peer IPv4 address for this tunnel.
+        """
+        pulumi.set(__self__, "bgp", bgp)
+        pulumi.set(__self__, "peering", peering)
+        pulumi.set(__self__, "phase1", phase1)
+        pulumi.set(__self__, "phase2", phase2)
+        pulumi.set(__self__, "remote_address", remote_address)
+
+    @_builtins.property
+    @pulumi.getter
+    def bgp(self) -> 'outputs.GetVpnConnectionTunnel2BgpResult':
+        """
+        BGP configuration for this tunnel.
+        """
+        return pulumi.get(self, "bgp")
+
+    @_builtins.property
+    @pulumi.getter
+    def peering(self) -> 'outputs.GetVpnConnectionTunnel2PeeringResult':
+        """
+        Tunnel interface peering configuration.
+        """
+        return pulumi.get(self, "peering")
+
+    @_builtins.property
+    @pulumi.getter
+    def phase1(self) -> 'outputs.GetVpnConnectionTunnel2Phase1Result':
+        """
+        IKE Phase 1 configuration.
+        """
+        return pulumi.get(self, "phase1")
+
+    @_builtins.property
+    @pulumi.getter
+    def phase2(self) -> 'outputs.GetVpnConnectionTunnel2Phase2Result':
+        """
+        IKE Phase 2 configuration.
+        """
+        return pulumi.get(self, "phase2")
+
+    @_builtins.property
+    @pulumi.getter(name="remoteAddress")
+    def remote_address(self) -> _builtins.str:
+        """
+        Remote peer IPv4 address for this tunnel.
+        """
+        return pulumi.get(self, "remote_address")
+
+
+@pulumi.output_type
+class GetVpnConnectionTunnel2BgpResult(dict):
+    def __init__(__self__, *,
+                 remote_asn: _builtins.int):
+        """
+        :param _builtins.int remote_asn: Remote AS number.
+        """
+        pulumi.set(__self__, "remote_asn", remote_asn)
+
+    @_builtins.property
+    @pulumi.getter(name="remoteAsn")
+    def remote_asn(self) -> _builtins.int:
+        """
+        Remote AS number.
+        """
+        return pulumi.get(self, "remote_asn")
+
+
+@pulumi.output_type
+class GetVpnConnectionTunnel2PeeringResult(dict):
+    def __init__(__self__, *,
+                 local_address: _builtins.str,
+                 remote_address: _builtins.str):
+        """
+        :param _builtins.str local_address: Local tunnel interface IPv4 address.
+        :param _builtins.str remote_address: Remote tunnel interface IPv4 address.
+        """
+        pulumi.set(__self__, "local_address", local_address)
+        pulumi.set(__self__, "remote_address", remote_address)
+
+    @_builtins.property
+    @pulumi.getter(name="localAddress")
+    def local_address(self) -> _builtins.str:
+        """
+        Local tunnel interface IPv4 address.
+        """
+        return pulumi.get(self, "local_address")
+
+    @_builtins.property
+    @pulumi.getter(name="remoteAddress")
+    def remote_address(self) -> _builtins.str:
+        """
+        Remote tunnel interface IPv4 address.
+        """
+        return pulumi.get(self, "remote_address")
+
+
+@pulumi.output_type
+class GetVpnConnectionTunnel2Phase1Result(dict):
+    def __init__(__self__, *,
+                 dh_groups: Sequence[_builtins.str],
+                 encryption_algorithms: Sequence[_builtins.str],
+                 integrity_algorithms: Sequence[_builtins.str],
+                 rekey_time: _builtins.int):
+        """
+        :param Sequence[_builtins.str] dh_groups: Diffie-Hellman groups.
+        :param Sequence[_builtins.str] encryption_algorithms: Encryption algorithms.
+        :param Sequence[_builtins.str] integrity_algorithms: Integrity/hash algorithms.
+        :param _builtins.int rekey_time: IKE re-keying time in seconds.
+        """
+        pulumi.set(__self__, "dh_groups", dh_groups)
+        pulumi.set(__self__, "encryption_algorithms", encryption_algorithms)
+        pulumi.set(__self__, "integrity_algorithms", integrity_algorithms)
+        pulumi.set(__self__, "rekey_time", rekey_time)
+
+    @_builtins.property
+    @pulumi.getter(name="dhGroups")
+    def dh_groups(self) -> Sequence[_builtins.str]:
+        """
+        Diffie-Hellman groups.
+        """
+        return pulumi.get(self, "dh_groups")
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionAlgorithms")
+    def encryption_algorithms(self) -> Sequence[_builtins.str]:
+        """
+        Encryption algorithms.
+        """
+        return pulumi.get(self, "encryption_algorithms")
+
+    @_builtins.property
+    @pulumi.getter(name="integrityAlgorithms")
+    def integrity_algorithms(self) -> Sequence[_builtins.str]:
+        """
+        Integrity/hash algorithms.
+        """
+        return pulumi.get(self, "integrity_algorithms")
+
+    @_builtins.property
+    @pulumi.getter(name="rekeyTime")
+    def rekey_time(self) -> _builtins.int:
+        """
+        IKE re-keying time in seconds.
+        """
+        return pulumi.get(self, "rekey_time")
+
+
+@pulumi.output_type
+class GetVpnConnectionTunnel2Phase2Result(dict):
+    def __init__(__self__, *,
+                 dh_groups: Sequence[_builtins.str],
+                 dpd_action: _builtins.str,
+                 encryption_algorithms: Sequence[_builtins.str],
+                 integrity_algorithms: Sequence[_builtins.str],
+                 rekey_time: _builtins.int,
+                 start_action: _builtins.str):
+        """
+        :param Sequence[_builtins.str] dh_groups: Diffie-Hellman groups for PFS.
+        :param _builtins.str dpd_action: DPD timeout action (clear or restart).
+        :param Sequence[_builtins.str] encryption_algorithms: Encryption algorithms.
+        :param Sequence[_builtins.str] integrity_algorithms: Integrity/hash algorithms.
+        :param _builtins.int rekey_time: Child SA re-keying time in seconds.
+        :param _builtins.str start_action: Start action (none or start).
+        """
+        pulumi.set(__self__, "dh_groups", dh_groups)
+        pulumi.set(__self__, "dpd_action", dpd_action)
+        pulumi.set(__self__, "encryption_algorithms", encryption_algorithms)
+        pulumi.set(__self__, "integrity_algorithms", integrity_algorithms)
+        pulumi.set(__self__, "rekey_time", rekey_time)
+        pulumi.set(__self__, "start_action", start_action)
+
+    @_builtins.property
+    @pulumi.getter(name="dhGroups")
+    def dh_groups(self) -> Sequence[_builtins.str]:
+        """
+        Diffie-Hellman groups for PFS.
+        """
+        return pulumi.get(self, "dh_groups")
+
+    @_builtins.property
+    @pulumi.getter(name="dpdAction")
+    def dpd_action(self) -> _builtins.str:
+        """
+        DPD timeout action (clear or restart).
+        """
+        return pulumi.get(self, "dpd_action")
+
+    @_builtins.property
+    @pulumi.getter(name="encryptionAlgorithms")
+    def encryption_algorithms(self) -> Sequence[_builtins.str]:
+        """
+        Encryption algorithms.
+        """
+        return pulumi.get(self, "encryption_algorithms")
+
+    @_builtins.property
+    @pulumi.getter(name="integrityAlgorithms")
+    def integrity_algorithms(self) -> Sequence[_builtins.str]:
+        """
+        Integrity/hash algorithms.
+        """
+        return pulumi.get(self, "integrity_algorithms")
+
+    @_builtins.property
+    @pulumi.getter(name="rekeyTime")
+    def rekey_time(self) -> _builtins.int:
+        """
+        Child SA re-keying time in seconds.
+        """
+        return pulumi.get(self, "rekey_time")
+
+    @_builtins.property
+    @pulumi.getter(name="startAction")
+    def start_action(self) -> _builtins.str:
+        """
+        Start action (none or start).
+        """
+        return pulumi.get(self, "start_action")
+
+
+@pulumi.output_type
 class GetVpnGatewayAvailabilityZonesResult(dict):
     def __init__(__self__, *,
                  tunnel1: _builtins.str,
@@ -15421,5 +16754,85 @@ class GetVpnGatewayBgpResult(dict):
         List of IPv4 CIDRs to advertise via BGP. If omitted, SNA network ranges are advertised.
         """
         return pulumi.get(self, "override_advertised_routes")
+
+
+@pulumi.output_type
+class GetVpnGatewayStatusConnectionResult(dict):
+    def __init__(__self__, *,
+                 connection_id: _builtins.str,
+                 display_name: _builtins.str,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.str connection_id: ID of the VPN connection.
+        :param _builtins.str display_name: Display name of the VPN connection.
+        :param _builtins.bool enabled: Wether the VPN connection is enabled or not.
+        """
+        pulumi.set(__self__, "connection_id", connection_id)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="connectionId")
+    def connection_id(self) -> _builtins.str:
+        """
+        ID of the VPN connection.
+        """
+        return pulumi.get(self, "connection_id")
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        Display name of the VPN connection.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Wether the VPN connection is enabled or not.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetVpnGatewayStatusTunnelResult(dict):
+    def __init__(__self__, *,
+                 internal_next_hop_ip: _builtins.str,
+                 name: _builtins.str,
+                 public_ip: _builtins.str):
+        """
+        :param _builtins.str internal_next_hop_ip: The IPv4 address of the endpoint in the SNA.
+        :param _builtins.str name: The name of the VPN tunnel. Possible values are: `tunnel1`, `tunnel2`.
+        :param _builtins.str public_ip: The public IPv4 address of this endpoint.
+        """
+        pulumi.set(__self__, "internal_next_hop_ip", internal_next_hop_ip)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "public_ip", public_ip)
+
+    @_builtins.property
+    @pulumi.getter(name="internalNextHopIp")
+    def internal_next_hop_ip(self) -> _builtins.str:
+        """
+        The IPv4 address of the endpoint in the SNA.
+        """
+        return pulumi.get(self, "internal_next_hop_ip")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the VPN tunnel. Possible values are: `tunnel1`, `tunnel2`.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="publicIp")
+    def public_ip(self) -> _builtins.str:
+        """
+        The public IPv4 address of this endpoint.
+        """
+        return pulumi.get(self, "public_ip")
 
 
