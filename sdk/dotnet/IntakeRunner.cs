@@ -18,6 +18,12 @@ namespace Pulumi.Stackit
     public partial class IntakeRunner : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The creation time of the runner.
+        /// </summary>
+        [Output("createTime")]
+        public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
         /// The description of the runner.
         /// </summary>
         [Output("description")]
@@ -64,6 +70,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Output("runnerId")]
         public Output<string> RunnerId { get; private set; } = null!;
+
+        /// <summary>
+        /// The URI of the runner.
+        /// </summary>
+        [Output("uri")]
+        public Output<string> Uri { get; private set; } = null!;
 
 
         /// <summary>
@@ -169,6 +181,12 @@ namespace Pulumi.Stackit
     public sealed class IntakeRunnerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The creation time of the runner.
+        /// </summary>
+        [Input("createTime")]
+        public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
         /// The description of the runner.
         /// </summary>
         [Input("description")]
@@ -221,6 +239,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("runnerId")]
         public Input<string>? RunnerId { get; set; }
+
+        /// <summary>
+        /// The URI of the runner.
+        /// </summary>
+        [Input("uri")]
+        public Input<string>? Uri { get; set; }
 
         public IntakeRunnerState()
         {

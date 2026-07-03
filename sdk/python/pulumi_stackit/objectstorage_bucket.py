@@ -199,6 +199,8 @@ class ObjectstorageBucket(pulumi.CustomResource):
         """
         ObjectStorage bucket resource schema. Must have a `region` specified in the provider configuration. If you are creating `credentialsgroup` and `bucket` resources simultaneously, please include the `depends_on` field so that they are created sequentially. This prevents errors from concurrent calls to the service enablement that is done in the background.
 
+        > This resource cannot be destroyed if the bucket contains objects. Please ensure the bucket is empty before attempting to destroy it.
+
         ## Example Usage
 
 
@@ -217,6 +219,8 @@ class ObjectstorageBucket(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ObjectStorage bucket resource schema. Must have a `region` specified in the provider configuration. If you are creating `credentialsgroup` and `bucket` resources simultaneously, please include the `depends_on` field so that they are created sequentially. This prevents errors from concurrent calls to the service enablement that is done in the background.
+
+        > This resource cannot be destroyed if the bucket contains objects. Please ensure the bucket is empty before attempting to destroy it.
 
         ## Example Usage
 

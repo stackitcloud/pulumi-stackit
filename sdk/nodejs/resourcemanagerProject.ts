@@ -48,7 +48,7 @@ export class ResourcemanagerProject extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly creationTime: pulumi.Output<string>;
     /**
-     * Labels are key-value string pairs which can be attached to a resource container. A label key must match the regex [A-ZÄÜÖa-zäüöß0-9_-]{1,64}. A label value must match the regex ^$|[A-ZÄÜÖa-zäüöß0-9_-]{1,64}.  
+     * Labels are key-value string pairs which can be attached to a resource container. A label key must match the regex [A-ZÄÜÖa-zäüöß0-9_-]{1,64}. A label value must match the regex ^$|[A-ZÄÜÖa-zäüöß0-9_-]{1,64}.\
      * To create a project within a STACKIT Network Area, setting the label `networkArea=<networkAreaID>` is required. This can not be changed after project creation.
      */
     declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
@@ -129,7 +129,7 @@ export interface ResourcemanagerProjectState {
      */
     creationTime?: pulumi.Input<string | undefined>;
     /**
-     * Labels are key-value string pairs which can be attached to a resource container. A label key must match the regex [A-ZÄÜÖa-zäüöß0-9_-]{1,64}. A label value must match the regex ^$|[A-ZÄÜÖa-zäüöß0-9_-]{1,64}.  
+     * Labels are key-value string pairs which can be attached to a resource container. A label key must match the regex [A-ZÄÜÖa-zäüöß0-9_-]{1,64}. A label value must match the regex ^$|[A-ZÄÜÖa-zäüöß0-9_-]{1,64}.\
      * To create a project within a STACKIT Network Area, setting the label `networkArea=<networkAreaID>` is required. This can not be changed after project creation.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
@@ -160,7 +160,7 @@ export interface ResourcemanagerProjectState {
  */
 export interface ResourcemanagerProjectArgs {
     /**
-     * Labels are key-value string pairs which can be attached to a resource container. A label key must match the regex [A-ZÄÜÖa-zäüöß0-9_-]{1,64}. A label value must match the regex ^$|[A-ZÄÜÖa-zäüöß0-9_-]{1,64}.  
+     * Labels are key-value string pairs which can be attached to a resource container. A label key must match the regex [A-ZÄÜÖa-zäüöß0-9_-]{1,64}. A label value must match the regex ^$|[A-ZÄÜÖa-zäüöß0-9_-]{1,64}.\
      * To create a project within a STACKIT Network Area, setting the label `networkArea=<networkAreaID>` is required. This can not be changed after project creation.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;

@@ -189,6 +189,7 @@ class _LoadbalancerState:
                  disable_security_group_assignment: pulumi.Input[Optional[_builtins.bool]] = None,
                  external_address: pulumi.Input[Optional[_builtins.str]] = None,
                  listeners: pulumi.Input[Optional[Sequence[pulumi.Input['LoadbalancerListenerArgs']]]] = None,
+                 load_balancer_security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  networks: pulumi.Input[Optional[Sequence[pulumi.Input['LoadbalancerNetworkArgs']]]] = None,
                  options: pulumi.Input[Optional['LoadbalancerOptionsArgs']] = None,
@@ -205,6 +206,7 @@ class _LoadbalancerState:
         :param pulumi.Input[_builtins.bool] disable_security_group_assignment: If set to true, this will disable the automatic assignment of a security group to the load balancer's targets. This option is primarily used to allow targets that are not within the load balancer's own network or SNA (STACKIT network area). When this is enabled, you are fully responsible for ensuring network connectivity to the targets, including managing all routing and security group rules manually. This setting cannot be changed after the load balancer is created.
         :param pulumi.Input[_builtins.str] external_address: External Load Balancer IP address where this Load Balancer is exposed.
         :param pulumi.Input[Sequence[pulumi.Input['LoadbalancerListenerArgs']]] listeners: List of all listeners which will accept traffic. Limited to 20.
+        :param pulumi.Input[_builtins.str] load_balancer_security_group_id: The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT network areas (SNA). To enable this, create a security group rule for your target VMs and set the `remote_security_group_id` of that rule to this value. This is typically used when `disable_security_group_assignment` is set to `true`.
         :param pulumi.Input[_builtins.str] name: Load balancer name.
         :param pulumi.Input[Sequence[pulumi.Input['LoadbalancerNetworkArgs']]] networks: List of networks that listeners and targets reside in.
         :param pulumi.Input['LoadbalancerOptionsArgs'] options: Defines any optional functionality you want to have enabled on your load balancer.
@@ -212,7 +214,7 @@ class _LoadbalancerState:
         :param pulumi.Input[_builtins.str] private_address: Transient private Load Balancer IP address. It can change any time.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the Load Balancer is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
-        :param pulumi.Input[_builtins.str] security_group_id: The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT network areas (SNA). To enable this, create a security group rule for your target VMs and set the `remote_security_group_id` of that rule to this value. This is typically used when `disable_security_group_assignment` is set to `true`.
+        :param pulumi.Input[_builtins.str] security_group_id: The ID of the automatically created security group that allows the targets to receive traffic from the LoadBalancer. Useful when disableTargetSecurityGroupAssignment=true to manually assign this security groups to targets.
         :param pulumi.Input[Sequence[pulumi.Input['LoadbalancerTargetPoolArgs']]] target_pools: List of all target pools which will be used in the Load Balancer. Limited to 20.
         :param pulumi.Input[_builtins.str] version: Load balancer resource version. This is needed to have concurrency safe updates.
         """
@@ -222,6 +224,8 @@ class _LoadbalancerState:
             pulumi.set(__self__, "external_address", external_address)
         if listeners is not None:
             pulumi.set(__self__, "listeners", listeners)
+        if load_balancer_security_group_id is not None:
+            pulumi.set(__self__, "load_balancer_security_group_id", load_balancer_security_group_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if networks is not None:
@@ -278,6 +282,18 @@ class _LoadbalancerState:
     @listeners.setter
     def listeners(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['LoadbalancerListenerArgs']]]]):
         pulumi.set(self, "listeners", value)
+
+    @_builtins.property
+    @pulumi.getter(name="loadBalancerSecurityGroupId")
+    def load_balancer_security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT network areas (SNA). To enable this, create a security group rule for your target VMs and set the `remote_security_group_id` of that rule to this value. This is typically used when `disable_security_group_assignment` is set to `true`.
+        """
+        return pulumi.get(self, "load_balancer_security_group_id")
+
+    @load_balancer_security_group_id.setter
+    def load_balancer_security_group_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "load_balancer_security_group_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -367,7 +383,7 @@ class _LoadbalancerState:
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT network areas (SNA). To enable this, create a security group rule for your target VMs and set the `remote_security_group_id` of that rule to this value. This is typically used when `disable_security_group_assignment` is set to `true`.
+        The ID of the automatically created security group that allows the targets to receive traffic from the LoadBalancer. Useful when disableTargetSecurityGroupAssignment=true to manually assign this security groups to targets.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -504,6 +520,7 @@ class Loadbalancer(pulumi.CustomResource):
             if target_pools is None and not opts.urn:
                 raise TypeError("Missing required property 'target_pools'")
             __props__.__dict__["target_pools"] = target_pools
+            __props__.__dict__["load_balancer_security_group_id"] = None
             __props__.__dict__["private_address"] = None
             __props__.__dict__["security_group_id"] = None
             __props__.__dict__["version"] = None
@@ -520,6 +537,7 @@ class Loadbalancer(pulumi.CustomResource):
             disable_security_group_assignment: pulumi.Input[Optional[_builtins.bool]] = None,
             external_address: pulumi.Input[Optional[_builtins.str]] = None,
             listeners: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadbalancerListenerArgs', 'LoadbalancerListenerArgsDict']]]]] = None,
+            load_balancer_security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadbalancerNetworkArgs', 'LoadbalancerNetworkArgsDict']]]]] = None,
             options: pulumi.Input[Optional[Union['LoadbalancerOptionsArgs', 'LoadbalancerOptionsArgsDict']]] = None,
@@ -540,6 +558,7 @@ class Loadbalancer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] disable_security_group_assignment: If set to true, this will disable the automatic assignment of a security group to the load balancer's targets. This option is primarily used to allow targets that are not within the load balancer's own network or SNA (STACKIT network area). When this is enabled, you are fully responsible for ensuring network connectivity to the targets, including managing all routing and security group rules manually. This setting cannot be changed after the load balancer is created.
         :param pulumi.Input[_builtins.str] external_address: External Load Balancer IP address where this Load Balancer is exposed.
         :param pulumi.Input[Sequence[pulumi.Input[Union['LoadbalancerListenerArgs', 'LoadbalancerListenerArgsDict']]]] listeners: List of all listeners which will accept traffic. Limited to 20.
+        :param pulumi.Input[_builtins.str] load_balancer_security_group_id: The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT network areas (SNA). To enable this, create a security group rule for your target VMs and set the `remote_security_group_id` of that rule to this value. This is typically used when `disable_security_group_assignment` is set to `true`.
         :param pulumi.Input[_builtins.str] name: Load balancer name.
         :param pulumi.Input[Sequence[pulumi.Input[Union['LoadbalancerNetworkArgs', 'LoadbalancerNetworkArgsDict']]]] networks: List of networks that listeners and targets reside in.
         :param pulumi.Input[Union['LoadbalancerOptionsArgs', 'LoadbalancerOptionsArgsDict']] options: Defines any optional functionality you want to have enabled on your load balancer.
@@ -547,7 +566,7 @@ class Loadbalancer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] private_address: Transient private Load Balancer IP address. It can change any time.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the Load Balancer is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
-        :param pulumi.Input[_builtins.str] security_group_id: The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT network areas (SNA). To enable this, create a security group rule for your target VMs and set the `remote_security_group_id` of that rule to this value. This is typically used when `disable_security_group_assignment` is set to `true`.
+        :param pulumi.Input[_builtins.str] security_group_id: The ID of the automatically created security group that allows the targets to receive traffic from the LoadBalancer. Useful when disableTargetSecurityGroupAssignment=true to manually assign this security groups to targets.
         :param pulumi.Input[Sequence[pulumi.Input[Union['LoadbalancerTargetPoolArgs', 'LoadbalancerTargetPoolArgsDict']]]] target_pools: List of all target pools which will be used in the Load Balancer. Limited to 20.
         :param pulumi.Input[_builtins.str] version: Load balancer resource version. This is needed to have concurrency safe updates.
         """
@@ -558,6 +577,7 @@ class Loadbalancer(pulumi.CustomResource):
         __props__.__dict__["disable_security_group_assignment"] = disable_security_group_assignment
         __props__.__dict__["external_address"] = external_address
         __props__.__dict__["listeners"] = listeners
+        __props__.__dict__["load_balancer_security_group_id"] = load_balancer_security_group_id
         __props__.__dict__["name"] = name
         __props__.__dict__["networks"] = networks
         __props__.__dict__["options"] = options
@@ -593,6 +613,14 @@ class Loadbalancer(pulumi.CustomResource):
         List of all listeners which will accept traffic. Limited to 20.
         """
         return pulumi.get(self, "listeners")
+
+    @_builtins.property
+    @pulumi.getter(name="loadBalancerSecurityGroupId")
+    def load_balancer_security_group_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT network areas (SNA). To enable this, create a security group rule for your target VMs and set the `remote_security_group_id` of that rule to this value. This is typically used when `disable_security_group_assignment` is set to `true`.
+        """
+        return pulumi.get(self, "load_balancer_security_group_id")
 
     @_builtins.property
     @pulumi.getter
@@ -654,7 +682,7 @@ class Loadbalancer(pulumi.CustomResource):
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT network areas (SNA). To enable this, create a security group rule for your target VMs and set the `remote_security_group_id` of that rule to this value. This is typically used when `disable_security_group_assignment` is set to `true`.
+        The ID of the automatically created security group that allows the targets to receive traffic from the LoadBalancer. Useful when disableTargetSecurityGroupAssignment=true to manually assign this security groups to targets.
         """
         return pulumi.get(self, "security_group_id")
 

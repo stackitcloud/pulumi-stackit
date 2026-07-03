@@ -217,6 +217,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TelemetryrouterInstance{}
 	case "stackit:index/volume:Volume":
 		r = &Volume{}
+	case "stackit:index/vpnConnection:VpnConnection":
+		r = &VpnConnection{}
 	case "stackit:index/vpnGateway:VpnGateway":
 		r = &VpnGateway{}
 	default:
@@ -738,6 +740,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"stackit",
 		"index/volume",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/vpnConnection",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

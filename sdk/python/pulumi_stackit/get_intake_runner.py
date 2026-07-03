@@ -26,7 +26,10 @@ class GetIntakeRunnerResult:
     """
     A collection of values returned by getIntakeRunner.
     """
-    def __init__(__self__, description=None, id=None, labels=None, max_message_size_kib=None, max_messages_per_hour=None, name=None, project_id=None, region=None, runner_id=None):
+    def __init__(__self__, create_time=None, description=None, id=None, labels=None, max_message_size_kib=None, max_messages_per_hour=None, name=None, project_id=None, region=None, runner_id=None, uri=None):
+        if create_time and not isinstance(create_time, str):
+            raise TypeError("Expected argument 'create_time' to be a str")
+        pulumi.set(__self__, "create_time", create_time)
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -54,6 +57,17 @@ class GetIntakeRunnerResult:
         if runner_id and not isinstance(runner_id, str):
             raise TypeError("Expected argument 'runner_id' to be a str")
         pulumi.set(__self__, "runner_id", runner_id)
+        if uri and not isinstance(uri, str):
+            raise TypeError("Expected argument 'uri' to be a str")
+        pulumi.set(__self__, "uri", uri)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> _builtins.str:
+        """
+        The creation time of the runner.
+        """
+        return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter
@@ -127,6 +141,14 @@ class GetIntakeRunnerResult:
         """
         return pulumi.get(self, "runner_id")
 
+    @_builtins.property
+    @pulumi.getter
+    def uri(self) -> _builtins.str:
+        """
+        The URI of the runner.
+        """
+        return pulumi.get(self, "uri")
+
 
 class AwaitableGetIntakeRunnerResult(GetIntakeRunnerResult):
     # pylint: disable=using-constant-test
@@ -134,6 +156,7 @@ class AwaitableGetIntakeRunnerResult(GetIntakeRunnerResult):
         if False:
             yield self
         return GetIntakeRunnerResult(
+            create_time=self.create_time,
             description=self.description,
             id=self.id,
             labels=self.labels,
@@ -142,7 +165,8 @@ class AwaitableGetIntakeRunnerResult(GetIntakeRunnerResult):
             name=self.name,
             project_id=self.project_id,
             region=self.region,
-            runner_id=self.runner_id)
+            runner_id=self.runner_id,
+            uri=self.uri)
 
 
 def get_intake_runner(project_id: Optional[_builtins.str] = None,
@@ -167,6 +191,7 @@ def get_intake_runner(project_id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('stackit:index/getIntakeRunner:getIntakeRunner', __args__, opts=opts, typ=GetIntakeRunnerResult).value
 
     return AwaitableGetIntakeRunnerResult(
+        create_time=pulumi.get(__ret__, 'create_time'),
         description=pulumi.get(__ret__, 'description'),
         id=pulumi.get(__ret__, 'id'),
         labels=pulumi.get(__ret__, 'labels'),
@@ -175,7 +200,8 @@ def get_intake_runner(project_id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         project_id=pulumi.get(__ret__, 'project_id'),
         region=pulumi.get(__ret__, 'region'),
-        runner_id=pulumi.get(__ret__, 'runner_id'))
+        runner_id=pulumi.get(__ret__, 'runner_id'),
+        uri=pulumi.get(__ret__, 'uri'))
 def get_intake_runner_output(project_id: pulumi.Input[Optional[_builtins.str]] = None,
                              region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              runner_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -197,6 +223,7 @@ def get_intake_runner_output(project_id: pulumi.Input[Optional[_builtins.str]] =
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('stackit:index/getIntakeRunner:getIntakeRunner', __args__, opts=opts, typ=GetIntakeRunnerResult)
     return __ret__.apply(lambda __response__: GetIntakeRunnerResult(
+        create_time=pulumi.get(__response__, 'create_time'),
         description=pulumi.get(__response__, 'description'),
         id=pulumi.get(__response__, 'id'),
         labels=pulumi.get(__response__, 'labels'),
@@ -205,4 +232,5 @@ def get_intake_runner_output(project_id: pulumi.Input[Optional[_builtins.str]] =
         name=pulumi.get(__response__, 'name'),
         project_id=pulumi.get(__response__, 'project_id'),
         region=pulumi.get(__response__, 'region'),
-        runner_id=pulumi.get(__response__, 'runner_id')))
+        runner_id=pulumi.get(__response__, 'runner_id'),
+        uri=pulumi.get(__response__, 'uri')))
