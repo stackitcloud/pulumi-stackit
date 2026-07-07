@@ -12,6 +12,8 @@ namespace Pulumi.Stackit
     /// <summary>
     /// ObjectStorage bucket resource schema. Must have a `Region` specified in the provider configuration. If you are creating `Credentialsgroup` and `Bucket` resources simultaneously, please include the `DependsOn` field so that they are created sequentially. This prevents errors from concurrent calls to the service enablement that is done in the background.
     /// 
+    /// &gt; This resource cannot be destroyed if the bucket contains objects. Please ensure the bucket is empty before attempting to destroy it.
+    /// 
     /// ## Example Usage
     /// </summary>
     [StackitResourceType("stackit:index/objectstorageBucket:ObjectstorageBucket")]

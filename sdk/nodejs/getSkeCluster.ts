@@ -43,6 +43,10 @@ export interface GetSkeClusterArgs {
  */
 export interface GetSkeClusterResult {
     /**
+     * Configure access to the cluster
+     */
+    readonly access: outputs.GetSkeClusterAccess;
+    /**
      * The outgoing network ranges (in CIDR notation) of traffic originating from workload on the cluster.
      */
     readonly egressAddressRanges: string[];

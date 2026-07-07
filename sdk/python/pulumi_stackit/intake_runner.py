@@ -137,6 +137,7 @@ class IntakeRunnerArgs:
 @pulumi.input_type
 class _IntakeRunnerState:
     def __init__(__self__, *,
+                 create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  max_message_size_kib: pulumi.Input[Optional[_builtins.int]] = None,
@@ -144,10 +145,12 @@ class _IntakeRunnerState:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 runner_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 runner_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 uri: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering IntakeRunner resources.
 
+        :param pulumi.Input[_builtins.str] create_time: The creation time of the runner.
         :param pulumi.Input[_builtins.str] description: The description of the runner.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels.
         :param pulumi.Input[_builtins.int] max_message_size_kib: The maximum message size in KiB.
@@ -156,7 +159,10 @@ class _IntakeRunnerState:
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the runner is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.str] runner_id: The runner ID.
+        :param pulumi.Input[_builtins.str] uri: The URI of the runner.
         """
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if labels is not None:
@@ -173,6 +179,20 @@ class _IntakeRunnerState:
             pulumi.set(__self__, "region", region)
         if runner_id is not None:
             pulumi.set(__self__, "runner_id", runner_id)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The creation time of the runner.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "create_time", value)
 
     @_builtins.property
     @pulumi.getter
@@ -270,6 +290,18 @@ class _IntakeRunnerState:
     def runner_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "runner_id", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The URI of the runner.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "uri", value)
+
 
 @pulumi.type_token("stackit:index/intakeRunner:IntakeRunner")
 class IntakeRunner(pulumi.CustomResource):
@@ -357,7 +389,9 @@ class IntakeRunner(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["region"] = region
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["runner_id"] = None
+            __props__.__dict__["uri"] = None
         super(IntakeRunner, __self__).__init__(
             'stackit:index/intakeRunner:IntakeRunner',
             resource_name,
@@ -368,6 +402,7 @@ class IntakeRunner(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             max_message_size_kib: pulumi.Input[Optional[_builtins.int]] = None,
@@ -375,7 +410,8 @@ class IntakeRunner(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
-            runner_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'IntakeRunner':
+            runner_id: pulumi.Input[Optional[_builtins.str]] = None,
+            uri: pulumi.Input[Optional[_builtins.str]] = None) -> 'IntakeRunner':
         """
         Get an existing IntakeRunner resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -383,6 +419,7 @@ class IntakeRunner(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[_builtins.str] create_time: The creation time of the runner.
         :param pulumi.Input[_builtins.str] description: The description of the runner.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: User-defined labels.
         :param pulumi.Input[_builtins.int] max_message_size_kib: The maximum message size in KiB.
@@ -391,11 +428,13 @@ class IntakeRunner(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the runner is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.str] runner_id: The runner ID.
+        :param pulumi.Input[_builtins.str] uri: The URI of the runner.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _IntakeRunnerState.__new__(_IntakeRunnerState)
 
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["labels"] = labels
         __props__.__dict__["max_message_size_kib"] = max_message_size_kib
@@ -404,7 +443,16 @@ class IntakeRunner(pulumi.CustomResource):
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["region"] = region
         __props__.__dict__["runner_id"] = runner_id
+        __props__.__dict__["uri"] = uri
         return IntakeRunner(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[_builtins.str]:
+        """
+        The creation time of the runner.
+        """
+        return pulumi.get(self, "create_time")
 
     @_builtins.property
     @pulumi.getter
@@ -469,4 +517,12 @@ class IntakeRunner(pulumi.CustomResource):
         The runner ID.
         """
         return pulumi.get(self, "runner_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def uri(self) -> pulumi.Output[_builtins.str]:
+        """
+        The URI of the runner.
+        """
+        return pulumi.get(self, "uri")
 

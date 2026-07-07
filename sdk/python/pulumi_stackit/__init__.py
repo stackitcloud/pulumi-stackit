@@ -123,7 +123,9 @@ from .get_telemetryrouter_access_token import *
 from .get_telemetryrouter_destination import *
 from .get_telemetryrouter_instance import *
 from .get_volume import *
+from .get_vpn_connection import *
 from .get_vpn_gateway import *
+from .get_vpn_gateway_status import *
 from .git import *
 from .image import *
 from .intake_runner import *
@@ -204,6 +206,7 @@ from .telemetryrouter_access_token import *
 from .telemetryrouter_destination import *
 from .telemetryrouter_instance import *
 from .volume import *
+from .vpn_connection import *
 from .vpn_gateway import *
 from ._inputs import *
 from . import outputs
@@ -1000,6 +1003,14 @@ _utilities.register(
   "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/volume:Volume": "Volume"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/vpnConnection",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/vpnConnection:VpnConnection": "VpnConnection"
   }
  },
  {

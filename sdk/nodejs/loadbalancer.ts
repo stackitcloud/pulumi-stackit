@@ -54,6 +54,10 @@ export class Loadbalancer extends pulumi.CustomResource {
      */
     declare public readonly listeners: pulumi.Output<outputs.LoadbalancerListener[]>;
     /**
+     * The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT network areas (SNA). To enable this, create a security group rule for your target VMs and set the `remoteSecurityGroupId` of that rule to this value. This is typically used when `disableSecurityGroupAssignment` is set to `true`.
+     */
+    declare public /*out*/ readonly loadBalancerSecurityGroupId: pulumi.Output<string>;
+    /**
      * Load balancer name.
      */
     declare public readonly name: pulumi.Output<string>;
@@ -82,7 +86,7 @@ export class Loadbalancer extends pulumi.CustomResource {
      */
     declare public readonly region: pulumi.Output<string>;
     /**
-     * The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT network areas (SNA). To enable this, create a security group rule for your target VMs and set the `remoteSecurityGroupId` of that rule to this value. This is typically used when `disableSecurityGroupAssignment` is set to `true`.
+     * The ID of the automatically created security group that allows the targets to receive traffic from the LoadBalancer. Useful when disableTargetSecurityGroupAssignment=true to manually assign this security groups to targets.
      */
     declare public /*out*/ readonly securityGroupId: pulumi.Output<string>;
     /**
@@ -110,6 +114,7 @@ export class Loadbalancer extends pulumi.CustomResource {
             resourceInputs["disableSecurityGroupAssignment"] = state?.disableSecurityGroupAssignment;
             resourceInputs["externalAddress"] = state?.externalAddress;
             resourceInputs["listeners"] = state?.listeners;
+            resourceInputs["loadBalancerSecurityGroupId"] = state?.loadBalancerSecurityGroupId;
             resourceInputs["name"] = state?.name;
             resourceInputs["networks"] = state?.networks;
             resourceInputs["options"] = state?.options;
@@ -144,6 +149,7 @@ export class Loadbalancer extends pulumi.CustomResource {
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["region"] = args?.region;
             resourceInputs["targetPools"] = args?.targetPools;
+            resourceInputs["loadBalancerSecurityGroupId"] = undefined /*out*/;
             resourceInputs["privateAddress"] = undefined /*out*/;
             resourceInputs["securityGroupId"] = undefined /*out*/;
             resourceInputs["version"] = undefined /*out*/;
@@ -169,6 +175,10 @@ export interface LoadbalancerState {
      * List of all listeners which will accept traffic. Limited to 20.
      */
     listeners?: pulumi.Input<pulumi.Input<inputs.LoadbalancerListener>[] | undefined>;
+    /**
+     * The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT network areas (SNA). To enable this, create a security group rule for your target VMs and set the `remoteSecurityGroupId` of that rule to this value. This is typically used when `disableSecurityGroupAssignment` is set to `true`.
+     */
+    loadBalancerSecurityGroupId?: pulumi.Input<string | undefined>;
     /**
      * Load balancer name.
      */
@@ -198,7 +208,7 @@ export interface LoadbalancerState {
      */
     region?: pulumi.Input<string | undefined>;
     /**
-     * The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT network areas (SNA). To enable this, create a security group rule for your target VMs and set the `remoteSecurityGroupId` of that rule to this value. This is typically used when `disableSecurityGroupAssignment` is set to `true`.
+     * The ID of the automatically created security group that allows the targets to receive traffic from the LoadBalancer. Useful when disableTargetSecurityGroupAssignment=true to manually assign this security groups to targets.
      */
     securityGroupId?: pulumi.Input<string | undefined>;
     /**

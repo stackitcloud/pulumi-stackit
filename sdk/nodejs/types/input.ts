@@ -1938,6 +1938,24 @@ export interface SfsResourcePoolSnapshotPolicy {
     name?: pulumi.Input<string | undefined>;
 }
 
+export interface SkeClusterAccess {
+    /**
+     * Configure IDP
+     */
+    idp?: pulumi.Input<inputs.SkeClusterAccessIdp | undefined>;
+}
+
+export interface SkeClusterAccessIdp {
+    /**
+     * Enable IDP integration for the cluster.
+     */
+    enabled?: pulumi.Input<boolean | undefined>;
+    /**
+     * The IDP type. Possible values: 'stackit'.
+     */
+    type?: pulumi.Input<string | undefined>;
+}
+
 export interface SkeClusterExtensions {
     /**
      * Cluster access control configuration.
@@ -2331,6 +2349,182 @@ export interface VolumeSource {
      * The type of the source. Possible values are: `volume`, `image`, `snapshot`, `backup`.
      */
     type: pulumi.Input<string>;
+}
+
+export interface VpnConnectionTunnel1 {
+    bgp?: pulumi.Input<inputs.VpnConnectionTunnel1Bgp | undefined>;
+    peering?: pulumi.Input<inputs.VpnConnectionTunnel1Peering | undefined>;
+    phase1: pulumi.Input<inputs.VpnConnectionTunnel1Phase1>;
+    phase2: pulumi.Input<inputs.VpnConnectionTunnel1Phase2>;
+    /**
+     * Pre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only argument `preSharedKeyWo` should be preferred.
+     */
+    preSharedKey?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Pre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only - never stored in state and never returned by the API. To rotate the key, update this value AND increment pre*shared*key*wo*version. Changing this field alone will NOT trigger an update.
+     */
+    preSharedKeyWo?: pulumi.Input<string | undefined>;
+    /**
+     * User-managed rotation counter for the pre-shared key. Must be incremented every time pre*shared*key*wo is changed. Terraform diffs this field to detect key rotations - changing pre*shared*key*wo alone will NOT trigger an update because it is write-only and never stored in state.
+     */
+    preSharedKeyWoVersion?: pulumi.Input<number | undefined>;
+    /**
+     * Remote IPv4 address for the tunnel endpoint.
+     */
+    remoteAddress: pulumi.Input<string>;
+}
+
+export interface VpnConnectionTunnel1Bgp {
+    /**
+     * Remote ASN for BGP peering (private ASN range, 64512-4294967294).
+     */
+    remoteAsn: pulumi.Input<number>;
+}
+
+export interface VpnConnectionTunnel1Peering {
+    /**
+     * Local tunnel interface IPv4 address.
+     */
+    localAddress: pulumi.Input<string>;
+    /**
+     * Remote tunnel interface IPv4 address.
+     */
+    remoteAddress: pulumi.Input<string>;
+}
+
+export interface VpnConnectionTunnel1Phase1 {
+    /**
+     * Diffie-Hellman groups for key exchange. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
+     */
+    dhGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Encryption algorithms for Phase 1. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
+     */
+    encryptionAlgorithms: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`.
+     */
+    integrityAlgorithms: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Time to schedule an IKE re-keying in seconds. Range: 900-28800. Default: 14400.
+     */
+    rekeyTime?: pulumi.Input<number | undefined>;
+}
+
+export interface VpnConnectionTunnel1Phase2 {
+    /**
+     * Diffie-Hellman groups for Phase 2. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
+     */
+    dhGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Action to perform on DPD timeout. Default: 'restart'. Possible values are: `clear`, `restart`.
+     */
+    dpdAction?: pulumi.Input<string | undefined>;
+    /**
+     * Encryption algorithms for Phase 2. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
+     */
+    encryptionAlgorithms: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`.
+     */
+    integrityAlgorithms: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Time to schedule a Child SA re-keying in seconds. Range: 900-3600. Default: 3600.
+     */
+    rekeyTime?: pulumi.Input<number | undefined>;
+    /**
+     * Action to perform after loading the connection configuration. Default: 'start'. Possible values are: `none`, `start`.
+     */
+    startAction?: pulumi.Input<string | undefined>;
+}
+
+export interface VpnConnectionTunnel2 {
+    bgp?: pulumi.Input<inputs.VpnConnectionTunnel2Bgp | undefined>;
+    peering?: pulumi.Input<inputs.VpnConnectionTunnel2Peering | undefined>;
+    phase1: pulumi.Input<inputs.VpnConnectionTunnel2Phase1>;
+    phase2: pulumi.Input<inputs.VpnConnectionTunnel2Phase2>;
+    /**
+     * Pre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only argument `preSharedKeyWo` should be preferred.
+     */
+    preSharedKey?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Pre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only - never stored in state and never returned by the API. To rotate the key, update this value AND increment pre*shared*key*wo*version. Changing this field alone will NOT trigger an update.
+     */
+    preSharedKeyWo?: pulumi.Input<string | undefined>;
+    /**
+     * User-managed rotation counter for the pre-shared key. Must be incremented every time pre*shared*key*wo is changed. Terraform diffs this field to detect key rotations - changing pre*shared*key*wo alone will NOT trigger an update because it is write-only and never stored in state.
+     */
+    preSharedKeyWoVersion?: pulumi.Input<number | undefined>;
+    /**
+     * Remote IPv4 address for the tunnel endpoint.
+     */
+    remoteAddress: pulumi.Input<string>;
+}
+
+export interface VpnConnectionTunnel2Bgp {
+    /**
+     * Remote ASN for BGP peering (private ASN range, 64512-4294967294).
+     */
+    remoteAsn: pulumi.Input<number>;
+}
+
+export interface VpnConnectionTunnel2Peering {
+    /**
+     * Local tunnel interface IPv4 address.
+     */
+    localAddress: pulumi.Input<string>;
+    /**
+     * Remote tunnel interface IPv4 address.
+     */
+    remoteAddress: pulumi.Input<string>;
+}
+
+export interface VpnConnectionTunnel2Phase1 {
+    /**
+     * Diffie-Hellman groups for key exchange. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
+     */
+    dhGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Encryption algorithms for Phase 1. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
+     */
+    encryptionAlgorithms: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`.
+     */
+    integrityAlgorithms: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Time to schedule an IKE re-keying in seconds. Range: 900-28800. Default: 14400.
+     */
+    rekeyTime?: pulumi.Input<number | undefined>;
+}
+
+export interface VpnConnectionTunnel2Phase2 {
+    /**
+     * Diffie-Hellman groups for Phase 2. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
+     */
+    dhGroups?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Action to perform on DPD timeout. Default: 'restart'. Possible values are: `clear`, `restart`.
+     */
+    dpdAction?: pulumi.Input<string | undefined>;
+    /**
+     * Encryption algorithms for Phase 2. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
+     */
+    encryptionAlgorithms: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`.
+     */
+    integrityAlgorithms: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Time to schedule a Child SA re-keying in seconds. Range: 900-3600. Default: 3600.
+     */
+    rekeyTime?: pulumi.Input<number | undefined>;
+    /**
+     * Action to perform after loading the connection configuration. Default: 'start'. Possible values are: `none`, `start`.
+     */
+    startAction?: pulumi.Input<string | undefined>;
 }
 
 export interface VpnGatewayAvailabilityZones {

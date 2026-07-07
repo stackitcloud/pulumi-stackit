@@ -18,6 +18,8 @@ import (
 type IntakeRunner struct {
 	pulumi.CustomResourceState
 
+	// The creation time of the runner.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The description of the runner.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// User-defined labels.
@@ -34,6 +36,8 @@ type IntakeRunner struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The runner ID.
 	RunnerId pulumi.StringOutput `pulumi:"runnerId"`
+	// The URI of the runner.
+	Uri pulumi.StringOutput `pulumi:"uri"`
 }
 
 // NewIntakeRunner registers a new resource with the given unique name, arguments, and options.
@@ -75,6 +79,8 @@ func GetIntakeRunner(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering IntakeRunner resources.
 type intakeRunnerState struct {
+	// The creation time of the runner.
+	CreateTime *string `pulumi:"createTime"`
 	// The description of the runner.
 	Description *string `pulumi:"description"`
 	// User-defined labels.
@@ -91,9 +97,13 @@ type intakeRunnerState struct {
 	Region *string `pulumi:"region"`
 	// The runner ID.
 	RunnerId *string `pulumi:"runnerId"`
+	// The URI of the runner.
+	Uri *string `pulumi:"uri"`
 }
 
 type IntakeRunnerState struct {
+	// The creation time of the runner.
+	CreateTime pulumi.StringPtrInput
 	// The description of the runner.
 	Description pulumi.StringPtrInput
 	// User-defined labels.
@@ -110,6 +120,8 @@ type IntakeRunnerState struct {
 	Region pulumi.StringPtrInput
 	// The runner ID.
 	RunnerId pulumi.StringPtrInput
+	// The URI of the runner.
+	Uri pulumi.StringPtrInput
 }
 
 func (IntakeRunnerState) ElementType() reflect.Type {
@@ -238,6 +250,11 @@ func (o IntakeRunnerOutput) ToIntakeRunnerOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The creation time of the runner.
+func (o IntakeRunnerOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *IntakeRunner) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
 // The description of the runner.
 func (o IntakeRunnerOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *IntakeRunner) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -276,6 +293,11 @@ func (o IntakeRunnerOutput) Region() pulumi.StringOutput {
 // The runner ID.
 func (o IntakeRunnerOutput) RunnerId() pulumi.StringOutput {
 	return o.ApplyT(func(v *IntakeRunner) pulumi.StringOutput { return v.RunnerId }).(pulumi.StringOutput)
+}
+
+// The URI of the runner.
+func (o IntakeRunnerOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v *IntakeRunner) pulumi.StringOutput { return v.Uri }).(pulumi.StringOutput)
 }
 
 type IntakeRunnerArrayOutput struct{ *pulumi.OutputState }

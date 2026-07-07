@@ -44,6 +44,8 @@ type LookupLoadbalancerResult struct {
 	Id string `pulumi:"id"`
 	// List of all listeners which will accept traffic. Limited to 20.
 	Listeners []GetLoadbalancerListener `pulumi:"listeners"`
+	// The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT network areas (SNA). To enable this, create a security group rule for your target VMs and set the `remoteSecurityGroupId` of that rule to this value. This is typically used when `disableSecurityGroupAssignment` is set to `true`.
+	LoadBalancerSecurityGroupId string `pulumi:"loadBalancerSecurityGroupId"`
 	// Load balancer name.
 	Name string `pulumi:"name"`
 	// List of networks that listeners and targets reside in.
@@ -58,7 +60,7 @@ type LookupLoadbalancerResult struct {
 	ProjectId string `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
 	Region *string `pulumi:"region"`
-	// The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT Network areas (SNA). To enable this, create a security group rule for your target VMs and set the `remoteSecurityGroupId` of that rule to this value. This is typically used when `disableSecurityGroupAssignment` is set to `true`.
+	// The ID of the automatically created security group that allows the targets to receive traffic from the LoadBalancer. Useful when disableTargetSecurityGroupAssignment=true to manually assign this security groups to targets.
 	SecurityGroupId string `pulumi:"securityGroupId"`
 	// List of all target pools which will be used in the Load Balancer. Limited to 20.
 	TargetPools []GetLoadbalancerTargetPool `pulumi:"targetPools"`
@@ -124,6 +126,11 @@ func (o LookupLoadbalancerResultOutput) Listeners() GetLoadbalancerListenerArray
 	return o.ApplyT(func(v LookupLoadbalancerResult) []GetLoadbalancerListener { return v.Listeners }).(GetLoadbalancerListenerArrayOutput)
 }
 
+// The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT network areas (SNA). To enable this, create a security group rule for your target VMs and set the `remoteSecurityGroupId` of that rule to this value. This is typically used when `disableSecurityGroupAssignment` is set to `true`.
+func (o LookupLoadbalancerResultOutput) LoadBalancerSecurityGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadbalancerResult) string { return v.LoadBalancerSecurityGroupId }).(pulumi.StringOutput)
+}
+
 // Load balancer name.
 func (o LookupLoadbalancerResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLoadbalancerResult) string { return v.Name }).(pulumi.StringOutput)
@@ -159,7 +166,7 @@ func (o LookupLoadbalancerResultOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupLoadbalancerResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT Network areas (SNA). To enable this, create a security group rule for your target VMs and set the `remoteSecurityGroupId` of that rule to this value. This is typically used when `disableSecurityGroupAssignment` is set to `true`.
+// The ID of the automatically created security group that allows the targets to receive traffic from the LoadBalancer. Useful when disableTargetSecurityGroupAssignment=true to manually assign this security groups to targets.
 func (o LookupLoadbalancerResultOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLoadbalancerResult) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }

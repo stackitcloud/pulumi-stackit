@@ -2833,6 +2833,24 @@ export interface GetSfsSnapshotPoliciesItemSnapshotSchedule {
     retentionPeriod: string;
 }
 
+export interface GetSkeClusterAccess {
+    /**
+     * Configure IDP
+     */
+    idp: outputs.GetSkeClusterAccessIdp;
+}
+
+export interface GetSkeClusterAccessIdp {
+    /**
+     * Enable IDP integration for the cluster.
+     */
+    enabled: boolean;
+    /**
+     * The IDP type. Possible values: 'stackit'.
+     */
+    type: string;
+}
+
 export interface GetSkeClusterExtensions {
     /**
      * Cluster access control configuration
@@ -3202,6 +3220,180 @@ export interface GetVolumeSource {
     type: string;
 }
 
+export interface GetVpnConnectionTunnel1 {
+    /**
+     * BGP configuration for this tunnel.
+     */
+    bgp: outputs.GetVpnConnectionTunnel1Bgp;
+    /**
+     * Tunnel interface peering configuration.
+     */
+    peering: outputs.GetVpnConnectionTunnel1Peering;
+    /**
+     * IKE Phase 1 configuration.
+     */
+    phase1: outputs.GetVpnConnectionTunnel1Phase1;
+    /**
+     * IKE Phase 2 configuration.
+     */
+    phase2: outputs.GetVpnConnectionTunnel1Phase2;
+    /**
+     * Remote peer IPv4 address for this tunnel.
+     */
+    remoteAddress: string;
+}
+
+export interface GetVpnConnectionTunnel1Bgp {
+    /**
+     * Remote AS number.
+     */
+    remoteAsn: number;
+}
+
+export interface GetVpnConnectionTunnel1Peering {
+    /**
+     * Local tunnel interface IPv4 address.
+     */
+    localAddress: string;
+    /**
+     * Remote tunnel interface IPv4 address.
+     */
+    remoteAddress: string;
+}
+
+export interface GetVpnConnectionTunnel1Phase1 {
+    /**
+     * Diffie-Hellman groups.
+     */
+    dhGroups: string[];
+    /**
+     * Encryption algorithms.
+     */
+    encryptionAlgorithms: string[];
+    /**
+     * Integrity/hash algorithms.
+     */
+    integrityAlgorithms: string[];
+    /**
+     * IKE re-keying time in seconds.
+     */
+    rekeyTime: number;
+}
+
+export interface GetVpnConnectionTunnel1Phase2 {
+    /**
+     * Diffie-Hellman groups for PFS.
+     */
+    dhGroups: string[];
+    /**
+     * DPD timeout action (clear or restart).
+     */
+    dpdAction: string;
+    /**
+     * Encryption algorithms.
+     */
+    encryptionAlgorithms: string[];
+    /**
+     * Integrity/hash algorithms.
+     */
+    integrityAlgorithms: string[];
+    /**
+     * Child SA re-keying time in seconds.
+     */
+    rekeyTime: number;
+    /**
+     * Start action (none or start).
+     */
+    startAction: string;
+}
+
+export interface GetVpnConnectionTunnel2 {
+    /**
+     * BGP configuration for this tunnel.
+     */
+    bgp: outputs.GetVpnConnectionTunnel2Bgp;
+    /**
+     * Tunnel interface peering configuration.
+     */
+    peering: outputs.GetVpnConnectionTunnel2Peering;
+    /**
+     * IKE Phase 1 configuration.
+     */
+    phase1: outputs.GetVpnConnectionTunnel2Phase1;
+    /**
+     * IKE Phase 2 configuration.
+     */
+    phase2: outputs.GetVpnConnectionTunnel2Phase2;
+    /**
+     * Remote peer IPv4 address for this tunnel.
+     */
+    remoteAddress: string;
+}
+
+export interface GetVpnConnectionTunnel2Bgp {
+    /**
+     * Remote AS number.
+     */
+    remoteAsn: number;
+}
+
+export interface GetVpnConnectionTunnel2Peering {
+    /**
+     * Local tunnel interface IPv4 address.
+     */
+    localAddress: string;
+    /**
+     * Remote tunnel interface IPv4 address.
+     */
+    remoteAddress: string;
+}
+
+export interface GetVpnConnectionTunnel2Phase1 {
+    /**
+     * Diffie-Hellman groups.
+     */
+    dhGroups: string[];
+    /**
+     * Encryption algorithms.
+     */
+    encryptionAlgorithms: string[];
+    /**
+     * Integrity/hash algorithms.
+     */
+    integrityAlgorithms: string[];
+    /**
+     * IKE re-keying time in seconds.
+     */
+    rekeyTime: number;
+}
+
+export interface GetVpnConnectionTunnel2Phase2 {
+    /**
+     * Diffie-Hellman groups for PFS.
+     */
+    dhGroups: string[];
+    /**
+     * DPD timeout action (clear or restart).
+     */
+    dpdAction: string;
+    /**
+     * Encryption algorithms.
+     */
+    encryptionAlgorithms: string[];
+    /**
+     * Integrity/hash algorithms.
+     */
+    integrityAlgorithms: string[];
+    /**
+     * Child SA re-keying time in seconds.
+     */
+    rekeyTime: number;
+    /**
+     * Start action (none or start).
+     */
+    startAction: string;
+}
+
 export interface GetVpnGatewayAvailabilityZones {
     /**
      * Availability zone for tunnel 1.
@@ -3222,6 +3414,36 @@ export interface GetVpnGatewayBgp {
      * List of IPv4 CIDRs to advertise via BGP. If omitted, SNA network ranges are advertised.
      */
     overrideAdvertisedRoutes: string[];
+}
+
+export interface GetVpnGatewayStatusConnection {
+    /**
+     * ID of the VPN connection.
+     */
+    connectionId: string;
+    /**
+     * Display name of the VPN connection.
+     */
+    displayName: string;
+    /**
+     * Wether the VPN connection is enabled or not.
+     */
+    enabled: boolean;
+}
+
+export interface GetVpnGatewayStatusTunnel {
+    /**
+     * The IPv4 address of the endpoint in the SNA.
+     */
+    internalNextHopIp: string;
+    /**
+     * The name of the VPN tunnel. Possible values are: `tunnel1`, `tunnel2`.
+     */
+    name: string;
+    /**
+     * The public IPv4 address of this endpoint.
+     */
+    publicIp: string;
 }
 
 export interface ImageChecksum {
@@ -4363,6 +4585,24 @@ export interface SfsResourcePoolSnapshotPolicy {
     name: string;
 }
 
+export interface SkeClusterAccess {
+    /**
+     * Configure IDP
+     */
+    idp: outputs.SkeClusterAccessIdp;
+}
+
+export interface SkeClusterAccessIdp {
+    /**
+     * Enable IDP integration for the cluster.
+     */
+    enabled: boolean;
+    /**
+     * The IDP type. Possible values: 'stackit'.
+     */
+    type: string;
+}
+
 export interface SkeClusterExtensions {
     /**
      * Cluster access control configuration.
@@ -4756,6 +4996,182 @@ export interface VolumeSource {
      * The type of the source. Possible values are: `volume`, `image`, `snapshot`, `backup`.
      */
     type: string;
+}
+
+export interface VpnConnectionTunnel1 {
+    bgp?: outputs.VpnConnectionTunnel1Bgp;
+    peering?: outputs.VpnConnectionTunnel1Peering;
+    phase1: outputs.VpnConnectionTunnel1Phase1;
+    phase2: outputs.VpnConnectionTunnel1Phase2;
+    /**
+     * Pre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only argument `preSharedKeyWo` should be preferred.
+     */
+    preSharedKey?: string;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Pre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only - never stored in state and never returned by the API. To rotate the key, update this value AND increment pre*shared*key*wo*version. Changing this field alone will NOT trigger an update.
+     */
+    preSharedKeyWo?: string;
+    /**
+     * User-managed rotation counter for the pre-shared key. Must be incremented every time pre*shared*key*wo is changed. Terraform diffs this field to detect key rotations - changing pre*shared*key*wo alone will NOT trigger an update because it is write-only and never stored in state.
+     */
+    preSharedKeyWoVersion?: number;
+    /**
+     * Remote IPv4 address for the tunnel endpoint.
+     */
+    remoteAddress: string;
+}
+
+export interface VpnConnectionTunnel1Bgp {
+    /**
+     * Remote ASN for BGP peering (private ASN range, 64512-4294967294).
+     */
+    remoteAsn: number;
+}
+
+export interface VpnConnectionTunnel1Peering {
+    /**
+     * Local tunnel interface IPv4 address.
+     */
+    localAddress: string;
+    /**
+     * Remote tunnel interface IPv4 address.
+     */
+    remoteAddress: string;
+}
+
+export interface VpnConnectionTunnel1Phase1 {
+    /**
+     * Diffie-Hellman groups for key exchange. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
+     */
+    dhGroups?: string[];
+    /**
+     * Encryption algorithms for Phase 1. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
+     */
+    encryptionAlgorithms: string[];
+    /**
+     * Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`.
+     */
+    integrityAlgorithms: string[];
+    /**
+     * Time to schedule an IKE re-keying in seconds. Range: 900-28800. Default: 14400.
+     */
+    rekeyTime: number;
+}
+
+export interface VpnConnectionTunnel1Phase2 {
+    /**
+     * Diffie-Hellman groups for Phase 2. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
+     */
+    dhGroups?: string[];
+    /**
+     * Action to perform on DPD timeout. Default: 'restart'. Possible values are: `clear`, `restart`.
+     */
+    dpdAction: string;
+    /**
+     * Encryption algorithms for Phase 2. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
+     */
+    encryptionAlgorithms: string[];
+    /**
+     * Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`.
+     */
+    integrityAlgorithms: string[];
+    /**
+     * Time to schedule a Child SA re-keying in seconds. Range: 900-3600. Default: 3600.
+     */
+    rekeyTime: number;
+    /**
+     * Action to perform after loading the connection configuration. Default: 'start'. Possible values are: `none`, `start`.
+     */
+    startAction: string;
+}
+
+export interface VpnConnectionTunnel2 {
+    bgp?: outputs.VpnConnectionTunnel2Bgp;
+    peering?: outputs.VpnConnectionTunnel2Peering;
+    phase1: outputs.VpnConnectionTunnel2Phase1;
+    phase2: outputs.VpnConnectionTunnel2Phase2;
+    /**
+     * Pre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only argument `preSharedKeyWo` should be preferred.
+     */
+    preSharedKey?: string;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Pre-shared key for the IPsec tunnel. Minimum 20 characters. Write-only - never stored in state and never returned by the API. To rotate the key, update this value AND increment pre*shared*key*wo*version. Changing this field alone will NOT trigger an update.
+     */
+    preSharedKeyWo?: string;
+    /**
+     * User-managed rotation counter for the pre-shared key. Must be incremented every time pre*shared*key*wo is changed. Terraform diffs this field to detect key rotations - changing pre*shared*key*wo alone will NOT trigger an update because it is write-only and never stored in state.
+     */
+    preSharedKeyWoVersion?: number;
+    /**
+     * Remote IPv4 address for the tunnel endpoint.
+     */
+    remoteAddress: string;
+}
+
+export interface VpnConnectionTunnel2Bgp {
+    /**
+     * Remote ASN for BGP peering (private ASN range, 64512-4294967294).
+     */
+    remoteAsn: number;
+}
+
+export interface VpnConnectionTunnel2Peering {
+    /**
+     * Local tunnel interface IPv4 address.
+     */
+    localAddress: string;
+    /**
+     * Remote tunnel interface IPv4 address.
+     */
+    remoteAddress: string;
+}
+
+export interface VpnConnectionTunnel2Phase1 {
+    /**
+     * Diffie-Hellman groups for key exchange. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
+     */
+    dhGroups?: string[];
+    /**
+     * Encryption algorithms for Phase 1. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
+     */
+    encryptionAlgorithms: string[];
+    /**
+     * Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`.
+     */
+    integrityAlgorithms: string[];
+    /**
+     * Time to schedule an IKE re-keying in seconds. Range: 900-28800. Default: 14400.
+     */
+    rekeyTime: number;
+}
+
+export interface VpnConnectionTunnel2Phase2 {
+    /**
+     * Diffie-Hellman groups for Phase 2. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
+     */
+    dhGroups?: string[];
+    /**
+     * Action to perform on DPD timeout. Default: 'restart'. Possible values are: `clear`, `restart`.
+     */
+    dpdAction: string;
+    /**
+     * Encryption algorithms for Phase 2. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
+     */
+    encryptionAlgorithms: string[];
+    /**
+     * Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`.
+     */
+    integrityAlgorithms: string[];
+    /**
+     * Time to schedule a Child SA re-keying in seconds. Range: 900-3600. Default: 3600.
+     */
+    rekeyTime: number;
+    /**
+     * Action to perform after loading the connection configuration. Default: 'start'. Possible values are: `none`, `start`.
+     */
+    startAction: string;
 }
 
 export interface VpnGatewayAvailabilityZones {

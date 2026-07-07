@@ -42,6 +42,10 @@ export class SkeCluster extends pulumi.CustomResource {
     }
 
     /**
+     * Configure access to the cluster
+     */
+    declare public readonly access: pulumi.Output<outputs.SkeClusterAccess>;
+    /**
      * The outgoing network ranges (in CIDR notation) of traffic originating from workload on the cluster.
      */
     declare public /*out*/ readonly egressAddressRanges: pulumi.Output<string[]>;
@@ -104,6 +108,7 @@ export class SkeCluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SkeClusterState | undefined;
+            resourceInputs["access"] = state?.access;
             resourceInputs["egressAddressRanges"] = state?.egressAddressRanges;
             resourceInputs["extensions"] = state?.extensions;
             resourceInputs["hibernations"] = state?.hibernations;
@@ -124,6 +129,7 @@ export class SkeCluster extends pulumi.CustomResource {
             if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
+            resourceInputs["access"] = args?.access;
             resourceInputs["extensions"] = args?.extensions;
             resourceInputs["hibernations"] = args?.hibernations;
             resourceInputs["kubernetesVersionMin"] = args?.kubernetesVersionMin;
@@ -146,6 +152,10 @@ export class SkeCluster extends pulumi.CustomResource {
  * Input properties used for looking up and filtering SkeCluster resources.
  */
 export interface SkeClusterState {
+    /**
+     * Configure access to the cluster
+     */
+    access?: pulumi.Input<inputs.SkeClusterAccess | undefined>;
     /**
      * The outgoing network ranges (in CIDR notation) of traffic originating from workload on the cluster.
      */
@@ -201,6 +211,10 @@ export interface SkeClusterState {
  * The set of arguments for constructing a SkeCluster resource.
  */
 export interface SkeClusterArgs {
+    /**
+     * Configure access to the cluster
+     */
+    access?: pulumi.Input<inputs.SkeClusterAccess | undefined>;
     /**
      * A single extensions block as defined below.
      */

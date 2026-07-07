@@ -36,6 +36,8 @@ type LookupIntakeRunnerArgs struct {
 
 // A collection of values returned by getIntakeRunner.
 type LookupIntakeRunnerResult struct {
+	// The creation time of the runner.
+	CreateTime string `pulumi:"createTime"`
 	// The description of the runner.
 	Description string `pulumi:"description"`
 	// Terraform's internal resource identifier. It is structured as "`projectId`,`region`,`runnerId`".
@@ -54,6 +56,8 @@ type LookupIntakeRunnerResult struct {
 	Region *string `pulumi:"region"`
 	// The runner ID.
 	RunnerId string `pulumi:"runnerId"`
+	// The URI of the runner.
+	Uri string `pulumi:"uri"`
 }
 
 func LookupIntakeRunnerOutput(ctx *pulumi.Context, args LookupIntakeRunnerOutputArgs, opts ...pulumi.InvokeOption) LookupIntakeRunnerResultOutput {
@@ -92,6 +96,11 @@ func (o LookupIntakeRunnerResultOutput) ToLookupIntakeRunnerResultOutput() Looku
 
 func (o LookupIntakeRunnerResultOutput) ToLookupIntakeRunnerResultOutputWithContext(ctx context.Context) LookupIntakeRunnerResultOutput {
 	return o
+}
+
+// The creation time of the runner.
+func (o LookupIntakeRunnerResultOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIntakeRunnerResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
 // The description of the runner.
@@ -137,6 +146,11 @@ func (o LookupIntakeRunnerResultOutput) Region() pulumi.StringPtrOutput {
 // The runner ID.
 func (o LookupIntakeRunnerResultOutput) RunnerId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupIntakeRunnerResult) string { return v.RunnerId }).(pulumi.StringOutput)
+}
+
+// The URI of the runner.
+func (o LookupIntakeRunnerResultOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupIntakeRunnerResult) string { return v.Uri }).(pulumi.StringOutput)
 }
 
 func init() {
