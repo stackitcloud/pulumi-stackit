@@ -347,6 +347,10 @@ export interface CdnDistributionConfig {
      */
     blockedCountries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
+     * Enable this allows the 'Host' header to be passed through to the origin.
+     */
+    forwardHostHeader?: pulumi.Input<boolean | undefined>;
+    /**
      * Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
      */
     optimizer?: pulumi.Input<inputs.CdnDistributionConfigOptimizer | undefined>;
@@ -358,6 +362,14 @@ export interface CdnDistributionConfig {
      * The configured regions where content will be hosted
      */
     regions: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Enable this to prevent origin-level cookies from being forwarded to the end user.
+     */
+    stripResponseCookies?: pulumi.Input<boolean | undefined>;
+    /**
+     * Configuration for TLS protocol versions. Note: Enabling older TLS versions (1.0, 1.1) is generally discouraged for security reasons.
+     */
+    tls?: pulumi.Input<inputs.CdnDistributionConfigTls | undefined>;
     /**
      * Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.
      */
@@ -453,6 +465,17 @@ export interface CdnDistributionConfigRedirectsRuleMatcher {
      * A list of glob patterns to match against the request path. At least one value is required. Examples: "/shop/*" or "*&#47;img/*"
      */
     values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface CdnDistributionConfigTls {
+    /**
+     * If set to true, the distribution will accept connections using TLS 1.1.
+     */
+    enableTls10?: pulumi.Input<boolean | undefined>;
+    /**
+     * If set to true, the distribution will accept connections using TLS 1.0.
+     */
+    enableTls11?: pulumi.Input<boolean | undefined>;
 }
 
 export interface CdnDistributionConfigWaf {
@@ -755,7 +778,7 @@ export interface GetDnsZoneTimeoutsArgs {
 
 export interface GetImageV2Filter {
     /**
-     * Filter images by operating system distribution. For example: `ubuntu`, `ubuntu-arm64`, `debian`, `rhel`, etc.
+     * Filter images by operating system distribution. For example: `ubuntu`, `debian`, `rhel`, etc.
      */
     distro?: string;
     /**
@@ -778,7 +801,7 @@ export interface GetImageV2Filter {
 
 export interface GetImageV2FilterArgs {
     /**
-     * Filter images by operating system distribution. For example: `ubuntu`, `ubuntu-arm64`, `debian`, `rhel`, etc.
+     * Filter images by operating system distribution. For example: `ubuntu`, `debian`, `rhel`, etc.
      */
     distro?: pulumi.Input<string | undefined>;
     /**
@@ -797,6 +820,28 @@ export interface GetImageV2FilterArgs {
      * Filter images by OS distribution version, such as `22.04`, `11`, or `9.1`.
      */
     version?: pulumi.Input<string | undefined>;
+}
+
+export interface GetSqlserverflexInstanceNetwork {
+    /**
+     * The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected.
+     */
+    accessScope?: string;
+    /**
+     * List of IPV4 cidr.
+     */
+    acls?: string[];
+}
+
+export interface GetSqlserverflexInstanceNetworkArgs {
+    /**
+     * The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected.
+     */
+    accessScope?: pulumi.Input<string | undefined>;
+    /**
+     * List of IPV4 cidr.
+     */
+    acls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 export interface ImageChecksum {
@@ -2168,8 +2213,25 @@ export interface SqlserverflexInstanceFlavor {
     ram: pulumi.Input<number>;
 }
 
+export interface SqlserverflexInstanceNetwork {
+    /**
+     * The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. Possible values are: `PUBLIC`, `SNA`.
+     */
+    accessScope?: pulumi.Input<string | undefined>;
+    /**
+     * List of IPV4 cidr.
+     */
+    acls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
 export interface SqlserverflexInstanceOptions {
+    /**
+     * @deprecated edition is deprecated and will be removed after January 2027.
+     */
     edition?: pulumi.Input<string | undefined>;
+    /**
+     * @deprecated retention_days is deprecated and will be removed after January 2027. Use instead `retentionDays` from root.
+     */
     retentionDays?: pulumi.Input<number | undefined>;
 }
 
@@ -2178,10 +2240,12 @@ export interface SqlserverflexInstanceStorage {
      * The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
      * `bash
      * stackit beta sqlserverflex options --storages --flavor-id FLAVOR_ID
-     * `
-     * - `size` (Number)
+     * ` Will be required in the future. Set a value to prevent breaking changes.
      */
     class?: pulumi.Input<string | undefined>;
+    /**
+     * The storage size in Gigabytes. Will be required in the future. Set a value to prevent breaking changes.
+     */
     size?: pulumi.Input<number | undefined>;
 }
 

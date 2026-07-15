@@ -142,6 +142,8 @@ def get_network_area_route(network_area_id: Optional[_builtins.str] = None,
     """
     Network area route data resource schema. Must have a `region` specified in the provider configuration.
 
+    This datasource is for SNA, not VPC, networks.
+
     ## Example Usage
 
 
@@ -174,6 +176,8 @@ def get_network_area_route_output(network_area_id: pulumi.Input[Optional[_builti
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkAreaRouteResult]:
     """
     Network area route data resource schema. Must have a `region` specified in the provider configuration.
+
+    This datasource is for SNA, not VPC, networks.
 
     ## Example Usage
 

@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * Network area region data source schema.
  *
+ * This datasource is for SNA, not VPC, based networks.
+ *
  * ## Example Usage
  */
 export function getNetworkAreaRegion(args: GetNetworkAreaRegionArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkAreaRegionResult> {
@@ -65,6 +67,8 @@ export interface GetNetworkAreaRegionResult {
 }
 /**
  * Network area region data source schema.
+ *
+ * This datasource is for SNA, not VPC, based networks.
  *
  * ## Example Usage
  */

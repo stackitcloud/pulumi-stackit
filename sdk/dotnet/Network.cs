@@ -16,6 +16,10 @@ namespace Pulumi.Stackit
     /// In cases where `Ipv4Nameservers` are defined within the resource, the existing behavior will remain unchanged.
     /// 
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// In Terraform v1.5.0 and later, the `  + " `" + `Import` + "` " +  ` block can be used with the `  + " `" + `Id` + "` " +  ` attribute, for example:
     /// </summary>
     [StackitResourceType("stackit:index/network:Network")]
     public partial class Network : global::Pulumi.CustomResource

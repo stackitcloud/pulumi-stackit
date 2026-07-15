@@ -9,7 +9,13 @@ import * as utilities from "./utilities";
 /**
  * Network area region resource schema.
  *
+ * This resource is for SNA, not VPC, based networks.
+ *
  * ## Example Usage
+ *
+ * ## Import
+ *
+ * In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
  */
 export class NetworkAreaRegion extends pulumi.CustomResource {
     /**

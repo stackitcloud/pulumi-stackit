@@ -13,6 +13,10 @@ namespace Pulumi.Stackit
     /// SFS project lock resource schema. Must have a `Region` specified in the provider configuration. Always use only one project lock per project.
     /// 
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// In Terraform v1.5.0 and later, the `  + " `" + `Import` + "` " +  ` block can be used with the `  + " `" + `Id` + "` " +  ` attribute, for example:
     /// </summary>
     [StackitResourceType("stackit:index/sfsProjectLock:SfsProjectLock")]
     public partial class SfsProjectLock : global::Pulumi.CustomResource

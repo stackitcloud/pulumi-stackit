@@ -28,6 +28,8 @@ func LookupSqlserverflexInstance(ctx *pulumi.Context, args *LookupSqlserverflexI
 type LookupSqlserverflexInstanceArgs struct {
 	// ID of the SQLServer Flex instance.
 	InstanceId string `pulumi:"instanceId"`
+	// The network configuration of the instance.
+	Network *GetSqlserverflexInstanceNetwork `pulumi:"network"`
 	// STACKIT project ID to which the instance is associated.
 	ProjectId string `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
@@ -39,23 +41,31 @@ type LookupSqlserverflexInstanceResult struct {
 	// The Access Control List (ACL) for the SQLServer Flex instance.
 	Acls []string `pulumi:"acls"`
 	// The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *").
-	BackupSchedule string                         `pulumi:"backupSchedule"`
-	Flavor         GetSqlserverflexInstanceFlavor `pulumi:"flavor"`
+	BackupSchedule string `pulumi:"backupSchedule"`
+	// Edition of the MSSQL server instance.
+	Edition string                         `pulumi:"edition"`
+	Flavor  GetSqlserverflexInstanceFlavor `pulumi:"flavor"`
+	// The flavor ID of the SQLServer Flex instance.
+	FlavorId string `pulumi:"flavorId"`
 	// Terraform's internal data source. ID. It is structured as "`projectId`,`region`,`instanceId`".
 	Id string `pulumi:"id"`
 	// ID of the SQLServer Flex instance.
 	InstanceId string `pulumi:"instanceId"`
 	// Instance name.
 	Name string `pulumi:"name"`
+	// The network configuration of the instance.
+	Network *GetSqlserverflexInstanceNetwork `pulumi:"network"`
 	// Custom parameters for the SQLServer Flex instance.
 	Options GetSqlserverflexInstanceOptions `pulumi:"options"`
 	// STACKIT project ID to which the instance is associated.
 	ProjectId string `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
-	Region   *string                         `pulumi:"region"`
-	Replicas int                             `pulumi:"replicas"`
-	Storage  GetSqlserverflexInstanceStorage `pulumi:"storage"`
-	Version  string                          `pulumi:"version"`
+	Region   *string `pulumi:"region"`
+	Replicas int     `pulumi:"replicas"`
+	// The days (30 to 90) for how long the backup files should be stored before cleaned up.
+	RetentionDays int                             `pulumi:"retentionDays"`
+	Storage       GetSqlserverflexInstanceStorage `pulumi:"storage"`
+	Version       string                          `pulumi:"version"`
 }
 
 func LookupSqlserverflexInstanceOutput(ctx *pulumi.Context, args LookupSqlserverflexInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupSqlserverflexInstanceResultOutput {
@@ -71,6 +81,8 @@ func LookupSqlserverflexInstanceOutput(ctx *pulumi.Context, args LookupSqlserver
 type LookupSqlserverflexInstanceOutputArgs struct {
 	// ID of the SQLServer Flex instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
+	// The network configuration of the instance.
+	Network GetSqlserverflexInstanceNetworkPtrInput `pulumi:"network"`
 	// STACKIT project ID to which the instance is associated.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
@@ -106,8 +118,18 @@ func (o LookupSqlserverflexInstanceResultOutput) BackupSchedule() pulumi.StringO
 	return o.ApplyT(func(v LookupSqlserverflexInstanceResult) string { return v.BackupSchedule }).(pulumi.StringOutput)
 }
 
+// Edition of the MSSQL server instance.
+func (o LookupSqlserverflexInstanceResultOutput) Edition() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSqlserverflexInstanceResult) string { return v.Edition }).(pulumi.StringOutput)
+}
+
 func (o LookupSqlserverflexInstanceResultOutput) Flavor() GetSqlserverflexInstanceFlavorOutput {
 	return o.ApplyT(func(v LookupSqlserverflexInstanceResult) GetSqlserverflexInstanceFlavor { return v.Flavor }).(GetSqlserverflexInstanceFlavorOutput)
+}
+
+// The flavor ID of the SQLServer Flex instance.
+func (o LookupSqlserverflexInstanceResultOutput) FlavorId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSqlserverflexInstanceResult) string { return v.FlavorId }).(pulumi.StringOutput)
 }
 
 // Terraform's internal data source. ID. It is structured as "`projectId`,`region`,`instanceId`".
@@ -123,6 +145,11 @@ func (o LookupSqlserverflexInstanceResultOutput) InstanceId() pulumi.StringOutpu
 // Instance name.
 func (o LookupSqlserverflexInstanceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlserverflexInstanceResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The network configuration of the instance.
+func (o LookupSqlserverflexInstanceResultOutput) Network() GetSqlserverflexInstanceNetworkPtrOutput {
+	return o.ApplyT(func(v LookupSqlserverflexInstanceResult) *GetSqlserverflexInstanceNetwork { return v.Network }).(GetSqlserverflexInstanceNetworkPtrOutput)
 }
 
 // Custom parameters for the SQLServer Flex instance.
@@ -142,6 +169,11 @@ func (o LookupSqlserverflexInstanceResultOutput) Region() pulumi.StringPtrOutput
 
 func (o LookupSqlserverflexInstanceResultOutput) Replicas() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupSqlserverflexInstanceResult) int { return v.Replicas }).(pulumi.IntOutput)
+}
+
+// The days (30 to 90) for how long the backup files should be stored before cleaned up.
+func (o LookupSqlserverflexInstanceResultOutput) RetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupSqlserverflexInstanceResult) int { return v.RetentionDays }).(pulumi.IntOutput)
 }
 
 func (o LookupSqlserverflexInstanceResultOutput) Storage() GetSqlserverflexInstanceStorageOutput {

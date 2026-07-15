@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetSqlserverflexInstanceResult',
@@ -27,16 +28,22 @@ class GetSqlserverflexInstanceResult:
     """
     A collection of values returned by getSqlserverflexInstance.
     """
-    def __init__(__self__, acls=None, backup_schedule=None, flavor=None, id=None, instance_id=None, name=None, options=None, project_id=None, region=None, replicas=None, storage=None, version=None):
+    def __init__(__self__, acls=None, backup_schedule=None, edition=None, flavor=None, flavor_id=None, id=None, instance_id=None, name=None, network=None, options=None, project_id=None, region=None, replicas=None, retention_days=None, storage=None, version=None):
         if acls and not isinstance(acls, list):
             raise TypeError("Expected argument 'acls' to be a list")
         pulumi.set(__self__, "acls", acls)
         if backup_schedule and not isinstance(backup_schedule, str):
             raise TypeError("Expected argument 'backup_schedule' to be a str")
         pulumi.set(__self__, "backup_schedule", backup_schedule)
+        if edition and not isinstance(edition, str):
+            raise TypeError("Expected argument 'edition' to be a str")
+        pulumi.set(__self__, "edition", edition)
         if flavor and not isinstance(flavor, dict):
             raise TypeError("Expected argument 'flavor' to be a dict")
         pulumi.set(__self__, "flavor", flavor)
+        if flavor_id and not isinstance(flavor_id, str):
+            raise TypeError("Expected argument 'flavor_id' to be a str")
+        pulumi.set(__self__, "flavor_id", flavor_id)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -46,6 +53,9 @@ class GetSqlserverflexInstanceResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if network and not isinstance(network, dict):
+            raise TypeError("Expected argument 'network' to be a dict")
+        pulumi.set(__self__, "network", network)
         if options and not isinstance(options, dict):
             raise TypeError("Expected argument 'options' to be a dict")
         pulumi.set(__self__, "options", options)
@@ -58,6 +68,9 @@ class GetSqlserverflexInstanceResult:
         if replicas and not isinstance(replicas, int):
             raise TypeError("Expected argument 'replicas' to be a int")
         pulumi.set(__self__, "replicas", replicas)
+        if retention_days and not isinstance(retention_days, int):
+            raise TypeError("Expected argument 'retention_days' to be a int")
+        pulumi.set(__self__, "retention_days", retention_days)
         if storage and not isinstance(storage, dict):
             raise TypeError("Expected argument 'storage' to be a dict")
         pulumi.set(__self__, "storage", storage)
@@ -83,8 +96,24 @@ class GetSqlserverflexInstanceResult:
 
     @_builtins.property
     @pulumi.getter
+    def edition(self) -> _builtins.str:
+        """
+        Edition of the MSSQL server instance.
+        """
+        return pulumi.get(self, "edition")
+
+    @_builtins.property
+    @pulumi.getter
     def flavor(self) -> 'outputs.GetSqlserverflexInstanceFlavorResult':
         return pulumi.get(self, "flavor")
+
+    @_builtins.property
+    @pulumi.getter(name="flavorId")
+    def flavor_id(self) -> _builtins.str:
+        """
+        The flavor ID of the SQLServer Flex instance.
+        """
+        return pulumi.get(self, "flavor_id")
 
     @_builtins.property
     @pulumi.getter
@@ -109,6 +138,14 @@ class GetSqlserverflexInstanceResult:
         Instance name.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> Optional['outputs.GetSqlserverflexInstanceNetworkResult']:
+        """
+        The network configuration of the instance.
+        """
+        return pulumi.get(self, "network")
 
     @_builtins.property
     @pulumi.getter
@@ -140,6 +177,14 @@ class GetSqlserverflexInstanceResult:
         return pulumi.get(self, "replicas")
 
     @_builtins.property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> _builtins.int:
+        """
+        The days (30 to 90) for how long the backup files should be stored before cleaned up.
+        """
+        return pulumi.get(self, "retention_days")
+
+    @_builtins.property
     @pulumi.getter
     def storage(self) -> 'outputs.GetSqlserverflexInstanceStorageResult':
         return pulumi.get(self, "storage")
@@ -158,19 +203,24 @@ class AwaitableGetSqlserverflexInstanceResult(GetSqlserverflexInstanceResult):
         return GetSqlserverflexInstanceResult(
             acls=self.acls,
             backup_schedule=self.backup_schedule,
+            edition=self.edition,
             flavor=self.flavor,
+            flavor_id=self.flavor_id,
             id=self.id,
             instance_id=self.instance_id,
             name=self.name,
+            network=self.network,
             options=self.options,
             project_id=self.project_id,
             region=self.region,
             replicas=self.replicas,
+            retention_days=self.retention_days,
             storage=self.storage,
             version=self.version)
 
 
 def get_sqlserverflex_instance(instance_id: Optional[_builtins.str] = None,
+                               network: Optional[Union['GetSqlserverflexInstanceNetworkArgs', 'GetSqlserverflexInstanceNetworkArgsDict']] = None,
                                project_id: Optional[_builtins.str] = None,
                                region: Optional[_builtins.str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSqlserverflexInstanceResult:
@@ -181,11 +231,13 @@ def get_sqlserverflex_instance(instance_id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str instance_id: ID of the SQLServer Flex instance.
+    :param Union['GetSqlserverflexInstanceNetworkArgs', 'GetSqlserverflexInstanceNetworkArgsDict'] network: The network configuration of the instance.
     :param _builtins.str project_id: STACKIT project ID to which the instance is associated.
     :param _builtins.str region: The resource region. If not defined, the provider region is used.
     """
     __args__ = dict()
     __args__['instanceId'] = instance_id
+    __args__['network'] = network
     __args__['projectId'] = project_id
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -194,17 +246,22 @@ def get_sqlserverflex_instance(instance_id: Optional[_builtins.str] = None,
     return AwaitableGetSqlserverflexInstanceResult(
         acls=pulumi.get(__ret__, 'acls'),
         backup_schedule=pulumi.get(__ret__, 'backup_schedule'),
+        edition=pulumi.get(__ret__, 'edition'),
         flavor=pulumi.get(__ret__, 'flavor'),
+        flavor_id=pulumi.get(__ret__, 'flavor_id'),
         id=pulumi.get(__ret__, 'id'),
         instance_id=pulumi.get(__ret__, 'instance_id'),
         name=pulumi.get(__ret__, 'name'),
+        network=pulumi.get(__ret__, 'network'),
         options=pulumi.get(__ret__, 'options'),
         project_id=pulumi.get(__ret__, 'project_id'),
         region=pulumi.get(__ret__, 'region'),
         replicas=pulumi.get(__ret__, 'replicas'),
+        retention_days=pulumi.get(__ret__, 'retention_days'),
         storage=pulumi.get(__ret__, 'storage'),
         version=pulumi.get(__ret__, 'version'))
 def get_sqlserverflex_instance_output(instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                      network: pulumi.Input[Optional[Optional[Union['GetSqlserverflexInstanceNetworkArgs', 'GetSqlserverflexInstanceNetworkArgsDict']]]] = None,
                                       project_id: pulumi.Input[Optional[_builtins.str]] = None,
                                       region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSqlserverflexInstanceResult]:
@@ -215,11 +272,13 @@ def get_sqlserverflex_instance_output(instance_id: pulumi.Input[Optional[_builti
 
 
     :param _builtins.str instance_id: ID of the SQLServer Flex instance.
+    :param Union['GetSqlserverflexInstanceNetworkArgs', 'GetSqlserverflexInstanceNetworkArgsDict'] network: The network configuration of the instance.
     :param _builtins.str project_id: STACKIT project ID to which the instance is associated.
     :param _builtins.str region: The resource region. If not defined, the provider region is used.
     """
     __args__ = dict()
     __args__['instanceId'] = instance_id
+    __args__['network'] = network
     __args__['projectId'] = project_id
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -227,13 +286,17 @@ def get_sqlserverflex_instance_output(instance_id: pulumi.Input[Optional[_builti
     return __ret__.apply(lambda __response__: GetSqlserverflexInstanceResult(
         acls=pulumi.get(__response__, 'acls'),
         backup_schedule=pulumi.get(__response__, 'backup_schedule'),
+        edition=pulumi.get(__response__, 'edition'),
         flavor=pulumi.get(__response__, 'flavor'),
+        flavor_id=pulumi.get(__response__, 'flavor_id'),
         id=pulumi.get(__response__, 'id'),
         instance_id=pulumi.get(__response__, 'instance_id'),
         name=pulumi.get(__response__, 'name'),
+        network=pulumi.get(__response__, 'network'),
         options=pulumi.get(__response__, 'options'),
         project_id=pulumi.get(__response__, 'project_id'),
         region=pulumi.get(__response__, 'region'),
         replicas=pulumi.get(__response__, 'replicas'),
+        retention_days=pulumi.get(__response__, 'retention_days'),
         storage=pulumi.get(__response__, 'storage'),
         version=pulumi.get(__response__, 'version')))

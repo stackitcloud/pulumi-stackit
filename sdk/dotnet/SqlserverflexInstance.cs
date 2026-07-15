@@ -24,13 +24,25 @@ namespace Pulumi.Stackit
         public Output<ImmutableArray<string>> Acls { get; private set; } = null!;
 
         /// <summary>
-        /// The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *")
+        /// The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *") Will be required in the future. Set a value to prevent breaking changes.
         /// </summary>
         [Output("backupSchedule")]
         public Output<string> BackupSchedule { get; private set; } = null!;
 
+        /// <summary>
+        /// Edition of the MSSQL server instance.
+        /// </summary>
+        [Output("edition")]
+        public Output<string> Edition { get; private set; } = null!;
+
         [Output("flavor")]
         public Output<Outputs.SqlserverflexInstanceFlavor> Flavor { get; private set; } = null!;
+
+        /// <summary>
+        /// The flavor ID of the SQLServer Flex instance.
+        /// </summary>
+        [Output("flavorId")]
+        public Output<string> FlavorId { get; private set; } = null!;
 
         /// <summary>
         /// ID of the SQLServer Flex instance.
@@ -43,6 +55,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The network configuration of the instance. Will be required in the future. Set a value to prevent breaking changes.
+        /// </summary>
+        [Output("network")]
+        public Output<Outputs.SqlserverflexInstanceNetwork> Network { get; private set; } = null!;
 
         [Output("options")]
         public Output<Outputs.SqlserverflexInstanceOptions> Options { get; private set; } = null!;
@@ -62,9 +80,21 @@ namespace Pulumi.Stackit
         [Output("replicas")]
         public Output<int> Replicas { get; private set; } = null!;
 
+        /// <summary>
+        /// The days (30 to 90) for how long the backup files should be stored before cleaned up. Will be required in the future. Set a value to prevent breaking changes.
+        /// </summary>
+        [Output("retentionDays")]
+        public Output<int> RetentionDays { get; private set; } = null!;
+
+        /// <summary>
+        /// The object containing information about the storage size and class. Will be required in the future. Set a value to prevent breaking changes.
+        /// </summary>
         [Output("storage")]
         public Output<Outputs.SqlserverflexInstanceStorage> Storage { get; private set; } = null!;
 
+        /// <summary>
+        /// The sqlserver version used for the instance. Possible values are: `2022`. Will be required in the future. Set a value to prevent breaking changes.
+        /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
 
@@ -121,6 +151,7 @@ namespace Pulumi.Stackit
         /// <summary>
         /// The Access Control List (ACL) for the SQLServer Flex instance.
         /// </summary>
+        [Obsolete(@"acl is deprecated and will be removed after January 2027. Use instead `network.acl`.")]
         public InputList<string> Acls
         {
             get => _acls ?? (_acls = new InputList<string>());
@@ -128,19 +159,31 @@ namespace Pulumi.Stackit
         }
 
         /// <summary>
-        /// The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *")
+        /// The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *") Will be required in the future. Set a value to prevent breaking changes.
         /// </summary>
         [Input("backupSchedule")]
         public Input<string>? BackupSchedule { get; set; }
 
-        [Input("flavor", required: true)]
-        public Input<Inputs.SqlserverflexInstanceFlavorArgs> Flavor { get; set; } = null!;
+        [Input("flavor")]
+        public Input<Inputs.SqlserverflexInstanceFlavorArgs>? Flavor { get; set; }
+
+        /// <summary>
+        /// The flavor ID of the SQLServer Flex instance.
+        /// </summary>
+        [Input("flavorId")]
+        public Input<string>? FlavorId { get; set; }
 
         /// <summary>
         /// Instance name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The network configuration of the instance. Will be required in the future. Set a value to prevent breaking changes.
+        /// </summary>
+        [Input("network")]
+        public Input<Inputs.SqlserverflexInstanceNetworkArgs>? Network { get; set; }
 
         [Input("options")]
         public Input<Inputs.SqlserverflexInstanceOptionsArgs>? Options { get; set; }
@@ -157,9 +200,21 @@ namespace Pulumi.Stackit
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        /// <summary>
+        /// The days (30 to 90) for how long the backup files should be stored before cleaned up. Will be required in the future. Set a value to prevent breaking changes.
+        /// </summary>
+        [Input("retentionDays")]
+        public Input<int>? RetentionDays { get; set; }
+
+        /// <summary>
+        /// The object containing information about the storage size and class. Will be required in the future. Set a value to prevent breaking changes.
+        /// </summary>
         [Input("storage")]
         public Input<Inputs.SqlserverflexInstanceStorageArgs>? Storage { get; set; }
 
+        /// <summary>
+        /// The sqlserver version used for the instance. Possible values are: `2022`. Will be required in the future. Set a value to prevent breaking changes.
+        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 
@@ -177,6 +232,7 @@ namespace Pulumi.Stackit
         /// <summary>
         /// The Access Control List (ACL) for the SQLServer Flex instance.
         /// </summary>
+        [Obsolete(@"acl is deprecated and will be removed after January 2027. Use instead `network.acl`.")]
         public InputList<string> Acls
         {
             get => _acls ?? (_acls = new InputList<string>());
@@ -184,13 +240,25 @@ namespace Pulumi.Stackit
         }
 
         /// <summary>
-        /// The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *")
+        /// The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *") Will be required in the future. Set a value to prevent breaking changes.
         /// </summary>
         [Input("backupSchedule")]
         public Input<string>? BackupSchedule { get; set; }
 
+        /// <summary>
+        /// Edition of the MSSQL server instance.
+        /// </summary>
+        [Input("edition")]
+        public Input<string>? Edition { get; set; }
+
         [Input("flavor")]
         public Input<Inputs.SqlserverflexInstanceFlavorGetArgs>? Flavor { get; set; }
+
+        /// <summary>
+        /// The flavor ID of the SQLServer Flex instance.
+        /// </summary>
+        [Input("flavorId")]
+        public Input<string>? FlavorId { get; set; }
 
         /// <summary>
         /// ID of the SQLServer Flex instance.
@@ -203,6 +271,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The network configuration of the instance. Will be required in the future. Set a value to prevent breaking changes.
+        /// </summary>
+        [Input("network")]
+        public Input<Inputs.SqlserverflexInstanceNetworkGetArgs>? Network { get; set; }
 
         [Input("options")]
         public Input<Inputs.SqlserverflexInstanceOptionsGetArgs>? Options { get; set; }
@@ -222,9 +296,21 @@ namespace Pulumi.Stackit
         [Input("replicas")]
         public Input<int>? Replicas { get; set; }
 
+        /// <summary>
+        /// The days (30 to 90) for how long the backup files should be stored before cleaned up. Will be required in the future. Set a value to prevent breaking changes.
+        /// </summary>
+        [Input("retentionDays")]
+        public Input<int>? RetentionDays { get; set; }
+
+        /// <summary>
+        /// The object containing information about the storage size and class. Will be required in the future. Set a value to prevent breaking changes.
+        /// </summary>
         [Input("storage")]
         public Input<Inputs.SqlserverflexInstanceStorageGetArgs>? Storage { get; set; }
 
+        /// <summary>
+        /// The sqlserver version used for the instance. Possible values are: `2022`. Will be required in the future. Set a value to prevent breaking changes.
+        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 

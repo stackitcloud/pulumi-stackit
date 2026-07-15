@@ -15,6 +15,10 @@ namespace Pulumi.Stackit
     /// &gt; **Note:** Write-Only argument `KeyPayloadBase64Wo` is available to use in place of `KeyPayloadBase64`. Write-Only arguments are supported in HashiCorp Terraform 1.11.0 and later. Learn more.
     /// 
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// In Terraform v1.5.0 and later, the `  + " `" + `Import` + "` " +  ` block can be used with the `  + " `" + `Id` + "` " +  ` attribute, for example:
     /// </summary>
     [StackitResourceType("stackit:index/volume:Volume")]
     public partial class Volume : global::Pulumi.CustomResource

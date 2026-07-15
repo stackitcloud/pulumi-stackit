@@ -10,6 +10,10 @@ import * as utilities from "./utilities";
  * Observability log alert group resource schema. Used to create alerts based on logs (Loki). Must have a `region` specified in the provider configuration.
  *
  * ## Example Usage
+ *
+ * ## Import
+ *
+ * In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
  */
 export class ObservabilityLogalertgroup extends pulumi.CustomResource {
     /**

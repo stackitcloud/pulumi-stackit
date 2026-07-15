@@ -15,6 +15,10 @@ namespace Pulumi.Stackit
     /// &gt; This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
     /// 
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// In Terraform v1.5.0 and later, the `  + " `" + `Import` + "` " +  ` block can be used with the `  + " `" + `Id` + "` " +  ` attribute, for example:
     /// </summary>
     [StackitResourceType("stackit:index/sfsResourcePool:SfsResourcePool")]
     public partial class SfsResourcePool : global::Pulumi.CustomResource

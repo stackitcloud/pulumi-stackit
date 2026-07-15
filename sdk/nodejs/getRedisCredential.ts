@@ -15,6 +15,7 @@ export function getRedisCredential(args: GetRedisCredentialArgs, opts?: pulumi.I
         "credentialId": args.credentialId,
         "instanceId": args.instanceId,
         "projectId": args.projectId,
+        "region": args.region,
     }, opts);
 }
 
@@ -34,6 +35,10 @@ export interface GetRedisCredentialArgs {
      * STACKIT project ID to which the instance is associated.
      */
     projectId: string;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: string;
 }
 
 /**
@@ -47,7 +52,7 @@ export interface GetRedisCredentialResult {
     readonly host: string;
     readonly hosts: string[];
     /**
-     * Terraform's internal data source. identifier. It is structured as "`projectId`,`instanceId`,`credentialId`".
+     * Terraform's internal data source. identifier. It is structured as "`projectId`,`region`,`instanceId`,`credentialId`".
      */
     readonly id: string;
     /**
@@ -61,6 +66,10 @@ export interface GetRedisCredentialResult {
      * STACKIT project ID to which the instance is associated.
      */
     readonly projectId: string;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    readonly region: string;
     /**
      * Connection URI.
      */
@@ -78,6 +87,7 @@ export function getRedisCredentialOutput(args: GetRedisCredentialOutputArgs, opt
         "credentialId": args.credentialId,
         "instanceId": args.instanceId,
         "projectId": args.projectId,
+        "region": args.region,
     }, opts);
 }
 
@@ -97,4 +107,8 @@ export interface GetRedisCredentialOutputArgs {
      * STACKIT project ID to which the instance is associated.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string | undefined>;
 }

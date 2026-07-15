@@ -8,6 +8,10 @@ import * as utilities from "./utilities";
  * Manages a STACKIT service account in a project.
  *
  * ## Example Usage
+ *
+ * ## Import
+ *
+ * In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
  */
 export class ServiceAccount extends pulumi.CustomResource {
     /**

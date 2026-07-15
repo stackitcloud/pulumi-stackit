@@ -14,9 +14,15 @@ import (
 
 // Routing table resource schema. Must have a `region` specified in the provider configuration.
 //
+// This resource is for SNA, not VPC, based networks.
+//
 // > This resource is part of the routing-tables experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
 //
 // ## Example Usage
+//
+// ## Import
+//
+// In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
 type RoutingTable struct {
 	pulumi.CustomResourceState
 

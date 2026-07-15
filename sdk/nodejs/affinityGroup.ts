@@ -8,6 +8,10 @@ import * as utilities from "./utilities";
  * Affinity Group schema.
  *
  * ## Example Usage
+ *
+ * ## Import
+ *
+ * In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
  */
 export class AffinityGroup extends pulumi.CustomResource {
     /**

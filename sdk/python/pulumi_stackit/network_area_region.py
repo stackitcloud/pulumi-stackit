@@ -175,7 +175,13 @@ class NetworkAreaRegion(pulumi.CustomResource):
         """
         Network area region resource schema.
 
+        This resource is for SNA, not VPC, based networks.
+
         ## Example Usage
+
+        ## Import
+
+        In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
 
 
         :param str resource_name: The name of the resource.
@@ -194,7 +200,13 @@ class NetworkAreaRegion(pulumi.CustomResource):
         """
         Network area region resource schema.
 
+        This resource is for SNA, not VPC, based networks.
+
         ## Example Usage
+
+        ## Import
+
+        In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
 
 
         :param str resource_name: The name of the resource.

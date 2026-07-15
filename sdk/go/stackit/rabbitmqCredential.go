@@ -15,6 +15,10 @@ import (
 // RabbitMQ credential resource schema. Must have a `region` specified in the provider configuration.
 //
 // ## Example Usage
+//
+// ## Import
+//
+// In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
 type RabbitmqCredential struct {
 	pulumi.CustomResourceState
 
@@ -31,6 +35,8 @@ type RabbitmqCredential struct {
 	Port       pulumi.IntOutput    `pulumi:"port"`
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringOutput `pulumi:"region"`
 	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
 	RotateWhenChanged pulumi.StringMapOutput   `pulumi:"rotateWhenChanged"`
 	Uri               pulumi.StringOutput      `pulumi:"uri"`
@@ -92,6 +98,8 @@ type rabbitmqCredentialState struct {
 	Port       *int    `pulumi:"port"`
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId *string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
 	RotateWhenChanged map[string]string `pulumi:"rotateWhenChanged"`
 	Uri               *string           `pulumi:"uri"`
@@ -113,6 +121,8 @@ type RabbitmqCredentialState struct {
 	Port       pulumi.IntPtrInput
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId pulumi.StringPtrInput
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput
 	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
 	RotateWhenChanged pulumi.StringMapInput
 	Uri               pulumi.StringPtrInput
@@ -129,6 +139,8 @@ type rabbitmqCredentialArgs struct {
 	InstanceId string `pulumi:"instanceId"`
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
 	RotateWhenChanged map[string]string `pulumi:"rotateWhenChanged"`
 }
@@ -139,6 +151,8 @@ type RabbitmqCredentialArgs struct {
 	InstanceId pulumi.StringInput
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId pulumi.StringInput
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput
 	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
 	RotateWhenChanged pulumi.StringMapInput
 }
@@ -271,6 +285,11 @@ func (o RabbitmqCredentialOutput) Port() pulumi.IntOutput {
 // STACKIT Project ID to which the instance is associated.
 func (o RabbitmqCredentialOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RabbitmqCredential) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The resource region. If not defined, the provider region is used.
+func (o RabbitmqCredentialOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *RabbitmqCredential) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.

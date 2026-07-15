@@ -15,6 +15,7 @@ export function getSqlserverflexInstance(args: GetSqlserverflexInstanceArgs, opt
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("stackit:index/getSqlserverflexInstance:getSqlserverflexInstance", {
         "instanceId": args.instanceId,
+        "network": args.network,
         "projectId": args.projectId,
         "region": args.region,
     }, opts);
@@ -28,6 +29,10 @@ export interface GetSqlserverflexInstanceArgs {
      * ID of the SQLServer Flex instance.
      */
     instanceId: string;
+    /**
+     * The network configuration of the instance.
+     */
+    network?: inputs.GetSqlserverflexInstanceNetwork;
     /**
      * STACKIT project ID to which the instance is associated.
      */
@@ -50,7 +55,15 @@ export interface GetSqlserverflexInstanceResult {
      * The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *").
      */
     readonly backupSchedule: string;
+    /**
+     * Edition of the MSSQL server instance.
+     */
+    readonly edition: string;
     readonly flavor: outputs.GetSqlserverflexInstanceFlavor;
+    /**
+     * The flavor ID of the SQLServer Flex instance.
+     */
+    readonly flavorId: string;
     /**
      * Terraform's internal data source. ID. It is structured as "`projectId`,`region`,`instanceId`".
      */
@@ -64,6 +77,10 @@ export interface GetSqlserverflexInstanceResult {
      */
     readonly name: string;
     /**
+     * The network configuration of the instance.
+     */
+    readonly network?: outputs.GetSqlserverflexInstanceNetwork;
+    /**
      * Custom parameters for the SQLServer Flex instance.
      */
     readonly options: outputs.GetSqlserverflexInstanceOptions;
@@ -76,6 +93,10 @@ export interface GetSqlserverflexInstanceResult {
      */
     readonly region?: string;
     readonly replicas: number;
+    /**
+     * The days (30 to 90) for how long the backup files should be stored before cleaned up.
+     */
+    readonly retentionDays: number;
     readonly storage: outputs.GetSqlserverflexInstanceStorage;
     readonly version: string;
 }
@@ -88,6 +109,7 @@ export function getSqlserverflexInstanceOutput(args: GetSqlserverflexInstanceOut
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("stackit:index/getSqlserverflexInstance:getSqlserverflexInstance", {
         "instanceId": args.instanceId,
+        "network": args.network,
         "projectId": args.projectId,
         "region": args.region,
     }, opts);
@@ -101,6 +123,10 @@ export interface GetSqlserverflexInstanceOutputArgs {
      * ID of the SQLServer Flex instance.
      */
     instanceId: pulumi.Input<string>;
+    /**
+     * The network configuration of the instance.
+     */
+    network?: pulumi.Input<inputs.GetSqlserverflexInstanceNetworkArgs | undefined>;
     /**
      * STACKIT project ID to which the instance is associated.
      */

@@ -12,6 +12,8 @@ namespace Pulumi.Stackit
     /// <summary>
     /// Network area route resource schema. Must have a `Region` specified in the provider configuration.
     /// 
+    /// This resource is for SNA, not VPC, based networks.
+    /// 
     /// ## Example Usage
     /// 
     /// ## Migration of IaaS resources from versions &lt;= v0.74.0

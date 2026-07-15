@@ -13,6 +13,10 @@ namespace Pulumi.Stackit
     /// DNS Record Set Resource schema.
     /// 
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// In Terraform v1.5.0 and later, the `  + " `" + `Import` + "` " +  ` block can be used with the `  + " `" + `Id` + "` " +  ` attribute, for example:
     /// </summary>
     [StackitResourceType("stackit:index/dnsRecordSet:DnsRecordSet")]
     public partial class DnsRecordSet : global::Pulumi.CustomResource

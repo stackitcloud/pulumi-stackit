@@ -13,6 +13,10 @@ namespace Pulumi.Stackit
     /// Volume attachment resource schema. Attaches a volume to a server. Must have a `Region` specified in the provider configuration.
     /// 
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// In Terraform v1.5.0 and later, the `  + " `" + `Import` + "` " +  ` block can be used with the `  + " `" + `Id` + "` " +  ` attribute, for example:
     /// </summary>
     [StackitResourceType("stackit:index/serverVolumeAttach:ServerVolumeAttach")]
     public partial class ServerVolumeAttach : global::Pulumi.CustomResource

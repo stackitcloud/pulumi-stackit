@@ -13,6 +13,10 @@ namespace Pulumi.Stackit
     /// Load balancer observability credential resource schema. Must have a `Region` specified in the provider configuration. These contain the username and password for the observability service (e.g. Argus) where the load balancer logs/metrics will be pushed into
     /// 
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// In Terraform v1.5.0 and later, the `  + " `" + `Import` + "` " +  ` block can be used with the `  + " `" + `Id` + "` " +  ` attribute, for example:
     /// </summary>
     [StackitResourceType("stackit:index/loadbalancerObservabilityCredential:LoadbalancerObservabilityCredential")]
     public partial class LoadbalancerObservabilityCredential : global::Pulumi.CustomResource

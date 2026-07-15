@@ -12,6 +12,10 @@ import * as utilities from "./utilities";
  * > **Note:** Write-Only argument `keyPayloadBase64Wo` is available to use in place of `keyPayloadBase64`. Write-Only arguments are supported in HashiCorp Terraform 1.11.0 and later. Learn more.
  *
  * ## Example Usage
+ *
+ * ## Import
+ *
+ * In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
  */
 export class Volume extends pulumi.CustomResource {
     /**

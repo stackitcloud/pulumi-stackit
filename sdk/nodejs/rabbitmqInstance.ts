@@ -10,6 +10,10 @@ import * as utilities from "./utilities";
  * RabbitMQ instance resource schema. Must have a `region` specified in the provider configuration.
  *
  * ## Example Usage
+ *
+ * ## Import
+ *
+ * In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
  */
 export class RabbitmqInstance extends pulumi.CustomResource {
     /**
@@ -69,6 +73,10 @@ export class RabbitmqInstance extends pulumi.CustomResource {
      */
     declare public readonly projectId: pulumi.Output<string>;
     /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    declare public readonly region: pulumi.Output<string>;
+    /**
      * The service version.
      */
     declare public readonly version: pulumi.Output<string>;
@@ -97,6 +105,7 @@ export class RabbitmqInstance extends pulumi.CustomResource {
             resourceInputs["planId"] = state?.planId;
             resourceInputs["planName"] = state?.planName;
             resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
             resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as RabbitmqInstanceArgs | undefined;
@@ -113,6 +122,7 @@ export class RabbitmqInstance extends pulumi.CustomResource {
             resourceInputs["parameters"] = args?.parameters;
             resourceInputs["planName"] = args?.planName;
             resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
             resourceInputs["version"] = args?.version;
             resourceInputs["cfGuid"] = undefined /*out*/;
             resourceInputs["cfOrganizationGuid"] = undefined /*out*/;
@@ -161,6 +171,10 @@ export interface RabbitmqInstanceState {
      */
     projectId?: pulumi.Input<string | undefined>;
     /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string | undefined>;
+    /**
      * The service version.
      */
     version?: pulumi.Input<string | undefined>;
@@ -186,6 +200,10 @@ export interface RabbitmqInstanceArgs {
      * STACKIT project ID to which the instance is associated.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string | undefined>;
     /**
      * The service version.
      */

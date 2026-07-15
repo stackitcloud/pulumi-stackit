@@ -13,6 +13,10 @@ namespace Pulumi.Stackit
     /// Service account attachment resource schema. Attaches a service account to a server. Must have a `Region` specified in the provider configuration.
     /// 
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// In Terraform v1.5.0 and later, the `  + " `" + `Import` + "` " +  ` block can be used with the `  + " `" + `Id` + "` " +  ` attribute, for example:
     /// </summary>
     [StackitResourceType("stackit:index/serverServiceAccountAttach:ServerServiceAccountAttach")]
     public partial class ServerServiceAccountAttach : global::Pulumi.CustomResource

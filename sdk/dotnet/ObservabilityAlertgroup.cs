@@ -13,6 +13,10 @@ namespace Pulumi.Stackit
     /// Observability alert group resource schema. Used to create alerts based on metrics (Thanos). Must have a `Region` specified in the provider configuration.
     /// 
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// In Terraform v1.5.0 and later, the `  + " `" + `Import` + "` " +  ` block can be used with the `  + " `" + `Id` + "` " +  ` attribute, for example:
     /// </summary>
     [StackitResourceType("stackit:index/observabilityAlertgroup:ObservabilityAlertgroup")]
     public partial class ObservabilityAlertgroup : global::Pulumi.CustomResource

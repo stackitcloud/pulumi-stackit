@@ -16,12 +16,14 @@ namespace Pulumi.Stackit.Inputs
         /// The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
         /// `bash
         /// stackit beta sqlserverflex options --storages --flavor-id FLAVOR_ID
-        /// `
-        /// - `Size` (Number)
+        /// ` Will be required in the future. Set a value to prevent breaking changes.
         /// </summary>
         [Input("class")]
         public Input<string>? Class { get; set; }
 
+        /// <summary>
+        /// The storage size in Gigabytes. Will be required in the future. Set a value to prevent breaking changes.
+        /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
 

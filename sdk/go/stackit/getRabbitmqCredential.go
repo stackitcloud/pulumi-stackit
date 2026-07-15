@@ -32,6 +32,8 @@ type LookupRabbitmqCredentialArgs struct {
 	InstanceId string `pulumi:"instanceId"`
 	// STACKIT project ID to which the instance is associated.
 	ProjectId string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 }
 
 // A collection of values returned by getRabbitmqCredential.
@@ -42,7 +44,7 @@ type LookupRabbitmqCredentialResult struct {
 	Hosts        []string `pulumi:"hosts"`
 	HttpApiUri   string   `pulumi:"httpApiUri"`
 	HttpApiUris  []string `pulumi:"httpApiUris"`
-	// Terraform's internal data source. identifier. It is structured as "`projectId`,`instanceId`,`credentialId`".
+	// Terraform's internal data source. identifier. It is structured as "`projectId`,`region`,`instanceId`,`credentialId`".
 	Id string `pulumi:"id"`
 	// ID of the RabbitMQ instance.
 	InstanceId string `pulumi:"instanceId"`
@@ -50,10 +52,12 @@ type LookupRabbitmqCredentialResult struct {
 	Password   string `pulumi:"password"`
 	Port       int    `pulumi:"port"`
 	// STACKIT project ID to which the instance is associated.
-	ProjectId string   `pulumi:"projectId"`
-	Uri       string   `pulumi:"uri"`
-	Uris      []string `pulumi:"uris"`
-	Username  string   `pulumi:"username"`
+	ProjectId string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region   string   `pulumi:"region"`
+	Uri      string   `pulumi:"uri"`
+	Uris     []string `pulumi:"uris"`
+	Username string   `pulumi:"username"`
 }
 
 func LookupRabbitmqCredentialOutput(ctx *pulumi.Context, args LookupRabbitmqCredentialOutputArgs, opts ...pulumi.InvokeOption) LookupRabbitmqCredentialResultOutput {
@@ -73,6 +77,8 @@ type LookupRabbitmqCredentialOutputArgs struct {
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// STACKIT project ID to which the instance is associated.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (LookupRabbitmqCredentialOutputArgs) ElementType() reflect.Type {
@@ -115,7 +121,7 @@ func (o LookupRabbitmqCredentialResultOutput) HttpApiUris() pulumi.StringArrayOu
 	return o.ApplyT(func(v LookupRabbitmqCredentialResult) []string { return v.HttpApiUris }).(pulumi.StringArrayOutput)
 }
 
-// Terraform's internal data source. identifier. It is structured as "`projectId`,`instanceId`,`credentialId`".
+// Terraform's internal data source. identifier. It is structured as "`projectId`,`region`,`instanceId`,`credentialId`".
 func (o LookupRabbitmqCredentialResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRabbitmqCredentialResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -140,6 +146,11 @@ func (o LookupRabbitmqCredentialResultOutput) Port() pulumi.IntOutput {
 // STACKIT project ID to which the instance is associated.
 func (o LookupRabbitmqCredentialResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRabbitmqCredentialResult) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The resource region. If not defined, the provider region is used.
+func (o LookupRabbitmqCredentialResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRabbitmqCredentialResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
 func (o LookupRabbitmqCredentialResultOutput) Uri() pulumi.StringOutput {

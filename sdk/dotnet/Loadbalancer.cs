@@ -15,6 +15,10 @@ namespace Pulumi.Stackit
     /// The example below creates the supporting infrastructure using the STACKIT Terraform provider, including the network, network interface, a public IP address and server resources.
     /// 
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// In Terraform v1.5.0 and later, the `  + " `" + `Import` + "` " +  ` block can be used with the `  + " `" + `Id` + "` " +  ` attribute, for example:
     /// </summary>
     [StackitResourceType("stackit:index/loadbalancer:Loadbalancer")]
     public partial class Loadbalancer : global::Pulumi.CustomResource

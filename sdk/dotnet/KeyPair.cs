@@ -13,6 +13,10 @@ namespace Pulumi.Stackit
     /// Key pair resource schema. Must have a `Region` specified in the provider configuration. Allows uploading an SSH public key to be used for server authentication.
     /// 
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// In Terraform v1.5.0 and later, the `  + " `" + `Import` + "` " +  ` block can be used with the `  + " `" + `Id` + "` " +  ` attribute, for example:
     /// </summary>
     [StackitResourceType("stackit:index/keyPair:KeyPair")]
     public partial class KeyPair : global::Pulumi.CustomResource

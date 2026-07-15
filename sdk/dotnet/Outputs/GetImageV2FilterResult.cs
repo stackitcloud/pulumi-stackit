@@ -14,7 +14,7 @@ namespace Pulumi.Stackit.Outputs
     public sealed class GetImageV2FilterResult
     {
         /// <summary>
-        /// Filter images by operating system distribution. For example: `Ubuntu`, `ubuntu-arm64`, `Debian`, `Rhel`, etc.
+        /// Filter images by operating system distribution. For example: `Ubuntu`, `Debian`, `Rhel`, etc.
         /// </summary>
         public readonly string? Distro;
         /// <summary>

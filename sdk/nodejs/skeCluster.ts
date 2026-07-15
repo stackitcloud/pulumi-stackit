@@ -12,6 +12,10 @@ import * as utilities from "./utilities";
  * > When updating `nodePools` of a `stackit.SkeCluster`, the pulumi preview might appear incorrect as it matches the node pools by index rather than by name. However, the SKE API correctly identifies node pools by name and applies the intended changes. Please review your changes carefully to ensure the correct configuration will be applied.
  *
  * ## Example Usage
+ *
+ * ## Import
+ *
+ * In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
  */
 export class SkeCluster extends pulumi.CustomResource {
     /**
@@ -94,6 +98,10 @@ export class SkeCluster extends pulumi.CustomResource {
      * The resource region. If not defined, the provider region is used.
      */
     declare public readonly region: pulumi.Output<string>;
+    /**
+     * Service Account Issuer of the cluster.
+     */
+    declare public /*out*/ readonly serviceAccountIssuer: pulumi.Output<string>;
 
     /**
      * Create a SkeCluster resource with the given unique name, arguments, and options.
@@ -121,6 +129,7 @@ export class SkeCluster extends pulumi.CustomResource {
             resourceInputs["podAddressRanges"] = state?.podAddressRanges;
             resourceInputs["projectId"] = state?.projectId;
             resourceInputs["region"] = state?.region;
+            resourceInputs["serviceAccountIssuer"] = state?.serviceAccountIssuer;
         } else {
             const args = argsOrState as SkeClusterArgs | undefined;
             if (args?.nodePools === undefined && !opts.urn) {
@@ -142,6 +151,7 @@ export class SkeCluster extends pulumi.CustomResource {
             resourceInputs["egressAddressRanges"] = undefined /*out*/;
             resourceInputs["kubernetesVersionUsed"] = undefined /*out*/;
             resourceInputs["podAddressRanges"] = undefined /*out*/;
+            resourceInputs["serviceAccountIssuer"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SkeCluster.__pulumiType, name, resourceInputs, opts);
@@ -205,6 +215,10 @@ export interface SkeClusterState {
      * The resource region. If not defined, the provider region is used.
      */
     region?: pulumi.Input<string | undefined>;
+    /**
+     * Service Account Issuer of the cluster.
+     */
+    serviceAccountIssuer?: pulumi.Input<string | undefined>;
 }
 
 /**

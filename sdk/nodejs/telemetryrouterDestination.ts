@@ -10,6 +10,10 @@ import * as utilities from "./utilities";
  * TelemetryRouter destination resource schema. Uses the `defaultRegion` specified in the provider configuration as a fallback in case no `region` is defined on resource level.
  *
  * ## Example Usage
+ *
+ * ## Import
+ *
+ * In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
  */
 export class TelemetryrouterDestination extends pulumi.CustomResource {
     /**

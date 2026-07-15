@@ -31,6 +31,12 @@ namespace Pulumi.Stackit.Inputs
         }
 
         /// <summary>
+        /// Enable this allows the 'Host' header to be passed through to the origin.
+        /// </summary>
+        [Input("forwardHostHeader")]
+        public Input<bool>? ForwardHostHeader { get; set; }
+
+        /// <summary>
         /// Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
         /// </summary>
         [Input("optimizer")]
@@ -53,6 +59,18 @@ namespace Pulumi.Stackit.Inputs
             get => _regions ?? (_regions = new InputList<string>());
             set => _regions = value;
         }
+
+        /// <summary>
+        /// Enable this to prevent origin-level cookies from being forwarded to the end user.
+        /// </summary>
+        [Input("stripResponseCookies")]
+        public Input<bool>? StripResponseCookies { get; set; }
+
+        /// <summary>
+        /// Configuration for TLS protocol versions. Note: Enabling older TLS versions (1.0, 1.1) is generally discouraged for security reasons.
+        /// </summary>
+        [Input("tls")]
+        public Input<Inputs.CdnDistributionConfigTlsArgs>? Tls { get; set; }
 
         /// <summary>
         /// Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.

@@ -30,6 +30,8 @@ type LookupRabbitmqInstanceArgs struct {
 	InstanceId string `pulumi:"instanceId"`
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 }
 
 // A collection of values returned by getRabbitmqInstance.
@@ -38,7 +40,7 @@ type LookupRabbitmqInstanceResult struct {
 	CfOrganizationGuid string `pulumi:"cfOrganizationGuid"`
 	CfSpaceGuid        string `pulumi:"cfSpaceGuid"`
 	DashboardUrl       string `pulumi:"dashboardUrl"`
-	// Terraform's internal data source. identifier. It is structured as "`projectId`,`instanceId`".
+	// Terraform's internal data source. identifier. It is structured as "`projectId`,`region`,`instanceId`".
 	Id       string `pulumi:"id"`
 	ImageUrl string `pulumi:"imageUrl"`
 	// ID of the RabbitMQ instance.
@@ -52,6 +54,8 @@ type LookupRabbitmqInstanceResult struct {
 	PlanName string `pulumi:"planName"`
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region string `pulumi:"region"`
 	// The service version.
 	Version string `pulumi:"version"`
 }
@@ -71,6 +75,8 @@ type LookupRabbitmqInstanceOutputArgs struct {
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (LookupRabbitmqInstanceOutputArgs) ElementType() reflect.Type {
@@ -108,7 +114,7 @@ func (o LookupRabbitmqInstanceResultOutput) DashboardUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRabbitmqInstanceResult) string { return v.DashboardUrl }).(pulumi.StringOutput)
 }
 
-// Terraform's internal data source. identifier. It is structured as "`projectId`,`instanceId`".
+// Terraform's internal data source. identifier. It is structured as "`projectId`,`region`,`instanceId`".
 func (o LookupRabbitmqInstanceResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRabbitmqInstanceResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -144,6 +150,11 @@ func (o LookupRabbitmqInstanceResultOutput) PlanName() pulumi.StringOutput {
 // STACKIT Project ID to which the instance is associated.
 func (o LookupRabbitmqInstanceResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRabbitmqInstanceResult) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The resource region. If not defined, the provider region is used.
+func (o LookupRabbitmqInstanceResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRabbitmqInstanceResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
 // The service version.

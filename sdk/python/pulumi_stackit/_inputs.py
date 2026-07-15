@@ -79,6 +79,8 @@ __all__ = [
     'CdnDistributionConfigRedirectsRuleArgsDict',
     'CdnDistributionConfigRedirectsRuleMatcherArgs',
     'CdnDistributionConfigRedirectsRuleMatcherArgsDict',
+    'CdnDistributionConfigTlsArgs',
+    'CdnDistributionConfigTlsArgsDict',
     'CdnDistributionConfigWafArgs',
     'CdnDistributionConfigWafArgsDict',
     'CdnDistributionDomainArgs',
@@ -241,6 +243,8 @@ __all__ = [
     'SkeClusterNodePoolTaintArgsDict',
     'SqlserverflexInstanceFlavorArgs',
     'SqlserverflexInstanceFlavorArgsDict',
+    'SqlserverflexInstanceNetworkArgs',
+    'SqlserverflexInstanceNetworkArgsDict',
     'SqlserverflexInstanceOptionsArgs',
     'SqlserverflexInstanceOptionsArgsDict',
     'SqlserverflexInstanceStorageArgs',
@@ -299,6 +303,8 @@ __all__ = [
     'GetDnsZoneTimeoutsArgsDict',
     'GetImageV2FilterArgs',
     'GetImageV2FilterArgsDict',
+    'GetSqlserverflexInstanceNetworkArgs',
+    'GetSqlserverflexInstanceNetworkArgsDict',
 ]
 
 class ApplicationLoadBalancerErrorArgsDict(TypedDict):
@@ -1800,6 +1806,10 @@ class CdnDistributionConfigArgsDict(TypedDict):
     """
     The configured countries where distribution of content is blocked
     """
+    forward_host_header: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Enable this allows the 'Host' header to be passed through to the origin.
+    """
     optimizer: NotRequired[pulumi.Input[Optional['CdnDistributionConfigOptimizerArgsDict']]]
     """
     Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
@@ -1807,6 +1817,14 @@ class CdnDistributionConfigArgsDict(TypedDict):
     redirects: NotRequired[pulumi.Input[Optional['CdnDistributionConfigRedirectsArgsDict']]]
     """
     A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+    """
+    strip_response_cookies: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Enable this to prevent origin-level cookies from being forwarded to the end user.
+    """
+    tls: NotRequired[pulumi.Input[Optional['CdnDistributionConfigTlsArgsDict']]]
+    """
+    Configuration for TLS protocol versions. Note: Enabling older TLS versions (1.0, 1.1) is generally discouraged for security reasons.
     """
     waf: NotRequired[pulumi.Input[Optional['CdnDistributionConfigWafArgsDict']]]
     """
@@ -1819,25 +1837,37 @@ class CdnDistributionConfigArgs:
                  backend: pulumi.Input['CdnDistributionConfigBackendArgs'],
                  regions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  blocked_countries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 forward_host_header: pulumi.Input[Optional[_builtins.bool]] = None,
                  optimizer: pulumi.Input[Optional['CdnDistributionConfigOptimizerArgs']] = None,
                  redirects: pulumi.Input[Optional['CdnDistributionConfigRedirectsArgs']] = None,
+                 strip_response_cookies: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tls: pulumi.Input[Optional['CdnDistributionConfigTlsArgs']] = None,
                  waf: pulumi.Input[Optional['CdnDistributionConfigWafArgs']] = None):
         """
         :param pulumi.Input['CdnDistributionConfigBackendArgs'] backend: The configured backend for the distribution
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] regions: The configured regions where content will be hosted
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blocked_countries: The configured countries where distribution of content is blocked
+        :param pulumi.Input[_builtins.bool] forward_host_header: Enable this allows the 'Host' header to be passed through to the origin.
         :param pulumi.Input['CdnDistributionConfigOptimizerArgs'] optimizer: Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
         :param pulumi.Input['CdnDistributionConfigRedirectsArgs'] redirects: A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+        :param pulumi.Input[_builtins.bool] strip_response_cookies: Enable this to prevent origin-level cookies from being forwarded to the end user.
+        :param pulumi.Input['CdnDistributionConfigTlsArgs'] tls: Configuration for TLS protocol versions. Note: Enabling older TLS versions (1.0, 1.1) is generally discouraged for security reasons.
         :param pulumi.Input['CdnDistributionConfigWafArgs'] waf: Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.
         """
         pulumi.set(__self__, "backend", backend)
         pulumi.set(__self__, "regions", regions)
         if blocked_countries is not None:
             pulumi.set(__self__, "blocked_countries", blocked_countries)
+        if forward_host_header is not None:
+            pulumi.set(__self__, "forward_host_header", forward_host_header)
         if optimizer is not None:
             pulumi.set(__self__, "optimizer", optimizer)
         if redirects is not None:
             pulumi.set(__self__, "redirects", redirects)
+        if strip_response_cookies is not None:
+            pulumi.set(__self__, "strip_response_cookies", strip_response_cookies)
+        if tls is not None:
+            pulumi.set(__self__, "tls", tls)
         if waf is not None:
             pulumi.set(__self__, "waf", waf)
 
@@ -1878,6 +1908,18 @@ class CdnDistributionConfigArgs:
         pulumi.set(self, "blocked_countries", value)
 
     @_builtins.property
+    @pulumi.getter(name="forwardHostHeader")
+    def forward_host_header(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Enable this allows the 'Host' header to be passed through to the origin.
+        """
+        return pulumi.get(self, "forward_host_header")
+
+    @forward_host_header.setter
+    def forward_host_header(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "forward_host_header", value)
+
+    @_builtins.property
     @pulumi.getter
     def optimizer(self) -> pulumi.Input[Optional['CdnDistributionConfigOptimizerArgs']]:
         """
@@ -1900,6 +1942,30 @@ class CdnDistributionConfigArgs:
     @redirects.setter
     def redirects(self, value: pulumi.Input[Optional['CdnDistributionConfigRedirectsArgs']]):
         pulumi.set(self, "redirects", value)
+
+    @_builtins.property
+    @pulumi.getter(name="stripResponseCookies")
+    def strip_response_cookies(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Enable this to prevent origin-level cookies from being forwarded to the end user.
+        """
+        return pulumi.get(self, "strip_response_cookies")
+
+    @strip_response_cookies.setter
+    def strip_response_cookies(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "strip_response_cookies", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tls(self) -> pulumi.Input[Optional['CdnDistributionConfigTlsArgs']]:
+        """
+        Configuration for TLS protocol versions. Note: Enabling older TLS versions (1.0, 1.1) is generally discouraged for security reasons.
+        """
+        return pulumi.get(self, "tls")
+
+    @tls.setter
+    def tls(self, value: pulumi.Input[Optional['CdnDistributionConfigTlsArgs']]):
+        pulumi.set(self, "tls", value)
 
     @_builtins.property
     @pulumi.getter
@@ -2329,6 +2395,55 @@ class CdnDistributionConfigRedirectsRuleMatcherArgs:
     @value_match_condition.setter
     def value_match_condition(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value_match_condition", value)
+
+
+class CdnDistributionConfigTlsArgsDict(TypedDict):
+    enable_tls10: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    If set to true, the distribution will accept connections using TLS 1.1.
+    """
+    enable_tls11: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    If set to true, the distribution will accept connections using TLS 1.0.
+    """
+
+@pulumi.input_type
+class CdnDistributionConfigTlsArgs:
+    def __init__(__self__, *,
+                 enable_tls10: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_tls11: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enable_tls10: If set to true, the distribution will accept connections using TLS 1.1.
+        :param pulumi.Input[_builtins.bool] enable_tls11: If set to true, the distribution will accept connections using TLS 1.0.
+        """
+        if enable_tls10 is not None:
+            pulumi.set(__self__, "enable_tls10", enable_tls10)
+        if enable_tls11 is not None:
+            pulumi.set(__self__, "enable_tls11", enable_tls11)
+
+    @_builtins.property
+    @pulumi.getter(name="enableTls10")
+    def enable_tls10(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If set to true, the distribution will accept connections using TLS 1.1.
+        """
+        return pulumi.get(self, "enable_tls10")
+
+    @enable_tls10.setter
+    def enable_tls10(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_tls10", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableTls11")
+    def enable_tls11(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        If set to true, the distribution will accept connections using TLS 1.0.
+        """
+        return pulumi.get(self, "enable_tls11")
+
+    @enable_tls11.setter
+    def enable_tls11(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_tls11", value)
 
 
 class CdnDistributionConfigWafArgsDict(TypedDict):
@@ -10061,6 +10176,55 @@ class SqlserverflexInstanceFlavorArgs:
         pulumi.set(self, "id", value)
 
 
+class SqlserverflexInstanceNetworkArgsDict(TypedDict):
+    access_scope: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. Possible values are: `PUBLIC`, `SNA`.
+    """
+    acls: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    List of IPV4 cidr.
+    """
+
+@pulumi.input_type
+class SqlserverflexInstanceNetworkArgs:
+    def __init__(__self__, *,
+                 access_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] access_scope: The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. Possible values are: `PUBLIC`, `SNA`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: List of IPV4 cidr.
+        """
+        if access_scope is not None:
+            pulumi.set(__self__, "access_scope", access_scope)
+        if acls is not None:
+            pulumi.set(__self__, "acls", acls)
+
+    @_builtins.property
+    @pulumi.getter(name="accessScope")
+    def access_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. Possible values are: `PUBLIC`, `SNA`.
+        """
+        return pulumi.get(self, "access_scope")
+
+    @access_scope.setter
+    def access_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "access_scope", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def acls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of IPV4 cidr.
+        """
+        return pulumi.get(self, "acls")
+
+    @acls.setter
+    def acls(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "acls", value)
+
+
 class SqlserverflexInstanceOptionsArgsDict(TypedDict):
     edition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     retention_days: NotRequired[pulumi.Input[Optional[_builtins.int]]]
@@ -10071,12 +10235,19 @@ class SqlserverflexInstanceOptionsArgs:
                  edition: pulumi.Input[Optional[_builtins.str]] = None,
                  retention_days: pulumi.Input[Optional[_builtins.int]] = None):
         if edition is not None:
+            warnings.warn("""edition is deprecated and will be removed after January 2027.""", DeprecationWarning)
+            pulumi.log.warn("""edition is deprecated: edition is deprecated and will be removed after January 2027.""")
+        if edition is not None:
             pulumi.set(__self__, "edition", edition)
+        if retention_days is not None:
+            warnings.warn("""retention_days is deprecated and will be removed after January 2027. Use instead `retention_days` from root.""", DeprecationWarning)
+            pulumi.log.warn("""retention_days is deprecated: retention_days is deprecated and will be removed after January 2027. Use instead `retention_days` from root.""")
         if retention_days is not None:
             pulumi.set(__self__, "retention_days", retention_days)
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""edition is deprecated and will be removed after January 2027.""")
     def edition(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "edition")
 
@@ -10086,6 +10257,7 @@ class SqlserverflexInstanceOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="retentionDays")
+    @_utilities.deprecated("""retention_days is deprecated and will be removed after January 2027. Use instead `retention_days` from root.""")
     def retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "retention_days")
 
@@ -10100,10 +10272,12 @@ class SqlserverflexInstanceStorageArgsDict(TypedDict):
     The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
     `bash
     stackit beta sqlserverflex options --storages --flavor-id FLAVOR_ID
-    `
-    - `size` (Number)
+    ` Will be required in the future. Set a value to prevent breaking changes.
     """
     size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The storage size in Gigabytes. Will be required in the future. Set a value to prevent breaking changes.
+    """
 
 @pulumi.input_type
 class SqlserverflexInstanceStorageArgs:
@@ -10114,8 +10288,8 @@ class SqlserverflexInstanceStorageArgs:
         :param pulumi.Input[_builtins.str] class_: The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
                `bash
                stackit beta sqlserverflex options --storages --flavor-id FLAVOR_ID
-               `
-               - `size` (Number)
+               ` Will be required in the future. Set a value to prevent breaking changes.
+        :param pulumi.Input[_builtins.int] size: The storage size in Gigabytes. Will be required in the future. Set a value to prevent breaking changes.
         """
         if class_ is not None:
             pulumi.set(__self__, "class_", class_)
@@ -10129,8 +10303,7 @@ class SqlserverflexInstanceStorageArgs:
         The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
         `bash
         stackit beta sqlserverflex options --storages --flavor-id FLAVOR_ID
-        `
-        - `size` (Number)
+        ` Will be required in the future. Set a value to prevent breaking changes.
         """
         return pulumi.get(self, "class_")
 
@@ -10141,6 +10314,9 @@ class SqlserverflexInstanceStorageArgs:
     @_builtins.property
     @pulumi.getter
     def size(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The storage size in Gigabytes. Will be required in the future. Set a value to prevent breaking changes.
+        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -11930,7 +12106,7 @@ class GetDnsZoneTimeoutsArgs:
 class GetImageV2FilterArgsDict(TypedDict):
     distro: NotRequired[_builtins.str]
     """
-    Filter images by operating system distribution. For example: `ubuntu`, `ubuntu-arm64`, `debian`, `rhel`, etc.
+    Filter images by operating system distribution. For example: `ubuntu`, `debian`, `rhel`, etc.
     """
     os: NotRequired[_builtins.str]
     """
@@ -11958,7 +12134,7 @@ class GetImageV2FilterArgs:
                  uefi: Optional[_builtins.bool] = None,
                  version: Optional[_builtins.str] = None):
         """
-        :param _builtins.str distro: Filter images by operating system distribution. For example: `ubuntu`, `ubuntu-arm64`, `debian`, `rhel`, etc.
+        :param _builtins.str distro: Filter images by operating system distribution. For example: `ubuntu`, `debian`, `rhel`, etc.
         :param _builtins.str os: Filter images by operating system type, such as `linux` or `windows`.
         :param _builtins.bool secure_boot: Filter images with Secure Boot support. Set to `true` to match images that support Secure Boot.
         :param _builtins.bool uefi: Filter images based on UEFI support. Set to `true` to match images that support UEFI.
@@ -11979,7 +12155,7 @@ class GetImageV2FilterArgs:
     @pulumi.getter
     def distro(self) -> Optional[_builtins.str]:
         """
-        Filter images by operating system distribution. For example: `ubuntu`, `ubuntu-arm64`, `debian`, `rhel`, etc.
+        Filter images by operating system distribution. For example: `ubuntu`, `debian`, `rhel`, etc.
         """
         return pulumi.get(self, "distro")
 
@@ -12034,5 +12210,53 @@ class GetImageV2FilterArgs:
     @version.setter
     def version(self, value: Optional[_builtins.str]):
         pulumi.set(self, "version", value)
+
+
+class GetSqlserverflexInstanceNetworkArgsDict(TypedDict):
+    acls: Sequence[_builtins.str]
+    """
+    List of IPV4 cidr.
+    """
+    access_scope: NotRequired[_builtins.str]
+    """
+    The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected.
+    """
+
+@pulumi.input_type
+class GetSqlserverflexInstanceNetworkArgs:
+    def __init__(__self__, *,
+                 acls: Sequence[_builtins.str],
+                 access_scope: Optional[_builtins.str] = None):
+        """
+        :param Sequence[_builtins.str] acls: List of IPV4 cidr.
+        :param _builtins.str access_scope: The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected.
+        """
+        pulumi.set(__self__, "acls", acls)
+        if access_scope is not None:
+            pulumi.set(__self__, "access_scope", access_scope)
+
+    @_builtins.property
+    @pulumi.getter
+    def acls(self) -> Sequence[_builtins.str]:
+        """
+        List of IPV4 cidr.
+        """
+        return pulumi.get(self, "acls")
+
+    @acls.setter
+    def acls(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "acls", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accessScope")
+    def access_scope(self) -> Optional[_builtins.str]:
+        """
+        The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected.
+        """
+        return pulumi.get(self, "access_scope")
+
+    @access_scope.setter
+    def access_scope(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "access_scope", value)
 
 

@@ -16,6 +16,10 @@ namespace Pulumi.Stackit
     /// ### Create a federated identity provider
     /// 
     /// ### Additional Examples
+    /// 
+    /// ## Import
+    /// 
+    /// In Terraform v1.5.0 and later, the `  + " `" + `Import` + "` " +  ` block can be used with the `  + " `" + `Id` + "` " +  ` attribute, for example:
     /// </summary>
     [StackitResourceType("stackit:index/serviceAccountFederatedIdentityProvider:ServiceAccountFederatedIdentityProvider")]
     public partial class ServiceAccountFederatedIdentityProvider : global::Pulumi.CustomResource

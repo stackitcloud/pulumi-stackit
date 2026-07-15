@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * Network area datasource schema. Must have a `region` specified in the provider configuration.
  *
+ * This datasource is for SNA, not VPC, networks.
+ *
  * ## Example Usage
  */
 export function getNetworkArea(args: GetNetworkAreaArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkAreaResult> {
@@ -100,6 +102,8 @@ export interface GetNetworkAreaResult {
 }
 /**
  * Network area datasource schema. Must have a `region` specified in the provider configuration.
+ *
+ * This datasource is for SNA, not VPC, networks.
  *
  * ## Example Usage
  */

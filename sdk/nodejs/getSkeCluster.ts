@@ -98,6 +98,10 @@ export interface GetSkeClusterResult {
      * The resource region. If not defined, the provider region is used.
      */
     readonly region?: string;
+    /**
+     * Service Account Issuer of the cluster.
+     */
+    readonly serviceAccountIssuer: string;
 }
 /**
  * SKE Cluster data source schema. Must have a `region` specified in the provider configuration.

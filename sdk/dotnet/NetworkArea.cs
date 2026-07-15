@@ -12,6 +12,8 @@ namespace Pulumi.Stackit
     /// <summary>
     /// Network area resource schema.
     /// 
+    /// This resource is for SNA, not VPC, networks.
+    /// 
     /// ## Example Usage
     /// 
     /// ## Migration of IaaS resources from versions &lt;= v0.78.1

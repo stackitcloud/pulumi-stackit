@@ -105,6 +105,8 @@ def get_routing_tables(network_area_id: Optional[_builtins.str] = None,
     """
     Routing table datasource schema. Must have a `region` specified in the provider configuration.
 
+    This datasource is for SNA, not VPC, based networks.
+
     > This datasource is part of the routing-tables experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
 
     ## Example Usage
@@ -133,6 +135,8 @@ def get_routing_tables_output(network_area_id: pulumi.Input[Optional[_builtins.s
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRoutingTablesResult]:
     """
     Routing table datasource schema. Must have a `region` specified in the provider configuration.
+
+    This datasource is for SNA, not VPC, based networks.
 
     > This datasource is part of the routing-tables experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
 

@@ -27,7 +27,7 @@ class GetRedisInstanceResult:
     """
     A collection of values returned by getRedisInstance.
     """
-    def __init__(__self__, cf_guid=None, cf_organization_guid=None, cf_space_guid=None, dashboard_url=None, id=None, image_url=None, instance_id=None, name=None, parameters=None, plan_id=None, plan_name=None, project_id=None, version=None):
+    def __init__(__self__, cf_guid=None, cf_organization_guid=None, cf_space_guid=None, dashboard_url=None, id=None, image_url=None, instance_id=None, name=None, parameters=None, plan_id=None, plan_name=None, project_id=None, region=None, version=None):
         if cf_guid and not isinstance(cf_guid, str):
             raise TypeError("Expected argument 'cf_guid' to be a str")
         pulumi.set(__self__, "cf_guid", cf_guid)
@@ -64,6 +64,9 @@ class GetRedisInstanceResult:
         if project_id and not isinstance(project_id, str):
             raise TypeError("Expected argument 'project_id' to be a str")
         pulumi.set(__self__, "project_id", project_id)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
         if version and not isinstance(version, str):
             raise TypeError("Expected argument 'version' to be a str")
         pulumi.set(__self__, "version", version)
@@ -92,7 +95,7 @@ class GetRedisInstanceResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Terraform's internal data source. identifier. It is structured as "`project_id`,`instance_id`".
+        Terraform's internal data source. identifier. It is structured as "`project_id`,`region`,`instance_id`".
         """
         return pulumi.get(self, "id")
 
@@ -148,6 +151,14 @@ class GetRedisInstanceResult:
 
     @_builtins.property
     @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter
     def version(self) -> _builtins.str:
         """
         The service version.
@@ -173,11 +184,13 @@ class AwaitableGetRedisInstanceResult(GetRedisInstanceResult):
             plan_id=self.plan_id,
             plan_name=self.plan_name,
             project_id=self.project_id,
+            region=self.region,
             version=self.version)
 
 
 def get_redis_instance(instance_id: Optional[_builtins.str] = None,
                        project_id: Optional[_builtins.str] = None,
+                       region: Optional[_builtins.str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRedisInstanceResult:
     """
     Redis instance data source schema. Must have a `region` specified in the provider configuration.
@@ -187,10 +200,12 @@ def get_redis_instance(instance_id: Optional[_builtins.str] = None,
 
     :param _builtins.str instance_id: ID of the Redis instance.
     :param _builtins.str project_id: STACKIT Project ID to which the instance is associated.
+    :param _builtins.str region: The resource region. If not defined, the provider region is used.
     """
     __args__ = dict()
     __args__['instanceId'] = instance_id
     __args__['projectId'] = project_id
+    __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('stackit:index/getRedisInstance:getRedisInstance', __args__, opts=opts, typ=GetRedisInstanceResult).value
 
@@ -207,9 +222,11 @@ def get_redis_instance(instance_id: Optional[_builtins.str] = None,
         plan_id=pulumi.get(__ret__, 'plan_id'),
         plan_name=pulumi.get(__ret__, 'plan_name'),
         project_id=pulumi.get(__ret__, 'project_id'),
+        region=pulumi.get(__ret__, 'region'),
         version=pulumi.get(__ret__, 'version'))
 def get_redis_instance_output(instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                               project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                              region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRedisInstanceResult]:
     """
     Redis instance data source schema. Must have a `region` specified in the provider configuration.
@@ -219,10 +236,12 @@ def get_redis_instance_output(instance_id: pulumi.Input[Optional[_builtins.str]]
 
     :param _builtins.str instance_id: ID of the Redis instance.
     :param _builtins.str project_id: STACKIT Project ID to which the instance is associated.
+    :param _builtins.str region: The resource region. If not defined, the provider region is used.
     """
     __args__ = dict()
     __args__['instanceId'] = instance_id
     __args__['projectId'] = project_id
+    __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('stackit:index/getRedisInstance:getRedisInstance', __args__, opts=opts, typ=GetRedisInstanceResult)
     return __ret__.apply(lambda __response__: GetRedisInstanceResult(
@@ -238,4 +257,5 @@ def get_redis_instance_output(instance_id: pulumi.Input[Optional[_builtins.str]]
         plan_id=pulumi.get(__response__, 'plan_id'),
         plan_name=pulumi.get(__response__, 'plan_name'),
         project_id=pulumi.get(__response__, 'project_id'),
+        region=pulumi.get(__response__, 'region'),
         version=pulumi.get(__response__, 'version')))

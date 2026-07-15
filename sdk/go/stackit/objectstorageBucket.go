@@ -17,6 +17,10 @@ import (
 // > This resource cannot be destroyed if the bucket contains objects. Please ensure the bucket is empty before attempting to destroy it.
 //
 // ## Example Usage
+//
+// ## Import
+//
+// In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
 type ObjectstorageBucket struct {
 	pulumi.CustomResourceState
 

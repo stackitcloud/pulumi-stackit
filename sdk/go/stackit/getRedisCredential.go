@@ -32,6 +32,8 @@ type LookupRedisCredentialArgs struct {
 	InstanceId string `pulumi:"instanceId"`
 	// STACKIT project ID to which the instance is associated.
 	ProjectId string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 }
 
 // A collection of values returned by getRedisCredential.
@@ -40,7 +42,7 @@ type LookupRedisCredentialResult struct {
 	CredentialId string   `pulumi:"credentialId"`
 	Host         string   `pulumi:"host"`
 	Hosts        []string `pulumi:"hosts"`
-	// Terraform's internal data source. identifier. It is structured as "`projectId`,`instanceId`,`credentialId`".
+	// Terraform's internal data source. identifier. It is structured as "`projectId`,`region`,`instanceId`,`credentialId`".
 	Id string `pulumi:"id"`
 	// ID of the Redis instance.
 	InstanceId       string `pulumi:"instanceId"`
@@ -49,6 +51,8 @@ type LookupRedisCredentialResult struct {
 	Port             int    `pulumi:"port"`
 	// STACKIT project ID to which the instance is associated.
 	ProjectId string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region string `pulumi:"region"`
 	// Connection URI.
 	Uri      string `pulumi:"uri"`
 	Username string `pulumi:"username"`
@@ -71,6 +75,8 @@ type LookupRedisCredentialOutputArgs struct {
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// STACKIT project ID to which the instance is associated.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput `pulumi:"region"`
 }
 
 func (LookupRedisCredentialOutputArgs) ElementType() reflect.Type {
@@ -105,7 +111,7 @@ func (o LookupRedisCredentialResultOutput) Hosts() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupRedisCredentialResult) []string { return v.Hosts }).(pulumi.StringArrayOutput)
 }
 
-// Terraform's internal data source. identifier. It is structured as "`projectId`,`instanceId`,`credentialId`".
+// Terraform's internal data source. identifier. It is structured as "`projectId`,`region`,`instanceId`,`credentialId`".
 func (o LookupRedisCredentialResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRedisCredentialResult) string { return v.Id }).(pulumi.StringOutput)
 }
@@ -130,6 +136,11 @@ func (o LookupRedisCredentialResultOutput) Port() pulumi.IntOutput {
 // STACKIT project ID to which the instance is associated.
 func (o LookupRedisCredentialResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRedisCredentialResult) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The resource region. If not defined, the provider region is used.
+func (o LookupRedisCredentialResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRedisCredentialResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
 // Connection URI.

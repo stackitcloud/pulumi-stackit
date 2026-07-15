@@ -15,6 +15,10 @@ namespace Pulumi.Stackit
     /// &gt; In case you're getting started with an empty STACKIT organization and want to use this resource to create projects in it, check out this guide for how to create a service account which you can use for authentication in the STACKIT Terraform provider.
     /// 
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// In Terraform v1.5.0 and later, the `  + " `" + `Import` + "` " +  ` block can be used with the `  + " `" + `Id` + "` " +  ` attribute, for example:
     /// </summary>
     [StackitResourceType("stackit:index/resourcemanagerProject:ResourcemanagerProject")]
     public partial class ResourcemanagerProject : global::Pulumi.CustomResource

@@ -15,6 +15,10 @@ import (
 // Secrets Manager user resource schema. Must have a `region` specified in the provider configuration.
 //
 // ## Example Usage
+//
+// ## Import
+//
+// In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
 type SecretsmanagerUser struct {
 	pulumi.CustomResourceState
 

@@ -13,7 +13,7 @@ namespace Pulumi.Stackit.Inputs
     public sealed class GetImageV2FilterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Filter images by operating system distribution. For example: `Ubuntu`, `ubuntu-arm64`, `Debian`, `Rhel`, etc.
+        /// Filter images by operating system distribution. For example: `Ubuntu`, `Debian`, `Rhel`, etc.
         /// </summary>
         [Input("distro")]
         public string? Distro { get; set; }

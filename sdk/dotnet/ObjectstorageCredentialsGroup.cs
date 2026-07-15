@@ -13,6 +13,10 @@ namespace Pulumi.Stackit
     /// ObjectStorage credentials group resource schema. Must have a `Region` specified in the provider configuration. If you are creating `Credentialsgroup` and `Bucket` resources simultaneously, please include the `DependsOn` field so that they are created sequentially. This prevents errors from concurrent calls to the service enablement that is done in the background.
     /// 
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// In Terraform v1.5.0 and later, the `  + " `" + `Import` + "` " +  ` block can be used with the `  + " `" + `Id` + "` " +  ` attribute, for example:
     /// </summary>
     [StackitResourceType("stackit:index/objectstorageCredentialsGroup:ObjectstorageCredentialsGroup")]
     public partial class ObjectstorageCredentialsGroup : global::Pulumi.CustomResource

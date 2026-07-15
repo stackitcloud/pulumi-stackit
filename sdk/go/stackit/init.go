@@ -113,6 +113,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ObjectstorageCredential{}
 	case "stackit:index/objectstorageCredentialsGroup:ObjectstorageCredentialsGroup":
 		r = &ObjectstorageCredentialsGroup{}
+	case "stackit:index/objectstorageDefaultRetention:ObjectstorageDefaultRetention":
+		r = &ObjectstorageDefaultRetention{}
 	case "stackit:index/observabilityAlertgroup:ObservabilityAlertgroup":
 		r = &ObservabilityAlertgroup{}
 	case "stackit:index/observabilityCredential:ObservabilityCredential":
@@ -480,6 +482,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"stackit",
 		"index/objectstorageCredentialsGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/objectstorageDefaultRetention",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

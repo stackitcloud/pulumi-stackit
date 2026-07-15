@@ -22,6 +22,10 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly ImmutableArray<string> BlockedCountries;
         /// <summary>
+        /// Enable this allows the 'Host' header to be passed through to the origin.
+        /// </summary>
+        public readonly bool? ForwardHostHeader;
+        /// <summary>
         /// Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
         /// </summary>
         public readonly Outputs.CdnDistributionConfigOptimizer? Optimizer;
@@ -34,6 +38,14 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Regions;
         /// <summary>
+        /// Enable this to prevent origin-level cookies from being forwarded to the end user.
+        /// </summary>
+        public readonly bool? StripResponseCookies;
+        /// <summary>
+        /// Configuration for TLS protocol versions. Note: Enabling older TLS versions (1.0, 1.1) is generally discouraged for security reasons.
+        /// </summary>
+        public readonly Outputs.CdnDistributionConfigTls? Tls;
+        /// <summary>
         /// Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.
         /// </summary>
         public readonly Outputs.CdnDistributionConfigWaf? Waf;
@@ -44,19 +56,28 @@ namespace Pulumi.Stackit.Outputs
 
             ImmutableArray<string> blockedCountries,
 
+            bool? forwardHostHeader,
+
             Outputs.CdnDistributionConfigOptimizer? optimizer,
 
             Outputs.CdnDistributionConfigRedirects? redirects,
 
             ImmutableArray<string> regions,
 
+            bool? stripResponseCookies,
+
+            Outputs.CdnDistributionConfigTls? tls,
+
             Outputs.CdnDistributionConfigWaf? waf)
         {
             Backend = backend;
             BlockedCountries = blockedCountries;
+            ForwardHostHeader = forwardHostHeader;
             Optimizer = optimizer;
             Redirects = redirects;
             Regions = regions;
+            StripResponseCookies = stripResponseCookies;
+            Tls = tls;
             Waf = waf;
         }
     }

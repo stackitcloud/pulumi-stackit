@@ -11,6 +11,10 @@ import * as utilities from "./utilities";
  * Using both resources together for the same public IP or network interface WILL lead to conflicts, as they both have control of the public IP and network interface association.
  *
  * ## Example Usage
+ *
+ * ## Import
+ *
+ * In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
  */
 export class PublicIpAssociate extends pulumi.CustomResource {
     /**

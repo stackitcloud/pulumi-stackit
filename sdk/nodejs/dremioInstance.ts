@@ -12,6 +12,10 @@ import * as utilities from "./utilities";
  * > This resource is part of the dremio experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
  *
  * ## Example Usage
+ *
+ * ## Import
+ *
+ * In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
  */
 export class DremioInstance extends pulumi.CustomResource {
     /**
