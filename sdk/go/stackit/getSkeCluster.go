@@ -64,6 +64,8 @@ type LookupSkeClusterResult struct {
 	ProjectId string `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
 	Region *string `pulumi:"region"`
+	// Service Account Issuer of the cluster.
+	ServiceAccountIssuer string `pulumi:"serviceAccountIssuer"`
 }
 
 func LookupSkeClusterOutput(ctx *pulumi.Context, args LookupSkeClusterOutputArgs, opts ...pulumi.InvokeOption) LookupSkeClusterResultOutput {
@@ -172,6 +174,11 @@ func (o LookupSkeClusterResultOutput) ProjectId() pulumi.StringOutput {
 // The resource region. If not defined, the provider region is used.
 func (o LookupSkeClusterResultOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupSkeClusterResult) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// Service Account Issuer of the cluster.
+func (o LookupSkeClusterResultOutput) ServiceAccountIssuer() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSkeClusterResult) string { return v.ServiceAccountIssuer }).(pulumi.StringOutput)
 }
 
 func init() {

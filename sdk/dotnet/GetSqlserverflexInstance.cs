@@ -67,6 +67,12 @@ namespace Pulumi.Stackit
         public string InstanceId { get; set; } = null!;
 
         /// <summary>
+        /// The network configuration of the instance.
+        /// </summary>
+        [Input("network")]
+        public Inputs.GetSqlserverflexInstanceNetworkArgs? Network { get; set; }
+
+        /// <summary>
         /// STACKIT project ID to which the instance is associated.
         /// </summary>
         [Input("projectId", required: true)]
@@ -91,6 +97,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
+
+        /// <summary>
+        /// The network configuration of the instance.
+        /// </summary>
+        [Input("network")]
+        public Input<Inputs.GetSqlserverflexInstanceNetworkInputArgs>? Network { get; set; }
 
         /// <summary>
         /// STACKIT project ID to which the instance is associated.
@@ -122,7 +134,15 @@ namespace Pulumi.Stackit
         /// The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *").
         /// </summary>
         public readonly string BackupSchedule;
+        /// <summary>
+        /// Edition of the MSSQL server instance.
+        /// </summary>
+        public readonly string Edition;
         public readonly Outputs.GetSqlserverflexInstanceFlavorResult Flavor;
+        /// <summary>
+        /// The flavor ID of the SQLServer Flex instance.
+        /// </summary>
+        public readonly string FlavorId;
         /// <summary>
         /// Terraform's internal data source. ID. It is structured as "`ProjectId`,`Region`,`InstanceId`".
         /// </summary>
@@ -136,6 +156,10 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// The network configuration of the instance.
+        /// </summary>
+        public readonly Outputs.GetSqlserverflexInstanceNetworkResult? Network;
+        /// <summary>
         /// Custom parameters for the SQLServer Flex instance.
         /// </summary>
         public readonly Outputs.GetSqlserverflexInstanceOptionsResult Options;
@@ -148,6 +172,10 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string? Region;
         public readonly int Replicas;
+        /// <summary>
+        /// The days (30 to 90) for how long the backup files should be stored before cleaned up.
+        /// </summary>
+        public readonly int RetentionDays;
         public readonly Outputs.GetSqlserverflexInstanceStorageResult Storage;
         public readonly string Version;
 
@@ -157,13 +185,19 @@ namespace Pulumi.Stackit
 
             string backupSchedule,
 
+            string edition,
+
             Outputs.GetSqlserverflexInstanceFlavorResult flavor,
+
+            string flavorId,
 
             string id,
 
             string instanceId,
 
             string name,
+
+            Outputs.GetSqlserverflexInstanceNetworkResult? network,
 
             Outputs.GetSqlserverflexInstanceOptionsResult options,
 
@@ -173,20 +207,26 @@ namespace Pulumi.Stackit
 
             int replicas,
 
+            int retentionDays,
+
             Outputs.GetSqlserverflexInstanceStorageResult storage,
 
             string version)
         {
             Acls = acls;
             BackupSchedule = backupSchedule;
+            Edition = edition;
             Flavor = flavor;
+            FlavorId = flavorId;
             Id = id;
             InstanceId = instanceId;
             Name = name;
+            Network = network;
             Options = options;
             ProjectId = projectId;
             Region = region;
             Replicas = replicas;
+            RetentionDays = retentionDays;
             Storage = storage;
             Version = version;
         }

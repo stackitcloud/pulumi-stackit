@@ -391,6 +391,10 @@ class SfsResourcePool(pulumi.CustomResource):
 
         ## Example Usage
 
+        ## Import
+
+        In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -417,6 +421,10 @@ class SfsResourcePool(pulumi.CustomResource):
         > This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
 
         ## Example Usage
+
+        ## Import
+
+        In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
 
 
         :param str resource_name: The name of the resource.

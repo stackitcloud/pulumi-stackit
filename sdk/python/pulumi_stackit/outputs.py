@@ -48,6 +48,7 @@ __all__ = [
     'CdnDistributionConfigRedirects',
     'CdnDistributionConfigRedirectsRule',
     'CdnDistributionConfigRedirectsRuleMatcher',
+    'CdnDistributionConfigTls',
     'CdnDistributionConfigWaf',
     'CdnDistributionDomain',
     'DnsRecordSetTimeouts',
@@ -129,6 +130,7 @@ __all__ = [
     'SkeClusterNodePool',
     'SkeClusterNodePoolTaint',
     'SqlserverflexInstanceFlavor',
+    'SqlserverflexInstanceNetwork',
     'SqlserverflexInstanceOptions',
     'SqlserverflexInstanceStorage',
     'TelemetryrouterDestinationConfig',
@@ -185,6 +187,7 @@ __all__ = [
     'GetCdnDistributionConfigRedirectsResult',
     'GetCdnDistributionConfigRedirectsRuleResult',
     'GetCdnDistributionConfigRedirectsRuleMatcherResult',
+    'GetCdnDistributionConfigTlsResult',
     'GetCdnDistributionConfigWafResult',
     'GetCdnDistributionDomainResult',
     'GetDnsRecordSetTimeoutsResult',
@@ -286,6 +289,7 @@ __all__ = [
     'GetSkeMachineImageVersionsMachineImageResult',
     'GetSkeMachineImageVersionsMachineImageVersionResult',
     'GetSqlserverflexInstanceFlavorResult',
+    'GetSqlserverflexInstanceNetworkResult',
     'GetSqlserverflexInstanceOptionsResult',
     'GetSqlserverflexInstanceStorageResult',
     'GetTelemetryrouterDestinationConfigResult',
@@ -1570,6 +1574,10 @@ class CdnDistributionConfig(dict):
         suggest = None
         if key == "blockedCountries":
             suggest = "blocked_countries"
+        elif key == "forwardHostHeader":
+            suggest = "forward_host_header"
+        elif key == "stripResponseCookies":
+            suggest = "strip_response_cookies"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in CdnDistributionConfig. Access the value via the '{suggest}' property getter instead.")
@@ -1586,25 +1594,37 @@ class CdnDistributionConfig(dict):
                  backend: 'outputs.CdnDistributionConfigBackend',
                  regions: Sequence[_builtins.str],
                  blocked_countries: Optional[Sequence[_builtins.str]] = None,
+                 forward_host_header: Optional[_builtins.bool] = None,
                  optimizer: Optional['outputs.CdnDistributionConfigOptimizer'] = None,
                  redirects: Optional['outputs.CdnDistributionConfigRedirects'] = None,
+                 strip_response_cookies: Optional[_builtins.bool] = None,
+                 tls: Optional['outputs.CdnDistributionConfigTls'] = None,
                  waf: Optional['outputs.CdnDistributionConfigWaf'] = None):
         """
         :param 'CdnDistributionConfigBackendArgs' backend: The configured backend for the distribution
         :param Sequence[_builtins.str] regions: The configured regions where content will be hosted
         :param Sequence[_builtins.str] blocked_countries: The configured countries where distribution of content is blocked
+        :param _builtins.bool forward_host_header: Enable this allows the 'Host' header to be passed through to the origin.
         :param 'CdnDistributionConfigOptimizerArgs' optimizer: Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
         :param 'CdnDistributionConfigRedirectsArgs' redirects: A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+        :param _builtins.bool strip_response_cookies: Enable this to prevent origin-level cookies from being forwarded to the end user.
+        :param 'CdnDistributionConfigTlsArgs' tls: Configuration for TLS protocol versions. Note: Enabling older TLS versions (1.0, 1.1) is generally discouraged for security reasons.
         :param 'CdnDistributionConfigWafArgs' waf: Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.
         """
         pulumi.set(__self__, "backend", backend)
         pulumi.set(__self__, "regions", regions)
         if blocked_countries is not None:
             pulumi.set(__self__, "blocked_countries", blocked_countries)
+        if forward_host_header is not None:
+            pulumi.set(__self__, "forward_host_header", forward_host_header)
         if optimizer is not None:
             pulumi.set(__self__, "optimizer", optimizer)
         if redirects is not None:
             pulumi.set(__self__, "redirects", redirects)
+        if strip_response_cookies is not None:
+            pulumi.set(__self__, "strip_response_cookies", strip_response_cookies)
+        if tls is not None:
+            pulumi.set(__self__, "tls", tls)
         if waf is not None:
             pulumi.set(__self__, "waf", waf)
 
@@ -1633,6 +1653,14 @@ class CdnDistributionConfig(dict):
         return pulumi.get(self, "blocked_countries")
 
     @_builtins.property
+    @pulumi.getter(name="forwardHostHeader")
+    def forward_host_header(self) -> Optional[_builtins.bool]:
+        """
+        Enable this allows the 'Host' header to be passed through to the origin.
+        """
+        return pulumi.get(self, "forward_host_header")
+
+    @_builtins.property
     @pulumi.getter
     def optimizer(self) -> Optional['outputs.CdnDistributionConfigOptimizer']:
         """
@@ -1647,6 +1675,22 @@ class CdnDistributionConfig(dict):
         A wrapper for a list of redirect rules that allows for redirect settings on a distribution
         """
         return pulumi.get(self, "redirects")
+
+    @_builtins.property
+    @pulumi.getter(name="stripResponseCookies")
+    def strip_response_cookies(self) -> Optional[_builtins.bool]:
+        """
+        Enable this to prevent origin-level cookies from being forwarded to the end user.
+        """
+        return pulumi.get(self, "strip_response_cookies")
+
+    @_builtins.property
+    @pulumi.getter
+    def tls(self) -> Optional['outputs.CdnDistributionConfigTls']:
+        """
+        Configuration for TLS protocol versions. Note: Enabling older TLS versions (1.0, 1.1) is generally discouraged for security reasons.
+        """
+        return pulumi.get(self, "tls")
 
     @_builtins.property
     @pulumi.getter
@@ -1989,6 +2033,56 @@ class CdnDistributionConfigRedirectsRuleMatcher(dict):
         Defines how multiple matchers within this rule are combined (ALL, ANY, NONE). Defaults to ANY.
         """
         return pulumi.get(self, "value_match_condition")
+
+
+@pulumi.output_type
+class CdnDistributionConfigTls(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableTls10":
+            suggest = "enable_tls10"
+        elif key == "enableTls11":
+            suggest = "enable_tls11"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CdnDistributionConfigTls. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CdnDistributionConfigTls.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CdnDistributionConfigTls.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_tls10: Optional[_builtins.bool] = None,
+                 enable_tls11: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool enable_tls10: If set to true, the distribution will accept connections using TLS 1.1.
+        :param _builtins.bool enable_tls11: If set to true, the distribution will accept connections using TLS 1.0.
+        """
+        if enable_tls10 is not None:
+            pulumi.set(__self__, "enable_tls10", enable_tls10)
+        if enable_tls11 is not None:
+            pulumi.set(__self__, "enable_tls11", enable_tls11)
+
+    @_builtins.property
+    @pulumi.getter(name="enableTls10")
+    def enable_tls10(self) -> Optional[_builtins.bool]:
+        """
+        If set to true, the distribution will accept connections using TLS 1.1.
+        """
+        return pulumi.get(self, "enable_tls10")
+
+    @_builtins.property
+    @pulumi.getter(name="enableTls11")
+    def enable_tls11(self) -> Optional[_builtins.bool]:
+        """
+        If set to true, the distribution will accept connections using TLS 1.0.
+        """
+        return pulumi.get(self, "enable_tls11")
 
 
 @pulumi.output_type
@@ -7895,6 +7989,54 @@ class SqlserverflexInstanceFlavor(dict):
 
 
 @pulumi.output_type
+class SqlserverflexInstanceNetwork(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "accessScope":
+            suggest = "access_scope"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SqlserverflexInstanceNetwork. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SqlserverflexInstanceNetwork.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SqlserverflexInstanceNetwork.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 access_scope: Optional[_builtins.str] = None,
+                 acls: Optional[Sequence[_builtins.str]] = None):
+        """
+        :param _builtins.str access_scope: The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. Possible values are: `PUBLIC`, `SNA`.
+        :param Sequence[_builtins.str] acls: List of IPV4 cidr.
+        """
+        if access_scope is not None:
+            pulumi.set(__self__, "access_scope", access_scope)
+        if acls is not None:
+            pulumi.set(__self__, "acls", acls)
+
+    @_builtins.property
+    @pulumi.getter(name="accessScope")
+    def access_scope(self) -> Optional[_builtins.str]:
+        """
+        The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. Possible values are: `PUBLIC`, `SNA`.
+        """
+        return pulumi.get(self, "access_scope")
+
+    @_builtins.property
+    @pulumi.getter
+    def acls(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of IPV4 cidr.
+        """
+        return pulumi.get(self, "acls")
+
+
+@pulumi.output_type
 class SqlserverflexInstanceOptions(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -7923,11 +8065,13 @@ class SqlserverflexInstanceOptions(dict):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""edition is deprecated and will be removed after January 2027.""")
     def edition(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "edition")
 
     @_builtins.property
     @pulumi.getter(name="retentionDays")
+    @_utilities.deprecated("""retention_days is deprecated and will be removed after January 2027. Use instead `retention_days` from root.""")
     def retention_days(self) -> Optional[_builtins.int]:
         return pulumi.get(self, "retention_days")
 
@@ -7958,8 +8102,8 @@ class SqlserverflexInstanceStorage(dict):
         :param _builtins.str class_: The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
                `bash
                stackit beta sqlserverflex options --storages --flavor-id FLAVOR_ID
-               `
-               - `size` (Number)
+               ` Will be required in the future. Set a value to prevent breaking changes.
+        :param _builtins.int size: The storage size in Gigabytes. Will be required in the future. Set a value to prevent breaking changes.
         """
         if class_ is not None:
             pulumi.set(__self__, "class_", class_)
@@ -7973,14 +8117,16 @@ class SqlserverflexInstanceStorage(dict):
         The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
         `bash
         stackit beta sqlserverflex options --storages --flavor-id FLAVOR_ID
-        `
-        - `size` (Number)
+        ` Will be required in the future. Set a value to prevent breaking changes.
         """
         return pulumi.get(self, "class_")
 
     @_builtins.property
     @pulumi.getter
     def size(self) -> Optional[_builtins.int]:
+        """
+        The storage size in Gigabytes. Will be required in the future. Set a value to prevent breaking changes.
+        """
         return pulumi.get(self, "size")
 
 
@@ -10207,23 +10353,32 @@ class GetCdnCustomDomainCertificateResult(dict):
 class GetCdnDistributionConfigResult(dict):
     def __init__(__self__, *,
                  backend: 'outputs.GetCdnDistributionConfigBackendResult',
+                 forward_host_header: _builtins.bool,
                  optimizer: 'outputs.GetCdnDistributionConfigOptimizerResult',
                  redirects: 'outputs.GetCdnDistributionConfigRedirectsResult',
                  regions: Sequence[_builtins.str],
+                 strip_response_cookies: _builtins.bool,
+                 tls: 'outputs.GetCdnDistributionConfigTlsResult',
                  waf: 'outputs.GetCdnDistributionConfigWafResult',
                  blocked_countries: Optional[Sequence[_builtins.str]] = None):
         """
         :param 'GetCdnDistributionConfigBackendArgs' backend: The configured backend for the distribution
+        :param _builtins.bool forward_host_header: Enable this allows the 'Host' header to be passed through to the origin.
         :param 'GetCdnDistributionConfigOptimizerArgs' optimizer: Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
         :param 'GetCdnDistributionConfigRedirectsArgs' redirects: A wrapper for a list of redirect rules that allows for redirect settings on a distribution
         :param Sequence[_builtins.str] regions: The configured regions where content will be hosted
+        :param _builtins.bool strip_response_cookies: Enable this to prevent origin-level cookies from being forwarded to the end user.
+        :param 'GetCdnDistributionConfigTlsArgs' tls: Configuration for TLS protocol versions. Note: Enabling older TLS versions (1.0, 1.1) is generally discouraged for security reasons.
         :param 'GetCdnDistributionConfigWafArgs' waf: Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.
         :param Sequence[_builtins.str] blocked_countries: The configured countries where distribution of content is blocked
         """
         pulumi.set(__self__, "backend", backend)
+        pulumi.set(__self__, "forward_host_header", forward_host_header)
         pulumi.set(__self__, "optimizer", optimizer)
         pulumi.set(__self__, "redirects", redirects)
         pulumi.set(__self__, "regions", regions)
+        pulumi.set(__self__, "strip_response_cookies", strip_response_cookies)
+        pulumi.set(__self__, "tls", tls)
         pulumi.set(__self__, "waf", waf)
         if blocked_countries is not None:
             pulumi.set(__self__, "blocked_countries", blocked_countries)
@@ -10235,6 +10390,14 @@ class GetCdnDistributionConfigResult(dict):
         The configured backend for the distribution
         """
         return pulumi.get(self, "backend")
+
+    @_builtins.property
+    @pulumi.getter(name="forwardHostHeader")
+    def forward_host_header(self) -> _builtins.bool:
+        """
+        Enable this allows the 'Host' header to be passed through to the origin.
+        """
+        return pulumi.get(self, "forward_host_header")
 
     @_builtins.property
     @pulumi.getter
@@ -10259,6 +10422,22 @@ class GetCdnDistributionConfigResult(dict):
         The configured regions where content will be hosted
         """
         return pulumi.get(self, "regions")
+
+    @_builtins.property
+    @pulumi.getter(name="stripResponseCookies")
+    def strip_response_cookies(self) -> _builtins.bool:
+        """
+        Enable this to prevent origin-level cookies from being forwarded to the end user.
+        """
+        return pulumi.get(self, "strip_response_cookies")
+
+    @_builtins.property
+    @pulumi.getter
+    def tls(self) -> 'outputs.GetCdnDistributionConfigTlsResult':
+        """
+        Configuration for TLS protocol versions. Note: Enabling older TLS versions (1.0, 1.1) is generally discouraged for security reasons.
+        """
+        return pulumi.get(self, "tls")
 
     @_builtins.property
     @pulumi.getter
@@ -10480,6 +10659,35 @@ class GetCdnDistributionConfigRedirectsRuleMatcherResult(dict):
         A list of glob patterns to match against the request path. At least one value is required. Examples: "/shop/*" or "*/img/*"
         """
         return pulumi.get(self, "values")
+
+
+@pulumi.output_type
+class GetCdnDistributionConfigTlsResult(dict):
+    def __init__(__self__, *,
+                 enable_tls10: _builtins.bool,
+                 enable_tls11: _builtins.bool):
+        """
+        :param _builtins.bool enable_tls10: If set to true, the distribution will accept connections using TLS 1.1.
+        :param _builtins.bool enable_tls11: If set to true, the distribution will accept connections using TLS 1.0.
+        """
+        pulumi.set(__self__, "enable_tls10", enable_tls10)
+        pulumi.set(__self__, "enable_tls11", enable_tls11)
+
+    @_builtins.property
+    @pulumi.getter(name="enableTls10")
+    def enable_tls10(self) -> _builtins.bool:
+        """
+        If set to true, the distribution will accept connections using TLS 1.1.
+        """
+        return pulumi.get(self, "enable_tls10")
+
+    @_builtins.property
+    @pulumi.getter(name="enableTls11")
+    def enable_tls11(self) -> _builtins.bool:
+        """
+        If set to true, the distribution will accept connections using TLS 1.0.
+        """
+        return pulumi.get(self, "enable_tls11")
 
 
 @pulumi.output_type
@@ -11529,7 +11737,7 @@ class GetImageV2FilterResult(dict):
                  uefi: Optional[_builtins.bool] = None,
                  version: Optional[_builtins.str] = None):
         """
-        :param _builtins.str distro: Filter images by operating system distribution. For example: `ubuntu`, `ubuntu-arm64`, `debian`, `rhel`, etc.
+        :param _builtins.str distro: Filter images by operating system distribution. For example: `ubuntu`, `debian`, `rhel`, etc.
         :param _builtins.str os: Filter images by operating system type, such as `linux` or `windows`.
         :param _builtins.bool secure_boot: Filter images with Secure Boot support. Set to `true` to match images that support Secure Boot.
         :param _builtins.bool uefi: Filter images based on UEFI support. Set to `true` to match images that support UEFI.
@@ -11550,7 +11758,7 @@ class GetImageV2FilterResult(dict):
     @pulumi.getter
     def distro(self) -> Optional[_builtins.str]:
         """
-        Filter images by operating system distribution. For example: `ubuntu`, `ubuntu-arm64`, `debian`, `rhel`, etc.
+        Filter images by operating system distribution. For example: `ubuntu`, `debian`, `rhel`, etc.
         """
         return pulumi.get(self, "distro")
 
@@ -15927,6 +16135,36 @@ class GetSqlserverflexInstanceFlavorResult(dict):
     @pulumi.getter
     def ram(self) -> _builtins.int:
         return pulumi.get(self, "ram")
+
+
+@pulumi.output_type
+class GetSqlserverflexInstanceNetworkResult(dict):
+    def __init__(__self__, *,
+                 acls: Sequence[_builtins.str],
+                 access_scope: Optional[_builtins.str] = None):
+        """
+        :param Sequence[_builtins.str] acls: List of IPV4 cidr.
+        :param _builtins.str access_scope: The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected.
+        """
+        pulumi.set(__self__, "acls", acls)
+        if access_scope is not None:
+            pulumi.set(__self__, "access_scope", access_scope)
+
+    @_builtins.property
+    @pulumi.getter
+    def acls(self) -> Sequence[_builtins.str]:
+        """
+        List of IPV4 cidr.
+        """
+        return pulumi.get(self, "acls")
+
+    @_builtins.property
+    @pulumi.getter(name="accessScope")
+    def access_scope(self) -> Optional[_builtins.str]:
+        """
+        The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected.
+        """
+        return pulumi.get(self, "access_scope")
 
 
 @pulumi.output_type

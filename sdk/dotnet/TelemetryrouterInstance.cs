@@ -13,6 +13,10 @@ namespace Pulumi.Stackit
     /// TelemetryRouter instance resource schema. Uses the `DefaultRegion` specified in the provider configuration as a fallback in case no `Region` is defined on resource level.
     /// 
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// In Terraform v1.5.0 and later, the `  + " `" + `Import` + "` " +  ` block can be used with the `  + " `" + `Id` + "` " +  ` attribute, for example:
     /// </summary>
     [StackitResourceType("stackit:index/telemetryrouterInstance:TelemetryrouterInstance")]
     public partial class TelemetryrouterInstance : global::Pulumi.CustomResource

@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * Network area route resource schema. Must have a `region` specified in the provider configuration.
  *
+ * This resource is for SNA, not VPC, based networks.
+ *
  * ## Example Usage
  *
  * ## Migration of IaaS resources from versions <= v0.74.0

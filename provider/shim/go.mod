@@ -2,7 +2,7 @@ module github.com/stackitcloud/pulumi-stackit/provider/shim
 
 go 1.26.0
 
-require github.com/stackitcloud/terraform-provider-stackit v0.101.0
+require github.com/stackitcloud/terraform-provider-stackit v0.102.0
 
 require (
 	github.com/hashicorp/go-uuid v1.0.3 // indirect
@@ -51,8 +51,8 @@ require (
 	github.com/stackitcloud/stackit-sdk-go/services/observability v0.24.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/opensearch v1.0.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/postgresflex v1.10.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/rabbitmq v1.0.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/redis v1.0.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/rabbitmq v1.1.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/redis v1.1.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/resourcemanager v0.24.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/secretsmanager v0.18.1 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/serverbackup v1.7.0 // indirect
@@ -60,10 +60,10 @@ require (
 	github.com/stackitcloud/stackit-sdk-go/services/serviceaccount v0.20.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/serviceenablement v1.7.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/ske v1.18.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/sqlserverflex v1.13.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/sqlserverflex v1.16.0 // indirect
 	github.com/teambition/rrule-go v1.8.2 // indirect
 	github.com/vmihailenco/msgpack/v5 v5.4.1 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
 	golang.org/x/mod v0.37.0 // indirect
-	golang.org/x/sys v0.44.0 // indirect
+	golang.org/x/sys v0.45.0 // indirect
 )

@@ -13,6 +13,10 @@ namespace Pulumi.Stackit
     /// Affinity Group schema.
     /// 
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// In Terraform v1.5.0 and later, the `  + " `" + `Import` + "` " +  ` block can be used with the `  + " `" + `Id` + "` " +  ` attribute, for example:
     /// </summary>
     [StackitResourceType("stackit:index/affinityGroup:AffinityGroup")]
     public partial class AffinityGroup : global::Pulumi.CustomResource

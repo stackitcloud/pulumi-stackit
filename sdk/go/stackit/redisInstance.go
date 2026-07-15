@@ -15,6 +15,10 @@ import (
 // Redis instance resource schema. Must have a `region` specified in the provider configuration.
 //
 // ## Example Usage
+//
+// ## Import
+//
+// In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
 type RedisInstance struct {
 	pulumi.CustomResourceState
 
@@ -35,6 +39,8 @@ type RedisInstance struct {
 	PlanName pulumi.StringOutput `pulumi:"planName"`
 	// STACKIT project ID to which the instance is associated.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringOutput `pulumi:"region"`
 	// The service version.
 	Version pulumi.StringOutput `pulumi:"version"`
 }
@@ -95,6 +101,8 @@ type redisInstanceState struct {
 	PlanName *string `pulumi:"planName"`
 	// STACKIT project ID to which the instance is associated.
 	ProjectId *string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 	// The service version.
 	Version *string `pulumi:"version"`
 }
@@ -117,6 +125,8 @@ type RedisInstanceState struct {
 	PlanName pulumi.StringPtrInput
 	// STACKIT project ID to which the instance is associated.
 	ProjectId pulumi.StringPtrInput
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput
 	// The service version.
 	Version pulumi.StringPtrInput
 }
@@ -134,6 +144,8 @@ type redisInstanceArgs struct {
 	PlanName string `pulumi:"planName"`
 	// STACKIT project ID to which the instance is associated.
 	ProjectId string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 	// The service version.
 	Version string `pulumi:"version"`
 }
@@ -148,6 +160,8 @@ type RedisInstanceArgs struct {
 	PlanName pulumi.StringInput
 	// STACKIT project ID to which the instance is associated.
 	ProjectId pulumi.StringInput
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput
 	// The service version.
 	Version pulumi.StringInput
 }
@@ -287,6 +301,11 @@ func (o RedisInstanceOutput) PlanName() pulumi.StringOutput {
 // STACKIT project ID to which the instance is associated.
 func (o RedisInstanceOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RedisInstance) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The resource region. If not defined, the provider region is used.
+func (o RedisInstanceOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *RedisInstance) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // The service version.

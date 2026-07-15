@@ -8,6 +8,10 @@ import * as utilities from "./utilities";
  * ObjectStorage credentials group resource schema. Must have a `region` specified in the provider configuration. If you are creating `credentialsgroup` and `bucket` resources simultaneously, please include the `dependsOn` field so that they are created sequentially. This prevents errors from concurrent calls to the service enablement that is done in the background.
  *
  * ## Example Usage
+ *
+ * ## Import
+ *
+ * In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
  */
 export class ObjectstorageCredentialsGroup extends pulumi.CustomResource {
     /**

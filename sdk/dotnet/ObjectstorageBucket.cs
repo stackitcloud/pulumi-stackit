@@ -15,6 +15,10 @@ namespace Pulumi.Stackit
     /// &gt; This resource cannot be destroyed if the bucket contains objects. Please ensure the bucket is empty before attempting to destroy it.
     /// 
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// In Terraform v1.5.0 and later, the `  + " `" + `Import` + "` " +  ` block can be used with the `  + " `" + `Id` + "` " +  ` attribute, for example:
     /// </summary>
     [StackitResourceType("stackit:index/objectstorageBucket:ObjectstorageBucket")]
     public partial class ObjectstorageBucket : global::Pulumi.CustomResource

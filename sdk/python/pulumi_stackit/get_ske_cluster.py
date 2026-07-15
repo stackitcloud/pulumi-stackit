@@ -27,7 +27,7 @@ class GetSkeClusterResult:
     """
     A collection of values returned by getSkeCluster.
     """
-    def __init__(__self__, access=None, egress_address_ranges=None, extensions=None, hibernations=None, id=None, kubernetes_version_min=None, kubernetes_version_used=None, maintenance=None, name=None, network=None, node_pools=None, pod_address_ranges=None, project_id=None, region=None):
+    def __init__(__self__, access=None, egress_address_ranges=None, extensions=None, hibernations=None, id=None, kubernetes_version_min=None, kubernetes_version_used=None, maintenance=None, name=None, network=None, node_pools=None, pod_address_ranges=None, project_id=None, region=None, service_account_issuer=None):
         if access and not isinstance(access, dict):
             raise TypeError("Expected argument 'access' to be a dict")
         pulumi.set(__self__, "access", access)
@@ -70,6 +70,9 @@ class GetSkeClusterResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
+        if service_account_issuer and not isinstance(service_account_issuer, str):
+            raise TypeError("Expected argument 'service_account_issuer' to be a str")
+        pulumi.set(__self__, "service_account_issuer", service_account_issuer)
 
     @_builtins.property
     @pulumi.getter
@@ -183,6 +186,14 @@ class GetSkeClusterResult:
         """
         return pulumi.get(self, "region")
 
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountIssuer")
+    def service_account_issuer(self) -> _builtins.str:
+        """
+        Service Account Issuer of the cluster.
+        """
+        return pulumi.get(self, "service_account_issuer")
+
 
 class AwaitableGetSkeClusterResult(GetSkeClusterResult):
     # pylint: disable=using-constant-test
@@ -203,7 +214,8 @@ class AwaitableGetSkeClusterResult(GetSkeClusterResult):
             node_pools=self.node_pools,
             pod_address_ranges=self.pod_address_ranges,
             project_id=self.project_id,
-            region=self.region)
+            region=self.region,
+            service_account_issuer=self.service_account_issuer)
 
 
 def get_ske_cluster(name: Optional[_builtins.str] = None,
@@ -241,7 +253,8 @@ def get_ske_cluster(name: Optional[_builtins.str] = None,
         node_pools=pulumi.get(__ret__, 'node_pools'),
         pod_address_ranges=pulumi.get(__ret__, 'pod_address_ranges'),
         project_id=pulumi.get(__ret__, 'project_id'),
-        region=pulumi.get(__ret__, 'region'))
+        region=pulumi.get(__ret__, 'region'),
+        service_account_issuer=pulumi.get(__ret__, 'service_account_issuer'))
 def get_ske_cluster_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                            project_id: pulumi.Input[Optional[_builtins.str]] = None,
                            region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -276,4 +289,5 @@ def get_ske_cluster_output(name: pulumi.Input[Optional[_builtins.str]] = None,
         node_pools=pulumi.get(__response__, 'node_pools'),
         pod_address_ranges=pulumi.get(__response__, 'pod_address_ranges'),
         project_id=pulumi.get(__response__, 'project_id'),
-        region=pulumi.get(__response__, 'region')))
+        region=pulumi.get(__response__, 'region'),
+        service_account_issuer=pulumi.get(__response__, 'service_account_issuer')))

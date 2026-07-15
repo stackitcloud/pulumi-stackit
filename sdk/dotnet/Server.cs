@@ -27,6 +27,10 @@ namespace Pulumi.Stackit
     /// ### Server with user data (cloud-init)
     /// 
     /// ### Additional Examples
+    /// 
+    /// ## Import
+    /// 
+    /// In Terraform v1.5.0 and later, the `  + " `" + `Import` + "` " +  ` block can be used with the `  + " `" + `Id` + "` " +  ` attribute, for example:
     /// </summary>
     [StackitResourceType("stackit:index/server:Server")]
     public partial class Server : global::Pulumi.CustomResource

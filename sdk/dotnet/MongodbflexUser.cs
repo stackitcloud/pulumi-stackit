@@ -13,6 +13,10 @@ namespace Pulumi.Stackit
     /// MongoDB Flex user resource schema. Must have a `Region` specified in the provider configuration.
     /// 
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// In Terraform v1.5.0 and later, the `  + " `" + `Import` + "` " +  ` block can be used with the `  + " `" + `Id` + "` " +  ` attribute, for example:
     /// </summary>
     [StackitResourceType("stackit:index/mongodbflexUser:MongodbflexUser")]
     public partial class MongodbflexUser : global::Pulumi.CustomResource

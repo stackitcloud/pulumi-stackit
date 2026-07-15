@@ -21,13 +21,16 @@ __all__ = ['SqlserverflexInstanceArgs', 'SqlserverflexInstance']
 @pulumi.input_type
 class SqlserverflexInstanceArgs:
     def __init__(__self__, *,
-                 flavor: pulumi.Input['SqlserverflexInstanceFlavorArgs'],
                  project_id: pulumi.Input[_builtins.str],
                  acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  backup_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 flavor: pulumi.Input[Optional['SqlserverflexInstanceFlavorArgs']] = None,
+                 flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional['SqlserverflexInstanceNetworkArgs']] = None,
                  options: pulumi.Input[Optional['SqlserverflexInstanceOptionsArgs']] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  storage: pulumi.Input[Optional['SqlserverflexInstanceStorageArgs']] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -35,35 +38,44 @@ class SqlserverflexInstanceArgs:
 
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the instance is associated.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The Access Control List (ACL) for the SQLServer Flex instance.
-        :param pulumi.Input[_builtins.str] backup_schedule: The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *")
+        :param pulumi.Input[_builtins.str] backup_schedule: The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *") Will be required in the future. Set a value to prevent breaking changes.
+        :param pulumi.Input[_builtins.str] flavor_id: The flavor ID of the SQLServer Flex instance.
         :param pulumi.Input[_builtins.str] name: Instance name.
+        :param pulumi.Input['SqlserverflexInstanceNetworkArgs'] network: The network configuration of the instance. Will be required in the future. Set a value to prevent breaking changes.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
+        :param pulumi.Input[_builtins.int] retention_days: The days (30 to 90) for how long the backup files should be stored before cleaned up. Will be required in the future. Set a value to prevent breaking changes.
+        :param pulumi.Input['SqlserverflexInstanceStorageArgs'] storage: The object containing information about the storage size and class. Will be required in the future. Set a value to prevent breaking changes.
+        :param pulumi.Input[_builtins.str] version: The sqlserver version used for the instance. Possible values are: `2022`. Will be required in the future. Set a value to prevent breaking changes.
         """
-        pulumi.set(__self__, "flavor", flavor)
         pulumi.set(__self__, "project_id", project_id)
+        if acls is not None:
+            warnings.warn("""acl is deprecated and will be removed after January 2027. Use instead `network.acl`.""", DeprecationWarning)
+            pulumi.log.warn("""acls is deprecated: acl is deprecated and will be removed after January 2027. Use instead `network.acl`.""")
         if acls is not None:
             pulumi.set(__self__, "acls", acls)
         if backup_schedule is not None:
             pulumi.set(__self__, "backup_schedule", backup_schedule)
+        if flavor is not None:
+            pulumi.set(__self__, "flavor", flavor)
+        if flavor_id is not None:
+            pulumi.set(__self__, "flavor_id", flavor_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if options is not None:
+            warnings.warn("""option is deprecated and will be removed after January 2027.""", DeprecationWarning)
+            pulumi.log.warn("""options is deprecated: option is deprecated and will be removed after January 2027.""")
         if options is not None:
             pulumi.set(__self__, "options", options)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if retention_days is not None:
+            pulumi.set(__self__, "retention_days", retention_days)
         if storage is not None:
             pulumi.set(__self__, "storage", storage)
         if version is not None:
             pulumi.set(__self__, "version", version)
-
-    @_builtins.property
-    @pulumi.getter
-    def flavor(self) -> pulumi.Input['SqlserverflexInstanceFlavorArgs']:
-        return pulumi.get(self, "flavor")
-
-    @flavor.setter
-    def flavor(self, value: pulumi.Input['SqlserverflexInstanceFlavorArgs']):
-        pulumi.set(self, "flavor", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
@@ -79,6 +91,7 @@ class SqlserverflexInstanceArgs:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""acl is deprecated and will be removed after January 2027. Use instead `network.acl`.""")
     def acls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The Access Control List (ACL) for the SQLServer Flex instance.
@@ -93,13 +106,34 @@ class SqlserverflexInstanceArgs:
     @pulumi.getter(name="backupSchedule")
     def backup_schedule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *")
+        The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *") Will be required in the future. Set a value to prevent breaking changes.
         """
         return pulumi.get(self, "backup_schedule")
 
     @backup_schedule.setter
     def backup_schedule(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "backup_schedule", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def flavor(self) -> pulumi.Input[Optional['SqlserverflexInstanceFlavorArgs']]:
+        return pulumi.get(self, "flavor")
+
+    @flavor.setter
+    def flavor(self, value: pulumi.Input[Optional['SqlserverflexInstanceFlavorArgs']]):
+        pulumi.set(self, "flavor", value)
+
+    @_builtins.property
+    @pulumi.getter(name="flavorId")
+    def flavor_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The flavor ID of the SQLServer Flex instance.
+        """
+        return pulumi.get(self, "flavor_id")
+
+    @flavor_id.setter
+    def flavor_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "flavor_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -115,6 +149,19 @@ class SqlserverflexInstanceArgs:
 
     @_builtins.property
     @pulumi.getter
+    def network(self) -> pulumi.Input[Optional['SqlserverflexInstanceNetworkArgs']]:
+        """
+        The network configuration of the instance. Will be required in the future. Set a value to prevent breaking changes.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[Optional['SqlserverflexInstanceNetworkArgs']]):
+        pulumi.set(self, "network", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""option is deprecated and will be removed after January 2027.""")
     def options(self) -> pulumi.Input[Optional['SqlserverflexInstanceOptionsArgs']]:
         return pulumi.get(self, "options")
 
@@ -135,8 +182,23 @@ class SqlserverflexInstanceArgs:
         pulumi.set(self, "region", value)
 
     @_builtins.property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The days (30 to 90) for how long the backup files should be stored before cleaned up. Will be required in the future. Set a value to prevent breaking changes.
+        """
+        return pulumi.get(self, "retention_days")
+
+    @retention_days.setter
+    def retention_days(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "retention_days", value)
+
+    @_builtins.property
     @pulumi.getter
     def storage(self) -> pulumi.Input[Optional['SqlserverflexInstanceStorageArgs']]:
+        """
+        The object containing information about the storage size and class. Will be required in the future. Set a value to prevent breaking changes.
+        """
         return pulumi.get(self, "storage")
 
     @storage.setter
@@ -146,6 +208,9 @@ class SqlserverflexInstanceArgs:
     @_builtins.property
     @pulumi.getter
     def version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The sqlserver version used for the instance. Possible values are: `2022`. Will be required in the future. Set a value to prevent breaking changes.
+        """
         return pulumi.get(self, "version")
 
     @version.setter
@@ -158,35 +223,57 @@ class _SqlserverflexInstanceState:
     def __init__(__self__, *,
                  acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  backup_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 edition: pulumi.Input[Optional[_builtins.str]] = None,
                  flavor: pulumi.Input[Optional['SqlserverflexInstanceFlavorArgs']] = None,
+                 flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional['SqlserverflexInstanceNetworkArgs']] = None,
                  options: pulumi.Input[Optional['SqlserverflexInstanceOptionsArgs']] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  replicas: pulumi.Input[Optional[_builtins.int]] = None,
+                 retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  storage: pulumi.Input[Optional['SqlserverflexInstanceStorageArgs']] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SqlserverflexInstance resources.
 
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The Access Control List (ACL) for the SQLServer Flex instance.
-        :param pulumi.Input[_builtins.str] backup_schedule: The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *")
+        :param pulumi.Input[_builtins.str] backup_schedule: The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *") Will be required in the future. Set a value to prevent breaking changes.
+        :param pulumi.Input[_builtins.str] edition: Edition of the MSSQL server instance.
+        :param pulumi.Input[_builtins.str] flavor_id: The flavor ID of the SQLServer Flex instance.
         :param pulumi.Input[_builtins.str] instance_id: ID of the SQLServer Flex instance.
         :param pulumi.Input[_builtins.str] name: Instance name.
+        :param pulumi.Input['SqlserverflexInstanceNetworkArgs'] network: The network configuration of the instance. Will be required in the future. Set a value to prevent breaking changes.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the instance is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
+        :param pulumi.Input[_builtins.int] retention_days: The days (30 to 90) for how long the backup files should be stored before cleaned up. Will be required in the future. Set a value to prevent breaking changes.
+        :param pulumi.Input['SqlserverflexInstanceStorageArgs'] storage: The object containing information about the storage size and class. Will be required in the future. Set a value to prevent breaking changes.
+        :param pulumi.Input[_builtins.str] version: The sqlserver version used for the instance. Possible values are: `2022`. Will be required in the future. Set a value to prevent breaking changes.
         """
+        if acls is not None:
+            warnings.warn("""acl is deprecated and will be removed after January 2027. Use instead `network.acl`.""", DeprecationWarning)
+            pulumi.log.warn("""acls is deprecated: acl is deprecated and will be removed after January 2027. Use instead `network.acl`.""")
         if acls is not None:
             pulumi.set(__self__, "acls", acls)
         if backup_schedule is not None:
             pulumi.set(__self__, "backup_schedule", backup_schedule)
+        if edition is not None:
+            pulumi.set(__self__, "edition", edition)
         if flavor is not None:
             pulumi.set(__self__, "flavor", flavor)
+        if flavor_id is not None:
+            pulumi.set(__self__, "flavor_id", flavor_id)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if options is not None:
+            warnings.warn("""option is deprecated and will be removed after January 2027.""", DeprecationWarning)
+            pulumi.log.warn("""options is deprecated: option is deprecated and will be removed after January 2027.""")
         if options is not None:
             pulumi.set(__self__, "options", options)
         if project_id is not None:
@@ -195,6 +282,8 @@ class _SqlserverflexInstanceState:
             pulumi.set(__self__, "region", region)
         if replicas is not None:
             pulumi.set(__self__, "replicas", replicas)
+        if retention_days is not None:
+            pulumi.set(__self__, "retention_days", retention_days)
         if storage is not None:
             pulumi.set(__self__, "storage", storage)
         if version is not None:
@@ -202,6 +291,7 @@ class _SqlserverflexInstanceState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""acl is deprecated and will be removed after January 2027. Use instead `network.acl`.""")
     def acls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The Access Control List (ACL) for the SQLServer Flex instance.
@@ -216,7 +306,7 @@ class _SqlserverflexInstanceState:
     @pulumi.getter(name="backupSchedule")
     def backup_schedule(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *")
+        The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *") Will be required in the future. Set a value to prevent breaking changes.
         """
         return pulumi.get(self, "backup_schedule")
 
@@ -226,12 +316,36 @@ class _SqlserverflexInstanceState:
 
     @_builtins.property
     @pulumi.getter
+    def edition(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Edition of the MSSQL server instance.
+        """
+        return pulumi.get(self, "edition")
+
+    @edition.setter
+    def edition(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "edition", value)
+
+    @_builtins.property
+    @pulumi.getter
     def flavor(self) -> pulumi.Input[Optional['SqlserverflexInstanceFlavorArgs']]:
         return pulumi.get(self, "flavor")
 
     @flavor.setter
     def flavor(self, value: pulumi.Input[Optional['SqlserverflexInstanceFlavorArgs']]):
         pulumi.set(self, "flavor", value)
+
+    @_builtins.property
+    @pulumi.getter(name="flavorId")
+    def flavor_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The flavor ID of the SQLServer Flex instance.
+        """
+        return pulumi.get(self, "flavor_id")
+
+    @flavor_id.setter
+    def flavor_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "flavor_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
@@ -259,6 +373,19 @@ class _SqlserverflexInstanceState:
 
     @_builtins.property
     @pulumi.getter
+    def network(self) -> pulumi.Input[Optional['SqlserverflexInstanceNetworkArgs']]:
+        """
+        The network configuration of the instance. Will be required in the future. Set a value to prevent breaking changes.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[Optional['SqlserverflexInstanceNetworkArgs']]):
+        pulumi.set(self, "network", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""option is deprecated and will be removed after January 2027.""")
     def options(self) -> pulumi.Input[Optional['SqlserverflexInstanceOptionsArgs']]:
         return pulumi.get(self, "options")
 
@@ -300,8 +427,23 @@ class _SqlserverflexInstanceState:
         pulumi.set(self, "replicas", value)
 
     @_builtins.property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The days (30 to 90) for how long the backup files should be stored before cleaned up. Will be required in the future. Set a value to prevent breaking changes.
+        """
+        return pulumi.get(self, "retention_days")
+
+    @retention_days.setter
+    def retention_days(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "retention_days", value)
+
+    @_builtins.property
     @pulumi.getter
     def storage(self) -> pulumi.Input[Optional['SqlserverflexInstanceStorageArgs']]:
+        """
+        The object containing information about the storage size and class. Will be required in the future. Set a value to prevent breaking changes.
+        """
         return pulumi.get(self, "storage")
 
     @storage.setter
@@ -311,6 +453,9 @@ class _SqlserverflexInstanceState:
     @_builtins.property
     @pulumi.getter
     def version(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The sqlserver version used for the instance. Possible values are: `2022`. Will be required in the future. Set a value to prevent breaking changes.
+        """
         return pulumi.get(self, "version")
 
     @version.setter
@@ -327,10 +472,13 @@ class SqlserverflexInstance(pulumi.CustomResource):
                  acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  backup_schedule: pulumi.Input[Optional[_builtins.str]] = None,
                  flavor: pulumi.Input[Optional[Union['SqlserverflexInstanceFlavorArgs', 'SqlserverflexInstanceFlavorArgsDict']]] = None,
+                 flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[Union['SqlserverflexInstanceNetworkArgs', 'SqlserverflexInstanceNetworkArgsDict']]] = None,
                  options: pulumi.Input[Optional[Union['SqlserverflexInstanceOptionsArgs', 'SqlserverflexInstanceOptionsArgsDict']]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  storage: pulumi.Input[Optional[Union['SqlserverflexInstanceStorageArgs', 'SqlserverflexInstanceStorageArgsDict']]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -343,10 +491,15 @@ class SqlserverflexInstance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The Access Control List (ACL) for the SQLServer Flex instance.
-        :param pulumi.Input[_builtins.str] backup_schedule: The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *")
+        :param pulumi.Input[_builtins.str] backup_schedule: The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *") Will be required in the future. Set a value to prevent breaking changes.
+        :param pulumi.Input[_builtins.str] flavor_id: The flavor ID of the SQLServer Flex instance.
         :param pulumi.Input[_builtins.str] name: Instance name.
+        :param pulumi.Input[Union['SqlserverflexInstanceNetworkArgs', 'SqlserverflexInstanceNetworkArgsDict']] network: The network configuration of the instance. Will be required in the future. Set a value to prevent breaking changes.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the instance is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
+        :param pulumi.Input[_builtins.int] retention_days: The days (30 to 90) for how long the backup files should be stored before cleaned up. Will be required in the future. Set a value to prevent breaking changes.
+        :param pulumi.Input[Union['SqlserverflexInstanceStorageArgs', 'SqlserverflexInstanceStorageArgsDict']] storage: The object containing information about the storage size and class. Will be required in the future. Set a value to prevent breaking changes.
+        :param pulumi.Input[_builtins.str] version: The sqlserver version used for the instance. Possible values are: `2022`. Will be required in the future. Set a value to prevent breaking changes.
         """
         ...
     @overload
@@ -378,10 +531,13 @@ class SqlserverflexInstance(pulumi.CustomResource):
                  acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  backup_schedule: pulumi.Input[Optional[_builtins.str]] = None,
                  flavor: pulumi.Input[Optional[Union['SqlserverflexInstanceFlavorArgs', 'SqlserverflexInstanceFlavorArgsDict']]] = None,
+                 flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[Union['SqlserverflexInstanceNetworkArgs', 'SqlserverflexInstanceNetworkArgsDict']]] = None,
                  options: pulumi.Input[Optional[Union['SqlserverflexInstanceOptionsArgs', 'SqlserverflexInstanceOptionsArgsDict']]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
+                 retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  storage: pulumi.Input[Optional[Union['SqlserverflexInstanceStorageArgs', 'SqlserverflexInstanceStorageArgsDict']]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -395,17 +551,19 @@ class SqlserverflexInstance(pulumi.CustomResource):
 
             __props__.__dict__["acls"] = acls
             __props__.__dict__["backup_schedule"] = backup_schedule
-            if flavor is None and not opts.urn:
-                raise TypeError("Missing required property 'flavor'")
             __props__.__dict__["flavor"] = flavor
+            __props__.__dict__["flavor_id"] = flavor_id
             __props__.__dict__["name"] = name
+            __props__.__dict__["network"] = network
             __props__.__dict__["options"] = options
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["region"] = region
+            __props__.__dict__["retention_days"] = retention_days
             __props__.__dict__["storage"] = storage
             __props__.__dict__["version"] = version
+            __props__.__dict__["edition"] = None
             __props__.__dict__["instance_id"] = None
             __props__.__dict__["replicas"] = None
         super(SqlserverflexInstance, __self__).__init__(
@@ -420,13 +578,17 @@ class SqlserverflexInstance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             backup_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+            edition: pulumi.Input[Optional[_builtins.str]] = None,
             flavor: pulumi.Input[Optional[Union['SqlserverflexInstanceFlavorArgs', 'SqlserverflexInstanceFlavorArgsDict']]] = None,
+            flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[Union['SqlserverflexInstanceNetworkArgs', 'SqlserverflexInstanceNetworkArgsDict']]] = None,
             options: pulumi.Input[Optional[Union['SqlserverflexInstanceOptionsArgs', 'SqlserverflexInstanceOptionsArgsDict']]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             replicas: pulumi.Input[Optional[_builtins.int]] = None,
+            retention_days: pulumi.Input[Optional[_builtins.int]] = None,
             storage: pulumi.Input[Optional[Union['SqlserverflexInstanceStorageArgs', 'SqlserverflexInstanceStorageArgsDict']]] = None,
             version: pulumi.Input[Optional[_builtins.str]] = None) -> 'SqlserverflexInstance':
         """
@@ -437,11 +599,17 @@ class SqlserverflexInstance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The Access Control List (ACL) for the SQLServer Flex instance.
-        :param pulumi.Input[_builtins.str] backup_schedule: The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *")
+        :param pulumi.Input[_builtins.str] backup_schedule: The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *") Will be required in the future. Set a value to prevent breaking changes.
+        :param pulumi.Input[_builtins.str] edition: Edition of the MSSQL server instance.
+        :param pulumi.Input[_builtins.str] flavor_id: The flavor ID of the SQLServer Flex instance.
         :param pulumi.Input[_builtins.str] instance_id: ID of the SQLServer Flex instance.
         :param pulumi.Input[_builtins.str] name: Instance name.
+        :param pulumi.Input[Union['SqlserverflexInstanceNetworkArgs', 'SqlserverflexInstanceNetworkArgsDict']] network: The network configuration of the instance. Will be required in the future. Set a value to prevent breaking changes.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the instance is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
+        :param pulumi.Input[_builtins.int] retention_days: The days (30 to 90) for how long the backup files should be stored before cleaned up. Will be required in the future. Set a value to prevent breaking changes.
+        :param pulumi.Input[Union['SqlserverflexInstanceStorageArgs', 'SqlserverflexInstanceStorageArgsDict']] storage: The object containing information about the storage size and class. Will be required in the future. Set a value to prevent breaking changes.
+        :param pulumi.Input[_builtins.str] version: The sqlserver version used for the instance. Possible values are: `2022`. Will be required in the future. Set a value to prevent breaking changes.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -449,19 +617,24 @@ class SqlserverflexInstance(pulumi.CustomResource):
 
         __props__.__dict__["acls"] = acls
         __props__.__dict__["backup_schedule"] = backup_schedule
+        __props__.__dict__["edition"] = edition
         __props__.__dict__["flavor"] = flavor
+        __props__.__dict__["flavor_id"] = flavor_id
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["name"] = name
+        __props__.__dict__["network"] = network
         __props__.__dict__["options"] = options
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["region"] = region
         __props__.__dict__["replicas"] = replicas
+        __props__.__dict__["retention_days"] = retention_days
         __props__.__dict__["storage"] = storage
         __props__.__dict__["version"] = version
         return SqlserverflexInstance(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""acl is deprecated and will be removed after January 2027. Use instead `network.acl`.""")
     def acls(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
         The Access Control List (ACL) for the SQLServer Flex instance.
@@ -472,14 +645,30 @@ class SqlserverflexInstance(pulumi.CustomResource):
     @pulumi.getter(name="backupSchedule")
     def backup_schedule(self) -> pulumi.Output[_builtins.str]:
         """
-        The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *")
+        The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *") Will be required in the future. Set a value to prevent breaking changes.
         """
         return pulumi.get(self, "backup_schedule")
 
     @_builtins.property
     @pulumi.getter
+    def edition(self) -> pulumi.Output[_builtins.str]:
+        """
+        Edition of the MSSQL server instance.
+        """
+        return pulumi.get(self, "edition")
+
+    @_builtins.property
+    @pulumi.getter
     def flavor(self) -> pulumi.Output['outputs.SqlserverflexInstanceFlavor']:
         return pulumi.get(self, "flavor")
+
+    @_builtins.property
+    @pulumi.getter(name="flavorId")
+    def flavor_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The flavor ID of the SQLServer Flex instance.
+        """
+        return pulumi.get(self, "flavor_id")
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
@@ -499,6 +688,15 @@ class SqlserverflexInstance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    def network(self) -> pulumi.Output['outputs.SqlserverflexInstanceNetwork']:
+        """
+        The network configuration of the instance. Will be required in the future. Set a value to prevent breaking changes.
+        """
+        return pulumi.get(self, "network")
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""option is deprecated and will be removed after January 2027.""")
     def options(self) -> pulumi.Output['outputs.SqlserverflexInstanceOptions']:
         return pulumi.get(self, "options")
 
@@ -524,12 +722,26 @@ class SqlserverflexInstance(pulumi.CustomResource):
         return pulumi.get(self, "replicas")
 
     @_builtins.property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> pulumi.Output[_builtins.int]:
+        """
+        The days (30 to 90) for how long the backup files should be stored before cleaned up. Will be required in the future. Set a value to prevent breaking changes.
+        """
+        return pulumi.get(self, "retention_days")
+
+    @_builtins.property
     @pulumi.getter
     def storage(self) -> pulumi.Output['outputs.SqlserverflexInstanceStorage']:
+        """
+        The object containing information about the storage size and class. Will be required in the future. Set a value to prevent breaking changes.
+        """
         return pulumi.get(self, "storage")
 
     @_builtins.property
     @pulumi.getter
     def version(self) -> pulumi.Output[_builtins.str]:
+        """
+        The sqlserver version used for the instance. Possible values are: `2022`. Will be required in the future. Set a value to prevent breaking changes.
+        """
         return pulumi.get(self, "version")
 

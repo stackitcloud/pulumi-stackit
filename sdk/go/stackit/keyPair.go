@@ -15,6 +15,10 @@ import (
 // Key pair resource schema. Must have a `region` specified in the provider configuration. Allows uploading an SSH public key to be used for server authentication.
 //
 // ## Example Usage
+//
+// ## Import
+//
+// In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
 type KeyPair struct {
 	pulumi.CustomResourceState
 

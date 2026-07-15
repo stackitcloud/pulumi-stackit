@@ -12,7 +12,13 @@ namespace Pulumi.Stackit
     /// <summary>
     /// Network area region resource schema.
     /// 
+    /// This resource is for SNA, not VPC, based networks.
+    /// 
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// In Terraform v1.5.0 and later, the `  + " `" + `Import` + "` " +  ` block can be used with the `  + " `" + `Id` + "` " +  ` attribute, for example:
     /// </summary>
     [StackitResourceType("stackit:index/networkAreaRegion:NetworkAreaRegion")]
     public partial class NetworkAreaRegion : global::Pulumi.CustomResource

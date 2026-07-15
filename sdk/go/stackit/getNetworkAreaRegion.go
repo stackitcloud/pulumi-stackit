@@ -13,6 +13,8 @@ import (
 
 // Network area region data source schema.
 //
+// This datasource is for SNA, not VPC, based networks.
+//
 // ## Example Usage
 func LookupNetworkAreaRegion(ctx *pulumi.Context, args *LookupNetworkAreaRegionArgs, opts ...pulumi.InvokeOption) (*LookupNetworkAreaRegionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

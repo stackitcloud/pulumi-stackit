@@ -14,6 +14,8 @@ import (
 
 // Network area resource schema.
 //
+// This resource is for SNA, not VPC, networks.
+//
 // ## Example Usage
 //
 // ## Migration of IaaS resources from versions <= v0.78.1

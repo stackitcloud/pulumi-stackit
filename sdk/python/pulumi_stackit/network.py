@@ -673,6 +673,10 @@ class Network(pulumi.CustomResource):
 
         ## Example Usage
 
+        ## Import
+
+        In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -707,6 +711,10 @@ class Network(pulumi.CustomResource):
         In cases where `ipv4_nameservers` are defined within the resource, the existing behavior will remain unchanged.
 
         ## Example Usage
+
+        ## Import
+
+        In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
 
 
         :param str resource_name: The name of the resource.

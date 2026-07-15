@@ -310,6 +310,11 @@ export const getObjectstorageCredentialsGroup: typeof import("./getObjectstorage
 export const getObjectstorageCredentialsGroupOutput: typeof import("./getObjectstorageCredentialsGroup").getObjectstorageCredentialsGroupOutput = null as any;
 utilities.lazyLoad(exports, ["getObjectstorageCredentialsGroup","getObjectstorageCredentialsGroupOutput"], () => require("./getObjectstorageCredentialsGroup"));
 
+export { GetObjectstorageDefaultRetentionArgs, GetObjectstorageDefaultRetentionResult, GetObjectstorageDefaultRetentionOutputArgs } from "./getObjectstorageDefaultRetention";
+export const getObjectstorageDefaultRetention: typeof import("./getObjectstorageDefaultRetention").getObjectstorageDefaultRetention = null as any;
+export const getObjectstorageDefaultRetentionOutput: typeof import("./getObjectstorageDefaultRetention").getObjectstorageDefaultRetentionOutput = null as any;
+utilities.lazyLoad(exports, ["getObjectstorageDefaultRetention","getObjectstorageDefaultRetentionOutput"], () => require("./getObjectstorageDefaultRetention"));
+
 export { GetObservabilityAlertgroupArgs, GetObservabilityAlertgroupResult, GetObservabilityAlertgroupOutputArgs } from "./getObservabilityAlertgroup";
 export const getObservabilityAlertgroup: typeof import("./getObservabilityAlertgroup").getObservabilityAlertgroup = null as any;
 export const getObservabilityAlertgroupOutput: typeof import("./getObservabilityAlertgroup").getObservabilityAlertgroupOutput = null as any;
@@ -740,6 +745,11 @@ export type ObjectstorageCredentialsGroup = import("./objectstorageCredentialsGr
 export const ObjectstorageCredentialsGroup: typeof import("./objectstorageCredentialsGroup").ObjectstorageCredentialsGroup = null as any;
 utilities.lazyLoad(exports, ["ObjectstorageCredentialsGroup"], () => require("./objectstorageCredentialsGroup"));
 
+export { ObjectstorageDefaultRetentionArgs, ObjectstorageDefaultRetentionState } from "./objectstorageDefaultRetention";
+export type ObjectstorageDefaultRetention = import("./objectstorageDefaultRetention").ObjectstorageDefaultRetention;
+export const ObjectstorageDefaultRetention: typeof import("./objectstorageDefaultRetention").ObjectstorageDefaultRetention = null as any;
+utilities.lazyLoad(exports, ["ObjectstorageDefaultRetention"], () => require("./objectstorageDefaultRetention"));
+
 export { ObservabilityAlertgroupArgs, ObservabilityAlertgroupState } from "./observabilityAlertgroup";
 export type ObservabilityAlertgroup = import("./observabilityAlertgroup").ObservabilityAlertgroup;
 export const ObservabilityAlertgroup: typeof import("./observabilityAlertgroup").ObservabilityAlertgroup = null as any;
@@ -1119,6 +1129,8 @@ const _module = {
                 return new ObjectstorageCredential(name, <any>undefined, { urn })
             case "stackit:index/objectstorageCredentialsGroup:ObjectstorageCredentialsGroup":
                 return new ObjectstorageCredentialsGroup(name, <any>undefined, { urn })
+            case "stackit:index/objectstorageDefaultRetention:ObjectstorageDefaultRetention":
+                return new ObjectstorageDefaultRetention(name, <any>undefined, { urn })
             case "stackit:index/observabilityAlertgroup:ObservabilityAlertgroup":
                 return new ObservabilityAlertgroup(name, <any>undefined, { urn })
             case "stackit:index/observabilityCredential:ObservabilityCredential":
@@ -1278,6 +1290,7 @@ pulumi.runtime.registerResourceModule("stackit", "index/objectstorageBucket", _m
 pulumi.runtime.registerResourceModule("stackit", "index/objectstorageComplianceLock", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/objectstorageCredential", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/objectstorageCredentialsGroup", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/objectstorageDefaultRetention", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/observabilityAlertgroup", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/observabilityCredential", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/observabilityInstance", _module)

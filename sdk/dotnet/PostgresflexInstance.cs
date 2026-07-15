@@ -13,6 +13,10 @@ namespace Pulumi.Stackit
     /// Postgres Flex instance resource schema. Must have a `Region` specified in the provider configuration.
     /// 
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// In Terraform v1.5.0 and later, the `  + " `" + `Import` + "` " +  ` block can be used with the `  + " `" + `Id` + "` " +  ` attribute, for example:
     /// </summary>
     [StackitResourceType("stackit:index/postgresflexInstance:PostgresflexInstance")]
     public partial class PostgresflexInstance : global::Pulumi.CustomResource

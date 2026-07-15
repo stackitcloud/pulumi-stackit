@@ -17,6 +17,10 @@ import (
 // The example below creates the supporting infrastructure using the STACKIT Terraform provider, including the network, network interface, a public IP address and server resources.
 //
 // ## Example Usage
+//
+// ## Import
+//
+// In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
 type Loadbalancer struct {
 	pulumi.CustomResourceState
 

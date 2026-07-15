@@ -18,6 +18,10 @@ import (
 // In cases where `ipv4Nameservers` are defined within the resource, the existing behavior will remain unchanged.
 //
 // ## Example Usage
+//
+// ## Import
+//
+// In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
 type Network struct {
 	pulumi.CustomResourceState
 

@@ -81,6 +81,12 @@ namespace Pulumi.Stackit
         [Input("projectId", required: true)]
         public string ProjectId { get; set; } = null!;
 
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public string? Region { get; set; }
+
         public GetRabbitmqCredentialArgs()
         {
         }
@@ -107,6 +113,12 @@ namespace Pulumi.Stackit
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
         public GetRabbitmqCredentialInvokeArgs()
         {
         }
@@ -126,7 +138,7 @@ namespace Pulumi.Stackit
         public readonly string HttpApiUri;
         public readonly ImmutableArray<string> HttpApiUris;
         /// <summary>
-        /// Terraform's internal data source. identifier. It is structured as "`ProjectId`,`InstanceId`,`CredentialId`".
+        /// Terraform's internal data source. identifier. It is structured as "`ProjectId`,`Region`,`InstanceId`,`CredentialId`".
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -140,6 +152,10 @@ namespace Pulumi.Stackit
         /// STACKIT project ID to which the instance is associated.
         /// </summary>
         public readonly string ProjectId;
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        public readonly string Region;
         public readonly string Uri;
         public readonly ImmutableArray<string> Uris;
         public readonly string Username;
@@ -168,6 +184,8 @@ namespace Pulumi.Stackit
 
             string projectId,
 
+            string region,
+
             string uri,
 
             ImmutableArray<string> uris,
@@ -185,6 +203,7 @@ namespace Pulumi.Stackit
             Password = password;
             Port = port;
             ProjectId = projectId;
+            Region = region;
             Uri = uri;
             Uris = uris;
             Username = username;

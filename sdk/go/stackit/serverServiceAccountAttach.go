@@ -15,6 +15,10 @@ import (
 // Service account attachment resource schema. Attaches a service account to a server. Must have a `region` specified in the provider configuration.
 //
 // ## Example Usage
+//
+// ## Import
+//
+// In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
 type ServerServiceAccountAttach struct {
 	pulumi.CustomResourceState
 

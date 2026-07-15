@@ -3583,12 +3583,18 @@ type CdnDistributionConfig struct {
 	Backend CdnDistributionConfigBackend `pulumi:"backend"`
 	// The configured countries where distribution of content is blocked
 	BlockedCountries []string `pulumi:"blockedCountries"`
+	// Enable this allows the 'Host' header to be passed through to the origin.
+	ForwardHostHeader *bool `pulumi:"forwardHostHeader"`
 	// Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
 	Optimizer *CdnDistributionConfigOptimizer `pulumi:"optimizer"`
 	// A wrapper for a list of redirect rules that allows for redirect settings on a distribution
 	Redirects *CdnDistributionConfigRedirects `pulumi:"redirects"`
 	// The configured regions where content will be hosted
 	Regions []string `pulumi:"regions"`
+	// Enable this to prevent origin-level cookies from being forwarded to the end user.
+	StripResponseCookies *bool `pulumi:"stripResponseCookies"`
+	// Configuration for TLS protocol versions. Note: Enabling older TLS versions (1.0, 1.1) is generally discouraged for security reasons.
+	Tls *CdnDistributionConfigTls `pulumi:"tls"`
 	// Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.
 	Waf *CdnDistributionConfigWaf `pulumi:"waf"`
 }
@@ -3609,12 +3615,18 @@ type CdnDistributionConfigArgs struct {
 	Backend CdnDistributionConfigBackendInput `pulumi:"backend"`
 	// The configured countries where distribution of content is blocked
 	BlockedCountries pulumi.StringArrayInput `pulumi:"blockedCountries"`
+	// Enable this allows the 'Host' header to be passed through to the origin.
+	ForwardHostHeader pulumi.BoolPtrInput `pulumi:"forwardHostHeader"`
 	// Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
 	Optimizer CdnDistributionConfigOptimizerPtrInput `pulumi:"optimizer"`
 	// A wrapper for a list of redirect rules that allows for redirect settings on a distribution
 	Redirects CdnDistributionConfigRedirectsPtrInput `pulumi:"redirects"`
 	// The configured regions where content will be hosted
 	Regions pulumi.StringArrayInput `pulumi:"regions"`
+	// Enable this to prevent origin-level cookies from being forwarded to the end user.
+	StripResponseCookies pulumi.BoolPtrInput `pulumi:"stripResponseCookies"`
+	// Configuration for TLS protocol versions. Note: Enabling older TLS versions (1.0, 1.1) is generally discouraged for security reasons.
+	Tls CdnDistributionConfigTlsPtrInput `pulumi:"tls"`
 	// Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.
 	Waf CdnDistributionConfigWafPtrInput `pulumi:"waf"`
 }
@@ -3706,6 +3718,11 @@ func (o CdnDistributionConfigOutput) BlockedCountries() pulumi.StringArrayOutput
 	return o.ApplyT(func(v CdnDistributionConfig) []string { return v.BlockedCountries }).(pulumi.StringArrayOutput)
 }
 
+// Enable this allows the 'Host' header to be passed through to the origin.
+func (o CdnDistributionConfigOutput) ForwardHostHeader() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CdnDistributionConfig) *bool { return v.ForwardHostHeader }).(pulumi.BoolPtrOutput)
+}
+
 // Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
 func (o CdnDistributionConfigOutput) Optimizer() CdnDistributionConfigOptimizerPtrOutput {
 	return o.ApplyT(func(v CdnDistributionConfig) *CdnDistributionConfigOptimizer { return v.Optimizer }).(CdnDistributionConfigOptimizerPtrOutput)
@@ -3719,6 +3736,16 @@ func (o CdnDistributionConfigOutput) Redirects() CdnDistributionConfigRedirectsP
 // The configured regions where content will be hosted
 func (o CdnDistributionConfigOutput) Regions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CdnDistributionConfig) []string { return v.Regions }).(pulumi.StringArrayOutput)
+}
+
+// Enable this to prevent origin-level cookies from being forwarded to the end user.
+func (o CdnDistributionConfigOutput) StripResponseCookies() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CdnDistributionConfig) *bool { return v.StripResponseCookies }).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for TLS protocol versions. Note: Enabling older TLS versions (1.0, 1.1) is generally discouraged for security reasons.
+func (o CdnDistributionConfigOutput) Tls() CdnDistributionConfigTlsPtrOutput {
+	return o.ApplyT(func(v CdnDistributionConfig) *CdnDistributionConfigTls { return v.Tls }).(CdnDistributionConfigTlsPtrOutput)
 }
 
 // Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.
@@ -3770,6 +3797,16 @@ func (o CdnDistributionConfigPtrOutput) BlockedCountries() pulumi.StringArrayOut
 	}).(pulumi.StringArrayOutput)
 }
 
+// Enable this allows the 'Host' header to be passed through to the origin.
+func (o CdnDistributionConfigPtrOutput) ForwardHostHeader() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CdnDistributionConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ForwardHostHeader
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
 func (o CdnDistributionConfigPtrOutput) Optimizer() CdnDistributionConfigOptimizerPtrOutput {
 	return o.ApplyT(func(v *CdnDistributionConfig) *CdnDistributionConfigOptimizer {
@@ -3798,6 +3835,26 @@ func (o CdnDistributionConfigPtrOutput) Regions() pulumi.StringArrayOutput {
 		}
 		return v.Regions
 	}).(pulumi.StringArrayOutput)
+}
+
+// Enable this to prevent origin-level cookies from being forwarded to the end user.
+func (o CdnDistributionConfigPtrOutput) StripResponseCookies() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CdnDistributionConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.StripResponseCookies
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for TLS protocol versions. Note: Enabling older TLS versions (1.0, 1.1) is generally discouraged for security reasons.
+func (o CdnDistributionConfigPtrOutput) Tls() CdnDistributionConfigTlsPtrOutput {
+	return o.ApplyT(func(v *CdnDistributionConfig) *CdnDistributionConfigTls {
+		if v == nil {
+			return nil
+		}
+		return v.Tls
+	}).(CdnDistributionConfigTlsPtrOutput)
 }
 
 // Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.
@@ -4735,6 +4792,162 @@ func (o CdnDistributionConfigRedirectsRuleMatcherArrayOutput) Index(i pulumi.Int
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CdnDistributionConfigRedirectsRuleMatcher {
 		return vs[0].([]CdnDistributionConfigRedirectsRuleMatcher)[vs[1].(int)]
 	}).(CdnDistributionConfigRedirectsRuleMatcherOutput)
+}
+
+type CdnDistributionConfigTls struct {
+	// If set to true, the distribution will accept connections using TLS 1.1.
+	EnableTls10 *bool `pulumi:"enableTls10"`
+	// If set to true, the distribution will accept connections using TLS 1.0.
+	EnableTls11 *bool `pulumi:"enableTls11"`
+}
+
+// CdnDistributionConfigTlsInput is an input type that accepts CdnDistributionConfigTlsArgs and CdnDistributionConfigTlsOutput values.
+// You can construct a concrete instance of `CdnDistributionConfigTlsInput` via:
+//
+//	CdnDistributionConfigTlsArgs{...}
+type CdnDistributionConfigTlsInput interface {
+	pulumi.Input
+
+	ToCdnDistributionConfigTlsOutput() CdnDistributionConfigTlsOutput
+	ToCdnDistributionConfigTlsOutputWithContext(context.Context) CdnDistributionConfigTlsOutput
+}
+
+type CdnDistributionConfigTlsArgs struct {
+	// If set to true, the distribution will accept connections using TLS 1.1.
+	EnableTls10 pulumi.BoolPtrInput `pulumi:"enableTls10"`
+	// If set to true, the distribution will accept connections using TLS 1.0.
+	EnableTls11 pulumi.BoolPtrInput `pulumi:"enableTls11"`
+}
+
+func (CdnDistributionConfigTlsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CdnDistributionConfigTls)(nil)).Elem()
+}
+
+func (i CdnDistributionConfigTlsArgs) ToCdnDistributionConfigTlsOutput() CdnDistributionConfigTlsOutput {
+	return i.ToCdnDistributionConfigTlsOutputWithContext(context.Background())
+}
+
+func (i CdnDistributionConfigTlsArgs) ToCdnDistributionConfigTlsOutputWithContext(ctx context.Context) CdnDistributionConfigTlsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnDistributionConfigTlsOutput)
+}
+
+func (i CdnDistributionConfigTlsArgs) ToCdnDistributionConfigTlsPtrOutput() CdnDistributionConfigTlsPtrOutput {
+	return i.ToCdnDistributionConfigTlsPtrOutputWithContext(context.Background())
+}
+
+func (i CdnDistributionConfigTlsArgs) ToCdnDistributionConfigTlsPtrOutputWithContext(ctx context.Context) CdnDistributionConfigTlsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnDistributionConfigTlsOutput).ToCdnDistributionConfigTlsPtrOutputWithContext(ctx)
+}
+
+// CdnDistributionConfigTlsPtrInput is an input type that accepts CdnDistributionConfigTlsArgs, CdnDistributionConfigTlsPtr and CdnDistributionConfigTlsPtrOutput values.
+// You can construct a concrete instance of `CdnDistributionConfigTlsPtrInput` via:
+//
+//	        CdnDistributionConfigTlsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CdnDistributionConfigTlsPtrInput interface {
+	pulumi.Input
+
+	ToCdnDistributionConfigTlsPtrOutput() CdnDistributionConfigTlsPtrOutput
+	ToCdnDistributionConfigTlsPtrOutputWithContext(context.Context) CdnDistributionConfigTlsPtrOutput
+}
+
+type cdnDistributionConfigTlsPtrType CdnDistributionConfigTlsArgs
+
+func CdnDistributionConfigTlsPtr(v *CdnDistributionConfigTlsArgs) CdnDistributionConfigTlsPtrInput {
+	return (*cdnDistributionConfigTlsPtrType)(v)
+}
+
+func (*cdnDistributionConfigTlsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CdnDistributionConfigTls)(nil)).Elem()
+}
+
+func (i *cdnDistributionConfigTlsPtrType) ToCdnDistributionConfigTlsPtrOutput() CdnDistributionConfigTlsPtrOutput {
+	return i.ToCdnDistributionConfigTlsPtrOutputWithContext(context.Background())
+}
+
+func (i *cdnDistributionConfigTlsPtrType) ToCdnDistributionConfigTlsPtrOutputWithContext(ctx context.Context) CdnDistributionConfigTlsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnDistributionConfigTlsPtrOutput)
+}
+
+type CdnDistributionConfigTlsOutput struct{ *pulumi.OutputState }
+
+func (CdnDistributionConfigTlsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CdnDistributionConfigTls)(nil)).Elem()
+}
+
+func (o CdnDistributionConfigTlsOutput) ToCdnDistributionConfigTlsOutput() CdnDistributionConfigTlsOutput {
+	return o
+}
+
+func (o CdnDistributionConfigTlsOutput) ToCdnDistributionConfigTlsOutputWithContext(ctx context.Context) CdnDistributionConfigTlsOutput {
+	return o
+}
+
+func (o CdnDistributionConfigTlsOutput) ToCdnDistributionConfigTlsPtrOutput() CdnDistributionConfigTlsPtrOutput {
+	return o.ToCdnDistributionConfigTlsPtrOutputWithContext(context.Background())
+}
+
+func (o CdnDistributionConfigTlsOutput) ToCdnDistributionConfigTlsPtrOutputWithContext(ctx context.Context) CdnDistributionConfigTlsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CdnDistributionConfigTls) *CdnDistributionConfigTls {
+		return &v
+	}).(CdnDistributionConfigTlsPtrOutput)
+}
+
+// If set to true, the distribution will accept connections using TLS 1.1.
+func (o CdnDistributionConfigTlsOutput) EnableTls10() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CdnDistributionConfigTls) *bool { return v.EnableTls10 }).(pulumi.BoolPtrOutput)
+}
+
+// If set to true, the distribution will accept connections using TLS 1.0.
+func (o CdnDistributionConfigTlsOutput) EnableTls11() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CdnDistributionConfigTls) *bool { return v.EnableTls11 }).(pulumi.BoolPtrOutput)
+}
+
+type CdnDistributionConfigTlsPtrOutput struct{ *pulumi.OutputState }
+
+func (CdnDistributionConfigTlsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CdnDistributionConfigTls)(nil)).Elem()
+}
+
+func (o CdnDistributionConfigTlsPtrOutput) ToCdnDistributionConfigTlsPtrOutput() CdnDistributionConfigTlsPtrOutput {
+	return o
+}
+
+func (o CdnDistributionConfigTlsPtrOutput) ToCdnDistributionConfigTlsPtrOutputWithContext(ctx context.Context) CdnDistributionConfigTlsPtrOutput {
+	return o
+}
+
+func (o CdnDistributionConfigTlsPtrOutput) Elem() CdnDistributionConfigTlsOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigTls) CdnDistributionConfigTls {
+		if v != nil {
+			return *v
+		}
+		var ret CdnDistributionConfigTls
+		return ret
+	}).(CdnDistributionConfigTlsOutput)
+}
+
+// If set to true, the distribution will accept connections using TLS 1.1.
+func (o CdnDistributionConfigTlsPtrOutput) EnableTls10() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigTls) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableTls10
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If set to true, the distribution will accept connections using TLS 1.0.
+func (o CdnDistributionConfigTlsPtrOutput) EnableTls11() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigTls) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableTls11
+	}).(pulumi.BoolPtrOutput)
 }
 
 type CdnDistributionConfigWaf struct {
@@ -19489,9 +19702,167 @@ func (o SqlserverflexInstanceFlavorPtrOutput) Ram() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type SqlserverflexInstanceNetwork struct {
+	// The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. Possible values are: `PUBLIC`, `SNA`.
+	AccessScope *string `pulumi:"accessScope"`
+	// List of IPV4 cidr.
+	Acls []string `pulumi:"acls"`
+}
+
+// SqlserverflexInstanceNetworkInput is an input type that accepts SqlserverflexInstanceNetworkArgs and SqlserverflexInstanceNetworkOutput values.
+// You can construct a concrete instance of `SqlserverflexInstanceNetworkInput` via:
+//
+//	SqlserverflexInstanceNetworkArgs{...}
+type SqlserverflexInstanceNetworkInput interface {
+	pulumi.Input
+
+	ToSqlserverflexInstanceNetworkOutput() SqlserverflexInstanceNetworkOutput
+	ToSqlserverflexInstanceNetworkOutputWithContext(context.Context) SqlserverflexInstanceNetworkOutput
+}
+
+type SqlserverflexInstanceNetworkArgs struct {
+	// The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. Possible values are: `PUBLIC`, `SNA`.
+	AccessScope pulumi.StringPtrInput `pulumi:"accessScope"`
+	// List of IPV4 cidr.
+	Acls pulumi.StringArrayInput `pulumi:"acls"`
+}
+
+func (SqlserverflexInstanceNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlserverflexInstanceNetwork)(nil)).Elem()
+}
+
+func (i SqlserverflexInstanceNetworkArgs) ToSqlserverflexInstanceNetworkOutput() SqlserverflexInstanceNetworkOutput {
+	return i.ToSqlserverflexInstanceNetworkOutputWithContext(context.Background())
+}
+
+func (i SqlserverflexInstanceNetworkArgs) ToSqlserverflexInstanceNetworkOutputWithContext(ctx context.Context) SqlserverflexInstanceNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlserverflexInstanceNetworkOutput)
+}
+
+func (i SqlserverflexInstanceNetworkArgs) ToSqlserverflexInstanceNetworkPtrOutput() SqlserverflexInstanceNetworkPtrOutput {
+	return i.ToSqlserverflexInstanceNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i SqlserverflexInstanceNetworkArgs) ToSqlserverflexInstanceNetworkPtrOutputWithContext(ctx context.Context) SqlserverflexInstanceNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlserverflexInstanceNetworkOutput).ToSqlserverflexInstanceNetworkPtrOutputWithContext(ctx)
+}
+
+// SqlserverflexInstanceNetworkPtrInput is an input type that accepts SqlserverflexInstanceNetworkArgs, SqlserverflexInstanceNetworkPtr and SqlserverflexInstanceNetworkPtrOutput values.
+// You can construct a concrete instance of `SqlserverflexInstanceNetworkPtrInput` via:
+//
+//	        SqlserverflexInstanceNetworkArgs{...}
+//
+//	or:
+//
+//	        nil
+type SqlserverflexInstanceNetworkPtrInput interface {
+	pulumi.Input
+
+	ToSqlserverflexInstanceNetworkPtrOutput() SqlserverflexInstanceNetworkPtrOutput
+	ToSqlserverflexInstanceNetworkPtrOutputWithContext(context.Context) SqlserverflexInstanceNetworkPtrOutput
+}
+
+type sqlserverflexInstanceNetworkPtrType SqlserverflexInstanceNetworkArgs
+
+func SqlserverflexInstanceNetworkPtr(v *SqlserverflexInstanceNetworkArgs) SqlserverflexInstanceNetworkPtrInput {
+	return (*sqlserverflexInstanceNetworkPtrType)(v)
+}
+
+func (*sqlserverflexInstanceNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlserverflexInstanceNetwork)(nil)).Elem()
+}
+
+func (i *sqlserverflexInstanceNetworkPtrType) ToSqlserverflexInstanceNetworkPtrOutput() SqlserverflexInstanceNetworkPtrOutput {
+	return i.ToSqlserverflexInstanceNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *sqlserverflexInstanceNetworkPtrType) ToSqlserverflexInstanceNetworkPtrOutputWithContext(ctx context.Context) SqlserverflexInstanceNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlserverflexInstanceNetworkPtrOutput)
+}
+
+type SqlserverflexInstanceNetworkOutput struct{ *pulumi.OutputState }
+
+func (SqlserverflexInstanceNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlserverflexInstanceNetwork)(nil)).Elem()
+}
+
+func (o SqlserverflexInstanceNetworkOutput) ToSqlserverflexInstanceNetworkOutput() SqlserverflexInstanceNetworkOutput {
+	return o
+}
+
+func (o SqlserverflexInstanceNetworkOutput) ToSqlserverflexInstanceNetworkOutputWithContext(ctx context.Context) SqlserverflexInstanceNetworkOutput {
+	return o
+}
+
+func (o SqlserverflexInstanceNetworkOutput) ToSqlserverflexInstanceNetworkPtrOutput() SqlserverflexInstanceNetworkPtrOutput {
+	return o.ToSqlserverflexInstanceNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o SqlserverflexInstanceNetworkOutput) ToSqlserverflexInstanceNetworkPtrOutputWithContext(ctx context.Context) SqlserverflexInstanceNetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlserverflexInstanceNetwork) *SqlserverflexInstanceNetwork {
+		return &v
+	}).(SqlserverflexInstanceNetworkPtrOutput)
+}
+
+// The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. Possible values are: `PUBLIC`, `SNA`.
+func (o SqlserverflexInstanceNetworkOutput) AccessScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlserverflexInstanceNetwork) *string { return v.AccessScope }).(pulumi.StringPtrOutput)
+}
+
+// List of IPV4 cidr.
+func (o SqlserverflexInstanceNetworkOutput) Acls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SqlserverflexInstanceNetwork) []string { return v.Acls }).(pulumi.StringArrayOutput)
+}
+
+type SqlserverflexInstanceNetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (SqlserverflexInstanceNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlserverflexInstanceNetwork)(nil)).Elem()
+}
+
+func (o SqlserverflexInstanceNetworkPtrOutput) ToSqlserverflexInstanceNetworkPtrOutput() SqlserverflexInstanceNetworkPtrOutput {
+	return o
+}
+
+func (o SqlserverflexInstanceNetworkPtrOutput) ToSqlserverflexInstanceNetworkPtrOutputWithContext(ctx context.Context) SqlserverflexInstanceNetworkPtrOutput {
+	return o
+}
+
+func (o SqlserverflexInstanceNetworkPtrOutput) Elem() SqlserverflexInstanceNetworkOutput {
+	return o.ApplyT(func(v *SqlserverflexInstanceNetwork) SqlserverflexInstanceNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret SqlserverflexInstanceNetwork
+		return ret
+	}).(SqlserverflexInstanceNetworkOutput)
+}
+
+// The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. Possible values are: `PUBLIC`, `SNA`.
+func (o SqlserverflexInstanceNetworkPtrOutput) AccessScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlserverflexInstanceNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessScope
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of IPV4 cidr.
+func (o SqlserverflexInstanceNetworkPtrOutput) Acls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SqlserverflexInstanceNetwork) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Acls
+	}).(pulumi.StringArrayOutput)
+}
+
 type SqlserverflexInstanceOptions struct {
-	Edition       *string `pulumi:"edition"`
-	RetentionDays *int    `pulumi:"retentionDays"`
+	// Deprecated: edition is deprecated and will be removed after January 2027.
+	Edition *string `pulumi:"edition"`
+	// Deprecated: retention_days is deprecated and will be removed after January 2027. Use instead `retentionDays` from root.
+	RetentionDays *int `pulumi:"retentionDays"`
 }
 
 // SqlserverflexInstanceOptionsInput is an input type that accepts SqlserverflexInstanceOptionsArgs and SqlserverflexInstanceOptionsOutput values.
@@ -19506,8 +19877,10 @@ type SqlserverflexInstanceOptionsInput interface {
 }
 
 type SqlserverflexInstanceOptionsArgs struct {
-	Edition       pulumi.StringPtrInput `pulumi:"edition"`
-	RetentionDays pulumi.IntPtrInput    `pulumi:"retentionDays"`
+	// Deprecated: edition is deprecated and will be removed after January 2027.
+	Edition pulumi.StringPtrInput `pulumi:"edition"`
+	// Deprecated: retention_days is deprecated and will be removed after January 2027. Use instead `retentionDays` from root.
+	RetentionDays pulumi.IntPtrInput `pulumi:"retentionDays"`
 }
 
 func (SqlserverflexInstanceOptionsArgs) ElementType() reflect.Type {
@@ -19587,10 +19960,12 @@ func (o SqlserverflexInstanceOptionsOutput) ToSqlserverflexInstanceOptionsPtrOut
 	}).(SqlserverflexInstanceOptionsPtrOutput)
 }
 
+// Deprecated: edition is deprecated and will be removed after January 2027.
 func (o SqlserverflexInstanceOptionsOutput) Edition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlserverflexInstanceOptions) *string { return v.Edition }).(pulumi.StringPtrOutput)
 }
 
+// Deprecated: retention_days is deprecated and will be removed after January 2027. Use instead `retentionDays` from root.
 func (o SqlserverflexInstanceOptionsOutput) RetentionDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SqlserverflexInstanceOptions) *int { return v.RetentionDays }).(pulumi.IntPtrOutput)
 }
@@ -19619,6 +19994,7 @@ func (o SqlserverflexInstanceOptionsPtrOutput) Elem() SqlserverflexInstanceOptio
 	}).(SqlserverflexInstanceOptionsOutput)
 }
 
+// Deprecated: edition is deprecated and will be removed after January 2027.
 func (o SqlserverflexInstanceOptionsPtrOutput) Edition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlserverflexInstanceOptions) *string {
 		if v == nil {
@@ -19628,6 +20004,7 @@ func (o SqlserverflexInstanceOptionsPtrOutput) Edition() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
+// Deprecated: retention_days is deprecated and will be removed after January 2027. Use instead `retentionDays` from root.
 func (o SqlserverflexInstanceOptionsPtrOutput) RetentionDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SqlserverflexInstanceOptions) *int {
 		if v == nil {
@@ -19641,10 +20018,10 @@ type SqlserverflexInstanceStorage struct {
 	// The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
 	// `bash
 	// stackit beta sqlserverflex options --storages --flavor-id FLAVOR_ID
-	// `
-	// - `size` (Number)
+	// ` Will be required in the future. Set a value to prevent breaking changes.
 	Class *string `pulumi:"class"`
-	Size  *int    `pulumi:"size"`
+	// The storage size in Gigabytes. Will be required in the future. Set a value to prevent breaking changes.
+	Size *int `pulumi:"size"`
 }
 
 // SqlserverflexInstanceStorageInput is an input type that accepts SqlserverflexInstanceStorageArgs and SqlserverflexInstanceStorageOutput values.
@@ -19662,10 +20039,10 @@ type SqlserverflexInstanceStorageArgs struct {
 	// The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
 	// `bash
 	// stackit beta sqlserverflex options --storages --flavor-id FLAVOR_ID
-	// `
-	// - `size` (Number)
+	// ` Will be required in the future. Set a value to prevent breaking changes.
 	Class pulumi.StringPtrInput `pulumi:"class"`
-	Size  pulumi.IntPtrInput    `pulumi:"size"`
+	// The storage size in Gigabytes. Will be required in the future. Set a value to prevent breaking changes.
+	Size pulumi.IntPtrInput `pulumi:"size"`
 }
 
 func (SqlserverflexInstanceStorageArgs) ElementType() reflect.Type {
@@ -19748,12 +20125,12 @@ func (o SqlserverflexInstanceStorageOutput) ToSqlserverflexInstanceStoragePtrOut
 // The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
 // `bash
 // stackit beta sqlserverflex options --storages --flavor-id FLAVOR_ID
-// `
-// - `size` (Number)
+// ` Will be required in the future. Set a value to prevent breaking changes.
 func (o SqlserverflexInstanceStorageOutput) Class() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlserverflexInstanceStorage) *string { return v.Class }).(pulumi.StringPtrOutput)
 }
 
+// The storage size in Gigabytes. Will be required in the future. Set a value to prevent breaking changes.
 func (o SqlserverflexInstanceStorageOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SqlserverflexInstanceStorage) *int { return v.Size }).(pulumi.IntPtrOutput)
 }
@@ -19785,8 +20162,7 @@ func (o SqlserverflexInstanceStoragePtrOutput) Elem() SqlserverflexInstanceStora
 // The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
 // `bash
 // stackit beta sqlserverflex options --storages --flavor-id FLAVOR_ID
-// `
-// - `size` (Number)
+// ` Will be required in the future. Set a value to prevent breaking changes.
 func (o SqlserverflexInstanceStoragePtrOutput) Class() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlserverflexInstanceStorage) *string {
 		if v == nil {
@@ -19796,6 +20172,7 @@ func (o SqlserverflexInstanceStoragePtrOutput) Class() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// The storage size in Gigabytes. Will be required in the future. Set a value to prevent breaking changes.
 func (o SqlserverflexInstanceStoragePtrOutput) Size() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SqlserverflexInstanceStorage) *int {
 		if v == nil {
@@ -26034,12 +26411,18 @@ type GetCdnDistributionConfig struct {
 	Backend GetCdnDistributionConfigBackend `pulumi:"backend"`
 	// The configured countries where distribution of content is blocked
 	BlockedCountries []string `pulumi:"blockedCountries"`
+	// Enable this allows the 'Host' header to be passed through to the origin.
+	ForwardHostHeader bool `pulumi:"forwardHostHeader"`
 	// Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
 	Optimizer GetCdnDistributionConfigOptimizer `pulumi:"optimizer"`
 	// A wrapper for a list of redirect rules that allows for redirect settings on a distribution
 	Redirects GetCdnDistributionConfigRedirects `pulumi:"redirects"`
 	// The configured regions where content will be hosted
 	Regions []string `pulumi:"regions"`
+	// Enable this to prevent origin-level cookies from being forwarded to the end user.
+	StripResponseCookies bool `pulumi:"stripResponseCookies"`
+	// Configuration for TLS protocol versions. Note: Enabling older TLS versions (1.0, 1.1) is generally discouraged for security reasons.
+	Tls GetCdnDistributionConfigTls `pulumi:"tls"`
 	// Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.
 	Waf GetCdnDistributionConfigWaf `pulumi:"waf"`
 }
@@ -26060,12 +26443,18 @@ type GetCdnDistributionConfigArgs struct {
 	Backend GetCdnDistributionConfigBackendInput `pulumi:"backend"`
 	// The configured countries where distribution of content is blocked
 	BlockedCountries pulumi.StringArrayInput `pulumi:"blockedCountries"`
+	// Enable this allows the 'Host' header to be passed through to the origin.
+	ForwardHostHeader pulumi.BoolInput `pulumi:"forwardHostHeader"`
 	// Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
 	Optimizer GetCdnDistributionConfigOptimizerInput `pulumi:"optimizer"`
 	// A wrapper for a list of redirect rules that allows for redirect settings on a distribution
 	Redirects GetCdnDistributionConfigRedirectsInput `pulumi:"redirects"`
 	// The configured regions where content will be hosted
 	Regions pulumi.StringArrayInput `pulumi:"regions"`
+	// Enable this to prevent origin-level cookies from being forwarded to the end user.
+	StripResponseCookies pulumi.BoolInput `pulumi:"stripResponseCookies"`
+	// Configuration for TLS protocol versions. Note: Enabling older TLS versions (1.0, 1.1) is generally discouraged for security reasons.
+	Tls GetCdnDistributionConfigTlsInput `pulumi:"tls"`
 	// Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.
 	Waf GetCdnDistributionConfigWafInput `pulumi:"waf"`
 }
@@ -26106,6 +26495,11 @@ func (o GetCdnDistributionConfigOutput) BlockedCountries() pulumi.StringArrayOut
 	return o.ApplyT(func(v GetCdnDistributionConfig) []string { return v.BlockedCountries }).(pulumi.StringArrayOutput)
 }
 
+// Enable this allows the 'Host' header to be passed through to the origin.
+func (o GetCdnDistributionConfigOutput) ForwardHostHeader() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfig) bool { return v.ForwardHostHeader }).(pulumi.BoolOutput)
+}
+
 // Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
 func (o GetCdnDistributionConfigOutput) Optimizer() GetCdnDistributionConfigOptimizerOutput {
 	return o.ApplyT(func(v GetCdnDistributionConfig) GetCdnDistributionConfigOptimizer { return v.Optimizer }).(GetCdnDistributionConfigOptimizerOutput)
@@ -26119,6 +26513,16 @@ func (o GetCdnDistributionConfigOutput) Redirects() GetCdnDistributionConfigRedi
 // The configured regions where content will be hosted
 func (o GetCdnDistributionConfigOutput) Regions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetCdnDistributionConfig) []string { return v.Regions }).(pulumi.StringArrayOutput)
+}
+
+// Enable this to prevent origin-level cookies from being forwarded to the end user.
+func (o GetCdnDistributionConfigOutput) StripResponseCookies() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfig) bool { return v.StripResponseCookies }).(pulumi.BoolOutput)
+}
+
+// Configuration for TLS protocol versions. Note: Enabling older TLS versions (1.0, 1.1) is generally discouraged for security reasons.
+func (o GetCdnDistributionConfigOutput) Tls() GetCdnDistributionConfigTlsOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfig) GetCdnDistributionConfigTls { return v.Tls }).(GetCdnDistributionConfigTlsOutput)
 }
 
 // Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.
@@ -26572,6 +26976,67 @@ func (o GetCdnDistributionConfigRedirectsRuleMatcherArrayOutput) Index(i pulumi.
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetCdnDistributionConfigRedirectsRuleMatcher {
 		return vs[0].([]GetCdnDistributionConfigRedirectsRuleMatcher)[vs[1].(int)]
 	}).(GetCdnDistributionConfigRedirectsRuleMatcherOutput)
+}
+
+type GetCdnDistributionConfigTls struct {
+	// If set to true, the distribution will accept connections using TLS 1.1.
+	EnableTls10 bool `pulumi:"enableTls10"`
+	// If set to true, the distribution will accept connections using TLS 1.0.
+	EnableTls11 bool `pulumi:"enableTls11"`
+}
+
+// GetCdnDistributionConfigTlsInput is an input type that accepts GetCdnDistributionConfigTlsArgs and GetCdnDistributionConfigTlsOutput values.
+// You can construct a concrete instance of `GetCdnDistributionConfigTlsInput` via:
+//
+//	GetCdnDistributionConfigTlsArgs{...}
+type GetCdnDistributionConfigTlsInput interface {
+	pulumi.Input
+
+	ToGetCdnDistributionConfigTlsOutput() GetCdnDistributionConfigTlsOutput
+	ToGetCdnDistributionConfigTlsOutputWithContext(context.Context) GetCdnDistributionConfigTlsOutput
+}
+
+type GetCdnDistributionConfigTlsArgs struct {
+	// If set to true, the distribution will accept connections using TLS 1.1.
+	EnableTls10 pulumi.BoolInput `pulumi:"enableTls10"`
+	// If set to true, the distribution will accept connections using TLS 1.0.
+	EnableTls11 pulumi.BoolInput `pulumi:"enableTls11"`
+}
+
+func (GetCdnDistributionConfigTlsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCdnDistributionConfigTls)(nil)).Elem()
+}
+
+func (i GetCdnDistributionConfigTlsArgs) ToGetCdnDistributionConfigTlsOutput() GetCdnDistributionConfigTlsOutput {
+	return i.ToGetCdnDistributionConfigTlsOutputWithContext(context.Background())
+}
+
+func (i GetCdnDistributionConfigTlsArgs) ToGetCdnDistributionConfigTlsOutputWithContext(ctx context.Context) GetCdnDistributionConfigTlsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCdnDistributionConfigTlsOutput)
+}
+
+type GetCdnDistributionConfigTlsOutput struct{ *pulumi.OutputState }
+
+func (GetCdnDistributionConfigTlsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCdnDistributionConfigTls)(nil)).Elem()
+}
+
+func (o GetCdnDistributionConfigTlsOutput) ToGetCdnDistributionConfigTlsOutput() GetCdnDistributionConfigTlsOutput {
+	return o
+}
+
+func (o GetCdnDistributionConfigTlsOutput) ToGetCdnDistributionConfigTlsOutputWithContext(ctx context.Context) GetCdnDistributionConfigTlsOutput {
+	return o
+}
+
+// If set to true, the distribution will accept connections using TLS 1.1.
+func (o GetCdnDistributionConfigTlsOutput) EnableTls10() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfigTls) bool { return v.EnableTls10 }).(pulumi.BoolOutput)
+}
+
+// If set to true, the distribution will accept connections using TLS 1.0.
+func (o GetCdnDistributionConfigTlsOutput) EnableTls11() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfigTls) bool { return v.EnableTls11 }).(pulumi.BoolOutput)
 }
 
 type GetCdnDistributionConfigWaf struct {
@@ -28373,7 +28838,7 @@ func (o GetImageV2ConfigOutput) VirtioScsi() pulumi.BoolOutput {
 }
 
 type GetImageV2Filter struct {
-	// Filter images by operating system distribution. For example: `ubuntu`, `ubuntu-arm64`, `debian`, `rhel`, etc.
+	// Filter images by operating system distribution. For example: `ubuntu`, `debian`, `rhel`, etc.
 	Distro *string `pulumi:"distro"`
 	// Filter images by operating system type, such as `linux` or `windows`.
 	Os *string `pulumi:"os"`
@@ -28397,7 +28862,7 @@ type GetImageV2FilterInput interface {
 }
 
 type GetImageV2FilterArgs struct {
-	// Filter images by operating system distribution. For example: `ubuntu`, `ubuntu-arm64`, `debian`, `rhel`, etc.
+	// Filter images by operating system distribution. For example: `ubuntu`, `debian`, `rhel`, etc.
 	Distro pulumi.StringPtrInput `pulumi:"distro"`
 	// Filter images by operating system type, such as `linux` or `windows`.
 	Os pulumi.StringPtrInput `pulumi:"os"`
@@ -28486,7 +28951,7 @@ func (o GetImageV2FilterOutput) ToGetImageV2FilterPtrOutputWithContext(ctx conte
 	}).(GetImageV2FilterPtrOutput)
 }
 
-// Filter images by operating system distribution. For example: `ubuntu`, `ubuntu-arm64`, `debian`, `rhel`, etc.
+// Filter images by operating system distribution. For example: `ubuntu`, `debian`, `rhel`, etc.
 func (o GetImageV2FilterOutput) Distro() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetImageV2Filter) *string { return v.Distro }).(pulumi.StringPtrOutput)
 }
@@ -28535,7 +29000,7 @@ func (o GetImageV2FilterPtrOutput) Elem() GetImageV2FilterOutput {
 	}).(GetImageV2FilterOutput)
 }
 
-// Filter images by operating system distribution. For example: `ubuntu`, `ubuntu-arm64`, `debian`, `rhel`, etc.
+// Filter images by operating system distribution. For example: `ubuntu`, `debian`, `rhel`, etc.
 func (o GetImageV2FilterPtrOutput) Distro() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetImageV2Filter) *string {
 		if v == nil {
@@ -36865,6 +37330,162 @@ func (o GetSqlserverflexInstanceFlavorOutput) Ram() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSqlserverflexInstanceFlavor) int { return v.Ram }).(pulumi.IntOutput)
 }
 
+type GetSqlserverflexInstanceNetwork struct {
+	// The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected.
+	AccessScope *string `pulumi:"accessScope"`
+	// List of IPV4 cidr.
+	Acls []string `pulumi:"acls"`
+}
+
+// GetSqlserverflexInstanceNetworkInput is an input type that accepts GetSqlserverflexInstanceNetworkArgs and GetSqlserverflexInstanceNetworkOutput values.
+// You can construct a concrete instance of `GetSqlserverflexInstanceNetworkInput` via:
+//
+//	GetSqlserverflexInstanceNetworkArgs{...}
+type GetSqlserverflexInstanceNetworkInput interface {
+	pulumi.Input
+
+	ToGetSqlserverflexInstanceNetworkOutput() GetSqlserverflexInstanceNetworkOutput
+	ToGetSqlserverflexInstanceNetworkOutputWithContext(context.Context) GetSqlserverflexInstanceNetworkOutput
+}
+
+type GetSqlserverflexInstanceNetworkArgs struct {
+	// The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected.
+	AccessScope pulumi.StringPtrInput `pulumi:"accessScope"`
+	// List of IPV4 cidr.
+	Acls pulumi.StringArrayInput `pulumi:"acls"`
+}
+
+func (GetSqlserverflexInstanceNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlserverflexInstanceNetwork)(nil)).Elem()
+}
+
+func (i GetSqlserverflexInstanceNetworkArgs) ToGetSqlserverflexInstanceNetworkOutput() GetSqlserverflexInstanceNetworkOutput {
+	return i.ToGetSqlserverflexInstanceNetworkOutputWithContext(context.Background())
+}
+
+func (i GetSqlserverflexInstanceNetworkArgs) ToGetSqlserverflexInstanceNetworkOutputWithContext(ctx context.Context) GetSqlserverflexInstanceNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlserverflexInstanceNetworkOutput)
+}
+
+func (i GetSqlserverflexInstanceNetworkArgs) ToGetSqlserverflexInstanceNetworkPtrOutput() GetSqlserverflexInstanceNetworkPtrOutput {
+	return i.ToGetSqlserverflexInstanceNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i GetSqlserverflexInstanceNetworkArgs) ToGetSqlserverflexInstanceNetworkPtrOutputWithContext(ctx context.Context) GetSqlserverflexInstanceNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlserverflexInstanceNetworkOutput).ToGetSqlserverflexInstanceNetworkPtrOutputWithContext(ctx)
+}
+
+// GetSqlserverflexInstanceNetworkPtrInput is an input type that accepts GetSqlserverflexInstanceNetworkArgs, GetSqlserverflexInstanceNetworkPtr and GetSqlserverflexInstanceNetworkPtrOutput values.
+// You can construct a concrete instance of `GetSqlserverflexInstanceNetworkPtrInput` via:
+//
+//	        GetSqlserverflexInstanceNetworkArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetSqlserverflexInstanceNetworkPtrInput interface {
+	pulumi.Input
+
+	ToGetSqlserverflexInstanceNetworkPtrOutput() GetSqlserverflexInstanceNetworkPtrOutput
+	ToGetSqlserverflexInstanceNetworkPtrOutputWithContext(context.Context) GetSqlserverflexInstanceNetworkPtrOutput
+}
+
+type getSqlserverflexInstanceNetworkPtrType GetSqlserverflexInstanceNetworkArgs
+
+func GetSqlserverflexInstanceNetworkPtr(v *GetSqlserverflexInstanceNetworkArgs) GetSqlserverflexInstanceNetworkPtrInput {
+	return (*getSqlserverflexInstanceNetworkPtrType)(v)
+}
+
+func (*getSqlserverflexInstanceNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSqlserverflexInstanceNetwork)(nil)).Elem()
+}
+
+func (i *getSqlserverflexInstanceNetworkPtrType) ToGetSqlserverflexInstanceNetworkPtrOutput() GetSqlserverflexInstanceNetworkPtrOutput {
+	return i.ToGetSqlserverflexInstanceNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *getSqlserverflexInstanceNetworkPtrType) ToGetSqlserverflexInstanceNetworkPtrOutputWithContext(ctx context.Context) GetSqlserverflexInstanceNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlserverflexInstanceNetworkPtrOutput)
+}
+
+type GetSqlserverflexInstanceNetworkOutput struct{ *pulumi.OutputState }
+
+func (GetSqlserverflexInstanceNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlserverflexInstanceNetwork)(nil)).Elem()
+}
+
+func (o GetSqlserverflexInstanceNetworkOutput) ToGetSqlserverflexInstanceNetworkOutput() GetSqlserverflexInstanceNetworkOutput {
+	return o
+}
+
+func (o GetSqlserverflexInstanceNetworkOutput) ToGetSqlserverflexInstanceNetworkOutputWithContext(ctx context.Context) GetSqlserverflexInstanceNetworkOutput {
+	return o
+}
+
+func (o GetSqlserverflexInstanceNetworkOutput) ToGetSqlserverflexInstanceNetworkPtrOutput() GetSqlserverflexInstanceNetworkPtrOutput {
+	return o.ToGetSqlserverflexInstanceNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o GetSqlserverflexInstanceNetworkOutput) ToGetSqlserverflexInstanceNetworkPtrOutputWithContext(ctx context.Context) GetSqlserverflexInstanceNetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetSqlserverflexInstanceNetwork) *GetSqlserverflexInstanceNetwork {
+		return &v
+	}).(GetSqlserverflexInstanceNetworkPtrOutput)
+}
+
+// The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected.
+func (o GetSqlserverflexInstanceNetworkOutput) AccessScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSqlserverflexInstanceNetwork) *string { return v.AccessScope }).(pulumi.StringPtrOutput)
+}
+
+// List of IPV4 cidr.
+func (o GetSqlserverflexInstanceNetworkOutput) Acls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSqlserverflexInstanceNetwork) []string { return v.Acls }).(pulumi.StringArrayOutput)
+}
+
+type GetSqlserverflexInstanceNetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (GetSqlserverflexInstanceNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSqlserverflexInstanceNetwork)(nil)).Elem()
+}
+
+func (o GetSqlserverflexInstanceNetworkPtrOutput) ToGetSqlserverflexInstanceNetworkPtrOutput() GetSqlserverflexInstanceNetworkPtrOutput {
+	return o
+}
+
+func (o GetSqlserverflexInstanceNetworkPtrOutput) ToGetSqlserverflexInstanceNetworkPtrOutputWithContext(ctx context.Context) GetSqlserverflexInstanceNetworkPtrOutput {
+	return o
+}
+
+func (o GetSqlserverflexInstanceNetworkPtrOutput) Elem() GetSqlserverflexInstanceNetworkOutput {
+	return o.ApplyT(func(v *GetSqlserverflexInstanceNetwork) GetSqlserverflexInstanceNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret GetSqlserverflexInstanceNetwork
+		return ret
+	}).(GetSqlserverflexInstanceNetworkOutput)
+}
+
+// The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected.
+func (o GetSqlserverflexInstanceNetworkPtrOutput) AccessScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSqlserverflexInstanceNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessScope
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of IPV4 cidr.
+func (o GetSqlserverflexInstanceNetworkPtrOutput) Acls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetSqlserverflexInstanceNetwork) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Acls
+	}).(pulumi.StringArrayOutput)
+}
+
 type GetSqlserverflexInstanceOptions struct {
 	Edition       string `pulumi:"edition"`
 	RetentionDays int    `pulumi:"retentionDays"`
@@ -38756,6 +39377,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigRedirectsRuleArrayInput)(nil)).Elem(), CdnDistributionConfigRedirectsRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigRedirectsRuleMatcherInput)(nil)).Elem(), CdnDistributionConfigRedirectsRuleMatcherArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigRedirectsRuleMatcherArrayInput)(nil)).Elem(), CdnDistributionConfigRedirectsRuleMatcherArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigTlsInput)(nil)).Elem(), CdnDistributionConfigTlsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigTlsPtrInput)(nil)).Elem(), CdnDistributionConfigTlsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigWafInput)(nil)).Elem(), CdnDistributionConfigWafArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigWafPtrInput)(nil)).Elem(), CdnDistributionConfigWafArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionDomainInput)(nil)).Elem(), CdnDistributionDomainArgs{})
@@ -38918,6 +39541,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterNodePoolTaintArrayInput)(nil)).Elem(), SkeClusterNodePoolTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlserverflexInstanceFlavorInput)(nil)).Elem(), SqlserverflexInstanceFlavorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlserverflexInstanceFlavorPtrInput)(nil)).Elem(), SqlserverflexInstanceFlavorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlserverflexInstanceNetworkInput)(nil)).Elem(), SqlserverflexInstanceNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlserverflexInstanceNetworkPtrInput)(nil)).Elem(), SqlserverflexInstanceNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlserverflexInstanceOptionsInput)(nil)).Elem(), SqlserverflexInstanceOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlserverflexInstanceOptionsPtrInput)(nil)).Elem(), SqlserverflexInstanceOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlserverflexInstanceStorageInput)(nil)).Elem(), SqlserverflexInstanceStorageArgs{})
@@ -39011,6 +39636,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionConfigRedirectsRuleArrayInput)(nil)).Elem(), GetCdnDistributionConfigRedirectsRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionConfigRedirectsRuleMatcherInput)(nil)).Elem(), GetCdnDistributionConfigRedirectsRuleMatcherArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionConfigRedirectsRuleMatcherArrayInput)(nil)).Elem(), GetCdnDistributionConfigRedirectsRuleMatcherArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionConfigTlsInput)(nil)).Elem(), GetCdnDistributionConfigTlsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionConfigWafInput)(nil)).Elem(), GetCdnDistributionConfigWafArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionDomainInput)(nil)).Elem(), GetCdnDistributionDomainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionDomainArrayInput)(nil)).Elem(), GetCdnDistributionDomainArray{})
@@ -39153,6 +39779,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeMachineImageVersionsMachineImageVersionInput)(nil)).Elem(), GetSkeMachineImageVersionsMachineImageVersionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeMachineImageVersionsMachineImageVersionArrayInput)(nil)).Elem(), GetSkeMachineImageVersionsMachineImageVersionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlserverflexInstanceFlavorInput)(nil)).Elem(), GetSqlserverflexInstanceFlavorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlserverflexInstanceNetworkInput)(nil)).Elem(), GetSqlserverflexInstanceNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlserverflexInstanceNetworkPtrInput)(nil)).Elem(), GetSqlserverflexInstanceNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlserverflexInstanceOptionsInput)(nil)).Elem(), GetSqlserverflexInstanceOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlserverflexInstanceStorageInput)(nil)).Elem(), GetSqlserverflexInstanceStorageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTelemetryrouterDestinationConfigInput)(nil)).Elem(), GetTelemetryrouterDestinationConfigArgs{})
@@ -39244,6 +39872,8 @@ func init() {
 	pulumi.RegisterOutputType(CdnDistributionConfigRedirectsRuleArrayOutput{})
 	pulumi.RegisterOutputType(CdnDistributionConfigRedirectsRuleMatcherOutput{})
 	pulumi.RegisterOutputType(CdnDistributionConfigRedirectsRuleMatcherArrayOutput{})
+	pulumi.RegisterOutputType(CdnDistributionConfigTlsOutput{})
+	pulumi.RegisterOutputType(CdnDistributionConfigTlsPtrOutput{})
 	pulumi.RegisterOutputType(CdnDistributionConfigWafOutput{})
 	pulumi.RegisterOutputType(CdnDistributionConfigWafPtrOutput{})
 	pulumi.RegisterOutputType(CdnDistributionDomainOutput{})
@@ -39406,6 +40036,8 @@ func init() {
 	pulumi.RegisterOutputType(SkeClusterNodePoolTaintArrayOutput{})
 	pulumi.RegisterOutputType(SqlserverflexInstanceFlavorOutput{})
 	pulumi.RegisterOutputType(SqlserverflexInstanceFlavorPtrOutput{})
+	pulumi.RegisterOutputType(SqlserverflexInstanceNetworkOutput{})
+	pulumi.RegisterOutputType(SqlserverflexInstanceNetworkPtrOutput{})
 	pulumi.RegisterOutputType(SqlserverflexInstanceOptionsOutput{})
 	pulumi.RegisterOutputType(SqlserverflexInstanceOptionsPtrOutput{})
 	pulumi.RegisterOutputType(SqlserverflexInstanceStorageOutput{})
@@ -39499,6 +40131,7 @@ func init() {
 	pulumi.RegisterOutputType(GetCdnDistributionConfigRedirectsRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetCdnDistributionConfigRedirectsRuleMatcherOutput{})
 	pulumi.RegisterOutputType(GetCdnDistributionConfigRedirectsRuleMatcherArrayOutput{})
+	pulumi.RegisterOutputType(GetCdnDistributionConfigTlsOutput{})
 	pulumi.RegisterOutputType(GetCdnDistributionConfigWafOutput{})
 	pulumi.RegisterOutputType(GetCdnDistributionDomainOutput{})
 	pulumi.RegisterOutputType(GetCdnDistributionDomainArrayOutput{})
@@ -39641,6 +40274,8 @@ func init() {
 	pulumi.RegisterOutputType(GetSkeMachineImageVersionsMachineImageVersionOutput{})
 	pulumi.RegisterOutputType(GetSkeMachineImageVersionsMachineImageVersionArrayOutput{})
 	pulumi.RegisterOutputType(GetSqlserverflexInstanceFlavorOutput{})
+	pulumi.RegisterOutputType(GetSqlserverflexInstanceNetworkOutput{})
+	pulumi.RegisterOutputType(GetSqlserverflexInstanceNetworkPtrOutput{})
 	pulumi.RegisterOutputType(GetSqlserverflexInstanceOptionsOutput{})
 	pulumi.RegisterOutputType(GetSqlserverflexInstanceStorageOutput{})
 	pulumi.RegisterOutputType(GetTelemetryrouterDestinationConfigOutput{})

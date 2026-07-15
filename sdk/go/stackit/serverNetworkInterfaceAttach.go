@@ -15,6 +15,10 @@ import (
 // Network interface attachment resource schema. Attaches a network interface to a server. The attachment only takes full effect after server reboot.
 //
 // ## Example Usage
+//
+// ## Import
+//
+// In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
 type ServerNetworkInterfaceAttach struct {
 	pulumi.CustomResourceState
 

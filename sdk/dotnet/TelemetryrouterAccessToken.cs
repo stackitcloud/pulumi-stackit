@@ -13,6 +13,10 @@ namespace Pulumi.Stackit
     /// TelemetryRouter access token resource schema. Uses the `DefaultRegion` specified in the provider configuration as a fallback in case no `Region` is defined on resource level.
     /// 
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// In Terraform v1.5.0 and later, the `  + " `" + `Import` + "` " +  ` block can be used with the `  + " `" + `Id` + "` " +  ` attribute, for example:
     /// </summary>
     [StackitResourceType("stackit:index/telemetryrouterAccessToken:TelemetryrouterAccessToken")]
     public partial class TelemetryrouterAccessToken : global::Pulumi.CustomResource

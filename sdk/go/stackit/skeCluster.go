@@ -17,6 +17,10 @@ import (
 // > When updating `nodePools` of a `SkeCluster`, the pulumi preview might appear incorrect as it matches the node pools by index rather than by name. However, the SKE API correctly identifies node pools by name and applies the intended changes. Please review your changes carefully to ensure the correct configuration will be applied.
 //
 // ## Example Usage
+//
+// ## Import
+//
+// In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
 type SkeCluster struct {
 	pulumi.CustomResourceState
 
@@ -47,6 +51,8 @@ type SkeCluster struct {
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// Service Account Issuer of the cluster.
+	ServiceAccountIssuer pulumi.StringOutput `pulumi:"serviceAccountIssuer"`
 }
 
 // NewSkeCluster registers a new resource with the given unique name, arguments, and options.
@@ -112,6 +118,8 @@ type skeClusterState struct {
 	ProjectId *string `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
 	Region *string `pulumi:"region"`
+	// Service Account Issuer of the cluster.
+	ServiceAccountIssuer *string `pulumi:"serviceAccountIssuer"`
 }
 
 type SkeClusterState struct {
@@ -142,6 +150,8 @@ type SkeClusterState struct {
 	ProjectId pulumi.StringPtrInput
 	// The resource region. If not defined, the provider region is used.
 	Region pulumi.StringPtrInput
+	// Service Account Issuer of the cluster.
+	ServiceAccountIssuer pulumi.StringPtrInput
 }
 
 func (SkeClusterState) ElementType() reflect.Type {
@@ -348,6 +358,11 @@ func (o SkeClusterOutput) ProjectId() pulumi.StringOutput {
 // The resource region. If not defined, the provider region is used.
 func (o SkeClusterOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *SkeCluster) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
+}
+
+// Service Account Issuer of the cluster.
+func (o SkeClusterOutput) ServiceAccountIssuer() pulumi.StringOutput {
+	return o.ApplyT(func(v *SkeCluster) pulumi.StringOutput { return v.ServiceAccountIssuer }).(pulumi.StringOutput)
 }
 
 type SkeClusterArrayOutput struct{ *pulumi.OutputState }

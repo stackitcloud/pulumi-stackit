@@ -41,13 +41,23 @@ export class SqlserverflexInstance extends pulumi.CustomResource {
 
     /**
      * The Access Control List (ACL) for the SQLServer Flex instance.
+     *
+     * @deprecated acl is deprecated and will be removed after January 2027. Use instead `network.acl`.
      */
     declare public readonly acls: pulumi.Output<string[]>;
     /**
-     * The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *")
+     * The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *") Will be required in the future. Set a value to prevent breaking changes.
      */
     declare public readonly backupSchedule: pulumi.Output<string>;
+    /**
+     * Edition of the MSSQL server instance.
+     */
+    declare public /*out*/ readonly edition: pulumi.Output<string>;
     declare public readonly flavor: pulumi.Output<outputs.SqlserverflexInstanceFlavor>;
+    /**
+     * The flavor ID of the SQLServer Flex instance.
+     */
+    declare public readonly flavorId: pulumi.Output<string>;
     /**
      * ID of the SQLServer Flex instance.
      */
@@ -56,6 +66,13 @@ export class SqlserverflexInstance extends pulumi.CustomResource {
      * Instance name.
      */
     declare public readonly name: pulumi.Output<string>;
+    /**
+     * The network configuration of the instance. Will be required in the future. Set a value to prevent breaking changes.
+     */
+    declare public readonly network: pulumi.Output<outputs.SqlserverflexInstanceNetwork>;
+    /**
+     * @deprecated option is deprecated and will be removed after January 2027.
+     */
     declare public readonly options: pulumi.Output<outputs.SqlserverflexInstanceOptions>;
     /**
      * STACKIT project ID to which the instance is associated.
@@ -66,7 +83,17 @@ export class SqlserverflexInstance extends pulumi.CustomResource {
      */
     declare public readonly region: pulumi.Output<string>;
     declare public /*out*/ readonly replicas: pulumi.Output<number>;
+    /**
+     * The days (30 to 90) for how long the backup files should be stored before cleaned up. Will be required in the future. Set a value to prevent breaking changes.
+     */
+    declare public readonly retentionDays: pulumi.Output<number>;
+    /**
+     * The object containing information about the storage size and class. Will be required in the future. Set a value to prevent breaking changes.
+     */
     declare public readonly storage: pulumi.Output<outputs.SqlserverflexInstanceStorage>;
+    /**
+     * The sqlserver version used for the instance. Possible values are: `2022`. Will be required in the future. Set a value to prevent breaking changes.
+     */
     declare public readonly version: pulumi.Output<string>;
 
     /**
@@ -84,32 +111,37 @@ export class SqlserverflexInstance extends pulumi.CustomResource {
             const state = argsOrState as SqlserverflexInstanceState | undefined;
             resourceInputs["acls"] = state?.acls;
             resourceInputs["backupSchedule"] = state?.backupSchedule;
+            resourceInputs["edition"] = state?.edition;
             resourceInputs["flavor"] = state?.flavor;
+            resourceInputs["flavorId"] = state?.flavorId;
             resourceInputs["instanceId"] = state?.instanceId;
             resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
             resourceInputs["options"] = state?.options;
             resourceInputs["projectId"] = state?.projectId;
             resourceInputs["region"] = state?.region;
             resourceInputs["replicas"] = state?.replicas;
+            resourceInputs["retentionDays"] = state?.retentionDays;
             resourceInputs["storage"] = state?.storage;
             resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as SqlserverflexInstanceArgs | undefined;
-            if (args?.flavor === undefined && !opts.urn) {
-                throw new Error("Missing required property 'flavor'");
-            }
             if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
             resourceInputs["acls"] = args?.acls;
             resourceInputs["backupSchedule"] = args?.backupSchedule;
             resourceInputs["flavor"] = args?.flavor;
+            resourceInputs["flavorId"] = args?.flavorId;
             resourceInputs["name"] = args?.name;
+            resourceInputs["network"] = args?.network;
             resourceInputs["options"] = args?.options;
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["region"] = args?.region;
+            resourceInputs["retentionDays"] = args?.retentionDays;
             resourceInputs["storage"] = args?.storage;
             resourceInputs["version"] = args?.version;
+            resourceInputs["edition"] = undefined /*out*/;
             resourceInputs["instanceId"] = undefined /*out*/;
             resourceInputs["replicas"] = undefined /*out*/;
         }
@@ -124,13 +156,23 @@ export class SqlserverflexInstance extends pulumi.CustomResource {
 export interface SqlserverflexInstanceState {
     /**
      * The Access Control List (ACL) for the SQLServer Flex instance.
+     *
+     * @deprecated acl is deprecated and will be removed after January 2027. Use instead `network.acl`.
      */
     acls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *")
+     * The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *") Will be required in the future. Set a value to prevent breaking changes.
      */
     backupSchedule?: pulumi.Input<string | undefined>;
+    /**
+     * Edition of the MSSQL server instance.
+     */
+    edition?: pulumi.Input<string | undefined>;
     flavor?: pulumi.Input<inputs.SqlserverflexInstanceFlavor | undefined>;
+    /**
+     * The flavor ID of the SQLServer Flex instance.
+     */
+    flavorId?: pulumi.Input<string | undefined>;
     /**
      * ID of the SQLServer Flex instance.
      */
@@ -139,6 +181,13 @@ export interface SqlserverflexInstanceState {
      * Instance name.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * The network configuration of the instance. Will be required in the future. Set a value to prevent breaking changes.
+     */
+    network?: pulumi.Input<inputs.SqlserverflexInstanceNetwork | undefined>;
+    /**
+     * @deprecated option is deprecated and will be removed after January 2027.
+     */
     options?: pulumi.Input<inputs.SqlserverflexInstanceOptions | undefined>;
     /**
      * STACKIT project ID to which the instance is associated.
@@ -149,7 +198,17 @@ export interface SqlserverflexInstanceState {
      */
     region?: pulumi.Input<string | undefined>;
     replicas?: pulumi.Input<number | undefined>;
+    /**
+     * The days (30 to 90) for how long the backup files should be stored before cleaned up. Will be required in the future. Set a value to prevent breaking changes.
+     */
+    retentionDays?: pulumi.Input<number | undefined>;
+    /**
+     * The object containing information about the storage size and class. Will be required in the future. Set a value to prevent breaking changes.
+     */
     storage?: pulumi.Input<inputs.SqlserverflexInstanceStorage | undefined>;
+    /**
+     * The sqlserver version used for the instance. Possible values are: `2022`. Will be required in the future. Set a value to prevent breaking changes.
+     */
     version?: pulumi.Input<string | undefined>;
 }
 
@@ -159,17 +218,30 @@ export interface SqlserverflexInstanceState {
 export interface SqlserverflexInstanceArgs {
     /**
      * The Access Control List (ACL) for the SQLServer Flex instance.
+     *
+     * @deprecated acl is deprecated and will be removed after January 2027. Use instead `network.acl`.
      */
     acls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
-     * The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *")
+     * The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *") Will be required in the future. Set a value to prevent breaking changes.
      */
     backupSchedule?: pulumi.Input<string | undefined>;
-    flavor: pulumi.Input<inputs.SqlserverflexInstanceFlavor>;
+    flavor?: pulumi.Input<inputs.SqlserverflexInstanceFlavor | undefined>;
+    /**
+     * The flavor ID of the SQLServer Flex instance.
+     */
+    flavorId?: pulumi.Input<string | undefined>;
     /**
      * Instance name.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * The network configuration of the instance. Will be required in the future. Set a value to prevent breaking changes.
+     */
+    network?: pulumi.Input<inputs.SqlserverflexInstanceNetwork | undefined>;
+    /**
+     * @deprecated option is deprecated and will be removed after January 2027.
+     */
     options?: pulumi.Input<inputs.SqlserverflexInstanceOptions | undefined>;
     /**
      * STACKIT project ID to which the instance is associated.
@@ -179,6 +251,16 @@ export interface SqlserverflexInstanceArgs {
      * The resource region. If not defined, the provider region is used.
      */
     region?: pulumi.Input<string | undefined>;
+    /**
+     * The days (30 to 90) for how long the backup files should be stored before cleaned up. Will be required in the future. Set a value to prevent breaking changes.
+     */
+    retentionDays?: pulumi.Input<number | undefined>;
+    /**
+     * The object containing information about the storage size and class. Will be required in the future. Set a value to prevent breaking changes.
+     */
     storage?: pulumi.Input<inputs.SqlserverflexInstanceStorage | undefined>;
+    /**
+     * The sqlserver version used for the instance. Possible values are: `2022`. Will be required in the future. Set a value to prevent breaking changes.
+     */
     version?: pulumi.Input<string | undefined>;
 }

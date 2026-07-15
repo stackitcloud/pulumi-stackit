@@ -13,6 +13,10 @@ namespace Pulumi.Stackit
     /// ObjectStorage credential resource schema. Must have a `Region` specified in the provider configuration.
     /// 
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// In Terraform v1.5.0 and later, the `  + " `" + `Import` + "` " +  ` block can be used with the `  + " `" + `Id` + "` " +  ` attribute, for example:
     /// </summary>
     [StackitResourceType("stackit:index/objectstorageCredential:ObjectstorageCredential")]
     public partial class ObjectstorageCredential : global::Pulumi.CustomResource

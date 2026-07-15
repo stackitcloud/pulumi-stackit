@@ -13,6 +13,10 @@ namespace Pulumi.Stackit
     /// Security group resource schema. Must have a `Region` specified in the provider configuration.
     /// 
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// In Terraform v1.5.0 and later, the `  + " `" + `Import` + "` " +  ` block can be used with the `  + " `" + `Id` + "` " +  ` attribute, for example:
     /// </summary>
     [StackitResourceType("stackit:index/securityGroup:SecurityGroup")]
     public partial class SecurityGroup : global::Pulumi.CustomResource

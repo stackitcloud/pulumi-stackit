@@ -202,7 +202,8 @@ class _SkeClusterState:
                  node_pools: pulumi.Input[Optional[Sequence[pulumi.Input['SkeClusterNodePoolArgs']]]] = None,
                  pod_address_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 region: pulumi.Input[Optional[_builtins.str]] = None):
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_account_issuer: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SkeCluster resources.
 
@@ -220,6 +221,7 @@ class _SkeClusterState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pod_address_ranges: The network ranges (in CIDR notation) used by pods of the cluster.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the cluster is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
+        :param pulumi.Input[_builtins.str] service_account_issuer: Service Account Issuer of the cluster.
         """
         if access is not None:
             pulumi.set(__self__, "access", access)
@@ -247,6 +249,8 @@ class _SkeClusterState:
             pulumi.set(__self__, "project_id", project_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if service_account_issuer is not None:
+            pulumi.set(__self__, "service_account_issuer", service_account_issuer)
 
     @_builtins.property
     @pulumi.getter
@@ -405,6 +409,18 @@ class _SkeClusterState:
     def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountIssuer")
+    def service_account_issuer(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Service Account Issuer of the cluster.
+        """
+        return pulumi.get(self, "service_account_issuer")
+
+    @service_account_issuer.setter
+    def service_account_issuer(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_account_issuer", value)
+
 
 @pulumi.type_token("stackit:index/skeCluster:SkeCluster")
 class SkeCluster(pulumi.CustomResource):
@@ -429,6 +445,10 @@ class SkeCluster(pulumi.CustomResource):
         > When updating `node_pools` of a `SkeCluster`, the pulumi preview might appear incorrect as it matches the node pools by index rather than by name. However, the SKE API correctly identifies node pools by name and applies the intended changes. Please review your changes carefully to ensure the correct configuration will be applied.
 
         ## Example Usage
+
+        ## Import
+
+        In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
 
 
         :param str resource_name: The name of the resource.
@@ -457,6 +477,10 @@ class SkeCluster(pulumi.CustomResource):
         > When updating `node_pools` of a `SkeCluster`, the pulumi preview might appear incorrect as it matches the node pools by index rather than by name. However, the SKE API correctly identifies node pools by name and applies the intended changes. Please review your changes carefully to ensure the correct configuration will be applied.
 
         ## Example Usage
+
+        ## Import
+
+        In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
 
 
         :param str resource_name: The name of the resource.
@@ -510,6 +534,7 @@ class SkeCluster(pulumi.CustomResource):
             __props__.__dict__["egress_address_ranges"] = None
             __props__.__dict__["kubernetes_version_used"] = None
             __props__.__dict__["pod_address_ranges"] = None
+            __props__.__dict__["service_account_issuer"] = None
         super(SkeCluster, __self__).__init__(
             'stackit:index/skeCluster:SkeCluster',
             resource_name,
@@ -532,7 +557,8 @@ class SkeCluster(pulumi.CustomResource):
             node_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SkeClusterNodePoolArgs', 'SkeClusterNodePoolArgsDict']]]]] = None,
             pod_address_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
-            region: pulumi.Input[Optional[_builtins.str]] = None) -> 'SkeCluster':
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account_issuer: pulumi.Input[Optional[_builtins.str]] = None) -> 'SkeCluster':
         """
         Get an existing SkeCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -554,6 +580,7 @@ class SkeCluster(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] pod_address_ranges: The network ranges (in CIDR notation) used by pods of the cluster.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the cluster is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
+        :param pulumi.Input[_builtins.str] service_account_issuer: Service Account Issuer of the cluster.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -572,6 +599,7 @@ class SkeCluster(pulumi.CustomResource):
         __props__.__dict__["pod_address_ranges"] = pod_address_ranges
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["region"] = region
+        __props__.__dict__["service_account_issuer"] = service_account_issuer
         return SkeCluster(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -678,4 +706,12 @@ class SkeCluster(pulumi.CustomResource):
         The resource region. If not defined, the provider region is used.
         """
         return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccountIssuer")
+    def service_account_issuer(self) -> pulumi.Output[_builtins.str]:
+        """
+        Service Account Issuer of the cluster.
+        """
+        return pulumi.get(self, "service_account_issuer")
 

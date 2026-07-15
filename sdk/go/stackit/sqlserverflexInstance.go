@@ -19,22 +19,35 @@ type SqlserverflexInstance struct {
 	pulumi.CustomResourceState
 
 	// The Access Control List (ACL) for the SQLServer Flex instance.
+	//
+	// Deprecated: acl is deprecated and will be removed after January 2027. Use instead `network.acl`.
 	Acls pulumi.StringArrayOutput `pulumi:"acls"`
-	// The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *")
-	BackupSchedule pulumi.StringOutput               `pulumi:"backupSchedule"`
-	Flavor         SqlserverflexInstanceFlavorOutput `pulumi:"flavor"`
+	// The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *") Will be required in the future. Set a value to prevent breaking changes.
+	BackupSchedule pulumi.StringOutput `pulumi:"backupSchedule"`
+	// Edition of the MSSQL server instance.
+	Edition pulumi.StringOutput               `pulumi:"edition"`
+	Flavor  SqlserverflexInstanceFlavorOutput `pulumi:"flavor"`
+	// The flavor ID of the SQLServer Flex instance.
+	FlavorId pulumi.StringOutput `pulumi:"flavorId"`
 	// ID of the SQLServer Flex instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// Instance name.
-	Name    pulumi.StringOutput                `pulumi:"name"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The network configuration of the instance. Will be required in the future. Set a value to prevent breaking changes.
+	Network SqlserverflexInstanceNetworkOutput `pulumi:"network"`
+	// Deprecated: option is deprecated and will be removed after January 2027.
 	Options SqlserverflexInstanceOptionsOutput `pulumi:"options"`
 	// STACKIT project ID to which the instance is associated.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
-	Region   pulumi.StringOutput                `pulumi:"region"`
-	Replicas pulumi.IntOutput                   `pulumi:"replicas"`
-	Storage  SqlserverflexInstanceStorageOutput `pulumi:"storage"`
-	Version  pulumi.StringOutput                `pulumi:"version"`
+	Region   pulumi.StringOutput `pulumi:"region"`
+	Replicas pulumi.IntOutput    `pulumi:"replicas"`
+	// The days (30 to 90) for how long the backup files should be stored before cleaned up. Will be required in the future. Set a value to prevent breaking changes.
+	RetentionDays pulumi.IntOutput `pulumi:"retentionDays"`
+	// The object containing information about the storage size and class. Will be required in the future. Set a value to prevent breaking changes.
+	Storage SqlserverflexInstanceStorageOutput `pulumi:"storage"`
+	// The sqlserver version used for the instance. Possible values are: `2022`. Will be required in the future. Set a value to prevent breaking changes.
+	Version pulumi.StringOutput `pulumi:"version"`
 }
 
 // NewSqlserverflexInstance registers a new resource with the given unique name, arguments, and options.
@@ -44,9 +57,6 @@ func NewSqlserverflexInstance(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Flavor == nil {
-		return nil, errors.New("invalid value for required argument 'Flavor'")
-	}
 	if args.ProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectId'")
 	}
@@ -74,42 +84,68 @@ func GetSqlserverflexInstance(ctx *pulumi.Context,
 // Input properties used for looking up and filtering SqlserverflexInstance resources.
 type sqlserverflexInstanceState struct {
 	// The Access Control List (ACL) for the SQLServer Flex instance.
+	//
+	// Deprecated: acl is deprecated and will be removed after January 2027. Use instead `network.acl`.
 	Acls []string `pulumi:"acls"`
-	// The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *")
-	BackupSchedule *string                      `pulumi:"backupSchedule"`
-	Flavor         *SqlserverflexInstanceFlavor `pulumi:"flavor"`
+	// The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *") Will be required in the future. Set a value to prevent breaking changes.
+	BackupSchedule *string `pulumi:"backupSchedule"`
+	// Edition of the MSSQL server instance.
+	Edition *string                      `pulumi:"edition"`
+	Flavor  *SqlserverflexInstanceFlavor `pulumi:"flavor"`
+	// The flavor ID of the SQLServer Flex instance.
+	FlavorId *string `pulumi:"flavorId"`
 	// ID of the SQLServer Flex instance.
 	InstanceId *string `pulumi:"instanceId"`
 	// Instance name.
-	Name    *string                       `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The network configuration of the instance. Will be required in the future. Set a value to prevent breaking changes.
+	Network *SqlserverflexInstanceNetwork `pulumi:"network"`
+	// Deprecated: option is deprecated and will be removed after January 2027.
 	Options *SqlserverflexInstanceOptions `pulumi:"options"`
 	// STACKIT project ID to which the instance is associated.
 	ProjectId *string `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
-	Region   *string                       `pulumi:"region"`
-	Replicas *int                          `pulumi:"replicas"`
-	Storage  *SqlserverflexInstanceStorage `pulumi:"storage"`
-	Version  *string                       `pulumi:"version"`
+	Region   *string `pulumi:"region"`
+	Replicas *int    `pulumi:"replicas"`
+	// The days (30 to 90) for how long the backup files should be stored before cleaned up. Will be required in the future. Set a value to prevent breaking changes.
+	RetentionDays *int `pulumi:"retentionDays"`
+	// The object containing information about the storage size and class. Will be required in the future. Set a value to prevent breaking changes.
+	Storage *SqlserverflexInstanceStorage `pulumi:"storage"`
+	// The sqlserver version used for the instance. Possible values are: `2022`. Will be required in the future. Set a value to prevent breaking changes.
+	Version *string `pulumi:"version"`
 }
 
 type SqlserverflexInstanceState struct {
 	// The Access Control List (ACL) for the SQLServer Flex instance.
+	//
+	// Deprecated: acl is deprecated and will be removed after January 2027. Use instead `network.acl`.
 	Acls pulumi.StringArrayInput
-	// The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *")
+	// The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *") Will be required in the future. Set a value to prevent breaking changes.
 	BackupSchedule pulumi.StringPtrInput
-	Flavor         SqlserverflexInstanceFlavorPtrInput
+	// Edition of the MSSQL server instance.
+	Edition pulumi.StringPtrInput
+	Flavor  SqlserverflexInstanceFlavorPtrInput
+	// The flavor ID of the SQLServer Flex instance.
+	FlavorId pulumi.StringPtrInput
 	// ID of the SQLServer Flex instance.
 	InstanceId pulumi.StringPtrInput
 	// Instance name.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The network configuration of the instance. Will be required in the future. Set a value to prevent breaking changes.
+	Network SqlserverflexInstanceNetworkPtrInput
+	// Deprecated: option is deprecated and will be removed after January 2027.
 	Options SqlserverflexInstanceOptionsPtrInput
 	// STACKIT project ID to which the instance is associated.
 	ProjectId pulumi.StringPtrInput
 	// The resource region. If not defined, the provider region is used.
 	Region   pulumi.StringPtrInput
 	Replicas pulumi.IntPtrInput
-	Storage  SqlserverflexInstanceStoragePtrInput
-	Version  pulumi.StringPtrInput
+	// The days (30 to 90) for how long the backup files should be stored before cleaned up. Will be required in the future. Set a value to prevent breaking changes.
+	RetentionDays pulumi.IntPtrInput
+	// The object containing information about the storage size and class. Will be required in the future. Set a value to prevent breaking changes.
+	Storage SqlserverflexInstanceStoragePtrInput
+	// The sqlserver version used for the instance. Possible values are: `2022`. Will be required in the future. Set a value to prevent breaking changes.
+	Version pulumi.StringPtrInput
 }
 
 func (SqlserverflexInstanceState) ElementType() reflect.Type {
@@ -118,36 +154,58 @@ func (SqlserverflexInstanceState) ElementType() reflect.Type {
 
 type sqlserverflexInstanceArgs struct {
 	// The Access Control List (ACL) for the SQLServer Flex instance.
+	//
+	// Deprecated: acl is deprecated and will be removed after January 2027. Use instead `network.acl`.
 	Acls []string `pulumi:"acls"`
-	// The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *")
-	BackupSchedule *string                     `pulumi:"backupSchedule"`
-	Flavor         SqlserverflexInstanceFlavor `pulumi:"flavor"`
+	// The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *") Will be required in the future. Set a value to prevent breaking changes.
+	BackupSchedule *string                      `pulumi:"backupSchedule"`
+	Flavor         *SqlserverflexInstanceFlavor `pulumi:"flavor"`
+	// The flavor ID of the SQLServer Flex instance.
+	FlavorId *string `pulumi:"flavorId"`
 	// Instance name.
-	Name    *string                       `pulumi:"name"`
+	Name *string `pulumi:"name"`
+	// The network configuration of the instance. Will be required in the future. Set a value to prevent breaking changes.
+	Network *SqlserverflexInstanceNetwork `pulumi:"network"`
+	// Deprecated: option is deprecated and will be removed after January 2027.
 	Options *SqlserverflexInstanceOptions `pulumi:"options"`
 	// STACKIT project ID to which the instance is associated.
 	ProjectId string `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
-	Region  *string                       `pulumi:"region"`
+	Region *string `pulumi:"region"`
+	// The days (30 to 90) for how long the backup files should be stored before cleaned up. Will be required in the future. Set a value to prevent breaking changes.
+	RetentionDays *int `pulumi:"retentionDays"`
+	// The object containing information about the storage size and class. Will be required in the future. Set a value to prevent breaking changes.
 	Storage *SqlserverflexInstanceStorage `pulumi:"storage"`
-	Version *string                       `pulumi:"version"`
+	// The sqlserver version used for the instance. Possible values are: `2022`. Will be required in the future. Set a value to prevent breaking changes.
+	Version *string `pulumi:"version"`
 }
 
 // The set of arguments for constructing a SqlserverflexInstance resource.
 type SqlserverflexInstanceArgs struct {
 	// The Access Control List (ACL) for the SQLServer Flex instance.
+	//
+	// Deprecated: acl is deprecated and will be removed after January 2027. Use instead `network.acl`.
 	Acls pulumi.StringArrayInput
-	// The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *")
+	// The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *") Will be required in the future. Set a value to prevent breaking changes.
 	BackupSchedule pulumi.StringPtrInput
-	Flavor         SqlserverflexInstanceFlavorInput
+	Flavor         SqlserverflexInstanceFlavorPtrInput
+	// The flavor ID of the SQLServer Flex instance.
+	FlavorId pulumi.StringPtrInput
 	// Instance name.
-	Name    pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// The network configuration of the instance. Will be required in the future. Set a value to prevent breaking changes.
+	Network SqlserverflexInstanceNetworkPtrInput
+	// Deprecated: option is deprecated and will be removed after January 2027.
 	Options SqlserverflexInstanceOptionsPtrInput
 	// STACKIT project ID to which the instance is associated.
 	ProjectId pulumi.StringInput
 	// The resource region. If not defined, the provider region is used.
-	Region  pulumi.StringPtrInput
+	Region pulumi.StringPtrInput
+	// The days (30 to 90) for how long the backup files should be stored before cleaned up. Will be required in the future. Set a value to prevent breaking changes.
+	RetentionDays pulumi.IntPtrInput
+	// The object containing information about the storage size and class. Will be required in the future. Set a value to prevent breaking changes.
 	Storage SqlserverflexInstanceStoragePtrInput
+	// The sqlserver version used for the instance. Possible values are: `2022`. Will be required in the future. Set a value to prevent breaking changes.
 	Version pulumi.StringPtrInput
 }
 
@@ -239,17 +297,29 @@ func (o SqlserverflexInstanceOutput) ToSqlserverflexInstanceOutputWithContext(ct
 }
 
 // The Access Control List (ACL) for the SQLServer Flex instance.
+//
+// Deprecated: acl is deprecated and will be removed after January 2027. Use instead `network.acl`.
 func (o SqlserverflexInstanceOutput) Acls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SqlserverflexInstance) pulumi.StringArrayOutput { return v.Acls }).(pulumi.StringArrayOutput)
 }
 
-// The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *")
+// The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *") Will be required in the future. Set a value to prevent breaking changes.
 func (o SqlserverflexInstanceOutput) BackupSchedule() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlserverflexInstance) pulumi.StringOutput { return v.BackupSchedule }).(pulumi.StringOutput)
 }
 
+// Edition of the MSSQL server instance.
+func (o SqlserverflexInstanceOutput) Edition() pulumi.StringOutput {
+	return o.ApplyT(func(v *SqlserverflexInstance) pulumi.StringOutput { return v.Edition }).(pulumi.StringOutput)
+}
+
 func (o SqlserverflexInstanceOutput) Flavor() SqlserverflexInstanceFlavorOutput {
 	return o.ApplyT(func(v *SqlserverflexInstance) SqlserverflexInstanceFlavorOutput { return v.Flavor }).(SqlserverflexInstanceFlavorOutput)
+}
+
+// The flavor ID of the SQLServer Flex instance.
+func (o SqlserverflexInstanceOutput) FlavorId() pulumi.StringOutput {
+	return o.ApplyT(func(v *SqlserverflexInstance) pulumi.StringOutput { return v.FlavorId }).(pulumi.StringOutput)
 }
 
 // ID of the SQLServer Flex instance.
@@ -262,6 +332,12 @@ func (o SqlserverflexInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlserverflexInstance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The network configuration of the instance. Will be required in the future. Set a value to prevent breaking changes.
+func (o SqlserverflexInstanceOutput) Network() SqlserverflexInstanceNetworkOutput {
+	return o.ApplyT(func(v *SqlserverflexInstance) SqlserverflexInstanceNetworkOutput { return v.Network }).(SqlserverflexInstanceNetworkOutput)
+}
+
+// Deprecated: option is deprecated and will be removed after January 2027.
 func (o SqlserverflexInstanceOutput) Options() SqlserverflexInstanceOptionsOutput {
 	return o.ApplyT(func(v *SqlserverflexInstance) SqlserverflexInstanceOptionsOutput { return v.Options }).(SqlserverflexInstanceOptionsOutput)
 }
@@ -280,10 +356,17 @@ func (o SqlserverflexInstanceOutput) Replicas() pulumi.IntOutput {
 	return o.ApplyT(func(v *SqlserverflexInstance) pulumi.IntOutput { return v.Replicas }).(pulumi.IntOutput)
 }
 
+// The days (30 to 90) for how long the backup files should be stored before cleaned up. Will be required in the future. Set a value to prevent breaking changes.
+func (o SqlserverflexInstanceOutput) RetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v *SqlserverflexInstance) pulumi.IntOutput { return v.RetentionDays }).(pulumi.IntOutput)
+}
+
+// The object containing information about the storage size and class. Will be required in the future. Set a value to prevent breaking changes.
 func (o SqlserverflexInstanceOutput) Storage() SqlserverflexInstanceStorageOutput {
 	return o.ApplyT(func(v *SqlserverflexInstance) SqlserverflexInstanceStorageOutput { return v.Storage }).(SqlserverflexInstanceStorageOutput)
 }
 
+// The sqlserver version used for the instance. Possible values are: `2022`. Will be required in the future. Set a value to prevent breaking changes.
 func (o SqlserverflexInstanceOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlserverflexInstance) pulumi.StringOutput { return v.Version }).(pulumi.StringOutput)
 }

@@ -15,6 +15,7 @@ export function getRabbitmqCredential(args: GetRabbitmqCredentialArgs, opts?: pu
         "credentialId": args.credentialId,
         "instanceId": args.instanceId,
         "projectId": args.projectId,
+        "region": args.region,
     }, opts);
 }
 
@@ -34,6 +35,10 @@ export interface GetRabbitmqCredentialArgs {
      * STACKIT project ID to which the instance is associated.
      */
     projectId: string;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: string;
 }
 
 /**
@@ -49,7 +54,7 @@ export interface GetRabbitmqCredentialResult {
     readonly httpApiUri: string;
     readonly httpApiUris: string[];
     /**
-     * Terraform's internal data source. identifier. It is structured as "`projectId`,`instanceId`,`credentialId`".
+     * Terraform's internal data source. identifier. It is structured as "`projectId`,`region`,`instanceId`,`credentialId`".
      */
     readonly id: string;
     /**
@@ -63,6 +68,10 @@ export interface GetRabbitmqCredentialResult {
      * STACKIT project ID to which the instance is associated.
      */
     readonly projectId: string;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    readonly region: string;
     readonly uri: string;
     readonly uris: string[];
     readonly username: string;
@@ -78,6 +87,7 @@ export function getRabbitmqCredentialOutput(args: GetRabbitmqCredentialOutputArg
         "credentialId": args.credentialId,
         "instanceId": args.instanceId,
         "projectId": args.projectId,
+        "region": args.region,
     }, opts);
 }
 
@@ -97,4 +107,8 @@ export interface GetRabbitmqCredentialOutputArgs {
      * STACKIT project ID to which the instance is associated.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string | undefined>;
 }

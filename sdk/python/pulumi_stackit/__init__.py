@@ -67,6 +67,7 @@ from .get_objectstorage_bucket import *
 from .get_objectstorage_compliance_lock import *
 from .get_objectstorage_credential import *
 from .get_objectstorage_credentials_group import *
+from .get_objectstorage_default_retention import *
 from .get_observability_alertgroup import *
 from .get_observability_instance import *
 from .get_observability_logalertgroup import *
@@ -153,6 +154,7 @@ from .objectstorage_bucket import *
 from .objectstorage_compliance_lock import *
 from .objectstorage_credential import *
 from .objectstorage_credentials_group import *
+from .objectstorage_default_retention import *
 from .observability_alertgroup import *
 from .observability_credential import *
 from .observability_instance import *
@@ -587,6 +589,14 @@ _utilities.register(
   "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/objectstorageCredentialsGroup:ObjectstorageCredentialsGroup": "ObjectstorageCredentialsGroup"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/objectstorageDefaultRetention",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/objectstorageDefaultRetention:ObjectstorageDefaultRetention": "ObjectstorageDefaultRetention"
   }
  },
  {

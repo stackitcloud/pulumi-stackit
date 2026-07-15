@@ -402,6 +402,10 @@ class LogsAccessToken(pulumi.CustomResource):
 
         ## Example Usage
 
+        ## Import
+
+        In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -424,6 +428,10 @@ class LogsAccessToken(pulumi.CustomResource):
         Logs access token resource schema. Uses the `default_region` specified in the provider configuration as a fallback in case no `region` is defined on resource level.
 
         ## Example Usage
+
+        ## Import
+
+        In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
 
 
         :param str resource_name: The name of the resource.

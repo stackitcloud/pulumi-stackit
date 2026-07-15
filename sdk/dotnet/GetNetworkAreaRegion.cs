@@ -14,6 +14,8 @@ namespace Pulumi.Stackit
         /// <summary>
         /// Network area region data source schema.
         /// 
+        /// This datasource is for SNA, not VPC, based networks.
+        /// 
         /// ## Example Usage
         /// 
         /// ```terraform
@@ -29,6 +31,8 @@ namespace Pulumi.Stackit
         /// <summary>
         /// Network area region data source schema.
         /// 
+        /// This datasource is for SNA, not VPC, based networks.
+        /// 
         /// ## Example Usage
         /// 
         /// ```terraform
@@ -43,6 +47,8 @@ namespace Pulumi.Stackit
 
         /// <summary>
         /// Network area region data source schema.
+        /// 
+        /// This datasource is for SNA, not VPC, based networks.
         /// 
         /// ## Example Usage
         /// 

@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * Routing table datasource schema. Must have a `region` specified in the provider configuration.
  *
+ * This datasource is for SNA, not VPC, based networks.
+ *
  * > This datasource is part of the routing-tables experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
  *
  * ## Example Usage
@@ -67,6 +69,8 @@ export interface GetRoutingTablesResult {
 }
 /**
  * Routing table datasource schema. Must have a `region` specified in the provider configuration.
+ *
+ * This datasource is for SNA, not VPC, based networks.
  *
  * > This datasource is part of the routing-tables experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
  *

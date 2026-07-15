@@ -347,6 +347,10 @@ export interface CdnDistributionConfig {
      */
     blockedCountries: string[];
     /**
+     * Enable this allows the 'Host' header to be passed through to the origin.
+     */
+    forwardHostHeader: boolean;
+    /**
      * Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
      */
     optimizer: outputs.CdnDistributionConfigOptimizer;
@@ -358,6 +362,14 @@ export interface CdnDistributionConfig {
      * The configured regions where content will be hosted
      */
     regions: string[];
+    /**
+     * Enable this to prevent origin-level cookies from being forwarded to the end user.
+     */
+    stripResponseCookies: boolean;
+    /**
+     * Configuration for TLS protocol versions. Note: Enabling older TLS versions (1.0, 1.1) is generally discouraged for security reasons.
+     */
+    tls: outputs.CdnDistributionConfigTls;
     /**
      * Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.
      */
@@ -453,6 +465,17 @@ export interface CdnDistributionConfigRedirectsRuleMatcher {
      * A list of glob patterns to match against the request path. At least one value is required. Examples: "/shop/*" or "*&#47;img/*"
      */
     values: string[];
+}
+
+export interface CdnDistributionConfigTls {
+    /**
+     * If set to true, the distribution will accept connections using TLS 1.1.
+     */
+    enableTls10: boolean;
+    /**
+     * If set to true, the distribution will accept connections using TLS 1.0.
+     */
+    enableTls11: boolean;
 }
 
 export interface CdnDistributionConfigWaf {
@@ -1045,6 +1068,10 @@ export interface GetCdnDistributionConfig {
      */
     blockedCountries?: string[];
     /**
+     * Enable this allows the 'Host' header to be passed through to the origin.
+     */
+    forwardHostHeader: boolean;
+    /**
      * Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
      */
     optimizer: outputs.GetCdnDistributionConfigOptimizer;
@@ -1056,6 +1083,14 @@ export interface GetCdnDistributionConfig {
      * The configured regions where content will be hosted
      */
     regions: string[];
+    /**
+     * Enable this to prevent origin-level cookies from being forwarded to the end user.
+     */
+    stripResponseCookies: boolean;
+    /**
+     * Configuration for TLS protocol versions. Note: Enabling older TLS versions (1.0, 1.1) is generally discouraged for security reasons.
+     */
+    tls: outputs.GetCdnDistributionConfigTls;
     /**
      * Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.
      */
@@ -1136,6 +1171,17 @@ export interface GetCdnDistributionConfigRedirectsRuleMatcher {
      * A list of glob patterns to match against the request path. At least one value is required. Examples: "/shop/*" or "*&#47;img/*"
      */
     values: string[];
+}
+
+export interface GetCdnDistributionConfigTls {
+    /**
+     * If set to true, the distribution will accept connections using TLS 1.1.
+     */
+    enableTls10: boolean;
+    /**
+     * If set to true, the distribution will accept connections using TLS 1.0.
+     */
+    enableTls11: boolean;
 }
 
 export interface GetCdnDistributionConfigWaf {
@@ -1524,7 +1570,7 @@ export interface GetImageV2Config {
 
 export interface GetImageV2Filter {
     /**
-     * Filter images by operating system distribution. For example: `ubuntu`, `ubuntu-arm64`, `debian`, `rhel`, etc.
+     * Filter images by operating system distribution. For example: `ubuntu`, `debian`, `rhel`, etc.
      */
     distro?: string;
     /**
@@ -3108,6 +3154,17 @@ export interface GetSqlserverflexInstanceFlavor {
     description: string;
     id: string;
     ram: number;
+}
+
+export interface GetSqlserverflexInstanceNetwork {
+    /**
+     * The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected.
+     */
+    accessScope?: string;
+    /**
+     * List of IPV4 cidr.
+     */
+    acls: string[];
 }
 
 export interface GetSqlserverflexInstanceOptions {
@@ -4815,8 +4872,25 @@ export interface SqlserverflexInstanceFlavor {
     ram: number;
 }
 
+export interface SqlserverflexInstanceNetwork {
+    /**
+     * The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. Possible values are: `PUBLIC`, `SNA`.
+     */
+    accessScope: string;
+    /**
+     * List of IPV4 cidr.
+     */
+    acls: string[];
+}
+
 export interface SqlserverflexInstanceOptions {
+    /**
+     * @deprecated edition is deprecated and will be removed after January 2027.
+     */
     edition: string;
+    /**
+     * @deprecated retention_days is deprecated and will be removed after January 2027. Use instead `retentionDays` from root.
+     */
     retentionDays: number;
 }
 
@@ -4825,10 +4899,12 @@ export interface SqlserverflexInstanceStorage {
      * The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
      * `bash
      * stackit beta sqlserverflex options --storages --flavor-id FLAVOR_ID
-     * `
-     * - `size` (Number)
+     * ` Will be required in the future. Set a value to prevent breaking changes.
      */
     class: string;
+    /**
+     * The storage size in Gigabytes. Will be required in the future. Set a value to prevent breaking changes.
+     */
     size: number;
 }
 

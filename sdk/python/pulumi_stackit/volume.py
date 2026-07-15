@@ -426,6 +426,10 @@ class Volume(pulumi.CustomResource):
 
         ## Example Usage
 
+        ## Import
+
+        In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -452,6 +456,10 @@ class Volume(pulumi.CustomResource):
         > **Note:** Write-Only argument `key_payload_base64_wo` is available to use in place of `key_payload_base64`. Write-Only arguments are supported in HashiCorp Terraform 1.11.0 and later. Learn more.
 
         ## Example Usage
+
+        ## Import
+
+        In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
 
 
         :param str resource_name: The name of the resource.

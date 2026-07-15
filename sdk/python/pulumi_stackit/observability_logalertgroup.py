@@ -210,6 +210,10 @@ class ObservabilityLogalertgroup(pulumi.CustomResource):
 
         ## Example Usage
 
+        ## Import
+
+        In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -229,6 +233,10 @@ class ObservabilityLogalertgroup(pulumi.CustomResource):
         Observability log alert group resource schema. Used to create alerts based on logs (Loki). Must have a `region` specified in the provider configuration.
 
         ## Example Usage
+
+        ## Import
+
+        In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
 
 
         :param str resource_name: The name of the resource.

@@ -105,6 +105,8 @@ def get_network_area_region(network_area_id: Optional[_builtins.str] = None,
     """
     Network area region data source schema.
 
+    This datasource is for SNA, not VPC, based networks.
+
     ## Example Usage
 
 
@@ -131,6 +133,8 @@ def get_network_area_region_output(network_area_id: pulumi.Input[Optional[_built
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkAreaRegionResult]:
     """
     Network area region data source schema.
+
+    This datasource is for SNA, not VPC, based networks.
 
     ## Example Usage
 

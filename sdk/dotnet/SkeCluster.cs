@@ -15,6 +15,10 @@ namespace Pulumi.Stackit
     /// &gt; When updating `NodePools` of a `stackit.SkeCluster`, the pulumi preview might appear incorrect as it matches the node pools by index rather than by name. However, the SKE API correctly identifies node pools by name and applies the intended changes. Please review your changes carefully to ensure the correct configuration will be applied.
     /// 
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// In Terraform v1.5.0 and later, the `  + " `" + `Import` + "` " +  ` block can be used with the `  + " `" + `Id` + "` " +  ` attribute, for example:
     /// </summary>
     [StackitResourceType("stackit:index/skeCluster:SkeCluster")]
     public partial class SkeCluster : global::Pulumi.CustomResource
@@ -97,6 +101,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// Service Account Issuer of the cluster.
+        /// </summary>
+        [Output("serviceAccountIssuer")]
+        public Output<string> ServiceAccountIssuer { get; private set; } = null!;
 
 
         /// <summary>
@@ -328,6 +338,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// Service Account Issuer of the cluster.
+        /// </summary>
+        [Input("serviceAccountIssuer")]
+        public Input<string>? ServiceAccountIssuer { get; set; }
 
         public SkeClusterState()
         {

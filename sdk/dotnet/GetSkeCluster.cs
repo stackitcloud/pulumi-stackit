@@ -170,6 +170,10 @@ namespace Pulumi.Stackit
         /// The resource region. If not defined, the provider region is used.
         /// </summary>
         public readonly string? Region;
+        /// <summary>
+        /// Service Account Issuer of the cluster.
+        /// </summary>
+        public readonly string ServiceAccountIssuer;
 
         [OutputConstructor]
         private GetSkeClusterResult(
@@ -199,7 +203,9 @@ namespace Pulumi.Stackit
 
             string projectId,
 
-            string? region)
+            string? region,
+
+            string serviceAccountIssuer)
         {
             Access = access;
             EgressAddressRanges = egressAddressRanges;
@@ -215,6 +221,7 @@ namespace Pulumi.Stackit
             PodAddressRanges = podAddressRanges;
             ProjectId = projectId;
             Region = region;
+            ServiceAccountIssuer = serviceAccountIssuer;
         }
     }
 }

@@ -492,6 +492,9 @@
             "stackit_objectstorage_credentials_group": {
                 "current": "stackit:index/objectstorageCredentialsGroup:ObjectstorageCredentialsGroup"
             },
+            "stackit_objectstorage_default_retention": {
+                "current": "stackit:index/objectstorageDefaultRetention:ObjectstorageDefaultRetention"
+            },
             "stackit_observability_alertgroup": {
                 "current": "stackit:index/observabilityAlertgroup:ObservabilityAlertgroup",
                 "fields": {
@@ -864,6 +867,13 @@
                 "fields": {
                     "acl": {
                         "maxItemsOne": false
+                    },
+                    "network": {
+                        "fields": {
+                            "acl": {
+                                "maxItemsOne": false
+                            }
+                        }
                     }
                 }
             },
@@ -1503,6 +1513,9 @@
             "stackit_objectstorage_credentials_group": {
                 "current": "stackit:index/getObjectstorageCredentialsGroup:getObjectstorageCredentialsGroup"
             },
+            "stackit_objectstorage_default_retention": {
+                "current": "stackit:index/getObjectstorageDefaultRetention:getObjectstorageDefaultRetention"
+            },
             "stackit_observability_alertgroup": {
                 "current": "stackit:index/getObservabilityAlertgroup:getObservabilityAlertgroup",
                 "fields": {
@@ -1982,6 +1995,13 @@
                 "fields": {
                     "acl": {
                         "maxItemsOne": false
+                    },
+                    "network": {
+                        "fields": {
+                            "acl": {
+                                "maxItemsOne": false
+                            }
+                        }
                     }
                 }
             },

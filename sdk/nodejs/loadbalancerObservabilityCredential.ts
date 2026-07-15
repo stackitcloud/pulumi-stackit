@@ -8,6 +8,10 @@ import * as utilities from "./utilities";
  * Load balancer observability credential resource schema. Must have a `region` specified in the provider configuration. These contain the username and password for the observability service (e.g. Argus) where the load balancer logs/metrics will be pushed into
  *
  * ## Example Usage
+ *
+ * ## Import
+ *
+ * In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
  */
 export class LoadbalancerObservabilityCredential extends pulumi.CustomResource {
     /**

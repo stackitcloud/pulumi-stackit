@@ -13,6 +13,10 @@ namespace Pulumi.Stackit
     /// Network interface attachment resource schema. Attaches a network interface to a server. The attachment only takes full effect after server reboot.
     /// 
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// In Terraform v1.5.0 and later, the `  + " `" + `Import` + "` " +  ` block can be used with the `  + " `" + `Id` + "` " +  ` attribute, for example:
     /// </summary>
     [StackitResourceType("stackit:index/serverNetworkInterfaceAttach:ServerNetworkInterfaceAttach")]
     public partial class ServerNetworkInterfaceAttach : global::Pulumi.CustomResource

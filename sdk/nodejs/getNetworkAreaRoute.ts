@@ -9,6 +9,8 @@ import * as utilities from "./utilities";
 /**
  * Network area route data resource schema. Must have a `region` specified in the provider configuration.
  *
+ * This datasource is for SNA, not VPC, networks.
+ *
  * ## Example Usage
  */
 export function getNetworkAreaRoute(args: GetNetworkAreaRouteArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkAreaRouteResult> {
@@ -82,6 +84,8 @@ export interface GetNetworkAreaRouteResult {
 }
 /**
  * Network area route data resource schema. Must have a `region` specified in the provider configuration.
+ *
+ * This datasource is for SNA, not VPC, networks.
  *
  * ## Example Usage
  */
