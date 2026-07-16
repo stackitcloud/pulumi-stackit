@@ -14,7 +14,7 @@ import (
 
 // Organization Role Assignment resource schema.
 //
-// > This resource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
+// > This resource is part of the experimental feature iam and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
 //
 // ## Example Usage
 //

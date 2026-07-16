@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
 /**
  * IAM role binding datasource schema.
  *
- * > This datasource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
+ * > This datasource is part of the experimental feature iam and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
  *
  * ## Example Usage
  */
@@ -59,7 +59,7 @@ export interface GetSecretsmanagerInstanceRoleBindingsV1Result {
 /**
  * IAM role binding datasource schema.
  *
- * > This datasource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
+ * > This datasource is part of the experimental feature iam and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
  *
  * ## Example Usage
  */

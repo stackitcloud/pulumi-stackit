@@ -124,6 +124,11 @@ from .get_telemetryrouter_access_token import *
 from .get_telemetryrouter_destination import *
 from .get_telemetryrouter_instance import *
 from .get_volume import *
+from .get_vpc import *
+from .get_vpc_network_range import *
+from .get_vpc_region import *
+from .get_vpc_routing_table import *
+from .get_vpc_routing_table_static_route import *
 from .get_vpn_connection import *
 from .get_vpn_gateway import *
 from .get_vpn_gateway_status import *
@@ -208,6 +213,11 @@ from .telemetryrouter_access_token import *
 from .telemetryrouter_destination import *
 from .telemetryrouter_instance import *
 from .volume import *
+from .vpc import *
+from .vpc_network_range import *
+from .vpc_region import *
+from .vpc_routing_table import *
+from .vpc_routing_table_static_route import *
 from .vpn_connection import *
 from .vpn_gateway import *
 from ._inputs import *
@@ -1013,6 +1023,46 @@ _utilities.register(
   "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/volume:Volume": "Volume"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/vpc",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/vpc:Vpc": "Vpc"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/vpcNetworkRange",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/vpcNetworkRange:VpcNetworkRange": "VpcNetworkRange"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/vpcRegion",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/vpcRegion:VpcRegion": "VpcRegion"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/vpcRoutingTable",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/vpcRoutingTable:VpcRoutingTable": "VpcRoutingTable"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/vpcRoutingTableStaticRoute",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/vpcRoutingTableStaticRoute:VpcRoutingTableStaticRoute": "VpcRoutingTableStaticRoute"
   }
  },
  {

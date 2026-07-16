@@ -12,7 +12,7 @@ namespace Pulumi.Stackit
     /// <summary>
     /// Manages a STACKIT Dremio instance.
     /// 
-    /// &gt; This resource is part of the dremio experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
+    /// &gt; This resource is part of the experimental feature dremio and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
     /// 
     /// ## Example Usage
     /// 

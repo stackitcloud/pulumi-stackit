@@ -22,10 +22,6 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly string ClientId;
         /// <summary>
-        /// The Azure AD client secret.
-        /// </summary>
-        public readonly string ClientSecret;
-        /// <summary>
         /// The Azure AD redirect URL.
         /// </summary>
         public readonly string RedirectUrl;
@@ -36,13 +32,10 @@ namespace Pulumi.Stackit.Outputs
 
             string clientId,
 
-            string clientSecret,
-
             string redirectUrl)
         {
             AuthorityUrl = authorityUrl;
             ClientId = clientId;
-            ClientSecret = clientSecret;
             RedirectUrl = redirectUrl;
         }
     }

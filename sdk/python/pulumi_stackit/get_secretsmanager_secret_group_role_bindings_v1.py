@@ -92,7 +92,7 @@ def get_secretsmanager_secret_group_role_bindings_v1(region: Optional[_builtins.
     """
     IAM role binding datasource schema.
 
-    > This datasource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
+    > This datasource is part of the experimental feature iam and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
 
     ## Example Usage
 
@@ -117,7 +117,7 @@ def get_secretsmanager_secret_group_role_bindings_v1_output(region: pulumi.Input
     """
     IAM role binding datasource schema.
 
-    > This datasource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
+    > This datasource is part of the experimental feature iam and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
 
     ## Example Usage
 

@@ -142,7 +142,7 @@ class AuthorizationServiceAccountRoleAssignment(pulumi.CustomResource):
 
         > **Important:** Use this resource to grant 'Act-As' permissions. This allows a service-account (the `subject`) to impersonate the target Service Account. A common example is authorizing the SKE Service Account to act as a project-specific Service Account to access APIs.
 
-        > This resource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
+        > This resource is part of the experimental feature iam and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
 
         ## Example Usage
 
@@ -168,7 +168,7 @@ class AuthorizationServiceAccountRoleAssignment(pulumi.CustomResource):
 
         > **Important:** Use this resource to grant 'Act-As' permissions. This allows a service-account (the `subject`) to impersonate the target Service Account. A common example is authorizing the SKE Service Account to act as a project-specific Service Account to access APIs.
 
-        > This resource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
+        > This resource is part of the experimental feature iam and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
 
         ## Example Usage
 

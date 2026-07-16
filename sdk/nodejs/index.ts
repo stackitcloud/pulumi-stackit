@@ -595,6 +595,31 @@ export const getVolume: typeof import("./getVolume").getVolume = null as any;
 export const getVolumeOutput: typeof import("./getVolume").getVolumeOutput = null as any;
 utilities.lazyLoad(exports, ["getVolume","getVolumeOutput"], () => require("./getVolume"));
 
+export { GetVpcArgs, GetVpcResult, GetVpcOutputArgs } from "./getVpc";
+export const getVpc: typeof import("./getVpc").getVpc = null as any;
+export const getVpcOutput: typeof import("./getVpc").getVpcOutput = null as any;
+utilities.lazyLoad(exports, ["getVpc","getVpcOutput"], () => require("./getVpc"));
+
+export { GetVpcNetworkRangeArgs, GetVpcNetworkRangeResult, GetVpcNetworkRangeOutputArgs } from "./getVpcNetworkRange";
+export const getVpcNetworkRange: typeof import("./getVpcNetworkRange").getVpcNetworkRange = null as any;
+export const getVpcNetworkRangeOutput: typeof import("./getVpcNetworkRange").getVpcNetworkRangeOutput = null as any;
+utilities.lazyLoad(exports, ["getVpcNetworkRange","getVpcNetworkRangeOutput"], () => require("./getVpcNetworkRange"));
+
+export { GetVpcRegionArgs, GetVpcRegionResult, GetVpcRegionOutputArgs } from "./getVpcRegion";
+export const getVpcRegion: typeof import("./getVpcRegion").getVpcRegion = null as any;
+export const getVpcRegionOutput: typeof import("./getVpcRegion").getVpcRegionOutput = null as any;
+utilities.lazyLoad(exports, ["getVpcRegion","getVpcRegionOutput"], () => require("./getVpcRegion"));
+
+export { GetVpcRoutingTableArgs, GetVpcRoutingTableResult, GetVpcRoutingTableOutputArgs } from "./getVpcRoutingTable";
+export const getVpcRoutingTable: typeof import("./getVpcRoutingTable").getVpcRoutingTable = null as any;
+export const getVpcRoutingTableOutput: typeof import("./getVpcRoutingTable").getVpcRoutingTableOutput = null as any;
+utilities.lazyLoad(exports, ["getVpcRoutingTable","getVpcRoutingTableOutput"], () => require("./getVpcRoutingTable"));
+
+export { GetVpcRoutingTableStaticRouteArgs, GetVpcRoutingTableStaticRouteResult, GetVpcRoutingTableStaticRouteOutputArgs } from "./getVpcRoutingTableStaticRoute";
+export const getVpcRoutingTableStaticRoute: typeof import("./getVpcRoutingTableStaticRoute").getVpcRoutingTableStaticRoute = null as any;
+export const getVpcRoutingTableStaticRouteOutput: typeof import("./getVpcRoutingTableStaticRoute").getVpcRoutingTableStaticRouteOutput = null as any;
+utilities.lazyLoad(exports, ["getVpcRoutingTableStaticRoute","getVpcRoutingTableStaticRouteOutput"], () => require("./getVpcRoutingTableStaticRoute"));
+
 export { GetVpnConnectionArgs, GetVpnConnectionResult, GetVpnConnectionOutputArgs } from "./getVpnConnection";
 export const getVpnConnection: typeof import("./getVpnConnection").getVpnConnection = null as any;
 export const getVpnConnectionOutput: typeof import("./getVpnConnection").getVpnConnectionOutput = null as any;
@@ -1013,6 +1038,31 @@ export type Volume = import("./volume").Volume;
 export const Volume: typeof import("./volume").Volume = null as any;
 utilities.lazyLoad(exports, ["Volume"], () => require("./volume"));
 
+export { VpcArgs, VpcState } from "./vpc";
+export type Vpc = import("./vpc").Vpc;
+export const Vpc: typeof import("./vpc").Vpc = null as any;
+utilities.lazyLoad(exports, ["Vpc"], () => require("./vpc"));
+
+export { VpcNetworkRangeArgs, VpcNetworkRangeState } from "./vpcNetworkRange";
+export type VpcNetworkRange = import("./vpcNetworkRange").VpcNetworkRange;
+export const VpcNetworkRange: typeof import("./vpcNetworkRange").VpcNetworkRange = null as any;
+utilities.lazyLoad(exports, ["VpcNetworkRange"], () => require("./vpcNetworkRange"));
+
+export { VpcRegionArgs, VpcRegionState } from "./vpcRegion";
+export type VpcRegion = import("./vpcRegion").VpcRegion;
+export const VpcRegion: typeof import("./vpcRegion").VpcRegion = null as any;
+utilities.lazyLoad(exports, ["VpcRegion"], () => require("./vpcRegion"));
+
+export { VpcRoutingTableArgs, VpcRoutingTableState } from "./vpcRoutingTable";
+export type VpcRoutingTable = import("./vpcRoutingTable").VpcRoutingTable;
+export const VpcRoutingTable: typeof import("./vpcRoutingTable").VpcRoutingTable = null as any;
+utilities.lazyLoad(exports, ["VpcRoutingTable"], () => require("./vpcRoutingTable"));
+
+export { VpcRoutingTableStaticRouteArgs, VpcRoutingTableStaticRouteState } from "./vpcRoutingTableStaticRoute";
+export type VpcRoutingTableStaticRoute = import("./vpcRoutingTableStaticRoute").VpcRoutingTableStaticRoute;
+export const VpcRoutingTableStaticRoute: typeof import("./vpcRoutingTableStaticRoute").VpcRoutingTableStaticRoute = null as any;
+utilities.lazyLoad(exports, ["VpcRoutingTableStaticRoute"], () => require("./vpcRoutingTableStaticRoute"));
+
 export { VpnConnectionArgs, VpnConnectionState } from "./vpnConnection";
 export type VpnConnection = import("./vpnConnection").VpnConnection;
 export const VpnConnection: typeof import("./vpnConnection").VpnConnection = null as any;
@@ -1235,6 +1285,16 @@ const _module = {
                 return new TelemetryrouterInstance(name, <any>undefined, { urn })
             case "stackit:index/volume:Volume":
                 return new Volume(name, <any>undefined, { urn })
+            case "stackit:index/vpc:Vpc":
+                return new Vpc(name, <any>undefined, { urn })
+            case "stackit:index/vpcNetworkRange:VpcNetworkRange":
+                return new VpcNetworkRange(name, <any>undefined, { urn })
+            case "stackit:index/vpcRegion:VpcRegion":
+                return new VpcRegion(name, <any>undefined, { urn })
+            case "stackit:index/vpcRoutingTable:VpcRoutingTable":
+                return new VpcRoutingTable(name, <any>undefined, { urn })
+            case "stackit:index/vpcRoutingTableStaticRoute:VpcRoutingTableStaticRoute":
+                return new VpcRoutingTableStaticRoute(name, <any>undefined, { urn })
             case "stackit:index/vpnConnection:VpnConnection":
                 return new VpnConnection(name, <any>undefined, { urn })
             case "stackit:index/vpnGateway:VpnGateway":
@@ -1343,6 +1403,11 @@ pulumi.runtime.registerResourceModule("stackit", "index/telemetryrouterAccessTok
 pulumi.runtime.registerResourceModule("stackit", "index/telemetryrouterDestination", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/telemetryrouterInstance", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/volume", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/vpc", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/vpcNetworkRange", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/vpcRegion", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/vpcRoutingTable", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/vpcRoutingTableStaticRoute", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/vpnConnection", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/vpnGateway", _module)
 pulumi.runtime.registerResourcePackage("stackit", {
