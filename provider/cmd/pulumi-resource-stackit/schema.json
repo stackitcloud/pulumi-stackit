@@ -100,7 +100,7 @@
                 "items": {
                     "type": "string"
                 },
-                "description": "Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, routing-tables, network"
+                "description": "Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, network, routing-tables, vpc"
             },
             "gitCustomEndpoint": {
                 "type": "string",
@@ -4110,6 +4110,123 @@
                 "type"
             ]
         },
+        "stackit:index/VpcNetworkRangeTimeouts:VpcNetworkRangeTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                },
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                },
+                "update": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
+        },
+        "stackit:index/VpcRegionTimeouts:VpcRegionTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                },
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                },
+                "update": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
+        },
+        "stackit:index/VpcRoutingTableStaticRouteDestination:VpcRoutingTableStaticRouteDestination": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "CIDR type. Possible values are: \u003cspan pulumi-lang-nodejs=\"`cidrv4`\" pulumi-lang-dotnet=\"`Cidrv4`\" pulumi-lang-go=\"`cidrv4`\" pulumi-lang-python=\"`cidrv4`\" pulumi-lang-yaml=\"`cidrv4`\" pulumi-lang-java=\"`cidrv4`\"\u003e`cidrv4`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`cidrv6`\" pulumi-lang-dotnet=\"`Cidrv6`\" pulumi-lang-go=\"`cidrv6`\" pulumi-lang-python=\"`cidrv6`\" pulumi-lang-yaml=\"`cidrv6`\" pulumi-lang-java=\"`cidrv6`\"\u003e`cidrv6`\u003c/span\u003e. Currently cidrv6 is unsupported.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "CIDR value.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "type",
+                "value"
+            ]
+        },
+        "stackit:index/VpcRoutingTableStaticRouteNexthop:VpcRoutingTableStaticRouteNexthop": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "Type of the nexthop. Possible values are: \u003cspan pulumi-lang-nodejs=\"`blackhole`\" pulumi-lang-dotnet=\"`Blackhole`\" pulumi-lang-go=\"`blackhole`\" pulumi-lang-python=\"`blackhole`\" pulumi-lang-yaml=\"`blackhole`\" pulumi-lang-java=\"`blackhole`\"\u003e`blackhole`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`internet`\" pulumi-lang-dotnet=\"`Internet`\" pulumi-lang-go=\"`internet`\" pulumi-lang-python=\"`internet`\" pulumi-lang-yaml=\"`internet`\" pulumi-lang-java=\"`internet`\"\u003e`internet`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ipv4`\" pulumi-lang-dotnet=\"`Ipv4`\" pulumi-lang-go=\"`ipv4`\" pulumi-lang-python=\"`ipv4`\" pulumi-lang-yaml=\"`ipv4`\" pulumi-lang-java=\"`ipv4`\"\u003e`ipv4`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`ipv6`\" pulumi-lang-dotnet=\"`Ipv6`\" pulumi-lang-go=\"`ipv6`\" pulumi-lang-python=\"`ipv6`\" pulumi-lang-yaml=\"`ipv6`\" pulumi-lang-java=\"`ipv6`\"\u003e`ipv6`\u003c/span\u003e. Currently ipv6 is unsupported.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "Value of the nexthop\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "type"
+            ]
+        },
+        "stackit:index/VpcRoutingTableStaticRouteTimeouts:VpcRoutingTableStaticRouteTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                },
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                },
+                "update": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
+        },
+        "stackit:index/VpcTimeouts:VpcTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                },
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                },
+                "update": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
+        },
         "stackit:index/VpnConnectionTunnel1:VpnConnectionTunnel1": {
             "properties": {
                 "bgp": {
@@ -5576,11 +5693,6 @@
                     "type": "string",
                     "description": "The Azure AD client ID.\n"
                 },
-                "clientSecret": {
-                    "type": "string",
-                    "description": "The Azure AD client secret.\n",
-                    "secret": true
-                },
                 "redirectUrl": {
                     "type": "string",
                     "description": "The Azure AD redirect URL.\n"
@@ -5590,7 +5702,6 @@
             "required": [
                 "authorityUrl",
                 "clientId",
-                "clientSecret",
                 "redirectUrl"
             ],
             "language": {
@@ -5608,11 +5719,6 @@
                 "clientId": {
                     "type": "string",
                     "description": "The client ID assigned by the Identity Provider.\n"
-                },
-                "clientSecret": {
-                    "type": "string",
-                    "description": "The client secret generated by the Identity Provider.\n",
-                    "secret": true
                 },
                 "jwtClaims": {
                     "$ref": "#/types/stackit:index/getDremioInstanceAuthenticationOauthJwtClaims:getDremioInstanceAuthenticationOauthJwtClaims",
@@ -5638,7 +5744,6 @@
             "required": [
                 "authorityUrl",
                 "clientId",
-                "clientSecret",
                 "jwtClaims",
                 "parameters",
                 "redirectUrl",
@@ -9196,6 +9301,82 @@
                 }
             }
         },
+        "stackit:index/getVpcNetworkRangeTimeouts:getVpcNetworkRangeTimeouts": {
+            "properties": {
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
+        },
+        "stackit:index/getVpcRegionTimeouts:getVpcRegionTimeouts": {
+            "properties": {
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
+        },
+        "stackit:index/getVpcRoutingTableStaticRouteDestination:getVpcRoutingTableStaticRouteDestination": {
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "type",
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getVpcRoutingTableStaticRouteNexthop:getVpcRoutingTableStaticRouteNexthop": {
+            "properties": {
+                "type": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "type",
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getVpcRoutingTableStaticRouteTimeouts:getVpcRoutingTableStaticRouteTimeouts": {
+            "properties": {
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
+        },
+        "stackit:index/getVpcTimeouts:getVpcTimeouts": {
+            "properties": {
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
+        },
         "stackit:index/getVpnConnectionTunnel1:getVpnConnectionTunnel1": {
             "properties": {
                 "bgp": {
@@ -9682,7 +9863,7 @@
                 "items": {
                     "type": "string"
                 },
-                "description": "Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, routing-tables, network"
+                "description": "Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, network, routing-tables, vpc"
             },
             "gitCustomEndpoint": {
                 "type": "string",
@@ -9901,7 +10082,7 @@
                 "items": {
                     "type": "string"
                 },
-                "description": "Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, routing-tables, network"
+                "description": "Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, network, routing-tables, vpc"
             },
             "gitCustomEndpoint": {
                 "type": "string",
@@ -10610,7 +10791,7 @@
             }
         },
         "stackit:index/authorizationFolderRoleAssignment:AuthorizationFolderRoleAssignment": {
-            "description": "Folder Role Assignment resource schema.\n\n\u003e This resource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_resourcemanager_folder\" \"example\" {\n  name        = \"example_folder\"\n  owner_email = \"foo.bar@stackit.cloud\"\n  # in this case a org-id\n  parent_container_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\nresource \"stackit_authorization_folder_role_assignment\" \"fra\" {\n  resource_id = stackit_resourcemanager_folder.example.folder_id\n  role        = \"reader\"\n  subject     = \"foo.bar@stackit.cloud\"\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing folder role assignment\nimport {\n  to = stackit_authorization_folder_role_assignment.import-example\n  id = \"${var.folder_id},${var.folder_role_assignment},${var.folder_role_assignment_subject}\"\n}\n```\n\n",
+            "description": "Folder Role Assignment resource schema.\n\n\u003e This resource is part of the experimental feature iam and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_resourcemanager_folder\" \"example\" {\n  name        = \"example_folder\"\n  owner_email = \"foo.bar@stackit.cloud\"\n  # in this case a org-id\n  parent_container_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\nresource \"stackit_authorization_folder_role_assignment\" \"fra\" {\n  resource_id = stackit_resourcemanager_folder.example.folder_id\n  role        = \"reader\"\n  subject     = \"foo.bar@stackit.cloud\"\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing folder role assignment\nimport {\n  to = stackit_authorization_folder_role_assignment.import-example\n  id = \"${var.folder_id},${var.folder_role_assignment},${var.folder_role_assignment_subject}\"\n}\n```\n\n",
             "properties": {
                 "resourceId": {
                     "type": "string",
@@ -10759,7 +10940,7 @@
             }
         },
         "stackit:index/authorizationOrganizationRoleAssignment:AuthorizationOrganizationRoleAssignment": {
-            "description": "Organization Role Assignment resource schema.\n\n\u003e This resource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_authorization_organization_role_assignment\" \"example\" {\n  resource_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  role        = \"owner\"\n  subject     = \"john.doe@stackit.cloud\"\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing organization role assignment\nimport {\n  to = stackit_authorization_organization_role_assignment.import-example\n  id = \"${var.organization_id},${var.org_role_assignment_role},${var.org_role_assignment_subject}\"\n}\n```\n\n",
+            "description": "Organization Role Assignment resource schema.\n\n\u003e This resource is part of the experimental feature iam and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_authorization_organization_role_assignment\" \"example\" {\n  resource_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  role        = \"owner\"\n  subject     = \"john.doe@stackit.cloud\"\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing organization role assignment\nimport {\n  to = stackit_authorization_organization_role_assignment.import-example\n  id = \"${var.organization_id},${var.org_role_assignment_role},${var.org_role_assignment_subject}\"\n}\n```\n\n",
             "properties": {
                 "resourceId": {
                     "type": "string",
@@ -10908,7 +11089,7 @@
             }
         },
         "stackit:index/authorizationProjectRoleAssignment:AuthorizationProjectRoleAssignment": {
-            "description": "Project Role Assignment resource schema.\n\n\u003e This resource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_resourcemanager_project\" \"example\" {\n  name        = \"example_project\"\n  owner_email = \"foo.bar@stackit.cloud\"\n  # in this case a folder or a org-id\n  parent_container_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\nresource \"stackit_authorization_project_role_assignment\" \"pra\" {\n  resource_id = stackit_resourcemanager_project.example.project_id\n  role        = \"reader\"\n  subject     = \"foo.bar@stackit.cloud\"\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing project role assignment\nimport {\n  to = stackit_authorization_project_role_assignment.import-example\n  id = \"${var.project_id},${var.project_role_assignment_role},${var.project_role_assignment_subject}\"\n}\n```\n\n",
+            "description": "Project Role Assignment resource schema.\n\n\u003e This resource is part of the experimental feature iam and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_resourcemanager_project\" \"example\" {\n  name        = \"example_project\"\n  owner_email = \"foo.bar@stackit.cloud\"\n  # in this case a folder or a org-id\n  parent_container_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\nresource \"stackit_authorization_project_role_assignment\" \"pra\" {\n  resource_id = stackit_resourcemanager_project.example.project_id\n  role        = \"reader\"\n  subject     = \"foo.bar@stackit.cloud\"\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing project role assignment\nimport {\n  to = stackit_authorization_project_role_assignment.import-example\n  id = \"${var.project_id},${var.project_role_assignment_role},${var.project_role_assignment_subject}\"\n}\n```\n\n",
             "properties": {
                 "resourceId": {
                     "type": "string",
@@ -10967,7 +11148,7 @@
             }
         },
         "stackit:index/authorizationServiceAccountRoleAssignment:AuthorizationServiceAccountRoleAssignment": {
-            "description": "Service-account Role Assignment resource schema.\n\n\u003e **Important:** Use this resource to grant 'Act-As' permissions. This allows a service-account (the \u003cspan pulumi-lang-nodejs=\"`subject`\" pulumi-lang-dotnet=\"`Subject`\" pulumi-lang-go=\"`subject`\" pulumi-lang-python=\"`subject`\" pulumi-lang-yaml=\"`subject`\" pulumi-lang-java=\"`subject`\"\u003e`subject`\u003c/span\u003e) to impersonate the target Service Account. A common example is authorizing the SKE Service Account to act as a project-specific Service Account to access APIs.\n\n\u003e This resource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\ndata \"stackit_service_accounts\" \"ske_sa_suffix\" {\n  project_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  email_suffix = \"@ske.sa.stackit.cloud\"\n}\n\nresource \"stackit_service_account\" \"iam\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"kms\"\n}\n\nresource \"stackit_authorization_project_role_assignment\" \"pr_sa\" {\n  resource_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  role        = \"kms.admin\"\n  subject     = stackit_service_account.iam.email\n}\n\n// Assign the Act-As permissions to the previously created ServiceAccount.\n// The SKE ServiceAccount is now authorized to access KMS upon the behalf of stackit_service_account.iam\nresource \"stackit_authorization_service_account_role_assignment\" \"sa\" {\n  resource_id = stackit_service_account.iam.service_account_id\n  role        = \"user\"\n  subject     = data.stackit_service_accounts.ske_sa_suffix.items.0.email\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing service account assignment\nimport {\n  to = stackit_authorization_service_account_assignment.sa\n  id = \"${var.resource_id},${var.service_account_assignment_role},${var.service_account_assignment_subject}\"\n}\n```\n\n",
+            "description": "Service-account Role Assignment resource schema.\n\n\u003e **Important:** Use this resource to grant 'Act-As' permissions. This allows a service-account (the \u003cspan pulumi-lang-nodejs=\"`subject`\" pulumi-lang-dotnet=\"`Subject`\" pulumi-lang-go=\"`subject`\" pulumi-lang-python=\"`subject`\" pulumi-lang-yaml=\"`subject`\" pulumi-lang-java=\"`subject`\"\u003e`subject`\u003c/span\u003e) to impersonate the target Service Account. A common example is authorizing the SKE Service Account to act as a project-specific Service Account to access APIs.\n\n\u003e This resource is part of the experimental feature iam and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\ndata \"stackit_service_accounts\" \"ske_sa_suffix\" {\n  project_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  email_suffix = \"@ske.sa.stackit.cloud\"\n}\n\nresource \"stackit_service_account\" \"iam\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"kms\"\n}\n\nresource \"stackit_authorization_project_role_assignment\" \"pr_sa\" {\n  resource_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  role        = \"kms.admin\"\n  subject     = stackit_service_account.iam.email\n}\n\n// Assign the Act-As permissions to the previously created ServiceAccount.\n// The SKE ServiceAccount is now authorized to access KMS upon the behalf of stackit_service_account.iam\nresource \"stackit_authorization_service_account_role_assignment\" \"sa\" {\n  resource_id = stackit_service_account.iam.service_account_id\n  role        = \"user\"\n  subject     = data.stackit_service_accounts.ske_sa_suffix.items.0.email\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing service account assignment\nimport {\n  to = stackit_authorization_service_account_assignment.sa\n  id = \"${var.resource_id},${var.service_account_assignment_role},${var.service_account_assignment_subject}\"\n}\n```\n\n",
             "properties": {
                 "resourceId": {
                     "type": "string",
@@ -11690,7 +11871,7 @@
             }
         },
         "stackit:index/dremioInstance:DremioInstance": {
-            "description": "Manages a STACKIT Dremio instance.\n\n\u003e This resource is part of the dremio experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_dremio_instance\" \"example\" {\n  project_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  region       = \"eu01\"\n  display_name = \"exampleName\"\n  description  = \"Example description\"\n  authentication = {\n    type = \"local-only\" // \"oauth\" or \"azuread\" for IDP config\n\n    oauth = { // only needed if \"oauth\" is given as type\n      authority_url = \"authority\"\n      client_id     = \"client-id\"\n      client_secret = \"client-secret\"\n      jwt_claims = {\n        user_name = \"example\"\n      }\n      scope = \"idp-scope\"\n      parameters = [\n        { \"name\" : \"example\", \"value\" : \"example-value\" }\n      ]\n    }\n\n    azuread = { // only needed if \"azuread\" is given as type\n      authority_url = \"authority\"\n      client_id     = \"client-id\"\n      client_secret = \"client-secret\"\n    }\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n",
+            "description": "Manages a STACKIT Dremio instance.\n\n\u003e This resource is part of the experimental feature dremio and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_dremio_instance\" \"example\" {\n  project_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  region       = \"eu01\"\n  display_name = \"exampleName\"\n  description  = \"Example description\"\n  authentication = {\n    type = \"local-only\" // \"oauth\" or \"azuread\" for IDP config\n\n    oauth = { // only needed if \"oauth\" is given as type\n      authority_url = \"authority\"\n      client_id     = \"client-id\"\n      client_secret = \"client-secret\"\n      jwt_claims = {\n        user_name = \"example\"\n      }\n      scope = \"idp-scope\"\n      parameters = [\n        { \"name\" : \"example\", \"value\" : \"example-value\" }\n      ]\n    }\n\n    azuread = { // only needed if \"azuread\" is given as type\n      authority_url = \"authority\"\n      client_id     = \"client-id\"\n      client_secret = \"client-secret\"\n    }\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n",
             "properties": {
                 "authentication": {
                     "$ref": "#/types/stackit:index/DremioInstanceAuthentication:DremioInstanceAuthentication",
@@ -11802,7 +11983,7 @@
             }
         },
         "stackit:index/dremioUser:DremioUser": {
-            "description": "Manages a STACKIT Dremio instances user.\n\n\u003e This resource is part of the dremio experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_dremio_user\" \"example\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  region      = \"eu01\"\n  instance_id = \"example-instance-id\"\n\n  description = \"STACKIT Terraform example\"\n  email       = \"example@example.com\"\n  first_name  = \"Test\"\n  last_name   = \"User\"\n  name        = \"testUser\"\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n",
+            "description": "Manages a STACKIT Dremio instances user.\n\n\u003e This resource is part of the experimental feature dremio and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_dremio_user\" \"example\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  region      = \"eu01\"\n  instance_id = \"example-instance-id\"\n\n  description = \"STACKIT Terraform example\"\n  email       = \"example@example.com\"\n  first_name  = \"Test\"\n  last_name   = \"User\"\n  name        = \"testUser\"\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n",
             "properties": {
                 "description": {
                     "type": "string",
@@ -18792,7 +18973,7 @@
             }
         },
         "stackit:index/routingTable:RoutingTable": {
-            "description": "Routing table resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\nThis resource is for SNA, not VPC, based networks.\n\n\u003e This resource is part of the routing-tables experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_routing_table\" \"example\" {\n  organization_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  network_area_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name            = \"example\"\n  labels = {\n    \"key\" = \"value\"\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing routing table\nimport {\n  to = stackit_routing_table.import-example\n  id = \"${var.organization_id},${var.region},${var.network_area_id},${var.routing_table_id}\"\n}\n```\n\n",
+            "description": "Routing table resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\nThis resource is for SNA, not VPC, based networks.\n\n\u003e This resource is part of the experimental feature routing-tables and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_routing_table\" \"example\" {\n  organization_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  network_area_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name            = \"example\"\n  labels = {\n    \"key\" = \"value\"\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing routing table\nimport {\n  to = stackit_routing_table.import-example\n  id = \"${var.organization_id},${var.region},${var.network_area_id},${var.routing_table_id}\"\n}\n```\n\n",
             "properties": {
                 "createdAt": {
                     "type": "string",
@@ -18950,7 +19131,7 @@
             }
         },
         "stackit:index/routingTableRoute:RoutingTableRoute": {
-            "description": "Routing table route resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\nThis resource is for SNA, not VPC, based networks.\n\n\u003e This resource is part of the routing-tables experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_routing_table_route\" \"example\" {\n  organization_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  network_area_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  routing_table_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  destination = {\n    type  = \"cidrv4\"\n    value = \"192.168.178.0/24\"\n  }\n  next_hop = {\n    type  = \"ipv4\"\n    value = \"192.168.178.1\"\n  }\n  labels = {\n    \"key\" = \"value\"\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing routing table route\nimport {\n  to = stackit_routing_table_route.import-example\n  id = \"${var.organization_id},${var.region},${var.network_area_id},${var.routing_table_id},${var.routing_table_route_id}\"\n}\n```\n\n",
+            "description": "Routing table route resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\nThis resource is for SNA, not VPC, based networks.\n\n\u003e This resource is part of the experimental feature routing-tables and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_routing_table_route\" \"example\" {\n  organization_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  network_area_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  routing_table_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  destination = {\n    type  = \"cidrv4\"\n    value = \"192.168.178.0/24\"\n  }\n  next_hop = {\n    type  = \"ipv4\"\n    value = \"192.168.178.1\"\n  }\n  labels = {\n    \"key\" = \"value\"\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing routing table route\nimport {\n  to = stackit_routing_table_route.import-example\n  id = \"${var.organization_id},${var.region},${var.network_area_id},${var.routing_table_id},${var.routing_table_route_id}\"\n}\n```\n\n",
             "properties": {
                 "createdAt": {
                     "type": "string",
@@ -19430,7 +19611,7 @@
             }
         },
         "stackit:index/secretsmanagerInstanceRoleBindingV1:SecretsmanagerInstanceRoleBindingV1": {
-            "description": "IAM role binding resource schema.\n\n\u003e This resource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_secretsmanager_instance_role_binding_v1\" \"role_binding\" {\n  resource_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  role        = \"owner\"\n  subject     = \"john.doe@example.com\"\n}\n```\n\n## Import\n\n```terraform\n# Only use the import statement if you want to import an existing role binding\nimport {\n  to = stackit_secretsmanager_instance_role_binding_v1.import_example\n  id = \"${var.region},${var.resource_id},${var.role},${var.subject}\"\n}\n```\n\n",
+            "description": "IAM role binding resource schema.\n\n\u003e This resource is part of the experimental feature iam and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_secretsmanager_instance_role_binding_v1\" \"role_binding\" {\n  resource_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  role        = \"owner\"\n  subject     = \"john.doe@example.com\"\n}\n```\n\n## Import\n\n```terraform\n# Only use the import statement if you want to import an existing role binding\nimport {\n  to = stackit_secretsmanager_instance_role_binding_v1.import_example\n  id = \"${var.region},${var.resource_id},${var.role},${var.subject}\"\n}\n```\n\n",
             "properties": {
                 "region": {
                     "type": "string",
@@ -19502,7 +19683,7 @@
             }
         },
         "stackit:index/secretsmanagerSecretGroupRoleBindingV1:SecretsmanagerSecretGroupRoleBindingV1": {
-            "description": "IAM role binding resource schema.\n\n\u003e This resource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_secretsmanager_secret_group_role_binding_v1\" \"role_binding\" {\n  resource_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  role        = \"owner\"\n  subject     = \"john.doe@example.com\"\n}\n```\n\n## Import\n\n```terraform\n# Only use the import statement if you want to import an existing role binding\nimport {\n  to = stackit_secretsmanager_secret_group_role_binding_v1.import_example\n  id = \"${var.region},${var.resource_id},${var.role},${var.subject}\"\n}\n```\n\n",
+            "description": "IAM role binding resource schema.\n\n\u003e This resource is part of the experimental feature iam and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_secretsmanager_secret_group_role_binding_v1\" \"role_binding\" {\n  resource_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  role        = \"owner\"\n  subject     = \"john.doe@example.com\"\n}\n```\n\n## Import\n\n```terraform\n# Only use the import statement if you want to import an existing role binding\nimport {\n  to = stackit_secretsmanager_secret_group_role_binding_v1.import_example\n  id = \"${var.region},${var.resource_id},${var.role},${var.subject}\"\n}\n```\n\n",
             "properties": {
                 "region": {
                     "type": "string",
@@ -22999,6 +23180,647 @@
                 "type": "object"
             }
         },
+        "stackit:index/vpc:Vpc": {
+            "description": "VPC resource schema.\n\n\u003e This resource is part of the experimental feature vpc and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_vpc\" \"example\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name        = \"example\"\n  description = \"Example description\"\n  labels = {\n    \"key\" = \"value\"\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing vpc\nimport {\n  to = stackit_vpc.import-example\n  id = \"${var.project_id},${var.vpc_id}\"\n}\n```\n\n",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the VPC.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Labels are key-value string pairs which can be attached to a resource container\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the VPC.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT project ID to which the VPC is associated.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/stackit:index/VpcTimeouts:VpcTimeouts"
+                },
+                "vpcId": {
+                    "type": "string",
+                    "description": "The VPC ID.\n"
+                }
+            },
+            "required": [
+                "description",
+                "name",
+                "projectId",
+                "vpcId"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "The description of the VPC.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Labels are key-value string pairs which can be attached to a resource container\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the VPC.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT project ID to which the VPC is associated.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/stackit:index/VpcTimeouts:VpcTimeouts"
+                }
+            },
+            "requiredInputs": [
+                "description",
+                "projectId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Vpc resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the VPC.\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Labels are key-value string pairs which can be attached to a resource container\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the VPC.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID to which the VPC is associated.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/stackit:index/VpcTimeouts:VpcTimeouts"
+                    },
+                    "vpcId": {
+                        "type": "string",
+                        "description": "The VPC ID.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "stackit:index/vpcNetworkRange:VpcNetworkRange": {
+            "description": "VPC network range resource schema\n\n\u003e This resource is part of the experimental feature vpc and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_vpc_region\" \"region\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  vpc_id     = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\nresource \"stackit_vpc_network_range\" \"example\" {\n  # Network range can only be created after the VPC is enabled for the region\n  depends_on = [stackit_vpc_region.region]\n\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  vpc_id      = stackit_vpc_region.region.vpc_id\n  ip_version  = \"ipv4\"\n  prefix      = \"192.168.0.0/24\"\n  description = \"my vpc network range\"\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing dns zone\nimport {\n  to = stackit_vpc_network_range.example\n  id = \"${var.project_id},${var.vpc_id},${var.region},${var.vpc_network_range_id}\"\n}\n```\n\n",
+            "properties": {
+                "defaultPrefixLength": {
+                    "type": "integer",
+                    "description": "Default prefix length for the VPC network range\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the VPC network range\n"
+                },
+                "ipVersion": {
+                    "type": "string",
+                    "description": "IP version of the VPC network range. Possible values are: \u003cspan pulumi-lang-nodejs=\"`ipv4`\" pulumi-lang-dotnet=\"`Ipv4`\" pulumi-lang-go=\"`ipv4`\" pulumi-lang-python=\"`ipv4`\" pulumi-lang-yaml=\"`ipv4`\" pulumi-lang-java=\"`ipv4`\"\u003e`ipv4`\u003c/span\u003e.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Labels are key-value string pairs which can be attached to a resource container\n"
+                },
+                "maxPrefixLength": {
+                    "type": "integer",
+                    "description": "Maximum prefix length for the VPC network range\n"
+                },
+                "minPrefixLength": {
+                    "type": "integer",
+                    "description": "Minimum prefix length for the VPC network range\n"
+                },
+                "nameservers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of nameservers for the VPC network range\n"
+                },
+                "networkRangeId": {
+                    "type": "string"
+                },
+                "prefix": {
+                    "type": "string",
+                    "description": "The IP prefix for the VPC network range\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT project ID to which the VPC network range is associated.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The resource region. If not defined, the provider region is used.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/stackit:index/VpcNetworkRangeTimeouts:VpcNetworkRangeTimeouts"
+                },
+                "vpcId": {
+                    "type": "string",
+                    "description": "The VPC ID to which the VPC network range is associated.\n"
+                }
+            },
+            "required": [
+                "defaultPrefixLength",
+                "description",
+                "ipVersion",
+                "maxPrefixLength",
+                "minPrefixLength",
+                "nameservers",
+                "networkRangeId",
+                "prefix",
+                "projectId",
+                "region",
+                "vpcId"
+            ],
+            "inputProperties": {
+                "defaultPrefixLength": {
+                    "type": "integer",
+                    "description": "Default prefix length for the VPC network range\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the VPC network range\n"
+                },
+                "ipVersion": {
+                    "type": "string",
+                    "description": "IP version of the VPC network range. Possible values are: \u003cspan pulumi-lang-nodejs=\"`ipv4`\" pulumi-lang-dotnet=\"`Ipv4`\" pulumi-lang-go=\"`ipv4`\" pulumi-lang-python=\"`ipv4`\" pulumi-lang-yaml=\"`ipv4`\" pulumi-lang-java=\"`ipv4`\"\u003e`ipv4`\u003c/span\u003e.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Labels are key-value string pairs which can be attached to a resource container\n"
+                },
+                "maxPrefixLength": {
+                    "type": "integer",
+                    "description": "Maximum prefix length for the VPC network range\n"
+                },
+                "minPrefixLength": {
+                    "type": "integer",
+                    "description": "Minimum prefix length for the VPC network range\n"
+                },
+                "nameservers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of nameservers for the VPC network range\n"
+                },
+                "prefix": {
+                    "type": "string",
+                    "description": "The IP prefix for the VPC network range\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT project ID to which the VPC network range is associated.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The resource region. If not defined, the provider region is used.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/stackit:index/VpcNetworkRangeTimeouts:VpcNetworkRangeTimeouts"
+                },
+                "vpcId": {
+                    "type": "string",
+                    "description": "The VPC ID to which the VPC network range is associated.\n"
+                }
+            },
+            "requiredInputs": [
+                "description",
+                "ipVersion",
+                "prefix",
+                "projectId",
+                "vpcId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering VpcNetworkRange resources.\n",
+                "properties": {
+                    "defaultPrefixLength": {
+                        "type": "integer",
+                        "description": "Default prefix length for the VPC network range\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the VPC network range\n"
+                    },
+                    "ipVersion": {
+                        "type": "string",
+                        "description": "IP version of the VPC network range. Possible values are: \u003cspan pulumi-lang-nodejs=\"`ipv4`\" pulumi-lang-dotnet=\"`Ipv4`\" pulumi-lang-go=\"`ipv4`\" pulumi-lang-python=\"`ipv4`\" pulumi-lang-yaml=\"`ipv4`\" pulumi-lang-java=\"`ipv4`\"\u003e`ipv4`\u003c/span\u003e.\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Labels are key-value string pairs which can be attached to a resource container\n"
+                    },
+                    "maxPrefixLength": {
+                        "type": "integer",
+                        "description": "Maximum prefix length for the VPC network range\n"
+                    },
+                    "minPrefixLength": {
+                        "type": "integer",
+                        "description": "Minimum prefix length for the VPC network range\n"
+                    },
+                    "nameservers": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of nameservers for the VPC network range\n"
+                    },
+                    "networkRangeId": {
+                        "type": "string"
+                    },
+                    "prefix": {
+                        "type": "string",
+                        "description": "The IP prefix for the VPC network range\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID to which the VPC network range is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/stackit:index/VpcNetworkRangeTimeouts:VpcNetworkRangeTimeouts"
+                    },
+                    "vpcId": {
+                        "type": "string",
+                        "description": "The VPC ID to which the VPC network range is associated.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "stackit:index/vpcRegion:VpcRegion": {
+            "description": "VPC region resource schema\n\n\u003e This resource is part of the experimental feature vpc and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_vpc_region\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  vpc_id     = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  region     = \"eu01\"\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing region\nimport {\n  to = stackit_vpc_region.import-example\n  id = \"${var.project_id},${var.vpc_id},${var_region}\"\n}\n```\n\n",
+            "properties": {
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT project ID to which the VPC region is associated.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The resource region. If not defined, the provider region is used.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/stackit:index/VpcRegionTimeouts:VpcRegionTimeouts"
+                },
+                "vpcId": {
+                    "type": "string",
+                    "description": "The VPC ID to which the VPC region is associated.\n"
+                }
+            },
+            "required": [
+                "projectId",
+                "region",
+                "vpcId"
+            ],
+            "inputProperties": {
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT project ID to which the VPC region is associated.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The resource region. If not defined, the provider region is used.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/stackit:index/VpcRegionTimeouts:VpcRegionTimeouts"
+                },
+                "vpcId": {
+                    "type": "string",
+                    "description": "The VPC ID to which the VPC region is associated.\n"
+                }
+            },
+            "requiredInputs": [
+                "projectId",
+                "vpcId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering VpcRegion resources.\n",
+                "properties": {
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID to which the VPC region is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/stackit:index/VpcRegionTimeouts:VpcRegionTimeouts"
+                    },
+                    "vpcId": {
+                        "type": "string",
+                        "description": "The VPC ID to which the VPC region is associated.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "stackit:index/vpcRoutingTable:VpcRoutingTable": {
+            "description": "VPC Regional routing table resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n\u003e This resource is part of the experimental feature vpc and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_vpc_region\" \"example-region\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  vpc_id     = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\nresource \"stackit_vpc_routing_table\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  vpc_id     = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example\"\n  labels = {\n    \"key\" = \"value\"\n  }\n  # a routing table needs a configured region\n  depends_on = [stackit_vpc_region.example-region]\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing routing table\nimport {\n  to = stackit_vpc_routing_table.import-example\n  id = \"${var.project_id},${var.vpc_id},${var.region},${var.routing_table_id}\"\n}\n```\n\n",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of the regional routing table.\n"
+                },
+                "dynamicRoutes": {
+                    "type": "boolean",
+                    "description": "This controls whether dynamic routes are propagated to this regional routing table\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Labels are key-value string pairs which can be attached to a resource container\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the regional routing table.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT project ID to which the regional routing table is associated.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The resource region. If not defined, the provider region is used.\n"
+                },
+                "routingTableId": {
+                    "type": "string",
+                    "description": "The regional routing tables ID.\n"
+                },
+                "systemRoutes": {
+                    "type": "boolean",
+                    "description": "This allows installation of automatic system routes for connectivity between projects in the same VPC.\n"
+                },
+                "vpcId": {
+                    "type": "string",
+                    "description": "The vpc ID to which the regional routing table is associated.\n"
+                }
+            },
+            "required": [
+                "description",
+                "dynamicRoutes",
+                "name",
+                "projectId",
+                "region",
+                "routingTableId",
+                "systemRoutes",
+                "vpcId"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of the regional routing table.\n"
+                },
+                "dynamicRoutes": {
+                    "type": "boolean",
+                    "description": "This controls whether dynamic routes are propagated to this regional routing table\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Labels are key-value string pairs which can be attached to a resource container\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the regional routing table.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT project ID to which the regional routing table is associated.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The resource region. If not defined, the provider region is used.\n"
+                },
+                "systemRoutes": {
+                    "type": "boolean",
+                    "description": "This allows installation of automatic system routes for connectivity between projects in the same VPC.\n"
+                },
+                "vpcId": {
+                    "type": "string",
+                    "description": "The vpc ID to which the regional routing table is associated.\n"
+                }
+            },
+            "requiredInputs": [
+                "projectId",
+                "vpcId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering VpcRoutingTable resources.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the regional routing table.\n"
+                    },
+                    "dynamicRoutes": {
+                        "type": "boolean",
+                        "description": "This controls whether dynamic routes are propagated to this regional routing table\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Labels are key-value string pairs which can be attached to a resource container\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the regional routing table.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID to which the regional routing table is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    },
+                    "routingTableId": {
+                        "type": "string",
+                        "description": "The regional routing tables ID.\n"
+                    },
+                    "systemRoutes": {
+                        "type": "boolean",
+                        "description": "This allows installation of automatic system routes for connectivity between projects in the same VPC.\n"
+                    },
+                    "vpcId": {
+                        "type": "string",
+                        "description": "The vpc ID to which the regional routing table is associated.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "stackit:index/vpcRoutingTableStaticRoute:VpcRoutingTableStaticRoute": {
+            "description": "VPC Routing table static route resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n\u003e This resource is part of the experimental feature vpc and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_vpc_routing_table_static_route\" \"example\" {\n  project_id       = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  vpc_id           = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  routing_table_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  destination = {\n    type  = \"cidrv4\"\n    value = \"192.168.0.0/24\"\n  }\n  nexthop = {\n    type  = \"ipv4\"\n    value = \"10.0.0.8\"\n  }\n  labels = {\n    \"key\" = \"value\"\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing static route\nimport {\n  to = stackit_vpc_routing_table_static_route.import-example\n  id = \"${var.project_id},${var.vpc_id},${var.region},${var.routing_table_id},${var.route_id}\"\n}\n```\n\n",
+            "properties": {
+                "destination": {
+                    "$ref": "#/types/stackit:index/VpcRoutingTableStaticRouteDestination:VpcRoutingTableStaticRouteDestination",
+                    "description": "The destination of the static route.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Labels are key-value string pairs which can be attached to a resource container\n"
+                },
+                "nexthop": {
+                    "$ref": "#/types/stackit:index/VpcRoutingTableStaticRouteNexthop:VpcRoutingTableStaticRouteNexthop",
+                    "description": "The nexthop of the static route.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT Project ID to which the static route is associated.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region of the static route.\n"
+                },
+                "routeId": {
+                    "type": "string",
+                    "description": "The static route ID.\n"
+                },
+                "routingTableId": {
+                    "type": "string",
+                    "description": "The routing table ID to which the static route is associated.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/stackit:index/VpcRoutingTableStaticRouteTimeouts:VpcRoutingTableStaticRouteTimeouts"
+                },
+                "vpcId": {
+                    "type": "string",
+                    "description": "The VPC ID to which the static route is associated.\n"
+                }
+            },
+            "required": [
+                "destination",
+                "nexthop",
+                "projectId",
+                "region",
+                "routeId",
+                "routingTableId",
+                "vpcId"
+            ],
+            "inputProperties": {
+                "destination": {
+                    "$ref": "#/types/stackit:index/VpcRoutingTableStaticRouteDestination:VpcRoutingTableStaticRouteDestination",
+                    "description": "The destination of the static route.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Labels are key-value string pairs which can be attached to a resource container\n"
+                },
+                "nexthop": {
+                    "$ref": "#/types/stackit:index/VpcRoutingTableStaticRouteNexthop:VpcRoutingTableStaticRouteNexthop",
+                    "description": "The nexthop of the static route.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT Project ID to which the static route is associated.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region of the static route.\n"
+                },
+                "routingTableId": {
+                    "type": "string",
+                    "description": "The routing table ID to which the static route is associated.\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/stackit:index/VpcRoutingTableStaticRouteTimeouts:VpcRoutingTableStaticRouteTimeouts"
+                },
+                "vpcId": {
+                    "type": "string",
+                    "description": "The VPC ID to which the static route is associated.\n"
+                }
+            },
+            "requiredInputs": [
+                "destination",
+                "nexthop",
+                "projectId",
+                "routingTableId",
+                "vpcId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering VpcRoutingTableStaticRoute resources.\n",
+                "properties": {
+                    "destination": {
+                        "$ref": "#/types/stackit:index/VpcRoutingTableStaticRouteDestination:VpcRoutingTableStaticRouteDestination",
+                        "description": "The destination of the static route.\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Labels are key-value string pairs which can be attached to a resource container\n"
+                    },
+                    "nexthop": {
+                        "$ref": "#/types/stackit:index/VpcRoutingTableStaticRouteNexthop:VpcRoutingTableStaticRouteNexthop",
+                        "description": "The nexthop of the static route.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT Project ID to which the static route is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region of the static route.\n"
+                    },
+                    "routeId": {
+                        "type": "string",
+                        "description": "The static route ID.\n"
+                    },
+                    "routingTableId": {
+                        "type": "string",
+                        "description": "The routing table ID to which the static route is associated.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/stackit:index/VpcRoutingTableStaticRouteTimeouts:VpcRoutingTableStaticRouteTimeouts"
+                    },
+                    "vpcId": {
+                        "type": "string",
+                        "description": "The VPC ID to which the static route is associated.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "stackit:index/vpnConnection:VpnConnection": {
             "description": "VPN Connection resource schema. Uses the \u003cspan pulumi-lang-nodejs=\"`defaultRegion`\" pulumi-lang-dotnet=\"`DefaultRegion`\" pulumi-lang-go=\"`defaultRegion`\" pulumi-lang-python=\"`default_region`\" pulumi-lang-yaml=\"`defaultRegion`\" pulumi-lang-java=\"`defaultRegion`\"\u003e`defaultRegion`\u003c/span\u003e specified in the provider configuration as a fallback in case no \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e is defined on resource level.\n\n## Example Usage\n\n```terraform\nresource \"stackit_vpn_connection\" \"example\" {\n  project_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  gateway_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  display_name = \"example-vpn-connection\"\n\n  tunnel1 = {\n    remote_address    = \"198.51.100.10\"\n    pre_shared_key_wo = \"example-super-secret-key-tunnel1\"\n\n    phase1 = {\n      dh_groups             = [\"ecp384\"]\n      encryption_algorithms = [\"aes256\"]\n      integrity_algorithms  = [\"sha2_384\"]\n    }\n\n    phase2 = {\n      dh_groups             = [\"ecp384\"]\n      encryption_algorithms = [\"aes256\"]\n      integrity_algorithms  = [\"sha2_384\"]\n    }\n  }\n\n  tunnel2 = {\n    remote_address    = \"203.0.113.10\"\n    pre_shared_key_wo = \"example-super-secret-key-tunnel2\"\n\n    phase1 = {\n      dh_groups             = [\"ecp384\"]\n      encryption_algorithms = [\"aes256\"]\n      integrity_algorithms  = [\"sha2_384\"]\n    }\n\n    phase2 = {\n      dh_groups             = [\"ecp384\"]\n      encryption_algorithms = [\"aes256\"]\n      integrity_algorithms  = [\"sha2_384\"]\n    }\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing VPN connection\nimport {\n  to = stackit_vpn_connection.example\n  id = \"${var.project_id},${var.region},${var.gateway_id},${var.connection_id}\"\n}\n```\n\n",
             "properties": {
@@ -23639,7 +24461,7 @@
             }
         },
         "stackit:index/getAuthorizationFolderCustomRole:getAuthorizationFolderCustomRole": {
-            "description": "Custom Role resource schema.\n\n## Example Usage\n\n```terraform\ndata \"stackit_authorization_folder_custom_role\" \"example\" {\n  resource_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name        = \"my.custom.role\"\n}\n```\n",
+            "description": "Custom Role resource schema.\n\n## Example Usage\n\n```terraform\ndata \"stackit_authorization_folder_custom_role\" \"example\" {\n  resource_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  role_id     = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getAuthorizationFolderCustomRole.\n",
                 "properties": {
@@ -23701,7 +24523,7 @@
             }
         },
         "stackit:index/getAuthorizationOrganizationCustomRole:getAuthorizationOrganizationCustomRole": {
-            "description": "Custom Role resource schema.\n\n## Example Usage\n\n```terraform\ndata \"stackit_authorization_organization_custom_role\" \"example\" {\n  resource_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name        = \"my.custom.role\"\n}\n```\n",
+            "description": "Custom Role resource schema.\n\n## Example Usage\n\n```terraform\ndata \"stackit_authorization_organization_custom_role\" \"example\" {\n  resource_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  role_id     = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getAuthorizationOrganizationCustomRole.\n",
                 "properties": {
@@ -23763,7 +24585,7 @@
             }
         },
         "stackit:index/getAuthorizationProjectCustomRole:getAuthorizationProjectCustomRole": {
-            "description": "Custom Role resource schema.\n\n## Example Usage\n\n```terraform\ndata \"stackit_authorization_project_custom_role\" \"example\" {\n  resource_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name        = \"my.custom.role\"\n}\n```\n",
+            "description": "Custom Role resource schema.\n\n## Example Usage\n\n```terraform\ndata \"stackit_authorization_project_custom_role\" \"example\" {\n  resource_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  role_id     = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getAuthorizationProjectCustomRole.\n",
                 "properties": {
@@ -24234,7 +25056,7 @@
             }
         },
         "stackit:index/getDremioInstance:getDremioInstance": {
-            "description": "Manages a STACKIT Dremio instance.\n\n\u003e This datasource is part of the dremio experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\ndata \"stackit_dremio_instance\" \"example\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  region      = \"eu01\"\n  instance_id = \"example-instance-id\"\n}\n```\n",
+            "description": "Manages a STACKIT Dremio instance.\n\n\u003e This datasource is part of the experimental feature dremio and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\ndata \"stackit_dremio_instance\" \"example\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  region      = \"eu01\"\n  instance_id = \"example-instance-id\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getDremioInstance.\n",
                 "properties": {
@@ -24310,7 +25132,7 @@
             }
         },
         "stackit:index/getDremioUser:getDremioUser": {
-            "description": "Manages a STACKIT Dremio instances user.\n\n\u003e This datasource is part of the dremio experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\ndata \"stackit_dremio_user\" \"example\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  region      = \"eu01\"\n  instance_id = \"example-instance-id\"\n  user_id     = \"example-user-id\"\n}\n```\n",
+            "description": "Manages a STACKIT Dremio instances user.\n\n\u003e This datasource is part of the experimental feature dremio and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\ndata \"stackit_dremio_user\" \"example\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  region      = \"eu01\"\n  instance_id = \"example-instance-id\"\n  user_id     = \"example-user-id\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getDremioUser.\n",
                 "properties": {
@@ -28510,7 +29332,7 @@
             }
         },
         "stackit:index/getRoutingTable:getRoutingTable": {
-            "description": "Routing table datasource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\nThis datasource is for SNA, not VPC, based networks.\n\n\u003e This datasource is part of the routing-tables experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\ndata \"stackit_routing_table\" \"example\" {\n  organization_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  network_area_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  routing_table_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "description": "Routing table datasource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\nThis datasource is for SNA, not VPC, based networks.\n\n\u003e This datasource is part of the experimental feature routing-tables and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\ndata \"stackit_routing_table\" \"example\" {\n  organization_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  network_area_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  routing_table_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getRoutingTable.\n",
                 "properties": {
@@ -28615,7 +29437,7 @@
             }
         },
         "stackit:index/getRoutingTableRoute:getRoutingTableRoute": {
-            "description": "Routing table route datasource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\nThis datasource is for SNA, not VPC, networks.\n\n\u003e This datasource is part of the routing-tables experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\ndata \"stackit_routing_table_route\" \"example\" {\n  organization_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  network_area_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  routing_table_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  route_id         = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "description": "Routing table route datasource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\nThis datasource is for SNA, not VPC, networks.\n\n\u003e This datasource is part of the experimental feature routing-tables and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\ndata \"stackit_routing_table_route\" \"example\" {\n  organization_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  network_area_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  routing_table_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  route_id         = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getRoutingTableRoute.\n",
                 "properties": {
@@ -28715,7 +29537,7 @@
             }
         },
         "stackit:index/getRoutingTableRoutes:getRoutingTableRoutes": {
-            "description": "Routing table routes datasource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\nThis datasource is for SNA, not VPC, based networks.\n\n\u003e This datasource is part of the routing-tables experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\ndata \"stackit_routing_table_routes\" \"example\" {\n  organization_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  network_area_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  routing_table_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "description": "Routing table routes datasource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\nThis datasource is for SNA, not VPC, based networks.\n\n\u003e This datasource is part of the experimental feature routing-tables and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\ndata \"stackit_routing_table_routes\" \"example\" {\n  organization_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  network_area_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  routing_table_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getRoutingTableRoutes.\n",
                 "properties": {
@@ -28785,7 +29607,7 @@
             }
         },
         "stackit:index/getRoutingTables:getRoutingTables": {
-            "description": "Routing table datasource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\nThis datasource is for SNA, not VPC, based networks.\n\n\u003e This datasource is part of the routing-tables experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\ndata \"stackit_routing_tables\" \"example\" {\n  organization_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  network_area_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "description": "Routing table datasource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\nThis datasource is for SNA, not VPC, based networks.\n\n\u003e This datasource is part of the experimental feature routing-tables and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\ndata \"stackit_routing_tables\" \"example\" {\n  organization_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  network_area_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getRoutingTables.\n",
                 "properties": {
@@ -29146,7 +29968,7 @@
             }
         },
         "stackit:index/getSecretsmanagerInstanceRoleBindingsV1:getSecretsmanagerInstanceRoleBindingsV1": {
-            "description": "IAM role binding datasource schema.\n\n\u003e This datasource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\ndata \"stackit_secretsmanager_instance_role_bindings_v1\" \"role_binding\" {\n  resource_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "description": "IAM role binding datasource schema.\n\n\u003e This datasource is part of the experimental feature iam and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\ndata \"stackit_secretsmanager_instance_role_bindings_v1\" \"role_binding\" {\n  resource_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getSecretsmanagerInstanceRoleBindingsV1.\n",
                 "properties": {
@@ -29196,7 +30018,7 @@
             }
         },
         "stackit:index/getSecretsmanagerSecretGroupRoleBindingsV1:getSecretsmanagerSecretGroupRoleBindingsV1": {
-            "description": "IAM role binding datasource schema.\n\n\u003e This datasource is part of the iam experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\ndata \"stackit_secretsmanager_secret_group_role_bindings_v1\" \"role_binding\" {\n  resource_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "description": "IAM role binding datasource schema.\n\n\u003e This datasource is part of the experimental feature iam and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\ndata \"stackit_secretsmanager_secret_group_role_bindings_v1\" \"role_binding\" {\n  resource_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getSecretsmanagerSecretGroupRoleBindingsV1.\n",
                 "properties": {
@@ -31479,6 +32301,451 @@
                     "size",
                     "source",
                     "volumeId"
+                ]
+            }
+        },
+        "stackit:index/getVpc:getVpc": {
+            "description": "VPC datasource schema.\n\n\u003e This datasource is part of the experimental feature vpc and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\ndata \"stackit_vpc\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  vpc_id     = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getVpc.\n",
+                "properties": {
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID to which the VPC is associated.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/stackit:index/getVpcTimeouts:getVpcTimeouts"
+                    },
+                    "vpcId": {
+                        "type": "string",
+                        "description": "The VPC ID.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "projectId",
+                    "vpcId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getVpc.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "The description of the VPC.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Terraform's internal resource identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`projectId`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`vpcId`\" pulumi-lang-dotnet=\"`VpcId`\" pulumi-lang-go=\"`vpcId`\" pulumi-lang-python=\"`vpc_id`\" pulumi-lang-yaml=\"`vpcId`\" pulumi-lang-java=\"`vpcId`\"\u003e`vpcId`\u003c/span\u003e\".\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Labels are key-value string pairs which can be attached to a resource container\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the VPC.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID to which the VPC is associated.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/stackit:index/getVpcTimeouts:getVpcTimeouts"
+                    },
+                    "vpcId": {
+                        "type": "string",
+                        "description": "The VPC ID.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "description",
+                    "id",
+                    "labels",
+                    "name",
+                    "projectId",
+                    "vpcId"
+                ]
+            }
+        },
+        "stackit:index/getVpcNetworkRange:getVpcNetworkRange": {
+            "description": "VPC network range datasource schema\n\n\u003e This datasource is part of the experimental feature vpc and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\ndata \"stackit_vpc_network_range\" \"example\" {\n  project_id       = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  vpc_id           = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  network_range_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getVpcNetworkRange.\n",
+                "properties": {
+                    "networkRangeId": {
+                        "type": "string"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID to which the VPC network range is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/stackit:index/getVpcNetworkRangeTimeouts:getVpcNetworkRangeTimeouts"
+                    },
+                    "vpcId": {
+                        "type": "string",
+                        "description": "The VPC ID to which the VPC network range is associated.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "networkRangeId",
+                    "projectId",
+                    "vpcId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getVpcNetworkRange.\n",
+                "properties": {
+                    "defaultPrefixLength": {
+                        "type": "integer",
+                        "description": "Default prefix length for the VPC network range\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the VPC network range\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Terraform's internal resource identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`projectId`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`vpcId`\" pulumi-lang-dotnet=\"`VpcId`\" pulumi-lang-go=\"`vpcId`\" pulumi-lang-python=\"`vpc_id`\" pulumi-lang-yaml=\"`vpcId`\" pulumi-lang-java=\"`vpcId`\"\u003e`vpcId`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`networkRangeId`\" pulumi-lang-dotnet=\"`NetworkRangeId`\" pulumi-lang-go=\"`networkRangeId`\" pulumi-lang-python=\"`network_range_id`\" pulumi-lang-yaml=\"`networkRangeId`\" pulumi-lang-java=\"`networkRangeId`\"\u003e`networkRangeId`\u003c/span\u003e\".\n"
+                    },
+                    "ipVersion": {
+                        "type": "string",
+                        "description": "IP version of the VPC network range. Possible values are: \u003cspan pulumi-lang-nodejs=\"`ipv4`\" pulumi-lang-dotnet=\"`Ipv4`\" pulumi-lang-go=\"`ipv4`\" pulumi-lang-python=\"`ipv4`\" pulumi-lang-yaml=\"`ipv4`\" pulumi-lang-java=\"`ipv4`\"\u003e`ipv4`\u003c/span\u003e.\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Labels are key-value string pairs which can be attached to a resource container\n"
+                    },
+                    "maxPrefixLength": {
+                        "type": "integer",
+                        "description": "Maximum prefix length for the VPC network range\n"
+                    },
+                    "minPrefixLength": {
+                        "type": "integer",
+                        "description": "Minimum prefix length for the VPC network range\n"
+                    },
+                    "nameservers": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of nameservers for the VPC network range\n"
+                    },
+                    "networkRangeId": {
+                        "type": "string"
+                    },
+                    "prefix": {
+                        "type": "string",
+                        "description": "The IP prefix for the VPC network range\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID to which the VPC network range is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/stackit:index/getVpcNetworkRangeTimeouts:getVpcNetworkRangeTimeouts"
+                    },
+                    "vpcId": {
+                        "type": "string",
+                        "description": "The VPC ID to which the VPC network range is associated.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "defaultPrefixLength",
+                    "description",
+                    "id",
+                    "ipVersion",
+                    "labels",
+                    "maxPrefixLength",
+                    "minPrefixLength",
+                    "nameservers",
+                    "networkRangeId",
+                    "prefix",
+                    "projectId",
+                    "region",
+                    "vpcId"
+                ]
+            }
+        },
+        "stackit:index/getVpcRegion:getVpcRegion": {
+            "description": "VPC region datasource schema\n\n\u003e This datasource is part of the experimental feature vpc and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\ndata \"stackit_vpc_region\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  vpc_id     = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  region     = \"eu01\"\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getVpcRegion.\n",
+                "properties": {
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID to which the VPC region is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/stackit:index/getVpcRegionTimeouts:getVpcRegionTimeouts"
+                    },
+                    "vpcId": {
+                        "type": "string",
+                        "description": "The VPC ID to which the VPC region is associated.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "projectId",
+                    "vpcId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getVpcRegion.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Terraform's internal resource ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`projectId`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`vpcId`\" pulumi-lang-dotnet=\"`VpcId`\" pulumi-lang-go=\"`vpcId`\" pulumi-lang-python=\"`vpc_id`\" pulumi-lang-yaml=\"`vpcId`\" pulumi-lang-java=\"`vpcId`\"\u003e`vpcId`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e\".\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID to which the VPC region is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/stackit:index/getVpcRegionTimeouts:getVpcRegionTimeouts"
+                    },
+                    "vpcId": {
+                        "type": "string",
+                        "description": "The VPC ID to which the VPC region is associated.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "projectId",
+                    "vpcId"
+                ]
+            }
+        },
+        "stackit:index/getVpcRoutingTable:getVpcRoutingTable": {
+            "description": "VPC Regional routing table datasource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n\u003e This datasource is part of the experimental feature vpc and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\ndata \"stackit_routing_table\" \"example\" {\n  project_id       = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  vpc_id           = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  routing_table_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getVpcRoutingTable.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the regional routing table.\n"
+                    },
+                    "dynamicRoutes": {
+                        "type": "boolean",
+                        "description": "This controls whether dynamic routes are propagated to this regional routing table\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Labels are key-value string pairs which can be attached to a resource container\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID to which the regional routing table is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    },
+                    "routingTableId": {
+                        "type": "string",
+                        "description": "The regional routing tables ID.\n"
+                    },
+                    "systemRoutes": {
+                        "type": "boolean",
+                        "description": "This allows installation of automatic system routes for connectivity between projects in the same VPC.\n"
+                    },
+                    "vpcId": {
+                        "type": "string",
+                        "description": "The vpc ID to which the regional routing table is associated.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "projectId",
+                    "routingTableId",
+                    "vpcId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getVpcRoutingTable.\n",
+                "properties": {
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the regional routing table.\n"
+                    },
+                    "dynamicRoutes": {
+                        "type": "boolean",
+                        "description": "This controls whether dynamic routes are propagated to this regional routing table\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Terraform's internal resource ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`projectId`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`vpcId`\" pulumi-lang-dotnet=\"`VpcId`\" pulumi-lang-go=\"`vpcId`\" pulumi-lang-python=\"`vpc_id`\" pulumi-lang-yaml=\"`vpcId`\" pulumi-lang-java=\"`vpcId`\"\u003e`vpcId`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`routingTableId`\" pulumi-lang-dotnet=\"`RoutingTableId`\" pulumi-lang-go=\"`routingTableId`\" pulumi-lang-python=\"`routing_table_id`\" pulumi-lang-yaml=\"`routingTableId`\" pulumi-lang-java=\"`routingTableId`\"\u003e`routingTableId`\u003c/span\u003e\".\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Labels are key-value string pairs which can be attached to a resource container\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the regional routing table.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID to which the regional routing table is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    },
+                    "routingTableId": {
+                        "type": "string",
+                        "description": "The regional routing tables ID.\n"
+                    },
+                    "systemRoutes": {
+                        "type": "boolean",
+                        "description": "This allows installation of automatic system routes for connectivity between projects in the same VPC.\n"
+                    },
+                    "vpcId": {
+                        "type": "string",
+                        "description": "The vpc ID to which the regional routing table is associated.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "description",
+                    "dynamicRoutes",
+                    "id",
+                    "name",
+                    "projectId",
+                    "region",
+                    "routingTableId",
+                    "systemRoutes",
+                    "vpcId"
+                ]
+            }
+        },
+        "stackit:index/getVpcRoutingTableStaticRoute:getVpcRoutingTableStaticRoute": {
+            "description": "VPC Routing table static route datasource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n\u003e This datasource is part of the experimental feature vpc and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getVpcRoutingTableStaticRoute.\n",
+                "properties": {
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT Project ID to which the static route is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region of the static route.\n"
+                    },
+                    "routeId": {
+                        "type": "string",
+                        "description": "The static route ID.\n"
+                    },
+                    "routingTableId": {
+                        "type": "string",
+                        "description": "The routing table ID to which the static route is associated.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/stackit:index/getVpcRoutingTableStaticRouteTimeouts:getVpcRoutingTableStaticRouteTimeouts"
+                    },
+                    "vpcId": {
+                        "type": "string",
+                        "description": "The VPC ID to which the static route is associated.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "projectId",
+                    "routeId",
+                    "routingTableId",
+                    "vpcId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getVpcRoutingTableStaticRoute.\n",
+                "properties": {
+                    "destination": {
+                        "$ref": "#/types/stackit:index/getVpcRoutingTableStaticRouteDestination:getVpcRoutingTableStaticRouteDestination",
+                        "description": "The destination of the static route.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Terraform's internal resource ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`projectId`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`vpcId`\" pulumi-lang-dotnet=\"`VpcId`\" pulumi-lang-go=\"`vpcId`\" pulumi-lang-python=\"`vpc_id`\" pulumi-lang-yaml=\"`vpcId`\" pulumi-lang-java=\"`vpcId`\"\u003e`vpcId`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`routingTableId`\" pulumi-lang-dotnet=\"`RoutingTableId`\" pulumi-lang-go=\"`routingTableId`\" pulumi-lang-python=\"`routing_table_id`\" pulumi-lang-yaml=\"`routingTableId`\" pulumi-lang-java=\"`routingTableId`\"\u003e`routingTableId`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`routeId`\" pulumi-lang-dotnet=\"`RouteId`\" pulumi-lang-go=\"`routeId`\" pulumi-lang-python=\"`route_id`\" pulumi-lang-yaml=\"`routeId`\" pulumi-lang-java=\"`routeId`\"\u003e`routeId`\u003c/span\u003e\".\n"
+                    },
+                    "labels": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Labels are key-value string pairs which can be attached to a resource container\n"
+                    },
+                    "nexthop": {
+                        "$ref": "#/types/stackit:index/getVpcRoutingTableStaticRouteNexthop:getVpcRoutingTableStaticRouteNexthop",
+                        "description": "The nexthop of the static route.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT Project ID to which the static route is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region of the static route.\n"
+                    },
+                    "routeId": {
+                        "type": "string",
+                        "description": "The static route ID.\n"
+                    },
+                    "routingTableId": {
+                        "type": "string",
+                        "description": "The routing table ID to which the static route is associated.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/stackit:index/getVpcRoutingTableStaticRouteTimeouts:getVpcRoutingTableStaticRouteTimeouts"
+                    },
+                    "vpcId": {
+                        "type": "string",
+                        "description": "The VPC ID to which the static route is associated.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "destination",
+                    "id",
+                    "labels",
+                    "nexthop",
+                    "projectId",
+                    "region",
+                    "routeId",
+                    "routingTableId",
+                    "vpcId"
                 ]
             }
         },

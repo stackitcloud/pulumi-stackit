@@ -936,6 +936,26 @@
             "stackit_volume": {
                 "current": "stackit:index/volume:Volume"
             },
+            "stackit_vpc": {
+                "current": "stackit:index/vpc:Vpc"
+            },
+            "stackit_vpc_network_range": {
+                "current": "stackit:index/vpcNetworkRange:VpcNetworkRange",
+                "fields": {
+                    "nameservers": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_vpc_region": {
+                "current": "stackit:index/vpcRegion:VpcRegion"
+            },
+            "stackit_vpc_routing_table": {
+                "current": "stackit:index/vpcRoutingTable:VpcRoutingTable"
+            },
+            "stackit_vpc_routing_table_static_route": {
+                "current": "stackit:index/vpcRoutingTableStaticRoute:VpcRoutingTableStaticRoute"
+            },
             "stackit_vpn_connection": {
                 "current": "stackit:index/vpnConnection:VpnConnection",
                 "fields": {
@@ -2063,6 +2083,26 @@
             },
             "stackit_volume": {
                 "current": "stackit:index/getVolume:getVolume"
+            },
+            "stackit_vpc": {
+                "current": "stackit:index/getVpc:getVpc"
+            },
+            "stackit_vpc_network_range": {
+                "current": "stackit:index/getVpcNetworkRange:getVpcNetworkRange",
+                "fields": {
+                    "nameservers": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_vpc_region": {
+                "current": "stackit:index/getVpcRegion:getVpcRegion"
+            },
+            "stackit_vpc_routing_table": {
+                "current": "stackit:index/getVpcRoutingTable:getVpcRoutingTable"
+            },
+            "stackit_vpc_routing_table_static_route": {
+                "current": "stackit:index/getVpcRoutingTableStaticRoute:getVpcRoutingTableStaticRoute"
             },
             "stackit_vpn_connection": {
                 "current": "stackit:index/getVpnConnection:getVpnConnection",
