@@ -16,7 +16,7 @@ namespace Pulumi.Stackit
         /// 
         /// This datasource is for SNA, not VPC, based networks.
         /// 
-        /// &gt; This datasource is part of the routing-tables experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
+        /// &gt; This datasource is part of the experimental feature routing-tables and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
         /// 
         /// ## Example Usage
         /// 
@@ -36,7 +36,7 @@ namespace Pulumi.Stackit
         /// 
         /// This datasource is for SNA, not VPC, based networks.
         /// 
-        /// &gt; This datasource is part of the routing-tables experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
+        /// &gt; This datasource is part of the experimental feature routing-tables and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
         /// 
         /// ## Example Usage
         /// 
@@ -56,7 +56,7 @@ namespace Pulumi.Stackit
         /// 
         /// This datasource is for SNA, not VPC, based networks.
         /// 
-        /// &gt; This datasource is part of the routing-tables experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
+        /// &gt; This datasource is part of the experimental feature routing-tables and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
         /// 
         /// ## Example Usage
         /// 

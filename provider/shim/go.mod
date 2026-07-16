@@ -2,14 +2,14 @@ module github.com/stackitcloud/pulumi-stackit/provider/shim
 
 go 1.26.0
 
-require github.com/stackitcloud/terraform-provider-stackit v0.102.0
+require github.com/stackitcloud/terraform-provider-stackit v0.103.0
 
 require (
 	github.com/hashicorp/go-uuid v1.0.3 // indirect
 	github.com/hashicorp/terraform-plugin-framework-timeouts v0.7.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/alb v0.15.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/certificates v1.8.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/dremio v0.3.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/dremio v0.4.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/edge v0.12.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/intake v0.11.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/kms v1.11.0 // indirect
@@ -41,7 +41,7 @@ require (
 	github.com/stackitcloud/stackit-sdk-go/services/cdn v1.18.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/dns v0.21.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/git v0.14.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/iaas v1.12.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/iaas v1.13.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/loadbalancer v1.14.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/logme v1.0.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/mariadb v1.0.0 // indirect

@@ -219,6 +219,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TelemetryrouterInstance{}
 	case "stackit:index/volume:Volume":
 		r = &Volume{}
+	case "stackit:index/vpc:Vpc":
+		r = &Vpc{}
+	case "stackit:index/vpcNetworkRange:VpcNetworkRange":
+		r = &VpcNetworkRange{}
+	case "stackit:index/vpcRegion:VpcRegion":
+		r = &VpcRegion{}
+	case "stackit:index/vpcRoutingTable:VpcRoutingTable":
+		r = &VpcRoutingTable{}
+	case "stackit:index/vpcRoutingTableStaticRoute:VpcRoutingTableStaticRoute":
+		r = &VpcRoutingTableStaticRoute{}
 	case "stackit:index/vpnConnection:VpnConnection":
 		r = &VpnConnection{}
 	case "stackit:index/vpnGateway:VpnGateway":
@@ -747,6 +757,31 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"stackit",
 		"index/volume",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/vpc",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/vpcNetworkRange",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/vpcRegion",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/vpcRoutingTable",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/vpcRoutingTableStaticRoute",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

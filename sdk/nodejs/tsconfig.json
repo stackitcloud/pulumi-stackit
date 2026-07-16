@@ -139,6 +139,11 @@
         "getTelemetryrouterDestination.ts",
         "getTelemetryrouterInstance.ts",
         "getVolume.ts",
+        "getVpc.ts",
+        "getVpcNetworkRange.ts",
+        "getVpcRegion.ts",
+        "getVpcRoutingTable.ts",
+        "getVpcRoutingTableStaticRoute.ts",
         "getVpnConnection.ts",
         "getVpnGateway.ts",
         "getVpnGatewayStatus.ts",
@@ -228,6 +233,11 @@
         "types/output.ts",
         "utilities.ts",
         "volume.ts",
+        "vpc.ts",
+        "vpcNetworkRange.ts",
+        "vpcRegion.ts",
+        "vpcRoutingTable.ts",
+        "vpcRoutingTableStaticRoute.ts",
         "vpnConnection.ts",
         "vpnGateway.ts"
     ]

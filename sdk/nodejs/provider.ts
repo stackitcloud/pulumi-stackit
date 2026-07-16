@@ -354,7 +354,7 @@ export interface ProviderArgs {
      */
     enableBetaResources?: pulumi.Input<boolean | undefined>;
     /**
-     * Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, routing-tables, network
+     * Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, network, routing-tables, vpc
      */
     experiments?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**

@@ -166,7 +166,7 @@ def get_dremio_user(description: Optional[_builtins.str] = None,
     """
     Manages a STACKIT Dremio instances user.
 
-    > This datasource is part of the dremio experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
+    > This datasource is part of the experimental feature dremio and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
 
     ## Example Usage
 
@@ -206,7 +206,7 @@ def get_dremio_user_output(description: pulumi.Input[Optional[Optional[_builtins
     """
     Manages a STACKIT Dremio instances user.
 
-    > This datasource is part of the dremio experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
+    > This datasource is part of the experimental feature dremio and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
 
     ## Example Usage
 

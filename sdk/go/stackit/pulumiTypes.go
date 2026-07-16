@@ -21979,6 +21979,1094 @@ func (o VolumeSourcePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type VpcNetworkRangeTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// VpcNetworkRangeTimeoutsInput is an input type that accepts VpcNetworkRangeTimeoutsArgs and VpcNetworkRangeTimeoutsOutput values.
+// You can construct a concrete instance of `VpcNetworkRangeTimeoutsInput` via:
+//
+//	VpcNetworkRangeTimeoutsArgs{...}
+type VpcNetworkRangeTimeoutsInput interface {
+	pulumi.Input
+
+	ToVpcNetworkRangeTimeoutsOutput() VpcNetworkRangeTimeoutsOutput
+	ToVpcNetworkRangeTimeoutsOutputWithContext(context.Context) VpcNetworkRangeTimeoutsOutput
+}
+
+type VpcNetworkRangeTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (VpcNetworkRangeTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcNetworkRangeTimeouts)(nil)).Elem()
+}
+
+func (i VpcNetworkRangeTimeoutsArgs) ToVpcNetworkRangeTimeoutsOutput() VpcNetworkRangeTimeoutsOutput {
+	return i.ToVpcNetworkRangeTimeoutsOutputWithContext(context.Background())
+}
+
+func (i VpcNetworkRangeTimeoutsArgs) ToVpcNetworkRangeTimeoutsOutputWithContext(ctx context.Context) VpcNetworkRangeTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcNetworkRangeTimeoutsOutput)
+}
+
+func (i VpcNetworkRangeTimeoutsArgs) ToVpcNetworkRangeTimeoutsPtrOutput() VpcNetworkRangeTimeoutsPtrOutput {
+	return i.ToVpcNetworkRangeTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i VpcNetworkRangeTimeoutsArgs) ToVpcNetworkRangeTimeoutsPtrOutputWithContext(ctx context.Context) VpcNetworkRangeTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcNetworkRangeTimeoutsOutput).ToVpcNetworkRangeTimeoutsPtrOutputWithContext(ctx)
+}
+
+// VpcNetworkRangeTimeoutsPtrInput is an input type that accepts VpcNetworkRangeTimeoutsArgs, VpcNetworkRangeTimeoutsPtr and VpcNetworkRangeTimeoutsPtrOutput values.
+// You can construct a concrete instance of `VpcNetworkRangeTimeoutsPtrInput` via:
+//
+//	        VpcNetworkRangeTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type VpcNetworkRangeTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToVpcNetworkRangeTimeoutsPtrOutput() VpcNetworkRangeTimeoutsPtrOutput
+	ToVpcNetworkRangeTimeoutsPtrOutputWithContext(context.Context) VpcNetworkRangeTimeoutsPtrOutput
+}
+
+type vpcNetworkRangeTimeoutsPtrType VpcNetworkRangeTimeoutsArgs
+
+func VpcNetworkRangeTimeoutsPtr(v *VpcNetworkRangeTimeoutsArgs) VpcNetworkRangeTimeoutsPtrInput {
+	return (*vpcNetworkRangeTimeoutsPtrType)(v)
+}
+
+func (*vpcNetworkRangeTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcNetworkRangeTimeouts)(nil)).Elem()
+}
+
+func (i *vpcNetworkRangeTimeoutsPtrType) ToVpcNetworkRangeTimeoutsPtrOutput() VpcNetworkRangeTimeoutsPtrOutput {
+	return i.ToVpcNetworkRangeTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *vpcNetworkRangeTimeoutsPtrType) ToVpcNetworkRangeTimeoutsPtrOutputWithContext(ctx context.Context) VpcNetworkRangeTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcNetworkRangeTimeoutsPtrOutput)
+}
+
+type VpcNetworkRangeTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (VpcNetworkRangeTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcNetworkRangeTimeouts)(nil)).Elem()
+}
+
+func (o VpcNetworkRangeTimeoutsOutput) ToVpcNetworkRangeTimeoutsOutput() VpcNetworkRangeTimeoutsOutput {
+	return o
+}
+
+func (o VpcNetworkRangeTimeoutsOutput) ToVpcNetworkRangeTimeoutsOutputWithContext(ctx context.Context) VpcNetworkRangeTimeoutsOutput {
+	return o
+}
+
+func (o VpcNetworkRangeTimeoutsOutput) ToVpcNetworkRangeTimeoutsPtrOutput() VpcNetworkRangeTimeoutsPtrOutput {
+	return o.ToVpcNetworkRangeTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o VpcNetworkRangeTimeoutsOutput) ToVpcNetworkRangeTimeoutsPtrOutputWithContext(ctx context.Context) VpcNetworkRangeTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpcNetworkRangeTimeouts) *VpcNetworkRangeTimeouts {
+		return &v
+	}).(VpcNetworkRangeTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VpcNetworkRangeTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpcNetworkRangeTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o VpcNetworkRangeTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpcNetworkRangeTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o VpcNetworkRangeTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpcNetworkRangeTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VpcNetworkRangeTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpcNetworkRangeTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type VpcNetworkRangeTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (VpcNetworkRangeTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcNetworkRangeTimeouts)(nil)).Elem()
+}
+
+func (o VpcNetworkRangeTimeoutsPtrOutput) ToVpcNetworkRangeTimeoutsPtrOutput() VpcNetworkRangeTimeoutsPtrOutput {
+	return o
+}
+
+func (o VpcNetworkRangeTimeoutsPtrOutput) ToVpcNetworkRangeTimeoutsPtrOutputWithContext(ctx context.Context) VpcNetworkRangeTimeoutsPtrOutput {
+	return o
+}
+
+func (o VpcNetworkRangeTimeoutsPtrOutput) Elem() VpcNetworkRangeTimeoutsOutput {
+	return o.ApplyT(func(v *VpcNetworkRangeTimeouts) VpcNetworkRangeTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret VpcNetworkRangeTimeouts
+		return ret
+	}).(VpcNetworkRangeTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VpcNetworkRangeTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcNetworkRangeTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o VpcNetworkRangeTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcNetworkRangeTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o VpcNetworkRangeTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcNetworkRangeTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VpcNetworkRangeTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcNetworkRangeTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
+type VpcRegionTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// VpcRegionTimeoutsInput is an input type that accepts VpcRegionTimeoutsArgs and VpcRegionTimeoutsOutput values.
+// You can construct a concrete instance of `VpcRegionTimeoutsInput` via:
+//
+//	VpcRegionTimeoutsArgs{...}
+type VpcRegionTimeoutsInput interface {
+	pulumi.Input
+
+	ToVpcRegionTimeoutsOutput() VpcRegionTimeoutsOutput
+	ToVpcRegionTimeoutsOutputWithContext(context.Context) VpcRegionTimeoutsOutput
+}
+
+type VpcRegionTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (VpcRegionTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcRegionTimeouts)(nil)).Elem()
+}
+
+func (i VpcRegionTimeoutsArgs) ToVpcRegionTimeoutsOutput() VpcRegionTimeoutsOutput {
+	return i.ToVpcRegionTimeoutsOutputWithContext(context.Background())
+}
+
+func (i VpcRegionTimeoutsArgs) ToVpcRegionTimeoutsOutputWithContext(ctx context.Context) VpcRegionTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcRegionTimeoutsOutput)
+}
+
+func (i VpcRegionTimeoutsArgs) ToVpcRegionTimeoutsPtrOutput() VpcRegionTimeoutsPtrOutput {
+	return i.ToVpcRegionTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i VpcRegionTimeoutsArgs) ToVpcRegionTimeoutsPtrOutputWithContext(ctx context.Context) VpcRegionTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcRegionTimeoutsOutput).ToVpcRegionTimeoutsPtrOutputWithContext(ctx)
+}
+
+// VpcRegionTimeoutsPtrInput is an input type that accepts VpcRegionTimeoutsArgs, VpcRegionTimeoutsPtr and VpcRegionTimeoutsPtrOutput values.
+// You can construct a concrete instance of `VpcRegionTimeoutsPtrInput` via:
+//
+//	        VpcRegionTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type VpcRegionTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToVpcRegionTimeoutsPtrOutput() VpcRegionTimeoutsPtrOutput
+	ToVpcRegionTimeoutsPtrOutputWithContext(context.Context) VpcRegionTimeoutsPtrOutput
+}
+
+type vpcRegionTimeoutsPtrType VpcRegionTimeoutsArgs
+
+func VpcRegionTimeoutsPtr(v *VpcRegionTimeoutsArgs) VpcRegionTimeoutsPtrInput {
+	return (*vpcRegionTimeoutsPtrType)(v)
+}
+
+func (*vpcRegionTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcRegionTimeouts)(nil)).Elem()
+}
+
+func (i *vpcRegionTimeoutsPtrType) ToVpcRegionTimeoutsPtrOutput() VpcRegionTimeoutsPtrOutput {
+	return i.ToVpcRegionTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *vpcRegionTimeoutsPtrType) ToVpcRegionTimeoutsPtrOutputWithContext(ctx context.Context) VpcRegionTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcRegionTimeoutsPtrOutput)
+}
+
+type VpcRegionTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (VpcRegionTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcRegionTimeouts)(nil)).Elem()
+}
+
+func (o VpcRegionTimeoutsOutput) ToVpcRegionTimeoutsOutput() VpcRegionTimeoutsOutput {
+	return o
+}
+
+func (o VpcRegionTimeoutsOutput) ToVpcRegionTimeoutsOutputWithContext(ctx context.Context) VpcRegionTimeoutsOutput {
+	return o
+}
+
+func (o VpcRegionTimeoutsOutput) ToVpcRegionTimeoutsPtrOutput() VpcRegionTimeoutsPtrOutput {
+	return o.ToVpcRegionTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o VpcRegionTimeoutsOutput) ToVpcRegionTimeoutsPtrOutputWithContext(ctx context.Context) VpcRegionTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpcRegionTimeouts) *VpcRegionTimeouts {
+		return &v
+	}).(VpcRegionTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VpcRegionTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpcRegionTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o VpcRegionTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpcRegionTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o VpcRegionTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpcRegionTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VpcRegionTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpcRegionTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type VpcRegionTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (VpcRegionTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcRegionTimeouts)(nil)).Elem()
+}
+
+func (o VpcRegionTimeoutsPtrOutput) ToVpcRegionTimeoutsPtrOutput() VpcRegionTimeoutsPtrOutput {
+	return o
+}
+
+func (o VpcRegionTimeoutsPtrOutput) ToVpcRegionTimeoutsPtrOutputWithContext(ctx context.Context) VpcRegionTimeoutsPtrOutput {
+	return o
+}
+
+func (o VpcRegionTimeoutsPtrOutput) Elem() VpcRegionTimeoutsOutput {
+	return o.ApplyT(func(v *VpcRegionTimeouts) VpcRegionTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret VpcRegionTimeouts
+		return ret
+	}).(VpcRegionTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VpcRegionTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcRegionTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o VpcRegionTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcRegionTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o VpcRegionTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcRegionTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VpcRegionTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcRegionTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
+type VpcRoutingTableStaticRouteDestination struct {
+	// CIDR type. Possible values are: `cidrv4`, `cidrv6`. Currently cidrv6 is unsupported.
+	Type string `pulumi:"type"`
+	// CIDR value.
+	Value string `pulumi:"value"`
+}
+
+// VpcRoutingTableStaticRouteDestinationInput is an input type that accepts VpcRoutingTableStaticRouteDestinationArgs and VpcRoutingTableStaticRouteDestinationOutput values.
+// You can construct a concrete instance of `VpcRoutingTableStaticRouteDestinationInput` via:
+//
+//	VpcRoutingTableStaticRouteDestinationArgs{...}
+type VpcRoutingTableStaticRouteDestinationInput interface {
+	pulumi.Input
+
+	ToVpcRoutingTableStaticRouteDestinationOutput() VpcRoutingTableStaticRouteDestinationOutput
+	ToVpcRoutingTableStaticRouteDestinationOutputWithContext(context.Context) VpcRoutingTableStaticRouteDestinationOutput
+}
+
+type VpcRoutingTableStaticRouteDestinationArgs struct {
+	// CIDR type. Possible values are: `cidrv4`, `cidrv6`. Currently cidrv6 is unsupported.
+	Type pulumi.StringInput `pulumi:"type"`
+	// CIDR value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (VpcRoutingTableStaticRouteDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcRoutingTableStaticRouteDestination)(nil)).Elem()
+}
+
+func (i VpcRoutingTableStaticRouteDestinationArgs) ToVpcRoutingTableStaticRouteDestinationOutput() VpcRoutingTableStaticRouteDestinationOutput {
+	return i.ToVpcRoutingTableStaticRouteDestinationOutputWithContext(context.Background())
+}
+
+func (i VpcRoutingTableStaticRouteDestinationArgs) ToVpcRoutingTableStaticRouteDestinationOutputWithContext(ctx context.Context) VpcRoutingTableStaticRouteDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcRoutingTableStaticRouteDestinationOutput)
+}
+
+func (i VpcRoutingTableStaticRouteDestinationArgs) ToVpcRoutingTableStaticRouteDestinationPtrOutput() VpcRoutingTableStaticRouteDestinationPtrOutput {
+	return i.ToVpcRoutingTableStaticRouteDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i VpcRoutingTableStaticRouteDestinationArgs) ToVpcRoutingTableStaticRouteDestinationPtrOutputWithContext(ctx context.Context) VpcRoutingTableStaticRouteDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcRoutingTableStaticRouteDestinationOutput).ToVpcRoutingTableStaticRouteDestinationPtrOutputWithContext(ctx)
+}
+
+// VpcRoutingTableStaticRouteDestinationPtrInput is an input type that accepts VpcRoutingTableStaticRouteDestinationArgs, VpcRoutingTableStaticRouteDestinationPtr and VpcRoutingTableStaticRouteDestinationPtrOutput values.
+// You can construct a concrete instance of `VpcRoutingTableStaticRouteDestinationPtrInput` via:
+//
+//	        VpcRoutingTableStaticRouteDestinationArgs{...}
+//
+//	or:
+//
+//	        nil
+type VpcRoutingTableStaticRouteDestinationPtrInput interface {
+	pulumi.Input
+
+	ToVpcRoutingTableStaticRouteDestinationPtrOutput() VpcRoutingTableStaticRouteDestinationPtrOutput
+	ToVpcRoutingTableStaticRouteDestinationPtrOutputWithContext(context.Context) VpcRoutingTableStaticRouteDestinationPtrOutput
+}
+
+type vpcRoutingTableStaticRouteDestinationPtrType VpcRoutingTableStaticRouteDestinationArgs
+
+func VpcRoutingTableStaticRouteDestinationPtr(v *VpcRoutingTableStaticRouteDestinationArgs) VpcRoutingTableStaticRouteDestinationPtrInput {
+	return (*vpcRoutingTableStaticRouteDestinationPtrType)(v)
+}
+
+func (*vpcRoutingTableStaticRouteDestinationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcRoutingTableStaticRouteDestination)(nil)).Elem()
+}
+
+func (i *vpcRoutingTableStaticRouteDestinationPtrType) ToVpcRoutingTableStaticRouteDestinationPtrOutput() VpcRoutingTableStaticRouteDestinationPtrOutput {
+	return i.ToVpcRoutingTableStaticRouteDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i *vpcRoutingTableStaticRouteDestinationPtrType) ToVpcRoutingTableStaticRouteDestinationPtrOutputWithContext(ctx context.Context) VpcRoutingTableStaticRouteDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcRoutingTableStaticRouteDestinationPtrOutput)
+}
+
+type VpcRoutingTableStaticRouteDestinationOutput struct{ *pulumi.OutputState }
+
+func (VpcRoutingTableStaticRouteDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcRoutingTableStaticRouteDestination)(nil)).Elem()
+}
+
+func (o VpcRoutingTableStaticRouteDestinationOutput) ToVpcRoutingTableStaticRouteDestinationOutput() VpcRoutingTableStaticRouteDestinationOutput {
+	return o
+}
+
+func (o VpcRoutingTableStaticRouteDestinationOutput) ToVpcRoutingTableStaticRouteDestinationOutputWithContext(ctx context.Context) VpcRoutingTableStaticRouteDestinationOutput {
+	return o
+}
+
+func (o VpcRoutingTableStaticRouteDestinationOutput) ToVpcRoutingTableStaticRouteDestinationPtrOutput() VpcRoutingTableStaticRouteDestinationPtrOutput {
+	return o.ToVpcRoutingTableStaticRouteDestinationPtrOutputWithContext(context.Background())
+}
+
+func (o VpcRoutingTableStaticRouteDestinationOutput) ToVpcRoutingTableStaticRouteDestinationPtrOutputWithContext(ctx context.Context) VpcRoutingTableStaticRouteDestinationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpcRoutingTableStaticRouteDestination) *VpcRoutingTableStaticRouteDestination {
+		return &v
+	}).(VpcRoutingTableStaticRouteDestinationPtrOutput)
+}
+
+// CIDR type. Possible values are: `cidrv4`, `cidrv6`. Currently cidrv6 is unsupported.
+func (o VpcRoutingTableStaticRouteDestinationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v VpcRoutingTableStaticRouteDestination) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// CIDR value.
+func (o VpcRoutingTableStaticRouteDestinationOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v VpcRoutingTableStaticRouteDestination) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type VpcRoutingTableStaticRouteDestinationPtrOutput struct{ *pulumi.OutputState }
+
+func (VpcRoutingTableStaticRouteDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcRoutingTableStaticRouteDestination)(nil)).Elem()
+}
+
+func (o VpcRoutingTableStaticRouteDestinationPtrOutput) ToVpcRoutingTableStaticRouteDestinationPtrOutput() VpcRoutingTableStaticRouteDestinationPtrOutput {
+	return o
+}
+
+func (o VpcRoutingTableStaticRouteDestinationPtrOutput) ToVpcRoutingTableStaticRouteDestinationPtrOutputWithContext(ctx context.Context) VpcRoutingTableStaticRouteDestinationPtrOutput {
+	return o
+}
+
+func (o VpcRoutingTableStaticRouteDestinationPtrOutput) Elem() VpcRoutingTableStaticRouteDestinationOutput {
+	return o.ApplyT(func(v *VpcRoutingTableStaticRouteDestination) VpcRoutingTableStaticRouteDestination {
+		if v != nil {
+			return *v
+		}
+		var ret VpcRoutingTableStaticRouteDestination
+		return ret
+	}).(VpcRoutingTableStaticRouteDestinationOutput)
+}
+
+// CIDR type. Possible values are: `cidrv4`, `cidrv6`. Currently cidrv6 is unsupported.
+func (o VpcRoutingTableStaticRouteDestinationPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcRoutingTableStaticRouteDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// CIDR value.
+func (o VpcRoutingTableStaticRouteDestinationPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcRoutingTableStaticRouteDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type VpcRoutingTableStaticRouteNexthop struct {
+	// Type of the nexthop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Currently ipv6 is unsupported.
+	Type string `pulumi:"type"`
+	// Value of the nexthop
+	Value *string `pulumi:"value"`
+}
+
+// VpcRoutingTableStaticRouteNexthopInput is an input type that accepts VpcRoutingTableStaticRouteNexthopArgs and VpcRoutingTableStaticRouteNexthopOutput values.
+// You can construct a concrete instance of `VpcRoutingTableStaticRouteNexthopInput` via:
+//
+//	VpcRoutingTableStaticRouteNexthopArgs{...}
+type VpcRoutingTableStaticRouteNexthopInput interface {
+	pulumi.Input
+
+	ToVpcRoutingTableStaticRouteNexthopOutput() VpcRoutingTableStaticRouteNexthopOutput
+	ToVpcRoutingTableStaticRouteNexthopOutputWithContext(context.Context) VpcRoutingTableStaticRouteNexthopOutput
+}
+
+type VpcRoutingTableStaticRouteNexthopArgs struct {
+	// Type of the nexthop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Currently ipv6 is unsupported.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Value of the nexthop
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (VpcRoutingTableStaticRouteNexthopArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcRoutingTableStaticRouteNexthop)(nil)).Elem()
+}
+
+func (i VpcRoutingTableStaticRouteNexthopArgs) ToVpcRoutingTableStaticRouteNexthopOutput() VpcRoutingTableStaticRouteNexthopOutput {
+	return i.ToVpcRoutingTableStaticRouteNexthopOutputWithContext(context.Background())
+}
+
+func (i VpcRoutingTableStaticRouteNexthopArgs) ToVpcRoutingTableStaticRouteNexthopOutputWithContext(ctx context.Context) VpcRoutingTableStaticRouteNexthopOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcRoutingTableStaticRouteNexthopOutput)
+}
+
+func (i VpcRoutingTableStaticRouteNexthopArgs) ToVpcRoutingTableStaticRouteNexthopPtrOutput() VpcRoutingTableStaticRouteNexthopPtrOutput {
+	return i.ToVpcRoutingTableStaticRouteNexthopPtrOutputWithContext(context.Background())
+}
+
+func (i VpcRoutingTableStaticRouteNexthopArgs) ToVpcRoutingTableStaticRouteNexthopPtrOutputWithContext(ctx context.Context) VpcRoutingTableStaticRouteNexthopPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcRoutingTableStaticRouteNexthopOutput).ToVpcRoutingTableStaticRouteNexthopPtrOutputWithContext(ctx)
+}
+
+// VpcRoutingTableStaticRouteNexthopPtrInput is an input type that accepts VpcRoutingTableStaticRouteNexthopArgs, VpcRoutingTableStaticRouteNexthopPtr and VpcRoutingTableStaticRouteNexthopPtrOutput values.
+// You can construct a concrete instance of `VpcRoutingTableStaticRouteNexthopPtrInput` via:
+//
+//	        VpcRoutingTableStaticRouteNexthopArgs{...}
+//
+//	or:
+//
+//	        nil
+type VpcRoutingTableStaticRouteNexthopPtrInput interface {
+	pulumi.Input
+
+	ToVpcRoutingTableStaticRouteNexthopPtrOutput() VpcRoutingTableStaticRouteNexthopPtrOutput
+	ToVpcRoutingTableStaticRouteNexthopPtrOutputWithContext(context.Context) VpcRoutingTableStaticRouteNexthopPtrOutput
+}
+
+type vpcRoutingTableStaticRouteNexthopPtrType VpcRoutingTableStaticRouteNexthopArgs
+
+func VpcRoutingTableStaticRouteNexthopPtr(v *VpcRoutingTableStaticRouteNexthopArgs) VpcRoutingTableStaticRouteNexthopPtrInput {
+	return (*vpcRoutingTableStaticRouteNexthopPtrType)(v)
+}
+
+func (*vpcRoutingTableStaticRouteNexthopPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcRoutingTableStaticRouteNexthop)(nil)).Elem()
+}
+
+func (i *vpcRoutingTableStaticRouteNexthopPtrType) ToVpcRoutingTableStaticRouteNexthopPtrOutput() VpcRoutingTableStaticRouteNexthopPtrOutput {
+	return i.ToVpcRoutingTableStaticRouteNexthopPtrOutputWithContext(context.Background())
+}
+
+func (i *vpcRoutingTableStaticRouteNexthopPtrType) ToVpcRoutingTableStaticRouteNexthopPtrOutputWithContext(ctx context.Context) VpcRoutingTableStaticRouteNexthopPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcRoutingTableStaticRouteNexthopPtrOutput)
+}
+
+type VpcRoutingTableStaticRouteNexthopOutput struct{ *pulumi.OutputState }
+
+func (VpcRoutingTableStaticRouteNexthopOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcRoutingTableStaticRouteNexthop)(nil)).Elem()
+}
+
+func (o VpcRoutingTableStaticRouteNexthopOutput) ToVpcRoutingTableStaticRouteNexthopOutput() VpcRoutingTableStaticRouteNexthopOutput {
+	return o
+}
+
+func (o VpcRoutingTableStaticRouteNexthopOutput) ToVpcRoutingTableStaticRouteNexthopOutputWithContext(ctx context.Context) VpcRoutingTableStaticRouteNexthopOutput {
+	return o
+}
+
+func (o VpcRoutingTableStaticRouteNexthopOutput) ToVpcRoutingTableStaticRouteNexthopPtrOutput() VpcRoutingTableStaticRouteNexthopPtrOutput {
+	return o.ToVpcRoutingTableStaticRouteNexthopPtrOutputWithContext(context.Background())
+}
+
+func (o VpcRoutingTableStaticRouteNexthopOutput) ToVpcRoutingTableStaticRouteNexthopPtrOutputWithContext(ctx context.Context) VpcRoutingTableStaticRouteNexthopPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpcRoutingTableStaticRouteNexthop) *VpcRoutingTableStaticRouteNexthop {
+		return &v
+	}).(VpcRoutingTableStaticRouteNexthopPtrOutput)
+}
+
+// Type of the nexthop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Currently ipv6 is unsupported.
+func (o VpcRoutingTableStaticRouteNexthopOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v VpcRoutingTableStaticRouteNexthop) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Value of the nexthop
+func (o VpcRoutingTableStaticRouteNexthopOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpcRoutingTableStaticRouteNexthop) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type VpcRoutingTableStaticRouteNexthopPtrOutput struct{ *pulumi.OutputState }
+
+func (VpcRoutingTableStaticRouteNexthopPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcRoutingTableStaticRouteNexthop)(nil)).Elem()
+}
+
+func (o VpcRoutingTableStaticRouteNexthopPtrOutput) ToVpcRoutingTableStaticRouteNexthopPtrOutput() VpcRoutingTableStaticRouteNexthopPtrOutput {
+	return o
+}
+
+func (o VpcRoutingTableStaticRouteNexthopPtrOutput) ToVpcRoutingTableStaticRouteNexthopPtrOutputWithContext(ctx context.Context) VpcRoutingTableStaticRouteNexthopPtrOutput {
+	return o
+}
+
+func (o VpcRoutingTableStaticRouteNexthopPtrOutput) Elem() VpcRoutingTableStaticRouteNexthopOutput {
+	return o.ApplyT(func(v *VpcRoutingTableStaticRouteNexthop) VpcRoutingTableStaticRouteNexthop {
+		if v != nil {
+			return *v
+		}
+		var ret VpcRoutingTableStaticRouteNexthop
+		return ret
+	}).(VpcRoutingTableStaticRouteNexthopOutput)
+}
+
+// Type of the nexthop. Possible values are: `blackhole`, `internet`, `ipv4`, `ipv6`. Currently ipv6 is unsupported.
+func (o VpcRoutingTableStaticRouteNexthopPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcRoutingTableStaticRouteNexthop) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// Value of the nexthop
+func (o VpcRoutingTableStaticRouteNexthopPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcRoutingTableStaticRouteNexthop) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type VpcRoutingTableStaticRouteTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// VpcRoutingTableStaticRouteTimeoutsInput is an input type that accepts VpcRoutingTableStaticRouteTimeoutsArgs and VpcRoutingTableStaticRouteTimeoutsOutput values.
+// You can construct a concrete instance of `VpcRoutingTableStaticRouteTimeoutsInput` via:
+//
+//	VpcRoutingTableStaticRouteTimeoutsArgs{...}
+type VpcRoutingTableStaticRouteTimeoutsInput interface {
+	pulumi.Input
+
+	ToVpcRoutingTableStaticRouteTimeoutsOutput() VpcRoutingTableStaticRouteTimeoutsOutput
+	ToVpcRoutingTableStaticRouteTimeoutsOutputWithContext(context.Context) VpcRoutingTableStaticRouteTimeoutsOutput
+}
+
+type VpcRoutingTableStaticRouteTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (VpcRoutingTableStaticRouteTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcRoutingTableStaticRouteTimeouts)(nil)).Elem()
+}
+
+func (i VpcRoutingTableStaticRouteTimeoutsArgs) ToVpcRoutingTableStaticRouteTimeoutsOutput() VpcRoutingTableStaticRouteTimeoutsOutput {
+	return i.ToVpcRoutingTableStaticRouteTimeoutsOutputWithContext(context.Background())
+}
+
+func (i VpcRoutingTableStaticRouteTimeoutsArgs) ToVpcRoutingTableStaticRouteTimeoutsOutputWithContext(ctx context.Context) VpcRoutingTableStaticRouteTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcRoutingTableStaticRouteTimeoutsOutput)
+}
+
+func (i VpcRoutingTableStaticRouteTimeoutsArgs) ToVpcRoutingTableStaticRouteTimeoutsPtrOutput() VpcRoutingTableStaticRouteTimeoutsPtrOutput {
+	return i.ToVpcRoutingTableStaticRouteTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i VpcRoutingTableStaticRouteTimeoutsArgs) ToVpcRoutingTableStaticRouteTimeoutsPtrOutputWithContext(ctx context.Context) VpcRoutingTableStaticRouteTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcRoutingTableStaticRouteTimeoutsOutput).ToVpcRoutingTableStaticRouteTimeoutsPtrOutputWithContext(ctx)
+}
+
+// VpcRoutingTableStaticRouteTimeoutsPtrInput is an input type that accepts VpcRoutingTableStaticRouteTimeoutsArgs, VpcRoutingTableStaticRouteTimeoutsPtr and VpcRoutingTableStaticRouteTimeoutsPtrOutput values.
+// You can construct a concrete instance of `VpcRoutingTableStaticRouteTimeoutsPtrInput` via:
+//
+//	        VpcRoutingTableStaticRouteTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type VpcRoutingTableStaticRouteTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToVpcRoutingTableStaticRouteTimeoutsPtrOutput() VpcRoutingTableStaticRouteTimeoutsPtrOutput
+	ToVpcRoutingTableStaticRouteTimeoutsPtrOutputWithContext(context.Context) VpcRoutingTableStaticRouteTimeoutsPtrOutput
+}
+
+type vpcRoutingTableStaticRouteTimeoutsPtrType VpcRoutingTableStaticRouteTimeoutsArgs
+
+func VpcRoutingTableStaticRouteTimeoutsPtr(v *VpcRoutingTableStaticRouteTimeoutsArgs) VpcRoutingTableStaticRouteTimeoutsPtrInput {
+	return (*vpcRoutingTableStaticRouteTimeoutsPtrType)(v)
+}
+
+func (*vpcRoutingTableStaticRouteTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcRoutingTableStaticRouteTimeouts)(nil)).Elem()
+}
+
+func (i *vpcRoutingTableStaticRouteTimeoutsPtrType) ToVpcRoutingTableStaticRouteTimeoutsPtrOutput() VpcRoutingTableStaticRouteTimeoutsPtrOutput {
+	return i.ToVpcRoutingTableStaticRouteTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *vpcRoutingTableStaticRouteTimeoutsPtrType) ToVpcRoutingTableStaticRouteTimeoutsPtrOutputWithContext(ctx context.Context) VpcRoutingTableStaticRouteTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcRoutingTableStaticRouteTimeoutsPtrOutput)
+}
+
+type VpcRoutingTableStaticRouteTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (VpcRoutingTableStaticRouteTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcRoutingTableStaticRouteTimeouts)(nil)).Elem()
+}
+
+func (o VpcRoutingTableStaticRouteTimeoutsOutput) ToVpcRoutingTableStaticRouteTimeoutsOutput() VpcRoutingTableStaticRouteTimeoutsOutput {
+	return o
+}
+
+func (o VpcRoutingTableStaticRouteTimeoutsOutput) ToVpcRoutingTableStaticRouteTimeoutsOutputWithContext(ctx context.Context) VpcRoutingTableStaticRouteTimeoutsOutput {
+	return o
+}
+
+func (o VpcRoutingTableStaticRouteTimeoutsOutput) ToVpcRoutingTableStaticRouteTimeoutsPtrOutput() VpcRoutingTableStaticRouteTimeoutsPtrOutput {
+	return o.ToVpcRoutingTableStaticRouteTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o VpcRoutingTableStaticRouteTimeoutsOutput) ToVpcRoutingTableStaticRouteTimeoutsPtrOutputWithContext(ctx context.Context) VpcRoutingTableStaticRouteTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpcRoutingTableStaticRouteTimeouts) *VpcRoutingTableStaticRouteTimeouts {
+		return &v
+	}).(VpcRoutingTableStaticRouteTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VpcRoutingTableStaticRouteTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpcRoutingTableStaticRouteTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o VpcRoutingTableStaticRouteTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpcRoutingTableStaticRouteTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o VpcRoutingTableStaticRouteTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpcRoutingTableStaticRouteTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VpcRoutingTableStaticRouteTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpcRoutingTableStaticRouteTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type VpcRoutingTableStaticRouteTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (VpcRoutingTableStaticRouteTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcRoutingTableStaticRouteTimeouts)(nil)).Elem()
+}
+
+func (o VpcRoutingTableStaticRouteTimeoutsPtrOutput) ToVpcRoutingTableStaticRouteTimeoutsPtrOutput() VpcRoutingTableStaticRouteTimeoutsPtrOutput {
+	return o
+}
+
+func (o VpcRoutingTableStaticRouteTimeoutsPtrOutput) ToVpcRoutingTableStaticRouteTimeoutsPtrOutputWithContext(ctx context.Context) VpcRoutingTableStaticRouteTimeoutsPtrOutput {
+	return o
+}
+
+func (o VpcRoutingTableStaticRouteTimeoutsPtrOutput) Elem() VpcRoutingTableStaticRouteTimeoutsOutput {
+	return o.ApplyT(func(v *VpcRoutingTableStaticRouteTimeouts) VpcRoutingTableStaticRouteTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret VpcRoutingTableStaticRouteTimeouts
+		return ret
+	}).(VpcRoutingTableStaticRouteTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VpcRoutingTableStaticRouteTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcRoutingTableStaticRouteTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o VpcRoutingTableStaticRouteTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcRoutingTableStaticRouteTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o VpcRoutingTableStaticRouteTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcRoutingTableStaticRouteTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VpcRoutingTableStaticRouteTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcRoutingTableStaticRouteTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
+type VpcTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// VpcTimeoutsInput is an input type that accepts VpcTimeoutsArgs and VpcTimeoutsOutput values.
+// You can construct a concrete instance of `VpcTimeoutsInput` via:
+//
+//	VpcTimeoutsArgs{...}
+type VpcTimeoutsInput interface {
+	pulumi.Input
+
+	ToVpcTimeoutsOutput() VpcTimeoutsOutput
+	ToVpcTimeoutsOutputWithContext(context.Context) VpcTimeoutsOutput
+}
+
+type VpcTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (VpcTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcTimeouts)(nil)).Elem()
+}
+
+func (i VpcTimeoutsArgs) ToVpcTimeoutsOutput() VpcTimeoutsOutput {
+	return i.ToVpcTimeoutsOutputWithContext(context.Background())
+}
+
+func (i VpcTimeoutsArgs) ToVpcTimeoutsOutputWithContext(ctx context.Context) VpcTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcTimeoutsOutput)
+}
+
+func (i VpcTimeoutsArgs) ToVpcTimeoutsPtrOutput() VpcTimeoutsPtrOutput {
+	return i.ToVpcTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i VpcTimeoutsArgs) ToVpcTimeoutsPtrOutputWithContext(ctx context.Context) VpcTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcTimeoutsOutput).ToVpcTimeoutsPtrOutputWithContext(ctx)
+}
+
+// VpcTimeoutsPtrInput is an input type that accepts VpcTimeoutsArgs, VpcTimeoutsPtr and VpcTimeoutsPtrOutput values.
+// You can construct a concrete instance of `VpcTimeoutsPtrInput` via:
+//
+//	        VpcTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type VpcTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToVpcTimeoutsPtrOutput() VpcTimeoutsPtrOutput
+	ToVpcTimeoutsPtrOutputWithContext(context.Context) VpcTimeoutsPtrOutput
+}
+
+type vpcTimeoutsPtrType VpcTimeoutsArgs
+
+func VpcTimeoutsPtr(v *VpcTimeoutsArgs) VpcTimeoutsPtrInput {
+	return (*vpcTimeoutsPtrType)(v)
+}
+
+func (*vpcTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcTimeouts)(nil)).Elem()
+}
+
+func (i *vpcTimeoutsPtrType) ToVpcTimeoutsPtrOutput() VpcTimeoutsPtrOutput {
+	return i.ToVpcTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *vpcTimeoutsPtrType) ToVpcTimeoutsPtrOutputWithContext(ctx context.Context) VpcTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcTimeoutsPtrOutput)
+}
+
+type VpcTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (VpcTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcTimeouts)(nil)).Elem()
+}
+
+func (o VpcTimeoutsOutput) ToVpcTimeoutsOutput() VpcTimeoutsOutput {
+	return o
+}
+
+func (o VpcTimeoutsOutput) ToVpcTimeoutsOutputWithContext(ctx context.Context) VpcTimeoutsOutput {
+	return o
+}
+
+func (o VpcTimeoutsOutput) ToVpcTimeoutsPtrOutput() VpcTimeoutsPtrOutput {
+	return o.ToVpcTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o VpcTimeoutsOutput) ToVpcTimeoutsPtrOutputWithContext(ctx context.Context) VpcTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpcTimeouts) *VpcTimeouts {
+		return &v
+	}).(VpcTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VpcTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpcTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o VpcTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpcTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o VpcTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpcTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VpcTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpcTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type VpcTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (VpcTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpcTimeouts)(nil)).Elem()
+}
+
+func (o VpcTimeoutsPtrOutput) ToVpcTimeoutsPtrOutput() VpcTimeoutsPtrOutput {
+	return o
+}
+
+func (o VpcTimeoutsPtrOutput) ToVpcTimeoutsPtrOutputWithContext(ctx context.Context) VpcTimeoutsPtrOutput {
+	return o
+}
+
+func (o VpcTimeoutsPtrOutput) Elem() VpcTimeoutsOutput {
+	return o.ApplyT(func(v *VpcTimeouts) VpcTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret VpcTimeouts
+		return ret
+	}).(VpcTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VpcTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o VpcTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o VpcTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o VpcTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpcTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
 type VpnConnectionTunnel1 struct {
 	Bgp     *VpnConnectionTunnel1Bgp     `pulumi:"bgp"`
 	Peering *VpnConnectionTunnel1Peering `pulumi:"peering"`
@@ -27690,8 +28778,6 @@ type GetDremioInstanceAuthenticationAzuread struct {
 	AuthorityUrl string `pulumi:"authorityUrl"`
 	// The Azure AD client ID.
 	ClientId string `pulumi:"clientId"`
-	// The Azure AD client secret.
-	ClientSecret string `pulumi:"clientSecret"`
 	// The Azure AD redirect URL.
 	RedirectUrl string `pulumi:"redirectUrl"`
 }
@@ -27712,8 +28798,6 @@ type GetDremioInstanceAuthenticationAzureadArgs struct {
 	AuthorityUrl pulumi.StringInput `pulumi:"authorityUrl"`
 	// The Azure AD client ID.
 	ClientId pulumi.StringInput `pulumi:"clientId"`
-	// The Azure AD client secret.
-	ClientSecret pulumi.StringInput `pulumi:"clientSecret"`
 	// The Azure AD redirect URL.
 	RedirectUrl pulumi.StringInput `pulumi:"redirectUrl"`
 }
@@ -27754,11 +28838,6 @@ func (o GetDremioInstanceAuthenticationAzureadOutput) ClientId() pulumi.StringOu
 	return o.ApplyT(func(v GetDremioInstanceAuthenticationAzuread) string { return v.ClientId }).(pulumi.StringOutput)
 }
 
-// The Azure AD client secret.
-func (o GetDremioInstanceAuthenticationAzureadOutput) ClientSecret() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDremioInstanceAuthenticationAzuread) string { return v.ClientSecret }).(pulumi.StringOutput)
-}
-
 // The Azure AD redirect URL.
 func (o GetDremioInstanceAuthenticationAzureadOutput) RedirectUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDremioInstanceAuthenticationAzuread) string { return v.RedirectUrl }).(pulumi.StringOutput)
@@ -27769,8 +28848,6 @@ type GetDremioInstanceAuthenticationOauth struct {
 	AuthorityUrl string `pulumi:"authorityUrl"`
 	// The client ID assigned by the Identity Provider.
 	ClientId string `pulumi:"clientId"`
-	// The client secret generated by the Identity Provider.
-	ClientSecret string `pulumi:"clientSecret"`
 	// Maps fields from the JWT token to fields Dremio requires.
 	JwtClaims GetDremioInstanceAuthenticationOauthJwtClaims `pulumi:"jwtClaims"`
 	// Any additional parameters the Identity Provider requires.
@@ -27797,8 +28874,6 @@ type GetDremioInstanceAuthenticationOauthArgs struct {
 	AuthorityUrl pulumi.StringInput `pulumi:"authorityUrl"`
 	// The client ID assigned by the Identity Provider.
 	ClientId pulumi.StringInput `pulumi:"clientId"`
-	// The client secret generated by the Identity Provider.
-	ClientSecret pulumi.StringInput `pulumi:"clientSecret"`
 	// Maps fields from the JWT token to fields Dremio requires.
 	JwtClaims GetDremioInstanceAuthenticationOauthJwtClaimsInput `pulumi:"jwtClaims"`
 	// Any additional parameters the Identity Provider requires.
@@ -27843,11 +28918,6 @@ func (o GetDremioInstanceAuthenticationOauthOutput) AuthorityUrl() pulumi.String
 // The client ID assigned by the Identity Provider.
 func (o GetDremioInstanceAuthenticationOauthOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDremioInstanceAuthenticationOauth) string { return v.ClientId }).(pulumi.StringOutput)
-}
-
-// The client secret generated by the Identity Provider.
-func (o GetDremioInstanceAuthenticationOauthOutput) ClientSecret() pulumi.StringOutput {
-	return o.ApplyT(func(v GetDremioInstanceAuthenticationOauth) string { return v.ClientSecret }).(pulumi.StringOutput)
 }
 
 // Maps fields from the JWT token to fields Dremio requires.
@@ -38207,6 +39277,664 @@ func (o GetVolumeSourceOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVolumeSource) string { return v.Type }).(pulumi.StringOutput)
 }
 
+type GetVpcNetworkRangeTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetVpcNetworkRangeTimeoutsInput is an input type that accepts GetVpcNetworkRangeTimeoutsArgs and GetVpcNetworkRangeTimeoutsOutput values.
+// You can construct a concrete instance of `GetVpcNetworkRangeTimeoutsInput` via:
+//
+//	GetVpcNetworkRangeTimeoutsArgs{...}
+type GetVpcNetworkRangeTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetVpcNetworkRangeTimeoutsOutput() GetVpcNetworkRangeTimeoutsOutput
+	ToGetVpcNetworkRangeTimeoutsOutputWithContext(context.Context) GetVpcNetworkRangeTimeoutsOutput
+}
+
+type GetVpcNetworkRangeTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetVpcNetworkRangeTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcNetworkRangeTimeouts)(nil)).Elem()
+}
+
+func (i GetVpcNetworkRangeTimeoutsArgs) ToGetVpcNetworkRangeTimeoutsOutput() GetVpcNetworkRangeTimeoutsOutput {
+	return i.ToGetVpcNetworkRangeTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetVpcNetworkRangeTimeoutsArgs) ToGetVpcNetworkRangeTimeoutsOutputWithContext(ctx context.Context) GetVpcNetworkRangeTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcNetworkRangeTimeoutsOutput)
+}
+
+func (i GetVpcNetworkRangeTimeoutsArgs) ToGetVpcNetworkRangeTimeoutsPtrOutput() GetVpcNetworkRangeTimeoutsPtrOutput {
+	return i.ToGetVpcNetworkRangeTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetVpcNetworkRangeTimeoutsArgs) ToGetVpcNetworkRangeTimeoutsPtrOutputWithContext(ctx context.Context) GetVpcNetworkRangeTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcNetworkRangeTimeoutsOutput).ToGetVpcNetworkRangeTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetVpcNetworkRangeTimeoutsPtrInput is an input type that accepts GetVpcNetworkRangeTimeoutsArgs, GetVpcNetworkRangeTimeoutsPtr and GetVpcNetworkRangeTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetVpcNetworkRangeTimeoutsPtrInput` via:
+//
+//	        GetVpcNetworkRangeTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetVpcNetworkRangeTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetVpcNetworkRangeTimeoutsPtrOutput() GetVpcNetworkRangeTimeoutsPtrOutput
+	ToGetVpcNetworkRangeTimeoutsPtrOutputWithContext(context.Context) GetVpcNetworkRangeTimeoutsPtrOutput
+}
+
+type getVpcNetworkRangeTimeoutsPtrType GetVpcNetworkRangeTimeoutsArgs
+
+func GetVpcNetworkRangeTimeoutsPtr(v *GetVpcNetworkRangeTimeoutsArgs) GetVpcNetworkRangeTimeoutsPtrInput {
+	return (*getVpcNetworkRangeTimeoutsPtrType)(v)
+}
+
+func (*getVpcNetworkRangeTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVpcNetworkRangeTimeouts)(nil)).Elem()
+}
+
+func (i *getVpcNetworkRangeTimeoutsPtrType) ToGetVpcNetworkRangeTimeoutsPtrOutput() GetVpcNetworkRangeTimeoutsPtrOutput {
+	return i.ToGetVpcNetworkRangeTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getVpcNetworkRangeTimeoutsPtrType) ToGetVpcNetworkRangeTimeoutsPtrOutputWithContext(ctx context.Context) GetVpcNetworkRangeTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcNetworkRangeTimeoutsPtrOutput)
+}
+
+type GetVpcNetworkRangeTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetVpcNetworkRangeTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcNetworkRangeTimeouts)(nil)).Elem()
+}
+
+func (o GetVpcNetworkRangeTimeoutsOutput) ToGetVpcNetworkRangeTimeoutsOutput() GetVpcNetworkRangeTimeoutsOutput {
+	return o
+}
+
+func (o GetVpcNetworkRangeTimeoutsOutput) ToGetVpcNetworkRangeTimeoutsOutputWithContext(ctx context.Context) GetVpcNetworkRangeTimeoutsOutput {
+	return o
+}
+
+func (o GetVpcNetworkRangeTimeoutsOutput) ToGetVpcNetworkRangeTimeoutsPtrOutput() GetVpcNetworkRangeTimeoutsPtrOutput {
+	return o.ToGetVpcNetworkRangeTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetVpcNetworkRangeTimeoutsOutput) ToGetVpcNetworkRangeTimeoutsPtrOutputWithContext(ctx context.Context) GetVpcNetworkRangeTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVpcNetworkRangeTimeouts) *GetVpcNetworkRangeTimeouts {
+		return &v
+	}).(GetVpcNetworkRangeTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetVpcNetworkRangeTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVpcNetworkRangeTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetVpcNetworkRangeTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetVpcNetworkRangeTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVpcNetworkRangeTimeouts)(nil)).Elem()
+}
+
+func (o GetVpcNetworkRangeTimeoutsPtrOutput) ToGetVpcNetworkRangeTimeoutsPtrOutput() GetVpcNetworkRangeTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetVpcNetworkRangeTimeoutsPtrOutput) ToGetVpcNetworkRangeTimeoutsPtrOutputWithContext(ctx context.Context) GetVpcNetworkRangeTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetVpcNetworkRangeTimeoutsPtrOutput) Elem() GetVpcNetworkRangeTimeoutsOutput {
+	return o.ApplyT(func(v *GetVpcNetworkRangeTimeouts) GetVpcNetworkRangeTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetVpcNetworkRangeTimeouts
+		return ret
+	}).(GetVpcNetworkRangeTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetVpcNetworkRangeTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVpcNetworkRangeTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetVpcRegionTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetVpcRegionTimeoutsInput is an input type that accepts GetVpcRegionTimeoutsArgs and GetVpcRegionTimeoutsOutput values.
+// You can construct a concrete instance of `GetVpcRegionTimeoutsInput` via:
+//
+//	GetVpcRegionTimeoutsArgs{...}
+type GetVpcRegionTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetVpcRegionTimeoutsOutput() GetVpcRegionTimeoutsOutput
+	ToGetVpcRegionTimeoutsOutputWithContext(context.Context) GetVpcRegionTimeoutsOutput
+}
+
+type GetVpcRegionTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetVpcRegionTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcRegionTimeouts)(nil)).Elem()
+}
+
+func (i GetVpcRegionTimeoutsArgs) ToGetVpcRegionTimeoutsOutput() GetVpcRegionTimeoutsOutput {
+	return i.ToGetVpcRegionTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetVpcRegionTimeoutsArgs) ToGetVpcRegionTimeoutsOutputWithContext(ctx context.Context) GetVpcRegionTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcRegionTimeoutsOutput)
+}
+
+func (i GetVpcRegionTimeoutsArgs) ToGetVpcRegionTimeoutsPtrOutput() GetVpcRegionTimeoutsPtrOutput {
+	return i.ToGetVpcRegionTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetVpcRegionTimeoutsArgs) ToGetVpcRegionTimeoutsPtrOutputWithContext(ctx context.Context) GetVpcRegionTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcRegionTimeoutsOutput).ToGetVpcRegionTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetVpcRegionTimeoutsPtrInput is an input type that accepts GetVpcRegionTimeoutsArgs, GetVpcRegionTimeoutsPtr and GetVpcRegionTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetVpcRegionTimeoutsPtrInput` via:
+//
+//	        GetVpcRegionTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetVpcRegionTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetVpcRegionTimeoutsPtrOutput() GetVpcRegionTimeoutsPtrOutput
+	ToGetVpcRegionTimeoutsPtrOutputWithContext(context.Context) GetVpcRegionTimeoutsPtrOutput
+}
+
+type getVpcRegionTimeoutsPtrType GetVpcRegionTimeoutsArgs
+
+func GetVpcRegionTimeoutsPtr(v *GetVpcRegionTimeoutsArgs) GetVpcRegionTimeoutsPtrInput {
+	return (*getVpcRegionTimeoutsPtrType)(v)
+}
+
+func (*getVpcRegionTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVpcRegionTimeouts)(nil)).Elem()
+}
+
+func (i *getVpcRegionTimeoutsPtrType) ToGetVpcRegionTimeoutsPtrOutput() GetVpcRegionTimeoutsPtrOutput {
+	return i.ToGetVpcRegionTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getVpcRegionTimeoutsPtrType) ToGetVpcRegionTimeoutsPtrOutputWithContext(ctx context.Context) GetVpcRegionTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcRegionTimeoutsPtrOutput)
+}
+
+type GetVpcRegionTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetVpcRegionTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcRegionTimeouts)(nil)).Elem()
+}
+
+func (o GetVpcRegionTimeoutsOutput) ToGetVpcRegionTimeoutsOutput() GetVpcRegionTimeoutsOutput {
+	return o
+}
+
+func (o GetVpcRegionTimeoutsOutput) ToGetVpcRegionTimeoutsOutputWithContext(ctx context.Context) GetVpcRegionTimeoutsOutput {
+	return o
+}
+
+func (o GetVpcRegionTimeoutsOutput) ToGetVpcRegionTimeoutsPtrOutput() GetVpcRegionTimeoutsPtrOutput {
+	return o.ToGetVpcRegionTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetVpcRegionTimeoutsOutput) ToGetVpcRegionTimeoutsPtrOutputWithContext(ctx context.Context) GetVpcRegionTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVpcRegionTimeouts) *GetVpcRegionTimeouts {
+		return &v
+	}).(GetVpcRegionTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetVpcRegionTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVpcRegionTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetVpcRegionTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetVpcRegionTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVpcRegionTimeouts)(nil)).Elem()
+}
+
+func (o GetVpcRegionTimeoutsPtrOutput) ToGetVpcRegionTimeoutsPtrOutput() GetVpcRegionTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetVpcRegionTimeoutsPtrOutput) ToGetVpcRegionTimeoutsPtrOutputWithContext(ctx context.Context) GetVpcRegionTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetVpcRegionTimeoutsPtrOutput) Elem() GetVpcRegionTimeoutsOutput {
+	return o.ApplyT(func(v *GetVpcRegionTimeouts) GetVpcRegionTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetVpcRegionTimeouts
+		return ret
+	}).(GetVpcRegionTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetVpcRegionTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVpcRegionTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetVpcRoutingTableStaticRouteDestination struct {
+	Type  string `pulumi:"type"`
+	Value string `pulumi:"value"`
+}
+
+// GetVpcRoutingTableStaticRouteDestinationInput is an input type that accepts GetVpcRoutingTableStaticRouteDestinationArgs and GetVpcRoutingTableStaticRouteDestinationOutput values.
+// You can construct a concrete instance of `GetVpcRoutingTableStaticRouteDestinationInput` via:
+//
+//	GetVpcRoutingTableStaticRouteDestinationArgs{...}
+type GetVpcRoutingTableStaticRouteDestinationInput interface {
+	pulumi.Input
+
+	ToGetVpcRoutingTableStaticRouteDestinationOutput() GetVpcRoutingTableStaticRouteDestinationOutput
+	ToGetVpcRoutingTableStaticRouteDestinationOutputWithContext(context.Context) GetVpcRoutingTableStaticRouteDestinationOutput
+}
+
+type GetVpcRoutingTableStaticRouteDestinationArgs struct {
+	Type  pulumi.StringInput `pulumi:"type"`
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetVpcRoutingTableStaticRouteDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcRoutingTableStaticRouteDestination)(nil)).Elem()
+}
+
+func (i GetVpcRoutingTableStaticRouteDestinationArgs) ToGetVpcRoutingTableStaticRouteDestinationOutput() GetVpcRoutingTableStaticRouteDestinationOutput {
+	return i.ToGetVpcRoutingTableStaticRouteDestinationOutputWithContext(context.Background())
+}
+
+func (i GetVpcRoutingTableStaticRouteDestinationArgs) ToGetVpcRoutingTableStaticRouteDestinationOutputWithContext(ctx context.Context) GetVpcRoutingTableStaticRouteDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcRoutingTableStaticRouteDestinationOutput)
+}
+
+type GetVpcRoutingTableStaticRouteDestinationOutput struct{ *pulumi.OutputState }
+
+func (GetVpcRoutingTableStaticRouteDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcRoutingTableStaticRouteDestination)(nil)).Elem()
+}
+
+func (o GetVpcRoutingTableStaticRouteDestinationOutput) ToGetVpcRoutingTableStaticRouteDestinationOutput() GetVpcRoutingTableStaticRouteDestinationOutput {
+	return o
+}
+
+func (o GetVpcRoutingTableStaticRouteDestinationOutput) ToGetVpcRoutingTableStaticRouteDestinationOutputWithContext(ctx context.Context) GetVpcRoutingTableStaticRouteDestinationOutput {
+	return o
+}
+
+func (o GetVpcRoutingTableStaticRouteDestinationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcRoutingTableStaticRouteDestination) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o GetVpcRoutingTableStaticRouteDestinationOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcRoutingTableStaticRouteDestination) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetVpcRoutingTableStaticRouteNexthop struct {
+	Type  string `pulumi:"type"`
+	Value string `pulumi:"value"`
+}
+
+// GetVpcRoutingTableStaticRouteNexthopInput is an input type that accepts GetVpcRoutingTableStaticRouteNexthopArgs and GetVpcRoutingTableStaticRouteNexthopOutput values.
+// You can construct a concrete instance of `GetVpcRoutingTableStaticRouteNexthopInput` via:
+//
+//	GetVpcRoutingTableStaticRouteNexthopArgs{...}
+type GetVpcRoutingTableStaticRouteNexthopInput interface {
+	pulumi.Input
+
+	ToGetVpcRoutingTableStaticRouteNexthopOutput() GetVpcRoutingTableStaticRouteNexthopOutput
+	ToGetVpcRoutingTableStaticRouteNexthopOutputWithContext(context.Context) GetVpcRoutingTableStaticRouteNexthopOutput
+}
+
+type GetVpcRoutingTableStaticRouteNexthopArgs struct {
+	Type  pulumi.StringInput `pulumi:"type"`
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetVpcRoutingTableStaticRouteNexthopArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcRoutingTableStaticRouteNexthop)(nil)).Elem()
+}
+
+func (i GetVpcRoutingTableStaticRouteNexthopArgs) ToGetVpcRoutingTableStaticRouteNexthopOutput() GetVpcRoutingTableStaticRouteNexthopOutput {
+	return i.ToGetVpcRoutingTableStaticRouteNexthopOutputWithContext(context.Background())
+}
+
+func (i GetVpcRoutingTableStaticRouteNexthopArgs) ToGetVpcRoutingTableStaticRouteNexthopOutputWithContext(ctx context.Context) GetVpcRoutingTableStaticRouteNexthopOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcRoutingTableStaticRouteNexthopOutput)
+}
+
+type GetVpcRoutingTableStaticRouteNexthopOutput struct{ *pulumi.OutputState }
+
+func (GetVpcRoutingTableStaticRouteNexthopOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcRoutingTableStaticRouteNexthop)(nil)).Elem()
+}
+
+func (o GetVpcRoutingTableStaticRouteNexthopOutput) ToGetVpcRoutingTableStaticRouteNexthopOutput() GetVpcRoutingTableStaticRouteNexthopOutput {
+	return o
+}
+
+func (o GetVpcRoutingTableStaticRouteNexthopOutput) ToGetVpcRoutingTableStaticRouteNexthopOutputWithContext(ctx context.Context) GetVpcRoutingTableStaticRouteNexthopOutput {
+	return o
+}
+
+func (o GetVpcRoutingTableStaticRouteNexthopOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcRoutingTableStaticRouteNexthop) string { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o GetVpcRoutingTableStaticRouteNexthopOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcRoutingTableStaticRouteNexthop) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetVpcRoutingTableStaticRouteTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetVpcRoutingTableStaticRouteTimeoutsInput is an input type that accepts GetVpcRoutingTableStaticRouteTimeoutsArgs and GetVpcRoutingTableStaticRouteTimeoutsOutput values.
+// You can construct a concrete instance of `GetVpcRoutingTableStaticRouteTimeoutsInput` via:
+//
+//	GetVpcRoutingTableStaticRouteTimeoutsArgs{...}
+type GetVpcRoutingTableStaticRouteTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetVpcRoutingTableStaticRouteTimeoutsOutput() GetVpcRoutingTableStaticRouteTimeoutsOutput
+	ToGetVpcRoutingTableStaticRouteTimeoutsOutputWithContext(context.Context) GetVpcRoutingTableStaticRouteTimeoutsOutput
+}
+
+type GetVpcRoutingTableStaticRouteTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetVpcRoutingTableStaticRouteTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcRoutingTableStaticRouteTimeouts)(nil)).Elem()
+}
+
+func (i GetVpcRoutingTableStaticRouteTimeoutsArgs) ToGetVpcRoutingTableStaticRouteTimeoutsOutput() GetVpcRoutingTableStaticRouteTimeoutsOutput {
+	return i.ToGetVpcRoutingTableStaticRouteTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetVpcRoutingTableStaticRouteTimeoutsArgs) ToGetVpcRoutingTableStaticRouteTimeoutsOutputWithContext(ctx context.Context) GetVpcRoutingTableStaticRouteTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcRoutingTableStaticRouteTimeoutsOutput)
+}
+
+func (i GetVpcRoutingTableStaticRouteTimeoutsArgs) ToGetVpcRoutingTableStaticRouteTimeoutsPtrOutput() GetVpcRoutingTableStaticRouteTimeoutsPtrOutput {
+	return i.ToGetVpcRoutingTableStaticRouteTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetVpcRoutingTableStaticRouteTimeoutsArgs) ToGetVpcRoutingTableStaticRouteTimeoutsPtrOutputWithContext(ctx context.Context) GetVpcRoutingTableStaticRouteTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcRoutingTableStaticRouteTimeoutsOutput).ToGetVpcRoutingTableStaticRouteTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetVpcRoutingTableStaticRouteTimeoutsPtrInput is an input type that accepts GetVpcRoutingTableStaticRouteTimeoutsArgs, GetVpcRoutingTableStaticRouteTimeoutsPtr and GetVpcRoutingTableStaticRouteTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetVpcRoutingTableStaticRouteTimeoutsPtrInput` via:
+//
+//	        GetVpcRoutingTableStaticRouteTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetVpcRoutingTableStaticRouteTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetVpcRoutingTableStaticRouteTimeoutsPtrOutput() GetVpcRoutingTableStaticRouteTimeoutsPtrOutput
+	ToGetVpcRoutingTableStaticRouteTimeoutsPtrOutputWithContext(context.Context) GetVpcRoutingTableStaticRouteTimeoutsPtrOutput
+}
+
+type getVpcRoutingTableStaticRouteTimeoutsPtrType GetVpcRoutingTableStaticRouteTimeoutsArgs
+
+func GetVpcRoutingTableStaticRouteTimeoutsPtr(v *GetVpcRoutingTableStaticRouteTimeoutsArgs) GetVpcRoutingTableStaticRouteTimeoutsPtrInput {
+	return (*getVpcRoutingTableStaticRouteTimeoutsPtrType)(v)
+}
+
+func (*getVpcRoutingTableStaticRouteTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVpcRoutingTableStaticRouteTimeouts)(nil)).Elem()
+}
+
+func (i *getVpcRoutingTableStaticRouteTimeoutsPtrType) ToGetVpcRoutingTableStaticRouteTimeoutsPtrOutput() GetVpcRoutingTableStaticRouteTimeoutsPtrOutput {
+	return i.ToGetVpcRoutingTableStaticRouteTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getVpcRoutingTableStaticRouteTimeoutsPtrType) ToGetVpcRoutingTableStaticRouteTimeoutsPtrOutputWithContext(ctx context.Context) GetVpcRoutingTableStaticRouteTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcRoutingTableStaticRouteTimeoutsPtrOutput)
+}
+
+type GetVpcRoutingTableStaticRouteTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetVpcRoutingTableStaticRouteTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcRoutingTableStaticRouteTimeouts)(nil)).Elem()
+}
+
+func (o GetVpcRoutingTableStaticRouteTimeoutsOutput) ToGetVpcRoutingTableStaticRouteTimeoutsOutput() GetVpcRoutingTableStaticRouteTimeoutsOutput {
+	return o
+}
+
+func (o GetVpcRoutingTableStaticRouteTimeoutsOutput) ToGetVpcRoutingTableStaticRouteTimeoutsOutputWithContext(ctx context.Context) GetVpcRoutingTableStaticRouteTimeoutsOutput {
+	return o
+}
+
+func (o GetVpcRoutingTableStaticRouteTimeoutsOutput) ToGetVpcRoutingTableStaticRouteTimeoutsPtrOutput() GetVpcRoutingTableStaticRouteTimeoutsPtrOutput {
+	return o.ToGetVpcRoutingTableStaticRouteTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetVpcRoutingTableStaticRouteTimeoutsOutput) ToGetVpcRoutingTableStaticRouteTimeoutsPtrOutputWithContext(ctx context.Context) GetVpcRoutingTableStaticRouteTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVpcRoutingTableStaticRouteTimeouts) *GetVpcRoutingTableStaticRouteTimeouts {
+		return &v
+	}).(GetVpcRoutingTableStaticRouteTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetVpcRoutingTableStaticRouteTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVpcRoutingTableStaticRouteTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetVpcRoutingTableStaticRouteTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetVpcRoutingTableStaticRouteTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVpcRoutingTableStaticRouteTimeouts)(nil)).Elem()
+}
+
+func (o GetVpcRoutingTableStaticRouteTimeoutsPtrOutput) ToGetVpcRoutingTableStaticRouteTimeoutsPtrOutput() GetVpcRoutingTableStaticRouteTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetVpcRoutingTableStaticRouteTimeoutsPtrOutput) ToGetVpcRoutingTableStaticRouteTimeoutsPtrOutputWithContext(ctx context.Context) GetVpcRoutingTableStaticRouteTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetVpcRoutingTableStaticRouteTimeoutsPtrOutput) Elem() GetVpcRoutingTableStaticRouteTimeoutsOutput {
+	return o.ApplyT(func(v *GetVpcRoutingTableStaticRouteTimeouts) GetVpcRoutingTableStaticRouteTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetVpcRoutingTableStaticRouteTimeouts
+		return ret
+	}).(GetVpcRoutingTableStaticRouteTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetVpcRoutingTableStaticRouteTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVpcRoutingTableStaticRouteTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetVpcTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetVpcTimeoutsInput is an input type that accepts GetVpcTimeoutsArgs and GetVpcTimeoutsOutput values.
+// You can construct a concrete instance of `GetVpcTimeoutsInput` via:
+//
+//	GetVpcTimeoutsArgs{...}
+type GetVpcTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetVpcTimeoutsOutput() GetVpcTimeoutsOutput
+	ToGetVpcTimeoutsOutputWithContext(context.Context) GetVpcTimeoutsOutput
+}
+
+type GetVpcTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetVpcTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcTimeouts)(nil)).Elem()
+}
+
+func (i GetVpcTimeoutsArgs) ToGetVpcTimeoutsOutput() GetVpcTimeoutsOutput {
+	return i.ToGetVpcTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetVpcTimeoutsArgs) ToGetVpcTimeoutsOutputWithContext(ctx context.Context) GetVpcTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcTimeoutsOutput)
+}
+
+func (i GetVpcTimeoutsArgs) ToGetVpcTimeoutsPtrOutput() GetVpcTimeoutsPtrOutput {
+	return i.ToGetVpcTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetVpcTimeoutsArgs) ToGetVpcTimeoutsPtrOutputWithContext(ctx context.Context) GetVpcTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcTimeoutsOutput).ToGetVpcTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetVpcTimeoutsPtrInput is an input type that accepts GetVpcTimeoutsArgs, GetVpcTimeoutsPtr and GetVpcTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetVpcTimeoutsPtrInput` via:
+//
+//	        GetVpcTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetVpcTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetVpcTimeoutsPtrOutput() GetVpcTimeoutsPtrOutput
+	ToGetVpcTimeoutsPtrOutputWithContext(context.Context) GetVpcTimeoutsPtrOutput
+}
+
+type getVpcTimeoutsPtrType GetVpcTimeoutsArgs
+
+func GetVpcTimeoutsPtr(v *GetVpcTimeoutsArgs) GetVpcTimeoutsPtrInput {
+	return (*getVpcTimeoutsPtrType)(v)
+}
+
+func (*getVpcTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVpcTimeouts)(nil)).Elem()
+}
+
+func (i *getVpcTimeoutsPtrType) ToGetVpcTimeoutsPtrOutput() GetVpcTimeoutsPtrOutput {
+	return i.ToGetVpcTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getVpcTimeoutsPtrType) ToGetVpcTimeoutsPtrOutputWithContext(ctx context.Context) GetVpcTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcTimeoutsPtrOutput)
+}
+
+type GetVpcTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetVpcTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcTimeouts)(nil)).Elem()
+}
+
+func (o GetVpcTimeoutsOutput) ToGetVpcTimeoutsOutput() GetVpcTimeoutsOutput {
+	return o
+}
+
+func (o GetVpcTimeoutsOutput) ToGetVpcTimeoutsOutputWithContext(ctx context.Context) GetVpcTimeoutsOutput {
+	return o
+}
+
+func (o GetVpcTimeoutsOutput) ToGetVpcTimeoutsPtrOutput() GetVpcTimeoutsPtrOutput {
+	return o.ToGetVpcTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetVpcTimeoutsOutput) ToGetVpcTimeoutsPtrOutputWithContext(ctx context.Context) GetVpcTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetVpcTimeouts) *GetVpcTimeouts {
+		return &v
+	}).(GetVpcTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetVpcTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetVpcTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetVpcTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetVpcTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetVpcTimeouts)(nil)).Elem()
+}
+
+func (o GetVpcTimeoutsPtrOutput) ToGetVpcTimeoutsPtrOutput() GetVpcTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetVpcTimeoutsPtrOutput) ToGetVpcTimeoutsPtrOutputWithContext(ctx context.Context) GetVpcTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetVpcTimeoutsPtrOutput) Elem() GetVpcTimeoutsOutput {
+	return o.ApplyT(func(v *GetVpcTimeouts) GetVpcTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetVpcTimeouts
+		return ret
+	}).(GetVpcTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetVpcTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetVpcTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetVpnConnectionTunnel1 struct {
 	// BGP configuration for this tunnel.
 	Bgp GetVpnConnectionTunnel1Bgp `pulumi:"bgp"`
@@ -39569,6 +41297,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeEncryptionParametersPtrInput)(nil)).Elem(), VolumeEncryptionParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeSourceInput)(nil)).Elem(), VolumeSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeSourcePtrInput)(nil)).Elem(), VolumeSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcNetworkRangeTimeoutsInput)(nil)).Elem(), VpcNetworkRangeTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcNetworkRangeTimeoutsPtrInput)(nil)).Elem(), VpcNetworkRangeTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcRegionTimeoutsInput)(nil)).Elem(), VpcRegionTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcRegionTimeoutsPtrInput)(nil)).Elem(), VpcRegionTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcRoutingTableStaticRouteDestinationInput)(nil)).Elem(), VpcRoutingTableStaticRouteDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcRoutingTableStaticRouteDestinationPtrInput)(nil)).Elem(), VpcRoutingTableStaticRouteDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcRoutingTableStaticRouteNexthopInput)(nil)).Elem(), VpcRoutingTableStaticRouteNexthopArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcRoutingTableStaticRouteNexthopPtrInput)(nil)).Elem(), VpcRoutingTableStaticRouteNexthopArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcRoutingTableStaticRouteTimeoutsInput)(nil)).Elem(), VpcRoutingTableStaticRouteTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcRoutingTableStaticRouteTimeoutsPtrInput)(nil)).Elem(), VpcRoutingTableStaticRouteTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcTimeoutsInput)(nil)).Elem(), VpcTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcTimeoutsPtrInput)(nil)).Elem(), VpcTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpnConnectionTunnel1Input)(nil)).Elem(), VpnConnectionTunnel1Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpnConnectionTunnel1PtrInput)(nil)).Elem(), VpnConnectionTunnel1Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpnConnectionTunnel1BgpInput)(nil)).Elem(), VpnConnectionTunnel1BgpArgs{})
@@ -39793,6 +41533,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTelemetryrouterInstanceFilterAttributeInput)(nil)).Elem(), GetTelemetryrouterInstanceFilterAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTelemetryrouterInstanceFilterAttributeArrayInput)(nil)).Elem(), GetTelemetryrouterInstanceFilterAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeSourceInput)(nil)).Elem(), GetVolumeSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNetworkRangeTimeoutsInput)(nil)).Elem(), GetVpcNetworkRangeTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNetworkRangeTimeoutsPtrInput)(nil)).Elem(), GetVpcNetworkRangeTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcRegionTimeoutsInput)(nil)).Elem(), GetVpcRegionTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcRegionTimeoutsPtrInput)(nil)).Elem(), GetVpcRegionTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcRoutingTableStaticRouteDestinationInput)(nil)).Elem(), GetVpcRoutingTableStaticRouteDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcRoutingTableStaticRouteNexthopInput)(nil)).Elem(), GetVpcRoutingTableStaticRouteNexthopArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcRoutingTableStaticRouteTimeoutsInput)(nil)).Elem(), GetVpcRoutingTableStaticRouteTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcRoutingTableStaticRouteTimeoutsPtrInput)(nil)).Elem(), GetVpcRoutingTableStaticRouteTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcTimeoutsInput)(nil)).Elem(), GetVpcTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcTimeoutsPtrInput)(nil)).Elem(), GetVpcTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpnConnectionTunnel1Input)(nil)).Elem(), GetVpnConnectionTunnel1Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpnConnectionTunnel1BgpInput)(nil)).Elem(), GetVpnConnectionTunnel1BgpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpnConnectionTunnel1PeeringInput)(nil)).Elem(), GetVpnConnectionTunnel1PeeringArgs{})
@@ -40064,6 +41814,18 @@ func init() {
 	pulumi.RegisterOutputType(VolumeEncryptionParametersPtrOutput{})
 	pulumi.RegisterOutputType(VolumeSourceOutput{})
 	pulumi.RegisterOutputType(VolumeSourcePtrOutput{})
+	pulumi.RegisterOutputType(VpcNetworkRangeTimeoutsOutput{})
+	pulumi.RegisterOutputType(VpcNetworkRangeTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(VpcRegionTimeoutsOutput{})
+	pulumi.RegisterOutputType(VpcRegionTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(VpcRoutingTableStaticRouteDestinationOutput{})
+	pulumi.RegisterOutputType(VpcRoutingTableStaticRouteDestinationPtrOutput{})
+	pulumi.RegisterOutputType(VpcRoutingTableStaticRouteNexthopOutput{})
+	pulumi.RegisterOutputType(VpcRoutingTableStaticRouteNexthopPtrOutput{})
+	pulumi.RegisterOutputType(VpcRoutingTableStaticRouteTimeoutsOutput{})
+	pulumi.RegisterOutputType(VpcRoutingTableStaticRouteTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(VpcTimeoutsOutput{})
+	pulumi.RegisterOutputType(VpcTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(VpnConnectionTunnel1Output{})
 	pulumi.RegisterOutputType(VpnConnectionTunnel1PtrOutput{})
 	pulumi.RegisterOutputType(VpnConnectionTunnel1BgpOutput{})
@@ -40288,6 +42050,16 @@ func init() {
 	pulumi.RegisterOutputType(GetTelemetryrouterInstanceFilterAttributeOutput{})
 	pulumi.RegisterOutputType(GetTelemetryrouterInstanceFilterAttributeArrayOutput{})
 	pulumi.RegisterOutputType(GetVolumeSourceOutput{})
+	pulumi.RegisterOutputType(GetVpcNetworkRangeTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetVpcNetworkRangeTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetVpcRegionTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetVpcRegionTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetVpcRoutingTableStaticRouteDestinationOutput{})
+	pulumi.RegisterOutputType(GetVpcRoutingTableStaticRouteNexthopOutput{})
+	pulumi.RegisterOutputType(GetVpcRoutingTableStaticRouteTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetVpcRoutingTableStaticRouteTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetVpcTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetVpcTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetVpnConnectionTunnel1Output{})
 	pulumi.RegisterOutputType(GetVpnConnectionTunnel1BgpOutput{})
 	pulumi.RegisterOutputType(GetVpnConnectionTunnel1PeeringOutput{})

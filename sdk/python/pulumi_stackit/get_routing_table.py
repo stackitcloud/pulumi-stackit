@@ -203,7 +203,7 @@ def get_routing_table(network_area_id: Optional[_builtins.str] = None,
 
     This datasource is for SNA, not VPC, based networks.
 
-    > This datasource is part of the routing-tables experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
+    > This datasource is part of the experimental feature routing-tables and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
 
     ## Example Usage
 
@@ -245,7 +245,7 @@ def get_routing_table_output(network_area_id: pulumi.Input[Optional[_builtins.st
 
     This datasource is for SNA, not VPC, based networks.
 
-    > This datasource is part of the routing-tables experiment and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
+    > This datasource is part of the experimental feature routing-tables and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
 
     ## Example Usage
 
