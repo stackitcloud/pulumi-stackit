@@ -13,18 +13,45 @@ namespace Pulumi.Stackit
     {
         /// <summary>
         /// ObjectStorage default-retention resource schema. Must have a `Region` specified in the provider configuration.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```terraform
+        /// data "stackit_objectstorage_default_retention" "example" {
+        ///   project_id  = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+        ///   bucket_name = "example-bucket"
+        /// }
+        /// ```
         /// </summary>
         public static Task<GetObjectstorageDefaultRetentionResult> InvokeAsync(GetObjectstorageDefaultRetentionArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetObjectstorageDefaultRetentionResult>("stackit:index/getObjectstorageDefaultRetention:getObjectstorageDefaultRetention", args ?? new GetObjectstorageDefaultRetentionArgs(), options.WithDefaults());
 
         /// <summary>
         /// ObjectStorage default-retention resource schema. Must have a `Region` specified in the provider configuration.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```terraform
+        /// data "stackit_objectstorage_default_retention" "example" {
+        ///   project_id  = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+        ///   bucket_name = "example-bucket"
+        /// }
+        /// ```
         /// </summary>
         public static Output<GetObjectstorageDefaultRetentionResult> Invoke(GetObjectstorageDefaultRetentionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetObjectstorageDefaultRetentionResult>("stackit:index/getObjectstorageDefaultRetention:getObjectstorageDefaultRetention", args ?? new GetObjectstorageDefaultRetentionInvokeArgs(), options.WithDefaults());
 
         /// <summary>
         /// ObjectStorage default-retention resource schema. Must have a `Region` specified in the provider configuration.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```terraform
+        /// data "stackit_objectstorage_default_retention" "example" {
+        ///   project_id  = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+        ///   bucket_name = "example-bucket"
+        /// }
+        /// ```
         /// </summary>
         public static Output<GetObjectstorageDefaultRetentionResult> Invoke(GetObjectstorageDefaultRetentionInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetObjectstorageDefaultRetentionResult>("stackit:index/getObjectstorageDefaultRetention:getObjectstorageDefaultRetention", args ?? new GetObjectstorageDefaultRetentionInvokeArgs(), options.WithDefaults());
@@ -38,18 +65,6 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("bucketName", required: true)]
         public string BucketName { get; set; } = null!;
-
-        /// <summary>
-        /// The number retention period in days.
-        /// </summary>
-        [Input("days", required: true)]
-        public int Days { get; set; }
-
-        /// <summary>
-        /// The retention mode for default retention on a bucket.
-        /// </summary>
-        [Input("mode", required: true)]
-        public string Mode { get; set; } = null!;
 
         /// <summary>
         /// STACKIT Project ID to which the default-retention is associated.
@@ -76,18 +91,6 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("bucketName", required: true)]
         public Input<string> BucketName { get; set; } = null!;
-
-        /// <summary>
-        /// The number retention period in days.
-        /// </summary>
-        [Input("days", required: true)]
-        public Input<int> Days { get; set; } = null!;
-
-        /// <summary>
-        /// The retention mode for default retention on a bucket.
-        /// </summary>
-        [Input("mode", required: true)]
-        public Input<string> Mode { get; set; } = null!;
 
         /// <summary>
         /// STACKIT Project ID to which the default-retention is associated.

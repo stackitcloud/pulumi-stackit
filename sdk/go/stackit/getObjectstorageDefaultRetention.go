@@ -12,6 +12,8 @@ import (
 )
 
 // ObjectStorage default-retention resource schema. Must have a `region` specified in the provider configuration.
+//
+// ## Example Usage
 func LookupObjectstorageDefaultRetention(ctx *pulumi.Context, args *LookupObjectstorageDefaultRetentionArgs, opts ...pulumi.InvokeOption) (*LookupObjectstorageDefaultRetentionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupObjectstorageDefaultRetentionResult
@@ -26,10 +28,6 @@ func LookupObjectstorageDefaultRetention(ctx *pulumi.Context, args *LookupObject
 type LookupObjectstorageDefaultRetentionArgs struct {
 	// The associated bucket's name. It must be DNS conform.
 	BucketName string `pulumi:"bucketName"`
-	// The number retention period in days.
-	Days int `pulumi:"days"`
-	// The retention mode for default retention on a bucket.
-	Mode string `pulumi:"mode"`
 	// STACKIT Project ID to which the default-retention is associated.
 	ProjectId string `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
@@ -65,10 +63,6 @@ func LookupObjectstorageDefaultRetentionOutput(ctx *pulumi.Context, args LookupO
 type LookupObjectstorageDefaultRetentionOutputArgs struct {
 	// The associated bucket's name. It must be DNS conform.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
-	// The number retention period in days.
-	Days pulumi.IntInput `pulumi:"days"`
-	// The retention mode for default retention on a bucket.
-	Mode pulumi.StringInput `pulumi:"mode"`
 	// STACKIT Project ID to which the default-retention is associated.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.

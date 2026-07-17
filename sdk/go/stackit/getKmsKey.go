@@ -56,7 +56,7 @@ type LookupKmsKeyResult struct {
 	KeyringId string `pulumi:"keyringId"`
 	// STACKIT project ID to which the key is associated.
 	ProjectId string `pulumi:"projectId"`
-	// The underlying system that is responsible for protecting the key material. Possible values are: `software`.
+	// The underlying system that is responsible for protecting the key material. Possible values are: `software`, `hsm`.
 	Protection string `pulumi:"protection"`
 	// The purpose for which the key will be used. Possible values are: `symmetricEncryptDecrypt`, `asymmetricEncryptDecrypt`, `messageAuthenticationCode`, `asymmetricSignVerify`.
 	Purpose string `pulumi:"purpose"`
@@ -149,7 +149,7 @@ func (o LookupKmsKeyResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKmsKeyResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// The underlying system that is responsible for protecting the key material. Possible values are: `software`.
+// The underlying system that is responsible for protecting the key material. Possible values are: `software`, `hsm`.
 func (o LookupKmsKeyResultOutput) Protection() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKmsKeyResult) string { return v.Protection }).(pulumi.StringOutput)
 }

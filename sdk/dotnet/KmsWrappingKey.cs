@@ -66,7 +66,7 @@ namespace Pulumi.Stackit
         public Output<string> ProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// The underlying system that is responsible for protecting the key material. Possible values are: `Software`.
+        /// The underlying system that is responsible for protecting the key material. Possible values are: `Software`, `Hsm`.
         /// </summary>
         [Output("protection")]
         public Output<string> Protection { get; private set; } = null!;
@@ -179,7 +179,7 @@ namespace Pulumi.Stackit
         public Input<string> ProjectId { get; set; } = null!;
 
         /// <summary>
-        /// The underlying system that is responsible for protecting the key material. Possible values are: `Software`.
+        /// The underlying system that is responsible for protecting the key material. Possible values are: `Software`, `Hsm`.
         /// </summary>
         [Input("protection", required: true)]
         public Input<string> Protection { get; set; } = null!;
@@ -253,7 +253,7 @@ namespace Pulumi.Stackit
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
-        /// The underlying system that is responsible for protecting the key material. Possible values are: `Software`.
+        /// The underlying system that is responsible for protecting the key material. Possible values are: `Software`, `Hsm`.
         /// </summary>
         [Input("protection")]
         public Input<string>? Protection { get; set; }

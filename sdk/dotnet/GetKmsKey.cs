@@ -166,7 +166,7 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string ProjectId;
         /// <summary>
-        /// The underlying system that is responsible for protecting the key material. Possible values are: `Software`.
+        /// The underlying system that is responsible for protecting the key material. Possible values are: `Software`, `Hsm`.
         /// </summary>
         public readonly string Protection;
         /// <summary>

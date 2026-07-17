@@ -82,7 +82,7 @@ export interface GetKmsWrappingKeyResult {
      */
     readonly projectId: string;
     /**
-     * The underlying system that is responsible for protecting the key material. Possible values are: `software`.
+     * The underlying system that is responsible for protecting the key material. Possible values are: `software`, `hsm`.
      */
     readonly protection: string;
     /**

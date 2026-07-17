@@ -36,7 +36,7 @@ type KmsKey struct {
 	KeyringId pulumi.StringOutput `pulumi:"keyringId"`
 	// STACKIT project ID to which the key is associated.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// The underlying system that is responsible for protecting the key material. Possible values are: `software`.
+	// The underlying system that is responsible for protecting the key material. Possible values are: `software`, `hsm`.
 	Protection pulumi.StringOutput `pulumi:"protection"`
 	// The purpose for which the key will be used. Possible values are: `symmetricEncryptDecrypt`, `asymmetricEncryptDecrypt`, `messageAuthenticationCode`, `asymmetricSignVerify`.
 	Purpose pulumi.StringOutput `pulumi:"purpose"`
@@ -108,7 +108,7 @@ type kmsKeyState struct {
 	KeyringId *string `pulumi:"keyringId"`
 	// STACKIT project ID to which the key is associated.
 	ProjectId *string `pulumi:"projectId"`
-	// The underlying system that is responsible for protecting the key material. Possible values are: `software`.
+	// The underlying system that is responsible for protecting the key material. Possible values are: `software`, `hsm`.
 	Protection *string `pulumi:"protection"`
 	// The purpose for which the key will be used. Possible values are: `symmetricEncryptDecrypt`, `asymmetricEncryptDecrypt`, `messageAuthenticationCode`, `asymmetricSignVerify`.
 	Purpose *string `pulumi:"purpose"`
@@ -133,7 +133,7 @@ type KmsKeyState struct {
 	KeyringId pulumi.StringPtrInput
 	// STACKIT project ID to which the key is associated.
 	ProjectId pulumi.StringPtrInput
-	// The underlying system that is responsible for protecting the key material. Possible values are: `software`.
+	// The underlying system that is responsible for protecting the key material. Possible values are: `software`, `hsm`.
 	Protection pulumi.StringPtrInput
 	// The purpose for which the key will be used. Possible values are: `symmetricEncryptDecrypt`, `asymmetricEncryptDecrypt`, `messageAuthenticationCode`, `asymmetricSignVerify`.
 	Purpose pulumi.StringPtrInput
@@ -160,7 +160,7 @@ type kmsKeyArgs struct {
 	KeyringId string `pulumi:"keyringId"`
 	// STACKIT project ID to which the key is associated.
 	ProjectId string `pulumi:"projectId"`
-	// The underlying system that is responsible for protecting the key material. Possible values are: `software`.
+	// The underlying system that is responsible for protecting the key material. Possible values are: `software`, `hsm`.
 	Protection string `pulumi:"protection"`
 	// The purpose for which the key will be used. Possible values are: `symmetricEncryptDecrypt`, `asymmetricEncryptDecrypt`, `messageAuthenticationCode`, `asymmetricSignVerify`.
 	Purpose string `pulumi:"purpose"`
@@ -184,7 +184,7 @@ type KmsKeyArgs struct {
 	KeyringId pulumi.StringInput
 	// STACKIT project ID to which the key is associated.
 	ProjectId pulumi.StringInput
-	// The underlying system that is responsible for protecting the key material. Possible values are: `software`.
+	// The underlying system that is responsible for protecting the key material. Possible values are: `software`, `hsm`.
 	Protection pulumi.StringInput
 	// The purpose for which the key will be used. Possible values are: `symmetricEncryptDecrypt`, `asymmetricEncryptDecrypt`, `messageAuthenticationCode`, `asymmetricSignVerify`.
 	Purpose pulumi.StringInput
@@ -319,7 +319,7 @@ func (o KmsKeyOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *KmsKey) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// The underlying system that is responsible for protecting the key material. Possible values are: `software`.
+// The underlying system that is responsible for protecting the key material. Possible values are: `software`, `hsm`.
 func (o KmsKeyOutput) Protection() pulumi.StringOutput {
 	return o.ApplyT(func(v *KmsKey) pulumi.StringOutput { return v.Protection }).(pulumi.StringOutput)
 }

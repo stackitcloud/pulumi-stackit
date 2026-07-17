@@ -35,7 +35,7 @@ class KmsWrappingKeyArgs:
         :param pulumi.Input[_builtins.str] display_name: The display name to distinguish multiple wrapping keys.
         :param pulumi.Input[_builtins.str] keyring_id: The ID of the associated keyring
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the keyring is associated.
-        :param pulumi.Input[_builtins.str] protection: The underlying system that is responsible for protecting the key material. Possible values are: `software`.
+        :param pulumi.Input[_builtins.str] protection: The underlying system that is responsible for protecting the key material. Possible values are: `software`, `hsm`.
         :param pulumi.Input[_builtins.str] purpose: The purpose for which the key will be used. Possible values are: `wrap_symmetric_key`, `wrap_asymmetric_key`.
         :param pulumi.Input[_builtins.str] access_scope: The access scope of the key. Default is `PUBLIC`. Possible values are: `PUBLIC`, `SNA`.
         :param pulumi.Input[_builtins.str] description: A user chosen description to distinguish multiple wrapping keys.
@@ -106,7 +106,7 @@ class KmsWrappingKeyArgs:
     @pulumi.getter
     def protection(self) -> pulumi.Input[_builtins.str]:
         """
-        The underlying system that is responsible for protecting the key material. Possible values are: `software`.
+        The underlying system that is responsible for protecting the key material. Possible values are: `software`, `hsm`.
         """
         return pulumi.get(self, "protection")
 
@@ -190,7 +190,7 @@ class _KmsWrappingKeyState:
         :param pulumi.Input[_builtins.str] expires_at: The date and time the wrapping key will expire.
         :param pulumi.Input[_builtins.str] keyring_id: The ID of the associated keyring
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the keyring is associated.
-        :param pulumi.Input[_builtins.str] protection: The underlying system that is responsible for protecting the key material. Possible values are: `software`.
+        :param pulumi.Input[_builtins.str] protection: The underlying system that is responsible for protecting the key material. Possible values are: `software`, `hsm`.
         :param pulumi.Input[_builtins.str] public_key: The public key of the wrapping key.
         :param pulumi.Input[_builtins.str] purpose: The purpose for which the key will be used. Possible values are: `wrap_symmetric_key`, `wrap_asymmetric_key`.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
@@ -323,7 +323,7 @@ class _KmsWrappingKeyState:
     @pulumi.getter
     def protection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The underlying system that is responsible for protecting the key material. Possible values are: `software`.
+        The underlying system that is responsible for protecting the key material. Possible values are: `software`, `hsm`.
         """
         return pulumi.get(self, "protection")
 
@@ -410,7 +410,7 @@ class KmsWrappingKey(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: The display name to distinguish multiple wrapping keys.
         :param pulumi.Input[_builtins.str] keyring_id: The ID of the associated keyring
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the keyring is associated.
-        :param pulumi.Input[_builtins.str] protection: The underlying system that is responsible for protecting the key material. Possible values are: `software`.
+        :param pulumi.Input[_builtins.str] protection: The underlying system that is responsible for protecting the key material. Possible values are: `software`, `hsm`.
         :param pulumi.Input[_builtins.str] purpose: The purpose for which the key will be used. Possible values are: `wrap_symmetric_key`, `wrap_asymmetric_key`.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
@@ -522,7 +522,7 @@ class KmsWrappingKey(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] expires_at: The date and time the wrapping key will expire.
         :param pulumi.Input[_builtins.str] keyring_id: The ID of the associated keyring
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the keyring is associated.
-        :param pulumi.Input[_builtins.str] protection: The underlying system that is responsible for protecting the key material. Possible values are: `software`.
+        :param pulumi.Input[_builtins.str] protection: The underlying system that is responsible for protecting the key material. Possible values are: `software`, `hsm`.
         :param pulumi.Input[_builtins.str] public_key: The public key of the wrapping key.
         :param pulumi.Input[_builtins.str] purpose: The purpose for which the key will be used. Possible values are: `wrap_symmetric_key`, `wrap_asymmetric_key`.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
@@ -615,7 +615,7 @@ class KmsWrappingKey(pulumi.CustomResource):
     @pulumi.getter
     def protection(self) -> pulumi.Output[_builtins.str]:
         """
-        The underlying system that is responsible for protecting the key material. Possible values are: `software`.
+        The underlying system that is responsible for protecting the key material. Possible values are: `software`, `hsm`.
         """
         return pulumi.get(self, "protection")
 

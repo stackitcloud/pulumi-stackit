@@ -36,7 +36,7 @@ class KmsKeyArgs:
         :param pulumi.Input[_builtins.str] display_name: The display name to distinguish multiple keys
         :param pulumi.Input[_builtins.str] keyring_id: The ID of the associated keyring
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the key is associated.
-        :param pulumi.Input[_builtins.str] protection: The underlying system that is responsible for protecting the key material. Possible values are: `software`.
+        :param pulumi.Input[_builtins.str] protection: The underlying system that is responsible for protecting the key material. Possible values are: `software`, `hsm`.
         :param pulumi.Input[_builtins.str] purpose: The purpose for which the key will be used. Possible values are: `symmetric_encrypt_decrypt`, `asymmetric_encrypt_decrypt`, `message_authentication_code`, `asymmetric_sign_verify`.
         :param pulumi.Input[_builtins.str] access_scope: The access scope of the key. Default is `PUBLIC`. Possible values are: `PUBLIC`, `SNA`.
         :param pulumi.Input[_builtins.str] description: A user chosen description to distinguish multiple keys
@@ -110,7 +110,7 @@ class KmsKeyArgs:
     @pulumi.getter
     def protection(self) -> pulumi.Input[_builtins.str]:
         """
-        The underlying system that is responsible for protecting the key material. Possible values are: `software`.
+        The underlying system that is responsible for protecting the key material. Possible values are: `software`, `hsm`.
         """
         return pulumi.get(self, "protection")
 
@@ -204,7 +204,7 @@ class _KmsKeyState:
         :param pulumi.Input[_builtins.str] key_id: The ID of the key
         :param pulumi.Input[_builtins.str] keyring_id: The ID of the associated keyring
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the key is associated.
-        :param pulumi.Input[_builtins.str] protection: The underlying system that is responsible for protecting the key material. Possible values are: `software`.
+        :param pulumi.Input[_builtins.str] protection: The underlying system that is responsible for protecting the key material. Possible values are: `software`, `hsm`.
         :param pulumi.Input[_builtins.str] purpose: The purpose for which the key will be used. Possible values are: `symmetric_encrypt_decrypt`, `asymmetric_encrypt_decrypt`, `message_authentication_code`, `asymmetric_sign_verify`.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
@@ -331,7 +331,7 @@ class _KmsKeyState:
     @pulumi.getter
     def protection(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The underlying system that is responsible for protecting the key material. Possible values are: `software`.
+        The underlying system that is responsible for protecting the key material. Possible values are: `software`, `hsm`.
         """
         return pulumi.get(self, "protection")
 
@@ -398,7 +398,7 @@ class KmsKey(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] import_only: States whether versions can be created or only imported.
         :param pulumi.Input[_builtins.str] keyring_id: The ID of the associated keyring
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the key is associated.
-        :param pulumi.Input[_builtins.str] protection: The underlying system that is responsible for protecting the key material. Possible values are: `software`.
+        :param pulumi.Input[_builtins.str] protection: The underlying system that is responsible for protecting the key material. Possible values are: `software`, `hsm`.
         :param pulumi.Input[_builtins.str] purpose: The purpose for which the key will be used. Possible values are: `symmetric_encrypt_decrypt`, `asymmetric_encrypt_decrypt`, `message_authentication_code`, `asymmetric_sign_verify`.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
@@ -509,7 +509,7 @@ class KmsKey(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] key_id: The ID of the key
         :param pulumi.Input[_builtins.str] keyring_id: The ID of the associated keyring
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the key is associated.
-        :param pulumi.Input[_builtins.str] protection: The underlying system that is responsible for protecting the key material. Possible values are: `software`.
+        :param pulumi.Input[_builtins.str] protection: The underlying system that is responsible for protecting the key material. Possible values are: `software`, `hsm`.
         :param pulumi.Input[_builtins.str] purpose: The purpose for which the key will be used. Possible values are: `symmetric_encrypt_decrypt`, `asymmetric_encrypt_decrypt`, `message_authentication_code`, `asymmetric_sign_verify`.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
@@ -598,7 +598,7 @@ class KmsKey(pulumi.CustomResource):
     @pulumi.getter
     def protection(self) -> pulumi.Output[_builtins.str]:
         """
-        The underlying system that is responsible for protecting the key material. Possible values are: `software`.
+        The underlying system that is responsible for protecting the key material. Possible values are: `software`, `hsm`.
         """
         return pulumi.get(self, "protection")
 

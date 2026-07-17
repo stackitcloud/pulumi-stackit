@@ -70,7 +70,7 @@ export class KmsWrappingKey extends pulumi.CustomResource {
      */
     declare public readonly projectId: pulumi.Output<string>;
     /**
-     * The underlying system that is responsible for protecting the key material. Possible values are: `software`.
+     * The underlying system that is responsible for protecting the key material. Possible values are: `software`, `hsm`.
      */
     declare public readonly protection: pulumi.Output<string>;
     /**
@@ -192,7 +192,7 @@ export interface KmsWrappingKeyState {
      */
     projectId?: pulumi.Input<string | undefined>;
     /**
-     * The underlying system that is responsible for protecting the key material. Possible values are: `software`.
+     * The underlying system that is responsible for protecting the key material. Possible values are: `software`, `hsm`.
      */
     protection?: pulumi.Input<string | undefined>;
     /**
@@ -242,7 +242,7 @@ export interface KmsWrappingKeyArgs {
      */
     projectId: pulumi.Input<string>;
     /**
-     * The underlying system that is responsible for protecting the key material. Possible values are: `software`.
+     * The underlying system that is responsible for protecting the key material. Possible values are: `software`, `hsm`.
      */
     protection: pulumi.Input<string>;
     /**

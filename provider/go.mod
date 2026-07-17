@@ -197,43 +197,43 @@ require (
 	github.com/spf13/pflag v1.0.10 // indirect
 	github.com/spiffe/go-spiffe/v2 v2.6.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/core v0.26.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/alb v0.15.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/alb v0.16.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/authorization v0.15.2 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/cdn v1.18.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/certificates v1.8.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/cdn v1.19.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/certificates v1.9.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/dns v0.21.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/dremio v0.4.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/edge v0.12.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/edge v0.13.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/git v0.14.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/iaas v1.13.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/intake v0.11.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/kms v1.11.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/kms v1.12.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/loadbalancer v1.14.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/logme v1.0.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/logme v1.0.1 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/logs v0.10.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/mariadb v1.0.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/mariadb v1.0.1 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/modelserving v0.11.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/mongodbflex v1.11.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/mongodbflex v1.12.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/objectstorage v1.9.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/observability v0.24.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/opensearch v1.0.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/postgresflex v1.10.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/rabbitmq v1.1.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/redis v1.1.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/opensearch v1.1.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/postgresflex v1.11.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/rabbitmq v1.1.1 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/redis v1.1.1 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/resourcemanager v0.24.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/scf v0.9.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/scf v0.10.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/secretsmanager v0.18.1 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/serverbackup v1.7.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/serverupdate v1.5.2 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/serviceaccount v0.20.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/serviceenablement v1.7.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/sfs v0.11.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/ske v1.18.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/ske v1.19.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/sqlserverflex v1.16.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/telemetrylink v0.2.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/telemetryrouter v0.3.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/telemetrylink v0.4.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/telemetryrouter v0.4.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/vpn v0.14.0 // indirect
-	github.com/stackitcloud/terraform-provider-stackit v0.103.0 // indirect
+	github.com/stackitcloud/terraform-provider-stackit v0.104.0 // indirect
 	github.com/teambition/rrule-go v1.8.2 // indirect
 	github.com/teekennedy/goldmark-markdown v0.3.0 // indirect
 	github.com/texttheater/golang-levenshtein v1.0.1 // indirect
