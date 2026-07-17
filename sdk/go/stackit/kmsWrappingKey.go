@@ -34,7 +34,7 @@ type KmsWrappingKey struct {
 	KeyringId pulumi.StringOutput `pulumi:"keyringId"`
 	// STACKIT project ID to which the keyring is associated.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	// The underlying system that is responsible for protecting the key material. Possible values are: `software`.
+	// The underlying system that is responsible for protecting the key material. Possible values are: `software`, `hsm`.
 	Protection pulumi.StringOutput `pulumi:"protection"`
 	// The public key of the wrapping key.
 	PublicKey pulumi.StringOutput `pulumi:"publicKey"`
@@ -110,7 +110,7 @@ type kmsWrappingKeyState struct {
 	KeyringId *string `pulumi:"keyringId"`
 	// STACKIT project ID to which the keyring is associated.
 	ProjectId *string `pulumi:"projectId"`
-	// The underlying system that is responsible for protecting the key material. Possible values are: `software`.
+	// The underlying system that is responsible for protecting the key material. Possible values are: `software`, `hsm`.
 	Protection *string `pulumi:"protection"`
 	// The public key of the wrapping key.
 	PublicKey *string `pulumi:"publicKey"`
@@ -139,7 +139,7 @@ type KmsWrappingKeyState struct {
 	KeyringId pulumi.StringPtrInput
 	// STACKIT project ID to which the keyring is associated.
 	ProjectId pulumi.StringPtrInput
-	// The underlying system that is responsible for protecting the key material. Possible values are: `software`.
+	// The underlying system that is responsible for protecting the key material. Possible values are: `software`, `hsm`.
 	Protection pulumi.StringPtrInput
 	// The public key of the wrapping key.
 	PublicKey pulumi.StringPtrInput
@@ -168,7 +168,7 @@ type kmsWrappingKeyArgs struct {
 	KeyringId string `pulumi:"keyringId"`
 	// STACKIT project ID to which the keyring is associated.
 	ProjectId string `pulumi:"projectId"`
-	// The underlying system that is responsible for protecting the key material. Possible values are: `software`.
+	// The underlying system that is responsible for protecting the key material. Possible values are: `software`, `hsm`.
 	Protection string `pulumi:"protection"`
 	// The purpose for which the key will be used. Possible values are: `wrapSymmetricKey`, `wrapAsymmetricKey`.
 	Purpose string `pulumi:"purpose"`
@@ -190,7 +190,7 @@ type KmsWrappingKeyArgs struct {
 	KeyringId pulumi.StringInput
 	// STACKIT project ID to which the keyring is associated.
 	ProjectId pulumi.StringInput
-	// The underlying system that is responsible for protecting the key material. Possible values are: `software`.
+	// The underlying system that is responsible for protecting the key material. Possible values are: `software`, `hsm`.
 	Protection pulumi.StringInput
 	// The purpose for which the key will be used. Possible values are: `wrapSymmetricKey`, `wrapAsymmetricKey`.
 	Purpose pulumi.StringInput
@@ -325,7 +325,7 @@ func (o KmsWrappingKeyOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *KmsWrappingKey) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// The underlying system that is responsible for protecting the key material. Possible values are: `software`.
+// The underlying system that is responsible for protecting the key material. Possible values are: `software`, `hsm`.
 func (o KmsWrappingKeyOutput) Protection() pulumi.StringOutput {
 	return o.ApplyT(func(v *KmsWrappingKey) pulumi.StringOutput { return v.Protection }).(pulumi.StringOutput)
 }

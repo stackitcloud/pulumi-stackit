@@ -56,7 +56,7 @@ type LookupKmsWrappingKeyResult struct {
 	KeyringId string `pulumi:"keyringId"`
 	// STACKIT project ID to which the keyring is associated.
 	ProjectId string `pulumi:"projectId"`
-	// The underlying system that is responsible for protecting the key material. Possible values are: `software`.
+	// The underlying system that is responsible for protecting the key material. Possible values are: `software`, `hsm`.
 	Protection string `pulumi:"protection"`
 	// The public key of the wrapping key.
 	PublicKey string `pulumi:"publicKey"`
@@ -153,7 +153,7 @@ func (o LookupKmsWrappingKeyResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKmsWrappingKeyResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
-// The underlying system that is responsible for protecting the key material. Possible values are: `software`.
+// The underlying system that is responsible for protecting the key material. Possible values are: `software`, `hsm`.
 func (o LookupKmsWrappingKeyResultOutput) Protection() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKmsWrappingKeyResult) string { return v.Protection }).(pulumi.StringOutput)
 }

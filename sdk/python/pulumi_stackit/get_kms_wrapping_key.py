@@ -146,7 +146,7 @@ class GetKmsWrappingKeyResult:
     @pulumi.getter
     def protection(self) -> _builtins.str:
         """
-        The underlying system that is responsible for protecting the key material. Possible values are: `software`.
+        The underlying system that is responsible for protecting the key material. Possible values are: `software`, `hsm`.
         """
         return pulumi.get(self, "protection")
 

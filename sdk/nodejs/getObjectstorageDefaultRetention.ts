@@ -6,13 +6,13 @@ import * as utilities from "./utilities";
 
 /**
  * ObjectStorage default-retention resource schema. Must have a `region` specified in the provider configuration.
+ *
+ * ## Example Usage
  */
 export function getObjectstorageDefaultRetention(args: GetObjectstorageDefaultRetentionArgs, opts?: pulumi.InvokeOptions): Promise<GetObjectstorageDefaultRetentionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("stackit:index/getObjectstorageDefaultRetention:getObjectstorageDefaultRetention", {
         "bucketName": args.bucketName,
-        "days": args.days,
-        "mode": args.mode,
         "projectId": args.projectId,
         "region": args.region,
     }, opts);
@@ -26,14 +26,6 @@ export interface GetObjectstorageDefaultRetentionArgs {
      * The associated bucket's name. It must be DNS conform.
      */
     bucketName: string;
-    /**
-     * The number retention period in days.
-     */
-    days: number;
-    /**
-     * The retention mode for default retention on a bucket.
-     */
-    mode: string;
     /**
      * STACKIT Project ID to which the default-retention is associated.
      */
@@ -75,13 +67,13 @@ export interface GetObjectstorageDefaultRetentionResult {
 }
 /**
  * ObjectStorage default-retention resource schema. Must have a `region` specified in the provider configuration.
+ *
+ * ## Example Usage
  */
 export function getObjectstorageDefaultRetentionOutput(args: GetObjectstorageDefaultRetentionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetObjectstorageDefaultRetentionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("stackit:index/getObjectstorageDefaultRetention:getObjectstorageDefaultRetention", {
         "bucketName": args.bucketName,
-        "days": args.days,
-        "mode": args.mode,
         "projectId": args.projectId,
         "region": args.region,
     }, opts);
@@ -95,14 +87,6 @@ export interface GetObjectstorageDefaultRetentionOutputArgs {
      * The associated bucket's name. It must be DNS conform.
      */
     bucketName: pulumi.Input<string>;
-    /**
-     * The number retention period in days.
-     */
-    days: pulumi.Input<number>;
-    /**
-     * The retention mode for default retention on a bucket.
-     */
-    mode: pulumi.Input<string>;
     /**
      * STACKIT Project ID to which the default-retention is associated.
      */

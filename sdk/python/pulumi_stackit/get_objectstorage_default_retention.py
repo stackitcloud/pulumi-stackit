@@ -110,25 +110,21 @@ class AwaitableGetObjectstorageDefaultRetentionResult(GetObjectstorageDefaultRet
 
 
 def get_objectstorage_default_retention(bucket_name: Optional[_builtins.str] = None,
-                                        days: Optional[_builtins.int] = None,
-                                        mode: Optional[_builtins.str] = None,
                                         project_id: Optional[_builtins.str] = None,
                                         region: Optional[_builtins.str] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetObjectstorageDefaultRetentionResult:
     """
     ObjectStorage default-retention resource schema. Must have a `region` specified in the provider configuration.
 
+    ## Example Usage
+
 
     :param _builtins.str bucket_name: The associated bucket's name. It must be DNS conform.
-    :param _builtins.int days: The number retention period in days.
-    :param _builtins.str mode: The retention mode for default retention on a bucket.
     :param _builtins.str project_id: STACKIT Project ID to which the default-retention is associated.
     :param _builtins.str region: The resource region. If not defined, the provider region is used.
     """
     __args__ = dict()
     __args__['bucketName'] = bucket_name
-    __args__['days'] = days
-    __args__['mode'] = mode
     __args__['projectId'] = project_id
     __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -142,25 +138,21 @@ def get_objectstorage_default_retention(bucket_name: Optional[_builtins.str] = N
         project_id=pulumi.get(__ret__, 'project_id'),
         region=pulumi.get(__ret__, 'region'))
 def get_objectstorage_default_retention_output(bucket_name: pulumi.Input[Optional[_builtins.str]] = None,
-                                               days: pulumi.Input[Optional[_builtins.int]] = None,
-                                               mode: pulumi.Input[Optional[_builtins.str]] = None,
                                                project_id: pulumi.Input[Optional[_builtins.str]] = None,
                                                region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetObjectstorageDefaultRetentionResult]:
     """
     ObjectStorage default-retention resource schema. Must have a `region` specified in the provider configuration.
 
+    ## Example Usage
+
 
     :param _builtins.str bucket_name: The associated bucket's name. It must be DNS conform.
-    :param _builtins.int days: The number retention period in days.
-    :param _builtins.str mode: The retention mode for default retention on a bucket.
     :param _builtins.str project_id: STACKIT Project ID to which the default-retention is associated.
     :param _builtins.str region: The resource region. If not defined, the provider region is used.
     """
     __args__ = dict()
     __args__['bucketName'] = bucket_name
-    __args__['days'] = days
-    __args__['mode'] = mode
     __args__['projectId'] = project_id
     __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
