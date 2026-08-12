@@ -2,7 +2,10 @@ module github.com/stackitcloud/pulumi-stackit/provider/shim
 
 go 1.26.0
 
-require github.com/stackitcloud/terraform-provider-stackit v0.104.0
+require (
+	github.com/stackitcloud/pulumi-stackit/provider/pkg/version v0.0.6
+	github.com/stackitcloud/terraform-provider-stackit v0.104.0
+)
 
 require (
 	github.com/hashicorp/go-uuid v1.0.3 // indirect
@@ -19,8 +22,7 @@ require (
 	github.com/stackitcloud/stackit-sdk-go/services/telemetrylink v0.4.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/telemetryrouter v0.4.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/vpn v0.14.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20260401024825-9d38bb4040a9 // indirect
-	google.golang.org/grpc v1.80.0 // indirect
+	google.golang.org/grpc v1.82.1 // indirect
 )
 
 require (
