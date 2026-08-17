@@ -26,7 +26,7 @@ class GetOpensearchCredentialResult:
     """
     A collection of values returned by getOpensearchCredential.
     """
-    def __init__(__self__, credential_id=None, host=None, hosts=None, id=None, instance_id=None, password=None, port=None, project_id=None, scheme=None, uri=None, username=None):
+    def __init__(__self__, credential_id=None, host=None, hosts=None, id=None, instance_id=None, password=None, port=None, project_id=None, region=None, scheme=None, uri=None, username=None):
         if credential_id and not isinstance(credential_id, str):
             raise TypeError("Expected argument 'credential_id' to be a str")
         pulumi.set(__self__, "credential_id", credential_id)
@@ -51,6 +51,9 @@ class GetOpensearchCredentialResult:
         if project_id and not isinstance(project_id, str):
             raise TypeError("Expected argument 'project_id' to be a str")
         pulumi.set(__self__, "project_id", project_id)
+        if region and not isinstance(region, str):
+            raise TypeError("Expected argument 'region' to be a str")
+        pulumi.set(__self__, "region", region)
         if scheme and not isinstance(scheme, str):
             raise TypeError("Expected argument 'scheme' to be a str")
         pulumi.set(__self__, "scheme", scheme)
@@ -83,7 +86,7 @@ class GetOpensearchCredentialResult:
     @pulumi.getter
     def id(self) -> _builtins.str:
         """
-        Terraform's internal data source. identifier. It is structured as "`project_id`,`instance_id`,`credential_id`".
+        Terraform's internal data source. identifier. It is structured as "`project_id`,`region`,`instance_id`,`credential_id`".
         """
         return pulumi.get(self, "id")
 
@@ -115,6 +118,14 @@ class GetOpensearchCredentialResult:
 
     @_builtins.property
     @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter
     def scheme(self) -> _builtins.str:
         return pulumi.get(self, "scheme")
 
@@ -143,6 +154,7 @@ class AwaitableGetOpensearchCredentialResult(GetOpensearchCredentialResult):
             password=self.password,
             port=self.port,
             project_id=self.project_id,
+            region=self.region,
             scheme=self.scheme,
             uri=self.uri,
             username=self.username)
@@ -151,6 +163,7 @@ class AwaitableGetOpensearchCredentialResult(GetOpensearchCredentialResult):
 def get_opensearch_credential(credential_id: Optional[_builtins.str] = None,
                               instance_id: Optional[_builtins.str] = None,
                               project_id: Optional[_builtins.str] = None,
+                              region: Optional[_builtins.str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOpensearchCredentialResult:
     """
     OpenSearch credential data source schema. Must have a `region` specified in the provider configuration.
@@ -161,11 +174,13 @@ def get_opensearch_credential(credential_id: Optional[_builtins.str] = None,
     :param _builtins.str credential_id: The credential's ID.
     :param _builtins.str instance_id: ID of the OpenSearch instance.
     :param _builtins.str project_id: STACKIT project ID to which the instance is associated.
+    :param _builtins.str region: The resource region. If not defined, the provider region is used.
     """
     __args__ = dict()
     __args__['credentialId'] = credential_id
     __args__['instanceId'] = instance_id
     __args__['projectId'] = project_id
+    __args__['region'] = region
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('stackit:index/getOpensearchCredential:getOpensearchCredential', __args__, opts=opts, typ=GetOpensearchCredentialResult).value
 
@@ -178,12 +193,14 @@ def get_opensearch_credential(credential_id: Optional[_builtins.str] = None,
         password=pulumi.get(__ret__, 'password'),
         port=pulumi.get(__ret__, 'port'),
         project_id=pulumi.get(__ret__, 'project_id'),
+        region=pulumi.get(__ret__, 'region'),
         scheme=pulumi.get(__ret__, 'scheme'),
         uri=pulumi.get(__ret__, 'uri'),
         username=pulumi.get(__ret__, 'username'))
 def get_opensearch_credential_output(credential_id: pulumi.Input[Optional[_builtins.str]] = None,
                                      instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                                      project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                     region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOpensearchCredentialResult]:
     """
     OpenSearch credential data source schema. Must have a `region` specified in the provider configuration.
@@ -194,11 +211,13 @@ def get_opensearch_credential_output(credential_id: pulumi.Input[Optional[_built
     :param _builtins.str credential_id: The credential's ID.
     :param _builtins.str instance_id: ID of the OpenSearch instance.
     :param _builtins.str project_id: STACKIT project ID to which the instance is associated.
+    :param _builtins.str region: The resource region. If not defined, the provider region is used.
     """
     __args__ = dict()
     __args__['credentialId'] = credential_id
     __args__['instanceId'] = instance_id
     __args__['projectId'] = project_id
+    __args__['region'] = region
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('stackit:index/getOpensearchCredential:getOpensearchCredential', __args__, opts=opts, typ=GetOpensearchCredentialResult)
     return __ret__.apply(lambda __response__: GetOpensearchCredentialResult(
@@ -210,6 +229,7 @@ def get_opensearch_credential_output(credential_id: pulumi.Input[Optional[_built
         password=pulumi.get(__response__, 'password'),
         port=pulumi.get(__response__, 'port'),
         project_id=pulumi.get(__response__, 'project_id'),
+        region=pulumi.get(__response__, 'region'),
         scheme=pulumi.get(__response__, 'scheme'),
         uri=pulumi.get(__response__, 'uri'),
         username=pulumi.get(__response__, 'username')))

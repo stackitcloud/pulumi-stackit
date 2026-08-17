@@ -21,15 +21,29 @@ namespace Pulumi.Stackit.Outputs
         /// List of IPV4 cidr.
         /// </summary>
         public readonly ImmutableArray<string> Acls;
+        /// <summary>
+        /// Address of this instance.
+        /// </summary>
+        public readonly string InstanceAddress;
+        /// <summary>
+        /// Address of the router.
+        /// </summary>
+        public readonly string RouterAddress;
 
         [OutputConstructor]
         private GetSqlserverflexInstanceNetworkResult(
             string? accessScope,
 
-            ImmutableArray<string> acls)
+            ImmutableArray<string> acls,
+
+            string instanceAddress,
+
+            string routerAddress)
         {
             AccessScope = accessScope;
             Acls = acls;
+            InstanceAddress = instanceAddress;
+            RouterAddress = routerAddress;
         }
     }
 }

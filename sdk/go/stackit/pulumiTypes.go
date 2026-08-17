@@ -13,6 +13,674 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AlbWafCustomRuleGroupRule struct {
+	Behavior   AlbWafCustomRuleGroupRuleBehavior    `pulumi:"behavior"`
+	Conditions []AlbWafCustomRuleGroupRuleCondition `pulumi:"conditions"`
+	// A clear description explaining the threat vector or criteria addressed by this rule.
+	Description *string `pulumi:"description"`
+	// Backend auto-allocated unique rule ID within the valid 1-99999 threshold.
+	Id *int `pulumi:"id"`
+}
+
+// AlbWafCustomRuleGroupRuleInput is an input type that accepts AlbWafCustomRuleGroupRuleArgs and AlbWafCustomRuleGroupRuleOutput values.
+// You can construct a concrete instance of `AlbWafCustomRuleGroupRuleInput` via:
+//
+//	AlbWafCustomRuleGroupRuleArgs{...}
+type AlbWafCustomRuleGroupRuleInput interface {
+	pulumi.Input
+
+	ToAlbWafCustomRuleGroupRuleOutput() AlbWafCustomRuleGroupRuleOutput
+	ToAlbWafCustomRuleGroupRuleOutputWithContext(context.Context) AlbWafCustomRuleGroupRuleOutput
+}
+
+type AlbWafCustomRuleGroupRuleArgs struct {
+	Behavior   AlbWafCustomRuleGroupRuleBehaviorInput       `pulumi:"behavior"`
+	Conditions AlbWafCustomRuleGroupRuleConditionArrayInput `pulumi:"conditions"`
+	// A clear description explaining the threat vector or criteria addressed by this rule.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Backend auto-allocated unique rule ID within the valid 1-99999 threshold.
+	Id pulumi.IntPtrInput `pulumi:"id"`
+}
+
+func (AlbWafCustomRuleGroupRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbWafCustomRuleGroupRule)(nil)).Elem()
+}
+
+func (i AlbWafCustomRuleGroupRuleArgs) ToAlbWafCustomRuleGroupRuleOutput() AlbWafCustomRuleGroupRuleOutput {
+	return i.ToAlbWafCustomRuleGroupRuleOutputWithContext(context.Background())
+}
+
+func (i AlbWafCustomRuleGroupRuleArgs) ToAlbWafCustomRuleGroupRuleOutputWithContext(ctx context.Context) AlbWafCustomRuleGroupRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbWafCustomRuleGroupRuleOutput)
+}
+
+// AlbWafCustomRuleGroupRuleArrayInput is an input type that accepts AlbWafCustomRuleGroupRuleArray and AlbWafCustomRuleGroupRuleArrayOutput values.
+// You can construct a concrete instance of `AlbWafCustomRuleGroupRuleArrayInput` via:
+//
+//	AlbWafCustomRuleGroupRuleArray{ AlbWafCustomRuleGroupRuleArgs{...} }
+type AlbWafCustomRuleGroupRuleArrayInput interface {
+	pulumi.Input
+
+	ToAlbWafCustomRuleGroupRuleArrayOutput() AlbWafCustomRuleGroupRuleArrayOutput
+	ToAlbWafCustomRuleGroupRuleArrayOutputWithContext(context.Context) AlbWafCustomRuleGroupRuleArrayOutput
+}
+
+type AlbWafCustomRuleGroupRuleArray []AlbWafCustomRuleGroupRuleInput
+
+func (AlbWafCustomRuleGroupRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlbWafCustomRuleGroupRule)(nil)).Elem()
+}
+
+func (i AlbWafCustomRuleGroupRuleArray) ToAlbWafCustomRuleGroupRuleArrayOutput() AlbWafCustomRuleGroupRuleArrayOutput {
+	return i.ToAlbWafCustomRuleGroupRuleArrayOutputWithContext(context.Background())
+}
+
+func (i AlbWafCustomRuleGroupRuleArray) ToAlbWafCustomRuleGroupRuleArrayOutputWithContext(ctx context.Context) AlbWafCustomRuleGroupRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbWafCustomRuleGroupRuleArrayOutput)
+}
+
+type AlbWafCustomRuleGroupRuleOutput struct{ *pulumi.OutputState }
+
+func (AlbWafCustomRuleGroupRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbWafCustomRuleGroupRule)(nil)).Elem()
+}
+
+func (o AlbWafCustomRuleGroupRuleOutput) ToAlbWafCustomRuleGroupRuleOutput() AlbWafCustomRuleGroupRuleOutput {
+	return o
+}
+
+func (o AlbWafCustomRuleGroupRuleOutput) ToAlbWafCustomRuleGroupRuleOutputWithContext(ctx context.Context) AlbWafCustomRuleGroupRuleOutput {
+	return o
+}
+
+func (o AlbWafCustomRuleGroupRuleOutput) Behavior() AlbWafCustomRuleGroupRuleBehaviorOutput {
+	return o.ApplyT(func(v AlbWafCustomRuleGroupRule) AlbWafCustomRuleGroupRuleBehavior { return v.Behavior }).(AlbWafCustomRuleGroupRuleBehaviorOutput)
+}
+
+func (o AlbWafCustomRuleGroupRuleOutput) Conditions() AlbWafCustomRuleGroupRuleConditionArrayOutput {
+	return o.ApplyT(func(v AlbWafCustomRuleGroupRule) []AlbWafCustomRuleGroupRuleCondition { return v.Conditions }).(AlbWafCustomRuleGroupRuleConditionArrayOutput)
+}
+
+// A clear description explaining the threat vector or criteria addressed by this rule.
+func (o AlbWafCustomRuleGroupRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbWafCustomRuleGroupRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Backend auto-allocated unique rule ID within the valid 1-99999 threshold.
+func (o AlbWafCustomRuleGroupRuleOutput) Id() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AlbWafCustomRuleGroupRule) *int { return v.Id }).(pulumi.IntPtrOutput)
+}
+
+type AlbWafCustomRuleGroupRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (AlbWafCustomRuleGroupRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlbWafCustomRuleGroupRule)(nil)).Elem()
+}
+
+func (o AlbWafCustomRuleGroupRuleArrayOutput) ToAlbWafCustomRuleGroupRuleArrayOutput() AlbWafCustomRuleGroupRuleArrayOutput {
+	return o
+}
+
+func (o AlbWafCustomRuleGroupRuleArrayOutput) ToAlbWafCustomRuleGroupRuleArrayOutputWithContext(ctx context.Context) AlbWafCustomRuleGroupRuleArrayOutput {
+	return o
+}
+
+func (o AlbWafCustomRuleGroupRuleArrayOutput) Index(i pulumi.IntInput) AlbWafCustomRuleGroupRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlbWafCustomRuleGroupRule {
+		return vs[0].([]AlbWafCustomRuleGroupRule)[vs[1].(int)]
+	}).(AlbWafCustomRuleGroupRuleOutput)
+}
+
+type AlbWafCustomRuleGroupRuleBehavior struct {
+	// The protective stance action. ACTION_DENY forces a 403 status response code.
+	Action string `pulumi:"action"`
+	// Determines whether an entry should be generated in the security ledger upon a rule hit.
+	Log *bool `pulumi:"log"`
+	// Custom notification message string mapped to underlying logdata contexts. Required if log is true.
+	LogMsg *string `pulumi:"logMsg"`
+	// Severity classification metric used by internal analytics graphs.
+	Severity *string `pulumi:"severity"`
+}
+
+// AlbWafCustomRuleGroupRuleBehaviorInput is an input type that accepts AlbWafCustomRuleGroupRuleBehaviorArgs and AlbWafCustomRuleGroupRuleBehaviorOutput values.
+// You can construct a concrete instance of `AlbWafCustomRuleGroupRuleBehaviorInput` via:
+//
+//	AlbWafCustomRuleGroupRuleBehaviorArgs{...}
+type AlbWafCustomRuleGroupRuleBehaviorInput interface {
+	pulumi.Input
+
+	ToAlbWafCustomRuleGroupRuleBehaviorOutput() AlbWafCustomRuleGroupRuleBehaviorOutput
+	ToAlbWafCustomRuleGroupRuleBehaviorOutputWithContext(context.Context) AlbWafCustomRuleGroupRuleBehaviorOutput
+}
+
+type AlbWafCustomRuleGroupRuleBehaviorArgs struct {
+	// The protective stance action. ACTION_DENY forces a 403 status response code.
+	Action pulumi.StringInput `pulumi:"action"`
+	// Determines whether an entry should be generated in the security ledger upon a rule hit.
+	Log pulumi.BoolPtrInput `pulumi:"log"`
+	// Custom notification message string mapped to underlying logdata contexts. Required if log is true.
+	LogMsg pulumi.StringPtrInput `pulumi:"logMsg"`
+	// Severity classification metric used by internal analytics graphs.
+	Severity pulumi.StringPtrInput `pulumi:"severity"`
+}
+
+func (AlbWafCustomRuleGroupRuleBehaviorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbWafCustomRuleGroupRuleBehavior)(nil)).Elem()
+}
+
+func (i AlbWafCustomRuleGroupRuleBehaviorArgs) ToAlbWafCustomRuleGroupRuleBehaviorOutput() AlbWafCustomRuleGroupRuleBehaviorOutput {
+	return i.ToAlbWafCustomRuleGroupRuleBehaviorOutputWithContext(context.Background())
+}
+
+func (i AlbWafCustomRuleGroupRuleBehaviorArgs) ToAlbWafCustomRuleGroupRuleBehaviorOutputWithContext(ctx context.Context) AlbWafCustomRuleGroupRuleBehaviorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbWafCustomRuleGroupRuleBehaviorOutput)
+}
+
+type AlbWafCustomRuleGroupRuleBehaviorOutput struct{ *pulumi.OutputState }
+
+func (AlbWafCustomRuleGroupRuleBehaviorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbWafCustomRuleGroupRuleBehavior)(nil)).Elem()
+}
+
+func (o AlbWafCustomRuleGroupRuleBehaviorOutput) ToAlbWafCustomRuleGroupRuleBehaviorOutput() AlbWafCustomRuleGroupRuleBehaviorOutput {
+	return o
+}
+
+func (o AlbWafCustomRuleGroupRuleBehaviorOutput) ToAlbWafCustomRuleGroupRuleBehaviorOutputWithContext(ctx context.Context) AlbWafCustomRuleGroupRuleBehaviorOutput {
+	return o
+}
+
+// The protective stance action. ACTION_DENY forces a 403 status response code.
+func (o AlbWafCustomRuleGroupRuleBehaviorOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v AlbWafCustomRuleGroupRuleBehavior) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// Determines whether an entry should be generated in the security ledger upon a rule hit.
+func (o AlbWafCustomRuleGroupRuleBehaviorOutput) Log() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AlbWafCustomRuleGroupRuleBehavior) *bool { return v.Log }).(pulumi.BoolPtrOutput)
+}
+
+// Custom notification message string mapped to underlying logdata contexts. Required if log is true.
+func (o AlbWafCustomRuleGroupRuleBehaviorOutput) LogMsg() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbWafCustomRuleGroupRuleBehavior) *string { return v.LogMsg }).(pulumi.StringPtrOutput)
+}
+
+// Severity classification metric used by internal analytics graphs.
+func (o AlbWafCustomRuleGroupRuleBehaviorOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbWafCustomRuleGroupRuleBehavior) *string { return v.Severity }).(pulumi.StringPtrOutput)
+}
+
+type AlbWafCustomRuleGroupRuleCondition struct {
+	// The comparison logic executed against the transformed variable.
+	Operator AlbWafCustomRuleGroupRuleConditionOperator `pulumi:"operator"`
+	// Ordered normalization steps applied before the operator runs.
+	Transformations []string `pulumi:"transformations"`
+	// The part of the HTTP transaction to inspect.
+	Variable AlbWafCustomRuleGroupRuleConditionVariable `pulumi:"variable"`
+}
+
+// AlbWafCustomRuleGroupRuleConditionInput is an input type that accepts AlbWafCustomRuleGroupRuleConditionArgs and AlbWafCustomRuleGroupRuleConditionOutput values.
+// You can construct a concrete instance of `AlbWafCustomRuleGroupRuleConditionInput` via:
+//
+//	AlbWafCustomRuleGroupRuleConditionArgs{...}
+type AlbWafCustomRuleGroupRuleConditionInput interface {
+	pulumi.Input
+
+	ToAlbWafCustomRuleGroupRuleConditionOutput() AlbWafCustomRuleGroupRuleConditionOutput
+	ToAlbWafCustomRuleGroupRuleConditionOutputWithContext(context.Context) AlbWafCustomRuleGroupRuleConditionOutput
+}
+
+type AlbWafCustomRuleGroupRuleConditionArgs struct {
+	// The comparison logic executed against the transformed variable.
+	Operator AlbWafCustomRuleGroupRuleConditionOperatorInput `pulumi:"operator"`
+	// Ordered normalization steps applied before the operator runs.
+	Transformations pulumi.StringArrayInput `pulumi:"transformations"`
+	// The part of the HTTP transaction to inspect.
+	Variable AlbWafCustomRuleGroupRuleConditionVariableInput `pulumi:"variable"`
+}
+
+func (AlbWafCustomRuleGroupRuleConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbWafCustomRuleGroupRuleCondition)(nil)).Elem()
+}
+
+func (i AlbWafCustomRuleGroupRuleConditionArgs) ToAlbWafCustomRuleGroupRuleConditionOutput() AlbWafCustomRuleGroupRuleConditionOutput {
+	return i.ToAlbWafCustomRuleGroupRuleConditionOutputWithContext(context.Background())
+}
+
+func (i AlbWafCustomRuleGroupRuleConditionArgs) ToAlbWafCustomRuleGroupRuleConditionOutputWithContext(ctx context.Context) AlbWafCustomRuleGroupRuleConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbWafCustomRuleGroupRuleConditionOutput)
+}
+
+// AlbWafCustomRuleGroupRuleConditionArrayInput is an input type that accepts AlbWafCustomRuleGroupRuleConditionArray and AlbWafCustomRuleGroupRuleConditionArrayOutput values.
+// You can construct a concrete instance of `AlbWafCustomRuleGroupRuleConditionArrayInput` via:
+//
+//	AlbWafCustomRuleGroupRuleConditionArray{ AlbWafCustomRuleGroupRuleConditionArgs{...} }
+type AlbWafCustomRuleGroupRuleConditionArrayInput interface {
+	pulumi.Input
+
+	ToAlbWafCustomRuleGroupRuleConditionArrayOutput() AlbWafCustomRuleGroupRuleConditionArrayOutput
+	ToAlbWafCustomRuleGroupRuleConditionArrayOutputWithContext(context.Context) AlbWafCustomRuleGroupRuleConditionArrayOutput
+}
+
+type AlbWafCustomRuleGroupRuleConditionArray []AlbWafCustomRuleGroupRuleConditionInput
+
+func (AlbWafCustomRuleGroupRuleConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlbWafCustomRuleGroupRuleCondition)(nil)).Elem()
+}
+
+func (i AlbWafCustomRuleGroupRuleConditionArray) ToAlbWafCustomRuleGroupRuleConditionArrayOutput() AlbWafCustomRuleGroupRuleConditionArrayOutput {
+	return i.ToAlbWafCustomRuleGroupRuleConditionArrayOutputWithContext(context.Background())
+}
+
+func (i AlbWafCustomRuleGroupRuleConditionArray) ToAlbWafCustomRuleGroupRuleConditionArrayOutputWithContext(ctx context.Context) AlbWafCustomRuleGroupRuleConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbWafCustomRuleGroupRuleConditionArrayOutput)
+}
+
+type AlbWafCustomRuleGroupRuleConditionOutput struct{ *pulumi.OutputState }
+
+func (AlbWafCustomRuleGroupRuleConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbWafCustomRuleGroupRuleCondition)(nil)).Elem()
+}
+
+func (o AlbWafCustomRuleGroupRuleConditionOutput) ToAlbWafCustomRuleGroupRuleConditionOutput() AlbWafCustomRuleGroupRuleConditionOutput {
+	return o
+}
+
+func (o AlbWafCustomRuleGroupRuleConditionOutput) ToAlbWafCustomRuleGroupRuleConditionOutputWithContext(ctx context.Context) AlbWafCustomRuleGroupRuleConditionOutput {
+	return o
+}
+
+// The comparison logic executed against the transformed variable.
+func (o AlbWafCustomRuleGroupRuleConditionOutput) Operator() AlbWafCustomRuleGroupRuleConditionOperatorOutput {
+	return o.ApplyT(func(v AlbWafCustomRuleGroupRuleCondition) AlbWafCustomRuleGroupRuleConditionOperator {
+		return v.Operator
+	}).(AlbWafCustomRuleGroupRuleConditionOperatorOutput)
+}
+
+// Ordered normalization steps applied before the operator runs.
+func (o AlbWafCustomRuleGroupRuleConditionOutput) Transformations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AlbWafCustomRuleGroupRuleCondition) []string { return v.Transformations }).(pulumi.StringArrayOutput)
+}
+
+// The part of the HTTP transaction to inspect.
+func (o AlbWafCustomRuleGroupRuleConditionOutput) Variable() AlbWafCustomRuleGroupRuleConditionVariableOutput {
+	return o.ApplyT(func(v AlbWafCustomRuleGroupRuleCondition) AlbWafCustomRuleGroupRuleConditionVariable {
+		return v.Variable
+	}).(AlbWafCustomRuleGroupRuleConditionVariableOutput)
+}
+
+type AlbWafCustomRuleGroupRuleConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (AlbWafCustomRuleGroupRuleConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AlbWafCustomRuleGroupRuleCondition)(nil)).Elem()
+}
+
+func (o AlbWafCustomRuleGroupRuleConditionArrayOutput) ToAlbWafCustomRuleGroupRuleConditionArrayOutput() AlbWafCustomRuleGroupRuleConditionArrayOutput {
+	return o
+}
+
+func (o AlbWafCustomRuleGroupRuleConditionArrayOutput) ToAlbWafCustomRuleGroupRuleConditionArrayOutputWithContext(ctx context.Context) AlbWafCustomRuleGroupRuleConditionArrayOutput {
+	return o
+}
+
+func (o AlbWafCustomRuleGroupRuleConditionArrayOutput) Index(i pulumi.IntInput) AlbWafCustomRuleGroupRuleConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AlbWafCustomRuleGroupRuleCondition {
+		return vs[0].([]AlbWafCustomRuleGroupRuleCondition)[vs[1].(int)]
+	}).(AlbWafCustomRuleGroupRuleConditionOutput)
+}
+
+type AlbWafCustomRuleGroupRuleConditionOperator struct {
+	// The operational evaluation type definition macro.
+	Type string `pulumi:"type"`
+	// The text or rule regex pattern arguments applied inside the operator execution loop.
+	Value *string `pulumi:"value"`
+}
+
+// AlbWafCustomRuleGroupRuleConditionOperatorInput is an input type that accepts AlbWafCustomRuleGroupRuleConditionOperatorArgs and AlbWafCustomRuleGroupRuleConditionOperatorOutput values.
+// You can construct a concrete instance of `AlbWafCustomRuleGroupRuleConditionOperatorInput` via:
+//
+//	AlbWafCustomRuleGroupRuleConditionOperatorArgs{...}
+type AlbWafCustomRuleGroupRuleConditionOperatorInput interface {
+	pulumi.Input
+
+	ToAlbWafCustomRuleGroupRuleConditionOperatorOutput() AlbWafCustomRuleGroupRuleConditionOperatorOutput
+	ToAlbWafCustomRuleGroupRuleConditionOperatorOutputWithContext(context.Context) AlbWafCustomRuleGroupRuleConditionOperatorOutput
+}
+
+type AlbWafCustomRuleGroupRuleConditionOperatorArgs struct {
+	// The operational evaluation type definition macro.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The text or rule regex pattern arguments applied inside the operator execution loop.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (AlbWafCustomRuleGroupRuleConditionOperatorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbWafCustomRuleGroupRuleConditionOperator)(nil)).Elem()
+}
+
+func (i AlbWafCustomRuleGroupRuleConditionOperatorArgs) ToAlbWafCustomRuleGroupRuleConditionOperatorOutput() AlbWafCustomRuleGroupRuleConditionOperatorOutput {
+	return i.ToAlbWafCustomRuleGroupRuleConditionOperatorOutputWithContext(context.Background())
+}
+
+func (i AlbWafCustomRuleGroupRuleConditionOperatorArgs) ToAlbWafCustomRuleGroupRuleConditionOperatorOutputWithContext(ctx context.Context) AlbWafCustomRuleGroupRuleConditionOperatorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbWafCustomRuleGroupRuleConditionOperatorOutput)
+}
+
+type AlbWafCustomRuleGroupRuleConditionOperatorOutput struct{ *pulumi.OutputState }
+
+func (AlbWafCustomRuleGroupRuleConditionOperatorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbWafCustomRuleGroupRuleConditionOperator)(nil)).Elem()
+}
+
+func (o AlbWafCustomRuleGroupRuleConditionOperatorOutput) ToAlbWafCustomRuleGroupRuleConditionOperatorOutput() AlbWafCustomRuleGroupRuleConditionOperatorOutput {
+	return o
+}
+
+func (o AlbWafCustomRuleGroupRuleConditionOperatorOutput) ToAlbWafCustomRuleGroupRuleConditionOperatorOutputWithContext(ctx context.Context) AlbWafCustomRuleGroupRuleConditionOperatorOutput {
+	return o
+}
+
+// The operational evaluation type definition macro.
+func (o AlbWafCustomRuleGroupRuleConditionOperatorOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AlbWafCustomRuleGroupRuleConditionOperator) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The text or rule regex pattern arguments applied inside the operator execution loop.
+func (o AlbWafCustomRuleGroupRuleConditionOperatorOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbWafCustomRuleGroupRuleConditionOperator) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type AlbWafCustomRuleGroupRuleConditionVariable struct {
+	// The targeted validation engine variable macro.
+	Type string `pulumi:"type"`
+	// Optional key element context for map variables (e.g., matching a 'Host' header key).
+	Value *string `pulumi:"value"`
+}
+
+// AlbWafCustomRuleGroupRuleConditionVariableInput is an input type that accepts AlbWafCustomRuleGroupRuleConditionVariableArgs and AlbWafCustomRuleGroupRuleConditionVariableOutput values.
+// You can construct a concrete instance of `AlbWafCustomRuleGroupRuleConditionVariableInput` via:
+//
+//	AlbWafCustomRuleGroupRuleConditionVariableArgs{...}
+type AlbWafCustomRuleGroupRuleConditionVariableInput interface {
+	pulumi.Input
+
+	ToAlbWafCustomRuleGroupRuleConditionVariableOutput() AlbWafCustomRuleGroupRuleConditionVariableOutput
+	ToAlbWafCustomRuleGroupRuleConditionVariableOutputWithContext(context.Context) AlbWafCustomRuleGroupRuleConditionVariableOutput
+}
+
+type AlbWafCustomRuleGroupRuleConditionVariableArgs struct {
+	// The targeted validation engine variable macro.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Optional key element context for map variables (e.g., matching a 'Host' header key).
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (AlbWafCustomRuleGroupRuleConditionVariableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbWafCustomRuleGroupRuleConditionVariable)(nil)).Elem()
+}
+
+func (i AlbWafCustomRuleGroupRuleConditionVariableArgs) ToAlbWafCustomRuleGroupRuleConditionVariableOutput() AlbWafCustomRuleGroupRuleConditionVariableOutput {
+	return i.ToAlbWafCustomRuleGroupRuleConditionVariableOutputWithContext(context.Background())
+}
+
+func (i AlbWafCustomRuleGroupRuleConditionVariableArgs) ToAlbWafCustomRuleGroupRuleConditionVariableOutputWithContext(ctx context.Context) AlbWafCustomRuleGroupRuleConditionVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbWafCustomRuleGroupRuleConditionVariableOutput)
+}
+
+type AlbWafCustomRuleGroupRuleConditionVariableOutput struct{ *pulumi.OutputState }
+
+func (AlbWafCustomRuleGroupRuleConditionVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbWafCustomRuleGroupRuleConditionVariable)(nil)).Elem()
+}
+
+func (o AlbWafCustomRuleGroupRuleConditionVariableOutput) ToAlbWafCustomRuleGroupRuleConditionVariableOutput() AlbWafCustomRuleGroupRuleConditionVariableOutput {
+	return o
+}
+
+func (o AlbWafCustomRuleGroupRuleConditionVariableOutput) ToAlbWafCustomRuleGroupRuleConditionVariableOutputWithContext(ctx context.Context) AlbWafCustomRuleGroupRuleConditionVariableOutput {
+	return o
+}
+
+// The targeted validation engine variable macro.
+func (o AlbWafCustomRuleGroupRuleConditionVariableOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v AlbWafCustomRuleGroupRuleConditionVariable) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Optional key element context for map variables (e.g., matching a 'Host' header key).
+func (o AlbWafCustomRuleGroupRuleConditionVariableOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbWafCustomRuleGroupRuleConditionVariable) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type AlbWafManagedRuleSetGroups struct {
+	// A description of what this group covers.
+	Description *string `pulumi:"description"`
+	// The name for the rule group.
+	GroupName *string `pulumi:"groupName"`
+	// Rules of the rule group.
+	Rules map[string]AlbWafManagedRuleSetGroupsRules `pulumi:"rules"`
+}
+
+// AlbWafManagedRuleSetGroupsInput is an input type that accepts AlbWafManagedRuleSetGroupsArgs and AlbWafManagedRuleSetGroupsOutput values.
+// You can construct a concrete instance of `AlbWafManagedRuleSetGroupsInput` via:
+//
+//	AlbWafManagedRuleSetGroupsArgs{...}
+type AlbWafManagedRuleSetGroupsInput interface {
+	pulumi.Input
+
+	ToAlbWafManagedRuleSetGroupsOutput() AlbWafManagedRuleSetGroupsOutput
+	ToAlbWafManagedRuleSetGroupsOutputWithContext(context.Context) AlbWafManagedRuleSetGroupsOutput
+}
+
+type AlbWafManagedRuleSetGroupsArgs struct {
+	// A description of what this group covers.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The name for the rule group.
+	GroupName pulumi.StringPtrInput `pulumi:"groupName"`
+	// Rules of the rule group.
+	Rules AlbWafManagedRuleSetGroupsRulesMapInput `pulumi:"rules"`
+}
+
+func (AlbWafManagedRuleSetGroupsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbWafManagedRuleSetGroups)(nil)).Elem()
+}
+
+func (i AlbWafManagedRuleSetGroupsArgs) ToAlbWafManagedRuleSetGroupsOutput() AlbWafManagedRuleSetGroupsOutput {
+	return i.ToAlbWafManagedRuleSetGroupsOutputWithContext(context.Background())
+}
+
+func (i AlbWafManagedRuleSetGroupsArgs) ToAlbWafManagedRuleSetGroupsOutputWithContext(ctx context.Context) AlbWafManagedRuleSetGroupsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbWafManagedRuleSetGroupsOutput)
+}
+
+// AlbWafManagedRuleSetGroupsMapInput is an input type that accepts AlbWafManagedRuleSetGroupsMap and AlbWafManagedRuleSetGroupsMapOutput values.
+// You can construct a concrete instance of `AlbWafManagedRuleSetGroupsMapInput` via:
+//
+//	AlbWafManagedRuleSetGroupsMap{ "key": AlbWafManagedRuleSetGroupsArgs{...} }
+type AlbWafManagedRuleSetGroupsMapInput interface {
+	pulumi.Input
+
+	ToAlbWafManagedRuleSetGroupsMapOutput() AlbWafManagedRuleSetGroupsMapOutput
+	ToAlbWafManagedRuleSetGroupsMapOutputWithContext(context.Context) AlbWafManagedRuleSetGroupsMapOutput
+}
+
+type AlbWafManagedRuleSetGroupsMap map[string]AlbWafManagedRuleSetGroupsInput
+
+func (AlbWafManagedRuleSetGroupsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AlbWafManagedRuleSetGroups)(nil)).Elem()
+}
+
+func (i AlbWafManagedRuleSetGroupsMap) ToAlbWafManagedRuleSetGroupsMapOutput() AlbWafManagedRuleSetGroupsMapOutput {
+	return i.ToAlbWafManagedRuleSetGroupsMapOutputWithContext(context.Background())
+}
+
+func (i AlbWafManagedRuleSetGroupsMap) ToAlbWafManagedRuleSetGroupsMapOutputWithContext(ctx context.Context) AlbWafManagedRuleSetGroupsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbWafManagedRuleSetGroupsMapOutput)
+}
+
+type AlbWafManagedRuleSetGroupsOutput struct{ *pulumi.OutputState }
+
+func (AlbWafManagedRuleSetGroupsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbWafManagedRuleSetGroups)(nil)).Elem()
+}
+
+func (o AlbWafManagedRuleSetGroupsOutput) ToAlbWafManagedRuleSetGroupsOutput() AlbWafManagedRuleSetGroupsOutput {
+	return o
+}
+
+func (o AlbWafManagedRuleSetGroupsOutput) ToAlbWafManagedRuleSetGroupsOutputWithContext(ctx context.Context) AlbWafManagedRuleSetGroupsOutput {
+	return o
+}
+
+// A description of what this group covers.
+func (o AlbWafManagedRuleSetGroupsOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbWafManagedRuleSetGroups) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The name for the rule group.
+func (o AlbWafManagedRuleSetGroupsOutput) GroupName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbWafManagedRuleSetGroups) *string { return v.GroupName }).(pulumi.StringPtrOutput)
+}
+
+// Rules of the rule group.
+func (o AlbWafManagedRuleSetGroupsOutput) Rules() AlbWafManagedRuleSetGroupsRulesMapOutput {
+	return o.ApplyT(func(v AlbWafManagedRuleSetGroups) map[string]AlbWafManagedRuleSetGroupsRules { return v.Rules }).(AlbWafManagedRuleSetGroupsRulesMapOutput)
+}
+
+type AlbWafManagedRuleSetGroupsMapOutput struct{ *pulumi.OutputState }
+
+func (AlbWafManagedRuleSetGroupsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AlbWafManagedRuleSetGroups)(nil)).Elem()
+}
+
+func (o AlbWafManagedRuleSetGroupsMapOutput) ToAlbWafManagedRuleSetGroupsMapOutput() AlbWafManagedRuleSetGroupsMapOutput {
+	return o
+}
+
+func (o AlbWafManagedRuleSetGroupsMapOutput) ToAlbWafManagedRuleSetGroupsMapOutputWithContext(ctx context.Context) AlbWafManagedRuleSetGroupsMapOutput {
+	return o
+}
+
+func (o AlbWafManagedRuleSetGroupsMapOutput) MapIndex(k pulumi.StringInput) AlbWafManagedRuleSetGroupsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AlbWafManagedRuleSetGroups {
+		return vs[0].(map[string]AlbWafManagedRuleSetGroups)[vs[1].(string)]
+	}).(AlbWafManagedRuleSetGroupsOutput)
+}
+
+type AlbWafManagedRuleSetGroupsRules struct {
+	// A description of what this rule does.
+	Description *string `pulumi:"description"`
+	// The current mode of the rule.
+	Mode *string `pulumi:"mode"`
+	// Impact level.
+	Severity *string `pulumi:"severity"`
+}
+
+// AlbWafManagedRuleSetGroupsRulesInput is an input type that accepts AlbWafManagedRuleSetGroupsRulesArgs and AlbWafManagedRuleSetGroupsRulesOutput values.
+// You can construct a concrete instance of `AlbWafManagedRuleSetGroupsRulesInput` via:
+//
+//	AlbWafManagedRuleSetGroupsRulesArgs{...}
+type AlbWafManagedRuleSetGroupsRulesInput interface {
+	pulumi.Input
+
+	ToAlbWafManagedRuleSetGroupsRulesOutput() AlbWafManagedRuleSetGroupsRulesOutput
+	ToAlbWafManagedRuleSetGroupsRulesOutputWithContext(context.Context) AlbWafManagedRuleSetGroupsRulesOutput
+}
+
+type AlbWafManagedRuleSetGroupsRulesArgs struct {
+	// A description of what this rule does.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The current mode of the rule.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// Impact level.
+	Severity pulumi.StringPtrInput `pulumi:"severity"`
+}
+
+func (AlbWafManagedRuleSetGroupsRulesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbWafManagedRuleSetGroupsRules)(nil)).Elem()
+}
+
+func (i AlbWafManagedRuleSetGroupsRulesArgs) ToAlbWafManagedRuleSetGroupsRulesOutput() AlbWafManagedRuleSetGroupsRulesOutput {
+	return i.ToAlbWafManagedRuleSetGroupsRulesOutputWithContext(context.Background())
+}
+
+func (i AlbWafManagedRuleSetGroupsRulesArgs) ToAlbWafManagedRuleSetGroupsRulesOutputWithContext(ctx context.Context) AlbWafManagedRuleSetGroupsRulesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbWafManagedRuleSetGroupsRulesOutput)
+}
+
+// AlbWafManagedRuleSetGroupsRulesMapInput is an input type that accepts AlbWafManagedRuleSetGroupsRulesMap and AlbWafManagedRuleSetGroupsRulesMapOutput values.
+// You can construct a concrete instance of `AlbWafManagedRuleSetGroupsRulesMapInput` via:
+//
+//	AlbWafManagedRuleSetGroupsRulesMap{ "key": AlbWafManagedRuleSetGroupsRulesArgs{...} }
+type AlbWafManagedRuleSetGroupsRulesMapInput interface {
+	pulumi.Input
+
+	ToAlbWafManagedRuleSetGroupsRulesMapOutput() AlbWafManagedRuleSetGroupsRulesMapOutput
+	ToAlbWafManagedRuleSetGroupsRulesMapOutputWithContext(context.Context) AlbWafManagedRuleSetGroupsRulesMapOutput
+}
+
+type AlbWafManagedRuleSetGroupsRulesMap map[string]AlbWafManagedRuleSetGroupsRulesInput
+
+func (AlbWafManagedRuleSetGroupsRulesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AlbWafManagedRuleSetGroupsRules)(nil)).Elem()
+}
+
+func (i AlbWafManagedRuleSetGroupsRulesMap) ToAlbWafManagedRuleSetGroupsRulesMapOutput() AlbWafManagedRuleSetGroupsRulesMapOutput {
+	return i.ToAlbWafManagedRuleSetGroupsRulesMapOutputWithContext(context.Background())
+}
+
+func (i AlbWafManagedRuleSetGroupsRulesMap) ToAlbWafManagedRuleSetGroupsRulesMapOutputWithContext(ctx context.Context) AlbWafManagedRuleSetGroupsRulesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbWafManagedRuleSetGroupsRulesMapOutput)
+}
+
+type AlbWafManagedRuleSetGroupsRulesOutput struct{ *pulumi.OutputState }
+
+func (AlbWafManagedRuleSetGroupsRulesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbWafManagedRuleSetGroupsRules)(nil)).Elem()
+}
+
+func (o AlbWafManagedRuleSetGroupsRulesOutput) ToAlbWafManagedRuleSetGroupsRulesOutput() AlbWafManagedRuleSetGroupsRulesOutput {
+	return o
+}
+
+func (o AlbWafManagedRuleSetGroupsRulesOutput) ToAlbWafManagedRuleSetGroupsRulesOutputWithContext(ctx context.Context) AlbWafManagedRuleSetGroupsRulesOutput {
+	return o
+}
+
+// A description of what this rule does.
+func (o AlbWafManagedRuleSetGroupsRulesOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbWafManagedRuleSetGroupsRules) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The current mode of the rule.
+func (o AlbWafManagedRuleSetGroupsRulesOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbWafManagedRuleSetGroupsRules) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// Impact level.
+func (o AlbWafManagedRuleSetGroupsRulesOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AlbWafManagedRuleSetGroupsRules) *string { return v.Severity }).(pulumi.StringPtrOutput)
+}
+
+type AlbWafManagedRuleSetGroupsRulesMapOutput struct{ *pulumi.OutputState }
+
+func (AlbWafManagedRuleSetGroupsRulesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AlbWafManagedRuleSetGroupsRules)(nil)).Elem()
+}
+
+func (o AlbWafManagedRuleSetGroupsRulesMapOutput) ToAlbWafManagedRuleSetGroupsRulesMapOutput() AlbWafManagedRuleSetGroupsRulesMapOutput {
+	return o
+}
+
+func (o AlbWafManagedRuleSetGroupsRulesMapOutput) ToAlbWafManagedRuleSetGroupsRulesMapOutputWithContext(ctx context.Context) AlbWafManagedRuleSetGroupsRulesMapOutput {
+	return o
+}
+
+func (o AlbWafManagedRuleSetGroupsRulesMapOutput) MapIndex(k pulumi.StringInput) AlbWafManagedRuleSetGroupsRulesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AlbWafManagedRuleSetGroupsRules {
+		return vs[0].(map[string]AlbWafManagedRuleSetGroupsRules)[vs[1].(string)]
+	}).(AlbWafManagedRuleSetGroupsRulesOutput)
+}
+
 type ApplicationLoadBalancerError struct {
 	// The error description contains additional helpful user information to fix the error state of the Application Load Balancer. For example the IP 45.135.247.139 does not exist in the project, then the description will report: Floating IP "45.135.247.139" could not be found.
 	Description *string `pulumi:"description"`
@@ -3583,8 +4251,14 @@ type CdnDistributionConfig struct {
 	Backend CdnDistributionConfigBackend `pulumi:"backend"`
 	// The configured countries where distribution of content is blocked
 	BlockedCountries []string `pulumi:"blockedCountries"`
+	// Restricts access to your content by specifying a list of blocked IPv4 addresses. This feature enhances security and privacy by preventing these addresses from accessing your distribution. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state; to clear it explicitly, set it to an empty list.
+	BlockedIps []string `pulumi:"blockedIps"`
+	// Sets the default cache duration for the distribution. The default cache duration is applied when a 'Cache-Control' header is not presented in the origin's response. We use ISO8601 duration format for cache duration (e.g. P1DT2H30M). Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
+	DefaultCacheDuration *string `pulumi:"defaultCacheDuration"`
 	// Enable this allows the 'Host' header to be passed through to the origin.
 	ForwardHostHeader *bool `pulumi:"forwardHostHeader"`
+	// Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
+	MonthlyLimitBytes *int `pulumi:"monthlyLimitBytes"`
 	// Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
 	Optimizer *CdnDistributionConfigOptimizer `pulumi:"optimizer"`
 	// A wrapper for a list of redirect rules that allows for redirect settings on a distribution
@@ -3615,8 +4289,14 @@ type CdnDistributionConfigArgs struct {
 	Backend CdnDistributionConfigBackendInput `pulumi:"backend"`
 	// The configured countries where distribution of content is blocked
 	BlockedCountries pulumi.StringArrayInput `pulumi:"blockedCountries"`
+	// Restricts access to your content by specifying a list of blocked IPv4 addresses. This feature enhances security and privacy by preventing these addresses from accessing your distribution. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state; to clear it explicitly, set it to an empty list.
+	BlockedIps pulumi.StringArrayInput `pulumi:"blockedIps"`
+	// Sets the default cache duration for the distribution. The default cache duration is applied when a 'Cache-Control' header is not presented in the origin's response. We use ISO8601 duration format for cache duration (e.g. P1DT2H30M). Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
+	DefaultCacheDuration pulumi.StringPtrInput `pulumi:"defaultCacheDuration"`
 	// Enable this allows the 'Host' header to be passed through to the origin.
 	ForwardHostHeader pulumi.BoolPtrInput `pulumi:"forwardHostHeader"`
+	// Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
+	MonthlyLimitBytes pulumi.IntPtrInput `pulumi:"monthlyLimitBytes"`
 	// Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
 	Optimizer CdnDistributionConfigOptimizerPtrInput `pulumi:"optimizer"`
 	// A wrapper for a list of redirect rules that allows for redirect settings on a distribution
@@ -3718,9 +4398,24 @@ func (o CdnDistributionConfigOutput) BlockedCountries() pulumi.StringArrayOutput
 	return o.ApplyT(func(v CdnDistributionConfig) []string { return v.BlockedCountries }).(pulumi.StringArrayOutput)
 }
 
+// Restricts access to your content by specifying a list of blocked IPv4 addresses. This feature enhances security and privacy by preventing these addresses from accessing your distribution. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state; to clear it explicitly, set it to an empty list.
+func (o CdnDistributionConfigOutput) BlockedIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CdnDistributionConfig) []string { return v.BlockedIps }).(pulumi.StringArrayOutput)
+}
+
+// Sets the default cache duration for the distribution. The default cache duration is applied when a 'Cache-Control' header is not presented in the origin's response. We use ISO8601 duration format for cache duration (e.g. P1DT2H30M). Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
+func (o CdnDistributionConfigOutput) DefaultCacheDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CdnDistributionConfig) *string { return v.DefaultCacheDuration }).(pulumi.StringPtrOutput)
+}
+
 // Enable this allows the 'Host' header to be passed through to the origin.
 func (o CdnDistributionConfigOutput) ForwardHostHeader() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CdnDistributionConfig) *bool { return v.ForwardHostHeader }).(pulumi.BoolPtrOutput)
+}
+
+// Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
+func (o CdnDistributionConfigOutput) MonthlyLimitBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CdnDistributionConfig) *int { return v.MonthlyLimitBytes }).(pulumi.IntPtrOutput)
 }
 
 // Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
@@ -3797,6 +4492,26 @@ func (o CdnDistributionConfigPtrOutput) BlockedCountries() pulumi.StringArrayOut
 	}).(pulumi.StringArrayOutput)
 }
 
+// Restricts access to your content by specifying a list of blocked IPv4 addresses. This feature enhances security and privacy by preventing these addresses from accessing your distribution. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state; to clear it explicitly, set it to an empty list.
+func (o CdnDistributionConfigPtrOutput) BlockedIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CdnDistributionConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.BlockedIps
+	}).(pulumi.StringArrayOutput)
+}
+
+// Sets the default cache duration for the distribution. The default cache duration is applied when a 'Cache-Control' header is not presented in the origin's response. We use ISO8601 duration format for cache duration (e.g. P1DT2H30M). Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
+func (o CdnDistributionConfigPtrOutput) DefaultCacheDuration() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CdnDistributionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultCacheDuration
+	}).(pulumi.StringPtrOutput)
+}
+
 // Enable this allows the 'Host' header to be passed through to the origin.
 func (o CdnDistributionConfigPtrOutput) ForwardHostHeader() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CdnDistributionConfig) *bool {
@@ -3805,6 +4520,16 @@ func (o CdnDistributionConfigPtrOutput) ForwardHostHeader() pulumi.BoolPtrOutput
 		}
 		return v.ForwardHostHeader
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
+func (o CdnDistributionConfigPtrOutput) MonthlyLimitBytes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CdnDistributionConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MonthlyLimitBytes
+	}).(pulumi.IntPtrOutput)
 }
 
 // Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
@@ -11020,118 +11745,6 @@ func (o MongodbflexInstanceStoragePtrOutput) Size() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-type NetworkAreaNetworkRange struct {
-	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-	NetworkRangeId *string `pulumi:"networkRangeId"`
-	// Classless Inter-Domain Routing (CIDR).
-	//
-	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-	Prefix string `pulumi:"prefix"`
-}
-
-// NetworkAreaNetworkRangeInput is an input type that accepts NetworkAreaNetworkRangeArgs and NetworkAreaNetworkRangeOutput values.
-// You can construct a concrete instance of `NetworkAreaNetworkRangeInput` via:
-//
-//	NetworkAreaNetworkRangeArgs{...}
-type NetworkAreaNetworkRangeInput interface {
-	pulumi.Input
-
-	ToNetworkAreaNetworkRangeOutput() NetworkAreaNetworkRangeOutput
-	ToNetworkAreaNetworkRangeOutputWithContext(context.Context) NetworkAreaNetworkRangeOutput
-}
-
-type NetworkAreaNetworkRangeArgs struct {
-	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-	NetworkRangeId pulumi.StringPtrInput `pulumi:"networkRangeId"`
-	// Classless Inter-Domain Routing (CIDR).
-	//
-	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-	Prefix pulumi.StringInput `pulumi:"prefix"`
-}
-
-func (NetworkAreaNetworkRangeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkAreaNetworkRange)(nil)).Elem()
-}
-
-func (i NetworkAreaNetworkRangeArgs) ToNetworkAreaNetworkRangeOutput() NetworkAreaNetworkRangeOutput {
-	return i.ToNetworkAreaNetworkRangeOutputWithContext(context.Background())
-}
-
-func (i NetworkAreaNetworkRangeArgs) ToNetworkAreaNetworkRangeOutputWithContext(ctx context.Context) NetworkAreaNetworkRangeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkAreaNetworkRangeOutput)
-}
-
-// NetworkAreaNetworkRangeArrayInput is an input type that accepts NetworkAreaNetworkRangeArray and NetworkAreaNetworkRangeArrayOutput values.
-// You can construct a concrete instance of `NetworkAreaNetworkRangeArrayInput` via:
-//
-//	NetworkAreaNetworkRangeArray{ NetworkAreaNetworkRangeArgs{...} }
-type NetworkAreaNetworkRangeArrayInput interface {
-	pulumi.Input
-
-	ToNetworkAreaNetworkRangeArrayOutput() NetworkAreaNetworkRangeArrayOutput
-	ToNetworkAreaNetworkRangeArrayOutputWithContext(context.Context) NetworkAreaNetworkRangeArrayOutput
-}
-
-type NetworkAreaNetworkRangeArray []NetworkAreaNetworkRangeInput
-
-func (NetworkAreaNetworkRangeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NetworkAreaNetworkRange)(nil)).Elem()
-}
-
-func (i NetworkAreaNetworkRangeArray) ToNetworkAreaNetworkRangeArrayOutput() NetworkAreaNetworkRangeArrayOutput {
-	return i.ToNetworkAreaNetworkRangeArrayOutputWithContext(context.Background())
-}
-
-func (i NetworkAreaNetworkRangeArray) ToNetworkAreaNetworkRangeArrayOutputWithContext(ctx context.Context) NetworkAreaNetworkRangeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(NetworkAreaNetworkRangeArrayOutput)
-}
-
-type NetworkAreaNetworkRangeOutput struct{ *pulumi.OutputState }
-
-func (NetworkAreaNetworkRangeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*NetworkAreaNetworkRange)(nil)).Elem()
-}
-
-func (o NetworkAreaNetworkRangeOutput) ToNetworkAreaNetworkRangeOutput() NetworkAreaNetworkRangeOutput {
-	return o
-}
-
-func (o NetworkAreaNetworkRangeOutput) ToNetworkAreaNetworkRangeOutputWithContext(ctx context.Context) NetworkAreaNetworkRangeOutput {
-	return o
-}
-
-// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-func (o NetworkAreaNetworkRangeOutput) NetworkRangeId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkAreaNetworkRange) *string { return v.NetworkRangeId }).(pulumi.StringPtrOutput)
-}
-
-// Classless Inter-Domain Routing (CIDR).
-//
-// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-func (o NetworkAreaNetworkRangeOutput) Prefix() pulumi.StringOutput {
-	return o.ApplyT(func(v NetworkAreaNetworkRange) string { return v.Prefix }).(pulumi.StringOutput)
-}
-
-type NetworkAreaNetworkRangeArrayOutput struct{ *pulumi.OutputState }
-
-func (NetworkAreaNetworkRangeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]NetworkAreaNetworkRange)(nil)).Elem()
-}
-
-func (o NetworkAreaNetworkRangeArrayOutput) ToNetworkAreaNetworkRangeArrayOutput() NetworkAreaNetworkRangeArrayOutput {
-	return o
-}
-
-func (o NetworkAreaNetworkRangeArrayOutput) ToNetworkAreaNetworkRangeArrayOutputWithContext(ctx context.Context) NetworkAreaNetworkRangeArrayOutput {
-	return o
-}
-
-func (o NetworkAreaNetworkRangeArrayOutput) Index(i pulumi.IntInput) NetworkAreaNetworkRangeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkAreaNetworkRange {
-		return vs[0].([]NetworkAreaNetworkRange)[vs[1].(int)]
-	}).(NetworkAreaNetworkRangeOutput)
-}
-
 type NetworkAreaRegionIpv4 struct {
 	// List of DNS Servers/Nameservers.
 	DefaultNameservers []string `pulumi:"defaultNameservers"`
@@ -14256,11 +14869,500 @@ func (o OpensearchInstanceParametersPtrOutput) TlsProtocols() pulumi.StringArray
 	}).(pulumi.StringArrayOutput)
 }
 
+type PostgresflexInstanceConnectionInfo struct {
+	// The DNS name and port in the instance overview.
+	Write *PostgresflexInstanceConnectionInfoWrite `pulumi:"write"`
+}
+
+// PostgresflexInstanceConnectionInfoInput is an input type that accepts PostgresflexInstanceConnectionInfoArgs and PostgresflexInstanceConnectionInfoOutput values.
+// You can construct a concrete instance of `PostgresflexInstanceConnectionInfoInput` via:
+//
+//	PostgresflexInstanceConnectionInfoArgs{...}
+type PostgresflexInstanceConnectionInfoInput interface {
+	pulumi.Input
+
+	ToPostgresflexInstanceConnectionInfoOutput() PostgresflexInstanceConnectionInfoOutput
+	ToPostgresflexInstanceConnectionInfoOutputWithContext(context.Context) PostgresflexInstanceConnectionInfoOutput
+}
+
+type PostgresflexInstanceConnectionInfoArgs struct {
+	// The DNS name and port in the instance overview.
+	Write PostgresflexInstanceConnectionInfoWritePtrInput `pulumi:"write"`
+}
+
+func (PostgresflexInstanceConnectionInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgresflexInstanceConnectionInfo)(nil)).Elem()
+}
+
+func (i PostgresflexInstanceConnectionInfoArgs) ToPostgresflexInstanceConnectionInfoOutput() PostgresflexInstanceConnectionInfoOutput {
+	return i.ToPostgresflexInstanceConnectionInfoOutputWithContext(context.Background())
+}
+
+func (i PostgresflexInstanceConnectionInfoArgs) ToPostgresflexInstanceConnectionInfoOutputWithContext(ctx context.Context) PostgresflexInstanceConnectionInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresflexInstanceConnectionInfoOutput)
+}
+
+func (i PostgresflexInstanceConnectionInfoArgs) ToPostgresflexInstanceConnectionInfoPtrOutput() PostgresflexInstanceConnectionInfoPtrOutput {
+	return i.ToPostgresflexInstanceConnectionInfoPtrOutputWithContext(context.Background())
+}
+
+func (i PostgresflexInstanceConnectionInfoArgs) ToPostgresflexInstanceConnectionInfoPtrOutputWithContext(ctx context.Context) PostgresflexInstanceConnectionInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresflexInstanceConnectionInfoOutput).ToPostgresflexInstanceConnectionInfoPtrOutputWithContext(ctx)
+}
+
+// PostgresflexInstanceConnectionInfoPtrInput is an input type that accepts PostgresflexInstanceConnectionInfoArgs, PostgresflexInstanceConnectionInfoPtr and PostgresflexInstanceConnectionInfoPtrOutput values.
+// You can construct a concrete instance of `PostgresflexInstanceConnectionInfoPtrInput` via:
+//
+//	        PostgresflexInstanceConnectionInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type PostgresflexInstanceConnectionInfoPtrInput interface {
+	pulumi.Input
+
+	ToPostgresflexInstanceConnectionInfoPtrOutput() PostgresflexInstanceConnectionInfoPtrOutput
+	ToPostgresflexInstanceConnectionInfoPtrOutputWithContext(context.Context) PostgresflexInstanceConnectionInfoPtrOutput
+}
+
+type postgresflexInstanceConnectionInfoPtrType PostgresflexInstanceConnectionInfoArgs
+
+func PostgresflexInstanceConnectionInfoPtr(v *PostgresflexInstanceConnectionInfoArgs) PostgresflexInstanceConnectionInfoPtrInput {
+	return (*postgresflexInstanceConnectionInfoPtrType)(v)
+}
+
+func (*postgresflexInstanceConnectionInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PostgresflexInstanceConnectionInfo)(nil)).Elem()
+}
+
+func (i *postgresflexInstanceConnectionInfoPtrType) ToPostgresflexInstanceConnectionInfoPtrOutput() PostgresflexInstanceConnectionInfoPtrOutput {
+	return i.ToPostgresflexInstanceConnectionInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *postgresflexInstanceConnectionInfoPtrType) ToPostgresflexInstanceConnectionInfoPtrOutputWithContext(ctx context.Context) PostgresflexInstanceConnectionInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresflexInstanceConnectionInfoPtrOutput)
+}
+
+type PostgresflexInstanceConnectionInfoOutput struct{ *pulumi.OutputState }
+
+func (PostgresflexInstanceConnectionInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgresflexInstanceConnectionInfo)(nil)).Elem()
+}
+
+func (o PostgresflexInstanceConnectionInfoOutput) ToPostgresflexInstanceConnectionInfoOutput() PostgresflexInstanceConnectionInfoOutput {
+	return o
+}
+
+func (o PostgresflexInstanceConnectionInfoOutput) ToPostgresflexInstanceConnectionInfoOutputWithContext(ctx context.Context) PostgresflexInstanceConnectionInfoOutput {
+	return o
+}
+
+func (o PostgresflexInstanceConnectionInfoOutput) ToPostgresflexInstanceConnectionInfoPtrOutput() PostgresflexInstanceConnectionInfoPtrOutput {
+	return o.ToPostgresflexInstanceConnectionInfoPtrOutputWithContext(context.Background())
+}
+
+func (o PostgresflexInstanceConnectionInfoOutput) ToPostgresflexInstanceConnectionInfoPtrOutputWithContext(ctx context.Context) PostgresflexInstanceConnectionInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PostgresflexInstanceConnectionInfo) *PostgresflexInstanceConnectionInfo {
+		return &v
+	}).(PostgresflexInstanceConnectionInfoPtrOutput)
+}
+
+// The DNS name and port in the instance overview.
+func (o PostgresflexInstanceConnectionInfoOutput) Write() PostgresflexInstanceConnectionInfoWritePtrOutput {
+	return o.ApplyT(func(v PostgresflexInstanceConnectionInfo) *PostgresflexInstanceConnectionInfoWrite { return v.Write }).(PostgresflexInstanceConnectionInfoWritePtrOutput)
+}
+
+type PostgresflexInstanceConnectionInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (PostgresflexInstanceConnectionInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PostgresflexInstanceConnectionInfo)(nil)).Elem()
+}
+
+func (o PostgresflexInstanceConnectionInfoPtrOutput) ToPostgresflexInstanceConnectionInfoPtrOutput() PostgresflexInstanceConnectionInfoPtrOutput {
+	return o
+}
+
+func (o PostgresflexInstanceConnectionInfoPtrOutput) ToPostgresflexInstanceConnectionInfoPtrOutputWithContext(ctx context.Context) PostgresflexInstanceConnectionInfoPtrOutput {
+	return o
+}
+
+func (o PostgresflexInstanceConnectionInfoPtrOutput) Elem() PostgresflexInstanceConnectionInfoOutput {
+	return o.ApplyT(func(v *PostgresflexInstanceConnectionInfo) PostgresflexInstanceConnectionInfo {
+		if v != nil {
+			return *v
+		}
+		var ret PostgresflexInstanceConnectionInfo
+		return ret
+	}).(PostgresflexInstanceConnectionInfoOutput)
+}
+
+// The DNS name and port in the instance overview.
+func (o PostgresflexInstanceConnectionInfoPtrOutput) Write() PostgresflexInstanceConnectionInfoWritePtrOutput {
+	return o.ApplyT(func(v *PostgresflexInstanceConnectionInfo) *PostgresflexInstanceConnectionInfoWrite {
+		if v == nil {
+			return nil
+		}
+		return v.Write
+	}).(PostgresflexInstanceConnectionInfoWritePtrOutput)
+}
+
+type PostgresflexInstanceConnectionInfoWrite struct {
+	// The host of the instance.
+	Host *string `pulumi:"host"`
+	// The port of the instance.
+	Port *int `pulumi:"port"`
+}
+
+// PostgresflexInstanceConnectionInfoWriteInput is an input type that accepts PostgresflexInstanceConnectionInfoWriteArgs and PostgresflexInstanceConnectionInfoWriteOutput values.
+// You can construct a concrete instance of `PostgresflexInstanceConnectionInfoWriteInput` via:
+//
+//	PostgresflexInstanceConnectionInfoWriteArgs{...}
+type PostgresflexInstanceConnectionInfoWriteInput interface {
+	pulumi.Input
+
+	ToPostgresflexInstanceConnectionInfoWriteOutput() PostgresflexInstanceConnectionInfoWriteOutput
+	ToPostgresflexInstanceConnectionInfoWriteOutputWithContext(context.Context) PostgresflexInstanceConnectionInfoWriteOutput
+}
+
+type PostgresflexInstanceConnectionInfoWriteArgs struct {
+	// The host of the instance.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// The port of the instance.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+}
+
+func (PostgresflexInstanceConnectionInfoWriteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgresflexInstanceConnectionInfoWrite)(nil)).Elem()
+}
+
+func (i PostgresflexInstanceConnectionInfoWriteArgs) ToPostgresflexInstanceConnectionInfoWriteOutput() PostgresflexInstanceConnectionInfoWriteOutput {
+	return i.ToPostgresflexInstanceConnectionInfoWriteOutputWithContext(context.Background())
+}
+
+func (i PostgresflexInstanceConnectionInfoWriteArgs) ToPostgresflexInstanceConnectionInfoWriteOutputWithContext(ctx context.Context) PostgresflexInstanceConnectionInfoWriteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresflexInstanceConnectionInfoWriteOutput)
+}
+
+func (i PostgresflexInstanceConnectionInfoWriteArgs) ToPostgresflexInstanceConnectionInfoWritePtrOutput() PostgresflexInstanceConnectionInfoWritePtrOutput {
+	return i.ToPostgresflexInstanceConnectionInfoWritePtrOutputWithContext(context.Background())
+}
+
+func (i PostgresflexInstanceConnectionInfoWriteArgs) ToPostgresflexInstanceConnectionInfoWritePtrOutputWithContext(ctx context.Context) PostgresflexInstanceConnectionInfoWritePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresflexInstanceConnectionInfoWriteOutput).ToPostgresflexInstanceConnectionInfoWritePtrOutputWithContext(ctx)
+}
+
+// PostgresflexInstanceConnectionInfoWritePtrInput is an input type that accepts PostgresflexInstanceConnectionInfoWriteArgs, PostgresflexInstanceConnectionInfoWritePtr and PostgresflexInstanceConnectionInfoWritePtrOutput values.
+// You can construct a concrete instance of `PostgresflexInstanceConnectionInfoWritePtrInput` via:
+//
+//	        PostgresflexInstanceConnectionInfoWriteArgs{...}
+//
+//	or:
+//
+//	        nil
+type PostgresflexInstanceConnectionInfoWritePtrInput interface {
+	pulumi.Input
+
+	ToPostgresflexInstanceConnectionInfoWritePtrOutput() PostgresflexInstanceConnectionInfoWritePtrOutput
+	ToPostgresflexInstanceConnectionInfoWritePtrOutputWithContext(context.Context) PostgresflexInstanceConnectionInfoWritePtrOutput
+}
+
+type postgresflexInstanceConnectionInfoWritePtrType PostgresflexInstanceConnectionInfoWriteArgs
+
+func PostgresflexInstanceConnectionInfoWritePtr(v *PostgresflexInstanceConnectionInfoWriteArgs) PostgresflexInstanceConnectionInfoWritePtrInput {
+	return (*postgresflexInstanceConnectionInfoWritePtrType)(v)
+}
+
+func (*postgresflexInstanceConnectionInfoWritePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PostgresflexInstanceConnectionInfoWrite)(nil)).Elem()
+}
+
+func (i *postgresflexInstanceConnectionInfoWritePtrType) ToPostgresflexInstanceConnectionInfoWritePtrOutput() PostgresflexInstanceConnectionInfoWritePtrOutput {
+	return i.ToPostgresflexInstanceConnectionInfoWritePtrOutputWithContext(context.Background())
+}
+
+func (i *postgresflexInstanceConnectionInfoWritePtrType) ToPostgresflexInstanceConnectionInfoWritePtrOutputWithContext(ctx context.Context) PostgresflexInstanceConnectionInfoWritePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresflexInstanceConnectionInfoWritePtrOutput)
+}
+
+type PostgresflexInstanceConnectionInfoWriteOutput struct{ *pulumi.OutputState }
+
+func (PostgresflexInstanceConnectionInfoWriteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgresflexInstanceConnectionInfoWrite)(nil)).Elem()
+}
+
+func (o PostgresflexInstanceConnectionInfoWriteOutput) ToPostgresflexInstanceConnectionInfoWriteOutput() PostgresflexInstanceConnectionInfoWriteOutput {
+	return o
+}
+
+func (o PostgresflexInstanceConnectionInfoWriteOutput) ToPostgresflexInstanceConnectionInfoWriteOutputWithContext(ctx context.Context) PostgresflexInstanceConnectionInfoWriteOutput {
+	return o
+}
+
+func (o PostgresflexInstanceConnectionInfoWriteOutput) ToPostgresflexInstanceConnectionInfoWritePtrOutput() PostgresflexInstanceConnectionInfoWritePtrOutput {
+	return o.ToPostgresflexInstanceConnectionInfoWritePtrOutputWithContext(context.Background())
+}
+
+func (o PostgresflexInstanceConnectionInfoWriteOutput) ToPostgresflexInstanceConnectionInfoWritePtrOutputWithContext(ctx context.Context) PostgresflexInstanceConnectionInfoWritePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PostgresflexInstanceConnectionInfoWrite) *PostgresflexInstanceConnectionInfoWrite {
+		return &v
+	}).(PostgresflexInstanceConnectionInfoWritePtrOutput)
+}
+
+// The host of the instance.
+func (o PostgresflexInstanceConnectionInfoWriteOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostgresflexInstanceConnectionInfoWrite) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// The port of the instance.
+func (o PostgresflexInstanceConnectionInfoWriteOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PostgresflexInstanceConnectionInfoWrite) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+type PostgresflexInstanceConnectionInfoWritePtrOutput struct{ *pulumi.OutputState }
+
+func (PostgresflexInstanceConnectionInfoWritePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PostgresflexInstanceConnectionInfoWrite)(nil)).Elem()
+}
+
+func (o PostgresflexInstanceConnectionInfoWritePtrOutput) ToPostgresflexInstanceConnectionInfoWritePtrOutput() PostgresflexInstanceConnectionInfoWritePtrOutput {
+	return o
+}
+
+func (o PostgresflexInstanceConnectionInfoWritePtrOutput) ToPostgresflexInstanceConnectionInfoWritePtrOutputWithContext(ctx context.Context) PostgresflexInstanceConnectionInfoWritePtrOutput {
+	return o
+}
+
+func (o PostgresflexInstanceConnectionInfoWritePtrOutput) Elem() PostgresflexInstanceConnectionInfoWriteOutput {
+	return o.ApplyT(func(v *PostgresflexInstanceConnectionInfoWrite) PostgresflexInstanceConnectionInfoWrite {
+		if v != nil {
+			return *v
+		}
+		var ret PostgresflexInstanceConnectionInfoWrite
+		return ret
+	}).(PostgresflexInstanceConnectionInfoWriteOutput)
+}
+
+// The host of the instance.
+func (o PostgresflexInstanceConnectionInfoWritePtrOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostgresflexInstanceConnectionInfoWrite) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Host
+	}).(pulumi.StringPtrOutput)
+}
+
+// The port of the instance.
+func (o PostgresflexInstanceConnectionInfoWritePtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PostgresflexInstanceConnectionInfoWrite) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+type PostgresflexInstanceEncryption struct {
+	// The ID of the Key within the STACKIT-KMS to use for the encryption.
+	KekKeyId string `pulumi:"kekKeyId"`
+	// Version of the key within the STACKIT-KMS to use for the encryption.
+	KekKeyVersion string `pulumi:"kekKeyVersion"`
+	// The ID of the keyring where the key is located within the STACKTI-KMS.
+	KekKeyringId string `pulumi:"kekKeyringId"`
+	// Service-Account linked to the Key within the STACKIT-KMS.
+	ServiceAccount string `pulumi:"serviceAccount"`
+}
+
+// PostgresflexInstanceEncryptionInput is an input type that accepts PostgresflexInstanceEncryptionArgs and PostgresflexInstanceEncryptionOutput values.
+// You can construct a concrete instance of `PostgresflexInstanceEncryptionInput` via:
+//
+//	PostgresflexInstanceEncryptionArgs{...}
+type PostgresflexInstanceEncryptionInput interface {
+	pulumi.Input
+
+	ToPostgresflexInstanceEncryptionOutput() PostgresflexInstanceEncryptionOutput
+	ToPostgresflexInstanceEncryptionOutputWithContext(context.Context) PostgresflexInstanceEncryptionOutput
+}
+
+type PostgresflexInstanceEncryptionArgs struct {
+	// The ID of the Key within the STACKIT-KMS to use for the encryption.
+	KekKeyId pulumi.StringInput `pulumi:"kekKeyId"`
+	// Version of the key within the STACKIT-KMS to use for the encryption.
+	KekKeyVersion pulumi.StringInput `pulumi:"kekKeyVersion"`
+	// The ID of the keyring where the key is located within the STACKTI-KMS.
+	KekKeyringId pulumi.StringInput `pulumi:"kekKeyringId"`
+	// Service-Account linked to the Key within the STACKIT-KMS.
+	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
+}
+
+func (PostgresflexInstanceEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgresflexInstanceEncryption)(nil)).Elem()
+}
+
+func (i PostgresflexInstanceEncryptionArgs) ToPostgresflexInstanceEncryptionOutput() PostgresflexInstanceEncryptionOutput {
+	return i.ToPostgresflexInstanceEncryptionOutputWithContext(context.Background())
+}
+
+func (i PostgresflexInstanceEncryptionArgs) ToPostgresflexInstanceEncryptionOutputWithContext(ctx context.Context) PostgresflexInstanceEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresflexInstanceEncryptionOutput)
+}
+
+func (i PostgresflexInstanceEncryptionArgs) ToPostgresflexInstanceEncryptionPtrOutput() PostgresflexInstanceEncryptionPtrOutput {
+	return i.ToPostgresflexInstanceEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i PostgresflexInstanceEncryptionArgs) ToPostgresflexInstanceEncryptionPtrOutputWithContext(ctx context.Context) PostgresflexInstanceEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresflexInstanceEncryptionOutput).ToPostgresflexInstanceEncryptionPtrOutputWithContext(ctx)
+}
+
+// PostgresflexInstanceEncryptionPtrInput is an input type that accepts PostgresflexInstanceEncryptionArgs, PostgresflexInstanceEncryptionPtr and PostgresflexInstanceEncryptionPtrOutput values.
+// You can construct a concrete instance of `PostgresflexInstanceEncryptionPtrInput` via:
+//
+//	        PostgresflexInstanceEncryptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type PostgresflexInstanceEncryptionPtrInput interface {
+	pulumi.Input
+
+	ToPostgresflexInstanceEncryptionPtrOutput() PostgresflexInstanceEncryptionPtrOutput
+	ToPostgresflexInstanceEncryptionPtrOutputWithContext(context.Context) PostgresflexInstanceEncryptionPtrOutput
+}
+
+type postgresflexInstanceEncryptionPtrType PostgresflexInstanceEncryptionArgs
+
+func PostgresflexInstanceEncryptionPtr(v *PostgresflexInstanceEncryptionArgs) PostgresflexInstanceEncryptionPtrInput {
+	return (*postgresflexInstanceEncryptionPtrType)(v)
+}
+
+func (*postgresflexInstanceEncryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PostgresflexInstanceEncryption)(nil)).Elem()
+}
+
+func (i *postgresflexInstanceEncryptionPtrType) ToPostgresflexInstanceEncryptionPtrOutput() PostgresflexInstanceEncryptionPtrOutput {
+	return i.ToPostgresflexInstanceEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *postgresflexInstanceEncryptionPtrType) ToPostgresflexInstanceEncryptionPtrOutputWithContext(ctx context.Context) PostgresflexInstanceEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresflexInstanceEncryptionPtrOutput)
+}
+
+type PostgresflexInstanceEncryptionOutput struct{ *pulumi.OutputState }
+
+func (PostgresflexInstanceEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgresflexInstanceEncryption)(nil)).Elem()
+}
+
+func (o PostgresflexInstanceEncryptionOutput) ToPostgresflexInstanceEncryptionOutput() PostgresflexInstanceEncryptionOutput {
+	return o
+}
+
+func (o PostgresflexInstanceEncryptionOutput) ToPostgresflexInstanceEncryptionOutputWithContext(ctx context.Context) PostgresflexInstanceEncryptionOutput {
+	return o
+}
+
+func (o PostgresflexInstanceEncryptionOutput) ToPostgresflexInstanceEncryptionPtrOutput() PostgresflexInstanceEncryptionPtrOutput {
+	return o.ToPostgresflexInstanceEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o PostgresflexInstanceEncryptionOutput) ToPostgresflexInstanceEncryptionPtrOutputWithContext(ctx context.Context) PostgresflexInstanceEncryptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PostgresflexInstanceEncryption) *PostgresflexInstanceEncryption {
+		return &v
+	}).(PostgresflexInstanceEncryptionPtrOutput)
+}
+
+// The ID of the Key within the STACKIT-KMS to use for the encryption.
+func (o PostgresflexInstanceEncryptionOutput) KekKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v PostgresflexInstanceEncryption) string { return v.KekKeyId }).(pulumi.StringOutput)
+}
+
+// Version of the key within the STACKIT-KMS to use for the encryption.
+func (o PostgresflexInstanceEncryptionOutput) KekKeyVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v PostgresflexInstanceEncryption) string { return v.KekKeyVersion }).(pulumi.StringOutput)
+}
+
+// The ID of the keyring where the key is located within the STACKTI-KMS.
+func (o PostgresflexInstanceEncryptionOutput) KekKeyringId() pulumi.StringOutput {
+	return o.ApplyT(func(v PostgresflexInstanceEncryption) string { return v.KekKeyringId }).(pulumi.StringOutput)
+}
+
+// Service-Account linked to the Key within the STACKIT-KMS.
+func (o PostgresflexInstanceEncryptionOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v PostgresflexInstanceEncryption) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+type PostgresflexInstanceEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (PostgresflexInstanceEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PostgresflexInstanceEncryption)(nil)).Elem()
+}
+
+func (o PostgresflexInstanceEncryptionPtrOutput) ToPostgresflexInstanceEncryptionPtrOutput() PostgresflexInstanceEncryptionPtrOutput {
+	return o
+}
+
+func (o PostgresflexInstanceEncryptionPtrOutput) ToPostgresflexInstanceEncryptionPtrOutputWithContext(ctx context.Context) PostgresflexInstanceEncryptionPtrOutput {
+	return o
+}
+
+func (o PostgresflexInstanceEncryptionPtrOutput) Elem() PostgresflexInstanceEncryptionOutput {
+	return o.ApplyT(func(v *PostgresflexInstanceEncryption) PostgresflexInstanceEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret PostgresflexInstanceEncryption
+		return ret
+	}).(PostgresflexInstanceEncryptionOutput)
+}
+
+// The ID of the Key within the STACKIT-KMS to use for the encryption.
+func (o PostgresflexInstanceEncryptionPtrOutput) KekKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostgresflexInstanceEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KekKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version of the key within the STACKIT-KMS to use for the encryption.
+func (o PostgresflexInstanceEncryptionPtrOutput) KekKeyVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostgresflexInstanceEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KekKeyVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID of the keyring where the key is located within the STACKTI-KMS.
+func (o PostgresflexInstanceEncryptionPtrOutput) KekKeyringId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostgresflexInstanceEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KekKeyringId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Service-Account linked to the Key within the STACKIT-KMS.
+func (o PostgresflexInstanceEncryptionPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostgresflexInstanceEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
 type PostgresflexInstanceFlavor struct {
 	Cpu         int     `pulumi:"cpu"`
 	Description *string `pulumi:"description"`
-	Id          *string `pulumi:"id"`
-	Ram         int     `pulumi:"ram"`
+	// Terraform's internal resource ID. It is structured as "`projectId`,`region`,`instanceId`".
+	Id       *string `pulumi:"id"`
+	NodeType *string `pulumi:"nodeType"`
+	Ram      int     `pulumi:"ram"`
 }
 
 // PostgresflexInstanceFlavorInput is an input type that accepts PostgresflexInstanceFlavorArgs and PostgresflexInstanceFlavorOutput values.
@@ -14277,8 +15379,10 @@ type PostgresflexInstanceFlavorInput interface {
 type PostgresflexInstanceFlavorArgs struct {
 	Cpu         pulumi.IntInput       `pulumi:"cpu"`
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	Id          pulumi.StringPtrInput `pulumi:"id"`
-	Ram         pulumi.IntInput       `pulumi:"ram"`
+	// Terraform's internal resource ID. It is structured as "`projectId`,`region`,`instanceId`".
+	Id       pulumi.StringPtrInput `pulumi:"id"`
+	NodeType pulumi.StringPtrInput `pulumi:"nodeType"`
+	Ram      pulumi.IntInput       `pulumi:"ram"`
 }
 
 func (PostgresflexInstanceFlavorArgs) ElementType() reflect.Type {
@@ -14366,8 +15470,13 @@ func (o PostgresflexInstanceFlavorOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PostgresflexInstanceFlavor) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// Terraform's internal resource ID. It is structured as "`projectId`,`region`,`instanceId`".
 func (o PostgresflexInstanceFlavorOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PostgresflexInstanceFlavor) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+func (o PostgresflexInstanceFlavorOutput) NodeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostgresflexInstanceFlavor) *string { return v.NodeType }).(pulumi.StringPtrOutput)
 }
 
 func (o PostgresflexInstanceFlavorOutput) Ram() pulumi.IntOutput {
@@ -14416,12 +15525,22 @@ func (o PostgresflexInstanceFlavorPtrOutput) Description() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
+// Terraform's internal resource ID. It is structured as "`projectId`,`region`,`instanceId`".
 func (o PostgresflexInstanceFlavorPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PostgresflexInstanceFlavor) *string {
 		if v == nil {
 			return nil
 		}
 		return v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PostgresflexInstanceFlavorPtrOutput) NodeType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostgresflexInstanceFlavor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NodeType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -14434,12 +15553,231 @@ func (o PostgresflexInstanceFlavorPtrOutput) Ram() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+type PostgresflexInstanceNetwork struct {
+	// The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. Possible values are: `PUBLIC`, `SNA`.
+	AccessScope *string `pulumi:"accessScope"`
+	// The Access Control List (ACL) for the PostgresFlex instance.
+	Acls            []string `pulumi:"acls"`
+	InstanceAddress *string  `pulumi:"instanceAddress"`
+	RouterAddress   *string  `pulumi:"routerAddress"`
+}
+
+// PostgresflexInstanceNetworkInput is an input type that accepts PostgresflexInstanceNetworkArgs and PostgresflexInstanceNetworkOutput values.
+// You can construct a concrete instance of `PostgresflexInstanceNetworkInput` via:
+//
+//	PostgresflexInstanceNetworkArgs{...}
+type PostgresflexInstanceNetworkInput interface {
+	pulumi.Input
+
+	ToPostgresflexInstanceNetworkOutput() PostgresflexInstanceNetworkOutput
+	ToPostgresflexInstanceNetworkOutputWithContext(context.Context) PostgresflexInstanceNetworkOutput
+}
+
+type PostgresflexInstanceNetworkArgs struct {
+	// The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. Possible values are: `PUBLIC`, `SNA`.
+	AccessScope pulumi.StringPtrInput `pulumi:"accessScope"`
+	// The Access Control List (ACL) for the PostgresFlex instance.
+	Acls            pulumi.StringArrayInput `pulumi:"acls"`
+	InstanceAddress pulumi.StringPtrInput   `pulumi:"instanceAddress"`
+	RouterAddress   pulumi.StringPtrInput   `pulumi:"routerAddress"`
+}
+
+func (PostgresflexInstanceNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgresflexInstanceNetwork)(nil)).Elem()
+}
+
+func (i PostgresflexInstanceNetworkArgs) ToPostgresflexInstanceNetworkOutput() PostgresflexInstanceNetworkOutput {
+	return i.ToPostgresflexInstanceNetworkOutputWithContext(context.Background())
+}
+
+func (i PostgresflexInstanceNetworkArgs) ToPostgresflexInstanceNetworkOutputWithContext(ctx context.Context) PostgresflexInstanceNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresflexInstanceNetworkOutput)
+}
+
+func (i PostgresflexInstanceNetworkArgs) ToPostgresflexInstanceNetworkPtrOutput() PostgresflexInstanceNetworkPtrOutput {
+	return i.ToPostgresflexInstanceNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i PostgresflexInstanceNetworkArgs) ToPostgresflexInstanceNetworkPtrOutputWithContext(ctx context.Context) PostgresflexInstanceNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresflexInstanceNetworkOutput).ToPostgresflexInstanceNetworkPtrOutputWithContext(ctx)
+}
+
+// PostgresflexInstanceNetworkPtrInput is an input type that accepts PostgresflexInstanceNetworkArgs, PostgresflexInstanceNetworkPtr and PostgresflexInstanceNetworkPtrOutput values.
+// You can construct a concrete instance of `PostgresflexInstanceNetworkPtrInput` via:
+//
+//	        PostgresflexInstanceNetworkArgs{...}
+//
+//	or:
+//
+//	        nil
+type PostgresflexInstanceNetworkPtrInput interface {
+	pulumi.Input
+
+	ToPostgresflexInstanceNetworkPtrOutput() PostgresflexInstanceNetworkPtrOutput
+	ToPostgresflexInstanceNetworkPtrOutputWithContext(context.Context) PostgresflexInstanceNetworkPtrOutput
+}
+
+type postgresflexInstanceNetworkPtrType PostgresflexInstanceNetworkArgs
+
+func PostgresflexInstanceNetworkPtr(v *PostgresflexInstanceNetworkArgs) PostgresflexInstanceNetworkPtrInput {
+	return (*postgresflexInstanceNetworkPtrType)(v)
+}
+
+func (*postgresflexInstanceNetworkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PostgresflexInstanceNetwork)(nil)).Elem()
+}
+
+func (i *postgresflexInstanceNetworkPtrType) ToPostgresflexInstanceNetworkPtrOutput() PostgresflexInstanceNetworkPtrOutput {
+	return i.ToPostgresflexInstanceNetworkPtrOutputWithContext(context.Background())
+}
+
+func (i *postgresflexInstanceNetworkPtrType) ToPostgresflexInstanceNetworkPtrOutputWithContext(ctx context.Context) PostgresflexInstanceNetworkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresflexInstanceNetworkPtrOutput)
+}
+
+type PostgresflexInstanceNetworkOutput struct{ *pulumi.OutputState }
+
+func (PostgresflexInstanceNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgresflexInstanceNetwork)(nil)).Elem()
+}
+
+func (o PostgresflexInstanceNetworkOutput) ToPostgresflexInstanceNetworkOutput() PostgresflexInstanceNetworkOutput {
+	return o
+}
+
+func (o PostgresflexInstanceNetworkOutput) ToPostgresflexInstanceNetworkOutputWithContext(ctx context.Context) PostgresflexInstanceNetworkOutput {
+	return o
+}
+
+func (o PostgresflexInstanceNetworkOutput) ToPostgresflexInstanceNetworkPtrOutput() PostgresflexInstanceNetworkPtrOutput {
+	return o.ToPostgresflexInstanceNetworkPtrOutputWithContext(context.Background())
+}
+
+func (o PostgresflexInstanceNetworkOutput) ToPostgresflexInstanceNetworkPtrOutputWithContext(ctx context.Context) PostgresflexInstanceNetworkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PostgresflexInstanceNetwork) *PostgresflexInstanceNetwork {
+		return &v
+	}).(PostgresflexInstanceNetworkPtrOutput)
+}
+
+// The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. Possible values are: `PUBLIC`, `SNA`.
+func (o PostgresflexInstanceNetworkOutput) AccessScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostgresflexInstanceNetwork) *string { return v.AccessScope }).(pulumi.StringPtrOutput)
+}
+
+// The Access Control List (ACL) for the PostgresFlex instance.
+func (o PostgresflexInstanceNetworkOutput) Acls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PostgresflexInstanceNetwork) []string { return v.Acls }).(pulumi.StringArrayOutput)
+}
+
+func (o PostgresflexInstanceNetworkOutput) InstanceAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostgresflexInstanceNetwork) *string { return v.InstanceAddress }).(pulumi.StringPtrOutput)
+}
+
+func (o PostgresflexInstanceNetworkOutput) RouterAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostgresflexInstanceNetwork) *string { return v.RouterAddress }).(pulumi.StringPtrOutput)
+}
+
+type PostgresflexInstanceNetworkPtrOutput struct{ *pulumi.OutputState }
+
+func (PostgresflexInstanceNetworkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PostgresflexInstanceNetwork)(nil)).Elem()
+}
+
+func (o PostgresflexInstanceNetworkPtrOutput) ToPostgresflexInstanceNetworkPtrOutput() PostgresflexInstanceNetworkPtrOutput {
+	return o
+}
+
+func (o PostgresflexInstanceNetworkPtrOutput) ToPostgresflexInstanceNetworkPtrOutputWithContext(ctx context.Context) PostgresflexInstanceNetworkPtrOutput {
+	return o
+}
+
+func (o PostgresflexInstanceNetworkPtrOutput) Elem() PostgresflexInstanceNetworkOutput {
+	return o.ApplyT(func(v *PostgresflexInstanceNetwork) PostgresflexInstanceNetwork {
+		if v != nil {
+			return *v
+		}
+		var ret PostgresflexInstanceNetwork
+		return ret
+	}).(PostgresflexInstanceNetworkOutput)
+}
+
+// The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. Possible values are: `PUBLIC`, `SNA`.
+func (o PostgresflexInstanceNetworkPtrOutput) AccessScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostgresflexInstanceNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AccessScope
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Access Control List (ACL) for the PostgresFlex instance.
+func (o PostgresflexInstanceNetworkPtrOutput) Acls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PostgresflexInstanceNetwork) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Acls
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o PostgresflexInstanceNetworkPtrOutput) InstanceAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostgresflexInstanceNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PostgresflexInstanceNetworkPtrOutput) RouterAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostgresflexInstanceNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RouterAddress
+	}).(pulumi.StringPtrOutput)
+}
+
 type PostgresflexInstanceStorage struct {
 	// The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
 	// `bash
-	// stackit postgresflex options --storages --flavor-id FLAVOR_ID
+	// stackit postgresflex flavor describe FLAVOR_ID
 	// `
 	// - `size` (Number)
+	//   \n\n\n\n
+	// ### Nested Schema for `encryption`
+	// Required:
+	// - `kekKeyId` (String) The ID of the Key within the STACKIT-KMS to use for the encryption.
+	// - `kekKeyVersion` (String) Version of the key within the STACKIT-KMS to use for the encryption.
+	// - `kekKeyringId` (String) The ID of the keyring where the key is located within the STACKTI-KMS.
+	// - `serviceAccount` (String) Service-Account linked to the Key within the STACKIT-KMS.
+	//   \n\n\n\n
+	// ### Nested Schema for `flavor`
+	// Required:
+	// - `cpu` (Number)
+	// - `ram` (Number)
+	//   Read-Only:
+	// - `description` (String)
+	// - `id` (String)
+	// - `nodeType` (String)
+	//   \n\n\n\n
+	// ### Nested Schema for `network`
+	// Optional:
+	// - `accessScope` (String) The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. Possible values are: `PUBLIC`, `SNA`.
+	// - `acl` (List of String) The Access Control List (ACL) for the PostgresFlex instance.
+	//   Read-Only:
+	// - `instanceAddress` (String)
+	// - `routerAddress` (String)
+	//   \n\n\n\n
+	// ### Nested Schema for `connectionInfo`
+	// Read-Only:
+	// - `write` (Attributes) The DNS name and port in the instance overview.
+	//   \n\n\n\n
+	// ### Nested Schema for `connection_info.write`
+	// Read-Only:
+	// - `host` (String) The host of the instance.
+	// - `port` (Number) The port of the instance.
 	Class string `pulumi:"class"`
 	Size  int    `pulumi:"size"`
 }
@@ -14458,9 +15796,42 @@ type PostgresflexInstanceStorageInput interface {
 type PostgresflexInstanceStorageArgs struct {
 	// The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
 	// `bash
-	// stackit postgresflex options --storages --flavor-id FLAVOR_ID
+	// stackit postgresflex flavor describe FLAVOR_ID
 	// `
 	// - `size` (Number)
+	//   \n\n\n\n
+	// ### Nested Schema for `encryption`
+	// Required:
+	// - `kekKeyId` (String) The ID of the Key within the STACKIT-KMS to use for the encryption.
+	// - `kekKeyVersion` (String) Version of the key within the STACKIT-KMS to use for the encryption.
+	// - `kekKeyringId` (String) The ID of the keyring where the key is located within the STACKTI-KMS.
+	// - `serviceAccount` (String) Service-Account linked to the Key within the STACKIT-KMS.
+	//   \n\n\n\n
+	// ### Nested Schema for `flavor`
+	// Required:
+	// - `cpu` (Number)
+	// - `ram` (Number)
+	//   Read-Only:
+	// - `description` (String)
+	// - `id` (String)
+	// - `nodeType` (String)
+	//   \n\n\n\n
+	// ### Nested Schema for `network`
+	// Optional:
+	// - `accessScope` (String) The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. Possible values are: `PUBLIC`, `SNA`.
+	// - `acl` (List of String) The Access Control List (ACL) for the PostgresFlex instance.
+	//   Read-Only:
+	// - `instanceAddress` (String)
+	// - `routerAddress` (String)
+	//   \n\n\n\n
+	// ### Nested Schema for `connectionInfo`
+	// Read-Only:
+	// - `write` (Attributes) The DNS name and port in the instance overview.
+	//   \n\n\n\n
+	// ### Nested Schema for `connection_info.write`
+	// Read-Only:
+	// - `host` (String) The host of the instance.
+	// - `port` (Number) The port of the instance.
 	Class pulumi.StringInput `pulumi:"class"`
 	Size  pulumi.IntInput    `pulumi:"size"`
 }
@@ -14544,9 +15915,47 @@ func (o PostgresflexInstanceStorageOutput) ToPostgresflexInstanceStoragePtrOutpu
 
 // The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
 // `bash
-// stackit postgresflex options --storages --flavor-id FLAVOR_ID
+// stackit postgresflex flavor describe FLAVOR_ID
 // `
-// - `size` (Number)
+//   - `size` (Number)
+//     \n\n\n\n
+//
+// ### Nested Schema for `encryption`
+// Required:
+//   - `kekKeyId` (String) The ID of the Key within the STACKIT-KMS to use for the encryption.
+//   - `kekKeyVersion` (String) Version of the key within the STACKIT-KMS to use for the encryption.
+//   - `kekKeyringId` (String) The ID of the keyring where the key is located within the STACKTI-KMS.
+//   - `serviceAccount` (String) Service-Account linked to the Key within the STACKIT-KMS.
+//     \n\n\n\n
+//
+// ### Nested Schema for `flavor`
+// Required:
+//   - `cpu` (Number)
+//   - `ram` (Number)
+//     Read-Only:
+//   - `description` (String)
+//   - `id` (String)
+//   - `nodeType` (String)
+//     \n\n\n\n
+//
+// ### Nested Schema for `network`
+// Optional:
+//   - `accessScope` (String) The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. Possible values are: `PUBLIC`, `SNA`.
+//   - `acl` (List of String) The Access Control List (ACL) for the PostgresFlex instance.
+//     Read-Only:
+//   - `instanceAddress` (String)
+//   - `routerAddress` (String)
+//     \n\n\n\n
+//
+// ### Nested Schema for `connectionInfo`
+// Read-Only:
+//   - `write` (Attributes) The DNS name and port in the instance overview.
+//     \n\n\n\n
+//
+// ### Nested Schema for `connection_info.write`
+// Read-Only:
+// - `host` (String) The host of the instance.
+// - `port` (Number) The port of the instance.
 func (o PostgresflexInstanceStorageOutput) Class() pulumi.StringOutput {
 	return o.ApplyT(func(v PostgresflexInstanceStorage) string { return v.Class }).(pulumi.StringOutput)
 }
@@ -14581,9 +15990,47 @@ func (o PostgresflexInstanceStoragePtrOutput) Elem() PostgresflexInstanceStorage
 
 // The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
 // `bash
-// stackit postgresflex options --storages --flavor-id FLAVOR_ID
+// stackit postgresflex flavor describe FLAVOR_ID
 // `
-// - `size` (Number)
+//   - `size` (Number)
+//     \n\n\n\n
+//
+// ### Nested Schema for `encryption`
+// Required:
+//   - `kekKeyId` (String) The ID of the Key within the STACKIT-KMS to use for the encryption.
+//   - `kekKeyVersion` (String) Version of the key within the STACKIT-KMS to use for the encryption.
+//   - `kekKeyringId` (String) The ID of the keyring where the key is located within the STACKTI-KMS.
+//   - `serviceAccount` (String) Service-Account linked to the Key within the STACKIT-KMS.
+//     \n\n\n\n
+//
+// ### Nested Schema for `flavor`
+// Required:
+//   - `cpu` (Number)
+//   - `ram` (Number)
+//     Read-Only:
+//   - `description` (String)
+//   - `id` (String)
+//   - `nodeType` (String)
+//     \n\n\n\n
+//
+// ### Nested Schema for `network`
+// Optional:
+//   - `accessScope` (String) The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. Possible values are: `PUBLIC`, `SNA`.
+//   - `acl` (List of String) The Access Control List (ACL) for the PostgresFlex instance.
+//     Read-Only:
+//   - `instanceAddress` (String)
+//   - `routerAddress` (String)
+//     \n\n\n\n
+//
+// ### Nested Schema for `connectionInfo`
+// Read-Only:
+//   - `write` (Attributes) The DNS name and port in the instance overview.
+//     \n\n\n\n
+//
+// ### Nested Schema for `connection_info.write`
+// Read-Only:
+// - `host` (String) The host of the instance.
+// - `port` (Number) The port of the instance.
 func (o PostgresflexInstanceStoragePtrOutput) Class() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PostgresflexInstanceStorage) *string {
 		if v == nil {
@@ -17734,9 +19181,148 @@ func (o SkeClusterAccessIdpPtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type SkeClusterAudit struct {
+	// Enable cluster audit log forwarding to a Telemetry Router.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// SkeClusterAuditInput is an input type that accepts SkeClusterAuditArgs and SkeClusterAuditOutput values.
+// You can construct a concrete instance of `SkeClusterAuditInput` via:
+//
+//	SkeClusterAuditArgs{...}
+type SkeClusterAuditInput interface {
+	pulumi.Input
+
+	ToSkeClusterAuditOutput() SkeClusterAuditOutput
+	ToSkeClusterAuditOutputWithContext(context.Context) SkeClusterAuditOutput
+}
+
+type SkeClusterAuditArgs struct {
+	// Enable cluster audit log forwarding to a Telemetry Router.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (SkeClusterAuditArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkeClusterAudit)(nil)).Elem()
+}
+
+func (i SkeClusterAuditArgs) ToSkeClusterAuditOutput() SkeClusterAuditOutput {
+	return i.ToSkeClusterAuditOutputWithContext(context.Background())
+}
+
+func (i SkeClusterAuditArgs) ToSkeClusterAuditOutputWithContext(ctx context.Context) SkeClusterAuditOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkeClusterAuditOutput)
+}
+
+func (i SkeClusterAuditArgs) ToSkeClusterAuditPtrOutput() SkeClusterAuditPtrOutput {
+	return i.ToSkeClusterAuditPtrOutputWithContext(context.Background())
+}
+
+func (i SkeClusterAuditArgs) ToSkeClusterAuditPtrOutputWithContext(ctx context.Context) SkeClusterAuditPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkeClusterAuditOutput).ToSkeClusterAuditPtrOutputWithContext(ctx)
+}
+
+// SkeClusterAuditPtrInput is an input type that accepts SkeClusterAuditArgs, SkeClusterAuditPtr and SkeClusterAuditPtrOutput values.
+// You can construct a concrete instance of `SkeClusterAuditPtrInput` via:
+//
+//	        SkeClusterAuditArgs{...}
+//
+//	or:
+//
+//	        nil
+type SkeClusterAuditPtrInput interface {
+	pulumi.Input
+
+	ToSkeClusterAuditPtrOutput() SkeClusterAuditPtrOutput
+	ToSkeClusterAuditPtrOutputWithContext(context.Context) SkeClusterAuditPtrOutput
+}
+
+type skeClusterAuditPtrType SkeClusterAuditArgs
+
+func SkeClusterAuditPtr(v *SkeClusterAuditArgs) SkeClusterAuditPtrInput {
+	return (*skeClusterAuditPtrType)(v)
+}
+
+func (*skeClusterAuditPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkeClusterAudit)(nil)).Elem()
+}
+
+func (i *skeClusterAuditPtrType) ToSkeClusterAuditPtrOutput() SkeClusterAuditPtrOutput {
+	return i.ToSkeClusterAuditPtrOutputWithContext(context.Background())
+}
+
+func (i *skeClusterAuditPtrType) ToSkeClusterAuditPtrOutputWithContext(ctx context.Context) SkeClusterAuditPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkeClusterAuditPtrOutput)
+}
+
+type SkeClusterAuditOutput struct{ *pulumi.OutputState }
+
+func (SkeClusterAuditOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkeClusterAudit)(nil)).Elem()
+}
+
+func (o SkeClusterAuditOutput) ToSkeClusterAuditOutput() SkeClusterAuditOutput {
+	return o
+}
+
+func (o SkeClusterAuditOutput) ToSkeClusterAuditOutputWithContext(ctx context.Context) SkeClusterAuditOutput {
+	return o
+}
+
+func (o SkeClusterAuditOutput) ToSkeClusterAuditPtrOutput() SkeClusterAuditPtrOutput {
+	return o.ToSkeClusterAuditPtrOutputWithContext(context.Background())
+}
+
+func (o SkeClusterAuditOutput) ToSkeClusterAuditPtrOutputWithContext(ctx context.Context) SkeClusterAuditPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SkeClusterAudit) *SkeClusterAudit {
+		return &v
+	}).(SkeClusterAuditPtrOutput)
+}
+
+// Enable cluster audit log forwarding to a Telemetry Router.
+func (o SkeClusterAuditOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SkeClusterAudit) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type SkeClusterAuditPtrOutput struct{ *pulumi.OutputState }
+
+func (SkeClusterAuditPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkeClusterAudit)(nil)).Elem()
+}
+
+func (o SkeClusterAuditPtrOutput) ToSkeClusterAuditPtrOutput() SkeClusterAuditPtrOutput {
+	return o
+}
+
+func (o SkeClusterAuditPtrOutput) ToSkeClusterAuditPtrOutputWithContext(ctx context.Context) SkeClusterAuditPtrOutput {
+	return o
+}
+
+func (o SkeClusterAuditPtrOutput) Elem() SkeClusterAuditOutput {
+	return o.ApplyT(func(v *SkeClusterAudit) SkeClusterAudit {
+		if v != nil {
+			return *v
+		}
+		var ret SkeClusterAudit
+		return ret
+	}).(SkeClusterAuditOutput)
+}
+
+// Enable cluster audit log forwarding to a Telemetry Router.
+func (o SkeClusterAuditPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SkeClusterAudit) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type SkeClusterExtensions struct {
 	// Cluster access control configuration.
 	Acl *SkeClusterExtensionsAcl `pulumi:"acl"`
+	// Application Load Balancer extension.
+	ApplicationLoadBalancer *SkeClusterExtensionsApplicationLoadBalancer `pulumi:"applicationLoadBalancer"`
 	// A single argus block as defined below. This field is deprecated and will be removed 06 January 2026.
 	//
 	// Deprecated: Use observability instead.
@@ -17761,6 +19347,8 @@ type SkeClusterExtensionsInput interface {
 type SkeClusterExtensionsArgs struct {
 	// Cluster access control configuration.
 	Acl SkeClusterExtensionsAclPtrInput `pulumi:"acl"`
+	// Application Load Balancer extension.
+	ApplicationLoadBalancer SkeClusterExtensionsApplicationLoadBalancerPtrInput `pulumi:"applicationLoadBalancer"`
 	// A single argus block as defined below. This field is deprecated and will be removed 06 January 2026.
 	//
 	// Deprecated: Use observability instead.
@@ -17853,6 +19441,13 @@ func (o SkeClusterExtensionsOutput) Acl() SkeClusterExtensionsAclPtrOutput {
 	return o.ApplyT(func(v SkeClusterExtensions) *SkeClusterExtensionsAcl { return v.Acl }).(SkeClusterExtensionsAclPtrOutput)
 }
 
+// Application Load Balancer extension.
+func (o SkeClusterExtensionsOutput) ApplicationLoadBalancer() SkeClusterExtensionsApplicationLoadBalancerPtrOutput {
+	return o.ApplyT(func(v SkeClusterExtensions) *SkeClusterExtensionsApplicationLoadBalancer {
+		return v.ApplicationLoadBalancer
+	}).(SkeClusterExtensionsApplicationLoadBalancerPtrOutput)
+}
+
 // A single argus block as defined below. This field is deprecated and will be removed 06 January 2026.
 //
 // Deprecated: Use observability instead.
@@ -17902,6 +19497,16 @@ func (o SkeClusterExtensionsPtrOutput) Acl() SkeClusterExtensionsAclPtrOutput {
 		}
 		return v.Acl
 	}).(SkeClusterExtensionsAclPtrOutput)
+}
+
+// Application Load Balancer extension.
+func (o SkeClusterExtensionsPtrOutput) ApplicationLoadBalancer() SkeClusterExtensionsApplicationLoadBalancerPtrOutput {
+	return o.ApplyT(func(v *SkeClusterExtensions) *SkeClusterExtensionsApplicationLoadBalancer {
+		if v == nil {
+			return nil
+		}
+		return v.ApplicationLoadBalancer
+	}).(SkeClusterExtensionsApplicationLoadBalancerPtrOutput)
 }
 
 // A single argus block as defined below. This field is deprecated and will be removed 06 January 2026.
@@ -18092,6 +19697,143 @@ func (o SkeClusterExtensionsAclPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+type SkeClusterExtensionsApplicationLoadBalancer struct {
+	// Enables the application load balancer extension. Note: This feature is in private preview. Enabling application load balancer extension is only possible for enabled accounts. Otherwise the request will be rejected. Default value will change to true once the private preview phase is over.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// SkeClusterExtensionsApplicationLoadBalancerInput is an input type that accepts SkeClusterExtensionsApplicationLoadBalancerArgs and SkeClusterExtensionsApplicationLoadBalancerOutput values.
+// You can construct a concrete instance of `SkeClusterExtensionsApplicationLoadBalancerInput` via:
+//
+//	SkeClusterExtensionsApplicationLoadBalancerArgs{...}
+type SkeClusterExtensionsApplicationLoadBalancerInput interface {
+	pulumi.Input
+
+	ToSkeClusterExtensionsApplicationLoadBalancerOutput() SkeClusterExtensionsApplicationLoadBalancerOutput
+	ToSkeClusterExtensionsApplicationLoadBalancerOutputWithContext(context.Context) SkeClusterExtensionsApplicationLoadBalancerOutput
+}
+
+type SkeClusterExtensionsApplicationLoadBalancerArgs struct {
+	// Enables the application load balancer extension. Note: This feature is in private preview. Enabling application load balancer extension is only possible for enabled accounts. Otherwise the request will be rejected. Default value will change to true once the private preview phase is over.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (SkeClusterExtensionsApplicationLoadBalancerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkeClusterExtensionsApplicationLoadBalancer)(nil)).Elem()
+}
+
+func (i SkeClusterExtensionsApplicationLoadBalancerArgs) ToSkeClusterExtensionsApplicationLoadBalancerOutput() SkeClusterExtensionsApplicationLoadBalancerOutput {
+	return i.ToSkeClusterExtensionsApplicationLoadBalancerOutputWithContext(context.Background())
+}
+
+func (i SkeClusterExtensionsApplicationLoadBalancerArgs) ToSkeClusterExtensionsApplicationLoadBalancerOutputWithContext(ctx context.Context) SkeClusterExtensionsApplicationLoadBalancerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkeClusterExtensionsApplicationLoadBalancerOutput)
+}
+
+func (i SkeClusterExtensionsApplicationLoadBalancerArgs) ToSkeClusterExtensionsApplicationLoadBalancerPtrOutput() SkeClusterExtensionsApplicationLoadBalancerPtrOutput {
+	return i.ToSkeClusterExtensionsApplicationLoadBalancerPtrOutputWithContext(context.Background())
+}
+
+func (i SkeClusterExtensionsApplicationLoadBalancerArgs) ToSkeClusterExtensionsApplicationLoadBalancerPtrOutputWithContext(ctx context.Context) SkeClusterExtensionsApplicationLoadBalancerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkeClusterExtensionsApplicationLoadBalancerOutput).ToSkeClusterExtensionsApplicationLoadBalancerPtrOutputWithContext(ctx)
+}
+
+// SkeClusterExtensionsApplicationLoadBalancerPtrInput is an input type that accepts SkeClusterExtensionsApplicationLoadBalancerArgs, SkeClusterExtensionsApplicationLoadBalancerPtr and SkeClusterExtensionsApplicationLoadBalancerPtrOutput values.
+// You can construct a concrete instance of `SkeClusterExtensionsApplicationLoadBalancerPtrInput` via:
+//
+//	        SkeClusterExtensionsApplicationLoadBalancerArgs{...}
+//
+//	or:
+//
+//	        nil
+type SkeClusterExtensionsApplicationLoadBalancerPtrInput interface {
+	pulumi.Input
+
+	ToSkeClusterExtensionsApplicationLoadBalancerPtrOutput() SkeClusterExtensionsApplicationLoadBalancerPtrOutput
+	ToSkeClusterExtensionsApplicationLoadBalancerPtrOutputWithContext(context.Context) SkeClusterExtensionsApplicationLoadBalancerPtrOutput
+}
+
+type skeClusterExtensionsApplicationLoadBalancerPtrType SkeClusterExtensionsApplicationLoadBalancerArgs
+
+func SkeClusterExtensionsApplicationLoadBalancerPtr(v *SkeClusterExtensionsApplicationLoadBalancerArgs) SkeClusterExtensionsApplicationLoadBalancerPtrInput {
+	return (*skeClusterExtensionsApplicationLoadBalancerPtrType)(v)
+}
+
+func (*skeClusterExtensionsApplicationLoadBalancerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkeClusterExtensionsApplicationLoadBalancer)(nil)).Elem()
+}
+
+func (i *skeClusterExtensionsApplicationLoadBalancerPtrType) ToSkeClusterExtensionsApplicationLoadBalancerPtrOutput() SkeClusterExtensionsApplicationLoadBalancerPtrOutput {
+	return i.ToSkeClusterExtensionsApplicationLoadBalancerPtrOutputWithContext(context.Background())
+}
+
+func (i *skeClusterExtensionsApplicationLoadBalancerPtrType) ToSkeClusterExtensionsApplicationLoadBalancerPtrOutputWithContext(ctx context.Context) SkeClusterExtensionsApplicationLoadBalancerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SkeClusterExtensionsApplicationLoadBalancerPtrOutput)
+}
+
+type SkeClusterExtensionsApplicationLoadBalancerOutput struct{ *pulumi.OutputState }
+
+func (SkeClusterExtensionsApplicationLoadBalancerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SkeClusterExtensionsApplicationLoadBalancer)(nil)).Elem()
+}
+
+func (o SkeClusterExtensionsApplicationLoadBalancerOutput) ToSkeClusterExtensionsApplicationLoadBalancerOutput() SkeClusterExtensionsApplicationLoadBalancerOutput {
+	return o
+}
+
+func (o SkeClusterExtensionsApplicationLoadBalancerOutput) ToSkeClusterExtensionsApplicationLoadBalancerOutputWithContext(ctx context.Context) SkeClusterExtensionsApplicationLoadBalancerOutput {
+	return o
+}
+
+func (o SkeClusterExtensionsApplicationLoadBalancerOutput) ToSkeClusterExtensionsApplicationLoadBalancerPtrOutput() SkeClusterExtensionsApplicationLoadBalancerPtrOutput {
+	return o.ToSkeClusterExtensionsApplicationLoadBalancerPtrOutputWithContext(context.Background())
+}
+
+func (o SkeClusterExtensionsApplicationLoadBalancerOutput) ToSkeClusterExtensionsApplicationLoadBalancerPtrOutputWithContext(ctx context.Context) SkeClusterExtensionsApplicationLoadBalancerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SkeClusterExtensionsApplicationLoadBalancer) *SkeClusterExtensionsApplicationLoadBalancer {
+		return &v
+	}).(SkeClusterExtensionsApplicationLoadBalancerPtrOutput)
+}
+
+// Enables the application load balancer extension. Note: This feature is in private preview. Enabling application load balancer extension is only possible for enabled accounts. Otherwise the request will be rejected. Default value will change to true once the private preview phase is over.
+func (o SkeClusterExtensionsApplicationLoadBalancerOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SkeClusterExtensionsApplicationLoadBalancer) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type SkeClusterExtensionsApplicationLoadBalancerPtrOutput struct{ *pulumi.OutputState }
+
+func (SkeClusterExtensionsApplicationLoadBalancerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SkeClusterExtensionsApplicationLoadBalancer)(nil)).Elem()
+}
+
+func (o SkeClusterExtensionsApplicationLoadBalancerPtrOutput) ToSkeClusterExtensionsApplicationLoadBalancerPtrOutput() SkeClusterExtensionsApplicationLoadBalancerPtrOutput {
+	return o
+}
+
+func (o SkeClusterExtensionsApplicationLoadBalancerPtrOutput) ToSkeClusterExtensionsApplicationLoadBalancerPtrOutputWithContext(ctx context.Context) SkeClusterExtensionsApplicationLoadBalancerPtrOutput {
+	return o
+}
+
+func (o SkeClusterExtensionsApplicationLoadBalancerPtrOutput) Elem() SkeClusterExtensionsApplicationLoadBalancerOutput {
+	return o.ApplyT(func(v *SkeClusterExtensionsApplicationLoadBalancer) SkeClusterExtensionsApplicationLoadBalancer {
+		if v != nil {
+			return *v
+		}
+		var ret SkeClusterExtensionsApplicationLoadBalancer
+		return ret
+	}).(SkeClusterExtensionsApplicationLoadBalancerOutput)
+}
+
+// Enables the application load balancer extension. Note: This feature is in private preview. Enabling application load balancer extension is only possible for enabled accounts. Otherwise the request will be rejected. Default value will change to true once the private preview phase is over.
+func (o SkeClusterExtensionsApplicationLoadBalancerPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SkeClusterExtensionsApplicationLoadBalancer) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type SkeClusterExtensionsArgus struct {
 	// Argus instance ID to choose which Argus instance is used. Required when enabled is set to `true`.
 	ArgusInstanceId *string `pulumi:"argusInstanceId"`
@@ -18251,6 +19993,8 @@ func (o SkeClusterExtensionsArgusPtrOutput) Enabled() pulumi.BoolPtrOutput {
 type SkeClusterExtensionsDns struct {
 	// Flag to enable/disable DNS extensions
 	Enabled bool `pulumi:"enabled"`
+	// Enables Gateway API support for ExternalDNS. The CRDs must be installed by the user. Once installed, ExternalDNS will be configured at the next cluster reconcile.
+	GatewayApi *bool `pulumi:"gatewayApi"`
 	// Specify a list of domain filters for externalDNS (e.g., `foo.runs.onstackit.cloud`)
 	Zones []string `pulumi:"zones"`
 }
@@ -18269,6 +20013,8 @@ type SkeClusterExtensionsDnsInput interface {
 type SkeClusterExtensionsDnsArgs struct {
 	// Flag to enable/disable DNS extensions
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Enables Gateway API support for ExternalDNS. The CRDs must be installed by the user. Once installed, ExternalDNS will be configured at the next cluster reconcile.
+	GatewayApi pulumi.BoolPtrInput `pulumi:"gatewayApi"`
 	// Specify a list of domain filters for externalDNS (e.g., `foo.runs.onstackit.cloud`)
 	Zones pulumi.StringArrayInput `pulumi:"zones"`
 }
@@ -18355,6 +20101,11 @@ func (o SkeClusterExtensionsDnsOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v SkeClusterExtensionsDns) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// Enables Gateway API support for ExternalDNS. The CRDs must be installed by the user. Once installed, ExternalDNS will be configured at the next cluster reconcile.
+func (o SkeClusterExtensionsDnsOutput) GatewayApi() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SkeClusterExtensionsDns) *bool { return v.GatewayApi }).(pulumi.BoolPtrOutput)
+}
+
 // Specify a list of domain filters for externalDNS (e.g., `foo.runs.onstackit.cloud`)
 func (o SkeClusterExtensionsDnsOutput) Zones() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SkeClusterExtensionsDns) []string { return v.Zones }).(pulumi.StringArrayOutput)
@@ -18391,6 +20142,16 @@ func (o SkeClusterExtensionsDnsPtrOutput) Enabled() pulumi.BoolPtrOutput {
 			return nil
 		}
 		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Enables Gateway API support for ExternalDNS. The CRDs must be installed by the user. Once installed, ExternalDNS will be configured at the next cluster reconcile.
+func (o SkeClusterExtensionsDnsPtrOutput) GatewayApi() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SkeClusterExtensionsDns) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.GatewayApi
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -19026,7 +20787,7 @@ func (o SkeClusterNetworkPtrOutput) Id() pulumi.StringPtrOutput {
 }
 
 type SkeClusterNetworkControlPlane struct {
-	// Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
+	// Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
 	AccessScope *string `pulumi:"accessScope"`
 }
 
@@ -19042,7 +20803,7 @@ type SkeClusterNetworkControlPlaneInput interface {
 }
 
 type SkeClusterNetworkControlPlaneArgs struct {
-	// Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
+	// Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
 	AccessScope pulumi.StringPtrInput `pulumi:"accessScope"`
 }
 
@@ -19123,7 +20884,7 @@ func (o SkeClusterNetworkControlPlaneOutput) ToSkeClusterNetworkControlPlanePtrO
 	}).(SkeClusterNetworkControlPlanePtrOutput)
 }
 
-// Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
+// Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
 func (o SkeClusterNetworkControlPlaneOutput) AccessScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SkeClusterNetworkControlPlane) *string { return v.AccessScope }).(pulumi.StringPtrOutput)
 }
@@ -19152,7 +20913,7 @@ func (o SkeClusterNetworkControlPlanePtrOutput) Elem() SkeClusterNetworkControlP
 	}).(SkeClusterNetworkControlPlaneOutput)
 }
 
-// Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
+// Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
 func (o SkeClusterNetworkControlPlanePtrOutput) AccessScope() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SkeClusterNetworkControlPlane) *string {
 		if v == nil {
@@ -19524,6 +21285,394 @@ func (o SkeClusterNodePoolTaintArrayOutput) Index(i pulumi.IntInput) SkeClusterN
 	}).(SkeClusterNodePoolTaintOutput)
 }
 
+type SqlserverflexDatabaseTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// SqlserverflexDatabaseTimeoutsInput is an input type that accepts SqlserverflexDatabaseTimeoutsArgs and SqlserverflexDatabaseTimeoutsOutput values.
+// You can construct a concrete instance of `SqlserverflexDatabaseTimeoutsInput` via:
+//
+//	SqlserverflexDatabaseTimeoutsArgs{...}
+type SqlserverflexDatabaseTimeoutsInput interface {
+	pulumi.Input
+
+	ToSqlserverflexDatabaseTimeoutsOutput() SqlserverflexDatabaseTimeoutsOutput
+	ToSqlserverflexDatabaseTimeoutsOutputWithContext(context.Context) SqlserverflexDatabaseTimeoutsOutput
+}
+
+type SqlserverflexDatabaseTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (SqlserverflexDatabaseTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlserverflexDatabaseTimeouts)(nil)).Elem()
+}
+
+func (i SqlserverflexDatabaseTimeoutsArgs) ToSqlserverflexDatabaseTimeoutsOutput() SqlserverflexDatabaseTimeoutsOutput {
+	return i.ToSqlserverflexDatabaseTimeoutsOutputWithContext(context.Background())
+}
+
+func (i SqlserverflexDatabaseTimeoutsArgs) ToSqlserverflexDatabaseTimeoutsOutputWithContext(ctx context.Context) SqlserverflexDatabaseTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlserverflexDatabaseTimeoutsOutput)
+}
+
+func (i SqlserverflexDatabaseTimeoutsArgs) ToSqlserverflexDatabaseTimeoutsPtrOutput() SqlserverflexDatabaseTimeoutsPtrOutput {
+	return i.ToSqlserverflexDatabaseTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i SqlserverflexDatabaseTimeoutsArgs) ToSqlserverflexDatabaseTimeoutsPtrOutputWithContext(ctx context.Context) SqlserverflexDatabaseTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlserverflexDatabaseTimeoutsOutput).ToSqlserverflexDatabaseTimeoutsPtrOutputWithContext(ctx)
+}
+
+// SqlserverflexDatabaseTimeoutsPtrInput is an input type that accepts SqlserverflexDatabaseTimeoutsArgs, SqlserverflexDatabaseTimeoutsPtr and SqlserverflexDatabaseTimeoutsPtrOutput values.
+// You can construct a concrete instance of `SqlserverflexDatabaseTimeoutsPtrInput` via:
+//
+//	        SqlserverflexDatabaseTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SqlserverflexDatabaseTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToSqlserverflexDatabaseTimeoutsPtrOutput() SqlserverflexDatabaseTimeoutsPtrOutput
+	ToSqlserverflexDatabaseTimeoutsPtrOutputWithContext(context.Context) SqlserverflexDatabaseTimeoutsPtrOutput
+}
+
+type sqlserverflexDatabaseTimeoutsPtrType SqlserverflexDatabaseTimeoutsArgs
+
+func SqlserverflexDatabaseTimeoutsPtr(v *SqlserverflexDatabaseTimeoutsArgs) SqlserverflexDatabaseTimeoutsPtrInput {
+	return (*sqlserverflexDatabaseTimeoutsPtrType)(v)
+}
+
+func (*sqlserverflexDatabaseTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlserverflexDatabaseTimeouts)(nil)).Elem()
+}
+
+func (i *sqlserverflexDatabaseTimeoutsPtrType) ToSqlserverflexDatabaseTimeoutsPtrOutput() SqlserverflexDatabaseTimeoutsPtrOutput {
+	return i.ToSqlserverflexDatabaseTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *sqlserverflexDatabaseTimeoutsPtrType) ToSqlserverflexDatabaseTimeoutsPtrOutputWithContext(ctx context.Context) SqlserverflexDatabaseTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlserverflexDatabaseTimeoutsPtrOutput)
+}
+
+type SqlserverflexDatabaseTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (SqlserverflexDatabaseTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlserverflexDatabaseTimeouts)(nil)).Elem()
+}
+
+func (o SqlserverflexDatabaseTimeoutsOutput) ToSqlserverflexDatabaseTimeoutsOutput() SqlserverflexDatabaseTimeoutsOutput {
+	return o
+}
+
+func (o SqlserverflexDatabaseTimeoutsOutput) ToSqlserverflexDatabaseTimeoutsOutputWithContext(ctx context.Context) SqlserverflexDatabaseTimeoutsOutput {
+	return o
+}
+
+func (o SqlserverflexDatabaseTimeoutsOutput) ToSqlserverflexDatabaseTimeoutsPtrOutput() SqlserverflexDatabaseTimeoutsPtrOutput {
+	return o.ToSqlserverflexDatabaseTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o SqlserverflexDatabaseTimeoutsOutput) ToSqlserverflexDatabaseTimeoutsPtrOutputWithContext(ctx context.Context) SqlserverflexDatabaseTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlserverflexDatabaseTimeouts) *SqlserverflexDatabaseTimeouts {
+		return &v
+	}).(SqlserverflexDatabaseTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o SqlserverflexDatabaseTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlserverflexDatabaseTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o SqlserverflexDatabaseTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlserverflexDatabaseTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o SqlserverflexDatabaseTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlserverflexDatabaseTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o SqlserverflexDatabaseTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlserverflexDatabaseTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type SqlserverflexDatabaseTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (SqlserverflexDatabaseTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlserverflexDatabaseTimeouts)(nil)).Elem()
+}
+
+func (o SqlserverflexDatabaseTimeoutsPtrOutput) ToSqlserverflexDatabaseTimeoutsPtrOutput() SqlserverflexDatabaseTimeoutsPtrOutput {
+	return o
+}
+
+func (o SqlserverflexDatabaseTimeoutsPtrOutput) ToSqlserverflexDatabaseTimeoutsPtrOutputWithContext(ctx context.Context) SqlserverflexDatabaseTimeoutsPtrOutput {
+	return o
+}
+
+func (o SqlserverflexDatabaseTimeoutsPtrOutput) Elem() SqlserverflexDatabaseTimeoutsOutput {
+	return o.ApplyT(func(v *SqlserverflexDatabaseTimeouts) SqlserverflexDatabaseTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret SqlserverflexDatabaseTimeouts
+		return ret
+	}).(SqlserverflexDatabaseTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o SqlserverflexDatabaseTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlserverflexDatabaseTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o SqlserverflexDatabaseTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlserverflexDatabaseTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o SqlserverflexDatabaseTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlserverflexDatabaseTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o SqlserverflexDatabaseTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlserverflexDatabaseTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
+type SqlserverflexInstanceEncryption struct {
+	// UUID of the key within the STACKIT-KMS to use for the encryption.
+	KekKeyId string `pulumi:"kekKeyId"`
+	// Version of the key within the STACKIT-KMS to use for the encryption.
+	KekKeyVersion string `pulumi:"kekKeyVersion"`
+	// UUID of the keyring where the key is located within the STACKTI-KMS.
+	KekKeyringId string `pulumi:"kekKeyringId"`
+	// Service-Account linked to the Key within the STACKIT-KMS.
+	ServiceAccount string `pulumi:"serviceAccount"`
+}
+
+// SqlserverflexInstanceEncryptionInput is an input type that accepts SqlserverflexInstanceEncryptionArgs and SqlserverflexInstanceEncryptionOutput values.
+// You can construct a concrete instance of `SqlserverflexInstanceEncryptionInput` via:
+//
+//	SqlserverflexInstanceEncryptionArgs{...}
+type SqlserverflexInstanceEncryptionInput interface {
+	pulumi.Input
+
+	ToSqlserverflexInstanceEncryptionOutput() SqlserverflexInstanceEncryptionOutput
+	ToSqlserverflexInstanceEncryptionOutputWithContext(context.Context) SqlserverflexInstanceEncryptionOutput
+}
+
+type SqlserverflexInstanceEncryptionArgs struct {
+	// UUID of the key within the STACKIT-KMS to use for the encryption.
+	KekKeyId pulumi.StringInput `pulumi:"kekKeyId"`
+	// Version of the key within the STACKIT-KMS to use for the encryption.
+	KekKeyVersion pulumi.StringInput `pulumi:"kekKeyVersion"`
+	// UUID of the keyring where the key is located within the STACKTI-KMS.
+	KekKeyringId pulumi.StringInput `pulumi:"kekKeyringId"`
+	// Service-Account linked to the Key within the STACKIT-KMS.
+	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
+}
+
+func (SqlserverflexInstanceEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlserverflexInstanceEncryption)(nil)).Elem()
+}
+
+func (i SqlserverflexInstanceEncryptionArgs) ToSqlserverflexInstanceEncryptionOutput() SqlserverflexInstanceEncryptionOutput {
+	return i.ToSqlserverflexInstanceEncryptionOutputWithContext(context.Background())
+}
+
+func (i SqlserverflexInstanceEncryptionArgs) ToSqlserverflexInstanceEncryptionOutputWithContext(ctx context.Context) SqlserverflexInstanceEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlserverflexInstanceEncryptionOutput)
+}
+
+func (i SqlserverflexInstanceEncryptionArgs) ToSqlserverflexInstanceEncryptionPtrOutput() SqlserverflexInstanceEncryptionPtrOutput {
+	return i.ToSqlserverflexInstanceEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i SqlserverflexInstanceEncryptionArgs) ToSqlserverflexInstanceEncryptionPtrOutputWithContext(ctx context.Context) SqlserverflexInstanceEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlserverflexInstanceEncryptionOutput).ToSqlserverflexInstanceEncryptionPtrOutputWithContext(ctx)
+}
+
+// SqlserverflexInstanceEncryptionPtrInput is an input type that accepts SqlserverflexInstanceEncryptionArgs, SqlserverflexInstanceEncryptionPtr and SqlserverflexInstanceEncryptionPtrOutput values.
+// You can construct a concrete instance of `SqlserverflexInstanceEncryptionPtrInput` via:
+//
+//	        SqlserverflexInstanceEncryptionArgs{...}
+//
+//	or:
+//
+//	        nil
+type SqlserverflexInstanceEncryptionPtrInput interface {
+	pulumi.Input
+
+	ToSqlserverflexInstanceEncryptionPtrOutput() SqlserverflexInstanceEncryptionPtrOutput
+	ToSqlserverflexInstanceEncryptionPtrOutputWithContext(context.Context) SqlserverflexInstanceEncryptionPtrOutput
+}
+
+type sqlserverflexInstanceEncryptionPtrType SqlserverflexInstanceEncryptionArgs
+
+func SqlserverflexInstanceEncryptionPtr(v *SqlserverflexInstanceEncryptionArgs) SqlserverflexInstanceEncryptionPtrInput {
+	return (*sqlserverflexInstanceEncryptionPtrType)(v)
+}
+
+func (*sqlserverflexInstanceEncryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlserverflexInstanceEncryption)(nil)).Elem()
+}
+
+func (i *sqlserverflexInstanceEncryptionPtrType) ToSqlserverflexInstanceEncryptionPtrOutput() SqlserverflexInstanceEncryptionPtrOutput {
+	return i.ToSqlserverflexInstanceEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *sqlserverflexInstanceEncryptionPtrType) ToSqlserverflexInstanceEncryptionPtrOutputWithContext(ctx context.Context) SqlserverflexInstanceEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SqlserverflexInstanceEncryptionPtrOutput)
+}
+
+type SqlserverflexInstanceEncryptionOutput struct{ *pulumi.OutputState }
+
+func (SqlserverflexInstanceEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SqlserverflexInstanceEncryption)(nil)).Elem()
+}
+
+func (o SqlserverflexInstanceEncryptionOutput) ToSqlserverflexInstanceEncryptionOutput() SqlserverflexInstanceEncryptionOutput {
+	return o
+}
+
+func (o SqlserverflexInstanceEncryptionOutput) ToSqlserverflexInstanceEncryptionOutputWithContext(ctx context.Context) SqlserverflexInstanceEncryptionOutput {
+	return o
+}
+
+func (o SqlserverflexInstanceEncryptionOutput) ToSqlserverflexInstanceEncryptionPtrOutput() SqlserverflexInstanceEncryptionPtrOutput {
+	return o.ToSqlserverflexInstanceEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o SqlserverflexInstanceEncryptionOutput) ToSqlserverflexInstanceEncryptionPtrOutputWithContext(ctx context.Context) SqlserverflexInstanceEncryptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SqlserverflexInstanceEncryption) *SqlserverflexInstanceEncryption {
+		return &v
+	}).(SqlserverflexInstanceEncryptionPtrOutput)
+}
+
+// UUID of the key within the STACKIT-KMS to use for the encryption.
+func (o SqlserverflexInstanceEncryptionOutput) KekKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlserverflexInstanceEncryption) string { return v.KekKeyId }).(pulumi.StringOutput)
+}
+
+// Version of the key within the STACKIT-KMS to use for the encryption.
+func (o SqlserverflexInstanceEncryptionOutput) KekKeyVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlserverflexInstanceEncryption) string { return v.KekKeyVersion }).(pulumi.StringOutput)
+}
+
+// UUID of the keyring where the key is located within the STACKTI-KMS.
+func (o SqlserverflexInstanceEncryptionOutput) KekKeyringId() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlserverflexInstanceEncryption) string { return v.KekKeyringId }).(pulumi.StringOutput)
+}
+
+// Service-Account linked to the Key within the STACKIT-KMS.
+func (o SqlserverflexInstanceEncryptionOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v SqlserverflexInstanceEncryption) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+type SqlserverflexInstanceEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (SqlserverflexInstanceEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SqlserverflexInstanceEncryption)(nil)).Elem()
+}
+
+func (o SqlserverflexInstanceEncryptionPtrOutput) ToSqlserverflexInstanceEncryptionPtrOutput() SqlserverflexInstanceEncryptionPtrOutput {
+	return o
+}
+
+func (o SqlserverflexInstanceEncryptionPtrOutput) ToSqlserverflexInstanceEncryptionPtrOutputWithContext(ctx context.Context) SqlserverflexInstanceEncryptionPtrOutput {
+	return o
+}
+
+func (o SqlserverflexInstanceEncryptionPtrOutput) Elem() SqlserverflexInstanceEncryptionOutput {
+	return o.ApplyT(func(v *SqlserverflexInstanceEncryption) SqlserverflexInstanceEncryption {
+		if v != nil {
+			return *v
+		}
+		var ret SqlserverflexInstanceEncryption
+		return ret
+	}).(SqlserverflexInstanceEncryptionOutput)
+}
+
+// UUID of the key within the STACKIT-KMS to use for the encryption.
+func (o SqlserverflexInstanceEncryptionPtrOutput) KekKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlserverflexInstanceEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KekKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Version of the key within the STACKIT-KMS to use for the encryption.
+func (o SqlserverflexInstanceEncryptionPtrOutput) KekKeyVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlserverflexInstanceEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KekKeyVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// UUID of the keyring where the key is located within the STACKTI-KMS.
+func (o SqlserverflexInstanceEncryptionPtrOutput) KekKeyringId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlserverflexInstanceEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KekKeyringId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Service-Account linked to the Key within the STACKIT-KMS.
+func (o SqlserverflexInstanceEncryptionPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlserverflexInstanceEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
 type SqlserverflexInstanceFlavor struct {
 	Cpu         int     `pulumi:"cpu"`
 	Description *string `pulumi:"description"`
@@ -19707,6 +21856,10 @@ type SqlserverflexInstanceNetwork struct {
 	AccessScope *string `pulumi:"accessScope"`
 	// List of IPV4 cidr.
 	Acls []string `pulumi:"acls"`
+	// Address of this instance.
+	InstanceAddress *string `pulumi:"instanceAddress"`
+	// Address of the router.
+	RouterAddress *string `pulumi:"routerAddress"`
 }
 
 // SqlserverflexInstanceNetworkInput is an input type that accepts SqlserverflexInstanceNetworkArgs and SqlserverflexInstanceNetworkOutput values.
@@ -19725,6 +21878,10 @@ type SqlserverflexInstanceNetworkArgs struct {
 	AccessScope pulumi.StringPtrInput `pulumi:"accessScope"`
 	// List of IPV4 cidr.
 	Acls pulumi.StringArrayInput `pulumi:"acls"`
+	// Address of this instance.
+	InstanceAddress pulumi.StringPtrInput `pulumi:"instanceAddress"`
+	// Address of the router.
+	RouterAddress pulumi.StringPtrInput `pulumi:"routerAddress"`
 }
 
 func (SqlserverflexInstanceNetworkArgs) ElementType() reflect.Type {
@@ -19814,6 +21971,16 @@ func (o SqlserverflexInstanceNetworkOutput) Acls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SqlserverflexInstanceNetwork) []string { return v.Acls }).(pulumi.StringArrayOutput)
 }
 
+// Address of this instance.
+func (o SqlserverflexInstanceNetworkOutput) InstanceAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlserverflexInstanceNetwork) *string { return v.InstanceAddress }).(pulumi.StringPtrOutput)
+}
+
+// Address of the router.
+func (o SqlserverflexInstanceNetworkOutput) RouterAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SqlserverflexInstanceNetwork) *string { return v.RouterAddress }).(pulumi.StringPtrOutput)
+}
+
 type SqlserverflexInstanceNetworkPtrOutput struct{ *pulumi.OutputState }
 
 func (SqlserverflexInstanceNetworkPtrOutput) ElementType() reflect.Type {
@@ -19858,10 +22025,30 @@ func (o SqlserverflexInstanceNetworkPtrOutput) Acls() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+// Address of this instance.
+func (o SqlserverflexInstanceNetworkPtrOutput) InstanceAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlserverflexInstanceNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// Address of the router.
+func (o SqlserverflexInstanceNetworkPtrOutput) RouterAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SqlserverflexInstanceNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RouterAddress
+	}).(pulumi.StringPtrOutput)
+}
+
 type SqlserverflexInstanceOptions struct {
-	// Deprecated: edition is deprecated and will be removed after January 2027.
+	// Deprecated: edition is deprecated and will be removed after February 2027.
 	Edition *string `pulumi:"edition"`
-	// Deprecated: retention_days is deprecated and will be removed after January 2027. Use instead `retentionDays` from root.
+	// Deprecated: retention_days is deprecated and will be removed after February 2027. Use instead `retentionDays` from root.
 	RetentionDays *int `pulumi:"retentionDays"`
 }
 
@@ -19877,9 +22064,9 @@ type SqlserverflexInstanceOptionsInput interface {
 }
 
 type SqlserverflexInstanceOptionsArgs struct {
-	// Deprecated: edition is deprecated and will be removed after January 2027.
+	// Deprecated: edition is deprecated and will be removed after February 2027.
 	Edition pulumi.StringPtrInput `pulumi:"edition"`
-	// Deprecated: retention_days is deprecated and will be removed after January 2027. Use instead `retentionDays` from root.
+	// Deprecated: retention_days is deprecated and will be removed after February 2027. Use instead `retentionDays` from root.
 	RetentionDays pulumi.IntPtrInput `pulumi:"retentionDays"`
 }
 
@@ -19960,12 +22147,12 @@ func (o SqlserverflexInstanceOptionsOutput) ToSqlserverflexInstanceOptionsPtrOut
 	}).(SqlserverflexInstanceOptionsPtrOutput)
 }
 
-// Deprecated: edition is deprecated and will be removed after January 2027.
+// Deprecated: edition is deprecated and will be removed after February 2027.
 func (o SqlserverflexInstanceOptionsOutput) Edition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlserverflexInstanceOptions) *string { return v.Edition }).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: retention_days is deprecated and will be removed after January 2027. Use instead `retentionDays` from root.
+// Deprecated: retention_days is deprecated and will be removed after February 2027. Use instead `retentionDays` from root.
 func (o SqlserverflexInstanceOptionsOutput) RetentionDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SqlserverflexInstanceOptions) *int { return v.RetentionDays }).(pulumi.IntPtrOutput)
 }
@@ -19994,7 +22181,7 @@ func (o SqlserverflexInstanceOptionsPtrOutput) Elem() SqlserverflexInstanceOptio
 	}).(SqlserverflexInstanceOptionsOutput)
 }
 
-// Deprecated: edition is deprecated and will be removed after January 2027.
+// Deprecated: edition is deprecated and will be removed after February 2027.
 func (o SqlserverflexInstanceOptionsPtrOutput) Edition() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlserverflexInstanceOptions) *string {
 		if v == nil {
@@ -20004,7 +22191,7 @@ func (o SqlserverflexInstanceOptionsPtrOutput) Edition() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Deprecated: retention_days is deprecated and will be removed after January 2027. Use instead `retentionDays` from root.
+// Deprecated: retention_days is deprecated and will be removed after February 2027. Use instead `retentionDays` from root.
 func (o SqlserverflexInstanceOptionsPtrOutput) RetentionDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *SqlserverflexInstanceOptions) *int {
 		if v == nil {
@@ -20015,10 +22202,7 @@ func (o SqlserverflexInstanceOptionsPtrOutput) RetentionDays() pulumi.IntPtrOutp
 }
 
 type SqlserverflexInstanceStorage struct {
-	// The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
-	// `bash
-	// stackit beta sqlserverflex options --storages --flavor-id FLAVOR_ID
-	// ` Will be required in the future. Set a value to prevent breaking changes.
+	// The storage class. You can list available storage classes for a the according flavors using the datasource `getSqlserverflexFlavors`. Will be required in the future. Set a value to prevent breaking changes.
 	Class *string `pulumi:"class"`
 	// The storage size in Gigabytes. Will be required in the future. Set a value to prevent breaking changes.
 	Size *int `pulumi:"size"`
@@ -20036,10 +22220,7 @@ type SqlserverflexInstanceStorageInput interface {
 }
 
 type SqlserverflexInstanceStorageArgs struct {
-	// The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
-	// `bash
-	// stackit beta sqlserverflex options --storages --flavor-id FLAVOR_ID
-	// ` Will be required in the future. Set a value to prevent breaking changes.
+	// The storage class. You can list available storage classes for a the according flavors using the datasource `getSqlserverflexFlavors`. Will be required in the future. Set a value to prevent breaking changes.
 	Class pulumi.StringPtrInput `pulumi:"class"`
 	// The storage size in Gigabytes. Will be required in the future. Set a value to prevent breaking changes.
 	Size pulumi.IntPtrInput `pulumi:"size"`
@@ -20122,10 +22303,7 @@ func (o SqlserverflexInstanceStorageOutput) ToSqlserverflexInstanceStoragePtrOut
 	}).(SqlserverflexInstanceStoragePtrOutput)
 }
 
-// The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
-// `bash
-// stackit beta sqlserverflex options --storages --flavor-id FLAVOR_ID
-// ` Will be required in the future. Set a value to prevent breaking changes.
+// The storage class. You can list available storage classes for a the according flavors using the datasource `getSqlserverflexFlavors`. Will be required in the future. Set a value to prevent breaking changes.
 func (o SqlserverflexInstanceStorageOutput) Class() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlserverflexInstanceStorage) *string { return v.Class }).(pulumi.StringPtrOutput)
 }
@@ -20159,10 +22337,7 @@ func (o SqlserverflexInstanceStoragePtrOutput) Elem() SqlserverflexInstanceStora
 	}).(SqlserverflexInstanceStorageOutput)
 }
 
-// The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
-// `bash
-// stackit beta sqlserverflex options --storages --flavor-id FLAVOR_ID
-// ` Will be required in the future. Set a value to prevent breaking changes.
+// The storage class. You can list available storage classes for a the according flavors using the datasource `getSqlserverflexFlavors`. Will be required in the future. Set a value to prevent breaking changes.
 func (o SqlserverflexInstanceStoragePtrOutput) Class() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlserverflexInstanceStorage) *string {
 		if v == nil {
@@ -25333,6 +27508,674 @@ func (o VpnGatewayBgpPtrOutput) OverrideAdvertisedRoutes() pulumi.StringArrayOut
 	}).(pulumi.StringArrayOutput)
 }
 
+type GetAlbWafCustomRuleGroupRule struct {
+	Behavior   GetAlbWafCustomRuleGroupRuleBehavior    `pulumi:"behavior"`
+	Conditions []GetAlbWafCustomRuleGroupRuleCondition `pulumi:"conditions"`
+	// A clear description explaining the threat vector or criteria addressed by this rule.
+	Description string `pulumi:"description"`
+	// Backend auto-allocated unique rule ID within the valid 1-99999 threshold.
+	Id int `pulumi:"id"`
+}
+
+// GetAlbWafCustomRuleGroupRuleInput is an input type that accepts GetAlbWafCustomRuleGroupRuleArgs and GetAlbWafCustomRuleGroupRuleOutput values.
+// You can construct a concrete instance of `GetAlbWafCustomRuleGroupRuleInput` via:
+//
+//	GetAlbWafCustomRuleGroupRuleArgs{...}
+type GetAlbWafCustomRuleGroupRuleInput interface {
+	pulumi.Input
+
+	ToGetAlbWafCustomRuleGroupRuleOutput() GetAlbWafCustomRuleGroupRuleOutput
+	ToGetAlbWafCustomRuleGroupRuleOutputWithContext(context.Context) GetAlbWafCustomRuleGroupRuleOutput
+}
+
+type GetAlbWafCustomRuleGroupRuleArgs struct {
+	Behavior   GetAlbWafCustomRuleGroupRuleBehaviorInput       `pulumi:"behavior"`
+	Conditions GetAlbWafCustomRuleGroupRuleConditionArrayInput `pulumi:"conditions"`
+	// A clear description explaining the threat vector or criteria addressed by this rule.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Backend auto-allocated unique rule ID within the valid 1-99999 threshold.
+	Id pulumi.IntInput `pulumi:"id"`
+}
+
+func (GetAlbWafCustomRuleGroupRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbWafCustomRuleGroupRule)(nil)).Elem()
+}
+
+func (i GetAlbWafCustomRuleGroupRuleArgs) ToGetAlbWafCustomRuleGroupRuleOutput() GetAlbWafCustomRuleGroupRuleOutput {
+	return i.ToGetAlbWafCustomRuleGroupRuleOutputWithContext(context.Background())
+}
+
+func (i GetAlbWafCustomRuleGroupRuleArgs) ToGetAlbWafCustomRuleGroupRuleOutputWithContext(ctx context.Context) GetAlbWafCustomRuleGroupRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbWafCustomRuleGroupRuleOutput)
+}
+
+// GetAlbWafCustomRuleGroupRuleArrayInput is an input type that accepts GetAlbWafCustomRuleGroupRuleArray and GetAlbWafCustomRuleGroupRuleArrayOutput values.
+// You can construct a concrete instance of `GetAlbWafCustomRuleGroupRuleArrayInput` via:
+//
+//	GetAlbWafCustomRuleGroupRuleArray{ GetAlbWafCustomRuleGroupRuleArgs{...} }
+type GetAlbWafCustomRuleGroupRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetAlbWafCustomRuleGroupRuleArrayOutput() GetAlbWafCustomRuleGroupRuleArrayOutput
+	ToGetAlbWafCustomRuleGroupRuleArrayOutputWithContext(context.Context) GetAlbWafCustomRuleGroupRuleArrayOutput
+}
+
+type GetAlbWafCustomRuleGroupRuleArray []GetAlbWafCustomRuleGroupRuleInput
+
+func (GetAlbWafCustomRuleGroupRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlbWafCustomRuleGroupRule)(nil)).Elem()
+}
+
+func (i GetAlbWafCustomRuleGroupRuleArray) ToGetAlbWafCustomRuleGroupRuleArrayOutput() GetAlbWafCustomRuleGroupRuleArrayOutput {
+	return i.ToGetAlbWafCustomRuleGroupRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlbWafCustomRuleGroupRuleArray) ToGetAlbWafCustomRuleGroupRuleArrayOutputWithContext(ctx context.Context) GetAlbWafCustomRuleGroupRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbWafCustomRuleGroupRuleArrayOutput)
+}
+
+type GetAlbWafCustomRuleGroupRuleOutput struct{ *pulumi.OutputState }
+
+func (GetAlbWafCustomRuleGroupRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbWafCustomRuleGroupRule)(nil)).Elem()
+}
+
+func (o GetAlbWafCustomRuleGroupRuleOutput) ToGetAlbWafCustomRuleGroupRuleOutput() GetAlbWafCustomRuleGroupRuleOutput {
+	return o
+}
+
+func (o GetAlbWafCustomRuleGroupRuleOutput) ToGetAlbWafCustomRuleGroupRuleOutputWithContext(ctx context.Context) GetAlbWafCustomRuleGroupRuleOutput {
+	return o
+}
+
+func (o GetAlbWafCustomRuleGroupRuleOutput) Behavior() GetAlbWafCustomRuleGroupRuleBehaviorOutput {
+	return o.ApplyT(func(v GetAlbWafCustomRuleGroupRule) GetAlbWafCustomRuleGroupRuleBehavior { return v.Behavior }).(GetAlbWafCustomRuleGroupRuleBehaviorOutput)
+}
+
+func (o GetAlbWafCustomRuleGroupRuleOutput) Conditions() GetAlbWafCustomRuleGroupRuleConditionArrayOutput {
+	return o.ApplyT(func(v GetAlbWafCustomRuleGroupRule) []GetAlbWafCustomRuleGroupRuleCondition { return v.Conditions }).(GetAlbWafCustomRuleGroupRuleConditionArrayOutput)
+}
+
+// A clear description explaining the threat vector or criteria addressed by this rule.
+func (o GetAlbWafCustomRuleGroupRuleOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbWafCustomRuleGroupRule) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Backend auto-allocated unique rule ID within the valid 1-99999 threshold.
+func (o GetAlbWafCustomRuleGroupRuleOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetAlbWafCustomRuleGroupRule) int { return v.Id }).(pulumi.IntOutput)
+}
+
+type GetAlbWafCustomRuleGroupRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlbWafCustomRuleGroupRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlbWafCustomRuleGroupRule)(nil)).Elem()
+}
+
+func (o GetAlbWafCustomRuleGroupRuleArrayOutput) ToGetAlbWafCustomRuleGroupRuleArrayOutput() GetAlbWafCustomRuleGroupRuleArrayOutput {
+	return o
+}
+
+func (o GetAlbWafCustomRuleGroupRuleArrayOutput) ToGetAlbWafCustomRuleGroupRuleArrayOutputWithContext(ctx context.Context) GetAlbWafCustomRuleGroupRuleArrayOutput {
+	return o
+}
+
+func (o GetAlbWafCustomRuleGroupRuleArrayOutput) Index(i pulumi.IntInput) GetAlbWafCustomRuleGroupRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlbWafCustomRuleGroupRule {
+		return vs[0].([]GetAlbWafCustomRuleGroupRule)[vs[1].(int)]
+	}).(GetAlbWafCustomRuleGroupRuleOutput)
+}
+
+type GetAlbWafCustomRuleGroupRuleBehavior struct {
+	// The protective stance action. ACTION_DENY forces a 403 status response code.
+	Action string `pulumi:"action"`
+	// Determines whether an entry should be generated in the security ledger upon a rule hit.
+	Log bool `pulumi:"log"`
+	// Custom notification message string mapped to underlying logdata contexts. Required if log is true.
+	LogMsg string `pulumi:"logMsg"`
+	// Severity classification metric used by internal analytics graphs.
+	Severity string `pulumi:"severity"`
+}
+
+// GetAlbWafCustomRuleGroupRuleBehaviorInput is an input type that accepts GetAlbWafCustomRuleGroupRuleBehaviorArgs and GetAlbWafCustomRuleGroupRuleBehaviorOutput values.
+// You can construct a concrete instance of `GetAlbWafCustomRuleGroupRuleBehaviorInput` via:
+//
+//	GetAlbWafCustomRuleGroupRuleBehaviorArgs{...}
+type GetAlbWafCustomRuleGroupRuleBehaviorInput interface {
+	pulumi.Input
+
+	ToGetAlbWafCustomRuleGroupRuleBehaviorOutput() GetAlbWafCustomRuleGroupRuleBehaviorOutput
+	ToGetAlbWafCustomRuleGroupRuleBehaviorOutputWithContext(context.Context) GetAlbWafCustomRuleGroupRuleBehaviorOutput
+}
+
+type GetAlbWafCustomRuleGroupRuleBehaviorArgs struct {
+	// The protective stance action. ACTION_DENY forces a 403 status response code.
+	Action pulumi.StringInput `pulumi:"action"`
+	// Determines whether an entry should be generated in the security ledger upon a rule hit.
+	Log pulumi.BoolInput `pulumi:"log"`
+	// Custom notification message string mapped to underlying logdata contexts. Required if log is true.
+	LogMsg pulumi.StringInput `pulumi:"logMsg"`
+	// Severity classification metric used by internal analytics graphs.
+	Severity pulumi.StringInput `pulumi:"severity"`
+}
+
+func (GetAlbWafCustomRuleGroupRuleBehaviorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbWafCustomRuleGroupRuleBehavior)(nil)).Elem()
+}
+
+func (i GetAlbWafCustomRuleGroupRuleBehaviorArgs) ToGetAlbWafCustomRuleGroupRuleBehaviorOutput() GetAlbWafCustomRuleGroupRuleBehaviorOutput {
+	return i.ToGetAlbWafCustomRuleGroupRuleBehaviorOutputWithContext(context.Background())
+}
+
+func (i GetAlbWafCustomRuleGroupRuleBehaviorArgs) ToGetAlbWafCustomRuleGroupRuleBehaviorOutputWithContext(ctx context.Context) GetAlbWafCustomRuleGroupRuleBehaviorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbWafCustomRuleGroupRuleBehaviorOutput)
+}
+
+type GetAlbWafCustomRuleGroupRuleBehaviorOutput struct{ *pulumi.OutputState }
+
+func (GetAlbWafCustomRuleGroupRuleBehaviorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbWafCustomRuleGroupRuleBehavior)(nil)).Elem()
+}
+
+func (o GetAlbWafCustomRuleGroupRuleBehaviorOutput) ToGetAlbWafCustomRuleGroupRuleBehaviorOutput() GetAlbWafCustomRuleGroupRuleBehaviorOutput {
+	return o
+}
+
+func (o GetAlbWafCustomRuleGroupRuleBehaviorOutput) ToGetAlbWafCustomRuleGroupRuleBehaviorOutputWithContext(ctx context.Context) GetAlbWafCustomRuleGroupRuleBehaviorOutput {
+	return o
+}
+
+// The protective stance action. ACTION_DENY forces a 403 status response code.
+func (o GetAlbWafCustomRuleGroupRuleBehaviorOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbWafCustomRuleGroupRuleBehavior) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// Determines whether an entry should be generated in the security ledger upon a rule hit.
+func (o GetAlbWafCustomRuleGroupRuleBehaviorOutput) Log() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAlbWafCustomRuleGroupRuleBehavior) bool { return v.Log }).(pulumi.BoolOutput)
+}
+
+// Custom notification message string mapped to underlying logdata contexts. Required if log is true.
+func (o GetAlbWafCustomRuleGroupRuleBehaviorOutput) LogMsg() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbWafCustomRuleGroupRuleBehavior) string { return v.LogMsg }).(pulumi.StringOutput)
+}
+
+// Severity classification metric used by internal analytics graphs.
+func (o GetAlbWafCustomRuleGroupRuleBehaviorOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbWafCustomRuleGroupRuleBehavior) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+type GetAlbWafCustomRuleGroupRuleCondition struct {
+	// The comparison logic executed against the transformed variable.
+	Operator GetAlbWafCustomRuleGroupRuleConditionOperator `pulumi:"operator"`
+	// Ordered normalization steps applied before the operator runs.
+	Transformations []string `pulumi:"transformations"`
+	// The part of the HTTP transaction to inspect.
+	Variable GetAlbWafCustomRuleGroupRuleConditionVariable `pulumi:"variable"`
+}
+
+// GetAlbWafCustomRuleGroupRuleConditionInput is an input type that accepts GetAlbWafCustomRuleGroupRuleConditionArgs and GetAlbWafCustomRuleGroupRuleConditionOutput values.
+// You can construct a concrete instance of `GetAlbWafCustomRuleGroupRuleConditionInput` via:
+//
+//	GetAlbWafCustomRuleGroupRuleConditionArgs{...}
+type GetAlbWafCustomRuleGroupRuleConditionInput interface {
+	pulumi.Input
+
+	ToGetAlbWafCustomRuleGroupRuleConditionOutput() GetAlbWafCustomRuleGroupRuleConditionOutput
+	ToGetAlbWafCustomRuleGroupRuleConditionOutputWithContext(context.Context) GetAlbWafCustomRuleGroupRuleConditionOutput
+}
+
+type GetAlbWafCustomRuleGroupRuleConditionArgs struct {
+	// The comparison logic executed against the transformed variable.
+	Operator GetAlbWafCustomRuleGroupRuleConditionOperatorInput `pulumi:"operator"`
+	// Ordered normalization steps applied before the operator runs.
+	Transformations pulumi.StringArrayInput `pulumi:"transformations"`
+	// The part of the HTTP transaction to inspect.
+	Variable GetAlbWafCustomRuleGroupRuleConditionVariableInput `pulumi:"variable"`
+}
+
+func (GetAlbWafCustomRuleGroupRuleConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbWafCustomRuleGroupRuleCondition)(nil)).Elem()
+}
+
+func (i GetAlbWafCustomRuleGroupRuleConditionArgs) ToGetAlbWafCustomRuleGroupRuleConditionOutput() GetAlbWafCustomRuleGroupRuleConditionOutput {
+	return i.ToGetAlbWafCustomRuleGroupRuleConditionOutputWithContext(context.Background())
+}
+
+func (i GetAlbWafCustomRuleGroupRuleConditionArgs) ToGetAlbWafCustomRuleGroupRuleConditionOutputWithContext(ctx context.Context) GetAlbWafCustomRuleGroupRuleConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbWafCustomRuleGroupRuleConditionOutput)
+}
+
+// GetAlbWafCustomRuleGroupRuleConditionArrayInput is an input type that accepts GetAlbWafCustomRuleGroupRuleConditionArray and GetAlbWafCustomRuleGroupRuleConditionArrayOutput values.
+// You can construct a concrete instance of `GetAlbWafCustomRuleGroupRuleConditionArrayInput` via:
+//
+//	GetAlbWafCustomRuleGroupRuleConditionArray{ GetAlbWafCustomRuleGroupRuleConditionArgs{...} }
+type GetAlbWafCustomRuleGroupRuleConditionArrayInput interface {
+	pulumi.Input
+
+	ToGetAlbWafCustomRuleGroupRuleConditionArrayOutput() GetAlbWafCustomRuleGroupRuleConditionArrayOutput
+	ToGetAlbWafCustomRuleGroupRuleConditionArrayOutputWithContext(context.Context) GetAlbWafCustomRuleGroupRuleConditionArrayOutput
+}
+
+type GetAlbWafCustomRuleGroupRuleConditionArray []GetAlbWafCustomRuleGroupRuleConditionInput
+
+func (GetAlbWafCustomRuleGroupRuleConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlbWafCustomRuleGroupRuleCondition)(nil)).Elem()
+}
+
+func (i GetAlbWafCustomRuleGroupRuleConditionArray) ToGetAlbWafCustomRuleGroupRuleConditionArrayOutput() GetAlbWafCustomRuleGroupRuleConditionArrayOutput {
+	return i.ToGetAlbWafCustomRuleGroupRuleConditionArrayOutputWithContext(context.Background())
+}
+
+func (i GetAlbWafCustomRuleGroupRuleConditionArray) ToGetAlbWafCustomRuleGroupRuleConditionArrayOutputWithContext(ctx context.Context) GetAlbWafCustomRuleGroupRuleConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbWafCustomRuleGroupRuleConditionArrayOutput)
+}
+
+type GetAlbWafCustomRuleGroupRuleConditionOutput struct{ *pulumi.OutputState }
+
+func (GetAlbWafCustomRuleGroupRuleConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbWafCustomRuleGroupRuleCondition)(nil)).Elem()
+}
+
+func (o GetAlbWafCustomRuleGroupRuleConditionOutput) ToGetAlbWafCustomRuleGroupRuleConditionOutput() GetAlbWafCustomRuleGroupRuleConditionOutput {
+	return o
+}
+
+func (o GetAlbWafCustomRuleGroupRuleConditionOutput) ToGetAlbWafCustomRuleGroupRuleConditionOutputWithContext(ctx context.Context) GetAlbWafCustomRuleGroupRuleConditionOutput {
+	return o
+}
+
+// The comparison logic executed against the transformed variable.
+func (o GetAlbWafCustomRuleGroupRuleConditionOutput) Operator() GetAlbWafCustomRuleGroupRuleConditionOperatorOutput {
+	return o.ApplyT(func(v GetAlbWafCustomRuleGroupRuleCondition) GetAlbWafCustomRuleGroupRuleConditionOperator {
+		return v.Operator
+	}).(GetAlbWafCustomRuleGroupRuleConditionOperatorOutput)
+}
+
+// Ordered normalization steps applied before the operator runs.
+func (o GetAlbWafCustomRuleGroupRuleConditionOutput) Transformations() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAlbWafCustomRuleGroupRuleCondition) []string { return v.Transformations }).(pulumi.StringArrayOutput)
+}
+
+// The part of the HTTP transaction to inspect.
+func (o GetAlbWafCustomRuleGroupRuleConditionOutput) Variable() GetAlbWafCustomRuleGroupRuleConditionVariableOutput {
+	return o.ApplyT(func(v GetAlbWafCustomRuleGroupRuleCondition) GetAlbWafCustomRuleGroupRuleConditionVariable {
+		return v.Variable
+	}).(GetAlbWafCustomRuleGroupRuleConditionVariableOutput)
+}
+
+type GetAlbWafCustomRuleGroupRuleConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAlbWafCustomRuleGroupRuleConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAlbWafCustomRuleGroupRuleCondition)(nil)).Elem()
+}
+
+func (o GetAlbWafCustomRuleGroupRuleConditionArrayOutput) ToGetAlbWafCustomRuleGroupRuleConditionArrayOutput() GetAlbWafCustomRuleGroupRuleConditionArrayOutput {
+	return o
+}
+
+func (o GetAlbWafCustomRuleGroupRuleConditionArrayOutput) ToGetAlbWafCustomRuleGroupRuleConditionArrayOutputWithContext(ctx context.Context) GetAlbWafCustomRuleGroupRuleConditionArrayOutput {
+	return o
+}
+
+func (o GetAlbWafCustomRuleGroupRuleConditionArrayOutput) Index(i pulumi.IntInput) GetAlbWafCustomRuleGroupRuleConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAlbWafCustomRuleGroupRuleCondition {
+		return vs[0].([]GetAlbWafCustomRuleGroupRuleCondition)[vs[1].(int)]
+	}).(GetAlbWafCustomRuleGroupRuleConditionOutput)
+}
+
+type GetAlbWafCustomRuleGroupRuleConditionOperator struct {
+	// The operational evaluation type definition macro.
+	Type string `pulumi:"type"`
+	// The text or rule regex pattern arguments applied inside the operator execution loop.
+	Value string `pulumi:"value"`
+}
+
+// GetAlbWafCustomRuleGroupRuleConditionOperatorInput is an input type that accepts GetAlbWafCustomRuleGroupRuleConditionOperatorArgs and GetAlbWafCustomRuleGroupRuleConditionOperatorOutput values.
+// You can construct a concrete instance of `GetAlbWafCustomRuleGroupRuleConditionOperatorInput` via:
+//
+//	GetAlbWafCustomRuleGroupRuleConditionOperatorArgs{...}
+type GetAlbWafCustomRuleGroupRuleConditionOperatorInput interface {
+	pulumi.Input
+
+	ToGetAlbWafCustomRuleGroupRuleConditionOperatorOutput() GetAlbWafCustomRuleGroupRuleConditionOperatorOutput
+	ToGetAlbWafCustomRuleGroupRuleConditionOperatorOutputWithContext(context.Context) GetAlbWafCustomRuleGroupRuleConditionOperatorOutput
+}
+
+type GetAlbWafCustomRuleGroupRuleConditionOperatorArgs struct {
+	// The operational evaluation type definition macro.
+	Type pulumi.StringInput `pulumi:"type"`
+	// The text or rule regex pattern arguments applied inside the operator execution loop.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetAlbWafCustomRuleGroupRuleConditionOperatorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbWafCustomRuleGroupRuleConditionOperator)(nil)).Elem()
+}
+
+func (i GetAlbWafCustomRuleGroupRuleConditionOperatorArgs) ToGetAlbWafCustomRuleGroupRuleConditionOperatorOutput() GetAlbWafCustomRuleGroupRuleConditionOperatorOutput {
+	return i.ToGetAlbWafCustomRuleGroupRuleConditionOperatorOutputWithContext(context.Background())
+}
+
+func (i GetAlbWafCustomRuleGroupRuleConditionOperatorArgs) ToGetAlbWafCustomRuleGroupRuleConditionOperatorOutputWithContext(ctx context.Context) GetAlbWafCustomRuleGroupRuleConditionOperatorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbWafCustomRuleGroupRuleConditionOperatorOutput)
+}
+
+type GetAlbWafCustomRuleGroupRuleConditionOperatorOutput struct{ *pulumi.OutputState }
+
+func (GetAlbWafCustomRuleGroupRuleConditionOperatorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbWafCustomRuleGroupRuleConditionOperator)(nil)).Elem()
+}
+
+func (o GetAlbWafCustomRuleGroupRuleConditionOperatorOutput) ToGetAlbWafCustomRuleGroupRuleConditionOperatorOutput() GetAlbWafCustomRuleGroupRuleConditionOperatorOutput {
+	return o
+}
+
+func (o GetAlbWafCustomRuleGroupRuleConditionOperatorOutput) ToGetAlbWafCustomRuleGroupRuleConditionOperatorOutputWithContext(ctx context.Context) GetAlbWafCustomRuleGroupRuleConditionOperatorOutput {
+	return o
+}
+
+// The operational evaluation type definition macro.
+func (o GetAlbWafCustomRuleGroupRuleConditionOperatorOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbWafCustomRuleGroupRuleConditionOperator) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// The text or rule regex pattern arguments applied inside the operator execution loop.
+func (o GetAlbWafCustomRuleGroupRuleConditionOperatorOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbWafCustomRuleGroupRuleConditionOperator) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetAlbWafCustomRuleGroupRuleConditionVariable struct {
+	// The targeted validation engine variable macro.
+	Type string `pulumi:"type"`
+	// Optional key element context for map variables (e.g., matching a 'Host' header key).
+	Value string `pulumi:"value"`
+}
+
+// GetAlbWafCustomRuleGroupRuleConditionVariableInput is an input type that accepts GetAlbWafCustomRuleGroupRuleConditionVariableArgs and GetAlbWafCustomRuleGroupRuleConditionVariableOutput values.
+// You can construct a concrete instance of `GetAlbWafCustomRuleGroupRuleConditionVariableInput` via:
+//
+//	GetAlbWafCustomRuleGroupRuleConditionVariableArgs{...}
+type GetAlbWafCustomRuleGroupRuleConditionVariableInput interface {
+	pulumi.Input
+
+	ToGetAlbWafCustomRuleGroupRuleConditionVariableOutput() GetAlbWafCustomRuleGroupRuleConditionVariableOutput
+	ToGetAlbWafCustomRuleGroupRuleConditionVariableOutputWithContext(context.Context) GetAlbWafCustomRuleGroupRuleConditionVariableOutput
+}
+
+type GetAlbWafCustomRuleGroupRuleConditionVariableArgs struct {
+	// The targeted validation engine variable macro.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Optional key element context for map variables (e.g., matching a 'Host' header key).
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetAlbWafCustomRuleGroupRuleConditionVariableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbWafCustomRuleGroupRuleConditionVariable)(nil)).Elem()
+}
+
+func (i GetAlbWafCustomRuleGroupRuleConditionVariableArgs) ToGetAlbWafCustomRuleGroupRuleConditionVariableOutput() GetAlbWafCustomRuleGroupRuleConditionVariableOutput {
+	return i.ToGetAlbWafCustomRuleGroupRuleConditionVariableOutputWithContext(context.Background())
+}
+
+func (i GetAlbWafCustomRuleGroupRuleConditionVariableArgs) ToGetAlbWafCustomRuleGroupRuleConditionVariableOutputWithContext(ctx context.Context) GetAlbWafCustomRuleGroupRuleConditionVariableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbWafCustomRuleGroupRuleConditionVariableOutput)
+}
+
+type GetAlbWafCustomRuleGroupRuleConditionVariableOutput struct{ *pulumi.OutputState }
+
+func (GetAlbWafCustomRuleGroupRuleConditionVariableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbWafCustomRuleGroupRuleConditionVariable)(nil)).Elem()
+}
+
+func (o GetAlbWafCustomRuleGroupRuleConditionVariableOutput) ToGetAlbWafCustomRuleGroupRuleConditionVariableOutput() GetAlbWafCustomRuleGroupRuleConditionVariableOutput {
+	return o
+}
+
+func (o GetAlbWafCustomRuleGroupRuleConditionVariableOutput) ToGetAlbWafCustomRuleGroupRuleConditionVariableOutputWithContext(ctx context.Context) GetAlbWafCustomRuleGroupRuleConditionVariableOutput {
+	return o
+}
+
+// The targeted validation engine variable macro.
+func (o GetAlbWafCustomRuleGroupRuleConditionVariableOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbWafCustomRuleGroupRuleConditionVariable) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Optional key element context for map variables (e.g., matching a 'Host' header key).
+func (o GetAlbWafCustomRuleGroupRuleConditionVariableOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbWafCustomRuleGroupRuleConditionVariable) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetAlbWafManagedRuleSetGroups struct {
+	// A description of what this group covers.
+	Description string `pulumi:"description"`
+	// The name for the rule group.
+	GroupName string `pulumi:"groupName"`
+	// Rules of the rule group.
+	Rules map[string]GetAlbWafManagedRuleSetGroupsRules `pulumi:"rules"`
+}
+
+// GetAlbWafManagedRuleSetGroupsInput is an input type that accepts GetAlbWafManagedRuleSetGroupsArgs and GetAlbWafManagedRuleSetGroupsOutput values.
+// You can construct a concrete instance of `GetAlbWafManagedRuleSetGroupsInput` via:
+//
+//	GetAlbWafManagedRuleSetGroupsArgs{...}
+type GetAlbWafManagedRuleSetGroupsInput interface {
+	pulumi.Input
+
+	ToGetAlbWafManagedRuleSetGroupsOutput() GetAlbWafManagedRuleSetGroupsOutput
+	ToGetAlbWafManagedRuleSetGroupsOutputWithContext(context.Context) GetAlbWafManagedRuleSetGroupsOutput
+}
+
+type GetAlbWafManagedRuleSetGroupsArgs struct {
+	// A description of what this group covers.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The name for the rule group.
+	GroupName pulumi.StringInput `pulumi:"groupName"`
+	// Rules of the rule group.
+	Rules GetAlbWafManagedRuleSetGroupsRulesMapInput `pulumi:"rules"`
+}
+
+func (GetAlbWafManagedRuleSetGroupsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbWafManagedRuleSetGroups)(nil)).Elem()
+}
+
+func (i GetAlbWafManagedRuleSetGroupsArgs) ToGetAlbWafManagedRuleSetGroupsOutput() GetAlbWafManagedRuleSetGroupsOutput {
+	return i.ToGetAlbWafManagedRuleSetGroupsOutputWithContext(context.Background())
+}
+
+func (i GetAlbWafManagedRuleSetGroupsArgs) ToGetAlbWafManagedRuleSetGroupsOutputWithContext(ctx context.Context) GetAlbWafManagedRuleSetGroupsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbWafManagedRuleSetGroupsOutput)
+}
+
+// GetAlbWafManagedRuleSetGroupsMapInput is an input type that accepts GetAlbWafManagedRuleSetGroupsMap and GetAlbWafManagedRuleSetGroupsMapOutput values.
+// You can construct a concrete instance of `GetAlbWafManagedRuleSetGroupsMapInput` via:
+//
+//	GetAlbWafManagedRuleSetGroupsMap{ "key": GetAlbWafManagedRuleSetGroupsArgs{...} }
+type GetAlbWafManagedRuleSetGroupsMapInput interface {
+	pulumi.Input
+
+	ToGetAlbWafManagedRuleSetGroupsMapOutput() GetAlbWafManagedRuleSetGroupsMapOutput
+	ToGetAlbWafManagedRuleSetGroupsMapOutputWithContext(context.Context) GetAlbWafManagedRuleSetGroupsMapOutput
+}
+
+type GetAlbWafManagedRuleSetGroupsMap map[string]GetAlbWafManagedRuleSetGroupsInput
+
+func (GetAlbWafManagedRuleSetGroupsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetAlbWafManagedRuleSetGroups)(nil)).Elem()
+}
+
+func (i GetAlbWafManagedRuleSetGroupsMap) ToGetAlbWafManagedRuleSetGroupsMapOutput() GetAlbWafManagedRuleSetGroupsMapOutput {
+	return i.ToGetAlbWafManagedRuleSetGroupsMapOutputWithContext(context.Background())
+}
+
+func (i GetAlbWafManagedRuleSetGroupsMap) ToGetAlbWafManagedRuleSetGroupsMapOutputWithContext(ctx context.Context) GetAlbWafManagedRuleSetGroupsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbWafManagedRuleSetGroupsMapOutput)
+}
+
+type GetAlbWafManagedRuleSetGroupsOutput struct{ *pulumi.OutputState }
+
+func (GetAlbWafManagedRuleSetGroupsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbWafManagedRuleSetGroups)(nil)).Elem()
+}
+
+func (o GetAlbWafManagedRuleSetGroupsOutput) ToGetAlbWafManagedRuleSetGroupsOutput() GetAlbWafManagedRuleSetGroupsOutput {
+	return o
+}
+
+func (o GetAlbWafManagedRuleSetGroupsOutput) ToGetAlbWafManagedRuleSetGroupsOutputWithContext(ctx context.Context) GetAlbWafManagedRuleSetGroupsOutput {
+	return o
+}
+
+// A description of what this group covers.
+func (o GetAlbWafManagedRuleSetGroupsOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbWafManagedRuleSetGroups) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The name for the rule group.
+func (o GetAlbWafManagedRuleSetGroupsOutput) GroupName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbWafManagedRuleSetGroups) string { return v.GroupName }).(pulumi.StringOutput)
+}
+
+// Rules of the rule group.
+func (o GetAlbWafManagedRuleSetGroupsOutput) Rules() GetAlbWafManagedRuleSetGroupsRulesMapOutput {
+	return o.ApplyT(func(v GetAlbWafManagedRuleSetGroups) map[string]GetAlbWafManagedRuleSetGroupsRules { return v.Rules }).(GetAlbWafManagedRuleSetGroupsRulesMapOutput)
+}
+
+type GetAlbWafManagedRuleSetGroupsMapOutput struct{ *pulumi.OutputState }
+
+func (GetAlbWafManagedRuleSetGroupsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetAlbWafManagedRuleSetGroups)(nil)).Elem()
+}
+
+func (o GetAlbWafManagedRuleSetGroupsMapOutput) ToGetAlbWafManagedRuleSetGroupsMapOutput() GetAlbWafManagedRuleSetGroupsMapOutput {
+	return o
+}
+
+func (o GetAlbWafManagedRuleSetGroupsMapOutput) ToGetAlbWafManagedRuleSetGroupsMapOutputWithContext(ctx context.Context) GetAlbWafManagedRuleSetGroupsMapOutput {
+	return o
+}
+
+func (o GetAlbWafManagedRuleSetGroupsMapOutput) MapIndex(k pulumi.StringInput) GetAlbWafManagedRuleSetGroupsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetAlbWafManagedRuleSetGroups {
+		return vs[0].(map[string]GetAlbWafManagedRuleSetGroups)[vs[1].(string)]
+	}).(GetAlbWafManagedRuleSetGroupsOutput)
+}
+
+type GetAlbWafManagedRuleSetGroupsRules struct {
+	// A description of what this rule does.
+	Description string `pulumi:"description"`
+	// The current mode of the rule.
+	Mode string `pulumi:"mode"`
+	// Impact level.
+	Severity string `pulumi:"severity"`
+}
+
+// GetAlbWafManagedRuleSetGroupsRulesInput is an input type that accepts GetAlbWafManagedRuleSetGroupsRulesArgs and GetAlbWafManagedRuleSetGroupsRulesOutput values.
+// You can construct a concrete instance of `GetAlbWafManagedRuleSetGroupsRulesInput` via:
+//
+//	GetAlbWafManagedRuleSetGroupsRulesArgs{...}
+type GetAlbWafManagedRuleSetGroupsRulesInput interface {
+	pulumi.Input
+
+	ToGetAlbWafManagedRuleSetGroupsRulesOutput() GetAlbWafManagedRuleSetGroupsRulesOutput
+	ToGetAlbWafManagedRuleSetGroupsRulesOutputWithContext(context.Context) GetAlbWafManagedRuleSetGroupsRulesOutput
+}
+
+type GetAlbWafManagedRuleSetGroupsRulesArgs struct {
+	// A description of what this rule does.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The current mode of the rule.
+	Mode pulumi.StringInput `pulumi:"mode"`
+	// Impact level.
+	Severity pulumi.StringInput `pulumi:"severity"`
+}
+
+func (GetAlbWafManagedRuleSetGroupsRulesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbWafManagedRuleSetGroupsRules)(nil)).Elem()
+}
+
+func (i GetAlbWafManagedRuleSetGroupsRulesArgs) ToGetAlbWafManagedRuleSetGroupsRulesOutput() GetAlbWafManagedRuleSetGroupsRulesOutput {
+	return i.ToGetAlbWafManagedRuleSetGroupsRulesOutputWithContext(context.Background())
+}
+
+func (i GetAlbWafManagedRuleSetGroupsRulesArgs) ToGetAlbWafManagedRuleSetGroupsRulesOutputWithContext(ctx context.Context) GetAlbWafManagedRuleSetGroupsRulesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbWafManagedRuleSetGroupsRulesOutput)
+}
+
+// GetAlbWafManagedRuleSetGroupsRulesMapInput is an input type that accepts GetAlbWafManagedRuleSetGroupsRulesMap and GetAlbWafManagedRuleSetGroupsRulesMapOutput values.
+// You can construct a concrete instance of `GetAlbWafManagedRuleSetGroupsRulesMapInput` via:
+//
+//	GetAlbWafManagedRuleSetGroupsRulesMap{ "key": GetAlbWafManagedRuleSetGroupsRulesArgs{...} }
+type GetAlbWafManagedRuleSetGroupsRulesMapInput interface {
+	pulumi.Input
+
+	ToGetAlbWafManagedRuleSetGroupsRulesMapOutput() GetAlbWafManagedRuleSetGroupsRulesMapOutput
+	ToGetAlbWafManagedRuleSetGroupsRulesMapOutputWithContext(context.Context) GetAlbWafManagedRuleSetGroupsRulesMapOutput
+}
+
+type GetAlbWafManagedRuleSetGroupsRulesMap map[string]GetAlbWafManagedRuleSetGroupsRulesInput
+
+func (GetAlbWafManagedRuleSetGroupsRulesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetAlbWafManagedRuleSetGroupsRules)(nil)).Elem()
+}
+
+func (i GetAlbWafManagedRuleSetGroupsRulesMap) ToGetAlbWafManagedRuleSetGroupsRulesMapOutput() GetAlbWafManagedRuleSetGroupsRulesMapOutput {
+	return i.ToGetAlbWafManagedRuleSetGroupsRulesMapOutputWithContext(context.Background())
+}
+
+func (i GetAlbWafManagedRuleSetGroupsRulesMap) ToGetAlbWafManagedRuleSetGroupsRulesMapOutputWithContext(ctx context.Context) GetAlbWafManagedRuleSetGroupsRulesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAlbWafManagedRuleSetGroupsRulesMapOutput)
+}
+
+type GetAlbWafManagedRuleSetGroupsRulesOutput struct{ *pulumi.OutputState }
+
+func (GetAlbWafManagedRuleSetGroupsRulesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAlbWafManagedRuleSetGroupsRules)(nil)).Elem()
+}
+
+func (o GetAlbWafManagedRuleSetGroupsRulesOutput) ToGetAlbWafManagedRuleSetGroupsRulesOutput() GetAlbWafManagedRuleSetGroupsRulesOutput {
+	return o
+}
+
+func (o GetAlbWafManagedRuleSetGroupsRulesOutput) ToGetAlbWafManagedRuleSetGroupsRulesOutputWithContext(ctx context.Context) GetAlbWafManagedRuleSetGroupsRulesOutput {
+	return o
+}
+
+// A description of what this rule does.
+func (o GetAlbWafManagedRuleSetGroupsRulesOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbWafManagedRuleSetGroupsRules) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The current mode of the rule.
+func (o GetAlbWafManagedRuleSetGroupsRulesOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbWafManagedRuleSetGroupsRules) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// Impact level.
+func (o GetAlbWafManagedRuleSetGroupsRulesOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAlbWafManagedRuleSetGroupsRules) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+type GetAlbWafManagedRuleSetGroupsRulesMapOutput struct{ *pulumi.OutputState }
+
+func (GetAlbWafManagedRuleSetGroupsRulesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]GetAlbWafManagedRuleSetGroupsRules)(nil)).Elem()
+}
+
+func (o GetAlbWafManagedRuleSetGroupsRulesMapOutput) ToGetAlbWafManagedRuleSetGroupsRulesMapOutput() GetAlbWafManagedRuleSetGroupsRulesMapOutput {
+	return o
+}
+
+func (o GetAlbWafManagedRuleSetGroupsRulesMapOutput) ToGetAlbWafManagedRuleSetGroupsRulesMapOutputWithContext(ctx context.Context) GetAlbWafManagedRuleSetGroupsRulesMapOutput {
+	return o
+}
+
+func (o GetAlbWafManagedRuleSetGroupsRulesMapOutput) MapIndex(k pulumi.StringInput) GetAlbWafManagedRuleSetGroupsRulesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) GetAlbWafManagedRuleSetGroupsRules {
+		return vs[0].(map[string]GetAlbWafManagedRuleSetGroupsRules)[vs[1].(string)]
+	}).(GetAlbWafManagedRuleSetGroupsRulesOutput)
+}
+
 type GetApplicationLoadBalancerError struct {
 	// The error description contains additional helpful user information to fix the error state of the Application Load Balancer. For example the IP 45.135.247.139 does not exist in the project, then the description will report: Floating IP "45.135.247.139" could not be found.
 	Description string `pulumi:"description"`
@@ -27499,8 +30342,14 @@ type GetCdnDistributionConfig struct {
 	Backend GetCdnDistributionConfigBackend `pulumi:"backend"`
 	// The configured countries where distribution of content is blocked
 	BlockedCountries []string `pulumi:"blockedCountries"`
+	// Restricts access to your content by specifying a list of blocked IPv4 addresses. This feature enhances security and privacy by preventing these addresses from accessing your distribution. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state; to clear it explicitly, set it to an empty list.
+	BlockedIps []string `pulumi:"blockedIps"`
+	// Sets the default cache duration for the distribution. The default cache duration is applied when a 'Cache-Control' header is not presented in the origin's response. We use ISO8601 duration format for cache duration (e.g. P1DT2H30M). Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
+	DefaultCacheDuration string `pulumi:"defaultCacheDuration"`
 	// Enable this allows the 'Host' header to be passed through to the origin.
 	ForwardHostHeader bool `pulumi:"forwardHostHeader"`
+	// Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
+	MonthlyLimitBytes int `pulumi:"monthlyLimitBytes"`
 	// Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
 	Optimizer GetCdnDistributionConfigOptimizer `pulumi:"optimizer"`
 	// A wrapper for a list of redirect rules that allows for redirect settings on a distribution
@@ -27531,8 +30380,14 @@ type GetCdnDistributionConfigArgs struct {
 	Backend GetCdnDistributionConfigBackendInput `pulumi:"backend"`
 	// The configured countries where distribution of content is blocked
 	BlockedCountries pulumi.StringArrayInput `pulumi:"blockedCountries"`
+	// Restricts access to your content by specifying a list of blocked IPv4 addresses. This feature enhances security and privacy by preventing these addresses from accessing your distribution. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state; to clear it explicitly, set it to an empty list.
+	BlockedIps pulumi.StringArrayInput `pulumi:"blockedIps"`
+	// Sets the default cache duration for the distribution. The default cache duration is applied when a 'Cache-Control' header is not presented in the origin's response. We use ISO8601 duration format for cache duration (e.g. P1DT2H30M). Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
+	DefaultCacheDuration pulumi.StringInput `pulumi:"defaultCacheDuration"`
 	// Enable this allows the 'Host' header to be passed through to the origin.
 	ForwardHostHeader pulumi.BoolInput `pulumi:"forwardHostHeader"`
+	// Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
+	MonthlyLimitBytes pulumi.IntInput `pulumi:"monthlyLimitBytes"`
 	// Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
 	Optimizer GetCdnDistributionConfigOptimizerInput `pulumi:"optimizer"`
 	// A wrapper for a list of redirect rules that allows for redirect settings on a distribution
@@ -27583,9 +30438,24 @@ func (o GetCdnDistributionConfigOutput) BlockedCountries() pulumi.StringArrayOut
 	return o.ApplyT(func(v GetCdnDistributionConfig) []string { return v.BlockedCountries }).(pulumi.StringArrayOutput)
 }
 
+// Restricts access to your content by specifying a list of blocked IPv4 addresses. This feature enhances security and privacy by preventing these addresses from accessing your distribution. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state; to clear it explicitly, set it to an empty list.
+func (o GetCdnDistributionConfigOutput) BlockedIps() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfig) []string { return v.BlockedIps }).(pulumi.StringArrayOutput)
+}
+
+// Sets the default cache duration for the distribution. The default cache duration is applied when a 'Cache-Control' header is not presented in the origin's response. We use ISO8601 duration format for cache duration (e.g. P1DT2H30M). Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
+func (o GetCdnDistributionConfigOutput) DefaultCacheDuration() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfig) string { return v.DefaultCacheDuration }).(pulumi.StringOutput)
+}
+
 // Enable this allows the 'Host' header to be passed through to the origin.
 func (o GetCdnDistributionConfigOutput) ForwardHostHeader() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetCdnDistributionConfig) bool { return v.ForwardHostHeader }).(pulumi.BoolOutput)
+}
+
+// Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
+func (o GetCdnDistributionConfigOutput) MonthlyLimitBytes() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfig) int { return v.MonthlyLimitBytes }).(pulumi.IntOutput)
 }
 
 // Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
@@ -31760,106 +34630,6 @@ func (o GetMongodbflexInstanceStorageOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v GetMongodbflexInstanceStorage) int { return v.Size }).(pulumi.IntOutput)
 }
 
-type GetNetworkAreaNetworkRange struct {
-	NetworkRangeId string `pulumi:"networkRangeId"`
-	Prefix         string `pulumi:"prefix"`
-}
-
-// GetNetworkAreaNetworkRangeInput is an input type that accepts GetNetworkAreaNetworkRangeArgs and GetNetworkAreaNetworkRangeOutput values.
-// You can construct a concrete instance of `GetNetworkAreaNetworkRangeInput` via:
-//
-//	GetNetworkAreaNetworkRangeArgs{...}
-type GetNetworkAreaNetworkRangeInput interface {
-	pulumi.Input
-
-	ToGetNetworkAreaNetworkRangeOutput() GetNetworkAreaNetworkRangeOutput
-	ToGetNetworkAreaNetworkRangeOutputWithContext(context.Context) GetNetworkAreaNetworkRangeOutput
-}
-
-type GetNetworkAreaNetworkRangeArgs struct {
-	NetworkRangeId pulumi.StringInput `pulumi:"networkRangeId"`
-	Prefix         pulumi.StringInput `pulumi:"prefix"`
-}
-
-func (GetNetworkAreaNetworkRangeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNetworkAreaNetworkRange)(nil)).Elem()
-}
-
-func (i GetNetworkAreaNetworkRangeArgs) ToGetNetworkAreaNetworkRangeOutput() GetNetworkAreaNetworkRangeOutput {
-	return i.ToGetNetworkAreaNetworkRangeOutputWithContext(context.Background())
-}
-
-func (i GetNetworkAreaNetworkRangeArgs) ToGetNetworkAreaNetworkRangeOutputWithContext(ctx context.Context) GetNetworkAreaNetworkRangeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAreaNetworkRangeOutput)
-}
-
-// GetNetworkAreaNetworkRangeArrayInput is an input type that accepts GetNetworkAreaNetworkRangeArray and GetNetworkAreaNetworkRangeArrayOutput values.
-// You can construct a concrete instance of `GetNetworkAreaNetworkRangeArrayInput` via:
-//
-//	GetNetworkAreaNetworkRangeArray{ GetNetworkAreaNetworkRangeArgs{...} }
-type GetNetworkAreaNetworkRangeArrayInput interface {
-	pulumi.Input
-
-	ToGetNetworkAreaNetworkRangeArrayOutput() GetNetworkAreaNetworkRangeArrayOutput
-	ToGetNetworkAreaNetworkRangeArrayOutputWithContext(context.Context) GetNetworkAreaNetworkRangeArrayOutput
-}
-
-type GetNetworkAreaNetworkRangeArray []GetNetworkAreaNetworkRangeInput
-
-func (GetNetworkAreaNetworkRangeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNetworkAreaNetworkRange)(nil)).Elem()
-}
-
-func (i GetNetworkAreaNetworkRangeArray) ToGetNetworkAreaNetworkRangeArrayOutput() GetNetworkAreaNetworkRangeArrayOutput {
-	return i.ToGetNetworkAreaNetworkRangeArrayOutputWithContext(context.Background())
-}
-
-func (i GetNetworkAreaNetworkRangeArray) ToGetNetworkAreaNetworkRangeArrayOutputWithContext(ctx context.Context) GetNetworkAreaNetworkRangeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkAreaNetworkRangeArrayOutput)
-}
-
-type GetNetworkAreaNetworkRangeOutput struct{ *pulumi.OutputState }
-
-func (GetNetworkAreaNetworkRangeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetNetworkAreaNetworkRange)(nil)).Elem()
-}
-
-func (o GetNetworkAreaNetworkRangeOutput) ToGetNetworkAreaNetworkRangeOutput() GetNetworkAreaNetworkRangeOutput {
-	return o
-}
-
-func (o GetNetworkAreaNetworkRangeOutput) ToGetNetworkAreaNetworkRangeOutputWithContext(ctx context.Context) GetNetworkAreaNetworkRangeOutput {
-	return o
-}
-
-func (o GetNetworkAreaNetworkRangeOutput) NetworkRangeId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNetworkAreaNetworkRange) string { return v.NetworkRangeId }).(pulumi.StringOutput)
-}
-
-func (o GetNetworkAreaNetworkRangeOutput) Prefix() pulumi.StringOutput {
-	return o.ApplyT(func(v GetNetworkAreaNetworkRange) string { return v.Prefix }).(pulumi.StringOutput)
-}
-
-type GetNetworkAreaNetworkRangeArrayOutput struct{ *pulumi.OutputState }
-
-func (GetNetworkAreaNetworkRangeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetNetworkAreaNetworkRange)(nil)).Elem()
-}
-
-func (o GetNetworkAreaNetworkRangeArrayOutput) ToGetNetworkAreaNetworkRangeArrayOutput() GetNetworkAreaNetworkRangeArrayOutput {
-	return o
-}
-
-func (o GetNetworkAreaNetworkRangeArrayOutput) ToGetNetworkAreaNetworkRangeArrayOutputWithContext(ctx context.Context) GetNetworkAreaNetworkRangeArrayOutput {
-	return o
-}
-
-func (o GetNetworkAreaNetworkRangeArrayOutput) Index(i pulumi.IntInput) GetNetworkAreaNetworkRangeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkAreaNetworkRange {
-		return vs[0].([]GetNetworkAreaNetworkRange)[vs[1].(int)]
-	}).(GetNetworkAreaNetworkRangeOutput)
-}
-
 type GetNetworkAreaRegionIpv4 struct {
 	// List of DNS Servers/Nameservers.
 	DefaultNameservers []string `pulumi:"defaultNameservers"`
@@ -33859,10 +36629,607 @@ func (o GetOpensearchInstanceParametersOutput) TlsProtocols() pulumi.StringArray
 	return o.ApplyT(func(v GetOpensearchInstanceParameters) []string { return v.TlsProtocols }).(pulumi.StringArrayOutput)
 }
 
+type GetPostgresflexFlavorsFlavor struct {
+	// CPU count of the instance.
+	Cpu int `pulumi:"cpu"`
+	// Flavor description.
+	Description string `pulumi:"description"`
+	// Flavor ID.
+	Id string `pulumi:"id"`
+	// Maximum storage capacity available for the flavor in GB.
+	MaxGb int `pulumi:"maxGb"`
+	// Memory of the instance in GiB.
+	Memory int `pulumi:"memory"`
+	// Minimum storage capacity available for the flavor in GB.
+	MinGb int `pulumi:"minGb"`
+	// Node type of the flavor, either single or replica.
+	NodeType string `pulumi:"nodeType"`
+	// Storage classes available for the flavor.
+	StorageClasses []GetPostgresflexFlavorsFlavorStorageClass `pulumi:"storageClasses"`
+}
+
+// GetPostgresflexFlavorsFlavorInput is an input type that accepts GetPostgresflexFlavorsFlavorArgs and GetPostgresflexFlavorsFlavorOutput values.
+// You can construct a concrete instance of `GetPostgresflexFlavorsFlavorInput` via:
+//
+//	GetPostgresflexFlavorsFlavorArgs{...}
+type GetPostgresflexFlavorsFlavorInput interface {
+	pulumi.Input
+
+	ToGetPostgresflexFlavorsFlavorOutput() GetPostgresflexFlavorsFlavorOutput
+	ToGetPostgresflexFlavorsFlavorOutputWithContext(context.Context) GetPostgresflexFlavorsFlavorOutput
+}
+
+type GetPostgresflexFlavorsFlavorArgs struct {
+	// CPU count of the instance.
+	Cpu pulumi.IntInput `pulumi:"cpu"`
+	// Flavor description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Flavor ID.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Maximum storage capacity available for the flavor in GB.
+	MaxGb pulumi.IntInput `pulumi:"maxGb"`
+	// Memory of the instance in GiB.
+	Memory pulumi.IntInput `pulumi:"memory"`
+	// Minimum storage capacity available for the flavor in GB.
+	MinGb pulumi.IntInput `pulumi:"minGb"`
+	// Node type of the flavor, either single or replica.
+	NodeType pulumi.StringInput `pulumi:"nodeType"`
+	// Storage classes available for the flavor.
+	StorageClasses GetPostgresflexFlavorsFlavorStorageClassArrayInput `pulumi:"storageClasses"`
+}
+
+func (GetPostgresflexFlavorsFlavorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresflexFlavorsFlavor)(nil)).Elem()
+}
+
+func (i GetPostgresflexFlavorsFlavorArgs) ToGetPostgresflexFlavorsFlavorOutput() GetPostgresflexFlavorsFlavorOutput {
+	return i.ToGetPostgresflexFlavorsFlavorOutputWithContext(context.Background())
+}
+
+func (i GetPostgresflexFlavorsFlavorArgs) ToGetPostgresflexFlavorsFlavorOutputWithContext(ctx context.Context) GetPostgresflexFlavorsFlavorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresflexFlavorsFlavorOutput)
+}
+
+// GetPostgresflexFlavorsFlavorArrayInput is an input type that accepts GetPostgresflexFlavorsFlavorArray and GetPostgresflexFlavorsFlavorArrayOutput values.
+// You can construct a concrete instance of `GetPostgresflexFlavorsFlavorArrayInput` via:
+//
+//	GetPostgresflexFlavorsFlavorArray{ GetPostgresflexFlavorsFlavorArgs{...} }
+type GetPostgresflexFlavorsFlavorArrayInput interface {
+	pulumi.Input
+
+	ToGetPostgresflexFlavorsFlavorArrayOutput() GetPostgresflexFlavorsFlavorArrayOutput
+	ToGetPostgresflexFlavorsFlavorArrayOutputWithContext(context.Context) GetPostgresflexFlavorsFlavorArrayOutput
+}
+
+type GetPostgresflexFlavorsFlavorArray []GetPostgresflexFlavorsFlavorInput
+
+func (GetPostgresflexFlavorsFlavorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPostgresflexFlavorsFlavor)(nil)).Elem()
+}
+
+func (i GetPostgresflexFlavorsFlavorArray) ToGetPostgresflexFlavorsFlavorArrayOutput() GetPostgresflexFlavorsFlavorArrayOutput {
+	return i.ToGetPostgresflexFlavorsFlavorArrayOutputWithContext(context.Background())
+}
+
+func (i GetPostgresflexFlavorsFlavorArray) ToGetPostgresflexFlavorsFlavorArrayOutputWithContext(ctx context.Context) GetPostgresflexFlavorsFlavorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresflexFlavorsFlavorArrayOutput)
+}
+
+type GetPostgresflexFlavorsFlavorOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresflexFlavorsFlavorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresflexFlavorsFlavor)(nil)).Elem()
+}
+
+func (o GetPostgresflexFlavorsFlavorOutput) ToGetPostgresflexFlavorsFlavorOutput() GetPostgresflexFlavorsFlavorOutput {
+	return o
+}
+
+func (o GetPostgresflexFlavorsFlavorOutput) ToGetPostgresflexFlavorsFlavorOutputWithContext(ctx context.Context) GetPostgresflexFlavorsFlavorOutput {
+	return o
+}
+
+// CPU count of the instance.
+func (o GetPostgresflexFlavorsFlavorOutput) Cpu() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresflexFlavorsFlavor) int { return v.Cpu }).(pulumi.IntOutput)
+}
+
+// Flavor description.
+func (o GetPostgresflexFlavorsFlavorOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresflexFlavorsFlavor) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Flavor ID.
+func (o GetPostgresflexFlavorsFlavorOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresflexFlavorsFlavor) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Maximum storage capacity available for the flavor in GB.
+func (o GetPostgresflexFlavorsFlavorOutput) MaxGb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresflexFlavorsFlavor) int { return v.MaxGb }).(pulumi.IntOutput)
+}
+
+// Memory of the instance in GiB.
+func (o GetPostgresflexFlavorsFlavorOutput) Memory() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresflexFlavorsFlavor) int { return v.Memory }).(pulumi.IntOutput)
+}
+
+// Minimum storage capacity available for the flavor in GB.
+func (o GetPostgresflexFlavorsFlavorOutput) MinGb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresflexFlavorsFlavor) int { return v.MinGb }).(pulumi.IntOutput)
+}
+
+// Node type of the flavor, either single or replica.
+func (o GetPostgresflexFlavorsFlavorOutput) NodeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresflexFlavorsFlavor) string { return v.NodeType }).(pulumi.StringOutput)
+}
+
+// Storage classes available for the flavor.
+func (o GetPostgresflexFlavorsFlavorOutput) StorageClasses() GetPostgresflexFlavorsFlavorStorageClassArrayOutput {
+	return o.ApplyT(func(v GetPostgresflexFlavorsFlavor) []GetPostgresflexFlavorsFlavorStorageClass {
+		return v.StorageClasses
+	}).(GetPostgresflexFlavorsFlavorStorageClassArrayOutput)
+}
+
+type GetPostgresflexFlavorsFlavorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresflexFlavorsFlavorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPostgresflexFlavorsFlavor)(nil)).Elem()
+}
+
+func (o GetPostgresflexFlavorsFlavorArrayOutput) ToGetPostgresflexFlavorsFlavorArrayOutput() GetPostgresflexFlavorsFlavorArrayOutput {
+	return o
+}
+
+func (o GetPostgresflexFlavorsFlavorArrayOutput) ToGetPostgresflexFlavorsFlavorArrayOutputWithContext(ctx context.Context) GetPostgresflexFlavorsFlavorArrayOutput {
+	return o
+}
+
+func (o GetPostgresflexFlavorsFlavorArrayOutput) Index(i pulumi.IntInput) GetPostgresflexFlavorsFlavorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPostgresflexFlavorsFlavor {
+		return vs[0].([]GetPostgresflexFlavorsFlavor)[vs[1].(int)]
+	}).(GetPostgresflexFlavorsFlavorOutput)
+}
+
+type GetPostgresflexFlavorsFlavorStorageClass struct {
+	// Storage class.
+	Class string `pulumi:"class"`
+	// Maximum I/O operations per second.
+	MaxIoPerSec int `pulumi:"maxIoPerSec"`
+	// Maximum throughput in MB per second.
+	MaxThroughInMb int `pulumi:"maxThroughInMb"`
+}
+
+// GetPostgresflexFlavorsFlavorStorageClassInput is an input type that accepts GetPostgresflexFlavorsFlavorStorageClassArgs and GetPostgresflexFlavorsFlavorStorageClassOutput values.
+// You can construct a concrete instance of `GetPostgresflexFlavorsFlavorStorageClassInput` via:
+//
+//	GetPostgresflexFlavorsFlavorStorageClassArgs{...}
+type GetPostgresflexFlavorsFlavorStorageClassInput interface {
+	pulumi.Input
+
+	ToGetPostgresflexFlavorsFlavorStorageClassOutput() GetPostgresflexFlavorsFlavorStorageClassOutput
+	ToGetPostgresflexFlavorsFlavorStorageClassOutputWithContext(context.Context) GetPostgresflexFlavorsFlavorStorageClassOutput
+}
+
+type GetPostgresflexFlavorsFlavorStorageClassArgs struct {
+	// Storage class.
+	Class pulumi.StringInput `pulumi:"class"`
+	// Maximum I/O operations per second.
+	MaxIoPerSec pulumi.IntInput `pulumi:"maxIoPerSec"`
+	// Maximum throughput in MB per second.
+	MaxThroughInMb pulumi.IntInput `pulumi:"maxThroughInMb"`
+}
+
+func (GetPostgresflexFlavorsFlavorStorageClassArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresflexFlavorsFlavorStorageClass)(nil)).Elem()
+}
+
+func (i GetPostgresflexFlavorsFlavorStorageClassArgs) ToGetPostgresflexFlavorsFlavorStorageClassOutput() GetPostgresflexFlavorsFlavorStorageClassOutput {
+	return i.ToGetPostgresflexFlavorsFlavorStorageClassOutputWithContext(context.Background())
+}
+
+func (i GetPostgresflexFlavorsFlavorStorageClassArgs) ToGetPostgresflexFlavorsFlavorStorageClassOutputWithContext(ctx context.Context) GetPostgresflexFlavorsFlavorStorageClassOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresflexFlavorsFlavorStorageClassOutput)
+}
+
+// GetPostgresflexFlavorsFlavorStorageClassArrayInput is an input type that accepts GetPostgresflexFlavorsFlavorStorageClassArray and GetPostgresflexFlavorsFlavorStorageClassArrayOutput values.
+// You can construct a concrete instance of `GetPostgresflexFlavorsFlavorStorageClassArrayInput` via:
+//
+//	GetPostgresflexFlavorsFlavorStorageClassArray{ GetPostgresflexFlavorsFlavorStorageClassArgs{...} }
+type GetPostgresflexFlavorsFlavorStorageClassArrayInput interface {
+	pulumi.Input
+
+	ToGetPostgresflexFlavorsFlavorStorageClassArrayOutput() GetPostgresflexFlavorsFlavorStorageClassArrayOutput
+	ToGetPostgresflexFlavorsFlavorStorageClassArrayOutputWithContext(context.Context) GetPostgresflexFlavorsFlavorStorageClassArrayOutput
+}
+
+type GetPostgresflexFlavorsFlavorStorageClassArray []GetPostgresflexFlavorsFlavorStorageClassInput
+
+func (GetPostgresflexFlavorsFlavorStorageClassArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPostgresflexFlavorsFlavorStorageClass)(nil)).Elem()
+}
+
+func (i GetPostgresflexFlavorsFlavorStorageClassArray) ToGetPostgresflexFlavorsFlavorStorageClassArrayOutput() GetPostgresflexFlavorsFlavorStorageClassArrayOutput {
+	return i.ToGetPostgresflexFlavorsFlavorStorageClassArrayOutputWithContext(context.Background())
+}
+
+func (i GetPostgresflexFlavorsFlavorStorageClassArray) ToGetPostgresflexFlavorsFlavorStorageClassArrayOutputWithContext(ctx context.Context) GetPostgresflexFlavorsFlavorStorageClassArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresflexFlavorsFlavorStorageClassArrayOutput)
+}
+
+type GetPostgresflexFlavorsFlavorStorageClassOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresflexFlavorsFlavorStorageClassOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresflexFlavorsFlavorStorageClass)(nil)).Elem()
+}
+
+func (o GetPostgresflexFlavorsFlavorStorageClassOutput) ToGetPostgresflexFlavorsFlavorStorageClassOutput() GetPostgresflexFlavorsFlavorStorageClassOutput {
+	return o
+}
+
+func (o GetPostgresflexFlavorsFlavorStorageClassOutput) ToGetPostgresflexFlavorsFlavorStorageClassOutputWithContext(ctx context.Context) GetPostgresflexFlavorsFlavorStorageClassOutput {
+	return o
+}
+
+// Storage class.
+func (o GetPostgresflexFlavorsFlavorStorageClassOutput) Class() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresflexFlavorsFlavorStorageClass) string { return v.Class }).(pulumi.StringOutput)
+}
+
+// Maximum I/O operations per second.
+func (o GetPostgresflexFlavorsFlavorStorageClassOutput) MaxIoPerSec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresflexFlavorsFlavorStorageClass) int { return v.MaxIoPerSec }).(pulumi.IntOutput)
+}
+
+// Maximum throughput in MB per second.
+func (o GetPostgresflexFlavorsFlavorStorageClassOutput) MaxThroughInMb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresflexFlavorsFlavorStorageClass) int { return v.MaxThroughInMb }).(pulumi.IntOutput)
+}
+
+type GetPostgresflexFlavorsFlavorStorageClassArrayOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresflexFlavorsFlavorStorageClassArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetPostgresflexFlavorsFlavorStorageClass)(nil)).Elem()
+}
+
+func (o GetPostgresflexFlavorsFlavorStorageClassArrayOutput) ToGetPostgresflexFlavorsFlavorStorageClassArrayOutput() GetPostgresflexFlavorsFlavorStorageClassArrayOutput {
+	return o
+}
+
+func (o GetPostgresflexFlavorsFlavorStorageClassArrayOutput) ToGetPostgresflexFlavorsFlavorStorageClassArrayOutputWithContext(ctx context.Context) GetPostgresflexFlavorsFlavorStorageClassArrayOutput {
+	return o
+}
+
+func (o GetPostgresflexFlavorsFlavorStorageClassArrayOutput) Index(i pulumi.IntInput) GetPostgresflexFlavorsFlavorStorageClassOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetPostgresflexFlavorsFlavorStorageClass {
+		return vs[0].([]GetPostgresflexFlavorsFlavorStorageClass)[vs[1].(int)]
+	}).(GetPostgresflexFlavorsFlavorStorageClassOutput)
+}
+
+type GetPostgresflexFlavorsTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetPostgresflexFlavorsTimeoutsInput is an input type that accepts GetPostgresflexFlavorsTimeoutsArgs and GetPostgresflexFlavorsTimeoutsOutput values.
+// You can construct a concrete instance of `GetPostgresflexFlavorsTimeoutsInput` via:
+//
+//	GetPostgresflexFlavorsTimeoutsArgs{...}
+type GetPostgresflexFlavorsTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetPostgresflexFlavorsTimeoutsOutput() GetPostgresflexFlavorsTimeoutsOutput
+	ToGetPostgresflexFlavorsTimeoutsOutputWithContext(context.Context) GetPostgresflexFlavorsTimeoutsOutput
+}
+
+type GetPostgresflexFlavorsTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetPostgresflexFlavorsTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresflexFlavorsTimeouts)(nil)).Elem()
+}
+
+func (i GetPostgresflexFlavorsTimeoutsArgs) ToGetPostgresflexFlavorsTimeoutsOutput() GetPostgresflexFlavorsTimeoutsOutput {
+	return i.ToGetPostgresflexFlavorsTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetPostgresflexFlavorsTimeoutsArgs) ToGetPostgresflexFlavorsTimeoutsOutputWithContext(ctx context.Context) GetPostgresflexFlavorsTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresflexFlavorsTimeoutsOutput)
+}
+
+func (i GetPostgresflexFlavorsTimeoutsArgs) ToGetPostgresflexFlavorsTimeoutsPtrOutput() GetPostgresflexFlavorsTimeoutsPtrOutput {
+	return i.ToGetPostgresflexFlavorsTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetPostgresflexFlavorsTimeoutsArgs) ToGetPostgresflexFlavorsTimeoutsPtrOutputWithContext(ctx context.Context) GetPostgresflexFlavorsTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresflexFlavorsTimeoutsOutput).ToGetPostgresflexFlavorsTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetPostgresflexFlavorsTimeoutsPtrInput is an input type that accepts GetPostgresflexFlavorsTimeoutsArgs, GetPostgresflexFlavorsTimeoutsPtr and GetPostgresflexFlavorsTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetPostgresflexFlavorsTimeoutsPtrInput` via:
+//
+//	        GetPostgresflexFlavorsTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPostgresflexFlavorsTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetPostgresflexFlavorsTimeoutsPtrOutput() GetPostgresflexFlavorsTimeoutsPtrOutput
+	ToGetPostgresflexFlavorsTimeoutsPtrOutputWithContext(context.Context) GetPostgresflexFlavorsTimeoutsPtrOutput
+}
+
+type getPostgresflexFlavorsTimeoutsPtrType GetPostgresflexFlavorsTimeoutsArgs
+
+func GetPostgresflexFlavorsTimeoutsPtr(v *GetPostgresflexFlavorsTimeoutsArgs) GetPostgresflexFlavorsTimeoutsPtrInput {
+	return (*getPostgresflexFlavorsTimeoutsPtrType)(v)
+}
+
+func (*getPostgresflexFlavorsTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresflexFlavorsTimeouts)(nil)).Elem()
+}
+
+func (i *getPostgresflexFlavorsTimeoutsPtrType) ToGetPostgresflexFlavorsTimeoutsPtrOutput() GetPostgresflexFlavorsTimeoutsPtrOutput {
+	return i.ToGetPostgresflexFlavorsTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getPostgresflexFlavorsTimeoutsPtrType) ToGetPostgresflexFlavorsTimeoutsPtrOutputWithContext(ctx context.Context) GetPostgresflexFlavorsTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresflexFlavorsTimeoutsPtrOutput)
+}
+
+type GetPostgresflexFlavorsTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresflexFlavorsTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresflexFlavorsTimeouts)(nil)).Elem()
+}
+
+func (o GetPostgresflexFlavorsTimeoutsOutput) ToGetPostgresflexFlavorsTimeoutsOutput() GetPostgresflexFlavorsTimeoutsOutput {
+	return o
+}
+
+func (o GetPostgresflexFlavorsTimeoutsOutput) ToGetPostgresflexFlavorsTimeoutsOutputWithContext(ctx context.Context) GetPostgresflexFlavorsTimeoutsOutput {
+	return o
+}
+
+func (o GetPostgresflexFlavorsTimeoutsOutput) ToGetPostgresflexFlavorsTimeoutsPtrOutput() GetPostgresflexFlavorsTimeoutsPtrOutput {
+	return o.ToGetPostgresflexFlavorsTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetPostgresflexFlavorsTimeoutsOutput) ToGetPostgresflexFlavorsTimeoutsPtrOutputWithContext(ctx context.Context) GetPostgresflexFlavorsTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPostgresflexFlavorsTimeouts) *GetPostgresflexFlavorsTimeouts {
+		return &v
+	}).(GetPostgresflexFlavorsTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetPostgresflexFlavorsTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPostgresflexFlavorsTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresflexFlavorsTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresflexFlavorsTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPostgresflexFlavorsTimeouts)(nil)).Elem()
+}
+
+func (o GetPostgresflexFlavorsTimeoutsPtrOutput) ToGetPostgresflexFlavorsTimeoutsPtrOutput() GetPostgresflexFlavorsTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetPostgresflexFlavorsTimeoutsPtrOutput) ToGetPostgresflexFlavorsTimeoutsPtrOutputWithContext(ctx context.Context) GetPostgresflexFlavorsTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetPostgresflexFlavorsTimeoutsPtrOutput) Elem() GetPostgresflexFlavorsTimeoutsOutput {
+	return o.ApplyT(func(v *GetPostgresflexFlavorsTimeouts) GetPostgresflexFlavorsTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetPostgresflexFlavorsTimeouts
+		return ret
+	}).(GetPostgresflexFlavorsTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetPostgresflexFlavorsTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPostgresflexFlavorsTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetPostgresflexInstanceConnectionInfo struct {
+	// The DNS name and port in the instance overview.
+	Write GetPostgresflexInstanceConnectionInfoWrite `pulumi:"write"`
+}
+
+// GetPostgresflexInstanceConnectionInfoInput is an input type that accepts GetPostgresflexInstanceConnectionInfoArgs and GetPostgresflexInstanceConnectionInfoOutput values.
+// You can construct a concrete instance of `GetPostgresflexInstanceConnectionInfoInput` via:
+//
+//	GetPostgresflexInstanceConnectionInfoArgs{...}
+type GetPostgresflexInstanceConnectionInfoInput interface {
+	pulumi.Input
+
+	ToGetPostgresflexInstanceConnectionInfoOutput() GetPostgresflexInstanceConnectionInfoOutput
+	ToGetPostgresflexInstanceConnectionInfoOutputWithContext(context.Context) GetPostgresflexInstanceConnectionInfoOutput
+}
+
+type GetPostgresflexInstanceConnectionInfoArgs struct {
+	// The DNS name and port in the instance overview.
+	Write GetPostgresflexInstanceConnectionInfoWriteInput `pulumi:"write"`
+}
+
+func (GetPostgresflexInstanceConnectionInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresflexInstanceConnectionInfo)(nil)).Elem()
+}
+
+func (i GetPostgresflexInstanceConnectionInfoArgs) ToGetPostgresflexInstanceConnectionInfoOutput() GetPostgresflexInstanceConnectionInfoOutput {
+	return i.ToGetPostgresflexInstanceConnectionInfoOutputWithContext(context.Background())
+}
+
+func (i GetPostgresflexInstanceConnectionInfoArgs) ToGetPostgresflexInstanceConnectionInfoOutputWithContext(ctx context.Context) GetPostgresflexInstanceConnectionInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresflexInstanceConnectionInfoOutput)
+}
+
+type GetPostgresflexInstanceConnectionInfoOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresflexInstanceConnectionInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresflexInstanceConnectionInfo)(nil)).Elem()
+}
+
+func (o GetPostgresflexInstanceConnectionInfoOutput) ToGetPostgresflexInstanceConnectionInfoOutput() GetPostgresflexInstanceConnectionInfoOutput {
+	return o
+}
+
+func (o GetPostgresflexInstanceConnectionInfoOutput) ToGetPostgresflexInstanceConnectionInfoOutputWithContext(ctx context.Context) GetPostgresflexInstanceConnectionInfoOutput {
+	return o
+}
+
+// The DNS name and port in the instance overview.
+func (o GetPostgresflexInstanceConnectionInfoOutput) Write() GetPostgresflexInstanceConnectionInfoWriteOutput {
+	return o.ApplyT(func(v GetPostgresflexInstanceConnectionInfo) GetPostgresflexInstanceConnectionInfoWrite {
+		return v.Write
+	}).(GetPostgresflexInstanceConnectionInfoWriteOutput)
+}
+
+type GetPostgresflexInstanceConnectionInfoWrite struct {
+	// The host of the instance.
+	Host string `pulumi:"host"`
+	// The port of the instance.
+	Port int `pulumi:"port"`
+}
+
+// GetPostgresflexInstanceConnectionInfoWriteInput is an input type that accepts GetPostgresflexInstanceConnectionInfoWriteArgs and GetPostgresflexInstanceConnectionInfoWriteOutput values.
+// You can construct a concrete instance of `GetPostgresflexInstanceConnectionInfoWriteInput` via:
+//
+//	GetPostgresflexInstanceConnectionInfoWriteArgs{...}
+type GetPostgresflexInstanceConnectionInfoWriteInput interface {
+	pulumi.Input
+
+	ToGetPostgresflexInstanceConnectionInfoWriteOutput() GetPostgresflexInstanceConnectionInfoWriteOutput
+	ToGetPostgresflexInstanceConnectionInfoWriteOutputWithContext(context.Context) GetPostgresflexInstanceConnectionInfoWriteOutput
+}
+
+type GetPostgresflexInstanceConnectionInfoWriteArgs struct {
+	// The host of the instance.
+	Host pulumi.StringInput `pulumi:"host"`
+	// The port of the instance.
+	Port pulumi.IntInput `pulumi:"port"`
+}
+
+func (GetPostgresflexInstanceConnectionInfoWriteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresflexInstanceConnectionInfoWrite)(nil)).Elem()
+}
+
+func (i GetPostgresflexInstanceConnectionInfoWriteArgs) ToGetPostgresflexInstanceConnectionInfoWriteOutput() GetPostgresflexInstanceConnectionInfoWriteOutput {
+	return i.ToGetPostgresflexInstanceConnectionInfoWriteOutputWithContext(context.Background())
+}
+
+func (i GetPostgresflexInstanceConnectionInfoWriteArgs) ToGetPostgresflexInstanceConnectionInfoWriteOutputWithContext(ctx context.Context) GetPostgresflexInstanceConnectionInfoWriteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresflexInstanceConnectionInfoWriteOutput)
+}
+
+type GetPostgresflexInstanceConnectionInfoWriteOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresflexInstanceConnectionInfoWriteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresflexInstanceConnectionInfoWrite)(nil)).Elem()
+}
+
+func (o GetPostgresflexInstanceConnectionInfoWriteOutput) ToGetPostgresflexInstanceConnectionInfoWriteOutput() GetPostgresflexInstanceConnectionInfoWriteOutput {
+	return o
+}
+
+func (o GetPostgresflexInstanceConnectionInfoWriteOutput) ToGetPostgresflexInstanceConnectionInfoWriteOutputWithContext(ctx context.Context) GetPostgresflexInstanceConnectionInfoWriteOutput {
+	return o
+}
+
+// The host of the instance.
+func (o GetPostgresflexInstanceConnectionInfoWriteOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresflexInstanceConnectionInfoWrite) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// The port of the instance.
+func (o GetPostgresflexInstanceConnectionInfoWriteOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetPostgresflexInstanceConnectionInfoWrite) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type GetPostgresflexInstanceEncryption struct {
+	KekKeyId       string `pulumi:"kekKeyId"`
+	KekKeyVersion  string `pulumi:"kekKeyVersion"`
+	KekKeyringId   string `pulumi:"kekKeyringId"`
+	ServiceAccount string `pulumi:"serviceAccount"`
+}
+
+// GetPostgresflexInstanceEncryptionInput is an input type that accepts GetPostgresflexInstanceEncryptionArgs and GetPostgresflexInstanceEncryptionOutput values.
+// You can construct a concrete instance of `GetPostgresflexInstanceEncryptionInput` via:
+//
+//	GetPostgresflexInstanceEncryptionArgs{...}
+type GetPostgresflexInstanceEncryptionInput interface {
+	pulumi.Input
+
+	ToGetPostgresflexInstanceEncryptionOutput() GetPostgresflexInstanceEncryptionOutput
+	ToGetPostgresflexInstanceEncryptionOutputWithContext(context.Context) GetPostgresflexInstanceEncryptionOutput
+}
+
+type GetPostgresflexInstanceEncryptionArgs struct {
+	KekKeyId       pulumi.StringInput `pulumi:"kekKeyId"`
+	KekKeyVersion  pulumi.StringInput `pulumi:"kekKeyVersion"`
+	KekKeyringId   pulumi.StringInput `pulumi:"kekKeyringId"`
+	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
+}
+
+func (GetPostgresflexInstanceEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresflexInstanceEncryption)(nil)).Elem()
+}
+
+func (i GetPostgresflexInstanceEncryptionArgs) ToGetPostgresflexInstanceEncryptionOutput() GetPostgresflexInstanceEncryptionOutput {
+	return i.ToGetPostgresflexInstanceEncryptionOutputWithContext(context.Background())
+}
+
+func (i GetPostgresflexInstanceEncryptionArgs) ToGetPostgresflexInstanceEncryptionOutputWithContext(ctx context.Context) GetPostgresflexInstanceEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresflexInstanceEncryptionOutput)
+}
+
+type GetPostgresflexInstanceEncryptionOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresflexInstanceEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresflexInstanceEncryption)(nil)).Elem()
+}
+
+func (o GetPostgresflexInstanceEncryptionOutput) ToGetPostgresflexInstanceEncryptionOutput() GetPostgresflexInstanceEncryptionOutput {
+	return o
+}
+
+func (o GetPostgresflexInstanceEncryptionOutput) ToGetPostgresflexInstanceEncryptionOutputWithContext(ctx context.Context) GetPostgresflexInstanceEncryptionOutput {
+	return o
+}
+
+func (o GetPostgresflexInstanceEncryptionOutput) KekKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresflexInstanceEncryption) string { return v.KekKeyId }).(pulumi.StringOutput)
+}
+
+func (o GetPostgresflexInstanceEncryptionOutput) KekKeyVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresflexInstanceEncryption) string { return v.KekKeyVersion }).(pulumi.StringOutput)
+}
+
+func (o GetPostgresflexInstanceEncryptionOutput) KekKeyringId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresflexInstanceEncryption) string { return v.KekKeyringId }).(pulumi.StringOutput)
+}
+
+func (o GetPostgresflexInstanceEncryptionOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresflexInstanceEncryption) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
 type GetPostgresflexInstanceFlavor struct {
 	Cpu         int    `pulumi:"cpu"`
 	Description string `pulumi:"description"`
 	Id          string `pulumi:"id"`
+	NodeType    string `pulumi:"nodeType"`
 	Ram         int    `pulumi:"ram"`
 }
 
@@ -33881,6 +37248,7 @@ type GetPostgresflexInstanceFlavorArgs struct {
 	Cpu         pulumi.IntInput    `pulumi:"cpu"`
 	Description pulumi.StringInput `pulumi:"description"`
 	Id          pulumi.StringInput `pulumi:"id"`
+	NodeType    pulumi.StringInput `pulumi:"nodeType"`
 	Ram         pulumi.IntInput    `pulumi:"ram"`
 }
 
@@ -33922,8 +37290,85 @@ func (o GetPostgresflexInstanceFlavorOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPostgresflexInstanceFlavor) string { return v.Id }).(pulumi.StringOutput)
 }
 
+func (o GetPostgresflexInstanceFlavorOutput) NodeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresflexInstanceFlavor) string { return v.NodeType }).(pulumi.StringOutput)
+}
+
 func (o GetPostgresflexInstanceFlavorOutput) Ram() pulumi.IntOutput {
 	return o.ApplyT(func(v GetPostgresflexInstanceFlavor) int { return v.Ram }).(pulumi.IntOutput)
+}
+
+type GetPostgresflexInstanceNetwork struct {
+	// The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. Possible values are: `PUBLIC`, `SNA`.
+	AccessScope string `pulumi:"accessScope"`
+	// List of IPV4 cidr.
+	Acls            []string `pulumi:"acls"`
+	InstanceAddress string   `pulumi:"instanceAddress"`
+	RouterAddress   string   `pulumi:"routerAddress"`
+}
+
+// GetPostgresflexInstanceNetworkInput is an input type that accepts GetPostgresflexInstanceNetworkArgs and GetPostgresflexInstanceNetworkOutput values.
+// You can construct a concrete instance of `GetPostgresflexInstanceNetworkInput` via:
+//
+//	GetPostgresflexInstanceNetworkArgs{...}
+type GetPostgresflexInstanceNetworkInput interface {
+	pulumi.Input
+
+	ToGetPostgresflexInstanceNetworkOutput() GetPostgresflexInstanceNetworkOutput
+	ToGetPostgresflexInstanceNetworkOutputWithContext(context.Context) GetPostgresflexInstanceNetworkOutput
+}
+
+type GetPostgresflexInstanceNetworkArgs struct {
+	// The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. Possible values are: `PUBLIC`, `SNA`.
+	AccessScope pulumi.StringInput `pulumi:"accessScope"`
+	// List of IPV4 cidr.
+	Acls            pulumi.StringArrayInput `pulumi:"acls"`
+	InstanceAddress pulumi.StringInput      `pulumi:"instanceAddress"`
+	RouterAddress   pulumi.StringInput      `pulumi:"routerAddress"`
+}
+
+func (GetPostgresflexInstanceNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresflexInstanceNetwork)(nil)).Elem()
+}
+
+func (i GetPostgresflexInstanceNetworkArgs) ToGetPostgresflexInstanceNetworkOutput() GetPostgresflexInstanceNetworkOutput {
+	return i.ToGetPostgresflexInstanceNetworkOutputWithContext(context.Background())
+}
+
+func (i GetPostgresflexInstanceNetworkArgs) ToGetPostgresflexInstanceNetworkOutputWithContext(ctx context.Context) GetPostgresflexInstanceNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPostgresflexInstanceNetworkOutput)
+}
+
+type GetPostgresflexInstanceNetworkOutput struct{ *pulumi.OutputState }
+
+func (GetPostgresflexInstanceNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPostgresflexInstanceNetwork)(nil)).Elem()
+}
+
+func (o GetPostgresflexInstanceNetworkOutput) ToGetPostgresflexInstanceNetworkOutput() GetPostgresflexInstanceNetworkOutput {
+	return o
+}
+
+func (o GetPostgresflexInstanceNetworkOutput) ToGetPostgresflexInstanceNetworkOutputWithContext(ctx context.Context) GetPostgresflexInstanceNetworkOutput {
+	return o
+}
+
+// The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. Possible values are: `PUBLIC`, `SNA`.
+func (o GetPostgresflexInstanceNetworkOutput) AccessScope() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresflexInstanceNetwork) string { return v.AccessScope }).(pulumi.StringOutput)
+}
+
+// List of IPV4 cidr.
+func (o GetPostgresflexInstanceNetworkOutput) Acls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetPostgresflexInstanceNetwork) []string { return v.Acls }).(pulumi.StringArrayOutput)
+}
+
+func (o GetPostgresflexInstanceNetworkOutput) InstanceAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresflexInstanceNetwork) string { return v.InstanceAddress }).(pulumi.StringOutput)
+}
+
+func (o GetPostgresflexInstanceNetworkOutput) RouterAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPostgresflexInstanceNetwork) string { return v.RouterAddress }).(pulumi.StringOutput)
 }
 
 type GetPostgresflexInstanceStorage struct {
@@ -36985,9 +40430,63 @@ func (o GetSkeClusterAccessIdpOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSkeClusterAccessIdp) string { return v.Type }).(pulumi.StringOutput)
 }
 
+type GetSkeClusterAudit struct {
+	// Enable cluster audit log forwarding to a Telemetry Router.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetSkeClusterAuditInput is an input type that accepts GetSkeClusterAuditArgs and GetSkeClusterAuditOutput values.
+// You can construct a concrete instance of `GetSkeClusterAuditInput` via:
+//
+//	GetSkeClusterAuditArgs{...}
+type GetSkeClusterAuditInput interface {
+	pulumi.Input
+
+	ToGetSkeClusterAuditOutput() GetSkeClusterAuditOutput
+	ToGetSkeClusterAuditOutputWithContext(context.Context) GetSkeClusterAuditOutput
+}
+
+type GetSkeClusterAuditArgs struct {
+	// Enable cluster audit log forwarding to a Telemetry Router.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetSkeClusterAuditArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSkeClusterAudit)(nil)).Elem()
+}
+
+func (i GetSkeClusterAuditArgs) ToGetSkeClusterAuditOutput() GetSkeClusterAuditOutput {
+	return i.ToGetSkeClusterAuditOutputWithContext(context.Background())
+}
+
+func (i GetSkeClusterAuditArgs) ToGetSkeClusterAuditOutputWithContext(ctx context.Context) GetSkeClusterAuditOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSkeClusterAuditOutput)
+}
+
+type GetSkeClusterAuditOutput struct{ *pulumi.OutputState }
+
+func (GetSkeClusterAuditOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSkeClusterAudit)(nil)).Elem()
+}
+
+func (o GetSkeClusterAuditOutput) ToGetSkeClusterAuditOutput() GetSkeClusterAuditOutput {
+	return o
+}
+
+func (o GetSkeClusterAuditOutput) ToGetSkeClusterAuditOutputWithContext(ctx context.Context) GetSkeClusterAuditOutput {
+	return o
+}
+
+// Enable cluster audit log forwarding to a Telemetry Router.
+func (o GetSkeClusterAuditOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSkeClusterAudit) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
 type GetSkeClusterExtensions struct {
 	// Cluster access control configuration
 	Acl GetSkeClusterExtensionsAcl `pulumi:"acl"`
+	// Application Load Balancer extension.
+	ApplicationLoadBalancer GetSkeClusterExtensionsApplicationLoadBalancer `pulumi:"applicationLoadBalancer"`
 	// A single argus block as defined below. This field is deprecated and will be removed 06 January 2026.
 	//
 	// Deprecated: Use observability instead.
@@ -37012,6 +40511,8 @@ type GetSkeClusterExtensionsInput interface {
 type GetSkeClusterExtensionsArgs struct {
 	// Cluster access control configuration
 	Acl GetSkeClusterExtensionsAclInput `pulumi:"acl"`
+	// Application Load Balancer extension.
+	ApplicationLoadBalancer GetSkeClusterExtensionsApplicationLoadBalancerInput `pulumi:"applicationLoadBalancer"`
 	// A single argus block as defined below. This field is deprecated and will be removed 06 January 2026.
 	//
 	// Deprecated: Use observability instead.
@@ -37051,6 +40552,13 @@ func (o GetSkeClusterExtensionsOutput) ToGetSkeClusterExtensionsOutputWithContex
 // Cluster access control configuration
 func (o GetSkeClusterExtensionsOutput) Acl() GetSkeClusterExtensionsAclOutput {
 	return o.ApplyT(func(v GetSkeClusterExtensions) GetSkeClusterExtensionsAcl { return v.Acl }).(GetSkeClusterExtensionsAclOutput)
+}
+
+// Application Load Balancer extension.
+func (o GetSkeClusterExtensionsOutput) ApplicationLoadBalancer() GetSkeClusterExtensionsApplicationLoadBalancerOutput {
+	return o.ApplyT(func(v GetSkeClusterExtensions) GetSkeClusterExtensionsApplicationLoadBalancer {
+		return v.ApplicationLoadBalancer
+	}).(GetSkeClusterExtensionsApplicationLoadBalancerOutput)
 }
 
 // A single argus block as defined below. This field is deprecated and will be removed 06 January 2026.
@@ -37131,6 +40639,58 @@ func (o GetSkeClusterExtensionsAclOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSkeClusterExtensionsAcl) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+type GetSkeClusterExtensionsApplicationLoadBalancer struct {
+	// Enables the application load balancer extension.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetSkeClusterExtensionsApplicationLoadBalancerInput is an input type that accepts GetSkeClusterExtensionsApplicationLoadBalancerArgs and GetSkeClusterExtensionsApplicationLoadBalancerOutput values.
+// You can construct a concrete instance of `GetSkeClusterExtensionsApplicationLoadBalancerInput` via:
+//
+//	GetSkeClusterExtensionsApplicationLoadBalancerArgs{...}
+type GetSkeClusterExtensionsApplicationLoadBalancerInput interface {
+	pulumi.Input
+
+	ToGetSkeClusterExtensionsApplicationLoadBalancerOutput() GetSkeClusterExtensionsApplicationLoadBalancerOutput
+	ToGetSkeClusterExtensionsApplicationLoadBalancerOutputWithContext(context.Context) GetSkeClusterExtensionsApplicationLoadBalancerOutput
+}
+
+type GetSkeClusterExtensionsApplicationLoadBalancerArgs struct {
+	// Enables the application load balancer extension.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetSkeClusterExtensionsApplicationLoadBalancerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSkeClusterExtensionsApplicationLoadBalancer)(nil)).Elem()
+}
+
+func (i GetSkeClusterExtensionsApplicationLoadBalancerArgs) ToGetSkeClusterExtensionsApplicationLoadBalancerOutput() GetSkeClusterExtensionsApplicationLoadBalancerOutput {
+	return i.ToGetSkeClusterExtensionsApplicationLoadBalancerOutputWithContext(context.Background())
+}
+
+func (i GetSkeClusterExtensionsApplicationLoadBalancerArgs) ToGetSkeClusterExtensionsApplicationLoadBalancerOutputWithContext(ctx context.Context) GetSkeClusterExtensionsApplicationLoadBalancerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSkeClusterExtensionsApplicationLoadBalancerOutput)
+}
+
+type GetSkeClusterExtensionsApplicationLoadBalancerOutput struct{ *pulumi.OutputState }
+
+func (GetSkeClusterExtensionsApplicationLoadBalancerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSkeClusterExtensionsApplicationLoadBalancer)(nil)).Elem()
+}
+
+func (o GetSkeClusterExtensionsApplicationLoadBalancerOutput) ToGetSkeClusterExtensionsApplicationLoadBalancerOutput() GetSkeClusterExtensionsApplicationLoadBalancerOutput {
+	return o
+}
+
+func (o GetSkeClusterExtensionsApplicationLoadBalancerOutput) ToGetSkeClusterExtensionsApplicationLoadBalancerOutputWithContext(ctx context.Context) GetSkeClusterExtensionsApplicationLoadBalancerOutput {
+	return o
+}
+
+// Enables the application load balancer extension.
+func (o GetSkeClusterExtensionsApplicationLoadBalancerOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSkeClusterExtensionsApplicationLoadBalancer) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
 type GetSkeClusterExtensionsArgus struct {
 	// Instance ID of argus
 	ArgusInstanceId string `pulumi:"argusInstanceId"`
@@ -37195,6 +40755,8 @@ func (o GetSkeClusterExtensionsArgusOutput) Enabled() pulumi.BoolOutput {
 type GetSkeClusterExtensionsDns struct {
 	// Flag to enable/disable DNS extensions
 	Enabled bool `pulumi:"enabled"`
+	// Enables Gateway API support for ExternalDNS. The CRDs must be installed by the user. Once installed, ExternalDNS will be configured at the next cluster reconcile.
+	GatewayApi bool `pulumi:"gatewayApi"`
 	// Specify a list of domain filters for externalDNS (e.g., `foo.runs.onstackit.cloud`)
 	Zones []string `pulumi:"zones"`
 }
@@ -37213,6 +40775,8 @@ type GetSkeClusterExtensionsDnsInput interface {
 type GetSkeClusterExtensionsDnsArgs struct {
 	// Flag to enable/disable DNS extensions
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Enables Gateway API support for ExternalDNS. The CRDs must be installed by the user. Once installed, ExternalDNS will be configured at the next cluster reconcile.
+	GatewayApi pulumi.BoolInput `pulumi:"gatewayApi"`
 	// Specify a list of domain filters for externalDNS (e.g., `foo.runs.onstackit.cloud`)
 	Zones pulumi.StringArrayInput `pulumi:"zones"`
 }
@@ -37246,6 +40810,11 @@ func (o GetSkeClusterExtensionsDnsOutput) ToGetSkeClusterExtensionsDnsOutputWith
 // Flag to enable/disable DNS extensions
 func (o GetSkeClusterExtensionsDnsOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSkeClusterExtensionsDns) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Enables Gateway API support for ExternalDNS. The CRDs must be installed by the user. Once installed, ExternalDNS will be configured at the next cluster reconcile.
+func (o GetSkeClusterExtensionsDnsOutput) GatewayApi() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSkeClusterExtensionsDns) bool { return v.GatewayApi }).(pulumi.BoolOutput)
 }
 
 // Specify a list of domain filters for externalDNS (e.g., `foo.runs.onstackit.cloud`)
@@ -38333,6 +41902,636 @@ func (o GetSkeMachineImageVersionsMachineImageVersionArrayOutput) Index(i pulumi
 	}).(GetSkeMachineImageVersionsMachineImageVersionOutput)
 }
 
+type GetSqlserverflexDatabaseTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetSqlserverflexDatabaseTimeoutsInput is an input type that accepts GetSqlserverflexDatabaseTimeoutsArgs and GetSqlserverflexDatabaseTimeoutsOutput values.
+// You can construct a concrete instance of `GetSqlserverflexDatabaseTimeoutsInput` via:
+//
+//	GetSqlserverflexDatabaseTimeoutsArgs{...}
+type GetSqlserverflexDatabaseTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetSqlserverflexDatabaseTimeoutsOutput() GetSqlserverflexDatabaseTimeoutsOutput
+	ToGetSqlserverflexDatabaseTimeoutsOutputWithContext(context.Context) GetSqlserverflexDatabaseTimeoutsOutput
+}
+
+type GetSqlserverflexDatabaseTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetSqlserverflexDatabaseTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlserverflexDatabaseTimeouts)(nil)).Elem()
+}
+
+func (i GetSqlserverflexDatabaseTimeoutsArgs) ToGetSqlserverflexDatabaseTimeoutsOutput() GetSqlserverflexDatabaseTimeoutsOutput {
+	return i.ToGetSqlserverflexDatabaseTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetSqlserverflexDatabaseTimeoutsArgs) ToGetSqlserverflexDatabaseTimeoutsOutputWithContext(ctx context.Context) GetSqlserverflexDatabaseTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlserverflexDatabaseTimeoutsOutput)
+}
+
+func (i GetSqlserverflexDatabaseTimeoutsArgs) ToGetSqlserverflexDatabaseTimeoutsPtrOutput() GetSqlserverflexDatabaseTimeoutsPtrOutput {
+	return i.ToGetSqlserverflexDatabaseTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetSqlserverflexDatabaseTimeoutsArgs) ToGetSqlserverflexDatabaseTimeoutsPtrOutputWithContext(ctx context.Context) GetSqlserverflexDatabaseTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlserverflexDatabaseTimeoutsOutput).ToGetSqlserverflexDatabaseTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetSqlserverflexDatabaseTimeoutsPtrInput is an input type that accepts GetSqlserverflexDatabaseTimeoutsArgs, GetSqlserverflexDatabaseTimeoutsPtr and GetSqlserverflexDatabaseTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetSqlserverflexDatabaseTimeoutsPtrInput` via:
+//
+//	        GetSqlserverflexDatabaseTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetSqlserverflexDatabaseTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetSqlserverflexDatabaseTimeoutsPtrOutput() GetSqlserverflexDatabaseTimeoutsPtrOutput
+	ToGetSqlserverflexDatabaseTimeoutsPtrOutputWithContext(context.Context) GetSqlserverflexDatabaseTimeoutsPtrOutput
+}
+
+type getSqlserverflexDatabaseTimeoutsPtrType GetSqlserverflexDatabaseTimeoutsArgs
+
+func GetSqlserverflexDatabaseTimeoutsPtr(v *GetSqlserverflexDatabaseTimeoutsArgs) GetSqlserverflexDatabaseTimeoutsPtrInput {
+	return (*getSqlserverflexDatabaseTimeoutsPtrType)(v)
+}
+
+func (*getSqlserverflexDatabaseTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSqlserverflexDatabaseTimeouts)(nil)).Elem()
+}
+
+func (i *getSqlserverflexDatabaseTimeoutsPtrType) ToGetSqlserverflexDatabaseTimeoutsPtrOutput() GetSqlserverflexDatabaseTimeoutsPtrOutput {
+	return i.ToGetSqlserverflexDatabaseTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getSqlserverflexDatabaseTimeoutsPtrType) ToGetSqlserverflexDatabaseTimeoutsPtrOutputWithContext(ctx context.Context) GetSqlserverflexDatabaseTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlserverflexDatabaseTimeoutsPtrOutput)
+}
+
+type GetSqlserverflexDatabaseTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetSqlserverflexDatabaseTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlserverflexDatabaseTimeouts)(nil)).Elem()
+}
+
+func (o GetSqlserverflexDatabaseTimeoutsOutput) ToGetSqlserverflexDatabaseTimeoutsOutput() GetSqlserverflexDatabaseTimeoutsOutput {
+	return o
+}
+
+func (o GetSqlserverflexDatabaseTimeoutsOutput) ToGetSqlserverflexDatabaseTimeoutsOutputWithContext(ctx context.Context) GetSqlserverflexDatabaseTimeoutsOutput {
+	return o
+}
+
+func (o GetSqlserverflexDatabaseTimeoutsOutput) ToGetSqlserverflexDatabaseTimeoutsPtrOutput() GetSqlserverflexDatabaseTimeoutsPtrOutput {
+	return o.ToGetSqlserverflexDatabaseTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetSqlserverflexDatabaseTimeoutsOutput) ToGetSqlserverflexDatabaseTimeoutsPtrOutputWithContext(ctx context.Context) GetSqlserverflexDatabaseTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetSqlserverflexDatabaseTimeouts) *GetSqlserverflexDatabaseTimeouts {
+		return &v
+	}).(GetSqlserverflexDatabaseTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetSqlserverflexDatabaseTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSqlserverflexDatabaseTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetSqlserverflexDatabaseTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetSqlserverflexDatabaseTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSqlserverflexDatabaseTimeouts)(nil)).Elem()
+}
+
+func (o GetSqlserverflexDatabaseTimeoutsPtrOutput) ToGetSqlserverflexDatabaseTimeoutsPtrOutput() GetSqlserverflexDatabaseTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetSqlserverflexDatabaseTimeoutsPtrOutput) ToGetSqlserverflexDatabaseTimeoutsPtrOutputWithContext(ctx context.Context) GetSqlserverflexDatabaseTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetSqlserverflexDatabaseTimeoutsPtrOutput) Elem() GetSqlserverflexDatabaseTimeoutsOutput {
+	return o.ApplyT(func(v *GetSqlserverflexDatabaseTimeouts) GetSqlserverflexDatabaseTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetSqlserverflexDatabaseTimeouts
+		return ret
+	}).(GetSqlserverflexDatabaseTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetSqlserverflexDatabaseTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSqlserverflexDatabaseTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetSqlserverflexFlavorsFlavor struct {
+	// The CPU count of the instance.
+	Cpu int `pulumi:"cpu"`
+	// Description of the flavor.
+	Description string `pulumi:"description"`
+	// ID of the flavor.
+	Id string `pulumi:"id"`
+	// Maximum storage, which can be ordered for the flavor in Gigabyte.
+	MaxGb int `pulumi:"maxGb"`
+	// The memory (Gibibyte) of the instance.
+	Memory int `pulumi:"memory"`
+	// Minimum storage, which is required to order in Gigabyte.
+	MinGb int `pulumi:"minGb"`
+	// Defines the node type (either single or HA).
+	NodeType string `pulumi:"nodeType"`
+	// Storage classes available for the flavor.
+	StorageClasses []GetSqlserverflexFlavorsFlavorStorageClass `pulumi:"storageClasses"`
+}
+
+// GetSqlserverflexFlavorsFlavorInput is an input type that accepts GetSqlserverflexFlavorsFlavorArgs and GetSqlserverflexFlavorsFlavorOutput values.
+// You can construct a concrete instance of `GetSqlserverflexFlavorsFlavorInput` via:
+//
+//	GetSqlserverflexFlavorsFlavorArgs{...}
+type GetSqlserverflexFlavorsFlavorInput interface {
+	pulumi.Input
+
+	ToGetSqlserverflexFlavorsFlavorOutput() GetSqlserverflexFlavorsFlavorOutput
+	ToGetSqlserverflexFlavorsFlavorOutputWithContext(context.Context) GetSqlserverflexFlavorsFlavorOutput
+}
+
+type GetSqlserverflexFlavorsFlavorArgs struct {
+	// The CPU count of the instance.
+	Cpu pulumi.IntInput `pulumi:"cpu"`
+	// Description of the flavor.
+	Description pulumi.StringInput `pulumi:"description"`
+	// ID of the flavor.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Maximum storage, which can be ordered for the flavor in Gigabyte.
+	MaxGb pulumi.IntInput `pulumi:"maxGb"`
+	// The memory (Gibibyte) of the instance.
+	Memory pulumi.IntInput `pulumi:"memory"`
+	// Minimum storage, which is required to order in Gigabyte.
+	MinGb pulumi.IntInput `pulumi:"minGb"`
+	// Defines the node type (either single or HA).
+	NodeType pulumi.StringInput `pulumi:"nodeType"`
+	// Storage classes available for the flavor.
+	StorageClasses GetSqlserverflexFlavorsFlavorStorageClassArrayInput `pulumi:"storageClasses"`
+}
+
+func (GetSqlserverflexFlavorsFlavorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlserverflexFlavorsFlavor)(nil)).Elem()
+}
+
+func (i GetSqlserverflexFlavorsFlavorArgs) ToGetSqlserverflexFlavorsFlavorOutput() GetSqlserverflexFlavorsFlavorOutput {
+	return i.ToGetSqlserverflexFlavorsFlavorOutputWithContext(context.Background())
+}
+
+func (i GetSqlserverflexFlavorsFlavorArgs) ToGetSqlserverflexFlavorsFlavorOutputWithContext(ctx context.Context) GetSqlserverflexFlavorsFlavorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlserverflexFlavorsFlavorOutput)
+}
+
+// GetSqlserverflexFlavorsFlavorArrayInput is an input type that accepts GetSqlserverflexFlavorsFlavorArray and GetSqlserverflexFlavorsFlavorArrayOutput values.
+// You can construct a concrete instance of `GetSqlserverflexFlavorsFlavorArrayInput` via:
+//
+//	GetSqlserverflexFlavorsFlavorArray{ GetSqlserverflexFlavorsFlavorArgs{...} }
+type GetSqlserverflexFlavorsFlavorArrayInput interface {
+	pulumi.Input
+
+	ToGetSqlserverflexFlavorsFlavorArrayOutput() GetSqlserverflexFlavorsFlavorArrayOutput
+	ToGetSqlserverflexFlavorsFlavorArrayOutputWithContext(context.Context) GetSqlserverflexFlavorsFlavorArrayOutput
+}
+
+type GetSqlserverflexFlavorsFlavorArray []GetSqlserverflexFlavorsFlavorInput
+
+func (GetSqlserverflexFlavorsFlavorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSqlserverflexFlavorsFlavor)(nil)).Elem()
+}
+
+func (i GetSqlserverflexFlavorsFlavorArray) ToGetSqlserverflexFlavorsFlavorArrayOutput() GetSqlserverflexFlavorsFlavorArrayOutput {
+	return i.ToGetSqlserverflexFlavorsFlavorArrayOutputWithContext(context.Background())
+}
+
+func (i GetSqlserverflexFlavorsFlavorArray) ToGetSqlserverflexFlavorsFlavorArrayOutputWithContext(ctx context.Context) GetSqlserverflexFlavorsFlavorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlserverflexFlavorsFlavorArrayOutput)
+}
+
+type GetSqlserverflexFlavorsFlavorOutput struct{ *pulumi.OutputState }
+
+func (GetSqlserverflexFlavorsFlavorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlserverflexFlavorsFlavor)(nil)).Elem()
+}
+
+func (o GetSqlserverflexFlavorsFlavorOutput) ToGetSqlserverflexFlavorsFlavorOutput() GetSqlserverflexFlavorsFlavorOutput {
+	return o
+}
+
+func (o GetSqlserverflexFlavorsFlavorOutput) ToGetSqlserverflexFlavorsFlavorOutputWithContext(ctx context.Context) GetSqlserverflexFlavorsFlavorOutput {
+	return o
+}
+
+// The CPU count of the instance.
+func (o GetSqlserverflexFlavorsFlavorOutput) Cpu() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSqlserverflexFlavorsFlavor) int { return v.Cpu }).(pulumi.IntOutput)
+}
+
+// Description of the flavor.
+func (o GetSqlserverflexFlavorsFlavorOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlserverflexFlavorsFlavor) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// ID of the flavor.
+func (o GetSqlserverflexFlavorsFlavorOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlserverflexFlavorsFlavor) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Maximum storage, which can be ordered for the flavor in Gigabyte.
+func (o GetSqlserverflexFlavorsFlavorOutput) MaxGb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSqlserverflexFlavorsFlavor) int { return v.MaxGb }).(pulumi.IntOutput)
+}
+
+// The memory (Gibibyte) of the instance.
+func (o GetSqlserverflexFlavorsFlavorOutput) Memory() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSqlserverflexFlavorsFlavor) int { return v.Memory }).(pulumi.IntOutput)
+}
+
+// Minimum storage, which is required to order in Gigabyte.
+func (o GetSqlserverflexFlavorsFlavorOutput) MinGb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSqlserverflexFlavorsFlavor) int { return v.MinGb }).(pulumi.IntOutput)
+}
+
+// Defines the node type (either single or HA).
+func (o GetSqlserverflexFlavorsFlavorOutput) NodeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlserverflexFlavorsFlavor) string { return v.NodeType }).(pulumi.StringOutput)
+}
+
+// Storage classes available for the flavor.
+func (o GetSqlserverflexFlavorsFlavorOutput) StorageClasses() GetSqlserverflexFlavorsFlavorStorageClassArrayOutput {
+	return o.ApplyT(func(v GetSqlserverflexFlavorsFlavor) []GetSqlserverflexFlavorsFlavorStorageClass {
+		return v.StorageClasses
+	}).(GetSqlserverflexFlavorsFlavorStorageClassArrayOutput)
+}
+
+type GetSqlserverflexFlavorsFlavorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSqlserverflexFlavorsFlavorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSqlserverflexFlavorsFlavor)(nil)).Elem()
+}
+
+func (o GetSqlserverflexFlavorsFlavorArrayOutput) ToGetSqlserverflexFlavorsFlavorArrayOutput() GetSqlserverflexFlavorsFlavorArrayOutput {
+	return o
+}
+
+func (o GetSqlserverflexFlavorsFlavorArrayOutput) ToGetSqlserverflexFlavorsFlavorArrayOutputWithContext(ctx context.Context) GetSqlserverflexFlavorsFlavorArrayOutput {
+	return o
+}
+
+func (o GetSqlserverflexFlavorsFlavorArrayOutput) Index(i pulumi.IntInput) GetSqlserverflexFlavorsFlavorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSqlserverflexFlavorsFlavor {
+		return vs[0].([]GetSqlserverflexFlavorsFlavor)[vs[1].(int)]
+	}).(GetSqlserverflexFlavorsFlavorOutput)
+}
+
+type GetSqlserverflexFlavorsFlavorStorageClass struct {
+	// Class of the instance.
+	Class string `pulumi:"class"`
+	// Maximum I/O per second.
+	MaxIoPerSec int `pulumi:"maxIoPerSec"`
+	// Maximum throughput in Megabyte.
+	MaxThroughInMb int `pulumi:"maxThroughInMb"`
+}
+
+// GetSqlserverflexFlavorsFlavorStorageClassInput is an input type that accepts GetSqlserverflexFlavorsFlavorStorageClassArgs and GetSqlserverflexFlavorsFlavorStorageClassOutput values.
+// You can construct a concrete instance of `GetSqlserverflexFlavorsFlavorStorageClassInput` via:
+//
+//	GetSqlserverflexFlavorsFlavorStorageClassArgs{...}
+type GetSqlserverflexFlavorsFlavorStorageClassInput interface {
+	pulumi.Input
+
+	ToGetSqlserverflexFlavorsFlavorStorageClassOutput() GetSqlserverflexFlavorsFlavorStorageClassOutput
+	ToGetSqlserverflexFlavorsFlavorStorageClassOutputWithContext(context.Context) GetSqlserverflexFlavorsFlavorStorageClassOutput
+}
+
+type GetSqlserverflexFlavorsFlavorStorageClassArgs struct {
+	// Class of the instance.
+	Class pulumi.StringInput `pulumi:"class"`
+	// Maximum I/O per second.
+	MaxIoPerSec pulumi.IntInput `pulumi:"maxIoPerSec"`
+	// Maximum throughput in Megabyte.
+	MaxThroughInMb pulumi.IntInput `pulumi:"maxThroughInMb"`
+}
+
+func (GetSqlserverflexFlavorsFlavorStorageClassArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlserverflexFlavorsFlavorStorageClass)(nil)).Elem()
+}
+
+func (i GetSqlserverflexFlavorsFlavorStorageClassArgs) ToGetSqlserverflexFlavorsFlavorStorageClassOutput() GetSqlserverflexFlavorsFlavorStorageClassOutput {
+	return i.ToGetSqlserverflexFlavorsFlavorStorageClassOutputWithContext(context.Background())
+}
+
+func (i GetSqlserverflexFlavorsFlavorStorageClassArgs) ToGetSqlserverflexFlavorsFlavorStorageClassOutputWithContext(ctx context.Context) GetSqlserverflexFlavorsFlavorStorageClassOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlserverflexFlavorsFlavorStorageClassOutput)
+}
+
+// GetSqlserverflexFlavorsFlavorStorageClassArrayInput is an input type that accepts GetSqlserverflexFlavorsFlavorStorageClassArray and GetSqlserverflexFlavorsFlavorStorageClassArrayOutput values.
+// You can construct a concrete instance of `GetSqlserverflexFlavorsFlavorStorageClassArrayInput` via:
+//
+//	GetSqlserverflexFlavorsFlavorStorageClassArray{ GetSqlserverflexFlavorsFlavorStorageClassArgs{...} }
+type GetSqlserverflexFlavorsFlavorStorageClassArrayInput interface {
+	pulumi.Input
+
+	ToGetSqlserverflexFlavorsFlavorStorageClassArrayOutput() GetSqlserverflexFlavorsFlavorStorageClassArrayOutput
+	ToGetSqlserverflexFlavorsFlavorStorageClassArrayOutputWithContext(context.Context) GetSqlserverflexFlavorsFlavorStorageClassArrayOutput
+}
+
+type GetSqlserverflexFlavorsFlavorStorageClassArray []GetSqlserverflexFlavorsFlavorStorageClassInput
+
+func (GetSqlserverflexFlavorsFlavorStorageClassArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSqlserverflexFlavorsFlavorStorageClass)(nil)).Elem()
+}
+
+func (i GetSqlserverflexFlavorsFlavorStorageClassArray) ToGetSqlserverflexFlavorsFlavorStorageClassArrayOutput() GetSqlserverflexFlavorsFlavorStorageClassArrayOutput {
+	return i.ToGetSqlserverflexFlavorsFlavorStorageClassArrayOutputWithContext(context.Background())
+}
+
+func (i GetSqlserverflexFlavorsFlavorStorageClassArray) ToGetSqlserverflexFlavorsFlavorStorageClassArrayOutputWithContext(ctx context.Context) GetSqlserverflexFlavorsFlavorStorageClassArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlserverflexFlavorsFlavorStorageClassArrayOutput)
+}
+
+type GetSqlserverflexFlavorsFlavorStorageClassOutput struct{ *pulumi.OutputState }
+
+func (GetSqlserverflexFlavorsFlavorStorageClassOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlserverflexFlavorsFlavorStorageClass)(nil)).Elem()
+}
+
+func (o GetSqlserverflexFlavorsFlavorStorageClassOutput) ToGetSqlserverflexFlavorsFlavorStorageClassOutput() GetSqlserverflexFlavorsFlavorStorageClassOutput {
+	return o
+}
+
+func (o GetSqlserverflexFlavorsFlavorStorageClassOutput) ToGetSqlserverflexFlavorsFlavorStorageClassOutputWithContext(ctx context.Context) GetSqlserverflexFlavorsFlavorStorageClassOutput {
+	return o
+}
+
+// Class of the instance.
+func (o GetSqlserverflexFlavorsFlavorStorageClassOutput) Class() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlserverflexFlavorsFlavorStorageClass) string { return v.Class }).(pulumi.StringOutput)
+}
+
+// Maximum I/O per second.
+func (o GetSqlserverflexFlavorsFlavorStorageClassOutput) MaxIoPerSec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSqlserverflexFlavorsFlavorStorageClass) int { return v.MaxIoPerSec }).(pulumi.IntOutput)
+}
+
+// Maximum throughput in Megabyte.
+func (o GetSqlserverflexFlavorsFlavorStorageClassOutput) MaxThroughInMb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSqlserverflexFlavorsFlavorStorageClass) int { return v.MaxThroughInMb }).(pulumi.IntOutput)
+}
+
+type GetSqlserverflexFlavorsFlavorStorageClassArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSqlserverflexFlavorsFlavorStorageClassArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSqlserverflexFlavorsFlavorStorageClass)(nil)).Elem()
+}
+
+func (o GetSqlserverflexFlavorsFlavorStorageClassArrayOutput) ToGetSqlserverflexFlavorsFlavorStorageClassArrayOutput() GetSqlserverflexFlavorsFlavorStorageClassArrayOutput {
+	return o
+}
+
+func (o GetSqlserverflexFlavorsFlavorStorageClassArrayOutput) ToGetSqlserverflexFlavorsFlavorStorageClassArrayOutputWithContext(ctx context.Context) GetSqlserverflexFlavorsFlavorStorageClassArrayOutput {
+	return o
+}
+
+func (o GetSqlserverflexFlavorsFlavorStorageClassArrayOutput) Index(i pulumi.IntInput) GetSqlserverflexFlavorsFlavorStorageClassOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSqlserverflexFlavorsFlavorStorageClass {
+		return vs[0].([]GetSqlserverflexFlavorsFlavorStorageClass)[vs[1].(int)]
+	}).(GetSqlserverflexFlavorsFlavorStorageClassOutput)
+}
+
+type GetSqlserverflexFlavorsTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetSqlserverflexFlavorsTimeoutsInput is an input type that accepts GetSqlserverflexFlavorsTimeoutsArgs and GetSqlserverflexFlavorsTimeoutsOutput values.
+// You can construct a concrete instance of `GetSqlserverflexFlavorsTimeoutsInput` via:
+//
+//	GetSqlserverflexFlavorsTimeoutsArgs{...}
+type GetSqlserverflexFlavorsTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetSqlserverflexFlavorsTimeoutsOutput() GetSqlserverflexFlavorsTimeoutsOutput
+	ToGetSqlserverflexFlavorsTimeoutsOutputWithContext(context.Context) GetSqlserverflexFlavorsTimeoutsOutput
+}
+
+type GetSqlserverflexFlavorsTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetSqlserverflexFlavorsTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlserverflexFlavorsTimeouts)(nil)).Elem()
+}
+
+func (i GetSqlserverflexFlavorsTimeoutsArgs) ToGetSqlserverflexFlavorsTimeoutsOutput() GetSqlserverflexFlavorsTimeoutsOutput {
+	return i.ToGetSqlserverflexFlavorsTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetSqlserverflexFlavorsTimeoutsArgs) ToGetSqlserverflexFlavorsTimeoutsOutputWithContext(ctx context.Context) GetSqlserverflexFlavorsTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlserverflexFlavorsTimeoutsOutput)
+}
+
+func (i GetSqlserverflexFlavorsTimeoutsArgs) ToGetSqlserverflexFlavorsTimeoutsPtrOutput() GetSqlserverflexFlavorsTimeoutsPtrOutput {
+	return i.ToGetSqlserverflexFlavorsTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetSqlserverflexFlavorsTimeoutsArgs) ToGetSqlserverflexFlavorsTimeoutsPtrOutputWithContext(ctx context.Context) GetSqlserverflexFlavorsTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlserverflexFlavorsTimeoutsOutput).ToGetSqlserverflexFlavorsTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetSqlserverflexFlavorsTimeoutsPtrInput is an input type that accepts GetSqlserverflexFlavorsTimeoutsArgs, GetSqlserverflexFlavorsTimeoutsPtr and GetSqlserverflexFlavorsTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetSqlserverflexFlavorsTimeoutsPtrInput` via:
+//
+//	        GetSqlserverflexFlavorsTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetSqlserverflexFlavorsTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetSqlserverflexFlavorsTimeoutsPtrOutput() GetSqlserverflexFlavorsTimeoutsPtrOutput
+	ToGetSqlserverflexFlavorsTimeoutsPtrOutputWithContext(context.Context) GetSqlserverflexFlavorsTimeoutsPtrOutput
+}
+
+type getSqlserverflexFlavorsTimeoutsPtrType GetSqlserverflexFlavorsTimeoutsArgs
+
+func GetSqlserverflexFlavorsTimeoutsPtr(v *GetSqlserverflexFlavorsTimeoutsArgs) GetSqlserverflexFlavorsTimeoutsPtrInput {
+	return (*getSqlserverflexFlavorsTimeoutsPtrType)(v)
+}
+
+func (*getSqlserverflexFlavorsTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSqlserverflexFlavorsTimeouts)(nil)).Elem()
+}
+
+func (i *getSqlserverflexFlavorsTimeoutsPtrType) ToGetSqlserverflexFlavorsTimeoutsPtrOutput() GetSqlserverflexFlavorsTimeoutsPtrOutput {
+	return i.ToGetSqlserverflexFlavorsTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getSqlserverflexFlavorsTimeoutsPtrType) ToGetSqlserverflexFlavorsTimeoutsPtrOutputWithContext(ctx context.Context) GetSqlserverflexFlavorsTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlserverflexFlavorsTimeoutsPtrOutput)
+}
+
+type GetSqlserverflexFlavorsTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetSqlserverflexFlavorsTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlserverflexFlavorsTimeouts)(nil)).Elem()
+}
+
+func (o GetSqlserverflexFlavorsTimeoutsOutput) ToGetSqlserverflexFlavorsTimeoutsOutput() GetSqlserverflexFlavorsTimeoutsOutput {
+	return o
+}
+
+func (o GetSqlserverflexFlavorsTimeoutsOutput) ToGetSqlserverflexFlavorsTimeoutsOutputWithContext(ctx context.Context) GetSqlserverflexFlavorsTimeoutsOutput {
+	return o
+}
+
+func (o GetSqlserverflexFlavorsTimeoutsOutput) ToGetSqlserverflexFlavorsTimeoutsPtrOutput() GetSqlserverflexFlavorsTimeoutsPtrOutput {
+	return o.ToGetSqlserverflexFlavorsTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetSqlserverflexFlavorsTimeoutsOutput) ToGetSqlserverflexFlavorsTimeoutsPtrOutputWithContext(ctx context.Context) GetSqlserverflexFlavorsTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetSqlserverflexFlavorsTimeouts) *GetSqlserverflexFlavorsTimeouts {
+		return &v
+	}).(GetSqlserverflexFlavorsTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetSqlserverflexFlavorsTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSqlserverflexFlavorsTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetSqlserverflexFlavorsTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetSqlserverflexFlavorsTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSqlserverflexFlavorsTimeouts)(nil)).Elem()
+}
+
+func (o GetSqlserverflexFlavorsTimeoutsPtrOutput) ToGetSqlserverflexFlavorsTimeoutsPtrOutput() GetSqlserverflexFlavorsTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetSqlserverflexFlavorsTimeoutsPtrOutput) ToGetSqlserverflexFlavorsTimeoutsPtrOutputWithContext(ctx context.Context) GetSqlserverflexFlavorsTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetSqlserverflexFlavorsTimeoutsPtrOutput) Elem() GetSqlserverflexFlavorsTimeoutsOutput {
+	return o.ApplyT(func(v *GetSqlserverflexFlavorsTimeouts) GetSqlserverflexFlavorsTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetSqlserverflexFlavorsTimeouts
+		return ret
+	}).(GetSqlserverflexFlavorsTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetSqlserverflexFlavorsTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSqlserverflexFlavorsTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetSqlserverflexInstanceEncryption struct {
+	// UUID of the key within the STACKIT-KMS to use for the encryption.
+	KekKeyId string `pulumi:"kekKeyId"`
+	// Version of the key within the STACKIT-KMS to use for the encryption.
+	KekKeyVersion string `pulumi:"kekKeyVersion"`
+	// UUID of the keyring where the key is located within the STACKTI-KMS.
+	KekKeyringId string `pulumi:"kekKeyringId"`
+	// Service-Account linked to the Key within the STACKIT-KMS.
+	ServiceAccount string `pulumi:"serviceAccount"`
+}
+
+// GetSqlserverflexInstanceEncryptionInput is an input type that accepts GetSqlserverflexInstanceEncryptionArgs and GetSqlserverflexInstanceEncryptionOutput values.
+// You can construct a concrete instance of `GetSqlserverflexInstanceEncryptionInput` via:
+//
+//	GetSqlserverflexInstanceEncryptionArgs{...}
+type GetSqlserverflexInstanceEncryptionInput interface {
+	pulumi.Input
+
+	ToGetSqlserverflexInstanceEncryptionOutput() GetSqlserverflexInstanceEncryptionOutput
+	ToGetSqlserverflexInstanceEncryptionOutputWithContext(context.Context) GetSqlserverflexInstanceEncryptionOutput
+}
+
+type GetSqlserverflexInstanceEncryptionArgs struct {
+	// UUID of the key within the STACKIT-KMS to use for the encryption.
+	KekKeyId pulumi.StringInput `pulumi:"kekKeyId"`
+	// Version of the key within the STACKIT-KMS to use for the encryption.
+	KekKeyVersion pulumi.StringInput `pulumi:"kekKeyVersion"`
+	// UUID of the keyring where the key is located within the STACKTI-KMS.
+	KekKeyringId pulumi.StringInput `pulumi:"kekKeyringId"`
+	// Service-Account linked to the Key within the STACKIT-KMS.
+	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
+}
+
+func (GetSqlserverflexInstanceEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlserverflexInstanceEncryption)(nil)).Elem()
+}
+
+func (i GetSqlserverflexInstanceEncryptionArgs) ToGetSqlserverflexInstanceEncryptionOutput() GetSqlserverflexInstanceEncryptionOutput {
+	return i.ToGetSqlserverflexInstanceEncryptionOutputWithContext(context.Background())
+}
+
+func (i GetSqlserverflexInstanceEncryptionArgs) ToGetSqlserverflexInstanceEncryptionOutputWithContext(ctx context.Context) GetSqlserverflexInstanceEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSqlserverflexInstanceEncryptionOutput)
+}
+
+type GetSqlserverflexInstanceEncryptionOutput struct{ *pulumi.OutputState }
+
+func (GetSqlserverflexInstanceEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSqlserverflexInstanceEncryption)(nil)).Elem()
+}
+
+func (o GetSqlserverflexInstanceEncryptionOutput) ToGetSqlserverflexInstanceEncryptionOutput() GetSqlserverflexInstanceEncryptionOutput {
+	return o
+}
+
+func (o GetSqlserverflexInstanceEncryptionOutput) ToGetSqlserverflexInstanceEncryptionOutputWithContext(ctx context.Context) GetSqlserverflexInstanceEncryptionOutput {
+	return o
+}
+
+// UUID of the key within the STACKIT-KMS to use for the encryption.
+func (o GetSqlserverflexInstanceEncryptionOutput) KekKeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlserverflexInstanceEncryption) string { return v.KekKeyId }).(pulumi.StringOutput)
+}
+
+// Version of the key within the STACKIT-KMS to use for the encryption.
+func (o GetSqlserverflexInstanceEncryptionOutput) KekKeyVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlserverflexInstanceEncryption) string { return v.KekKeyVersion }).(pulumi.StringOutput)
+}
+
+// UUID of the keyring where the key is located within the STACKTI-KMS.
+func (o GetSqlserverflexInstanceEncryptionOutput) KekKeyringId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlserverflexInstanceEncryption) string { return v.KekKeyringId }).(pulumi.StringOutput)
+}
+
+// Service-Account linked to the Key within the STACKIT-KMS.
+func (o GetSqlserverflexInstanceEncryptionOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlserverflexInstanceEncryption) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
 type GetSqlserverflexInstanceFlavor struct {
 	Cpu         int    `pulumi:"cpu"`
 	Description string `pulumi:"description"`
@@ -38405,6 +42604,10 @@ type GetSqlserverflexInstanceNetwork struct {
 	AccessScope *string `pulumi:"accessScope"`
 	// List of IPV4 cidr.
 	Acls []string `pulumi:"acls"`
+	// Address of this instance.
+	InstanceAddress string `pulumi:"instanceAddress"`
+	// Address of the router.
+	RouterAddress string `pulumi:"routerAddress"`
 }
 
 // GetSqlserverflexInstanceNetworkInput is an input type that accepts GetSqlserverflexInstanceNetworkArgs and GetSqlserverflexInstanceNetworkOutput values.
@@ -38423,6 +42626,10 @@ type GetSqlserverflexInstanceNetworkArgs struct {
 	AccessScope pulumi.StringPtrInput `pulumi:"accessScope"`
 	// List of IPV4 cidr.
 	Acls pulumi.StringArrayInput `pulumi:"acls"`
+	// Address of this instance.
+	InstanceAddress pulumi.StringInput `pulumi:"instanceAddress"`
+	// Address of the router.
+	RouterAddress pulumi.StringInput `pulumi:"routerAddress"`
 }
 
 func (GetSqlserverflexInstanceNetworkArgs) ElementType() reflect.Type {
@@ -38512,6 +42719,16 @@ func (o GetSqlserverflexInstanceNetworkOutput) Acls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetSqlserverflexInstanceNetwork) []string { return v.Acls }).(pulumi.StringArrayOutput)
 }
 
+// Address of this instance.
+func (o GetSqlserverflexInstanceNetworkOutput) InstanceAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlserverflexInstanceNetwork) string { return v.InstanceAddress }).(pulumi.StringOutput)
+}
+
+// Address of the router.
+func (o GetSqlserverflexInstanceNetworkOutput) RouterAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSqlserverflexInstanceNetwork) string { return v.RouterAddress }).(pulumi.StringOutput)
+}
+
 type GetSqlserverflexInstanceNetworkPtrOutput struct{ *pulumi.OutputState }
 
 func (GetSqlserverflexInstanceNetworkPtrOutput) ElementType() reflect.Type {
@@ -38556,9 +42773,31 @@ func (o GetSqlserverflexInstanceNetworkPtrOutput) Acls() pulumi.StringArrayOutpu
 	}).(pulumi.StringArrayOutput)
 }
 
+// Address of this instance.
+func (o GetSqlserverflexInstanceNetworkPtrOutput) InstanceAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSqlserverflexInstanceNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InstanceAddress
+	}).(pulumi.StringPtrOutput)
+}
+
+// Address of the router.
+func (o GetSqlserverflexInstanceNetworkPtrOutput) RouterAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSqlserverflexInstanceNetwork) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RouterAddress
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetSqlserverflexInstanceOptions struct {
-	Edition       string `pulumi:"edition"`
-	RetentionDays int    `pulumi:"retentionDays"`
+	// Deprecated: edition is deprecated and will be removed after February 2027.
+	Edition string `pulumi:"edition"`
+	// Deprecated: retention_days is deprecated and will be removed after February 2027. Use instead `retentionDays` from root.
+	RetentionDays int `pulumi:"retentionDays"`
 }
 
 // GetSqlserverflexInstanceOptionsInput is an input type that accepts GetSqlserverflexInstanceOptionsArgs and GetSqlserverflexInstanceOptionsOutput values.
@@ -38573,8 +42812,10 @@ type GetSqlserverflexInstanceOptionsInput interface {
 }
 
 type GetSqlserverflexInstanceOptionsArgs struct {
-	Edition       pulumi.StringInput `pulumi:"edition"`
-	RetentionDays pulumi.IntInput    `pulumi:"retentionDays"`
+	// Deprecated: edition is deprecated and will be removed after February 2027.
+	Edition pulumi.StringInput `pulumi:"edition"`
+	// Deprecated: retention_days is deprecated and will be removed after February 2027. Use instead `retentionDays` from root.
+	RetentionDays pulumi.IntInput `pulumi:"retentionDays"`
 }
 
 func (GetSqlserverflexInstanceOptionsArgs) ElementType() reflect.Type {
@@ -38603,10 +42844,12 @@ func (o GetSqlserverflexInstanceOptionsOutput) ToGetSqlserverflexInstanceOptions
 	return o
 }
 
+// Deprecated: edition is deprecated and will be removed after February 2027.
 func (o GetSqlserverflexInstanceOptionsOutput) Edition() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSqlserverflexInstanceOptions) string { return v.Edition }).(pulumi.StringOutput)
 }
 
+// Deprecated: retention_days is deprecated and will be removed after February 2027. Use instead `retentionDays` from root.
 func (o GetSqlserverflexInstanceOptionsOutput) RetentionDays() pulumi.IntOutput {
 	return o.ApplyT(func(v GetSqlserverflexInstanceOptions) int { return v.RetentionDays }).(pulumi.IntOutput)
 }
@@ -41042,6 +45285,17 @@ func (o GetVpnGatewayStatusTunnelArrayOutput) Index(i pulumi.IntInput) GetVpnGat
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbWafCustomRuleGroupRuleInput)(nil)).Elem(), AlbWafCustomRuleGroupRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbWafCustomRuleGroupRuleArrayInput)(nil)).Elem(), AlbWafCustomRuleGroupRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbWafCustomRuleGroupRuleBehaviorInput)(nil)).Elem(), AlbWafCustomRuleGroupRuleBehaviorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbWafCustomRuleGroupRuleConditionInput)(nil)).Elem(), AlbWafCustomRuleGroupRuleConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbWafCustomRuleGroupRuleConditionArrayInput)(nil)).Elem(), AlbWafCustomRuleGroupRuleConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbWafCustomRuleGroupRuleConditionOperatorInput)(nil)).Elem(), AlbWafCustomRuleGroupRuleConditionOperatorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbWafCustomRuleGroupRuleConditionVariableInput)(nil)).Elem(), AlbWafCustomRuleGroupRuleConditionVariableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbWafManagedRuleSetGroupsInput)(nil)).Elem(), AlbWafManagedRuleSetGroupsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbWafManagedRuleSetGroupsMapInput)(nil)).Elem(), AlbWafManagedRuleSetGroupsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbWafManagedRuleSetGroupsRulesInput)(nil)).Elem(), AlbWafManagedRuleSetGroupsRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbWafManagedRuleSetGroupsRulesMapInput)(nil)).Elem(), AlbWafManagedRuleSetGroupsRulesMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerErrorInput)(nil)).Elem(), ApplicationLoadBalancerErrorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerErrorArrayInput)(nil)).Elem(), ApplicationLoadBalancerErrorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ApplicationLoadBalancerListenerInput)(nil)).Elem(), ApplicationLoadBalancerListenerArgs{})
@@ -41171,8 +45425,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MongodbflexInstanceOptionsPtrInput)(nil)).Elem(), MongodbflexInstanceOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MongodbflexInstanceStorageInput)(nil)).Elem(), MongodbflexInstanceStorageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MongodbflexInstanceStoragePtrInput)(nil)).Elem(), MongodbflexInstanceStorageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAreaNetworkRangeInput)(nil)).Elem(), NetworkAreaNetworkRangeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAreaNetworkRangeArrayInput)(nil)).Elem(), NetworkAreaNetworkRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAreaRegionIpv4Input)(nil)).Elem(), NetworkAreaRegionIpv4Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAreaRegionIpv4PtrInput)(nil)).Elem(), NetworkAreaRegionIpv4Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAreaRegionIpv4NetworkRangeInput)(nil)).Elem(), NetworkAreaRegionIpv4NetworkRangeArgs{})
@@ -41209,8 +45461,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ObservabilityScrapeconfigTargetArrayInput)(nil)).Elem(), ObservabilityScrapeconfigTargetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OpensearchInstanceParametersInput)(nil)).Elem(), OpensearchInstanceParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OpensearchInstanceParametersPtrInput)(nil)).Elem(), OpensearchInstanceParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PostgresflexInstanceConnectionInfoInput)(nil)).Elem(), PostgresflexInstanceConnectionInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PostgresflexInstanceConnectionInfoPtrInput)(nil)).Elem(), PostgresflexInstanceConnectionInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PostgresflexInstanceConnectionInfoWriteInput)(nil)).Elem(), PostgresflexInstanceConnectionInfoWriteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PostgresflexInstanceConnectionInfoWritePtrInput)(nil)).Elem(), PostgresflexInstanceConnectionInfoWriteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PostgresflexInstanceEncryptionInput)(nil)).Elem(), PostgresflexInstanceEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PostgresflexInstanceEncryptionPtrInput)(nil)).Elem(), PostgresflexInstanceEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PostgresflexInstanceFlavorInput)(nil)).Elem(), PostgresflexInstanceFlavorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PostgresflexInstanceFlavorPtrInput)(nil)).Elem(), PostgresflexInstanceFlavorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PostgresflexInstanceNetworkInput)(nil)).Elem(), PostgresflexInstanceNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PostgresflexInstanceNetworkPtrInput)(nil)).Elem(), PostgresflexInstanceNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PostgresflexInstanceStorageInput)(nil)).Elem(), PostgresflexInstanceStorageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PostgresflexInstanceStoragePtrInput)(nil)).Elem(), PostgresflexInstanceStorageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RabbitmqInstanceParametersInput)(nil)).Elem(), RabbitmqInstanceParametersArgs{})
@@ -41245,10 +45505,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterAccessPtrInput)(nil)).Elem(), SkeClusterAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterAccessIdpInput)(nil)).Elem(), SkeClusterAccessIdpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterAccessIdpPtrInput)(nil)).Elem(), SkeClusterAccessIdpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterAuditInput)(nil)).Elem(), SkeClusterAuditArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterAuditPtrInput)(nil)).Elem(), SkeClusterAuditArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterExtensionsInput)(nil)).Elem(), SkeClusterExtensionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterExtensionsPtrInput)(nil)).Elem(), SkeClusterExtensionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterExtensionsAclInput)(nil)).Elem(), SkeClusterExtensionsAclArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterExtensionsAclPtrInput)(nil)).Elem(), SkeClusterExtensionsAclArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterExtensionsApplicationLoadBalancerInput)(nil)).Elem(), SkeClusterExtensionsApplicationLoadBalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterExtensionsApplicationLoadBalancerPtrInput)(nil)).Elem(), SkeClusterExtensionsApplicationLoadBalancerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterExtensionsArgusInput)(nil)).Elem(), SkeClusterExtensionsArgusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterExtensionsArgusPtrInput)(nil)).Elem(), SkeClusterExtensionsArgusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterExtensionsDnsInput)(nil)).Elem(), SkeClusterExtensionsDnsArgs{})
@@ -41267,6 +45531,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterNodePoolArrayInput)(nil)).Elem(), SkeClusterNodePoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterNodePoolTaintInput)(nil)).Elem(), SkeClusterNodePoolTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterNodePoolTaintArrayInput)(nil)).Elem(), SkeClusterNodePoolTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlserverflexDatabaseTimeoutsInput)(nil)).Elem(), SqlserverflexDatabaseTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlserverflexDatabaseTimeoutsPtrInput)(nil)).Elem(), SqlserverflexDatabaseTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlserverflexInstanceEncryptionInput)(nil)).Elem(), SqlserverflexInstanceEncryptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SqlserverflexInstanceEncryptionPtrInput)(nil)).Elem(), SqlserverflexInstanceEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlserverflexInstanceFlavorInput)(nil)).Elem(), SqlserverflexInstanceFlavorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlserverflexInstanceFlavorPtrInput)(nil)).Elem(), SqlserverflexInstanceFlavorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlserverflexInstanceNetworkInput)(nil)).Elem(), SqlserverflexInstanceNetworkArgs{})
@@ -41333,6 +45601,17 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayAvailabilityZonesPtrInput)(nil)).Elem(), VpnGatewayAvailabilityZonesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayBgpInput)(nil)).Elem(), VpnGatewayBgpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayBgpPtrInput)(nil)).Elem(), VpnGatewayBgpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbWafCustomRuleGroupRuleInput)(nil)).Elem(), GetAlbWafCustomRuleGroupRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbWafCustomRuleGroupRuleArrayInput)(nil)).Elem(), GetAlbWafCustomRuleGroupRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbWafCustomRuleGroupRuleBehaviorInput)(nil)).Elem(), GetAlbWafCustomRuleGroupRuleBehaviorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbWafCustomRuleGroupRuleConditionInput)(nil)).Elem(), GetAlbWafCustomRuleGroupRuleConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbWafCustomRuleGroupRuleConditionArrayInput)(nil)).Elem(), GetAlbWafCustomRuleGroupRuleConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbWafCustomRuleGroupRuleConditionOperatorInput)(nil)).Elem(), GetAlbWafCustomRuleGroupRuleConditionOperatorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbWafCustomRuleGroupRuleConditionVariableInput)(nil)).Elem(), GetAlbWafCustomRuleGroupRuleConditionVariableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbWafManagedRuleSetGroupsInput)(nil)).Elem(), GetAlbWafManagedRuleSetGroupsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbWafManagedRuleSetGroupsMapInput)(nil)).Elem(), GetAlbWafManagedRuleSetGroupsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbWafManagedRuleSetGroupsRulesInput)(nil)).Elem(), GetAlbWafManagedRuleSetGroupsRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbWafManagedRuleSetGroupsRulesMapInput)(nil)).Elem(), GetAlbWafManagedRuleSetGroupsRulesMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerErrorInput)(nil)).Elem(), GetApplicationLoadBalancerErrorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerErrorArrayInput)(nil)).Elem(), GetApplicationLoadBalancerErrorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerListenerInput)(nil)).Elem(), GetApplicationLoadBalancerListenerArgs{})
@@ -41424,8 +45703,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMongodbflexInstanceFlavorInput)(nil)).Elem(), GetMongodbflexInstanceFlavorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMongodbflexInstanceOptionsInput)(nil)).Elem(), GetMongodbflexInstanceOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMongodbflexInstanceStorageInput)(nil)).Elem(), GetMongodbflexInstanceStorageArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAreaNetworkRangeInput)(nil)).Elem(), GetNetworkAreaNetworkRangeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAreaNetworkRangeArrayInput)(nil)).Elem(), GetNetworkAreaNetworkRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAreaRegionIpv4Input)(nil)).Elem(), GetNetworkAreaRegionIpv4Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAreaRegionIpv4NetworkRangeInput)(nil)).Elem(), GetNetworkAreaRegionIpv4NetworkRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAreaRegionIpv4NetworkRangeArrayInput)(nil)).Elem(), GetNetworkAreaRegionIpv4NetworkRangeArray{})
@@ -41453,7 +45730,17 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetObservabilityScrapeconfigTargetInput)(nil)).Elem(), GetObservabilityScrapeconfigTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetObservabilityScrapeconfigTargetArrayInput)(nil)).Elem(), GetObservabilityScrapeconfigTargetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetOpensearchInstanceParametersInput)(nil)).Elem(), GetOpensearchInstanceParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresflexFlavorsFlavorInput)(nil)).Elem(), GetPostgresflexFlavorsFlavorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresflexFlavorsFlavorArrayInput)(nil)).Elem(), GetPostgresflexFlavorsFlavorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresflexFlavorsFlavorStorageClassInput)(nil)).Elem(), GetPostgresflexFlavorsFlavorStorageClassArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresflexFlavorsFlavorStorageClassArrayInput)(nil)).Elem(), GetPostgresflexFlavorsFlavorStorageClassArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresflexFlavorsTimeoutsInput)(nil)).Elem(), GetPostgresflexFlavorsTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresflexFlavorsTimeoutsPtrInput)(nil)).Elem(), GetPostgresflexFlavorsTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresflexInstanceConnectionInfoInput)(nil)).Elem(), GetPostgresflexInstanceConnectionInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresflexInstanceConnectionInfoWriteInput)(nil)).Elem(), GetPostgresflexInstanceConnectionInfoWriteArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresflexInstanceEncryptionInput)(nil)).Elem(), GetPostgresflexInstanceEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresflexInstanceFlavorInput)(nil)).Elem(), GetPostgresflexInstanceFlavorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresflexInstanceNetworkInput)(nil)).Elem(), GetPostgresflexInstanceNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPostgresflexInstanceStorageInput)(nil)).Elem(), GetPostgresflexInstanceStorageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPublicIpRangesPublicIpRangeInput)(nil)).Elem(), GetPublicIpRangesPublicIpRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPublicIpRangesPublicIpRangeArrayInput)(nil)).Elem(), GetPublicIpRangesPublicIpRangeArray{})
@@ -41498,8 +45785,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSfsSnapshotPoliciesItemSnapshotScheduleArrayInput)(nil)).Elem(), GetSfsSnapshotPoliciesItemSnapshotScheduleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeClusterAccessInput)(nil)).Elem(), GetSkeClusterAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeClusterAccessIdpInput)(nil)).Elem(), GetSkeClusterAccessIdpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeClusterAuditInput)(nil)).Elem(), GetSkeClusterAuditArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeClusterExtensionsInput)(nil)).Elem(), GetSkeClusterExtensionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeClusterExtensionsAclInput)(nil)).Elem(), GetSkeClusterExtensionsAclArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeClusterExtensionsApplicationLoadBalancerInput)(nil)).Elem(), GetSkeClusterExtensionsApplicationLoadBalancerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeClusterExtensionsArgusInput)(nil)).Elem(), GetSkeClusterExtensionsArgusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeClusterExtensionsDnsInput)(nil)).Elem(), GetSkeClusterExtensionsDnsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeClusterExtensionsObservabilityInput)(nil)).Elem(), GetSkeClusterExtensionsObservabilityArgs{})
@@ -41518,6 +45807,15 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeMachineImageVersionsMachineImageArrayInput)(nil)).Elem(), GetSkeMachineImageVersionsMachineImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeMachineImageVersionsMachineImageVersionInput)(nil)).Elem(), GetSkeMachineImageVersionsMachineImageVersionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSkeMachineImageVersionsMachineImageVersionArrayInput)(nil)).Elem(), GetSkeMachineImageVersionsMachineImageVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlserverflexDatabaseTimeoutsInput)(nil)).Elem(), GetSqlserverflexDatabaseTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlserverflexDatabaseTimeoutsPtrInput)(nil)).Elem(), GetSqlserverflexDatabaseTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlserverflexFlavorsFlavorInput)(nil)).Elem(), GetSqlserverflexFlavorsFlavorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlserverflexFlavorsFlavorArrayInput)(nil)).Elem(), GetSqlserverflexFlavorsFlavorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlserverflexFlavorsFlavorStorageClassInput)(nil)).Elem(), GetSqlserverflexFlavorsFlavorStorageClassArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlserverflexFlavorsFlavorStorageClassArrayInput)(nil)).Elem(), GetSqlserverflexFlavorsFlavorStorageClassArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlserverflexFlavorsTimeoutsInput)(nil)).Elem(), GetSqlserverflexFlavorsTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlserverflexFlavorsTimeoutsPtrInput)(nil)).Elem(), GetSqlserverflexFlavorsTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlserverflexInstanceEncryptionInput)(nil)).Elem(), GetSqlserverflexInstanceEncryptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlserverflexInstanceFlavorInput)(nil)).Elem(), GetSqlserverflexInstanceFlavorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlserverflexInstanceNetworkInput)(nil)).Elem(), GetSqlserverflexInstanceNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSqlserverflexInstanceNetworkPtrInput)(nil)).Elem(), GetSqlserverflexInstanceNetworkArgs{})
@@ -41559,6 +45857,17 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpnGatewayStatusConnectionArrayInput)(nil)).Elem(), GetVpnGatewayStatusConnectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpnGatewayStatusTunnelInput)(nil)).Elem(), GetVpnGatewayStatusTunnelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpnGatewayStatusTunnelArrayInput)(nil)).Elem(), GetVpnGatewayStatusTunnelArray{})
+	pulumi.RegisterOutputType(AlbWafCustomRuleGroupRuleOutput{})
+	pulumi.RegisterOutputType(AlbWafCustomRuleGroupRuleArrayOutput{})
+	pulumi.RegisterOutputType(AlbWafCustomRuleGroupRuleBehaviorOutput{})
+	pulumi.RegisterOutputType(AlbWafCustomRuleGroupRuleConditionOutput{})
+	pulumi.RegisterOutputType(AlbWafCustomRuleGroupRuleConditionArrayOutput{})
+	pulumi.RegisterOutputType(AlbWafCustomRuleGroupRuleConditionOperatorOutput{})
+	pulumi.RegisterOutputType(AlbWafCustomRuleGroupRuleConditionVariableOutput{})
+	pulumi.RegisterOutputType(AlbWafManagedRuleSetGroupsOutput{})
+	pulumi.RegisterOutputType(AlbWafManagedRuleSetGroupsMapOutput{})
+	pulumi.RegisterOutputType(AlbWafManagedRuleSetGroupsRulesOutput{})
+	pulumi.RegisterOutputType(AlbWafManagedRuleSetGroupsRulesMapOutput{})
 	pulumi.RegisterOutputType(ApplicationLoadBalancerErrorOutput{})
 	pulumi.RegisterOutputType(ApplicationLoadBalancerErrorArrayOutput{})
 	pulumi.RegisterOutputType(ApplicationLoadBalancerListenerOutput{})
@@ -41688,8 +45997,6 @@ func init() {
 	pulumi.RegisterOutputType(MongodbflexInstanceOptionsPtrOutput{})
 	pulumi.RegisterOutputType(MongodbflexInstanceStorageOutput{})
 	pulumi.RegisterOutputType(MongodbflexInstanceStoragePtrOutput{})
-	pulumi.RegisterOutputType(NetworkAreaNetworkRangeOutput{})
-	pulumi.RegisterOutputType(NetworkAreaNetworkRangeArrayOutput{})
 	pulumi.RegisterOutputType(NetworkAreaRegionIpv4Output{})
 	pulumi.RegisterOutputType(NetworkAreaRegionIpv4PtrOutput{})
 	pulumi.RegisterOutputType(NetworkAreaRegionIpv4NetworkRangeOutput{})
@@ -41726,8 +46033,16 @@ func init() {
 	pulumi.RegisterOutputType(ObservabilityScrapeconfigTargetArrayOutput{})
 	pulumi.RegisterOutputType(OpensearchInstanceParametersOutput{})
 	pulumi.RegisterOutputType(OpensearchInstanceParametersPtrOutput{})
+	pulumi.RegisterOutputType(PostgresflexInstanceConnectionInfoOutput{})
+	pulumi.RegisterOutputType(PostgresflexInstanceConnectionInfoPtrOutput{})
+	pulumi.RegisterOutputType(PostgresflexInstanceConnectionInfoWriteOutput{})
+	pulumi.RegisterOutputType(PostgresflexInstanceConnectionInfoWritePtrOutput{})
+	pulumi.RegisterOutputType(PostgresflexInstanceEncryptionOutput{})
+	pulumi.RegisterOutputType(PostgresflexInstanceEncryptionPtrOutput{})
 	pulumi.RegisterOutputType(PostgresflexInstanceFlavorOutput{})
 	pulumi.RegisterOutputType(PostgresflexInstanceFlavorPtrOutput{})
+	pulumi.RegisterOutputType(PostgresflexInstanceNetworkOutput{})
+	pulumi.RegisterOutputType(PostgresflexInstanceNetworkPtrOutput{})
 	pulumi.RegisterOutputType(PostgresflexInstanceStorageOutput{})
 	pulumi.RegisterOutputType(PostgresflexInstanceStoragePtrOutput{})
 	pulumi.RegisterOutputType(RabbitmqInstanceParametersOutput{})
@@ -41762,10 +46077,14 @@ func init() {
 	pulumi.RegisterOutputType(SkeClusterAccessPtrOutput{})
 	pulumi.RegisterOutputType(SkeClusterAccessIdpOutput{})
 	pulumi.RegisterOutputType(SkeClusterAccessIdpPtrOutput{})
+	pulumi.RegisterOutputType(SkeClusterAuditOutput{})
+	pulumi.RegisterOutputType(SkeClusterAuditPtrOutput{})
 	pulumi.RegisterOutputType(SkeClusterExtensionsOutput{})
 	pulumi.RegisterOutputType(SkeClusterExtensionsPtrOutput{})
 	pulumi.RegisterOutputType(SkeClusterExtensionsAclOutput{})
 	pulumi.RegisterOutputType(SkeClusterExtensionsAclPtrOutput{})
+	pulumi.RegisterOutputType(SkeClusterExtensionsApplicationLoadBalancerOutput{})
+	pulumi.RegisterOutputType(SkeClusterExtensionsApplicationLoadBalancerPtrOutput{})
 	pulumi.RegisterOutputType(SkeClusterExtensionsArgusOutput{})
 	pulumi.RegisterOutputType(SkeClusterExtensionsArgusPtrOutput{})
 	pulumi.RegisterOutputType(SkeClusterExtensionsDnsOutput{})
@@ -41784,6 +46103,10 @@ func init() {
 	pulumi.RegisterOutputType(SkeClusterNodePoolArrayOutput{})
 	pulumi.RegisterOutputType(SkeClusterNodePoolTaintOutput{})
 	pulumi.RegisterOutputType(SkeClusterNodePoolTaintArrayOutput{})
+	pulumi.RegisterOutputType(SqlserverflexDatabaseTimeoutsOutput{})
+	pulumi.RegisterOutputType(SqlserverflexDatabaseTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(SqlserverflexInstanceEncryptionOutput{})
+	pulumi.RegisterOutputType(SqlserverflexInstanceEncryptionPtrOutput{})
 	pulumi.RegisterOutputType(SqlserverflexInstanceFlavorOutput{})
 	pulumi.RegisterOutputType(SqlserverflexInstanceFlavorPtrOutput{})
 	pulumi.RegisterOutputType(SqlserverflexInstanceNetworkOutput{})
@@ -41850,6 +46173,17 @@ func init() {
 	pulumi.RegisterOutputType(VpnGatewayAvailabilityZonesPtrOutput{})
 	pulumi.RegisterOutputType(VpnGatewayBgpOutput{})
 	pulumi.RegisterOutputType(VpnGatewayBgpPtrOutput{})
+	pulumi.RegisterOutputType(GetAlbWafCustomRuleGroupRuleOutput{})
+	pulumi.RegisterOutputType(GetAlbWafCustomRuleGroupRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetAlbWafCustomRuleGroupRuleBehaviorOutput{})
+	pulumi.RegisterOutputType(GetAlbWafCustomRuleGroupRuleConditionOutput{})
+	pulumi.RegisterOutputType(GetAlbWafCustomRuleGroupRuleConditionArrayOutput{})
+	pulumi.RegisterOutputType(GetAlbWafCustomRuleGroupRuleConditionOperatorOutput{})
+	pulumi.RegisterOutputType(GetAlbWafCustomRuleGroupRuleConditionVariableOutput{})
+	pulumi.RegisterOutputType(GetAlbWafManagedRuleSetGroupsOutput{})
+	pulumi.RegisterOutputType(GetAlbWafManagedRuleSetGroupsMapOutput{})
+	pulumi.RegisterOutputType(GetAlbWafManagedRuleSetGroupsRulesOutput{})
+	pulumi.RegisterOutputType(GetAlbWafManagedRuleSetGroupsRulesMapOutput{})
 	pulumi.RegisterOutputType(GetApplicationLoadBalancerErrorOutput{})
 	pulumi.RegisterOutputType(GetApplicationLoadBalancerErrorArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationLoadBalancerListenerOutput{})
@@ -41941,8 +46275,6 @@ func init() {
 	pulumi.RegisterOutputType(GetMongodbflexInstanceFlavorOutput{})
 	pulumi.RegisterOutputType(GetMongodbflexInstanceOptionsOutput{})
 	pulumi.RegisterOutputType(GetMongodbflexInstanceStorageOutput{})
-	pulumi.RegisterOutputType(GetNetworkAreaNetworkRangeOutput{})
-	pulumi.RegisterOutputType(GetNetworkAreaNetworkRangeArrayOutput{})
 	pulumi.RegisterOutputType(GetNetworkAreaRegionIpv4Output{})
 	pulumi.RegisterOutputType(GetNetworkAreaRegionIpv4NetworkRangeOutput{})
 	pulumi.RegisterOutputType(GetNetworkAreaRegionIpv4NetworkRangeArrayOutput{})
@@ -41970,7 +46302,17 @@ func init() {
 	pulumi.RegisterOutputType(GetObservabilityScrapeconfigTargetOutput{})
 	pulumi.RegisterOutputType(GetObservabilityScrapeconfigTargetArrayOutput{})
 	pulumi.RegisterOutputType(GetOpensearchInstanceParametersOutput{})
+	pulumi.RegisterOutputType(GetPostgresflexFlavorsFlavorOutput{})
+	pulumi.RegisterOutputType(GetPostgresflexFlavorsFlavorArrayOutput{})
+	pulumi.RegisterOutputType(GetPostgresflexFlavorsFlavorStorageClassOutput{})
+	pulumi.RegisterOutputType(GetPostgresflexFlavorsFlavorStorageClassArrayOutput{})
+	pulumi.RegisterOutputType(GetPostgresflexFlavorsTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetPostgresflexFlavorsTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetPostgresflexInstanceConnectionInfoOutput{})
+	pulumi.RegisterOutputType(GetPostgresflexInstanceConnectionInfoWriteOutput{})
+	pulumi.RegisterOutputType(GetPostgresflexInstanceEncryptionOutput{})
 	pulumi.RegisterOutputType(GetPostgresflexInstanceFlavorOutput{})
+	pulumi.RegisterOutputType(GetPostgresflexInstanceNetworkOutput{})
 	pulumi.RegisterOutputType(GetPostgresflexInstanceStorageOutput{})
 	pulumi.RegisterOutputType(GetPublicIpRangesPublicIpRangeOutput{})
 	pulumi.RegisterOutputType(GetPublicIpRangesPublicIpRangeArrayOutput{})
@@ -42015,8 +46357,10 @@ func init() {
 	pulumi.RegisterOutputType(GetSfsSnapshotPoliciesItemSnapshotScheduleArrayOutput{})
 	pulumi.RegisterOutputType(GetSkeClusterAccessOutput{})
 	pulumi.RegisterOutputType(GetSkeClusterAccessIdpOutput{})
+	pulumi.RegisterOutputType(GetSkeClusterAuditOutput{})
 	pulumi.RegisterOutputType(GetSkeClusterExtensionsOutput{})
 	pulumi.RegisterOutputType(GetSkeClusterExtensionsAclOutput{})
+	pulumi.RegisterOutputType(GetSkeClusterExtensionsApplicationLoadBalancerOutput{})
 	pulumi.RegisterOutputType(GetSkeClusterExtensionsArgusOutput{})
 	pulumi.RegisterOutputType(GetSkeClusterExtensionsDnsOutput{})
 	pulumi.RegisterOutputType(GetSkeClusterExtensionsObservabilityOutput{})
@@ -42035,6 +46379,15 @@ func init() {
 	pulumi.RegisterOutputType(GetSkeMachineImageVersionsMachineImageArrayOutput{})
 	pulumi.RegisterOutputType(GetSkeMachineImageVersionsMachineImageVersionOutput{})
 	pulumi.RegisterOutputType(GetSkeMachineImageVersionsMachineImageVersionArrayOutput{})
+	pulumi.RegisterOutputType(GetSqlserverflexDatabaseTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetSqlserverflexDatabaseTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetSqlserverflexFlavorsFlavorOutput{})
+	pulumi.RegisterOutputType(GetSqlserverflexFlavorsFlavorArrayOutput{})
+	pulumi.RegisterOutputType(GetSqlserverflexFlavorsFlavorStorageClassOutput{})
+	pulumi.RegisterOutputType(GetSqlserverflexFlavorsFlavorStorageClassArrayOutput{})
+	pulumi.RegisterOutputType(GetSqlserverflexFlavorsTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetSqlserverflexFlavorsTimeoutsPtrOutput{})
+	pulumi.RegisterOutputType(GetSqlserverflexInstanceEncryptionOutput{})
 	pulumi.RegisterOutputType(GetSqlserverflexInstanceFlavorOutput{})
 	pulumi.RegisterOutputType(GetSqlserverflexInstanceNetworkOutput{})
 	pulumi.RegisterOutputType(GetSqlserverflexInstanceNetworkPtrOutput{})

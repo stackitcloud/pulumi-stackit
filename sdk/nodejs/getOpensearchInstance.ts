@@ -16,6 +16,7 @@ export function getOpensearchInstance(args: GetOpensearchInstanceArgs, opts?: pu
     return pulumi.runtime.invoke("stackit:index/getOpensearchInstance:getOpensearchInstance", {
         "instanceId": args.instanceId,
         "projectId": args.projectId,
+        "region": args.region,
     }, opts);
 }
 
@@ -31,6 +32,10 @@ export interface GetOpensearchInstanceArgs {
      * STACKIT Project ID to which the instance is associated.
      */
     projectId: string;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: string;
 }
 
 /**
@@ -42,7 +47,7 @@ export interface GetOpensearchInstanceResult {
     readonly cfSpaceGuid: string;
     readonly dashboardUrl: string;
     /**
-     * Terraform's internal data source. identifier. It is structured as "`projectId`,`instanceId`".
+     * Terraform's internal data source. identifier. It is structured as "`projectId`,`region`,`instanceId`".
      */
     readonly id: string;
     readonly imageUrl: string;
@@ -68,6 +73,10 @@ export interface GetOpensearchInstanceResult {
      */
     readonly projectId: string;
     /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    readonly region: string;
+    /**
      * The service version.
      */
     readonly version: string;
@@ -82,6 +91,7 @@ export function getOpensearchInstanceOutput(args: GetOpensearchInstanceOutputArg
     return pulumi.runtime.invokeOutput("stackit:index/getOpensearchInstance:getOpensearchInstance", {
         "instanceId": args.instanceId,
         "projectId": args.projectId,
+        "region": args.region,
     }, opts);
 }
 
@@ -97,4 +107,8 @@ export interface GetOpensearchInstanceOutputArgs {
      * STACKIT Project ID to which the instance is associated.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string | undefined>;
 }

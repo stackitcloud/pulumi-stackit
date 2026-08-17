@@ -33,8 +33,23 @@ namespace Pulumi.Stackit
         [Output("backupSchedule")]
         public Output<string> BackupSchedule { get; private set; } = null!;
 
+        /// <summary>
+        /// The connection info for the PostgresFlex instance.
+        /// </summary>
+        [Output("connectionInfo")]
+        public Output<Outputs.PostgresflexInstanceConnectionInfo> ConnectionInfo { get; private set; } = null!;
+
+        [Output("encryption")]
+        public Output<Outputs.PostgresflexInstanceEncryption?> Encryption { get; private set; } = null!;
+
         [Output("flavor")]
         public Output<Outputs.PostgresflexInstanceFlavor> Flavor { get; private set; } = null!;
+
+        /// <summary>
+        /// The flavor ID of the PostgreSQL Flex instance. Can only be set when `Flavor` and `Replicas` are not set. You can list available flavors using the datasource `stackit.getPostgresflexFlavors`
+        /// </summary>
+        [Output("flavorId")]
+        public Output<string> FlavorId { get; private set; } = null!;
 
         /// <summary>
         /// ID of the PostgresFlex instance.
@@ -49,6 +64,12 @@ namespace Pulumi.Stackit
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The network configuration of the instance. Will be required after February 2027. Set a value to prevent breaking changes.
+        /// </summary>
+        [Output("network")]
+        public Output<Outputs.PostgresflexInstanceNetwork> Network { get; private set; } = null!;
+
+        /// <summary>
         /// STACKIT project ID to which the instance is associated.
         /// </summary>
         [Output("projectId")]
@@ -61,10 +82,16 @@ namespace Pulumi.Stackit
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.
+        /// How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication. Can only be set together with `Flavor`
         /// </summary>
         [Output("replicas")]
         public Output<int> Replicas { get; private set; } = null!;
+
+        /// <summary>
+        /// How long backups are retained. The value can only be between 32 and 90 days. Will be required after February 2027. Set a value to prevent breaking changes.
+        /// </summary>
+        [Output("retentionDays")]
+        public Output<int> RetentionDays { get; private set; } = null!;
 
         [Output("storage")]
         public Output<Outputs.PostgresflexInstanceStorage> Storage { get; private set; } = null!;
@@ -119,12 +146,13 @@ namespace Pulumi.Stackit
 
     public sealed class PostgresflexInstanceArgs : global::Pulumi.ResourceArgs
     {
-        [Input("acls", required: true)]
+        [Input("acls")]
         private InputList<string>? _acls;
 
         /// <summary>
         /// The Access Control List (ACL) for the PostgresFlex instance.
         /// </summary>
+        [Obsolete(@"acl is deprecated and will be removed after February 2027. Use instead `network.acl`.")]
         public InputList<string> Acls
         {
             get => _acls ?? (_acls = new InputList<string>());
@@ -137,14 +165,29 @@ namespace Pulumi.Stackit
         [Input("backupSchedule", required: true)]
         public Input<string> BackupSchedule { get; set; } = null!;
 
-        [Input("flavor", required: true)]
-        public Input<Inputs.PostgresflexInstanceFlavorArgs> Flavor { get; set; } = null!;
+        [Input("encryption")]
+        public Input<Inputs.PostgresflexInstanceEncryptionArgs>? Encryption { get; set; }
+
+        [Input("flavor")]
+        public Input<Inputs.PostgresflexInstanceFlavorArgs>? Flavor { get; set; }
+
+        /// <summary>
+        /// The flavor ID of the PostgreSQL Flex instance. Can only be set when `Flavor` and `Replicas` are not set. You can list available flavors using the datasource `stackit.getPostgresflexFlavors`
+        /// </summary>
+        [Input("flavorId")]
+        public Input<string>? FlavorId { get; set; }
 
         /// <summary>
         /// Instance name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The network configuration of the instance. Will be required after February 2027. Set a value to prevent breaking changes.
+        /// </summary>
+        [Input("network")]
+        public Input<Inputs.PostgresflexInstanceNetworkArgs>? Network { get; set; }
 
         /// <summary>
         /// STACKIT project ID to which the instance is associated.
@@ -159,10 +202,16 @@ namespace Pulumi.Stackit
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.
+        /// How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication. Can only be set together with `Flavor`
         /// </summary>
-        [Input("replicas", required: true)]
-        public Input<int> Replicas { get; set; } = null!;
+        [Input("replicas")]
+        public Input<int>? Replicas { get; set; }
+
+        /// <summary>
+        /// How long backups are retained. The value can only be between 32 and 90 days. Will be required after February 2027. Set a value to prevent breaking changes.
+        /// </summary>
+        [Input("retentionDays")]
+        public Input<int>? RetentionDays { get; set; }
 
         [Input("storage", required: true)]
         public Input<Inputs.PostgresflexInstanceStorageArgs> Storage { get; set; } = null!;
@@ -184,6 +233,7 @@ namespace Pulumi.Stackit
         /// <summary>
         /// The Access Control List (ACL) for the PostgresFlex instance.
         /// </summary>
+        [Obsolete(@"acl is deprecated and will be removed after February 2027. Use instead `network.acl`.")]
         public InputList<string> Acls
         {
             get => _acls ?? (_acls = new InputList<string>());
@@ -196,8 +246,23 @@ namespace Pulumi.Stackit
         [Input("backupSchedule")]
         public Input<string>? BackupSchedule { get; set; }
 
+        /// <summary>
+        /// The connection info for the PostgresFlex instance.
+        /// </summary>
+        [Input("connectionInfo")]
+        public Input<Inputs.PostgresflexInstanceConnectionInfoGetArgs>? ConnectionInfo { get; set; }
+
+        [Input("encryption")]
+        public Input<Inputs.PostgresflexInstanceEncryptionGetArgs>? Encryption { get; set; }
+
         [Input("flavor")]
         public Input<Inputs.PostgresflexInstanceFlavorGetArgs>? Flavor { get; set; }
+
+        /// <summary>
+        /// The flavor ID of the PostgreSQL Flex instance. Can only be set when `Flavor` and `Replicas` are not set. You can list available flavors using the datasource `stackit.getPostgresflexFlavors`
+        /// </summary>
+        [Input("flavorId")]
+        public Input<string>? FlavorId { get; set; }
 
         /// <summary>
         /// ID of the PostgresFlex instance.
@@ -212,6 +277,12 @@ namespace Pulumi.Stackit
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The network configuration of the instance. Will be required after February 2027. Set a value to prevent breaking changes.
+        /// </summary>
+        [Input("network")]
+        public Input<Inputs.PostgresflexInstanceNetworkGetArgs>? Network { get; set; }
+
+        /// <summary>
         /// STACKIT project ID to which the instance is associated.
         /// </summary>
         [Input("projectId")]
@@ -224,10 +295,16 @@ namespace Pulumi.Stackit
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.
+        /// How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication. Can only be set together with `Flavor`
         /// </summary>
         [Input("replicas")]
         public Input<int>? Replicas { get; set; }
+
+        /// <summary>
+        /// How long backups are retained. The value can only be between 32 and 90 days. Will be required after February 2027. Set a value to prevent breaking changes.
+        /// </summary>
+        [Input("retentionDays")]
+        public Input<int>? RetentionDays { get; set; }
 
         [Input("storage")]
         public Input<Inputs.PostgresflexInstanceStorageGetArgs>? Storage { get; set; }

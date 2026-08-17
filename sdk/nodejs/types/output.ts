@@ -5,6 +5,105 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface AlbWafCustomRuleGroupRule {
+    behavior: outputs.AlbWafCustomRuleGroupRuleBehavior;
+    conditions: outputs.AlbWafCustomRuleGroupRuleCondition[];
+    /**
+     * A clear description explaining the threat vector or criteria addressed by this rule.
+     */
+    description?: string;
+    /**
+     * Backend auto-allocated unique rule ID within the valid 1-99999 threshold.
+     */
+    id: number;
+}
+
+export interface AlbWafCustomRuleGroupRuleBehavior {
+    /**
+     * The protective stance action. ACTION_DENY forces a 403 status response code.
+     */
+    action: string;
+    /**
+     * Determines whether an entry should be generated in the security ledger upon a rule hit.
+     */
+    log: boolean;
+    /**
+     * Custom notification message string mapped to underlying logdata contexts. Required if log is true.
+     */
+    logMsg: string;
+    /**
+     * Severity classification metric used by internal analytics graphs.
+     */
+    severity: string;
+}
+
+export interface AlbWafCustomRuleGroupRuleCondition {
+    /**
+     * The comparison logic executed against the transformed variable.
+     */
+    operator: outputs.AlbWafCustomRuleGroupRuleConditionOperator;
+    /**
+     * Ordered normalization steps applied before the operator runs.
+     */
+    transformations: string[];
+    /**
+     * The part of the HTTP transaction to inspect.
+     */
+    variable: outputs.AlbWafCustomRuleGroupRuleConditionVariable;
+}
+
+export interface AlbWafCustomRuleGroupRuleConditionOperator {
+    /**
+     * The operational evaluation type definition macro.
+     */
+    type: string;
+    /**
+     * The text or rule regex pattern arguments applied inside the operator execution loop.
+     */
+    value?: string;
+}
+
+export interface AlbWafCustomRuleGroupRuleConditionVariable {
+    /**
+     * The targeted validation engine variable macro.
+     */
+    type: string;
+    /**
+     * Optional key element context for map variables (e.g., matching a 'Host' header key).
+     */
+    value?: string;
+}
+
+export interface AlbWafManagedRuleSetGroups {
+    /**
+     * A description of what this group covers.
+     */
+    description: string;
+    /**
+     * The name for the rule group.
+     */
+    groupName: string;
+    /**
+     * Rules of the rule group.
+     */
+    rules: {[key: string]: outputs.AlbWafManagedRuleSetGroupsRules};
+}
+
+export interface AlbWafManagedRuleSetGroupsRules {
+    /**
+     * A description of what this rule does.
+     */
+    description: string;
+    /**
+     * The current mode of the rule.
+     */
+    mode: string;
+    /**
+     * Impact level.
+     */
+    severity: string;
+}
+
 export interface ApplicationLoadBalancerError {
     /**
      * The error description contains additional helpful user information to fix the error state of the Application Load Balancer. For example the IP 45.135.247.139 does not exist in the project, then the description will report: Floating IP "45.135.247.139" could not be found.
@@ -347,9 +446,21 @@ export interface CdnDistributionConfig {
      */
     blockedCountries: string[];
     /**
+     * Restricts access to your content by specifying a list of blocked IPv4 addresses. This feature enhances security and privacy by preventing these addresses from accessing your distribution. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state; to clear it explicitly, set it to an empty list.
+     */
+    blockedIps: string[];
+    /**
+     * Sets the default cache duration for the distribution. The default cache duration is applied when a 'Cache-Control' header is not presented in the origin's response. We use ISO8601 duration format for cache duration (e.g. P1DT2H30M). Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
+     */
+    defaultCacheDuration: string;
+    /**
      * Enable this allows the 'Host' header to be passed through to the origin.
      */
     forwardHostHeader: boolean;
+    /**
+     * Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
+     */
+    monthlyLimitBytes: number;
     /**
      * Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
      */
@@ -734,6 +845,105 @@ export interface DremioUserTimeouts {
     update?: string;
 }
 
+export interface GetAlbWafCustomRuleGroupRule {
+    behavior: outputs.GetAlbWafCustomRuleGroupRuleBehavior;
+    conditions: outputs.GetAlbWafCustomRuleGroupRuleCondition[];
+    /**
+     * A clear description explaining the threat vector or criteria addressed by this rule.
+     */
+    description: string;
+    /**
+     * Backend auto-allocated unique rule ID within the valid 1-99999 threshold.
+     */
+    id: number;
+}
+
+export interface GetAlbWafCustomRuleGroupRuleBehavior {
+    /**
+     * The protective stance action. ACTION_DENY forces a 403 status response code.
+     */
+    action: string;
+    /**
+     * Determines whether an entry should be generated in the security ledger upon a rule hit.
+     */
+    log: boolean;
+    /**
+     * Custom notification message string mapped to underlying logdata contexts. Required if log is true.
+     */
+    logMsg: string;
+    /**
+     * Severity classification metric used by internal analytics graphs.
+     */
+    severity: string;
+}
+
+export interface GetAlbWafCustomRuleGroupRuleCondition {
+    /**
+     * The comparison logic executed against the transformed variable.
+     */
+    operator: outputs.GetAlbWafCustomRuleGroupRuleConditionOperator;
+    /**
+     * Ordered normalization steps applied before the operator runs.
+     */
+    transformations: string[];
+    /**
+     * The part of the HTTP transaction to inspect.
+     */
+    variable: outputs.GetAlbWafCustomRuleGroupRuleConditionVariable;
+}
+
+export interface GetAlbWafCustomRuleGroupRuleConditionOperator {
+    /**
+     * The operational evaluation type definition macro.
+     */
+    type: string;
+    /**
+     * The text or rule regex pattern arguments applied inside the operator execution loop.
+     */
+    value: string;
+}
+
+export interface GetAlbWafCustomRuleGroupRuleConditionVariable {
+    /**
+     * The targeted validation engine variable macro.
+     */
+    type: string;
+    /**
+     * Optional key element context for map variables (e.g., matching a 'Host' header key).
+     */
+    value: string;
+}
+
+export interface GetAlbWafManagedRuleSetGroups {
+    /**
+     * A description of what this group covers.
+     */
+    description: string;
+    /**
+     * The name for the rule group.
+     */
+    groupName: string;
+    /**
+     * Rules of the rule group.
+     */
+    rules: {[key: string]: outputs.GetAlbWafManagedRuleSetGroupsRules};
+}
+
+export interface GetAlbWafManagedRuleSetGroupsRules {
+    /**
+     * A description of what this rule does.
+     */
+    description: string;
+    /**
+     * The current mode of the rule.
+     */
+    mode: string;
+    /**
+     * Impact level.
+     */
+    severity: string;
+}
+
 export interface GetApplicationLoadBalancerError {
     /**
      * The error description contains additional helpful user information to fix the error state of the Application Load Balancer. For example the IP 45.135.247.139 does not exist in the project, then the description will report: Floating IP "45.135.247.139" could not be found.
@@ -1068,9 +1278,21 @@ export interface GetCdnDistributionConfig {
      */
     blockedCountries?: string[];
     /**
+     * Restricts access to your content by specifying a list of blocked IPv4 addresses. This feature enhances security and privacy by preventing these addresses from accessing your distribution. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state; to clear it explicitly, set it to an empty list.
+     */
+    blockedIps: string[];
+    /**
+     * Sets the default cache duration for the distribution. The default cache duration is applied when a 'Cache-Control' header is not presented in the origin's response. We use ISO8601 duration format for cache duration (e.g. P1DT2H30M). Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
+     */
+    defaultCacheDuration: string;
+    /**
      * Enable this allows the 'Host' header to be passed through to the origin.
      */
     forwardHostHeader: boolean;
+    /**
+     * Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
+     */
+    monthlyLimitBytes: number;
     /**
      * Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
      */
@@ -1886,11 +2108,6 @@ export interface GetMongodbflexInstanceStorage {
     size: number;
 }
 
-export interface GetNetworkAreaNetworkRange {
-    networkRangeId: string;
-    prefix: string;
-}
-
 export interface GetNetworkAreaRegionIpv4 {
     /**
      * List of DNS Servers/Nameservers.
@@ -2302,11 +2519,107 @@ export interface GetOpensearchInstanceParameters {
     tlsProtocols: string[];
 }
 
+export interface GetPostgresflexFlavorsFlavor {
+    /**
+     * CPU count of the instance.
+     */
+    cpu: number;
+    /**
+     * Flavor description.
+     */
+    description: string;
+    /**
+     * Flavor ID.
+     */
+    id: string;
+    /**
+     * Maximum storage capacity available for the flavor in GB.
+     */
+    maxGb: number;
+    /**
+     * Memory of the instance in GiB.
+     */
+    memory: number;
+    /**
+     * Minimum storage capacity available for the flavor in GB.
+     */
+    minGb: number;
+    /**
+     * Node type of the flavor, either single or replica.
+     */
+    nodeType: string;
+    /**
+     * Storage classes available for the flavor.
+     */
+    storageClasses: outputs.GetPostgresflexFlavorsFlavorStorageClass[];
+}
+
+export interface GetPostgresflexFlavorsFlavorStorageClass {
+    /**
+     * Storage class.
+     */
+    class: string;
+    /**
+     * Maximum I/O operations per second.
+     */
+    maxIoPerSec: number;
+    /**
+     * Maximum throughput in MB per second.
+     */
+    maxThroughInMb: number;
+}
+
+export interface GetPostgresflexFlavorsTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetPostgresflexInstanceConnectionInfo {
+    /**
+     * The DNS name and port in the instance overview.
+     */
+    write: outputs.GetPostgresflexInstanceConnectionInfoWrite;
+}
+
+export interface GetPostgresflexInstanceConnectionInfoWrite {
+    /**
+     * The host of the instance.
+     */
+    host: string;
+    /**
+     * The port of the instance.
+     */
+    port: number;
+}
+
+export interface GetPostgresflexInstanceEncryption {
+    kekKeyId: string;
+    kekKeyVersion: string;
+    kekKeyringId: string;
+    serviceAccount: string;
+}
+
 export interface GetPostgresflexInstanceFlavor {
     cpu: number;
     description: string;
     id: string;
+    nodeType: string;
     ram: number;
+}
+
+export interface GetPostgresflexInstanceNetwork {
+    /**
+     * The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. Possible values are: `PUBLIC`, `SNA`.
+     */
+    accessScope: string;
+    /**
+     * List of IPV4 cidr.
+     */
+    acls: string[];
+    instanceAddress: string;
+    routerAddress: string;
 }
 
 export interface GetPostgresflexInstanceStorage {
@@ -2889,11 +3202,22 @@ export interface GetSkeClusterAccessIdp {
     type: string;
 }
 
+export interface GetSkeClusterAudit {
+    /**
+     * Enable cluster audit log forwarding to a Telemetry Router.
+     */
+    enabled: boolean;
+}
+
 export interface GetSkeClusterExtensions {
     /**
      * Cluster access control configuration
      */
     acl: outputs.GetSkeClusterExtensionsAcl;
+    /**
+     * Application Load Balancer extension.
+     */
+    applicationLoadBalancer: outputs.GetSkeClusterExtensionsApplicationLoadBalancer;
     /**
      * A single argus block as defined below. This field is deprecated and will be removed 06 January 2026.
      *
@@ -2921,6 +3245,13 @@ export interface GetSkeClusterExtensionsAcl {
     enabled: boolean;
 }
 
+export interface GetSkeClusterExtensionsApplicationLoadBalancer {
+    /**
+     * Enables the application load balancer extension.
+     */
+    enabled: boolean;
+}
+
 export interface GetSkeClusterExtensionsArgus {
     /**
      * Instance ID of argus
@@ -2937,6 +3268,10 @@ export interface GetSkeClusterExtensionsDns {
      * Flag to enable/disable DNS extensions
      */
     enabled: boolean;
+    /**
+     * Enables Gateway API support for ExternalDNS. The CRDs must be installed by the user. Once installed, ExternalDNS will be configured at the next cluster reconcile.
+     */
+    gatewayApi: boolean;
     /**
      * Specify a list of domain filters for externalDNS (e.g., `foo.runs.onstackit.cloud`)
      */
@@ -3141,6 +3476,89 @@ export interface GetSkeMachineImageVersionsMachineImageVersion {
     version: string;
 }
 
+export interface GetSqlserverflexDatabaseTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetSqlserverflexFlavorsFlavor {
+    /**
+     * The CPU count of the instance.
+     */
+    cpu: number;
+    /**
+     * Description of the flavor.
+     */
+    description: string;
+    /**
+     * ID of the flavor.
+     */
+    id: string;
+    /**
+     * Maximum storage, which can be ordered for the flavor in Gigabyte.
+     */
+    maxGb: number;
+    /**
+     * The memory (Gibibyte) of the instance.
+     */
+    memory: number;
+    /**
+     * Minimum storage, which is required to order in Gigabyte.
+     */
+    minGb: number;
+    /**
+     * Defines the node type (either single or HA).
+     */
+    nodeType: string;
+    /**
+     * Storage classes available for the flavor.
+     */
+    storageClasses: outputs.GetSqlserverflexFlavorsFlavorStorageClass[];
+}
+
+export interface GetSqlserverflexFlavorsFlavorStorageClass {
+    /**
+     * Class of the instance.
+     */
+    class: string;
+    /**
+     * Maximum I/O per second.
+     */
+    maxIoPerSec: number;
+    /**
+     * Maximum throughput in Megabyte.
+     */
+    maxThroughInMb: number;
+}
+
+export interface GetSqlserverflexFlavorsTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetSqlserverflexInstanceEncryption {
+    /**
+     * UUID of the key within the STACKIT-KMS to use for the encryption.
+     */
+    kekKeyId: string;
+    /**
+     * Version of the key within the STACKIT-KMS to use for the encryption.
+     */
+    kekKeyVersion: string;
+    /**
+     * UUID of the keyring where the key is located within the STACKTI-KMS.
+     */
+    kekKeyringId: string;
+    /**
+     * Service-Account linked to the Key within the STACKIT-KMS.
+     */
+    serviceAccount: string;
+}
+
 export interface GetSqlserverflexInstanceFlavor {
     cpu: number;
     description: string;
@@ -3157,10 +3575,24 @@ export interface GetSqlserverflexInstanceNetwork {
      * List of IPV4 cidr.
      */
     acls: string[];
+    /**
+     * Address of this instance.
+     */
+    instanceAddress: string;
+    /**
+     * Address of the router.
+     */
+    routerAddress: string;
 }
 
 export interface GetSqlserverflexInstanceOptions {
+    /**
+     * @deprecated edition is deprecated and will be removed after February 2027.
+     */
     edition: string;
+    /**
+     * @deprecated retention_days is deprecated and will be removed after February 2027. Use instead `retentionDays` from root.
+     */
     retentionDays: number;
 }
 
@@ -3912,19 +4344,6 @@ export interface MongodbflexInstanceStorage {
     size: number;
 }
 
-export interface NetworkAreaNetworkRange {
-    /**
-     * @deprecated Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `stackit.NetworkAreaRegion` resource instead.
-     */
-    networkRangeId: string;
-    /**
-     * Classless Inter-Domain Routing (CIDR).
-     *
-     * @deprecated Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `stackit.NetworkAreaRegion` resource instead.
-     */
-    prefix: string;
-}
-
 export interface NetworkAreaRegionIpv4 {
     /**
      * List of DNS Servers/Nameservers.
@@ -4336,20 +4755,107 @@ export interface OpensearchInstanceParameters {
     tlsProtocols: string[];
 }
 
+export interface PostgresflexInstanceConnectionInfo {
+    /**
+     * The DNS name and port in the instance overview.
+     */
+    write: outputs.PostgresflexInstanceConnectionInfoWrite;
+}
+
+export interface PostgresflexInstanceConnectionInfoWrite {
+    /**
+     * The host of the instance.
+     */
+    host: string;
+    /**
+     * The port of the instance.
+     */
+    port: number;
+}
+
+export interface PostgresflexInstanceEncryption {
+    /**
+     * The ID of the Key within the STACKIT-KMS to use for the encryption.
+     */
+    kekKeyId: string;
+    /**
+     * Version of the key within the STACKIT-KMS to use for the encryption.
+     */
+    kekKeyVersion: string;
+    /**
+     * The ID of the keyring where the key is located within the STACKTI-KMS.
+     */
+    kekKeyringId: string;
+    /**
+     * Service-Account linked to the Key within the STACKIT-KMS.
+     */
+    serviceAccount: string;
+}
+
 export interface PostgresflexInstanceFlavor {
     cpu: number;
     description: string;
+    /**
+     * Terraform's internal resource ID. It is structured as "`projectId`,`region`,`instanceId`".
+     */
     id: string;
+    nodeType: string;
     ram: number;
+}
+
+export interface PostgresflexInstanceNetwork {
+    /**
+     * The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. Possible values are: `PUBLIC`, `SNA`.
+     */
+    accessScope: string;
+    /**
+     * The Access Control List (ACL) for the PostgresFlex instance.
+     */
+    acls: string[];
+    instanceAddress: string;
+    routerAddress: string;
 }
 
 export interface PostgresflexInstanceStorage {
     /**
      * The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
      * `bash
-     * stackit postgresflex options --storages --flavor-id FLAVOR_ID
+     * stackit postgresflex flavor describe FLAVOR_ID
      * `
      * - `size` (Number)
+     *   \n\n\n\n
+     * ### Nested Schema for `encryption`
+     * Required:
+     * - `kekKeyId` (String) The ID of the Key within the STACKIT-KMS to use for the encryption.
+     * - `kekKeyVersion` (String) Version of the key within the STACKIT-KMS to use for the encryption.
+     * - `kekKeyringId` (String) The ID of the keyring where the key is located within the STACKTI-KMS.
+     * - `serviceAccount` (String) Service-Account linked to the Key within the STACKIT-KMS.
+     *   \n\n\n\n
+     * ### Nested Schema for `flavor`
+     * Required:
+     * - `cpu` (Number)
+     * - `ram` (Number)
+     *   Read-Only:
+     * - `description` (String)
+     * - `id` (String)
+     * - `nodeType` (String)
+     *   \n\n\n\n
+     * ### Nested Schema for `network`
+     * Optional:
+     * - `accessScope` (String) The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. Possible values are: `PUBLIC`, `SNA`.
+     * - `acl` (List of String) The Access Control List (ACL) for the PostgresFlex instance.
+     *   Read-Only:
+     * - `instanceAddress` (String)
+     * - `routerAddress` (String)
+     *   \n\n\n\n
+     * ### Nested Schema for `connectionInfo`
+     * Read-Only:
+     * - `write` (Attributes) The DNS name and port in the instance overview.
+     *   \n\n\n\n
+     * ### Nested Schema for `connection_info.write`
+     * Read-Only:
+     * - `host` (String) The host of the instance.
+     * - `port` (Number) The port of the instance.
      */
     class: string;
     size: number;
@@ -4690,11 +5196,22 @@ export interface SkeClusterAccessIdp {
     type: string;
 }
 
+export interface SkeClusterAudit {
+    /**
+     * Enable cluster audit log forwarding to a Telemetry Router.
+     */
+    enabled: boolean;
+}
+
 export interface SkeClusterExtensions {
     /**
      * Cluster access control configuration.
      */
     acl?: outputs.SkeClusterExtensionsAcl;
+    /**
+     * Application Load Balancer extension.
+     */
+    applicationLoadBalancer: outputs.SkeClusterExtensionsApplicationLoadBalancer;
     /**
      * A single argus block as defined below. This field is deprecated and will be removed 06 January 2026.
      *
@@ -4722,6 +5239,13 @@ export interface SkeClusterExtensionsAcl {
     enabled: boolean;
 }
 
+export interface SkeClusterExtensionsApplicationLoadBalancer {
+    /**
+     * Enables the application load balancer extension. Note: This feature is in private preview. Enabling application load balancer extension is only possible for enabled accounts. Otherwise the request will be rejected. Default value will change to true once the private preview phase is over.
+     */
+    enabled: boolean;
+}
+
 export interface SkeClusterExtensionsArgus {
     /**
      * Argus instance ID to choose which Argus instance is used. Required when enabled is set to `true`.
@@ -4738,6 +5262,10 @@ export interface SkeClusterExtensionsDns {
      * Flag to enable/disable DNS extensions
      */
     enabled: boolean;
+    /**
+     * Enables Gateway API support for ExternalDNS. The CRDs must be installed by the user. Once installed, ExternalDNS will be configured at the next cluster reconcile.
+     */
+    gatewayApi?: boolean;
     /**
      * Specify a list of domain filters for externalDNS (e.g., `foo.runs.onstackit.cloud`)
      */
@@ -4802,7 +5330,7 @@ export interface SkeClusterNetwork {
 
 export interface SkeClusterNetworkControlPlane {
     /**
-     * Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
+     * Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
      */
     accessScope: string;
 }
@@ -4895,6 +5423,44 @@ export interface SkeClusterNodePoolTaint {
     value: string;
 }
 
+export interface SqlserverflexDatabaseTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
+export interface SqlserverflexInstanceEncryption {
+    /**
+     * UUID of the key within the STACKIT-KMS to use for the encryption.
+     */
+    kekKeyId: string;
+    /**
+     * Version of the key within the STACKIT-KMS to use for the encryption.
+     */
+    kekKeyVersion: string;
+    /**
+     * UUID of the keyring where the key is located within the STACKTI-KMS.
+     */
+    kekKeyringId: string;
+    /**
+     * Service-Account linked to the Key within the STACKIT-KMS.
+     */
+    serviceAccount: string;
+}
+
 export interface SqlserverflexInstanceFlavor {
     cpu: number;
     description: string;
@@ -4911,25 +5477,30 @@ export interface SqlserverflexInstanceNetwork {
      * List of IPV4 cidr.
      */
     acls: string[];
+    /**
+     * Address of this instance.
+     */
+    instanceAddress: string;
+    /**
+     * Address of the router.
+     */
+    routerAddress: string;
 }
 
 export interface SqlserverflexInstanceOptions {
     /**
-     * @deprecated edition is deprecated and will be removed after January 2027.
+     * @deprecated edition is deprecated and will be removed after February 2027.
      */
     edition: string;
     /**
-     * @deprecated retention_days is deprecated and will be removed after January 2027. Use instead `retentionDays` from root.
+     * @deprecated retention_days is deprecated and will be removed after February 2027. Use instead `retentionDays` from root.
      */
     retentionDays: number;
 }
 
 export interface SqlserverflexInstanceStorage {
     /**
-     * The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
-     * `bash
-     * stackit beta sqlserverflex options --storages --flavor-id FLAVOR_ID
-     * ` Will be required in the future. Set a value to prevent breaking changes.
+     * The storage class. You can list available storage classes for a the according flavors using the datasource `stackit.getSqlserverflexFlavors`. Will be required in the future. Set a value to prevent breaking changes.
      */
     class: string;
     /**

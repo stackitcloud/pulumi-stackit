@@ -83,6 +83,8 @@ export interface GetTelemetryrouterAccessTokenResult {
     readonly region?: string;
     /**
      * The status of the access token. Possible values are: `active`, `expired`, `deleting`.
+     *
+     * @deprecated status is deprecated and will be removed after February 2027.
      */
     readonly status: string;
 }

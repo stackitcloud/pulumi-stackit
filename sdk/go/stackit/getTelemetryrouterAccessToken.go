@@ -57,6 +57,8 @@ type LookupTelemetryrouterAccessTokenResult struct {
 	// STACKIT region name the resource is located in. If not defined, the provider region is used.
 	Region *string `pulumi:"region"`
 	// The status of the access token. Possible values are: `active`, `expired`, `deleting`.
+	//
+	// Deprecated: status is deprecated and will be removed after February 2027.
 	Status string `pulumi:"status"`
 }
 
@@ -146,6 +148,8 @@ func (o LookupTelemetryrouterAccessTokenResultOutput) Region() pulumi.StringPtrO
 }
 
 // The status of the access token. Possible values are: `active`, `expired`, `deleting`.
+//
+// Deprecated: status is deprecated and will be removed after February 2027.
 func (o LookupTelemetryrouterAccessTokenResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTelemetryrouterAccessTokenResult) string { return v.Status }).(pulumi.StringOutput)
 }

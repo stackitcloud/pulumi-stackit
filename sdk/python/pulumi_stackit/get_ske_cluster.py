@@ -27,10 +27,13 @@ class GetSkeClusterResult:
     """
     A collection of values returned by getSkeCluster.
     """
-    def __init__(__self__, access=None, egress_address_ranges=None, extensions=None, hibernations=None, id=None, kubernetes_version_min=None, kubernetes_version_used=None, maintenance=None, name=None, network=None, node_pools=None, pod_address_ranges=None, project_id=None, region=None, service_account_issuer=None):
+    def __init__(__self__, access=None, audit=None, egress_address_ranges=None, extensions=None, hibernations=None, id=None, kubernetes_version_min=None, kubernetes_version_used=None, maintenance=None, name=None, network=None, node_pools=None, pod_address_ranges=None, project_id=None, region=None, service_account_issuer=None):
         if access and not isinstance(access, dict):
             raise TypeError("Expected argument 'access' to be a dict")
         pulumi.set(__self__, "access", access)
+        if audit and not isinstance(audit, dict):
+            raise TypeError("Expected argument 'audit' to be a dict")
+        pulumi.set(__self__, "audit", audit)
         if egress_address_ranges and not isinstance(egress_address_ranges, list):
             raise TypeError("Expected argument 'egress_address_ranges' to be a list")
         pulumi.set(__self__, "egress_address_ranges", egress_address_ranges)
@@ -81,6 +84,14 @@ class GetSkeClusterResult:
         Configure access to the cluster
         """
         return pulumi.get(self, "access")
+
+    @_builtins.property
+    @pulumi.getter
+    def audit(self) -> 'outputs.GetSkeClusterAuditResult':
+        """
+        Cluster audit log forwarding configuration.
+        """
+        return pulumi.get(self, "audit")
 
     @_builtins.property
     @pulumi.getter(name="egressAddressRanges")
@@ -202,6 +213,7 @@ class AwaitableGetSkeClusterResult(GetSkeClusterResult):
             yield self
         return GetSkeClusterResult(
             access=self.access,
+            audit=self.audit,
             egress_address_ranges=self.egress_address_ranges,
             extensions=self.extensions,
             hibernations=self.hibernations,
@@ -241,6 +253,7 @@ def get_ske_cluster(name: Optional[_builtins.str] = None,
 
     return AwaitableGetSkeClusterResult(
         access=pulumi.get(__ret__, 'access'),
+        audit=pulumi.get(__ret__, 'audit'),
         egress_address_ranges=pulumi.get(__ret__, 'egress_address_ranges'),
         extensions=pulumi.get(__ret__, 'extensions'),
         hibernations=pulumi.get(__ret__, 'hibernations'),
@@ -277,6 +290,7 @@ def get_ske_cluster_output(name: pulumi.Input[Optional[_builtins.str]] = None,
     __ret__ = pulumi.runtime.invoke_output('stackit:index/getSkeCluster:getSkeCluster', __args__, opts=opts, typ=GetSkeClusterResult)
     return __ret__.apply(lambda __response__: GetSkeClusterResult(
         access=pulumi.get(__response__, 'access'),
+        audit=pulumi.get(__response__, 'audit'),
         egress_address_ranges=pulumi.get(__response__, 'egress_address_ranges'),
         extensions=pulumi.get(__response__, 'extensions'),
         hibernations=pulumi.get(__response__, 'hibernations'),

@@ -44,7 +44,7 @@ export class DnsZone extends pulumi.CustomResource {
     }
 
     /**
-     * The access control list. E.g. `0.0.0.0/0,::/0`
+     * The access control list (e.g., 0.0.0.0/0,::/0). Note: This field currently has no effect and does not enforce any access restrictions on the DNS zone.
      */
     declare public readonly acl: pulumi.Output<string>;
     declare public readonly active: pulumi.Output<boolean>;
@@ -202,7 +202,7 @@ export class DnsZone extends pulumi.CustomResource {
  */
 export interface DnsZoneState {
     /**
-     * The access control list. E.g. `0.0.0.0/0,::/0`
+     * The access control list (e.g., 0.0.0.0/0,::/0). Note: This field currently has no effect and does not enforce any access restrictions on the DNS zone.
      */
     acl?: pulumi.Input<string | undefined>;
     active?: pulumi.Input<boolean | undefined>;
@@ -290,7 +290,7 @@ export interface DnsZoneState {
  */
 export interface DnsZoneArgs {
     /**
-     * The access control list. E.g. `0.0.0.0/0,::/0`
+     * The access control list (e.g., 0.0.0.0/0,::/0). Note: This field currently has no effect and does not enforce any access restrictions on the DNS zone.
      */
     acl?: pulumi.Input<string | undefined>;
     active?: pulumi.Input<boolean | undefined>;

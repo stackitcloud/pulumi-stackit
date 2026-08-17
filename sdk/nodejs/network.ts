@@ -69,6 +69,10 @@ export class Network extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly ipv4Prefixes: pulumi.Output<string[]>;
     /**
+     * The IPv4 VPC network range ID.
+     */
+    declare public readonly ipv4VpcNetworkRangeId: pulumi.Output<string | undefined>;
+    /**
      * The IPv6 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
      */
     declare public readonly ipv6Gateway: pulumi.Output<string>;
@@ -88,6 +92,10 @@ export class Network extends pulumi.CustomResource {
      * The IPv6 prefixes of the network.
      */
     declare public /*out*/ readonly ipv6Prefixes: pulumi.Output<string[]>;
+    /**
+     * The IPv6 VPC network range ID.
+     */
+    declare public readonly ipv6VpcNetworkRangeId: pulumi.Output<string | undefined>;
     /**
      * Labels are key-value string pairs which can be attached to a resource container
      */
@@ -128,6 +136,10 @@ export class Network extends pulumi.CustomResource {
      * The ID of the routing table associated with the network.
      */
     declare public readonly routingTableId: pulumi.Output<string>;
+    /**
+     * The ID of the VPC the network is associated with.
+     */
+    declare public readonly vpcId: pulumi.Output<string | undefined>;
 
     /**
      * Create a Network resource with the given unique name, arguments, and options.
@@ -148,11 +160,13 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["ipv4Prefix"] = state?.ipv4Prefix;
             resourceInputs["ipv4PrefixLength"] = state?.ipv4PrefixLength;
             resourceInputs["ipv4Prefixes"] = state?.ipv4Prefixes;
+            resourceInputs["ipv4VpcNetworkRangeId"] = state?.ipv4VpcNetworkRangeId;
             resourceInputs["ipv6Gateway"] = state?.ipv6Gateway;
             resourceInputs["ipv6Nameservers"] = state?.ipv6Nameservers;
             resourceInputs["ipv6Prefix"] = state?.ipv6Prefix;
             resourceInputs["ipv6PrefixLength"] = state?.ipv6PrefixLength;
             resourceInputs["ipv6Prefixes"] = state?.ipv6Prefixes;
+            resourceInputs["ipv6VpcNetworkRangeId"] = state?.ipv6VpcNetworkRangeId;
             resourceInputs["labels"] = state?.labels;
             resourceInputs["name"] = state?.name;
             resourceInputs["networkId"] = state?.networkId;
@@ -163,6 +177,7 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["region"] = state?.region;
             resourceInputs["routed"] = state?.routed;
             resourceInputs["routingTableId"] = state?.routingTableId;
+            resourceInputs["vpcId"] = state?.vpcId;
         } else {
             const args = argsOrState as NetworkArgs | undefined;
             if (args?.projectId === undefined && !opts.urn) {
@@ -173,10 +188,12 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["ipv4Nameservers"] = args?.ipv4Nameservers;
             resourceInputs["ipv4Prefix"] = args?.ipv4Prefix;
             resourceInputs["ipv4PrefixLength"] = args?.ipv4PrefixLength;
+            resourceInputs["ipv4VpcNetworkRangeId"] = args?.ipv4VpcNetworkRangeId;
             resourceInputs["ipv6Gateway"] = args?.ipv6Gateway;
             resourceInputs["ipv6Nameservers"] = args?.ipv6Nameservers;
             resourceInputs["ipv6Prefix"] = args?.ipv6Prefix;
             resourceInputs["ipv6PrefixLength"] = args?.ipv6PrefixLength;
+            resourceInputs["ipv6VpcNetworkRangeId"] = args?.ipv6VpcNetworkRangeId;
             resourceInputs["labels"] = args?.labels;
             resourceInputs["name"] = args?.name;
             resourceInputs["noIpv4Gateway"] = args?.noIpv4Gateway;
@@ -185,6 +202,7 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["region"] = args?.region;
             resourceInputs["routed"] = args?.routed;
             resourceInputs["routingTableId"] = args?.routingTableId;
+            resourceInputs["vpcId"] = args?.vpcId;
             resourceInputs["ipv4Prefixes"] = undefined /*out*/;
             resourceInputs["ipv6Prefixes"] = undefined /*out*/;
             resourceInputs["networkId"] = undefined /*out*/;
@@ -224,6 +242,10 @@ export interface NetworkState {
      */
     ipv4Prefixes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
+     * The IPv4 VPC network range ID.
+     */
+    ipv4VpcNetworkRangeId?: pulumi.Input<string | undefined>;
+    /**
      * The IPv6 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
      */
     ipv6Gateway?: pulumi.Input<string | undefined>;
@@ -243,6 +265,10 @@ export interface NetworkState {
      * The IPv6 prefixes of the network.
      */
     ipv6Prefixes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The IPv6 VPC network range ID.
+     */
+    ipv6VpcNetworkRangeId?: pulumi.Input<string | undefined>;
     /**
      * Labels are key-value string pairs which can be attached to a resource container
      */
@@ -283,6 +309,10 @@ export interface NetworkState {
      * The ID of the routing table associated with the network.
      */
     routingTableId?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the VPC the network is associated with.
+     */
+    vpcId?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -310,6 +340,10 @@ export interface NetworkArgs {
      */
     ipv4PrefixLength?: pulumi.Input<number | undefined>;
     /**
+     * The IPv4 VPC network range ID.
+     */
+    ipv4VpcNetworkRangeId?: pulumi.Input<string | undefined>;
+    /**
      * The IPv6 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
      */
     ipv6Gateway?: pulumi.Input<string | undefined>;
@@ -325,6 +359,10 @@ export interface NetworkArgs {
      * The IPv6 prefix length of the network.
      */
     ipv6PrefixLength?: pulumi.Input<number | undefined>;
+    /**
+     * The IPv6 VPC network range ID.
+     */
+    ipv6VpcNetworkRangeId?: pulumi.Input<string | undefined>;
     /**
      * Labels are key-value string pairs which can be attached to a resource container
      */
@@ -357,4 +395,8 @@ export interface NetworkArgs {
      * The ID of the routing table associated with the network.
      */
     routingTableId?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the VPC the network is associated with.
+     */
+    vpcId?: pulumi.Input<string | undefined>;
 }

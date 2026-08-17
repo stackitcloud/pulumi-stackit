@@ -19,6 +19,12 @@ namespace Pulumi.Stackit.Inputs
         public Input<Inputs.SkeClusterExtensionsAclGetArgs>? Acl { get; set; }
 
         /// <summary>
+        /// Application Load Balancer extension.
+        /// </summary>
+        [Input("applicationLoadBalancer")]
+        public Input<Inputs.SkeClusterExtensionsApplicationLoadBalancerGetArgs>? ApplicationLoadBalancer { get; set; }
+
+        /// <summary>
         /// A single argus block as defined below. This field is deprecated and will be removed 06 January 2026.
         /// </summary>
         [Input("argus")]

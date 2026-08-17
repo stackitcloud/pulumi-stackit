@@ -30,11 +30,35 @@ namespace Pulumi.Stackit.Inputs
             set => _blockedCountries = value;
         }
 
+        [Input("blockedIps")]
+        private InputList<string>? _blockedIps;
+
+        /// <summary>
+        /// Restricts access to your content by specifying a list of blocked IPv4 addresses. This feature enhances security and privacy by preventing these addresses from accessing your distribution. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state; to clear it explicitly, set it to an empty list.
+        /// </summary>
+        public InputList<string> BlockedIps
+        {
+            get => _blockedIps ?? (_blockedIps = new InputList<string>());
+            set => _blockedIps = value;
+        }
+
+        /// <summary>
+        /// Sets the default cache duration for the distribution. The default cache duration is applied when a 'Cache-Control' header is not presented in the origin's response. We use ISO8601 duration format for cache duration (e.g. P1DT2H30M). Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
+        /// </summary>
+        [Input("defaultCacheDuration")]
+        public Input<string>? DefaultCacheDuration { get; set; }
+
         /// <summary>
         /// Enable this allows the 'Host' header to be passed through to the origin.
         /// </summary>
         [Input("forwardHostHeader")]
         public Input<bool>? ForwardHostHeader { get; set; }
+
+        /// <summary>
+        /// Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
+        /// </summary>
+        [Input("monthlyLimitBytes")]
+        public Input<int>? MonthlyLimitBytes { get; set; }
 
         /// <summary>
         /// Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.

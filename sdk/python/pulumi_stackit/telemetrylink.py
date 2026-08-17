@@ -24,6 +24,8 @@ class TelemetrylinkArgs:
                  resource_type: pulumi.Input[_builtins.str],
                  telemetry_router_id: pulumi.Input[_builtins.str],
                  access_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_token_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_token_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -33,7 +35,10 @@ class TelemetrylinkArgs:
         :param pulumi.Input[_builtins.str] resource_id: STACKIT project ID, folder ID, or organization ID associated with the Telemetry Link resource.
         :param pulumi.Input[_builtins.str] resource_type: The resource type of the TelemetryLink resource, possible values: Possible values are: `organization`, `folder`, `project`.
         :param pulumi.Input[_builtins.str] telemetry_router_id: The Telemetry Router ID.
-        :param pulumi.Input[_builtins.str] access_token: The access token of the Telemetry Router instance.
+        :param pulumi.Input[_builtins.str] access_token: The access token of the Telemetry Router instance. Write-only argument `access_token_wo` should be preferred.
+        :param pulumi.Input[_builtins.str] access_token_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The access token of the Telemetry Router instance. Write-only - never stored in state and never returned by the API. To rotate the token, update this value AND increment `access_token_wo_version`. Changing this field alone will NOT trigger an update.
+        :param pulumi.Input[_builtins.int] access_token_wo_version: User-managed rotation counter for `access_token_wo`. Must be incremented every time `access_token_wo` is changed. Terraform diffs this field to detect token rotations - changing `access_token_wo` alone will NOT trigger an update because it is write-only and never stored in state.
         :param pulumi.Input[_builtins.str] description: The description of the Telemetry Link resource.
         :param pulumi.Input[_builtins.str] region: STACKIT region name the resource is located in. If not defined, the provider region is used.
         """
@@ -43,6 +48,10 @@ class TelemetrylinkArgs:
         pulumi.set(__self__, "telemetry_router_id", telemetry_router_id)
         if access_token is not None:
             pulumi.set(__self__, "access_token", access_token)
+        if access_token_wo is not None:
+            pulumi.set(__self__, "access_token_wo", access_token_wo)
+        if access_token_wo_version is not None:
+            pulumi.set(__self__, "access_token_wo_version", access_token_wo_version)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if region is not None:
@@ -100,13 +109,38 @@ class TelemetrylinkArgs:
     @pulumi.getter(name="accessToken")
     def access_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The access token of the Telemetry Router instance.
+        The access token of the Telemetry Router instance. Write-only argument `access_token_wo` should be preferred.
         """
         return pulumi.get(self, "access_token")
 
     @access_token.setter
     def access_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_token", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accessTokenWo")
+    def access_token_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The access token of the Telemetry Router instance. Write-only - never stored in state and never returned by the API. To rotate the token, update this value AND increment `access_token_wo_version`. Changing this field alone will NOT trigger an update.
+        """
+        return pulumi.get(self, "access_token_wo")
+
+    @access_token_wo.setter
+    def access_token_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "access_token_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accessTokenWoVersion")
+    def access_token_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        User-managed rotation counter for `access_token_wo`. Must be incremented every time `access_token_wo` is changed. Terraform diffs this field to detect token rotations - changing `access_token_wo` alone will NOT trigger an update because it is write-only and never stored in state.
+        """
+        return pulumi.get(self, "access_token_wo_version")
+
+    @access_token_wo_version.setter
+    def access_token_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "access_token_wo_version", value)
 
     @_builtins.property
     @pulumi.getter
@@ -137,6 +171,8 @@ class TelemetrylinkArgs:
 class _TelemetrylinkState:
     def __init__(__self__, *,
                  access_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_token_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_token_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -148,7 +184,10 @@ class _TelemetrylinkState:
         """
         Input properties used for looking up and filtering Telemetrylink resources.
 
-        :param pulumi.Input[_builtins.str] access_token: The access token of the Telemetry Router instance.
+        :param pulumi.Input[_builtins.str] access_token: The access token of the Telemetry Router instance. Write-only argument `access_token_wo` should be preferred.
+        :param pulumi.Input[_builtins.str] access_token_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The access token of the Telemetry Router instance. Write-only - never stored in state and never returned by the API. To rotate the token, update this value AND increment `access_token_wo_version`. Changing this field alone will NOT trigger an update.
+        :param pulumi.Input[_builtins.int] access_token_wo_version: User-managed rotation counter for `access_token_wo`. Must be incremented every time `access_token_wo` is changed. Terraform diffs this field to detect token rotations - changing `access_token_wo` alone will NOT trigger an update because it is write-only and never stored in state.
         :param pulumi.Input[_builtins.str] create_time: The time the Telemetry Link was created.
         :param pulumi.Input[_builtins.str] description: The description of the Telemetry Link resource.
         :param pulumi.Input[_builtins.str] display_name: The displayed name of the Telemetry Link resource.
@@ -160,6 +199,10 @@ class _TelemetrylinkState:
         """
         if access_token is not None:
             pulumi.set(__self__, "access_token", access_token)
+        if access_token_wo is not None:
+            pulumi.set(__self__, "access_token_wo", access_token_wo)
+        if access_token_wo_version is not None:
+            pulumi.set(__self__, "access_token_wo_version", access_token_wo_version)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if description is not None:
@@ -173,6 +216,9 @@ class _TelemetrylinkState:
         if resource_type is not None:
             pulumi.set(__self__, "resource_type", resource_type)
         if status is not None:
+            warnings.warn("""status is deprecated and will be removed after February 2027.""", DeprecationWarning)
+            pulumi.log.warn("""status is deprecated: status is deprecated and will be removed after February 2027.""")
+        if status is not None:
             pulumi.set(__self__, "status", status)
         if telemetry_router_id is not None:
             pulumi.set(__self__, "telemetry_router_id", telemetry_router_id)
@@ -181,13 +227,38 @@ class _TelemetrylinkState:
     @pulumi.getter(name="accessToken")
     def access_token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The access token of the Telemetry Router instance.
+        The access token of the Telemetry Router instance. Write-only argument `access_token_wo` should be preferred.
         """
         return pulumi.get(self, "access_token")
 
     @access_token.setter
     def access_token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_token", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accessTokenWo")
+    def access_token_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The access token of the Telemetry Router instance. Write-only - never stored in state and never returned by the API. To rotate the token, update this value AND increment `access_token_wo_version`. Changing this field alone will NOT trigger an update.
+        """
+        return pulumi.get(self, "access_token_wo")
+
+    @access_token_wo.setter
+    def access_token_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "access_token_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="accessTokenWoVersion")
+    def access_token_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        User-managed rotation counter for `access_token_wo`. Must be incremented every time `access_token_wo` is changed. Terraform diffs this field to detect token rotations - changing `access_token_wo` alone will NOT trigger an update because it is write-only and never stored in state.
+        """
+        return pulumi.get(self, "access_token_wo_version")
+
+    @access_token_wo_version.setter
+    def access_token_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "access_token_wo_version", value)
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -263,6 +334,7 @@ class _TelemetrylinkState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""status is deprecated and will be removed after February 2027.""")
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the TelemetryLink, possible values: Possible values are: `active`, `inactive`, `failed`, `reconciling`, `deleting`.
@@ -293,6 +365,8 @@ class Telemetrylink(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_token_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_token_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -312,7 +386,10 @@ class Telemetrylink(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_token: The access token of the Telemetry Router instance.
+        :param pulumi.Input[_builtins.str] access_token: The access token of the Telemetry Router instance. Write-only argument `access_token_wo` should be preferred.
+        :param pulumi.Input[_builtins.str] access_token_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The access token of the Telemetry Router instance. Write-only - never stored in state and never returned by the API. To rotate the token, update this value AND increment `access_token_wo_version`. Changing this field alone will NOT trigger an update.
+        :param pulumi.Input[_builtins.int] access_token_wo_version: User-managed rotation counter for `access_token_wo`. Must be incremented every time `access_token_wo` is changed. Terraform diffs this field to detect token rotations - changing `access_token_wo` alone will NOT trigger an update because it is write-only and never stored in state.
         :param pulumi.Input[_builtins.str] description: The description of the Telemetry Link resource.
         :param pulumi.Input[_builtins.str] display_name: The displayed name of the Telemetry Link resource.
         :param pulumi.Input[_builtins.str] region: STACKIT region name the resource is located in. If not defined, the provider region is used.
@@ -352,6 +429,8 @@ class Telemetrylink(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_token_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_token_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -368,6 +447,8 @@ class Telemetrylink(pulumi.CustomResource):
             __props__ = TelemetrylinkArgs.__new__(TelemetrylinkArgs)
 
             __props__.__dict__["access_token"] = None if access_token is None else pulumi.Output.secret(access_token)
+            __props__.__dict__["access_token_wo"] = None if access_token_wo is None else pulumi.Output.secret(access_token_wo)
+            __props__.__dict__["access_token_wo_version"] = access_token_wo_version
             __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
@@ -384,7 +465,7 @@ class Telemetrylink(pulumi.CustomResource):
             __props__.__dict__["telemetry_router_id"] = telemetry_router_id
             __props__.__dict__["create_time"] = None
             __props__.__dict__["status"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accessToken"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["accessToken", "accessTokenWo"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Telemetrylink, __self__).__init__(
             'stackit:index/telemetrylink:Telemetrylink',
@@ -397,6 +478,8 @@ class Telemetrylink(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_token: pulumi.Input[Optional[_builtins.str]] = None,
+            access_token_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            access_token_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -412,7 +495,10 @@ class Telemetrylink(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] access_token: The access token of the Telemetry Router instance.
+        :param pulumi.Input[_builtins.str] access_token: The access token of the Telemetry Router instance. Write-only argument `access_token_wo` should be preferred.
+        :param pulumi.Input[_builtins.str] access_token_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               The access token of the Telemetry Router instance. Write-only - never stored in state and never returned by the API. To rotate the token, update this value AND increment `access_token_wo_version`. Changing this field alone will NOT trigger an update.
+        :param pulumi.Input[_builtins.int] access_token_wo_version: User-managed rotation counter for `access_token_wo`. Must be incremented every time `access_token_wo` is changed. Terraform diffs this field to detect token rotations - changing `access_token_wo` alone will NOT trigger an update because it is write-only and never stored in state.
         :param pulumi.Input[_builtins.str] create_time: The time the Telemetry Link was created.
         :param pulumi.Input[_builtins.str] description: The description of the Telemetry Link resource.
         :param pulumi.Input[_builtins.str] display_name: The displayed name of the Telemetry Link resource.
@@ -427,6 +513,8 @@ class Telemetrylink(pulumi.CustomResource):
         __props__ = _TelemetrylinkState.__new__(_TelemetrylinkState)
 
         __props__.__dict__["access_token"] = access_token
+        __props__.__dict__["access_token_wo"] = access_token_wo
+        __props__.__dict__["access_token_wo_version"] = access_token_wo_version
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
@@ -441,9 +529,26 @@ class Telemetrylink(pulumi.CustomResource):
     @pulumi.getter(name="accessToken")
     def access_token(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The access token of the Telemetry Router instance.
+        The access token of the Telemetry Router instance. Write-only argument `access_token_wo` should be preferred.
         """
         return pulumi.get(self, "access_token")
+
+    @_builtins.property
+    @pulumi.getter(name="accessTokenWo")
+    def access_token_wo(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        The access token of the Telemetry Router instance. Write-only - never stored in state and never returned by the API. To rotate the token, update this value AND increment `access_token_wo_version`. Changing this field alone will NOT trigger an update.
+        """
+        return pulumi.get(self, "access_token_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="accessTokenWoVersion")
+    def access_token_wo_version(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        User-managed rotation counter for `access_token_wo`. Must be incremented every time `access_token_wo` is changed. Terraform diffs this field to detect token rotations - changing `access_token_wo` alone will NOT trigger an update because it is write-only and never stored in state.
+        """
+        return pulumi.get(self, "access_token_wo_version")
 
     @_builtins.property
     @pulumi.getter(name="createTime")
@@ -495,6 +600,7 @@ class Telemetrylink(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""status is deprecated and will be removed after February 2027.""")
     def status(self) -> pulumi.Output[_builtins.str]:
         """
         The status of the TelemetryLink, possible values: Possible values are: `active`, `inactive`, `failed`, `reconciling`, `deleting`.

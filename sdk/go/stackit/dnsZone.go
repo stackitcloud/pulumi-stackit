@@ -22,7 +22,7 @@ import (
 type DnsZone struct {
 	pulumi.CustomResourceState
 
-	// The access control list. E.g. `0.0.0.0/0,::/0`
+	// The access control list (e.g., 0.0.0.0/0,::/0). Note: This field currently has no effect and does not enforce any access restrictions on the DNS zone.
 	Acl    pulumi.StringOutput `pulumi:"acl"`
 	Active pulumi.BoolOutput   `pulumi:"active"`
 	// A contact e-mail for the zone.
@@ -102,7 +102,7 @@ func GetDnsZone(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DnsZone resources.
 type dnsZoneState struct {
-	// The access control list. E.g. `0.0.0.0/0,::/0`
+	// The access control list (e.g., 0.0.0.0/0,::/0). Note: This field currently has no effect and does not enforce any access restrictions on the DNS zone.
 	Acl    *string `pulumi:"acl"`
 	Active *bool   `pulumi:"active"`
 	// A contact e-mail for the zone.
@@ -147,7 +147,7 @@ type dnsZoneState struct {
 }
 
 type DnsZoneState struct {
-	// The access control list. E.g. `0.0.0.0/0,::/0`
+	// The access control list (e.g., 0.0.0.0/0,::/0). Note: This field currently has no effect and does not enforce any access restrictions on the DNS zone.
 	Acl    pulumi.StringPtrInput
 	Active pulumi.BoolPtrInput
 	// A contact e-mail for the zone.
@@ -196,7 +196,7 @@ func (DnsZoneState) ElementType() reflect.Type {
 }
 
 type dnsZoneArgs struct {
-	// The access control list. E.g. `0.0.0.0/0,::/0`
+	// The access control list (e.g., 0.0.0.0/0,::/0). Note: This field currently has no effect and does not enforce any access restrictions on the DNS zone.
 	Acl    *string `pulumi:"acl"`
 	Active *bool   `pulumi:"active"`
 	// A contact e-mail for the zone.
@@ -230,7 +230,7 @@ type dnsZoneArgs struct {
 
 // The set of arguments for constructing a DnsZone resource.
 type DnsZoneArgs struct {
-	// The access control list. E.g. `0.0.0.0/0,::/0`
+	// The access control list (e.g., 0.0.0.0/0,::/0). Note: This field currently has no effect and does not enforce any access restrictions on the DNS zone.
 	Acl    pulumi.StringPtrInput
 	Active pulumi.BoolPtrInput
 	// A contact e-mail for the zone.
@@ -349,7 +349,7 @@ func (o DnsZoneOutput) ToDnsZoneOutputWithContext(ctx context.Context) DnsZoneOu
 	return o
 }
 
-// The access control list. E.g. `0.0.0.0/0,::/0`
+// The access control list (e.g., 0.0.0.0/0,::/0). Note: This field currently has no effect and does not enforce any access restrictions on the DNS zone.
 func (o DnsZoneOutput) Acl() pulumi.StringOutput {
 	return o.ApplyT(func(v *DnsZone) pulumi.StringOutput { return v.Acl }).(pulumi.StringOutput)
 }

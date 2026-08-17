@@ -8,6 +8,9 @@ import typing
 # Export this package's modules as members:
 from .affinity_group import *
 from .alb_certificate import *
+from .alb_waf_configuration import *
+from .alb_waf_custom_rule_group import *
+from .alb_waf_managed_rule_set import *
 from .application_load_balancer import *
 from .authorization_folder_custom_role import *
 from .authorization_folder_role_assignment import *
@@ -27,6 +30,9 @@ from .edgecloud_kubeconfig import *
 from .edgecloud_token import *
 from .get_affinity_group import *
 from .get_alb_certificate import *
+from .get_alb_waf_configuration import *
+from .get_alb_waf_custom_rule_group import *
+from .get_alb_waf_managed_rule_set import *
 from .get_application_load_balancer import *
 from .get_authorization_folder_custom_role import *
 from .get_authorization_organization_custom_role import *
@@ -56,6 +62,8 @@ from .get_logs_instance import *
 from .get_machine_type import *
 from .get_mariadb_credential import *
 from .get_mariadb_instance import *
+from .get_modelexperiments_instance import *
+from .get_modelexperiments_token import *
 from .get_mongodbflex_instance import *
 from .get_mongodbflex_user import *
 from .get_network import *
@@ -75,6 +83,7 @@ from .get_observability_scrapeconfig import *
 from .get_opensearch_credential import *
 from .get_opensearch_instance import *
 from .get_postgresflex_database import *
+from .get_postgresflex_flavors import *
 from .get_postgresflex_instance import *
 from .get_postgresflex_user import *
 from .get_public_ip import *
@@ -117,6 +126,8 @@ from .get_sfs_snapshot_policies import *
 from .get_ske_cluster import *
 from .get_ske_kubernetes_versions import *
 from .get_ske_machine_image_versions import *
+from .get_sqlserverflex_database import *
+from .get_sqlserverflex_flavors import *
 from .get_sqlserverflex_instance import *
 from .get_sqlserverflex_user import *
 from .get_telemetrylink import *
@@ -147,6 +158,8 @@ from .logs_access_token import *
 from .logs_instance import *
 from .mariadb_credential import *
 from .mariadb_instance import *
+from .modelexperiments_instance import *
+from .modelexperiments_token import *
 from .modelserving_token import *
 from .mongodbflex_instance import *
 from .mongodbflex_user import *
@@ -206,6 +219,7 @@ from .sfs_resource_pool import *
 from .sfs_share import *
 from .ske_cluster import *
 from .ske_kubeconfig import *
+from .sqlserverflex_database import *
 from .sqlserverflex_instance import *
 from .sqlserverflex_user import *
 from .telemetrylink import *
@@ -247,6 +261,30 @@ _utilities.register(
   "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/albCertificate:AlbCertificate": "AlbCertificate"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/albWafConfiguration",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/albWafConfiguration:AlbWafConfiguration": "AlbWafConfiguration"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/albWafCustomRuleGroup",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/albWafCustomRuleGroup:AlbWafCustomRuleGroup": "AlbWafCustomRuleGroup"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/albWafManagedRuleSet",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/albWafManagedRuleSet:AlbWafManagedRuleSet": "AlbWafManagedRuleSet"
   }
  },
  {
@@ -503,6 +541,22 @@ _utilities.register(
   "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/mariadbInstance:MariadbInstance": "MariadbInstance"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/modelexperimentsInstance",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/modelexperimentsInstance:ModelexperimentsInstance": "ModelexperimentsInstance"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/modelexperimentsToken",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/modelexperimentsToken:ModelexperimentsToken": "ModelexperimentsToken"
   }
  },
  {
@@ -967,6 +1021,14 @@ _utilities.register(
   "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/skeKubeconfig:SkeKubeconfig": "SkeKubeconfig"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/sqlserverflexDatabase",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/sqlserverflexDatabase:SqlserverflexDatabase": "SqlserverflexDatabase"
   }
  },
  {

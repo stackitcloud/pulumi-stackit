@@ -16,6 +16,7 @@ export function getLogmeInstance(args: GetLogmeInstanceArgs, opts?: pulumi.Invok
     return pulumi.runtime.invoke("stackit:index/getLogmeInstance:getLogmeInstance", {
         "instanceId": args.instanceId,
         "projectId": args.projectId,
+        "region": args.region,
     }, opts);
 }
 
@@ -31,6 +32,10 @@ export interface GetLogmeInstanceArgs {
      * STACKIT Project ID to which the instance is associated.
      */
     projectId: string;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: string;
 }
 
 /**
@@ -42,7 +47,7 @@ export interface GetLogmeInstanceResult {
     readonly cfSpaceGuid: string;
     readonly dashboardUrl: string;
     /**
-     * Terraform's internal data source. identifier. It is structured as "`projectId`,`instanceId`".
+     * Terraform's internal data source. identifier. It is structured as "`projectId`,`region`,`instanceId`".
      */
     readonly id: string;
     readonly imageUrl: string;
@@ -68,6 +73,10 @@ export interface GetLogmeInstanceResult {
      */
     readonly projectId: string;
     /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    readonly region: string;
+    /**
      * The service version.
      */
     readonly version: string;
@@ -82,6 +91,7 @@ export function getLogmeInstanceOutput(args: GetLogmeInstanceOutputArgs, opts?: 
     return pulumi.runtime.invokeOutput("stackit:index/getLogmeInstance:getLogmeInstance", {
         "instanceId": args.instanceId,
         "projectId": args.projectId,
+        "region": args.region,
     }, opts);
 }
 
@@ -97,4 +107,8 @@ export interface GetLogmeInstanceOutputArgs {
      * STACKIT Project ID to which the instance is associated.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string | undefined>;
 }

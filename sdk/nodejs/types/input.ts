@@ -5,6 +5,105 @@ import * as pulumi from "@pulumi/pulumi";
 import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 
+export interface AlbWafCustomRuleGroupRule {
+    behavior: pulumi.Input<inputs.AlbWafCustomRuleGroupRuleBehavior>;
+    conditions: pulumi.Input<pulumi.Input<inputs.AlbWafCustomRuleGroupRuleCondition>[]>;
+    /**
+     * A clear description explaining the threat vector or criteria addressed by this rule.
+     */
+    description?: pulumi.Input<string | undefined>;
+    /**
+     * Backend auto-allocated unique rule ID within the valid 1-99999 threshold.
+     */
+    id?: pulumi.Input<number | undefined>;
+}
+
+export interface AlbWafCustomRuleGroupRuleBehavior {
+    /**
+     * The protective stance action. ACTION_DENY forces a 403 status response code.
+     */
+    action: pulumi.Input<string>;
+    /**
+     * Determines whether an entry should be generated in the security ledger upon a rule hit.
+     */
+    log?: pulumi.Input<boolean | undefined>;
+    /**
+     * Custom notification message string mapped to underlying logdata contexts. Required if log is true.
+     */
+    logMsg?: pulumi.Input<string | undefined>;
+    /**
+     * Severity classification metric used by internal analytics graphs.
+     */
+    severity?: pulumi.Input<string | undefined>;
+}
+
+export interface AlbWafCustomRuleGroupRuleCondition {
+    /**
+     * The comparison logic executed against the transformed variable.
+     */
+    operator: pulumi.Input<inputs.AlbWafCustomRuleGroupRuleConditionOperator>;
+    /**
+     * Ordered normalization steps applied before the operator runs.
+     */
+    transformations?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * The part of the HTTP transaction to inspect.
+     */
+    variable: pulumi.Input<inputs.AlbWafCustomRuleGroupRuleConditionVariable>;
+}
+
+export interface AlbWafCustomRuleGroupRuleConditionOperator {
+    /**
+     * The operational evaluation type definition macro.
+     */
+    type: pulumi.Input<string>;
+    /**
+     * The text or rule regex pattern arguments applied inside the operator execution loop.
+     */
+    value?: pulumi.Input<string | undefined>;
+}
+
+export interface AlbWafCustomRuleGroupRuleConditionVariable {
+    /**
+     * The targeted validation engine variable macro.
+     */
+    type: pulumi.Input<string>;
+    /**
+     * Optional key element context for map variables (e.g., matching a 'Host' header key).
+     */
+    value?: pulumi.Input<string | undefined>;
+}
+
+export interface AlbWafManagedRuleSetGroups {
+    /**
+     * A description of what this group covers.
+     */
+    description?: pulumi.Input<string | undefined>;
+    /**
+     * The name for the rule group.
+     */
+    groupName?: pulumi.Input<string | undefined>;
+    /**
+     * Rules of the rule group.
+     */
+    rules?: pulumi.Input<{[key: string]: pulumi.Input<inputs.AlbWafManagedRuleSetGroupsRules>} | undefined>;
+}
+
+export interface AlbWafManagedRuleSetGroupsRules {
+    /**
+     * A description of what this rule does.
+     */
+    description?: pulumi.Input<string | undefined>;
+    /**
+     * The current mode of the rule.
+     */
+    mode?: pulumi.Input<string | undefined>;
+    /**
+     * Impact level.
+     */
+    severity?: pulumi.Input<string | undefined>;
+}
+
 export interface ApplicationLoadBalancerError {
     /**
      * The error description contains additional helpful user information to fix the error state of the Application Load Balancer. For example the IP 45.135.247.139 does not exist in the project, then the description will report: Floating IP "45.135.247.139" could not be found.
@@ -347,9 +446,21 @@ export interface CdnDistributionConfig {
      */
     blockedCountries?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
+     * Restricts access to your content by specifying a list of blocked IPv4 addresses. This feature enhances security and privacy by preventing these addresses from accessing your distribution. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state; to clear it explicitly, set it to an empty list.
+     */
+    blockedIps?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Sets the default cache duration for the distribution. The default cache duration is applied when a 'Cache-Control' header is not presented in the origin's response. We use ISO8601 duration format for cache duration (e.g. P1DT2H30M). Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
+     */
+    defaultCacheDuration?: pulumi.Input<string | undefined>;
+    /**
      * Enable this allows the 'Host' header to be passed through to the origin.
      */
     forwardHostHeader?: pulumi.Input<boolean | undefined>;
+    /**
+     * Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
+     */
+    monthlyLimitBytes?: pulumi.Input<number | undefined>;
     /**
      * Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
      */
@@ -822,6 +933,48 @@ export interface GetImageV2FilterArgs {
     version?: pulumi.Input<string | undefined>;
 }
 
+export interface GetPostgresflexFlavorsTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetPostgresflexFlavorsTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string | undefined>;
+}
+
+export interface GetSqlserverflexDatabaseTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetSqlserverflexDatabaseTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string | undefined>;
+}
+
+export interface GetSqlserverflexFlavorsTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetSqlserverflexFlavorsTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string | undefined>;
+}
+
 export interface GetSqlserverflexInstanceNetwork {
     /**
      * The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected.
@@ -831,6 +984,14 @@ export interface GetSqlserverflexInstanceNetwork {
      * List of IPV4 cidr.
      */
     acls?: string[];
+    /**
+     * Address of this instance.
+     */
+    instanceAddress?: string;
+    /**
+     * Address of the router.
+     */
+    routerAddress?: string;
 }
 
 export interface GetSqlserverflexInstanceNetworkArgs {
@@ -842,6 +1003,14 @@ export interface GetSqlserverflexInstanceNetworkArgs {
      * List of IPV4 cidr.
      */
     acls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Address of this instance.
+     */
+    instanceAddress?: pulumi.Input<string | undefined>;
+    /**
+     * Address of the router.
+     */
+    routerAddress?: pulumi.Input<string | undefined>;
 }
 
 export interface GetVpcNetworkRangeTimeouts {
@@ -1279,19 +1448,6 @@ export interface MongodbflexInstanceStorage {
     size: pulumi.Input<number>;
 }
 
-export interface NetworkAreaNetworkRange {
-    /**
-     * @deprecated Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `stackit.NetworkAreaRegion` resource instead.
-     */
-    networkRangeId?: pulumi.Input<string | undefined>;
-    /**
-     * Classless Inter-Domain Routing (CIDR).
-     *
-     * @deprecated Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `stackit.NetworkAreaRegion` resource instead.
-     */
-    prefix: pulumi.Input<string>;
-}
-
 export interface NetworkAreaRegionIpv4 {
     /**
      * List of DNS Servers/Nameservers.
@@ -1703,20 +1859,107 @@ export interface OpensearchInstanceParameters {
     tlsProtocols?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
+export interface PostgresflexInstanceConnectionInfo {
+    /**
+     * The DNS name and port in the instance overview.
+     */
+    write?: pulumi.Input<inputs.PostgresflexInstanceConnectionInfoWrite | undefined>;
+}
+
+export interface PostgresflexInstanceConnectionInfoWrite {
+    /**
+     * The host of the instance.
+     */
+    host?: pulumi.Input<string | undefined>;
+    /**
+     * The port of the instance.
+     */
+    port?: pulumi.Input<number | undefined>;
+}
+
+export interface PostgresflexInstanceEncryption {
+    /**
+     * The ID of the Key within the STACKIT-KMS to use for the encryption.
+     */
+    kekKeyId: pulumi.Input<string>;
+    /**
+     * Version of the key within the STACKIT-KMS to use for the encryption.
+     */
+    kekKeyVersion: pulumi.Input<string>;
+    /**
+     * The ID of the keyring where the key is located within the STACKTI-KMS.
+     */
+    kekKeyringId: pulumi.Input<string>;
+    /**
+     * Service-Account linked to the Key within the STACKIT-KMS.
+     */
+    serviceAccount: pulumi.Input<string>;
+}
+
 export interface PostgresflexInstanceFlavor {
     cpu: pulumi.Input<number>;
     description?: pulumi.Input<string | undefined>;
+    /**
+     * Terraform's internal resource ID. It is structured as "`projectId`,`region`,`instanceId`".
+     */
     id?: pulumi.Input<string | undefined>;
+    nodeType?: pulumi.Input<string | undefined>;
     ram: pulumi.Input<number>;
+}
+
+export interface PostgresflexInstanceNetwork {
+    /**
+     * The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. Possible values are: `PUBLIC`, `SNA`.
+     */
+    accessScope?: pulumi.Input<string | undefined>;
+    /**
+     * The Access Control List (ACL) for the PostgresFlex instance.
+     */
+    acls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    instanceAddress?: pulumi.Input<string | undefined>;
+    routerAddress?: pulumi.Input<string | undefined>;
 }
 
 export interface PostgresflexInstanceStorage {
     /**
      * The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
      * `bash
-     * stackit postgresflex options --storages --flavor-id FLAVOR_ID
+     * stackit postgresflex flavor describe FLAVOR_ID
      * `
      * - `size` (Number)
+     *   \n\n\n\n
+     * ### Nested Schema for `encryption`
+     * Required:
+     * - `kekKeyId` (String) The ID of the Key within the STACKIT-KMS to use for the encryption.
+     * - `kekKeyVersion` (String) Version of the key within the STACKIT-KMS to use for the encryption.
+     * - `kekKeyringId` (String) The ID of the keyring where the key is located within the STACKTI-KMS.
+     * - `serviceAccount` (String) Service-Account linked to the Key within the STACKIT-KMS.
+     *   \n\n\n\n
+     * ### Nested Schema for `flavor`
+     * Required:
+     * - `cpu` (Number)
+     * - `ram` (Number)
+     *   Read-Only:
+     * - `description` (String)
+     * - `id` (String)
+     * - `nodeType` (String)
+     *   \n\n\n\n
+     * ### Nested Schema for `network`
+     * Optional:
+     * - `accessScope` (String) The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. Possible values are: `PUBLIC`, `SNA`.
+     * - `acl` (List of String) The Access Control List (ACL) for the PostgresFlex instance.
+     *   Read-Only:
+     * - `instanceAddress` (String)
+     * - `routerAddress` (String)
+     *   \n\n\n\n
+     * ### Nested Schema for `connectionInfo`
+     * Read-Only:
+     * - `write` (Attributes) The DNS name and port in the instance overview.
+     *   \n\n\n\n
+     * ### Nested Schema for `connection_info.write`
+     * Read-Only:
+     * - `host` (String) The host of the instance.
+     * - `port` (Number) The port of the instance.
      */
     class: pulumi.Input<string>;
     size: pulumi.Input<number>;
@@ -2057,11 +2300,22 @@ export interface SkeClusterAccessIdp {
     type?: pulumi.Input<string | undefined>;
 }
 
+export interface SkeClusterAudit {
+    /**
+     * Enable cluster audit log forwarding to a Telemetry Router.
+     */
+    enabled?: pulumi.Input<boolean | undefined>;
+}
+
 export interface SkeClusterExtensions {
     /**
      * Cluster access control configuration.
      */
     acl?: pulumi.Input<inputs.SkeClusterExtensionsAcl | undefined>;
+    /**
+     * Application Load Balancer extension.
+     */
+    applicationLoadBalancer?: pulumi.Input<inputs.SkeClusterExtensionsApplicationLoadBalancer | undefined>;
     /**
      * A single argus block as defined below. This field is deprecated and will be removed 06 January 2026.
      *
@@ -2089,6 +2343,13 @@ export interface SkeClusterExtensionsAcl {
     enabled: pulumi.Input<boolean>;
 }
 
+export interface SkeClusterExtensionsApplicationLoadBalancer {
+    /**
+     * Enables the application load balancer extension. Note: This feature is in private preview. Enabling application load balancer extension is only possible for enabled accounts. Otherwise the request will be rejected. Default value will change to true once the private preview phase is over.
+     */
+    enabled?: pulumi.Input<boolean | undefined>;
+}
+
 export interface SkeClusterExtensionsArgus {
     /**
      * Argus instance ID to choose which Argus instance is used. Required when enabled is set to `true`.
@@ -2105,6 +2366,10 @@ export interface SkeClusterExtensionsDns {
      * Flag to enable/disable DNS extensions
      */
     enabled: pulumi.Input<boolean>;
+    /**
+     * Enables Gateway API support for ExternalDNS. The CRDs must be installed by the user. Once installed, ExternalDNS will be configured at the next cluster reconcile.
+     */
+    gatewayApi?: pulumi.Input<boolean | undefined>;
     /**
      * Specify a list of domain filters for externalDNS (e.g., `foo.runs.onstackit.cloud`)
      */
@@ -2169,7 +2434,7 @@ export interface SkeClusterNetwork {
 
 export interface SkeClusterNetworkControlPlane {
     /**
-     * Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
+     * Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
      */
     accessScope?: pulumi.Input<string | undefined>;
 }
@@ -2262,6 +2527,44 @@ export interface SkeClusterNodePoolTaint {
     value?: pulumi.Input<string | undefined>;
 }
 
+export interface SqlserverflexDatabaseTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string | undefined>;
+}
+
+export interface SqlserverflexInstanceEncryption {
+    /**
+     * UUID of the key within the STACKIT-KMS to use for the encryption.
+     */
+    kekKeyId: pulumi.Input<string>;
+    /**
+     * Version of the key within the STACKIT-KMS to use for the encryption.
+     */
+    kekKeyVersion: pulumi.Input<string>;
+    /**
+     * UUID of the keyring where the key is located within the STACKTI-KMS.
+     */
+    kekKeyringId: pulumi.Input<string>;
+    /**
+     * Service-Account linked to the Key within the STACKIT-KMS.
+     */
+    serviceAccount: pulumi.Input<string>;
+}
+
 export interface SqlserverflexInstanceFlavor {
     cpu: pulumi.Input<number>;
     description?: pulumi.Input<string | undefined>;
@@ -2278,25 +2581,30 @@ export interface SqlserverflexInstanceNetwork {
      * List of IPV4 cidr.
      */
     acls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    /**
+     * Address of this instance.
+     */
+    instanceAddress?: pulumi.Input<string | undefined>;
+    /**
+     * Address of the router.
+     */
+    routerAddress?: pulumi.Input<string | undefined>;
 }
 
 export interface SqlserverflexInstanceOptions {
     /**
-     * @deprecated edition is deprecated and will be removed after January 2027.
+     * @deprecated edition is deprecated and will be removed after February 2027.
      */
     edition?: pulumi.Input<string | undefined>;
     /**
-     * @deprecated retention_days is deprecated and will be removed after January 2027. Use instead `retentionDays` from root.
+     * @deprecated retention_days is deprecated and will be removed after February 2027. Use instead `retentionDays` from root.
      */
     retentionDays?: pulumi.Input<number | undefined>;
 }
 
 export interface SqlserverflexInstanceStorage {
     /**
-     * The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
-     * `bash
-     * stackit beta sqlserverflex options --storages --flavor-id FLAVOR_ID
-     * ` Will be required in the future. Set a value to prevent breaking changes.
+     * The storage class. You can list available storage classes for a the according flavors using the datasource `stackit.getSqlserverflexFlavors`. Will be required in the future. Set a value to prevent breaking changes.
      */
     class?: pulumi.Input<string | undefined>;
     /**

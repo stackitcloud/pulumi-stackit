@@ -26,7 +26,7 @@ class GetNetworkResult:
     """
     A collection of values returned by getNetwork.
     """
-    def __init__(__self__, dhcp=None, id=None, ipv4_gateway=None, ipv4_nameservers=None, ipv4_prefix=None, ipv4_prefix_length=None, ipv4_prefixes=None, ipv6_gateway=None, ipv6_nameservers=None, ipv6_prefix=None, ipv6_prefix_length=None, ipv6_prefixes=None, labels=None, name=None, network_id=None, project_id=None, public_ip=None, region=None, routed=None, routing_table_id=None):
+    def __init__(__self__, dhcp=None, id=None, ipv4_gateway=None, ipv4_nameservers=None, ipv4_prefix=None, ipv4_prefix_length=None, ipv4_prefixes=None, ipv4_vpc_network_range_id=None, ipv6_gateway=None, ipv6_nameservers=None, ipv6_prefix=None, ipv6_prefix_length=None, ipv6_prefixes=None, ipv6_vpc_network_range_id=None, labels=None, name=None, network_id=None, project_id=None, public_ip=None, region=None, routed=None, routing_table_id=None, vpc_id=None):
         if dhcp and not isinstance(dhcp, bool):
             raise TypeError("Expected argument 'dhcp' to be a bool")
         pulumi.set(__self__, "dhcp", dhcp)
@@ -48,6 +48,9 @@ class GetNetworkResult:
         if ipv4_prefixes and not isinstance(ipv4_prefixes, list):
             raise TypeError("Expected argument 'ipv4_prefixes' to be a list")
         pulumi.set(__self__, "ipv4_prefixes", ipv4_prefixes)
+        if ipv4_vpc_network_range_id and not isinstance(ipv4_vpc_network_range_id, str):
+            raise TypeError("Expected argument 'ipv4_vpc_network_range_id' to be a str")
+        pulumi.set(__self__, "ipv4_vpc_network_range_id", ipv4_vpc_network_range_id)
         if ipv6_gateway and not isinstance(ipv6_gateway, str):
             raise TypeError("Expected argument 'ipv6_gateway' to be a str")
         pulumi.set(__self__, "ipv6_gateway", ipv6_gateway)
@@ -63,6 +66,9 @@ class GetNetworkResult:
         if ipv6_prefixes and not isinstance(ipv6_prefixes, list):
             raise TypeError("Expected argument 'ipv6_prefixes' to be a list")
         pulumi.set(__self__, "ipv6_prefixes", ipv6_prefixes)
+        if ipv6_vpc_network_range_id and not isinstance(ipv6_vpc_network_range_id, str):
+            raise TypeError("Expected argument 'ipv6_vpc_network_range_id' to be a str")
+        pulumi.set(__self__, "ipv6_vpc_network_range_id", ipv6_vpc_network_range_id)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -87,6 +93,9 @@ class GetNetworkResult:
         if routing_table_id and not isinstance(routing_table_id, str):
             raise TypeError("Expected argument 'routing_table_id' to be a str")
         pulumi.set(__self__, "routing_table_id", routing_table_id)
+        if vpc_id and not isinstance(vpc_id, str):
+            raise TypeError("Expected argument 'vpc_id' to be a str")
+        pulumi.set(__self__, "vpc_id", vpc_id)
 
     @_builtins.property
     @pulumi.getter
@@ -146,6 +155,14 @@ class GetNetworkResult:
         return pulumi.get(self, "ipv4_prefixes")
 
     @_builtins.property
+    @pulumi.getter(name="ipv4VpcNetworkRangeId")
+    def ipv4_vpc_network_range_id(self) -> Optional[_builtins.str]:
+        """
+        The IPv4 VPC network range ID.
+        """
+        return pulumi.get(self, "ipv4_vpc_network_range_id")
+
+    @_builtins.property
     @pulumi.getter(name="ipv6Gateway")
     def ipv6_gateway(self) -> _builtins.str:
         """
@@ -185,6 +202,14 @@ class GetNetworkResult:
         The IPv6 prefixes of the network.
         """
         return pulumi.get(self, "ipv6_prefixes")
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6VpcNetworkRangeId")
+    def ipv6_vpc_network_range_id(self) -> Optional[_builtins.str]:
+        """
+        The IPv6 VPC network range ID.
+        """
+        return pulumi.get(self, "ipv6_vpc_network_range_id")
 
     @_builtins.property
     @pulumi.getter
@@ -250,6 +275,14 @@ class GetNetworkResult:
         """
         return pulumi.get(self, "routing_table_id")
 
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> Optional[_builtins.str]:
+        """
+        The ID of the VPC the network is associated with.
+        """
+        return pulumi.get(self, "vpc_id")
+
 
 class AwaitableGetNetworkResult(GetNetworkResult):
     # pylint: disable=using-constant-test
@@ -264,11 +297,13 @@ class AwaitableGetNetworkResult(GetNetworkResult):
             ipv4_prefix=self.ipv4_prefix,
             ipv4_prefix_length=self.ipv4_prefix_length,
             ipv4_prefixes=self.ipv4_prefixes,
+            ipv4_vpc_network_range_id=self.ipv4_vpc_network_range_id,
             ipv6_gateway=self.ipv6_gateway,
             ipv6_nameservers=self.ipv6_nameservers,
             ipv6_prefix=self.ipv6_prefix,
             ipv6_prefix_length=self.ipv6_prefix_length,
             ipv6_prefixes=self.ipv6_prefixes,
+            ipv6_vpc_network_range_id=self.ipv6_vpc_network_range_id,
             labels=self.labels,
             name=self.name,
             network_id=self.network_id,
@@ -276,12 +311,16 @@ class AwaitableGetNetworkResult(GetNetworkResult):
             public_ip=self.public_ip,
             region=self.region,
             routed=self.routed,
-            routing_table_id=self.routing_table_id)
+            routing_table_id=self.routing_table_id,
+            vpc_id=self.vpc_id)
 
 
-def get_network(network_id: Optional[_builtins.str] = None,
+def get_network(ipv4_vpc_network_range_id: Optional[_builtins.str] = None,
+                ipv6_vpc_network_range_id: Optional[_builtins.str] = None,
+                network_id: Optional[_builtins.str] = None,
                 project_id: Optional[_builtins.str] = None,
                 region: Optional[_builtins.str] = None,
+                vpc_id: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkResult:
     """
     Network resource schema. Must have a `region` specified in the provider configuration.
@@ -289,14 +328,20 @@ def get_network(network_id: Optional[_builtins.str] = None,
     ## Example Usage
 
 
+    :param _builtins.str ipv4_vpc_network_range_id: The IPv4 VPC network range ID.
+    :param _builtins.str ipv6_vpc_network_range_id: The IPv6 VPC network range ID.
     :param _builtins.str network_id: The network ID.
     :param _builtins.str project_id: STACKIT project ID to which the network is associated.
     :param _builtins.str region: The resource region. If not defined, the provider region is used.
+    :param _builtins.str vpc_id: The ID of the VPC the network is associated with.
     """
     __args__ = dict()
+    __args__['ipv4VpcNetworkRangeId'] = ipv4_vpc_network_range_id
+    __args__['ipv6VpcNetworkRangeId'] = ipv6_vpc_network_range_id
     __args__['networkId'] = network_id
     __args__['projectId'] = project_id
     __args__['region'] = region
+    __args__['vpcId'] = vpc_id
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('stackit:index/getNetwork:getNetwork', __args__, opts=opts, typ=GetNetworkResult).value
 
@@ -308,11 +353,13 @@ def get_network(network_id: Optional[_builtins.str] = None,
         ipv4_prefix=pulumi.get(__ret__, 'ipv4_prefix'),
         ipv4_prefix_length=pulumi.get(__ret__, 'ipv4_prefix_length'),
         ipv4_prefixes=pulumi.get(__ret__, 'ipv4_prefixes'),
+        ipv4_vpc_network_range_id=pulumi.get(__ret__, 'ipv4_vpc_network_range_id'),
         ipv6_gateway=pulumi.get(__ret__, 'ipv6_gateway'),
         ipv6_nameservers=pulumi.get(__ret__, 'ipv6_nameservers'),
         ipv6_prefix=pulumi.get(__ret__, 'ipv6_prefix'),
         ipv6_prefix_length=pulumi.get(__ret__, 'ipv6_prefix_length'),
         ipv6_prefixes=pulumi.get(__ret__, 'ipv6_prefixes'),
+        ipv6_vpc_network_range_id=pulumi.get(__ret__, 'ipv6_vpc_network_range_id'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
         network_id=pulumi.get(__ret__, 'network_id'),
@@ -320,10 +367,14 @@ def get_network(network_id: Optional[_builtins.str] = None,
         public_ip=pulumi.get(__ret__, 'public_ip'),
         region=pulumi.get(__ret__, 'region'),
         routed=pulumi.get(__ret__, 'routed'),
-        routing_table_id=pulumi.get(__ret__, 'routing_table_id'))
-def get_network_output(network_id: pulumi.Input[Optional[_builtins.str]] = None,
+        routing_table_id=pulumi.get(__ret__, 'routing_table_id'),
+        vpc_id=pulumi.get(__ret__, 'vpc_id'))
+def get_network_output(ipv4_vpc_network_range_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       ipv6_vpc_network_range_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       network_id: pulumi.Input[Optional[_builtins.str]] = None,
                        project_id: pulumi.Input[Optional[_builtins.str]] = None,
                        region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       vpc_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkResult]:
     """
     Network resource schema. Must have a `region` specified in the provider configuration.
@@ -331,14 +382,20 @@ def get_network_output(network_id: pulumi.Input[Optional[_builtins.str]] = None,
     ## Example Usage
 
 
+    :param _builtins.str ipv4_vpc_network_range_id: The IPv4 VPC network range ID.
+    :param _builtins.str ipv6_vpc_network_range_id: The IPv6 VPC network range ID.
     :param _builtins.str network_id: The network ID.
     :param _builtins.str project_id: STACKIT project ID to which the network is associated.
     :param _builtins.str region: The resource region. If not defined, the provider region is used.
+    :param _builtins.str vpc_id: The ID of the VPC the network is associated with.
     """
     __args__ = dict()
+    __args__['ipv4VpcNetworkRangeId'] = ipv4_vpc_network_range_id
+    __args__['ipv6VpcNetworkRangeId'] = ipv6_vpc_network_range_id
     __args__['networkId'] = network_id
     __args__['projectId'] = project_id
     __args__['region'] = region
+    __args__['vpcId'] = vpc_id
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('stackit:index/getNetwork:getNetwork', __args__, opts=opts, typ=GetNetworkResult)
     return __ret__.apply(lambda __response__: GetNetworkResult(
@@ -349,11 +406,13 @@ def get_network_output(network_id: pulumi.Input[Optional[_builtins.str]] = None,
         ipv4_prefix=pulumi.get(__response__, 'ipv4_prefix'),
         ipv4_prefix_length=pulumi.get(__response__, 'ipv4_prefix_length'),
         ipv4_prefixes=pulumi.get(__response__, 'ipv4_prefixes'),
+        ipv4_vpc_network_range_id=pulumi.get(__response__, 'ipv4_vpc_network_range_id'),
         ipv6_gateway=pulumi.get(__response__, 'ipv6_gateway'),
         ipv6_nameservers=pulumi.get(__response__, 'ipv6_nameservers'),
         ipv6_prefix=pulumi.get(__response__, 'ipv6_prefix'),
         ipv6_prefix_length=pulumi.get(__response__, 'ipv6_prefix_length'),
         ipv6_prefixes=pulumi.get(__response__, 'ipv6_prefixes'),
+        ipv6_vpc_network_range_id=pulumi.get(__response__, 'ipv6_vpc_network_range_id'),
         labels=pulumi.get(__response__, 'labels'),
         name=pulumi.get(__response__, 'name'),
         network_id=pulumi.get(__response__, 'network_id'),
@@ -361,4 +420,5 @@ def get_network_output(network_id: pulumi.Input[Optional[_builtins.str]] = None,
         public_ip=pulumi.get(__response__, 'public_ip'),
         region=pulumi.get(__response__, 'region'),
         routed=pulumi.get(__response__, 'routed'),
-        routing_table_id=pulumi.get(__response__, 'routing_table_id')))
+        routing_table_id=pulumi.get(__response__, 'routing_table_id'),
+        vpc_id=pulumi.get(__response__, 'vpc_id')))

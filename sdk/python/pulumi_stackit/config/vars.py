@@ -35,6 +35,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('albCustomEndpoint')
 
     @_builtins.property
+    def alb_waf_custom_endpoint(self) -> Optional[str]:
+        """
+        Custom endpoint for the Application Load Balancer Web Application Firewall service
+        """
+        return __config__.get('albWafCustomEndpoint')
+
+    @_builtins.property
     def authorization_custom_endpoint(self) -> Optional[str]:
         """
         Custom endpoint for the Membership service
@@ -154,6 +161,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('mariadbCustomEndpoint')
 
     @_builtins.property
+    def modelexperiments_custom_endpoint(self) -> Optional[str]:
+        """
+        Custom endpoint for the AI Model Experiments service
+        """
+        return __config__.get('modelexperimentsCustomEndpoint')
+
+    @_builtins.property
     def modelserving_custom_endpoint(self) -> Optional[str]:
         """
         Custom endpoint for the AI Model Serving service
@@ -236,13 +250,6 @@ class _ExportableConfig(types.ModuleType):
         Custom endpoint for the Redis service
         """
         return __config__.get('redisCustomEndpoint')
-
-    @_builtins.property
-    def region(self) -> Optional[str]:
-        """
-        Region will be used as the default location for regional services. Not all services require a region, some are global
-        """
-        return __config__.get('region')
 
     @_builtins.property
     def resourcemanager_custom_endpoint(self) -> Optional[str]:

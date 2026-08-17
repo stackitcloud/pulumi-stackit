@@ -21,6 +21,11 @@ func GetAlbCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:albCustomEndpoint")
 }
 
+// Custom endpoint for the Application Load Balancer Web Application Firewall service
+func GetAlbWafCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "stackit:albWafCustomEndpoint")
+}
+
 // Custom endpoint for the Membership service
 func GetAuthorizationCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:authorizationCustomEndpoint")
@@ -106,6 +111,11 @@ func GetMariadbCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:mariadbCustomEndpoint")
 }
 
+// Custom endpoint for the AI Model Experiments service
+func GetModelexperimentsCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "stackit:modelexperimentsCustomEndpoint")
+}
+
 // Custom endpoint for the AI Model Serving service
 func GetModelservingCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:modelservingCustomEndpoint")
@@ -164,13 +174,6 @@ func GetRabbitmqCustomEndpoint(ctx *pulumi.Context) string {
 // Custom endpoint for the Redis service
 func GetRedisCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:redisCustomEndpoint")
-}
-
-// Region will be used as the default location for regional services. Not all services require a region, some are global
-//
-// Deprecated: This attribute is deprecated. Use 'default_region' instead
-func GetRegion(ctx *pulumi.Context) string {
-	return config.Get(ctx, "stackit:region")
 }
 
 // Custom endpoint for the Resource Manager service

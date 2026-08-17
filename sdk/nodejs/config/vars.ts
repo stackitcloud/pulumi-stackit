@@ -30,6 +30,17 @@ Object.defineProperty(exports, "albCustomEndpoint", {
 });
 
 /**
+ * Custom endpoint for the Application Load Balancer Web Application Firewall service
+ */
+export declare const albWafCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "albWafCustomEndpoint", {
+    get() {
+        return __config.get("albWafCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+/**
  * Custom endpoint for the Membership service
  */
 export declare const authorizationCustomEndpoint: string | undefined;
@@ -217,6 +228,17 @@ Object.defineProperty(exports, "mariadbCustomEndpoint", {
 });
 
 /**
+ * Custom endpoint for the AI Model Experiments service
+ */
+export declare const modelexperimentsCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "modelexperimentsCustomEndpoint", {
+    get() {
+        return __config.get("modelexperimentsCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+/**
  * Custom endpoint for the AI Model Serving service
  */
 export declare const modelservingCustomEndpoint: string | undefined;
@@ -344,17 +366,6 @@ export declare const redisCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "redisCustomEndpoint", {
     get() {
         return __config.get("redisCustomEndpoint");
-    },
-    enumerable: true,
-});
-
-/**
- * Region will be used as the default location for regional services. Not all services require a region, some are global
- */
-export declare const region: string | undefined;
-Object.defineProperty(exports, "region", {
-    get() {
-        return __config.get("region");
     },
     enumerable: true,
 });

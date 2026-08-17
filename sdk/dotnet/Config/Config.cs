@@ -52,6 +52,16 @@ namespace Pulumi.Stackit
             set => _albCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _albWafCustomEndpoint = new __Value<string?>(() => __config.Get("albWafCustomEndpoint"));
+        /// <summary>
+        /// Custom endpoint for the Application Load Balancer Web Application Firewall service
+        /// </summary>
+        public static string? AlbWafCustomEndpoint
+        {
+            get => _albWafCustomEndpoint.Get();
+            set => _albWafCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _authorizationCustomEndpoint = new __Value<string?>(() => __config.Get("authorizationCustomEndpoint"));
         /// <summary>
         /// Custom endpoint for the Membership service
@@ -222,6 +232,16 @@ namespace Pulumi.Stackit
             set => _mariadbCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _modelexperimentsCustomEndpoint = new __Value<string?>(() => __config.Get("modelexperimentsCustomEndpoint"));
+        /// <summary>
+        /// Custom endpoint for the AI Model Experiments service
+        /// </summary>
+        public static string? ModelexperimentsCustomEndpoint
+        {
+            get => _modelexperimentsCustomEndpoint.Get();
+            set => _modelexperimentsCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _modelservingCustomEndpoint = new __Value<string?>(() => __config.Get("modelservingCustomEndpoint"));
         /// <summary>
         /// Custom endpoint for the AI Model Serving service
@@ -340,16 +360,6 @@ namespace Pulumi.Stackit
         {
             get => _redisCustomEndpoint.Get();
             set => _redisCustomEndpoint.Set(value);
-        }
-
-        private static readonly __Value<string?> _region = new __Value<string?>(() => __config.Get("region"));
-        /// <summary>
-        /// Region will be used as the default location for regional services. Not all services require a region, some are global
-        /// </summary>
-        public static string? Region
-        {
-            get => _region.Get();
-            set => _region.Set(value);
         }
 
         private static readonly __Value<string?> _resourcemanagerCustomEndpoint = new __Value<string?>(() => __config.Get("resourcemanagerCustomEndpoint"));

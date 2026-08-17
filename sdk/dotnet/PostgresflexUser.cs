@@ -239,6 +239,7 @@ namespace Pulumi.Stackit
 
         [Input("uri")]
         private Input<string>? _uri;
+        [Obsolete(@"uri is deprecated and will be removed after February 2027.")]
         public Input<string>? Uri
         {
             get => _uri;

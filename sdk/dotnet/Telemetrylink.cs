@@ -22,10 +22,23 @@ namespace Pulumi.Stackit
     public partial class Telemetrylink : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The access token of the Telemetry Router instance.
+        /// The access token of the Telemetry Router instance. Write-only argument `AccessTokenWo` should be preferred.
         /// </summary>
         [Output("accessToken")]
         public Output<string?> AccessToken { get; private set; } = null!;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The access token of the Telemetry Router instance. Write-only - never stored in state and never returned by the API. To rotate the token, update this value AND increment `AccessTokenWoVersion`. Changing this field alone will NOT trigger an update.
+        /// </summary>
+        [Output("accessTokenWo")]
+        public Output<string?> AccessTokenWo { get; private set; } = null!;
+
+        /// <summary>
+        /// User-managed rotation counter for `AccessTokenWo`. Must be incremented every time `AccessTokenWo` is changed. Terraform diffs this field to detect token rotations - changing `AccessTokenWo` alone will NOT trigger an update because it is write-only and never stored in state.
+        /// </summary>
+        [Output("accessTokenWoVersion")]
+        public Output<int?> AccessTokenWoVersion { get; private set; } = null!;
 
         /// <summary>
         /// The time the Telemetry Link was created.
@@ -102,6 +115,7 @@ namespace Pulumi.Stackit
                 AdditionalSecretOutputs =
                 {
                     "accessToken",
+                    "accessTokenWo",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -130,7 +144,7 @@ namespace Pulumi.Stackit
         private Input<string>? _accessToken;
 
         /// <summary>
-        /// The access token of the Telemetry Router instance.
+        /// The access token of the Telemetry Router instance. Write-only argument `AccessTokenWo` should be preferred.
         /// </summary>
         public Input<string>? AccessToken
         {
@@ -141,6 +155,29 @@ namespace Pulumi.Stackit
                 _accessToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("accessTokenWo")]
+        private Input<string>? _accessTokenWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The access token of the Telemetry Router instance. Write-only - never stored in state and never returned by the API. To rotate the token, update this value AND increment `AccessTokenWoVersion`. Changing this field alone will NOT trigger an update.
+        /// </summary>
+        public Input<string>? AccessTokenWo
+        {
+            get => _accessTokenWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessTokenWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// User-managed rotation counter for `AccessTokenWo`. Must be incremented every time `AccessTokenWo` is changed. Terraform diffs this field to detect token rotations - changing `AccessTokenWo` alone will NOT trigger an update because it is write-only and never stored in state.
+        /// </summary>
+        [Input("accessTokenWoVersion")]
+        public Input<int>? AccessTokenWoVersion { get; set; }
 
         /// <summary>
         /// The description of the Telemetry Link resource.
@@ -190,7 +227,7 @@ namespace Pulumi.Stackit
         private Input<string>? _accessToken;
 
         /// <summary>
-        /// The access token of the Telemetry Router instance.
+        /// The access token of the Telemetry Router instance. Write-only argument `AccessTokenWo` should be preferred.
         /// </summary>
         public Input<string>? AccessToken
         {
@@ -201,6 +238,29 @@ namespace Pulumi.Stackit
                 _accessToken = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
         }
+
+        [Input("accessTokenWo")]
+        private Input<string>? _accessTokenWo;
+
+        /// <summary>
+        /// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        /// The access token of the Telemetry Router instance. Write-only - never stored in state and never returned by the API. To rotate the token, update this value AND increment `AccessTokenWoVersion`. Changing this field alone will NOT trigger an update.
+        /// </summary>
+        public Input<string>? AccessTokenWo
+        {
+            get => _accessTokenWo;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _accessTokenWo = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// User-managed rotation counter for `AccessTokenWo`. Must be incremented every time `AccessTokenWo` is changed. Terraform diffs this field to detect token rotations - changing `AccessTokenWo` alone will NOT trigger an update because it is write-only and never stored in state.
+        /// </summary>
+        [Input("accessTokenWoVersion")]
+        public Input<int>? AccessTokenWoVersion { get; set; }
 
         /// <summary>
         /// The time the Telemetry Link was created.

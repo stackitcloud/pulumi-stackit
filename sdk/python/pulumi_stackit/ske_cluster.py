@@ -24,6 +24,7 @@ class SkeClusterArgs:
                  node_pools: pulumi.Input[Sequence[pulumi.Input['SkeClusterNodePoolArgs']]],
                  project_id: pulumi.Input[_builtins.str],
                  access: pulumi.Input[Optional['SkeClusterAccessArgs']] = None,
+                 audit: pulumi.Input[Optional['SkeClusterAuditArgs']] = None,
                  extensions: pulumi.Input[Optional['SkeClusterExtensionsArgs']] = None,
                  hibernations: pulumi.Input[Optional[Sequence[pulumi.Input['SkeClusterHibernationArgs']]]] = None,
                  kubernetes_version_min: pulumi.Input[Optional[_builtins.str]] = None,
@@ -38,6 +39,7 @@ class SkeClusterArgs:
                To keep your Terraform plans clean and readable, always append new node pools to the end of the list.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the cluster is associated.
         :param pulumi.Input['SkeClusterAccessArgs'] access: Configure access to the cluster
+        :param pulumi.Input['SkeClusterAuditArgs'] audit: Cluster audit log forwarding configuration.
         :param pulumi.Input['SkeClusterExtensionsArgs'] extensions: A single extensions block as defined below.
         :param pulumi.Input[Sequence[pulumi.Input['SkeClusterHibernationArgs']]] hibernations: One or more hibernation block as defined below.
         :param pulumi.Input[_builtins.str] kubernetes_version_min: The minimum Kubernetes version. This field will be used to set the minimum kubernetes version on creation/update of the cluster. If unset, the latest supported Kubernetes version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/). To get the current kubernetes version being used for your cluster, use the read-only `kubernetes_version_used` field.
@@ -50,6 +52,8 @@ class SkeClusterArgs:
         pulumi.set(__self__, "project_id", project_id)
         if access is not None:
             pulumi.set(__self__, "access", access)
+        if audit is not None:
+            pulumi.set(__self__, "audit", audit)
         if extensions is not None:
             pulumi.set(__self__, "extensions", extensions)
         if hibernations is not None:
@@ -101,6 +105,18 @@ class SkeClusterArgs:
     @access.setter
     def access(self, value: pulumi.Input[Optional['SkeClusterAccessArgs']]):
         pulumi.set(self, "access", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def audit(self) -> pulumi.Input[Optional['SkeClusterAuditArgs']]:
+        """
+        Cluster audit log forwarding configuration.
+        """
+        return pulumi.get(self, "audit")
+
+    @audit.setter
+    def audit(self, value: pulumi.Input[Optional['SkeClusterAuditArgs']]):
+        pulumi.set(self, "audit", value)
 
     @_builtins.property
     @pulumi.getter
@@ -191,6 +207,7 @@ class SkeClusterArgs:
 class _SkeClusterState:
     def __init__(__self__, *,
                  access: pulumi.Input[Optional['SkeClusterAccessArgs']] = None,
+                 audit: pulumi.Input[Optional['SkeClusterAuditArgs']] = None,
                  egress_address_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  extensions: pulumi.Input[Optional['SkeClusterExtensionsArgs']] = None,
                  hibernations: pulumi.Input[Optional[Sequence[pulumi.Input['SkeClusterHibernationArgs']]]] = None,
@@ -208,6 +225,7 @@ class _SkeClusterState:
         Input properties used for looking up and filtering SkeCluster resources.
 
         :param pulumi.Input['SkeClusterAccessArgs'] access: Configure access to the cluster
+        :param pulumi.Input['SkeClusterAuditArgs'] audit: Cluster audit log forwarding configuration.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] egress_address_ranges: The outgoing network ranges (in CIDR notation) of traffic originating from workload on the cluster.
         :param pulumi.Input['SkeClusterExtensionsArgs'] extensions: A single extensions block as defined below.
         :param pulumi.Input[Sequence[pulumi.Input['SkeClusterHibernationArgs']]] hibernations: One or more hibernation block as defined below.
@@ -225,6 +243,8 @@ class _SkeClusterState:
         """
         if access is not None:
             pulumi.set(__self__, "access", access)
+        if audit is not None:
+            pulumi.set(__self__, "audit", audit)
         if egress_address_ranges is not None:
             pulumi.set(__self__, "egress_address_ranges", egress_address_ranges)
         if extensions is not None:
@@ -263,6 +283,18 @@ class _SkeClusterState:
     @access.setter
     def access(self, value: pulumi.Input[Optional['SkeClusterAccessArgs']]):
         pulumi.set(self, "access", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def audit(self) -> pulumi.Input[Optional['SkeClusterAuditArgs']]:
+        """
+        Cluster audit log forwarding configuration.
+        """
+        return pulumi.get(self, "audit")
+
+    @audit.setter
+    def audit(self, value: pulumi.Input[Optional['SkeClusterAuditArgs']]):
+        pulumi.set(self, "audit", value)
 
     @_builtins.property
     @pulumi.getter(name="egressAddressRanges")
@@ -429,6 +461,7 @@ class SkeCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access: pulumi.Input[Optional[Union['SkeClusterAccessArgs', 'SkeClusterAccessArgsDict']]] = None,
+                 audit: pulumi.Input[Optional[Union['SkeClusterAuditArgs', 'SkeClusterAuditArgsDict']]] = None,
                  extensions: pulumi.Input[Optional[Union['SkeClusterExtensionsArgs', 'SkeClusterExtensionsArgsDict']]] = None,
                  hibernations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SkeClusterHibernationArgs', 'SkeClusterHibernationArgsDict']]]]] = None,
                  kubernetes_version_min: pulumi.Input[Optional[_builtins.str]] = None,
@@ -454,6 +487,7 @@ class SkeCluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['SkeClusterAccessArgs', 'SkeClusterAccessArgsDict']] access: Configure access to the cluster
+        :param pulumi.Input[Union['SkeClusterAuditArgs', 'SkeClusterAuditArgsDict']] audit: Cluster audit log forwarding configuration.
         :param pulumi.Input[Union['SkeClusterExtensionsArgs', 'SkeClusterExtensionsArgsDict']] extensions: A single extensions block as defined below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SkeClusterHibernationArgs', 'SkeClusterHibernationArgsDict']]]] hibernations: One or more hibernation block as defined below.
         :param pulumi.Input[_builtins.str] kubernetes_version_min: The minimum Kubernetes version. This field will be used to set the minimum kubernetes version on creation/update of the cluster. If unset, the latest supported Kubernetes version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/). To get the current kubernetes version being used for your cluster, use the read-only `kubernetes_version_used` field.
@@ -499,6 +533,7 @@ class SkeCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access: pulumi.Input[Optional[Union['SkeClusterAccessArgs', 'SkeClusterAccessArgsDict']]] = None,
+                 audit: pulumi.Input[Optional[Union['SkeClusterAuditArgs', 'SkeClusterAuditArgsDict']]] = None,
                  extensions: pulumi.Input[Optional[Union['SkeClusterExtensionsArgs', 'SkeClusterExtensionsArgsDict']]] = None,
                  hibernations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SkeClusterHibernationArgs', 'SkeClusterHibernationArgsDict']]]]] = None,
                  kubernetes_version_min: pulumi.Input[Optional[_builtins.str]] = None,
@@ -518,6 +553,7 @@ class SkeCluster(pulumi.CustomResource):
             __props__ = SkeClusterArgs.__new__(SkeClusterArgs)
 
             __props__.__dict__["access"] = access
+            __props__.__dict__["audit"] = audit
             __props__.__dict__["extensions"] = extensions
             __props__.__dict__["hibernations"] = hibernations
             __props__.__dict__["kubernetes_version_min"] = kubernetes_version_min
@@ -546,6 +582,7 @@ class SkeCluster(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access: pulumi.Input[Optional[Union['SkeClusterAccessArgs', 'SkeClusterAccessArgsDict']]] = None,
+            audit: pulumi.Input[Optional[Union['SkeClusterAuditArgs', 'SkeClusterAuditArgsDict']]] = None,
             egress_address_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             extensions: pulumi.Input[Optional[Union['SkeClusterExtensionsArgs', 'SkeClusterExtensionsArgsDict']]] = None,
             hibernations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SkeClusterHibernationArgs', 'SkeClusterHibernationArgsDict']]]]] = None,
@@ -567,6 +604,7 @@ class SkeCluster(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['SkeClusterAccessArgs', 'SkeClusterAccessArgsDict']] access: Configure access to the cluster
+        :param pulumi.Input[Union['SkeClusterAuditArgs', 'SkeClusterAuditArgsDict']] audit: Cluster audit log forwarding configuration.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] egress_address_ranges: The outgoing network ranges (in CIDR notation) of traffic originating from workload on the cluster.
         :param pulumi.Input[Union['SkeClusterExtensionsArgs', 'SkeClusterExtensionsArgsDict']] extensions: A single extensions block as defined below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SkeClusterHibernationArgs', 'SkeClusterHibernationArgsDict']]]] hibernations: One or more hibernation block as defined below.
@@ -587,6 +625,7 @@ class SkeCluster(pulumi.CustomResource):
         __props__ = _SkeClusterState.__new__(_SkeClusterState)
 
         __props__.__dict__["access"] = access
+        __props__.__dict__["audit"] = audit
         __props__.__dict__["egress_address_ranges"] = egress_address_ranges
         __props__.__dict__["extensions"] = extensions
         __props__.__dict__["hibernations"] = hibernations
@@ -611,6 +650,14 @@ class SkeCluster(pulumi.CustomResource):
         return pulumi.get(self, "access")
 
     @_builtins.property
+    @pulumi.getter
+    def audit(self) -> pulumi.Output['outputs.SkeClusterAudit']:
+        """
+        Cluster audit log forwarding configuration.
+        """
+        return pulumi.get(self, "audit")
+
+    @_builtins.property
     @pulumi.getter(name="egressAddressRanges")
     def egress_address_ranges(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
@@ -620,7 +667,7 @@ class SkeCluster(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    def extensions(self) -> pulumi.Output[Optional['outputs.SkeClusterExtensions']]:
+    def extensions(self) -> pulumi.Output['outputs.SkeClusterExtensions']:
         """
         A single extensions block as defined below.
         """

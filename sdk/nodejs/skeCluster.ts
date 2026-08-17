@@ -50,13 +50,17 @@ export class SkeCluster extends pulumi.CustomResource {
      */
     declare public readonly access: pulumi.Output<outputs.SkeClusterAccess>;
     /**
+     * Cluster audit log forwarding configuration.
+     */
+    declare public readonly audit: pulumi.Output<outputs.SkeClusterAudit>;
+    /**
      * The outgoing network ranges (in CIDR notation) of traffic originating from workload on the cluster.
      */
     declare public /*out*/ readonly egressAddressRanges: pulumi.Output<string[]>;
     /**
      * A single extensions block as defined below.
      */
-    declare public readonly extensions: pulumi.Output<outputs.SkeClusterExtensions | undefined>;
+    declare public readonly extensions: pulumi.Output<outputs.SkeClusterExtensions>;
     /**
      * One or more hibernation block as defined below.
      */
@@ -117,6 +121,7 @@ export class SkeCluster extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as SkeClusterState | undefined;
             resourceInputs["access"] = state?.access;
+            resourceInputs["audit"] = state?.audit;
             resourceInputs["egressAddressRanges"] = state?.egressAddressRanges;
             resourceInputs["extensions"] = state?.extensions;
             resourceInputs["hibernations"] = state?.hibernations;
@@ -139,6 +144,7 @@ export class SkeCluster extends pulumi.CustomResource {
                 throw new Error("Missing required property 'projectId'");
             }
             resourceInputs["access"] = args?.access;
+            resourceInputs["audit"] = args?.audit;
             resourceInputs["extensions"] = args?.extensions;
             resourceInputs["hibernations"] = args?.hibernations;
             resourceInputs["kubernetesVersionMin"] = args?.kubernetesVersionMin;
@@ -166,6 +172,10 @@ export interface SkeClusterState {
      * Configure access to the cluster
      */
     access?: pulumi.Input<inputs.SkeClusterAccess | undefined>;
+    /**
+     * Cluster audit log forwarding configuration.
+     */
+    audit?: pulumi.Input<inputs.SkeClusterAudit | undefined>;
     /**
      * The outgoing network ranges (in CIDR notation) of traffic originating from workload on the cluster.
      */
@@ -229,6 +239,10 @@ export interface SkeClusterArgs {
      * Configure access to the cluster
      */
     access?: pulumi.Input<inputs.SkeClusterAccess | undefined>;
+    /**
+     * Cluster audit log forwarding configuration.
+     */
+    audit?: pulumi.Input<inputs.SkeClusterAudit | undefined>;
     /**
      * A single extensions block as defined below.
      */

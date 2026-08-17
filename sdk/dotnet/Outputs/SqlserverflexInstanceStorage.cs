@@ -14,10 +14,7 @@ namespace Pulumi.Stackit.Outputs
     public sealed class SqlserverflexInstanceStorage
     {
         /// <summary>
-        /// The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
-        /// `bash
-        /// stackit beta sqlserverflex options --storages --flavor-id FLAVOR_ID
-        /// ` Will be required in the future. Set a value to prevent breaking changes.
+        /// The storage class. You can list available storage classes for a the according flavors using the datasource `stackit.getSqlserverflexFlavors`. Will be required in the future. Set a value to prevent breaking changes.
         /// </summary>
         public readonly string? Class;
         /// <summary>

@@ -24,6 +24,11 @@ albCustomEndpoint: Optional[str]
 Custom endpoint for the Application Load Balancer service
 """
 
+albWafCustomEndpoint: Optional[str]
+"""
+Custom endpoint for the Application Load Balancer Web Application Firewall service
+"""
+
 authorizationCustomEndpoint: Optional[str]
 """
 Custom endpoint for the Membership service
@@ -109,6 +114,11 @@ mariadbCustomEndpoint: Optional[str]
 Custom endpoint for the MariaDB service
 """
 
+modelexperimentsCustomEndpoint: Optional[str]
+"""
+Custom endpoint for the AI Model Experiments service
+"""
+
 modelservingCustomEndpoint: Optional[str]
 """
 Custom endpoint for the AI Model Serving service
@@ -167,11 +177,6 @@ Custom endpoint for the RabbitMQ service
 redisCustomEndpoint: Optional[str]
 """
 Custom endpoint for the Redis service
-"""
-
-region: Optional[str]
-"""
-Region will be used as the default location for regional services. Not all services require a region, some are global
 """
 
 resourcemanagerCustomEndpoint: Optional[str]

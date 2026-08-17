@@ -56,6 +56,10 @@ export class LogmeCredential extends pulumi.CustomResource {
      * STACKIT Project ID to which the instance is associated.
      */
     declare public readonly projectId: pulumi.Output<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    declare public readonly region: pulumi.Output<string>;
     declare public /*out*/ readonly uri: pulumi.Output<string>;
     declare public /*out*/ readonly username: pulumi.Output<string>;
 
@@ -78,6 +82,7 @@ export class LogmeCredential extends pulumi.CustomResource {
             resourceInputs["password"] = state?.password;
             resourceInputs["port"] = state?.port;
             resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
             resourceInputs["uri"] = state?.uri;
             resourceInputs["username"] = state?.username;
         } else {
@@ -90,6 +95,7 @@ export class LogmeCredential extends pulumi.CustomResource {
             }
             resourceInputs["instanceId"] = args?.instanceId;
             resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
             resourceInputs["credentialId"] = undefined /*out*/;
             resourceInputs["host"] = undefined /*out*/;
             resourceInputs["password"] = undefined /*out*/;
@@ -123,6 +129,10 @@ export interface LogmeCredentialState {
      * STACKIT Project ID to which the instance is associated.
      */
     projectId?: pulumi.Input<string | undefined>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string | undefined>;
     uri?: pulumi.Input<string | undefined>;
     username?: pulumi.Input<string | undefined>;
 }
@@ -139,4 +149,8 @@ export interface LogmeCredentialArgs {
      * STACKIT Project ID to which the instance is associated.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string | undefined>;
 }

@@ -166,6 +166,9 @@ class _TelemetryrouterAccessTokenState:
         if region is not None:
             pulumi.set(__self__, "region", region)
         if status is not None:
+            warnings.warn("""status is deprecated and will be removed after February 2027.""", DeprecationWarning)
+            pulumi.log.warn("""status is deprecated: status is deprecated and will be removed after February 2027.""")
+        if status is not None:
             pulumi.set(__self__, "status", status)
         if ttl is not None:
             pulumi.set(__self__, "ttl", ttl)
@@ -280,6 +283,7 @@ class _TelemetryrouterAccessTokenState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""status is deprecated and will be removed after February 2027.""")
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the access token. Possible values are: `active`, `expired`, `deleting`.
@@ -531,6 +535,7 @@ class TelemetryrouterAccessToken(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""status is deprecated and will be removed after February 2027.""")
     def status(self) -> pulumi.Output[_builtins.str]:
         """
         The status of the access token. Possible values are: `active`, `expired`, `deleting`.

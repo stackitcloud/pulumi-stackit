@@ -25,6 +25,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AffinityGroup{}
 	case "stackit:index/albCertificate:AlbCertificate":
 		r = &AlbCertificate{}
+	case "stackit:index/albWafConfiguration:AlbWafConfiguration":
+		r = &AlbWafConfiguration{}
+	case "stackit:index/albWafCustomRuleGroup:AlbWafCustomRuleGroup":
+		r = &AlbWafCustomRuleGroup{}
+	case "stackit:index/albWafManagedRuleSet:AlbWafManagedRuleSet":
+		r = &AlbWafManagedRuleSet{}
 	case "stackit:index/applicationLoadBalancer:ApplicationLoadBalancer":
 		r = &ApplicationLoadBalancer{}
 	case "stackit:index/authorizationFolderCustomRole:AuthorizationFolderCustomRole":
@@ -89,6 +95,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MariadbCredential{}
 	case "stackit:index/mariadbInstance:MariadbInstance":
 		r = &MariadbInstance{}
+	case "stackit:index/modelexperimentsInstance:ModelexperimentsInstance":
+		r = &ModelexperimentsInstance{}
+	case "stackit:index/modelexperimentsToken:ModelexperimentsToken":
+		r = &ModelexperimentsToken{}
 	case "stackit:index/modelservingToken:ModelservingToken":
 		r = &ModelservingToken{}
 	case "stackit:index/mongodbflexInstance:MongodbflexInstance":
@@ -205,6 +215,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SkeCluster{}
 	case "stackit:index/skeKubeconfig:SkeKubeconfig":
 		r = &SkeKubeconfig{}
+	case "stackit:index/sqlserverflexDatabase:SqlserverflexDatabase":
+		r = &SqlserverflexDatabase{}
 	case "stackit:index/sqlserverflexInstance:SqlserverflexInstance":
 		r = &SqlserverflexInstance{}
 	case "stackit:index/sqlserverflexUser:SqlserverflexUser":
@@ -272,6 +284,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"stackit",
 		"index/albCertificate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/albWafConfiguration",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/albWafCustomRuleGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/albWafManagedRuleSet",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -432,6 +459,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"stackit",
 		"index/mariadbInstance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/modelexperimentsInstance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/modelexperimentsToken",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -722,6 +759,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"stackit",
 		"index/skeKubeconfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/sqlserverflexDatabase",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

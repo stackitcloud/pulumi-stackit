@@ -11,19 +11,17 @@ namespace Pulumi.Stackit.Outputs
 {
 
     [OutputType]
-    public sealed class GetNetworkAreaNetworkRangeResult
+    public sealed class GetSkeClusterExtensionsApplicationLoadBalancerResult
     {
-        public readonly string NetworkRangeId;
-        public readonly string Prefix;
+        /// <summary>
+        /// Enables the application load balancer extension.
+        /// </summary>
+        public readonly bool Enabled;
 
         [OutputConstructor]
-        private GetNetworkAreaNetworkRangeResult(
-            string networkRangeId,
-
-            string prefix)
+        private GetSkeClusterExtensionsApplicationLoadBalancerResult(bool enabled)
         {
-            NetworkRangeId = networkRangeId;
-            Prefix = prefix;
+            Enabled = enabled;
         }
     }
 }

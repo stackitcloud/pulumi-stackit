@@ -26,10 +26,12 @@ type SkeCluster struct {
 
 	// Configure access to the cluster
 	Access SkeClusterAccessOutput `pulumi:"access"`
+	// Cluster audit log forwarding configuration.
+	Audit SkeClusterAuditOutput `pulumi:"audit"`
 	// The outgoing network ranges (in CIDR notation) of traffic originating from workload on the cluster.
 	EgressAddressRanges pulumi.StringArrayOutput `pulumi:"egressAddressRanges"`
 	// A single extensions block as defined below.
-	Extensions SkeClusterExtensionsPtrOutput `pulumi:"extensions"`
+	Extensions SkeClusterExtensionsOutput `pulumi:"extensions"`
 	// One or more hibernation block as defined below.
 	Hibernations SkeClusterHibernationArrayOutput `pulumi:"hibernations"`
 	// The minimum Kubernetes version. This field will be used to set the minimum kubernetes version on creation/update of the cluster. If unset, the latest supported Kubernetes version will be used. SKE automatically updates the cluster Kubernetes version if you have set `maintenance.enable_kubernetes_version_updates` to true or if there is a mandatory update, as described in [General information for Kubernetes & OS updates](https://docs.stackit.cloud/products/runtime/kubernetes-engine/basics/version-updates/). To get the current kubernetes version being used for your cluster, use the read-only `kubernetesVersionUsed` field.
@@ -93,6 +95,8 @@ func GetSkeCluster(ctx *pulumi.Context,
 type skeClusterState struct {
 	// Configure access to the cluster
 	Access *SkeClusterAccess `pulumi:"access"`
+	// Cluster audit log forwarding configuration.
+	Audit *SkeClusterAudit `pulumi:"audit"`
 	// The outgoing network ranges (in CIDR notation) of traffic originating from workload on the cluster.
 	EgressAddressRanges []string `pulumi:"egressAddressRanges"`
 	// A single extensions block as defined below.
@@ -125,6 +129,8 @@ type skeClusterState struct {
 type SkeClusterState struct {
 	// Configure access to the cluster
 	Access SkeClusterAccessPtrInput
+	// Cluster audit log forwarding configuration.
+	Audit SkeClusterAuditPtrInput
 	// The outgoing network ranges (in CIDR notation) of traffic originating from workload on the cluster.
 	EgressAddressRanges pulumi.StringArrayInput
 	// A single extensions block as defined below.
@@ -161,6 +167,8 @@ func (SkeClusterState) ElementType() reflect.Type {
 type skeClusterArgs struct {
 	// Configure access to the cluster
 	Access *SkeClusterAccess `pulumi:"access"`
+	// Cluster audit log forwarding configuration.
+	Audit *SkeClusterAudit `pulumi:"audit"`
 	// A single extensions block as defined below.
 	Extensions *SkeClusterExtensions `pulumi:"extensions"`
 	// One or more hibernation block as defined below.
@@ -186,6 +194,8 @@ type skeClusterArgs struct {
 type SkeClusterArgs struct {
 	// Configure access to the cluster
 	Access SkeClusterAccessPtrInput
+	// Cluster audit log forwarding configuration.
+	Audit SkeClusterAuditPtrInput
 	// A single extensions block as defined below.
 	Extensions SkeClusterExtensionsPtrInput
 	// One or more hibernation block as defined below.
@@ -299,14 +309,19 @@ func (o SkeClusterOutput) Access() SkeClusterAccessOutput {
 	return o.ApplyT(func(v *SkeCluster) SkeClusterAccessOutput { return v.Access }).(SkeClusterAccessOutput)
 }
 
+// Cluster audit log forwarding configuration.
+func (o SkeClusterOutput) Audit() SkeClusterAuditOutput {
+	return o.ApplyT(func(v *SkeCluster) SkeClusterAuditOutput { return v.Audit }).(SkeClusterAuditOutput)
+}
+
 // The outgoing network ranges (in CIDR notation) of traffic originating from workload on the cluster.
 func (o SkeClusterOutput) EgressAddressRanges() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SkeCluster) pulumi.StringArrayOutput { return v.EgressAddressRanges }).(pulumi.StringArrayOutput)
 }
 
 // A single extensions block as defined below.
-func (o SkeClusterOutput) Extensions() SkeClusterExtensionsPtrOutput {
-	return o.ApplyT(func(v *SkeCluster) SkeClusterExtensionsPtrOutput { return v.Extensions }).(SkeClusterExtensionsPtrOutput)
+func (o SkeClusterOutput) Extensions() SkeClusterExtensionsOutput {
+	return o.ApplyT(func(v *SkeCluster) SkeClusterExtensionsOutput { return v.Extensions }).(SkeClusterExtensionsOutput)
 }
 
 // One or more hibernation block as defined below.

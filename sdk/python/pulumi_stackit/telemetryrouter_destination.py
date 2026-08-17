@@ -165,6 +165,9 @@ class _TelemetryrouterDestinationState:
         if region is not None:
             pulumi.set(__self__, "region", region)
         if status is not None:
+            warnings.warn("""status is deprecated and will be removed after February 2027.""", DeprecationWarning)
+            pulumi.log.warn("""status is deprecated: status is deprecated and will be removed after February 2027.""")
+        if status is not None:
             pulumi.set(__self__, "status", status)
 
     @_builtins.property
@@ -277,6 +280,7 @@ class _TelemetryrouterDestinationState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""status is deprecated and will be removed after February 2027.""")
     def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the TelemetryRouter destination, possible values: Possible values are: `reconciling`, `active`, `deleting`.
@@ -512,6 +516,7 @@ class TelemetryrouterDestination(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""status is deprecated and will be removed after February 2027.""")
     def status(self) -> pulumi.Output[_builtins.str]:
         """
         The status of the TelemetryRouter destination, possible values: Possible values are: `reconciling`, `active`, `deleting`.

@@ -18,8 +18,14 @@ namespace Pulumi.Stackit.Inputs
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        /// <summary>
+        /// Terraform's internal resource ID. It is structured as "`ProjectId`,`Region`,`InstanceId`".
+        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
+
+        [Input("nodeType")]
+        public Input<string>? NodeType { get; set; }
 
         [Input("ram", required: true)]
         public Input<int> Ram { get; set; } = null!;

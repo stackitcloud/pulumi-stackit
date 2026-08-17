@@ -24,6 +24,7 @@ class SqlserverflexInstanceArgs:
                  project_id: pulumi.Input[_builtins.str],
                  acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  backup_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption: pulumi.Input[Optional['SqlserverflexInstanceEncryptionArgs']] = None,
                  flavor: pulumi.Input[Optional['SqlserverflexInstanceFlavorArgs']] = None,
                  flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -39,7 +40,8 @@ class SqlserverflexInstanceArgs:
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the instance is associated.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The Access Control List (ACL) for the SQLServer Flex instance.
         :param pulumi.Input[_builtins.str] backup_schedule: The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *") Will be required in the future. Set a value to prevent breaking changes.
-        :param pulumi.Input[_builtins.str] flavor_id: The flavor ID of the SQLServer Flex instance.
+        :param pulumi.Input['SqlserverflexInstanceEncryptionArgs'] encryption: Parameter to define which key to use for storage encryption.
+        :param pulumi.Input[_builtins.str] flavor_id: The flavor ID of the SQLServer Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `get_sqlserverflex_flavors`.
         :param pulumi.Input[_builtins.str] name: Instance name.
         :param pulumi.Input['SqlserverflexInstanceNetworkArgs'] network: The network configuration of the instance. Will be required in the future. Set a value to prevent breaking changes.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
@@ -49,12 +51,17 @@ class SqlserverflexInstanceArgs:
         """
         pulumi.set(__self__, "project_id", project_id)
         if acls is not None:
-            warnings.warn("""acl is deprecated and will be removed after January 2027. Use instead `network.acl`.""", DeprecationWarning)
-            pulumi.log.warn("""acls is deprecated: acl is deprecated and will be removed after January 2027. Use instead `network.acl`.""")
+            warnings.warn("""acl is deprecated and will be removed after February 2027. Use instead `network.acl`.""", DeprecationWarning)
+            pulumi.log.warn("""acls is deprecated: acl is deprecated and will be removed after February 2027. Use instead `network.acl`.""")
         if acls is not None:
             pulumi.set(__self__, "acls", acls)
         if backup_schedule is not None:
             pulumi.set(__self__, "backup_schedule", backup_schedule)
+        if encryption is not None:
+            pulumi.set(__self__, "encryption", encryption)
+        if flavor is not None:
+            warnings.warn("""flavor is deprecated and will be removed after February 2027. Use instead `flavor_id`. You can list available flavors using the datasource `get_sqlserverflex_flavors`.""", DeprecationWarning)
+            pulumi.log.warn("""flavor is deprecated: flavor is deprecated and will be removed after February 2027. Use instead `flavor_id`. You can list available flavors using the datasource `get_sqlserverflex_flavors`.""")
         if flavor is not None:
             pulumi.set(__self__, "flavor", flavor)
         if flavor_id is not None:
@@ -64,8 +71,8 @@ class SqlserverflexInstanceArgs:
         if network is not None:
             pulumi.set(__self__, "network", network)
         if options is not None:
-            warnings.warn("""option is deprecated and will be removed after January 2027.""", DeprecationWarning)
-            pulumi.log.warn("""options is deprecated: option is deprecated and will be removed after January 2027.""")
+            warnings.warn("""option is deprecated and will be removed after February 2027.""", DeprecationWarning)
+            pulumi.log.warn("""options is deprecated: option is deprecated and will be removed after February 2027.""")
         if options is not None:
             pulumi.set(__self__, "options", options)
         if region is not None:
@@ -91,7 +98,7 @@ class SqlserverflexInstanceArgs:
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""acl is deprecated and will be removed after January 2027. Use instead `network.acl`.""")
+    @_utilities.deprecated("""acl is deprecated and will be removed after February 2027. Use instead `network.acl`.""")
     def acls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The Access Control List (ACL) for the SQLServer Flex instance.
@@ -116,6 +123,19 @@ class SqlserverflexInstanceArgs:
 
     @_builtins.property
     @pulumi.getter
+    def encryption(self) -> pulumi.Input[Optional['SqlserverflexInstanceEncryptionArgs']]:
+        """
+        Parameter to define which key to use for storage encryption.
+        """
+        return pulumi.get(self, "encryption")
+
+    @encryption.setter
+    def encryption(self, value: pulumi.Input[Optional['SqlserverflexInstanceEncryptionArgs']]):
+        pulumi.set(self, "encryption", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""flavor is deprecated and will be removed after February 2027. Use instead `flavor_id`. You can list available flavors using the datasource `get_sqlserverflex_flavors`.""")
     def flavor(self) -> pulumi.Input[Optional['SqlserverflexInstanceFlavorArgs']]:
         return pulumi.get(self, "flavor")
 
@@ -127,7 +147,7 @@ class SqlserverflexInstanceArgs:
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The flavor ID of the SQLServer Flex instance.
+        The flavor ID of the SQLServer Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `get_sqlserverflex_flavors`.
         """
         return pulumi.get(self, "flavor_id")
 
@@ -161,7 +181,7 @@ class SqlserverflexInstanceArgs:
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""option is deprecated and will be removed after January 2027.""")
+    @_utilities.deprecated("""option is deprecated and will be removed after February 2027.""")
     def options(self) -> pulumi.Input[Optional['SqlserverflexInstanceOptionsArgs']]:
         return pulumi.get(self, "options")
 
@@ -224,6 +244,7 @@ class _SqlserverflexInstanceState:
                  acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  backup_schedule: pulumi.Input[Optional[_builtins.str]] = None,
                  edition: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption: pulumi.Input[Optional['SqlserverflexInstanceEncryptionArgs']] = None,
                  flavor: pulumi.Input[Optional['SqlserverflexInstanceFlavorArgs']] = None,
                  flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -242,7 +263,8 @@ class _SqlserverflexInstanceState:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The Access Control List (ACL) for the SQLServer Flex instance.
         :param pulumi.Input[_builtins.str] backup_schedule: The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *") Will be required in the future. Set a value to prevent breaking changes.
         :param pulumi.Input[_builtins.str] edition: Edition of the MSSQL server instance.
-        :param pulumi.Input[_builtins.str] flavor_id: The flavor ID of the SQLServer Flex instance.
+        :param pulumi.Input['SqlserverflexInstanceEncryptionArgs'] encryption: Parameter to define which key to use for storage encryption.
+        :param pulumi.Input[_builtins.str] flavor_id: The flavor ID of the SQLServer Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `get_sqlserverflex_flavors`.
         :param pulumi.Input[_builtins.str] instance_id: ID of the SQLServer Flex instance.
         :param pulumi.Input[_builtins.str] name: Instance name.
         :param pulumi.Input['SqlserverflexInstanceNetworkArgs'] network: The network configuration of the instance. Will be required in the future. Set a value to prevent breaking changes.
@@ -253,14 +275,19 @@ class _SqlserverflexInstanceState:
         :param pulumi.Input[_builtins.str] version: The sqlserver version used for the instance. Possible values are: `2022`. Will be required in the future. Set a value to prevent breaking changes.
         """
         if acls is not None:
-            warnings.warn("""acl is deprecated and will be removed after January 2027. Use instead `network.acl`.""", DeprecationWarning)
-            pulumi.log.warn("""acls is deprecated: acl is deprecated and will be removed after January 2027. Use instead `network.acl`.""")
+            warnings.warn("""acl is deprecated and will be removed after February 2027. Use instead `network.acl`.""", DeprecationWarning)
+            pulumi.log.warn("""acls is deprecated: acl is deprecated and will be removed after February 2027. Use instead `network.acl`.""")
         if acls is not None:
             pulumi.set(__self__, "acls", acls)
         if backup_schedule is not None:
             pulumi.set(__self__, "backup_schedule", backup_schedule)
         if edition is not None:
             pulumi.set(__self__, "edition", edition)
+        if encryption is not None:
+            pulumi.set(__self__, "encryption", encryption)
+        if flavor is not None:
+            warnings.warn("""flavor is deprecated and will be removed after February 2027. Use instead `flavor_id`. You can list available flavors using the datasource `get_sqlserverflex_flavors`.""", DeprecationWarning)
+            pulumi.log.warn("""flavor is deprecated: flavor is deprecated and will be removed after February 2027. Use instead `flavor_id`. You can list available flavors using the datasource `get_sqlserverflex_flavors`.""")
         if flavor is not None:
             pulumi.set(__self__, "flavor", flavor)
         if flavor_id is not None:
@@ -272,8 +299,8 @@ class _SqlserverflexInstanceState:
         if network is not None:
             pulumi.set(__self__, "network", network)
         if options is not None:
-            warnings.warn("""option is deprecated and will be removed after January 2027.""", DeprecationWarning)
-            pulumi.log.warn("""options is deprecated: option is deprecated and will be removed after January 2027.""")
+            warnings.warn("""option is deprecated and will be removed after February 2027.""", DeprecationWarning)
+            pulumi.log.warn("""options is deprecated: option is deprecated and will be removed after February 2027.""")
         if options is not None:
             pulumi.set(__self__, "options", options)
         if project_id is not None:
@@ -291,7 +318,7 @@ class _SqlserverflexInstanceState:
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""acl is deprecated and will be removed after January 2027. Use instead `network.acl`.""")
+    @_utilities.deprecated("""acl is deprecated and will be removed after February 2027. Use instead `network.acl`.""")
     def acls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The Access Control List (ACL) for the SQLServer Flex instance.
@@ -328,6 +355,19 @@ class _SqlserverflexInstanceState:
 
     @_builtins.property
     @pulumi.getter
+    def encryption(self) -> pulumi.Input[Optional['SqlserverflexInstanceEncryptionArgs']]:
+        """
+        Parameter to define which key to use for storage encryption.
+        """
+        return pulumi.get(self, "encryption")
+
+    @encryption.setter
+    def encryption(self, value: pulumi.Input[Optional['SqlserverflexInstanceEncryptionArgs']]):
+        pulumi.set(self, "encryption", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""flavor is deprecated and will be removed after February 2027. Use instead `flavor_id`. You can list available flavors using the datasource `get_sqlserverflex_flavors`.""")
     def flavor(self) -> pulumi.Input[Optional['SqlserverflexInstanceFlavorArgs']]:
         return pulumi.get(self, "flavor")
 
@@ -339,7 +379,7 @@ class _SqlserverflexInstanceState:
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The flavor ID of the SQLServer Flex instance.
+        The flavor ID of the SQLServer Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `get_sqlserverflex_flavors`.
         """
         return pulumi.get(self, "flavor_id")
 
@@ -385,7 +425,7 @@ class _SqlserverflexInstanceState:
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""option is deprecated and will be removed after January 2027.""")
+    @_utilities.deprecated("""option is deprecated and will be removed after February 2027.""")
     def options(self) -> pulumi.Input[Optional['SqlserverflexInstanceOptionsArgs']]:
         return pulumi.get(self, "options")
 
@@ -471,6 +511,7 @@ class SqlserverflexInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  backup_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption: pulumi.Input[Optional[Union['SqlserverflexInstanceEncryptionArgs', 'SqlserverflexInstanceEncryptionArgsDict']]] = None,
                  flavor: pulumi.Input[Optional[Union['SqlserverflexInstanceFlavorArgs', 'SqlserverflexInstanceFlavorArgsDict']]] = None,
                  flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -487,12 +528,17 @@ class SqlserverflexInstance(pulumi.CustomResource):
 
         ## Example Usage
 
+        ## Import
+
+        In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The Access Control List (ACL) for the SQLServer Flex instance.
         :param pulumi.Input[_builtins.str] backup_schedule: The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *") Will be required in the future. Set a value to prevent breaking changes.
-        :param pulumi.Input[_builtins.str] flavor_id: The flavor ID of the SQLServer Flex instance.
+        :param pulumi.Input[Union['SqlserverflexInstanceEncryptionArgs', 'SqlserverflexInstanceEncryptionArgsDict']] encryption: Parameter to define which key to use for storage encryption.
+        :param pulumi.Input[_builtins.str] flavor_id: The flavor ID of the SQLServer Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `get_sqlserverflex_flavors`.
         :param pulumi.Input[_builtins.str] name: Instance name.
         :param pulumi.Input[Union['SqlserverflexInstanceNetworkArgs', 'SqlserverflexInstanceNetworkArgsDict']] network: The network configuration of the instance. Will be required in the future. Set a value to prevent breaking changes.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the instance is associated.
@@ -512,6 +558,10 @@ class SqlserverflexInstance(pulumi.CustomResource):
 
         ## Example Usage
 
+        ## Import
+
+        In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
+
 
         :param str resource_name: The name of the resource.
         :param SqlserverflexInstanceArgs args: The arguments to use to populate this resource's properties.
@@ -530,6 +580,7 @@ class SqlserverflexInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  backup_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption: pulumi.Input[Optional[Union['SqlserverflexInstanceEncryptionArgs', 'SqlserverflexInstanceEncryptionArgsDict']]] = None,
                  flavor: pulumi.Input[Optional[Union['SqlserverflexInstanceFlavorArgs', 'SqlserverflexInstanceFlavorArgsDict']]] = None,
                  flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -551,6 +602,7 @@ class SqlserverflexInstance(pulumi.CustomResource):
 
             __props__.__dict__["acls"] = acls
             __props__.__dict__["backup_schedule"] = backup_schedule
+            __props__.__dict__["encryption"] = encryption
             __props__.__dict__["flavor"] = flavor
             __props__.__dict__["flavor_id"] = flavor_id
             __props__.__dict__["name"] = name
@@ -579,6 +631,7 @@ class SqlserverflexInstance(pulumi.CustomResource):
             acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             backup_schedule: pulumi.Input[Optional[_builtins.str]] = None,
             edition: pulumi.Input[Optional[_builtins.str]] = None,
+            encryption: pulumi.Input[Optional[Union['SqlserverflexInstanceEncryptionArgs', 'SqlserverflexInstanceEncryptionArgsDict']]] = None,
             flavor: pulumi.Input[Optional[Union['SqlserverflexInstanceFlavorArgs', 'SqlserverflexInstanceFlavorArgsDict']]] = None,
             flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -601,7 +654,8 @@ class SqlserverflexInstance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The Access Control List (ACL) for the SQLServer Flex instance.
         :param pulumi.Input[_builtins.str] backup_schedule: The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *") Will be required in the future. Set a value to prevent breaking changes.
         :param pulumi.Input[_builtins.str] edition: Edition of the MSSQL server instance.
-        :param pulumi.Input[_builtins.str] flavor_id: The flavor ID of the SQLServer Flex instance.
+        :param pulumi.Input[Union['SqlserverflexInstanceEncryptionArgs', 'SqlserverflexInstanceEncryptionArgsDict']] encryption: Parameter to define which key to use for storage encryption.
+        :param pulumi.Input[_builtins.str] flavor_id: The flavor ID of the SQLServer Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `get_sqlserverflex_flavors`.
         :param pulumi.Input[_builtins.str] instance_id: ID of the SQLServer Flex instance.
         :param pulumi.Input[_builtins.str] name: Instance name.
         :param pulumi.Input[Union['SqlserverflexInstanceNetworkArgs', 'SqlserverflexInstanceNetworkArgsDict']] network: The network configuration of the instance. Will be required in the future. Set a value to prevent breaking changes.
@@ -618,6 +672,7 @@ class SqlserverflexInstance(pulumi.CustomResource):
         __props__.__dict__["acls"] = acls
         __props__.__dict__["backup_schedule"] = backup_schedule
         __props__.__dict__["edition"] = edition
+        __props__.__dict__["encryption"] = encryption
         __props__.__dict__["flavor"] = flavor
         __props__.__dict__["flavor_id"] = flavor_id
         __props__.__dict__["instance_id"] = instance_id
@@ -634,7 +689,7 @@ class SqlserverflexInstance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""acl is deprecated and will be removed after January 2027. Use instead `network.acl`.""")
+    @_utilities.deprecated("""acl is deprecated and will be removed after February 2027. Use instead `network.acl`.""")
     def acls(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
         The Access Control List (ACL) for the SQLServer Flex instance.
@@ -659,6 +714,15 @@ class SqlserverflexInstance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    def encryption(self) -> pulumi.Output[Optional['outputs.SqlserverflexInstanceEncryption']]:
+        """
+        Parameter to define which key to use for storage encryption.
+        """
+        return pulumi.get(self, "encryption")
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""flavor is deprecated and will be removed after February 2027. Use instead `flavor_id`. You can list available flavors using the datasource `get_sqlserverflex_flavors`.""")
     def flavor(self) -> pulumi.Output['outputs.SqlserverflexInstanceFlavor']:
         return pulumi.get(self, "flavor")
 
@@ -666,7 +730,7 @@ class SqlserverflexInstance(pulumi.CustomResource):
     @pulumi.getter(name="flavorId")
     def flavor_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The flavor ID of the SQLServer Flex instance.
+        The flavor ID of the SQLServer Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `get_sqlserverflex_flavors`.
         """
         return pulumi.get(self, "flavor_id")
 
@@ -696,7 +760,7 @@ class SqlserverflexInstance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""option is deprecated and will be removed after January 2027.""")
+    @_utilities.deprecated("""option is deprecated and will be removed after February 2027.""")
     def options(self) -> pulumi.Output['outputs.SqlserverflexInstanceOptions']:
         return pulumi.get(self, "options")
 

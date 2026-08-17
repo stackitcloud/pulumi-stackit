@@ -41,6 +41,8 @@ type TelemetryrouterAccessToken struct {
 	// STACKIT region name the resource is located in. If not defined, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The status of the access token. Possible values are: `active`, `expired`, `deleting`.
+	//
+	// Deprecated: status is deprecated and will be removed after February 2027.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The time-to-live (TTL) in days for the access token. If not set, token will not expire
 	Ttl pulumi.IntPtrOutput `pulumi:"ttl"`
@@ -108,6 +110,8 @@ type telemetryrouterAccessTokenState struct {
 	// STACKIT region name the resource is located in. If not defined, the provider region is used.
 	Region *string `pulumi:"region"`
 	// The status of the access token. Possible values are: `active`, `expired`, `deleting`.
+	//
+	// Deprecated: status is deprecated and will be removed after February 2027.
 	Status *string `pulumi:"status"`
 	// The time-to-live (TTL) in days for the access token. If not set, token will not expire
 	Ttl *int `pulumi:"ttl"`
@@ -133,6 +137,8 @@ type TelemetryrouterAccessTokenState struct {
 	// STACKIT region name the resource is located in. If not defined, the provider region is used.
 	Region pulumi.StringPtrInput
 	// The status of the access token. Possible values are: `active`, `expired`, `deleting`.
+	//
+	// Deprecated: status is deprecated and will be removed after February 2027.
 	Status pulumi.StringPtrInput
 	// The time-to-live (TTL) in days for the access token. If not set, token will not expire
 	Ttl pulumi.IntPtrInput
@@ -306,6 +312,8 @@ func (o TelemetryrouterAccessTokenOutput) Region() pulumi.StringOutput {
 }
 
 // The status of the access token. Possible values are: `active`, `expired`, `deleting`.
+//
+// Deprecated: status is deprecated and will be removed after February 2027.
 func (o TelemetryrouterAccessTokenOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *TelemetryrouterAccessToken) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

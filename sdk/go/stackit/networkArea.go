@@ -43,40 +43,16 @@ import (
 type NetworkArea struct {
 	pulumi.CustomResourceState
 
-	// List of DNS Servers/Nameservers for configuration of network area for region `eu01`.
-	//
-	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-	DefaultNameservers pulumi.StringArrayOutput `pulumi:"defaultNameservers"`
-	// The default prefix length for networks in the network area for region `eu01`.
-	//
-	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-	DefaultPrefixLength pulumi.IntOutput `pulumi:"defaultPrefixLength"`
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// The maximal prefix length for networks in the network area for region `eu01`.
-	//
-	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-	MaxPrefixLength pulumi.IntOutput `pulumi:"maxPrefixLength"`
-	// The minimal prefix length for networks in the network area for region `eu01`.
-	//
-	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-	MinPrefixLength pulumi.IntOutput `pulumi:"minPrefixLength"`
 	// The name of the network area.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The network area ID.
 	NetworkAreaId pulumi.StringOutput `pulumi:"networkAreaId"`
-	// List of Network ranges for configuration of network area for region `eu01`.
-	//
-	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-	NetworkRanges NetworkAreaNetworkRangeArrayOutput `pulumi:"networkRanges"`
 	// STACKIT organization ID to which the network area is associated.
 	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
 	// The amount of projects currently referencing this area.
 	ProjectCount pulumi.IntOutput `pulumi:"projectCount"`
-	// Classless Inter-Domain Routing (CIDR) for configuration of network area for region `eu01`.
-	//
-	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-	TransferNetwork pulumi.StringPtrOutput `pulumi:"transferNetwork"`
 }
 
 // NewNetworkArea registers a new resource with the given unique name, arguments, and options.
@@ -112,77 +88,29 @@ func GetNetworkArea(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NetworkArea resources.
 type networkAreaState struct {
-	// List of DNS Servers/Nameservers for configuration of network area for region `eu01`.
-	//
-	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-	DefaultNameservers []string `pulumi:"defaultNameservers"`
-	// The default prefix length for networks in the network area for region `eu01`.
-	//
-	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-	DefaultPrefixLength *int `pulumi:"defaultPrefixLength"`
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels map[string]string `pulumi:"labels"`
-	// The maximal prefix length for networks in the network area for region `eu01`.
-	//
-	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-	MaxPrefixLength *int `pulumi:"maxPrefixLength"`
-	// The minimal prefix length for networks in the network area for region `eu01`.
-	//
-	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-	MinPrefixLength *int `pulumi:"minPrefixLength"`
 	// The name of the network area.
 	Name *string `pulumi:"name"`
 	// The network area ID.
 	NetworkAreaId *string `pulumi:"networkAreaId"`
-	// List of Network ranges for configuration of network area for region `eu01`.
-	//
-	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-	NetworkRanges []NetworkAreaNetworkRange `pulumi:"networkRanges"`
 	// STACKIT organization ID to which the network area is associated.
 	OrganizationId *string `pulumi:"organizationId"`
 	// The amount of projects currently referencing this area.
 	ProjectCount *int `pulumi:"projectCount"`
-	// Classless Inter-Domain Routing (CIDR) for configuration of network area for region `eu01`.
-	//
-	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-	TransferNetwork *string `pulumi:"transferNetwork"`
 }
 
 type NetworkAreaState struct {
-	// List of DNS Servers/Nameservers for configuration of network area for region `eu01`.
-	//
-	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-	DefaultNameservers pulumi.StringArrayInput
-	// The default prefix length for networks in the network area for region `eu01`.
-	//
-	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-	DefaultPrefixLength pulumi.IntPtrInput
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels pulumi.StringMapInput
-	// The maximal prefix length for networks in the network area for region `eu01`.
-	//
-	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-	MaxPrefixLength pulumi.IntPtrInput
-	// The minimal prefix length for networks in the network area for region `eu01`.
-	//
-	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-	MinPrefixLength pulumi.IntPtrInput
 	// The name of the network area.
 	Name pulumi.StringPtrInput
 	// The network area ID.
 	NetworkAreaId pulumi.StringPtrInput
-	// List of Network ranges for configuration of network area for region `eu01`.
-	//
-	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-	NetworkRanges NetworkAreaNetworkRangeArrayInput
 	// STACKIT organization ID to which the network area is associated.
 	OrganizationId pulumi.StringPtrInput
 	// The amount of projects currently referencing this area.
 	ProjectCount pulumi.IntPtrInput
-	// Classless Inter-Domain Routing (CIDR) for configuration of network area for region `eu01`.
-	//
-	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-	TransferNetwork pulumi.StringPtrInput
 }
 
 func (NetworkAreaState) ElementType() reflect.Type {
@@ -190,70 +118,22 @@ func (NetworkAreaState) ElementType() reflect.Type {
 }
 
 type networkAreaArgs struct {
-	// List of DNS Servers/Nameservers for configuration of network area for region `eu01`.
-	//
-	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-	DefaultNameservers []string `pulumi:"defaultNameservers"`
-	// The default prefix length for networks in the network area for region `eu01`.
-	//
-	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-	DefaultPrefixLength *int `pulumi:"defaultPrefixLength"`
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels map[string]string `pulumi:"labels"`
-	// The maximal prefix length for networks in the network area for region `eu01`.
-	//
-	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-	MaxPrefixLength *int `pulumi:"maxPrefixLength"`
-	// The minimal prefix length for networks in the network area for region `eu01`.
-	//
-	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-	MinPrefixLength *int `pulumi:"minPrefixLength"`
 	// The name of the network area.
 	Name *string `pulumi:"name"`
-	// List of Network ranges for configuration of network area for region `eu01`.
-	//
-	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-	NetworkRanges []NetworkAreaNetworkRange `pulumi:"networkRanges"`
 	// STACKIT organization ID to which the network area is associated.
 	OrganizationId string `pulumi:"organizationId"`
-	// Classless Inter-Domain Routing (CIDR) for configuration of network area for region `eu01`.
-	//
-	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-	TransferNetwork *string `pulumi:"transferNetwork"`
 }
 
 // The set of arguments for constructing a NetworkArea resource.
 type NetworkAreaArgs struct {
-	// List of DNS Servers/Nameservers for configuration of network area for region `eu01`.
-	//
-	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-	DefaultNameservers pulumi.StringArrayInput
-	// The default prefix length for networks in the network area for region `eu01`.
-	//
-	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-	DefaultPrefixLength pulumi.IntPtrInput
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels pulumi.StringMapInput
-	// The maximal prefix length for networks in the network area for region `eu01`.
-	//
-	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-	MaxPrefixLength pulumi.IntPtrInput
-	// The minimal prefix length for networks in the network area for region `eu01`.
-	//
-	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-	MinPrefixLength pulumi.IntPtrInput
 	// The name of the network area.
 	Name pulumi.StringPtrInput
-	// List of Network ranges for configuration of network area for region `eu01`.
-	//
-	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-	NetworkRanges NetworkAreaNetworkRangeArrayInput
 	// STACKIT organization ID to which the network area is associated.
 	OrganizationId pulumi.StringInput
-	// Classless Inter-Domain Routing (CIDR) for configuration of network area for region `eu01`.
-	//
-	// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-	TransferNetwork pulumi.StringPtrInput
 }
 
 func (NetworkAreaArgs) ElementType() reflect.Type {
@@ -343,37 +223,9 @@ func (o NetworkAreaOutput) ToNetworkAreaOutputWithContext(ctx context.Context) N
 	return o
 }
 
-// List of DNS Servers/Nameservers for configuration of network area for region `eu01`.
-//
-// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-func (o NetworkAreaOutput) DefaultNameservers() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *NetworkArea) pulumi.StringArrayOutput { return v.DefaultNameservers }).(pulumi.StringArrayOutput)
-}
-
-// The default prefix length for networks in the network area for region `eu01`.
-//
-// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-func (o NetworkAreaOutput) DefaultPrefixLength() pulumi.IntOutput {
-	return o.ApplyT(func(v *NetworkArea) pulumi.IntOutput { return v.DefaultPrefixLength }).(pulumi.IntOutput)
-}
-
 // Labels are key-value string pairs which can be attached to a resource container
 func (o NetworkAreaOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *NetworkArea) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
-}
-
-// The maximal prefix length for networks in the network area for region `eu01`.
-//
-// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-func (o NetworkAreaOutput) MaxPrefixLength() pulumi.IntOutput {
-	return o.ApplyT(func(v *NetworkArea) pulumi.IntOutput { return v.MaxPrefixLength }).(pulumi.IntOutput)
-}
-
-// The minimal prefix length for networks in the network area for region `eu01`.
-//
-// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-func (o NetworkAreaOutput) MinPrefixLength() pulumi.IntOutput {
-	return o.ApplyT(func(v *NetworkArea) pulumi.IntOutput { return v.MinPrefixLength }).(pulumi.IntOutput)
 }
 
 // The name of the network area.
@@ -386,13 +238,6 @@ func (o NetworkAreaOutput) NetworkAreaId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkArea) pulumi.StringOutput { return v.NetworkAreaId }).(pulumi.StringOutput)
 }
 
-// List of Network ranges for configuration of network area for region `eu01`.
-//
-// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-func (o NetworkAreaOutput) NetworkRanges() NetworkAreaNetworkRangeArrayOutput {
-	return o.ApplyT(func(v *NetworkArea) NetworkAreaNetworkRangeArrayOutput { return v.NetworkRanges }).(NetworkAreaNetworkRangeArrayOutput)
-}
-
 // STACKIT organization ID to which the network area is associated.
 func (o NetworkAreaOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkArea) pulumi.StringOutput { return v.OrganizationId }).(pulumi.StringOutput)
@@ -401,13 +246,6 @@ func (o NetworkAreaOutput) OrganizationId() pulumi.StringOutput {
 // The amount of projects currently referencing this area.
 func (o NetworkAreaOutput) ProjectCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *NetworkArea) pulumi.IntOutput { return v.ProjectCount }).(pulumi.IntOutput)
-}
-
-// Classless Inter-Domain Routing (CIDR) for configuration of network area for region `eu01`.
-//
-// Deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.
-func (o NetworkAreaOutput) TransferNetwork() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkArea) pulumi.StringPtrOutput { return v.TransferNetwork }).(pulumi.StringPtrOutput)
 }
 
 type NetworkAreaArrayOutput struct{ *pulumi.OutputState }

@@ -76,6 +76,8 @@ export interface GetTelemetryrouterInstanceResult {
     readonly region?: string;
     /**
      * The status of the TelemetryRouter instance, possible values: Possible values are: `reconciling`, `active`, `deleting`.
+     *
+     * @deprecated status is deprecated and will be removed after February 2027.
      */
     readonly status: string;
     /**

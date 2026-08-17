@@ -70,6 +70,8 @@ export interface GetTelemetrylinkResult {
     readonly resourceType: string;
     /**
      * The status of the TelemetryLink, possible values: Possible values are: `active`, `inactive`, `failed`, `reconciling`, `deleting`.
+     *
+     * @deprecated status is deprecated and will be removed after February 2027.
      */
     readonly status: string;
     /**

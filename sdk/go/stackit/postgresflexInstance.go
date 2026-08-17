@@ -23,22 +23,36 @@ type PostgresflexInstance struct {
 	pulumi.CustomResourceState
 
 	// The Access Control List (ACL) for the PostgresFlex instance.
+	//
+	// Deprecated: acl is deprecated and will be removed after February 2027. Use instead `network.acl`.
 	Acls pulumi.StringArrayOutput `pulumi:"acls"`
 	// The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.
-	BackupSchedule pulumi.StringOutput              `pulumi:"backupSchedule"`
-	Flavor         PostgresflexInstanceFlavorOutput `pulumi:"flavor"`
+	BackupSchedule pulumi.StringOutput `pulumi:"backupSchedule"`
+	// The connection info for the PostgresFlex instance.
+	ConnectionInfo PostgresflexInstanceConnectionInfoOutput `pulumi:"connectionInfo"`
+	Encryption     PostgresflexInstanceEncryptionPtrOutput  `pulumi:"encryption"`
+	// Deprecated: flavor is deprecated and will be removed after February 2027. Use instead `flavorId`. You can list available flavors using the datasource `getPostgresflexFlavors`.
+	Flavor PostgresflexInstanceFlavorOutput `pulumi:"flavor"`
+	// The flavor ID of the PostgreSQL Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `getPostgresflexFlavors`
+	FlavorId pulumi.StringOutput `pulumi:"flavorId"`
 	// ID of the PostgresFlex instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// Instance name.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The network configuration of the instance. Will be required after February 2027. Set a value to prevent breaking changes.
+	Network PostgresflexInstanceNetworkOutput `pulumi:"network"`
 	// STACKIT project ID to which the instance is associated.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.
-	Replicas pulumi.IntOutput                  `pulumi:"replicas"`
-	Storage  PostgresflexInstanceStorageOutput `pulumi:"storage"`
-	Version  pulumi.StringOutput               `pulumi:"version"`
+	// How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication. Can only be set together with `flavor`
+	//
+	// Deprecated: replicas is deprecated and will be removed after February 2027. Use instead `flavorId` and choose a flavor with your wanted replica configuration. You can list available flavors using the datasource `getPostgresflexFlavors`.
+	Replicas pulumi.IntOutput `pulumi:"replicas"`
+	// How long backups are retained. The value can only be between 32 and 90 days. Will be required after February 2027. Set a value to prevent breaking changes.
+	RetentionDays pulumi.IntOutput                  `pulumi:"retentionDays"`
+	Storage       PostgresflexInstanceStorageOutput `pulumi:"storage"`
+	Version       pulumi.StringOutput               `pulumi:"version"`
 }
 
 // NewPostgresflexInstance registers a new resource with the given unique name, arguments, and options.
@@ -48,20 +62,11 @@ func NewPostgresflexInstance(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Acls == nil {
-		return nil, errors.New("invalid value for required argument 'Acls'")
-	}
 	if args.BackupSchedule == nil {
 		return nil, errors.New("invalid value for required argument 'BackupSchedule'")
 	}
-	if args.Flavor == nil {
-		return nil, errors.New("invalid value for required argument 'Flavor'")
-	}
 	if args.ProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectId'")
-	}
-	if args.Replicas == nil {
-		return nil, errors.New("invalid value for required argument 'Replicas'")
 	}
 	if args.Storage == nil {
 		return nil, errors.New("invalid value for required argument 'Storage'")
@@ -93,42 +98,70 @@ func GetPostgresflexInstance(ctx *pulumi.Context,
 // Input properties used for looking up and filtering PostgresflexInstance resources.
 type postgresflexInstanceState struct {
 	// The Access Control List (ACL) for the PostgresFlex instance.
+	//
+	// Deprecated: acl is deprecated and will be removed after February 2027. Use instead `network.acl`.
 	Acls []string `pulumi:"acls"`
 	// The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.
-	BackupSchedule *string                     `pulumi:"backupSchedule"`
-	Flavor         *PostgresflexInstanceFlavor `pulumi:"flavor"`
+	BackupSchedule *string `pulumi:"backupSchedule"`
+	// The connection info for the PostgresFlex instance.
+	ConnectionInfo *PostgresflexInstanceConnectionInfo `pulumi:"connectionInfo"`
+	Encryption     *PostgresflexInstanceEncryption     `pulumi:"encryption"`
+	// Deprecated: flavor is deprecated and will be removed after February 2027. Use instead `flavorId`. You can list available flavors using the datasource `getPostgresflexFlavors`.
+	Flavor *PostgresflexInstanceFlavor `pulumi:"flavor"`
+	// The flavor ID of the PostgreSQL Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `getPostgresflexFlavors`
+	FlavorId *string `pulumi:"flavorId"`
 	// ID of the PostgresFlex instance.
 	InstanceId *string `pulumi:"instanceId"`
 	// Instance name.
 	Name *string `pulumi:"name"`
+	// The network configuration of the instance. Will be required after February 2027. Set a value to prevent breaking changes.
+	Network *PostgresflexInstanceNetwork `pulumi:"network"`
 	// STACKIT project ID to which the instance is associated.
 	ProjectId *string `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
 	Region *string `pulumi:"region"`
-	// How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.
-	Replicas *int                         `pulumi:"replicas"`
-	Storage  *PostgresflexInstanceStorage `pulumi:"storage"`
-	Version  *string                      `pulumi:"version"`
+	// How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication. Can only be set together with `flavor`
+	//
+	// Deprecated: replicas is deprecated and will be removed after February 2027. Use instead `flavorId` and choose a flavor with your wanted replica configuration. You can list available flavors using the datasource `getPostgresflexFlavors`.
+	Replicas *int `pulumi:"replicas"`
+	// How long backups are retained. The value can only be between 32 and 90 days. Will be required after February 2027. Set a value to prevent breaking changes.
+	RetentionDays *int                         `pulumi:"retentionDays"`
+	Storage       *PostgresflexInstanceStorage `pulumi:"storage"`
+	Version       *string                      `pulumi:"version"`
 }
 
 type PostgresflexInstanceState struct {
 	// The Access Control List (ACL) for the PostgresFlex instance.
+	//
+	// Deprecated: acl is deprecated and will be removed after February 2027. Use instead `network.acl`.
 	Acls pulumi.StringArrayInput
 	// The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.
 	BackupSchedule pulumi.StringPtrInput
-	Flavor         PostgresflexInstanceFlavorPtrInput
+	// The connection info for the PostgresFlex instance.
+	ConnectionInfo PostgresflexInstanceConnectionInfoPtrInput
+	Encryption     PostgresflexInstanceEncryptionPtrInput
+	// Deprecated: flavor is deprecated and will be removed after February 2027. Use instead `flavorId`. You can list available flavors using the datasource `getPostgresflexFlavors`.
+	Flavor PostgresflexInstanceFlavorPtrInput
+	// The flavor ID of the PostgreSQL Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `getPostgresflexFlavors`
+	FlavorId pulumi.StringPtrInput
 	// ID of the PostgresFlex instance.
 	InstanceId pulumi.StringPtrInput
 	// Instance name.
 	Name pulumi.StringPtrInput
+	// The network configuration of the instance. Will be required after February 2027. Set a value to prevent breaking changes.
+	Network PostgresflexInstanceNetworkPtrInput
 	// STACKIT project ID to which the instance is associated.
 	ProjectId pulumi.StringPtrInput
 	// The resource region. If not defined, the provider region is used.
 	Region pulumi.StringPtrInput
-	// How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.
+	// How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication. Can only be set together with `flavor`
+	//
+	// Deprecated: replicas is deprecated and will be removed after February 2027. Use instead `flavorId` and choose a flavor with your wanted replica configuration. You can list available flavors using the datasource `getPostgresflexFlavors`.
 	Replicas pulumi.IntPtrInput
-	Storage  PostgresflexInstanceStoragePtrInput
-	Version  pulumi.StringPtrInput
+	// How long backups are retained. The value can only be between 32 and 90 days. Will be required after February 2027. Set a value to prevent breaking changes.
+	RetentionDays pulumi.IntPtrInput
+	Storage       PostgresflexInstanceStoragePtrInput
+	Version       pulumi.StringPtrInput
 }
 
 func (PostgresflexInstanceState) ElementType() reflect.Type {
@@ -137,39 +170,63 @@ func (PostgresflexInstanceState) ElementType() reflect.Type {
 
 type postgresflexInstanceArgs struct {
 	// The Access Control List (ACL) for the PostgresFlex instance.
+	//
+	// Deprecated: acl is deprecated and will be removed after February 2027. Use instead `network.acl`.
 	Acls []string `pulumi:"acls"`
 	// The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.
-	BackupSchedule string                     `pulumi:"backupSchedule"`
-	Flavor         PostgresflexInstanceFlavor `pulumi:"flavor"`
+	BackupSchedule string                          `pulumi:"backupSchedule"`
+	Encryption     *PostgresflexInstanceEncryption `pulumi:"encryption"`
+	// Deprecated: flavor is deprecated and will be removed after February 2027. Use instead `flavorId`. You can list available flavors using the datasource `getPostgresflexFlavors`.
+	Flavor *PostgresflexInstanceFlavor `pulumi:"flavor"`
+	// The flavor ID of the PostgreSQL Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `getPostgresflexFlavors`
+	FlavorId *string `pulumi:"flavorId"`
 	// Instance name.
 	Name *string `pulumi:"name"`
+	// The network configuration of the instance. Will be required after February 2027. Set a value to prevent breaking changes.
+	Network *PostgresflexInstanceNetwork `pulumi:"network"`
 	// STACKIT project ID to which the instance is associated.
 	ProjectId string `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
 	Region *string `pulumi:"region"`
-	// How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.
-	Replicas int                         `pulumi:"replicas"`
-	Storage  PostgresflexInstanceStorage `pulumi:"storage"`
-	Version  string                      `pulumi:"version"`
+	// How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication. Can only be set together with `flavor`
+	//
+	// Deprecated: replicas is deprecated and will be removed after February 2027. Use instead `flavorId` and choose a flavor with your wanted replica configuration. You can list available flavors using the datasource `getPostgresflexFlavors`.
+	Replicas *int `pulumi:"replicas"`
+	// How long backups are retained. The value can only be between 32 and 90 days. Will be required after February 2027. Set a value to prevent breaking changes.
+	RetentionDays *int                        `pulumi:"retentionDays"`
+	Storage       PostgresflexInstanceStorage `pulumi:"storage"`
+	Version       string                      `pulumi:"version"`
 }
 
 // The set of arguments for constructing a PostgresflexInstance resource.
 type PostgresflexInstanceArgs struct {
 	// The Access Control List (ACL) for the PostgresFlex instance.
+	//
+	// Deprecated: acl is deprecated and will be removed after February 2027. Use instead `network.acl`.
 	Acls pulumi.StringArrayInput
 	// The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.
 	BackupSchedule pulumi.StringInput
-	Flavor         PostgresflexInstanceFlavorInput
+	Encryption     PostgresflexInstanceEncryptionPtrInput
+	// Deprecated: flavor is deprecated and will be removed after February 2027. Use instead `flavorId`. You can list available flavors using the datasource `getPostgresflexFlavors`.
+	Flavor PostgresflexInstanceFlavorPtrInput
+	// The flavor ID of the PostgreSQL Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `getPostgresflexFlavors`
+	FlavorId pulumi.StringPtrInput
 	// Instance name.
 	Name pulumi.StringPtrInput
+	// The network configuration of the instance. Will be required after February 2027. Set a value to prevent breaking changes.
+	Network PostgresflexInstanceNetworkPtrInput
 	// STACKIT project ID to which the instance is associated.
 	ProjectId pulumi.StringInput
 	// The resource region. If not defined, the provider region is used.
 	Region pulumi.StringPtrInput
-	// How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.
-	Replicas pulumi.IntInput
-	Storage  PostgresflexInstanceStorageInput
-	Version  pulumi.StringInput
+	// How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication. Can only be set together with `flavor`
+	//
+	// Deprecated: replicas is deprecated and will be removed after February 2027. Use instead `flavorId` and choose a flavor with your wanted replica configuration. You can list available flavors using the datasource `getPostgresflexFlavors`.
+	Replicas pulumi.IntPtrInput
+	// How long backups are retained. The value can only be between 32 and 90 days. Will be required after February 2027. Set a value to prevent breaking changes.
+	RetentionDays pulumi.IntPtrInput
+	Storage       PostgresflexInstanceStorageInput
+	Version       pulumi.StringInput
 }
 
 func (PostgresflexInstanceArgs) ElementType() reflect.Type {
@@ -260,6 +317,8 @@ func (o PostgresflexInstanceOutput) ToPostgresflexInstanceOutputWithContext(ctx 
 }
 
 // The Access Control List (ACL) for the PostgresFlex instance.
+//
+// Deprecated: acl is deprecated and will be removed after February 2027. Use instead `network.acl`.
 func (o PostgresflexInstanceOutput) Acls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *PostgresflexInstance) pulumi.StringArrayOutput { return v.Acls }).(pulumi.StringArrayOutput)
 }
@@ -269,8 +328,23 @@ func (o PostgresflexInstanceOutput) BackupSchedule() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresflexInstance) pulumi.StringOutput { return v.BackupSchedule }).(pulumi.StringOutput)
 }
 
+// The connection info for the PostgresFlex instance.
+func (o PostgresflexInstanceOutput) ConnectionInfo() PostgresflexInstanceConnectionInfoOutput {
+	return o.ApplyT(func(v *PostgresflexInstance) PostgresflexInstanceConnectionInfoOutput { return v.ConnectionInfo }).(PostgresflexInstanceConnectionInfoOutput)
+}
+
+func (o PostgresflexInstanceOutput) Encryption() PostgresflexInstanceEncryptionPtrOutput {
+	return o.ApplyT(func(v *PostgresflexInstance) PostgresflexInstanceEncryptionPtrOutput { return v.Encryption }).(PostgresflexInstanceEncryptionPtrOutput)
+}
+
+// Deprecated: flavor is deprecated and will be removed after February 2027. Use instead `flavorId`. You can list available flavors using the datasource `getPostgresflexFlavors`.
 func (o PostgresflexInstanceOutput) Flavor() PostgresflexInstanceFlavorOutput {
 	return o.ApplyT(func(v *PostgresflexInstance) PostgresflexInstanceFlavorOutput { return v.Flavor }).(PostgresflexInstanceFlavorOutput)
+}
+
+// The flavor ID of the PostgreSQL Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `getPostgresflexFlavors`
+func (o PostgresflexInstanceOutput) FlavorId() pulumi.StringOutput {
+	return o.ApplyT(func(v *PostgresflexInstance) pulumi.StringOutput { return v.FlavorId }).(pulumi.StringOutput)
 }
 
 // ID of the PostgresFlex instance.
@@ -283,6 +357,11 @@ func (o PostgresflexInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresflexInstance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The network configuration of the instance. Will be required after February 2027. Set a value to prevent breaking changes.
+func (o PostgresflexInstanceOutput) Network() PostgresflexInstanceNetworkOutput {
+	return o.ApplyT(func(v *PostgresflexInstance) PostgresflexInstanceNetworkOutput { return v.Network }).(PostgresflexInstanceNetworkOutput)
+}
+
 // STACKIT project ID to which the instance is associated.
 func (o PostgresflexInstanceOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresflexInstance) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
@@ -293,9 +372,16 @@ func (o PostgresflexInstanceOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresflexInstance) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.
+// How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication. Can only be set together with `flavor`
+//
+// Deprecated: replicas is deprecated and will be removed after February 2027. Use instead `flavorId` and choose a flavor with your wanted replica configuration. You can list available flavors using the datasource `getPostgresflexFlavors`.
 func (o PostgresflexInstanceOutput) Replicas() pulumi.IntOutput {
 	return o.ApplyT(func(v *PostgresflexInstance) pulumi.IntOutput { return v.Replicas }).(pulumi.IntOutput)
+}
+
+// How long backups are retained. The value can only be between 32 and 90 days. Will be required after February 2027. Set a value to prevent breaking changes.
+func (o PostgresflexInstanceOutput) RetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v *PostgresflexInstance) pulumi.IntOutput { return v.RetentionDays }).(pulumi.IntOutput)
 }
 
 func (o PostgresflexInstanceOutput) Storage() PostgresflexInstanceStorageOutput {

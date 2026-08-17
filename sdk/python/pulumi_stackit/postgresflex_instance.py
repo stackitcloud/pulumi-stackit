@@ -21,48 +21,63 @@ __all__ = ['PostgresflexInstanceArgs', 'PostgresflexInstance']
 @pulumi.input_type
 class PostgresflexInstanceArgs:
     def __init__(__self__, *,
-                 acls: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  backup_schedule: pulumi.Input[_builtins.str],
-                 flavor: pulumi.Input['PostgresflexInstanceFlavorArgs'],
                  project_id: pulumi.Input[_builtins.str],
-                 replicas: pulumi.Input[_builtins.int],
                  storage: pulumi.Input['PostgresflexInstanceStorageArgs'],
                  version: pulumi.Input[_builtins.str],
+                 acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 encryption: pulumi.Input[Optional['PostgresflexInstanceEncryptionArgs']] = None,
+                 flavor: pulumi.Input[Optional['PostgresflexInstanceFlavorArgs']] = None,
+                 flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 region: pulumi.Input[Optional[_builtins.str]] = None):
+                 network: pulumi.Input[Optional['PostgresflexInstanceNetworkArgs']] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 replicas: pulumi.Input[Optional[_builtins.int]] = None,
+                 retention_days: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a PostgresflexInstance resource.
 
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The Access Control List (ACL) for the PostgresFlex instance.
         :param pulumi.Input[_builtins.str] backup_schedule: The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the instance is associated.
-        :param pulumi.Input[_builtins.int] replicas: How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The Access Control List (ACL) for the PostgresFlex instance.
+        :param pulumi.Input[_builtins.str] flavor_id: The flavor ID of the PostgreSQL Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `get_postgresflex_flavors`
         :param pulumi.Input[_builtins.str] name: Instance name.
+        :param pulumi.Input['PostgresflexInstanceNetworkArgs'] network: The network configuration of the instance. Will be required after February 2027. Set a value to prevent breaking changes.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
+        :param pulumi.Input[_builtins.int] replicas: How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication. Can only be set together with `flavor`
+        :param pulumi.Input[_builtins.int] retention_days: How long backups are retained. The value can only be between 32 and 90 days. Will be required after February 2027. Set a value to prevent breaking changes.
         """
-        pulumi.set(__self__, "acls", acls)
         pulumi.set(__self__, "backup_schedule", backup_schedule)
-        pulumi.set(__self__, "flavor", flavor)
         pulumi.set(__self__, "project_id", project_id)
-        pulumi.set(__self__, "replicas", replicas)
         pulumi.set(__self__, "storage", storage)
         pulumi.set(__self__, "version", version)
+        if acls is not None:
+            warnings.warn("""acl is deprecated and will be removed after February 2027. Use instead `network.acl`.""", DeprecationWarning)
+            pulumi.log.warn("""acls is deprecated: acl is deprecated and will be removed after February 2027. Use instead `network.acl`.""")
+        if acls is not None:
+            pulumi.set(__self__, "acls", acls)
+        if encryption is not None:
+            pulumi.set(__self__, "encryption", encryption)
+        if flavor is not None:
+            warnings.warn("""flavor is deprecated and will be removed after February 2027. Use instead `flavor_id`. You can list available flavors using the datasource `get_postgresflex_flavors`.""", DeprecationWarning)
+            pulumi.log.warn("""flavor is deprecated: flavor is deprecated and will be removed after February 2027. Use instead `flavor_id`. You can list available flavors using the datasource `get_postgresflex_flavors`.""")
+        if flavor is not None:
+            pulumi.set(__self__, "flavor", flavor)
+        if flavor_id is not None:
+            pulumi.set(__self__, "flavor_id", flavor_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
         if region is not None:
             pulumi.set(__self__, "region", region)
-
-    @_builtins.property
-    @pulumi.getter
-    def acls(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
-        """
-        The Access Control List (ACL) for the PostgresFlex instance.
-        """
-        return pulumi.get(self, "acls")
-
-    @acls.setter
-    def acls(self, value: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
-        pulumi.set(self, "acls", value)
+        if replicas is not None:
+            warnings.warn("""replicas is deprecated and will be removed after February 2027. Use instead `flavor_id` and choose a flavor with your wanted replica configuration. You can list available flavors using the datasource `get_postgresflex_flavors`.""", DeprecationWarning)
+            pulumi.log.warn("""replicas is deprecated: replicas is deprecated and will be removed after February 2027. Use instead `flavor_id` and choose a flavor with your wanted replica configuration. You can list available flavors using the datasource `get_postgresflex_flavors`.""")
+        if replicas is not None:
+            pulumi.set(__self__, "replicas", replicas)
+        if retention_days is not None:
+            pulumi.set(__self__, "retention_days", retention_days)
 
     @_builtins.property
     @pulumi.getter(name="backupSchedule")
@@ -77,15 +92,6 @@ class PostgresflexInstanceArgs:
         pulumi.set(self, "backup_schedule", value)
 
     @_builtins.property
-    @pulumi.getter
-    def flavor(self) -> pulumi.Input['PostgresflexInstanceFlavorArgs']:
-        return pulumi.get(self, "flavor")
-
-    @flavor.setter
-    def flavor(self, value: pulumi.Input['PostgresflexInstanceFlavorArgs']):
-        pulumi.set(self, "flavor", value)
-
-    @_builtins.property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Input[_builtins.str]:
         """
@@ -96,18 +102,6 @@ class PostgresflexInstanceArgs:
     @project_id.setter
     def project_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "project_id", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def replicas(self) -> pulumi.Input[_builtins.int]:
-        """
-        How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.
-        """
-        return pulumi.get(self, "replicas")
-
-    @replicas.setter
-    def replicas(self, value: pulumi.Input[_builtins.int]):
-        pulumi.set(self, "replicas", value)
 
     @_builtins.property
     @pulumi.getter
@@ -129,6 +123,50 @@ class PostgresflexInstanceArgs:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""acl is deprecated and will be removed after February 2027. Use instead `network.acl`.""")
+    def acls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The Access Control List (ACL) for the PostgresFlex instance.
+        """
+        return pulumi.get(self, "acls")
+
+    @acls.setter
+    def acls(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "acls", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def encryption(self) -> pulumi.Input[Optional['PostgresflexInstanceEncryptionArgs']]:
+        return pulumi.get(self, "encryption")
+
+    @encryption.setter
+    def encryption(self, value: pulumi.Input[Optional['PostgresflexInstanceEncryptionArgs']]):
+        pulumi.set(self, "encryption", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""flavor is deprecated and will be removed after February 2027. Use instead `flavor_id`. You can list available flavors using the datasource `get_postgresflex_flavors`.""")
+    def flavor(self) -> pulumi.Input[Optional['PostgresflexInstanceFlavorArgs']]:
+        return pulumi.get(self, "flavor")
+
+    @flavor.setter
+    def flavor(self, value: pulumi.Input[Optional['PostgresflexInstanceFlavorArgs']]):
+        pulumi.set(self, "flavor", value)
+
+    @_builtins.property
+    @pulumi.getter(name="flavorId")
+    def flavor_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The flavor ID of the PostgreSQL Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `get_postgresflex_flavors`
+        """
+        return pulumi.get(self, "flavor_id")
+
+    @flavor_id.setter
+    def flavor_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "flavor_id", value)
+
+    @_builtins.property
+    @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instance name.
@@ -138,6 +176,18 @@ class PostgresflexInstanceArgs:
     @name.setter
     def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[Optional['PostgresflexInstanceNetworkArgs']]:
+        """
+        The network configuration of the instance. Will be required after February 2027. Set a value to prevent breaking changes.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[Optional['PostgresflexInstanceNetworkArgs']]):
+        pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter
@@ -151,18 +201,48 @@ class PostgresflexInstanceArgs:
     def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""replicas is deprecated and will be removed after February 2027. Use instead `flavor_id` and choose a flavor with your wanted replica configuration. You can list available flavors using the datasource `get_postgresflex_flavors`.""")
+    def replicas(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication. Can only be set together with `flavor`
+        """
+        return pulumi.get(self, "replicas")
+
+    @replicas.setter
+    def replicas(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "replicas", value)
+
+    @_builtins.property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        How long backups are retained. The value can only be between 32 and 90 days. Will be required after February 2027. Set a value to prevent breaking changes.
+        """
+        return pulumi.get(self, "retention_days")
+
+    @retention_days.setter
+    def retention_days(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "retention_days", value)
+
 
 @pulumi.input_type
 class _PostgresflexInstanceState:
     def __init__(__self__, *,
                  acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  backup_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 connection_info: pulumi.Input[Optional['PostgresflexInstanceConnectionInfoArgs']] = None,
+                 encryption: pulumi.Input[Optional['PostgresflexInstanceEncryptionArgs']] = None,
                  flavor: pulumi.Input[Optional['PostgresflexInstanceFlavorArgs']] = None,
+                 flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional['PostgresflexInstanceNetworkArgs']] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  replicas: pulumi.Input[Optional[_builtins.int]] = None,
+                 retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  storage: pulumi.Input[Optional['PostgresflexInstanceStorageArgs']] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -170,28 +250,51 @@ class _PostgresflexInstanceState:
 
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The Access Control List (ACL) for the PostgresFlex instance.
         :param pulumi.Input[_builtins.str] backup_schedule: The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.
+        :param pulumi.Input['PostgresflexInstanceConnectionInfoArgs'] connection_info: The connection info for the PostgresFlex instance.
+        :param pulumi.Input[_builtins.str] flavor_id: The flavor ID of the PostgreSQL Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `get_postgresflex_flavors`
         :param pulumi.Input[_builtins.str] instance_id: ID of the PostgresFlex instance.
         :param pulumi.Input[_builtins.str] name: Instance name.
+        :param pulumi.Input['PostgresflexInstanceNetworkArgs'] network: The network configuration of the instance. Will be required after February 2027. Set a value to prevent breaking changes.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the instance is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
-        :param pulumi.Input[_builtins.int] replicas: How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.
+        :param pulumi.Input[_builtins.int] replicas: How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication. Can only be set together with `flavor`
+        :param pulumi.Input[_builtins.int] retention_days: How long backups are retained. The value can only be between 32 and 90 days. Will be required after February 2027. Set a value to prevent breaking changes.
         """
+        if acls is not None:
+            warnings.warn("""acl is deprecated and will be removed after February 2027. Use instead `network.acl`.""", DeprecationWarning)
+            pulumi.log.warn("""acls is deprecated: acl is deprecated and will be removed after February 2027. Use instead `network.acl`.""")
         if acls is not None:
             pulumi.set(__self__, "acls", acls)
         if backup_schedule is not None:
             pulumi.set(__self__, "backup_schedule", backup_schedule)
+        if connection_info is not None:
+            pulumi.set(__self__, "connection_info", connection_info)
+        if encryption is not None:
+            pulumi.set(__self__, "encryption", encryption)
+        if flavor is not None:
+            warnings.warn("""flavor is deprecated and will be removed after February 2027. Use instead `flavor_id`. You can list available flavors using the datasource `get_postgresflex_flavors`.""", DeprecationWarning)
+            pulumi.log.warn("""flavor is deprecated: flavor is deprecated and will be removed after February 2027. Use instead `flavor_id`. You can list available flavors using the datasource `get_postgresflex_flavors`.""")
         if flavor is not None:
             pulumi.set(__self__, "flavor", flavor)
+        if flavor_id is not None:
+            pulumi.set(__self__, "flavor_id", flavor_id)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if replicas is not None:
+            warnings.warn("""replicas is deprecated and will be removed after February 2027. Use instead `flavor_id` and choose a flavor with your wanted replica configuration. You can list available flavors using the datasource `get_postgresflex_flavors`.""", DeprecationWarning)
+            pulumi.log.warn("""replicas is deprecated: replicas is deprecated and will be removed after February 2027. Use instead `flavor_id` and choose a flavor with your wanted replica configuration. You can list available flavors using the datasource `get_postgresflex_flavors`.""")
+        if replicas is not None:
             pulumi.set(__self__, "replicas", replicas)
+        if retention_days is not None:
+            pulumi.set(__self__, "retention_days", retention_days)
         if storage is not None:
             pulumi.set(__self__, "storage", storage)
         if version is not None:
@@ -199,6 +302,7 @@ class _PostgresflexInstanceState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""acl is deprecated and will be removed after February 2027. Use instead `network.acl`.""")
     def acls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The Access Control List (ACL) for the PostgresFlex instance.
@@ -222,13 +326,47 @@ class _PostgresflexInstanceState:
         pulumi.set(self, "backup_schedule", value)
 
     @_builtins.property
+    @pulumi.getter(name="connectionInfo")
+    def connection_info(self) -> pulumi.Input[Optional['PostgresflexInstanceConnectionInfoArgs']]:
+        """
+        The connection info for the PostgresFlex instance.
+        """
+        return pulumi.get(self, "connection_info")
+
+    @connection_info.setter
+    def connection_info(self, value: pulumi.Input[Optional['PostgresflexInstanceConnectionInfoArgs']]):
+        pulumi.set(self, "connection_info", value)
+
+    @_builtins.property
     @pulumi.getter
+    def encryption(self) -> pulumi.Input[Optional['PostgresflexInstanceEncryptionArgs']]:
+        return pulumi.get(self, "encryption")
+
+    @encryption.setter
+    def encryption(self, value: pulumi.Input[Optional['PostgresflexInstanceEncryptionArgs']]):
+        pulumi.set(self, "encryption", value)
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""flavor is deprecated and will be removed after February 2027. Use instead `flavor_id`. You can list available flavors using the datasource `get_postgresflex_flavors`.""")
     def flavor(self) -> pulumi.Input[Optional['PostgresflexInstanceFlavorArgs']]:
         return pulumi.get(self, "flavor")
 
     @flavor.setter
     def flavor(self, value: pulumi.Input[Optional['PostgresflexInstanceFlavorArgs']]):
         pulumi.set(self, "flavor", value)
+
+    @_builtins.property
+    @pulumi.getter(name="flavorId")
+    def flavor_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The flavor ID of the PostgreSQL Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `get_postgresflex_flavors`
+        """
+        return pulumi.get(self, "flavor_id")
+
+    @flavor_id.setter
+    def flavor_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "flavor_id", value)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
@@ -253,6 +391,18 @@ class _PostgresflexInstanceState:
     @name.setter
     def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[Optional['PostgresflexInstanceNetworkArgs']]:
+        """
+        The network configuration of the instance. Will be required after February 2027. Set a value to prevent breaking changes.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[Optional['PostgresflexInstanceNetworkArgs']]):
+        pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
@@ -280,15 +430,28 @@ class _PostgresflexInstanceState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""replicas is deprecated and will be removed after February 2027. Use instead `flavor_id` and choose a flavor with your wanted replica configuration. You can list available flavors using the datasource `get_postgresflex_flavors`.""")
     def replicas(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.
+        How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication. Can only be set together with `flavor`
         """
         return pulumi.get(self, "replicas")
 
     @replicas.setter
     def replicas(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "replicas", value)
+
+    @_builtins.property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        How long backups are retained. The value can only be between 32 and 90 days. Will be required after February 2027. Set a value to prevent breaking changes.
+        """
+        return pulumi.get(self, "retention_days")
+
+    @retention_days.setter
+    def retention_days(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "retention_days", value)
 
     @_builtins.property
     @pulumi.getter
@@ -317,11 +480,15 @@ class PostgresflexInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  backup_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption: pulumi.Input[Optional[Union['PostgresflexInstanceEncryptionArgs', 'PostgresflexInstanceEncryptionArgsDict']]] = None,
                  flavor: pulumi.Input[Optional[Union['PostgresflexInstanceFlavorArgs', 'PostgresflexInstanceFlavorArgsDict']]] = None,
+                 flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[Union['PostgresflexInstanceNetworkArgs', 'PostgresflexInstanceNetworkArgsDict']]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  replicas: pulumi.Input[Optional[_builtins.int]] = None,
+                 retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  storage: pulumi.Input[Optional[Union['PostgresflexInstanceStorageArgs', 'PostgresflexInstanceStorageArgsDict']]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -339,10 +506,13 @@ class PostgresflexInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The Access Control List (ACL) for the PostgresFlex instance.
         :param pulumi.Input[_builtins.str] backup_schedule: The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.
+        :param pulumi.Input[_builtins.str] flavor_id: The flavor ID of the PostgreSQL Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `get_postgresflex_flavors`
         :param pulumi.Input[_builtins.str] name: Instance name.
+        :param pulumi.Input[Union['PostgresflexInstanceNetworkArgs', 'PostgresflexInstanceNetworkArgsDict']] network: The network configuration of the instance. Will be required after February 2027. Set a value to prevent breaking changes.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the instance is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
-        :param pulumi.Input[_builtins.int] replicas: How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.
+        :param pulumi.Input[_builtins.int] replicas: How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication. Can only be set together with `flavor`
+        :param pulumi.Input[_builtins.int] retention_days: How long backups are retained. The value can only be between 32 and 90 days. Will be required after February 2027. Set a value to prevent breaking changes.
         """
         ...
     @overload
@@ -377,11 +547,15 @@ class PostgresflexInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  backup_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+                 encryption: pulumi.Input[Optional[Union['PostgresflexInstanceEncryptionArgs', 'PostgresflexInstanceEncryptionArgsDict']]] = None,
                  flavor: pulumi.Input[Optional[Union['PostgresflexInstanceFlavorArgs', 'PostgresflexInstanceFlavorArgsDict']]] = None,
+                 flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[Union['PostgresflexInstanceNetworkArgs', 'PostgresflexInstanceNetworkArgsDict']]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  replicas: pulumi.Input[Optional[_builtins.int]] = None,
+                 retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  storage: pulumi.Input[Optional[Union['PostgresflexInstanceStorageArgs', 'PostgresflexInstanceStorageArgsDict']]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -393,29 +567,28 @@ class PostgresflexInstance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PostgresflexInstanceArgs.__new__(PostgresflexInstanceArgs)
 
-            if acls is None and not opts.urn:
-                raise TypeError("Missing required property 'acls'")
             __props__.__dict__["acls"] = acls
             if backup_schedule is None and not opts.urn:
                 raise TypeError("Missing required property 'backup_schedule'")
             __props__.__dict__["backup_schedule"] = backup_schedule
-            if flavor is None and not opts.urn:
-                raise TypeError("Missing required property 'flavor'")
+            __props__.__dict__["encryption"] = encryption
             __props__.__dict__["flavor"] = flavor
+            __props__.__dict__["flavor_id"] = flavor_id
             __props__.__dict__["name"] = name
+            __props__.__dict__["network"] = network
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["region"] = region
-            if replicas is None and not opts.urn:
-                raise TypeError("Missing required property 'replicas'")
             __props__.__dict__["replicas"] = replicas
+            __props__.__dict__["retention_days"] = retention_days
             if storage is None and not opts.urn:
                 raise TypeError("Missing required property 'storage'")
             __props__.__dict__["storage"] = storage
             if version is None and not opts.urn:
                 raise TypeError("Missing required property 'version'")
             __props__.__dict__["version"] = version
+            __props__.__dict__["connection_info"] = None
             __props__.__dict__["instance_id"] = None
         super(PostgresflexInstance, __self__).__init__(
             'stackit:index/postgresflexInstance:PostgresflexInstance',
@@ -429,12 +602,17 @@ class PostgresflexInstance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             backup_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+            connection_info: pulumi.Input[Optional[Union['PostgresflexInstanceConnectionInfoArgs', 'PostgresflexInstanceConnectionInfoArgsDict']]] = None,
+            encryption: pulumi.Input[Optional[Union['PostgresflexInstanceEncryptionArgs', 'PostgresflexInstanceEncryptionArgsDict']]] = None,
             flavor: pulumi.Input[Optional[Union['PostgresflexInstanceFlavorArgs', 'PostgresflexInstanceFlavorArgsDict']]] = None,
+            flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[Union['PostgresflexInstanceNetworkArgs', 'PostgresflexInstanceNetworkArgsDict']]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             replicas: pulumi.Input[Optional[_builtins.int]] = None,
+            retention_days: pulumi.Input[Optional[_builtins.int]] = None,
             storage: pulumi.Input[Optional[Union['PostgresflexInstanceStorageArgs', 'PostgresflexInstanceStorageArgsDict']]] = None,
             version: pulumi.Input[Optional[_builtins.str]] = None) -> 'PostgresflexInstance':
         """
@@ -446,11 +624,15 @@ class PostgresflexInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The Access Control List (ACL) for the PostgresFlex instance.
         :param pulumi.Input[_builtins.str] backup_schedule: The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.
+        :param pulumi.Input[Union['PostgresflexInstanceConnectionInfoArgs', 'PostgresflexInstanceConnectionInfoArgsDict']] connection_info: The connection info for the PostgresFlex instance.
+        :param pulumi.Input[_builtins.str] flavor_id: The flavor ID of the PostgreSQL Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `get_postgresflex_flavors`
         :param pulumi.Input[_builtins.str] instance_id: ID of the PostgresFlex instance.
         :param pulumi.Input[_builtins.str] name: Instance name.
+        :param pulumi.Input[Union['PostgresflexInstanceNetworkArgs', 'PostgresflexInstanceNetworkArgsDict']] network: The network configuration of the instance. Will be required after February 2027. Set a value to prevent breaking changes.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the instance is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
-        :param pulumi.Input[_builtins.int] replicas: How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.
+        :param pulumi.Input[_builtins.int] replicas: How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication. Can only be set together with `flavor`
+        :param pulumi.Input[_builtins.int] retention_days: How long backups are retained. The value can only be between 32 and 90 days. Will be required after February 2027. Set a value to prevent breaking changes.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -458,18 +640,24 @@ class PostgresflexInstance(pulumi.CustomResource):
 
         __props__.__dict__["acls"] = acls
         __props__.__dict__["backup_schedule"] = backup_schedule
+        __props__.__dict__["connection_info"] = connection_info
+        __props__.__dict__["encryption"] = encryption
         __props__.__dict__["flavor"] = flavor
+        __props__.__dict__["flavor_id"] = flavor_id
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["name"] = name
+        __props__.__dict__["network"] = network
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["region"] = region
         __props__.__dict__["replicas"] = replicas
+        __props__.__dict__["retention_days"] = retention_days
         __props__.__dict__["storage"] = storage
         __props__.__dict__["version"] = version
         return PostgresflexInstance(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""acl is deprecated and will be removed after February 2027. Use instead `network.acl`.""")
     def acls(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
         The Access Control List (ACL) for the PostgresFlex instance.
@@ -485,9 +673,31 @@ class PostgresflexInstance(pulumi.CustomResource):
         return pulumi.get(self, "backup_schedule")
 
     @_builtins.property
+    @pulumi.getter(name="connectionInfo")
+    def connection_info(self) -> pulumi.Output['outputs.PostgresflexInstanceConnectionInfo']:
+        """
+        The connection info for the PostgresFlex instance.
+        """
+        return pulumi.get(self, "connection_info")
+
+    @_builtins.property
     @pulumi.getter
+    def encryption(self) -> pulumi.Output[Optional['outputs.PostgresflexInstanceEncryption']]:
+        return pulumi.get(self, "encryption")
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""flavor is deprecated and will be removed after February 2027. Use instead `flavor_id`. You can list available flavors using the datasource `get_postgresflex_flavors`.""")
     def flavor(self) -> pulumi.Output['outputs.PostgresflexInstanceFlavor']:
         return pulumi.get(self, "flavor")
+
+    @_builtins.property
+    @pulumi.getter(name="flavorId")
+    def flavor_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The flavor ID of the PostgreSQL Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `get_postgresflex_flavors`
+        """
+        return pulumi.get(self, "flavor_id")
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
@@ -504,6 +714,14 @@ class PostgresflexInstance(pulumi.CustomResource):
         Instance name.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def network(self) -> pulumi.Output['outputs.PostgresflexInstanceNetwork']:
+        """
+        The network configuration of the instance. Will be required after February 2027. Set a value to prevent breaking changes.
+        """
+        return pulumi.get(self, "network")
 
     @_builtins.property
     @pulumi.getter(name="projectId")
@@ -523,11 +741,20 @@ class PostgresflexInstance(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""replicas is deprecated and will be removed after February 2027. Use instead `flavor_id` and choose a flavor with your wanted replica configuration. You can list available flavors using the datasource `get_postgresflex_flavors`.""")
     def replicas(self) -> pulumi.Output[_builtins.int]:
         """
-        How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.
+        How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication. Can only be set together with `flavor`
         """
         return pulumi.get(self, "replicas")
+
+    @_builtins.property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> pulumi.Output[_builtins.int]:
+        """
+        How long backups are retained. The value can only be between 32 and 90 days. Will be required after February 2027. Set a value to prevent breaking changes.
+        """
+        return pulumi.get(self, "retention_days")
 
     @_builtins.property
     @pulumi.getter

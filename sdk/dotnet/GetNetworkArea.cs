@@ -109,14 +109,6 @@ namespace Pulumi.Stackit
     public sealed class GetNetworkAreaResult
     {
         /// <summary>
-        /// List of DNS Servers/Nameservers.
-        /// </summary>
-        public readonly ImmutableArray<string> DefaultNameservers;
-        /// <summary>
-        /// The default prefix length for networks in the network area.
-        /// </summary>
-        public readonly int DefaultPrefixLength;
-        /// <summary>
         /// Terraform's internal resource ID. It is structured as "`OrganizationId`,`NetworkAreaId`".
         /// </summary>
         public readonly string Id;
@@ -124,14 +116,6 @@ namespace Pulumi.Stackit
         /// Labels are key-value string pairs which can be attached to a resource container
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
-        /// <summary>
-        /// The maximal prefix length for networks in the network area.
-        /// </summary>
-        public readonly int MaxPrefixLength;
-        /// <summary>
-        /// The minimal prefix length for networks in the network area.
-        /// </summary>
-        public readonly int MinPrefixLength;
         /// <summary>
         /// The name of the network area.
         /// </summary>
@@ -141,10 +125,6 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string NetworkAreaId;
         /// <summary>
-        /// List of Network ranges.
-        /// </summary>
-        public readonly ImmutableArray<Outputs.GetNetworkAreaNetworkRangeResult> NetworkRanges;
-        /// <summary>
         /// STACKIT organization ID to which the network area is associated.
         /// </summary>
         public readonly string OrganizationId;
@@ -152,49 +132,27 @@ namespace Pulumi.Stackit
         /// The amount of projects currently referencing this area.
         /// </summary>
         public readonly int ProjectCount;
-        /// <summary>
-        /// Classless Inter-Domain Routing (CIDR).
-        /// </summary>
-        public readonly string TransferNetwork;
 
         [OutputConstructor]
         private GetNetworkAreaResult(
-            ImmutableArray<string> defaultNameservers,
-
-            int defaultPrefixLength,
-
             string id,
 
             ImmutableDictionary<string, string> labels,
-
-            int maxPrefixLength,
-
-            int minPrefixLength,
 
             string name,
 
             string networkAreaId,
 
-            ImmutableArray<Outputs.GetNetworkAreaNetworkRangeResult> networkRanges,
-
             string organizationId,
 
-            int projectCount,
-
-            string transferNetwork)
+            int projectCount)
         {
-            DefaultNameservers = defaultNameservers;
-            DefaultPrefixLength = defaultPrefixLength;
             Id = id;
             Labels = labels;
-            MaxPrefixLength = maxPrefixLength;
-            MinPrefixLength = minPrefixLength;
             Name = name;
             NetworkAreaId = networkAreaId;
-            NetworkRanges = networkRanges;
             OrganizationId = organizationId;
             ProjectCount = projectCount;
-            TransferNetwork = transferNetwork;
         }
     }
 }

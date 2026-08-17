@@ -43,34 +43,10 @@ namespace Pulumi.Stackit
     public partial class NetworkArea : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List of DNS Servers/Nameservers for configuration of network area for region `Eu01`.
-        /// </summary>
-        [Output("defaultNameservers")]
-        public Output<ImmutableArray<string>> DefaultNameservers { get; private set; } = null!;
-
-        /// <summary>
-        /// The default prefix length for networks in the network area for region `Eu01`.
-        /// </summary>
-        [Output("defaultPrefixLength")]
-        public Output<int> DefaultPrefixLength { get; private set; } = null!;
-
-        /// <summary>
         /// Labels are key-value string pairs which can be attached to a resource container
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
-
-        /// <summary>
-        /// The maximal prefix length for networks in the network area for region `Eu01`.
-        /// </summary>
-        [Output("maxPrefixLength")]
-        public Output<int> MaxPrefixLength { get; private set; } = null!;
-
-        /// <summary>
-        /// The minimal prefix length for networks in the network area for region `Eu01`.
-        /// </summary>
-        [Output("minPrefixLength")]
-        public Output<int> MinPrefixLength { get; private set; } = null!;
 
         /// <summary>
         /// The name of the network area.
@@ -85,12 +61,6 @@ namespace Pulumi.Stackit
         public Output<string> NetworkAreaId { get; private set; } = null!;
 
         /// <summary>
-        /// List of Network ranges for configuration of network area for region `Eu01`.
-        /// </summary>
-        [Output("networkRanges")]
-        public Output<ImmutableArray<Outputs.NetworkAreaNetworkRange>> NetworkRanges { get; private set; } = null!;
-
-        /// <summary>
         /// STACKIT organization ID to which the network area is associated.
         /// </summary>
         [Output("organizationId")]
@@ -101,12 +71,6 @@ namespace Pulumi.Stackit
         /// </summary>
         [Output("projectCount")]
         public Output<int> ProjectCount { get; private set; } = null!;
-
-        /// <summary>
-        /// Classless Inter-Domain Routing (CIDR) for configuration of network area for region `Eu01`.
-        /// </summary>
-        [Output("transferNetwork")]
-        public Output<string?> TransferNetwork { get; private set; } = null!;
 
 
         /// <summary>
@@ -155,25 +119,6 @@ namespace Pulumi.Stackit
 
     public sealed class NetworkAreaArgs : global::Pulumi.ResourceArgs
     {
-        [Input("defaultNameservers")]
-        private InputList<string>? _defaultNameservers;
-
-        /// <summary>
-        /// List of DNS Servers/Nameservers for configuration of network area for region `Eu01`.
-        /// </summary>
-        [Obsolete(@"Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `stackit.NetworkAreaRegion` resource instead.")]
-        public InputList<string> DefaultNameservers
-        {
-            get => _defaultNameservers ?? (_defaultNameservers = new InputList<string>());
-            set => _defaultNameservers = value;
-        }
-
-        /// <summary>
-        /// The default prefix length for networks in the network area for region `Eu01`.
-        /// </summary>
-        [Input("defaultPrefixLength")]
-        public Input<int>? DefaultPrefixLength { get; set; }
-
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -187,47 +132,16 @@ namespace Pulumi.Stackit
         }
 
         /// <summary>
-        /// The maximal prefix length for networks in the network area for region `Eu01`.
-        /// </summary>
-        [Input("maxPrefixLength")]
-        public Input<int>? MaxPrefixLength { get; set; }
-
-        /// <summary>
-        /// The minimal prefix length for networks in the network area for region `Eu01`.
-        /// </summary>
-        [Input("minPrefixLength")]
-        public Input<int>? MinPrefixLength { get; set; }
-
-        /// <summary>
         /// The name of the network area.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
-
-        [Input("networkRanges")]
-        private InputList<Inputs.NetworkAreaNetworkRangeArgs>? _networkRanges;
-
-        /// <summary>
-        /// List of Network ranges for configuration of network area for region `Eu01`.
-        /// </summary>
-        [Obsolete(@"Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `stackit.NetworkAreaRegion` resource instead.")]
-        public InputList<Inputs.NetworkAreaNetworkRangeArgs> NetworkRanges
-        {
-            get => _networkRanges ?? (_networkRanges = new InputList<Inputs.NetworkAreaNetworkRangeArgs>());
-            set => _networkRanges = value;
-        }
 
         /// <summary>
         /// STACKIT organization ID to which the network area is associated.
         /// </summary>
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
-
-        /// <summary>
-        /// Classless Inter-Domain Routing (CIDR) for configuration of network area for region `Eu01`.
-        /// </summary>
-        [Input("transferNetwork")]
-        public Input<string>? TransferNetwork { get; set; }
 
         public NetworkAreaArgs()
         {
@@ -237,25 +151,6 @@ namespace Pulumi.Stackit
 
     public sealed class NetworkAreaState : global::Pulumi.ResourceArgs
     {
-        [Input("defaultNameservers")]
-        private InputList<string>? _defaultNameservers;
-
-        /// <summary>
-        /// List of DNS Servers/Nameservers for configuration of network area for region `Eu01`.
-        /// </summary>
-        [Obsolete(@"Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `stackit.NetworkAreaRegion` resource instead.")]
-        public InputList<string> DefaultNameservers
-        {
-            get => _defaultNameservers ?? (_defaultNameservers = new InputList<string>());
-            set => _defaultNameservers = value;
-        }
-
-        /// <summary>
-        /// The default prefix length for networks in the network area for region `Eu01`.
-        /// </summary>
-        [Input("defaultPrefixLength")]
-        public Input<int>? DefaultPrefixLength { get; set; }
-
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -267,18 +162,6 @@ namespace Pulumi.Stackit
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
-
-        /// <summary>
-        /// The maximal prefix length for networks in the network area for region `Eu01`.
-        /// </summary>
-        [Input("maxPrefixLength")]
-        public Input<int>? MaxPrefixLength { get; set; }
-
-        /// <summary>
-        /// The minimal prefix length for networks in the network area for region `Eu01`.
-        /// </summary>
-        [Input("minPrefixLength")]
-        public Input<int>? MinPrefixLength { get; set; }
 
         /// <summary>
         /// The name of the network area.
@@ -292,19 +175,6 @@ namespace Pulumi.Stackit
         [Input("networkAreaId")]
         public Input<string>? NetworkAreaId { get; set; }
 
-        [Input("networkRanges")]
-        private InputList<Inputs.NetworkAreaNetworkRangeGetArgs>? _networkRanges;
-
-        /// <summary>
-        /// List of Network ranges for configuration of network area for region `Eu01`.
-        /// </summary>
-        [Obsolete(@"Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `stackit.NetworkAreaRegion` resource instead.")]
-        public InputList<Inputs.NetworkAreaNetworkRangeGetArgs> NetworkRanges
-        {
-            get => _networkRanges ?? (_networkRanges = new InputList<Inputs.NetworkAreaNetworkRangeGetArgs>());
-            set => _networkRanges = value;
-        }
-
         /// <summary>
         /// STACKIT organization ID to which the network area is associated.
         /// </summary>
@@ -316,12 +186,6 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("projectCount")]
         public Input<int>? ProjectCount { get; set; }
-
-        /// <summary>
-        /// Classless Inter-Domain Routing (CIDR) for configuration of network area for region `Eu01`.
-        /// </summary>
-        [Input("transferNetwork")]
-        public Input<string>? TransferNetwork { get; set; }
 
         public NetworkAreaState()
         {

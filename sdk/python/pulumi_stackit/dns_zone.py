@@ -42,7 +42,7 @@ class DnsZoneArgs:
 
         :param pulumi.Input[_builtins.str] dns_name: The zone name. E.g. `example.com`
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the dns zone is associated.
-        :param pulumi.Input[_builtins.str] acl: The access control list. E.g. `0.0.0.0/0,::/0`
+        :param pulumi.Input[_builtins.str] acl: The access control list (e.g., 0.0.0.0/0,::/0). Note: This field currently has no effect and does not enforce any access restrictions on the DNS zone.
         :param pulumi.Input[_builtins.str] contact_email: A contact e-mail for the zone.
         :param pulumi.Input[_builtins.int] default_ttl: Default time to live. E.g. 3600.
         :param pulumi.Input[_builtins.str] description: Description of the zone.
@@ -114,7 +114,7 @@ class DnsZoneArgs:
     @pulumi.getter
     def acl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The access control list. E.g. `0.0.0.0/0,::/0`
+        The access control list (e.g., 0.0.0.0/0,::/0). Note: This field currently has no effect and does not enforce any access restrictions on the DNS zone.
         """
         return pulumi.get(self, "acl")
 
@@ -301,7 +301,7 @@ class _DnsZoneState:
         """
         Input properties used for looking up and filtering DnsZone resources.
 
-        :param pulumi.Input[_builtins.str] acl: The access control list. E.g. `0.0.0.0/0,::/0`
+        :param pulumi.Input[_builtins.str] acl: The access control list (e.g., 0.0.0.0/0,::/0). Note: This field currently has no effect and does not enforce any access restrictions on the DNS zone.
         :param pulumi.Input[_builtins.str] contact_email: A contact e-mail for the zone.
         :param pulumi.Input[_builtins.int] default_ttl: Default time to live. E.g. 3600.
         :param pulumi.Input[_builtins.str] description: Description of the zone.
@@ -371,7 +371,7 @@ class _DnsZoneState:
     @pulumi.getter
     def acl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The access control list. E.g. `0.0.0.0/0,::/0`
+        The access control list (e.g., 0.0.0.0/0,::/0). Note: This field currently has no effect and does not enforce any access restrictions on the DNS zone.
         """
         return pulumi.get(self, "acl")
 
@@ -661,7 +661,7 @@ class DnsZone(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] acl: The access control list. E.g. `0.0.0.0/0,::/0`
+        :param pulumi.Input[_builtins.str] acl: The access control list (e.g., 0.0.0.0/0,::/0). Note: This field currently has no effect and does not enforce any access restrictions on the DNS zone.
         :param pulumi.Input[_builtins.str] contact_email: A contact e-mail for the zone.
         :param pulumi.Input[_builtins.int] default_ttl: Default time to live. E.g. 3600.
         :param pulumi.Input[_builtins.str] description: Description of the zone.
@@ -797,7 +797,7 @@ class DnsZone(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] acl: The access control list. E.g. `0.0.0.0/0,::/0`
+        :param pulumi.Input[_builtins.str] acl: The access control list (e.g., 0.0.0.0/0,::/0). Note: This field currently has no effect and does not enforce any access restrictions on the DNS zone.
         :param pulumi.Input[_builtins.str] contact_email: A contact e-mail for the zone.
         :param pulumi.Input[_builtins.int] default_ttl: Default time to live. E.g. 3600.
         :param pulumi.Input[_builtins.str] description: Description of the zone.
@@ -850,7 +850,7 @@ class DnsZone(pulumi.CustomResource):
     @pulumi.getter
     def acl(self) -> pulumi.Output[_builtins.str]:
         """
-        The access control list. E.g. `0.0.0.0/0,::/0`
+        The access control list (e.g., 0.0.0.0/0,::/0). Note: This field currently has no effect and does not enforce any access restrictions on the DNS zone.
         """
         return pulumi.get(self, "acl")
 

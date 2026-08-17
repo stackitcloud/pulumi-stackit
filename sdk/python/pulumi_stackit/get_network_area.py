@@ -13,7 +13,6 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
-from . import outputs
 
 __all__ = [
     'GetNetworkAreaResult',
@@ -27,61 +26,25 @@ class GetNetworkAreaResult:
     """
     A collection of values returned by getNetworkArea.
     """
-    def __init__(__self__, default_nameservers=None, default_prefix_length=None, id=None, labels=None, max_prefix_length=None, min_prefix_length=None, name=None, network_area_id=None, network_ranges=None, organization_id=None, project_count=None, transfer_network=None):
-        if default_nameservers and not isinstance(default_nameservers, list):
-            raise TypeError("Expected argument 'default_nameservers' to be a list")
-        pulumi.set(__self__, "default_nameservers", default_nameservers)
-        if default_prefix_length and not isinstance(default_prefix_length, int):
-            raise TypeError("Expected argument 'default_prefix_length' to be a int")
-        pulumi.set(__self__, "default_prefix_length", default_prefix_length)
+    def __init__(__self__, id=None, labels=None, name=None, network_area_id=None, organization_id=None, project_count=None):
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
-        if max_prefix_length and not isinstance(max_prefix_length, int):
-            raise TypeError("Expected argument 'max_prefix_length' to be a int")
-        pulumi.set(__self__, "max_prefix_length", max_prefix_length)
-        if min_prefix_length and not isinstance(min_prefix_length, int):
-            raise TypeError("Expected argument 'min_prefix_length' to be a int")
-        pulumi.set(__self__, "min_prefix_length", min_prefix_length)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
         if network_area_id and not isinstance(network_area_id, str):
             raise TypeError("Expected argument 'network_area_id' to be a str")
         pulumi.set(__self__, "network_area_id", network_area_id)
-        if network_ranges and not isinstance(network_ranges, list):
-            raise TypeError("Expected argument 'network_ranges' to be a list")
-        pulumi.set(__self__, "network_ranges", network_ranges)
         if organization_id and not isinstance(organization_id, str):
             raise TypeError("Expected argument 'organization_id' to be a str")
         pulumi.set(__self__, "organization_id", organization_id)
         if project_count and not isinstance(project_count, int):
             raise TypeError("Expected argument 'project_count' to be a int")
         pulumi.set(__self__, "project_count", project_count)
-        if transfer_network and not isinstance(transfer_network, str):
-            raise TypeError("Expected argument 'transfer_network' to be a str")
-        pulumi.set(__self__, "transfer_network", transfer_network)
-
-    @_builtins.property
-    @pulumi.getter(name="defaultNameservers")
-    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026.""")
-    def default_nameservers(self) -> Sequence[_builtins.str]:
-        """
-        List of DNS Servers/Nameservers.
-        """
-        return pulumi.get(self, "default_nameservers")
-
-    @_builtins.property
-    @pulumi.getter(name="defaultPrefixLength")
-    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026.""")
-    def default_prefix_length(self) -> _builtins.int:
-        """
-        The default prefix length for networks in the network area.
-        """
-        return pulumi.get(self, "default_prefix_length")
 
     @_builtins.property
     @pulumi.getter
@@ -100,24 +63,6 @@ class GetNetworkAreaResult:
         return pulumi.get(self, "labels")
 
     @_builtins.property
-    @pulumi.getter(name="maxPrefixLength")
-    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026.""")
-    def max_prefix_length(self) -> _builtins.int:
-        """
-        The maximal prefix length for networks in the network area.
-        """
-        return pulumi.get(self, "max_prefix_length")
-
-    @_builtins.property
-    @pulumi.getter(name="minPrefixLength")
-    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026.""")
-    def min_prefix_length(self) -> _builtins.int:
-        """
-        The minimal prefix length for networks in the network area.
-        """
-        return pulumi.get(self, "min_prefix_length")
-
-    @_builtins.property
     @pulumi.getter
     def name(self) -> _builtins.str:
         """
@@ -132,15 +77,6 @@ class GetNetworkAreaResult:
         The network area ID.
         """
         return pulumi.get(self, "network_area_id")
-
-    @_builtins.property
-    @pulumi.getter(name="networkRanges")
-    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026.""")
-    def network_ranges(self) -> Sequence['outputs.GetNetworkAreaNetworkRangeResult']:
-        """
-        List of Network ranges.
-        """
-        return pulumi.get(self, "network_ranges")
 
     @_builtins.property
     @pulumi.getter(name="organizationId")
@@ -158,15 +94,6 @@ class GetNetworkAreaResult:
         """
         return pulumi.get(self, "project_count")
 
-    @_builtins.property
-    @pulumi.getter(name="transferNetwork")
-    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026.""")
-    def transfer_network(self) -> _builtins.str:
-        """
-        Classless Inter-Domain Routing (CIDR).
-        """
-        return pulumi.get(self, "transfer_network")
-
 
 class AwaitableGetNetworkAreaResult(GetNetworkAreaResult):
     # pylint: disable=using-constant-test
@@ -174,18 +101,12 @@ class AwaitableGetNetworkAreaResult(GetNetworkAreaResult):
         if False:
             yield self
         return GetNetworkAreaResult(
-            default_nameservers=self.default_nameservers,
-            default_prefix_length=self.default_prefix_length,
             id=self.id,
             labels=self.labels,
-            max_prefix_length=self.max_prefix_length,
-            min_prefix_length=self.min_prefix_length,
             name=self.name,
             network_area_id=self.network_area_id,
-            network_ranges=self.network_ranges,
             organization_id=self.organization_id,
-            project_count=self.project_count,
-            transfer_network=self.transfer_network)
+            project_count=self.project_count)
 
 
 def get_network_area(network_area_id: Optional[_builtins.str] = None,
@@ -209,18 +130,12 @@ def get_network_area(network_area_id: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('stackit:index/getNetworkArea:getNetworkArea', __args__, opts=opts, typ=GetNetworkAreaResult).value
 
     return AwaitableGetNetworkAreaResult(
-        default_nameservers=pulumi.get(__ret__, 'default_nameservers'),
-        default_prefix_length=pulumi.get(__ret__, 'default_prefix_length'),
         id=pulumi.get(__ret__, 'id'),
         labels=pulumi.get(__ret__, 'labels'),
-        max_prefix_length=pulumi.get(__ret__, 'max_prefix_length'),
-        min_prefix_length=pulumi.get(__ret__, 'min_prefix_length'),
         name=pulumi.get(__ret__, 'name'),
         network_area_id=pulumi.get(__ret__, 'network_area_id'),
-        network_ranges=pulumi.get(__ret__, 'network_ranges'),
         organization_id=pulumi.get(__ret__, 'organization_id'),
-        project_count=pulumi.get(__ret__, 'project_count'),
-        transfer_network=pulumi.get(__ret__, 'transfer_network'))
+        project_count=pulumi.get(__ret__, 'project_count'))
 def get_network_area_output(network_area_id: pulumi.Input[Optional[_builtins.str]] = None,
                             organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkAreaResult]:
@@ -241,15 +156,9 @@ def get_network_area_output(network_area_id: pulumi.Input[Optional[_builtins.str
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('stackit:index/getNetworkArea:getNetworkArea', __args__, opts=opts, typ=GetNetworkAreaResult)
     return __ret__.apply(lambda __response__: GetNetworkAreaResult(
-        default_nameservers=pulumi.get(__response__, 'default_nameservers'),
-        default_prefix_length=pulumi.get(__response__, 'default_prefix_length'),
         id=pulumi.get(__response__, 'id'),
         labels=pulumi.get(__response__, 'labels'),
-        max_prefix_length=pulumi.get(__response__, 'max_prefix_length'),
-        min_prefix_length=pulumi.get(__response__, 'min_prefix_length'),
         name=pulumi.get(__response__, 'name'),
         network_area_id=pulumi.get(__response__, 'network_area_id'),
-        network_ranges=pulumi.get(__response__, 'network_ranges'),
         organization_id=pulumi.get(__response__, 'organization_id'),
-        project_count=pulumi.get(__response__, 'project_count'),
-        transfer_network=pulumi.get(__response__, 'transfer_network')))
+        project_count=pulumi.get(__response__, 'project_count')))

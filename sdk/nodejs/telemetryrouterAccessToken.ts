@@ -79,6 +79,8 @@ export class TelemetryrouterAccessToken extends pulumi.CustomResource {
     declare public readonly region: pulumi.Output<string>;
     /**
      * The status of the access token. Possible values are: `active`, `expired`, `deleting`.
+     *
+     * @deprecated status is deprecated and will be removed after February 2027.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
@@ -182,6 +184,8 @@ export interface TelemetryrouterAccessTokenState {
     region?: pulumi.Input<string | undefined>;
     /**
      * The status of the access token. Possible values are: `active`, `expired`, `deleting`.
+     *
+     * @deprecated status is deprecated and will be removed after February 2027.
      */
     status?: pulumi.Input<string | undefined>;
     /**

@@ -138,11 +138,17 @@ class _PostgresflexUserState:
         :param pulumi.Input[_builtins.str] user_id: User ID.
         """
         if host is not None:
+            warnings.warn("""host is deprecated and will be removed after February 2027. The host can be retrieved from the instance in `connection_info.write.host`.""", DeprecationWarning)
+            pulumi.log.warn("""host is deprecated: host is deprecated and will be removed after February 2027. The host can be retrieved from the instance in `connection_info.write.host`.""")
+        if host is not None:
             pulumi.set(__self__, "host", host)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
         if password is not None:
             pulumi.set(__self__, "password", password)
+        if port is not None:
+            warnings.warn("""port is deprecated and will be removed after February 2027. The port can be retrieved from the instance in `connection_info.write.port`.""", DeprecationWarning)
+            pulumi.log.warn("""port is deprecated: port is deprecated and will be removed after February 2027. The port can be retrieved from the instance in `connection_info.write.port`.""")
         if port is not None:
             pulumi.set(__self__, "port", port)
         if project_id is not None:
@@ -154,6 +160,9 @@ class _PostgresflexUserState:
         if rotate_when_changed is not None:
             pulumi.set(__self__, "rotate_when_changed", rotate_when_changed)
         if uri is not None:
+            warnings.warn("""uri is deprecated and will be removed after February 2027.""", DeprecationWarning)
+            pulumi.log.warn("""uri is deprecated: uri is deprecated and will be removed after February 2027.""")
+        if uri is not None:
             pulumi.set(__self__, "uri", uri)
         if user_id is not None:
             pulumi.set(__self__, "user_id", user_id)
@@ -162,6 +171,7 @@ class _PostgresflexUserState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""host is deprecated and will be removed after February 2027. The host can be retrieved from the instance in `connection_info.write.host`.""")
     def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "host")
 
@@ -192,6 +202,7 @@ class _PostgresflexUserState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""port is deprecated and will be removed after February 2027. The port can be retrieved from the instance in `connection_info.write.port`.""")
     def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "port")
 
@@ -249,6 +260,7 @@ class _PostgresflexUserState:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""uri is deprecated and will be removed after February 2027.""")
     def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "uri")
 
@@ -430,6 +442,7 @@ class PostgresflexUser(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""host is deprecated and will be removed after February 2027. The host can be retrieved from the instance in `connection_info.write.host`.""")
     def host(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "host")
 
@@ -448,6 +461,7 @@ class PostgresflexUser(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""port is deprecated and will be removed after February 2027. The port can be retrieved from the instance in `connection_info.write.port`.""")
     def port(self) -> pulumi.Output[_builtins.int]:
         return pulumi.get(self, "port")
 
@@ -485,6 +499,7 @@ class PostgresflexUser(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""uri is deprecated and will be removed after February 2027.""")
     def uri(self) -> pulumi.Output[_builtins.str]:
         return pulumi.get(self, "uri")
 

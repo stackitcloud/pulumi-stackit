@@ -30,6 +30,12 @@ namespace Pulumi.Stackit
         public Output<Outputs.SkeClusterAccess> Access { get; private set; } = null!;
 
         /// <summary>
+        /// Cluster audit log forwarding configuration.
+        /// </summary>
+        [Output("audit")]
+        public Output<Outputs.SkeClusterAudit> Audit { get; private set; } = null!;
+
+        /// <summary>
         /// The outgoing network ranges (in CIDR notation) of traffic originating from workload on the cluster.
         /// </summary>
         [Output("egressAddressRanges")]
@@ -39,7 +45,7 @@ namespace Pulumi.Stackit
         /// A single extensions block as defined below.
         /// </summary>
         [Output("extensions")]
-        public Output<Outputs.SkeClusterExtensions?> Extensions { get; private set; } = null!;
+        public Output<Outputs.SkeClusterExtensions> Extensions { get; private set; } = null!;
 
         /// <summary>
         /// One or more hibernation block as defined below.
@@ -162,6 +168,12 @@ namespace Pulumi.Stackit
         public Input<Inputs.SkeClusterAccessArgs>? Access { get; set; }
 
         /// <summary>
+        /// Cluster audit log forwarding configuration.
+        /// </summary>
+        [Input("audit")]
+        public Input<Inputs.SkeClusterAuditArgs>? Audit { get; set; }
+
+        /// <summary>
         /// A single extensions block as defined below.
         /// </summary>
         [Input("extensions")]
@@ -241,6 +253,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("access")]
         public Input<Inputs.SkeClusterAccessGetArgs>? Access { get; set; }
+
+        /// <summary>
+        /// Cluster audit log forwarding configuration.
+        /// </summary>
+        [Input("audit")]
+        public Input<Inputs.SkeClusterAuditGetArgs>? Audit { get; set; }
 
         [Input("egressAddressRanges")]
         private InputList<string>? _egressAddressRanges;

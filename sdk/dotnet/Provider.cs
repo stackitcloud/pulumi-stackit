@@ -31,6 +31,12 @@ namespace Pulumi.Stackit
         public Output<string?> AlbCustomEndpoint { get; private set; } = null!;
 
         /// <summary>
+        /// Custom endpoint for the Application Load Balancer Web Application Firewall service
+        /// </summary>
+        [Output("albWafCustomEndpoint")]
+        public Output<string?> AlbWafCustomEndpoint { get; private set; } = null!;
+
+        /// <summary>
         /// Custom endpoint for the Membership service
         /// </summary>
         [Output("authorizationCustomEndpoint")]
@@ -121,6 +127,12 @@ namespace Pulumi.Stackit
         public Output<string?> MariadbCustomEndpoint { get; private set; } = null!;
 
         /// <summary>
+        /// Custom endpoint for the AI Model Experiments service
+        /// </summary>
+        [Output("modelexperimentsCustomEndpoint")]
+        public Output<string?> ModelexperimentsCustomEndpoint { get; private set; } = null!;
+
+        /// <summary>
         /// Custom endpoint for the AI Model Serving service
         /// </summary>
         [Output("modelservingCustomEndpoint")]
@@ -191,12 +203,6 @@ namespace Pulumi.Stackit
         /// </summary>
         [Output("redisCustomEndpoint")]
         public Output<string?> RedisCustomEndpoint { get; private set; } = null!;
-
-        /// <summary>
-        /// Region will be used as the default location for regional services. Not all services require a region, some are global
-        /// </summary>
-        [Output("region")]
-        public Output<string?> Region { get; private set; } = null!;
 
         /// <summary>
         /// Custom endpoint for the Resource Manager service
@@ -366,6 +372,12 @@ namespace Pulumi.Stackit
         public Input<string>? AlbCustomEndpoint { get; set; }
 
         /// <summary>
+        /// Custom endpoint for the Application Load Balancer Web Application Firewall service
+        /// </summary>
+        [Input("albWafCustomEndpoint")]
+        public Input<string>? AlbWafCustomEndpoint { get; set; }
+
+        /// <summary>
         /// Custom endpoint for the Membership service
         /// </summary>
         [Input("authorizationCustomEndpoint")]
@@ -474,6 +486,12 @@ namespace Pulumi.Stackit
         public Input<string>? MariadbCustomEndpoint { get; set; }
 
         /// <summary>
+        /// Custom endpoint for the AI Model Experiments service
+        /// </summary>
+        [Input("modelexperimentsCustomEndpoint")]
+        public Input<string>? ModelexperimentsCustomEndpoint { get; set; }
+
+        /// <summary>
         /// Custom endpoint for the AI Model Serving service
         /// </summary>
         [Input("modelservingCustomEndpoint")]
@@ -544,12 +562,6 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("redisCustomEndpoint")]
         public Input<string>? RedisCustomEndpoint { get; set; }
-
-        /// <summary>
-        /// Region will be used as the default location for regional services. Not all services require a region, some are global
-        /// </summary>
-        [Input("region")]
-        public Input<string>? Region { get; set; }
 
         /// <summary>
         /// Custom endpoint for the Resource Manager service

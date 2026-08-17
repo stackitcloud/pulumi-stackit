@@ -26,12 +26,18 @@ func LookupNetwork(ctx *pulumi.Context, args *LookupNetworkArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getNetwork.
 type LookupNetworkArgs struct {
+	// The IPv4 VPC network range ID.
+	Ipv4VpcNetworkRangeId *string `pulumi:"ipv4VpcNetworkRangeId"`
+	// The IPv6 VPC network range ID.
+	Ipv6VpcNetworkRangeId *string `pulumi:"ipv6VpcNetworkRangeId"`
 	// The network ID.
 	NetworkId string `pulumi:"networkId"`
 	// STACKIT project ID to which the network is associated.
 	ProjectId string `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
 	Region *string `pulumi:"region"`
+	// The ID of the VPC the network is associated with.
+	VpcId *string `pulumi:"vpcId"`
 }
 
 // A collection of values returned by getNetwork.
@@ -52,6 +58,8 @@ type LookupNetworkResult struct {
 	Ipv4PrefixLength int `pulumi:"ipv4PrefixLength"`
 	// The IPv4 prefixes of the network.
 	Ipv4Prefixes []string `pulumi:"ipv4Prefixes"`
+	// The IPv4 VPC network range ID.
+	Ipv4VpcNetworkRangeId *string `pulumi:"ipv4VpcNetworkRangeId"`
 	// The IPv6 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
 	Ipv6Gateway string `pulumi:"ipv6Gateway"`
 	// The IPv6 nameservers of the network.
@@ -64,6 +72,8 @@ type LookupNetworkResult struct {
 	Ipv6PrefixLength int `pulumi:"ipv6PrefixLength"`
 	// The IPv6 prefixes of the network.
 	Ipv6Prefixes []string `pulumi:"ipv6Prefixes"`
+	// The IPv6 VPC network range ID.
+	Ipv6VpcNetworkRangeId *string `pulumi:"ipv6VpcNetworkRangeId"`
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the network.
@@ -80,6 +90,8 @@ type LookupNetworkResult struct {
 	Routed bool `pulumi:"routed"`
 	// The ID of the routing table associated with the network.
 	RoutingTableId string `pulumi:"routingTableId"`
+	// The ID of the VPC the network is associated with.
+	VpcId *string `pulumi:"vpcId"`
 }
 
 func LookupNetworkOutput(ctx *pulumi.Context, args LookupNetworkOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkResultOutput {
@@ -93,12 +105,18 @@ func LookupNetworkOutput(ctx *pulumi.Context, args LookupNetworkOutputArgs, opts
 
 // A collection of arguments for invoking getNetwork.
 type LookupNetworkOutputArgs struct {
+	// The IPv4 VPC network range ID.
+	Ipv4VpcNetworkRangeId pulumi.StringPtrInput `pulumi:"ipv4VpcNetworkRangeId"`
+	// The IPv6 VPC network range ID.
+	Ipv6VpcNetworkRangeId pulumi.StringPtrInput `pulumi:"ipv6VpcNetworkRangeId"`
 	// The network ID.
 	NetworkId pulumi.StringInput `pulumi:"networkId"`
 	// STACKIT project ID to which the network is associated.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
 	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The ID of the VPC the network is associated with.
+	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
 }
 
 func (LookupNetworkOutputArgs) ElementType() reflect.Type {
@@ -157,6 +175,11 @@ func (o LookupNetworkResultOutput) Ipv4Prefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupNetworkResult) []string { return v.Ipv4Prefixes }).(pulumi.StringArrayOutput)
 }
 
+// The IPv4 VPC network range ID.
+func (o LookupNetworkResultOutput) Ipv4VpcNetworkRangeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNetworkResult) *string { return v.Ipv4VpcNetworkRangeId }).(pulumi.StringPtrOutput)
+}
+
 // The IPv6 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
 func (o LookupNetworkResultOutput) Ipv6Gateway() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkResult) string { return v.Ipv6Gateway }).(pulumi.StringOutput)
@@ -182,6 +205,11 @@ func (o LookupNetworkResultOutput) Ipv6PrefixLength() pulumi.IntOutput {
 // The IPv6 prefixes of the network.
 func (o LookupNetworkResultOutput) Ipv6Prefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupNetworkResult) []string { return v.Ipv6Prefixes }).(pulumi.StringArrayOutput)
+}
+
+// The IPv6 VPC network range ID.
+func (o LookupNetworkResultOutput) Ipv6VpcNetworkRangeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNetworkResult) *string { return v.Ipv6VpcNetworkRangeId }).(pulumi.StringPtrOutput)
 }
 
 // Labels are key-value string pairs which can be attached to a resource container
@@ -222,6 +250,11 @@ func (o LookupNetworkResultOutput) Routed() pulumi.BoolOutput {
 // The ID of the routing table associated with the network.
 func (o LookupNetworkResultOutput) RoutingTableId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkResult) string { return v.RoutingTableId }).(pulumi.StringOutput)
+}
+
+// The ID of the VPC the network is associated with.
+func (o LookupNetworkResultOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNetworkResult) *string { return v.VpcId }).(pulumi.StringPtrOutput)
 }
 
 func init() {

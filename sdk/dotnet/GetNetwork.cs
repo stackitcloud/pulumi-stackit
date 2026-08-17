@@ -61,6 +61,18 @@ namespace Pulumi.Stackit
     public sealed class GetNetworkArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
+        /// The IPv4 VPC network range ID.
+        /// </summary>
+        [Input("ipv4VpcNetworkRangeId")]
+        public string? Ipv4VpcNetworkRangeId { get; set; }
+
+        /// <summary>
+        /// The IPv6 VPC network range ID.
+        /// </summary>
+        [Input("ipv6VpcNetworkRangeId")]
+        public string? Ipv6VpcNetworkRangeId { get; set; }
+
+        /// <summary>
         /// The network ID.
         /// </summary>
         [Input("networkId", required: true)]
@@ -78,6 +90,12 @@ namespace Pulumi.Stackit
         [Input("region")]
         public string? Region { get; set; }
 
+        /// <summary>
+        /// The ID of the VPC the network is associated with.
+        /// </summary>
+        [Input("vpcId")]
+        public string? VpcId { get; set; }
+
         public GetNetworkArgs()
         {
         }
@@ -86,6 +104,18 @@ namespace Pulumi.Stackit
 
     public sealed class GetNetworkInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The IPv4 VPC network range ID.
+        /// </summary>
+        [Input("ipv4VpcNetworkRangeId")]
+        public Input<string>? Ipv4VpcNetworkRangeId { get; set; }
+
+        /// <summary>
+        /// The IPv6 VPC network range ID.
+        /// </summary>
+        [Input("ipv6VpcNetworkRangeId")]
+        public Input<string>? Ipv6VpcNetworkRangeId { get; set; }
+
         /// <summary>
         /// The network ID.
         /// </summary>
@@ -103,6 +133,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        /// <summary>
+        /// The ID of the VPC the network is associated with.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
 
         public GetNetworkInvokeArgs()
         {
@@ -143,6 +179,10 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly ImmutableArray<string> Ipv4Prefixes;
         /// <summary>
+        /// The IPv4 VPC network range ID.
+        /// </summary>
+        public readonly string? Ipv4VpcNetworkRangeId;
+        /// <summary>
         /// The IPv6 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
         /// </summary>
         public readonly string Ipv6Gateway;
@@ -162,6 +202,10 @@ namespace Pulumi.Stackit
         /// The IPv6 prefixes of the network.
         /// </summary>
         public readonly ImmutableArray<string> Ipv6Prefixes;
+        /// <summary>
+        /// The IPv6 VPC network range ID.
+        /// </summary>
+        public readonly string? Ipv6VpcNetworkRangeId;
         /// <summary>
         /// Labels are key-value string pairs which can be attached to a resource container
         /// </summary>
@@ -194,6 +238,10 @@ namespace Pulumi.Stackit
         /// The ID of the routing table associated with the network.
         /// </summary>
         public readonly string RoutingTableId;
+        /// <summary>
+        /// The ID of the VPC the network is associated with.
+        /// </summary>
+        public readonly string? VpcId;
 
         [OutputConstructor]
         private GetNetworkResult(
@@ -211,6 +259,8 @@ namespace Pulumi.Stackit
 
             ImmutableArray<string> ipv4Prefixes,
 
+            string? ipv4VpcNetworkRangeId,
+
             string ipv6Gateway,
 
             ImmutableArray<string> ipv6Nameservers,
@@ -220,6 +270,8 @@ namespace Pulumi.Stackit
             int ipv6PrefixLength,
 
             ImmutableArray<string> ipv6Prefixes,
+
+            string? ipv6VpcNetworkRangeId,
 
             ImmutableDictionary<string, string> labels,
 
@@ -235,7 +287,9 @@ namespace Pulumi.Stackit
 
             bool routed,
 
-            string routingTableId)
+            string routingTableId,
+
+            string? vpcId)
         {
             Dhcp = dhcp;
             Id = id;
@@ -244,11 +298,13 @@ namespace Pulumi.Stackit
             Ipv4Prefix = ipv4Prefix;
             Ipv4PrefixLength = ipv4PrefixLength;
             Ipv4Prefixes = ipv4Prefixes;
+            Ipv4VpcNetworkRangeId = ipv4VpcNetworkRangeId;
             Ipv6Gateway = ipv6Gateway;
             Ipv6Nameservers = ipv6Nameservers;
             Ipv6Prefix = ipv6Prefix;
             Ipv6PrefixLength = ipv6PrefixLength;
             Ipv6Prefixes = ipv6Prefixes;
+            Ipv6VpcNetworkRangeId = ipv6VpcNetworkRangeId;
             Labels = labels;
             Name = name;
             NetworkId = networkId;
@@ -257,6 +313,7 @@ namespace Pulumi.Stackit
             Region = region;
             Routed = routed;
             RoutingTableId = routingTableId;
+            VpcId = vpcId;
         }
     }
 }

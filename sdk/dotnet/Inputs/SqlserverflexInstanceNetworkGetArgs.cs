@@ -30,6 +30,18 @@ namespace Pulumi.Stackit.Inputs
             set => _acls = value;
         }
 
+        /// <summary>
+        /// Address of this instance.
+        /// </summary>
+        [Input("instanceAddress")]
+        public Input<string>? InstanceAddress { get; set; }
+
+        /// <summary>
+        /// Address of the router.
+        /// </summary>
+        [Input("routerAddress")]
+        public Input<string>? RouterAddress { get; set; }
+
         public SqlserverflexInstanceNetworkGetArgs()
         {
         }

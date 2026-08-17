@@ -25,17 +25,20 @@ class NetworkArgs:
                  ipv4_nameservers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ipv4_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  ipv4_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 ipv4_vpc_network_range_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ipv6_gateway: pulumi.Input[Optional[_builtins.str]] = None,
                  ipv6_nameservers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ipv6_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  ipv6_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 ipv6_vpc_network_range_id: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  no_ipv4_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
                  no_ipv6_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  routed: pulumi.Input[Optional[_builtins.bool]] = None,
-                 routing_table_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 routing_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Network resource.
 
@@ -45,10 +48,12 @@ class NetworkArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv4_nameservers: The IPv4 nameservers of the network. If not specified on creation, it will be set with the default nameservers from the network area. If not specified on update, it will remain unchanged.
         :param pulumi.Input[_builtins.str] ipv4_prefix: The IPv4 prefix of the network (CIDR).
         :param pulumi.Input[_builtins.int] ipv4_prefix_length: The IPv4 prefix length of the network.
+        :param pulumi.Input[_builtins.str] ipv4_vpc_network_range_id: The IPv4 VPC network range ID.
         :param pulumi.Input[_builtins.str] ipv6_gateway: The IPv6 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv6_nameservers: The IPv6 nameservers of the network.
         :param pulumi.Input[_builtins.str] ipv6_prefix: The IPv6 prefix of the network (CIDR).
         :param pulumi.Input[_builtins.int] ipv6_prefix_length: The IPv6 prefix length of the network.
+        :param pulumi.Input[_builtins.str] ipv6_vpc_network_range_id: The IPv6 VPC network range ID.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
         :param pulumi.Input[_builtins.str] name: The name of the network.
         :param pulumi.Input[_builtins.bool] no_ipv4_gateway: If set to `true`, the network doesn't have a gateway.
@@ -56,6 +61,7 @@ class NetworkArgs:
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.bool] routed: If set to `true`, the network is routed and therefore accessible from other networks.
         :param pulumi.Input[_builtins.str] routing_table_id: The ID of the routing table associated with the network.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC the network is associated with.
         """
         pulumi.set(__self__, "project_id", project_id)
         if dhcp is not None:
@@ -68,6 +74,8 @@ class NetworkArgs:
             pulumi.set(__self__, "ipv4_prefix", ipv4_prefix)
         if ipv4_prefix_length is not None:
             pulumi.set(__self__, "ipv4_prefix_length", ipv4_prefix_length)
+        if ipv4_vpc_network_range_id is not None:
+            pulumi.set(__self__, "ipv4_vpc_network_range_id", ipv4_vpc_network_range_id)
         if ipv6_gateway is not None:
             pulumi.set(__self__, "ipv6_gateway", ipv6_gateway)
         if ipv6_nameservers is not None:
@@ -76,6 +84,8 @@ class NetworkArgs:
             pulumi.set(__self__, "ipv6_prefix", ipv6_prefix)
         if ipv6_prefix_length is not None:
             pulumi.set(__self__, "ipv6_prefix_length", ipv6_prefix_length)
+        if ipv6_vpc_network_range_id is not None:
+            pulumi.set(__self__, "ipv6_vpc_network_range_id", ipv6_vpc_network_range_id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -90,6 +100,8 @@ class NetworkArgs:
             pulumi.set(__self__, "routed", routed)
         if routing_table_id is not None:
             pulumi.set(__self__, "routing_table_id", routing_table_id)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
@@ -164,6 +176,18 @@ class NetworkArgs:
         pulumi.set(self, "ipv4_prefix_length", value)
 
     @_builtins.property
+    @pulumi.getter(name="ipv4VpcNetworkRangeId")
+    def ipv4_vpc_network_range_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The IPv4 VPC network range ID.
+        """
+        return pulumi.get(self, "ipv4_vpc_network_range_id")
+
+    @ipv4_vpc_network_range_id.setter
+    def ipv4_vpc_network_range_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ipv4_vpc_network_range_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="ipv6Gateway")
     def ipv6_gateway(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -210,6 +234,18 @@ class NetworkArgs:
     @ipv6_prefix_length.setter
     def ipv6_prefix_length(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ipv6_prefix_length", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6VpcNetworkRangeId")
+    def ipv6_vpc_network_range_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The IPv6 VPC network range ID.
+        """
+        return pulumi.get(self, "ipv6_vpc_network_range_id")
+
+    @ipv6_vpc_network_range_id.setter
+    def ipv6_vpc_network_range_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ipv6_vpc_network_range_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -295,6 +331,18 @@ class NetworkArgs:
     def routing_table_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "routing_table_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the VPC the network is associated with.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "vpc_id", value)
+
 
 @pulumi.input_type
 class _NetworkState:
@@ -305,11 +353,13 @@ class _NetworkState:
                  ipv4_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  ipv4_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
                  ipv4_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ipv4_vpc_network_range_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ipv6_gateway: pulumi.Input[Optional[_builtins.str]] = None,
                  ipv6_nameservers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ipv6_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  ipv6_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
                  ipv6_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 ipv6_vpc_network_range_id: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  network_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -319,7 +369,8 @@ class _NetworkState:
                  public_ip: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  routed: pulumi.Input[Optional[_builtins.bool]] = None,
-                 routing_table_id: pulumi.Input[Optional[_builtins.str]] = None):
+                 routing_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Network resources.
 
@@ -329,11 +380,13 @@ class _NetworkState:
         :param pulumi.Input[_builtins.str] ipv4_prefix: The IPv4 prefix of the network (CIDR).
         :param pulumi.Input[_builtins.int] ipv4_prefix_length: The IPv4 prefix length of the network.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv4_prefixes: The IPv4 prefixes of the network.
+        :param pulumi.Input[_builtins.str] ipv4_vpc_network_range_id: The IPv4 VPC network range ID.
         :param pulumi.Input[_builtins.str] ipv6_gateway: The IPv6 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv6_nameservers: The IPv6 nameservers of the network.
         :param pulumi.Input[_builtins.str] ipv6_prefix: The IPv6 prefix of the network (CIDR).
         :param pulumi.Input[_builtins.int] ipv6_prefix_length: The IPv6 prefix length of the network.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv6_prefixes: The IPv6 prefixes of the network.
+        :param pulumi.Input[_builtins.str] ipv6_vpc_network_range_id: The IPv6 VPC network range ID.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
         :param pulumi.Input[_builtins.str] name: The name of the network.
         :param pulumi.Input[_builtins.str] network_id: The network ID.
@@ -344,6 +397,7 @@ class _NetworkState:
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.bool] routed: If set to `true`, the network is routed and therefore accessible from other networks.
         :param pulumi.Input[_builtins.str] routing_table_id: The ID of the routing table associated with the network.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC the network is associated with.
         """
         if dhcp is not None:
             pulumi.set(__self__, "dhcp", dhcp)
@@ -357,6 +411,8 @@ class _NetworkState:
             pulumi.set(__self__, "ipv4_prefix_length", ipv4_prefix_length)
         if ipv4_prefixes is not None:
             pulumi.set(__self__, "ipv4_prefixes", ipv4_prefixes)
+        if ipv4_vpc_network_range_id is not None:
+            pulumi.set(__self__, "ipv4_vpc_network_range_id", ipv4_vpc_network_range_id)
         if ipv6_gateway is not None:
             pulumi.set(__self__, "ipv6_gateway", ipv6_gateway)
         if ipv6_nameservers is not None:
@@ -367,6 +423,8 @@ class _NetworkState:
             pulumi.set(__self__, "ipv6_prefix_length", ipv6_prefix_length)
         if ipv6_prefixes is not None:
             pulumi.set(__self__, "ipv6_prefixes", ipv6_prefixes)
+        if ipv6_vpc_network_range_id is not None:
+            pulumi.set(__self__, "ipv6_vpc_network_range_id", ipv6_vpc_network_range_id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
@@ -387,6 +445,8 @@ class _NetworkState:
             pulumi.set(__self__, "routed", routed)
         if routing_table_id is not None:
             pulumi.set(__self__, "routing_table_id", routing_table_id)
+        if vpc_id is not None:
+            pulumi.set(__self__, "vpc_id", vpc_id)
 
     @_builtins.property
     @pulumi.getter
@@ -461,6 +521,18 @@ class _NetworkState:
         pulumi.set(self, "ipv4_prefixes", value)
 
     @_builtins.property
+    @pulumi.getter(name="ipv4VpcNetworkRangeId")
+    def ipv4_vpc_network_range_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The IPv4 VPC network range ID.
+        """
+        return pulumi.get(self, "ipv4_vpc_network_range_id")
+
+    @ipv4_vpc_network_range_id.setter
+    def ipv4_vpc_network_range_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ipv4_vpc_network_range_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="ipv6Gateway")
     def ipv6_gateway(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -519,6 +591,18 @@ class _NetworkState:
     @ipv6_prefixes.setter
     def ipv6_prefixes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ipv6_prefixes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6VpcNetworkRangeId")
+    def ipv6_vpc_network_range_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The IPv6 VPC network range ID.
+        """
+        return pulumi.get(self, "ipv6_vpc_network_range_id")
+
+    @ipv6_vpc_network_range_id.setter
+    def ipv6_vpc_network_range_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "ipv6_vpc_network_range_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -640,6 +724,18 @@ class _NetworkState:
     def routing_table_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "routing_table_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the VPC the network is associated with.
+        """
+        return pulumi.get(self, "vpc_id")
+
+    @vpc_id.setter
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "vpc_id", value)
+
 
 @pulumi.type_token("stackit:index/network:Network")
 class Network(pulumi.CustomResource):
@@ -652,10 +748,12 @@ class Network(pulumi.CustomResource):
                  ipv4_nameservers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ipv4_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  ipv4_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 ipv4_vpc_network_range_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ipv6_gateway: pulumi.Input[Optional[_builtins.str]] = None,
                  ipv6_nameservers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ipv6_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  ipv6_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 ipv6_vpc_network_range_id: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  no_ipv4_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -664,6 +762,7 @@ class Network(pulumi.CustomResource):
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  routed: pulumi.Input[Optional[_builtins.bool]] = None,
                  routing_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Network resource schema. Must have a `region` specified in the provider configuration.
@@ -685,10 +784,12 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv4_nameservers: The IPv4 nameservers of the network. If not specified on creation, it will be set with the default nameservers from the network area. If not specified on update, it will remain unchanged.
         :param pulumi.Input[_builtins.str] ipv4_prefix: The IPv4 prefix of the network (CIDR).
         :param pulumi.Input[_builtins.int] ipv4_prefix_length: The IPv4 prefix length of the network.
+        :param pulumi.Input[_builtins.str] ipv4_vpc_network_range_id: The IPv4 VPC network range ID.
         :param pulumi.Input[_builtins.str] ipv6_gateway: The IPv6 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv6_nameservers: The IPv6 nameservers of the network.
         :param pulumi.Input[_builtins.str] ipv6_prefix: The IPv6 prefix of the network (CIDR).
         :param pulumi.Input[_builtins.int] ipv6_prefix_length: The IPv6 prefix length of the network.
+        :param pulumi.Input[_builtins.str] ipv6_vpc_network_range_id: The IPv6 VPC network range ID.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
         :param pulumi.Input[_builtins.str] name: The name of the network.
         :param pulumi.Input[_builtins.bool] no_ipv4_gateway: If set to `true`, the network doesn't have a gateway.
@@ -697,6 +798,7 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.bool] routed: If set to `true`, the network is routed and therefore accessible from other networks.
         :param pulumi.Input[_builtins.str] routing_table_id: The ID of the routing table associated with the network.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC the network is associated with.
         """
         ...
     @overload
@@ -737,10 +839,12 @@ class Network(pulumi.CustomResource):
                  ipv4_nameservers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ipv4_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  ipv4_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 ipv4_vpc_network_range_id: pulumi.Input[Optional[_builtins.str]] = None,
                  ipv6_gateway: pulumi.Input[Optional[_builtins.str]] = None,
                  ipv6_nameservers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  ipv6_prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  ipv6_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+                 ipv6_vpc_network_range_id: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  no_ipv4_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -749,6 +853,7 @@ class Network(pulumi.CustomResource):
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  routed: pulumi.Input[Optional[_builtins.bool]] = None,
                  routing_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -763,10 +868,12 @@ class Network(pulumi.CustomResource):
             __props__.__dict__["ipv4_nameservers"] = ipv4_nameservers
             __props__.__dict__["ipv4_prefix"] = ipv4_prefix
             __props__.__dict__["ipv4_prefix_length"] = ipv4_prefix_length
+            __props__.__dict__["ipv4_vpc_network_range_id"] = ipv4_vpc_network_range_id
             __props__.__dict__["ipv6_gateway"] = ipv6_gateway
             __props__.__dict__["ipv6_nameservers"] = ipv6_nameservers
             __props__.__dict__["ipv6_prefix"] = ipv6_prefix
             __props__.__dict__["ipv6_prefix_length"] = ipv6_prefix_length
+            __props__.__dict__["ipv6_vpc_network_range_id"] = ipv6_vpc_network_range_id
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["no_ipv4_gateway"] = no_ipv4_gateway
@@ -777,6 +884,7 @@ class Network(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["routed"] = routed
             __props__.__dict__["routing_table_id"] = routing_table_id
+            __props__.__dict__["vpc_id"] = vpc_id
             __props__.__dict__["ipv4_prefixes"] = None
             __props__.__dict__["ipv6_prefixes"] = None
             __props__.__dict__["network_id"] = None
@@ -797,11 +905,13 @@ class Network(pulumi.CustomResource):
             ipv4_prefix: pulumi.Input[Optional[_builtins.str]] = None,
             ipv4_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
             ipv4_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ipv4_vpc_network_range_id: pulumi.Input[Optional[_builtins.str]] = None,
             ipv6_gateway: pulumi.Input[Optional[_builtins.str]] = None,
             ipv6_nameservers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             ipv6_prefix: pulumi.Input[Optional[_builtins.str]] = None,
             ipv6_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
             ipv6_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ipv6_vpc_network_range_id: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             network_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -811,7 +921,8 @@ class Network(pulumi.CustomResource):
             public_ip: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             routed: pulumi.Input[Optional[_builtins.bool]] = None,
-            routing_table_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Network':
+            routing_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Network':
         """
         Get an existing Network resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -825,11 +936,13 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] ipv4_prefix: The IPv4 prefix of the network (CIDR).
         :param pulumi.Input[_builtins.int] ipv4_prefix_length: The IPv4 prefix length of the network.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv4_prefixes: The IPv4 prefixes of the network.
+        :param pulumi.Input[_builtins.str] ipv4_vpc_network_range_id: The IPv4 VPC network range ID.
         :param pulumi.Input[_builtins.str] ipv6_gateway: The IPv6 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv6_nameservers: The IPv6 nameservers of the network.
         :param pulumi.Input[_builtins.str] ipv6_prefix: The IPv6 prefix of the network (CIDR).
         :param pulumi.Input[_builtins.int] ipv6_prefix_length: The IPv6 prefix length of the network.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] ipv6_prefixes: The IPv6 prefixes of the network.
+        :param pulumi.Input[_builtins.str] ipv6_vpc_network_range_id: The IPv6 VPC network range ID.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
         :param pulumi.Input[_builtins.str] name: The name of the network.
         :param pulumi.Input[_builtins.str] network_id: The network ID.
@@ -840,6 +953,7 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.bool] routed: If set to `true`, the network is routed and therefore accessible from other networks.
         :param pulumi.Input[_builtins.str] routing_table_id: The ID of the routing table associated with the network.
+        :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC the network is associated with.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -851,11 +965,13 @@ class Network(pulumi.CustomResource):
         __props__.__dict__["ipv4_prefix"] = ipv4_prefix
         __props__.__dict__["ipv4_prefix_length"] = ipv4_prefix_length
         __props__.__dict__["ipv4_prefixes"] = ipv4_prefixes
+        __props__.__dict__["ipv4_vpc_network_range_id"] = ipv4_vpc_network_range_id
         __props__.__dict__["ipv6_gateway"] = ipv6_gateway
         __props__.__dict__["ipv6_nameservers"] = ipv6_nameservers
         __props__.__dict__["ipv6_prefix"] = ipv6_prefix
         __props__.__dict__["ipv6_prefix_length"] = ipv6_prefix_length
         __props__.__dict__["ipv6_prefixes"] = ipv6_prefixes
+        __props__.__dict__["ipv6_vpc_network_range_id"] = ipv6_vpc_network_range_id
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
         __props__.__dict__["network_id"] = network_id
@@ -866,6 +982,7 @@ class Network(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         __props__.__dict__["routed"] = routed
         __props__.__dict__["routing_table_id"] = routing_table_id
+        __props__.__dict__["vpc_id"] = vpc_id
         return Network(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -917,6 +1034,14 @@ class Network(pulumi.CustomResource):
         return pulumi.get(self, "ipv4_prefixes")
 
     @_builtins.property
+    @pulumi.getter(name="ipv4VpcNetworkRangeId")
+    def ipv4_vpc_network_range_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The IPv4 VPC network range ID.
+        """
+        return pulumi.get(self, "ipv4_vpc_network_range_id")
+
+    @_builtins.property
     @pulumi.getter(name="ipv6Gateway")
     def ipv6_gateway(self) -> pulumi.Output[_builtins.str]:
         """
@@ -955,6 +1080,14 @@ class Network(pulumi.CustomResource):
         The IPv6 prefixes of the network.
         """
         return pulumi.get(self, "ipv6_prefixes")
+
+    @_builtins.property
+    @pulumi.getter(name="ipv6VpcNetworkRangeId")
+    def ipv6_vpc_network_range_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The IPv6 VPC network range ID.
+        """
+        return pulumi.get(self, "ipv6_vpc_network_range_id")
 
     @_builtins.property
     @pulumi.getter
@@ -1035,4 +1168,12 @@ class Network(pulumi.CustomResource):
         The ID of the routing table associated with the network.
         """
         return pulumi.get(self, "routing_table_id")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcId")
+    def vpc_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ID of the VPC the network is associated with.
+        """
+        return pulumi.get(self, "vpc_id")
 

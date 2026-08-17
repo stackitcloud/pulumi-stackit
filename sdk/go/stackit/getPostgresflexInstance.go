@@ -37,22 +37,33 @@ type LookupPostgresflexInstanceArgs struct {
 // A collection of values returned by getPostgresflexInstance.
 type LookupPostgresflexInstanceResult struct {
 	// The Access Control List (ACL) for the PostgresFlex instance.
-	Acls           []string                      `pulumi:"acls"`
-	BackupSchedule string                        `pulumi:"backupSchedule"`
-	Flavor         GetPostgresflexInstanceFlavor `pulumi:"flavor"`
+	//
+	// Deprecated: acl is deprecated and will be removed after February 2027. Use instead `network.acl`.
+	Acls []string `pulumi:"acls"`
+	// The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.
+	BackupSchedule string `pulumi:"backupSchedule"`
+	// The connection info for the PostgresFlex instance.
+	ConnectionInfo GetPostgresflexInstanceConnectionInfo `pulumi:"connectionInfo"`
+	Encryption     GetPostgresflexInstanceEncryption     `pulumi:"encryption"`
+	// Deprecated: flavor is deprecated and will be removed after February 2027. Use instead `flavorId`. You can list available flavors using the datasource `getPostgresflexFlavors`..
+	Flavor   GetPostgresflexInstanceFlavor `pulumi:"flavor"`
+	FlavorId string                        `pulumi:"flavorId"`
 	// Terraform's internal data source. ID. It is structured as "`projectId`,`region`,`instanceId`".
 	Id string `pulumi:"id"`
 	// ID of the PostgresFlex instance.
 	InstanceId string `pulumi:"instanceId"`
 	// Instance name.
-	Name string `pulumi:"name"`
+	Name    string                         `pulumi:"name"`
+	Network GetPostgresflexInstanceNetwork `pulumi:"network"`
 	// STACKIT project ID to which the instance is associated.
 	ProjectId string `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
-	Region   *string                        `pulumi:"region"`
-	Replicas int                            `pulumi:"replicas"`
-	Storage  GetPostgresflexInstanceStorage `pulumi:"storage"`
-	Version  string                         `pulumi:"version"`
+	Region *string `pulumi:"region"`
+	// Deprecated: replicas is deprecated and will be removed after February 2027. Use instead `flavorId` and choose a flavor with your wanted replica configuration. You can list available flavors using the datasource `getPostgresflexFlavors`.
+	Replicas      int                            `pulumi:"replicas"`
+	RetentionDays int                            `pulumi:"retentionDays"`
+	Storage       GetPostgresflexInstanceStorage `pulumi:"storage"`
+	Version       string                         `pulumi:"version"`
 }
 
 func LookupPostgresflexInstanceOutput(ctx *pulumi.Context, args LookupPostgresflexInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupPostgresflexInstanceResultOutput {
@@ -94,16 +105,35 @@ func (o LookupPostgresflexInstanceResultOutput) ToLookupPostgresflexInstanceResu
 }
 
 // The Access Control List (ACL) for the PostgresFlex instance.
+//
+// Deprecated: acl is deprecated and will be removed after February 2027. Use instead `network.acl`.
 func (o LookupPostgresflexInstanceResultOutput) Acls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupPostgresflexInstanceResult) []string { return v.Acls }).(pulumi.StringArrayOutput)
 }
 
+// The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.
 func (o LookupPostgresflexInstanceResultOutput) BackupSchedule() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresflexInstanceResult) string { return v.BackupSchedule }).(pulumi.StringOutput)
 }
 
+// The connection info for the PostgresFlex instance.
+func (o LookupPostgresflexInstanceResultOutput) ConnectionInfo() GetPostgresflexInstanceConnectionInfoOutput {
+	return o.ApplyT(func(v LookupPostgresflexInstanceResult) GetPostgresflexInstanceConnectionInfo {
+		return v.ConnectionInfo
+	}).(GetPostgresflexInstanceConnectionInfoOutput)
+}
+
+func (o LookupPostgresflexInstanceResultOutput) Encryption() GetPostgresflexInstanceEncryptionOutput {
+	return o.ApplyT(func(v LookupPostgresflexInstanceResult) GetPostgresflexInstanceEncryption { return v.Encryption }).(GetPostgresflexInstanceEncryptionOutput)
+}
+
+// Deprecated: flavor is deprecated and will be removed after February 2027. Use instead `flavorId`. You can list available flavors using the datasource `getPostgresflexFlavors`..
 func (o LookupPostgresflexInstanceResultOutput) Flavor() GetPostgresflexInstanceFlavorOutput {
 	return o.ApplyT(func(v LookupPostgresflexInstanceResult) GetPostgresflexInstanceFlavor { return v.Flavor }).(GetPostgresflexInstanceFlavorOutput)
+}
+
+func (o LookupPostgresflexInstanceResultOutput) FlavorId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPostgresflexInstanceResult) string { return v.FlavorId }).(pulumi.StringOutput)
 }
 
 // Terraform's internal data source. ID. It is structured as "`projectId`,`region`,`instanceId`".
@@ -121,6 +151,10 @@ func (o LookupPostgresflexInstanceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresflexInstanceResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+func (o LookupPostgresflexInstanceResultOutput) Network() GetPostgresflexInstanceNetworkOutput {
+	return o.ApplyT(func(v LookupPostgresflexInstanceResult) GetPostgresflexInstanceNetwork { return v.Network }).(GetPostgresflexInstanceNetworkOutput)
+}
+
 // STACKIT project ID to which the instance is associated.
 func (o LookupPostgresflexInstanceResultOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresflexInstanceResult) string { return v.ProjectId }).(pulumi.StringOutput)
@@ -131,8 +165,13 @@ func (o LookupPostgresflexInstanceResultOutput) Region() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v LookupPostgresflexInstanceResult) *string { return v.Region }).(pulumi.StringPtrOutput)
 }
 
+// Deprecated: replicas is deprecated and will be removed after February 2027. Use instead `flavorId` and choose a flavor with your wanted replica configuration. You can list available flavors using the datasource `getPostgresflexFlavors`.
 func (o LookupPostgresflexInstanceResultOutput) Replicas() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupPostgresflexInstanceResult) int { return v.Replicas }).(pulumi.IntOutput)
+}
+
+func (o LookupPostgresflexInstanceResultOutput) RetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupPostgresflexInstanceResult) int { return v.RetentionDays }).(pulumi.IntOutput)
 }
 
 func (o LookupPostgresflexInstanceResultOutput) Storage() GetPostgresflexInstanceStorageOutput {

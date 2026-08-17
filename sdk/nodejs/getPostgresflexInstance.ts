@@ -44,10 +44,24 @@ export interface GetPostgresflexInstanceArgs {
 export interface GetPostgresflexInstanceResult {
     /**
      * The Access Control List (ACL) for the PostgresFlex instance.
+     *
+     * @deprecated acl is deprecated and will be removed after February 2027. Use instead `network.acl`.
      */
     readonly acls: string[];
+    /**
+     * The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.
+     */
     readonly backupSchedule: string;
+    /**
+     * The connection info for the PostgresFlex instance.
+     */
+    readonly connectionInfo: outputs.GetPostgresflexInstanceConnectionInfo;
+    readonly encryption: outputs.GetPostgresflexInstanceEncryption;
+    /**
+     * @deprecated flavor is deprecated and will be removed after February 2027. Use instead `flavorId`. You can list available flavors using the datasource `stackit.getPostgresflexFlavors`..
+     */
     readonly flavor: outputs.GetPostgresflexInstanceFlavor;
+    readonly flavorId: string;
     /**
      * Terraform's internal data source. ID. It is structured as "`projectId`,`region`,`instanceId`".
      */
@@ -60,6 +74,7 @@ export interface GetPostgresflexInstanceResult {
      * Instance name.
      */
     readonly name: string;
+    readonly network: outputs.GetPostgresflexInstanceNetwork;
     /**
      * STACKIT project ID to which the instance is associated.
      */
@@ -68,7 +83,11 @@ export interface GetPostgresflexInstanceResult {
      * The resource region. If not defined, the provider region is used.
      */
     readonly region?: string;
+    /**
+     * @deprecated replicas is deprecated and will be removed after February 2027. Use instead `flavorId` and choose a flavor with your wanted replica configuration. You can list available flavors using the datasource `stackit.getPostgresflexFlavors`.
+     */
     readonly replicas: number;
+    readonly retentionDays: number;
     readonly storage: outputs.GetPostgresflexInstanceStorage;
     readonly version: string;
 }

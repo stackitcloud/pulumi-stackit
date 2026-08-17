@@ -22,6 +22,8 @@ type Provider struct {
 	AlbCertificatesCustomEndpoint pulumi.StringPtrOutput `pulumi:"albCertificatesCustomEndpoint"`
 	// Custom endpoint for the Application Load Balancer service
 	AlbCustomEndpoint pulumi.StringPtrOutput `pulumi:"albCustomEndpoint"`
+	// Custom endpoint for the Application Load Balancer Web Application Firewall service
+	AlbWafCustomEndpoint pulumi.StringPtrOutput `pulumi:"albWafCustomEndpoint"`
 	// Custom endpoint for the Membership service
 	AuthorizationCustomEndpoint pulumi.StringPtrOutput `pulumi:"authorizationCustomEndpoint"`
 	// Custom endpoint for the CDN service
@@ -52,6 +54,8 @@ type Provider struct {
 	LogsCustomEndpoint pulumi.StringPtrOutput `pulumi:"logsCustomEndpoint"`
 	// Custom endpoint for the MariaDB service
 	MariadbCustomEndpoint pulumi.StringPtrOutput `pulumi:"mariadbCustomEndpoint"`
+	// Custom endpoint for the AI Model Experiments service
+	ModelexperimentsCustomEndpoint pulumi.StringPtrOutput `pulumi:"modelexperimentsCustomEndpoint"`
 	// Custom endpoint for the AI Model Serving service
 	ModelservingCustomEndpoint pulumi.StringPtrOutput `pulumi:"modelservingCustomEndpoint"`
 	// Custom endpoint for the MongoDB Flex service
@@ -76,10 +80,6 @@ type Provider struct {
 	RabbitmqCustomEndpoint pulumi.StringPtrOutput `pulumi:"rabbitmqCustomEndpoint"`
 	// Custom endpoint for the Redis service
 	RedisCustomEndpoint pulumi.StringPtrOutput `pulumi:"redisCustomEndpoint"`
-	// Region will be used as the default location for regional services. Not all services require a region, some are global
-	//
-	// Deprecated: This attribute is deprecated. Use 'default_region' instead
-	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// Custom endpoint for the Resource Manager service
 	ResourcemanagerCustomEndpoint pulumi.StringPtrOutput `pulumi:"resourcemanagerCustomEndpoint"`
 	// Custom endpoint for the Cloud Foundry (SCF) service
@@ -145,6 +145,8 @@ type providerArgs struct {
 	AlbCertificatesCustomEndpoint *string `pulumi:"albCertificatesCustomEndpoint"`
 	// Custom endpoint for the Application Load Balancer service
 	AlbCustomEndpoint *string `pulumi:"albCustomEndpoint"`
+	// Custom endpoint for the Application Load Balancer Web Application Firewall service
+	AlbWafCustomEndpoint *string `pulumi:"albWafCustomEndpoint"`
 	// Custom endpoint for the Membership service
 	AuthorizationCustomEndpoint *string `pulumi:"authorizationCustomEndpoint"`
 	// Custom endpoint for the CDN service
@@ -179,6 +181,8 @@ type providerArgs struct {
 	LogsCustomEndpoint *string `pulumi:"logsCustomEndpoint"`
 	// Custom endpoint for the MariaDB service
 	MariadbCustomEndpoint *string `pulumi:"mariadbCustomEndpoint"`
+	// Custom endpoint for the AI Model Experiments service
+	ModelexperimentsCustomEndpoint *string `pulumi:"modelexperimentsCustomEndpoint"`
 	// Custom endpoint for the AI Model Serving service
 	ModelservingCustomEndpoint *string `pulumi:"modelservingCustomEndpoint"`
 	// Custom endpoint for the MongoDB Flex service
@@ -203,10 +207,6 @@ type providerArgs struct {
 	RabbitmqCustomEndpoint *string `pulumi:"rabbitmqCustomEndpoint"`
 	// Custom endpoint for the Redis service
 	RedisCustomEndpoint *string `pulumi:"redisCustomEndpoint"`
-	// Region will be used as the default location for regional services. Not all services require a region, some are global
-	//
-	// Deprecated: This attribute is deprecated. Use 'default_region' instead
-	Region *string `pulumi:"region"`
 	// Custom endpoint for the Resource Manager service
 	ResourcemanagerCustomEndpoint *string `pulumi:"resourcemanagerCustomEndpoint"`
 	// Custom endpoint for the Cloud Foundry (SCF) service
@@ -259,6 +259,8 @@ type ProviderArgs struct {
 	AlbCertificatesCustomEndpoint pulumi.StringPtrInput
 	// Custom endpoint for the Application Load Balancer service
 	AlbCustomEndpoint pulumi.StringPtrInput
+	// Custom endpoint for the Application Load Balancer Web Application Firewall service
+	AlbWafCustomEndpoint pulumi.StringPtrInput
 	// Custom endpoint for the Membership service
 	AuthorizationCustomEndpoint pulumi.StringPtrInput
 	// Custom endpoint for the CDN service
@@ -293,6 +295,8 @@ type ProviderArgs struct {
 	LogsCustomEndpoint pulumi.StringPtrInput
 	// Custom endpoint for the MariaDB service
 	MariadbCustomEndpoint pulumi.StringPtrInput
+	// Custom endpoint for the AI Model Experiments service
+	ModelexperimentsCustomEndpoint pulumi.StringPtrInput
 	// Custom endpoint for the AI Model Serving service
 	ModelservingCustomEndpoint pulumi.StringPtrInput
 	// Custom endpoint for the MongoDB Flex service
@@ -317,10 +321,6 @@ type ProviderArgs struct {
 	RabbitmqCustomEndpoint pulumi.StringPtrInput
 	// Custom endpoint for the Redis service
 	RedisCustomEndpoint pulumi.StringPtrInput
-	// Region will be used as the default location for regional services. Not all services require a region, some are global
-	//
-	// Deprecated: This attribute is deprecated. Use 'default_region' instead
-	Region pulumi.StringPtrInput
 	// Custom endpoint for the Resource Manager service
 	ResourcemanagerCustomEndpoint pulumi.StringPtrInput
 	// Custom endpoint for the Cloud Foundry (SCF) service
@@ -437,6 +437,11 @@ func (o ProviderOutput) AlbCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AlbCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
+// Custom endpoint for the Application Load Balancer Web Application Firewall service
+func (o ProviderOutput) AlbWafCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AlbWafCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
 // Custom endpoint for the Membership service
 func (o ProviderOutput) AuthorizationCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AuthorizationCustomEndpoint }).(pulumi.StringPtrOutput)
@@ -512,6 +517,11 @@ func (o ProviderOutput) MariadbCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.MariadbCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
+// Custom endpoint for the AI Model Experiments service
+func (o ProviderOutput) ModelexperimentsCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ModelexperimentsCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
 // Custom endpoint for the AI Model Serving service
 func (o ProviderOutput) ModelservingCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ModelservingCustomEndpoint }).(pulumi.StringPtrOutput)
@@ -570,13 +580,6 @@ func (o ProviderOutput) RabbitmqCustomEndpoint() pulumi.StringPtrOutput {
 // Custom endpoint for the Redis service
 func (o ProviderOutput) RedisCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.RedisCustomEndpoint }).(pulumi.StringPtrOutput)
-}
-
-// Region will be used as the default location for regional services. Not all services require a region, some are global
-//
-// Deprecated: This attribute is deprecated. Use 'default_region' instead
-func (o ProviderOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
 }
 
 // Custom endpoint for the Resource Manager service

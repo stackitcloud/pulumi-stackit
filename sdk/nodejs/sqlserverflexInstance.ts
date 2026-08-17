@@ -10,6 +10,10 @@ import * as utilities from "./utilities";
  * SQLServer Flex instance resource schema. Must have a `region` specified in the provider configuration.
  *
  * ## Example Usage
+ *
+ * ## Import
+ *
+ * In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
  */
 export class SqlserverflexInstance extends pulumi.CustomResource {
     /**
@@ -42,7 +46,7 @@ export class SqlserverflexInstance extends pulumi.CustomResource {
     /**
      * The Access Control List (ACL) for the SQLServer Flex instance.
      *
-     * @deprecated acl is deprecated and will be removed after January 2027. Use instead `network.acl`.
+     * @deprecated acl is deprecated and will be removed after February 2027. Use instead `network.acl`.
      */
     declare public readonly acls: pulumi.Output<string[]>;
     /**
@@ -53,9 +57,16 @@ export class SqlserverflexInstance extends pulumi.CustomResource {
      * Edition of the MSSQL server instance.
      */
     declare public /*out*/ readonly edition: pulumi.Output<string>;
+    /**
+     * Parameter to define which key to use for storage encryption.
+     */
+    declare public readonly encryption: pulumi.Output<outputs.SqlserverflexInstanceEncryption | undefined>;
+    /**
+     * @deprecated flavor is deprecated and will be removed after February 2027. Use instead `flavorId`. You can list available flavors using the datasource `stackit.getSqlserverflexFlavors`.
+     */
     declare public readonly flavor: pulumi.Output<outputs.SqlserverflexInstanceFlavor>;
     /**
-     * The flavor ID of the SQLServer Flex instance.
+     * The flavor ID of the SQLServer Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `stackit.getSqlserverflexFlavors`.
      */
     declare public readonly flavorId: pulumi.Output<string>;
     /**
@@ -71,7 +82,7 @@ export class SqlserverflexInstance extends pulumi.CustomResource {
      */
     declare public readonly network: pulumi.Output<outputs.SqlserverflexInstanceNetwork>;
     /**
-     * @deprecated option is deprecated and will be removed after January 2027.
+     * @deprecated option is deprecated and will be removed after February 2027.
      */
     declare public readonly options: pulumi.Output<outputs.SqlserverflexInstanceOptions>;
     /**
@@ -112,6 +123,7 @@ export class SqlserverflexInstance extends pulumi.CustomResource {
             resourceInputs["acls"] = state?.acls;
             resourceInputs["backupSchedule"] = state?.backupSchedule;
             resourceInputs["edition"] = state?.edition;
+            resourceInputs["encryption"] = state?.encryption;
             resourceInputs["flavor"] = state?.flavor;
             resourceInputs["flavorId"] = state?.flavorId;
             resourceInputs["instanceId"] = state?.instanceId;
@@ -131,6 +143,7 @@ export class SqlserverflexInstance extends pulumi.CustomResource {
             }
             resourceInputs["acls"] = args?.acls;
             resourceInputs["backupSchedule"] = args?.backupSchedule;
+            resourceInputs["encryption"] = args?.encryption;
             resourceInputs["flavor"] = args?.flavor;
             resourceInputs["flavorId"] = args?.flavorId;
             resourceInputs["name"] = args?.name;
@@ -157,7 +170,7 @@ export interface SqlserverflexInstanceState {
     /**
      * The Access Control List (ACL) for the SQLServer Flex instance.
      *
-     * @deprecated acl is deprecated and will be removed after January 2027. Use instead `network.acl`.
+     * @deprecated acl is deprecated and will be removed after February 2027. Use instead `network.acl`.
      */
     acls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
@@ -168,9 +181,16 @@ export interface SqlserverflexInstanceState {
      * Edition of the MSSQL server instance.
      */
     edition?: pulumi.Input<string | undefined>;
+    /**
+     * Parameter to define which key to use for storage encryption.
+     */
+    encryption?: pulumi.Input<inputs.SqlserverflexInstanceEncryption | undefined>;
+    /**
+     * @deprecated flavor is deprecated and will be removed after February 2027. Use instead `flavorId`. You can list available flavors using the datasource `stackit.getSqlserverflexFlavors`.
+     */
     flavor?: pulumi.Input<inputs.SqlserverflexInstanceFlavor | undefined>;
     /**
-     * The flavor ID of the SQLServer Flex instance.
+     * The flavor ID of the SQLServer Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `stackit.getSqlserverflexFlavors`.
      */
     flavorId?: pulumi.Input<string | undefined>;
     /**
@@ -186,7 +206,7 @@ export interface SqlserverflexInstanceState {
      */
     network?: pulumi.Input<inputs.SqlserverflexInstanceNetwork | undefined>;
     /**
-     * @deprecated option is deprecated and will be removed after January 2027.
+     * @deprecated option is deprecated and will be removed after February 2027.
      */
     options?: pulumi.Input<inputs.SqlserverflexInstanceOptions | undefined>;
     /**
@@ -219,16 +239,23 @@ export interface SqlserverflexInstanceArgs {
     /**
      * The Access Control List (ACL) for the SQLServer Flex instance.
      *
-     * @deprecated acl is deprecated and will be removed after January 2027. Use instead `network.acl`.
+     * @deprecated acl is deprecated and will be removed after February 2027. Use instead `network.acl`.
      */
     acls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *") Will be required in the future. Set a value to prevent breaking changes.
      */
     backupSchedule?: pulumi.Input<string | undefined>;
+    /**
+     * Parameter to define which key to use for storage encryption.
+     */
+    encryption?: pulumi.Input<inputs.SqlserverflexInstanceEncryption | undefined>;
+    /**
+     * @deprecated flavor is deprecated and will be removed after February 2027. Use instead `flavorId`. You can list available flavors using the datasource `stackit.getSqlserverflexFlavors`.
+     */
     flavor?: pulumi.Input<inputs.SqlserverflexInstanceFlavor | undefined>;
     /**
-     * The flavor ID of the SQLServer Flex instance.
+     * The flavor ID of the SQLServer Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `stackit.getSqlserverflexFlavors`.
      */
     flavorId?: pulumi.Input<string | undefined>;
     /**
@@ -240,7 +267,7 @@ export interface SqlserverflexInstanceArgs {
      */
     network?: pulumi.Input<inputs.SqlserverflexInstanceNetwork | undefined>;
     /**
-     * @deprecated option is deprecated and will be removed after January 2027.
+     * @deprecated option is deprecated and will be removed after February 2027.
      */
     options?: pulumi.Input<inputs.SqlserverflexInstanceOptions | undefined>;
     /**

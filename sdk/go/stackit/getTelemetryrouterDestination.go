@@ -59,6 +59,8 @@ type LookupTelemetryrouterDestinationResult struct {
 	// STACKIT region name the resource is located in. If not defined, the provider region is used.
 	Region string `pulumi:"region"`
 	// The status of the TelemetryRouter destination, possible values: Possible values are: `reconciling`, `active`, `deleting`.
+	//
+	// Deprecated: status is deprecated and will be removed after February 2027.
 	Status string `pulumi:"status"`
 }
 
@@ -153,6 +155,8 @@ func (o LookupTelemetryrouterDestinationResultOutput) Region() pulumi.StringOutp
 }
 
 // The status of the TelemetryRouter destination, possible values: Possible values are: `reconciling`, `active`, `deleting`.
+//
+// Deprecated: status is deprecated and will be removed after February 2027.
 func (o LookupTelemetryrouterDestinationResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTelemetryrouterDestinationResult) string { return v.Status }).(pulumi.StringOutput)
 }
