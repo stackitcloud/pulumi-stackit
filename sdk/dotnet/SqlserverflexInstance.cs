@@ -13,6 +13,10 @@ namespace Pulumi.Stackit
     /// SQLServer Flex instance resource schema. Must have a `Region` specified in the provider configuration.
     /// 
     /// ## Example Usage
+    /// 
+    /// ## Import
+    /// 
+    /// In Terraform v1.5.0 and later, the `  + " `" + `Import` + "` " +  ` block can be used with the `  + " `" + `Id` + "` " +  ` attribute, for example:
     /// </summary>
     [StackitResourceType("stackit:index/sqlserverflexInstance:SqlserverflexInstance")]
     public partial class SqlserverflexInstance : global::Pulumi.CustomResource
@@ -35,11 +39,17 @@ namespace Pulumi.Stackit
         [Output("edition")]
         public Output<string> Edition { get; private set; } = null!;
 
+        /// <summary>
+        /// Parameter to define which key to use for storage encryption.
+        /// </summary>
+        [Output("encryption")]
+        public Output<Outputs.SqlserverflexInstanceEncryption?> Encryption { get; private set; } = null!;
+
         [Output("flavor")]
         public Output<Outputs.SqlserverflexInstanceFlavor> Flavor { get; private set; } = null!;
 
         /// <summary>
-        /// The flavor ID of the SQLServer Flex instance.
+        /// The flavor ID of the SQLServer Flex instance. Can only be set when `Flavor` and `Replicas` are not set. You can list available flavors using the datasource `stackit.getSqlserverflexFlavors`.
         /// </summary>
         [Output("flavorId")]
         public Output<string> FlavorId { get; private set; } = null!;
@@ -151,7 +161,7 @@ namespace Pulumi.Stackit
         /// <summary>
         /// The Access Control List (ACL) for the SQLServer Flex instance.
         /// </summary>
-        [Obsolete(@"acl is deprecated and will be removed after January 2027. Use instead `network.acl`.")]
+        [Obsolete(@"acl is deprecated and will be removed after February 2027. Use instead `network.acl`.")]
         public InputList<string> Acls
         {
             get => _acls ?? (_acls = new InputList<string>());
@@ -164,11 +174,17 @@ namespace Pulumi.Stackit
         [Input("backupSchedule")]
         public Input<string>? BackupSchedule { get; set; }
 
+        /// <summary>
+        /// Parameter to define which key to use for storage encryption.
+        /// </summary>
+        [Input("encryption")]
+        public Input<Inputs.SqlserverflexInstanceEncryptionArgs>? Encryption { get; set; }
+
         [Input("flavor")]
         public Input<Inputs.SqlserverflexInstanceFlavorArgs>? Flavor { get; set; }
 
         /// <summary>
-        /// The flavor ID of the SQLServer Flex instance.
+        /// The flavor ID of the SQLServer Flex instance. Can only be set when `Flavor` and `Replicas` are not set. You can list available flavors using the datasource `stackit.getSqlserverflexFlavors`.
         /// </summary>
         [Input("flavorId")]
         public Input<string>? FlavorId { get; set; }
@@ -232,7 +248,7 @@ namespace Pulumi.Stackit
         /// <summary>
         /// The Access Control List (ACL) for the SQLServer Flex instance.
         /// </summary>
-        [Obsolete(@"acl is deprecated and will be removed after January 2027. Use instead `network.acl`.")]
+        [Obsolete(@"acl is deprecated and will be removed after February 2027. Use instead `network.acl`.")]
         public InputList<string> Acls
         {
             get => _acls ?? (_acls = new InputList<string>());
@@ -251,11 +267,17 @@ namespace Pulumi.Stackit
         [Input("edition")]
         public Input<string>? Edition { get; set; }
 
+        /// <summary>
+        /// Parameter to define which key to use for storage encryption.
+        /// </summary>
+        [Input("encryption")]
+        public Input<Inputs.SqlserverflexInstanceEncryptionGetArgs>? Encryption { get; set; }
+
         [Input("flavor")]
         public Input<Inputs.SqlserverflexInstanceFlavorGetArgs>? Flavor { get; set; }
 
         /// <summary>
-        /// The flavor ID of the SQLServer Flex instance.
+        /// The flavor ID of the SQLServer Flex instance. Can only be set when `Flavor` and `Replicas` are not set. You can list available flavors using the datasource `stackit.getSqlserverflexFlavors`.
         /// </summary>
         [Input("flavorId")]
         public Input<string>? FlavorId { get; set; }

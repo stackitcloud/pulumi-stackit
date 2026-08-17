@@ -51,6 +51,8 @@ type LookupTelemetrylinkResult struct {
 	// The resource type of the TelemetryLink resource, possible values: Possible values are: `organization`, `folder`, `project`.
 	ResourceType string `pulumi:"resourceType"`
 	// The status of the TelemetryLink, possible values: Possible values are: `active`, `inactive`, `failed`, `reconciling`, `deleting`.
+	//
+	// Deprecated: status is deprecated and will be removed after February 2027.
 	Status string `pulumi:"status"`
 	// The Telemetry Router ID.
 	TelemetryRouterId string `pulumi:"telemetryRouterId"`
@@ -130,6 +132,8 @@ func (o LookupTelemetrylinkResultOutput) ResourceType() pulumi.StringOutput {
 }
 
 // The status of the TelemetryLink, possible values: Possible values are: `active`, `inactive`, `failed`, `reconciling`, `deleting`.
+//
+// Deprecated: status is deprecated and will be removed after February 2027.
 func (o LookupTelemetrylinkResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTelemetrylinkResult) string { return v.Status }).(pulumi.StringOutput)
 }

@@ -37,6 +37,8 @@ type Network struct {
 	Ipv4PrefixLength pulumi.IntOutput `pulumi:"ipv4PrefixLength"`
 	// The IPv4 prefixes of the network.
 	Ipv4Prefixes pulumi.StringArrayOutput `pulumi:"ipv4Prefixes"`
+	// The IPv4 VPC network range ID.
+	Ipv4VpcNetworkRangeId pulumi.StringPtrOutput `pulumi:"ipv4VpcNetworkRangeId"`
 	// The IPv6 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
 	Ipv6Gateway pulumi.StringOutput `pulumi:"ipv6Gateway"`
 	// The IPv6 nameservers of the network.
@@ -47,6 +49,8 @@ type Network struct {
 	Ipv6PrefixLength pulumi.IntOutput `pulumi:"ipv6PrefixLength"`
 	// The IPv6 prefixes of the network.
 	Ipv6Prefixes pulumi.StringArrayOutput `pulumi:"ipv6Prefixes"`
+	// The IPv6 VPC network range ID.
+	Ipv6VpcNetworkRangeId pulumi.StringPtrOutput `pulumi:"ipv6VpcNetworkRangeId"`
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The name of the network.
@@ -67,6 +71,8 @@ type Network struct {
 	Routed pulumi.BoolOutput `pulumi:"routed"`
 	// The ID of the routing table associated with the network.
 	RoutingTableId pulumi.StringOutput `pulumi:"routingTableId"`
+	// The ID of the VPC the network is associated with.
+	VpcId pulumi.StringPtrOutput `pulumi:"vpcId"`
 }
 
 // NewNetwork registers a new resource with the given unique name, arguments, and options.
@@ -114,6 +120,8 @@ type networkState struct {
 	Ipv4PrefixLength *int `pulumi:"ipv4PrefixLength"`
 	// The IPv4 prefixes of the network.
 	Ipv4Prefixes []string `pulumi:"ipv4Prefixes"`
+	// The IPv4 VPC network range ID.
+	Ipv4VpcNetworkRangeId *string `pulumi:"ipv4VpcNetworkRangeId"`
 	// The IPv6 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
 	Ipv6Gateway *string `pulumi:"ipv6Gateway"`
 	// The IPv6 nameservers of the network.
@@ -124,6 +132,8 @@ type networkState struct {
 	Ipv6PrefixLength *int `pulumi:"ipv6PrefixLength"`
 	// The IPv6 prefixes of the network.
 	Ipv6Prefixes []string `pulumi:"ipv6Prefixes"`
+	// The IPv6 VPC network range ID.
+	Ipv6VpcNetworkRangeId *string `pulumi:"ipv6VpcNetworkRangeId"`
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the network.
@@ -144,6 +154,8 @@ type networkState struct {
 	Routed *bool `pulumi:"routed"`
 	// The ID of the routing table associated with the network.
 	RoutingTableId *string `pulumi:"routingTableId"`
+	// The ID of the VPC the network is associated with.
+	VpcId *string `pulumi:"vpcId"`
 }
 
 type NetworkState struct {
@@ -159,6 +171,8 @@ type NetworkState struct {
 	Ipv4PrefixLength pulumi.IntPtrInput
 	// The IPv4 prefixes of the network.
 	Ipv4Prefixes pulumi.StringArrayInput
+	// The IPv4 VPC network range ID.
+	Ipv4VpcNetworkRangeId pulumi.StringPtrInput
 	// The IPv6 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
 	Ipv6Gateway pulumi.StringPtrInput
 	// The IPv6 nameservers of the network.
@@ -169,6 +183,8 @@ type NetworkState struct {
 	Ipv6PrefixLength pulumi.IntPtrInput
 	// The IPv6 prefixes of the network.
 	Ipv6Prefixes pulumi.StringArrayInput
+	// The IPv6 VPC network range ID.
+	Ipv6VpcNetworkRangeId pulumi.StringPtrInput
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels pulumi.StringMapInput
 	// The name of the network.
@@ -189,6 +205,8 @@ type NetworkState struct {
 	Routed pulumi.BoolPtrInput
 	// The ID of the routing table associated with the network.
 	RoutingTableId pulumi.StringPtrInput
+	// The ID of the VPC the network is associated with.
+	VpcId pulumi.StringPtrInput
 }
 
 func (NetworkState) ElementType() reflect.Type {
@@ -206,6 +224,8 @@ type networkArgs struct {
 	Ipv4Prefix *string `pulumi:"ipv4Prefix"`
 	// The IPv4 prefix length of the network.
 	Ipv4PrefixLength *int `pulumi:"ipv4PrefixLength"`
+	// The IPv4 VPC network range ID.
+	Ipv4VpcNetworkRangeId *string `pulumi:"ipv4VpcNetworkRangeId"`
 	// The IPv6 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
 	Ipv6Gateway *string `pulumi:"ipv6Gateway"`
 	// The IPv6 nameservers of the network.
@@ -214,6 +234,8 @@ type networkArgs struct {
 	Ipv6Prefix *string `pulumi:"ipv6Prefix"`
 	// The IPv6 prefix length of the network.
 	Ipv6PrefixLength *int `pulumi:"ipv6PrefixLength"`
+	// The IPv6 VPC network range ID.
+	Ipv6VpcNetworkRangeId *string `pulumi:"ipv6VpcNetworkRangeId"`
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels map[string]string `pulumi:"labels"`
 	// The name of the network.
@@ -230,6 +252,8 @@ type networkArgs struct {
 	Routed *bool `pulumi:"routed"`
 	// The ID of the routing table associated with the network.
 	RoutingTableId *string `pulumi:"routingTableId"`
+	// The ID of the VPC the network is associated with.
+	VpcId *string `pulumi:"vpcId"`
 }
 
 // The set of arguments for constructing a Network resource.
@@ -244,6 +268,8 @@ type NetworkArgs struct {
 	Ipv4Prefix pulumi.StringPtrInput
 	// The IPv4 prefix length of the network.
 	Ipv4PrefixLength pulumi.IntPtrInput
+	// The IPv4 VPC network range ID.
+	Ipv4VpcNetworkRangeId pulumi.StringPtrInput
 	// The IPv6 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
 	Ipv6Gateway pulumi.StringPtrInput
 	// The IPv6 nameservers of the network.
@@ -252,6 +278,8 @@ type NetworkArgs struct {
 	Ipv6Prefix pulumi.StringPtrInput
 	// The IPv6 prefix length of the network.
 	Ipv6PrefixLength pulumi.IntPtrInput
+	// The IPv6 VPC network range ID.
+	Ipv6VpcNetworkRangeId pulumi.StringPtrInput
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels pulumi.StringMapInput
 	// The name of the network.
@@ -268,6 +296,8 @@ type NetworkArgs struct {
 	Routed pulumi.BoolPtrInput
 	// The ID of the routing table associated with the network.
 	RoutingTableId pulumi.StringPtrInput
+	// The ID of the VPC the network is associated with.
+	VpcId pulumi.StringPtrInput
 }
 
 func (NetworkArgs) ElementType() reflect.Type {
@@ -387,6 +417,11 @@ func (o NetworkOutput) Ipv4Prefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringArrayOutput { return v.Ipv4Prefixes }).(pulumi.StringArrayOutput)
 }
 
+// The IPv4 VPC network range ID.
+func (o NetworkOutput) Ipv4VpcNetworkRangeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.Ipv4VpcNetworkRangeId }).(pulumi.StringPtrOutput)
+}
+
 // The IPv6 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
 func (o NetworkOutput) Ipv6Gateway() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.Ipv6Gateway }).(pulumi.StringOutput)
@@ -410,6 +445,11 @@ func (o NetworkOutput) Ipv6PrefixLength() pulumi.IntOutput {
 // The IPv6 prefixes of the network.
 func (o NetworkOutput) Ipv6Prefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringArrayOutput { return v.Ipv6Prefixes }).(pulumi.StringArrayOutput)
+}
+
+// The IPv6 VPC network range ID.
+func (o NetworkOutput) Ipv6VpcNetworkRangeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.Ipv6VpcNetworkRangeId }).(pulumi.StringPtrOutput)
 }
 
 // Labels are key-value string pairs which can be attached to a resource container
@@ -460,6 +500,11 @@ func (o NetworkOutput) Routed() pulumi.BoolOutput {
 // The ID of the routing table associated with the network.
 func (o NetworkOutput) RoutingTableId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.RoutingTableId }).(pulumi.StringOutput)
+}
+
+// The ID of the VPC the network is associated with.
+func (o NetworkOutput) VpcId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.VpcId }).(pulumi.StringPtrOutput)
 }
 
 type NetworkArrayOutput struct{ *pulumi.OutputState }

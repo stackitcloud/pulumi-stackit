@@ -37,6 +37,8 @@ type TelemetryrouterInstance struct {
 	// STACKIT region name the resource is located in. If not defined, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The status of the TelemetryRouter instance, possible values: Possible values are: `reconciling`, `active`, `deleting`.
+	//
+	// Deprecated: status is deprecated and will be removed after February 2027.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The TelemetryRouter instance's URI
 	Uri pulumi.StringOutput `pulumi:"uri"`
@@ -93,6 +95,8 @@ type telemetryrouterInstanceState struct {
 	// STACKIT region name the resource is located in. If not defined, the provider region is used.
 	Region *string `pulumi:"region"`
 	// The status of the TelemetryRouter instance, possible values: Possible values are: `reconciling`, `active`, `deleting`.
+	//
+	// Deprecated: status is deprecated and will be removed after February 2027.
 	Status *string `pulumi:"status"`
 	// The TelemetryRouter instance's URI
 	Uri *string `pulumi:"uri"`
@@ -114,6 +118,8 @@ type TelemetryrouterInstanceState struct {
 	// STACKIT region name the resource is located in. If not defined, the provider region is used.
 	Region pulumi.StringPtrInput
 	// The status of the TelemetryRouter instance, possible values: Possible values are: `reconciling`, `active`, `deleting`.
+	//
+	// Deprecated: status is deprecated and will be removed after February 2027.
 	Status pulumi.StringPtrInput
 	// The TelemetryRouter instance's URI
 	Uri pulumi.StringPtrInput
@@ -273,6 +279,8 @@ func (o TelemetryrouterInstanceOutput) Region() pulumi.StringOutput {
 }
 
 // The status of the TelemetryRouter instance, possible values: Possible values are: `reconciling`, `active`, `deleting`.
+//
+// Deprecated: status is deprecated and will be removed after February 2027.
 func (o TelemetryrouterInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *TelemetryrouterInstance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

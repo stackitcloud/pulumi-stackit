@@ -81,6 +81,12 @@ namespace Pulumi.Stackit
         [Input("projectId", required: true)]
         public string ProjectId { get; set; } = null!;
 
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public string? Region { get; set; }
+
         public GetOpensearchCredentialArgs()
         {
         }
@@ -107,6 +113,12 @@ namespace Pulumi.Stackit
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
 
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        [Input("region")]
+        public Input<string>? Region { get; set; }
+
         public GetOpensearchCredentialInvokeArgs()
         {
         }
@@ -124,7 +136,7 @@ namespace Pulumi.Stackit
         public readonly string Host;
         public readonly ImmutableArray<string> Hosts;
         /// <summary>
-        /// Terraform's internal data source. identifier. It is structured as "`ProjectId`,`InstanceId`,`CredentialId`".
+        /// Terraform's internal data source. identifier. It is structured as "`ProjectId`,`Region`,`InstanceId`,`CredentialId`".
         /// </summary>
         public readonly string Id;
         /// <summary>
@@ -137,6 +149,10 @@ namespace Pulumi.Stackit
         /// STACKIT project ID to which the instance is associated.
         /// </summary>
         public readonly string ProjectId;
+        /// <summary>
+        /// The resource region. If not defined, the provider region is used.
+        /// </summary>
+        public readonly string Region;
         public readonly string Scheme;
         public readonly string Uri;
         public readonly string Username;
@@ -159,6 +175,8 @@ namespace Pulumi.Stackit
 
             string projectId,
 
+            string region,
+
             string scheme,
 
             string uri,
@@ -173,6 +191,7 @@ namespace Pulumi.Stackit
             Password = password;
             Port = port;
             ProjectId = projectId;
+            Region = region;
             Scheme = scheme;
             Uri = uri;
             Username = username;

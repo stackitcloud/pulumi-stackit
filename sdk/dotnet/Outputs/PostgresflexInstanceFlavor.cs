@@ -15,7 +15,11 @@ namespace Pulumi.Stackit.Outputs
     {
         public readonly int Cpu;
         public readonly string? Description;
+        /// <summary>
+        /// Terraform's internal resource ID. It is structured as "`ProjectId`,`Region`,`InstanceId`".
+        /// </summary>
         public readonly string? Id;
+        public readonly string? NodeType;
         public readonly int Ram;
 
         [OutputConstructor]
@@ -26,11 +30,14 @@ namespace Pulumi.Stackit.Outputs
 
             string? id,
 
+            string? nodeType,
+
             int ram)
         {
             Cpu = cpu;
             Description = description;
             Id = id;
+            NodeType = nodeType;
             Ram = ram;
         }
     }

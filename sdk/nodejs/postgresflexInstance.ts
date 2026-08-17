@@ -45,13 +45,27 @@ export class PostgresflexInstance extends pulumi.CustomResource {
 
     /**
      * The Access Control List (ACL) for the PostgresFlex instance.
+     *
+     * @deprecated acl is deprecated and will be removed after February 2027. Use instead `network.acl`.
      */
     declare public readonly acls: pulumi.Output<string[]>;
     /**
      * The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.
      */
     declare public readonly backupSchedule: pulumi.Output<string>;
+    /**
+     * The connection info for the PostgresFlex instance.
+     */
+    declare public /*out*/ readonly connectionInfo: pulumi.Output<outputs.PostgresflexInstanceConnectionInfo>;
+    declare public readonly encryption: pulumi.Output<outputs.PostgresflexInstanceEncryption | undefined>;
+    /**
+     * @deprecated flavor is deprecated and will be removed after February 2027. Use instead `flavorId`. You can list available flavors using the datasource `stackit.getPostgresflexFlavors`.
+     */
     declare public readonly flavor: pulumi.Output<outputs.PostgresflexInstanceFlavor>;
+    /**
+     * The flavor ID of the PostgreSQL Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `stackit.getPostgresflexFlavors`
+     */
+    declare public readonly flavorId: pulumi.Output<string>;
     /**
      * ID of the PostgresFlex instance.
      */
@@ -61,6 +75,10 @@ export class PostgresflexInstance extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * The network configuration of the instance. Will be required after February 2027. Set a value to prevent breaking changes.
+     */
+    declare public readonly network: pulumi.Output<outputs.PostgresflexInstanceNetwork>;
+    /**
      * STACKIT project ID to which the instance is associated.
      */
     declare public readonly projectId: pulumi.Output<string>;
@@ -69,9 +87,15 @@ export class PostgresflexInstance extends pulumi.CustomResource {
      */
     declare public readonly region: pulumi.Output<string>;
     /**
-     * How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.
+     * How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication. Can only be set together with `flavor`
+     *
+     * @deprecated replicas is deprecated and will be removed after February 2027. Use instead `flavorId` and choose a flavor with your wanted replica configuration. You can list available flavors using the datasource `stackit.getPostgresflexFlavors`.
      */
     declare public readonly replicas: pulumi.Output<number>;
+    /**
+     * How long backups are retained. The value can only be between 32 and 90 days. Will be required after February 2027. Set a value to prevent breaking changes.
+     */
+    declare public readonly retentionDays: pulumi.Output<number>;
     declare public readonly storage: pulumi.Output<outputs.PostgresflexInstanceStorage>;
     declare public readonly version: pulumi.Output<string>;
 
@@ -90,30 +114,26 @@ export class PostgresflexInstance extends pulumi.CustomResource {
             const state = argsOrState as PostgresflexInstanceState | undefined;
             resourceInputs["acls"] = state?.acls;
             resourceInputs["backupSchedule"] = state?.backupSchedule;
+            resourceInputs["connectionInfo"] = state?.connectionInfo;
+            resourceInputs["encryption"] = state?.encryption;
             resourceInputs["flavor"] = state?.flavor;
+            resourceInputs["flavorId"] = state?.flavorId;
             resourceInputs["instanceId"] = state?.instanceId;
             resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
             resourceInputs["projectId"] = state?.projectId;
             resourceInputs["region"] = state?.region;
             resourceInputs["replicas"] = state?.replicas;
+            resourceInputs["retentionDays"] = state?.retentionDays;
             resourceInputs["storage"] = state?.storage;
             resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as PostgresflexInstanceArgs | undefined;
-            if (args?.acls === undefined && !opts.urn) {
-                throw new Error("Missing required property 'acls'");
-            }
             if (args?.backupSchedule === undefined && !opts.urn) {
                 throw new Error("Missing required property 'backupSchedule'");
             }
-            if (args?.flavor === undefined && !opts.urn) {
-                throw new Error("Missing required property 'flavor'");
-            }
             if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
-            }
-            if (args?.replicas === undefined && !opts.urn) {
-                throw new Error("Missing required property 'replicas'");
             }
             if (args?.storage === undefined && !opts.urn) {
                 throw new Error("Missing required property 'storage'");
@@ -123,13 +143,18 @@ export class PostgresflexInstance extends pulumi.CustomResource {
             }
             resourceInputs["acls"] = args?.acls;
             resourceInputs["backupSchedule"] = args?.backupSchedule;
+            resourceInputs["encryption"] = args?.encryption;
             resourceInputs["flavor"] = args?.flavor;
+            resourceInputs["flavorId"] = args?.flavorId;
             resourceInputs["name"] = args?.name;
+            resourceInputs["network"] = args?.network;
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["region"] = args?.region;
             resourceInputs["replicas"] = args?.replicas;
+            resourceInputs["retentionDays"] = args?.retentionDays;
             resourceInputs["storage"] = args?.storage;
             resourceInputs["version"] = args?.version;
+            resourceInputs["connectionInfo"] = undefined /*out*/;
             resourceInputs["instanceId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -143,13 +168,27 @@ export class PostgresflexInstance extends pulumi.CustomResource {
 export interface PostgresflexInstanceState {
     /**
      * The Access Control List (ACL) for the PostgresFlex instance.
+     *
+     * @deprecated acl is deprecated and will be removed after February 2027. Use instead `network.acl`.
      */
     acls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.
      */
     backupSchedule?: pulumi.Input<string | undefined>;
+    /**
+     * The connection info for the PostgresFlex instance.
+     */
+    connectionInfo?: pulumi.Input<inputs.PostgresflexInstanceConnectionInfo | undefined>;
+    encryption?: pulumi.Input<inputs.PostgresflexInstanceEncryption | undefined>;
+    /**
+     * @deprecated flavor is deprecated and will be removed after February 2027. Use instead `flavorId`. You can list available flavors using the datasource `stackit.getPostgresflexFlavors`.
+     */
     flavor?: pulumi.Input<inputs.PostgresflexInstanceFlavor | undefined>;
+    /**
+     * The flavor ID of the PostgreSQL Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `stackit.getPostgresflexFlavors`
+     */
+    flavorId?: pulumi.Input<string | undefined>;
     /**
      * ID of the PostgresFlex instance.
      */
@@ -159,6 +198,10 @@ export interface PostgresflexInstanceState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
+     * The network configuration of the instance. Will be required after February 2027. Set a value to prevent breaking changes.
+     */
+    network?: pulumi.Input<inputs.PostgresflexInstanceNetwork | undefined>;
+    /**
      * STACKIT project ID to which the instance is associated.
      */
     projectId?: pulumi.Input<string | undefined>;
@@ -167,9 +210,15 @@ export interface PostgresflexInstanceState {
      */
     region?: pulumi.Input<string | undefined>;
     /**
-     * How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.
+     * How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication. Can only be set together with `flavor`
+     *
+     * @deprecated replicas is deprecated and will be removed after February 2027. Use instead `flavorId` and choose a flavor with your wanted replica configuration. You can list available flavors using the datasource `stackit.getPostgresflexFlavors`.
      */
     replicas?: pulumi.Input<number | undefined>;
+    /**
+     * How long backups are retained. The value can only be between 32 and 90 days. Will be required after February 2027. Set a value to prevent breaking changes.
+     */
+    retentionDays?: pulumi.Input<number | undefined>;
     storage?: pulumi.Input<inputs.PostgresflexInstanceStorage | undefined>;
     version?: pulumi.Input<string | undefined>;
 }
@@ -180,17 +229,31 @@ export interface PostgresflexInstanceState {
 export interface PostgresflexInstanceArgs {
     /**
      * The Access Control List (ACL) for the PostgresFlex instance.
+     *
+     * @deprecated acl is deprecated and will be removed after February 2027. Use instead `network.acl`.
      */
-    acls: pulumi.Input<pulumi.Input<string>[]>;
+    acls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.
      */
     backupSchedule: pulumi.Input<string>;
-    flavor: pulumi.Input<inputs.PostgresflexInstanceFlavor>;
+    encryption?: pulumi.Input<inputs.PostgresflexInstanceEncryption | undefined>;
+    /**
+     * @deprecated flavor is deprecated and will be removed after February 2027. Use instead `flavorId`. You can list available flavors using the datasource `stackit.getPostgresflexFlavors`.
+     */
+    flavor?: pulumi.Input<inputs.PostgresflexInstanceFlavor | undefined>;
+    /**
+     * The flavor ID of the PostgreSQL Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `stackit.getPostgresflexFlavors`
+     */
+    flavorId?: pulumi.Input<string | undefined>;
     /**
      * Instance name.
      */
     name?: pulumi.Input<string | undefined>;
+    /**
+     * The network configuration of the instance. Will be required after February 2027. Set a value to prevent breaking changes.
+     */
+    network?: pulumi.Input<inputs.PostgresflexInstanceNetwork | undefined>;
     /**
      * STACKIT project ID to which the instance is associated.
      */
@@ -200,9 +263,15 @@ export interface PostgresflexInstanceArgs {
      */
     region?: pulumi.Input<string | undefined>;
     /**
-     * How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication.
+     * How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication. Can only be set together with `flavor`
+     *
+     * @deprecated replicas is deprecated and will be removed after February 2027. Use instead `flavorId` and choose a flavor with your wanted replica configuration. You can list available flavors using the datasource `stackit.getPostgresflexFlavors`.
      */
-    replicas: pulumi.Input<number>;
+    replicas?: pulumi.Input<number | undefined>;
+    /**
+     * How long backups are retained. The value can only be between 32 and 90 days. Will be required after February 2027. Set a value to prevent breaking changes.
+     */
+    retentionDays?: pulumi.Input<number | undefined>;
     storage: pulumi.Input<inputs.PostgresflexInstanceStorage>;
     version: pulumi.Input<string>;
 }

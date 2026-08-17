@@ -31,8 +31,10 @@ type LogmeCredential struct {
 	Port       pulumi.IntOutput    `pulumi:"port"`
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
-	Uri       pulumi.StringOutput `pulumi:"uri"`
-	Username  pulumi.StringOutput `pulumi:"username"`
+	// The resource region. If not defined, the provider region is used.
+	Region   pulumi.StringOutput `pulumi:"region"`
+	Uri      pulumi.StringOutput `pulumi:"uri"`
+	Username pulumi.StringOutput `pulumi:"username"`
 }
 
 // NewLogmeCredential registers a new resource with the given unique name, arguments, and options.
@@ -85,8 +87,10 @@ type logmeCredentialState struct {
 	Port       *int    `pulumi:"port"`
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId *string `pulumi:"projectId"`
-	Uri       *string `pulumi:"uri"`
-	Username  *string `pulumi:"username"`
+	// The resource region. If not defined, the provider region is used.
+	Region   *string `pulumi:"region"`
+	Uri      *string `pulumi:"uri"`
+	Username *string `pulumi:"username"`
 }
 
 type LogmeCredentialState struct {
@@ -99,8 +103,10 @@ type LogmeCredentialState struct {
 	Port       pulumi.IntPtrInput
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId pulumi.StringPtrInput
-	Uri       pulumi.StringPtrInput
-	Username  pulumi.StringPtrInput
+	// The resource region. If not defined, the provider region is used.
+	Region   pulumi.StringPtrInput
+	Uri      pulumi.StringPtrInput
+	Username pulumi.StringPtrInput
 }
 
 func (LogmeCredentialState) ElementType() reflect.Type {
@@ -112,6 +118,8 @@ type logmeCredentialArgs struct {
 	InstanceId string `pulumi:"instanceId"`
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 }
 
 // The set of arguments for constructing a LogmeCredential resource.
@@ -120,6 +128,8 @@ type LogmeCredentialArgs struct {
 	InstanceId pulumi.StringInput
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId pulumi.StringInput
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput
 }
 
 func (LogmeCredentialArgs) ElementType() reflect.Type {
@@ -234,6 +244,11 @@ func (o LogmeCredentialOutput) Port() pulumi.IntOutput {
 // STACKIT Project ID to which the instance is associated.
 func (o LogmeCredentialOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogmeCredential) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The resource region. If not defined, the provider region is used.
+func (o LogmeCredentialOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *LogmeCredential) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 func (o LogmeCredentialOutput) Uri() pulumi.StringOutput {

@@ -59,6 +59,10 @@ export class MariadbCredential extends pulumi.CustomResource {
      */
     declare public readonly projectId: pulumi.Output<string>;
     /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    declare public readonly region: pulumi.Output<string>;
+    /**
      * A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
      */
     declare public readonly rotateWhenChanged: pulumi.Output<{[key: string]: string} | undefined>;
@@ -86,6 +90,7 @@ export class MariadbCredential extends pulumi.CustomResource {
             resourceInputs["password"] = state?.password;
             resourceInputs["port"] = state?.port;
             resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
             resourceInputs["rotateWhenChanged"] = state?.rotateWhenChanged;
             resourceInputs["uri"] = state?.uri;
             resourceInputs["username"] = state?.username;
@@ -99,6 +104,7 @@ export class MariadbCredential extends pulumi.CustomResource {
             }
             resourceInputs["instanceId"] = args?.instanceId;
             resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
             resourceInputs["rotateWhenChanged"] = args?.rotateWhenChanged;
             resourceInputs["credentialId"] = undefined /*out*/;
             resourceInputs["host"] = undefined /*out*/;
@@ -138,6 +144,10 @@ export interface MariadbCredentialState {
      */
     projectId?: pulumi.Input<string | undefined>;
     /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string | undefined>;
+    /**
      * A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
      */
     rotateWhenChanged?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
@@ -157,6 +167,10 @@ export interface MariadbCredentialArgs {
      * STACKIT Project ID to which the instance is associated.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string | undefined>;
     /**
      * A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
      */

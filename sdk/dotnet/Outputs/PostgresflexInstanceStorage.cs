@@ -16,9 +16,42 @@ namespace Pulumi.Stackit.Outputs
         /// <summary>
         /// The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
         /// `bash
-        /// stackit postgresflex options --storages --flavor-id FLAVOR_ID
+        /// stackit postgresflex flavor describe FLAVOR_ID
         /// `
         /// - `Size` (Number)
+        /// \n\n\n\n
+        /// ### Nested Schema for `Encryption`
+        /// Required:
+        /// - `KekKeyId` (String) The ID of the Key within the STACKIT-KMS to use for the encryption.
+        /// - `KekKeyVersion` (String) Version of the key within the STACKIT-KMS to use for the encryption.
+        /// - `KekKeyringId` (String) The ID of the keyring where the key is located within the STACKTI-KMS.
+        /// - `ServiceAccount` (String) Service-Account linked to the Key within the STACKIT-KMS.
+        /// \n\n\n\n
+        /// ### Nested Schema for `Flavor`
+        /// Required:
+        /// - `Cpu` (Number)
+        /// - `Ram` (Number)
+        /// Read-Only:
+        /// - `Description` (String)
+        /// - `Id` (String)
+        /// - `NodeType` (String)
+        /// \n\n\n\n
+        /// ### Nested Schema for `Network`
+        /// Optional:
+        /// - `AccessScope` (String) The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. Possible values are: `PUBLIC`, `SNA`.
+        /// - `Acl` (List of String) The Access Control List (ACL) for the PostgresFlex instance.
+        /// Read-Only:
+        /// - `InstanceAddress` (String)
+        /// - `RouterAddress` (String)
+        /// \n\n\n\n
+        /// ### Nested Schema for `ConnectionInfo`
+        /// Read-Only:
+        /// - `Write` (Attributes) The DNS name and port in the instance overview. 
+        /// \n\n\n\n
+        /// ### Nested Schema for `connection_info.write`
+        /// Read-Only:
+        /// - `Host` (String) The host of the instance.
+        /// - `Port` (Number) The port of the instance.
         /// </summary>
         public readonly string Class;
         public readonly int Size;

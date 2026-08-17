@@ -25,7 +25,8 @@ class OpensearchInstanceArgs:
                  project_id: pulumi.Input[_builtins.str],
                  version: pulumi.Input[_builtins.str],
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 parameters: pulumi.Input[Optional['OpensearchInstanceParametersArgs']] = None):
+                 parameters: pulumi.Input[Optional['OpensearchInstanceParametersArgs']] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a OpensearchInstance resource.
 
@@ -34,6 +35,7 @@ class OpensearchInstanceArgs:
         :param pulumi.Input[_builtins.str] version: The service version.
         :param pulumi.Input[_builtins.str] name: Instance name.
         :param pulumi.Input['OpensearchInstanceParametersArgs'] parameters: Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
         pulumi.set(__self__, "plan_name", plan_name)
         pulumi.set(__self__, "project_id", project_id)
@@ -42,6 +44,8 @@ class OpensearchInstanceArgs:
             pulumi.set(__self__, "name", name)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
 
     @_builtins.property
     @pulumi.getter(name="planName")
@@ -103,6 +107,18 @@ class OpensearchInstanceArgs:
     def parameters(self, value: pulumi.Input[Optional['OpensearchInstanceParametersArgs']]):
         pulumi.set(self, "parameters", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
 
 @pulumi.input_type
 class _OpensearchInstanceState:
@@ -118,6 +134,7 @@ class _OpensearchInstanceState:
                  plan_id: pulumi.Input[Optional[_builtins.str]] = None,
                  plan_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering OpensearchInstance resources.
@@ -128,6 +145,7 @@ class _OpensearchInstanceState:
         :param pulumi.Input[_builtins.str] plan_id: The selected plan ID.
         :param pulumi.Input[_builtins.str] plan_name: The selected plan name.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the instance is associated.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.str] version: The service version.
         """
         if cf_guid is not None:
@@ -152,6 +170,8 @@ class _OpensearchInstanceState:
             pulumi.set(__self__, "plan_name", plan_name)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if version is not None:
             pulumi.set(__self__, "version", version)
 
@@ -274,6 +294,18 @@ class _OpensearchInstanceState:
 
     @_builtins.property
     @pulumi.getter
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+    @_builtins.property
+    @pulumi.getter
     def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The service version.
@@ -295,6 +327,7 @@ class OpensearchInstance(pulumi.CustomResource):
                  parameters: pulumi.Input[Optional[Union['OpensearchInstanceParametersArgs', 'OpensearchInstanceParametersArgsDict']]] = None,
                  plan_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -313,6 +346,7 @@ class OpensearchInstance(pulumi.CustomResource):
         :param pulumi.Input[Union['OpensearchInstanceParametersArgs', 'OpensearchInstanceParametersArgsDict']] parameters: Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
         :param pulumi.Input[_builtins.str] plan_name: The selected plan name.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the instance is associated.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.str] version: The service version.
         """
         ...
@@ -350,6 +384,7 @@ class OpensearchInstance(pulumi.CustomResource):
                  parameters: pulumi.Input[Optional[Union['OpensearchInstanceParametersArgs', 'OpensearchInstanceParametersArgsDict']]] = None,
                  plan_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -368,6 +403,7 @@ class OpensearchInstance(pulumi.CustomResource):
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
+            __props__.__dict__["region"] = region
             if version is None and not opts.urn:
                 raise TypeError("Missing required property 'version'")
             __props__.__dict__["version"] = version
@@ -399,6 +435,7 @@ class OpensearchInstance(pulumi.CustomResource):
             plan_id: pulumi.Input[Optional[_builtins.str]] = None,
             plan_name: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
             version: pulumi.Input[Optional[_builtins.str]] = None) -> 'OpensearchInstance':
         """
         Get an existing OpensearchInstance resource's state with the given name, id, and optional extra
@@ -413,6 +450,7 @@ class OpensearchInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] plan_id: The selected plan ID.
         :param pulumi.Input[_builtins.str] plan_name: The selected plan name.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the instance is associated.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.str] version: The service version.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -430,6 +468,7 @@ class OpensearchInstance(pulumi.CustomResource):
         __props__.__dict__["plan_id"] = plan_id
         __props__.__dict__["plan_name"] = plan_name
         __props__.__dict__["project_id"] = project_id
+        __props__.__dict__["region"] = region
         __props__.__dict__["version"] = version
         return OpensearchInstance(resource_name, opts=opts, __props__=__props__)
 
@@ -505,6 +544,14 @@ class OpensearchInstance(pulumi.CustomResource):
         STACKIT project ID to which the instance is associated.
         """
         return pulumi.get(self, "project_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[_builtins.str]:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter

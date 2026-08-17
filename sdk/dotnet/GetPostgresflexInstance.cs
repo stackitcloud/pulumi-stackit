@@ -118,8 +118,17 @@ namespace Pulumi.Stackit
         /// The Access Control List (ACL) for the PostgresFlex instance.
         /// </summary>
         public readonly ImmutableArray<string> Acls;
+        /// <summary>
+        /// The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.
+        /// </summary>
         public readonly string BackupSchedule;
+        /// <summary>
+        /// The connection info for the PostgresFlex instance.
+        /// </summary>
+        public readonly Outputs.GetPostgresflexInstanceConnectionInfoResult ConnectionInfo;
+        public readonly Outputs.GetPostgresflexInstanceEncryptionResult Encryption;
         public readonly Outputs.GetPostgresflexInstanceFlavorResult Flavor;
+        public readonly string FlavorId;
         /// <summary>
         /// Terraform's internal data source. ID. It is structured as "`ProjectId`,`Region`,`InstanceId`".
         /// </summary>
@@ -132,6 +141,7 @@ namespace Pulumi.Stackit
         /// Instance name.
         /// </summary>
         public readonly string Name;
+        public readonly Outputs.GetPostgresflexInstanceNetworkResult Network;
         /// <summary>
         /// STACKIT project ID to which the instance is associated.
         /// </summary>
@@ -141,6 +151,7 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string? Region;
         public readonly int Replicas;
+        public readonly int RetentionDays;
         public readonly Outputs.GetPostgresflexInstanceStorageResult Storage;
         public readonly string Version;
 
@@ -150,7 +161,13 @@ namespace Pulumi.Stackit
 
             string backupSchedule,
 
+            Outputs.GetPostgresflexInstanceConnectionInfoResult connectionInfo,
+
+            Outputs.GetPostgresflexInstanceEncryptionResult encryption,
+
             Outputs.GetPostgresflexInstanceFlavorResult flavor,
+
+            string flavorId,
 
             string id,
 
@@ -158,11 +175,15 @@ namespace Pulumi.Stackit
 
             string name,
 
+            Outputs.GetPostgresflexInstanceNetworkResult network,
+
             string projectId,
 
             string? region,
 
             int replicas,
+
+            int retentionDays,
 
             Outputs.GetPostgresflexInstanceStorageResult storage,
 
@@ -170,13 +191,18 @@ namespace Pulumi.Stackit
         {
             Acls = acls;
             BackupSchedule = backupSchedule;
+            ConnectionInfo = connectionInfo;
+            Encryption = encryption;
             Flavor = flavor;
+            FlavorId = flavorId;
             Id = id;
             InstanceId = instanceId;
             Name = name;
+            Network = network;
             ProjectId = projectId;
             Region = region;
             Replicas = replicas;
+            RetentionDays = retentionDays;
             Storage = storage;
             Version = version;
         }

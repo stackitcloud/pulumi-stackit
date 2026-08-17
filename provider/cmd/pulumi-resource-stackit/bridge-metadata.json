@@ -12,6 +12,34 @@
             "stackit_alb_certificate": {
                 "current": "stackit:index/albCertificate:AlbCertificate"
             },
+            "stackit_alb_waf_configuration": {
+                "current": "stackit:index/albWafConfiguration:AlbWafConfiguration"
+            },
+            "stackit_alb_waf_custom_rule_group": {
+                "current": "stackit:index/albWafCustomRuleGroup:AlbWafCustomRuleGroup",
+                "fields": {
+                    "rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "conditions": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "transformations": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "stackit_alb_waf_managed_rule_set": {
+                "current": "stackit:index/albWafManagedRuleSet:AlbWafManagedRuleSet"
+            },
             "stackit_application_load_balancer": {
                 "current": "stackit:index/applicationLoadBalancer:ApplicationLoadBalancer",
                 "fields": {
@@ -156,6 +184,9 @@
                                 }
                             },
                             "blocked_countries": {
+                                "maxItemsOne": false
+                            },
+                            "blocked_ips": {
                                 "maxItemsOne": false
                             },
                             "redirects": {
@@ -404,6 +435,12 @@
                     }
                 }
             },
+            "stackit_modelexperiments_instance": {
+                "current": "stackit:index/modelexperimentsInstance:ModelexperimentsInstance"
+            },
+            "stackit_modelexperiments_token": {
+                "current": "stackit:index/modelexperimentsToken:ModelexperimentsToken"
+            },
             "stackit_modelserving_token": {
                 "current": "stackit:index/modelservingToken:ModelservingToken"
             },
@@ -441,15 +478,7 @@
                 }
             },
             "stackit_network_area": {
-                "current": "stackit:index/networkArea:NetworkArea",
-                "fields": {
-                    "default_nameservers": {
-                        "maxItemsOne": false
-                    },
-                    "network_ranges": {
-                        "maxItemsOne": false
-                    }
-                }
+                "current": "stackit:index/networkArea:NetworkArea"
             },
             "stackit_network_area_region": {
                 "current": "stackit:index/networkAreaRegion:NetworkAreaRegion",
@@ -614,6 +643,13 @@
                 "fields": {
                     "acl": {
                         "maxItemsOne": false
+                    },
+                    "network": {
+                        "fields": {
+                            "acl": {
+                                "maxItemsOne": false
+                            }
+                        }
                     }
                 }
             },
@@ -862,6 +898,9 @@
             "stackit_ske_kubeconfig": {
                 "current": "stackit:index/skeKubeconfig:SkeKubeconfig"
             },
+            "stackit_sqlserverflex_database": {
+                "current": "stackit:index/sqlserverflexDatabase:SqlserverflexDatabase"
+            },
             "stackit_sqlserverflex_instance": {
                 "current": "stackit:index/sqlserverflexInstance:SqlserverflexInstance",
                 "fields": {
@@ -1055,6 +1094,34 @@
             "stackit_alb_certificate": {
                 "current": "stackit:index/getAlbCertificate:getAlbCertificate"
             },
+            "stackit_alb_waf_configuration": {
+                "current": "stackit:index/getAlbWafConfiguration:getAlbWafConfiguration"
+            },
+            "stackit_alb_waf_custom_rule_group": {
+                "current": "stackit:index/getAlbWafCustomRuleGroup:getAlbWafCustomRuleGroup",
+                "fields": {
+                    "rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "conditions": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "transformations": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "stackit_alb_waf_managed_rule_set": {
+                "current": "stackit:index/getAlbWafManagedRuleSet:getAlbWafManagedRuleSet"
+            },
             "stackit_application_load_balancer": {
                 "current": "stackit:index/getApplicationLoadBalancer:getApplicationLoadBalancer",
                 "fields": {
@@ -1187,6 +1254,9 @@
                                 }
                             },
                             "blocked_countries": {
+                                "maxItemsOne": false
+                            },
+                            "blocked_ips": {
                                 "maxItemsOne": false
                             },
                             "redirects": {
@@ -1448,6 +1518,12 @@
                     }
                 }
             },
+            "stackit_modelexperiments_instance": {
+                "current": "stackit:index/getModelexperimentsInstance:getModelexperimentsInstance"
+            },
+            "stackit_modelexperiments_token": {
+                "current": "stackit:index/getModelexperimentsToken:getModelexperimentsToken"
+            },
             "stackit_mongodbflex_instance": {
                 "current": "stackit:index/getMongodbflexInstance:getMongodbflexInstance",
                 "fields": {
@@ -1482,15 +1558,7 @@
                 }
             },
             "stackit_network_area": {
-                "current": "stackit:index/getNetworkArea:getNetworkArea",
-                "fields": {
-                    "default_nameservers": {
-                        "maxItemsOne": false
-                    },
-                    "network_ranges": {
-                        "maxItemsOne": false
-                    }
-                }
+                "current": "stackit:index/getNetworkArea:getNetworkArea"
             },
             "stackit_network_area_region": {
                 "current": "stackit:index/getNetworkAreaRegion:getNetworkAreaRegion",
@@ -1647,11 +1715,33 @@
             "stackit_postgresflex_database": {
                 "current": "stackit:index/getPostgresflexDatabase:getPostgresflexDatabase"
             },
+            "stackit_postgresflex_flavors": {
+                "current": "stackit:index/getPostgresflexFlavors:getPostgresflexFlavors",
+                "fields": {
+                    "flavors": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "storage_classes": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "stackit_postgresflex_instance": {
                 "current": "stackit:index/getPostgresflexInstance:getPostgresflexInstance",
                 "fields": {
                     "acl": {
                         "maxItemsOne": false
+                    },
+                    "network": {
+                        "fields": {
+                            "acl": {
+                                "maxItemsOne": false
+                            }
+                        }
                     }
                 }
             },
@@ -2004,6 +2094,24 @@
                                             }
                                         }
                                     }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "stackit_sqlserverflex_database": {
+                "current": "stackit:index/getSqlserverflexDatabase:getSqlserverflexDatabase"
+            },
+            "stackit_sqlserverflex_flavors": {
+                "current": "stackit:index/getSqlserverflexFlavors:getSqlserverflexFlavors",
+                "fields": {
+                    "flavors": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "storage_classes": {
+                                    "maxItemsOne": false
                                 }
                             }
                         }

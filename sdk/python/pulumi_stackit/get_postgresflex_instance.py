@@ -27,16 +27,25 @@ class GetPostgresflexInstanceResult:
     """
     A collection of values returned by getPostgresflexInstance.
     """
-    def __init__(__self__, acls=None, backup_schedule=None, flavor=None, id=None, instance_id=None, name=None, project_id=None, region=None, replicas=None, storage=None, version=None):
+    def __init__(__self__, acls=None, backup_schedule=None, connection_info=None, encryption=None, flavor=None, flavor_id=None, id=None, instance_id=None, name=None, network=None, project_id=None, region=None, replicas=None, retention_days=None, storage=None, version=None):
         if acls and not isinstance(acls, list):
             raise TypeError("Expected argument 'acls' to be a list")
         pulumi.set(__self__, "acls", acls)
         if backup_schedule and not isinstance(backup_schedule, str):
             raise TypeError("Expected argument 'backup_schedule' to be a str")
         pulumi.set(__self__, "backup_schedule", backup_schedule)
+        if connection_info and not isinstance(connection_info, dict):
+            raise TypeError("Expected argument 'connection_info' to be a dict")
+        pulumi.set(__self__, "connection_info", connection_info)
+        if encryption and not isinstance(encryption, dict):
+            raise TypeError("Expected argument 'encryption' to be a dict")
+        pulumi.set(__self__, "encryption", encryption)
         if flavor and not isinstance(flavor, dict):
             raise TypeError("Expected argument 'flavor' to be a dict")
         pulumi.set(__self__, "flavor", flavor)
+        if flavor_id and not isinstance(flavor_id, str):
+            raise TypeError("Expected argument 'flavor_id' to be a str")
+        pulumi.set(__self__, "flavor_id", flavor_id)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -46,6 +55,9 @@ class GetPostgresflexInstanceResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if network and not isinstance(network, dict):
+            raise TypeError("Expected argument 'network' to be a dict")
+        pulumi.set(__self__, "network", network)
         if project_id and not isinstance(project_id, str):
             raise TypeError("Expected argument 'project_id' to be a str")
         pulumi.set(__self__, "project_id", project_id)
@@ -55,6 +67,9 @@ class GetPostgresflexInstanceResult:
         if replicas and not isinstance(replicas, int):
             raise TypeError("Expected argument 'replicas' to be a int")
         pulumi.set(__self__, "replicas", replicas)
+        if retention_days and not isinstance(retention_days, int):
+            raise TypeError("Expected argument 'retention_days' to be a int")
+        pulumi.set(__self__, "retention_days", retention_days)
         if storage and not isinstance(storage, dict):
             raise TypeError("Expected argument 'storage' to be a dict")
         pulumi.set(__self__, "storage", storage)
@@ -64,6 +79,7 @@ class GetPostgresflexInstanceResult:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""acl is deprecated and will be removed after February 2027. Use instead `network.acl`.""")
     def acls(self) -> Sequence[_builtins.str]:
         """
         The Access Control List (ACL) for the PostgresFlex instance.
@@ -73,12 +89,34 @@ class GetPostgresflexInstanceResult:
     @_builtins.property
     @pulumi.getter(name="backupSchedule")
     def backup_schedule(self) -> _builtins.str:
+        """
+        The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.
+        """
         return pulumi.get(self, "backup_schedule")
 
     @_builtins.property
+    @pulumi.getter(name="connectionInfo")
+    def connection_info(self) -> 'outputs.GetPostgresflexInstanceConnectionInfoResult':
+        """
+        The connection info for the PostgresFlex instance.
+        """
+        return pulumi.get(self, "connection_info")
+
+    @_builtins.property
     @pulumi.getter
+    def encryption(self) -> 'outputs.GetPostgresflexInstanceEncryptionResult':
+        return pulumi.get(self, "encryption")
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""flavor is deprecated and will be removed after February 2027. Use instead `flavor_id`. You can list available flavors using the datasource `get_postgresflex_flavors`..""")
     def flavor(self) -> 'outputs.GetPostgresflexInstanceFlavorResult':
         return pulumi.get(self, "flavor")
+
+    @_builtins.property
+    @pulumi.getter(name="flavorId")
+    def flavor_id(self) -> _builtins.str:
+        return pulumi.get(self, "flavor_id")
 
     @_builtins.property
     @pulumi.getter
@@ -105,6 +143,11 @@ class GetPostgresflexInstanceResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter
+    def network(self) -> 'outputs.GetPostgresflexInstanceNetworkResult':
+        return pulumi.get(self, "network")
+
+    @_builtins.property
     @pulumi.getter(name="projectId")
     def project_id(self) -> _builtins.str:
         """
@@ -122,8 +165,14 @@ class GetPostgresflexInstanceResult:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""replicas is deprecated and will be removed after February 2027. Use instead `flavor_id` and choose a flavor with your wanted replica configuration. You can list available flavors using the datasource `get_postgresflex_flavors`.""")
     def replicas(self) -> _builtins.int:
         return pulumi.get(self, "replicas")
+
+    @_builtins.property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> _builtins.int:
+        return pulumi.get(self, "retention_days")
 
     @_builtins.property
     @pulumi.getter
@@ -144,13 +193,18 @@ class AwaitableGetPostgresflexInstanceResult(GetPostgresflexInstanceResult):
         return GetPostgresflexInstanceResult(
             acls=self.acls,
             backup_schedule=self.backup_schedule,
+            connection_info=self.connection_info,
+            encryption=self.encryption,
             flavor=self.flavor,
+            flavor_id=self.flavor_id,
             id=self.id,
             instance_id=self.instance_id,
             name=self.name,
+            network=self.network,
             project_id=self.project_id,
             region=self.region,
             replicas=self.replicas,
+            retention_days=self.retention_days,
             storage=self.storage,
             version=self.version)
 
@@ -179,13 +233,18 @@ def get_postgresflex_instance(instance_id: Optional[_builtins.str] = None,
     return AwaitableGetPostgresflexInstanceResult(
         acls=pulumi.get(__ret__, 'acls'),
         backup_schedule=pulumi.get(__ret__, 'backup_schedule'),
+        connection_info=pulumi.get(__ret__, 'connection_info'),
+        encryption=pulumi.get(__ret__, 'encryption'),
         flavor=pulumi.get(__ret__, 'flavor'),
+        flavor_id=pulumi.get(__ret__, 'flavor_id'),
         id=pulumi.get(__ret__, 'id'),
         instance_id=pulumi.get(__ret__, 'instance_id'),
         name=pulumi.get(__ret__, 'name'),
+        network=pulumi.get(__ret__, 'network'),
         project_id=pulumi.get(__ret__, 'project_id'),
         region=pulumi.get(__ret__, 'region'),
         replicas=pulumi.get(__ret__, 'replicas'),
+        retention_days=pulumi.get(__ret__, 'retention_days'),
         storage=pulumi.get(__ret__, 'storage'),
         version=pulumi.get(__ret__, 'version'))
 def get_postgresflex_instance_output(instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -211,12 +270,17 @@ def get_postgresflex_instance_output(instance_id: pulumi.Input[Optional[_builtin
     return __ret__.apply(lambda __response__: GetPostgresflexInstanceResult(
         acls=pulumi.get(__response__, 'acls'),
         backup_schedule=pulumi.get(__response__, 'backup_schedule'),
+        connection_info=pulumi.get(__response__, 'connection_info'),
+        encryption=pulumi.get(__response__, 'encryption'),
         flavor=pulumi.get(__response__, 'flavor'),
+        flavor_id=pulumi.get(__response__, 'flavor_id'),
         id=pulumi.get(__response__, 'id'),
         instance_id=pulumi.get(__response__, 'instance_id'),
         name=pulumi.get(__response__, 'name'),
+        network=pulumi.get(__response__, 'network'),
         project_id=pulumi.get(__response__, 'project_id'),
         region=pulumi.get(__response__, 'region'),
         replicas=pulumi.get(__response__, 'replicas'),
+        retention_days=pulumi.get(__response__, 'retention_days'),
         storage=pulumi.get(__response__, 'storage'),
         version=pulumi.get(__response__, 'version')))

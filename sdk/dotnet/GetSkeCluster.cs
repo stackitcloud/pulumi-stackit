@@ -119,6 +119,10 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly Outputs.GetSkeClusterAccessResult Access;
         /// <summary>
+        /// Cluster audit log forwarding configuration.
+        /// </summary>
+        public readonly Outputs.GetSkeClusterAuditResult Audit;
+        /// <summary>
         /// The outgoing network ranges (in CIDR notation) of traffic originating from workload on the cluster.
         /// </summary>
         public readonly ImmutableArray<string> EgressAddressRanges;
@@ -179,6 +183,8 @@ namespace Pulumi.Stackit
         private GetSkeClusterResult(
             Outputs.GetSkeClusterAccessResult access,
 
+            Outputs.GetSkeClusterAuditResult audit,
+
             ImmutableArray<string> egressAddressRanges,
 
             Outputs.GetSkeClusterExtensionsResult extensions,
@@ -208,6 +214,7 @@ namespace Pulumi.Stackit
             string serviceAccountIssuer)
         {
             Access = access;
+            Audit = audit;
             EgressAddressRanges = egressAddressRanges;
             Extensions = extensions;
             Hibernations = hibernations;

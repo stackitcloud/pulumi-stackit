@@ -15,19 +15,26 @@ import (
 // SQLServer Flex instance resource schema. Must have a `region` specified in the provider configuration.
 //
 // ## Example Usage
+//
+// ## Import
+//
+// In Terraform v1.5.0 and later, the `  + " `" + `import` + "` " +  ` block can be used with the `  + " `" + `id` + "` " +  ` attribute, for example:
 type SqlserverflexInstance struct {
 	pulumi.CustomResourceState
 
 	// The Access Control List (ACL) for the SQLServer Flex instance.
 	//
-	// Deprecated: acl is deprecated and will be removed after January 2027. Use instead `network.acl`.
+	// Deprecated: acl is deprecated and will be removed after February 2027. Use instead `network.acl`.
 	Acls pulumi.StringArrayOutput `pulumi:"acls"`
 	// The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *") Will be required in the future. Set a value to prevent breaking changes.
 	BackupSchedule pulumi.StringOutput `pulumi:"backupSchedule"`
 	// Edition of the MSSQL server instance.
-	Edition pulumi.StringOutput               `pulumi:"edition"`
-	Flavor  SqlserverflexInstanceFlavorOutput `pulumi:"flavor"`
-	// The flavor ID of the SQLServer Flex instance.
+	Edition pulumi.StringOutput `pulumi:"edition"`
+	// Parameter to define which key to use for storage encryption.
+	Encryption SqlserverflexInstanceEncryptionPtrOutput `pulumi:"encryption"`
+	// Deprecated: flavor is deprecated and will be removed after February 2027. Use instead `flavorId`. You can list available flavors using the datasource `getSqlserverflexFlavors`.
+	Flavor SqlserverflexInstanceFlavorOutput `pulumi:"flavor"`
+	// The flavor ID of the SQLServer Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `getSqlserverflexFlavors`.
 	FlavorId pulumi.StringOutput `pulumi:"flavorId"`
 	// ID of the SQLServer Flex instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
@@ -35,7 +42,7 @@ type SqlserverflexInstance struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The network configuration of the instance. Will be required in the future. Set a value to prevent breaking changes.
 	Network SqlserverflexInstanceNetworkOutput `pulumi:"network"`
-	// Deprecated: option is deprecated and will be removed after January 2027.
+	// Deprecated: option is deprecated and will be removed after February 2027.
 	Options SqlserverflexInstanceOptionsOutput `pulumi:"options"`
 	// STACKIT project ID to which the instance is associated.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
@@ -85,14 +92,17 @@ func GetSqlserverflexInstance(ctx *pulumi.Context,
 type sqlserverflexInstanceState struct {
 	// The Access Control List (ACL) for the SQLServer Flex instance.
 	//
-	// Deprecated: acl is deprecated and will be removed after January 2027. Use instead `network.acl`.
+	// Deprecated: acl is deprecated and will be removed after February 2027. Use instead `network.acl`.
 	Acls []string `pulumi:"acls"`
 	// The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *") Will be required in the future. Set a value to prevent breaking changes.
 	BackupSchedule *string `pulumi:"backupSchedule"`
 	// Edition of the MSSQL server instance.
-	Edition *string                      `pulumi:"edition"`
-	Flavor  *SqlserverflexInstanceFlavor `pulumi:"flavor"`
-	// The flavor ID of the SQLServer Flex instance.
+	Edition *string `pulumi:"edition"`
+	// Parameter to define which key to use for storage encryption.
+	Encryption *SqlserverflexInstanceEncryption `pulumi:"encryption"`
+	// Deprecated: flavor is deprecated and will be removed after February 2027. Use instead `flavorId`. You can list available flavors using the datasource `getSqlserverflexFlavors`.
+	Flavor *SqlserverflexInstanceFlavor `pulumi:"flavor"`
+	// The flavor ID of the SQLServer Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `getSqlserverflexFlavors`.
 	FlavorId *string `pulumi:"flavorId"`
 	// ID of the SQLServer Flex instance.
 	InstanceId *string `pulumi:"instanceId"`
@@ -100,7 +110,7 @@ type sqlserverflexInstanceState struct {
 	Name *string `pulumi:"name"`
 	// The network configuration of the instance. Will be required in the future. Set a value to prevent breaking changes.
 	Network *SqlserverflexInstanceNetwork `pulumi:"network"`
-	// Deprecated: option is deprecated and will be removed after January 2027.
+	// Deprecated: option is deprecated and will be removed after February 2027.
 	Options *SqlserverflexInstanceOptions `pulumi:"options"`
 	// STACKIT project ID to which the instance is associated.
 	ProjectId *string `pulumi:"projectId"`
@@ -118,14 +128,17 @@ type sqlserverflexInstanceState struct {
 type SqlserverflexInstanceState struct {
 	// The Access Control List (ACL) for the SQLServer Flex instance.
 	//
-	// Deprecated: acl is deprecated and will be removed after January 2027. Use instead `network.acl`.
+	// Deprecated: acl is deprecated and will be removed after February 2027. Use instead `network.acl`.
 	Acls pulumi.StringArrayInput
 	// The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *") Will be required in the future. Set a value to prevent breaking changes.
 	BackupSchedule pulumi.StringPtrInput
 	// Edition of the MSSQL server instance.
 	Edition pulumi.StringPtrInput
-	Flavor  SqlserverflexInstanceFlavorPtrInput
-	// The flavor ID of the SQLServer Flex instance.
+	// Parameter to define which key to use for storage encryption.
+	Encryption SqlserverflexInstanceEncryptionPtrInput
+	// Deprecated: flavor is deprecated and will be removed after February 2027. Use instead `flavorId`. You can list available flavors using the datasource `getSqlserverflexFlavors`.
+	Flavor SqlserverflexInstanceFlavorPtrInput
+	// The flavor ID of the SQLServer Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `getSqlserverflexFlavors`.
 	FlavorId pulumi.StringPtrInput
 	// ID of the SQLServer Flex instance.
 	InstanceId pulumi.StringPtrInput
@@ -133,7 +146,7 @@ type SqlserverflexInstanceState struct {
 	Name pulumi.StringPtrInput
 	// The network configuration of the instance. Will be required in the future. Set a value to prevent breaking changes.
 	Network SqlserverflexInstanceNetworkPtrInput
-	// Deprecated: option is deprecated and will be removed after January 2027.
+	// Deprecated: option is deprecated and will be removed after February 2027.
 	Options SqlserverflexInstanceOptionsPtrInput
 	// STACKIT project ID to which the instance is associated.
 	ProjectId pulumi.StringPtrInput
@@ -155,18 +168,21 @@ func (SqlserverflexInstanceState) ElementType() reflect.Type {
 type sqlserverflexInstanceArgs struct {
 	// The Access Control List (ACL) for the SQLServer Flex instance.
 	//
-	// Deprecated: acl is deprecated and will be removed after January 2027. Use instead `network.acl`.
+	// Deprecated: acl is deprecated and will be removed after February 2027. Use instead `network.acl`.
 	Acls []string `pulumi:"acls"`
 	// The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *") Will be required in the future. Set a value to prevent breaking changes.
-	BackupSchedule *string                      `pulumi:"backupSchedule"`
-	Flavor         *SqlserverflexInstanceFlavor `pulumi:"flavor"`
-	// The flavor ID of the SQLServer Flex instance.
+	BackupSchedule *string `pulumi:"backupSchedule"`
+	// Parameter to define which key to use for storage encryption.
+	Encryption *SqlserverflexInstanceEncryption `pulumi:"encryption"`
+	// Deprecated: flavor is deprecated and will be removed after February 2027. Use instead `flavorId`. You can list available flavors using the datasource `getSqlserverflexFlavors`.
+	Flavor *SqlserverflexInstanceFlavor `pulumi:"flavor"`
+	// The flavor ID of the SQLServer Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `getSqlserverflexFlavors`.
 	FlavorId *string `pulumi:"flavorId"`
 	// Instance name.
 	Name *string `pulumi:"name"`
 	// The network configuration of the instance. Will be required in the future. Set a value to prevent breaking changes.
 	Network *SqlserverflexInstanceNetwork `pulumi:"network"`
-	// Deprecated: option is deprecated and will be removed after January 2027.
+	// Deprecated: option is deprecated and will be removed after February 2027.
 	Options *SqlserverflexInstanceOptions `pulumi:"options"`
 	// STACKIT project ID to which the instance is associated.
 	ProjectId string `pulumi:"projectId"`
@@ -184,18 +200,21 @@ type sqlserverflexInstanceArgs struct {
 type SqlserverflexInstanceArgs struct {
 	// The Access Control List (ACL) for the SQLServer Flex instance.
 	//
-	// Deprecated: acl is deprecated and will be removed after January 2027. Use instead `network.acl`.
+	// Deprecated: acl is deprecated and will be removed after February 2027. Use instead `network.acl`.
 	Acls pulumi.StringArrayInput
 	// The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *") Will be required in the future. Set a value to prevent breaking changes.
 	BackupSchedule pulumi.StringPtrInput
-	Flavor         SqlserverflexInstanceFlavorPtrInput
-	// The flavor ID of the SQLServer Flex instance.
+	// Parameter to define which key to use for storage encryption.
+	Encryption SqlserverflexInstanceEncryptionPtrInput
+	// Deprecated: flavor is deprecated and will be removed after February 2027. Use instead `flavorId`. You can list available flavors using the datasource `getSqlserverflexFlavors`.
+	Flavor SqlserverflexInstanceFlavorPtrInput
+	// The flavor ID of the SQLServer Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `getSqlserverflexFlavors`.
 	FlavorId pulumi.StringPtrInput
 	// Instance name.
 	Name pulumi.StringPtrInput
 	// The network configuration of the instance. Will be required in the future. Set a value to prevent breaking changes.
 	Network SqlserverflexInstanceNetworkPtrInput
-	// Deprecated: option is deprecated and will be removed after January 2027.
+	// Deprecated: option is deprecated and will be removed after February 2027.
 	Options SqlserverflexInstanceOptionsPtrInput
 	// STACKIT project ID to which the instance is associated.
 	ProjectId pulumi.StringInput
@@ -298,7 +317,7 @@ func (o SqlserverflexInstanceOutput) ToSqlserverflexInstanceOutputWithContext(ct
 
 // The Access Control List (ACL) for the SQLServer Flex instance.
 //
-// Deprecated: acl is deprecated and will be removed after January 2027. Use instead `network.acl`.
+// Deprecated: acl is deprecated and will be removed after February 2027. Use instead `network.acl`.
 func (o SqlserverflexInstanceOutput) Acls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SqlserverflexInstance) pulumi.StringArrayOutput { return v.Acls }).(pulumi.StringArrayOutput)
 }
@@ -313,11 +332,17 @@ func (o SqlserverflexInstanceOutput) Edition() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlserverflexInstance) pulumi.StringOutput { return v.Edition }).(pulumi.StringOutput)
 }
 
+// Parameter to define which key to use for storage encryption.
+func (o SqlserverflexInstanceOutput) Encryption() SqlserverflexInstanceEncryptionPtrOutput {
+	return o.ApplyT(func(v *SqlserverflexInstance) SqlserverflexInstanceEncryptionPtrOutput { return v.Encryption }).(SqlserverflexInstanceEncryptionPtrOutput)
+}
+
+// Deprecated: flavor is deprecated and will be removed after February 2027. Use instead `flavorId`. You can list available flavors using the datasource `getSqlserverflexFlavors`.
 func (o SqlserverflexInstanceOutput) Flavor() SqlserverflexInstanceFlavorOutput {
 	return o.ApplyT(func(v *SqlserverflexInstance) SqlserverflexInstanceFlavorOutput { return v.Flavor }).(SqlserverflexInstanceFlavorOutput)
 }
 
-// The flavor ID of the SQLServer Flex instance.
+// The flavor ID of the SQLServer Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `getSqlserverflexFlavors`.
 func (o SqlserverflexInstanceOutput) FlavorId() pulumi.StringOutput {
 	return o.ApplyT(func(v *SqlserverflexInstance) pulumi.StringOutput { return v.FlavorId }).(pulumi.StringOutput)
 }
@@ -337,7 +362,7 @@ func (o SqlserverflexInstanceOutput) Network() SqlserverflexInstanceNetworkOutpu
 	return o.ApplyT(func(v *SqlserverflexInstance) SqlserverflexInstanceNetworkOutput { return v.Network }).(SqlserverflexInstanceNetworkOutput)
 }
 
-// Deprecated: option is deprecated and will be removed after January 2027.
+// Deprecated: option is deprecated and will be removed after February 2027.
 func (o SqlserverflexInstanceOutput) Options() SqlserverflexInstanceOptionsOutput {
 	return o.ApplyT(func(v *SqlserverflexInstance) SqlserverflexInstanceOptionsOutput { return v.Options }).(SqlserverflexInstanceOptionsOutput)
 }

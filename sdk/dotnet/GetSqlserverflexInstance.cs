@@ -138,6 +138,10 @@ namespace Pulumi.Stackit
         /// Edition of the MSSQL server instance.
         /// </summary>
         public readonly string Edition;
+        /// <summary>
+        /// Parameter to define which key to use for storage encryption.
+        /// </summary>
+        public readonly Outputs.GetSqlserverflexInstanceEncryptionResult Encryption;
         public readonly Outputs.GetSqlserverflexInstanceFlavorResult Flavor;
         /// <summary>
         /// The flavor ID of the SQLServer Flex instance.
@@ -187,6 +191,8 @@ namespace Pulumi.Stackit
 
             string edition,
 
+            Outputs.GetSqlserverflexInstanceEncryptionResult encryption,
+
             Outputs.GetSqlserverflexInstanceFlavorResult flavor,
 
             string flavorId,
@@ -216,6 +222,7 @@ namespace Pulumi.Stackit
             Acls = acls;
             BackupSchedule = backupSchedule;
             Edition = edition;
+            Encryption = encryption;
             Flavor = flavor;
             FlavorId = flavorId;
             Id = id;

@@ -39,12 +39,17 @@ type LookupSqlserverflexInstanceArgs struct {
 // A collection of values returned by getSqlserverflexInstance.
 type LookupSqlserverflexInstanceResult struct {
 	// The Access Control List (ACL) for the SQLServer Flex instance.
+	//
+	// Deprecated: acl is deprecated and will be removed after February 2027. Use instead `network.acl`.
 	Acls []string `pulumi:"acls"`
 	// The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *").
 	BackupSchedule string `pulumi:"backupSchedule"`
 	// Edition of the MSSQL server instance.
-	Edition string                         `pulumi:"edition"`
-	Flavor  GetSqlserverflexInstanceFlavor `pulumi:"flavor"`
+	Edition string `pulumi:"edition"`
+	// Parameter to define which key to use for storage encryption.
+	Encryption GetSqlserverflexInstanceEncryption `pulumi:"encryption"`
+	// Deprecated: flavor is deprecated and will be removed after February 2027. Use instead `flavorId`. You can list available flavors using the datasource `getSqlserverflexFlavors`.
+	Flavor GetSqlserverflexInstanceFlavor `pulumi:"flavor"`
 	// The flavor ID of the SQLServer Flex instance.
 	FlavorId string `pulumi:"flavorId"`
 	// Terraform's internal data source. ID. It is structured as "`projectId`,`region`,`instanceId`".
@@ -56,6 +61,8 @@ type LookupSqlserverflexInstanceResult struct {
 	// The network configuration of the instance.
 	Network *GetSqlserverflexInstanceNetwork `pulumi:"network"`
 	// Custom parameters for the SQLServer Flex instance.
+	//
+	// Deprecated: option is deprecated and will be removed after February 2027.
 	Options GetSqlserverflexInstanceOptions `pulumi:"options"`
 	// STACKIT project ID to which the instance is associated.
 	ProjectId string `pulumi:"projectId"`
@@ -109,6 +116,8 @@ func (o LookupSqlserverflexInstanceResultOutput) ToLookupSqlserverflexInstanceRe
 }
 
 // The Access Control List (ACL) for the SQLServer Flex instance.
+//
+// Deprecated: acl is deprecated and will be removed after February 2027. Use instead `network.acl`.
 func (o LookupSqlserverflexInstanceResultOutput) Acls() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupSqlserverflexInstanceResult) []string { return v.Acls }).(pulumi.StringArrayOutput)
 }
@@ -123,6 +132,12 @@ func (o LookupSqlserverflexInstanceResultOutput) Edition() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSqlserverflexInstanceResult) string { return v.Edition }).(pulumi.StringOutput)
 }
 
+// Parameter to define which key to use for storage encryption.
+func (o LookupSqlserverflexInstanceResultOutput) Encryption() GetSqlserverflexInstanceEncryptionOutput {
+	return o.ApplyT(func(v LookupSqlserverflexInstanceResult) GetSqlserverflexInstanceEncryption { return v.Encryption }).(GetSqlserverflexInstanceEncryptionOutput)
+}
+
+// Deprecated: flavor is deprecated and will be removed after February 2027. Use instead `flavorId`. You can list available flavors using the datasource `getSqlserverflexFlavors`.
 func (o LookupSqlserverflexInstanceResultOutput) Flavor() GetSqlserverflexInstanceFlavorOutput {
 	return o.ApplyT(func(v LookupSqlserverflexInstanceResult) GetSqlserverflexInstanceFlavor { return v.Flavor }).(GetSqlserverflexInstanceFlavorOutput)
 }
@@ -153,6 +168,8 @@ func (o LookupSqlserverflexInstanceResultOutput) Network() GetSqlserverflexInsta
 }
 
 // Custom parameters for the SQLServer Flex instance.
+//
+// Deprecated: option is deprecated and will be removed after February 2027.
 func (o LookupSqlserverflexInstanceResultOutput) Options() GetSqlserverflexInstanceOptionsOutput {
 	return o.ApplyT(func(v LookupSqlserverflexInstanceResult) GetSqlserverflexInstanceOptions { return v.Options }).(GetSqlserverflexInstanceOptionsOutput)
 }

@@ -15,6 +15,7 @@ export function getLogmeCredential(args: GetLogmeCredentialArgs, opts?: pulumi.I
         "credentialId": args.credentialId,
         "instanceId": args.instanceId,
         "projectId": args.projectId,
+        "region": args.region,
     }, opts);
 }
 
@@ -34,6 +35,10 @@ export interface GetLogmeCredentialArgs {
      * STACKIT project ID to which the instance is associated.
      */
     projectId: string;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: string;
 }
 
 /**
@@ -46,7 +51,7 @@ export interface GetLogmeCredentialResult {
     readonly credentialId: string;
     readonly host: string;
     /**
-     * Terraform's internal data source. identifier. It is structured as "`projectId`,`instanceId`,`credentialId`".
+     * Terraform's internal data source. identifier. It is structured as "`projectId`,`region`,`instanceId`,`credentialId`".
      */
     readonly id: string;
     /**
@@ -59,6 +64,10 @@ export interface GetLogmeCredentialResult {
      * STACKIT project ID to which the instance is associated.
      */
     readonly projectId: string;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    readonly region: string;
     readonly uri: string;
     readonly username: string;
 }
@@ -73,6 +82,7 @@ export function getLogmeCredentialOutput(args: GetLogmeCredentialOutputArgs, opt
         "credentialId": args.credentialId,
         "instanceId": args.instanceId,
         "projectId": args.projectId,
+        "region": args.region,
     }, opts);
 }
 
@@ -92,4 +102,8 @@ export interface GetLogmeCredentialOutputArgs {
      * STACKIT project ID to which the instance is associated.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string | undefined>;
 }

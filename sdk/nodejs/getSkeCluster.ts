@@ -47,6 +47,10 @@ export interface GetSkeClusterResult {
      */
     readonly access: outputs.GetSkeClusterAccess;
     /**
+     * Cluster audit log forwarding configuration.
+     */
+    readonly audit: outputs.GetSkeClusterAudit;
+    /**
      * The outgoing network ranges (in CIDR notation) of traffic originating from workload on the cluster.
      */
     readonly egressAddressRanges: string[];

@@ -15,6 +15,7 @@ export function getOpensearchCredential(args: GetOpensearchCredentialArgs, opts?
         "credentialId": args.credentialId,
         "instanceId": args.instanceId,
         "projectId": args.projectId,
+        "region": args.region,
     }, opts);
 }
 
@@ -34,6 +35,10 @@ export interface GetOpensearchCredentialArgs {
      * STACKIT project ID to which the instance is associated.
      */
     projectId: string;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: string;
 }
 
 /**
@@ -47,7 +52,7 @@ export interface GetOpensearchCredentialResult {
     readonly host: string;
     readonly hosts: string[];
     /**
-     * Terraform's internal data source. identifier. It is structured as "`projectId`,`instanceId`,`credentialId`".
+     * Terraform's internal data source. identifier. It is structured as "`projectId`,`region`,`instanceId`,`credentialId`".
      */
     readonly id: string;
     /**
@@ -60,6 +65,10 @@ export interface GetOpensearchCredentialResult {
      * STACKIT project ID to which the instance is associated.
      */
     readonly projectId: string;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    readonly region: string;
     readonly scheme: string;
     readonly uri: string;
     readonly username: string;
@@ -75,6 +84,7 @@ export function getOpensearchCredentialOutput(args: GetOpensearchCredentialOutpu
         "credentialId": args.credentialId,
         "instanceId": args.instanceId,
         "projectId": args.projectId,
+        "region": args.region,
     }, opts);
 }
 
@@ -94,4 +104,8 @@ export interface GetOpensearchCredentialOutputArgs {
      * STACKIT project ID to which the instance is associated.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string | undefined>;
 }

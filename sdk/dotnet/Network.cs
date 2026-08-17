@@ -61,6 +61,12 @@ namespace Pulumi.Stackit
         public Output<ImmutableArray<string>> Ipv4Prefixes { get; private set; } = null!;
 
         /// <summary>
+        /// The IPv4 VPC network range ID.
+        /// </summary>
+        [Output("ipv4VpcNetworkRangeId")]
+        public Output<string?> Ipv4VpcNetworkRangeId { get; private set; } = null!;
+
+        /// <summary>
         /// The IPv6 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
         /// </summary>
         [Output("ipv6Gateway")]
@@ -89,6 +95,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Output("ipv6Prefixes")]
         public Output<ImmutableArray<string>> Ipv6Prefixes { get; private set; } = null!;
+
+        /// <summary>
+        /// The IPv6 VPC network range ID.
+        /// </summary>
+        [Output("ipv6VpcNetworkRangeId")]
+        public Output<string?> Ipv6VpcNetworkRangeId { get; private set; } = null!;
 
         /// <summary>
         /// Labels are key-value string pairs which can be attached to a resource container
@@ -149,6 +161,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Output("routingTableId")]
         public Output<string> RoutingTableId { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the VPC the network is associated with.
+        /// </summary>
+        [Output("vpcId")]
+        public Output<string?> VpcId { get; private set; } = null!;
 
 
         /// <summary>
@@ -234,6 +252,12 @@ namespace Pulumi.Stackit
         public Input<int>? Ipv4PrefixLength { get; set; }
 
         /// <summary>
+        /// The IPv4 VPC network range ID.
+        /// </summary>
+        [Input("ipv4VpcNetworkRangeId")]
+        public Input<string>? Ipv4VpcNetworkRangeId { get; set; }
+
+        /// <summary>
         /// The IPv6 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
         /// </summary>
         [Input("ipv6Gateway")]
@@ -262,6 +286,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("ipv6PrefixLength")]
         public Input<int>? Ipv6PrefixLength { get; set; }
+
+        /// <summary>
+        /// The IPv6 VPC network range ID.
+        /// </summary>
+        [Input("ipv6VpcNetworkRangeId")]
+        public Input<string>? Ipv6VpcNetworkRangeId { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -316,6 +346,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("routingTableId")]
         public Input<string>? RoutingTableId { get; set; }
+
+        /// <summary>
+        /// The ID of the VPC the network is associated with.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
 
         public NetworkArgs()
         {
@@ -374,6 +410,12 @@ namespace Pulumi.Stackit
         }
 
         /// <summary>
+        /// The IPv4 VPC network range ID.
+        /// </summary>
+        [Input("ipv4VpcNetworkRangeId")]
+        public Input<string>? Ipv4VpcNetworkRangeId { get; set; }
+
+        /// <summary>
         /// The IPv6 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
         /// </summary>
         [Input("ipv6Gateway")]
@@ -414,6 +456,12 @@ namespace Pulumi.Stackit
             get => _ipv6Prefixes ?? (_ipv6Prefixes = new InputList<string>());
             set => _ipv6Prefixes = value;
         }
+
+        /// <summary>
+        /// The IPv6 VPC network range ID.
+        /// </summary>
+        [Input("ipv6VpcNetworkRangeId")]
+        public Input<string>? Ipv6VpcNetworkRangeId { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -480,6 +528,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("routingTableId")]
         public Input<string>? RoutingTableId { get; set; }
+
+        /// <summary>
+        /// The ID of the VPC the network is associated with.
+        /// </summary>
+        [Input("vpcId")]
+        public Input<string>? VpcId { get; set; }
 
         public NetworkState()
         {

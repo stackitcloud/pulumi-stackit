@@ -42,9 +42,18 @@ export class Telemetrylink extends pulumi.CustomResource {
     }
 
     /**
-     * The access token of the Telemetry Router instance.
+     * The access token of the Telemetry Router instance. Write-only argument `accessTokenWo` should be preferred.
      */
     declare public readonly accessToken: pulumi.Output<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The access token of the Telemetry Router instance. Write-only - never stored in state and never returned by the API. To rotate the token, update this value AND increment `accessTokenWoVersion`. Changing this field alone will NOT trigger an update.
+     */
+    declare public readonly accessTokenWo: pulumi.Output<string | undefined>;
+    /**
+     * User-managed rotation counter for `accessTokenWo`. Must be incremented every time `accessTokenWo` is changed. Terraform diffs this field to detect token rotations - changing `accessTokenWo` alone will NOT trigger an update because it is write-only and never stored in state.
+     */
+    declare public readonly accessTokenWoVersion: pulumi.Output<number | undefined>;
     /**
      * The time the Telemetry Link was created.
      */
@@ -71,6 +80,8 @@ export class Telemetrylink extends pulumi.CustomResource {
     declare public readonly resourceType: pulumi.Output<string>;
     /**
      * The status of the TelemetryLink, possible values: Possible values are: `active`, `inactive`, `failed`, `reconciling`, `deleting`.
+     *
+     * @deprecated status is deprecated and will be removed after February 2027.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
@@ -92,6 +103,8 @@ export class Telemetrylink extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as TelemetrylinkState | undefined;
             resourceInputs["accessToken"] = state?.accessToken;
+            resourceInputs["accessTokenWo"] = state?.accessTokenWo;
+            resourceInputs["accessTokenWoVersion"] = state?.accessTokenWoVersion;
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
@@ -115,6 +128,8 @@ export class Telemetrylink extends pulumi.CustomResource {
                 throw new Error("Missing required property 'telemetryRouterId'");
             }
             resourceInputs["accessToken"] = args?.accessToken ? pulumi.secret(args.accessToken) : undefined;
+            resourceInputs["accessTokenWo"] = args?.accessTokenWo ? pulumi.secret(args.accessTokenWo) : undefined;
+            resourceInputs["accessTokenWoVersion"] = args?.accessTokenWoVersion;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["region"] = args?.region;
@@ -125,7 +140,7 @@ export class Telemetrylink extends pulumi.CustomResource {
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["accessToken"] };
+        const secretOpts = { additionalSecretOutputs: ["accessToken", "accessTokenWo"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(Telemetrylink.__pulumiType, name, resourceInputs, opts);
     }
@@ -136,9 +151,18 @@ export class Telemetrylink extends pulumi.CustomResource {
  */
 export interface TelemetrylinkState {
     /**
-     * The access token of the Telemetry Router instance.
+     * The access token of the Telemetry Router instance. Write-only argument `accessTokenWo` should be preferred.
      */
     accessToken?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The access token of the Telemetry Router instance. Write-only - never stored in state and never returned by the API. To rotate the token, update this value AND increment `accessTokenWoVersion`. Changing this field alone will NOT trigger an update.
+     */
+    accessTokenWo?: pulumi.Input<string | undefined>;
+    /**
+     * User-managed rotation counter for `accessTokenWo`. Must be incremented every time `accessTokenWo` is changed. Terraform diffs this field to detect token rotations - changing `accessTokenWo` alone will NOT trigger an update because it is write-only and never stored in state.
+     */
+    accessTokenWoVersion?: pulumi.Input<number | undefined>;
     /**
      * The time the Telemetry Link was created.
      */
@@ -165,6 +189,8 @@ export interface TelemetrylinkState {
     resourceType?: pulumi.Input<string | undefined>;
     /**
      * The status of the TelemetryLink, possible values: Possible values are: `active`, `inactive`, `failed`, `reconciling`, `deleting`.
+     *
+     * @deprecated status is deprecated and will be removed after February 2027.
      */
     status?: pulumi.Input<string | undefined>;
     /**
@@ -178,9 +204,18 @@ export interface TelemetrylinkState {
  */
 export interface TelemetrylinkArgs {
     /**
-     * The access token of the Telemetry Router instance.
+     * The access token of the Telemetry Router instance. Write-only argument `accessTokenWo` should be preferred.
      */
     accessToken?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * The access token of the Telemetry Router instance. Write-only - never stored in state and never returned by the API. To rotate the token, update this value AND increment `accessTokenWoVersion`. Changing this field alone will NOT trigger an update.
+     */
+    accessTokenWo?: pulumi.Input<string | undefined>;
+    /**
+     * User-managed rotation counter for `accessTokenWo`. Must be incremented every time `accessTokenWo` is changed. Terraform diffs this field to detect token rotations - changing `accessTokenWo` alone will NOT trigger an update because it is write-only and never stored in state.
+     */
+    accessTokenWoVersion?: pulumi.Input<number | undefined>;
     /**
      * The description of the Telemetry Link resource.
      */

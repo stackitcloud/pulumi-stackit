@@ -113,6 +113,7 @@ class GetTelemetrylinkResult:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""status is deprecated and will be removed after February 2027.""")
     def status(self) -> _builtins.str:
         """
         The status of the TelemetryLink, possible values: Possible values are: `active`, `inactive`, `failed`, `reconciling`, `deleting`.

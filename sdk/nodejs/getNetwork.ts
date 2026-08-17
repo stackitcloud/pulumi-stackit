@@ -12,9 +12,12 @@ import * as utilities from "./utilities";
 export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("stackit:index/getNetwork:getNetwork", {
+        "ipv4VpcNetworkRangeId": args.ipv4VpcNetworkRangeId,
+        "ipv6VpcNetworkRangeId": args.ipv6VpcNetworkRangeId,
         "networkId": args.networkId,
         "projectId": args.projectId,
         "region": args.region,
+        "vpcId": args.vpcId,
     }, opts);
 }
 
@@ -22,6 +25,14 @@ export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): P
  * A collection of arguments for invoking getNetwork.
  */
 export interface GetNetworkArgs {
+    /**
+     * The IPv4 VPC network range ID.
+     */
+    ipv4VpcNetworkRangeId?: string;
+    /**
+     * The IPv6 VPC network range ID.
+     */
+    ipv6VpcNetworkRangeId?: string;
     /**
      * The network ID.
      */
@@ -34,6 +45,10 @@ export interface GetNetworkArgs {
      * The resource region. If not defined, the provider region is used.
      */
     region?: string;
+    /**
+     * The ID of the VPC the network is associated with.
+     */
+    vpcId?: string;
 }
 
 /**
@@ -71,6 +86,10 @@ export interface GetNetworkResult {
      */
     readonly ipv4Prefixes: string[];
     /**
+     * The IPv4 VPC network range ID.
+     */
+    readonly ipv4VpcNetworkRangeId?: string;
+    /**
      * The IPv6 gateway of a network. If not specified, the first IP of the network will be assigned as the gateway.
      */
     readonly ipv6Gateway: string;
@@ -92,6 +111,10 @@ export interface GetNetworkResult {
      * The IPv6 prefixes of the network.
      */
     readonly ipv6Prefixes: string[];
+    /**
+     * The IPv6 VPC network range ID.
+     */
+    readonly ipv6VpcNetworkRangeId?: string;
     /**
      * Labels are key-value string pairs which can be attached to a resource container
      */
@@ -124,6 +147,10 @@ export interface GetNetworkResult {
      * The ID of the routing table associated with the network.
      */
     readonly routingTableId: string;
+    /**
+     * The ID of the VPC the network is associated with.
+     */
+    readonly vpcId?: string;
 }
 /**
  * Network resource schema. Must have a `region` specified in the provider configuration.
@@ -133,9 +160,12 @@ export interface GetNetworkResult {
 export function getNetworkOutput(args: GetNetworkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("stackit:index/getNetwork:getNetwork", {
+        "ipv4VpcNetworkRangeId": args.ipv4VpcNetworkRangeId,
+        "ipv6VpcNetworkRangeId": args.ipv6VpcNetworkRangeId,
         "networkId": args.networkId,
         "projectId": args.projectId,
         "region": args.region,
+        "vpcId": args.vpcId,
     }, opts);
 }
 
@@ -143,6 +173,14 @@ export function getNetworkOutput(args: GetNetworkOutputArgs, opts?: pulumi.Invok
  * A collection of arguments for invoking getNetwork.
  */
 export interface GetNetworkOutputArgs {
+    /**
+     * The IPv4 VPC network range ID.
+     */
+    ipv4VpcNetworkRangeId?: pulumi.Input<string | undefined>;
+    /**
+     * The IPv6 VPC network range ID.
+     */
+    ipv6VpcNetworkRangeId?: pulumi.Input<string | undefined>;
     /**
      * The network ID.
      */
@@ -155,4 +193,8 @@ export interface GetNetworkOutputArgs {
      * The resource region. If not defined, the provider region is used.
      */
     region?: pulumi.Input<string | undefined>;
+    /**
+     * The ID of the VPC the network is associated with.
+     */
+    vpcId?: pulumi.Input<string | undefined>;
 }

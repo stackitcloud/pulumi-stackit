@@ -21,6 +21,7 @@ class ProviderArgs:
     def __init__(__self__, *,
                  alb_certificates_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  alb_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 alb_waf_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  authorization_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  cdn_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  credentials_path: pulumi.Input[Optional[_builtins.str]] = None,
@@ -38,6 +39,7 @@ class ProviderArgs:
                  logme_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  logs_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  mariadb_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 modelexperiments_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  modelserving_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  mongodbflex_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  objectstorage_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -50,7 +52,6 @@ class ProviderArgs:
                  private_key_path: pulumi.Input[Optional[_builtins.str]] = None,
                  rabbitmq_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  redis_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
-                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  resourcemanager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  scf_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  secretsmanager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -77,6 +78,7 @@ class ProviderArgs:
 
         :param pulumi.Input[_builtins.str] alb_certificates_custom_endpoint: Custom endpoint for the Application Load Balancer TLS Certificate service
         :param pulumi.Input[_builtins.str] alb_custom_endpoint: Custom endpoint for the Application Load Balancer service
+        :param pulumi.Input[_builtins.str] alb_waf_custom_endpoint: Custom endpoint for the Application Load Balancer Web Application Firewall service
         :param pulumi.Input[_builtins.str] authorization_custom_endpoint: Custom endpoint for the Membership service
         :param pulumi.Input[_builtins.str] cdn_custom_endpoint: Custom endpoint for the CDN service
         :param pulumi.Input[_builtins.str] credentials_path: Path of JSON from where the credentials are read. Takes precedence over the env var `STACKIT_CREDENTIALS_PATH`. Default value is `~/.stackit/credentials.json`.
@@ -94,6 +96,7 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.str] logme_custom_endpoint: Custom endpoint for the LogMe service
         :param pulumi.Input[_builtins.str] logs_custom_endpoint: Custom endpoint for the Logs service
         :param pulumi.Input[_builtins.str] mariadb_custom_endpoint: Custom endpoint for the MariaDB service
+        :param pulumi.Input[_builtins.str] modelexperiments_custom_endpoint: Custom endpoint for the AI Model Experiments service
         :param pulumi.Input[_builtins.str] modelserving_custom_endpoint: Custom endpoint for the AI Model Serving service
         :param pulumi.Input[_builtins.str] mongodbflex_custom_endpoint: Custom endpoint for the MongoDB Flex service
         :param pulumi.Input[_builtins.str] objectstorage_custom_endpoint: Custom endpoint for the Object Storage service
@@ -106,7 +109,6 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.str] private_key_path: Path for the private RSA key used for authentication, relevant for the key flow. It takes precedence over the private key that is included in the service account key.
         :param pulumi.Input[_builtins.str] rabbitmq_custom_endpoint: Custom endpoint for the RabbitMQ service
         :param pulumi.Input[_builtins.str] redis_custom_endpoint: Custom endpoint for the Redis service
-        :param pulumi.Input[_builtins.str] region: Region will be used as the default location for regional services. Not all services require a region, some are global
         :param pulumi.Input[_builtins.str] resourcemanager_custom_endpoint: Custom endpoint for the Resource Manager service
         :param pulumi.Input[_builtins.str] scf_custom_endpoint: Custom endpoint for the Cloud Foundry (SCF) service
         :param pulumi.Input[_builtins.str] secretsmanager_custom_endpoint: Custom endpoint for the Secrets Manager service
@@ -133,6 +135,8 @@ class ProviderArgs:
             pulumi.set(__self__, "alb_certificates_custom_endpoint", alb_certificates_custom_endpoint)
         if alb_custom_endpoint is not None:
             pulumi.set(__self__, "alb_custom_endpoint", alb_custom_endpoint)
+        if alb_waf_custom_endpoint is not None:
+            pulumi.set(__self__, "alb_waf_custom_endpoint", alb_waf_custom_endpoint)
         if authorization_custom_endpoint is not None:
             pulumi.set(__self__, "authorization_custom_endpoint", authorization_custom_endpoint)
         if cdn_custom_endpoint is not None:
@@ -167,6 +171,8 @@ class ProviderArgs:
             pulumi.set(__self__, "logs_custom_endpoint", logs_custom_endpoint)
         if mariadb_custom_endpoint is not None:
             pulumi.set(__self__, "mariadb_custom_endpoint", mariadb_custom_endpoint)
+        if modelexperiments_custom_endpoint is not None:
+            pulumi.set(__self__, "modelexperiments_custom_endpoint", modelexperiments_custom_endpoint)
         if modelserving_custom_endpoint is not None:
             pulumi.set(__self__, "modelserving_custom_endpoint", modelserving_custom_endpoint)
         if mongodbflex_custom_endpoint is not None:
@@ -191,11 +197,6 @@ class ProviderArgs:
             pulumi.set(__self__, "rabbitmq_custom_endpoint", rabbitmq_custom_endpoint)
         if redis_custom_endpoint is not None:
             pulumi.set(__self__, "redis_custom_endpoint", redis_custom_endpoint)
-        if region is not None:
-            warnings.warn("""This attribute is deprecated. Use 'default_region' instead""", DeprecationWarning)
-            pulumi.log.warn("""region is deprecated: This attribute is deprecated. Use 'default_region' instead""")
-        if region is not None:
-            pulumi.set(__self__, "region", region)
         if resourcemanager_custom_endpoint is not None:
             pulumi.set(__self__, "resourcemanager_custom_endpoint", resourcemanager_custom_endpoint)
         if scf_custom_endpoint is not None:
@@ -265,6 +266,18 @@ class ProviderArgs:
     @alb_custom_endpoint.setter
     def alb_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alb_custom_endpoint", value)
+
+    @_builtins.property
+    @pulumi.getter(name="albWafCustomEndpoint")
+    def alb_waf_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Custom endpoint for the Application Load Balancer Web Application Firewall service
+        """
+        return pulumi.get(self, "alb_waf_custom_endpoint")
+
+    @alb_waf_custom_endpoint.setter
+    def alb_waf_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "alb_waf_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="authorizationCustomEndpoint")
@@ -471,6 +484,18 @@ class ProviderArgs:
         pulumi.set(self, "mariadb_custom_endpoint", value)
 
     @_builtins.property
+    @pulumi.getter(name="modelexperimentsCustomEndpoint")
+    def modelexperiments_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Custom endpoint for the AI Model Experiments service
+        """
+        return pulumi.get(self, "modelexperiments_custom_endpoint")
+
+    @modelexperiments_custom_endpoint.setter
+    def modelexperiments_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "modelexperiments_custom_endpoint", value)
+
+    @_builtins.property
     @pulumi.getter(name="modelservingCustomEndpoint")
     def modelserving_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -613,19 +638,6 @@ class ProviderArgs:
     @redis_custom_endpoint.setter
     def redis_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "redis_custom_endpoint", value)
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""This attribute is deprecated. Use 'default_region' instead""")
-    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
-        """
-        Region will be used as the default location for regional services. Not all services require a region, some are global
-        """
-        return pulumi.get(self, "region")
-
-    @region.setter
-    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="resourcemanagerCustomEndpoint")
@@ -889,6 +901,7 @@ class Provider(pulumi.ProviderResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alb_certificates_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  alb_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 alb_waf_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  authorization_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  cdn_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  credentials_path: pulumi.Input[Optional[_builtins.str]] = None,
@@ -906,6 +919,7 @@ class Provider(pulumi.ProviderResource):
                  logme_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  logs_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  mariadb_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 modelexperiments_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  modelserving_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  mongodbflex_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  objectstorage_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -918,7 +932,6 @@ class Provider(pulumi.ProviderResource):
                  private_key_path: pulumi.Input[Optional[_builtins.str]] = None,
                  rabbitmq_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  redis_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
-                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  resourcemanager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  scf_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  secretsmanager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -952,6 +965,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] alb_certificates_custom_endpoint: Custom endpoint for the Application Load Balancer TLS Certificate service
         :param pulumi.Input[_builtins.str] alb_custom_endpoint: Custom endpoint for the Application Load Balancer service
+        :param pulumi.Input[_builtins.str] alb_waf_custom_endpoint: Custom endpoint for the Application Load Balancer Web Application Firewall service
         :param pulumi.Input[_builtins.str] authorization_custom_endpoint: Custom endpoint for the Membership service
         :param pulumi.Input[_builtins.str] cdn_custom_endpoint: Custom endpoint for the CDN service
         :param pulumi.Input[_builtins.str] credentials_path: Path of JSON from where the credentials are read. Takes precedence over the env var `STACKIT_CREDENTIALS_PATH`. Default value is `~/.stackit/credentials.json`.
@@ -969,6 +983,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[_builtins.str] logme_custom_endpoint: Custom endpoint for the LogMe service
         :param pulumi.Input[_builtins.str] logs_custom_endpoint: Custom endpoint for the Logs service
         :param pulumi.Input[_builtins.str] mariadb_custom_endpoint: Custom endpoint for the MariaDB service
+        :param pulumi.Input[_builtins.str] modelexperiments_custom_endpoint: Custom endpoint for the AI Model Experiments service
         :param pulumi.Input[_builtins.str] modelserving_custom_endpoint: Custom endpoint for the AI Model Serving service
         :param pulumi.Input[_builtins.str] mongodbflex_custom_endpoint: Custom endpoint for the MongoDB Flex service
         :param pulumi.Input[_builtins.str] objectstorage_custom_endpoint: Custom endpoint for the Object Storage service
@@ -981,7 +996,6 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[_builtins.str] private_key_path: Path for the private RSA key used for authentication, relevant for the key flow. It takes precedence over the private key that is included in the service account key.
         :param pulumi.Input[_builtins.str] rabbitmq_custom_endpoint: Custom endpoint for the RabbitMQ service
         :param pulumi.Input[_builtins.str] redis_custom_endpoint: Custom endpoint for the Redis service
-        :param pulumi.Input[_builtins.str] region: Region will be used as the default location for regional services. Not all services require a region, some are global
         :param pulumi.Input[_builtins.str] resourcemanager_custom_endpoint: Custom endpoint for the Resource Manager service
         :param pulumi.Input[_builtins.str] scf_custom_endpoint: Custom endpoint for the Cloud Foundry (SCF) service
         :param pulumi.Input[_builtins.str] secretsmanager_custom_endpoint: Custom endpoint for the Secrets Manager service
@@ -1034,6 +1048,7 @@ class Provider(pulumi.ProviderResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  alb_certificates_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  alb_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 alb_waf_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  authorization_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  cdn_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  credentials_path: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1051,6 +1066,7 @@ class Provider(pulumi.ProviderResource):
                  logme_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  logs_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  mariadb_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 modelexperiments_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  modelserving_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  mongodbflex_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  objectstorage_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1063,7 +1079,6 @@ class Provider(pulumi.ProviderResource):
                  private_key_path: pulumi.Input[Optional[_builtins.str]] = None,
                  rabbitmq_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  redis_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
-                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  resourcemanager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  scf_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  secretsmanager_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1096,6 +1111,7 @@ class Provider(pulumi.ProviderResource):
 
             __props__.__dict__["alb_certificates_custom_endpoint"] = alb_certificates_custom_endpoint
             __props__.__dict__["alb_custom_endpoint"] = alb_custom_endpoint
+            __props__.__dict__["alb_waf_custom_endpoint"] = alb_waf_custom_endpoint
             __props__.__dict__["authorization_custom_endpoint"] = authorization_custom_endpoint
             __props__.__dict__["cdn_custom_endpoint"] = cdn_custom_endpoint
             __props__.__dict__["credentials_path"] = credentials_path
@@ -1113,6 +1129,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["logme_custom_endpoint"] = logme_custom_endpoint
             __props__.__dict__["logs_custom_endpoint"] = logs_custom_endpoint
             __props__.__dict__["mariadb_custom_endpoint"] = mariadb_custom_endpoint
+            __props__.__dict__["modelexperiments_custom_endpoint"] = modelexperiments_custom_endpoint
             __props__.__dict__["modelserving_custom_endpoint"] = modelserving_custom_endpoint
             __props__.__dict__["mongodbflex_custom_endpoint"] = mongodbflex_custom_endpoint
             __props__.__dict__["objectstorage_custom_endpoint"] = objectstorage_custom_endpoint
@@ -1125,7 +1142,6 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["private_key_path"] = private_key_path
             __props__.__dict__["rabbitmq_custom_endpoint"] = rabbitmq_custom_endpoint
             __props__.__dict__["redis_custom_endpoint"] = redis_custom_endpoint
-            __props__.__dict__["region"] = region
             __props__.__dict__["resourcemanager_custom_endpoint"] = resourcemanager_custom_endpoint
             __props__.__dict__["scf_custom_endpoint"] = scf_custom_endpoint
             __props__.__dict__["secretsmanager_custom_endpoint"] = secretsmanager_custom_endpoint
@@ -1168,6 +1184,14 @@ class Provider(pulumi.ProviderResource):
         Custom endpoint for the Application Load Balancer service
         """
         return pulumi.get(self, "alb_custom_endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="albWafCustomEndpoint")
+    def alb_waf_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Custom endpoint for the Application Load Balancer Web Application Firewall service
+        """
+        return pulumi.get(self, "alb_waf_custom_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="authorizationCustomEndpoint")
@@ -1290,6 +1314,14 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "mariadb_custom_endpoint")
 
     @_builtins.property
+    @pulumi.getter(name="modelexperimentsCustomEndpoint")
+    def modelexperiments_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Custom endpoint for the AI Model Experiments service
+        """
+        return pulumi.get(self, "modelexperiments_custom_endpoint")
+
+    @_builtins.property
     @pulumi.getter(name="modelservingCustomEndpoint")
     def modelserving_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
@@ -1384,15 +1416,6 @@ class Provider(pulumi.ProviderResource):
         Custom endpoint for the Redis service
         """
         return pulumi.get(self, "redis_custom_endpoint")
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""This attribute is deprecated. Use 'default_region' instead""")
-    def region(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        Region will be used as the default location for regional services. Not all services require a region, some are global
-        """
-        return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter(name="resourcemanagerCustomEndpoint")

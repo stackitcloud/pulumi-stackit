@@ -81,6 +81,8 @@ export class TelemetryrouterDestination extends pulumi.CustomResource {
     declare public readonly region: pulumi.Output<string>;
     /**
      * The status of the TelemetryRouter destination, possible values: Possible values are: `reconciling`, `active`, `deleting`.
+     *
+     * @deprecated status is deprecated and will be removed after February 2027.
      */
     declare public /*out*/ readonly status: pulumi.Output<string>;
 
@@ -179,6 +181,8 @@ export interface TelemetryrouterDestinationState {
     region?: pulumi.Input<string | undefined>;
     /**
      * The status of the TelemetryRouter destination, possible values: Possible values are: `reconciling`, `active`, `deleting`.
+     *
+     * @deprecated status is deprecated and will be removed after February 2027.
      */
     status?: pulumi.Input<string | undefined>;
 }

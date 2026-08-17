@@ -18,6 +18,10 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly Outputs.SkeClusterExtensionsAcl? Acl;
         /// <summary>
+        /// Application Load Balancer extension.
+        /// </summary>
+        public readonly Outputs.SkeClusterExtensionsApplicationLoadBalancer? ApplicationLoadBalancer;
+        /// <summary>
         /// A single argus block as defined below. This field is deprecated and will be removed 06 January 2026.
         /// </summary>
         public readonly Outputs.SkeClusterExtensionsArgus? Argus;
@@ -34,6 +38,8 @@ namespace Pulumi.Stackit.Outputs
         private SkeClusterExtensions(
             Outputs.SkeClusterExtensionsAcl? acl,
 
+            Outputs.SkeClusterExtensionsApplicationLoadBalancer? applicationLoadBalancer,
+
             Outputs.SkeClusterExtensionsArgus? argus,
 
             Outputs.SkeClusterExtensionsDns? dns,
@@ -41,6 +47,7 @@ namespace Pulumi.Stackit.Outputs
             Outputs.SkeClusterExtensionsObservability? observability)
         {
             Acl = acl;
+            ApplicationLoadBalancer = applicationLoadBalancer;
             Argus = argus;
             Dns = dns;
             Observability = observability;

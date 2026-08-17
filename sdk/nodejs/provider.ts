@@ -34,6 +34,10 @@ export class Provider extends pulumi.ProviderResource {
      */
     declare public readonly albCustomEndpoint: pulumi.Output<string | undefined>;
     /**
+     * Custom endpoint for the Application Load Balancer Web Application Firewall service
+     */
+    declare public readonly albWafCustomEndpoint: pulumi.Output<string | undefined>;
+    /**
      * Custom endpoint for the Membership service
      */
     declare public readonly authorizationCustomEndpoint: pulumi.Output<string | undefined>;
@@ -94,6 +98,10 @@ export class Provider extends pulumi.ProviderResource {
      */
     declare public readonly mariadbCustomEndpoint: pulumi.Output<string | undefined>;
     /**
+     * Custom endpoint for the AI Model Experiments service
+     */
+    declare public readonly modelexperimentsCustomEndpoint: pulumi.Output<string | undefined>;
+    /**
      * Custom endpoint for the AI Model Serving service
      */
     declare public readonly modelservingCustomEndpoint: pulumi.Output<string | undefined>;
@@ -141,12 +149,6 @@ export class Provider extends pulumi.ProviderResource {
      * Custom endpoint for the Redis service
      */
     declare public readonly redisCustomEndpoint: pulumi.Output<string | undefined>;
-    /**
-     * Region will be used as the default location for regional services. Not all services require a region, some are global
-     *
-     * @deprecated This attribute is deprecated. Use 'default_region' instead
-     */
-    declare public readonly region: pulumi.Output<string | undefined>;
     /**
      * Custom endpoint for the Resource Manager service
      */
@@ -243,6 +245,7 @@ export class Provider extends pulumi.ProviderResource {
         {
             resourceInputs["albCertificatesCustomEndpoint"] = args?.albCertificatesCustomEndpoint;
             resourceInputs["albCustomEndpoint"] = args?.albCustomEndpoint;
+            resourceInputs["albWafCustomEndpoint"] = args?.albWafCustomEndpoint;
             resourceInputs["authorizationCustomEndpoint"] = args?.authorizationCustomEndpoint;
             resourceInputs["cdnCustomEndpoint"] = args?.cdnCustomEndpoint;
             resourceInputs["credentialsPath"] = args?.credentialsPath;
@@ -260,6 +263,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["logmeCustomEndpoint"] = args?.logmeCustomEndpoint;
             resourceInputs["logsCustomEndpoint"] = args?.logsCustomEndpoint;
             resourceInputs["mariadbCustomEndpoint"] = args?.mariadbCustomEndpoint;
+            resourceInputs["modelexperimentsCustomEndpoint"] = args?.modelexperimentsCustomEndpoint;
             resourceInputs["modelservingCustomEndpoint"] = args?.modelservingCustomEndpoint;
             resourceInputs["mongodbflexCustomEndpoint"] = args?.mongodbflexCustomEndpoint;
             resourceInputs["objectstorageCustomEndpoint"] = args?.objectstorageCustomEndpoint;
@@ -272,7 +276,6 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["privateKeyPath"] = args?.privateKeyPath;
             resourceInputs["rabbitmqCustomEndpoint"] = args?.rabbitmqCustomEndpoint;
             resourceInputs["redisCustomEndpoint"] = args?.redisCustomEndpoint;
-            resourceInputs["region"] = args?.region;
             resourceInputs["resourcemanagerCustomEndpoint"] = args?.resourcemanagerCustomEndpoint;
             resourceInputs["scfCustomEndpoint"] = args?.scfCustomEndpoint;
             resourceInputs["secretsmanagerCustomEndpoint"] = args?.secretsmanagerCustomEndpoint;
@@ -321,6 +324,10 @@ export interface ProviderArgs {
      * Custom endpoint for the Application Load Balancer service
      */
     albCustomEndpoint?: pulumi.Input<string | undefined>;
+    /**
+     * Custom endpoint for the Application Load Balancer Web Application Firewall service
+     */
+    albWafCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Custom endpoint for the Membership service
      */
@@ -390,6 +397,10 @@ export interface ProviderArgs {
      */
     mariadbCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
+     * Custom endpoint for the AI Model Experiments service
+     */
+    modelexperimentsCustomEndpoint?: pulumi.Input<string | undefined>;
+    /**
      * Custom endpoint for the AI Model Serving service
      */
     modelservingCustomEndpoint?: pulumi.Input<string | undefined>;
@@ -437,12 +448,6 @@ export interface ProviderArgs {
      * Custom endpoint for the Redis service
      */
     redisCustomEndpoint?: pulumi.Input<string | undefined>;
-    /**
-     * Region will be used as the default location for regional services. Not all services require a region, some are global
-     *
-     * @deprecated This attribute is deprecated. Use 'default_region' instead
-     */
-    region?: pulumi.Input<string | undefined>;
     /**
      * Custom endpoint for the Resource Manager service
      */

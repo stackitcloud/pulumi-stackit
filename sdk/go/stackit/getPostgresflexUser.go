@@ -38,12 +38,14 @@ type LookupPostgresflexUserArgs struct {
 
 // A collection of values returned by getPostgresflexUser.
 type LookupPostgresflexUserResult struct {
+	// Deprecated: host is deprecated and will be removed after February 2027. The host can be retrieved from the instance `connection_info.write.host`.
 	Host string `pulumi:"host"`
 	// Terraform's internal data source. ID. It is structured as "`projectId`,`region`,`instanceId`,`userId`".
 	Id string `pulumi:"id"`
 	// ID of the PostgresFlex instance.
 	InstanceId string `pulumi:"instanceId"`
-	Port       int    `pulumi:"port"`
+	// Deprecated: port is deprecated and will be removed after February 2027. The port can be retrieved from the instance `connection_info.write.port`.
+	Port int `pulumi:"port"`
 	// STACKIT project ID to which the instance is associated.
 	ProjectId string `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
@@ -94,6 +96,7 @@ func (o LookupPostgresflexUserResultOutput) ToLookupPostgresflexUserResultOutput
 	return o
 }
 
+// Deprecated: host is deprecated and will be removed after February 2027. The host can be retrieved from the instance `connection_info.write.host`.
 func (o LookupPostgresflexUserResultOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresflexUserResult) string { return v.Host }).(pulumi.StringOutput)
 }
@@ -108,6 +111,7 @@ func (o LookupPostgresflexUserResultOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPostgresflexUserResult) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
+// Deprecated: port is deprecated and will be removed after February 2027. The port can be retrieved from the instance `connection_info.write.port`.
 func (o LookupPostgresflexUserResultOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupPostgresflexUserResult) int { return v.Port }).(pulumi.IntOutput)
 }

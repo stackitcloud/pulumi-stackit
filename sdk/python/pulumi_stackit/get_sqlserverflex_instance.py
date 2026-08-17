@@ -28,7 +28,7 @@ class GetSqlserverflexInstanceResult:
     """
     A collection of values returned by getSqlserverflexInstance.
     """
-    def __init__(__self__, acls=None, backup_schedule=None, edition=None, flavor=None, flavor_id=None, id=None, instance_id=None, name=None, network=None, options=None, project_id=None, region=None, replicas=None, retention_days=None, storage=None, version=None):
+    def __init__(__self__, acls=None, backup_schedule=None, edition=None, encryption=None, flavor=None, flavor_id=None, id=None, instance_id=None, name=None, network=None, options=None, project_id=None, region=None, replicas=None, retention_days=None, storage=None, version=None):
         if acls and not isinstance(acls, list):
             raise TypeError("Expected argument 'acls' to be a list")
         pulumi.set(__self__, "acls", acls)
@@ -38,6 +38,9 @@ class GetSqlserverflexInstanceResult:
         if edition and not isinstance(edition, str):
             raise TypeError("Expected argument 'edition' to be a str")
         pulumi.set(__self__, "edition", edition)
+        if encryption and not isinstance(encryption, dict):
+            raise TypeError("Expected argument 'encryption' to be a dict")
+        pulumi.set(__self__, "encryption", encryption)
         if flavor and not isinstance(flavor, dict):
             raise TypeError("Expected argument 'flavor' to be a dict")
         pulumi.set(__self__, "flavor", flavor)
@@ -80,6 +83,7 @@ class GetSqlserverflexInstanceResult:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""acl is deprecated and will be removed after February 2027. Use instead `network.acl`.""")
     def acls(self) -> Sequence[_builtins.str]:
         """
         The Access Control List (ACL) for the SQLServer Flex instance.
@@ -104,6 +108,15 @@ class GetSqlserverflexInstanceResult:
 
     @_builtins.property
     @pulumi.getter
+    def encryption(self) -> 'outputs.GetSqlserverflexInstanceEncryptionResult':
+        """
+        Parameter to define which key to use for storage encryption.
+        """
+        return pulumi.get(self, "encryption")
+
+    @_builtins.property
+    @pulumi.getter
+    @_utilities.deprecated("""flavor is deprecated and will be removed after February 2027. Use instead `flavor_id`. You can list available flavors using the datasource `get_sqlserverflex_flavors`.""")
     def flavor(self) -> 'outputs.GetSqlserverflexInstanceFlavorResult':
         return pulumi.get(self, "flavor")
 
@@ -149,6 +162,7 @@ class GetSqlserverflexInstanceResult:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""option is deprecated and will be removed after February 2027.""")
     def options(self) -> 'outputs.GetSqlserverflexInstanceOptionsResult':
         """
         Custom parameters for the SQLServer Flex instance.
@@ -204,6 +218,7 @@ class AwaitableGetSqlserverflexInstanceResult(GetSqlserverflexInstanceResult):
             acls=self.acls,
             backup_schedule=self.backup_schedule,
             edition=self.edition,
+            encryption=self.encryption,
             flavor=self.flavor,
             flavor_id=self.flavor_id,
             id=self.id,
@@ -247,6 +262,7 @@ def get_sqlserverflex_instance(instance_id: Optional[_builtins.str] = None,
         acls=pulumi.get(__ret__, 'acls'),
         backup_schedule=pulumi.get(__ret__, 'backup_schedule'),
         edition=pulumi.get(__ret__, 'edition'),
+        encryption=pulumi.get(__ret__, 'encryption'),
         flavor=pulumi.get(__ret__, 'flavor'),
         flavor_id=pulumi.get(__ret__, 'flavor_id'),
         id=pulumi.get(__ret__, 'id'),
@@ -287,6 +303,7 @@ def get_sqlserverflex_instance_output(instance_id: pulumi.Input[Optional[_builti
         acls=pulumi.get(__response__, 'acls'),
         backup_schedule=pulumi.get(__response__, 'backup_schedule'),
         edition=pulumi.get(__response__, 'edition'),
+        encryption=pulumi.get(__response__, 'encryption'),
         flavor=pulumi.get(__response__, 'flavor'),
         flavor_id=pulumi.get(__response__, 'flavor_id'),
         id=pulumi.get(__response__, 'id'),

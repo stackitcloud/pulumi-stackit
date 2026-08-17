@@ -33,6 +33,8 @@ type MariadbCredential struct {
 	Port       pulumi.IntOutput    `pulumi:"port"`
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringOutput `pulumi:"region"`
 	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
 	RotateWhenChanged pulumi.StringMapOutput `pulumi:"rotateWhenChanged"`
 	Uri               pulumi.StringOutput    `pulumi:"uri"`
@@ -91,6 +93,8 @@ type mariadbCredentialState struct {
 	Port       *int    `pulumi:"port"`
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId *string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
 	RotateWhenChanged map[string]string `pulumi:"rotateWhenChanged"`
 	Uri               *string           `pulumi:"uri"`
@@ -109,6 +113,8 @@ type MariadbCredentialState struct {
 	Port       pulumi.IntPtrInput
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId pulumi.StringPtrInput
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput
 	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
 	RotateWhenChanged pulumi.StringMapInput
 	Uri               pulumi.StringPtrInput
@@ -124,6 +130,8 @@ type mariadbCredentialArgs struct {
 	InstanceId string `pulumi:"instanceId"`
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
 	RotateWhenChanged map[string]string `pulumi:"rotateWhenChanged"`
 }
@@ -134,6 +142,8 @@ type MariadbCredentialArgs struct {
 	InstanceId pulumi.StringInput
 	// STACKIT Project ID to which the instance is associated.
 	ProjectId pulumi.StringInput
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput
 	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
 	RotateWhenChanged pulumi.StringMapInput
 }
@@ -258,6 +268,11 @@ func (o MariadbCredentialOutput) Port() pulumi.IntOutput {
 // STACKIT Project ID to which the instance is associated.
 func (o MariadbCredentialOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *MariadbCredential) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The resource region. If not defined, the provider region is used.
+func (o MariadbCredentialOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *MariadbCredential) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.

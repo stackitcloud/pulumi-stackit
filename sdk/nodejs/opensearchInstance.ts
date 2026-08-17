@@ -73,6 +73,10 @@ export class OpensearchInstance extends pulumi.CustomResource {
      */
     declare public readonly projectId: pulumi.Output<string>;
     /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    declare public readonly region: pulumi.Output<string>;
+    /**
      * The service version.
      */
     declare public readonly version: pulumi.Output<string>;
@@ -101,6 +105,7 @@ export class OpensearchInstance extends pulumi.CustomResource {
             resourceInputs["planId"] = state?.planId;
             resourceInputs["planName"] = state?.planName;
             resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
             resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as OpensearchInstanceArgs | undefined;
@@ -117,6 +122,7 @@ export class OpensearchInstance extends pulumi.CustomResource {
             resourceInputs["parameters"] = args?.parameters;
             resourceInputs["planName"] = args?.planName;
             resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
             resourceInputs["version"] = args?.version;
             resourceInputs["cfGuid"] = undefined /*out*/;
             resourceInputs["cfOrganizationGuid"] = undefined /*out*/;
@@ -165,6 +171,10 @@ export interface OpensearchInstanceState {
      */
     projectId?: pulumi.Input<string | undefined>;
     /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string | undefined>;
+    /**
      * The service version.
      */
     version?: pulumi.Input<string | undefined>;
@@ -190,6 +200,10 @@ export interface OpensearchInstanceArgs {
      * STACKIT project ID to which the instance is associated.
      */
     projectId: pulumi.Input<string>;
+    /**
+     * The resource region. If not defined, the provider region is used.
+     */
+    region?: pulumi.Input<string | undefined>;
     /**
      * The service version.
      */

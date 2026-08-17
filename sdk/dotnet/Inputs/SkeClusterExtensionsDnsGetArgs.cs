@@ -18,6 +18,12 @@ namespace Pulumi.Stackit.Inputs
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 
+        /// <summary>
+        /// Enables Gateway API support for ExternalDNS. The CRDs must be installed by the user. Once installed, ExternalDNS will be configured at the next cluster reconcile.
+        /// </summary>
+        [Input("gatewayApi")]
+        public Input<bool>? GatewayApi { get; set; }
+
         [Input("zones")]
         private InputList<string>? _zones;
 

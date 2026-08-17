@@ -49,6 +49,8 @@ export interface GetSqlserverflexInstanceArgs {
 export interface GetSqlserverflexInstanceResult {
     /**
      * The Access Control List (ACL) for the SQLServer Flex instance.
+     *
+     * @deprecated acl is deprecated and will be removed after February 2027. Use instead `network.acl`.
      */
     readonly acls: string[];
     /**
@@ -59,6 +61,13 @@ export interface GetSqlserverflexInstanceResult {
      * Edition of the MSSQL server instance.
      */
     readonly edition: string;
+    /**
+     * Parameter to define which key to use for storage encryption.
+     */
+    readonly encryption: outputs.GetSqlserverflexInstanceEncryption;
+    /**
+     * @deprecated flavor is deprecated and will be removed after February 2027. Use instead `flavorId`. You can list available flavors using the datasource `stackit.getSqlserverflexFlavors`.
+     */
     readonly flavor: outputs.GetSqlserverflexInstanceFlavor;
     /**
      * The flavor ID of the SQLServer Flex instance.
@@ -82,6 +91,8 @@ export interface GetSqlserverflexInstanceResult {
     readonly network?: outputs.GetSqlserverflexInstanceNetwork;
     /**
      * Custom parameters for the SQLServer Flex instance.
+     *
+     * @deprecated option is deprecated and will be removed after February 2027.
      */
     readonly options: outputs.GetSqlserverflexInstanceOptions;
     /**

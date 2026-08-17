@@ -57,6 +57,7 @@ class GetPostgresflexUserResult:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""host is deprecated and will be removed after February 2027. The host can be retrieved from the instance `connection_info.write.host`.""")
     def host(self) -> _builtins.str:
         return pulumi.get(self, "host")
 
@@ -78,6 +79,7 @@ class GetPostgresflexUserResult:
 
     @_builtins.property
     @pulumi.getter
+    @_utilities.deprecated("""port is deprecated and will be removed after February 2027. The port can be retrieved from the instance `connection_info.write.port`.""")
     def port(self) -> _builtins.int:
         return pulumi.get(self, "port")
 

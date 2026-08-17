@@ -41,12 +41,18 @@ export class PostgresflexUser extends pulumi.CustomResource {
         return obj['__pulumiType'] === PostgresflexUser.__pulumiType;
     }
 
+    /**
+     * @deprecated host is deprecated and will be removed after February 2027. The host can be retrieved from the instance in `connection_info.write.host`.
+     */
     declare public /*out*/ readonly host: pulumi.Output<string>;
     /**
      * ID of the PostgresFlex instance.
      */
     declare public readonly instanceId: pulumi.Output<string>;
     declare public /*out*/ readonly password: pulumi.Output<string>;
+    /**
+     * @deprecated port is deprecated and will be removed after February 2027. The port can be retrieved from the instance in `connection_info.write.port`.
+     */
     declare public /*out*/ readonly port: pulumi.Output<number>;
     /**
      * STACKIT project ID to which the instance is associated.
@@ -64,6 +70,9 @@ export class PostgresflexUser extends pulumi.CustomResource {
      * A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
      */
     declare public readonly rotateWhenChanged: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
+     * @deprecated uri is deprecated and will be removed after February 2027.
+     */
     declare public /*out*/ readonly uri: pulumi.Output<string>;
     /**
      * User ID.
@@ -132,12 +141,18 @@ export class PostgresflexUser extends pulumi.CustomResource {
  * Input properties used for looking up and filtering PostgresflexUser resources.
  */
 export interface PostgresflexUserState {
+    /**
+     * @deprecated host is deprecated and will be removed after February 2027. The host can be retrieved from the instance in `connection_info.write.host`.
+     */
     host?: pulumi.Input<string | undefined>;
     /**
      * ID of the PostgresFlex instance.
      */
     instanceId?: pulumi.Input<string | undefined>;
     password?: pulumi.Input<string | undefined>;
+    /**
+     * @deprecated port is deprecated and will be removed after February 2027. The port can be retrieved from the instance in `connection_info.write.port`.
+     */
     port?: pulumi.Input<number | undefined>;
     /**
      * STACKIT project ID to which the instance is associated.
@@ -155,6 +170,9 @@ export interface PostgresflexUserState {
      * A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
      */
     rotateWhenChanged?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * @deprecated uri is deprecated and will be removed after February 2027.
+     */
     uri?: pulumi.Input<string | undefined>;
     /**
      * User ID.

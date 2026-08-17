@@ -22,8 +22,13 @@ import (
 type Telemetrylink struct {
 	pulumi.CustomResourceState
 
-	// The access token of the Telemetry Router instance.
+	// The access token of the Telemetry Router instance. Write-only argument `accessTokenWo` should be preferred.
 	AccessToken pulumi.StringPtrOutput `pulumi:"accessToken"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The access token of the Telemetry Router instance. Write-only - never stored in state and never returned by the API. To rotate the token, update this value AND increment `accessTokenWoVersion`. Changing this field alone will NOT trigger an update.
+	AccessTokenWo pulumi.StringPtrOutput `pulumi:"accessTokenWo"`
+	// User-managed rotation counter for `accessTokenWo`. Must be incremented every time `accessTokenWo` is changed. Terraform diffs this field to detect token rotations - changing `accessTokenWo` alone will NOT trigger an update because it is write-only and never stored in state.
+	AccessTokenWoVersion pulumi.IntPtrOutput `pulumi:"accessTokenWoVersion"`
 	// The time the Telemetry Link was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The description of the Telemetry Link resource.
@@ -37,6 +42,8 @@ type Telemetrylink struct {
 	// The resource type of the TelemetryLink resource, possible values: Possible values are: `organization`, `folder`, `project`.
 	ResourceType pulumi.StringOutput `pulumi:"resourceType"`
 	// The status of the TelemetryLink, possible values: Possible values are: `active`, `inactive`, `failed`, `reconciling`, `deleting`.
+	//
+	// Deprecated: status is deprecated and will be removed after February 2027.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The Telemetry Router ID.
 	TelemetryRouterId pulumi.StringOutput `pulumi:"telemetryRouterId"`
@@ -64,8 +71,12 @@ func NewTelemetrylink(ctx *pulumi.Context,
 	if args.AccessToken != nil {
 		args.AccessToken = pulumi.ToSecret(args.AccessToken).(pulumi.StringPtrInput)
 	}
+	if args.AccessTokenWo != nil {
+		args.AccessTokenWo = pulumi.ToSecret(args.AccessTokenWo).(pulumi.StringPtrInput)
+	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"accessToken",
+		"accessTokenWo",
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
@@ -91,8 +102,13 @@ func GetTelemetrylink(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Telemetrylink resources.
 type telemetrylinkState struct {
-	// The access token of the Telemetry Router instance.
+	// The access token of the Telemetry Router instance. Write-only argument `accessTokenWo` should be preferred.
 	AccessToken *string `pulumi:"accessToken"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The access token of the Telemetry Router instance. Write-only - never stored in state and never returned by the API. To rotate the token, update this value AND increment `accessTokenWoVersion`. Changing this field alone will NOT trigger an update.
+	AccessTokenWo *string `pulumi:"accessTokenWo"`
+	// User-managed rotation counter for `accessTokenWo`. Must be incremented every time `accessTokenWo` is changed. Terraform diffs this field to detect token rotations - changing `accessTokenWo` alone will NOT trigger an update because it is write-only and never stored in state.
+	AccessTokenWoVersion *int `pulumi:"accessTokenWoVersion"`
 	// The time the Telemetry Link was created.
 	CreateTime *string `pulumi:"createTime"`
 	// The description of the Telemetry Link resource.
@@ -106,14 +122,21 @@ type telemetrylinkState struct {
 	// The resource type of the TelemetryLink resource, possible values: Possible values are: `organization`, `folder`, `project`.
 	ResourceType *string `pulumi:"resourceType"`
 	// The status of the TelemetryLink, possible values: Possible values are: `active`, `inactive`, `failed`, `reconciling`, `deleting`.
+	//
+	// Deprecated: status is deprecated and will be removed after February 2027.
 	Status *string `pulumi:"status"`
 	// The Telemetry Router ID.
 	TelemetryRouterId *string `pulumi:"telemetryRouterId"`
 }
 
 type TelemetrylinkState struct {
-	// The access token of the Telemetry Router instance.
+	// The access token of the Telemetry Router instance. Write-only argument `accessTokenWo` should be preferred.
 	AccessToken pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The access token of the Telemetry Router instance. Write-only - never stored in state and never returned by the API. To rotate the token, update this value AND increment `accessTokenWoVersion`. Changing this field alone will NOT trigger an update.
+	AccessTokenWo pulumi.StringPtrInput
+	// User-managed rotation counter for `accessTokenWo`. Must be incremented every time `accessTokenWo` is changed. Terraform diffs this field to detect token rotations - changing `accessTokenWo` alone will NOT trigger an update because it is write-only and never stored in state.
+	AccessTokenWoVersion pulumi.IntPtrInput
 	// The time the Telemetry Link was created.
 	CreateTime pulumi.StringPtrInput
 	// The description of the Telemetry Link resource.
@@ -127,6 +150,8 @@ type TelemetrylinkState struct {
 	// The resource type of the TelemetryLink resource, possible values: Possible values are: `organization`, `folder`, `project`.
 	ResourceType pulumi.StringPtrInput
 	// The status of the TelemetryLink, possible values: Possible values are: `active`, `inactive`, `failed`, `reconciling`, `deleting`.
+	//
+	// Deprecated: status is deprecated and will be removed after February 2027.
 	Status pulumi.StringPtrInput
 	// The Telemetry Router ID.
 	TelemetryRouterId pulumi.StringPtrInput
@@ -137,8 +162,13 @@ func (TelemetrylinkState) ElementType() reflect.Type {
 }
 
 type telemetrylinkArgs struct {
-	// The access token of the Telemetry Router instance.
+	// The access token of the Telemetry Router instance. Write-only argument `accessTokenWo` should be preferred.
 	AccessToken *string `pulumi:"accessToken"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The access token of the Telemetry Router instance. Write-only - never stored in state and never returned by the API. To rotate the token, update this value AND increment `accessTokenWoVersion`. Changing this field alone will NOT trigger an update.
+	AccessTokenWo *string `pulumi:"accessTokenWo"`
+	// User-managed rotation counter for `accessTokenWo`. Must be incremented every time `accessTokenWo` is changed. Terraform diffs this field to detect token rotations - changing `accessTokenWo` alone will NOT trigger an update because it is write-only and never stored in state.
+	AccessTokenWoVersion *int `pulumi:"accessTokenWoVersion"`
 	// The description of the Telemetry Link resource.
 	Description *string `pulumi:"description"`
 	// The displayed name of the Telemetry Link resource.
@@ -155,8 +185,13 @@ type telemetrylinkArgs struct {
 
 // The set of arguments for constructing a Telemetrylink resource.
 type TelemetrylinkArgs struct {
-	// The access token of the Telemetry Router instance.
+	// The access token of the Telemetry Router instance. Write-only argument `accessTokenWo` should be preferred.
 	AccessToken pulumi.StringPtrInput
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// The access token of the Telemetry Router instance. Write-only - never stored in state and never returned by the API. To rotate the token, update this value AND increment `accessTokenWoVersion`. Changing this field alone will NOT trigger an update.
+	AccessTokenWo pulumi.StringPtrInput
+	// User-managed rotation counter for `accessTokenWo`. Must be incremented every time `accessTokenWo` is changed. Terraform diffs this field to detect token rotations - changing `accessTokenWo` alone will NOT trigger an update because it is write-only and never stored in state.
+	AccessTokenWoVersion pulumi.IntPtrInput
 	// The description of the Telemetry Link resource.
 	Description pulumi.StringPtrInput
 	// The displayed name of the Telemetry Link resource.
@@ -258,9 +293,20 @@ func (o TelemetrylinkOutput) ToTelemetrylinkOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The access token of the Telemetry Router instance.
+// The access token of the Telemetry Router instance. Write-only argument `accessTokenWo` should be preferred.
 func (o TelemetrylinkOutput) AccessToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Telemetrylink) pulumi.StringPtrOutput { return v.AccessToken }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// The access token of the Telemetry Router instance. Write-only - never stored in state and never returned by the API. To rotate the token, update this value AND increment `accessTokenWoVersion`. Changing this field alone will NOT trigger an update.
+func (o TelemetrylinkOutput) AccessTokenWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Telemetrylink) pulumi.StringPtrOutput { return v.AccessTokenWo }).(pulumi.StringPtrOutput)
+}
+
+// User-managed rotation counter for `accessTokenWo`. Must be incremented every time `accessTokenWo` is changed. Terraform diffs this field to detect token rotations - changing `accessTokenWo` alone will NOT trigger an update because it is write-only and never stored in state.
+func (o TelemetrylinkOutput) AccessTokenWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Telemetrylink) pulumi.IntPtrOutput { return v.AccessTokenWoVersion }).(pulumi.IntPtrOutput)
 }
 
 // The time the Telemetry Link was created.
@@ -294,6 +340,8 @@ func (o TelemetrylinkOutput) ResourceType() pulumi.StringOutput {
 }
 
 // The status of the TelemetryLink, possible values: Possible values are: `active`, `inactive`, `failed`, `reconciling`, `deleting`.
+//
+// Deprecated: status is deprecated and will be removed after February 2027.
 func (o TelemetrylinkOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Telemetrylink) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

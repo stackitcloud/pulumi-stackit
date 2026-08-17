@@ -22,11 +22,13 @@ import (
 type PostgresflexUser struct {
 	pulumi.CustomResourceState
 
+	// Deprecated: host is deprecated and will be removed after February 2027. The host can be retrieved from the instance in `connection_info.write.host`.
 	Host pulumi.StringOutput `pulumi:"host"`
 	// ID of the PostgresFlex instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	Password   pulumi.StringOutput `pulumi:"password"`
-	Port       pulumi.IntOutput    `pulumi:"port"`
+	// Deprecated: port is deprecated and will be removed after February 2027. The port can be retrieved from the instance in `connection_info.write.port`.
+	Port pulumi.IntOutput `pulumi:"port"`
 	// STACKIT project ID to which the instance is associated.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
@@ -35,7 +37,8 @@ type PostgresflexUser struct {
 	Roles pulumi.StringArrayOutput `pulumi:"roles"`
 	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
 	RotateWhenChanged pulumi.StringMapOutput `pulumi:"rotateWhenChanged"`
-	Uri               pulumi.StringOutput    `pulumi:"uri"`
+	// Deprecated: uri is deprecated and will be removed after February 2027.
+	Uri pulumi.StringOutput `pulumi:"uri"`
 	// User ID.
 	UserId   pulumi.StringOutput `pulumi:"userId"`
 	Username pulumi.StringOutput `pulumi:"username"`
@@ -88,11 +91,13 @@ func GetPostgresflexUser(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PostgresflexUser resources.
 type postgresflexUserState struct {
+	// Deprecated: host is deprecated and will be removed after February 2027. The host can be retrieved from the instance in `connection_info.write.host`.
 	Host *string `pulumi:"host"`
 	// ID of the PostgresFlex instance.
 	InstanceId *string `pulumi:"instanceId"`
 	Password   *string `pulumi:"password"`
-	Port       *int    `pulumi:"port"`
+	// Deprecated: port is deprecated and will be removed after February 2027. The port can be retrieved from the instance in `connection_info.write.port`.
+	Port *int `pulumi:"port"`
 	// STACKIT project ID to which the instance is associated.
 	ProjectId *string `pulumi:"projectId"`
 	// The resource region. If not defined, the provider region is used.
@@ -101,18 +106,21 @@ type postgresflexUserState struct {
 	Roles []string `pulumi:"roles"`
 	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
 	RotateWhenChanged map[string]string `pulumi:"rotateWhenChanged"`
-	Uri               *string           `pulumi:"uri"`
+	// Deprecated: uri is deprecated and will be removed after February 2027.
+	Uri *string `pulumi:"uri"`
 	// User ID.
 	UserId   *string `pulumi:"userId"`
 	Username *string `pulumi:"username"`
 }
 
 type PostgresflexUserState struct {
+	// Deprecated: host is deprecated and will be removed after February 2027. The host can be retrieved from the instance in `connection_info.write.host`.
 	Host pulumi.StringPtrInput
 	// ID of the PostgresFlex instance.
 	InstanceId pulumi.StringPtrInput
 	Password   pulumi.StringPtrInput
-	Port       pulumi.IntPtrInput
+	// Deprecated: port is deprecated and will be removed after February 2027. The port can be retrieved from the instance in `connection_info.write.port`.
+	Port pulumi.IntPtrInput
 	// STACKIT project ID to which the instance is associated.
 	ProjectId pulumi.StringPtrInput
 	// The resource region. If not defined, the provider region is used.
@@ -121,7 +129,8 @@ type PostgresflexUserState struct {
 	Roles pulumi.StringArrayInput
 	// A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
 	RotateWhenChanged pulumi.StringMapInput
-	Uri               pulumi.StringPtrInput
+	// Deprecated: uri is deprecated and will be removed after February 2027.
+	Uri pulumi.StringPtrInput
 	// User ID.
 	UserId   pulumi.StringPtrInput
 	Username pulumi.StringPtrInput
@@ -247,6 +256,7 @@ func (o PostgresflexUserOutput) ToPostgresflexUserOutputWithContext(ctx context.
 	return o
 }
 
+// Deprecated: host is deprecated and will be removed after February 2027. The host can be retrieved from the instance in `connection_info.write.host`.
 func (o PostgresflexUserOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresflexUser) pulumi.StringOutput { return v.Host }).(pulumi.StringOutput)
 }
@@ -260,6 +270,7 @@ func (o PostgresflexUserOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresflexUser) pulumi.StringOutput { return v.Password }).(pulumi.StringOutput)
 }
 
+// Deprecated: port is deprecated and will be removed after February 2027. The port can be retrieved from the instance in `connection_info.write.port`.
 func (o PostgresflexUserOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v *PostgresflexUser) pulumi.IntOutput { return v.Port }).(pulumi.IntOutput)
 }
@@ -284,6 +295,7 @@ func (o PostgresflexUserOutput) RotateWhenChanged() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *PostgresflexUser) pulumi.StringMapOutput { return v.RotateWhenChanged }).(pulumi.StringMapOutput)
 }
 
+// Deprecated: uri is deprecated and will be removed after February 2027.
 func (o PostgresflexUserOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v *PostgresflexUser) pulumi.StringOutput { return v.Uri }).(pulumi.StringOutput)
 }

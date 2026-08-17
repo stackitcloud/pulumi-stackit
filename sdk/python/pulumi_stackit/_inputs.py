@@ -15,6 +15,20 @@ else:
 from . import _utilities
 
 __all__ = [
+    'AlbWafCustomRuleGroupRuleArgs',
+    'AlbWafCustomRuleGroupRuleArgsDict',
+    'AlbWafCustomRuleGroupRuleBehaviorArgs',
+    'AlbWafCustomRuleGroupRuleBehaviorArgsDict',
+    'AlbWafCustomRuleGroupRuleConditionArgs',
+    'AlbWafCustomRuleGroupRuleConditionArgsDict',
+    'AlbWafCustomRuleGroupRuleConditionOperatorArgs',
+    'AlbWafCustomRuleGroupRuleConditionOperatorArgsDict',
+    'AlbWafCustomRuleGroupRuleConditionVariableArgs',
+    'AlbWafCustomRuleGroupRuleConditionVariableArgsDict',
+    'AlbWafManagedRuleSetGroupsArgs',
+    'AlbWafManagedRuleSetGroupsArgsDict',
+    'AlbWafManagedRuleSetGroupsRulesArgs',
+    'AlbWafManagedRuleSetGroupsRulesArgsDict',
     'ApplicationLoadBalancerErrorArgs',
     'ApplicationLoadBalancerErrorArgsDict',
     'ApplicationLoadBalancerListenerArgs',
@@ -145,8 +159,6 @@ __all__ = [
     'MongodbflexInstanceOptionsArgsDict',
     'MongodbflexInstanceStorageArgs',
     'MongodbflexInstanceStorageArgsDict',
-    'NetworkAreaNetworkRangeArgs',
-    'NetworkAreaNetworkRangeArgsDict',
     'NetworkAreaRegionIpv4Args',
     'NetworkAreaRegionIpv4ArgsDict',
     'NetworkAreaRegionIpv4NetworkRangeArgs',
@@ -183,8 +195,16 @@ __all__ = [
     'ObservabilityScrapeconfigTargetArgsDict',
     'OpensearchInstanceParametersArgs',
     'OpensearchInstanceParametersArgsDict',
+    'PostgresflexInstanceConnectionInfoArgs',
+    'PostgresflexInstanceConnectionInfoArgsDict',
+    'PostgresflexInstanceConnectionInfoWriteArgs',
+    'PostgresflexInstanceConnectionInfoWriteArgsDict',
+    'PostgresflexInstanceEncryptionArgs',
+    'PostgresflexInstanceEncryptionArgsDict',
     'PostgresflexInstanceFlavorArgs',
     'PostgresflexInstanceFlavorArgsDict',
+    'PostgresflexInstanceNetworkArgs',
+    'PostgresflexInstanceNetworkArgsDict',
     'PostgresflexInstanceStorageArgs',
     'PostgresflexInstanceStorageArgsDict',
     'RabbitmqInstanceParametersArgs',
@@ -219,10 +239,14 @@ __all__ = [
     'SkeClusterAccessArgsDict',
     'SkeClusterAccessIdpArgs',
     'SkeClusterAccessIdpArgsDict',
+    'SkeClusterAuditArgs',
+    'SkeClusterAuditArgsDict',
     'SkeClusterExtensionsArgs',
     'SkeClusterExtensionsArgsDict',
     'SkeClusterExtensionsAclArgs',
     'SkeClusterExtensionsAclArgsDict',
+    'SkeClusterExtensionsApplicationLoadBalancerArgs',
+    'SkeClusterExtensionsApplicationLoadBalancerArgsDict',
     'SkeClusterExtensionsArgusArgs',
     'SkeClusterExtensionsArgusArgsDict',
     'SkeClusterExtensionsDnsArgs',
@@ -241,6 +265,10 @@ __all__ = [
     'SkeClusterNodePoolArgsDict',
     'SkeClusterNodePoolTaintArgs',
     'SkeClusterNodePoolTaintArgsDict',
+    'SqlserverflexDatabaseTimeoutsArgs',
+    'SqlserverflexDatabaseTimeoutsArgsDict',
+    'SqlserverflexInstanceEncryptionArgs',
+    'SqlserverflexInstanceEncryptionArgsDict',
     'SqlserverflexInstanceFlavorArgs',
     'SqlserverflexInstanceFlavorArgsDict',
     'SqlserverflexInstanceNetworkArgs',
@@ -315,6 +343,12 @@ __all__ = [
     'GetDnsZoneTimeoutsArgsDict',
     'GetImageV2FilterArgs',
     'GetImageV2FilterArgsDict',
+    'GetPostgresflexFlavorsTimeoutsArgs',
+    'GetPostgresflexFlavorsTimeoutsArgsDict',
+    'GetSqlserverflexDatabaseTimeoutsArgs',
+    'GetSqlserverflexDatabaseTimeoutsArgsDict',
+    'GetSqlserverflexFlavorsTimeoutsArgs',
+    'GetSqlserverflexFlavorsTimeoutsArgsDict',
     'GetSqlserverflexInstanceNetworkArgs',
     'GetSqlserverflexInstanceNetworkArgsDict',
     'GetVpcNetworkRangeTimeoutsArgs',
@@ -326,6 +360,468 @@ __all__ = [
     'GetVpcTimeoutsArgs',
     'GetVpcTimeoutsArgsDict',
 ]
+
+class AlbWafCustomRuleGroupRuleArgsDict(TypedDict):
+    behavior: pulumi.Input['AlbWafCustomRuleGroupRuleBehaviorArgsDict']
+    conditions: pulumi.Input[Sequence[pulumi.Input['AlbWafCustomRuleGroupRuleConditionArgsDict']]]
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A clear description explaining the threat vector or criteria addressed by this rule.
+    """
+    id: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Backend auto-allocated unique rule ID within the valid 1-99999 threshold.
+    """
+
+@pulumi.input_type
+class AlbWafCustomRuleGroupRuleArgs:
+    def __init__(__self__, *,
+                 behavior: pulumi.Input['AlbWafCustomRuleGroupRuleBehaviorArgs'],
+                 conditions: pulumi.Input[Sequence[pulumi.Input['AlbWafCustomRuleGroupRuleConditionArgs']]],
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 id: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] description: A clear description explaining the threat vector or criteria addressed by this rule.
+        :param pulumi.Input[_builtins.int] id: Backend auto-allocated unique rule ID within the valid 1-99999 threshold.
+        """
+        pulumi.set(__self__, "behavior", behavior)
+        pulumi.set(__self__, "conditions", conditions)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def behavior(self) -> pulumi.Input['AlbWafCustomRuleGroupRuleBehaviorArgs']:
+        return pulumi.get(self, "behavior")
+
+    @behavior.setter
+    def behavior(self, value: pulumi.Input['AlbWafCustomRuleGroupRuleBehaviorArgs']):
+        pulumi.set(self, "behavior", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def conditions(self) -> pulumi.Input[Sequence[pulumi.Input['AlbWafCustomRuleGroupRuleConditionArgs']]]:
+        return pulumi.get(self, "conditions")
+
+    @conditions.setter
+    def conditions(self, value: pulumi.Input[Sequence[pulumi.Input['AlbWafCustomRuleGroupRuleConditionArgs']]]):
+        pulumi.set(self, "conditions", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A clear description explaining the threat vector or criteria addressed by this rule.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Backend auto-allocated unique rule ID within the valid 1-99999 threshold.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "id", value)
+
+
+class AlbWafCustomRuleGroupRuleBehaviorArgsDict(TypedDict):
+    action: pulumi.Input[_builtins.str]
+    """
+    The protective stance action. ACTION_DENY forces a 403 status response code.
+    """
+    log: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Determines whether an entry should be generated in the security ledger upon a rule hit.
+    """
+    log_msg: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Custom notification message string mapped to underlying logdata contexts. Required if log is true.
+    """
+    severity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Severity classification metric used by internal analytics graphs.
+    """
+
+@pulumi.input_type
+class AlbWafCustomRuleGroupRuleBehaviorArgs:
+    def __init__(__self__, *,
+                 action: pulumi.Input[_builtins.str],
+                 log: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_msg: pulumi.Input[Optional[_builtins.str]] = None,
+                 severity: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] action: The protective stance action. ACTION_DENY forces a 403 status response code.
+        :param pulumi.Input[_builtins.bool] log: Determines whether an entry should be generated in the security ledger upon a rule hit.
+        :param pulumi.Input[_builtins.str] log_msg: Custom notification message string mapped to underlying logdata contexts. Required if log is true.
+        :param pulumi.Input[_builtins.str] severity: Severity classification metric used by internal analytics graphs.
+        """
+        pulumi.set(__self__, "action", action)
+        if log is not None:
+            pulumi.set(__self__, "log", log)
+        if log_msg is not None:
+            pulumi.set(__self__, "log_msg", log_msg)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+
+    @_builtins.property
+    @pulumi.getter
+    def action(self) -> pulumi.Input[_builtins.str]:
+        """
+        The protective stance action. ACTION_DENY forces a 403 status response code.
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "action", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def log(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Determines whether an entry should be generated in the security ledger upon a rule hit.
+        """
+        return pulumi.get(self, "log")
+
+    @log.setter
+    def log(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "log", value)
+
+    @_builtins.property
+    @pulumi.getter(name="logMsg")
+    def log_msg(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Custom notification message string mapped to underlying logdata contexts. Required if log is true.
+        """
+        return pulumi.get(self, "log_msg")
+
+    @log_msg.setter
+    def log_msg(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "log_msg", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def severity(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Severity classification metric used by internal analytics graphs.
+        """
+        return pulumi.get(self, "severity")
+
+    @severity.setter
+    def severity(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "severity", value)
+
+
+class AlbWafCustomRuleGroupRuleConditionArgsDict(TypedDict):
+    operator: pulumi.Input['AlbWafCustomRuleGroupRuleConditionOperatorArgsDict']
+    """
+    The comparison logic executed against the transformed variable.
+    """
+    variable: pulumi.Input['AlbWafCustomRuleGroupRuleConditionVariableArgsDict']
+    """
+    The part of the HTTP transaction to inspect.
+    """
+    transformations: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Ordered normalization steps applied before the operator runs.
+    """
+
+@pulumi.input_type
+class AlbWafCustomRuleGroupRuleConditionArgs:
+    def __init__(__self__, *,
+                 operator: pulumi.Input['AlbWafCustomRuleGroupRuleConditionOperatorArgs'],
+                 variable: pulumi.Input['AlbWafCustomRuleGroupRuleConditionVariableArgs'],
+                 transformations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input['AlbWafCustomRuleGroupRuleConditionOperatorArgs'] operator: The comparison logic executed against the transformed variable.
+        :param pulumi.Input['AlbWafCustomRuleGroupRuleConditionVariableArgs'] variable: The part of the HTTP transaction to inspect.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] transformations: Ordered normalization steps applied before the operator runs.
+        """
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "variable", variable)
+        if transformations is not None:
+            pulumi.set(__self__, "transformations", transformations)
+
+    @_builtins.property
+    @pulumi.getter
+    def operator(self) -> pulumi.Input['AlbWafCustomRuleGroupRuleConditionOperatorArgs']:
+        """
+        The comparison logic executed against the transformed variable.
+        """
+        return pulumi.get(self, "operator")
+
+    @operator.setter
+    def operator(self, value: pulumi.Input['AlbWafCustomRuleGroupRuleConditionOperatorArgs']):
+        pulumi.set(self, "operator", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def variable(self) -> pulumi.Input['AlbWafCustomRuleGroupRuleConditionVariableArgs']:
+        """
+        The part of the HTTP transaction to inspect.
+        """
+        return pulumi.get(self, "variable")
+
+    @variable.setter
+    def variable(self, value: pulumi.Input['AlbWafCustomRuleGroupRuleConditionVariableArgs']):
+        pulumi.set(self, "variable", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def transformations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Ordered normalization steps applied before the operator runs.
+        """
+        return pulumi.get(self, "transformations")
+
+    @transformations.setter
+    def transformations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "transformations", value)
+
+
+class AlbWafCustomRuleGroupRuleConditionOperatorArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    The operational evaluation type definition macro.
+    """
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The text or rule regex pattern arguments applied inside the operator execution loop.
+    """
+
+@pulumi.input_type
+class AlbWafCustomRuleGroupRuleConditionOperatorArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] type: The operational evaluation type definition macro.
+        :param pulumi.Input[_builtins.str] value: The text or rule regex pattern arguments applied inside the operator execution loop.
+        """
+        pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        The operational evaluation type definition macro.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The text or rule regex pattern arguments applied inside the operator execution loop.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+class AlbWafCustomRuleGroupRuleConditionVariableArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    The targeted validation engine variable macro.
+    """
+    value: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Optional key element context for map variables (e.g., matching a 'Host' header key).
+    """
+
+@pulumi.input_type
+class AlbWafCustomRuleGroupRuleConditionVariableArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[_builtins.str],
+                 value: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] type: The targeted validation engine variable macro.
+        :param pulumi.Input[_builtins.str] value: Optional key element context for map variables (e.g., matching a 'Host' header key).
+        """
+        pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        The targeted validation engine variable macro.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Optional key element context for map variables (e.g., matching a 'Host' header key).
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "value", value)
+
+
+class AlbWafManagedRuleSetGroupsArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A description of what this group covers.
+    """
+    group_name: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The name for the rule group.
+    """
+    rules: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input['AlbWafManagedRuleSetGroupsRulesArgsDict']]]]]
+    """
+    Rules of the rule group.
+    """
+
+@pulumi.input_type
+class AlbWafManagedRuleSetGroupsArgs:
+    def __init__(__self__, *,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Mapping[str, pulumi.Input['AlbWafManagedRuleSetGroupsRulesArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] description: A description of what this group covers.
+        :param pulumi.Input[_builtins.str] group_name: The name for the rule group.
+        :param pulumi.Input[Mapping[str, pulumi.Input['AlbWafManagedRuleSetGroupsRulesArgs']]] rules: Rules of the rule group.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if group_name is not None:
+            pulumi.set(__self__, "group_name", group_name)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A description of what this group covers.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="groupName")
+    def group_name(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The name for the rule group.
+        """
+        return pulumi.get(self, "group_name")
+
+    @group_name.setter
+    def group_name(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "group_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def rules(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['AlbWafManagedRuleSetGroupsRulesArgs']]]]:
+        """
+        Rules of the rule group.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['AlbWafManagedRuleSetGroupsRulesArgs']]]]):
+        pulumi.set(self, "rules", value)
+
+
+class AlbWafManagedRuleSetGroupsRulesArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A description of what this rule does.
+    """
+    mode: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The current mode of the rule.
+    """
+    severity: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Impact level.
+    """
+
+@pulumi.input_type
+class AlbWafManagedRuleSetGroupsRulesArgs:
+    def __init__(__self__, *,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 mode: pulumi.Input[Optional[_builtins.str]] = None,
+                 severity: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] description: A description of what this rule does.
+        :param pulumi.Input[_builtins.str] mode: The current mode of the rule.
+        :param pulumi.Input[_builtins.str] severity: Impact level.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A description of what this rule does.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The current mode of the rule.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "mode", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def severity(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Impact level.
+        """
+        return pulumi.get(self, "severity")
+
+    @severity.setter
+    def severity(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "severity", value)
+
 
 class ApplicationLoadBalancerErrorArgsDict(TypedDict):
     description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -1826,9 +2322,21 @@ class CdnDistributionConfigArgsDict(TypedDict):
     """
     The configured countries where distribution of content is blocked
     """
+    blocked_ips: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Restricts access to your content by specifying a list of blocked IPv4 addresses. This feature enhances security and privacy by preventing these addresses from accessing your distribution. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state; to clear it explicitly, set it to an empty list.
+    """
+    default_cache_duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Sets the default cache duration for the distribution. The default cache duration is applied when a 'Cache-Control' header is not presented in the origin's response. We use ISO8601 duration format for cache duration (e.g. P1DT2H30M). Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
+    """
     forward_host_header: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
     Enable this allows the 'Host' header to be passed through to the origin.
+    """
+    monthly_limit_bytes: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
     """
     optimizer: NotRequired[pulumi.Input[Optional['CdnDistributionConfigOptimizerArgsDict']]]
     """
@@ -1857,7 +2365,10 @@ class CdnDistributionConfigArgs:
                  backend: pulumi.Input['CdnDistributionConfigBackendArgs'],
                  regions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  blocked_countries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 blocked_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 default_cache_duration: pulumi.Input[Optional[_builtins.str]] = None,
                  forward_host_header: pulumi.Input[Optional[_builtins.bool]] = None,
+                 monthly_limit_bytes: pulumi.Input[Optional[_builtins.int]] = None,
                  optimizer: pulumi.Input[Optional['CdnDistributionConfigOptimizerArgs']] = None,
                  redirects: pulumi.Input[Optional['CdnDistributionConfigRedirectsArgs']] = None,
                  strip_response_cookies: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -1867,7 +2378,10 @@ class CdnDistributionConfigArgs:
         :param pulumi.Input['CdnDistributionConfigBackendArgs'] backend: The configured backend for the distribution
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] regions: The configured regions where content will be hosted
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blocked_countries: The configured countries where distribution of content is blocked
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blocked_ips: Restricts access to your content by specifying a list of blocked IPv4 addresses. This feature enhances security and privacy by preventing these addresses from accessing your distribution. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state; to clear it explicitly, set it to an empty list.
+        :param pulumi.Input[_builtins.str] default_cache_duration: Sets the default cache duration for the distribution. The default cache duration is applied when a 'Cache-Control' header is not presented in the origin's response. We use ISO8601 duration format for cache duration (e.g. P1DT2H30M). Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
         :param pulumi.Input[_builtins.bool] forward_host_header: Enable this allows the 'Host' header to be passed through to the origin.
+        :param pulumi.Input[_builtins.int] monthly_limit_bytes: Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
         :param pulumi.Input['CdnDistributionConfigOptimizerArgs'] optimizer: Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
         :param pulumi.Input['CdnDistributionConfigRedirectsArgs'] redirects: A wrapper for a list of redirect rules that allows for redirect settings on a distribution
         :param pulumi.Input[_builtins.bool] strip_response_cookies: Enable this to prevent origin-level cookies from being forwarded to the end user.
@@ -1878,8 +2392,14 @@ class CdnDistributionConfigArgs:
         pulumi.set(__self__, "regions", regions)
         if blocked_countries is not None:
             pulumi.set(__self__, "blocked_countries", blocked_countries)
+        if blocked_ips is not None:
+            pulumi.set(__self__, "blocked_ips", blocked_ips)
+        if default_cache_duration is not None:
+            pulumi.set(__self__, "default_cache_duration", default_cache_duration)
         if forward_host_header is not None:
             pulumi.set(__self__, "forward_host_header", forward_host_header)
+        if monthly_limit_bytes is not None:
+            pulumi.set(__self__, "monthly_limit_bytes", monthly_limit_bytes)
         if optimizer is not None:
             pulumi.set(__self__, "optimizer", optimizer)
         if redirects is not None:
@@ -1928,6 +2448,30 @@ class CdnDistributionConfigArgs:
         pulumi.set(self, "blocked_countries", value)
 
     @_builtins.property
+    @pulumi.getter(name="blockedIps")
+    def blocked_ips(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Restricts access to your content by specifying a list of blocked IPv4 addresses. This feature enhances security and privacy by preventing these addresses from accessing your distribution. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state; to clear it explicitly, set it to an empty list.
+        """
+        return pulumi.get(self, "blocked_ips")
+
+    @blocked_ips.setter
+    def blocked_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "blocked_ips", value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultCacheDuration")
+    def default_cache_duration(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Sets the default cache duration for the distribution. The default cache duration is applied when a 'Cache-Control' header is not presented in the origin's response. We use ISO8601 duration format for cache duration (e.g. P1DT2H30M). Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
+        """
+        return pulumi.get(self, "default_cache_duration")
+
+    @default_cache_duration.setter
+    def default_cache_duration(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "default_cache_duration", value)
+
+    @_builtins.property
     @pulumi.getter(name="forwardHostHeader")
     def forward_host_header(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
@@ -1938,6 +2482,18 @@ class CdnDistributionConfigArgs:
     @forward_host_header.setter
     def forward_host_header(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "forward_host_header", value)
+
+    @_builtins.property
+    @pulumi.getter(name="monthlyLimitBytes")
+    def monthly_limit_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
+        """
+        return pulumi.get(self, "monthly_limit_bytes")
+
+    @monthly_limit_bytes.setter
+    def monthly_limit_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "monthly_limit_bytes", value)
 
     @_builtins.property
     @pulumi.getter
@@ -5542,55 +6098,6 @@ class MongodbflexInstanceStorageArgs:
         pulumi.set(self, "size", value)
 
 
-class NetworkAreaNetworkRangeArgsDict(TypedDict):
-    prefix: pulumi.Input[_builtins.str]
-    """
-    Classless Inter-Domain Routing (CIDR).
-    """
-    network_range_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
-
-@pulumi.input_type
-class NetworkAreaNetworkRangeArgs:
-    def __init__(__self__, *,
-                 prefix: pulumi.Input[_builtins.str],
-                 network_range_id: pulumi.Input[Optional[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] prefix: Classless Inter-Domain Routing (CIDR).
-        """
-        if prefix is not None:
-            warnings.warn("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""", DeprecationWarning)
-            pulumi.log.warn("""prefix is deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
-        pulumi.set(__self__, "prefix", prefix)
-        if network_range_id is not None:
-            warnings.warn("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""", DeprecationWarning)
-            pulumi.log.warn("""network_range_id is deprecated: Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
-        if network_range_id is not None:
-            pulumi.set(__self__, "network_range_id", network_range_id)
-
-    @_builtins.property
-    @pulumi.getter
-    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
-    def prefix(self) -> pulumi.Input[_builtins.str]:
-        """
-        Classless Inter-Domain Routing (CIDR).
-        """
-        return pulumi.get(self, "prefix")
-
-    @prefix.setter
-    def prefix(self, value: pulumi.Input[_builtins.str]):
-        pulumi.set(self, "prefix", value)
-
-    @_builtins.property
-    @pulumi.getter(name="networkRangeId")
-    @_utilities.deprecated("""Deprecated because of the IaaS API v1 -> v2 migration. Will be removed in May 2026. Use the new `NetworkAreaRegion` resource instead.""")
-    def network_range_id(self) -> pulumi.Input[Optional[_builtins.str]]:
-        return pulumi.get(self, "network_range_id")
-
-    @network_range_id.setter
-    def network_range_id(self, value: pulumi.Input[Optional[_builtins.str]]):
-        pulumi.set(self, "network_range_id", value)
-
-
 class NetworkAreaRegionIpv4ArgsDict(TypedDict):
     network_ranges: pulumi.Input[Sequence[pulumi.Input['NetworkAreaRegionIpv4NetworkRangeArgsDict']]]
     """
@@ -7517,11 +8024,178 @@ class OpensearchInstanceParametersArgs:
         pulumi.set(self, "tls_protocols", value)
 
 
+class PostgresflexInstanceConnectionInfoArgsDict(TypedDict):
+    write: NotRequired[pulumi.Input[Optional['PostgresflexInstanceConnectionInfoWriteArgsDict']]]
+    """
+    The DNS name and port in the instance overview.
+    """
+
+@pulumi.input_type
+class PostgresflexInstanceConnectionInfoArgs:
+    def __init__(__self__, *,
+                 write: pulumi.Input[Optional['PostgresflexInstanceConnectionInfoWriteArgs']] = None):
+        """
+        :param pulumi.Input['PostgresflexInstanceConnectionInfoWriteArgs'] write: The DNS name and port in the instance overview.
+        """
+        if write is not None:
+            pulumi.set(__self__, "write", write)
+
+    @_builtins.property
+    @pulumi.getter
+    def write(self) -> pulumi.Input[Optional['PostgresflexInstanceConnectionInfoWriteArgs']]:
+        """
+        The DNS name and port in the instance overview.
+        """
+        return pulumi.get(self, "write")
+
+    @write.setter
+    def write(self, value: pulumi.Input[Optional['PostgresflexInstanceConnectionInfoWriteArgs']]):
+        pulumi.set(self, "write", value)
+
+
+class PostgresflexInstanceConnectionInfoWriteArgsDict(TypedDict):
+    host: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The host of the instance.
+    """
+    port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The port of the instance.
+    """
+
+@pulumi.input_type
+class PostgresflexInstanceConnectionInfoWriteArgs:
+    def __init__(__self__, *,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.str] host: The host of the instance.
+        :param pulumi.Input[_builtins.int] port: The port of the instance.
+        """
+        if host is not None:
+            pulumi.set(__self__, "host", host)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The host of the instance.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "host", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The port of the instance.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "port", value)
+
+
+class PostgresflexInstanceEncryptionArgsDict(TypedDict):
+    kek_key_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the Key within the STACKIT-KMS to use for the encryption.
+    """
+    kek_key_version: pulumi.Input[_builtins.str]
+    """
+    Version of the key within the STACKIT-KMS to use for the encryption.
+    """
+    kek_keyring_id: pulumi.Input[_builtins.str]
+    """
+    The ID of the keyring where the key is located within the STACKTI-KMS.
+    """
+    service_account: pulumi.Input[_builtins.str]
+    """
+    Service-Account linked to the Key within the STACKIT-KMS.
+    """
+
+@pulumi.input_type
+class PostgresflexInstanceEncryptionArgs:
+    def __init__(__self__, *,
+                 kek_key_id: pulumi.Input[_builtins.str],
+                 kek_key_version: pulumi.Input[_builtins.str],
+                 kek_keyring_id: pulumi.Input[_builtins.str],
+                 service_account: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] kek_key_id: The ID of the Key within the STACKIT-KMS to use for the encryption.
+        :param pulumi.Input[_builtins.str] kek_key_version: Version of the key within the STACKIT-KMS to use for the encryption.
+        :param pulumi.Input[_builtins.str] kek_keyring_id: The ID of the keyring where the key is located within the STACKTI-KMS.
+        :param pulumi.Input[_builtins.str] service_account: Service-Account linked to the Key within the STACKIT-KMS.
+        """
+        pulumi.set(__self__, "kek_key_id", kek_key_id)
+        pulumi.set(__self__, "kek_key_version", kek_key_version)
+        pulumi.set(__self__, "kek_keyring_id", kek_keyring_id)
+        pulumi.set(__self__, "service_account", service_account)
+
+    @_builtins.property
+    @pulumi.getter(name="kekKeyId")
+    def kek_key_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of the Key within the STACKIT-KMS to use for the encryption.
+        """
+        return pulumi.get(self, "kek_key_id")
+
+    @kek_key_id.setter
+    def kek_key_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "kek_key_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="kekKeyVersion")
+    def kek_key_version(self) -> pulumi.Input[_builtins.str]:
+        """
+        Version of the key within the STACKIT-KMS to use for the encryption.
+        """
+        return pulumi.get(self, "kek_key_version")
+
+    @kek_key_version.setter
+    def kek_key_version(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "kek_key_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="kekKeyringId")
+    def kek_keyring_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of the keyring where the key is located within the STACKTI-KMS.
+        """
+        return pulumi.get(self, "kek_keyring_id")
+
+    @kek_keyring_id.setter
+    def kek_keyring_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "kek_keyring_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Input[_builtins.str]:
+        """
+        Service-Account linked to the Key within the STACKIT-KMS.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "service_account", value)
+
+
 class PostgresflexInstanceFlavorArgsDict(TypedDict):
     cpu: pulumi.Input[_builtins.int]
     ram: pulumi.Input[_builtins.int]
     description: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Terraform's internal resource ID. It is structured as "`project_id`,`region`,`instance_id`".
+    """
+    node_type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
 
 @pulumi.input_type
 class PostgresflexInstanceFlavorArgs:
@@ -7529,13 +8203,19 @@ class PostgresflexInstanceFlavorArgs:
                  cpu: pulumi.Input[_builtins.int],
                  ram: pulumi.Input[_builtins.int],
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 id: pulumi.Input[Optional[_builtins.str]] = None):
+                 id: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_type: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] id: Terraform's internal resource ID. It is structured as "`project_id`,`region`,`instance_id`".
+        """
         pulumi.set(__self__, "cpu", cpu)
         pulumi.set(__self__, "ram", ram)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if id is not None:
             pulumi.set(__self__, "id", id)
+        if node_type is not None:
+            pulumi.set(__self__, "node_type", node_type)
 
     @_builtins.property
     @pulumi.getter
@@ -7567,11 +8247,98 @@ class PostgresflexInstanceFlavorArgs:
     @_builtins.property
     @pulumi.getter
     def id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Terraform's internal resource ID. It is structured as "`project_id`,`region`,`instance_id`".
+        """
         return pulumi.get(self, "id")
 
     @id.setter
     def id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="nodeType")
+    def node_type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "node_type")
+
+    @node_type.setter
+    def node_type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "node_type", value)
+
+
+class PostgresflexInstanceNetworkArgsDict(TypedDict):
+    access_scope: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. Possible values are: `PUBLIC`, `SNA`.
+    """
+    acls: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    The Access Control List (ACL) for the PostgresFlex instance.
+    """
+    instance_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    router_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+
+@pulumi.input_type
+class PostgresflexInstanceNetworkArgs:
+    def __init__(__self__, *,
+                 access_scope: pulumi.Input[Optional[_builtins.str]] = None,
+                 acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 instance_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_address: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] access_scope: The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. Possible values are: `PUBLIC`, `SNA`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The Access Control List (ACL) for the PostgresFlex instance.
+        """
+        if access_scope is not None:
+            pulumi.set(__self__, "access_scope", access_scope)
+        if acls is not None:
+            pulumi.set(__self__, "acls", acls)
+        if instance_address is not None:
+            pulumi.set(__self__, "instance_address", instance_address)
+        if router_address is not None:
+            pulumi.set(__self__, "router_address", router_address)
+
+    @_builtins.property
+    @pulumi.getter(name="accessScope")
+    def access_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. Possible values are: `PUBLIC`, `SNA`.
+        """
+        return pulumi.get(self, "access_scope")
+
+    @access_scope.setter
+    def access_scope(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "access_scope", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def acls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The Access Control List (ACL) for the PostgresFlex instance.
+        """
+        return pulumi.get(self, "acls")
+
+    @acls.setter
+    def acls(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "acls", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceAddress")
+    def instance_address(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "instance_address")
+
+    @instance_address.setter
+    def instance_address(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "instance_address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="routerAddress")
+    def router_address(self) -> pulumi.Input[Optional[_builtins.str]]:
+        return pulumi.get(self, "router_address")
+
+    @router_address.setter
+    def router_address(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "router_address", value)
 
 
 class PostgresflexInstanceStorageArgsDict(TypedDict):
@@ -7579,9 +8346,42 @@ class PostgresflexInstanceStorageArgsDict(TypedDict):
     """
     The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
     `bash
-    stackit postgresflex options --storages --flavor-id FLAVOR_ID
+    stackit postgresflex flavor describe FLAVOR_ID
     `
     - `size` (Number)
+      \\n\\n\\n\\n
+    ### Nested Schema for `encryption`
+    Required:
+    - `kek_key_id` (String) The ID of the Key within the STACKIT-KMS to use for the encryption.
+    - `kek_key_version` (String) Version of the key within the STACKIT-KMS to use for the encryption.
+    - `kek_keyring_id` (String) The ID of the keyring where the key is located within the STACKTI-KMS.
+    - `service_account` (String) Service-Account linked to the Key within the STACKIT-KMS.
+      \\n\\n\\n\\n
+    ### Nested Schema for `flavor`
+    Required:
+    - `cpu` (Number)
+    - `ram` (Number)
+      Read-Only:
+    - `description` (String)
+    - `id` (String)
+    - `node_type` (String)
+      \\n\\n\\n\\n
+    ### Nested Schema for `network`
+    Optional:
+    - `access_scope` (String) The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. Possible values are: `PUBLIC`, `SNA`.
+    - `acl` (List of String) The Access Control List (ACL) for the PostgresFlex instance.
+      Read-Only:
+    - `instance_address` (String)
+    - `router_address` (String)
+      \\n\\n\\n\\n
+    ### Nested Schema for `connection_info`
+    Read-Only:
+    - `write` (Attributes) The DNS name and port in the instance overview.
+      \\n\\n\\n\\n
+    ### Nested Schema for `connection_info.write`
+    Read-Only:
+    - `host` (String) The host of the instance.
+    - `port` (Number) The port of the instance.
     """
     size: pulumi.Input[_builtins.int]
 
@@ -7593,9 +8393,42 @@ class PostgresflexInstanceStorageArgs:
         """
         :param pulumi.Input[_builtins.str] class_: The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
                `bash
-               stackit postgresflex options --storages --flavor-id FLAVOR_ID
+               stackit postgresflex flavor describe FLAVOR_ID
                `
                - `size` (Number)
+                 \\n\\n\\n\\n
+               ### Nested Schema for `encryption`
+               Required:
+               - `kek_key_id` (String) The ID of the Key within the STACKIT-KMS to use for the encryption.
+               - `kek_key_version` (String) Version of the key within the STACKIT-KMS to use for the encryption.
+               - `kek_keyring_id` (String) The ID of the keyring where the key is located within the STACKTI-KMS.
+               - `service_account` (String) Service-Account linked to the Key within the STACKIT-KMS.
+                 \\n\\n\\n\\n
+               ### Nested Schema for `flavor`
+               Required:
+               - `cpu` (Number)
+               - `ram` (Number)
+                 Read-Only:
+               - `description` (String)
+               - `id` (String)
+               - `node_type` (String)
+                 \\n\\n\\n\\n
+               ### Nested Schema for `network`
+               Optional:
+               - `access_scope` (String) The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. Possible values are: `PUBLIC`, `SNA`.
+               - `acl` (List of String) The Access Control List (ACL) for the PostgresFlex instance.
+                 Read-Only:
+               - `instance_address` (String)
+               - `router_address` (String)
+                 \\n\\n\\n\\n
+               ### Nested Schema for `connection_info`
+               Read-Only:
+               - `write` (Attributes) The DNS name and port in the instance overview.
+                 \\n\\n\\n\\n
+               ### Nested Schema for `connection_info.write`
+               Read-Only:
+               - `host` (String) The host of the instance.
+               - `port` (Number) The port of the instance.
         """
         pulumi.set(__self__, "class_", class_)
         pulumi.set(__self__, "size", size)
@@ -7606,9 +8439,42 @@ class PostgresflexInstanceStorageArgs:
         """
         The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
         `bash
-        stackit postgresflex options --storages --flavor-id FLAVOR_ID
+        stackit postgresflex flavor describe FLAVOR_ID
         `
         - `size` (Number)
+          \\n\\n\\n\\n
+        ### Nested Schema for `encryption`
+        Required:
+        - `kek_key_id` (String) The ID of the Key within the STACKIT-KMS to use for the encryption.
+        - `kek_key_version` (String) Version of the key within the STACKIT-KMS to use for the encryption.
+        - `kek_keyring_id` (String) The ID of the keyring where the key is located within the STACKTI-KMS.
+        - `service_account` (String) Service-Account linked to the Key within the STACKIT-KMS.
+          \\n\\n\\n\\n
+        ### Nested Schema for `flavor`
+        Required:
+        - `cpu` (Number)
+        - `ram` (Number)
+          Read-Only:
+        - `description` (String)
+        - `id` (String)
+        - `node_type` (String)
+          \\n\\n\\n\\n
+        ### Nested Schema for `network`
+        Optional:
+        - `access_scope` (String) The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. Possible values are: `PUBLIC`, `SNA`.
+        - `acl` (List of String) The Access Control List (ACL) for the PostgresFlex instance.
+          Read-Only:
+        - `instance_address` (String)
+        - `router_address` (String)
+          \\n\\n\\n\\n
+        ### Nested Schema for `connection_info`
+        Read-Only:
+        - `write` (Attributes) The DNS name and port in the instance overview.
+          \\n\\n\\n\\n
+        ### Nested Schema for `connection_info.write`
+        Read-Only:
+        - `host` (String) The host of the instance.
+        - `port` (Number) The port of the instance.
         """
         return pulumi.get(self, "class_")
 
@@ -9206,10 +10072,43 @@ class SkeClusterAccessIdpArgs:
         pulumi.set(self, "type", value)
 
 
+class SkeClusterAuditArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Enable cluster audit log forwarding to a Telemetry Router.
+    """
+
+@pulumi.input_type
+class SkeClusterAuditArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Enable cluster audit log forwarding to a Telemetry Router.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Enable cluster audit log forwarding to a Telemetry Router.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+
 class SkeClusterExtensionsArgsDict(TypedDict):
     acl: NotRequired[pulumi.Input[Optional['SkeClusterExtensionsAclArgsDict']]]
     """
     Cluster access control configuration.
+    """
+    application_load_balancer: NotRequired[pulumi.Input[Optional['SkeClusterExtensionsApplicationLoadBalancerArgsDict']]]
+    """
+    Application Load Balancer extension.
     """
     argus: NotRequired[pulumi.Input[Optional['SkeClusterExtensionsArgusArgsDict']]]
     """
@@ -9228,17 +10127,21 @@ class SkeClusterExtensionsArgsDict(TypedDict):
 class SkeClusterExtensionsArgs:
     def __init__(__self__, *,
                  acl: pulumi.Input[Optional['SkeClusterExtensionsAclArgs']] = None,
+                 application_load_balancer: pulumi.Input[Optional['SkeClusterExtensionsApplicationLoadBalancerArgs']] = None,
                  argus: pulumi.Input[Optional['SkeClusterExtensionsArgusArgs']] = None,
                  dns: pulumi.Input[Optional['SkeClusterExtensionsDnsArgs']] = None,
                  observability: pulumi.Input[Optional['SkeClusterExtensionsObservabilityArgs']] = None):
         """
         :param pulumi.Input['SkeClusterExtensionsAclArgs'] acl: Cluster access control configuration.
+        :param pulumi.Input['SkeClusterExtensionsApplicationLoadBalancerArgs'] application_load_balancer: Application Load Balancer extension.
         :param pulumi.Input['SkeClusterExtensionsArgusArgs'] argus: A single argus block as defined below. This field is deprecated and will be removed 06 January 2026.
         :param pulumi.Input['SkeClusterExtensionsDnsArgs'] dns: DNS extension configuration
         :param pulumi.Input['SkeClusterExtensionsObservabilityArgs'] observability: A single observability block as defined below.
         """
         if acl is not None:
             pulumi.set(__self__, "acl", acl)
+        if application_load_balancer is not None:
+            pulumi.set(__self__, "application_load_balancer", application_load_balancer)
         if argus is not None:
             warnings.warn("""Use observability instead.""", DeprecationWarning)
             pulumi.log.warn("""argus is deprecated: Use observability instead.""")
@@ -9260,6 +10163,18 @@ class SkeClusterExtensionsArgs:
     @acl.setter
     def acl(self, value: pulumi.Input[Optional['SkeClusterExtensionsAclArgs']]):
         pulumi.set(self, "acl", value)
+
+    @_builtins.property
+    @pulumi.getter(name="applicationLoadBalancer")
+    def application_load_balancer(self) -> pulumi.Input[Optional['SkeClusterExtensionsApplicationLoadBalancerArgs']]:
+        """
+        Application Load Balancer extension.
+        """
+        return pulumi.get(self, "application_load_balancer")
+
+    @application_load_balancer.setter
+    def application_load_balancer(self, value: pulumi.Input[Optional['SkeClusterExtensionsApplicationLoadBalancerArgs']]):
+        pulumi.set(self, "application_load_balancer", value)
 
     @_builtins.property
     @pulumi.getter
@@ -9346,6 +10261,35 @@ class SkeClusterExtensionsAclArgs:
         pulumi.set(self, "enabled", value)
 
 
+class SkeClusterExtensionsApplicationLoadBalancerArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Enables the application load balancer extension. Note: This feature is in private preview. Enabling application load balancer extension is only possible for enabled accounts. Otherwise the request will be rejected. Default value will change to true once the private preview phase is over.
+    """
+
+@pulumi.input_type
+class SkeClusterExtensionsApplicationLoadBalancerArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Enables the application load balancer extension. Note: This feature is in private preview. Enabling application load balancer extension is only possible for enabled accounts. Otherwise the request will be rejected. Default value will change to true once the private preview phase is over.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Enables the application load balancer extension. Note: This feature is in private preview. Enabling application load balancer extension is only possible for enabled accounts. Otherwise the request will be rejected. Default value will change to true once the private preview phase is over.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+
 class SkeClusterExtensionsArgusArgsDict(TypedDict):
     enabled: pulumi.Input[_builtins.bool]
     """
@@ -9399,6 +10343,10 @@ class SkeClusterExtensionsDnsArgsDict(TypedDict):
     """
     Flag to enable/disable DNS extensions
     """
+    gateway_api: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Enables Gateway API support for ExternalDNS. The CRDs must be installed by the user. Once installed, ExternalDNS will be configured at the next cluster reconcile.
+    """
     zones: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
     Specify a list of domain filters for externalDNS (e.g., `foo.runs.onstackit.cloud`)
@@ -9408,12 +10356,16 @@ class SkeClusterExtensionsDnsArgsDict(TypedDict):
 class SkeClusterExtensionsDnsArgs:
     def __init__(__self__, *,
                  enabled: pulumi.Input[_builtins.bool],
+                 gateway_api: pulumi.Input[Optional[_builtins.bool]] = None,
                  zones: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         :param pulumi.Input[_builtins.bool] enabled: Flag to enable/disable DNS extensions
+        :param pulumi.Input[_builtins.bool] gateway_api: Enables Gateway API support for ExternalDNS. The CRDs must be installed by the user. Once installed, ExternalDNS will be configured at the next cluster reconcile.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] zones: Specify a list of domain filters for externalDNS (e.g., `foo.runs.onstackit.cloud`)
         """
         pulumi.set(__self__, "enabled", enabled)
+        if gateway_api is not None:
+            pulumi.set(__self__, "gateway_api", gateway_api)
         if zones is not None:
             pulumi.set(__self__, "zones", zones)
 
@@ -9428,6 +10380,18 @@ class SkeClusterExtensionsDnsArgs:
     @enabled.setter
     def enabled(self, value: pulumi.Input[_builtins.bool]):
         pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="gatewayApi")
+    def gateway_api(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Enables Gateway API support for ExternalDNS. The CRDs must be installed by the user. Once installed, ExternalDNS will be configured at the next cluster reconcile.
+        """
+        return pulumi.get(self, "gateway_api")
+
+    @gateway_api.setter
+    def gateway_api(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "gateway_api", value)
 
     @_builtins.property
     @pulumi.getter
@@ -9698,7 +10662,7 @@ class SkeClusterNetworkArgs:
 class SkeClusterNetworkControlPlaneArgsDict(TypedDict):
     access_scope: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
+    Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
     """
 
 @pulumi.input_type
@@ -9706,7 +10670,7 @@ class SkeClusterNetworkControlPlaneArgs:
     def __init__(__self__, *,
                  access_scope: pulumi.Input[Optional[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] access_scope: Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
+        :param pulumi.Input[_builtins.str] access_scope: Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
         """
         if access_scope is not None:
             pulumi.set(__self__, "access_scope", access_scope)
@@ -9715,7 +10679,7 @@ class SkeClusterNetworkControlPlaneArgs:
     @pulumi.getter(name="accessScope")
     def access_scope(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
+        Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
         """
         return pulumi.get(self, "access_scope")
 
@@ -10139,6 +11103,180 @@ class SkeClusterNodePoolTaintArgs:
         pulumi.set(self, "value", value)
 
 
+class SqlserverflexDatabaseTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    delete: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    read: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+    """
+    update: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class SqlserverflexDatabaseTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete: pulumi.Input[Optional[_builtins.str]] = None,
+                 read: pulumi.Input[Optional[_builtins.str]] = None,
+                 update: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[_builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[_builtins.str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[_builtins.str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "read", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "update", value)
+
+
+class SqlserverflexInstanceEncryptionArgsDict(TypedDict):
+    kek_key_id: pulumi.Input[_builtins.str]
+    """
+    UUID of the key within the STACKIT-KMS to use for the encryption.
+    """
+    kek_key_version: pulumi.Input[_builtins.str]
+    """
+    Version of the key within the STACKIT-KMS to use for the encryption.
+    """
+    kek_keyring_id: pulumi.Input[_builtins.str]
+    """
+    UUID of the keyring where the key is located within the STACKTI-KMS.
+    """
+    service_account: pulumi.Input[_builtins.str]
+    """
+    Service-Account linked to the Key within the STACKIT-KMS.
+    """
+
+@pulumi.input_type
+class SqlserverflexInstanceEncryptionArgs:
+    def __init__(__self__, *,
+                 kek_key_id: pulumi.Input[_builtins.str],
+                 kek_key_version: pulumi.Input[_builtins.str],
+                 kek_keyring_id: pulumi.Input[_builtins.str],
+                 service_account: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] kek_key_id: UUID of the key within the STACKIT-KMS to use for the encryption.
+        :param pulumi.Input[_builtins.str] kek_key_version: Version of the key within the STACKIT-KMS to use for the encryption.
+        :param pulumi.Input[_builtins.str] kek_keyring_id: UUID of the keyring where the key is located within the STACKTI-KMS.
+        :param pulumi.Input[_builtins.str] service_account: Service-Account linked to the Key within the STACKIT-KMS.
+        """
+        pulumi.set(__self__, "kek_key_id", kek_key_id)
+        pulumi.set(__self__, "kek_key_version", kek_key_version)
+        pulumi.set(__self__, "kek_keyring_id", kek_keyring_id)
+        pulumi.set(__self__, "service_account", service_account)
+
+    @_builtins.property
+    @pulumi.getter(name="kekKeyId")
+    def kek_key_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        UUID of the key within the STACKIT-KMS to use for the encryption.
+        """
+        return pulumi.get(self, "kek_key_id")
+
+    @kek_key_id.setter
+    def kek_key_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "kek_key_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="kekKeyVersion")
+    def kek_key_version(self) -> pulumi.Input[_builtins.str]:
+        """
+        Version of the key within the STACKIT-KMS to use for the encryption.
+        """
+        return pulumi.get(self, "kek_key_version")
+
+    @kek_key_version.setter
+    def kek_key_version(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "kek_key_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="kekKeyringId")
+    def kek_keyring_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        UUID of the keyring where the key is located within the STACKTI-KMS.
+        """
+        return pulumi.get(self, "kek_keyring_id")
+
+    @kek_keyring_id.setter
+    def kek_keyring_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "kek_keyring_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> pulumi.Input[_builtins.str]:
+        """
+        Service-Account linked to the Key within the STACKIT-KMS.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "service_account", value)
+
+
 class SqlserverflexInstanceFlavorArgsDict(TypedDict):
     cpu: pulumi.Input[_builtins.int]
     ram: pulumi.Input[_builtins.int]
@@ -10205,20 +11343,36 @@ class SqlserverflexInstanceNetworkArgsDict(TypedDict):
     """
     List of IPV4 cidr.
     """
+    instance_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Address of this instance.
+    """
+    router_address: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Address of the router.
+    """
 
 @pulumi.input_type
 class SqlserverflexInstanceNetworkArgs:
     def __init__(__self__, *,
                  access_scope: pulumi.Input[Optional[_builtins.str]] = None,
-                 acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 instance_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 router_address: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] access_scope: The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected. Possible values are: `PUBLIC`, `SNA`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: List of IPV4 cidr.
+        :param pulumi.Input[_builtins.str] instance_address: Address of this instance.
+        :param pulumi.Input[_builtins.str] router_address: Address of the router.
         """
         if access_scope is not None:
             pulumi.set(__self__, "access_scope", access_scope)
         if acls is not None:
             pulumi.set(__self__, "acls", acls)
+        if instance_address is not None:
+            pulumi.set(__self__, "instance_address", instance_address)
+        if router_address is not None:
+            pulumi.set(__self__, "router_address", router_address)
 
     @_builtins.property
     @pulumi.getter(name="accessScope")
@@ -10244,6 +11398,30 @@ class SqlserverflexInstanceNetworkArgs:
     def acls(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "acls", value)
 
+    @_builtins.property
+    @pulumi.getter(name="instanceAddress")
+    def instance_address(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Address of this instance.
+        """
+        return pulumi.get(self, "instance_address")
+
+    @instance_address.setter
+    def instance_address(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "instance_address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="routerAddress")
+    def router_address(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Address of the router.
+        """
+        return pulumi.get(self, "router_address")
+
+    @router_address.setter
+    def router_address(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "router_address", value)
+
 
 class SqlserverflexInstanceOptionsArgsDict(TypedDict):
     edition: NotRequired[pulumi.Input[Optional[_builtins.str]]]
@@ -10255,19 +11433,19 @@ class SqlserverflexInstanceOptionsArgs:
                  edition: pulumi.Input[Optional[_builtins.str]] = None,
                  retention_days: pulumi.Input[Optional[_builtins.int]] = None):
         if edition is not None:
-            warnings.warn("""edition is deprecated and will be removed after January 2027.""", DeprecationWarning)
-            pulumi.log.warn("""edition is deprecated: edition is deprecated and will be removed after January 2027.""")
+            warnings.warn("""edition is deprecated and will be removed after February 2027.""", DeprecationWarning)
+            pulumi.log.warn("""edition is deprecated: edition is deprecated and will be removed after February 2027.""")
         if edition is not None:
             pulumi.set(__self__, "edition", edition)
         if retention_days is not None:
-            warnings.warn("""retention_days is deprecated and will be removed after January 2027. Use instead `retention_days` from root.""", DeprecationWarning)
-            pulumi.log.warn("""retention_days is deprecated: retention_days is deprecated and will be removed after January 2027. Use instead `retention_days` from root.""")
+            warnings.warn("""retention_days is deprecated and will be removed after February 2027. Use instead `retention_days` from root.""", DeprecationWarning)
+            pulumi.log.warn("""retention_days is deprecated: retention_days is deprecated and will be removed after February 2027. Use instead `retention_days` from root.""")
         if retention_days is not None:
             pulumi.set(__self__, "retention_days", retention_days)
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""edition is deprecated and will be removed after January 2027.""")
+    @_utilities.deprecated("""edition is deprecated and will be removed after February 2027.""")
     def edition(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "edition")
 
@@ -10277,7 +11455,7 @@ class SqlserverflexInstanceOptionsArgs:
 
     @_builtins.property
     @pulumi.getter(name="retentionDays")
-    @_utilities.deprecated("""retention_days is deprecated and will be removed after January 2027. Use instead `retention_days` from root.""")
+    @_utilities.deprecated("""retention_days is deprecated and will be removed after February 2027. Use instead `retention_days` from root.""")
     def retention_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "retention_days")
 
@@ -10289,10 +11467,7 @@ class SqlserverflexInstanceOptionsArgs:
 class SqlserverflexInstanceStorageArgsDict(TypedDict):
     class_: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
-    `bash
-    stackit beta sqlserverflex options --storages --flavor-id FLAVOR_ID
-    ` Will be required in the future. Set a value to prevent breaking changes.
+    The storage class. You can list available storage classes for a the according flavors using the datasource `get_sqlserverflex_flavors`. Will be required in the future. Set a value to prevent breaking changes.
     """
     size: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
@@ -10305,10 +11480,7 @@ class SqlserverflexInstanceStorageArgs:
                  class_: pulumi.Input[Optional[_builtins.str]] = None,
                  size: pulumi.Input[Optional[_builtins.int]] = None):
         """
-        :param pulumi.Input[_builtins.str] class_: The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
-               `bash
-               stackit beta sqlserverflex options --storages --flavor-id FLAVOR_ID
-               ` Will be required in the future. Set a value to prevent breaking changes.
+        :param pulumi.Input[_builtins.str] class_: The storage class. You can list available storage classes for a the according flavors using the datasource `get_sqlserverflex_flavors`. Will be required in the future. Set a value to prevent breaking changes.
         :param pulumi.Input[_builtins.int] size: The storage size in Gigabytes. Will be required in the future. Set a value to prevent breaking changes.
         """
         if class_ is not None:
@@ -10320,10 +11492,7 @@ class SqlserverflexInstanceStorageArgs:
     @pulumi.getter(name="class")
     def class_(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The storage class. You can list available storage classes using the [STACKIT CLI](https://github.com/stackitcloud/stackit-cli):
-        `bash
-        stackit beta sqlserverflex options --storages --flavor-id FLAVOR_ID
-        ` Will be required in the future. Set a value to prevent breaking changes.
+        The storage class. You can list available storage classes for a the according flavors using the datasource `get_sqlserverflex_flavors`. Will be required in the future. Set a value to prevent breaking changes.
         """
         return pulumi.get(self, "class_")
 
@@ -12683,10 +13852,105 @@ class GetImageV2FilterArgs:
         pulumi.set(self, "version", value)
 
 
+class GetPostgresflexFlavorsTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class GetPostgresflexFlavorsTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "read", value)
+
+
+class GetSqlserverflexDatabaseTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class GetSqlserverflexDatabaseTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "read", value)
+
+
+class GetSqlserverflexFlavorsTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class GetSqlserverflexFlavorsTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "read", value)
+
+
 class GetSqlserverflexInstanceNetworkArgsDict(TypedDict):
     acls: Sequence[_builtins.str]
     """
     List of IPV4 cidr.
+    """
+    instance_address: _builtins.str
+    """
+    Address of this instance.
+    """
+    router_address: _builtins.str
+    """
+    Address of the router.
     """
     access_scope: NotRequired[_builtins.str]
     """
@@ -12697,12 +13961,18 @@ class GetSqlserverflexInstanceNetworkArgsDict(TypedDict):
 class GetSqlserverflexInstanceNetworkArgs:
     def __init__(__self__, *,
                  acls: Sequence[_builtins.str],
+                 instance_address: _builtins.str,
+                 router_address: _builtins.str,
                  access_scope: Optional[_builtins.str] = None):
         """
         :param Sequence[_builtins.str] acls: List of IPV4 cidr.
+        :param _builtins.str instance_address: Address of this instance.
+        :param _builtins.str router_address: Address of the router.
         :param _builtins.str access_scope: The network access scope of the instance. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected.
         """
         pulumi.set(__self__, "acls", acls)
+        pulumi.set(__self__, "instance_address", instance_address)
+        pulumi.set(__self__, "router_address", router_address)
         if access_scope is not None:
             pulumi.set(__self__, "access_scope", access_scope)
 
@@ -12717,6 +13987,30 @@ class GetSqlserverflexInstanceNetworkArgs:
     @acls.setter
     def acls(self, value: Sequence[_builtins.str]):
         pulumi.set(self, "acls", value)
+
+    @_builtins.property
+    @pulumi.getter(name="instanceAddress")
+    def instance_address(self) -> _builtins.str:
+        """
+        Address of this instance.
+        """
+        return pulumi.get(self, "instance_address")
+
+    @instance_address.setter
+    def instance_address(self, value: _builtins.str):
+        pulumi.set(self, "instance_address", value)
+
+    @_builtins.property
+    @pulumi.getter(name="routerAddress")
+    def router_address(self) -> _builtins.str:
+        """
+        Address of the router.
+        """
+        return pulumi.get(self, "router_address")
+
+    @router_address.setter
+    def router_address(self, value: _builtins.str):
+        pulumi.set(self, "router_address", value)
 
     @_builtins.property
     @pulumi.getter(name="accessScope")

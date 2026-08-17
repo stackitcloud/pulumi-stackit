@@ -13,7 +13,7 @@ namespace Pulumi.Stackit.Inputs
     public sealed class SkeClusterNetworkControlPlaneArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
+        /// Access scope of the control plane. It defines if the Kubernetes control plane is public or only available inside a STACKIT Network Area. This feature is in private preview. Supplying this object is only permitted for enabled accounts. If your account does not have access, the request will be rejected.Possible values are: `PUBLIC`, `SNA`. The field is immutable!
         /// </summary>
         [Input("accessScope")]
         public Input<string>? AccessScope { get; set; }

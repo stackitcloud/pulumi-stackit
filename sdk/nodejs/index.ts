@@ -15,6 +15,21 @@ export type AlbCertificate = import("./albCertificate").AlbCertificate;
 export const AlbCertificate: typeof import("./albCertificate").AlbCertificate = null as any;
 utilities.lazyLoad(exports, ["AlbCertificate"], () => require("./albCertificate"));
 
+export { AlbWafConfigurationArgs, AlbWafConfigurationState } from "./albWafConfiguration";
+export type AlbWafConfiguration = import("./albWafConfiguration").AlbWafConfiguration;
+export const AlbWafConfiguration: typeof import("./albWafConfiguration").AlbWafConfiguration = null as any;
+utilities.lazyLoad(exports, ["AlbWafConfiguration"], () => require("./albWafConfiguration"));
+
+export { AlbWafCustomRuleGroupArgs, AlbWafCustomRuleGroupState } from "./albWafCustomRuleGroup";
+export type AlbWafCustomRuleGroup = import("./albWafCustomRuleGroup").AlbWafCustomRuleGroup;
+export const AlbWafCustomRuleGroup: typeof import("./albWafCustomRuleGroup").AlbWafCustomRuleGroup = null as any;
+utilities.lazyLoad(exports, ["AlbWafCustomRuleGroup"], () => require("./albWafCustomRuleGroup"));
+
+export { AlbWafManagedRuleSetArgs, AlbWafManagedRuleSetState } from "./albWafManagedRuleSet";
+export type AlbWafManagedRuleSet = import("./albWafManagedRuleSet").AlbWafManagedRuleSet;
+export const AlbWafManagedRuleSet: typeof import("./albWafManagedRuleSet").AlbWafManagedRuleSet = null as any;
+utilities.lazyLoad(exports, ["AlbWafManagedRuleSet"], () => require("./albWafManagedRuleSet"));
+
 export { ApplicationLoadBalancerArgs, ApplicationLoadBalancerState } from "./applicationLoadBalancer";
 export type ApplicationLoadBalancer = import("./applicationLoadBalancer").ApplicationLoadBalancer;
 export const ApplicationLoadBalancer: typeof import("./applicationLoadBalancer").ApplicationLoadBalancer = null as any;
@@ -109,6 +124,21 @@ export { GetAlbCertificateArgs, GetAlbCertificateResult, GetAlbCertificateOutput
 export const getAlbCertificate: typeof import("./getAlbCertificate").getAlbCertificate = null as any;
 export const getAlbCertificateOutput: typeof import("./getAlbCertificate").getAlbCertificateOutput = null as any;
 utilities.lazyLoad(exports, ["getAlbCertificate","getAlbCertificateOutput"], () => require("./getAlbCertificate"));
+
+export { GetAlbWafConfigurationArgs, GetAlbWafConfigurationResult, GetAlbWafConfigurationOutputArgs } from "./getAlbWafConfiguration";
+export const getAlbWafConfiguration: typeof import("./getAlbWafConfiguration").getAlbWafConfiguration = null as any;
+export const getAlbWafConfigurationOutput: typeof import("./getAlbWafConfiguration").getAlbWafConfigurationOutput = null as any;
+utilities.lazyLoad(exports, ["getAlbWafConfiguration","getAlbWafConfigurationOutput"], () => require("./getAlbWafConfiguration"));
+
+export { GetAlbWafCustomRuleGroupArgs, GetAlbWafCustomRuleGroupResult, GetAlbWafCustomRuleGroupOutputArgs } from "./getAlbWafCustomRuleGroup";
+export const getAlbWafCustomRuleGroup: typeof import("./getAlbWafCustomRuleGroup").getAlbWafCustomRuleGroup = null as any;
+export const getAlbWafCustomRuleGroupOutput: typeof import("./getAlbWafCustomRuleGroup").getAlbWafCustomRuleGroupOutput = null as any;
+utilities.lazyLoad(exports, ["getAlbWafCustomRuleGroup","getAlbWafCustomRuleGroupOutput"], () => require("./getAlbWafCustomRuleGroup"));
+
+export { GetAlbWafManagedRuleSetArgs, GetAlbWafManagedRuleSetResult, GetAlbWafManagedRuleSetOutputArgs } from "./getAlbWafManagedRuleSet";
+export const getAlbWafManagedRuleSet: typeof import("./getAlbWafManagedRuleSet").getAlbWafManagedRuleSet = null as any;
+export const getAlbWafManagedRuleSetOutput: typeof import("./getAlbWafManagedRuleSet").getAlbWafManagedRuleSetOutput = null as any;
+utilities.lazyLoad(exports, ["getAlbWafManagedRuleSet","getAlbWafManagedRuleSetOutput"], () => require("./getAlbWafManagedRuleSet"));
 
 export { GetApplicationLoadBalancerArgs, GetApplicationLoadBalancerResult, GetApplicationLoadBalancerOutputArgs } from "./getApplicationLoadBalancer";
 export const getApplicationLoadBalancer: typeof import("./getApplicationLoadBalancer").getApplicationLoadBalancer = null as any;
@@ -255,6 +285,16 @@ export const getMariadbInstance: typeof import("./getMariadbInstance").getMariad
 export const getMariadbInstanceOutput: typeof import("./getMariadbInstance").getMariadbInstanceOutput = null as any;
 utilities.lazyLoad(exports, ["getMariadbInstance","getMariadbInstanceOutput"], () => require("./getMariadbInstance"));
 
+export { GetModelexperimentsInstanceArgs, GetModelexperimentsInstanceResult, GetModelexperimentsInstanceOutputArgs } from "./getModelexperimentsInstance";
+export const getModelexperimentsInstance: typeof import("./getModelexperimentsInstance").getModelexperimentsInstance = null as any;
+export const getModelexperimentsInstanceOutput: typeof import("./getModelexperimentsInstance").getModelexperimentsInstanceOutput = null as any;
+utilities.lazyLoad(exports, ["getModelexperimentsInstance","getModelexperimentsInstanceOutput"], () => require("./getModelexperimentsInstance"));
+
+export { GetModelexperimentsTokenArgs, GetModelexperimentsTokenResult, GetModelexperimentsTokenOutputArgs } from "./getModelexperimentsToken";
+export const getModelexperimentsToken: typeof import("./getModelexperimentsToken").getModelexperimentsToken = null as any;
+export const getModelexperimentsTokenOutput: typeof import("./getModelexperimentsToken").getModelexperimentsTokenOutput = null as any;
+utilities.lazyLoad(exports, ["getModelexperimentsToken","getModelexperimentsTokenOutput"], () => require("./getModelexperimentsToken"));
+
 export { GetMongodbflexInstanceArgs, GetMongodbflexInstanceResult, GetMongodbflexInstanceOutputArgs } from "./getMongodbflexInstance";
 export const getMongodbflexInstance: typeof import("./getMongodbflexInstance").getMongodbflexInstance = null as any;
 export const getMongodbflexInstanceOutput: typeof import("./getMongodbflexInstance").getMongodbflexInstanceOutput = null as any;
@@ -349,6 +389,11 @@ export { GetPostgresflexDatabaseArgs, GetPostgresflexDatabaseResult, GetPostgres
 export const getPostgresflexDatabase: typeof import("./getPostgresflexDatabase").getPostgresflexDatabase = null as any;
 export const getPostgresflexDatabaseOutput: typeof import("./getPostgresflexDatabase").getPostgresflexDatabaseOutput = null as any;
 utilities.lazyLoad(exports, ["getPostgresflexDatabase","getPostgresflexDatabaseOutput"], () => require("./getPostgresflexDatabase"));
+
+export { GetPostgresflexFlavorsArgs, GetPostgresflexFlavorsResult, GetPostgresflexFlavorsOutputArgs } from "./getPostgresflexFlavors";
+export const getPostgresflexFlavors: typeof import("./getPostgresflexFlavors").getPostgresflexFlavors = null as any;
+export const getPostgresflexFlavorsOutput: typeof import("./getPostgresflexFlavors").getPostgresflexFlavorsOutput = null as any;
+utilities.lazyLoad(exports, ["getPostgresflexFlavors","getPostgresflexFlavorsOutput"], () => require("./getPostgresflexFlavors"));
 
 export { GetPostgresflexInstanceArgs, GetPostgresflexInstanceResult, GetPostgresflexInstanceOutputArgs } from "./getPostgresflexInstance";
 export const getPostgresflexInstance: typeof import("./getPostgresflexInstance").getPostgresflexInstance = null as any;
@@ -560,6 +605,16 @@ export const getSkeMachineImageVersions: typeof import("./getSkeMachineImageVers
 export const getSkeMachineImageVersionsOutput: typeof import("./getSkeMachineImageVersions").getSkeMachineImageVersionsOutput = null as any;
 utilities.lazyLoad(exports, ["getSkeMachineImageVersions","getSkeMachineImageVersionsOutput"], () => require("./getSkeMachineImageVersions"));
 
+export { GetSqlserverflexDatabaseArgs, GetSqlserverflexDatabaseResult, GetSqlserverflexDatabaseOutputArgs } from "./getSqlserverflexDatabase";
+export const getSqlserverflexDatabase: typeof import("./getSqlserverflexDatabase").getSqlserverflexDatabase = null as any;
+export const getSqlserverflexDatabaseOutput: typeof import("./getSqlserverflexDatabase").getSqlserverflexDatabaseOutput = null as any;
+utilities.lazyLoad(exports, ["getSqlserverflexDatabase","getSqlserverflexDatabaseOutput"], () => require("./getSqlserverflexDatabase"));
+
+export { GetSqlserverflexFlavorsArgs, GetSqlserverflexFlavorsResult, GetSqlserverflexFlavorsOutputArgs } from "./getSqlserverflexFlavors";
+export const getSqlserverflexFlavors: typeof import("./getSqlserverflexFlavors").getSqlserverflexFlavors = null as any;
+export const getSqlserverflexFlavorsOutput: typeof import("./getSqlserverflexFlavors").getSqlserverflexFlavorsOutput = null as any;
+utilities.lazyLoad(exports, ["getSqlserverflexFlavors","getSqlserverflexFlavorsOutput"], () => require("./getSqlserverflexFlavors"));
+
 export { GetSqlserverflexInstanceArgs, GetSqlserverflexInstanceResult, GetSqlserverflexInstanceOutputArgs } from "./getSqlserverflexInstance";
 export const getSqlserverflexInstance: typeof import("./getSqlserverflexInstance").getSqlserverflexInstance = null as any;
 export const getSqlserverflexInstanceOutput: typeof import("./getSqlserverflexInstance").getSqlserverflexInstanceOutput = null as any;
@@ -709,6 +764,16 @@ export { MariadbInstanceArgs, MariadbInstanceState } from "./mariadbInstance";
 export type MariadbInstance = import("./mariadbInstance").MariadbInstance;
 export const MariadbInstance: typeof import("./mariadbInstance").MariadbInstance = null as any;
 utilities.lazyLoad(exports, ["MariadbInstance"], () => require("./mariadbInstance"));
+
+export { ModelexperimentsInstanceArgs, ModelexperimentsInstanceState } from "./modelexperimentsInstance";
+export type ModelexperimentsInstance = import("./modelexperimentsInstance").ModelexperimentsInstance;
+export const ModelexperimentsInstance: typeof import("./modelexperimentsInstance").ModelexperimentsInstance = null as any;
+utilities.lazyLoad(exports, ["ModelexperimentsInstance"], () => require("./modelexperimentsInstance"));
+
+export { ModelexperimentsTokenArgs, ModelexperimentsTokenState } from "./modelexperimentsToken";
+export type ModelexperimentsToken = import("./modelexperimentsToken").ModelexperimentsToken;
+export const ModelexperimentsToken: typeof import("./modelexperimentsToken").ModelexperimentsToken = null as any;
+utilities.lazyLoad(exports, ["ModelexperimentsToken"], () => require("./modelexperimentsToken"));
 
 export { ModelservingTokenArgs, ModelservingTokenState } from "./modelservingToken";
 export type ModelservingToken = import("./modelservingToken").ModelservingToken;
@@ -1003,6 +1068,11 @@ export type SkeKubeconfig = import("./skeKubeconfig").SkeKubeconfig;
 export const SkeKubeconfig: typeof import("./skeKubeconfig").SkeKubeconfig = null as any;
 utilities.lazyLoad(exports, ["SkeKubeconfig"], () => require("./skeKubeconfig"));
 
+export { SqlserverflexDatabaseArgs, SqlserverflexDatabaseState } from "./sqlserverflexDatabase";
+export type SqlserverflexDatabase = import("./sqlserverflexDatabase").SqlserverflexDatabase;
+export const SqlserverflexDatabase: typeof import("./sqlserverflexDatabase").SqlserverflexDatabase = null as any;
+utilities.lazyLoad(exports, ["SqlserverflexDatabase"], () => require("./sqlserverflexDatabase"));
+
 export { SqlserverflexInstanceArgs, SqlserverflexInstanceState } from "./sqlserverflexInstance";
 export type SqlserverflexInstance = import("./sqlserverflexInstance").SqlserverflexInstance;
 export const SqlserverflexInstance: typeof import("./sqlserverflexInstance").SqlserverflexInstance = null as any;
@@ -1091,6 +1161,12 @@ const _module = {
                 return new AffinityGroup(name, <any>undefined, { urn })
             case "stackit:index/albCertificate:AlbCertificate":
                 return new AlbCertificate(name, <any>undefined, { urn })
+            case "stackit:index/albWafConfiguration:AlbWafConfiguration":
+                return new AlbWafConfiguration(name, <any>undefined, { urn })
+            case "stackit:index/albWafCustomRuleGroup:AlbWafCustomRuleGroup":
+                return new AlbWafCustomRuleGroup(name, <any>undefined, { urn })
+            case "stackit:index/albWafManagedRuleSet:AlbWafManagedRuleSet":
+                return new AlbWafManagedRuleSet(name, <any>undefined, { urn })
             case "stackit:index/applicationLoadBalancer:ApplicationLoadBalancer":
                 return new ApplicationLoadBalancer(name, <any>undefined, { urn })
             case "stackit:index/authorizationFolderCustomRole:AuthorizationFolderCustomRole":
@@ -1155,6 +1231,10 @@ const _module = {
                 return new MariadbCredential(name, <any>undefined, { urn })
             case "stackit:index/mariadbInstance:MariadbInstance":
                 return new MariadbInstance(name, <any>undefined, { urn })
+            case "stackit:index/modelexperimentsInstance:ModelexperimentsInstance":
+                return new ModelexperimentsInstance(name, <any>undefined, { urn })
+            case "stackit:index/modelexperimentsToken:ModelexperimentsToken":
+                return new ModelexperimentsToken(name, <any>undefined, { urn })
             case "stackit:index/modelservingToken:ModelservingToken":
                 return new ModelservingToken(name, <any>undefined, { urn })
             case "stackit:index/mongodbflexInstance:MongodbflexInstance":
@@ -1271,6 +1351,8 @@ const _module = {
                 return new SkeCluster(name, <any>undefined, { urn })
             case "stackit:index/skeKubeconfig:SkeKubeconfig":
                 return new SkeKubeconfig(name, <any>undefined, { urn })
+            case "stackit:index/sqlserverflexDatabase:SqlserverflexDatabase":
+                return new SqlserverflexDatabase(name, <any>undefined, { urn })
             case "stackit:index/sqlserverflexInstance:SqlserverflexInstance":
                 return new SqlserverflexInstance(name, <any>undefined, { urn })
             case "stackit:index/sqlserverflexUser:SqlserverflexUser":
@@ -1306,6 +1388,9 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("stackit", "index/affinityGroup", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/albCertificate", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/albWafConfiguration", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/albWafCustomRuleGroup", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/albWafManagedRuleSet", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/applicationLoadBalancer", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/authorizationFolderCustomRole", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/authorizationFolderRoleAssignment", _module)
@@ -1338,6 +1423,8 @@ pulumi.runtime.registerResourceModule("stackit", "index/logsAccessToken", _modul
 pulumi.runtime.registerResourceModule("stackit", "index/logsInstance", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/mariadbCredential", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/mariadbInstance", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/modelexperimentsInstance", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/modelexperimentsToken", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/modelservingToken", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/mongodbflexInstance", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/mongodbflexUser", _module)
@@ -1396,6 +1483,7 @@ pulumi.runtime.registerResourceModule("stackit", "index/sfsResourcePool", _modul
 pulumi.runtime.registerResourceModule("stackit", "index/sfsShare", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/skeCluster", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/skeKubeconfig", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/sqlserverflexDatabase", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/sqlserverflexInstance", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/sqlserverflexUser", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/telemetrylink", _module)

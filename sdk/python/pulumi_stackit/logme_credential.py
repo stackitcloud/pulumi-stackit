@@ -20,15 +20,19 @@ __all__ = ['LogmeCredentialArgs', 'LogmeCredential']
 class LogmeCredentialArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[_builtins.str],
-                 project_id: pulumi.Input[_builtins.str]):
+                 project_id: pulumi.Input[_builtins.str],
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a LogmeCredential resource.
 
         :param pulumi.Input[_builtins.str] instance_id: ID of the LogMe instance.
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the instance is associated.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "project_id", project_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
 
     @_builtins.property
     @pulumi.getter(name="instanceId")
@@ -54,6 +58,18 @@ class LogmeCredentialArgs:
     def project_id(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "project_id", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
 
 @pulumi.input_type
 class _LogmeCredentialState:
@@ -64,6 +80,7 @@ class _LogmeCredentialState:
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  port: pulumi.Input[Optional[_builtins.int]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  uri: pulumi.Input[Optional[_builtins.str]] = None,
                  username: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -72,6 +89,7 @@ class _LogmeCredentialState:
         :param pulumi.Input[_builtins.str] credential_id: The credential's ID.
         :param pulumi.Input[_builtins.str] instance_id: ID of the LogMe instance.
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the instance is associated.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
         if credential_id is not None:
             pulumi.set(__self__, "credential_id", credential_id)
@@ -85,6 +103,8 @@ class _LogmeCredentialState:
             pulumi.set(__self__, "port", port)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
         if uri is not None:
             pulumi.set(__self__, "uri", uri)
         if username is not None:
@@ -155,6 +175,18 @@ class _LogmeCredentialState:
 
     @_builtins.property
     @pulumi.getter
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+    @_builtins.property
+    @pulumi.getter
     def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "uri")
 
@@ -180,6 +212,7 @@ class LogmeCredential(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         LogMe credential resource schema. Must have a `region` specified in the provider configuration.
@@ -195,6 +228,7 @@ class LogmeCredential(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_id: ID of the LogMe instance.
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the instance is associated.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
         ...
     @overload
@@ -229,6 +263,7 @@ class LogmeCredential(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -244,6 +279,7 @@ class LogmeCredential(pulumi.CustomResource):
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
+            __props__.__dict__["region"] = region
             __props__.__dict__["credential_id"] = None
             __props__.__dict__["host"] = None
             __props__.__dict__["password"] = None
@@ -268,6 +304,7 @@ class LogmeCredential(pulumi.CustomResource):
             password: pulumi.Input[Optional[_builtins.str]] = None,
             port: pulumi.Input[Optional[_builtins.int]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
             uri: pulumi.Input[Optional[_builtins.str]] = None,
             username: pulumi.Input[Optional[_builtins.str]] = None) -> 'LogmeCredential':
         """
@@ -280,6 +317,7 @@ class LogmeCredential(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] credential_id: The credential's ID.
         :param pulumi.Input[_builtins.str] instance_id: ID of the LogMe instance.
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the instance is associated.
+        :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -291,6 +329,7 @@ class LogmeCredential(pulumi.CustomResource):
         __props__.__dict__["password"] = password
         __props__.__dict__["port"] = port
         __props__.__dict__["project_id"] = project_id
+        __props__.__dict__["region"] = region
         __props__.__dict__["uri"] = uri
         __props__.__dict__["username"] = username
         return LogmeCredential(resource_name, opts=opts, __props__=__props__)
@@ -333,6 +372,14 @@ class LogmeCredential(pulumi.CustomResource):
         STACKIT Project ID to which the instance is associated.
         """
         return pulumi.get(self, "project_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[_builtins.str]:
+        """
+        The resource region. If not defined, the provider region is used.
+        """
+        return pulumi.get(self, "region")
 
     @_builtins.property
     @pulumi.getter

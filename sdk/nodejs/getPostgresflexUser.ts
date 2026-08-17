@@ -45,6 +45,9 @@ export interface GetPostgresflexUserArgs {
  * A collection of values returned by getPostgresflexUser.
  */
 export interface GetPostgresflexUserResult {
+    /**
+     * @deprecated host is deprecated and will be removed after February 2027. The host can be retrieved from the instance `connection_info.write.host`.
+     */
     readonly host: string;
     /**
      * Terraform's internal data source. ID. It is structured as "`projectId`,`region`,`instanceId`,`userId`".
@@ -54,6 +57,9 @@ export interface GetPostgresflexUserResult {
      * ID of the PostgresFlex instance.
      */
     readonly instanceId: string;
+    /**
+     * @deprecated port is deprecated and will be removed after February 2027. The port can be retrieved from the instance `connection_info.write.port`.
+     */
     readonly port: number;
     /**
      * STACKIT project ID to which the instance is associated.

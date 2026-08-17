@@ -11,22 +11,25 @@ namespace Pulumi.Stackit.Outputs
 {
 
     [OutputType]
-    public sealed class NetworkAreaNetworkRange
+    public sealed class GetPostgresflexInstanceConnectionInfoWriteResult
     {
-        public readonly string? NetworkRangeId;
         /// <summary>
-        /// Classless Inter-Domain Routing (CIDR).
+        /// The host of the instance.
         /// </summary>
-        public readonly string Prefix;
+        public readonly string Host;
+        /// <summary>
+        /// The port of the instance.
+        /// </summary>
+        public readonly int Port;
 
         [OutputConstructor]
-        private NetworkAreaNetworkRange(
-            string? networkRangeId,
+        private GetPostgresflexInstanceConnectionInfoWriteResult(
+            string host,
 
-            string prefix)
+            int port)
         {
-            NetworkRangeId = networkRangeId;
-            Prefix = prefix;
+            Host = host;
+            Port = port;
         }
     }
 }

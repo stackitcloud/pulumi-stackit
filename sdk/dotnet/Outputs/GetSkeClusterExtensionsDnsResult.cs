@@ -18,6 +18,10 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly bool Enabled;
         /// <summary>
+        /// Enables Gateway API support for ExternalDNS. The CRDs must be installed by the user. Once installed, ExternalDNS will be configured at the next cluster reconcile.
+        /// </summary>
+        public readonly bool GatewayApi;
+        /// <summary>
         /// Specify a list of domain filters for externalDNS (e.g., `foo.runs.onstackit.cloud`)
         /// </summary>
         public readonly ImmutableArray<string> Zones;
@@ -26,9 +30,12 @@ namespace Pulumi.Stackit.Outputs
         private GetSkeClusterExtensionsDnsResult(
             bool enabled,
 
+            bool gatewayApi,
+
             ImmutableArray<string> zones)
         {
             Enabled = enabled;
+            GatewayApi = gatewayApi;
             Zones = zones;
         }
     }

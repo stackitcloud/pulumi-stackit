@@ -39,6 +39,8 @@ type LogmeInstance struct {
 	PlanName pulumi.StringOutput `pulumi:"planName"`
 	// STACKIT project ID to which the instance is associated.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringOutput `pulumi:"region"`
 	// The service version.
 	Version pulumi.StringOutput `pulumi:"version"`
 }
@@ -99,6 +101,8 @@ type logmeInstanceState struct {
 	PlanName *string `pulumi:"planName"`
 	// STACKIT project ID to which the instance is associated.
 	ProjectId *string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 	// The service version.
 	Version *string `pulumi:"version"`
 }
@@ -121,6 +125,8 @@ type LogmeInstanceState struct {
 	PlanName pulumi.StringPtrInput
 	// STACKIT project ID to which the instance is associated.
 	ProjectId pulumi.StringPtrInput
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput
 	// The service version.
 	Version pulumi.StringPtrInput
 }
@@ -138,6 +144,8 @@ type logmeInstanceArgs struct {
 	PlanName string `pulumi:"planName"`
 	// STACKIT project ID to which the instance is associated.
 	ProjectId string `pulumi:"projectId"`
+	// The resource region. If not defined, the provider region is used.
+	Region *string `pulumi:"region"`
 	// The service version.
 	Version string `pulumi:"version"`
 }
@@ -152,6 +160,8 @@ type LogmeInstanceArgs struct {
 	PlanName pulumi.StringInput
 	// STACKIT project ID to which the instance is associated.
 	ProjectId pulumi.StringInput
+	// The resource region. If not defined, the provider region is used.
+	Region pulumi.StringPtrInput
 	// The service version.
 	Version pulumi.StringInput
 }
@@ -291,6 +301,11 @@ func (o LogmeInstanceOutput) PlanName() pulumi.StringOutput {
 // STACKIT project ID to which the instance is associated.
 func (o LogmeInstanceOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LogmeInstance) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// The resource region. If not defined, the provider region is used.
+func (o LogmeInstanceOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v *LogmeInstance) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
 // The service version.
