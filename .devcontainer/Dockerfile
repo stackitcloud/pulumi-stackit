@@ -1,4 +1,4 @@
-FROM  --platform=linux/amd64 pulumi/pulumi:3.257.0
+FROM  --platform=linux/amd64 pulumi/pulumi:3.258.0
 
 
 # create a directory for pulumictl and download the binary to it and set to PATH
