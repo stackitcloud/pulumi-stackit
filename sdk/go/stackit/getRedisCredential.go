@@ -59,12 +59,8 @@ type LookupRedisCredentialResult struct {
 }
 
 func LookupRedisCredentialOutput(ctx *pulumi.Context, args LookupRedisCredentialOutputArgs, opts ...pulumi.InvokeOption) LookupRedisCredentialResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRedisCredentialResultOutput, error) {
-			args := v.(LookupRedisCredentialArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getRedisCredential:getRedisCredential", args, LookupRedisCredentialResultOutput{}, options).(LookupRedisCredentialResultOutput), nil
-		}).(LookupRedisCredentialResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getRedisCredential:getRedisCredential", args, LookupRedisCredentialResultOutput{}, options).(LookupRedisCredentialResultOutput)
 }
 
 // A collection of arguments for invoking getRedisCredential.

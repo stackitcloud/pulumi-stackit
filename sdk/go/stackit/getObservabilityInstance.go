@@ -102,12 +102,8 @@ type LookupObservabilityInstanceResult struct {
 }
 
 func LookupObservabilityInstanceOutput(ctx *pulumi.Context, args LookupObservabilityInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupObservabilityInstanceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupObservabilityInstanceResultOutput, error) {
-			args := v.(LookupObservabilityInstanceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getObservabilityInstance:getObservabilityInstance", args, LookupObservabilityInstanceResultOutput{}, options).(LookupObservabilityInstanceResultOutput), nil
-		}).(LookupObservabilityInstanceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getObservabilityInstance:getObservabilityInstance", args, LookupObservabilityInstanceResultOutput{}, options).(LookupObservabilityInstanceResultOutput)
 }
 
 // A collection of arguments for invoking getObservabilityInstance.

@@ -63,12 +63,8 @@ type LookupVpnConnectionResult struct {
 }
 
 func LookupVpnConnectionOutput(ctx *pulumi.Context, args LookupVpnConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupVpnConnectionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupVpnConnectionResultOutput, error) {
-			args := v.(LookupVpnConnectionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getVpnConnection:getVpnConnection", args, LookupVpnConnectionResultOutput{}, options).(LookupVpnConnectionResultOutput), nil
-		}).(LookupVpnConnectionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getVpnConnection:getVpnConnection", args, LookupVpnConnectionResultOutput{}, options).(LookupVpnConnectionResultOutput)
 }
 
 // A collection of arguments for invoking getVpnConnection.

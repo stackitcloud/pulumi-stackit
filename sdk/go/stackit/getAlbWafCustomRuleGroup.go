@@ -13,8 +13,6 @@ import (
 
 // ALB WAF Custom Rule Group resource schema. Uses the `defaultRegion` specified in the provider configuration as a fallback in case no `region` is defined on resource level.
 //
-// > This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
-//
 // ## Example Usage
 func LookupAlbWafCustomRuleGroup(ctx *pulumi.Context, args *LookupAlbWafCustomRuleGroupArgs, opts ...pulumi.InvokeOption) (*LookupAlbWafCustomRuleGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
@@ -51,12 +49,8 @@ type LookupAlbWafCustomRuleGroupResult struct {
 }
 
 func LookupAlbWafCustomRuleGroupOutput(ctx *pulumi.Context, args LookupAlbWafCustomRuleGroupOutputArgs, opts ...pulumi.InvokeOption) LookupAlbWafCustomRuleGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAlbWafCustomRuleGroupResultOutput, error) {
-			args := v.(LookupAlbWafCustomRuleGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getAlbWafCustomRuleGroup:getAlbWafCustomRuleGroup", args, LookupAlbWafCustomRuleGroupResultOutput{}, options).(LookupAlbWafCustomRuleGroupResultOutput), nil
-		}).(LookupAlbWafCustomRuleGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getAlbWafCustomRuleGroup:getAlbWafCustomRuleGroup", args, LookupAlbWafCustomRuleGroupResultOutput{}, options).(LookupAlbWafCustomRuleGroupResultOutput)
 }
 
 // A collection of arguments for invoking getAlbWafCustomRuleGroup.

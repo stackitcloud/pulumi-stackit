@@ -84,12 +84,8 @@ type LookupDnsZoneResult struct {
 }
 
 func LookupDnsZoneOutput(ctx *pulumi.Context, args LookupDnsZoneOutputArgs, opts ...pulumi.InvokeOption) LookupDnsZoneResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDnsZoneResultOutput, error) {
-			args := v.(LookupDnsZoneArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getDnsZone:getDnsZone", args, LookupDnsZoneResultOutput{}, options).(LookupDnsZoneResultOutput), nil
-		}).(LookupDnsZoneResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getDnsZone:getDnsZone", args, LookupDnsZoneResultOutput{}, options).(LookupDnsZoneResultOutput)
 }
 
 // A collection of arguments for invoking getDnsZone.

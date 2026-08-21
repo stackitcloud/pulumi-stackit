@@ -53,12 +53,8 @@ type LookupSecretsmanagerUserResult struct {
 }
 
 func LookupSecretsmanagerUserOutput(ctx *pulumi.Context, args LookupSecretsmanagerUserOutputArgs, opts ...pulumi.InvokeOption) LookupSecretsmanagerUserResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSecretsmanagerUserResultOutput, error) {
-			args := v.(LookupSecretsmanagerUserArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getSecretsmanagerUser:getSecretsmanagerUser", args, LookupSecretsmanagerUserResultOutput{}, options).(LookupSecretsmanagerUserResultOutput), nil
-		}).(LookupSecretsmanagerUserResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getSecretsmanagerUser:getSecretsmanagerUser", args, LookupSecretsmanagerUserResultOutput{}, options).(LookupSecretsmanagerUserResultOutput)
 }
 
 // A collection of arguments for invoking getSecretsmanagerUser.

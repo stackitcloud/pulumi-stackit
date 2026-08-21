@@ -46,12 +46,8 @@ type GetSfsSnapshotPoliciesResult struct {
 }
 
 func GetSfsSnapshotPoliciesOutput(ctx *pulumi.Context, args GetSfsSnapshotPoliciesOutputArgs, opts ...pulumi.InvokeOption) GetSfsSnapshotPoliciesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSfsSnapshotPoliciesResultOutput, error) {
-			args := v.(GetSfsSnapshotPoliciesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getSfsSnapshotPolicies:getSfsSnapshotPolicies", args, GetSfsSnapshotPoliciesResultOutput{}, options).(GetSfsSnapshotPoliciesResultOutput), nil
-		}).(GetSfsSnapshotPoliciesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getSfsSnapshotPolicies:getSfsSnapshotPolicies", args, GetSfsSnapshotPoliciesResultOutput{}, options).(GetSfsSnapshotPoliciesResultOutput)
 }
 
 // A collection of arguments for invoking getSfsSnapshotPolicies.

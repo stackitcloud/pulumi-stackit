@@ -49,12 +49,8 @@ type GetEdgecloudInstancesResult struct {
 }
 
 func GetEdgecloudInstancesOutput(ctx *pulumi.Context, args GetEdgecloudInstancesOutputArgs, opts ...pulumi.InvokeOption) GetEdgecloudInstancesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetEdgecloudInstancesResultOutput, error) {
-			args := v.(GetEdgecloudInstancesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getEdgecloudInstances:getEdgecloudInstances", args, GetEdgecloudInstancesResultOutput{}, options).(GetEdgecloudInstancesResultOutput), nil
-		}).(GetEdgecloudInstancesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getEdgecloudInstances:getEdgecloudInstances", args, GetEdgecloudInstancesResultOutput{}, options).(GetEdgecloudInstancesResultOutput)
 }
 
 // A collection of arguments for invoking getEdgecloudInstances.

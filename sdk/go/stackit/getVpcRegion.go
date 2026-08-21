@@ -51,12 +51,8 @@ type LookupVpcRegionResult struct {
 }
 
 func LookupVpcRegionOutput(ctx *pulumi.Context, args LookupVpcRegionOutputArgs, opts ...pulumi.InvokeOption) LookupVpcRegionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupVpcRegionResultOutput, error) {
-			args := v.(LookupVpcRegionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getVpcRegion:getVpcRegion", args, LookupVpcRegionResultOutput{}, options).(LookupVpcRegionResultOutput), nil
-		}).(LookupVpcRegionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getVpcRegion:getVpcRegion", args, LookupVpcRegionResultOutput{}, options).(LookupVpcRegionResultOutput)
 }
 
 // A collection of arguments for invoking getVpcRegion.

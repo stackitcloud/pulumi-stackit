@@ -57,12 +57,8 @@ type LookupPostgresflexUserResult struct {
 }
 
 func LookupPostgresflexUserOutput(ctx *pulumi.Context, args LookupPostgresflexUserOutputArgs, opts ...pulumi.InvokeOption) LookupPostgresflexUserResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPostgresflexUserResultOutput, error) {
-			args := v.(LookupPostgresflexUserArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getPostgresflexUser:getPostgresflexUser", args, LookupPostgresflexUserResultOutput{}, options).(LookupPostgresflexUserResultOutput), nil
-		}).(LookupPostgresflexUserResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getPostgresflexUser:getPostgresflexUser", args, LookupPostgresflexUserResultOutput{}, options).(LookupPostgresflexUserResultOutput)
 }
 
 // A collection of arguments for invoking getPostgresflexUser.

@@ -87,7 +87,7 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.str] dremio_custom_endpoint: Custom endpoint for the Dremio service
         :param pulumi.Input[_builtins.str] edgecloud_custom_endpoint: Custom endpoint for the Edge Cloud service
         :param pulumi.Input[_builtins.bool] enable_beta_resources: Enable beta resources. Default is false.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] experiments: Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, network, routing-tables, vpc
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] experiments: Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, network, routing-tables, vpc, ske
         :param pulumi.Input[_builtins.str] git_custom_endpoint: Custom endpoint for the Git service
         :param pulumi.Input[_builtins.str] iaas_custom_endpoint: Custom endpoint for the IaaS service
         :param pulumi.Input[_builtins.str] intake_custom_endpoint: Custom endpoint for the Intake service
@@ -379,7 +379,7 @@ class ProviderArgs:
     @pulumi.getter
     def experiments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, network, routing-tables, vpc
+        Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, network, routing-tables, vpc, ske
         """
         return pulumi.get(self, "experiments")
 
@@ -974,7 +974,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[_builtins.str] dremio_custom_endpoint: Custom endpoint for the Dremio service
         :param pulumi.Input[_builtins.str] edgecloud_custom_endpoint: Custom endpoint for the Edge Cloud service
         :param pulumi.Input[_builtins.bool] enable_beta_resources: Enable beta resources. Default is false.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] experiments: Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, network, routing-tables, vpc
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] experiments: Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, network, routing-tables, vpc, ske
         :param pulumi.Input[_builtins.str] git_custom_endpoint: Custom endpoint for the Git service
         :param pulumi.Input[_builtins.str] iaas_custom_endpoint: Custom endpoint for the IaaS service
         :param pulumi.Input[_builtins.str] intake_custom_endpoint: Custom endpoint for the Intake service

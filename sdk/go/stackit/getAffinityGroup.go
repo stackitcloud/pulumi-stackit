@@ -53,12 +53,8 @@ type LookupAffinityGroupResult struct {
 }
 
 func LookupAffinityGroupOutput(ctx *pulumi.Context, args LookupAffinityGroupOutputArgs, opts ...pulumi.InvokeOption) LookupAffinityGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAffinityGroupResultOutput, error) {
-			args := v.(LookupAffinityGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getAffinityGroup:getAffinityGroup", args, LookupAffinityGroupResultOutput{}, options).(LookupAffinityGroupResultOutput), nil
-		}).(LookupAffinityGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getAffinityGroup:getAffinityGroup", args, LookupAffinityGroupResultOutput{}, options).(LookupAffinityGroupResultOutput)
 }
 
 // A collection of arguments for invoking getAffinityGroup.

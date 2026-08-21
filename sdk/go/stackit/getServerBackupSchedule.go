@@ -59,12 +59,8 @@ type LookupServerBackupScheduleResult struct {
 }
 
 func LookupServerBackupScheduleOutput(ctx *pulumi.Context, args LookupServerBackupScheduleOutputArgs, opts ...pulumi.InvokeOption) LookupServerBackupScheduleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupServerBackupScheduleResultOutput, error) {
-			args := v.(LookupServerBackupScheduleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getServerBackupSchedule:getServerBackupSchedule", args, LookupServerBackupScheduleResultOutput{}, options).(LookupServerBackupScheduleResultOutput), nil
-		}).(LookupServerBackupScheduleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getServerBackupSchedule:getServerBackupSchedule", args, LookupServerBackupScheduleResultOutput{}, options).(LookupServerBackupScheduleResultOutput)
 }
 
 // A collection of arguments for invoking getServerBackupSchedule.

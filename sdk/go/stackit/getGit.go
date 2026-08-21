@@ -61,12 +61,8 @@ type LookupGitResult struct {
 }
 
 func LookupGitOutput(ctx *pulumi.Context, args LookupGitOutputArgs, opts ...pulumi.InvokeOption) LookupGitResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupGitResultOutput, error) {
-			args := v.(LookupGitArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getGit:getGit", args, LookupGitResultOutput{}, options).(LookupGitResultOutput), nil
-		}).(LookupGitResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getGit:getGit", args, LookupGitResultOutput{}, options).(LookupGitResultOutput)
 }
 
 // A collection of arguments for invoking getGit.

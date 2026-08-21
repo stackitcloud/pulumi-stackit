@@ -53,12 +53,8 @@ type GetIaasProjectResult struct {
 }
 
 func GetIaasProjectOutput(ctx *pulumi.Context, args GetIaasProjectOutputArgs, opts ...pulumi.InvokeOption) GetIaasProjectResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetIaasProjectResultOutput, error) {
-			args := v.(GetIaasProjectArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getIaasProject:getIaasProject", args, GetIaasProjectResultOutput{}, options).(GetIaasProjectResultOutput), nil
-		}).(GetIaasProjectResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getIaasProject:getIaasProject", args, GetIaasProjectResultOutput{}, options).(GetIaasProjectResultOutput)
 }
 
 // A collection of arguments for invoking getIaasProject.

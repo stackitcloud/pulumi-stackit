@@ -67,12 +67,8 @@ type LookupSecurityGroupRuleResult struct {
 }
 
 func LookupSecurityGroupRuleOutput(ctx *pulumi.Context, args LookupSecurityGroupRuleOutputArgs, opts ...pulumi.InvokeOption) LookupSecurityGroupRuleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSecurityGroupRuleResultOutput, error) {
-			args := v.(LookupSecurityGroupRuleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getSecurityGroupRule:getSecurityGroupRule", args, LookupSecurityGroupRuleResultOutput{}, options).(LookupSecurityGroupRuleResultOutput), nil
-		}).(LookupSecurityGroupRuleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getSecurityGroupRule:getSecurityGroupRule", args, LookupSecurityGroupRuleResultOutput{}, options).(LookupSecurityGroupRuleResultOutput)
 }
 
 // A collection of arguments for invoking getSecurityGroupRule.

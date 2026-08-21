@@ -47,12 +47,8 @@ type LookupServerUpdateEnableResult struct {
 }
 
 func LookupServerUpdateEnableOutput(ctx *pulumi.Context, args LookupServerUpdateEnableOutputArgs, opts ...pulumi.InvokeOption) LookupServerUpdateEnableResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupServerUpdateEnableResultOutput, error) {
-			args := v.(LookupServerUpdateEnableArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getServerUpdateEnable:getServerUpdateEnable", args, LookupServerUpdateEnableResultOutput{}, options).(LookupServerUpdateEnableResultOutput), nil
-		}).(LookupServerUpdateEnableResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getServerUpdateEnable:getServerUpdateEnable", args, LookupServerUpdateEnableResultOutput{}, options).(LookupServerUpdateEnableResultOutput)
 }
 
 // A collection of arguments for invoking getServerUpdateEnable.

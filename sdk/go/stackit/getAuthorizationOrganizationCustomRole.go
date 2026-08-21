@@ -49,12 +49,8 @@ type LookupAuthorizationOrganizationCustomRoleResult struct {
 }
 
 func LookupAuthorizationOrganizationCustomRoleOutput(ctx *pulumi.Context, args LookupAuthorizationOrganizationCustomRoleOutputArgs, opts ...pulumi.InvokeOption) LookupAuthorizationOrganizationCustomRoleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAuthorizationOrganizationCustomRoleResultOutput, error) {
-			args := v.(LookupAuthorizationOrganizationCustomRoleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getAuthorizationOrganizationCustomRole:getAuthorizationOrganizationCustomRole", args, LookupAuthorizationOrganizationCustomRoleResultOutput{}, options).(LookupAuthorizationOrganizationCustomRoleResultOutput), nil
-		}).(LookupAuthorizationOrganizationCustomRoleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getAuthorizationOrganizationCustomRole:getAuthorizationOrganizationCustomRole", args, LookupAuthorizationOrganizationCustomRoleResultOutput{}, options).(LookupAuthorizationOrganizationCustomRoleResultOutput)
 }
 
 // A collection of arguments for invoking getAuthorizationOrganizationCustomRole.

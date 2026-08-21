@@ -47,12 +47,8 @@ type LookupServerBackupEnableResult struct {
 }
 
 func LookupServerBackupEnableOutput(ctx *pulumi.Context, args LookupServerBackupEnableOutputArgs, opts ...pulumi.InvokeOption) LookupServerBackupEnableResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupServerBackupEnableResultOutput, error) {
-			args := v.(LookupServerBackupEnableArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getServerBackupEnable:getServerBackupEnable", args, LookupServerBackupEnableResultOutput{}, options).(LookupServerBackupEnableResultOutput), nil
-		}).(LookupServerBackupEnableResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getServerBackupEnable:getServerBackupEnable", args, LookupServerBackupEnableResultOutput{}, options).(LookupServerBackupEnableResultOutput)
 }
 
 // A collection of arguments for invoking getServerBackupEnable.

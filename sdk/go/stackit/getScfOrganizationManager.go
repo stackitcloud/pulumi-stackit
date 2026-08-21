@@ -57,12 +57,8 @@ type LookupScfOrganizationManagerResult struct {
 }
 
 func LookupScfOrganizationManagerOutput(ctx *pulumi.Context, args LookupScfOrganizationManagerOutputArgs, opts ...pulumi.InvokeOption) LookupScfOrganizationManagerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupScfOrganizationManagerResultOutput, error) {
-			args := v.(LookupScfOrganizationManagerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getScfOrganizationManager:getScfOrganizationManager", args, LookupScfOrganizationManagerResultOutput{}, options).(LookupScfOrganizationManagerResultOutput), nil
-		}).(LookupScfOrganizationManagerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getScfOrganizationManager:getScfOrganizationManager", args, LookupScfOrganizationManagerResultOutput{}, options).(LookupScfOrganizationManagerResultOutput)
 }
 
 // A collection of arguments for invoking getScfOrganizationManager.

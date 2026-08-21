@@ -55,12 +55,8 @@ type GetScfPlatformResult struct {
 }
 
 func GetScfPlatformOutput(ctx *pulumi.Context, args GetScfPlatformOutputArgs, opts ...pulumi.InvokeOption) GetScfPlatformResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetScfPlatformResultOutput, error) {
-			args := v.(GetScfPlatformArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getScfPlatform:getScfPlatform", args, GetScfPlatformResultOutput{}, options).(GetScfPlatformResultOutput), nil
-		}).(GetScfPlatformResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getScfPlatform:getScfPlatform", args, GetScfPlatformResultOutput{}, options).(GetScfPlatformResultOutput)
 }
 
 // A collection of arguments for invoking getScfPlatform.

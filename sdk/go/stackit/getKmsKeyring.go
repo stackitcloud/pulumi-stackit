@@ -51,12 +51,8 @@ type LookupKmsKeyringResult struct {
 }
 
 func LookupKmsKeyringOutput(ctx *pulumi.Context, args LookupKmsKeyringOutputArgs, opts ...pulumi.InvokeOption) LookupKmsKeyringResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupKmsKeyringResultOutput, error) {
-			args := v.(LookupKmsKeyringArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getKmsKeyring:getKmsKeyring", args, LookupKmsKeyringResultOutput{}, options).(LookupKmsKeyringResultOutput), nil
-		}).(LookupKmsKeyringResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getKmsKeyring:getKmsKeyring", args, LookupKmsKeyringResultOutput{}, options).(LookupKmsKeyringResultOutput)
 }
 
 // A collection of arguments for invoking getKmsKeyring.

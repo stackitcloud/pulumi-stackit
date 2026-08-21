@@ -71,12 +71,8 @@ type LookupVpcRoutingTableResult struct {
 }
 
 func LookupVpcRoutingTableOutput(ctx *pulumi.Context, args LookupVpcRoutingTableOutputArgs, opts ...pulumi.InvokeOption) LookupVpcRoutingTableResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupVpcRoutingTableResultOutput, error) {
-			args := v.(LookupVpcRoutingTableArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getVpcRoutingTable:getVpcRoutingTable", args, LookupVpcRoutingTableResultOutput{}, options).(LookupVpcRoutingTableResultOutput), nil
-		}).(LookupVpcRoutingTableResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getVpcRoutingTable:getVpcRoutingTable", args, LookupVpcRoutingTableResultOutput{}, options).(LookupVpcRoutingTableResultOutput)
 }
 
 // A collection of arguments for invoking getVpcRoutingTable.

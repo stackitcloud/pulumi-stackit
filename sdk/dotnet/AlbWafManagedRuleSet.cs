@@ -12,8 +12,6 @@ namespace Pulumi.Stackit
     /// <summary>
     /// ALB WAF Managed Rule Set resource schema. Uses the `DefaultRegion` specified in the provider configuration as a fallback in case no `Region` is defined on resource level.
     /// 
-    /// &gt; This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
-    /// 
     /// ## Example Usage
     /// </summary>
     [StackitResourceType("stackit:index/albWafManagedRuleSet:AlbWafManagedRuleSet")]

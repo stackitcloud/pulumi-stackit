@@ -65,12 +65,8 @@ type LookupKmsKeyResult struct {
 }
 
 func LookupKmsKeyOutput(ctx *pulumi.Context, args LookupKmsKeyOutputArgs, opts ...pulumi.InvokeOption) LookupKmsKeyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupKmsKeyResultOutput, error) {
-			args := v.(LookupKmsKeyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getKmsKey:getKmsKey", args, LookupKmsKeyResultOutput{}, options).(LookupKmsKeyResultOutput), nil
-		}).(LookupKmsKeyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getKmsKey:getKmsKey", args, LookupKmsKeyResultOutput{}, options).(LookupKmsKeyResultOutput)
 }
 
 // A collection of arguments for invoking getKmsKey.

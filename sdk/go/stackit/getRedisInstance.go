@@ -61,12 +61,8 @@ type LookupRedisInstanceResult struct {
 }
 
 func LookupRedisInstanceOutput(ctx *pulumi.Context, args LookupRedisInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupRedisInstanceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRedisInstanceResultOutput, error) {
-			args := v.(LookupRedisInstanceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getRedisInstance:getRedisInstance", args, LookupRedisInstanceResultOutput{}, options).(LookupRedisInstanceResultOutput), nil
-		}).(LookupRedisInstanceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getRedisInstance:getRedisInstance", args, LookupRedisInstanceResultOutput{}, options).(LookupRedisInstanceResultOutput)
 }
 
 // A collection of arguments for invoking getRedisInstance.

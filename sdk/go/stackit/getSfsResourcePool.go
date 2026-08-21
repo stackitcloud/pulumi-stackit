@@ -69,12 +69,8 @@ type LookupSfsResourcePoolResult struct {
 }
 
 func LookupSfsResourcePoolOutput(ctx *pulumi.Context, args LookupSfsResourcePoolOutputArgs, opts ...pulumi.InvokeOption) LookupSfsResourcePoolResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSfsResourcePoolResultOutput, error) {
-			args := v.(LookupSfsResourcePoolArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getSfsResourcePool:getSfsResourcePool", args, LookupSfsResourcePoolResultOutput{}, options).(LookupSfsResourcePoolResultOutput), nil
-		}).(LookupSfsResourcePoolResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getSfsResourcePool:getSfsResourcePool", args, LookupSfsResourcePoolResultOutput{}, options).(LookupSfsResourcePoolResultOutput)
 }
 
 // A collection of arguments for invoking getSfsResourcePool.

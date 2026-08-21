@@ -71,7 +71,7 @@ Enable beta resources. Default is false.
 
 experiments: Optional[str]
 """
-Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, network, routing-tables, vpc
+Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, network, routing-tables, vpc, ske
 """
 
 gitCustomEndpoint: Optional[str]

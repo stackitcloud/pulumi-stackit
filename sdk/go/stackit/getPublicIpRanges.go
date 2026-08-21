@@ -35,10 +35,8 @@ type GetPublicIpRangesResult struct {
 }
 
 func GetPublicIpRangesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetPublicIpRangesResultOutput {
-	return pulumi.ToOutput(0).ApplyT(func(int) (GetPublicIpRangesResultOutput, error) {
-		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-		return ctx.InvokeOutput("stackit:index/getPublicIpRanges:getPublicIpRanges", nil, GetPublicIpRangesResultOutput{}, options).(GetPublicIpRangesResultOutput), nil
-	}).(GetPublicIpRangesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getPublicIpRanges:getPublicIpRanges", nil, GetPublicIpRangesResultOutput{}, options).(GetPublicIpRangesResultOutput)
 }
 
 // A collection of values returned by getPublicIpRanges.

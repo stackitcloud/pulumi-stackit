@@ -61,12 +61,8 @@ type LookupTelemetryrouterInstanceResult struct {
 }
 
 func LookupTelemetryrouterInstanceOutput(ctx *pulumi.Context, args LookupTelemetryrouterInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupTelemetryrouterInstanceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTelemetryrouterInstanceResultOutput, error) {
-			args := v.(LookupTelemetryrouterInstanceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getTelemetryrouterInstance:getTelemetryrouterInstance", args, LookupTelemetryrouterInstanceResultOutput{}, options).(LookupTelemetryrouterInstanceResultOutput), nil
-		}).(LookupTelemetryrouterInstanceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getTelemetryrouterInstance:getTelemetryrouterInstance", args, LookupTelemetryrouterInstanceResultOutput{}, options).(LookupTelemetryrouterInstanceResultOutput)
 }
 
 // A collection of arguments for invoking getTelemetryrouterInstance.

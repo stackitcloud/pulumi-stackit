@@ -53,12 +53,8 @@ type LookupObjectstorageCredentialResult struct {
 }
 
 func LookupObjectstorageCredentialOutput(ctx *pulumi.Context, args LookupObjectstorageCredentialOutputArgs, opts ...pulumi.InvokeOption) LookupObjectstorageCredentialResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupObjectstorageCredentialResultOutput, error) {
-			args := v.(LookupObjectstorageCredentialArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getObjectstorageCredential:getObjectstorageCredential", args, LookupObjectstorageCredentialResultOutput{}, options).(LookupObjectstorageCredentialResultOutput), nil
-		}).(LookupObjectstorageCredentialResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getObjectstorageCredential:getObjectstorageCredential", args, LookupObjectstorageCredentialResultOutput{}, options).(LookupObjectstorageCredentialResultOutput)
 }
 
 // A collection of arguments for invoking getObjectstorageCredential.

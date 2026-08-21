@@ -144,7 +144,7 @@ namespace Pulumi.Stackit
 
         private static readonly __Value<ImmutableArray<string>> _experiments = new __Value<ImmutableArray<string>>(() => __config.GetObject<ImmutableArray<string>>("experiments"));
         /// <summary>
-        /// Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, network, routing-tables, vpc
+        /// Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, network, routing-tables, vpc, ske
         /// </summary>
         public static ImmutableArray<string> Experiments
         {

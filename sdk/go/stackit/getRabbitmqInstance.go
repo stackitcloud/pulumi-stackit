@@ -61,12 +61,8 @@ type LookupRabbitmqInstanceResult struct {
 }
 
 func LookupRabbitmqInstanceOutput(ctx *pulumi.Context, args LookupRabbitmqInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupRabbitmqInstanceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRabbitmqInstanceResultOutput, error) {
-			args := v.(LookupRabbitmqInstanceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getRabbitmqInstance:getRabbitmqInstance", args, LookupRabbitmqInstanceResultOutput{}, options).(LookupRabbitmqInstanceResultOutput), nil
-		}).(LookupRabbitmqInstanceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getRabbitmqInstance:getRabbitmqInstance", args, LookupRabbitmqInstanceResultOutput{}, options).(LookupRabbitmqInstanceResultOutput)
 }
 
 // A collection of arguments for invoking getRabbitmqInstance.

@@ -45,12 +45,8 @@ type GetSkeMachineImageVersionsResult struct {
 }
 
 func GetSkeMachineImageVersionsOutput(ctx *pulumi.Context, args GetSkeMachineImageVersionsOutputArgs, opts ...pulumi.InvokeOption) GetSkeMachineImageVersionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSkeMachineImageVersionsResultOutput, error) {
-			args := v.(GetSkeMachineImageVersionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getSkeMachineImageVersions:getSkeMachineImageVersions", args, GetSkeMachineImageVersionsResultOutput{}, options).(GetSkeMachineImageVersionsResultOutput), nil
-		}).(GetSkeMachineImageVersionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getSkeMachineImageVersions:getSkeMachineImageVersions", args, GetSkeMachineImageVersionsResultOutput{}, options).(GetSkeMachineImageVersionsResultOutput)
 }
 
 // A collection of arguments for invoking getSkeMachineImageVersions.

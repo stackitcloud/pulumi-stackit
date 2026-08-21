@@ -63,12 +63,8 @@ type LookupTelemetryrouterAccessTokenResult struct {
 }
 
 func LookupTelemetryrouterAccessTokenOutput(ctx *pulumi.Context, args LookupTelemetryrouterAccessTokenOutputArgs, opts ...pulumi.InvokeOption) LookupTelemetryrouterAccessTokenResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTelemetryrouterAccessTokenResultOutput, error) {
-			args := v.(LookupTelemetryrouterAccessTokenArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getTelemetryrouterAccessToken:getTelemetryrouterAccessToken", args, LookupTelemetryrouterAccessTokenResultOutput{}, options).(LookupTelemetryrouterAccessTokenResultOutput), nil
-		}).(LookupTelemetryrouterAccessTokenResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getTelemetryrouterAccessToken:getTelemetryrouterAccessToken", args, LookupTelemetryrouterAccessTokenResultOutput{}, options).(LookupTelemetryrouterAccessTokenResultOutput)
 }
 
 // A collection of arguments for invoking getTelemetryrouterAccessToken.

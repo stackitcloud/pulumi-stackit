@@ -57,12 +57,8 @@ type LookupCdnDistributionResult struct {
 }
 
 func LookupCdnDistributionOutput(ctx *pulumi.Context, args LookupCdnDistributionOutputArgs, opts ...pulumi.InvokeOption) LookupCdnDistributionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCdnDistributionResultOutput, error) {
-			args := v.(LookupCdnDistributionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getCdnDistribution:getCdnDistribution", args, LookupCdnDistributionResultOutput{}, options).(LookupCdnDistributionResultOutput), nil
-		}).(LookupCdnDistributionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getCdnDistribution:getCdnDistribution", args, LookupCdnDistributionResultOutput{}, options).(LookupCdnDistributionResultOutput)
 }
 
 // A collection of arguments for invoking getCdnDistribution.

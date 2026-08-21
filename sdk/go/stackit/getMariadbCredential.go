@@ -58,12 +58,8 @@ type LookupMariadbCredentialResult struct {
 }
 
 func LookupMariadbCredentialOutput(ctx *pulumi.Context, args LookupMariadbCredentialOutputArgs, opts ...pulumi.InvokeOption) LookupMariadbCredentialResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMariadbCredentialResultOutput, error) {
-			args := v.(LookupMariadbCredentialArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getMariadbCredential:getMariadbCredential", args, LookupMariadbCredentialResultOutput{}, options).(LookupMariadbCredentialResultOutput), nil
-		}).(LookupMariadbCredentialResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getMariadbCredential:getMariadbCredential", args, LookupMariadbCredentialResultOutput{}, options).(LookupMariadbCredentialResultOutput)
 }
 
 // A collection of arguments for invoking getMariadbCredential.

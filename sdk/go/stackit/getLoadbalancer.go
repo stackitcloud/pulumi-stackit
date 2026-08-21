@@ -69,12 +69,8 @@ type LookupLoadbalancerResult struct {
 }
 
 func LookupLoadbalancerOutput(ctx *pulumi.Context, args LookupLoadbalancerOutputArgs, opts ...pulumi.InvokeOption) LookupLoadbalancerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupLoadbalancerResultOutput, error) {
-			args := v.(LookupLoadbalancerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getLoadbalancer:getLoadbalancer", args, LookupLoadbalancerResultOutput{}, options).(LookupLoadbalancerResultOutput), nil
-		}).(LookupLoadbalancerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getLoadbalancer:getLoadbalancer", args, LookupLoadbalancerResultOutput{}, options).(LookupLoadbalancerResultOutput)
 }
 
 // A collection of arguments for invoking getLoadbalancer.

@@ -241,8 +241,6 @@ class AlbWafConfiguration(pulumi.CustomResource):
         """
         ALB WAF Custom Rule Group resource schema. Uses the `default_region` specified in the provider configuration as a fallback in case no `region` is defined on resource level.
 
-        > This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
-
         ## Example Usage
 
 
@@ -263,8 +261,6 @@ class AlbWafConfiguration(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ALB WAF Custom Rule Group resource schema. Uses the `default_region` specified in the provider configuration as a fallback in case no `region` is defined on resource level.
-
-        > This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
 
         ## Example Usage
 

@@ -47,12 +47,8 @@ type GetSecretsmanagerSecretGroupRoleBindingsV1Result struct {
 }
 
 func GetSecretsmanagerSecretGroupRoleBindingsV1Output(ctx *pulumi.Context, args GetSecretsmanagerSecretGroupRoleBindingsV1OutputArgs, opts ...pulumi.InvokeOption) GetSecretsmanagerSecretGroupRoleBindingsV1ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSecretsmanagerSecretGroupRoleBindingsV1ResultOutput, error) {
-			args := v.(GetSecretsmanagerSecretGroupRoleBindingsV1Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getSecretsmanagerSecretGroupRoleBindingsV1:getSecretsmanagerSecretGroupRoleBindingsV1", args, GetSecretsmanagerSecretGroupRoleBindingsV1ResultOutput{}, options).(GetSecretsmanagerSecretGroupRoleBindingsV1ResultOutput), nil
-		}).(GetSecretsmanagerSecretGroupRoleBindingsV1ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getSecretsmanagerSecretGroupRoleBindingsV1:getSecretsmanagerSecretGroupRoleBindingsV1", args, GetSecretsmanagerSecretGroupRoleBindingsV1ResultOutput{}, options).(GetSecretsmanagerSecretGroupRoleBindingsV1ResultOutput)
 }
 
 // A collection of arguments for invoking getSecretsmanagerSecretGroupRoleBindingsV1.

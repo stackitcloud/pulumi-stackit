@@ -51,12 +51,8 @@ type LookupResourcemanagerFolderResult struct {
 }
 
 func LookupResourcemanagerFolderOutput(ctx *pulumi.Context, args LookupResourcemanagerFolderOutputArgs, opts ...pulumi.InvokeOption) LookupResourcemanagerFolderResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupResourcemanagerFolderResultOutput, error) {
-			args := v.(LookupResourcemanagerFolderArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getResourcemanagerFolder:getResourcemanagerFolder", args, LookupResourcemanagerFolderResultOutput{}, options).(LookupResourcemanagerFolderResultOutput), nil
-		}).(LookupResourcemanagerFolderResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getResourcemanagerFolder:getResourcemanagerFolder", args, LookupResourcemanagerFolderResultOutput{}, options).(LookupResourcemanagerFolderResultOutput)
 }
 
 // A collection of arguments for invoking getResourcemanagerFolder.

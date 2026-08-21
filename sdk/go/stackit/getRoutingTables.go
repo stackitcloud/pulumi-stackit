@@ -53,12 +53,8 @@ type GetRoutingTablesResult struct {
 }
 
 func GetRoutingTablesOutput(ctx *pulumi.Context, args GetRoutingTablesOutputArgs, opts ...pulumi.InvokeOption) GetRoutingTablesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRoutingTablesResultOutput, error) {
-			args := v.(GetRoutingTablesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getRoutingTables:getRoutingTables", args, GetRoutingTablesResultOutput{}, options).(GetRoutingTablesResultOutput), nil
-		}).(GetRoutingTablesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getRoutingTables:getRoutingTables", args, GetRoutingTablesResultOutput{}, options).(GetRoutingTablesResultOutput)
 }
 
 // A collection of arguments for invoking getRoutingTables.

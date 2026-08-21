@@ -59,12 +59,8 @@ type LookupModelexperimentsTokenResult struct {
 }
 
 func LookupModelexperimentsTokenOutput(ctx *pulumi.Context, args LookupModelexperimentsTokenOutputArgs, opts ...pulumi.InvokeOption) LookupModelexperimentsTokenResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupModelexperimentsTokenResultOutput, error) {
-			args := v.(LookupModelexperimentsTokenArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getModelexperimentsToken:getModelexperimentsToken", args, LookupModelexperimentsTokenResultOutput{}, options).(LookupModelexperimentsTokenResultOutput), nil
-		}).(LookupModelexperimentsTokenResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getModelexperimentsToken:getModelexperimentsToken", args, LookupModelexperimentsTokenResultOutput{}, options).(LookupModelexperimentsTokenResultOutput)
 }
 
 // A collection of arguments for invoking getModelexperimentsToken.

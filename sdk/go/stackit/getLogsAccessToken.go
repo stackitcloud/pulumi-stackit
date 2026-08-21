@@ -65,12 +65,8 @@ type LookupLogsAccessTokenResult struct {
 }
 
 func LookupLogsAccessTokenOutput(ctx *pulumi.Context, args LookupLogsAccessTokenOutputArgs, opts ...pulumi.InvokeOption) LookupLogsAccessTokenResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupLogsAccessTokenResultOutput, error) {
-			args := v.(LookupLogsAccessTokenArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getLogsAccessToken:getLogsAccessToken", args, LookupLogsAccessTokenResultOutput{}, options).(LookupLogsAccessTokenResultOutput), nil
-		}).(LookupLogsAccessTokenResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getLogsAccessToken:getLogsAccessToken", args, LookupLogsAccessTokenResultOutput{}, options).(LookupLogsAccessTokenResultOutput)
 }
 
 // A collection of arguments for invoking getLogsAccessToken.

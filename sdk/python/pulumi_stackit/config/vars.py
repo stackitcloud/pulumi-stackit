@@ -100,7 +100,7 @@ class _ExportableConfig(types.ModuleType):
     @_builtins.property
     def experiments(self) -> Optional[str]:
         """
-        Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, network, routing-tables, vpc
+        Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, network, routing-tables, vpc, ske
         """
         return __config__.get('experiments')
 

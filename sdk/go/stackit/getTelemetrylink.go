@@ -59,12 +59,8 @@ type LookupTelemetrylinkResult struct {
 }
 
 func LookupTelemetrylinkOutput(ctx *pulumi.Context, args LookupTelemetrylinkOutputArgs, opts ...pulumi.InvokeOption) LookupTelemetrylinkResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupTelemetrylinkResultOutput, error) {
-			args := v.(LookupTelemetrylinkArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getTelemetrylink:getTelemetrylink", args, LookupTelemetrylinkResultOutput{}, options).(LookupTelemetrylinkResultOutput), nil
-		}).(LookupTelemetrylinkResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getTelemetrylink:getTelemetrylink", args, LookupTelemetrylinkResultOutput{}, options).(LookupTelemetrylinkResultOutput)
 }
 
 // A collection of arguments for invoking getTelemetrylink.

@@ -45,12 +45,8 @@ type GetSkeKubernetesVersionsResult struct {
 }
 
 func GetSkeKubernetesVersionsOutput(ctx *pulumi.Context, args GetSkeKubernetesVersionsOutputArgs, opts ...pulumi.InvokeOption) GetSkeKubernetesVersionsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSkeKubernetesVersionsResultOutput, error) {
-			args := v.(GetSkeKubernetesVersionsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getSkeKubernetesVersions:getSkeKubernetesVersions", args, GetSkeKubernetesVersionsResultOutput{}, options).(GetSkeKubernetesVersionsResultOutput), nil
-		}).(GetSkeKubernetesVersionsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getSkeKubernetesVersions:getSkeKubernetesVersions", args, GetSkeKubernetesVersionsResultOutput{}, options).(GetSkeKubernetesVersionsResultOutput)
 }
 
 // A collection of arguments for invoking getSkeKubernetesVersions.
