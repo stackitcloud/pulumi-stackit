@@ -4,7 +4,7 @@ go 1.26.0
 
 require (
 	github.com/stackitcloud/pulumi-stackit/provider/pkg/version v0.0.6
-	github.com/stackitcloud/terraform-provider-stackit v0.112.0
+	github.com/stackitcloud/terraform-provider-stackit v0.113.0
 )
 
 require (
@@ -24,7 +24,8 @@ require (
 	github.com/stackitcloud/stackit-sdk-go/services/telemetrylink v0.4.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/telemetryrouter v0.4.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/vpn v0.14.0 // indirect
-	golang.org/x/text v0.39.0 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20260803160001-6ac0973c030d // indirect
+	google.golang.org/grpc v1.83.0 // indirect
 )
 
 require (
@@ -68,6 +69,6 @@ require (
 	github.com/teambition/rrule-go v1.8.2 // indirect
 	github.com/vmihailenco/msgpack/v5 v5.4.1 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
-	golang.org/x/mod v0.38.0 // indirect
-	golang.org/x/sys v0.46.0 // indirect
+	golang.org/x/mod v0.39.0 // indirect
+	golang.org/x/sys v0.47.0 // indirect
 )
