@@ -68,12 +68,8 @@ type LookupSfsShareResult struct {
 }
 
 func LookupSfsShareOutput(ctx *pulumi.Context, args LookupSfsShareOutputArgs, opts ...pulumi.InvokeOption) LookupSfsShareResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSfsShareResultOutput, error) {
-			args := v.(LookupSfsShareArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getSfsShare:getSfsShare", args, LookupSfsShareResultOutput{}, options).(LookupSfsShareResultOutput), nil
-		}).(LookupSfsShareResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getSfsShare:getSfsShare", args, LookupSfsShareResultOutput{}, options).(LookupSfsShareResultOutput)
 }
 
 // A collection of arguments for invoking getSfsShare.

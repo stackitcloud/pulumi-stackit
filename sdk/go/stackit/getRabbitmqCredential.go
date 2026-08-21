@@ -61,12 +61,8 @@ type LookupRabbitmqCredentialResult struct {
 }
 
 func LookupRabbitmqCredentialOutput(ctx *pulumi.Context, args LookupRabbitmqCredentialOutputArgs, opts ...pulumi.InvokeOption) LookupRabbitmqCredentialResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRabbitmqCredentialResultOutput, error) {
-			args := v.(LookupRabbitmqCredentialArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getRabbitmqCredential:getRabbitmqCredential", args, LookupRabbitmqCredentialResultOutput{}, options).(LookupRabbitmqCredentialResultOutput), nil
-		}).(LookupRabbitmqCredentialResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getRabbitmqCredential:getRabbitmqCredential", args, LookupRabbitmqCredentialResultOutput{}, options).(LookupRabbitmqCredentialResultOutput)
 }
 
 // A collection of arguments for invoking getRabbitmqCredential.

@@ -57,12 +57,8 @@ type LookupSqlserverflexUserResult struct {
 }
 
 func LookupSqlserverflexUserOutput(ctx *pulumi.Context, args LookupSqlserverflexUserOutputArgs, opts ...pulumi.InvokeOption) LookupSqlserverflexUserResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSqlserverflexUserResultOutput, error) {
-			args := v.(LookupSqlserverflexUserArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getSqlserverflexUser:getSqlserverflexUser", args, LookupSqlserverflexUserResultOutput{}, options).(LookupSqlserverflexUserResultOutput), nil
-		}).(LookupSqlserverflexUserResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getSqlserverflexUser:getSqlserverflexUser", args, LookupSqlserverflexUserResultOutput{}, options).(LookupSqlserverflexUserResultOutput)
 }
 
 // A collection of arguments for invoking getSqlserverflexUser.

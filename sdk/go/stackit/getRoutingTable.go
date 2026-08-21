@@ -71,12 +71,8 @@ type LookupRoutingTableResult struct {
 }
 
 func LookupRoutingTableOutput(ctx *pulumi.Context, args LookupRoutingTableOutputArgs, opts ...pulumi.InvokeOption) LookupRoutingTableResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupRoutingTableResultOutput, error) {
-			args := v.(LookupRoutingTableArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getRoutingTable:getRoutingTable", args, LookupRoutingTableResultOutput{}, options).(LookupRoutingTableResultOutput), nil
-		}).(LookupRoutingTableResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getRoutingTable:getRoutingTable", args, LookupRoutingTableResultOutput{}, options).(LookupRoutingTableResultOutput)
 }
 
 // A collection of arguments for invoking getRoutingTable.

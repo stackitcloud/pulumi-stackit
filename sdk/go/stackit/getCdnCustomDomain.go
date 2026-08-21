@@ -55,12 +55,8 @@ type LookupCdnCustomDomainResult struct {
 }
 
 func LookupCdnCustomDomainOutput(ctx *pulumi.Context, args LookupCdnCustomDomainOutputArgs, opts ...pulumi.InvokeOption) LookupCdnCustomDomainResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupCdnCustomDomainResultOutput, error) {
-			args := v.(LookupCdnCustomDomainArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getCdnCustomDomain:getCdnCustomDomain", args, LookupCdnCustomDomainResultOutput{}, options).(LookupCdnCustomDomainResultOutput), nil
-		}).(LookupCdnCustomDomainResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getCdnCustomDomain:getCdnCustomDomain", args, LookupCdnCustomDomainResultOutput{}, options).(LookupCdnCustomDomainResultOutput)
 }
 
 // A collection of arguments for invoking getCdnCustomDomain.

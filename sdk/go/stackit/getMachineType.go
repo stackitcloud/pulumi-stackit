@@ -52,12 +52,8 @@ type GetMachineTypeResult struct {
 }
 
 func GetMachineTypeOutput(ctx *pulumi.Context, args GetMachineTypeOutputArgs, opts ...pulumi.InvokeOption) GetMachineTypeResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetMachineTypeResultOutput, error) {
-			args := v.(GetMachineTypeArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getMachineType:getMachineType", args, GetMachineTypeResultOutput{}, options).(GetMachineTypeResultOutput), nil
-		}).(GetMachineTypeResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getMachineType:getMachineType", args, GetMachineTypeResultOutput{}, options).(GetMachineTypeResultOutput)
 }
 
 // A collection of arguments for invoking getMachineType.

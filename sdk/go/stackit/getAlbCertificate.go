@@ -49,12 +49,8 @@ type LookupAlbCertificateResult struct {
 }
 
 func LookupAlbCertificateOutput(ctx *pulumi.Context, args LookupAlbCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupAlbCertificateResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAlbCertificateResultOutput, error) {
-			args := v.(LookupAlbCertificateArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getAlbCertificate:getAlbCertificate", args, LookupAlbCertificateResultOutput{}, options).(LookupAlbCertificateResultOutput), nil
-		}).(LookupAlbCertificateResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getAlbCertificate:getAlbCertificate", args, LookupAlbCertificateResultOutput{}, options).(LookupAlbCertificateResultOutput)
 }
 
 // A collection of arguments for invoking getAlbCertificate.

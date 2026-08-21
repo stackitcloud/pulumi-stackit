@@ -55,12 +55,8 @@ type LookupPostgresflexDatabaseResult struct {
 }
 
 func LookupPostgresflexDatabaseOutput(ctx *pulumi.Context, args LookupPostgresflexDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupPostgresflexDatabaseResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPostgresflexDatabaseResultOutput, error) {
-			args := v.(LookupPostgresflexDatabaseArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getPostgresflexDatabase:getPostgresflexDatabase", args, LookupPostgresflexDatabaseResultOutput{}, options).(LookupPostgresflexDatabaseResultOutput), nil
-		}).(LookupPostgresflexDatabaseResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getPostgresflexDatabase:getPostgresflexDatabase", args, LookupPostgresflexDatabaseResultOutput{}, options).(LookupPostgresflexDatabaseResultOutput)
 }
 
 // A collection of arguments for invoking getPostgresflexDatabase.

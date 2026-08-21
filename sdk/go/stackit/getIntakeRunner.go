@@ -61,12 +61,8 @@ type LookupIntakeRunnerResult struct {
 }
 
 func LookupIntakeRunnerOutput(ctx *pulumi.Context, args LookupIntakeRunnerOutputArgs, opts ...pulumi.InvokeOption) LookupIntakeRunnerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupIntakeRunnerResultOutput, error) {
-			args := v.(LookupIntakeRunnerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getIntakeRunner:getIntakeRunner", args, LookupIntakeRunnerResultOutput{}, options).(LookupIntakeRunnerResultOutput), nil
-		}).(LookupIntakeRunnerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getIntakeRunner:getIntakeRunner", args, LookupIntakeRunnerResultOutput{}, options).(LookupIntakeRunnerResultOutput)
 }
 
 // A collection of arguments for invoking getIntakeRunner.

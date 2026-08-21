@@ -76,12 +76,8 @@ type LookupSqlserverflexInstanceResult struct {
 }
 
 func LookupSqlserverflexInstanceOutput(ctx *pulumi.Context, args LookupSqlserverflexInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupSqlserverflexInstanceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSqlserverflexInstanceResultOutput, error) {
-			args := v.(LookupSqlserverflexInstanceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getSqlserverflexInstance:getSqlserverflexInstance", args, LookupSqlserverflexInstanceResultOutput{}, options).(LookupSqlserverflexInstanceResultOutput), nil
-		}).(LookupSqlserverflexInstanceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getSqlserverflexInstance:getSqlserverflexInstance", args, LookupSqlserverflexInstanceResultOutput{}, options).(LookupSqlserverflexInstanceResultOutput)
 }
 
 // A collection of arguments for invoking getSqlserverflexInstance.

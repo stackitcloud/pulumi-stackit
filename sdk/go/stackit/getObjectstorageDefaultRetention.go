@@ -51,12 +51,8 @@ type LookupObjectstorageDefaultRetentionResult struct {
 }
 
 func LookupObjectstorageDefaultRetentionOutput(ctx *pulumi.Context, args LookupObjectstorageDefaultRetentionOutputArgs, opts ...pulumi.InvokeOption) LookupObjectstorageDefaultRetentionResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupObjectstorageDefaultRetentionResultOutput, error) {
-			args := v.(LookupObjectstorageDefaultRetentionArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getObjectstorageDefaultRetention:getObjectstorageDefaultRetention", args, LookupObjectstorageDefaultRetentionResultOutput{}, options).(LookupObjectstorageDefaultRetentionResultOutput), nil
-		}).(LookupObjectstorageDefaultRetentionResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getObjectstorageDefaultRetention:getObjectstorageDefaultRetention", args, LookupObjectstorageDefaultRetentionResultOutput{}, options).(LookupObjectstorageDefaultRetentionResultOutput)
 }
 
 // A collection of arguments for invoking getObjectstorageDefaultRetention.

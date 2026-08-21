@@ -58,12 +58,8 @@ type LookupOpensearchCredentialResult struct {
 }
 
 func LookupOpensearchCredentialOutput(ctx *pulumi.Context, args LookupOpensearchCredentialOutputArgs, opts ...pulumi.InvokeOption) LookupOpensearchCredentialResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOpensearchCredentialResultOutput, error) {
-			args := v.(LookupOpensearchCredentialArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getOpensearchCredential:getOpensearchCredential", args, LookupOpensearchCredentialResultOutput{}, options).(LookupOpensearchCredentialResultOutput), nil
-		}).(LookupOpensearchCredentialResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getOpensearchCredential:getOpensearchCredential", args, LookupOpensearchCredentialResultOutput{}, options).(LookupOpensearchCredentialResultOutput)
 }
 
 // A collection of arguments for invoking getOpensearchCredential.

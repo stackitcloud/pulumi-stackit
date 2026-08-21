@@ -61,12 +61,8 @@ type LookupOpensearchInstanceResult struct {
 }
 
 func LookupOpensearchInstanceOutput(ctx *pulumi.Context, args LookupOpensearchInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupOpensearchInstanceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupOpensearchInstanceResultOutput, error) {
-			args := v.(LookupOpensearchInstanceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getOpensearchInstance:getOpensearchInstance", args, LookupOpensearchInstanceResultOutput{}, options).(LookupOpensearchInstanceResultOutput), nil
-		}).(LookupOpensearchInstanceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getOpensearchInstance:getOpensearchInstance", args, LookupOpensearchInstanceResultOutput{}, options).(LookupOpensearchInstanceResultOutput)
 }
 
 // A collection of arguments for invoking getOpensearchInstance.

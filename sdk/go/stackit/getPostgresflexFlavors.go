@@ -47,12 +47,8 @@ type GetPostgresflexFlavorsResult struct {
 }
 
 func GetPostgresflexFlavorsOutput(ctx *pulumi.Context, args GetPostgresflexFlavorsOutputArgs, opts ...pulumi.InvokeOption) GetPostgresflexFlavorsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetPostgresflexFlavorsResultOutput, error) {
-			args := v.(GetPostgresflexFlavorsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getPostgresflexFlavors:getPostgresflexFlavors", args, GetPostgresflexFlavorsResultOutput{}, options).(GetPostgresflexFlavorsResultOutput), nil
-		}).(GetPostgresflexFlavorsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getPostgresflexFlavors:getPostgresflexFlavors", args, GetPostgresflexFlavorsResultOutput{}, options).(GetPostgresflexFlavorsResultOutput)
 }
 
 // A collection of arguments for invoking getPostgresflexFlavors.

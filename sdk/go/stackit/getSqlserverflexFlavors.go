@@ -47,12 +47,8 @@ type GetSqlserverflexFlavorsResult struct {
 }
 
 func GetSqlserverflexFlavorsOutput(ctx *pulumi.Context, args GetSqlserverflexFlavorsOutputArgs, opts ...pulumi.InvokeOption) GetSqlserverflexFlavorsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetSqlserverflexFlavorsResultOutput, error) {
-			args := v.(GetSqlserverflexFlavorsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getSqlserverflexFlavors:getSqlserverflexFlavors", args, GetSqlserverflexFlavorsResultOutput{}, options).(GetSqlserverflexFlavorsResultOutput), nil
-		}).(GetSqlserverflexFlavorsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getSqlserverflexFlavors:getSqlserverflexFlavors", args, GetSqlserverflexFlavorsResultOutput{}, options).(GetSqlserverflexFlavorsResultOutput)
 }
 
 // A collection of arguments for invoking getSqlserverflexFlavors.

@@ -59,12 +59,8 @@ type LookupDremioInstanceResult struct {
 }
 
 func LookupDremioInstanceOutput(ctx *pulumi.Context, args LookupDremioInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupDremioInstanceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDremioInstanceResultOutput, error) {
-			args := v.(LookupDremioInstanceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getDremioInstance:getDremioInstance", args, LookupDremioInstanceResultOutput{}, options).(LookupDremioInstanceResultOutput), nil
-		}).(LookupDremioInstanceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getDremioInstance:getDremioInstance", args, LookupDremioInstanceResultOutput{}, options).(LookupDremioInstanceResultOutput)
 }
 
 // A collection of arguments for invoking getDremioInstance.

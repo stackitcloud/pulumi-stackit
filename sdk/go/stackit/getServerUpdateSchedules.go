@@ -48,12 +48,8 @@ type GetServerUpdateSchedulesResult struct {
 }
 
 func GetServerUpdateSchedulesOutput(ctx *pulumi.Context, args GetServerUpdateSchedulesOutputArgs, opts ...pulumi.InvokeOption) GetServerUpdateSchedulesResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetServerUpdateSchedulesResultOutput, error) {
-			args := v.(GetServerUpdateSchedulesArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getServerUpdateSchedules:getServerUpdateSchedules", args, GetServerUpdateSchedulesResultOutput{}, options).(GetServerUpdateSchedulesResultOutput), nil
-		}).(GetServerUpdateSchedulesResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getServerUpdateSchedules:getServerUpdateSchedules", args, GetServerUpdateSchedulesResultOutput{}, options).(GetServerUpdateSchedulesResultOutput)
 }
 
 // A collection of arguments for invoking getServerUpdateSchedules.

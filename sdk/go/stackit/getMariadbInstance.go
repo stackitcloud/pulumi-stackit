@@ -61,12 +61,8 @@ type LookupMariadbInstanceResult struct {
 }
 
 func LookupMariadbInstanceOutput(ctx *pulumi.Context, args LookupMariadbInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupMariadbInstanceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMariadbInstanceResultOutput, error) {
-			args := v.(LookupMariadbInstanceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getMariadbInstance:getMariadbInstance", args, LookupMariadbInstanceResultOutput{}, options).(LookupMariadbInstanceResultOutput), nil
-		}).(LookupMariadbInstanceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getMariadbInstance:getMariadbInstance", args, LookupMariadbInstanceResultOutput{}, options).(LookupMariadbInstanceResultOutput)
 }
 
 // A collection of arguments for invoking getMariadbInstance.

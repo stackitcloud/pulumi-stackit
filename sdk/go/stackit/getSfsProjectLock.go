@@ -45,12 +45,8 @@ type LookupSfsProjectLockResult struct {
 }
 
 func LookupSfsProjectLockOutput(ctx *pulumi.Context, args LookupSfsProjectLockOutputArgs, opts ...pulumi.InvokeOption) LookupSfsProjectLockResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSfsProjectLockResultOutput, error) {
-			args := v.(LookupSfsProjectLockArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getSfsProjectLock:getSfsProjectLock", args, LookupSfsProjectLockResultOutput{}, options).(LookupSfsProjectLockResultOutput), nil
-		}).(LookupSfsProjectLockResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getSfsProjectLock:getSfsProjectLock", args, LookupSfsProjectLockResultOutput{}, options).(LookupSfsProjectLockResultOutput)
 }
 
 // A collection of arguments for invoking getSfsProjectLock.

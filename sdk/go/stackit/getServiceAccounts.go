@@ -53,12 +53,8 @@ type GetServiceAccountsResult struct {
 }
 
 func GetServiceAccountsOutput(ctx *pulumi.Context, args GetServiceAccountsOutputArgs, opts ...pulumi.InvokeOption) GetServiceAccountsResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetServiceAccountsResultOutput, error) {
-			args := v.(GetServiceAccountsArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getServiceAccounts:getServiceAccounts", args, GetServiceAccountsResultOutput{}, options).(GetServiceAccountsResultOutput), nil
-		}).(GetServiceAccountsResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getServiceAccounts:getServiceAccounts", args, GetServiceAccountsResultOutput{}, options).(GetServiceAccountsResultOutput)
 }
 
 // A collection of arguments for invoking getServiceAccounts.

@@ -63,12 +63,8 @@ type LookupObservabilityScrapeconfigResult struct {
 }
 
 func LookupObservabilityScrapeconfigOutput(ctx *pulumi.Context, args LookupObservabilityScrapeconfigOutputArgs, opts ...pulumi.InvokeOption) LookupObservabilityScrapeconfigResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupObservabilityScrapeconfigResultOutput, error) {
-			args := v.(LookupObservabilityScrapeconfigArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getObservabilityScrapeconfig:getObservabilityScrapeconfig", args, LookupObservabilityScrapeconfigResultOutput{}, options).(LookupObservabilityScrapeconfigResultOutput), nil
-		}).(LookupObservabilityScrapeconfigResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getObservabilityScrapeconfig:getObservabilityScrapeconfig", args, LookupObservabilityScrapeconfigResultOutput{}, options).(LookupObservabilityScrapeconfigResultOutput)
 }
 
 // A collection of arguments for invoking getObservabilityScrapeconfig.

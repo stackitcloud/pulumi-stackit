@@ -53,12 +53,8 @@ type LookupResourcemanagerProjectResult struct {
 }
 
 func LookupResourcemanagerProjectOutput(ctx *pulumi.Context, args LookupResourcemanagerProjectOutputArgs, opts ...pulumi.InvokeOption) LookupResourcemanagerProjectResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupResourcemanagerProjectResultOutput, error) {
-			args := v.(LookupResourcemanagerProjectArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getResourcemanagerProject:getResourcemanagerProject", args, LookupResourcemanagerProjectResultOutput{}, options).(LookupResourcemanagerProjectResultOutput), nil
-		}).(LookupResourcemanagerProjectResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getResourcemanagerProject:getResourcemanagerProject", args, LookupResourcemanagerProjectResultOutput{}, options).(LookupResourcemanagerProjectResultOutput)
 }
 
 // A collection of arguments for invoking getResourcemanagerProject.

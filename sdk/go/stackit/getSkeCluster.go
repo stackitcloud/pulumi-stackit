@@ -71,12 +71,8 @@ type LookupSkeClusterResult struct {
 }
 
 func LookupSkeClusterOutput(ctx *pulumi.Context, args LookupSkeClusterOutputArgs, opts ...pulumi.InvokeOption) LookupSkeClusterResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSkeClusterResultOutput, error) {
-			args := v.(LookupSkeClusterArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getSkeCluster:getSkeCluster", args, LookupSkeClusterResultOutput{}, options).(LookupSkeClusterResultOutput), nil
-		}).(LookupSkeClusterResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getSkeCluster:getSkeCluster", args, LookupSkeClusterResultOutput{}, options).(LookupSkeClusterResultOutput)
 }
 
 // A collection of arguments for invoking getSkeCluster.

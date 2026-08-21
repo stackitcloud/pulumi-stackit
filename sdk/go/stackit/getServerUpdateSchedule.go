@@ -59,12 +59,8 @@ type LookupServerUpdateScheduleResult struct {
 }
 
 func LookupServerUpdateScheduleOutput(ctx *pulumi.Context, args LookupServerUpdateScheduleOutputArgs, opts ...pulumi.InvokeOption) LookupServerUpdateScheduleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupServerUpdateScheduleResultOutput, error) {
-			args := v.(LookupServerUpdateScheduleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getServerUpdateSchedule:getServerUpdateSchedule", args, LookupServerUpdateScheduleResultOutput{}, options).(LookupServerUpdateScheduleResultOutput), nil
-		}).(LookupServerUpdateScheduleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getServerUpdateSchedule:getServerUpdateSchedule", args, LookupServerUpdateScheduleResultOutput{}, options).(LookupServerUpdateScheduleResultOutput)
 }
 
 // A collection of arguments for invoking getServerUpdateSchedule.

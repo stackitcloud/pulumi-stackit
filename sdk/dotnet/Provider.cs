@@ -429,7 +429,7 @@ namespace Pulumi.Stackit
         private InputList<string>? _experiments;
 
         /// <summary>
-        /// Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, network, routing-tables, vpc
+        /// Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, network, routing-tables, vpc, ske
         /// </summary>
         public InputList<string> Experiments
         {

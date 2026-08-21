@@ -69,12 +69,8 @@ type LookupVpcNetworkRangeResult struct {
 }
 
 func LookupVpcNetworkRangeOutput(ctx *pulumi.Context, args LookupVpcNetworkRangeOutputArgs, opts ...pulumi.InvokeOption) LookupVpcNetworkRangeResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupVpcNetworkRangeResultOutput, error) {
-			args := v.(LookupVpcNetworkRangeArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getVpcNetworkRange:getVpcNetworkRange", args, LookupVpcNetworkRangeResultOutput{}, options).(LookupVpcNetworkRangeResultOutput), nil
-		}).(LookupVpcNetworkRangeResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getVpcNetworkRange:getVpcNetworkRange", args, LookupVpcNetworkRangeResultOutput{}, options).(LookupVpcNetworkRangeResultOutput)
 }
 
 // A collection of arguments for invoking getVpcNetworkRange.

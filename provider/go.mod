@@ -235,7 +235,8 @@ require (
 	github.com/stackitcloud/stackit-sdk-go/services/telemetrylink v0.4.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/telemetryrouter v0.4.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/vpn v0.14.0 // indirect
-	github.com/stackitcloud/terraform-provider-stackit v0.112.0 // indirect
+	github.com/stackitcloud/terraform-provider-stackit v0.113.0 // indirect
+	github.com/stretchr/objx v0.5.2 // indirect
 	github.com/teambition/rrule-go v1.8.2 // indirect
 	github.com/teekennedy/goldmark-markdown v0.3.0 // indirect
 	github.com/texttheater/golang-levenshtein v1.0.1 // indirect
@@ -268,7 +269,7 @@ require (
 	go.uber.org/multierr v1.11.0 // indirect
 	golang.org/x/crypto v0.54.0 // indirect
 	golang.org/x/exp v0.0.0-20260410095643-746e56fc9e2f // indirect
-	golang.org/x/mod v0.38.0 // indirect
+	golang.org/x/mod v0.39.0 // indirect
 	golang.org/x/net v0.57.0 // indirect
 	golang.org/x/oauth2 v0.36.0 // indirect
 	golang.org/x/sync v0.22.0 // indirect
@@ -276,7 +277,7 @@ require (
 	golang.org/x/term v0.45.0 // indirect
 	golang.org/x/text v0.40.0 // indirect
 	golang.org/x/time v0.15.0 // indirect
-	golang.org/x/tools v0.47.0 // indirect
+	golang.org/x/tools v0.48.0 // indirect
 	google.golang.org/api v0.271.0 // indirect
 	google.golang.org/appengine v1.6.8 // indirect
 	google.golang.org/genproto v0.0.0-20260128011058-8636f8732409 // indirect

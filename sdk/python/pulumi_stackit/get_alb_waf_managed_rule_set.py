@@ -129,8 +129,6 @@ def get_alb_waf_managed_rule_set(name: Optional[_builtins.str] = None,
     """
     ALB WAF Managed Rule Set DataSource schema. Uses the `default_region` specified in the provider configuration as a fallback in case no `region` is defined on datasource level.
 
-    > This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
-
     ## Example Usage
 
 
@@ -159,8 +157,6 @@ def get_alb_waf_managed_rule_set_output(name: pulumi.Input[Optional[_builtins.st
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAlbWafManagedRuleSetResult]:
     """
     ALB WAF Managed Rule Set DataSource schema. Uses the `default_region` specified in the provider configuration as a fallback in case no `region` is defined on datasource level.
-
-    > This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
 
     ## Example Usage
 

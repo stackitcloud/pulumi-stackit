@@ -66,7 +66,7 @@ func GetEnableBetaResources(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "stackit:enableBetaResources")
 }
 
-// Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, network, routing-tables, vpc
+// Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, network, routing-tables, vpc, ske
 func GetExperiments(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:experiments")
 }

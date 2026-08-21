@@ -53,12 +53,8 @@ type LookupServiceAccountFederatedIdentityProviderResult struct {
 }
 
 func LookupServiceAccountFederatedIdentityProviderOutput(ctx *pulumi.Context, args LookupServiceAccountFederatedIdentityProviderOutputArgs, opts ...pulumi.InvokeOption) LookupServiceAccountFederatedIdentityProviderResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupServiceAccountFederatedIdentityProviderResultOutput, error) {
-			args := v.(LookupServiceAccountFederatedIdentityProviderArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getServiceAccountFederatedIdentityProvider:getServiceAccountFederatedIdentityProvider", args, LookupServiceAccountFederatedIdentityProviderResultOutput{}, options).(LookupServiceAccountFederatedIdentityProviderResultOutput), nil
-		}).(LookupServiceAccountFederatedIdentityProviderResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getServiceAccountFederatedIdentityProvider:getServiceAccountFederatedIdentityProvider", args, LookupServiceAccountFederatedIdentityProviderResultOutput{}, options).(LookupServiceAccountFederatedIdentityProviderResultOutput)
 }
 
 // A collection of arguments for invoking getServiceAccountFederatedIdentityProvider.

@@ -61,12 +61,8 @@ type LookupSqlserverflexDatabaseResult struct {
 }
 
 func LookupSqlserverflexDatabaseOutput(ctx *pulumi.Context, args LookupSqlserverflexDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupSqlserverflexDatabaseResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSqlserverflexDatabaseResultOutput, error) {
-			args := v.(LookupSqlserverflexDatabaseArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getSqlserverflexDatabase:getSqlserverflexDatabase", args, LookupSqlserverflexDatabaseResultOutput{}, options).(LookupSqlserverflexDatabaseResultOutput), nil
-		}).(LookupSqlserverflexDatabaseResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getSqlserverflexDatabase:getSqlserverflexDatabase", args, LookupSqlserverflexDatabaseResultOutput{}, options).(LookupSqlserverflexDatabaseResultOutput)
 }
 
 // A collection of arguments for invoking getSqlserverflexDatabase.

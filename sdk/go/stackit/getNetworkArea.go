@@ -51,12 +51,8 @@ type LookupNetworkAreaResult struct {
 }
 
 func LookupNetworkAreaOutput(ctx *pulumi.Context, args LookupNetworkAreaOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkAreaResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupNetworkAreaResultOutput, error) {
-			args := v.(LookupNetworkAreaArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getNetworkArea:getNetworkArea", args, LookupNetworkAreaResultOutput{}, options).(LookupNetworkAreaResultOutput), nil
-		}).(LookupNetworkAreaResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getNetworkArea:getNetworkArea", args, LookupNetworkAreaResultOutput{}, options).(LookupNetworkAreaResultOutput)
 }
 
 // A collection of arguments for invoking getNetworkArea.

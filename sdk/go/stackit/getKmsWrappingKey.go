@@ -69,12 +69,8 @@ type LookupKmsWrappingKeyResult struct {
 }
 
 func LookupKmsWrappingKeyOutput(ctx *pulumi.Context, args LookupKmsWrappingKeyOutputArgs, opts ...pulumi.InvokeOption) LookupKmsWrappingKeyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupKmsWrappingKeyResultOutput, error) {
-			args := v.(LookupKmsWrappingKeyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getKmsWrappingKey:getKmsWrappingKey", args, LookupKmsWrappingKeyResultOutput{}, options).(LookupKmsWrappingKeyResultOutput), nil
-		}).(LookupKmsWrappingKeyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getKmsWrappingKey:getKmsWrappingKey", args, LookupKmsWrappingKeyResultOutput{}, options).(LookupKmsWrappingKeyResultOutput)
 }
 
 // A collection of arguments for invoking getKmsWrappingKey.

@@ -129,7 +129,7 @@ Object.defineProperty(exports, "enableBetaResources", {
 });
 
 /**
- * Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, network, routing-tables, vpc
+ * Enables experiments. These are unstable features without official support. More information can be found in the README. Available Experiments: dremio, iam, network, routing-tables, vpc, ske
  */
 export declare const experiments: string[] | undefined;
 Object.defineProperty(exports, "experiments", {

@@ -51,12 +51,8 @@ type GetVpnGatewayStatusResult struct {
 }
 
 func GetVpnGatewayStatusOutput(ctx *pulumi.Context, args GetVpnGatewayStatusOutputArgs, opts ...pulumi.InvokeOption) GetVpnGatewayStatusResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetVpnGatewayStatusResultOutput, error) {
-			args := v.(GetVpnGatewayStatusArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getVpnGatewayStatus:getVpnGatewayStatus", args, GetVpnGatewayStatusResultOutput{}, options).(GetVpnGatewayStatusResultOutput), nil
-		}).(GetVpnGatewayStatusResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getVpnGatewayStatus:getVpnGatewayStatus", args, GetVpnGatewayStatusResultOutput{}, options).(GetVpnGatewayStatusResultOutput)
 }
 
 // A collection of arguments for invoking getVpnGatewayStatus.

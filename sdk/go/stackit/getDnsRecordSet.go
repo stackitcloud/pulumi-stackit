@@ -67,12 +67,8 @@ type LookupDnsRecordSetResult struct {
 }
 
 func LookupDnsRecordSetOutput(ctx *pulumi.Context, args LookupDnsRecordSetOutputArgs, opts ...pulumi.InvokeOption) LookupDnsRecordSetResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupDnsRecordSetResultOutput, error) {
-			args := v.(LookupDnsRecordSetArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getDnsRecordSet:getDnsRecordSet", args, LookupDnsRecordSetResultOutput{}, options).(LookupDnsRecordSetResultOutput), nil
-		}).(LookupDnsRecordSetResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getDnsRecordSet:getDnsRecordSet", args, LookupDnsRecordSetResultOutput{}, options).(LookupDnsRecordSetResultOutput)
 }
 
 // A collection of arguments for invoking getDnsRecordSet.

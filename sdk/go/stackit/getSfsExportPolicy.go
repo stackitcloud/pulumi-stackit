@@ -54,12 +54,8 @@ type LookupSfsExportPolicyResult struct {
 }
 
 func LookupSfsExportPolicyOutput(ctx *pulumi.Context, args LookupSfsExportPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupSfsExportPolicyResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupSfsExportPolicyResultOutput, error) {
-			args := v.(LookupSfsExportPolicyArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getSfsExportPolicy:getSfsExportPolicy", args, LookupSfsExportPolicyResultOutput{}, options).(LookupSfsExportPolicyResultOutput), nil
-		}).(LookupSfsExportPolicyResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getSfsExportPolicy:getSfsExportPolicy", args, LookupSfsExportPolicyResultOutput{}, options).(LookupSfsExportPolicyResultOutput)
 }
 
 // A collection of arguments for invoking getSfsExportPolicy.

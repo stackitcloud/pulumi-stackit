@@ -45,12 +45,8 @@ type LookupObjectstorageComplianceLockResult struct {
 }
 
 func LookupObjectstorageComplianceLockOutput(ctx *pulumi.Context, args LookupObjectstorageComplianceLockOutputArgs, opts ...pulumi.InvokeOption) LookupObjectstorageComplianceLockResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupObjectstorageComplianceLockResultOutput, error) {
-			args := v.(LookupObjectstorageComplianceLockArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getObjectstorageComplianceLock:getObjectstorageComplianceLock", args, LookupObjectstorageComplianceLockResultOutput{}, options).(LookupObjectstorageComplianceLockResultOutput), nil
-		}).(LookupObjectstorageComplianceLockResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getObjectstorageComplianceLock:getObjectstorageComplianceLock", args, LookupObjectstorageComplianceLockResultOutput{}, options).(LookupObjectstorageComplianceLockResultOutput)
 }
 
 // A collection of arguments for invoking getObjectstorageComplianceLock.

@@ -69,12 +69,8 @@ type LookupLogsInstanceResult struct {
 }
 
 func LookupLogsInstanceOutput(ctx *pulumi.Context, args LookupLogsInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupLogsInstanceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupLogsInstanceResultOutput, error) {
-			args := v.(LookupLogsInstanceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getLogsInstance:getLogsInstance", args, LookupLogsInstanceResultOutput{}, options).(LookupLogsInstanceResultOutput), nil
-		}).(LookupLogsInstanceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getLogsInstance:getLogsInstance", args, LookupLogsInstanceResultOutput{}, options).(LookupLogsInstanceResultOutput)
 }
 
 // A collection of arguments for invoking getLogsInstance.

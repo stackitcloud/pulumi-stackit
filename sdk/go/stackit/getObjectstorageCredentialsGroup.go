@@ -51,12 +51,8 @@ type LookupObjectstorageCredentialsGroupResult struct {
 }
 
 func LookupObjectstorageCredentialsGroupOutput(ctx *pulumi.Context, args LookupObjectstorageCredentialsGroupOutputArgs, opts ...pulumi.InvokeOption) LookupObjectstorageCredentialsGroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupObjectstorageCredentialsGroupResultOutput, error) {
-			args := v.(LookupObjectstorageCredentialsGroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getObjectstorageCredentialsGroup:getObjectstorageCredentialsGroup", args, LookupObjectstorageCredentialsGroupResultOutput{}, options).(LookupObjectstorageCredentialsGroupResultOutput), nil
-		}).(LookupObjectstorageCredentialsGroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getObjectstorageCredentialsGroup:getObjectstorageCredentialsGroup", args, LookupObjectstorageCredentialsGroupResultOutput{}, options).(LookupObjectstorageCredentialsGroupResultOutput)
 }
 
 // A collection of arguments for invoking getObjectstorageCredentialsGroup.

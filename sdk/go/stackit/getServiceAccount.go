@@ -47,12 +47,8 @@ type LookupServiceAccountResult struct {
 }
 
 func LookupServiceAccountOutput(ctx *pulumi.Context, args LookupServiceAccountOutputArgs, opts ...pulumi.InvokeOption) LookupServiceAccountResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupServiceAccountResultOutput, error) {
-			args := v.(LookupServiceAccountArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getServiceAccount:getServiceAccount", args, LookupServiceAccountResultOutput{}, options).(LookupServiceAccountResultOutput), nil
-		}).(LookupServiceAccountResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getServiceAccount:getServiceAccount", args, LookupServiceAccountResultOutput{}, options).(LookupServiceAccountResultOutput)
 }
 
 // A collection of arguments for invoking getServiceAccount.

@@ -56,12 +56,8 @@ type LookupMongodbflexUserResult struct {
 }
 
 func LookupMongodbflexUserOutput(ctx *pulumi.Context, args LookupMongodbflexUserOutputArgs, opts ...pulumi.InvokeOption) LookupMongodbflexUserResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupMongodbflexUserResultOutput, error) {
-			args := v.(LookupMongodbflexUserArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getMongodbflexUser:getMongodbflexUser", args, LookupMongodbflexUserResultOutput{}, options).(LookupMongodbflexUserResultOutput), nil
-		}).(LookupMongodbflexUserResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getMongodbflexUser:getMongodbflexUser", args, LookupMongodbflexUserResultOutput{}, options).(LookupMongodbflexUserResultOutput)
 }
 
 // A collection of arguments for invoking getMongodbflexUser.

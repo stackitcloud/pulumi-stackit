@@ -13,8 +13,6 @@ import (
 
 // ALB WAF Custom Rule Group resource schema. Uses the `defaultRegion` specified in the provider configuration as a fallback in case no `region` is defined on resource level.
 //
-// > This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
-//
 // ## Example Usage
 func LookupAlbWafConfiguration(ctx *pulumi.Context, args *LookupAlbWafConfigurationArgs, opts ...pulumi.InvokeOption) (*LookupAlbWafConfigurationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
@@ -55,12 +53,8 @@ type LookupAlbWafConfigurationResult struct {
 }
 
 func LookupAlbWafConfigurationOutput(ctx *pulumi.Context, args LookupAlbWafConfigurationOutputArgs, opts ...pulumi.InvokeOption) LookupAlbWafConfigurationResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAlbWafConfigurationResultOutput, error) {
-			args := v.(LookupAlbWafConfigurationArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getAlbWafConfiguration:getAlbWafConfiguration", args, LookupAlbWafConfigurationResultOutput{}, options).(LookupAlbWafConfigurationResultOutput), nil
-		}).(LookupAlbWafConfigurationResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getAlbWafConfiguration:getAlbWafConfiguration", args, LookupAlbWafConfigurationResultOutput{}, options).(LookupAlbWafConfigurationResultOutput)
 }
 
 // A collection of arguments for invoking getAlbWafConfiguration.

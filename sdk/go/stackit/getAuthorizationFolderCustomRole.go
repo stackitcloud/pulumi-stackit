@@ -49,12 +49,8 @@ type LookupAuthorizationFolderCustomRoleResult struct {
 }
 
 func LookupAuthorizationFolderCustomRoleOutput(ctx *pulumi.Context, args LookupAuthorizationFolderCustomRoleOutputArgs, opts ...pulumi.InvokeOption) LookupAuthorizationFolderCustomRoleResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAuthorizationFolderCustomRoleResultOutput, error) {
-			args := v.(LookupAuthorizationFolderCustomRoleArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getAuthorizationFolderCustomRole:getAuthorizationFolderCustomRole", args, LookupAuthorizationFolderCustomRoleResultOutput{}, options).(LookupAuthorizationFolderCustomRoleResultOutput), nil
-		}).(LookupAuthorizationFolderCustomRoleResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getAuthorizationFolderCustomRole:getAuthorizationFolderCustomRole", args, LookupAuthorizationFolderCustomRoleResultOutput{}, options).(LookupAuthorizationFolderCustomRoleResultOutput)
 }
 
 // A collection of arguments for invoking getAuthorizationFolderCustomRole.

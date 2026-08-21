@@ -67,12 +67,8 @@ type LookupPostgresflexInstanceResult struct {
 }
 
 func LookupPostgresflexInstanceOutput(ctx *pulumi.Context, args LookupPostgresflexInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupPostgresflexInstanceResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupPostgresflexInstanceResultOutput, error) {
-			args := v.(LookupPostgresflexInstanceArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getPostgresflexInstance:getPostgresflexInstance", args, LookupPostgresflexInstanceResultOutput{}, options).(LookupPostgresflexInstanceResultOutput), nil
-		}).(LookupPostgresflexInstanceResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getPostgresflexInstance:getPostgresflexInstance", args, LookupPostgresflexInstanceResultOutput{}, options).(LookupPostgresflexInstanceResultOutput)
 }
 
 // A collection of arguments for invoking getPostgresflexInstance.

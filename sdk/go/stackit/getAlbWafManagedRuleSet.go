@@ -13,8 +13,6 @@ import (
 
 // ALB WAF Managed Rule Set DataSource schema. Uses the `defaultRegion` specified in the provider configuration as a fallback in case no `region` is defined on datasource level.
 //
-// > This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
-//
 // ## Example Usage
 func LookupAlbWafManagedRuleSet(ctx *pulumi.Context, args *LookupAlbWafManagedRuleSetArgs, opts ...pulumi.InvokeOption) (*LookupAlbWafManagedRuleSetResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
@@ -55,12 +53,8 @@ type LookupAlbWafManagedRuleSetResult struct {
 }
 
 func LookupAlbWafManagedRuleSetOutput(ctx *pulumi.Context, args LookupAlbWafManagedRuleSetOutputArgs, opts ...pulumi.InvokeOption) LookupAlbWafManagedRuleSetResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupAlbWafManagedRuleSetResultOutput, error) {
-			args := v.(LookupAlbWafManagedRuleSetArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getAlbWafManagedRuleSet:getAlbWafManagedRuleSet", args, LookupAlbWafManagedRuleSetResultOutput{}, options).(LookupAlbWafManagedRuleSetResultOutput), nil
-		}).(LookupAlbWafManagedRuleSetResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getAlbWafManagedRuleSet:getAlbWafManagedRuleSet", args, LookupAlbWafManagedRuleSetResultOutput{}, options).(LookupAlbWafManagedRuleSetResultOutput)
 }
 
 // A collection of arguments for invoking getAlbWafManagedRuleSet.

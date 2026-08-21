@@ -89,12 +89,8 @@ type GetImageV2Result struct {
 }
 
 func GetImageV2Output(ctx *pulumi.Context, args GetImageV2OutputArgs, opts ...pulumi.InvokeOption) GetImageV2ResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetImageV2ResultOutput, error) {
-			args := v.(GetImageV2Args)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getImageV2:getImageV2", args, GetImageV2ResultOutput{}, options).(GetImageV2ResultOutput), nil
-		}).(GetImageV2ResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getImageV2:getImageV2", args, GetImageV2ResultOutput{}, options).(GetImageV2ResultOutput)
 }
 
 // A collection of arguments for invoking getImageV2.

@@ -70,12 +70,8 @@ type LookupApplicationLoadBalancerResult struct {
 }
 
 func LookupApplicationLoadBalancerOutput(ctx *pulumi.Context, args LookupApplicationLoadBalancerOutputArgs, opts ...pulumi.InvokeOption) LookupApplicationLoadBalancerResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupApplicationLoadBalancerResultOutput, error) {
-			args := v.(LookupApplicationLoadBalancerArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getApplicationLoadBalancer:getApplicationLoadBalancer", args, LookupApplicationLoadBalancerResultOutput{}, options).(LookupApplicationLoadBalancerResultOutput), nil
-		}).(LookupApplicationLoadBalancerResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getApplicationLoadBalancer:getApplicationLoadBalancer", args, LookupApplicationLoadBalancerResultOutput{}, options).(LookupApplicationLoadBalancerResultOutput)
 }
 
 // A collection of arguments for invoking getApplicationLoadBalancer.

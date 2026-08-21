@@ -9,8 +9,6 @@ import * as utilities from "./utilities";
 /**
  * ALB WAF Managed Rule Set DataSource schema. Uses the `defaultRegion` specified in the provider configuration as a fallback in case no `region` is defined on datasource level.
  *
- * > This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
- *
  * ## Example Usage
  */
 export function getAlbWafManagedRuleSet(args: GetAlbWafManagedRuleSetArgs, opts?: pulumi.InvokeOptions): Promise<GetAlbWafManagedRuleSetResult> {
@@ -75,8 +73,6 @@ export interface GetAlbWafManagedRuleSetResult {
 }
 /**
  * ALB WAF Managed Rule Set DataSource schema. Uses the `defaultRegion` specified in the provider configuration as a fallback in case no `region` is defined on datasource level.
- *
- * > This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
  *
  * ## Example Usage
  */

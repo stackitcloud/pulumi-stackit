@@ -50,12 +50,8 @@ type LookupObservabilityAlertgroupResult struct {
 }
 
 func LookupObservabilityAlertgroupOutput(ctx *pulumi.Context, args LookupObservabilityAlertgroupOutputArgs, opts ...pulumi.InvokeOption) LookupObservabilityAlertgroupResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupObservabilityAlertgroupResultOutput, error) {
-			args := v.(LookupObservabilityAlertgroupArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getObservabilityAlertgroup:getObservabilityAlertgroup", args, LookupObservabilityAlertgroupResultOutput{}, options).(LookupObservabilityAlertgroupResultOutput), nil
-		}).(LookupObservabilityAlertgroupResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getObservabilityAlertgroup:getObservabilityAlertgroup", args, LookupObservabilityAlertgroupResultOutput{}, options).(LookupObservabilityAlertgroupResultOutput)
 }
 
 // A collection of arguments for invoking getObservabilityAlertgroup.

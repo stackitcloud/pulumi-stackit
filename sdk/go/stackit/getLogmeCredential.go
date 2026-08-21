@@ -56,12 +56,8 @@ type LookupLogmeCredentialResult struct {
 }
 
 func LookupLogmeCredentialOutput(ctx *pulumi.Context, args LookupLogmeCredentialOutputArgs, opts ...pulumi.InvokeOption) LookupLogmeCredentialResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (LookupLogmeCredentialResultOutput, error) {
-			args := v.(LookupLogmeCredentialArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("stackit:index/getLogmeCredential:getLogmeCredential", args, LookupLogmeCredentialResultOutput{}, options).(LookupLogmeCredentialResultOutput), nil
-		}).(LookupLogmeCredentialResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("stackit:index/getLogmeCredential:getLogmeCredential", args, LookupLogmeCredentialResultOutput{}, options).(LookupLogmeCredentialResultOutput)
 }
 
 // A collection of arguments for invoking getLogmeCredential.
