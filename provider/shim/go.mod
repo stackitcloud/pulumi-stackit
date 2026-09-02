@@ -25,7 +25,7 @@ require (
 	github.com/stackitcloud/stackit-sdk-go/services/telemetryrouter v0.4.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/vpn v0.14.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20260803160001-6ac0973c030d // indirect
-	google.golang.org/grpc v1.83.0 // indirect
+	google.golang.org/grpc v1.83.1 // indirect
 )
 
 require (
