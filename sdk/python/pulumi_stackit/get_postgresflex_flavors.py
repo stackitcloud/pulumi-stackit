@@ -98,7 +98,7 @@ class AwaitableGetPostgresflexFlavorsResult(GetPostgresflexFlavorsResult):
 
 def get_postgresflex_flavors(project_id: Optional[_builtins.str] = None,
                              region: Optional[_builtins.str] = None,
-                             timeouts: Optional[Union['GetPostgresflexFlavorsTimeoutsArgs', 'GetPostgresflexFlavorsTimeoutsArgsDict']] = None,
+                             timeouts: Optional[Union['GetPostgresflexFlavorsTimeoutsArgs', 'GetPostgresflexFlavorsTimeoutsArgsDict', 'outputs.GetPostgresflexFlavorsTimeoutsResult']] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPostgresflexFlavorsResult:
     """
     Postgres Flex flavors data source schema.
@@ -124,7 +124,7 @@ def get_postgresflex_flavors(project_id: Optional[_builtins.str] = None,
         timeouts=pulumi.get(__ret__, 'timeouts'))
 def get_postgresflex_flavors_output(project_id: pulumi.Input[Optional[_builtins.str]] = None,
                                     region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                    timeouts: pulumi.Input[Optional[Optional[Union['GetPostgresflexFlavorsTimeoutsArgs', 'GetPostgresflexFlavorsTimeoutsArgsDict']]]] = None,
+                                    timeouts: pulumi.Input[Optional[Optional[Union['GetPostgresflexFlavorsTimeoutsArgs', 'GetPostgresflexFlavorsTimeoutsArgsDict', 'outputs.GetPostgresflexFlavorsTimeoutsResult']]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPostgresflexFlavorsResult]:
     """
     Postgres Flex flavors data source schema.

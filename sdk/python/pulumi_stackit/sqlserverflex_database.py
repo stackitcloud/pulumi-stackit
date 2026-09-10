@@ -310,7 +310,7 @@ class SqlserverflexDatabase(pulumi.CustomResource):
                  owner: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['SqlserverflexDatabaseTimeoutsArgs', 'SqlserverflexDatabaseTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['SqlserverflexDatabaseTimeoutsArgs', 'SqlserverflexDatabaseTimeoutsArgsDict', 'outputs.SqlserverflexDatabaseTimeouts']]] = None,
                  __props__=None):
         """
         SQLServer Flex database resource schema.
@@ -370,7 +370,7 @@ class SqlserverflexDatabase(pulumi.CustomResource):
                  owner: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['SqlserverflexDatabaseTimeoutsArgs', 'SqlserverflexDatabaseTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['SqlserverflexDatabaseTimeoutsArgs', 'SqlserverflexDatabaseTimeoutsArgsDict', 'outputs.SqlserverflexDatabaseTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -413,7 +413,7 @@ class SqlserverflexDatabase(pulumi.CustomResource):
             owner: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['SqlserverflexDatabaseTimeoutsArgs', 'SqlserverflexDatabaseTimeoutsArgsDict']]] = None) -> 'SqlserverflexDatabase':
+            timeouts: pulumi.Input[Optional[Union['SqlserverflexDatabaseTimeoutsArgs', 'SqlserverflexDatabaseTimeoutsArgsDict', 'outputs.SqlserverflexDatabaseTimeouts']]] = None) -> 'SqlserverflexDatabase':
         """
         Get an existing SqlserverflexDatabase resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

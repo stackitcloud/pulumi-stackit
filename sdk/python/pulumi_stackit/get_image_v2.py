@@ -231,7 +231,7 @@ class AwaitableGetImageV2Result(GetImageV2Result):
             sort_ascending=self.sort_ascending)
 
 
-def get_image_v2(filter: Optional[Union['GetImageV2FilterArgs', 'GetImageV2FilterArgsDict']] = None,
+def get_image_v2(filter: Optional[Union['GetImageV2FilterArgs', 'GetImageV2FilterArgsDict', 'outputs.GetImageV2FilterResult']] = None,
                  image_id: Optional[_builtins.str] = None,
                  name: Optional[_builtins.str] = None,
                  name_regex: Optional[_builtins.str] = None,
@@ -255,7 +255,7 @@ def get_image_v2(filter: Optional[Union['GetImageV2FilterArgs', 'GetImageV2Filte
     ## Example Usage
 
 
-    :param Union['GetImageV2FilterArgs', 'GetImageV2FilterArgsDict'] filter: Additional filtering options based on image properties. Can be used independently or in conjunction with `name` or `name_regex`.
+    :param Union['GetImageV2FilterArgs', 'GetImageV2FilterArgsDict', 'outputs.GetImageV2FilterResult'] filter: Additional filtering options based on image properties. Can be used independently or in conjunction with `name` or `name_regex`.
     :param _builtins.str image_id: Image ID to fetch directly
     :param _builtins.str name: Exact image name to match. Optionally applies a `filter` block to further refine results in case multiple images share the same name. The first match is returned, optionally sorted by name in ascending order. Cannot be used together with `name_regex`.
     :param _builtins.str name_regex: Regular expression to match against image names. Optionally applies a `filter` block to narrow down results when multiple image names match the regex. The first match is returned, optionally sorted by name in ascending order. Cannot be used together with `name`.
@@ -291,7 +291,7 @@ def get_image_v2(filter: Optional[Union['GetImageV2FilterArgs', 'GetImageV2Filte
         region=pulumi.get(__ret__, 'region'),
         scope=pulumi.get(__ret__, 'scope'),
         sort_ascending=pulumi.get(__ret__, 'sort_ascending'))
-def get_image_v2_output(filter: pulumi.Input[Optional[Optional[Union['GetImageV2FilterArgs', 'GetImageV2FilterArgsDict']]]] = None,
+def get_image_v2_output(filter: pulumi.Input[Optional[Optional[Union['GetImageV2FilterArgs', 'GetImageV2FilterArgsDict', 'outputs.GetImageV2FilterResult']]]] = None,
                         image_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                         name_regex: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
@@ -315,7 +315,7 @@ def get_image_v2_output(filter: pulumi.Input[Optional[Optional[Union['GetImageV2
     ## Example Usage
 
 
-    :param Union['GetImageV2FilterArgs', 'GetImageV2FilterArgsDict'] filter: Additional filtering options based on image properties. Can be used independently or in conjunction with `name` or `name_regex`.
+    :param Union['GetImageV2FilterArgs', 'GetImageV2FilterArgsDict', 'outputs.GetImageV2FilterResult'] filter: Additional filtering options based on image properties. Can be used independently or in conjunction with `name` or `name_regex`.
     :param _builtins.str image_id: Image ID to fetch directly
     :param _builtins.str name: Exact image name to match. Optionally applies a `filter` block to further refine results in case multiple images share the same name. The first match is returned, optionally sorted by name in ascending order. Cannot be used together with `name_regex`.
     :param _builtins.str name_regex: Regular expression to match against image names. Optionally applies a `filter` block to narrow down results when multiple image names match the regex. The first match is returned, optionally sorted by name in ascending order. Cannot be used together with `name`.

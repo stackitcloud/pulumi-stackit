@@ -130,6 +130,10 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
+        /// Whether the Telemetry Link is enabled or not.
+        /// </summary>
+        public readonly bool Enabled;
+        /// <summary>
         /// Terraform's internal resource identifier. It is structured as "`ResourceType`, `ResourceId`,`Region`".
         /// </summary>
         public readonly string Id;
@@ -162,6 +166,8 @@ namespace Pulumi.Stackit
 
             string displayName,
 
+            bool enabled,
+
             string id,
 
             string? region,
@@ -177,6 +183,7 @@ namespace Pulumi.Stackit
             CreateTime = createTime;
             Description = description;
             DisplayName = displayName;
+            Enabled = enabled;
             Id = id;
             Region = region;
             ResourceId = resourceId;

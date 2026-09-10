@@ -381,7 +381,7 @@ class SfsResourcePool(pulumi.CustomResource):
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  size_gigabytes: pulumi.Input[Optional[_builtins.int]] = None,
-                 snapshot_policy: pulumi.Input[Optional[Union['SfsResourcePoolSnapshotPolicyArgs', 'SfsResourcePoolSnapshotPolicyArgsDict']]] = None,
+                 snapshot_policy: pulumi.Input[Optional[Union['SfsResourcePoolSnapshotPolicyArgs', 'SfsResourcePoolSnapshotPolicyArgsDict', 'outputs.SfsResourcePoolSnapshotPolicy']]] = None,
                  snapshots_are_visible: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
@@ -406,7 +406,7 @@ class SfsResourcePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the resource pool is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.int] size_gigabytes: Size of the resource pool (unit: gigabytes)
-        :param pulumi.Input[Union['SfsResourcePoolSnapshotPolicyArgs', 'SfsResourcePoolSnapshotPolicyArgsDict']] snapshot_policy: Name of the snapshot policy.
+        :param pulumi.Input[Union['SfsResourcePoolSnapshotPolicyArgs', 'SfsResourcePoolSnapshotPolicyArgsDict', 'outputs.SfsResourcePoolSnapshotPolicy']] snapshot_policy: Name of the snapshot policy.
         :param pulumi.Input[_builtins.bool] snapshots_are_visible: If set to true, snapshots are visible and accessible to users. (default: false)
         """
         ...
@@ -450,7 +450,7 @@ class SfsResourcePool(pulumi.CustomResource):
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  size_gigabytes: pulumi.Input[Optional[_builtins.int]] = None,
-                 snapshot_policy: pulumi.Input[Optional[Union['SfsResourcePoolSnapshotPolicyArgs', 'SfsResourcePoolSnapshotPolicyArgsDict']]] = None,
+                 snapshot_policy: pulumi.Input[Optional[Union['SfsResourcePoolSnapshotPolicyArgs', 'SfsResourcePoolSnapshotPolicyArgsDict', 'outputs.SfsResourcePoolSnapshotPolicy']]] = None,
                  snapshots_are_visible: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -501,7 +501,7 @@ class SfsResourcePool(pulumi.CustomResource):
             region: pulumi.Input[Optional[_builtins.str]] = None,
             resource_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
             size_gigabytes: pulumi.Input[Optional[_builtins.int]] = None,
-            snapshot_policy: pulumi.Input[Optional[Union['SfsResourcePoolSnapshotPolicyArgs', 'SfsResourcePoolSnapshotPolicyArgsDict']]] = None,
+            snapshot_policy: pulumi.Input[Optional[Union['SfsResourcePoolSnapshotPolicyArgs', 'SfsResourcePoolSnapshotPolicyArgsDict', 'outputs.SfsResourcePoolSnapshotPolicy']]] = None,
             snapshots_are_visible: pulumi.Input[Optional[_builtins.bool]] = None) -> 'SfsResourcePool':
         """
         Get an existing SfsResourcePool resource's state with the given name, id, and optional extra
@@ -519,7 +519,7 @@ class SfsResourcePool(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.str] resource_pool_id: Resource pool ID
         :param pulumi.Input[_builtins.int] size_gigabytes: Size of the resource pool (unit: gigabytes)
-        :param pulumi.Input[Union['SfsResourcePoolSnapshotPolicyArgs', 'SfsResourcePoolSnapshotPolicyArgsDict']] snapshot_policy: Name of the snapshot policy.
+        :param pulumi.Input[Union['SfsResourcePoolSnapshotPolicyArgs', 'SfsResourcePoolSnapshotPolicyArgsDict', 'outputs.SfsResourcePoolSnapshotPolicy']] snapshot_policy: Name of the snapshot policy.
         :param pulumi.Input[_builtins.bool] snapshots_are_visible: If set to true, snapshots are visible and accessible to users. (default: false)
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

@@ -204,7 +204,7 @@ class AwaitableGetVpcNetworkRangeResult(GetVpcNetworkRangeResult):
 def get_vpc_network_range(network_range_id: Optional[_builtins.str] = None,
                           project_id: Optional[_builtins.str] = None,
                           region: Optional[_builtins.str] = None,
-                          timeouts: Optional[Union['GetVpcNetworkRangeTimeoutsArgs', 'GetVpcNetworkRangeTimeoutsArgsDict']] = None,
+                          timeouts: Optional[Union['GetVpcNetworkRangeTimeoutsArgs', 'GetVpcNetworkRangeTimeoutsArgsDict', 'outputs.GetVpcNetworkRangeTimeoutsResult']] = None,
                           vpc_id: Optional[_builtins.str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpcNetworkRangeResult:
     """
@@ -246,7 +246,7 @@ def get_vpc_network_range(network_range_id: Optional[_builtins.str] = None,
 def get_vpc_network_range_output(network_range_id: pulumi.Input[Optional[_builtins.str]] = None,
                                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                                  region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                 timeouts: pulumi.Input[Optional[Optional[Union['GetVpcNetworkRangeTimeoutsArgs', 'GetVpcNetworkRangeTimeoutsArgsDict']]]] = None,
+                                 timeouts: pulumi.Input[Optional[Optional[Union['GetVpcNetworkRangeTimeoutsArgs', 'GetVpcNetworkRangeTimeoutsArgsDict', 'outputs.GetVpcNetworkRangeTimeoutsResult']]]] = None,
                                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcNetworkRangeResult]:
     """

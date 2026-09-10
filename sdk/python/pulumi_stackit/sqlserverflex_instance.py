@@ -511,16 +511,16 @@ class SqlserverflexInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  backup_schedule: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption: pulumi.Input[Optional[Union['SqlserverflexInstanceEncryptionArgs', 'SqlserverflexInstanceEncryptionArgsDict']]] = None,
-                 flavor: pulumi.Input[Optional[Union['SqlserverflexInstanceFlavorArgs', 'SqlserverflexInstanceFlavorArgsDict']]] = None,
+                 encryption: pulumi.Input[Optional[Union['SqlserverflexInstanceEncryptionArgs', 'SqlserverflexInstanceEncryptionArgsDict', 'outputs.SqlserverflexInstanceEncryption']]] = None,
+                 flavor: pulumi.Input[Optional[Union['SqlserverflexInstanceFlavorArgs', 'SqlserverflexInstanceFlavorArgsDict', 'outputs.SqlserverflexInstanceFlavor']]] = None,
                  flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 network: pulumi.Input[Optional[Union['SqlserverflexInstanceNetworkArgs', 'SqlserverflexInstanceNetworkArgsDict']]] = None,
-                 options: pulumi.Input[Optional[Union['SqlserverflexInstanceOptionsArgs', 'SqlserverflexInstanceOptionsArgsDict']]] = None,
+                 network: pulumi.Input[Optional[Union['SqlserverflexInstanceNetworkArgs', 'SqlserverflexInstanceNetworkArgsDict', 'outputs.SqlserverflexInstanceNetwork']]] = None,
+                 options: pulumi.Input[Optional[Union['SqlserverflexInstanceOptionsArgs', 'SqlserverflexInstanceOptionsArgsDict', 'outputs.SqlserverflexInstanceOptions']]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  retention_days: pulumi.Input[Optional[_builtins.int]] = None,
-                 storage: pulumi.Input[Optional[Union['SqlserverflexInstanceStorageArgs', 'SqlserverflexInstanceStorageArgsDict']]] = None,
+                 storage: pulumi.Input[Optional[Union['SqlserverflexInstanceStorageArgs', 'SqlserverflexInstanceStorageArgsDict', 'outputs.SqlserverflexInstanceStorage']]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -537,14 +537,14 @@ class SqlserverflexInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The Access Control List (ACL) for the SQLServer Flex instance.
         :param pulumi.Input[_builtins.str] backup_schedule: The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *") Will be required in the future. Set a value to prevent breaking changes.
-        :param pulumi.Input[Union['SqlserverflexInstanceEncryptionArgs', 'SqlserverflexInstanceEncryptionArgsDict']] encryption: Parameter to define which key to use for storage encryption.
+        :param pulumi.Input[Union['SqlserverflexInstanceEncryptionArgs', 'SqlserverflexInstanceEncryptionArgsDict', 'outputs.SqlserverflexInstanceEncryption']] encryption: Parameter to define which key to use for storage encryption.
         :param pulumi.Input[_builtins.str] flavor_id: The flavor ID of the SQLServer Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `get_sqlserverflex_flavors`.
         :param pulumi.Input[_builtins.str] name: Instance name.
-        :param pulumi.Input[Union['SqlserverflexInstanceNetworkArgs', 'SqlserverflexInstanceNetworkArgsDict']] network: The network configuration of the instance. Will be required in the future. Set a value to prevent breaking changes.
+        :param pulumi.Input[Union['SqlserverflexInstanceNetworkArgs', 'SqlserverflexInstanceNetworkArgsDict', 'outputs.SqlserverflexInstanceNetwork']] network: The network configuration of the instance. Will be required in the future. Set a value to prevent breaking changes.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the instance is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.int] retention_days: The days (30 to 90) for how long the backup files should be stored before cleaned up. Will be required in the future. Set a value to prevent breaking changes.
-        :param pulumi.Input[Union['SqlserverflexInstanceStorageArgs', 'SqlserverflexInstanceStorageArgsDict']] storage: The object containing information about the storage size and class. Will be required in the future. Set a value to prevent breaking changes.
+        :param pulumi.Input[Union['SqlserverflexInstanceStorageArgs', 'SqlserverflexInstanceStorageArgsDict', 'outputs.SqlserverflexInstanceStorage']] storage: The object containing information about the storage size and class. Will be required in the future. Set a value to prevent breaking changes.
         :param pulumi.Input[_builtins.str] version: The sqlserver version used for the instance. Possible values are: `2022`. Will be required in the future. Set a value to prevent breaking changes.
         """
         ...
@@ -580,16 +580,16 @@ class SqlserverflexInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  backup_schedule: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption: pulumi.Input[Optional[Union['SqlserverflexInstanceEncryptionArgs', 'SqlserverflexInstanceEncryptionArgsDict']]] = None,
-                 flavor: pulumi.Input[Optional[Union['SqlserverflexInstanceFlavorArgs', 'SqlserverflexInstanceFlavorArgsDict']]] = None,
+                 encryption: pulumi.Input[Optional[Union['SqlserverflexInstanceEncryptionArgs', 'SqlserverflexInstanceEncryptionArgsDict', 'outputs.SqlserverflexInstanceEncryption']]] = None,
+                 flavor: pulumi.Input[Optional[Union['SqlserverflexInstanceFlavorArgs', 'SqlserverflexInstanceFlavorArgsDict', 'outputs.SqlserverflexInstanceFlavor']]] = None,
                  flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 network: pulumi.Input[Optional[Union['SqlserverflexInstanceNetworkArgs', 'SqlserverflexInstanceNetworkArgsDict']]] = None,
-                 options: pulumi.Input[Optional[Union['SqlserverflexInstanceOptionsArgs', 'SqlserverflexInstanceOptionsArgsDict']]] = None,
+                 network: pulumi.Input[Optional[Union['SqlserverflexInstanceNetworkArgs', 'SqlserverflexInstanceNetworkArgsDict', 'outputs.SqlserverflexInstanceNetwork']]] = None,
+                 options: pulumi.Input[Optional[Union['SqlserverflexInstanceOptionsArgs', 'SqlserverflexInstanceOptionsArgsDict', 'outputs.SqlserverflexInstanceOptions']]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  retention_days: pulumi.Input[Optional[_builtins.int]] = None,
-                 storage: pulumi.Input[Optional[Union['SqlserverflexInstanceStorageArgs', 'SqlserverflexInstanceStorageArgsDict']]] = None,
+                 storage: pulumi.Input[Optional[Union['SqlserverflexInstanceStorageArgs', 'SqlserverflexInstanceStorageArgsDict', 'outputs.SqlserverflexInstanceStorage']]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -631,18 +631,18 @@ class SqlserverflexInstance(pulumi.CustomResource):
             acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             backup_schedule: pulumi.Input[Optional[_builtins.str]] = None,
             edition: pulumi.Input[Optional[_builtins.str]] = None,
-            encryption: pulumi.Input[Optional[Union['SqlserverflexInstanceEncryptionArgs', 'SqlserverflexInstanceEncryptionArgsDict']]] = None,
-            flavor: pulumi.Input[Optional[Union['SqlserverflexInstanceFlavorArgs', 'SqlserverflexInstanceFlavorArgsDict']]] = None,
+            encryption: pulumi.Input[Optional[Union['SqlserverflexInstanceEncryptionArgs', 'SqlserverflexInstanceEncryptionArgsDict', 'outputs.SqlserverflexInstanceEncryption']]] = None,
+            flavor: pulumi.Input[Optional[Union['SqlserverflexInstanceFlavorArgs', 'SqlserverflexInstanceFlavorArgsDict', 'outputs.SqlserverflexInstanceFlavor']]] = None,
             flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            network: pulumi.Input[Optional[Union['SqlserverflexInstanceNetworkArgs', 'SqlserverflexInstanceNetworkArgsDict']]] = None,
-            options: pulumi.Input[Optional[Union['SqlserverflexInstanceOptionsArgs', 'SqlserverflexInstanceOptionsArgsDict']]] = None,
+            network: pulumi.Input[Optional[Union['SqlserverflexInstanceNetworkArgs', 'SqlserverflexInstanceNetworkArgsDict', 'outputs.SqlserverflexInstanceNetwork']]] = None,
+            options: pulumi.Input[Optional[Union['SqlserverflexInstanceOptionsArgs', 'SqlserverflexInstanceOptionsArgsDict', 'outputs.SqlserverflexInstanceOptions']]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             replicas: pulumi.Input[Optional[_builtins.int]] = None,
             retention_days: pulumi.Input[Optional[_builtins.int]] = None,
-            storage: pulumi.Input[Optional[Union['SqlserverflexInstanceStorageArgs', 'SqlserverflexInstanceStorageArgsDict']]] = None,
+            storage: pulumi.Input[Optional[Union['SqlserverflexInstanceStorageArgs', 'SqlserverflexInstanceStorageArgsDict', 'outputs.SqlserverflexInstanceStorage']]] = None,
             version: pulumi.Input[Optional[_builtins.str]] = None) -> 'SqlserverflexInstance':
         """
         Get an existing SqlserverflexInstance resource's state with the given name, id, and optional extra
@@ -654,15 +654,15 @@ class SqlserverflexInstance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The Access Control List (ACL) for the SQLServer Flex instance.
         :param pulumi.Input[_builtins.str] backup_schedule: The backup schedule. Should follow the cron scheduling system format (e.g. "0 0 * * *") Will be required in the future. Set a value to prevent breaking changes.
         :param pulumi.Input[_builtins.str] edition: Edition of the MSSQL server instance.
-        :param pulumi.Input[Union['SqlserverflexInstanceEncryptionArgs', 'SqlserverflexInstanceEncryptionArgsDict']] encryption: Parameter to define which key to use for storage encryption.
+        :param pulumi.Input[Union['SqlserverflexInstanceEncryptionArgs', 'SqlserverflexInstanceEncryptionArgsDict', 'outputs.SqlserverflexInstanceEncryption']] encryption: Parameter to define which key to use for storage encryption.
         :param pulumi.Input[_builtins.str] flavor_id: The flavor ID of the SQLServer Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `get_sqlserverflex_flavors`.
         :param pulumi.Input[_builtins.str] instance_id: ID of the SQLServer Flex instance.
         :param pulumi.Input[_builtins.str] name: Instance name.
-        :param pulumi.Input[Union['SqlserverflexInstanceNetworkArgs', 'SqlserverflexInstanceNetworkArgsDict']] network: The network configuration of the instance. Will be required in the future. Set a value to prevent breaking changes.
+        :param pulumi.Input[Union['SqlserverflexInstanceNetworkArgs', 'SqlserverflexInstanceNetworkArgsDict', 'outputs.SqlserverflexInstanceNetwork']] network: The network configuration of the instance. Will be required in the future. Set a value to prevent breaking changes.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the instance is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.int] retention_days: The days (30 to 90) for how long the backup files should be stored before cleaned up. Will be required in the future. Set a value to prevent breaking changes.
-        :param pulumi.Input[Union['SqlserverflexInstanceStorageArgs', 'SqlserverflexInstanceStorageArgsDict']] storage: The object containing information about the storage size and class. Will be required in the future. Set a value to prevent breaking changes.
+        :param pulumi.Input[Union['SqlserverflexInstanceStorageArgs', 'SqlserverflexInstanceStorageArgsDict', 'outputs.SqlserverflexInstanceStorage']] storage: The object containing information about the storage size and class. Will be required in the future. Set a value to prevent breaking changes.
         :param pulumi.Input[_builtins.str] version: The sqlserver version used for the instance. Possible values are: `2022`. Will be required in the future. Set a value to prevent breaking changes.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

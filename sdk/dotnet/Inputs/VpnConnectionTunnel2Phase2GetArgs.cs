@@ -46,7 +46,7 @@ namespace Pulumi.Stackit.Inputs
         private InputList<string>? _integrityAlgorithms;
 
         /// <summary>
-        /// Integrity algorithms for Phase 2. Possible values are: `Sha1`, `Sha2256`, `Sha2384`.
+        /// Integrity algorithms for Phase 2. Possible values are: `Sha1`, `Sha2256`, `Sha2384`, `Sha2512`.
         /// </summary>
         public InputList<string> IntegrityAlgorithms
         {

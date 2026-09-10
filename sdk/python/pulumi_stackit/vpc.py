@@ -212,7 +212,7 @@ class Vpc(pulumi.CustomResource):
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['VpcTimeoutsArgs', 'VpcTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['VpcTimeoutsArgs', 'VpcTimeoutsArgsDict', 'outputs.VpcTimeouts']]] = None,
                  __props__=None):
         """
         VPC resource schema.
@@ -270,7 +270,7 @@ class Vpc(pulumi.CustomResource):
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['VpcTimeoutsArgs', 'VpcTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['VpcTimeoutsArgs', 'VpcTimeoutsArgsDict', 'outputs.VpcTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -304,7 +304,7 @@ class Vpc(pulumi.CustomResource):
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['VpcTimeoutsArgs', 'VpcTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['VpcTimeoutsArgs', 'VpcTimeoutsArgsDict', 'outputs.VpcTimeouts']]] = None,
             vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'Vpc':
         """
         Get an existing Vpc resource's state with the given name, id, and optional extra

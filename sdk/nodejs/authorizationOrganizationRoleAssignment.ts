@@ -48,7 +48,7 @@ export class AuthorizationOrganizationRoleAssignment extends pulumi.CustomResour
      */
     declare public readonly resourceId: pulumi.Output<string>;
     /**
-     * Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
+     * Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`
      */
     declare public readonly role: pulumi.Output<string>;
     /**
@@ -101,7 +101,7 @@ export interface AuthorizationOrganizationRoleAssignmentState {
      */
     resourceId?: pulumi.Input<string | undefined>;
     /**
-     * Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
+     * Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`
      */
     role?: pulumi.Input<string | undefined>;
     /**
@@ -119,7 +119,7 @@ export interface AuthorizationOrganizationRoleAssignmentArgs {
      */
     resourceId: pulumi.Input<string>;
     /**
-     * Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
+     * Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`
      */
     role: pulumi.Input<string>;
     /**

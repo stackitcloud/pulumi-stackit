@@ -35,6 +35,8 @@ type Telemetrylink struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The displayed name of the Telemetry Link resource.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
+	// Whether the Telemetry Link is enabled or not.
+	Enabled pulumi.BoolOutput `pulumi:"enabled"`
 	// STACKIT region name the resource is located in. If not defined, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// STACKIT project ID, folder ID, or organization ID associated with the Telemetry Link resource.
@@ -115,6 +117,8 @@ type telemetrylinkState struct {
 	Description *string `pulumi:"description"`
 	// The displayed name of the Telemetry Link resource.
 	DisplayName *string `pulumi:"displayName"`
+	// Whether the Telemetry Link is enabled or not.
+	Enabled *bool `pulumi:"enabled"`
 	// STACKIT region name the resource is located in. If not defined, the provider region is used.
 	Region *string `pulumi:"region"`
 	// STACKIT project ID, folder ID, or organization ID associated with the Telemetry Link resource.
@@ -143,6 +147,8 @@ type TelemetrylinkState struct {
 	Description pulumi.StringPtrInput
 	// The displayed name of the Telemetry Link resource.
 	DisplayName pulumi.StringPtrInput
+	// Whether the Telemetry Link is enabled or not.
+	Enabled pulumi.BoolPtrInput
 	// STACKIT region name the resource is located in. If not defined, the provider region is used.
 	Region pulumi.StringPtrInput
 	// STACKIT project ID, folder ID, or organization ID associated with the Telemetry Link resource.
@@ -173,6 +179,8 @@ type telemetrylinkArgs struct {
 	Description *string `pulumi:"description"`
 	// The displayed name of the Telemetry Link resource.
 	DisplayName string `pulumi:"displayName"`
+	// Whether the Telemetry Link is enabled or not.
+	Enabled *bool `pulumi:"enabled"`
 	// STACKIT region name the resource is located in. If not defined, the provider region is used.
 	Region *string `pulumi:"region"`
 	// STACKIT project ID, folder ID, or organization ID associated with the Telemetry Link resource.
@@ -196,6 +204,8 @@ type TelemetrylinkArgs struct {
 	Description pulumi.StringPtrInput
 	// The displayed name of the Telemetry Link resource.
 	DisplayName pulumi.StringInput
+	// Whether the Telemetry Link is enabled or not.
+	Enabled pulumi.BoolPtrInput
 	// STACKIT region name the resource is located in. If not defined, the provider region is used.
 	Region pulumi.StringPtrInput
 	// STACKIT project ID, folder ID, or organization ID associated with the Telemetry Link resource.
@@ -322,6 +332,11 @@ func (o TelemetrylinkOutput) Description() pulumi.StringPtrOutput {
 // The displayed name of the Telemetry Link resource.
 func (o TelemetrylinkOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Telemetrylink) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Whether the Telemetry Link is enabled or not.
+func (o TelemetrylinkOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Telemetrylink) pulumi.BoolOutput { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // STACKIT region name the resource is located in. If not defined, the provider region is used.

@@ -27,6 +27,7 @@ class TelemetrylinkArgs:
                  access_token_wo: pulumi.Input[Optional[_builtins.str]] = None,
                  access_token_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Telemetrylink resource.
@@ -40,6 +41,7 @@ class TelemetrylinkArgs:
                The access token of the Telemetry Router instance. Write-only - never stored in state and never returned by the API. To rotate the token, update this value AND increment `access_token_wo_version`. Changing this field alone will NOT trigger an update.
         :param pulumi.Input[_builtins.int] access_token_wo_version: User-managed rotation counter for `access_token_wo`. Must be incremented every time `access_token_wo` is changed. Terraform diffs this field to detect token rotations - changing `access_token_wo` alone will NOT trigger an update because it is write-only and never stored in state.
         :param pulumi.Input[_builtins.str] description: The description of the Telemetry Link resource.
+        :param pulumi.Input[_builtins.bool] enabled: Whether the Telemetry Link is enabled or not.
         :param pulumi.Input[_builtins.str] region: STACKIT region name the resource is located in. If not defined, the provider region is used.
         """
         pulumi.set(__self__, "display_name", display_name)
@@ -54,6 +56,8 @@ class TelemetrylinkArgs:
             pulumi.set(__self__, "access_token_wo_version", access_token_wo_version)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
         if region is not None:
             pulumi.set(__self__, "region", region)
 
@@ -156,6 +160,18 @@ class TelemetrylinkArgs:
 
     @_builtins.property
     @pulumi.getter
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the Telemetry Link is enabled or not.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter
     def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         STACKIT region name the resource is located in. If not defined, the provider region is used.
@@ -176,6 +192,7 @@ class _TelemetrylinkState:
                  create_time: pulumi.Input[Optional[_builtins.str]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_id: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -191,6 +208,7 @@ class _TelemetrylinkState:
         :param pulumi.Input[_builtins.str] create_time: The time the Telemetry Link was created.
         :param pulumi.Input[_builtins.str] description: The description of the Telemetry Link resource.
         :param pulumi.Input[_builtins.str] display_name: The displayed name of the Telemetry Link resource.
+        :param pulumi.Input[_builtins.bool] enabled: Whether the Telemetry Link is enabled or not.
         :param pulumi.Input[_builtins.str] region: STACKIT region name the resource is located in. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.str] resource_id: STACKIT project ID, folder ID, or organization ID associated with the Telemetry Link resource.
         :param pulumi.Input[_builtins.str] resource_type: The resource type of the TelemetryLink resource, possible values: Possible values are: `organization`, `folder`, `project`.
@@ -209,6 +227,8 @@ class _TelemetrylinkState:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if resource_id is not None:
@@ -298,6 +318,18 @@ class _TelemetrylinkState:
 
     @_builtins.property
     @pulumi.getter
+    def enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Whether the Telemetry Link is enabled or not.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter
     def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         STACKIT region name the resource is located in. If not defined, the provider region is used.
@@ -369,6 +401,7 @@ class Telemetrylink(pulumi.CustomResource):
                  access_token_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_id: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -392,6 +425,7 @@ class Telemetrylink(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] access_token_wo_version: User-managed rotation counter for `access_token_wo`. Must be incremented every time `access_token_wo` is changed. Terraform diffs this field to detect token rotations - changing `access_token_wo` alone will NOT trigger an update because it is write-only and never stored in state.
         :param pulumi.Input[_builtins.str] description: The description of the Telemetry Link resource.
         :param pulumi.Input[_builtins.str] display_name: The displayed name of the Telemetry Link resource.
+        :param pulumi.Input[_builtins.bool] enabled: Whether the Telemetry Link is enabled or not.
         :param pulumi.Input[_builtins.str] region: STACKIT region name the resource is located in. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.str] resource_id: STACKIT project ID, folder ID, or organization ID associated with the Telemetry Link resource.
         :param pulumi.Input[_builtins.str] resource_type: The resource type of the TelemetryLink resource, possible values: Possible values are: `organization`, `folder`, `project`.
@@ -433,6 +467,7 @@ class Telemetrylink(pulumi.CustomResource):
                  access_token_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_id: pulumi.Input[Optional[_builtins.str]] = None,
                  resource_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -453,6 +488,7 @@ class Telemetrylink(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["enabled"] = enabled
             __props__.__dict__["region"] = region
             if resource_id is None and not opts.urn:
                 raise TypeError("Missing required property 'resource_id'")
@@ -483,6 +519,7 @@ class Telemetrylink(pulumi.CustomResource):
             create_time: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             resource_id: pulumi.Input[Optional[_builtins.str]] = None,
             resource_type: pulumi.Input[Optional[_builtins.str]] = None,
@@ -502,6 +539,7 @@ class Telemetrylink(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] create_time: The time the Telemetry Link was created.
         :param pulumi.Input[_builtins.str] description: The description of the Telemetry Link resource.
         :param pulumi.Input[_builtins.str] display_name: The displayed name of the Telemetry Link resource.
+        :param pulumi.Input[_builtins.bool] enabled: Whether the Telemetry Link is enabled or not.
         :param pulumi.Input[_builtins.str] region: STACKIT region name the resource is located in. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.str] resource_id: STACKIT project ID, folder ID, or organization ID associated with the Telemetry Link resource.
         :param pulumi.Input[_builtins.str] resource_type: The resource type of the TelemetryLink resource, possible values: Possible values are: `organization`, `folder`, `project`.
@@ -518,6 +556,7 @@ class Telemetrylink(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["enabled"] = enabled
         __props__.__dict__["region"] = region
         __props__.__dict__["resource_id"] = resource_id
         __props__.__dict__["resource_type"] = resource_type
@@ -573,6 +612,14 @@ class Telemetrylink(pulumi.CustomResource):
         The displayed name of the Telemetry Link resource.
         """
         return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether the Telemetry Link is enabled or not.
+        """
+        return pulumi.get(self, "enabled")
 
     @_builtins.property
     @pulumi.getter

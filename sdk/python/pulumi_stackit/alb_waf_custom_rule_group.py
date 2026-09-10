@@ -171,7 +171,7 @@ class AlbWafCustomRuleGroup(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlbWafCustomRuleGroupRuleArgs', 'AlbWafCustomRuleGroupRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlbWafCustomRuleGroupRuleArgs', 'AlbWafCustomRuleGroupRuleArgsDict', 'outputs.AlbWafCustomRuleGroupRule']]]]] = None,
                  __props__=None):
         """
         ALB WAF Custom Rule Group resource schema. Uses the `default_region` specified in the provider configuration as a fallback in case no `region` is defined on resource level.
@@ -184,7 +184,7 @@ class AlbWafCustomRuleGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Custom rule group configuration name.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID associated with the ALB WAF Custom Rule Group.
         :param pulumi.Input[_builtins.str] region: STACKIT region name the resource is located in. If not defined, the provider region is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlbWafCustomRuleGroupRuleArgs', 'AlbWafCustomRuleGroupRuleArgsDict']]]] rules: Enriched rules containing auto-generated IDs and computed severity values.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlbWafCustomRuleGroupRuleArgs', 'AlbWafCustomRuleGroupRuleArgsDict', 'outputs.AlbWafCustomRuleGroupRule']]]] rules: Enriched rules containing auto-generated IDs and computed severity values.
         """
         ...
     @overload
@@ -216,7 +216,7 @@ class AlbWafCustomRuleGroup(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlbWafCustomRuleGroupRuleArgs', 'AlbWafCustomRuleGroupRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlbWafCustomRuleGroupRuleArgs', 'AlbWafCustomRuleGroupRuleArgsDict', 'outputs.AlbWafCustomRuleGroupRule']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -247,7 +247,7 @@ class AlbWafCustomRuleGroup(pulumi.CustomResource):
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
-            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlbWafCustomRuleGroupRuleArgs', 'AlbWafCustomRuleGroupRuleArgsDict']]]]] = None) -> 'AlbWafCustomRuleGroup':
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AlbWafCustomRuleGroupRuleArgs', 'AlbWafCustomRuleGroupRuleArgsDict', 'outputs.AlbWafCustomRuleGroupRule']]]]] = None) -> 'AlbWafCustomRuleGroup':
         """
         Get an existing AlbWafCustomRuleGroup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -258,7 +258,7 @@ class AlbWafCustomRuleGroup(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: Custom rule group configuration name.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID associated with the ALB WAF Custom Rule Group.
         :param pulumi.Input[_builtins.str] region: STACKIT region name the resource is located in. If not defined, the provider region is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['AlbWafCustomRuleGroupRuleArgs', 'AlbWafCustomRuleGroupRuleArgsDict']]]] rules: Enriched rules containing auto-generated IDs and computed severity values.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['AlbWafCustomRuleGroupRuleArgs', 'AlbWafCustomRuleGroupRuleArgsDict', 'outputs.AlbWafCustomRuleGroupRule']]]] rules: Enriched rules containing auto-generated IDs and computed severity values.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

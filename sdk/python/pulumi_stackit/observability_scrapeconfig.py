@@ -390,17 +390,17 @@ class ObservabilityScrapeconfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 basic_auth: pulumi.Input[Optional[Union['ObservabilityScrapeconfigBasicAuthArgs', 'ObservabilityScrapeconfigBasicAuthArgsDict']]] = None,
+                 basic_auth: pulumi.Input[Optional[Union['ObservabilityScrapeconfigBasicAuthArgs', 'ObservabilityScrapeconfigBasicAuthArgsDict', 'outputs.ObservabilityScrapeconfigBasicAuth']]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  metrics_path: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 saml2: pulumi.Input[Optional[Union['ObservabilityScrapeconfigSaml2Args', 'ObservabilityScrapeconfigSaml2ArgsDict']]] = None,
+                 saml2: pulumi.Input[Optional[Union['ObservabilityScrapeconfigSaml2Args', 'ObservabilityScrapeconfigSaml2ArgsDict', 'outputs.ObservabilityScrapeconfigSaml2']]] = None,
                  sample_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  scheme: pulumi.Input[Optional[_builtins.str]] = None,
                  scrape_interval: pulumi.Input[Optional[_builtins.str]] = None,
                  scrape_timeout: pulumi.Input[Optional[_builtins.str]] = None,
-                 targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ObservabilityScrapeconfigTargetArgs', 'ObservabilityScrapeconfigTargetArgsDict']]]]] = None,
+                 targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ObservabilityScrapeconfigTargetArgs', 'ObservabilityScrapeconfigTargetArgsDict', 'outputs.ObservabilityScrapeconfigTarget']]]]] = None,
                  __props__=None):
         """
         Observability scrape config resource schema. Must have a `region` specified in the provider configuration.
@@ -414,17 +414,17 @@ class ObservabilityScrapeconfig(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ObservabilityScrapeconfigBasicAuthArgs', 'ObservabilityScrapeconfigBasicAuthArgsDict']] basic_auth: A basic authentication block.
+        :param pulumi.Input[Union['ObservabilityScrapeconfigBasicAuthArgs', 'ObservabilityScrapeconfigBasicAuthArgsDict', 'outputs.ObservabilityScrapeconfigBasicAuth']] basic_auth: A basic authentication block.
         :param pulumi.Input[_builtins.str] instance_id: Observability instance ID to which the scraping job is associated.
         :param pulumi.Input[_builtins.str] metrics_path: Specifies the job scraping url path. E.g. `/metrics`.
         :param pulumi.Input[_builtins.str] name: Specifies the name of the scraping job.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the scraping job is associated.
-        :param pulumi.Input[Union['ObservabilityScrapeconfigSaml2Args', 'ObservabilityScrapeconfigSaml2ArgsDict']] saml2: A SAML2 configuration block.
+        :param pulumi.Input[Union['ObservabilityScrapeconfigSaml2Args', 'ObservabilityScrapeconfigSaml2ArgsDict', 'outputs.ObservabilityScrapeconfigSaml2']] saml2: A SAML2 configuration block.
         :param pulumi.Input[_builtins.int] sample_limit: Specifies the scrape sample limit. Upper limit depends on the service plan. Defaults to `5000`.
         :param pulumi.Input[_builtins.str] scheme: Specifies the http scheme. Defaults to `https`.
         :param pulumi.Input[_builtins.str] scrape_interval: Specifies the scrape interval as duration string. Defaults to `5m`.
         :param pulumi.Input[_builtins.str] scrape_timeout: Specifies the scrape timeout as duration string. Defaults to `2m`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ObservabilityScrapeconfigTargetArgs', 'ObservabilityScrapeconfigTargetArgsDict']]]] targets: The targets list (specified by the static config).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ObservabilityScrapeconfigTargetArgs', 'ObservabilityScrapeconfigTargetArgsDict', 'outputs.ObservabilityScrapeconfigTarget']]]] targets: The targets list (specified by the static config).
         """
         ...
     @overload
@@ -457,17 +457,17 @@ class ObservabilityScrapeconfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 basic_auth: pulumi.Input[Optional[Union['ObservabilityScrapeconfigBasicAuthArgs', 'ObservabilityScrapeconfigBasicAuthArgsDict']]] = None,
+                 basic_auth: pulumi.Input[Optional[Union['ObservabilityScrapeconfigBasicAuthArgs', 'ObservabilityScrapeconfigBasicAuthArgsDict', 'outputs.ObservabilityScrapeconfigBasicAuth']]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
                  metrics_path: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 saml2: pulumi.Input[Optional[Union['ObservabilityScrapeconfigSaml2Args', 'ObservabilityScrapeconfigSaml2ArgsDict']]] = None,
+                 saml2: pulumi.Input[Optional[Union['ObservabilityScrapeconfigSaml2Args', 'ObservabilityScrapeconfigSaml2ArgsDict', 'outputs.ObservabilityScrapeconfigSaml2']]] = None,
                  sample_limit: pulumi.Input[Optional[_builtins.int]] = None,
                  scheme: pulumi.Input[Optional[_builtins.str]] = None,
                  scrape_interval: pulumi.Input[Optional[_builtins.str]] = None,
                  scrape_timeout: pulumi.Input[Optional[_builtins.str]] = None,
-                 targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ObservabilityScrapeconfigTargetArgs', 'ObservabilityScrapeconfigTargetArgsDict']]]]] = None,
+                 targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ObservabilityScrapeconfigTargetArgs', 'ObservabilityScrapeconfigTargetArgsDict', 'outputs.ObservabilityScrapeconfigTarget']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -506,17 +506,17 @@ class ObservabilityScrapeconfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            basic_auth: pulumi.Input[Optional[Union['ObservabilityScrapeconfigBasicAuthArgs', 'ObservabilityScrapeconfigBasicAuthArgsDict']]] = None,
+            basic_auth: pulumi.Input[Optional[Union['ObservabilityScrapeconfigBasicAuthArgs', 'ObservabilityScrapeconfigBasicAuthArgsDict', 'outputs.ObservabilityScrapeconfigBasicAuth']]] = None,
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             metrics_path: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
-            saml2: pulumi.Input[Optional[Union['ObservabilityScrapeconfigSaml2Args', 'ObservabilityScrapeconfigSaml2ArgsDict']]] = None,
+            saml2: pulumi.Input[Optional[Union['ObservabilityScrapeconfigSaml2Args', 'ObservabilityScrapeconfigSaml2ArgsDict', 'outputs.ObservabilityScrapeconfigSaml2']]] = None,
             sample_limit: pulumi.Input[Optional[_builtins.int]] = None,
             scheme: pulumi.Input[Optional[_builtins.str]] = None,
             scrape_interval: pulumi.Input[Optional[_builtins.str]] = None,
             scrape_timeout: pulumi.Input[Optional[_builtins.str]] = None,
-            targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ObservabilityScrapeconfigTargetArgs', 'ObservabilityScrapeconfigTargetArgsDict']]]]] = None) -> 'ObservabilityScrapeconfig':
+            targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ObservabilityScrapeconfigTargetArgs', 'ObservabilityScrapeconfigTargetArgsDict', 'outputs.ObservabilityScrapeconfigTarget']]]]] = None) -> 'ObservabilityScrapeconfig':
         """
         Get an existing ObservabilityScrapeconfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -524,17 +524,17 @@ class ObservabilityScrapeconfig(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ObservabilityScrapeconfigBasicAuthArgs', 'ObservabilityScrapeconfigBasicAuthArgsDict']] basic_auth: A basic authentication block.
+        :param pulumi.Input[Union['ObservabilityScrapeconfigBasicAuthArgs', 'ObservabilityScrapeconfigBasicAuthArgsDict', 'outputs.ObservabilityScrapeconfigBasicAuth']] basic_auth: A basic authentication block.
         :param pulumi.Input[_builtins.str] instance_id: Observability instance ID to which the scraping job is associated.
         :param pulumi.Input[_builtins.str] metrics_path: Specifies the job scraping url path. E.g. `/metrics`.
         :param pulumi.Input[_builtins.str] name: Specifies the name of the scraping job.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the scraping job is associated.
-        :param pulumi.Input[Union['ObservabilityScrapeconfigSaml2Args', 'ObservabilityScrapeconfigSaml2ArgsDict']] saml2: A SAML2 configuration block.
+        :param pulumi.Input[Union['ObservabilityScrapeconfigSaml2Args', 'ObservabilityScrapeconfigSaml2ArgsDict', 'outputs.ObservabilityScrapeconfigSaml2']] saml2: A SAML2 configuration block.
         :param pulumi.Input[_builtins.int] sample_limit: Specifies the scrape sample limit. Upper limit depends on the service plan. Defaults to `5000`.
         :param pulumi.Input[_builtins.str] scheme: Specifies the http scheme. Defaults to `https`.
         :param pulumi.Input[_builtins.str] scrape_interval: Specifies the scrape interval as duration string. Defaults to `5m`.
         :param pulumi.Input[_builtins.str] scrape_timeout: Specifies the scrape timeout as duration string. Defaults to `2m`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ObservabilityScrapeconfigTargetArgs', 'ObservabilityScrapeconfigTargetArgsDict']]]] targets: The targets list (specified by the static config).
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ObservabilityScrapeconfigTargetArgs', 'ObservabilityScrapeconfigTargetArgsDict', 'outputs.ObservabilityScrapeconfigTarget']]]] targets: The targets list (specified by the static config).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 

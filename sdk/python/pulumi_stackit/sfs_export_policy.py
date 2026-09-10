@@ -213,7 +213,7 @@ class SfsExportPolicy(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SfsExportPolicyRuleArgs', 'SfsExportPolicyRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SfsExportPolicyRuleArgs', 'SfsExportPolicyRuleArgsDict', 'outputs.SfsExportPolicyRule']]]]] = None,
                  __props__=None):
         """
         SFS export policy resource schema. Must have a `region` specified in the provider configuration.
@@ -271,7 +271,7 @@ class SfsExportPolicy(pulumi.CustomResource):
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SfsExportPolicyRuleArgs', 'SfsExportPolicyRuleArgsDict']]]]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SfsExportPolicyRuleArgs', 'SfsExportPolicyRuleArgsDict', 'outputs.SfsExportPolicyRule']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -304,7 +304,7 @@ class SfsExportPolicy(pulumi.CustomResource):
             policy_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
-            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SfsExportPolicyRuleArgs', 'SfsExportPolicyRuleArgsDict']]]]] = None) -> 'SfsExportPolicy':
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SfsExportPolicyRuleArgs', 'SfsExportPolicyRuleArgsDict', 'outputs.SfsExportPolicyRule']]]]] = None) -> 'SfsExportPolicy':
         """
         Get an existing SfsExportPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

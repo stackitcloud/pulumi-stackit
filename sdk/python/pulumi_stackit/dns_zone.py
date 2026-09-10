@@ -646,7 +646,7 @@ class DnsZone(pulumi.CustomResource):
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  refresh_time: pulumi.Input[Optional[_builtins.int]] = None,
                  retry_time: pulumi.Input[Optional[_builtins.int]] = None,
-                 timeouts: pulumi.Input[Optional[Union['DnsZoneTimeoutsArgs', 'DnsZoneTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['DnsZoneTimeoutsArgs', 'DnsZoneTimeoutsArgsDict', 'outputs.DnsZoneTimeouts']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -721,7 +721,7 @@ class DnsZone(pulumi.CustomResource):
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  refresh_time: pulumi.Input[Optional[_builtins.int]] = None,
                  retry_time: pulumi.Input[Optional[_builtins.int]] = None,
-                 timeouts: pulumi.Input[Optional[Union['DnsZoneTimeoutsArgs', 'DnsZoneTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['DnsZoneTimeoutsArgs', 'DnsZoneTimeoutsArgsDict', 'outputs.DnsZoneTimeouts']]] = None,
                  type: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -786,7 +786,7 @@ class DnsZone(pulumi.CustomResource):
             retry_time: pulumi.Input[Optional[_builtins.int]] = None,
             serial_number: pulumi.Input[Optional[_builtins.int]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['DnsZoneTimeoutsArgs', 'DnsZoneTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['DnsZoneTimeoutsArgs', 'DnsZoneTimeoutsArgsDict', 'outputs.DnsZoneTimeouts']]] = None,
             type: pulumi.Input[Optional[_builtins.str]] = None,
             visibility: pulumi.Input[Optional[_builtins.str]] = None,
             zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'DnsZone':

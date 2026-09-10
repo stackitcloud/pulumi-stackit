@@ -276,7 +276,7 @@ class RedisCredential(pulumi.CustomResource):
                  rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Redis credential resource schema. Must have a `region` specified in the provider configuration.
+        Redis credential resource schema. Must have a `region` specified in the provider configuration. This resource is deprecated and will be removed after August 2027, use ValkeyCredential instead. For more information on how to migrate, see the [migration guide](https://docs.stackit.cloud/products/databases/key-value-store/tutorials/migrate-data-to-a-new-instance/).
 
         ## Example Usage
 
@@ -299,7 +299,7 @@ class RedisCredential(pulumi.CustomResource):
                  args: RedisCredentialArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Redis credential resource schema. Must have a `region` specified in the provider configuration.
+        Redis credential resource schema. Must have a `region` specified in the provider configuration. This resource is deprecated and will be removed after August 2027, use ValkeyCredential instead. For more information on how to migrate, see the [migration guide](https://docs.stackit.cloud/products/databases/key-value-store/tutorials/migrate-data-to-a-new-instance/).
 
         ## Example Usage
 

@@ -67,6 +67,10 @@ export class Telemetrylink extends pulumi.CustomResource {
      */
     declare public readonly displayName: pulumi.Output<string>;
     /**
+     * Whether the Telemetry Link is enabled or not.
+     */
+    declare public readonly enabled: pulumi.Output<boolean>;
+    /**
      * STACKIT region name the resource is located in. If not defined, the provider region is used.
      */
     declare public readonly region: pulumi.Output<string>;
@@ -108,6 +112,7 @@ export class Telemetrylink extends pulumi.CustomResource {
             resourceInputs["createTime"] = state?.createTime;
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["enabled"] = state?.enabled;
             resourceInputs["region"] = state?.region;
             resourceInputs["resourceId"] = state?.resourceId;
             resourceInputs["resourceType"] = state?.resourceType;
@@ -132,6 +137,7 @@ export class Telemetrylink extends pulumi.CustomResource {
             resourceInputs["accessTokenWoVersion"] = args?.accessTokenWoVersion;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["enabled"] = args?.enabled;
             resourceInputs["region"] = args?.region;
             resourceInputs["resourceId"] = args?.resourceId;
             resourceInputs["resourceType"] = args?.resourceType;
@@ -175,6 +181,10 @@ export interface TelemetrylinkState {
      * The displayed name of the Telemetry Link resource.
      */
     displayName?: pulumi.Input<string | undefined>;
+    /**
+     * Whether the Telemetry Link is enabled or not.
+     */
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * STACKIT region name the resource is located in. If not defined, the provider region is used.
      */
@@ -224,6 +234,10 @@ export interface TelemetrylinkArgs {
      * The displayed name of the Telemetry Link resource.
      */
     displayName: pulumi.Input<string>;
+    /**
+     * Whether the Telemetry Link is enabled or not.
+     */
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * STACKIT region name the resource is located in. If not defined, the provider region is used.
      */

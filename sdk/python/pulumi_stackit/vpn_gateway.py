@@ -309,8 +309,8 @@ class VpnGateway(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 availability_zones: pulumi.Input[Optional[Union['VpnGatewayAvailabilityZonesArgs', 'VpnGatewayAvailabilityZonesArgsDict']]] = None,
-                 bgp: pulumi.Input[Optional[Union['VpnGatewayBgpArgs', 'VpnGatewayBgpArgsDict']]] = None,
+                 availability_zones: pulumi.Input[Optional[Union['VpnGatewayAvailabilityZonesArgs', 'VpnGatewayAvailabilityZonesArgsDict', 'outputs.VpnGatewayAvailabilityZones']]] = None,
+                 bgp: pulumi.Input[Optional[Union['VpnGatewayBgpArgs', 'VpnGatewayBgpArgsDict', 'outputs.VpnGatewayBgp']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  plan_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -330,8 +330,8 @@ class VpnGateway(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['VpnGatewayAvailabilityZonesArgs', 'VpnGatewayAvailabilityZonesArgsDict']] availability_zones: Availability zones for the two tunnel endpoints.
-        :param pulumi.Input[Union['VpnGatewayBgpArgs', 'VpnGatewayBgpArgsDict']] bgp: BGP configuration. Only applicable when routing*type is BGP*ROUTE_BASED.
+        :param pulumi.Input[Union['VpnGatewayAvailabilityZonesArgs', 'VpnGatewayAvailabilityZonesArgsDict', 'outputs.VpnGatewayAvailabilityZones']] availability_zones: Availability zones for the two tunnel endpoints.
+        :param pulumi.Input[Union['VpnGatewayBgpArgs', 'VpnGatewayBgpArgsDict', 'outputs.VpnGatewayBgp']] bgp: BGP configuration. Only applicable when routing*type is BGP*ROUTE_BASED.
         :param pulumi.Input[_builtins.str] display_name: A user-friendly name for the VPN gateway.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Map of custom labels (key-value string pairs).
         :param pulumi.Input[_builtins.str] plan_id: The service plan identifier (e.g. `p500`). For guidance on finding available plans, see [List available service plans](https://docs.stackit.cloud/products/network/connectivity-hybrid-multi-cloud/vpn/getting-started/gateway-create/#list-available-service-plans).
@@ -370,8 +370,8 @@ class VpnGateway(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 availability_zones: pulumi.Input[Optional[Union['VpnGatewayAvailabilityZonesArgs', 'VpnGatewayAvailabilityZonesArgsDict']]] = None,
-                 bgp: pulumi.Input[Optional[Union['VpnGatewayBgpArgs', 'VpnGatewayBgpArgsDict']]] = None,
+                 availability_zones: pulumi.Input[Optional[Union['VpnGatewayAvailabilityZonesArgs', 'VpnGatewayAvailabilityZonesArgsDict', 'outputs.VpnGatewayAvailabilityZones']]] = None,
+                 bgp: pulumi.Input[Optional[Union['VpnGatewayBgpArgs', 'VpnGatewayBgpArgsDict', 'outputs.VpnGatewayBgp']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  plan_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -416,8 +416,8 @@ class VpnGateway(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            availability_zones: pulumi.Input[Optional[Union['VpnGatewayAvailabilityZonesArgs', 'VpnGatewayAvailabilityZonesArgsDict']]] = None,
-            bgp: pulumi.Input[Optional[Union['VpnGatewayBgpArgs', 'VpnGatewayBgpArgsDict']]] = None,
+            availability_zones: pulumi.Input[Optional[Union['VpnGatewayAvailabilityZonesArgs', 'VpnGatewayAvailabilityZonesArgsDict', 'outputs.VpnGatewayAvailabilityZones']]] = None,
+            bgp: pulumi.Input[Optional[Union['VpnGatewayBgpArgs', 'VpnGatewayBgpArgsDict', 'outputs.VpnGatewayBgp']]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -432,8 +432,8 @@ class VpnGateway(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['VpnGatewayAvailabilityZonesArgs', 'VpnGatewayAvailabilityZonesArgsDict']] availability_zones: Availability zones for the two tunnel endpoints.
-        :param pulumi.Input[Union['VpnGatewayBgpArgs', 'VpnGatewayBgpArgsDict']] bgp: BGP configuration. Only applicable when routing*type is BGP*ROUTE_BASED.
+        :param pulumi.Input[Union['VpnGatewayAvailabilityZonesArgs', 'VpnGatewayAvailabilityZonesArgsDict', 'outputs.VpnGatewayAvailabilityZones']] availability_zones: Availability zones for the two tunnel endpoints.
+        :param pulumi.Input[Union['VpnGatewayBgpArgs', 'VpnGatewayBgpArgsDict', 'outputs.VpnGatewayBgp']] bgp: BGP configuration. Only applicable when routing*type is BGP*ROUTE_BASED.
         :param pulumi.Input[_builtins.str] display_name: A user-friendly name for the VPN gateway.
         :param pulumi.Input[_builtins.str] gateway_id: The server-generated UUID of the VPN gateway.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Map of custom labels (key-value string pairs).

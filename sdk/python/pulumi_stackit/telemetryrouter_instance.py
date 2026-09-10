@@ -270,7 +270,7 @@ class TelemetryrouterInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 filter: pulumi.Input[Optional[Union['TelemetryrouterInstanceFilterArgs', 'TelemetryrouterInstanceFilterArgsDict']]] = None,
+                 filter: pulumi.Input[Optional[Union['TelemetryrouterInstanceFilterArgs', 'TelemetryrouterInstanceFilterArgsDict', 'outputs.TelemetryrouterInstanceFilter']]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -288,7 +288,7 @@ class TelemetryrouterInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: The description of the TelemetryRouter instance
         :param pulumi.Input[_builtins.str] display_name: The display name of the TelemetryRouter instance
-        :param pulumi.Input[Union['TelemetryrouterInstanceFilterArgs', 'TelemetryrouterInstanceFilterArgsDict']] filter: The TelemetryRouter global filter settings
+        :param pulumi.Input[Union['TelemetryrouterInstanceFilterArgs', 'TelemetryrouterInstanceFilterArgsDict', 'outputs.TelemetryrouterInstanceFilter']] filter: The TelemetryRouter global filter settings
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID associated with the TelemetryRouter instance
         :param pulumi.Input[_builtins.str] region: STACKIT region name the resource is located in. If not defined, the provider region is used.
         """
@@ -325,7 +325,7 @@ class TelemetryrouterInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
-                 filter: pulumi.Input[Optional[Union['TelemetryrouterInstanceFilterArgs', 'TelemetryrouterInstanceFilterArgsDict']]] = None,
+                 filter: pulumi.Input[Optional[Union['TelemetryrouterInstanceFilterArgs', 'TelemetryrouterInstanceFilterArgsDict', 'outputs.TelemetryrouterInstanceFilter']]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -363,7 +363,7 @@ class TelemetryrouterInstance(pulumi.CustomResource):
             creation_time: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
-            filter: pulumi.Input[Optional[Union['TelemetryrouterInstanceFilterArgs', 'TelemetryrouterInstanceFilterArgsDict']]] = None,
+            filter: pulumi.Input[Optional[Union['TelemetryrouterInstanceFilterArgs', 'TelemetryrouterInstanceFilterArgsDict', 'outputs.TelemetryrouterInstanceFilter']]] = None,
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -379,7 +379,7 @@ class TelemetryrouterInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] creation_time: The date and time the creation of the TelemetryRouter instance was initiated
         :param pulumi.Input[_builtins.str] description: The description of the TelemetryRouter instance
         :param pulumi.Input[_builtins.str] display_name: The display name of the TelemetryRouter instance
-        :param pulumi.Input[Union['TelemetryrouterInstanceFilterArgs', 'TelemetryrouterInstanceFilterArgsDict']] filter: The TelemetryRouter global filter settings
+        :param pulumi.Input[Union['TelemetryrouterInstanceFilterArgs', 'TelemetryrouterInstanceFilterArgsDict', 'outputs.TelemetryrouterInstanceFilter']] filter: The TelemetryRouter global filter settings
         :param pulumi.Input[_builtins.str] instance_id: The TelemetryRouter instance ID
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID associated with the TelemetryRouter instance
         :param pulumi.Input[_builtins.str] region: STACKIT region name the resource is located in. If not defined, the provider region is used.

@@ -98,7 +98,7 @@ class AwaitableGetSqlserverflexFlavorsResult(GetSqlserverflexFlavorsResult):
 
 def get_sqlserverflex_flavors(project_id: Optional[_builtins.str] = None,
                               region: Optional[_builtins.str] = None,
-                              timeouts: Optional[Union['GetSqlserverflexFlavorsTimeoutsArgs', 'GetSqlserverflexFlavorsTimeoutsArgsDict']] = None,
+                              timeouts: Optional[Union['GetSqlserverflexFlavorsTimeoutsArgs', 'GetSqlserverflexFlavorsTimeoutsArgsDict', 'outputs.GetSqlserverflexFlavorsTimeoutsResult']] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSqlserverflexFlavorsResult:
     """
     SqlserverFlex flavors data source schema
@@ -124,7 +124,7 @@ def get_sqlserverflex_flavors(project_id: Optional[_builtins.str] = None,
         timeouts=pulumi.get(__ret__, 'timeouts'))
 def get_sqlserverflex_flavors_output(project_id: pulumi.Input[Optional[_builtins.str]] = None,
                                      region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                     timeouts: pulumi.Input[Optional[Optional[Union['GetSqlserverflexFlavorsTimeoutsArgs', 'GetSqlserverflexFlavorsTimeoutsArgsDict']]]] = None,
+                                     timeouts: pulumi.Input[Optional[Optional[Union['GetSqlserverflexFlavorsTimeoutsArgs', 'GetSqlserverflexFlavorsTimeoutsArgsDict', 'outputs.GetSqlserverflexFlavorsTimeoutsResult']]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSqlserverflexFlavorsResult]:
     """
     SqlserverFlex flavors data source schema

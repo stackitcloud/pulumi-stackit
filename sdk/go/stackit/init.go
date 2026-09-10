@@ -229,6 +229,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &TelemetryrouterDestination{}
 	case "stackit:index/telemetryrouterInstance:TelemetryrouterInstance":
 		r = &TelemetryrouterInstance{}
+	case "stackit:index/valkeyCredential:ValkeyCredential":
+		r = &ValkeyCredential{}
+	case "stackit:index/valkeyInstance:ValkeyInstance":
+		r = &ValkeyInstance{}
 	case "stackit:index/volume:Volume":
 		r = &Volume{}
 	case "stackit:index/vpc:Vpc":
@@ -794,6 +798,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"stackit",
 		"index/telemetryrouterInstance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/valkeyCredential",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/valkeyInstance",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

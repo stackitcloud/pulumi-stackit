@@ -52,6 +52,17 @@ Object.defineProperty(exports, "authorizationCustomEndpoint", {
 });
 
 /**
+ * Custom endpoint for the Automation service
+ */
+export declare const automationCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "automationCustomEndpoint", {
+    get() {
+        return __config.get("automationCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+/**
  * Custom endpoint for the CDN service
  */
 export declare const cdnCustomEndpoint: string | undefined;
@@ -503,6 +514,17 @@ Object.defineProperty(exports, "serviceAccountToken", {
 });
 
 /**
+ * The ID of the Azure DevOps pipeline service connection. For use when authenticating as a Service Account using OpenID Connect.
+ */
+export declare const serviceConnectionId: string | undefined;
+Object.defineProperty(exports, "serviceConnectionId", {
+    get() {
+        return __config.get("serviceConnectionId");
+    },
+    enumerable: true,
+});
+
+/**
  * Custom endpoint for the Service Enablement API
  */
 export declare const serviceEnablementCustomEndpoint: string | undefined;
@@ -586,6 +608,17 @@ export declare const useOidc: boolean | undefined;
 Object.defineProperty(exports, "useOidc", {
     get() {
         return __config.getObject<boolean>("useOidc");
+    },
+    enumerable: true,
+});
+
+/**
+ * Custom endpoint for the Key Value Store service
+ */
+export declare const valkeyCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "valkeyCustomEndpoint", {
+    get() {
+        return __config.get("valkeyCustomEndpoint");
     },
     enumerable: true,
 });

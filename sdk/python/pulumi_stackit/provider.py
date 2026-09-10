@@ -23,6 +23,7 @@ class ProviderArgs:
                  alb_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  alb_waf_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  authorization_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 automation_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  cdn_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  credentials_path: pulumi.Input[Optional[_builtins.str]] = None,
                  default_region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -64,6 +65,7 @@ class ProviderArgs:
                  service_account_key: pulumi.Input[Optional[_builtins.str]] = None,
                  service_account_key_path: pulumi.Input[Optional[_builtins.str]] = None,
                  service_account_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
                  service_enablement_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  sfs_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  ske_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -72,6 +74,7 @@ class ProviderArgs:
                  telemetryrouter_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  token_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  use_oidc: pulumi.Input[Optional[_builtins.bool]] = None,
+                 valkey_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  vpn_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
@@ -80,6 +83,7 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.str] alb_custom_endpoint: Custom endpoint for the Application Load Balancer service
         :param pulumi.Input[_builtins.str] alb_waf_custom_endpoint: Custom endpoint for the Application Load Balancer Web Application Firewall service
         :param pulumi.Input[_builtins.str] authorization_custom_endpoint: Custom endpoint for the Membership service
+        :param pulumi.Input[_builtins.str] automation_custom_endpoint: Custom endpoint for the Automation service
         :param pulumi.Input[_builtins.str] cdn_custom_endpoint: Custom endpoint for the CDN service
         :param pulumi.Input[_builtins.str] credentials_path: Path of JSON from where the credentials are read. Takes precedence over the env var `STACKIT_CREDENTIALS_PATH`. Default value is `~/.stackit/credentials.json`.
         :param pulumi.Input[_builtins.str] default_region: Region will be used as the default location for regional services. Not all services require a region, some are global
@@ -121,6 +125,7 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.str] service_account_key: Service account key used for authentication. If set, the key flow will be used to authenticate all operations.
         :param pulumi.Input[_builtins.str] service_account_key_path: Path for the service account key used for authentication. If set, the key flow will be used to authenticate all operations.
         :param pulumi.Input[_builtins.str] service_account_token: Token used for authentication. If set, the token flow will be used to authenticate all operations.
+        :param pulumi.Input[_builtins.str] service_connection_id: The ID of the Azure DevOps pipeline service connection. For use when authenticating as a Service Account using OpenID Connect.
         :param pulumi.Input[_builtins.str] service_enablement_custom_endpoint: Custom endpoint for the Service Enablement API
         :param pulumi.Input[_builtins.str] sfs_custom_endpoint: Custom endpoint for the Stackit Filestorage API
         :param pulumi.Input[_builtins.str] ske_custom_endpoint: Custom endpoint for the Kubernetes Engine (SKE) service
@@ -129,6 +134,7 @@ class ProviderArgs:
         :param pulumi.Input[_builtins.str] telemetryrouter_custom_endpoint: Custom endpoint for the Telemetry Router service
         :param pulumi.Input[_builtins.str] token_custom_endpoint: Custom endpoint for the token API, which is used to request access tokens when using the key flow
         :param pulumi.Input[_builtins.bool] use_oidc: Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to `false`.
+        :param pulumi.Input[_builtins.str] valkey_custom_endpoint: Custom endpoint for the Key Value Store service
         :param pulumi.Input[_builtins.str] vpn_custom_endpoint: Custom endpoint for the VPN service
         """
         if alb_certificates_custom_endpoint is not None:
@@ -139,6 +145,8 @@ class ProviderArgs:
             pulumi.set(__self__, "alb_waf_custom_endpoint", alb_waf_custom_endpoint)
         if authorization_custom_endpoint is not None:
             pulumi.set(__self__, "authorization_custom_endpoint", authorization_custom_endpoint)
+        if automation_custom_endpoint is not None:
+            pulumi.set(__self__, "automation_custom_endpoint", automation_custom_endpoint)
         if cdn_custom_endpoint is not None:
             pulumi.set(__self__, "cdn_custom_endpoint", cdn_custom_endpoint)
         if credentials_path is not None:
@@ -224,6 +232,8 @@ class ProviderArgs:
             pulumi.log.warn("""service_account_token is deprecated: Authentication via Service Account Token is deprecated and will be removed on December 17, 2025. Please use `service_account_key` or `service_account_key_path` instead. For a smooth transition, refer to our migration guide: https://docs.stackit.cloud/platform/access-and-identity/service-accounts/migrate-flows/""")
         if service_account_token is not None:
             pulumi.set(__self__, "service_account_token", service_account_token)
+        if service_connection_id is not None:
+            pulumi.set(__self__, "service_connection_id", service_connection_id)
         if service_enablement_custom_endpoint is not None:
             pulumi.set(__self__, "service_enablement_custom_endpoint", service_enablement_custom_endpoint)
         if sfs_custom_endpoint is not None:
@@ -240,6 +250,8 @@ class ProviderArgs:
             pulumi.set(__self__, "token_custom_endpoint", token_custom_endpoint)
         if use_oidc is not None:
             pulumi.set(__self__, "use_oidc", use_oidc)
+        if valkey_custom_endpoint is not None:
+            pulumi.set(__self__, "valkey_custom_endpoint", valkey_custom_endpoint)
         if vpn_custom_endpoint is not None:
             pulumi.set(__self__, "vpn_custom_endpoint", vpn_custom_endpoint)
 
@@ -290,6 +302,18 @@ class ProviderArgs:
     @authorization_custom_endpoint.setter
     def authorization_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authorization_custom_endpoint", value)
+
+    @_builtins.property
+    @pulumi.getter(name="automationCustomEndpoint")
+    def automation_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Custom endpoint for the Automation service
+        """
+        return pulumi.get(self, "automation_custom_endpoint")
+
+    @automation_custom_endpoint.setter
+    def automation_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "automation_custom_endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="cdnCustomEndpoint")
@@ -785,6 +809,18 @@ class ProviderArgs:
         pulumi.set(self, "service_account_token", value)
 
     @_builtins.property
+    @pulumi.getter(name="serviceConnectionId")
+    def service_connection_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the Azure DevOps pipeline service connection. For use when authenticating as a Service Account using OpenID Connect.
+        """
+        return pulumi.get(self, "service_connection_id")
+
+    @service_connection_id.setter
+    def service_connection_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "service_connection_id", value)
+
+    @_builtins.property
     @pulumi.getter(name="serviceEnablementCustomEndpoint")
     def service_enablement_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -881,6 +917,18 @@ class ProviderArgs:
         pulumi.set(self, "use_oidc", value)
 
     @_builtins.property
+    @pulumi.getter(name="valkeyCustomEndpoint")
+    def valkey_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Custom endpoint for the Key Value Store service
+        """
+        return pulumi.get(self, "valkey_custom_endpoint")
+
+    @valkey_custom_endpoint.setter
+    def valkey_custom_endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "valkey_custom_endpoint", value)
+
+    @_builtins.property
     @pulumi.getter(name="vpnCustomEndpoint")
     def vpn_custom_endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -903,6 +951,7 @@ class Provider(pulumi.ProviderResource):
                  alb_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  alb_waf_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  authorization_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 automation_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  cdn_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  credentials_path: pulumi.Input[Optional[_builtins.str]] = None,
                  default_region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -944,6 +993,7 @@ class Provider(pulumi.ProviderResource):
                  service_account_key: pulumi.Input[Optional[_builtins.str]] = None,
                  service_account_key_path: pulumi.Input[Optional[_builtins.str]] = None,
                  service_account_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
                  service_enablement_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  sfs_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  ske_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -952,6 +1002,7 @@ class Provider(pulumi.ProviderResource):
                  telemetryrouter_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  token_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  use_oidc: pulumi.Input[Optional[_builtins.bool]] = None,
+                 valkey_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  vpn_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -967,6 +1018,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[_builtins.str] alb_custom_endpoint: Custom endpoint for the Application Load Balancer service
         :param pulumi.Input[_builtins.str] alb_waf_custom_endpoint: Custom endpoint for the Application Load Balancer Web Application Firewall service
         :param pulumi.Input[_builtins.str] authorization_custom_endpoint: Custom endpoint for the Membership service
+        :param pulumi.Input[_builtins.str] automation_custom_endpoint: Custom endpoint for the Automation service
         :param pulumi.Input[_builtins.str] cdn_custom_endpoint: Custom endpoint for the CDN service
         :param pulumi.Input[_builtins.str] credentials_path: Path of JSON from where the credentials are read. Takes precedence over the env var `STACKIT_CREDENTIALS_PATH`. Default value is `~/.stackit/credentials.json`.
         :param pulumi.Input[_builtins.str] default_region: Region will be used as the default location for regional services. Not all services require a region, some are global
@@ -1008,6 +1060,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[_builtins.str] service_account_key: Service account key used for authentication. If set, the key flow will be used to authenticate all operations.
         :param pulumi.Input[_builtins.str] service_account_key_path: Path for the service account key used for authentication. If set, the key flow will be used to authenticate all operations.
         :param pulumi.Input[_builtins.str] service_account_token: Token used for authentication. If set, the token flow will be used to authenticate all operations.
+        :param pulumi.Input[_builtins.str] service_connection_id: The ID of the Azure DevOps pipeline service connection. For use when authenticating as a Service Account using OpenID Connect.
         :param pulumi.Input[_builtins.str] service_enablement_custom_endpoint: Custom endpoint for the Service Enablement API
         :param pulumi.Input[_builtins.str] sfs_custom_endpoint: Custom endpoint for the Stackit Filestorage API
         :param pulumi.Input[_builtins.str] ske_custom_endpoint: Custom endpoint for the Kubernetes Engine (SKE) service
@@ -1016,6 +1069,7 @@ class Provider(pulumi.ProviderResource):
         :param pulumi.Input[_builtins.str] telemetryrouter_custom_endpoint: Custom endpoint for the Telemetry Router service
         :param pulumi.Input[_builtins.str] token_custom_endpoint: Custom endpoint for the token API, which is used to request access tokens when using the key flow
         :param pulumi.Input[_builtins.bool] use_oidc: Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to `false`.
+        :param pulumi.Input[_builtins.str] valkey_custom_endpoint: Custom endpoint for the Key Value Store service
         :param pulumi.Input[_builtins.str] vpn_custom_endpoint: Custom endpoint for the VPN service
         """
         ...
@@ -1050,6 +1104,7 @@ class Provider(pulumi.ProviderResource):
                  alb_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  alb_waf_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  authorization_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 automation_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  cdn_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  credentials_path: pulumi.Input[Optional[_builtins.str]] = None,
                  default_region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1091,6 +1146,7 @@ class Provider(pulumi.ProviderResource):
                  service_account_key: pulumi.Input[Optional[_builtins.str]] = None,
                  service_account_key_path: pulumi.Input[Optional[_builtins.str]] = None,
                  service_account_token: pulumi.Input[Optional[_builtins.str]] = None,
+                 service_connection_id: pulumi.Input[Optional[_builtins.str]] = None,
                  service_enablement_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  sfs_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  ske_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
@@ -1099,6 +1155,7 @@ class Provider(pulumi.ProviderResource):
                  telemetryrouter_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  token_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  use_oidc: pulumi.Input[Optional[_builtins.bool]] = None,
+                 valkey_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  vpn_custom_endpoint: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1113,6 +1170,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["alb_custom_endpoint"] = alb_custom_endpoint
             __props__.__dict__["alb_waf_custom_endpoint"] = alb_waf_custom_endpoint
             __props__.__dict__["authorization_custom_endpoint"] = authorization_custom_endpoint
+            __props__.__dict__["automation_custom_endpoint"] = automation_custom_endpoint
             __props__.__dict__["cdn_custom_endpoint"] = cdn_custom_endpoint
             __props__.__dict__["credentials_path"] = credentials_path
             __props__.__dict__["default_region"] = default_region
@@ -1154,6 +1212,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["service_account_key"] = service_account_key
             __props__.__dict__["service_account_key_path"] = service_account_key_path
             __props__.__dict__["service_account_token"] = service_account_token
+            __props__.__dict__["service_connection_id"] = service_connection_id
             __props__.__dict__["service_enablement_custom_endpoint"] = service_enablement_custom_endpoint
             __props__.__dict__["sfs_custom_endpoint"] = sfs_custom_endpoint
             __props__.__dict__["ske_custom_endpoint"] = ske_custom_endpoint
@@ -1162,6 +1221,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["telemetryrouter_custom_endpoint"] = telemetryrouter_custom_endpoint
             __props__.__dict__["token_custom_endpoint"] = token_custom_endpoint
             __props__.__dict__["use_oidc"] = pulumi.Output.from_input(use_oidc).apply(pulumi.runtime.to_json) if use_oidc is not None else None
+            __props__.__dict__["valkey_custom_endpoint"] = valkey_custom_endpoint
             __props__.__dict__["vpn_custom_endpoint"] = vpn_custom_endpoint
         super(Provider, __self__).__init__(
             'stackit',
@@ -1200,6 +1260,14 @@ class Provider(pulumi.ProviderResource):
         Custom endpoint for the Membership service
         """
         return pulumi.get(self, "authorization_custom_endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="automationCustomEndpoint")
+    def automation_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Custom endpoint for the Automation service
+        """
+        return pulumi.get(self, "automation_custom_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="cdnCustomEndpoint")
@@ -1515,6 +1583,14 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "service_account_token")
 
     @_builtins.property
+    @pulumi.getter(name="serviceConnectionId")
+    def service_connection_id(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The ID of the Azure DevOps pipeline service connection. For use when authenticating as a Service Account using OpenID Connect.
+        """
+        return pulumi.get(self, "service_connection_id")
+
+    @_builtins.property
     @pulumi.getter(name="serviceEnablementCustomEndpoint")
     def service_enablement_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
@@ -1569,6 +1645,14 @@ class Provider(pulumi.ProviderResource):
         Custom endpoint for the token API, which is used to request access tokens when using the key flow
         """
         return pulumi.get(self, "token_custom_endpoint")
+
+    @_builtins.property
+    @pulumi.getter(name="valkeyCustomEndpoint")
+    def valkey_custom_endpoint(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Custom endpoint for the Key Value Store service
+        """
+        return pulumi.get(self, "valkey_custom_endpoint")
 
     @_builtins.property
     @pulumi.getter(name="vpnCustomEndpoint")

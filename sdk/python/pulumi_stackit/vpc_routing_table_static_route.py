@@ -301,13 +301,13 @@ class VpcRoutingTableStaticRoute(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 destination: pulumi.Input[Optional[Union['VpcRoutingTableStaticRouteDestinationArgs', 'VpcRoutingTableStaticRouteDestinationArgsDict']]] = None,
+                 destination: pulumi.Input[Optional[Union['VpcRoutingTableStaticRouteDestinationArgs', 'VpcRoutingTableStaticRouteDestinationArgsDict', 'outputs.VpcRoutingTableStaticRouteDestination']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 nexthop: pulumi.Input[Optional[Union['VpcRoutingTableStaticRouteNexthopArgs', 'VpcRoutingTableStaticRouteNexthopArgsDict']]] = None,
+                 nexthop: pulumi.Input[Optional[Union['VpcRoutingTableStaticRouteNexthopArgs', 'VpcRoutingTableStaticRouteNexthopArgsDict', 'outputs.VpcRoutingTableStaticRouteNexthop']]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  routing_table_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['VpcRoutingTableStaticRouteTimeoutsArgs', 'VpcRoutingTableStaticRouteTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['VpcRoutingTableStaticRouteTimeoutsArgs', 'VpcRoutingTableStaticRouteTimeoutsArgsDict', 'outputs.VpcRoutingTableStaticRouteTimeouts']]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -324,9 +324,9 @@ class VpcRoutingTableStaticRoute(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['VpcRoutingTableStaticRouteDestinationArgs', 'VpcRoutingTableStaticRouteDestinationArgsDict']] destination: The destination of the static route.
+        :param pulumi.Input[Union['VpcRoutingTableStaticRouteDestinationArgs', 'VpcRoutingTableStaticRouteDestinationArgsDict', 'outputs.VpcRoutingTableStaticRouteDestination']] destination: The destination of the static route.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
-        :param pulumi.Input[Union['VpcRoutingTableStaticRouteNexthopArgs', 'VpcRoutingTableStaticRouteNexthopArgsDict']] nexthop: The nexthop of the static route.
+        :param pulumi.Input[Union['VpcRoutingTableStaticRouteNexthopArgs', 'VpcRoutingTableStaticRouteNexthopArgsDict', 'outputs.VpcRoutingTableStaticRouteNexthop']] nexthop: The nexthop of the static route.
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the static route is associated.
         :param pulumi.Input[_builtins.str] region: The region of the static route.
         :param pulumi.Input[_builtins.str] routing_table_id: The routing table ID to which the static route is associated.
@@ -365,13 +365,13 @@ class VpcRoutingTableStaticRoute(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 destination: pulumi.Input[Optional[Union['VpcRoutingTableStaticRouteDestinationArgs', 'VpcRoutingTableStaticRouteDestinationArgsDict']]] = None,
+                 destination: pulumi.Input[Optional[Union['VpcRoutingTableStaticRouteDestinationArgs', 'VpcRoutingTableStaticRouteDestinationArgsDict', 'outputs.VpcRoutingTableStaticRouteDestination']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 nexthop: pulumi.Input[Optional[Union['VpcRoutingTableStaticRouteNexthopArgs', 'VpcRoutingTableStaticRouteNexthopArgsDict']]] = None,
+                 nexthop: pulumi.Input[Optional[Union['VpcRoutingTableStaticRouteNexthopArgs', 'VpcRoutingTableStaticRouteNexthopArgsDict', 'outputs.VpcRoutingTableStaticRouteNexthop']]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  routing_table_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['VpcRoutingTableStaticRouteTimeoutsArgs', 'VpcRoutingTableStaticRouteTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['VpcRoutingTableStaticRouteTimeoutsArgs', 'VpcRoutingTableStaticRouteTimeoutsArgsDict', 'outputs.VpcRoutingTableStaticRouteTimeouts']]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -411,14 +411,14 @@ class VpcRoutingTableStaticRoute(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            destination: pulumi.Input[Optional[Union['VpcRoutingTableStaticRouteDestinationArgs', 'VpcRoutingTableStaticRouteDestinationArgsDict']]] = None,
+            destination: pulumi.Input[Optional[Union['VpcRoutingTableStaticRouteDestinationArgs', 'VpcRoutingTableStaticRouteDestinationArgsDict', 'outputs.VpcRoutingTableStaticRouteDestination']]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            nexthop: pulumi.Input[Optional[Union['VpcRoutingTableStaticRouteNexthopArgs', 'VpcRoutingTableStaticRouteNexthopArgsDict']]] = None,
+            nexthop: pulumi.Input[Optional[Union['VpcRoutingTableStaticRouteNexthopArgs', 'VpcRoutingTableStaticRouteNexthopArgsDict', 'outputs.VpcRoutingTableStaticRouteNexthop']]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             route_id: pulumi.Input[Optional[_builtins.str]] = None,
             routing_table_id: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['VpcRoutingTableStaticRouteTimeoutsArgs', 'VpcRoutingTableStaticRouteTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['VpcRoutingTableStaticRouteTimeoutsArgs', 'VpcRoutingTableStaticRouteTimeoutsArgsDict', 'outputs.VpcRoutingTableStaticRouteTimeouts']]] = None,
             vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'VpcRoutingTableStaticRoute':
         """
         Get an existing VpcRoutingTableStaticRoute resource's state with the given name, id, and optional extra
@@ -427,9 +427,9 @@ class VpcRoutingTableStaticRoute(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['VpcRoutingTableStaticRouteDestinationArgs', 'VpcRoutingTableStaticRouteDestinationArgsDict']] destination: The destination of the static route.
+        :param pulumi.Input[Union['VpcRoutingTableStaticRouteDestinationArgs', 'VpcRoutingTableStaticRouteDestinationArgsDict', 'outputs.VpcRoutingTableStaticRouteDestination']] destination: The destination of the static route.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
-        :param pulumi.Input[Union['VpcRoutingTableStaticRouteNexthopArgs', 'VpcRoutingTableStaticRouteNexthopArgsDict']] nexthop: The nexthop of the static route.
+        :param pulumi.Input[Union['VpcRoutingTableStaticRouteNexthopArgs', 'VpcRoutingTableStaticRouteNexthopArgsDict', 'outputs.VpcRoutingTableStaticRouteNexthop']] nexthop: The nexthop of the static route.
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the static route is associated.
         :param pulumi.Input[_builtins.str] region: The region of the static route.
         :param pulumi.Input[_builtins.str] route_id: The static route ID.

@@ -332,13 +332,13 @@ class MongodbflexInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  backup_schedule: pulumi.Input[Optional[_builtins.str]] = None,
-                 flavor: pulumi.Input[Optional[Union['MongodbflexInstanceFlavorArgs', 'MongodbflexInstanceFlavorArgsDict']]] = None,
+                 flavor: pulumi.Input[Optional[Union['MongodbflexInstanceFlavorArgs', 'MongodbflexInstanceFlavorArgsDict', 'outputs.MongodbflexInstanceFlavor']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 options: pulumi.Input[Optional[Union['MongodbflexInstanceOptionsArgs', 'MongodbflexInstanceOptionsArgsDict']]] = None,
+                 options: pulumi.Input[Optional[Union['MongodbflexInstanceOptionsArgs', 'MongodbflexInstanceOptionsArgsDict', 'outputs.MongodbflexInstanceOptions']]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  replicas: pulumi.Input[Optional[_builtins.int]] = None,
-                 storage: pulumi.Input[Optional[Union['MongodbflexInstanceStorageArgs', 'MongodbflexInstanceStorageArgsDict']]] = None,
+                 storage: pulumi.Input[Optional[Union['MongodbflexInstanceStorageArgs', 'MongodbflexInstanceStorageArgsDict', 'outputs.MongodbflexInstanceStorage']]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -392,13 +392,13 @@ class MongodbflexInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  backup_schedule: pulumi.Input[Optional[_builtins.str]] = None,
-                 flavor: pulumi.Input[Optional[Union['MongodbflexInstanceFlavorArgs', 'MongodbflexInstanceFlavorArgsDict']]] = None,
+                 flavor: pulumi.Input[Optional[Union['MongodbflexInstanceFlavorArgs', 'MongodbflexInstanceFlavorArgsDict', 'outputs.MongodbflexInstanceFlavor']]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 options: pulumi.Input[Optional[Union['MongodbflexInstanceOptionsArgs', 'MongodbflexInstanceOptionsArgsDict']]] = None,
+                 options: pulumi.Input[Optional[Union['MongodbflexInstanceOptionsArgs', 'MongodbflexInstanceOptionsArgsDict', 'outputs.MongodbflexInstanceOptions']]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  replicas: pulumi.Input[Optional[_builtins.int]] = None,
-                 storage: pulumi.Input[Optional[Union['MongodbflexInstanceStorageArgs', 'MongodbflexInstanceStorageArgsDict']]] = None,
+                 storage: pulumi.Input[Optional[Union['MongodbflexInstanceStorageArgs', 'MongodbflexInstanceStorageArgsDict', 'outputs.MongodbflexInstanceStorage']]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -448,14 +448,14 @@ class MongodbflexInstance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             backup_schedule: pulumi.Input[Optional[_builtins.str]] = None,
-            flavor: pulumi.Input[Optional[Union['MongodbflexInstanceFlavorArgs', 'MongodbflexInstanceFlavorArgsDict']]] = None,
+            flavor: pulumi.Input[Optional[Union['MongodbflexInstanceFlavorArgs', 'MongodbflexInstanceFlavorArgsDict', 'outputs.MongodbflexInstanceFlavor']]] = None,
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            options: pulumi.Input[Optional[Union['MongodbflexInstanceOptionsArgs', 'MongodbflexInstanceOptionsArgsDict']]] = None,
+            options: pulumi.Input[Optional[Union['MongodbflexInstanceOptionsArgs', 'MongodbflexInstanceOptionsArgsDict', 'outputs.MongodbflexInstanceOptions']]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             replicas: pulumi.Input[Optional[_builtins.int]] = None,
-            storage: pulumi.Input[Optional[Union['MongodbflexInstanceStorageArgs', 'MongodbflexInstanceStorageArgsDict']]] = None,
+            storage: pulumi.Input[Optional[Union['MongodbflexInstanceStorageArgs', 'MongodbflexInstanceStorageArgsDict', 'outputs.MongodbflexInstanceStorage']]] = None,
             version: pulumi.Input[Optional[_builtins.str]] = None) -> 'MongodbflexInstance':
         """
         Get an existing MongodbflexInstance resource's state with the given name, id, and optional extra

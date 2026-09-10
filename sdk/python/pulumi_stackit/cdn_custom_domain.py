@@ -192,7 +192,7 @@ class CdnCustomDomain(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 certificate: pulumi.Input[Optional[Union['CdnCustomDomainCertificateArgs', 'CdnCustomDomainCertificateArgsDict']]] = None,
+                 certificate: pulumi.Input[Optional[Union['CdnCustomDomainCertificateArgs', 'CdnCustomDomainCertificateArgsDict', 'outputs.CdnCustomDomainCertificate']]] = None,
                  distribution_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -211,7 +211,7 @@ class CdnCustomDomain(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['CdnCustomDomainCertificateArgs', 'CdnCustomDomainCertificateArgsDict']] certificate: The TLS certificate for the custom domain. If omitted, a managed certificate will be used. If the block is specified, a custom certificate is used.
+        :param pulumi.Input[Union['CdnCustomDomainCertificateArgs', 'CdnCustomDomainCertificateArgsDict', 'outputs.CdnCustomDomainCertificate']] certificate: The TLS certificate for the custom domain. If omitted, a managed certificate will be used. If the block is specified, a custom certificate is used.
         :param pulumi.Input[_builtins.str] distribution_id: CDN distribution ID
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID associated with the distribution
         """
@@ -248,7 +248,7 @@ class CdnCustomDomain(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 certificate: pulumi.Input[Optional[Union['CdnCustomDomainCertificateArgs', 'CdnCustomDomainCertificateArgsDict']]] = None,
+                 certificate: pulumi.Input[Optional[Union['CdnCustomDomainCertificateArgs', 'CdnCustomDomainCertificateArgsDict', 'outputs.CdnCustomDomainCertificate']]] = None,
                  distribution_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -281,7 +281,7 @@ class CdnCustomDomain(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            certificate: pulumi.Input[Optional[Union['CdnCustomDomainCertificateArgs', 'CdnCustomDomainCertificateArgsDict']]] = None,
+            certificate: pulumi.Input[Optional[Union['CdnCustomDomainCertificateArgs', 'CdnCustomDomainCertificateArgsDict', 'outputs.CdnCustomDomainCertificate']]] = None,
             distribution_id: pulumi.Input[Optional[_builtins.str]] = None,
             errors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -294,7 +294,7 @@ class CdnCustomDomain(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['CdnCustomDomainCertificateArgs', 'CdnCustomDomainCertificateArgsDict']] certificate: The TLS certificate for the custom domain. If omitted, a managed certificate will be used. If the block is specified, a custom certificate is used.
+        :param pulumi.Input[Union['CdnCustomDomainCertificateArgs', 'CdnCustomDomainCertificateArgsDict', 'outputs.CdnCustomDomainCertificate']] certificate: The TLS certificate for the custom domain. If omitted, a managed certificate will be used. If the block is specified, a custom certificate is used.
         :param pulumi.Input[_builtins.str] distribution_id: CDN distribution ID
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] errors: List of distribution errors
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID associated with the distribution

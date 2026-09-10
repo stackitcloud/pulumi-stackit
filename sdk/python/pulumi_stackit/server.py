@@ -553,9 +553,9 @@ class Server(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  affinity_group: pulumi.Input[Optional[_builtins.str]] = None,
-                 agent: pulumi.Input[Optional[Union['ServerAgentArgs', 'ServerAgentArgsDict']]] = None,
+                 agent: pulumi.Input[Optional[Union['ServerAgentArgs', 'ServerAgentArgsDict', 'outputs.ServerAgent']]] = None,
                  availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
-                 boot_volume: pulumi.Input[Optional[Union['ServerBootVolumeArgs', 'ServerBootVolumeArgsDict']]] = None,
+                 boot_volume: pulumi.Input[Optional[Union['ServerBootVolumeArgs', 'ServerBootVolumeArgsDict', 'outputs.ServerBootVolume']]] = None,
                  desired_status: pulumi.Input[Optional[_builtins.str]] = None,
                  image_id: pulumi.Input[Optional[_builtins.str]] = None,
                  keypair_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -594,9 +594,9 @@ class Server(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] affinity_group: The affinity group the server is assigned to.
-        :param pulumi.Input[Union['ServerAgentArgs', 'ServerAgentArgsDict']] agent: The STACKIT Server Agent configured for the server
+        :param pulumi.Input[Union['ServerAgentArgs', 'ServerAgentArgsDict', 'outputs.ServerAgent']] agent: The STACKIT Server Agent configured for the server
         :param pulumi.Input[_builtins.str] availability_zone: The availability zone of the server.
-        :param pulumi.Input[Union['ServerBootVolumeArgs', 'ServerBootVolumeArgsDict']] boot_volume: The boot volume for the server
+        :param pulumi.Input[Union['ServerBootVolumeArgs', 'ServerBootVolumeArgsDict', 'outputs.ServerBootVolume']] boot_volume: The boot volume for the server
         :param pulumi.Input[_builtins.str] desired_status: The desired status of the server resource. Possible values are: `active`, `inactive`, `deallocated`.
         :param pulumi.Input[_builtins.str] image_id: The image ID to be used for an ephemeral disk on the server.
         :param pulumi.Input[_builtins.str] keypair_name: The name of the keypair used during server creation.
@@ -654,9 +654,9 @@ class Server(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  affinity_group: pulumi.Input[Optional[_builtins.str]] = None,
-                 agent: pulumi.Input[Optional[Union['ServerAgentArgs', 'ServerAgentArgsDict']]] = None,
+                 agent: pulumi.Input[Optional[Union['ServerAgentArgs', 'ServerAgentArgsDict', 'outputs.ServerAgent']]] = None,
                  availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
-                 boot_volume: pulumi.Input[Optional[Union['ServerBootVolumeArgs', 'ServerBootVolumeArgsDict']]] = None,
+                 boot_volume: pulumi.Input[Optional[Union['ServerBootVolumeArgs', 'ServerBootVolumeArgsDict', 'outputs.ServerBootVolume']]] = None,
                  desired_status: pulumi.Input[Optional[_builtins.str]] = None,
                  image_id: pulumi.Input[Optional[_builtins.str]] = None,
                  keypair_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -709,9 +709,9 @@ class Server(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             affinity_group: pulumi.Input[Optional[_builtins.str]] = None,
-            agent: pulumi.Input[Optional[Union['ServerAgentArgs', 'ServerAgentArgsDict']]] = None,
+            agent: pulumi.Input[Optional[Union['ServerAgentArgs', 'ServerAgentArgsDict', 'outputs.ServerAgent']]] = None,
             availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
-            boot_volume: pulumi.Input[Optional[Union['ServerBootVolumeArgs', 'ServerBootVolumeArgsDict']]] = None,
+            boot_volume: pulumi.Input[Optional[Union['ServerBootVolumeArgs', 'ServerBootVolumeArgsDict', 'outputs.ServerBootVolume']]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             desired_status: pulumi.Input[Optional[_builtins.str]] = None,
             image_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -734,9 +734,9 @@ class Server(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] affinity_group: The affinity group the server is assigned to.
-        :param pulumi.Input[Union['ServerAgentArgs', 'ServerAgentArgsDict']] agent: The STACKIT Server Agent configured for the server
+        :param pulumi.Input[Union['ServerAgentArgs', 'ServerAgentArgsDict', 'outputs.ServerAgent']] agent: The STACKIT Server Agent configured for the server
         :param pulumi.Input[_builtins.str] availability_zone: The availability zone of the server.
-        :param pulumi.Input[Union['ServerBootVolumeArgs', 'ServerBootVolumeArgsDict']] boot_volume: The boot volume for the server
+        :param pulumi.Input[Union['ServerBootVolumeArgs', 'ServerBootVolumeArgsDict', 'outputs.ServerBootVolume']] boot_volume: The boot volume for the server
         :param pulumi.Input[_builtins.str] created_at: Date-time when the server was created
         :param pulumi.Input[_builtins.str] desired_status: The desired status of the server resource. Possible values are: `active`, `inactive`, `deallocated`.
         :param pulumi.Input[_builtins.str] image_id: The image ID to be used for an ephemeral disk on the server.

@@ -324,7 +324,7 @@ class RabbitmqInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 parameters: pulumi.Input[Optional[Union['RabbitmqInstanceParametersArgs', 'RabbitmqInstanceParametersArgsDict']]] = None,
+                 parameters: pulumi.Input[Optional[Union['RabbitmqInstanceParametersArgs', 'RabbitmqInstanceParametersArgsDict', 'outputs.RabbitmqInstanceParameters']]] = None,
                  plan_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -343,7 +343,7 @@ class RabbitmqInstance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: Instance name.
-        :param pulumi.Input[Union['RabbitmqInstanceParametersArgs', 'RabbitmqInstanceParametersArgsDict']] parameters: Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
+        :param pulumi.Input[Union['RabbitmqInstanceParametersArgs', 'RabbitmqInstanceParametersArgsDict', 'outputs.RabbitmqInstanceParameters']] parameters: Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
         :param pulumi.Input[_builtins.str] plan_name: The selected plan name.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the instance is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
@@ -381,7 +381,7 @@ class RabbitmqInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 parameters: pulumi.Input[Optional[Union['RabbitmqInstanceParametersArgs', 'RabbitmqInstanceParametersArgsDict']]] = None,
+                 parameters: pulumi.Input[Optional[Union['RabbitmqInstanceParametersArgs', 'RabbitmqInstanceParametersArgsDict', 'outputs.RabbitmqInstanceParameters']]] = None,
                  plan_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -431,7 +431,7 @@ class RabbitmqInstance(pulumi.CustomResource):
             image_url: pulumi.Input[Optional[_builtins.str]] = None,
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            parameters: pulumi.Input[Optional[Union['RabbitmqInstanceParametersArgs', 'RabbitmqInstanceParametersArgsDict']]] = None,
+            parameters: pulumi.Input[Optional[Union['RabbitmqInstanceParametersArgs', 'RabbitmqInstanceParametersArgsDict', 'outputs.RabbitmqInstanceParameters']]] = None,
             plan_id: pulumi.Input[Optional[_builtins.str]] = None,
             plan_name: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -446,7 +446,7 @@ class RabbitmqInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] instance_id: ID of the RabbitMQ instance.
         :param pulumi.Input[_builtins.str] name: Instance name.
-        :param pulumi.Input[Union['RabbitmqInstanceParametersArgs', 'RabbitmqInstanceParametersArgsDict']] parameters: Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
+        :param pulumi.Input[Union['RabbitmqInstanceParametersArgs', 'RabbitmqInstanceParametersArgsDict', 'outputs.RabbitmqInstanceParameters']] parameters: Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.
         :param pulumi.Input[_builtins.str] plan_id: The selected plan ID.
         :param pulumi.Input[_builtins.str] plan_name: The selected plan name.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the instance is associated.

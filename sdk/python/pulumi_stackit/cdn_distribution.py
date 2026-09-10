@@ -200,7 +200,7 @@ class CdnDistribution(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: pulumi.Input[Optional[Union['CdnDistributionConfigArgs', 'CdnDistributionConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['CdnDistributionConfigArgs', 'CdnDistributionConfigArgsDict', 'outputs.CdnDistributionConfig']]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -217,7 +217,7 @@ class CdnDistribution(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['CdnDistributionConfigArgs', 'CdnDistributionConfigArgsDict']] config: The distribution configuration
+        :param pulumi.Input[Union['CdnDistributionConfigArgs', 'CdnDistributionConfigArgsDict', 'outputs.CdnDistributionConfig']] config: The distribution configuration
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID associated with the distribution
         """
         ...
@@ -253,7 +253,7 @@ class CdnDistribution(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: pulumi.Input[Optional[Union['CdnDistributionConfigArgs', 'CdnDistributionConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['CdnDistributionConfigArgs', 'CdnDistributionConfigArgsDict', 'outputs.CdnDistributionConfig']]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -286,10 +286,10 @@ class CdnDistribution(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: pulumi.Input[Optional[Union['CdnDistributionConfigArgs', 'CdnDistributionConfigArgsDict']]] = None,
+            config: pulumi.Input[Optional[Union['CdnDistributionConfigArgs', 'CdnDistributionConfigArgsDict', 'outputs.CdnDistributionConfig']]] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
             distribution_id: pulumi.Input[Optional[_builtins.str]] = None,
-            domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CdnDistributionDomainArgs', 'CdnDistributionDomainArgsDict']]]]] = None,
+            domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['CdnDistributionDomainArgs', 'CdnDistributionDomainArgsDict', 'outputs.CdnDistributionDomain']]]]] = None,
             errors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             status: pulumi.Input[Optional[_builtins.str]] = None,
@@ -301,10 +301,10 @@ class CdnDistribution(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['CdnDistributionConfigArgs', 'CdnDistributionConfigArgsDict']] config: The distribution configuration
+        :param pulumi.Input[Union['CdnDistributionConfigArgs', 'CdnDistributionConfigArgsDict', 'outputs.CdnDistributionConfig']] config: The distribution configuration
         :param pulumi.Input[_builtins.str] created_at: Time when the distribution was created
         :param pulumi.Input[_builtins.str] distribution_id: CDN distribution ID
-        :param pulumi.Input[Sequence[pulumi.Input[Union['CdnDistributionDomainArgs', 'CdnDistributionDomainArgsDict']]]] domains: List of configured domains for the distribution
+        :param pulumi.Input[Sequence[pulumi.Input[Union['CdnDistributionDomainArgs', 'CdnDistributionDomainArgsDict', 'outputs.CdnDistributionDomain']]]] domains: List of configured domains for the distribution
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] errors: List of distribution errors
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID associated with the distribution
         :param pulumi.Input[_builtins.str] status: Status of the distribution

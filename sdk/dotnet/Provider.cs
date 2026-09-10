@@ -43,6 +43,12 @@ namespace Pulumi.Stackit
         public Output<string?> AuthorizationCustomEndpoint { get; private set; } = null!;
 
         /// <summary>
+        /// Custom endpoint for the Automation service
+        /// </summary>
+        [Output("automationCustomEndpoint")]
+        public Output<string?> AutomationCustomEndpoint { get; private set; } = null!;
+
+        /// <summary>
         /// Custom endpoint for the CDN service
         /// </summary>
         [Output("cdnCustomEndpoint")]
@@ -277,6 +283,12 @@ namespace Pulumi.Stackit
         public Output<string?> ServiceAccountToken { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the Azure DevOps pipeline service connection. For use when authenticating as a Service Account using OpenID Connect.
+        /// </summary>
+        [Output("serviceConnectionId")]
+        public Output<string?> ServiceConnectionId { get; private set; } = null!;
+
+        /// <summary>
         /// Custom endpoint for the Service Enablement API
         /// </summary>
         [Output("serviceEnablementCustomEndpoint")]
@@ -317,6 +329,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Output("tokenCustomEndpoint")]
         public Output<string?> TokenCustomEndpoint { get; private set; } = null!;
+
+        /// <summary>
+        /// Custom endpoint for the Key Value Store service
+        /// </summary>
+        [Output("valkeyCustomEndpoint")]
+        public Output<string?> ValkeyCustomEndpoint { get; private set; } = null!;
 
         /// <summary>
         /// Custom endpoint for the VPN service
@@ -382,6 +400,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("authorizationCustomEndpoint")]
         public Input<string>? AuthorizationCustomEndpoint { get; set; }
+
+        /// <summary>
+        /// Custom endpoint for the Automation service
+        /// </summary>
+        [Input("automationCustomEndpoint")]
+        public Input<string>? AutomationCustomEndpoint { get; set; }
 
         /// <summary>
         /// Custom endpoint for the CDN service
@@ -636,6 +660,12 @@ namespace Pulumi.Stackit
         public Input<string>? ServiceAccountToken { get; set; }
 
         /// <summary>
+        /// The ID of the Azure DevOps pipeline service connection. For use when authenticating as a Service Account using OpenID Connect.
+        /// </summary>
+        [Input("serviceConnectionId")]
+        public Input<string>? ServiceConnectionId { get; set; }
+
+        /// <summary>
         /// Custom endpoint for the Service Enablement API
         /// </summary>
         [Input("serviceEnablementCustomEndpoint")]
@@ -682,6 +712,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("useOidc", json: true)]
         public Input<bool>? UseOidc { get; set; }
+
+        /// <summary>
+        /// Custom endpoint for the Key Value Store service
+        /// </summary>
+        [Input("valkeyCustomEndpoint")]
+        public Input<string>? ValkeyCustomEndpoint { get; set; }
 
         /// <summary>
         /// Custom endpoint for the VPN service

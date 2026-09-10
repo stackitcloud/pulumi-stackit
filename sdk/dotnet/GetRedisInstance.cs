@@ -12,7 +12,7 @@ namespace Pulumi.Stackit
     public static class GetRedisInstance
     {
         /// <summary>
-        /// Redis instance data source schema. Must have a `Region` specified in the provider configuration.
+        /// Redis instance data source schema. Must have a `Region` specified in the provider configuration. This data source is deprecated and will be removed after August 2027, use stackit.ValkeyInstance instead. For more information on how to migrate, see the [migration guide](https://docs.stackit.cloud/products/databases/key-value-store/tutorials/migrate-data-to-a-new-instance/).
         /// 
         /// ## Example Usage
         /// 
@@ -27,7 +27,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRedisInstanceResult>("stackit:index/getRedisInstance:getRedisInstance", args ?? new GetRedisInstanceArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Redis instance data source schema. Must have a `Region` specified in the provider configuration.
+        /// Redis instance data source schema. Must have a `Region` specified in the provider configuration. This data source is deprecated and will be removed after August 2027, use stackit.ValkeyInstance instead. For more information on how to migrate, see the [migration guide](https://docs.stackit.cloud/products/databases/key-value-store/tutorials/migrate-data-to-a-new-instance/).
         /// 
         /// ## Example Usage
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.Invoke<GetRedisInstanceResult>("stackit:index/getRedisInstance:getRedisInstance", args ?? new GetRedisInstanceInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Redis instance data source schema. Must have a `Region` specified in the provider configuration.
+        /// Redis instance data source schema. Must have a `Region` specified in the provider configuration. This data source is deprecated and will be removed after August 2027, use stackit.ValkeyInstance instead. For more information on how to migrate, see the [migration guide](https://docs.stackit.cloud/products/databases/key-value-store/tutorials/migrate-data-to-a-new-instance/).
         /// 
         /// ## Example Usage
         /// 

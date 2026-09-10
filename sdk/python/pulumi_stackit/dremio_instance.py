@@ -255,12 +255,12 @@ class DremioInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication: pulumi.Input[Optional[Union['DremioInstanceAuthenticationArgs', 'DremioInstanceAuthenticationArgsDict']]] = None,
+                 authentication: pulumi.Input[Optional[Union['DremioInstanceAuthenticationArgs', 'DremioInstanceAuthenticationArgsDict', 'outputs.DremioInstanceAuthentication']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['DremioInstanceTimeoutsArgs', 'DremioInstanceTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['DremioInstanceTimeoutsArgs', 'DremioInstanceTimeoutsArgsDict', 'outputs.DremioInstanceTimeouts']]] = None,
                  __props__=None):
         """
         Manages a STACKIT Dremio instance.
@@ -276,7 +276,7 @@ class DremioInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DremioInstanceAuthenticationArgs', 'DremioInstanceAuthenticationArgsDict']] authentication: Dremio instance authentication settings. A change here triggers a Dremio restart and will incur downtime.
+        :param pulumi.Input[Union['DremioInstanceAuthenticationArgs', 'DremioInstanceAuthenticationArgsDict', 'outputs.DremioInstanceAuthentication']] authentication: Dremio instance authentication settings. A change here triggers a Dremio restart and will incur downtime.
         :param pulumi.Input[_builtins.str] description: The description is a longer text chosen by the user to provide more context for the resource.
         :param pulumi.Input[_builtins.str] display_name: The display name is a short name chosen by the user to identify the resource.
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the resource is associated.
@@ -315,12 +315,12 @@ class DremioInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 authentication: pulumi.Input[Optional[Union['DremioInstanceAuthenticationArgs', 'DremioInstanceAuthenticationArgsDict']]] = None,
+                 authentication: pulumi.Input[Optional[Union['DremioInstanceAuthenticationArgs', 'DremioInstanceAuthenticationArgsDict', 'outputs.DremioInstanceAuthentication']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['DremioInstanceTimeoutsArgs', 'DremioInstanceTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['DremioInstanceTimeoutsArgs', 'DremioInstanceTimeoutsArgsDict', 'outputs.DremioInstanceTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -354,14 +354,14 @@ class DremioInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            authentication: pulumi.Input[Optional[Union['DremioInstanceAuthenticationArgs', 'DremioInstanceAuthenticationArgsDict']]] = None,
+            authentication: pulumi.Input[Optional[Union['DremioInstanceAuthenticationArgs', 'DremioInstanceAuthenticationArgsDict', 'outputs.DremioInstanceAuthentication']]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
-            endpoints: pulumi.Input[Optional[Union['DremioInstanceEndpointsArgs', 'DremioInstanceEndpointsArgsDict']]] = None,
+            endpoints: pulumi.Input[Optional[Union['DremioInstanceEndpointsArgs', 'DremioInstanceEndpointsArgsDict', 'outputs.DremioInstanceEndpoints']]] = None,
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['DremioInstanceTimeoutsArgs', 'DremioInstanceTimeoutsArgsDict']]] = None) -> 'DremioInstance':
+            timeouts: pulumi.Input[Optional[Union['DremioInstanceTimeoutsArgs', 'DremioInstanceTimeoutsArgsDict', 'outputs.DremioInstanceTimeouts']]] = None) -> 'DremioInstance':
         """
         Get an existing DremioInstance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -369,10 +369,10 @@ class DremioInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DremioInstanceAuthenticationArgs', 'DremioInstanceAuthenticationArgsDict']] authentication: Dremio instance authentication settings. A change here triggers a Dremio restart and will incur downtime.
+        :param pulumi.Input[Union['DremioInstanceAuthenticationArgs', 'DremioInstanceAuthenticationArgsDict', 'outputs.DremioInstanceAuthentication']] authentication: Dremio instance authentication settings. A change here triggers a Dremio restart and will incur downtime.
         :param pulumi.Input[_builtins.str] description: The description is a longer text chosen by the user to provide more context for the resource.
         :param pulumi.Input[_builtins.str] display_name: The display name is a short name chosen by the user to identify the resource.
-        :param pulumi.Input[Union['DremioInstanceEndpointsArgs', 'DremioInstanceEndpointsArgsDict']] endpoints: The available endpoints of the Dremio instance.
+        :param pulumi.Input[Union['DremioInstanceEndpointsArgs', 'DremioInstanceEndpointsArgsDict', 'outputs.DremioInstanceEndpoints']] endpoints: The available endpoints of the Dremio instance.
         :param pulumi.Input[_builtins.str] instance_id: The Dremio instance ID.
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the resource is associated.
         :param pulumi.Input[_builtins.str] region: The STACKIT region name the resource is located in. If not defined, the provider region is used.

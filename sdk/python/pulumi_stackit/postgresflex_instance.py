@@ -480,16 +480,16 @@ class PostgresflexInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  backup_schedule: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption: pulumi.Input[Optional[Union['PostgresflexInstanceEncryptionArgs', 'PostgresflexInstanceEncryptionArgsDict']]] = None,
-                 flavor: pulumi.Input[Optional[Union['PostgresflexInstanceFlavorArgs', 'PostgresflexInstanceFlavorArgsDict']]] = None,
+                 encryption: pulumi.Input[Optional[Union['PostgresflexInstanceEncryptionArgs', 'PostgresflexInstanceEncryptionArgsDict', 'outputs.PostgresflexInstanceEncryption']]] = None,
+                 flavor: pulumi.Input[Optional[Union['PostgresflexInstanceFlavorArgs', 'PostgresflexInstanceFlavorArgsDict', 'outputs.PostgresflexInstanceFlavor']]] = None,
                  flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 network: pulumi.Input[Optional[Union['PostgresflexInstanceNetworkArgs', 'PostgresflexInstanceNetworkArgsDict']]] = None,
+                 network: pulumi.Input[Optional[Union['PostgresflexInstanceNetworkArgs', 'PostgresflexInstanceNetworkArgsDict', 'outputs.PostgresflexInstanceNetwork']]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  replicas: pulumi.Input[Optional[_builtins.int]] = None,
                  retention_days: pulumi.Input[Optional[_builtins.int]] = None,
-                 storage: pulumi.Input[Optional[Union['PostgresflexInstanceStorageArgs', 'PostgresflexInstanceStorageArgsDict']]] = None,
+                 storage: pulumi.Input[Optional[Union['PostgresflexInstanceStorageArgs', 'PostgresflexInstanceStorageArgsDict', 'outputs.PostgresflexInstanceStorage']]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -508,7 +508,7 @@ class PostgresflexInstance(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] backup_schedule: The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.
         :param pulumi.Input[_builtins.str] flavor_id: The flavor ID of the PostgreSQL Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `get_postgresflex_flavors`
         :param pulumi.Input[_builtins.str] name: Instance name.
-        :param pulumi.Input[Union['PostgresflexInstanceNetworkArgs', 'PostgresflexInstanceNetworkArgsDict']] network: The network configuration of the instance. Will be required after February 2027. Set a value to prevent breaking changes.
+        :param pulumi.Input[Union['PostgresflexInstanceNetworkArgs', 'PostgresflexInstanceNetworkArgsDict', 'outputs.PostgresflexInstanceNetwork']] network: The network configuration of the instance. Will be required after February 2027. Set a value to prevent breaking changes.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the instance is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.int] replicas: How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication. Can only be set together with `flavor`
@@ -547,16 +547,16 @@ class PostgresflexInstance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  backup_schedule: pulumi.Input[Optional[_builtins.str]] = None,
-                 encryption: pulumi.Input[Optional[Union['PostgresflexInstanceEncryptionArgs', 'PostgresflexInstanceEncryptionArgsDict']]] = None,
-                 flavor: pulumi.Input[Optional[Union['PostgresflexInstanceFlavorArgs', 'PostgresflexInstanceFlavorArgsDict']]] = None,
+                 encryption: pulumi.Input[Optional[Union['PostgresflexInstanceEncryptionArgs', 'PostgresflexInstanceEncryptionArgsDict', 'outputs.PostgresflexInstanceEncryption']]] = None,
+                 flavor: pulumi.Input[Optional[Union['PostgresflexInstanceFlavorArgs', 'PostgresflexInstanceFlavorArgsDict', 'outputs.PostgresflexInstanceFlavor']]] = None,
                  flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 network: pulumi.Input[Optional[Union['PostgresflexInstanceNetworkArgs', 'PostgresflexInstanceNetworkArgsDict']]] = None,
+                 network: pulumi.Input[Optional[Union['PostgresflexInstanceNetworkArgs', 'PostgresflexInstanceNetworkArgsDict', 'outputs.PostgresflexInstanceNetwork']]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  replicas: pulumi.Input[Optional[_builtins.int]] = None,
                  retention_days: pulumi.Input[Optional[_builtins.int]] = None,
-                 storage: pulumi.Input[Optional[Union['PostgresflexInstanceStorageArgs', 'PostgresflexInstanceStorageArgsDict']]] = None,
+                 storage: pulumi.Input[Optional[Union['PostgresflexInstanceStorageArgs', 'PostgresflexInstanceStorageArgsDict', 'outputs.PostgresflexInstanceStorage']]] = None,
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -602,18 +602,18 @@ class PostgresflexInstance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             backup_schedule: pulumi.Input[Optional[_builtins.str]] = None,
-            connection_info: pulumi.Input[Optional[Union['PostgresflexInstanceConnectionInfoArgs', 'PostgresflexInstanceConnectionInfoArgsDict']]] = None,
-            encryption: pulumi.Input[Optional[Union['PostgresflexInstanceEncryptionArgs', 'PostgresflexInstanceEncryptionArgsDict']]] = None,
-            flavor: pulumi.Input[Optional[Union['PostgresflexInstanceFlavorArgs', 'PostgresflexInstanceFlavorArgsDict']]] = None,
+            connection_info: pulumi.Input[Optional[Union['PostgresflexInstanceConnectionInfoArgs', 'PostgresflexInstanceConnectionInfoArgsDict', 'outputs.PostgresflexInstanceConnectionInfo']]] = None,
+            encryption: pulumi.Input[Optional[Union['PostgresflexInstanceEncryptionArgs', 'PostgresflexInstanceEncryptionArgsDict', 'outputs.PostgresflexInstanceEncryption']]] = None,
+            flavor: pulumi.Input[Optional[Union['PostgresflexInstanceFlavorArgs', 'PostgresflexInstanceFlavorArgsDict', 'outputs.PostgresflexInstanceFlavor']]] = None,
             flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
             instance_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            network: pulumi.Input[Optional[Union['PostgresflexInstanceNetworkArgs', 'PostgresflexInstanceNetworkArgsDict']]] = None,
+            network: pulumi.Input[Optional[Union['PostgresflexInstanceNetworkArgs', 'PostgresflexInstanceNetworkArgsDict', 'outputs.PostgresflexInstanceNetwork']]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             replicas: pulumi.Input[Optional[_builtins.int]] = None,
             retention_days: pulumi.Input[Optional[_builtins.int]] = None,
-            storage: pulumi.Input[Optional[Union['PostgresflexInstanceStorageArgs', 'PostgresflexInstanceStorageArgsDict']]] = None,
+            storage: pulumi.Input[Optional[Union['PostgresflexInstanceStorageArgs', 'PostgresflexInstanceStorageArgsDict', 'outputs.PostgresflexInstanceStorage']]] = None,
             version: pulumi.Input[Optional[_builtins.str]] = None) -> 'PostgresflexInstance':
         """
         Get an existing PostgresflexInstance resource's state with the given name, id, and optional extra
@@ -624,11 +624,11 @@ class PostgresflexInstance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The Access Control List (ACL) for the PostgresFlex instance.
         :param pulumi.Input[_builtins.str] backup_schedule: The schedule for on what time and how often the database backup will be created. Must be a valid cron expression using numeric minute and hour values, e.g: '0 2 * * *'.
-        :param pulumi.Input[Union['PostgresflexInstanceConnectionInfoArgs', 'PostgresflexInstanceConnectionInfoArgsDict']] connection_info: The connection info for the PostgresFlex instance.
+        :param pulumi.Input[Union['PostgresflexInstanceConnectionInfoArgs', 'PostgresflexInstanceConnectionInfoArgsDict', 'outputs.PostgresflexInstanceConnectionInfo']] connection_info: The connection info for the PostgresFlex instance.
         :param pulumi.Input[_builtins.str] flavor_id: The flavor ID of the PostgreSQL Flex instance. Can only be set when `flavor` and `replicas` are not set. You can list available flavors using the datasource `get_postgresflex_flavors`
         :param pulumi.Input[_builtins.str] instance_id: ID of the PostgresFlex instance.
         :param pulumi.Input[_builtins.str] name: Instance name.
-        :param pulumi.Input[Union['PostgresflexInstanceNetworkArgs', 'PostgresflexInstanceNetworkArgsDict']] network: The network configuration of the instance. Will be required after February 2027. Set a value to prevent breaking changes.
+        :param pulumi.Input[Union['PostgresflexInstanceNetworkArgs', 'PostgresflexInstanceNetworkArgsDict', 'outputs.PostgresflexInstanceNetwork']] network: The network configuration of the instance. Will be required after February 2027. Set a value to prevent breaking changes.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the instance is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.int] replicas: How many replicas the instance should have. Valid values are 1 for single mode or 3 for replication. Can only be set together with `flavor`

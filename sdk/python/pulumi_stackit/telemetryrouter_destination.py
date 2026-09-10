@@ -298,7 +298,7 @@ class TelemetryrouterDestination(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: pulumi.Input[Optional[Union['TelemetryrouterDestinationConfigArgs', 'TelemetryrouterDestinationConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['TelemetryrouterDestinationConfigArgs', 'TelemetryrouterDestinationConfigArgsDict', 'outputs.TelemetryrouterDestinationConfig']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -317,7 +317,7 @@ class TelemetryrouterDestination(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['TelemetryrouterDestinationConfigArgs', 'TelemetryrouterDestinationConfigArgsDict']] config: The configuration of the TelemetryRouter destination
+        :param pulumi.Input[Union['TelemetryrouterDestinationConfigArgs', 'TelemetryrouterDestinationConfigArgsDict', 'outputs.TelemetryrouterDestinationConfig']] config: The configuration of the TelemetryRouter destination
         :param pulumi.Input[_builtins.str] description: The description of the TelemetryRouter destination
         :param pulumi.Input[_builtins.str] display_name: The displayed name of the TelemetryRouter destination
         :param pulumi.Input[_builtins.str] instance_id: The TelemetryRouter instance ID
@@ -355,7 +355,7 @@ class TelemetryrouterDestination(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: pulumi.Input[Optional[Union['TelemetryrouterDestinationConfigArgs', 'TelemetryrouterDestinationConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['TelemetryrouterDestinationConfigArgs', 'TelemetryrouterDestinationConfigArgsDict', 'outputs.TelemetryrouterDestinationConfig']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  instance_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -398,7 +398,7 @@ class TelemetryrouterDestination(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            config: pulumi.Input[Optional[Union['TelemetryrouterDestinationConfigArgs', 'TelemetryrouterDestinationConfigArgsDict']]] = None,
+            config: pulumi.Input[Optional[Union['TelemetryrouterDestinationConfigArgs', 'TelemetryrouterDestinationConfigArgsDict', 'outputs.TelemetryrouterDestinationConfig']]] = None,
             creation_time: pulumi.Input[Optional[_builtins.str]] = None,
             credential_type: pulumi.Input[Optional[_builtins.str]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
@@ -415,7 +415,7 @@ class TelemetryrouterDestination(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['TelemetryrouterDestinationConfigArgs', 'TelemetryrouterDestinationConfigArgsDict']] config: The configuration of the TelemetryRouter destination
+        :param pulumi.Input[Union['TelemetryrouterDestinationConfigArgs', 'TelemetryrouterDestinationConfigArgsDict', 'outputs.TelemetryrouterDestinationConfig']] config: The configuration of the TelemetryRouter destination
         :param pulumi.Input[_builtins.str] creation_time: The date and time the creation of the TelemetryRouter destination was initiated
         :param pulumi.Input[_builtins.str] credential_type: The TelemetryRouter destination's credential type
         :param pulumi.Input[_builtins.str] description: The description of the TelemetryRouter destination

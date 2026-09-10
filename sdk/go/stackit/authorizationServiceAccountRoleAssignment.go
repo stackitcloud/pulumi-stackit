@@ -28,7 +28,7 @@ type AuthorizationServiceAccountRoleAssignment struct {
 
 	// Service-account Resource to assign the role to.
 	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
-	// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
+	// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`
 	Role pulumi.StringOutput `pulumi:"role"`
 	// Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.
 	Subject pulumi.StringOutput `pulumi:"subject"`
@@ -75,7 +75,7 @@ func GetAuthorizationServiceAccountRoleAssignment(ctx *pulumi.Context,
 type authorizationServiceAccountRoleAssignmentState struct {
 	// Service-account Resource to assign the role to.
 	ResourceId *string `pulumi:"resourceId"`
-	// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
+	// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`
 	Role *string `pulumi:"role"`
 	// Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.
 	Subject *string `pulumi:"subject"`
@@ -84,7 +84,7 @@ type authorizationServiceAccountRoleAssignmentState struct {
 type AuthorizationServiceAccountRoleAssignmentState struct {
 	// Service-account Resource to assign the role to.
 	ResourceId pulumi.StringPtrInput
-	// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
+	// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`
 	Role pulumi.StringPtrInput
 	// Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.
 	Subject pulumi.StringPtrInput
@@ -97,7 +97,7 @@ func (AuthorizationServiceAccountRoleAssignmentState) ElementType() reflect.Type
 type authorizationServiceAccountRoleAssignmentArgs struct {
 	// Service-account Resource to assign the role to.
 	ResourceId string `pulumi:"resourceId"`
-	// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
+	// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`
 	Role string `pulumi:"role"`
 	// Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.
 	Subject string `pulumi:"subject"`
@@ -107,7 +107,7 @@ type authorizationServiceAccountRoleAssignmentArgs struct {
 type AuthorizationServiceAccountRoleAssignmentArgs struct {
 	// Service-account Resource to assign the role to.
 	ResourceId pulumi.StringInput
-	// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
+	// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`
 	Role pulumi.StringInput
 	// Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.
 	Subject pulumi.StringInput
@@ -205,7 +205,7 @@ func (o AuthorizationServiceAccountRoleAssignmentOutput) ResourceId() pulumi.Str
 	return o.ApplyT(func(v *AuthorizationServiceAccountRoleAssignment) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
 }
 
-// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
+// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`
 func (o AuthorizationServiceAccountRoleAssignmentOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthorizationServiceAccountRoleAssignment) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }
