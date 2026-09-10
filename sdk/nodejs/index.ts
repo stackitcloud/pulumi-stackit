@@ -160,6 +160,11 @@ export const getAuthorizationProjectCustomRole: typeof import("./getAuthorizatio
 export const getAuthorizationProjectCustomRoleOutput: typeof import("./getAuthorizationProjectCustomRole").getAuthorizationProjectCustomRoleOutput = null as any;
 utilities.lazyLoad(exports, ["getAuthorizationProjectCustomRole","getAuthorizationProjectCustomRoleOutput"], () => require("./getAuthorizationProjectCustomRole"));
 
+export { GetAutomationTemplatesArgs, GetAutomationTemplatesResult, GetAutomationTemplatesOutputArgs } from "./getAutomationTemplates";
+export const getAutomationTemplates: typeof import("./getAutomationTemplates").getAutomationTemplates = null as any;
+export const getAutomationTemplatesOutput: typeof import("./getAutomationTemplates").getAutomationTemplatesOutput = null as any;
+utilities.lazyLoad(exports, ["getAutomationTemplates","getAutomationTemplatesOutput"], () => require("./getAutomationTemplates"));
+
 export { GetCdnCustomDomainArgs, GetCdnCustomDomainResult, GetCdnCustomDomainOutputArgs } from "./getCdnCustomDomain";
 export const getCdnCustomDomain: typeof import("./getCdnCustomDomain").getCdnCustomDomain = null as any;
 export const getCdnCustomDomainOutput: typeof import("./getCdnCustomDomain").getCdnCustomDomainOutput = null as any;
@@ -645,6 +650,16 @@ export const getTelemetryrouterInstance: typeof import("./getTelemetryrouterInst
 export const getTelemetryrouterInstanceOutput: typeof import("./getTelemetryrouterInstance").getTelemetryrouterInstanceOutput = null as any;
 utilities.lazyLoad(exports, ["getTelemetryrouterInstance","getTelemetryrouterInstanceOutput"], () => require("./getTelemetryrouterInstance"));
 
+export { GetValkeyCredentialArgs, GetValkeyCredentialResult, GetValkeyCredentialOutputArgs } from "./getValkeyCredential";
+export const getValkeyCredential: typeof import("./getValkeyCredential").getValkeyCredential = null as any;
+export const getValkeyCredentialOutput: typeof import("./getValkeyCredential").getValkeyCredentialOutput = null as any;
+utilities.lazyLoad(exports, ["getValkeyCredential","getValkeyCredentialOutput"], () => require("./getValkeyCredential"));
+
+export { GetValkeyInstanceArgs, GetValkeyInstanceResult, GetValkeyInstanceOutputArgs } from "./getValkeyInstance";
+export const getValkeyInstance: typeof import("./getValkeyInstance").getValkeyInstance = null as any;
+export const getValkeyInstanceOutput: typeof import("./getValkeyInstance").getValkeyInstanceOutput = null as any;
+utilities.lazyLoad(exports, ["getValkeyInstance","getValkeyInstanceOutput"], () => require("./getValkeyInstance"));
+
 export { GetVolumeArgs, GetVolumeResult, GetVolumeOutputArgs } from "./getVolume";
 export const getVolume: typeof import("./getVolume").getVolume = null as any;
 export const getVolumeOutput: typeof import("./getVolume").getVolumeOutput = null as any;
@@ -1103,6 +1118,16 @@ export type TelemetryrouterInstance = import("./telemetryrouterInstance").Teleme
 export const TelemetryrouterInstance: typeof import("./telemetryrouterInstance").TelemetryrouterInstance = null as any;
 utilities.lazyLoad(exports, ["TelemetryrouterInstance"], () => require("./telemetryrouterInstance"));
 
+export { ValkeyCredentialArgs, ValkeyCredentialState } from "./valkeyCredential";
+export type ValkeyCredential = import("./valkeyCredential").ValkeyCredential;
+export const ValkeyCredential: typeof import("./valkeyCredential").ValkeyCredential = null as any;
+utilities.lazyLoad(exports, ["ValkeyCredential"], () => require("./valkeyCredential"));
+
+export { ValkeyInstanceArgs, ValkeyInstanceState } from "./valkeyInstance";
+export type ValkeyInstance = import("./valkeyInstance").ValkeyInstance;
+export const ValkeyInstance: typeof import("./valkeyInstance").ValkeyInstance = null as any;
+utilities.lazyLoad(exports, ["ValkeyInstance"], () => require("./valkeyInstance"));
+
 export { VolumeArgs, VolumeState } from "./volume";
 export type Volume = import("./volume").Volume;
 export const Volume: typeof import("./volume").Volume = null as any;
@@ -1365,6 +1390,10 @@ const _module = {
                 return new TelemetryrouterDestination(name, <any>undefined, { urn })
             case "stackit:index/telemetryrouterInstance:TelemetryrouterInstance":
                 return new TelemetryrouterInstance(name, <any>undefined, { urn })
+            case "stackit:index/valkeyCredential:ValkeyCredential":
+                return new ValkeyCredential(name, <any>undefined, { urn })
+            case "stackit:index/valkeyInstance:ValkeyInstance":
+                return new ValkeyInstance(name, <any>undefined, { urn })
             case "stackit:index/volume:Volume":
                 return new Volume(name, <any>undefined, { urn })
             case "stackit:index/vpc:Vpc":
@@ -1490,6 +1519,8 @@ pulumi.runtime.registerResourceModule("stackit", "index/telemetrylink", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/telemetryrouterAccessToken", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/telemetryrouterDestination", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/telemetryrouterInstance", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/valkeyCredential", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/valkeyInstance", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/volume", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/vpc", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/vpcNetworkRange", _module)

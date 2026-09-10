@@ -214,7 +214,7 @@ class ServiceAccountFederatedIdentityProvider(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assertions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceAccountFederatedIdentityProviderAssertionArgs', 'ServiceAccountFederatedIdentityProviderAssertionArgsDict']]]]] = None,
+                 assertions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceAccountFederatedIdentityProviderAssertionArgs', 'ServiceAccountFederatedIdentityProviderAssertionArgsDict', 'outputs.ServiceAccountFederatedIdentityProviderAssertion']]]]] = None,
                  issuer: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -235,7 +235,7 @@ class ServiceAccountFederatedIdentityProvider(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceAccountFederatedIdentityProviderAssertionArgs', 'ServiceAccountFederatedIdentityProviderAssertionArgsDict']]]] assertions: The assertions for the federated identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceAccountFederatedIdentityProviderAssertionArgs', 'ServiceAccountFederatedIdentityProviderAssertionArgsDict', 'outputs.ServiceAccountFederatedIdentityProviderAssertion']]]] assertions: The assertions for the federated identity provider.
         :param pulumi.Input[_builtins.str] issuer: The issuer URL.
         :param pulumi.Input[_builtins.str] name: The name of the federated identity provider.
         :param pulumi.Input[_builtins.str] project_id: The STACKIT project ID associated with the service account.
@@ -275,7 +275,7 @@ class ServiceAccountFederatedIdentityProvider(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 assertions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceAccountFederatedIdentityProviderAssertionArgs', 'ServiceAccountFederatedIdentityProviderAssertionArgsDict']]]]] = None,
+                 assertions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceAccountFederatedIdentityProviderAssertionArgs', 'ServiceAccountFederatedIdentityProviderAssertionArgsDict', 'outputs.ServiceAccountFederatedIdentityProviderAssertion']]]]] = None,
                  issuer: pulumi.Input[Optional[_builtins.str]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -313,7 +313,7 @@ class ServiceAccountFederatedIdentityProvider(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            assertions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceAccountFederatedIdentityProviderAssertionArgs', 'ServiceAccountFederatedIdentityProviderAssertionArgsDict']]]]] = None,
+            assertions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceAccountFederatedIdentityProviderAssertionArgs', 'ServiceAccountFederatedIdentityProviderAssertionArgsDict', 'outputs.ServiceAccountFederatedIdentityProviderAssertion']]]]] = None,
             federation_id: pulumi.Input[Optional[_builtins.str]] = None,
             issuer: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -326,7 +326,7 @@ class ServiceAccountFederatedIdentityProvider(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceAccountFederatedIdentityProviderAssertionArgs', 'ServiceAccountFederatedIdentityProviderAssertionArgsDict']]]] assertions: The assertions for the federated identity provider.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceAccountFederatedIdentityProviderAssertionArgs', 'ServiceAccountFederatedIdentityProviderAssertionArgsDict', 'outputs.ServiceAccountFederatedIdentityProviderAssertion']]]] assertions: The assertions for the federated identity provider.
         :param pulumi.Input[_builtins.str] federation_id: The unique identifier for the federated identity provider associated with the service account.
         :param pulumi.Input[_builtins.str] issuer: The issuer URL.
         :param pulumi.Input[_builtins.str] name: The name of the federated identity provider.

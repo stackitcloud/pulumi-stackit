@@ -160,7 +160,7 @@ def get_sqlserverflex_database(instance_id: Optional[_builtins.str] = None,
                                name: Optional[_builtins.str] = None,
                                project_id: Optional[_builtins.str] = None,
                                region: Optional[_builtins.str] = None,
-                               timeouts: Optional[Union['GetSqlserverflexDatabaseTimeoutsArgs', 'GetSqlserverflexDatabaseTimeoutsArgsDict']] = None,
+                               timeouts: Optional[Union['GetSqlserverflexDatabaseTimeoutsArgs', 'GetSqlserverflexDatabaseTimeoutsArgsDict', 'outputs.GetSqlserverflexDatabaseTimeoutsResult']] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSqlserverflexDatabaseResult:
     """
     SQLServer Flex database data source schema.
@@ -197,7 +197,7 @@ def get_sqlserverflex_database_output(instance_id: pulumi.Input[Optional[_builti
                                       name: pulumi.Input[Optional[_builtins.str]] = None,
                                       project_id: pulumi.Input[Optional[_builtins.str]] = None,
                                       region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                                      timeouts: pulumi.Input[Optional[Optional[Union['GetSqlserverflexDatabaseTimeoutsArgs', 'GetSqlserverflexDatabaseTimeoutsArgsDict']]]] = None,
+                                      timeouts: pulumi.Input[Optional[Optional[Union['GetSqlserverflexDatabaseTimeoutsArgs', 'GetSqlserverflexDatabaseTimeoutsArgsDict', 'outputs.GetSqlserverflexDatabaseTimeoutsResult']]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSqlserverflexDatabaseResult]:
     """
     SQLServer Flex database data source schema.

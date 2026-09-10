@@ -684,7 +684,7 @@ func (o AlbWafManagedRuleSetGroupsRulesMapOutput) MapIndex(k pulumi.StringInput)
 type ApplicationLoadBalancerError struct {
 	// The error description contains additional helpful user information to fix the error state of the Application Load Balancer. For example the IP 45.135.247.139 does not exist in the project, then the description will report: Floating IP "45.135.247.139" could not be found.
 	Description *string `pulumi:"description"`
-	// The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`.
+	// The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`, `TYPE_FIP_NOT_FOUND`, `TYPE_IP_EXHAUSTED`, `TYPE_DNS_NOT_CONFIGURED`, `TYPE_VM_PORT_NOT_CONFIGURED`.
 	Type *string `pulumi:"type"`
 }
 
@@ -702,7 +702,7 @@ type ApplicationLoadBalancerErrorInput interface {
 type ApplicationLoadBalancerErrorArgs struct {
 	// The error description contains additional helpful user information to fix the error state of the Application Load Balancer. For example the IP 45.135.247.139 does not exist in the project, then the description will report: Floating IP "45.135.247.139" could not be found.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`.
+	// The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`, `TYPE_FIP_NOT_FOUND`, `TYPE_IP_EXHAUSTED`, `TYPE_DNS_NOT_CONFIGURED`, `TYPE_VM_PORT_NOT_CONFIGURED`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -762,7 +762,7 @@ func (o ApplicationLoadBalancerErrorOutput) Description() pulumi.StringPtrOutput
 	return o.ApplyT(func(v ApplicationLoadBalancerError) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`.
+// The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`, `TYPE_FIP_NOT_FOUND`, `TYPE_IP_EXHAUSTED`, `TYPE_DNS_NOT_CONFIGURED`, `TYPE_VM_PORT_NOT_CONFIGURED`.
 func (o ApplicationLoadBalancerErrorOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationLoadBalancerError) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -23743,6 +23743,523 @@ func (o TelemetryrouterInstanceFilterAttributeArrayOutput) Index(i pulumi.IntInp
 	}).(TelemetryrouterInstanceFilterAttributeOutput)
 }
 
+type ValkeyInstanceParameters struct {
+	// The number of milliseconds after which the instance is considered down.
+	DownAfterMilliseconds *int `pulumi:"downAfterMilliseconds"`
+	// Enable monitoring.
+	EnableMonitoring *bool `pulumi:"enableMonitoring"`
+	// The failover timeout in milliseconds.
+	FailoverTimeout *int `pulumi:"failoverTimeout"`
+	// Graphite server URL (host and port). If set, monitoring with Graphite will be enabled.
+	Graphite *string `pulumi:"graphite"`
+	// The lazy eviction enablement (yes or no).
+	LazyfreeLazyEviction *string `pulumi:"lazyfreeLazyEviction"`
+	// The lazy expire enablement (yes or no).
+	LazyfreeLazyExpire *string `pulumi:"lazyfreeLazyExpire"`
+	// The Lua time limit.
+	LuaTimeLimit *int `pulumi:"luaTimeLimit"`
+	// The maximum disk threshold in MB. If the disk usage exceeds this threshold, the instance will be stopped.
+	MaxDiskThreshold *int `pulumi:"maxDiskThreshold"`
+	// The maximum number of clients.
+	Maxclients *int `pulumi:"maxclients"`
+	// The policy to handle the maximum memory (volatile-lru, noeviction, etc).
+	MaxmemoryPolicy *string `pulumi:"maxmemoryPolicy"`
+	// The maximum memory samples.
+	MaxmemorySamples *int `pulumi:"maxmemorySamples"`
+	// The frequency in seconds at which metrics are emitted.
+	MetricsFrequency *int `pulumi:"metricsFrequency"`
+	// The prefix for the metrics. Could be useful when using Graphite monitoring to prefix the metrics with a certain value, like an API key.
+	MetricsPrefix *string `pulumi:"metricsPrefix"`
+	// The minimum replicas maximum lag.
+	MinReplicasMaxLag *int `pulumi:"minReplicasMaxLag"`
+	// The amount of connected replicas that are required for the primary to accept write operations. It can be set to 0 to disable it.
+	MinReplicasToWrite *int `pulumi:"minReplicasToWrite"`
+	// The ID of the STACKIT monitoring instance.
+	MonitoringInstanceId *string `pulumi:"monitoringInstanceId"`
+	// The notify keyspace events.
+	NotifyKeyspaceEvents *string `pulumi:"notifyKeyspaceEvents"`
+	// The replication backlog size for the cluster.
+	ReplBacklogSize *string `pulumi:"replBacklogSize"`
+	// Comma separated list of IP networks in CIDR notation which are allowed to access this instance.
+	SgwAcl *string `pulumi:"sgwAcl"`
+	// The snapshot configuration.
+	Snapshot *string `pulumi:"snapshot"`
+	// List of syslog servers to send logs to.
+	Syslogs []string `pulumi:"syslogs"`
+}
+
+// ValkeyInstanceParametersInput is an input type that accepts ValkeyInstanceParametersArgs and ValkeyInstanceParametersOutput values.
+// You can construct a concrete instance of `ValkeyInstanceParametersInput` via:
+//
+//	ValkeyInstanceParametersArgs{...}
+type ValkeyInstanceParametersInput interface {
+	pulumi.Input
+
+	ToValkeyInstanceParametersOutput() ValkeyInstanceParametersOutput
+	ToValkeyInstanceParametersOutputWithContext(context.Context) ValkeyInstanceParametersOutput
+}
+
+type ValkeyInstanceParametersArgs struct {
+	// The number of milliseconds after which the instance is considered down.
+	DownAfterMilliseconds pulumi.IntPtrInput `pulumi:"downAfterMilliseconds"`
+	// Enable monitoring.
+	EnableMonitoring pulumi.BoolPtrInput `pulumi:"enableMonitoring"`
+	// The failover timeout in milliseconds.
+	FailoverTimeout pulumi.IntPtrInput `pulumi:"failoverTimeout"`
+	// Graphite server URL (host and port). If set, monitoring with Graphite will be enabled.
+	Graphite pulumi.StringPtrInput `pulumi:"graphite"`
+	// The lazy eviction enablement (yes or no).
+	LazyfreeLazyEviction pulumi.StringPtrInput `pulumi:"lazyfreeLazyEviction"`
+	// The lazy expire enablement (yes or no).
+	LazyfreeLazyExpire pulumi.StringPtrInput `pulumi:"lazyfreeLazyExpire"`
+	// The Lua time limit.
+	LuaTimeLimit pulumi.IntPtrInput `pulumi:"luaTimeLimit"`
+	// The maximum disk threshold in MB. If the disk usage exceeds this threshold, the instance will be stopped.
+	MaxDiskThreshold pulumi.IntPtrInput `pulumi:"maxDiskThreshold"`
+	// The maximum number of clients.
+	Maxclients pulumi.IntPtrInput `pulumi:"maxclients"`
+	// The policy to handle the maximum memory (volatile-lru, noeviction, etc).
+	MaxmemoryPolicy pulumi.StringPtrInput `pulumi:"maxmemoryPolicy"`
+	// The maximum memory samples.
+	MaxmemorySamples pulumi.IntPtrInput `pulumi:"maxmemorySamples"`
+	// The frequency in seconds at which metrics are emitted.
+	MetricsFrequency pulumi.IntPtrInput `pulumi:"metricsFrequency"`
+	// The prefix for the metrics. Could be useful when using Graphite monitoring to prefix the metrics with a certain value, like an API key.
+	MetricsPrefix pulumi.StringPtrInput `pulumi:"metricsPrefix"`
+	// The minimum replicas maximum lag.
+	MinReplicasMaxLag pulumi.IntPtrInput `pulumi:"minReplicasMaxLag"`
+	// The amount of connected replicas that are required for the primary to accept write operations. It can be set to 0 to disable it.
+	MinReplicasToWrite pulumi.IntPtrInput `pulumi:"minReplicasToWrite"`
+	// The ID of the STACKIT monitoring instance.
+	MonitoringInstanceId pulumi.StringPtrInput `pulumi:"monitoringInstanceId"`
+	// The notify keyspace events.
+	NotifyKeyspaceEvents pulumi.StringPtrInput `pulumi:"notifyKeyspaceEvents"`
+	// The replication backlog size for the cluster.
+	ReplBacklogSize pulumi.StringPtrInput `pulumi:"replBacklogSize"`
+	// Comma separated list of IP networks in CIDR notation which are allowed to access this instance.
+	SgwAcl pulumi.StringPtrInput `pulumi:"sgwAcl"`
+	// The snapshot configuration.
+	Snapshot pulumi.StringPtrInput `pulumi:"snapshot"`
+	// List of syslog servers to send logs to.
+	Syslogs pulumi.StringArrayInput `pulumi:"syslogs"`
+}
+
+func (ValkeyInstanceParametersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ValkeyInstanceParameters)(nil)).Elem()
+}
+
+func (i ValkeyInstanceParametersArgs) ToValkeyInstanceParametersOutput() ValkeyInstanceParametersOutput {
+	return i.ToValkeyInstanceParametersOutputWithContext(context.Background())
+}
+
+func (i ValkeyInstanceParametersArgs) ToValkeyInstanceParametersOutputWithContext(ctx context.Context) ValkeyInstanceParametersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ValkeyInstanceParametersOutput)
+}
+
+func (i ValkeyInstanceParametersArgs) ToValkeyInstanceParametersPtrOutput() ValkeyInstanceParametersPtrOutput {
+	return i.ToValkeyInstanceParametersPtrOutputWithContext(context.Background())
+}
+
+func (i ValkeyInstanceParametersArgs) ToValkeyInstanceParametersPtrOutputWithContext(ctx context.Context) ValkeyInstanceParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ValkeyInstanceParametersOutput).ToValkeyInstanceParametersPtrOutputWithContext(ctx)
+}
+
+// ValkeyInstanceParametersPtrInput is an input type that accepts ValkeyInstanceParametersArgs, ValkeyInstanceParametersPtr and ValkeyInstanceParametersPtrOutput values.
+// You can construct a concrete instance of `ValkeyInstanceParametersPtrInput` via:
+//
+//	        ValkeyInstanceParametersArgs{...}
+//
+//	or:
+//
+//	        nil
+type ValkeyInstanceParametersPtrInput interface {
+	pulumi.Input
+
+	ToValkeyInstanceParametersPtrOutput() ValkeyInstanceParametersPtrOutput
+	ToValkeyInstanceParametersPtrOutputWithContext(context.Context) ValkeyInstanceParametersPtrOutput
+}
+
+type valkeyInstanceParametersPtrType ValkeyInstanceParametersArgs
+
+func ValkeyInstanceParametersPtr(v *ValkeyInstanceParametersArgs) ValkeyInstanceParametersPtrInput {
+	return (*valkeyInstanceParametersPtrType)(v)
+}
+
+func (*valkeyInstanceParametersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ValkeyInstanceParameters)(nil)).Elem()
+}
+
+func (i *valkeyInstanceParametersPtrType) ToValkeyInstanceParametersPtrOutput() ValkeyInstanceParametersPtrOutput {
+	return i.ToValkeyInstanceParametersPtrOutputWithContext(context.Background())
+}
+
+func (i *valkeyInstanceParametersPtrType) ToValkeyInstanceParametersPtrOutputWithContext(ctx context.Context) ValkeyInstanceParametersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ValkeyInstanceParametersPtrOutput)
+}
+
+type ValkeyInstanceParametersOutput struct{ *pulumi.OutputState }
+
+func (ValkeyInstanceParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ValkeyInstanceParameters)(nil)).Elem()
+}
+
+func (o ValkeyInstanceParametersOutput) ToValkeyInstanceParametersOutput() ValkeyInstanceParametersOutput {
+	return o
+}
+
+func (o ValkeyInstanceParametersOutput) ToValkeyInstanceParametersOutputWithContext(ctx context.Context) ValkeyInstanceParametersOutput {
+	return o
+}
+
+func (o ValkeyInstanceParametersOutput) ToValkeyInstanceParametersPtrOutput() ValkeyInstanceParametersPtrOutput {
+	return o.ToValkeyInstanceParametersPtrOutputWithContext(context.Background())
+}
+
+func (o ValkeyInstanceParametersOutput) ToValkeyInstanceParametersPtrOutputWithContext(ctx context.Context) ValkeyInstanceParametersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ValkeyInstanceParameters) *ValkeyInstanceParameters {
+		return &v
+	}).(ValkeyInstanceParametersPtrOutput)
+}
+
+// The number of milliseconds after which the instance is considered down.
+func (o ValkeyInstanceParametersOutput) DownAfterMilliseconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ValkeyInstanceParameters) *int { return v.DownAfterMilliseconds }).(pulumi.IntPtrOutput)
+}
+
+// Enable monitoring.
+func (o ValkeyInstanceParametersOutput) EnableMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ValkeyInstanceParameters) *bool { return v.EnableMonitoring }).(pulumi.BoolPtrOutput)
+}
+
+// The failover timeout in milliseconds.
+func (o ValkeyInstanceParametersOutput) FailoverTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ValkeyInstanceParameters) *int { return v.FailoverTimeout }).(pulumi.IntPtrOutput)
+}
+
+// Graphite server URL (host and port). If set, monitoring with Graphite will be enabled.
+func (o ValkeyInstanceParametersOutput) Graphite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ValkeyInstanceParameters) *string { return v.Graphite }).(pulumi.StringPtrOutput)
+}
+
+// The lazy eviction enablement (yes or no).
+func (o ValkeyInstanceParametersOutput) LazyfreeLazyEviction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ValkeyInstanceParameters) *string { return v.LazyfreeLazyEviction }).(pulumi.StringPtrOutput)
+}
+
+// The lazy expire enablement (yes or no).
+func (o ValkeyInstanceParametersOutput) LazyfreeLazyExpire() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ValkeyInstanceParameters) *string { return v.LazyfreeLazyExpire }).(pulumi.StringPtrOutput)
+}
+
+// The Lua time limit.
+func (o ValkeyInstanceParametersOutput) LuaTimeLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ValkeyInstanceParameters) *int { return v.LuaTimeLimit }).(pulumi.IntPtrOutput)
+}
+
+// The maximum disk threshold in MB. If the disk usage exceeds this threshold, the instance will be stopped.
+func (o ValkeyInstanceParametersOutput) MaxDiskThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ValkeyInstanceParameters) *int { return v.MaxDiskThreshold }).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of clients.
+func (o ValkeyInstanceParametersOutput) Maxclients() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ValkeyInstanceParameters) *int { return v.Maxclients }).(pulumi.IntPtrOutput)
+}
+
+// The policy to handle the maximum memory (volatile-lru, noeviction, etc).
+func (o ValkeyInstanceParametersOutput) MaxmemoryPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ValkeyInstanceParameters) *string { return v.MaxmemoryPolicy }).(pulumi.StringPtrOutput)
+}
+
+// The maximum memory samples.
+func (o ValkeyInstanceParametersOutput) MaxmemorySamples() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ValkeyInstanceParameters) *int { return v.MaxmemorySamples }).(pulumi.IntPtrOutput)
+}
+
+// The frequency in seconds at which metrics are emitted.
+func (o ValkeyInstanceParametersOutput) MetricsFrequency() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ValkeyInstanceParameters) *int { return v.MetricsFrequency }).(pulumi.IntPtrOutput)
+}
+
+// The prefix for the metrics. Could be useful when using Graphite monitoring to prefix the metrics with a certain value, like an API key.
+func (o ValkeyInstanceParametersOutput) MetricsPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ValkeyInstanceParameters) *string { return v.MetricsPrefix }).(pulumi.StringPtrOutput)
+}
+
+// The minimum replicas maximum lag.
+func (o ValkeyInstanceParametersOutput) MinReplicasMaxLag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ValkeyInstanceParameters) *int { return v.MinReplicasMaxLag }).(pulumi.IntPtrOutput)
+}
+
+// The amount of connected replicas that are required for the primary to accept write operations. It can be set to 0 to disable it.
+func (o ValkeyInstanceParametersOutput) MinReplicasToWrite() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ValkeyInstanceParameters) *int { return v.MinReplicasToWrite }).(pulumi.IntPtrOutput)
+}
+
+// The ID of the STACKIT monitoring instance.
+func (o ValkeyInstanceParametersOutput) MonitoringInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ValkeyInstanceParameters) *string { return v.MonitoringInstanceId }).(pulumi.StringPtrOutput)
+}
+
+// The notify keyspace events.
+func (o ValkeyInstanceParametersOutput) NotifyKeyspaceEvents() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ValkeyInstanceParameters) *string { return v.NotifyKeyspaceEvents }).(pulumi.StringPtrOutput)
+}
+
+// The replication backlog size for the cluster.
+func (o ValkeyInstanceParametersOutput) ReplBacklogSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ValkeyInstanceParameters) *string { return v.ReplBacklogSize }).(pulumi.StringPtrOutput)
+}
+
+// Comma separated list of IP networks in CIDR notation which are allowed to access this instance.
+func (o ValkeyInstanceParametersOutput) SgwAcl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ValkeyInstanceParameters) *string { return v.SgwAcl }).(pulumi.StringPtrOutput)
+}
+
+// The snapshot configuration.
+func (o ValkeyInstanceParametersOutput) Snapshot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ValkeyInstanceParameters) *string { return v.Snapshot }).(pulumi.StringPtrOutput)
+}
+
+// List of syslog servers to send logs to.
+func (o ValkeyInstanceParametersOutput) Syslogs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ValkeyInstanceParameters) []string { return v.Syslogs }).(pulumi.StringArrayOutput)
+}
+
+type ValkeyInstanceParametersPtrOutput struct{ *pulumi.OutputState }
+
+func (ValkeyInstanceParametersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ValkeyInstanceParameters)(nil)).Elem()
+}
+
+func (o ValkeyInstanceParametersPtrOutput) ToValkeyInstanceParametersPtrOutput() ValkeyInstanceParametersPtrOutput {
+	return o
+}
+
+func (o ValkeyInstanceParametersPtrOutput) ToValkeyInstanceParametersPtrOutputWithContext(ctx context.Context) ValkeyInstanceParametersPtrOutput {
+	return o
+}
+
+func (o ValkeyInstanceParametersPtrOutput) Elem() ValkeyInstanceParametersOutput {
+	return o.ApplyT(func(v *ValkeyInstanceParameters) ValkeyInstanceParameters {
+		if v != nil {
+			return *v
+		}
+		var ret ValkeyInstanceParameters
+		return ret
+	}).(ValkeyInstanceParametersOutput)
+}
+
+// The number of milliseconds after which the instance is considered down.
+func (o ValkeyInstanceParametersPtrOutput) DownAfterMilliseconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ValkeyInstanceParameters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.DownAfterMilliseconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// Enable monitoring.
+func (o ValkeyInstanceParametersPtrOutput) EnableMonitoring() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ValkeyInstanceParameters) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableMonitoring
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The failover timeout in milliseconds.
+func (o ValkeyInstanceParametersPtrOutput) FailoverTimeout() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ValkeyInstanceParameters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.FailoverTimeout
+	}).(pulumi.IntPtrOutput)
+}
+
+// Graphite server URL (host and port). If set, monitoring with Graphite will be enabled.
+func (o ValkeyInstanceParametersPtrOutput) Graphite() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ValkeyInstanceParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Graphite
+	}).(pulumi.StringPtrOutput)
+}
+
+// The lazy eviction enablement (yes or no).
+func (o ValkeyInstanceParametersPtrOutput) LazyfreeLazyEviction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ValkeyInstanceParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LazyfreeLazyEviction
+	}).(pulumi.StringPtrOutput)
+}
+
+// The lazy expire enablement (yes or no).
+func (o ValkeyInstanceParametersPtrOutput) LazyfreeLazyExpire() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ValkeyInstanceParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LazyfreeLazyExpire
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Lua time limit.
+func (o ValkeyInstanceParametersPtrOutput) LuaTimeLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ValkeyInstanceParameters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.LuaTimeLimit
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum disk threshold in MB. If the disk usage exceeds this threshold, the instance will be stopped.
+func (o ValkeyInstanceParametersPtrOutput) MaxDiskThreshold() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ValkeyInstanceParameters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxDiskThreshold
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of clients.
+func (o ValkeyInstanceParametersPtrOutput) Maxclients() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ValkeyInstanceParameters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Maxclients
+	}).(pulumi.IntPtrOutput)
+}
+
+// The policy to handle the maximum memory (volatile-lru, noeviction, etc).
+func (o ValkeyInstanceParametersPtrOutput) MaxmemoryPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ValkeyInstanceParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxmemoryPolicy
+	}).(pulumi.StringPtrOutput)
+}
+
+// The maximum memory samples.
+func (o ValkeyInstanceParametersPtrOutput) MaxmemorySamples() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ValkeyInstanceParameters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxmemorySamples
+	}).(pulumi.IntPtrOutput)
+}
+
+// The frequency in seconds at which metrics are emitted.
+func (o ValkeyInstanceParametersPtrOutput) MetricsFrequency() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ValkeyInstanceParameters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MetricsFrequency
+	}).(pulumi.IntPtrOutput)
+}
+
+// The prefix for the metrics. Could be useful when using Graphite monitoring to prefix the metrics with a certain value, like an API key.
+func (o ValkeyInstanceParametersPtrOutput) MetricsPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ValkeyInstanceParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MetricsPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// The minimum replicas maximum lag.
+func (o ValkeyInstanceParametersPtrOutput) MinReplicasMaxLag() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ValkeyInstanceParameters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinReplicasMaxLag
+	}).(pulumi.IntPtrOutput)
+}
+
+// The amount of connected replicas that are required for the primary to accept write operations. It can be set to 0 to disable it.
+func (o ValkeyInstanceParametersPtrOutput) MinReplicasToWrite() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ValkeyInstanceParameters) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinReplicasToWrite
+	}).(pulumi.IntPtrOutput)
+}
+
+// The ID of the STACKIT monitoring instance.
+func (o ValkeyInstanceParametersPtrOutput) MonitoringInstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ValkeyInstanceParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MonitoringInstanceId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The notify keyspace events.
+func (o ValkeyInstanceParametersPtrOutput) NotifyKeyspaceEvents() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ValkeyInstanceParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NotifyKeyspaceEvents
+	}).(pulumi.StringPtrOutput)
+}
+
+// The replication backlog size for the cluster.
+func (o ValkeyInstanceParametersPtrOutput) ReplBacklogSize() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ValkeyInstanceParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReplBacklogSize
+	}).(pulumi.StringPtrOutput)
+}
+
+// Comma separated list of IP networks in CIDR notation which are allowed to access this instance.
+func (o ValkeyInstanceParametersPtrOutput) SgwAcl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ValkeyInstanceParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SgwAcl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The snapshot configuration.
+func (o ValkeyInstanceParametersPtrOutput) Snapshot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ValkeyInstanceParameters) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Snapshot
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of syslog servers to send logs to.
+func (o ValkeyInstanceParametersPtrOutput) Syslogs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ValkeyInstanceParameters) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Syslogs
+	}).(pulumi.StringArrayOutput)
+}
+
 type VolumeEncryptionParameters struct {
 	// UUID of the key within the STACKIT-KMS to use for the encryption.
 	KekKeyId string `pulumi:"kekKeyId"`
@@ -25798,7 +26315,7 @@ type VpnConnectionTunnel1Phase1 struct {
 	DhGroups []string `pulumi:"dhGroups"`
 	// Encryption algorithms for Phase 1. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
 	EncryptionAlgorithms []string `pulumi:"encryptionAlgorithms"`
-	// Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`.
+	// Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`, `sha2512`.
 	IntegrityAlgorithms []string `pulumi:"integrityAlgorithms"`
 	// Time to schedule an IKE re-keying in seconds. Range: 900-28800. Default: 14400.
 	RekeyTime *int `pulumi:"rekeyTime"`
@@ -25820,7 +26337,7 @@ type VpnConnectionTunnel1Phase1Args struct {
 	DhGroups pulumi.StringArrayInput `pulumi:"dhGroups"`
 	// Encryption algorithms for Phase 1. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
 	EncryptionAlgorithms pulumi.StringArrayInput `pulumi:"encryptionAlgorithms"`
-	// Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`.
+	// Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`, `sha2512`.
 	IntegrityAlgorithms pulumi.StringArrayInput `pulumi:"integrityAlgorithms"`
 	// Time to schedule an IKE re-keying in seconds. Range: 900-28800. Default: 14400.
 	RekeyTime pulumi.IntPtrInput `pulumi:"rekeyTime"`
@@ -25913,7 +26430,7 @@ func (o VpnConnectionTunnel1Phase1Output) EncryptionAlgorithms() pulumi.StringAr
 	return o.ApplyT(func(v VpnConnectionTunnel1Phase1) []string { return v.EncryptionAlgorithms }).(pulumi.StringArrayOutput)
 }
 
-// Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`.
+// Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`, `sha2512`.
 func (o VpnConnectionTunnel1Phase1Output) IntegrityAlgorithms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VpnConnectionTunnel1Phase1) []string { return v.IntegrityAlgorithms }).(pulumi.StringArrayOutput)
 }
@@ -25967,7 +26484,7 @@ func (o VpnConnectionTunnel1Phase1PtrOutput) EncryptionAlgorithms() pulumi.Strin
 	}).(pulumi.StringArrayOutput)
 }
 
-// Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`.
+// Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`, `sha2512`.
 func (o VpnConnectionTunnel1Phase1PtrOutput) IntegrityAlgorithms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VpnConnectionTunnel1Phase1) []string {
 		if v == nil {
@@ -25994,7 +26511,7 @@ type VpnConnectionTunnel1Phase2 struct {
 	DpdAction *string `pulumi:"dpdAction"`
 	// Encryption algorithms for Phase 2. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
 	EncryptionAlgorithms []string `pulumi:"encryptionAlgorithms"`
-	// Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`.
+	// Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`, `sha2512`.
 	IntegrityAlgorithms []string `pulumi:"integrityAlgorithms"`
 	// Time to schedule a Child SA re-keying in seconds. Range: 900-3600. Default: 3600.
 	RekeyTime *int `pulumi:"rekeyTime"`
@@ -26020,7 +26537,7 @@ type VpnConnectionTunnel1Phase2Args struct {
 	DpdAction pulumi.StringPtrInput `pulumi:"dpdAction"`
 	// Encryption algorithms for Phase 2. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
 	EncryptionAlgorithms pulumi.StringArrayInput `pulumi:"encryptionAlgorithms"`
-	// Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`.
+	// Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`, `sha2512`.
 	IntegrityAlgorithms pulumi.StringArrayInput `pulumi:"integrityAlgorithms"`
 	// Time to schedule a Child SA re-keying in seconds. Range: 900-3600. Default: 3600.
 	RekeyTime pulumi.IntPtrInput `pulumi:"rekeyTime"`
@@ -26120,7 +26637,7 @@ func (o VpnConnectionTunnel1Phase2Output) EncryptionAlgorithms() pulumi.StringAr
 	return o.ApplyT(func(v VpnConnectionTunnel1Phase2) []string { return v.EncryptionAlgorithms }).(pulumi.StringArrayOutput)
 }
 
-// Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`.
+// Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`, `sha2512`.
 func (o VpnConnectionTunnel1Phase2Output) IntegrityAlgorithms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VpnConnectionTunnel1Phase2) []string { return v.IntegrityAlgorithms }).(pulumi.StringArrayOutput)
 }
@@ -26189,7 +26706,7 @@ func (o VpnConnectionTunnel1Phase2PtrOutput) EncryptionAlgorithms() pulumi.Strin
 	}).(pulumi.StringArrayOutput)
 }
 
-// Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`.
+// Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`, `sha2512`.
 func (o VpnConnectionTunnel1Phase2PtrOutput) IntegrityAlgorithms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VpnConnectionTunnel1Phase2) []string {
 		if v == nil {
@@ -26775,7 +27292,7 @@ type VpnConnectionTunnel2Phase1 struct {
 	DhGroups []string `pulumi:"dhGroups"`
 	// Encryption algorithms for Phase 1. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
 	EncryptionAlgorithms []string `pulumi:"encryptionAlgorithms"`
-	// Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`.
+	// Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`, `sha2512`.
 	IntegrityAlgorithms []string `pulumi:"integrityAlgorithms"`
 	// Time to schedule an IKE re-keying in seconds. Range: 900-28800. Default: 14400.
 	RekeyTime *int `pulumi:"rekeyTime"`
@@ -26797,7 +27314,7 @@ type VpnConnectionTunnel2Phase1Args struct {
 	DhGroups pulumi.StringArrayInput `pulumi:"dhGroups"`
 	// Encryption algorithms for Phase 1. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
 	EncryptionAlgorithms pulumi.StringArrayInput `pulumi:"encryptionAlgorithms"`
-	// Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`.
+	// Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`, `sha2512`.
 	IntegrityAlgorithms pulumi.StringArrayInput `pulumi:"integrityAlgorithms"`
 	// Time to schedule an IKE re-keying in seconds. Range: 900-28800. Default: 14400.
 	RekeyTime pulumi.IntPtrInput `pulumi:"rekeyTime"`
@@ -26890,7 +27407,7 @@ func (o VpnConnectionTunnel2Phase1Output) EncryptionAlgorithms() pulumi.StringAr
 	return o.ApplyT(func(v VpnConnectionTunnel2Phase1) []string { return v.EncryptionAlgorithms }).(pulumi.StringArrayOutput)
 }
 
-// Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`.
+// Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`, `sha2512`.
 func (o VpnConnectionTunnel2Phase1Output) IntegrityAlgorithms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VpnConnectionTunnel2Phase1) []string { return v.IntegrityAlgorithms }).(pulumi.StringArrayOutput)
 }
@@ -26944,7 +27461,7 @@ func (o VpnConnectionTunnel2Phase1PtrOutput) EncryptionAlgorithms() pulumi.Strin
 	}).(pulumi.StringArrayOutput)
 }
 
-// Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`.
+// Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`, `sha2512`.
 func (o VpnConnectionTunnel2Phase1PtrOutput) IntegrityAlgorithms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VpnConnectionTunnel2Phase1) []string {
 		if v == nil {
@@ -26971,7 +27488,7 @@ type VpnConnectionTunnel2Phase2 struct {
 	DpdAction *string `pulumi:"dpdAction"`
 	// Encryption algorithms for Phase 2. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
 	EncryptionAlgorithms []string `pulumi:"encryptionAlgorithms"`
-	// Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`.
+	// Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`, `sha2512`.
 	IntegrityAlgorithms []string `pulumi:"integrityAlgorithms"`
 	// Time to schedule a Child SA re-keying in seconds. Range: 900-3600. Default: 3600.
 	RekeyTime *int `pulumi:"rekeyTime"`
@@ -26997,7 +27514,7 @@ type VpnConnectionTunnel2Phase2Args struct {
 	DpdAction pulumi.StringPtrInput `pulumi:"dpdAction"`
 	// Encryption algorithms for Phase 2. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
 	EncryptionAlgorithms pulumi.StringArrayInput `pulumi:"encryptionAlgorithms"`
-	// Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`.
+	// Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`, `sha2512`.
 	IntegrityAlgorithms pulumi.StringArrayInput `pulumi:"integrityAlgorithms"`
 	// Time to schedule a Child SA re-keying in seconds. Range: 900-3600. Default: 3600.
 	RekeyTime pulumi.IntPtrInput `pulumi:"rekeyTime"`
@@ -27097,7 +27614,7 @@ func (o VpnConnectionTunnel2Phase2Output) EncryptionAlgorithms() pulumi.StringAr
 	return o.ApplyT(func(v VpnConnectionTunnel2Phase2) []string { return v.EncryptionAlgorithms }).(pulumi.StringArrayOutput)
 }
 
-// Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`.
+// Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`, `sha2512`.
 func (o VpnConnectionTunnel2Phase2Output) IntegrityAlgorithms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VpnConnectionTunnel2Phase2) []string { return v.IntegrityAlgorithms }).(pulumi.StringArrayOutput)
 }
@@ -27166,7 +27683,7 @@ func (o VpnConnectionTunnel2Phase2PtrOutput) EncryptionAlgorithms() pulumi.Strin
 	}).(pulumi.StringArrayOutput)
 }
 
-// Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`.
+// Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`, `sha2512`.
 func (o VpnConnectionTunnel2Phase2PtrOutput) IntegrityAlgorithms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VpnConnectionTunnel2Phase2) []string {
 		if v == nil {
@@ -28179,7 +28696,7 @@ func (o GetAlbWafManagedRuleSetGroupsRulesMapOutput) MapIndex(k pulumi.StringInp
 type GetApplicationLoadBalancerError struct {
 	// The error description contains additional helpful user information to fix the error state of the Application Load Balancer. For example the IP 45.135.247.139 does not exist in the project, then the description will report: Floating IP "45.135.247.139" could not be found.
 	Description string `pulumi:"description"`
-	// The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`.
+	// The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`, `TYPE_FIP_NOT_FOUND`, `TYPE_IP_EXHAUSTED`, `TYPE_DNS_NOT_CONFIGURED`, `TYPE_VM_PORT_NOT_CONFIGURED`.
 	Type string `pulumi:"type"`
 }
 
@@ -28197,7 +28714,7 @@ type GetApplicationLoadBalancerErrorInput interface {
 type GetApplicationLoadBalancerErrorArgs struct {
 	// The error description contains additional helpful user information to fix the error state of the Application Load Balancer. For example the IP 45.135.247.139 does not exist in the project, then the description will report: Floating IP "45.135.247.139" could not be found.
 	Description pulumi.StringInput `pulumi:"description"`
-	// The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`.
+	// The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`, `TYPE_FIP_NOT_FOUND`, `TYPE_IP_EXHAUSTED`, `TYPE_DNS_NOT_CONFIGURED`, `TYPE_VM_PORT_NOT_CONFIGURED`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -28257,7 +28774,7 @@ func (o GetApplicationLoadBalancerErrorOutput) Description() pulumi.StringOutput
 	return o.ApplyT(func(v GetApplicationLoadBalancerError) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`.
+// The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`, `TYPE_FIP_NOT_FOUND`, `TYPE_IP_EXHAUSTED`, `TYPE_DNS_NOT_CONFIGURED`, `TYPE_VM_PORT_NOT_CONFIGURED`.
 func (o GetApplicationLoadBalancerErrorOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationLoadBalancerError) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -30198,6 +30715,130 @@ func (o GetApplicationLoadBalancerTargetSecurityGroupOutput) Id() pulumi.StringO
 // Name of the security Group
 func (o GetApplicationLoadBalancerTargetSecurityGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationLoadBalancerTargetSecurityGroup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetAutomationTemplatesTemplate struct {
+	// Create timestamp of the template.
+	CreateTime string `pulumi:"createTime"`
+	// Description of the template.
+	Description string `pulumi:"description"`
+	// Name of the template.
+	Name string `pulumi:"name"`
+	// Template ID.
+	TemplateId string `pulumi:"templateId"`
+}
+
+// GetAutomationTemplatesTemplateInput is an input type that accepts GetAutomationTemplatesTemplateArgs and GetAutomationTemplatesTemplateOutput values.
+// You can construct a concrete instance of `GetAutomationTemplatesTemplateInput` via:
+//
+//	GetAutomationTemplatesTemplateArgs{...}
+type GetAutomationTemplatesTemplateInput interface {
+	pulumi.Input
+
+	ToGetAutomationTemplatesTemplateOutput() GetAutomationTemplatesTemplateOutput
+	ToGetAutomationTemplatesTemplateOutputWithContext(context.Context) GetAutomationTemplatesTemplateOutput
+}
+
+type GetAutomationTemplatesTemplateArgs struct {
+	// Create timestamp of the template.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Description of the template.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Name of the template.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Template ID.
+	TemplateId pulumi.StringInput `pulumi:"templateId"`
+}
+
+func (GetAutomationTemplatesTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAutomationTemplatesTemplate)(nil)).Elem()
+}
+
+func (i GetAutomationTemplatesTemplateArgs) ToGetAutomationTemplatesTemplateOutput() GetAutomationTemplatesTemplateOutput {
+	return i.ToGetAutomationTemplatesTemplateOutputWithContext(context.Background())
+}
+
+func (i GetAutomationTemplatesTemplateArgs) ToGetAutomationTemplatesTemplateOutputWithContext(ctx context.Context) GetAutomationTemplatesTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAutomationTemplatesTemplateOutput)
+}
+
+// GetAutomationTemplatesTemplateArrayInput is an input type that accepts GetAutomationTemplatesTemplateArray and GetAutomationTemplatesTemplateArrayOutput values.
+// You can construct a concrete instance of `GetAutomationTemplatesTemplateArrayInput` via:
+//
+//	GetAutomationTemplatesTemplateArray{ GetAutomationTemplatesTemplateArgs{...} }
+type GetAutomationTemplatesTemplateArrayInput interface {
+	pulumi.Input
+
+	ToGetAutomationTemplatesTemplateArrayOutput() GetAutomationTemplatesTemplateArrayOutput
+	ToGetAutomationTemplatesTemplateArrayOutputWithContext(context.Context) GetAutomationTemplatesTemplateArrayOutput
+}
+
+type GetAutomationTemplatesTemplateArray []GetAutomationTemplatesTemplateInput
+
+func (GetAutomationTemplatesTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAutomationTemplatesTemplate)(nil)).Elem()
+}
+
+func (i GetAutomationTemplatesTemplateArray) ToGetAutomationTemplatesTemplateArrayOutput() GetAutomationTemplatesTemplateArrayOutput {
+	return i.ToGetAutomationTemplatesTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i GetAutomationTemplatesTemplateArray) ToGetAutomationTemplatesTemplateArrayOutputWithContext(ctx context.Context) GetAutomationTemplatesTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAutomationTemplatesTemplateArrayOutput)
+}
+
+type GetAutomationTemplatesTemplateOutput struct{ *pulumi.OutputState }
+
+func (GetAutomationTemplatesTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAutomationTemplatesTemplate)(nil)).Elem()
+}
+
+func (o GetAutomationTemplatesTemplateOutput) ToGetAutomationTemplatesTemplateOutput() GetAutomationTemplatesTemplateOutput {
+	return o
+}
+
+func (o GetAutomationTemplatesTemplateOutput) ToGetAutomationTemplatesTemplateOutputWithContext(ctx context.Context) GetAutomationTemplatesTemplateOutput {
+	return o
+}
+
+// Create timestamp of the template.
+func (o GetAutomationTemplatesTemplateOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutomationTemplatesTemplate) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Description of the template.
+func (o GetAutomationTemplatesTemplateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutomationTemplatesTemplate) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Name of the template.
+func (o GetAutomationTemplatesTemplateOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutomationTemplatesTemplate) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Template ID.
+func (o GetAutomationTemplatesTemplateOutput) TemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAutomationTemplatesTemplate) string { return v.TemplateId }).(pulumi.StringOutput)
+}
+
+type GetAutomationTemplatesTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAutomationTemplatesTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAutomationTemplatesTemplate)(nil)).Elem()
+}
+
+func (o GetAutomationTemplatesTemplateArrayOutput) ToGetAutomationTemplatesTemplateArrayOutput() GetAutomationTemplatesTemplateArrayOutput {
+	return o
+}
+
+func (o GetAutomationTemplatesTemplateArrayOutput) ToGetAutomationTemplatesTemplateArrayOutputWithContext(ctx context.Context) GetAutomationTemplatesTemplateArrayOutput {
+	return o
+}
+
+func (o GetAutomationTemplatesTemplateArrayOutput) Index(i pulumi.IntInput) GetAutomationTemplatesTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAutomationTemplatesTemplate {
+		return vs[0].([]GetAutomationTemplatesTemplate)[vs[1].(int)]
+	}).(GetAutomationTemplatesTemplateOutput)
 }
 
 type GetCdnCustomDomainCertificate struct {
@@ -43459,6 +44100,238 @@ func (o GetTelemetryrouterInstanceFilterAttributeArrayOutput) Index(i pulumi.Int
 	}).(GetTelemetryrouterInstanceFilterAttributeOutput)
 }
 
+type GetValkeyInstanceParameters struct {
+	// The number of milliseconds after which the instance is considered down.
+	DownAfterMilliseconds int `pulumi:"downAfterMilliseconds"`
+	// Enable monitoring.
+	EnableMonitoring bool `pulumi:"enableMonitoring"`
+	// The failover timeout in milliseconds.
+	FailoverTimeout int `pulumi:"failoverTimeout"`
+	// Graphite server URL (host and port). If set, monitoring with Graphite will be enabled.
+	Graphite string `pulumi:"graphite"`
+	// The lazy eviction enablement (yes or no).
+	LazyfreeLazyEviction string `pulumi:"lazyfreeLazyEviction"`
+	// The lazy expire enablement (yes or no).
+	LazyfreeLazyExpire string `pulumi:"lazyfreeLazyExpire"`
+	// The Lua time limit.
+	LuaTimeLimit int `pulumi:"luaTimeLimit"`
+	// The maximum disk threshold in MB. If the disk usage exceeds this threshold, the instance will be stopped.
+	MaxDiskThreshold int `pulumi:"maxDiskThreshold"`
+	// The maximum number of clients.
+	Maxclients int `pulumi:"maxclients"`
+	// The policy to handle the maximum memory (volatile-lru, noeviction, etc).
+	MaxmemoryPolicy string `pulumi:"maxmemoryPolicy"`
+	// The maximum memory samples.
+	MaxmemorySamples int `pulumi:"maxmemorySamples"`
+	// The frequency in seconds at which metrics are emitted.
+	MetricsFrequency int `pulumi:"metricsFrequency"`
+	// The prefix for the metrics. Could be useful when using Graphite monitoring to prefix the metrics with a certain value, like an API key.
+	MetricsPrefix string `pulumi:"metricsPrefix"`
+	// The minimum replicas maximum lag.
+	MinReplicasMaxLag int `pulumi:"minReplicasMaxLag"`
+	// The amount of connected replicas that are required for the primary to accept write operations. It can be set to 0 to disable it.
+	MinReplicasToWrite int `pulumi:"minReplicasToWrite"`
+	// The ID of the STACKIT monitoring instance.
+	MonitoringInstanceId string `pulumi:"monitoringInstanceId"`
+	// The notify keyspace events.
+	NotifyKeyspaceEvents string `pulumi:"notifyKeyspaceEvents"`
+	// The replication backlog size for the cluster.
+	ReplBacklogSize string `pulumi:"replBacklogSize"`
+	// Comma separated list of IP networks in CIDR notation which are allowed to access this instance.
+	SgwAcl string `pulumi:"sgwAcl"`
+	// The snapshot configuration.
+	Snapshot string `pulumi:"snapshot"`
+	// List of syslog servers to send logs to.
+	Syslogs []string `pulumi:"syslogs"`
+}
+
+// GetValkeyInstanceParametersInput is an input type that accepts GetValkeyInstanceParametersArgs and GetValkeyInstanceParametersOutput values.
+// You can construct a concrete instance of `GetValkeyInstanceParametersInput` via:
+//
+//	GetValkeyInstanceParametersArgs{...}
+type GetValkeyInstanceParametersInput interface {
+	pulumi.Input
+
+	ToGetValkeyInstanceParametersOutput() GetValkeyInstanceParametersOutput
+	ToGetValkeyInstanceParametersOutputWithContext(context.Context) GetValkeyInstanceParametersOutput
+}
+
+type GetValkeyInstanceParametersArgs struct {
+	// The number of milliseconds after which the instance is considered down.
+	DownAfterMilliseconds pulumi.IntInput `pulumi:"downAfterMilliseconds"`
+	// Enable monitoring.
+	EnableMonitoring pulumi.BoolInput `pulumi:"enableMonitoring"`
+	// The failover timeout in milliseconds.
+	FailoverTimeout pulumi.IntInput `pulumi:"failoverTimeout"`
+	// Graphite server URL (host and port). If set, monitoring with Graphite will be enabled.
+	Graphite pulumi.StringInput `pulumi:"graphite"`
+	// The lazy eviction enablement (yes or no).
+	LazyfreeLazyEviction pulumi.StringInput `pulumi:"lazyfreeLazyEviction"`
+	// The lazy expire enablement (yes or no).
+	LazyfreeLazyExpire pulumi.StringInput `pulumi:"lazyfreeLazyExpire"`
+	// The Lua time limit.
+	LuaTimeLimit pulumi.IntInput `pulumi:"luaTimeLimit"`
+	// The maximum disk threshold in MB. If the disk usage exceeds this threshold, the instance will be stopped.
+	MaxDiskThreshold pulumi.IntInput `pulumi:"maxDiskThreshold"`
+	// The maximum number of clients.
+	Maxclients pulumi.IntInput `pulumi:"maxclients"`
+	// The policy to handle the maximum memory (volatile-lru, noeviction, etc).
+	MaxmemoryPolicy pulumi.StringInput `pulumi:"maxmemoryPolicy"`
+	// The maximum memory samples.
+	MaxmemorySamples pulumi.IntInput `pulumi:"maxmemorySamples"`
+	// The frequency in seconds at which metrics are emitted.
+	MetricsFrequency pulumi.IntInput `pulumi:"metricsFrequency"`
+	// The prefix for the metrics. Could be useful when using Graphite monitoring to prefix the metrics with a certain value, like an API key.
+	MetricsPrefix pulumi.StringInput `pulumi:"metricsPrefix"`
+	// The minimum replicas maximum lag.
+	MinReplicasMaxLag pulumi.IntInput `pulumi:"minReplicasMaxLag"`
+	// The amount of connected replicas that are required for the primary to accept write operations. It can be set to 0 to disable it.
+	MinReplicasToWrite pulumi.IntInput `pulumi:"minReplicasToWrite"`
+	// The ID of the STACKIT monitoring instance.
+	MonitoringInstanceId pulumi.StringInput `pulumi:"monitoringInstanceId"`
+	// The notify keyspace events.
+	NotifyKeyspaceEvents pulumi.StringInput `pulumi:"notifyKeyspaceEvents"`
+	// The replication backlog size for the cluster.
+	ReplBacklogSize pulumi.StringInput `pulumi:"replBacklogSize"`
+	// Comma separated list of IP networks in CIDR notation which are allowed to access this instance.
+	SgwAcl pulumi.StringInput `pulumi:"sgwAcl"`
+	// The snapshot configuration.
+	Snapshot pulumi.StringInput `pulumi:"snapshot"`
+	// List of syslog servers to send logs to.
+	Syslogs pulumi.StringArrayInput `pulumi:"syslogs"`
+}
+
+func (GetValkeyInstanceParametersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetValkeyInstanceParameters)(nil)).Elem()
+}
+
+func (i GetValkeyInstanceParametersArgs) ToGetValkeyInstanceParametersOutput() GetValkeyInstanceParametersOutput {
+	return i.ToGetValkeyInstanceParametersOutputWithContext(context.Background())
+}
+
+func (i GetValkeyInstanceParametersArgs) ToGetValkeyInstanceParametersOutputWithContext(ctx context.Context) GetValkeyInstanceParametersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetValkeyInstanceParametersOutput)
+}
+
+type GetValkeyInstanceParametersOutput struct{ *pulumi.OutputState }
+
+func (GetValkeyInstanceParametersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetValkeyInstanceParameters)(nil)).Elem()
+}
+
+func (o GetValkeyInstanceParametersOutput) ToGetValkeyInstanceParametersOutput() GetValkeyInstanceParametersOutput {
+	return o
+}
+
+func (o GetValkeyInstanceParametersOutput) ToGetValkeyInstanceParametersOutputWithContext(ctx context.Context) GetValkeyInstanceParametersOutput {
+	return o
+}
+
+// The number of milliseconds after which the instance is considered down.
+func (o GetValkeyInstanceParametersOutput) DownAfterMilliseconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetValkeyInstanceParameters) int { return v.DownAfterMilliseconds }).(pulumi.IntOutput)
+}
+
+// Enable monitoring.
+func (o GetValkeyInstanceParametersOutput) EnableMonitoring() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetValkeyInstanceParameters) bool { return v.EnableMonitoring }).(pulumi.BoolOutput)
+}
+
+// The failover timeout in milliseconds.
+func (o GetValkeyInstanceParametersOutput) FailoverTimeout() pulumi.IntOutput {
+	return o.ApplyT(func(v GetValkeyInstanceParameters) int { return v.FailoverTimeout }).(pulumi.IntOutput)
+}
+
+// Graphite server URL (host and port). If set, monitoring with Graphite will be enabled.
+func (o GetValkeyInstanceParametersOutput) Graphite() pulumi.StringOutput {
+	return o.ApplyT(func(v GetValkeyInstanceParameters) string { return v.Graphite }).(pulumi.StringOutput)
+}
+
+// The lazy eviction enablement (yes or no).
+func (o GetValkeyInstanceParametersOutput) LazyfreeLazyEviction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetValkeyInstanceParameters) string { return v.LazyfreeLazyEviction }).(pulumi.StringOutput)
+}
+
+// The lazy expire enablement (yes or no).
+func (o GetValkeyInstanceParametersOutput) LazyfreeLazyExpire() pulumi.StringOutput {
+	return o.ApplyT(func(v GetValkeyInstanceParameters) string { return v.LazyfreeLazyExpire }).(pulumi.StringOutput)
+}
+
+// The Lua time limit.
+func (o GetValkeyInstanceParametersOutput) LuaTimeLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetValkeyInstanceParameters) int { return v.LuaTimeLimit }).(pulumi.IntOutput)
+}
+
+// The maximum disk threshold in MB. If the disk usage exceeds this threshold, the instance will be stopped.
+func (o GetValkeyInstanceParametersOutput) MaxDiskThreshold() pulumi.IntOutput {
+	return o.ApplyT(func(v GetValkeyInstanceParameters) int { return v.MaxDiskThreshold }).(pulumi.IntOutput)
+}
+
+// The maximum number of clients.
+func (o GetValkeyInstanceParametersOutput) Maxclients() pulumi.IntOutput {
+	return o.ApplyT(func(v GetValkeyInstanceParameters) int { return v.Maxclients }).(pulumi.IntOutput)
+}
+
+// The policy to handle the maximum memory (volatile-lru, noeviction, etc).
+func (o GetValkeyInstanceParametersOutput) MaxmemoryPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetValkeyInstanceParameters) string { return v.MaxmemoryPolicy }).(pulumi.StringOutput)
+}
+
+// The maximum memory samples.
+func (o GetValkeyInstanceParametersOutput) MaxmemorySamples() pulumi.IntOutput {
+	return o.ApplyT(func(v GetValkeyInstanceParameters) int { return v.MaxmemorySamples }).(pulumi.IntOutput)
+}
+
+// The frequency in seconds at which metrics are emitted.
+func (o GetValkeyInstanceParametersOutput) MetricsFrequency() pulumi.IntOutput {
+	return o.ApplyT(func(v GetValkeyInstanceParameters) int { return v.MetricsFrequency }).(pulumi.IntOutput)
+}
+
+// The prefix for the metrics. Could be useful when using Graphite monitoring to prefix the metrics with a certain value, like an API key.
+func (o GetValkeyInstanceParametersOutput) MetricsPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetValkeyInstanceParameters) string { return v.MetricsPrefix }).(pulumi.StringOutput)
+}
+
+// The minimum replicas maximum lag.
+func (o GetValkeyInstanceParametersOutput) MinReplicasMaxLag() pulumi.IntOutput {
+	return o.ApplyT(func(v GetValkeyInstanceParameters) int { return v.MinReplicasMaxLag }).(pulumi.IntOutput)
+}
+
+// The amount of connected replicas that are required for the primary to accept write operations. It can be set to 0 to disable it.
+func (o GetValkeyInstanceParametersOutput) MinReplicasToWrite() pulumi.IntOutput {
+	return o.ApplyT(func(v GetValkeyInstanceParameters) int { return v.MinReplicasToWrite }).(pulumi.IntOutput)
+}
+
+// The ID of the STACKIT monitoring instance.
+func (o GetValkeyInstanceParametersOutput) MonitoringInstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetValkeyInstanceParameters) string { return v.MonitoringInstanceId }).(pulumi.StringOutput)
+}
+
+// The notify keyspace events.
+func (o GetValkeyInstanceParametersOutput) NotifyKeyspaceEvents() pulumi.StringOutput {
+	return o.ApplyT(func(v GetValkeyInstanceParameters) string { return v.NotifyKeyspaceEvents }).(pulumi.StringOutput)
+}
+
+// The replication backlog size for the cluster.
+func (o GetValkeyInstanceParametersOutput) ReplBacklogSize() pulumi.StringOutput {
+	return o.ApplyT(func(v GetValkeyInstanceParameters) string { return v.ReplBacklogSize }).(pulumi.StringOutput)
+}
+
+// Comma separated list of IP networks in CIDR notation which are allowed to access this instance.
+func (o GetValkeyInstanceParametersOutput) SgwAcl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetValkeyInstanceParameters) string { return v.SgwAcl }).(pulumi.StringOutput)
+}
+
+// The snapshot configuration.
+func (o GetValkeyInstanceParametersOutput) Snapshot() pulumi.StringOutput {
+	return o.ApplyT(func(v GetValkeyInstanceParameters) string { return v.Snapshot }).(pulumi.StringOutput)
+}
+
+// List of syslog servers to send logs to.
+func (o GetValkeyInstanceParametersOutput) Syslogs() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetValkeyInstanceParameters) []string { return v.Syslogs }).(pulumi.StringArrayOutput)
+}
+
 type GetVolumeSource struct {
 	// The ID of the source, e.g. image ID
 	Id string `pulumi:"id"`
@@ -45561,6 +46434,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryrouterInstanceFilterPtrInput)(nil)).Elem(), TelemetryrouterInstanceFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryrouterInstanceFilterAttributeInput)(nil)).Elem(), TelemetryrouterInstanceFilterAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryrouterInstanceFilterAttributeArrayInput)(nil)).Elem(), TelemetryrouterInstanceFilterAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ValkeyInstanceParametersInput)(nil)).Elem(), ValkeyInstanceParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ValkeyInstanceParametersPtrInput)(nil)).Elem(), ValkeyInstanceParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeEncryptionParametersInput)(nil)).Elem(), VolumeEncryptionParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeEncryptionParametersPtrInput)(nil)).Elem(), VolumeEncryptionParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeSourceInput)(nil)).Elem(), VolumeSourceArgs{})
@@ -45645,6 +46520,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerTargetPoolTargetArrayInput)(nil)).Elem(), GetApplicationLoadBalancerTargetPoolTargetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerTargetPoolTlsConfigInput)(nil)).Elem(), GetApplicationLoadBalancerTargetPoolTlsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetApplicationLoadBalancerTargetSecurityGroupInput)(nil)).Elem(), GetApplicationLoadBalancerTargetSecurityGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAutomationTemplatesTemplateInput)(nil)).Elem(), GetAutomationTemplatesTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAutomationTemplatesTemplateArrayInput)(nil)).Elem(), GetAutomationTemplatesTemplateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnCustomDomainCertificateInput)(nil)).Elem(), GetCdnCustomDomainCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnCustomDomainCertificatePtrInput)(nil)).Elem(), GetCdnCustomDomainCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionConfigInput)(nil)).Elem(), GetCdnDistributionConfigArgs{})
@@ -45830,6 +46707,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTelemetryrouterInstanceFilterInput)(nil)).Elem(), GetTelemetryrouterInstanceFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTelemetryrouterInstanceFilterAttributeInput)(nil)).Elem(), GetTelemetryrouterInstanceFilterAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTelemetryrouterInstanceFilterAttributeArrayInput)(nil)).Elem(), GetTelemetryrouterInstanceFilterAttributeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyInstanceParametersInput)(nil)).Elem(), GetValkeyInstanceParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeSourceInput)(nil)).Elem(), GetVolumeSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNetworkRangeTimeoutsInput)(nil)).Elem(), GetVpcNetworkRangeTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNetworkRangeTimeoutsPtrInput)(nil)).Elem(), GetVpcNetworkRangeTimeoutsArgs{})
@@ -46133,6 +47011,8 @@ func init() {
 	pulumi.RegisterOutputType(TelemetryrouterInstanceFilterPtrOutput{})
 	pulumi.RegisterOutputType(TelemetryrouterInstanceFilterAttributeOutput{})
 	pulumi.RegisterOutputType(TelemetryrouterInstanceFilterAttributeArrayOutput{})
+	pulumi.RegisterOutputType(ValkeyInstanceParametersOutput{})
+	pulumi.RegisterOutputType(ValkeyInstanceParametersPtrOutput{})
 	pulumi.RegisterOutputType(VolumeEncryptionParametersOutput{})
 	pulumi.RegisterOutputType(VolumeEncryptionParametersPtrOutput{})
 	pulumi.RegisterOutputType(VolumeSourceOutput{})
@@ -46217,6 +47097,8 @@ func init() {
 	pulumi.RegisterOutputType(GetApplicationLoadBalancerTargetPoolTargetArrayOutput{})
 	pulumi.RegisterOutputType(GetApplicationLoadBalancerTargetPoolTlsConfigOutput{})
 	pulumi.RegisterOutputType(GetApplicationLoadBalancerTargetSecurityGroupOutput{})
+	pulumi.RegisterOutputType(GetAutomationTemplatesTemplateOutput{})
+	pulumi.RegisterOutputType(GetAutomationTemplatesTemplateArrayOutput{})
 	pulumi.RegisterOutputType(GetCdnCustomDomainCertificateOutput{})
 	pulumi.RegisterOutputType(GetCdnCustomDomainCertificatePtrOutput{})
 	pulumi.RegisterOutputType(GetCdnDistributionConfigOutput{})
@@ -46402,6 +47284,7 @@ func init() {
 	pulumi.RegisterOutputType(GetTelemetryrouterInstanceFilterOutput{})
 	pulumi.RegisterOutputType(GetTelemetryrouterInstanceFilterAttributeOutput{})
 	pulumi.RegisterOutputType(GetTelemetryrouterInstanceFilterAttributeArrayOutput{})
+	pulumi.RegisterOutputType(GetValkeyInstanceParametersOutput{})
 	pulumi.RegisterOutputType(GetVolumeSourceOutput{})
 	pulumi.RegisterOutputType(GetVpcNetworkRangeTimeoutsOutput{})
 	pulumi.RegisterOutputType(GetVpcNetworkRangeTimeoutsPtrOutput{})

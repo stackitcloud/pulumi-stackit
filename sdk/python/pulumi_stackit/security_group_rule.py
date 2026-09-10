@@ -410,11 +410,11 @@ class SecurityGroupRule(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  direction: pulumi.Input[Optional[_builtins.str]] = None,
                  ether_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 icmp_parameters: pulumi.Input[Optional[Union['SecurityGroupRuleIcmpParametersArgs', 'SecurityGroupRuleIcmpParametersArgsDict']]] = None,
+                 icmp_parameters: pulumi.Input[Optional[Union['SecurityGroupRuleIcmpParametersArgs', 'SecurityGroupRuleIcmpParametersArgsDict', 'outputs.SecurityGroupRuleIcmpParameters']]] = None,
                  ip_range: pulumi.Input[Optional[_builtins.str]] = None,
-                 port_range: pulumi.Input[Optional[Union['SecurityGroupRulePortRangeArgs', 'SecurityGroupRulePortRangeArgsDict']]] = None,
+                 port_range: pulumi.Input[Optional[Union['SecurityGroupRulePortRangeArgs', 'SecurityGroupRulePortRangeArgsDict', 'outputs.SecurityGroupRulePortRange']]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 protocol: pulumi.Input[Optional[Union['SecurityGroupRuleProtocolArgs', 'SecurityGroupRuleProtocolArgsDict']]] = None,
+                 protocol: pulumi.Input[Optional[Union['SecurityGroupRuleProtocolArgs', 'SecurityGroupRuleProtocolArgsDict', 'outputs.SecurityGroupRuleProtocol']]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  remote_security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -434,11 +434,11 @@ class SecurityGroupRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The rule description.
         :param pulumi.Input[_builtins.str] direction: The direction of the traffic which the rule should match. Some of the possible values are: Possible values are: `ingress`, `egress`.
         :param pulumi.Input[_builtins.str] ether_type: The ethertype which the rule should match.
-        :param pulumi.Input[Union['SecurityGroupRuleIcmpParametersArgs', 'SecurityGroupRuleIcmpParametersArgsDict']] icmp_parameters: ICMP Parameters. These parameters should only be provided if the protocol is ICMP.
+        :param pulumi.Input[Union['SecurityGroupRuleIcmpParametersArgs', 'SecurityGroupRuleIcmpParametersArgsDict', 'outputs.SecurityGroupRuleIcmpParameters']] icmp_parameters: ICMP Parameters. These parameters should only be provided if the protocol is ICMP.
         :param pulumi.Input[_builtins.str] ip_range: The remote IP range which the rule should match.
-        :param pulumi.Input[Union['SecurityGroupRulePortRangeArgs', 'SecurityGroupRulePortRangeArgsDict']] port_range: The range of ports. This should only be provided if the protocol is not ICMP.
+        :param pulumi.Input[Union['SecurityGroupRulePortRangeArgs', 'SecurityGroupRulePortRangeArgsDict', 'outputs.SecurityGroupRulePortRange']] port_range: The range of ports. This should only be provided if the protocol is not ICMP.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the security group rule is associated.
-        :param pulumi.Input[Union['SecurityGroupRuleProtocolArgs', 'SecurityGroupRuleProtocolArgsDict']] protocol: The internet protocol which the rule should match.
+        :param pulumi.Input[Union['SecurityGroupRuleProtocolArgs', 'SecurityGroupRuleProtocolArgsDict', 'outputs.SecurityGroupRuleProtocol']] protocol: The internet protocol which the rule should match.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.str] remote_security_group_id: The remote security group which the rule should match.
         :param pulumi.Input[_builtins.str] security_group_id: The security group ID.
@@ -477,11 +477,11 @@ class SecurityGroupRule(pulumi.CustomResource):
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  direction: pulumi.Input[Optional[_builtins.str]] = None,
                  ether_type: pulumi.Input[Optional[_builtins.str]] = None,
-                 icmp_parameters: pulumi.Input[Optional[Union['SecurityGroupRuleIcmpParametersArgs', 'SecurityGroupRuleIcmpParametersArgsDict']]] = None,
+                 icmp_parameters: pulumi.Input[Optional[Union['SecurityGroupRuleIcmpParametersArgs', 'SecurityGroupRuleIcmpParametersArgsDict', 'outputs.SecurityGroupRuleIcmpParameters']]] = None,
                  ip_range: pulumi.Input[Optional[_builtins.str]] = None,
-                 port_range: pulumi.Input[Optional[Union['SecurityGroupRulePortRangeArgs', 'SecurityGroupRulePortRangeArgsDict']]] = None,
+                 port_range: pulumi.Input[Optional[Union['SecurityGroupRulePortRangeArgs', 'SecurityGroupRulePortRangeArgsDict', 'outputs.SecurityGroupRulePortRange']]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 protocol: pulumi.Input[Optional[Union['SecurityGroupRuleProtocolArgs', 'SecurityGroupRuleProtocolArgsDict']]] = None,
+                 protocol: pulumi.Input[Optional[Union['SecurityGroupRuleProtocolArgs', 'SecurityGroupRuleProtocolArgsDict', 'outputs.SecurityGroupRuleProtocol']]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  remote_security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
                  security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -525,11 +525,11 @@ class SecurityGroupRule(pulumi.CustomResource):
             description: pulumi.Input[Optional[_builtins.str]] = None,
             direction: pulumi.Input[Optional[_builtins.str]] = None,
             ether_type: pulumi.Input[Optional[_builtins.str]] = None,
-            icmp_parameters: pulumi.Input[Optional[Union['SecurityGroupRuleIcmpParametersArgs', 'SecurityGroupRuleIcmpParametersArgsDict']]] = None,
+            icmp_parameters: pulumi.Input[Optional[Union['SecurityGroupRuleIcmpParametersArgs', 'SecurityGroupRuleIcmpParametersArgsDict', 'outputs.SecurityGroupRuleIcmpParameters']]] = None,
             ip_range: pulumi.Input[Optional[_builtins.str]] = None,
-            port_range: pulumi.Input[Optional[Union['SecurityGroupRulePortRangeArgs', 'SecurityGroupRulePortRangeArgsDict']]] = None,
+            port_range: pulumi.Input[Optional[Union['SecurityGroupRulePortRangeArgs', 'SecurityGroupRulePortRangeArgsDict', 'outputs.SecurityGroupRulePortRange']]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
-            protocol: pulumi.Input[Optional[Union['SecurityGroupRuleProtocolArgs', 'SecurityGroupRuleProtocolArgsDict']]] = None,
+            protocol: pulumi.Input[Optional[Union['SecurityGroupRuleProtocolArgs', 'SecurityGroupRuleProtocolArgsDict', 'outputs.SecurityGroupRuleProtocol']]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             remote_security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -544,11 +544,11 @@ class SecurityGroupRule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] description: The rule description.
         :param pulumi.Input[_builtins.str] direction: The direction of the traffic which the rule should match. Some of the possible values are: Possible values are: `ingress`, `egress`.
         :param pulumi.Input[_builtins.str] ether_type: The ethertype which the rule should match.
-        :param pulumi.Input[Union['SecurityGroupRuleIcmpParametersArgs', 'SecurityGroupRuleIcmpParametersArgsDict']] icmp_parameters: ICMP Parameters. These parameters should only be provided if the protocol is ICMP.
+        :param pulumi.Input[Union['SecurityGroupRuleIcmpParametersArgs', 'SecurityGroupRuleIcmpParametersArgsDict', 'outputs.SecurityGroupRuleIcmpParameters']] icmp_parameters: ICMP Parameters. These parameters should only be provided if the protocol is ICMP.
         :param pulumi.Input[_builtins.str] ip_range: The remote IP range which the rule should match.
-        :param pulumi.Input[Union['SecurityGroupRulePortRangeArgs', 'SecurityGroupRulePortRangeArgsDict']] port_range: The range of ports. This should only be provided if the protocol is not ICMP.
+        :param pulumi.Input[Union['SecurityGroupRulePortRangeArgs', 'SecurityGroupRulePortRangeArgsDict', 'outputs.SecurityGroupRulePortRange']] port_range: The range of ports. This should only be provided if the protocol is not ICMP.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the security group rule is associated.
-        :param pulumi.Input[Union['SecurityGroupRuleProtocolArgs', 'SecurityGroupRuleProtocolArgsDict']] protocol: The internet protocol which the rule should match.
+        :param pulumi.Input[Union['SecurityGroupRuleProtocolArgs', 'SecurityGroupRuleProtocolArgsDict', 'outputs.SecurityGroupRuleProtocol']] protocol: The internet protocol which the rule should match.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.str] remote_security_group_id: The remote security group which the rule should match.
         :param pulumi.Input[_builtins.str] security_group_id: The security group ID.

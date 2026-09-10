@@ -424,14 +424,14 @@ class Loadbalancer(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  disable_security_group_assignment: pulumi.Input[Optional[_builtins.bool]] = None,
                  external_address: pulumi.Input[Optional[_builtins.str]] = None,
-                 listeners: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadbalancerListenerArgs', 'LoadbalancerListenerArgsDict']]]]] = None,
+                 listeners: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadbalancerListenerArgs', 'LoadbalancerListenerArgsDict', 'outputs.LoadbalancerListener']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadbalancerNetworkArgs', 'LoadbalancerNetworkArgsDict']]]]] = None,
-                 options: pulumi.Input[Optional[Union['LoadbalancerOptionsArgs', 'LoadbalancerOptionsArgsDict']]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadbalancerNetworkArgs', 'LoadbalancerNetworkArgsDict', 'outputs.LoadbalancerNetwork']]]]] = None,
+                 options: pulumi.Input[Optional[Union['LoadbalancerOptionsArgs', 'LoadbalancerOptionsArgsDict', 'outputs.LoadbalancerOptions']]] = None,
                  plan_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 target_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadbalancerTargetPoolArgs', 'LoadbalancerTargetPoolArgsDict']]]]] = None,
+                 target_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadbalancerTargetPoolArgs', 'LoadbalancerTargetPoolArgsDict', 'outputs.LoadbalancerTargetPool']]]]] = None,
                  __props__=None):
         """
         ## Setting up supporting infrastructure
@@ -449,14 +449,14 @@ class Loadbalancer(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] disable_security_group_assignment: If set to true, this will disable the automatic assignment of a security group to the load balancer's targets. This option is primarily used to allow targets that are not within the load balancer's own network or SNA (STACKIT network area). When this is enabled, you are fully responsible for ensuring network connectivity to the targets, including managing all routing and security group rules manually. This setting cannot be changed after the load balancer is created.
         :param pulumi.Input[_builtins.str] external_address: External Load Balancer IP address where this Load Balancer is exposed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadbalancerListenerArgs', 'LoadbalancerListenerArgsDict']]]] listeners: List of all listeners which will accept traffic. Limited to 20.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadbalancerListenerArgs', 'LoadbalancerListenerArgsDict', 'outputs.LoadbalancerListener']]]] listeners: List of all listeners which will accept traffic. Limited to 20.
         :param pulumi.Input[_builtins.str] name: Load balancer name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadbalancerNetworkArgs', 'LoadbalancerNetworkArgsDict']]]] networks: List of networks that listeners and targets reside in.
-        :param pulumi.Input[Union['LoadbalancerOptionsArgs', 'LoadbalancerOptionsArgsDict']] options: Defines any optional functionality you want to have enabled on your load balancer.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadbalancerNetworkArgs', 'LoadbalancerNetworkArgsDict', 'outputs.LoadbalancerNetwork']]]] networks: List of networks that listeners and targets reside in.
+        :param pulumi.Input[Union['LoadbalancerOptionsArgs', 'LoadbalancerOptionsArgsDict', 'outputs.LoadbalancerOptions']] options: Defines any optional functionality you want to have enabled on your load balancer.
         :param pulumi.Input[_builtins.str] plan_id: The service plan ID. If not defined, the default service plan is `p10`. Possible values are: `p10`, `p50`, `p250`, `p750`.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the Load Balancer is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadbalancerTargetPoolArgs', 'LoadbalancerTargetPoolArgsDict']]]] target_pools: List of all target pools which will be used in the Load Balancer. Limited to 20.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadbalancerTargetPoolArgs', 'LoadbalancerTargetPoolArgsDict', 'outputs.LoadbalancerTargetPool']]]] target_pools: List of all target pools which will be used in the Load Balancer. Limited to 20.
         """
         ...
     @overload
@@ -493,14 +493,14 @@ class Loadbalancer(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  disable_security_group_assignment: pulumi.Input[Optional[_builtins.bool]] = None,
                  external_address: pulumi.Input[Optional[_builtins.str]] = None,
-                 listeners: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadbalancerListenerArgs', 'LoadbalancerListenerArgsDict']]]]] = None,
+                 listeners: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadbalancerListenerArgs', 'LoadbalancerListenerArgsDict', 'outputs.LoadbalancerListener']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadbalancerNetworkArgs', 'LoadbalancerNetworkArgsDict']]]]] = None,
-                 options: pulumi.Input[Optional[Union['LoadbalancerOptionsArgs', 'LoadbalancerOptionsArgsDict']]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadbalancerNetworkArgs', 'LoadbalancerNetworkArgsDict', 'outputs.LoadbalancerNetwork']]]]] = None,
+                 options: pulumi.Input[Optional[Union['LoadbalancerOptionsArgs', 'LoadbalancerOptionsArgsDict', 'outputs.LoadbalancerOptions']]] = None,
                  plan_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 target_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadbalancerTargetPoolArgs', 'LoadbalancerTargetPoolArgsDict']]]]] = None,
+                 target_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadbalancerTargetPoolArgs', 'LoadbalancerTargetPoolArgsDict', 'outputs.LoadbalancerTargetPool']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -544,17 +544,17 @@ class Loadbalancer(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             disable_security_group_assignment: pulumi.Input[Optional[_builtins.bool]] = None,
             external_address: pulumi.Input[Optional[_builtins.str]] = None,
-            listeners: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadbalancerListenerArgs', 'LoadbalancerListenerArgsDict']]]]] = None,
+            listeners: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadbalancerListenerArgs', 'LoadbalancerListenerArgsDict', 'outputs.LoadbalancerListener']]]]] = None,
             load_balancer_security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadbalancerNetworkArgs', 'LoadbalancerNetworkArgsDict']]]]] = None,
-            options: pulumi.Input[Optional[Union['LoadbalancerOptionsArgs', 'LoadbalancerOptionsArgsDict']]] = None,
+            networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadbalancerNetworkArgs', 'LoadbalancerNetworkArgsDict', 'outputs.LoadbalancerNetwork']]]]] = None,
+            options: pulumi.Input[Optional[Union['LoadbalancerOptionsArgs', 'LoadbalancerOptionsArgsDict', 'outputs.LoadbalancerOptions']]] = None,
             plan_id: pulumi.Input[Optional[_builtins.str]] = None,
             private_address: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
-            target_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadbalancerTargetPoolArgs', 'LoadbalancerTargetPoolArgsDict']]]]] = None,
+            target_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadbalancerTargetPoolArgs', 'LoadbalancerTargetPoolArgsDict', 'outputs.LoadbalancerTargetPool']]]]] = None,
             version: pulumi.Input[Optional[_builtins.str]] = None) -> 'Loadbalancer':
         """
         Get an existing Loadbalancer resource's state with the given name, id, and optional extra
@@ -565,17 +565,17 @@ class Loadbalancer(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] disable_security_group_assignment: If set to true, this will disable the automatic assignment of a security group to the load balancer's targets. This option is primarily used to allow targets that are not within the load balancer's own network or SNA (STACKIT network area). When this is enabled, you are fully responsible for ensuring network connectivity to the targets, including managing all routing and security group rules manually. This setting cannot be changed after the load balancer is created.
         :param pulumi.Input[_builtins.str] external_address: External Load Balancer IP address where this Load Balancer is exposed.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadbalancerListenerArgs', 'LoadbalancerListenerArgsDict']]]] listeners: List of all listeners which will accept traffic. Limited to 20.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadbalancerListenerArgs', 'LoadbalancerListenerArgsDict', 'outputs.LoadbalancerListener']]]] listeners: List of all listeners which will accept traffic. Limited to 20.
         :param pulumi.Input[_builtins.str] load_balancer_security_group_id: The ID of the egress security group assigned to the Load Balancer's internal machines. This ID is essential for allowing traffic from the Load Balancer to targets in different networks or STACKIT network areas (SNA). To enable this, create a security group rule for your target VMs and set the `remote_security_group_id` of that rule to this value. This is typically used when `disable_security_group_assignment` is set to `true`.
         :param pulumi.Input[_builtins.str] name: Load balancer name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadbalancerNetworkArgs', 'LoadbalancerNetworkArgsDict']]]] networks: List of networks that listeners and targets reside in.
-        :param pulumi.Input[Union['LoadbalancerOptionsArgs', 'LoadbalancerOptionsArgsDict']] options: Defines any optional functionality you want to have enabled on your load balancer.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadbalancerNetworkArgs', 'LoadbalancerNetworkArgsDict', 'outputs.LoadbalancerNetwork']]]] networks: List of networks that listeners and targets reside in.
+        :param pulumi.Input[Union['LoadbalancerOptionsArgs', 'LoadbalancerOptionsArgsDict', 'outputs.LoadbalancerOptions']] options: Defines any optional functionality you want to have enabled on your load balancer.
         :param pulumi.Input[_builtins.str] plan_id: The service plan ID. If not defined, the default service plan is `p10`. Possible values are: `p10`, `p50`, `p250`, `p750`.
         :param pulumi.Input[_builtins.str] private_address: Transient private Load Balancer IP address. It can change any time.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the Load Balancer is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.str] security_group_id: The ID of the automatically created security group that allows the targets to receive traffic from the LoadBalancer. Useful when disableTargetSecurityGroupAssignment=true to manually assign this security groups to targets.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadbalancerTargetPoolArgs', 'LoadbalancerTargetPoolArgsDict']]]] target_pools: List of all target pools which will be used in the Load Balancer. Limited to 20.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['LoadbalancerTargetPoolArgs', 'LoadbalancerTargetPoolArgsDict', 'outputs.LoadbalancerTargetPool']]]] target_pools: List of all target pools which will be used in the Load Balancer. Limited to 20.
         :param pulumi.Input[_builtins.str] version: Load balancer resource version. This is needed to have concurrency safe updates.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

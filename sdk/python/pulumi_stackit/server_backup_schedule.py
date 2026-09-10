@@ -277,7 +277,7 @@ class ServerBackupSchedule(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_properties: pulumi.Input[Optional[Union['ServerBackupScheduleBackupPropertiesArgs', 'ServerBackupScheduleBackupPropertiesArgsDict']]] = None,
+                 backup_properties: pulumi.Input[Optional[Union['ServerBackupScheduleBackupPropertiesArgs', 'ServerBackupScheduleBackupPropertiesArgsDict', 'outputs.ServerBackupScheduleBackupProperties']]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -297,7 +297,7 @@ class ServerBackupSchedule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ServerBackupScheduleBackupPropertiesArgs', 'ServerBackupScheduleBackupPropertiesArgsDict']] backup_properties: Backup schedule details for the backups.
+        :param pulumi.Input[Union['ServerBackupScheduleBackupPropertiesArgs', 'ServerBackupScheduleBackupPropertiesArgsDict', 'outputs.ServerBackupScheduleBackupProperties']] backup_properties: Backup schedule details for the backups.
         :param pulumi.Input[_builtins.bool] enabled: Is the backup schedule enabled or disabled.
         :param pulumi.Input[_builtins.str] name: The schedule name.
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the server is associated.
@@ -336,7 +336,7 @@ class ServerBackupSchedule(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_properties: pulumi.Input[Optional[Union['ServerBackupScheduleBackupPropertiesArgs', 'ServerBackupScheduleBackupPropertiesArgsDict']]] = None,
+                 backup_properties: pulumi.Input[Optional[Union['ServerBackupScheduleBackupPropertiesArgs', 'ServerBackupScheduleBackupPropertiesArgsDict', 'outputs.ServerBackupScheduleBackupProperties']]] = None,
                  enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -380,7 +380,7 @@ class ServerBackupSchedule(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backup_properties: pulumi.Input[Optional[Union['ServerBackupScheduleBackupPropertiesArgs', 'ServerBackupScheduleBackupPropertiesArgsDict']]] = None,
+            backup_properties: pulumi.Input[Optional[Union['ServerBackupScheduleBackupPropertiesArgs', 'ServerBackupScheduleBackupPropertiesArgsDict', 'outputs.ServerBackupScheduleBackupProperties']]] = None,
             backup_schedule_id: pulumi.Input[Optional[_builtins.int]] = None,
             enabled: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -395,7 +395,7 @@ class ServerBackupSchedule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ServerBackupScheduleBackupPropertiesArgs', 'ServerBackupScheduleBackupPropertiesArgsDict']] backup_properties: Backup schedule details for the backups.
+        :param pulumi.Input[Union['ServerBackupScheduleBackupPropertiesArgs', 'ServerBackupScheduleBackupPropertiesArgsDict', 'outputs.ServerBackupScheduleBackupProperties']] backup_properties: Backup schedule details for the backups.
         :param pulumi.Input[_builtins.int] backup_schedule_id: Backup schedule ID.
         :param pulumi.Input[_builtins.bool] enabled: Is the backup schedule enabled or disabled.
         :param pulumi.Input[_builtins.str] name: The schedule name.

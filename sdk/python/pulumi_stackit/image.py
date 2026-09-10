@@ -391,7 +391,7 @@ class Image(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: pulumi.Input[Optional[Union['ImageConfigArgs', 'ImageConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['ImageConfigArgs', 'ImageConfigArgsDict', 'outputs.ImageConfig']]] = None,
                  disk_format: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  local_file_path: pulumi.Input[Optional[_builtins.str]] = None,
@@ -413,7 +413,7 @@ class Image(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ImageConfigArgs', 'ImageConfigArgsDict']] config: Properties to set hardware and scheduling settings for an image.
+        :param pulumi.Input[Union['ImageConfigArgs', 'ImageConfigArgsDict', 'outputs.ImageConfig']] config: Properties to set hardware and scheduling settings for an image.
         :param pulumi.Input[_builtins.str] disk_format: The disk format of the image.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
         :param pulumi.Input[_builtins.str] local_file_path: The filepath of the raw image file to be uploaded.
@@ -454,7 +454,7 @@ class Image(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 config: pulumi.Input[Optional[Union['ImageConfigArgs', 'ImageConfigArgsDict']]] = None,
+                 config: pulumi.Input[Optional[Union['ImageConfigArgs', 'ImageConfigArgsDict', 'outputs.ImageConfig']]] = None,
                  disk_format: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  local_file_path: pulumi.Input[Optional[_builtins.str]] = None,
@@ -501,8 +501,8 @@ class Image(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            checksum: pulumi.Input[Optional[Union['ImageChecksumArgs', 'ImageChecksumArgsDict']]] = None,
-            config: pulumi.Input[Optional[Union['ImageConfigArgs', 'ImageConfigArgsDict']]] = None,
+            checksum: pulumi.Input[Optional[Union['ImageChecksumArgs', 'ImageChecksumArgsDict', 'outputs.ImageChecksum']]] = None,
+            config: pulumi.Input[Optional[Union['ImageConfigArgs', 'ImageConfigArgsDict', 'outputs.ImageConfig']]] = None,
             disk_format: pulumi.Input[Optional[_builtins.str]] = None,
             image_id: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
@@ -521,8 +521,8 @@ class Image(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['ImageChecksumArgs', 'ImageChecksumArgsDict']] checksum: Representation of an image checksum.
-        :param pulumi.Input[Union['ImageConfigArgs', 'ImageConfigArgsDict']] config: Properties to set hardware and scheduling settings for an image.
+        :param pulumi.Input[Union['ImageChecksumArgs', 'ImageChecksumArgsDict', 'outputs.ImageChecksum']] checksum: Representation of an image checksum.
+        :param pulumi.Input[Union['ImageConfigArgs', 'ImageConfigArgsDict', 'outputs.ImageConfig']] config: Properties to set hardware and scheduling settings for an image.
         :param pulumi.Input[_builtins.str] disk_format: The disk format of the image.
         :param pulumi.Input[_builtins.str] image_id: The image ID.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container

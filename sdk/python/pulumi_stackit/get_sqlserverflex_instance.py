@@ -235,7 +235,7 @@ class AwaitableGetSqlserverflexInstanceResult(GetSqlserverflexInstanceResult):
 
 
 def get_sqlserverflex_instance(instance_id: Optional[_builtins.str] = None,
-                               network: Optional[Union['GetSqlserverflexInstanceNetworkArgs', 'GetSqlserverflexInstanceNetworkArgsDict']] = None,
+                               network: Optional[Union['GetSqlserverflexInstanceNetworkArgs', 'GetSqlserverflexInstanceNetworkArgsDict', 'outputs.GetSqlserverflexInstanceNetworkResult']] = None,
                                project_id: Optional[_builtins.str] = None,
                                region: Optional[_builtins.str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSqlserverflexInstanceResult:
@@ -246,7 +246,7 @@ def get_sqlserverflex_instance(instance_id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str instance_id: ID of the SQLServer Flex instance.
-    :param Union['GetSqlserverflexInstanceNetworkArgs', 'GetSqlserverflexInstanceNetworkArgsDict'] network: The network configuration of the instance.
+    :param Union['GetSqlserverflexInstanceNetworkArgs', 'GetSqlserverflexInstanceNetworkArgsDict', 'outputs.GetSqlserverflexInstanceNetworkResult'] network: The network configuration of the instance.
     :param _builtins.str project_id: STACKIT project ID to which the instance is associated.
     :param _builtins.str region: The resource region. If not defined, the provider region is used.
     """
@@ -277,7 +277,7 @@ def get_sqlserverflex_instance(instance_id: Optional[_builtins.str] = None,
         storage=pulumi.get(__ret__, 'storage'),
         version=pulumi.get(__ret__, 'version'))
 def get_sqlserverflex_instance_output(instance_id: pulumi.Input[Optional[_builtins.str]] = None,
-                                      network: pulumi.Input[Optional[Optional[Union['GetSqlserverflexInstanceNetworkArgs', 'GetSqlserverflexInstanceNetworkArgsDict']]]] = None,
+                                      network: pulumi.Input[Optional[Optional[Union['GetSqlserverflexInstanceNetworkArgs', 'GetSqlserverflexInstanceNetworkArgsDict', 'outputs.GetSqlserverflexInstanceNetworkResult']]]] = None,
                                       project_id: pulumi.Input[Optional[_builtins.str]] = None,
                                       region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSqlserverflexInstanceResult]:
@@ -288,7 +288,7 @@ def get_sqlserverflex_instance_output(instance_id: pulumi.Input[Optional[_builti
 
 
     :param _builtins.str instance_id: ID of the SQLServer Flex instance.
-    :param Union['GetSqlserverflexInstanceNetworkArgs', 'GetSqlserverflexInstanceNetworkArgsDict'] network: The network configuration of the instance.
+    :param Union['GetSqlserverflexInstanceNetworkArgs', 'GetSqlserverflexInstanceNetworkArgsDict', 'outputs.GetSqlserverflexInstanceNetworkResult'] network: The network configuration of the instance.
     :param _builtins.str project_id: STACKIT project ID to which the instance is associated.
     :param _builtins.str region: The resource region. If not defined, the provider region is used.
     """

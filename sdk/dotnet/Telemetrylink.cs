@@ -59,6 +59,12 @@ namespace Pulumi.Stackit
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
+        /// Whether the Telemetry Link is enabled or not.
+        /// </summary>
+        [Output("enabled")]
+        public Output<bool> Enabled { get; private set; } = null!;
+
+        /// <summary>
         /// STACKIT region name the resource is located in. If not defined, the provider region is used.
         /// </summary>
         [Output("region")]
@@ -192,6 +198,12 @@ namespace Pulumi.Stackit
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
+        /// Whether the Telemetry Link is enabled or not.
+        /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
+
+        /// <summary>
         /// STACKIT region name the resource is located in. If not defined, the provider region is used.
         /// </summary>
         [Input("region")]
@@ -279,6 +291,12 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
+        /// Whether the Telemetry Link is enabled or not.
+        /// </summary>
+        [Input("enabled")]
+        public Input<bool>? Enabled { get; set; }
 
         /// <summary>
         /// STACKIT region name the resource is located in. If not defined, the provider region is used.

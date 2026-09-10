@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Redis instance resource schema. Must have a `region` specified in the provider configuration.
+ * Redis instance resource schema. Must have a `region` specified in the provider configuration. This resource is deprecated and will be removed after August 2027, use stackit.ValkeyInstance instead. For more information on how to migrate, see the [migration guide](https://docs.stackit.cloud/products/databases/key-value-store/tutorials/migrate-data-to-a-new-instance/).
  *
  * ## Example Usage
  *

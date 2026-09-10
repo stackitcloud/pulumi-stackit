@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * ObjectStorage bucket resource schema. Must have a `region` specified in the provider configuration. If you are creating `credentialsgroup` and `bucket` resources simultaneously, please include the `dependsOn` field so that they are created sequentially. This prevents errors from concurrent calls to the service enablement that is done in the background.
+ * ObjectStorage bucket resource schema. Must have a `region` specified in the provider configuration.
  *
  * > This resource cannot be destroyed if the bucket contains objects. Please ensure the bucket is empty before attempting to destroy it.
  *

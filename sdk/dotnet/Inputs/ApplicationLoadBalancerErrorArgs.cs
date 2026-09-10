@@ -19,7 +19,7 @@ namespace Pulumi.Stackit.Inputs
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`.
+        /// The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`, `TYPE_FIP_NOT_FOUND`, `TYPE_IP_EXHAUSTED`, `TYPE_DNS_NOT_CONFIGURED`, `TYPE_VM_PORT_NOT_CONFIGURED`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

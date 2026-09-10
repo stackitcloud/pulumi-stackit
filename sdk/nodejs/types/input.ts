@@ -110,7 +110,7 @@ export interface ApplicationLoadBalancerError {
      */
     description?: pulumi.Input<string | undefined>;
     /**
-     * The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`.
+     * The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`, `TYPE_FIP_NOT_FOUND`, `TYPE_IP_EXHAUSTED`, `TYPE_DNS_NOT_CONFIGURED`, `TYPE_VM_PORT_NOT_CONFIGURED`.
      */
     type?: pulumi.Input<string | undefined>;
 }
@@ -2736,6 +2736,93 @@ export interface TelemetryrouterInstanceFilterAttribute {
     values: pulumi.Input<pulumi.Input<string>[]>;
 }
 
+export interface ValkeyInstanceParameters {
+    /**
+     * The number of milliseconds after which the instance is considered down.
+     */
+    downAfterMilliseconds?: pulumi.Input<number | undefined>;
+    /**
+     * Enable monitoring.
+     */
+    enableMonitoring?: pulumi.Input<boolean | undefined>;
+    /**
+     * The failover timeout in milliseconds.
+     */
+    failoverTimeout?: pulumi.Input<number | undefined>;
+    /**
+     * Graphite server URL (host and port). If set, monitoring with Graphite will be enabled.
+     */
+    graphite?: pulumi.Input<string | undefined>;
+    /**
+     * The lazy eviction enablement (yes or no).
+     */
+    lazyfreeLazyEviction?: pulumi.Input<string | undefined>;
+    /**
+     * The lazy expire enablement (yes or no).
+     */
+    lazyfreeLazyExpire?: pulumi.Input<string | undefined>;
+    /**
+     * The Lua time limit.
+     */
+    luaTimeLimit?: pulumi.Input<number | undefined>;
+    /**
+     * The maximum disk threshold in MB. If the disk usage exceeds this threshold, the instance will be stopped.
+     */
+    maxDiskThreshold?: pulumi.Input<number | undefined>;
+    /**
+     * The maximum number of clients.
+     */
+    maxclients?: pulumi.Input<number | undefined>;
+    /**
+     * The policy to handle the maximum memory (volatile-lru, noeviction, etc).
+     */
+    maxmemoryPolicy?: pulumi.Input<string | undefined>;
+    /**
+     * The maximum memory samples.
+     */
+    maxmemorySamples?: pulumi.Input<number | undefined>;
+    /**
+     * The frequency in seconds at which metrics are emitted.
+     */
+    metricsFrequency?: pulumi.Input<number | undefined>;
+    /**
+     * The prefix for the metrics. Could be useful when using Graphite monitoring to prefix the metrics with a certain value, like an API key.
+     */
+    metricsPrefix?: pulumi.Input<string | undefined>;
+    /**
+     * The minimum replicas maximum lag.
+     */
+    minReplicasMaxLag?: pulumi.Input<number | undefined>;
+    /**
+     * The amount of connected replicas that are required for the primary to accept write operations. It can be set to 0 to disable it.
+     */
+    minReplicasToWrite?: pulumi.Input<number | undefined>;
+    /**
+     * The ID of the STACKIT monitoring instance.
+     */
+    monitoringInstanceId?: pulumi.Input<string | undefined>;
+    /**
+     * The notify keyspace events.
+     */
+    notifyKeyspaceEvents?: pulumi.Input<string | undefined>;
+    /**
+     * The replication backlog size for the cluster.
+     */
+    replBacklogSize?: pulumi.Input<string | undefined>;
+    /**
+     * Comma separated list of IP networks in CIDR notation which are allowed to access this instance.
+     */
+    sgwAcl?: pulumi.Input<string | undefined>;
+    /**
+     * The snapshot configuration.
+     */
+    snapshot?: pulumi.Input<string | undefined>;
+    /**
+     * List of syslog servers to send logs to.
+     */
+    syslogs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
 export interface VolumeEncryptionParameters {
     /**
      * UUID of the key within the STACKIT-KMS to use for the encryption.
@@ -2929,7 +3016,7 @@ export interface VpnConnectionTunnel1Phase1 {
      */
     encryptionAlgorithms: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`.
+     * Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`, `sha2512`.
      */
     integrityAlgorithms: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -2952,7 +3039,7 @@ export interface VpnConnectionTunnel1Phase2 {
      */
     encryptionAlgorithms: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`.
+     * Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`, `sha2512`.
      */
     integrityAlgorithms: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -3017,7 +3104,7 @@ export interface VpnConnectionTunnel2Phase1 {
      */
     encryptionAlgorithms: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`.
+     * Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`, `sha2512`.
      */
     integrityAlgorithms: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -3040,7 +3127,7 @@ export interface VpnConnectionTunnel2Phase2 {
      */
     encryptionAlgorithms: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`.
+     * Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`, `sha2512`.
      */
     integrityAlgorithms: pulumi.Input<pulumi.Input<string>[]>;
     /**

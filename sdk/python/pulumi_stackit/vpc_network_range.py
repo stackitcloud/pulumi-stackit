@@ -435,7 +435,7 @@ class VpcNetworkRange(pulumi.CustomResource):
                  prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['VpcNetworkRangeTimeoutsArgs', 'VpcNetworkRangeTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['VpcNetworkRangeTimeoutsArgs', 'VpcNetworkRangeTimeoutsArgsDict', 'outputs.VpcNetworkRangeTimeouts']]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -507,7 +507,7 @@ class VpcNetworkRange(pulumi.CustomResource):
                  prefix: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['VpcNetworkRangeTimeoutsArgs', 'VpcNetworkRangeTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['VpcNetworkRangeTimeoutsArgs', 'VpcNetworkRangeTimeoutsArgsDict', 'outputs.VpcNetworkRangeTimeouts']]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -562,7 +562,7 @@ class VpcNetworkRange(pulumi.CustomResource):
             prefix: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['VpcNetworkRangeTimeoutsArgs', 'VpcNetworkRangeTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['VpcNetworkRangeTimeoutsArgs', 'VpcNetworkRangeTimeoutsArgsDict', 'outputs.VpcNetworkRangeTimeouts']]] = None,
             vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'VpcNetworkRange':
         """
         Get an existing VpcNetworkRange resource's state with the given name, id, and optional extra

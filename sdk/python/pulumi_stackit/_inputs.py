@@ -295,6 +295,8 @@ __all__ = [
     'TelemetryrouterInstanceFilterArgsDict',
     'TelemetryrouterInstanceFilterAttributeArgs',
     'TelemetryrouterInstanceFilterAttributeArgsDict',
+    'ValkeyInstanceParametersArgs',
+    'ValkeyInstanceParametersArgsDict',
     'VolumeEncryptionParametersArgs',
     'VolumeEncryptionParametersArgsDict',
     'VolumeSourceArgs',
@@ -830,7 +832,7 @@ class ApplicationLoadBalancerErrorArgsDict(TypedDict):
     """
     type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
-    The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`.
+    The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`, `TYPE_FIP_NOT_FOUND`, `TYPE_IP_EXHAUSTED`, `TYPE_DNS_NOT_CONFIGURED`, `TYPE_VM_PORT_NOT_CONFIGURED`.
     """
 
 @pulumi.input_type
@@ -840,7 +842,7 @@ class ApplicationLoadBalancerErrorArgs:
                  type: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] description: The error description contains additional helpful user information to fix the error state of the Application Load Balancer. For example the IP 45.135.247.139 does not exist in the project, then the description will report: Floating IP "45.135.247.139" could not be found.
-        :param pulumi.Input[_builtins.str] type: The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`.
+        :param pulumi.Input[_builtins.str] type: The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`, `TYPE_FIP_NOT_FOUND`, `TYPE_IP_EXHAUSTED`, `TYPE_DNS_NOT_CONFIGURED`, `TYPE_VM_PORT_NOT_CONFIGURED`.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -863,7 +865,7 @@ class ApplicationLoadBalancerErrorArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`.
+        The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`, `TYPE_FIP_NOT_FOUND`, `TYPE_IP_EXHAUSTED`, `TYPE_DNS_NOT_CONFIGURED`, `TYPE_VM_PORT_NOT_CONFIGURED`.
         """
         return pulumi.get(self, "type")
 
@@ -12056,6 +12058,435 @@ class TelemetryrouterInstanceFilterAttributeArgs:
         pulumi.set(self, "values", value)
 
 
+class ValkeyInstanceParametersArgsDict(TypedDict):
+    down_after_milliseconds: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The number of milliseconds after which the instance is considered down.
+    """
+    enable_monitoring: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Enable monitoring.
+    """
+    failover_timeout: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The failover timeout in milliseconds.
+    """
+    graphite: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Graphite server URL (host and port). If set, monitoring with Graphite will be enabled.
+    """
+    lazyfree_lazy_eviction: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The lazy eviction enablement (yes or no).
+    """
+    lazyfree_lazy_expire: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The lazy expire enablement (yes or no).
+    """
+    lua_time_limit: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The Lua time limit.
+    """
+    max_disk_threshold: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The maximum disk threshold in MB. If the disk usage exceeds this threshold, the instance will be stopped.
+    """
+    maxclients: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The maximum number of clients.
+    """
+    maxmemory_policy: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The policy to handle the maximum memory (volatile-lru, noeviction, etc).
+    """
+    maxmemory_samples: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The maximum memory samples.
+    """
+    metrics_frequency: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The frequency in seconds at which metrics are emitted.
+    """
+    metrics_prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The prefix for the metrics. Could be useful when using Graphite monitoring to prefix the metrics with a certain value, like an API key.
+    """
+    min_replicas_max_lag: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The minimum replicas maximum lag.
+    """
+    min_replicas_to_write: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    The amount of connected replicas that are required for the primary to accept write operations. It can be set to 0 to disable it.
+    """
+    monitoring_instance_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The ID of the STACKIT monitoring instance.
+    """
+    notify_keyspace_events: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The notify keyspace events.
+    """
+    repl_backlog_size: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The replication backlog size for the cluster.
+    """
+    sgw_acl: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Comma separated list of IP networks in CIDR notation which are allowed to access this instance.
+    """
+    snapshot: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The snapshot configuration.
+    """
+    syslogs: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    List of syslog servers to send logs to.
+    """
+
+@pulumi.input_type
+class ValkeyInstanceParametersArgs:
+    def __init__(__self__, *,
+                 down_after_milliseconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
+                 failover_timeout: pulumi.Input[Optional[_builtins.int]] = None,
+                 graphite: pulumi.Input[Optional[_builtins.str]] = None,
+                 lazyfree_lazy_eviction: pulumi.Input[Optional[_builtins.str]] = None,
+                 lazyfree_lazy_expire: pulumi.Input[Optional[_builtins.str]] = None,
+                 lua_time_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 max_disk_threshold: pulumi.Input[Optional[_builtins.int]] = None,
+                 maxclients: pulumi.Input[Optional[_builtins.int]] = None,
+                 maxmemory_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 maxmemory_samples: pulumi.Input[Optional[_builtins.int]] = None,
+                 metrics_frequency: pulumi.Input[Optional[_builtins.int]] = None,
+                 metrics_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 min_replicas_max_lag: pulumi.Input[Optional[_builtins.int]] = None,
+                 min_replicas_to_write: pulumi.Input[Optional[_builtins.int]] = None,
+                 monitoring_instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_keyspace_events: pulumi.Input[Optional[_builtins.str]] = None,
+                 repl_backlog_size: pulumi.Input[Optional[_builtins.str]] = None,
+                 sgw_acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 snapshot: pulumi.Input[Optional[_builtins.str]] = None,
+                 syslogs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[_builtins.int] down_after_milliseconds: The number of milliseconds after which the instance is considered down.
+        :param pulumi.Input[_builtins.bool] enable_monitoring: Enable monitoring.
+        :param pulumi.Input[_builtins.int] failover_timeout: The failover timeout in milliseconds.
+        :param pulumi.Input[_builtins.str] graphite: Graphite server URL (host and port). If set, monitoring with Graphite will be enabled.
+        :param pulumi.Input[_builtins.str] lazyfree_lazy_eviction: The lazy eviction enablement (yes or no).
+        :param pulumi.Input[_builtins.str] lazyfree_lazy_expire: The lazy expire enablement (yes or no).
+        :param pulumi.Input[_builtins.int] lua_time_limit: The Lua time limit.
+        :param pulumi.Input[_builtins.int] max_disk_threshold: The maximum disk threshold in MB. If the disk usage exceeds this threshold, the instance will be stopped.
+        :param pulumi.Input[_builtins.int] maxclients: The maximum number of clients.
+        :param pulumi.Input[_builtins.str] maxmemory_policy: The policy to handle the maximum memory (volatile-lru, noeviction, etc).
+        :param pulumi.Input[_builtins.int] maxmemory_samples: The maximum memory samples.
+        :param pulumi.Input[_builtins.int] metrics_frequency: The frequency in seconds at which metrics are emitted.
+        :param pulumi.Input[_builtins.str] metrics_prefix: The prefix for the metrics. Could be useful when using Graphite monitoring to prefix the metrics with a certain value, like an API key.
+        :param pulumi.Input[_builtins.int] min_replicas_max_lag: The minimum replicas maximum lag.
+        :param pulumi.Input[_builtins.int] min_replicas_to_write: The amount of connected replicas that are required for the primary to accept write operations. It can be set to 0 to disable it.
+        :param pulumi.Input[_builtins.str] monitoring_instance_id: The ID of the STACKIT monitoring instance.
+        :param pulumi.Input[_builtins.str] notify_keyspace_events: The notify keyspace events.
+        :param pulumi.Input[_builtins.str] repl_backlog_size: The replication backlog size for the cluster.
+        :param pulumi.Input[_builtins.str] sgw_acl: Comma separated list of IP networks in CIDR notation which are allowed to access this instance.
+        :param pulumi.Input[_builtins.str] snapshot: The snapshot configuration.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] syslogs: List of syslog servers to send logs to.
+        """
+        if down_after_milliseconds is not None:
+            pulumi.set(__self__, "down_after_milliseconds", down_after_milliseconds)
+        if enable_monitoring is not None:
+            pulumi.set(__self__, "enable_monitoring", enable_monitoring)
+        if failover_timeout is not None:
+            pulumi.set(__self__, "failover_timeout", failover_timeout)
+        if graphite is not None:
+            pulumi.set(__self__, "graphite", graphite)
+        if lazyfree_lazy_eviction is not None:
+            pulumi.set(__self__, "lazyfree_lazy_eviction", lazyfree_lazy_eviction)
+        if lazyfree_lazy_expire is not None:
+            pulumi.set(__self__, "lazyfree_lazy_expire", lazyfree_lazy_expire)
+        if lua_time_limit is not None:
+            pulumi.set(__self__, "lua_time_limit", lua_time_limit)
+        if max_disk_threshold is not None:
+            pulumi.set(__self__, "max_disk_threshold", max_disk_threshold)
+        if maxclients is not None:
+            pulumi.set(__self__, "maxclients", maxclients)
+        if maxmemory_policy is not None:
+            pulumi.set(__self__, "maxmemory_policy", maxmemory_policy)
+        if maxmemory_samples is not None:
+            pulumi.set(__self__, "maxmemory_samples", maxmemory_samples)
+        if metrics_frequency is not None:
+            pulumi.set(__self__, "metrics_frequency", metrics_frequency)
+        if metrics_prefix is not None:
+            pulumi.set(__self__, "metrics_prefix", metrics_prefix)
+        if min_replicas_max_lag is not None:
+            pulumi.set(__self__, "min_replicas_max_lag", min_replicas_max_lag)
+        if min_replicas_to_write is not None:
+            pulumi.set(__self__, "min_replicas_to_write", min_replicas_to_write)
+        if monitoring_instance_id is not None:
+            pulumi.set(__self__, "monitoring_instance_id", monitoring_instance_id)
+        if notify_keyspace_events is not None:
+            pulumi.set(__self__, "notify_keyspace_events", notify_keyspace_events)
+        if repl_backlog_size is not None:
+            pulumi.set(__self__, "repl_backlog_size", repl_backlog_size)
+        if sgw_acl is not None:
+            pulumi.set(__self__, "sgw_acl", sgw_acl)
+        if snapshot is not None:
+            pulumi.set(__self__, "snapshot", snapshot)
+        if syslogs is not None:
+            pulumi.set(__self__, "syslogs", syslogs)
+
+    @_builtins.property
+    @pulumi.getter(name="downAfterMilliseconds")
+    def down_after_milliseconds(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The number of milliseconds after which the instance is considered down.
+        """
+        return pulumi.get(self, "down_after_milliseconds")
+
+    @down_after_milliseconds.setter
+    def down_after_milliseconds(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "down_after_milliseconds", value)
+
+    @_builtins.property
+    @pulumi.getter(name="enableMonitoring")
+    def enable_monitoring(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Enable monitoring.
+        """
+        return pulumi.get(self, "enable_monitoring")
+
+    @enable_monitoring.setter
+    def enable_monitoring(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "enable_monitoring", value)
+
+    @_builtins.property
+    @pulumi.getter(name="failoverTimeout")
+    def failover_timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The failover timeout in milliseconds.
+        """
+        return pulumi.get(self, "failover_timeout")
+
+    @failover_timeout.setter
+    def failover_timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "failover_timeout", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def graphite(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Graphite server URL (host and port). If set, monitoring with Graphite will be enabled.
+        """
+        return pulumi.get(self, "graphite")
+
+    @graphite.setter
+    def graphite(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "graphite", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lazyfreeLazyEviction")
+    def lazyfree_lazy_eviction(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The lazy eviction enablement (yes or no).
+        """
+        return pulumi.get(self, "lazyfree_lazy_eviction")
+
+    @lazyfree_lazy_eviction.setter
+    def lazyfree_lazy_eviction(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "lazyfree_lazy_eviction", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lazyfreeLazyExpire")
+    def lazyfree_lazy_expire(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The lazy expire enablement (yes or no).
+        """
+        return pulumi.get(self, "lazyfree_lazy_expire")
+
+    @lazyfree_lazy_expire.setter
+    def lazyfree_lazy_expire(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "lazyfree_lazy_expire", value)
+
+    @_builtins.property
+    @pulumi.getter(name="luaTimeLimit")
+    def lua_time_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The Lua time limit.
+        """
+        return pulumi.get(self, "lua_time_limit")
+
+    @lua_time_limit.setter
+    def lua_time_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "lua_time_limit", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxDiskThreshold")
+    def max_disk_threshold(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The maximum disk threshold in MB. If the disk usage exceeds this threshold, the instance will be stopped.
+        """
+        return pulumi.get(self, "max_disk_threshold")
+
+    @max_disk_threshold.setter
+    def max_disk_threshold(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "max_disk_threshold", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def maxclients(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The maximum number of clients.
+        """
+        return pulumi.get(self, "maxclients")
+
+    @maxclients.setter
+    def maxclients(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "maxclients", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxmemoryPolicy")
+    def maxmemory_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The policy to handle the maximum memory (volatile-lru, noeviction, etc).
+        """
+        return pulumi.get(self, "maxmemory_policy")
+
+    @maxmemory_policy.setter
+    def maxmemory_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "maxmemory_policy", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxmemorySamples")
+    def maxmemory_samples(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The maximum memory samples.
+        """
+        return pulumi.get(self, "maxmemory_samples")
+
+    @maxmemory_samples.setter
+    def maxmemory_samples(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "maxmemory_samples", value)
+
+    @_builtins.property
+    @pulumi.getter(name="metricsFrequency")
+    def metrics_frequency(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The frequency in seconds at which metrics are emitted.
+        """
+        return pulumi.get(self, "metrics_frequency")
+
+    @metrics_frequency.setter
+    def metrics_frequency(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "metrics_frequency", value)
+
+    @_builtins.property
+    @pulumi.getter(name="metricsPrefix")
+    def metrics_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The prefix for the metrics. Could be useful when using Graphite monitoring to prefix the metrics with a certain value, like an API key.
+        """
+        return pulumi.get(self, "metrics_prefix")
+
+    @metrics_prefix.setter
+    def metrics_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "metrics_prefix", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minReplicasMaxLag")
+    def min_replicas_max_lag(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The minimum replicas maximum lag.
+        """
+        return pulumi.get(self, "min_replicas_max_lag")
+
+    @min_replicas_max_lag.setter
+    def min_replicas_max_lag(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "min_replicas_max_lag", value)
+
+    @_builtins.property
+    @pulumi.getter(name="minReplicasToWrite")
+    def min_replicas_to_write(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        The amount of connected replicas that are required for the primary to accept write operations. It can be set to 0 to disable it.
+        """
+        return pulumi.get(self, "min_replicas_to_write")
+
+    @min_replicas_to_write.setter
+    def min_replicas_to_write(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "min_replicas_to_write", value)
+
+    @_builtins.property
+    @pulumi.getter(name="monitoringInstanceId")
+    def monitoring_instance_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The ID of the STACKIT monitoring instance.
+        """
+        return pulumi.get(self, "monitoring_instance_id")
+
+    @monitoring_instance_id.setter
+    def monitoring_instance_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "monitoring_instance_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="notifyKeyspaceEvents")
+    def notify_keyspace_events(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The notify keyspace events.
+        """
+        return pulumi.get(self, "notify_keyspace_events")
+
+    @notify_keyspace_events.setter
+    def notify_keyspace_events(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "notify_keyspace_events", value)
+
+    @_builtins.property
+    @pulumi.getter(name="replBacklogSize")
+    def repl_backlog_size(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The replication backlog size for the cluster.
+        """
+        return pulumi.get(self, "repl_backlog_size")
+
+    @repl_backlog_size.setter
+    def repl_backlog_size(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "repl_backlog_size", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sgwAcl")
+    def sgw_acl(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Comma separated list of IP networks in CIDR notation which are allowed to access this instance.
+        """
+        return pulumi.get(self, "sgw_acl")
+
+    @sgw_acl.setter
+    def sgw_acl(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "sgw_acl", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def snapshot(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The snapshot configuration.
+        """
+        return pulumi.get(self, "snapshot")
+
+    @snapshot.setter
+    def snapshot(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "snapshot", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def syslogs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of syslog servers to send logs to.
+        """
+        return pulumi.get(self, "syslogs")
+
+    @syslogs.setter
+    def syslogs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "syslogs", value)
+
+
 class VolumeEncryptionParametersArgsDict(TypedDict):
     kek_key_id: pulumi.Input[_builtins.str]
     """
@@ -12925,7 +13356,7 @@ class VpnConnectionTunnel1Phase1ArgsDict(TypedDict):
     """
     integrity_algorithms: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
     """
-    Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2_256`, `sha2_384`.
+    Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2_256`, `sha2_384`, `sha2_512`.
     """
     dh_groups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
@@ -12945,7 +13376,7 @@ class VpnConnectionTunnel1Phase1Args:
                  rekey_time: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] encryption_algorithms: Encryption algorithms for Phase 1. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] integrity_algorithms: Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2_256`, `sha2_384`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] integrity_algorithms: Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2_256`, `sha2_384`, `sha2_512`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dh_groups: Diffie-Hellman groups for key exchange. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
         :param pulumi.Input[_builtins.int] rekey_time: Time to schedule an IKE re-keying in seconds. Range: 900-28800. Default: 14400.
         """
@@ -12972,7 +13403,7 @@ class VpnConnectionTunnel1Phase1Args:
     @pulumi.getter(name="integrityAlgorithms")
     def integrity_algorithms(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2_256`, `sha2_384`.
+        Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2_256`, `sha2_384`, `sha2_512`.
         """
         return pulumi.get(self, "integrity_algorithms")
 
@@ -13012,7 +13443,7 @@ class VpnConnectionTunnel1Phase2ArgsDict(TypedDict):
     """
     integrity_algorithms: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
     """
-    Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2_256`, `sha2_384`.
+    Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2_256`, `sha2_384`, `sha2_512`.
     """
     dh_groups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
@@ -13042,7 +13473,7 @@ class VpnConnectionTunnel1Phase2Args:
                  start_action: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] encryption_algorithms: Encryption algorithms for Phase 2. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] integrity_algorithms: Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2_256`, `sha2_384`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] integrity_algorithms: Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2_256`, `sha2_384`, `sha2_512`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dh_groups: Diffie-Hellman groups for Phase 2. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
         :param pulumi.Input[_builtins.str] dpd_action: Action to perform on DPD timeout. Default: 'restart'. Possible values are: `clear`, `restart`.
         :param pulumi.Input[_builtins.int] rekey_time: Time to schedule a Child SA re-keying in seconds. Range: 900-3600. Default: 3600.
@@ -13075,7 +13506,7 @@ class VpnConnectionTunnel1Phase2Args:
     @pulumi.getter(name="integrityAlgorithms")
     def integrity_algorithms(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2_256`, `sha2_384`.
+        Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2_256`, `sha2_384`, `sha2_512`.
         """
         return pulumi.get(self, "integrity_algorithms")
 
@@ -13355,7 +13786,7 @@ class VpnConnectionTunnel2Phase1ArgsDict(TypedDict):
     """
     integrity_algorithms: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
     """
-    Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2_256`, `sha2_384`.
+    Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2_256`, `sha2_384`, `sha2_512`.
     """
     dh_groups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
@@ -13375,7 +13806,7 @@ class VpnConnectionTunnel2Phase1Args:
                  rekey_time: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] encryption_algorithms: Encryption algorithms for Phase 1. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] integrity_algorithms: Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2_256`, `sha2_384`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] integrity_algorithms: Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2_256`, `sha2_384`, `sha2_512`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dh_groups: Diffie-Hellman groups for key exchange. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
         :param pulumi.Input[_builtins.int] rekey_time: Time to schedule an IKE re-keying in seconds. Range: 900-28800. Default: 14400.
         """
@@ -13402,7 +13833,7 @@ class VpnConnectionTunnel2Phase1Args:
     @pulumi.getter(name="integrityAlgorithms")
     def integrity_algorithms(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2_256`, `sha2_384`.
+        Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2_256`, `sha2_384`, `sha2_512`.
         """
         return pulumi.get(self, "integrity_algorithms")
 
@@ -13442,7 +13873,7 @@ class VpnConnectionTunnel2Phase2ArgsDict(TypedDict):
     """
     integrity_algorithms: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
     """
-    Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2_256`, `sha2_384`.
+    Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2_256`, `sha2_384`, `sha2_512`.
     """
     dh_groups: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
     """
@@ -13472,7 +13903,7 @@ class VpnConnectionTunnel2Phase2Args:
                  start_action: pulumi.Input[Optional[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] encryption_algorithms: Encryption algorithms for Phase 2. Possible values are: `aes256`, `aes128gcm16`, `aes256gcm16`.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] integrity_algorithms: Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2_256`, `sha2_384`.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] integrity_algorithms: Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2_256`, `sha2_384`, `sha2_512`.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] dh_groups: Diffie-Hellman groups for Phase 2. Possible values are: `modp1024`, `modp2048`, `ecp256`, `ecp384`, `modp2048s256`.
         :param pulumi.Input[_builtins.str] dpd_action: Action to perform on DPD timeout. Default: 'restart'. Possible values are: `clear`, `restart`.
         :param pulumi.Input[_builtins.int] rekey_time: Time to schedule a Child SA re-keying in seconds. Range: 900-3600. Default: 3600.
@@ -13505,7 +13936,7 @@ class VpnConnectionTunnel2Phase2Args:
     @pulumi.getter(name="integrityAlgorithms")
     def integrity_algorithms(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2_256`, `sha2_384`.
+        Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2_256`, `sha2_384`, `sha2_512`.
         """
         return pulumi.get(self, "integrity_algorithms")
 

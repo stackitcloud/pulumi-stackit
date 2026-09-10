@@ -26,7 +26,7 @@ class GetTelemetrylinkResult:
     """
     A collection of values returned by getTelemetrylink.
     """
-    def __init__(__self__, create_time=None, description=None, display_name=None, id=None, region=None, resource_id=None, resource_type=None, status=None, telemetry_router_id=None):
+    def __init__(__self__, create_time=None, description=None, display_name=None, enabled=None, id=None, region=None, resource_id=None, resource_type=None, status=None, telemetry_router_id=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -36,6 +36,9 @@ class GetTelemetrylinkResult:
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
+        if enabled and not isinstance(enabled, bool):
+            raise TypeError("Expected argument 'enabled' to be a bool")
+        pulumi.set(__self__, "enabled", enabled)
         if id and not isinstance(id, str):
             raise TypeError("Expected argument 'id' to be a str")
         pulumi.set(__self__, "id", id)
@@ -78,6 +81,14 @@ class GetTelemetrylinkResult:
         The displayed name of the Telemetry Link resource.
         """
         return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Whether the Telemetry Link is enabled or not.
+        """
+        return pulumi.get(self, "enabled")
 
     @_builtins.property
     @pulumi.getter
@@ -138,6 +149,7 @@ class AwaitableGetTelemetrylinkResult(GetTelemetrylinkResult):
             create_time=self.create_time,
             description=self.description,
             display_name=self.display_name,
+            enabled=self.enabled,
             id=self.id,
             region=self.region,
             resource_id=self.resource_id,
@@ -171,6 +183,7 @@ def get_telemetrylink(region: Optional[_builtins.str] = None,
         create_time=pulumi.get(__ret__, 'create_time'),
         description=pulumi.get(__ret__, 'description'),
         display_name=pulumi.get(__ret__, 'display_name'),
+        enabled=pulumi.get(__ret__, 'enabled'),
         id=pulumi.get(__ret__, 'id'),
         region=pulumi.get(__ret__, 'region'),
         resource_id=pulumi.get(__ret__, 'resource_id'),
@@ -201,6 +214,7 @@ def get_telemetrylink_output(region: pulumi.Input[Optional[Optional[_builtins.st
         create_time=pulumi.get(__response__, 'create_time'),
         description=pulumi.get(__response__, 'description'),
         display_name=pulumi.get(__response__, 'display_name'),
+        enabled=pulumi.get(__response__, 'enabled'),
         id=pulumi.get(__response__, 'id'),
         region=pulumi.get(__response__, 'region'),
         resource_id=pulumi.get(__response__, 'resource_id'),

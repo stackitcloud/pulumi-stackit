@@ -162,7 +162,7 @@ class VpcRegion(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['VpcRegionTimeoutsArgs', 'VpcRegionTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['VpcRegionTimeoutsArgs', 'VpcRegionTimeoutsArgsDict', 'outputs.VpcRegionTimeouts']]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
@@ -218,7 +218,7 @@ class VpcRegion(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['VpcRegionTimeoutsArgs', 'VpcRegionTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['VpcRegionTimeoutsArgs', 'VpcRegionTimeoutsArgsDict', 'outputs.VpcRegionTimeouts']]] = None,
                  vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -249,7 +249,7 @@ class VpcRegion(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['VpcRegionTimeoutsArgs', 'VpcRegionTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['VpcRegionTimeoutsArgs', 'VpcRegionTimeoutsArgsDict', 'outputs.VpcRegionTimeouts']]] = None,
             vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'VpcRegion':
         """
         Get an existing VpcRegion resource's state with the given name, id, and optional extra

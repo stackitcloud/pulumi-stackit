@@ -246,10 +246,10 @@ class NetworkAreaRoute(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 destination: pulumi.Input[Optional[Union['NetworkAreaRouteDestinationArgs', 'NetworkAreaRouteDestinationArgsDict']]] = None,
+                 destination: pulumi.Input[Optional[Union['NetworkAreaRouteDestinationArgs', 'NetworkAreaRouteDestinationArgsDict', 'outputs.NetworkAreaRouteDestination']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  network_area_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 next_hop: pulumi.Input[Optional[Union['NetworkAreaRouteNextHopArgs', 'NetworkAreaRouteNextHopArgsDict']]] = None,
+                 next_hop: pulumi.Input[Optional[Union['NetworkAreaRouteNextHopArgs', 'NetworkAreaRouteNextHopArgsDict', 'outputs.NetworkAreaRouteNextHop']]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -275,10 +275,10 @@ class NetworkAreaRoute(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['NetworkAreaRouteDestinationArgs', 'NetworkAreaRouteDestinationArgsDict']] destination: Destination of the route.
+        :param pulumi.Input[Union['NetworkAreaRouteDestinationArgs', 'NetworkAreaRouteDestinationArgsDict', 'outputs.NetworkAreaRouteDestination']] destination: Destination of the route.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
         :param pulumi.Input[_builtins.str] network_area_id: The network area ID to which the network area route is associated.
-        :param pulumi.Input[Union['NetworkAreaRouteNextHopArgs', 'NetworkAreaRouteNextHopArgsDict']] next_hop: Next hop destination.
+        :param pulumi.Input[Union['NetworkAreaRouteNextHopArgs', 'NetworkAreaRouteNextHopArgsDict', 'outputs.NetworkAreaRouteNextHop']] next_hop: Next hop destination.
         :param pulumi.Input[_builtins.str] organization_id: STACKIT organization ID to which the network area is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """
@@ -323,10 +323,10 @@ class NetworkAreaRoute(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 destination: pulumi.Input[Optional[Union['NetworkAreaRouteDestinationArgs', 'NetworkAreaRouteDestinationArgsDict']]] = None,
+                 destination: pulumi.Input[Optional[Union['NetworkAreaRouteDestinationArgs', 'NetworkAreaRouteDestinationArgsDict', 'outputs.NetworkAreaRouteDestination']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  network_area_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 next_hop: pulumi.Input[Optional[Union['NetworkAreaRouteNextHopArgs', 'NetworkAreaRouteNextHopArgsDict']]] = None,
+                 next_hop: pulumi.Input[Optional[Union['NetworkAreaRouteNextHopArgs', 'NetworkAreaRouteNextHopArgsDict', 'outputs.NetworkAreaRouteNextHop']]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
@@ -363,11 +363,11 @@ class NetworkAreaRoute(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            destination: pulumi.Input[Optional[Union['NetworkAreaRouteDestinationArgs', 'NetworkAreaRouteDestinationArgsDict']]] = None,
+            destination: pulumi.Input[Optional[Union['NetworkAreaRouteDestinationArgs', 'NetworkAreaRouteDestinationArgsDict', 'outputs.NetworkAreaRouteDestination']]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             network_area_id: pulumi.Input[Optional[_builtins.str]] = None,
             network_area_route_id: pulumi.Input[Optional[_builtins.str]] = None,
-            next_hop: pulumi.Input[Optional[Union['NetworkAreaRouteNextHopArgs', 'NetworkAreaRouteNextHopArgsDict']]] = None,
+            next_hop: pulumi.Input[Optional[Union['NetworkAreaRouteNextHopArgs', 'NetworkAreaRouteNextHopArgsDict', 'outputs.NetworkAreaRouteNextHop']]] = None,
             organization_id: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None) -> 'NetworkAreaRoute':
         """
@@ -377,11 +377,11 @@ class NetworkAreaRoute(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['NetworkAreaRouteDestinationArgs', 'NetworkAreaRouteDestinationArgsDict']] destination: Destination of the route.
+        :param pulumi.Input[Union['NetworkAreaRouteDestinationArgs', 'NetworkAreaRouteDestinationArgsDict', 'outputs.NetworkAreaRouteDestination']] destination: Destination of the route.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
         :param pulumi.Input[_builtins.str] network_area_id: The network area ID to which the network area route is associated.
         :param pulumi.Input[_builtins.str] network_area_route_id: The network area route ID.
-        :param pulumi.Input[Union['NetworkAreaRouteNextHopArgs', 'NetworkAreaRouteNextHopArgsDict']] next_hop: Next hop destination.
+        :param pulumi.Input[Union['NetworkAreaRouteNextHopArgs', 'NetworkAreaRouteNextHopArgsDict', 'outputs.NetworkAreaRouteNextHop']] next_hop: Next hop destination.
         :param pulumi.Input[_builtins.str] organization_id: STACKIT organization ID to which the network area is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         """

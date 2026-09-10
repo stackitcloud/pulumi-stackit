@@ -49,6 +49,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('authorizationCustomEndpoint')
 
     @_builtins.property
+    def automation_custom_endpoint(self) -> Optional[str]:
+        """
+        Custom endpoint for the Automation service
+        """
+        return __config__.get('automationCustomEndpoint')
+
+    @_builtins.property
     def cdn_custom_endpoint(self) -> Optional[str]:
         """
         Custom endpoint for the CDN service
@@ -336,6 +343,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('serviceAccountToken')
 
     @_builtins.property
+    def service_connection_id(self) -> Optional[str]:
+        """
+        The ID of the Azure DevOps pipeline service connection. For use when authenticating as a Service Account using OpenID Connect.
+        """
+        return __config__.get('serviceConnectionId')
+
+    @_builtins.property
     def service_enablement_custom_endpoint(self) -> Optional[str]:
         """
         Custom endpoint for the Service Enablement API
@@ -390,6 +404,13 @@ class _ExportableConfig(types.ModuleType):
         Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to `false`.
         """
         return __config__.get_bool('useOidc')
+
+    @_builtins.property
+    def valkey_custom_endpoint(self) -> Optional[str]:
+        """
+        Custom endpoint for the Key Value Store service
+        """
+        return __config__.get('valkeyCustomEndpoint')
 
     @_builtins.property
     def vpn_custom_endpoint(self) -> Optional[str]:

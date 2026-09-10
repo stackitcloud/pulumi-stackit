@@ -31,6 +31,11 @@ func GetAuthorizationCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:authorizationCustomEndpoint")
 }
 
+// Custom endpoint for the Automation service
+func GetAutomationCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "stackit:automationCustomEndpoint")
+}
+
 // Custom endpoint for the CDN service
 func GetCdnCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:cdnCustomEndpoint")
@@ -238,6 +243,11 @@ func GetServiceAccountToken(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:serviceAccountToken")
 }
 
+// The ID of the Azure DevOps pipeline service connection. For use when authenticating as a Service Account using OpenID Connect.
+func GetServiceConnectionId(ctx *pulumi.Context) string {
+	return config.Get(ctx, "stackit:serviceConnectionId")
+}
+
 // Custom endpoint for the Service Enablement API
 func GetServiceEnablementCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "stackit:serviceEnablementCustomEndpoint")
@@ -276,6 +286,11 @@ func GetTokenCustomEndpoint(ctx *pulumi.Context) string {
 // Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to `false`.
 func GetUseOidc(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "stackit:useOidc")
+}
+
+// Custom endpoint for the Key Value Store service
+func GetValkeyCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "stackit:valkeyCustomEndpoint")
 }
 
 // Custom endpoint for the VPN service

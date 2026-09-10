@@ -42,6 +42,8 @@ type LookupTelemetrylinkResult struct {
 	Description string `pulumi:"description"`
 	// The displayed name of the Telemetry Link resource.
 	DisplayName string `pulumi:"displayName"`
+	// Whether the Telemetry Link is enabled or not.
+	Enabled bool `pulumi:"enabled"`
 	// Terraform's internal resource identifier. It is structured as "`resourceType`, `resourceId`,`region`".
 	Id string `pulumi:"id"`
 	// STACKIT region name the resource is located in. If not defined, the provider region is used.
@@ -105,6 +107,11 @@ func (o LookupTelemetrylinkResultOutput) Description() pulumi.StringOutput {
 // The displayed name of the Telemetry Link resource.
 func (o LookupTelemetrylinkResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTelemetrylinkResult) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// Whether the Telemetry Link is enabled or not.
+func (o LookupTelemetrylinkResultOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupTelemetrylinkResult) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // Terraform's internal resource identifier. It is structured as "`resourceType`, `resourceId`,`region`".

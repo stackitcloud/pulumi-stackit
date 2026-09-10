@@ -167,7 +167,7 @@ class NetworkAreaRegion(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ipv4: pulumi.Input[Optional[Union['NetworkAreaRegionIpv4Args', 'NetworkAreaRegionIpv4ArgsDict']]] = None,
+                 ipv4: pulumi.Input[Optional[Union['NetworkAreaRegionIpv4Args', 'NetworkAreaRegionIpv4ArgsDict', 'outputs.NetworkAreaRegionIpv4']]] = None,
                  network_area_id: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -186,7 +186,7 @@ class NetworkAreaRegion(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['NetworkAreaRegionIpv4Args', 'NetworkAreaRegionIpv4ArgsDict']] ipv4: The regional IPv4 config of a network area.
+        :param pulumi.Input[Union['NetworkAreaRegionIpv4Args', 'NetworkAreaRegionIpv4ArgsDict', 'outputs.NetworkAreaRegionIpv4']] ipv4: The regional IPv4 config of a network area.
         :param pulumi.Input[_builtins.str] network_area_id: The network area ID.
         :param pulumi.Input[_builtins.str] organization_id: STACKIT organization ID to which the network area is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
@@ -224,7 +224,7 @@ class NetworkAreaRegion(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ipv4: pulumi.Input[Optional[Union['NetworkAreaRegionIpv4Args', 'NetworkAreaRegionIpv4ArgsDict']]] = None,
+                 ipv4: pulumi.Input[Optional[Union['NetworkAreaRegionIpv4Args', 'NetworkAreaRegionIpv4ArgsDict', 'outputs.NetworkAreaRegionIpv4']]] = None,
                  network_area_id: pulumi.Input[Optional[_builtins.str]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -257,7 +257,7 @@ class NetworkAreaRegion(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            ipv4: pulumi.Input[Optional[Union['NetworkAreaRegionIpv4Args', 'NetworkAreaRegionIpv4ArgsDict']]] = None,
+            ipv4: pulumi.Input[Optional[Union['NetworkAreaRegionIpv4Args', 'NetworkAreaRegionIpv4ArgsDict', 'outputs.NetworkAreaRegionIpv4']]] = None,
             network_area_id: pulumi.Input[Optional[_builtins.str]] = None,
             organization_id: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None) -> 'NetworkAreaRegion':
@@ -268,7 +268,7 @@ class NetworkAreaRegion(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['NetworkAreaRegionIpv4Args', 'NetworkAreaRegionIpv4ArgsDict']] ipv4: The regional IPv4 config of a network area.
+        :param pulumi.Input[Union['NetworkAreaRegionIpv4Args', 'NetworkAreaRegionIpv4ArgsDict', 'outputs.NetworkAreaRegionIpv4']] ipv4: The regional IPv4 config of a network area.
         :param pulumi.Input[_builtins.str] network_area_id: The network area ID.
         :param pulumi.Input[_builtins.str] organization_id: STACKIT organization ID to which the network area is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.

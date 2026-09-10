@@ -37,6 +37,7 @@ from .get_application_load_balancer import *
 from .get_authorization_folder_custom_role import *
 from .get_authorization_organization_custom_role import *
 from .get_authorization_project_custom_role import *
+from .get_automation_templates import *
 from .get_cdn_custom_domain import *
 from .get_cdn_distribution import *
 from .get_dns_record_set import *
@@ -134,6 +135,8 @@ from .get_telemetrylink import *
 from .get_telemetryrouter_access_token import *
 from .get_telemetryrouter_destination import *
 from .get_telemetryrouter_instance import *
+from .get_valkey_credential import *
+from .get_valkey_instance import *
 from .get_volume import *
 from .get_vpc import *
 from .get_vpc_network_range import *
@@ -226,6 +229,8 @@ from .telemetrylink import *
 from .telemetryrouter_access_token import *
 from .telemetryrouter_destination import *
 from .telemetryrouter_instance import *
+from .valkey_credential import *
+from .valkey_instance import *
 from .volume import *
 from .vpc import *
 from .vpc_network_range import *
@@ -1077,6 +1082,22 @@ _utilities.register(
   "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/telemetryrouterInstance:TelemetryrouterInstance": "TelemetryrouterInstance"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/valkeyCredential",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/valkeyCredential:ValkeyCredential": "ValkeyCredential"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/valkeyInstance",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/valkeyInstance:ValkeyInstance": "ValkeyInstance"
   }
  },
  {

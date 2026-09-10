@@ -741,7 +741,7 @@ class ObservabilityInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 alert_config: pulumi.Input[Optional[Union['ObservabilityInstanceAlertConfigArgs', 'ObservabilityInstanceAlertConfigArgsDict']]] = None,
+                 alert_config: pulumi.Input[Optional[Union['ObservabilityInstanceAlertConfigArgs', 'ObservabilityInstanceAlertConfigArgsDict', 'outputs.ObservabilityInstanceAlertConfig']]] = None,
                  grafana_admin_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  logs_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  metrics_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
@@ -766,7 +766,7 @@ class ObservabilityInstance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The access control list for this instance. Each entry is an IP address range that is permitted to access, in CIDR notation.
-        :param pulumi.Input[Union['ObservabilityInstanceAlertConfigArgs', 'ObservabilityInstanceAlertConfigArgsDict']] alert_config: Alert configuration for the instance.
+        :param pulumi.Input[Union['ObservabilityInstanceAlertConfigArgs', 'ObservabilityInstanceAlertConfigArgsDict', 'outputs.ObservabilityInstanceAlertConfig']] alert_config: Alert configuration for the instance.
         :param pulumi.Input[_builtins.bool] grafana_admin_enabled: If true, a default Grafana server admin user is created. It's recommended to set this to false and use STACKIT SSO (Owner or Observability Grafana Server Admin role) instead. It is still possible to manually create a new Grafana admin user via the Grafana UI later.
         :param pulumi.Input[_builtins.int] logs_retention_days: Specifies for how many days the logs are kept. Default is set to `7`.
         :param pulumi.Input[_builtins.int] metrics_retention_days: Specifies for how many days the raw metrics are kept. Default is set to `90`.
@@ -810,7 +810,7 @@ class ObservabilityInstance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 alert_config: pulumi.Input[Optional[Union['ObservabilityInstanceAlertConfigArgs', 'ObservabilityInstanceAlertConfigArgsDict']]] = None,
+                 alert_config: pulumi.Input[Optional[Union['ObservabilityInstanceAlertConfigArgs', 'ObservabilityInstanceAlertConfigArgsDict', 'outputs.ObservabilityInstanceAlertConfig']]] = None,
                  grafana_admin_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  logs_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  metrics_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
@@ -880,7 +880,7 @@ class ObservabilityInstance(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            alert_config: pulumi.Input[Optional[Union['ObservabilityInstanceAlertConfigArgs', 'ObservabilityInstanceAlertConfigArgsDict']]] = None,
+            alert_config: pulumi.Input[Optional[Union['ObservabilityInstanceAlertConfigArgs', 'ObservabilityInstanceAlertConfigArgsDict', 'outputs.ObservabilityInstanceAlertConfig']]] = None,
             alerting_url: pulumi.Input[Optional[_builtins.str]] = None,
             dashboard_url: pulumi.Input[Optional[_builtins.str]] = None,
             grafana_admin_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
@@ -920,7 +920,7 @@ class ObservabilityInstance(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The access control list for this instance. Each entry is an IP address range that is permitted to access, in CIDR notation.
-        :param pulumi.Input[Union['ObservabilityInstanceAlertConfigArgs', 'ObservabilityInstanceAlertConfigArgsDict']] alert_config: Alert configuration for the instance.
+        :param pulumi.Input[Union['ObservabilityInstanceAlertConfigArgs', 'ObservabilityInstanceAlertConfigArgsDict', 'outputs.ObservabilityInstanceAlertConfig']] alert_config: Alert configuration for the instance.
         :param pulumi.Input[_builtins.str] alerting_url: Specifies Alerting URL.
         :param pulumi.Input[_builtins.str] dashboard_url: Specifies Observability instance dashboard URL.
         :param pulumi.Input[_builtins.bool] grafana_admin_enabled: If true, a default Grafana server admin user is created. It's recommended to set this to false and use STACKIT SSO (Owner or Observability Grafana Server Admin role) instead. It is still possible to manually create a new Grafana admin user via the Grafana UI later.

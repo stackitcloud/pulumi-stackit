@@ -22,7 +22,7 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly ImmutableArray<string> EncryptionAlgorithms;
         /// <summary>
-        /// Integrity algorithms for Phase 1. Possible values are: `Sha1`, `Sha2256`, `Sha2384`.
+        /// Integrity algorithms for Phase 1. Possible values are: `Sha1`, `Sha2256`, `Sha2384`, `Sha2512`.
         /// </summary>
         public readonly ImmutableArray<string> IntegrityAlgorithms;
         /// <summary>

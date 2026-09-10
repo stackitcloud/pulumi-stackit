@@ -120,7 +120,7 @@ class AwaitableGetCdnCustomDomainResult(GetCdnCustomDomainResult):
             status=self.status)
 
 
-def get_cdn_custom_domain(certificate: Optional[Union['GetCdnCustomDomainCertificateArgs', 'GetCdnCustomDomainCertificateArgsDict']] = None,
+def get_cdn_custom_domain(certificate: Optional[Union['GetCdnCustomDomainCertificateArgs', 'GetCdnCustomDomainCertificateArgsDict', 'outputs.GetCdnCustomDomainCertificateResult']] = None,
                           distribution_id: Optional[_builtins.str] = None,
                           name: Optional[_builtins.str] = None,
                           project_id: Optional[_builtins.str] = None,
@@ -133,7 +133,7 @@ def get_cdn_custom_domain(certificate: Optional[Union['GetCdnCustomDomainCertifi
     ## Example Usage
 
 
-    :param Union['GetCdnCustomDomainCertificateArgs', 'GetCdnCustomDomainCertificateArgsDict'] certificate: The TLS certificate for the custom domain. If omitted, a managed certificate will be used. If the block is specified, a custom certificate is used.
+    :param Union['GetCdnCustomDomainCertificateArgs', 'GetCdnCustomDomainCertificateArgsDict', 'outputs.GetCdnCustomDomainCertificateResult'] certificate: The TLS certificate for the custom domain. If omitted, a managed certificate will be used. If the block is specified, a custom certificate is used.
     :param _builtins.str distribution_id: CDN distribution ID
     :param _builtins.str project_id: STACKIT project ID associated with the distribution
     """
@@ -153,7 +153,7 @@ def get_cdn_custom_domain(certificate: Optional[Union['GetCdnCustomDomainCertifi
         name=pulumi.get(__ret__, 'name'),
         project_id=pulumi.get(__ret__, 'project_id'),
         status=pulumi.get(__ret__, 'status'))
-def get_cdn_custom_domain_output(certificate: pulumi.Input[Optional[Optional[Union['GetCdnCustomDomainCertificateArgs', 'GetCdnCustomDomainCertificateArgsDict']]]] = None,
+def get_cdn_custom_domain_output(certificate: pulumi.Input[Optional[Optional[Union['GetCdnCustomDomainCertificateArgs', 'GetCdnCustomDomainCertificateArgsDict', 'outputs.GetCdnCustomDomainCertificateResult']]]] = None,
                                  distribution_id: pulumi.Input[Optional[_builtins.str]] = None,
                                  name: pulumi.Input[Optional[_builtins.str]] = None,
                                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -166,7 +166,7 @@ def get_cdn_custom_domain_output(certificate: pulumi.Input[Optional[Optional[Uni
     ## Example Usage
 
 
-    :param Union['GetCdnCustomDomainCertificateArgs', 'GetCdnCustomDomainCertificateArgsDict'] certificate: The TLS certificate for the custom domain. If omitted, a managed certificate will be used. If the block is specified, a custom certificate is used.
+    :param Union['GetCdnCustomDomainCertificateArgs', 'GetCdnCustomDomainCertificateArgsDict', 'outputs.GetCdnCustomDomainCertificateResult'] certificate: The TLS certificate for the custom domain. If omitted, a managed certificate will be used. If the block is specified, a custom certificate is used.
     :param _builtins.str distribution_id: CDN distribution ID
     :param _builtins.str project_id: STACKIT project ID associated with the distribution
     """

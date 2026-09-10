@@ -26,6 +26,8 @@ type Provider struct {
 	AlbWafCustomEndpoint pulumi.StringPtrOutput `pulumi:"albWafCustomEndpoint"`
 	// Custom endpoint for the Membership service
 	AuthorizationCustomEndpoint pulumi.StringPtrOutput `pulumi:"authorizationCustomEndpoint"`
+	// Custom endpoint for the Automation service
+	AutomationCustomEndpoint pulumi.StringPtrOutput `pulumi:"automationCustomEndpoint"`
 	// Custom endpoint for the CDN service
 	CdnCustomEndpoint pulumi.StringPtrOutput `pulumi:"cdnCustomEndpoint"`
 	// Path of JSON from where the credentials are read. Takes precedence over the env var `STACKIT_CREDENTIALS_PATH`. Default value is `~/.stackit/credentials.json`.
@@ -106,6 +108,8 @@ type Provider struct {
 	//
 	// Deprecated: Authentication via Service Account Token is deprecated and will be removed on December 17, 2025. Please use `serviceAccountKey` or `serviceAccountKeyPath` instead. For a smooth transition, refer to our migration guide: https://docs.stackit.cloud/platform/access-and-identity/service-accounts/migrate-flows/
 	ServiceAccountToken pulumi.StringPtrOutput `pulumi:"serviceAccountToken"`
+	// The ID of the Azure DevOps pipeline service connection. For use when authenticating as a Service Account using OpenID Connect.
+	ServiceConnectionId pulumi.StringPtrOutput `pulumi:"serviceConnectionId"`
 	// Custom endpoint for the Service Enablement API
 	ServiceEnablementCustomEndpoint pulumi.StringPtrOutput `pulumi:"serviceEnablementCustomEndpoint"`
 	// Custom endpoint for the Stackit Filestorage API
@@ -120,6 +124,8 @@ type Provider struct {
 	TelemetryrouterCustomEndpoint pulumi.StringPtrOutput `pulumi:"telemetryrouterCustomEndpoint"`
 	// Custom endpoint for the token API, which is used to request access tokens when using the key flow
 	TokenCustomEndpoint pulumi.StringPtrOutput `pulumi:"tokenCustomEndpoint"`
+	// Custom endpoint for the Key Value Store service
+	ValkeyCustomEndpoint pulumi.StringPtrOutput `pulumi:"valkeyCustomEndpoint"`
 	// Custom endpoint for the VPN service
 	VpnCustomEndpoint pulumi.StringPtrOutput `pulumi:"vpnCustomEndpoint"`
 }
@@ -149,6 +155,8 @@ type providerArgs struct {
 	AlbWafCustomEndpoint *string `pulumi:"albWafCustomEndpoint"`
 	// Custom endpoint for the Membership service
 	AuthorizationCustomEndpoint *string `pulumi:"authorizationCustomEndpoint"`
+	// Custom endpoint for the Automation service
+	AutomationCustomEndpoint *string `pulumi:"automationCustomEndpoint"`
 	// Custom endpoint for the CDN service
 	CdnCustomEndpoint *string `pulumi:"cdnCustomEndpoint"`
 	// Path of JSON from where the credentials are read. Takes precedence over the env var `STACKIT_CREDENTIALS_PATH`. Default value is `~/.stackit/credentials.json`.
@@ -233,6 +241,8 @@ type providerArgs struct {
 	//
 	// Deprecated: Authentication via Service Account Token is deprecated and will be removed on December 17, 2025. Please use `serviceAccountKey` or `serviceAccountKeyPath` instead. For a smooth transition, refer to our migration guide: https://docs.stackit.cloud/platform/access-and-identity/service-accounts/migrate-flows/
 	ServiceAccountToken *string `pulumi:"serviceAccountToken"`
+	// The ID of the Azure DevOps pipeline service connection. For use when authenticating as a Service Account using OpenID Connect.
+	ServiceConnectionId *string `pulumi:"serviceConnectionId"`
 	// Custom endpoint for the Service Enablement API
 	ServiceEnablementCustomEndpoint *string `pulumi:"serviceEnablementCustomEndpoint"`
 	// Custom endpoint for the Stackit Filestorage API
@@ -249,6 +259,8 @@ type providerArgs struct {
 	TokenCustomEndpoint *string `pulumi:"tokenCustomEndpoint"`
 	// Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to `false`.
 	UseOidc *bool `pulumi:"useOidc"`
+	// Custom endpoint for the Key Value Store service
+	ValkeyCustomEndpoint *string `pulumi:"valkeyCustomEndpoint"`
 	// Custom endpoint for the VPN service
 	VpnCustomEndpoint *string `pulumi:"vpnCustomEndpoint"`
 }
@@ -263,6 +275,8 @@ type ProviderArgs struct {
 	AlbWafCustomEndpoint pulumi.StringPtrInput
 	// Custom endpoint for the Membership service
 	AuthorizationCustomEndpoint pulumi.StringPtrInput
+	// Custom endpoint for the Automation service
+	AutomationCustomEndpoint pulumi.StringPtrInput
 	// Custom endpoint for the CDN service
 	CdnCustomEndpoint pulumi.StringPtrInput
 	// Path of JSON from where the credentials are read. Takes precedence over the env var `STACKIT_CREDENTIALS_PATH`. Default value is `~/.stackit/credentials.json`.
@@ -347,6 +361,8 @@ type ProviderArgs struct {
 	//
 	// Deprecated: Authentication via Service Account Token is deprecated and will be removed on December 17, 2025. Please use `serviceAccountKey` or `serviceAccountKeyPath` instead. For a smooth transition, refer to our migration guide: https://docs.stackit.cloud/platform/access-and-identity/service-accounts/migrate-flows/
 	ServiceAccountToken pulumi.StringPtrInput
+	// The ID of the Azure DevOps pipeline service connection. For use when authenticating as a Service Account using OpenID Connect.
+	ServiceConnectionId pulumi.StringPtrInput
 	// Custom endpoint for the Service Enablement API
 	ServiceEnablementCustomEndpoint pulumi.StringPtrInput
 	// Custom endpoint for the Stackit Filestorage API
@@ -363,6 +379,8 @@ type ProviderArgs struct {
 	TokenCustomEndpoint pulumi.StringPtrInput
 	// Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to `false`.
 	UseOidc pulumi.BoolPtrInput
+	// Custom endpoint for the Key Value Store service
+	ValkeyCustomEndpoint pulumi.StringPtrInput
 	// Custom endpoint for the VPN service
 	VpnCustomEndpoint pulumi.StringPtrInput
 }
@@ -445,6 +463,11 @@ func (o ProviderOutput) AlbWafCustomEndpoint() pulumi.StringPtrOutput {
 // Custom endpoint for the Membership service
 func (o ProviderOutput) AuthorizationCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AuthorizationCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// Custom endpoint for the Automation service
+func (o ProviderOutput) AutomationCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AutomationCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 // Custom endpoint for the CDN service
@@ -644,6 +667,11 @@ func (o ProviderOutput) ServiceAccountToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ServiceAccountToken }).(pulumi.StringPtrOutput)
 }
 
+// The ID of the Azure DevOps pipeline service connection. For use when authenticating as a Service Account using OpenID Connect.
+func (o ProviderOutput) ServiceConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ServiceConnectionId }).(pulumi.StringPtrOutput)
+}
+
 // Custom endpoint for the Service Enablement API
 func (o ProviderOutput) ServiceEnablementCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ServiceEnablementCustomEndpoint }).(pulumi.StringPtrOutput)
@@ -677,6 +705,11 @@ func (o ProviderOutput) TelemetryrouterCustomEndpoint() pulumi.StringPtrOutput {
 // Custom endpoint for the token API, which is used to request access tokens when using the key flow
 func (o ProviderOutput) TokenCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.TokenCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+// Custom endpoint for the Key Value Store service
+func (o ProviderOutput) ValkeyCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ValkeyCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 // Custom endpoint for the VPN service

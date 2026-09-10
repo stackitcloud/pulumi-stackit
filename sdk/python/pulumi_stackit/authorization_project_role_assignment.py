@@ -26,7 +26,7 @@ class AuthorizationProjectRoleAssignmentArgs:
         The set of arguments for constructing a AuthorizationProjectRoleAssignment resource.
 
         :param pulumi.Input[_builtins.str] resource_id: Project Resource to assign the role to.
-        :param pulumi.Input[_builtins.str] role: Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
+        :param pulumi.Input[_builtins.str] role: Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`
         :param pulumi.Input[_builtins.str] subject: Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.
         """
         pulumi.set(__self__, "resource_id", resource_id)
@@ -49,7 +49,7 @@ class AuthorizationProjectRoleAssignmentArgs:
     @pulumi.getter
     def role(self) -> pulumi.Input[_builtins.str]:
         """
-        Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
+        Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`
         """
         return pulumi.get(self, "role")
 
@@ -80,7 +80,7 @@ class _AuthorizationProjectRoleAssignmentState:
         Input properties used for looking up and filtering AuthorizationProjectRoleAssignment resources.
 
         :param pulumi.Input[_builtins.str] resource_id: Project Resource to assign the role to.
-        :param pulumi.Input[_builtins.str] role: Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
+        :param pulumi.Input[_builtins.str] role: Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`
         :param pulumi.Input[_builtins.str] subject: Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.
         """
         if resource_id is not None:
@@ -106,7 +106,7 @@ class _AuthorizationProjectRoleAssignmentState:
     @pulumi.getter
     def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
-        Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
+        Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`
         """
         return pulumi.get(self, "role")
 
@@ -152,7 +152,7 @@ class AuthorizationProjectRoleAssignment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] resource_id: Project Resource to assign the role to.
-        :param pulumi.Input[_builtins.str] role: Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
+        :param pulumi.Input[_builtins.str] role: Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`
         :param pulumi.Input[_builtins.str] subject: Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.
         """
         ...
@@ -230,7 +230,7 @@ class AuthorizationProjectRoleAssignment(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] resource_id: Project Resource to assign the role to.
-        :param pulumi.Input[_builtins.str] role: Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
+        :param pulumi.Input[_builtins.str] role: Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`
         :param pulumi.Input[_builtins.str] subject: Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -254,7 +254,7 @@ class AuthorizationProjectRoleAssignment(pulumi.CustomResource):
     @pulumi.getter
     def role(self) -> pulumi.Output[_builtins.str]:
         """
-        Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
+        Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`
         """
         return pulumi.get(self, "role")
 

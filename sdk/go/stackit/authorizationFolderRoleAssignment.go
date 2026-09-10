@@ -26,7 +26,7 @@ type AuthorizationFolderRoleAssignment struct {
 
 	// Folder Resource to assign the role to.
 	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
-	// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
+	// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`
 	Role pulumi.StringOutput `pulumi:"role"`
 	// Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.
 	Subject pulumi.StringOutput `pulumi:"subject"`
@@ -73,7 +73,7 @@ func GetAuthorizationFolderRoleAssignment(ctx *pulumi.Context,
 type authorizationFolderRoleAssignmentState struct {
 	// Folder Resource to assign the role to.
 	ResourceId *string `pulumi:"resourceId"`
-	// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
+	// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`
 	Role *string `pulumi:"role"`
 	// Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.
 	Subject *string `pulumi:"subject"`
@@ -82,7 +82,7 @@ type authorizationFolderRoleAssignmentState struct {
 type AuthorizationFolderRoleAssignmentState struct {
 	// Folder Resource to assign the role to.
 	ResourceId pulumi.StringPtrInput
-	// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
+	// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`
 	Role pulumi.StringPtrInput
 	// Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.
 	Subject pulumi.StringPtrInput
@@ -95,7 +95,7 @@ func (AuthorizationFolderRoleAssignmentState) ElementType() reflect.Type {
 type authorizationFolderRoleAssignmentArgs struct {
 	// Folder Resource to assign the role to.
 	ResourceId string `pulumi:"resourceId"`
-	// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
+	// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`
 	Role string `pulumi:"role"`
 	// Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.
 	Subject string `pulumi:"subject"`
@@ -105,7 +105,7 @@ type authorizationFolderRoleAssignmentArgs struct {
 type AuthorizationFolderRoleAssignmentArgs struct {
 	// Folder Resource to assign the role to.
 	ResourceId pulumi.StringInput
-	// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
+	// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`
 	Role pulumi.StringInput
 	// Identifier of user, service account or client. Usually email address or name in case of clients. All letters must be lowercased.
 	Subject pulumi.StringInput
@@ -203,7 +203,7 @@ func (o AuthorizationFolderRoleAssignmentOutput) ResourceId() pulumi.StringOutpu
 	return o.ApplyT(func(v *AuthorizationFolderRoleAssignment) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
 }
 
-// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
+// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`
 func (o AuthorizationFolderRoleAssignmentOutput) Role() pulumi.StringOutput {
 	return o.ApplyT(func(v *AuthorizationFolderRoleAssignment) pulumi.StringOutput { return v.Role }).(pulumi.StringOutput)
 }

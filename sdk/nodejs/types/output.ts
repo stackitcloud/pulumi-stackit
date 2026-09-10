@@ -110,7 +110,7 @@ export interface ApplicationLoadBalancerError {
      */
     description: string;
     /**
-     * The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`.
+     * The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`, `TYPE_FIP_NOT_FOUND`, `TYPE_IP_EXHAUSTED`, `TYPE_DNS_NOT_CONFIGURED`, `TYPE_VM_PORT_NOT_CONFIGURED`.
      */
     type: string;
 }
@@ -950,7 +950,7 @@ export interface GetApplicationLoadBalancerError {
      */
     description: string;
     /**
-     * The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`.
+     * The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`, `TYPE_FIP_NOT_FOUND`, `TYPE_IP_EXHAUSTED`, `TYPE_DNS_NOT_CONFIGURED`, `TYPE_VM_PORT_NOT_CONFIGURED`.
      */
     type: string;
 }
@@ -1259,6 +1259,25 @@ export interface GetApplicationLoadBalancerTargetSecurityGroup {
      * Name of the security Group
      */
     name: string;
+}
+
+export interface GetAutomationTemplatesTemplate {
+    /**
+     * Create timestamp of the template.
+     */
+    createTime: string;
+    /**
+     * Description of the template.
+     */
+    description: string;
+    /**
+     * Name of the template.
+     */
+    name: string;
+    /**
+     * Template ID.
+     */
+    templateId: string;
 }
 
 export interface GetCdnCustomDomainCertificate {
@@ -3690,6 +3709,93 @@ export interface GetTelemetryrouterInstanceFilterAttribute {
     values: string[];
 }
 
+export interface GetValkeyInstanceParameters {
+    /**
+     * The number of milliseconds after which the instance is considered down.
+     */
+    downAfterMilliseconds: number;
+    /**
+     * Enable monitoring.
+     */
+    enableMonitoring: boolean;
+    /**
+     * The failover timeout in milliseconds.
+     */
+    failoverTimeout: number;
+    /**
+     * Graphite server URL (host and port). If set, monitoring with Graphite will be enabled.
+     */
+    graphite: string;
+    /**
+     * The lazy eviction enablement (yes or no).
+     */
+    lazyfreeLazyEviction: string;
+    /**
+     * The lazy expire enablement (yes or no).
+     */
+    lazyfreeLazyExpire: string;
+    /**
+     * The Lua time limit.
+     */
+    luaTimeLimit: number;
+    /**
+     * The maximum disk threshold in MB. If the disk usage exceeds this threshold, the instance will be stopped.
+     */
+    maxDiskThreshold: number;
+    /**
+     * The maximum number of clients.
+     */
+    maxclients: number;
+    /**
+     * The policy to handle the maximum memory (volatile-lru, noeviction, etc).
+     */
+    maxmemoryPolicy: string;
+    /**
+     * The maximum memory samples.
+     */
+    maxmemorySamples: number;
+    /**
+     * The frequency in seconds at which metrics are emitted.
+     */
+    metricsFrequency: number;
+    /**
+     * The prefix for the metrics. Could be useful when using Graphite monitoring to prefix the metrics with a certain value, like an API key.
+     */
+    metricsPrefix: string;
+    /**
+     * The minimum replicas maximum lag.
+     */
+    minReplicasMaxLag: number;
+    /**
+     * The amount of connected replicas that are required for the primary to accept write operations. It can be set to 0 to disable it.
+     */
+    minReplicasToWrite: number;
+    /**
+     * The ID of the STACKIT monitoring instance.
+     */
+    monitoringInstanceId: string;
+    /**
+     * The notify keyspace events.
+     */
+    notifyKeyspaceEvents: string;
+    /**
+     * The replication backlog size for the cluster.
+     */
+    replBacklogSize: string;
+    /**
+     * Comma separated list of IP networks in CIDR notation which are allowed to access this instance.
+     */
+    sgwAcl: string;
+    /**
+     * The snapshot configuration.
+     */
+    snapshot: string;
+    /**
+     * List of syslog servers to send logs to.
+     */
+    syslogs: string[];
+}
+
 export interface GetVolumeSource {
     /**
      * The ID of the source, e.g. image ID
@@ -5632,6 +5738,93 @@ export interface TelemetryrouterInstanceFilterAttribute {
     values: string[];
 }
 
+export interface ValkeyInstanceParameters {
+    /**
+     * The number of milliseconds after which the instance is considered down.
+     */
+    downAfterMilliseconds: number;
+    /**
+     * Enable monitoring.
+     */
+    enableMonitoring: boolean;
+    /**
+     * The failover timeout in milliseconds.
+     */
+    failoverTimeout: number;
+    /**
+     * Graphite server URL (host and port). If set, monitoring with Graphite will be enabled.
+     */
+    graphite: string;
+    /**
+     * The lazy eviction enablement (yes or no).
+     */
+    lazyfreeLazyEviction: string;
+    /**
+     * The lazy expire enablement (yes or no).
+     */
+    lazyfreeLazyExpire: string;
+    /**
+     * The Lua time limit.
+     */
+    luaTimeLimit: number;
+    /**
+     * The maximum disk threshold in MB. If the disk usage exceeds this threshold, the instance will be stopped.
+     */
+    maxDiskThreshold: number;
+    /**
+     * The maximum number of clients.
+     */
+    maxclients: number;
+    /**
+     * The policy to handle the maximum memory (volatile-lru, noeviction, etc).
+     */
+    maxmemoryPolicy: string;
+    /**
+     * The maximum memory samples.
+     */
+    maxmemorySamples: number;
+    /**
+     * The frequency in seconds at which metrics are emitted.
+     */
+    metricsFrequency: number;
+    /**
+     * The prefix for the metrics. Could be useful when using Graphite monitoring to prefix the metrics with a certain value, like an API key.
+     */
+    metricsPrefix: string;
+    /**
+     * The minimum replicas maximum lag.
+     */
+    minReplicasMaxLag: number;
+    /**
+     * The amount of connected replicas that are required for the primary to accept write operations. It can be set to 0 to disable it.
+     */
+    minReplicasToWrite: number;
+    /**
+     * The ID of the STACKIT monitoring instance.
+     */
+    monitoringInstanceId: string;
+    /**
+     * The notify keyspace events.
+     */
+    notifyKeyspaceEvents: string;
+    /**
+     * The replication backlog size for the cluster.
+     */
+    replBacklogSize: string;
+    /**
+     * Comma separated list of IP networks in CIDR notation which are allowed to access this instance.
+     */
+    sgwAcl: string;
+    /**
+     * The snapshot configuration.
+     */
+    snapshot: string;
+    /**
+     * List of syslog servers to send logs to.
+     */
+    syslogs: string[];
+}
+
 export interface VolumeEncryptionParameters {
     /**
      * UUID of the key within the STACKIT-KMS to use for the encryption.
@@ -5825,7 +6018,7 @@ export interface VpnConnectionTunnel1Phase1 {
      */
     encryptionAlgorithms: string[];
     /**
-     * Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`.
+     * Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`, `sha2512`.
      */
     integrityAlgorithms: string[];
     /**
@@ -5848,7 +6041,7 @@ export interface VpnConnectionTunnel1Phase2 {
      */
     encryptionAlgorithms: string[];
     /**
-     * Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`.
+     * Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`, `sha2512`.
      */
     integrityAlgorithms: string[];
     /**
@@ -5913,7 +6106,7 @@ export interface VpnConnectionTunnel2Phase1 {
      */
     encryptionAlgorithms: string[];
     /**
-     * Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`.
+     * Integrity algorithms for Phase 1. Possible values are: `sha1`, `sha2256`, `sha2384`, `sha2512`.
      */
     integrityAlgorithms: string[];
     /**
@@ -5936,7 +6129,7 @@ export interface VpnConnectionTunnel2Phase2 {
      */
     encryptionAlgorithms: string[];
     /**
-     * Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`.
+     * Integrity algorithms for Phase 2. Possible values are: `sha1`, `sha2256`, `sha2384`, `sha2512`.
      */
     integrityAlgorithms: string[];
     /**

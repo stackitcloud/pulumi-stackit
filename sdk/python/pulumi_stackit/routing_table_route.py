@@ -309,10 +309,10 @@ class RoutingTableRoute(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 destination: pulumi.Input[Optional[Union['RoutingTableRouteDestinationArgs', 'RoutingTableRouteDestinationArgsDict']]] = None,
+                 destination: pulumi.Input[Optional[Union['RoutingTableRouteDestinationArgs', 'RoutingTableRouteDestinationArgsDict', 'outputs.RoutingTableRouteDestination']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  network_area_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 next_hop: pulumi.Input[Optional[Union['RoutingTableRouteNextHopArgs', 'RoutingTableRouteNextHopArgsDict']]] = None,
+                 next_hop: pulumi.Input[Optional[Union['RoutingTableRouteNextHopArgs', 'RoutingTableRouteNextHopArgsDict', 'outputs.RoutingTableRouteNextHop']]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  routing_table_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -333,10 +333,10 @@ class RoutingTableRoute(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['RoutingTableRouteDestinationArgs', 'RoutingTableRouteDestinationArgsDict']] destination: Destination of the route.
+        :param pulumi.Input[Union['RoutingTableRouteDestinationArgs', 'RoutingTableRouteDestinationArgsDict', 'outputs.RoutingTableRouteDestination']] destination: Destination of the route.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
         :param pulumi.Input[_builtins.str] network_area_id: The network area ID to which the routing table is associated.
-        :param pulumi.Input[Union['RoutingTableRouteNextHopArgs', 'RoutingTableRouteNextHopArgsDict']] next_hop: Next hop destination.
+        :param pulumi.Input[Union['RoutingTableRouteNextHopArgs', 'RoutingTableRouteNextHopArgsDict', 'outputs.RoutingTableRouteNextHop']] next_hop: Next hop destination.
         :param pulumi.Input[_builtins.str] organization_id: STACKIT organization ID to which the routing table is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.str] routing_table_id: The routing tables ID.
@@ -376,10 +376,10 @@ class RoutingTableRoute(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 destination: pulumi.Input[Optional[Union['RoutingTableRouteDestinationArgs', 'RoutingTableRouteDestinationArgsDict']]] = None,
+                 destination: pulumi.Input[Optional[Union['RoutingTableRouteDestinationArgs', 'RoutingTableRouteDestinationArgsDict', 'outputs.RoutingTableRouteDestination']]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  network_area_id: pulumi.Input[Optional[_builtins.str]] = None,
-                 next_hop: pulumi.Input[Optional[Union['RoutingTableRouteNextHopArgs', 'RoutingTableRouteNextHopArgsDict']]] = None,
+                 next_hop: pulumi.Input[Optional[Union['RoutingTableRouteNextHopArgs', 'RoutingTableRouteNextHopArgsDict', 'outputs.RoutingTableRouteNextHop']]] = None,
                  organization_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  routing_table_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -423,10 +423,10 @@ class RoutingTableRoute(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             created_at: pulumi.Input[Optional[_builtins.str]] = None,
-            destination: pulumi.Input[Optional[Union['RoutingTableRouteDestinationArgs', 'RoutingTableRouteDestinationArgsDict']]] = None,
+            destination: pulumi.Input[Optional[Union['RoutingTableRouteDestinationArgs', 'RoutingTableRouteDestinationArgsDict', 'outputs.RoutingTableRouteDestination']]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
             network_area_id: pulumi.Input[Optional[_builtins.str]] = None,
-            next_hop: pulumi.Input[Optional[Union['RoutingTableRouteNextHopArgs', 'RoutingTableRouteNextHopArgsDict']]] = None,
+            next_hop: pulumi.Input[Optional[Union['RoutingTableRouteNextHopArgs', 'RoutingTableRouteNextHopArgsDict', 'outputs.RoutingTableRouteNextHop']]] = None,
             organization_id: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
             route_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -440,10 +440,10 @@ class RoutingTableRoute(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] created_at: Date-time when the route was created.
-        :param pulumi.Input[Union['RoutingTableRouteDestinationArgs', 'RoutingTableRouteDestinationArgsDict']] destination: Destination of the route.
+        :param pulumi.Input[Union['RoutingTableRouteDestinationArgs', 'RoutingTableRouteDestinationArgsDict', 'outputs.RoutingTableRouteDestination']] destination: Destination of the route.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels are key-value string pairs which can be attached to a resource container
         :param pulumi.Input[_builtins.str] network_area_id: The network area ID to which the routing table is associated.
-        :param pulumi.Input[Union['RoutingTableRouteNextHopArgs', 'RoutingTableRouteNextHopArgsDict']] next_hop: Next hop destination.
+        :param pulumi.Input[Union['RoutingTableRouteNextHopArgs', 'RoutingTableRouteNextHopArgsDict', 'outputs.RoutingTableRouteNextHop']] next_hop: Next hop destination.
         :param pulumi.Input[_builtins.str] organization_id: STACKIT organization ID to which the routing table is associated.
         :param pulumi.Input[_builtins.str] region: The resource region. If not defined, the provider region is used.
         :param pulumi.Input[_builtins.str] route_id: The ID of the route.

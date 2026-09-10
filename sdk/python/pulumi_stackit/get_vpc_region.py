@@ -98,7 +98,7 @@ class AwaitableGetVpcRegionResult(GetVpcRegionResult):
 
 def get_vpc_region(project_id: Optional[_builtins.str] = None,
                    region: Optional[_builtins.str] = None,
-                   timeouts: Optional[Union['GetVpcRegionTimeoutsArgs', 'GetVpcRegionTimeoutsArgsDict']] = None,
+                   timeouts: Optional[Union['GetVpcRegionTimeoutsArgs', 'GetVpcRegionTimeoutsArgsDict', 'outputs.GetVpcRegionTimeoutsResult']] = None,
                    vpc_id: Optional[_builtins.str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpcRegionResult:
     """
@@ -129,7 +129,7 @@ def get_vpc_region(project_id: Optional[_builtins.str] = None,
         vpc_id=pulumi.get(__ret__, 'vpc_id'))
 def get_vpc_region_output(project_id: pulumi.Input[Optional[_builtins.str]] = None,
                           region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
-                          timeouts: pulumi.Input[Optional[Optional[Union['GetVpcRegionTimeoutsArgs', 'GetVpcRegionTimeoutsArgsDict']]]] = None,
+                          timeouts: pulumi.Input[Optional[Optional[Union['GetVpcRegionTimeoutsArgs', 'GetVpcRegionTimeoutsArgsDict', 'outputs.GetVpcRegionTimeoutsResult']]]] = None,
                           vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcRegionResult]:
     """

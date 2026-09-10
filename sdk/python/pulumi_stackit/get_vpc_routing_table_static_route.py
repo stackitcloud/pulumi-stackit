@@ -160,7 +160,7 @@ def get_vpc_routing_table_static_route(project_id: Optional[_builtins.str] = Non
                                        region: Optional[_builtins.str] = None,
                                        route_id: Optional[_builtins.str] = None,
                                        routing_table_id: Optional[_builtins.str] = None,
-                                       timeouts: Optional[Union['GetVpcRoutingTableStaticRouteTimeoutsArgs', 'GetVpcRoutingTableStaticRouteTimeoutsArgsDict']] = None,
+                                       timeouts: Optional[Union['GetVpcRoutingTableStaticRouteTimeoutsArgs', 'GetVpcRoutingTableStaticRouteTimeoutsArgsDict', 'outputs.GetVpcRoutingTableStaticRouteTimeoutsResult']] = None,
                                        vpc_id: Optional[_builtins.str] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpcRoutingTableStaticRouteResult:
     """
@@ -200,7 +200,7 @@ def get_vpc_routing_table_static_route_output(project_id: pulumi.Input[Optional[
                                               region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                               route_id: pulumi.Input[Optional[_builtins.str]] = None,
                                               routing_table_id: pulumi.Input[Optional[_builtins.str]] = None,
-                                              timeouts: pulumi.Input[Optional[Optional[Union['GetVpcRoutingTableStaticRouteTimeoutsArgs', 'GetVpcRoutingTableStaticRouteTimeoutsArgsDict']]]] = None,
+                                              timeouts: pulumi.Input[Optional[Optional[Union['GetVpcRoutingTableStaticRouteTimeoutsArgs', 'GetVpcRoutingTableStaticRouteTimeoutsArgsDict', 'outputs.GetVpcRoutingTableStaticRouteTimeoutsResult']]]] = None,
                                               vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcRoutingTableStaticRouteResult]:
     """

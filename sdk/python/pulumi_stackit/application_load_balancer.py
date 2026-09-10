@@ -468,14 +468,14 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
                  disable_target_security_group_assignment: pulumi.Input[Optional[_builtins.bool]] = None,
                  external_address: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 listeners: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationLoadBalancerListenerArgs', 'ApplicationLoadBalancerListenerArgsDict']]]]] = None,
+                 listeners: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationLoadBalancerListenerArgs', 'ApplicationLoadBalancerListenerArgsDict', 'outputs.ApplicationLoadBalancerListener']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationLoadBalancerNetworkArgs', 'ApplicationLoadBalancerNetworkArgsDict']]]]] = None,
-                 options: pulumi.Input[Optional[Union['ApplicationLoadBalancerOptionsArgs', 'ApplicationLoadBalancerOptionsArgsDict']]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationLoadBalancerNetworkArgs', 'ApplicationLoadBalancerNetworkArgsDict', 'outputs.ApplicationLoadBalancerNetwork']]]]] = None,
+                 options: pulumi.Input[Optional[Union['ApplicationLoadBalancerOptionsArgs', 'ApplicationLoadBalancerOptionsArgsDict', 'outputs.ApplicationLoadBalancerOptions']]] = None,
                  plan_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 target_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationLoadBalancerTargetPoolArgs', 'ApplicationLoadBalancerTargetPoolArgsDict']]]]] = None,
+                 target_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationLoadBalancerTargetPoolArgs', 'ApplicationLoadBalancerTargetPoolArgsDict', 'outputs.ApplicationLoadBalancerTargetPool']]]]] = None,
                  __props__=None):
         """
         ## Setting up supporting infrastructure
@@ -490,14 +490,14 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] disable_target_security_group_assignment: Disable target security group assignemt to allow targets outside of the given network. Connectivity to targets need to be ensured by the customer, including routing and Security Groups (targetSecurityGroup can be assigned). Not changeable after creation.
         :param pulumi.Input[_builtins.str] external_address: The external IP address where this Application Load Balancer is exposed. Not changeable after creation.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels represent user-defined metadata as key-value pairs. Label count cannot exceed 64 per ALB.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationLoadBalancerListenerArgs', 'ApplicationLoadBalancerListenerArgsDict']]]] listeners: List of all listeners which will accept traffic. Limited to 20.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationLoadBalancerListenerArgs', 'ApplicationLoadBalancerListenerArgsDict', 'outputs.ApplicationLoadBalancerListener']]]] listeners: List of all listeners which will accept traffic. Limited to 20.
         :param pulumi.Input[_builtins.str] name: Application Load balancer name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationLoadBalancerNetworkArgs', 'ApplicationLoadBalancerNetworkArgsDict']]]] networks: List of networks that listeners and targets reside in.
-        :param pulumi.Input[Union['ApplicationLoadBalancerOptionsArgs', 'ApplicationLoadBalancerOptionsArgsDict']] options: Defines any optional functionality you want to have enabled on your Application Load Balancer.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationLoadBalancerNetworkArgs', 'ApplicationLoadBalancerNetworkArgsDict', 'outputs.ApplicationLoadBalancerNetwork']]]] networks: List of networks that listeners and targets reside in.
+        :param pulumi.Input[Union['ApplicationLoadBalancerOptionsArgs', 'ApplicationLoadBalancerOptionsArgsDict', 'outputs.ApplicationLoadBalancerOptions']] options: Defines any optional functionality you want to have enabled on your Application Load Balancer.
         :param pulumi.Input[_builtins.str] plan_id: Service Plan configures the size of the Application Load Balancer e.g. 'p10'. See available plans via STACKIT CLI 'stackit beta alb plans' or API https://docs.api.stackit.cloud/documentation/alb/version/v2#tag/Project/operation/APIService_ListPlans
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the Application Load Balancer is associated.
         :param pulumi.Input[_builtins.str] region: The resource region (e.g. eu01). If not defined, the provider region is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationLoadBalancerTargetPoolArgs', 'ApplicationLoadBalancerTargetPoolArgsDict']]]] target_pools: List of all target pools which will be used in the Application Load Balancer. Limited to 20.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationLoadBalancerTargetPoolArgs', 'ApplicationLoadBalancerTargetPoolArgsDict', 'outputs.ApplicationLoadBalancerTargetPool']]]] target_pools: List of all target pools which will be used in the Application Load Balancer. Limited to 20.
         """
         ...
     @overload
@@ -531,14 +531,14 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
                  disable_target_security_group_assignment: pulumi.Input[Optional[_builtins.bool]] = None,
                  external_address: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 listeners: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationLoadBalancerListenerArgs', 'ApplicationLoadBalancerListenerArgsDict']]]]] = None,
+                 listeners: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationLoadBalancerListenerArgs', 'ApplicationLoadBalancerListenerArgsDict', 'outputs.ApplicationLoadBalancerListener']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
-                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationLoadBalancerNetworkArgs', 'ApplicationLoadBalancerNetworkArgsDict']]]]] = None,
-                 options: pulumi.Input[Optional[Union['ApplicationLoadBalancerOptionsArgs', 'ApplicationLoadBalancerOptionsArgsDict']]] = None,
+                 networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationLoadBalancerNetworkArgs', 'ApplicationLoadBalancerNetworkArgsDict', 'outputs.ApplicationLoadBalancerNetwork']]]]] = None,
+                 options: pulumi.Input[Optional[Union['ApplicationLoadBalancerOptionsArgs', 'ApplicationLoadBalancerOptionsArgsDict', 'outputs.ApplicationLoadBalancerOptions']]] = None,
                  plan_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 target_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationLoadBalancerTargetPoolArgs', 'ApplicationLoadBalancerTargetPoolArgsDict']]]]] = None,
+                 target_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationLoadBalancerTargetPoolArgs', 'ApplicationLoadBalancerTargetPoolArgsDict', 'outputs.ApplicationLoadBalancerTargetPool']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -585,20 +585,20 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             disable_target_security_group_assignment: pulumi.Input[Optional[_builtins.bool]] = None,
-            errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationLoadBalancerErrorArgs', 'ApplicationLoadBalancerErrorArgsDict']]]]] = None,
+            errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationLoadBalancerErrorArgs', 'ApplicationLoadBalancerErrorArgsDict', 'outputs.ApplicationLoadBalancerError']]]]] = None,
             external_address: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            listeners: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationLoadBalancerListenerArgs', 'ApplicationLoadBalancerListenerArgsDict']]]]] = None,
-            load_balancer_security_group: pulumi.Input[Optional[Union['ApplicationLoadBalancerLoadBalancerSecurityGroupArgs', 'ApplicationLoadBalancerLoadBalancerSecurityGroupArgsDict']]] = None,
+            listeners: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationLoadBalancerListenerArgs', 'ApplicationLoadBalancerListenerArgsDict', 'outputs.ApplicationLoadBalancerListener']]]]] = None,
+            load_balancer_security_group: pulumi.Input[Optional[Union['ApplicationLoadBalancerLoadBalancerSecurityGroupArgs', 'ApplicationLoadBalancerLoadBalancerSecurityGroupArgsDict', 'outputs.ApplicationLoadBalancerLoadBalancerSecurityGroup']]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
-            networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationLoadBalancerNetworkArgs', 'ApplicationLoadBalancerNetworkArgsDict']]]]] = None,
-            options: pulumi.Input[Optional[Union['ApplicationLoadBalancerOptionsArgs', 'ApplicationLoadBalancerOptionsArgsDict']]] = None,
+            networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationLoadBalancerNetworkArgs', 'ApplicationLoadBalancerNetworkArgsDict', 'outputs.ApplicationLoadBalancerNetwork']]]]] = None,
+            options: pulumi.Input[Optional[Union['ApplicationLoadBalancerOptionsArgs', 'ApplicationLoadBalancerOptionsArgsDict', 'outputs.ApplicationLoadBalancerOptions']]] = None,
             plan_id: pulumi.Input[Optional[_builtins.str]] = None,
             private_address: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
-            target_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationLoadBalancerTargetPoolArgs', 'ApplicationLoadBalancerTargetPoolArgsDict']]]]] = None,
-            target_security_group: pulumi.Input[Optional[Union['ApplicationLoadBalancerTargetSecurityGroupArgs', 'ApplicationLoadBalancerTargetSecurityGroupArgsDict']]] = None,
+            target_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationLoadBalancerTargetPoolArgs', 'ApplicationLoadBalancerTargetPoolArgsDict', 'outputs.ApplicationLoadBalancerTargetPool']]]]] = None,
+            target_security_group: pulumi.Input[Optional[Union['ApplicationLoadBalancerTargetSecurityGroupArgs', 'ApplicationLoadBalancerTargetSecurityGroupArgsDict', 'outputs.ApplicationLoadBalancerTargetSecurityGroup']]] = None,
             version: pulumi.Input[Optional[_builtins.str]] = None) -> 'ApplicationLoadBalancer':
         """
         Get an existing ApplicationLoadBalancer resource's state with the given name, id, and optional extra
@@ -608,19 +608,19 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] disable_target_security_group_assignment: Disable target security group assignemt to allow targets outside of the given network. Connectivity to targets need to be ensured by the customer, including routing and Security Groups (targetSecurityGroup can be assigned). Not changeable after creation.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationLoadBalancerErrorArgs', 'ApplicationLoadBalancerErrorArgsDict']]]] errors: Reports all errors a Application Load Balancer has.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationLoadBalancerErrorArgs', 'ApplicationLoadBalancerErrorArgsDict', 'outputs.ApplicationLoadBalancerError']]]] errors: Reports all errors a Application Load Balancer has.
         :param pulumi.Input[_builtins.str] external_address: The external IP address where this Application Load Balancer is exposed. Not changeable after creation.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels represent user-defined metadata as key-value pairs. Label count cannot exceed 64 per ALB.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationLoadBalancerListenerArgs', 'ApplicationLoadBalancerListenerArgsDict']]]] listeners: List of all listeners which will accept traffic. Limited to 20.
-        :param pulumi.Input[Union['ApplicationLoadBalancerLoadBalancerSecurityGroupArgs', 'ApplicationLoadBalancerLoadBalancerSecurityGroupArgsDict']] load_balancer_security_group: Security Group permitting network traffic from the LoadBalancer to the targets. Useful when disableTargetSecurityGroupAssignment=true to manually assign target security groups to targets.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationLoadBalancerListenerArgs', 'ApplicationLoadBalancerListenerArgsDict', 'outputs.ApplicationLoadBalancerListener']]]] listeners: List of all listeners which will accept traffic. Limited to 20.
+        :param pulumi.Input[Union['ApplicationLoadBalancerLoadBalancerSecurityGroupArgs', 'ApplicationLoadBalancerLoadBalancerSecurityGroupArgsDict', 'outputs.ApplicationLoadBalancerLoadBalancerSecurityGroup']] load_balancer_security_group: Security Group permitting network traffic from the LoadBalancer to the targets. Useful when disableTargetSecurityGroupAssignment=true to manually assign target security groups to targets.
         :param pulumi.Input[_builtins.str] name: Application Load balancer name.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationLoadBalancerNetworkArgs', 'ApplicationLoadBalancerNetworkArgsDict']]]] networks: List of networks that listeners and targets reside in.
-        :param pulumi.Input[Union['ApplicationLoadBalancerOptionsArgs', 'ApplicationLoadBalancerOptionsArgsDict']] options: Defines any optional functionality you want to have enabled on your Application Load Balancer.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationLoadBalancerNetworkArgs', 'ApplicationLoadBalancerNetworkArgsDict', 'outputs.ApplicationLoadBalancerNetwork']]]] networks: List of networks that listeners and targets reside in.
+        :param pulumi.Input[Union['ApplicationLoadBalancerOptionsArgs', 'ApplicationLoadBalancerOptionsArgsDict', 'outputs.ApplicationLoadBalancerOptions']] options: Defines any optional functionality you want to have enabled on your Application Load Balancer.
         :param pulumi.Input[_builtins.str] plan_id: Service Plan configures the size of the Application Load Balancer e.g. 'p10'. See available plans via STACKIT CLI 'stackit beta alb plans' or API https://docs.api.stackit.cloud/documentation/alb/version/v2#tag/Project/operation/APIService_ListPlans
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID to which the Application Load Balancer is associated.
         :param pulumi.Input[_builtins.str] region: The resource region (e.g. eu01). If not defined, the provider region is used.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationLoadBalancerTargetPoolArgs', 'ApplicationLoadBalancerTargetPoolArgsDict']]]] target_pools: List of all target pools which will be used in the Application Load Balancer. Limited to 20.
-        :param pulumi.Input[Union['ApplicationLoadBalancerTargetSecurityGroupArgs', 'ApplicationLoadBalancerTargetSecurityGroupArgsDict']] target_security_group: Security Group that allows the targets to receive traffic from the LoadBalancer. Useful when disableTargetSecurityGroupAssignment=true to manually assign target security groups to targets.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ApplicationLoadBalancerTargetPoolArgs', 'ApplicationLoadBalancerTargetPoolArgsDict', 'outputs.ApplicationLoadBalancerTargetPool']]]] target_pools: List of all target pools which will be used in the Application Load Balancer. Limited to 20.
+        :param pulumi.Input[Union['ApplicationLoadBalancerTargetSecurityGroupArgs', 'ApplicationLoadBalancerTargetSecurityGroupArgsDict', 'outputs.ApplicationLoadBalancerTargetSecurityGroup']] target_security_group: Security Group that allows the targets to receive traffic from the LoadBalancer. Useful when disableTargetSecurityGroupAssignment=true to manually assign target security groups to targets.
         :param pulumi.Input[_builtins.str] version: Application Load Balancer resource version. Used for concurrency safe updates.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))

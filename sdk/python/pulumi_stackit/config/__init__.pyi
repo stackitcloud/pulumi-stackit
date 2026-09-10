@@ -34,6 +34,11 @@ authorizationCustomEndpoint: Optional[str]
 Custom endpoint for the Membership service
 """
 
+automationCustomEndpoint: Optional[str]
+"""
+Custom endpoint for the Automation service
+"""
+
 cdnCustomEndpoint: Optional[str]
 """
 Custom endpoint for the CDN service
@@ -239,6 +244,11 @@ serviceAccountToken: Optional[str]
 Token used for authentication. If set, the token flow will be used to authenticate all operations.
 """
 
+serviceConnectionId: Optional[str]
+"""
+The ID of the Azure DevOps pipeline service connection. For use when authenticating as a Service Account using OpenID Connect.
+"""
+
 serviceEnablementCustomEndpoint: Optional[str]
 """
 Custom endpoint for the Service Enablement API
@@ -277,6 +287,11 @@ Custom endpoint for the token API, which is used to request access tokens when u
 useOidc: Optional[bool]
 """
 Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to `false`.
+"""
+
+valkeyCustomEndpoint: Optional[str]
+"""
+Custom endpoint for the Key Value Store service
 """
 
 vpnCustomEndpoint: Optional[str]

@@ -42,6 +42,10 @@ export class Provider extends pulumi.ProviderResource {
      */
     declare public readonly authorizationCustomEndpoint: pulumi.Output<string | undefined>;
     /**
+     * Custom endpoint for the Automation service
+     */
+    declare public readonly automationCustomEndpoint: pulumi.Output<string | undefined>;
+    /**
      * Custom endpoint for the CDN service
      */
     declare public readonly cdnCustomEndpoint: pulumi.Output<string | undefined>;
@@ -200,6 +204,10 @@ export class Provider extends pulumi.ProviderResource {
      */
     declare public readonly serviceAccountToken: pulumi.Output<string | undefined>;
     /**
+     * The ID of the Azure DevOps pipeline service connection. For use when authenticating as a Service Account using OpenID Connect.
+     */
+    declare public readonly serviceConnectionId: pulumi.Output<string | undefined>;
+    /**
      * Custom endpoint for the Service Enablement API
      */
     declare public readonly serviceEnablementCustomEndpoint: pulumi.Output<string | undefined>;
@@ -228,6 +236,10 @@ export class Provider extends pulumi.ProviderResource {
      */
     declare public readonly tokenCustomEndpoint: pulumi.Output<string | undefined>;
     /**
+     * Custom endpoint for the Key Value Store service
+     */
+    declare public readonly valkeyCustomEndpoint: pulumi.Output<string | undefined>;
+    /**
      * Custom endpoint for the VPN service
      */
     declare public readonly vpnCustomEndpoint: pulumi.Output<string | undefined>;
@@ -247,6 +259,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["albCustomEndpoint"] = args?.albCustomEndpoint;
             resourceInputs["albWafCustomEndpoint"] = args?.albWafCustomEndpoint;
             resourceInputs["authorizationCustomEndpoint"] = args?.authorizationCustomEndpoint;
+            resourceInputs["automationCustomEndpoint"] = args?.automationCustomEndpoint;
             resourceInputs["cdnCustomEndpoint"] = args?.cdnCustomEndpoint;
             resourceInputs["credentialsPath"] = args?.credentialsPath;
             resourceInputs["defaultRegion"] = args?.defaultRegion;
@@ -288,6 +301,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["serviceAccountKey"] = args?.serviceAccountKey;
             resourceInputs["serviceAccountKeyPath"] = args?.serviceAccountKeyPath;
             resourceInputs["serviceAccountToken"] = args?.serviceAccountToken;
+            resourceInputs["serviceConnectionId"] = args?.serviceConnectionId;
             resourceInputs["serviceEnablementCustomEndpoint"] = args?.serviceEnablementCustomEndpoint;
             resourceInputs["sfsCustomEndpoint"] = args?.sfsCustomEndpoint;
             resourceInputs["skeCustomEndpoint"] = args?.skeCustomEndpoint;
@@ -296,6 +310,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["telemetryrouterCustomEndpoint"] = args?.telemetryrouterCustomEndpoint;
             resourceInputs["tokenCustomEndpoint"] = args?.tokenCustomEndpoint;
             resourceInputs["useOidc"] = pulumi.output(args?.useOidc).apply(JSON.stringify);
+            resourceInputs["valkeyCustomEndpoint"] = args?.valkeyCustomEndpoint;
             resourceInputs["vpnCustomEndpoint"] = args?.vpnCustomEndpoint;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -332,6 +347,10 @@ export interface ProviderArgs {
      * Custom endpoint for the Membership service
      */
     authorizationCustomEndpoint?: pulumi.Input<string | undefined>;
+    /**
+     * Custom endpoint for the Automation service
+     */
+    automationCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Custom endpoint for the CDN service
      */
@@ -499,6 +518,10 @@ export interface ProviderArgs {
      */
     serviceAccountToken?: pulumi.Input<string | undefined>;
     /**
+     * The ID of the Azure DevOps pipeline service connection. For use when authenticating as a Service Account using OpenID Connect.
+     */
+    serviceConnectionId?: pulumi.Input<string | undefined>;
+    /**
      * Custom endpoint for the Service Enablement API
      */
     serviceEnablementCustomEndpoint?: pulumi.Input<string | undefined>;
@@ -530,6 +553,10 @@ export interface ProviderArgs {
      * Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to `false`.
      */
     useOidc?: pulumi.Input<boolean | undefined>;
+    /**
+     * Custom endpoint for the Key Value Store service
+     */
+    valkeyCustomEndpoint?: pulumi.Input<string | undefined>;
     /**
      * Custom endpoint for the VPN service
      */

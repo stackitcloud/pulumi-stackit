@@ -373,7 +373,7 @@ class DremioUser(pulumi.CustomResource):
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['DremioUserTimeoutsArgs', 'DremioUserTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['DremioUserTimeoutsArgs', 'DremioUserTimeoutsArgsDict', 'outputs.DremioUserTimeouts']]] = None,
                  __props__=None):
         """
         Manages a STACKIT Dremio instances user.
@@ -441,7 +441,7 @@ class DremioUser(pulumi.CustomResource):
                  password: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
-                 timeouts: pulumi.Input[Optional[Union['DremioUserTimeoutsArgs', 'DremioUserTimeoutsArgsDict']]] = None,
+                 timeouts: pulumi.Input[Optional[Union['DremioUserTimeoutsArgs', 'DremioUserTimeoutsArgsDict', 'outputs.DremioUserTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -495,7 +495,7 @@ class DremioUser(pulumi.CustomResource):
             password: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
-            timeouts: pulumi.Input[Optional[Union['DremioUserTimeoutsArgs', 'DremioUserTimeoutsArgsDict']]] = None,
+            timeouts: pulumi.Input[Optional[Union['DremioUserTimeoutsArgs', 'DremioUserTimeoutsArgsDict', 'outputs.DremioUserTimeouts']]] = None,
             user_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'DremioUser':
         """
         Get an existing DremioUser resource's state with the given name, id, and optional extra

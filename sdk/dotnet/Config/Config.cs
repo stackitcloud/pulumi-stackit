@@ -72,6 +72,16 @@ namespace Pulumi.Stackit
             set => _authorizationCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _automationCustomEndpoint = new __Value<string?>(() => __config.Get("automationCustomEndpoint"));
+        /// <summary>
+        /// Custom endpoint for the Automation service
+        /// </summary>
+        public static string? AutomationCustomEndpoint
+        {
+            get => _automationCustomEndpoint.Get();
+            set => _automationCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _cdnCustomEndpoint = new __Value<string?>(() => __config.Get("cdnCustomEndpoint"));
         /// <summary>
         /// Custom endpoint for the CDN service
@@ -482,6 +492,16 @@ namespace Pulumi.Stackit
             set => _serviceAccountToken.Set(value);
         }
 
+        private static readonly __Value<string?> _serviceConnectionId = new __Value<string?>(() => __config.Get("serviceConnectionId"));
+        /// <summary>
+        /// The ID of the Azure DevOps pipeline service connection. For use when authenticating as a Service Account using OpenID Connect.
+        /// </summary>
+        public static string? ServiceConnectionId
+        {
+            get => _serviceConnectionId.Get();
+            set => _serviceConnectionId.Set(value);
+        }
+
         private static readonly __Value<string?> _serviceEnablementCustomEndpoint = new __Value<string?>(() => __config.Get("serviceEnablementCustomEndpoint"));
         /// <summary>
         /// Custom endpoint for the Service Enablement API
@@ -560,6 +580,16 @@ namespace Pulumi.Stackit
         {
             get => _useOidc.Get();
             set => _useOidc.Set(value);
+        }
+
+        private static readonly __Value<string?> _valkeyCustomEndpoint = new __Value<string?>(() => __config.Get("valkeyCustomEndpoint"));
+        /// <summary>
+        /// Custom endpoint for the Key Value Store service
+        /// </summary>
+        public static string? ValkeyCustomEndpoint
+        {
+            get => _valkeyCustomEndpoint.Get();
+            set => _valkeyCustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _vpnCustomEndpoint = new __Value<string?>(() => __config.Get("vpnCustomEndpoint"));

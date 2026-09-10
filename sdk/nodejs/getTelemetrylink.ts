@@ -53,6 +53,10 @@ export interface GetTelemetrylinkResult {
      */
     readonly displayName: string;
     /**
+     * Whether the Telemetry Link is enabled or not.
+     */
+    readonly enabled: boolean;
+    /**
      * Terraform's internal resource identifier. It is structured as "`resourceType`, `resourceId`,`region`".
      */
     readonly id: string;

@@ -32,7 +32,7 @@ namespace Pulumi.Stackit
         public Output<string> ResourceId { get; private set; } = null!;
 
         /// <summary>
-        /// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
+        /// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`
         /// </summary>
         [Output("role")]
         public Output<string> Role { get; private set; } = null!;
@@ -97,7 +97,7 @@ namespace Pulumi.Stackit
         public Input<string> ResourceId { get; set; } = null!;
 
         /// <summary>
-        /// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
+        /// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`
         /// </summary>
         [Input("role", required: true)]
         public Input<string> Role { get; set; } = null!;
@@ -123,7 +123,7 @@ namespace Pulumi.Stackit
         public Input<string>? ResourceId { get; set; }
 
         /// <summary>
-        /// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`
+        /// Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }

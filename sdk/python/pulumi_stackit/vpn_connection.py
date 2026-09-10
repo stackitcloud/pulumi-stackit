@@ -422,8 +422,8 @@ class VpnConnection(pulumi.CustomResource):
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  remote_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  static_routes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tunnel1: pulumi.Input[Optional[Union['VpnConnectionTunnel1Args', 'VpnConnectionTunnel1ArgsDict']]] = None,
-                 tunnel2: pulumi.Input[Optional[Union['VpnConnectionTunnel2Args', 'VpnConnectionTunnel2ArgsDict']]] = None,
+                 tunnel1: pulumi.Input[Optional[Union['VpnConnectionTunnel1Args', 'VpnConnectionTunnel1ArgsDict', 'outputs.VpnConnectionTunnel1']]] = None,
+                 tunnel2: pulumi.Input[Optional[Union['VpnConnectionTunnel2Args', 'VpnConnectionTunnel2ArgsDict', 'outputs.VpnConnectionTunnel2']]] = None,
                  __props__=None):
         """
         VPN Connection resource schema. Uses the `default_region` specified in the provider configuration as a fallback in case no `region` is defined on resource level.
@@ -446,8 +446,8 @@ class VpnConnection(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: STACKIT region.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] remote_subnets: List of remote IPv4 CIDRs accessible via this connection. Optional for route-based and BGP configurations (defaults to 0.0.0.0/0). Mandatory for policy-based.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] static_routes: List of static routes (IPv4 CIDRs) for route-based VPN. Mandatory for ROUTE_BASED gateways.
-        :param pulumi.Input[Union['VpnConnectionTunnel1Args', 'VpnConnectionTunnel1ArgsDict']] tunnel1: Configuration for the IPsec tunnel1
-        :param pulumi.Input[Union['VpnConnectionTunnel2Args', 'VpnConnectionTunnel2ArgsDict']] tunnel2: Configuration for the IPsec tunnel2
+        :param pulumi.Input[Union['VpnConnectionTunnel1Args', 'VpnConnectionTunnel1ArgsDict', 'outputs.VpnConnectionTunnel1']] tunnel1: Configuration for the IPsec tunnel1
+        :param pulumi.Input[Union['VpnConnectionTunnel2Args', 'VpnConnectionTunnel2ArgsDict', 'outputs.VpnConnectionTunnel2']] tunnel2: Configuration for the IPsec tunnel2
                
                > Write-Only argument `pre_shared_key_wo` is available to use in place of `pre_shared_key`. Write-Only arguments are supported in HashiCorp Terraform 1.11.0 and later. [Learn more](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments).
         """
@@ -491,8 +491,8 @@ class VpnConnection(pulumi.CustomResource):
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  remote_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  static_routes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tunnel1: pulumi.Input[Optional[Union['VpnConnectionTunnel1Args', 'VpnConnectionTunnel1ArgsDict']]] = None,
-                 tunnel2: pulumi.Input[Optional[Union['VpnConnectionTunnel2Args', 'VpnConnectionTunnel2ArgsDict']]] = None,
+                 tunnel1: pulumi.Input[Optional[Union['VpnConnectionTunnel1Args', 'VpnConnectionTunnel1ArgsDict', 'outputs.VpnConnectionTunnel1']]] = None,
+                 tunnel2: pulumi.Input[Optional[Union['VpnConnectionTunnel2Args', 'VpnConnectionTunnel2ArgsDict', 'outputs.VpnConnectionTunnel2']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -544,8 +544,8 @@ class VpnConnection(pulumi.CustomResource):
             region: pulumi.Input[Optional[_builtins.str]] = None,
             remote_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             static_routes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            tunnel1: pulumi.Input[Optional[Union['VpnConnectionTunnel1Args', 'VpnConnectionTunnel1ArgsDict']]] = None,
-            tunnel2: pulumi.Input[Optional[Union['VpnConnectionTunnel2Args', 'VpnConnectionTunnel2ArgsDict']]] = None) -> 'VpnConnection':
+            tunnel1: pulumi.Input[Optional[Union['VpnConnectionTunnel1Args', 'VpnConnectionTunnel1ArgsDict', 'outputs.VpnConnectionTunnel1']]] = None,
+            tunnel2: pulumi.Input[Optional[Union['VpnConnectionTunnel2Args', 'VpnConnectionTunnel2ArgsDict', 'outputs.VpnConnectionTunnel2']]] = None) -> 'VpnConnection':
         """
         Get an existing VpnConnection resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -563,8 +563,8 @@ class VpnConnection(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] region: STACKIT region.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] remote_subnets: List of remote IPv4 CIDRs accessible via this connection. Optional for route-based and BGP configurations (defaults to 0.0.0.0/0). Mandatory for policy-based.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] static_routes: List of static routes (IPv4 CIDRs) for route-based VPN. Mandatory for ROUTE_BASED gateways.
-        :param pulumi.Input[Union['VpnConnectionTunnel1Args', 'VpnConnectionTunnel1ArgsDict']] tunnel1: Configuration for the IPsec tunnel1
-        :param pulumi.Input[Union['VpnConnectionTunnel2Args', 'VpnConnectionTunnel2ArgsDict']] tunnel2: Configuration for the IPsec tunnel2
+        :param pulumi.Input[Union['VpnConnectionTunnel1Args', 'VpnConnectionTunnel1ArgsDict', 'outputs.VpnConnectionTunnel1']] tunnel1: Configuration for the IPsec tunnel1
+        :param pulumi.Input[Union['VpnConnectionTunnel2Args', 'VpnConnectionTunnel2ArgsDict', 'outputs.VpnConnectionTunnel2']] tunnel2: Configuration for the IPsec tunnel2
                
                > Write-Only argument `pre_shared_key_wo` is available to use in place of `pre_shared_key`. Write-Only arguments are supported in HashiCorp Terraform 1.11.0 and later. [Learn more](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments).
         """
