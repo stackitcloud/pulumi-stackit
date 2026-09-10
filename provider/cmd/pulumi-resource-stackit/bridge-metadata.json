@@ -972,6 +972,26 @@
                     }
                 }
             },
+            "stackit_valkey_credential": {
+                "current": "stackit:index/valkeyCredential:ValkeyCredential",
+                "fields": {
+                    "hosts": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_valkey_instance": {
+                "current": "stackit:index/valkeyInstance:ValkeyInstance",
+                "fields": {
+                    "parameters": {
+                        "fields": {
+                            "syslog": {
+                                "maxItemsOne": false
+                            }
+                        }
+                    }
+                }
+            },
             "stackit_volume": {
                 "current": "stackit:index/volume:Volume"
             },
@@ -1227,6 +1247,14 @@
                 "current": "stackit:index/getAuthorizationProjectCustomRole:getAuthorizationProjectCustomRole",
                 "fields": {
                     "permissions": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_automation_templates": {
+                "current": "stackit:index/getAutomationTemplates:getAutomationTemplates",
+                "fields": {
+                    "templates": {
                         "maxItemsOne": false
                     }
                 }
@@ -2184,6 +2212,26 @@
                                         }
                                     }
                                 }
+                            }
+                        }
+                    }
+                }
+            },
+            "stackit_valkey_credential": {
+                "current": "stackit:index/getValkeyCredential:getValkeyCredential",
+                "fields": {
+                    "hosts": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_valkey_instance": {
+                "current": "stackit:index/getValkeyInstance:getValkeyInstance",
+                "fields": {
+                    "parameters": {
+                        "fields": {
+                            "syslog": {
+                                "maxItemsOne": false
                             }
                         }
                     }

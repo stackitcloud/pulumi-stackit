@@ -71,6 +71,10 @@
                 "type": "string",
                 "description": "Custom endpoint for the Membership service"
             },
+            "automationCustomEndpoint": {
+                "type": "string",
+                "description": "Custom endpoint for the Automation service"
+            },
             "cdnCustomEndpoint": {
                 "type": "string",
                 "description": "Custom endpoint for the CDN service"
@@ -239,6 +243,10 @@
                 "description": "Token used for authentication. If set, the token flow will be used to authenticate all operations.",
                 "deprecationMessage": "Authentication via Service Account Token is deprecated and will be removed on December 17, 2025. Please use \u003cspan pulumi-lang-nodejs=\"`serviceAccountKey`\" pulumi-lang-dotnet=\"`ServiceAccountKey`\" pulumi-lang-go=\"`serviceAccountKey`\" pulumi-lang-python=\"`service_account_key`\" pulumi-lang-yaml=\"`serviceAccountKey`\" pulumi-lang-java=\"`serviceAccountKey`\"\u003e`serviceAccountKey`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`serviceAccountKeyPath`\" pulumi-lang-dotnet=\"`ServiceAccountKeyPath`\" pulumi-lang-go=\"`serviceAccountKeyPath`\" pulumi-lang-python=\"`service_account_key_path`\" pulumi-lang-yaml=\"`serviceAccountKeyPath`\" pulumi-lang-java=\"`serviceAccountKeyPath`\"\u003e`serviceAccountKeyPath`\u003c/span\u003e instead. For a smooth transition, refer to our migration guide: https://docs.stackit.cloud/platform/access-and-identity/service-accounts/migrate-flows/"
             },
+            "serviceConnectionId": {
+                "type": "string",
+                "description": "The ID of the Azure DevOps pipeline service connection. For use when authenticating as a Service Account using OpenID Connect."
+            },
             "serviceEnablementCustomEndpoint": {
                 "type": "string",
                 "description": "Custom endpoint for the Service Enablement API"
@@ -270,6 +278,10 @@
             "useOidc": {
                 "type": "boolean",
                 "description": "Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e."
+            },
+            "valkeyCustomEndpoint": {
+                "type": "string",
+                "description": "Custom endpoint for the Key Value Store service"
             },
             "vpnCustomEndpoint": {
                 "type": "string",
@@ -475,7 +487,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`.\n"
+                    "description": "The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`, `TYPE_FIP_NOT_FOUND`, `TYPE_IP_EXHAUSTED`, `TYPE_DNS_NOT_CONFIGURED`, `TYPE_VM_PORT_NOT_CONFIGURED`.\n"
                 }
             },
             "type": "object",
@@ -4443,6 +4455,125 @@
                 "values"
             ]
         },
+        "stackit:index/ValkeyInstanceParameters:ValkeyInstanceParameters": {
+            "properties": {
+                "downAfterMilliseconds": {
+                    "type": "integer",
+                    "description": "The number of milliseconds after which the instance is considered down.\n"
+                },
+                "enableMonitoring": {
+                    "type": "boolean",
+                    "description": "Enable monitoring.\n"
+                },
+                "failoverTimeout": {
+                    "type": "integer",
+                    "description": "The failover timeout in milliseconds.\n"
+                },
+                "graphite": {
+                    "type": "string",
+                    "description": "Graphite server URL (host and port). If set, monitoring with Graphite will be enabled.\n"
+                },
+                "lazyfreeLazyEviction": {
+                    "type": "string",
+                    "description": "The lazy eviction enablement (yes or no).\n"
+                },
+                "lazyfreeLazyExpire": {
+                    "type": "string",
+                    "description": "The lazy expire enablement (yes or no).\n"
+                },
+                "luaTimeLimit": {
+                    "type": "integer",
+                    "description": "The Lua time limit.\n"
+                },
+                "maxDiskThreshold": {
+                    "type": "integer",
+                    "description": "The maximum disk threshold in MB. If the disk usage exceeds this threshold, the instance will be stopped.\n"
+                },
+                "maxclients": {
+                    "type": "integer",
+                    "description": "The maximum number of clients.\n"
+                },
+                "maxmemoryPolicy": {
+                    "type": "string",
+                    "description": "The policy to handle the maximum memory (volatile-lru, noeviction, etc).\n"
+                },
+                "maxmemorySamples": {
+                    "type": "integer",
+                    "description": "The maximum memory samples.\n"
+                },
+                "metricsFrequency": {
+                    "type": "integer",
+                    "description": "The frequency in seconds at which metrics are emitted.\n"
+                },
+                "metricsPrefix": {
+                    "type": "string",
+                    "description": "The prefix for the metrics. Could be useful when using Graphite monitoring to prefix the metrics with a certain value, like an API key.\n"
+                },
+                "minReplicasMaxLag": {
+                    "type": "integer",
+                    "description": "The minimum replicas maximum lag.\n"
+                },
+                "minReplicasToWrite": {
+                    "type": "integer",
+                    "description": "The amount of connected replicas that are required for the primary to accept write operations. It can be set to 0 to disable it.\n"
+                },
+                "monitoringInstanceId": {
+                    "type": "string",
+                    "description": "The ID of the STACKIT monitoring instance.\n"
+                },
+                "notifyKeyspaceEvents": {
+                    "type": "string",
+                    "description": "The notify keyspace events.\n"
+                },
+                "replBacklogSize": {
+                    "type": "string",
+                    "description": "The replication backlog size for the cluster.\n"
+                },
+                "sgwAcl": {
+                    "type": "string",
+                    "description": "Comma separated list of IP networks in CIDR notation which are allowed to access this instance.\n"
+                },
+                "snapshot": {
+                    "type": "string",
+                    "description": "The snapshot configuration.\n"
+                },
+                "syslogs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of syslog servers to send logs to.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "downAfterMilliseconds",
+                        "enableMonitoring",
+                        "failoverTimeout",
+                        "graphite",
+                        "lazyfreeLazyEviction",
+                        "lazyfreeLazyExpire",
+                        "luaTimeLimit",
+                        "maxDiskThreshold",
+                        "maxclients",
+                        "maxmemoryPolicy",
+                        "maxmemorySamples",
+                        "metricsFrequency",
+                        "metricsPrefix",
+                        "minReplicasMaxLag",
+                        "minReplicasToWrite",
+                        "monitoringInstanceId",
+                        "notifyKeyspaceEvents",
+                        "replBacklogSize",
+                        "sgwAcl",
+                        "snapshot",
+                        "syslogs"
+                    ]
+                }
+            }
+        },
         "stackit:index/VolumeEncryptionParameters:VolumeEncryptionParameters": {
             "properties": {
                 "kekKeyId": {
@@ -4708,7 +4839,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Integrity algorithms for Phase 1. Possible values are: \u003cspan pulumi-lang-nodejs=\"`sha1`\" pulumi-lang-dotnet=\"`Sha1`\" pulumi-lang-go=\"`sha1`\" pulumi-lang-python=\"`sha1`\" pulumi-lang-yaml=\"`sha1`\" pulumi-lang-java=\"`sha1`\"\u003e`sha1`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sha2256`\" pulumi-lang-dotnet=\"`Sha2256`\" pulumi-lang-go=\"`sha2256`\" pulumi-lang-python=\"`sha2_256`\" pulumi-lang-yaml=\"`sha2256`\" pulumi-lang-java=\"`sha2256`\"\u003e`sha2256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sha2384`\" pulumi-lang-dotnet=\"`Sha2384`\" pulumi-lang-go=\"`sha2384`\" pulumi-lang-python=\"`sha2_384`\" pulumi-lang-yaml=\"`sha2384`\" pulumi-lang-java=\"`sha2384`\"\u003e`sha2384`\u003c/span\u003e.\n"
+                    "description": "Integrity algorithms for Phase 1. Possible values are: \u003cspan pulumi-lang-nodejs=\"`sha1`\" pulumi-lang-dotnet=\"`Sha1`\" pulumi-lang-go=\"`sha1`\" pulumi-lang-python=\"`sha1`\" pulumi-lang-yaml=\"`sha1`\" pulumi-lang-java=\"`sha1`\"\u003e`sha1`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sha2256`\" pulumi-lang-dotnet=\"`Sha2256`\" pulumi-lang-go=\"`sha2256`\" pulumi-lang-python=\"`sha2_256`\" pulumi-lang-yaml=\"`sha2256`\" pulumi-lang-java=\"`sha2256`\"\u003e`sha2256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sha2384`\" pulumi-lang-dotnet=\"`Sha2384`\" pulumi-lang-go=\"`sha2384`\" pulumi-lang-python=\"`sha2_384`\" pulumi-lang-yaml=\"`sha2384`\" pulumi-lang-java=\"`sha2384`\"\u003e`sha2384`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sha2512`\" pulumi-lang-dotnet=\"`Sha2512`\" pulumi-lang-go=\"`sha2512`\" pulumi-lang-python=\"`sha2_512`\" pulumi-lang-yaml=\"`sha2512`\" pulumi-lang-java=\"`sha2512`\"\u003e`sha2512`\u003c/span\u003e.\n"
                 },
                 "rekeyTime": {
                     "type": "integer",
@@ -4755,7 +4886,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Integrity algorithms for Phase 2. Possible values are: \u003cspan pulumi-lang-nodejs=\"`sha1`\" pulumi-lang-dotnet=\"`Sha1`\" pulumi-lang-go=\"`sha1`\" pulumi-lang-python=\"`sha1`\" pulumi-lang-yaml=\"`sha1`\" pulumi-lang-java=\"`sha1`\"\u003e`sha1`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sha2256`\" pulumi-lang-dotnet=\"`Sha2256`\" pulumi-lang-go=\"`sha2256`\" pulumi-lang-python=\"`sha2_256`\" pulumi-lang-yaml=\"`sha2256`\" pulumi-lang-java=\"`sha2256`\"\u003e`sha2256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sha2384`\" pulumi-lang-dotnet=\"`Sha2384`\" pulumi-lang-go=\"`sha2384`\" pulumi-lang-python=\"`sha2_384`\" pulumi-lang-yaml=\"`sha2384`\" pulumi-lang-java=\"`sha2384`\"\u003e`sha2384`\u003c/span\u003e.\n"
+                    "description": "Integrity algorithms for Phase 2. Possible values are: \u003cspan pulumi-lang-nodejs=\"`sha1`\" pulumi-lang-dotnet=\"`Sha1`\" pulumi-lang-go=\"`sha1`\" pulumi-lang-python=\"`sha1`\" pulumi-lang-yaml=\"`sha1`\" pulumi-lang-java=\"`sha1`\"\u003e`sha1`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sha2256`\" pulumi-lang-dotnet=\"`Sha2256`\" pulumi-lang-go=\"`sha2256`\" pulumi-lang-python=\"`sha2_256`\" pulumi-lang-yaml=\"`sha2256`\" pulumi-lang-java=\"`sha2256`\"\u003e`sha2256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sha2384`\" pulumi-lang-dotnet=\"`Sha2384`\" pulumi-lang-go=\"`sha2384`\" pulumi-lang-python=\"`sha2_384`\" pulumi-lang-yaml=\"`sha2384`\" pulumi-lang-java=\"`sha2384`\"\u003e`sha2384`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sha2512`\" pulumi-lang-dotnet=\"`Sha2512`\" pulumi-lang-go=\"`sha2512`\" pulumi-lang-python=\"`sha2_512`\" pulumi-lang-yaml=\"`sha2512`\" pulumi-lang-java=\"`sha2512`\"\u003e`sha2512`\u003c/span\u003e.\n"
                 },
                 "rekeyTime": {
                     "type": "integer",
@@ -4873,7 +5004,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Integrity algorithms for Phase 1. Possible values are: \u003cspan pulumi-lang-nodejs=\"`sha1`\" pulumi-lang-dotnet=\"`Sha1`\" pulumi-lang-go=\"`sha1`\" pulumi-lang-python=\"`sha1`\" pulumi-lang-yaml=\"`sha1`\" pulumi-lang-java=\"`sha1`\"\u003e`sha1`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sha2256`\" pulumi-lang-dotnet=\"`Sha2256`\" pulumi-lang-go=\"`sha2256`\" pulumi-lang-python=\"`sha2_256`\" pulumi-lang-yaml=\"`sha2256`\" pulumi-lang-java=\"`sha2256`\"\u003e`sha2256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sha2384`\" pulumi-lang-dotnet=\"`Sha2384`\" pulumi-lang-go=\"`sha2384`\" pulumi-lang-python=\"`sha2_384`\" pulumi-lang-yaml=\"`sha2384`\" pulumi-lang-java=\"`sha2384`\"\u003e`sha2384`\u003c/span\u003e.\n"
+                    "description": "Integrity algorithms for Phase 1. Possible values are: \u003cspan pulumi-lang-nodejs=\"`sha1`\" pulumi-lang-dotnet=\"`Sha1`\" pulumi-lang-go=\"`sha1`\" pulumi-lang-python=\"`sha1`\" pulumi-lang-yaml=\"`sha1`\" pulumi-lang-java=\"`sha1`\"\u003e`sha1`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sha2256`\" pulumi-lang-dotnet=\"`Sha2256`\" pulumi-lang-go=\"`sha2256`\" pulumi-lang-python=\"`sha2_256`\" pulumi-lang-yaml=\"`sha2256`\" pulumi-lang-java=\"`sha2256`\"\u003e`sha2256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sha2384`\" pulumi-lang-dotnet=\"`Sha2384`\" pulumi-lang-go=\"`sha2384`\" pulumi-lang-python=\"`sha2_384`\" pulumi-lang-yaml=\"`sha2384`\" pulumi-lang-java=\"`sha2384`\"\u003e`sha2384`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sha2512`\" pulumi-lang-dotnet=\"`Sha2512`\" pulumi-lang-go=\"`sha2512`\" pulumi-lang-python=\"`sha2_512`\" pulumi-lang-yaml=\"`sha2512`\" pulumi-lang-java=\"`sha2512`\"\u003e`sha2512`\u003c/span\u003e.\n"
                 },
                 "rekeyTime": {
                     "type": "integer",
@@ -4920,7 +5051,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "Integrity algorithms for Phase 2. Possible values are: \u003cspan pulumi-lang-nodejs=\"`sha1`\" pulumi-lang-dotnet=\"`Sha1`\" pulumi-lang-go=\"`sha1`\" pulumi-lang-python=\"`sha1`\" pulumi-lang-yaml=\"`sha1`\" pulumi-lang-java=\"`sha1`\"\u003e`sha1`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sha2256`\" pulumi-lang-dotnet=\"`Sha2256`\" pulumi-lang-go=\"`sha2256`\" pulumi-lang-python=\"`sha2_256`\" pulumi-lang-yaml=\"`sha2256`\" pulumi-lang-java=\"`sha2256`\"\u003e`sha2256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sha2384`\" pulumi-lang-dotnet=\"`Sha2384`\" pulumi-lang-go=\"`sha2384`\" pulumi-lang-python=\"`sha2_384`\" pulumi-lang-yaml=\"`sha2384`\" pulumi-lang-java=\"`sha2384`\"\u003e`sha2384`\u003c/span\u003e.\n"
+                    "description": "Integrity algorithms for Phase 2. Possible values are: \u003cspan pulumi-lang-nodejs=\"`sha1`\" pulumi-lang-dotnet=\"`Sha1`\" pulumi-lang-go=\"`sha1`\" pulumi-lang-python=\"`sha1`\" pulumi-lang-yaml=\"`sha1`\" pulumi-lang-java=\"`sha1`\"\u003e`sha1`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sha2256`\" pulumi-lang-dotnet=\"`Sha2256`\" pulumi-lang-go=\"`sha2256`\" pulumi-lang-python=\"`sha2_256`\" pulumi-lang-yaml=\"`sha2256`\" pulumi-lang-java=\"`sha2256`\"\u003e`sha2256`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sha2384`\" pulumi-lang-dotnet=\"`Sha2384`\" pulumi-lang-go=\"`sha2384`\" pulumi-lang-python=\"`sha2_384`\" pulumi-lang-yaml=\"`sha2384`\" pulumi-lang-java=\"`sha2384`\"\u003e`sha2384`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`sha2512`\" pulumi-lang-dotnet=\"`Sha2512`\" pulumi-lang-go=\"`sha2512`\" pulumi-lang-python=\"`sha2_512`\" pulumi-lang-yaml=\"`sha2512`\" pulumi-lang-java=\"`sha2512`\"\u003e`sha2512`\u003c/span\u003e.\n"
                 },
                 "rekeyTime": {
                     "type": "integer",
@@ -5196,7 +5327,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "description": "The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`.\n"
+                    "description": "The error type specifies which part of the Application Load Balancer encountered the error. I.e. the API will not check if a provided public IP is actually available in the project. Instead the Application Load Balancer with try to use the provided IP and if not available reports TYPE*FIP*NOT_CONFIGURED error. Possible values are: `TYPE_UNSPECIFIED`, `TYPE_INTERNAL`, `TYPE_QUOTA_SECGROUP_EXCEEDED`, `TYPE_QUOTA_SECGROUPRULE_EXCEEDED`, `TYPE_PORT_NOT_CONFIGURED`, `TYPE_FIP_NOT_CONFIGURED`, `TYPE_TARGET_NOT_ACTIVE`, `TYPE_METRICS_MISCONFIGURED`, `TYPE_LOGS_MISCONFIGURED`, `TYPE_FIP_NOT_FOUND`, `TYPE_IP_EXHAUSTED`, `TYPE_DNS_NOT_CONFIGURED`, `TYPE_VM_PORT_NOT_CONFIGURED`.\n"
                 }
             },
             "type": "object",
@@ -5802,6 +5933,38 @@
             "required": [
                 "id",
                 "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getAutomationTemplatesTemplate:getAutomationTemplatesTemplate": {
+            "properties": {
+                "createTime": {
+                    "type": "string",
+                    "description": "Create timestamp of the template.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the template.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the template.\n"
+                },
+                "templateId": {
+                    "type": "string",
+                    "description": "Template ID.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "createTime",
+                "description",
+                "name",
+                "templateId"
             ],
             "language": {
                 "nodejs": {
@@ -10247,6 +10410,126 @@
                 }
             }
         },
+        "stackit:index/getValkeyInstanceParameters:getValkeyInstanceParameters": {
+            "properties": {
+                "downAfterMilliseconds": {
+                    "type": "integer",
+                    "description": "The number of milliseconds after which the instance is considered down.\n"
+                },
+                "enableMonitoring": {
+                    "type": "boolean",
+                    "description": "Enable monitoring.\n"
+                },
+                "failoverTimeout": {
+                    "type": "integer",
+                    "description": "The failover timeout in milliseconds.\n"
+                },
+                "graphite": {
+                    "type": "string",
+                    "description": "Graphite server URL (host and port). If set, monitoring with Graphite will be enabled.\n"
+                },
+                "lazyfreeLazyEviction": {
+                    "type": "string",
+                    "description": "The lazy eviction enablement (yes or no).\n"
+                },
+                "lazyfreeLazyExpire": {
+                    "type": "string",
+                    "description": "The lazy expire enablement (yes or no).\n"
+                },
+                "luaTimeLimit": {
+                    "type": "integer",
+                    "description": "The Lua time limit.\n"
+                },
+                "maxDiskThreshold": {
+                    "type": "integer",
+                    "description": "The maximum disk threshold in MB. If the disk usage exceeds this threshold, the instance will be stopped.\n"
+                },
+                "maxclients": {
+                    "type": "integer",
+                    "description": "The maximum number of clients.\n"
+                },
+                "maxmemoryPolicy": {
+                    "type": "string",
+                    "description": "The policy to handle the maximum memory (volatile-lru, noeviction, etc).\n"
+                },
+                "maxmemorySamples": {
+                    "type": "integer",
+                    "description": "The maximum memory samples.\n"
+                },
+                "metricsFrequency": {
+                    "type": "integer",
+                    "description": "The frequency in seconds at which metrics are emitted.\n"
+                },
+                "metricsPrefix": {
+                    "type": "string",
+                    "description": "The prefix for the metrics. Could be useful when using Graphite monitoring to prefix the metrics with a certain value, like an API key.\n"
+                },
+                "minReplicasMaxLag": {
+                    "type": "integer",
+                    "description": "The minimum replicas maximum lag.\n"
+                },
+                "minReplicasToWrite": {
+                    "type": "integer",
+                    "description": "The amount of connected replicas that are required for the primary to accept write operations. It can be set to 0 to disable it.\n"
+                },
+                "monitoringInstanceId": {
+                    "type": "string",
+                    "description": "The ID of the STACKIT monitoring instance.\n"
+                },
+                "notifyKeyspaceEvents": {
+                    "type": "string",
+                    "description": "The notify keyspace events.\n"
+                },
+                "replBacklogSize": {
+                    "type": "string",
+                    "description": "The replication backlog size for the cluster.\n"
+                },
+                "sgwAcl": {
+                    "type": "string",
+                    "description": "Comma separated list of IP networks in CIDR notation which are allowed to access this instance.\n"
+                },
+                "snapshot": {
+                    "type": "string",
+                    "description": "The snapshot configuration.\n"
+                },
+                "syslogs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of syslog servers to send logs to.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "downAfterMilliseconds",
+                "enableMonitoring",
+                "failoverTimeout",
+                "graphite",
+                "lazyfreeLazyEviction",
+                "lazyfreeLazyExpire",
+                "luaTimeLimit",
+                "maxDiskThreshold",
+                "maxclients",
+                "maxmemoryPolicy",
+                "maxmemorySamples",
+                "metricsFrequency",
+                "metricsPrefix",
+                "minReplicasMaxLag",
+                "minReplicasToWrite",
+                "monitoringInstanceId",
+                "notifyKeyspaceEvents",
+                "replBacklogSize",
+                "sgwAcl",
+                "snapshot",
+                "syslogs"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "stackit:index/getVolumeSource:getVolumeSource": {
             "properties": {
                 "id": {
@@ -10802,6 +11085,10 @@
                 "type": "string",
                 "description": "Custom endpoint for the Membership service"
             },
+            "automationCustomEndpoint": {
+                "type": "string",
+                "description": "Custom endpoint for the Automation service"
+            },
             "cdnCustomEndpoint": {
                 "type": "string",
                 "description": "Custom endpoint for the CDN service"
@@ -10970,6 +11257,10 @@
                 "description": "Token used for authentication. If set, the token flow will be used to authenticate all operations.",
                 "deprecationMessage": "Authentication via Service Account Token is deprecated and will be removed on December 17, 2025. Please use \u003cspan pulumi-lang-nodejs=\"`serviceAccountKey`\" pulumi-lang-dotnet=\"`ServiceAccountKey`\" pulumi-lang-go=\"`serviceAccountKey`\" pulumi-lang-python=\"`service_account_key`\" pulumi-lang-yaml=\"`serviceAccountKey`\" pulumi-lang-java=\"`serviceAccountKey`\"\u003e`serviceAccountKey`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`serviceAccountKeyPath`\" pulumi-lang-dotnet=\"`ServiceAccountKeyPath`\" pulumi-lang-go=\"`serviceAccountKeyPath`\" pulumi-lang-python=\"`service_account_key_path`\" pulumi-lang-yaml=\"`serviceAccountKeyPath`\" pulumi-lang-java=\"`serviceAccountKeyPath`\"\u003e`serviceAccountKeyPath`\u003c/span\u003e instead. For a smooth transition, refer to our migration guide: https://docs.stackit.cloud/platform/access-and-identity/service-accounts/migrate-flows/"
             },
+            "serviceConnectionId": {
+                "type": "string",
+                "description": "The ID of the Azure DevOps pipeline service connection. For use when authenticating as a Service Account using OpenID Connect."
+            },
             "serviceEnablementCustomEndpoint": {
                 "type": "string",
                 "description": "Custom endpoint for the Service Enablement API"
@@ -11001,6 +11292,10 @@
             "useOidc": {
                 "type": "boolean",
                 "description": "Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e."
+            },
+            "valkeyCustomEndpoint": {
+                "type": "string",
+                "description": "Custom endpoint for the Key Value Store service"
             },
             "vpnCustomEndpoint": {
                 "type": "string",
@@ -11024,6 +11319,10 @@
                 "type": "string",
                 "description": "Custom endpoint for the Membership service"
             },
+            "automationCustomEndpoint": {
+                "type": "string",
+                "description": "Custom endpoint for the Automation service"
+            },
             "cdnCustomEndpoint": {
                 "type": "string",
                 "description": "Custom endpoint for the CDN service"
@@ -11192,6 +11491,10 @@
                 "description": "Token used for authentication. If set, the token flow will be used to authenticate all operations.",
                 "deprecationMessage": "Authentication via Service Account Token is deprecated and will be removed on December 17, 2025. Please use \u003cspan pulumi-lang-nodejs=\"`serviceAccountKey`\" pulumi-lang-dotnet=\"`ServiceAccountKey`\" pulumi-lang-go=\"`serviceAccountKey`\" pulumi-lang-python=\"`service_account_key`\" pulumi-lang-yaml=\"`serviceAccountKey`\" pulumi-lang-java=\"`serviceAccountKey`\"\u003e`serviceAccountKey`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`serviceAccountKeyPath`\" pulumi-lang-dotnet=\"`ServiceAccountKeyPath`\" pulumi-lang-go=\"`serviceAccountKeyPath`\" pulumi-lang-python=\"`service_account_key_path`\" pulumi-lang-yaml=\"`serviceAccountKeyPath`\" pulumi-lang-java=\"`serviceAccountKeyPath`\"\u003e`serviceAccountKeyPath`\u003c/span\u003e instead. For a smooth transition, refer to our migration guide: https://docs.stackit.cloud/platform/access-and-identity/service-accounts/migrate-flows/"
             },
+            "serviceConnectionId": {
+                "type": "string",
+                "description": "The ID of the Azure DevOps pipeline service connection. For use when authenticating as a Service Account using OpenID Connect."
+            },
             "serviceEnablementCustomEndpoint": {
                 "type": "string",
                 "description": "Custom endpoint for the Service Enablement API"
@@ -11223,6 +11526,10 @@
             "useOidc": {
                 "type": "boolean",
                 "description": "Enables OIDC for Authentication. This can also be sourced from the `STACKIT_USE_OIDC` Environment Variable. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e."
+            },
+            "valkeyCustomEndpoint": {
+                "type": "string",
+                "description": "Custom endpoint for the Key Value Store service"
             },
             "vpnCustomEndpoint": {
                 "type": "string",
@@ -12050,7 +12357,7 @@
                 },
                 "role": {
                     "type": "string",
-                    "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`\n"
+                    "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`\n"
                 },
                 "subject": {
                     "type": "string",
@@ -12069,7 +12376,7 @@
                 },
                 "role": {
                     "type": "string",
-                    "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`\n"
+                    "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`\n"
                 },
                 "subject": {
                     "type": "string",
@@ -12090,7 +12397,7 @@
                     },
                     "role": {
                         "type": "string",
-                        "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`\n"
+                        "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`\n"
                     },
                     "subject": {
                         "type": "string",
@@ -12199,7 +12506,7 @@
                 },
                 "role": {
                     "type": "string",
-                    "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`\n"
+                    "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`\n"
                 },
                 "subject": {
                     "type": "string",
@@ -12218,7 +12525,7 @@
                 },
                 "role": {
                     "type": "string",
-                    "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`\n"
+                    "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`\n"
                 },
                 "subject": {
                     "type": "string",
@@ -12239,7 +12546,7 @@
                     },
                     "role": {
                         "type": "string",
-                        "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`\n"
+                        "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`\n"
                     },
                     "subject": {
                         "type": "string",
@@ -12348,7 +12655,7 @@
                 },
                 "role": {
                     "type": "string",
-                    "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`\n"
+                    "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`\n"
                 },
                 "subject": {
                     "type": "string",
@@ -12367,7 +12674,7 @@
                 },
                 "role": {
                     "type": "string",
-                    "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`\n"
+                    "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`\n"
                 },
                 "subject": {
                     "type": "string",
@@ -12388,7 +12695,7 @@
                     },
                     "role": {
                         "type": "string",
-                        "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`\n"
+                        "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`\n"
                     },
                     "subject": {
                         "type": "string",
@@ -12407,7 +12714,7 @@
                 },
                 "role": {
                     "type": "string",
-                    "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`\n"
+                    "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`\n"
                 },
                 "subject": {
                     "type": "string",
@@ -12426,7 +12733,7 @@
                 },
                 "role": {
                     "type": "string",
-                    "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`\n"
+                    "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`\n"
                 },
                 "subject": {
                     "type": "string",
@@ -12447,7 +12754,7 @@
                     },
                     "role": {
                         "type": "string",
-                        "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/permissions`\n"
+                        "description": "Role to be assigned. Available roles can be queried using stackit-cli: `stackit curl https://authorization.api.stackit.cloud/v2/{resourceType}/{resourceId}/roles`\n"
                     },
                     "subject": {
                         "type": "string",
@@ -17536,7 +17843,7 @@
             }
         },
         "stackit:index/objectstorageBucket:ObjectstorageBucket": {
-            "description": "ObjectStorage bucket resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration. If you are creating \u003cspan pulumi-lang-nodejs=\"`credentialsgroup`\" pulumi-lang-dotnet=\"`Credentialsgroup`\" pulumi-lang-go=\"`credentialsgroup`\" pulumi-lang-python=\"`credentialsgroup`\" pulumi-lang-yaml=\"`credentialsgroup`\" pulumi-lang-java=\"`credentialsgroup`\"\u003e`credentialsgroup`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`bucket`\" pulumi-lang-dotnet=\"`Bucket`\" pulumi-lang-go=\"`bucket`\" pulumi-lang-python=\"`bucket`\" pulumi-lang-yaml=\"`bucket`\" pulumi-lang-java=\"`bucket`\"\u003e`bucket`\u003c/span\u003e resources simultaneously, please include the \u003cspan pulumi-lang-nodejs=\"`dependsOn`\" pulumi-lang-dotnet=\"`DependsOn`\" pulumi-lang-go=\"`dependsOn`\" pulumi-lang-python=\"`depends_on`\" pulumi-lang-yaml=\"`dependsOn`\" pulumi-lang-java=\"`dependsOn`\"\u003e`dependsOn`\u003c/span\u003e field so that they are created sequentially. This prevents errors from concurrent calls to the service enablement that is done in the background.\n\n\u003e This resource cannot be destroyed if the bucket contains objects. Please ensure the bucket is empty before attempting to destroy it.\n\n## Example Usage\n\n```terraform\nresource \"stackit_objectstorage_bucket\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-bucket\"\n}\n\n## With compliance lock\nresource \"stackit_objectstorage_compliance_lock\" \"example_with_lock\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\nresource \"stackit_objectstorage_bucket\" \"example_with_lock\" {\n  depends_on  = [stackit_objectstorage_compliance_lock.example_with_lock]\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name        = \"example-bucket-with-lock\"\n  object_lock = true\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing objectstorage bucket\nimport {\n  to = stackit_objectstorage_bucket.import-example\n  id = \"${var.project_id},${var.region},${var.bucket_name}\"\n}\n```\n\n",
+            "description": "ObjectStorage bucket resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n\u003e This resource cannot be destroyed if the bucket contains objects. Please ensure the bucket is empty before attempting to destroy it.\n\n## Example Usage\n\n```terraform\nresource \"stackit_objectstorage_bucket\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-bucket\"\n}\n\n## With compliance lock\nresource \"stackit_objectstorage_compliance_lock\" \"example_with_lock\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\nresource \"stackit_objectstorage_bucket\" \"example_with_lock\" {\n  depends_on  = [stackit_objectstorage_compliance_lock.example_with_lock]\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name        = \"example-bucket-with-lock\"\n  object_lock = true\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing objectstorage bucket\nimport {\n  to = stackit_objectstorage_bucket.import-example\n  id = \"${var.project_id},${var.region},${var.bucket_name}\"\n}\n```\n\n",
             "properties": {
                 "name": {
                     "type": "string",
@@ -17797,7 +18104,7 @@
             }
         },
         "stackit:index/objectstorageCredentialsGroup:ObjectstorageCredentialsGroup": {
-            "description": "ObjectStorage credentials group resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration. If you are creating \u003cspan pulumi-lang-nodejs=\"`credentialsgroup`\" pulumi-lang-dotnet=\"`Credentialsgroup`\" pulumi-lang-go=\"`credentialsgroup`\" pulumi-lang-python=\"`credentialsgroup`\" pulumi-lang-yaml=\"`credentialsgroup`\" pulumi-lang-java=\"`credentialsgroup`\"\u003e`credentialsgroup`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`bucket`\" pulumi-lang-dotnet=\"`Bucket`\" pulumi-lang-go=\"`bucket`\" pulumi-lang-python=\"`bucket`\" pulumi-lang-yaml=\"`bucket`\" pulumi-lang-java=\"`bucket`\"\u003e`bucket`\u003c/span\u003e resources simultaneously, please include the \u003cspan pulumi-lang-nodejs=\"`dependsOn`\" pulumi-lang-dotnet=\"`DependsOn`\" pulumi-lang-go=\"`dependsOn`\" pulumi-lang-python=\"`depends_on`\" pulumi-lang-yaml=\"`dependsOn`\" pulumi-lang-java=\"`dependsOn`\"\u003e`dependsOn`\u003c/span\u003e field so that they are created sequentially. This prevents errors from concurrent calls to the service enablement that is done in the background.\n\n## Example Usage\n\n```terraform\nresource \"stackit_objectstorage_credentials_group\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-credentials-group\"\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing objectstorage credential group\nimport {\n  to = stackit_objectstorage_credentials_group.import-example\n  id = \"${var.project_id},${var.region},${var.bucket_credentials_group_id}\"\n}\n```\n\n",
+            "description": "ObjectStorage credentials group resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\nresource \"stackit_objectstorage_credentials_group\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-credentials-group\"\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing objectstorage credential group\nimport {\n  to = stackit_objectstorage_credentials_group.import-example\n  id = \"${var.project_id},${var.region},${var.bucket_credentials_group_id}\"\n}\n```\n\n",
             "properties": {
                 "credentialsGroupId": {
                     "type": "string",
@@ -20062,7 +20369,7 @@
             }
         },
         "stackit:index/redisCredential:RedisCredential": {
-            "description": "Redis credential resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\nresource \"stackit_redis_credential\" \"example\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  instance_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\nresource \"time_rotating\" \"rotate\" {\n  rotation_days = 80\n}\n\nresource \"stackit_redis_credential\" \"example_rotate\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  instance_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n\n  rotate_when_changed = {\n    rotation = time_rotating.rotate.id\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing redis credential\nimport {\n  to = stackit_redis_credential.import-example\n  id = \"${var.project_id},${var.redis_instance_id},${var.redis_credential_id}\"\n}\n```\n\n",
+            "description": "Redis credential resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration. This resource is deprecated and will be removed after August 2027, use\u003cspan pulumi-lang-nodejs=\" stackit.ValkeyCredential \" pulumi-lang-dotnet=\" stackit.ValkeyCredential \" pulumi-lang-go=\" ValkeyCredential \" pulumi-lang-python=\" ValkeyCredential \" pulumi-lang-yaml=\" stackit.ValkeyCredential \" pulumi-lang-java=\" stackit.ValkeyCredential \"\u003e stackit.ValkeyCredential \u003c/span\u003einstead. For more information on how to migrate, see the [migration guide](https://docs.stackit.cloud/products/databases/key-value-store/tutorials/migrate-data-to-a-new-instance/).\n\n## Example Usage\n\n```terraform\nresource \"stackit_redis_credential\" \"example\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  instance_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\nresource \"time_rotating\" \"rotate\" {\n  rotation_days = 80\n}\n\nresource \"stackit_redis_credential\" \"example_rotate\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  instance_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n\n  rotate_when_changed = {\n    rotation = time_rotating.rotate.id\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing redis credential\nimport {\n  to = stackit_redis_credential.import-example\n  id = \"${var.project_id},${var.redis_instance_id},${var.redis_credential_id}\"\n}\n```\n\n",
             "properties": {
                 "credentialId": {
                     "type": "string",
@@ -20211,7 +20518,7 @@
             }
         },
         "stackit:index/redisInstance:RedisInstance": {
-            "description": "Redis instance resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\nresource \"stackit_redis_instance\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-instance\"\n  version    = \"7\"\n  plan_name  = \"stackit-redis-1.2.10-replica\"\n  parameters = {\n    sgw_acl                 = \"193.148.160.0/19,45.129.40.0/21,45.135.244.0/22\"\n    enable_monitoring       = false\n    down_after_milliseconds = 30000\n    syslog                  = [\"logs4.your-syslog-endpoint.com:54321\"]\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing redis instance\nimport {\n  to = stackit_redis_instance.import-example\n  id = \"${var.project_id},${var.redis_instance_id}\"\n}\n```\n\n",
+            "description": "Redis instance resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration. This resource is deprecated and will be removed after August 2027, use\u003cspan pulumi-lang-nodejs=\" stackit.ValkeyInstance \" pulumi-lang-dotnet=\" stackit.ValkeyInstance \" pulumi-lang-go=\" ValkeyInstance \" pulumi-lang-python=\" ValkeyInstance \" pulumi-lang-yaml=\" stackit.ValkeyInstance \" pulumi-lang-java=\" stackit.ValkeyInstance \"\u003e stackit.ValkeyInstance \u003c/span\u003einstead. For more information on how to migrate, see the [migration guide](https://docs.stackit.cloud/products/databases/key-value-store/tutorials/migrate-data-to-a-new-instance/).\n\n## Example Usage\n\n```terraform\nresource \"stackit_redis_instance\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-instance\"\n  version    = \"7\"\n  plan_name  = \"stackit-redis-1.2.10-replica\"\n  parameters = {\n    sgw_acl                 = \"193.148.160.0/19,45.129.40.0/21,45.135.244.0/22\"\n    enable_monitoring       = false\n    down_after_milliseconds = 30000\n    syslog                  = [\"logs4.your-syslog-endpoint.com:54321\"]\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing redis instance\nimport {\n  to = stackit_redis_instance.import-example\n  id = \"${var.project_id},${var.redis_instance_id}\"\n}\n```\n\n",
             "properties": {
                 "cfGuid": {
                     "type": "string"
@@ -24278,6 +24585,10 @@
                     "type": "string",
                     "description": "The displayed name of the Telemetry Link resource.\n"
                 },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the Telemetry Link is enabled or not."
+                },
                 "region": {
                     "type": "string",
                     "description": "STACKIT region name the resource is located in. If not defined, the provider region is used."
@@ -24303,6 +24614,7 @@
             "required": [
                 "createTime",
                 "displayName",
+                "enabled",
                 "region",
                 "resourceId",
                 "resourceType",
@@ -24331,6 +24643,10 @@
                 "displayName": {
                     "type": "string",
                     "description": "The displayed name of the Telemetry Link resource.\n"
+                },
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Whether the Telemetry Link is enabled or not."
                 },
                 "region": {
                     "type": "string",
@@ -24383,6 +24699,10 @@
                     "displayName": {
                         "type": "string",
                         "description": "The displayed name of the Telemetry Link resource.\n"
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Whether the Telemetry Link is enabled or not."
                     },
                     "region": {
                         "type": "string",
@@ -24805,6 +25125,306 @@
                     "uri": {
                         "type": "string",
                         "description": "The TelemetryRouter instance's URI\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "stackit:index/valkeyCredential:ValkeyCredential": {
+            "description": "Valkey credential resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\nresource \"stackit_valkey_credential\" \"example\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  instance_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\nresource \"time_rotating\" \"rotate\" {\n  rotation_days = 80\n}\n\nresource \"stackit_valkey_credential\" \"example_rotate\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  instance_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n\n  rotate_when_changed = {\n    rotation = time_rotating.rotate.id\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing valkey credential\nimport {\n  to = stackit_valkey_credential.import-example\n  id = \"${var.project_id},${var.region},${var.valkey_instance_id},${var.valkey_credential_id}\"\n}\n```\n\n",
+            "properties": {
+                "credentialId": {
+                    "type": "string",
+                    "description": "The credential's ID.\n"
+                },
+                "host": {
+                    "type": "string"
+                },
+                "hosts": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "instanceId": {
+                    "type": "string",
+                    "description": "ID of the Valkey instance.\n"
+                },
+                "loadBalancedHost": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string",
+                    "secret": true
+                },
+                "port": {
+                    "type": "integer"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT Project ID to which the instance is associated.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The resource region. If not defined, the provider region is used.\n"
+                },
+                "rotateWhenChanged": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.\n"
+                },
+                "uri": {
+                    "type": "string",
+                    "description": "Connection URI.\n",
+                    "secret": true
+                },
+                "username": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "credentialId",
+                "host",
+                "hosts",
+                "instanceId",
+                "loadBalancedHost",
+                "password",
+                "port",
+                "projectId",
+                "region",
+                "uri",
+                "username"
+            ],
+            "inputProperties": {
+                "instanceId": {
+                    "type": "string",
+                    "description": "ID of the Valkey instance.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT Project ID to which the instance is associated.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The resource region. If not defined, the provider region is used.\n"
+                },
+                "rotateWhenChanged": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.\n"
+                }
+            },
+            "requiredInputs": [
+                "instanceId",
+                "projectId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ValkeyCredential resources.\n",
+                "properties": {
+                    "credentialId": {
+                        "type": "string",
+                        "description": "The credential's ID.\n"
+                    },
+                    "host": {
+                        "type": "string"
+                    },
+                    "hosts": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "instanceId": {
+                        "type": "string",
+                        "description": "ID of the Valkey instance.\n"
+                    },
+                    "loadBalancedHost": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string",
+                        "secret": true
+                    },
+                    "port": {
+                        "type": "integer"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT Project ID to which the instance is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    },
+                    "rotateWhenChanged": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "A map of arbitrary key/value pairs that will force recreation of the resource when they change, enabling resource rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.\n"
+                    },
+                    "uri": {
+                        "type": "string",
+                        "description": "Connection URI.\n",
+                        "secret": true
+                    },
+                    "username": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "stackit:index/valkeyInstance:ValkeyInstance": {
+            "description": "Valkey instance resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\nresource \"stackit_valkey_instance\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-instance\"\n  version    = \"x\"\n  plan_name  = \"stackit-keyvalue-1.2.10-replica\"\n  parameters = {\n    sgw_acl                 = \"193.148.160.0/19,45.129.40.0/21,45.135.244.0/22\"\n    enable_monitoring       = false\n    down_after_milliseconds = 30000\n    syslog                  = [\"logs4.your-syslog-endpoint.com:54321\"]\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing valkey instance\nimport {\n  to = stackit_valkey_instance.import-example\n  id = \"${var.project_id},${var.region},${var.valkey_instance_id}\"\n}\n```\n\n",
+            "properties": {
+                "cfGuid": {
+                    "type": "string"
+                },
+                "cfOrganizationGuid": {
+                    "type": "string"
+                },
+                "cfSpaceGuid": {
+                    "type": "string"
+                },
+                "dashboardUrl": {
+                    "type": "string"
+                },
+                "imageUrl": {
+                    "type": "string"
+                },
+                "instanceId": {
+                    "type": "string",
+                    "description": "ID of the Valkey instance.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Instance name.\n"
+                },
+                "parameters": {
+                    "$ref": "#/types/stackit:index/ValkeyInstanceParameters:ValkeyInstanceParameters",
+                    "description": "Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.\n"
+                },
+                "planId": {
+                    "type": "string",
+                    "description": "The selected plan ID.\n"
+                },
+                "planName": {
+                    "type": "string",
+                    "description": "The selected plan name.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT project ID to which the instance is associated.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The resource region. If not defined, the provider region is used.\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "The service version.\n"
+                }
+            },
+            "required": [
+                "cfGuid",
+                "cfOrganizationGuid",
+                "cfSpaceGuid",
+                "dashboardUrl",
+                "imageUrl",
+                "instanceId",
+                "name",
+                "parameters",
+                "planId",
+                "planName",
+                "projectId",
+                "region",
+                "version"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "Instance name.\n"
+                },
+                "parameters": {
+                    "$ref": "#/types/stackit:index/ValkeyInstanceParameters:ValkeyInstanceParameters",
+                    "description": "Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.\n"
+                },
+                "planName": {
+                    "type": "string",
+                    "description": "The selected plan name.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT project ID to which the instance is associated.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The resource region. If not defined, the provider region is used.\n"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "The service version.\n"
+                }
+            },
+            "requiredInputs": [
+                "planName",
+                "projectId",
+                "version"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ValkeyInstance resources.\n",
+                "properties": {
+                    "cfGuid": {
+                        "type": "string"
+                    },
+                    "cfOrganizationGuid": {
+                        "type": "string"
+                    },
+                    "cfSpaceGuid": {
+                        "type": "string"
+                    },
+                    "dashboardUrl": {
+                        "type": "string"
+                    },
+                    "imageUrl": {
+                        "type": "string"
+                    },
+                    "instanceId": {
+                        "type": "string",
+                        "description": "ID of the Valkey instance.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Instance name.\n"
+                    },
+                    "parameters": {
+                        "$ref": "#/types/stackit:index/ValkeyInstanceParameters:ValkeyInstanceParameters",
+                        "description": "Configuration parameters. Please note that removing a previously configured field from your Terraform configuration won't replace its value in the API. To update a previously configured field, explicitly set a new value for it.\n"
+                    },
+                    "planId": {
+                        "type": "string",
+                        "description": "The selected plan ID.\n"
+                    },
+                    "planName": {
+                        "type": "string",
+                        "description": "The selected plan name.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID to which the instance is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    },
+                    "version": {
+                        "type": "string",
+                        "description": "The service version.\n"
                     }
                 },
                 "type": "object"
@@ -26658,6 +27278,57 @@
                     "permissions",
                     "resourceId",
                     "roleId"
+                ]
+            }
+        },
+        "stackit:index/getAutomationTemplates:getAutomationTemplates": {
+            "description": "Automation templates datasource schema.\n\n\u003e This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\ndata \"stackit_automation_templates\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getAutomationTemplates.\n",
+                "properties": {
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "Automation templates data source region. If undefined, the provider region is used.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "projectId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getAutomationTemplates.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Terraform's internal data source ID, structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`projectId`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e\".\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "Automation templates data source region. If undefined, the provider region is used.\n"
+                    },
+                    "templates": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/stackit:index/getAutomationTemplatesTemplate:getAutomationTemplatesTemplate"
+                        },
+                        "description": "List of available templates.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "projectId",
+                    "region",
+                    "templates"
                 ]
             }
         },
@@ -31302,7 +31973,7 @@
             }
         },
         "stackit:index/getRedisCredential:getRedisCredential": {
-            "description": "Redis credential data source schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\ndata \"stackit_redis_credential\" \"example\" {\n  project_id    = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  instance_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  credential_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "description": "Redis credential data source schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration. This data source is deprecated and will be removed after August 2027, use\u003cspan pulumi-lang-nodejs=\" stackit.ValkeyCredential \" pulumi-lang-dotnet=\" stackit.ValkeyCredential \" pulumi-lang-go=\" ValkeyCredential \" pulumi-lang-python=\" ValkeyCredential \" pulumi-lang-yaml=\" stackit.ValkeyCredential \" pulumi-lang-java=\" stackit.ValkeyCredential \"\u003e stackit.ValkeyCredential \u003c/span\u003einstead. For more information on how to migrate, see the [migration guide](https://docs.stackit.cloud/products/databases/key-value-store/tutorials/migrate-data-to-a-new-instance/).\n\n## Example Usage\n\n```terraform\ndata \"stackit_redis_credential\" \"example\" {\n  project_id    = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  instance_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  credential_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getRedisCredential.\n",
                 "properties": {
@@ -31399,7 +32070,7 @@
             }
         },
         "stackit:index/getRedisInstance:getRedisInstance": {
-            "description": "Redis instance data source schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\ndata \"stackit_redis_instance\" \"example\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  instance_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "description": "Redis instance data source schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration. This data source is deprecated and will be removed after August 2027, use\u003cspan pulumi-lang-nodejs=\" stackit.ValkeyInstance \" pulumi-lang-dotnet=\" stackit.ValkeyInstance \" pulumi-lang-go=\" ValkeyInstance \" pulumi-lang-python=\" ValkeyInstance \" pulumi-lang-yaml=\" stackit.ValkeyInstance \" pulumi-lang-java=\" stackit.ValkeyInstance \"\u003e stackit.ValkeyInstance \u003c/span\u003einstead. For more information on how to migrate, see the [migration guide](https://docs.stackit.cloud/products/databases/key-value-store/tutorials/migrate-data-to-a-new-instance/).\n\n## Example Usage\n\n```terraform\ndata \"stackit_redis_instance\" \"example\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  instance_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getRedisInstance.\n",
                 "properties": {
@@ -34360,6 +35031,10 @@
                         "type": "string",
                         "description": "The displayed name of the Telemetry Link resource.\n"
                     },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Whether the Telemetry Link is enabled or not.\n"
+                    },
                     "id": {
                         "type": "string",
                         "description": "Terraform's internal resource identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`resourceType`\" pulumi-lang-dotnet=\"`ResourceType`\" pulumi-lang-go=\"`resourceType`\" pulumi-lang-python=\"`resource_type`\" pulumi-lang-yaml=\"`resourceType`\" pulumi-lang-java=\"`resourceType`\"\u003e`resourceType`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`resourceId`\" pulumi-lang-dotnet=\"`ResourceId`\" pulumi-lang-go=\"`resourceId`\" pulumi-lang-python=\"`resource_id`\" pulumi-lang-yaml=\"`resourceId`\" pulumi-lang-java=\"`resourceId`\"\u003e`resourceId`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e\".\n"
@@ -34391,6 +35066,7 @@
                     "createTime",
                     "description",
                     "displayName",
+                    "enabled",
                     "id",
                     "resourceId",
                     "resourceType",
@@ -34661,6 +35337,200 @@
                     "projectId",
                     "status",
                     "uri"
+                ]
+            }
+        },
+        "stackit:index/getValkeyCredential:getValkeyCredential": {
+            "description": "Valkey credential data source schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\ndata \"stackit_valkey_credential\" \"example\" {\n  project_id    = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  instance_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  credential_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getValkeyCredential.\n",
+                "properties": {
+                    "credentialId": {
+                        "type": "string",
+                        "description": "The credential's ID.\n"
+                    },
+                    "instanceId": {
+                        "type": "string",
+                        "description": "ID of the Valkey instance.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID to which the instance is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "credentialId",
+                    "instanceId",
+                    "projectId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getValkeyCredential.\n",
+                "properties": {
+                    "credentialId": {
+                        "type": "string",
+                        "description": "The credential's ID.\n"
+                    },
+                    "host": {
+                        "type": "string"
+                    },
+                    "hosts": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Terraform's internal data source. identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`projectId`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`instanceId`\" pulumi-lang-dotnet=\"`InstanceId`\" pulumi-lang-go=\"`instanceId`\" pulumi-lang-python=\"`instance_id`\" pulumi-lang-yaml=\"`instanceId`\" pulumi-lang-java=\"`instanceId`\"\u003e`instanceId`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`credentialId`\" pulumi-lang-dotnet=\"`CredentialId`\" pulumi-lang-go=\"`credentialId`\" pulumi-lang-python=\"`credential_id`\" pulumi-lang-yaml=\"`credentialId`\" pulumi-lang-java=\"`credentialId`\"\u003e`credentialId`\u003c/span\u003e\".\n"
+                    },
+                    "instanceId": {
+                        "type": "string",
+                        "description": "ID of the Valkey instance.\n"
+                    },
+                    "loadBalancedHost": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string",
+                        "secret": true
+                    },
+                    "port": {
+                        "type": "integer"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID to which the instance is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    },
+                    "uri": {
+                        "type": "string",
+                        "description": "Connection URI.\n",
+                        "secret": true
+                    },
+                    "username": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "credentialId",
+                    "host",
+                    "hosts",
+                    "id",
+                    "instanceId",
+                    "loadBalancedHost",
+                    "password",
+                    "port",
+                    "projectId",
+                    "region",
+                    "uri",
+                    "username"
+                ]
+            }
+        },
+        "stackit:index/getValkeyInstance:getValkeyInstance": {
+            "description": "Valkey instance data source schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\ndata \"stackit_valkey_instance\" \"example\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  instance_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getValkeyInstance.\n",
+                "properties": {
+                    "instanceId": {
+                        "type": "string",
+                        "description": "ID of the Valkey instance.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT Project ID to which the instance is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "instanceId",
+                    "projectId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getValkeyInstance.\n",
+                "properties": {
+                    "cfGuid": {
+                        "type": "string"
+                    },
+                    "cfOrganizationGuid": {
+                        "type": "string"
+                    },
+                    "cfSpaceGuid": {
+                        "type": "string"
+                    },
+                    "dashboardUrl": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Terraform's internal data source. identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`projectId`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`instanceId`\" pulumi-lang-dotnet=\"`InstanceId`\" pulumi-lang-go=\"`instanceId`\" pulumi-lang-python=\"`instance_id`\" pulumi-lang-yaml=\"`instanceId`\" pulumi-lang-java=\"`instanceId`\"\u003e`instanceId`\u003c/span\u003e\".\n"
+                    },
+                    "imageUrl": {
+                        "type": "string"
+                    },
+                    "instanceId": {
+                        "type": "string",
+                        "description": "ID of the Valkey instance.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Instance name.\n"
+                    },
+                    "parameters": {
+                        "$ref": "#/types/stackit:index/getValkeyInstanceParameters:getValkeyInstanceParameters"
+                    },
+                    "planId": {
+                        "type": "string",
+                        "description": "The selected plan ID.\n"
+                    },
+                    "planName": {
+                        "type": "string",
+                        "description": "The selected plan name.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT Project ID to which the instance is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    },
+                    "version": {
+                        "type": "string",
+                        "description": "The service version.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "cfGuid",
+                    "cfOrganizationGuid",
+                    "cfSpaceGuid",
+                    "dashboardUrl",
+                    "id",
+                    "imageUrl",
+                    "instanceId",
+                    "name",
+                    "parameters",
+                    "planId",
+                    "planName",
+                    "projectId",
+                    "region",
+                    "version"
                 ]
             }
         },
