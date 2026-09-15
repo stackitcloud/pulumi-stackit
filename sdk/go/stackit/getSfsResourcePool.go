@@ -33,7 +33,8 @@ type LookupSfsResourcePoolArgs struct {
 	// The resource region. Read-only attribute that reflects the provider region.
 	Region *string `pulumi:"region"`
 	// Resourcepool ID
-	ResourcePoolId string `pulumi:"resourcePoolId"`
+	ResourcePoolId string                      `pulumi:"resourcePoolId"`
+	Timeouts       *GetSfsResourcePoolTimeouts `pulumi:"timeouts"`
 }
 
 // A collection of values returned by getSfsResourcePool.
@@ -65,7 +66,8 @@ type LookupSfsResourcePoolResult struct {
 	// Name of the snapshot policy.
 	SnapshotPolicy GetSfsResourcePoolSnapshotPolicy `pulumi:"snapshotPolicy"`
 	// If set to true, snapshots are visible and accessible to users. (default: false)
-	SnapshotsAreVisible bool `pulumi:"snapshotsAreVisible"`
+	SnapshotsAreVisible bool                        `pulumi:"snapshotsAreVisible"`
+	Timeouts            *GetSfsResourcePoolTimeouts `pulumi:"timeouts"`
 }
 
 func LookupSfsResourcePoolOutput(ctx *pulumi.Context, args LookupSfsResourcePoolOutputArgs, opts ...pulumi.InvokeOption) LookupSfsResourcePoolResultOutput {
@@ -80,7 +82,8 @@ type LookupSfsResourcePoolOutputArgs struct {
 	// The resource region. Read-only attribute that reflects the provider region.
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// Resourcepool ID
-	ResourcePoolId pulumi.StringInput `pulumi:"resourcePoolId"`
+	ResourcePoolId pulumi.StringInput                 `pulumi:"resourcePoolId"`
+	Timeouts       GetSfsResourcePoolTimeoutsPtrInput `pulumi:"timeouts"`
 }
 
 func (LookupSfsResourcePoolOutputArgs) ElementType() reflect.Type {
@@ -170,6 +173,10 @@ func (o LookupSfsResourcePoolResultOutput) SnapshotPolicy() GetSfsResourcePoolSn
 // If set to true, snapshots are visible and accessible to users. (default: false)
 func (o LookupSfsResourcePoolResultOutput) SnapshotsAreVisible() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupSfsResourcePoolResult) bool { return v.SnapshotsAreVisible }).(pulumi.BoolOutput)
+}
+
+func (o LookupSfsResourcePoolResultOutput) Timeouts() GetSfsResourcePoolTimeoutsPtrOutput {
+	return o.ApplyT(func(v LookupSfsResourcePoolResult) *GetSfsResourcePoolTimeouts { return v.Timeouts }).(GetSfsResourcePoolTimeoutsPtrOutput)
 }
 
 func init() {

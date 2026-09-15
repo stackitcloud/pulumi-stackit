@@ -13,6 +13,12 @@ namespace Pulumi.Stackit.Inputs
     public sealed class ApplicationLoadBalancerTargetPoolActiveHealthCheckArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Overrides the default port used for health check probes.
+        /// </summary>
+        [Input("altPort")]
+        public Input<int>? AltPort { get; set; }
+
+        /// <summary>
         /// Healthy threshold of the health checking.
         /// </summary>
         [Input("healthyThreshold", required: true)]

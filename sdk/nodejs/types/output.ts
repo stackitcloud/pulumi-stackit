@@ -348,6 +348,10 @@ export interface ApplicationLoadBalancerTargetPool {
 
 export interface ApplicationLoadBalancerTargetPoolActiveHealthCheck {
     /**
+     * Overrides the default port used for health check probes.
+     */
+    altPort?: number;
+    /**
      * Healthy threshold of the health checking.
      */
     healthyThreshold: number;
@@ -1187,6 +1191,10 @@ export interface GetApplicationLoadBalancerTargetPool {
 }
 
 export interface GetApplicationLoadBalancerTargetPoolActiveHealthCheck {
+    /**
+     * Overrides the default port used for health check probes.
+     */
+    altPort: number;
     /**
      * Healthy threshold of the health checking.
      */
@@ -3148,6 +3156,13 @@ export interface GetSfsResourcePoolSnapshotSnapshot {
     snapshotName: string;
 }
 
+export interface GetSfsResourcePoolTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
 export interface GetSfsSnapshotPoliciesItem {
     /**
      * Comment of the Snapshot Policy.
@@ -4039,6 +4054,17 @@ export interface GetVpnGatewayBgp {
      * List of IPv4 CIDRs to advertise via BGP. If omitted, SNA network ranges are advertised.
      */
     overrideAdvertisedRoutes: string[];
+}
+
+export interface GetVpnGatewayNetworkConfig {
+    /**
+     * The IPv4 network prefix (CIDR notation) allocated for the VPN gateway. Must have a prefix length of /28 or larger. Cannot be changed after the gateway is created.
+     */
+    predefinedNetworkPrefix: string;
+    /**
+     * Custom routing table ID for the VPN gateway. If omitted, a default routing table is assigned.
+     */
+    routingTableId: string;
 }
 
 export interface GetVpnGatewayStatusConnection {
@@ -5284,6 +5310,25 @@ export interface SfsResourcePoolSnapshotPolicy {
     name: string;
 }
 
+export interface SfsResourcePoolTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: string;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: string;
+}
+
 export interface SkeClusterAccess {
     /**
      * Configure IDP
@@ -6162,5 +6207,16 @@ export interface VpnGatewayBgp {
      * List of IPv4 CIDRs to advertise via BGP. If omitted, SNA network ranges are advertised.
      */
     overrideAdvertisedRoutes: string[];
+}
+
+export interface VpnGatewayNetworkConfig {
+    /**
+     * The IPv4 network prefix (CIDR notation) allocated for the VPN gateway. Must have a prefix length of /28 or larger. Cannot be changed after the gateway is created.
+     */
+    predefinedNetworkPrefix?: string;
+    /**
+     * Custom routing table ID for the VPN gateway. If omitted, a default routing table is assigned.
+     */
+    routingTableId?: string;
 }
 

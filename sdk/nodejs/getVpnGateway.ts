@@ -62,6 +62,10 @@ export interface GetVpnGatewayResult {
      */
     readonly labels: {[key: string]: string};
     /**
+     * Network configuration for the VPN gateway.
+     */
+    readonly networkConfig: outputs.GetVpnGatewayNetworkConfig;
+    /**
      * The service plan identifier (e.g. `p500`). For guidance on finding available plans, see [List available service plans](https://docs.stackit.cloud/products/network/connectivity-hybrid-multi-cloud/vpn/getting-started/gateway-create/#list-available-service-plans).
      */
     readonly planId: string;

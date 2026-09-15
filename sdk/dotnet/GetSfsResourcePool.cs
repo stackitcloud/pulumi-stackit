@@ -84,6 +84,9 @@ namespace Pulumi.Stackit
         [Input("resourcePoolId", required: true)]
         public string ResourcePoolId { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Inputs.GetSfsResourcePoolTimeoutsArgs? Timeouts { get; set; }
+
         public GetSfsResourcePoolArgs()
         {
         }
@@ -109,6 +112,9 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("resourcePoolId", required: true)]
         public Input<string> ResourcePoolId { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Input<Inputs.GetSfsResourcePoolTimeoutsInputArgs>? Timeouts { get; set; }
 
         public GetSfsResourcePoolInvokeArgs()
         {
@@ -176,6 +182,7 @@ namespace Pulumi.Stackit
         /// If set to true, snapshots are visible and accessible to users. (default: false)
         /// </summary>
         public readonly bool SnapshotsAreVisible;
+        public readonly Outputs.GetSfsResourcePoolTimeoutsResult? Timeouts;
 
         [OutputConstructor]
         private GetSfsResourcePoolResult(
@@ -205,7 +212,9 @@ namespace Pulumi.Stackit
 
             Outputs.GetSfsResourcePoolSnapshotPolicyResult snapshotPolicy,
 
-            bool snapshotsAreVisible)
+            bool snapshotsAreVisible,
+
+            Outputs.GetSfsResourcePoolTimeoutsResult? timeouts)
         {
             AvailabilityZone = availabilityZone;
             Id = id;
@@ -221,6 +230,7 @@ namespace Pulumi.Stackit
             SizeReducibleAt = sizeReducibleAt;
             SnapshotPolicy = snapshotPolicy;
             SnapshotsAreVisible = snapshotsAreVisible;
+            Timeouts = timeouts;
         }
     }
 }

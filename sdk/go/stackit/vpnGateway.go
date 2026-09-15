@@ -32,6 +32,8 @@ type VpnGateway struct {
 	GatewayId pulumi.StringOutput `pulumi:"gatewayId"`
 	// Map of custom labels (key-value string pairs).
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
+	// Network configuration for the VPN gateway.
+	NetworkConfig VpnGatewayNetworkConfigPtrOutput `pulumi:"networkConfig"`
 	// The service plan identifier (e.g. `p500`). For guidance on finding available plans, see [List available service plans](https://docs.stackit.cloud/products/network/connectivity-hybrid-multi-cloud/vpn/getting-started/gateway-create/#list-available-service-plans).
 	PlanId pulumi.StringOutput `pulumi:"planId"`
 	// STACKIT project ID associated with the VPN gateway.
@@ -97,6 +99,8 @@ type vpnGatewayState struct {
 	GatewayId *string `pulumi:"gatewayId"`
 	// Map of custom labels (key-value string pairs).
 	Labels map[string]string `pulumi:"labels"`
+	// Network configuration for the VPN gateway.
+	NetworkConfig *VpnGatewayNetworkConfig `pulumi:"networkConfig"`
 	// The service plan identifier (e.g. `p500`). For guidance on finding available plans, see [List available service plans](https://docs.stackit.cloud/products/network/connectivity-hybrid-multi-cloud/vpn/getting-started/gateway-create/#list-available-service-plans).
 	PlanId *string `pulumi:"planId"`
 	// STACKIT project ID associated with the VPN gateway.
@@ -118,6 +122,8 @@ type VpnGatewayState struct {
 	GatewayId pulumi.StringPtrInput
 	// Map of custom labels (key-value string pairs).
 	Labels pulumi.StringMapInput
+	// Network configuration for the VPN gateway.
+	NetworkConfig VpnGatewayNetworkConfigPtrInput
 	// The service plan identifier (e.g. `p500`). For guidance on finding available plans, see [List available service plans](https://docs.stackit.cloud/products/network/connectivity-hybrid-multi-cloud/vpn/getting-started/gateway-create/#list-available-service-plans).
 	PlanId pulumi.StringPtrInput
 	// STACKIT project ID associated with the VPN gateway.
@@ -141,6 +147,8 @@ type vpnGatewayArgs struct {
 	DisplayName string `pulumi:"displayName"`
 	// Map of custom labels (key-value string pairs).
 	Labels map[string]string `pulumi:"labels"`
+	// Network configuration for the VPN gateway.
+	NetworkConfig *VpnGatewayNetworkConfig `pulumi:"networkConfig"`
 	// The service plan identifier (e.g. `p500`). For guidance on finding available plans, see [List available service plans](https://docs.stackit.cloud/products/network/connectivity-hybrid-multi-cloud/vpn/getting-started/gateway-create/#list-available-service-plans).
 	PlanId string `pulumi:"planId"`
 	// STACKIT project ID associated with the VPN gateway.
@@ -161,6 +169,8 @@ type VpnGatewayArgs struct {
 	DisplayName pulumi.StringInput
 	// Map of custom labels (key-value string pairs).
 	Labels pulumi.StringMapInput
+	// Network configuration for the VPN gateway.
+	NetworkConfig VpnGatewayNetworkConfigPtrInput
 	// The service plan identifier (e.g. `p500`). For guidance on finding available plans, see [List available service plans](https://docs.stackit.cloud/products/network/connectivity-hybrid-multi-cloud/vpn/getting-started/gateway-create/#list-available-service-plans).
 	PlanId pulumi.StringInput
 	// STACKIT project ID associated with the VPN gateway.
@@ -281,6 +291,11 @@ func (o VpnGatewayOutput) GatewayId() pulumi.StringOutput {
 // Map of custom labels (key-value string pairs).
 func (o VpnGatewayOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *VpnGateway) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Network configuration for the VPN gateway.
+func (o VpnGatewayOutput) NetworkConfig() VpnGatewayNetworkConfigPtrOutput {
+	return o.ApplyT(func(v *VpnGateway) VpnGatewayNetworkConfigPtrOutput { return v.NetworkConfig }).(VpnGatewayNetworkConfigPtrOutput)
 }
 
 // The service plan identifier (e.g. `p500`). For guidance on finding available plans, see [List available service plans](https://docs.stackit.cloud/products/network/connectivity-hybrid-multi-cloud/vpn/getting-started/gateway-create/#list-available-service-plans).

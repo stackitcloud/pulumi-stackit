@@ -52,6 +52,12 @@ namespace Pulumi.Stackit
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
+        /// Network configuration for the VPN gateway.
+        /// </summary>
+        [Output("networkConfig")]
+        public Output<Outputs.VpnGatewayNetworkConfig?> NetworkConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The service plan identifier (e.g. `P500`). For guidance on finding available plans, see [List available service plans](https://docs.stackit.cloud/products/network/connectivity-hybrid-multi-cloud/vpn/getting-started/gateway-create/#list-available-service-plans).
         /// </summary>
         [Output("planId")]
@@ -153,6 +159,12 @@ namespace Pulumi.Stackit
         }
 
         /// <summary>
+        /// Network configuration for the VPN gateway.
+        /// </summary>
+        [Input("networkConfig")]
+        public Input<Inputs.VpnGatewayNetworkConfigArgs>? NetworkConfig { get; set; }
+
+        /// <summary>
         /// The service plan identifier (e.g. `P500`). For guidance on finding available plans, see [List available service plans](https://docs.stackit.cloud/products/network/connectivity-hybrid-multi-cloud/vpn/getting-started/gateway-create/#list-available-service-plans).
         /// </summary>
         [Input("planId", required: true)]
@@ -219,6 +231,12 @@ namespace Pulumi.Stackit
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        /// <summary>
+        /// Network configuration for the VPN gateway.
+        /// </summary>
+        [Input("networkConfig")]
+        public Input<Inputs.VpnGatewayNetworkConfigGetArgs>? NetworkConfig { get; set; }
 
         /// <summary>
         /// The service plan identifier (e.g. `P500`). For guidance on finding available plans, see [List available service plans](https://docs.stackit.cloud/products/network/connectivity-hybrid-multi-cloud/vpn/getting-started/gateway-create/#list-available-service-plans).

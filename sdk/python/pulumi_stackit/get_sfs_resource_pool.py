@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetSfsResourcePoolResult',
@@ -27,7 +28,7 @@ class GetSfsResourcePoolResult:
     """
     A collection of values returned by getSfsResourcePool.
     """
-    def __init__(__self__, availability_zone=None, id=None, ip_acls=None, labels=None, name=None, performance_class=None, performance_class_downgradable_at=None, project_id=None, region=None, resource_pool_id=None, size_gigabytes=None, size_reducible_at=None, snapshot_policy=None, snapshots_are_visible=None):
+    def __init__(__self__, availability_zone=None, id=None, ip_acls=None, labels=None, name=None, performance_class=None, performance_class_downgradable_at=None, project_id=None, region=None, resource_pool_id=None, size_gigabytes=None, size_reducible_at=None, snapshot_policy=None, snapshots_are_visible=None, timeouts=None):
         if availability_zone and not isinstance(availability_zone, str):
             raise TypeError("Expected argument 'availability_zone' to be a str")
         pulumi.set(__self__, "availability_zone", availability_zone)
@@ -70,6 +71,9 @@ class GetSfsResourcePoolResult:
         if snapshots_are_visible and not isinstance(snapshots_are_visible, bool):
             raise TypeError("Expected argument 'snapshots_are_visible' to be a bool")
         pulumi.set(__self__, "snapshots_are_visible", snapshots_are_visible)
+        if timeouts and not isinstance(timeouts, dict):
+            raise TypeError("Expected argument 'timeouts' to be a dict")
+        pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
@@ -183,6 +187,11 @@ class GetSfsResourcePoolResult:
         """
         return pulumi.get(self, "snapshots_are_visible")
 
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> Optional['outputs.GetSfsResourcePoolTimeoutsResult']:
+        return pulumi.get(self, "timeouts")
+
 
 class AwaitableGetSfsResourcePoolResult(GetSfsResourcePoolResult):
     # pylint: disable=using-constant-test
@@ -203,12 +212,14 @@ class AwaitableGetSfsResourcePoolResult(GetSfsResourcePoolResult):
             size_gigabytes=self.size_gigabytes,
             size_reducible_at=self.size_reducible_at,
             snapshot_policy=self.snapshot_policy,
-            snapshots_are_visible=self.snapshots_are_visible)
+            snapshots_are_visible=self.snapshots_are_visible,
+            timeouts=self.timeouts)
 
 
 def get_sfs_resource_pool(project_id: Optional[_builtins.str] = None,
                           region: Optional[_builtins.str] = None,
                           resource_pool_id: Optional[_builtins.str] = None,
+                          timeouts: Optional[Union['GetSfsResourcePoolTimeoutsArgs', 'GetSfsResourcePoolTimeoutsArgsDict', 'outputs.GetSfsResourcePoolTimeoutsResult']] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSfsResourcePoolResult:
     """
     Resource-pool datasource schema. Must have a `region` specified in the provider configuration.
@@ -226,6 +237,7 @@ def get_sfs_resource_pool(project_id: Optional[_builtins.str] = None,
     __args__['projectId'] = project_id
     __args__['region'] = region
     __args__['resourcePoolId'] = resource_pool_id
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('stackit:index/getSfsResourcePool:getSfsResourcePool', __args__, opts=opts, typ=GetSfsResourcePoolResult).value
 
@@ -243,10 +255,12 @@ def get_sfs_resource_pool(project_id: Optional[_builtins.str] = None,
         size_gigabytes=pulumi.get(__ret__, 'size_gigabytes'),
         size_reducible_at=pulumi.get(__ret__, 'size_reducible_at'),
         snapshot_policy=pulumi.get(__ret__, 'snapshot_policy'),
-        snapshots_are_visible=pulumi.get(__ret__, 'snapshots_are_visible'))
+        snapshots_are_visible=pulumi.get(__ret__, 'snapshots_are_visible'),
+        timeouts=pulumi.get(__ret__, 'timeouts'))
 def get_sfs_resource_pool_output(project_id: pulumi.Input[Optional[_builtins.str]] = None,
                                  region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  resource_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                 timeouts: pulumi.Input[Optional[Optional[Union['GetSfsResourcePoolTimeoutsArgs', 'GetSfsResourcePoolTimeoutsArgsDict', 'outputs.GetSfsResourcePoolTimeoutsResult']]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSfsResourcePoolResult]:
     """
     Resource-pool datasource schema. Must have a `region` specified in the provider configuration.
@@ -264,6 +278,7 @@ def get_sfs_resource_pool_output(project_id: pulumi.Input[Optional[_builtins.str
     __args__['projectId'] = project_id
     __args__['region'] = region
     __args__['resourcePoolId'] = resource_pool_id
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('stackit:index/getSfsResourcePool:getSfsResourcePool', __args__, opts=opts, typ=GetSfsResourcePoolResult)
     return __ret__.apply(lambda __response__: GetSfsResourcePoolResult(
@@ -280,4 +295,5 @@ def get_sfs_resource_pool_output(project_id: pulumi.Input[Optional[_builtins.str
         size_gigabytes=pulumi.get(__response__, 'size_gigabytes'),
         size_reducible_at=pulumi.get(__response__, 'size_reducible_at'),
         snapshot_policy=pulumi.get(__response__, 'snapshot_policy'),
-        snapshots_are_visible=pulumi.get(__response__, 'snapshots_are_visible')))
+        snapshots_are_visible=pulumi.get(__response__, 'snapshots_are_visible'),
+        timeouts=pulumi.get(__response__, 'timeouts')))

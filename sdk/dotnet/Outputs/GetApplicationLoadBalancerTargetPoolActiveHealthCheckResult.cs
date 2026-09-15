@@ -14,6 +14,10 @@ namespace Pulumi.Stackit.Outputs
     public sealed class GetApplicationLoadBalancerTargetPoolActiveHealthCheckResult
     {
         /// <summary>
+        /// Overrides the default port used for health check probes.
+        /// </summary>
+        public readonly int AltPort;
+        /// <summary>
         /// Healthy threshold of the health checking.
         /// </summary>
         public readonly int HealthyThreshold;
@@ -40,6 +44,8 @@ namespace Pulumi.Stackit.Outputs
 
         [OutputConstructor]
         private GetApplicationLoadBalancerTargetPoolActiveHealthCheckResult(
+            int altPort,
+
             int healthyThreshold,
 
             Outputs.GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksResult httpHealthChecks,
@@ -52,6 +58,7 @@ namespace Pulumi.Stackit.Outputs
 
             int unhealthyThreshold)
         {
+            AltPort = altPort;
             HealthyThreshold = healthyThreshold;
             HttpHealthChecks = httpHealthChecks;
             Interval = interval;

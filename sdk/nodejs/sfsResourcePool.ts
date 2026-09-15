@@ -89,6 +89,7 @@ export class SfsResourcePool extends pulumi.CustomResource {
      * If set to true, snapshots are visible and accessible to users. (default: false)
      */
     declare public readonly snapshotsAreVisible: pulumi.Output<boolean>;
+    declare public readonly timeouts: pulumi.Output<outputs.SfsResourcePoolTimeouts | undefined>;
 
     /**
      * Create a SfsResourcePool resource with the given unique name, arguments, and options.
@@ -114,6 +115,7 @@ export class SfsResourcePool extends pulumi.CustomResource {
             resourceInputs["sizeGigabytes"] = state?.sizeGigabytes;
             resourceInputs["snapshotPolicy"] = state?.snapshotPolicy;
             resourceInputs["snapshotsAreVisible"] = state?.snapshotsAreVisible;
+            resourceInputs["timeouts"] = state?.timeouts;
         } else {
             const args = argsOrState as SfsResourcePoolArgs | undefined;
             if (args?.availabilityZone === undefined && !opts.urn) {
@@ -141,6 +143,7 @@ export class SfsResourcePool extends pulumi.CustomResource {
             resourceInputs["sizeGigabytes"] = args?.sizeGigabytes;
             resourceInputs["snapshotPolicy"] = args?.snapshotPolicy;
             resourceInputs["snapshotsAreVisible"] = args?.snapshotsAreVisible;
+            resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["resourcePoolId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -196,6 +199,7 @@ export interface SfsResourcePoolState {
      * If set to true, snapshots are visible and accessible to users. (default: false)
      */
     snapshotsAreVisible?: pulumi.Input<boolean | undefined>;
+    timeouts?: pulumi.Input<inputs.SfsResourcePoolTimeouts | undefined>;
 }
 
 /**
@@ -242,4 +246,5 @@ export interface SfsResourcePoolArgs {
      * If set to true, snapshots are visible and accessible to users. (default: false)
      */
     snapshotsAreVisible?: pulumi.Input<boolean | undefined>;
+    timeouts?: pulumi.Input<inputs.SfsResourcePoolTimeouts | undefined>;
 }

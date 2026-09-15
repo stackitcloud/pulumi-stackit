@@ -348,6 +348,10 @@ export interface ApplicationLoadBalancerTargetPool {
 
 export interface ApplicationLoadBalancerTargetPoolActiveHealthCheck {
     /**
+     * Overrides the default port used for health check probes.
+     */
+    altPort?: pulumi.Input<number | undefined>;
+    /**
      * Healthy threshold of the health checking.
      */
     healthyThreshold: pulumi.Input<number>;
@@ -941,6 +945,20 @@ export interface GetPostgresflexFlavorsTimeouts {
 }
 
 export interface GetPostgresflexFlavorsTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string | undefined>;
+}
+
+export interface GetSfsResourcePoolTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetSfsResourcePoolTimeoutsArgs {
     /**
      * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
      */
@@ -2282,6 +2300,25 @@ export interface SfsResourcePoolSnapshotPolicy {
     name?: pulumi.Input<string | undefined>;
 }
 
+export interface SfsResourcePoolTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    create?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+     */
+    delete?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+     */
+    read?: pulumi.Input<string | undefined>;
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    update?: pulumi.Input<string | undefined>;
+}
+
 export interface SkeClusterAccess {
     /**
      * Configure IDP
@@ -3160,4 +3197,15 @@ export interface VpnGatewayBgp {
      * List of IPv4 CIDRs to advertise via BGP. If omitted, SNA network ranges are advertised.
      */
     overrideAdvertisedRoutes?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface VpnGatewayNetworkConfig {
+    /**
+     * The IPv4 network prefix (CIDR notation) allocated for the VPN gateway. Must have a prefix length of /28 or larger. Cannot be changed after the gateway is created.
+     */
+    predefinedNetworkPrefix?: pulumi.Input<string | undefined>;
+    /**
+     * Custom routing table ID for the VPN gateway. If omitted, a default routing table is assigned.
+     */
+    routingTableId?: pulumi.Input<string | undefined>;
 }

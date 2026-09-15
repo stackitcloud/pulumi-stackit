@@ -89,6 +89,9 @@ namespace Pulumi.Stackit
         [Output("snapshotsAreVisible")]
         public Output<bool> SnapshotsAreVisible { get; private set; } = null!;
 
+        [Output("timeouts")]
+        public Output<Outputs.SfsResourcePoolTimeouts?> Timeouts { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a SfsResourcePool resource with the given unique name, arguments, and options.
@@ -208,6 +211,9 @@ namespace Pulumi.Stackit
         [Input("snapshotsAreVisible")]
         public Input<bool>? SnapshotsAreVisible { get; set; }
 
+        [Input("timeouts")]
+        public Input<Inputs.SfsResourcePoolTimeoutsArgs>? Timeouts { get; set; }
+
         public SfsResourcePoolArgs()
         {
         }
@@ -293,6 +299,9 @@ namespace Pulumi.Stackit
         /// </summary>
         [Input("snapshotsAreVisible")]
         public Input<bool>? SnapshotsAreVisible { get; set; }
+
+        [Input("timeouts")]
+        public Input<Inputs.SfsResourcePoolTimeoutsGetArgs>? Timeouts { get; set; }
 
         public SfsResourcePoolState()
         {

@@ -235,6 +235,8 @@ __all__ = [
     'SfsExportPolicyRuleArgsDict',
     'SfsResourcePoolSnapshotPolicyArgs',
     'SfsResourcePoolSnapshotPolicyArgsDict',
+    'SfsResourcePoolTimeoutsArgs',
+    'SfsResourcePoolTimeoutsArgsDict',
     'SkeClusterAccessArgs',
     'SkeClusterAccessArgsDict',
     'SkeClusterAccessIdpArgs',
@@ -337,6 +339,8 @@ __all__ = [
     'VpnGatewayAvailabilityZonesArgsDict',
     'VpnGatewayBgpArgs',
     'VpnGatewayBgpArgsDict',
+    'VpnGatewayNetworkConfigArgs',
+    'VpnGatewayNetworkConfigArgsDict',
     'GetCdnCustomDomainCertificateArgs',
     'GetCdnCustomDomainCertificateArgsDict',
     'GetDnsRecordSetTimeoutsArgs',
@@ -347,6 +351,8 @@ __all__ = [
     'GetImageV2FilterArgsDict',
     'GetPostgresflexFlavorsTimeoutsArgs',
     'GetPostgresflexFlavorsTimeoutsArgsDict',
+    'GetSfsResourcePoolTimeoutsArgs',
+    'GetSfsResourcePoolTimeoutsArgsDict',
     'GetSqlserverflexDatabaseTimeoutsArgs',
     'GetSqlserverflexDatabaseTimeoutsArgsDict',
     'GetSqlserverflexFlavorsTimeoutsArgs',
@@ -1926,6 +1932,10 @@ class ApplicationLoadBalancerTargetPoolActiveHealthCheckArgsDict(TypedDict):
     """
     Unhealthy threshold of the health checking.
     """
+    alt_port: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    Overrides the default port used for health check probes.
+    """
     http_health_checks: NotRequired[pulumi.Input[Optional['ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksArgsDict']]]
     """
     Options for the HTTP health checking.
@@ -1939,6 +1949,7 @@ class ApplicationLoadBalancerTargetPoolActiveHealthCheckArgs:
                  interval_jitter: pulumi.Input[_builtins.str],
                  timeout: pulumi.Input[_builtins.str],
                  unhealthy_threshold: pulumi.Input[_builtins.int],
+                 alt_port: pulumi.Input[Optional[_builtins.int]] = None,
                  http_health_checks: pulumi.Input[Optional['ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksArgs']] = None):
         """
         :param pulumi.Input[_builtins.int] healthy_threshold: Healthy threshold of the health checking.
@@ -1946,6 +1957,7 @@ class ApplicationLoadBalancerTargetPoolActiveHealthCheckArgs:
         :param pulumi.Input[_builtins.str] interval_jitter: Interval duration threshold of the health checking in seconds.
         :param pulumi.Input[_builtins.str] timeout: Active health checking timeout duration in seconds.
         :param pulumi.Input[_builtins.int] unhealthy_threshold: Unhealthy threshold of the health checking.
+        :param pulumi.Input[_builtins.int] alt_port: Overrides the default port used for health check probes.
         :param pulumi.Input['ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksArgs'] http_health_checks: Options for the HTTP health checking.
         """
         pulumi.set(__self__, "healthy_threshold", healthy_threshold)
@@ -1953,6 +1965,8 @@ class ApplicationLoadBalancerTargetPoolActiveHealthCheckArgs:
         pulumi.set(__self__, "interval_jitter", interval_jitter)
         pulumi.set(__self__, "timeout", timeout)
         pulumi.set(__self__, "unhealthy_threshold", unhealthy_threshold)
+        if alt_port is not None:
+            pulumi.set(__self__, "alt_port", alt_port)
         if http_health_checks is not None:
             pulumi.set(__self__, "http_health_checks", http_health_checks)
 
@@ -2015,6 +2029,18 @@ class ApplicationLoadBalancerTargetPoolActiveHealthCheckArgs:
     @unhealthy_threshold.setter
     def unhealthy_threshold(self, value: pulumi.Input[_builtins.int]):
         pulumi.set(self, "unhealthy_threshold", value)
+
+    @_builtins.property
+    @pulumi.getter(name="altPort")
+    def alt_port(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        Overrides the default port used for health check probes.
+        """
+        return pulumi.get(self, "alt_port")
+
+    @alt_port.setter
+    def alt_port(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "alt_port", value)
 
     @_builtins.property
     @pulumi.getter(name="httpHealthChecks")
@@ -9996,6 +10022,95 @@ class SfsResourcePoolSnapshotPolicyArgs:
         pulumi.set(self, "name", value)
 
 
+class SfsResourcePoolTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+    delete: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+    """
+    read: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+    """
+    update: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class SfsResourcePoolTimeoutsArgs:
+    def __init__(__self__, *,
+                 create: pulumi.Input[Optional[_builtins.str]] = None,
+                 delete: pulumi.Input[Optional[_builtins.str]] = None,
+                 read: pulumi.Input[Optional[_builtins.str]] = None,
+                 update: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param pulumi.Input[_builtins.str] delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param pulumi.Input[_builtins.str] read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param pulumi.Input[_builtins.str] update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @create.setter
+    def create(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "create", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @delete.setter
+    def delete(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "delete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "read", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+    @update.setter
+    def update(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "update", value)
+
+
 class SkeClusterAccessArgsDict(TypedDict):
     idp: NotRequired[pulumi.Input[Optional['SkeClusterAccessIdpArgsDict']]]
     """
@@ -14088,6 +14203,55 @@ class VpnGatewayBgpArgs:
         pulumi.set(self, "override_advertised_routes", value)
 
 
+class VpnGatewayNetworkConfigArgsDict(TypedDict):
+    predefined_network_prefix: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The IPv4 network prefix (CIDR notation) allocated for the VPN gateway. Must have a prefix length of /28 or larger. Cannot be changed after the gateway is created.
+    """
+    routing_table_id: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    Custom routing table ID for the VPN gateway. If omitted, a default routing table is assigned.
+    """
+
+@pulumi.input_type
+class VpnGatewayNetworkConfigArgs:
+    def __init__(__self__, *,
+                 predefined_network_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 routing_table_id: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] predefined_network_prefix: The IPv4 network prefix (CIDR notation) allocated for the VPN gateway. Must have a prefix length of /28 or larger. Cannot be changed after the gateway is created.
+        :param pulumi.Input[_builtins.str] routing_table_id: Custom routing table ID for the VPN gateway. If omitted, a default routing table is assigned.
+        """
+        if predefined_network_prefix is not None:
+            pulumi.set(__self__, "predefined_network_prefix", predefined_network_prefix)
+        if routing_table_id is not None:
+            pulumi.set(__self__, "routing_table_id", routing_table_id)
+
+    @_builtins.property
+    @pulumi.getter(name="predefinedNetworkPrefix")
+    def predefined_network_prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The IPv4 network prefix (CIDR notation) allocated for the VPN gateway. Must have a prefix length of /28 or larger. Cannot be changed after the gateway is created.
+        """
+        return pulumi.get(self, "predefined_network_prefix")
+
+    @predefined_network_prefix.setter
+    def predefined_network_prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "predefined_network_prefix", value)
+
+    @_builtins.property
+    @pulumi.getter(name="routingTableId")
+    def routing_table_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        Custom routing table ID for the VPN gateway. If omitted, a default routing table is assigned.
+        """
+        return pulumi.get(self, "routing_table_id")
+
+    @routing_table_id.setter
+    def routing_table_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "routing_table_id", value)
+
+
 class GetCdnCustomDomainCertificateArgsDict(TypedDict):
     version: _builtins.int
     """
@@ -14291,6 +14455,35 @@ class GetPostgresflexFlavorsTimeoutsArgsDict(TypedDict):
 
 @pulumi.input_type
 class GetPostgresflexFlavorsTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "read", value)
+
+
+class GetSfsResourcePoolTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class GetSfsResourcePoolTimeoutsArgs:
     def __init__(__self__, *,
                  read: Optional[_builtins.str] = None):
         """

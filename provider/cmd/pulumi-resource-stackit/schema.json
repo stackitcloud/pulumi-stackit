@@ -868,6 +868,10 @@
         },
         "stackit:index/ApplicationLoadBalancerTargetPoolActiveHealthCheck:ApplicationLoadBalancerTargetPoolActiveHealthCheck": {
             "properties": {
+                "altPort": {
+                    "type": "integer",
+                    "description": "Overrides the default port used for health check probes.\n"
+                },
                 "healthyThreshold": {
                     "type": "integer",
                     "description": "Healthy threshold of the health checking.\n"
@@ -3685,6 +3689,27 @@
                 }
             }
         },
+        "stackit:index/SfsResourcePoolTimeouts:SfsResourcePoolTimeouts": {
+            "properties": {
+                "create": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                },
+                "delete": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.\n"
+                },
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.\n"
+                },
+                "update": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
+        },
         "stackit:index/SkeClusterAccess:SkeClusterAccess": {
             "properties": {
                 "idp": {
@@ -5123,6 +5148,19 @@
                 }
             }
         },
+        "stackit:index/VpnGatewayNetworkConfig:VpnGatewayNetworkConfig": {
+            "properties": {
+                "predefinedNetworkPrefix": {
+                    "type": "string",
+                    "description": "The IPv4 network prefix (CIDR notation) allocated for the VPN gateway. Must have a prefix length of /28 or larger. Cannot be changed after the gateway is created.\n"
+                },
+                "routingTableId": {
+                    "type": "string",
+                    "description": "Custom routing table ID for the VPN gateway. If omitted, a default routing table is assigned.\n"
+                }
+            },
+            "type": "object"
+        },
         "stackit:index/getAlbWafCustomRuleGroupRule:getAlbWafCustomRuleGroupRule": {
             "properties": {
                 "behavior": {
@@ -5804,6 +5842,10 @@
         },
         "stackit:index/getApplicationLoadBalancerTargetPoolActiveHealthCheck:getApplicationLoadBalancerTargetPoolActiveHealthCheck": {
             "properties": {
+                "altPort": {
+                    "type": "integer",
+                    "description": "Overrides the default port used for health check probes.\n"
+                },
                 "healthyThreshold": {
                     "type": "integer",
                     "description": "Healthy threshold of the health checking.\n"
@@ -5831,6 +5873,7 @@
             },
             "type": "object",
             "required": [
+                "altPort",
                 "healthyThreshold",
                 "httpHealthChecks",
                 "interval",
@@ -9366,6 +9409,15 @@
                 }
             }
         },
+        "stackit:index/getSfsResourcePoolTimeouts:getSfsResourcePoolTimeouts": {
+            "properties": {
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
+        },
         "stackit:index/getSfsSnapshotPoliciesItem:getSfsSnapshotPoliciesItem": {
             "properties": {
                 "comment": {
@@ -11004,6 +11056,28 @@
             "required": [
                 "localAsn",
                 "overrideAdvertisedRoutes"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getVpnGatewayNetworkConfig:getVpnGatewayNetworkConfig": {
+            "properties": {
+                "predefinedNetworkPrefix": {
+                    "type": "string",
+                    "description": "The IPv4 network prefix (CIDR notation) allocated for the VPN gateway. Must have a prefix length of /28 or larger. Cannot be changed after the gateway is created.\n"
+                },
+                "routingTableId": {
+                    "type": "string",
+                    "description": "Custom routing table ID for the VPN gateway. If omitted, a default routing table is assigned.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "predefinedNetworkPrefix",
+                "routingTableId"
             ],
             "language": {
                 "nodejs": {
@@ -20218,7 +20292,7 @@
             }
         },
         "stackit:index/rabbitmqInstance:RabbitmqInstance": {
-            "description": "RabbitMQ instance resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\nresource \"stackit_rabbitmq_instance\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-instance\"\n  version    = \"3.13\"\n  plan_name  = \"stackit-rabbitmq-1.2.10-replica\"\n  parameters = {\n    sgw_acl           = \"193.148.160.0/19,45.129.40.0/21,45.135.244.0/22\"\n    consumer_timeout  = 18000000\n    enable_monitoring = false\n    plugins           = [\"rabbitmq_consistent_hash_exchange\", \"rabbitmq_federation\", \"rabbitmq_tracing\"]\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing rabbitmq instance\nimport {\n  to = stackit_rabbitmq_instance.import-example\n  id = \"${var.project_id},${var.rabbitmq_instance_id}\"\n}\n```\n\n",
+            "description": "RabbitMQ instance resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\nresource \"stackit_rabbitmq_instance\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-instance\"\n  version    = \"4.1\"\n  plan_name  = \"stackit-rabbitmq-1.2.10-replica\"\n  parameters = {\n    sgw_acl           = \"193.148.160.0/19,45.129.40.0/21,45.135.244.0/22\"\n    consumer_timeout  = 18000000\n    enable_monitoring = false\n    plugins           = [\"rabbitmq_consistent_hash_exchange\", \"rabbitmq_federation\"]\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing rabbitmq instance\nimport {\n  to = stackit_rabbitmq_instance.import-example\n  id = \"${var.project_id},${var.rabbitmq_instance_id}\"\n}\n```\n\n",
             "properties": {
                 "cfGuid": {
                     "type": "string"
@@ -23437,6 +23511,9 @@
                 "snapshotsAreVisible": {
                     "type": "boolean",
                     "description": "If set to true, snapshots are visible and accessible to users. (default: false)\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/stackit:index/SfsResourcePoolTimeouts:SfsResourcePoolTimeouts"
                 }
             },
             "required": [
@@ -23496,6 +23573,9 @@
                 "snapshotsAreVisible": {
                     "type": "boolean",
                     "description": "If set to true, snapshots are visible and accessible to users. (default: false)\n"
+                },
+                "timeouts": {
+                    "$ref": "#/types/stackit:index/SfsResourcePoolTimeouts:SfsResourcePoolTimeouts"
                 }
             },
             "requiredInputs": [
@@ -23557,6 +23637,9 @@
                     "snapshotsAreVisible": {
                         "type": "boolean",
                         "description": "If set to true, snapshots are visible and accessible to users. (default: false)\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/stackit:index/SfsResourcePoolTimeouts:SfsResourcePoolTimeouts"
                     }
                 },
                 "type": "object"
@@ -26488,6 +26571,10 @@
                     },
                     "description": "Map of custom labels (key-value string pairs).\n"
                 },
+                "networkConfig": {
+                    "$ref": "#/types/stackit:index/VpnGatewayNetworkConfig:VpnGatewayNetworkConfig",
+                    "description": "Network configuration for the VPN gateway.\n"
+                },
                 "planId": {
                     "type": "string",
                     "description": "The service plan identifier (e.g. \u003cspan pulumi-lang-nodejs=\"`p500`\" pulumi-lang-dotnet=\"`P500`\" pulumi-lang-go=\"`p500`\" pulumi-lang-python=\"`p500`\" pulumi-lang-yaml=\"`p500`\" pulumi-lang-java=\"`p500`\"\u003e`p500`\u003c/span\u003e). For guidance on finding available plans, see [List available service plans](https://docs.stackit.cloud/products/network/connectivity-hybrid-multi-cloud/vpn/getting-started/gateway-create/#list-available-service-plans).\n"
@@ -26533,6 +26620,10 @@
                         "type": "string"
                     },
                     "description": "Map of custom labels (key-value string pairs).\n"
+                },
+                "networkConfig": {
+                    "$ref": "#/types/stackit:index/VpnGatewayNetworkConfig:VpnGatewayNetworkConfig",
+                    "description": "Network configuration for the VPN gateway.\n"
                 },
                 "planId": {
                     "type": "string",
@@ -26583,6 +26674,10 @@
                             "type": "string"
                         },
                         "description": "Map of custom labels (key-value string pairs).\n"
+                    },
+                    "networkConfig": {
+                        "$ref": "#/types/stackit:index/VpnGatewayNetworkConfig:VpnGatewayNetworkConfig",
+                        "description": "Network configuration for the VPN gateway.\n"
                     },
                     "planId": {
                         "type": "string",
@@ -34134,6 +34229,9 @@
                     "resourcePoolId": {
                         "type": "string",
                         "description": "Resourcepool ID\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/stackit:index/getSfsResourcePoolTimeouts:getSfsResourcePoolTimeouts"
                     }
                 },
                 "type": "object",
@@ -34206,6 +34304,9 @@
                     "snapshotsAreVisible": {
                         "type": "boolean",
                         "description": "If set to true, snapshots are visible and accessible to users. (default: false)\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/stackit:index/getSfsResourcePoolTimeouts:getSfsResourcePoolTimeouts"
                     }
                 },
                 "type": "object",
@@ -36238,6 +36339,10 @@
                         },
                         "description": "Map of custom labels (key-value string pairs).\n"
                     },
+                    "networkConfig": {
+                        "$ref": "#/types/stackit:index/getVpnGatewayNetworkConfig:getVpnGatewayNetworkConfig",
+                        "description": "Network configuration for the VPN gateway.\n"
+                    },
                     "planId": {
                         "type": "string",
                         "description": "The service plan identifier (e.g. \u003cspan pulumi-lang-nodejs=\"`p500`\" pulumi-lang-dotnet=\"`P500`\" pulumi-lang-go=\"`p500`\" pulumi-lang-python=\"`p500`\" pulumi-lang-yaml=\"`p500`\" pulumi-lang-java=\"`p500`\"\u003e`p500`\u003c/span\u003e). For guidance on finding available plans, see [List available service plans](https://docs.stackit.cloud/products/network/connectivity-hybrid-multi-cloud/vpn/getting-started/gateway-create/#list-available-service-plans).\n"
@@ -36263,6 +36368,7 @@
                     "gatewayId",
                     "id",
                     "labels",
+                    "networkConfig",
                     "planId",
                     "projectId",
                     "region",

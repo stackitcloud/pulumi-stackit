@@ -30,7 +30,8 @@ class SfsResourcePoolArgs:
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  snapshot_policy: pulumi.Input[Optional['SfsResourcePoolSnapshotPolicyArgs']] = None,
-                 snapshots_are_visible: pulumi.Input[Optional[_builtins.bool]] = None):
+                 snapshots_are_visible: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeouts: pulumi.Input[Optional['SfsResourcePoolTimeoutsArgs']] = None):
         """
         The set of arguments for constructing a SfsResourcePool resource.
 
@@ -60,6 +61,8 @@ class SfsResourcePoolArgs:
             pulumi.set(__self__, "snapshot_policy", snapshot_policy)
         if snapshots_are_visible is not None:
             pulumi.set(__self__, "snapshots_are_visible", snapshots_are_visible)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
@@ -181,6 +184,15 @@ class SfsResourcePoolArgs:
     def snapshots_are_visible(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "snapshots_are_visible", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Input[Optional['SfsResourcePoolTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: pulumi.Input[Optional['SfsResourcePoolTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
 
 @pulumi.input_type
 class _SfsResourcePoolState:
@@ -195,7 +207,8 @@ class _SfsResourcePoolState:
                  resource_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
                  size_gigabytes: pulumi.Input[Optional[_builtins.int]] = None,
                  snapshot_policy: pulumi.Input[Optional['SfsResourcePoolSnapshotPolicyArgs']] = None,
-                 snapshots_are_visible: pulumi.Input[Optional[_builtins.bool]] = None):
+                 snapshots_are_visible: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeouts: pulumi.Input[Optional['SfsResourcePoolTimeoutsArgs']] = None):
         """
         Input properties used for looking up and filtering SfsResourcePool resources.
 
@@ -233,6 +246,8 @@ class _SfsResourcePoolState:
             pulumi.set(__self__, "snapshot_policy", snapshot_policy)
         if snapshots_are_visible is not None:
             pulumi.set(__self__, "snapshots_are_visible", snapshots_are_visible)
+        if timeouts is not None:
+            pulumi.set(__self__, "timeouts", timeouts)
 
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
@@ -366,6 +381,15 @@ class _SfsResourcePoolState:
     def snapshots_are_visible(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "snapshots_are_visible", value)
 
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Input[Optional['SfsResourcePoolTimeoutsArgs']]:
+        return pulumi.get(self, "timeouts")
+
+    @timeouts.setter
+    def timeouts(self, value: pulumi.Input[Optional['SfsResourcePoolTimeoutsArgs']]):
+        pulumi.set(self, "timeouts", value)
+
 
 @pulumi.type_token("stackit:index/sfsResourcePool:SfsResourcePool")
 class SfsResourcePool(pulumi.CustomResource):
@@ -383,6 +407,7 @@ class SfsResourcePool(pulumi.CustomResource):
                  size_gigabytes: pulumi.Input[Optional[_builtins.int]] = None,
                  snapshot_policy: pulumi.Input[Optional[Union['SfsResourcePoolSnapshotPolicyArgs', 'SfsResourcePoolSnapshotPolicyArgsDict', 'outputs.SfsResourcePoolSnapshotPolicy']]] = None,
                  snapshots_are_visible: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeouts: pulumi.Input[Optional[Union['SfsResourcePoolTimeoutsArgs', 'SfsResourcePoolTimeoutsArgsDict', 'outputs.SfsResourcePoolTimeouts']]] = None,
                  __props__=None):
         """
         Resource-pool resource schema. Must have a `region` specified in the provider configuration.
@@ -452,6 +477,7 @@ class SfsResourcePool(pulumi.CustomResource):
                  size_gigabytes: pulumi.Input[Optional[_builtins.int]] = None,
                  snapshot_policy: pulumi.Input[Optional[Union['SfsResourcePoolSnapshotPolicyArgs', 'SfsResourcePoolSnapshotPolicyArgsDict', 'outputs.SfsResourcePoolSnapshotPolicy']]] = None,
                  snapshots_are_visible: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeouts: pulumi.Input[Optional[Union['SfsResourcePoolTimeoutsArgs', 'SfsResourcePoolTimeoutsArgsDict', 'outputs.SfsResourcePoolTimeouts']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -481,6 +507,7 @@ class SfsResourcePool(pulumi.CustomResource):
             __props__.__dict__["size_gigabytes"] = size_gigabytes
             __props__.__dict__["snapshot_policy"] = snapshot_policy
             __props__.__dict__["snapshots_are_visible"] = snapshots_are_visible
+            __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["resource_pool_id"] = None
         super(SfsResourcePool, __self__).__init__(
             'stackit:index/sfsResourcePool:SfsResourcePool',
@@ -502,7 +529,8 @@ class SfsResourcePool(pulumi.CustomResource):
             resource_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
             size_gigabytes: pulumi.Input[Optional[_builtins.int]] = None,
             snapshot_policy: pulumi.Input[Optional[Union['SfsResourcePoolSnapshotPolicyArgs', 'SfsResourcePoolSnapshotPolicyArgsDict', 'outputs.SfsResourcePoolSnapshotPolicy']]] = None,
-            snapshots_are_visible: pulumi.Input[Optional[_builtins.bool]] = None) -> 'SfsResourcePool':
+            snapshots_are_visible: pulumi.Input[Optional[_builtins.bool]] = None,
+            timeouts: pulumi.Input[Optional[Union['SfsResourcePoolTimeoutsArgs', 'SfsResourcePoolTimeoutsArgsDict', 'outputs.SfsResourcePoolTimeouts']]] = None) -> 'SfsResourcePool':
         """
         Get an existing SfsResourcePool resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -537,6 +565,7 @@ class SfsResourcePool(pulumi.CustomResource):
         __props__.__dict__["size_gigabytes"] = size_gigabytes
         __props__.__dict__["snapshot_policy"] = snapshot_policy
         __props__.__dict__["snapshots_are_visible"] = snapshots_are_visible
+        __props__.__dict__["timeouts"] = timeouts
         return SfsResourcePool(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -626,4 +655,9 @@ class SfsResourcePool(pulumi.CustomResource):
         If set to true, snapshots are visible and accessible to users. (default: false)
         """
         return pulumi.get(self, "snapshots_are_visible")
+
+    @_builtins.property
+    @pulumi.getter
+    def timeouts(self) -> pulumi.Output[Optional['outputs.SfsResourcePoolTimeouts']]:
+        return pulumi.get(self, "timeouts")
 
