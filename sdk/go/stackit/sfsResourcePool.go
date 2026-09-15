@@ -45,7 +45,8 @@ type SfsResourcePool struct {
 	// Name of the snapshot policy.
 	SnapshotPolicy SfsResourcePoolSnapshotPolicyPtrOutput `pulumi:"snapshotPolicy"`
 	// If set to true, snapshots are visible and accessible to users. (default: false)
-	SnapshotsAreVisible pulumi.BoolOutput `pulumi:"snapshotsAreVisible"`
+	SnapshotsAreVisible pulumi.BoolOutput                `pulumi:"snapshotsAreVisible"`
+	Timeouts            SfsResourcePoolTimeoutsPtrOutput `pulumi:"timeouts"`
 }
 
 // NewSfsResourcePool registers a new resource with the given unique name, arguments, and options.
@@ -114,7 +115,8 @@ type sfsResourcePoolState struct {
 	// Name of the snapshot policy.
 	SnapshotPolicy *SfsResourcePoolSnapshotPolicy `pulumi:"snapshotPolicy"`
 	// If set to true, snapshots are visible and accessible to users. (default: false)
-	SnapshotsAreVisible *bool `pulumi:"snapshotsAreVisible"`
+	SnapshotsAreVisible *bool                    `pulumi:"snapshotsAreVisible"`
+	Timeouts            *SfsResourcePoolTimeouts `pulumi:"timeouts"`
 }
 
 type SfsResourcePoolState struct {
@@ -140,6 +142,7 @@ type SfsResourcePoolState struct {
 	SnapshotPolicy SfsResourcePoolSnapshotPolicyPtrInput
 	// If set to true, snapshots are visible and accessible to users. (default: false)
 	SnapshotsAreVisible pulumi.BoolPtrInput
+	Timeouts            SfsResourcePoolTimeoutsPtrInput
 }
 
 func (SfsResourcePoolState) ElementType() reflect.Type {
@@ -166,7 +169,8 @@ type sfsResourcePoolArgs struct {
 	// Name of the snapshot policy.
 	SnapshotPolicy *SfsResourcePoolSnapshotPolicy `pulumi:"snapshotPolicy"`
 	// If set to true, snapshots are visible and accessible to users. (default: false)
-	SnapshotsAreVisible *bool `pulumi:"snapshotsAreVisible"`
+	SnapshotsAreVisible *bool                    `pulumi:"snapshotsAreVisible"`
+	Timeouts            *SfsResourcePoolTimeouts `pulumi:"timeouts"`
 }
 
 // The set of arguments for constructing a SfsResourcePool resource.
@@ -191,6 +195,7 @@ type SfsResourcePoolArgs struct {
 	SnapshotPolicy SfsResourcePoolSnapshotPolicyPtrInput
 	// If set to true, snapshots are visible and accessible to users. (default: false)
 	SnapshotsAreVisible pulumi.BoolPtrInput
+	Timeouts            SfsResourcePoolTimeoutsPtrInput
 }
 
 func (SfsResourcePoolArgs) ElementType() reflect.Type {
@@ -333,6 +338,10 @@ func (o SfsResourcePoolOutput) SnapshotPolicy() SfsResourcePoolSnapshotPolicyPtr
 // If set to true, snapshots are visible and accessible to users. (default: false)
 func (o SfsResourcePoolOutput) SnapshotsAreVisible() pulumi.BoolOutput {
 	return o.ApplyT(func(v *SfsResourcePool) pulumi.BoolOutput { return v.SnapshotsAreVisible }).(pulumi.BoolOutput)
+}
+
+func (o SfsResourcePoolOutput) Timeouts() SfsResourcePoolTimeoutsPtrOutput {
+	return o.ApplyT(func(v *SfsResourcePool) SfsResourcePoolTimeoutsPtrOutput { return v.Timeouts }).(SfsResourcePoolTimeoutsPtrOutput)
 }
 
 type SfsResourcePoolArrayOutput struct{ *pulumi.OutputState }

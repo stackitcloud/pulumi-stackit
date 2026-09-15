@@ -28,6 +28,7 @@ class VpnGatewayArgs:
                  routing_type: pulumi.Input[_builtins.str],
                  bgp: pulumi.Input[Optional['VpnGatewayBgpArgs']] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 network_config: pulumi.Input[Optional['VpnGatewayNetworkConfigArgs']] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a VpnGateway resource.
@@ -39,6 +40,7 @@ class VpnGatewayArgs:
         :param pulumi.Input[_builtins.str] routing_type: Routing architecture. Possible values are: `POLICY_BASED`, `ROUTE_BASED`, `BGP_ROUTE_BASED`.
         :param pulumi.Input['VpnGatewayBgpArgs'] bgp: BGP configuration. Only applicable when routing*type is BGP*ROUTE_BASED.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Map of custom labels (key-value string pairs).
+        :param pulumi.Input['VpnGatewayNetworkConfigArgs'] network_config: Network configuration for the VPN gateway.
         :param pulumi.Input[_builtins.str] region: STACKIT region name the resource is located in. If not defined, the provider region is used.
         """
         pulumi.set(__self__, "availability_zones", availability_zones)
@@ -50,6 +52,8 @@ class VpnGatewayArgs:
             pulumi.set(__self__, "bgp", bgp)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if network_config is not None:
+            pulumi.set(__self__, "network_config", network_config)
         if region is not None:
             pulumi.set(__self__, "region", region)
 
@@ -138,6 +142,18 @@ class VpnGatewayArgs:
         pulumi.set(self, "labels", value)
 
     @_builtins.property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> pulumi.Input[Optional['VpnGatewayNetworkConfigArgs']]:
+        """
+        Network configuration for the VPN gateway.
+        """
+        return pulumi.get(self, "network_config")
+
+    @network_config.setter
+    def network_config(self, value: pulumi.Input[Optional['VpnGatewayNetworkConfigArgs']]):
+        pulumi.set(self, "network_config", value)
+
+    @_builtins.property
     @pulumi.getter
     def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -158,6 +174,7 @@ class _VpnGatewayState:
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 network_config: pulumi.Input[Optional['VpnGatewayNetworkConfigArgs']] = None,
                  plan_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -170,6 +187,7 @@ class _VpnGatewayState:
         :param pulumi.Input[_builtins.str] display_name: A user-friendly name for the VPN gateway.
         :param pulumi.Input[_builtins.str] gateway_id: The server-generated UUID of the VPN gateway.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Map of custom labels (key-value string pairs).
+        :param pulumi.Input['VpnGatewayNetworkConfigArgs'] network_config: Network configuration for the VPN gateway.
         :param pulumi.Input[_builtins.str] plan_id: The service plan identifier (e.g. `p500`). For guidance on finding available plans, see [List available service plans](https://docs.stackit.cloud/products/network/connectivity-hybrid-multi-cloud/vpn/getting-started/gateway-create/#list-available-service-plans).
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID associated with the VPN gateway.
         :param pulumi.Input[_builtins.str] region: STACKIT region name the resource is located in. If not defined, the provider region is used.
@@ -185,6 +203,8 @@ class _VpnGatewayState:
             pulumi.set(__self__, "gateway_id", gateway_id)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if network_config is not None:
+            pulumi.set(__self__, "network_config", network_config)
         if plan_id is not None:
             pulumi.set(__self__, "plan_id", plan_id)
         if project_id is not None:
@@ -255,6 +275,18 @@ class _VpnGatewayState:
         pulumi.set(self, "labels", value)
 
     @_builtins.property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> pulumi.Input[Optional['VpnGatewayNetworkConfigArgs']]:
+        """
+        Network configuration for the VPN gateway.
+        """
+        return pulumi.get(self, "network_config")
+
+    @network_config.setter
+    def network_config(self, value: pulumi.Input[Optional['VpnGatewayNetworkConfigArgs']]):
+        pulumi.set(self, "network_config", value)
+
+    @_builtins.property
     @pulumi.getter(name="planId")
     def plan_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -313,6 +345,7 @@ class VpnGateway(pulumi.CustomResource):
                  bgp: pulumi.Input[Optional[Union['VpnGatewayBgpArgs', 'VpnGatewayBgpArgsDict', 'outputs.VpnGatewayBgp']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 network_config: pulumi.Input[Optional[Union['VpnGatewayNetworkConfigArgs', 'VpnGatewayNetworkConfigArgsDict', 'outputs.VpnGatewayNetworkConfig']]] = None,
                  plan_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -334,6 +367,7 @@ class VpnGateway(pulumi.CustomResource):
         :param pulumi.Input[Union['VpnGatewayBgpArgs', 'VpnGatewayBgpArgsDict', 'outputs.VpnGatewayBgp']] bgp: BGP configuration. Only applicable when routing*type is BGP*ROUTE_BASED.
         :param pulumi.Input[_builtins.str] display_name: A user-friendly name for the VPN gateway.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Map of custom labels (key-value string pairs).
+        :param pulumi.Input[Union['VpnGatewayNetworkConfigArgs', 'VpnGatewayNetworkConfigArgsDict', 'outputs.VpnGatewayNetworkConfig']] network_config: Network configuration for the VPN gateway.
         :param pulumi.Input[_builtins.str] plan_id: The service plan identifier (e.g. `p500`). For guidance on finding available plans, see [List available service plans](https://docs.stackit.cloud/products/network/connectivity-hybrid-multi-cloud/vpn/getting-started/gateway-create/#list-available-service-plans).
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID associated with the VPN gateway.
         :param pulumi.Input[_builtins.str] region: STACKIT region name the resource is located in. If not defined, the provider region is used.
@@ -374,6 +408,7 @@ class VpnGateway(pulumi.CustomResource):
                  bgp: pulumi.Input[Optional[Union['VpnGatewayBgpArgs', 'VpnGatewayBgpArgsDict', 'outputs.VpnGatewayBgp']]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 network_config: pulumi.Input[Optional[Union['VpnGatewayNetworkConfigArgs', 'VpnGatewayNetworkConfigArgsDict', 'outputs.VpnGatewayNetworkConfig']]] = None,
                  plan_id: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -395,6 +430,7 @@ class VpnGateway(pulumi.CustomResource):
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["labels"] = labels
+            __props__.__dict__["network_config"] = network_config
             if plan_id is None and not opts.urn:
                 raise TypeError("Missing required property 'plan_id'")
             __props__.__dict__["plan_id"] = plan_id
@@ -421,6 +457,7 @@ class VpnGateway(pulumi.CustomResource):
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
             gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
             labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            network_config: pulumi.Input[Optional[Union['VpnGatewayNetworkConfigArgs', 'VpnGatewayNetworkConfigArgsDict', 'outputs.VpnGatewayNetworkConfig']]] = None,
             plan_id: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
             region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -437,6 +474,7 @@ class VpnGateway(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] display_name: A user-friendly name for the VPN gateway.
         :param pulumi.Input[_builtins.str] gateway_id: The server-generated UUID of the VPN gateway.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Map of custom labels (key-value string pairs).
+        :param pulumi.Input[Union['VpnGatewayNetworkConfigArgs', 'VpnGatewayNetworkConfigArgsDict', 'outputs.VpnGatewayNetworkConfig']] network_config: Network configuration for the VPN gateway.
         :param pulumi.Input[_builtins.str] plan_id: The service plan identifier (e.g. `p500`). For guidance on finding available plans, see [List available service plans](https://docs.stackit.cloud/products/network/connectivity-hybrid-multi-cloud/vpn/getting-started/gateway-create/#list-available-service-plans).
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID associated with the VPN gateway.
         :param pulumi.Input[_builtins.str] region: STACKIT region name the resource is located in. If not defined, the provider region is used.
@@ -451,6 +489,7 @@ class VpnGateway(pulumi.CustomResource):
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["gateway_id"] = gateway_id
         __props__.__dict__["labels"] = labels
+        __props__.__dict__["network_config"] = network_config
         __props__.__dict__["plan_id"] = plan_id
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["region"] = region
@@ -496,6 +535,14 @@ class VpnGateway(pulumi.CustomResource):
         Map of custom labels (key-value string pairs).
         """
         return pulumi.get(self, "labels")
+
+    @_builtins.property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> pulumi.Output[Optional['outputs.VpnGatewayNetworkConfig']]:
+        """
+        Network configuration for the VPN gateway.
+        """
+        return pulumi.get(self, "network_config")
 
     @_builtins.property
     @pulumi.getter(name="planId")

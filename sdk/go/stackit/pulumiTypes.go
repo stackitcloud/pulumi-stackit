@@ -3243,6 +3243,8 @@ func (o ApplicationLoadBalancerTargetPoolArrayOutput) Index(i pulumi.IntInput) A
 }
 
 type ApplicationLoadBalancerTargetPoolActiveHealthCheck struct {
+	// Overrides the default port used for health check probes.
+	AltPort *int `pulumi:"altPort"`
 	// Healthy threshold of the health checking.
 	HealthyThreshold int `pulumi:"healthyThreshold"`
 	// Options for the HTTP health checking.
@@ -3269,6 +3271,8 @@ type ApplicationLoadBalancerTargetPoolActiveHealthCheckInput interface {
 }
 
 type ApplicationLoadBalancerTargetPoolActiveHealthCheckArgs struct {
+	// Overrides the default port used for health check probes.
+	AltPort pulumi.IntPtrInput `pulumi:"altPort"`
 	// Healthy threshold of the health checking.
 	HealthyThreshold pulumi.IntInput `pulumi:"healthyThreshold"`
 	// Options for the HTTP health checking.
@@ -3360,6 +3364,11 @@ func (o ApplicationLoadBalancerTargetPoolActiveHealthCheckOutput) ToApplicationL
 	}).(ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutput)
 }
 
+// Overrides the default port used for health check probes.
+func (o ApplicationLoadBalancerTargetPoolActiveHealthCheckOutput) AltPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ApplicationLoadBalancerTargetPoolActiveHealthCheck) *int { return v.AltPort }).(pulumi.IntPtrOutput)
+}
+
 // Healthy threshold of the health checking.
 func (o ApplicationLoadBalancerTargetPoolActiveHealthCheckOutput) HealthyThreshold() pulumi.IntOutput {
 	return o.ApplyT(func(v ApplicationLoadBalancerTargetPoolActiveHealthCheck) int { return v.HealthyThreshold }).(pulumi.IntOutput)
@@ -3414,6 +3423,16 @@ func (o ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutput) Elem() Appl
 		var ret ApplicationLoadBalancerTargetPoolActiveHealthCheck
 		return ret
 	}).(ApplicationLoadBalancerTargetPoolActiveHealthCheckOutput)
+}
+
+// Overrides the default port used for health check probes.
+func (o ApplicationLoadBalancerTargetPoolActiveHealthCheckPtrOutput) AltPort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ApplicationLoadBalancerTargetPoolActiveHealthCheck) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AltPort
+	}).(pulumi.IntPtrOutput)
 }
 
 // Healthy threshold of the health checking.
@@ -18888,6 +18907,200 @@ func (o SfsResourcePoolSnapshotPolicyPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type SfsResourcePoolTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create *string `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete *string `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read *string `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update *string `pulumi:"update"`
+}
+
+// SfsResourcePoolTimeoutsInput is an input type that accepts SfsResourcePoolTimeoutsArgs and SfsResourcePoolTimeoutsOutput values.
+// You can construct a concrete instance of `SfsResourcePoolTimeoutsInput` via:
+//
+//	SfsResourcePoolTimeoutsArgs{...}
+type SfsResourcePoolTimeoutsInput interface {
+	pulumi.Input
+
+	ToSfsResourcePoolTimeoutsOutput() SfsResourcePoolTimeoutsOutput
+	ToSfsResourcePoolTimeoutsOutputWithContext(context.Context) SfsResourcePoolTimeoutsOutput
+}
+
+type SfsResourcePoolTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Create pulumi.StringPtrInput `pulumi:"create"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+	Delete pulumi.StringPtrInput `pulumi:"delete"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+	Read pulumi.StringPtrInput `pulumi:"read"`
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Update pulumi.StringPtrInput `pulumi:"update"`
+}
+
+func (SfsResourcePoolTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SfsResourcePoolTimeouts)(nil)).Elem()
+}
+
+func (i SfsResourcePoolTimeoutsArgs) ToSfsResourcePoolTimeoutsOutput() SfsResourcePoolTimeoutsOutput {
+	return i.ToSfsResourcePoolTimeoutsOutputWithContext(context.Background())
+}
+
+func (i SfsResourcePoolTimeoutsArgs) ToSfsResourcePoolTimeoutsOutputWithContext(ctx context.Context) SfsResourcePoolTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SfsResourcePoolTimeoutsOutput)
+}
+
+func (i SfsResourcePoolTimeoutsArgs) ToSfsResourcePoolTimeoutsPtrOutput() SfsResourcePoolTimeoutsPtrOutput {
+	return i.ToSfsResourcePoolTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i SfsResourcePoolTimeoutsArgs) ToSfsResourcePoolTimeoutsPtrOutputWithContext(ctx context.Context) SfsResourcePoolTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SfsResourcePoolTimeoutsOutput).ToSfsResourcePoolTimeoutsPtrOutputWithContext(ctx)
+}
+
+// SfsResourcePoolTimeoutsPtrInput is an input type that accepts SfsResourcePoolTimeoutsArgs, SfsResourcePoolTimeoutsPtr and SfsResourcePoolTimeoutsPtrOutput values.
+// You can construct a concrete instance of `SfsResourcePoolTimeoutsPtrInput` via:
+//
+//	        SfsResourcePoolTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SfsResourcePoolTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToSfsResourcePoolTimeoutsPtrOutput() SfsResourcePoolTimeoutsPtrOutput
+	ToSfsResourcePoolTimeoutsPtrOutputWithContext(context.Context) SfsResourcePoolTimeoutsPtrOutput
+}
+
+type sfsResourcePoolTimeoutsPtrType SfsResourcePoolTimeoutsArgs
+
+func SfsResourcePoolTimeoutsPtr(v *SfsResourcePoolTimeoutsArgs) SfsResourcePoolTimeoutsPtrInput {
+	return (*sfsResourcePoolTimeoutsPtrType)(v)
+}
+
+func (*sfsResourcePoolTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SfsResourcePoolTimeouts)(nil)).Elem()
+}
+
+func (i *sfsResourcePoolTimeoutsPtrType) ToSfsResourcePoolTimeoutsPtrOutput() SfsResourcePoolTimeoutsPtrOutput {
+	return i.ToSfsResourcePoolTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *sfsResourcePoolTimeoutsPtrType) ToSfsResourcePoolTimeoutsPtrOutputWithContext(ctx context.Context) SfsResourcePoolTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SfsResourcePoolTimeoutsPtrOutput)
+}
+
+type SfsResourcePoolTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (SfsResourcePoolTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SfsResourcePoolTimeouts)(nil)).Elem()
+}
+
+func (o SfsResourcePoolTimeoutsOutput) ToSfsResourcePoolTimeoutsOutput() SfsResourcePoolTimeoutsOutput {
+	return o
+}
+
+func (o SfsResourcePoolTimeoutsOutput) ToSfsResourcePoolTimeoutsOutputWithContext(ctx context.Context) SfsResourcePoolTimeoutsOutput {
+	return o
+}
+
+func (o SfsResourcePoolTimeoutsOutput) ToSfsResourcePoolTimeoutsPtrOutput() SfsResourcePoolTimeoutsPtrOutput {
+	return o.ToSfsResourcePoolTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o SfsResourcePoolTimeoutsOutput) ToSfsResourcePoolTimeoutsPtrOutputWithContext(ctx context.Context) SfsResourcePoolTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SfsResourcePoolTimeouts) *SfsResourcePoolTimeouts {
+		return &v
+	}).(SfsResourcePoolTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o SfsResourcePoolTimeoutsOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SfsResourcePoolTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o SfsResourcePoolTimeoutsOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SfsResourcePoolTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o SfsResourcePoolTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SfsResourcePoolTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o SfsResourcePoolTimeoutsOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SfsResourcePoolTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
+}
+
+type SfsResourcePoolTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (SfsResourcePoolTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SfsResourcePoolTimeouts)(nil)).Elem()
+}
+
+func (o SfsResourcePoolTimeoutsPtrOutput) ToSfsResourcePoolTimeoutsPtrOutput() SfsResourcePoolTimeoutsPtrOutput {
+	return o
+}
+
+func (o SfsResourcePoolTimeoutsPtrOutput) ToSfsResourcePoolTimeoutsPtrOutputWithContext(ctx context.Context) SfsResourcePoolTimeoutsPtrOutput {
+	return o
+}
+
+func (o SfsResourcePoolTimeoutsPtrOutput) Elem() SfsResourcePoolTimeoutsOutput {
+	return o.ApplyT(func(v *SfsResourcePoolTimeouts) SfsResourcePoolTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret SfsResourcePoolTimeouts
+		return ret
+	}).(SfsResourcePoolTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o SfsResourcePoolTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SfsResourcePoolTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Create
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+func (o SfsResourcePoolTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SfsResourcePoolTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Delete
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+func (o SfsResourcePoolTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SfsResourcePoolTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o SfsResourcePoolTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SfsResourcePoolTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Update
+	}).(pulumi.StringPtrOutput)
+}
+
 type SkeClusterAccess struct {
 	// Configure IDP
 	Idp *SkeClusterAccessIdp `pulumi:"idp"`
@@ -28025,6 +28238,162 @@ func (o VpnGatewayBgpPtrOutput) OverrideAdvertisedRoutes() pulumi.StringArrayOut
 	}).(pulumi.StringArrayOutput)
 }
 
+type VpnGatewayNetworkConfig struct {
+	// The IPv4 network prefix (CIDR notation) allocated for the VPN gateway. Must have a prefix length of /28 or larger. Cannot be changed after the gateway is created.
+	PredefinedNetworkPrefix *string `pulumi:"predefinedNetworkPrefix"`
+	// Custom routing table ID for the VPN gateway. If omitted, a default routing table is assigned.
+	RoutingTableId *string `pulumi:"routingTableId"`
+}
+
+// VpnGatewayNetworkConfigInput is an input type that accepts VpnGatewayNetworkConfigArgs and VpnGatewayNetworkConfigOutput values.
+// You can construct a concrete instance of `VpnGatewayNetworkConfigInput` via:
+//
+//	VpnGatewayNetworkConfigArgs{...}
+type VpnGatewayNetworkConfigInput interface {
+	pulumi.Input
+
+	ToVpnGatewayNetworkConfigOutput() VpnGatewayNetworkConfigOutput
+	ToVpnGatewayNetworkConfigOutputWithContext(context.Context) VpnGatewayNetworkConfigOutput
+}
+
+type VpnGatewayNetworkConfigArgs struct {
+	// The IPv4 network prefix (CIDR notation) allocated for the VPN gateway. Must have a prefix length of /28 or larger. Cannot be changed after the gateway is created.
+	PredefinedNetworkPrefix pulumi.StringPtrInput `pulumi:"predefinedNetworkPrefix"`
+	// Custom routing table ID for the VPN gateway. If omitted, a default routing table is assigned.
+	RoutingTableId pulumi.StringPtrInput `pulumi:"routingTableId"`
+}
+
+func (VpnGatewayNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnGatewayNetworkConfig)(nil)).Elem()
+}
+
+func (i VpnGatewayNetworkConfigArgs) ToVpnGatewayNetworkConfigOutput() VpnGatewayNetworkConfigOutput {
+	return i.ToVpnGatewayNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i VpnGatewayNetworkConfigArgs) ToVpnGatewayNetworkConfigOutputWithContext(ctx context.Context) VpnGatewayNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnGatewayNetworkConfigOutput)
+}
+
+func (i VpnGatewayNetworkConfigArgs) ToVpnGatewayNetworkConfigPtrOutput() VpnGatewayNetworkConfigPtrOutput {
+	return i.ToVpnGatewayNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i VpnGatewayNetworkConfigArgs) ToVpnGatewayNetworkConfigPtrOutputWithContext(ctx context.Context) VpnGatewayNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnGatewayNetworkConfigOutput).ToVpnGatewayNetworkConfigPtrOutputWithContext(ctx)
+}
+
+// VpnGatewayNetworkConfigPtrInput is an input type that accepts VpnGatewayNetworkConfigArgs, VpnGatewayNetworkConfigPtr and VpnGatewayNetworkConfigPtrOutput values.
+// You can construct a concrete instance of `VpnGatewayNetworkConfigPtrInput` via:
+//
+//	        VpnGatewayNetworkConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type VpnGatewayNetworkConfigPtrInput interface {
+	pulumi.Input
+
+	ToVpnGatewayNetworkConfigPtrOutput() VpnGatewayNetworkConfigPtrOutput
+	ToVpnGatewayNetworkConfigPtrOutputWithContext(context.Context) VpnGatewayNetworkConfigPtrOutput
+}
+
+type vpnGatewayNetworkConfigPtrType VpnGatewayNetworkConfigArgs
+
+func VpnGatewayNetworkConfigPtr(v *VpnGatewayNetworkConfigArgs) VpnGatewayNetworkConfigPtrInput {
+	return (*vpnGatewayNetworkConfigPtrType)(v)
+}
+
+func (*vpnGatewayNetworkConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnGatewayNetworkConfig)(nil)).Elem()
+}
+
+func (i *vpnGatewayNetworkConfigPtrType) ToVpnGatewayNetworkConfigPtrOutput() VpnGatewayNetworkConfigPtrOutput {
+	return i.ToVpnGatewayNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *vpnGatewayNetworkConfigPtrType) ToVpnGatewayNetworkConfigPtrOutputWithContext(ctx context.Context) VpnGatewayNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpnGatewayNetworkConfigPtrOutput)
+}
+
+type VpnGatewayNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (VpnGatewayNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpnGatewayNetworkConfig)(nil)).Elem()
+}
+
+func (o VpnGatewayNetworkConfigOutput) ToVpnGatewayNetworkConfigOutput() VpnGatewayNetworkConfigOutput {
+	return o
+}
+
+func (o VpnGatewayNetworkConfigOutput) ToVpnGatewayNetworkConfigOutputWithContext(ctx context.Context) VpnGatewayNetworkConfigOutput {
+	return o
+}
+
+func (o VpnGatewayNetworkConfigOutput) ToVpnGatewayNetworkConfigPtrOutput() VpnGatewayNetworkConfigPtrOutput {
+	return o.ToVpnGatewayNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (o VpnGatewayNetworkConfigOutput) ToVpnGatewayNetworkConfigPtrOutputWithContext(ctx context.Context) VpnGatewayNetworkConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VpnGatewayNetworkConfig) *VpnGatewayNetworkConfig {
+		return &v
+	}).(VpnGatewayNetworkConfigPtrOutput)
+}
+
+// The IPv4 network prefix (CIDR notation) allocated for the VPN gateway. Must have a prefix length of /28 or larger. Cannot be changed after the gateway is created.
+func (o VpnGatewayNetworkConfigOutput) PredefinedNetworkPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpnGatewayNetworkConfig) *string { return v.PredefinedNetworkPrefix }).(pulumi.StringPtrOutput)
+}
+
+// Custom routing table ID for the VPN gateway. If omitted, a default routing table is assigned.
+func (o VpnGatewayNetworkConfigOutput) RoutingTableId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpnGatewayNetworkConfig) *string { return v.RoutingTableId }).(pulumi.StringPtrOutput)
+}
+
+type VpnGatewayNetworkConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (VpnGatewayNetworkConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VpnGatewayNetworkConfig)(nil)).Elem()
+}
+
+func (o VpnGatewayNetworkConfigPtrOutput) ToVpnGatewayNetworkConfigPtrOutput() VpnGatewayNetworkConfigPtrOutput {
+	return o
+}
+
+func (o VpnGatewayNetworkConfigPtrOutput) ToVpnGatewayNetworkConfigPtrOutputWithContext(ctx context.Context) VpnGatewayNetworkConfigPtrOutput {
+	return o
+}
+
+func (o VpnGatewayNetworkConfigPtrOutput) Elem() VpnGatewayNetworkConfigOutput {
+	return o.ApplyT(func(v *VpnGatewayNetworkConfig) VpnGatewayNetworkConfig {
+		if v != nil {
+			return *v
+		}
+		var ret VpnGatewayNetworkConfig
+		return ret
+	}).(VpnGatewayNetworkConfigOutput)
+}
+
+// The IPv4 network prefix (CIDR notation) allocated for the VPN gateway. Must have a prefix length of /28 or larger. Cannot be changed after the gateway is created.
+func (o VpnGatewayNetworkConfigPtrOutput) PredefinedNetworkPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnGatewayNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PredefinedNetworkPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom routing table ID for the VPN gateway. If omitted, a default routing table is assigned.
+func (o VpnGatewayNetworkConfigPtrOutput) RoutingTableId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VpnGatewayNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoutingTableId
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetAlbWafCustomRuleGroupRule struct {
 	Behavior   GetAlbWafCustomRuleGroupRuleBehavior    `pulumi:"behavior"`
 	Conditions []GetAlbWafCustomRuleGroupRuleCondition `pulumi:"conditions"`
@@ -30319,6 +30688,8 @@ func (o GetApplicationLoadBalancerTargetPoolArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetApplicationLoadBalancerTargetPoolActiveHealthCheck struct {
+	// Overrides the default port used for health check probes.
+	AltPort int `pulumi:"altPort"`
 	// Healthy threshold of the health checking.
 	HealthyThreshold int `pulumi:"healthyThreshold"`
 	// Options for the HTTP health checking.
@@ -30345,6 +30716,8 @@ type GetApplicationLoadBalancerTargetPoolActiveHealthCheckInput interface {
 }
 
 type GetApplicationLoadBalancerTargetPoolActiveHealthCheckArgs struct {
+	// Overrides the default port used for health check probes.
+	AltPort pulumi.IntInput `pulumi:"altPort"`
 	// Healthy threshold of the health checking.
 	HealthyThreshold pulumi.IntInput `pulumi:"healthyThreshold"`
 	// Options for the HTTP health checking.
@@ -30383,6 +30756,11 @@ func (o GetApplicationLoadBalancerTargetPoolActiveHealthCheckOutput) ToGetApplic
 
 func (o GetApplicationLoadBalancerTargetPoolActiveHealthCheckOutput) ToGetApplicationLoadBalancerTargetPoolActiveHealthCheckOutputWithContext(ctx context.Context) GetApplicationLoadBalancerTargetPoolActiveHealthCheckOutput {
 	return o
+}
+
+// Overrides the default port used for health check probes.
+func (o GetApplicationLoadBalancerTargetPoolActiveHealthCheckOutput) AltPort() pulumi.IntOutput {
+	return o.ApplyT(func(v GetApplicationLoadBalancerTargetPoolActiveHealthCheck) int { return v.AltPort }).(pulumi.IntOutput)
 }
 
 // Healthy threshold of the health checking.
@@ -40666,6 +41044,143 @@ func (o GetSfsResourcePoolSnapshotSnapshotArrayOutput) Index(i pulumi.IntInput) 
 	}).(GetSfsResourcePoolSnapshotSnapshotOutput)
 }
 
+type GetSfsResourcePoolTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetSfsResourcePoolTimeoutsInput is an input type that accepts GetSfsResourcePoolTimeoutsArgs and GetSfsResourcePoolTimeoutsOutput values.
+// You can construct a concrete instance of `GetSfsResourcePoolTimeoutsInput` via:
+//
+//	GetSfsResourcePoolTimeoutsArgs{...}
+type GetSfsResourcePoolTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetSfsResourcePoolTimeoutsOutput() GetSfsResourcePoolTimeoutsOutput
+	ToGetSfsResourcePoolTimeoutsOutputWithContext(context.Context) GetSfsResourcePoolTimeoutsOutput
+}
+
+type GetSfsResourcePoolTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetSfsResourcePoolTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSfsResourcePoolTimeouts)(nil)).Elem()
+}
+
+func (i GetSfsResourcePoolTimeoutsArgs) ToGetSfsResourcePoolTimeoutsOutput() GetSfsResourcePoolTimeoutsOutput {
+	return i.ToGetSfsResourcePoolTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetSfsResourcePoolTimeoutsArgs) ToGetSfsResourcePoolTimeoutsOutputWithContext(ctx context.Context) GetSfsResourcePoolTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSfsResourcePoolTimeoutsOutput)
+}
+
+func (i GetSfsResourcePoolTimeoutsArgs) ToGetSfsResourcePoolTimeoutsPtrOutput() GetSfsResourcePoolTimeoutsPtrOutput {
+	return i.ToGetSfsResourcePoolTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetSfsResourcePoolTimeoutsArgs) ToGetSfsResourcePoolTimeoutsPtrOutputWithContext(ctx context.Context) GetSfsResourcePoolTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSfsResourcePoolTimeoutsOutput).ToGetSfsResourcePoolTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetSfsResourcePoolTimeoutsPtrInput is an input type that accepts GetSfsResourcePoolTimeoutsArgs, GetSfsResourcePoolTimeoutsPtr and GetSfsResourcePoolTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetSfsResourcePoolTimeoutsPtrInput` via:
+//
+//	        GetSfsResourcePoolTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetSfsResourcePoolTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetSfsResourcePoolTimeoutsPtrOutput() GetSfsResourcePoolTimeoutsPtrOutput
+	ToGetSfsResourcePoolTimeoutsPtrOutputWithContext(context.Context) GetSfsResourcePoolTimeoutsPtrOutput
+}
+
+type getSfsResourcePoolTimeoutsPtrType GetSfsResourcePoolTimeoutsArgs
+
+func GetSfsResourcePoolTimeoutsPtr(v *GetSfsResourcePoolTimeoutsArgs) GetSfsResourcePoolTimeoutsPtrInput {
+	return (*getSfsResourcePoolTimeoutsPtrType)(v)
+}
+
+func (*getSfsResourcePoolTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSfsResourcePoolTimeouts)(nil)).Elem()
+}
+
+func (i *getSfsResourcePoolTimeoutsPtrType) ToGetSfsResourcePoolTimeoutsPtrOutput() GetSfsResourcePoolTimeoutsPtrOutput {
+	return i.ToGetSfsResourcePoolTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getSfsResourcePoolTimeoutsPtrType) ToGetSfsResourcePoolTimeoutsPtrOutputWithContext(ctx context.Context) GetSfsResourcePoolTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSfsResourcePoolTimeoutsPtrOutput)
+}
+
+type GetSfsResourcePoolTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetSfsResourcePoolTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSfsResourcePoolTimeouts)(nil)).Elem()
+}
+
+func (o GetSfsResourcePoolTimeoutsOutput) ToGetSfsResourcePoolTimeoutsOutput() GetSfsResourcePoolTimeoutsOutput {
+	return o
+}
+
+func (o GetSfsResourcePoolTimeoutsOutput) ToGetSfsResourcePoolTimeoutsOutputWithContext(ctx context.Context) GetSfsResourcePoolTimeoutsOutput {
+	return o
+}
+
+func (o GetSfsResourcePoolTimeoutsOutput) ToGetSfsResourcePoolTimeoutsPtrOutput() GetSfsResourcePoolTimeoutsPtrOutput {
+	return o.ToGetSfsResourcePoolTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetSfsResourcePoolTimeoutsOutput) ToGetSfsResourcePoolTimeoutsPtrOutputWithContext(ctx context.Context) GetSfsResourcePoolTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetSfsResourcePoolTimeouts) *GetSfsResourcePoolTimeouts {
+		return &v
+	}).(GetSfsResourcePoolTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetSfsResourcePoolTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSfsResourcePoolTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetSfsResourcePoolTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetSfsResourcePoolTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetSfsResourcePoolTimeouts)(nil)).Elem()
+}
+
+func (o GetSfsResourcePoolTimeoutsPtrOutput) ToGetSfsResourcePoolTimeoutsPtrOutput() GetSfsResourcePoolTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetSfsResourcePoolTimeoutsPtrOutput) ToGetSfsResourcePoolTimeoutsPtrOutputWithContext(ctx context.Context) GetSfsResourcePoolTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetSfsResourcePoolTimeoutsPtrOutput) Elem() GetSfsResourcePoolTimeoutsOutput {
+	return o.ApplyT(func(v *GetSfsResourcePoolTimeouts) GetSfsResourcePoolTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetSfsResourcePoolTimeouts
+		return ret
+	}).(GetSfsResourcePoolTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetSfsResourcePoolTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetSfsResourcePoolTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetSfsSnapshotPoliciesItem struct {
 	// Comment of the Snapshot Policy.
 	Comment string `pulumi:"comment"`
@@ -45927,6 +46442,67 @@ func (o GetVpnGatewayBgpOutput) OverrideAdvertisedRoutes() pulumi.StringArrayOut
 	return o.ApplyT(func(v GetVpnGatewayBgp) []string { return v.OverrideAdvertisedRoutes }).(pulumi.StringArrayOutput)
 }
 
+type GetVpnGatewayNetworkConfig struct {
+	// The IPv4 network prefix (CIDR notation) allocated for the VPN gateway. Must have a prefix length of /28 or larger. Cannot be changed after the gateway is created.
+	PredefinedNetworkPrefix string `pulumi:"predefinedNetworkPrefix"`
+	// Custom routing table ID for the VPN gateway. If omitted, a default routing table is assigned.
+	RoutingTableId string `pulumi:"routingTableId"`
+}
+
+// GetVpnGatewayNetworkConfigInput is an input type that accepts GetVpnGatewayNetworkConfigArgs and GetVpnGatewayNetworkConfigOutput values.
+// You can construct a concrete instance of `GetVpnGatewayNetworkConfigInput` via:
+//
+//	GetVpnGatewayNetworkConfigArgs{...}
+type GetVpnGatewayNetworkConfigInput interface {
+	pulumi.Input
+
+	ToGetVpnGatewayNetworkConfigOutput() GetVpnGatewayNetworkConfigOutput
+	ToGetVpnGatewayNetworkConfigOutputWithContext(context.Context) GetVpnGatewayNetworkConfigOutput
+}
+
+type GetVpnGatewayNetworkConfigArgs struct {
+	// The IPv4 network prefix (CIDR notation) allocated for the VPN gateway. Must have a prefix length of /28 or larger. Cannot be changed after the gateway is created.
+	PredefinedNetworkPrefix pulumi.StringInput `pulumi:"predefinedNetworkPrefix"`
+	// Custom routing table ID for the VPN gateway. If omitted, a default routing table is assigned.
+	RoutingTableId pulumi.StringInput `pulumi:"routingTableId"`
+}
+
+func (GetVpnGatewayNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpnGatewayNetworkConfig)(nil)).Elem()
+}
+
+func (i GetVpnGatewayNetworkConfigArgs) ToGetVpnGatewayNetworkConfigOutput() GetVpnGatewayNetworkConfigOutput {
+	return i.ToGetVpnGatewayNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i GetVpnGatewayNetworkConfigArgs) ToGetVpnGatewayNetworkConfigOutputWithContext(ctx context.Context) GetVpnGatewayNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpnGatewayNetworkConfigOutput)
+}
+
+type GetVpnGatewayNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (GetVpnGatewayNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpnGatewayNetworkConfig)(nil)).Elem()
+}
+
+func (o GetVpnGatewayNetworkConfigOutput) ToGetVpnGatewayNetworkConfigOutput() GetVpnGatewayNetworkConfigOutput {
+	return o
+}
+
+func (o GetVpnGatewayNetworkConfigOutput) ToGetVpnGatewayNetworkConfigOutputWithContext(ctx context.Context) GetVpnGatewayNetworkConfigOutput {
+	return o
+}
+
+// The IPv4 network prefix (CIDR notation) allocated for the VPN gateway. Must have a prefix length of /28 or larger. Cannot be changed after the gateway is created.
+func (o GetVpnGatewayNetworkConfigOutput) PredefinedNetworkPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpnGatewayNetworkConfig) string { return v.PredefinedNetworkPrefix }).(pulumi.StringOutput)
+}
+
+// Custom routing table ID for the VPN gateway. If omitted, a default routing table is assigned.
+func (o GetVpnGatewayNetworkConfigOutput) RoutingTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpnGatewayNetworkConfig) string { return v.RoutingTableId }).(pulumi.StringOutput)
+}
+
 type GetVpnGatewayStatusConnection struct {
 	// ID of the VPN connection.
 	ConnectionId string `pulumi:"connectionId"`
@@ -46374,6 +46950,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SfsExportPolicyRuleArrayInput)(nil)).Elem(), SfsExportPolicyRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SfsResourcePoolSnapshotPolicyInput)(nil)).Elem(), SfsResourcePoolSnapshotPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SfsResourcePoolSnapshotPolicyPtrInput)(nil)).Elem(), SfsResourcePoolSnapshotPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SfsResourcePoolTimeoutsInput)(nil)).Elem(), SfsResourcePoolTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SfsResourcePoolTimeoutsPtrInput)(nil)).Elem(), SfsResourcePoolTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterAccessInput)(nil)).Elem(), SkeClusterAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterAccessPtrInput)(nil)).Elem(), SkeClusterAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SkeClusterAccessIdpInput)(nil)).Elem(), SkeClusterAccessIdpArgs{})
@@ -46476,6 +47054,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayAvailabilityZonesPtrInput)(nil)).Elem(), VpnGatewayAvailabilityZonesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayBgpInput)(nil)).Elem(), VpnGatewayBgpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayBgpPtrInput)(nil)).Elem(), VpnGatewayBgpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayNetworkConfigInput)(nil)).Elem(), VpnGatewayNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpnGatewayNetworkConfigPtrInput)(nil)).Elem(), VpnGatewayNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbWafCustomRuleGroupRuleInput)(nil)).Elem(), GetAlbWafCustomRuleGroupRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbWafCustomRuleGroupRuleArrayInput)(nil)).Elem(), GetAlbWafCustomRuleGroupRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAlbWafCustomRuleGroupRuleBehaviorInput)(nil)).Elem(), GetAlbWafCustomRuleGroupRuleBehaviorArgs{})
@@ -46656,6 +47236,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSfsResourcePoolSnapshotPolicyInput)(nil)).Elem(), GetSfsResourcePoolSnapshotPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSfsResourcePoolSnapshotSnapshotInput)(nil)).Elem(), GetSfsResourcePoolSnapshotSnapshotArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSfsResourcePoolSnapshotSnapshotArrayInput)(nil)).Elem(), GetSfsResourcePoolSnapshotSnapshotArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSfsResourcePoolTimeoutsInput)(nil)).Elem(), GetSfsResourcePoolTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSfsResourcePoolTimeoutsPtrInput)(nil)).Elem(), GetSfsResourcePoolTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSfsSnapshotPoliciesItemInput)(nil)).Elem(), GetSfsSnapshotPoliciesItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSfsSnapshotPoliciesItemArrayInput)(nil)).Elem(), GetSfsSnapshotPoliciesItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSfsSnapshotPoliciesItemSnapshotScheduleInput)(nil)).Elem(), GetSfsSnapshotPoliciesItemSnapshotScheduleArgs{})
@@ -46731,6 +47313,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpnConnectionTunnel2Phase2Input)(nil)).Elem(), GetVpnConnectionTunnel2Phase2Args{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpnGatewayAvailabilityZonesInput)(nil)).Elem(), GetVpnGatewayAvailabilityZonesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpnGatewayBgpInput)(nil)).Elem(), GetVpnGatewayBgpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpnGatewayNetworkConfigInput)(nil)).Elem(), GetVpnGatewayNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpnGatewayStatusConnectionInput)(nil)).Elem(), GetVpnGatewayStatusConnectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpnGatewayStatusConnectionArrayInput)(nil)).Elem(), GetVpnGatewayStatusConnectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpnGatewayStatusTunnelInput)(nil)).Elem(), GetVpnGatewayStatusTunnelArgs{})
@@ -46951,6 +47534,8 @@ func init() {
 	pulumi.RegisterOutputType(SfsExportPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(SfsResourcePoolSnapshotPolicyOutput{})
 	pulumi.RegisterOutputType(SfsResourcePoolSnapshotPolicyPtrOutput{})
+	pulumi.RegisterOutputType(SfsResourcePoolTimeoutsOutput{})
+	pulumi.RegisterOutputType(SfsResourcePoolTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(SkeClusterAccessOutput{})
 	pulumi.RegisterOutputType(SkeClusterAccessPtrOutput{})
 	pulumi.RegisterOutputType(SkeClusterAccessIdpOutput{})
@@ -47053,6 +47638,8 @@ func init() {
 	pulumi.RegisterOutputType(VpnGatewayAvailabilityZonesPtrOutput{})
 	pulumi.RegisterOutputType(VpnGatewayBgpOutput{})
 	pulumi.RegisterOutputType(VpnGatewayBgpPtrOutput{})
+	pulumi.RegisterOutputType(VpnGatewayNetworkConfigOutput{})
+	pulumi.RegisterOutputType(VpnGatewayNetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetAlbWafCustomRuleGroupRuleOutput{})
 	pulumi.RegisterOutputType(GetAlbWafCustomRuleGroupRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetAlbWafCustomRuleGroupRuleBehaviorOutput{})
@@ -47233,6 +47820,8 @@ func init() {
 	pulumi.RegisterOutputType(GetSfsResourcePoolSnapshotPolicyOutput{})
 	pulumi.RegisterOutputType(GetSfsResourcePoolSnapshotSnapshotOutput{})
 	pulumi.RegisterOutputType(GetSfsResourcePoolSnapshotSnapshotArrayOutput{})
+	pulumi.RegisterOutputType(GetSfsResourcePoolTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetSfsResourcePoolTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetSfsSnapshotPoliciesItemOutput{})
 	pulumi.RegisterOutputType(GetSfsSnapshotPoliciesItemArrayOutput{})
 	pulumi.RegisterOutputType(GetSfsSnapshotPoliciesItemSnapshotScheduleOutput{})
@@ -47308,6 +47897,7 @@ func init() {
 	pulumi.RegisterOutputType(GetVpnConnectionTunnel2Phase2Output{})
 	pulumi.RegisterOutputType(GetVpnGatewayAvailabilityZonesOutput{})
 	pulumi.RegisterOutputType(GetVpnGatewayBgpOutput{})
+	pulumi.RegisterOutputType(GetVpnGatewayNetworkConfigOutput{})
 	pulumi.RegisterOutputType(GetVpnGatewayStatusConnectionOutput{})
 	pulumi.RegisterOutputType(GetVpnGatewayStatusConnectionArrayOutput{})
 	pulumi.RegisterOutputType(GetVpnGatewayStatusTunnelOutput{})

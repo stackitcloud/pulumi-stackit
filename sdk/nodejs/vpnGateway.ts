@@ -64,6 +64,10 @@ export class VpnGateway extends pulumi.CustomResource {
      */
     declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
+     * Network configuration for the VPN gateway.
+     */
+    declare public readonly networkConfig: pulumi.Output<outputs.VpnGatewayNetworkConfig | undefined>;
+    /**
      * The service plan identifier (e.g. `p500`). For guidance on finding available plans, see [List available service plans](https://docs.stackit.cloud/products/network/connectivity-hybrid-multi-cloud/vpn/getting-started/gateway-create/#list-available-service-plans).
      */
     declare public readonly planId: pulumi.Output<string>;
@@ -98,6 +102,7 @@ export class VpnGateway extends pulumi.CustomResource {
             resourceInputs["displayName"] = state?.displayName;
             resourceInputs["gatewayId"] = state?.gatewayId;
             resourceInputs["labels"] = state?.labels;
+            resourceInputs["networkConfig"] = state?.networkConfig;
             resourceInputs["planId"] = state?.planId;
             resourceInputs["projectId"] = state?.projectId;
             resourceInputs["region"] = state?.region;
@@ -123,6 +128,7 @@ export class VpnGateway extends pulumi.CustomResource {
             resourceInputs["bgp"] = args?.bgp;
             resourceInputs["displayName"] = args?.displayName;
             resourceInputs["labels"] = args?.labels;
+            resourceInputs["networkConfig"] = args?.networkConfig;
             resourceInputs["planId"] = args?.planId;
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["region"] = args?.region;
@@ -158,6 +164,10 @@ export interface VpnGatewayState {
      * Map of custom labels (key-value string pairs).
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Network configuration for the VPN gateway.
+     */
+    networkConfig?: pulumi.Input<inputs.VpnGatewayNetworkConfig | undefined>;
     /**
      * The service plan identifier (e.g. `p500`). For guidance on finding available plans, see [List available service plans](https://docs.stackit.cloud/products/network/connectivity-hybrid-multi-cloud/vpn/getting-started/gateway-create/#list-available-service-plans).
      */
@@ -196,6 +206,10 @@ export interface VpnGatewayArgs {
      * Map of custom labels (key-value string pairs).
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Network configuration for the VPN gateway.
+     */
+    networkConfig?: pulumi.Input<inputs.VpnGatewayNetworkConfig | undefined>;
     /**
      * The service plan identifier (e.g. `p500`). For guidance on finding available plans, see [List available service plans](https://docs.stackit.cloud/products/network/connectivity-hybrid-multi-cloud/vpn/getting-started/gateway-create/#list-available-service-plans).
      */

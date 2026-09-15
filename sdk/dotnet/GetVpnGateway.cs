@@ -127,6 +127,10 @@ namespace Pulumi.Stackit
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
+        /// Network configuration for the VPN gateway.
+        /// </summary>
+        public readonly Outputs.GetVpnGatewayNetworkConfigResult NetworkConfig;
+        /// <summary>
         /// The service plan identifier (e.g. `P500`). For guidance on finding available plans, see [List available service plans](https://docs.stackit.cloud/products/network/connectivity-hybrid-multi-cloud/vpn/getting-started/gateway-create/#list-available-service-plans).
         /// </summary>
         public readonly string PlanId;
@@ -157,6 +161,8 @@ namespace Pulumi.Stackit
 
             ImmutableDictionary<string, string> labels,
 
+            Outputs.GetVpnGatewayNetworkConfigResult networkConfig,
+
             string planId,
 
             string projectId,
@@ -171,6 +177,7 @@ namespace Pulumi.Stackit
             GatewayId = gatewayId;
             Id = id;
             Labels = labels;
+            NetworkConfig = networkConfig;
             PlanId = planId;
             ProjectId = projectId;
             Region = region;

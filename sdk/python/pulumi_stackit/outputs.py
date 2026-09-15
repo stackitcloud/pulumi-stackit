@@ -126,6 +126,7 @@ __all__ = [
     'ServiceAccountFederatedIdentityProviderAssertion',
     'SfsExportPolicyRule',
     'SfsResourcePoolSnapshotPolicy',
+    'SfsResourcePoolTimeouts',
     'SkeClusterAccess',
     'SkeClusterAccessIdp',
     'SkeClusterAudit',
@@ -177,6 +178,7 @@ __all__ = [
     'VpnConnectionTunnel2Phase2',
     'VpnGatewayAvailabilityZones',
     'VpnGatewayBgp',
+    'VpnGatewayNetworkConfig',
     'GetAlbWafCustomRuleGroupRuleResult',
     'GetAlbWafCustomRuleGroupRuleBehaviorResult',
     'GetAlbWafCustomRuleGroupRuleConditionResult',
@@ -305,6 +307,7 @@ __all__ = [
     'GetSfsExportPolicyRuleResult',
     'GetSfsResourcePoolSnapshotPolicyResult',
     'GetSfsResourcePoolSnapshotSnapshotResult',
+    'GetSfsResourcePoolTimeoutsResult',
     'GetSfsSnapshotPoliciesItemResult',
     'GetSfsSnapshotPoliciesItemSnapshotScheduleResult',
     'GetSkeClusterAccessResult',
@@ -361,6 +364,7 @@ __all__ = [
     'GetVpnConnectionTunnel2Phase2Result',
     'GetVpnGatewayAvailabilityZonesResult',
     'GetVpnGatewayBgpResult',
+    'GetVpnGatewayNetworkConfigResult',
     'GetVpnGatewayStatusConnectionResult',
     'GetVpnGatewayStatusTunnelResult',
 ]
@@ -1604,6 +1608,8 @@ class ApplicationLoadBalancerTargetPoolActiveHealthCheck(dict):
             suggest = "interval_jitter"
         elif key == "unhealthyThreshold":
             suggest = "unhealthy_threshold"
+        elif key == "altPort":
+            suggest = "alt_port"
         elif key == "httpHealthChecks":
             suggest = "http_health_checks"
 
@@ -1624,6 +1630,7 @@ class ApplicationLoadBalancerTargetPoolActiveHealthCheck(dict):
                  interval_jitter: _builtins.str,
                  timeout: _builtins.str,
                  unhealthy_threshold: _builtins.int,
+                 alt_port: Optional[_builtins.int] = None,
                  http_health_checks: Optional['outputs.ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecks'] = None):
         """
         :param _builtins.int healthy_threshold: Healthy threshold of the health checking.
@@ -1631,6 +1638,7 @@ class ApplicationLoadBalancerTargetPoolActiveHealthCheck(dict):
         :param _builtins.str interval_jitter: Interval duration threshold of the health checking in seconds.
         :param _builtins.str timeout: Active health checking timeout duration in seconds.
         :param _builtins.int unhealthy_threshold: Unhealthy threshold of the health checking.
+        :param _builtins.int alt_port: Overrides the default port used for health check probes.
         :param 'ApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksArgs' http_health_checks: Options for the HTTP health checking.
         """
         pulumi.set(__self__, "healthy_threshold", healthy_threshold)
@@ -1638,6 +1646,8 @@ class ApplicationLoadBalancerTargetPoolActiveHealthCheck(dict):
         pulumi.set(__self__, "interval_jitter", interval_jitter)
         pulumi.set(__self__, "timeout", timeout)
         pulumi.set(__self__, "unhealthy_threshold", unhealthy_threshold)
+        if alt_port is not None:
+            pulumi.set(__self__, "alt_port", alt_port)
         if http_health_checks is not None:
             pulumi.set(__self__, "http_health_checks", http_health_checks)
 
@@ -1680,6 +1690,14 @@ class ApplicationLoadBalancerTargetPoolActiveHealthCheck(dict):
         Unhealthy threshold of the health checking.
         """
         return pulumi.get(self, "unhealthy_threshold")
+
+    @_builtins.property
+    @pulumi.getter(name="altPort")
+    def alt_port(self) -> Optional[_builtins.int]:
+        """
+        Overrides the default port used for health check probes.
+        """
+        return pulumi.get(self, "alt_port")
 
     @_builtins.property
     @pulumi.getter(name="httpHealthChecks")
@@ -7849,6 +7867,61 @@ class SfsResourcePoolSnapshotPolicy(dict):
 
 
 @pulumi.output_type
+class SfsResourcePoolTimeouts(dict):
+    def __init__(__self__, *,
+                 create: Optional[_builtins.str] = None,
+                 delete: Optional[_builtins.str] = None,
+                 read: Optional[_builtins.str] = None,
+                 update: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str create: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        :param _builtins.str delete: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        :param _builtins.str update: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if create is not None:
+            pulumi.set(__self__, "create", create)
+        if delete is not None:
+            pulumi.set(__self__, "delete", delete)
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+        if update is not None:
+            pulumi.set(__self__, "update", update)
+
+    @_builtins.property
+    @pulumi.getter
+    def create(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "create")
+
+    @_builtins.property
+    @pulumi.getter
+    def delete(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Setting a timeout for a Delete operation is only applicable if changes are saved into state before the destroy operation occurs.
+        """
+        return pulumi.get(self, "delete")
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours). Read operations occur during any refresh or planning operation when refresh is enabled.
+        """
+        return pulumi.get(self, "read")
+
+    @_builtins.property
+    @pulumi.getter
+    def update(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "update")
+
+
+@pulumi.output_type
 class SkeClusterAccess(dict):
     def __init__(__self__, *,
                  idp: Optional['outputs.SkeClusterAccessIdp'] = None):
@@ -10975,6 +11048,56 @@ class VpnGatewayBgp(dict):
 
 
 @pulumi.output_type
+class VpnGatewayNetworkConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "predefinedNetworkPrefix":
+            suggest = "predefined_network_prefix"
+        elif key == "routingTableId":
+            suggest = "routing_table_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VpnGatewayNetworkConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VpnGatewayNetworkConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VpnGatewayNetworkConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 predefined_network_prefix: Optional[_builtins.str] = None,
+                 routing_table_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str predefined_network_prefix: The IPv4 network prefix (CIDR notation) allocated for the VPN gateway. Must have a prefix length of /28 or larger. Cannot be changed after the gateway is created.
+        :param _builtins.str routing_table_id: Custom routing table ID for the VPN gateway. If omitted, a default routing table is assigned.
+        """
+        if predefined_network_prefix is not None:
+            pulumi.set(__self__, "predefined_network_prefix", predefined_network_prefix)
+        if routing_table_id is not None:
+            pulumi.set(__self__, "routing_table_id", routing_table_id)
+
+    @_builtins.property
+    @pulumi.getter(name="predefinedNetworkPrefix")
+    def predefined_network_prefix(self) -> Optional[_builtins.str]:
+        """
+        The IPv4 network prefix (CIDR notation) allocated for the VPN gateway. Must have a prefix length of /28 or larger. Cannot be changed after the gateway is created.
+        """
+        return pulumi.get(self, "predefined_network_prefix")
+
+    @_builtins.property
+    @pulumi.getter(name="routingTableId")
+    def routing_table_id(self) -> Optional[_builtins.str]:
+        """
+        Custom routing table ID for the VPN gateway. If omitted, a default routing table is assigned.
+        """
+        return pulumi.get(self, "routing_table_id")
+
+
+@pulumi.output_type
 class GetAlbWafCustomRuleGroupRuleResult(dict):
     def __init__(__self__, *,
                  behavior: 'outputs.GetAlbWafCustomRuleGroupRuleBehaviorResult',
@@ -11895,6 +12018,7 @@ class GetApplicationLoadBalancerTargetPoolResult(dict):
 @pulumi.output_type
 class GetApplicationLoadBalancerTargetPoolActiveHealthCheckResult(dict):
     def __init__(__self__, *,
+                 alt_port: _builtins.int,
                  healthy_threshold: _builtins.int,
                  http_health_checks: 'outputs.GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksResult',
                  interval: _builtins.str,
@@ -11902,6 +12026,7 @@ class GetApplicationLoadBalancerTargetPoolActiveHealthCheckResult(dict):
                  timeout: _builtins.str,
                  unhealthy_threshold: _builtins.int):
         """
+        :param _builtins.int alt_port: Overrides the default port used for health check probes.
         :param _builtins.int healthy_threshold: Healthy threshold of the health checking.
         :param 'GetApplicationLoadBalancerTargetPoolActiveHealthCheckHttpHealthChecksArgs' http_health_checks: Options for the HTTP health checking.
         :param _builtins.str interval: Interval duration of health checking in seconds.
@@ -11909,12 +12034,21 @@ class GetApplicationLoadBalancerTargetPoolActiveHealthCheckResult(dict):
         :param _builtins.str timeout: Active health checking timeout duration in seconds.
         :param _builtins.int unhealthy_threshold: Unhealthy threshold of the health checking.
         """
+        pulumi.set(__self__, "alt_port", alt_port)
         pulumi.set(__self__, "healthy_threshold", healthy_threshold)
         pulumi.set(__self__, "http_health_checks", http_health_checks)
         pulumi.set(__self__, "interval", interval)
         pulumi.set(__self__, "interval_jitter", interval_jitter)
         pulumi.set(__self__, "timeout", timeout)
         pulumi.set(__self__, "unhealthy_threshold", unhealthy_threshold)
+
+    @_builtins.property
+    @pulumi.getter(name="altPort")
+    def alt_port(self) -> _builtins.int:
+        """
+        Overrides the default port used for health check probes.
+        """
+        return pulumi.get(self, "alt_port")
 
     @_builtins.property
     @pulumi.getter(name="healthyThreshold")
@@ -17322,6 +17456,25 @@ class GetSfsResourcePoolSnapshotSnapshotResult(dict):
 
 
 @pulumi.output_type
+class GetSfsResourcePoolTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+
+@pulumi.output_type
 class GetSfsSnapshotPoliciesItemResult(dict):
     def __init__(__self__, *,
                  comment: _builtins.str,
@@ -19738,6 +19891,35 @@ class GetVpnGatewayBgpResult(dict):
         List of IPv4 CIDRs to advertise via BGP. If omitted, SNA network ranges are advertised.
         """
         return pulumi.get(self, "override_advertised_routes")
+
+
+@pulumi.output_type
+class GetVpnGatewayNetworkConfigResult(dict):
+    def __init__(__self__, *,
+                 predefined_network_prefix: _builtins.str,
+                 routing_table_id: _builtins.str):
+        """
+        :param _builtins.str predefined_network_prefix: The IPv4 network prefix (CIDR notation) allocated for the VPN gateway. Must have a prefix length of /28 or larger. Cannot be changed after the gateway is created.
+        :param _builtins.str routing_table_id: Custom routing table ID for the VPN gateway. If omitted, a default routing table is assigned.
+        """
+        pulumi.set(__self__, "predefined_network_prefix", predefined_network_prefix)
+        pulumi.set(__self__, "routing_table_id", routing_table_id)
+
+    @_builtins.property
+    @pulumi.getter(name="predefinedNetworkPrefix")
+    def predefined_network_prefix(self) -> _builtins.str:
+        """
+        The IPv4 network prefix (CIDR notation) allocated for the VPN gateway. Must have a prefix length of /28 or larger. Cannot be changed after the gateway is created.
+        """
+        return pulumi.get(self, "predefined_network_prefix")
+
+    @_builtins.property
+    @pulumi.getter(name="routingTableId")
+    def routing_table_id(self) -> _builtins.str:
+        """
+        Custom routing table ID for the VPN gateway. If omitted, a default routing table is assigned.
+        """
+        return pulumi.get(self, "routing_table_id")
 
 
 @pulumi.output_type

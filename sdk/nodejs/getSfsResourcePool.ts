@@ -19,6 +19,7 @@ export function getSfsResourcePool(args: GetSfsResourcePoolArgs, opts?: pulumi.I
         "projectId": args.projectId,
         "region": args.region,
         "resourcePoolId": args.resourcePoolId,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -38,6 +39,7 @@ export interface GetSfsResourcePoolArgs {
      * Resourcepool ID
      */
     resourcePoolId: string;
+    timeouts?: inputs.GetSfsResourcePoolTimeouts;
 }
 
 /**
@@ -100,6 +102,7 @@ export interface GetSfsResourcePoolResult {
      * If set to true, snapshots are visible and accessible to users. (default: false)
      */
     readonly snapshotsAreVisible: boolean;
+    readonly timeouts?: outputs.GetSfsResourcePoolTimeouts;
 }
 /**
  * Resource-pool datasource schema. Must have a `region` specified in the provider configuration.
@@ -114,6 +117,7 @@ export function getSfsResourcePoolOutput(args: GetSfsResourcePoolOutputArgs, opt
         "projectId": args.projectId,
         "region": args.region,
         "resourcePoolId": args.resourcePoolId,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -133,4 +137,5 @@ export interface GetSfsResourcePoolOutputArgs {
      * Resourcepool ID
      */
     resourcePoolId: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GetSfsResourcePoolTimeoutsArgs | undefined>;
 }

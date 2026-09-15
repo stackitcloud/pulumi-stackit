@@ -27,7 +27,7 @@ class GetVpnGatewayResult:
     """
     A collection of values returned by getVpnGateway.
     """
-    def __init__(__self__, availability_zones=None, bgp=None, display_name=None, gateway_id=None, id=None, labels=None, plan_id=None, project_id=None, region=None, routing_type=None):
+    def __init__(__self__, availability_zones=None, bgp=None, display_name=None, gateway_id=None, id=None, labels=None, network_config=None, plan_id=None, project_id=None, region=None, routing_type=None):
         if availability_zones and not isinstance(availability_zones, dict):
             raise TypeError("Expected argument 'availability_zones' to be a dict")
         pulumi.set(__self__, "availability_zones", availability_zones)
@@ -46,6 +46,9 @@ class GetVpnGatewayResult:
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
+        if network_config and not isinstance(network_config, dict):
+            raise TypeError("Expected argument 'network_config' to be a dict")
+        pulumi.set(__self__, "network_config", network_config)
         if plan_id and not isinstance(plan_id, str):
             raise TypeError("Expected argument 'plan_id' to be a str")
         pulumi.set(__self__, "plan_id", plan_id)
@@ -108,6 +111,14 @@ class GetVpnGatewayResult:
         return pulumi.get(self, "labels")
 
     @_builtins.property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> 'outputs.GetVpnGatewayNetworkConfigResult':
+        """
+        Network configuration for the VPN gateway.
+        """
+        return pulumi.get(self, "network_config")
+
+    @_builtins.property
     @pulumi.getter(name="planId")
     def plan_id(self) -> _builtins.str:
         """
@@ -152,6 +163,7 @@ class AwaitableGetVpnGatewayResult(GetVpnGatewayResult):
             gateway_id=self.gateway_id,
             id=self.id,
             labels=self.labels,
+            network_config=self.network_config,
             plan_id=self.plan_id,
             project_id=self.project_id,
             region=self.region,
@@ -183,6 +195,7 @@ def get_vpn_gateway(gateway_id: Optional[_builtins.str] = None,
         gateway_id=pulumi.get(__ret__, 'gateway_id'),
         id=pulumi.get(__ret__, 'id'),
         labels=pulumi.get(__ret__, 'labels'),
+        network_config=pulumi.get(__ret__, 'network_config'),
         plan_id=pulumi.get(__ret__, 'plan_id'),
         project_id=pulumi.get(__ret__, 'project_id'),
         region=pulumi.get(__ret__, 'region'),
@@ -211,6 +224,7 @@ def get_vpn_gateway_output(gateway_id: pulumi.Input[Optional[_builtins.str]] = N
         gateway_id=pulumi.get(__response__, 'gateway_id'),
         id=pulumi.get(__response__, 'id'),
         labels=pulumi.get(__response__, 'labels'),
+        network_config=pulumi.get(__response__, 'network_config'),
         plan_id=pulumi.get(__response__, 'plan_id'),
         project_id=pulumi.get(__response__, 'project_id'),
         region=pulumi.get(__response__, 'region'),
