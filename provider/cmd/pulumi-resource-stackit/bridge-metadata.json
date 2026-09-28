@@ -995,6 +995,9 @@
             "stackit_volume": {
                 "current": "stackit:index/volume:Volume"
             },
+            "stackit_volume_automation": {
+                "current": "stackit:index/volumeAutomation:VolumeAutomation"
+            },
             "stackit_vpc": {
                 "current": "stackit:index/vpc:Vpc"
             },
@@ -2239,6 +2242,9 @@
             },
             "stackit_volume": {
                 "current": "stackit:index/getVolume:getVolume"
+            },
+            "stackit_volume_automation": {
+                "current": "stackit:index/getVolumeAutomation:getVolumeAutomation"
             },
             "stackit_vpc": {
                 "current": "stackit:index/getVpc:getVpc"

@@ -138,6 +138,7 @@ from .get_telemetryrouter_instance import *
 from .get_valkey_credential import *
 from .get_valkey_instance import *
 from .get_volume import *
+from .get_volume_automation import *
 from .get_vpc import *
 from .get_vpc_network_range import *
 from .get_vpc_region import *
@@ -232,6 +233,7 @@ from .telemetryrouter_instance import *
 from .valkey_credential import *
 from .valkey_instance import *
 from .volume import *
+from .volume_automation import *
 from .vpc import *
 from .vpc_network_range import *
 from .vpc_region import *
@@ -1106,6 +1108,14 @@ _utilities.register(
   "fqn": "pulumi_stackit",
   "classes": {
    "stackit:index/volume:Volume": "Volume"
+  }
+ },
+ {
+  "pkg": "stackit",
+  "mod": "index/volumeAutomation",
+  "fqn": "pulumi_stackit",
+  "classes": {
+   "stackit:index/volumeAutomation:VolumeAutomation": "VolumeAutomation"
   }
  },
  {

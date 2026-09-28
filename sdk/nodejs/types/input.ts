@@ -435,6 +435,10 @@ export interface CdnCustomDomainCertificate {
      */
     privateKey?: pulumi.Input<string | undefined>;
     /**
+     * When true, skips the verification check that the custom domain points to the distribution domain via CNAME. Useful for zero-downtime migrations.
+     */
+    skipDnsCheck?: pulumi.Input<boolean | undefined>;
+    /**
      * A version identifier for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.
      */
     version?: pulumi.Input<number | undefined>;
@@ -851,12 +855,20 @@ export interface DremioUserTimeouts {
 
 export interface GetCdnCustomDomainCertificate {
     /**
+     * When true, skips the verification check that the custom domain points to the distribution domain via CNAME. Useful for zero-downtime migrations.
+     */
+    skipDnsCheck?: boolean;
+    /**
      * A version identifier for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.
      */
     version?: number;
 }
 
 export interface GetCdnCustomDomainCertificateArgs {
+    /**
+     * When true, skips the verification check that the custom domain points to the distribution domain via CNAME. Useful for zero-downtime migrations.
+     */
+    skipDnsCheck?: pulumi.Input<boolean | undefined>;
     /**
      * A version identifier for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.
      */
@@ -2858,6 +2870,20 @@ export interface ValkeyInstanceParameters {
      * List of syslog servers to send logs to.
      */
     syslogs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface VolumeAutomationTriggers {
+    /**
+     * Runs the automation on a recurring schedule.
+     */
+    schedule?: pulumi.Input<inputs.VolumeAutomationTriggersSchedule | undefined>;
+}
+
+export interface VolumeAutomationTriggersSchedule {
+    /**
+     * An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
+     */
+    rrule: pulumi.Input<string>;
 }
 
 export interface VolumeEncryptionParameters {

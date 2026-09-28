@@ -235,6 +235,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ValkeyInstance{}
 	case "stackit:index/volume:Volume":
 		r = &Volume{}
+	case "stackit:index/volumeAutomation:VolumeAutomation":
+		r = &VolumeAutomation{}
 	case "stackit:index/vpc:Vpc":
 		r = &Vpc{}
 	case "stackit:index/vpcNetworkRange:VpcNetworkRange":
@@ -813,6 +815,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"stackit",
 		"index/volume",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"stackit",
+		"index/volumeAutomation",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
