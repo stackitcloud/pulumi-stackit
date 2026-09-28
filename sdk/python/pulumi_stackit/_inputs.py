@@ -299,6 +299,10 @@ __all__ = [
     'TelemetryrouterInstanceFilterAttributeArgsDict',
     'ValkeyInstanceParametersArgs',
     'ValkeyInstanceParametersArgsDict',
+    'VolumeAutomationTriggersArgs',
+    'VolumeAutomationTriggersArgsDict',
+    'VolumeAutomationTriggersScheduleArgs',
+    'VolumeAutomationTriggersScheduleArgsDict',
     'VolumeEncryptionParametersArgs',
     'VolumeEncryptionParametersArgsDict',
     'VolumeSourceArgs',
@@ -2277,6 +2281,10 @@ class CdnCustomDomainCertificateArgsDict(TypedDict):
     """
     The PEM-encoded private key for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.
     """
+    skip_dns_check: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    When true, skips the verification check that the custom domain points to the distribution domain via CNAME. Useful for zero-downtime migrations.
+    """
     version: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     A version identifier for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.
@@ -2287,16 +2295,20 @@ class CdnCustomDomainCertificateArgs:
     def __init__(__self__, *,
                  certificate: pulumi.Input[Optional[_builtins.str]] = None,
                  private_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 skip_dns_check: pulumi.Input[Optional[_builtins.bool]] = None,
                  version: pulumi.Input[Optional[_builtins.int]] = None):
         """
         :param pulumi.Input[_builtins.str] certificate: The PEM-encoded TLS certificate. Required for custom certificates.
         :param pulumi.Input[_builtins.str] private_key: The PEM-encoded private key for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.
+        :param pulumi.Input[_builtins.bool] skip_dns_check: When true, skips the verification check that the custom domain points to the distribution domain via CNAME. Useful for zero-downtime migrations.
         :param pulumi.Input[_builtins.int] version: A version identifier for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.
         """
         if certificate is not None:
             pulumi.set(__self__, "certificate", certificate)
         if private_key is not None:
             pulumi.set(__self__, "private_key", private_key)
+        if skip_dns_check is not None:
+            pulumi.set(__self__, "skip_dns_check", skip_dns_check)
         if version is not None:
             pulumi.set(__self__, "version", version)
 
@@ -2323,6 +2335,18 @@ class CdnCustomDomainCertificateArgs:
     @private_key.setter
     def private_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="skipDnsCheck")
+    def skip_dns_check(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When true, skips the verification check that the custom domain points to the distribution domain via CNAME. Useful for zero-downtime migrations.
+        """
+        return pulumi.get(self, "skip_dns_check")
+
+    @skip_dns_check.setter
+    def skip_dns_check(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "skip_dns_check", value)
 
     @_builtins.property
     @pulumi.getter
@@ -12602,6 +12626,63 @@ class ValkeyInstanceParametersArgs:
         pulumi.set(self, "syslogs", value)
 
 
+class VolumeAutomationTriggersArgsDict(TypedDict):
+    schedule: NotRequired[pulumi.Input[Optional['VolumeAutomationTriggersScheduleArgsDict']]]
+    """
+    Runs the automation on a recurring schedule.
+    """
+
+@pulumi.input_type
+class VolumeAutomationTriggersArgs:
+    def __init__(__self__, *,
+                 schedule: pulumi.Input[Optional['VolumeAutomationTriggersScheduleArgs']] = None):
+        """
+        :param pulumi.Input['VolumeAutomationTriggersScheduleArgs'] schedule: Runs the automation on a recurring schedule.
+        """
+        if schedule is not None:
+            pulumi.set(__self__, "schedule", schedule)
+
+    @_builtins.property
+    @pulumi.getter
+    def schedule(self) -> pulumi.Input[Optional['VolumeAutomationTriggersScheduleArgs']]:
+        """
+        Runs the automation on a recurring schedule.
+        """
+        return pulumi.get(self, "schedule")
+
+    @schedule.setter
+    def schedule(self, value: pulumi.Input[Optional['VolumeAutomationTriggersScheduleArgs']]):
+        pulumi.set(self, "schedule", value)
+
+
+class VolumeAutomationTriggersScheduleArgsDict(TypedDict):
+    rrule: pulumi.Input[_builtins.str]
+    """
+    An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
+    """
+
+@pulumi.input_type
+class VolumeAutomationTriggersScheduleArgs:
+    def __init__(__self__, *,
+                 rrule: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] rrule: An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
+        """
+        pulumi.set(__self__, "rrule", rrule)
+
+    @_builtins.property
+    @pulumi.getter
+    def rrule(self) -> pulumi.Input[_builtins.str]:
+        """
+        An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
+        """
+        return pulumi.get(self, "rrule")
+
+    @rrule.setter
+    def rrule(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "rrule", value)
+
+
 class VolumeEncryptionParametersArgsDict(TypedDict):
     kek_key_id: pulumi.Input[_builtins.str]
     """
@@ -14253,6 +14334,10 @@ class VpnGatewayNetworkConfigArgs:
 
 
 class GetCdnCustomDomainCertificateArgsDict(TypedDict):
+    skip_dns_check: _builtins.bool
+    """
+    When true, skips the verification check that the custom domain points to the distribution domain via CNAME. Useful for zero-downtime migrations.
+    """
     version: _builtins.int
     """
     A version identifier for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.
@@ -14261,11 +14346,26 @@ class GetCdnCustomDomainCertificateArgsDict(TypedDict):
 @pulumi.input_type
 class GetCdnCustomDomainCertificateArgs:
     def __init__(__self__, *,
+                 skip_dns_check: _builtins.bool,
                  version: _builtins.int):
         """
+        :param _builtins.bool skip_dns_check: When true, skips the verification check that the custom domain points to the distribution domain via CNAME. Useful for zero-downtime migrations.
         :param _builtins.int version: A version identifier for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.
         """
+        pulumi.set(__self__, "skip_dns_check", skip_dns_check)
         pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter(name="skipDnsCheck")
+    def skip_dns_check(self) -> _builtins.bool:
+        """
+        When true, skips the verification check that the custom domain points to the distribution domain via CNAME. Useful for zero-downtime migrations.
+        """
+        return pulumi.get(self, "skip_dns_check")
+
+    @skip_dns_check.setter
+    def skip_dns_check(self, value: _builtins.bool):
+        pulumi.set(self, "skip_dns_check", value)
 
     @_builtins.property
     @pulumi.getter

@@ -435,6 +435,10 @@ export interface CdnCustomDomainCertificate {
      */
     privateKey?: string;
     /**
+     * When true, skips the verification check that the custom domain points to the distribution domain via CNAME. Useful for zero-downtime migrations.
+     */
+    skipDnsCheck: boolean;
+    /**
      * A version identifier for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.
      */
     version: number;
@@ -1289,6 +1293,10 @@ export interface GetAutomationTemplatesTemplate {
 }
 
 export interface GetCdnCustomDomainCertificate {
+    /**
+     * When true, skips the verification check that the custom domain points to the distribution domain via CNAME. Useful for zero-downtime migrations.
+     */
+    skipDnsCheck: boolean;
     /**
      * A version identifier for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.
      */
@@ -3811,6 +3819,20 @@ export interface GetValkeyInstanceParameters {
     syslogs: string[];
 }
 
+export interface GetVolumeAutomationTriggers {
+    /**
+     * Runs the automation on a recurring schedule.
+     */
+    schedule: outputs.GetVolumeAutomationTriggersSchedule;
+}
+
+export interface GetVolumeAutomationTriggersSchedule {
+    /**
+     * An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
+     */
+    rrule: string;
+}
+
 export interface GetVolumeSource {
     /**
      * The ID of the source, e.g. image ID
@@ -5868,6 +5890,20 @@ export interface ValkeyInstanceParameters {
      * List of syslog servers to send logs to.
      */
     syslogs: string[];
+}
+
+export interface VolumeAutomationTriggers {
+    /**
+     * Runs the automation on a recurring schedule.
+     */
+    schedule?: outputs.VolumeAutomationTriggersSchedule;
+}
+
+export interface VolumeAutomationTriggersSchedule {
+    /**
+     * An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
+     */
+    rrule: string;
 }
 
 export interface VolumeEncryptionParameters {

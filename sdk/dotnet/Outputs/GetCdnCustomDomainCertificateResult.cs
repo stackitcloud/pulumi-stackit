@@ -14,13 +14,21 @@ namespace Pulumi.Stackit.Outputs
     public sealed class GetCdnCustomDomainCertificateResult
     {
         /// <summary>
+        /// When true, skips the verification check that the custom domain points to the distribution domain via CNAME. Useful for zero-downtime migrations.
+        /// </summary>
+        public readonly bool SkipDnsCheck;
+        /// <summary>
         /// A version identifier for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.
         /// </summary>
         public readonly int Version;
 
         [OutputConstructor]
-        private GetCdnCustomDomainCertificateResult(int version)
+        private GetCdnCustomDomainCertificateResult(
+            bool skipDnsCheck,
+
+            int version)
         {
+            SkipDnsCheck = skipDnsCheck;
             Version = version;
         }
     }
