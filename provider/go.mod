@@ -118,6 +118,7 @@ require (
 	github.com/hashicorp/hil v0.0.0-20190212132231-97b3a9cdfa93 // indirect
 	github.com/hashicorp/logutils v1.0.0 // indirect
 	github.com/hashicorp/terraform-plugin-framework v1.19.0 // indirect
+	github.com/hashicorp/terraform-plugin-framework-jsontypes v0.2.0 // indirect
 	github.com/hashicorp/terraform-plugin-framework-timeouts v0.7.0 // indirect
 	github.com/hashicorp/terraform-plugin-framework-validators v0.19.0 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.31.0 // indirect
@@ -200,7 +201,7 @@ require (
 	github.com/stackitcloud/stackit-sdk-go/services/alb v0.17.2 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/albwaf v0.13.4 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/authorization v0.15.4 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/automation v0.1.1 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/automation v0.2.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/cdn v1.21.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/certificates v1.9.2 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/dns v0.23.1 // indirect
@@ -233,11 +234,11 @@ require (
 	github.com/stackitcloud/stackit-sdk-go/services/sfs v0.11.2 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/ske v1.21.2 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/sqlserverflex v1.18.1 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/telemetrylink v0.5.2 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/telemetryrouter v0.5.2 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/telemetrylink v0.6.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/telemetryrouter v0.6.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/valkey v0.3.1 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/vpn v0.15.2 // indirect
-	github.com/stackitcloud/terraform-provider-stackit v0.115.0 // indirect
+	github.com/stackitcloud/terraform-provider-stackit v0.117.0 // indirect
 	github.com/stretchr/objx v0.5.2 // indirect
 	github.com/teambition/rrule-go v1.8.2 // indirect
 	github.com/teekennedy/goldmark-markdown v0.3.0 // indirect

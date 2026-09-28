@@ -4095,6 +4095,8 @@ type CdnCustomDomainCertificate struct {
 	Certificate *string `pulumi:"certificate"`
 	// The PEM-encoded private key for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.
 	PrivateKey *string `pulumi:"privateKey"`
+	// When true, skips the verification check that the custom domain points to the distribution domain via CNAME. Useful for zero-downtime migrations.
+	SkipDnsCheck *bool `pulumi:"skipDnsCheck"`
 	// A version identifier for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.
 	Version *int `pulumi:"version"`
 }
@@ -4115,6 +4117,8 @@ type CdnCustomDomainCertificateArgs struct {
 	Certificate pulumi.StringPtrInput `pulumi:"certificate"`
 	// The PEM-encoded private key for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.
 	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
+	// When true, skips the verification check that the custom domain points to the distribution domain via CNAME. Useful for zero-downtime migrations.
+	SkipDnsCheck pulumi.BoolPtrInput `pulumi:"skipDnsCheck"`
 	// A version identifier for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.
 	Version pulumi.IntPtrInput `pulumi:"version"`
 }
@@ -4206,6 +4210,11 @@ func (o CdnCustomDomainCertificateOutput) PrivateKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CdnCustomDomainCertificate) *string { return v.PrivateKey }).(pulumi.StringPtrOutput)
 }
 
+// When true, skips the verification check that the custom domain points to the distribution domain via CNAME. Useful for zero-downtime migrations.
+func (o CdnCustomDomainCertificateOutput) SkipDnsCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CdnCustomDomainCertificate) *bool { return v.SkipDnsCheck }).(pulumi.BoolPtrOutput)
+}
+
 // A version identifier for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.
 func (o CdnCustomDomainCertificateOutput) Version() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v CdnCustomDomainCertificate) *int { return v.Version }).(pulumi.IntPtrOutput)
@@ -4253,6 +4262,16 @@ func (o CdnCustomDomainCertificatePtrOutput) PrivateKey() pulumi.StringPtrOutput
 		}
 		return v.PrivateKey
 	}).(pulumi.StringPtrOutput)
+}
+
+// When true, skips the verification check that the custom domain points to the distribution domain via CNAME. Useful for zero-downtime migrations.
+func (o CdnCustomDomainCertificatePtrOutput) SkipDnsCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CdnCustomDomainCertificate) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.SkipDnsCheck
+	}).(pulumi.BoolPtrOutput)
 }
 
 // A version identifier for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.
@@ -24473,6 +24492,280 @@ func (o ValkeyInstanceParametersPtrOutput) Syslogs() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
+type VolumeAutomationTriggers struct {
+	// Runs the automation on a recurring schedule.
+	Schedule *VolumeAutomationTriggersSchedule `pulumi:"schedule"`
+}
+
+// VolumeAutomationTriggersInput is an input type that accepts VolumeAutomationTriggersArgs and VolumeAutomationTriggersOutput values.
+// You can construct a concrete instance of `VolumeAutomationTriggersInput` via:
+//
+//	VolumeAutomationTriggersArgs{...}
+type VolumeAutomationTriggersInput interface {
+	pulumi.Input
+
+	ToVolumeAutomationTriggersOutput() VolumeAutomationTriggersOutput
+	ToVolumeAutomationTriggersOutputWithContext(context.Context) VolumeAutomationTriggersOutput
+}
+
+type VolumeAutomationTriggersArgs struct {
+	// Runs the automation on a recurring schedule.
+	Schedule VolumeAutomationTriggersSchedulePtrInput `pulumi:"schedule"`
+}
+
+func (VolumeAutomationTriggersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeAutomationTriggers)(nil)).Elem()
+}
+
+func (i VolumeAutomationTriggersArgs) ToVolumeAutomationTriggersOutput() VolumeAutomationTriggersOutput {
+	return i.ToVolumeAutomationTriggersOutputWithContext(context.Background())
+}
+
+func (i VolumeAutomationTriggersArgs) ToVolumeAutomationTriggersOutputWithContext(ctx context.Context) VolumeAutomationTriggersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeAutomationTriggersOutput)
+}
+
+func (i VolumeAutomationTriggersArgs) ToVolumeAutomationTriggersPtrOutput() VolumeAutomationTriggersPtrOutput {
+	return i.ToVolumeAutomationTriggersPtrOutputWithContext(context.Background())
+}
+
+func (i VolumeAutomationTriggersArgs) ToVolumeAutomationTriggersPtrOutputWithContext(ctx context.Context) VolumeAutomationTriggersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeAutomationTriggersOutput).ToVolumeAutomationTriggersPtrOutputWithContext(ctx)
+}
+
+// VolumeAutomationTriggersPtrInput is an input type that accepts VolumeAutomationTriggersArgs, VolumeAutomationTriggersPtr and VolumeAutomationTriggersPtrOutput values.
+// You can construct a concrete instance of `VolumeAutomationTriggersPtrInput` via:
+//
+//	        VolumeAutomationTriggersArgs{...}
+//
+//	or:
+//
+//	        nil
+type VolumeAutomationTriggersPtrInput interface {
+	pulumi.Input
+
+	ToVolumeAutomationTriggersPtrOutput() VolumeAutomationTriggersPtrOutput
+	ToVolumeAutomationTriggersPtrOutputWithContext(context.Context) VolumeAutomationTriggersPtrOutput
+}
+
+type volumeAutomationTriggersPtrType VolumeAutomationTriggersArgs
+
+func VolumeAutomationTriggersPtr(v *VolumeAutomationTriggersArgs) VolumeAutomationTriggersPtrInput {
+	return (*volumeAutomationTriggersPtrType)(v)
+}
+
+func (*volumeAutomationTriggersPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeAutomationTriggers)(nil)).Elem()
+}
+
+func (i *volumeAutomationTriggersPtrType) ToVolumeAutomationTriggersPtrOutput() VolumeAutomationTriggersPtrOutput {
+	return i.ToVolumeAutomationTriggersPtrOutputWithContext(context.Background())
+}
+
+func (i *volumeAutomationTriggersPtrType) ToVolumeAutomationTriggersPtrOutputWithContext(ctx context.Context) VolumeAutomationTriggersPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeAutomationTriggersPtrOutput)
+}
+
+type VolumeAutomationTriggersOutput struct{ *pulumi.OutputState }
+
+func (VolumeAutomationTriggersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeAutomationTriggers)(nil)).Elem()
+}
+
+func (o VolumeAutomationTriggersOutput) ToVolumeAutomationTriggersOutput() VolumeAutomationTriggersOutput {
+	return o
+}
+
+func (o VolumeAutomationTriggersOutput) ToVolumeAutomationTriggersOutputWithContext(ctx context.Context) VolumeAutomationTriggersOutput {
+	return o
+}
+
+func (o VolumeAutomationTriggersOutput) ToVolumeAutomationTriggersPtrOutput() VolumeAutomationTriggersPtrOutput {
+	return o.ToVolumeAutomationTriggersPtrOutputWithContext(context.Background())
+}
+
+func (o VolumeAutomationTriggersOutput) ToVolumeAutomationTriggersPtrOutputWithContext(ctx context.Context) VolumeAutomationTriggersPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VolumeAutomationTriggers) *VolumeAutomationTriggers {
+		return &v
+	}).(VolumeAutomationTriggersPtrOutput)
+}
+
+// Runs the automation on a recurring schedule.
+func (o VolumeAutomationTriggersOutput) Schedule() VolumeAutomationTriggersSchedulePtrOutput {
+	return o.ApplyT(func(v VolumeAutomationTriggers) *VolumeAutomationTriggersSchedule { return v.Schedule }).(VolumeAutomationTriggersSchedulePtrOutput)
+}
+
+type VolumeAutomationTriggersPtrOutput struct{ *pulumi.OutputState }
+
+func (VolumeAutomationTriggersPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeAutomationTriggers)(nil)).Elem()
+}
+
+func (o VolumeAutomationTriggersPtrOutput) ToVolumeAutomationTriggersPtrOutput() VolumeAutomationTriggersPtrOutput {
+	return o
+}
+
+func (o VolumeAutomationTriggersPtrOutput) ToVolumeAutomationTriggersPtrOutputWithContext(ctx context.Context) VolumeAutomationTriggersPtrOutput {
+	return o
+}
+
+func (o VolumeAutomationTriggersPtrOutput) Elem() VolumeAutomationTriggersOutput {
+	return o.ApplyT(func(v *VolumeAutomationTriggers) VolumeAutomationTriggers {
+		if v != nil {
+			return *v
+		}
+		var ret VolumeAutomationTriggers
+		return ret
+	}).(VolumeAutomationTriggersOutput)
+}
+
+// Runs the automation on a recurring schedule.
+func (o VolumeAutomationTriggersPtrOutput) Schedule() VolumeAutomationTriggersSchedulePtrOutput {
+	return o.ApplyT(func(v *VolumeAutomationTriggers) *VolumeAutomationTriggersSchedule {
+		if v == nil {
+			return nil
+		}
+		return v.Schedule
+	}).(VolumeAutomationTriggersSchedulePtrOutput)
+}
+
+type VolumeAutomationTriggersSchedule struct {
+	// An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
+	Rrule string `pulumi:"rrule"`
+}
+
+// VolumeAutomationTriggersScheduleInput is an input type that accepts VolumeAutomationTriggersScheduleArgs and VolumeAutomationTriggersScheduleOutput values.
+// You can construct a concrete instance of `VolumeAutomationTriggersScheduleInput` via:
+//
+//	VolumeAutomationTriggersScheduleArgs{...}
+type VolumeAutomationTriggersScheduleInput interface {
+	pulumi.Input
+
+	ToVolumeAutomationTriggersScheduleOutput() VolumeAutomationTriggersScheduleOutput
+	ToVolumeAutomationTriggersScheduleOutputWithContext(context.Context) VolumeAutomationTriggersScheduleOutput
+}
+
+type VolumeAutomationTriggersScheduleArgs struct {
+	// An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
+	Rrule pulumi.StringInput `pulumi:"rrule"`
+}
+
+func (VolumeAutomationTriggersScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeAutomationTriggersSchedule)(nil)).Elem()
+}
+
+func (i VolumeAutomationTriggersScheduleArgs) ToVolumeAutomationTriggersScheduleOutput() VolumeAutomationTriggersScheduleOutput {
+	return i.ToVolumeAutomationTriggersScheduleOutputWithContext(context.Background())
+}
+
+func (i VolumeAutomationTriggersScheduleArgs) ToVolumeAutomationTriggersScheduleOutputWithContext(ctx context.Context) VolumeAutomationTriggersScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeAutomationTriggersScheduleOutput)
+}
+
+func (i VolumeAutomationTriggersScheduleArgs) ToVolumeAutomationTriggersSchedulePtrOutput() VolumeAutomationTriggersSchedulePtrOutput {
+	return i.ToVolumeAutomationTriggersSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i VolumeAutomationTriggersScheduleArgs) ToVolumeAutomationTriggersSchedulePtrOutputWithContext(ctx context.Context) VolumeAutomationTriggersSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeAutomationTriggersScheduleOutput).ToVolumeAutomationTriggersSchedulePtrOutputWithContext(ctx)
+}
+
+// VolumeAutomationTriggersSchedulePtrInput is an input type that accepts VolumeAutomationTriggersScheduleArgs, VolumeAutomationTriggersSchedulePtr and VolumeAutomationTriggersSchedulePtrOutput values.
+// You can construct a concrete instance of `VolumeAutomationTriggersSchedulePtrInput` via:
+//
+//	        VolumeAutomationTriggersScheduleArgs{...}
+//
+//	or:
+//
+//	        nil
+type VolumeAutomationTriggersSchedulePtrInput interface {
+	pulumi.Input
+
+	ToVolumeAutomationTriggersSchedulePtrOutput() VolumeAutomationTriggersSchedulePtrOutput
+	ToVolumeAutomationTriggersSchedulePtrOutputWithContext(context.Context) VolumeAutomationTriggersSchedulePtrOutput
+}
+
+type volumeAutomationTriggersSchedulePtrType VolumeAutomationTriggersScheduleArgs
+
+func VolumeAutomationTriggersSchedulePtr(v *VolumeAutomationTriggersScheduleArgs) VolumeAutomationTriggersSchedulePtrInput {
+	return (*volumeAutomationTriggersSchedulePtrType)(v)
+}
+
+func (*volumeAutomationTriggersSchedulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeAutomationTriggersSchedule)(nil)).Elem()
+}
+
+func (i *volumeAutomationTriggersSchedulePtrType) ToVolumeAutomationTriggersSchedulePtrOutput() VolumeAutomationTriggersSchedulePtrOutput {
+	return i.ToVolumeAutomationTriggersSchedulePtrOutputWithContext(context.Background())
+}
+
+func (i *volumeAutomationTriggersSchedulePtrType) ToVolumeAutomationTriggersSchedulePtrOutputWithContext(ctx context.Context) VolumeAutomationTriggersSchedulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VolumeAutomationTriggersSchedulePtrOutput)
+}
+
+type VolumeAutomationTriggersScheduleOutput struct{ *pulumi.OutputState }
+
+func (VolumeAutomationTriggersScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeAutomationTriggersSchedule)(nil)).Elem()
+}
+
+func (o VolumeAutomationTriggersScheduleOutput) ToVolumeAutomationTriggersScheduleOutput() VolumeAutomationTriggersScheduleOutput {
+	return o
+}
+
+func (o VolumeAutomationTriggersScheduleOutput) ToVolumeAutomationTriggersScheduleOutputWithContext(ctx context.Context) VolumeAutomationTriggersScheduleOutput {
+	return o
+}
+
+func (o VolumeAutomationTriggersScheduleOutput) ToVolumeAutomationTriggersSchedulePtrOutput() VolumeAutomationTriggersSchedulePtrOutput {
+	return o.ToVolumeAutomationTriggersSchedulePtrOutputWithContext(context.Background())
+}
+
+func (o VolumeAutomationTriggersScheduleOutput) ToVolumeAutomationTriggersSchedulePtrOutputWithContext(ctx context.Context) VolumeAutomationTriggersSchedulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VolumeAutomationTriggersSchedule) *VolumeAutomationTriggersSchedule {
+		return &v
+	}).(VolumeAutomationTriggersSchedulePtrOutput)
+}
+
+// An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
+func (o VolumeAutomationTriggersScheduleOutput) Rrule() pulumi.StringOutput {
+	return o.ApplyT(func(v VolumeAutomationTriggersSchedule) string { return v.Rrule }).(pulumi.StringOutput)
+}
+
+type VolumeAutomationTriggersSchedulePtrOutput struct{ *pulumi.OutputState }
+
+func (VolumeAutomationTriggersSchedulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeAutomationTriggersSchedule)(nil)).Elem()
+}
+
+func (o VolumeAutomationTriggersSchedulePtrOutput) ToVolumeAutomationTriggersSchedulePtrOutput() VolumeAutomationTriggersSchedulePtrOutput {
+	return o
+}
+
+func (o VolumeAutomationTriggersSchedulePtrOutput) ToVolumeAutomationTriggersSchedulePtrOutputWithContext(ctx context.Context) VolumeAutomationTriggersSchedulePtrOutput {
+	return o
+}
+
+func (o VolumeAutomationTriggersSchedulePtrOutput) Elem() VolumeAutomationTriggersScheduleOutput {
+	return o.ApplyT(func(v *VolumeAutomationTriggersSchedule) VolumeAutomationTriggersSchedule {
+		if v != nil {
+			return *v
+		}
+		var ret VolumeAutomationTriggersSchedule
+		return ret
+	}).(VolumeAutomationTriggersScheduleOutput)
+}
+
+// An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
+func (o VolumeAutomationTriggersSchedulePtrOutput) Rrule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VolumeAutomationTriggersSchedule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Rrule
+	}).(pulumi.StringPtrOutput)
+}
+
 type VolumeEncryptionParameters struct {
 	// UUID of the key within the STACKIT-KMS to use for the encryption.
 	KekKeyId string `pulumi:"kekKeyId"`
@@ -31220,6 +31513,8 @@ func (o GetAutomationTemplatesTemplateArrayOutput) Index(i pulumi.IntInput) GetA
 }
 
 type GetCdnCustomDomainCertificate struct {
+	// When true, skips the verification check that the custom domain points to the distribution domain via CNAME. Useful for zero-downtime migrations.
+	SkipDnsCheck bool `pulumi:"skipDnsCheck"`
 	// A version identifier for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.
 	Version int `pulumi:"version"`
 }
@@ -31236,6 +31531,8 @@ type GetCdnCustomDomainCertificateInput interface {
 }
 
 type GetCdnCustomDomainCertificateArgs struct {
+	// When true, skips the verification check that the custom domain points to the distribution domain via CNAME. Useful for zero-downtime migrations.
+	SkipDnsCheck pulumi.BoolInput `pulumi:"skipDnsCheck"`
 	// A version identifier for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.
 	Version pulumi.IntInput `pulumi:"version"`
 }
@@ -31317,6 +31614,11 @@ func (o GetCdnCustomDomainCertificateOutput) ToGetCdnCustomDomainCertificatePtrO
 	}).(GetCdnCustomDomainCertificatePtrOutput)
 }
 
+// When true, skips the verification check that the custom domain points to the distribution domain via CNAME. Useful for zero-downtime migrations.
+func (o GetCdnCustomDomainCertificateOutput) SkipDnsCheck() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCdnCustomDomainCertificate) bool { return v.SkipDnsCheck }).(pulumi.BoolOutput)
+}
+
 // A version identifier for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.
 func (o GetCdnCustomDomainCertificateOutput) Version() pulumi.IntOutput {
 	return o.ApplyT(func(v GetCdnCustomDomainCertificate) int { return v.Version }).(pulumi.IntOutput)
@@ -31344,6 +31646,16 @@ func (o GetCdnCustomDomainCertificatePtrOutput) Elem() GetCdnCustomDomainCertifi
 		var ret GetCdnCustomDomainCertificate
 		return ret
 	}).(GetCdnCustomDomainCertificateOutput)
+}
+
+// When true, skips the verification check that the custom domain points to the distribution domain via CNAME. Useful for zero-downtime migrations.
+func (o GetCdnCustomDomainCertificatePtrOutput) SkipDnsCheck() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetCdnCustomDomainCertificate) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.SkipDnsCheck
+	}).(pulumi.BoolPtrOutput)
 }
 
 // A version identifier for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.
@@ -44847,6 +45159,110 @@ func (o GetValkeyInstanceParametersOutput) Syslogs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetValkeyInstanceParameters) []string { return v.Syslogs }).(pulumi.StringArrayOutput)
 }
 
+type GetVolumeAutomationTriggers struct {
+	// Runs the automation on a recurring schedule.
+	Schedule GetVolumeAutomationTriggersSchedule `pulumi:"schedule"`
+}
+
+// GetVolumeAutomationTriggersInput is an input type that accepts GetVolumeAutomationTriggersArgs and GetVolumeAutomationTriggersOutput values.
+// You can construct a concrete instance of `GetVolumeAutomationTriggersInput` via:
+//
+//	GetVolumeAutomationTriggersArgs{...}
+type GetVolumeAutomationTriggersInput interface {
+	pulumi.Input
+
+	ToGetVolumeAutomationTriggersOutput() GetVolumeAutomationTriggersOutput
+	ToGetVolumeAutomationTriggersOutputWithContext(context.Context) GetVolumeAutomationTriggersOutput
+}
+
+type GetVolumeAutomationTriggersArgs struct {
+	// Runs the automation on a recurring schedule.
+	Schedule GetVolumeAutomationTriggersScheduleInput `pulumi:"schedule"`
+}
+
+func (GetVolumeAutomationTriggersArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVolumeAutomationTriggers)(nil)).Elem()
+}
+
+func (i GetVolumeAutomationTriggersArgs) ToGetVolumeAutomationTriggersOutput() GetVolumeAutomationTriggersOutput {
+	return i.ToGetVolumeAutomationTriggersOutputWithContext(context.Background())
+}
+
+func (i GetVolumeAutomationTriggersArgs) ToGetVolumeAutomationTriggersOutputWithContext(ctx context.Context) GetVolumeAutomationTriggersOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeAutomationTriggersOutput)
+}
+
+type GetVolumeAutomationTriggersOutput struct{ *pulumi.OutputState }
+
+func (GetVolumeAutomationTriggersOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVolumeAutomationTriggers)(nil)).Elem()
+}
+
+func (o GetVolumeAutomationTriggersOutput) ToGetVolumeAutomationTriggersOutput() GetVolumeAutomationTriggersOutput {
+	return o
+}
+
+func (o GetVolumeAutomationTriggersOutput) ToGetVolumeAutomationTriggersOutputWithContext(ctx context.Context) GetVolumeAutomationTriggersOutput {
+	return o
+}
+
+// Runs the automation on a recurring schedule.
+func (o GetVolumeAutomationTriggersOutput) Schedule() GetVolumeAutomationTriggersScheduleOutput {
+	return o.ApplyT(func(v GetVolumeAutomationTriggers) GetVolumeAutomationTriggersSchedule { return v.Schedule }).(GetVolumeAutomationTriggersScheduleOutput)
+}
+
+type GetVolumeAutomationTriggersSchedule struct {
+	// An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
+	Rrule string `pulumi:"rrule"`
+}
+
+// GetVolumeAutomationTriggersScheduleInput is an input type that accepts GetVolumeAutomationTriggersScheduleArgs and GetVolumeAutomationTriggersScheduleOutput values.
+// You can construct a concrete instance of `GetVolumeAutomationTriggersScheduleInput` via:
+//
+//	GetVolumeAutomationTriggersScheduleArgs{...}
+type GetVolumeAutomationTriggersScheduleInput interface {
+	pulumi.Input
+
+	ToGetVolumeAutomationTriggersScheduleOutput() GetVolumeAutomationTriggersScheduleOutput
+	ToGetVolumeAutomationTriggersScheduleOutputWithContext(context.Context) GetVolumeAutomationTriggersScheduleOutput
+}
+
+type GetVolumeAutomationTriggersScheduleArgs struct {
+	// An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
+	Rrule pulumi.StringInput `pulumi:"rrule"`
+}
+
+func (GetVolumeAutomationTriggersScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVolumeAutomationTriggersSchedule)(nil)).Elem()
+}
+
+func (i GetVolumeAutomationTriggersScheduleArgs) ToGetVolumeAutomationTriggersScheduleOutput() GetVolumeAutomationTriggersScheduleOutput {
+	return i.ToGetVolumeAutomationTriggersScheduleOutputWithContext(context.Background())
+}
+
+func (i GetVolumeAutomationTriggersScheduleArgs) ToGetVolumeAutomationTriggersScheduleOutputWithContext(ctx context.Context) GetVolumeAutomationTriggersScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVolumeAutomationTriggersScheduleOutput)
+}
+
+type GetVolumeAutomationTriggersScheduleOutput struct{ *pulumi.OutputState }
+
+func (GetVolumeAutomationTriggersScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVolumeAutomationTriggersSchedule)(nil)).Elem()
+}
+
+func (o GetVolumeAutomationTriggersScheduleOutput) ToGetVolumeAutomationTriggersScheduleOutput() GetVolumeAutomationTriggersScheduleOutput {
+	return o
+}
+
+func (o GetVolumeAutomationTriggersScheduleOutput) ToGetVolumeAutomationTriggersScheduleOutputWithContext(ctx context.Context) GetVolumeAutomationTriggersScheduleOutput {
+	return o
+}
+
+// An `rrule` (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.
+func (o GetVolumeAutomationTriggersScheduleOutput) Rrule() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVolumeAutomationTriggersSchedule) string { return v.Rrule }).(pulumi.StringOutput)
+}
+
 type GetVolumeSource struct {
 	// The ID of the source, e.g. image ID
 	Id string `pulumi:"id"`
@@ -47014,6 +47430,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TelemetryrouterInstanceFilterAttributeArrayInput)(nil)).Elem(), TelemetryrouterInstanceFilterAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ValkeyInstanceParametersInput)(nil)).Elem(), ValkeyInstanceParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ValkeyInstanceParametersPtrInput)(nil)).Elem(), ValkeyInstanceParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeAutomationTriggersInput)(nil)).Elem(), VolumeAutomationTriggersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeAutomationTriggersPtrInput)(nil)).Elem(), VolumeAutomationTriggersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeAutomationTriggersScheduleInput)(nil)).Elem(), VolumeAutomationTriggersScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeAutomationTriggersSchedulePtrInput)(nil)).Elem(), VolumeAutomationTriggersScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeEncryptionParametersInput)(nil)).Elem(), VolumeEncryptionParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeEncryptionParametersPtrInput)(nil)).Elem(), VolumeEncryptionParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeSourceInput)(nil)).Elem(), VolumeSourceArgs{})
@@ -47290,6 +47710,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTelemetryrouterInstanceFilterAttributeInput)(nil)).Elem(), GetTelemetryrouterInstanceFilterAttributeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTelemetryrouterInstanceFilterAttributeArrayInput)(nil)).Elem(), GetTelemetryrouterInstanceFilterAttributeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetValkeyInstanceParametersInput)(nil)).Elem(), GetValkeyInstanceParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeAutomationTriggersInput)(nil)).Elem(), GetVolumeAutomationTriggersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeAutomationTriggersScheduleInput)(nil)).Elem(), GetVolumeAutomationTriggersScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVolumeSourceInput)(nil)).Elem(), GetVolumeSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNetworkRangeTimeoutsInput)(nil)).Elem(), GetVpcNetworkRangeTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNetworkRangeTimeoutsPtrInput)(nil)).Elem(), GetVpcNetworkRangeTimeoutsArgs{})
@@ -47598,6 +48020,10 @@ func init() {
 	pulumi.RegisterOutputType(TelemetryrouterInstanceFilterAttributeArrayOutput{})
 	pulumi.RegisterOutputType(ValkeyInstanceParametersOutput{})
 	pulumi.RegisterOutputType(ValkeyInstanceParametersPtrOutput{})
+	pulumi.RegisterOutputType(VolumeAutomationTriggersOutput{})
+	pulumi.RegisterOutputType(VolumeAutomationTriggersPtrOutput{})
+	pulumi.RegisterOutputType(VolumeAutomationTriggersScheduleOutput{})
+	pulumi.RegisterOutputType(VolumeAutomationTriggersSchedulePtrOutput{})
 	pulumi.RegisterOutputType(VolumeEncryptionParametersOutput{})
 	pulumi.RegisterOutputType(VolumeEncryptionParametersPtrOutput{})
 	pulumi.RegisterOutputType(VolumeSourceOutput{})
@@ -47874,6 +48300,8 @@ func init() {
 	pulumi.RegisterOutputType(GetTelemetryrouterInstanceFilterAttributeOutput{})
 	pulumi.RegisterOutputType(GetTelemetryrouterInstanceFilterAttributeArrayOutput{})
 	pulumi.RegisterOutputType(GetValkeyInstanceParametersOutput{})
+	pulumi.RegisterOutputType(GetVolumeAutomationTriggersOutput{})
+	pulumi.RegisterOutputType(GetVolumeAutomationTriggersScheduleOutput{})
 	pulumi.RegisterOutputType(GetVolumeSourceOutput{})
 	pulumi.RegisterOutputType(GetVpcNetworkRangeTimeoutsOutput{})
 	pulumi.RegisterOutputType(GetVpcNetworkRangeTimeoutsPtrOutput{})

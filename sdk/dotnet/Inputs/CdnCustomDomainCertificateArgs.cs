@@ -45,6 +45,12 @@ namespace Pulumi.Stackit.Inputs
         }
 
         /// <summary>
+        /// When true, skips the verification check that the custom domain points to the distribution domain via CNAME. Useful for zero-downtime migrations.
+        /// </summary>
+        [Input("skipDnsCheck")]
+        public Input<bool>? SkipDnsCheck { get; set; }
+
+        /// <summary>
         /// A version identifier for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.
         /// </summary>
         [Input("version")]

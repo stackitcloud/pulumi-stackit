@@ -1000,6 +1000,10 @@
                     "description": "The PEM-encoded private key for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.\n",
                     "secret": true
                 },
+                "skipDnsCheck": {
+                    "type": "boolean",
+                    "description": "When true, skips the verification check that the custom domain points to the distribution domain via CNAME. Useful for zero-downtime migrations.\n"
+                },
                 "version": {
                     "type": "integer",
                     "description": "A version identifier for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.\n"
@@ -1009,6 +1013,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "skipDnsCheck",
                         "version"
                     ]
                 }
@@ -4599,6 +4604,27 @@
                 }
             }
         },
+        "stackit:index/VolumeAutomationTriggers:VolumeAutomationTriggers": {
+            "properties": {
+                "schedule": {
+                    "$ref": "#/types/stackit:index/VolumeAutomationTriggersSchedule:VolumeAutomationTriggersSchedule",
+                    "description": "Runs the automation on a recurring schedule.\n"
+                }
+            },
+            "type": "object"
+        },
+        "stackit:index/VolumeAutomationTriggersSchedule:VolumeAutomationTriggersSchedule": {
+            "properties": {
+                "rrule": {
+                    "type": "string",
+                    "description": "An \u003cspan pulumi-lang-nodejs=\"`rrule`\" pulumi-lang-dotnet=\"`Rrule`\" pulumi-lang-go=\"`rrule`\" pulumi-lang-python=\"`rrule`\" pulumi-lang-yaml=\"`rrule`\" pulumi-lang-java=\"`rrule`\"\u003e`rrule`\u003c/span\u003e (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "rrule"
+            ]
+        },
         "stackit:index/VolumeEncryptionParameters:VolumeEncryptionParameters": {
             "properties": {
                 "kekKeyId": {
@@ -6017,6 +6043,10 @@
         },
         "stackit:index/getCdnCustomDomainCertificate:getCdnCustomDomainCertificate": {
             "properties": {
+                "skipDnsCheck": {
+                    "type": "boolean",
+                    "description": "When true, skips the verification check that the custom domain points to the distribution domain via CNAME. Useful for zero-downtime migrations.\n"
+                },
                 "version": {
                     "type": "integer",
                     "description": "A version identifier for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.\n"
@@ -6024,6 +6054,7 @@
             },
             "type": "object",
             "required": [
+                "skipDnsCheck",
                 "version"
             ],
             "language": {
@@ -10582,6 +10613,40 @@
                 }
             }
         },
+        "stackit:index/getVolumeAutomationTriggers:getVolumeAutomationTriggers": {
+            "properties": {
+                "schedule": {
+                    "$ref": "#/types/stackit:index/getVolumeAutomationTriggersSchedule:getVolumeAutomationTriggersSchedule",
+                    "description": "Runs the automation on a recurring schedule.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "schedule"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getVolumeAutomationTriggersSchedule:getVolumeAutomationTriggersSchedule": {
+            "properties": {
+                "rrule": {
+                    "type": "string",
+                    "description": "An \u003cspan pulumi-lang-nodejs=\"`rrule`\" pulumi-lang-dotnet=\"`Rrule`\" pulumi-lang-go=\"`rrule`\" pulumi-lang-python=\"`rrule`\" pulumi-lang-yaml=\"`rrule`\" pulumi-lang-java=\"`rrule`\"\u003e`rrule`\u003c/span\u003e (Recurrence Rule) is a standardized string format used in iCalendar (RFC 5545) to define repeating events, and you can generate one by using a dedicated library or by using online generator tools to specify parameters like frequency, interval, and end dates.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "rrule"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "stackit:index/getVolumeSource:getVolumeSource": {
             "properties": {
                 "id": {
@@ -12839,7 +12904,7 @@
             }
         },
         "stackit:index/cdnCustomDomain:CdnCustomDomain": {
-            "description": "CDN distribution data source schema.\n\n\u003e This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\nresource \"stackit_cdn_custom_domain\" \"example\" {\n  project_id      = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  distribution_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name            = \"https://xxx.xxx\"\n  certificate = {\n    certificate = \"-----BEGIN CERTIFICATE-----\\nY2VydGlmaWNhdGVfZGF0YQ==\\n-----END CERTIFICATE---\"\n    private_key = \"-----BEGIN RSA PRIVATE KEY-----\\nY2VydGlmaWNhdGVfZGF0YQ==\\n-----END RSA PRIVATE KEY---\"\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing cdn custom domain\nimport {\n  to = stackit_cdn_custom_domain.import-example\n  id = \"${var.project_id},${var.distribution_id},${var.custom_domain_name}\"\n}\n```\n\n",
+            "description": "CDN distribution data source schema.\n\n\u003e This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\nresource \"stackit_cdn_custom_domain\" \"example\" {\n  project_id      = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  distribution_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name            = \"https://xxx.xxx\"\n  certificate = {\n    certificate    = \"-----BEGIN CERTIFICATE-----\\nY2VydGlmaWNhdGVfZGF0YQ==\\n-----END CERTIFICATE---\"\n    private_key    = \"-----BEGIN RSA PRIVATE KEY-----\\nY2VydGlmaWNhdGVfZGF0YQ==\\n-----END RSA PRIVATE KEY---\"\n    skip_dns_check = true\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing cdn custom domain\nimport {\n  to = stackit_cdn_custom_domain.import-example\n  id = \"${var.project_id},${var.distribution_id},${var.custom_domain_name}\"\n}\n```\n\n",
             "properties": {
                 "certificate": {
                     "$ref": "#/types/stackit:index/CdnCustomDomainCertificate:CdnCustomDomainCertificate",
@@ -25695,6 +25760,122 @@
                 "type": "object"
             }
         },
+        "stackit:index/volumeAutomation:VolumeAutomation": {
+            "description": "Volume automation resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n\u003e This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\nresource \"stackit_volume_automation\" \"example\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  template_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name        = \"example-volume-automation\"\n  description = \"Creates daily volume snapshots and keeps the last 7.\"\n  input = jsonencode({\n    kind                = \"VolumeRecoveryPointManagement\"\n    inheritVolumeLabels = false\n    recoveryPointLabels = {\n      \"exampleLabelKey1\" = \"exampleLabelValue1\"\n      \"exampleLabelKey2\" = \"exampleLabelValue2\"\n    }\n    snapshotRetentionPolicy = {\n      kind  = \"count\"\n      value = 2\n    }\n    volumeLabelSelector = \"myLabelkey1=myLabelValue,myLabelKey2=myOtherLabelValue\"\n  })\n  triggers = {\n    schedule = {\n      rrule = \"DTSTART;TZID=Europe/Sofia:20200803T023000 RRULE:FREQ=DAILY;INTERVAL=1\"\n    }\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing volume automation resource\nimport {\n  to = stackit_volume_automation.import-example\n  id = \"${var.project_id},${var.region},${var.automation_id}\"\n}\n```\n\n",
+            "properties": {
+                "automationId": {
+                    "type": "string",
+                    "description": "ID of the volume automation.\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "The volume automation description.\n"
+                },
+                "input": {
+                    "type": "string",
+                    "description": "Configuration input for the volume automation. See [API Docs](https://docs.api.stackit.cloud/documentation/automation-service/version/v1#tag/Volume-Automations/operation/CreateVolumeAutomation) for possible configuration options.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The volume automation name.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT Project ID to which the volume automation is associated.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The resource region. If not defined, the provider region is used.\n"
+                },
+                "templateId": {
+                    "type": "string",
+                    "description": "ID of the automation template this volume automation is based on.\n"
+                },
+                "triggers": {
+                    "$ref": "#/types/stackit:index/VolumeAutomationTriggers:VolumeAutomationTriggers",
+                    "description": "Triggers that determine when the automation runs.\n"
+                }
+            },
+            "required": [
+                "automationId",
+                "name",
+                "projectId",
+                "region",
+                "templateId"
+            ],
+            "inputProperties": {
+                "description": {
+                    "type": "string",
+                    "description": "The volume automation description.\n"
+                },
+                "input": {
+                    "type": "string",
+                    "description": "Configuration input for the volume automation. See [API Docs](https://docs.api.stackit.cloud/documentation/automation-service/version/v1#tag/Volume-Automations/operation/CreateVolumeAutomation) for possible configuration options.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The volume automation name.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "STACKIT Project ID to which the volume automation is associated.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The resource region. If not defined, the provider region is used.\n"
+                },
+                "templateId": {
+                    "type": "string",
+                    "description": "ID of the automation template this volume automation is based on.\n"
+                },
+                "triggers": {
+                    "$ref": "#/types/stackit:index/VolumeAutomationTriggers:VolumeAutomationTriggers",
+                    "description": "Triggers that determine when the automation runs.\n"
+                }
+            },
+            "requiredInputs": [
+                "projectId",
+                "templateId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering VolumeAutomation resources.\n",
+                "properties": {
+                    "automationId": {
+                        "type": "string",
+                        "description": "ID of the volume automation.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The volume automation description.\n"
+                    },
+                    "input": {
+                        "type": "string",
+                        "description": "Configuration input for the volume automation. See [API Docs](https://docs.api.stackit.cloud/documentation/automation-service/version/v1#tag/Volume-Automations/operation/CreateVolumeAutomation) for possible configuration options.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The volume automation name.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT Project ID to which the volume automation is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    },
+                    "templateId": {
+                        "type": "string",
+                        "description": "ID of the automation template this volume automation is based on.\n"
+                    },
+                    "triggers": {
+                        "$ref": "#/types/stackit:index/VolumeAutomationTriggers:VolumeAutomationTriggers",
+                        "description": "Triggers that determine when the automation runs.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "stackit:index/vpc:Vpc": {
             "description": "VPC resource schema.\n\n\u003e This resource is part of the experimental feature vpc and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_vpc\" \"example\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name        = \"example\"\n  description = \"Example description\"\n  labels = {\n    \"key\" = \"value\"\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing vpc\nimport {\n  to = stackit_vpc.import-example\n  id = \"${var.project_id},${var.vpc_id}\"\n}\n```\n\n",
             "properties": {
@@ -35732,6 +35913,83 @@
                     "size",
                     "source",
                     "volumeId"
+                ]
+            }
+        },
+        "stackit:index/getVolumeAutomation:getVolumeAutomation": {
+            "description": "Volume automation datasource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n\u003e This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\ndata \"stackit_volume_automation\" \"example\" {\n  project_id    = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  automation_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getVolumeAutomation.\n",
+                "properties": {
+                    "automationId": {
+                        "type": "string",
+                        "description": "ID of the volume automation.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT Project ID to which the volume automation is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "automationId",
+                    "projectId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getVolumeAutomation.\n",
+                "properties": {
+                    "automationId": {
+                        "type": "string",
+                        "description": "ID of the volume automation.\n"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The volume automation description.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Terraform's internal resource identifier. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`projectId`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`automationId`\" pulumi-lang-dotnet=\"`AutomationId`\" pulumi-lang-go=\"`automationId`\" pulumi-lang-python=\"`automation_id`\" pulumi-lang-yaml=\"`automationId`\" pulumi-lang-java=\"`automationId`\"\u003e`automationId`\u003c/span\u003e\".\n"
+                    },
+                    "input": {
+                        "type": "string",
+                        "description": "Configuration input for the volume automation. See [API Docs](https://docs.api.stackit.cloud/documentation/automation-service/version/v1#tag/Volume-Automations/operation/CreateVolumeAutomation) for possible configuration options.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The volume automation name.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT Project ID to which the volume automation is associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    },
+                    "templateId": {
+                        "type": "string",
+                        "description": "ID of the automation template this volume automation is based on.\n"
+                    },
+                    "triggers": {
+                        "$ref": "#/types/stackit:index/getVolumeAutomationTriggers:getVolumeAutomationTriggers",
+                        "description": "Triggers that determine when the automation runs.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "automationId",
+                    "description",
+                    "id",
+                    "input",
+                    "name",
+                    "projectId",
+                    "templateId",
+                    "triggers"
                 ]
             }
         },

@@ -22,6 +22,10 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly string? PrivateKey;
         /// <summary>
+        /// When true, skips the verification check that the custom domain points to the distribution domain via CNAME. Useful for zero-downtime migrations.
+        /// </summary>
+        public readonly bool? SkipDnsCheck;
+        /// <summary>
         /// A version identifier for the certificate. Required for custom certificates. The certificate will be updated if this field is changed.
         /// </summary>
         public readonly int? Version;
@@ -32,10 +36,13 @@ namespace Pulumi.Stackit.Outputs
 
             string? privateKey,
 
+            bool? skipDnsCheck,
+
             int? version)
         {
             Certificate = certificate;
             PrivateKey = privateKey;
+            SkipDnsCheck = skipDnsCheck;
             Version = version;
         }
     }
