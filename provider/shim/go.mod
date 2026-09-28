@@ -4,15 +4,16 @@ go 1.26.0
 
 require (
 	github.com/stackitcloud/pulumi-stackit/provider/pkg/version v0.0.6
-	github.com/stackitcloud/terraform-provider-stackit v0.115.0
+	github.com/stackitcloud/terraform-provider-stackit v0.117.0
 )
 
 require (
 	github.com/hashicorp/go-uuid v1.0.3 // indirect
+	github.com/hashicorp/terraform-plugin-framework-jsontypes v0.2.0 // indirect
 	github.com/hashicorp/terraform-plugin-framework-timeouts v0.7.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/alb v0.17.2 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/albwaf v0.13.4 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/automation v0.1.1 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/automation v0.2.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/certificates v1.9.2 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/dremio v0.6.1 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/edge v0.13.2 // indirect
@@ -22,8 +23,8 @@ require (
 	github.com/stackitcloud/stackit-sdk-go/services/modelexperiments v0.3.1 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/scf v0.10.2 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/sfs v0.11.2 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/telemetrylink v0.5.2 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/telemetryrouter v0.5.2 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/telemetrylink v0.6.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/telemetryrouter v0.6.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/valkey v0.3.1 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/vpn v0.15.2 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20260803160001-6ac0973c030d // indirect

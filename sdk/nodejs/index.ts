@@ -665,6 +665,11 @@ export const getVolume: typeof import("./getVolume").getVolume = null as any;
 export const getVolumeOutput: typeof import("./getVolume").getVolumeOutput = null as any;
 utilities.lazyLoad(exports, ["getVolume","getVolumeOutput"], () => require("./getVolume"));
 
+export { GetVolumeAutomationArgs, GetVolumeAutomationResult, GetVolumeAutomationOutputArgs } from "./getVolumeAutomation";
+export const getVolumeAutomation: typeof import("./getVolumeAutomation").getVolumeAutomation = null as any;
+export const getVolumeAutomationOutput: typeof import("./getVolumeAutomation").getVolumeAutomationOutput = null as any;
+utilities.lazyLoad(exports, ["getVolumeAutomation","getVolumeAutomationOutput"], () => require("./getVolumeAutomation"));
+
 export { GetVpcArgs, GetVpcResult, GetVpcOutputArgs } from "./getVpc";
 export const getVpc: typeof import("./getVpc").getVpc = null as any;
 export const getVpcOutput: typeof import("./getVpc").getVpcOutput = null as any;
@@ -1133,6 +1138,11 @@ export type Volume = import("./volume").Volume;
 export const Volume: typeof import("./volume").Volume = null as any;
 utilities.lazyLoad(exports, ["Volume"], () => require("./volume"));
 
+export { VolumeAutomationArgs, VolumeAutomationState } from "./volumeAutomation";
+export type VolumeAutomation = import("./volumeAutomation").VolumeAutomation;
+export const VolumeAutomation: typeof import("./volumeAutomation").VolumeAutomation = null as any;
+utilities.lazyLoad(exports, ["VolumeAutomation"], () => require("./volumeAutomation"));
+
 export { VpcArgs, VpcState } from "./vpc";
 export type Vpc = import("./vpc").Vpc;
 export const Vpc: typeof import("./vpc").Vpc = null as any;
@@ -1396,6 +1406,8 @@ const _module = {
                 return new ValkeyInstance(name, <any>undefined, { urn })
             case "stackit:index/volume:Volume":
                 return new Volume(name, <any>undefined, { urn })
+            case "stackit:index/volumeAutomation:VolumeAutomation":
+                return new VolumeAutomation(name, <any>undefined, { urn })
             case "stackit:index/vpc:Vpc":
                 return new Vpc(name, <any>undefined, { urn })
             case "stackit:index/vpcNetworkRange:VpcNetworkRange":
@@ -1522,6 +1534,7 @@ pulumi.runtime.registerResourceModule("stackit", "index/telemetryrouterInstance"
 pulumi.runtime.registerResourceModule("stackit", "index/valkeyCredential", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/valkeyInstance", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/volume", _module)
+pulumi.runtime.registerResourceModule("stackit", "index/volumeAutomation", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/vpc", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/vpcNetworkRange", _module)
 pulumi.runtime.registerResourceModule("stackit", "index/vpcRegion", _module)
