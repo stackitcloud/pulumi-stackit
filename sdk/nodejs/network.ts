@@ -6,9 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * Network resource schema. Must have a `region` specified in the provider configuration.
- * > Behavior of not configured `ipv4Nameservers` has changed. When `ipv4Nameservers` is not set, it will be set to the network area's `defaultNameservers`.
- * To prevent any nameserver configuration, the `ipv4Nameservers` attribute should be explicitly set to an empty list `[]`.
- * In cases where `ipv4Nameservers` are defined within the resource, the existing behavior will remain unchanged.
  *
  * ## Example Usage
  *

@@ -9,8 +9,6 @@ import * as utilities from "./utilities";
 /**
  * SFS snapshot policies datasource schema
  *
- * > This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
- *
  * ## Example Usage
  */
 export function getSfsSnapshotPolicies(args: GetSfsSnapshotPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetSfsSnapshotPoliciesResult> {
@@ -55,8 +53,6 @@ export interface GetSfsSnapshotPoliciesResult {
 }
 /**
  * SFS snapshot policies datasource schema
- *
- * > This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
  *
  * ## Example Usage
  */

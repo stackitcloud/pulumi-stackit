@@ -12,7 +12,7 @@ namespace Pulumi.Stackit
     public static class GetValkeyInstance
     {
         /// <summary>
-        /// Valkey instance data source schema. Must have a `Region` specified in the provider configuration.
+        /// Key Value Store(valkey) instance data source schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -27,7 +27,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetValkeyInstanceResult>("stackit:index/getValkeyInstance:getValkeyInstance", args ?? new GetValkeyInstanceArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Valkey instance data source schema. Must have a `Region` specified in the provider configuration.
+        /// Key Value Store(valkey) instance data source schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.Invoke<GetValkeyInstanceResult>("stackit:index/getValkeyInstance:getValkeyInstance", args ?? new GetValkeyInstanceInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Valkey instance data source schema. Must have a `Region` specified in the provider configuration.
+        /// Key Value Store(valkey) instance data source schema. Must have a `Region` specified in the provider configuration.
         /// 
         /// ## Example Usage
         /// 

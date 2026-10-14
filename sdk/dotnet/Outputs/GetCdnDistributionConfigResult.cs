@@ -42,7 +42,7 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly Outputs.GetCdnDistributionConfigOptimizerResult Optimizer;
         /// <summary>
-        /// A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+        /// A wrapper for a list of redirect rules that allows for redirect settings on a distribution. Currently, this feature is only available for distributions of backend type HTTP.
         /// </summary>
         public readonly Outputs.GetCdnDistributionConfigRedirectsResult Redirects;
         /// <summary>

@@ -225,6 +225,11 @@ export const getImageV2: typeof import("./getImageV2").getImageV2 = null as any;
 export const getImageV2Output: typeof import("./getImageV2").getImageV2Output = null as any;
 utilities.lazyLoad(exports, ["getImageV2","getImageV2Output"], () => require("./getImageV2"));
 
+export { GetImagesArgs, GetImagesResult, GetImagesOutputArgs } from "./getImages";
+export const getImages: typeof import("./getImages").getImages = null as any;
+export const getImagesOutput: typeof import("./getImages").getImagesOutput = null as any;
+utilities.lazyLoad(exports, ["getImages","getImagesOutput"], () => require("./getImages"));
+
 export { GetIntakeRunnerArgs, GetIntakeRunnerResult, GetIntakeRunnerOutputArgs } from "./getIntakeRunner";
 export const getIntakeRunner: typeof import("./getIntakeRunner").getIntakeRunner = null as any;
 export const getIntakeRunnerOutput: typeof import("./getIntakeRunner").getIntakeRunnerOutput = null as any;
@@ -279,6 +284,11 @@ export { GetMachineTypeArgs, GetMachineTypeResult, GetMachineTypeOutputArgs } fr
 export const getMachineType: typeof import("./getMachineType").getMachineType = null as any;
 export const getMachineTypeOutput: typeof import("./getMachineType").getMachineTypeOutput = null as any;
 utilities.lazyLoad(exports, ["getMachineType","getMachineTypeOutput"], () => require("./getMachineType"));
+
+export { GetMachineTypesArgs, GetMachineTypesResult, GetMachineTypesOutputArgs } from "./getMachineTypes";
+export const getMachineTypes: typeof import("./getMachineTypes").getMachineTypes = null as any;
+export const getMachineTypesOutput: typeof import("./getMachineTypes").getMachineTypesOutput = null as any;
+utilities.lazyLoad(exports, ["getMachineTypes","getMachineTypesOutput"], () => require("./getMachineTypes"));
 
 export { GetMariadbCredentialArgs, GetMariadbCredentialResult, GetMariadbCredentialOutputArgs } from "./getMariadbCredential";
 export const getMariadbCredential: typeof import("./getMariadbCredential").getMariadbCredential = null as any;

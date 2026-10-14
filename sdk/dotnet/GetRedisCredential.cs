@@ -12,7 +12,10 @@ namespace Pulumi.Stackit
     public static class GetRedisCredential
     {
         /// <summary>
-        /// Redis credential data source schema. Must have a `Region` specified in the provider configuration. This data source is deprecated and will be removed after August 2027, use stackit.ValkeyCredential instead. For more information on how to migrate, see the [migration guide](https://docs.stackit.cloud/products/databases/key-value-store/tutorials/migrate-data-to-a-new-instance/).
+        /// Redis credential data source schema. Must have a `Region` specified in the provider configuration.
+        /// 
+        /// !&gt; The `stackit.RedisCredential` data source is deprecated and will be removed after August 2027, use `stackit.ValkeyCredential` (Key Value Store) instead. 
+        /// For more information on how to migrate, see the [migration guide](https://docs.stackit.cloud/products/databases/key-value-store/tutorials/migrate-data-to-a-new-instance/).
         /// 
         /// ## Example Usage
         /// 
@@ -28,7 +31,10 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRedisCredentialResult>("stackit:index/getRedisCredential:getRedisCredential", args ?? new GetRedisCredentialArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Redis credential data source schema. Must have a `Region` specified in the provider configuration. This data source is deprecated and will be removed after August 2027, use stackit.ValkeyCredential instead. For more information on how to migrate, see the [migration guide](https://docs.stackit.cloud/products/databases/key-value-store/tutorials/migrate-data-to-a-new-instance/).
+        /// Redis credential data source schema. Must have a `Region` specified in the provider configuration.
+        /// 
+        /// !&gt; The `stackit.RedisCredential` data source is deprecated and will be removed after August 2027, use `stackit.ValkeyCredential` (Key Value Store) instead. 
+        /// For more information on how to migrate, see the [migration guide](https://docs.stackit.cloud/products/databases/key-value-store/tutorials/migrate-data-to-a-new-instance/).
         /// 
         /// ## Example Usage
         /// 
@@ -44,7 +50,10 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.Invoke<GetRedisCredentialResult>("stackit:index/getRedisCredential:getRedisCredential", args ?? new GetRedisCredentialInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Redis credential data source schema. Must have a `Region` specified in the provider configuration. This data source is deprecated and will be removed after August 2027, use stackit.ValkeyCredential instead. For more information on how to migrate, see the [migration guide](https://docs.stackit.cloud/products/databases/key-value-store/tutorials/migrate-data-to-a-new-instance/).
+        /// Redis credential data source schema. Must have a `Region` specified in the provider configuration.
+        /// 
+        /// !&gt; The `stackit.RedisCredential` data source is deprecated and will be removed after August 2027, use `stackit.ValkeyCredential` (Key Value Store) instead. 
+        /// For more information on how to migrate, see the [migration guide](https://docs.stackit.cloud/products/databases/key-value-store/tutorials/migrate-data-to-a-new-instance/).
         /// 
         /// ## Example Usage
         /// 

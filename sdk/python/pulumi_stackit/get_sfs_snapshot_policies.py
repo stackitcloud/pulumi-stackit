@@ -89,8 +89,6 @@ def get_sfs_snapshot_policies(immutable: Optional[_builtins.str] = None,
     """
     SFS snapshot policies datasource schema
 
-    > This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
-
     ## Example Usage
 
 
@@ -113,8 +111,6 @@ def get_sfs_snapshot_policies_output(immutable: pulumi.Input[Optional[Optional[_
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSfsSnapshotPoliciesResult]:
     """
     SFS snapshot policies datasource schema
-
-    > This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
 
     ## Example Usage
 

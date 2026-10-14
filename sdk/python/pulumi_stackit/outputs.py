@@ -238,6 +238,11 @@ __all__ = [
     'GetImageV2ChecksumResult',
     'GetImageV2ConfigResult',
     'GetImageV2FilterResult',
+    'GetImagesFilterResult',
+    'GetImagesResultResult',
+    'GetImagesResultChecksumResult',
+    'GetImagesResultConfigResult',
+    'GetImagesTimeoutsResult',
     'GetLoadbalancerListenerResult',
     'GetLoadbalancerListenerServerNameIndicatorResult',
     'GetLoadbalancerListenerTcpResult',
@@ -252,6 +257,9 @@ __all__ = [
     'GetLoadbalancerTargetPoolSessionPersistenceResult',
     'GetLoadbalancerTargetPoolTargetResult',
     'GetLogmeInstanceParametersResult',
+    'GetMachineTypesFilterResult',
+    'GetMachineTypesResultResult',
+    'GetMachineTypesTimeoutsResult',
     'GetMariadbInstanceParametersResult',
     'GetMongodbflexInstanceFlavorResult',
     'GetMongodbflexInstanceOptionsResult',
@@ -2023,7 +2031,7 @@ class CdnDistributionConfig(dict):
         :param _builtins.bool forward_host_header: Enable this allows the 'Host' header to be passed through to the origin.
         :param _builtins.int monthly_limit_bytes: Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
         :param 'CdnDistributionConfigOptimizerArgs' optimizer: Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
-        :param 'CdnDistributionConfigRedirectsArgs' redirects: A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+        :param 'CdnDistributionConfigRedirectsArgs' redirects: A wrapper for a list of redirect rules that allows for redirect settings on a distribution. Currently, this feature is only available for distributions of backend type HTTP.
         :param _builtins.bool strip_response_cookies: Enable this to prevent origin-level cookies from being forwarded to the end user.
         :param 'CdnDistributionConfigTlsArgs' tls: Configuration for TLS protocol versions. Note: Enabling older TLS versions (1.0, 1.1) is generally discouraged for security reasons.
         :param 'CdnDistributionConfigWafArgs' waf: Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.
@@ -2119,7 +2127,7 @@ class CdnDistributionConfig(dict):
     @pulumi.getter
     def redirects(self) -> Optional['outputs.CdnDistributionConfigRedirects']:
         """
-        A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+        A wrapper for a list of redirect rules that allows for redirect settings on a distribution. Currently, this feature is only available for distributions of backend type HTTP.
         """
         return pulumi.get(self, "redirects")
 
@@ -12383,7 +12391,7 @@ class GetCdnDistributionConfigResult(dict):
         :param _builtins.bool forward_host_header: Enable this allows the 'Host' header to be passed through to the origin.
         :param _builtins.int monthly_limit_bytes: Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
         :param 'GetCdnDistributionConfigOptimizerArgs' optimizer: Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
-        :param 'GetCdnDistributionConfigRedirectsArgs' redirects: A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+        :param 'GetCdnDistributionConfigRedirectsArgs' redirects: A wrapper for a list of redirect rules that allows for redirect settings on a distribution. Currently, this feature is only available for distributions of backend type HTTP.
         :param Sequence[_builtins.str] regions: The configured regions where content will be hosted
         :param _builtins.bool strip_response_cookies: Enable this to prevent origin-level cookies from being forwarded to the end user.
         :param 'GetCdnDistributionConfigTlsArgs' tls: Configuration for TLS protocol versions. Note: Enabling older TLS versions (1.0, 1.1) is generally discouraged for security reasons.
@@ -12456,7 +12464,7 @@ class GetCdnDistributionConfigResult(dict):
     @pulumi.getter
     def redirects(self) -> 'outputs.GetCdnDistributionConfigRedirectsResult':
         """
-        A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+        A wrapper for a list of redirect rules that allows for redirect settings on a distribution. Currently, this feature is only available for distributions of backend type HTTP.
         """
         return pulumi.get(self, "redirects")
 
@@ -13819,6 +13827,287 @@ class GetImageV2FilterResult(dict):
 
 
 @pulumi.output_type
+class GetImagesFilterResult(dict):
+    def __init__(__self__, *,
+                 label_selector: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str label_selector: Experimental: API label selector passed directly to the image-list endpoint.
+        """
+        if label_selector is not None:
+            pulumi.set(__self__, "label_selector", label_selector)
+
+    @_builtins.property
+    @pulumi.getter(name="labelSelector")
+    def label_selector(self) -> Optional[_builtins.str]:
+        """
+        Experimental: API label selector passed directly to the image-list endpoint.
+        """
+        return pulumi.get(self, "label_selector")
+
+
+@pulumi.output_type
+class GetImagesResultResult(dict):
+    def __init__(__self__, *,
+                 checksum: 'outputs.GetImagesResultChecksumResult',
+                 config: 'outputs.GetImagesResultConfigResult',
+                 disk_format: _builtins.str,
+                 image_id: _builtins.str,
+                 labels: Mapping[str, _builtins.str],
+                 min_disk_size: _builtins.int,
+                 min_ram: _builtins.int,
+                 name: _builtins.str,
+                 protected: _builtins.bool,
+                 scope: _builtins.str,
+                 status: _builtins.str):
+        """
+        :param 'GetImagesResultChecksumArgs' checksum: Image checksum.
+        :param 'GetImagesResultConfigArgs' config: Image hardware and operating-system configuration.
+        :param _builtins.str disk_format: Image disk format.
+        :param _builtins.str image_id: Image ID.
+        :param Mapping[str, _builtins.str] labels: Image labels.
+        :param _builtins.int min_disk_size: Minimum disk size in GB.
+        :param _builtins.int min_ram: Minimum RAM in MB.
+        :param _builtins.str name: Image name.
+        :param _builtins.bool protected: Whether the image is protected.
+        :param _builtins.str scope: Image scope.
+        :param _builtins.str status: Image status.
+        """
+        pulumi.set(__self__, "checksum", checksum)
+        pulumi.set(__self__, "config", config)
+        pulumi.set(__self__, "disk_format", disk_format)
+        pulumi.set(__self__, "image_id", image_id)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "min_disk_size", min_disk_size)
+        pulumi.set(__self__, "min_ram", min_ram)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "protected", protected)
+        pulumi.set(__self__, "scope", scope)
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter
+    def checksum(self) -> 'outputs.GetImagesResultChecksumResult':
+        """
+        Image checksum.
+        """
+        return pulumi.get(self, "checksum")
+
+    @_builtins.property
+    @pulumi.getter
+    def config(self) -> 'outputs.GetImagesResultConfigResult':
+        """
+        Image hardware and operating-system configuration.
+        """
+        return pulumi.get(self, "config")
+
+    @_builtins.property
+    @pulumi.getter(name="diskFormat")
+    def disk_format(self) -> _builtins.str:
+        """
+        Image disk format.
+        """
+        return pulumi.get(self, "disk_format")
+
+    @_builtins.property
+    @pulumi.getter(name="imageId")
+    def image_id(self) -> _builtins.str:
+        """
+        Image ID.
+        """
+        return pulumi.get(self, "image_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, _builtins.str]:
+        """
+        Image labels.
+        """
+        return pulumi.get(self, "labels")
+
+    @_builtins.property
+    @pulumi.getter(name="minDiskSize")
+    def min_disk_size(self) -> _builtins.int:
+        """
+        Minimum disk size in GB.
+        """
+        return pulumi.get(self, "min_disk_size")
+
+    @_builtins.property
+    @pulumi.getter(name="minRam")
+    def min_ram(self) -> _builtins.int:
+        """
+        Minimum RAM in MB.
+        """
+        return pulumi.get(self, "min_ram")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Image name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def protected(self) -> _builtins.bool:
+        """
+        Whether the image is protected.
+        """
+        return pulumi.get(self, "protected")
+
+    @_builtins.property
+    @pulumi.getter
+    def scope(self) -> _builtins.str:
+        """
+        Image scope.
+        """
+        return pulumi.get(self, "scope")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Image status.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetImagesResultChecksumResult(dict):
+    def __init__(__self__, *,
+                 algorithm: _builtins.str,
+                 digest: _builtins.str):
+        pulumi.set(__self__, "algorithm", algorithm)
+        pulumi.set(__self__, "digest", digest)
+
+    @_builtins.property
+    @pulumi.getter
+    def algorithm(self) -> _builtins.str:
+        return pulumi.get(self, "algorithm")
+
+    @_builtins.property
+    @pulumi.getter
+    def digest(self) -> _builtins.str:
+        return pulumi.get(self, "digest")
+
+
+@pulumi.output_type
+class GetImagesResultConfigResult(dict):
+    def __init__(__self__, *,
+                 boot_menu: _builtins.bool,
+                 cdrom_bus: _builtins.str,
+                 disk_bus: _builtins.str,
+                 nic_model: _builtins.str,
+                 operating_system: _builtins.str,
+                 operating_system_distro: _builtins.str,
+                 operating_system_version: _builtins.str,
+                 rescue_bus: _builtins.str,
+                 rescue_device: _builtins.str,
+                 secure_boot: _builtins.bool,
+                 uefi: _builtins.bool,
+                 video_model: _builtins.str,
+                 virtio_scsi: _builtins.bool):
+        pulumi.set(__self__, "boot_menu", boot_menu)
+        pulumi.set(__self__, "cdrom_bus", cdrom_bus)
+        pulumi.set(__self__, "disk_bus", disk_bus)
+        pulumi.set(__self__, "nic_model", nic_model)
+        pulumi.set(__self__, "operating_system", operating_system)
+        pulumi.set(__self__, "operating_system_distro", operating_system_distro)
+        pulumi.set(__self__, "operating_system_version", operating_system_version)
+        pulumi.set(__self__, "rescue_bus", rescue_bus)
+        pulumi.set(__self__, "rescue_device", rescue_device)
+        pulumi.set(__self__, "secure_boot", secure_boot)
+        pulumi.set(__self__, "uefi", uefi)
+        pulumi.set(__self__, "video_model", video_model)
+        pulumi.set(__self__, "virtio_scsi", virtio_scsi)
+
+    @_builtins.property
+    @pulumi.getter(name="bootMenu")
+    def boot_menu(self) -> _builtins.bool:
+        return pulumi.get(self, "boot_menu")
+
+    @_builtins.property
+    @pulumi.getter(name="cdromBus")
+    def cdrom_bus(self) -> _builtins.str:
+        return pulumi.get(self, "cdrom_bus")
+
+    @_builtins.property
+    @pulumi.getter(name="diskBus")
+    def disk_bus(self) -> _builtins.str:
+        return pulumi.get(self, "disk_bus")
+
+    @_builtins.property
+    @pulumi.getter(name="nicModel")
+    def nic_model(self) -> _builtins.str:
+        return pulumi.get(self, "nic_model")
+
+    @_builtins.property
+    @pulumi.getter(name="operatingSystem")
+    def operating_system(self) -> _builtins.str:
+        return pulumi.get(self, "operating_system")
+
+    @_builtins.property
+    @pulumi.getter(name="operatingSystemDistro")
+    def operating_system_distro(self) -> _builtins.str:
+        return pulumi.get(self, "operating_system_distro")
+
+    @_builtins.property
+    @pulumi.getter(name="operatingSystemVersion")
+    def operating_system_version(self) -> _builtins.str:
+        return pulumi.get(self, "operating_system_version")
+
+    @_builtins.property
+    @pulumi.getter(name="rescueBus")
+    def rescue_bus(self) -> _builtins.str:
+        return pulumi.get(self, "rescue_bus")
+
+    @_builtins.property
+    @pulumi.getter(name="rescueDevice")
+    def rescue_device(self) -> _builtins.str:
+        return pulumi.get(self, "rescue_device")
+
+    @_builtins.property
+    @pulumi.getter(name="secureBoot")
+    def secure_boot(self) -> _builtins.bool:
+        return pulumi.get(self, "secure_boot")
+
+    @_builtins.property
+    @pulumi.getter
+    def uefi(self) -> _builtins.bool:
+        return pulumi.get(self, "uefi")
+
+    @_builtins.property
+    @pulumi.getter(name="videoModel")
+    def video_model(self) -> _builtins.str:
+        return pulumi.get(self, "video_model")
+
+    @_builtins.property
+    @pulumi.getter(name="virtioScsi")
+    def virtio_scsi(self) -> _builtins.bool:
+        return pulumi.get(self, "virtio_scsi")
+
+
+@pulumi.output_type
+class GetImagesTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+
+@pulumi.output_type
 class GetLoadbalancerListenerResult(dict):
     def __init__(__self__, *,
                  display_name: _builtins.str,
@@ -14485,6 +14774,165 @@ class GetLogmeInstanceParametersResult(dict):
         List of syslog servers to send logs to.
         """
         return pulumi.get(self, "syslogs")
+
+
+@pulumi.output_type
+class GetMachineTypesFilterResult(dict):
+    def __init__(__self__, *,
+                 disk: Optional[_builtins.int] = None,
+                 extra_specs: Optional[Mapping[str, _builtins.str]] = None,
+                 name: Optional[_builtins.str] = None,
+                 ram: Optional[_builtins.int] = None,
+                 vcpu: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int disk: Exact disk size in GB to match.
+        :param Mapping[str, _builtins.str] extra_specs: Extra specs to match by key and exact value (e.g., cpu or overcommit).
+        :param _builtins.str name: Exact machine type name to match.
+        :param _builtins.int ram: Exact RAM size in MB to match.
+        :param _builtins.int vcpu: Exact number of vCPUs to match.
+        """
+        if disk is not None:
+            pulumi.set(__self__, "disk", disk)
+        if extra_specs is not None:
+            pulumi.set(__self__, "extra_specs", extra_specs)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if ram is not None:
+            pulumi.set(__self__, "ram", ram)
+        if vcpu is not None:
+            pulumi.set(__self__, "vcpu", vcpu)
+
+    @_builtins.property
+    @pulumi.getter
+    def disk(self) -> Optional[_builtins.int]:
+        """
+        Exact disk size in GB to match.
+        """
+        return pulumi.get(self, "disk")
+
+    @_builtins.property
+    @pulumi.getter(name="extraSpecs")
+    def extra_specs(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Extra specs to match by key and exact value (e.g., cpu or overcommit).
+        """
+        return pulumi.get(self, "extra_specs")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Exact machine type name to match.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def ram(self) -> Optional[_builtins.int]:
+        """
+        Exact RAM size in MB to match.
+        """
+        return pulumi.get(self, "ram")
+
+    @_builtins.property
+    @pulumi.getter
+    def vcpu(self) -> Optional[_builtins.int]:
+        """
+        Exact number of vCPUs to match.
+        """
+        return pulumi.get(self, "vcpu")
+
+
+@pulumi.output_type
+class GetMachineTypesResultResult(dict):
+    def __init__(__self__, *,
+                 description: _builtins.str,
+                 disk: _builtins.int,
+                 extra_specs: Mapping[str, _builtins.str],
+                 name: _builtins.str,
+                 ram: _builtins.int,
+                 vcpus: _builtins.int):
+        """
+        :param _builtins.str description: Machine type description.
+        :param _builtins.int disk: Disk size in GB.
+        :param Mapping[str, _builtins.str] extra_specs: Extra specs (e.g., CPU type or overcommit ratio).
+        :param _builtins.str name: Machine type name.
+        :param _builtins.int ram: RAM size in MB.
+        :param _builtins.int vcpus: Number of vCPUs.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "disk", disk)
+        pulumi.set(__self__, "extra_specs", extra_specs)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "ram", ram)
+        pulumi.set(__self__, "vcpus", vcpus)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> _builtins.str:
+        """
+        Machine type description.
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def disk(self) -> _builtins.int:
+        """
+        Disk size in GB.
+        """
+        return pulumi.get(self, "disk")
+
+    @_builtins.property
+    @pulumi.getter(name="extraSpecs")
+    def extra_specs(self) -> Mapping[str, _builtins.str]:
+        """
+        Extra specs (e.g., CPU type or overcommit ratio).
+        """
+        return pulumi.get(self, "extra_specs")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Machine type name.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def ram(self) -> _builtins.int:
+        """
+        RAM size in MB.
+        """
+        return pulumi.get(self, "ram")
+
+    @_builtins.property
+    @pulumi.getter
+    def vcpus(self) -> _builtins.int:
+        """
+        Number of vCPUs.
+        """
+        return pulumi.get(self, "vcpus")
+
+
+@pulumi.output_type
+class GetMachineTypesTimeoutsResult(dict):
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
 
 
 @pulumi.output_type

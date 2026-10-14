@@ -331,7 +331,7 @@ class ValkeyInstance(pulumi.CustomResource):
                  version: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        Valkey instance resource schema. Must have a `region` specified in the provider configuration.
+        Key Value Store(valkey) instance resource schema. Must have a `region` specified in the provider configuration.
 
         ## Example Usage
 
@@ -356,7 +356,7 @@ class ValkeyInstance(pulumi.CustomResource):
                  args: ValkeyInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Valkey instance resource schema. Must have a `region` specified in the provider configuration.
+        Key Value Store(valkey) instance resource schema. Must have a `region` specified in the provider configuration.
 
         ## Example Usage
 

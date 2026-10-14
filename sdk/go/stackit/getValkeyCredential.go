@@ -11,7 +11,7 @@ import (
 	"github.com/stackitcloud/pulumi-stackit/sdk/go/stackit/internal"
 )
 
-// Valkey credential data source schema. Must have a `region` specified in the provider configuration.
+// Key Value Store(valkey) credential data source schema. Must have a `region` specified in the provider configuration.
 //
 // ## Example Usage
 func LookupValkeyCredential(ctx *pulumi.Context, args *LookupValkeyCredentialArgs, opts ...pulumi.InvokeOption) (*LookupValkeyCredentialResult, error) {

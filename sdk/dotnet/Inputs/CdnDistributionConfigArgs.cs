@@ -67,7 +67,7 @@ namespace Pulumi.Stackit.Inputs
         public Input<Inputs.CdnDistributionConfigOptimizerArgs>? Optimizer { get; set; }
 
         /// <summary>
-        /// A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+        /// A wrapper for a list of redirect rules that allows for redirect settings on a distribution. Currently, this feature is only available for distributions of backend type HTTP.
         /// </summary>
         [Input("redirects")]
         public Input<Inputs.CdnDistributionConfigRedirectsArgs>? Redirects { get; set; }

@@ -13,8 +13,6 @@ import (
 
 // SFS Share schema. Must have a `region` specified in the provider configuration.
 //
-// > This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
-//
 // ## Example Usage
 func LookupSfsShare(ctx *pulumi.Context, args *LookupSfsShareArgs, opts ...pulumi.InvokeOption) (*LookupSfsShareResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

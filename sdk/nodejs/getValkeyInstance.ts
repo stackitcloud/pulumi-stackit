@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Valkey instance data source schema. Must have a `region` specified in the provider configuration.
+ * Key Value Store(valkey) instance data source schema. Must have a `region` specified in the provider configuration.
  *
  * ## Example Usage
  */
@@ -82,7 +82,7 @@ export interface GetValkeyInstanceResult {
     readonly version: string;
 }
 /**
- * Valkey instance data source schema. Must have a `region` specified in the provider configuration.
+ * Key Value Store(valkey) instance data source schema. Must have a `region` specified in the provider configuration.
  *
  * ## Example Usage
  */

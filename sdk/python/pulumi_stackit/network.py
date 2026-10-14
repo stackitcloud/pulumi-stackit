@@ -766,9 +766,6 @@ class Network(pulumi.CustomResource):
                  __props__=None):
         """
         Network resource schema. Must have a `region` specified in the provider configuration.
-        > Behavior of not configured `ipv4_nameservers` has changed. When `ipv4_nameservers` is not set, it will be set to the network area's `default_nameservers`.
-        To prevent any nameserver configuration, the `ipv4_nameservers` attribute should be explicitly set to an empty list `[]`.
-        In cases where `ipv4_nameservers` are defined within the resource, the existing behavior will remain unchanged.
 
         ## Example Usage
 
@@ -808,9 +805,6 @@ class Network(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Network resource schema. Must have a `region` specified in the provider configuration.
-        > Behavior of not configured `ipv4_nameservers` has changed. When `ipv4_nameservers` is not set, it will be set to the network area's `default_nameservers`.
-        To prevent any nameserver configuration, the `ipv4_nameservers` attribute should be explicitly set to an empty list `[]`.
-        In cases where `ipv4_nameservers` are defined within the resource, the existing behavior will remain unchanged.
 
         ## Example Usage
 

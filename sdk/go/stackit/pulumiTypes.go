@@ -4299,7 +4299,7 @@ type CdnDistributionConfig struct {
 	MonthlyLimitBytes *int `pulumi:"monthlyLimitBytes"`
 	// Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
 	Optimizer *CdnDistributionConfigOptimizer `pulumi:"optimizer"`
-	// A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+	// A wrapper for a list of redirect rules that allows for redirect settings on a distribution. Currently, this feature is only available for distributions of backend type HTTP.
 	Redirects *CdnDistributionConfigRedirects `pulumi:"redirects"`
 	// The configured regions where content will be hosted
 	Regions []string `pulumi:"regions"`
@@ -4337,7 +4337,7 @@ type CdnDistributionConfigArgs struct {
 	MonthlyLimitBytes pulumi.IntPtrInput `pulumi:"monthlyLimitBytes"`
 	// Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
 	Optimizer CdnDistributionConfigOptimizerPtrInput `pulumi:"optimizer"`
-	// A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+	// A wrapper for a list of redirect rules that allows for redirect settings on a distribution. Currently, this feature is only available for distributions of backend type HTTP.
 	Redirects CdnDistributionConfigRedirectsPtrInput `pulumi:"redirects"`
 	// The configured regions where content will be hosted
 	Regions pulumi.StringArrayInput `pulumi:"regions"`
@@ -4461,7 +4461,7 @@ func (o CdnDistributionConfigOutput) Optimizer() CdnDistributionConfigOptimizerP
 	return o.ApplyT(func(v CdnDistributionConfig) *CdnDistributionConfigOptimizer { return v.Optimizer }).(CdnDistributionConfigOptimizerPtrOutput)
 }
 
-// A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+// A wrapper for a list of redirect rules that allows for redirect settings on a distribution. Currently, this feature is only available for distributions of backend type HTTP.
 func (o CdnDistributionConfigOutput) Redirects() CdnDistributionConfigRedirectsPtrOutput {
 	return o.ApplyT(func(v CdnDistributionConfig) *CdnDistributionConfigRedirects { return v.Redirects }).(CdnDistributionConfigRedirectsPtrOutput)
 }
@@ -4580,7 +4580,7 @@ func (o CdnDistributionConfigPtrOutput) Optimizer() CdnDistributionConfigOptimiz
 	}).(CdnDistributionConfigOptimizerPtrOutput)
 }
 
-// A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+// A wrapper for a list of redirect rules that allows for redirect settings on a distribution. Currently, this feature is only available for distributions of backend type HTTP.
 func (o CdnDistributionConfigPtrOutput) Redirects() CdnDistributionConfigRedirectsPtrOutput {
 	return o.ApplyT(func(v *CdnDistributionConfig) *CdnDistributionConfigRedirects {
 		if v == nil {
@@ -31683,7 +31683,7 @@ type GetCdnDistributionConfig struct {
 	MonthlyLimitBytes int `pulumi:"monthlyLimitBytes"`
 	// Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
 	Optimizer GetCdnDistributionConfigOptimizer `pulumi:"optimizer"`
-	// A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+	// A wrapper for a list of redirect rules that allows for redirect settings on a distribution. Currently, this feature is only available for distributions of backend type HTTP.
 	Redirects GetCdnDistributionConfigRedirects `pulumi:"redirects"`
 	// The configured regions where content will be hosted
 	Regions []string `pulumi:"regions"`
@@ -31721,7 +31721,7 @@ type GetCdnDistributionConfigArgs struct {
 	MonthlyLimitBytes pulumi.IntInput `pulumi:"monthlyLimitBytes"`
 	// Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
 	Optimizer GetCdnDistributionConfigOptimizerInput `pulumi:"optimizer"`
-	// A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+	// A wrapper for a list of redirect rules that allows for redirect settings on a distribution. Currently, this feature is only available for distributions of backend type HTTP.
 	Redirects GetCdnDistributionConfigRedirectsInput `pulumi:"redirects"`
 	// The configured regions where content will be hosted
 	Regions pulumi.StringArrayInput `pulumi:"regions"`
@@ -31794,7 +31794,7 @@ func (o GetCdnDistributionConfigOutput) Optimizer() GetCdnDistributionConfigOpti
 	return o.ApplyT(func(v GetCdnDistributionConfig) GetCdnDistributionConfigOptimizer { return v.Optimizer }).(GetCdnDistributionConfigOptimizerOutput)
 }
 
-// A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+// A wrapper for a list of redirect rules that allows for redirect settings on a distribution. Currently, this feature is only available for distributions of backend type HTTP.
 func (o GetCdnDistributionConfigOutput) Redirects() GetCdnDistributionConfigRedirectsOutput {
 	return o.ApplyT(func(v GetCdnDistributionConfig) GetCdnDistributionConfigRedirects { return v.Redirects }).(GetCdnDistributionConfigRedirectsOutput)
 }
@@ -34321,6 +34321,643 @@ func (o GetImageV2FilterPtrOutput) Version() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetImagesFilter struct {
+	// Experimental: API label selector passed directly to the image-list endpoint.
+	LabelSelector *string `pulumi:"labelSelector"`
+}
+
+// GetImagesFilterInput is an input type that accepts GetImagesFilterArgs and GetImagesFilterOutput values.
+// You can construct a concrete instance of `GetImagesFilterInput` via:
+//
+//	GetImagesFilterArgs{...}
+type GetImagesFilterInput interface {
+	pulumi.Input
+
+	ToGetImagesFilterOutput() GetImagesFilterOutput
+	ToGetImagesFilterOutputWithContext(context.Context) GetImagesFilterOutput
+}
+
+type GetImagesFilterArgs struct {
+	// Experimental: API label selector passed directly to the image-list endpoint.
+	LabelSelector pulumi.StringPtrInput `pulumi:"labelSelector"`
+}
+
+func (GetImagesFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesFilter)(nil)).Elem()
+}
+
+func (i GetImagesFilterArgs) ToGetImagesFilterOutput() GetImagesFilterOutput {
+	return i.ToGetImagesFilterOutputWithContext(context.Background())
+}
+
+func (i GetImagesFilterArgs) ToGetImagesFilterOutputWithContext(ctx context.Context) GetImagesFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImagesFilterOutput)
+}
+
+func (i GetImagesFilterArgs) ToGetImagesFilterPtrOutput() GetImagesFilterPtrOutput {
+	return i.ToGetImagesFilterPtrOutputWithContext(context.Background())
+}
+
+func (i GetImagesFilterArgs) ToGetImagesFilterPtrOutputWithContext(ctx context.Context) GetImagesFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImagesFilterOutput).ToGetImagesFilterPtrOutputWithContext(ctx)
+}
+
+// GetImagesFilterPtrInput is an input type that accepts GetImagesFilterArgs, GetImagesFilterPtr and GetImagesFilterPtrOutput values.
+// You can construct a concrete instance of `GetImagesFilterPtrInput` via:
+//
+//	        GetImagesFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetImagesFilterPtrInput interface {
+	pulumi.Input
+
+	ToGetImagesFilterPtrOutput() GetImagesFilterPtrOutput
+	ToGetImagesFilterPtrOutputWithContext(context.Context) GetImagesFilterPtrOutput
+}
+
+type getImagesFilterPtrType GetImagesFilterArgs
+
+func GetImagesFilterPtr(v *GetImagesFilterArgs) GetImagesFilterPtrInput {
+	return (*getImagesFilterPtrType)(v)
+}
+
+func (*getImagesFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetImagesFilter)(nil)).Elem()
+}
+
+func (i *getImagesFilterPtrType) ToGetImagesFilterPtrOutput() GetImagesFilterPtrOutput {
+	return i.ToGetImagesFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *getImagesFilterPtrType) ToGetImagesFilterPtrOutputWithContext(ctx context.Context) GetImagesFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImagesFilterPtrOutput)
+}
+
+type GetImagesFilterOutput struct{ *pulumi.OutputState }
+
+func (GetImagesFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesFilter)(nil)).Elem()
+}
+
+func (o GetImagesFilterOutput) ToGetImagesFilterOutput() GetImagesFilterOutput {
+	return o
+}
+
+func (o GetImagesFilterOutput) ToGetImagesFilterOutputWithContext(ctx context.Context) GetImagesFilterOutput {
+	return o
+}
+
+func (o GetImagesFilterOutput) ToGetImagesFilterPtrOutput() GetImagesFilterPtrOutput {
+	return o.ToGetImagesFilterPtrOutputWithContext(context.Background())
+}
+
+func (o GetImagesFilterOutput) ToGetImagesFilterPtrOutputWithContext(ctx context.Context) GetImagesFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetImagesFilter) *GetImagesFilter {
+		return &v
+	}).(GetImagesFilterPtrOutput)
+}
+
+// Experimental: API label selector passed directly to the image-list endpoint.
+func (o GetImagesFilterOutput) LabelSelector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImagesFilter) *string { return v.LabelSelector }).(pulumi.StringPtrOutput)
+}
+
+type GetImagesFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (GetImagesFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetImagesFilter)(nil)).Elem()
+}
+
+func (o GetImagesFilterPtrOutput) ToGetImagesFilterPtrOutput() GetImagesFilterPtrOutput {
+	return o
+}
+
+func (o GetImagesFilterPtrOutput) ToGetImagesFilterPtrOutputWithContext(ctx context.Context) GetImagesFilterPtrOutput {
+	return o
+}
+
+func (o GetImagesFilterPtrOutput) Elem() GetImagesFilterOutput {
+	return o.ApplyT(func(v *GetImagesFilter) GetImagesFilter {
+		if v != nil {
+			return *v
+		}
+		var ret GetImagesFilter
+		return ret
+	}).(GetImagesFilterOutput)
+}
+
+// Experimental: API label selector passed directly to the image-list endpoint.
+func (o GetImagesFilterPtrOutput) LabelSelector() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetImagesFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LabelSelector
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetImagesResult struct {
+	// Image checksum.
+	Checksum GetImagesResultChecksum `pulumi:"checksum"`
+	// Image hardware and operating-system configuration.
+	Config GetImagesResultConfig `pulumi:"config"`
+	// Image disk format.
+	DiskFormat string `pulumi:"diskFormat"`
+	// Image ID.
+	ImageId string `pulumi:"imageId"`
+	// Image labels.
+	Labels map[string]string `pulumi:"labels"`
+	// Minimum disk size in GB.
+	MinDiskSize int `pulumi:"minDiskSize"`
+	// Minimum RAM in MB.
+	MinRam int `pulumi:"minRam"`
+	// Image name.
+	Name string `pulumi:"name"`
+	// Whether the image is protected.
+	Protected bool `pulumi:"protected"`
+	// Image scope.
+	Scope string `pulumi:"scope"`
+	// Image status.
+	Status string `pulumi:"status"`
+}
+
+// GetImagesResultInput is an input type that accepts GetImagesResultArgs and GetImagesResultOutput values.
+// You can construct a concrete instance of `GetImagesResultInput` via:
+//
+//	GetImagesResultArgs{...}
+type GetImagesResultInput interface {
+	pulumi.Input
+
+	ToGetImagesResultOutput() GetImagesResultOutput
+	ToGetImagesResultOutputWithContext(context.Context) GetImagesResultOutput
+}
+
+type GetImagesResultArgs struct {
+	// Image checksum.
+	Checksum GetImagesResultChecksumInput `pulumi:"checksum"`
+	// Image hardware and operating-system configuration.
+	Config GetImagesResultConfigInput `pulumi:"config"`
+	// Image disk format.
+	DiskFormat pulumi.StringInput `pulumi:"diskFormat"`
+	// Image ID.
+	ImageId pulumi.StringInput `pulumi:"imageId"`
+	// Image labels.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Minimum disk size in GB.
+	MinDiskSize pulumi.IntInput `pulumi:"minDiskSize"`
+	// Minimum RAM in MB.
+	MinRam pulumi.IntInput `pulumi:"minRam"`
+	// Image name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Whether the image is protected.
+	Protected pulumi.BoolInput `pulumi:"protected"`
+	// Image scope.
+	Scope pulumi.StringInput `pulumi:"scope"`
+	// Image status.
+	Status pulumi.StringInput `pulumi:"status"`
+}
+
+func (GetImagesResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesResult)(nil)).Elem()
+}
+
+func (i GetImagesResultArgs) ToGetImagesResultOutput() GetImagesResultOutput {
+	return i.ToGetImagesResultOutputWithContext(context.Background())
+}
+
+func (i GetImagesResultArgs) ToGetImagesResultOutputWithContext(ctx context.Context) GetImagesResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImagesResultOutput)
+}
+
+// GetImagesResultArrayInput is an input type that accepts GetImagesResultArray and GetImagesResultArrayOutput values.
+// You can construct a concrete instance of `GetImagesResultArrayInput` via:
+//
+//	GetImagesResultArray{ GetImagesResultArgs{...} }
+type GetImagesResultArrayInput interface {
+	pulumi.Input
+
+	ToGetImagesResultArrayOutput() GetImagesResultArrayOutput
+	ToGetImagesResultArrayOutputWithContext(context.Context) GetImagesResultArrayOutput
+}
+
+type GetImagesResultArray []GetImagesResultInput
+
+func (GetImagesResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetImagesResult)(nil)).Elem()
+}
+
+func (i GetImagesResultArray) ToGetImagesResultArrayOutput() GetImagesResultArrayOutput {
+	return i.ToGetImagesResultArrayOutputWithContext(context.Background())
+}
+
+func (i GetImagesResultArray) ToGetImagesResultArrayOutputWithContext(ctx context.Context) GetImagesResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImagesResultArrayOutput)
+}
+
+type GetImagesResultOutput struct{ *pulumi.OutputState }
+
+func (GetImagesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesResult)(nil)).Elem()
+}
+
+func (o GetImagesResultOutput) ToGetImagesResultOutput() GetImagesResultOutput {
+	return o
+}
+
+func (o GetImagesResultOutput) ToGetImagesResultOutputWithContext(ctx context.Context) GetImagesResultOutput {
+	return o
+}
+
+// Image checksum.
+func (o GetImagesResultOutput) Checksum() GetImagesResultChecksumOutput {
+	return o.ApplyT(func(v GetImagesResult) GetImagesResultChecksum { return v.Checksum }).(GetImagesResultChecksumOutput)
+}
+
+// Image hardware and operating-system configuration.
+func (o GetImagesResultOutput) Config() GetImagesResultConfigOutput {
+	return o.ApplyT(func(v GetImagesResult) GetImagesResultConfig { return v.Config }).(GetImagesResultConfigOutput)
+}
+
+// Image disk format.
+func (o GetImagesResultOutput) DiskFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesResult) string { return v.DiskFormat }).(pulumi.StringOutput)
+}
+
+// Image ID.
+func (o GetImagesResultOutput) ImageId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesResult) string { return v.ImageId }).(pulumi.StringOutput)
+}
+
+// Image labels.
+func (o GetImagesResultOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetImagesResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Minimum disk size in GB.
+func (o GetImagesResultOutput) MinDiskSize() pulumi.IntOutput {
+	return o.ApplyT(func(v GetImagesResult) int { return v.MinDiskSize }).(pulumi.IntOutput)
+}
+
+// Minimum RAM in MB.
+func (o GetImagesResultOutput) MinRam() pulumi.IntOutput {
+	return o.ApplyT(func(v GetImagesResult) int { return v.MinRam }).(pulumi.IntOutput)
+}
+
+// Image name.
+func (o GetImagesResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Whether the image is protected.
+func (o GetImagesResultOutput) Protected() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetImagesResult) bool { return v.Protected }).(pulumi.BoolOutput)
+}
+
+// Image scope.
+func (o GetImagesResultOutput) Scope() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesResult) string { return v.Scope }).(pulumi.StringOutput)
+}
+
+// Image status.
+func (o GetImagesResultOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type GetImagesResultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetImagesResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetImagesResult)(nil)).Elem()
+}
+
+func (o GetImagesResultArrayOutput) ToGetImagesResultArrayOutput() GetImagesResultArrayOutput {
+	return o
+}
+
+func (o GetImagesResultArrayOutput) ToGetImagesResultArrayOutputWithContext(ctx context.Context) GetImagesResultArrayOutput {
+	return o
+}
+
+func (o GetImagesResultArrayOutput) Index(i pulumi.IntInput) GetImagesResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetImagesResult {
+		return vs[0].([]GetImagesResult)[vs[1].(int)]
+	}).(GetImagesResultOutput)
+}
+
+type GetImagesResultChecksum struct {
+	Algorithm string `pulumi:"algorithm"`
+	Digest    string `pulumi:"digest"`
+}
+
+// GetImagesResultChecksumInput is an input type that accepts GetImagesResultChecksumArgs and GetImagesResultChecksumOutput values.
+// You can construct a concrete instance of `GetImagesResultChecksumInput` via:
+//
+//	GetImagesResultChecksumArgs{...}
+type GetImagesResultChecksumInput interface {
+	pulumi.Input
+
+	ToGetImagesResultChecksumOutput() GetImagesResultChecksumOutput
+	ToGetImagesResultChecksumOutputWithContext(context.Context) GetImagesResultChecksumOutput
+}
+
+type GetImagesResultChecksumArgs struct {
+	Algorithm pulumi.StringInput `pulumi:"algorithm"`
+	Digest    pulumi.StringInput `pulumi:"digest"`
+}
+
+func (GetImagesResultChecksumArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesResultChecksum)(nil)).Elem()
+}
+
+func (i GetImagesResultChecksumArgs) ToGetImagesResultChecksumOutput() GetImagesResultChecksumOutput {
+	return i.ToGetImagesResultChecksumOutputWithContext(context.Background())
+}
+
+func (i GetImagesResultChecksumArgs) ToGetImagesResultChecksumOutputWithContext(ctx context.Context) GetImagesResultChecksumOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImagesResultChecksumOutput)
+}
+
+type GetImagesResultChecksumOutput struct{ *pulumi.OutputState }
+
+func (GetImagesResultChecksumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesResultChecksum)(nil)).Elem()
+}
+
+func (o GetImagesResultChecksumOutput) ToGetImagesResultChecksumOutput() GetImagesResultChecksumOutput {
+	return o
+}
+
+func (o GetImagesResultChecksumOutput) ToGetImagesResultChecksumOutputWithContext(ctx context.Context) GetImagesResultChecksumOutput {
+	return o
+}
+
+func (o GetImagesResultChecksumOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesResultChecksum) string { return v.Algorithm }).(pulumi.StringOutput)
+}
+
+func (o GetImagesResultChecksumOutput) Digest() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesResultChecksum) string { return v.Digest }).(pulumi.StringOutput)
+}
+
+type GetImagesResultConfig struct {
+	BootMenu               bool   `pulumi:"bootMenu"`
+	CdromBus               string `pulumi:"cdromBus"`
+	DiskBus                string `pulumi:"diskBus"`
+	NicModel               string `pulumi:"nicModel"`
+	OperatingSystem        string `pulumi:"operatingSystem"`
+	OperatingSystemDistro  string `pulumi:"operatingSystemDistro"`
+	OperatingSystemVersion string `pulumi:"operatingSystemVersion"`
+	RescueBus              string `pulumi:"rescueBus"`
+	RescueDevice           string `pulumi:"rescueDevice"`
+	SecureBoot             bool   `pulumi:"secureBoot"`
+	Uefi                   bool   `pulumi:"uefi"`
+	VideoModel             string `pulumi:"videoModel"`
+	VirtioScsi             bool   `pulumi:"virtioScsi"`
+}
+
+// GetImagesResultConfigInput is an input type that accepts GetImagesResultConfigArgs and GetImagesResultConfigOutput values.
+// You can construct a concrete instance of `GetImagesResultConfigInput` via:
+//
+//	GetImagesResultConfigArgs{...}
+type GetImagesResultConfigInput interface {
+	pulumi.Input
+
+	ToGetImagesResultConfigOutput() GetImagesResultConfigOutput
+	ToGetImagesResultConfigOutputWithContext(context.Context) GetImagesResultConfigOutput
+}
+
+type GetImagesResultConfigArgs struct {
+	BootMenu               pulumi.BoolInput   `pulumi:"bootMenu"`
+	CdromBus               pulumi.StringInput `pulumi:"cdromBus"`
+	DiskBus                pulumi.StringInput `pulumi:"diskBus"`
+	NicModel               pulumi.StringInput `pulumi:"nicModel"`
+	OperatingSystem        pulumi.StringInput `pulumi:"operatingSystem"`
+	OperatingSystemDistro  pulumi.StringInput `pulumi:"operatingSystemDistro"`
+	OperatingSystemVersion pulumi.StringInput `pulumi:"operatingSystemVersion"`
+	RescueBus              pulumi.StringInput `pulumi:"rescueBus"`
+	RescueDevice           pulumi.StringInput `pulumi:"rescueDevice"`
+	SecureBoot             pulumi.BoolInput   `pulumi:"secureBoot"`
+	Uefi                   pulumi.BoolInput   `pulumi:"uefi"`
+	VideoModel             pulumi.StringInput `pulumi:"videoModel"`
+	VirtioScsi             pulumi.BoolInput   `pulumi:"virtioScsi"`
+}
+
+func (GetImagesResultConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesResultConfig)(nil)).Elem()
+}
+
+func (i GetImagesResultConfigArgs) ToGetImagesResultConfigOutput() GetImagesResultConfigOutput {
+	return i.ToGetImagesResultConfigOutputWithContext(context.Background())
+}
+
+func (i GetImagesResultConfigArgs) ToGetImagesResultConfigOutputWithContext(ctx context.Context) GetImagesResultConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImagesResultConfigOutput)
+}
+
+type GetImagesResultConfigOutput struct{ *pulumi.OutputState }
+
+func (GetImagesResultConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesResultConfig)(nil)).Elem()
+}
+
+func (o GetImagesResultConfigOutput) ToGetImagesResultConfigOutput() GetImagesResultConfigOutput {
+	return o
+}
+
+func (o GetImagesResultConfigOutput) ToGetImagesResultConfigOutputWithContext(ctx context.Context) GetImagesResultConfigOutput {
+	return o
+}
+
+func (o GetImagesResultConfigOutput) BootMenu() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetImagesResultConfig) bool { return v.BootMenu }).(pulumi.BoolOutput)
+}
+
+func (o GetImagesResultConfigOutput) CdromBus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesResultConfig) string { return v.CdromBus }).(pulumi.StringOutput)
+}
+
+func (o GetImagesResultConfigOutput) DiskBus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesResultConfig) string { return v.DiskBus }).(pulumi.StringOutput)
+}
+
+func (o GetImagesResultConfigOutput) NicModel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesResultConfig) string { return v.NicModel }).(pulumi.StringOutput)
+}
+
+func (o GetImagesResultConfigOutput) OperatingSystem() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesResultConfig) string { return v.OperatingSystem }).(pulumi.StringOutput)
+}
+
+func (o GetImagesResultConfigOutput) OperatingSystemDistro() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesResultConfig) string { return v.OperatingSystemDistro }).(pulumi.StringOutput)
+}
+
+func (o GetImagesResultConfigOutput) OperatingSystemVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesResultConfig) string { return v.OperatingSystemVersion }).(pulumi.StringOutput)
+}
+
+func (o GetImagesResultConfigOutput) RescueBus() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesResultConfig) string { return v.RescueBus }).(pulumi.StringOutput)
+}
+
+func (o GetImagesResultConfigOutput) RescueDevice() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesResultConfig) string { return v.RescueDevice }).(pulumi.StringOutput)
+}
+
+func (o GetImagesResultConfigOutput) SecureBoot() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetImagesResultConfig) bool { return v.SecureBoot }).(pulumi.BoolOutput)
+}
+
+func (o GetImagesResultConfigOutput) Uefi() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetImagesResultConfig) bool { return v.Uefi }).(pulumi.BoolOutput)
+}
+
+func (o GetImagesResultConfigOutput) VideoModel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetImagesResultConfig) string { return v.VideoModel }).(pulumi.StringOutput)
+}
+
+func (o GetImagesResultConfigOutput) VirtioScsi() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetImagesResultConfig) bool { return v.VirtioScsi }).(pulumi.BoolOutput)
+}
+
+type GetImagesTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetImagesTimeoutsInput is an input type that accepts GetImagesTimeoutsArgs and GetImagesTimeoutsOutput values.
+// You can construct a concrete instance of `GetImagesTimeoutsInput` via:
+//
+//	GetImagesTimeoutsArgs{...}
+type GetImagesTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetImagesTimeoutsOutput() GetImagesTimeoutsOutput
+	ToGetImagesTimeoutsOutputWithContext(context.Context) GetImagesTimeoutsOutput
+}
+
+type GetImagesTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetImagesTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesTimeouts)(nil)).Elem()
+}
+
+func (i GetImagesTimeoutsArgs) ToGetImagesTimeoutsOutput() GetImagesTimeoutsOutput {
+	return i.ToGetImagesTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetImagesTimeoutsArgs) ToGetImagesTimeoutsOutputWithContext(ctx context.Context) GetImagesTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImagesTimeoutsOutput)
+}
+
+func (i GetImagesTimeoutsArgs) ToGetImagesTimeoutsPtrOutput() GetImagesTimeoutsPtrOutput {
+	return i.ToGetImagesTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetImagesTimeoutsArgs) ToGetImagesTimeoutsPtrOutputWithContext(ctx context.Context) GetImagesTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImagesTimeoutsOutput).ToGetImagesTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetImagesTimeoutsPtrInput is an input type that accepts GetImagesTimeoutsArgs, GetImagesTimeoutsPtr and GetImagesTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetImagesTimeoutsPtrInput` via:
+//
+//	        GetImagesTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetImagesTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetImagesTimeoutsPtrOutput() GetImagesTimeoutsPtrOutput
+	ToGetImagesTimeoutsPtrOutputWithContext(context.Context) GetImagesTimeoutsPtrOutput
+}
+
+type getImagesTimeoutsPtrType GetImagesTimeoutsArgs
+
+func GetImagesTimeoutsPtr(v *GetImagesTimeoutsArgs) GetImagesTimeoutsPtrInput {
+	return (*getImagesTimeoutsPtrType)(v)
+}
+
+func (*getImagesTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetImagesTimeouts)(nil)).Elem()
+}
+
+func (i *getImagesTimeoutsPtrType) ToGetImagesTimeoutsPtrOutput() GetImagesTimeoutsPtrOutput {
+	return i.ToGetImagesTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getImagesTimeoutsPtrType) ToGetImagesTimeoutsPtrOutputWithContext(ctx context.Context) GetImagesTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetImagesTimeoutsPtrOutput)
+}
+
+type GetImagesTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetImagesTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetImagesTimeouts)(nil)).Elem()
+}
+
+func (o GetImagesTimeoutsOutput) ToGetImagesTimeoutsOutput() GetImagesTimeoutsOutput {
+	return o
+}
+
+func (o GetImagesTimeoutsOutput) ToGetImagesTimeoutsOutputWithContext(ctx context.Context) GetImagesTimeoutsOutput {
+	return o
+}
+
+func (o GetImagesTimeoutsOutput) ToGetImagesTimeoutsPtrOutput() GetImagesTimeoutsPtrOutput {
+	return o.ToGetImagesTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetImagesTimeoutsOutput) ToGetImagesTimeoutsPtrOutputWithContext(ctx context.Context) GetImagesTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetImagesTimeouts) *GetImagesTimeouts {
+		return &v
+	}).(GetImagesTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetImagesTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetImagesTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetImagesTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetImagesTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetImagesTimeouts)(nil)).Elem()
+}
+
+func (o GetImagesTimeoutsPtrOutput) ToGetImagesTimeoutsPtrOutput() GetImagesTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetImagesTimeoutsPtrOutput) ToGetImagesTimeoutsPtrOutputWithContext(ctx context.Context) GetImagesTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetImagesTimeoutsPtrOutput) Elem() GetImagesTimeoutsOutput {
+	return o.ApplyT(func(v *GetImagesTimeouts) GetImagesTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetImagesTimeouts
+		return ret
+	}).(GetImagesTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetImagesTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetImagesTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetLoadbalancerListener struct {
 	DisplayName string `pulumi:"displayName"`
 	// Port number where we listen for traffic.
@@ -35628,6 +36265,498 @@ func (o GetLogmeInstanceParametersOutput) SgwAcl() pulumi.StringOutput {
 // List of syslog servers to send logs to.
 func (o GetLogmeInstanceParametersOutput) Syslogs() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetLogmeInstanceParameters) []string { return v.Syslogs }).(pulumi.StringArrayOutput)
+}
+
+type GetMachineTypesFilter struct {
+	// Exact disk size in GB to match.
+	Disk *int `pulumi:"disk"`
+	// Extra specs to match by key and exact value (e.g., cpu or overcommit).
+	ExtraSpecs map[string]string `pulumi:"extraSpecs"`
+	// Exact machine type name to match.
+	Name *string `pulumi:"name"`
+	// Exact RAM size in MB to match.
+	Ram *int `pulumi:"ram"`
+	// Exact number of vCPUs to match.
+	Vcpu *int `pulumi:"vcpu"`
+}
+
+// GetMachineTypesFilterInput is an input type that accepts GetMachineTypesFilterArgs and GetMachineTypesFilterOutput values.
+// You can construct a concrete instance of `GetMachineTypesFilterInput` via:
+//
+//	GetMachineTypesFilterArgs{...}
+type GetMachineTypesFilterInput interface {
+	pulumi.Input
+
+	ToGetMachineTypesFilterOutput() GetMachineTypesFilterOutput
+	ToGetMachineTypesFilterOutputWithContext(context.Context) GetMachineTypesFilterOutput
+}
+
+type GetMachineTypesFilterArgs struct {
+	// Exact disk size in GB to match.
+	Disk pulumi.IntPtrInput `pulumi:"disk"`
+	// Extra specs to match by key and exact value (e.g., cpu or overcommit).
+	ExtraSpecs pulumi.StringMapInput `pulumi:"extraSpecs"`
+	// Exact machine type name to match.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Exact RAM size in MB to match.
+	Ram pulumi.IntPtrInput `pulumi:"ram"`
+	// Exact number of vCPUs to match.
+	Vcpu pulumi.IntPtrInput `pulumi:"vcpu"`
+}
+
+func (GetMachineTypesFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMachineTypesFilter)(nil)).Elem()
+}
+
+func (i GetMachineTypesFilterArgs) ToGetMachineTypesFilterOutput() GetMachineTypesFilterOutput {
+	return i.ToGetMachineTypesFilterOutputWithContext(context.Background())
+}
+
+func (i GetMachineTypesFilterArgs) ToGetMachineTypesFilterOutputWithContext(ctx context.Context) GetMachineTypesFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMachineTypesFilterOutput)
+}
+
+func (i GetMachineTypesFilterArgs) ToGetMachineTypesFilterPtrOutput() GetMachineTypesFilterPtrOutput {
+	return i.ToGetMachineTypesFilterPtrOutputWithContext(context.Background())
+}
+
+func (i GetMachineTypesFilterArgs) ToGetMachineTypesFilterPtrOutputWithContext(ctx context.Context) GetMachineTypesFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMachineTypesFilterOutput).ToGetMachineTypesFilterPtrOutputWithContext(ctx)
+}
+
+// GetMachineTypesFilterPtrInput is an input type that accepts GetMachineTypesFilterArgs, GetMachineTypesFilterPtr and GetMachineTypesFilterPtrOutput values.
+// You can construct a concrete instance of `GetMachineTypesFilterPtrInput` via:
+//
+//	        GetMachineTypesFilterArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetMachineTypesFilterPtrInput interface {
+	pulumi.Input
+
+	ToGetMachineTypesFilterPtrOutput() GetMachineTypesFilterPtrOutput
+	ToGetMachineTypesFilterPtrOutputWithContext(context.Context) GetMachineTypesFilterPtrOutput
+}
+
+type getMachineTypesFilterPtrType GetMachineTypesFilterArgs
+
+func GetMachineTypesFilterPtr(v *GetMachineTypesFilterArgs) GetMachineTypesFilterPtrInput {
+	return (*getMachineTypesFilterPtrType)(v)
+}
+
+func (*getMachineTypesFilterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetMachineTypesFilter)(nil)).Elem()
+}
+
+func (i *getMachineTypesFilterPtrType) ToGetMachineTypesFilterPtrOutput() GetMachineTypesFilterPtrOutput {
+	return i.ToGetMachineTypesFilterPtrOutputWithContext(context.Background())
+}
+
+func (i *getMachineTypesFilterPtrType) ToGetMachineTypesFilterPtrOutputWithContext(ctx context.Context) GetMachineTypesFilterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMachineTypesFilterPtrOutput)
+}
+
+type GetMachineTypesFilterOutput struct{ *pulumi.OutputState }
+
+func (GetMachineTypesFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMachineTypesFilter)(nil)).Elem()
+}
+
+func (o GetMachineTypesFilterOutput) ToGetMachineTypesFilterOutput() GetMachineTypesFilterOutput {
+	return o
+}
+
+func (o GetMachineTypesFilterOutput) ToGetMachineTypesFilterOutputWithContext(ctx context.Context) GetMachineTypesFilterOutput {
+	return o
+}
+
+func (o GetMachineTypesFilterOutput) ToGetMachineTypesFilterPtrOutput() GetMachineTypesFilterPtrOutput {
+	return o.ToGetMachineTypesFilterPtrOutputWithContext(context.Background())
+}
+
+func (o GetMachineTypesFilterOutput) ToGetMachineTypesFilterPtrOutputWithContext(ctx context.Context) GetMachineTypesFilterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetMachineTypesFilter) *GetMachineTypesFilter {
+		return &v
+	}).(GetMachineTypesFilterPtrOutput)
+}
+
+// Exact disk size in GB to match.
+func (o GetMachineTypesFilterOutput) Disk() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMachineTypesFilter) *int { return v.Disk }).(pulumi.IntPtrOutput)
+}
+
+// Extra specs to match by key and exact value (e.g., cpu or overcommit).
+func (o GetMachineTypesFilterOutput) ExtraSpecs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetMachineTypesFilter) map[string]string { return v.ExtraSpecs }).(pulumi.StringMapOutput)
+}
+
+// Exact machine type name to match.
+func (o GetMachineTypesFilterOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMachineTypesFilter) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Exact RAM size in MB to match.
+func (o GetMachineTypesFilterOutput) Ram() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMachineTypesFilter) *int { return v.Ram }).(pulumi.IntPtrOutput)
+}
+
+// Exact number of vCPUs to match.
+func (o GetMachineTypesFilterOutput) Vcpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetMachineTypesFilter) *int { return v.Vcpu }).(pulumi.IntPtrOutput)
+}
+
+type GetMachineTypesFilterPtrOutput struct{ *pulumi.OutputState }
+
+func (GetMachineTypesFilterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetMachineTypesFilter)(nil)).Elem()
+}
+
+func (o GetMachineTypesFilterPtrOutput) ToGetMachineTypesFilterPtrOutput() GetMachineTypesFilterPtrOutput {
+	return o
+}
+
+func (o GetMachineTypesFilterPtrOutput) ToGetMachineTypesFilterPtrOutputWithContext(ctx context.Context) GetMachineTypesFilterPtrOutput {
+	return o
+}
+
+func (o GetMachineTypesFilterPtrOutput) Elem() GetMachineTypesFilterOutput {
+	return o.ApplyT(func(v *GetMachineTypesFilter) GetMachineTypesFilter {
+		if v != nil {
+			return *v
+		}
+		var ret GetMachineTypesFilter
+		return ret
+	}).(GetMachineTypesFilterOutput)
+}
+
+// Exact disk size in GB to match.
+func (o GetMachineTypesFilterPtrOutput) Disk() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetMachineTypesFilter) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Disk
+	}).(pulumi.IntPtrOutput)
+}
+
+// Extra specs to match by key and exact value (e.g., cpu or overcommit).
+func (o GetMachineTypesFilterPtrOutput) ExtraSpecs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GetMachineTypesFilter) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ExtraSpecs
+	}).(pulumi.StringMapOutput)
+}
+
+// Exact machine type name to match.
+func (o GetMachineTypesFilterPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMachineTypesFilter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Exact RAM size in MB to match.
+func (o GetMachineTypesFilterPtrOutput) Ram() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetMachineTypesFilter) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Ram
+	}).(pulumi.IntPtrOutput)
+}
+
+// Exact number of vCPUs to match.
+func (o GetMachineTypesFilterPtrOutput) Vcpu() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetMachineTypesFilter) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Vcpu
+	}).(pulumi.IntPtrOutput)
+}
+
+type GetMachineTypesResult struct {
+	// Machine type description.
+	Description string `pulumi:"description"`
+	// Disk size in GB.
+	Disk int `pulumi:"disk"`
+	// Extra specs (e.g., CPU type or overcommit ratio).
+	ExtraSpecs map[string]string `pulumi:"extraSpecs"`
+	// Machine type name.
+	Name string `pulumi:"name"`
+	// RAM size in MB.
+	Ram int `pulumi:"ram"`
+	// Number of vCPUs.
+	Vcpus int `pulumi:"vcpus"`
+}
+
+// GetMachineTypesResultInput is an input type that accepts GetMachineTypesResultArgs and GetMachineTypesResultOutput values.
+// You can construct a concrete instance of `GetMachineTypesResultInput` via:
+//
+//	GetMachineTypesResultArgs{...}
+type GetMachineTypesResultInput interface {
+	pulumi.Input
+
+	ToGetMachineTypesResultOutput() GetMachineTypesResultOutput
+	ToGetMachineTypesResultOutputWithContext(context.Context) GetMachineTypesResultOutput
+}
+
+type GetMachineTypesResultArgs struct {
+	// Machine type description.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Disk size in GB.
+	Disk pulumi.IntInput `pulumi:"disk"`
+	// Extra specs (e.g., CPU type or overcommit ratio).
+	ExtraSpecs pulumi.StringMapInput `pulumi:"extraSpecs"`
+	// Machine type name.
+	Name pulumi.StringInput `pulumi:"name"`
+	// RAM size in MB.
+	Ram pulumi.IntInput `pulumi:"ram"`
+	// Number of vCPUs.
+	Vcpus pulumi.IntInput `pulumi:"vcpus"`
+}
+
+func (GetMachineTypesResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMachineTypesResult)(nil)).Elem()
+}
+
+func (i GetMachineTypesResultArgs) ToGetMachineTypesResultOutput() GetMachineTypesResultOutput {
+	return i.ToGetMachineTypesResultOutputWithContext(context.Background())
+}
+
+func (i GetMachineTypesResultArgs) ToGetMachineTypesResultOutputWithContext(ctx context.Context) GetMachineTypesResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMachineTypesResultOutput)
+}
+
+// GetMachineTypesResultArrayInput is an input type that accepts GetMachineTypesResultArray and GetMachineTypesResultArrayOutput values.
+// You can construct a concrete instance of `GetMachineTypesResultArrayInput` via:
+//
+//	GetMachineTypesResultArray{ GetMachineTypesResultArgs{...} }
+type GetMachineTypesResultArrayInput interface {
+	pulumi.Input
+
+	ToGetMachineTypesResultArrayOutput() GetMachineTypesResultArrayOutput
+	ToGetMachineTypesResultArrayOutputWithContext(context.Context) GetMachineTypesResultArrayOutput
+}
+
+type GetMachineTypesResultArray []GetMachineTypesResultInput
+
+func (GetMachineTypesResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMachineTypesResult)(nil)).Elem()
+}
+
+func (i GetMachineTypesResultArray) ToGetMachineTypesResultArrayOutput() GetMachineTypesResultArrayOutput {
+	return i.ToGetMachineTypesResultArrayOutputWithContext(context.Background())
+}
+
+func (i GetMachineTypesResultArray) ToGetMachineTypesResultArrayOutputWithContext(ctx context.Context) GetMachineTypesResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMachineTypesResultArrayOutput)
+}
+
+type GetMachineTypesResultOutput struct{ *pulumi.OutputState }
+
+func (GetMachineTypesResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMachineTypesResult)(nil)).Elem()
+}
+
+func (o GetMachineTypesResultOutput) ToGetMachineTypesResultOutput() GetMachineTypesResultOutput {
+	return o
+}
+
+func (o GetMachineTypesResultOutput) ToGetMachineTypesResultOutputWithContext(ctx context.Context) GetMachineTypesResultOutput {
+	return o
+}
+
+// Machine type description.
+func (o GetMachineTypesResultOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMachineTypesResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Disk size in GB.
+func (o GetMachineTypesResultOutput) Disk() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMachineTypesResult) int { return v.Disk }).(pulumi.IntOutput)
+}
+
+// Extra specs (e.g., CPU type or overcommit ratio).
+func (o GetMachineTypesResultOutput) ExtraSpecs() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetMachineTypesResult) map[string]string { return v.ExtraSpecs }).(pulumi.StringMapOutput)
+}
+
+// Machine type name.
+func (o GetMachineTypesResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetMachineTypesResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// RAM size in MB.
+func (o GetMachineTypesResultOutput) Ram() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMachineTypesResult) int { return v.Ram }).(pulumi.IntOutput)
+}
+
+// Number of vCPUs.
+func (o GetMachineTypesResultOutput) Vcpus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetMachineTypesResult) int { return v.Vcpus }).(pulumi.IntOutput)
+}
+
+type GetMachineTypesResultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetMachineTypesResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetMachineTypesResult)(nil)).Elem()
+}
+
+func (o GetMachineTypesResultArrayOutput) ToGetMachineTypesResultArrayOutput() GetMachineTypesResultArrayOutput {
+	return o
+}
+
+func (o GetMachineTypesResultArrayOutput) ToGetMachineTypesResultArrayOutputWithContext(ctx context.Context) GetMachineTypesResultArrayOutput {
+	return o
+}
+
+func (o GetMachineTypesResultArrayOutput) Index(i pulumi.IntInput) GetMachineTypesResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetMachineTypesResult {
+		return vs[0].([]GetMachineTypesResult)[vs[1].(int)]
+	}).(GetMachineTypesResultOutput)
+}
+
+type GetMachineTypesTimeouts struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read *string `pulumi:"read"`
+}
+
+// GetMachineTypesTimeoutsInput is an input type that accepts GetMachineTypesTimeoutsArgs and GetMachineTypesTimeoutsOutput values.
+// You can construct a concrete instance of `GetMachineTypesTimeoutsInput` via:
+//
+//	GetMachineTypesTimeoutsArgs{...}
+type GetMachineTypesTimeoutsInput interface {
+	pulumi.Input
+
+	ToGetMachineTypesTimeoutsOutput() GetMachineTypesTimeoutsOutput
+	ToGetMachineTypesTimeoutsOutputWithContext(context.Context) GetMachineTypesTimeoutsOutput
+}
+
+type GetMachineTypesTimeoutsArgs struct {
+	// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+	Read pulumi.StringPtrInput `pulumi:"read"`
+}
+
+func (GetMachineTypesTimeoutsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMachineTypesTimeouts)(nil)).Elem()
+}
+
+func (i GetMachineTypesTimeoutsArgs) ToGetMachineTypesTimeoutsOutput() GetMachineTypesTimeoutsOutput {
+	return i.ToGetMachineTypesTimeoutsOutputWithContext(context.Background())
+}
+
+func (i GetMachineTypesTimeoutsArgs) ToGetMachineTypesTimeoutsOutputWithContext(ctx context.Context) GetMachineTypesTimeoutsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMachineTypesTimeoutsOutput)
+}
+
+func (i GetMachineTypesTimeoutsArgs) ToGetMachineTypesTimeoutsPtrOutput() GetMachineTypesTimeoutsPtrOutput {
+	return i.ToGetMachineTypesTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i GetMachineTypesTimeoutsArgs) ToGetMachineTypesTimeoutsPtrOutputWithContext(ctx context.Context) GetMachineTypesTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMachineTypesTimeoutsOutput).ToGetMachineTypesTimeoutsPtrOutputWithContext(ctx)
+}
+
+// GetMachineTypesTimeoutsPtrInput is an input type that accepts GetMachineTypesTimeoutsArgs, GetMachineTypesTimeoutsPtr and GetMachineTypesTimeoutsPtrOutput values.
+// You can construct a concrete instance of `GetMachineTypesTimeoutsPtrInput` via:
+//
+//	        GetMachineTypesTimeoutsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetMachineTypesTimeoutsPtrInput interface {
+	pulumi.Input
+
+	ToGetMachineTypesTimeoutsPtrOutput() GetMachineTypesTimeoutsPtrOutput
+	ToGetMachineTypesTimeoutsPtrOutputWithContext(context.Context) GetMachineTypesTimeoutsPtrOutput
+}
+
+type getMachineTypesTimeoutsPtrType GetMachineTypesTimeoutsArgs
+
+func GetMachineTypesTimeoutsPtr(v *GetMachineTypesTimeoutsArgs) GetMachineTypesTimeoutsPtrInput {
+	return (*getMachineTypesTimeoutsPtrType)(v)
+}
+
+func (*getMachineTypesTimeoutsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetMachineTypesTimeouts)(nil)).Elem()
+}
+
+func (i *getMachineTypesTimeoutsPtrType) ToGetMachineTypesTimeoutsPtrOutput() GetMachineTypesTimeoutsPtrOutput {
+	return i.ToGetMachineTypesTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (i *getMachineTypesTimeoutsPtrType) ToGetMachineTypesTimeoutsPtrOutputWithContext(ctx context.Context) GetMachineTypesTimeoutsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetMachineTypesTimeoutsPtrOutput)
+}
+
+type GetMachineTypesTimeoutsOutput struct{ *pulumi.OutputState }
+
+func (GetMachineTypesTimeoutsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetMachineTypesTimeouts)(nil)).Elem()
+}
+
+func (o GetMachineTypesTimeoutsOutput) ToGetMachineTypesTimeoutsOutput() GetMachineTypesTimeoutsOutput {
+	return o
+}
+
+func (o GetMachineTypesTimeoutsOutput) ToGetMachineTypesTimeoutsOutputWithContext(ctx context.Context) GetMachineTypesTimeoutsOutput {
+	return o
+}
+
+func (o GetMachineTypesTimeoutsOutput) ToGetMachineTypesTimeoutsPtrOutput() GetMachineTypesTimeoutsPtrOutput {
+	return o.ToGetMachineTypesTimeoutsPtrOutputWithContext(context.Background())
+}
+
+func (o GetMachineTypesTimeoutsOutput) ToGetMachineTypesTimeoutsPtrOutputWithContext(ctx context.Context) GetMachineTypesTimeoutsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetMachineTypesTimeouts) *GetMachineTypesTimeouts {
+		return &v
+	}).(GetMachineTypesTimeoutsPtrOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetMachineTypesTimeoutsOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetMachineTypesTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
+}
+
+type GetMachineTypesTimeoutsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetMachineTypesTimeoutsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetMachineTypesTimeouts)(nil)).Elem()
+}
+
+func (o GetMachineTypesTimeoutsPtrOutput) ToGetMachineTypesTimeoutsPtrOutput() GetMachineTypesTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetMachineTypesTimeoutsPtrOutput) ToGetMachineTypesTimeoutsPtrOutputWithContext(ctx context.Context) GetMachineTypesTimeoutsPtrOutput {
+	return o
+}
+
+func (o GetMachineTypesTimeoutsPtrOutput) Elem() GetMachineTypesTimeoutsOutput {
+	return o.ApplyT(func(v *GetMachineTypesTimeouts) GetMachineTypesTimeouts {
+		if v != nil {
+			return *v
+		}
+		var ret GetMachineTypesTimeouts
+		return ret
+	}).(GetMachineTypesTimeoutsOutput)
+}
+
+// A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+func (o GetMachineTypesTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetMachineTypesTimeouts) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Read
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetMariadbInstanceParameters struct {
@@ -47557,6 +48686,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImageV2ConfigInput)(nil)).Elem(), GetImageV2ConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImageV2FilterInput)(nil)).Elem(), GetImageV2FilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImageV2FilterPtrInput)(nil)).Elem(), GetImageV2FilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesFilterInput)(nil)).Elem(), GetImagesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesFilterPtrInput)(nil)).Elem(), GetImagesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesResultInput)(nil)).Elem(), GetImagesResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesResultArrayInput)(nil)).Elem(), GetImagesResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesResultChecksumInput)(nil)).Elem(), GetImagesResultChecksumArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesResultConfigInput)(nil)).Elem(), GetImagesResultConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesTimeoutsInput)(nil)).Elem(), GetImagesTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesTimeoutsPtrInput)(nil)).Elem(), GetImagesTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadbalancerListenerInput)(nil)).Elem(), GetLoadbalancerListenerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadbalancerListenerArrayInput)(nil)).Elem(), GetLoadbalancerListenerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadbalancerListenerServerNameIndicatorInput)(nil)).Elem(), GetLoadbalancerListenerServerNameIndicatorArgs{})
@@ -47576,6 +48713,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadbalancerTargetPoolTargetInput)(nil)).Elem(), GetLoadbalancerTargetPoolTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadbalancerTargetPoolTargetArrayInput)(nil)).Elem(), GetLoadbalancerTargetPoolTargetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLogmeInstanceParametersInput)(nil)).Elem(), GetLogmeInstanceParametersArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMachineTypesFilterInput)(nil)).Elem(), GetMachineTypesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMachineTypesFilterPtrInput)(nil)).Elem(), GetMachineTypesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMachineTypesResultInput)(nil)).Elem(), GetMachineTypesResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMachineTypesResultArrayInput)(nil)).Elem(), GetMachineTypesResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMachineTypesTimeoutsInput)(nil)).Elem(), GetMachineTypesTimeoutsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetMachineTypesTimeoutsPtrInput)(nil)).Elem(), GetMachineTypesTimeoutsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMariadbInstanceParametersInput)(nil)).Elem(), GetMariadbInstanceParametersArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMongodbflexInstanceFlavorInput)(nil)).Elem(), GetMongodbflexInstanceFlavorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMongodbflexInstanceOptionsInput)(nil)).Elem(), GetMongodbflexInstanceOptionsArgs{})
@@ -48147,6 +49290,14 @@ func init() {
 	pulumi.RegisterOutputType(GetImageV2ConfigOutput{})
 	pulumi.RegisterOutputType(GetImageV2FilterOutput{})
 	pulumi.RegisterOutputType(GetImageV2FilterPtrOutput{})
+	pulumi.RegisterOutputType(GetImagesFilterOutput{})
+	pulumi.RegisterOutputType(GetImagesFilterPtrOutput{})
+	pulumi.RegisterOutputType(GetImagesResultOutput{})
+	pulumi.RegisterOutputType(GetImagesResultArrayOutput{})
+	pulumi.RegisterOutputType(GetImagesResultChecksumOutput{})
+	pulumi.RegisterOutputType(GetImagesResultConfigOutput{})
+	pulumi.RegisterOutputType(GetImagesTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetImagesTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetLoadbalancerListenerOutput{})
 	pulumi.RegisterOutputType(GetLoadbalancerListenerArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadbalancerListenerServerNameIndicatorOutput{})
@@ -48166,6 +49317,12 @@ func init() {
 	pulumi.RegisterOutputType(GetLoadbalancerTargetPoolTargetOutput{})
 	pulumi.RegisterOutputType(GetLoadbalancerTargetPoolTargetArrayOutput{})
 	pulumi.RegisterOutputType(GetLogmeInstanceParametersOutput{})
+	pulumi.RegisterOutputType(GetMachineTypesFilterOutput{})
+	pulumi.RegisterOutputType(GetMachineTypesFilterPtrOutput{})
+	pulumi.RegisterOutputType(GetMachineTypesResultOutput{})
+	pulumi.RegisterOutputType(GetMachineTypesResultArrayOutput{})
+	pulumi.RegisterOutputType(GetMachineTypesTimeoutsOutput{})
+	pulumi.RegisterOutputType(GetMachineTypesTimeoutsPtrOutput{})
 	pulumi.RegisterOutputType(GetMariadbInstanceParametersOutput{})
 	pulumi.RegisterOutputType(GetMongodbflexInstanceFlavorOutput{})
 	pulumi.RegisterOutputType(GetMongodbflexInstanceOptionsOutput{})

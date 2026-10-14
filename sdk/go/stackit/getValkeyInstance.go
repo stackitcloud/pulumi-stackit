@@ -11,7 +11,7 @@ import (
 	"github.com/stackitcloud/pulumi-stackit/sdk/go/stackit/internal"
 )
 
-// Valkey instance data source schema. Must have a `region` specified in the provider configuration.
+// Key Value Store(valkey) instance data source schema. Must have a `region` specified in the provider configuration.
 //
 // ## Example Usage
 func LookupValkeyInstance(ctx *pulumi.Context, args *LookupValkeyInstanceArgs, opts ...pulumi.InvokeOption) (*LookupValkeyInstanceResult, error) {

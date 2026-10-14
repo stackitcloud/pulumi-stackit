@@ -169,7 +169,7 @@ def get_valkey_credential(credential_id: Optional[_builtins.str] = None,
                           region: Optional[_builtins.str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetValkeyCredentialResult:
     """
-    Valkey credential data source schema. Must have a `region` specified in the provider configuration.
+    Key Value Store(valkey) credential data source schema. Must have a `region` specified in the provider configuration.
 
     ## Example Usage
 
@@ -206,7 +206,7 @@ def get_valkey_credential_output(credential_id: pulumi.Input[Optional[_builtins.
                                  region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetValkeyCredentialResult]:
     """
-    Valkey credential data source schema. Must have a `region` specified in the provider configuration.
+    Key Value Store(valkey) credential data source schema. Must have a `region` specified in the provider configuration.
 
     ## Example Usage
 

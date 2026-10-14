@@ -193,7 +193,7 @@ def get_valkey_instance(instance_id: Optional[_builtins.str] = None,
                         region: Optional[_builtins.str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetValkeyInstanceResult:
     """
-    Valkey instance data source schema. Must have a `region` specified in the provider configuration.
+    Key Value Store(valkey) instance data source schema. Must have a `region` specified in the provider configuration.
 
     ## Example Usage
 
@@ -229,7 +229,7 @@ def get_valkey_instance_output(instance_id: pulumi.Input[Optional[_builtins.str]
                                region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetValkeyInstanceResult]:
     """
-    Valkey instance data source schema. Must have a `region` specified in the provider configuration.
+    Key Value Store(valkey) instance data source schema. Must have a `region` specified in the provider configuration.
 
     ## Example Usage
 
