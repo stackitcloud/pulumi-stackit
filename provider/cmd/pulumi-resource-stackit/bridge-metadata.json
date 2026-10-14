@@ -1439,6 +1439,14 @@
             "stackit_image_v2": {
                 "current": "stackit:index/getImageV2:getImageV2"
             },
+            "stackit_images": {
+                "current": "stackit:index/getImages:getImages",
+                "fields": {
+                    "results": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "stackit_intake_runner": {
                 "current": "stackit:index/getIntakeRunner:getIntakeRunner"
             },
@@ -1528,6 +1536,14 @@
             },
             "stackit_machine_type": {
                 "current": "stackit:index/getMachineType:getMachineType"
+            },
+            "stackit_machine_types": {
+                "current": "stackit:index/getMachineTypes:getMachineTypes",
+                "fields": {
+                    "results": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "stackit_mariadb_credential": {
                 "current": "stackit:index/getMariadbCredential:getMariadbCredential",
