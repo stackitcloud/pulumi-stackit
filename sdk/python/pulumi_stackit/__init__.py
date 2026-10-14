@@ -50,6 +50,7 @@ from .get_git import *
 from .get_iaas_project import *
 from .get_image import *
 from .get_image_v2 import *
+from .get_images import *
 from .get_intake_runner import *
 from .get_key_pair import *
 from .get_kms_key import *
@@ -61,6 +62,7 @@ from .get_logme_instance import *
 from .get_logs_access_token import *
 from .get_logs_instance import *
 from .get_machine_type import *
+from .get_machine_types import *
 from .get_mariadb_credential import *
 from .get_mariadb_instance import *
 from .get_modelexperiments_instance import *

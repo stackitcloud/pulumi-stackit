@@ -9,8 +9,6 @@ import * as utilities from "./utilities";
 /**
  * SFS export policy datasource schema. Must have a `region` specified in the provider configuration.
  *
- * > This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
- *
  * ## Example Usage
  */
 export function getSfsExportPolicy(args: GetSfsExportPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetSfsExportPolicyResult> {
@@ -72,8 +70,6 @@ export interface GetSfsExportPolicyResult {
 }
 /**
  * SFS export policy datasource schema. Must have a `region` specified in the provider configuration.
- *
- * > This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
  *
  * ## Example Usage
  */

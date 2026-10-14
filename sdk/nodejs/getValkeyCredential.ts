@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Valkey credential data source schema. Must have a `region` specified in the provider configuration.
+ * Key Value Store(valkey) credential data source schema. Must have a `region` specified in the provider configuration.
  *
  * ## Example Usage
  */
@@ -77,7 +77,7 @@ export interface GetValkeyCredentialResult {
     readonly username: string;
 }
 /**
- * Valkey credential data source schema. Must have a `region` specified in the provider configuration.
+ * Key Value Store(valkey) credential data source schema. Must have a `region` specified in the provider configuration.
  *
  * ## Example Usage
  */

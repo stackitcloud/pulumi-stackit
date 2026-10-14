@@ -26,7 +26,7 @@ class GetIaasProjectResult:
     """
     A collection of values returned by getIaasProject.
     """
-    def __init__(__self__, area_id=None, created_at=None, id=None, internet_access=None, project_id=None, state=None, status=None, updated_at=None):
+    def __init__(__self__, area_id=None, created_at=None, id=None, internet_access=None, project_id=None, status=None, updated_at=None):
         if area_id and not isinstance(area_id, str):
             raise TypeError("Expected argument 'area_id' to be a str")
         pulumi.set(__self__, "area_id", area_id)
@@ -42,9 +42,6 @@ class GetIaasProjectResult:
         if project_id and not isinstance(project_id, str):
             raise TypeError("Expected argument 'project_id' to be a str")
         pulumi.set(__self__, "project_id", project_id)
-        if state and not isinstance(state, str):
-            raise TypeError("Expected argument 'state' to be a str")
-        pulumi.set(__self__, "state", state)
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
@@ -94,15 +91,6 @@ class GetIaasProjectResult:
 
     @_builtins.property
     @pulumi.getter
-    @_utilities.deprecated("""Deprecated: Will be removed in May 2026. Use the `status` field instead.""")
-    def state(self) -> _builtins.str:
-        """
-        Specifies the status of the project.
-        """
-        return pulumi.get(self, "state")
-
-    @_builtins.property
-    @pulumi.getter
     def status(self) -> _builtins.str:
         """
         Specifies the status of the project.
@@ -129,7 +117,6 @@ class AwaitableGetIaasProjectResult(GetIaasProjectResult):
             id=self.id,
             internet_access=self.internet_access,
             project_id=self.project_id,
-            state=self.state,
             status=self.status,
             updated_at=self.updated_at)
 
@@ -155,7 +142,6 @@ def get_iaas_project(project_id: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         internet_access=pulumi.get(__ret__, 'internet_access'),
         project_id=pulumi.get(__ret__, 'project_id'),
-        state=pulumi.get(__ret__, 'state'),
         status=pulumi.get(__ret__, 'status'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
 def get_iaas_project_output(project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -178,6 +164,5 @@ def get_iaas_project_output(project_id: pulumi.Input[Optional[_builtins.str]] = 
         id=pulumi.get(__response__, 'id'),
         internet_access=pulumi.get(__response__, 'internet_access'),
         project_id=pulumi.get(__response__, 'project_id'),
-        state=pulumi.get(__response__, 'state'),
         status=pulumi.get(__response__, 'status'),
         updated_at=pulumi.get(__response__, 'updated_at')))

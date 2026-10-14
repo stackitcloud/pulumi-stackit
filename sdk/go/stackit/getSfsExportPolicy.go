@@ -13,8 +13,6 @@ import (
 
 // SFS export policy datasource schema. Must have a `region` specified in the provider configuration.
 //
-// > This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
-//
 // ## Example Usage
 func LookupSfsExportPolicy(ctx *pulumi.Context, args *LookupSfsExportPolicyArgs, opts ...pulumi.InvokeOption) (*LookupSfsExportPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

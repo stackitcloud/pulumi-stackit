@@ -13,8 +13,6 @@ import (
 
 // Resource-pool datasource schema. Must have a `region` specified in the provider configuration.
 //
-// > This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
-//
 // ## Example Usage
 func GetSfsResourcePoolSnapshot(ctx *pulumi.Context, args *GetSfsResourcePoolSnapshotArgs, opts ...pulumi.InvokeOption) (*GetSfsResourcePoolSnapshotResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

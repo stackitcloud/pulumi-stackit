@@ -1057,7 +1057,7 @@
                 },
                 "redirects": {
                     "$ref": "#/types/stackit:index/CdnDistributionConfigRedirects:CdnDistributionConfigRedirects",
-                    "description": "A wrapper for a list of redirect rules that allows for redirect settings on a distribution\n"
+                    "description": "A wrapper for a list of redirect rules that allows for redirect settings on a distribution. Currently, this feature is only available for distributions of backend type HTTP.\n"
                 },
                 "regions": {
                     "type": "array",
@@ -6101,7 +6101,7 @@
                 },
                 "redirects": {
                     "$ref": "#/types/stackit:index/getCdnDistributionConfigRedirects:getCdnDistributionConfigRedirects",
-                    "description": "A wrapper for a list of redirect rules that allows for redirect settings on a distribution\n"
+                    "description": "A wrapper for a list of redirect rules that allows for redirect settings on a distribution. Currently, this feature is only available for distributions of backend type HTTP.\n"
                 },
                 "regions": {
                     "type": "array",
@@ -6975,6 +6975,178 @@
             },
             "type": "object"
         },
+        "stackit:index/getImagesFilter:getImagesFilter": {
+            "properties": {
+                "labelSelector": {
+                    "type": "string",
+                    "description": "Experimental: API label selector passed directly to the image-list endpoint.\n"
+                }
+            },
+            "type": "object"
+        },
+        "stackit:index/getImagesResult:getImagesResult": {
+            "properties": {
+                "checksum": {
+                    "$ref": "#/types/stackit:index/getImagesResultChecksum:getImagesResultChecksum",
+                    "description": "Image checksum.\n"
+                },
+                "config": {
+                    "$ref": "#/types/stackit:index/getImagesResultConfig:getImagesResultConfig",
+                    "description": "Image hardware and operating-system configuration.\n"
+                },
+                "diskFormat": {
+                    "type": "string",
+                    "description": "Image disk format.\n"
+                },
+                "imageId": {
+                    "type": "string",
+                    "description": "Image ID.\n"
+                },
+                "labels": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Image labels.\n"
+                },
+                "minDiskSize": {
+                    "type": "integer",
+                    "description": "Minimum disk size in GB.\n"
+                },
+                "minRam": {
+                    "type": "integer",
+                    "description": "Minimum RAM in MB.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Image name.\n"
+                },
+                "protected": {
+                    "type": "boolean",
+                    "description": "Whether the image is protected.\n"
+                },
+                "scope": {
+                    "type": "string",
+                    "description": "Image scope.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Image status.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "checksum",
+                "config",
+                "diskFormat",
+                "imageId",
+                "labels",
+                "minDiskSize",
+                "minRam",
+                "name",
+                "protected",
+                "scope",
+                "status"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getImagesResultChecksum:getImagesResultChecksum": {
+            "properties": {
+                "algorithm": {
+                    "type": "string"
+                },
+                "digest": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "algorithm",
+                "digest"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getImagesResultConfig:getImagesResultConfig": {
+            "properties": {
+                "bootMenu": {
+                    "type": "boolean"
+                },
+                "cdromBus": {
+                    "type": "string"
+                },
+                "diskBus": {
+                    "type": "string"
+                },
+                "nicModel": {
+                    "type": "string"
+                },
+                "operatingSystem": {
+                    "type": "string"
+                },
+                "operatingSystemDistro": {
+                    "type": "string"
+                },
+                "operatingSystemVersion": {
+                    "type": "string"
+                },
+                "rescueBus": {
+                    "type": "string"
+                },
+                "rescueDevice": {
+                    "type": "string"
+                },
+                "secureBoot": {
+                    "type": "boolean"
+                },
+                "uefi": {
+                    "type": "boolean"
+                },
+                "videoModel": {
+                    "type": "string"
+                },
+                "virtioScsi": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "bootMenu",
+                "cdromBus",
+                "diskBus",
+                "nicModel",
+                "operatingSystem",
+                "operatingSystemDistro",
+                "operatingSystemVersion",
+                "rescueBus",
+                "rescueDevice",
+                "secureBoot",
+                "uefi",
+                "videoModel",
+                "virtioScsi"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getImagesTimeouts:getImagesTimeouts": {
+            "properties": {
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
+        },
         "stackit:index/getLoadbalancerListener:getLoadbalancerListener": {
             "properties": {
                 "displayName": {
@@ -7420,6 +7592,88 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "stackit:index/getMachineTypesFilter:getMachineTypesFilter": {
+            "properties": {
+                "disk": {
+                    "type": "integer",
+                    "description": "Exact disk size in GB to match.\n"
+                },
+                "extraSpecs": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Extra specs to match by key and exact value (e.g., cpu or overcommit).\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Exact machine type name to match.\n"
+                },
+                "ram": {
+                    "type": "integer",
+                    "description": "Exact RAM size in MB to match.\n"
+                },
+                "vcpu": {
+                    "type": "integer",
+                    "description": "Exact number of vCPUs to match.\n"
+                }
+            },
+            "type": "object"
+        },
+        "stackit:index/getMachineTypesResult:getMachineTypesResult": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Machine type description.\n"
+                },
+                "disk": {
+                    "type": "integer",
+                    "description": "Disk size in GB.\n"
+                },
+                "extraSpecs": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Extra specs (e.g., CPU type or overcommit ratio).\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Machine type name.\n"
+                },
+                "ram": {
+                    "type": "integer",
+                    "description": "RAM size in MB.\n"
+                },
+                "vcpus": {
+                    "type": "integer",
+                    "description": "Number of vCPUs.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "description",
+                "disk",
+                "extraSpecs",
+                "name",
+                "ram",
+                "vcpus"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getMachineTypesTimeouts:getMachineTypesTimeouts": {
+            "properties": {
+                "read": {
+                    "type": "string",
+                    "description": "A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as \"30s\" or \"2h45m\". Valid time units are \"s\" (seconds), \"m\" (minutes), \"h\" (hours).\n"
+                }
+            },
+            "type": "object"
         },
         "stackit:index/getMariadbInstanceParameters:getMariadbInstanceParameters": {
             "properties": {
@@ -17166,7 +17420,7 @@
             }
         },
         "stackit:index/network:Network": {
-            "description": "Network resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\u003e Behavior of not configured \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4Nameservers`\u003c/span\u003e has changed. When \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4Nameservers`\u003c/span\u003e is not set, it will be set to the network area's \u003cspan pulumi-lang-nodejs=\"`defaultNameservers`\" pulumi-lang-dotnet=\"`DefaultNameservers`\" pulumi-lang-go=\"`defaultNameservers`\" pulumi-lang-python=\"`default_nameservers`\" pulumi-lang-yaml=\"`defaultNameservers`\" pulumi-lang-java=\"`defaultNameservers`\"\u003e`defaultNameservers`\u003c/span\u003e.\nTo prevent any nameserver configuration, the \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4Nameservers`\u003c/span\u003e attribute should be explicitly set to an empty list `[]`.\nIn cases where \u003cspan pulumi-lang-nodejs=\"`ipv4Nameservers`\" pulumi-lang-dotnet=\"`Ipv4Nameservers`\" pulumi-lang-go=\"`ipv4Nameservers`\" pulumi-lang-python=\"`ipv4_nameservers`\" pulumi-lang-yaml=\"`ipv4Nameservers`\" pulumi-lang-java=\"`ipv4Nameservers`\"\u003e`ipv4Nameservers`\u003c/span\u003e are defined within the resource, the existing behavior will remain unchanged.\n\n## Example Usage\n\n```terraform\nresource \"stackit_network\" \"example_with_name\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-with-name\"\n}\n\nresource \"stackit_network\" \"example_routed_network\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-routed-network\"\n  labels = {\n    \"key\" = \"value\"\n  }\n  routed = true\n}\n\nresource \"stackit_network\" \"example_non_routed_network\" {\n  project_id       = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name             = \"example-non-routed-network\"\n  ipv4_nameservers = [\"1.2.3.4\", \"5.6.7.8\"]\n  ipv4_gateway     = \"10.1.2.3\"\n  ipv4_prefix      = \"10.1.2.0/24\"\n  labels = {\n    \"key\" = \"value\"\n  }\n  routed = false\n}\n\nresource \"stackit_network\" \"example_vpc_network\" {\n  project_id                = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name                      = \"example-vpc-network\"\n  ipv4_nameservers          = [\"1.2.3.4\", \"5.6.7.8\"]\n  ipv4_gateway              = \"10.1.2.3\"\n  ipv4_prefix               = \"10.1.2.0/24\"\n  ipv4_vpc_network_range_id = \"yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy\"\n  labels = {\n    \"key\" = \"value\"\n  }\n  routed = false\n  vpc_id = \"yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy\"\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing network\n# Note: There will be a conflict which needs to be resolved manually.\n# These attributes cannot be configured together: [ipv4_prefix,ipv4_prefix_length,ipv4_gateway]\nimport {\n  to = stackit_network.import-example\n  id = \"${var.project_id},${var.region},${var.network_id}\"\n}\n```\n\n",
+            "description": "Network resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\nresource \"stackit_network\" \"example_with_name\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-with-name\"\n}\n\nresource \"stackit_network\" \"example_routed_network\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-routed-network\"\n  labels = {\n    \"key\" = \"value\"\n  }\n  routed = true\n}\n\nresource \"stackit_network\" \"example_non_routed_network\" {\n  project_id       = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name             = \"example-non-routed-network\"\n  ipv4_nameservers = [\"1.2.3.4\", \"5.6.7.8\"]\n  ipv4_gateway     = \"10.1.2.3\"\n  ipv4_prefix      = \"10.1.2.0/24\"\n  labels = {\n    \"key\" = \"value\"\n  }\n  routed = false\n}\n\nresource \"stackit_network\" \"example_vpc_network\" {\n  project_id                = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name                      = \"example-vpc-network\"\n  ipv4_nameservers          = [\"1.2.3.4\", \"5.6.7.8\"]\n  ipv4_gateway              = \"10.1.2.3\"\n  ipv4_prefix               = \"10.1.2.0/24\"\n  ipv4_vpc_network_range_id = \"yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy\"\n  labels = {\n    \"key\" = \"value\"\n  }\n  routed = false\n  vpc_id = \"yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy\"\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing network\n# Note: There will be a conflict which needs to be resolved manually.\n# These attributes cannot be configured together: [ipv4_prefix,ipv4_prefix_length,ipv4_gateway]\nimport {\n  to = stackit_network.import-example\n  id = \"${var.project_id},${var.region},${var.network_id}\"\n}\n```\n\n",
             "properties": {
                 "dhcp": {
                     "type": "boolean",
@@ -20508,7 +20762,7 @@
             }
         },
         "stackit:index/redisCredential:RedisCredential": {
-            "description": "Redis credential resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration. This resource is deprecated and will be removed after August 2027, use\u003cspan pulumi-lang-nodejs=\" stackit.ValkeyCredential \" pulumi-lang-dotnet=\" stackit.ValkeyCredential \" pulumi-lang-go=\" ValkeyCredential \" pulumi-lang-python=\" ValkeyCredential \" pulumi-lang-yaml=\" stackit.ValkeyCredential \" pulumi-lang-java=\" stackit.ValkeyCredential \"\u003e stackit.ValkeyCredential \u003c/span\u003einstead. For more information on how to migrate, see the [migration guide](https://docs.stackit.cloud/products/databases/key-value-store/tutorials/migrate-data-to-a-new-instance/).\n\n## Example Usage\n\n```terraform\nresource \"stackit_redis_credential\" \"example\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  instance_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\nresource \"time_rotating\" \"rotate\" {\n  rotation_days = 80\n}\n\nresource \"stackit_redis_credential\" \"example_rotate\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  instance_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n\n  rotate_when_changed = {\n    rotation = time_rotating.rotate.id\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing redis credential\nimport {\n  to = stackit_redis_credential.import-example\n  id = \"${var.project_id},${var.redis_instance_id},${var.redis_credential_id}\"\n}\n```\n\n",
+            "description": "Redis credential resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n!\u003e The \u003cspan pulumi-lang-nodejs=\"`stackit.RedisCredential`\" pulumi-lang-dotnet=\"`stackit.RedisCredential`\" pulumi-lang-go=\"`RedisCredential`\" pulumi-lang-python=\"`RedisCredential`\" pulumi-lang-yaml=\"`stackit.RedisCredential`\" pulumi-lang-java=\"`stackit.RedisCredential`\"\u003e`stackit.RedisCredential`\u003c/span\u003e resource is deprecated and will be removed after August 2027, use \u003cspan pulumi-lang-nodejs=\"`stackit.ValkeyCredential`\" pulumi-lang-dotnet=\"`stackit.ValkeyCredential`\" pulumi-lang-go=\"`ValkeyCredential`\" pulumi-lang-python=\"`ValkeyCredential`\" pulumi-lang-yaml=\"`stackit.ValkeyCredential`\" pulumi-lang-java=\"`stackit.ValkeyCredential`\"\u003e`stackit.ValkeyCredential`\u003c/span\u003e (Key Value Store) instead. \nFor more information on how to migrate, see the [migration guide](https://docs.stackit.cloud/products/databases/key-value-store/tutorials/migrate-data-to-a-new-instance/).\n\n## Example Usage\n\n```terraform\nresource \"stackit_redis_credential\" \"example\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  instance_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\nresource \"time_rotating\" \"rotate\" {\n  rotation_days = 80\n}\n\nresource \"stackit_redis_credential\" \"example_rotate\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  instance_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n\n  rotate_when_changed = {\n    rotation = time_rotating.rotate.id\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing redis credential\nimport {\n  to = stackit_redis_credential.import-example\n  id = \"${var.project_id},${var.redis_instance_id},${var.redis_credential_id}\"\n}\n```\n\n",
             "properties": {
                 "credentialId": {
                     "type": "string",
@@ -20657,7 +20911,7 @@
             }
         },
         "stackit:index/redisInstance:RedisInstance": {
-            "description": "Redis instance resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration. This resource is deprecated and will be removed after August 2027, use\u003cspan pulumi-lang-nodejs=\" stackit.ValkeyInstance \" pulumi-lang-dotnet=\" stackit.ValkeyInstance \" pulumi-lang-go=\" ValkeyInstance \" pulumi-lang-python=\" ValkeyInstance \" pulumi-lang-yaml=\" stackit.ValkeyInstance \" pulumi-lang-java=\" stackit.ValkeyInstance \"\u003e stackit.ValkeyInstance \u003c/span\u003einstead. For more information on how to migrate, see the [migration guide](https://docs.stackit.cloud/products/databases/key-value-store/tutorials/migrate-data-to-a-new-instance/).\n\n## Example Usage\n\n```terraform\nresource \"stackit_redis_instance\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-instance\"\n  version    = \"7\"\n  plan_name  = \"stackit-redis-1.2.10-replica\"\n  parameters = {\n    sgw_acl                 = \"193.148.160.0/19,45.129.40.0/21,45.135.244.0/22\"\n    enable_monitoring       = false\n    down_after_milliseconds = 30000\n    syslog                  = [\"logs4.your-syslog-endpoint.com:54321\"]\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing redis instance\nimport {\n  to = stackit_redis_instance.import-example\n  id = \"${var.project_id},${var.redis_instance_id}\"\n}\n```\n\n",
+            "description": "Redis instance resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n!\u003e The \u003cspan pulumi-lang-nodejs=\"`stackit.RedisInstance`\" pulumi-lang-dotnet=\"`stackit.RedisInstance`\" pulumi-lang-go=\"`RedisInstance`\" pulumi-lang-python=\"`RedisInstance`\" pulumi-lang-yaml=\"`stackit.RedisInstance`\" pulumi-lang-java=\"`stackit.RedisInstance`\"\u003e`stackit.RedisInstance`\u003c/span\u003e resource is deprecated and will be removed after August 2027, use \u003cspan pulumi-lang-nodejs=\"`stackit.ValkeyInstance`\" pulumi-lang-dotnet=\"`stackit.ValkeyInstance`\" pulumi-lang-go=\"`ValkeyInstance`\" pulumi-lang-python=\"`ValkeyInstance`\" pulumi-lang-yaml=\"`stackit.ValkeyInstance`\" pulumi-lang-java=\"`stackit.ValkeyInstance`\"\u003e`stackit.ValkeyInstance`\u003c/span\u003e (Key Value Store) instead. \nFor more information on how to migrate, see the [migration guide](https://docs.stackit.cloud/products/databases/key-value-store/tutorials/migrate-data-to-a-new-instance/).\n\n## Example Usage\n\n```terraform\nresource \"stackit_redis_instance\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-instance\"\n  version    = \"7\"\n  plan_name  = \"stackit-redis-1.2.10-replica\"\n  parameters = {\n    sgw_acl                 = \"193.148.160.0/19,45.129.40.0/21,45.135.244.0/22\"\n    enable_monitoring       = false\n    down_after_milliseconds = 30000\n    syslog                  = [\"logs4.your-syslog-endpoint.com:54321\"]\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing redis instance\nimport {\n  to = stackit_redis_instance.import-example\n  id = \"${var.project_id},${var.redis_instance_id}\"\n}\n```\n\n",
             "properties": {
                 "cfGuid": {
                     "type": "string"
@@ -23366,7 +23620,7 @@
             }
         },
         "stackit:index/sfsExportPolicy:SfsExportPolicy": {
-            "description": "SFS export policy resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n\u003e This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\nresource \"stackit_sfs_export_policy\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example\"\n  rules = [\n    {\n      ip_acl = [\"172.16.0.0/24\", \"172.16.0.250/32\"]\n      order  = 1\n    }\n  ]\n  labels = {\n    \"foo\" = \"bar\"\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing export policy\nimport {\n  to = stackit_sfs_export_policy.example\n  id = \"${var.project_id},${var.region},${var.policy_id}\"\n}\n```\n\n",
+            "description": "SFS export policy resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\nresource \"stackit_sfs_export_policy\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example\"\n  rules = [\n    {\n      ip_acl = [\"172.16.0.0/24\", \"172.16.0.250/32\"]\n      order  = 1\n    }\n  ]\n  labels = {\n    \"foo\" = \"bar\"\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing export policy\nimport {\n  to = stackit_sfs_export_policy.example\n  id = \"${var.project_id},${var.region},${var.policy_id}\"\n}\n```\n\n",
             "properties": {
                 "labels": {
                     "type": "object",
@@ -23525,7 +23779,7 @@
             }
         },
         "stackit:index/sfsResourcePool:SfsResourcePool": {
-            "description": "Resource-pool resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n\u003e This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\nresource \"stackit_sfs_resource_pool\" \"resourcepool\" {\n  project_id        = \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\"\n  name              = \"some-resourcepool\"\n  availability_zone = \"eu01-m\"\n  performance_class = \"Standard\"\n  size_gigabytes    = 512\n  ip_acl = [\n    \"192.168.42.1/32\",\n    \"192.168.42.2/32\"\n  ]\n  snapshots_are_visible = true\n  labels = {\n    \"foo\" = \"bar\"\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing resource pool\nimport {\n  to = stackit_sfs_resource_pool.resourcepool\n  id = \"${var.project_id},${var.region},${var.resource_pool_id}\"\n}\n```\n\n",
+            "description": "Resource-pool resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\nresource \"stackit_sfs_resource_pool\" \"resourcepool\" {\n  project_id        = \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\"\n  name              = \"some-resourcepool\"\n  availability_zone = \"eu01-m\"\n  performance_class = \"Standard\"\n  size_gigabytes    = 512\n  ip_acl = [\n    \"192.168.42.1/32\",\n    \"192.168.42.2/32\"\n  ]\n  snapshots_are_visible = true\n  labels = {\n    \"foo\" = \"bar\"\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing resource pool\nimport {\n  to = stackit_sfs_resource_pool.resourcepool\n  id = \"${var.project_id},${var.region},${var.resource_pool_id}\"\n}\n```\n\n",
             "properties": {
                 "availabilityZone": {
                     "type": "string",
@@ -23711,7 +23965,7 @@
             }
         },
         "stackit:index/sfsShare:SfsShare": {
-            "description": "SFS Share schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n\u003e This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\nresource \"stackit_sfs_share\" \"example\" {\n  project_id                 = \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\"\n  resource_pool_id           = \"YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY\"\n  name                       = \"my-nfs-share\"\n  export_policy              = \"high-performance-class\"\n  space_hard_limit_gigabytes = 32\n  labels = {\n    \"foo\" = \"bar\"\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing sfs share\nimport {\n  to = stackit_sfs_resource_pool.resourcepool\n  id = \"${var.project_id},${var.region},${var.resource_pool_id},${var.share_id}\"\n}\n```\n\n",
+            "description": "SFS Share schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\nresource \"stackit_sfs_share\" \"example\" {\n  project_id                 = \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\"\n  resource_pool_id           = \"YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY\"\n  name                       = \"my-nfs-share\"\n  export_policy              = \"high-performance-class\"\n  space_hard_limit_gigabytes = 32\n  labels = {\n    \"foo\" = \"bar\"\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing sfs share\nimport {\n  to = stackit_sfs_resource_pool.resourcepool\n  id = \"${var.project_id},${var.region},${var.resource_pool_id},${var.share_id}\"\n}\n```\n\n",
             "properties": {
                 "exportPolicy": {
                     "type": "string",
@@ -25279,7 +25533,7 @@
             }
         },
         "stackit:index/valkeyCredential:ValkeyCredential": {
-            "description": "Valkey credential resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\nresource \"stackit_valkey_credential\" \"example\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  instance_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\nresource \"time_rotating\" \"rotate\" {\n  rotation_days = 80\n}\n\nresource \"stackit_valkey_credential\" \"example_rotate\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  instance_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n\n  rotate_when_changed = {\n    rotation = time_rotating.rotate.id\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing valkey credential\nimport {\n  to = stackit_valkey_credential.import-example\n  id = \"${var.project_id},${var.region},${var.valkey_instance_id},${var.valkey_credential_id}\"\n}\n```\n\n",
+            "description": "Key Value Store(valkey) credential resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\nresource \"stackit_valkey_credential\" \"example\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  instance_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\nresource \"time_rotating\" \"rotate\" {\n  rotation_days = 80\n}\n\nresource \"stackit_valkey_credential\" \"example_rotate\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  instance_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n\n  rotate_when_changed = {\n    rotation = time_rotating.rotate.id\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing valkey credential\nimport {\n  to = stackit_valkey_credential.import-example\n  id = \"${var.project_id},${var.region},${var.valkey_instance_id},${var.valkey_credential_id}\"\n}\n```\n\n",
             "properties": {
                 "credentialId": {
                     "type": "string",
@@ -25428,7 +25682,7 @@
             }
         },
         "stackit:index/valkeyInstance:ValkeyInstance": {
-            "description": "Valkey instance resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\nresource \"stackit_valkey_instance\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-instance\"\n  version    = \"x\"\n  plan_name  = \"stackit-keyvalue-1.2.10-replica\"\n  parameters = {\n    sgw_acl                 = \"193.148.160.0/19,45.129.40.0/21,45.135.244.0/22\"\n    enable_monitoring       = false\n    down_after_milliseconds = 30000\n    syslog                  = [\"logs4.your-syslog-endpoint.com:54321\"]\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing valkey instance\nimport {\n  to = stackit_valkey_instance.import-example\n  id = \"${var.project_id},${var.region},${var.valkey_instance_id}\"\n}\n```\n\n",
+            "description": "Key Value Store(valkey) instance resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\nresource \"stackit_valkey_instance\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-instance\"\n  version    = \"x\"\n  plan_name  = \"stackit-keyvalue-1.2.10-replica\"\n  parameters = {\n    sgw_acl                 = \"193.148.160.0/19,45.129.40.0/21,45.135.244.0/22\"\n    enable_monitoring       = false\n    down_after_milliseconds = 30000\n    syslog                  = [\"logs4.your-syslog-endpoint.com:54321\"]\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing valkey instance\nimport {\n  to = stackit_valkey_instance.import-example\n  id = \"${var.project_id},${var.region},${var.valkey_instance_id}\"\n}\n```\n\n",
             "properties": {
                 "cfGuid": {
                     "type": "string"
@@ -28401,11 +28655,6 @@
                         "type": "string",
                         "description": "STACKIT project ID.\n"
                     },
-                    "state": {
-                        "type": "string",
-                        "description": "Specifies the status of the project.\n",
-                        "deprecationMessage": "Deprecated: Will be removed in May 2026. Use the \u003cspan pulumi-lang-nodejs=\"`status`\" pulumi-lang-dotnet=\"`Status`\" pulumi-lang-go=\"`status`\" pulumi-lang-python=\"`status`\" pulumi-lang-yaml=\"`status`\" pulumi-lang-java=\"`status`\"\u003e`status`\u003c/span\u003e field instead."
-                    },
                     "status": {
                         "type": "string",
                         "description": "Specifies the status of the project.\n"
@@ -28422,7 +28671,6 @@
                     "id",
                     "internetAccess",
                     "projectId",
-                    "state",
                     "status",
                     "updatedAt"
                 ]
@@ -28650,6 +28898,70 @@
                     "projectId",
                     "protected",
                     "scope"
+                ]
+            }
+        },
+        "stackit:index/getImages:getImages": {
+            "description": "Lists all IaaS images in a project and region. Results are sorted by image ID.\n\n\u003e This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\nvariable \"project_id\" {\n  type = string\n}\n\ndata \"stackit_images\" \"all\" {\n  project_id = var.project_id\n}\n\ndata \"stackit_images\" \"filtered\" {\n  project_id = var.project_id\n  filter = {\n    label_selector = \"linux=\"\n  }\n  timeouts = { read = \"5m\" }\n}\n\noutput \"image_ids\" {\n  value = [for image in data.stackit_images.all.results : image.image_id]\n}\n\n# These expressions filter locally in Terraform; they are not API filters.\nlocals {\n  exact_name     = [for image in data.stackit_images.all.results : image if image.name == \"Ubuntu 22.04\"]\n  matching_names = [for image in data.stackit_images.all.results : image if can(regex(\"Ubuntu.*\", image.name))]\n  ubuntu_images  = [for image in data.stackit_images.all.results : image if try(image.config.operating_system_distro, \"\") == \"ubuntu\"]\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getImages.\n",
+                "properties": {
+                    "filter": {
+                        "$ref": "#/types/stackit:index/getImagesFilter:getImagesFilter",
+                        "description": "API-side image filtering options.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "Region override. Uses the provider region when omitted.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/stackit:index/getImagesTimeouts:getImagesTimeouts"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "projectId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getImages.\n",
+                "properties": {
+                    "filter": {
+                        "$ref": "#/types/stackit:index/getImagesFilter:getImagesFilter",
+                        "description": "API-side image filtering options.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Stable Terraform ID, structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`projectId`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e\".\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "Region override. Uses the provider region when omitted.\n"
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/stackit:index/getImagesResult:getImagesResult"
+                        },
+                        "description": "All matching images, sorted by\u003cspan pulumi-lang-nodejs=\" imageId \" pulumi-lang-dotnet=\" ImageId \" pulumi-lang-go=\" imageId \" pulumi-lang-python=\" image_id \" pulumi-lang-yaml=\" imageId \" pulumi-lang-java=\" imageId \"\u003e imageId \u003c/span\u003eascending.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/stackit:index/getImagesTimeouts:getImagesTimeouts"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "projectId",
+                    "results"
                 ]
             }
         },
@@ -29649,6 +29961,70 @@
                     "projectId",
                     "ram",
                     "vcpus"
+                ]
+            }
+        },
+        "stackit:index/getMachineTypes:getMachineTypes": {
+            "description": "Lists all available machine types in a project and region. Results are sorted by name.\n\n\u003e This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\n# List all available machine types in the provider region.\ndata \"stackit_machine_types\" \"all\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\n# Match exactly 1 vCPU and 1024 MB of RAM. All filters are combined with AND.\ndata \"stackit_machine_types\" \"small\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  filter = {\n    vcpu = 1\n    ram  = 1024\n  }\n}\n\n# Filter by extra specs in an explicitly selected region.\ndata \"stackit_machine_types\" \"intel\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  region     = \"eu01\"\n  filter = {\n    vcpu = 2\n    extra_specs = {\n      cpu = \"intel-icelake-generic\"\n    }\n  }\n}\n\noutput \"small_machine_types\" {\n  value = data.stackit_machine_types.small.results\n}\n\n# Use HCL for more complex filtering, such as a minimum RAM size.\noutput \"high_memory_machine_types\" {\n  value = [\n    for machine_type in data.stackit_machine_types.all.results : machine_type\n    if machine_type.ram \u003e= 4096\n  ]\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getMachineTypes.\n",
+                "properties": {
+                    "filter": {
+                        "$ref": "#/types/stackit:index/getMachineTypesFilter:getMachineTypesFilter",
+                        "description": "Experimental API-side equality filters, which may be subject to breaking changes. All configured attributes and extra spec entries are combined with AND. Omit this object or use an empty object to list all machine types.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "Region override. Uses the provider region when omitted.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/stackit:index/getMachineTypesTimeouts:getMachineTypesTimeouts"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "projectId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getMachineTypes.\n",
+                "properties": {
+                    "filter": {
+                        "$ref": "#/types/stackit:index/getMachineTypesFilter:getMachineTypesFilter",
+                        "description": "Experimental API-side equality filters, which may be subject to breaking changes. All configured attributes and extra spec entries are combined with AND. Omit this object or use an empty object to list all machine types.\n"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "Stable Terraform ID, structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`projectId`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e\".\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "Region override. Uses the provider region when omitted.\n"
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/stackit:index/getMachineTypesResult:getMachineTypesResult"
+                        },
+                        "description": "All matching machine types, sorted by name ascending. Empty if no machine types match.\n"
+                    },
+                    "timeouts": {
+                        "$ref": "#/types/stackit:index/getMachineTypesTimeouts:getMachineTypesTimeouts"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "projectId",
+                    "results"
                 ]
             }
         },
@@ -32249,7 +32625,7 @@
             }
         },
         "stackit:index/getRedisCredential:getRedisCredential": {
-            "description": "Redis credential data source schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration. This data source is deprecated and will be removed after August 2027, use\u003cspan pulumi-lang-nodejs=\" stackit.ValkeyCredential \" pulumi-lang-dotnet=\" stackit.ValkeyCredential \" pulumi-lang-go=\" ValkeyCredential \" pulumi-lang-python=\" ValkeyCredential \" pulumi-lang-yaml=\" stackit.ValkeyCredential \" pulumi-lang-java=\" stackit.ValkeyCredential \"\u003e stackit.ValkeyCredential \u003c/span\u003einstead. For more information on how to migrate, see the [migration guide](https://docs.stackit.cloud/products/databases/key-value-store/tutorials/migrate-data-to-a-new-instance/).\n\n## Example Usage\n\n```terraform\ndata \"stackit_redis_credential\" \"example\" {\n  project_id    = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  instance_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  credential_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "description": "Redis credential data source schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n!\u003e The \u003cspan pulumi-lang-nodejs=\"`stackit.RedisCredential`\" pulumi-lang-dotnet=\"`stackit.RedisCredential`\" pulumi-lang-go=\"`RedisCredential`\" pulumi-lang-python=\"`RedisCredential`\" pulumi-lang-yaml=\"`stackit.RedisCredential`\" pulumi-lang-java=\"`stackit.RedisCredential`\"\u003e`stackit.RedisCredential`\u003c/span\u003e data source is deprecated and will be removed after August 2027, use \u003cspan pulumi-lang-nodejs=\"`stackit.ValkeyCredential`\" pulumi-lang-dotnet=\"`stackit.ValkeyCredential`\" pulumi-lang-go=\"`ValkeyCredential`\" pulumi-lang-python=\"`ValkeyCredential`\" pulumi-lang-yaml=\"`stackit.ValkeyCredential`\" pulumi-lang-java=\"`stackit.ValkeyCredential`\"\u003e`stackit.ValkeyCredential`\u003c/span\u003e (Key Value Store) instead. \nFor more information on how to migrate, see the [migration guide](https://docs.stackit.cloud/products/databases/key-value-store/tutorials/migrate-data-to-a-new-instance/).\n\n## Example Usage\n\n```terraform\ndata \"stackit_redis_credential\" \"example\" {\n  project_id    = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  instance_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  credential_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getRedisCredential.\n",
                 "properties": {
@@ -32346,7 +32722,7 @@
             }
         },
         "stackit:index/getRedisInstance:getRedisInstance": {
-            "description": "Redis instance data source schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration. This data source is deprecated and will be removed after August 2027, use\u003cspan pulumi-lang-nodejs=\" stackit.ValkeyInstance \" pulumi-lang-dotnet=\" stackit.ValkeyInstance \" pulumi-lang-go=\" ValkeyInstance \" pulumi-lang-python=\" ValkeyInstance \" pulumi-lang-yaml=\" stackit.ValkeyInstance \" pulumi-lang-java=\" stackit.ValkeyInstance \"\u003e stackit.ValkeyInstance \u003c/span\u003einstead. For more information on how to migrate, see the [migration guide](https://docs.stackit.cloud/products/databases/key-value-store/tutorials/migrate-data-to-a-new-instance/).\n\n## Example Usage\n\n```terraform\ndata \"stackit_redis_instance\" \"example\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  instance_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "description": "Redis instance data source schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n!\u003e The \u003cspan pulumi-lang-nodejs=\"`stackit.RedisInstance`\" pulumi-lang-dotnet=\"`stackit.RedisInstance`\" pulumi-lang-go=\"`RedisInstance`\" pulumi-lang-python=\"`RedisInstance`\" pulumi-lang-yaml=\"`stackit.RedisInstance`\" pulumi-lang-java=\"`stackit.RedisInstance`\"\u003e`stackit.RedisInstance`\u003c/span\u003e data source is deprecated and will be removed after August 2027, use \u003cspan pulumi-lang-nodejs=\"`stackit.ValkeyInstance`\" pulumi-lang-dotnet=\"`stackit.ValkeyInstance`\" pulumi-lang-go=\"`ValkeyInstance`\" pulumi-lang-python=\"`ValkeyInstance`\" pulumi-lang-yaml=\"`stackit.ValkeyInstance`\" pulumi-lang-java=\"`stackit.ValkeyInstance`\"\u003e`stackit.ValkeyInstance`\u003c/span\u003e (Key Value Store) instead. \nFor more information on how to migrate, see the [migration guide](https://docs.stackit.cloud/products/databases/key-value-store/tutorials/migrate-data-to-a-new-instance/).\n\n## Example Usage\n\n```terraform\ndata \"stackit_redis_instance\" \"example\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  instance_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getRedisInstance.\n",
                 "properties": {
@@ -34274,7 +34650,7 @@
             }
         },
         "stackit:index/getSfsExportPolicy:getSfsExportPolicy": {
-            "description": "SFS export policy datasource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n\u003e This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\ndata \"stackit_sfs_export_policy\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  policy_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "description": "SFS export policy datasource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\ndata \"stackit_sfs_export_policy\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  policy_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getSfsExportPolicy.\n",
                 "properties": {
@@ -34395,7 +34771,7 @@
             }
         },
         "stackit:index/getSfsResourcePool:getSfsResourcePool": {
-            "description": "Resource-pool datasource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n\u003e This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\ndata \"stackit_sfs_resource_pool\" \"resourcepool\" {\n  project_id       = \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\"\n  resource_pool_id = \"YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY\"\n}\n```\n",
+            "description": "Resource-pool datasource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\ndata \"stackit_sfs_resource_pool\" \"resourcepool\" {\n  project_id       = \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\"\n  resource_pool_id = \"YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getSfsResourcePool.\n",
                 "properties": {
@@ -34509,7 +34885,7 @@
             }
         },
         "stackit:index/getSfsResourcePoolSnapshot:getSfsResourcePoolSnapshot": {
-            "description": "Resource-pool datasource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n\u003e This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\ndata \"stackit_sfs_resource_pool_snapshot\" \"example\" {\n  project_id       = \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\"\n  resource_pool_id = \"YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY\"\n}\n```\n",
+            "description": "Resource-pool datasource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\ndata \"stackit_sfs_resource_pool_snapshot\" \"example\" {\n  project_id       = \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\"\n  resource_pool_id = \"YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getSfsResourcePoolSnapshot.\n",
                 "properties": {
@@ -34569,7 +34945,7 @@
             }
         },
         "stackit:index/getSfsShare:getSfsShare": {
-            "description": "SFS Share schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n\u003e This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\ndata \"stackit_sfs_share\" \"example\" {\n  project_id       = \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\"\n  resource_pool_id = \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\"\n  share_id         = \"YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY\"\n}\n```\n",
+            "description": "SFS Share schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\ndata \"stackit_sfs_share\" \"example\" {\n  project_id       = \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\"\n  resource_pool_id = \"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX\"\n  share_id         = \"YYYYYYYY-YYYY-YYYY-YYYY-YYYYYYYYYYYY\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getSfsShare.\n",
                 "properties": {
@@ -34659,7 +35035,7 @@
             }
         },
         "stackit:index/getSfsSnapshotPolicies:getSfsSnapshotPolicies": {
-            "description": "SFS snapshot policies datasource schema\n\n\u003e This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\ndata \"stackit_sfs_snapshot_policies\" \"all\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\ndata \"stackit_sfs_snapshot_policies\" \"immutable_only\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  immutable  = \"immutable-only\"\n}\n```\n",
+            "description": "SFS snapshot policies datasource schema\n\n## Example Usage\n\n```terraform\ndata \"stackit_sfs_snapshot_policies\" \"all\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n\ndata \"stackit_sfs_snapshot_policies\" \"immutable_only\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  immutable  = \"immutable-only\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getSfsSnapshotPolicies.\n",
                 "properties": {
@@ -35623,7 +35999,7 @@
             }
         },
         "stackit:index/getValkeyCredential:getValkeyCredential": {
-            "description": "Valkey credential data source schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\ndata \"stackit_valkey_credential\" \"example\" {\n  project_id    = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  instance_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  credential_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "description": "Key Value Store(valkey) credential data source schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\ndata \"stackit_valkey_credential\" \"example\" {\n  project_id    = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  instance_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  credential_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getValkeyCredential.\n",
                 "properties": {
@@ -35720,7 +36096,7 @@
             }
         },
         "stackit:index/getValkeyInstance:getValkeyInstance": {
-            "description": "Valkey instance data source schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\ndata \"stackit_valkey_instance\" \"example\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  instance_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "description": "Key Value Store(valkey) instance data source schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n## Example Usage\n\n```terraform\ndata \"stackit_valkey_instance\" \"example\" {\n  project_id  = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  instance_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getValkeyInstance.\n",
                 "properties": {

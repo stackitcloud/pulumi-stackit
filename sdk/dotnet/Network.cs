@@ -11,9 +11,6 @@ namespace Pulumi.Stackit
 {
     /// <summary>
     /// Network resource schema. Must have a `Region` specified in the provider configuration.
-    /// &gt; Behavior of not configured `Ipv4Nameservers` has changed. When `Ipv4Nameservers` is not set, it will be set to the network area's `DefaultNameservers`.
-    /// To prevent any nameserver configuration, the `Ipv4Nameservers` attribute should be explicitly set to an empty list `[]`.
-    /// In cases where `Ipv4Nameservers` are defined within the resource, the existing behavior will remain unchanged.
     /// 
     /// ## Example Usage
     /// 

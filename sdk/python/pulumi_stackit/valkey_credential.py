@@ -276,7 +276,7 @@ class ValkeyCredential(pulumi.CustomResource):
                  rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Valkey credential resource schema. Must have a `region` specified in the provider configuration.
+        Key Value Store(valkey) credential resource schema. Must have a `region` specified in the provider configuration.
 
         ## Example Usage
 
@@ -299,7 +299,7 @@ class ValkeyCredential(pulumi.CustomResource):
                  args: ValkeyCredentialArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Valkey credential resource schema. Must have a `region` specified in the provider configuration.
+        Key Value Store(valkey) credential resource schema. Must have a `region` specified in the provider configuration.
 
         ## Example Usage
 

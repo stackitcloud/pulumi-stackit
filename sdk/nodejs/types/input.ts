@@ -474,7 +474,7 @@ export interface CdnDistributionConfig {
      */
     optimizer?: pulumi.Input<inputs.CdnDistributionConfigOptimizer | undefined>;
     /**
-     * A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+     * A wrapper for a list of redirect rules that allows for redirect settings on a distribution. Currently, this feature is only available for distributions of backend type HTTP.
      */
     redirects?: pulumi.Input<inputs.CdnDistributionConfigRedirects | undefined>;
     /**
@@ -947,6 +947,94 @@ export interface GetImageV2FilterArgs {
      * Filter images by OS distribution version, such as `22.04`, `11`, or `9.1`.
      */
     version?: pulumi.Input<string | undefined>;
+}
+
+export interface GetImagesFilter {
+    /**
+     * Experimental: API label selector passed directly to the image-list endpoint.
+     */
+    labelSelector?: string;
+}
+
+export interface GetImagesFilterArgs {
+    /**
+     * Experimental: API label selector passed directly to the image-list endpoint.
+     */
+    labelSelector?: pulumi.Input<string | undefined>;
+}
+
+export interface GetImagesTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetImagesTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string | undefined>;
+}
+
+export interface GetMachineTypesFilter {
+    /**
+     * Exact disk size in GB to match.
+     */
+    disk?: number;
+    /**
+     * Extra specs to match by key and exact value (e.g., cpu or overcommit).
+     */
+    extraSpecs?: {[key: string]: string};
+    /**
+     * Exact machine type name to match.
+     */
+    name?: string;
+    /**
+     * Exact RAM size in MB to match.
+     */
+    ram?: number;
+    /**
+     * Exact number of vCPUs to match.
+     */
+    vcpu?: number;
+}
+
+export interface GetMachineTypesFilterArgs {
+    /**
+     * Exact disk size in GB to match.
+     */
+    disk?: pulumi.Input<number | undefined>;
+    /**
+     * Extra specs to match by key and exact value (e.g., cpu or overcommit).
+     */
+    extraSpecs?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
+    /**
+     * Exact machine type name to match.
+     */
+    name?: pulumi.Input<string | undefined>;
+    /**
+     * Exact RAM size in MB to match.
+     */
+    ram?: pulumi.Input<number | undefined>;
+    /**
+     * Exact number of vCPUs to match.
+     */
+    vcpu?: pulumi.Input<number | undefined>;
+}
+
+export interface GetMachineTypesTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
+export interface GetMachineTypesTimeoutsArgs {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: pulumi.Input<string | undefined>;
 }
 
 export interface GetPostgresflexFlavorsTimeouts {

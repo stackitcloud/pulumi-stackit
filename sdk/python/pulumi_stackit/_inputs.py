@@ -353,6 +353,14 @@ __all__ = [
     'GetDnsZoneTimeoutsArgsDict',
     'GetImageV2FilterArgs',
     'GetImageV2FilterArgsDict',
+    'GetImagesFilterArgs',
+    'GetImagesFilterArgsDict',
+    'GetImagesTimeoutsArgs',
+    'GetImagesTimeoutsArgsDict',
+    'GetMachineTypesFilterArgs',
+    'GetMachineTypesFilterArgsDict',
+    'GetMachineTypesTimeoutsArgs',
+    'GetMachineTypesTimeoutsArgsDict',
     'GetPostgresflexFlavorsTimeoutsArgs',
     'GetPostgresflexFlavorsTimeoutsArgsDict',
     'GetSfsResourcePoolTimeoutsArgs',
@@ -2396,7 +2404,7 @@ class CdnDistributionConfigArgsDict(TypedDict):
     """
     redirects: NotRequired[pulumi.Input[Optional['CdnDistributionConfigRedirectsArgsDict']]]
     """
-    A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+    A wrapper for a list of redirect rules that allows for redirect settings on a distribution. Currently, this feature is only available for distributions of backend type HTTP.
     """
     strip_response_cookies: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
     """
@@ -2435,7 +2443,7 @@ class CdnDistributionConfigArgs:
         :param pulumi.Input[_builtins.bool] forward_host_header: Enable this allows the 'Host' header to be passed through to the origin.
         :param pulumi.Input[_builtins.int] monthly_limit_bytes: Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
         :param pulumi.Input['CdnDistributionConfigOptimizerArgs'] optimizer: Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
-        :param pulumi.Input['CdnDistributionConfigRedirectsArgs'] redirects: A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+        :param pulumi.Input['CdnDistributionConfigRedirectsArgs'] redirects: A wrapper for a list of redirect rules that allows for redirect settings on a distribution. Currently, this feature is only available for distributions of backend type HTTP.
         :param pulumi.Input[_builtins.bool] strip_response_cookies: Enable this to prevent origin-level cookies from being forwarded to the end user.
         :param pulumi.Input['CdnDistributionConfigTlsArgs'] tls: Configuration for TLS protocol versions. Note: Enabling older TLS versions (1.0, 1.1) is generally discouraged for security reasons.
         :param pulumi.Input['CdnDistributionConfigWafArgs'] waf: Configures the Web Application Firewall (WAF) for the distribution. If this block is undefined or removed from your configuration, the WAF mode will default to DISABLED and the type to FREE. All other WAF properties will retain their last known state in the API; if they were never defined, the API will apply its default settings.
@@ -2563,7 +2571,7 @@ class CdnDistributionConfigArgs:
     @pulumi.getter
     def redirects(self) -> pulumi.Input[Optional['CdnDistributionConfigRedirectsArgs']]:
         """
-        A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+        A wrapper for a list of redirect rules that allows for redirect settings on a distribution. Currently, this feature is only available for distributions of backend type HTTP.
         """
         return pulumi.get(self, "redirects")
 
@@ -14545,6 +14553,202 @@ class GetImageV2FilterArgs:
     @version.setter
     def version(self, value: Optional[_builtins.str]):
         pulumi.set(self, "version", value)
+
+
+class GetImagesFilterArgsDict(TypedDict):
+    label_selector: NotRequired[_builtins.str]
+    """
+    Experimental: API label selector passed directly to the image-list endpoint.
+    """
+
+@pulumi.input_type
+class GetImagesFilterArgs:
+    def __init__(__self__, *,
+                 label_selector: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str label_selector: Experimental: API label selector passed directly to the image-list endpoint.
+        """
+        if label_selector is not None:
+            pulumi.set(__self__, "label_selector", label_selector)
+
+    @_builtins.property
+    @pulumi.getter(name="labelSelector")
+    def label_selector(self) -> Optional[_builtins.str]:
+        """
+        Experimental: API label selector passed directly to the image-list endpoint.
+        """
+        return pulumi.get(self, "label_selector")
+
+    @label_selector.setter
+    def label_selector(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "label_selector", value)
+
+
+class GetImagesTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class GetImagesTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "read", value)
+
+
+class GetMachineTypesFilterArgsDict(TypedDict):
+    disk: NotRequired[_builtins.int]
+    """
+    Exact disk size in GB to match.
+    """
+    extra_specs: NotRequired[Mapping[str, _builtins.str]]
+    """
+    Extra specs to match by key and exact value (e.g., cpu or overcommit).
+    """
+    name: NotRequired[_builtins.str]
+    """
+    Exact machine type name to match.
+    """
+    ram: NotRequired[_builtins.int]
+    """
+    Exact RAM size in MB to match.
+    """
+    vcpu: NotRequired[_builtins.int]
+    """
+    Exact number of vCPUs to match.
+    """
+
+@pulumi.input_type
+class GetMachineTypesFilterArgs:
+    def __init__(__self__, *,
+                 disk: Optional[_builtins.int] = None,
+                 extra_specs: Optional[Mapping[str, _builtins.str]] = None,
+                 name: Optional[_builtins.str] = None,
+                 ram: Optional[_builtins.int] = None,
+                 vcpu: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int disk: Exact disk size in GB to match.
+        :param Mapping[str, _builtins.str] extra_specs: Extra specs to match by key and exact value (e.g., cpu or overcommit).
+        :param _builtins.str name: Exact machine type name to match.
+        :param _builtins.int ram: Exact RAM size in MB to match.
+        :param _builtins.int vcpu: Exact number of vCPUs to match.
+        """
+        if disk is not None:
+            pulumi.set(__self__, "disk", disk)
+        if extra_specs is not None:
+            pulumi.set(__self__, "extra_specs", extra_specs)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if ram is not None:
+            pulumi.set(__self__, "ram", ram)
+        if vcpu is not None:
+            pulumi.set(__self__, "vcpu", vcpu)
+
+    @_builtins.property
+    @pulumi.getter
+    def disk(self) -> Optional[_builtins.int]:
+        """
+        Exact disk size in GB to match.
+        """
+        return pulumi.get(self, "disk")
+
+    @disk.setter
+    def disk(self, value: Optional[_builtins.int]):
+        pulumi.set(self, "disk", value)
+
+    @_builtins.property
+    @pulumi.getter(name="extraSpecs")
+    def extra_specs(self) -> Optional[Mapping[str, _builtins.str]]:
+        """
+        Extra specs to match by key and exact value (e.g., cpu or overcommit).
+        """
+        return pulumi.get(self, "extra_specs")
+
+    @extra_specs.setter
+    def extra_specs(self, value: Optional[Mapping[str, _builtins.str]]):
+        pulumi.set(self, "extra_specs", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Exact machine type name to match.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def ram(self) -> Optional[_builtins.int]:
+        """
+        Exact RAM size in MB to match.
+        """
+        return pulumi.get(self, "ram")
+
+    @ram.setter
+    def ram(self, value: Optional[_builtins.int]):
+        pulumi.set(self, "ram", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def vcpu(self) -> Optional[_builtins.int]:
+        """
+        Exact number of vCPUs to match.
+        """
+        return pulumi.get(self, "vcpu")
+
+    @vcpu.setter
+    def vcpu(self, value: Optional[_builtins.int]):
+        pulumi.set(self, "vcpu", value)
+
+
+class GetMachineTypesTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+    """
+
+@pulumi.input_type
+class GetMachineTypesTimeoutsArgs:
+    def __init__(__self__, *,
+                 read: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str read: A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        if read is not None:
+            pulumi.set(__self__, "read", read)
+
+    @_builtins.property
+    @pulumi.getter
+    def read(self) -> Optional[_builtins.str]:
+        """
+        A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+        """
+        return pulumi.get(self, "read")
+
+    @read.setter
+    def read(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "read", value)
 
 
 class GetPostgresflexFlavorsTimeoutsArgsDict(TypedDict):

@@ -170,8 +170,6 @@ def get_sfs_share(project_id: Optional[_builtins.str] = None,
     """
     SFS Share schema. Must have a `region` specified in the provider configuration.
 
-    > This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
-
     ## Example Usage
 
 
@@ -206,8 +204,6 @@ def get_sfs_share_output(project_id: pulumi.Input[Optional[_builtins.str]] = Non
                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSfsShareResult]:
     """
     SFS Share schema. Must have a `region` specified in the provider configuration.
-
-    > This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.
 
     ## Example Usage
 

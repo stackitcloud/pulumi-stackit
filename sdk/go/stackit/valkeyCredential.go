@@ -12,7 +12,7 @@ import (
 	"github.com/stackitcloud/pulumi-stackit/sdk/go/stackit/internal"
 )
 
-// Valkey credential resource schema. Must have a `region` specified in the provider configuration.
+// Key Value Store(valkey) credential resource schema. Must have a `region` specified in the provider configuration.
 //
 // ## Example Usage
 //

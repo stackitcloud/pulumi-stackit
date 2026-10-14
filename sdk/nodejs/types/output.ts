@@ -474,7 +474,7 @@ export interface CdnDistributionConfig {
      */
     optimizer: outputs.CdnDistributionConfigOptimizer;
     /**
-     * A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+     * A wrapper for a list of redirect rules that allows for redirect settings on a distribution. Currently, this feature is only available for distributions of backend type HTTP.
      */
     redirects?: outputs.CdnDistributionConfigRedirects;
     /**
@@ -1333,7 +1333,7 @@ export interface GetCdnDistributionConfig {
      */
     optimizer: outputs.GetCdnDistributionConfigOptimizer;
     /**
-     * A wrapper for a list of redirect rules that allows for redirect settings on a distribution
+     * A wrapper for a list of redirect rules that allows for redirect settings on a distribution. Currently, this feature is only available for distributions of backend type HTTP.
      */
     redirects: outputs.GetCdnDistributionConfigRedirects;
     /**
@@ -1840,6 +1840,88 @@ export interface GetImageV2Filter {
     version?: string;
 }
 
+export interface GetImagesFilter {
+    /**
+     * Experimental: API label selector passed directly to the image-list endpoint.
+     */
+    labelSelector?: string;
+}
+
+export interface GetImagesResult {
+    /**
+     * Image checksum.
+     */
+    checksum: outputs.GetImagesResultChecksum;
+    /**
+     * Image hardware and operating-system configuration.
+     */
+    config: outputs.GetImagesResultConfig;
+    /**
+     * Image disk format.
+     */
+    diskFormat: string;
+    /**
+     * Image ID.
+     */
+    imageId: string;
+    /**
+     * Image labels.
+     */
+    labels: {[key: string]: string};
+    /**
+     * Minimum disk size in GB.
+     */
+    minDiskSize: number;
+    /**
+     * Minimum RAM in MB.
+     */
+    minRam: number;
+    /**
+     * Image name.
+     */
+    name: string;
+    /**
+     * Whether the image is protected.
+     */
+    protected: boolean;
+    /**
+     * Image scope.
+     */
+    scope: string;
+    /**
+     * Image status.
+     */
+    status: string;
+}
+
+export interface GetImagesResultChecksum {
+    algorithm: string;
+    digest: string;
+}
+
+export interface GetImagesResultConfig {
+    bootMenu: boolean;
+    cdromBus: string;
+    diskBus: string;
+    nicModel: string;
+    operatingSystem: string;
+    operatingSystemDistro: string;
+    operatingSystemVersion: string;
+    rescueBus: string;
+    rescueDevice: string;
+    secureBoot: boolean;
+    uefi: boolean;
+    videoModel: string;
+    virtioScsi: boolean;
+}
+
+export interface GetImagesTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
+}
+
 export interface GetLoadbalancerListener {
     displayName: string;
     /**
@@ -2070,6 +2152,63 @@ export interface GetLogmeInstanceParameters {
      * List of syslog servers to send logs to.
      */
     syslogs: string[];
+}
+
+export interface GetMachineTypesFilter {
+    /**
+     * Exact disk size in GB to match.
+     */
+    disk?: number;
+    /**
+     * Extra specs to match by key and exact value (e.g., cpu or overcommit).
+     */
+    extraSpecs?: {[key: string]: string};
+    /**
+     * Exact machine type name to match.
+     */
+    name?: string;
+    /**
+     * Exact RAM size in MB to match.
+     */
+    ram?: number;
+    /**
+     * Exact number of vCPUs to match.
+     */
+    vcpu?: number;
+}
+
+export interface GetMachineTypesResult {
+    /**
+     * Machine type description.
+     */
+    description: string;
+    /**
+     * Disk size in GB.
+     */
+    disk: number;
+    /**
+     * Extra specs (e.g., CPU type or overcommit ratio).
+     */
+    extraSpecs: {[key: string]: string};
+    /**
+     * Machine type name.
+     */
+    name: string;
+    /**
+     * RAM size in MB.
+     */
+    ram: number;
+    /**
+     * Number of vCPUs.
+     */
+    vcpus: number;
+}
+
+export interface GetMachineTypesTimeouts {
+    /**
+     * A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
+     */
+    read?: string;
 }
 
 export interface GetMariadbInstanceParameters {
