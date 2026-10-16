@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Stackit
 {
     /// <summary>
-    /// Observability instance resource schema. Must have a `Region` specified in the provider configuration.
+    /// Observability instance resource schema. Must have a `Region` specified in the provider configuration. This service is only available when the provider is configured with `DefaultRegion = "eu01"`.
     /// 
     /// ## Example Usage
     /// 

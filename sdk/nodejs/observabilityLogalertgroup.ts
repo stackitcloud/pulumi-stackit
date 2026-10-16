@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Observability log alert group resource schema. Used to create alerts based on logs (Loki). Must have a `region` specified in the provider configuration.
+ * Observability log alert group resource schema. Used to create alerts based on logs (Loki). Must have a `region` specified in the provider configuration. This service is only available when the provider is configured with `defaultRegion = "eu01"`.
  *
  * ## Example Usage
  *

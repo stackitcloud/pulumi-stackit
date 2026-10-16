@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Manages a STACKIT Dremio instances user.
+ * Manages a STACKIT Dremio instances user. This service is only available when the provider is configured with `defaultRegion = "eu01"`.
  *
  * > This datasource is part of the experimental feature dremio and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
  *
@@ -94,7 +94,7 @@ export interface GetDremioUserResult {
     readonly userId: string;
 }
 /**
- * Manages a STACKIT Dremio instances user.
+ * Manages a STACKIT Dremio instances user. This service is only available when the provider is configured with `defaultRegion = "eu01"`.
  *
  * > This datasource is part of the experimental feature dremio and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
  *

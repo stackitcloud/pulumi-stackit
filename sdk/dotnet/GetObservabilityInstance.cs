@@ -12,7 +12,7 @@ namespace Pulumi.Stackit
     public static class GetObservabilityInstance
     {
         /// <summary>
-        /// Observability instance data source schema. Must have a `Region` specified in the provider configuration.
+        /// Observability instance data source schema. Must have a `Region` specified in the provider configuration. This service is only available when the provider is configured with `DefaultRegion = "eu01"`.
         /// 
         /// ## Example Usage
         /// 
@@ -27,7 +27,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetObservabilityInstanceResult>("stackit:index/getObservabilityInstance:getObservabilityInstance", args ?? new GetObservabilityInstanceArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Observability instance data source schema. Must have a `Region` specified in the provider configuration.
+        /// Observability instance data source schema. Must have a `Region` specified in the provider configuration. This service is only available when the provider is configured with `DefaultRegion = "eu01"`.
         /// 
         /// ## Example Usage
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.Invoke<GetObservabilityInstanceResult>("stackit:index/getObservabilityInstance:getObservabilityInstance", args ?? new GetObservabilityInstanceInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Observability instance data source schema. Must have a `Region` specified in the provider configuration.
+        /// Observability instance data source schema. Must have a `Region` specified in the provider configuration. This service is only available when the provider is configured with `DefaultRegion = "eu01"`.
         /// 
         /// ## Example Usage
         /// 

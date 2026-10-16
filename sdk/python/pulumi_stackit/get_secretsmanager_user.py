@@ -126,7 +126,7 @@ def get_secretsmanager_user(instance_id: Optional[_builtins.str] = None,
                             user_id: Optional[_builtins.str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecretsmanagerUserResult:
     """
-    Secrets Manager user data source schema. Must have a `region` specified in the provider configuration.
+    Secrets Manager user data source schema. Must have a `region` specified in the provider configuration. This service is only available when the provider is configured with `default_region = "eu01"`.
 
     ## Example Usage
 
@@ -155,7 +155,7 @@ def get_secretsmanager_user_output(instance_id: pulumi.Input[Optional[_builtins.
                                    user_id: pulumi.Input[Optional[_builtins.str]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecretsmanagerUserResult]:
     """
-    Secrets Manager user data source schema. Must have a `region` specified in the provider configuration.
+    Secrets Manager user data source schema. Must have a `region` specified in the provider configuration. This service is only available when the provider is configured with `default_region = "eu01"`.
 
     ## Example Usage
 

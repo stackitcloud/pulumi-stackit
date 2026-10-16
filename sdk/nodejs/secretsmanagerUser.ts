@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Secrets Manager user resource schema. Must have a `region` specified in the provider configuration.
+ * Secrets Manager user resource schema. Must have a `region` specified in the provider configuration. This service is only available when the provider is configured with `defaultRegion = "eu01"`.
  *
  * ## Example Usage
  *

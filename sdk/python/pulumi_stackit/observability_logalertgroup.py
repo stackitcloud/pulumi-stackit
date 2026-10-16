@@ -206,7 +206,7 @@ class ObservabilityLogalertgroup(pulumi.CustomResource):
                  rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ObservabilityLogalertgroupRuleArgs', 'ObservabilityLogalertgroupRuleArgsDict', 'outputs.ObservabilityLogalertgroupRule']]]]] = None,
                  __props__=None):
         """
-        Observability log alert group resource schema. Used to create alerts based on logs (Loki). Must have a `region` specified in the provider configuration.
+        Observability log alert group resource schema. Used to create alerts based on logs (Loki). Must have a `region` specified in the provider configuration. This service is only available when the provider is configured with `default_region = "eu01"`.
 
         ## Example Usage
 
@@ -230,7 +230,7 @@ class ObservabilityLogalertgroup(pulumi.CustomResource):
                  args: ObservabilityLogalertgroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Observability log alert group resource schema. Used to create alerts based on logs (Loki). Must have a `region` specified in the provider configuration.
+        Observability log alert group resource schema. Used to create alerts based on logs (Loki). Must have a `region` specified in the provider configuration. This service is only available when the provider is configured with `default_region = "eu01"`.
 
         ## Example Usage
 

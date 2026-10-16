@@ -431,7 +431,7 @@ def get_observability_instance(instance_id: Optional[_builtins.str] = None,
                                project_id: Optional[_builtins.str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetObservabilityInstanceResult:
     """
-    Observability instance data source schema. Must have a `region` specified in the provider configuration.
+    Observability instance data source schema. Must have a `region` specified in the provider configuration. This service is only available when the provider is configured with `default_region = "eu01"`.
 
     ## Example Usage
 
@@ -484,7 +484,7 @@ def get_observability_instance_output(instance_id: pulumi.Input[Optional[_builti
                                       project_id: pulumi.Input[Optional[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetObservabilityInstanceResult]:
     """
-    Observability instance data source schema. Must have a `region` specified in the provider configuration.
+    Observability instance data source schema. Must have a `region` specified in the provider configuration. This service is only available when the provider is configured with `default_region = "eu01"`.
 
     ## Example Usage
 

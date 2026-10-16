@@ -112,7 +112,7 @@ def get_observability_logalertgroup(instance_id: Optional[_builtins.str] = None,
                                     project_id: Optional[_builtins.str] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetObservabilityLogalertgroupResult:
     """
-    Observability log alert group datasource schema. Used to create alerts based on logs (Loki). Must have a `region` specified in the provider configuration.
+    Observability log alert group datasource schema. Used to create alerts based on logs (Loki). Must have a `region` specified in the provider configuration. This service is only available when the provider is configured with `default_region = "eu01"`.
 
     ## Example Usage
 
@@ -140,7 +140,7 @@ def get_observability_logalertgroup_output(instance_id: pulumi.Input[Optional[_b
                                            project_id: pulumi.Input[Optional[_builtins.str]] = None,
                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetObservabilityLogalertgroupResult]:
     """
-    Observability log alert group datasource schema. Used to create alerts based on logs (Loki). Must have a `region` specified in the provider configuration.
+    Observability log alert group datasource schema. Used to create alerts based on logs (Loki). Must have a `region` specified in the provider configuration. This service is only available when the provider is configured with `default_region = "eu01"`.
 
     ## Example Usage
 

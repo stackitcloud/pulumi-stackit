@@ -191,7 +191,7 @@ class SecretsmanagerInstance(pulumi.CustomResource):
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
-        Secrets Manager instance resource schema. Must have a `region` specified in the provider configuration.
+        Secrets Manager instance resource schema. Must have a `region` specified in the provider configuration. This service is only available when the provider is configured with `default_region = "eu01"`.
 
         ## Example Usage
 
@@ -214,7 +214,7 @@ class SecretsmanagerInstance(pulumi.CustomResource):
                  args: SecretsmanagerInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Secrets Manager instance resource schema. Must have a `region` specified in the provider configuration.
+        Secrets Manager instance resource schema. Must have a `region` specified in the provider configuration. This service is only available when the provider is configured with `default_region = "eu01"`.
 
         ## Example Usage
 

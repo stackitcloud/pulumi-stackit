@@ -11,7 +11,7 @@ import (
 	"github.com/stackitcloud/pulumi-stackit/sdk/go/stackit/internal"
 )
 
-// Observability alert group datasource schema. Used to create alerts based on metrics (Thanos). Must have a `region` specified in the provider configuration.
+// Observability alert group datasource schema. Used to create alerts based on metrics (Thanos). Must have a `region` specified in the provider configuration. This service is only available when the provider is configured with `defaultRegion = "eu01"`.
 //
 // ## Example Usage
 func LookupObservabilityAlertgroup(ctx *pulumi.Context, args *LookupObservabilityAlertgroupArgs, opts ...pulumi.InvokeOption) (*LookupObservabilityAlertgroupResult, error) {

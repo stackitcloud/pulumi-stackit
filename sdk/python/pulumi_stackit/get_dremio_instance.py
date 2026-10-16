@@ -140,7 +140,7 @@ def get_dremio_instance(description: Optional[_builtins.str] = None,
                         region: Optional[_builtins.str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDremioInstanceResult:
     """
-    Manages a STACKIT Dremio instance.
+    Manages a STACKIT Dremio instance. This service is only available when the provider is configured with `default_region = "eu01"`.
 
     > This datasource is part of the experimental feature dremio and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
 
@@ -175,7 +175,7 @@ def get_dremio_instance_output(description: pulumi.Input[Optional[Optional[_buil
                                region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDremioInstanceResult]:
     """
-    Manages a STACKIT Dremio instance.
+    Manages a STACKIT Dremio instance. This service is only available when the provider is configured with `default_region = "eu01"`.
 
     > This datasource is part of the experimental feature dremio and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
 

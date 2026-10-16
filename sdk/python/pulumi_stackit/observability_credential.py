@@ -204,7 +204,7 @@ class ObservabilityCredential(pulumi.CustomResource):
                  rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
-        Observability credential resource schema. Must have a `region` specified in the provider configuration.
+        Observability credential resource schema. Must have a `region` specified in the provider configuration. This service is only available when the provider is configured with `default_region = "eu01"`.
 
         ## Example Usage
 
@@ -223,7 +223,7 @@ class ObservabilityCredential(pulumi.CustomResource):
                  args: ObservabilityCredentialArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Observability credential resource schema. Must have a `region` specified in the provider configuration.
+        Observability credential resource schema. Must have a `region` specified in the provider configuration. This service is only available when the provider is configured with `default_region = "eu01"`.
 
         ## Example Usage
 

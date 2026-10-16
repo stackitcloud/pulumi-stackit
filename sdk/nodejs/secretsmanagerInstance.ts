@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Secrets Manager instance resource schema. Must have a `region` specified in the provider configuration.
+ * Secrets Manager instance resource schema. Must have a `region` specified in the provider configuration. This service is only available when the provider is configured with `defaultRegion = "eu01"`.
  *
  * ## Example Usage
  *

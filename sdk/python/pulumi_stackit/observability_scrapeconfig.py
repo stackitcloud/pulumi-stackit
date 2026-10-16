@@ -403,7 +403,7 @@ class ObservabilityScrapeconfig(pulumi.CustomResource):
                  targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ObservabilityScrapeconfigTargetArgs', 'ObservabilityScrapeconfigTargetArgsDict', 'outputs.ObservabilityScrapeconfigTarget']]]]] = None,
                  __props__=None):
         """
-        Observability scrape config resource schema. Must have a `region` specified in the provider configuration.
+        Observability scrape config resource schema. Must have a `region` specified in the provider configuration. This service is only available when the provider is configured with `default_region = "eu01"`.
 
         ## Example Usage
 
@@ -433,7 +433,7 @@ class ObservabilityScrapeconfig(pulumi.CustomResource):
                  args: ObservabilityScrapeconfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Observability scrape config resource schema. Must have a `region` specified in the provider configuration.
+        Observability scrape config resource schema. Must have a `region` specified in the provider configuration. This service is only available when the provider is configured with `default_region = "eu01"`.
 
         ## Example Usage
 

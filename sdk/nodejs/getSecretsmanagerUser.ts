@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Secrets Manager user data source schema. Must have a `region` specified in the provider configuration.
+ * Secrets Manager user data source schema. Must have a `region` specified in the provider configuration. This service is only available when the provider is configured with `defaultRegion = "eu01"`.
  *
  * ## Example Usage
  */
@@ -70,7 +70,7 @@ export interface GetSecretsmanagerUserResult {
     readonly writeEnabled: boolean;
 }
 /**
- * Secrets Manager user data source schema. Must have a `region` specified in the provider configuration.
+ * Secrets Manager user data source schema. Must have a `region` specified in the provider configuration. This service is only available when the provider is configured with `defaultRegion = "eu01"`.
  *
  * ## Example Usage
  */

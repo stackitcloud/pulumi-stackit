@@ -114,7 +114,7 @@ def get_secretsmanager_instance(instance_id: Optional[_builtins.str] = None,
                                 project_id: Optional[_builtins.str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSecretsmanagerInstanceResult:
     """
-    Secrets Manager instance data source schema. Must have a `region` specified in the provider configuration.
+    Secrets Manager instance data source schema. Must have a `region` specified in the provider configuration. This service is only available when the provider is configured with `default_region = "eu01"`.
 
     ## Example Usage
 
@@ -139,7 +139,7 @@ def get_secretsmanager_instance_output(instance_id: pulumi.Input[Optional[_built
                                        project_id: pulumi.Input[Optional[_builtins.str]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecretsmanagerInstanceResult]:
     """
-    Secrets Manager instance data source schema. Must have a `region` specified in the provider configuration.
+    Secrets Manager instance data source schema. Must have a `region` specified in the provider configuration. This service is only available when the provider is configured with `default_region = "eu01"`.
 
     ## Example Usage
 
