@@ -754,7 +754,7 @@ class ObservabilityInstance(pulumi.CustomResource):
                  traces_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
-        Observability instance resource schema. Must have a `region` specified in the provider configuration.
+        Observability instance resource schema. Must have a `region` specified in the provider configuration. This service is only available when the provider is configured with `default_region = "eu01"`.
 
         ## Example Usage
 
@@ -785,7 +785,7 @@ class ObservabilityInstance(pulumi.CustomResource):
                  args: ObservabilityInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Observability instance resource schema. Must have a `region` specified in the provider configuration.
+        Observability instance resource schema. Must have a `region` specified in the provider configuration. This service is only available when the provider is configured with `default_region = "eu01"`.
 
         ## Example Usage
 

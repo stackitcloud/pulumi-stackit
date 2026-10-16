@@ -12,7 +12,7 @@ namespace Pulumi.Stackit
     public static class GetDremioInstance
     {
         /// <summary>
-        /// Manages a STACKIT Dremio instance.
+        /// Manages a STACKIT Dremio instance. This service is only available when the provider is configured with `DefaultRegion = "eu01"`.
         /// 
         /// &gt; This datasource is part of the experimental feature dremio and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
         /// 
@@ -30,7 +30,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDremioInstanceResult>("stackit:index/getDremioInstance:getDremioInstance", args ?? new GetDremioInstanceArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Manages a STACKIT Dremio instance.
+        /// Manages a STACKIT Dremio instance. This service is only available when the provider is configured with `DefaultRegion = "eu01"`.
         /// 
         /// &gt; This datasource is part of the experimental feature dremio and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
         /// 
@@ -48,7 +48,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.Invoke<GetDremioInstanceResult>("stackit:index/getDremioInstance:getDremioInstance", args ?? new GetDremioInstanceInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Manages a STACKIT Dremio instance.
+        /// Manages a STACKIT Dremio instance. This service is only available when the provider is configured with `DefaultRegion = "eu01"`.
         /// 
         /// &gt; This datasource is part of the experimental feature dremio and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
         /// 

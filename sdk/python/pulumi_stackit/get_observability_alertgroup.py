@@ -112,7 +112,7 @@ def get_observability_alertgroup(instance_id: Optional[_builtins.str] = None,
                                  project_id: Optional[_builtins.str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetObservabilityAlertgroupResult:
     """
-    Observability alert group datasource schema. Used to create alerts based on metrics (Thanos). Must have a `region` specified in the provider configuration.
+    Observability alert group datasource schema. Used to create alerts based on metrics (Thanos). Must have a `region` specified in the provider configuration. This service is only available when the provider is configured with `default_region = "eu01"`.
 
     ## Example Usage
 
@@ -140,7 +140,7 @@ def get_observability_alertgroup_output(instance_id: pulumi.Input[Optional[_buil
                                         project_id: pulumi.Input[Optional[_builtins.str]] = None,
                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetObservabilityAlertgroupResult]:
     """
-    Observability alert group datasource schema. Used to create alerts based on metrics (Thanos). Must have a `region` specified in the provider configuration.
+    Observability alert group datasource schema. Used to create alerts based on metrics (Thanos). Must have a `region` specified in the provider configuration. This service is only available when the provider is configured with `default_region = "eu01"`.
 
     ## Example Usage
 

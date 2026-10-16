@@ -251,7 +251,7 @@ class SecretsmanagerUser(pulumi.CustomResource):
                  write_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
-        Secrets Manager user resource schema. Must have a `region` specified in the provider configuration.
+        Secrets Manager user resource schema. Must have a `region` specified in the provider configuration. This service is only available when the provider is configured with `default_region = "eu01"`.
 
         ## Example Usage
 
@@ -275,7 +275,7 @@ class SecretsmanagerUser(pulumi.CustomResource):
                  args: SecretsmanagerUserArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Secrets Manager user resource schema. Must have a `region` specified in the provider configuration.
+        Secrets Manager user resource schema. Must have a `region` specified in the provider configuration. This service is only available when the provider is configured with `default_region = "eu01"`.
 
         ## Example Usage
 

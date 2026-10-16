@@ -12,7 +12,7 @@ import (
 	"github.com/stackitcloud/pulumi-stackit/sdk/go/stackit/internal"
 )
 
-// Manages a STACKIT Dremio instance.
+// Manages a STACKIT Dremio instance. This service is only available when the provider is configured with `defaultRegion = "eu01"`.
 //
 // > This resource is part of the experimental feature dremio and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
 //

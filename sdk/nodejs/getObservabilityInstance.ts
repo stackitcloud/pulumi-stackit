@@ -7,7 +7,7 @@ import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
- * Observability instance data source schema. Must have a `region` specified in the provider configuration.
+ * Observability instance data source schema. Must have a `region` specified in the provider configuration. This service is only available when the provider is configured with `defaultRegion = "eu01"`.
  *
  * ## Example Usage
  */
@@ -158,7 +158,7 @@ export interface GetObservabilityInstanceResult {
     readonly zipkinSpansUrl: string;
 }
 /**
- * Observability instance data source schema. Must have a `region` specified in the provider configuration.
+ * Observability instance data source schema. Must have a `region` specified in the provider configuration. This service is only available when the provider is configured with `defaultRegion = "eu01"`.
  *
  * ## Example Usage
  */

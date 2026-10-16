@@ -12,7 +12,7 @@ namespace Pulumi.Stackit
     public static class GetSecretsmanagerInstance
     {
         /// <summary>
-        /// Secrets Manager instance data source schema. Must have a `Region` specified in the provider configuration.
+        /// Secrets Manager instance data source schema. Must have a `Region` specified in the provider configuration. This service is only available when the provider is configured with `DefaultRegion = "eu01"`.
         /// 
         /// ## Example Usage
         /// 
@@ -27,7 +27,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSecretsmanagerInstanceResult>("stackit:index/getSecretsmanagerInstance:getSecretsmanagerInstance", args ?? new GetSecretsmanagerInstanceArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Secrets Manager instance data source schema. Must have a `Region` specified in the provider configuration.
+        /// Secrets Manager instance data source schema. Must have a `Region` specified in the provider configuration. This service is only available when the provider is configured with `DefaultRegion = "eu01"`.
         /// 
         /// ## Example Usage
         /// 
@@ -42,7 +42,7 @@ namespace Pulumi.Stackit
             => global::Pulumi.Deployment.Instance.Invoke<GetSecretsmanagerInstanceResult>("stackit:index/getSecretsmanagerInstance:getSecretsmanagerInstance", args ?? new GetSecretsmanagerInstanceInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Secrets Manager instance data source schema. Must have a `Region` specified in the provider configuration.
+        /// Secrets Manager instance data source schema. Must have a `Region` specified in the provider configuration. This service is only available when the provider is configured with `DefaultRegion = "eu01"`.
         /// 
         /// ## Example Usage
         /// 

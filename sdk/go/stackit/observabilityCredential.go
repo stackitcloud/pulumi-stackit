@@ -12,7 +12,7 @@ import (
 	"github.com/stackitcloud/pulumi-stackit/sdk/go/stackit/internal"
 )
 
-// Observability credential resource schema. Must have a `region` specified in the provider configuration.
+// Observability credential resource schema. Must have a `region` specified in the provider configuration. This service is only available when the provider is configured with `defaultRegion = "eu01"`.
 //
 // ## Example Usage
 type ObservabilityCredential struct {

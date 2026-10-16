@@ -164,7 +164,7 @@ def get_dremio_user(description: Optional[_builtins.str] = None,
                     user_id: Optional[_builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDremioUserResult:
     """
-    Manages a STACKIT Dremio instances user.
+    Manages a STACKIT Dremio instances user. This service is only available when the provider is configured with `default_region = "eu01"`.
 
     > This datasource is part of the experimental feature dremio and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
 
@@ -204,7 +204,7 @@ def get_dremio_user_output(description: pulumi.Input[Optional[Optional[_builtins
                            user_id: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDremioUserResult]:
     """
-    Manages a STACKIT Dremio instances user.
+    Manages a STACKIT Dremio instances user. This service is only available when the provider is configured with `default_region = "eu01"`.
 
     > This datasource is part of the experimental feature dremio and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.
 

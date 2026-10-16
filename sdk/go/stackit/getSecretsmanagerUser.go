@@ -11,7 +11,7 @@ import (
 	"github.com/stackitcloud/pulumi-stackit/sdk/go/stackit/internal"
 )
 
-// Secrets Manager user data source schema. Must have a `region` specified in the provider configuration.
+// Secrets Manager user data source schema. Must have a `region` specified in the provider configuration. This service is only available when the provider is configured with `defaultRegion = "eu01"`.
 //
 // ## Example Usage
 func LookupSecretsmanagerUser(ctx *pulumi.Context, args *LookupSecretsmanagerUserArgs, opts ...pulumi.InvokeOption) (*LookupSecretsmanagerUserResult, error) {
