@@ -74,6 +74,7 @@ from .get_network_area import *
 from .get_network_area_region import *
 from .get_network_area_route import *
 from .get_network_interface import *
+from .get_networks import *
 from .get_objectstorage_bucket import *
 from .get_objectstorage_compliance_lock import *
 from .get_objectstorage_credential import *

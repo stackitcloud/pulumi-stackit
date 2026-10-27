@@ -85,6 +85,8 @@ __all__ = [
     'CdnDistributionConfigBackendArgsDict',
     'CdnDistributionConfigBackendCredentialsArgs',
     'CdnDistributionConfigBackendCredentialsArgsDict',
+    'CdnDistributionConfigCacheConfigArgs',
+    'CdnDistributionConfigCacheConfigArgsDict',
     'CdnDistributionConfigOptimizerArgs',
     'CdnDistributionConfigOptimizerArgsDict',
     'CdnDistributionConfigRedirectsArgs',
@@ -2386,6 +2388,10 @@ class CdnDistributionConfigArgsDict(TypedDict):
     """
     Restricts access to your content by specifying a list of blocked IPv4 addresses. This feature enhances security and privacy by preventing these addresses from accessing your distribution. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state; to clear it explicitly, set it to an empty list.
     """
+    cache_config: NotRequired[pulumi.Input[Optional['CdnDistributionConfigCacheConfigArgsDict']]]
+    """
+    Groups the cache options that influence how the CDN builds its cache key. Warning: enabling query-string vary produces one cache entry per unique query-string combination (unbounded when query*string*vary*parameters is empty). Each entry in cache*key*headers multiplies the number of cache variants by the number of distinct values observed for that header. Use these settings sparingly.
+    """
     default_cache_duration: NotRequired[pulumi.Input[Optional[_builtins.str]]]
     """
     Sets the default cache duration for the distribution. The default cache duration is applied when a 'Cache-Control' header is not presented in the origin's response. We use ISO8601 duration format for cache duration (e.g. P1DT2H30M). Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
@@ -2426,6 +2432,7 @@ class CdnDistributionConfigArgs:
                  regions: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]],
                  blocked_countries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  blocked_ips: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cache_config: pulumi.Input[Optional['CdnDistributionConfigCacheConfigArgs']] = None,
                  default_cache_duration: pulumi.Input[Optional[_builtins.str]] = None,
                  forward_host_header: pulumi.Input[Optional[_builtins.bool]] = None,
                  monthly_limit_bytes: pulumi.Input[Optional[_builtins.int]] = None,
@@ -2439,6 +2446,7 @@ class CdnDistributionConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] regions: The configured regions where content will be hosted
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blocked_countries: The configured countries where distribution of content is blocked
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] blocked_ips: Restricts access to your content by specifying a list of blocked IPv4 addresses. This feature enhances security and privacy by preventing these addresses from accessing your distribution. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state; to clear it explicitly, set it to an empty list.
+        :param pulumi.Input['CdnDistributionConfigCacheConfigArgs'] cache_config: Groups the cache options that influence how the CDN builds its cache key. Warning: enabling query-string vary produces one cache entry per unique query-string combination (unbounded when query*string*vary*parameters is empty). Each entry in cache*key*headers multiplies the number of cache variants by the number of distinct values observed for that header. Use these settings sparingly.
         :param pulumi.Input[_builtins.str] default_cache_duration: Sets the default cache duration for the distribution. The default cache duration is applied when a 'Cache-Control' header is not presented in the origin's response. We use ISO8601 duration format for cache duration (e.g. P1DT2H30M). Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
         :param pulumi.Input[_builtins.bool] forward_host_header: Enable this allows the 'Host' header to be passed through to the origin.
         :param pulumi.Input[_builtins.int] monthly_limit_bytes: Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
@@ -2454,6 +2462,8 @@ class CdnDistributionConfigArgs:
             pulumi.set(__self__, "blocked_countries", blocked_countries)
         if blocked_ips is not None:
             pulumi.set(__self__, "blocked_ips", blocked_ips)
+        if cache_config is not None:
+            pulumi.set(__self__, "cache_config", cache_config)
         if default_cache_duration is not None:
             pulumi.set(__self__, "default_cache_duration", default_cache_duration)
         if forward_host_header is not None:
@@ -2518,6 +2528,18 @@ class CdnDistributionConfigArgs:
     @blocked_ips.setter
     def blocked_ips(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "blocked_ips", value)
+
+    @_builtins.property
+    @pulumi.getter(name="cacheConfig")
+    def cache_config(self) -> pulumi.Input[Optional['CdnDistributionConfigCacheConfigArgs']]:
+        """
+        Groups the cache options that influence how the CDN builds its cache key. Warning: enabling query-string vary produces one cache entry per unique query-string combination (unbounded when query*string*vary*parameters is empty). Each entry in cache*key*headers multiplies the number of cache variants by the number of distinct values observed for that header. Use these settings sparingly.
+        """
+        return pulumi.get(self, "cache_config")
+
+    @cache_config.setter
+    def cache_config(self, value: pulumi.Input[Optional['CdnDistributionConfigCacheConfigArgs']]):
+        pulumi.set(self, "cache_config", value)
 
     @_builtins.property
     @pulumi.getter(name="defaultCacheDuration")
@@ -2809,6 +2831,75 @@ class CdnDistributionConfigBackendCredentialsArgs:
     @secret_access_key.setter
     def secret_access_key(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "secret_access_key", value)
+
+
+class CdnDistributionConfigCacheConfigArgsDict(TypedDict):
+    cache_key_headers: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    HTTP request header names whose values participate in the cache key. Each entry multiplies the number of cache variants by the number of distinct values observed for that header.
+    """
+    query_string_vary_enabled: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    When true, the CDN varies its cache by the request query string. If query*string*vary_parameters is empty, every unique query-string combination produces its own cache entry; if non-empty, only the listed parameters influence the cache key.
+    """
+    query_string_vary_parameters: NotRequired[pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]]
+    """
+    Allowlist of query-string parameter names that participate in the cache key when query*string*vary*enabled is true. Ignored while query*string*vary*enabled is false, but still stored so it can be re-activated without losing the list.
+    """
+
+@pulumi.input_type
+class CdnDistributionConfigCacheConfigArgs:
+    def __init__(__self__, *,
+                 cache_key_headers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 query_string_vary_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 query_string_vary_parameters: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] cache_key_headers: HTTP request header names whose values participate in the cache key. Each entry multiplies the number of cache variants by the number of distinct values observed for that header.
+        :param pulumi.Input[_builtins.bool] query_string_vary_enabled: When true, the CDN varies its cache by the request query string. If query*string*vary_parameters is empty, every unique query-string combination produces its own cache entry; if non-empty, only the listed parameters influence the cache key.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] query_string_vary_parameters: Allowlist of query-string parameter names that participate in the cache key when query*string*vary*enabled is true. Ignored while query*string*vary*enabled is false, but still stored so it can be re-activated without losing the list.
+        """
+        if cache_key_headers is not None:
+            pulumi.set(__self__, "cache_key_headers", cache_key_headers)
+        if query_string_vary_enabled is not None:
+            pulumi.set(__self__, "query_string_vary_enabled", query_string_vary_enabled)
+        if query_string_vary_parameters is not None:
+            pulumi.set(__self__, "query_string_vary_parameters", query_string_vary_parameters)
+
+    @_builtins.property
+    @pulumi.getter(name="cacheKeyHeaders")
+    def cache_key_headers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        HTTP request header names whose values participate in the cache key. Each entry multiplies the number of cache variants by the number of distinct values observed for that header.
+        """
+        return pulumi.get(self, "cache_key_headers")
+
+    @cache_key_headers.setter
+    def cache_key_headers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "cache_key_headers", value)
+
+    @_builtins.property
+    @pulumi.getter(name="queryStringVaryEnabled")
+    def query_string_vary_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        When true, the CDN varies its cache by the request query string. If query*string*vary_parameters is empty, every unique query-string combination produces its own cache entry; if non-empty, only the listed parameters influence the cache key.
+        """
+        return pulumi.get(self, "query_string_vary_enabled")
+
+    @query_string_vary_enabled.setter
+    def query_string_vary_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "query_string_vary_enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="queryStringVaryParameters")
+    def query_string_vary_parameters(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Allowlist of query-string parameter names that participate in the cache key when query*string*vary*enabled is true. Ignored while query*string*vary*enabled is false, but still stored so it can be re-activated without losing the list.
+        """
+        return pulumi.get(self, "query_string_vary_parameters")
+
+    @query_string_vary_parameters.setter
+    def query_string_vary_parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "query_string_vary_parameters", value)
 
 
 class CdnDistributionConfigOptimizerArgsDict(TypedDict):
