@@ -1039,6 +1039,10 @@
                     },
                     "description": "Restricts access to your content by specifying a list of blocked IPv4 addresses. This feature enhances security and privacy by preventing these addresses from accessing your distribution. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state; to clear it explicitly, set it to an empty list.\n"
                 },
+                "cacheConfig": {
+                    "$ref": "#/types/stackit:index/CdnDistributionConfigCacheConfig:CdnDistributionConfigCacheConfig",
+                    "description": "Groups the cache options that influence how the CDN builds its cache key. Warning: enabling query-string vary produces one cache entry per unique query-string combination (unbounded when query*string*vary*parameters is empty). Each entry in cache*key*headers multiplies the number of cache variants by the number of distinct values observed for that header. Use these settings sparingly.\n"
+                },
                 "defaultCacheDuration": {
                     "type": "string",
                     "description": "Sets the default cache duration for the distribution. The default cache duration is applied when a 'Cache-Control' header is not presented in the origin's response. We use ISO8601 duration format for cache duration (e.g. P1DT2H30M). Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.\n"
@@ -1090,6 +1094,7 @@
                         "backend",
                         "blockedCountries",
                         "blockedIps",
+                        "cacheConfig",
                         "defaultCacheDuration",
                         "forwardHostHeader",
                         "monthlyLimitBytes",
@@ -1165,6 +1170,38 @@
                 "accessKeyId",
                 "secretAccessKey"
             ]
+        },
+        "stackit:index/CdnDistributionConfigCacheConfig:CdnDistributionConfigCacheConfig": {
+            "properties": {
+                "cacheKeyHeaders": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "HTTP request header names whose values participate in the cache key. Each entry multiplies the number of cache variants by the number of distinct values observed for that header.\n"
+                },
+                "queryStringVaryEnabled": {
+                    "type": "boolean",
+                    "description": "When true, the CDN varies its cache by the request query string. If query*string*vary_parameters is empty, every unique query-string combination produces its own cache entry; if non-empty, only the listed parameters influence the cache key.\n"
+                },
+                "queryStringVaryParameters": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Allowlist of query-string parameter names that participate in the cache key when query*string*vary*enabled is true. Ignored while query*string*vary*enabled is false, but still stored so it can be re-activated without losing the list.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "cacheKeyHeaders",
+                        "queryStringVaryEnabled",
+                        "queryStringVaryParameters"
+                    ]
+                }
+            }
         },
         "stackit:index/CdnDistributionConfigOptimizer:CdnDistributionConfigOptimizer": {
             "properties": {
@@ -6083,6 +6120,10 @@
                     },
                     "description": "Restricts access to your content by specifying a list of blocked IPv4 addresses. This feature enhances security and privacy by preventing these addresses from accessing your distribution. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state; to clear it explicitly, set it to an empty list.\n"
                 },
+                "cacheConfig": {
+                    "$ref": "#/types/stackit:index/getCdnDistributionConfigCacheConfig:getCdnDistributionConfigCacheConfig",
+                    "description": "Groups the cache options that influence how the CDN builds its cache key. Warning: enabling query-string vary produces one cache entry per unique query-string combination (unbounded when query*string*vary*parameters is empty). Each entry in cache*key*headers multiplies the number of cache variants by the number of distinct values observed for that header. Use these settings sparingly.\n"
+                },
                 "defaultCacheDuration": {
                     "type": "string",
                     "description": "Sets the default cache duration for the distribution. The default cache duration is applied when a 'Cache-Control' header is not presented in the origin's response. We use ISO8601 duration format for cache duration (e.g. P1DT2H30M). Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.\n"
@@ -6127,6 +6168,7 @@
             "required": [
                 "backend",
                 "blockedIps",
+                "cacheConfig",
                 "defaultCacheDuration",
                 "forwardHostHeader",
                 "monthlyLimitBytes",
@@ -6187,6 +6229,39 @@
                 "originUrl",
                 "region",
                 "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getCdnDistributionConfigCacheConfig:getCdnDistributionConfigCacheConfig": {
+            "properties": {
+                "cacheKeyHeaders": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "HTTP request header names whose values participate in the cache key. Each entry multiplies the number of cache variants by the number of distinct values observed for that header.\n"
+                },
+                "queryStringVaryEnabled": {
+                    "type": "boolean",
+                    "description": "When true, the CDN varies its cache by the request query string. If query*string*vary_parameters is empty, every unique query-string combination produces its own cache entry; if non-empty, only the listed parameters influence the cache key.\n"
+                },
+                "queryStringVaryParameters": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Allowlist of query-string parameter names that participate in the cache key when query*string*vary*enabled is true. Ignored while query*string*vary*enabled is false, but still stored so it can be re-activated without losing the list.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "cacheKeyHeaders",
+                "queryStringVaryEnabled",
+                "queryStringVaryParameters"
             ],
             "language": {
                 "nodejs": {
@@ -7925,6 +8000,28 @@
             "required": [
                 "type",
                 "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getNetworksResult:getNetworksResult": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "The name of the network.\n"
+                },
+                "networkId": {
+                    "type": "string",
+                    "description": "The network ID.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "name",
+                "networkId"
             ],
             "language": {
                 "nodejs": {
@@ -13249,7 +13346,7 @@
             }
         },
         "stackit:index/cdnDistribution:CdnDistribution": {
-            "description": "CDN distribution data source schema.\n\n\u003e This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\nresource \"stackit_cdn_distribution\" \"example_distribution\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  config = {\n    backend = {\n      type       = \"http\"\n      origin_url = \"https://mybackend.onstackit.cloud\"\n      geofencing = {\n        \"https://mybackend.onstackit.cloud\" = [\"DE\"]\n      }\n    }\n    regions           = [\"EU\", \"US\", \"ASIA\", \"AF\", \"SA\"]\n    blocked_countries = [\"DE\", \"AT\", \"CH\"]\n    blocked_ips       = [\"1.1.1.1\"]\n\n    default_cache_duration = \"P1DT2H30M\"\n    monthly_limit_bytes    = 1048576\n\n    optimizer = {\n      enabled = true\n    }\n  }\n}\n\nresource \"stackit_cdn_distribution\" \"example_bucket_distribution\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  config = {\n    backend = {\n      type       = \"bucket\"\n      bucket_url = \"https://my-test.object.storage.eu01.onstackit.cloud\"\n      region     = \"eu01\"\n\n      # Credentials are required for bucket backends\n      # It is strongly recommended to use variables for secrets\n      credentials = {\n        access_key_id     = var.bucket_access_key\n        secret_access_key = var.bucket_secret_key\n      }\n    }\n    regions           = [\"EU\", \"US\"]\n    blocked_countries = [\"CN\", \"RU\"]\n    blocked_ips       = [\"1.1.1.1\"]\n\n    default_cache_duration = \"P1DT2H30M\"\n    monthly_limit_bytes    = 1048576\n\n    optimizer = {\n      enabled = false\n    }\n\n    redirects = {\n      rules = [\n        {\n          description          = \"test redirect\"\n          enabled              = true\n          rule_match_condition = \"ANY\"\n          status_code          = 302\n          target_url           = \"https://stackit.de/\"\n          matchers = [\n            {\n              values                = [\"*/otherPath/\"]\n              value_match_condition = \"ANY\"\n            }\n          ]\n        }\n      ]\n    }\n\n    tls = {\n      enable_tls_10 = true\n      enable_tls_11 = true\n    }\n    strip_response_cookies = true\n    forward_host_header    = true\n\n    # WAF Configuration\n    # \n    # Precedence Hierarchy: Specific Rules \u003e Groups \u003e Collections\n    # In this example, the entire \"@builtin/crs/request\" collection is ENABLED.\n    # However, because specific Rule IDs have a higher precedence, the rule \n    # \"@builtin/crs/request/942151\" is explicitly DISABLED, overriding the collection setting.\n    # \n    # To view all available collections, groups, and rules, consult the API documentation:\n    # https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections\n    waf = {\n      mode                          = \"ENABLED\"\n      type                          = \"PREMIUM\"\n      paranoia_level                = \"L1\"\n      allowed_http_versions         = [\"HTTP/1.0\", \"HTTP/1.1\"]\n      allowed_http_methods          = [\"GET\"]\n      allowed_request_content_types = [\"text/plain\"]\n\n      # Collections\n      enabled_rule_collection_ids  = [\"@builtin/crs/request\"]\n      disabled_rule_collection_ids = []\n      log_only_rule_collection_ids = [\"@builtin/crs/response\"]\n\n      # Groups\n      enabled_rule_group_ids  = []\n      disabled_rule_group_ids = []\n      log_only_rule_group_ids = []\n\n      # Specific Rules (Highest Precedence)\n      enabled_rule_ids  = [\"@builtin/crs/request/913100\"]\n      disabled_rule_ids = [\"@builtin/crs/request/942151\"]\n      log_only_rule_ids = [\"@builtin/crs/response/954120\"]\n    }\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing cdn distribution\nimport {\n  to = stackit_cdn_distribution.import-example\n  id = \"${var.project_id},${var.distribution_id}\"\n}\n```\n\n",
+            "description": "CDN distribution data source schema.\n\n\u003e This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\nresource \"stackit_cdn_distribution\" \"example_distribution\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  config = {\n    backend = {\n      type       = \"http\"\n      origin_url = \"https://mybackend.onstackit.cloud\"\n      geofencing = {\n        \"https://mybackend.onstackit.cloud\" = [\"DE\"]\n      }\n    }\n    regions           = [\"EU\", \"US\", \"ASIA\", \"AF\", \"SA\"]\n    blocked_countries = [\"DE\", \"AT\", \"CH\"]\n    blocked_ips       = [\"1.1.1.1\"]\n\n    default_cache_duration = \"P1DT2H30M\"\n    monthly_limit_bytes    = 1048576\n\n    optimizer = {\n      enabled = true\n    }\n\n    cache_config = {\n      cache_key_headers            = [\"Accept-Language\"]\n      query_string_vary_enabled    = true\n      query_string_vary_parameters = [\"page\", \"sort\"]\n    }\n  }\n}\n\nresource \"stackit_cdn_distribution\" \"example_bucket_distribution\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  config = {\n    backend = {\n      type       = \"bucket\"\n      bucket_url = \"https://my-test.object.storage.eu01.onstackit.cloud\"\n      region     = \"eu01\"\n\n      # Credentials are required for bucket backends\n      # It is strongly recommended to use variables for secrets\n      credentials = {\n        access_key_id     = var.bucket_access_key\n        secret_access_key = var.bucket_secret_key\n      }\n    }\n    regions           = [\"EU\", \"US\"]\n    blocked_countries = [\"CN\", \"RU\"]\n    blocked_ips       = [\"1.1.1.1\"]\n\n    default_cache_duration = \"P1DT2H30M\"\n    monthly_limit_bytes    = 1048576\n\n    optimizer = {\n      enabled = false\n    }\n\n    redirects = {\n      rules = [\n        {\n          description          = \"test redirect\"\n          enabled              = true\n          rule_match_condition = \"ANY\"\n          status_code          = 302\n          target_url           = \"https://stackit.de/\"\n          matchers = [\n            {\n              values                = [\"*/otherPath/\"]\n              value_match_condition = \"ANY\"\n            }\n          ]\n        }\n      ]\n    }\n\n    tls = {\n      enable_tls_10 = true\n      enable_tls_11 = true\n    }\n    strip_response_cookies = true\n    forward_host_header    = true\n\n    # WAF Configuration\n    # \n    # Precedence Hierarchy: Specific Rules \u003e Groups \u003e Collections\n    # In this example, the entire \"@builtin/crs/request\" collection is ENABLED.\n    # However, because specific Rule IDs have a higher precedence, the rule \n    # \"@builtin/crs/request/942151\" is explicitly DISABLED, overriding the collection setting.\n    # \n    # To view all available collections, groups, and rules, consult the API documentation:\n    # https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections\n    waf = {\n      mode                          = \"ENABLED\"\n      type                          = \"PREMIUM\"\n      paranoia_level                = \"L1\"\n      allowed_http_versions         = [\"HTTP/1.0\", \"HTTP/1.1\"]\n      allowed_http_methods          = [\"GET\"]\n      allowed_request_content_types = [\"text/plain\"]\n\n      # Collections\n      enabled_rule_collection_ids  = [\"@builtin/crs/request\"]\n      disabled_rule_collection_ids = []\n      log_only_rule_collection_ids = [\"@builtin/crs/response\"]\n\n      # Groups\n      enabled_rule_group_ids  = []\n      disabled_rule_group_ids = []\n      log_only_rule_group_ids = []\n\n      # Specific Rules (Highest Precedence)\n      enabled_rule_ids  = [\"@builtin/crs/request/913100\"]\n      disabled_rule_ids = [\"@builtin/crs/request/942151\"]\n      log_only_rule_ids = [\"@builtin/crs/response/954120\"]\n    }\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing cdn distribution\nimport {\n  to = stackit_cdn_distribution.import-example\n  id = \"${var.project_id},${var.distribution_id}\"\n}\n```\n\n",
             "properties": {
                 "config": {
                     "$ref": "#/types/stackit:index/CdnDistributionConfig:CdnDistributionConfig",
@@ -31056,6 +31153,56 @@
                     "security",
                     "securityGroupIds",
                     "type"
+                ]
+            }
+        },
+        "stackit:index/getNetworks:getNetworks": {
+            "description": "Lists all IaaS networks in a project and region. Results are sorted by image ID.\n\n\u003e This datasource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\ndata \"stackit_networks\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n}\n```\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getNetworks.\n",
+                "properties": {
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID to which the networks are associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "projectId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getNetworks.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Terraform's internal resource ID. It is structured as \"\u003cspan pulumi-lang-nodejs=\"`projectId`\" pulumi-lang-dotnet=\"`ProjectId`\" pulumi-lang-go=\"`projectId`\" pulumi-lang-python=\"`project_id`\" pulumi-lang-yaml=\"`projectId`\" pulumi-lang-java=\"`projectId`\"\u003e`projectId`\u003c/span\u003e,\u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e\".\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "STACKIT project ID to which the networks are associated.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The resource region. If not defined, the provider region is used.\n"
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/stackit:index/getNetworksResult:getNetworksResult"
+                        },
+                        "description": "List of networks.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id",
+                    "projectId",
+                    "results"
                 ]
             }
         },

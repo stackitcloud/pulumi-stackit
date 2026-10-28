@@ -89,6 +89,7 @@
         "getNetworkAreaRegion.ts",
         "getNetworkAreaRoute.ts",
         "getNetworkInterface.ts",
+        "getNetworks.ts",
         "getObjectstorageBucket.ts",
         "getObjectstorageComplianceLock.ts",
         "getObjectstorageCredential.ts",

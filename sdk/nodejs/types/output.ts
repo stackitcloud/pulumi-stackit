@@ -458,6 +458,10 @@ export interface CdnDistributionConfig {
      */
     blockedIps: string[];
     /**
+     * Groups the cache options that influence how the CDN builds its cache key. Warning: enabling query-string vary produces one cache entry per unique query-string combination (unbounded when query*string*vary*parameters is empty). Each entry in cache*key*headers multiplies the number of cache variants by the number of distinct values observed for that header. Use these settings sparingly.
+     */
+    cacheConfig: outputs.CdnDistributionConfigCacheConfig;
+    /**
      * Sets the default cache duration for the distribution. The default cache duration is applied when a 'Cache-Control' header is not presented in the origin's response. We use ISO8601 duration format for cache duration (e.g. P1DT2H30M). Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
      */
     defaultCacheDuration: string;
@@ -535,6 +539,21 @@ export interface CdnDistributionConfigBackendCredentials {
      * The access key for the bucket. Required if type is 'bucket'.
      */
     secretAccessKey: string;
+}
+
+export interface CdnDistributionConfigCacheConfig {
+    /**
+     * HTTP request header names whose values participate in the cache key. Each entry multiplies the number of cache variants by the number of distinct values observed for that header.
+     */
+    cacheKeyHeaders: string[];
+    /**
+     * When true, the CDN varies its cache by the request query string. If query*string*vary_parameters is empty, every unique query-string combination produces its own cache entry; if non-empty, only the listed parameters influence the cache key.
+     */
+    queryStringVaryEnabled: boolean;
+    /**
+     * Allowlist of query-string parameter names that participate in the cache key when query*string*vary*enabled is true. Ignored while query*string*vary*enabled is false, but still stored so it can be re-activated without losing the list.
+     */
+    queryStringVaryParameters: string[];
 }
 
 export interface CdnDistributionConfigOptimizer {
@@ -1317,6 +1336,10 @@ export interface GetCdnDistributionConfig {
      */
     blockedIps: string[];
     /**
+     * Groups the cache options that influence how the CDN builds its cache key. Warning: enabling query-string vary produces one cache entry per unique query-string combination (unbounded when query*string*vary*parameters is empty). Each entry in cache*key*headers multiplies the number of cache variants by the number of distinct values observed for that header. Use these settings sparingly.
+     */
+    cacheConfig: outputs.GetCdnDistributionConfigCacheConfig;
+    /**
      * Sets the default cache duration for the distribution. The default cache duration is applied when a 'Cache-Control' header is not presented in the origin's response. We use ISO8601 duration format for cache duration (e.g. P1DT2H30M). Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
      */
     defaultCacheDuration: string;
@@ -1379,6 +1402,21 @@ export interface GetCdnDistributionConfigBackend {
      * The configured backend type. Possible values are: `http`, `bucket`.
      */
     type: string;
+}
+
+export interface GetCdnDistributionConfigCacheConfig {
+    /**
+     * HTTP request header names whose values participate in the cache key. Each entry multiplies the number of cache variants by the number of distinct values observed for that header.
+     */
+    cacheKeyHeaders: string[];
+    /**
+     * When true, the CDN varies its cache by the request query string. If query*string*vary_parameters is empty, every unique query-string combination produces its own cache entry; if non-empty, only the listed parameters influence the cache key.
+     */
+    queryStringVaryEnabled: boolean;
+    /**
+     * Allowlist of query-string parameter names that participate in the cache key when query*string*vary*enabled is true. Ignored while query*string*vary*enabled is false, but still stored so it can be re-activated without losing the list.
+     */
+    queryStringVaryParameters: string[];
 }
 
 export interface GetCdnDistributionConfigOptimizer {
@@ -2337,6 +2375,17 @@ export interface GetNetworkAreaRouteNextHop {
      * Either IPv4 or IPv6 (not set for blackhole and internet).
      */
     value: string;
+}
+
+export interface GetNetworksResult {
+    /**
+     * The name of the network.
+     */
+    name: string;
+    /**
+     * The network ID.
+     */
+    networkId: string;
 }
 
 export interface GetObservabilityAlertgroupRule {

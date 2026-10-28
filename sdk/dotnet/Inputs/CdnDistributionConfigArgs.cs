@@ -43,6 +43,12 @@ namespace Pulumi.Stackit.Inputs
         }
 
         /// <summary>
+        /// Groups the cache options that influence how the CDN builds its cache key. Warning: enabling query-string vary produces one cache entry per unique query-string combination (unbounded when query*string*vary*parameters is empty). Each entry in cache*key*headers multiplies the number of cache variants by the number of distinct values observed for that header. Use these settings sparingly.
+        /// </summary>
+        [Input("cacheConfig")]
+        public Input<Inputs.CdnDistributionConfigCacheConfigArgs>? CacheConfig { get; set; }
+
+        /// <summary>
         /// Sets the default cache duration for the distribution. The default cache duration is applied when a 'Cache-Control' header is not presented in the origin's response. We use ISO8601 duration format for cache duration (e.g. P1DT2H30M). Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
         /// </summary>
         [Input("defaultCacheDuration")]

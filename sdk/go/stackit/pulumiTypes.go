@@ -4291,6 +4291,8 @@ type CdnDistributionConfig struct {
 	BlockedCountries []string `pulumi:"blockedCountries"`
 	// Restricts access to your content by specifying a list of blocked IPv4 addresses. This feature enhances security and privacy by preventing these addresses from accessing your distribution. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state; to clear it explicitly, set it to an empty list.
 	BlockedIps []string `pulumi:"blockedIps"`
+	// Groups the cache options that influence how the CDN builds its cache key. Warning: enabling query-string vary produces one cache entry per unique query-string combination (unbounded when query*string*vary*parameters is empty). Each entry in cache*key*headers multiplies the number of cache variants by the number of distinct values observed for that header. Use these settings sparingly.
+	CacheConfig *CdnDistributionConfigCacheConfig `pulumi:"cacheConfig"`
 	// Sets the default cache duration for the distribution. The default cache duration is applied when a 'Cache-Control' header is not presented in the origin's response. We use ISO8601 duration format for cache duration (e.g. P1DT2H30M). Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
 	DefaultCacheDuration *string `pulumi:"defaultCacheDuration"`
 	// Enable this allows the 'Host' header to be passed through to the origin.
@@ -4329,6 +4331,8 @@ type CdnDistributionConfigArgs struct {
 	BlockedCountries pulumi.StringArrayInput `pulumi:"blockedCountries"`
 	// Restricts access to your content by specifying a list of blocked IPv4 addresses. This feature enhances security and privacy by preventing these addresses from accessing your distribution. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state; to clear it explicitly, set it to an empty list.
 	BlockedIps pulumi.StringArrayInput `pulumi:"blockedIps"`
+	// Groups the cache options that influence how the CDN builds its cache key. Warning: enabling query-string vary produces one cache entry per unique query-string combination (unbounded when query*string*vary*parameters is empty). Each entry in cache*key*headers multiplies the number of cache variants by the number of distinct values observed for that header. Use these settings sparingly.
+	CacheConfig CdnDistributionConfigCacheConfigPtrInput `pulumi:"cacheConfig"`
 	// Sets the default cache duration for the distribution. The default cache duration is applied when a 'Cache-Control' header is not presented in the origin's response. We use ISO8601 duration format for cache duration (e.g. P1DT2H30M). Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
 	DefaultCacheDuration pulumi.StringPtrInput `pulumi:"defaultCacheDuration"`
 	// Enable this allows the 'Host' header to be passed through to the origin.
@@ -4441,6 +4445,11 @@ func (o CdnDistributionConfigOutput) BlockedIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CdnDistributionConfig) []string { return v.BlockedIps }).(pulumi.StringArrayOutput)
 }
 
+// Groups the cache options that influence how the CDN builds its cache key. Warning: enabling query-string vary produces one cache entry per unique query-string combination (unbounded when query*string*vary*parameters is empty). Each entry in cache*key*headers multiplies the number of cache variants by the number of distinct values observed for that header. Use these settings sparingly.
+func (o CdnDistributionConfigOutput) CacheConfig() CdnDistributionConfigCacheConfigPtrOutput {
+	return o.ApplyT(func(v CdnDistributionConfig) *CdnDistributionConfigCacheConfig { return v.CacheConfig }).(CdnDistributionConfigCacheConfigPtrOutput)
+}
+
 // Sets the default cache duration for the distribution. The default cache duration is applied when a 'Cache-Control' header is not presented in the origin's response. We use ISO8601 duration format for cache duration (e.g. P1DT2H30M). Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
 func (o CdnDistributionConfigOutput) DefaultCacheDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CdnDistributionConfig) *string { return v.DefaultCacheDuration }).(pulumi.StringPtrOutput)
@@ -4538,6 +4547,16 @@ func (o CdnDistributionConfigPtrOutput) BlockedIps() pulumi.StringArrayOutput {
 		}
 		return v.BlockedIps
 	}).(pulumi.StringArrayOutput)
+}
+
+// Groups the cache options that influence how the CDN builds its cache key. Warning: enabling query-string vary produces one cache entry per unique query-string combination (unbounded when query*string*vary*parameters is empty). Each entry in cache*key*headers multiplies the number of cache variants by the number of distinct values observed for that header. Use these settings sparingly.
+func (o CdnDistributionConfigPtrOutput) CacheConfig() CdnDistributionConfigCacheConfigPtrOutput {
+	return o.ApplyT(func(v *CdnDistributionConfig) *CdnDistributionConfigCacheConfig {
+		if v == nil {
+			return nil
+		}
+		return v.CacheConfig
+	}).(CdnDistributionConfigCacheConfigPtrOutput)
 }
 
 // Sets the default cache duration for the distribution. The default cache duration is applied when a 'Cache-Control' header is not presented in the origin's response. We use ISO8601 duration format for cache duration (e.g. P1DT2H30M). Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
@@ -5035,6 +5054,181 @@ func (o CdnDistributionConfigBackendCredentialsPtrOutput) SecretAccessKey() pulu
 		}
 		return &v.SecretAccessKey
 	}).(pulumi.StringPtrOutput)
+}
+
+type CdnDistributionConfigCacheConfig struct {
+	// HTTP request header names whose values participate in the cache key. Each entry multiplies the number of cache variants by the number of distinct values observed for that header.
+	CacheKeyHeaders []string `pulumi:"cacheKeyHeaders"`
+	// When true, the CDN varies its cache by the request query string. If query*string*vary_parameters is empty, every unique query-string combination produces its own cache entry; if non-empty, only the listed parameters influence the cache key.
+	QueryStringVaryEnabled *bool `pulumi:"queryStringVaryEnabled"`
+	// Allowlist of query-string parameter names that participate in the cache key when query*string*vary*enabled is true. Ignored while query*string*vary*enabled is false, but still stored so it can be re-activated without losing the list.
+	QueryStringVaryParameters []string `pulumi:"queryStringVaryParameters"`
+}
+
+// CdnDistributionConfigCacheConfigInput is an input type that accepts CdnDistributionConfigCacheConfigArgs and CdnDistributionConfigCacheConfigOutput values.
+// You can construct a concrete instance of `CdnDistributionConfigCacheConfigInput` via:
+//
+//	CdnDistributionConfigCacheConfigArgs{...}
+type CdnDistributionConfigCacheConfigInput interface {
+	pulumi.Input
+
+	ToCdnDistributionConfigCacheConfigOutput() CdnDistributionConfigCacheConfigOutput
+	ToCdnDistributionConfigCacheConfigOutputWithContext(context.Context) CdnDistributionConfigCacheConfigOutput
+}
+
+type CdnDistributionConfigCacheConfigArgs struct {
+	// HTTP request header names whose values participate in the cache key. Each entry multiplies the number of cache variants by the number of distinct values observed for that header.
+	CacheKeyHeaders pulumi.StringArrayInput `pulumi:"cacheKeyHeaders"`
+	// When true, the CDN varies its cache by the request query string. If query*string*vary_parameters is empty, every unique query-string combination produces its own cache entry; if non-empty, only the listed parameters influence the cache key.
+	QueryStringVaryEnabled pulumi.BoolPtrInput `pulumi:"queryStringVaryEnabled"`
+	// Allowlist of query-string parameter names that participate in the cache key when query*string*vary*enabled is true. Ignored while query*string*vary*enabled is false, but still stored so it can be re-activated without losing the list.
+	QueryStringVaryParameters pulumi.StringArrayInput `pulumi:"queryStringVaryParameters"`
+}
+
+func (CdnDistributionConfigCacheConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CdnDistributionConfigCacheConfig)(nil)).Elem()
+}
+
+func (i CdnDistributionConfigCacheConfigArgs) ToCdnDistributionConfigCacheConfigOutput() CdnDistributionConfigCacheConfigOutput {
+	return i.ToCdnDistributionConfigCacheConfigOutputWithContext(context.Background())
+}
+
+func (i CdnDistributionConfigCacheConfigArgs) ToCdnDistributionConfigCacheConfigOutputWithContext(ctx context.Context) CdnDistributionConfigCacheConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnDistributionConfigCacheConfigOutput)
+}
+
+func (i CdnDistributionConfigCacheConfigArgs) ToCdnDistributionConfigCacheConfigPtrOutput() CdnDistributionConfigCacheConfigPtrOutput {
+	return i.ToCdnDistributionConfigCacheConfigPtrOutputWithContext(context.Background())
+}
+
+func (i CdnDistributionConfigCacheConfigArgs) ToCdnDistributionConfigCacheConfigPtrOutputWithContext(ctx context.Context) CdnDistributionConfigCacheConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnDistributionConfigCacheConfigOutput).ToCdnDistributionConfigCacheConfigPtrOutputWithContext(ctx)
+}
+
+// CdnDistributionConfigCacheConfigPtrInput is an input type that accepts CdnDistributionConfigCacheConfigArgs, CdnDistributionConfigCacheConfigPtr and CdnDistributionConfigCacheConfigPtrOutput values.
+// You can construct a concrete instance of `CdnDistributionConfigCacheConfigPtrInput` via:
+//
+//	        CdnDistributionConfigCacheConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type CdnDistributionConfigCacheConfigPtrInput interface {
+	pulumi.Input
+
+	ToCdnDistributionConfigCacheConfigPtrOutput() CdnDistributionConfigCacheConfigPtrOutput
+	ToCdnDistributionConfigCacheConfigPtrOutputWithContext(context.Context) CdnDistributionConfigCacheConfigPtrOutput
+}
+
+type cdnDistributionConfigCacheConfigPtrType CdnDistributionConfigCacheConfigArgs
+
+func CdnDistributionConfigCacheConfigPtr(v *CdnDistributionConfigCacheConfigArgs) CdnDistributionConfigCacheConfigPtrInput {
+	return (*cdnDistributionConfigCacheConfigPtrType)(v)
+}
+
+func (*cdnDistributionConfigCacheConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CdnDistributionConfigCacheConfig)(nil)).Elem()
+}
+
+func (i *cdnDistributionConfigCacheConfigPtrType) ToCdnDistributionConfigCacheConfigPtrOutput() CdnDistributionConfigCacheConfigPtrOutput {
+	return i.ToCdnDistributionConfigCacheConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *cdnDistributionConfigCacheConfigPtrType) ToCdnDistributionConfigCacheConfigPtrOutputWithContext(ctx context.Context) CdnDistributionConfigCacheConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnDistributionConfigCacheConfigPtrOutput)
+}
+
+type CdnDistributionConfigCacheConfigOutput struct{ *pulumi.OutputState }
+
+func (CdnDistributionConfigCacheConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CdnDistributionConfigCacheConfig)(nil)).Elem()
+}
+
+func (o CdnDistributionConfigCacheConfigOutput) ToCdnDistributionConfigCacheConfigOutput() CdnDistributionConfigCacheConfigOutput {
+	return o
+}
+
+func (o CdnDistributionConfigCacheConfigOutput) ToCdnDistributionConfigCacheConfigOutputWithContext(ctx context.Context) CdnDistributionConfigCacheConfigOutput {
+	return o
+}
+
+func (o CdnDistributionConfigCacheConfigOutput) ToCdnDistributionConfigCacheConfigPtrOutput() CdnDistributionConfigCacheConfigPtrOutput {
+	return o.ToCdnDistributionConfigCacheConfigPtrOutputWithContext(context.Background())
+}
+
+func (o CdnDistributionConfigCacheConfigOutput) ToCdnDistributionConfigCacheConfigPtrOutputWithContext(ctx context.Context) CdnDistributionConfigCacheConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CdnDistributionConfigCacheConfig) *CdnDistributionConfigCacheConfig {
+		return &v
+	}).(CdnDistributionConfigCacheConfigPtrOutput)
+}
+
+// HTTP request header names whose values participate in the cache key. Each entry multiplies the number of cache variants by the number of distinct values observed for that header.
+func (o CdnDistributionConfigCacheConfigOutput) CacheKeyHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CdnDistributionConfigCacheConfig) []string { return v.CacheKeyHeaders }).(pulumi.StringArrayOutput)
+}
+
+// When true, the CDN varies its cache by the request query string. If query*string*vary_parameters is empty, every unique query-string combination produces its own cache entry; if non-empty, only the listed parameters influence the cache key.
+func (o CdnDistributionConfigCacheConfigOutput) QueryStringVaryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CdnDistributionConfigCacheConfig) *bool { return v.QueryStringVaryEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Allowlist of query-string parameter names that participate in the cache key when query*string*vary*enabled is true. Ignored while query*string*vary*enabled is false, but still stored so it can be re-activated without losing the list.
+func (o CdnDistributionConfigCacheConfigOutput) QueryStringVaryParameters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CdnDistributionConfigCacheConfig) []string { return v.QueryStringVaryParameters }).(pulumi.StringArrayOutput)
+}
+
+type CdnDistributionConfigCacheConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (CdnDistributionConfigCacheConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CdnDistributionConfigCacheConfig)(nil)).Elem()
+}
+
+func (o CdnDistributionConfigCacheConfigPtrOutput) ToCdnDistributionConfigCacheConfigPtrOutput() CdnDistributionConfigCacheConfigPtrOutput {
+	return o
+}
+
+func (o CdnDistributionConfigCacheConfigPtrOutput) ToCdnDistributionConfigCacheConfigPtrOutputWithContext(ctx context.Context) CdnDistributionConfigCacheConfigPtrOutput {
+	return o
+}
+
+func (o CdnDistributionConfigCacheConfigPtrOutput) Elem() CdnDistributionConfigCacheConfigOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigCacheConfig) CdnDistributionConfigCacheConfig {
+		if v != nil {
+			return *v
+		}
+		var ret CdnDistributionConfigCacheConfig
+		return ret
+	}).(CdnDistributionConfigCacheConfigOutput)
+}
+
+// HTTP request header names whose values participate in the cache key. Each entry multiplies the number of cache variants by the number of distinct values observed for that header.
+func (o CdnDistributionConfigCacheConfigPtrOutput) CacheKeyHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigCacheConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.CacheKeyHeaders
+	}).(pulumi.StringArrayOutput)
+}
+
+// When true, the CDN varies its cache by the request query string. If query*string*vary_parameters is empty, every unique query-string combination produces its own cache entry; if non-empty, only the listed parameters influence the cache key.
+func (o CdnDistributionConfigCacheConfigPtrOutput) QueryStringVaryEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigCacheConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.QueryStringVaryEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Allowlist of query-string parameter names that participate in the cache key when query*string*vary*enabled is true. Ignored while query*string*vary*enabled is false, but still stored so it can be re-activated without losing the list.
+func (o CdnDistributionConfigCacheConfigPtrOutput) QueryStringVaryParameters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigCacheConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryStringVaryParameters
+	}).(pulumi.StringArrayOutput)
 }
 
 type CdnDistributionConfigOptimizer struct {
@@ -31675,6 +31869,8 @@ type GetCdnDistributionConfig struct {
 	BlockedCountries []string `pulumi:"blockedCountries"`
 	// Restricts access to your content by specifying a list of blocked IPv4 addresses. This feature enhances security and privacy by preventing these addresses from accessing your distribution. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state; to clear it explicitly, set it to an empty list.
 	BlockedIps []string `pulumi:"blockedIps"`
+	// Groups the cache options that influence how the CDN builds its cache key. Warning: enabling query-string vary produces one cache entry per unique query-string combination (unbounded when query*string*vary*parameters is empty). Each entry in cache*key*headers multiplies the number of cache variants by the number of distinct values observed for that header. Use these settings sparingly.
+	CacheConfig GetCdnDistributionConfigCacheConfig `pulumi:"cacheConfig"`
 	// Sets the default cache duration for the distribution. The default cache duration is applied when a 'Cache-Control' header is not presented in the origin's response. We use ISO8601 duration format for cache duration (e.g. P1DT2H30M). Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
 	DefaultCacheDuration string `pulumi:"defaultCacheDuration"`
 	// Enable this allows the 'Host' header to be passed through to the origin.
@@ -31713,6 +31909,8 @@ type GetCdnDistributionConfigArgs struct {
 	BlockedCountries pulumi.StringArrayInput `pulumi:"blockedCountries"`
 	// Restricts access to your content by specifying a list of blocked IPv4 addresses. This feature enhances security and privacy by preventing these addresses from accessing your distribution. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state; to clear it explicitly, set it to an empty list.
 	BlockedIps pulumi.StringArrayInput `pulumi:"blockedIps"`
+	// Groups the cache options that influence how the CDN builds its cache key. Warning: enabling query-string vary produces one cache entry per unique query-string combination (unbounded when query*string*vary*parameters is empty). Each entry in cache*key*headers multiplies the number of cache variants by the number of distinct values observed for that header. Use these settings sparingly.
+	CacheConfig GetCdnDistributionConfigCacheConfigInput `pulumi:"cacheConfig"`
 	// Sets the default cache duration for the distribution. The default cache duration is applied when a 'Cache-Control' header is not presented in the origin's response. We use ISO8601 duration format for cache duration (e.g. P1DT2H30M). Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
 	DefaultCacheDuration pulumi.StringInput `pulumi:"defaultCacheDuration"`
 	// Enable this allows the 'Host' header to be passed through to the origin.
@@ -31772,6 +31970,11 @@ func (o GetCdnDistributionConfigOutput) BlockedCountries() pulumi.StringArrayOut
 // Restricts access to your content by specifying a list of blocked IPv4 addresses. This feature enhances security and privacy by preventing these addresses from accessing your distribution. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state; to clear it explicitly, set it to an empty list.
 func (o GetCdnDistributionConfigOutput) BlockedIps() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetCdnDistributionConfig) []string { return v.BlockedIps }).(pulumi.StringArrayOutput)
+}
+
+// Groups the cache options that influence how the CDN builds its cache key. Warning: enabling query-string vary produces one cache entry per unique query-string combination (unbounded when query*string*vary*parameters is empty). Each entry in cache*key*headers multiplies the number of cache variants by the number of distinct values observed for that header. Use these settings sparingly.
+func (o GetCdnDistributionConfigOutput) CacheConfig() GetCdnDistributionConfigCacheConfigOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfig) GetCdnDistributionConfigCacheConfig { return v.CacheConfig }).(GetCdnDistributionConfigCacheConfigOutput)
 }
 
 // Sets the default cache duration for the distribution. The default cache duration is applied when a 'Cache-Control' header is not presented in the origin's response. We use ISO8601 duration format for cache duration (e.g. P1DT2H30M). Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
@@ -31914,6 +32117,76 @@ func (o GetCdnDistributionConfigBackendOutput) Region() pulumi.StringOutput {
 // The configured backend type. Possible values are: `http`, `bucket`.
 func (o GetCdnDistributionConfigBackendOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCdnDistributionConfigBackend) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetCdnDistributionConfigCacheConfig struct {
+	// HTTP request header names whose values participate in the cache key. Each entry multiplies the number of cache variants by the number of distinct values observed for that header.
+	CacheKeyHeaders []string `pulumi:"cacheKeyHeaders"`
+	// When true, the CDN varies its cache by the request query string. If query*string*vary_parameters is empty, every unique query-string combination produces its own cache entry; if non-empty, only the listed parameters influence the cache key.
+	QueryStringVaryEnabled bool `pulumi:"queryStringVaryEnabled"`
+	// Allowlist of query-string parameter names that participate in the cache key when query*string*vary*enabled is true. Ignored while query*string*vary*enabled is false, but still stored so it can be re-activated without losing the list.
+	QueryStringVaryParameters []string `pulumi:"queryStringVaryParameters"`
+}
+
+// GetCdnDistributionConfigCacheConfigInput is an input type that accepts GetCdnDistributionConfigCacheConfigArgs and GetCdnDistributionConfigCacheConfigOutput values.
+// You can construct a concrete instance of `GetCdnDistributionConfigCacheConfigInput` via:
+//
+//	GetCdnDistributionConfigCacheConfigArgs{...}
+type GetCdnDistributionConfigCacheConfigInput interface {
+	pulumi.Input
+
+	ToGetCdnDistributionConfigCacheConfigOutput() GetCdnDistributionConfigCacheConfigOutput
+	ToGetCdnDistributionConfigCacheConfigOutputWithContext(context.Context) GetCdnDistributionConfigCacheConfigOutput
+}
+
+type GetCdnDistributionConfigCacheConfigArgs struct {
+	// HTTP request header names whose values participate in the cache key. Each entry multiplies the number of cache variants by the number of distinct values observed for that header.
+	CacheKeyHeaders pulumi.StringArrayInput `pulumi:"cacheKeyHeaders"`
+	// When true, the CDN varies its cache by the request query string. If query*string*vary_parameters is empty, every unique query-string combination produces its own cache entry; if non-empty, only the listed parameters influence the cache key.
+	QueryStringVaryEnabled pulumi.BoolInput `pulumi:"queryStringVaryEnabled"`
+	// Allowlist of query-string parameter names that participate in the cache key when query*string*vary*enabled is true. Ignored while query*string*vary*enabled is false, but still stored so it can be re-activated without losing the list.
+	QueryStringVaryParameters pulumi.StringArrayInput `pulumi:"queryStringVaryParameters"`
+}
+
+func (GetCdnDistributionConfigCacheConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCdnDistributionConfigCacheConfig)(nil)).Elem()
+}
+
+func (i GetCdnDistributionConfigCacheConfigArgs) ToGetCdnDistributionConfigCacheConfigOutput() GetCdnDistributionConfigCacheConfigOutput {
+	return i.ToGetCdnDistributionConfigCacheConfigOutputWithContext(context.Background())
+}
+
+func (i GetCdnDistributionConfigCacheConfigArgs) ToGetCdnDistributionConfigCacheConfigOutputWithContext(ctx context.Context) GetCdnDistributionConfigCacheConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCdnDistributionConfigCacheConfigOutput)
+}
+
+type GetCdnDistributionConfigCacheConfigOutput struct{ *pulumi.OutputState }
+
+func (GetCdnDistributionConfigCacheConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCdnDistributionConfigCacheConfig)(nil)).Elem()
+}
+
+func (o GetCdnDistributionConfigCacheConfigOutput) ToGetCdnDistributionConfigCacheConfigOutput() GetCdnDistributionConfigCacheConfigOutput {
+	return o
+}
+
+func (o GetCdnDistributionConfigCacheConfigOutput) ToGetCdnDistributionConfigCacheConfigOutputWithContext(ctx context.Context) GetCdnDistributionConfigCacheConfigOutput {
+	return o
+}
+
+// HTTP request header names whose values participate in the cache key. Each entry multiplies the number of cache variants by the number of distinct values observed for that header.
+func (o GetCdnDistributionConfigCacheConfigOutput) CacheKeyHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfigCacheConfig) []string { return v.CacheKeyHeaders }).(pulumi.StringArrayOutput)
+}
+
+// When true, the CDN varies its cache by the request query string. If query*string*vary_parameters is empty, every unique query-string combination produces its own cache entry; if non-empty, only the listed parameters influence the cache key.
+func (o GetCdnDistributionConfigCacheConfigOutput) QueryStringVaryEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfigCacheConfig) bool { return v.QueryStringVaryEnabled }).(pulumi.BoolOutput)
+}
+
+// Allowlist of query-string parameter names that participate in the cache key when query*string*vary*enabled is true. Ignored while query*string*vary*enabled is false, but still stored so it can be re-activated without losing the list.
+func (o GetCdnDistributionConfigCacheConfigOutput) QueryStringVaryParameters() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfigCacheConfig) []string { return v.QueryStringVaryParameters }).(pulumi.StringArrayOutput)
 }
 
 type GetCdnDistributionConfigOptimizer struct {
@@ -37410,6 +37683,112 @@ func (o GetNetworkAreaRouteNextHopOutput) Type() pulumi.StringOutput {
 // Either IPv4 or IPv6 (not set for blackhole and internet).
 func (o GetNetworkAreaRouteNextHopOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkAreaRouteNextHop) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type GetNetworksResult struct {
+	// The name of the network.
+	Name string `pulumi:"name"`
+	// The network ID.
+	NetworkId string `pulumi:"networkId"`
+}
+
+// GetNetworksResultInput is an input type that accepts GetNetworksResultArgs and GetNetworksResultOutput values.
+// You can construct a concrete instance of `GetNetworksResultInput` via:
+//
+//	GetNetworksResultArgs{...}
+type GetNetworksResultInput interface {
+	pulumi.Input
+
+	ToGetNetworksResultOutput() GetNetworksResultOutput
+	ToGetNetworksResultOutputWithContext(context.Context) GetNetworksResultOutput
+}
+
+type GetNetworksResultArgs struct {
+	// The name of the network.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The network ID.
+	NetworkId pulumi.StringInput `pulumi:"networkId"`
+}
+
+func (GetNetworksResultArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksResult)(nil)).Elem()
+}
+
+func (i GetNetworksResultArgs) ToGetNetworksResultOutput() GetNetworksResultOutput {
+	return i.ToGetNetworksResultOutputWithContext(context.Background())
+}
+
+func (i GetNetworksResultArgs) ToGetNetworksResultOutputWithContext(ctx context.Context) GetNetworksResultOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksResultOutput)
+}
+
+// GetNetworksResultArrayInput is an input type that accepts GetNetworksResultArray and GetNetworksResultArrayOutput values.
+// You can construct a concrete instance of `GetNetworksResultArrayInput` via:
+//
+//	GetNetworksResultArray{ GetNetworksResultArgs{...} }
+type GetNetworksResultArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworksResultArrayOutput() GetNetworksResultArrayOutput
+	ToGetNetworksResultArrayOutputWithContext(context.Context) GetNetworksResultArrayOutput
+}
+
+type GetNetworksResultArray []GetNetworksResultInput
+
+func (GetNetworksResultArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworksResult)(nil)).Elem()
+}
+
+func (i GetNetworksResultArray) ToGetNetworksResultArrayOutput() GetNetworksResultArrayOutput {
+	return i.ToGetNetworksResultArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworksResultArray) ToGetNetworksResultArrayOutputWithContext(ctx context.Context) GetNetworksResultArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworksResultArrayOutput)
+}
+
+type GetNetworksResultOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworksResult)(nil)).Elem()
+}
+
+func (o GetNetworksResultOutput) ToGetNetworksResultOutput() GetNetworksResultOutput {
+	return o
+}
+
+func (o GetNetworksResultOutput) ToGetNetworksResultOutputWithContext(ctx context.Context) GetNetworksResultOutput {
+	return o
+}
+
+// The name of the network.
+func (o GetNetworksResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The network ID.
+func (o GetNetworksResultOutput) NetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworksResult) string { return v.NetworkId }).(pulumi.StringOutput)
+}
+
+type GetNetworksResultArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworksResultArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworksResult)(nil)).Elem()
+}
+
+func (o GetNetworksResultArrayOutput) ToGetNetworksResultArrayOutput() GetNetworksResultArrayOutput {
+	return o
+}
+
+func (o GetNetworksResultArrayOutput) ToGetNetworksResultArrayOutputWithContext(ctx context.Context) GetNetworksResultArrayOutput {
+	return o
+}
+
+func (o GetNetworksResultArrayOutput) Index(i pulumi.IntInput) GetNetworksResultOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworksResult {
+		return vs[0].([]GetNetworksResult)[vs[1].(int)]
+	}).(GetNetworksResultOutput)
 }
 
 type GetObservabilityAlertgroupRule struct {
@@ -48345,6 +48724,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigBackendPtrInput)(nil)).Elem(), CdnDistributionConfigBackendArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigBackendCredentialsInput)(nil)).Elem(), CdnDistributionConfigBackendCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigBackendCredentialsPtrInput)(nil)).Elem(), CdnDistributionConfigBackendCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigCacheConfigInput)(nil)).Elem(), CdnDistributionConfigCacheConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigCacheConfigPtrInput)(nil)).Elem(), CdnDistributionConfigCacheConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigOptimizerInput)(nil)).Elem(), CdnDistributionConfigOptimizerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigOptimizerPtrInput)(nil)).Elem(), CdnDistributionConfigOptimizerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigRedirectsInput)(nil)).Elem(), CdnDistributionConfigRedirectsArgs{})
@@ -48655,6 +49036,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnCustomDomainCertificatePtrInput)(nil)).Elem(), GetCdnCustomDomainCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionConfigInput)(nil)).Elem(), GetCdnDistributionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionConfigBackendInput)(nil)).Elem(), GetCdnDistributionConfigBackendArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionConfigCacheConfigInput)(nil)).Elem(), GetCdnDistributionConfigCacheConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionConfigOptimizerInput)(nil)).Elem(), GetCdnDistributionConfigOptimizerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionConfigRedirectsInput)(nil)).Elem(), GetCdnDistributionConfigRedirectsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionConfigRedirectsRuleInput)(nil)).Elem(), GetCdnDistributionConfigRedirectsRuleArgs{})
@@ -48728,6 +49110,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAreaRegionIpv4NetworkRangeArrayInput)(nil)).Elem(), GetNetworkAreaRegionIpv4NetworkRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAreaRouteDestinationInput)(nil)).Elem(), GetNetworkAreaRouteDestinationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkAreaRouteNextHopInput)(nil)).Elem(), GetNetworkAreaRouteNextHopArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksResultInput)(nil)).Elem(), GetNetworksResultArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworksResultArrayInput)(nil)).Elem(), GetNetworksResultArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetObservabilityAlertgroupRuleInput)(nil)).Elem(), GetObservabilityAlertgroupRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetObservabilityAlertgroupRuleArrayInput)(nil)).Elem(), GetObservabilityAlertgroupRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetObservabilityInstanceAlertConfigInput)(nil)).Elem(), GetObservabilityInstanceAlertConfigArgs{})
@@ -48949,6 +49333,8 @@ func init() {
 	pulumi.RegisterOutputType(CdnDistributionConfigBackendPtrOutput{})
 	pulumi.RegisterOutputType(CdnDistributionConfigBackendCredentialsOutput{})
 	pulumi.RegisterOutputType(CdnDistributionConfigBackendCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(CdnDistributionConfigCacheConfigOutput{})
+	pulumi.RegisterOutputType(CdnDistributionConfigCacheConfigPtrOutput{})
 	pulumi.RegisterOutputType(CdnDistributionConfigOptimizerOutput{})
 	pulumi.RegisterOutputType(CdnDistributionConfigOptimizerPtrOutput{})
 	pulumi.RegisterOutputType(CdnDistributionConfigRedirectsOutput{})
@@ -49259,6 +49645,7 @@ func init() {
 	pulumi.RegisterOutputType(GetCdnCustomDomainCertificatePtrOutput{})
 	pulumi.RegisterOutputType(GetCdnDistributionConfigOutput{})
 	pulumi.RegisterOutputType(GetCdnDistributionConfigBackendOutput{})
+	pulumi.RegisterOutputType(GetCdnDistributionConfigCacheConfigOutput{})
 	pulumi.RegisterOutputType(GetCdnDistributionConfigOptimizerOutput{})
 	pulumi.RegisterOutputType(GetCdnDistributionConfigRedirectsOutput{})
 	pulumi.RegisterOutputType(GetCdnDistributionConfigRedirectsRuleOutput{})
@@ -49332,6 +49719,8 @@ func init() {
 	pulumi.RegisterOutputType(GetNetworkAreaRegionIpv4NetworkRangeArrayOutput{})
 	pulumi.RegisterOutputType(GetNetworkAreaRouteDestinationOutput{})
 	pulumi.RegisterOutputType(GetNetworkAreaRouteNextHopOutput{})
+	pulumi.RegisterOutputType(GetNetworksResultOutput{})
+	pulumi.RegisterOutputType(GetNetworksResultArrayOutput{})
 	pulumi.RegisterOutputType(GetObservabilityAlertgroupRuleOutput{})
 	pulumi.RegisterOutputType(GetObservabilityAlertgroupRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetObservabilityInstanceAlertConfigOutput{})

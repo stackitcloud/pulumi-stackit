@@ -189,6 +189,16 @@
                             "blocked_ips": {
                                 "maxItemsOne": false
                             },
+                            "cache_config": {
+                                "fields": {
+                                    "cache_key_headers": {
+                                        "maxItemsOne": false
+                                    },
+                                    "query_string_vary_parameters": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
                             "redirects": {
                                 "fields": {
                                     "rules": {
@@ -1290,6 +1300,16 @@
                             "blocked_ips": {
                                 "maxItemsOne": false
                             },
+                            "cache_config": {
+                                "fields": {
+                                    "cache_key_headers": {
+                                        "maxItemsOne": false
+                                    },
+                                    "query_string_vary_parameters": {
+                                        "maxItemsOne": false
+                                    }
+                                }
+                            },
                             "redirects": {
                                 "fields": {
                                     "rules": {
@@ -1632,6 +1652,14 @@
                         "maxItemsOne": false
                     },
                     "security_group_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "stackit_networks": {
+                "current": "stackit:index/getNetworks:getNetworks",
+                "fields": {
+                    "results": {
                         "maxItemsOne": false
                     }
                 }

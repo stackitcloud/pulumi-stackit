@@ -26,6 +26,10 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly ImmutableArray<string> BlockedIps;
         /// <summary>
+        /// Groups the cache options that influence how the CDN builds its cache key. Warning: enabling query-string vary produces one cache entry per unique query-string combination (unbounded when query*string*vary*parameters is empty). Each entry in cache*key*headers multiplies the number of cache variants by the number of distinct values observed for that header. Use these settings sparingly.
+        /// </summary>
+        public readonly Outputs.GetCdnDistributionConfigCacheConfigResult CacheConfig;
+        /// <summary>
         /// Sets the default cache duration for the distribution. The default cache duration is applied when a 'Cache-Control' header is not presented in the origin's response. We use ISO8601 duration format for cache duration (e.g. P1DT2H30M). Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
         /// </summary>
         public readonly string DefaultCacheDuration;
@@ -70,6 +74,8 @@ namespace Pulumi.Stackit.Outputs
 
             ImmutableArray<string> blockedIps,
 
+            Outputs.GetCdnDistributionConfigCacheConfigResult cacheConfig,
+
             string defaultCacheDuration,
 
             bool forwardHostHeader,
@@ -91,6 +97,7 @@ namespace Pulumi.Stackit.Outputs
             Backend = backend;
             BlockedCountries = blockedCountries;
             BlockedIps = blockedIps;
+            CacheConfig = cacheConfig;
             DefaultCacheDuration = defaultCacheDuration;
             ForwardHostHeader = forwardHostHeader;
             MonthlyLimitBytes = monthlyLimitBytes;

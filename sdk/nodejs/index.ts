@@ -345,6 +345,11 @@ export const getNetworkInterface: typeof import("./getNetworkInterface").getNetw
 export const getNetworkInterfaceOutput: typeof import("./getNetworkInterface").getNetworkInterfaceOutput = null as any;
 utilities.lazyLoad(exports, ["getNetworkInterface","getNetworkInterfaceOutput"], () => require("./getNetworkInterface"));
 
+export { GetNetworksArgs, GetNetworksResult, GetNetworksOutputArgs } from "./getNetworks";
+export const getNetworks: typeof import("./getNetworks").getNetworks = null as any;
+export const getNetworksOutput: typeof import("./getNetworks").getNetworksOutput = null as any;
+utilities.lazyLoad(exports, ["getNetworks","getNetworksOutput"], () => require("./getNetworks"));
+
 export { GetObjectstorageBucketArgs, GetObjectstorageBucketResult, GetObjectstorageBucketOutputArgs } from "./getObjectstorageBucket";
 export const getObjectstorageBucket: typeof import("./getObjectstorageBucket").getObjectstorageBucket = null as any;
 export const getObjectstorageBucketOutput: typeof import("./getObjectstorageBucket").getObjectstorageBucketOutput = null as any;
