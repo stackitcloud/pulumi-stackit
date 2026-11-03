@@ -299,6 +299,9 @@
             "stackit_dremio_instance": {
                 "current": "stackit:index/dremioInstance:DremioInstance",
                 "fields": {
+                    "acl": {
+                        "maxItemsOne": false
+                    },
                     "authentication": {
                         "fields": {
                             "oauth": {
@@ -1410,6 +1413,9 @@
             "stackit_dremio_instance": {
                 "current": "stackit:index/getDremioInstance:getDremioInstance",
                 "fields": {
+                    "acl": {
+                        "maxItemsOne": false
+                    },
                     "authentication": {
                         "fields": {
                             "oauth": {

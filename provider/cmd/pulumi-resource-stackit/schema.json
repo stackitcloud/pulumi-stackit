@@ -424,6 +424,33 @@
                 "type"
             ]
         },
+        "stackit:index/AlbWafManagedRuleSetConfiguredGroups:AlbWafManagedRuleSetConfiguredGroups": {
+            "properties": {
+                "rules": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/stackit:index/AlbWafManagedRuleSetConfiguredGroupsRules:AlbWafManagedRuleSetConfiguredGroupsRules"
+                    },
+                    "description": "Rules of the rule group, keyed by rule ID (e.g. \u003cspan pulumi-lang-nodejs=\"`911100`\" pulumi-lang-dotnet=\"`911100`\" pulumi-lang-go=\"`911100`\" pulumi-lang-python=\"`911100`\" pulumi-lang-yaml=\"`911100`\" pulumi-lang-java=\"`911100`\"\u003e`911100`\u003c/span\u003e).\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "rules"
+            ]
+        },
+        "stackit:index/AlbWafManagedRuleSetConfiguredGroupsRules:AlbWafManagedRuleSetConfiguredGroupsRules": {
+            "properties": {
+                "mode": {
+                    "type": "string",
+                    "description": "The mode of the rule. Possible values are: `MODE_ENABLED`, `MODE_DISABLED`, `MODE_LOG_ONLY`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "mode"
+            ]
+        },
         "stackit:index/AlbWafManagedRuleSetGroups:AlbWafManagedRuleSetGroups": {
             "properties": {
                 "description": {
@@ -1051,6 +1078,10 @@
                     "type": "boolean",
                     "description": "Enable this allows the 'Host' header to be passed through to the origin.\n"
                 },
+                "logSink": {
+                    "$ref": "#/types/stackit:index/CdnDistributionConfigLogSink:CdnDistributionConfigLogSink",
+                    "description": "Configures a log sink to export the distribution's access logs. Only one of Loki or OTLP can be configured at a time; the sink is selected via the \u003cspan pulumi-lang-nodejs=\"`type`\" pulumi-lang-dotnet=\"`Type`\" pulumi-lang-go=\"`type`\" pulumi-lang-python=\"`type`\" pulumi-lang-yaml=\"`type`\" pulumi-lang-java=\"`type`\"\u003e`type`\u003c/span\u003e attribute. Note: because the API never returns raw credentials, \u003cspan pulumi-lang-nodejs=\"`username`\" pulumi-lang-dotnet=\"`Username`\" pulumi-lang-go=\"`username`\" pulumi-lang-python=\"`username`\" pulumi-lang-yaml=\"`username`\" pulumi-lang-java=\"`username`\"\u003e`username`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`password`\" pulumi-lang-dotnet=\"`Password`\" pulumi-lang-go=\"`password`\" pulumi-lang-python=\"`password`\" pulumi-lang-yaml=\"`password`\" pulumi-lang-java=\"`password`\"\u003e`password`\u003c/span\u003e, and \u003cspan pulumi-lang-nodejs=\"`token`\" pulumi-lang-dotnet=\"`Token`\" pulumi-lang-go=\"`token`\" pulumi-lang-python=\"`token`\" pulumi-lang-yaml=\"`token`\" pulumi-lang-java=\"`token`\"\u003e`token`\u003c/span\u003e are preserved from state during Read operations. If the sink type is changed outside of Terraform, previously stored credentials are cleared on refresh and must be re-applied via `pulumi up`.\n"
+                },
                 "monthlyLimitBytes": {
                     "type": "integer",
                     "description": "Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.\n"
@@ -1202,6 +1233,70 @@
                     ]
                 }
             }
+        },
+        "stackit:index/CdnDistributionConfigLogSink:CdnDistributionConfigLogSink": {
+            "properties": {
+                "credentials": {
+                    "$ref": "#/types/stackit:index/CdnDistributionConfigLogSinkCredentials:CdnDistributionConfigLogSinkCredentials",
+                    "description": "Authentication credentials the CDN uses when pushing logs. Loki requires \u003cspan pulumi-lang-nodejs=\"`username`\" pulumi-lang-dotnet=\"`Username`\" pulumi-lang-go=\"`username`\" pulumi-lang-python=\"`username`\" pulumi-lang-yaml=\"`username`\" pulumi-lang-java=\"`username`\"\u003e`username`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`password`\" pulumi-lang-dotnet=\"`Password`\" pulumi-lang-go=\"`password`\" pulumi-lang-python=\"`password`\" pulumi-lang-yaml=\"`password`\" pulumi-lang-java=\"`password`\"\u003e`password`\u003c/span\u003e. OTLP requires \u003cspan pulumi-lang-nodejs=\"`type`\" pulumi-lang-dotnet=\"`Type`\" pulumi-lang-go=\"`type`\" pulumi-lang-python=\"`type`\" pulumi-lang-yaml=\"`type`\" pulumi-lang-java=\"`type`\"\u003e`type`\u003c/span\u003e to be set to \u003cspan pulumi-lang-nodejs=\"`basic`\" pulumi-lang-dotnet=\"`Basic`\" pulumi-lang-go=\"`basic`\" pulumi-lang-python=\"`basic`\" pulumi-lang-yaml=\"`basic`\" pulumi-lang-java=\"`basic`\"\u003e`basic`\u003c/span\u003e (with \u003cspan pulumi-lang-nodejs=\"`username`\" pulumi-lang-dotnet=\"`Username`\" pulumi-lang-go=\"`username`\" pulumi-lang-python=\"`username`\" pulumi-lang-yaml=\"`username`\" pulumi-lang-java=\"`username`\"\u003e`username`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`password`\" pulumi-lang-dotnet=\"`Password`\" pulumi-lang-go=\"`password`\" pulumi-lang-python=\"`password`\" pulumi-lang-yaml=\"`password`\" pulumi-lang-java=\"`password`\"\u003e`password`\u003c/span\u003e) or \u003cspan pulumi-lang-nodejs=\"`bearer`\" pulumi-lang-dotnet=\"`Bearer`\" pulumi-lang-go=\"`bearer`\" pulumi-lang-python=\"`bearer`\" pulumi-lang-yaml=\"`bearer`\" pulumi-lang-java=\"`bearer`\"\u003e`bearer`\u003c/span\u003e (with \u003cspan pulumi-lang-nodejs=\"`token`\" pulumi-lang-dotnet=\"`Token`\" pulumi-lang-go=\"`token`\" pulumi-lang-python=\"`token`\" pulumi-lang-yaml=\"`token`\" pulumi-lang-java=\"`token`\"\u003e`token`\u003c/span\u003e).\n"
+                },
+                "pushUrl": {
+                    "type": "string",
+                    "description": "The fully qualified URL where the CDN should push access logs (for example, `https://loki.example.com/loki/api/v1/push` for Loki or `https://otlp.example.com/otlp/v1/logs` for OTLP).\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The log sink protocolPossible values are: \u003cspan pulumi-lang-nodejs=\"`loki`\" pulumi-lang-dotnet=\"`Loki`\" pulumi-lang-go=\"`loki`\" pulumi-lang-python=\"`loki`\" pulumi-lang-yaml=\"`loki`\" pulumi-lang-java=\"`loki`\"\u003e`loki`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`otlp`\" pulumi-lang-dotnet=\"`Otlp`\" pulumi-lang-go=\"`otlp`\" pulumi-lang-python=\"`otlp`\" pulumi-lang-yaml=\"`otlp`\" pulumi-lang-java=\"`otlp`\"\u003e`otlp`\u003c/span\u003e.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "credentials",
+                "pushUrl",
+                "type"
+            ]
+        },
+        "stackit:index/CdnDistributionConfigLogSinkCredentials:CdnDistributionConfigLogSinkCredentials": {
+            "properties": {
+                "password": {
+                    "type": "string",
+                    "description": "The password corresponding to \u003cspan pulumi-lang-nodejs=\"`username`\" pulumi-lang-dotnet=\"`Username`\" pulumi-lang-go=\"`username`\" pulumi-lang-python=\"`username`\" pulumi-lang-yaml=\"`username`\" pulumi-lang-java=\"`username`\"\u003e`username`\u003c/span\u003e. Required for Loki and for OTLP when `credentials.type` is \u003cspan pulumi-lang-nodejs=\"`basic`\" pulumi-lang-dotnet=\"`Basic`\" pulumi-lang-go=\"`basic`\" pulumi-lang-python=\"`basic`\" pulumi-lang-yaml=\"`basic`\" pulumi-lang-java=\"`basic`\"\u003e`basic`\u003c/span\u003e. Write-only argument \u003cspan pulumi-lang-nodejs=\"`passwordWo`\" pulumi-lang-dotnet=\"`PasswordWo`\" pulumi-lang-go=\"`passwordWo`\" pulumi-lang-python=\"`password_wo`\" pulumi-lang-yaml=\"`passwordWo`\" pulumi-lang-java=\"`passwordWo`\"\u003e`passwordWo`\u003c/span\u003e should be preferred.\n",
+                    "secret": true
+                },
+                "passwordWo": {
+                    "type": "string",
+                    "description": "**NOTE:** This field is write-only and its value will not be updated in state as part of read operations.\nWrite-only password for log sink authentication. Never stored in state and never returned by the API. To rotate the password, update this value AND increment \u003cspan pulumi-lang-nodejs=\"`passwordWoVersion`\" pulumi-lang-dotnet=\"`PasswordWoVersion`\" pulumi-lang-go=\"`passwordWoVersion`\" pulumi-lang-python=\"`password_wo_version`\" pulumi-lang-yaml=\"`passwordWoVersion`\" pulumi-lang-java=\"`passwordWoVersion`\"\u003e`passwordWoVersion`\u003c/span\u003e. Changing this field alone will NOT trigger an update.\n",
+                    "secret": true
+                },
+                "passwordWoVersion": {
+                    "type": "integer",
+                    "description": "User-managed rotation counter for \u003cspan pulumi-lang-nodejs=\"`passwordWo`\" pulumi-lang-dotnet=\"`PasswordWo`\" pulumi-lang-go=\"`passwordWo`\" pulumi-lang-python=\"`password_wo`\" pulumi-lang-yaml=\"`passwordWo`\" pulumi-lang-java=\"`passwordWo`\"\u003e`passwordWo`\u003c/span\u003e. Must be incremented every time \u003cspan pulumi-lang-nodejs=\"`passwordWo`\" pulumi-lang-dotnet=\"`PasswordWo`\" pulumi-lang-go=\"`passwordWo`\" pulumi-lang-python=\"`password_wo`\" pulumi-lang-yaml=\"`passwordWo`\" pulumi-lang-java=\"`passwordWo`\"\u003e`passwordWo`\u003c/span\u003e is changed. Note: because the API treats credentials atomically (username + password together for Loki/OTLP basic), the password is also automatically re-sent when \u003cspan pulumi-lang-nodejs=\"`username`\" pulumi-lang-dotnet=\"`Username`\" pulumi-lang-go=\"`username`\" pulumi-lang-python=\"`username`\" pulumi-lang-yaml=\"`username`\" pulumi-lang-java=\"`username`\"\u003e`username`\u003c/span\u003e, `log_sink.type`, or `credentials.type` changes, even without a version bump.\n"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "The bearer token used to authenticate. Required for OTLP when `credentials.type` is \u003cspan pulumi-lang-nodejs=\"`bearer`\" pulumi-lang-dotnet=\"`Bearer`\" pulumi-lang-go=\"`bearer`\" pulumi-lang-python=\"`bearer`\" pulumi-lang-yaml=\"`bearer`\" pulumi-lang-java=\"`bearer`\"\u003e`bearer`\u003c/span\u003e. Write-only argument \u003cspan pulumi-lang-nodejs=\"`tokenWo`\" pulumi-lang-dotnet=\"`TokenWo`\" pulumi-lang-go=\"`tokenWo`\" pulumi-lang-python=\"`token_wo`\" pulumi-lang-yaml=\"`tokenWo`\" pulumi-lang-java=\"`tokenWo`\"\u003e`tokenWo`\u003c/span\u003e should be preferred.\n",
+                    "secret": true
+                },
+                "tokenWo": {
+                    "type": "string",
+                    "description": "**NOTE:** This field is write-only and its value will not be updated in state as part of read operations.\nWrite-only bearer token for OTLP log sink authentication. Never stored in state and never returned by the API. To rotate the token, update this value AND increment \u003cspan pulumi-lang-nodejs=\"`tokenWoVersion`\" pulumi-lang-dotnet=\"`TokenWoVersion`\" pulumi-lang-go=\"`tokenWoVersion`\" pulumi-lang-python=\"`token_wo_version`\" pulumi-lang-yaml=\"`tokenWoVersion`\" pulumi-lang-java=\"`tokenWoVersion`\"\u003e`tokenWoVersion`\u003c/span\u003e. Changing this field alone will NOT trigger an update.\n",
+                    "secret": true
+                },
+                "tokenWoVersion": {
+                    "type": "integer",
+                    "description": "User-managed rotation counter for \u003cspan pulumi-lang-nodejs=\"`tokenWo`\" pulumi-lang-dotnet=\"`TokenWo`\" pulumi-lang-go=\"`tokenWo`\" pulumi-lang-python=\"`token_wo`\" pulumi-lang-yaml=\"`tokenWo`\" pulumi-lang-java=\"`tokenWo`\"\u003e`tokenWo`\u003c/span\u003e. Must be incremented every time \u003cspan pulumi-lang-nodejs=\"`tokenWo`\" pulumi-lang-dotnet=\"`TokenWo`\" pulumi-lang-go=\"`tokenWo`\" pulumi-lang-python=\"`token_wo`\" pulumi-lang-yaml=\"`tokenWo`\" pulumi-lang-java=\"`tokenWo`\"\u003e`tokenWo`\u003c/span\u003e is changed. Note: the token is also automatically re-sent when `log_sink.type` or `credentials.type` changes, even without a version bump.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The authentication type when using an OTLP log sink. Leave unset for Loki.Possible values are: \u003cspan pulumi-lang-nodejs=\"`basic`\" pulumi-lang-dotnet=\"`Basic`\" pulumi-lang-go=\"`basic`\" pulumi-lang-python=\"`basic`\" pulumi-lang-yaml=\"`basic`\" pulumi-lang-java=\"`basic`\"\u003e`basic`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`bearer`\" pulumi-lang-dotnet=\"`Bearer`\" pulumi-lang-go=\"`bearer`\" pulumi-lang-python=\"`bearer`\" pulumi-lang-yaml=\"`bearer`\" pulumi-lang-java=\"`bearer`\"\u003e`bearer`\u003c/span\u003e.\n"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "The username used to authenticate. Required for Loki and for OTLP when `credentials.type` is \u003cspan pulumi-lang-nodejs=\"`basic`\" pulumi-lang-dotnet=\"`Basic`\" pulumi-lang-go=\"`basic`\" pulumi-lang-python=\"`basic`\" pulumi-lang-yaml=\"`basic`\" pulumi-lang-java=\"`basic`\"\u003e`basic`\u003c/span\u003e.\n",
+                    "secret": true
+                }
+            },
+            "type": "object"
         },
         "stackit:index/CdnDistributionConfigOptimizer:CdnDistributionConfigOptimizer": {
             "properties": {
@@ -4052,6 +4147,10 @@
                     "type": "string",
                     "description": "Specifies the container runtime. Defaults to \u003cspan pulumi-lang-nodejs=\"`containerd`\" pulumi-lang-dotnet=\"`Containerd`\" pulumi-lang-go=\"`containerd`\" pulumi-lang-python=\"`containerd`\" pulumi-lang-yaml=\"`containerd`\" pulumi-lang-java=\"`containerd`\"\u003e`containerd`\u003c/span\u003e\n"
                 },
+                "kata": {
+                    "type": "boolean",
+                    "description": "Enable workload isolation via Kata Containers for pods scheduled on this node pool. Note: This feature is in private preview. Enabling is only possible for enabled accounts. Otherwise the request will be rejected. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e.\n"
+                },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
@@ -4130,6 +4229,7 @@
                         "allowSystemComponents",
                         "availabilityZones",
                         "cri",
+                        "kata",
                         "labels",
                         "machineType",
                         "maxSurge",
@@ -6132,6 +6232,10 @@
                     "type": "boolean",
                     "description": "Enable this allows the 'Host' header to be passed through to the origin.\n"
                 },
+                "logSink": {
+                    "$ref": "#/types/stackit:index/getCdnDistributionConfigLogSink:getCdnDistributionConfigLogSink",
+                    "description": "The configured log sink used to export the distribution's access logs.\n"
+                },
                 "monthlyLimitBytes": {
                     "type": "integer",
                     "description": "Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.\n"
@@ -6171,6 +6275,7 @@
                 "cacheConfig",
                 "defaultCacheDuration",
                 "forwardHostHeader",
+                "logSink",
                 "monthlyLimitBytes",
                 "optimizer",
                 "redirects",
@@ -6262,6 +6367,28 @@
                 "cacheKeyHeaders",
                 "queryStringVaryEnabled",
                 "queryStringVaryParameters"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "stackit:index/getCdnDistributionConfigLogSink:getCdnDistributionConfigLogSink": {
+            "properties": {
+                "pushUrl": {
+                    "type": "string",
+                    "description": "The fully qualified URL where the CDN should push access logs (for example, `https://loki.example.com/loki/api/v1/push` for Loki or `https://otlp.example.com/otlp/v1/logs` for OTLP).\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The log sink protocol\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "pushUrl",
+                "type"
             ],
             "language": {
                 "nodejs": {
@@ -10216,6 +10343,10 @@
                     "type": "string",
                     "description": "Specifies the container runtime.\n"
                 },
+                "kata": {
+                    "type": "boolean",
+                    "description": "Whether workload isolation via Kata Containers is enabled for pods scheduled on this node pool.\n"
+                },
                 "labels": {
                     "type": "object",
                     "additionalProperties": {
@@ -10284,6 +10415,7 @@
                 "allowSystemComponents",
                 "availabilityZones",
                 "cri",
+                "kata",
                 "labels",
                 "machineType",
                 "maxSurge",
@@ -12406,8 +12538,15 @@
             }
         },
         "stackit:index/albWafManagedRuleSet:AlbWafManagedRuleSet": {
-            "description": "ALB WAF Managed Rule Set resource schema. Uses the \u003cspan pulumi-lang-nodejs=\"`defaultRegion`\" pulumi-lang-dotnet=\"`DefaultRegion`\" pulumi-lang-go=\"`defaultRegion`\" pulumi-lang-python=\"`default_region`\" pulumi-lang-yaml=\"`defaultRegion`\" pulumi-lang-java=\"`defaultRegion`\"\u003e`defaultRegion`\u003c/span\u003e specified in the provider configuration as a fallback in case no \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e is defined on resource level.\n\n## Example Usage\n\n```terraform\nresource \"stackit_alb_waf_managed_rule_set\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-managed-rule-set\"\n  type       = \"TYPE_OWASP_CRS\"\n}\n```\n",
+            "description": "ALB WAF Managed Rule Set resource schema. Uses the \u003cspan pulumi-lang-nodejs=\"`defaultRegion`\" pulumi-lang-dotnet=\"`DefaultRegion`\" pulumi-lang-go=\"`defaultRegion`\" pulumi-lang-python=\"`default_region`\" pulumi-lang-yaml=\"`defaultRegion`\" pulumi-lang-java=\"`defaultRegion`\"\u003e`defaultRegion`\u003c/span\u003e specified in the provider configuration as a fallback in case no \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e is defined on resource level.\n\n## Example Usage\n\n```terraform\nresource \"stackit_alb_waf_managed_rule_set\" \"example\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-managed-rule-set\"\n  type       = \"TYPE_OWASP_CRS\"\n}\n\n# Set individual rules to a different mode, keyed by group ID and rule ID.\n# Only the listed rules are managed; a rule removed from configured_groups goes back to\n# MODE_ENABLED. The state of all rules is available in groups.\nresource \"stackit_alb_waf_managed_rule_set\" \"with_rule_modes\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name       = \"example-managed-rule-set-modes\"\n  type       = \"TYPE_OWASP_CRS\"\n  configured_groups = {\n    \"911\" = {\n      rules = {\n        \"911100\" = { mode = \"MODE_LOG_ONLY\" } # allow PUT and DELETE through method enforcement\n      }\n    }\n    \"920\" = {\n      rules = {\n        \"920450\" = { mode = \"MODE_DISABLED\" }\n      }\n    }\n  }\n}\n```\n",
             "properties": {
+                "configuredGroups": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/stackit:index/AlbWafManagedRuleSetConfiguredGroups:AlbWafManagedRuleSetConfiguredGroups"
+                    },
+                    "description": "Rule modes to set, keyed by group ID (e.g. \u003cspan pulumi-lang-nodejs=\"`911`\" pulumi-lang-dotnet=\"`911`\" pulumi-lang-go=\"`911`\" pulumi-lang-python=\"`911`\" pulumi-lang-yaml=\"`911`\" pulumi-lang-java=\"`911`\"\u003e`911`\u003c/span\u003e) and rule ID (e.g. \u003cspan pulumi-lang-nodejs=\"`911100`\" pulumi-lang-dotnet=\"`911100`\" pulumi-lang-go=\"`911100`\" pulumi-lang-python=\"`911100`\" pulumi-lang-yaml=\"`911100`\" pulumi-lang-java=\"`911100`\"\u003e`911100`\u003c/span\u003e). Only the listed rules are managed; every other rule keeps the mode the API gives it. A rule removed from the configuration is set back to `MODE_ENABLED`, even if its mode was changed outside Terraform in the meantime. The resulting state of all rules is available in \u003cspan pulumi-lang-nodejs=\"`groups`\" pulumi-lang-dotnet=\"`Groups`\" pulumi-lang-go=\"`groups`\" pulumi-lang-python=\"`groups`\" pulumi-lang-yaml=\"`groups`\" pulumi-lang-java=\"`groups`\"\u003e`groups`\u003c/span\u003e.\n"
+                },
                 "groups": {
                     "type": "object",
                     "additionalProperties": {
@@ -12445,6 +12584,13 @@
                 "version"
             ],
             "inputProperties": {
+                "configuredGroups": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#/types/stackit:index/AlbWafManagedRuleSetConfiguredGroups:AlbWafManagedRuleSetConfiguredGroups"
+                    },
+                    "description": "Rule modes to set, keyed by group ID (e.g. \u003cspan pulumi-lang-nodejs=\"`911`\" pulumi-lang-dotnet=\"`911`\" pulumi-lang-go=\"`911`\" pulumi-lang-python=\"`911`\" pulumi-lang-yaml=\"`911`\" pulumi-lang-java=\"`911`\"\u003e`911`\u003c/span\u003e) and rule ID (e.g. \u003cspan pulumi-lang-nodejs=\"`911100`\" pulumi-lang-dotnet=\"`911100`\" pulumi-lang-go=\"`911100`\" pulumi-lang-python=\"`911100`\" pulumi-lang-yaml=\"`911100`\" pulumi-lang-java=\"`911100`\"\u003e`911100`\u003c/span\u003e). Only the listed rules are managed; every other rule keeps the mode the API gives it. A rule removed from the configuration is set back to `MODE_ENABLED`, even if its mode was changed outside Terraform in the meantime. The resulting state of all rules is available in \u003cspan pulumi-lang-nodejs=\"`groups`\" pulumi-lang-dotnet=\"`Groups`\" pulumi-lang-go=\"`groups`\" pulumi-lang-python=\"`groups`\" pulumi-lang-yaml=\"`groups`\" pulumi-lang-java=\"`groups`\"\u003e`groups`\u003c/span\u003e.\n"
+                },
                 "name": {
                     "type": "string",
                     "description": "Managed Rule Set configuration name.\n"
@@ -12469,6 +12615,13 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering AlbWafManagedRuleSet resources.\n",
                 "properties": {
+                    "configuredGroups": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/types/stackit:index/AlbWafManagedRuleSetConfiguredGroups:AlbWafManagedRuleSetConfiguredGroups"
+                        },
+                        "description": "Rule modes to set, keyed by group ID (e.g. \u003cspan pulumi-lang-nodejs=\"`911`\" pulumi-lang-dotnet=\"`911`\" pulumi-lang-go=\"`911`\" pulumi-lang-python=\"`911`\" pulumi-lang-yaml=\"`911`\" pulumi-lang-java=\"`911`\"\u003e`911`\u003c/span\u003e) and rule ID (e.g. \u003cspan pulumi-lang-nodejs=\"`911100`\" pulumi-lang-dotnet=\"`911100`\" pulumi-lang-go=\"`911100`\" pulumi-lang-python=\"`911100`\" pulumi-lang-yaml=\"`911100`\" pulumi-lang-java=\"`911100`\"\u003e`911100`\u003c/span\u003e). Only the listed rules are managed; every other rule keeps the mode the API gives it. A rule removed from the configuration is set back to `MODE_ENABLED`, even if its mode was changed outside Terraform in the meantime. The resulting state of all rules is available in \u003cspan pulumi-lang-nodejs=\"`groups`\" pulumi-lang-dotnet=\"`Groups`\" pulumi-lang-go=\"`groups`\" pulumi-lang-python=\"`groups`\" pulumi-lang-yaml=\"`groups`\" pulumi-lang-java=\"`groups`\"\u003e`groups`\u003c/span\u003e.\n"
+                    },
                     "groups": {
                         "type": "object",
                         "additionalProperties": {
@@ -13346,7 +13499,7 @@
             }
         },
         "stackit:index/cdnDistribution:CdnDistribution": {
-            "description": "CDN distribution data source schema.\n\n\u003e This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\nresource \"stackit_cdn_distribution\" \"example_distribution\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  config = {\n    backend = {\n      type       = \"http\"\n      origin_url = \"https://mybackend.onstackit.cloud\"\n      geofencing = {\n        \"https://mybackend.onstackit.cloud\" = [\"DE\"]\n      }\n    }\n    regions           = [\"EU\", \"US\", \"ASIA\", \"AF\", \"SA\"]\n    blocked_countries = [\"DE\", \"AT\", \"CH\"]\n    blocked_ips       = [\"1.1.1.1\"]\n\n    default_cache_duration = \"P1DT2H30M\"\n    monthly_limit_bytes    = 1048576\n\n    optimizer = {\n      enabled = true\n    }\n\n    cache_config = {\n      cache_key_headers            = [\"Accept-Language\"]\n      query_string_vary_enabled    = true\n      query_string_vary_parameters = [\"page\", \"sort\"]\n    }\n  }\n}\n\nresource \"stackit_cdn_distribution\" \"example_bucket_distribution\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  config = {\n    backend = {\n      type       = \"bucket\"\n      bucket_url = \"https://my-test.object.storage.eu01.onstackit.cloud\"\n      region     = \"eu01\"\n\n      # Credentials are required for bucket backends\n      # It is strongly recommended to use variables for secrets\n      credentials = {\n        access_key_id     = var.bucket_access_key\n        secret_access_key = var.bucket_secret_key\n      }\n    }\n    regions           = [\"EU\", \"US\"]\n    blocked_countries = [\"CN\", \"RU\"]\n    blocked_ips       = [\"1.1.1.1\"]\n\n    default_cache_duration = \"P1DT2H30M\"\n    monthly_limit_bytes    = 1048576\n\n    optimizer = {\n      enabled = false\n    }\n\n    redirects = {\n      rules = [\n        {\n          description          = \"test redirect\"\n          enabled              = true\n          rule_match_condition = \"ANY\"\n          status_code          = 302\n          target_url           = \"https://stackit.de/\"\n          matchers = [\n            {\n              values                = [\"*/otherPath/\"]\n              value_match_condition = \"ANY\"\n            }\n          ]\n        }\n      ]\n    }\n\n    tls = {\n      enable_tls_10 = true\n      enable_tls_11 = true\n    }\n    strip_response_cookies = true\n    forward_host_header    = true\n\n    # WAF Configuration\n    # \n    # Precedence Hierarchy: Specific Rules \u003e Groups \u003e Collections\n    # In this example, the entire \"@builtin/crs/request\" collection is ENABLED.\n    # However, because specific Rule IDs have a higher precedence, the rule \n    # \"@builtin/crs/request/942151\" is explicitly DISABLED, overriding the collection setting.\n    # \n    # To view all available collections, groups, and rules, consult the API documentation:\n    # https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections\n    waf = {\n      mode                          = \"ENABLED\"\n      type                          = \"PREMIUM\"\n      paranoia_level                = \"L1\"\n      allowed_http_versions         = [\"HTTP/1.0\", \"HTTP/1.1\"]\n      allowed_http_methods          = [\"GET\"]\n      allowed_request_content_types = [\"text/plain\"]\n\n      # Collections\n      enabled_rule_collection_ids  = [\"@builtin/crs/request\"]\n      disabled_rule_collection_ids = []\n      log_only_rule_collection_ids = [\"@builtin/crs/response\"]\n\n      # Groups\n      enabled_rule_group_ids  = []\n      disabled_rule_group_ids = []\n      log_only_rule_group_ids = []\n\n      # Specific Rules (Highest Precedence)\n      enabled_rule_ids  = [\"@builtin/crs/request/913100\"]\n      disabled_rule_ids = [\"@builtin/crs/request/942151\"]\n      log_only_rule_ids = [\"@builtin/crs/response/954120\"]\n    }\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing cdn distribution\nimport {\n  to = stackit_cdn_distribution.import-example\n  id = \"${var.project_id},${var.distribution_id}\"\n}\n```\n\n",
+            "description": "CDN distribution data source schema.\n\n\u003e This resource is in beta and may be subject to breaking changes in the future. Use with caution. See our guide for how to opt-in to use beta resources.\n\n## Example Usage\n\n```terraform\nresource \"stackit_cdn_distribution\" \"example_distribution\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  config = {\n    backend = {\n      type       = \"http\"\n      origin_url = \"https://mybackend.onstackit.cloud\"\n      geofencing = {\n        \"https://mybackend.onstackit.cloud\" = [\"DE\"]\n      }\n    }\n    regions           = [\"EU\", \"US\", \"ASIA\", \"AF\", \"SA\"]\n    blocked_countries = [\"DE\", \"AT\", \"CH\"]\n    blocked_ips       = [\"1.1.1.1\"]\n\n    default_cache_duration = \"P1DT2H30M\"\n    monthly_limit_bytes    = 1048576\n\n    optimizer = {\n      enabled = true\n    }\n\n    cache_config = {\n      cache_key_headers            = [\"Accept-Language\"]\n      query_string_vary_enabled    = true\n      query_string_vary_parameters = [\"page\", \"sort\"]\n    }\n  }\n}\n\n# Logs instance used as the OTLP destination for the CDN distribution below.\n# See https://docs.stackit.cloud/stackit/en/logs-service for setup details.\nresource \"stackit_logs_instance\" \"logs\" {\n  project_id     = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  region         = \"eu01\"\n  display_name   = \"cdn-logs-example\"\n  retention_days = 30\n}\n\n# Access token the CDN uses to authenticate when pushing logs to the instance.\nresource \"stackit_logs_access_token\" \"logs_token\" {\n  project_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  instance_id  = stackit_logs_instance.logs.instance_id\n  region       = \"eu01\"\n  display_name = \"cdn-logs-token-example\"\n  permissions  = [\"read\", \"write\"]\n}\n\nresource \"stackit_cdn_distribution\" \"example_bucket_distribution\" {\n  project_id = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  config = {\n    backend = {\n      type       = \"bucket\"\n      bucket_url = \"https://my-test.object.storage.eu01.onstackit.cloud\"\n      region     = \"eu01\"\n\n      # Credentials are required for bucket backends\n      # It is strongly recommended to use variables for secrets\n      credentials = {\n        access_key_id     = var.bucket_access_key\n        secret_access_key = var.bucket_secret_key\n      }\n    }\n    regions           = [\"EU\", \"US\"]\n    blocked_countries = [\"CN\", \"RU\"]\n    blocked_ips       = [\"1.1.1.1\"]\n\n    default_cache_duration = \"P1DT2H30M\"\n    monthly_limit_bytes    = 1048576\n\n    optimizer = {\n      enabled = false\n    }\n\n    redirects = {\n      rules = [\n        {\n          description          = \"test redirect\"\n          enabled              = true\n          rule_match_condition = \"ANY\"\n          status_code          = 302\n          target_url           = \"https://stackit.de/\"\n          matchers = [\n            {\n              values                = [\"*/otherPath/\"]\n              value_match_condition = \"ANY\"\n            }\n          ]\n        }\n      ]\n    }\n\n    tls = {\n      enable_tls_10 = true\n      enable_tls_11 = true\n    }\n    strip_response_cookies = true\n    forward_host_header    = true\n\n    # WAF Configuration\n    # \n    # Precedence Hierarchy: Specific Rules \u003e Groups \u003e Collections\n    # In this example, the entire \"@builtin/crs/request\" collection is ENABLED.\n    # However, because specific Rule IDs have a higher precedence, the rule \n    # \"@builtin/crs/request/942151\" is explicitly DISABLED, overriding the collection setting.\n    # \n    # To view all available collections, groups, and rules, consult the API documentation:\n    # https://docs.api.eu01.stackit.cloud/documentation/cdn/version/v1#tag/WAF/operation/ListWafCollections\n    waf = {\n      mode                          = \"ENABLED\"\n      type                          = \"PREMIUM\"\n      paranoia_level                = \"L1\"\n      allowed_http_versions         = [\"HTTP/1.0\", \"HTTP/1.1\"]\n      allowed_http_methods          = [\"GET\"]\n      allowed_request_content_types = [\"text/plain\"]\n\n      # Collections\n      enabled_rule_collection_ids  = [\"@builtin/crs/request\"]\n      disabled_rule_collection_ids = []\n      log_only_rule_collection_ids = [\"@builtin/crs/response\"]\n\n      # Groups\n      enabled_rule_group_ids  = []\n      disabled_rule_group_ids = []\n      log_only_rule_group_ids = []\n\n      # Specific Rules (Highest Precedence)\n      enabled_rule_ids  = [\"@builtin/crs/request/913100\"]\n      disabled_rule_ids = [\"@builtin/crs/request/942151\"]\n      log_only_rule_ids = [\"@builtin/crs/response/954120\"]\n    }\n\n    log_sink = {\n      # ingest_otlp_url is returned without the protocol prefix, so prepend \"https://\".\n      push_url = \"https://${stackit_logs_instance.logs.ingest_otlp_url}\"\n      type     = \"otlp\"\n      credentials = {\n        type             = \"bearer\"\n        token_wo         = stackit_logs_access_token.logs_token.access_token\n        token_wo_version = 1\n      }\n    }\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing cdn distribution\nimport {\n  to = stackit_cdn_distribution.import-example\n  id = \"${var.project_id},${var.distribution_id}\"\n}\n```\n\n",
             "properties": {
                 "config": {
                     "$ref": "#/types/stackit:index/CdnDistributionConfig:CdnDistributionConfig",
@@ -13919,8 +14072,15 @@
             }
         },
         "stackit:index/dremioInstance:DremioInstance": {
-            "description": "Manages a STACKIT Dremio instance. This service is only available when the provider is configured with \u003cspan pulumi-lang-nodejs=\"`defaultRegion \" pulumi-lang-dotnet=\"`DefaultRegion \" pulumi-lang-go=\"`defaultRegion \" pulumi-lang-python=\"`default_region \" pulumi-lang-yaml=\"`defaultRegion \" pulumi-lang-java=\"`defaultRegion \"\u003e`defaultRegion \u003c/span\u003e= \"eu01\"`.\n\n\u003e This resource is part of the experimental feature dremio and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_dremio_instance\" \"example\" {\n  project_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  region       = \"eu01\"\n  display_name = \"exampleName\"\n  description  = \"Example description\"\n  authentication = {\n    type = \"local-only\" // \"oauth\" or \"azuread\" for IDP config\n\n    oauth = { // only needed if \"oauth\" is given as type\n      authority_url = \"authority\"\n      client_id     = \"client-id\"\n      client_secret = \"client-secret\"\n      jwt_claims = {\n        user_name = \"example\"\n      }\n      scope = \"idp-scope\"\n      parameters = [\n        { \"name\" : \"example\", \"value\" : \"example-value\" }\n      ]\n    }\n\n    azuread = { // only needed if \"azuread\" is given as type\n      authority_url = \"authority\"\n      client_id     = \"client-id\"\n      client_secret = \"client-secret\"\n    }\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n",
+            "description": "Manages a STACKIT Dremio instance. This service is only available when the provider is configured with \u003cspan pulumi-lang-nodejs=\"`defaultRegion \" pulumi-lang-dotnet=\"`DefaultRegion \" pulumi-lang-go=\"`defaultRegion \" pulumi-lang-python=\"`default_region \" pulumi-lang-yaml=\"`defaultRegion \" pulumi-lang-java=\"`defaultRegion \"\u003e`defaultRegion \u003c/span\u003e= \"eu01\"`.\n\n\u003e This resource is part of the experimental feature dremio and is likely going to undergo significant changes or be removed in the future. Use it at your own discretion.\n\n## Example Usage\n\n```terraform\nresource \"stackit_dremio_instance\" \"example\" {\n  project_id   = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  region       = \"eu01\"\n  display_name = \"exampleName\"\n  description  = \"Example description\"\n  acl = [\n    \"0.0.0.0/0\"\n  ]\n  authentication = {\n    type = \"local-only\" // \"oauth\" or \"azuread\" for IDP config\n\n    oauth = { // only needed if \"oauth\" is given as type\n      authority_url = \"authority\"\n      client_id     = \"client-id\"\n      client_secret = \"client-secret\"\n      jwt_claims = {\n        user_name = \"example\"\n      }\n      scope = \"idp-scope\"\n      parameters = [\n        { \"name\" : \"example\", \"value\" : \"example-value\" }\n      ]\n    }\n\n    azuread = { // only needed if \"azuread\" is given as type\n      authority_url = \"authority\"\n      client_id     = \"client-id\"\n      client_secret = \"client-secret\"\n    }\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n",
             "properties": {
+                "acls": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The Access Control List (ACL) defining the IPv4 or IPv6 CIDR ranges allowed to connect to the Dremio instance. An empty list allows access from any address.\n"
+                },
                 "authentication": {
                     "$ref": "#/types/stackit:index/DremioInstanceAuthentication:DremioInstanceAuthentication",
                     "description": "Dremio instance authentication settings. A change here triggers a Dremio restart and will incur downtime.\n"
@@ -13954,6 +14114,7 @@
                 }
             },
             "required": [
+                "acls",
                 "authentication",
                 "description",
                 "displayName",
@@ -13963,6 +14124,13 @@
                 "region"
             ],
             "inputProperties": {
+                "acls": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The Access Control List (ACL) defining the IPv4 or IPv6 CIDR ranges allowed to connect to the Dremio instance. An empty list allows access from any address.\n"
+                },
                 "authentication": {
                     "$ref": "#/types/stackit:index/DremioInstanceAuthentication:DremioInstanceAuthentication",
                     "description": "Dremio instance authentication settings. A change here triggers a Dremio restart and will incur downtime.\n"
@@ -13995,6 +14163,13 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering DremioInstance resources.\n",
                 "properties": {
+                    "acls": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The Access Control List (ACL) defining the IPv4 or IPv6 CIDR ranges allowed to connect to the Dremio instance. An empty list allows access from any address.\n"
+                    },
                     "authentication": {
                         "$ref": "#/types/stackit:index/DremioInstanceAuthentication:DremioInstanceAuthentication",
                         "description": "Dremio instance authentication settings. A change here triggers a Dremio restart and will incur downtime.\n"
@@ -24198,7 +24373,7 @@
             }
         },
         "stackit:index/skeCluster:SkeCluster": {
-            "description": "SKE Cluster Resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n\u003e When updating \u003cspan pulumi-lang-nodejs=\"`nodePools`\" pulumi-lang-dotnet=\"`NodePools`\" pulumi-lang-go=\"`nodePools`\" pulumi-lang-python=\"`node_pools`\" pulumi-lang-yaml=\"`nodePools`\" pulumi-lang-java=\"`nodePools`\"\u003e`nodePools`\u003c/span\u003e of a \u003cspan pulumi-lang-nodejs=\"`stackit.SkeCluster`\" pulumi-lang-dotnet=\"`stackit.SkeCluster`\" pulumi-lang-go=\"`SkeCluster`\" pulumi-lang-python=\"`SkeCluster`\" pulumi-lang-yaml=\"`stackit.SkeCluster`\" pulumi-lang-java=\"`stackit.SkeCluster`\"\u003e`stackit.SkeCluster`\u003c/span\u003e, the pulumi preview might appear incorrect as it matches the node pools by index rather than by name. However, the SKE API correctly identifies node pools by name and applies the intended changes. Please review your changes carefully to ensure the correct configuration will be applied.\n\n## Example Usage\n\n```terraform\nresource \"stackit_ske_cluster\" \"example\" {\n  project_id             = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name                   = \"example\"\n  kubernetes_version_min = \"x.x\"\n  node_pools = [\n    {\n      name               = \"np-example\"\n      machine_type       = \"x.x\"\n      os_version         = \"x.x.x\"\n      os_name            = \"xxx\"\n      minimum            = \"2\"\n      maximum            = \"3\"\n      availability_zones = [\"eu01-3\"]\n      volume_type        = \"storage_premium_perf6\"\n      volume_size        = \"48\"\n    }\n  ]\n  network = {\n    control_plane = {\n      access_scope = \"PUBLIC\"\n    }\n  }\n  # Cluster audit log forwarding to a Telemetry Router.\n  # Private preview: only configurable for enabled accounts.\n  audit = {\n    enabled = true\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing ske cluster\nimport {\n  to = stackit_ske_cluster.import-example\n  id = \"${var.project_id},${var.region},${var.ske_name}\"\n}\n```\n\n",
+            "description": "SKE Cluster Resource schema. Must have a \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e specified in the provider configuration.\n\n\u003e When updating \u003cspan pulumi-lang-nodejs=\"`nodePools`\" pulumi-lang-dotnet=\"`NodePools`\" pulumi-lang-go=\"`nodePools`\" pulumi-lang-python=\"`node_pools`\" pulumi-lang-yaml=\"`nodePools`\" pulumi-lang-java=\"`nodePools`\"\u003e`nodePools`\u003c/span\u003e of a \u003cspan pulumi-lang-nodejs=\"`stackit.SkeCluster`\" pulumi-lang-dotnet=\"`stackit.SkeCluster`\" pulumi-lang-go=\"`SkeCluster`\" pulumi-lang-python=\"`SkeCluster`\" pulumi-lang-yaml=\"`stackit.SkeCluster`\" pulumi-lang-java=\"`stackit.SkeCluster`\"\u003e`stackit.SkeCluster`\u003c/span\u003e, the pulumi preview might appear incorrect as it matches the node pools by index rather than by name. However, the SKE API correctly identifies node pools by name and applies the intended changes. Please review your changes carefully to ensure the correct configuration will be applied.\n\n## Example Usage\n\n```terraform\nresource \"stackit_ske_cluster\" \"example\" {\n  project_id             = \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"\n  name                   = \"example\"\n  kubernetes_version_min = \"x.x\"\n  node_pools = [\n    {\n      name               = \"np-example\"\n      machine_type       = \"x.x\"\n      os_version         = \"x.x.x\"\n      os_name            = \"xxx\"\n      minimum            = \"2\"\n      maximum            = \"3\"\n      availability_zones = [\"eu01-3\"]\n      volume_type        = \"storage_premium_perf6\"\n      volume_size        = \"48\"\n      kata               = false\n    }\n  ]\n  network = {\n    control_plane = {\n      access_scope = \"PUBLIC\"\n    }\n  }\n  # Cluster audit log forwarding to a Telemetry Router.\n  # Private preview: only configurable for enabled accounts.\n  audit = {\n    enabled = true\n  }\n}\n```\n\n## Import\n\nIn Terraform v1.5.0 and later, the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`import`\" pulumi-lang-dotnet=\"`Import`\" pulumi-lang-go=\"`import`\" pulumi-lang-python=\"`import`\" pulumi-lang-yaml=\"`import`\" pulumi-lang-java=\"`import`\"\u003e`import`\u003c/span\u003e + \"`\" + ` block can be used with the ` + \"`\" + \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e + \"`\" + ` attribute, for example:\n\n```terraform\n# Only use the import statement, if you want to import an existing ske cluster\nimport {\n  to = stackit_ske_cluster.import-example\n  id = \"${var.project_id},${var.region},${var.ske_name}\"\n}\n```\n\n",
             "properties": {
                 "access": {
                     "$ref": "#/types/stackit:index/SkeClusterAccess:SkeClusterAccess",
@@ -28399,6 +28574,13 @@
             "outputs": {
                 "description": "A collection of values returned by getDremioInstance.\n",
                 "properties": {
+                    "acls": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The Access Control List (ACL) defining the IPv4 or IPv6 CIDR ranges allowed to connect to the Dremio instance. An empty list allows access from any address.\n"
+                    },
                     "authentication": {
                         "$ref": "#/types/stackit:index/getDremioInstanceAuthentication:getDremioInstanceAuthentication",
                         "description": "Dremio instance authentication settings. A change here triggers a Dremio restart and will incur downtime.\n"
@@ -28434,6 +28616,7 @@
                 },
                 "type": "object",
                 "required": [
+                    "acls",
                     "authentication",
                     "description",
                     "displayName",
