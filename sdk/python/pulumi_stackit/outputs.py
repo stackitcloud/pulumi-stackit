@@ -21,6 +21,8 @@ __all__ = [
     'AlbWafCustomRuleGroupRuleCondition',
     'AlbWafCustomRuleGroupRuleConditionOperator',
     'AlbWafCustomRuleGroupRuleConditionVariable',
+    'AlbWafManagedRuleSetConfiguredGroups',
+    'AlbWafManagedRuleSetConfiguredGroupsRules',
     'AlbWafManagedRuleSetGroups',
     'AlbWafManagedRuleSetGroupsRules',
     'ApplicationLoadBalancerError',
@@ -52,6 +54,8 @@ __all__ = [
     'CdnDistributionConfigBackend',
     'CdnDistributionConfigBackendCredentials',
     'CdnDistributionConfigCacheConfig',
+    'CdnDistributionConfigLogSink',
+    'CdnDistributionConfigLogSinkCredentials',
     'CdnDistributionConfigOptimizer',
     'CdnDistributionConfigRedirects',
     'CdnDistributionConfigRedirectsRule',
@@ -218,6 +222,7 @@ __all__ = [
     'GetCdnDistributionConfigResult',
     'GetCdnDistributionConfigBackendResult',
     'GetCdnDistributionConfigCacheConfigResult',
+    'GetCdnDistributionConfigLogSinkResult',
     'GetCdnDistributionConfigOptimizerResult',
     'GetCdnDistributionConfigRedirectsResult',
     'GetCdnDistributionConfigRedirectsRuleResult',
@@ -599,6 +604,42 @@ class AlbWafCustomRuleGroupRuleConditionVariable(dict):
         Optional key element context for map variables (e.g., matching a 'Host' header key).
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class AlbWafManagedRuleSetConfiguredGroups(dict):
+    def __init__(__self__, *,
+                 rules: Mapping[str, 'outputs.AlbWafManagedRuleSetConfiguredGroupsRules']):
+        """
+        :param Mapping[str, 'AlbWafManagedRuleSetConfiguredGroupsRulesArgs'] rules: Rules of the rule group, keyed by rule ID (e.g. `911100`).
+        """
+        pulumi.set(__self__, "rules", rules)
+
+    @_builtins.property
+    @pulumi.getter
+    def rules(self) -> Mapping[str, 'outputs.AlbWafManagedRuleSetConfiguredGroupsRules']:
+        """
+        Rules of the rule group, keyed by rule ID (e.g. `911100`).
+        """
+        return pulumi.get(self, "rules")
+
+
+@pulumi.output_type
+class AlbWafManagedRuleSetConfiguredGroupsRules(dict):
+    def __init__(__self__, *,
+                 mode: _builtins.str):
+        """
+        :param _builtins.str mode: The mode of the rule. Possible values are: `MODE_ENABLED`, `MODE_DISABLED`, `MODE_LOG_ONLY`.
+        """
+        pulumi.set(__self__, "mode", mode)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> _builtins.str:
+        """
+        The mode of the rule. Possible values are: `MODE_ENABLED`, `MODE_DISABLED`, `MODE_LOG_ONLY`.
+        """
+        return pulumi.get(self, "mode")
 
 
 @pulumi.output_type
@@ -1998,6 +2039,8 @@ class CdnDistributionConfig(dict):
             suggest = "default_cache_duration"
         elif key == "forwardHostHeader":
             suggest = "forward_host_header"
+        elif key == "logSink":
+            suggest = "log_sink"
         elif key == "monthlyLimitBytes":
             suggest = "monthly_limit_bytes"
         elif key == "stripResponseCookies":
@@ -2022,6 +2065,7 @@ class CdnDistributionConfig(dict):
                  cache_config: Optional['outputs.CdnDistributionConfigCacheConfig'] = None,
                  default_cache_duration: Optional[_builtins.str] = None,
                  forward_host_header: Optional[_builtins.bool] = None,
+                 log_sink: Optional['outputs.CdnDistributionConfigLogSink'] = None,
                  monthly_limit_bytes: Optional[_builtins.int] = None,
                  optimizer: Optional['outputs.CdnDistributionConfigOptimizer'] = None,
                  redirects: Optional['outputs.CdnDistributionConfigRedirects'] = None,
@@ -2036,6 +2080,7 @@ class CdnDistributionConfig(dict):
         :param 'CdnDistributionConfigCacheConfigArgs' cache_config: Groups the cache options that influence how the CDN builds its cache key. Warning: enabling query-string vary produces one cache entry per unique query-string combination (unbounded when query*string*vary*parameters is empty). Each entry in cache*key*headers multiplies the number of cache variants by the number of distinct values observed for that header. Use these settings sparingly.
         :param _builtins.str default_cache_duration: Sets the default cache duration for the distribution. The default cache duration is applied when a 'Cache-Control' header is not presented in the origin's response. We use ISO8601 duration format for cache duration (e.g. P1DT2H30M). Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
         :param _builtins.bool forward_host_header: Enable this allows the 'Host' header to be passed through to the origin.
+        :param 'CdnDistributionConfigLogSinkArgs' log_sink: Configures a log sink to export the distribution's access logs. Only one of Loki or OTLP can be configured at a time; the sink is selected via the `type` attribute. Note: because the API never returns raw credentials, `username`, `password`, and `token` are preserved from state during Read operations. If the sink type is changed outside of Terraform, previously stored credentials are cleared on refresh and must be re-applied via `pulumi up`.
         :param _builtins.int monthly_limit_bytes: Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
         :param 'CdnDistributionConfigOptimizerArgs' optimizer: Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
         :param 'CdnDistributionConfigRedirectsArgs' redirects: A wrapper for a list of redirect rules that allows for redirect settings on a distribution. Currently, this feature is only available for distributions of backend type HTTP.
@@ -2055,6 +2100,8 @@ class CdnDistributionConfig(dict):
             pulumi.set(__self__, "default_cache_duration", default_cache_duration)
         if forward_host_header is not None:
             pulumi.set(__self__, "forward_host_header", forward_host_header)
+        if log_sink is not None:
+            pulumi.set(__self__, "log_sink", log_sink)
         if monthly_limit_bytes is not None:
             pulumi.set(__self__, "monthly_limit_bytes", monthly_limit_bytes)
         if optimizer is not None:
@@ -2123,6 +2170,14 @@ class CdnDistributionConfig(dict):
         Enable this allows the 'Host' header to be passed through to the origin.
         """
         return pulumi.get(self, "forward_host_header")
+
+    @_builtins.property
+    @pulumi.getter(name="logSink")
+    def log_sink(self) -> Optional['outputs.CdnDistributionConfigLogSink']:
+        """
+        Configures a log sink to export the distribution's access logs. Only one of Loki or OTLP can be configured at a time; the sink is selected via the `type` attribute. Note: because the API never returns raw credentials, `username`, `password`, and `token` are preserved from state during Read operations. If the sink type is changed outside of Terraform, previously stored credentials are cleared on refresh and must be re-applied via `pulumi up`.
+        """
+        return pulumi.get(self, "log_sink")
 
     @_builtins.property
     @pulumi.getter(name="monthlyLimitBytes")
@@ -2394,6 +2449,193 @@ class CdnDistributionConfigCacheConfig(dict):
         Allowlist of query-string parameter names that participate in the cache key when query*string*vary*enabled is true. Ignored while query*string*vary*enabled is false, but still stored so it can be re-activated without losing the list.
         """
         return pulumi.get(self, "query_string_vary_parameters")
+
+
+@pulumi.output_type
+class CdnDistributionConfigLogSink(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pushUrl":
+            suggest = "push_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CdnDistributionConfigLogSink. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CdnDistributionConfigLogSink.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CdnDistributionConfigLogSink.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 credentials: 'outputs.CdnDistributionConfigLogSinkCredentials',
+                 push_url: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param 'CdnDistributionConfigLogSinkCredentialsArgs' credentials: Authentication credentials the CDN uses when pushing logs. Loki requires `username` and `password`. OTLP requires `type` to be set to `basic` (with `username` and `password`) or `bearer` (with `token`).
+        :param _builtins.str push_url: The fully qualified URL where the CDN should push access logs (for example, `https://loki.example.com/loki/api/v1/push` for Loki or `https://otlp.example.com/otlp/v1/logs` for OTLP).
+        :param _builtins.str type: The log sink protocolPossible values are: `loki`, `otlp`.
+        """
+        pulumi.set(__self__, "credentials", credentials)
+        pulumi.set(__self__, "push_url", push_url)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def credentials(self) -> 'outputs.CdnDistributionConfigLogSinkCredentials':
+        """
+        Authentication credentials the CDN uses when pushing logs. Loki requires `username` and `password`. OTLP requires `type` to be set to `basic` (with `username` and `password`) or `bearer` (with `token`).
+        """
+        return pulumi.get(self, "credentials")
+
+    @_builtins.property
+    @pulumi.getter(name="pushUrl")
+    def push_url(self) -> _builtins.str:
+        """
+        The fully qualified URL where the CDN should push access logs (for example, `https://loki.example.com/loki/api/v1/push` for Loki or `https://otlp.example.com/otlp/v1/logs` for OTLP).
+        """
+        return pulumi.get(self, "push_url")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The log sink protocolPossible values are: `loki`, `otlp`.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class CdnDistributionConfigLogSinkCredentials(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "passwordWo":
+            suggest = "password_wo"
+        elif key == "passwordWoVersion":
+            suggest = "password_wo_version"
+        elif key == "tokenWo":
+            suggest = "token_wo"
+        elif key == "tokenWoVersion":
+            suggest = "token_wo_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CdnDistributionConfigLogSinkCredentials. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CdnDistributionConfigLogSinkCredentials.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CdnDistributionConfigLogSinkCredentials.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 password: Optional[_builtins.str] = None,
+                 password_wo: Optional[_builtins.str] = None,
+                 password_wo_version: Optional[_builtins.int] = None,
+                 token: Optional[_builtins.str] = None,
+                 token_wo: Optional[_builtins.str] = None,
+                 token_wo_version: Optional[_builtins.int] = None,
+                 type: Optional[_builtins.str] = None,
+                 username: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str password: The password corresponding to `username`. Required for Loki and for OTLP when `credentials.type` is `basic`. Write-only argument `password_wo` should be preferred.
+        :param _builtins.str password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only password for log sink authentication. Never stored in state and never returned by the API. To rotate the password, update this value AND increment `password_wo_version`. Changing this field alone will NOT trigger an update.
+        :param _builtins.int password_wo_version: User-managed rotation counter for `password_wo`. Must be incremented every time `password_wo` is changed. Note: because the API treats credentials atomically (username + password together for Loki/OTLP basic), the password is also automatically re-sent when `username`, `log_sink.type`, or `credentials.type` changes, even without a version bump.
+        :param _builtins.str token: The bearer token used to authenticate. Required for OTLP when `credentials.type` is `bearer`. Write-only argument `token_wo` should be preferred.
+        :param _builtins.str token_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only bearer token for OTLP log sink authentication. Never stored in state and never returned by the API. To rotate the token, update this value AND increment `token_wo_version`. Changing this field alone will NOT trigger an update.
+        :param _builtins.int token_wo_version: User-managed rotation counter for `token_wo`. Must be incremented every time `token_wo` is changed. Note: the token is also automatically re-sent when `log_sink.type` or `credentials.type` changes, even without a version bump.
+        :param _builtins.str type: The authentication type when using an OTLP log sink. Leave unset for Loki.Possible values are: `basic`, `bearer`.
+        :param _builtins.str username: The username used to authenticate. Required for Loki and for OTLP when `credentials.type` is `basic`.
+        """
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if password_wo is not None:
+            pulumi.set(__self__, "password_wo", password_wo)
+        if password_wo_version is not None:
+            pulumi.set(__self__, "password_wo_version", password_wo_version)
+        if token is not None:
+            pulumi.set(__self__, "token", token)
+        if token_wo is not None:
+            pulumi.set(__self__, "token_wo", token_wo)
+        if token_wo_version is not None:
+            pulumi.set(__self__, "token_wo_version", token_wo_version)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> Optional[_builtins.str]:
+        """
+        The password corresponding to `username`. Required for Loki and for OTLP when `credentials.type` is `basic`. Write-only argument `password_wo` should be preferred.
+        """
+        return pulumi.get(self, "password")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWo")
+    def password_wo(self) -> Optional[_builtins.str]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Write-only password for log sink authentication. Never stored in state and never returned by the API. To rotate the password, update this value AND increment `password_wo_version`. Changing this field alone will NOT trigger an update.
+        """
+        return pulumi.get(self, "password_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWoVersion")
+    def password_wo_version(self) -> Optional[_builtins.int]:
+        """
+        User-managed rotation counter for `password_wo`. Must be incremented every time `password_wo` is changed. Note: because the API treats credentials atomically (username + password together for Loki/OTLP basic), the password is also automatically re-sent when `username`, `log_sink.type`, or `credentials.type` changes, even without a version bump.
+        """
+        return pulumi.get(self, "password_wo_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def token(self) -> Optional[_builtins.str]:
+        """
+        The bearer token used to authenticate. Required for OTLP when `credentials.type` is `bearer`. Write-only argument `token_wo` should be preferred.
+        """
+        return pulumi.get(self, "token")
+
+    @_builtins.property
+    @pulumi.getter(name="tokenWo")
+    def token_wo(self) -> Optional[_builtins.str]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Write-only bearer token for OTLP log sink authentication. Never stored in state and never returned by the API. To rotate the token, update this value AND increment `token_wo_version`. Changing this field alone will NOT trigger an update.
+        """
+        return pulumi.get(self, "token_wo")
+
+    @_builtins.property
+    @pulumi.getter(name="tokenWoVersion")
+    def token_wo_version(self) -> Optional[_builtins.int]:
+        """
+        User-managed rotation counter for `token_wo`. Must be incremented every time `token_wo` is changed. Note: the token is also automatically re-sent when `log_sink.type` or `credentials.type` changes, even without a version bump.
+        """
+        return pulumi.get(self, "token_wo_version")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        The authentication type when using an OTLP log sink. Leave unset for Loki.Possible values are: `basic`, `bearer`.
+        """
+        return pulumi.get(self, "type")
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> Optional[_builtins.str]:
+        """
+        The username used to authenticate. Required for Loki and for OTLP when `credentials.type` is `basic`.
+        """
+        return pulumi.get(self, "username")
 
 
 @pulumi.output_type
@@ -8646,6 +8888,7 @@ class SkeClusterNodePool(dict):
                  name: _builtins.str,
                  allow_system_components: Optional[_builtins.bool] = None,
                  cri: Optional[_builtins.str] = None,
+                 kata: Optional[_builtins.bool] = None,
                  labels: Optional[Mapping[str, _builtins.str]] = None,
                  max_surge: Optional[_builtins.int] = None,
                  max_unavailable: Optional[_builtins.int] = None,
@@ -8664,6 +8907,7 @@ class SkeClusterNodePool(dict):
         :param _builtins.str name: Specifies the name of the node pool.
         :param _builtins.bool allow_system_components: Allow system components to run on this node pool.
         :param _builtins.str cri: Specifies the container runtime. Defaults to `containerd`
+        :param _builtins.bool kata: Enable workload isolation via Kata Containers for pods scheduled on this node pool. Note: This feature is in private preview. Enabling is only possible for enabled accounts. Otherwise the request will be rejected. Defaults to `false`.
         :param Mapping[str, _builtins.str] labels: Labels to add to each node.
         :param _builtins.int max_surge: Maximum number of additional VMs that are created during an update. If set (larger than 0), then it must be at least the amount of zones configured for the nodepool. The `max_surge` and `max_unavailable` fields cannot both be unset at the same time.
         :param _builtins.int max_unavailable: Maximum number of VMs that that can be unavailable during an update. If set (larger than 0), then it must be at least the amount of zones configured for the nodepool. The `max_surge` and `max_unavailable` fields cannot both be unset at the same time.
@@ -8684,6 +8928,8 @@ class SkeClusterNodePool(dict):
             pulumi.set(__self__, "allow_system_components", allow_system_components)
         if cri is not None:
             pulumi.set(__self__, "cri", cri)
+        if kata is not None:
+            pulumi.set(__self__, "kata", kata)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if max_surge is not None:
@@ -8760,6 +9006,14 @@ class SkeClusterNodePool(dict):
         Specifies the container runtime. Defaults to `containerd`
         """
         return pulumi.get(self, "cri")
+
+    @_builtins.property
+    @pulumi.getter
+    def kata(self) -> Optional[_builtins.bool]:
+        """
+        Enable workload isolation via Kata Containers for pods scheduled on this node pool. Note: This feature is in private preview. Enabling is only possible for enabled accounts. Otherwise the request will be rejected. Defaults to `false`.
+        """
+        return pulumi.get(self, "kata")
 
     @_builtins.property
     @pulumi.getter
@@ -12458,6 +12712,7 @@ class GetCdnDistributionConfigResult(dict):
                  cache_config: 'outputs.GetCdnDistributionConfigCacheConfigResult',
                  default_cache_duration: _builtins.str,
                  forward_host_header: _builtins.bool,
+                 log_sink: 'outputs.GetCdnDistributionConfigLogSinkResult',
                  monthly_limit_bytes: _builtins.int,
                  optimizer: 'outputs.GetCdnDistributionConfigOptimizerResult',
                  redirects: 'outputs.GetCdnDistributionConfigRedirectsResult',
@@ -12472,6 +12727,7 @@ class GetCdnDistributionConfigResult(dict):
         :param 'GetCdnDistributionConfigCacheConfigArgs' cache_config: Groups the cache options that influence how the CDN builds its cache key. Warning: enabling query-string vary produces one cache entry per unique query-string combination (unbounded when query*string*vary*parameters is empty). Each entry in cache*key*headers multiplies the number of cache variants by the number of distinct values observed for that header. Use these settings sparingly.
         :param _builtins.str default_cache_duration: Sets the default cache duration for the distribution. The default cache duration is applied when a 'Cache-Control' header is not presented in the origin's response. We use ISO8601 duration format for cache duration (e.g. P1DT2H30M). Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
         :param _builtins.bool forward_host_header: Enable this allows the 'Host' header to be passed through to the origin.
+        :param 'GetCdnDistributionConfigLogSinkArgs' log_sink: The configured log sink used to export the distribution's access logs.
         :param _builtins.int monthly_limit_bytes: Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
         :param 'GetCdnDistributionConfigOptimizerArgs' optimizer: Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
         :param 'GetCdnDistributionConfigRedirectsArgs' redirects: A wrapper for a list of redirect rules that allows for redirect settings on a distribution. Currently, this feature is only available for distributions of backend type HTTP.
@@ -12486,6 +12742,7 @@ class GetCdnDistributionConfigResult(dict):
         pulumi.set(__self__, "cache_config", cache_config)
         pulumi.set(__self__, "default_cache_duration", default_cache_duration)
         pulumi.set(__self__, "forward_host_header", forward_host_header)
+        pulumi.set(__self__, "log_sink", log_sink)
         pulumi.set(__self__, "monthly_limit_bytes", monthly_limit_bytes)
         pulumi.set(__self__, "optimizer", optimizer)
         pulumi.set(__self__, "redirects", redirects)
@@ -12535,6 +12792,14 @@ class GetCdnDistributionConfigResult(dict):
         Enable this allows the 'Host' header to be passed through to the origin.
         """
         return pulumi.get(self, "forward_host_header")
+
+    @_builtins.property
+    @pulumi.getter(name="logSink")
+    def log_sink(self) -> 'outputs.GetCdnDistributionConfigLogSinkResult':
+        """
+        The configured log sink used to export the distribution's access logs.
+        """
+        return pulumi.get(self, "log_sink")
 
     @_builtins.property
     @pulumi.getter(name="monthlyLimitBytes")
@@ -12712,6 +12977,35 @@ class GetCdnDistributionConfigCacheConfigResult(dict):
         Allowlist of query-string parameter names that participate in the cache key when query*string*vary*enabled is true. Ignored while query*string*vary*enabled is false, but still stored so it can be re-activated without losing the list.
         """
         return pulumi.get(self, "query_string_vary_parameters")
+
+
+@pulumi.output_type
+class GetCdnDistributionConfigLogSinkResult(dict):
+    def __init__(__self__, *,
+                 push_url: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param _builtins.str push_url: The fully qualified URL where the CDN should push access logs (for example, `https://loki.example.com/loki/api/v1/push` for Loki or `https://otlp.example.com/otlp/v1/logs` for OTLP).
+        :param _builtins.str type: The log sink protocol
+        """
+        pulumi.set(__self__, "push_url", push_url)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="pushUrl")
+    def push_url(self) -> _builtins.str:
+        """
+        The fully qualified URL where the CDN should push access logs (for example, `https://loki.example.com/loki/api/v1/push` for Loki or `https://otlp.example.com/otlp/v1/logs` for OTLP).
+        """
+        return pulumi.get(self, "push_url")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The log sink protocol
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type
@@ -18719,6 +19013,7 @@ class GetSkeClusterNodePoolResult(dict):
                  allow_system_components: _builtins.bool,
                  availability_zones: Sequence[_builtins.str],
                  cri: _builtins.str,
+                 kata: _builtins.bool,
                  labels: Mapping[str, _builtins.str],
                  machine_type: _builtins.str,
                  max_surge: _builtins.int,
@@ -18737,6 +19032,7 @@ class GetSkeClusterNodePoolResult(dict):
         :param _builtins.bool allow_system_components: Allow system components to run on this node pool.
         :param Sequence[_builtins.str] availability_zones: Specify a list of availability zones.
         :param _builtins.str cri: Specifies the container runtime.
+        :param _builtins.bool kata: Whether workload isolation via Kata Containers is enabled for pods scheduled on this node pool.
         :param Mapping[str, _builtins.str] labels: Labels to add to each node.
         :param _builtins.str machine_type: The machine type.
         :param _builtins.int max_surge: The maximum number of nodes upgraded simultaneously.
@@ -18755,6 +19051,7 @@ class GetSkeClusterNodePoolResult(dict):
         pulumi.set(__self__, "allow_system_components", allow_system_components)
         pulumi.set(__self__, "availability_zones", availability_zones)
         pulumi.set(__self__, "cri", cri)
+        pulumi.set(__self__, "kata", kata)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "machine_type", machine_type)
         pulumi.set(__self__, "max_surge", max_surge)
@@ -18793,6 +19090,14 @@ class GetSkeClusterNodePoolResult(dict):
         Specifies the container runtime.
         """
         return pulumi.get(self, "cri")
+
+    @_builtins.property
+    @pulumi.getter
+    def kata(self) -> _builtins.bool:
+        """
+        Whether workload isolation via Kata Containers is enabled for pods scheduled on this node pool.
+        """
+        return pulumi.get(self, "kata")
 
     @_builtins.property
     @pulumi.getter

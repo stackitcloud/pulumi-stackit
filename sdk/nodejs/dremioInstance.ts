@@ -46,6 +46,10 @@ export class DremioInstance extends pulumi.CustomResource {
     }
 
     /**
+     * The Access Control List (ACL) defining the IPv4 or IPv6 CIDR ranges allowed to connect to the Dremio instance. An empty list allows access from any address.
+     */
+    declare public readonly acls: pulumi.Output<string[]>;
+    /**
      * Dremio instance authentication settings. A change here triggers a Dremio restart and will incur downtime.
      */
     declare public readonly authentication: pulumi.Output<outputs.DremioInstanceAuthentication>;
@@ -88,6 +92,7 @@ export class DremioInstance extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DremioInstanceState | undefined;
+            resourceInputs["acls"] = state?.acls;
             resourceInputs["authentication"] = state?.authentication;
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
@@ -107,6 +112,7 @@ export class DremioInstance extends pulumi.CustomResource {
             if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
+            resourceInputs["acls"] = args?.acls;
             resourceInputs["authentication"] = args?.authentication;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
@@ -125,6 +131,10 @@ export class DremioInstance extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DremioInstance resources.
  */
 export interface DremioInstanceState {
+    /**
+     * The Access Control List (ACL) defining the IPv4 or IPv6 CIDR ranges allowed to connect to the Dremio instance. An empty list allows access from any address.
+     */
+    acls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Dremio instance authentication settings. A change here triggers a Dremio restart and will incur downtime.
      */
@@ -160,6 +170,10 @@ export interface DremioInstanceState {
  * The set of arguments for constructing a DremioInstance resource.
  */
 export interface DremioInstanceArgs {
+    /**
+     * The Access Control List (ACL) defining the IPv4 or IPv6 CIDR ranges allowed to connect to the Dremio instance. An empty list allows access from any address.
+     */
+    acls?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Dremio instance authentication settings. A change here triggers a Dremio restart and will incur downtime.
      */

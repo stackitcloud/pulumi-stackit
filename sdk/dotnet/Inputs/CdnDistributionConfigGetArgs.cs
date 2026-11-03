@@ -61,6 +61,12 @@ namespace Pulumi.Stackit.Inputs
         public Input<bool>? ForwardHostHeader { get; set; }
 
         /// <summary>
+        /// Configures a log sink to export the distribution's access logs. Only one of Loki or OTLP can be configured at a time; the sink is selected via the `Type` attribute. Note: because the API never returns raw credentials, `Username`, `Password`, and `Token` are preserved from state during Read operations. If the sink type is changed outside of Terraform, previously stored credentials are cleared on refresh and must be re-applied via `pulumi up`.
+        /// </summary>
+        [Input("logSink")]
+        public Input<Inputs.CdnDistributionConfigLogSinkGetArgs>? LogSink { get; set; }
+
+        /// <summary>
         /// Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
         /// </summary>
         [Input("monthlyLimitBytes")]

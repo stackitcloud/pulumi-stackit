@@ -24,6 +24,12 @@ namespace Pulumi.Stackit
     public partial class DremioInstance : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The Access Control List (ACL) defining the IPv4 or IPv6 CIDR ranges allowed to connect to the Dremio instance. An empty list allows access from any address.
+        /// </summary>
+        [Output("acls")]
+        public Output<ImmutableArray<string>> Acls { get; private set; } = null!;
+
+        /// <summary>
         /// Dremio instance authentication settings. A change here triggers a Dremio restart and will incur downtime.
         /// </summary>
         [Output("authentication")]
@@ -115,6 +121,18 @@ namespace Pulumi.Stackit
 
     public sealed class DremioInstanceArgs : global::Pulumi.ResourceArgs
     {
+        [Input("acls")]
+        private InputList<string>? _acls;
+
+        /// <summary>
+        /// The Access Control List (ACL) defining the IPv4 or IPv6 CIDR ranges allowed to connect to the Dremio instance. An empty list allows access from any address.
+        /// </summary>
+        public InputList<string> Acls
+        {
+            get => _acls ?? (_acls = new InputList<string>());
+            set => _acls = value;
+        }
+
         /// <summary>
         /// Dremio instance authentication settings. A change here triggers a Dremio restart and will incur downtime.
         /// </summary>
@@ -156,6 +174,18 @@ namespace Pulumi.Stackit
 
     public sealed class DremioInstanceState : global::Pulumi.ResourceArgs
     {
+        [Input("acls")]
+        private InputList<string>? _acls;
+
+        /// <summary>
+        /// The Access Control List (ACL) defining the IPv4 or IPv6 CIDR ranges allowed to connect to the Dremio instance. An empty list allows access from any address.
+        /// </summary>
+        public InputList<string> Acls
+        {
+            get => _acls ?? (_acls = new InputList<string>());
+            set => _acls = value;
+        }
+
         /// <summary>
         /// Dremio instance authentication settings. A change here triggers a Dremio restart and will incur downtime.
         /// </summary>

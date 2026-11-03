@@ -40,6 +40,10 @@ export class AlbWafManagedRuleSet extends pulumi.CustomResource {
     }
 
     /**
+     * Rule modes to set, keyed by group ID (e.g. `911`) and rule ID (e.g. `911100`). Only the listed rules are managed; every other rule keeps the mode the API gives it. A rule removed from the configuration is set back to `MODE_ENABLED`, even if its mode was changed outside Terraform in the meantime. The resulting state of all rules is available in `groups`.
+     */
+    declare public readonly configuredGroups: pulumi.Output<{[key: string]: outputs.AlbWafManagedRuleSetConfiguredGroups} | undefined>;
+    /**
      * Inventory of all available Managed Rule Set groups and their current configuration.
      */
     declare public /*out*/ readonly groups: pulumi.Output<{[key: string]: outputs.AlbWafManagedRuleSetGroups}>;
@@ -77,6 +81,7 @@ export class AlbWafManagedRuleSet extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AlbWafManagedRuleSetState | undefined;
+            resourceInputs["configuredGroups"] = state?.configuredGroups;
             resourceInputs["groups"] = state?.groups;
             resourceInputs["name"] = state?.name;
             resourceInputs["projectId"] = state?.projectId;
@@ -91,6 +96,7 @@ export class AlbWafManagedRuleSet extends pulumi.CustomResource {
             if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
+            resourceInputs["configuredGroups"] = args?.configuredGroups;
             resourceInputs["name"] = args?.name;
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["region"] = args?.region;
@@ -107,6 +113,10 @@ export class AlbWafManagedRuleSet extends pulumi.CustomResource {
  * Input properties used for looking up and filtering AlbWafManagedRuleSet resources.
  */
 export interface AlbWafManagedRuleSetState {
+    /**
+     * Rule modes to set, keyed by group ID (e.g. `911`) and rule ID (e.g. `911100`). Only the listed rules are managed; every other rule keeps the mode the API gives it. A rule removed from the configuration is set back to `MODE_ENABLED`, even if its mode was changed outside Terraform in the meantime. The resulting state of all rules is available in `groups`.
+     */
+    configuredGroups?: pulumi.Input<{[key: string]: pulumi.Input<inputs.AlbWafManagedRuleSetConfiguredGroups>} | undefined>;
     /**
      * Inventory of all available Managed Rule Set groups and their current configuration.
      */
@@ -137,6 +147,10 @@ export interface AlbWafManagedRuleSetState {
  * The set of arguments for constructing a AlbWafManagedRuleSet resource.
  */
 export interface AlbWafManagedRuleSetArgs {
+    /**
+     * Rule modes to set, keyed by group ID (e.g. `911`) and rule ID (e.g. `911100`). Only the listed rules are managed; every other rule keeps the mode the API gives it. A rule removed from the configuration is set back to `MODE_ENABLED`, even if its mode was changed outside Terraform in the meantime. The resulting state of all rules is available in `groups`.
+     */
+    configuredGroups?: pulumi.Input<{[key: string]: pulumi.Input<inputs.AlbWafManagedRuleSetConfiguredGroups>} | undefined>;
     /**
      * Managed Rule Set configuration name.
      */

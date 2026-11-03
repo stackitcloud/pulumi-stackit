@@ -451,6 +451,202 @@ func (o AlbWafCustomRuleGroupRuleConditionVariableOutput) Value() pulumi.StringP
 	return o.ApplyT(func(v AlbWafCustomRuleGroupRuleConditionVariable) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
+type AlbWafManagedRuleSetConfiguredGroups struct {
+	// Rules of the rule group, keyed by rule ID (e.g. `911100`).
+	Rules map[string]AlbWafManagedRuleSetConfiguredGroupsRules `pulumi:"rules"`
+}
+
+// AlbWafManagedRuleSetConfiguredGroupsInput is an input type that accepts AlbWafManagedRuleSetConfiguredGroupsArgs and AlbWafManagedRuleSetConfiguredGroupsOutput values.
+// You can construct a concrete instance of `AlbWafManagedRuleSetConfiguredGroupsInput` via:
+//
+//	AlbWafManagedRuleSetConfiguredGroupsArgs{...}
+type AlbWafManagedRuleSetConfiguredGroupsInput interface {
+	pulumi.Input
+
+	ToAlbWafManagedRuleSetConfiguredGroupsOutput() AlbWafManagedRuleSetConfiguredGroupsOutput
+	ToAlbWafManagedRuleSetConfiguredGroupsOutputWithContext(context.Context) AlbWafManagedRuleSetConfiguredGroupsOutput
+}
+
+type AlbWafManagedRuleSetConfiguredGroupsArgs struct {
+	// Rules of the rule group, keyed by rule ID (e.g. `911100`).
+	Rules AlbWafManagedRuleSetConfiguredGroupsRulesMapInput `pulumi:"rules"`
+}
+
+func (AlbWafManagedRuleSetConfiguredGroupsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbWafManagedRuleSetConfiguredGroups)(nil)).Elem()
+}
+
+func (i AlbWafManagedRuleSetConfiguredGroupsArgs) ToAlbWafManagedRuleSetConfiguredGroupsOutput() AlbWafManagedRuleSetConfiguredGroupsOutput {
+	return i.ToAlbWafManagedRuleSetConfiguredGroupsOutputWithContext(context.Background())
+}
+
+func (i AlbWafManagedRuleSetConfiguredGroupsArgs) ToAlbWafManagedRuleSetConfiguredGroupsOutputWithContext(ctx context.Context) AlbWafManagedRuleSetConfiguredGroupsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbWafManagedRuleSetConfiguredGroupsOutput)
+}
+
+// AlbWafManagedRuleSetConfiguredGroupsMapInput is an input type that accepts AlbWafManagedRuleSetConfiguredGroupsMap and AlbWafManagedRuleSetConfiguredGroupsMapOutput values.
+// You can construct a concrete instance of `AlbWafManagedRuleSetConfiguredGroupsMapInput` via:
+//
+//	AlbWafManagedRuleSetConfiguredGroupsMap{ "key": AlbWafManagedRuleSetConfiguredGroupsArgs{...} }
+type AlbWafManagedRuleSetConfiguredGroupsMapInput interface {
+	pulumi.Input
+
+	ToAlbWafManagedRuleSetConfiguredGroupsMapOutput() AlbWafManagedRuleSetConfiguredGroupsMapOutput
+	ToAlbWafManagedRuleSetConfiguredGroupsMapOutputWithContext(context.Context) AlbWafManagedRuleSetConfiguredGroupsMapOutput
+}
+
+type AlbWafManagedRuleSetConfiguredGroupsMap map[string]AlbWafManagedRuleSetConfiguredGroupsInput
+
+func (AlbWafManagedRuleSetConfiguredGroupsMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AlbWafManagedRuleSetConfiguredGroups)(nil)).Elem()
+}
+
+func (i AlbWafManagedRuleSetConfiguredGroupsMap) ToAlbWafManagedRuleSetConfiguredGroupsMapOutput() AlbWafManagedRuleSetConfiguredGroupsMapOutput {
+	return i.ToAlbWafManagedRuleSetConfiguredGroupsMapOutputWithContext(context.Background())
+}
+
+func (i AlbWafManagedRuleSetConfiguredGroupsMap) ToAlbWafManagedRuleSetConfiguredGroupsMapOutputWithContext(ctx context.Context) AlbWafManagedRuleSetConfiguredGroupsMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbWafManagedRuleSetConfiguredGroupsMapOutput)
+}
+
+type AlbWafManagedRuleSetConfiguredGroupsOutput struct{ *pulumi.OutputState }
+
+func (AlbWafManagedRuleSetConfiguredGroupsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbWafManagedRuleSetConfiguredGroups)(nil)).Elem()
+}
+
+func (o AlbWafManagedRuleSetConfiguredGroupsOutput) ToAlbWafManagedRuleSetConfiguredGroupsOutput() AlbWafManagedRuleSetConfiguredGroupsOutput {
+	return o
+}
+
+func (o AlbWafManagedRuleSetConfiguredGroupsOutput) ToAlbWafManagedRuleSetConfiguredGroupsOutputWithContext(ctx context.Context) AlbWafManagedRuleSetConfiguredGroupsOutput {
+	return o
+}
+
+// Rules of the rule group, keyed by rule ID (e.g. `911100`).
+func (o AlbWafManagedRuleSetConfiguredGroupsOutput) Rules() AlbWafManagedRuleSetConfiguredGroupsRulesMapOutput {
+	return o.ApplyT(func(v AlbWafManagedRuleSetConfiguredGroups) map[string]AlbWafManagedRuleSetConfiguredGroupsRules {
+		return v.Rules
+	}).(AlbWafManagedRuleSetConfiguredGroupsRulesMapOutput)
+}
+
+type AlbWafManagedRuleSetConfiguredGroupsMapOutput struct{ *pulumi.OutputState }
+
+func (AlbWafManagedRuleSetConfiguredGroupsMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AlbWafManagedRuleSetConfiguredGroups)(nil)).Elem()
+}
+
+func (o AlbWafManagedRuleSetConfiguredGroupsMapOutput) ToAlbWafManagedRuleSetConfiguredGroupsMapOutput() AlbWafManagedRuleSetConfiguredGroupsMapOutput {
+	return o
+}
+
+func (o AlbWafManagedRuleSetConfiguredGroupsMapOutput) ToAlbWafManagedRuleSetConfiguredGroupsMapOutputWithContext(ctx context.Context) AlbWafManagedRuleSetConfiguredGroupsMapOutput {
+	return o
+}
+
+func (o AlbWafManagedRuleSetConfiguredGroupsMapOutput) MapIndex(k pulumi.StringInput) AlbWafManagedRuleSetConfiguredGroupsOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AlbWafManagedRuleSetConfiguredGroups {
+		return vs[0].(map[string]AlbWafManagedRuleSetConfiguredGroups)[vs[1].(string)]
+	}).(AlbWafManagedRuleSetConfiguredGroupsOutput)
+}
+
+type AlbWafManagedRuleSetConfiguredGroupsRules struct {
+	// The mode of the rule. Possible values are: `MODE_ENABLED`, `MODE_DISABLED`, `MODE_LOG_ONLY`.
+	Mode string `pulumi:"mode"`
+}
+
+// AlbWafManagedRuleSetConfiguredGroupsRulesInput is an input type that accepts AlbWafManagedRuleSetConfiguredGroupsRulesArgs and AlbWafManagedRuleSetConfiguredGroupsRulesOutput values.
+// You can construct a concrete instance of `AlbWafManagedRuleSetConfiguredGroupsRulesInput` via:
+//
+//	AlbWafManagedRuleSetConfiguredGroupsRulesArgs{...}
+type AlbWafManagedRuleSetConfiguredGroupsRulesInput interface {
+	pulumi.Input
+
+	ToAlbWafManagedRuleSetConfiguredGroupsRulesOutput() AlbWafManagedRuleSetConfiguredGroupsRulesOutput
+	ToAlbWafManagedRuleSetConfiguredGroupsRulesOutputWithContext(context.Context) AlbWafManagedRuleSetConfiguredGroupsRulesOutput
+}
+
+type AlbWafManagedRuleSetConfiguredGroupsRulesArgs struct {
+	// The mode of the rule. Possible values are: `MODE_ENABLED`, `MODE_DISABLED`, `MODE_LOG_ONLY`.
+	Mode pulumi.StringInput `pulumi:"mode"`
+}
+
+func (AlbWafManagedRuleSetConfiguredGroupsRulesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbWafManagedRuleSetConfiguredGroupsRules)(nil)).Elem()
+}
+
+func (i AlbWafManagedRuleSetConfiguredGroupsRulesArgs) ToAlbWafManagedRuleSetConfiguredGroupsRulesOutput() AlbWafManagedRuleSetConfiguredGroupsRulesOutput {
+	return i.ToAlbWafManagedRuleSetConfiguredGroupsRulesOutputWithContext(context.Background())
+}
+
+func (i AlbWafManagedRuleSetConfiguredGroupsRulesArgs) ToAlbWafManagedRuleSetConfiguredGroupsRulesOutputWithContext(ctx context.Context) AlbWafManagedRuleSetConfiguredGroupsRulesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbWafManagedRuleSetConfiguredGroupsRulesOutput)
+}
+
+// AlbWafManagedRuleSetConfiguredGroupsRulesMapInput is an input type that accepts AlbWafManagedRuleSetConfiguredGroupsRulesMap and AlbWafManagedRuleSetConfiguredGroupsRulesMapOutput values.
+// You can construct a concrete instance of `AlbWafManagedRuleSetConfiguredGroupsRulesMapInput` via:
+//
+//	AlbWafManagedRuleSetConfiguredGroupsRulesMap{ "key": AlbWafManagedRuleSetConfiguredGroupsRulesArgs{...} }
+type AlbWafManagedRuleSetConfiguredGroupsRulesMapInput interface {
+	pulumi.Input
+
+	ToAlbWafManagedRuleSetConfiguredGroupsRulesMapOutput() AlbWafManagedRuleSetConfiguredGroupsRulesMapOutput
+	ToAlbWafManagedRuleSetConfiguredGroupsRulesMapOutputWithContext(context.Context) AlbWafManagedRuleSetConfiguredGroupsRulesMapOutput
+}
+
+type AlbWafManagedRuleSetConfiguredGroupsRulesMap map[string]AlbWafManagedRuleSetConfiguredGroupsRulesInput
+
+func (AlbWafManagedRuleSetConfiguredGroupsRulesMap) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AlbWafManagedRuleSetConfiguredGroupsRules)(nil)).Elem()
+}
+
+func (i AlbWafManagedRuleSetConfiguredGroupsRulesMap) ToAlbWafManagedRuleSetConfiguredGroupsRulesMapOutput() AlbWafManagedRuleSetConfiguredGroupsRulesMapOutput {
+	return i.ToAlbWafManagedRuleSetConfiguredGroupsRulesMapOutputWithContext(context.Background())
+}
+
+func (i AlbWafManagedRuleSetConfiguredGroupsRulesMap) ToAlbWafManagedRuleSetConfiguredGroupsRulesMapOutputWithContext(ctx context.Context) AlbWafManagedRuleSetConfiguredGroupsRulesMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlbWafManagedRuleSetConfiguredGroupsRulesMapOutput)
+}
+
+type AlbWafManagedRuleSetConfiguredGroupsRulesOutput struct{ *pulumi.OutputState }
+
+func (AlbWafManagedRuleSetConfiguredGroupsRulesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlbWafManagedRuleSetConfiguredGroupsRules)(nil)).Elem()
+}
+
+func (o AlbWafManagedRuleSetConfiguredGroupsRulesOutput) ToAlbWafManagedRuleSetConfiguredGroupsRulesOutput() AlbWafManagedRuleSetConfiguredGroupsRulesOutput {
+	return o
+}
+
+func (o AlbWafManagedRuleSetConfiguredGroupsRulesOutput) ToAlbWafManagedRuleSetConfiguredGroupsRulesOutputWithContext(ctx context.Context) AlbWafManagedRuleSetConfiguredGroupsRulesOutput {
+	return o
+}
+
+// The mode of the rule. Possible values are: `MODE_ENABLED`, `MODE_DISABLED`, `MODE_LOG_ONLY`.
+func (o AlbWafManagedRuleSetConfiguredGroupsRulesOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v AlbWafManagedRuleSetConfiguredGroupsRules) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+type AlbWafManagedRuleSetConfiguredGroupsRulesMapOutput struct{ *pulumi.OutputState }
+
+func (AlbWafManagedRuleSetConfiguredGroupsRulesMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*map[string]AlbWafManagedRuleSetConfiguredGroupsRules)(nil)).Elem()
+}
+
+func (o AlbWafManagedRuleSetConfiguredGroupsRulesMapOutput) ToAlbWafManagedRuleSetConfiguredGroupsRulesMapOutput() AlbWafManagedRuleSetConfiguredGroupsRulesMapOutput {
+	return o
+}
+
+func (o AlbWafManagedRuleSetConfiguredGroupsRulesMapOutput) ToAlbWafManagedRuleSetConfiguredGroupsRulesMapOutputWithContext(ctx context.Context) AlbWafManagedRuleSetConfiguredGroupsRulesMapOutput {
+	return o
+}
+
+func (o AlbWafManagedRuleSetConfiguredGroupsRulesMapOutput) MapIndex(k pulumi.StringInput) AlbWafManagedRuleSetConfiguredGroupsRulesOutput {
+	return pulumi.All(o, k).ApplyT(func(vs []interface{}) AlbWafManagedRuleSetConfiguredGroupsRules {
+		return vs[0].(map[string]AlbWafManagedRuleSetConfiguredGroupsRules)[vs[1].(string)]
+	}).(AlbWafManagedRuleSetConfiguredGroupsRulesOutput)
+}
+
 type AlbWafManagedRuleSetGroups struct {
 	// A description of what this group covers.
 	Description *string `pulumi:"description"`
@@ -4297,6 +4493,8 @@ type CdnDistributionConfig struct {
 	DefaultCacheDuration *string `pulumi:"defaultCacheDuration"`
 	// Enable this allows the 'Host' header to be passed through to the origin.
 	ForwardHostHeader *bool `pulumi:"forwardHostHeader"`
+	// Configures a log sink to export the distribution's access logs. Only one of Loki or OTLP can be configured at a time; the sink is selected via the `type` attribute. Note: because the API never returns raw credentials, `username`, `password`, and `token` are preserved from state during Read operations. If the sink type is changed outside of Terraform, previously stored credentials are cleared on refresh and must be re-applied via `pulumi up`.
+	LogSink *CdnDistributionConfigLogSink `pulumi:"logSink"`
 	// Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
 	MonthlyLimitBytes *int `pulumi:"monthlyLimitBytes"`
 	// Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
@@ -4337,6 +4535,8 @@ type CdnDistributionConfigArgs struct {
 	DefaultCacheDuration pulumi.StringPtrInput `pulumi:"defaultCacheDuration"`
 	// Enable this allows the 'Host' header to be passed through to the origin.
 	ForwardHostHeader pulumi.BoolPtrInput `pulumi:"forwardHostHeader"`
+	// Configures a log sink to export the distribution's access logs. Only one of Loki or OTLP can be configured at a time; the sink is selected via the `type` attribute. Note: because the API never returns raw credentials, `username`, `password`, and `token` are preserved from state during Read operations. If the sink type is changed outside of Terraform, previously stored credentials are cleared on refresh and must be re-applied via `pulumi up`.
+	LogSink CdnDistributionConfigLogSinkPtrInput `pulumi:"logSink"`
 	// Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
 	MonthlyLimitBytes pulumi.IntPtrInput `pulumi:"monthlyLimitBytes"`
 	// Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
@@ -4460,6 +4660,11 @@ func (o CdnDistributionConfigOutput) ForwardHostHeader() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CdnDistributionConfig) *bool { return v.ForwardHostHeader }).(pulumi.BoolPtrOutput)
 }
 
+// Configures a log sink to export the distribution's access logs. Only one of Loki or OTLP can be configured at a time; the sink is selected via the `type` attribute. Note: because the API never returns raw credentials, `username`, `password`, and `token` are preserved from state during Read operations. If the sink type is changed outside of Terraform, previously stored credentials are cleared on refresh and must be re-applied via `pulumi up`.
+func (o CdnDistributionConfigOutput) LogSink() CdnDistributionConfigLogSinkPtrOutput {
+	return o.ApplyT(func(v CdnDistributionConfig) *CdnDistributionConfigLogSink { return v.LogSink }).(CdnDistributionConfigLogSinkPtrOutput)
+}
+
 // Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
 func (o CdnDistributionConfigOutput) MonthlyLimitBytes() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v CdnDistributionConfig) *int { return v.MonthlyLimitBytes }).(pulumi.IntPtrOutput)
@@ -4577,6 +4782,16 @@ func (o CdnDistributionConfigPtrOutput) ForwardHostHeader() pulumi.BoolPtrOutput
 		}
 		return v.ForwardHostHeader
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Configures a log sink to export the distribution's access logs. Only one of Loki or OTLP can be configured at a time; the sink is selected via the `type` attribute. Note: because the API never returns raw credentials, `username`, `password`, and `token` are preserved from state during Read operations. If the sink type is changed outside of Terraform, previously stored credentials are cleared on refresh and must be re-applied via `pulumi up`.
+func (o CdnDistributionConfigPtrOutput) LogSink() CdnDistributionConfigLogSinkPtrOutput {
+	return o.ApplyT(func(v *CdnDistributionConfig) *CdnDistributionConfigLogSink {
+		if v == nil {
+			return nil
+		}
+		return v.LogSink
+	}).(CdnDistributionConfigLogSinkPtrOutput)
 }
 
 // Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
@@ -5229,6 +5444,459 @@ func (o CdnDistributionConfigCacheConfigPtrOutput) QueryStringVaryParameters() p
 		}
 		return v.QueryStringVaryParameters
 	}).(pulumi.StringArrayOutput)
+}
+
+type CdnDistributionConfigLogSink struct {
+	// Authentication credentials the CDN uses when pushing logs. Loki requires `username` and `password`. OTLP requires `type` to be set to `basic` (with `username` and `password`) or `bearer` (with `token`).
+	Credentials CdnDistributionConfigLogSinkCredentials `pulumi:"credentials"`
+	// The fully qualified URL where the CDN should push access logs (for example, `https://loki.example.com/loki/api/v1/push` for Loki or `https://otlp.example.com/otlp/v1/logs` for OTLP).
+	PushUrl string `pulumi:"pushUrl"`
+	// The log sink protocolPossible values are: `loki`, `otlp`.
+	Type string `pulumi:"type"`
+}
+
+// CdnDistributionConfigLogSinkInput is an input type that accepts CdnDistributionConfigLogSinkArgs and CdnDistributionConfigLogSinkOutput values.
+// You can construct a concrete instance of `CdnDistributionConfigLogSinkInput` via:
+//
+//	CdnDistributionConfigLogSinkArgs{...}
+type CdnDistributionConfigLogSinkInput interface {
+	pulumi.Input
+
+	ToCdnDistributionConfigLogSinkOutput() CdnDistributionConfigLogSinkOutput
+	ToCdnDistributionConfigLogSinkOutputWithContext(context.Context) CdnDistributionConfigLogSinkOutput
+}
+
+type CdnDistributionConfigLogSinkArgs struct {
+	// Authentication credentials the CDN uses when pushing logs. Loki requires `username` and `password`. OTLP requires `type` to be set to `basic` (with `username` and `password`) or `bearer` (with `token`).
+	Credentials CdnDistributionConfigLogSinkCredentialsInput `pulumi:"credentials"`
+	// The fully qualified URL where the CDN should push access logs (for example, `https://loki.example.com/loki/api/v1/push` for Loki or `https://otlp.example.com/otlp/v1/logs` for OTLP).
+	PushUrl pulumi.StringInput `pulumi:"pushUrl"`
+	// The log sink protocolPossible values are: `loki`, `otlp`.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (CdnDistributionConfigLogSinkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CdnDistributionConfigLogSink)(nil)).Elem()
+}
+
+func (i CdnDistributionConfigLogSinkArgs) ToCdnDistributionConfigLogSinkOutput() CdnDistributionConfigLogSinkOutput {
+	return i.ToCdnDistributionConfigLogSinkOutputWithContext(context.Background())
+}
+
+func (i CdnDistributionConfigLogSinkArgs) ToCdnDistributionConfigLogSinkOutputWithContext(ctx context.Context) CdnDistributionConfigLogSinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnDistributionConfigLogSinkOutput)
+}
+
+func (i CdnDistributionConfigLogSinkArgs) ToCdnDistributionConfigLogSinkPtrOutput() CdnDistributionConfigLogSinkPtrOutput {
+	return i.ToCdnDistributionConfigLogSinkPtrOutputWithContext(context.Background())
+}
+
+func (i CdnDistributionConfigLogSinkArgs) ToCdnDistributionConfigLogSinkPtrOutputWithContext(ctx context.Context) CdnDistributionConfigLogSinkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnDistributionConfigLogSinkOutput).ToCdnDistributionConfigLogSinkPtrOutputWithContext(ctx)
+}
+
+// CdnDistributionConfigLogSinkPtrInput is an input type that accepts CdnDistributionConfigLogSinkArgs, CdnDistributionConfigLogSinkPtr and CdnDistributionConfigLogSinkPtrOutput values.
+// You can construct a concrete instance of `CdnDistributionConfigLogSinkPtrInput` via:
+//
+//	        CdnDistributionConfigLogSinkArgs{...}
+//
+//	or:
+//
+//	        nil
+type CdnDistributionConfigLogSinkPtrInput interface {
+	pulumi.Input
+
+	ToCdnDistributionConfigLogSinkPtrOutput() CdnDistributionConfigLogSinkPtrOutput
+	ToCdnDistributionConfigLogSinkPtrOutputWithContext(context.Context) CdnDistributionConfigLogSinkPtrOutput
+}
+
+type cdnDistributionConfigLogSinkPtrType CdnDistributionConfigLogSinkArgs
+
+func CdnDistributionConfigLogSinkPtr(v *CdnDistributionConfigLogSinkArgs) CdnDistributionConfigLogSinkPtrInput {
+	return (*cdnDistributionConfigLogSinkPtrType)(v)
+}
+
+func (*cdnDistributionConfigLogSinkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CdnDistributionConfigLogSink)(nil)).Elem()
+}
+
+func (i *cdnDistributionConfigLogSinkPtrType) ToCdnDistributionConfigLogSinkPtrOutput() CdnDistributionConfigLogSinkPtrOutput {
+	return i.ToCdnDistributionConfigLogSinkPtrOutputWithContext(context.Background())
+}
+
+func (i *cdnDistributionConfigLogSinkPtrType) ToCdnDistributionConfigLogSinkPtrOutputWithContext(ctx context.Context) CdnDistributionConfigLogSinkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnDistributionConfigLogSinkPtrOutput)
+}
+
+type CdnDistributionConfigLogSinkOutput struct{ *pulumi.OutputState }
+
+func (CdnDistributionConfigLogSinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CdnDistributionConfigLogSink)(nil)).Elem()
+}
+
+func (o CdnDistributionConfigLogSinkOutput) ToCdnDistributionConfigLogSinkOutput() CdnDistributionConfigLogSinkOutput {
+	return o
+}
+
+func (o CdnDistributionConfigLogSinkOutput) ToCdnDistributionConfigLogSinkOutputWithContext(ctx context.Context) CdnDistributionConfigLogSinkOutput {
+	return o
+}
+
+func (o CdnDistributionConfigLogSinkOutput) ToCdnDistributionConfigLogSinkPtrOutput() CdnDistributionConfigLogSinkPtrOutput {
+	return o.ToCdnDistributionConfigLogSinkPtrOutputWithContext(context.Background())
+}
+
+func (o CdnDistributionConfigLogSinkOutput) ToCdnDistributionConfigLogSinkPtrOutputWithContext(ctx context.Context) CdnDistributionConfigLogSinkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CdnDistributionConfigLogSink) *CdnDistributionConfigLogSink {
+		return &v
+	}).(CdnDistributionConfigLogSinkPtrOutput)
+}
+
+// Authentication credentials the CDN uses when pushing logs. Loki requires `username` and `password`. OTLP requires `type` to be set to `basic` (with `username` and `password`) or `bearer` (with `token`).
+func (o CdnDistributionConfigLogSinkOutput) Credentials() CdnDistributionConfigLogSinkCredentialsOutput {
+	return o.ApplyT(func(v CdnDistributionConfigLogSink) CdnDistributionConfigLogSinkCredentials { return v.Credentials }).(CdnDistributionConfigLogSinkCredentialsOutput)
+}
+
+// The fully qualified URL where the CDN should push access logs (for example, `https://loki.example.com/loki/api/v1/push` for Loki or `https://otlp.example.com/otlp/v1/logs` for OTLP).
+func (o CdnDistributionConfigLogSinkOutput) PushUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v CdnDistributionConfigLogSink) string { return v.PushUrl }).(pulumi.StringOutput)
+}
+
+// The log sink protocolPossible values are: `loki`, `otlp`.
+func (o CdnDistributionConfigLogSinkOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v CdnDistributionConfigLogSink) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type CdnDistributionConfigLogSinkPtrOutput struct{ *pulumi.OutputState }
+
+func (CdnDistributionConfigLogSinkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CdnDistributionConfigLogSink)(nil)).Elem()
+}
+
+func (o CdnDistributionConfigLogSinkPtrOutput) ToCdnDistributionConfigLogSinkPtrOutput() CdnDistributionConfigLogSinkPtrOutput {
+	return o
+}
+
+func (o CdnDistributionConfigLogSinkPtrOutput) ToCdnDistributionConfigLogSinkPtrOutputWithContext(ctx context.Context) CdnDistributionConfigLogSinkPtrOutput {
+	return o
+}
+
+func (o CdnDistributionConfigLogSinkPtrOutput) Elem() CdnDistributionConfigLogSinkOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigLogSink) CdnDistributionConfigLogSink {
+		if v != nil {
+			return *v
+		}
+		var ret CdnDistributionConfigLogSink
+		return ret
+	}).(CdnDistributionConfigLogSinkOutput)
+}
+
+// Authentication credentials the CDN uses when pushing logs. Loki requires `username` and `password`. OTLP requires `type` to be set to `basic` (with `username` and `password`) or `bearer` (with `token`).
+func (o CdnDistributionConfigLogSinkPtrOutput) Credentials() CdnDistributionConfigLogSinkCredentialsPtrOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigLogSink) *CdnDistributionConfigLogSinkCredentials {
+		if v == nil {
+			return nil
+		}
+		return &v.Credentials
+	}).(CdnDistributionConfigLogSinkCredentialsPtrOutput)
+}
+
+// The fully qualified URL where the CDN should push access logs (for example, `https://loki.example.com/loki/api/v1/push` for Loki or `https://otlp.example.com/otlp/v1/logs` for OTLP).
+func (o CdnDistributionConfigLogSinkPtrOutput) PushUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigLogSink) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PushUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// The log sink protocolPossible values are: `loki`, `otlp`.
+func (o CdnDistributionConfigLogSinkPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigLogSink) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+type CdnDistributionConfigLogSinkCredentials struct {
+	// The password corresponding to `username`. Required for Loki and for OTLP when `credentials.type` is `basic`. Write-only argument `passwordWo` should be preferred.
+	Password *string `pulumi:"password"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only password for log sink authentication. Never stored in state and never returned by the API. To rotate the password, update this value AND increment `passwordWoVersion`. Changing this field alone will NOT trigger an update.
+	PasswordWo *string `pulumi:"passwordWo"`
+	// User-managed rotation counter for `passwordWo`. Must be incremented every time `passwordWo` is changed. Note: because the API treats credentials atomically (username + password together for Loki/OTLP basic), the password is also automatically re-sent when `username`, `log_sink.type`, or `credentials.type` changes, even without a version bump.
+	PasswordWoVersion *int `pulumi:"passwordWoVersion"`
+	// The bearer token used to authenticate. Required for OTLP when `credentials.type` is `bearer`. Write-only argument `tokenWo` should be preferred.
+	Token *string `pulumi:"token"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only bearer token for OTLP log sink authentication. Never stored in state and never returned by the API. To rotate the token, update this value AND increment `tokenWoVersion`. Changing this field alone will NOT trigger an update.
+	TokenWo *string `pulumi:"tokenWo"`
+	// User-managed rotation counter for `tokenWo`. Must be incremented every time `tokenWo` is changed. Note: the token is also automatically re-sent when `log_sink.type` or `credentials.type` changes, even without a version bump.
+	TokenWoVersion *int `pulumi:"tokenWoVersion"`
+	// The authentication type when using an OTLP log sink. Leave unset for Loki.Possible values are: `basic`, `bearer`.
+	Type *string `pulumi:"type"`
+	// The username used to authenticate. Required for Loki and for OTLP when `credentials.type` is `basic`.
+	Username *string `pulumi:"username"`
+}
+
+// CdnDistributionConfigLogSinkCredentialsInput is an input type that accepts CdnDistributionConfigLogSinkCredentialsArgs and CdnDistributionConfigLogSinkCredentialsOutput values.
+// You can construct a concrete instance of `CdnDistributionConfigLogSinkCredentialsInput` via:
+//
+//	CdnDistributionConfigLogSinkCredentialsArgs{...}
+type CdnDistributionConfigLogSinkCredentialsInput interface {
+	pulumi.Input
+
+	ToCdnDistributionConfigLogSinkCredentialsOutput() CdnDistributionConfigLogSinkCredentialsOutput
+	ToCdnDistributionConfigLogSinkCredentialsOutputWithContext(context.Context) CdnDistributionConfigLogSinkCredentialsOutput
+}
+
+type CdnDistributionConfigLogSinkCredentialsArgs struct {
+	// The password corresponding to `username`. Required for Loki and for OTLP when `credentials.type` is `basic`. Write-only argument `passwordWo` should be preferred.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only password for log sink authentication. Never stored in state and never returned by the API. To rotate the password, update this value AND increment `passwordWoVersion`. Changing this field alone will NOT trigger an update.
+	PasswordWo pulumi.StringPtrInput `pulumi:"passwordWo"`
+	// User-managed rotation counter for `passwordWo`. Must be incremented every time `passwordWo` is changed. Note: because the API treats credentials atomically (username + password together for Loki/OTLP basic), the password is also automatically re-sent when `username`, `log_sink.type`, or `credentials.type` changes, even without a version bump.
+	PasswordWoVersion pulumi.IntPtrInput `pulumi:"passwordWoVersion"`
+	// The bearer token used to authenticate. Required for OTLP when `credentials.type` is `bearer`. Write-only argument `tokenWo` should be preferred.
+	Token pulumi.StringPtrInput `pulumi:"token"`
+	// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+	// Write-only bearer token for OTLP log sink authentication. Never stored in state and never returned by the API. To rotate the token, update this value AND increment `tokenWoVersion`. Changing this field alone will NOT trigger an update.
+	TokenWo pulumi.StringPtrInput `pulumi:"tokenWo"`
+	// User-managed rotation counter for `tokenWo`. Must be incremented every time `tokenWo` is changed. Note: the token is also automatically re-sent when `log_sink.type` or `credentials.type` changes, even without a version bump.
+	TokenWoVersion pulumi.IntPtrInput `pulumi:"tokenWoVersion"`
+	// The authentication type when using an OTLP log sink. Leave unset for Loki.Possible values are: `basic`, `bearer`.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The username used to authenticate. Required for Loki and for OTLP when `credentials.type` is `basic`.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (CdnDistributionConfigLogSinkCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CdnDistributionConfigLogSinkCredentials)(nil)).Elem()
+}
+
+func (i CdnDistributionConfigLogSinkCredentialsArgs) ToCdnDistributionConfigLogSinkCredentialsOutput() CdnDistributionConfigLogSinkCredentialsOutput {
+	return i.ToCdnDistributionConfigLogSinkCredentialsOutputWithContext(context.Background())
+}
+
+func (i CdnDistributionConfigLogSinkCredentialsArgs) ToCdnDistributionConfigLogSinkCredentialsOutputWithContext(ctx context.Context) CdnDistributionConfigLogSinkCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnDistributionConfigLogSinkCredentialsOutput)
+}
+
+func (i CdnDistributionConfigLogSinkCredentialsArgs) ToCdnDistributionConfigLogSinkCredentialsPtrOutput() CdnDistributionConfigLogSinkCredentialsPtrOutput {
+	return i.ToCdnDistributionConfigLogSinkCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i CdnDistributionConfigLogSinkCredentialsArgs) ToCdnDistributionConfigLogSinkCredentialsPtrOutputWithContext(ctx context.Context) CdnDistributionConfigLogSinkCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnDistributionConfigLogSinkCredentialsOutput).ToCdnDistributionConfigLogSinkCredentialsPtrOutputWithContext(ctx)
+}
+
+// CdnDistributionConfigLogSinkCredentialsPtrInput is an input type that accepts CdnDistributionConfigLogSinkCredentialsArgs, CdnDistributionConfigLogSinkCredentialsPtr and CdnDistributionConfigLogSinkCredentialsPtrOutput values.
+// You can construct a concrete instance of `CdnDistributionConfigLogSinkCredentialsPtrInput` via:
+//
+//	        CdnDistributionConfigLogSinkCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type CdnDistributionConfigLogSinkCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToCdnDistributionConfigLogSinkCredentialsPtrOutput() CdnDistributionConfigLogSinkCredentialsPtrOutput
+	ToCdnDistributionConfigLogSinkCredentialsPtrOutputWithContext(context.Context) CdnDistributionConfigLogSinkCredentialsPtrOutput
+}
+
+type cdnDistributionConfigLogSinkCredentialsPtrType CdnDistributionConfigLogSinkCredentialsArgs
+
+func CdnDistributionConfigLogSinkCredentialsPtr(v *CdnDistributionConfigLogSinkCredentialsArgs) CdnDistributionConfigLogSinkCredentialsPtrInput {
+	return (*cdnDistributionConfigLogSinkCredentialsPtrType)(v)
+}
+
+func (*cdnDistributionConfigLogSinkCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CdnDistributionConfigLogSinkCredentials)(nil)).Elem()
+}
+
+func (i *cdnDistributionConfigLogSinkCredentialsPtrType) ToCdnDistributionConfigLogSinkCredentialsPtrOutput() CdnDistributionConfigLogSinkCredentialsPtrOutput {
+	return i.ToCdnDistributionConfigLogSinkCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *cdnDistributionConfigLogSinkCredentialsPtrType) ToCdnDistributionConfigLogSinkCredentialsPtrOutputWithContext(ctx context.Context) CdnDistributionConfigLogSinkCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CdnDistributionConfigLogSinkCredentialsPtrOutput)
+}
+
+type CdnDistributionConfigLogSinkCredentialsOutput struct{ *pulumi.OutputState }
+
+func (CdnDistributionConfigLogSinkCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CdnDistributionConfigLogSinkCredentials)(nil)).Elem()
+}
+
+func (o CdnDistributionConfigLogSinkCredentialsOutput) ToCdnDistributionConfigLogSinkCredentialsOutput() CdnDistributionConfigLogSinkCredentialsOutput {
+	return o
+}
+
+func (o CdnDistributionConfigLogSinkCredentialsOutput) ToCdnDistributionConfigLogSinkCredentialsOutputWithContext(ctx context.Context) CdnDistributionConfigLogSinkCredentialsOutput {
+	return o
+}
+
+func (o CdnDistributionConfigLogSinkCredentialsOutput) ToCdnDistributionConfigLogSinkCredentialsPtrOutput() CdnDistributionConfigLogSinkCredentialsPtrOutput {
+	return o.ToCdnDistributionConfigLogSinkCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o CdnDistributionConfigLogSinkCredentialsOutput) ToCdnDistributionConfigLogSinkCredentialsPtrOutputWithContext(ctx context.Context) CdnDistributionConfigLogSinkCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CdnDistributionConfigLogSinkCredentials) *CdnDistributionConfigLogSinkCredentials {
+		return &v
+	}).(CdnDistributionConfigLogSinkCredentialsPtrOutput)
+}
+
+// The password corresponding to `username`. Required for Loki and for OTLP when `credentials.type` is `basic`. Write-only argument `passwordWo` should be preferred.
+func (o CdnDistributionConfigLogSinkCredentialsOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CdnDistributionConfigLogSinkCredentials) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// Write-only password for log sink authentication. Never stored in state and never returned by the API. To rotate the password, update this value AND increment `passwordWoVersion`. Changing this field alone will NOT trigger an update.
+func (o CdnDistributionConfigLogSinkCredentialsOutput) PasswordWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CdnDistributionConfigLogSinkCredentials) *string { return v.PasswordWo }).(pulumi.StringPtrOutput)
+}
+
+// User-managed rotation counter for `passwordWo`. Must be incremented every time `passwordWo` is changed. Note: because the API treats credentials atomically (username + password together for Loki/OTLP basic), the password is also automatically re-sent when `username`, `log_sink.type`, or `credentials.type` changes, even without a version bump.
+func (o CdnDistributionConfigLogSinkCredentialsOutput) PasswordWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CdnDistributionConfigLogSinkCredentials) *int { return v.PasswordWoVersion }).(pulumi.IntPtrOutput)
+}
+
+// The bearer token used to authenticate. Required for OTLP when `credentials.type` is `bearer`. Write-only argument `tokenWo` should be preferred.
+func (o CdnDistributionConfigLogSinkCredentialsOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CdnDistributionConfigLogSinkCredentials) *string { return v.Token }).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// Write-only bearer token for OTLP log sink authentication. Never stored in state and never returned by the API. To rotate the token, update this value AND increment `tokenWoVersion`. Changing this field alone will NOT trigger an update.
+func (o CdnDistributionConfigLogSinkCredentialsOutput) TokenWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CdnDistributionConfigLogSinkCredentials) *string { return v.TokenWo }).(pulumi.StringPtrOutput)
+}
+
+// User-managed rotation counter for `tokenWo`. Must be incremented every time `tokenWo` is changed. Note: the token is also automatically re-sent when `log_sink.type` or `credentials.type` changes, even without a version bump.
+func (o CdnDistributionConfigLogSinkCredentialsOutput) TokenWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CdnDistributionConfigLogSinkCredentials) *int { return v.TokenWoVersion }).(pulumi.IntPtrOutput)
+}
+
+// The authentication type when using an OTLP log sink. Leave unset for Loki.Possible values are: `basic`, `bearer`.
+func (o CdnDistributionConfigLogSinkCredentialsOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CdnDistributionConfigLogSinkCredentials) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// The username used to authenticate. Required for Loki and for OTLP when `credentials.type` is `basic`.
+func (o CdnDistributionConfigLogSinkCredentialsOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CdnDistributionConfigLogSinkCredentials) *string { return v.Username }).(pulumi.StringPtrOutput)
+}
+
+type CdnDistributionConfigLogSinkCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (CdnDistributionConfigLogSinkCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CdnDistributionConfigLogSinkCredentials)(nil)).Elem()
+}
+
+func (o CdnDistributionConfigLogSinkCredentialsPtrOutput) ToCdnDistributionConfigLogSinkCredentialsPtrOutput() CdnDistributionConfigLogSinkCredentialsPtrOutput {
+	return o
+}
+
+func (o CdnDistributionConfigLogSinkCredentialsPtrOutput) ToCdnDistributionConfigLogSinkCredentialsPtrOutputWithContext(ctx context.Context) CdnDistributionConfigLogSinkCredentialsPtrOutput {
+	return o
+}
+
+func (o CdnDistributionConfigLogSinkCredentialsPtrOutput) Elem() CdnDistributionConfigLogSinkCredentialsOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigLogSinkCredentials) CdnDistributionConfigLogSinkCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret CdnDistributionConfigLogSinkCredentials
+		return ret
+	}).(CdnDistributionConfigLogSinkCredentialsOutput)
+}
+
+// The password corresponding to `username`. Required for Loki and for OTLP when `credentials.type` is `basic`. Write-only argument `passwordWo` should be preferred.
+func (o CdnDistributionConfigLogSinkCredentialsPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigLogSinkCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// Write-only password for log sink authentication. Never stored in state and never returned by the API. To rotate the password, update this value AND increment `passwordWoVersion`. Changing this field alone will NOT trigger an update.
+func (o CdnDistributionConfigLogSinkCredentialsPtrOutput) PasswordWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigLogSinkCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordWo
+	}).(pulumi.StringPtrOutput)
+}
+
+// User-managed rotation counter for `passwordWo`. Must be incremented every time `passwordWo` is changed. Note: because the API treats credentials atomically (username + password together for Loki/OTLP basic), the password is also automatically re-sent when `username`, `log_sink.type`, or `credentials.type` changes, even without a version bump.
+func (o CdnDistributionConfigLogSinkCredentialsPtrOutput) PasswordWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigLogSinkCredentials) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordWoVersion
+	}).(pulumi.IntPtrOutput)
+}
+
+// The bearer token used to authenticate. Required for OTLP when `credentials.type` is `bearer`. Write-only argument `tokenWo` should be preferred.
+func (o CdnDistributionConfigLogSinkCredentialsPtrOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigLogSinkCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Token
+	}).(pulumi.StringPtrOutput)
+}
+
+// **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+// Write-only bearer token for OTLP log sink authentication. Never stored in state and never returned by the API. To rotate the token, update this value AND increment `tokenWoVersion`. Changing this field alone will NOT trigger an update.
+func (o CdnDistributionConfigLogSinkCredentialsPtrOutput) TokenWo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigLogSinkCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TokenWo
+	}).(pulumi.StringPtrOutput)
+}
+
+// User-managed rotation counter for `tokenWo`. Must be incremented every time `tokenWo` is changed. Note: the token is also automatically re-sent when `log_sink.type` or `credentials.type` changes, even without a version bump.
+func (o CdnDistributionConfigLogSinkCredentialsPtrOutput) TokenWoVersion() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigLogSinkCredentials) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TokenWoVersion
+	}).(pulumi.IntPtrOutput)
+}
+
+// The authentication type when using an OTLP log sink. Leave unset for Loki.Possible values are: `basic`, `bearer`.
+func (o CdnDistributionConfigLogSinkCredentialsPtrOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigLogSinkCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Type
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username used to authenticate. Required for Loki and for OTLP when `credentials.type` is `basic`.
+func (o CdnDistributionConfigLogSinkCredentialsPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CdnDistributionConfigLogSinkCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
+	}).(pulumi.StringPtrOutput)
 }
 
 type CdnDistributionConfigOptimizer struct {
@@ -21356,6 +22024,8 @@ type SkeClusterNodePool struct {
 	AvailabilityZones []string `pulumi:"availabilityZones"`
 	// Specifies the container runtime. Defaults to `containerd`
 	Cri *string `pulumi:"cri"`
+	// Enable workload isolation via Kata Containers for pods scheduled on this node pool. Note: This feature is in private preview. Enabling is only possible for enabled accounts. Otherwise the request will be rejected. Defaults to `false`.
+	Kata *bool `pulumi:"kata"`
 	// Labels to add to each node.
 	Labels map[string]string `pulumi:"labels"`
 	// The machine type.
@@ -21406,6 +22076,8 @@ type SkeClusterNodePoolArgs struct {
 	AvailabilityZones pulumi.StringArrayInput `pulumi:"availabilityZones"`
 	// Specifies the container runtime. Defaults to `containerd`
 	Cri pulumi.StringPtrInput `pulumi:"cri"`
+	// Enable workload isolation via Kata Containers for pods scheduled on this node pool. Note: This feature is in private preview. Enabling is only possible for enabled accounts. Otherwise the request will be rejected. Defaults to `false`.
+	Kata pulumi.BoolPtrInput `pulumi:"kata"`
 	// Labels to add to each node.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The machine type.
@@ -21502,6 +22174,11 @@ func (o SkeClusterNodePoolOutput) AvailabilityZones() pulumi.StringArrayOutput {
 // Specifies the container runtime. Defaults to `containerd`
 func (o SkeClusterNodePoolOutput) Cri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SkeClusterNodePool) *string { return v.Cri }).(pulumi.StringPtrOutput)
+}
+
+// Enable workload isolation via Kata Containers for pods scheduled on this node pool. Note: This feature is in private preview. Enabling is only possible for enabled accounts. Otherwise the request will be rejected. Defaults to `false`.
+func (o SkeClusterNodePoolOutput) Kata() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SkeClusterNodePool) *bool { return v.Kata }).(pulumi.BoolPtrOutput)
 }
 
 // Labels to add to each node.
@@ -31875,6 +32552,8 @@ type GetCdnDistributionConfig struct {
 	DefaultCacheDuration string `pulumi:"defaultCacheDuration"`
 	// Enable this allows the 'Host' header to be passed through to the origin.
 	ForwardHostHeader bool `pulumi:"forwardHostHeader"`
+	// The configured log sink used to export the distribution's access logs.
+	LogSink GetCdnDistributionConfigLogSink `pulumi:"logSink"`
 	// Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
 	MonthlyLimitBytes int `pulumi:"monthlyLimitBytes"`
 	// Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
@@ -31915,6 +32594,8 @@ type GetCdnDistributionConfigArgs struct {
 	DefaultCacheDuration pulumi.StringInput `pulumi:"defaultCacheDuration"`
 	// Enable this allows the 'Host' header to be passed through to the origin.
 	ForwardHostHeader pulumi.BoolInput `pulumi:"forwardHostHeader"`
+	// The configured log sink used to export the distribution's access logs.
+	LogSink GetCdnDistributionConfigLogSinkInput `pulumi:"logSink"`
 	// Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
 	MonthlyLimitBytes pulumi.IntInput `pulumi:"monthlyLimitBytes"`
 	// Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
@@ -31985,6 +32666,11 @@ func (o GetCdnDistributionConfigOutput) DefaultCacheDuration() pulumi.StringOutp
 // Enable this allows the 'Host' header to be passed through to the origin.
 func (o GetCdnDistributionConfigOutput) ForwardHostHeader() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetCdnDistributionConfig) bool { return v.ForwardHostHeader }).(pulumi.BoolOutput)
+}
+
+// The configured log sink used to export the distribution's access logs.
+func (o GetCdnDistributionConfigOutput) LogSink() GetCdnDistributionConfigLogSinkOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfig) GetCdnDistributionConfigLogSink { return v.LogSink }).(GetCdnDistributionConfigLogSinkOutput)
 }
 
 // Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
@@ -32187,6 +32873,67 @@ func (o GetCdnDistributionConfigCacheConfigOutput) QueryStringVaryEnabled() pulu
 // Allowlist of query-string parameter names that participate in the cache key when query*string*vary*enabled is true. Ignored while query*string*vary*enabled is false, but still stored so it can be re-activated without losing the list.
 func (o GetCdnDistributionConfigCacheConfigOutput) QueryStringVaryParameters() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetCdnDistributionConfigCacheConfig) []string { return v.QueryStringVaryParameters }).(pulumi.StringArrayOutput)
+}
+
+type GetCdnDistributionConfigLogSink struct {
+	// The fully qualified URL where the CDN should push access logs (for example, `https://loki.example.com/loki/api/v1/push` for Loki or `https://otlp.example.com/otlp/v1/logs` for OTLP).
+	PushUrl string `pulumi:"pushUrl"`
+	// The log sink protocol
+	Type string `pulumi:"type"`
+}
+
+// GetCdnDistributionConfigLogSinkInput is an input type that accepts GetCdnDistributionConfigLogSinkArgs and GetCdnDistributionConfigLogSinkOutput values.
+// You can construct a concrete instance of `GetCdnDistributionConfigLogSinkInput` via:
+//
+//	GetCdnDistributionConfigLogSinkArgs{...}
+type GetCdnDistributionConfigLogSinkInput interface {
+	pulumi.Input
+
+	ToGetCdnDistributionConfigLogSinkOutput() GetCdnDistributionConfigLogSinkOutput
+	ToGetCdnDistributionConfigLogSinkOutputWithContext(context.Context) GetCdnDistributionConfigLogSinkOutput
+}
+
+type GetCdnDistributionConfigLogSinkArgs struct {
+	// The fully qualified URL where the CDN should push access logs (for example, `https://loki.example.com/loki/api/v1/push` for Loki or `https://otlp.example.com/otlp/v1/logs` for OTLP).
+	PushUrl pulumi.StringInput `pulumi:"pushUrl"`
+	// The log sink protocol
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetCdnDistributionConfigLogSinkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCdnDistributionConfigLogSink)(nil)).Elem()
+}
+
+func (i GetCdnDistributionConfigLogSinkArgs) ToGetCdnDistributionConfigLogSinkOutput() GetCdnDistributionConfigLogSinkOutput {
+	return i.ToGetCdnDistributionConfigLogSinkOutputWithContext(context.Background())
+}
+
+func (i GetCdnDistributionConfigLogSinkArgs) ToGetCdnDistributionConfigLogSinkOutputWithContext(ctx context.Context) GetCdnDistributionConfigLogSinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetCdnDistributionConfigLogSinkOutput)
+}
+
+type GetCdnDistributionConfigLogSinkOutput struct{ *pulumi.OutputState }
+
+func (GetCdnDistributionConfigLogSinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetCdnDistributionConfigLogSink)(nil)).Elem()
+}
+
+func (o GetCdnDistributionConfigLogSinkOutput) ToGetCdnDistributionConfigLogSinkOutput() GetCdnDistributionConfigLogSinkOutput {
+	return o
+}
+
+func (o GetCdnDistributionConfigLogSinkOutput) ToGetCdnDistributionConfigLogSinkOutputWithContext(ctx context.Context) GetCdnDistributionConfigLogSinkOutput {
+	return o
+}
+
+// The fully qualified URL where the CDN should push access logs (for example, `https://loki.example.com/loki/api/v1/push` for Loki or `https://otlp.example.com/otlp/v1/logs` for OTLP).
+func (o GetCdnDistributionConfigLogSinkOutput) PushUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfigLogSink) string { return v.PushUrl }).(pulumi.StringOutput)
+}
+
+// The log sink protocol
+func (o GetCdnDistributionConfigLogSinkOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetCdnDistributionConfigLogSink) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type GetCdnDistributionConfigOptimizer struct {
@@ -44173,6 +44920,8 @@ type GetSkeClusterNodePool struct {
 	AvailabilityZones []string `pulumi:"availabilityZones"`
 	// Specifies the container runtime.
 	Cri string `pulumi:"cri"`
+	// Whether workload isolation via Kata Containers is enabled for pods scheduled on this node pool.
+	Kata bool `pulumi:"kata"`
 	// Labels to add to each node.
 	Labels map[string]string `pulumi:"labels"`
 	// The machine type.
@@ -44221,6 +44970,8 @@ type GetSkeClusterNodePoolArgs struct {
 	AvailabilityZones pulumi.StringArrayInput `pulumi:"availabilityZones"`
 	// Specifies the container runtime.
 	Cri pulumi.StringInput `pulumi:"cri"`
+	// Whether workload isolation via Kata Containers is enabled for pods scheduled on this node pool.
+	Kata pulumi.BoolInput `pulumi:"kata"`
 	// Labels to add to each node.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The machine type.
@@ -44315,6 +45066,11 @@ func (o GetSkeClusterNodePoolOutput) AvailabilityZones() pulumi.StringArrayOutpu
 // Specifies the container runtime.
 func (o GetSkeClusterNodePoolOutput) Cri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSkeClusterNodePool) string { return v.Cri }).(pulumi.StringOutput)
+}
+
+// Whether workload isolation via Kata Containers is enabled for pods scheduled on this node pool.
+func (o GetSkeClusterNodePoolOutput) Kata() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSkeClusterNodePool) bool { return v.Kata }).(pulumi.BoolOutput)
 }
 
 // Labels to add to each node.
@@ -48665,6 +49421,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AlbWafCustomRuleGroupRuleConditionArrayInput)(nil)).Elem(), AlbWafCustomRuleGroupRuleConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlbWafCustomRuleGroupRuleConditionOperatorInput)(nil)).Elem(), AlbWafCustomRuleGroupRuleConditionOperatorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlbWafCustomRuleGroupRuleConditionVariableInput)(nil)).Elem(), AlbWafCustomRuleGroupRuleConditionVariableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbWafManagedRuleSetConfiguredGroupsInput)(nil)).Elem(), AlbWafManagedRuleSetConfiguredGroupsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbWafManagedRuleSetConfiguredGroupsMapInput)(nil)).Elem(), AlbWafManagedRuleSetConfiguredGroupsMap{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbWafManagedRuleSetConfiguredGroupsRulesInput)(nil)).Elem(), AlbWafManagedRuleSetConfiguredGroupsRulesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlbWafManagedRuleSetConfiguredGroupsRulesMapInput)(nil)).Elem(), AlbWafManagedRuleSetConfiguredGroupsRulesMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlbWafManagedRuleSetGroupsInput)(nil)).Elem(), AlbWafManagedRuleSetGroupsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlbWafManagedRuleSetGroupsMapInput)(nil)).Elem(), AlbWafManagedRuleSetGroupsMap{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AlbWafManagedRuleSetGroupsRulesInput)(nil)).Elem(), AlbWafManagedRuleSetGroupsRulesArgs{})
@@ -48726,6 +49486,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigBackendCredentialsPtrInput)(nil)).Elem(), CdnDistributionConfigBackendCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigCacheConfigInput)(nil)).Elem(), CdnDistributionConfigCacheConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigCacheConfigPtrInput)(nil)).Elem(), CdnDistributionConfigCacheConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigLogSinkInput)(nil)).Elem(), CdnDistributionConfigLogSinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigLogSinkPtrInput)(nil)).Elem(), CdnDistributionConfigLogSinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigLogSinkCredentialsInput)(nil)).Elem(), CdnDistributionConfigLogSinkCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigLogSinkCredentialsPtrInput)(nil)).Elem(), CdnDistributionConfigLogSinkCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigOptimizerInput)(nil)).Elem(), CdnDistributionConfigOptimizerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigOptimizerPtrInput)(nil)).Elem(), CdnDistributionConfigOptimizerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CdnDistributionConfigRedirectsInput)(nil)).Elem(), CdnDistributionConfigRedirectsArgs{})
@@ -49037,6 +49801,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionConfigInput)(nil)).Elem(), GetCdnDistributionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionConfigBackendInput)(nil)).Elem(), GetCdnDistributionConfigBackendArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionConfigCacheConfigInput)(nil)).Elem(), GetCdnDistributionConfigCacheConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionConfigLogSinkInput)(nil)).Elem(), GetCdnDistributionConfigLogSinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionConfigOptimizerInput)(nil)).Elem(), GetCdnDistributionConfigOptimizerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionConfigRedirectsInput)(nil)).Elem(), GetCdnDistributionConfigRedirectsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetCdnDistributionConfigRedirectsRuleInput)(nil)).Elem(), GetCdnDistributionConfigRedirectsRuleArgs{})
@@ -49274,6 +50039,10 @@ func init() {
 	pulumi.RegisterOutputType(AlbWafCustomRuleGroupRuleConditionArrayOutput{})
 	pulumi.RegisterOutputType(AlbWafCustomRuleGroupRuleConditionOperatorOutput{})
 	pulumi.RegisterOutputType(AlbWafCustomRuleGroupRuleConditionVariableOutput{})
+	pulumi.RegisterOutputType(AlbWafManagedRuleSetConfiguredGroupsOutput{})
+	pulumi.RegisterOutputType(AlbWafManagedRuleSetConfiguredGroupsMapOutput{})
+	pulumi.RegisterOutputType(AlbWafManagedRuleSetConfiguredGroupsRulesOutput{})
+	pulumi.RegisterOutputType(AlbWafManagedRuleSetConfiguredGroupsRulesMapOutput{})
 	pulumi.RegisterOutputType(AlbWafManagedRuleSetGroupsOutput{})
 	pulumi.RegisterOutputType(AlbWafManagedRuleSetGroupsMapOutput{})
 	pulumi.RegisterOutputType(AlbWafManagedRuleSetGroupsRulesOutput{})
@@ -49335,6 +50104,10 @@ func init() {
 	pulumi.RegisterOutputType(CdnDistributionConfigBackendCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(CdnDistributionConfigCacheConfigOutput{})
 	pulumi.RegisterOutputType(CdnDistributionConfigCacheConfigPtrOutput{})
+	pulumi.RegisterOutputType(CdnDistributionConfigLogSinkOutput{})
+	pulumi.RegisterOutputType(CdnDistributionConfigLogSinkPtrOutput{})
+	pulumi.RegisterOutputType(CdnDistributionConfigLogSinkCredentialsOutput{})
+	pulumi.RegisterOutputType(CdnDistributionConfigLogSinkCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(CdnDistributionConfigOptimizerOutput{})
 	pulumi.RegisterOutputType(CdnDistributionConfigOptimizerPtrOutput{})
 	pulumi.RegisterOutputType(CdnDistributionConfigRedirectsOutput{})
@@ -49646,6 +50419,7 @@ func init() {
 	pulumi.RegisterOutputType(GetCdnDistributionConfigOutput{})
 	pulumi.RegisterOutputType(GetCdnDistributionConfigBackendOutput{})
 	pulumi.RegisterOutputType(GetCdnDistributionConfigCacheConfigOutput{})
+	pulumi.RegisterOutputType(GetCdnDistributionConfigLogSinkOutput{})
 	pulumi.RegisterOutputType(GetCdnDistributionConfigOptimizerOutput{})
 	pulumi.RegisterOutputType(GetCdnDistributionConfigRedirectsOutput{})
 	pulumi.RegisterOutputType(GetCdnDistributionConfigRedirectsRuleOutput{})

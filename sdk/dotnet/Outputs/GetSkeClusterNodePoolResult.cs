@@ -26,6 +26,10 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly string Cri;
         /// <summary>
+        /// Whether workload isolation via Kata Containers is enabled for pods scheduled on this node pool.
+        /// </summary>
+        public readonly bool Kata;
+        /// <summary>
         /// Labels to add to each node.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
@@ -90,6 +94,8 @@ namespace Pulumi.Stackit.Outputs
 
             string cri,
 
+            bool kata,
+
             ImmutableDictionary<string, string> labels,
 
             string machineType,
@@ -121,6 +127,7 @@ namespace Pulumi.Stackit.Outputs
             AllowSystemComponents = allowSystemComponents;
             AvailabilityZones = availabilityZones;
             Cri = cri;
+            Kata = kata;
             Labels = labels;
             MachineType = machineType;
             MaxSurge = maxSurge;

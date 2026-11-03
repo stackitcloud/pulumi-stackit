@@ -24,6 +24,7 @@ class DremioInstanceArgs:
                  authentication: pulumi.Input['DremioInstanceAuthenticationArgs'],
                  display_name: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
+                 acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
                  timeouts: pulumi.Input[Optional['DremioInstanceTimeoutsArgs']] = None):
@@ -33,12 +34,15 @@ class DremioInstanceArgs:
         :param pulumi.Input['DremioInstanceAuthenticationArgs'] authentication: Dremio instance authentication settings. A change here triggers a Dremio restart and will incur downtime.
         :param pulumi.Input[_builtins.str] display_name: The display name is a short name chosen by the user to identify the resource.
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the resource is associated.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The Access Control List (ACL) defining the IPv4 or IPv6 CIDR ranges allowed to connect to the Dremio instance. An empty list allows access from any address.
         :param pulumi.Input[_builtins.str] description: The description is a longer text chosen by the user to provide more context for the resource.
         :param pulumi.Input[_builtins.str] region: The STACKIT region name the resource is located in. If not defined, the provider region is used.
         """
         pulumi.set(__self__, "authentication", authentication)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "project_id", project_id)
+        if acls is not None:
+            pulumi.set(__self__, "acls", acls)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if region is not None:
@@ -84,6 +88,18 @@ class DremioInstanceArgs:
 
     @_builtins.property
     @pulumi.getter
+    def acls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The Access Control List (ACL) defining the IPv4 or IPv6 CIDR ranges allowed to connect to the Dremio instance. An empty list allows access from any address.
+        """
+        return pulumi.get(self, "acls")
+
+    @acls.setter
+    def acls(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "acls", value)
+
+    @_builtins.property
+    @pulumi.getter
     def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The description is a longer text chosen by the user to provide more context for the resource.
@@ -119,6 +135,7 @@ class DremioInstanceArgs:
 @pulumi.input_type
 class _DremioInstanceState:
     def __init__(__self__, *,
+                 acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  authentication: pulumi.Input[Optional['DremioInstanceAuthenticationArgs']] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -130,6 +147,7 @@ class _DremioInstanceState:
         """
         Input properties used for looking up and filtering DremioInstance resources.
 
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The Access Control List (ACL) defining the IPv4 or IPv6 CIDR ranges allowed to connect to the Dremio instance. An empty list allows access from any address.
         :param pulumi.Input['DremioInstanceAuthenticationArgs'] authentication: Dremio instance authentication settings. A change here triggers a Dremio restart and will incur downtime.
         :param pulumi.Input[_builtins.str] description: The description is a longer text chosen by the user to provide more context for the resource.
         :param pulumi.Input[_builtins.str] display_name: The display name is a short name chosen by the user to identify the resource.
@@ -138,6 +156,8 @@ class _DremioInstanceState:
         :param pulumi.Input[_builtins.str] project_id: STACKIT Project ID to which the resource is associated.
         :param pulumi.Input[_builtins.str] region: The STACKIT region name the resource is located in. If not defined, the provider region is used.
         """
+        if acls is not None:
+            pulumi.set(__self__, "acls", acls)
         if authentication is not None:
             pulumi.set(__self__, "authentication", authentication)
         if description is not None:
@@ -154,6 +174,18 @@ class _DremioInstanceState:
             pulumi.set(__self__, "region", region)
         if timeouts is not None:
             pulumi.set(__self__, "timeouts", timeouts)
+
+    @_builtins.property
+    @pulumi.getter
+    def acls(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        The Access Control List (ACL) defining the IPv4 or IPv6 CIDR ranges allowed to connect to the Dremio instance. An empty list allows access from any address.
+        """
+        return pulumi.get(self, "acls")
+
+    @acls.setter
+    def acls(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "acls", value)
 
     @_builtins.property
     @pulumi.getter
@@ -255,6 +287,7 @@ class DremioInstance(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  authentication: pulumi.Input[Optional[Union['DremioInstanceAuthenticationArgs', 'DremioInstanceAuthenticationArgsDict', 'outputs.DremioInstanceAuthentication']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -276,6 +309,7 @@ class DremioInstance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The Access Control List (ACL) defining the IPv4 or IPv6 CIDR ranges allowed to connect to the Dremio instance. An empty list allows access from any address.
         :param pulumi.Input[Union['DremioInstanceAuthenticationArgs', 'DremioInstanceAuthenticationArgsDict', 'outputs.DremioInstanceAuthentication']] authentication: Dremio instance authentication settings. A change here triggers a Dremio restart and will incur downtime.
         :param pulumi.Input[_builtins.str] description: The description is a longer text chosen by the user to provide more context for the resource.
         :param pulumi.Input[_builtins.str] display_name: The display name is a short name chosen by the user to identify the resource.
@@ -315,6 +349,7 @@ class DremioInstance(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  authentication: pulumi.Input[Optional[Union['DremioInstanceAuthenticationArgs', 'DremioInstanceAuthenticationArgsDict', 'outputs.DremioInstanceAuthentication']]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
                  display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -330,6 +365,7 @@ class DremioInstance(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DremioInstanceArgs.__new__(DremioInstanceArgs)
 
+            __props__.__dict__["acls"] = acls
             if authentication is None and not opts.urn:
                 raise TypeError("Missing required property 'authentication'")
             __props__.__dict__["authentication"] = authentication
@@ -354,6 +390,7 @@ class DremioInstance(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             authentication: pulumi.Input[Optional[Union['DremioInstanceAuthenticationArgs', 'DremioInstanceAuthenticationArgsDict', 'outputs.DremioInstanceAuthentication']]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
             display_name: pulumi.Input[Optional[_builtins.str]] = None,
@@ -369,6 +406,7 @@ class DremioInstance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] acls: The Access Control List (ACL) defining the IPv4 or IPv6 CIDR ranges allowed to connect to the Dremio instance. An empty list allows access from any address.
         :param pulumi.Input[Union['DremioInstanceAuthenticationArgs', 'DremioInstanceAuthenticationArgsDict', 'outputs.DremioInstanceAuthentication']] authentication: Dremio instance authentication settings. A change here triggers a Dremio restart and will incur downtime.
         :param pulumi.Input[_builtins.str] description: The description is a longer text chosen by the user to provide more context for the resource.
         :param pulumi.Input[_builtins.str] display_name: The display name is a short name chosen by the user to identify the resource.
@@ -381,6 +419,7 @@ class DremioInstance(pulumi.CustomResource):
 
         __props__ = _DremioInstanceState.__new__(_DremioInstanceState)
 
+        __props__.__dict__["acls"] = acls
         __props__.__dict__["authentication"] = authentication
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
@@ -390,6 +429,14 @@ class DremioInstance(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         __props__.__dict__["timeouts"] = timeouts
         return DremioInstance(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter
+    def acls(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        The Access Control List (ACL) defining the IPv4 or IPv6 CIDR ranges allowed to connect to the Dremio instance. An empty list allows access from any address.
+        """
+        return pulumi.get(self, "acls")
 
     @_builtins.property
     @pulumi.getter

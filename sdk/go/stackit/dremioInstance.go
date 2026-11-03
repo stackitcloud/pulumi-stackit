@@ -24,6 +24,8 @@ import (
 type DremioInstance struct {
 	pulumi.CustomResourceState
 
+	// The Access Control List (ACL) defining the IPv4 or IPv6 CIDR ranges allowed to connect to the Dremio instance. An empty list allows access from any address.
+	Acls pulumi.StringArrayOutput `pulumi:"acls"`
 	// Dremio instance authentication settings. A change here triggers a Dremio restart and will incur downtime.
 	Authentication DremioInstanceAuthenticationOutput `pulumi:"authentication"`
 	// The description is a longer text chosen by the user to provide more context for the resource.
@@ -80,6 +82,8 @@ func GetDremioInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DremioInstance resources.
 type dremioInstanceState struct {
+	// The Access Control List (ACL) defining the IPv4 or IPv6 CIDR ranges allowed to connect to the Dremio instance. An empty list allows access from any address.
+	Acls []string `pulumi:"acls"`
 	// Dremio instance authentication settings. A change here triggers a Dremio restart and will incur downtime.
 	Authentication *DremioInstanceAuthentication `pulumi:"authentication"`
 	// The description is a longer text chosen by the user to provide more context for the resource.
@@ -98,6 +102,8 @@ type dremioInstanceState struct {
 }
 
 type DremioInstanceState struct {
+	// The Access Control List (ACL) defining the IPv4 or IPv6 CIDR ranges allowed to connect to the Dremio instance. An empty list allows access from any address.
+	Acls pulumi.StringArrayInput
 	// Dremio instance authentication settings. A change here triggers a Dremio restart and will incur downtime.
 	Authentication DremioInstanceAuthenticationPtrInput
 	// The description is a longer text chosen by the user to provide more context for the resource.
@@ -120,6 +126,8 @@ func (DremioInstanceState) ElementType() reflect.Type {
 }
 
 type dremioInstanceArgs struct {
+	// The Access Control List (ACL) defining the IPv4 or IPv6 CIDR ranges allowed to connect to the Dremio instance. An empty list allows access from any address.
+	Acls []string `pulumi:"acls"`
 	// Dremio instance authentication settings. A change here triggers a Dremio restart and will incur downtime.
 	Authentication DremioInstanceAuthentication `pulumi:"authentication"`
 	// The description is a longer text chosen by the user to provide more context for the resource.
@@ -135,6 +143,8 @@ type dremioInstanceArgs struct {
 
 // The set of arguments for constructing a DremioInstance resource.
 type DremioInstanceArgs struct {
+	// The Access Control List (ACL) defining the IPv4 or IPv6 CIDR ranges allowed to connect to the Dremio instance. An empty list allows access from any address.
+	Acls pulumi.StringArrayInput
 	// Dremio instance authentication settings. A change here triggers a Dremio restart and will incur downtime.
 	Authentication DremioInstanceAuthenticationInput
 	// The description is a longer text chosen by the user to provide more context for the resource.
@@ -233,6 +243,11 @@ func (o DremioInstanceOutput) ToDremioInstanceOutput() DremioInstanceOutput {
 
 func (o DremioInstanceOutput) ToDremioInstanceOutputWithContext(ctx context.Context) DremioInstanceOutput {
 	return o
+}
+
+// The Access Control List (ACL) defining the IPv4 or IPv6 CIDR ranges allowed to connect to the Dremio instance. An empty list allows access from any address.
+func (o DremioInstanceOutput) Acls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DremioInstance) pulumi.StringArrayOutput { return v.Acls }).(pulumi.StringArrayOutput)
 }
 
 // Dremio instance authentication settings. A change here triggers a Dremio restart and will incur downtime.

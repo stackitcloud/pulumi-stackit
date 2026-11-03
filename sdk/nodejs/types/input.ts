@@ -74,6 +74,20 @@ export interface AlbWafCustomRuleGroupRuleConditionVariable {
     value?: pulumi.Input<string | undefined>;
 }
 
+export interface AlbWafManagedRuleSetConfiguredGroups {
+    /**
+     * Rules of the rule group, keyed by rule ID (e.g. `911100`).
+     */
+    rules: pulumi.Input<{[key: string]: pulumi.Input<inputs.AlbWafManagedRuleSetConfiguredGroupsRules>}>;
+}
+
+export interface AlbWafManagedRuleSetConfiguredGroupsRules {
+    /**
+     * The mode of the rule. Possible values are: `MODE_ENABLED`, `MODE_DISABLED`, `MODE_LOG_ONLY`.
+     */
+    mode: pulumi.Input<string>;
+}
+
 export interface AlbWafManagedRuleSetGroups {
     /**
      * A description of what this group covers.
@@ -470,6 +484,10 @@ export interface CdnDistributionConfig {
      */
     forwardHostHeader?: pulumi.Input<boolean | undefined>;
     /**
+     * Configures a log sink to export the distribution's access logs. Only one of Loki or OTLP can be configured at a time; the sink is selected via the `type` attribute. Note: because the API never returns raw credentials, `username`, `password`, and `token` are preserved from state during Read operations. If the sink type is changed outside of Terraform, previously stored credentials are cleared on refresh and must be re-applied via `pulumi up`.
+     */
+    logSink?: pulumi.Input<inputs.CdnDistributionConfigLogSink | undefined>;
+    /**
      * Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
      */
     monthlyLimitBytes?: pulumi.Input<number | undefined>;
@@ -554,6 +572,58 @@ export interface CdnDistributionConfigCacheConfig {
      * Allowlist of query-string parameter names that participate in the cache key when query*string*vary*enabled is true. Ignored while query*string*vary*enabled is false, but still stored so it can be re-activated without losing the list.
      */
     queryStringVaryParameters?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+}
+
+export interface CdnDistributionConfigLogSink {
+    /**
+     * Authentication credentials the CDN uses when pushing logs. Loki requires `username` and `password`. OTLP requires `type` to be set to `basic` (with `username` and `password`) or `bearer` (with `token`).
+     */
+    credentials: pulumi.Input<inputs.CdnDistributionConfigLogSinkCredentials>;
+    /**
+     * The fully qualified URL where the CDN should push access logs (for example, `https://loki.example.com/loki/api/v1/push` for Loki or `https://otlp.example.com/otlp/v1/logs` for OTLP).
+     */
+    pushUrl: pulumi.Input<string>;
+    /**
+     * The log sink protocolPossible values are: `loki`, `otlp`.
+     */
+    type: pulumi.Input<string>;
+}
+
+export interface CdnDistributionConfigLogSinkCredentials {
+    /**
+     * The password corresponding to `username`. Required for Loki and for OTLP when `credentials.type` is `basic`. Write-only argument `passwordWo` should be preferred.
+     */
+    password?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only password for log sink authentication. Never stored in state and never returned by the API. To rotate the password, update this value AND increment `passwordWoVersion`. Changing this field alone will NOT trigger an update.
+     */
+    passwordWo?: pulumi.Input<string | undefined>;
+    /**
+     * User-managed rotation counter for `passwordWo`. Must be incremented every time `passwordWo` is changed. Note: because the API treats credentials atomically (username + password together for Loki/OTLP basic), the password is also automatically re-sent when `username`, `log_sink.type`, or `credentials.type` changes, even without a version bump.
+     */
+    passwordWoVersion?: pulumi.Input<number | undefined>;
+    /**
+     * The bearer token used to authenticate. Required for OTLP when `credentials.type` is `bearer`. Write-only argument `tokenWo` should be preferred.
+     */
+    token?: pulumi.Input<string | undefined>;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only bearer token for OTLP log sink authentication. Never stored in state and never returned by the API. To rotate the token, update this value AND increment `tokenWoVersion`. Changing this field alone will NOT trigger an update.
+     */
+    tokenWo?: pulumi.Input<string | undefined>;
+    /**
+     * User-managed rotation counter for `tokenWo`. Must be incremented every time `tokenWo` is changed. Note: the token is also automatically re-sent when `log_sink.type` or `credentials.type` changes, even without a version bump.
+     */
+    tokenWoVersion?: pulumi.Input<number | undefined>;
+    /**
+     * The authentication type when using an OTLP log sink. Leave unset for Loki.Possible values are: `basic`, `bearer`.
+     */
+    type?: pulumi.Input<string | undefined>;
+    /**
+     * The username used to authenticate. Required for Loki and for OTLP when `credentials.type` is `basic`.
+     */
+    username?: pulumi.Input<string | undefined>;
 }
 
 export interface CdnDistributionConfigOptimizer {
@@ -2608,6 +2678,10 @@ export interface SkeClusterNodePool {
      * Specifies the container runtime. Defaults to `containerd`
      */
     cri?: pulumi.Input<string | undefined>;
+    /**
+     * Enable workload isolation via Kata Containers for pods scheduled on this node pool. Note: This feature is in private preview. Enabling is only possible for enabled accounts. Otherwise the request will be rejected. Defaults to `false`.
+     */
+    kata?: pulumi.Input<boolean | undefined>;
     /**
      * Labels to add to each node.
      */
