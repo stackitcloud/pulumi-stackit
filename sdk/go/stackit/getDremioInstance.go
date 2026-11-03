@@ -40,6 +40,8 @@ type LookupDremioInstanceArgs struct {
 
 // A collection of values returned by getDremioInstance.
 type LookupDremioInstanceResult struct {
+	// The Access Control List (ACL) defining the IPv4 or IPv6 CIDR ranges allowed to connect to the Dremio instance. An empty list allows access from any address.
+	Acls []string `pulumi:"acls"`
 	// Dremio instance authentication settings. A change here triggers a Dremio restart and will incur downtime.
 	Authentication GetDremioInstanceAuthentication `pulumi:"authentication"`
 	// The description is a longer text chosen by the user to provide more context for the resource.
@@ -92,6 +94,11 @@ func (o LookupDremioInstanceResultOutput) ToLookupDremioInstanceResultOutput() L
 
 func (o LookupDremioInstanceResultOutput) ToLookupDremioInstanceResultOutputWithContext(ctx context.Context) LookupDremioInstanceResultOutput {
 	return o
+}
+
+// The Access Control List (ACL) defining the IPv4 or IPv6 CIDR ranges allowed to connect to the Dremio instance. An empty list allows access from any address.
+func (o LookupDremioInstanceResultOutput) Acls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupDremioInstanceResult) []string { return v.Acls }).(pulumi.StringArrayOutput)
 }
 
 // Dremio instance authentication settings. A change here triggers a Dremio restart and will incur downtime.

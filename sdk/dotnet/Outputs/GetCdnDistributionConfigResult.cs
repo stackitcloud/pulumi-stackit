@@ -38,6 +38,10 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly bool ForwardHostHeader;
         /// <summary>
+        /// The configured log sink used to export the distribution's access logs.
+        /// </summary>
+        public readonly Outputs.GetCdnDistributionConfigLogSinkResult LogSink;
+        /// <summary>
         /// Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
         /// </summary>
         public readonly int MonthlyLimitBytes;
@@ -80,6 +84,8 @@ namespace Pulumi.Stackit.Outputs
 
             bool forwardHostHeader,
 
+            Outputs.GetCdnDistributionConfigLogSinkResult logSink,
+
             int monthlyLimitBytes,
 
             Outputs.GetCdnDistributionConfigOptimizerResult optimizer,
@@ -100,6 +106,7 @@ namespace Pulumi.Stackit.Outputs
             CacheConfig = cacheConfig;
             DefaultCacheDuration = defaultCacheDuration;
             ForwardHostHeader = forwardHostHeader;
+            LogSink = logSink;
             MonthlyLimitBytes = monthlyLimitBytes;
             Optimizer = optimizer;
             Redirects = redirects;

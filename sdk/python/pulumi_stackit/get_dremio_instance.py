@@ -27,7 +27,10 @@ class GetDremioInstanceResult:
     """
     A collection of values returned by getDremioInstance.
     """
-    def __init__(__self__, authentication=None, description=None, display_name=None, endpoints=None, id=None, instance_id=None, project_id=None, region=None):
+    def __init__(__self__, acls=None, authentication=None, description=None, display_name=None, endpoints=None, id=None, instance_id=None, project_id=None, region=None):
+        if acls and not isinstance(acls, list):
+            raise TypeError("Expected argument 'acls' to be a list")
+        pulumi.set(__self__, "acls", acls)
         if authentication and not isinstance(authentication, dict):
             raise TypeError("Expected argument 'authentication' to be a dict")
         pulumi.set(__self__, "authentication", authentication)
@@ -52,6 +55,14 @@ class GetDremioInstanceResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter
+    def acls(self) -> Sequence[_builtins.str]:
+        """
+        The Access Control List (ACL) defining the IPv4 or IPv6 CIDR ranges allowed to connect to the Dremio instance. An empty list allows access from any address.
+        """
+        return pulumi.get(self, "acls")
 
     @_builtins.property
     @pulumi.getter
@@ -124,6 +135,7 @@ class AwaitableGetDremioInstanceResult(GetDremioInstanceResult):
         if False:
             yield self
         return GetDremioInstanceResult(
+            acls=self.acls,
             authentication=self.authentication,
             description=self.description,
             display_name=self.display_name,
@@ -161,6 +173,7 @@ def get_dremio_instance(description: Optional[_builtins.str] = None,
     __ret__ = pulumi.runtime.invoke('stackit:index/getDremioInstance:getDremioInstance', __args__, opts=opts, typ=GetDremioInstanceResult).value
 
     return AwaitableGetDremioInstanceResult(
+        acls=pulumi.get(__ret__, 'acls'),
         authentication=pulumi.get(__ret__, 'authentication'),
         description=pulumi.get(__ret__, 'description'),
         display_name=pulumi.get(__ret__, 'display_name'),
@@ -195,6 +208,7 @@ def get_dremio_instance_output(description: pulumi.Input[Optional[Optional[_buil
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('stackit:index/getDremioInstance:getDremioInstance', __args__, opts=opts, typ=GetDremioInstanceResult)
     return __ret__.apply(lambda __response__: GetDremioInstanceResult(
+        acls=pulumi.get(__response__, 'acls'),
         authentication=pulumi.get(__response__, 'authentication'),
         description=pulumi.get(__response__, 'description'),
         display_name=pulumi.get(__response__, 'display_name'),

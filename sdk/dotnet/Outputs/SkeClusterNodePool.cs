@@ -26,6 +26,10 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly string? Cri;
         /// <summary>
+        /// Enable workload isolation via Kata Containers for pods scheduled on this node pool. Note: This feature is in private preview. Enabling is only possible for enabled accounts. Otherwise the request will be rejected. Defaults to `False`.
+        /// </summary>
+        public readonly bool? Kata;
+        /// <summary>
         /// Labels to add to each node.
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Labels;
@@ -90,6 +94,8 @@ namespace Pulumi.Stackit.Outputs
 
             string? cri,
 
+            bool? kata,
+
             ImmutableDictionary<string, string>? labels,
 
             string machineType,
@@ -121,6 +127,7 @@ namespace Pulumi.Stackit.Outputs
             AllowSystemComponents = allowSystemComponents;
             AvailabilityZones = availabilityZones;
             Cri = cri;
+            Kata = kata;
             Labels = labels;
             MachineType = machineType;
             MaxSurge = maxSurge;

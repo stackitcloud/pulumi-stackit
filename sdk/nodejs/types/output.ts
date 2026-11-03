@@ -74,6 +74,20 @@ export interface AlbWafCustomRuleGroupRuleConditionVariable {
     value?: string;
 }
 
+export interface AlbWafManagedRuleSetConfiguredGroups {
+    /**
+     * Rules of the rule group, keyed by rule ID (e.g. `911100`).
+     */
+    rules: {[key: string]: outputs.AlbWafManagedRuleSetConfiguredGroupsRules};
+}
+
+export interface AlbWafManagedRuleSetConfiguredGroupsRules {
+    /**
+     * The mode of the rule. Possible values are: `MODE_ENABLED`, `MODE_DISABLED`, `MODE_LOG_ONLY`.
+     */
+    mode: string;
+}
+
 export interface AlbWafManagedRuleSetGroups {
     /**
      * A description of what this group covers.
@@ -470,6 +484,10 @@ export interface CdnDistributionConfig {
      */
     forwardHostHeader: boolean;
     /**
+     * Configures a log sink to export the distribution's access logs. Only one of Loki or OTLP can be configured at a time; the sink is selected via the `type` attribute. Note: because the API never returns raw credentials, `username`, `password`, and `token` are preserved from state during Read operations. If the sink type is changed outside of Terraform, previously stored credentials are cleared on refresh and must be re-applied via `pulumi up`.
+     */
+    logSink?: outputs.CdnDistributionConfigLogSink;
+    /**
      * Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
      */
     monthlyLimitBytes: number;
@@ -554,6 +572,58 @@ export interface CdnDistributionConfigCacheConfig {
      * Allowlist of query-string parameter names that participate in the cache key when query*string*vary*enabled is true. Ignored while query*string*vary*enabled is false, but still stored so it can be re-activated without losing the list.
      */
     queryStringVaryParameters: string[];
+}
+
+export interface CdnDistributionConfigLogSink {
+    /**
+     * Authentication credentials the CDN uses when pushing logs. Loki requires `username` and `password`. OTLP requires `type` to be set to `basic` (with `username` and `password`) or `bearer` (with `token`).
+     */
+    credentials: outputs.CdnDistributionConfigLogSinkCredentials;
+    /**
+     * The fully qualified URL where the CDN should push access logs (for example, `https://loki.example.com/loki/api/v1/push` for Loki or `https://otlp.example.com/otlp/v1/logs` for OTLP).
+     */
+    pushUrl: string;
+    /**
+     * The log sink protocolPossible values are: `loki`, `otlp`.
+     */
+    type: string;
+}
+
+export interface CdnDistributionConfigLogSinkCredentials {
+    /**
+     * The password corresponding to `username`. Required for Loki and for OTLP when `credentials.type` is `basic`. Write-only argument `passwordWo` should be preferred.
+     */
+    password?: string;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only password for log sink authentication. Never stored in state and never returned by the API. To rotate the password, update this value AND increment `passwordWoVersion`. Changing this field alone will NOT trigger an update.
+     */
+    passwordWo?: string;
+    /**
+     * User-managed rotation counter for `passwordWo`. Must be incremented every time `passwordWo` is changed. Note: because the API treats credentials atomically (username + password together for Loki/OTLP basic), the password is also automatically re-sent when `username`, `log_sink.type`, or `credentials.type` changes, even without a version bump.
+     */
+    passwordWoVersion?: number;
+    /**
+     * The bearer token used to authenticate. Required for OTLP when `credentials.type` is `bearer`. Write-only argument `tokenWo` should be preferred.
+     */
+    token?: string;
+    /**
+     * **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+     * Write-only bearer token for OTLP log sink authentication. Never stored in state and never returned by the API. To rotate the token, update this value AND increment `tokenWoVersion`. Changing this field alone will NOT trigger an update.
+     */
+    tokenWo?: string;
+    /**
+     * User-managed rotation counter for `tokenWo`. Must be incremented every time `tokenWo` is changed. Note: the token is also automatically re-sent when `log_sink.type` or `credentials.type` changes, even without a version bump.
+     */
+    tokenWoVersion?: number;
+    /**
+     * The authentication type when using an OTLP log sink. Leave unset for Loki.Possible values are: `basic`, `bearer`.
+     */
+    type?: string;
+    /**
+     * The username used to authenticate. Required for Loki and for OTLP when `credentials.type` is `basic`.
+     */
+    username?: string;
 }
 
 export interface CdnDistributionConfigOptimizer {
@@ -1348,6 +1418,10 @@ export interface GetCdnDistributionConfig {
      */
     forwardHostHeader: boolean;
     /**
+     * The configured log sink used to export the distribution's access logs.
+     */
+    logSink: outputs.GetCdnDistributionConfigLogSink;
+    /**
      * Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
      */
     monthlyLimitBytes: number;
@@ -1417,6 +1491,17 @@ export interface GetCdnDistributionConfigCacheConfig {
      * Allowlist of query-string parameter names that participate in the cache key when query*string*vary*enabled is true. Ignored while query*string*vary*enabled is false, but still stored so it can be re-activated without losing the list.
      */
     queryStringVaryParameters: string[];
+}
+
+export interface GetCdnDistributionConfigLogSink {
+    /**
+     * The fully qualified URL where the CDN should push access logs (for example, `https://loki.example.com/loki/api/v1/push` for Loki or `https://otlp.example.com/otlp/v1/logs` for OTLP).
+     */
+    pushUrl: string;
+    /**
+     * The log sink protocol
+     */
+    type: string;
 }
 
 export interface GetCdnDistributionConfigOptimizer {
@@ -3585,6 +3670,10 @@ export interface GetSkeClusterNodePool {
      */
     cri: string;
     /**
+     * Whether workload isolation via Kata Containers is enabled for pods scheduled on this node pool.
+     */
+    kata: boolean;
+    /**
      * Labels to add to each node.
      */
     labels: {[key: string]: string};
@@ -5709,6 +5798,10 @@ export interface SkeClusterNodePool {
      * Specifies the container runtime. Defaults to `containerd`
      */
     cri: string;
+    /**
+     * Enable workload isolation via Kata Containers for pods scheduled on this node pool. Note: This feature is in private preview. Enabling is only possible for enabled accounts. Otherwise the request will be rejected. Defaults to `false`.
+     */
+    kata: boolean;
     /**
      * Labels to add to each node.
      */

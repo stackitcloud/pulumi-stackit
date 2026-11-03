@@ -25,6 +25,10 @@ __all__ = [
     'AlbWafCustomRuleGroupRuleConditionOperatorArgsDict',
     'AlbWafCustomRuleGroupRuleConditionVariableArgs',
     'AlbWafCustomRuleGroupRuleConditionVariableArgsDict',
+    'AlbWafManagedRuleSetConfiguredGroupsArgs',
+    'AlbWafManagedRuleSetConfiguredGroupsArgsDict',
+    'AlbWafManagedRuleSetConfiguredGroupsRulesArgs',
+    'AlbWafManagedRuleSetConfiguredGroupsRulesArgsDict',
     'AlbWafManagedRuleSetGroupsArgs',
     'AlbWafManagedRuleSetGroupsArgsDict',
     'AlbWafManagedRuleSetGroupsRulesArgs',
@@ -87,6 +91,10 @@ __all__ = [
     'CdnDistributionConfigBackendCredentialsArgsDict',
     'CdnDistributionConfigCacheConfigArgs',
     'CdnDistributionConfigCacheConfigArgsDict',
+    'CdnDistributionConfigLogSinkArgs',
+    'CdnDistributionConfigLogSinkArgsDict',
+    'CdnDistributionConfigLogSinkCredentialsArgs',
+    'CdnDistributionConfigLogSinkCredentialsArgsDict',
     'CdnDistributionConfigOptimizerArgs',
     'CdnDistributionConfigOptimizerArgsDict',
     'CdnDistributionConfigRedirectsArgs',
@@ -705,6 +713,62 @@ class AlbWafCustomRuleGroupRuleConditionVariableArgs:
     @value.setter
     def value(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "value", value)
+
+
+class AlbWafManagedRuleSetConfiguredGroupsArgsDict(TypedDict):
+    rules: pulumi.Input[Mapping[str, pulumi.Input['AlbWafManagedRuleSetConfiguredGroupsRulesArgsDict']]]
+    """
+    Rules of the rule group, keyed by rule ID (e.g. `911100`).
+    """
+
+@pulumi.input_type
+class AlbWafManagedRuleSetConfiguredGroupsArgs:
+    def __init__(__self__, *,
+                 rules: pulumi.Input[Mapping[str, pulumi.Input['AlbWafManagedRuleSetConfiguredGroupsRulesArgs']]]):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input['AlbWafManagedRuleSetConfiguredGroupsRulesArgs']]] rules: Rules of the rule group, keyed by rule ID (e.g. `911100`).
+        """
+        pulumi.set(__self__, "rules", rules)
+
+    @_builtins.property
+    @pulumi.getter
+    def rules(self) -> pulumi.Input[Mapping[str, pulumi.Input['AlbWafManagedRuleSetConfiguredGroupsRulesArgs']]]:
+        """
+        Rules of the rule group, keyed by rule ID (e.g. `911100`).
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: pulumi.Input[Mapping[str, pulumi.Input['AlbWafManagedRuleSetConfiguredGroupsRulesArgs']]]):
+        pulumi.set(self, "rules", value)
+
+
+class AlbWafManagedRuleSetConfiguredGroupsRulesArgsDict(TypedDict):
+    mode: pulumi.Input[_builtins.str]
+    """
+    The mode of the rule. Possible values are: `MODE_ENABLED`, `MODE_DISABLED`, `MODE_LOG_ONLY`.
+    """
+
+@pulumi.input_type
+class AlbWafManagedRuleSetConfiguredGroupsRulesArgs:
+    def __init__(__self__, *,
+                 mode: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] mode: The mode of the rule. Possible values are: `MODE_ENABLED`, `MODE_DISABLED`, `MODE_LOG_ONLY`.
+        """
+        pulumi.set(__self__, "mode", mode)
+
+    @_builtins.property
+    @pulumi.getter
+    def mode(self) -> pulumi.Input[_builtins.str]:
+        """
+        The mode of the rule. Possible values are: `MODE_ENABLED`, `MODE_DISABLED`, `MODE_LOG_ONLY`.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "mode", value)
 
 
 class AlbWafManagedRuleSetGroupsArgsDict(TypedDict):
@@ -2400,6 +2464,10 @@ class CdnDistributionConfigArgsDict(TypedDict):
     """
     Enable this allows the 'Host' header to be passed through to the origin.
     """
+    log_sink: NotRequired[pulumi.Input[Optional['CdnDistributionConfigLogSinkArgsDict']]]
+    """
+    Configures a log sink to export the distribution's access logs. Only one of Loki or OTLP can be configured at a time; the sink is selected via the `type` attribute. Note: because the API never returns raw credentials, `username`, `password`, and `token` are preserved from state during Read operations. If the sink type is changed outside of Terraform, previously stored credentials are cleared on refresh and must be re-applied via `pulumi up`.
+    """
     monthly_limit_bytes: NotRequired[pulumi.Input[Optional[_builtins.int]]]
     """
     Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
@@ -2435,6 +2503,7 @@ class CdnDistributionConfigArgs:
                  cache_config: pulumi.Input[Optional['CdnDistributionConfigCacheConfigArgs']] = None,
                  default_cache_duration: pulumi.Input[Optional[_builtins.str]] = None,
                  forward_host_header: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_sink: pulumi.Input[Optional['CdnDistributionConfigLogSinkArgs']] = None,
                  monthly_limit_bytes: pulumi.Input[Optional[_builtins.int]] = None,
                  optimizer: pulumi.Input[Optional['CdnDistributionConfigOptimizerArgs']] = None,
                  redirects: pulumi.Input[Optional['CdnDistributionConfigRedirectsArgs']] = None,
@@ -2449,6 +2518,7 @@ class CdnDistributionConfigArgs:
         :param pulumi.Input['CdnDistributionConfigCacheConfigArgs'] cache_config: Groups the cache options that influence how the CDN builds its cache key. Warning: enabling query-string vary produces one cache entry per unique query-string combination (unbounded when query*string*vary*parameters is empty). Each entry in cache*key*headers multiplies the number of cache variants by the number of distinct values observed for that header. Use these settings sparingly.
         :param pulumi.Input[_builtins.str] default_cache_duration: Sets the default cache duration for the distribution. The default cache duration is applied when a 'Cache-Control' header is not presented in the origin's response. We use ISO8601 duration format for cache duration (e.g. P1DT2H30M). Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
         :param pulumi.Input[_builtins.bool] forward_host_header: Enable this allows the 'Host' header to be passed through to the origin.
+        :param pulumi.Input['CdnDistributionConfigLogSinkArgs'] log_sink: Configures a log sink to export the distribution's access logs. Only one of Loki or OTLP can be configured at a time; the sink is selected via the `type` attribute. Note: because the API never returns raw credentials, `username`, `password`, and `token` are preserved from state during Read operations. If the sink type is changed outside of Terraform, previously stored credentials are cleared on refresh and must be re-applied via `pulumi up`.
         :param pulumi.Input[_builtins.int] monthly_limit_bytes: Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
         :param pulumi.Input['CdnDistributionConfigOptimizerArgs'] optimizer: Configuration for the Image Optimizer. This is a paid feature that automatically optimizes images to reduce their file size for faster delivery, leading to improved website performance and a better user experience.
         :param pulumi.Input['CdnDistributionConfigRedirectsArgs'] redirects: A wrapper for a list of redirect rules that allows for redirect settings on a distribution. Currently, this feature is only available for distributions of backend type HTTP.
@@ -2468,6 +2538,8 @@ class CdnDistributionConfigArgs:
             pulumi.set(__self__, "default_cache_duration", default_cache_duration)
         if forward_host_header is not None:
             pulumi.set(__self__, "forward_host_header", forward_host_header)
+        if log_sink is not None:
+            pulumi.set(__self__, "log_sink", log_sink)
         if monthly_limit_bytes is not None:
             pulumi.set(__self__, "monthly_limit_bytes", monthly_limit_bytes)
         if optimizer is not None:
@@ -2564,6 +2636,18 @@ class CdnDistributionConfigArgs:
     @forward_host_header.setter
     def forward_host_header(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "forward_host_header", value)
+
+    @_builtins.property
+    @pulumi.getter(name="logSink")
+    def log_sink(self) -> pulumi.Input[Optional['CdnDistributionConfigLogSinkArgs']]:
+        """
+        Configures a log sink to export the distribution's access logs. Only one of Loki or OTLP can be configured at a time; the sink is selected via the `type` attribute. Note: because the API never returns raw credentials, `username`, `password`, and `token` are preserved from state during Read operations. If the sink type is changed outside of Terraform, previously stored credentials are cleared on refresh and must be re-applied via `pulumi up`.
+        """
+        return pulumi.get(self, "log_sink")
+
+    @log_sink.setter
+    def log_sink(self, value: pulumi.Input[Optional['CdnDistributionConfigLogSinkArgs']]):
+        pulumi.set(self, "log_sink", value)
 
     @_builtins.property
     @pulumi.getter(name="monthlyLimitBytes")
@@ -2900,6 +2984,247 @@ class CdnDistributionConfigCacheConfigArgs:
     @query_string_vary_parameters.setter
     def query_string_vary_parameters(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "query_string_vary_parameters", value)
+
+
+class CdnDistributionConfigLogSinkArgsDict(TypedDict):
+    credentials: pulumi.Input['CdnDistributionConfigLogSinkCredentialsArgsDict']
+    """
+    Authentication credentials the CDN uses when pushing logs. Loki requires `username` and `password`. OTLP requires `type` to be set to `basic` (with `username` and `password`) or `bearer` (with `token`).
+    """
+    push_url: pulumi.Input[_builtins.str]
+    """
+    The fully qualified URL where the CDN should push access logs (for example, `https://loki.example.com/loki/api/v1/push` for Loki or `https://otlp.example.com/otlp/v1/logs` for OTLP).
+    """
+    type: pulumi.Input[_builtins.str]
+    """
+    The log sink protocolPossible values are: `loki`, `otlp`.
+    """
+
+@pulumi.input_type
+class CdnDistributionConfigLogSinkArgs:
+    def __init__(__self__, *,
+                 credentials: pulumi.Input['CdnDistributionConfigLogSinkCredentialsArgs'],
+                 push_url: pulumi.Input[_builtins.str],
+                 type: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input['CdnDistributionConfigLogSinkCredentialsArgs'] credentials: Authentication credentials the CDN uses when pushing logs. Loki requires `username` and `password`. OTLP requires `type` to be set to `basic` (with `username` and `password`) or `bearer` (with `token`).
+        :param pulumi.Input[_builtins.str] push_url: The fully qualified URL where the CDN should push access logs (for example, `https://loki.example.com/loki/api/v1/push` for Loki or `https://otlp.example.com/otlp/v1/logs` for OTLP).
+        :param pulumi.Input[_builtins.str] type: The log sink protocolPossible values are: `loki`, `otlp`.
+        """
+        pulumi.set(__self__, "credentials", credentials)
+        pulumi.set(__self__, "push_url", push_url)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter
+    def credentials(self) -> pulumi.Input['CdnDistributionConfigLogSinkCredentialsArgs']:
+        """
+        Authentication credentials the CDN uses when pushing logs. Loki requires `username` and `password`. OTLP requires `type` to be set to `basic` (with `username` and `password`) or `bearer` (with `token`).
+        """
+        return pulumi.get(self, "credentials")
+
+    @credentials.setter
+    def credentials(self, value: pulumi.Input['CdnDistributionConfigLogSinkCredentialsArgs']):
+        pulumi.set(self, "credentials", value)
+
+    @_builtins.property
+    @pulumi.getter(name="pushUrl")
+    def push_url(self) -> pulumi.Input[_builtins.str]:
+        """
+        The fully qualified URL where the CDN should push access logs (for example, `https://loki.example.com/loki/api/v1/push` for Loki or `https://otlp.example.com/otlp/v1/logs` for OTLP).
+        """
+        return pulumi.get(self, "push_url")
+
+    @push_url.setter
+    def push_url(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "push_url", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[_builtins.str]:
+        """
+        The log sink protocolPossible values are: `loki`, `otlp`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+
+class CdnDistributionConfigLogSinkCredentialsArgsDict(TypedDict):
+    password: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The password corresponding to `username`. Required for Loki and for OTLP when `credentials.type` is `basic`. Write-only argument `password_wo` should be preferred.
+    """
+    password_wo: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+    Write-only password for log sink authentication. Never stored in state and never returned by the API. To rotate the password, update this value AND increment `password_wo_version`. Changing this field alone will NOT trigger an update.
+    """
+    password_wo_version: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    User-managed rotation counter for `password_wo`. Must be incremented every time `password_wo` is changed. Note: because the API treats credentials atomically (username + password together for Loki/OTLP basic), the password is also automatically re-sent when `username`, `log_sink.type`, or `credentials.type` changes, even without a version bump.
+    """
+    token: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The bearer token used to authenticate. Required for OTLP when `credentials.type` is `bearer`. Write-only argument `token_wo` should be preferred.
+    """
+    token_wo: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+    Write-only bearer token for OTLP log sink authentication. Never stored in state and never returned by the API. To rotate the token, update this value AND increment `token_wo_version`. Changing this field alone will NOT trigger an update.
+    """
+    token_wo_version: NotRequired[pulumi.Input[Optional[_builtins.int]]]
+    """
+    User-managed rotation counter for `token_wo`. Must be incremented every time `token_wo` is changed. Note: the token is also automatically re-sent when `log_sink.type` or `credentials.type` changes, even without a version bump.
+    """
+    type: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The authentication type when using an OTLP log sink. Leave unset for Loki.Possible values are: `basic`, `bearer`.
+    """
+    username: NotRequired[pulumi.Input[Optional[_builtins.str]]]
+    """
+    The username used to authenticate. Required for Loki and for OTLP when `credentials.type` is `basic`.
+    """
+
+@pulumi.input_type
+class CdnDistributionConfigLogSinkCredentialsArgs:
+    def __init__(__self__, *,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 password_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_wo: pulumi.Input[Optional[_builtins.str]] = None,
+                 token_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 username: pulumi.Input[Optional[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] password: The password corresponding to `username`. Required for Loki and for OTLP when `credentials.type` is `basic`. Write-only argument `password_wo` should be preferred.
+        :param pulumi.Input[_builtins.str] password_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only password for log sink authentication. Never stored in state and never returned by the API. To rotate the password, update this value AND increment `password_wo_version`. Changing this field alone will NOT trigger an update.
+        :param pulumi.Input[_builtins.int] password_wo_version: User-managed rotation counter for `password_wo`. Must be incremented every time `password_wo` is changed. Note: because the API treats credentials atomically (username + password together for Loki/OTLP basic), the password is also automatically re-sent when `username`, `log_sink.type`, or `credentials.type` changes, even without a version bump.
+        :param pulumi.Input[_builtins.str] token: The bearer token used to authenticate. Required for OTLP when `credentials.type` is `bearer`. Write-only argument `token_wo` should be preferred.
+        :param pulumi.Input[_builtins.str] token_wo: **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+               Write-only bearer token for OTLP log sink authentication. Never stored in state and never returned by the API. To rotate the token, update this value AND increment `token_wo_version`. Changing this field alone will NOT trigger an update.
+        :param pulumi.Input[_builtins.int] token_wo_version: User-managed rotation counter for `token_wo`. Must be incremented every time `token_wo` is changed. Note: the token is also automatically re-sent when `log_sink.type` or `credentials.type` changes, even without a version bump.
+        :param pulumi.Input[_builtins.str] type: The authentication type when using an OTLP log sink. Leave unset for Loki.Possible values are: `basic`, `bearer`.
+        :param pulumi.Input[_builtins.str] username: The username used to authenticate. Required for Loki and for OTLP when `credentials.type` is `basic`.
+        """
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if password_wo is not None:
+            pulumi.set(__self__, "password_wo", password_wo)
+        if password_wo_version is not None:
+            pulumi.set(__self__, "password_wo_version", password_wo_version)
+        if token is not None:
+            pulumi.set(__self__, "token", token)
+        if token_wo is not None:
+            pulumi.set(__self__, "token_wo", token_wo)
+        if token_wo_version is not None:
+            pulumi.set(__self__, "token_wo_version", token_wo_version)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The password corresponding to `username`. Required for Loki and for OTLP when `credentials.type` is `basic`. Write-only argument `password_wo` should be preferred.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "password", value)
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWo")
+    def password_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Write-only password for log sink authentication. Never stored in state and never returned by the API. To rotate the password, update this value AND increment `password_wo_version`. Changing this field alone will NOT trigger an update.
+        """
+        return pulumi.get(self, "password_wo")
+
+    @password_wo.setter
+    def password_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "password_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="passwordWoVersion")
+    def password_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        User-managed rotation counter for `password_wo`. Must be incremented every time `password_wo` is changed. Note: because the API treats credentials atomically (username + password together for Loki/OTLP basic), the password is also automatically re-sent when `username`, `log_sink.type`, or `credentials.type` changes, even without a version bump.
+        """
+        return pulumi.get(self, "password_wo_version")
+
+    @password_wo_version.setter
+    def password_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "password_wo_version", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def token(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The bearer token used to authenticate. Required for OTLP when `credentials.type` is `bearer`. Write-only argument `token_wo` should be preferred.
+        """
+        return pulumi.get(self, "token")
+
+    @token.setter
+    def token(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "token", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tokenWo")
+    def token_wo(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
+        Write-only bearer token for OTLP log sink authentication. Never stored in state and never returned by the API. To rotate the token, update this value AND increment `token_wo_version`. Changing this field alone will NOT trigger an update.
+        """
+        return pulumi.get(self, "token_wo")
+
+    @token_wo.setter
+    def token_wo(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "token_wo", value)
+
+    @_builtins.property
+    @pulumi.getter(name="tokenWoVersion")
+    def token_wo_version(self) -> pulumi.Input[Optional[_builtins.int]]:
+        """
+        User-managed rotation counter for `token_wo`. Must be incremented every time `token_wo` is changed. Note: the token is also automatically re-sent when `log_sink.type` or `credentials.type` changes, even without a version bump.
+        """
+        return pulumi.get(self, "token_wo_version")
+
+    @token_wo_version.setter
+    def token_wo_version(self, value: pulumi.Input[Optional[_builtins.int]]):
+        pulumi.set(self, "token_wo_version", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The authentication type when using an OTLP log sink. Leave unset for Loki.Possible values are: `basic`, `bearer`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The username used to authenticate. Required for Loki and for OTLP when `credentials.type` is `basic`.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "username", value)
 
 
 class CdnDistributionConfigOptimizerArgsDict(TypedDict):
@@ -10957,6 +11282,10 @@ class SkeClusterNodePoolArgsDict(TypedDict):
     """
     Specifies the container runtime. Defaults to `containerd`
     """
+    kata: NotRequired[pulumi.Input[Optional[_builtins.bool]]]
+    """
+    Enable workload isolation via Kata Containers for pods scheduled on this node pool. Note: This feature is in private preview. Enabling is only possible for enabled accounts. Otherwise the request will be rejected. Defaults to `false`.
+    """
     labels: NotRequired[pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]]
     """
     Labels to add to each node.
@@ -11008,6 +11337,7 @@ class SkeClusterNodePoolArgs:
                  name: pulumi.Input[_builtins.str],
                  allow_system_components: pulumi.Input[Optional[_builtins.bool]] = None,
                  cri: pulumi.Input[Optional[_builtins.str]] = None,
+                 kata: pulumi.Input[Optional[_builtins.bool]] = None,
                  labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
                  max_surge: pulumi.Input[Optional[_builtins.int]] = None,
                  max_unavailable: pulumi.Input[Optional[_builtins.int]] = None,
@@ -11026,6 +11356,7 @@ class SkeClusterNodePoolArgs:
         :param pulumi.Input[_builtins.str] name: Specifies the name of the node pool.
         :param pulumi.Input[_builtins.bool] allow_system_components: Allow system components to run on this node pool.
         :param pulumi.Input[_builtins.str] cri: Specifies the container runtime. Defaults to `containerd`
+        :param pulumi.Input[_builtins.bool] kata: Enable workload isolation via Kata Containers for pods scheduled on this node pool. Note: This feature is in private preview. Enabling is only possible for enabled accounts. Otherwise the request will be rejected. Defaults to `false`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] labels: Labels to add to each node.
         :param pulumi.Input[_builtins.int] max_surge: Maximum number of additional VMs that are created during an update. If set (larger than 0), then it must be at least the amount of zones configured for the nodepool. The `max_surge` and `max_unavailable` fields cannot both be unset at the same time.
         :param pulumi.Input[_builtins.int] max_unavailable: Maximum number of VMs that that can be unavailable during an update. If set (larger than 0), then it must be at least the amount of zones configured for the nodepool. The `max_surge` and `max_unavailable` fields cannot both be unset at the same time.
@@ -11046,6 +11377,8 @@ class SkeClusterNodePoolArgs:
             pulumi.set(__self__, "allow_system_components", allow_system_components)
         if cri is not None:
             pulumi.set(__self__, "cri", cri)
+        if kata is not None:
+            pulumi.set(__self__, "kata", kata)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if max_surge is not None:
@@ -11153,6 +11486,18 @@ class SkeClusterNodePoolArgs:
     @cri.setter
     def cri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cri", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def kata(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Enable workload isolation via Kata Containers for pods scheduled on this node pool. Note: This feature is in private preview. Enabling is only possible for enabled accounts. Otherwise the request will be rejected. Defaults to `false`.
+        """
+        return pulumi.get(self, "kata")
+
+    @kata.setter
+    def kata(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "kata", value)
 
     @_builtins.property
     @pulumi.getter

@@ -136,6 +136,10 @@ namespace Pulumi.Stackit
     public sealed class GetDremioInstanceResult
     {
         /// <summary>
+        /// The Access Control List (ACL) defining the IPv4 or IPv6 CIDR ranges allowed to connect to the Dremio instance. An empty list allows access from any address.
+        /// </summary>
+        public readonly ImmutableArray<string> Acls;
+        /// <summary>
         /// Dremio instance authentication settings. A change here triggers a Dremio restart and will incur downtime.
         /// </summary>
         public readonly Outputs.GetDremioInstanceAuthenticationResult Authentication;
@@ -170,6 +174,8 @@ namespace Pulumi.Stackit
 
         [OutputConstructor]
         private GetDremioInstanceResult(
+            ImmutableArray<string> acls,
+
             Outputs.GetDremioInstanceAuthenticationResult authentication,
 
             string description,
@@ -186,6 +192,7 @@ namespace Pulumi.Stackit
 
             string? region)
         {
+            Acls = acls;
             Authentication = authentication;
             Description = description;
             DisplayName = displayName;

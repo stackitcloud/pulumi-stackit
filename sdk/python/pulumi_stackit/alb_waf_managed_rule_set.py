@@ -23,6 +23,7 @@ class AlbWafManagedRuleSetArgs:
     def __init__(__self__, *,
                  project_id: pulumi.Input[_builtins.str],
                  type: pulumi.Input[_builtins.str],
+                 configured_groups: pulumi.Input[Optional[Mapping[str, pulumi.Input['AlbWafManagedRuleSetConfiguredGroupsArgs']]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None):
         """
@@ -30,11 +31,14 @@ class AlbWafManagedRuleSetArgs:
 
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID associated with the ALB WAF Managed Rule Set.
         :param pulumi.Input[_builtins.str] type: Type of the Managed Rule Set.
+        :param pulumi.Input[Mapping[str, pulumi.Input['AlbWafManagedRuleSetConfiguredGroupsArgs']]] configured_groups: Rule modes to set, keyed by group ID (e.g. `911`) and rule ID (e.g. `911100`). Only the listed rules are managed; every other rule keeps the mode the API gives it. A rule removed from the configuration is set back to `MODE_ENABLED`, even if its mode was changed outside Terraform in the meantime. The resulting state of all rules is available in `groups`.
         :param pulumi.Input[_builtins.str] name: Managed Rule Set configuration name.
         :param pulumi.Input[_builtins.str] region: STACKIT region name the resource is located in. If not defined, the provider region is used.
         """
         pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "type", type)
+        if configured_groups is not None:
+            pulumi.set(__self__, "configured_groups", configured_groups)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if region is not None:
@@ -65,6 +69,18 @@ class AlbWafManagedRuleSetArgs:
         pulumi.set(self, "type", value)
 
     @_builtins.property
+    @pulumi.getter(name="configuredGroups")
+    def configured_groups(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['AlbWafManagedRuleSetConfiguredGroupsArgs']]]]:
+        """
+        Rule modes to set, keyed by group ID (e.g. `911`) and rule ID (e.g. `911100`). Only the listed rules are managed; every other rule keeps the mode the API gives it. A rule removed from the configuration is set back to `MODE_ENABLED`, even if its mode was changed outside Terraform in the meantime. The resulting state of all rules is available in `groups`.
+        """
+        return pulumi.get(self, "configured_groups")
+
+    @configured_groups.setter
+    def configured_groups(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['AlbWafManagedRuleSetConfiguredGroupsArgs']]]]):
+        pulumi.set(self, "configured_groups", value)
+
+    @_builtins.property
     @pulumi.getter
     def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
@@ -92,6 +108,7 @@ class AlbWafManagedRuleSetArgs:
 @pulumi.input_type
 class _AlbWafManagedRuleSetState:
     def __init__(__self__, *,
+                 configured_groups: pulumi.Input[Optional[Mapping[str, pulumi.Input['AlbWafManagedRuleSetConfiguredGroupsArgs']]]] = None,
                  groups: pulumi.Input[Optional[Mapping[str, pulumi.Input['AlbWafManagedRuleSetGroupsArgs']]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -101,6 +118,7 @@ class _AlbWafManagedRuleSetState:
         """
         Input properties used for looking up and filtering AlbWafManagedRuleSet resources.
 
+        :param pulumi.Input[Mapping[str, pulumi.Input['AlbWafManagedRuleSetConfiguredGroupsArgs']]] configured_groups: Rule modes to set, keyed by group ID (e.g. `911`) and rule ID (e.g. `911100`). Only the listed rules are managed; every other rule keeps the mode the API gives it. A rule removed from the configuration is set back to `MODE_ENABLED`, even if its mode was changed outside Terraform in the meantime. The resulting state of all rules is available in `groups`.
         :param pulumi.Input[Mapping[str, pulumi.Input['AlbWafManagedRuleSetGroupsArgs']]] groups: Inventory of all available Managed Rule Set groups and their current configuration.
         :param pulumi.Input[_builtins.str] name: Managed Rule Set configuration name.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID associated with the ALB WAF Managed Rule Set.
@@ -108,6 +126,8 @@ class _AlbWafManagedRuleSetState:
         :param pulumi.Input[_builtins.str] type: Type of the Managed Rule Set.
         :param pulumi.Input[_builtins.str] version: Managed Rule Set version.
         """
+        if configured_groups is not None:
+            pulumi.set(__self__, "configured_groups", configured_groups)
         if groups is not None:
             pulumi.set(__self__, "groups", groups)
         if name is not None:
@@ -120,6 +140,18 @@ class _AlbWafManagedRuleSetState:
             pulumi.set(__self__, "type", type)
         if version is not None:
             pulumi.set(__self__, "version", version)
+
+    @_builtins.property
+    @pulumi.getter(name="configuredGroups")
+    def configured_groups(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input['AlbWafManagedRuleSetConfiguredGroupsArgs']]]]:
+        """
+        Rule modes to set, keyed by group ID (e.g. `911`) and rule ID (e.g. `911100`). Only the listed rules are managed; every other rule keeps the mode the API gives it. A rule removed from the configuration is set back to `MODE_ENABLED`, even if its mode was changed outside Terraform in the meantime. The resulting state of all rules is available in `groups`.
+        """
+        return pulumi.get(self, "configured_groups")
+
+    @configured_groups.setter
+    def configured_groups(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input['AlbWafManagedRuleSetConfiguredGroupsArgs']]]]):
+        pulumi.set(self, "configured_groups", value)
 
     @_builtins.property
     @pulumi.getter
@@ -200,6 +232,7 @@ class AlbWafManagedRuleSet(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 configured_groups: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['AlbWafManagedRuleSetConfiguredGroupsArgs', 'AlbWafManagedRuleSetConfiguredGroupsArgsDict', 'outputs.AlbWafManagedRuleSetConfiguredGroups']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -213,6 +246,7 @@ class AlbWafManagedRuleSet(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['AlbWafManagedRuleSetConfiguredGroupsArgs', 'AlbWafManagedRuleSetConfiguredGroupsArgsDict', 'outputs.AlbWafManagedRuleSetConfiguredGroups']]]] configured_groups: Rule modes to set, keyed by group ID (e.g. `911`) and rule ID (e.g. `911100`). Only the listed rules are managed; every other rule keeps the mode the API gives it. A rule removed from the configuration is set back to `MODE_ENABLED`, even if its mode was changed outside Terraform in the meantime. The resulting state of all rules is available in `groups`.
         :param pulumi.Input[_builtins.str] name: Managed Rule Set configuration name.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID associated with the ALB WAF Managed Rule Set.
         :param pulumi.Input[_builtins.str] region: STACKIT region name the resource is located in. If not defined, the provider region is used.
@@ -245,6 +279,7 @@ class AlbWafManagedRuleSet(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 configured_groups: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['AlbWafManagedRuleSetConfiguredGroupsArgs', 'AlbWafManagedRuleSetConfiguredGroupsArgsDict', 'outputs.AlbWafManagedRuleSetConfiguredGroups']]]]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
                  project_id: pulumi.Input[Optional[_builtins.str]] = None,
                  region: pulumi.Input[Optional[_builtins.str]] = None,
@@ -258,6 +293,7 @@ class AlbWafManagedRuleSet(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AlbWafManagedRuleSetArgs.__new__(AlbWafManagedRuleSetArgs)
 
+            __props__.__dict__["configured_groups"] = configured_groups
             __props__.__dict__["name"] = name
             if project_id is None and not opts.urn:
                 raise TypeError("Missing required property 'project_id'")
@@ -278,6 +314,7 @@ class AlbWafManagedRuleSet(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            configured_groups: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['AlbWafManagedRuleSetConfiguredGroupsArgs', 'AlbWafManagedRuleSetConfiguredGroupsArgsDict', 'outputs.AlbWafManagedRuleSetConfiguredGroups']]]]] = None,
             groups: pulumi.Input[Optional[Mapping[str, pulumi.Input[Union['AlbWafManagedRuleSetGroupsArgs', 'AlbWafManagedRuleSetGroupsArgsDict', 'outputs.AlbWafManagedRuleSetGroups']]]]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
             project_id: pulumi.Input[Optional[_builtins.str]] = None,
@@ -291,6 +328,7 @@ class AlbWafManagedRuleSet(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Mapping[str, pulumi.Input[Union['AlbWafManagedRuleSetConfiguredGroupsArgs', 'AlbWafManagedRuleSetConfiguredGroupsArgsDict', 'outputs.AlbWafManagedRuleSetConfiguredGroups']]]] configured_groups: Rule modes to set, keyed by group ID (e.g. `911`) and rule ID (e.g. `911100`). Only the listed rules are managed; every other rule keeps the mode the API gives it. A rule removed from the configuration is set back to `MODE_ENABLED`, even if its mode was changed outside Terraform in the meantime. The resulting state of all rules is available in `groups`.
         :param pulumi.Input[Mapping[str, pulumi.Input[Union['AlbWafManagedRuleSetGroupsArgs', 'AlbWafManagedRuleSetGroupsArgsDict', 'outputs.AlbWafManagedRuleSetGroups']]]] groups: Inventory of all available Managed Rule Set groups and their current configuration.
         :param pulumi.Input[_builtins.str] name: Managed Rule Set configuration name.
         :param pulumi.Input[_builtins.str] project_id: STACKIT project ID associated with the ALB WAF Managed Rule Set.
@@ -302,6 +340,7 @@ class AlbWafManagedRuleSet(pulumi.CustomResource):
 
         __props__ = _AlbWafManagedRuleSetState.__new__(_AlbWafManagedRuleSetState)
 
+        __props__.__dict__["configured_groups"] = configured_groups
         __props__.__dict__["groups"] = groups
         __props__.__dict__["name"] = name
         __props__.__dict__["project_id"] = project_id
@@ -309,6 +348,14 @@ class AlbWafManagedRuleSet(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         __props__.__dict__["version"] = version
         return AlbWafManagedRuleSet(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="configuredGroups")
+    def configured_groups(self) -> pulumi.Output[Optional[Mapping[str, 'outputs.AlbWafManagedRuleSetConfiguredGroups']]]:
+        """
+        Rule modes to set, keyed by group ID (e.g. `911`) and rule ID (e.g. `911100`). Only the listed rules are managed; every other rule keeps the mode the API gives it. A rule removed from the configuration is set back to `MODE_ENABLED`, even if its mode was changed outside Terraform in the meantime. The resulting state of all rules is available in `groups`.
+        """
+        return pulumi.get(self, "configured_groups")
 
     @_builtins.property
     @pulumi.getter

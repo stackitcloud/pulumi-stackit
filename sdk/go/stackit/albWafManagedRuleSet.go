@@ -18,6 +18,8 @@ import (
 type AlbWafManagedRuleSet struct {
 	pulumi.CustomResourceState
 
+	// Rule modes to set, keyed by group ID (e.g. `911`) and rule ID (e.g. `911100`). Only the listed rules are managed; every other rule keeps the mode the API gives it. A rule removed from the configuration is set back to `MODE_ENABLED`, even if its mode was changed outside Terraform in the meantime. The resulting state of all rules is available in `groups`.
+	ConfiguredGroups AlbWafManagedRuleSetConfiguredGroupsMapOutput `pulumi:"configuredGroups"`
 	// Inventory of all available Managed Rule Set groups and their current configuration.
 	Groups AlbWafManagedRuleSetGroupsMapOutput `pulumi:"groups"`
 	// Managed Rule Set configuration name.
@@ -68,6 +70,8 @@ func GetAlbWafManagedRuleSet(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AlbWafManagedRuleSet resources.
 type albWafManagedRuleSetState struct {
+	// Rule modes to set, keyed by group ID (e.g. `911`) and rule ID (e.g. `911100`). Only the listed rules are managed; every other rule keeps the mode the API gives it. A rule removed from the configuration is set back to `MODE_ENABLED`, even if its mode was changed outside Terraform in the meantime. The resulting state of all rules is available in `groups`.
+	ConfiguredGroups map[string]AlbWafManagedRuleSetConfiguredGroups `pulumi:"configuredGroups"`
 	// Inventory of all available Managed Rule Set groups and their current configuration.
 	Groups map[string]AlbWafManagedRuleSetGroups `pulumi:"groups"`
 	// Managed Rule Set configuration name.
@@ -83,6 +87,8 @@ type albWafManagedRuleSetState struct {
 }
 
 type AlbWafManagedRuleSetState struct {
+	// Rule modes to set, keyed by group ID (e.g. `911`) and rule ID (e.g. `911100`). Only the listed rules are managed; every other rule keeps the mode the API gives it. A rule removed from the configuration is set back to `MODE_ENABLED`, even if its mode was changed outside Terraform in the meantime. The resulting state of all rules is available in `groups`.
+	ConfiguredGroups AlbWafManagedRuleSetConfiguredGroupsMapInput
 	// Inventory of all available Managed Rule Set groups and their current configuration.
 	Groups AlbWafManagedRuleSetGroupsMapInput
 	// Managed Rule Set configuration name.
@@ -102,6 +108,8 @@ func (AlbWafManagedRuleSetState) ElementType() reflect.Type {
 }
 
 type albWafManagedRuleSetArgs struct {
+	// Rule modes to set, keyed by group ID (e.g. `911`) and rule ID (e.g. `911100`). Only the listed rules are managed; every other rule keeps the mode the API gives it. A rule removed from the configuration is set back to `MODE_ENABLED`, even if its mode was changed outside Terraform in the meantime. The resulting state of all rules is available in `groups`.
+	ConfiguredGroups map[string]AlbWafManagedRuleSetConfiguredGroups `pulumi:"configuredGroups"`
 	// Managed Rule Set configuration name.
 	Name *string `pulumi:"name"`
 	// STACKIT project ID associated with the ALB WAF Managed Rule Set.
@@ -114,6 +122,8 @@ type albWafManagedRuleSetArgs struct {
 
 // The set of arguments for constructing a AlbWafManagedRuleSet resource.
 type AlbWafManagedRuleSetArgs struct {
+	// Rule modes to set, keyed by group ID (e.g. `911`) and rule ID (e.g. `911100`). Only the listed rules are managed; every other rule keeps the mode the API gives it. A rule removed from the configuration is set back to `MODE_ENABLED`, even if its mode was changed outside Terraform in the meantime. The resulting state of all rules is available in `groups`.
+	ConfiguredGroups AlbWafManagedRuleSetConfiguredGroupsMapInput
 	// Managed Rule Set configuration name.
 	Name pulumi.StringPtrInput
 	// STACKIT project ID associated with the ALB WAF Managed Rule Set.
@@ -209,6 +219,11 @@ func (o AlbWafManagedRuleSetOutput) ToAlbWafManagedRuleSetOutput() AlbWafManaged
 
 func (o AlbWafManagedRuleSetOutput) ToAlbWafManagedRuleSetOutputWithContext(ctx context.Context) AlbWafManagedRuleSetOutput {
 	return o
+}
+
+// Rule modes to set, keyed by group ID (e.g. `911`) and rule ID (e.g. `911100`). Only the listed rules are managed; every other rule keeps the mode the API gives it. A rule removed from the configuration is set back to `MODE_ENABLED`, even if its mode was changed outside Terraform in the meantime. The resulting state of all rules is available in `groups`.
+func (o AlbWafManagedRuleSetOutput) ConfiguredGroups() AlbWafManagedRuleSetConfiguredGroupsMapOutput {
+	return o.ApplyT(func(v *AlbWafManagedRuleSet) AlbWafManagedRuleSetConfiguredGroupsMapOutput { return v.ConfiguredGroups }).(AlbWafManagedRuleSetConfiguredGroupsMapOutput)
 }
 
 // Inventory of all available Managed Rule Set groups and their current configuration.

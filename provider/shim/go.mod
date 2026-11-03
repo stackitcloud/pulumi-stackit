@@ -4,14 +4,15 @@ go 1.26.10
 
 require (
 	github.com/stackitcloud/pulumi-stackit/provider/pkg/version v0.0.6
-	github.com/stackitcloud/terraform-provider-stackit v0.121.0
+	github.com/stackitcloud/terraform-provider-stackit v0.122.0
 )
 
 require (
+	github.com/Masterminds/semver/v3 v3.5.0 // indirect
 	github.com/hashicorp/go-uuid v1.0.3 // indirect
 	github.com/hashicorp/terraform-plugin-framework-jsontypes v0.2.0 // indirect
 	github.com/hashicorp/terraform-plugin-framework-timeouts v0.7.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/alb v0.19.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/alb v0.20.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/albwaf v0.13.5 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/automation v0.2.1 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/certificates v1.10.0 // indirect
@@ -19,10 +20,10 @@ require (
 	github.com/stackitcloud/stackit-sdk-go/services/edge v0.14.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/intake v0.12.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/kms v1.14.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/logs v0.11.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/logs v0.12.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/modelexperiments v0.3.2 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/scf v0.11.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/sfs v0.13.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/sfs v0.13.1 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/telemetrylink v0.6.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/telemetryrouter v0.6.1 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/valkey v0.4.0 // indirect
@@ -50,18 +51,18 @@ require (
 	github.com/stackitcloud/stackit-sdk-go/services/dns v0.25.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/git v0.15.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/iaas v1.15.1 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/loadbalancer v1.16.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/logme v1.5.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/loadbalancer v1.17.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/logme v1.6.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/mariadb v1.4.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/modelserving v0.14.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/mongodbflex v1.13.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/objectstorage v1.12.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/objectstorage v1.13.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/observability v0.26.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/opensearch v1.5.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/postgresflex v1.16.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/rabbitmq v1.5.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/redis v1.6.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/resourcemanager v0.27.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/resourcemanager v0.28.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/secretsmanager v0.20.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/serverbackup v1.8.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/serverupdate v1.6.0 // indirect
@@ -72,6 +73,5 @@ require (
 	github.com/teambition/rrule-go v1.8.2 // indirect
 	github.com/vmihailenco/msgpack/v5 v5.4.1 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
-	golang.org/x/mod v0.42.0 // indirect
 	golang.org/x/sys v0.48.0 // indirect
 )

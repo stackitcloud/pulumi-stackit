@@ -50,6 +50,10 @@ export interface GetDremioInstanceArgs {
  */
 export interface GetDremioInstanceResult {
     /**
+     * The Access Control List (ACL) defining the IPv4 or IPv6 CIDR ranges allowed to connect to the Dremio instance. An empty list allows access from any address.
+     */
+    readonly acls: string[];
+    /**
      * Dremio instance authentication settings. A change here triggers a Dremio restart and will incur downtime.
      */
     readonly authentication: outputs.GetDremioInstanceAuthentication;

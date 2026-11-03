@@ -36,6 +36,12 @@ namespace Pulumi.Stackit.Inputs
         [Input("cri")]
         public Input<string>? Cri { get; set; }
 
+        /// <summary>
+        /// Enable workload isolation via Kata Containers for pods scheduled on this node pool. Note: This feature is in private preview. Enabling is only possible for enabled accounts. Otherwise the request will be rejected. Defaults to `False`.
+        /// </summary>
+        [Input("kata")]
+        public Input<bool>? Kata { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 

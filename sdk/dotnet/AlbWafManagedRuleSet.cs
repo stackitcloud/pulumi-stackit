@@ -18,6 +18,12 @@ namespace Pulumi.Stackit
     public partial class AlbWafManagedRuleSet : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Rule modes to set, keyed by group ID (e.g. `911`) and rule ID (e.g. `911100`). Only the listed rules are managed; every other rule keeps the mode the API gives it. A rule removed from the configuration is set back to `MODE_ENABLED`, even if its mode was changed outside Terraform in the meantime. The resulting state of all rules is available in `Groups`.
+        /// </summary>
+        [Output("configuredGroups")]
+        public Output<ImmutableDictionary<string, Outputs.AlbWafManagedRuleSetConfiguredGroups>?> ConfiguredGroups { get; private set; } = null!;
+
+        /// <summary>
         /// Inventory of all available Managed Rule Set groups and their current configuration.
         /// </summary>
         [Output("groups")]
@@ -100,6 +106,18 @@ namespace Pulumi.Stackit
 
     public sealed class AlbWafManagedRuleSetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("configuredGroups")]
+        private InputMap<Inputs.AlbWafManagedRuleSetConfiguredGroupsArgs>? _configuredGroups;
+
+        /// <summary>
+        /// Rule modes to set, keyed by group ID (e.g. `911`) and rule ID (e.g. `911100`). Only the listed rules are managed; every other rule keeps the mode the API gives it. A rule removed from the configuration is set back to `MODE_ENABLED`, even if its mode was changed outside Terraform in the meantime. The resulting state of all rules is available in `Groups`.
+        /// </summary>
+        public InputMap<Inputs.AlbWafManagedRuleSetConfiguredGroupsArgs> ConfiguredGroups
+        {
+            get => _configuredGroups ?? (_configuredGroups = new InputMap<Inputs.AlbWafManagedRuleSetConfiguredGroupsArgs>());
+            set => _configuredGroups = value;
+        }
+
         /// <summary>
         /// Managed Rule Set configuration name.
         /// </summary>
@@ -132,6 +150,18 @@ namespace Pulumi.Stackit
 
     public sealed class AlbWafManagedRuleSetState : global::Pulumi.ResourceArgs
     {
+        [Input("configuredGroups")]
+        private InputMap<Inputs.AlbWafManagedRuleSetConfiguredGroupsGetArgs>? _configuredGroups;
+
+        /// <summary>
+        /// Rule modes to set, keyed by group ID (e.g. `911`) and rule ID (e.g. `911100`). Only the listed rules are managed; every other rule keeps the mode the API gives it. A rule removed from the configuration is set back to `MODE_ENABLED`, even if its mode was changed outside Terraform in the meantime. The resulting state of all rules is available in `Groups`.
+        /// </summary>
+        public InputMap<Inputs.AlbWafManagedRuleSetConfiguredGroupsGetArgs> ConfiguredGroups
+        {
+            get => _configuredGroups ?? (_configuredGroups = new InputMap<Inputs.AlbWafManagedRuleSetConfiguredGroupsGetArgs>());
+            set => _configuredGroups = value;
+        }
+
         [Input("groups")]
         private InputMap<Inputs.AlbWafManagedRuleSetGroupsGetArgs>? _groups;
 

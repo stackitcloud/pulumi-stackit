@@ -38,6 +38,10 @@ namespace Pulumi.Stackit.Outputs
         /// </summary>
         public readonly bool? ForwardHostHeader;
         /// <summary>
+        /// Configures a log sink to export the distribution's access logs. Only one of Loki or OTLP can be configured at a time; the sink is selected via the `Type` attribute. Note: because the API never returns raw credentials, `Username`, `Password`, and `Token` are preserved from state during Read operations. If the sink type is changed outside of Terraform, previously stored credentials are cleared on refresh and must be re-applied via `pulumi up`.
+        /// </summary>
+        public readonly Outputs.CdnDistributionConfigLogSink? LogSink;
+        /// <summary>
         /// Sets the monthly limit of bandwidth in bytes that the pullzone is allowed to use. Note: once a value is set, removing the attribute from your configuration will retain the last known value in state.
         /// </summary>
         public readonly int? MonthlyLimitBytes;
@@ -80,6 +84,8 @@ namespace Pulumi.Stackit.Outputs
 
             bool? forwardHostHeader,
 
+            Outputs.CdnDistributionConfigLogSink? logSink,
+
             int? monthlyLimitBytes,
 
             Outputs.CdnDistributionConfigOptimizer? optimizer,
@@ -100,6 +106,7 @@ namespace Pulumi.Stackit.Outputs
             CacheConfig = cacheConfig;
             DefaultCacheDuration = defaultCacheDuration;
             ForwardHostHeader = forwardHostHeader;
+            LogSink = logSink;
             MonthlyLimitBytes = monthlyLimitBytes;
             Optimizer = optimizer;
             Redirects = redirects;
