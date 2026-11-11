@@ -129,6 +129,12 @@ func (TelemetryrouterInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*telemetryrouterInstanceState)(nil)).Elem()
 }
 
+// TelemetryrouterInstanceExists checks whether an existing TelemetryrouterInstance resource with the given ID exists.
+func TelemetryrouterInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TelemetryrouterInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/telemetryrouterInstance:TelemetryrouterInstance", id, state, "", opts...)
+}
+
 type telemetryrouterInstanceArgs struct {
 	// The description of the TelemetryRouter instance
 	Description *string `pulumi:"description"`

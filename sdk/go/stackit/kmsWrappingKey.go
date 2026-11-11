@@ -155,6 +155,12 @@ func (KmsWrappingKeyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*kmsWrappingKeyState)(nil)).Elem()
 }
 
+// KmsWrappingKeyExists checks whether an existing KmsWrappingKey resource with the given ID exists.
+func KmsWrappingKeyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KmsWrappingKeyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/kmsWrappingKey:KmsWrappingKey", id, state, "", opts...)
+}
+
 type kmsWrappingKeyArgs struct {
 	// The access scope of the key. Default is `PUBLIC`. Possible values are: `PUBLIC`, `SNA`.
 	AccessScope *string `pulumi:"accessScope"`

@@ -126,6 +126,12 @@ func (ServerBackupScheduleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serverBackupScheduleState)(nil)).Elem()
 }
 
+// ServerBackupScheduleExists checks whether an existing ServerBackupSchedule resource with the given ID exists.
+func ServerBackupScheduleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServerBackupScheduleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/serverBackupSchedule:ServerBackupSchedule", id, state, "", opts...)
+}
+
 type serverBackupScheduleArgs struct {
 	// Backup schedule details for the backups.
 	BackupProperties ServerBackupScheduleBackupProperties `pulumi:"backupProperties"`

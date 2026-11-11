@@ -138,6 +138,12 @@ func (RedisInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*redisInstanceState)(nil)).Elem()
 }
 
+// RedisInstanceExists checks whether an existing RedisInstance resource with the given ID exists.
+func RedisInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RedisInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/redisInstance:RedisInstance", id, state, "", opts...)
+}
+
 type redisInstanceArgs struct {
 	// Instance name.
 	Name *string `pulumi:"name"`

@@ -107,6 +107,12 @@ func (AlbWafManagedRuleSetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*albWafManagedRuleSetState)(nil)).Elem()
 }
 
+// AlbWafManagedRuleSetExists checks whether an existing AlbWafManagedRuleSet resource with the given ID exists.
+func AlbWafManagedRuleSetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AlbWafManagedRuleSetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/albWafManagedRuleSet:AlbWafManagedRuleSet", id, state, "", opts...)
+}
+
 type albWafManagedRuleSetArgs struct {
 	// Rule modes to set, keyed by group ID (e.g. `911`) and rule ID (e.g. `911100`). Only the listed rules are managed; every other rule keeps the mode the API gives it. A rule removed from the configuration is set back to `MODE_ENABLED`, even if its mode was changed outside Terraform in the meantime. The resulting state of all rules is available in `groups`.
 	ConfiguredGroups map[string]AlbWafManagedRuleSetConfiguredGroups `pulumi:"configuredGroups"`

@@ -262,6 +262,12 @@ func (ObservabilityInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*observabilityInstanceState)(nil)).Elem()
 }
 
+// ObservabilityInstanceExists checks whether an existing ObservabilityInstance resource with the given ID exists.
+func ObservabilityInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ObservabilityInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/observabilityInstance:ObservabilityInstance", id, state, "", opts...)
+}
+
 type observabilityInstanceArgs struct {
 	// The access control list for this instance. Each entry is an IP address range that is permitted to access, in CIDR notation.
 	Acls []string `pulumi:"acls"`

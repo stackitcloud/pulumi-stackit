@@ -554,6 +554,38 @@ class Image(pulumi.CustomResource):
         __props__.__dict__["scope"] = scope
         return Image(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            checksum: pulumi.Input[Optional[Union['ImageChecksumArgs', 'ImageChecksumArgsDict', 'outputs.ImageChecksum']]] = None,
+            config: pulumi.Input[Optional[Union['ImageConfigArgs', 'ImageConfigArgsDict', 'outputs.ImageConfig']]] = None,
+            disk_format: pulumi.Input[Optional[_builtins.str]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            local_file_path: pulumi.Input[Optional[_builtins.str]] = None,
+            min_disk_size: pulumi.Input[Optional[_builtins.int]] = None,
+            min_ram: pulumi.Input[Optional[_builtins.int]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            protected: pulumi.Input[Optional[_builtins.bool]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            scope: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["checksum"] = checksum
+        __props__["config"] = config
+        __props__["diskFormat"] = disk_format
+        __props__["imageId"] = image_id
+        __props__["labels"] = labels
+        __props__["localFilePath"] = local_file_path
+        __props__["minDiskSize"] = min_disk_size
+        __props__["minRam"] = min_ram
+        __props__["name"] = name
+        __props__["projectId"] = project_id
+        __props__["protected"] = protected
+        __props__["region"] = region
+        __props__["scope"] = scope
+        return pulumi.runtime.exists_resource(None, 'stackit:index/image:Image', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def checksum(self) -> pulumi.Output['outputs.ImageChecksum']:

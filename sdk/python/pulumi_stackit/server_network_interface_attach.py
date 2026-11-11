@@ -277,6 +277,20 @@ class ServerNetworkInterfaceAttach(pulumi.CustomResource):
         __props__.__dict__["server_id"] = server_id
         return ServerNetworkInterfaceAttach(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            network_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            server_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["networkInterfaceId"] = network_interface_id
+        __props__["projectId"] = project_id
+        __props__["region"] = region
+        __props__["serverId"] = server_id
+        return pulumi.runtime.exists_resource(None, 'stackit:index/serverNetworkInterfaceAttach:ServerNetworkInterfaceAttach', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="networkInterfaceId")
     def network_interface_id(self) -> pulumi.Output[_builtins.str]:

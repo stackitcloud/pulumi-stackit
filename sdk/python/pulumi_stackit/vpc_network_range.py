@@ -602,6 +602,38 @@ class VpcNetworkRange(pulumi.CustomResource):
         __props__.__dict__["vpc_id"] = vpc_id
         return VpcNetworkRange(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            default_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_version: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            max_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+            min_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+            nameservers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            network_range_id: pulumi.Input[Optional[_builtins.str]] = None,
+            prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['VpcNetworkRangeTimeoutsArgs', 'VpcNetworkRangeTimeoutsArgsDict', 'outputs.VpcNetworkRangeTimeouts']]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["defaultPrefixLength"] = default_prefix_length
+        __props__["description"] = description
+        __props__["ipVersion"] = ip_version
+        __props__["labels"] = labels
+        __props__["maxPrefixLength"] = max_prefix_length
+        __props__["minPrefixLength"] = min_prefix_length
+        __props__["nameservers"] = nameservers
+        __props__["networkRangeId"] = network_range_id
+        __props__["prefix"] = prefix
+        __props__["projectId"] = project_id
+        __props__["region"] = region
+        __props__["timeouts"] = timeouts
+        __props__["vpcId"] = vpc_id
+        return pulumi.runtime.exists_resource(None, 'stackit:index/vpcNetworkRange:VpcNetworkRange', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="defaultPrefixLength")
     def default_prefix_length(self) -> pulumi.Output[_builtins.int]:

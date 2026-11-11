@@ -139,6 +139,12 @@ func (ModelexperimentsTokenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*modelexperimentsTokenState)(nil)).Elem()
 }
 
+// ModelexperimentsTokenExists checks whether an existing ModelexperimentsToken resource with the given ID exists.
+func ModelexperimentsTokenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ModelexperimentsTokenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/modelexperimentsToken:ModelexperimentsToken", id, state, "", opts...)
+}
+
 type modelexperimentsTokenArgs struct {
 	// The description is a longer text chosen by the user to provide more context for the resource.
 	Description *string `pulumi:"description"`

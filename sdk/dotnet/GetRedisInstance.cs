@@ -14,7 +14,7 @@ namespace Pulumi.Stackit
         /// <summary>
         /// Redis instance data source schema. Must have a `Region` specified in the provider configuration.
         /// 
-        /// !&gt; The `stackit.RedisInstance` data source is deprecated and will be removed after August 2027, use `stackit.ValkeyInstance` (Key Value Store) instead. 
+        /// !&gt; The `stackit.RedisInstance` data source is deprecated and will be removed after August 2027, use `stackit.ValkeyInstance` (Key Value Store) instead.
         /// For more information on how to migrate, see the [migration guide](https://docs.stackit.cloud/products/databases/key-value-store/tutorials/migrate-data-to-a-new-instance/).
         /// 
         /// ## Example Usage
@@ -32,7 +32,7 @@ namespace Pulumi.Stackit
         /// <summary>
         /// Redis instance data source schema. Must have a `Region` specified in the provider configuration.
         /// 
-        /// !&gt; The `stackit.RedisInstance` data source is deprecated and will be removed after August 2027, use `stackit.ValkeyInstance` (Key Value Store) instead. 
+        /// !&gt; The `stackit.RedisInstance` data source is deprecated and will be removed after August 2027, use `stackit.ValkeyInstance` (Key Value Store) instead.
         /// For more information on how to migrate, see the [migration guide](https://docs.stackit.cloud/products/databases/key-value-store/tutorials/migrate-data-to-a-new-instance/).
         /// 
         /// ## Example Usage
@@ -50,7 +50,7 @@ namespace Pulumi.Stackit
         /// <summary>
         /// Redis instance data source schema. Must have a `Region` specified in the provider configuration.
         /// 
-        /// !&gt; The `stackit.RedisInstance` data source is deprecated and will be removed after August 2027, use `stackit.ValkeyInstance` (Key Value Store) instead. 
+        /// !&gt; The `stackit.RedisInstance` data source is deprecated and will be removed after August 2027, use `stackit.ValkeyInstance` (Key Value Store) instead.
         /// For more information on how to migrate, see the [migration guide](https://docs.stackit.cloud/products/databases/key-value-store/tutorials/migrate-data-to-a-new-instance/).
         /// 
         /// ## Example Usage

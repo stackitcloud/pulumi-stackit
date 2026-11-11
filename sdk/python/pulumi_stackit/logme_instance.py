@@ -472,6 +472,38 @@ class LogmeInstance(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         return LogmeInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cf_guid: pulumi.Input[Optional[_builtins.str]] = None,
+            cf_organization_guid: pulumi.Input[Optional[_builtins.str]] = None,
+            cf_space_guid: pulumi.Input[Optional[_builtins.str]] = None,
+            dashboard_url: pulumi.Input[Optional[_builtins.str]] = None,
+            image_url: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[Union['LogmeInstanceParametersArgs', 'LogmeInstanceParametersArgsDict', 'outputs.LogmeInstanceParameters']]] = None,
+            plan_id: pulumi.Input[Optional[_builtins.str]] = None,
+            plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["cfGuid"] = cf_guid
+        __props__["cfOrganizationGuid"] = cf_organization_guid
+        __props__["cfSpaceGuid"] = cf_space_guid
+        __props__["dashboardUrl"] = dashboard_url
+        __props__["imageUrl"] = image_url
+        __props__["instanceId"] = instance_id
+        __props__["name"] = name
+        __props__["parameters"] = parameters
+        __props__["planId"] = plan_id
+        __props__["planName"] = plan_name
+        __props__["projectId"] = project_id
+        __props__["region"] = region
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'stackit:index/logmeInstance:LogmeInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="cfGuid")
     def cf_guid(self) -> pulumi.Output[_builtins.str]:

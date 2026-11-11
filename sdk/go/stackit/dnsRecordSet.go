@@ -150,6 +150,12 @@ func (DnsRecordSetState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dnsRecordSetState)(nil)).Elem()
 }
 
+// DnsRecordSetExists checks whether an existing DnsRecordSet resource with the given ID exists.
+func DnsRecordSetExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DnsRecordSetState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/dnsRecordSet:DnsRecordSet", id, state, "", opts...)
+}
+
 type dnsRecordSetArgs struct {
 	// Specifies if the record set is active or not. Defaults to `true`
 	Active *bool `pulumi:"active"`

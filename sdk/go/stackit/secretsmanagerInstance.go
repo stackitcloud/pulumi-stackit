@@ -96,6 +96,12 @@ func (SecretsmanagerInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*secretsmanagerInstanceState)(nil)).Elem()
 }
 
+// SecretsmanagerInstanceExists checks whether an existing SecretsmanagerInstance resource with the given ID exists.
+func SecretsmanagerInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecretsmanagerInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/secretsmanagerInstance:SecretsmanagerInstance", id, state, "", opts...)
+}
+
 type secretsmanagerInstanceArgs struct {
 	// The access control list for this instance. Each entry is an IP or IP range that is permitted to access, in CIDR notation
 	Acls []string `pulumi:"acls"`

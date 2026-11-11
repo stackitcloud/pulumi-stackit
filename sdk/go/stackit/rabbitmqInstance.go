@@ -135,6 +135,12 @@ func (RabbitmqInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*rabbitmqInstanceState)(nil)).Elem()
 }
 
+// RabbitmqInstanceExists checks whether an existing RabbitmqInstance resource with the given ID exists.
+func RabbitmqInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RabbitmqInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/rabbitmqInstance:RabbitmqInstance", id, state, "", opts...)
+}
+
 type rabbitmqInstanceArgs struct {
 	// Instance name.
 	Name *string `pulumi:"name"`

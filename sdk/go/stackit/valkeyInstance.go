@@ -135,6 +135,12 @@ func (ValkeyInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*valkeyInstanceState)(nil)).Elem()
 }
 
+// ValkeyInstanceExists checks whether an existing ValkeyInstance resource with the given ID exists.
+func ValkeyInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ValkeyInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/valkeyInstance:ValkeyInstance", id, state, "", opts...)
+}
+
 type valkeyInstanceArgs struct {
 	// Instance name.
 	Name *string `pulumi:"name"`

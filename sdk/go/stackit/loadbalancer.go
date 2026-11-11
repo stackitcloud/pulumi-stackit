@@ -161,6 +161,12 @@ func (LoadbalancerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*loadbalancerState)(nil)).Elem()
 }
 
+// LoadbalancerExists checks whether an existing Loadbalancer resource with the given ID exists.
+func LoadbalancerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LoadbalancerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/loadbalancer:Loadbalancer", id, state, "", opts...)
+}
+
 type loadbalancerArgs struct {
 	// If set to true, this will disable the automatic assignment of a security group to the load balancer's targets. This option is primarily used to allow targets that are not within the load balancer's own network or SNA (STACKIT network area). When this is enabled, you are fully responsible for ensuring network connectivity to the targets, including managing all routing and security group rules manually. This setting cannot be changed after the load balancer is created.
 	DisableSecurityGroupAssignment *bool `pulumi:"disableSecurityGroupAssignment"`

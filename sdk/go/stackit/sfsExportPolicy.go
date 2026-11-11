@@ -99,6 +99,12 @@ func (SfsExportPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sfsExportPolicyState)(nil)).Elem()
 }
 
+// SfsExportPolicyExists checks whether an existing SfsExportPolicy resource with the given ID exists.
+func SfsExportPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SfsExportPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/sfsExportPolicy:SfsExportPolicy", id, state, "", opts...)
+}
+
 type sfsExportPolicyArgs struct {
 	// Labels are key-value string pairs which can be attached to the resource.
 	Labels map[string]string `pulumi:"labels"`

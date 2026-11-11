@@ -122,6 +122,12 @@ func (ResourcemanagerProjectState) ElementType() reflect.Type {
 	return reflect.TypeOf((*resourcemanagerProjectState)(nil)).Elem()
 }
 
+// ResourcemanagerProjectExists checks whether an existing ResourcemanagerProject resource with the given ID exists.
+func ResourcemanagerProjectExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ResourcemanagerProjectState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/resourcemanagerProject:ResourcemanagerProject", id, state, "", opts...)
+}
+
 type resourcemanagerProjectArgs struct {
 	// Labels are key-value string pairs which can be attached to a resource container. A label key must match the regex [A-ZÄÜÖa-zäüöß0-9_-]{1,64}. A label value must match the regex ^$|[A-ZÄÜÖa-zäüöß0-9_-]{1,64}.\
 	// To create a project within a STACKIT Network Area, setting the label `networkArea=<networkAreaID>` is required. This can not be changed after project creation.

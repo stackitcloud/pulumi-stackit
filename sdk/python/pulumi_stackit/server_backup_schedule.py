@@ -418,6 +418,28 @@ class ServerBackupSchedule(pulumi.CustomResource):
         __props__.__dict__["server_id"] = server_id
         return ServerBackupSchedule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            backup_properties: pulumi.Input[Optional[Union['ServerBackupScheduleBackupPropertiesArgs', 'ServerBackupScheduleBackupPropertiesArgsDict', 'outputs.ServerBackupScheduleBackupProperties']]] = None,
+            backup_schedule_id: pulumi.Input[Optional[_builtins.int]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            rrule: pulumi.Input[Optional[_builtins.str]] = None,
+            server_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["backupProperties"] = backup_properties
+        __props__["backupScheduleId"] = backup_schedule_id
+        __props__["enabled"] = enabled
+        __props__["name"] = name
+        __props__["projectId"] = project_id
+        __props__["region"] = region
+        __props__["rrule"] = rrule
+        __props__["serverId"] = server_id
+        return pulumi.runtime.exists_resource(None, 'stackit:index/serverBackupSchedule:ServerBackupSchedule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="backupProperties")
     def backup_properties(self) -> pulumi.Output['outputs.ServerBackupScheduleBackupProperties']:

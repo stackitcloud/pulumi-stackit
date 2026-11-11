@@ -168,6 +168,12 @@ func (PostgresflexInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*postgresflexInstanceState)(nil)).Elem()
 }
 
+// PostgresflexInstanceExists checks whether an existing PostgresflexInstance resource with the given ID exists.
+func PostgresflexInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PostgresflexInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/postgresflexInstance:PostgresflexInstance", id, state, "", opts...)
+}
+
 type postgresflexInstanceArgs struct {
 	// The Access Control List (ACL) for the PostgresFlex instance.
 	//

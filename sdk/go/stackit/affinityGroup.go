@@ -105,6 +105,12 @@ func (AffinityGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*affinityGroupState)(nil)).Elem()
 }
 
+// AffinityGroupExists checks whether an existing AffinityGroup resource with the given ID exists.
+func AffinityGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AffinityGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/affinityGroup:AffinityGroup", id, state, "", opts...)
+}
+
 type affinityGroupArgs struct {
 	// The name of the affinity group.
 	Name *string `pulumi:"name"`

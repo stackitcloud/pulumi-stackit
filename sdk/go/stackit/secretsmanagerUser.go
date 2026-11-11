@@ -127,6 +127,12 @@ func (SecretsmanagerUserState) ElementType() reflect.Type {
 	return reflect.TypeOf((*secretsmanagerUserState)(nil)).Elem()
 }
 
+// SecretsmanagerUserExists checks whether an existing SecretsmanagerUser resource with the given ID exists.
+func SecretsmanagerUserExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecretsmanagerUserState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/secretsmanagerUser:SecretsmanagerUser", id, state, "", opts...)
+}
+
 type secretsmanagerUserArgs struct {
 	// A user chosen description to differentiate between multiple users. Can't be changed after creation.
 	Description string `pulumi:"description"`

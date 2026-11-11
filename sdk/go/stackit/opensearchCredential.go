@@ -125,6 +125,12 @@ func (OpensearchCredentialState) ElementType() reflect.Type {
 	return reflect.TypeOf((*opensearchCredentialState)(nil)).Elem()
 }
 
+// OpensearchCredentialExists checks whether an existing OpensearchCredential resource with the given ID exists.
+func OpensearchCredentialExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OpensearchCredentialState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/opensearchCredential:OpensearchCredential", id, state, "", opts...)
+}
+
 type opensearchCredentialArgs struct {
 	// ID of the OpenSearch instance.
 	InstanceId string `pulumi:"instanceId"`

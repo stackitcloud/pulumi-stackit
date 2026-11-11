@@ -111,6 +111,12 @@ func (LoadbalancerObservabilityCredentialState) ElementType() reflect.Type {
 	return reflect.TypeOf((*loadbalancerObservabilityCredentialState)(nil)).Elem()
 }
 
+// LoadbalancerObservabilityCredentialExists checks whether an existing LoadbalancerObservabilityCredential resource with the given ID exists.
+func LoadbalancerObservabilityCredentialExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LoadbalancerObservabilityCredentialState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/loadbalancerObservabilityCredential:LoadbalancerObservabilityCredential", id, state, "", opts...)
+}
+
 type loadbalancerObservabilityCredentialArgs struct {
 	// Observability credential name.
 	DisplayName string `pulumi:"displayName"`

@@ -93,6 +93,12 @@ func (ServerBackupEnableState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serverBackupEnableState)(nil)).Elem()
 }
 
+// ServerBackupEnableExists checks whether an existing ServerBackupEnable resource with the given ID exists.
+func ServerBackupEnableExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServerBackupEnableState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/serverBackupEnable:ServerBackupEnable", id, state, "", opts...)
+}
+
 type serverBackupEnableArgs struct {
 	// The backup policy ID.
 	BackupPolicyId *string `pulumi:"backupPolicyId"`

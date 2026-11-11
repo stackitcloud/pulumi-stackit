@@ -97,6 +97,12 @@ func (KmsKeyringState) ElementType() reflect.Type {
 	return reflect.TypeOf((*kmsKeyringState)(nil)).Elem()
 }
 
+// KmsKeyringExists checks whether an existing KmsKeyring resource with the given ID exists.
+func KmsKeyringExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KmsKeyringState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/kmsKeyring:KmsKeyring", id, state, "", opts...)
+}
+
 type kmsKeyringArgs struct {
 	// A user chosen description to distinguish multiple keyrings.
 	Description *string `pulumi:"description"`

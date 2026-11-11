@@ -119,6 +119,12 @@ func (CdnDistributionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cdnDistributionState)(nil)).Elem()
 }
 
+// CdnDistributionExists checks whether an existing CdnDistribution resource with the given ID exists.
+func CdnDistributionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CdnDistributionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/cdnDistribution:CdnDistribution", id, state, "", opts...)
+}
+
 type cdnDistributionArgs struct {
 	// The distribution configuration
 	Config CdnDistributionConfig `pulumi:"config"`

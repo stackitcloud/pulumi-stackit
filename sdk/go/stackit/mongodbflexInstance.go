@@ -138,6 +138,12 @@ func (MongodbflexInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mongodbflexInstanceState)(nil)).Elem()
 }
 
+// MongodbflexInstanceExists checks whether an existing MongodbflexInstance resource with the given ID exists.
+func MongodbflexInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MongodbflexInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/mongodbflexInstance:MongodbflexInstance", id, state, "", opts...)
+}
+
 type mongodbflexInstanceArgs struct {
 	// The Access Control List (ACL) for the MongoDB Flex instance.
 	Acls []string `pulumi:"acls"`

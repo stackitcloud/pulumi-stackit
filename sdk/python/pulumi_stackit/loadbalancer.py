@@ -598,6 +598,40 @@ class Loadbalancer(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         return Loadbalancer(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            disable_security_group_assignment: pulumi.Input[Optional[_builtins.bool]] = None,
+            external_address: pulumi.Input[Optional[_builtins.str]] = None,
+            listeners: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadbalancerListenerArgs', 'LoadbalancerListenerArgsDict', 'outputs.LoadbalancerListener']]]]] = None,
+            load_balancer_security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadbalancerNetworkArgs', 'LoadbalancerNetworkArgsDict', 'outputs.LoadbalancerNetwork']]]]] = None,
+            options: pulumi.Input[Optional[Union['LoadbalancerOptionsArgs', 'LoadbalancerOptionsArgsDict', 'outputs.LoadbalancerOptions']]] = None,
+            plan_id: pulumi.Input[Optional[_builtins.str]] = None,
+            private_address: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            target_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadbalancerTargetPoolArgs', 'LoadbalancerTargetPoolArgsDict', 'outputs.LoadbalancerTargetPool']]]]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["disableSecurityGroupAssignment"] = disable_security_group_assignment
+        __props__["externalAddress"] = external_address
+        __props__["listeners"] = listeners
+        __props__["loadBalancerSecurityGroupId"] = load_balancer_security_group_id
+        __props__["name"] = name
+        __props__["networks"] = networks
+        __props__["options"] = options
+        __props__["planId"] = plan_id
+        __props__["privateAddress"] = private_address
+        __props__["projectId"] = project_id
+        __props__["region"] = region
+        __props__["securityGroupId"] = security_group_id
+        __props__["targetPools"] = target_pools
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'stackit:index/loadbalancer:Loadbalancer', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="disableSecurityGroupAssignment")
     def disable_security_group_assignment(self) -> pulumi.Output[_builtins.bool]:

@@ -96,6 +96,12 @@ func (ServerVolumeAttachState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serverVolumeAttachState)(nil)).Elem()
 }
 
+// ServerVolumeAttachExists checks whether an existing ServerVolumeAttach resource with the given ID exists.
+func ServerVolumeAttachExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServerVolumeAttachState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/serverVolumeAttach:ServerVolumeAttach", id, state, "", opts...)
+}
+
 type serverVolumeAttachArgs struct {
 	// STACKIT project ID to which the volume attachment is associated.
 	ProjectId string `pulumi:"projectId"`

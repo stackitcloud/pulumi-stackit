@@ -104,6 +104,12 @@ func (CdnCustomDomainState) ElementType() reflect.Type {
 	return reflect.TypeOf((*cdnCustomDomainState)(nil)).Elem()
 }
 
+// CdnCustomDomainExists checks whether an existing CdnCustomDomain resource with the given ID exists.
+func CdnCustomDomainExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CdnCustomDomainState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/cdnCustomDomain:CdnCustomDomain", id, state, "", opts...)
+}
+
 type cdnCustomDomainArgs struct {
 	// The TLS certificate for the custom domain. If omitted, a managed certificate will be used. If the block is specified, a custom certificate is used.
 	Certificate *CdnCustomDomainCertificate `pulumi:"certificate"`

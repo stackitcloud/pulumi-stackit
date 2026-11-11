@@ -92,6 +92,12 @@ func (VpcRegionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcRegionState)(nil)).Elem()
 }
 
+// VpcRegionExists checks whether an existing VpcRegion resource with the given ID exists.
+func VpcRegionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VpcRegionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/vpcRegion:VpcRegion", id, state, "", opts...)
+}
+
 type vpcRegionArgs struct {
 	// STACKIT project ID to which the VPC region is associated.
 	ProjectId string `pulumi:"projectId"`

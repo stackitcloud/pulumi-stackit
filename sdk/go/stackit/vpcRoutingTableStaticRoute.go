@@ -131,6 +131,12 @@ func (VpcRoutingTableStaticRouteState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcRoutingTableStaticRouteState)(nil)).Elem()
 }
 
+// VpcRoutingTableStaticRouteExists checks whether an existing VpcRoutingTableStaticRoute resource with the given ID exists.
+func VpcRoutingTableStaticRouteExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VpcRoutingTableStaticRouteState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/vpcRoutingTableStaticRoute:VpcRoutingTableStaticRoute", id, state, "", opts...)
+}
+
 type vpcRoutingTableStaticRouteArgs struct {
 	// The destination of the static route.
 	Destination VpcRoutingTableStaticRouteDestination `pulumi:"destination"`

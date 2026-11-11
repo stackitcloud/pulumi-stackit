@@ -130,6 +130,12 @@ func (EdgecloudKubeconfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*edgecloudKubeconfigState)(nil)).Elem()
 }
 
+// EdgecloudKubeconfigExists checks whether an existing EdgecloudKubeconfig resource with the given ID exists.
+func EdgecloudKubeconfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EdgecloudKubeconfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/edgecloudKubeconfig:EdgecloudKubeconfig", id, state, "", opts...)
+}
+
 type edgecloudKubeconfigArgs struct {
 	// Expiration time of the kubeconfig, in seconds. Minimum is 600, Maximum is 15552000. Defaults to `3600`
 	Expiration *int `pulumi:"expiration"`

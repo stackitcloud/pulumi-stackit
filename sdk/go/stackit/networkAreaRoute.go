@@ -127,6 +127,12 @@ func (NetworkAreaRouteState) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkAreaRouteState)(nil)).Elem()
 }
 
+// NetworkAreaRouteExists checks whether an existing NetworkAreaRoute resource with the given ID exists.
+func NetworkAreaRouteExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetworkAreaRouteState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/networkAreaRoute:NetworkAreaRoute", id, state, "", opts...)
+}
+
 type networkAreaRouteArgs struct {
 	// Destination of the route.
 	Destination NetworkAreaRouteDestination `pulumi:"destination"`

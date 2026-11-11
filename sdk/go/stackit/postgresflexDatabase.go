@@ -108,6 +108,12 @@ func (PostgresflexDatabaseState) ElementType() reflect.Type {
 	return reflect.TypeOf((*postgresflexDatabaseState)(nil)).Elem()
 }
 
+// PostgresflexDatabaseExists checks whether an existing PostgresflexDatabase resource with the given ID exists.
+func PostgresflexDatabaseExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PostgresflexDatabaseState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/postgresflexDatabase:PostgresflexDatabase", id, state, "", opts...)
+}
+
 type postgresflexDatabaseArgs struct {
 	// ID of the Postgres Flex instance.
 	InstanceId string `pulumi:"instanceId"`

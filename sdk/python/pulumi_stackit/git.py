@@ -399,6 +399,32 @@ class Git(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         return Git(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            consumed_disk: pulumi.Input[Optional[_builtins.str]] = None,
+            consumed_object_storage: pulumi.Input[Optional[_builtins.str]] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            flavor: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["acls"] = acls
+        __props__["consumedDisk"] = consumed_disk
+        __props__["consumedObjectStorage"] = consumed_object_storage
+        __props__["created"] = created
+        __props__["flavor"] = flavor
+        __props__["instanceId"] = instance_id
+        __props__["name"] = name
+        __props__["projectId"] = project_id
+        __props__["url"] = url
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'stackit:index/git:Git', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def acls(self) -> pulumi.Output[Sequence[_builtins.str]]:

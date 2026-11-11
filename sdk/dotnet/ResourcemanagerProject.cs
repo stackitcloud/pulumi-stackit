@@ -36,7 +36,7 @@ namespace Pulumi.Stackit
         public Output<string> CreationTime { get; private set; } = null!;
 
         /// <summary>
-        /// Labels are key-value string pairs which can be attached to a resource container. A label key must match the regex [A-ZÄÜÖa-zäüöß0-9_-]{1,64}. A label value must match the regex ^$|[A-ZÄÜÖa-zäüöß0-9_-]{1,64}.  
+        /// Labels are key-value string pairs which can be attached to a resource container. A label key must match the regex [A-ZÄÜÖa-zäüöß0-9_-]{1,64}. A label value must match the regex ^$|[A-ZÄÜÖa-zäüöß0-9_-]{1,64}.\
         /// To create a project within a STACKIT Network Area, setting the label `networkArea=&lt;networkAreaID&gt;` is required. This can not be changed after project creation.
         /// </summary>
         [Output("labels")]
@@ -123,7 +123,7 @@ namespace Pulumi.Stackit
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Labels are key-value string pairs which can be attached to a resource container. A label key must match the regex [A-ZÄÜÖa-zäüöß0-9_-]{1,64}. A label value must match the regex ^$|[A-ZÄÜÖa-zäüöß0-9_-]{1,64}.  
+        /// Labels are key-value string pairs which can be attached to a resource container. A label key must match the regex [A-ZÄÜÖa-zäüöß0-9_-]{1,64}. A label value must match the regex ^$|[A-ZÄÜÖa-zäüöß0-9_-]{1,64}.\
         /// To create a project within a STACKIT Network Area, setting the label `networkArea=&lt;networkAreaID&gt;` is required. This can not be changed after project creation.
         /// </summary>
         public InputMap<string> Labels
@@ -174,7 +174,7 @@ namespace Pulumi.Stackit
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Labels are key-value string pairs which can be attached to a resource container. A label key must match the regex [A-ZÄÜÖa-zäüöß0-9_-]{1,64}. A label value must match the regex ^$|[A-ZÄÜÖa-zäüöß0-9_-]{1,64}.  
+        /// Labels are key-value string pairs which can be attached to a resource container. A label key must match the regex [A-ZÄÜÖa-zäüöß0-9_-]{1,64}. A label value must match the regex ^$|[A-ZÄÜÖa-zäüöß0-9_-]{1,64}.\
         /// To create a project within a STACKIT Network Area, setting the label `networkArea=&lt;networkAreaID&gt;` is required. This can not be changed after project creation.
         /// </summary>
         public InputMap<string> Labels

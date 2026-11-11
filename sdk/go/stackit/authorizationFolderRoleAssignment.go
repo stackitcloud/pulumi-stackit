@@ -92,6 +92,12 @@ func (AuthorizationFolderRoleAssignmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*authorizationFolderRoleAssignmentState)(nil)).Elem()
 }
 
+// AuthorizationFolderRoleAssignmentExists checks whether an existing AuthorizationFolderRoleAssignment resource with the given ID exists.
+func AuthorizationFolderRoleAssignmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuthorizationFolderRoleAssignmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/authorizationFolderRoleAssignment:AuthorizationFolderRoleAssignment", id, state, "", opts...)
+}
+
 type authorizationFolderRoleAssignmentArgs struct {
 	// Folder Resource to assign the role to.
 	ResourceId string `pulumi:"resourceId"`

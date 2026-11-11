@@ -129,6 +129,12 @@ func (SkeKubeconfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*skeKubeconfigState)(nil)).Elem()
 }
 
+// SkeKubeconfigExists checks whether an existing SkeKubeconfig resource with the given ID exists.
+func SkeKubeconfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SkeKubeconfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/skeKubeconfig:SkeKubeconfig", id, state, "", opts...)
+}
+
 type skeKubeconfigArgs struct {
 	// Name of the SKE cluster.
 	ClusterName string `pulumi:"clusterName"`

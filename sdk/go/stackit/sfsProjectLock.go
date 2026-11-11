@@ -84,6 +84,12 @@ func (SfsProjectLockState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sfsProjectLockState)(nil)).Elem()
 }
 
+// SfsProjectLockExists checks whether an existing SfsProjectLock resource with the given ID exists.
+func SfsProjectLockExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SfsProjectLockState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/sfsProjectLock:SfsProjectLock", id, state, "", opts...)
+}
+
 type sfsProjectLockArgs struct {
 	// STACKIT Project ID to which the project lock is associated.
 	ProjectId string `pulumi:"projectId"`

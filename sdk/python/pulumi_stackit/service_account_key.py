@@ -351,6 +351,26 @@ class ServiceAccountKey(pulumi.CustomResource):
         __props__.__dict__["ttl_days"] = ttl_days
         return ServiceAccountKey(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            json: pulumi.Input[Optional[_builtins.str]] = None,
+            key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            public_key: pulumi.Input[Optional[_builtins.str]] = None,
+            rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            service_account_email: pulumi.Input[Optional[_builtins.str]] = None,
+            ttl_days: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["json"] = json
+        __props__["keyId"] = key_id
+        __props__["projectId"] = project_id
+        __props__["publicKey"] = public_key
+        __props__["rotateWhenChanged"] = rotate_when_changed
+        __props__["serviceAccountEmail"] = service_account_email
+        __props__["ttlDays"] = ttl_days
+        return pulumi.runtime.exists_resource(None, 'stackit:index/serviceAccountKey:ServiceAccountKey', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def json(self) -> pulumi.Output[_builtins.str]:

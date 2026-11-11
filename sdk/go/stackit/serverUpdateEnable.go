@@ -93,6 +93,12 @@ func (ServerUpdateEnableState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serverUpdateEnableState)(nil)).Elem()
 }
 
+// ServerUpdateEnableExists checks whether an existing ServerUpdateEnable resource with the given ID exists.
+func ServerUpdateEnableExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServerUpdateEnableState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/serverUpdateEnable:ServerUpdateEnable", id, state, "", opts...)
+}
+
 type serverUpdateEnableArgs struct {
 	// STACKIT Project ID to which the server update enable is associated.
 	ProjectId string `pulumi:"projectId"`

@@ -156,6 +156,12 @@ func (VpnConnectionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpnConnectionState)(nil)).Elem()
 }
 
+// VpnConnectionExists checks whether an existing VpnConnection resource with the given ID exists.
+func VpnConnectionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VpnConnectionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/vpnConnection:VpnConnection", id, state, "", opts...)
+}
+
 type vpnConnectionArgs struct {
 	// A user-friendly name for the connection. Must start and end with an alphanumeric character, may contain hyphens, and be 1-63 characters long.
 	DisplayName string `pulumi:"displayName"`

@@ -334,6 +334,24 @@ class AlbCertificate(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         return AlbCertificate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cert_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            private_key: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            public_key: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["certId"] = cert_id
+        __props__["name"] = name
+        __props__["privateKey"] = private_key
+        __props__["projectId"] = project_id
+        __props__["publicKey"] = public_key
+        __props__["region"] = region
+        return pulumi.runtime.exists_resource(None, 'stackit:index/albCertificate:AlbCertificate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="certId")
     def cert_id(self) -> pulumi.Output[_builtins.str]:

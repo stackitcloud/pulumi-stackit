@@ -128,6 +128,12 @@ func (IntakeRunnerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*intakeRunnerState)(nil)).Elem()
 }
 
+// IntakeRunnerExists checks whether an existing IntakeRunner resource with the given ID exists.
+func IntakeRunnerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *IntakeRunnerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/intakeRunner:IntakeRunner", id, state, "", opts...)
+}
+
 type intakeRunnerArgs struct {
 	// The description of the runner.
 	Description *string `pulumi:"description"`

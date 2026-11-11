@@ -130,6 +130,12 @@ func (EdgecloudInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*edgecloudInstanceState)(nil)).Elem()
 }
 
+// EdgecloudInstanceExists checks whether an existing EdgecloudInstance resource with the given ID exists.
+func EdgecloudInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EdgecloudInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/edgecloudInstance:EdgecloudInstance", id, state, "", opts...)
+}
+
 type edgecloudInstanceArgs struct {
 	// Description for your STACKIT Edge Cloud instance. Max length is 256 characters
 	Description *string `pulumi:"description"`

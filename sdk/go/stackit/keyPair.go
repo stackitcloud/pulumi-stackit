@@ -90,6 +90,12 @@ func (KeyPairState) ElementType() reflect.Type {
 	return reflect.TypeOf((*keyPairState)(nil)).Elem()
 }
 
+// KeyPairExists checks whether an existing KeyPair resource with the given ID exists.
+func KeyPairExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KeyPairState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/keyPair:KeyPair", id, state, "", opts...)
+}
+
 type keyPairArgs struct {
 	// Labels are key-value string pairs which can be attached to a resource container.
 	Labels map[string]string `pulumi:"labels"`

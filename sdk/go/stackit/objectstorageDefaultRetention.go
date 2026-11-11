@@ -105,6 +105,12 @@ func (ObjectstorageDefaultRetentionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*objectstorageDefaultRetentionState)(nil)).Elem()
 }
 
+// ObjectstorageDefaultRetentionExists checks whether an existing ObjectstorageDefaultRetention resource with the given ID exists.
+func ObjectstorageDefaultRetentionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ObjectstorageDefaultRetentionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/objectstorageDefaultRetention:ObjectstorageDefaultRetention", id, state, "", opts...)
+}
+
 type objectstorageDefaultRetentionArgs struct {
 	// The associated bucket's name. It must be DNS conform.
 	BucketName string `pulumi:"bucketName"`

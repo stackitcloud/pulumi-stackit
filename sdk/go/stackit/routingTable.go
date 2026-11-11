@@ -139,6 +139,12 @@ func (RoutingTableState) ElementType() reflect.Type {
 	return reflect.TypeOf((*routingTableState)(nil)).Elem()
 }
 
+// RoutingTableExists checks whether an existing RoutingTable resource with the given ID exists.
+func RoutingTableExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RoutingTableState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/routingTable:RoutingTable", id, state, "", opts...)
+}
+
 type routingTableArgs struct {
 	// Description of the routing table.
 	Description *string `pulumi:"description"`

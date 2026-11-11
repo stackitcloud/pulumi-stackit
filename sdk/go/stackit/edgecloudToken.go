@@ -130,6 +130,12 @@ func (EdgecloudTokenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*edgecloudTokenState)(nil)).Elem()
 }
 
+// EdgecloudTokenExists checks whether an existing EdgecloudToken resource with the given ID exists.
+func EdgecloudTokenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EdgecloudTokenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/edgecloudToken:EdgecloudToken", id, state, "", opts...)
+}
+
 type edgecloudTokenArgs struct {
 	// Expiration time of the token, in seconds. Minimum is 600, Maximum is 15552000. Defaults to `3600`
 	Expiration *int `pulumi:"expiration"`

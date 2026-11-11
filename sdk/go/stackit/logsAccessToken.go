@@ -163,6 +163,12 @@ func (LogsAccessTokenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*logsAccessTokenState)(nil)).Elem()
 }
 
+// LogsAccessTokenExists checks whether an existing LogsAccessToken resource with the given ID exists.
+func LogsAccessTokenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LogsAccessTokenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/logsAccessToken:LogsAccessToken", id, state, "", opts...)
+}
+
 type logsAccessTokenArgs struct {
 	// The description of the access token
 	Description *string `pulumi:"description"`

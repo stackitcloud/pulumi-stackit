@@ -428,6 +428,32 @@ class SkeKubeconfig(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         return SkeKubeconfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            cluster_name: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_time: pulumi.Input[Optional[_builtins.str]] = None,
+            expiration: pulumi.Input[Optional[_builtins.int]] = None,
+            expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+            kube_config: pulumi.Input[Optional[_builtins.str]] = None,
+            kube_config_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            refresh: pulumi.Input[Optional[_builtins.bool]] = None,
+            refresh_before: pulumi.Input[Optional[_builtins.int]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clusterName"] = cluster_name
+        __props__["creationTime"] = creation_time
+        __props__["expiration"] = expiration
+        __props__["expiresAt"] = expires_at
+        __props__["kubeConfig"] = kube_config
+        __props__["kubeConfigId"] = kube_config_id
+        __props__["projectId"] = project_id
+        __props__["refresh"] = refresh
+        __props__["refreshBefore"] = refresh_before
+        __props__["region"] = region
+        return pulumi.runtime.exists_resource(None, 'stackit:index/skeKubeconfig:SkeKubeconfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> pulumi.Output[_builtins.str]:

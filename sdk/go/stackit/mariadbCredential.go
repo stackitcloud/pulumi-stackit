@@ -125,6 +125,12 @@ func (MariadbCredentialState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mariadbCredentialState)(nil)).Elem()
 }
 
+// MariadbCredentialExists checks whether an existing MariadbCredential resource with the given ID exists.
+func MariadbCredentialExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MariadbCredentialState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/mariadbCredential:MariadbCredential", id, state, "", opts...)
+}
+
 type mariadbCredentialArgs struct {
 	// ID of the MariaDB instance.
 	InstanceId string `pulumi:"instanceId"`

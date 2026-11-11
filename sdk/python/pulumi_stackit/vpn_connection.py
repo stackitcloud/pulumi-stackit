@@ -586,6 +586,36 @@ class VpnConnection(pulumi.CustomResource):
         __props__.__dict__["tunnel2"] = tunnel2
         return VpnConnection(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            connection_id: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            local_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            remote_subnets: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            static_routes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tunnel1: pulumi.Input[Optional[Union['VpnConnectionTunnel1Args', 'VpnConnectionTunnel1ArgsDict', 'outputs.VpnConnectionTunnel1']]] = None,
+            tunnel2: pulumi.Input[Optional[Union['VpnConnectionTunnel2Args', 'VpnConnectionTunnel2ArgsDict', 'outputs.VpnConnectionTunnel2']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["connectionId"] = connection_id
+        __props__["displayName"] = display_name
+        __props__["enabled"] = enabled
+        __props__["gatewayId"] = gateway_id
+        __props__["labels"] = labels
+        __props__["localSubnets"] = local_subnets
+        __props__["projectId"] = project_id
+        __props__["region"] = region
+        __props__["remoteSubnets"] = remote_subnets
+        __props__["staticRoutes"] = static_routes
+        __props__["tunnel1"] = tunnel1
+        __props__["tunnel2"] = tunnel2
+        return pulumi.runtime.exists_resource(None, 'stackit:index/vpnConnection:VpnConnection', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> pulumi.Output[_builtins.str]:

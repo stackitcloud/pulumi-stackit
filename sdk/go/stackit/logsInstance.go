@@ -156,6 +156,12 @@ func (LogsInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*logsInstanceState)(nil)).Elem()
 }
 
+// LogsInstanceExists checks whether an existing LogsInstance resource with the given ID exists.
+func LogsInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LogsInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/logsInstance:LogsInstance", id, state, "", opts...)
+}
+
 type logsInstanceArgs struct {
 	// The access control list entries for the Logs instance
 	Acls []string `pulumi:"acls"`

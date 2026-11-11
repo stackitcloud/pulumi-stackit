@@ -164,6 +164,12 @@ func (SkeClusterState) ElementType() reflect.Type {
 	return reflect.TypeOf((*skeClusterState)(nil)).Elem()
 }
 
+// SkeClusterExists checks whether an existing SkeCluster resource with the given ID exists.
+func SkeClusterExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SkeClusterState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/skeCluster:SkeCluster", id, state, "", opts...)
+}
+
 type skeClusterArgs struct {
 	// Configure access to the cluster
 	Access *SkeClusterAccess `pulumi:"access"`

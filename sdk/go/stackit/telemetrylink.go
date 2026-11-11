@@ -167,6 +167,12 @@ func (TelemetrylinkState) ElementType() reflect.Type {
 	return reflect.TypeOf((*telemetrylinkState)(nil)).Elem()
 }
 
+// TelemetrylinkExists checks whether an existing Telemetrylink resource with the given ID exists.
+func TelemetrylinkExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TelemetrylinkState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/telemetrylink:Telemetrylink", id, state, "", opts...)
+}
+
 type telemetrylinkArgs struct {
 	// The access token of the Telemetry Router instance. Write-only argument `accessTokenWo` should be preferred.
 	AccessToken *string `pulumi:"accessToken"`

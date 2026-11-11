@@ -141,6 +141,12 @@ func (ObservabilityScrapeconfigState) ElementType() reflect.Type {
 	return reflect.TypeOf((*observabilityScrapeconfigState)(nil)).Elem()
 }
 
+// ObservabilityScrapeconfigExists checks whether an existing ObservabilityScrapeconfig resource with the given ID exists.
+func ObservabilityScrapeconfigExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ObservabilityScrapeconfigState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/observabilityScrapeconfig:ObservabilityScrapeconfig", id, state, "", opts...)
+}
+
 type observabilityScrapeconfigArgs struct {
 	// A basic authentication block.
 	BasicAuth *ObservabilityScrapeconfigBasicAuth `pulumi:"basicAuth"`

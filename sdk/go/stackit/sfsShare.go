@@ -141,6 +141,12 @@ func (SfsShareState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sfsShareState)(nil)).Elem()
 }
 
+// SfsShareExists checks whether an existing SfsShare resource with the given ID exists.
+func SfsShareExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SfsShareState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/sfsShare:SfsShare", id, state, "", opts...)
+}
+
 type sfsShareArgs struct {
 	// Name of the Share Export Policy to use in the Share.
 	// Note that if this is set to an empty string, the Share can only be mounted in read only by

@@ -105,6 +105,12 @@ func (PublicIpAssociateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*publicIpAssociateState)(nil)).Elem()
 }
 
+// PublicIpAssociateExists checks whether an existing PublicIpAssociate resource with the given ID exists.
+func PublicIpAssociateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PublicIpAssociateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/publicIpAssociate:PublicIpAssociate", id, state, "", opts...)
+}
+
 type publicIpAssociateArgs struct {
 	// The ID of the network interface (or virtual IP) to which the public IP should be attached to.
 	NetworkInterfaceId string `pulumi:"networkInterfaceId"`

@@ -80,6 +80,12 @@ func (ObjectstorageComplianceLockState) ElementType() reflect.Type {
 	return reflect.TypeOf((*objectstorageComplianceLockState)(nil)).Elem()
 }
 
+// ObjectstorageComplianceLockExists checks whether an existing ObjectstorageComplianceLock resource with the given ID exists.
+func ObjectstorageComplianceLockExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ObjectstorageComplianceLockState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/objectstorageComplianceLock:ObjectstorageComplianceLock", id, state, "", opts...)
+}
+
 type objectstorageComplianceLockArgs struct {
 	// STACKIT Project ID to which the compliance lock is associated.
 	ProjectId string `pulumi:"projectId"`

@@ -96,6 +96,12 @@ func (ServerNetworkInterfaceAttachState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serverNetworkInterfaceAttachState)(nil)).Elem()
 }
 
+// ServerNetworkInterfaceAttachExists checks whether an existing ServerNetworkInterfaceAttach resource with the given ID exists.
+func ServerNetworkInterfaceAttachExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServerNetworkInterfaceAttachState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/serverNetworkInterfaceAttach:ServerNetworkInterfaceAttach", id, state, "", opts...)
+}
+
 type serverNetworkInterfaceAttachArgs struct {
 	// The network interface ID.
 	NetworkInterfaceId string `pulumi:"networkInterfaceId"`

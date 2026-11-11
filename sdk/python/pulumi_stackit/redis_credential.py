@@ -414,6 +414,36 @@ class RedisCredential(pulumi.CustomResource):
         __props__.__dict__["username"] = username
         return RedisCredential(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            credential_id: pulumi.Input[Optional[_builtins.str]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            hosts: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balanced_host: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            rotate_when_changed: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            uri: pulumi.Input[Optional[_builtins.str]] = None,
+            username: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["credentialId"] = credential_id
+        __props__["host"] = host
+        __props__["hosts"] = hosts
+        __props__["instanceId"] = instance_id
+        __props__["loadBalancedHost"] = load_balanced_host
+        __props__["password"] = password
+        __props__["port"] = port
+        __props__["projectId"] = project_id
+        __props__["region"] = region
+        __props__["rotateWhenChanged"] = rotate_when_changed
+        __props__["uri"] = uri
+        __props__["username"] = username
+        return pulumi.runtime.exists_resource(None, 'stackit:index/redisCredential:RedisCredential', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="credentialId")
     def credential_id(self) -> pulumi.Output[_builtins.str]:

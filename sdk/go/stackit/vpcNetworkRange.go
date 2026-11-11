@@ -152,6 +152,12 @@ func (VpcNetworkRangeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcNetworkRangeState)(nil)).Elem()
 }
 
+// VpcNetworkRangeExists checks whether an existing VpcNetworkRange resource with the given ID exists.
+func VpcNetworkRangeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VpcNetworkRangeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/vpcNetworkRange:VpcNetworkRange", id, state, "", opts...)
+}
+
 type vpcNetworkRangeArgs struct {
 	// Default prefix length for the VPC network range
 	DefaultPrefixLength *int `pulumi:"defaultPrefixLength"`

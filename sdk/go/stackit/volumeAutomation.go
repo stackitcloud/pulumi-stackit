@@ -119,6 +119,12 @@ func (VolumeAutomationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*volumeAutomationState)(nil)).Elem()
 }
 
+// VolumeAutomationExists checks whether an existing VolumeAutomation resource with the given ID exists.
+func VolumeAutomationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VolumeAutomationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/volumeAutomation:VolumeAutomation", id, state, "", opts...)
+}
+
 type volumeAutomationArgs struct {
 	// The volume automation description.
 	Description *string `pulumi:"description"`

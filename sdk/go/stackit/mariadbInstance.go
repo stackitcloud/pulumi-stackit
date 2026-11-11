@@ -135,6 +135,12 @@ func (MariadbInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mariadbInstanceState)(nil)).Elem()
 }
 
+// MariadbInstanceExists checks whether an existing MariadbInstance resource with the given ID exists.
+func MariadbInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MariadbInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/mariadbInstance:MariadbInstance", id, state, "", opts...)
+}
+
 type mariadbInstanceArgs struct {
 	// Instance name.
 	Name *string `pulumi:"name"`

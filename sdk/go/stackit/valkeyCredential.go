@@ -128,6 +128,12 @@ func (ValkeyCredentialState) ElementType() reflect.Type {
 	return reflect.TypeOf((*valkeyCredentialState)(nil)).Elem()
 }
 
+// ValkeyCredentialExists checks whether an existing ValkeyCredential resource with the given ID exists.
+func ValkeyCredentialExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ValkeyCredentialState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/valkeyCredential:ValkeyCredential", id, state, "", opts...)
+}
+
 type valkeyCredentialArgs struct {
 	// ID of the Valkey instance.
 	InstanceId string `pulumi:"instanceId"`

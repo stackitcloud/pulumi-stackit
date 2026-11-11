@@ -515,6 +515,40 @@ class LogsInstance(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         return LogsInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            created: pulumi.Input[Optional[_builtins.str]] = None,
+            datasource_url: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ingest_otlp_url: pulumi.Input[Optional[_builtins.str]] = None,
+            ingest_url: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            query_range_url: pulumi.Input[Optional[_builtins.str]] = None,
+            query_url: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["acls"] = acls
+        __props__["created"] = created
+        __props__["datasourceUrl"] = datasource_url
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["ingestOtlpUrl"] = ingest_otlp_url
+        __props__["ingestUrl"] = ingest_url
+        __props__["instanceId"] = instance_id
+        __props__["projectId"] = project_id
+        __props__["queryRangeUrl"] = query_range_url
+        __props__["queryUrl"] = query_url
+        __props__["region"] = region
+        __props__["retentionDays"] = retention_days
+        __props__["status"] = status
+        return pulumi.runtime.exists_resource(None, 'stackit:index/logsInstance:LogsInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def acls(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

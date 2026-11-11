@@ -464,6 +464,30 @@ class SfsShare(pulumi.CustomResource):
         __props__.__dict__["space_hard_limit_gigabytes"] = space_hard_limit_gigabytes
         return SfsShare(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            export_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            mount_path: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            share_id: pulumi.Input[Optional[_builtins.str]] = None,
+            space_hard_limit_gigabytes: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["exportPolicy"] = export_policy
+        __props__["labels"] = labels
+        __props__["mountPath"] = mount_path
+        __props__["name"] = name
+        __props__["projectId"] = project_id
+        __props__["region"] = region
+        __props__["resourcePoolId"] = resource_pool_id
+        __props__["shareId"] = share_id
+        __props__["spaceHardLimitGigabytes"] = space_hard_limit_gigabytes
+        return pulumi.runtime.exists_resource(None, 'stackit:index/sfsShare:SfsShare', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="exportPolicy")
     def export_policy(self) -> pulumi.Output[Optional[_builtins.str]]:

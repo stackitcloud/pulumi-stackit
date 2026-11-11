@@ -128,6 +128,12 @@ func (GitState) ElementType() reflect.Type {
 	return reflect.TypeOf((*gitState)(nil)).Elem()
 }
 
+// GitExists checks whether an existing Git resource with the given ID exists.
+func GitExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GitState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/git:Git", id, state, "", opts...)
+}
+
 type gitArgs struct {
 	// Restricted ACL for instance access.
 	Acls []string `pulumi:"acls"`

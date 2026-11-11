@@ -134,6 +134,12 @@ func (RabbitmqCredentialState) ElementType() reflect.Type {
 	return reflect.TypeOf((*rabbitmqCredentialState)(nil)).Elem()
 }
 
+// RabbitmqCredentialExists checks whether an existing RabbitmqCredential resource with the given ID exists.
+func RabbitmqCredentialExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RabbitmqCredentialState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/rabbitmqCredential:RabbitmqCredential", id, state, "", opts...)
+}
+
 type rabbitmqCredentialArgs struct {
 	// ID of the RabbitMQ instance.
 	InstanceId string `pulumi:"instanceId"`
