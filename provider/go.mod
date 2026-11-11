@@ -204,10 +204,10 @@ require (
 	github.com/stackitcloud/stackit-sdk-go/services/automation v0.2.1 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/cdn v1.22.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/certificates v1.10.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/dns v0.25.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/dns v0.26.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/dremio v0.7.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/edge v0.14.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/git v0.15.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/git v0.16.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/iaas v1.15.1 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/intake v0.12.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/kms v1.14.0 // indirect
@@ -238,7 +238,7 @@ require (
 	github.com/stackitcloud/stackit-sdk-go/services/telemetryrouter v0.6.1 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/valkey v0.4.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/vpn v0.15.3 // indirect
-	github.com/stackitcloud/terraform-provider-stackit v0.122.0 // indirect
+	github.com/stackitcloud/terraform-provider-stackit v0.123.0 // indirect
 	github.com/stretchr/objx v0.5.2 // indirect
 	github.com/teambition/rrule-go v1.8.2 // indirect
 	github.com/teekennedy/goldmark-markdown v0.3.0 // indirect
