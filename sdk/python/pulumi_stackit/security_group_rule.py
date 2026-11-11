@@ -572,6 +572,36 @@ class SecurityGroupRule(pulumi.CustomResource):
         __props__.__dict__["security_group_rule_id"] = security_group_rule_id
         return SecurityGroupRule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            direction: pulumi.Input[Optional[_builtins.str]] = None,
+            ether_type: pulumi.Input[Optional[_builtins.str]] = None,
+            icmp_parameters: pulumi.Input[Optional[Union['SecurityGroupRuleIcmpParametersArgs', 'SecurityGroupRuleIcmpParametersArgsDict', 'outputs.SecurityGroupRuleIcmpParameters']]] = None,
+            ip_range: pulumi.Input[Optional[_builtins.str]] = None,
+            port_range: pulumi.Input[Optional[Union['SecurityGroupRulePortRangeArgs', 'SecurityGroupRulePortRangeArgsDict', 'outputs.SecurityGroupRulePortRange']]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            protocol: pulumi.Input[Optional[Union['SecurityGroupRuleProtocolArgs', 'SecurityGroupRuleProtocolArgsDict', 'outputs.SecurityGroupRuleProtocol']]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            remote_security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            security_group_rule_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["direction"] = direction
+        __props__["etherType"] = ether_type
+        __props__["icmpParameters"] = icmp_parameters
+        __props__["ipRange"] = ip_range
+        __props__["portRange"] = port_range
+        __props__["projectId"] = project_id
+        __props__["protocol"] = protocol
+        __props__["region"] = region
+        __props__["remoteSecurityGroupId"] = remote_security_group_id
+        __props__["securityGroupId"] = security_group_id
+        __props__["securityGroupRuleId"] = security_group_rule_id
+        return pulumi.runtime.exists_resource(None, 'stackit:index/securityGroupRule:SecurityGroupRule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -551,6 +551,38 @@ class NetworkInterface(pulumi.CustomResource):
         __props__.__dict__["type"] = type
         return NetworkInterface(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allowed_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            device: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv4: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            mac: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_id: pulumi.Input[Optional[_builtins.str]] = None,
+            network_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            security: pulumi.Input[Optional[_builtins.bool]] = None,
+            security_group_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowedAddresses"] = allowed_addresses
+        __props__["device"] = device
+        __props__["ipv4"] = ipv4
+        __props__["labels"] = labels
+        __props__["mac"] = mac
+        __props__["name"] = name
+        __props__["networkId"] = network_id
+        __props__["networkInterfaceId"] = network_interface_id
+        __props__["projectId"] = project_id
+        __props__["region"] = region
+        __props__["security"] = security
+        __props__["securityGroupIds"] = security_group_ids
+        __props__["type"] = type
+        return pulumi.runtime.exists_resource(None, 'stackit:index/networkInterface:NetworkInterface', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowedAddresses")
     def allowed_addresses(self) -> pulumi.Output[Sequence[_builtins.str]]:

@@ -126,6 +126,12 @@ func (ServerUpdateScheduleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serverUpdateScheduleState)(nil)).Elem()
 }
 
+// ServerUpdateScheduleExists checks whether an existing ServerUpdateSchedule resource with the given ID exists.
+func ServerUpdateScheduleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServerUpdateScheduleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/serverUpdateSchedule:ServerUpdateSchedule", id, state, "", opts...)
+}
+
 type serverUpdateScheduleArgs struct {
 	// Is the update schedule enabled or disabled.
 	Enabled bool `pulumi:"enabled"`

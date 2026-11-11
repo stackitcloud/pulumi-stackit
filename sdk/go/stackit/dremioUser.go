@@ -153,6 +153,12 @@ func (DremioUserState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dremioUserState)(nil)).Elem()
 }
 
+// DremioUserExists checks whether an existing DremioUser resource with the given ID exists.
+func DremioUserExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DremioUserState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/dremioUser:DremioUser", id, state, "", opts...)
+}
+
 type dremioUserArgs struct {
 	// The description of the user.
 	Description *string `pulumi:"description"`

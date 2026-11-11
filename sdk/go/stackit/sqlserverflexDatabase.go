@@ -123,6 +123,12 @@ func (SqlserverflexDatabaseState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sqlserverflexDatabaseState)(nil)).Elem()
 }
 
+// SqlserverflexDatabaseExists checks whether an existing SqlserverflexDatabase resource with the given ID exists.
+func SqlserverflexDatabaseExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SqlserverflexDatabaseState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/sqlserverflexDatabase:SqlserverflexDatabase", id, state, "", opts...)
+}
+
 type sqlserverflexDatabaseArgs struct {
 	// The collation of the database.
 	Collation *string `pulumi:"collation"`

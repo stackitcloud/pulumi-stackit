@@ -125,6 +125,12 @@ func (DremioInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dremioInstanceState)(nil)).Elem()
 }
 
+// DremioInstanceExists checks whether an existing DremioInstance resource with the given ID exists.
+func DremioInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DremioInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/dremioInstance:DremioInstance", id, state, "", opts...)
+}
+
 type dremioInstanceArgs struct {
 	// The Access Control List (ACL) defining the IPv4 or IPv6 CIDR ranges allowed to connect to the Dremio instance. An empty list allows access from any address.
 	Acls []string `pulumi:"acls"`

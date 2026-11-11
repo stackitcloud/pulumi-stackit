@@ -135,6 +135,12 @@ func (LogmeInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*logmeInstanceState)(nil)).Elem()
 }
 
+// LogmeInstanceExists checks whether an existing LogmeInstance resource with the given ID exists.
+func LogmeInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LogmeInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/logmeInstance:LogmeInstance", id, state, "", opts...)
+}
+
 type logmeInstanceArgs struct {
 	// Instance name.
 	Name *string `pulumi:"name"`

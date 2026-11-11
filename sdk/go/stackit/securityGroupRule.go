@@ -144,6 +144,12 @@ func (SecurityGroupRuleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*securityGroupRuleState)(nil)).Elem()
 }
 
+// SecurityGroupRuleExists checks whether an existing SecurityGroupRule resource with the given ID exists.
+func SecurityGroupRuleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecurityGroupRuleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/securityGroupRule:SecurityGroupRule", id, state, "", opts...)
+}
+
 type securityGroupRuleArgs struct {
 	// The rule description.
 	Description *string `pulumi:"description"`

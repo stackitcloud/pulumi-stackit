@@ -105,6 +105,12 @@ func (ObservabilityCredentialState) ElementType() reflect.Type {
 	return reflect.TypeOf((*observabilityCredentialState)(nil)).Elem()
 }
 
+// ObservabilityCredentialExists checks whether an existing ObservabilityCredential resource with the given ID exists.
+func ObservabilityCredentialExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ObservabilityCredentialState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/observabilityCredential:ObservabilityCredential", id, state, "", opts...)
+}
+
 type observabilityCredentialArgs struct {
 	// A description of the credential.
 	Description *string `pulumi:"description"`

@@ -553,6 +553,34 @@ class ObservabilityScrapeconfig(pulumi.CustomResource):
         __props__.__dict__["targets"] = targets
         return ObservabilityScrapeconfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            basic_auth: pulumi.Input[Optional[Union['ObservabilityScrapeconfigBasicAuthArgs', 'ObservabilityScrapeconfigBasicAuthArgsDict', 'outputs.ObservabilityScrapeconfigBasicAuth']]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            metrics_path: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            saml2: pulumi.Input[Optional[Union['ObservabilityScrapeconfigSaml2Args', 'ObservabilityScrapeconfigSaml2ArgsDict', 'outputs.ObservabilityScrapeconfigSaml2']]] = None,
+            sample_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            scheme: pulumi.Input[Optional[_builtins.str]] = None,
+            scrape_interval: pulumi.Input[Optional[_builtins.str]] = None,
+            scrape_timeout: pulumi.Input[Optional[_builtins.str]] = None,
+            targets: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ObservabilityScrapeconfigTargetArgs', 'ObservabilityScrapeconfigTargetArgsDict', 'outputs.ObservabilityScrapeconfigTarget']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["basicAuth"] = basic_auth
+        __props__["instanceId"] = instance_id
+        __props__["metricsPath"] = metrics_path
+        __props__["name"] = name
+        __props__["projectId"] = project_id
+        __props__["saml2"] = saml2
+        __props__["sampleLimit"] = sample_limit
+        __props__["scheme"] = scheme
+        __props__["scrapeInterval"] = scrape_interval
+        __props__["scrapeTimeout"] = scrape_timeout
+        __props__["targets"] = targets
+        return pulumi.runtime.exists_resource(None, 'stackit:index/observabilityScrapeconfig:ObservabilityScrapeconfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="basicAuth")
     def basic_auth(self) -> pulumi.Output['outputs.ObservabilityScrapeconfigBasicAuth']:

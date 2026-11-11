@@ -112,6 +112,12 @@ func (ServiceAccountKeyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceAccountKeyState)(nil)).Elem()
 }
 
+// ServiceAccountKeyExists checks whether an existing ServiceAccountKey resource with the given ID exists.
+func ServiceAccountKeyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceAccountKeyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/serviceAccountKey:ServiceAccountKey", id, state, "", opts...)
+}
+
 type serviceAccountKeyArgs struct {
 	// The STACKIT project ID associated with the service account key.
 	ProjectId string `pulumi:"projectId"`

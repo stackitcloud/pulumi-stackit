@@ -277,6 +277,20 @@ class ServerServiceAccountAttach(pulumi.CustomResource):
         __props__.__dict__["service_account_email"] = service_account_email
         return ServerServiceAccountAttach(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            server_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account_email: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["projectId"] = project_id
+        __props__["region"] = region
+        __props__["serverId"] = server_id
+        __props__["serviceAccountEmail"] = service_account_email
+        return pulumi.runtime.exists_resource(None, 'stackit:index/serverServiceAccountAttach:ServerServiceAccountAttach', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="projectId")
     def project_id(self) -> pulumi.Output[_builtins.str]:

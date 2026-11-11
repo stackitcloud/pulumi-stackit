@@ -96,6 +96,12 @@ func (ServerServiceAccountAttachState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serverServiceAccountAttachState)(nil)).Elem()
 }
 
+// ServerServiceAccountAttachExists checks whether an existing ServerServiceAccountAttach resource with the given ID exists.
+func ServerServiceAccountAttachExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServerServiceAccountAttachState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/serverServiceAccountAttach:ServerServiceAccountAttach", id, state, "", opts...)
+}
+
 type serverServiceAccountAttachArgs struct {
 	// STACKIT project ID to which the service account attachment is associated.
 	ProjectId string `pulumi:"projectId"`

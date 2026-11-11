@@ -985,6 +985,78 @@ class ObservabilityInstance(pulumi.CustomResource):
         __props__.__dict__["zipkin_spans_url"] = zipkin_spans_url
         return ObservabilityInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            alert_config: pulumi.Input[Optional[Union['ObservabilityInstanceAlertConfigArgs', 'ObservabilityInstanceAlertConfigArgsDict', 'outputs.ObservabilityInstanceAlertConfig']]] = None,
+            alerting_url: pulumi.Input[Optional[_builtins.str]] = None,
+            dashboard_url: pulumi.Input[Optional[_builtins.str]] = None,
+            grafana_admin_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            grafana_initial_admin_password: pulumi.Input[Optional[_builtins.str]] = None,
+            grafana_initial_admin_user: pulumi.Input[Optional[_builtins.str]] = None,
+            grafana_public_read_access: pulumi.Input[Optional[_builtins.bool]] = None,
+            grafana_url: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            is_updatable: pulumi.Input[Optional[_builtins.bool]] = None,
+            jaeger_traces_url: pulumi.Input[Optional[_builtins.str]] = None,
+            jaeger_ui_url: pulumi.Input[Optional[_builtins.str]] = None,
+            logs_push_url: pulumi.Input[Optional[_builtins.str]] = None,
+            logs_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+            logs_url: pulumi.Input[Optional[_builtins.str]] = None,
+            metrics_push_url: pulumi.Input[Optional[_builtins.str]] = None,
+            metrics_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+            metrics_retention_days1h_downsampling: pulumi.Input[Optional[_builtins.int]] = None,
+            metrics_retention_days5m_downsampling: pulumi.Input[Optional[_builtins.int]] = None,
+            metrics_url: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            otlp_grpc_traces_url: pulumi.Input[Optional[_builtins.str]] = None,
+            otlp_http_logs_url: pulumi.Input[Optional[_builtins.str]] = None,
+            otlp_http_traces_url: pulumi.Input[Optional[_builtins.str]] = None,
+            otlp_traces_url: pulumi.Input[Optional[_builtins.str]] = None,
+            parameters: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            plan_id: pulumi.Input[Optional[_builtins.str]] = None,
+            plan_name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            targets_url: pulumi.Input[Optional[_builtins.str]] = None,
+            traces_retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+            zipkin_spans_url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["acls"] = acls
+        __props__["alertConfig"] = alert_config
+        __props__["alertingUrl"] = alerting_url
+        __props__["dashboardUrl"] = dashboard_url
+        __props__["grafanaAdminEnabled"] = grafana_admin_enabled
+        __props__["grafanaInitialAdminPassword"] = grafana_initial_admin_password
+        __props__["grafanaInitialAdminUser"] = grafana_initial_admin_user
+        __props__["grafanaPublicReadAccess"] = grafana_public_read_access
+        __props__["grafanaUrl"] = grafana_url
+        __props__["instanceId"] = instance_id
+        __props__["isUpdatable"] = is_updatable
+        __props__["jaegerTracesUrl"] = jaeger_traces_url
+        __props__["jaegerUiUrl"] = jaeger_ui_url
+        __props__["logsPushUrl"] = logs_push_url
+        __props__["logsRetentionDays"] = logs_retention_days
+        __props__["logsUrl"] = logs_url
+        __props__["metricsPushUrl"] = metrics_push_url
+        __props__["metricsRetentionDays"] = metrics_retention_days
+        __props__["metricsRetentionDays1hDownsampling"] = metrics_retention_days1h_downsampling
+        __props__["metricsRetentionDays5mDownsampling"] = metrics_retention_days5m_downsampling
+        __props__["metricsUrl"] = metrics_url
+        __props__["name"] = name
+        __props__["otlpGrpcTracesUrl"] = otlp_grpc_traces_url
+        __props__["otlpHttpLogsUrl"] = otlp_http_logs_url
+        __props__["otlpHttpTracesUrl"] = otlp_http_traces_url
+        __props__["otlpTracesUrl"] = otlp_traces_url
+        __props__["parameters"] = parameters
+        __props__["planId"] = plan_id
+        __props__["planName"] = plan_name
+        __props__["projectId"] = project_id
+        __props__["targetsUrl"] = targets_url
+        __props__["tracesRetentionDays"] = traces_retention_days
+        __props__["zipkinSpansUrl"] = zipkin_spans_url
+        return pulumi.runtime.exists_resource(None, 'stackit:index/observabilityInstance:ObservabilityInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def acls(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

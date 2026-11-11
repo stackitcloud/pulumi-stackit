@@ -237,6 +237,20 @@ class ServiceAccount(pulumi.CustomResource):
         __props__.__dict__["service_account_id"] = service_account_id
         return ServiceAccount(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["email"] = email
+        __props__["name"] = name
+        __props__["projectId"] = project_id
+        __props__["serviceAccountId"] = service_account_id
+        return pulumi.runtime.exists_resource(None, 'stackit:index/serviceAccount:ServiceAccount', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def email(self) -> pulumi.Output[_builtins.str]:

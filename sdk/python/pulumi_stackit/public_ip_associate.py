@@ -303,6 +303,22 @@ class PublicIpAssociate(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         return PublicIpAssociate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            ip: pulumi.Input[Optional[_builtins.str]] = None,
+            network_interface_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            public_ip_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["ip"] = ip
+        __props__["networkInterfaceId"] = network_interface_id
+        __props__["projectId"] = project_id
+        __props__["publicIpId"] = public_ip_id
+        __props__["region"] = region
+        return pulumi.runtime.exists_resource(None, 'stackit:index/publicIpAssociate:PublicIpAssociate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def ip(self) -> pulumi.Output[_builtins.str]:

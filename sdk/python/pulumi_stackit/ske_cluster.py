@@ -641,6 +641,42 @@ class SkeCluster(pulumi.CustomResource):
         __props__.__dict__["service_account_issuer"] = service_account_issuer
         return SkeCluster(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access: pulumi.Input[Optional[Union['SkeClusterAccessArgs', 'SkeClusterAccessArgsDict', 'outputs.SkeClusterAccess']]] = None,
+            audit: pulumi.Input[Optional[Union['SkeClusterAuditArgs', 'SkeClusterAuditArgsDict', 'outputs.SkeClusterAudit']]] = None,
+            egress_address_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            extensions: pulumi.Input[Optional[Union['SkeClusterExtensionsArgs', 'SkeClusterExtensionsArgsDict', 'outputs.SkeClusterExtensions']]] = None,
+            hibernations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SkeClusterHibernationArgs', 'SkeClusterHibernationArgsDict', 'outputs.SkeClusterHibernation']]]]] = None,
+            kubernetes_version_min: pulumi.Input[Optional[_builtins.str]] = None,
+            kubernetes_version_used: pulumi.Input[Optional[_builtins.str]] = None,
+            maintenance: pulumi.Input[Optional[Union['SkeClusterMaintenanceArgs', 'SkeClusterMaintenanceArgsDict', 'outputs.SkeClusterMaintenance']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[Union['SkeClusterNetworkArgs', 'SkeClusterNetworkArgsDict', 'outputs.SkeClusterNetwork']]] = None,
+            node_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SkeClusterNodePoolArgs', 'SkeClusterNodePoolArgsDict', 'outputs.SkeClusterNodePool']]]]] = None,
+            pod_address_ranges: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account_issuer: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["access"] = access
+        __props__["audit"] = audit
+        __props__["egressAddressRanges"] = egress_address_ranges
+        __props__["extensions"] = extensions
+        __props__["hibernations"] = hibernations
+        __props__["kubernetesVersionMin"] = kubernetes_version_min
+        __props__["kubernetesVersionUsed"] = kubernetes_version_used
+        __props__["maintenance"] = maintenance
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["nodePools"] = node_pools
+        __props__["podAddressRanges"] = pod_address_ranges
+        __props__["projectId"] = project_id
+        __props__["region"] = region
+        __props__["serviceAccountIssuer"] = service_account_issuer
+        return pulumi.runtime.exists_resource(None, 'stackit:index/skeCluster:SkeCluster', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def access(self) -> pulumi.Output['outputs.SkeClusterAccess']:

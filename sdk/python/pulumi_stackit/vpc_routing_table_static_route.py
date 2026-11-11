@@ -451,6 +451,30 @@ class VpcRoutingTableStaticRoute(pulumi.CustomResource):
         __props__.__dict__["vpc_id"] = vpc_id
         return VpcRoutingTableStaticRoute(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            destination: pulumi.Input[Optional[Union['VpcRoutingTableStaticRouteDestinationArgs', 'VpcRoutingTableStaticRouteDestinationArgsDict', 'outputs.VpcRoutingTableStaticRouteDestination']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            nexthop: pulumi.Input[Optional[Union['VpcRoutingTableStaticRouteNexthopArgs', 'VpcRoutingTableStaticRouteNexthopArgsDict', 'outputs.VpcRoutingTableStaticRouteNexthop']]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            route_id: pulumi.Input[Optional[_builtins.str]] = None,
+            routing_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['VpcRoutingTableStaticRouteTimeoutsArgs', 'VpcRoutingTableStaticRouteTimeoutsArgsDict', 'outputs.VpcRoutingTableStaticRouteTimeouts']]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["destination"] = destination
+        __props__["labels"] = labels
+        __props__["nexthop"] = nexthop
+        __props__["projectId"] = project_id
+        __props__["region"] = region
+        __props__["routeId"] = route_id
+        __props__["routingTableId"] = routing_table_id
+        __props__["timeouts"] = timeouts
+        __props__["vpcId"] = vpc_id
+        return pulumi.runtime.exists_resource(None, 'stackit:index/vpcRoutingTableStaticRoute:VpcRoutingTableStaticRoute', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def destination(self) -> pulumi.Output['outputs.VpcRoutingTableStaticRouteDestination']:

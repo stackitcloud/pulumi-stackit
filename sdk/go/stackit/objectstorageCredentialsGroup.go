@@ -96,6 +96,12 @@ func (ObjectstorageCredentialsGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*objectstorageCredentialsGroupState)(nil)).Elem()
 }
 
+// ObjectstorageCredentialsGroupExists checks whether an existing ObjectstorageCredentialsGroup resource with the given ID exists.
+func ObjectstorageCredentialsGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ObjectstorageCredentialsGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/objectstorageCredentialsGroup:ObjectstorageCredentialsGroup", id, state, "", opts...)
+}
+
 type objectstorageCredentialsGroupArgs struct {
 	// The credentials group's display name.
 	Name *string `pulumi:"name"`

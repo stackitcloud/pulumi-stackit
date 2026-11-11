@@ -846,6 +846,56 @@ class DnsZone(pulumi.CustomResource):
         __props__.__dict__["zone_id"] = zone_id
         return DnsZone(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acl: pulumi.Input[Optional[_builtins.str]] = None,
+            active: pulumi.Input[Optional[_builtins.bool]] = None,
+            contact_email: pulumi.Input[Optional[_builtins.str]] = None,
+            default_ttl: pulumi.Input[Optional[_builtins.int]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            dns_name: pulumi.Input[Optional[_builtins.str]] = None,
+            expire_time: pulumi.Input[Optional[_builtins.int]] = None,
+            is_reverse_zone: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            negative_cache: pulumi.Input[Optional[_builtins.int]] = None,
+            primaries: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            primary_name_server: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            record_count: pulumi.Input[Optional[_builtins.int]] = None,
+            refresh_time: pulumi.Input[Optional[_builtins.int]] = None,
+            retry_time: pulumi.Input[Optional[_builtins.int]] = None,
+            serial_number: pulumi.Input[Optional[_builtins.int]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['DnsZoneTimeoutsArgs', 'DnsZoneTimeoutsArgsDict', 'outputs.DnsZoneTimeouts']]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            visibility: pulumi.Input[Optional[_builtins.str]] = None,
+            zone_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["acl"] = acl
+        __props__["active"] = active
+        __props__["contactEmail"] = contact_email
+        __props__["defaultTtl"] = default_ttl
+        __props__["description"] = description
+        __props__["dnsName"] = dns_name
+        __props__["expireTime"] = expire_time
+        __props__["isReverseZone"] = is_reverse_zone
+        __props__["name"] = name
+        __props__["negativeCache"] = negative_cache
+        __props__["primaries"] = primaries
+        __props__["primaryNameServer"] = primary_name_server
+        __props__["projectId"] = project_id
+        __props__["recordCount"] = record_count
+        __props__["refreshTime"] = refresh_time
+        __props__["retryTime"] = retry_time
+        __props__["serialNumber"] = serial_number
+        __props__["state"] = state
+        __props__["timeouts"] = timeouts
+        __props__["type"] = type
+        __props__["visibility"] = visibility
+        __props__["zoneId"] = zone_id
+        return pulumi.runtime.exists_resource(None, 'stackit:index/dnsZone:DnsZone', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def acl(self) -> pulumi.Output[_builtins.str]:

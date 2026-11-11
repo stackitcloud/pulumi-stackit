@@ -776,6 +776,48 @@ class Server(pulumi.CustomResource):
         __props__.__dict__["user_data"] = user_data
         return Server(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            affinity_group: pulumi.Input[Optional[_builtins.str]] = None,
+            agent: pulumi.Input[Optional[Union['ServerAgentArgs', 'ServerAgentArgsDict', 'outputs.ServerAgent']]] = None,
+            availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            boot_volume: pulumi.Input[Optional[Union['ServerBootVolumeArgs', 'ServerBootVolumeArgsDict', 'outputs.ServerBootVolume']]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            desired_status: pulumi.Input[Optional[_builtins.str]] = None,
+            image_id: pulumi.Input[Optional[_builtins.str]] = None,
+            keypair_name: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            launched_at: pulumi.Input[Optional[_builtins.str]] = None,
+            machine_type: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_interfaces: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            server_id: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            user_data: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["affinityGroup"] = affinity_group
+        __props__["agent"] = agent
+        __props__["availabilityZone"] = availability_zone
+        __props__["bootVolume"] = boot_volume
+        __props__["createdAt"] = created_at
+        __props__["desiredStatus"] = desired_status
+        __props__["imageId"] = image_id
+        __props__["keypairName"] = keypair_name
+        __props__["labels"] = labels
+        __props__["launchedAt"] = launched_at
+        __props__["machineType"] = machine_type
+        __props__["name"] = name
+        __props__["networkInterfaces"] = network_interfaces
+        __props__["projectId"] = project_id
+        __props__["region"] = region
+        __props__["serverId"] = server_id
+        __props__["updatedAt"] = updated_at
+        __props__["userData"] = user_data
+        return pulumi.runtime.exists_resource(None, 'stackit:index/server:Server', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="affinityGroup")
     def affinity_group(self) -> pulumi.Output[Optional[_builtins.str]]:

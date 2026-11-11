@@ -564,6 +564,36 @@ class Telemetrylink(pulumi.CustomResource):
         __props__.__dict__["telemetry_router_id"] = telemetry_router_id
         return Telemetrylink(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_token: pulumi.Input[Optional[_builtins.str]] = None,
+            access_token_wo: pulumi.Input[Optional[_builtins.str]] = None,
+            access_token_wo_version: pulumi.Input[Optional[_builtins.int]] = None,
+            create_time: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_id: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_type: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            telemetry_router_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessToken"] = access_token
+        __props__["accessTokenWo"] = access_token_wo
+        __props__["accessTokenWoVersion"] = access_token_wo_version
+        __props__["createTime"] = create_time
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["enabled"] = enabled
+        __props__["region"] = region
+        __props__["resourceId"] = resource_id
+        __props__["resourceType"] = resource_type
+        __props__["status"] = status
+        __props__["telemetryRouterId"] = telemetry_router_id
+        return pulumi.runtime.exists_resource(None, 'stackit:index/telemetrylink:Telemetrylink', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessToken")
     def access_token(self) -> pulumi.Output[Optional[_builtins.str]]:

@@ -169,6 +169,12 @@ func (ApplicationLoadBalancerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationLoadBalancerState)(nil)).Elem()
 }
 
+// ApplicationLoadBalancerExists checks whether an existing ApplicationLoadBalancer resource with the given ID exists.
+func ApplicationLoadBalancerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApplicationLoadBalancerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/applicationLoadBalancer:ApplicationLoadBalancer", id, state, "", opts...)
+}
+
 type applicationLoadBalancerArgs struct {
 	// Disable target security group assignemt to allow targets outside of the given network. Connectivity to targets need to be ensured by the customer, including routing and Security Groups (targetSecurityGroup can be assigned). Not changeable after creation.
 	DisableTargetSecurityGroupAssignment *bool `pulumi:"disableTargetSecurityGroupAssignment"`

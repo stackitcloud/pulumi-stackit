@@ -148,6 +148,12 @@ func (TelemetryrouterAccessTokenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*telemetryrouterAccessTokenState)(nil)).Elem()
 }
 
+// TelemetryrouterAccessTokenExists checks whether an existing TelemetryrouterAccessToken resource with the given ID exists.
+func TelemetryrouterAccessTokenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *TelemetryrouterAccessTokenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/telemetryrouterAccessToken:TelemetryrouterAccessToken", id, state, "", opts...)
+}
+
 type telemetryrouterAccessTokenArgs struct {
 	// The description of the access token
 	Description *string `pulumi:"description"`

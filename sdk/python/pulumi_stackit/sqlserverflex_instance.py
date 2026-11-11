@@ -687,6 +687,44 @@ class SqlserverflexInstance(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         return SqlserverflexInstance(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            backup_schedule: pulumi.Input[Optional[_builtins.str]] = None,
+            edition: pulumi.Input[Optional[_builtins.str]] = None,
+            encryption: pulumi.Input[Optional[Union['SqlserverflexInstanceEncryptionArgs', 'SqlserverflexInstanceEncryptionArgsDict', 'outputs.SqlserverflexInstanceEncryption']]] = None,
+            flavor: pulumi.Input[Optional[Union['SqlserverflexInstanceFlavorArgs', 'SqlserverflexInstanceFlavorArgsDict', 'outputs.SqlserverflexInstanceFlavor']]] = None,
+            flavor_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[Union['SqlserverflexInstanceNetworkArgs', 'SqlserverflexInstanceNetworkArgsDict', 'outputs.SqlserverflexInstanceNetwork']]] = None,
+            options: pulumi.Input[Optional[Union['SqlserverflexInstanceOptionsArgs', 'SqlserverflexInstanceOptionsArgsDict', 'outputs.SqlserverflexInstanceOptions']]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            replicas: pulumi.Input[Optional[_builtins.int]] = None,
+            retention_days: pulumi.Input[Optional[_builtins.int]] = None,
+            storage: pulumi.Input[Optional[Union['SqlserverflexInstanceStorageArgs', 'SqlserverflexInstanceStorageArgsDict', 'outputs.SqlserverflexInstanceStorage']]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["acls"] = acls
+        __props__["backupSchedule"] = backup_schedule
+        __props__["edition"] = edition
+        __props__["encryption"] = encryption
+        __props__["flavor"] = flavor
+        __props__["flavorId"] = flavor_id
+        __props__["instanceId"] = instance_id
+        __props__["name"] = name
+        __props__["network"] = network
+        __props__["options"] = options
+        __props__["projectId"] = project_id
+        __props__["region"] = region
+        __props__["replicas"] = replicas
+        __props__["retentionDays"] = retention_days
+        __props__["storage"] = storage
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'stackit:index/sqlserverflexInstance:SqlserverflexInstance', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""acl is deprecated and will be removed after February 2027. Use instead `network.acl`.""")

@@ -356,6 +356,28 @@ class ResourcemanagerFolder(pulumi.CustomResource):
         __props__.__dict__["update_time"] = update_time
         return ResourcemanagerFolder(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            container_id: pulumi.Input[Optional[_builtins.str]] = None,
+            creation_time: pulumi.Input[Optional[_builtins.str]] = None,
+            folder_id: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            owner_email: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_container_id: pulumi.Input[Optional[_builtins.str]] = None,
+            update_time: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["containerId"] = container_id
+        __props__["creationTime"] = creation_time
+        __props__["folderId"] = folder_id
+        __props__["labels"] = labels
+        __props__["name"] = name
+        __props__["ownerEmail"] = owner_email
+        __props__["parentContainerId"] = parent_container_id
+        __props__["updateTime"] = update_time
+        return pulumi.runtime.exists_resource(None, 'stackit:index/resourcemanagerFolder:ResourcemanagerFolder', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="containerId")
     def container_id(self) -> pulumi.Output[_builtins.str]:

@@ -31,6 +31,17 @@ export class CdnDistribution extends pulumi.CustomResource {
         return new CdnDistribution(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing CdnDistribution resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: CdnDistributionState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("stackit:index/cdnDistribution:CdnDistribution", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'stackit:index/cdnDistribution:CdnDistribution';
 

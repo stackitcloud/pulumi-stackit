@@ -88,7 +88,7 @@ namespace Pulumi.Stackit
         public Output<Outputs.VpnConnectionTunnel1> Tunnel1 { get; private set; } = null!;
 
         /// <summary>
-        /// Configuration for the IPsec tunnel2 
+        /// Configuration for the IPsec tunnel2
         /// 
         /// &gt; Write-Only argument `PreSharedKeyWo` is available to use in place of `PreSharedKey`. Write-Only arguments are supported in HashiCorp Terraform 1.11.0 and later. [Learn more](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments).
         /// </summary>
@@ -227,7 +227,7 @@ namespace Pulumi.Stackit
         public Input<Inputs.VpnConnectionTunnel1Args> Tunnel1 { get; set; } = null!;
 
         /// <summary>
-        /// Configuration for the IPsec tunnel2 
+        /// Configuration for the IPsec tunnel2
         /// 
         /// &gt; Write-Only argument `PreSharedKeyWo` is available to use in place of `PreSharedKey`. Write-Only arguments are supported in HashiCorp Terraform 1.11.0 and later. [Learn more](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments).
         /// </summary>
@@ -333,7 +333,7 @@ namespace Pulumi.Stackit
         public Input<Inputs.VpnConnectionTunnel1GetArgs>? Tunnel1 { get; set; }
 
         /// <summary>
-        /// Configuration for the IPsec tunnel2 
+        /// Configuration for the IPsec tunnel2
         /// 
         /// &gt; Write-Only argument `PreSharedKeyWo` is available to use in place of `PreSharedKey`. Write-Only arguments are supported in HashiCorp Terraform 1.11.0 and later. [Learn more](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments).
         /// </summary>

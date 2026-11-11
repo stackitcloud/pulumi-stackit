@@ -4,7 +4,7 @@ go 1.26.10
 
 require (
 	github.com/stackitcloud/pulumi-stackit/provider/pkg/version v0.0.6
-	github.com/stackitcloud/terraform-provider-stackit v0.122.0
+	github.com/stackitcloud/terraform-provider-stackit v0.123.0
 )
 
 require (
@@ -48,8 +48,8 @@ require (
 	github.com/stackitcloud/stackit-sdk-go/core v0.27.1 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/authorization v0.16.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/cdn v1.22.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/dns v0.25.0 // indirect
-	github.com/stackitcloud/stackit-sdk-go/services/git v0.15.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/dns v0.26.0 // indirect
+	github.com/stackitcloud/stackit-sdk-go/services/git v0.16.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/iaas v1.15.1 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/loadbalancer v1.17.0 // indirect
 	github.com/stackitcloud/stackit-sdk-go/services/logme v1.6.0 // indirect

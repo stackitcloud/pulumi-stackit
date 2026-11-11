@@ -134,6 +134,12 @@ func (MongodbflexUserState) ElementType() reflect.Type {
 	return reflect.TypeOf((*mongodbflexUserState)(nil)).Elem()
 }
 
+// MongodbflexUserExists checks whether an existing MongodbflexUser resource with the given ID exists.
+func MongodbflexUserExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *MongodbflexUserState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/mongodbflexUser:MongodbflexUser", id, state, "", opts...)
+}
+
 type mongodbflexUserArgs struct {
 	Database string `pulumi:"database"`
 	// ID of the MongoDB Flex instance.

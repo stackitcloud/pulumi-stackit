@@ -433,6 +433,32 @@ class EdgecloudKubeconfig(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         return EdgecloudKubeconfig(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            creation_time: pulumi.Input[Optional[_builtins.str]] = None,
+            expiration: pulumi.Input[Optional[_builtins.int]] = None,
+            expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_id: pulumi.Input[Optional[_builtins.str]] = None,
+            instance_name: pulumi.Input[Optional[_builtins.str]] = None,
+            kubeconfig: pulumi.Input[Optional[_builtins.str]] = None,
+            kubeconfig_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            recreate_before: pulumi.Input[Optional[_builtins.int]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["creationTime"] = creation_time
+        __props__["expiration"] = expiration
+        __props__["expiresAt"] = expires_at
+        __props__["instanceId"] = instance_id
+        __props__["instanceName"] = instance_name
+        __props__["kubeconfig"] = kubeconfig
+        __props__["kubeconfigId"] = kubeconfig_id
+        __props__["projectId"] = project_id
+        __props__["recreateBefore"] = recreate_before
+        __props__["region"] = region
+        return pulumi.runtime.exists_resource(None, 'stackit:index/edgecloudKubeconfig:EdgecloudKubeconfig', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> pulumi.Output[_builtins.str]:

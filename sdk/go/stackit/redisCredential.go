@@ -131,6 +131,12 @@ func (RedisCredentialState) ElementType() reflect.Type {
 	return reflect.TypeOf((*redisCredentialState)(nil)).Elem()
 }
 
+// RedisCredentialExists checks whether an existing RedisCredential resource with the given ID exists.
+func RedisCredentialExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RedisCredentialState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/redisCredential:RedisCredential", id, state, "", opts...)
+}
+
 type redisCredentialArgs struct {
 	// ID of the Redis instance.
 	InstanceId string `pulumi:"instanceId"`

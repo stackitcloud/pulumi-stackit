@@ -127,6 +127,12 @@ func (ScfOrganizationManagerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*scfOrganizationManagerState)(nil)).Elem()
 }
 
+// ScfOrganizationManagerExists checks whether an existing ScfOrganizationManager resource with the given ID exists.
+func ScfOrganizationManagerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ScfOrganizationManagerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/scfOrganizationManager:ScfOrganizationManager", id, state, "", opts...)
+}
+
 type scfOrganizationManagerArgs struct {
 	// The ID of the Cloud Foundry Organization
 	OrgId string `pulumi:"orgId"`

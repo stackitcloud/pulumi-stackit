@@ -195,6 +195,12 @@ func (DnsZoneState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dnsZoneState)(nil)).Elem()
 }
 
+// DnsZoneExists checks whether an existing DnsZone resource with the given ID exists.
+func DnsZoneExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DnsZoneState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/dnsZone:DnsZone", id, state, "", opts...)
+}
+
 type dnsZoneArgs struct {
 	// The access control list (e.g., 0.0.0.0/0,::/0). Note: This field currently has no effect and does not enforce any access restrictions on the DNS zone.
 	Acl    *string `pulumi:"acl"`

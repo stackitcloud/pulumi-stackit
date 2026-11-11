@@ -102,6 +102,12 @@ func (AuthorizationProjectCustomRoleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*authorizationProjectCustomRoleState)(nil)).Elem()
 }
 
+// AuthorizationProjectCustomRoleExists checks whether an existing AuthorizationProjectCustomRole resource with the given ID exists.
+func AuthorizationProjectCustomRoleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuthorizationProjectCustomRoleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/authorizationProjectCustomRole:AuthorizationProjectCustomRole", id, state, "", opts...)
+}
+
 type authorizationProjectCustomRoleArgs struct {
 	// A human readable description of the role.
 	Description string `pulumi:"description"`

@@ -113,6 +113,12 @@ func (LogmeCredentialState) ElementType() reflect.Type {
 	return reflect.TypeOf((*logmeCredentialState)(nil)).Elem()
 }
 
+// LogmeCredentialExists checks whether an existing LogmeCredential resource with the given ID exists.
+func LogmeCredentialExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LogmeCredentialState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/logmeCredential:LogmeCredential", id, state, "", opts...)
+}
+
 type logmeCredentialArgs struct {
 	// ID of the LogMe instance.
 	InstanceId string `pulumi:"instanceId"`

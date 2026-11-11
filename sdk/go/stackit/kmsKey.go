@@ -145,6 +145,12 @@ func (KmsKeyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*kmsKeyState)(nil)).Elem()
 }
 
+// KmsKeyExists checks whether an existing KmsKey resource with the given ID exists.
+func KmsKeyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *KmsKeyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/kmsKey:KmsKey", id, state, "", opts...)
+}
+
 type kmsKeyArgs struct {
 	// The access scope of the key. Default is `PUBLIC`. Possible values are: `PUBLIC`, `SNA`.
 	AccessScope *string `pulumi:"accessScope"`

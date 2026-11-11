@@ -645,6 +645,44 @@ class ApplicationLoadBalancer(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         return ApplicationLoadBalancer(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            disable_target_security_group_assignment: pulumi.Input[Optional[_builtins.bool]] = None,
+            errors: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationLoadBalancerErrorArgs', 'ApplicationLoadBalancerErrorArgsDict', 'outputs.ApplicationLoadBalancerError']]]]] = None,
+            external_address: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            listeners: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationLoadBalancerListenerArgs', 'ApplicationLoadBalancerListenerArgsDict', 'outputs.ApplicationLoadBalancerListener']]]]] = None,
+            load_balancer_security_group: pulumi.Input[Optional[Union['ApplicationLoadBalancerLoadBalancerSecurityGroupArgs', 'ApplicationLoadBalancerLoadBalancerSecurityGroupArgsDict', 'outputs.ApplicationLoadBalancerLoadBalancerSecurityGroup']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            networks: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationLoadBalancerNetworkArgs', 'ApplicationLoadBalancerNetworkArgsDict', 'outputs.ApplicationLoadBalancerNetwork']]]]] = None,
+            options: pulumi.Input[Optional[Union['ApplicationLoadBalancerOptionsArgs', 'ApplicationLoadBalancerOptionsArgsDict', 'outputs.ApplicationLoadBalancerOptions']]] = None,
+            plan_id: pulumi.Input[Optional[_builtins.str]] = None,
+            private_address: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            target_pools: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationLoadBalancerTargetPoolArgs', 'ApplicationLoadBalancerTargetPoolArgsDict', 'outputs.ApplicationLoadBalancerTargetPool']]]]] = None,
+            target_security_group: pulumi.Input[Optional[Union['ApplicationLoadBalancerTargetSecurityGroupArgs', 'ApplicationLoadBalancerTargetSecurityGroupArgsDict', 'outputs.ApplicationLoadBalancerTargetSecurityGroup']]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["disableTargetSecurityGroupAssignment"] = disable_target_security_group_assignment
+        __props__["errors"] = errors
+        __props__["externalAddress"] = external_address
+        __props__["labels"] = labels
+        __props__["listeners"] = listeners
+        __props__["loadBalancerSecurityGroup"] = load_balancer_security_group
+        __props__["name"] = name
+        __props__["networks"] = networks
+        __props__["options"] = options
+        __props__["planId"] = plan_id
+        __props__["privateAddress"] = private_address
+        __props__["projectId"] = project_id
+        __props__["region"] = region
+        __props__["targetPools"] = target_pools
+        __props__["targetSecurityGroup"] = target_security_group
+        __props__["version"] = version
+        return pulumi.runtime.exists_resource(None, 'stackit:index/applicationLoadBalancer:ApplicationLoadBalancer', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="disableTargetSecurityGroupAssignment")
     def disable_target_security_group_assignment(self) -> pulumi.Output[_builtins.bool]:

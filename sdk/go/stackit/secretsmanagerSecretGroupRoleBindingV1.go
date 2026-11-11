@@ -96,6 +96,12 @@ func (SecretsmanagerSecretGroupRoleBindingV1State) ElementType() reflect.Type {
 	return reflect.TypeOf((*secretsmanagerSecretGroupRoleBindingV1State)(nil)).Elem()
 }
 
+// SecretsmanagerSecretGroupRoleBindingV1Exists checks whether an existing SecretsmanagerSecretGroupRoleBindingV1 resource with the given ID exists.
+func SecretsmanagerSecretGroupRoleBindingV1Exists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SecretsmanagerSecretGroupRoleBindingV1State, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/secretsmanagerSecretGroupRoleBindingV1:SecretsmanagerSecretGroupRoleBindingV1", id, state, "", opts...)
+}
+
 type secretsmanagerSecretGroupRoleBindingV1Args struct {
 	// The resource region. If not defined, the provider region is used.
 	Region *string `pulumi:"region"`

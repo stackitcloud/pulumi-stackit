@@ -979,6 +979,60 @@ class Network(pulumi.CustomResource):
         __props__.__dict__["vpc_id"] = vpc_id
         return Network(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            dhcp: pulumi.Input[Optional[_builtins.bool]] = None,
+            ipv4_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv4_nameservers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ipv4_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv4_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+            ipv4_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ipv4_vpc_network_range_id: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_gateway: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_nameservers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ipv6_prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6_prefix_length: pulumi.Input[Optional[_builtins.int]] = None,
+            ipv6_prefixes: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            ipv6_vpc_network_range_id: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network_id: pulumi.Input[Optional[_builtins.str]] = None,
+            no_ipv4_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
+            no_ipv6_gateway: pulumi.Input[Optional[_builtins.bool]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            public_ip: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            routed: pulumi.Input[Optional[_builtins.bool]] = None,
+            routing_table_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["dhcp"] = dhcp
+        __props__["ipv4Gateway"] = ipv4_gateway
+        __props__["ipv4Nameservers"] = ipv4_nameservers
+        __props__["ipv4Prefix"] = ipv4_prefix
+        __props__["ipv4PrefixLength"] = ipv4_prefix_length
+        __props__["ipv4Prefixes"] = ipv4_prefixes
+        __props__["ipv4VpcNetworkRangeId"] = ipv4_vpc_network_range_id
+        __props__["ipv6Gateway"] = ipv6_gateway
+        __props__["ipv6Nameservers"] = ipv6_nameservers
+        __props__["ipv6Prefix"] = ipv6_prefix
+        __props__["ipv6PrefixLength"] = ipv6_prefix_length
+        __props__["ipv6Prefixes"] = ipv6_prefixes
+        __props__["ipv6VpcNetworkRangeId"] = ipv6_vpc_network_range_id
+        __props__["labels"] = labels
+        __props__["name"] = name
+        __props__["networkId"] = network_id
+        __props__["noIpv4Gateway"] = no_ipv4_gateway
+        __props__["noIpv6Gateway"] = no_ipv6_gateway
+        __props__["projectId"] = project_id
+        __props__["publicIp"] = public_ip
+        __props__["region"] = region
+        __props__["routed"] = routed
+        __props__["routingTableId"] = routing_table_id
+        __props__["vpcId"] = vpc_id
+        return pulumi.runtime.exists_resource(None, 'stackit:index/network:Network', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def dhcp(self) -> pulumi.Output[_builtins.bool]:

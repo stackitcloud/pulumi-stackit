@@ -398,6 +398,26 @@ class NetworkAreaRoute(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         return NetworkAreaRoute(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            destination: pulumi.Input[Optional[Union['NetworkAreaRouteDestinationArgs', 'NetworkAreaRouteDestinationArgsDict', 'outputs.NetworkAreaRouteDestination']]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            network_area_id: pulumi.Input[Optional[_builtins.str]] = None,
+            network_area_route_id: pulumi.Input[Optional[_builtins.str]] = None,
+            next_hop: pulumi.Input[Optional[Union['NetworkAreaRouteNextHopArgs', 'NetworkAreaRouteNextHopArgsDict', 'outputs.NetworkAreaRouteNextHop']]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["destination"] = destination
+        __props__["labels"] = labels
+        __props__["networkAreaId"] = network_area_id
+        __props__["networkAreaRouteId"] = network_area_route_id
+        __props__["nextHop"] = next_hop
+        __props__["organizationId"] = organization_id
+        __props__["region"] = region
+        return pulumi.runtime.exists_resource(None, 'stackit:index/networkAreaRoute:NetworkAreaRoute', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def destination(self) -> pulumi.Output['outputs.NetworkAreaRouteDestination']:

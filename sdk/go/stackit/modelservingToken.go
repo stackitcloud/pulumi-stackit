@@ -128,6 +128,12 @@ func (ModelservingTokenState) ElementType() reflect.Type {
 	return reflect.TypeOf((*modelservingTokenState)(nil)).Elem()
 }
 
+// ModelservingTokenExists checks whether an existing ModelservingToken resource with the given ID exists.
+func ModelservingTokenExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ModelservingTokenState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/modelservingToken:ModelservingToken", id, state, "", opts...)
+}
+
 type modelservingTokenArgs struct {
 	// The description of the AI model serving auth token.
 	Description *string `pulumi:"description"`

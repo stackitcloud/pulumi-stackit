@@ -283,6 +283,20 @@ class NetworkAreaRegion(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         return NetworkAreaRegion(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            ipv4: pulumi.Input[Optional[Union['NetworkAreaRegionIpv4Args', 'NetworkAreaRegionIpv4ArgsDict', 'outputs.NetworkAreaRegionIpv4']]] = None,
+            network_area_id: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["ipv4"] = ipv4
+        __props__["networkAreaId"] = network_area_id
+        __props__["organizationId"] = organization_id
+        __props__["region"] = region
+        return pulumi.runtime.exists_resource(None, 'stackit:index/networkAreaRegion:NetworkAreaRegion', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def ipv4(self) -> pulumi.Output['outputs.NetworkAreaRegionIpv4']:

@@ -98,6 +98,12 @@ func (AlbWafConfigurationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*albWafConfigurationState)(nil)).Elem()
 }
 
+// AlbWafConfigurationExists checks whether an existing AlbWafConfiguration resource with the given ID exists.
+func AlbWafConfigurationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AlbWafConfigurationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/albWafConfiguration:AlbWafConfiguration", id, state, "", opts...)
+}
+
 type albWafConfigurationArgs struct {
 	// Name of the custom rule group for this WAF Configuration.
 	CustomRuleGroupName *string `pulumi:"customRuleGroupName"`

@@ -120,6 +120,12 @@ func (ModelexperimentsInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*modelexperimentsInstanceState)(nil)).Elem()
 }
 
+// ModelexperimentsInstanceExists checks whether an existing ModelexperimentsInstance resource with the given ID exists.
+func ModelexperimentsInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ModelexperimentsInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/modelexperimentsInstance:ModelexperimentsInstance", id, state, "", opts...)
+}
+
 type modelexperimentsInstanceArgs struct {
 	// The deleted experiment retention time of the AI Model Experiments instance.
 	DeletedExperimentRetention *string `pulumi:"deletedExperimentRetention"`

@@ -126,6 +126,12 @@ func (ScfOrganizationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*scfOrganizationState)(nil)).Elem()
 }
 
+// ScfOrganizationExists checks whether an existing ScfOrganization resource with the given ID exists.
+func ScfOrganizationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ScfOrganizationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/scfOrganization:ScfOrganization", id, state, "", opts...)
+}
+
 type scfOrganizationArgs struct {
 	// The name of the organization
 	Name *string `pulumi:"name"`

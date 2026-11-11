@@ -117,6 +117,12 @@ func (NetworkAreaState) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkAreaState)(nil)).Elem()
 }
 
+// NetworkAreaExists checks whether an existing NetworkArea resource with the given ID exists.
+func NetworkAreaExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetworkAreaState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/networkArea:NetworkArea", id, state, "", opts...)
+}
+
 type networkAreaArgs struct {
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels map[string]string `pulumi:"labels"`

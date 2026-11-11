@@ -98,6 +98,12 @@ func (NetworkAreaRegionState) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkAreaRegionState)(nil)).Elem()
 }
 
+// NetworkAreaRegionExists checks whether an existing NetworkAreaRegion resource with the given ID exists.
+func NetworkAreaRegionExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetworkAreaRegionState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/networkAreaRegion:NetworkAreaRegion", id, state, "", opts...)
+}
+
 type networkAreaRegionArgs struct {
 	// The regional IPv4 config of a network area.
 	Ipv4 NetworkAreaRegionIpv4 `pulumi:"ipv4"`

@@ -114,6 +114,12 @@ func (ServiceAccountFederatedIdentityProviderState) ElementType() reflect.Type {
 	return reflect.TypeOf((*serviceAccountFederatedIdentityProviderState)(nil)).Elem()
 }
 
+// ServiceAccountFederatedIdentityProviderExists checks whether an existing ServiceAccountFederatedIdentityProvider resource with the given ID exists.
+func ServiceAccountFederatedIdentityProviderExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServiceAccountFederatedIdentityProviderState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/serviceAccountFederatedIdentityProvider:ServiceAccountFederatedIdentityProvider", id, state, "", opts...)
+}
+
 type serviceAccountFederatedIdentityProviderArgs struct {
 	// The assertions for the federated identity provider.
 	Assertions []ServiceAccountFederatedIdentityProviderAssertion `pulumi:"assertions"`

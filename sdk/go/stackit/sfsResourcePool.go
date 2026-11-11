@@ -147,6 +147,12 @@ func (SfsResourcePoolState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sfsResourcePoolState)(nil)).Elem()
 }
 
+// SfsResourcePoolExists checks whether an existing SfsResourcePool resource with the given ID exists.
+func SfsResourcePoolExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SfsResourcePoolState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/sfsResourcePool:SfsResourcePool", id, state, "", opts...)
+}
+
 type sfsResourcePoolArgs struct {
 	// Availability zone.
 	AvailabilityZone string `pulumi:"availabilityZone"`

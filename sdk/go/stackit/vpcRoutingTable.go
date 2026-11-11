@@ -125,6 +125,12 @@ func (VpcRoutingTableState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpcRoutingTableState)(nil)).Elem()
 }
 
+// VpcRoutingTableExists checks whether an existing VpcRoutingTable resource with the given ID exists.
+func VpcRoutingTableExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VpcRoutingTableState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/vpcRoutingTable:VpcRoutingTable", id, state, "", opts...)
+}
+
 type vpcRoutingTableArgs struct {
 	// Description of the regional routing table.
 	Description *string `pulumi:"description"`

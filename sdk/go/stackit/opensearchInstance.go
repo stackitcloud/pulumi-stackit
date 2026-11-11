@@ -135,6 +135,12 @@ func (OpensearchInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*opensearchInstanceState)(nil)).Elem()
 }
 
+// OpensearchInstanceExists checks whether an existing OpensearchInstance resource with the given ID exists.
+func OpensearchInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *OpensearchInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/opensearchInstance:OpensearchInstance", id, state, "", opts...)
+}
+
 type opensearchInstanceArgs struct {
 	// Instance name.
 	Name *string `pulumi:"name"`

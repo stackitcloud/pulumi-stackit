@@ -345,6 +345,24 @@ class ServiceAccountFederatedIdentityProvider(pulumi.CustomResource):
         __props__.__dict__["service_account_email"] = service_account_email
         return ServiceAccountFederatedIdentityProvider(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            assertions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServiceAccountFederatedIdentityProviderAssertionArgs', 'ServiceAccountFederatedIdentityProviderAssertionArgsDict', 'outputs.ServiceAccountFederatedIdentityProviderAssertion']]]]] = None,
+            federation_id: pulumi.Input[Optional[_builtins.str]] = None,
+            issuer: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_account_email: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["assertions"] = assertions
+        __props__["federationId"] = federation_id
+        __props__["issuer"] = issuer
+        __props__["name"] = name
+        __props__["projectId"] = project_id
+        __props__["serviceAccountEmail"] = service_account_email
+        return pulumi.runtime.exists_resource(None, 'stackit:index/serviceAccountFederatedIdentityProvider:ServiceAccountFederatedIdentityProvider', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def assertions(self) -> pulumi.Output[Sequence['outputs.ServiceAccountFederatedIdentityProviderAssertion']]:

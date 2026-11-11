@@ -102,6 +102,12 @@ func (ObservabilityAlertgroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*observabilityAlertgroupState)(nil)).Elem()
 }
 
+// ObservabilityAlertgroupExists checks whether an existing ObservabilityAlertgroup resource with the given ID exists.
+func ObservabilityAlertgroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ObservabilityAlertgroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/observabilityAlertgroup:ObservabilityAlertgroup", id, state, "", opts...)
+}
+
 type observabilityAlertgroupArgs struct {
 	// Observability instance ID to which the alert group is associated.
 	InstanceId string `pulumi:"instanceId"`

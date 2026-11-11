@@ -113,6 +113,12 @@ func (AlbCertificateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*albCertificateState)(nil)).Elem()
 }
 
+// AlbCertificateExists checks whether an existing AlbCertificate resource with the given ID exists.
+func AlbCertificateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AlbCertificateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/albCertificate:AlbCertificate", id, state, "", opts...)
+}
+
 type albCertificateArgs struct {
 	// Certificate name.
 	Name *string `pulumi:"name"`

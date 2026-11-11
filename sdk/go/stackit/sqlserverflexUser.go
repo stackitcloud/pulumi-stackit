@@ -130,6 +130,12 @@ func (SqlserverflexUserState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sqlserverflexUserState)(nil)).Elem()
 }
 
+// SqlserverflexUserExists checks whether an existing SqlserverflexUser resource with the given ID exists.
+func SqlserverflexUserExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SqlserverflexUserState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/sqlserverflexUser:SqlserverflexUser", id, state, "", opts...)
+}
+
 type sqlserverflexUserArgs struct {
 	// ID of the SQLServer Flex instance.
 	InstanceId string `pulumi:"instanceId"`

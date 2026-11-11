@@ -94,6 +94,12 @@ func (AuthorizationServiceAccountRoleAssignmentState) ElementType() reflect.Type
 	return reflect.TypeOf((*authorizationServiceAccountRoleAssignmentState)(nil)).Elem()
 }
 
+// AuthorizationServiceAccountRoleAssignmentExists checks whether an existing AuthorizationServiceAccountRoleAssignment resource with the given ID exists.
+func AuthorizationServiceAccountRoleAssignmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuthorizationServiceAccountRoleAssignmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/authorizationServiceAccountRoleAssignment:AuthorizationServiceAccountRoleAssignment", id, state, "", opts...)
+}
+
 type authorizationServiceAccountRoleAssignmentArgs struct {
 	// Service-account Resource to assign the role to.
 	ResourceId string `pulumi:"resourceId"`

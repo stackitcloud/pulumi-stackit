@@ -147,6 +147,12 @@ func (NetworkInterfaceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*networkInterfaceState)(nil)).Elem()
 }
 
+// NetworkInterfaceExists checks whether an existing NetworkInterface resource with the given ID exists.
+func NetworkInterfaceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NetworkInterfaceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/networkInterface:NetworkInterface", id, state, "", opts...)
+}
+
 type networkInterfaceArgs struct {
 	// The list of CIDR (Classless Inter-Domain Routing) notations.
 	AllowedAddresses []string `pulumi:"allowedAddresses"`

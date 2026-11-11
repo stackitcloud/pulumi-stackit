@@ -102,6 +102,12 @@ func (PublicIpState) ElementType() reflect.Type {
 	return reflect.TypeOf((*publicIpState)(nil)).Elem()
 }
 
+// PublicIpExists checks whether an existing PublicIp resource with the given ID exists.
+func PublicIpExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PublicIpState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/publicIp:PublicIp", id, state, "", opts...)
+}
+
 type publicIpArgs struct {
 	// Labels are key-value string pairs which can be attached to a resource container
 	Labels map[string]string `pulumi:"labels"`

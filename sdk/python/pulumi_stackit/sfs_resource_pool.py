@@ -564,6 +564,36 @@ class SfsResourcePool(pulumi.CustomResource):
         __props__.__dict__["timeouts"] = timeouts
         return SfsResourcePool(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            availability_zone: pulumi.Input[Optional[_builtins.str]] = None,
+            ip_acls: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            performance_class: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_pool_id: pulumi.Input[Optional[_builtins.str]] = None,
+            size_gigabytes: pulumi.Input[Optional[_builtins.int]] = None,
+            snapshot_policy: pulumi.Input[Optional[Union['SfsResourcePoolSnapshotPolicyArgs', 'SfsResourcePoolSnapshotPolicyArgsDict', 'outputs.SfsResourcePoolSnapshotPolicy']]] = None,
+            snapshots_are_visible: pulumi.Input[Optional[_builtins.bool]] = None,
+            timeouts: pulumi.Input[Optional[Union['SfsResourcePoolTimeoutsArgs', 'SfsResourcePoolTimeoutsArgsDict', 'outputs.SfsResourcePoolTimeouts']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["availabilityZone"] = availability_zone
+        __props__["ipAcls"] = ip_acls
+        __props__["labels"] = labels
+        __props__["name"] = name
+        __props__["performanceClass"] = performance_class
+        __props__["projectId"] = project_id
+        __props__["region"] = region
+        __props__["resourcePoolId"] = resource_pool_id
+        __props__["sizeGigabytes"] = size_gigabytes
+        __props__["snapshotPolicy"] = snapshot_policy
+        __props__["snapshotsAreVisible"] = snapshots_are_visible
+        __props__["timeouts"] = timeouts
+        return pulumi.runtime.exists_resource(None, 'stackit:index/sfsResourcePool:SfsResourcePool', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> pulumi.Output[_builtins.str]:

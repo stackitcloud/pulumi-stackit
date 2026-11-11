@@ -89,6 +89,12 @@ func (AlbWafCustomRuleGroupState) ElementType() reflect.Type {
 	return reflect.TypeOf((*albWafCustomRuleGroupState)(nil)).Elem()
 }
 
+// AlbWafCustomRuleGroupExists checks whether an existing AlbWafCustomRuleGroup resource with the given ID exists.
+func AlbWafCustomRuleGroupExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AlbWafCustomRuleGroupState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/albWafCustomRuleGroup:AlbWafCustomRuleGroup", id, state, "", opts...)
+}
+
 type albWafCustomRuleGroupArgs struct {
 	// Custom rule group configuration name.
 	Name *string `pulumi:"name"`

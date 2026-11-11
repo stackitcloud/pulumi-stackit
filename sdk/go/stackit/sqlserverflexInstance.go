@@ -165,6 +165,12 @@ func (SqlserverflexInstanceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*sqlserverflexInstanceState)(nil)).Elem()
 }
 
+// SqlserverflexInstanceExists checks whether an existing SqlserverflexInstance resource with the given ID exists.
+func SqlserverflexInstanceExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SqlserverflexInstanceState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/sqlserverflexInstance:SqlserverflexInstance", id, state, "", opts...)
+}
+
 type sqlserverflexInstanceArgs struct {
 	// The Access Control List (ACL) for the SQLServer Flex instance.
 	//

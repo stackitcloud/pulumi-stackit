@@ -138,6 +138,12 @@ func (VpnGatewayState) ElementType() reflect.Type {
 	return reflect.TypeOf((*vpnGatewayState)(nil)).Elem()
 }
 
+// VpnGatewayExists checks whether an existing VpnGateway resource with the given ID exists.
+func VpnGatewayExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *VpnGatewayState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/vpnGateway:VpnGateway", id, state, "", opts...)
+}
+
 type vpnGatewayArgs struct {
 	// Availability zones for the two tunnel endpoints.
 	AvailabilityZones VpnGatewayAvailabilityZones `pulumi:"availabilityZones"`

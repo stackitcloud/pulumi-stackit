@@ -496,6 +496,32 @@ class VpnGateway(pulumi.CustomResource):
         __props__.__dict__["routing_type"] = routing_type
         return VpnGateway(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            availability_zones: pulumi.Input[Optional[Union['VpnGatewayAvailabilityZonesArgs', 'VpnGatewayAvailabilityZonesArgsDict', 'outputs.VpnGatewayAvailabilityZones']]] = None,
+            bgp: pulumi.Input[Optional[Union['VpnGatewayBgpArgs', 'VpnGatewayBgpArgsDict', 'outputs.VpnGatewayBgp']]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            gateway_id: pulumi.Input[Optional[_builtins.str]] = None,
+            labels: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            network_config: pulumi.Input[Optional[Union['VpnGatewayNetworkConfigArgs', 'VpnGatewayNetworkConfigArgsDict', 'outputs.VpnGatewayNetworkConfig']]] = None,
+            plan_id: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            routing_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["availabilityZones"] = availability_zones
+        __props__["bgp"] = bgp
+        __props__["displayName"] = display_name
+        __props__["gatewayId"] = gateway_id
+        __props__["labels"] = labels
+        __props__["networkConfig"] = network_config
+        __props__["planId"] = plan_id
+        __props__["projectId"] = project_id
+        __props__["region"] = region
+        __props__["routingType"] = routing_type
+        return pulumi.runtime.exists_resource(None, 'stackit:index/vpnGateway:VpnGateway', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="availabilityZones")
     def availability_zones(self) -> pulumi.Output['outputs.VpnGatewayAvailabilityZones']:

@@ -142,6 +142,12 @@ func (RoutingTableRouteState) ElementType() reflect.Type {
 	return reflect.TypeOf((*routingTableRouteState)(nil)).Elem()
 }
 
+// RoutingTableRouteExists checks whether an existing RoutingTableRoute resource with the given ID exists.
+func RoutingTableRouteExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *RoutingTableRouteState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/routingTableRoute:RoutingTableRoute", id, state, "", opts...)
+}
+
 type routingTableRouteArgs struct {
 	// Destination of the route.
 	Destination RoutingTableRouteDestination `pulumi:"destination"`

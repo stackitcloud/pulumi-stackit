@@ -117,6 +117,12 @@ func (ResourcemanagerFolderState) ElementType() reflect.Type {
 	return reflect.TypeOf((*resourcemanagerFolderState)(nil)).Elem()
 }
 
+// ResourcemanagerFolderExists checks whether an existing ResourcemanagerFolder resource with the given ID exists.
+func ResourcemanagerFolderExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ResourcemanagerFolderState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("stackit:index/resourcemanagerFolder:ResourcemanagerFolder", id, state, "", opts...)
+}
+
 type resourcemanagerFolderArgs struct {
 	// Labels are key-value string pairs which can be attached to a resource container. A label key must match the regex [A-ZÄÜÖa-zäüöß0-9*-]{1,64}. A label value must match the regex ^$|[A-ZÄÜÖa-zäüöß0-9*-]{1,64}.
 	Labels map[string]string `pulumi:"labels"`
