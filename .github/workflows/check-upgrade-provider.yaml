@@ -4,15 +4,16 @@ jobs:
   upgrade_provider:
     name: upgrade-provider
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write # Create an issue when a new upstream version is available.
     steps:
     - name: Call upgrade provider action
       uses: pulumi/pulumi-upgrade-provider-action@12996503de2aaddd72c7426efc43331a8970894f # v0.0.19
       with:
         kind: check-upstream-version
 
-permissions:
-  contents: write
-  issues: write
+permissions: {}
 
 name: Check upstream upgrade
 on:
